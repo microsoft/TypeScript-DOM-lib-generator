@@ -1641,6 +1641,10 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
     compatMode: string;
     cookie: string;
     /**
+     * Gets the script element whose script is currently being processed.
+     */
+    currentScript: HTMLScriptElement;
+    /**
       * Gets the default character set from the current regional language settings.
       */
     defaultCharset: string;
