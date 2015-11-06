@@ -215,6 +215,11 @@
     },
     {
         "kind": "method",
+        "interface": "Node",
+        "signatures":["contains(node: Node): boolean"]
+    },
+    {
+        "kind": "method",
         "interface": "Navigator",
         "signatures": [
             "vibrate(pattern: number | number[]): boolean"
