@@ -225,5 +225,16 @@
         "interface": "Document",
         "name": "currentScript",
         "type": "HTMLScriptElement"
-     }
+     },
+     {
+        "kind": "interface",
+        "name": "HTMLTemplateElement",
+        "extends": "HTMLElement",
+        "properties": [
+            {
+                "name": "content",
+                "type": "DocumentFragment"
+            }
+        ]
+    }
 ]

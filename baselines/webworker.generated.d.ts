@@ -921,6 +921,10 @@ interface ProgressEventInit extends EventInit {
     total?: number;
 }
 
+interface HTMLTemplateElement extends HTMLElement {
+    content: DocumentFragment;
+}
+
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
 interface ErrorEventHandler {
