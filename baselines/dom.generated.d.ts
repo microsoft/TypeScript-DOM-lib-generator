@@ -2058,6 +2058,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
       * Gets or sets the version attribute specified in the declaration of an XML document.
       */
     xmlVersion: string;
+    currentScript: HTMLScriptElement;
     adoptNode(source: Node): Node;
     captureEvents(): void;
     clear(): void;

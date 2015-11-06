@@ -219,5 +219,11 @@
         "signatures": [
             "vibrate(pattern: number | number[]): boolean"
         ]
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "currentScript",
+        "type": "HTMLScriptElement"
     }
 ]
