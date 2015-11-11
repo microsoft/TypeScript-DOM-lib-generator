@@ -545,12 +545,19 @@ let EmitAddedInterface (ai: JsonItems.ItemsType.Root) =
     match ai.Extends with 
     | Some e -> Pt.printl "interface %s extends %s {" ai.Name.Value ai.Extends.Value
     | None -> Pt.printl "interface %s {" ai.Name.Value
-    
+
     ai.Properties |> Array.iter (fun p -> Pt.printWithAddedIndent "%s: %s;" p.Name p.Type)
     ai.Methods |> Array.collect (fun m -> m.Signatures) |> Array.iter (Pt.printWithAddedIndent "%s;")
     ai.Indexer |> Array.collect (fun i -> i.Signatures) |> Array.iter (Pt.printWithAddedIndent "%s;")
     Pt.printl "}"
     Pt.printl ""
+
+    if ai.ConstructorSignatures.Length > 0 then
+        Pt.printl "declare var %s: {" ai.Name.Value
+        Pt.printWithAddedIndent "prototype: %s;" ai.Name.Value
+        ai.ConstructorSignatures |> Array.iter (Pt.printWithAddedIndent "%s;")
+        Pt.printl "}"
+        Pt.printl "" 
 
 let EmitTheWholeThing flavor (target:TextWriter) =
     Pt.reset()

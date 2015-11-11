@@ -53,6 +53,9 @@
     {
         "kind": "interface",
         "name": "BlobPropertyBag",
+        "constructorSignatures": [
+            "new(): NodeList"
+        ],
         "properties": [
             {
                 "name": "type?",

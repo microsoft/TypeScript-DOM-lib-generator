@@ -12614,6 +12614,11 @@ interface HTMLTemplateElement extends HTMLElement {
     content: DocumentFragment;
 }
 
+declare var HTMLTemplateElement: {
+    prototype: HTMLTemplateElement;
+    new(): HTMLTemplateElement;
+}
+
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
 interface ErrorEventHandler {
