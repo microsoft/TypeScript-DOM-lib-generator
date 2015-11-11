@@ -230,5 +230,20 @@
         "interface": "Document",
         "name": "currentScript",
         "type": "HTMLScriptElement"
-     }
+     },
+     {
+        "kind": "interface",
+        "name": "HTMLTemplateElement",
+        "flavor":  "Web",
+        "extends": "HTMLElement",
+        "constructorSignatures": [
+            "new(): HTMLTemplateElement"
+        ],
+        "properties": [
+            {
+                "name": "content",
+                "type": "DocumentFragment"
+            }
+        ]
+    }
 ]
