@@ -12143,14 +12143,7 @@ interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {
     LOADING: number;
     OPENED: number;
     UNSENT: number;
-    addEventListener(type: "abort", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "load", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadend", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadstart", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "progress", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "readystatechange", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "timeout", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
