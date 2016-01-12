@@ -302,5 +302,60 @@
         "interface": "HTMLSelectElement",
         "name": "selectedOptions",
         "type": "HTMLCollection"
+    },
+    {
+        "kind": "interface",
+        "name": "URLConstructor",
+        "properties": [
+            {
+                "name": "hash",
+                "type": "string"
+            },
+            {
+                "name": "search",
+                "type": "string"
+            },
+            {
+                "name": "pathname",
+                "type": "string"
+            },
+            {
+                "name": "port",
+                "type": "string"
+            },
+            {
+                "name": "hostname",
+                "type": "string"
+            },
+            {
+                "name": "host",
+                "type": "string"
+            },
+            {
+                "name": "password",
+                "type": "string"
+            },
+            {
+                "name": "username",
+                "type": "string"
+            },
+            {
+                "name": "protocol",
+                "type": "string"
+            },
+            {
+                "name": "origin",
+                "type": "string"
+            },
+            {
+                "name": "href",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "kind": "constructor",
+        "interface": "URL",
+        "signatures":["new (url: string, base?: string): URLConstructor"]
     }
 ]
