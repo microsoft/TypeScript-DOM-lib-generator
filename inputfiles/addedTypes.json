@@ -308,5 +308,11 @@
         "interface": "HTMLCanvasElement",
         "name": "toBlob",
         "signatures": ["toBlob(): Blob"]
+    },
+    {
+        "kind": "property",
+        "interface": "IDBObjectStore",
+        "name": "autoIncrement",
+        "type": "boolean"
     }
 ]
