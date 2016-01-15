@@ -312,5 +312,42 @@
         "kind": "indexer",
         "interface": "DataTransferItemList",
         "signatures": ["[index: number]: DataTransferItem"]
+    },
+    {
+        "kind": "constructor",
+        "interface": "StorageEvent",
+        "signatures": [
+            "new (type: string, eventInitDict?: StorageEventInit): StorageEvent"
+        ]
+    },
+    {
+        "kind": "property",
+        "interface": "IDBCursor",
+        "name": "source",
+        "type": "IDBObjectStore | IDBIndex"
+    },
+    {
+        "kind": "method",
+        "interface": "IDBDatabase",
+        "name": "transaction",
+        "signatures": ["transaction(storeNames: string | string[], mode?: string): IDBTransaction"]
+    },
+    {
+        "kind": "property",
+        "interface": "IDBObjectStore",
+        "name": "keyPath",
+        "type": "string | string[]"
+    },
+    {
+        "kind": "property",
+        "interface": "IDBRequest",
+        "name": "source",
+        "type": "IDBObjectStore | IDBIndex | IDBCursor"
+    },
+    {
+        "kind": "interface",
+        "name": "WorkerUtils",
+        "flavor": "Worker",
+        "extends": "Object, WindowBase64, IDBEnvironment"
     }
 ]
