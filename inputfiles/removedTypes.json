@@ -28,6 +28,9 @@
         "kind": "method",
         "interface": "URL",
         "name": "revokeObjectURL"
+    },
+    {
+        "kind": "method",
         "interface": "StorageEvent",
         "name": "initStorageEvent"
     },
