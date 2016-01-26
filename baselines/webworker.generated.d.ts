@@ -932,20 +932,6 @@ interface ProgressEventInit extends EventInit {
     total?: number;
 }
 
-interface URLConstructor {
-    hash: string;
-    search: string;
-    pathname: string;
-    port: string;
-    hostname: string;
-    host: string;
-    password: string;
-    username: string;
-    protocol: string;
-    origin: string;
-    href: string;
-}
-
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
 interface ErrorEventHandler {

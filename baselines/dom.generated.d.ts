@@ -10747,8 +10747,6 @@ declare var UIEvent: {
 }
 
 interface URL {
-    createObjectURL(object: any, options?: ObjectURLOptions): string;
-    revokeObjectURL(url: string): void;
 }
 declare var URL: URL;
 
@@ -12631,20 +12629,6 @@ interface HTMLTemplateElement extends HTMLElement {
 declare var HTMLTemplateElement: {
     prototype: HTMLTemplateElement;
     new(): HTMLTemplateElement;
-}
-
-interface URLConstructor {
-    hash: string;
-    search: string;
-    pathname: string;
-    port: string;
-    hostname: string;
-    host: string;
-    password: string;
-    username: string;
-    protocol: string;
-    origin: string;
-    href: string;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;

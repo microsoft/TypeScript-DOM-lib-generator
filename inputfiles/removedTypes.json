@@ -18,5 +18,15 @@
         "kind": "method",
         "interface": "HTMLElement",
         "name": "contains"
+    },
+    {
+        "kind": "method",
+        "interface": "URL",
+        "name": "createObjectURL"
+    },
+    {
+        "kind": "method",
+        "interface": "URL",
+        "name": "revokeObjectURL"
     }
 ]
