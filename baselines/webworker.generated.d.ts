@@ -933,6 +933,16 @@ interface ProgressEventInit extends EventInit {
     total?: number;
 }
 
+interface URLConstructor {
+    revokeObjectURL(url: string): void;
+    createObjectURL(object: any, options?: ObjectURLOptions): string;
+}
+
+declare var URLConstructor: {
+    prototype: URLConstructor;
+    new(url: string, base?: string): URL;
+}
+
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
 interface ErrorEventHandler {
