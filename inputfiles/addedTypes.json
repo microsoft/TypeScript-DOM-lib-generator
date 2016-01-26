@@ -332,6 +332,72 @@
         "type": "HTMLCollection"
     },
     {
+        "kind": "property",
+        "interface": "URL",
+        "name": "hash",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "search",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "pathname",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "port",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "hostname",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "host",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "password",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "username",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "protocol",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "origin",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "URL",
+        "name": "href",
+        "type": "number"
+    },
+    {
         "kind": "method",
         "interface": "HTMLCanvasElement",
         "name": "toBlob",
@@ -394,5 +460,12 @@
         "interface": "Element",
         "name": "getElementsByTagName",
         "signatures": ["getElementsByTagName(tagname: \"picture\"): NodeListOf<HTMLPictureElement>"]
+    },
+    {
+        "kind": "constructor",
+        "interface": "URL",
+        "signatures": [
+            "new (url: string, base?: string): URL"
+        ]
     }
 ]
