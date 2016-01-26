@@ -14,11 +14,11 @@ let Pt = StringPrinter()
 let mutable ignoreDOMTypes = false
 
 // Extended types used but not defined in the spec
-let extendedTypes = 
+let extendedTypes =
     ["ArrayBuffer";"ArrayBufferView";"Int8Array";"Uint8Array";"Int16Array";"Uint16Array";"Int32Array";"Uint32Array";"Float32Array";"Float64Array"]
 
 /// Get typescript type using object dom type, object name, and it's associated interface name
-let rec DomTypeToTsType (objDomType: string) = 
+let rec DomTypeToTsType (objDomType: string) =
     match objDomType.Trim('?') with
     | "AbortMode" -> "String"
     | "any" -> "any"
@@ -41,7 +41,7 @@ let rec DomTypeToTsType (objDomType: string) =
     | "UnrestrictedDouble" -> "number"
     | "void" -> "void"
     | extendedType when List.contains extendedType extendedTypes -> extendedType
-    | _ -> 
+    | _ ->
         if ignoreDOMTypes && Seq.contains objDomType ["Element"; "Window"; "Document"] then "any"
         else
             // Name of an interface / enum / dict. Just return itself
@@ -56,7 +56,7 @@ let rec DomTypeToTsType (objDomType: string) =
                 let allTypes = objDomType.Trim('(', ')').Split([|" or "|], StringSplitOptions.None)
                                 |> Array.map DomTypeToTsType
                 if Seq.contains "any" allTypes then "any" else String.concat " | " allTypes
-            else 
+            else
                 // Check if is array type, which looks like "sequence<DOMString>"
                 let genericMatch = Regex.Match(objDomType, @"^(\w+)<(\w+)>$")
                 if genericMatch.Success then
@@ -75,18 +75,18 @@ let rec DomTypeToTsType (objDomType: string) =
 let EmitConstants (i: Browser.Interface) =
     let emitConstantFromJson (c: ItemsType.Root) = Pt.printl "%s: %s;" c.Name.Value c.Type.Value
 
-    let emitConstant (c: Browser.Constant) = 
+    let emitConstant (c: Browser.Constant) =
         if Option.isNone (findRemovedItem c.Name ItemKind.Constant i.Name) then
             match findOverriddenItem c.Name ItemKind.Constant i.Name with
             | Some c' -> emitConstantFromJson c'
             | None -> Pt.printl "%s: %s;" c.Name (DomTypeToTsType c.Type)
 
     // Emit the constants added in the json files
-    
+
     let addedConstants = getAddedItems ItemKind.Constant Flavor.All
     Array.iter emitConstantFromJson addedConstants
 
-    if i.Constants.IsSome then 
+    if i.Constants.IsSome then
         Array.iter emitConstant i.Constants.Value.Constants
 
 let matchSingleParamMethodSignature (m: Browser.Method) expectedMName expectedMType expectedParamType =
@@ -116,22 +116,22 @@ let EmitCreateEventOverloads (m: Browser.Method) =
         // Emit plurals. For example, "Events", "MutationEvents"
         let hasPlurals = ["Event"; "MutationEvent"; "MouseEvent"; "SVGZoomEvent"; "UIEvent"]
         for x in distinctETypeList do
-            Pt.printl "createEvent(eventInterface:\"%s\"): %s;" x x 
+            Pt.printl "createEvent(eventInterface:\"%s\"): %s;" x x
             if List.contains x hasPlurals then
                 Pt.printl "createEvent(eventInterface:\"%ss\"): %s;" x x
         Pt.printl "createEvent(eventInterface: string): Event;"
 
-/// Generate the parameters string for function signatures 
+/// Generate the parameters string for function signatures
 let ParamsToString (ps: Param list) =
     let paramToString (p: Param) =
-        (if p.Variadic then "..." else "") + 
-        (AdjustParamName p.Name) + 
+        (if p.Variadic then "..." else "") +
+        (AdjustParamName p.Name) +
         (if not p.Variadic && p.Optional then "?: " else ": ") +
         (DomTypeToTsType p.Type) +
         (if p.Variadic then "[]" else "")
     String.Join(", ", (List.map paramToString ps))
 
-let EmitMethod flavor prefix (i:Browser.Interface) (m:Browser.Method) = 
+let EmitMethod flavor prefix (i:Browser.Interface) (m:Browser.Method) =
     // print comment
     if m.Name.IsSome then
         match GetCommentForMethod i.Name m.Name.Value with
@@ -148,12 +148,12 @@ let EmitMethod flavor prefix (i:Browser.Interface) (m:Browser.Method) =
 
     if removedType.IsNone then
         match overridenType with
-        | Some t -> 
-            match flavor with 
+        | Some t ->
+            match flavor with
             | Flavor.All | Flavor.Web -> t.WebOnlySignatures |> Array.iter (Pt.printl "%s%s;" prefix)
             | _ -> ()
             t.Signatures |> Array.iter (Pt.printl "%s%s;" prefix)
-        | None -> 
+        | None ->
             match i.Name, m.Name with
             | _, Some "createElement" -> EmitCreateElementOverloads m
             | _, Some "createEvent" -> EmitCreateEventOverloads m
@@ -171,7 +171,7 @@ let EmitMethod flavor prefix (i:Browser.Interface) (m:Browser.Method) =
                     let returnString = rTypes |> List.map DomTypeToTsType |> String.concat " | "
                     Pt.printl "%s%s(%s): %s;" prefix (if m.Name.IsSome then m.Name.Value else "") paramsString returnString
 
-let EmitCallBackInterface (i:Browser.Interface) = 
+let EmitCallBackInterface (i:Browser.Interface) =
     Pt.printl "interface %s {" i.Name
     Pt.printWithAddedIndent "(evt: Event): void;"
     Pt.printl "}"
@@ -213,11 +213,11 @@ let EmitProperties flavor prefix (emitScope: EmitScope) (i: Browser.Interface)=
         | Some comment -> Pt.printl "%s" comment
         | _ -> ()
 
-        if Option.isNone (findRemovedItem p.Name ItemKind.Property i.Name) then 
+        if Option.isNone (findRemovedItem p.Name ItemKind.Property i.Name) then
             match findOverriddenItem p.Name ItemKind.Property i.Name with
             | Some p' -> emitPropertyFromJson p'
-            | None -> 
-                let pType = 
+            | None ->
+                let pType =
                     match p.Type with
                     | "EventHandler" -> String.Format("(ev: {0}) => any", ehNameToEType.[p.Name])
                     | _ -> DomTypeToTsType p.Type
@@ -244,10 +244,10 @@ let EmitMethods flavor prefix (emitScope: EmitScope) (i: Browser.Interface) =
     let emitMethodFromJson (m: ItemsType.Root) =
         m.Signatures |> Array.iter (Pt.printl "%s%s;" prefix)
 
-    // Because eventhandler overload are not inherited between interfaces, 
+    // Because eventhandler overload are not inherited between interfaces,
     // they need to be taken care of seperately
-    let hasEventHandlers = 
-        iNameToEhList.ContainsKey i.Name && 
+    let hasEventHandlers =
+        iNameToEhList.ContainsKey i.Name &&
         not iNameToEhList.[i.Name].IsEmpty
 
     let mFilter (m:Browser.Method) =
@@ -259,7 +259,7 @@ let EmitMethods flavor prefix (emitScope: EmitScope) (i: Browser.Interface) =
         |> Array.filter mFilter
         |> Array.iter (EmitMethod flavor prefix i)
 
-    getAddedItems ItemKind.Method flavor 
+    getAddedItems ItemKind.Method flavor
     |> Array.filter (fun m -> matchInterface i.Name m && matchScope emitScope m)
     |> Array.iter emitMethodFromJson
 
@@ -287,8 +287,8 @@ let rec EmitAllMembers flavor (i:Browser.Interface) =
 
 let EmitEventHandlers (prefix: string) (i:Browser.Interface) =
     let emitEventHandler prefix (eHandler: EventHandler)  =
-        let actualEventType = 
-            match i.Name, eHandler.EventName with 
+        let actualEventType =
+            match i.Name, eHandler.EventName with
             | "IDBDatabase", "abort"
             | "IDBTransaction", "abort"
             | "XMLHttpRequest", "abort"
@@ -297,25 +297,25 @@ let EmitEventHandlers (prefix: string) (i:Browser.Interface) =
                 -> "Event"
             | _ -> eHandler.EventType
 
-        Pt.printl 
-            "%saddEventListener(type: \"%s\", listener: (ev: %s) => any, useCapture?: boolean): void;" 
+        Pt.printl
+            "%saddEventListener(type: \"%s\", listener: (ev: %s) => any, useCapture?: boolean): void;"
             prefix eHandler.EventName actualEventType
 
     let fPrefix = if prefix.StartsWith "declare var" then "declare function " else ""
 
     // Inheritance of "addEventListener" has two cases:
     // 1. No own eventhandlers -> it inherits all the eventhandlers from base interfaces
-    // 2. Has own eventhandlers -> TypeScript's inherit mechanism erases all inherited eventhandler overloads 
+    // 2. Has own eventhandlers -> TypeScript's inherit mechanism erases all inherited eventhandler overloads
     // so they need to be reprinted.
     if iNameToEhList.ContainsKey i.Name then
         iNameToEhList.[i.Name] |> List.sortBy (fun eh -> eh.EventName) |> List.iter (emitEventHandler fPrefix)
         let shouldPrintAddEventListener =
             if iNameToEhList.[i.Name].Length > 0 then true
-            else 
+            else
                 match i.Extends, i.Implements.Length with
                 | _, 0 -> false
                 | "Object", 1 -> false
-                | _ -> 
+                | _ ->
                     let allParents = Array.append [|i.Extends|] i.Implements
                     match allParents |> Array.filter iNameToEhList.ContainsKey |> Array.length with
                     // only one of the implemented interface has EventHandlers
@@ -324,7 +324,7 @@ let EmitEventHandlers (prefix: string) (i:Browser.Interface) =
                     | _ -> true
         if shouldPrintAddEventListener then
            Pt.printl "%saddEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;" fPrefix
- 
+
 let EmitConstructorSignature (i:Browser.Interface) =
     let emitConstructorSigFromJson (c: ItemsType.Root) =
         c.Signatures |> Array.iter (Pt.printl "%s;")
@@ -334,7 +334,7 @@ let EmitConstructorSignature (i:Browser.Interface) =
         let overriddenCtor = getOverriddenItems ItemKind.Constructor Flavor.All  |> Array.tryFind (matchInterface i.Name)
         match overriddenCtor with
         | Some c' -> emitConstructorSigFromJson c'
-        | _ -> 
+        | _ ->
             //Emit constructor signature
             match i.Constructor with
             | Some ctor ->
@@ -365,11 +365,11 @@ let EmitConstructor flavor (i:Browser.Interface) =
 let EmitNamedConstructors () =
     browser.Interfaces
     |> Array.filter (fun i -> i.NamedConstructor.IsSome)
-    |> Array.iter 
-        (fun i -> 
+    |> Array.iter
+        (fun i ->
             let nc = i.NamedConstructor.Value
-            let ncParams = 
-                [for p in nc.Params do 
+            let ncParams =
+                [for p in nc.Params do
                     yield {Type = p.Type; Name = p.Name; Optional = p.Optional.IsSome; Variadic = p.Variadic.IsSome}]
             Pt.printl "declare var %s: {new(%s): %s; };" nc.Name (ParamsToString ncParams) i.Name)
 
@@ -384,14 +384,14 @@ let EmitInterfaceDeclaration (i:Browser.Interface) =
 let ShouldEmitIndexerSignature (i: Browser.Interface) (m: Browser.Method) =
     if m.Getter.IsSome && m.Params.Length = 1 then
         // TypeScript array indexer can only be number or string
-        // for string, it must return a more generic type then all 
+        // for string, it must return a more generic type then all
         // the other properties, following the Dictionary pattern
         match DomTypeToTsType m.Params.[0].Type with
         | "number" -> true
         | "string" ->
             match DomTypeToTsType m.Type with
             | "any" -> true
-            | _ -> 
+            | _ ->
                 let mTypes =
                     match i.Methods with
                     | Some ms ->
@@ -416,7 +416,7 @@ let ShouldEmitIndexerSignature (i: Browser.Interface) (m: Browser.Method) =
                 | _ -> false
 
         | _ -> false
-    else 
+    else
         false
 
 let EmitIndexers emitScope (i: Browser.Interface) =
@@ -432,14 +432,14 @@ let EmitIndexers emitScope (i: Browser.Interface) =
             // The indices could be within either Methods or Anonymous Methods
             let ms = if i.Methods.IsSome then i.Methods.Value.Methods else [||]
             let ams = if i.AnonymousMethods.IsSome then i.AnonymousMethods.Value.Methods else [||]
-    
+
             Array.concat [|ms; ams|]
             |> Array.filter (fun m -> ShouldEmitIndexerSignature i m && matchScope emitScope m)
-            |> Array.iter (fun m -> 
+            |> Array.iter (fun m ->
                 let indexer = m.Params.[0]
-                Pt.printl "[%s: %s]: %s;" 
-                    indexer.Name 
-                    (DomTypeToTsType indexer.Type) 
+                Pt.printl "[%s: %s]: %s;"
+                    indexer.Name
+                    (DomTypeToTsType indexer.Type)
                     (DomTypeToTsType m.Type))
 
     getAddedItems ItemKind.Indexer Flavor.All
@@ -462,20 +462,47 @@ let EmitInterface flavor (i:Browser.Interface) =
     Pt.printl ""
 
 let EmitStaticInterface flavor (i:Browser.Interface) =
-    // Some types are static types with non-static members. For example, 
+    // Some types are static types with non-static members. For example,
     // NodeFilter is a static method itself, however it has an "acceptNode" method
-    // that expects the user to implement. 
-    let hasNonStaticMember = 
-        match i.Methods with
-        | Some ms -> ms.Methods |> Array.exists (fun m -> m.Static.IsNone)
-        | _ -> false
+    // that expects the user to implement.
+    let hasNonStaticMember =
+        let hasNonStaticMethod =
+            let hasOwnNonStaticMethod =
+                i.Methods.IsSome &&
+                i.Methods.Value.Methods
+                |> Array.filter (fun m -> m.Name.IsNone || (findRemovedItem m.Name.Value ItemKind.Method i.Name) |> Option.isNone)
+                |> Array.exists (fun m -> m.Static.IsNone)
+            let hasAddedNonStaticMethod =
+                match JsonItems.getAddedItemsByInterfaceName ItemKind.Method flavor i.Name with
+                | [||] -> false
+                | addedMs -> addedMs |> Array.exists (fun m -> m.Static.IsNone || m.Static.Value = false)
+            hasOwnNonStaticMethod || hasAddedNonStaticMethod
+        let hasProperty =
+            let hasOwnNonStaticProperty =
+                i.Properties.IsSome &&
+                i.Properties.Value.Properties
+                |> Array.filter (fun p -> findRemovedItem p.Name ItemKind.Method i.Name |> Option.isNone)
+                |> Array.isEmpty |> not
+            let hasAddedNonStaticMethod =
+                match JsonItems.getAddedItemsByInterfaceName ItemKind.Property flavor i.Name with
+                | [||] -> false
+                | addedPs -> addedPs |> Array.exists (fun p -> p.Static.IsNone || p.Static.Value = false)
+            hasOwnNonStaticProperty || hasAddedNonStaticMethod
+        hasNonStaticMethod || hasProperty
+
+    let emitAddedConstructor () =
+        match JsonItems.getAddedItemsByInterfaceName ItemKind.Constructor flavor i.Name with
+        | [||] -> ()
+        | ctors ->
+            Pt.printl "prototype: %s;" i.Name
+            ctors |> Array.iter (fun ctor -> ctor.Signatures |> Array.iter (Pt.printl "%s;"))
 
     // For static types with non-static members, we put the non-static members into an
     // interface, and put the static members into the object literal type of 'declare var'
-    // For static types with only static members, we put everything in the interface. 
+    // For static types with only static members, we put everything in the interface.
     // Because in the two cases the interface contains different things, it might be easier to
     // read to seperate them into two functions.
-    let emitStaticInterfaceWithNonStaticMembers () = 
+    let emitStaticInterfaceWithNonStaticMembers () =
         Pt.resetIndent()
         EmitInterfaceDeclaration i
         Pt.increaseIndent()
@@ -492,6 +519,7 @@ let EmitStaticInterface flavor (i:Browser.Interface) =
         Pt.increaseIndent()
         EmitConstants i
         EmitMembers flavor prefix EmitScope.StaticOnly i
+        emitAddedConstructor ()
         Pt.decreaseIndent()
         Pt.printl "}"
         Pt.printl ""
@@ -506,7 +534,7 @@ let EmitStaticInterface flavor (i:Browser.Interface) =
         EmitConstants i
         EmitEventHandlers prefix i
         EmitIndexers EmitScope.StaticOnly i
-
+        emitAddedConstructor ()
         Pt.decreaseIndent()
         Pt.printl "}"
         Pt.printl "declare var %s: %s;" i.Name i.Name
@@ -534,20 +562,20 @@ let EmitDictionaries flavor =
         let emitJsonProperty (p: ItemsType.Root) =
             Pt.printl "%s: %s;" p.Name.Value p.Type.Value
 
-        let removedPropNames = 
-            getRemovedItems ItemKind.Property flavor 
+        let removedPropNames =
+            getRemovedItems ItemKind.Property flavor
             |> Array.filter (matchInterface dict.Name)
             |> Array.map (fun rp -> rp.Name.Value)
             |> Set.ofArray
-        let addedProps = 
-            getAddedItems ItemKind.Property flavor 
+        let addedProps =
+            getAddedItems ItemKind.Property flavor
             |> Array.filter (matchInterface dict.Name)
 
         Pt.increaseIndent()
         Array.iter emitJsonProperty addedProps
         dict.Members
         |> Array.filter (fun m -> not (Set.contains m.Name removedPropNames))
-        |> Array.iter (fun m -> 
+        |> Array.iter (fun m ->
             match (findOverriddenItem m.Name ItemKind.Property dict.Name) with
             | Some om -> emitJsonProperty om
             | None -> Pt.printl "%s?: %s;" m.Name (DomTypeToTsType m.Type))
@@ -555,12 +583,12 @@ let EmitDictionaries flavor =
         Pt.printl "}"
         Pt.printl ""
 
-    browser.Dictionaries 
+    browser.Dictionaries
     |> Array.filter (fun dict -> flavor <> Worker || knownWorkerInterfaces.Contains dict.Name)
     |> Array.iter emitDictionary
 
 let EmitAddedInterface (ai: JsonItems.ItemsType.Root) =
-    match ai.Extends with 
+    match ai.Extends with
     | Some e -> Pt.printl "interface %s extends %s {" ai.Name.Value ai.Extends.Value
     | None -> Pt.printl "interface %s {" ai.Name.Value
 
@@ -575,7 +603,7 @@ let EmitAddedInterface (ai: JsonItems.ItemsType.Root) =
         Pt.printWithAddedIndent "prototype: %s;" ai.Name.Value
         ai.ConstructorSignatures |> Array.iter (Pt.printWithAddedIndent "%s;")
         Pt.printl "}"
-        Pt.printl "" 
+        Pt.printl ""
 
 let EmitTheWholeThing flavor (target:TextWriter) =
     Pt.reset()
@@ -589,7 +617,7 @@ let EmitTheWholeThing flavor (target:TextWriter) =
     EmitDictionaries flavor
     EmitCallBackInterface browser.CallbackInterfaces.Interface
     EmitNonCallbackInterfaces flavor
-    
+
     // Add missed interface definition from the spec
     JsonItems.getAddedItems JsonItems.Interface flavor |> Array.iter EmitAddedInterface
 
@@ -602,11 +630,11 @@ let EmitTheWholeThing flavor (target:TextWriter) =
         EmitNamedConstructors()
 
     match GetGlobalPollutor flavor with
-    | Some gp -> 
+    | Some gp ->
         EmitAllMembers flavor gp
         EmitEventHandlers "declare var " gp
     | _ -> ()
-    
+
     fprintf target "%s" (Pt.getResult())
     target.Flush()
     target.Close()
@@ -616,4 +644,4 @@ let EmitDomWeb () =
 
 let EmitDomWorker () =
     ignoreDOMTypes <- true
-    EmitTheWholeThing Flavor.Worker GlobalVars.tsWorkerOutput 
+    EmitTheWholeThing Flavor.Worker GlobalVars.tsWorkerOutput
