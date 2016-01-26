@@ -18,5 +18,30 @@
         "kind": "method",
         "interface": "HTMLElement",
         "name": "contains"
+    },
+    {
+        "kind": "method",
+        "interface": "StorageEvent",
+        "name": "initStorageEvent"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "key"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "oldValue"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "newValue"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "storageArea"
     }
 ]

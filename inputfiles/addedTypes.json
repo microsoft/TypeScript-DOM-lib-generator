@@ -1,6 +1,34 @@
 [
     {
         "kind": "interface",
+        "name": "StorageEventInit",
+        "flavor":  "Web",
+        "extends": "EventInit",
+        "properties": [
+            {
+                "name": "key?",
+                "type": "string"
+            },
+            {
+                "name": "oldValue?",
+                "type": "string"
+            },
+            {
+                "name": "newValue?",
+                "type": "string"
+            },
+            {
+                "name": "url",
+                "type": "string"
+            },
+            {
+                "name": "storageArea?",
+                "type": "Storage"
+            }
+        ]
+    },
+    {
+        "kind": "interface",
         "name": "IDBObjectStoreParameters",
         "properties": [
             {
@@ -308,5 +336,63 @@
         "interface": "HTMLCanvasElement",
         "name": "toBlob",
         "signatures": ["toBlob(): Blob"]
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "key?",
+        "type": "string"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "oldValue?",
+        "type": "string"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "newValue?",
+        "type": "string"
+    },
+    {
+        "kind": "property",
+        "interface": "StorageEvent",
+        "name": "storageArea?",
+        "type": "Storage"
+    },
+    {
+        "kind": "property",
+        "interface": "IDBObjectStore",
+        "name": "autoIncrement",
+        "type": "boolean"
+    },
+    {
+        "kind": "interface",
+        "name": "HTMLPictureElement",
+        "flavor":  "Web",
+        "extends": "HTMLElement",
+        "constructorSignatures": [
+            "new(): HTMLPictureElement"
+        ],
+        "properties": []
+    },
+    {
+        "kind": "method",
+        "interface": "Document",
+        "name": "createElement",
+        "signatures": ["createElement(tagName: \"picture\"): HTMLPictureElement"]
+    },
+    {
+        "kind": "method",
+        "interface": "Document",
+        "name": "getElementsByTagName",
+        "signatures": ["getElementsByTagName(tagname: \"picture\"): NodeListOf<HTMLPictureElement>"]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "name": "getElementsByTagName",
+        "signatures": ["getElementsByTagName(tagname: \"picture\"): NodeListOf<HTMLPictureElement>"]
     }
 ]
