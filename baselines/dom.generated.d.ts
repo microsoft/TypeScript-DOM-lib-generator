@@ -10768,6 +10768,10 @@ interface URL {
 }
 
 declare var URL: {
+    createObjectURL(object: any, options?: ObjectURLOptions): string;
+    revokeObjectURL(url: string): void;
+    prototype: URL;
+    new (url: string, base?: string): URL;
 }
 
 interface UnviewableContentIdentifiedEvent extends NavigationEventWithReferrer {
@@ -12665,16 +12669,6 @@ interface HTMLPictureElement extends HTMLElement {
 declare var HTMLPictureElement: {
     prototype: HTMLPictureElement;
     new(): HTMLPictureElement;
-}
-
-interface URLConstructor {
-    revokeObjectURL(url: string): void;
-    createObjectURL(object: any, options?: ObjectURLOptions): string;
-}
-
-declare var URLConstructor: {
-    prototype: URLConstructor;
-    new(url: string, base?: string): URL;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;

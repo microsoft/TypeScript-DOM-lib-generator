@@ -462,20 +462,10 @@
         "signatures": ["getElementsByTagName(tagname: \"picture\"): NodeListOf<HTMLPictureElement>"]
     },
     {
-        "kind": "interface",
-        "name": "URLConstructor",
-        "constructorSignatures": [
-            "new(url: string, base?: string): URL"
-        ],
-        "methods": [
-            {
-                "name": "revokeObjectURL",
-                "signatures": ["revokeObjectURL(url: string): void"]
-            },
-            {
-                "name": "createObjectURL",
-                "signatures": ["createObjectURL(object: any, options?: ObjectURLOptions): string"]
-            }
+        "kind": "constructor",
+        "interface": "URL",
+        "signatures": [
+            "new (url: string, base?: string): URL"
         ]
     }
 ]
