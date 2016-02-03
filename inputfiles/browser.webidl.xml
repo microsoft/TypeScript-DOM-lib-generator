@@ -9746,6 +9746,10 @@
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Float32Array" />
         </method>
+        <method name="uniform1fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;GLfloat&gt;" />
+        </method>
         <method name="uniform1i" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="x" type="long" type-original="GLint" />
@@ -9753,6 +9757,10 @@
         <method name="uniform1iv" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Int32Array" />
+        </method>
+        <method name="uniform1iv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;int&gt;" />
         </method>
         <method name="uniform2f" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
@@ -9763,6 +9771,10 @@
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Float32Array" />
         </method>
+        <method name="uniform2fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;GLfloat&gt;" />
+        </method>
         <method name="uniform2i" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="x" type="long" type-original="GLint" />
@@ -9771,6 +9783,10 @@
         <method name="uniform2iv" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Int32Array" />
+        </method>
+        <method name="uniform2iv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;int&gt;" />
         </method>
         <method name="uniform3f" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
@@ -9782,6 +9798,10 @@
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Float32Array" />
         </method>
+        <method name="uniform3fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;GLfloat&gt;" />
+        </method>
         <method name="uniform3i" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="x" type="long" type-original="GLint" />
@@ -9791,6 +9811,10 @@
         <method name="uniform3iv" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Int32Array" />
+        </method>
+        <method name="uniform3iv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;int&gt;" />
         </method>
         <method name="uniform4f" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
@@ -9803,6 +9827,10 @@
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Float32Array" />
         </method>
+        <method name="uniform4fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;GLfloat&gt;" />
+        </method>
         <method name="uniform4i" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="x" type="long" type-original="GLint" />
@@ -9814,7 +9842,21 @@
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="v" type="Int32Array" />
         </method>
+        <method name="uniform4iv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+		  <param name="v" type="sequence&lt;int&gt;" />
+        </method>
         <method name="uniformMatrix2fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+          <param name="transpose" type="boolean" type-original="GLboolean" />
+          <param name="value" type="Float32Array" />
+        </method>
+        <method name="uniformMatrix2fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+          <param name="transpose" type="boolean" type-original="GLboolean" />
+		  <param name="value" type="sequence&lt;GLfloat&gt;" />
+        </method>
+        <method name="uniformMatrix3fv" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="transpose" type="boolean" type-original="GLboolean" />
           <param name="value" type="Float32Array" />
@@ -9822,12 +9864,17 @@
         <method name="uniformMatrix3fv" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="transpose" type="boolean" type-original="GLboolean" />
-          <param name="value" type="Float32Array" />
+		  <param name="value" type="sequence&lt;GLfloat&gt;" />
         </method>
         <method name="uniformMatrix4fv" type="void">
           <param name="location" nullable="1" type="WebGLUniformLocation" />
           <param name="transpose" type="boolean" type-original="GLboolean" />
           <param name="value" type="Float32Array" />
+        </method>
+        <method name="uniformMatrix4fv" type="void">
+          <param name="location" nullable="1" type="WebGLUniformLocation" />
+          <param name="transpose" type="boolean" type-original="GLboolean" />
+		  <param name="value" type="sequence&lt;GLfloat&gt;" />
         </method>
         <method name="useProgram" type="void">
           <param name="program" nullable="1" type="WebGLProgram" />
