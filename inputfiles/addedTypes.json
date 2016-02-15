@@ -404,7 +404,7 @@
     {
         "kind": "interface",
         "name": "parentNode",
-        "flavor":  "DOM",
+        "flavor": "DOM",
         "properties": [
             {
                 "name": "children",
