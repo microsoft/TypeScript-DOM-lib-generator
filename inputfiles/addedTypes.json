@@ -417,6 +417,10 @@
             {
                 "name": "lastElementChild ",
                 "type": "Element"
+            },
+            {
+                "name": "childElementCount",
+                "type": "number"
             }
         ]
     },

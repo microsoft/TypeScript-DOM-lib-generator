@@ -12666,6 +12666,7 @@ interface parentNode {
     children: HTMLCollection;
     firstElementChild : Element;
     lastElementChild : Element;
+    childElementCount: number;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
