@@ -2062,6 +2062,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
       */
     xmlVersion: string;
     currentScript: HTMLScriptElement;
+    parentNode: parentNode;
     adoptNode(source: Node): Node;
     captureEvents(): void;
     clear(): void;
@@ -2677,6 +2678,7 @@ declare var Document: {
 }
 
 interface DocumentFragment extends Node, NodeSelector {
+    parentNode: parentNode;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
@@ -2780,6 +2782,7 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelec
     id: string;
     className: string;
     innerHTML: string;
+    parentNode: parentNode;
     getAttribute(name?: string): string;
     getAttributeNS(namespaceURI: string, localName: string): string;
     getAttributeNode(name: string): Attr;
@@ -12657,6 +12660,12 @@ interface HTMLPictureElement extends HTMLElement {
 declare var HTMLPictureElement: {
     prototype: HTMLPictureElement;
     new(): HTMLPictureElement;
+}
+
+interface parentNode {
+    children: HTMLCollection;
+    firstElementChild : Element;
+    lastElementChild : Element;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;

@@ -400,5 +400,42 @@
         "interface": "Element",
         "name": "getElementsByTagName",
         "signatures": ["getElementsByTagName(tagname: \"picture\"): NodeListOf<HTMLPictureElement>"]
+    },
+    {
+        "kind": "interface",
+        "name": "parentNode",
+        "flavor":  "DOM",
+        "properties": [
+            {
+                "name": "children",
+                "type": "HTMLCollection"
+            },
+            {
+                "name": "firstElementChild ",
+                "type": "Element"
+            },
+            {
+                "name": "lastElementChild ",
+                "type": "Element"
+            }
+        ]
+    },
+    {
+        "kind": "property",
+        "interface": "Element",
+        "name": "parentNode",
+        "type": "parentNode"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "parentNode",
+        "type": "parentNode"
+    },
+    {
+        "kind": "property",
+        "interface": "DocumentFragment",
+        "name": "parentNode",
+        "type": "parentNode"
     }
 ]
