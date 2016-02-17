@@ -2678,7 +2678,6 @@ declare var Document: {
 }
 
 interface DocumentFragment extends Node, NodeSelector {
-    parentNode: parentNode;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
@@ -12662,7 +12661,7 @@ declare var HTMLPictureElement: {
     new(): HTMLPictureElement;
 }
 
-interface parentNode {
+interface ParentNode {
     children: HTMLCollection;
     firstElementChild : Element;
     lastElementChild : Element;

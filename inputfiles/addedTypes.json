@@ -403,7 +403,7 @@
     },
     {
         "kind": "interface",
-        "name": "parentNode",
+        "name": "ParentNode",
         "flavor": "DOM",
         "properties": [
             {
@@ -433,12 +433,6 @@
     {
         "kind": "property",
         "interface": "Document",
-        "name": "parentNode",
-        "type": "parentNode"
-    },
-    {
-        "kind": "property",
-        "interface": "DocumentFragment",
         "name": "parentNode",
         "type": "parentNode"
     }
