@@ -384,5 +384,17 @@
         "kind": "property",
         "name": "ontouchstart",
         "type": "(ev: TouchEvent) => any"
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "openCursor",
+        "signatures": ["openCursor(range?: any, direction?: string): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "openKeyCursor",
+        "signatures": ["openKeyCursor(range?: any, direction?: string): IDBRequest"]
     }
 ]
