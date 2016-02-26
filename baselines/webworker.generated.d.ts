@@ -344,8 +344,8 @@ interface IDBIndex {
     count(key?: any): IDBRequest;
     get(key: any): IDBRequest;
     getKey(key: any): IDBRequest;
-    openCursor(range?: IDBKeyRange, direction?: string): IDBRequest;
-    openKeyCursor(range?: IDBKeyRange, direction?: string): IDBRequest;
+    openCursor(range?: any, direction?: string): IDBRequest;
+    openKeyCursor(range?: any, direction?: string): IDBRequest;
 }
 
 declare var IDBIndex: {
