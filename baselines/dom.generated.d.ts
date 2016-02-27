@@ -10757,10 +10757,25 @@ declare var UIEvent: {
 }
 
 interface URL {
+    hash: number;
+    search: number;
+    pathname: number;
+    port: number;
+    hostname: number;
+    host: number;
+    password: number;
+    username: number;
+    protocol: number;
+    origin: number;
+    href: number;
+}
+
+declare var URL: {
     createObjectURL(object: any, options?: ObjectURLOptions): string;
     revokeObjectURL(url: string): void;
+    prototype: URL;
+    new (url: string, base?: string): URL;
 }
-declare var URL: URL;
 
 interface UnviewableContentIdentifiedEvent extends NavigationEventWithReferrer {
     mediaType: string;
