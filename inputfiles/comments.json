@@ -1862,7 +1862,7 @@
           },
           {
             "name": "files",
-            "comment": "/**\r\n      * Returns a FileList object on a file type input object.\r\n      */"
+            "comment": "/**\r\n      * Returns a FileList object on a file type input object. This is null for all other input objects.\r\n      */"
           },
           {
             "name": "max",
