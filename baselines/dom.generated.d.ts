@@ -5636,9 +5636,9 @@ interface HTMLInputElement extends HTMLElement {
     defaultValue: string;
     disabled: boolean;
     /**
-      * Returns a FileList object on a file type input object.
+      * Returns a FileList object on a file type input object. This is null for all other input objects.
       */
-    files: FileList;
+    files: void;
     /**
       * Retrieves a reference to the form that the object is embedded in. 
       */
@@ -13666,6 +13666,15 @@ interface ClipboardEventInit extends EventInit {
 }
 
 interface IDBArrayKey extends Array<IDBValidKey> {
+}
+
+interface HTMLFileInputElement extends HTMLInputElement {
+    files: FileList;
+}
+
+declare var HTMLFileInputElement: {
+    prototype: HTMLFileInputElement;
+    new(): HTMLFileInputElement;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;

@@ -384,5 +384,20 @@
         "interface": "HTMLTextAreaElement",
         "name": "minLength",
         "type": "number"
+    },
+    {
+        "kind": "interface",
+        "name": "HTMLFileInputElement",
+        "flavor":  "Web",
+        "extends": "HTMLInputElement",
+        "constructorSignatures": [
+            "new(): HTMLFileInputElement"
+        ],
+        "properties": [
+            {
+                "name": "files",
+                "type": "FileList"
+            }
+        ]
     }
 ]
