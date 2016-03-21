@@ -28,32 +28,16 @@
         ]
     },
     {
-        "kind": "interface",
-        "name": "IDBObjectStoreParameters",
-        "properties": [
-            {
-                "name": "keyPath?",
-                "type": "string | string[]"
-            },
-            {
-                "name": "autoIncrement?",
-                "type": "boolean"
-            }
-        ]
+        "kind": "property",
+        "interface": "IDBObjectStoreParameters",
+        "name": "autoIncrement?",
+        "type": "boolean"
     },
     {
-        "kind": "interface",
-        "name": "IDBIndexParameters",
-        "properties": [
-            {
-                "name": "unique?",
-                "type": "boolean"
-            },
-            {
-                "name": "multiEntry?",
-                "type": "boolean"
-            }
-        ]
+        "kind": "property",
+        "interface": "IDBIndexParameters",
+        "name": "multiEntry?",
+        "type": "boolean"
     },
     {
         "kind": "property",
@@ -64,20 +48,9 @@
     {
         "kind": "property",
         "interface": "Window",
+        "exposeGlobally": false,
         "name": "URL",
-        "type": "URL"
-    },
-    {
-        "kind": "property",
-        "interface": "Element",
-        "name": "id",
-        "type": "string"
-    },
-    {
-        "kind": "property",
-        "interface": "Element",
-        "name": "className",
-        "type": "string"
+        "type": "typeof URL"
     },
     {
         "kind": "property",
@@ -300,42 +273,15 @@
     },
     {
         "kind": "property",
-        "interface": "Document",
-        "name": "currentScript",
-        "type": "HTMLScriptElement"
-    },
-    {
-        "kind": "property",
         "interface": "HTMLLinkElement",
         "name": "import?",
         "type": "Document"
-    },
-    {
-        "kind": "interface",
-        "name": "HTMLTemplateElement",
-        "flavor":  "Web",
-        "extends": "HTMLElement",
-        "constructorSignatures": [
-            "new(): HTMLTemplateElement"
-        ],
-        "properties": [
-            {
-                "name": "content",
-                "type": "DocumentFragment"
-            }
-        ]
     },
     {
         "kind": "property",
         "interface": "AudioContext",
         "name": "state",
         "type": "string"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLSelectElement",
-        "name": "selectedOptions",
-        "type": "HTMLCollection"
     },
     {
         "kind": "method",
@@ -400,5 +346,43 @@
         "interface": "Element",
         "name": "getElementsByTagName",
         "signatures": ["getElementsByTagName(tagname: \"picture\"): NodeListOf<HTMLPictureElement>"]
+    },
+    {
+        "kind": "interface",
+        "flavor": "Web",
+        "name": "ClipboardEventInit",
+        "extends": "EventInit",
+        "properties": [
+            {
+                "name": "data?",
+                "type": "string"
+            },
+            {
+                "name": "dataType?",
+                "type": "string"
+            }
+        ]
+    },
+    {
+        "kind": "typedef",
+        "name": "IDBValidKey",
+        "type": "number | string | Date | IDBArrayKey"
+    },
+    {
+        "kind": "interface",
+        "name": "IDBArrayKey",
+        "extends": "Array<IDBValidKey>"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLInputElement",
+        "name": "minLength",
+        "type": "number"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLTextAreaElement",
+        "name": "minLength",
+        "type": "number"
     }
 ]

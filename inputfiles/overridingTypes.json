@@ -384,5 +384,90 @@
         "kind": "property",
         "name": "ontouchstart",
         "type": "(ev: TouchEvent) => any"
+    },
+    {
+        "kind": "property",
+        "name": "keyPath?",
+        "interface": "IDBObjectStoreParameters",
+        "type": "string | string[]"
+    },
+    {
+        "kind": "constructor",
+        "interface": "ClipboardEvent",
+        "signatures": [
+            "new(type: string, eventInitDict?: ClipboardEventInit): ClipboardEvent"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "openCursor",
+        "signatures": ["openCursor(range?: IDBKeyRange | IDBValidKey, direction?: string): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "openKeyCursor",
+        "signatures": ["openKeyCursor(range?: IDBKeyRange | IDBValidKey, direction?: string): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBObjectStore",
+        "name": "openCursor",
+        "signatures": ["openCursor(range?: IDBKeyRange | IDBValidKey, direction?: string): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBObjectStore",
+        "name": "add",
+        "signatures": ["add(value: any, key?: IDBKeyRange | IDBValidKey): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBObjectStore",
+        "name": "count",
+        "signatures": ["count(key?: IDBKeyRange | IDBValidKey): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBObjectStore",
+        "name": "delete",
+        "signatures": ["delete(key: IDBKeyRange | IDBValidKey): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBObjectStore",
+        "name": "put",
+        "signatures": ["put(value: any, key?: IDBKeyRange | IDBValidKey): IDBRequest"]
+    },
+    {
+        "kind": "property",
+        "interface": "IDBCursor",
+        "name": "key",
+        "type": "IDBKeyRange | IDBValidKey"
+    },
+    {
+        "kind": "method",
+        "interface": "IDBCursor",
+        "name": "continue",
+        "signatures": ["continue(key?: IDBKeyRange | IDBValidKey): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "count",
+        "signatures": ["count(key?: IDBKeyRange | IDBValidKey): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "get",
+        "signatures": ["get(key: IDBKeyRange | IDBValidKey): IDBRequest"]
+    },
+    {
+        "kind": "method",
+        "interface": "IDBIndex",
+        "name": "getKey",
+        "signatures": ["getKey(key: IDBKeyRange | IDBValidKey): IDBRequest"]
     }
 ]
