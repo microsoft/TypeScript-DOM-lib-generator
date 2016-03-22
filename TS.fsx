@@ -6,6 +6,7 @@ open Shared
 open Shared.Comments
 open Shared.JsonItems
 open System.IO
+open System.Web
 
 // Global print target
 let Pt = StringPrinter()
@@ -33,6 +34,7 @@ let rec DomTypeToTsType (objDomType: string) =
     | "double" | "float" -> "number"
     | "Function" -> "Function"
     | "long" | "long long" | "signed long" | "signed long long" | "unsigned long" | "unsigned long long" -> "number"
+    | "octet" | "byte" -> "number"
     | "object" -> "any"
     | "Promise" -> "Promise"
     | "ReadyState" -> "string"
@@ -49,22 +51,26 @@ let rec DomTypeToTsType (objDomType: string) =
                 allCallbackFuncs.ContainsKey objDomType ||
                 allDictionariesMap.ContainsKey objDomType then
                 objDomType
+            // Name of a type alias. Just return itself
+            elif typeDefSet.Contains objDomType then objDomType
             // Enum types are all treated as string
             elif allEnumsMap.ContainsKey objDomType then "string"
             // Union types
-            elif (objDomType.Contains(" or ")) then
+            elif objDomType.Contains(" or ") then
                 let allTypes = objDomType.Trim('(', ')').Split([|" or "|], StringSplitOptions.None)
-                                |> Array.map DomTypeToTsType
+                                |> Array.map (fun t -> DomTypeToTsType (t.Trim('?', ' ')))
                 if Seq.contains "any" allTypes then "any" else String.concat " | " allTypes
             else
                 // Check if is array type, which looks like "sequence<DOMString>"
-                let genericMatch = Regex.Match(objDomType, @"^(\w+)<(\w+)>$")
+                let unescaped = System.Web.HttpUtility.HtmlDecode(objDomType)
+                let genericMatch = Regex.Match(unescaped, @"^(\w+)<(\w+)>$")
                 if genericMatch.Success then
                     let tName = DomTypeToTsType (genericMatch.Groups.[1].Value)
+                    let paramName = DomTypeToTsType (genericMatch.Groups.[2].Value)
                     match tName with
-                    | "Promise" -> "any"
+                    | "Promise" -> 
+                        "PromiseLike<" + paramName + ">"
                     | _ ->
-                        let paramName = DomTypeToTsType (genericMatch.Groups.[2].Value)
                         if tName = "Array" then paramName + "[]"
                         else tName + "<" + paramName + ">"
                 elif objDomType.EndsWith("[]") then
@@ -375,8 +381,15 @@ let EmitNamedConstructors () =
 
 let EmitInterfaceDeclaration (i:Browser.Interface) =
     Pt.printl "interface %s" i.Name
-    match i.Extends::(List.ofArray i.Implements) with
-    | [""] | [] | ["Object"] -> ()
+    let extendsFromSpec =
+        match i.Extends::(List.ofArray i.Implements) with
+        | [""] | [] | ["Object"] -> []
+        | specExtends -> specExtends
+    let extendsFromJson =
+        JsonItems.getAddedItemsByInterfaceName ItemKind.Extends Flavor.All i.Name
+        |> Array.map (fun e -> e.BaseInterface.Value) |> List.ofArray
+    match List.concat [extendsFromSpec; extendsFromJson] with
+    | [] -> ()
     | allExtends -> Pt.print " extends %s" (String.Join(", ", allExtends))
     Pt.print " {"
 
@@ -605,6 +618,18 @@ let EmitAddedInterface (ai: JsonItems.ItemsType.Root) =
         Pt.printl "}"
         Pt.printl ""
 
+let EmitTypeDefs flavor =
+    let EmitTypeDef (typeDef: Browser.Typedef) =
+        Pt.printl "type %s = %s;" typeDef.NewType (DomTypeToTsType typeDef.Type)
+    let EmitTypeDefFromJson (typeDef: ItemsType.Root) =
+        Pt.printl "type %s = %s;" typeDef.Name.Value typeDef.Type.Value
+
+    if flavor <> Flavor.Worker then
+        browser.Typedefs |> Array.iter EmitTypeDef
+
+    JsonItems.getAddedItems ItemKind.TypeDef flavor
+    |> Array.iter EmitTypeDefFromJson
+
 let EmitTheWholeThing flavor (target:TextWriter) =
     Pt.reset()
     Pt.printl "/////////////////////////////"
@@ -634,6 +659,8 @@ let EmitTheWholeThing flavor (target:TextWriter) =
         EmitAllMembers flavor gp
         EmitEventHandlers "declare var " gp
     | _ -> ()
+
+    EmitTypeDefs flavor
 
     fprintf target "%s" (Pt.getResult())
     target.Flush()

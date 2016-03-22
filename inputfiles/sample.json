@@ -325,5 +325,15 @@
         "name": "createElementNS",
         "interface": "Document",
         "signatures": [ "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"a\"): SVGAElement" ]
+    },
+    {
+        "kind": "typedef",
+        "name": "IDBValidKey",
+        "type": "number | string | Date | IDBArrayKey"
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "ParentNode",
+        "interface": "Document"
     }
 ]

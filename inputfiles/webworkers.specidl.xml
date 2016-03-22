@@ -1,7 +1,7 @@
 <webidl-xml name="Web Workers" original-file="webworkers.specidl" xmlns="http://schemas.microsoft.com/ie/webidl-xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
   <interfaces>
-    <interface extends="Object" name="FileReaderSync">
-      <constructor />
+    <interface name="FileReaderSync" extends="Object">
+      <constructor></constructor>
       <methods>
         <method name="readAsArrayBuffer" type="any">
           <param name="blob" type="Blob" />
@@ -18,7 +18,7 @@
         </method>
       </methods>
     </interface>
-    <interface extends="EventTarget" global="Worker" name="WorkerGlobalScope">
+    <interface name="WorkerGlobalScope" extends="EventTarget" global="Worker">
       <implements>WorkerUtils</implements>
       <implements>DedicatedWorkerGlobalScope</implements>
       <implements>WindowConsole</implements>
@@ -31,11 +31,11 @@
       </methods>
       <properties>
         <property name="location" property-descriptor-not-configurable="1" read-only="1" type="WorkerLocation" />
-        <property event-handler="error" name="onerror" type="EventHandler" />
+        <property name="onerror" event-handler="error" type="EventHandler" />
         <property name="self" property-descriptor-not-configurable="1" read-only="1" type="WorkerGlobalScope" />
       </properties>
     </interface>
-    <interface extends="Object" name="WorkerLocation">
+    <interface name="WorkerLocation" extends="Object">
       <methods>
         <method name="toString" stringifier="1" type="DOMString" />
       </methods>
@@ -50,23 +50,23 @@
         <property name="search" read-only="1" type="DOMString" />
       </properties>
     </interface>
-    <interface extends="Object" name="WorkerNavigator">
+    <interface name="WorkerNavigator" extends="Object">
       <implements>NavigatorID</implements>
       <implements>NavigatorOnLine</implements>
     </interface>
   </interfaces>
   <mixin-interfaces>
-    <interface extends="Object" name="DedicatedWorkerGlobalScope" no-interface-object="1">
+    <interface name="DedicatedWorkerGlobalScope" extends="Object" no-interface-object="1">
       <methods>
         <method name="postMessage" type="void">
           <param name="data" type="any" />
         </method>
       </methods>
       <properties>
-        <property event-handler="message" name="onmessage" type="EventHandler" />
+        <property name="onmessage" event-handler="message" type="EventHandler" />
       </properties>
     </interface>
-    <interface extends="Object" name="WorkerUtils" no-interface-object="1">
+    <interface name="WorkerUtils" extends="Object" no-interface-object="1">
       <implements>WindowBase64</implements>
       <methods>
         <method name="clearImmediate" type="void">
