@@ -2284,7 +2284,7 @@ declare var DeviceRotationRate: {
     new(): DeviceRotationRate;
 }
 
-interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEvent {
+interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEvent, ParentNode {
     /**
       * Sets or gets the URL for the current document. 
       */
@@ -3415,7 +3415,7 @@ declare var EXT_texture_filter_anisotropic: {
     TEXTURE_MAX_ANISOTROPY_EXT: number;
 }
 
-interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelector, ChildNode {
+interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelector, ChildNode, ParentNode {
     classList: DOMTokenList;
     className: string;
     clientHeight: number;
@@ -13674,6 +13674,13 @@ interface ClipboardEventInit extends EventInit {
 }
 
 interface IDBArrayKey extends Array<IDBValidKey> {
+}
+
+interface ParentNode {
+    children: HTMLCollection;
+    firstElementChild : Element;
+    lastElementChild : Element;
+    childElementCount: number;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;

@@ -421,5 +421,40 @@
         "interface": "IDBDatabase",
         "name": "addEventListener",
         "signatures": ["addEventListener(type: \"versionchange\", listener: (ev: IDBVersionChangeEvent) => any, useCapture?: boolean): void"]
+
+    },
+    {
+        "kind": "interface", 
+        "name": "ParentNode",
+        "flavor": "DOM",
+        "properties": [
+            {
+                "name": "children",
+                "type": "HTMLCollection"
+            },
+            {
+                "name": "firstElementChild ",
+                "type": "Element"
+            },
+            {
+                "name": "lastElementChild ",
+                "type": "Element"
+            },
+            {
+                "name": "childElementCount",
+                "type": "number",
+                "kind": "property"
+            }
+        ]
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "ParentNode",
+        "interface": "Element"
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "ParentNode",
+        "interface": "Document"
     }
 ]
