@@ -1,6 +1,12 @@
  [
     {
         "kind": "method",
+        "interface": "HTMLCollection",
+        "name": "item",
+        "signatures": ["item(index: number): Element"]
+    },
+    {
+        "kind": "method",
         "interface": "IDBObjectStore",
         "name": "createIndex",
         "signatures": ["createIndex(name: string, keyPath: string | string[], optionalParameters?: IDBIndexParameters): IDBIndex"]
@@ -82,6 +88,18 @@
     },
     {
         "kind": "method",
+        "interface": "Document",
+        "name": "msElementsFromRect",
+        "signatures": ["msElementsFromRect(left: number, top: number, width: number, height: number): NodeListOf<Element>"]
+    },
+    {
+        "kind": "method",
+        "interface": "Document",
+        "name": "msElementsFromPoint",
+        "signatures": ["msElementsFromPoint(x: number, y: number): NodeListOf<Element>"]
+    },
+    {
+        "kind": "method",
         "interface": "NodeSelector",
         "name": "querySelectorAll",
         "signatures": ["querySelectorAll(selectors: string): NodeListOf<Element>"]
@@ -102,6 +120,54 @@
         "signatures": [
             "getElementsByName(elementName: string): NodeListOf<Element>"
         ]
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "anchors",
+        "type": "HTMLCollectionOf<HTMLAnchorElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "applets",
+        "type": "HTMLCollectionOf<HTMLAppletElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "embeds",
+        "type": "HTMLCollectionOf<HTMLEmbedElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "forms",
+        "type": "HTMLCollectionOf<HTMLFormElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "images",
+        "type": "HTMLCollectionOf<HTMLImageElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "links",
+        "type": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "plugins",
+        "type": "HTMLCollectionOf<HTMLEmbedElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "scripts",
+        "type": "HTMLCollectionOf<HTMLScriptElement>"
     },
     {
         "kind": "property",
@@ -143,6 +209,18 @@
         "interface": "SVGElement",
         "name": "className",
         "type": "any"
+    },
+    {
+        "kind": "method",
+        "interface": "SVGSVGElement",
+        "name": "getEnclosureList",
+        "signatures": ["getEnclosureList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"]
+    },
+    {
+        "kind": "method",
+        "interface": "SVGSVGElement",
+        "name": "getIntersectionList",
+        "signatures": ["getIntersectionList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"]
     },
     {
         "kind": "property",
@@ -228,7 +306,19 @@
         "kind": "property",
         "interface": "HTMLSelectElement",
         "name": "options",
-        "type": "HTMLCollection"
+        "type": "HTMLCollectionOf<HTMLOptionElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLSelectElement",
+        "name": "selectedOptions",
+        "type": "HTMLCollectionOf<HTMLOptionElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLDataListElement",
+        "name": "options",
+        "type": "HTMLCollectionOf<HTMLOptionElement>"
     },
     {
         "kind": "property",
@@ -267,16 +357,40 @@
         "signatures": ["createCaption(): HTMLTableCaptionElement"]
     },
     {
+        "kind": "property",
+        "interface": "HTMLTableElement",
+        "name": "rows",
+        "type": "HTMLCollectionOf<HTMLTableRowElement>"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLTableElement",
+        "name": "tBodies",
+        "type": "HTMLCollectionOf<HTMLTableSectionElement>"
+    },
+    {
         "kind": "method",
         "interface": "HTMLTableSectionElement",
         "name": "insertRow",
         "signatures": ["insertRow(index?: number): HTMLTableRowElement"]
     },
     {
+        "kind": "property",
+        "interface": "HTMLTableSectionElement",
+        "name": "rows",
+        "type": "HTMLCollectionOf<HTMLTableRowElement>"
+    },
+    {
         "kind": "method",
         "interface": "HTMLTableRowElement",
         "name": "insertCell",
-        "signatures": ["insertCell(index?: number): HTMLTableCellElement"]
+        "signatures": ["insertCell(index?: number): HTMLTableDataCellElement"]
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLTableRowElement",
+        "name": "cells",
+        "type": "HTMLCollectionOf<HTMLTableDataCellElement | HTMLTableHeaderCellElement>"
     },
     {
         "kind": "method",
@@ -475,5 +589,95 @@
         "interface": "Storage",
         "name": "getItem",
         "signatures": ["getItem(key: string): string"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform1fv",
+        "signatures": ["uniform1fv(location: WebGLUniformLocation, v: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform2fv",
+        "signatures": ["uniform2fv(location: WebGLUniformLocation, v: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform3fv",
+        "signatures": ["uniform3fv(location: WebGLUniformLocation, v: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform4fv",
+        "signatures": ["uniform4fv(location: WebGLUniformLocation, v: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform1iv",
+        "signatures": ["uniform1iv(location: WebGLUniformLocation, v: Int32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform2iv",
+        "signatures": ["uniform2iv(location: WebGLUniformLocation, v: Int32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform3iv",
+        "signatures": ["uniform3iv(location: WebGLUniformLocation, v: Int32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniform4iv",
+        "signatures": ["uniform4iv(location: WebGLUniformLocation, v: Int32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniformMatrix2fv",
+        "signatures": ["uniformMatrix2fv(location: WebGLUniformLocation, transpose: boolean, value: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniformMatrix3fv",
+        "signatures": ["uniformMatrix3fv(location: WebGLUniformLocation, transpose: boolean, value: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "uniformMatrix4fv",
+        "signatures": ["uniformMatrix4fv(location: WebGLUniformLocation, transpose: boolean, value: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "vertexAttrib1fv",
+        "signatures": ["vertexAttrib1fv(indx: number, values: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "vertexAttrib2fv",
+        "signatures": ["vertexAttrib2fv(indx: number, values: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "vertexAttrib3fv",
+        "signatures": ["vertexAttrib3fv(indx: number, values: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "WebGLRenderingContext",
+        "name": "vertexAttrib4fv",
+        "signatures": ["vertexAttrib4fv(indx: number, values: Float32Array | number[]): void"]
     }
 ]

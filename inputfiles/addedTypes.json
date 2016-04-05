@@ -89,6 +89,29 @@
     },
     {
         "kind": "interface",
+        "name": "HTMLCollectionOf<T extends Element>",
+        "flavor": "Web",
+        "extends": "HTMLCollection",
+        "methods": [
+            {
+                "name": "item",
+                "signatures": ["item(index: number): T"]
+            },
+            {
+                "name": "namedItem",
+                "signatures": ["namedItem(name: string): T"]
+            }
+        ],
+        "indexer": [
+            {
+                "signatures": [
+                    "[index: number]: T"
+                ]
+            }
+        ]
+    },
+    {
+        "kind": "interface",
         "name": "BlobPropertyBag",
         "properties": [
             {
@@ -188,7 +211,9 @@
     {
         "kind": "indexer",
         "interface": "HTMLCollection",
-        "signatures": ["[index: number]: Element"]
+        "signatures": [
+            "[index: number]: Element"
+        ]
     },
     {
         "kind": "signatureoverload",
