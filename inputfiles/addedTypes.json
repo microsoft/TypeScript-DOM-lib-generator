@@ -430,18 +430,22 @@
         "properties": [
             {
                 "name": "children",
+                "readonly": true,
                 "type": "HTMLCollection"
             },
             {
                 "name": "firstElementChild ",
+                "readonly": true,
                 "type": "Element"
             },
             {
                 "name": "lastElementChild ",
+                "readonly": true,
                 "type": "Element"
             },
             {
                 "name": "childElementCount",
+                "readonly": true,
                 "type": "number",
                 "kind": "property"
             }
