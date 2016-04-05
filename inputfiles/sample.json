@@ -16,6 +16,7 @@
         "kind": "property",
         "interface": "Element",
         "name": "className",
+        "readonly": true,
         "type": "string"
     },
     {

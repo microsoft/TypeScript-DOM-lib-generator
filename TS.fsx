@@ -79,13 +79,13 @@ let rec DomTypeToTsType (objDomType: string) =
                 else "any"
 
 let EmitConstants (i: Browser.Interface) =
-    let emitConstantFromJson (c: ItemsType.Root) = Pt.printl "%s: %s;" c.Name.Value c.Type.Value
+    let emitConstantFromJson (c: ItemsType.Root) = Pt.printl "readonly %s: %s;" c.Name.Value c.Type.Value
 
     let emitConstant (c: Browser.Constant) =
         if Option.isNone (findRemovedItem c.Name ItemKind.Constant i.Name) then
             match findOverriddenItem c.Name ItemKind.Constant i.Name with
             | Some c' -> emitConstantFromJson c'
-            | None -> Pt.printl "%s: %s;" c.Name (DomTypeToTsType c.Type)
+            | None -> Pt.printl "readonly %s: %s;" c.Name (DomTypeToTsType c.Type)
 
     // Emit the constants added in the json files
 
@@ -212,7 +212,11 @@ let EmitEnums () =
 
 let EmitProperties flavor prefix (emitScope: EmitScope) (i: Browser.Interface)=
     let emitPropertyFromJson (p: ItemsType.Root) =
-        Pt.printl "%s%s: %s;" prefix p.Name.Value p.Type.Value
+        let readOnlyModifier =
+            match p.Readonly with
+            | Some(true) -> "readonly "
+            | _ -> ""
+        Pt.printl "%s%s%s: %s;" prefix readOnlyModifier p.Name.Value p.Type.Value
 
     let emitProperty (p: Browser.Property) =
         match GetCommentForProperty i.Name p.Name with
@@ -227,7 +231,8 @@ let EmitProperties flavor prefix (emitScope: EmitScope) (i: Browser.Interface)=
                     match p.Type with
                     | "EventHandler" -> String.Format("(ev: {0}) => any", ehNameToEType.[p.Name])
                     | _ -> DomTypeToTsType p.Type
-                Pt.printl "%s%s: %s;" prefix p.Name pType
+                let readOnlyModifier = if p.ReadOnly.IsSome && prefix = "" then "readonly " else ""
+                Pt.printl "%s%s%s: %s;" prefix readOnlyModifier p.Name pType
 
     // Note: the schema file shows the property doesn't have "static" attribute,
     // therefore all properties are emited for the instance type.
