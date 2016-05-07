@@ -28,6 +28,29 @@
         ]
     },
     {
+        "kind": "interface",
+        "name": "Canvas2DContextAttributes",
+        "flavor": "Web",
+        "properties": [
+            {
+                "name": "alpha?",
+                "type": "boolean"
+            },
+            {
+                "name": "willReadFrequently?",
+                "type": "boolean"
+            },
+            {
+                "name": "storage?",
+                "type": "boolean"
+            },
+            {
+                "name": "[attribute: string]",
+                "type": "boolean | string"
+            }
+        ]
+    },
+    {
         "kind": "property",
         "interface": "IDBObjectStoreParameters",
         "name": "autoIncrement?",
@@ -411,6 +434,12 @@
         "kind": "property",
         "interface": "CanvasRenderingContext2D",
         "name": "oImageSmoothingEnabled",
+        "type": "boolean"
+    },
+    {
+        "kind": "property",
+        "interface": "WebGLContextAttributes",
+        "name": "failIfMajorPerformanceCaveat?",
         "type": "boolean"
     }
 ]
