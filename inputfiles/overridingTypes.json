@@ -694,5 +694,142 @@
         "kind": "extends",
         "baseInterface": "HTMLCollectionOf<HTMLOptionElement>",
         "interface": "HTMLOptionsCollection"
+    },
+    {
+        "kind": "property",
+        "interface": "ApplicationCache",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "Document",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLBodyElement",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLElement",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLFrameSetElement",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "IDBDatabase",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "IDBRequest",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "IDBTransaction",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "MSAppAsyncOperation",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "MSWebViewAsyncOperation",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "RTCDtlsTransport",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "RTCIceGatherer",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "RTCRtpReceiver",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "RTCRtpSender",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "RTCSrtpSdesTransport",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "SVGSVGElement",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "TextTrack",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "WebSocket",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "Window",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "AbstractWorker",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "MSBaseReader",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
+    },
+    {
+        "kind": "property",
+        "name": "onerror",
+        "type": "(ev: ErrorEvent) => any"
     }
 ]
