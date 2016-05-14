@@ -323,7 +323,7 @@ interface IDBDatabase extends EventTarget {
     readonly name: string;
     readonly objectStoreNames: DOMStringList;
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     version: number;
     onversionchange: (ev: IDBVersionChangeEvent) => any;
     close(): void;
@@ -426,7 +426,7 @@ declare var IDBOpenDBRequest: {
 
 interface IDBRequest extends EventTarget {
     readonly error: DOMError;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onsuccess: (ev: Event) => any;
     readonly readyState: string;
     readonly result: any;
@@ -448,7 +448,7 @@ interface IDBTransaction extends EventTarget {
     readonly mode: string;
     onabort: (ev: Event) => any;
     oncomplete: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     abort(): void;
     objectStore(name: string): IDBObjectStore;
     readonly READ_ONLY: string;
@@ -516,7 +516,7 @@ declare var MSApp: MSApp;
 interface MSAppAsyncOperation extends EventTarget {
     readonly error: DOMError;
     oncomplete: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     readonly readyState: number;
     readonly result: any;
     start(): void;
@@ -665,7 +665,7 @@ interface WebSocket extends EventTarget {
     readonly bufferedAmount: number;
     readonly extensions: string;
     onclose: (ev: CloseEvent) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onmessage: (ev: MessageEvent) => any;
     onopen: (ev: Event) => any;
     readonly protocol: string;
@@ -766,14 +766,14 @@ declare var XMLHttpRequestUpload: {
 }
 
 interface AbstractWorker {
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
 interface MSBaseReader {
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onload: (ev: Event) => any;
     onloadend: (ev: ProgressEvent) => any;
     onloadstart: (ev: Event) => any;
@@ -819,7 +819,7 @@ interface WindowConsole {
 
 interface XMLHttpRequestEventTarget {
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onload: (ev: Event) => any;
     onloadend: (ev: ProgressEvent) => any;
     onloadstart: (ev: Event) => any;
@@ -849,7 +849,7 @@ declare var FileReaderSync: {
 
 interface WorkerGlobalScope extends EventTarget, WorkerUtils, DedicatedWorkerGlobalScope, WindowConsole {
     readonly location: WorkerLocation;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     readonly self: WorkerGlobalScope;
     close(): void;
     msWriteProfilerMark(profilerMarkName: string): void;
@@ -975,7 +975,7 @@ interface FunctionStringCallback {
     (data: string): void;
 }
 declare var location: WorkerLocation;
-declare var onerror: (ev: Event) => any;
+declare var onerror: (ev: ErrorEvent) => any;
 declare var self: WorkerGlobalScope;
 declare function close(): void;
 declare function msWriteProfilerMark(profilerMarkName: string): void;

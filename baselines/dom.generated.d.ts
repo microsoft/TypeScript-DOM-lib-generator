@@ -919,7 +919,7 @@ interface ApplicationCache extends EventTarget {
     oncached: (ev: Event) => any;
     onchecking: (ev: Event) => any;
     ondownloading: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onnoupdate: (ev: Event) => any;
     onobsolete: (ev: Event) => any;
     onprogress: (ev: ProgressEvent) => any;
@@ -2512,7 +2512,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
       * Fires when an error occurs during object loading.
       * @param ev The event.
       */
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     /**
       * Fires when the object receives focus. 
       * @param ev The event.
@@ -4203,7 +4203,7 @@ interface HTMLBodyElement extends HTMLElement {
     onbeforeprint: (ev: Event) => any;
     onbeforeunload: (ev: BeforeUnloadEvent) => any;
     onblur: (ev: FocusEvent) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onfocus: (ev: FocusEvent) => any;
     onhashchange: (ev: HashChangeEvent) => any;
     onload: (ev: Event) => any;
@@ -4570,7 +4570,7 @@ interface HTMLElement extends Element {
     ondurationchange: (ev: Event) => any;
     onemptied: (ev: Event) => any;
     onended: (ev: MediaStreamErrorEvent) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onfocus: (ev: FocusEvent) => any;
     oninput: (ev: Event) => any;
     oninvalid: (ev: Event) => any;
@@ -5120,7 +5120,7 @@ interface HTMLFrameSetElement extends HTMLElement {
       * Fires when the object loses the input focus.
       */
     onblur: (ev: FocusEvent) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     /**
       * Fires when the object receives focus.
       */
@@ -7574,7 +7574,7 @@ interface IDBDatabase extends EventTarget {
     readonly name: string;
     readonly objectStoreNames: DOMStringList;
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     version: number;
     onversionchange: (ev: IDBVersionChangeEvent) => any;
     close(): void;
@@ -7677,7 +7677,7 @@ declare var IDBOpenDBRequest: {
 
 interface IDBRequest extends EventTarget {
     readonly error: DOMError;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onsuccess: (ev: Event) => any;
     readonly readyState: string;
     readonly result: any;
@@ -7699,7 +7699,7 @@ interface IDBTransaction extends EventTarget {
     readonly mode: string;
     onabort: (ev: Event) => any;
     oncomplete: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     abort(): void;
     objectStore(name: string): IDBObjectStore;
     readonly READ_ONLY: string;
@@ -7842,7 +7842,7 @@ declare var MSApp: MSApp;
 interface MSAppAsyncOperation extends EventTarget {
     readonly error: DOMError;
     oncomplete: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     readonly readyState: number;
     readonly result: any;
     start(): void;
@@ -8202,7 +8202,7 @@ declare var MSStreamReader: {
 interface MSWebViewAsyncOperation extends EventTarget {
     readonly error: DOMError;
     oncomplete: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     readonly readyState: number;
     readonly result: any;
     readonly target: MSHTMLWebViewElement;
@@ -9283,7 +9283,7 @@ declare var RTCDTMFToneChangeEvent: {
 
 interface RTCDtlsTransport extends RTCStatsProvider {
     ondtlsstatechange: ((ev: RTCDtlsTransportStateChangedEvent) => any) | null;
-    onerror: ((ev: Event) => any) | null;
+    onerror: (ev: ErrorEvent) => any;
     readonly state: string;
     readonly transport: RTCIceTransport;
     getLocalParameters(): RTCDtlsParameters;
@@ -9338,7 +9338,7 @@ declare var RTCIceCandidatePairChangedEvent: {
 
 interface RTCIceGatherer extends RTCStatsProvider {
     readonly component: string;
-    onerror: ((ev: Event) => any) | null;
+    onerror: (ev: ErrorEvent) => any;
     onlocalcandidate: ((ev: RTCIceGathererEvent) => any) | null;
     createAssociatedGatherer(): RTCIceGatherer;
     getLocalCandidates(): RTCIceCandidate[];
@@ -9397,7 +9397,7 @@ declare var RTCIceTransportStateChangedEvent: {
 }
 
 interface RTCRtpReceiver extends RTCStatsProvider {
-    onerror: ((ev: Event) => any) | null;
+    onerror: (ev: ErrorEvent) => any;
     readonly rtcpTransport: RTCDtlsTransport;
     readonly track: MediaStreamTrack | null;
     readonly transport: RTCDtlsTransport | RTCSrtpSdesTransport;
@@ -9417,7 +9417,7 @@ declare var RTCRtpReceiver: {
 }
 
 interface RTCRtpSender extends RTCStatsProvider {
-    onerror: ((ev: Event) => any) | null;
+    onerror: (ev: ErrorEvent) => any;
     onssrcconflict: ((ev: RTCSsrcConflictEvent) => any) | null;
     readonly rtcpTransport: RTCDtlsTransport;
     readonly track: MediaStreamTrack;
@@ -9438,7 +9438,7 @@ declare var RTCRtpSender: {
 }
 
 interface RTCSrtpSdesTransport extends EventTarget {
-    onerror: ((ev: Event) => any) | null;
+    onerror: (ev: ErrorEvent) => any;
     readonly transport: RTCIceTransport;
     addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
@@ -10926,7 +10926,7 @@ interface SVGSVGElement extends SVGElement, DocumentEvent, SVGLocatable, SVGTest
     readonly currentTranslate: SVGPoint;
     readonly height: SVGAnimatedLength;
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onresize: (ev: UIEvent) => any;
     onscroll: (ev: UIEvent) => any;
     onunload: (ev: Event) => any;
@@ -11557,7 +11557,7 @@ interface TextTrack extends EventTarget {
     readonly language: string;
     mode: any;
     oncuechange: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onload: (ev: Event) => any;
     readonly readyState: number;
     addCue(cue: TextTrackCue): void;
@@ -12780,7 +12780,7 @@ interface WebSocket extends EventTarget {
     readonly bufferedAmount: number;
     readonly extensions: string;
     onclose: (ev: CloseEvent) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onmessage: (ev: MessageEvent) => any;
     onopen: (ev: Event) => any;
     readonly protocol: string;
@@ -12880,7 +12880,7 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     ondurationchange: (ev: Event) => any;
     onemptied: (ev: Event) => any;
     onended: (ev: MediaStreamErrorEvent) => any;
-    onerror: ErrorEventHandler;
+    onerror: (ev: ErrorEvent) => any;
     onfocus: (ev: FocusEvent) => any;
     onhashchange: (ev: HashChangeEvent) => any;
     oninput: (ev: Event) => any;
@@ -13277,7 +13277,7 @@ declare var XSLTProcessor: {
 }
 
 interface AbstractWorker {
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
@@ -13436,7 +13436,7 @@ interface LinkStyle {
 
 interface MSBaseReader {
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onload: (ev: Event) => any;
     onloadend: (ev: ProgressEvent) => any;
     onloadstart: (ev: Event) => any;
@@ -13600,7 +13600,7 @@ interface WindowTimersExtension {
 
 interface XMLHttpRequestEventTarget {
     onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
+    onerror: (ev: ErrorEvent) => any;
     onload: (ev: Event) => any;
     onloadend: (ev: ProgressEvent) => any;
     onloadstart: (ev: Event) => any;
@@ -13771,7 +13771,7 @@ declare var ondrop: (ev: DragEvent) => any;
 declare var ondurationchange: (ev: Event) => any;
 declare var onemptied: (ev: Event) => any;
 declare var onended: (ev: MediaStreamErrorEvent) => any;
-declare var onerror: ErrorEventHandler;
+declare var onerror: (ev: ErrorEvent) => any;
 declare var onfocus: (ev: FocusEvent) => any;
 declare var onhashchange: (ev: HashChangeEvent) => any;
 declare var oninput: (ev: Event) => any;
