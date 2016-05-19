@@ -792,5 +792,78 @@
             "setTimeout(handler: any, timeout?: any, ...args: any[]): number",
             "setTimeout(handler: (...args: any[]) => void, timeout: number): number"
         ]
-     }
- ]
+     },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequest",
+        "name": "onreadystatechange",
+        "type": "(ev: Event) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "onabort",
+        "type": "(ev: ProgressEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "onerror",
+        "type": "(ev: ProgressEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "ontimeout",
+        "type": "(ev: ProgressEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "onloadstart",
+        "type": "(ev: ProgressEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "onload",
+        "type": "(ev: ProgressEvent) => any"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "onloadend",
+        "type": "(ev: ProgressEvent) => any"
+    },
+    {
+        "kind": "method",
+        "interface": "XMLHttpRequest",
+        "name": "addEventListener",
+        "signatures": [
+            "addEventListener(type: \"readystatechange\", listener: (ev: Event) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"loadstart\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"progress\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"abort\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"error\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"load\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"timeout\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"loadend\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "XMLHttpRequestEventTarget",
+        "name": "addEventListener",
+        "signatures": [
+            "addEventListener(type: \"loadstart\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"progress\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"abort\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"error\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"load\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"timeout\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: \"loadend\", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void",
+            "addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void"
+        ]
+    }
+]

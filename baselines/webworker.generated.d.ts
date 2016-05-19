@@ -709,7 +709,7 @@ declare var Worker: {
 
 interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {
     msCaching: string;
-    onreadystatechange: (ev: ProgressEvent) => any;
+    onreadystatechange: (ev: Event) => any;
     readonly readyState: number;
     readonly response: any;
     readonly responseText: string;
@@ -734,14 +734,14 @@ interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {
     readonly LOADING: number;
     readonly OPENED: number;
     readonly UNSENT: number;
-    addEventListener(type: "abort", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "load", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadend", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadstart", listener: (ev: Event) => any, useCapture?: boolean): void;
+    addEventListener(type: "readystatechange", listener: (ev: Event) => any, useCapture?: boolean): void;
+    addEventListener(type: "loadstart", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "progress", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "readystatechange", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "abort", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "error", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "load", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "timeout", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "loadend", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
@@ -772,11 +772,11 @@ interface AbstractWorker {
 }
 
 interface MSBaseReader {
-    onabort: (ev: Event) => any;
-    onerror: (ev: Event) => any;
-    onload: (ev: Event) => any;
+    onabort: (ev: ProgressEvent) => any;
+    onerror: (ev: ProgressEvent) => any;
+    onload: (ev: ProgressEvent) => any;
     onloadend: (ev: ProgressEvent) => any;
-    onloadstart: (ev: Event) => any;
+    onloadstart: (ev: ProgressEvent) => any;
     onprogress: (ev: ProgressEvent) => any;
     readonly readyState: number;
     readonly result: any;
@@ -784,11 +784,11 @@ interface MSBaseReader {
     readonly DONE: number;
     readonly EMPTY: number;
     readonly LOADING: number;
-    addEventListener(type: "abort", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "load", listener: (ev: Event) => any, useCapture?: boolean): void;
+    addEventListener(type: "abort", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "error", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "load", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "loadend", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadstart", listener: (ev: Event) => any, useCapture?: boolean): void;
+    addEventListener(type: "loadstart", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "progress", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
@@ -825,13 +825,13 @@ interface XMLHttpRequestEventTarget {
     onloadstart: (ev: Event) => any;
     onprogress: (ev: ProgressEvent) => any;
     ontimeout: (ev: ProgressEvent) => any;
+    addEventListener(type: "loadstart", listener: (ev: Event) => any, useCapture?: boolean): void;
+    addEventListener(type: "progress", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "abort", listener: (ev: Event) => any, useCapture?: boolean): void;
     addEventListener(type: "error", listener: (ev: ErrorEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "load", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadend", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "loadstart", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "progress", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "timeout", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
+    addEventListener(type: "loadend", listener: (ev: ProgressEvent) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
