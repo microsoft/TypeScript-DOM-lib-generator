@@ -941,5 +941,12 @@
                 "type": "string"
             }
         ]
+    },
+    {
+        "kind": "property",
+        "interface": "Window",
+        "exposeGlobally": false,
+        "name": "Blob",
+        "type": "{ prototype: Blob; new (blobParts?: any[], options?: BlobPropertyBag): Blob; }"
     }
 ]
