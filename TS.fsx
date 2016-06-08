@@ -33,6 +33,7 @@ let rec DomTypeToTsType (objDomType: string) =
     | "EventListener" -> "EventListenerOrEventListenerObject"
     | "double" | "float" -> "number"
     | "Function" -> "Function"
+    | "GLfloat" | "GLint" -> "number"
     | "long" | "long long" | "signed long" | "signed long long" | "unsigned long" | "unsigned long long" -> "number"
     | "octet" | "byte" -> "number"
     | "object" -> "any"
