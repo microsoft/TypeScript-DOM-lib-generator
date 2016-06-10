@@ -954,5 +954,299 @@
         "name": "msCaching?",
         "interface": "XMLHttpRequest",
         "type": "string"
+    },
+    {
+        "kind": "interface",
+        "name": "Body",
+        "constructorSignatures": [
+            "new(): Body"
+        ],
+        "properties": [
+            {
+                "name": "bodyUsed",
+                "type": "boolean"
+            }
+        ],
+        "methods": [
+            {
+                "name": "blob",
+                "signatures": [
+                    "blob(): PromiseLike<Blob>"
+                ]
+            },
+            {
+                "name": "arrayBuffer",
+                "signatures": [
+                    "arrayBuffer(): PromiseLike<ArrayBuffer>"
+                ]
+            },
+            {
+                "name": "formData",
+                "signatures": [
+                    "formData(): PromiseLike<FormData>"
+                ]
+            },
+            {
+                "name": "json",
+                "signatures": [
+                    "json(): PromiseLike<any>"
+                ]
+            },
+            {
+                "name": "json<T>",
+                "signatures": [
+                    "json<T>(): PromiseLike<T>"
+                ]
+            },
+            {
+                "name": "text",
+                "signatures": [
+                    "text(): PromiseLike<string>"
+                ]
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "name": "Headers",
+        "constructorSignatures": [
+            "new(): Headers"
+        ],
+        "methods": [
+            {
+                "name": "append",
+                "signatures": [
+                    "append(name: string, value: string): void"
+                ]
+            },
+            {
+                "name": "delete",
+                "signatures": [
+                    "delete(name: string):void"
+                ]
+            },
+            {
+                "name": "get",
+                "signatures": [
+                    "get(name: string): string"
+                ]
+            },
+            {
+                "name": "getAll",
+                "signatures": [
+                    "getAll(name: string): Array<string>"
+                ]
+            },
+            {
+                "name": "has",
+                "signatures": [
+                    "has(name: string): boolean"
+                ]
+            },
+            {
+                "name": "set",
+                "signatures": [
+                    "set(name: string, value: string): void"
+                ]
+            },
+            {
+                "name": "forEach",
+                "signatures": [
+                    "forEach(callback: (value: string, name: string) => void): void"
+                ]
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "name": "Request",
+        "extends": "Body",
+        "constructorSignatures": [
+            "new(input: string|Request, init?:RequestInit): Request"
+        ],
+        "properties": [
+            {
+                "name": "method",
+                "type": "string"
+            },
+            {
+                "name": "url",
+                "type": "string"
+            },
+            {
+                "name": "headers",
+                "type": "Headers"
+            },
+            {
+                "name": "context",
+                "type": "RequestContext"
+            },
+            {
+                "name": "referrer",
+                "type": "string"
+            },
+            {
+                "name": "mode",
+                "type": "RequestMode"
+            },
+            {
+                "name": "redirect",
+                "type": "RequestRedirect"
+            },
+            {
+                "name": "credentials",
+                "type": "RequestCredentials"
+            },
+            {
+                "name": "cache",
+                "type": "RequestCache"
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "name": "Response",
+        "extends": "Body",
+        "constructorSignatures": [
+            "new(body?: BodyInit, init?: ResponseInit): Response",
+            "error(): Response",
+            "redirect(url: string, status: number): Response"
+        ],
+        "properties": [
+            {
+                "name": "type",
+                "type": "ResponseType"
+            },
+            {
+                "name": "status",
+                "type": "number"
+            },
+            {
+                "name": "ok",
+                "type": "boolean"
+            },
+            {
+                "name": "statusText",
+                "type": "string"
+            },
+            {
+                "name": "headers",
+                "type": "Headers"
+            }
+        ],
+        "methods": [
+            {
+                "name": "clone",
+                "signatures": [
+                    "clone(): Response"
+                ]
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "name": "RequestInit",
+        "properties": [
+            {
+                "name": "method?",
+                "type": "string"
+            },
+            {
+                "name": "headers?",
+                "type": "HeaderInit | { [index: string]: string }"
+            },
+            {
+                "name": "body?",
+                "type": "BodyInit"
+            },
+            {
+                "name": "mode?",
+                "type": "RequestMode"
+            },
+            {
+                "name": "redirect?",
+                "type": "RequestRedirect"
+            },
+            {
+                "name": "credentials?",
+                "type": "RequestCredentials"
+            },
+            {
+                "name": "cache?",
+                "type": "RequestCache"
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "name": "ResponseInit",
+        "properties": [
+            {
+                "name": "status",
+                "type": "number"
+            },
+            {
+                "name": "statusText?",
+                "type": "string"
+            },
+            {
+                "name": "headers?",
+                "type": "HeaderInit"
+            }
+        ]
+    },
+    {
+        "kind": "typedef",
+        "name": "RequestContext",
+        "type": "\"audio\" | \"beacon\" | \"cspreport\" | \"download\" | \"embed\" | \"eventsource\" | \"favicon\" | \"fetch\" | \"font\" | \"form\" | \"frame\" | \"hyperlink\" | \"iframe\" | \"image\" | \"imageset\" | \"import\" | \"internal\" | \"location\" | \"manifest\" | \"object\" | \"ping\" | \"plugin\" | \"prefetch\" | \"script\" | \"serviceworker\" | \"sharedworker\" | \"subresource\" | \"style\" | \"track\" | \"video\" | \"worker\" | \"xmlhttprequest\" | \"xslt\""
+    },
+    {
+        "kind": "typedef",
+        "name": "RequestMode",
+        "type": "\"same-origin\" | \"no-cors\" | \"cors\""
+    },
+    {
+        "kind": "typedef",
+        "name": "RequestRedirect",
+        "type": "\"follow\" | \"error\" | \"manual\""
+    },
+    {
+        "kind": "typedef",
+        "name": "RequestCredentials",
+        "type": "\"omit\" | \"same-origin\" | \"include\""
+    },
+    {
+        "kind": "typedef",
+        "name": "RequestCache",
+        "type": "\"default\" | \"no-store\" | \"reload\" | \"no-cache\" | \"force-cache\" | \"only-if-cached\""
+    },
+    {
+        "kind": "typedef",
+        "name": "ResponseType",
+        "type": "\"basic\" | \"cors\" | \"default\" | \"error\" | \"opaque\" | \"opaqueredirect\""
+    },
+    {
+        "kind": "typedef",
+        "name": "HeaderInit",
+        "type": "Headers | Array<string>"
+    },
+    {
+        "kind": "typedef",
+        "name": "BodyInit",
+        "type": "ArrayBuffer | ArrayBufferView | Blob | FormData | string"
+    },
+    {
+        "kind": "typedef",
+        "name": "RequestInfo",
+        "type": "Request | string"
+    },
+    {
+        "kind": "method",
+        "interface": "Window",
+        "exposeGlobally": true,
+        "name": "fetch",
+        "signatures": [
+            "fetch(url: string|Request, init?: RequestInit): PromiseLike<Response>"
+        ]
     }
 ]

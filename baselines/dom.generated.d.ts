@@ -13008,6 +13008,7 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     webkitConvertPointFromNodeToPage(node: Node, pt: WebKitPoint): WebKitPoint;
     webkitConvertPointFromPageToNode(node: Node, pt: WebKitPoint): WebKitPoint;
     webkitRequestAnimationFrame(callback: FrameRequestCallback): number;
+    fetch(url: string|Request, init?: RequestInit): PromiseLike<Response>;
     addEventListener(type: "MSGestureChange", listener: (ev: MSGestureEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureDoubleTap", listener: (ev: MSGestureEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureEnd", listener: (ev: MSGestureEvent) => any, useCapture?: boolean): void;
@@ -14207,6 +14208,85 @@ interface JsonWebKey {
     k?: string;
 }
 
+interface Body {
+    bodyUsed: boolean;
+    blob(): PromiseLike<Blob>;
+    arrayBuffer(): PromiseLike<ArrayBuffer>;
+    formData(): PromiseLike<FormData>;
+    json(): PromiseLike<any>;
+    json<T>(): PromiseLike<T>;
+    text(): PromiseLike<string>;
+}
+
+declare var Body: {
+    prototype: Body;
+    new(): Body;
+}
+
+interface Headers {
+    append(name: string, value: string): void;
+    delete(name: string):void;
+    get(name: string): string;
+    getAll(name: string): Array<string>;
+    has(name: string): boolean;
+    set(name: string, value: string): void;
+    forEach(callback: (value: string, name: string) => void): void;
+}
+
+declare var Headers: {
+    prototype: Headers;
+    new(): Headers;
+}
+
+interface Request extends Body {
+    method: string;
+    url: string;
+    headers: Headers;
+    context: RequestContext;
+    referrer: string;
+    mode: RequestMode;
+    redirect: RequestRedirect;
+    credentials: RequestCredentials;
+    cache: RequestCache;
+}
+
+declare var Request: {
+    prototype: Request;
+    new(input: string|Request, init?:RequestInit): Request;
+}
+
+interface Response extends Body {
+    type: ResponseType;
+    status: number;
+    ok: boolean;
+    statusText: string;
+    headers: Headers;
+    clone(): Response;
+}
+
+declare var Response: {
+    prototype: Response;
+    new(body?: BodyInit, init?: ResponseInit): Response;
+    error(): Response;
+    redirect(url: string, status: number): Response;
+}
+
+interface RequestInit {
+    method?: string;
+    headers?: HeaderInit | { [index: string]: string };
+    body?: BodyInit;
+    mode?: RequestMode;
+    redirect?: RequestRedirect;
+    credentials?: RequestCredentials;
+    cache?: RequestCache;
+}
+
+interface ResponseInit {
+    status: number;
+    statusText?: string;
+    headers?: HeaderInit;
+}
+
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
 interface ErrorEventHandler {
@@ -14424,6 +14504,7 @@ declare function webkitCancelAnimationFrame(handle: number): void;
 declare function webkitConvertPointFromNodeToPage(node: Node, pt: WebKitPoint): WebKitPoint;
 declare function webkitConvertPointFromPageToNode(node: Node, pt: WebKitPoint): WebKitPoint;
 declare function webkitRequestAnimationFrame(callback: FrameRequestCallback): number;
+declare function fetch(url: string|Request, init?: RequestInit): PromiseLike<Response>;
 declare function toString(): string;
 declare function addEventListener(type: string, listener?: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 declare function dispatchEvent(evt: Event): boolean;
@@ -14581,3 +14662,12 @@ type RTCTransport = RTCDtlsTransport | RTCSrtpSdesTransport;
 type payloadtype = number;
 type IDBValidKey = number | string | Date | IDBArrayKey;
 type BufferSource = ArrayBuffer | ArrayBufferView;
+type RequestContext = "audio" | "beacon" | "cspreport" | "download" | "embed" | "eventsource" | "favicon" | "fetch" | "font" | "form" | "frame" | "hyperlink" | "iframe" | "image" | "imageset" | "import" | "internal" | "location" | "manifest" | "object" | "ping" | "plugin" | "prefetch" | "script" | "serviceworker" | "sharedworker" | "subresource" | "style" | "track" | "video" | "worker" | "xmlhttprequest" | "xslt";
+type RequestMode = "same-origin" | "no-cors" | "cors";
+type RequestRedirect = "follow" | "error" | "manual";
+type RequestCredentials = "omit" | "same-origin" | "include";
+type RequestCache = "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
+type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
+type HeaderInit = Headers | Array<string>;
+type BodyInit = ArrayBuffer | ArrayBufferView | Blob | FormData | string;
+type RequestInfo = Request | string;
