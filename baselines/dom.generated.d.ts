@@ -5870,6 +5870,10 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
       */
     hreflang: string;
     /**
+     * Sets or retrieves the integrity hash.
+     */
+    integrity: string;
+    /**
       * Sets or retrieves the media type.
       */
     media: string;
@@ -6731,6 +6735,10 @@ interface HTMLScriptElement extends HTMLElement {
       * Sets or retrieves the status of the script.
       */
     defer: boolean;
+    /**
+     * Sets or retrieves the integrity hash.
+     */
+    integrity: string;
     /**
       * Sets or retrieves the event for which the script is written. 
       */
