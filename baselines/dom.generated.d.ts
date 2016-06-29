@@ -3675,6 +3675,13 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelec
     getElementsByClassName(classNames: string): NodeListOf<Element>;
     matches(selector: string): boolean;
     closest(selector: string): Element | null;
+    scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+    scroll(options?: ScrollToOptions): void;
+    scroll(x: number, y: number): void;
+    scrollTo(options?: ScrollToOptions): void;
+    scrollTo(x: number, y: number): void;
+    scrollBy(options?: ScrollToOptions): void;
+    scroll(x: number, y: number): void;
     addEventListener(type: "MSGestureChange", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureDoubleTap", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureEnd", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
@@ -4625,7 +4632,6 @@ interface HTMLElement extends Element {
     insertAdjacentHTML(where: string, html: string): void;
     insertAdjacentText(where: string, text: string): void;
     msGetInputContext(): MSInputMethodContext;
-    scrollIntoView(top?: boolean): void;
     setActive(): void;
     addEventListener(type: "MSContentZoom", listener: (this: this, ev: UIEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureChange", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
@@ -13002,6 +13008,9 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     webkitConvertPointFromNodeToPage(node: Node, pt: WebKitPoint): WebKitPoint;
     webkitConvertPointFromPageToNode(node: Node, pt: WebKitPoint): WebKitPoint;
     webkitRequestAnimationFrame(callback: FrameRequestCallback): number;
+    scroll(options?: ScrollToOptions): void;
+    scrollTo(options?: ScrollToOptions): void;
+    scrollBy(options?: ScrollToOptions): void;
     addEventListener(type: "MSGestureChange", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureDoubleTap", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
     addEventListener(type: "MSGestureEnd", listener: (this: this, ev: MSGestureEvent) => any, useCapture?: boolean): void;
@@ -14029,6 +14038,20 @@ interface ProgressEventInit extends EventInit {
     total?: number;
 }
 
+interface ScrollOptions {
+    behavior?: ScrollBehavior;
+}
+
+interface ScrollToOptions extends ScrollOptions {
+    left?: number;
+    top?: number;
+}
+
+interface ScrollIntoViewOptions extends ScrollOptions {
+    block?: ScrollLogicalPosition;
+    inline?: ScrollLogicalPosition;
+}
+
 interface ClipboardEventInit extends EventInit {
     data?: string;
     dataType?: string;
@@ -14425,6 +14448,9 @@ declare function webkitCancelAnimationFrame(handle: number): void;
 declare function webkitConvertPointFromNodeToPage(node: Node, pt: WebKitPoint): WebKitPoint;
 declare function webkitConvertPointFromPageToNode(node: Node, pt: WebKitPoint): WebKitPoint;
 declare function webkitRequestAnimationFrame(callback: FrameRequestCallback): number;
+declare function scroll(options?: ScrollToOptions): void;
+declare function scrollTo(options?: ScrollToOptions): void;
+declare function scrollBy(options?: ScrollToOptions): void;
 declare function toString(): string;
 declare function addEventListener(type: string, listener?: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 declare function dispatchEvent(evt: Event): boolean;
@@ -14580,6 +14606,8 @@ type MSOutboundPayload = MSVideoSendPayload | MSAudioSendPayload;
 type RTCIceGatherCandidate = RTCIceCandidate | RTCIceCandidateComplete;
 type RTCTransport = RTCDtlsTransport | RTCSrtpSdesTransport;
 type payloadtype = number;
+type ScrollBehavior = "auto" | "instant" | "smooth";
+type ScrollLogicalPosition = "start" | "center" | "end" | "nearest";
 type IDBValidKey = number | string | Date | IDBArrayKey;
 type BufferSource = ArrayBuffer | ArrayBufferView;
 type MouseWheelEvent = WheelEvent;

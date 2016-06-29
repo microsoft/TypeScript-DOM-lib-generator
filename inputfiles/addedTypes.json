@@ -241,7 +241,106 @@
     {
         "kind": "method",
         "interface": "Element",
-        "signatures": ["closest(selector: string): Element | null"]
+        "signatures": [ "closest(selector: string): Element | null" ]
+    },
+    {
+        "kind": "typedef",
+        "flavor": "Web",
+        "name": "ScrollBehavior",
+        "type": "\"auto\" | \"instant\" | \"smooth\""
+    },
+    {
+        "kind": "interface",
+        "flavor": "Web",
+        "name": "ScrollOptions",
+        "properties": [
+            {
+                "name": "behavior?",
+                "type": "ScrollBehavior"
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "flavor": "Web",
+        "name": "ScrollToOptions",
+        "extends": "ScrollOptions",
+        "properties": [
+            {
+                "name": "left?",
+                "type": "number"
+            },
+            {
+                "name": "top?",
+                "type": "number"
+            }
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Window",
+        "signatures": [ "scroll(options?: ScrollToOptions): void" ]
+    },
+    {
+        "kind": "method",
+        "interface": "Window",
+        "signatures": [ "scrollTo(options?: ScrollToOptions): void" ]
+    },
+    {
+        "kind": "method",
+        "interface": "Window",
+        "signatures": [ "scrollBy(options?: ScrollToOptions): void" ]
+    },
+    {
+        "kind": "typedef",
+        "flavor": "Web",
+        "name": "ScrollLogicalPosition",
+        "type": "\"start\" | \"center\" | \"end\" | \"nearest\""
+    },
+    {
+        "kind": "interface",
+        "flavor": "Web",
+        "name": "ScrollIntoViewOptions",
+        "extends": "ScrollOptions",
+        "properties": [
+            {
+                "name": "block?",
+                "type": "ScrollLogicalPosition"
+            },
+            {
+                "name": "inline?",
+                "type": "ScrollLogicalPosition"
+            }
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "signatures": [ "scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void" ]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "signatures": [
+            "scroll(options?: ScrollToOptions): void",
+            "scroll(x: number, y: number): void"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "signatures": [
+            "scrollTo(options?: ScrollToOptions): void",
+            "scrollTo(x: number, y: number): void"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "signatures": [
+            "scrollBy(options?: ScrollToOptions): void",
+            "scroll(x: number, y: number): void"
+        ]
     },
     {
         "kind": "indexer",

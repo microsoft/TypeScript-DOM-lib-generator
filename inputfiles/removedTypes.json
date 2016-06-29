@@ -21,6 +21,11 @@
     },
     {
         "kind": "method",
+        "interface": "HTMLElement",
+        "name": "scrollIntoView"
+    },
+    {
+        "kind": "method",
         "interface": "StorageEvent",
         "name": "initStorageEvent"
     },
