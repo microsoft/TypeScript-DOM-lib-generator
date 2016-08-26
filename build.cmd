@@ -23,4 +23,4 @@ if not exist paket.lock (
 )
 
 @echo "Building..."
-packages\FAKE\tools\FAKE.exe %* --fsiargs build.fsx
+packages\FAKE\tools\FAKE.exe %* --fsiargs --optimize+ build.fsx

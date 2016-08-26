@@ -70,7 +70,18 @@ module JsonItems =
         | SignatureOverload
         | TypeDef
         | Extends
-        override x.ToString() = (unionToString x).ToLower()
+        override x.ToString() = 
+            match x with
+            | Property _ -> "property"
+            | Method _ -> "method"
+            | Constant _ -> "constant"
+            | Constructor _ -> "constructor"
+            | Interface _ -> "interface"
+            | Callback _ -> "callback"
+            | Indexer _ -> "indexer"
+            | SignatureOverload _ -> "signatureoverload"
+            | TypeDef _ -> "typedef"
+            | Extends _ -> "extends"
 
     let findItem (allItems: ItemsType.Root []) (itemName: string) (kind: ItemKind) otherFilter =
         let filter (item: ItemsType.Root) =
