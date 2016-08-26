@@ -7536,11 +7536,12 @@ declare var HashChangeEvent: {
 interface History {
     readonly length: number;
     readonly state: any;
-    back(distance?: any): void;
-    forward(distance?: any): void;
-    go(delta?: any): void;
-    pushState(statedata: any, title?: string, url?: string): void;
-    replaceState(statedata: any, title?: string, url?: string): void;
+    scrollRestoration: ScrollRestoration;
+    back(): void;
+    forward(): void;
+    go(delta?: number): void;
+    pushState(data: any, title: string, url?: string | null): void;
+    replaceState(data: any, title: string, url?: string | null): void;
 }
 
 declare var History: {
@@ -14623,3 +14624,4 @@ type ScrollLogicalPosition = "start" | "center" | "end" | "nearest";
 type IDBValidKey = number | string | Date | IDBArrayKey;
 type BufferSource = ArrayBuffer | ArrayBufferView;
 type MouseWheelEvent = WheelEvent;
+type ScrollRestoration = "auto" | "manual";

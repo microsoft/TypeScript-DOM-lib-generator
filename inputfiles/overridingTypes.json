@@ -815,5 +815,35 @@
          "interface": "Window",
          "name": "opener",
          "type": "any"
-     }
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "back",
+        "signatures": ["back(): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "forward",
+        "signatures": ["forward(): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "go",
+        "signatures": ["go(delta?: number): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "pushState",
+        "signatures": ["pushState(data: any, title: string, url?: string | null): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "replaceState",
+        "signatures": ["replaceState(data: any, title: string, url?: string | null): void"]
+    }
  ]

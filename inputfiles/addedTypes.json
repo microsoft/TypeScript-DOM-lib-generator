@@ -1175,5 +1175,17 @@
         "kind": "extends",
         "baseInterface": "ParentNode",
         "interface": "DocumentFragment"
+    },
+    {
+        "kind": "typedef",
+        "name": "ScrollRestoration",
+        "flavor": "DOM",
+        "type": "\"auto\" | \"manual\""
+    },
+    {
+        "kind": "property",
+        "interface": "History",
+        "name": "scrollRestoration",
+        "type": "ScrollRestoration"
     }
 ]
