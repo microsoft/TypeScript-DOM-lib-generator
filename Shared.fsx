@@ -393,10 +393,13 @@ let getEventTypeInInterface eName iName =
     match iName, eName with
     | "IDBDatabase", "abort"
     | "IDBTransaction", "abort"
-    | "XMLHttpRequest", "abort"
     | "MSBaseReader", "abort"
     | "XMLHttpRequestEventTarget", "abort"
         -> "Event"
+    | "XMLHttpRequest", "readystatechange"
+        -> "Event"
+    | "XMLHttpRequest", _
+        -> "ProgressEvent"
     | _ -> 
         match eNameToEType.TryFind eName with
         | Some eType' -> eType'
