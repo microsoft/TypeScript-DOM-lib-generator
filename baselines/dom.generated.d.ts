@@ -12984,6 +12984,7 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     readonly window: Window;
     URL: typeof URL;
     Blob: typeof Blob;
+    Math: typeof Math;
     alert(message?: any): void;
     blur(): void;
     cancelAnimationFrame(handle: number): void;

@@ -84,6 +84,13 @@
     },
     {
         "kind": "property",
+        "interface": "Window",
+        "exposeGlobally": false,
+        "name": "Math",
+        "type": "typeof Math"
+    },
+    {
+        "kind": "property",
         "interface": "Element",
         "name": "innerHTML",
         "type": "string"
