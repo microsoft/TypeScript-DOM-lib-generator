@@ -3,7 +3,7 @@
         "kind": "property",
         "interface": "Window",
         "name": "event",
-        "type": "event | undefined"
+        "type": "Event | undefined"
     },
     {
         "kind": "method",
