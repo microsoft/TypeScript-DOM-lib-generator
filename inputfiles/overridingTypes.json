@@ -1,5 +1,11 @@
  [
     {
+        "kind": "property",
+        "interface": "Window",
+        "name": "event",
+        "type": "event | undefined"
+    },
+    {
         "kind": "method",
         "interface": "Node",
         "name": "insertBefore",
