@@ -1,5 +1,11 @@
 [
     {
+        "kind": "property",
+        "interface": "CSSStyleDeclaration",
+        "name": "resize",
+        "type": "string | null"
+    },
+    {
         "kind": "interface",
         "name": "StorageEventInit",
         "flavor":  "Web",

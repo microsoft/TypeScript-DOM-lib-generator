@@ -1679,6 +1679,7 @@ interface CSSStyleDeclaration {
     writingMode: string | null;
     zIndex: string | null;
     zoom: string | null;
+    resize: string | null;
     getPropertyPriority(propertyName: string): string;
     getPropertyValue(propertyName: string): string;
     item(index: number): string;
