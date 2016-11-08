@@ -13226,7 +13226,7 @@ declare var XPathEvaluator: {
 }
 
 interface XPathExpression {
-    evaluate(contextNode: Node, type: number, result: XPathResult): XPathExpression;
+    evaluate(contextNode: Node, type: number, result: XPathResult | null): XPathResult;
 }
 
 declare var XPathExpression: {
