@@ -2969,7 +2969,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
       * @param y The y-offset
       */
     elementFromPoint(x: number, y: number): Element;
-    evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver, type: number, result: XPathResult): XPathResult;
+    evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | null, type: number, result: XPathResult | null): XPathResult;
     /**
       * Executes a command on the current document, current selection, or the given range.
       * @param commandId String that specifies the command to execute. This command can be any of the command identifiers that can be executed in script.
@@ -13217,7 +13217,7 @@ declare var XMLSerializer: {
 interface XPathEvaluator {
     createExpression(expression: string, resolver: XPathNSResolver): XPathExpression;
     createNSResolver(nodeResolver?: Node): XPathNSResolver;
-    evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver, type: number, result: XPathResult): XPathResult;
+    evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | null, type: number, result: XPathResult | null): XPathResult;
 }
 
 declare var XPathEvaluator: {
