@@ -79,32 +79,32 @@
         "name": "URLSearchParams",
         "flavor": "Web",
         "constructorSignatures": [
-            "new (init?: string | URLSearchParams): URLSearchParams"
+            "/**\r\n      * Constructor returning a URLSearchParams object.\r\n      */\r\n    new (init?: string | URLSearchParams): URLSearchParams"
         ],
         "methods": [
             {
                 "name": "append",
-                "signatures": ["append(name: string, value: string): void"]
+                "signatures": ["/**\r\n      * Appends a specified key/value pair as a new search parameter.\r\n      */\r\n    append(name: string, value: string): void"]
             },
             {
                 "name": "delete",
-                "signatures": ["delete(name: string): void"]
+                "signatures": ["/**\r\n      * Deletes the given search parameter, and its associated value, from the list of all search parameters.\r\n      */\r\n    delete(name: string): void"]
             },
             {
                 "name": "get",
-                "signatures": ["get(name: string): string | null"]
+                "signatures": ["/**\r\n      * Returns the first value associated to the given search parameter.\r\n      */\r\n    get(name: string): string | null"]
             },
             {
                 "name": "getAll",
-                "signatures": ["getAll(name: string): string[]"]
+                "signatures": ["/**\r\n      * Returns all the values association with a given search parameter.\r\n      */\r\n    getAll(name: string): string[]"]
             },
             {
                 "name": "has",
-                "signatures": ["has(name: string): boolean"]
+                "signatures": ["/**\r\n      * Returns a Boolean indicating if such a search parameter exists.\r\n      */\r\n    has(name: string): boolean"]
             },
             {
                 "name": "set",
-                "signatures": ["set(name: string, value: string): void"]
+                "signatures": ["/**\r\n      * Sets the value associated to a given search parameter to the given value. If there were several values, delete the others.\r\n      */\r\n    set(name: string, value: string): void"]
             }
         ]
     },
