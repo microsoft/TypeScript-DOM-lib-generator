@@ -12454,10 +12454,10 @@ interface DocumentEvent {
 
 interface ElementTraversal {
     readonly childElementCount: number;
-    readonly firstElementChild: Element;
-    readonly lastElementChild: Element;
-    readonly nextElementSibling: Element;
-    readonly previousElementSibling: Element;
+    readonly firstElementChild: Element | null;
+    readonly lastElementChild: Element | null;
+    readonly nextElementSibling: Element | null;
+    readonly previousElementSibling: Element | null;
 }
 
 interface GetSVGDocument {

@@ -929,5 +929,33 @@
         "kind": "extends",
         "baseInterface": "Node, GlobalEventHandlers, NodeSelector, DocumentEvent, ParentNode, DocumentOrShadowRoot",
         "interface": "Document"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "firstElementChild",
+        "type": "Element | null"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "lastElementChild",
+        "type": "Element | null"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "nextElementSibling",
+        "type": "Element | null"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "previousElementSibling",
+        "type": "Element | null"
     }
  ]
