@@ -957,5 +957,23 @@
         "readonly": true,
         "name": "previousElementSibling",
         "type": "Element | null"
+    },
+    {
+        "kind": "method",
+        "interface": "MessagePort",
+        "name": "postMessage",
+        "signatures": ["postMessage(data: any, transfer?: any[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "Worker",
+        "name": "postMessage",
+        "signatures": ["postMessage(data: any, transfer?: any[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "DedicatedWorkerGlobalScope",
+        "name": "postMessage",
+        "signatures": ["postMessage(data: any, transfer?: any[]): void"]
     }
  ]

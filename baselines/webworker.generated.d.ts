@@ -657,7 +657,7 @@ interface MessagePortEventMap {
 interface MessagePort extends EventTarget {
     onmessage: (this: MessagePort, ev: MessageEvent) => any;
     close(): void;
-    postMessage(message?: any, ports?: any): void;
+    postMessage(data: any, transfer?: any[]): void;
     start(): void;
     addEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
@@ -750,7 +750,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
 
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: (this: Worker, ev: MessageEvent) => any;
-    postMessage(message: any, ports?: any): void;
+    postMessage(data: any, transfer?: any[]): void;
     terminate(): void;
     addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
@@ -964,7 +964,7 @@ interface DedicatedWorkerGlobalScopeEventMap {
 
 interface DedicatedWorkerGlobalScope {
     onmessage: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any;
-    postMessage(data: any): void;
+    postMessage(data: any, transfer?: any[]): void;
     addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
@@ -1244,7 +1244,7 @@ declare function setTimeout(handler: any, timeout?: any, ...args: any[]): number
 declare function atob(encodedString: string): string;
 declare function btoa(rawString: string): string;
 declare var onmessage: (this: WorkerGlobalScope, ev: MessageEvent) => any;
-declare function postMessage(data: any): void;
+declare function postMessage(data: any, transfer?: any[]): void;
 declare var console: Console;
 declare function addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, useCapture?: boolean): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
