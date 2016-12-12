@@ -16,6 +16,7 @@
         "kind": "property",
         "interface": "Element",
         "name": "className",
+        "readonly": true,
         "type": "string"
     },
     {
@@ -335,5 +336,17 @@
         "kind": "extends",
         "baseInterface": "ParentNode",
         "interface": "Document"
+    },
+    {
+        "kind": "interface", 
+        "name": "ParentNode",
+        "flavor": "DOM",
+        "properties": [
+            {
+                "name": "children",
+                "readonly": true,
+                "type": "HTMLCollection"
+            }
+        ]
     }
 ]

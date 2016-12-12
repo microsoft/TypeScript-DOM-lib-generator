@@ -5,7 +5,7 @@ if not exist .paket mkdir .paket
 
 if not exist .paket/paket.bootstrapper.exe (
   @echo "Installing Paket"
-  Powershell.exe -Command "Invoke-WebRequest -Uri https://github.com/fsprojects/Paket/releases/download/2.12.5/paket.bootstrapper.exe -OutFile .paket\paket.bootstrapper.exe"
+  Powershell.exe -NoProfile -Command "Invoke-WebRequest -Uri https://github.com/fsprojects/Paket/releases/download/2.12.5/paket.bootstrapper.exe -OutFile .paket\paket.bootstrapper.exe"
 
 
   .paket\paket.bootstrapper.exe prerelease
@@ -23,4 +23,4 @@ if not exist paket.lock (
 )
 
 @echo "Building..."
-packages\FAKE\tools\FAKE.exe %* --fsiargs build.fsx
+packages\FAKE\tools\FAKE.exe %* --fsiargs --optimize+ build.fsx

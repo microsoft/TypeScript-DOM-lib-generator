@@ -2657,7 +2657,7 @@
           },
           {
             "name": "load",
-            "comment": "/**\r\n      * Fires immediately after the client loads the object.\r\n      */"
+            "comment": "/**\r\n      * Resets the audio or video object and loads a new media resource.\r\n      */"
           },
           {
             "name": "canPlayType",

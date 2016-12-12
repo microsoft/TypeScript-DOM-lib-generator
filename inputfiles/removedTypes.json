@@ -21,6 +21,11 @@
     },
     {
         "kind": "method",
+        "interface": "HTMLElement",
+        "name": "scrollIntoView"
+    },
+    {
+        "kind": "method",
         "interface": "StorageEvent",
         "name": "initStorageEvent"
     },
@@ -43,5 +48,30 @@
         "kind": "property",
         "interface": "StorageEvent",
         "name": "storageArea"
+    },
+    {
+        "kind": "property",
+        "interface": "XMLHttpRequest",
+        "name": "msCaching"
+    },
+    {
+        "kind": "method",
+        "interface": "HTMLElement",
+        "name": "insertAdjacentElement"
+    },
+    {
+        "kind": "method",
+        "interface": "HTMLElement",
+        "name": "insertAdjacentHTML"
+    },
+    {
+        "kind": "method",
+        "interface": "HTMLElement",
+        "name": "insertAdjacentText"
+    },
+    {
+        "kind": "indexer",
+        "interface": "Window",
+        "signatures": [ "[index: number]: Window" ]
     }
 ]

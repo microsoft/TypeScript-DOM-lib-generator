@@ -70,7 +70,18 @@ module JsonItems =
         | SignatureOverload
         | TypeDef
         | Extends
-        override x.ToString() = (unionToString x).ToLower()
+        override x.ToString() =
+            match x with
+            | Property _ -> "property"
+            | Method _ -> "method"
+            | Constant _ -> "constant"
+            | Constructor _ -> "constructor"
+            | Interface _ -> "interface"
+            | Callback _ -> "callback"
+            | Indexer _ -> "indexer"
+            | SignatureOverload _ -> "signatureoverload"
+            | TypeDef _ -> "typedef"
+            | Extends _ -> "extends"
 
     let findItem (allItems: ItemsType.Root []) (itemName: string) (kind: ItemKind) otherFilter =
         let filter (item: ItemsType.Root) =
@@ -188,12 +199,14 @@ type Param =
     { Type : string
       Name : string
       Optional : bool
-      Variadic : bool }
+      Variadic : bool
+      Nullable : bool }
 
 /// Function overload
 type Overload =
     { ParamCombinations : Param list
-      ReturnTypes : string list }
+      ReturnTypes : string list
+      Nullable : Boolean }
     member this.IsEmpty = this.ParamCombinations.IsEmpty && (this.ReturnTypes = [ "void" ] || this.ReturnTypes = [ "" ])
 
 type Function =
@@ -307,7 +320,8 @@ let allCallbackFuncs =
 
 let GetInterfaceByName = allInterfacesMap.TryFind
 let knownWorkerInterfaces =
-    [ "AbstractWorker"; "AudioBuffer"; "Blob"; "CloseEvent"; "Console"; "Coordinates"; "DecodeSuccessCallback";
+    [ "Algorithm"; "AlgorithmIdentifier"; "KeyAlgorithm"; "CryptoKey"; "AbstractWorker"; "AudioBuffer"; "Blob";
+      "CloseEvent"; "Console"; "Coordinates"; "DecodeSuccessCallback";
       "DecodeErrorCallback"; "DOMError"; "DOMException"; "DOMStringList"; "ErrorEvent"; "Event"; "ErrorEventHandler";
       "EventException"; "EventInit"; "EventListener"; "EventTarget"; "File"; "FileList"; "FileReader";
       "FunctionStringCallback"; "IDBCursor"; "IDBCursorWithValue"; "IDBDatabase"; "IDBFactory"; "IDBIndex";
@@ -316,7 +330,8 @@ let knownWorkerInterfaces =
       "MSAppAsyncOperation"; "MSAppView"; "MSBaseReader"; "MSBlobBuilder"; "MSExecAtPriorityFunctionCallback";
       "MSLaunchUriCallback"; "MSStream"; "MSStreamReader"; "MSUnsafeFunctionCallback"; "NavigatorID"; "NavigatorOnLine";
       "Position"; "PositionCallback"; "PositionError"; "PositionErrorCallback"; "ProgressEvent"; "WebSocket";
-      "WindowBase64"; "WindowConsole"; "Worker"; "XMLHttpRequest"; "XMLHttpRequestEventTarget"; "XMLHttpRequestUpload" ]
+      "WindowBase64"; "WindowConsole"; "Worker"; "XMLHttpRequest"; "XMLHttpRequestEventTarget"; "XMLHttpRequestUpload";
+      "IDBObjectStoreParameters"; "IDBIndexParameters"; "IDBKeyPath"]
     |> set
 
 let GetAllInterfacesByFlavor flavor =
@@ -373,6 +388,22 @@ let eNameToETypeWithoutCase =
     |> Map.toList
     |> List.map (fun (k, v) -> (k.ToLower(), v))
     |> Map.ofList
+
+let getEventTypeInInterface eName iName =
+    match iName, eName with
+    | "IDBDatabase", "abort"
+    | "IDBTransaction", "abort"
+    | "MSBaseReader", "abort"
+    | "XMLHttpRequestEventTarget", "abort"
+        -> "Event"
+    | "XMLHttpRequest", "readystatechange"
+        -> "Event"
+    | "XMLHttpRequest", _
+        -> "ProgressEvent"
+    | _ ->
+        match eNameToEType.TryFind eName with
+        | Some eType' -> eType'
+        | _ -> "Event"
 
 /// Tag name to element name map
 let tagNameToEleName =
@@ -488,25 +519,31 @@ let iNameToEhList =
                        else None)
                 |> List.ofArray
             | None -> []
+        if ownEventHandler.Length > 0 then ownEventHandler else []
 
+    allInterfaces
+    |> Array.map (fun i -> (i.Name, GetEventHandler i))
+    |> Map.ofArray
+
+let iNameToEhParents =
+    let hasHandler (i : Browser.Interface) =
+        iNameToEhList.ContainsKey i.Name && not iNameToEhList.[i.Name].IsEmpty
+
+    // Get all the event handlers from an interface and also from its inherited / implemented interfaces
+    let rec GetEventHandler(i : Browser.Interface) =
         let extendedEventHandler =
             match GetInterfaceByName i.Extends with
-            | Some i -> GetEventHandler i
-            | None -> []
+            | Some i when hasHandler i -> [i]
+            | _ -> []
 
         let implementedEventHandler =
             let implementis = i.Implements |> Array.map GetInterfaceByName
             [ for i' in implementis do
                   yield! match i' with
-                         | Some i -> GetEventHandler i
+                         | Some i ->  if hasHandler i then [i] else []
                          | None -> [] ]
 
-        // Reason is if an interface doesn't have its own string overload for the addEventListener method,
-        // the inherited overloads will be carried along; otherwise all of them will be overriten by its
-        // own overloads, therefore re-declaration is needed
-        if ownEventHandler.Length > 0 then
-            List.concat [ ownEventHandler; extendedEventHandler; implementedEventHandler ]
-        else []
+        List.concat [ extendedEventHandler; implementedEventHandler ]
 
     allInterfaces
     |> Array.map (fun i -> (i.Name, GetEventHandler i))
@@ -539,25 +576,34 @@ let GetOverloads (f : Function) (decomposeMultipleTypes : bool) =
                   yield { Type = p.Type
                           Name = p.Name
                           Optional = p.Optional.IsSome
-                          Variadic = p.Variadic.IsSome } ]
+                          Variadic = p.Variadic.IsSome
+                          Nullable = p.Nullable.IsSome } ]
         | Ctor c ->
             [ for p in c.Params do
                   yield { Type = p.Type
                           Name = p.Name
                           Optional = p.Optional.IsSome
-                          Variadic = p.Variadic.IsSome } ]
+                          Variadic = p.Variadic.IsSome
+                          Nullable = p.Nullable.IsSome } ]
         | CallBackFun cb ->
             [ for p in cb.Params do
                   yield { Type = p.Type
                           Name = p.Name
                           Optional = p.Optional.IsSome
-                          Variadic = p.Variadic.IsSome } ]
+                          Variadic = p.Variadic.IsSome
+                          Nullable = p.Nullable.IsSome } ]
 
     let getReturnType (f : Function) =
         match f with
         | Method m -> m.Type
         | Ctor _ -> ""
         | CallBackFun cb -> cb.Type
+
+    let isNullable =
+        match f with
+        | Method m -> m.Nullable.IsSome
+        | Ctor _ -> false
+        | CallBackFun cb -> true
 
     // Some params have the type of "(DOMString or DOMString [] or Number)"
     // we need to transform it into [“DOMString", "DOMString []", "Number"]
@@ -568,7 +614,8 @@ let GetOverloads (f : Function) (decomposeMultipleTypes : bool) =
               yield { Type = t
                       Name = p.Name
                       Optional = p.Optional
-                      Variadic = p.Variadic } ]
+                      Variadic = p.Variadic
+                      Nullable = p.Nullable } ]
 
     let pCombList =
         let pCombs = List<_>()
@@ -594,10 +641,12 @@ let GetOverloads (f : Function) (decomposeMultipleTypes : bool) =
     if decomposeMultipleTypes then
         [ for pComb in pCombList do
               yield { ParamCombinations = pComb
-                      ReturnTypes = rTypes } ]
+                      ReturnTypes = rTypes
+                      Nullable = isNullable } ]
     else
         [ { ParamCombinations = getParams f
-            ReturnTypes = rTypes } ]
+            ReturnTypes = rTypes
+            Nullable = isNullable } ]
 
 /// Define the subset of events that dedicated workers will use
 let workerEventsMap =

@@ -1,5 +1,17 @@
  [
     {
+        "kind": "property",
+        "interface": "Window",
+        "name": "event",
+        "type": "Event | undefined"
+    },
+    {
+        "kind": "method",
+        "interface": "Node",
+        "name": "insertBefore",
+        "signatures": ["insertBefore(newChild: Node, refChild: Node | null): Node"]
+    },
+    {
         "kind": "method",
         "interface": "HTMLCollection",
         "name": "item",
@@ -28,11 +40,8 @@
         "interface": "WebGLRenderingContext",
         "name": "texSubImage2D",
         "signatures": [
-            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, width: number, height: number, format: number, type: number, pixels: ArrayBufferView): void",
-            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, format: number, type: number, image: HTMLImageElement): void",
-            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, format: number, type: number, canvas: HTMLCanvasElement): void",
-            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, format: number, type: number, video: HTMLVideoElement): void",
-            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, format: number, type: number, pixels: ImageData): void"
+            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, width: number, height: number, format: number, type: number, pixels?: ArrayBufferView): void",
+            "texSubImage2D(target: number, level: number, xoffset: number, yoffset: number, format: number, type: number, pixels?: ImageData | HTMLVideoElement | HTMLImageElement | HTMLCanvasElement): void"
         ]
     },
     {
@@ -40,11 +49,8 @@
         "interface": "WebGLRenderingContext",
         "name": "texImage2D",
         "signatures": [
-            "texImage2D(target: number, level: number, internalformat: number, width: number, height: number, border: number, format: number, type: number, pixels: ArrayBufferView): void",
-            "texImage2D(target: number, level: number, internalformat: number, format: number, type: number, image: HTMLImageElement): void",
-            "texImage2D(target: number, level: number, internalformat: number, format: number, type: number, canvas: HTMLCanvasElement): void",
-            "texImage2D(target: number, level: number, internalformat: number, format: number, type: number, video: HTMLVideoElement): void",
-            "texImage2D(target: number, level: number, internalformat: number, format: number, type: number, pixels: ImageData): void"
+            "texImage2D(target: number, level: number, internalformat: number, width: number, height: number, border: number, format: number, type: number, pixels?: ArrayBufferView): void",
+            "texImage2D(target: number, level: number, internalformat: number, format: number, type: number, pixels?: ImageData | HTMLVideoElement | HTMLImageElement | HTMLCanvasElement): void"
         ]
     },
     {
@@ -64,9 +70,9 @@
         "interface": "HTMLCanvasElement",
         "name": "getContext",
         "signatures": [
-            "getContext(contextId: \"2d\"): CanvasRenderingContext2D",
-            "getContext(contextId: \"experimental-webgl\"): WebGLRenderingContext",
-            "getContext(contextId: string, ...args: any[]): CanvasRenderingContext2D | WebGLRenderingContext"
+            "getContext(contextId: \"2d\", contextAttributes?: Canvas2DContextAttributes): CanvasRenderingContext2D | null",
+            "getContext(contextId: \"webgl\" | \"experimental-webgl\", contextAttributes?: WebGLContextAttributes): WebGLRenderingContext | null",
+            "getContext(contextId: string, contextAttributes?: {}): CanvasRenderingContext2D | WebGLRenderingContext | null"
         ]
     },
     {
@@ -84,7 +90,7 @@
         "kind": "method",
         "interface": "Document",
         "name": "getElementById",
-        "signatures": ["getElementById(elementId: string): HTMLElement"]
+        "signatures": ["getElementById(elementId: string): HTMLElement | null"]
     },
     {
         "kind": "method",
@@ -100,25 +106,23 @@
     },
     {
         "kind": "method",
-        "interface": "NodeSelector",
-        "name": "querySelectorAll",
-        "signatures": ["querySelectorAll(selectors: string): NodeListOf<Element>"]
-    },
-    {
-        "kind": "method",
         "name": "getElementsByTagNameNS",
-        "signatures": ["getElementsByTagNameNS(namespaceURI: string, localName: string): NodeListOf<Element>"]
+        "signatures": [
+            "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
+            "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+            "getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>"
+        ]
     },
     {
         "kind": "method",
         "name": "getElementsByClassName",
-        "signatures": ["getElementsByClassName(classNames: string): NodeListOf<Element>"]
+        "signatures": ["getElementsByClassName(classNames: string): HTMLCollectionOf<Element>"]
     },
     {
         "kind": "method",
         "name": "getElementsByName",
         "signatures": [
-            "getElementsByName(elementName: string): NodeListOf<Element>"
+            "getElementsByName(elementName: string): NodeListOf<HTMLElement>"
         ]
     },
     {
@@ -301,12 +305,6 @@
             "new(width: number, height: number): ImageData",
             "new(array: Uint8ClampedArray, width: number, height: number): ImageData"
         ]
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLSelectElement",
-        "name": "options",
-        "type": "HTMLCollectionOf<HTMLOptionElement>"
     },
     {
         "kind": "property",
@@ -588,7 +586,13 @@
         "kind": "method",
         "interface": "Storage",
         "name": "getItem",
-        "signatures": ["getItem(key: string): string"]
+        "signatures": ["getItem(key: string): string | null"]
+    },
+    {
+        "kind": "method",
+        "interface": "Storage",
+        "name": "key",
+        "signatures": ["key(index: number): string | null"]
     },
     {
         "kind": "method",
@@ -679,5 +683,279 @@
         "interface": "WebGLRenderingContext",
         "name": "vertexAttrib4fv",
         "signatures": ["vertexAttrib4fv(indx: number, values: Float32Array | number[]): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "name": "getAttribute",
+        "signatures": ["getAttribute(name: string): string | null"]
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "HTMLCollectionOf<HTMLOptionElement>",
+        "interface": "HTMLOptionsCollection"
+    },
+     {
+         "kind": "property",
+         "interface": "Algorithm",
+         "name": "name",
+         "type": "string"
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "decrypt",
+         "signatures": ["decrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: BufferSource): PromiseLike<ArrayBuffer>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "deriveBits",
+         "signatures": ["deriveBits(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): PromiseLike<ArrayBuffer>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "deriveKey",
+         "signatures": ["deriveKey(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "digest",
+         "signatures": ["digest(algorithm: AlgorithmIdentifier, data: BufferSource): PromiseLike<ArrayBuffer>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "encrypt",
+         "signatures": ["encrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: BufferSource): PromiseLike<ArrayBuffer>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "exportKey",
+         "signatures": [
+             "exportKey(format: \"jwk\", key: CryptoKey): PromiseLike<JsonWebKey>",
+             "exportKey(format: \"raw\" | \"pkcs8\" | \"spki\", key: CryptoKey): PromiseLike<ArrayBuffer>",
+             "exportKey(format: string, key: CryptoKey): PromiseLike<JsonWebKey | ArrayBuffer>"
+         ]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "generateKey",
+         "signatures": [
+             "generateKey(algorithm: string, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKeyPair | CryptoKey>",
+             "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams | DhKeyGenParams, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKeyPair>",
+             "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"
+         ]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "importKey",
+         "signatures": [
+             "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: string | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams, extractable:boolean, keyUsages: string[]): PromiseLike<CryptoKey>",
+             "importKey(format: \"raw\" | \"pkcs8\" | \"spki\", keyData: BufferSource, algorithm: string | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams, extractable:boolean, keyUsages: string[]): PromiseLike<CryptoKey>",
+             "importKey(format: string, keyData: JsonWebKey | BufferSource, algorithm: string | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams, extractable:boolean, keyUsages: string[]): PromiseLike<CryptoKey>"
+         ]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "sign",
+         "signatures": ["sign(algorithm: string | RsaPssParams | EcdsaParams | AesCmacParams, key: CryptoKey, data: BufferSource): PromiseLike<ArrayBuffer>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "unwrapKey",
+         "signatures": ["unwrapKey(format: string, wrappedKey: BufferSource, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier, unwrappedKeyAlgorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "verify",
+         "signatures": ["verify(algorithm: string | RsaPssParams | EcdsaParams | AesCmacParams, key: CryptoKey, signature: BufferSource, data: BufferSource): PromiseLike<boolean>"]
+     },
+     {
+         "kind": "method",
+         "interface": "SubtleCrypto",
+         "name": "wrapKey",
+         "signatures": ["wrapKey(format: string, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier): PromiseLike<ArrayBuffer>"]
+     },
+     {
+        "kind": "method",
+        "name": "setTimeout",
+        "signatures": [
+            "setTimeout(handler: (...args: any[]) => void, timeout: number): number",
+            "setTimeout(handler: any, timeout?: any, ...args: any[]): number"
+        ]
+     },
+     {
+        "kind": "method",
+        "name": "setImmediate",
+        "signatures": [
+            "setImmediate(handler: (...args: any[]) => void): number",
+            "setImmediate(handler: any, ...args: any[]): number"
+        ]
+     },
+     {
+        "kind": "method",
+        "name": "setInterval",
+        "signatures": [
+            "setInterval(handler: (...args: any[]) => void, timeout: number): number",
+            "setInterval(handler: any, timeout?: any, ...args: any[]): number"
+        ]
+     },
+     {
+         "kind": "property",
+         "interface": "HTMLInputElement",
+         "readonly": true,
+         "name": "files",
+         "type": "FileList | null"
+     },
+     {
+         "kind": "property",
+         "interface": "Window",
+         "name": "opener",
+         "type": "any"
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "back",
+        "signatures": ["back(): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "forward",
+        "signatures": ["forward(): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "go",
+        "signatures": ["go(delta?: number): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "pushState",
+        "signatures": ["pushState(data: any, title: string, url?: string | null): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "History",
+        "name": "replaceState",
+        "signatures": ["replaceState(data: any, title: string, url?: string | null): void"]
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "firstChild",
+        "type": "Node | null"
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "lastChild",
+        "type": "Node | null"
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "nextSibling",
+        "type": "Node | null"
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "previousSibling",
+        "type": "Node | null"
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "parentNode",
+        "type": "Node | null"
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "parentElement",
+        "type": "HTMLElement | null"
+    },
+    {
+        "kind": "method",
+        "interface": "MouseEvent",
+        "name": "initMouseEvent",
+        "signatures": ["initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void"]
+    },
+    {
+        "kind": "property",
+        "interface": "DataTransfer",
+        "readonly": true,
+        "name": "types",
+        "type": "string[]"
+    },
+    {
+        "kind": "method",
+        "interface": "XPathEvaluator",
+        "name": "evaluate",
+        "signatures": ["evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | null, type: number, result: XPathResult | null): XPathResult"]
+    },
+    {
+        "kind": "method",
+        "interface": "Document",
+        "name": "evaluate",
+        "signatures": ["evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | null, type: number, result: XPathResult | null): XPathResult"]
+    },
+    {
+        "kind": "method",
+        "interface": "XPathExpression",
+        "name": "evaluate",
+        "signatures": ["evaluate(contextNode: Node, type: number, result: XPathResult | null): XPathResult"]
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "Node, GlobalEventHandlers, NodeSelector, DocumentEvent, ParentNode, DocumentOrShadowRoot",
+        "interface": "Document"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "firstElementChild",
+        "type": "Element | null"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "lastElementChild",
+        "type": "Element | null"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "nextElementSibling",
+        "type": "Element | null"
+    },
+    {
+        "kind": "property",
+        "interface": "ElementTraversal",
+        "readonly": true,
+        "name": "previousElementSibling",
+        "type": "Element | null"
     }
-]
+ ]
