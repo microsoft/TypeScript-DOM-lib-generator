@@ -1,4 +1,6 @@
-<webidl-xml name="Web Workers" original-file="webworkers.specidl" xmlns="http://schemas.microsoft.com/ie/webidl-xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
+<webidl-xml name="Web Workers" original-file="webworkers.specidl" 
+  xmlns="http://schemas.microsoft.com/ie/webidl-xml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
   <interfaces>
     <interface name="FileReaderSync" extends="Object">
       <constructor></constructor>

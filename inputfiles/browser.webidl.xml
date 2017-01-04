@@ -1,4 +1,6 @@
-<webidl-xml name="Microsoft Edge Platform" original-file="browser.webidl" xmlns="http://schemas.microsoft.com/ie/webidl-xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
+<webidl-xml name="Microsoft Edge Platform" original-file="browser.webidl" 
+  xmlns="http://schemas.microsoft.com/ie/webidl-xml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
   <callback-functions>
     <callback-function name="ErrorEventHandler" callback="1" type="void">
       <param name="event" type="(Event or DOMString)" />

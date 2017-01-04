@@ -1,4 +1,6 @@
-<webidl-xml name="Internet Explorer Platform" original-file="browser.webidl" xmlns="http://schemas.microsoft.com/ie/webidl-xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
+<webidl-xml name="Internet Explorer Platform" original-file="browser.webidl" 
+  xmlns="http://schemas.microsoft.com/ie/webidl-xml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
   <callback-functions>
     <callback-function callback="1" name="ErrorEventHandler" specs="HTML5" type="void">
       <param name="event" type="(Event or DOMString)"/>
@@ -10260,7 +10262,7 @@
         <property name="self" property-descriptor-not-configurable="1" read-only="1" type="WorkerGlobalScope"/>
       </properties>
     </interface>
-    <interface extends="EventTarget" implicit-this="1" name="Window" primary-global="Window"  specs="HTML5">
+    <interface extends="EventTarget" implicit-this="1" name="Window" primary-global="Window" specs="HTML5">
       <anonymous-methods>
         <method getter="1" specs="HTML5" type="Window">
           <param name="index" type="unsigned long"/>
