@@ -12792,14 +12792,6 @@ interface EventListenerObject {
     handleEvent(evt: Event): void;
 }
 
-interface EventListenerObjectFor<T extends Event> {
-    handleEvent(evt: T): void;
-}
-
-interface EventListenerFor<T extends Event> {
-    (evt: T): void;
-}
-
 interface MessageEventInit extends EventInit {
     data?: any;
     origin?: string;
