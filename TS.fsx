@@ -763,8 +763,8 @@ module Emit =
     /// Emit overloads for the getElementsByTagName method
     let EmitGetElementsByTagNameOverloads (m: Browser.Method) =
         if matchSingleParamMethodSignature m "getElementsByTagName" "NodeList" "string" then
-            Pt.Printl "getElementsByTagName<K extends keyof ElementListTagNameMap>(%s: K): ElementListTagNameMap[K];" m.Params.[0].Name
-            Pt.Printl "getElementsByTagName(%s: string): NodeListOf<Element>;" m.Params.[0].Name
+            Pt.Printl "getElementsByTagName<K extends keyof ElementTagNameMap>(%s: K): HTMLCollectionOf<ElementTagNameMap[K]>;" m.Params.[0].Name
+            Pt.Printl "getElementsByTagName(%s: string): HTMLCollectionOf<Element>;" m.Params.[0].Name
 
     /// Emit overloads for the querySelector method
     let EmitQuerySelectorOverloads (m: Browser.Method) =
@@ -775,7 +775,7 @@ module Emit =
     /// Emit overloads for the querySelectorAll method
     let EmitQuerySelectorAllOverloads (m: Browser.Method) =
         if matchSingleParamMethodSignature m "querySelectorAll" "NodeList" "string" then
-            Pt.Printl "querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K];"
+            Pt.Printl "querySelectorAll<K extends keyof ElementTagNameMap>(selectors: K): NodeListOf<ElementTagNameMap[K]>;"
             Pt.Printl "querySelectorAll(selectors: string): NodeListOf<Element>;"
 
     let EmitHTMLElementTagNameMap () =
@@ -784,6 +784,7 @@ module Emit =
         for e in tagNameToEleName do
             if iNameToIDependList.ContainsKey e.Value && Seq.contains "HTMLElement" iNameToIDependList.[e.Value] then
                 Pt.Printl "\"%s\": %s;" (e.Key.ToLower()) e.Value
+        Pt.Printl "[index: string]: HTMLElement;"
         Pt.DecreaseIndent()
         Pt.Printl "}"
         Pt.Printl ""
@@ -793,15 +794,7 @@ module Emit =
         Pt.IncreaseIndent()
         for e in tagNameToEleName do
             Pt.Printl "\"%s\": %s;" (e.Key.ToLower()) e.Value
-        Pt.DecreaseIndent()
-        Pt.Printl "}"
-        Pt.Printl ""
-
-    let EmitElementListTagNameMap () =
-        Pt.Printl "interface ElementListTagNameMap {"
-        Pt.IncreaseIndent()
-        for e in tagNameToEleName do
-            Pt.Printl "\"%s\": NodeListOf<%s>;" (e.Key.ToLower()) e.Value
+        Pt.Printl "[index: string]: Element;"
         Pt.DecreaseIndent()
         Pt.Printl "}"
         Pt.Printl ""
@@ -1415,7 +1408,6 @@ module Emit =
         if flavor <> Worker then
             EmitHTMLElementTagNameMap()
             EmitElementTagNameMap()
-            EmitElementListTagNameMap()
             EmitNamedConstructors()
 
         match GetGlobalPollutor flavor with
