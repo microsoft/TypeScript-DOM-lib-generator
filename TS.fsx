@@ -764,7 +764,7 @@ module Emit =
     let EmitGetElementsByTagNameOverloads (m: Browser.Method) =
         if matchSingleParamMethodSignature m "getElementsByTagName" "NodeList" "string" then
             Pt.Printl "getElementsByTagName<K extends keyof ElementTagNameMap>(%s: K): HTMLCollectionOf<ElementTagNameMap[K]>;" m.Params.[0].Name
-            Pt.Printl "getElementsByTagName(%s: string): NodeListOf<Element>;" m.Params.[0].Name
+            Pt.Printl "getElementsByTagName(%s: string): HTMLCollectionOf<Element>;" m.Params.[0].Name
 
     /// Emit overloads for the querySelector method
     let EmitQuerySelectorOverloads (m: Browser.Method) =
