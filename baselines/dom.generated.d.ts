@@ -3029,7 +3029,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
       * Retrieves a collection of objects based on the specified element name.
       * @param name Specifies the name of an element.
       */
-    getElementsByTagName<K extends keyof ElementTagNameMap>(tagname: K): HTMLCollectionOf<ElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof ElementTagNameMap>(tagname: K): HTMLCollectionOf<IndexedElementTagNameMap[K]>;
     getElementsByTagName(tagname: string): HTMLCollectionOf<Element>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
@@ -3259,7 +3259,7 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelec
     getAttributeNodeNS(namespaceURI: string, localName: string): Attr;
     getBoundingClientRect(): ClientRect;
     getClientRects(): ClientRectList;
-    getElementsByTagName<K extends keyof ElementTagNameMap>(name: K): HTMLCollectionOf<ElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof ElementTagNameMap>(name: K): HTMLCollectionOf<IndexedElementTagNameMap[K]>;
     getElementsByTagName(name: string): HTMLCollectionOf<Element>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
@@ -12586,7 +12586,7 @@ interface NavigatorUserMedia {
 interface NodeSelector {
     querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null;
     querySelector(selectors: string): Element | null;
-    querySelectorAll<K extends keyof ElementTagNameMap>(selectors: K): NodeListOf<ElementTagNameMap[K]>;
+    querySelectorAll<K extends keyof ElementTagNameMap>(selectors: K): NodeListOf<IndexedElementTagNameMap[K]>;
     querySelectorAll(selectors: string): NodeListOf<Element>;
 }
 
@@ -13172,6 +13172,9 @@ interface HTMLElementTagNameMap {
     "video": HTMLVideoElement;
     "x-ms-webview": MSHTMLWebViewElement;
     "xmp": HTMLPreElement;
+}
+
+interface IndexedHTMLElementTagNameMap extends HTMLElementTagNameMap {
     [index: string]: HTMLElement;
 }
 
@@ -13352,6 +13355,10 @@ interface ElementTagNameMap {
     "wbr": HTMLElement;
     "x-ms-webview": MSHTMLWebViewElement;
     "xmp": HTMLPreElement;
+}
+
+
+interface IndexedElementTagNameMap extends ElementTagNameMap {
     [index: string]: Element;
 }
 
