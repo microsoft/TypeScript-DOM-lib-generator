@@ -278,7 +278,7 @@ module Data =
         Array.concat [| browser.Interfaces; browser.MixinInterfaces.Interfaces |]
 
     let allWebInterfaces =
-        Array.concat [| browser.Interfaces; [| browser.CallbackInterfaces.Interface |]; browser.MixinInterfaces.Interfaces |]
+        Array.concat [| browser.Interfaces; browser.CallbackInterfaces.Interfaces; browser.MixinInterfaces.Interfaces |]
 
     let allWorkerAdditionalInterfaces =
         Array.concat [| worker.Interfaces; worker.MixinInterfaces.Interfaces |]
@@ -1321,12 +1321,13 @@ module Emit =
 
             Pt.IncreaseIndent()
             Array.iter emitJsonProperty addedProps
-            dict.Members
-            |> Array.filter (fun m -> not (Set.contains m.Name removedPropNames))
-            |> Array.iter (fun m ->
-                match (getOverriddenItemByName m.Name ItemKind.Property dict.Name) with
-                | Some om -> emitJsonProperty om
-                | None -> Pt.Printl "%s?: %s;" m.Name (DomTypeToTsType m.Type))
+            if dict.Members.IsSome then
+                dict.Members.Value.Members
+                |> Array.filter (fun m -> not (Set.contains m.Name removedPropNames))
+                |> Array.iter (fun m ->
+                    match (getOverriddenItemByName m.Name ItemKind.Property dict.Name) with
+                    | Some om -> emitJsonProperty om
+                    | None -> Pt.Printl "%s?: %s;" m.Name (DomTypeToTsType m.Type))
             Pt.DecreaseIndent()
             Pt.Printl "}"
             Pt.Printl ""
@@ -1386,6 +1387,7 @@ module Emit =
             |> Array.iter emitTypeDef
         | _ ->
             browser.Typedefs
+            |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
             |> Array.iter emitTypeDef
 
         InputJson.getAddedItems ItemKind.TypeDef flavor
@@ -1401,7 +1403,7 @@ module Emit =
         Pt.Printl ""
 
         EmitDictionaries flavor
-        EmitCallBackInterface browser.CallbackInterfaces.Interface
+        browser.CallbackInterfaces.Interfaces |> Array.iter EmitCallBackInterface 
         EmitNonCallbackInterfaces flavor
 
         // Add missed interface definition from the spec

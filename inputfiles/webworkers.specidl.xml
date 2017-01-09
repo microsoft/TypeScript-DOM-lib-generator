@@ -1,7 +1,142 @@
 <webidl-xml name="Web Workers" original-file="webworkers.specidl" 
   xmlns="http://schemas.microsoft.com/ie/webidl-xml" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/ie/webidl-xml webidl-xml-schema.xsd">
+  <dictionaries>
+    <dictionary name="ClientQueryOptions" extends="Object">
+      <members>
+        <member name="includeUncontrolled" default="false" type="boolean" />
+        <member name="type" default="&quot;window&quot;" type="ClientType" />
+      </members>
+    </dictionary>
+    <dictionary name="ExtendableEventInit" extends="EventInit" />
+    <dictionary name="ExtendableMessageEventInit" extends="ExtendableEventInit">
+      <members>
+        <member name="data" type="any" />
+        <member name="origin" type="DOMString" />
+        <member name="lastEventId" type="DOMString" />
+        <member name="source" nullable="1" type="(Client or ServiceWorker or MessagePort)" />
+        <member name="ports" nullable="1" type="sequence&lt;MessagePort&gt;" />
+      </members>
+    </dictionary>
+    <dictionary name="FetchEventInit" extends="ExtendableEventInit">
+      <members>
+        <member name="request" required="1" type="Request" />
+        <member name="clientId" default="null" nullable="1" type="DOMString" />
+        <member name="isReload" default="false" type="boolean" />
+      </members>
+    </dictionary>
+    <dictionary name="NotificationEventInit" extends="ExtendableEventInit">
+      <members>
+        <member name="notification" required="1" type="Notification" />
+        <member name="action" default="&quot;&quot;" type="DOMString" />
+      </members>
+    </dictionary>
+    <dictionary name="PushEventInit" extends="ExtendableEventInit">
+      <members>
+        <member name="data" type="(BufferSource or USVString)" type-original="PushMessageDataInit" />
+      </members>
+    </dictionary>
+    <dictionary name="SyncEventInit" extends="ExtendableEventInit">
+      <members>
+        <member name="tag" required="1" type="DOMString" />
+        <member name="lastChance" default="false" type="boolean" />
+      </members>
+    </dictionary>
+  </dictionaries>
+  <enums>
+    <enum name="ClientType">
+      <value>window</value>
+      <value>worker</value>
+      <value>sharedworker</value>
+      <value>all</value>
+    </enum>
+    <enum name="FrameType">
+      <value>auxiliary</value>
+      <value>top-level</value>
+      <value>nested</value>
+      <value>none</value>
+    </enum>
+  </enums>
   <interfaces>
+    <interface name="Client" extends="Object">
+      <methods>
+        <method name="postMessage" type="void">
+          <param name="message" type="any" />
+          <param name="transfer" optional="1" type="sequence&lt;Transferable&gt;" />
+        </method>
+      </methods>
+      <properties>
+        <property name="frameType" read-only="1" type="FrameType" />
+        <property name="id" read-only="1" type="DOMString" />
+        <property name="url" read-only="1" type="USVString" />
+      </properties>
+    </interface>
+    <interface name="Clients" extends="Object">
+      <methods>
+        <method name="claim" new-object="1" type="Promise&lt;void&gt;" />
+        <method name="get" new-object="1" type="Promise&lt;any&gt;">
+          <param name="id" type="DOMString" />
+        </method>
+        <method name="matchAll" new-object="1" type="Promise&lt;sequence&lt;Client&gt;&gt;">
+          <param name="options" optional="1" type="ClientQueryOptions" />
+        </method>
+        <method name="openWindow" new-object="1" type="Promise&lt;WindowClient&gt;">
+          <param name="url" type="USVString" />
+        </method>
+      </methods>
+    </interface>
+    <interface name="DedicatedWorkerGlobalScope" extends="WorkerGlobalScope" global="Worker">
+      <methods>
+        <method name="close" type="void" />
+        <method name="postMessage" type="void">
+          <param name="message" type="any" />
+          <param name="transfer" optional="1" type="sequence&lt;Transferable&gt;" />
+        </method>
+      </methods>
+      <properties>
+        <property name="onmessage" event-handler="message" type="EventHandler" />
+      </properties>
+    </interface>
+    <interface name="ExtendableEvent" extends="Event">
+      <constructor>
+        <param name="type" type="DOMString" />
+        <param name="eventInitDict" optional="1" type="ExtendableEventInit" />
+      </constructor>
+      <methods>
+        <method name="waitUntil" type="void">
+          <param name="f" type="Promise&lt;any&gt;" />
+        </method>
+      </methods>
+    </interface>
+    <interface name="ExtendableMessageEvent" extends="ExtendableEvent">
+      <constructor>
+        <param name="type" type="DOMString" />
+        <param name="eventInitDict" optional="1" type="ExtendableMessageEventInit" />
+      </constructor>
+      <properties>
+        <property name="data" read-only="1" type="any" />
+        <property name="lastEventId" read-only="1" type="DOMString" />
+        <property name="origin" read-only="1" type="DOMString" />
+        <property name="ports" nullable="1" read-only="1" type="sequence&lt;MessagePort&gt;" />
+        <property name="source" nullable="1" read-only="1" same-object="1" type="(Client or ServiceWorker or MessagePort)" />
+      </properties>
+    </interface>
+    <interface name="FetchEvent" extends="ExtendableEvent">
+      <constructor>
+        <param name="type" type="DOMString" />
+        <param name="eventInitDict" type="FetchEventInit" />
+      </constructor>
+      <methods>
+        <method name="respondWith" type="void">
+          <param name="r" type="Promise&lt;Response&gt;" />
+        </method>
+      </methods>
+      <properties>
+        <property name="clientId" nullable="1" read-only="1" type="DOMString" />
+        <property name="isReload" read-only="1" type="boolean" />
+        <property name="request" read-only="1" same-object="1" type="Request" />
+      </properties>
+    </interface>
     <interface name="FileReaderSync" extends="Object">
       <constructor></constructor>
       <methods>
@@ -20,20 +155,99 @@
         </method>
       </methods>
     </interface>
-    <interface name="WorkerGlobalScope" extends="EventTarget" global="Worker">
-      <implements>WorkerUtils</implements>
-      <implements>DedicatedWorkerGlobalScope</implements>
-      <implements>WindowConsole</implements>
+    <interface name="NotificationEvent" extends="ExtendableEvent">
+      <constructor>
+        <param name="type" type="DOMString" />
+        <param name="eventInitDict" type="NotificationEventInit" />
+      </constructor>
+      <properties>
+        <property name="action" read-only="1" type="DOMString" />
+        <property name="notification" read-only="1" type="Notification" />
+      </properties>
+    </interface>
+    <interface name="PushEvent" extends="ExtendableEvent">
+      <constructor>
+        <param name="type" type="DOMString" />
+        <param name="eventInitDict" optional="1" type="PushEventInit" />
+      </constructor>
+      <properties>
+        <property name="data" nullable="1" read-only="1" type="PushMessageData" />
+      </properties>
+    </interface>
+    <interface name="PushMessageData" extends="Object">
       <methods>
-        <method name="close" type="void" />
+        <method name="arrayBuffer" type="ArrayBuffer" />
+        <method name="blob" type="Blob" />
+        <method name="json" type="JSON" />
+        <method name="text" type="USVString" />
+      </methods>
+    </interface>
+    <interface name="ServiceWorkerGlobalScope" extends="WorkerGlobalScope">
+      <events>
+        <event name="install" type="ExtendableEvent" />
+        <event name="activate" type="ExtendableEvent" />
+        <event name="fetch" type="FetchEvent" />
+        <event name="message" type="ExtendableMessageEvent" />
+        <event name="notificationclick" type="NotificationEvent" />
+        <event name="notificationclose" type="NotificationEvent" />
+        <event name="push" type="PushEvent" />
+        <event name="pushsubscriptionchange" type="ExtendableEvent" />
+        <event name="sync" type="SyncEvent" />
+      </events>
+      <methods>
+        <method name="skipWaiting" new-object="1" type="Promise&lt;void&gt;" />
+      </methods>
+      <properties>
+        <property name="clients" read-only="1" same-object="1" type="Clients" />
+        <property name="onactivate" event-handler="activate" type="EventHandler" />
+        <property name="onfetch" event-handler="fetch" type="EventHandler" />
+        <property name="oninstall" event-handler="install" type="EventHandler" />
+        <property name="onmessage" event-handler="message" type="EventHandler" />
+        <property name="onnotificationclick" event-handler="notificationclick" type="EventHandler" />
+        <property name="onnotificationclose" event-handler="notificationclose" type="EventHandler" />
+        <property name="onpush" event-handler="push" type="EventHandler" />
+        <property name="onpushsubscriptionchange" event-handler="pushsubscriptionchange" type="EventHandler" />
+        <property name="onsync" event-handler="sync" type="EventHandler" />
+        <property name="registration" read-only="1" same-object="1" type="ServiceWorkerRegistration" />
+      </properties>
+    </interface>
+    <interface name="SyncEvent" extends="ExtendableEvent">
+      <constructor>
+        <param name="type" type="DOMString" />
+        <param name="init" type="SyncEventInit" />
+      </constructor>
+      <properties>
+        <property name="lastChance" read-only="1" type="boolean" />
+        <property name="tag" read-only="1" type="DOMString" />
+      </properties>
+    </interface>
+    <interface name="WindowClient" extends="Client">
+      <methods>
+        <method name="focus" new-object="1" type="Promise&lt;WindowClient&gt;" />
+        <method name="navigate" new-object="1" type="Promise&lt;WindowClient&gt;">
+          <param name="url" type="USVString" />
+        </method>
+      </methods>
+      <properties>
+        <property name="focused" read-only="1" type="boolean" />
+        <property name="visibilityState" read-only="1" type="VisibilityState" />
+      </properties>
+    </interface>
+    <interface name="WorkerGlobalScope" extends="EventTarget">
+      <implements>WorkerUtils</implements>
+      <implements>WindowConsole</implements>
+      <implements>GlobalFetch</implements>
+      <methods>
         <method name="msWriteProfilerMark" type="void">
           <param name="profilerMarkName" type="DOMString" />
         </method>
-        <method name="toString" stringifier="1" type="DOMString" />
       </methods>
       <properties>
+        <property name="caches" read-only="1" same-object="1" secure-context="1" type="CacheStorage" />
+        <property name="isSecureContext" read-only="1" type="boolean" />
         <property name="location" property-descriptor-not-configurable="1" read-only="1" type="WorkerLocation" />
         <property name="onerror" event-handler="error" type="EventHandler" />
+        <property name="performance" property-descriptor-not-configurable="1" read-only="1" type="Performance" />
         <property name="self" property-descriptor-not-configurable="1" read-only="1" type="WorkerGlobalScope" />
       </properties>
     </interface>
@@ -46,6 +260,7 @@
         <property name="host" read-only="1" type="DOMString" />
         <property name="hostname" read-only="1" type="DOMString" />
         <property name="href" read-only="1" stringifier="1" type="DOMString" />
+        <property name="origin" read-only="1" type="DOMString" />
         <property name="pathname" read-only="1" type="DOMString" />
         <property name="port" read-only="1" type="DOMString" />
         <property name="protocol" read-only="1" type="DOMString" />
@@ -55,19 +270,11 @@
     <interface name="WorkerNavigator" extends="Object">
       <implements>NavigatorID</implements>
       <implements>NavigatorOnLine</implements>
+      <implements>NavigatorBeacon</implements>
+      <implements>NavigatorConcurrentHardware</implements>
     </interface>
   </interfaces>
   <mixin-interfaces>
-    <interface name="DedicatedWorkerGlobalScope" extends="Object" no-interface-object="1">
-      <methods>
-        <method name="postMessage" type="void">
-          <param name="data" type="any" />
-        </method>
-      </methods>
-      <properties>
-        <property name="onmessage" event-handler="message" type="EventHandler" />
-      </properties>
-    </interface>
     <interface name="WorkerUtils" extends="Object" no-interface-object="1">
       <implements>WindowBase64</implements>
       <methods>
@@ -105,4 +312,7 @@
       </properties>
     </interface>
   </mixin-interfaces>
+  <typedefs>
+    <typedef new-type="PushMessageDataInit" type="(BufferSource or USVString)" />
+  </typedefs>
 </webidl-xml>
