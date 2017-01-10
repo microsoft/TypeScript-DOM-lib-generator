@@ -3031,6 +3031,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
       */
     getElementsByTagName<K extends keyof ElementTagNameMap>(tagname: K): HTMLCollectionOf<IndexedElementTagNameMap[K]>;
     getElementsByTagName(tagname: string): HTMLCollectionOf<Element>;
+    getElementsByTagNameNS<K extends keyof HTMLElementTagNameMap>(namespaceURI: "http://www.w3.org/1999/xhtml", localName: K): HTMLCollectionOf<IndexedHTMLElementTagNameMap[K]>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
     getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>;
@@ -3261,6 +3262,7 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelec
     getClientRects(): ClientRectList;
     getElementsByTagName<K extends keyof ElementTagNameMap>(name: K): HTMLCollectionOf<IndexedElementTagNameMap[K]>;
     getElementsByTagName(name: string): HTMLCollectionOf<Element>;
+    getElementsByTagNameNS<K extends keyof HTMLElementTagNameMap>(namespaceURI: "http://www.w3.org/1999/xhtml", localName: K): HTMLCollectionOf<IndexedHTMLElementTagNameMap[K]>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
     getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>;
