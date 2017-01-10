@@ -322,19 +322,27 @@ module Data =
 
     let GetInterfaceByName = allInterfacesMap.TryFind
 
-    let knownWorkerInterfaces =
-        [ "Algorithm"; "AlgorithmIdentifier"; "KeyAlgorithm"; "CryptoKey"; "AbstractWorker"; "AudioBuffer"; "Blob";
-        "CloseEvent"; "Console"; "Coordinates"; "DecodeSuccessCallback";
-        "DecodeErrorCallback"; "DOMError"; "DOMException"; "DOMStringList"; "ErrorEvent"; "Event"; "ErrorEventHandler";
-        "EventException"; "EventInit"; "EventListener"; "EventTarget"; "File"; "FileList"; "FileReader";
-        "FunctionStringCallback"; "IDBCursor"; "IDBCursorWithValue"; "IDBDatabase"; "IDBFactory"; "IDBIndex";
-        "IDBKeyRange"; "IDBObjectStore"; "IDBOpenDBRequest"; "IDBRequest"; "IDBTransaction"; "IDBVersionChangeEvent";
-        "ImageData"; "MediaQueryList"; "MediaQueryListListener"; "MessageChannel"; "MessageEvent"; "MessagePort"; "MSApp";
-        "MSAppAsyncOperation"; "MSAppView"; "MSBaseReader"; "MSBlobBuilder"; "MSExecAtPriorityFunctionCallback";
-        "MSLaunchUriCallback"; "MSStream"; "MSStreamReader"; "MSUnsafeFunctionCallback"; "NavigatorID"; "NavigatorOnLine";
-        "Position"; "PositionCallback"; "PositionError"; "PositionErrorCallback"; "ProgressEvent"; "WebSocket";
-        "WindowBase64"; "WindowConsole"; "Worker"; "XMLHttpRequest"; "XMLHttpRequestEventTarget"; "XMLHttpRequestUpload";
-        "IDBObjectStoreParameters"; "IDBIndexParameters"; "IDBKeyPath"]
+    let knownWorkerInterfaces = 
+        ["AbstractWorker"; "Algorithm"; "AlgorithmIdentifier"; "Blob"; "Body";
+        "BodyInit"; "Cache"; "CacheQueryOptions"; "CacheStorage";
+        "ClientQueryOptions"; "CloseEvent"; "CloseEventInit"; "Console";
+        "CryptoKey"; "DOMError"; "DOMStringList"; "ErrorEvent"; "Event";
+        "EventInit"; "EventTarget"; "ExtendableEventInit";
+        "ExtendableMessageEventInit"; "FetchEventInit"; "ForEachCallback";
+        "GetNotificationOptions"; "GlobalFetch"; "Headers"; "IDBCursor";
+        "IDBDatabase"; "IDBFactory"; "IDBIndex"; "IDBIndexParameters"; "IDBKeyPath";
+        "IDBKeyRange"; "IDBObjectStore"; "IDBObjectStoreParameters";
+        "IDBOpenDBRequest"; "IDBRequest"; "IDBTransaction"; "IDBVersionChangeEvent";
+        "KeyAlgorithm"; "MessageEvent"; "MessageEventInit"; "MessagePort";
+        "NavigatorBeacon"; "NavigatorConcurrentHardware"; "NavigatorID";
+        "NavigatorOnLine"; "Notification"; "NotificationEventInit";
+        "NotificationOptions"; "NotificationPermissionCallback"; "Performance";
+        "PerformanceNavigation"; "PerformanceTiming"; "PushEventInit";
+        "PushManager"; "PushSubscription"; "PushSubscriptionOptions";
+        "PushSubscriptionOptionsInit"; "ReadableStream"; "ReadableStreamReader";
+        "Request"; "RequestInfo"; "RequestInit"; "Response"; "ResponseInit";
+        "ServiceWorker"; "ServiceWorkerRegistration"; "SyncEventInit";
+        "SyncManager"; "USVString"; "WindowBase64"; "WindowConsole"; "Worker"]
         |> set
 
     let GetAllInterfacesByFlavor flavor =
@@ -390,8 +398,8 @@ module Data =
         |> List.map (fun (k, v) -> (k.ToLower(), v))
         |> Map.ofList
 
-    let getEventTypeInInterface eName iName =
-        match iName, eName with
+    let getEventTypeInInterface eName (i: Browser.Interface) =
+        match i.Name, eName with
         | "IDBDatabase", "abort"
         | "IDBTransaction", "abort"
         | "MSBaseReader", "abort"
@@ -402,9 +410,19 @@ module Data =
         | "XMLHttpRequest", _
             -> "ProgressEvent"
         | _ ->
-            match eNameToEType.TryFind eName with
-            | Some eType' -> eType'
-            | _ -> "Event"
+            let ownEventType =
+                if i.Events.IsSome then
+                    match i.Events.Value.Events |> Array.tryFind (fun e -> e.Name = eName) with
+                    | Some e -> e.Type
+                    | _ -> ""
+                else
+                    ""
+            if ownEventType = "" then
+                match eNameToEType.TryFind eName with
+                | Some eType' -> eType'
+                | _ -> "Event"
+            else
+                ownEventType
 
     /// Tag name to element name map
     let tagNameToEleName =
@@ -923,7 +941,7 @@ module Emit =
                             // normally, but in "SVGSVGElement" it handles "SVGError" event instead.
                             let eType =
                                 if p.EventHandler.IsSome then
-                                    getEventTypeInInterface p.EventHandler.Value i.Name
+                                    getEventTypeInInterface p.EventHandler.Value i
                                 else
                                     "Event"
                             String.Format("({0}ev: {1}) => any", EmitEventHandlerThis flavor prefix i, eType)
@@ -1225,7 +1243,7 @@ module Emit =
     let EmitInterfaceEventMap flavor (i:Browser.Interface) =
         let emitInterfaceEventMapEntry (eHandler: EventHandler)  =
             let eventType =
-                getEventTypeInInterface eHandler.EventName i.Name
+                getEventTypeInInterface eHandler.EventName i
             Pt.Printl "\"%s\": %s;" eHandler.EventName eventType
 
         let ownEventHandles = if iNameToEhList.ContainsKey i.Name && not iNameToEhList.[i.Name].IsEmpty then iNameToEhList.[i.Name] else []
@@ -1387,6 +1405,9 @@ module Emit =
         browser.Dictionaries
         |> Array.filter (fun dict -> flavor <> Worker || knownWorkerInterfaces.Contains dict.Name)
         |> Array.iter emitDictionary
+
+        if flavor = Worker then
+            worker.Dictionaries |> Array.iter emitDictionary
 
     let EmitAddedInterface (ai: InputJsonType.Root) =
         match ai.Extends with
