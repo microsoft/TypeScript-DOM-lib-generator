@@ -13044,6 +13044,16 @@ interface CustomElementRegistry {
     whenDefined(name: string): PromiseLike<void>;
 }
 
+interface PromiseRejectionEvent extends Event {
+    readonly promise: PromiseLike<any>;
+    readonly reason: any;
+}
+
+interface PromiseRejectionEventInit extends EventInit {
+    promise: PromiseLike<any>;
+    reason?: any;
+}
+
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
 interface ErrorEventHandler {

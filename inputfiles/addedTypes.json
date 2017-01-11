@@ -1461,5 +1461,33 @@
         "interface": "Window",
         "name": "customElements",
         "type": "CustomElementRegistry"
+    },
+    {
+        "kind": "interface",
+        "name": "PromiseRejectionEvent",
+        "extends": "Event",
+        "flavor": "Web",
+        "properties": [{
+            "name": "promise",
+            "type": "PromiseLike<any>",
+            "readonly": true
+        }, {
+            "name": "reason",
+            "type": "any",
+            "readonly": true
+        }]
+    },
+    {
+        "kind": "interface",
+        "name": "PromiseRejectionEventInit",
+        "extends": "EventInit",
+        "flavor": "Web",
+        "properties": [{
+            "name": "promise",
+            "type": "PromiseLike<any>"
+        }, {
+            "name": "reason?",
+            "type": "any"
+        }]
     }
 ]
