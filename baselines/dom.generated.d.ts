@@ -7551,7 +7551,7 @@ interface MessagePortEventMap {
 interface MessagePort extends EventTarget {
     onmessage: (this: MessagePort, ev: MessageEvent) => any;
     close(): void;
-    postMessage(message?: any, ports?: any): void;
+    postMessage(data: any, transfer?: any[]): void;
     start(): void;
     addEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
@@ -12178,7 +12178,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
 
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: (this: Worker, ev: MessageEvent) => any;
-    postMessage(message: any, ports?: any): void;
+    postMessage(data: any, transfer?: any[]): void;
     terminate(): void;
     addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
