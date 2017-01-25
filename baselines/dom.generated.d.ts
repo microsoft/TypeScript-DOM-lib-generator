@@ -2016,6 +2016,7 @@ interface CSSStyleDeclaration {
     zIndex: string | null;
     zoom: string | null;
     resize: string | null;
+    userSelect: string | null;
     getPropertyPriority(propertyName: string): string;
     getPropertyValue(propertyName: string): string;
     item(index: number): string;
@@ -2279,7 +2280,7 @@ interface Console {
     assert(test?: boolean, message?: string, ...optionalParams: any[]): void;
     clear(): void;
     count(countTitle?: string): void;
-    debug(message?: string, ...optionalParams: any[]): void;
+    debug(message?: any, ...optionalParams: any[]): void;
     dir(value?: any, ...optionalParams: any[]): void;
     dirxml(value: any): void;
     error(message?: any, ...optionalParams: any[]): void;
@@ -8238,7 +8239,7 @@ interface Node extends EventTarget {
     readonly parentNode: Node | null;
     readonly previousSibling: Node | null;
     textContent: string | null;
-    appendChild(newChild: Node): Node;
+    appendChild<T extends Node>(newChild: T): T;
     cloneNode(deep?: boolean): Node;
     compareDocumentPosition(other: Node): number;
     contains(child: Node): boolean;

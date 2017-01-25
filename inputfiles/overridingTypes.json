@@ -18,6 +18,12 @@
     },
     {
         "kind": "method",
+        "interface": "Node",
+        "name": "appendChild",
+        "signatures": ["appendChild<T extends Node>(newChild: T): T"]
+    },
+    {
+        "kind": "method",
         "interface": "HTMLCollection",
         "name": "item",
         "signatures": ["item(index: number): Element"]
@@ -242,6 +248,12 @@
         "interface": "Window",
         "name": "orientation",
         "type": "string | number"
+    },
+    {
+        "kind": "method",
+        "interface": "Console",
+        "name": "debug",
+        "signatures": ["debug(message?: any, ...optionalParams: any[]): void"]
     },
     {
         "kind": "method",

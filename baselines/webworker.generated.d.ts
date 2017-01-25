@@ -196,7 +196,7 @@ interface Console {
     assert(test?: boolean, message?: string, ...optionalParams: any[]): void;
     clear(): void;
     count(countTitle?: string): void;
-    debug(message?: string, ...optionalParams: any[]): void;
+    debug(message?: any, ...optionalParams: any[]): void;
     dir(value?: any, ...optionalParams: any[]): void;
     dirxml(value: any): void;
     error(message?: any, ...optionalParams: any[]): void;
