@@ -381,6 +381,7 @@ module Data =
                 match e.Name with
                 | "abort" -> "UIEvent"
                 | "complete" -> "Event"
+                | "click" -> "MouseEvent"
                 | "error" -> "ErrorEvent"
                 | "load" -> "Event"
                 | "loadstart" -> "Event"
@@ -543,23 +544,25 @@ module Data =
             iNameToEhList.ContainsKey i.Name && not iNameToEhList.[i.Name].IsEmpty
 
         // Get all the event handlers from an interface and also from its inherited / implemented interfaces
-        let rec getEventHandler(i : Browser.Interface) =
-            let extendedEventHandler =
+        let rec getParentsWithEventHandler (i : Browser.Interface) =
+            let getParentEventHandler (i: Browser.Interface) =
+                if hasHandler i then [i] else getParentsWithEventHandler i
+
+            let extendedParentWithEventHandler =
                 match GetInterfaceByName i.Extends with
-                | Some i when hasHandler i -> [i]
-                | _ -> []
+                | Some extended -> getParentEventHandler extended
+                | None -> []
 
-            let implementedEventHandler =
-                let implementis = i.Implements |> Array.map GetInterfaceByName
-                [ for i' in implementis do
-                    yield! match i' with
-                            | Some i ->  if hasHandler i then [i] else []
-                            | None -> [] ]
+            let implementedParentsWithEventHandler =
+                i.Implements
+                |> Array.choose GetInterfaceByName
+                |> List.ofArray
+                |> List.collect getParentEventHandler
 
-            List.concat [ extendedEventHandler; implementedEventHandler ]
+            List.concat [ extendedParentWithEventHandler; implementedParentsWithEventHandler ]
 
         allInterfaces
-        |> Array.map (fun i -> (i.Name, getEventHandler i))
+        |> Array.map (fun i -> (i.Name, getParentsWithEventHandler i))
         |> Map.ofArray
 
     /// Event handler name to event type map
@@ -1068,10 +1071,10 @@ module Emit =
         let fPrefix =
             if prefix.StartsWith "declare var" then "declare function " else ""
 
-        let emitEventHandler prefix (i:Browser.Interface) =
+        let emitEventHandler prefix (iParent:Browser.Interface) =
             Pt.Printl
                 "%saddEventListener<K extends keyof %sEventMap>(type: K, listener: (this: %s, ev: %sEventMap[K]) => any, useCapture?: boolean): void;"
-                prefix i.Name i.Name i.Name
+                prefix iParent.Name i.Name iParent.Name
 
         let shouldEmitStringEventHandler =
             if iNameToEhList.ContainsKey i.Name  && not iNameToEhList.[i.Name].IsEmpty then
