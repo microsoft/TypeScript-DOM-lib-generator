@@ -57,6 +57,7 @@
     "MessageEvent",
     "MessageEventInit",
     "MessagePort",
+    "MSBaseReader",
     "NavigatorBeacon",
     "NavigatorConcurrentHardware",
     "NavigatorID",
