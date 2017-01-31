@@ -139,6 +139,21 @@ interface WebKitFileCallback {
     (evt: Event): void;
 }
 
+interface AudioBuffer {
+    readonly duration: number;
+    readonly length: number;
+    readonly numberOfChannels: number;
+    readonly sampleRate: number;
+    copyFromChannel(destination: Float32Array, channelNumber: number, startInChannel?: number): void;
+    copyToChannel(source: Float32Array, channelNumber: number, startInChannel?: number): void;
+    getChannelData(channel: number): Float32Array;
+}
+
+declare var AudioBuffer: {
+    prototype: AudioBuffer;
+    new(): AudioBuffer;
+}
+
 interface Blob {
     readonly size: number;
     readonly type: string;
@@ -222,6 +237,21 @@ declare var Console: {
     new(): Console;
 }
 
+interface Coordinates {
+    readonly accuracy: number;
+    readonly altitude: number | null;
+    readonly altitudeAccuracy: number | null;
+    readonly heading: number | null;
+    readonly latitude: number;
+    readonly longitude: number;
+    readonly speed: number | null;
+}
+
+declare var Coordinates: {
+    prototype: Coordinates;
+    new(): Coordinates;
+}
+
 interface CryptoKey {
     readonly algorithm: KeyAlgorithm;
     readonly extractable: boolean;
@@ -242,6 +272,72 @@ interface DOMError {
 declare var DOMError: {
     prototype: DOMError;
     new(): DOMError;
+}
+
+interface DOMException {
+    readonly code: number;
+    readonly message: string;
+    readonly name: string;
+    toString(): string;
+    readonly ABORT_ERR: number;
+    readonly DATA_CLONE_ERR: number;
+    readonly DOMSTRING_SIZE_ERR: number;
+    readonly HIERARCHY_REQUEST_ERR: number;
+    readonly INDEX_SIZE_ERR: number;
+    readonly INUSE_ATTRIBUTE_ERR: number;
+    readonly INVALID_ACCESS_ERR: number;
+    readonly INVALID_CHARACTER_ERR: number;
+    readonly INVALID_MODIFICATION_ERR: number;
+    readonly INVALID_NODE_TYPE_ERR: number;
+    readonly INVALID_STATE_ERR: number;
+    readonly NAMESPACE_ERR: number;
+    readonly NETWORK_ERR: number;
+    readonly NOT_FOUND_ERR: number;
+    readonly NOT_SUPPORTED_ERR: number;
+    readonly NO_DATA_ALLOWED_ERR: number;
+    readonly NO_MODIFICATION_ALLOWED_ERR: number;
+    readonly PARSE_ERR: number;
+    readonly QUOTA_EXCEEDED_ERR: number;
+    readonly SECURITY_ERR: number;
+    readonly SERIALIZE_ERR: number;
+    readonly SYNTAX_ERR: number;
+    readonly TIMEOUT_ERR: number;
+    readonly TYPE_MISMATCH_ERR: number;
+    readonly URL_MISMATCH_ERR: number;
+    readonly VALIDATION_ERR: number;
+    readonly WRONG_DOCUMENT_ERR: number;
+}
+
+declare var DOMException: {
+    prototype: DOMException;
+    new(): DOMException;
+    readonly ABORT_ERR: number;
+    readonly DATA_CLONE_ERR: number;
+    readonly DOMSTRING_SIZE_ERR: number;
+    readonly HIERARCHY_REQUEST_ERR: number;
+    readonly INDEX_SIZE_ERR: number;
+    readonly INUSE_ATTRIBUTE_ERR: number;
+    readonly INVALID_ACCESS_ERR: number;
+    readonly INVALID_CHARACTER_ERR: number;
+    readonly INVALID_MODIFICATION_ERR: number;
+    readonly INVALID_NODE_TYPE_ERR: number;
+    readonly INVALID_STATE_ERR: number;
+    readonly NAMESPACE_ERR: number;
+    readonly NETWORK_ERR: number;
+    readonly NOT_FOUND_ERR: number;
+    readonly NOT_SUPPORTED_ERR: number;
+    readonly NO_DATA_ALLOWED_ERR: number;
+    readonly NO_MODIFICATION_ALLOWED_ERR: number;
+    readonly PARSE_ERR: number;
+    readonly QUOTA_EXCEEDED_ERR: number;
+    readonly SECURITY_ERR: number;
+    readonly SERIALIZE_ERR: number;
+    readonly SYNTAX_ERR: number;
+    readonly TIMEOUT_ERR: number;
+    readonly TYPE_MISMATCH_ERR: number;
+    readonly URL_MISMATCH_ERR: number;
+    readonly VALIDATION_ERR: number;
+    readonly WRONG_DOCUMENT_ERR: number;
 }
 
 interface DOMStringList {
@@ -313,6 +409,43 @@ declare var EventTarget: {
     new(): EventTarget;
 }
 
+interface File extends Blob {
+    readonly lastModifiedDate: any;
+    readonly name: string;
+    readonly webkitRelativePath: string;
+}
+
+declare var File: {
+    prototype: File;
+    new (parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag): File;
+}
+
+interface FileList {
+    readonly length: number;
+    item(index: number): File;
+    [index: number]: File;
+}
+
+declare var FileList: {
+    prototype: FileList;
+    new(): FileList;
+}
+
+interface FileReader extends EventTarget, MSBaseReader {
+    readonly error: DOMError;
+    readAsArrayBuffer(blob: Blob): void;
+    readAsBinaryString(blob: Blob): void;
+    readAsDataURL(blob: Blob): void;
+    readAsText(blob: Blob, encoding?: string): void;
+    addEventListener<K extends keyof MSBaseReaderEventMap>(type: K, listener: (this: FileReader, ev: MSBaseReaderEventMap[K]) => any, useCapture?: boolean): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
+}
+
+declare var FileReader: {
+    prototype: FileReader;
+    new(): FileReader;
+}
+
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -349,6 +482,15 @@ declare var IDBCursor: {
     readonly NEXT_NO_DUPLICATE: string;
     readonly PREV: string;
     readonly PREV_NO_DUPLICATE: string;
+}
+
+interface IDBCursorWithValue extends IDBCursor {
+    readonly value: any;
+}
+
+declare var IDBCursorWithValue: {
+    prototype: IDBCursorWithValue;
+    new(): IDBCursorWithValue;
 }
 
 interface IDBDatabaseEventMap {
@@ -524,6 +666,28 @@ declare var IDBVersionChangeEvent: {
     new(): IDBVersionChangeEvent;
 }
 
+interface ImageData {
+    data: Uint8ClampedArray;
+    readonly height: number;
+    readonly width: number;
+}
+
+declare var ImageData: {
+    prototype: ImageData;
+    new(width: number, height: number): ImageData;
+    new(array: Uint8ClampedArray, width: number, height: number): ImageData;
+}
+
+interface MessageChannel {
+    readonly port1: MessagePort;
+    readonly port2: MessagePort;
+}
+
+declare var MessageChannel: {
+    prototype: MessageChannel;
+    new(): MessageChannel;
+}
+
 interface MessageEvent extends Event {
     readonly data: any;
     readonly origin: string;
@@ -656,6 +820,45 @@ interface PerformanceTiming {
 declare var PerformanceTiming: {
     prototype: PerformanceTiming;
     new(): PerformanceTiming;
+}
+
+interface Position {
+    readonly coords: Coordinates;
+    readonly timestamp: number;
+}
+
+declare var Position: {
+    prototype: Position;
+    new(): Position;
+}
+
+interface PositionError {
+    readonly code: number;
+    readonly message: string;
+    toString(): string;
+    readonly PERMISSION_DENIED: number;
+    readonly POSITION_UNAVAILABLE: number;
+    readonly TIMEOUT: number;
+}
+
+declare var PositionError: {
+    prototype: PositionError;
+    new(): PositionError;
+    readonly PERMISSION_DENIED: number;
+    readonly POSITION_UNAVAILABLE: number;
+    readonly TIMEOUT: number;
+}
+
+interface ProgressEvent extends Event {
+    readonly lengthComputable: boolean;
+    readonly loaded: number;
+    readonly total: number;
+    initProgressEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, lengthComputableArg: boolean, loadedArg: number, totalArg: number): void;
+}
+
+declare var ProgressEvent: {
+    prototype: ProgressEvent;
+    new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
 }
 
 interface PushManager {
@@ -805,6 +1008,43 @@ declare var SyncManager: {
     new(): SyncManager;
 }
 
+interface WebSocketEventMap {
+    "close": CloseEvent;
+    "error": Event;
+    "message": MessageEvent;
+    "open": Event;
+}
+
+interface WebSocket extends EventTarget {
+    binaryType: string;
+    readonly bufferedAmount: number;
+    readonly extensions: string;
+    onclose: (this: WebSocket, ev: CloseEvent) => any;
+    onerror: (this: WebSocket, ev: Event) => any;
+    onmessage: (this: WebSocket, ev: MessageEvent) => any;
+    onopen: (this: WebSocket, ev: Event) => any;
+    readonly protocol: string;
+    readonly readyState: number;
+    readonly url: string;
+    close(code?: number, reason?: string): void;
+    send(data: any): void;
+    readonly CLOSED: number;
+    readonly CLOSING: number;
+    readonly CONNECTING: number;
+    readonly OPEN: number;
+    addEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, useCapture?: boolean): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
+}
+
+declare var WebSocket: {
+    prototype: WebSocket;
+    new(url: string, protocols?: string | string[]): WebSocket;
+    readonly CLOSED: number;
+    readonly CLOSING: number;
+    readonly CONNECTING: number;
+    readonly OPEN: number;
+}
+
 interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
 }
@@ -820,6 +1060,62 @@ interface Worker extends EventTarget, AbstractWorker {
 declare var Worker: {
     prototype: Worker;
     new(stringUrl: string): Worker;
+}
+
+interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
+    "readystatechange": Event;
+}
+
+interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {
+    onreadystatechange: (this: XMLHttpRequest, ev: Event) => any;
+    readonly readyState: number;
+    readonly response: any;
+    readonly responseText: string;
+    responseType: string;
+    readonly responseURL: string;
+    readonly responseXML: any;
+    readonly status: number;
+    readonly statusText: string;
+    timeout: number;
+    readonly upload: XMLHttpRequestUpload;
+    withCredentials: boolean;
+    msCaching?: string;
+    abort(): void;
+    getAllResponseHeaders(): string;
+    getResponseHeader(header: string): string | null;
+    msCachingEnabled(): boolean;
+    open(method: string, url: string, async?: boolean, user?: string, password?: string): void;
+    overrideMimeType(mime: string): void;
+    send(data?: string): void;
+    send(data?: any): void;
+    setRequestHeader(header: string, value: string): void;
+    readonly DONE: number;
+    readonly HEADERS_RECEIVED: number;
+    readonly LOADING: number;
+    readonly OPENED: number;
+    readonly UNSENT: number;
+    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, useCapture?: boolean): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
+}
+
+declare var XMLHttpRequest: {
+    prototype: XMLHttpRequest;
+    new(): XMLHttpRequest;
+    readonly DONE: number;
+    readonly HEADERS_RECEIVED: number;
+    readonly LOADING: number;
+    readonly OPENED: number;
+    readonly UNSENT: number;
+}
+
+interface XMLHttpRequestUpload extends EventTarget, XMLHttpRequestEventTarget {
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, useCapture?: boolean): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
+}
+
+declare var XMLHttpRequestUpload: {
+    prototype: XMLHttpRequestUpload;
+    new(): XMLHttpRequestUpload;
 }
 
 interface AbstractWorkerEventMap {
@@ -875,6 +1171,28 @@ interface WindowBase64 {
 
 interface WindowConsole {
     readonly console: Console;
+}
+
+interface XMLHttpRequestEventTargetEventMap {
+    "abort": Event;
+    "error": ErrorEvent;
+    "load": Event;
+    "loadend": ProgressEvent;
+    "loadstart": Event;
+    "progress": ProgressEvent;
+    "timeout": ProgressEvent;
+}
+
+interface XMLHttpRequestEventTarget {
+    onabort: (this: XMLHttpRequestEventTarget, ev: Event) => any;
+    onerror: (this: XMLHttpRequestEventTarget, ev: ErrorEvent) => any;
+    onload: (this: XMLHttpRequestEventTarget, ev: Event) => any;
+    onloadend: (this: XMLHttpRequestEventTarget, ev: ProgressEvent) => any;
+    onloadstart: (this: XMLHttpRequestEventTarget, ev: Event) => any;
+    onprogress: (this: XMLHttpRequestEventTarget, ev: ProgressEvent) => any;
+    ontimeout: (this: XMLHttpRequestEventTarget, ev: ProgressEvent) => any;
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, useCapture?: boolean): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
 
 interface Client {
@@ -1319,6 +1637,24 @@ interface JsonWebKey {
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
+interface ErrorEventHandler {
+    (message: string, filename?: string, lineno?: number, colno?: number, error?:Error): void;
+}
+interface PositionCallback {
+    (position: Position): void;
+}
+interface PositionErrorCallback {
+    (error: PositionError): void;
+}
+interface DecodeSuccessCallback {
+    (decodedData: AudioBuffer): void;
+}
+interface DecodeErrorCallback {
+    (error: DOMException): void;
+}
+interface FunctionStringCallback {
+    (data: string): void;
+}
 interface ForEachCallback {
     (keyId: any, status: string): void;
 }

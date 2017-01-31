@@ -322,27 +322,10 @@ module Data =
 
     let GetInterfaceByName = allInterfacesMap.TryFind
 
-    let knownWorkerInterfaces = 
-        ["AbstractWorker"; "Algorithm"; "AlgorithmIdentifier"; "Blob"; "Body";
-        "BodyInit"; "Cache"; "CacheQueryOptions"; "CacheStorage";
-        "ClientQueryOptions"; "CloseEvent"; "CloseEventInit"; "Console";
-        "CryptoKey"; "DOMError"; "DOMStringList"; "ErrorEvent"; "Event";
-        "EventInit"; "EventTarget"; "ExtendableEventInit";
-        "ExtendableMessageEventInit"; "FetchEventInit"; "ForEachCallback";
-        "GetNotificationOptions"; "GlobalFetch"; "Headers"; "IDBCursor";
-        "IDBDatabase"; "IDBFactory"; "IDBIndex"; "IDBIndexParameters"; "IDBKeyPath";
-        "IDBKeyRange"; "IDBObjectStore"; "IDBObjectStoreParameters";
-        "IDBOpenDBRequest"; "IDBRequest"; "IDBTransaction"; "IDBVersionChangeEvent";
-        "KeyAlgorithm"; "MessageEvent"; "MessageEventInit"; "MessagePort";
-        "NavigatorBeacon"; "NavigatorConcurrentHardware"; "NavigatorID";
-        "NavigatorOnLine"; "Notification"; "NotificationEventInit";
-        "NotificationOptions"; "NotificationPermissionCallback"; "Performance";
-        "PerformanceNavigation"; "PerformanceTiming"; "PushEventInit";
-        "PushManager"; "PushSubscription"; "PushSubscriptionOptions";
-        "PushSubscriptionOptionsInit"; "ReadableStream"; "ReadableStreamReader";
-        "Request"; "RequestInfo"; "RequestInit"; "Response"; "ResponseInit";
-        "ServiceWorker"; "ServiceWorkerRegistration"; "SyncEventInit";
-        "SyncManager"; "USVString"; "WindowBase64"; "WindowConsole"; "Worker"]
+    type KnownWorkerInterfaceType = JsonProvider<"inputfiles/knownWorkerInterfaces.json", InferTypesFromValues=false>
+    let knownWorkerInterfaces =
+        File.ReadAllText(Path.Combine(GlobalVars.inputFolder, "knownWorkerInterfaces.json")) 
+        |> KnownWorkerInterfaceType.Parse 
         |> set
 
     let GetAllInterfacesByFlavor flavor =
