@@ -980,5 +980,10 @@
         "readonly": true,
         "name": "previousElementSibling",
         "type": "Element | null"
+    },
+    {
+        "kind": "indexer",
+        "interface": "DOMStringMap",
+        "signatures": ["[name: string]: string | undefined"]
     }
  ]

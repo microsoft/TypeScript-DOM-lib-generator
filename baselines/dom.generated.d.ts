@@ -2491,7 +2491,7 @@ declare var DOMStringList: {
 }
 
 interface DOMStringMap {
-    [name: string]: string;
+    [name: string]: string | undefined;
 }
 
 declare var DOMStringMap: {
