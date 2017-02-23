@@ -2739,7 +2739,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap {
     "webkitfullscreenerror": Event;
 }
 
-interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEvent, ParentNode, DocumentOrShadowRoot {
+interface Document extends Node, GlobalEventHandlers, DocumentEvent, ParentNode, DocumentOrShadowRoot {
     /**
       * Sets or gets the URL for the current document. 
       */
@@ -3448,7 +3448,11 @@ declare var Document: {
     new(): Document;
 }
 
-interface DocumentFragment extends Node, NodeSelector, ParentNode {
+interface DocumentFragment extends Node {
+    querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null;
+    querySelector(selectors: string): Element | null;
+    querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K];
+    querySelectorAll(selectors: string): NodeListOf<Element>;
 }
 
 declare var DocumentFragment: {
@@ -3545,7 +3549,7 @@ interface ElementEventMap extends GlobalEventHandlersEventMap {
     "webkitfullscreenerror": Event;
 }
 
-interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelector, ChildNode, ParentNode {
+interface Element extends Node, GlobalEventHandlers, ElementTraversal, ChildNode, ParentNode {
     readonly classList: DOMTokenList;
     className: string;
     readonly clientHeight: number;
@@ -13718,13 +13722,6 @@ interface NavigatorUserMedia {
     getUserMedia(constraints: MediaStreamConstraints, successCallback: NavigatorUserMediaSuccessCallback, errorCallback: NavigatorUserMediaErrorCallback): void;
 }
 
-interface NodeSelector {
-    querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null;
-    querySelector(selectors: string): Element | null;
-    querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K];
-    querySelectorAll(selectors: string): NodeListOf<Element>;
-}
-
 interface RandomSource {
     getRandomValues(array: ArrayBufferView): ArrayBufferView;
 }
@@ -14099,6 +14096,10 @@ interface ParentNode {
     readonly firstElementChild: Element | null;
     readonly lastElementChild: Element | null;
     readonly childElementCount: number;
+    querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null;
+    querySelector(selectors: string): Element | null;
+    querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K];
+    querySelectorAll(selectors: string): NodeListOf<Element>;
 }
 
 interface DocumentOrShadowRoot {

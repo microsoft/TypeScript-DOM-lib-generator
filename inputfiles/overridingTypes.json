@@ -950,7 +950,7 @@
     },
     {
         "kind": "extends",
-        "baseInterface": "Node, GlobalEventHandlers, NodeSelector, DocumentEvent, ParentNode, DocumentOrShadowRoot",
+        "baseInterface": "Node, GlobalEventHandlers, DocumentEvent, ParentNode, DocumentOrShadowRoot",
         "interface": "Document"
     },
     {
@@ -991,5 +991,15 @@
         "interface": "DOMImplementation",
         "name": "hasFeature",
         "signatures": ["hasFeature(feature: string | null, version: string | null): boolean"]
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "Node",
+        "interface": "DocumentFragment"
+    },
+    {
+        "kind": "extends",
+        "baseInterface": "Node, GlobalEventHandlers, ElementTraversal, ChildNode, ParentNode",
+        "interface": "Element"
     }
  ]
