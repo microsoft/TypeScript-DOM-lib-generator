@@ -496,6 +496,12 @@
         ]
     },
     {
+        "kind": "method",
+        "interface": "AudioNode",
+        "name": "connect",
+        "signatures": ["connect(destination: AudioNode|AudioParam, output?: number, input?: number): void"]
+    },
+    {
         "kind": "callback",
         "name": "DecodeErrorCallback",
         "signatures": ["(error: DOMException): void"]
