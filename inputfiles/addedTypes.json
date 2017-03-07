@@ -1450,6 +1450,6 @@
         "interface": "DocumentFragment",
         "name": "getElementById",
         "flavor": "DOM",
-        "signatures": ["getElementById(): Element | null"]
+        "signatures": ["getElementById(elementId: string): Element | null"]
     }
 ]
