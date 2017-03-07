@@ -3450,6 +3450,7 @@ declare var Document: {
 }
 
 interface DocumentFragment extends Node, NodeSelector, ParentNode {
+    getElementById(): Element | null;
 }
 
 declare var DocumentFragment: {
