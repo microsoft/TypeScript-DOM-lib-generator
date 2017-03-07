@@ -1286,11 +1286,6 @@
         "interface": "Document"
     },
     {
-        "kind": "extends",
-        "baseInterface": "ParentNode",
-        "interface": "DocumentFragment"
-    },
-    {
         "kind": "typedef",
         "name": "ScrollRestoration",
         "flavor": "DOM",

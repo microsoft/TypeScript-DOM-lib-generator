@@ -3449,7 +3449,7 @@ declare var Document: {
     new(): Document;
 }
 
-interface DocumentFragment extends Node, NodeSelector, ParentNode {
+interface DocumentFragment extends Node, NodeSelector {
 }
 
 declare var DocumentFragment: {
