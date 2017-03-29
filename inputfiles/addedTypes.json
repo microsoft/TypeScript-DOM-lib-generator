@@ -1580,5 +1580,25 @@
         "name": "set",
         "flavor": "Web",
         "signatures": ["set(name: string, value: string | Blob, fileName?: string): void"]
+    },
+    {
+        "kind": "interface",
+        "name": "EventListenerOptions",
+        "properties": [{
+            "name": "capture?",
+            "type": "boolean"
+        }]
+    },
+    {
+        "kind": "interface",
+        "name": "AddEventListenerOptions",
+        "extends": "EventListenerOptions",
+        "properties": [{
+            "name": "passive?",
+            "type": "boolean"
+        }, {
+            "name": "once?",
+            "type": "boolean"
+        }]
     }
 ]

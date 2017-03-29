@@ -1047,5 +1047,17 @@
         "name": "append",
         "flavor": "Web",
         "signatures": ["append(name: string, value: string | Blob, fileName?: string): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "EventTarget",
+        "name": "addEventListener",
+        "signatures": ["addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void"]
+    },
+    {
+        "kind": "method",
+        "interface": "EventTarget",
+        "name": "removeEventListener",
+        "signatures": ["removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void"]
     }
  ]
