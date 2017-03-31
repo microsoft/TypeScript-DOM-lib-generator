@@ -1512,7 +1512,10 @@
             "name": "reason",
             "type": "any",
             "readonly": true
-        }]
+        }],
+        "constructorSignatures": [
+            "new(type: string, promiseRejectionEventInitDict?: PromiseRejectionEventInit): PromiseRejectionEvent"
+        ]
     },
     {
         "kind": "interface",
