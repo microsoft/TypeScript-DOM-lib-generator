@@ -11113,6 +11113,9 @@
       </methods>
     </interface>
     <interface name="Text" extends="CharacterData">
+      <constructor>
+        <param name="data" optional="1" type="string" />
+      </constructor>
       <events>
         <event name="DOMNodeInserted" bubbles="1" dispatch="sync" type="MutationEvent" />
         <event name="DOMNodeRemoved" bubbles="1" dispatch="sync" type="MutationEvent" />
