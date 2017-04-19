@@ -14129,6 +14129,10 @@ interface ParentNode {
     readonly firstElementChild: Element | null;
     readonly lastElementChild: Element | null;
     readonly childElementCount: number;
+    querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null;
+    querySelector(selectors: string): Element | null;
+    querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K];
+    querySelectorAll(selectors: string): NodeListOf<Element>;
 }
 
 interface DocumentOrShadowRoot {

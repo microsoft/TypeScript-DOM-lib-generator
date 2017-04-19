@@ -1290,6 +1290,22 @@
                 "readonly": true,
                 "type": "number"
             }
+        ],
+        "methods": [
+            {
+                "name": "querySelector",
+                "signatures": [
+                    "querySelector<K extends keyof ElementTagNameMap>(selectors: K): ElementTagNameMap[K] | null",
+                    "querySelector(selectors: string): Element | null"
+                ]
+            },
+            {
+                "name": "querySelectorAll",
+                "signatures": [
+                    "querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K]",
+                    "querySelectorAll(selectors: string): NodeListOf<Element>"
+                ]
+            }
         ]
     },
     {
