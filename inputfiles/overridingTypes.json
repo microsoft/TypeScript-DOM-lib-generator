@@ -971,7 +971,7 @@
         "interface": "DataTransfer",
         "readonly": true,
         "name": "types",
-        "type": "string[]"
+        "type": "DOMString[]"
     },
     {
         "kind": "method",
