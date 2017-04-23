@@ -8209,7 +8209,7 @@ declare var NavigationEventWithReferrer: {
     new(): NavigationEventWithReferrer;
 }
 
-interface Navigator extends Object, NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, NavigatorGeolocation, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia {
+interface Navigator extends Object, NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, NavigatorGeolocation, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia, NavigatorBatteryStatus {
     readonly authentication: WebAuthentication;
     readonly cookieEnabled: boolean;
     gamepadInputEmulation: GamepadInputEmulationType;
@@ -14191,6 +14191,32 @@ interface TouchEventInit extends EventModifierInit {
     touches?: Touch[];
     targetTouches?: Touch[];
     changedTouches?: Touch[];
+}
+
+interface NavigatorBatteryStatus {
+    getBattery(): Promise<BatteryManager>;
+}
+
+interface BatteryManager extends BatteryManagerEventTarget {
+    readonly charging: boolean;
+    readonly chargingTime: number;
+    readonly dischargingTime: number;
+    readonly level: number;
+}
+
+interface BatteryManagerEventTargetEventMap {
+    chargingchange: Event;
+    chargingtimechange: Event;
+    dischargingtimechange: Event;
+    levelchange: Event;
+}
+
+interface BatteryManagerEventTarget extends EventTarget {
+    onchargingchange: (this: BatteryManager, ev: Event) => any;
+    onlevelchange: (this: BatteryManager, ev: Event) => any;
+    onchargingtimechange: (this: BatteryManager, ev: Event) => any;
+    ondischargingtimechange: (this: BatteryManager, ev: Event) => any;
+    addEventListener<K extends keyof BatteryManagerEventTargetEventMap>(type: K, listener: (this: BatteryManager, ev: BatteryManagerEventTargetEventMap[K]) => any, useCapture?: boolean): void;
 }
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;

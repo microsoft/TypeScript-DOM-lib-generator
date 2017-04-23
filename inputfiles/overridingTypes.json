@@ -1073,5 +1073,10 @@
         "signatures": [
             "new(data?: string): Text"
         ]
+    },
+    {
+        "kind": "extends",
+        "interface": "Navigator",
+        "baseInterface": "Object, NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, NavigatorGeolocation, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia, NavigatorBatteryStatus"
     }
  ]

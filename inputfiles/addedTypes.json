@@ -1616,5 +1616,78 @@
             "name": "changedTouches?",
             "type": "Touch[]"
         }]
+    },
+    {
+        "kind": "interface",
+        "name": "NavigatorBatteryStatus",
+        "flavor": "Web",
+        "methods": [{
+            "name": "getBattery",
+            "signatures": ["getBattery(): Promise<BatteryManager>"]
+        }]
+    },
+    {
+        "kind": "interface",
+        "name": "BatteryManager",
+        "extends": "BatteryManagerEventTarget",
+        "flavor": "Web",
+        "properties": [{
+            "name": "charging",
+            "readonly": true,
+            "type": "boolean"
+        }, {
+            "name": "chargingTime",
+            "readonly": true,
+            "type": "number"
+        }, {
+            "name": "dischargingTime",
+            "readonly": true,
+            "type": "number"
+        }, {
+            "name": "level",
+            "readonly": true,
+            "type": "number"
+        }]
+    },
+    {
+        "kind": "interface",
+        "name": "BatteryManagerEventTargetEventMap",
+        "flavor": "Web",
+        "properties": [{
+            "name": "chargingchange",
+            "type": "Event"
+        }, {
+            "name": "chargingtimechange",
+            "type": "Event"
+        }, {
+            "name": "dischargingtimechange",
+            "type": "Event"
+        }, {
+            "name": "levelchange",
+            "type": "Event"
+        }]
+    },
+    {
+        "kind": "interface",
+        "name": "BatteryManagerEventTarget",
+        "flavor": "Web",
+        "extends": "EventTarget",
+        "properties": [{
+            "name": "onchargingchange",
+            "type": "(this: BatteryManager, ev: Event) => any"
+        }, {
+            "name": "onlevelchange",
+            "type": "(this: BatteryManager, ev: Event) => any"
+        }, {
+            "name": "onchargingtimechange",
+            "type": "(this: BatteryManager, ev: Event) => any"
+        }, {
+            "name": "ondischargingtimechange",
+            "type": "(this: BatteryManager, ev: Event) => any"
+        }],
+        "methods": [{
+            "name": "addEventListener<K extends keyof BatteryManagerEventTargetEventMap>",
+            "signatures": ["addEventListener<K extends keyof BatteryManagerEventTargetEventMap>(type: K, listener: (this: BatteryManager, ev: BatteryManagerEventTargetEventMap[K]) => any, useCapture?: boolean): void"]
+        }]
     }
 ]
