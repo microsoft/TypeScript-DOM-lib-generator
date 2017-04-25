@@ -451,7 +451,7 @@
         "kind": "method",
         "interface": "Element",
         "name": "setAttribute",
-        "signatures": ["setAttribute(name: string, value: string): void"]
+        "signatures": ["setAttribute(name: string, value: string | number | boolean): void"]
     },
     {
         "kind": "property",
