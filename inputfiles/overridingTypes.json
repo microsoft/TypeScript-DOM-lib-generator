@@ -454,6 +454,12 @@
         "signatures": ["setAttribute(name: string, value: string | number | boolean): void"]
     },
     {
+        "kind": "method",
+        "interface": "Element",
+        "name": "setAttributeNS",
+        "signatures": ["setAttributeNS(namespaceURI: string, qualifiedName: string, value: string | number | boolean): void"]
+    },
+    {
         "kind": "property",
         "interface": "HTMLMediaElement",
         "name": "readyState",
