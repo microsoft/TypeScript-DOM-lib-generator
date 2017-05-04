@@ -1326,7 +1326,6 @@ interface AudioContextBase extends EventTarget {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioContextEventMap>(type: K, listener: (this: AudioContext, ev: AudioContextEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
 }
 
 interface AudioContext extends AudioContextBase {}
@@ -3122,7 +3121,6 @@ declare class DOMImplementation {
 
 declare class DOMParser {
     parseFromString(source: string, mimeType: string): Document;
-    constructor();
 }
 
 interface DOMSettableTokenList extends DOMTokenList {}
@@ -3399,7 +3397,6 @@ declare class FileReader {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MSBaseReaderEventMap>(type: K, listener: (this: FileReader, ev: MSBaseReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
 }
 
 interface FocusEvent extends UIEvent {}
@@ -6742,7 +6739,6 @@ declare class MediaSource {
     addSourceBuffer(type: string): SourceBuffer;
     endOfStream(error?: number): void;
     removeSourceBuffer(sourceBuffer: SourceBuffer): void;
-    constructor();
     static isTypeSupported(type: string): boolean;
 }
 
@@ -6840,7 +6836,6 @@ declare class MediaStreamTrackEvent {
 declare class MessageChannel {
     readonly port1: MessagePort;
     readonly port2: MessagePort;
-    constructor();
 }
 
 interface MessageEvent extends Event {}
@@ -6970,7 +6965,6 @@ declare class MSAssertion {
 declare class MSBlobBuilder {
     append(data: any, endings?: string): void;
     getBlob(contentType?: string): Blob;
-    constructor();
 }
 
 declare class MSCredentials {
@@ -7001,7 +6995,6 @@ declare class MSGesture {
     target: Element;
     addPointer(pointerId: number): void;
     stop(): void;
-    constructor();
 }
 
 interface MSGestureEvent extends UIEvent {}
@@ -7217,7 +7210,6 @@ declare class MSStreamReader {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MSBaseReaderEventMap>(type: K, listener: (this: MSStreamReader, ev: MSBaseReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
 }
 
 interface MSWebViewAsyncOperationEventMap {
@@ -8092,7 +8084,6 @@ declare class RTCIceTransport {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCIceTransportEventMap>(type: K, listener: (this: RTCIceTransport, ev: RTCIceTransportEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
 }
 
 interface RTCIceTransportStateChangedEvent extends Event {}
@@ -11608,7 +11599,6 @@ declare class XMLHttpRequest {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
     static readonly DONE: number;
     static readonly HEADERS_RECEIVED: number;
     static readonly LOADING: number;
@@ -11626,14 +11616,12 @@ declare class XMLHttpRequestUpload {
 
 declare class XMLSerializer {
     serializeToString(target: Node): string;
-    constructor();
 }
 
 declare class XPathEvaluator {
     createExpression(expression: string, resolver: XPathNSResolver): XPathExpression;
     createNSResolver(nodeResolver?: Node): XPathNSResolver;
     evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | null, type: number, result: XPathResult | null): XPathResult;
-    constructor();
 }
 
 declare class XPathExpression {
@@ -11685,7 +11673,6 @@ declare class XSLTProcessor {
     setParameter(namespaceURI: string, localName: string, value: any): void;
     transformToDocument(source: Node): Document;
     transformToFragment(source: Node, document: Document): DocumentFragment;
-    constructor();
 }
 
 interface AbstractWorkerEventMap {

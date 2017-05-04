@@ -369,12 +369,10 @@ declare class FileReader {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MSBaseReaderEventMap>(type: K, listener: (this: FileReader, ev: MSBaseReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
 }
 
 declare class FormData {
     append(name: string, value: string | Blob, fileName?: string): void;
-    constructor();
 }
 
 declare class Headers {
@@ -564,7 +562,6 @@ declare class ImageData {
 declare class MessageChannel {
     readonly port1: MessagePort;
     readonly port2: MessagePort;
-    constructor();
 }
 
 interface MessageEvent extends Event {}
@@ -925,7 +922,6 @@ declare class XMLHttpRequest {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
-    constructor();
     static readonly DONE: number;
     static readonly HEADERS_RECEIVED: number;
     static readonly LOADING: number;
@@ -1109,7 +1105,6 @@ declare class FileReaderSync {
     readAsBinaryString(blob: Blob): void;
     readAsDataURL(blob: Blob): string;
     readAsText(blob: Blob, encoding?: string): string;
-    constructor();
 }
 
 interface NotificationEvent extends ExtendableEvent {}

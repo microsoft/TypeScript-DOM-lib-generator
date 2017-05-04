@@ -1101,12 +1101,15 @@ module Emit =
             match overriddenCtor with
             | Some c' -> emitConstructorSigFromJson c'
             | _ ->
-                //Emit constructor signature
+                // Emit constructor signature
                 match i.Constructor with
                 | Some ctor ->
-                    for { ParamCombinations = pCombList } in GetOverloads (Ctor ctor) false do
+                    let overloads = GetOverloads (Ctor ctor) false
+                    for { ParamCombinations = pCombList } in overloads do
                         let paramsString = ParamsToString pCombList
-                        Pt.Printl "constructor(%s);" paramsString
+                        // Emit unless there is a single empty signature
+                        if not (overloads.Length = 1 && paramsString.Length = 0) then
+                            Pt.Printl "constructor(%s);" paramsString
                 | _ -> ()
 
         getAddedItems ItemKind.Constructor flavor
