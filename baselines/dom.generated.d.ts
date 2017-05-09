@@ -8214,6 +8214,7 @@ interface Navigator extends Object, NavigatorID, NavigatorOnLine, NavigatorConte
     readonly cookieEnabled: boolean;
     gamepadInputEmulation: GamepadInputEmulationType;
     readonly language: string;
+    readonly languages: string[];
     readonly maxTouchPoints: number;
     readonly mimeTypes: MimeTypeArray;
     readonly msManipulationViewsEnabled: boolean;
