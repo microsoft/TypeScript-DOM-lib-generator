@@ -3086,9 +3086,11 @@
         </method>
         <method name="group" type="void">
           <param name="groupTitle" optional="1" type="DOMString" />
+          <param name="optionalParams" type="any" variadic="1" />
         </method>
         <method name="groupCollapsed" type="void">
           <param name="groupTitle" optional="1" type="DOMString" />
+          <param name="optionalParams" type="any" variadic="1" />
         </method>
         <method name="groupEnd" type="void" />
         <method name="info" type="void">
