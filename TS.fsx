@@ -714,7 +714,7 @@ module Emit =
         | "DOMString" -> "string"
         | "DOMTimeStamp" -> "number"
         | "EndOfStreamError" -> "number"
-        | "EventListener" -> "EventListenerOrEventListenerObject"
+        | "EventListener" -> "EventListenerOrEventListenerObject<T extends EventTarget>"
         | "double" | "float" -> "number"
         | "Function" -> "Function"
         | "object" -> "any"
@@ -865,8 +865,8 @@ module Emit =
         String.Join(", ", (List.map paramToString ps))
 
     let EmitCallBackInterface (i:Browser.Interface) =
-        Pt.Printl "interface %s {" i.Name
-        Pt.PrintWithAddedIndent "(evt: Event): void;"
+        Pt.Printl "interface %s<T extends EventTarget> {" i.Name
+        Pt.PrintWithAddedIndent "(evt: Event<T>): void;"
         Pt.Printl "}"
         Pt.Printl ""
 
@@ -1083,8 +1083,8 @@ module Emit =
 
         if shouldEmitStringEventHandler then
             Pt.Printl
-                "%saddEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;"
-                fPrefix
+                "%saddEventListener(type: string, listener: EventListenerOrEventListenerObject<%s>, useCapture?: boolean): void;"
+                fPrefix i.Name
 
     let EmitConstructorSignature flavor (i:Browser.Interface) =
         let emitConstructorSigFromJson (c: InputJsonType.Root) =
@@ -1478,7 +1478,7 @@ module Emit =
         // Add missed interface definition from the spec
         InputJson.getAddedItems InputJson.Interface flavor |> Array.iter EmitAddedInterface
 
-        Pt.Printl "declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;"
+        Pt.Printl "declare type EventListenerOrEventListenerObject<T extends EventTarget> = EventListener<T extends EventTarget> | EventListenerObject<T extends EventTarget>;"
         Pt.Printl ""
 
         EmitCallBackFunctions flavor
