@@ -1535,7 +1535,7 @@ module Emit =
         target.Close()
 
     let EmitDomWeb () =
-        EmitTheWholeThing Flavor.All GlobalVars.tsWebOutput
+        EmitTheWholeThing Flavor.Web GlobalVars.tsWebOutput
         EmitES6Thing GlobalVars.tsWebES6Output
 
     let EmitDomWorker () =

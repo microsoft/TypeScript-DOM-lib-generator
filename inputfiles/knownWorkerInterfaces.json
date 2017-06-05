@@ -52,6 +52,8 @@
     "IDBRequest",
     "IDBTransaction",
     "IDBVersionChangeEvent",
+    "ImageBitmap",
+    "ImageBitmapOptions",
     "ImageData",
     "KeyAlgorithm",
     "MessageChannel",

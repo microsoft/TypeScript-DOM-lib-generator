@@ -7284,16 +7284,6 @@ declare var Location: {
     new(): Location;
 };
 
-interface LongRunningScriptDetectedEvent extends Event {
-    readonly executionTime: number;
-    stopPageScriptExecution: boolean;
-}
-
-declare var LongRunningScriptDetectedEvent: {
-    prototype: LongRunningScriptDetectedEvent;
-    new(): LongRunningScriptDetectedEvent;
-};
-
 interface MediaDeviceInfo {
     readonly deviceId: string;
     readonly groupId: string;
@@ -7676,56 +7666,6 @@ declare var MouseEvent: {
     new(typeArg: string, eventInitDict?: MouseEventInit): MouseEvent;
 };
 
-interface MSApp {
-    clearTemporaryWebDataAsync(): MSAppAsyncOperation;
-    createBlobFromRandomAccessStream(type: string, seeker: any): Blob;
-    createDataPackage(object: any): any;
-    createDataPackageFromSelection(): any;
-    createFileFromStorageFile(storageFile: any): File;
-    createStreamFromInputStream(type: string, inputStream: any): MSStream;
-    execAsyncAtPriority(asynchronousCallback: MSExecAtPriorityFunctionCallback, priority: string, ...args: any[]): void;
-    execAtPriority(synchronousCallback: MSExecAtPriorityFunctionCallback, priority: string, ...args: any[]): any;
-    getCurrentPriority(): string;
-    getHtmlPrintDocumentSourceAsync(htmlDoc: any): Promise<any>;
-    getViewId(view: any): any;
-    isTaskScheduledAtPriorityOrHigher(priority: string): boolean;
-    pageHandlesAllApplicationActivations(enabled: boolean): void;
-    suppressSubdownloadCredentialPrompts(suppress: boolean): void;
-    terminateApp(exceptionObject: any): void;
-    readonly CURRENT: string;
-    readonly HIGH: string;
-    readonly IDLE: string;
-    readonly NORMAL: string;
-}
-declare var MSApp: MSApp;
-
-interface MSAppAsyncOperationEventMap {
-    "complete": Event;
-    "error": Event;
-}
-
-interface MSAppAsyncOperation extends EventTarget {
-    readonly error: DOMError;
-    oncomplete: (this: MSAppAsyncOperation, ev: Event) => any;
-    onerror: (this: MSAppAsyncOperation, ev: Event) => any;
-    readonly readyState: number;
-    readonly result: any;
-    start(): void;
-    readonly COMPLETED: number;
-    readonly ERROR: number;
-    readonly STARTED: number;
-    addEventListener<K extends keyof MSAppAsyncOperationEventMap>(type: K, listener: (this: MSAppAsyncOperation, ev: MSAppAsyncOperationEventMap[K]) => any, useCapture?: boolean): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-}
-
-declare var MSAppAsyncOperation: {
-    prototype: MSAppAsyncOperation;
-    new(): MSAppAsyncOperation;
-    readonly COMPLETED: number;
-    readonly ERROR: number;
-    readonly STARTED: number;
-};
-
 interface MSAssertion {
     readonly id: string;
     readonly type: MSCredentialType;
@@ -7843,40 +7783,6 @@ interface MSGraphicsTrust {
 declare var MSGraphicsTrust: {
     prototype: MSGraphicsTrust;
     new(): MSGraphicsTrust;
-};
-
-interface MSHTMLWebViewElement extends HTMLElement {
-    readonly canGoBack: boolean;
-    readonly canGoForward: boolean;
-    readonly containsFullScreenElement: boolean;
-    readonly documentTitle: string;
-    height: number;
-    readonly settings: MSWebViewSettings;
-    src: string;
-    width: number;
-    addWebAllowedObject(name: string, applicationObject: any): void;
-    buildLocalStreamUri(contentIdentifier: string, relativePath: string): string;
-    capturePreviewToBlobAsync(): MSWebViewAsyncOperation;
-    captureSelectedContentToDataPackageAsync(): MSWebViewAsyncOperation;
-    getDeferredPermissionRequestById(id: number): DeferredPermissionRequest;
-    getDeferredPermissionRequests(): DeferredPermissionRequest[];
-    goBack(): void;
-    goForward(): void;
-    invokeScriptAsync(scriptName: string, ...args: any[]): MSWebViewAsyncOperation;
-    navigate(uri: string): void;
-    navigateFocus(navigationReason: NavigationReason, origin: FocusNavigationOrigin): void;
-    navigateToLocalStreamUri(source: string, streamResolver: any): void;
-    navigateToString(contents: string): void;
-    navigateWithHttpRequestMessage(requestMessage: any): void;
-    refresh(): void;
-    stop(): void;
-    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: MSHTMLWebViewElement, ev: HTMLElementEventMap[K]) => any, useCapture?: boolean): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-}
-
-declare var MSHTMLWebViewElement: {
-    prototype: MSHTMLWebViewElement;
-    new(): MSHTMLWebViewElement;
 };
 
 interface MSInputMethodContextEventMap {
@@ -8071,51 +7977,6 @@ declare var MSStreamReader: {
     new(): MSStreamReader;
 };
 
-interface MSWebViewAsyncOperationEventMap {
-    "complete": Event;
-    "error": Event;
-}
-
-interface MSWebViewAsyncOperation extends EventTarget {
-    readonly error: DOMError;
-    oncomplete: (this: MSWebViewAsyncOperation, ev: Event) => any;
-    onerror: (this: MSWebViewAsyncOperation, ev: Event) => any;
-    readonly readyState: number;
-    readonly result: any;
-    readonly target: MSHTMLWebViewElement;
-    readonly type: number;
-    start(): void;
-    readonly COMPLETED: number;
-    readonly ERROR: number;
-    readonly STARTED: number;
-    readonly TYPE_CAPTURE_PREVIEW_TO_RANDOM_ACCESS_STREAM: number;
-    readonly TYPE_CREATE_DATA_PACKAGE_FROM_SELECTION: number;
-    readonly TYPE_INVOKE_SCRIPT: number;
-    addEventListener<K extends keyof MSWebViewAsyncOperationEventMap>(type: K, listener: (this: MSWebViewAsyncOperation, ev: MSWebViewAsyncOperationEventMap[K]) => any, useCapture?: boolean): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-}
-
-declare var MSWebViewAsyncOperation: {
-    prototype: MSWebViewAsyncOperation;
-    new(): MSWebViewAsyncOperation;
-    readonly COMPLETED: number;
-    readonly ERROR: number;
-    readonly STARTED: number;
-    readonly TYPE_CAPTURE_PREVIEW_TO_RANDOM_ACCESS_STREAM: number;
-    readonly TYPE_CREATE_DATA_PACKAGE_FROM_SELECTION: number;
-    readonly TYPE_INVOKE_SCRIPT: number;
-};
-
-interface MSWebViewSettings {
-    isIndexedDBEnabled: boolean;
-    isJavaScriptEnabled: boolean;
-}
-
-declare var MSWebViewSettings: {
-    prototype: MSWebViewSettings;
-    new(): MSWebViewSettings;
-};
-
 interface MutationEvent extends Event {
     readonly attrChange: number;
     readonly attrName: string;
@@ -8179,34 +8040,6 @@ interface NamedNodeMap {
 declare var NamedNodeMap: {
     prototype: NamedNodeMap;
     new(): NamedNodeMap;
-};
-
-interface NavigationCompletedEvent extends NavigationEvent {
-    readonly isSuccess: boolean;
-    readonly webErrorStatus: number;
-}
-
-declare var NavigationCompletedEvent: {
-    prototype: NavigationCompletedEvent;
-    new(): NavigationCompletedEvent;
-};
-
-interface NavigationEvent extends Event {
-    readonly uri: string;
-}
-
-declare var NavigationEvent: {
-    prototype: NavigationEvent;
-    new(): NavigationEvent;
-};
-
-interface NavigationEventWithReferrer extends NavigationEvent {
-    readonly referer: string;
-}
-
-declare var NavigationEventWithReferrer: {
-    prototype: NavigationEventWithReferrer;
-    new(): NavigationEventWithReferrer;
 };
 
 interface Navigator extends Object, NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, NavigatorGeolocation, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia {
@@ -9421,16 +9254,6 @@ interface Screen extends EventTarget {
 declare var Screen: {
     prototype: Screen;
     new(): Screen;
-};
-
-interface ScriptNotifyEvent extends Event {
-    readonly callingUri: string;
-    readonly value: string;
-}
-
-declare var ScriptNotifyEvent: {
-    prototype: ScriptNotifyEvent;
-    new(): ScriptNotifyEvent;
 };
 
 interface ScriptProcessorNodeEventMap {
@@ -11838,15 +11661,6 @@ declare var UIEvent: {
     new(typeArg: string, eventInitDict?: UIEventInit): UIEvent;
 };
 
-interface UnviewableContentIdentifiedEvent extends NavigationEventWithReferrer {
-    readonly mediaType: string;
-}
-
-declare var UnviewableContentIdentifiedEvent: {
-    prototype: UnviewableContentIdentifiedEvent;
-    new(): UnviewableContentIdentifiedEvent;
-};
-
 interface URL {
     hash: string;
     host: string;
@@ -14227,14 +14041,8 @@ interface IntersectionObserverCallback {
 interface MediaQueryListListener {
     (mql: MediaQueryList): void;
 }
-interface MSExecAtPriorityFunctionCallback {
-    (...args: any[]): any;
-}
 interface MSLaunchUriCallback {
     (): void;
-}
-interface MSUnsafeFunctionCallback {
-    (): any;
 }
 interface MutationCallback {
     (mutations: MutationRecord[], observer: MutationObserver): void;
