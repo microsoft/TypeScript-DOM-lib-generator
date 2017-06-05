@@ -14181,6 +14181,11 @@ interface PromiseRejectionEvent extends Event {
     readonly reason: any;
 }
 
+declare var PromiseRejectionEvent: {
+    prototype: PromiseRejectionEvent;
+    new(type: string, promiseRejectionEventInitDict?: PromiseRejectionEventInit): PromiseRejectionEvent;
+}
+
 interface PromiseRejectionEventInit extends EventInit {
     promise: PromiseLike<any>;
     reason?: any;
