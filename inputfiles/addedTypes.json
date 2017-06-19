@@ -182,7 +182,7 @@
         "kind": "interface",
         "name": "URLSearchParams",
         "constructorSignatures": [
-            "new (init?: string | URLSearchParams): URLSearchParams"
+            "new (init?: string | { [key: string]: string } | [string, string][] | URLSearchParams): URLSearchParams"
         ],
         "methods": [
             {
