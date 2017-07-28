@@ -176,7 +176,7 @@
     {
         "kind": "method",
         "name": "getElementsByClassName",
-        "signatures": ["getElementsByClassName(classNames: string): HTMLCollectionOf<Element>"]
+        "signatures": ["getElementsByClassName(classNames: string): HTMLCollectionOf<HTMLElement>"]
     },
     {
         "kind": "method",
