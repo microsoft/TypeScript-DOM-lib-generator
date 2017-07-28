@@ -3219,7 +3219,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
      * @param elementId String that specifies the ID value. Case-insensitive.
      */
     getElementById(elementId: string): HTMLElement | null;
-    getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+    getElementsByClassName(classNames: string): HTMLCollectionOf<HTMLElement>;
     /**
      * Gets a collection of objects based on the value of the NAME or ID attribute.
      * @param elementName Gets a collection of objects based on the value of the NAME or ID attribute.
