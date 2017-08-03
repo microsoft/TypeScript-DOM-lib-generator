@@ -1131,5 +1131,13 @@
         "signatures": [
             "new(type: \"drag\" | \"dragend\" | \"dragenter\" | \"dragexit\" | \"dragleave\" | \"dragover\" | \"dragstart\" | \"drop\", dragEventInit?: { dataTransfer?: DataTransfer }): DragEvent"
         ]
+    },
+    {
+        "kind": "constructor",
+        "interface": "Path2D",
+        "signatures": [
+            "new(path?: Path2D): Path2D",
+            "new(d: string): Path2D"
+        ]
     }
  ]
