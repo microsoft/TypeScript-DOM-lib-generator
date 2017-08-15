@@ -1629,5 +1629,12 @@
         "name": "InsertPosition",
         "flavor": "Web",
         "type": "\"beforebegin\" | \"afterbegin\" | \"beforeend\" | \"afterend\""
+    },
+    {
+        "kind": "property",
+        "interface": "Response",
+        "name": "redirected",
+        "readonly": true,
+        "type": "boolean"
     }
 ]

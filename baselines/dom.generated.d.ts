@@ -9059,6 +9059,7 @@ interface Response extends Object, Body {
     readonly statusText: string;
     readonly type: ResponseType;
     readonly url: string;
+    readonly redirected: boolean;
     clone(): Response;
 }
 
@@ -13749,7 +13750,7 @@ interface NodeSelector {
 }
 
 interface RandomSource {
-    getRandomValues(array: ArrayBufferView): ArrayBufferView;
+    getRandomValues<T extends ArrayBufferView>(array: T): T;
 }
 
 interface SVGAnimatedPoints {
