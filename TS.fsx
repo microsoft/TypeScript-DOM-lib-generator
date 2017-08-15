@@ -912,7 +912,7 @@ module Emit =
 
             // Treat window.name specially because of https://github.com/Microsoft/TypeScript/issues/9850
             if p.Name = "name" && i.Name = "Window" && emitScope = EmitScope.All then
-                printLine "declare const name: never;"
+                printLine "declare const name: string | undefined;"
             elif Option.isNone (getRemovedItemByName p.Name ItemKind.Property i.Name) then
                 match getOverriddenItemByName p.Name ItemKind.Property i.Name with
                 | Some p' -> emitPropertyFromJson p'

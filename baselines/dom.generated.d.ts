@@ -14512,7 +14512,7 @@ declare var locationbar: BarProp;
 declare var menubar: BarProp;
 declare var msContentScript: ExtensionScriptApis;
 declare var msCredentials: MSCredentials;
-declare const name: never;
+declare const name: string | undefined;
 declare var navigator: Navigator;
 declare var offscreenBuffering: string | boolean;
 declare var onabort: (this: Window, ev: UIEvent) => any;
