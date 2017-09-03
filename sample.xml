@@ -2195,7 +2195,7 @@
         <property name="type" type="BiquadFilterType" />
       </properties>
     </interface>
-    <interface name="Blob" extends="Object">
+    <interface name="Blob" extends="Object" exposed="Window">
       <constructor></constructor>
       <methods>
         <method name="msClose" type="void" />
@@ -3065,77 +3065,6 @@
         <property name="data" read-only="1" type="DOMString" />
         <property name="locale" read-only="1" type="DOMString" />
       </properties>
-    </interface>
-    <interface name="Console" extends="Object">
-      <methods>
-        <method name="assert" type="void">
-          <param name="test" optional="1" type="boolean" />
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="clear" type="void" />
-        <method name="count" type="void">
-          <param name="countTitle" optional="1" type="DOMString" />
-        </method>
-        <method name="debug" type="void">
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="dir" type="void">
-          <param name="value" optional="1" type="any" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="dirxml" type="void">
-          <param name="value" type="any" />
-        </method>
-        <method name="error" type="void">
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="exception" type="void">
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="group" type="void">
-          <param name="groupTitle" optional="1" type="DOMString" />
-        </method>
-        <method name="groupCollapsed" type="void">
-          <param name="groupTitle" optional="1" type="DOMString" />
-        </method>
-        <method name="groupEnd" type="void" />
-        <method name="info" type="void">
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="log" type="void">
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-        <method name="msIsIndependentlyComposed" type="boolean">
-          <param name="element" type="Element" />
-        </method>
-        <method name="profile" type="void">
-          <param name="reportName" optional="1" type="DOMString" />
-        </method>
-        <method name="profileEnd" type="void" />
-        <method name="select" type="void">
-          <param name="element" type="Element" />
-        </method>
-        <method name="table" type="void">
-          <param name="data" type="any" variadic="1" />
-        </method>
-        <method name="time" type="void">
-          <param name="timerName" optional="1" type="DOMString" />
-        </method>
-        <method name="timeEnd" type="void">
-          <param name="timerName" optional="1" type="DOMString" />
-        </method>
-        <method name="trace" type="void" />
-        <method name="warn" type="void">
-          <param name="message" optional="1" type="DOMString" />
-          <param name="optionalParams" type="any" variadic="1" />
-        </method>
-      </methods>
     </interface>
     <interface name="ConvolverNode" extends="AudioNode">
       <properties>
@@ -6276,13 +6205,18 @@
     </interface>
     <interface name="ImageData" extends="Object">
       <constructor>
-        <param name="width" type="unsigned long" />
-        <param name="height" type="unsigned long" />
+        <param name="sw" type="unsigned long"/>
+        <param name="sh" type="unsigned long"/>
+      </constructor>
+      <constructor>
+        <param name="data" type="Uint8ClampedArray"/>
+        <param name="sw" type="unsigned long"/>
+        <param name="sh" optional="1" type="unsigned long"/>
       </constructor>
       <properties>
-        <property name="data" read-only="1" type="Uint8ClampedArray" />
-        <property name="height" read-only="1" type="unsigned long" />
-        <property name="width" read-only="1" type="unsigned long" />
+        <property name="width" read-only="1" type="unsigned long"/>
+        <property name="height" read-only="1" type="unsigned long"/>
+        <property name="data" read-only="1" type="Uint8ClampedArray"/>
       </properties>
     </interface>
     <interface name="IntersectionObserver" exposed="Window" extends="Object">
@@ -11386,6 +11320,9 @@
           <param name="object" type="any" />
           <param name="options" default="0" optional="1" type="ObjectURLOptions" />
         </method>
+        <method name="createObjectURL" static="1" type="DOMString" exposed="Window">
+          <param name="mediaSource" type="MediaSource"/>
+        </method>
         <method name="revokeObjectURL" static="1" type="void">
           <param name="url" type="DOMString" />
         </method>
@@ -12971,7 +12908,7 @@
         <property name="responseText" read-only="1" type="DOMString" />
         <property name="responseType" type="XMLHttpRequestResponseType" />
         <property name="responseURL" read-only="1" type="DOMString" />
-        <property name="responseXML" nullable="1" read-only="1" type="Document" />
+        <property name="responseXML" nullable="1" read-only="1" type="Document" exposed="Window" />
         <property name="status" read-only="1" type="unsigned short" />
         <property name="statusText" read-only="1" type="DOMString" />
         <property name="timeout" type="unsigned long" />
@@ -13516,4 +13453,64 @@
     <typedef new-type="USVString" type="DOMString" />
     <typedef new-type="payloadtype" type="octet" />
   </typedefs>
+  <namespaces>
+    <namespace name="console" exposed="Window Worker Worklet">
+      <methods>
+        <method name="assert" type="void">
+          <param name="condition" default="false" optional="1" type="boolean"/>
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="clear" type="void"/>
+        <method name="count" type="void">
+          <param name="label" default="&quot;default&quot;" optional="1" type="DOMString"/>
+        </method>
+        <method name="debug" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="error" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="info" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="log" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="table" type="void">
+          <param name="tabularData" type="any"/>
+          <param name="properties" optional="1" type="sequence&lt;DOMString>"/>
+        </method>
+        <method name="trace" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="warn" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="dir" type="void">
+          <param name="item" type="any"/>
+        </method>
+        <method name="dirxml" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="group" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="groupCollapsed" type="void">
+          <param name="data" type="any" variadic="1"/>
+        </method>
+        <method name="groupEnd" type="void"/>
+        <method name="time" type="void">
+          <param name="label" default="&quot;default&quot;" optional="1" type="DOMString"/>
+        </method>
+        <method name="timeEnd" type="void">
+          <param name="label" default="&quot;default&quot;" optional="1" type="DOMString"/>
+        </method>
+      </methods>
+    </namespace>
+    <namespace name="someNamespace">
+      <properties>
+        <property name="someProperty" type="double" />
+      </properties>
+    </namespace>
+  </namespaces>
 </webidl-xml>

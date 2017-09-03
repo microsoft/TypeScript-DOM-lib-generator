@@ -9,6 +9,7 @@ open System.Text.RegularExpressions
 open System.Web
 open Microsoft.FSharp.Reflection
 open FSharp.Data
+open System.Linq
 
 module GlobalVars =
     let inputFolder = Path.Combine(__SOURCE_DIRECTORY__, "inputfiles")
@@ -118,6 +119,31 @@ module Types =
         | Method of Browser.Method
         | Ctor of Browser.Constructor
         | CallBackFun of Browser.CallbackFunction
+        member self.Params =
+            match self with
+            | Method m -> m.Params
+            | Ctor ctor -> ctor.Params
+            | CallBackFun callback -> callback.Params
+
+    type InterfaceOrNamespace = 
+        | Interface of Browser.Interface
+        | Namespace of Browser.Namespace
+        member self.Name =
+            match self with
+            | Interface i -> i.Name
+            | Namespace n -> n.Name
+        member self.Exposed =
+            match self with
+            | Interface i -> i.Exposed
+            | Namespace n -> n.Exposed
+        member self.Properties =
+            match self with
+            | Interface i -> i.Properties
+            | Namespace n -> n.Properties
+        member self.Methods =
+            match self with
+            | Interface i -> i.Methods
+            | Namespace n -> n.Methods
 
     // Note:
     // Eventhandler's name and the eventName are not just off by "on".
@@ -160,6 +186,7 @@ module InputJson =
         | SignatureOverload
         | TypeDef
         | Extends
+        | Namespace
         override x.ToString() =
             match x with
             | Property _ -> "property"
@@ -172,6 +199,7 @@ module InputJson =
             | SignatureOverload _ -> "signatureoverload"
             | TypeDef _ -> "typedef"
             | Extends _ -> "extends"
+            | Namespace _ -> "namespace"
 
     let getItemByName (allItems: InputJsonType.Root []) (itemName: string) (kind: ItemKind) otherFilter =
         let filter (item: InputJsonType.Root) =
@@ -271,102 +299,92 @@ module Data =
     let browser =
         (new StreamReader(Path.Combine(GlobalVars.inputFolder, "browser.webidl.xml"))).ReadToEnd() |> Browser.Parse
 
-    let worker =
-        (new StreamReader(Path.Combine(GlobalVars.inputFolder, "webworkers.specidl.xml"))).ReadToEnd() |> Browser.Parse
+    let knownExposures =
+        let asArray (k: string, v: JsonValue) =
+            match v with
+            | JsonValue.String s -> (k, s.Split [| ' ' |])
+            | _ -> failwith "Incorrect format"
+
+        File.ReadAllText(Path.Combine(GlobalVars.inputFolder, "knownExposures.json"))
+        |> JsonValue.Parse
+        |> JsonExtensions.Properties
+        |> Array.map asArray
+        |> Map.ofArray
+
+    let WorkerTypes = [| "Worker"; "DedicatedWorker"; "SharedWorker"; "ServiceWorker" |]
 
     /// Check if the given element should be disabled or not
     /// reason is that ^a can be an interface, property or method, but they
     /// all share a 'tag' property
-    let inline ShouldKeep flavor (i: ^a when ^a: (member Tags: string option)) =
+    let inline ShouldKeep flavor (i: ^a when ^a: (member Exposed: string option)) =
         let filterByTag =
-            match (^a: (member Tags: string option) i) with
-            | Some tags ->
+            match (^a: (member Exposed: string option) i) with
+            | Some exposed ->
+                let exposedArray = exposed.Split [|' '|]
                 match flavor with
                 | Flavor.All -> true
-                | Flavor.Web -> tags <> "MSAppOnly" && tags <> "WinPhoneOnly"
-                | Flavor.Worker -> tags <> "IEOnly"
-            | _ -> true
+                | Flavor.Web -> Array.contains "Window" exposedArray
+                | Flavor.Worker -> (exposedArray.Intersect WorkerTypes).Count() <> 0
+            | _ ->
+                match flavor with
+                | Flavor.All | Flavor.Web -> true
+                | Flavor.Worker -> false
         filterByTag
+
+    let inline ShouldKeepInherit flavor inheritedExposure (i: ^a when ^a: (member Exposed: string option)) =
+        let exposure = (^a: (member Exposed: string option) i);
+        if exposure.IsSome then ShouldKeep flavor i
+        else ShouldKeep flavor inheritedExposure
+
+    let inline ShouldKeepUnexposed flavor name = 
+        let exposure = knownExposures.TryFind name
+        match flavor with
+        | Flavor.All -> true
+        | Flavor.Web -> exposure.IsNone || Array.contains "Window" exposure.Value
+        | Flavor.Worker -> exposure.IsSome
+    
+    let inline getName ((i: ^a when ^a: (member Name: string))) = 
+        (^a: (member Name: string) i)
+
+    let inline getTypedefName ((i: ^a when ^a: (member NewType: string))) = 
+        (^a: (member NewType: string) i)
 
     // Global interfacename to interface object map
     let allWebNonCallbackInterfaces =
         Array.concat [| browser.Interfaces; browser.MixinInterfaces.Interfaces |]
 
-    let allWebInterfaces =
-        Array.concat [| browser.Interfaces; browser.CallbackInterfaces.Interfaces; browser.MixinInterfaces.Interfaces |]
-
-    let allWorkerAdditionalInterfaces =
-        Array.concat [| worker.Interfaces; worker.MixinInterfaces.Interfaces |]
-
     let allInterfaces =
-        Array.concat [| allWebInterfaces; allWorkerAdditionalInterfaces |]
+        Array.concat [| browser.Interfaces; browser.CallbackInterfaces.Interfaces; browser.MixinInterfaces.Interfaces |]
 
     let inline toNameMap< ^a when ^a: (member Name: string) > (data: array< ^a > ) =
         data
         |> Array.map (fun x -> ((^a: (member Name: string) x), x))
         |> Map.ofArray
 
-    let allInterfacesMap =
-        allInterfaces |> toNameMap
+    let allInterfacesMap = allInterfaces |> toNameMap
 
-    let allDictionariesMap =
-        Array.concat [| browser.Dictionaries; worker.Dictionaries |]
-        |> toNameMap
+    let allDictionariesMap = browser.Dictionaries |> toNameMap
 
-    let allEnumsMap =
-        Array.concat [| browser.Enums; worker.Enums |]
-        |> toNameMap
+    let allEnumsMap = browser.Enums |> toNameMap
 
-    let allCallbackFuncs =
-        Array.concat [| browser.CallbackFunctions; worker.CallbackFunctions |]
-        |> toNameMap
+    let allCallbackFuncs = browser.CallbackFunctions |> toNameMap
 
     let GetInterfaceByName = allInterfacesMap.TryFind
 
-    type KnownWorkerInterfaceType = JsonProvider<"inputfiles/knownWorkerInterfaces.json", InferTypesFromValues=false>
-    let knownWorkerInterfaces =
-        File.ReadAllText(Path.Combine(GlobalVars.inputFolder, "knownWorkerInterfaces.json"))
-        |> KnownWorkerInterfaceType.Parse
-        |> set
-
-    let knownWorkerEnums =
-        File.ReadAllText(Path.Combine(GlobalVars.inputFolder, "knownWorkerEnums.json"))
-        |> KnownWorkerInterfaceType.Parse
-        |> set
-
-    let GetAllInterfacesByFlavor flavor =
-        match flavor with
-        | Flavor.Web -> allWebInterfaces |> Array.filter (ShouldKeep Web)
-        | Flavor.All -> allWebInterfaces |> Array.filter (ShouldKeep Flavor.All)
-        | Flavor.Worker ->
-            let isFromBrowserXml = allWebInterfaces |> Array.filter (fun i -> knownWorkerInterfaces.Contains i.Name)
-            Array.append isFromBrowserXml allWorkerAdditionalInterfaces
-
     let GetNonCallbackInterfacesByFlavor flavor =
-        match flavor with
-        | Flavor.Web -> allWebNonCallbackInterfaces |> Array.filter (ShouldKeep Flavor.Web)
-        | Flavor.All -> allWebNonCallbackInterfaces |> Array.filter (ShouldKeep Flavor.All)
-        | Flavor.Worker ->
-            let isFromBrowserXml = allWebNonCallbackInterfaces |> Array.filter (fun i -> knownWorkerInterfaces.Contains i.Name)
-            Array.append isFromBrowserXml allWorkerAdditionalInterfaces
-
-    let GetPublicInterfacesByFlavor flavor =
-        match flavor with
-        | Flavor.Web | Flavor.All -> browser.Interfaces |> Array.filter (ShouldKeep flavor)
-        | Flavor.Worker ->
-            let isFromBrowserXml = browser.Interfaces |> Array.filter (fun i -> knownWorkerInterfaces.Contains i.Name)
-            Array.append isFromBrowserXml worker.Interfaces
+        allWebNonCallbackInterfaces |> Array.filter (ShouldKeep flavor)
 
     let GetCallbackFuncsByFlavor flavor =
-        browser.CallbackFunctions
-        |> Array.filter (fun cb -> (flavor <> Flavor.Worker || knownWorkerInterfaces.Contains cb.Name) && ShouldKeep flavor cb)
+        browser.CallbackFunctions |> Array.filter (getName >> ShouldKeepUnexposed flavor)
 
     let GetEnumsByFlavor flavor =
-        match flavor with
-        | Flavor.Web | Flavor.All -> browser.Enums
-        | Flavor.Worker ->
-            let isFromBrowserXml = browser.Enums |> Array.filter (fun i -> knownWorkerEnums.Contains i.Name)
-            Array.append isFromBrowserXml worker.Enums
+        browser.Enums |> Array.filter (getName >> ShouldKeepUnexposed flavor)
+
+    let GetNamespacesByFlavor flavor =
+        browser.Namespaces |> Array.filter (ShouldKeep flavor)
+    
+    let GetTypedefsByFlavor flavor =
+        browser.Typedefs |> Array.filter (getTypedefName >> ShouldKeepUnexposed flavor)
 
     /// Event name to event type map
     let eNameToEType =
@@ -440,12 +458,11 @@ module Data =
             yield! [ for e in i.Elements do
                         yield (e.Name, i.Name) ] ]
         |> Seq.groupBy fst
-        |> Seq.map (fun (key, group) -> (key, Seq.map snd group))
-        |> Seq.map (fun (key, group) ->
+        |> Seq.map ((fun (key, group) -> (key, Seq.map snd group)) >> (fun (key, group) ->
             key,
             match Seq.length group with
             | 1 -> Seq.head group
-            | _ -> resolveElementConflict key group)
+            | _ -> resolveElementConflict key group))
         |> Map.ofSeq
 
     /// Interface name to all its implemented / inherited interfaces name list map
@@ -464,14 +481,14 @@ module Data =
             | Some i -> List.ofArray i.Implements
             | _ -> []
 
-        Array.concat [| allWebNonCallbackInterfaces; worker.Interfaces; worker.MixinInterfaces.Interfaces |]
+        Array.concat [| allWebNonCallbackInterfaces |]
         |> Array.map (fun i -> (i.Name, List.concat [ (getExtendList i.Name); (getImplementList i.Name) ]))
         |> Map.ofArray
 
     /// Distinct event type list, used in the "createEvent" function
     let distinctETypeList =
         let usedEvents =
-            [ for i in GetNonCallbackInterfacesByFlavor Flavor.All do
+            [ for i in GetNonCallbackInterfacesByFlavor Flavor.Web do
                 match i.Events with
                 | Some es -> yield! es.Events
                 | _ -> () ]
@@ -479,7 +496,7 @@ module Data =
             |> List.distinct
 
         let unUsedEvents =
-            GetNonCallbackInterfacesByFlavor Flavor.All
+            GetNonCallbackInterfacesByFlavor Flavor.Web
             |> Array.choose (fun i ->
                 if i.Extends = "Event" && i.Name.EndsWith("Event") && not (List.contains i.Name usedEvents) then Some(i.Name) else None)
             |> Array.distinct
@@ -572,7 +589,7 @@ module Data =
     let GetGlobalPollutor flavor =
         match flavor with
         | Flavor.Web | Flavor.All -> browser.Interfaces |> Array.tryFind (fun i -> i.PrimaryGlobal.IsSome)
-        | Flavor.Worker -> worker.Interfaces |> Array.tryFind (fun i -> i.Global.IsSome)
+        | Flavor.Worker -> browser.Interfaces |> Array.tryFind (fun i -> i.Global.IsSome && i.Name = "DedicatedWorkerGlobalScope")
 
     let GetGlobalPollutorName flavor =
         match GetGlobalPollutor flavor with
@@ -582,28 +599,12 @@ module Data =
     /// Return a sequence of returntype * HashSet<paramCombination> tuple
     let GetOverloads (f : Function) (decomposeMultipleTypes : bool) =
         let getParams (f : Function) =
-            match f with
-            | Method m ->
-                [ for p in m.Params do
-                    yield { Type = p.Type
-                            Name = p.Name
-                            Optional = p.Optional.IsSome
-                            Variadic = p.Variadic.IsSome
-                            Nullable = p.Nullable.IsSome } ]
-            | Ctor c ->
-                [ for p in c.Params do
-                    yield { Type = p.Type
-                            Name = p.Name
-                            Optional = p.Optional.IsSome
-                            Variadic = p.Variadic.IsSome
-                            Nullable = p.Nullable.IsSome } ]
-            | CallBackFun cb ->
-                [ for p in cb.Params do
-                    yield { Type = p.Type
-                            Name = p.Name
-                            Optional = p.Optional.IsSome
-                            Variadic = p.Variadic.IsSome
-                            Nullable = p.Nullable.IsSome } ]
+            [ for p in f.Params do
+                yield { Type = p.Type
+                        Name = p.Name
+                        Optional = p.Optional.IsSome
+                        Variadic = p.Variadic.IsSome
+                        Nullable = p.Nullable.IsSome } ]
 
         let getReturnType (f : Function) =
             match f with
@@ -664,8 +665,8 @@ module Data =
         browser.Typedefs |> Array.map (fun td -> td.NewType) |> Set.ofArray
 
     let extendConflicts = [
-        { BaseType = "AudioContext"; ExtendType = ["OfflineContext"]; MemberNames = ["suspend"] };
         { BaseType = "HTMLCollection"; ExtendType = ["HTMLFormControlsCollection"]; MemberNames = ["namedItem"] };
+        { BaseType = "HTMLHyperlinkElementUtils"; ExtendType = ["SVGAElement"]; MemberNames = ["href"] };
         ]
 
     let extendConflictsBaseTypes =
@@ -685,66 +686,10 @@ module Emit =
 
     // Extended types used but not defined in the spec
     let extendedTypes =
-        ["ArrayBuffer";"ArrayBufferView";"Int8Array";"Uint8Array";"Int16Array";"Uint16Array";"Int32Array";"Uint32Array";"Float32Array";"Float64Array"]
+        ["ArrayBuffer";"ArrayBufferView";"Int8Array";"Uint8Array";"Int16Array";"Uint16Array";"Int32Array";"Uint32Array";"Uint8ClampedArray";"Float32Array";"Float64Array";"DataView"]
 
     let integerTypes =
         ["byte";"octet";"short";"unsigned short";"long";"unsigned long";"long long";"unsigned long long"]
-
-    /// Get typescript type using object dom type, object name, and it's associated interface name
-    let rec DomTypeToTsType (objDomType: string) =
-        match objDomType.Trim('?') with
-        | "AbortMode" -> "String"
-        | "any" -> "any"
-        | "bool" | "boolean" | "Boolean" -> "boolean"
-        | "CanvasPixelArray" -> "number[]"
-        | "Date" -> "Date"
-        | "DOMHighResTimeStamp" -> "number"
-        | "DOMString" -> "string"
-        | "DOMTimeStamp" -> "number"
-        | "EndOfStreamError" -> "number"
-        | "EventListener" -> "EventListenerOrEventListenerObject"
-        | "double" | "float" -> "number"
-        | "Function" -> "Function"
-        | "object" -> "any"
-        | "Promise" -> "Promise"
-        | "ReadyState" -> "string"
-        | "sequence" -> "Array"
-        | "UnrestrictedDouble" | "unrestricted double" -> "number"
-        | "void" -> "void"
-        | integerType when List.contains integerType integerTypes -> "number"
-        | extendedType when List.contains extendedType extendedTypes -> extendedType
-        | _ ->
-            if ignoreDOMTypes && Seq.contains objDomType ["Element"; "Window"; "Document"] then "any"
-            else
-                // Name of an interface / enum / dict. Just return itself
-                if allInterfacesMap.ContainsKey objDomType ||
-                    allCallbackFuncs.ContainsKey objDomType ||
-                    allDictionariesMap.ContainsKey objDomType ||
-                    allEnumsMap.ContainsKey objDomType then
-                    objDomType
-                // Name of a type alias. Just return itself
-                elif typeDefSet.Contains objDomType then objDomType
-                // Union types
-                elif objDomType.Contains(" or ") then
-                    let allTypes = objDomType.Trim('(', ')').Split([|" or "|], StringSplitOptions.None)
-                                    |> Array.map (fun t -> DomTypeToTsType (t.Trim('?', ' ')))
-                    if Seq.contains "any" allTypes then "any" else String.concat " | " allTypes
-                else
-                    // Check if is array type, which looks like "sequence<DOMString>"
-                    let unescaped = System.Web.HttpUtility.HtmlDecode(objDomType)
-                    let genericMatch = Regex.Match(unescaped, @"^(\w+)<([\w, <>]+)>$")
-                    if genericMatch.Success then
-                        let tName = DomTypeToTsType (genericMatch.Groups.[1].Value)
-                        let paramName = DomTypeToTsType (genericMatch.Groups.[2].Value)
-                        match tName with
-                        | _ ->
-                            if tName = "Array" then paramName + "[]"
-                            else tName + "<" + paramName + ">"
-                    elif objDomType.EndsWith("[]") then
-                        let elementType = objDomType.Replace("[]", "").Trim() |> DomTypeToTsType
-                        elementType + "[]"
-                    else "any"
-
 
     let makeNullable (originalType: string) =
         match originalType with
@@ -753,6 +698,67 @@ module Emit =
         | t when t.Contains "| null" -> t
         | functionType when functionType.Contains "=>" -> "(" + functionType + ") | null"
         | _ -> originalType + " | null"
+
+    /// Get typescript type using object dom type, object name, and it's associated interface name
+    let rec DomTypeToTsType (objDomType: string) =
+        let nullable = objDomType.EndsWith "?"
+        let nonNullType = objDomType.Trim('?')
+        let resolvedType =
+            match nonNullType with
+            | "any" -> "any"
+            | "bool" | "boolean" | "Boolean" -> "boolean"
+            | "Date" -> "Date"
+            | "Error" -> "Error"
+            | "DOMException" -> "DOMException"
+            | "DOMHighResTimeStamp" -> "number"
+            | "DOMString" | "USVString" | "ByteString" -> "string"
+            | "DOMTimeStamp" -> "number"
+            | "double" | "float" | "unrestricted double" | "unrestricted float" -> "number"
+            | "Function" -> "Function"
+            | "FrozenArray" -> "ReadonlyArray"
+            | "object" -> "any"
+            | "Promise" -> "Promise"
+            | "sequence" -> "Array"
+            | "record" -> "record"
+            | "void" -> "void"
+            | integerType when List.contains integerType integerTypes -> "number"
+            | extendedType when List.contains extendedType extendedTypes -> extendedType
+            | _ ->
+                if ignoreDOMTypes && (Seq.contains nonNullType ["Element"; "Window"; "Document"; "WindowProxy"; "WebGLRenderingContext"] || nonNullType.StartsWith "HTML") then "never"
+                elif nonNullType = "WindowProxy" then "Window"
+                else
+                    // Name of an interface / enum / dict. Just return itself
+                    if allInterfacesMap.ContainsKey nonNullType ||
+                        allCallbackFuncs.ContainsKey nonNullType ||
+                        allDictionariesMap.ContainsKey nonNullType ||
+                        allEnumsMap.ContainsKey nonNullType then
+                        nonNullType
+                    // Name of a type alias. Just return itself
+                    elif typeDefSet.Contains nonNullType then nonNullType
+                    // Union types
+                    elif nonNullType.Contains(" or ") then
+                        let allTypes = nonNullType.Trim('(', ')').Split([|" or "|], StringSplitOptions.None)
+                                        |> Array.map DomTypeToTsType
+                        if Seq.contains "any" allTypes then "any" else String.concat " | " allTypes
+                    else
+                        // Check if is array type, which looks like "sequence<DOMString>"
+                        let unescaped = System.Web.HttpUtility.HtmlDecode(nonNullType)
+                        let genericMatch = Regex.Match(unescaped, @"^(\w+)<(.+)>$")
+                        if genericMatch.Success then
+                            let tName = DomTypeToTsType (genericMatch.Groups.[1].Value)
+                            let paramNames =
+                                genericMatch.Groups.[2].Value.Split([| ", " |], StringSplitOptions.None)
+                                |> Array.map DomTypeToTsType
+                            match tName with
+                            | "Array" -> if paramNames.[0].Contains "|" then "(" + paramNames.[0] + ")" + "[]" else paramNames.[0] + "[]"
+                            | "record" -> "{ [key: string]: " + paramNames.[1] + " }"
+                            | _ -> tName + "<" + (paramNames |> String.concat ", ") + ">"
+                        elif nonNullType.EndsWith("[]") then
+                            let elementType = nonNullType.Replace("[]", "").Trim() |> DomTypeToTsType
+                            elementType + "[]"
+                        else "any"
+
+        if nullable then makeNullable resolvedType else resolvedType
 
     let DomTypeToNullableTsType (objDomType: string) (nullable: bool) =
         let resolvedType = DomTypeToTsType objDomType
@@ -767,7 +773,7 @@ module Emit =
                 | Some c' -> emitConstantFromJson c'
                 | None -> Pt.Printl "readonly %s: %s;" c.Name (DomTypeToTsType c.Type)
 
-        let addedConstants = getAddedItems ItemKind.Constant Flavor.All
+        let addedConstants = getAddedItemsByInterfaceName ItemKind.Constant Flavor.All i.Name
         Array.iter emitConstantFromJson addedConstants
 
         if i.Constants.IsSome then
@@ -787,9 +793,9 @@ module Emit =
 
     /// Emit overloads for the getElementsByTagName method
     let EmitGetElementsByTagNameOverloads (m: Browser.Method) =
-        if matchSingleParamMethodSignature m "getElementsByTagName" "NodeList" "string" then
-            Pt.Printl "getElementsByTagName<K extends keyof ElementListTagNameMap>(%s: K): ElementListTagNameMap[K];" m.Params.[0].Name
-            Pt.Printl "getElementsByTagName(%s: string): NodeListOf<Element>;" m.Params.[0].Name
+        if matchSingleParamMethodSignature m "getElementsByTagName" "HTMLCollection" "string" then
+            Pt.Printl "getElementsByTagName<K extends keyof ElementTagNameMap>(%s: K): HTMLCollectionOf<ElementTagNameMap[K]>;" m.Params.[0].Name
+            Pt.Printl "getElementsByTagName(%s: string): HTMLCollectionOf<Element>;" m.Params.[0].Name
 
     /// Emit overloads for the querySelector method
     let EmitQuerySelectorOverloads (m: Browser.Method) =
@@ -800,7 +806,7 @@ module Emit =
     /// Emit overloads for the querySelectorAll method
     let EmitQuerySelectorAllOverloads (m: Browser.Method) =
         if matchSingleParamMethodSignature m "querySelectorAll" "NodeList" "string" then
-            Pt.Printl "querySelectorAll<K extends keyof ElementListTagNameMap>(selectors: K): ElementListTagNameMap[K];"
+            Pt.Printl "querySelectorAll<K extends keyof ElementTagNameMap>(selectors: K): NodeListOf<ElementTagNameMap[K]>;"
             Pt.Printl "querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;"
 
     let EmitHTMLElementTagNameMap () =
@@ -823,12 +829,6 @@ module Emit =
         Pt.Printl "}"
         Pt.Printl ""
 
-    let EmitElementListTagNameMap () =
-        Pt.Printl "type ElementListTagNameMap = {"
-        Pt.PrintWithAddedIndent "[key in keyof ElementTagNameMap]: NodeListOf<ElementTagNameMap[key]>"
-        Pt.Printl "};"
-        Pt.Printl ""
-
     /// Emit overloads for the createEvent method
     let EmitCreateEventOverloads (m: Browser.Method) =
         if matchSingleParamMethodSignature m "createEvent" "Event" "string" then
@@ -848,15 +848,9 @@ module Emit =
             (if p.Variadic then "..." else "") +
             (AdjustParamName p.Name) +
             (if isOptional then "?: " else ": ") +
-            pType +
+            (if p.Variadic && pType.Contains(" | ") then "(" + pType + ")" else pType) +
             (if p.Variadic then "[]" else "")
         String.Join(", ", (List.map paramToString ps))
-
-    let EmitCallBackInterface (i:Browser.Interface) =
-        Pt.Printl "interface %s {" i.Name
-        Pt.PrintWithAddedIndent "(evt: Event): void;"
-        Pt.Printl "}"
-        Pt.Printl ""
 
     let EmitCallBackFunctions flavor =
         let emitCallbackFunctionsFromJson (cb: InputJson.InputJsonType.Root) =
@@ -883,7 +877,8 @@ module Emit =
 
     let EmitEnums flavor =
         let emitEnum (e: Browser.Enum) =
-            Pt.Printl "type %s = %s;" e.Name (String.Join(" | ", e.Values |> Array.map (fun value -> "\"" + value + "\"")))
+            if not (Array.isEmpty e.Values) then
+                Pt.Printl "type %s = %s;" e.Name (String.Join(" | ", e.Values |> Array.map (fun value -> "\"" + value + "\"")))
         GetEnumsByFlavor flavor |> Array.iter emitEnum
 
     let EmitEventHandlerThis flavor (prefix: string) (i: Browser.Interface) =
@@ -892,7 +887,7 @@ module Emit =
              | Some pollutor -> "this: " + pollutor.Name + ", "
              | _ -> ""
 
-    let EmitProperties flavor prefix (emitScope: EmitScope) (i: Browser.Interface) (conflictedMembers: Set<string>) =
+    let EmitProperties flavor prefix (emitScope: EmitScope) (i: InterfaceOrNamespace) (conflictedMembers: Set<string>) =
         let emitPropertyFromJson (p: InputJsonType.Root) =
             let readOnlyModifier =
                 match p.Readonly with
@@ -918,21 +913,26 @@ module Emit =
                 | Some p' -> emitPropertyFromJson p'
                 | None ->
                     let pType =
-                        match p.Type with
-                        | "EventHandler" ->
+                        match (i, p.Type) with
+                        | (InterfaceOrNamespace.Interface it, "EventHandler") ->
                             // Sometimes event handlers with the same name may actually handle different
                             // events in different interfaces. For example, "onerror" handles "ErrorEvent"
                             // normally, but in "SVGSVGElement" it handles "SVGError" event instead.
                             let eType =
                                 if p.EventHandler.IsSome then
-                                    getEventTypeInInterface p.EventHandler.Value i
+                                    getEventTypeInInterface p.EventHandler.Value it
                                 else
                                     "Event"
-                            String.Format("({0}ev: {1}) => any", EmitEventHandlerThis flavor prefix i, eType)
+                            String.Format("({0}ev: {1}) => any", EmitEventHandlerThis flavor prefix it, eType)
                         | _ -> DomTypeToTsType p.Type
                     let pTypeAndNull = if p.Nullable.IsSome then makeNullable pType else pType
-                    let readOnlyModifier = if p.ReadOnly.IsSome && prefix = "" then "readonly " else ""
-                    printLine "%s%s%s: %s;" prefix readOnlyModifier p.Name pTypeAndNull
+                    let modifierOrStatement = 
+                        match (p.ReadOnly, prefix, i) with
+                        | (Some r, "", InterfaceOrNamespace.Interface it) -> "readonly "
+                        | (None, "", InterfaceOrNamespace.Namespace n) -> "var "
+                        | (Some r, "", InterfaceOrNamespace.Namespace n) -> "const "
+                        | (_, _, _) -> ""
+                    printLine "%s%s%s: %s;" prefix modifierOrStatement p.Name pTypeAndNull
 
         // Note: the schema file shows the property doesn't have "static" attribute,
         // therefore all properties are emited for the instance type.
@@ -940,7 +940,7 @@ module Emit =
             match i.Properties with
             | Some ps ->
                 ps.Properties
-                |> Array.filter (ShouldKeep flavor)
+                |> Array.filter (ShouldKeepInherit flavor i)
                 |> Array.iter emitProperty
             | None -> ()
 
@@ -949,7 +949,7 @@ module Emit =
                     emitCommentForProperty Pt.Printl addedItem.Name.Value
                     emitPropertyFromJson addedItem
 
-    let EmitMethods flavor prefix (emitScope: EmitScope) (i: Browser.Interface) (conflictedMembers: Set<string>) =
+    let EmitMethods flavor prefix (emitScope: EmitScope) (i: InterfaceOrNamespace) (conflictedMembers: Set<string>) =
         // Note: two cases:
         // 1. emit the members inside a interface -> no need to add prefix
         // 2. emit the members outside to expose them (for "Window") -> need to add "declare"
@@ -968,7 +968,7 @@ module Emit =
             matchScope emitScope m &&
             not (prefix <> "" && OptionCheckValue "addEventListener" m.Name)
 
-        let emitMethod flavor prefix (i:Browser.Interface) (m:Browser.Method) =
+        let emitMethod flavor prefix (i: InterfaceOrNamespace) (m:Browser.Method) =
             let printLine content =
                 if m.Name.IsSome && conflictedMembers.Contains m.Name.Value then Pt.PrintlToStack content else Pt.Printl content
             // print comment
@@ -1013,6 +1013,7 @@ module Emit =
 
         if i.Methods.IsSome then
             i.Methods.Value.Methods
+            |> Array.filter (ShouldKeepInherit flavor i)
             |> Array.filter mFilter
             |> Array.iter (emitMethod flavor prefix i)
 
@@ -1027,7 +1028,7 @@ module Emit =
             Pt.Printl "declare function toString(): string;"
 
     /// Emit the properties and methods of a given interface
-    let EmitMembers flavor (prefix: string) (emitScope: EmitScope) (i:Browser.Interface) =
+    let EmitMembers flavor (prefix: string) (emitScope: EmitScope) (i: InterfaceOrNamespace) =
         let conflictedMembers =
             match Map.tryFind i.Name extendConflictsBaseTypes with
             | Some conflict -> conflict.MemberNames
@@ -1041,7 +1042,7 @@ module Emit =
     /// Called only once on the global polluter object
     let rec EmitAllMembers flavor (i:Browser.Interface) =
         let prefix = "declare var "
-        EmitMembers flavor prefix EmitScope.All i
+        EmitMembers flavor prefix EmitScope.All (InterfaceOrNamespace.Interface i)
 
         for relatedIName in iNameToIDependList.[i.Name] do
             match GetInterfaceByName relatedIName with
@@ -1071,12 +1072,17 @@ module Emit =
 
         if shouldEmitStringEventHandler then
             Pt.Printl
-                "%saddEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;"
+                "%saddEventListener(type: string, listener: EventListener, useCapture?: boolean): void;"
                 fPrefix
 
     let EmitConstructorSignature flavor (i:Browser.Interface) =
         let emitConstructorSigFromJson (c: InputJsonType.Root) =
             c.Signatures |> Array.iter (Pt.Printl "%s;")
+
+        let emitConstructorSingleSignature (ctor: Browser.Constructor) = 
+            for { ParamCombinations = pCombList } in GetOverloads (Ctor ctor) false do
+                let paramsString = ParamsToString pCombList
+                Pt.Printl "new(%s): %s;" paramsString i.Name
 
         let removedCtor = getRemovedItems ItemKind.Constructor flavor  |> Array.tryFind (matchInterface i.Name)
         if Option.isNone removedCtor then
@@ -1085,15 +1091,12 @@ module Emit =
             | Some c' -> emitConstructorSigFromJson c'
             | _ ->
                 //Emit constructor signature
-                match i.Constructor with
-                | Some ctor ->
-                    for { ParamCombinations = pCombList } in GetOverloads (Ctor ctor) false do
-                        let paramsString = ParamsToString pCombList
-                        Pt.Printl "new(%s): %s;" paramsString i.Name
-                | _ -> Pt.Printl "new(): %s;" i.Name
+                if not (Array.isEmpty i.Constructors) then
+                    i.Constructors |> Array.iter emitConstructorSingleSignature
+                else
+                    Pt.Printl "new(): %s;" i.Name
 
-        getAddedItems ItemKind.Constructor flavor
-        |> Array.filter (matchInterface i.Name)
+        getAddedItemsByInterfaceName ItemKind.Constructor flavor i.Name
         |> Array.iter emitConstructorSigFromJson
 
     let EmitConstructor flavor (i:Browser.Interface) =
@@ -1104,7 +1107,7 @@ module Emit =
         EmitConstructorSignature flavor i
         EmitConstants i
         let prefix = ""
-        EmitMembers flavor prefix EmitScope.StaticOnly i
+        EmitMembers flavor prefix EmitScope.StaticOnly (InterfaceOrNamespace.Interface i)
 
         Pt.DecreaseIndent()
         Pt.Printl "};"
@@ -1123,9 +1126,14 @@ module Emit =
                 Pt.Printl "declare var %s: { new(%s): %s; };" nc.Name (ParamsToString ncParams) i.Name)
 
     let EmitInterfaceDeclaration (i:Browser.Interface) =
+        let getConflict iName = Map.tryFind iName extendConflictsBaseTypes;
         let processIName iName =
-            match Map.tryFind iName extendConflictsBaseTypes with
+            match getConflict iName with
             | Some _ -> iName + "Base"
+            | _ -> iName
+        let processExtendIName iName =
+            match getConflict iName with
+            | Some conflict -> if List.contains i.Name conflict.ExtendType then iName + "Base" else iName
             | _ -> iName
 
         let processedIName = processIName i.Name
@@ -1143,7 +1151,7 @@ module Emit =
                     let extendsFromSpec =
                         match i.Extends::(List.ofArray i.Implements) with
                         | [""] | [] | ["Object"] -> []
-                        | specExtends -> specExtends
+                        | specExtends -> List.filter allInterfacesMap.ContainsKey specExtends
                     let extendsFromJson =
                         InputJson.getAddedItemsByInterfaceName ItemKind.Extends Flavor.All i.Name
                         |> Array.map (fun e -> e.BaseInterface.Value) |> List.ofArray
@@ -1151,9 +1159,9 @@ module Emit =
                 else
                     overridenExtendsFromJson
 
-            combinedExtends |> List.map processIName
+            combinedExtends |> List.map processExtendIName
 
-        match finalExtends  with
+        match finalExtends with
         | [] -> ()
         | allExtends -> Pt.Print " extends %s" (String.Join(", ", allExtends))
         Pt.Print " {"
@@ -1252,7 +1260,7 @@ module Emit =
         Pt.IncreaseIndent()
 
         let prefix = ""
-        EmitMembers flavor prefix EmitScope.InstanceOnly i
+        EmitMembers flavor prefix EmitScope.InstanceOnly (InterfaceOrNamespace.Interface i)
         EmitConstants i
         EmitEventHandlers flavor prefix i
         EmitIndexers EmitScope.InstanceOnly i
@@ -1311,7 +1319,7 @@ module Emit =
             Pt.IncreaseIndent()
 
             let prefix = ""
-            EmitMembers flavor prefix EmitScope.InstanceOnly i
+            EmitMembers flavor prefix EmitScope.InstanceOnly (InterfaceOrNamespace.Interface i)
             EmitEventHandlers flavor prefix i
             EmitIndexers EmitScope.InstanceOnly i
 
@@ -1321,7 +1329,7 @@ module Emit =
             Pt.Printl "declare var %s: {" i.Name
             Pt.IncreaseIndent()
             EmitConstants i
-            EmitMembers flavor prefix EmitScope.StaticOnly i
+            EmitMembers flavor prefix EmitScope.StaticOnly (InterfaceOrNamespace.Interface i)
             emitAddedConstructor ()
             Pt.DecreaseIndent()
             Pt.Printl "};"
@@ -1333,7 +1341,7 @@ module Emit =
             Pt.IncreaseIndent()
 
             let prefix = ""
-            EmitMembers flavor prefix EmitScope.StaticOnly i
+            EmitMembers flavor prefix EmitScope.StaticOnly (InterfaceOrNamespace.Interface i)
             EmitConstants i
             EmitEventHandlers flavor prefix i
             EmitIndexers EmitScope.StaticOnly i
@@ -1355,6 +1363,22 @@ module Emit =
             else
                 EmitInterface flavor i
                 EmitConstructor flavor i
+
+    let EmitCallBackInterface flavor (i:Browser.Interface) =
+        if i.Exposed.IsNone || ShouldKeep flavor i then
+            let m = i.Methods.Value.Methods.[0]
+            let overload = (GetOverloads (Function.Method m) false).[0]
+            let paramsString = ParamsToString overload.ParamCombinations
+            let returnType = DomTypeToTsType m.Type
+            Pt.Printl "type %s = (%s) => %s | { %s(%s): %s; };" i.Name paramsString returnType m.Name.Value paramsString returnType
+            Pt.Printl ""
+            if i.Constants.IsSome then
+                Pt.Printl "declare var %s: {" i.Name
+                Pt.IncreaseIndent()
+                EmitConstants i
+                Pt.DecreaseIndent()
+                Pt.Printl "}"
+                Pt.Printl ""
 
     let EmitDictionaries flavor =
         let emitDictionary (dict:Browser.Dictionary) =
@@ -1391,11 +1415,8 @@ module Emit =
             Pt.Printl ""
 
         browser.Dictionaries
-        |> Array.filter (fun dict -> flavor <> Worker || knownWorkerInterfaces.Contains dict.Name)
+        |> Array.filter (getName >> ShouldKeepUnexposed flavor)
         |> Array.iter emitDictionary
-
-        if flavor = Worker then
-            worker.Dictionaries |> Array.iter emitDictionary
 
     let EmitAddedInterface (ai: InputJsonType.Root) =
         match ai.Extends with
@@ -1418,10 +1439,13 @@ module Emit =
             | _ -> ()
             m.Signatures |> Array.iter (Pt.PrintWithAddedIndent "%s;")
 
+        let emitConstant (c: InputJsonType.Constant) =
+            Pt.PrintWithAddedIndent "readonly %s: %s;" c.Name c.Type
 
         ai.Properties |> Array.iter emitProperty
         ai.Methods |> Array.iter emitMethod
         ai.Indexer |> Array.collect (fun i -> i.Signatures) |> Array.iter (Pt.PrintWithAddedIndent "%s;")
+        ai.Constants |> Array.iter emitConstant
         Pt.Printl "}"
         Pt.Printl ""
 
@@ -1432,6 +1456,7 @@ module Emit =
             | Some comment -> Pt.PrintWithAddedIndent "%s" comment
             | _ -> ()
             ai.ConstructorSignatures |> Array.iter (Pt.PrintWithAddedIndent "%s;")
+            ai.Constants |> Array.iter emitConstant
             Pt.Printl "};"
             Pt.Printl ""
 
@@ -1441,18 +1466,24 @@ module Emit =
         let emitTypeDefFromJson (typeDef: InputJsonType.Root) =
             Pt.Printl "type %s = %s;" typeDef.Name.Value typeDef.Type.Value
 
-        match flavor with
-        | Flavor.Worker ->
-            browser.Typedefs
-            |> Array.filter (fun typedef -> knownWorkerInterfaces.Contains typedef.NewType)
-            |> Array.iter emitTypeDef
-        | _ ->
-            browser.Typedefs
-            |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
-            |> Array.iter emitTypeDef
+        GetTypedefsByFlavor flavor
+        |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
+        |> Array.iter emitTypeDef
 
         InputJson.getAddedItems ItemKind.TypeDef flavor
         |> Array.iter emitTypeDefFromJson
+    
+    let EmitNamespaces flavor =
+        let emitNamespace (n: Browser.Namespace) = 
+            Pt.Printl "declare namespace %s {" n.Name
+            Pt.IncreaseIndent()
+            EmitProperties flavor "" EmitScope.All (InterfaceOrNamespace.Namespace n) Set.empty
+            EmitMethods flavor "function " EmitScope.All (InterfaceOrNamespace.Namespace n) Set.empty
+            Pt.DecreaseIndent()
+            Pt.Printl "}"
+            Pt.Printl ""
+
+        GetNamespacesByFlavor flavor |> Array.iter emitNamespace
 
     let EmitTheWholeThing flavor (target:TextWriter) =
         Pt.Reset()
@@ -1464,21 +1495,18 @@ module Emit =
         Pt.Printl ""
 
         EmitDictionaries flavor
-        browser.CallbackInterfaces.Interfaces |> Array.iter EmitCallBackInterface
+        browser.CallbackInterfaces.Interfaces |> Array.iter (EmitCallBackInterface flavor)
         EmitNonCallbackInterfaces flavor
+        EmitNamespaces flavor
 
         // Add missed interface definition from the spec
         InputJson.getAddedItems InputJson.Interface flavor |> Array.iter EmitAddedInterface
-
-        Pt.Printl "declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;"
-        Pt.Printl ""
 
         EmitCallBackFunctions flavor
 
         if flavor <> Worker then
             EmitHTMLElementTagNameMap()
             EmitElementTagNameMap()
-            EmitElementListTagNameMap()
             EmitNamedConstructors()
 
         match GetGlobalPollutor flavor with
@@ -1539,7 +1567,7 @@ module Emit =
         target.Close()
 
     let EmitDomWeb () =
-        EmitTheWholeThing Flavor.All GlobalVars.tsWebOutput
+        EmitTheWholeThing Flavor.Web GlobalVars.tsWebOutput
         EmitES6Thing GlobalVars.tsWebES6Output
 
     let EmitDomWorker () =

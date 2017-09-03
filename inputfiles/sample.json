@@ -348,5 +348,31 @@
                 "type": "HTMLCollection"
             }
         ]
+    },
+    {
+        "kind": "interface",
+        "name": "DOMException",
+        "extends": "Error",
+        "properties": [
+            {
+                "name": "name",
+                "type": "string",
+                "readonly": true
+            },
+            {
+                "name": "code",
+                "type": "number",
+                "readonly": true
+            }
+        ],
+        "constructorSignatures": [
+            "new (message?: string, name?: string): DOMException"
+        ],
+        "constants": [
+            {
+                "name": "INDEX_SIZE_ERR",
+                "type": "number"
+            }
+        ]
     }
 ]

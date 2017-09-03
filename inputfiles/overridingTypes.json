@@ -1,15 +1,6 @@
  [
     {
         "kind": "constructor",
-        "interface": "Response",
-        "signatures": [
-            "new(body?: any, init?: ResponseInit): Response",
-            "error: () => Response",
-            "redirect: (url: string, status?: number) => Response"
-        ]
-    },
-    {
-        "kind": "constructor",
         "interface": "ErrorEvent",
         "signatures": ["new(type: string, errorEventInitDict?: ErrorEventInit): ErrorEvent"]
     },
@@ -333,13 +324,13 @@
         "kind": "method",
         "interface": "SVGSVGElement",
         "name": "getEnclosureList",
-        "signatures": ["getEnclosureList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"]
+        "signatures": ["getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"]
     },
     {
         "kind": "method",
         "interface": "SVGSVGElement",
         "name": "getIntersectionList",
-        "signatures": ["getIntersectionList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"]
+        "signatures": ["getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"]
     },
     {
         "kind": "property",
@@ -520,16 +511,10 @@
         "type": "HTMLCollectionOf<HTMLTableRowElement>"
     },
     {
-        "kind": "method",
-        "interface": "HTMLTableRowElement",
-        "name": "insertCell",
-        "signatures": ["insertCell(index?: number): HTMLTableDataCellElement"]
-    },
-    {
         "kind": "property",
         "interface": "HTMLTableRowElement",
         "name": "cells",
-        "type": "HTMLCollectionOf<HTMLTableDataCellElement | HTMLTableHeaderCellElement>"
+        "type": "HTMLCollectionOf<HTMLTableCellElement>"
     },
     {
         "kind": "method",
@@ -616,50 +601,6 @@
         "interface": "Window",
         "name": "open",
         "signatures": ["open(url?: string, target?: string, features?: string, replace?: boolean): Window"]
-    },
-    {
-        "kind": "method",
-        "interface": "AudioNode",
-        "name": "connect",
-        "signatures": [
-            "connect(destination: AudioNode, output?: number, input?: number): AudioNode",
-            "connect(destination: AudioParam, output?: number): void"
-        ]
-    },
-    {
-        "kind": "method",
-        "interface": "AudioNode",
-        "name": "disconnect",
-        "signatures": [
-             "disconnect(output?: number): void",
-             "disconnect(destination: AudioNode, output?: number, input?: number): void",
-             "disconnect(destination: AudioParam, output?: number): void"
-        ]
-    },
-    {
-        "kind": "callback",
-        "name": "DecodeErrorCallback",
-        "signatures": ["(error: DOMException): void"]
-    },
-    {
-        "kind": "property",
-        "name": "ontouchcancel",
-        "type": "(ev: TouchEvent) => any"
-    },
-    {
-        "kind": "property",
-        "name": "ontouchend",
-        "type": "(ev: TouchEvent) => any"
-    },
-    {
-        "kind": "property",
-        "name": "ontouchmove",
-        "type": "(ev: TouchEvent) => any"
-    },
-    {
-        "kind": "property",
-        "name": "ontouchstart",
-        "type": "(ev: TouchEvent) => any"
     },
     {
         "kind": "property",
@@ -860,96 +801,6 @@
         "interface": "HTMLOptionsCollection"
     },
      {
-         "kind": "property",
-         "interface": "Algorithm",
-         "name": "name",
-         "type": "string"
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "decrypt",
-         "signatures": ["decrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: BufferSource): PromiseLike<ArrayBuffer>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "deriveBits",
-         "signatures": ["deriveBits(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): PromiseLike<ArrayBuffer>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "deriveKey",
-         "signatures": ["deriveKey(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "digest",
-         "signatures": ["digest(algorithm: AlgorithmIdentifier, data: BufferSource): PromiseLike<ArrayBuffer>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "encrypt",
-         "signatures": ["encrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: BufferSource): PromiseLike<ArrayBuffer>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "exportKey",
-         "signatures": [
-             "exportKey(format: \"jwk\", key: CryptoKey): PromiseLike<JsonWebKey>",
-             "exportKey(format: \"raw\" | \"pkcs8\" | \"spki\", key: CryptoKey): PromiseLike<ArrayBuffer>",
-             "exportKey(format: string, key: CryptoKey): PromiseLike<JsonWebKey | ArrayBuffer>"
-         ]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "generateKey",
-         "signatures": [
-             "generateKey(algorithm: string, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKeyPair | CryptoKey>",
-             "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams | DhKeyGenParams, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKeyPair>",
-             "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"
-         ]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "importKey",
-         "signatures": [
-             "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: string | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>",
-             "importKey(format: \"raw\" | \"pkcs8\" | \"spki\", keyData: BufferSource, algorithm: string | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>",
-             "importKey(format: string, keyData: JsonWebKey | BufferSource, algorithm: string | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"
-         ]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "sign",
-         "signatures": ["sign(algorithm: string | RsaPssParams | EcdsaParams | AesCmacParams, key: CryptoKey, data: BufferSource): PromiseLike<ArrayBuffer>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "unwrapKey",
-         "signatures": ["unwrapKey(format: string, wrappedKey: BufferSource, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier, unwrappedKeyAlgorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: string[]): PromiseLike<CryptoKey>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "verify",
-         "signatures": ["verify(algorithm: string | RsaPssParams | EcdsaParams | AesCmacParams, key: CryptoKey, signature: BufferSource, data: BufferSource): PromiseLike<boolean>"]
-     },
-     {
-         "kind": "method",
-         "interface": "SubtleCrypto",
-         "name": "wrapKey",
-         "signatures": ["wrapKey(format: string, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier): PromiseLike<ArrayBuffer>"]
-     },
-     {
         "kind": "method",
         "name": "setTimeout",
         "signatures": [
@@ -1090,11 +941,6 @@
         "signatures": ["evaluate(contextNode: Node, type: number, result: XPathResult | null): XPathResult"]
     },
     {
-        "kind": "extends",
-        "baseInterface": "Node, GlobalEventHandlers, NodeSelector, DocumentEvent, ParentNode, DocumentOrShadowRoot",
-        "interface": "Document"
-    },
-    {
         "kind": "property",
         "interface": "ElementTraversal",
         "readonly": true,
@@ -1138,256 +984,5 @@
         "interface": "DOMImplementation",
         "name": "createDocument",
         "signatures": ["createDocument(namespaceURI: string | null, qualifiedName: string | null, doctype: DocumentType | null): Document"]
-    },
-    {
-        "kind": "method",
-        "interface": "FormData",
-        "name": "append",
-        "flavor": "Web",
-        "signatures": ["append(name: string, value: string | Blob, fileName?: string): void"]
-    },
-    {
-        "kind": "method",
-        "interface": "EventTarget",
-        "name": "addEventListener",
-        "signatures": ["addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void"]
-    },
-    {
-        "kind": "method",
-        "interface": "EventTarget",
-        "name": "removeEventListener",
-        "signatures": ["removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void"]
-    },
-    {
-        "kind": "constructor",
-        "interface": "TouchEvent",
-        "signatures": [
-            "new(type: string, touchEventInit?: TouchEventInit): TouchEvent"
-        ]
-    },
-    {
-        "kind": "constructor",
-        "interface": "Text",
-        "signatures": [
-            "new(data?: string): Text"
-        ]
-    },
-    {
-        "kind": "method",
-        "interface": "HTMLMediaElement",
-        "name": "play",
-        "signatures": [
-            "play(): Promise<void>"
-        ]
-    },
-    {
-        "kind": "constructor",
-        "interface": "DragEvent",
-        "signatures": [
-            "new(type: \"drag\" | \"dragend\" | \"dragenter\" | \"dragexit\" | \"dragleave\" | \"dragover\" | \"dragstart\" | \"drop\", dragEventInit?: { dataTransfer?: DataTransfer }): DragEvent"
-        ]
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLAppletElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLButtonElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLFieldSetElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLInputElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLLabelElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLLegendElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLObjectElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLOptGroupElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLOptionElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLOutputElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLProgressElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLSelectElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLTextAreaElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "method",
-        "interface": "RandomSource",
-        "name": "getRandomValues",
-        "signatures": [
-            "getRandomValues<T extends Int8Array | Uint8ClampedArray | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array>(array: T): T"
-        ]
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLAppletElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLButtonElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLFieldSetElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLInputElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLLabelElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLegendElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLObjectElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLOptGroupElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLOptionElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLOutputElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLProgressElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLSelectElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "property",
-        "interface": "HTMLTextAreaElement",
-        "readonly": true,
-        "name": "form",
-        "type": "HTMLFormElement | null"
-    },
-    {
-        "kind": "constructor",
-        "interface": "Headers",
-        "signatures": [
-            "new(init?: Headers | string[][] | object): Headers"
-        ]
-    },
-    {
-        "kind": "method",
-        "interface": "ServiceWorkerContainer",
-        "name": "getRegistration",
-        "signatures": ["getRegistration(): Promise<ServiceWorkerRegistration | undefined>"]
     }
  ]

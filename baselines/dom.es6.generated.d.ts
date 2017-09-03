@@ -7,20 +7,16 @@ interface AudioTrackList {
     [Symbol.iterator](): IterableIterator<AudioTrack>
 }
 
-interface ClientRectList {
-    [Symbol.iterator](): IterableIterator<ClientRect>
-}
-
 interface CSSRuleList {
     [Symbol.iterator](): IterableIterator<CSSRule>
 }
 
 interface CSSStyleDeclaration {
-    [Symbol.iterator](): IterableIterator<string>
+    [Symbol.iterator](): IterableIterator<CSSOMString>
 }
 
 interface DataTransferItemList {
-    [Symbol.iterator](): IterableIterator<File>
+    [Symbol.iterator](): IterableIterator<DataTransferItem>
 }
 
 interface DOMStringList {
@@ -43,16 +39,20 @@ interface HTMLCollection {
     [Symbol.iterator](): IterableIterator<Element>
 }
 
+interface HTMLFormElement {
+    [Symbol.iterator](): IterableIterator<Element>
+}
+
+interface HTMLSelectElement {
+    [Symbol.iterator](): IterableIterator<Element>
+}
+
 interface MediaList {
-    [Symbol.iterator](): IterableIterator<string>
+    [Symbol.iterator](): IterableIterator<CSSOMString>
 }
 
 interface MimeTypeArray {
-    [Symbol.iterator](): IterableIterator<Plugin>
-}
-
-interface MSRangeCollection {
-    [Symbol.iterator](): IterableIterator<Range>
+    [Symbol.iterator](): IterableIterator<MimeType>
 }
 
 interface NamedNodeMap {
@@ -75,16 +75,40 @@ interface SourceBufferList {
     [Symbol.iterator](): IterableIterator<SourceBuffer>
 }
 
-interface Storage {
-    [Symbol.iterator](): IterableIterator<string>
+interface SpeechGrammarList {
+    [Symbol.iterator](): IterableIterator<SpeechGrammar>
+}
+
+interface SpeechRecognitionResult {
+    [Symbol.iterator](): IterableIterator<SpeechRecognitionAlternative>
+}
+
+interface SpeechRecognitionResultList {
+    [Symbol.iterator](): IterableIterator<SpeechRecognitionResult>
 }
 
 interface StyleSheetList {
     [Symbol.iterator](): IterableIterator<StyleSheet>
 }
 
-interface StyleSheetPageList {
-    [Symbol.iterator](): IterableIterator<CSSPageRule>
+interface SVGLengthList {
+    [Symbol.iterator](): IterableIterator<SVGLength>
+}
+
+interface SVGNumberList {
+    [Symbol.iterator](): IterableIterator<SVGNumber>
+}
+
+interface SVGPointList {
+    [Symbol.iterator](): IterableIterator<DOMPoint>
+}
+
+interface SVGStringList {
+    [Symbol.iterator](): IterableIterator<string>
+}
+
+interface SVGTransformList {
+    [Symbol.iterator](): IterableIterator<SVGTransform>
 }
 
 interface TextTrackCueList {
