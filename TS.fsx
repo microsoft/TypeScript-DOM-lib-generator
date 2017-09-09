@@ -384,6 +384,7 @@ module Data =
                 | "progress" -> "ProgressEvent"
                 | "readystatechange" -> "ProgressEvent"
                 | "resize" -> "UIEvent"
+                | "scroll" -> "Event"
                 | "timeout" -> "ProgressEvent"
                 | _ -> e.Type
             (e.Name, eType))
