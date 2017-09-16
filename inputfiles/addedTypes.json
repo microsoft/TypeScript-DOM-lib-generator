@@ -1770,5 +1770,17 @@
         "interface": "MediaTrackConstraintSet",
         "name": "echoCancellation?",
         "type": "boolean | ConstrainBooleanParameters"
+    },
+    {
+        "kind": "property",
+        "interface": "MediaTrackConstraintSet",
+        "name": "channelCount?",
+        "type": "long | ConstrainLongRange"
+    },
+    {
+        "kind": "property",
+        "interface": "MediaTrackConstraintSet",
+        "name": "latency?",
+        "type": "double | ConstrainDoubleRange"
     }
 ]
