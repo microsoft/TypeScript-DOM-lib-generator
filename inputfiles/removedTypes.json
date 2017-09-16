@@ -77,5 +77,10 @@
     {
         "kind": "typedef",
         "name": "JSON"
+    },
+    {
+        "kind": "property",
+        "interface": "MediaTrackConstraintSet",
+        "name": "echoCancelation"
     }
 ]

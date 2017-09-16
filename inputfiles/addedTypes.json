@@ -1764,5 +1764,11 @@
         "constructorSignatures": ["new(): HTMLSummaryElement"],
         "extends": "HTMLElement",
         "flavor": "DOM"
+    },
+    {
+        "kind": "property",
+        "interface": "MediaTrackConstraintSet",
+        "name": "echoCancellation?",
+        "type": "boolean | ConstrainBooleanParameters"
     }
 ]
