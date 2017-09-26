@@ -296,9 +296,11 @@ interface MediaTrackConstraints extends MediaTrackConstraintSet {
 }
 
 interface MediaTrackConstraintSet {
+    echoCancellation?: boolean | ConstrainBooleanParameters;
+    channelCount?: long | ConstrainLongRange;
+    latency?: double | ConstrainDoubleRange;
     aspectRatio?: number | ConstrainDoubleRange;
     deviceId?: string | string[] | ConstrainDOMStringParameters;
-    echoCancelation?: boolean | ConstrainBooleanParameters;
     facingMode?: string | string[] | ConstrainDOMStringParameters;
     frameRate?: number | ConstrainDoubleRange;
     groupId?: string | string[] | ConstrainDOMStringParameters;
