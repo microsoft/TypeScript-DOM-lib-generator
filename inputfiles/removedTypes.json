@@ -83,5 +83,9 @@
     {
         "kind": "typedef",
         "name": "HeadersInit"
+    },
+    {
+        "kind": "typedef",
+        "name": "ArrayBufferView"
     }
 ]

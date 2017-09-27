@@ -34,6 +34,11 @@ module Helpers =
         match FSharpValue.GetUnionFields(x, typeof<'a>) with
         | case, _ -> case.Name
 
+    let inline toNameMap< ^a when ^a: (member Name: string) > (data: array< ^a > ) =
+        data
+        |> Array.map (fun x -> ((^a: (member Name: string) x), x))
+        |> Map.ofArray
+
     module Option =
         let runIfSome f x =
             match x with
@@ -131,6 +136,131 @@ module Types =
         | All
 
     type ExtendConflict = { BaseType: string; ExtendType: string list; MemberNames: string list }
+
+module InputIdlJson =
+    open Helpers
+    open System.Xml.Linq
+
+    type InputIdlJsonType = JsonProvider<"inputfiles/sample.webidl.json">
+
+    let inputIdl =
+        File.ReadAllText(GlobalVars.inputFolder + @"/browser.webidl.json") |> InputIdlJsonType.Parse
+
+    let allCallbackFunctionsMap =
+        inputIdl.CallbackFunctions |> toNameMap
+
+    let allInterfacesMap =
+        inputIdl.Interfaces |> toNameMap
+
+    let allDictionariesMap =
+        inputIdl.Dictionaries |> toNameMap
+
+    let allTypedefsMap =
+        inputIdl.Typedefs |> toNameMap
+
+    let hasType itemName =
+        allCallbackFunctionsMap.ContainsKey itemName ||
+        allInterfacesMap.ContainsKey itemName ||
+        allDictionariesMap.ContainsKey itemName ||
+        allTypedefsMap.ContainsKey itemName
+    
+    module Compat =
+        let xNamespace = XNamespace.Get "http://schemas.microsoft.com/ie/webidl-xml"
+        let convertArgument (i: InputIdlJsonType.Argument) =
+            let param = XElement(xNamespace + "param", XAttribute (XName.Get "name", i.Name), XAttribute (XName.Get "type", i.Type))
+            if OptionCheckValue true i.Optional then
+                param.Add (XAttribute(XName.Get "optional", "1"))
+            if OptionCheckValue true i.Nullable then
+                param.Add (XAttribute(XName.Get "nullable", "1"))
+            if OptionCheckValue true i.Variadic then
+                param.Add (XAttribute(XName.Get "variadic", "1"))
+            param
+
+        let convertOperation (i: InputIdlJsonType.Operation) =
+            let method = XElement(xNamespace + "method", XAttribute (XName.Get "name", i.Name), XAttribute (XName.Get "type", i.Type))
+
+            method.Add(i.Arguments |> Array.map convertArgument)
+            if OptionCheckValue true i.Static then
+                method.Add(XAttribute(XName.Get "static", "1"))
+            if OptionCheckValue true i.Nullable then
+                method.Add(XAttribute(XName.Get "nullable", "1"))
+
+            method
+
+        let convertConstructor(i: InputIdlJsonType.Constructor) =
+            let constructor = XElement(xNamespace + "constructor")
+            
+            if not (Array.isEmpty i.Arguments) then
+                constructor.Add(i.Arguments |> Array.map convertArgument)
+
+            constructor
+
+        let convertAttribute (i: InputIdlJsonType.Attribute) =
+            let property = XElement(xNamespace + "property", XAttribute (XName.Get "name", i.Name), XAttribute (XName.Get "type", i.Type))
+
+            if OptionCheckValue true i.Readonly then
+                property.Add(XAttribute(XName.Get "read-only", "1"))
+            if OptionCheckValue true i.Static then
+                property.Add(XAttribute(XName.Get "static", "1"))
+            if OptionCheckValue true i.Stringifier then
+                property.Add(XAttribute(XName.Get "stringifier", "1"))
+            if OptionCheckValue true i.Nullable then
+                property.Add(XAttribute(XName.Get "nullable", "1"))
+
+            property
+
+        let convertConstant (i: InputIdlJsonType.Constant) =
+            XElement(xNamespace + "constant", XAttribute (XName.Get "name", i.Name), XAttribute (XName.Get "type", i.Type), XAttribute (XName.Get "value", i.Value))
+        
+        let convertCallbackFunction (i: InputIdlJsonType.CallbackFunction) =
+            let callbackFunction = XElement(xNamespace + "callback-function", XAttribute (XName.Get "name", i.Name), XAttribute (XName.Get "type", i.Type))
+
+            callbackFunction.Add(i.Arguments |> Array.map convertArgument)
+            if OptionCheckValue true i.Nullable then
+                callbackFunction.Add(XAttribute(XName.Get "nullable", "1"))
+
+            Types.Browser.CallbackFunction callbackFunction
+
+        let convertInterface (i: InputIdlJsonType.Interfacis) =
+            let interfaceEl = XElement(xNamespace + "interface", XAttribute (XName.Get "name", i.Name))
+            
+            interfaceEl.Add (XAttribute (XName.Get "extends", if i.Extends.IsSome then i.Extends.Value else "Object"))
+            if not (Array.isEmpty i.Constructors) then
+                interfaceEl.Add(i.Constructors |> Array.map convertConstructor)
+            if not (Array.isEmpty i.Operations) then
+                interfaceEl.Add(XElement(xNamespace + "methods", i.Operations |> Array.map convertOperation))
+            if not (Array.isEmpty i.Attributes) then
+                interfaceEl.Add(XElement(xNamespace + "properties", i.Attributes |> Array.map convertAttribute))
+            if not (Array.isEmpty i.Constants) then
+                interfaceEl.Add(XElement(xNamespace + "constants", i.Constants |> Array.map convertConstant))
+            
+            Types.Browser.Interface interfaceEl
+
+        let convertDictionary (i: InputIdlJsonType.Dictionary) =
+            let dictionary = XElement(xNamespace + "dictionary", XAttribute (XName.Get "name", i.Name))
+            
+            dictionary.Add (XAttribute (XName.Get "extends", if i.Extends.IsSome then i.Extends.Value else "Object"))
+            let members = 
+                [ for memberDef in i.Members do
+                    let memberEl = XElement(xNamespace + "member", XAttribute (XName.Get "name", memberDef.Name), XAttribute (XName.Get "type", memberDef.Type))
+
+                    if OptionCheckValue true memberDef.Nullable then
+                        memberEl.Add(XAttribute(XName.Get "nullable", "1"))
+                    if OptionCheckValue true memberDef.Required then
+                        memberEl.Add(XAttribute(XName.Get "required", "1"))
+
+                    yield memberEl ]
+
+            dictionary.Add(XElement(xNamespace + "members", members))
+            Types.Browser.Dictionary dictionary
+        
+        let convertTypedef (i: InputIdlJsonType.Typedef) =
+            let typedef = XElement(xNamespace + "typedef", XAttribute (XName.Get "new-type", i.Name), XAttribute (XName.Get "type", i.Type))
+
+            if OptionCheckValue true i.Nullable then
+                typedef.Add(XAttribute(XName.Get "nullable", "1"))
+
+            Types.Browser.Typedef typedef
 
 module InputJson =
     open Helpers
@@ -300,11 +430,6 @@ module Data =
 
     let allInterfaces =
         Array.concat [| allWebInterfaces; allWorkerAdditionalInterfaces |]
-
-    let inline toNameMap< ^a when ^a: (member Name: string) > (data: array< ^a > ) =
-        data
-        |> Array.map (fun x -> ((^a: (member Name: string) x), x))
-        |> Map.ofArray
 
     let allInterfacesMap =
         allInterfaces |> toNameMap
@@ -699,7 +824,6 @@ module Emit =
         | "CanvasPixelArray" -> "number[]"
         | "DOMHighResTimeStamp" -> "number"
         | "DOMString" -> "string"
-        | "DOMTimeStamp" -> "number"
         | "EndOfStreamError" -> "number"
         | "EventListener" -> "EventListenerOrEventListenerObject"
         | "double" | "float" -> "number"
@@ -717,7 +841,8 @@ module Emit =
                 if allInterfacesMap.ContainsKey objDomType ||
                     allCallbackFuncs.ContainsKey objDomType ||
                     allDictionariesMap.ContainsKey objDomType ||
-                    allEnumsMap.ContainsKey objDomType then
+                    allEnumsMap.ContainsKey objDomType || 
+                    InputIdlJson.hasType objDomType then
                     objDomType
                 // Name of a type alias. Just return itself
                 elif typeDefSet.Contains objDomType then objDomType
@@ -882,7 +1007,12 @@ module Emit =
         getAddedItems ItemKind.Callback flavor
         |> Array.iter emitCallbackFunctionsFromJson
 
-        GetCallbackFuncsByFlavor flavor |> Array.iter emitCallBackFunction
+        let map = GetCallbackFuncsByFlavor flavor |> Array.map(fun i -> (i.Name, i)) |> dict |> Dictionary
+        InputIdlJson.inputIdl.CallbackFunctions
+            |> Array.filter (fun i -> flavor <> Worker || knownWorkerInterfaces.Contains i.Name)
+            |> Array.iter (InputIdlJson.Compat.convertCallbackFunction >> (fun i -> map.[i.Name] <- i))
+
+        map.Values |> Array.ofSeq |> Array.iter emitCallBackFunction
 
     let EmitEnums flavor =
         let emitEnum (e: Browser.Enum) =
@@ -1378,7 +1508,7 @@ module Emit =
         if hasNonStaticMember then emitStaticInterfaceWithNonStaticMembers() else emitPureStaticInterface()
 
     let EmitNonCallbackInterfaces flavor =
-        for i in GetNonCallbackInterfacesByFlavor flavor do
+        let emitNonCallbackInterface (i: Browser.Interface) =
             // If the static attribute has a value, it means the type doesn't have a constructor
             if i.Static.IsSome then
                 EmitStaticInterface flavor i
@@ -1387,6 +1517,13 @@ module Emit =
             else
                 EmitInterface flavor i
                 EmitConstructor flavor i
+
+        let map = GetNonCallbackInterfacesByFlavor flavor |> Array.map(fun i -> (i.Name, i)) |> dict |> Dictionary
+        InputIdlJson.inputIdl.Interfaces
+            |> Array.filter (fun i -> flavor <> Worker || i.Exposed |> Array.contains "Worker")
+            |> Array.iter (InputIdlJson.Compat.convertInterface >> (fun i -> map.[i.Name] <- i))
+
+        map.Values |> Array.ofSeq |> Array.iter emitNonCallbackInterface
 
     let EmitDictionaries flavor =
 
@@ -1427,12 +1564,19 @@ module Emit =
             Pt.Printl "}"
             Pt.Printl ""
 
-        browser.Dictionaries
-        |> Array.filter (fun dict -> flavor <> Worker || knownWorkerInterfaces.Contains dict.Name)
-        |> Array.iter emitDictionary
+        let map =
+            browser.Dictionaries
+            |> Array.filter (fun dict -> flavor <> Worker || knownWorkerInterfaces.Contains dict.Name)
+            |> Array.map(fun i -> (i.Name, i)) |> dict |> Dictionary
 
         if flavor = Worker then
-            worker.Dictionaries |> Array.iter emitDictionary
+            worker.Dictionaries |> Array.iter (fun dict -> map.[dict.Name] <- dict)
+
+        InputIdlJson.inputIdl.Dictionaries
+            |> Array.filter (fun dict -> flavor <> Worker || knownWorkerInterfaces.Contains dict.Name)
+            |> Array.iter (InputIdlJson.Compat.convertDictionary >> (fun i -> map.[i.Name] <- i))
+
+        map.Values |> Array.ofSeq |> Array.iter emitDictionary
 
     let EmitAddedInterface (ai: InputJsonType.Root) =
         match ai.Extends with
@@ -1478,15 +1622,14 @@ module Emit =
         let emitTypeDefFromJson (typeDef: InputJsonType.Root) =
             Pt.Printl "type %s = %s;" typeDef.Name.Value typeDef.Type.Value
 
-        match flavor with
-        | Flavor.Worker ->
-            browser.Typedefs
-            |> Array.filter (fun typedef -> knownWorkerInterfaces.Contains typedef.NewType)
-            |> Array.iter emitTypeDef
-        | _ ->
-            browser.Typedefs
-            |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
-            |> Array.iter emitTypeDef
+        let mutable map = browser.Typedefs |> Array.map(fun i -> (i.NewType, i)) |> Map.ofArray
+        InputIdlJson.inputIdl.Typedefs
+            |> Array.iter (InputIdlJson.Compat.convertTypedef >> (fun i -> map <- map.Add(i.NewType, i)))
+            
+        map |> Map.toArray |> Array.map snd
+        |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
+        |> Array.filter (fun i -> (flavor <> Flavor.Worker || knownWorkerInterfaces.Contains i.NewType))
+        |> Array.iter emitTypeDef
 
         InputJson.getAddedItems ItemKind.TypeDef flavor
         |> Array.iter emitTypeDefFromJson
