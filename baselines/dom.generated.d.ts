@@ -1276,6 +1276,7 @@ interface Attr extends Node {
     readonly prefix: string | null;
     readonly specified: boolean;
     value: string;
+    cloneNode(deep?: boolean): Attr;
 }
 
 declare var Attr: {
@@ -1655,6 +1656,7 @@ interface CharacterData extends Node, ChildNode {
     insertData(offset: number, arg: string): void;
     replaceData(offset: number, count: number, arg: string): void;
     substringData(offset: number, count: number): string;
+    cloneNode(deep?: boolean): CharacterData;
 }
 
 declare var CharacterData: {
@@ -3301,6 +3303,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
      * @param content The text and HTML tags to write.
      */
     writeln(...content: string[]): void;
+    cloneNode(deep?: boolean): Document;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, useCapture?: boolean): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
 }
@@ -3311,6 +3314,7 @@ declare var Document: {
 };
 
 interface DocumentFragment extends Node, NodeSelector, ParentNode {
+    cloneNode(deep?: boolean): DocumentFragment;
     getElementById(elementId: string): HTMLElement | null;
 }
 
@@ -3326,6 +3330,7 @@ interface DocumentType extends Node, ChildNode {
     readonly notations: NamedNodeMap;
     readonly publicId: string;
     readonly systemId: string;
+    cloneNode(deep?: boolean): DocumentType;
 }
 
 declare var DocumentType: {
@@ -3612,6 +3617,7 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelec
     webkitMatchesSelector(selectors: string): boolean;
     webkitRequestFullscreen(): void;
     webkitRequestFullScreen(): void;
+    cloneNode(deep?: boolean): this;
     getElementsByClassName(classNames: string): NodeListOf<Element>;
     matches(selector: string): boolean;
     closest(selector: string): Element | null;

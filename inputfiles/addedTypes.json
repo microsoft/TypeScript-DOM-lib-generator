@@ -1,5 +1,53 @@
 [
     {
+        "kind": "method",
+        "interface": "Attr",
+        "name": "cloneNode",
+        "signatures": [
+             "cloneNode(deep?: boolean): Attr"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "CharacterData",
+        "name": "cloneNode",
+        "signatures": [
+             "cloneNode(deep?: boolean): CharacterData"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Document",
+        "name": "cloneNode",
+        "signatures": [
+             "cloneNode(deep?: boolean): Document"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "DocumentFragment",
+        "name": "cloneNode",
+        "signatures": [
+             "cloneNode(deep?: boolean): DocumentFragment"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "DocumentType",
+        "name": "cloneNode",
+        "signatures": [
+             "cloneNode(deep?: boolean): DocumentType"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Element",
+        "name": "cloneNode",
+        "signatures": [
+             "cloneNode(deep?: boolean): this"
+        ]
+    },
+    {
         "kind": "interface",
         "name": "BroadcastChannel",
         "extends": "EventTarget",
