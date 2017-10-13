@@ -2580,7 +2580,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap {
     "ratechange": Event;
     "readystatechange": Event;
     "reset": Event;
-    "scroll": UIEvent;
+    "scroll": Event;
     "seeked": Event;
     "seeking": Event;
     "select": UIEvent;
@@ -2957,7 +2957,7 @@ interface Document extends Node, GlobalEventHandlers, NodeSelector, DocumentEven
      * Fires when the user repositions the scroll box in the scroll bar on the object.
      * @param ev The event.
      */
-    onscroll: (this: Document, ev: UIEvent) => any;
+    onscroll: (this: Document, ev: Event) => any;
     /**
      * Occurs when the seek operation ends.
      * @param ev The event.
@@ -4218,7 +4218,7 @@ interface HTMLBodyElementEventMap extends HTMLElementEventMap {
     "pageshow": PageTransitionEvent;
     "popstate": PopStateEvent;
     "resize": UIEvent;
-    "scroll": UIEvent;
+    "scroll": Event;
     "storage": StorageEvent;
     "unload": Event;
 }
@@ -4246,7 +4246,7 @@ interface HTMLBodyElement extends HTMLElement {
     onpageshow: (this: HTMLBodyElement, ev: PageTransitionEvent) => any;
     onpopstate: (this: HTMLBodyElement, ev: PopStateEvent) => any;
     onresize: (this: HTMLBodyElement, ev: UIEvent) => any;
-    onscroll: (this: HTMLBodyElement, ev: UIEvent) => any;
+    onscroll: (this: HTMLBodyElement, ev: Event) => any;
     onstorage: (this: HTMLBodyElement, ev: StorageEvent) => any;
     onunload: (this: HTMLBodyElement, ev: Event) => any;
     text: any;
@@ -4535,7 +4535,7 @@ interface HTMLElementEventMap extends ElementEventMap {
     "progress": ProgressEvent;
     "ratechange": Event;
     "reset": Event;
-    "scroll": UIEvent;
+    "scroll": Event;
     "seeked": Event;
     "seeking": Event;
     "select": UIEvent;
@@ -4621,7 +4621,7 @@ interface HTMLElement extends Element {
     onprogress: (this: HTMLElement, ev: ProgressEvent) => any;
     onratechange: (this: HTMLElement, ev: Event) => any;
     onreset: (this: HTMLElement, ev: Event) => any;
-    onscroll: (this: HTMLElement, ev: UIEvent) => any;
+    onscroll: (this: HTMLElement, ev: Event) => any;
     onseeked: (this: HTMLElement, ev: Event) => any;
     onseeking: (this: HTMLElement, ev: Event) => any;
     onselect: (this: HTMLElement, ev: UIEvent) => any;
@@ -4944,7 +4944,7 @@ interface HTMLFrameSetElementEventMap extends HTMLElementEventMap {
     "pageshow": PageTransitionEvent;
     "popstate": PopStateEvent;
     "resize": UIEvent;
-    "scroll": UIEvent;
+    "scroll": Event;
     "storage": StorageEvent;
     "unload": Event;
 }
@@ -4990,7 +4990,7 @@ interface HTMLFrameSetElement extends HTMLElement {
     onpageshow: (this: HTMLFrameSetElement, ev: PageTransitionEvent) => any;
     onpopstate: (this: HTMLFrameSetElement, ev: PopStateEvent) => any;
     onresize: (this: HTMLFrameSetElement, ev: UIEvent) => any;
-    onscroll: (this: HTMLFrameSetElement, ev: UIEvent) => any;
+    onscroll: (this: HTMLFrameSetElement, ev: Event) => any;
     onstorage: (this: HTMLFrameSetElement, ev: StorageEvent) => any;
     onunload: (this: HTMLFrameSetElement, ev: Event) => any;
     /**
@@ -11297,7 +11297,7 @@ interface SVGSVGElementEventMap extends SVGElementEventMap {
     "SVGAbort": Event;
     "SVGError": Event;
     "resize": UIEvent;
-    "scroll": UIEvent;
+    "scroll": Event;
     "SVGUnload": Event;
     "SVGZoom": SVGZoomEvent;
 }
@@ -11311,7 +11311,7 @@ interface SVGSVGElement extends SVGGraphicsElement, DocumentEvent, SVGFitToViewB
     onabort: (this: SVGSVGElement, ev: Event) => any;
     onerror: (this: SVGSVGElement, ev: Event) => any;
     onresize: (this: SVGSVGElement, ev: UIEvent) => any;
-    onscroll: (this: SVGSVGElement, ev: UIEvent) => any;
+    onscroll: (this: SVGSVGElement, ev: Event) => any;
     onunload: (this: SVGSVGElement, ev: Event) => any;
     onzoom: (this: SVGSVGElement, ev: SVGZoomEvent) => any;
     readonly pixelUnitToMillimeterX: number;
@@ -13099,7 +13099,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap {
     "readystatechange": ProgressEvent;
     "reset": Event;
     "resize": UIEvent;
-    "scroll": UIEvent;
+    "scroll": Event;
     "seeked": Event;
     "seeking": Event;
     "select": UIEvent;
@@ -13219,7 +13219,7 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     onreadystatechange: (this: Window, ev: ProgressEvent) => any;
     onreset: (this: Window, ev: Event) => any;
     onresize: (this: Window, ev: UIEvent) => any;
-    onscroll: (this: Window, ev: UIEvent) => any;
+    onscroll: (this: Window, ev: Event) => any;
     onseeked: (this: Window, ev: Event) => any;
     onseeking: (this: Window, ev: Event) => any;
     onselect: (this: Window, ev: UIEvent) => any;
@@ -14622,7 +14622,7 @@ declare var onratechange: (this: Window, ev: Event) => any;
 declare var onreadystatechange: (this: Window, ev: ProgressEvent) => any;
 declare var onreset: (this: Window, ev: Event) => any;
 declare var onresize: (this: Window, ev: UIEvent) => any;
-declare var onscroll: (this: Window, ev: UIEvent) => any;
+declare var onscroll: (this: Window, ev: Event) => any;
 declare var onseeked: (this: Window, ev: Event) => any;
 declare var onseeking: (this: Window, ev: Event) => any;
 declare var onselect: (this: Window, ev: UIEvent) => any;
