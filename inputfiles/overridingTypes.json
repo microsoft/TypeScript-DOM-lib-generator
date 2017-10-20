@@ -33,6 +33,12 @@
         "type": "HTMLScriptElement | SVGScriptElement | null"
     },
     {
+        "kind": "property",
+        "interface": "Document",
+        "name": "location",
+        "type": "Location | string"
+    },
+    {
         "kind": "method",
         "interface": "Document",
         "name": "importNode",
@@ -986,6 +992,12 @@
          "name": "opener",
          "type": "any"
     },
+    {
+        "kind": "property",
+        "interface": "Window",
+        "name": "location",
+        "type": "Location | string"
+   },
     {
         "kind": "method",
         "interface": "History",
