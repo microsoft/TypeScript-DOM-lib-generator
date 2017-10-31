@@ -1530,21 +1530,21 @@
     {
         "kind": "property",
         "interface": "EventInit",
-        "name": "scoped?",
+        "name": "composed?",
         "type": "boolean"
     },
     {
         "kind": "property",
         "interface": "Event",
-        "name": "scoped",
+        "name": "composed",
         "type": "boolean",
         "readonly": true
     },
     {
         "kind": "method",
         "interface": "Event",
-        "name": "deepPath",
-        "signatures": ["deepPath(): EventTarget[]"]
+        "name": "composedPath",
+        "signatures": ["composedPath(): EventTarget[]"]
     },
     {
         "kind": "interface",
