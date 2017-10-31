@@ -8334,13 +8334,13 @@ declare var MutationRecord: {
 
 interface NamedNodeMap {
     readonly length: number;
-    getNamedItem(name: string): Attr;
-    getNamedItemNS(namespaceURI: string | null, localName: string | null): Attr;
-    item(index: number): Attr;
+    getNamedItem(name: string): Attr | null;
+    getNamedItemNS(namespaceURI: string | null, localName: string | null): Attr | null;
+    item(index: number): Attr | null;
     removeNamedItem(name: string): Attr;
     removeNamedItemNS(namespaceURI: string | null, localName: string | null): Attr;
-    setNamedItem(arg: Attr): Attr;
-    setNamedItemNS(arg: Attr): Attr;
+    setNamedItem(arg: Attr): Attr | null;
+    setNamedItemNS(arg: Attr): Attr | null;
     [index: number]: Attr;
 }
 
@@ -8409,7 +8409,7 @@ declare var Navigator: {
 interface Node extends EventTarget {
     readonly attributes: NamedNodeMap;
     readonly baseURI: string | null;
-    readonly childNodes: NodeList;
+    readonly childNodes: NodeListOf<Node & ChildNode>;
     readonly firstChild: Node | null;
     readonly lastChild: Node | null;
     readonly localName: string | null;

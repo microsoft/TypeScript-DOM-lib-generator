@@ -1389,5 +1389,52 @@
         "interface": "ServiceWorkerContainer",
         "name": "getRegistration",
         "signatures": ["getRegistration(): Promise<ServiceWorkerRegistration | undefined>"]
+    },
+    {
+        "kind": "method",
+        "interface": "NamedNodeMap",
+        "name": "getNamedItem",
+        "signatures": [
+            "getNamedItem(name: string): Attr | null"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "NamedNodeMap",
+        "name": "getNamedItemNS",
+        "signatures": [
+            "getNamedItemNS(namespaceURI: string | null, localName: string | null): Attr | null"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "NamedNodeMap",
+        "name": "item",
+        "signatures": [
+            "item(index: number): Attr | null"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "NamedNodeMap",
+        "name": "setNamedItem",
+        "signatures": [
+            "setNamedItem(arg: Attr): Attr | null"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "NamedNodeMap",
+        "name": "setNamedItemNS",
+        "signatures": [
+            "setNamedItemNS(arg: Attr): Attr | null"
+        ]
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "childNodes",
+        "type": "NodeListOf<Node & ChildNode>"
     }
  ]
