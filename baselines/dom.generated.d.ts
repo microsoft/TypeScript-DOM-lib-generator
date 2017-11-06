@@ -82,8 +82,8 @@ interface ConstrainVideoFacingModeParameters {
     ideal?: VideoFacingModeEnum | VideoFacingModeEnum[];
 }
 
-interface CustomEventInit extends EventInit {
-    detail?: any;
+interface CustomEventInit<T = any> extends EventInit {
+    readonly detail?: T;
 }
 
 interface DeviceAccelerationDict {
@@ -2374,9 +2374,9 @@ declare var CSSSupportsRule: {
     new(): CSSSupportsRule;
 };
 
-interface CustomEvent extends Event {
-    readonly detail: any;
-    initCustomEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, detailArg: any): void;
+interface CustomEvent<T = any> extends Event {
+    readonly detail: T;
+    initCustomEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, detailArg: T): void;
 }
 
 declare var CustomEvent: {
