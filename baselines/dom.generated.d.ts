@@ -9069,7 +9069,7 @@ declare var PopStateEvent: {
 
 interface Position {
     readonly coords: Coordinates;
-    readonly timestamp: number;
+    readonly timestamp: DOMTimeStamp;
 }
 
 declare var Position: {
@@ -15318,12 +15318,14 @@ declare function removeEventListener(type: string, listener: EventListener, opti
 type AAGUID = string;
 type AlgorithmIdentifier = string | Algorithm;
 type BodyInit = Blob | BufferSource | FormData | string;
+type BufferSource = ArrayBufferView | ArrayBuffer;
 type ByteString = string;
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainLong = number | ConstrainLongRange;
 type CryptoOperationData = ArrayBufferView;
+type DOMTimeStamp = number;
 type GLbitfield = number;
 type GLboolean = boolean;
 type GLbyte = number;
@@ -15353,7 +15355,6 @@ type payloadtype = number;
 type ScrollBehavior = "auto" | "instant" | "smooth";
 type ScrollLogicalPosition = "start" | "center" | "end" | "nearest";
 type IDBValidKey = number | string | Date | IDBArrayKey;
-type BufferSource = ArrayBuffer | ArrayBufferView;
 type MouseWheelEvent = WheelEvent;
 type ScrollRestoration = "auto" | "manual";
 type FormDataEntryValue = string | File;

@@ -33,6 +33,11 @@ module Helpers =
         match FSharpValue.GetUnionFields(x, typeof<'a>) with
         | case, _ -> case.Name
 
+    let inline toNameMap< ^a when ^a: (member Name: string) > (data: array< ^a > ) =
+        data
+        |> Array.map (fun x -> ((^a: (member Name: string) x), x))
+        |> Map.ofArray
+
     module Option =
         let runIfSome f x =
             match x with
@@ -130,6 +135,32 @@ module Types =
         | All
 
     type ExtendConflict = { BaseType: string; ExtendType: string list; MemberNames: string list }
+
+module InputIdlJson =
+    open Helpers
+    open System.Xml.Linq
+
+    type InputIdlJsonType = JsonProvider<"inputfiles/sample.webidl.json">
+
+    let inputIdl =
+        File.ReadAllText(GlobalVars.inputFolder + @"/browser.webidl.json") |> InputIdlJsonType.Parse
+
+    let allTypedefsMap =
+        inputIdl.Typedefs |> toNameMap
+
+    let hasType itemName =
+        allTypedefsMap.ContainsKey itemName
+    
+    module Compat =
+        let xNamespace = XNamespace.Get "http://schemas.microsoft.com/ie/webidl-xml"
+
+        let convertTypedef (i: InputIdlJsonType.Typedef) =
+            let typedef = XElement(xNamespace + "typedef", XAttribute (XName.Get "new-type", i.Name), XAttribute (XName.Get "type", i.Type))
+
+            if OptionCheckValue true i.Nullable then
+                typedef.Add(XAttribute(XName.Get "nullable", "1"))
+
+            Types.Browser.Typedef typedef
 
 module InputJson =
     open Helpers
@@ -298,11 +329,6 @@ module Data =
 
     let allInterfaces =
         Array.concat [| allWebInterfaces; allWorkerAdditionalInterfaces |]
-
-    let inline toNameMap< ^a when ^a: (member Name: string) > (data: array< ^a > ) =
-        data
-        |> Array.map (fun x -> ((^a: (member Name: string) x), x))
-        |> Map.ofArray
 
     let allInterfacesMap =
         allInterfaces |> toNameMap
@@ -682,7 +708,6 @@ module Emit =
         | "CanvasPixelArray" -> "number[]"
         | "DOMHighResTimeStamp" -> "number"
         | "DOMString" -> "string"
-        | "DOMTimeStamp" -> "number"
         | "EndOfStreamError" -> "number"
         | "double" | "float" -> "number"
         | "object" -> "any"
@@ -699,7 +724,8 @@ module Emit =
                 if allInterfacesMap.ContainsKey objDomType ||
                     allCallbackFuncs.ContainsKey objDomType ||
                     allDictionariesMap.ContainsKey objDomType ||
-                    allEnumsMap.ContainsKey objDomType then
+                    allEnumsMap.ContainsKey objDomType || 
+                    InputIdlJson.hasType objDomType then
                     objDomType
                 // Name of a type alias. Just return itself
                 elif typeDefSet.Contains objDomType then objDomType
@@ -1463,15 +1489,14 @@ module Emit =
         let emitTypeDefFromJson (typeDef: InputJsonType.Root) =
             Pt.Printl "type %s = %s;" typeDef.Name.Value typeDef.Type.Value
 
-        match flavor with
-        | Flavor.Worker ->
-            browser.Typedefs
-            |> Array.filter (fun typedef -> knownWorkerInterfaces.Contains typedef.NewType)
-            |> Array.iter emitTypeDef
-        | _ ->
-            browser.Typedefs
-            |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
-            |> Array.iter emitTypeDef
+        let mutable map = browser.Typedefs |> Array.map(fun i -> (i.NewType, i)) |> Map.ofArray
+        InputIdlJson.inputIdl.Typedefs
+            |> Array.iter (InputIdlJson.Compat.convertTypedef >> (fun i -> map <- map.Add(i.NewType, i)))
+            
+        map |> Map.toArray |> Array.map snd
+        |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
+        |> Array.filter (fun i -> (flavor <> Flavor.Worker || knownWorkerInterfaces.Contains i.NewType))
+        |> Array.iter emitTypeDef
 
         InputJson.getAddedItems ItemKind.TypeDef flavor
         |> Array.iter emitTypeDefFromJson

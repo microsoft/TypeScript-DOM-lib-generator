@@ -846,7 +846,7 @@ declare var PerformanceTiming: {
 
 interface Position {
     readonly coords: Coordinates;
-    readonly timestamp: number;
+    readonly timestamp: DOMTimeStamp;
 }
 
 declare var Position: {
@@ -1910,11 +1910,12 @@ declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeE
 declare function removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = string | Algorithm;
 type BodyInit = Blob | BufferSource | FormData | string;
+type BufferSource = ArrayBufferView | ArrayBuffer;
+type DOMTimeStamp = number;
 type IDBKeyPath = string;
 type RequestInfo = Request | string;
 type USVString = string;
 type IDBValidKey = number | string | Date | IDBArrayKey;
-type BufferSource = ArrayBuffer | ArrayBufferView;
 type FormDataEntryValue = string | File;
 type HeadersInit = Headers | string[][] | { [key: string]: string };
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
