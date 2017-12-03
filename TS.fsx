@@ -151,6 +151,8 @@ module InputIdlJson =
     let hasType itemName =
         allTypedefsMap.ContainsKey itemName
     
+    // Converts new JSON types to existing matching XML types
+    // to reduce code duplication before removing XML support
     module Compat =
         let xNamespace = XNamespace.Get "http://schemas.microsoft.com/ie/webidl-xml"
 
@@ -1489,15 +1491,19 @@ module Emit =
         let emitTypeDefFromJson (typeDef: InputJsonType.Root) =
             Pt.Printl "type %s = %s;" typeDef.Name.Value typeDef.Type.Value
 
+        // Load typedefs from XML input
         let mutable map = browser.Typedefs |> Array.map(fun i -> (i.NewType, i)) |> Map.ofArray
+        // Load and merge typedefs from new JSON input
         InputIdlJson.inputIdl.Typedefs
             |> Array.iter (InputIdlJson.Compat.convertTypedef >> (fun i -> map <- map.Add(i.NewType, i)))
-            
+
+        // Filter by removedType.json + knownWorkerInterfaces.json
         map |> Map.toArray |> Array.map snd
         |> Array.filter (fun typedef -> getRemovedItemByName typedef.NewType ItemKind.TypeDef "" |> Option.isNone)
         |> Array.filter (fun i -> (flavor <> Flavor.Worker || knownWorkerInterfaces.Contains i.NewType))
         |> Array.iter emitTypeDef
 
+        // Load manual additions from addedType.json
         InputJson.getAddedItems ItemKind.TypeDef flavor
         |> Array.iter emitTypeDefFromJson
 
