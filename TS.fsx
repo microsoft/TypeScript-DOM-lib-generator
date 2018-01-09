@@ -144,8 +144,19 @@ module InputIdlJson =
     type InputIdlJsonType = JsonProvider<"inputfiles/sample.webidl.json">
 
     let inputIdl =
-        File.ReadAllText(GlobalVars.inputFolder + @"/browser.webidl.json") |> InputIdlJsonType.Parse
+        let jsons = 
+            DirectoryInfo(GlobalVars.inputFolder + @"/idls").GetFiles()
+            |> Array.map (fun file -> file.FullName |> File.ReadAllText |> InputIdlJsonType.Parse)
 
+        let inline extractJsonArray f =
+            jsons |> Array.collect f |> Array.map (fun item -> (^a: (member JsonValue: JsonValue) item)) |> JsonValue.Array;
+
+        let list = [| ("callbackFunctions", extractJsonArray (fun json -> json.CallbackFunctions));
+                      ("interfaces", extractJsonArray (fun json -> json.Interfaces));
+                      ("dictionaries", extractJsonArray (fun json -> json.Dictionaries));
+                      ("typedefs", extractJsonArray (fun json -> json.Typedefs)) |]
+        InputIdlJsonType.Root(JsonValue.Record list)
+    
     let allCallbackFunctionsMap =
         inputIdl.CallbackFunctions |> toNameMap
 
