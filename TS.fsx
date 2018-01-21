@@ -284,6 +284,7 @@ module CommentJson =
         | _ -> None
 
 module Data =
+    open Helpers
     open Types
 
     // Used to decide if a member should be emitted given its static property and
