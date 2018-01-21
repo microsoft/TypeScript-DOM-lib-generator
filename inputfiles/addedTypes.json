@@ -38,14 +38,14 @@
                 "name": "addEventListener",
                 "signatures": [
                     "addEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void",
-                    "addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void"
+                    "addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void"
                 ]
             },
             {
                 "name": "removeEventListener",
                 "signatures": [
                     "removeEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void",
-                    "removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void"
+                    "removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void"
                 ]
             }
         ]
@@ -394,18 +394,6 @@
             {
                 "name": "lastModified?",
                 "type": "number"
-            }
-        ]
-    },
-    {
-        "kind": "interface",
-        "name": "EventListenerObject",
-        "methods": [
-            {
-                "name": "handleEvent",
-                "signatures": [
-                    "handleEvent(evt: Event): void"
-                ]
             }
         ]
     },

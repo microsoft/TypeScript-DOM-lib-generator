@@ -1421,7 +1421,7 @@
         "interface": "EventTarget",
         "name": "addEventListener",
         "signatures": [
-            "addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void"
+            "addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void"
         ]
     },
     {
@@ -1429,7 +1429,7 @@
         "interface": "EventTarget",
         "name": "removeEventListener",
         "signatures": [
-            "removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void"
+            "removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void"
         ]
     },
     {
