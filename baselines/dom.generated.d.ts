@@ -1435,7 +1435,7 @@ declare class Blob {
     msClose(): void;
     msDetachStream(): any;
     slice(start?: number, end?: number, contentType?: string): Blob;
-    new (blobParts?: any[], options?: BlobPropertyBag): Blob;
+    constructor(blobParts?: any[], options?: BlobPropertyBag);
 }
 
 declare class Cache {
@@ -1564,7 +1564,7 @@ declare class ClientRectList {
 interface ClipboardEvent extends Event {}
 declare class ClipboardEvent {
     readonly clipboardData: DataTransfer;
-    new(type: string, eventInitDict?: ClipboardEventInit): ClipboardEvent;
+    constructor(type: string, eventInitDict?: ClipboardEventInit);
 }
 
 interface CloseEvent extends Event {}
@@ -2140,7 +2140,7 @@ interface CustomEvent<T = any> extends Event {}
 declare class CustomEvent<T = any> {
     readonly detail: T;
     initCustomEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, detailArg: T): void;
-    new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
+    constructor(typeArg: string, eventInitDict?: CustomEventInit<T>);
 }
 
 interface DataCue extends TextTrackCue {}
@@ -3083,7 +3083,7 @@ declare class DOMException {
     readonly URL_MISMATCH_ERR: number;
     readonly VALIDATION_ERR: number;
     readonly WRONG_DOCUMENT_ERR: number;
-    new(message?: string, name?: string): DOMException;
+    constructor(message?: string, name?: string);
     static readonly ABORT_ERR: number;
     static readonly DATA_CLONE_ERR: number;
     static readonly DOMSTRING_SIZE_ERR: number;
@@ -3157,7 +3157,7 @@ declare class DragEvent {
     readonly dataTransfer: DataTransfer;
     initDragEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget, dataTransferArg: DataTransfer): void;
     msConvertURL(file: File, targetType: string, targetURL?: string): void;
-    new(type: "drag" | "dragend" | "dragenter" | "dragexit" | "dragleave" | "dragover" | "dragstart" | "drop", dragEventInit?: { dataTransfer?: DataTransfer }): DragEvent;
+    constructor(type: "drag" | "dragend" | "dragenter" | "dragexit" | "dragleave" | "dragover" | "dragstart" | "drop", dragEventInit?: { dataTransfer?: DataTransfer });
 }
 
 interface DynamicsCompressorNode extends AudioNode {}
@@ -3313,7 +3313,7 @@ declare class ErrorEvent {
     readonly lineno: number;
     readonly message: string;
     initErrorEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, messageArg: string, filenameArg: string, linenoArg: number): void;
-    new(type: string, errorEventInitDict?: ErrorEventInit): ErrorEvent;
+    constructor(type: string, errorEventInitDict?: ErrorEventInit);
 }
 
 declare class Event {
@@ -3379,7 +3379,7 @@ declare class File {
     readonly name: string;
     readonly webkitRelativePath: string;
     readonly lastModified: number;
-    new (parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag): File;
+    constructor(parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag);
 }
 
 declare class FileList {
@@ -3427,7 +3427,7 @@ declare class FormData {
     getAll(name: string): FormDataEntryValue[];
     has(name: string): boolean;
     set(name: string, value: string | Blob, fileName?: string): void;
-    new (form?: HTMLFormElement): FormData;
+    constructor(form?: HTMLFormElement);
 }
 
 interface GainNode extends AudioNode {}
@@ -3476,7 +3476,7 @@ declare class Headers {
     get(name: string): string | null;
     has(name: string): boolean;
     set(name: string, value: string): void;
-    new(init?: HeadersInit): Headers;
+    constructor(init?: HeadersInit);
 }
 
 declare class History {
@@ -6543,8 +6543,8 @@ declare class ImageData {
     data: Uint8ClampedArray;
     readonly height: number;
     readonly width: number;
-    new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height: number): ImageData;
+    constructor(width: number, height: number);
+    constructor(array: Uint8ClampedArray, width: number, height: number);
 }
 
 declare class IntersectionObserver {
@@ -6850,7 +6850,7 @@ declare class MessageEvent {
     readonly ports: any;
     readonly source: Window;
     initMessageEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, dataArg: any, originArg: string, lastEventIdArg: string, sourceArg: Window): void;
-    new(type: string, eventInitDict?: MessageEventInit): MessageEvent;
+    constructor(type: string, eventInitDict?: MessageEventInit);
 }
 
 interface MessagePortEventMap {
@@ -7866,7 +7866,7 @@ declare class ProgressEvent {
     readonly loaded: number;
     readonly total: number;
     initProgressEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, lengthComputableArg: boolean, loadedArg: number, totalArg: number): void;
-    new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
+    constructor(type: string, eventInitDict?: ProgressEventInit);
 }
 
 declare class PushManager {
@@ -7970,7 +7970,7 @@ declare class Response {
     readonly url: string;
     readonly redirected: boolean;
     clone(): Response;
-    new(body?: any, init?: ResponseInit): Response;
+    constructor(body?: any, init?: ResponseInit);
     error: () => Response;
     redirect: (url: string, status?: number) => Response;
 }
@@ -8506,7 +8506,7 @@ declare class StorageEvent {
     oldValue?: string;
     newValue?: string;
     storageArea?: Storage;
-    new (type: string, eventInitDict?: StorageEventInit): StorageEvent;
+    constructor(type: string, eventInitDict?: StorageEventInit);
 }
 
 declare class StyleMedia {
@@ -10005,7 +10005,7 @@ declare class Text {
     readonly wholeText: string;
     readonly assignedSlot: HTMLSlotElement | null;
     splitText(offset: number): Text;
-    new(data?: string): Text;
+    constructor(data?: string);
 }
 
 interface TextEvent extends UIEvent {}
@@ -10156,7 +10156,7 @@ declare class TouchEvent {
     readonly targetTouches: TouchList;
     readonly touches: TouchList;
     readonly which: number;
-    new(type: string, touchEventInit?: TouchEventInit): TouchEvent;
+    constructor(type: string, touchEventInit?: TouchEventInit);
 }
 
 declare class TouchList {
@@ -10221,7 +10221,7 @@ declare class URL {
     username: string;
     readonly searchParams: URLSearchParams;
     toString(): string;
-    new(url: string, base?: string | URL): URL;
+    constructor(url: string, base?: string | URL);
     static createObjectURL(object: any, options?: ObjectURLOptions): string;
     static revokeObjectURL(url: string): void;
 }

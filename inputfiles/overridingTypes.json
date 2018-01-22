@@ -38,14 +38,14 @@
         "kind": "constructor",
         "interface": "CustomEvent",
         "signatures": [
-            "new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>"
+            "constructor(typeArg: string, eventInitDict?: CustomEventInit<T>)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "Response",
         "signatures": [
-            "new(body?: any, init?: ResponseInit): Response",
+            "constructor(body?: any, init?: ResponseInit)",
             "error: () => Response",
             "redirect: (url: string, status?: number) => Response"
         ]
@@ -54,7 +54,7 @@
         "kind": "constructor",
         "interface": "ErrorEvent",
         "signatures": [
-            "new(type: string, errorEventInitDict?: ErrorEventInit): ErrorEvent"
+            "constructor(type: string, errorEventInitDict?: ErrorEventInit)"
         ]
     },
     {
@@ -510,7 +510,7 @@
         "kind": "constructor",
         "interface": "Blob",
         "signatures": [
-            "new (blobParts?: any[], options?: BlobPropertyBag): Blob"
+            "constructor(blobParts?: any[], options?: BlobPropertyBag)"
         ]
     },
     {
@@ -518,43 +518,43 @@
         "interface": "FormData",
         "flavor": "Web",
         "signatures": [
-            "new (form?: HTMLFormElement): FormData"
+            "constructor(form?: HTMLFormElement)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "MessageEvent",
         "signatures": [
-            "new(type: string, eventInitDict?: MessageEventInit): MessageEvent"
+            "constructor(type: string, eventInitDict?: MessageEventInit)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "ProgressEvent",
         "signatures": [
-            "new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent"
+            "constructor(type: string, eventInitDict?: ProgressEventInit)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "File",
         "signatures": [
-            "new (parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag): File"
+            "constructor(parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "ImageData",
         "signatures": [
-            "new(width: number, height: number): ImageData",
-            "new(array: Uint8ClampedArray, width: number, height: number): ImageData"
+            "constructor(width: number, height: number)",
+            "constructor(array: Uint8ClampedArray, width: number, height: number)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "DOMException",
         "signatures": [
-            "new(message?: string, name?: string): DOMException"
+            "constructor(message?: string, name?: string)"
         ]
     },
     {
@@ -702,7 +702,7 @@
         "kind": "constructor",
         "interface": "StorageEvent",
         "signatures": [
-            "new (type: string, eventInitDict?: StorageEventInit): StorageEvent"
+            "constructor(type: string, eventInitDict?: StorageEventInit)"
         ]
     },
     {
@@ -809,7 +809,7 @@
         "kind": "constructor",
         "interface": "ClipboardEvent",
         "signatures": [
-            "new(type: string, eventInitDict?: ClipboardEventInit): ClipboardEvent"
+            "constructor(type: string, eventInitDict?: ClipboardEventInit)"
         ]
     },
     {
@@ -1436,14 +1436,14 @@
         "kind": "constructor",
         "interface": "TouchEvent",
         "signatures": [
-            "new(type: string, touchEventInit?: TouchEventInit): TouchEvent"
+            "constructor(type: string, touchEventInit?: TouchEventInit)"
         ]
     },
     {
         "kind": "constructor",
         "interface": "Text",
         "signatures": [
-            "new(data?: string): Text"
+            "constructor(data?: string)"
         ]
     },
     {
@@ -1458,7 +1458,7 @@
         "kind": "constructor",
         "interface": "DragEvent",
         "signatures": [
-            "new(type: \"drag\" | \"dragend\" | \"dragenter\" | \"dragexit\" | \"dragleave\" | \"dragover\" | \"dragstart\" | \"drop\", dragEventInit?: { dataTransfer?: DataTransfer }): DragEvent"
+            "constructor(type: \"drag\" | \"dragend\" | \"dragenter\" | \"dragexit\" | \"dragleave\" | \"dragover\" | \"dragstart\" | \"drop\", dragEventInit?: { dataTransfer?: DataTransfer })"
         ]
     },
     {
@@ -1655,7 +1655,7 @@
         "kind": "constructor",
         "interface": "Headers",
         "signatures": [
-            "new(init?: HeadersInit): Headers"
+            "constructor(init?: HeadersInit)"
         ]
     },
     {
@@ -1781,7 +1781,7 @@
         "kind": "constructor",
         "interface": "URL",
         "signatures": [
-            "new(url: string, base?: string | URL): URL"
+            "constructor(url: string, base?: string | URL)"
         ]
     },
     {
