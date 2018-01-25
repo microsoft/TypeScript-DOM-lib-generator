@@ -780,14 +780,14 @@ module Emit =
         if matchSingleParamMethodSignature m "querySelector" "Element" "string" then
             Pt.Printl "querySelector<K extends keyof HTMLElementTagNameMap>(selectors: K): HTMLElementTagNameMap[K] | null;"
             Pt.Printl "querySelector<K extends keyof SVGElementTagNameMap>(selectors: K): SVGElementTagNameMap[K] | null;"
-            Pt.Printl "querySelector<E extends Element = Element>(selectors: string): E | null;"
+            Pt.Printl "querySelector<E extends HTMLElement = HTMLElement>(selectors: string): E | null;"
 
     /// Emit overloads for the querySelectorAll method
     let EmitQuerySelectorAllOverloads (m: Browser.Method) =
         if matchSingleParamMethodSignature m "querySelectorAll" "NodeList" "string" then
             Pt.Printl "querySelectorAll<K extends keyof HTMLElementTagNameMap>(selectors: K): NodeListOf<HTMLElementTagNameMap[K]>;"
             Pt.Printl "querySelectorAll<K extends keyof SVGElementTagNameMap>(selectors: K): NodeListOf<SVGElementTagNameMap[K]>;"
-            Pt.Printl "querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;"
+            Pt.Printl "querySelectorAll<E extends HTMLElement = HTMLElement>(selectors: string): NodeListOf<E>;"
 
     let EmitHTMLElementTagNameMap () =
         Pt.Printl "interface HTMLElementTagNameMap {"
