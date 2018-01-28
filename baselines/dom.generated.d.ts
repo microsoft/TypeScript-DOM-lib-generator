@@ -4594,7 +4594,7 @@ interface HTMLElementEventMap extends ElementEventMap {
 
 interface HTMLElement extends Element {
     accessKey: string;
-    readonly children: HTMLCollection;
+    readonly children: HTMLCollectionOf<HTMLElement>;
     contentEditable: string;
     readonly dataset: DOMStringMap;
     dir: string;

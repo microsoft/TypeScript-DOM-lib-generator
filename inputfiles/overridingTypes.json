@@ -1707,7 +1707,7 @@
         "name": "getBoundingClientRect",
         "signatures": [
             "getBoundingClientRect(): ClientRect | DOMRect"
-        ]        
+        ]
     },
     {
         "kind": "property",
@@ -1822,5 +1822,12 @@
         "signatures": [
             "getAttributeNode(name: string): Attr | null"
         ]
+    },
+    {
+        "kind": "property",
+        "interface": "HTMLElement",
+        "name": "children",
+        "readonly": true,
+        "type": "HTMLCollectionOf<HTMLElement>"
     }
 ]
