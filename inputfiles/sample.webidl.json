@@ -1,0 +1,23 @@
+{
+  "callbackInterfaces": [],
+  "enums": [],
+  "namespaces": [],
+  "callbackFunctions": [],
+  "dictionaries": [],
+  "interfaces": [],
+  "typedefs": [
+    {
+      "name": "ArrayBufferView",
+      "type": "(Int8Array or Int16Array or Int32Array or Uint8Array or Uint16Array or Uint32Array or Uint8ClampedArray or Float32Array or Float64Array or DataView)"
+    },
+    {
+      "name": "BufferSource",
+      "type": "(ArrayBufferView or ArrayBuffer)",
+      "nullable": true
+    },
+    {
+      "name": "DOMTimeStamp",
+      "type": "unsigned long long"
+    }
+  ]
+}
