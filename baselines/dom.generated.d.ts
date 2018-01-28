@@ -1169,6 +1169,15 @@ interface WheelEventInit extends MouseEventInit {
     deltaZ?: number;
 }
 
+interface TextDecodeOptions {
+    stream?: boolean;
+}
+
+interface TextDecoderOptions {
+    fatal?: boolean;
+    ignoreBOM?: boolean;
+}
+
 type EventListener = (evt: Event) => void | { handleEvent(evt: Event): void; };
 
 type WebKitEntriesCallback = (entries: WebKitEntry[]) => void | { handleEvent(entries: WebKitEntry[]): void; };
@@ -3356,7 +3365,6 @@ interface DOMException {
     readonly code: number;
     readonly message: string;
     readonly name: string;
-    toString(): string;
     readonly ABORT_ERR: number;
     readonly DATA_CLONE_ERR: number;
     readonly DOMSTRING_SIZE_ERR: number;
@@ -3374,10 +3382,8 @@ interface DOMException {
     readonly NO_MODIFICATION_ALLOWED_ERR: number;
     readonly NOT_FOUND_ERR: number;
     readonly NOT_SUPPORTED_ERR: number;
-    readonly PARSE_ERR: number;
     readonly QUOTA_EXCEEDED_ERR: number;
     readonly SECURITY_ERR: number;
-    readonly SERIALIZE_ERR: number;
     readonly SYNTAX_ERR: number;
     readonly TIMEOUT_ERR: number;
     readonly TYPE_MISMATCH_ERR: number;
@@ -3406,10 +3412,8 @@ declare var DOMException: {
     readonly NO_MODIFICATION_ALLOWED_ERR: number;
     readonly NOT_FOUND_ERR: number;
     readonly NOT_SUPPORTED_ERR: number;
-    readonly PARSE_ERR: number;
     readonly QUOTA_EXCEEDED_ERR: number;
     readonly SECURITY_ERR: number;
-    readonly SERIALIZE_ERR: number;
     readonly SYNTAX_ERR: number;
     readonly TIMEOUT_ERR: number;
     readonly TYPE_MISMATCH_ERR: number;
@@ -9069,7 +9073,7 @@ declare var PopStateEvent: {
 
 interface Position {
     readonly coords: Coordinates;
-    readonly timestamp: number;
+    readonly timestamp: DOMTimeStamp;
 }
 
 declare var Position: {
@@ -14234,6 +14238,28 @@ interface XMLHttpRequestEventTarget {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
+interface TextDecoder {
+    readonly encoding: string;
+    readonly fatal: boolean;
+    readonly ignoreBOM: boolean;
+    decode(input?: BufferSource, options?: TextDecodeOptions): USVString;
+}
+
+declare var TextDecoder: {
+    prototype: TextDecoder;
+    new(label?: string, options?: TextDecoderOptions): TextDecoder;
+};
+
+interface TextEncoder {
+    readonly encoding: string;
+    encode(input?: USVString): Uint8Array;
+}
+
+declare var TextEncoder: {
+    prototype: TextEncoder;
+    new(): TextEncoder;
+};
+
 interface BroadcastChannel extends EventTarget {
     readonly name: string;
     onmessage: (ev: MessageEvent) => any;
@@ -14918,6 +14944,9 @@ interface RTCStatsCallback {
 interface VoidFunction {
     (): void;
 }
+interface Function {
+    (...arguments: any[]): any;
+}
 interface HTMLElementTagNameMap {
     "a": HTMLAnchorElement;
     "abbr": HTMLElement;
@@ -15322,12 +15351,14 @@ declare function removeEventListener(type: string, listener: EventListener, opti
 type AAGUID = string;
 type AlgorithmIdentifier = string | Algorithm;
 type BodyInit = Blob | BufferSource | FormData | string;
+type BufferSource = ArrayBufferView | ArrayBuffer;
 type ByteString = string;
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainLong = number | ConstrainLongRange;
 type CryptoOperationData = ArrayBufferView;
+type DOMTimeStamp = number;
 type GLbitfield = number;
 type GLboolean = boolean;
 type GLbyte = number;
@@ -15357,7 +15388,6 @@ type payloadtype = number;
 type ScrollBehavior = "auto" | "instant" | "smooth";
 type ScrollLogicalPosition = "start" | "center" | "end" | "nearest";
 type IDBValidKey = number | string | Date | IDBArrayKey;
-type BufferSource = ArrayBuffer | ArrayBufferView;
 type MouseWheelEvent = WheelEvent;
 type ScrollRestoration = "auto" | "manual";
 type FormDataEntryValue = string | File;

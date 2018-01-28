@@ -1,0 +1,57 @@
+{
+  "callbackInterfaces": [], "dictionaries": [], "enums": [], "namespaces": [],
+  "callbackFunctions": [
+    {
+      "name": "Function", "type": "any",
+      "arguments": [{ "name": "arguments", "type": "any", "variadic": true }]
+    },
+    { "name": "VoidFunction", "type": "void", "arguments": [] }
+  ],
+  "interfaces": [{
+    "name": "DOMException",
+    "exposed": ["Window", "Worker"],
+    "constructors": [{
+      "arguments": [
+        { "name": "message", "type": "DOMString", "optional": true, "default": "\"\"" },
+        { "name": "name", "type": "DOMString", "optional": true, "default": "\"Error\"" }
+      ]
+    }],
+    "constants": [
+      { "name": "ABORT_ERR", "type": "unsigned short", "value": "20" },
+      { "name": "DATA_CLONE_ERR", "type": "unsigned short", "value": "25" },
+      { "name": "DOMSTRING_SIZE_ERR", "type": "unsigned short", "value": "2" },
+      { "name": "HIERARCHY_REQUEST_ERR", "type": "unsigned short", "value": "3" },
+      { "name": "INDEX_SIZE_ERR", "type": "unsigned short", "value": "1" },
+      { "name": "INUSE_ATTRIBUTE_ERR", "type": "unsigned short", "value": "10" },
+      { "name": "INVALID_ACCESS_ERR", "type": "unsigned short", "value": "15" },
+      { "name": "INVALID_CHARACTER_ERR", "type": "unsigned short", "value": "5" },
+      { "name": "INVALID_MODIFICATION_ERR", "type": "unsigned short", "value": "13" },
+      { "name": "INVALID_NODE_TYPE_ERR", "type": "unsigned short", "value": "24" },
+      { "name": "INVALID_STATE_ERR", "type": "unsigned short", "value": "11" },
+      { "name": "NAMESPACE_ERR", "type": "unsigned short", "value": "14" },
+      { "name": "NETWORK_ERR", "type": "unsigned short", "value": "19" },
+      { "name": "NO_DATA_ALLOWED_ERR", "type": "unsigned short", "value": "6" },
+      { "name": "NO_MODIFICATION_ALLOWED_ERR", "type": "unsigned short", "value": "7" },
+      { "name": "NOT_FOUND_ERR", "type": "unsigned short", "value": "8" },
+      { "name": "NOT_SUPPORTED_ERR", "type": "unsigned short", "value": "9" },
+      { "name": "QUOTA_EXCEEDED_ERR", "type": "unsigned short", "value": "22" },
+      { "name": "SECURITY_ERR", "type": "unsigned short", "value": "18" },
+      { "name": "SYNTAX_ERR", "type": "unsigned short", "value": "12" },
+      { "name": "TIMEOUT_ERR", "type": "unsigned short", "value": "23" },
+      { "name": "TYPE_MISMATCH_ERR", "type": "unsigned short", "value": "17" },
+      { "name": "URL_MISMATCH_ERR", "type": "unsigned short", "value": "21" },
+      { "name": "VALIDATION_ERR", "type": "unsigned short", "value": "16" },
+      { "name": "WRONG_DOCUMENT_ERR", "type": "unsigned short", "value": "4" }
+    ],
+    "attributes": [
+      { "name": "code", "type": "unsigned short", "readonly": true },
+      { "name": "message", "type": "DOMString", "readonly": true },
+      { "name": "name", "type": "DOMString", "readonly": true }
+    ]
+  }],
+  "typedefs": [
+    { "name": "ArrayBufferView", "type": "(Int8Array or Int16Array or Int32Array or Uint8Array or Uint16Array or Uint32Array or Uint8ClampedArray or Float32Array or Float64Array or DataView)" },
+    { "name": "BufferSource", "type": "(ArrayBufferView or ArrayBuffer)" },
+    { "name": "DOMTimeStamp", "type": "unsigned long long" }
+  ]
+}

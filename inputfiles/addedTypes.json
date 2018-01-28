@@ -804,11 +804,6 @@
         "type": "boolean"
     },
     {
-        "kind": "typedef",
-        "name": "BufferSource",
-        "type": "ArrayBuffer | ArrayBufferView"
-    },
-    {
         "kind": "interface",
         "name": "RsaKeyGenParams",
         "extends": "Algorithm",

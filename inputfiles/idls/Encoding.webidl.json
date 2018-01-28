@@ -1,0 +1,44 @@
+{
+  "callbackFunctions": [], "callbackInterfaces": [], "enums": [], "typedefs": [], "namespaces": [],
+  "dictionaries": [{
+    "name": "TextDecodeOptions",
+    "members": [{ "name": "stream", "type": "boolean", "default": "false" }]
+  }, {
+    "name": "TextDecoderOptions",
+    "members": [
+      { "name": "fatal", "type": "boolean", "default": "false" },
+      { "name": "ignoreBOM", "type": "boolean", "default": "false" }
+    ]
+  }],
+  "interfaces": [{
+    "name": "TextDecoder",
+    "constructors": [{
+      "arguments": [
+        { "name": "label", "type": "DOMString", "optional": true, "default": "\"utf-8\"" },
+        { "name": "options", "type": "TextDecoderOptions", "optional": true }
+      ]
+    }],
+    "exposed": ["Window", "Worker"],
+    "operations": [{
+      "name": "decode", "type": "USVString",
+      "arguments": [
+        { "name": "input", "type": "BufferSource", "optional": true },
+        { "name": "options", "type": "TextDecodeOptions", "optional": true }
+      ]
+    }],
+    "attributes": [
+      { "name": "encoding", "type": "DOMString", "readonly": true },
+      { "name": "fatal", "type": "boolean", "readonly": true },
+      { "name": "ignoreBOM", "type": "boolean", "readonly": true }
+    ]
+  }, {
+    "name": "TextEncoder",
+    "constructors": [{ "arguments": [] }],
+    "exposed": ["Window", "Worker"],
+    "operations": [{
+      "name": "encode", "type": "Uint8Array",
+      "arguments": [{ "name": "input", "type": "USVString", "optional": true, "default": "\"\"" }]
+    }],
+    "attributes": [{ "name": "encoding", "type": "DOMString", "readonly": true }]
+  }]
+}
