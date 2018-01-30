@@ -1544,6 +1544,12 @@
     {
         "kind": "property",
         "interface": "Element",
+        "name": "style",
+        "type": "CSSStyleDeclaration"
+    },
+    {
+        "kind": "property",
+        "interface": "Element",
         "name": "shadowRoot",
         "type": "ShadowRoot | null",
         "readonly": true
