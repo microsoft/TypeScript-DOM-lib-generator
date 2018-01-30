@@ -3588,6 +3588,7 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, NodeSelec
     readonly tagName: string;
     readonly assignedSlot: HTMLSlotElement | null;
     slot: string;
+    style: CSSStyleDeclaration;
     readonly shadowRoot: ShadowRoot | null;
     getAttribute(name: string): string | null;
     getAttributeNode(name: string): Attr | null;
