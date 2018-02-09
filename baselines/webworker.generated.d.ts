@@ -136,7 +136,7 @@ type WebKitErrorCallback = (err: DOMError) => void | { handleEvent(err: DOMError
 
 type WebKitFileCallback = (file: File) => void | { handleEvent(file: File): void; };
 
-interface AudioBuffer {
+declare class AudioBuffer {
     readonly duration: number;
     readonly length: number;
     readonly numberOfChannels: number;
@@ -146,25 +146,16 @@ interface AudioBuffer {
     getChannelData(channel: number): Float32Array;
 }
 
-declare var AudioBuffer: {
-    prototype: AudioBuffer;
-    new(): AudioBuffer;
-};
-
-interface Blob {
+declare class Blob {
     readonly size: number;
     readonly type: string;
     msClose(): void;
     msDetachStream(): any;
     slice(start?: number, end?: number, contentType?: string): Blob;
+    constructor(blobParts?: any[], options?: BlobPropertyBag);
 }
 
-declare var Blob: {
-    prototype: Blob;
-    new (blobParts?: any[], options?: BlobPropertyBag): Blob;
-};
-
-interface Cache {
+declare class Cache {
     add(request: RequestInfo): Promise<void>;
     addAll(requests: RequestInfo[]): Promise<void>;
     delete(request: RequestInfo, options?: CacheQueryOptions): Promise<boolean>;
@@ -174,12 +165,7 @@ interface Cache {
     put(request: RequestInfo, response: Response): Promise<void>;
 }
 
-declare var Cache: {
-    prototype: Cache;
-    new(): Cache;
-};
-
-interface CacheStorage {
+declare class CacheStorage {
     delete(cacheName: string): Promise<boolean>;
     has(cacheName: string): Promise<boolean>;
     keys(): Promise<string[]>;
@@ -187,24 +173,16 @@ interface CacheStorage {
     open(cacheName: string): Promise<Cache>;
 }
 
-declare var CacheStorage: {
-    prototype: CacheStorage;
-    new(): CacheStorage;
-};
-
-interface CloseEvent extends Event {
+interface CloseEvent extends Event {}
+declare class CloseEvent {
     readonly code: number;
     readonly reason: string;
     readonly wasClean: boolean;
     initCloseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, wasCleanArg: boolean, codeArg: number, reasonArg: string): void;
+    constructor(typeArg: string, eventInitDict?: CloseEventInit);
 }
 
-declare var CloseEvent: {
-    prototype: CloseEvent;
-    new(typeArg: string, eventInitDict?: CloseEventInit): CloseEvent;
-};
-
-interface Console {
+declare class Console {
     assert(test?: boolean, message?: string, ...optionalParams: any[]): void;
     clear(): void;
     count(countTitle?: string): void;
@@ -229,12 +207,7 @@ interface Console {
     warn(message?: any, ...optionalParams: any[]): void;
 }
 
-declare var Console: {
-    prototype: Console;
-    new(): Console;
-};
-
-interface Coordinates {
+declare class Coordinates {
     readonly accuracy: number;
     readonly altitude: number | null;
     readonly altitudeAccuracy: number | null;
@@ -244,34 +217,19 @@ interface Coordinates {
     readonly speed: number | null;
 }
 
-declare var Coordinates: {
-    prototype: Coordinates;
-    new(): Coordinates;
-};
-
-interface CryptoKey {
+declare class CryptoKey {
     readonly algorithm: KeyAlgorithm;
     readonly extractable: boolean;
     readonly type: string;
     readonly usages: string[];
 }
 
-declare var CryptoKey: {
-    prototype: CryptoKey;
-    new(): CryptoKey;
-};
-
-interface DOMError {
+declare class DOMError {
     readonly name: string;
     toString(): string;
 }
 
-declare var DOMError: {
-    prototype: DOMError;
-    new(): DOMError;
-};
-
-interface DOMException {
+declare class DOMException {
     readonly code: number;
     readonly message: string;
     readonly name: string;
@@ -303,67 +261,55 @@ interface DOMException {
     readonly URL_MISMATCH_ERR: number;
     readonly VALIDATION_ERR: number;
     readonly WRONG_DOCUMENT_ERR: number;
+    constructor(message?: string, name?: string);
+    static readonly ABORT_ERR: number;
+    static readonly DATA_CLONE_ERR: number;
+    static readonly DOMSTRING_SIZE_ERR: number;
+    static readonly HIERARCHY_REQUEST_ERR: number;
+    static readonly INDEX_SIZE_ERR: number;
+    static readonly INUSE_ATTRIBUTE_ERR: number;
+    static readonly INVALID_ACCESS_ERR: number;
+    static readonly INVALID_CHARACTER_ERR: number;
+    static readonly INVALID_MODIFICATION_ERR: number;
+    static readonly INVALID_NODE_TYPE_ERR: number;
+    static readonly INVALID_STATE_ERR: number;
+    static readonly NAMESPACE_ERR: number;
+    static readonly NETWORK_ERR: number;
+    static readonly NO_DATA_ALLOWED_ERR: number;
+    static readonly NO_MODIFICATION_ALLOWED_ERR: number;
+    static readonly NOT_FOUND_ERR: number;
+    static readonly NOT_SUPPORTED_ERR: number;
+    static readonly PARSE_ERR: number;
+    static readonly QUOTA_EXCEEDED_ERR: number;
+    static readonly SECURITY_ERR: number;
+    static readonly SERIALIZE_ERR: number;
+    static readonly SYNTAX_ERR: number;
+    static readonly TIMEOUT_ERR: number;
+    static readonly TYPE_MISMATCH_ERR: number;
+    static readonly URL_MISMATCH_ERR: number;
+    static readonly VALIDATION_ERR: number;
+    static readonly WRONG_DOCUMENT_ERR: number;
 }
 
-declare var DOMException: {
-    prototype: DOMException;
-    new(message?: string, name?: string): DOMException;
-    readonly ABORT_ERR: number;
-    readonly DATA_CLONE_ERR: number;
-    readonly DOMSTRING_SIZE_ERR: number;
-    readonly HIERARCHY_REQUEST_ERR: number;
-    readonly INDEX_SIZE_ERR: number;
-    readonly INUSE_ATTRIBUTE_ERR: number;
-    readonly INVALID_ACCESS_ERR: number;
-    readonly INVALID_CHARACTER_ERR: number;
-    readonly INVALID_MODIFICATION_ERR: number;
-    readonly INVALID_NODE_TYPE_ERR: number;
-    readonly INVALID_STATE_ERR: number;
-    readonly NAMESPACE_ERR: number;
-    readonly NETWORK_ERR: number;
-    readonly NO_DATA_ALLOWED_ERR: number;
-    readonly NO_MODIFICATION_ALLOWED_ERR: number;
-    readonly NOT_FOUND_ERR: number;
-    readonly NOT_SUPPORTED_ERR: number;
-    readonly PARSE_ERR: number;
-    readonly QUOTA_EXCEEDED_ERR: number;
-    readonly SECURITY_ERR: number;
-    readonly SERIALIZE_ERR: number;
-    readonly SYNTAX_ERR: number;
-    readonly TIMEOUT_ERR: number;
-    readonly TYPE_MISMATCH_ERR: number;
-    readonly URL_MISMATCH_ERR: number;
-    readonly VALIDATION_ERR: number;
-    readonly WRONG_DOCUMENT_ERR: number;
-};
-
-interface DOMStringList {
+declare class DOMStringList {
     readonly length: number;
     contains(str: string): boolean;
     item(index: number): string | null;
     [index: number]: string;
 }
 
-declare var DOMStringList: {
-    prototype: DOMStringList;
-    new(): DOMStringList;
-};
-
-interface ErrorEvent extends Event {
+interface ErrorEvent extends Event {}
+declare class ErrorEvent {
     readonly colno: number;
     readonly error: any;
     readonly filename: string;
     readonly lineno: number;
     readonly message: string;
     initErrorEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, messageArg: string, filenameArg: string, linenoArg: number): void;
+    constructor(type: string, errorEventInitDict?: ErrorEventInit);
 }
 
-declare var ErrorEvent: {
-    prototype: ErrorEvent;
-    new(type: string, errorEventInitDict?: ErrorEventInit): ErrorEvent;
-};
-
-interface Event {
+declare class Event {
     readonly bubbles: boolean;
     readonly cancelable: boolean;
     cancelBubble: boolean;
@@ -385,51 +331,35 @@ interface Event {
     readonly AT_TARGET: number;
     readonly BUBBLING_PHASE: number;
     readonly CAPTURING_PHASE: number;
+    constructor(typeArg: string, eventInitDict?: EventInit);
+    static readonly AT_TARGET: number;
+    static readonly BUBBLING_PHASE: number;
+    static readonly CAPTURING_PHASE: number;
 }
 
-declare var Event: {
-    prototype: Event;
-    new(typeArg: string, eventInitDict?: EventInit): Event;
-    readonly AT_TARGET: number;
-    readonly BUBBLING_PHASE: number;
-    readonly CAPTURING_PHASE: number;
-};
-
-interface EventTarget {
+declare class EventTarget {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     dispatchEvent(evt: Event): boolean;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var EventTarget: {
-    prototype: EventTarget;
-    new(): EventTarget;
-};
-
-interface File extends Blob {
+interface File extends Blob {}
+declare class File {
     readonly lastModifiedDate: Date;
     readonly name: string;
     readonly webkitRelativePath: string;
     readonly lastModified: number;
+    constructor(parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag);
 }
 
-declare var File: {
-    prototype: File;
-    new (parts: (ArrayBuffer | ArrayBufferView | Blob | string)[], filename: string, properties?: FilePropertyBag): File;
-};
-
-interface FileList {
+declare class FileList {
     readonly length: number;
     item(index: number): File;
     [index: number]: File;
 }
 
-declare var FileList: {
-    prototype: FileList;
-    new(): FileList;
-};
-
-interface FileReader extends EventTarget, MSBaseReader {
+interface FileReader extends EventTarget, MSBaseReader {}
+declare class FileReader {
     readonly error: DOMError;
     readAsArrayBuffer(blob: Blob): void;
     readAsBinaryString(blob: Blob): void;
@@ -441,35 +371,21 @@ interface FileReader extends EventTarget, MSBaseReader {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var FileReader: {
-    prototype: FileReader;
-    new(): FileReader;
-};
-
-interface FormData {
+declare class FormData {
     append(name: string, value: string | Blob, fileName?: string): void;
 }
 
-declare var FormData: {
-    prototype: FormData;
-    new(): FormData;
-};
-
-interface Headers {
+declare class Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
     forEach(callback: ForEachCallback): void;
     get(name: string): string | null;
     has(name: string): boolean;
     set(name: string, value: string): void;
+    constructor(init?: HeadersInit);
 }
 
-declare var Headers: {
-    prototype: Headers;
-    new(init?: HeadersInit): Headers;
-};
-
-interface IDBCursor {
+declare class IDBCursor {
     readonly direction: IDBCursorDirection;
     key: IDBKeyRange | IDBValidKey;
     readonly primaryKey: any;
@@ -482,32 +398,24 @@ interface IDBCursor {
     readonly NEXT_NO_DUPLICATE: string;
     readonly PREV: string;
     readonly PREV_NO_DUPLICATE: string;
+    static readonly NEXT: string;
+    static readonly NEXT_NO_DUPLICATE: string;
+    static readonly PREV: string;
+    static readonly PREV_NO_DUPLICATE: string;
 }
 
-declare var IDBCursor: {
-    prototype: IDBCursor;
-    new(): IDBCursor;
-    readonly NEXT: string;
-    readonly NEXT_NO_DUPLICATE: string;
-    readonly PREV: string;
-    readonly PREV_NO_DUPLICATE: string;
-};
-
-interface IDBCursorWithValue extends IDBCursor {
+interface IDBCursorWithValue extends IDBCursor {}
+declare class IDBCursorWithValue {
     readonly value: any;
 }
-
-declare var IDBCursorWithValue: {
-    prototype: IDBCursorWithValue;
-    new(): IDBCursorWithValue;
-};
 
 interface IDBDatabaseEventMap {
     "abort": Event;
     "error": Event;
 }
 
-interface IDBDatabase extends EventTarget {
+interface IDBDatabase extends EventTarget {}
+declare class IDBDatabase {
     readonly name: string;
     readonly objectStoreNames: DOMStringList;
     onabort: (this: IDBDatabase, ev: Event) => any;
@@ -526,23 +434,13 @@ interface IDBDatabase extends EventTarget {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBDatabase: {
-    prototype: IDBDatabase;
-    new(): IDBDatabase;
-};
-
-interface IDBFactory {
+declare class IDBFactory {
     cmp(first: any, second: any): number;
     deleteDatabase(name: string): IDBOpenDBRequest;
     open(name: string, version?: number): IDBOpenDBRequest;
 }
 
-declare var IDBFactory: {
-    prototype: IDBFactory;
-    new(): IDBFactory;
-};
-
-interface IDBIndex {
+declare class IDBIndex {
     keyPath: string | string[];
     readonly name: string;
     readonly objectStore: IDBObjectStore;
@@ -555,28 +453,18 @@ interface IDBIndex {
     openKeyCursor(range?: IDBKeyRange | IDBValidKey, direction?: IDBCursorDirection): IDBRequest;
 }
 
-declare var IDBIndex: {
-    prototype: IDBIndex;
-    new(): IDBIndex;
-};
-
-interface IDBKeyRange {
+declare class IDBKeyRange {
     readonly lower: any;
     readonly lowerOpen: boolean;
     readonly upper: any;
     readonly upperOpen: boolean;
+    static bound(lower: any, upper: any, lowerOpen?: boolean, upperOpen?: boolean): IDBKeyRange;
+    static lowerBound(lower: any, open?: boolean): IDBKeyRange;
+    static only(value: any): IDBKeyRange;
+    static upperBound(upper: any, open?: boolean): IDBKeyRange;
 }
 
-declare var IDBKeyRange: {
-    prototype: IDBKeyRange;
-    new(): IDBKeyRange;
-    bound(lower: any, upper: any, lowerOpen?: boolean, upperOpen?: boolean): IDBKeyRange;
-    lowerBound(lower: any, open?: boolean): IDBKeyRange;
-    only(value: any): IDBKeyRange;
-    upperBound(upper: any, open?: boolean): IDBKeyRange;
-};
-
-interface IDBObjectStore {
+declare class IDBObjectStore {
     readonly indexNames: DOMStringList;
     keyPath: string | string[];
     readonly name: string;
@@ -594,17 +482,13 @@ interface IDBObjectStore {
     put(value: any, key?: IDBKeyRange | IDBValidKey): IDBRequest;
 }
 
-declare var IDBObjectStore: {
-    prototype: IDBObjectStore;
-    new(): IDBObjectStore;
-};
-
 interface IDBOpenDBRequestEventMap extends IDBRequestEventMap {
     "blocked": Event;
     "upgradeneeded": IDBVersionChangeEvent;
 }
 
-interface IDBOpenDBRequest extends IDBRequest {
+interface IDBOpenDBRequest extends IDBRequest {}
+declare class IDBOpenDBRequest {
     onblocked: (this: IDBOpenDBRequest, ev: Event) => any;
     onupgradeneeded: (this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any;
     addEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -613,17 +497,13 @@ interface IDBOpenDBRequest extends IDBRequest {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBOpenDBRequest: {
-    prototype: IDBOpenDBRequest;
-    new(): IDBOpenDBRequest;
-};
-
 interface IDBRequestEventMap {
     "error": Event;
     "success": Event;
 }
 
-interface IDBRequest extends EventTarget {
+interface IDBRequest extends EventTarget {}
+declare class IDBRequest {
     readonly error: DOMException;
     onerror: (this: IDBRequest, ev: Event) => any;
     onsuccess: (this: IDBRequest, ev: Event) => any;
@@ -637,18 +517,14 @@ interface IDBRequest extends EventTarget {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBRequest: {
-    prototype: IDBRequest;
-    new(): IDBRequest;
-};
-
 interface IDBTransactionEventMap {
     "abort": Event;
     "complete": Event;
     "error": Event;
 }
 
-interface IDBTransaction extends EventTarget {
+interface IDBTransaction extends EventTarget {}
+declare class IDBTransaction {
     readonly db: IDBDatabase;
     readonly error: DOMException;
     readonly mode: IDBTransactionMode;
@@ -664,66 +540,46 @@ interface IDBTransaction extends EventTarget {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
+    static readonly READ_ONLY: string;
+    static readonly READ_WRITE: string;
+    static readonly VERSION_CHANGE: string;
 }
 
-declare var IDBTransaction: {
-    prototype: IDBTransaction;
-    new(): IDBTransaction;
-    readonly READ_ONLY: string;
-    readonly READ_WRITE: string;
-    readonly VERSION_CHANGE: string;
-};
-
-interface IDBVersionChangeEvent extends Event {
+interface IDBVersionChangeEvent extends Event {}
+declare class IDBVersionChangeEvent {
     readonly newVersion: number | null;
     readonly oldVersion: number;
 }
 
-declare var IDBVersionChangeEvent: {
-    prototype: IDBVersionChangeEvent;
-    new(): IDBVersionChangeEvent;
-};
-
-interface ImageData {
+declare class ImageData {
     data: Uint8ClampedArray;
     readonly height: number;
     readonly width: number;
+    constructor(width: number, height: number);
+    constructor(array: Uint8ClampedArray, width: number, height: number);
 }
 
-declare var ImageData: {
-    prototype: ImageData;
-    new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height: number): ImageData;
-};
-
-interface MessageChannel {
+declare class MessageChannel {
     readonly port1: MessagePort;
     readonly port2: MessagePort;
 }
 
-declare var MessageChannel: {
-    prototype: MessageChannel;
-    new(): MessageChannel;
-};
-
-interface MessageEvent extends Event {
+interface MessageEvent extends Event {}
+declare class MessageEvent {
     readonly data: any;
     readonly origin: string;
     readonly ports: any;
     readonly source: any;
     initMessageEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, dataArg: any, originArg: string, lastEventIdArg: string, sourceArg: any): void;
+    constructor(type: string, eventInitDict?: MessageEventInit);
 }
-
-declare var MessageEvent: {
-    prototype: MessageEvent;
-    new(type: string, eventInitDict?: MessageEventInit): MessageEvent;
-};
 
 interface MessagePortEventMap {
     "message": MessageEvent;
 }
 
-interface MessagePort extends EventTarget {
+interface MessagePort extends EventTarget {}
+declare class MessagePort {
     onmessage: (this: MessagePort, ev: MessageEvent) => any;
     close(): void;
     postMessage(message?: any, transfer?: any[]): void;
@@ -734,11 +590,6 @@ interface MessagePort extends EventTarget {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var MessagePort: {
-    prototype: MessagePort;
-    new(): MessagePort;
-};
-
 interface NotificationEventMap {
     "click": Event;
     "close": Event;
@@ -746,7 +597,8 @@ interface NotificationEventMap {
     "show": Event;
 }
 
-interface Notification extends EventTarget {
+interface Notification extends EventTarget {}
+declare class Notification {
     readonly body: string;
     readonly dir: NotificationDirection;
     readonly icon: string;
@@ -763,15 +615,11 @@ interface Notification extends EventTarget {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
+    constructor(title: string, options?: NotificationOptions);
+    static requestPermission(callback?: NotificationPermissionCallback): Promise<NotificationPermission>;
 }
 
-declare var Notification: {
-    prototype: Notification;
-    new(title: string, options?: NotificationOptions): Notification;
-    requestPermission(callback?: NotificationPermissionCallback): Promise<NotificationPermission>;
-};
-
-interface Performance {
+declare class Performance {
     readonly navigation: PerformanceNavigation;
     readonly timing: PerformanceTiming;
     clearMarks(markName?: string): void;
@@ -789,12 +637,7 @@ interface Performance {
     toJSON(): any;
 }
 
-declare var Performance: {
-    prototype: Performance;
-    new(): Performance;
-};
-
-interface PerformanceNavigation {
+declare class PerformanceNavigation {
     readonly redirectCount: number;
     readonly type: number;
     toJSON(): any;
@@ -802,18 +645,13 @@ interface PerformanceNavigation {
     readonly TYPE_NAVIGATE: number;
     readonly TYPE_RELOAD: number;
     readonly TYPE_RESERVED: number;
+    static readonly TYPE_BACK_FORWARD: number;
+    static readonly TYPE_NAVIGATE: number;
+    static readonly TYPE_RELOAD: number;
+    static readonly TYPE_RESERVED: number;
 }
 
-declare var PerformanceNavigation: {
-    prototype: PerformanceNavigation;
-    new(): PerformanceNavigation;
-    readonly TYPE_BACK_FORWARD: number;
-    readonly TYPE_NAVIGATE: number;
-    readonly TYPE_RELOAD: number;
-    readonly TYPE_RESERVED: number;
-};
-
-interface PerformanceTiming {
+declare class PerformanceTiming {
     readonly connectEnd: number;
     readonly connectStart: number;
     readonly domainLookupEnd: number;
@@ -839,62 +677,39 @@ interface PerformanceTiming {
     toJSON(): any;
 }
 
-declare var PerformanceTiming: {
-    prototype: PerformanceTiming;
-    new(): PerformanceTiming;
-};
-
-interface Position {
+declare class Position {
     readonly coords: Coordinates;
     readonly timestamp: number;
 }
 
-declare var Position: {
-    prototype: Position;
-    new(): Position;
-};
-
-interface PositionError {
+declare class PositionError {
     readonly code: number;
     readonly message: string;
     toString(): string;
     readonly PERMISSION_DENIED: number;
     readonly POSITION_UNAVAILABLE: number;
     readonly TIMEOUT: number;
+    static readonly PERMISSION_DENIED: number;
+    static readonly POSITION_UNAVAILABLE: number;
+    static readonly TIMEOUT: number;
 }
 
-declare var PositionError: {
-    prototype: PositionError;
-    new(): PositionError;
-    readonly PERMISSION_DENIED: number;
-    readonly POSITION_UNAVAILABLE: number;
-    readonly TIMEOUT: number;
-};
-
-interface ProgressEvent extends Event {
+interface ProgressEvent extends Event {}
+declare class ProgressEvent {
     readonly lengthComputable: boolean;
     readonly loaded: number;
     readonly total: number;
     initProgressEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, lengthComputableArg: boolean, loadedArg: number, totalArg: number): void;
+    constructor(type: string, eventInitDict?: ProgressEventInit);
 }
 
-declare var ProgressEvent: {
-    prototype: ProgressEvent;
-    new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
-};
-
-interface PushManager {
+declare class PushManager {
     getSubscription(): Promise<PushSubscription>;
     permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
     subscribe(options?: PushSubscriptionOptionsInit): Promise<PushSubscription>;
 }
 
-declare var PushManager: {
-    prototype: PushManager;
-    new(): PushManager;
-};
-
-interface PushSubscription {
+declare class PushSubscription {
     readonly endpoint: USVString;
     readonly options: PushSubscriptionOptions;
     getKey(name: PushEncryptionKeyName): ArrayBuffer | null;
@@ -902,44 +717,25 @@ interface PushSubscription {
     unsubscribe(): Promise<boolean>;
 }
 
-declare var PushSubscription: {
-    prototype: PushSubscription;
-    new(): PushSubscription;
-};
-
-interface PushSubscriptionOptions {
+declare class PushSubscriptionOptions {
     readonly applicationServerKey: ArrayBuffer | null;
     readonly userVisibleOnly: boolean;
 }
 
-declare var PushSubscriptionOptions: {
-    prototype: PushSubscriptionOptions;
-    new(): PushSubscriptionOptions;
-};
-
-interface ReadableStream {
+declare class ReadableStream {
     readonly locked: boolean;
     cancel(): Promise<void>;
     getReader(): ReadableStreamReader;
 }
 
-declare var ReadableStream: {
-    prototype: ReadableStream;
-    new(): ReadableStream;
-};
-
-interface ReadableStreamReader {
+declare class ReadableStreamReader {
     cancel(): Promise<void>;
     read(): Promise<any>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamReader: {
-    prototype: ReadableStreamReader;
-    new(): ReadableStreamReader;
-};
-
-interface Request extends Object, Body {
+interface Request extends Object, Body {}
+declare class Request {
     readonly cache: RequestCache;
     readonly credentials: RequestCredentials;
     readonly destination: RequestDestination;
@@ -955,14 +751,11 @@ interface Request extends Object, Body {
     readonly url: string;
     readonly signal: AbortSignal;
     clone(): Request;
+    constructor(input: Request | string, init?: RequestInit);
 }
 
-declare var Request: {
-    prototype: Request;
-    new(input: Request | string, init?: RequestInit): Request;
-};
-
-interface Response extends Object, Body {
+interface Response extends Object, Body {}
+declare class Response {
     readonly body: ReadableStream | null;
     readonly headers: Headers;
     readonly ok: boolean;
@@ -972,20 +765,17 @@ interface Response extends Object, Body {
     readonly url: string;
     readonly redirected: boolean;
     clone(): Response;
-}
-
-declare var Response: {
-    prototype: Response;
-    new(body?: any, init?: ResponseInit): Response;
+    constructor(body?: any, init?: ResponseInit);
     error: () => Response;
     redirect: (url: string, status?: number) => Response;
-};
+}
 
 interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
     "statechange": Event;
 }
 
-interface ServiceWorker extends EventTarget, AbstractWorker {
+interface ServiceWorker extends EventTarget, AbstractWorker {}
+declare class ServiceWorker {
     onstatechange: (this: ServiceWorker, ev: Event) => any;
     readonly scriptURL: USVString;
     readonly state: ServiceWorkerState;
@@ -996,16 +786,12 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorker: {
-    prototype: ServiceWorker;
-    new(): ServiceWorker;
-};
-
 interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
 }
 
-interface ServiceWorkerRegistration extends EventTarget {
+interface ServiceWorkerRegistration extends EventTarget {}
+declare class ServiceWorkerRegistration {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
     onupdatefound: (this: ServiceWorkerRegistration, ev: Event) => any;
@@ -1023,22 +809,12 @@ interface ServiceWorkerRegistration extends EventTarget {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerRegistration: {
-    prototype: ServiceWorkerRegistration;
-    new(): ServiceWorkerRegistration;
-};
-
-interface SyncManager {
+declare class SyncManager {
     getTags(): Promise<string[]>;
     register(tag: string): Promise<void>;
 }
 
-declare var SyncManager: {
-    prototype: SyncManager;
-    new(): SyncManager;
-};
-
-interface URL {
+declare class URL {
     hash: string;
     host: string;
     hostname: string;
@@ -1052,14 +828,10 @@ interface URL {
     username: string;
     readonly searchParams: URLSearchParams;
     toString(): string;
+    constructor(url: string, base?: string | URL);
+    static createObjectURL(object: any, options?: ObjectURLOptions): string;
+    static revokeObjectURL(url: string): void;
 }
-
-declare var URL: {
-    prototype: URL;
-    new(url: string, base?: string | URL): URL;
-    createObjectURL(object: any, options?: ObjectURLOptions): string;
-    revokeObjectURL(url: string): void;
-};
 
 interface WebSocketEventMap {
     "close": CloseEvent;
@@ -1068,7 +840,8 @@ interface WebSocketEventMap {
     "open": Event;
 }
 
-interface WebSocket extends EventTarget {
+interface WebSocket extends EventTarget {}
+declare class WebSocket {
     binaryType: string;
     readonly bufferedAmount: number;
     readonly extensions: string;
@@ -1089,22 +862,19 @@ interface WebSocket extends EventTarget {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
+    constructor(url: string, protocols?: string | string[]);
+    static readonly CLOSED: number;
+    static readonly CLOSING: number;
+    static readonly CONNECTING: number;
+    static readonly OPEN: number;
 }
-
-declare var WebSocket: {
-    prototype: WebSocket;
-    new(url: string, protocols?: string | string[]): WebSocket;
-    readonly CLOSED: number;
-    readonly CLOSING: number;
-    readonly CONNECTING: number;
-    readonly OPEN: number;
-};
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
 }
 
-interface Worker extends EventTarget, AbstractWorker {
+interface Worker extends EventTarget, AbstractWorker {}
+declare class Worker {
     onmessage: (this: Worker, ev: MessageEvent) => any;
     postMessage(message: any, transfer?: any[]): void;
     terminate(): void;
@@ -1112,18 +882,15 @@ interface Worker extends EventTarget, AbstractWorker {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
+    constructor(stringUrl: string);
 }
-
-declare var Worker: {
-    prototype: Worker;
-    new(stringUrl: string): Worker;
-};
 
 interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
     "readystatechange": Event;
 }
 
-interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {
+interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {}
+declare class XMLHttpRequest {
     onreadystatechange: (this: XMLHttpRequest, ev: Event) => any;
     readonly readyState: number;
     readonly response: any;
@@ -1155,29 +922,20 @@ interface XMLHttpRequest extends EventTarget, XMLHttpRequestEventTarget {
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
+    static readonly DONE: number;
+    static readonly HEADERS_RECEIVED: number;
+    static readonly LOADING: number;
+    static readonly OPENED: number;
+    static readonly UNSENT: number;
 }
 
-declare var XMLHttpRequest: {
-    prototype: XMLHttpRequest;
-    new(): XMLHttpRequest;
-    readonly DONE: number;
-    readonly HEADERS_RECEIVED: number;
-    readonly LOADING: number;
-    readonly OPENED: number;
-    readonly UNSENT: number;
-};
-
-interface XMLHttpRequestUpload extends EventTarget, XMLHttpRequestEventTarget {
+interface XMLHttpRequestUpload extends EventTarget, XMLHttpRequestEventTarget {}
+declare class XMLHttpRequestUpload {
     addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
-
-declare var XMLHttpRequestUpload: {
-    prototype: XMLHttpRequestUpload;
-    new(): XMLHttpRequestUpload;
-};
 
 interface AbstractWorkerEventMap {
     "error": ErrorEvent;
@@ -1288,35 +1046,26 @@ interface XMLHttpRequestEventTarget {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-interface Client {
+declare class Client {
     readonly frameType: FrameType;
     readonly id: string;
     readonly url: USVString;
     postMessage(message: any, transfer?: any[]): void;
 }
 
-declare var Client: {
-    prototype: Client;
-    new(): Client;
-};
-
-interface Clients {
+declare class Clients {
     claim(): Promise<void>;
     get(id: string): Promise<any>;
     matchAll(options?: ClientQueryOptions): Promise<Client[]>;
     openWindow(url: USVString): Promise<WindowClient>;
 }
 
-declare var Clients: {
-    prototype: Clients;
-    new(): Clients;
-};
-
 interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "message": MessageEvent;
 }
 
-interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {
+interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {}
+declare class DedicatedWorkerGlobalScope {
     onmessage: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any;
     close(): void;
     postMessage(message: any, transfer?: any[]): void;
@@ -1326,87 +1075,57 @@ interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var DedicatedWorkerGlobalScope: {
-    prototype: DedicatedWorkerGlobalScope;
-    new(): DedicatedWorkerGlobalScope;
-};
-
-interface ExtendableEvent extends Event {
+interface ExtendableEvent extends Event {}
+declare class ExtendableEvent {
     waitUntil(f: Promise<any>): void;
+    constructor(type: string, eventInitDict?: ExtendableEventInit);
 }
 
-declare var ExtendableEvent: {
-    prototype: ExtendableEvent;
-    new(type: string, eventInitDict?: ExtendableEventInit): ExtendableEvent;
-};
-
-interface ExtendableMessageEvent extends ExtendableEvent {
+interface ExtendableMessageEvent extends ExtendableEvent {}
+declare class ExtendableMessageEvent {
     readonly data: any;
     readonly lastEventId: string;
     readonly origin: string;
     readonly ports: MessagePort[] | null;
     readonly source: Client | ServiceWorker | MessagePort | null;
+    constructor(type: string, eventInitDict?: ExtendableMessageEventInit);
 }
 
-declare var ExtendableMessageEvent: {
-    prototype: ExtendableMessageEvent;
-    new(type: string, eventInitDict?: ExtendableMessageEventInit): ExtendableMessageEvent;
-};
-
-interface FetchEvent extends ExtendableEvent {
+interface FetchEvent extends ExtendableEvent {}
+declare class FetchEvent {
     readonly clientId: string | null;
     readonly isReload: boolean;
     readonly request: Request;
     respondWith(r: Promise<Response>): void;
+    constructor(type: string, eventInitDict: FetchEventInit);
 }
 
-declare var FetchEvent: {
-    prototype: FetchEvent;
-    new(type: string, eventInitDict: FetchEventInit): FetchEvent;
-};
-
-interface FileReaderSync {
+declare class FileReaderSync {
     readAsArrayBuffer(blob: Blob): any;
     readAsBinaryString(blob: Blob): void;
     readAsDataURL(blob: Blob): string;
     readAsText(blob: Blob, encoding?: string): string;
 }
 
-declare var FileReaderSync: {
-    prototype: FileReaderSync;
-    new(): FileReaderSync;
-};
-
-interface NotificationEvent extends ExtendableEvent {
+interface NotificationEvent extends ExtendableEvent {}
+declare class NotificationEvent {
     readonly action: string;
     readonly notification: Notification;
+    constructor(type: string, eventInitDict: NotificationEventInit);
 }
 
-declare var NotificationEvent: {
-    prototype: NotificationEvent;
-    new(type: string, eventInitDict: NotificationEventInit): NotificationEvent;
-};
-
-interface PushEvent extends ExtendableEvent {
+interface PushEvent extends ExtendableEvent {}
+declare class PushEvent {
     readonly data: PushMessageData | null;
+    constructor(type: string, eventInitDict?: PushEventInit);
 }
 
-declare var PushEvent: {
-    prototype: PushEvent;
-    new(type: string, eventInitDict?: PushEventInit): PushEvent;
-};
-
-interface PushMessageData {
+declare class PushMessageData {
     arrayBuffer(): ArrayBuffer;
     blob(): Blob;
     json(): JSON;
     text(): USVString;
 }
-
-declare var PushMessageData: {
-    prototype: PushMessageData;
-    new(): PushMessageData;
-};
 
 interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "activate": ExtendableEvent;
@@ -1420,7 +1139,8 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "sync": SyncEvent;
 }
 
-interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
+interface ServiceWorkerGlobalScope extends WorkerGlobalScope {}
+declare class ServiceWorkerGlobalScope {
     readonly clients: Clients;
     onactivate: (this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any;
     onfetch: (this: ServiceWorkerGlobalScope, ev: FetchEvent) => any;
@@ -1439,38 +1159,27 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerGlobalScope: {
-    prototype: ServiceWorkerGlobalScope;
-    new(): ServiceWorkerGlobalScope;
-};
-
-interface SyncEvent extends ExtendableEvent {
+interface SyncEvent extends ExtendableEvent {}
+declare class SyncEvent {
     readonly lastChance: boolean;
     readonly tag: string;
+    constructor(type: string, init: SyncEventInit);
 }
 
-declare var SyncEvent: {
-    prototype: SyncEvent;
-    new(type: string, init: SyncEventInit): SyncEvent;
-};
-
-interface WindowClient extends Client {
+interface WindowClient extends Client {}
+declare class WindowClient {
     readonly focused: boolean;
     readonly visibilityState: VisibilityState;
     focus(): Promise<WindowClient>;
     navigate(url: USVString): Promise<WindowClient>;
 }
 
-declare var WindowClient: {
-    prototype: WindowClient;
-    new(): WindowClient;
-};
-
 interface WorkerGlobalScopeEventMap {
     "error": ErrorEvent;
 }
 
-interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, GlobalFetch {
+interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, GlobalFetch {}
+declare class WorkerGlobalScope {
     readonly caches: CacheStorage;
     readonly isSecureContext: boolean;
     readonly location: WorkerLocation;
@@ -1486,12 +1195,7 @@ interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, Glo
     removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void;
 }
 
-declare var WorkerGlobalScope: {
-    prototype: WorkerGlobalScope;
-    new(): WorkerGlobalScope;
-};
-
-interface WorkerLocation {
+declare class WorkerLocation {
     readonly hash: string;
     readonly host: string;
     readonly hostname: string;
@@ -1504,19 +1208,10 @@ interface WorkerLocation {
     toString(): string;
 }
 
-declare var WorkerLocation: {
-    prototype: WorkerLocation;
-    new(): WorkerLocation;
-};
-
-interface WorkerNavigator extends Object, NavigatorID, NavigatorOnLine, NavigatorBeacon, NavigatorConcurrentHardware {
+interface WorkerNavigator extends Object, NavigatorID, NavigatorOnLine, NavigatorBeacon, NavigatorConcurrentHardware {}
+declare class WorkerNavigator {
     readonly hardwareConcurrency: number;
 }
-
-declare var WorkerNavigator: {
-    prototype: WorkerNavigator;
-    new(): WorkerNavigator;
-};
 
 interface WorkerUtils extends Object, WindowBase64 {
     readonly indexedDB: IDBFactory;

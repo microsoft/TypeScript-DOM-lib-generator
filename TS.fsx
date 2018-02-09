@@ -766,14 +766,14 @@ module Emit =
         let resolvedType = DomTypeToTsType objDomType
         if nullable then makeNullable resolvedType else resolvedType
 
-    let EmitConstants (i: Browser.Interface) =
-        let emitConstantFromJson (c: InputJsonType.Root) = Pt.Printl "readonly %s: %s;" c.Name.Value c.Type.Value
+    let EmitConstants prefix (i: Browser.Interface) =
+        let emitConstantFromJson (c: InputJsonType.Root) = Pt.Printl "%sreadonly %s: %s;" prefix c.Name.Value c.Type.Value
 
         let emitConstant (c: Browser.Constant) =
             if Option.isNone (getRemovedItemByName c.Name ItemKind.Constant i.Name) then
                 match getOverriddenItemByName c.Name ItemKind.Constant i.Name with
                 | Some c' -> emitConstantFromJson c'
-                | None -> Pt.Printl "readonly %s: %s;" c.Name (DomTypeToTsType c.Type)
+                | None -> Pt.Printl "%sreadonly %s: %s;" prefix c.Name (DomTypeToTsType c.Type)
 
         let addedConstants = getAddedItems ItemKind.Constant Flavor.All
         Array.iter emitConstantFromJson addedConstants
@@ -786,7 +786,7 @@ module Emit =
         (DomTypeToNullableTsType m.Type m.Nullable.IsSome) = expectedMType &&
         m.Params.Length = 1 &&
         (DomTypeToTsType m.Params.[0].Type) = expectedParamType
-    let processInterfaceType iName =
+    let genericifyInterfaceName iName =
         match getOverriddenItems ItemKind.Interface Flavor.All |> Array.tryFind (matchInterface iName) with
         | Some it -> iName + "<" + (it.TypeParameters |> String.concat ", ") + ">"
         | _ -> iName
@@ -1067,7 +1067,7 @@ module Emit =
             | _ -> []
             |> Set.ofList
         EmitProperties flavor prefix emitScope i conflictedMembers
-        let methodPrefix = if prefix.StartsWith("declare var") then "declare function " else ""
+        let methodPrefix = if prefix.StartsWith("declare var") then "declare function " else prefix
         EmitMethods flavor methodPrefix emitScope i conflictedMembers
 
     /// Emit all members of every interfaces at the root level.
@@ -1130,31 +1130,20 @@ module Emit =
             match overriddenCtor with
             | Some c' -> emitConstructorSigFromJson c'
             | _ ->
-                //Emit constructor signature
+                // Emit constructor signature
                 match i.Constructor with
                 | Some ctor ->
-                    for { ParamCombinations = pCombList } in GetOverloads (Ctor ctor) false do
+                    let overloads = GetOverloads (Ctor ctor) false
+                    for { ParamCombinations = pCombList } in overloads do
                         let paramsString = ParamsToString pCombList
-                        Pt.Printl "new(%s): %s;" paramsString i.Name
-                | _ -> Pt.Printl "new(): %s;" i.Name
+                        // Emit unless there is a single empty signature
+                        if not (overloads.Length = 1 && paramsString.Length = 0) then
+                            Pt.Printl "constructor(%s);" paramsString
+                | _ -> ()
 
         getAddedItems ItemKind.Constructor flavor
         |> Array.filter (matchInterface i.Name)
         |> Array.iter emitConstructorSigFromJson
-
-    let EmitConstructor flavor (i:Browser.Interface) =
-        Pt.Printl "declare var %s: {" i.Name
-        Pt.IncreaseIndent()
-
-        Pt.Printl "prototype: %s;" i.Name
-        EmitConstructorSignature flavor i
-        EmitConstants i
-        let prefix = ""
-        EmitMembers flavor prefix EmitScope.StaticOnly i
-
-        Pt.DecreaseIndent()
-        Pt.Printl "};"
-        Pt.Printl ""
 
     /// Emit all the named constructors at root level
     let EmitNamedConstructors () =
@@ -1168,17 +1157,21 @@ module Emit =
                         yield {Type = p.Type; Name = p.Name; Optional = p.Optional.IsSome; Variadic = p.Variadic.IsSome; Nullable = p.Nullable.IsSome}]
                 Pt.Printl "declare var %s: { new(%s): %s; };" nc.Name (ParamsToString ncParams) i.Name)
 
-    let EmitInterfaceDeclaration (i:Browser.Interface) =
-        let processIName iName =
+    let EmitInterfaceDeclaration (i:Browser.Interface) (asClass: bool) =
+        let deconflict iName =
             match Map.tryFind iName extendConflictsBaseTypes with
             | Some _ -> iName + "Base"
             | _ -> iName
 
-        let processedIName = processIName i.Name
-        if processedIName <> i.Name then
-            Pt.PrintlToStack "interface %s extends %s {" (processInterfaceType i.Name) processedIName
+        let deconflictingIName = deconflict i.Name
+        let hasConflicts = deconflictingIName <> i.Name
+        match hasConflicts, asClass with
+        | true, false -> Pt.PrintlToStack "interface %s extends %s {" i.Name deconflictingIName
+        | true, true -> 
+            Pt.PrintlToStack "interface %s extends %s {}" i.Name deconflictingIName
+            Pt.PrintlToStack "declare class %s {" i.Name
+        | false, _ -> ()
 
-        Pt.Printl "interface %s" (processInterfaceType processedIName)
         let finalExtends =
             let overridenExtendsFromJson =
                 InputJson.getOverriddenItemsByInterfaceName ItemKind.Extends Flavor.All i.Name
@@ -1197,12 +1190,17 @@ module Emit =
                 else
                     overridenExtendsFromJson
 
-            combinedExtends |> List.map processIName
+            combinedExtends |> List.map deconflict
 
-        match finalExtends  with
-        | [] -> ()
-        | allExtends -> Pt.Print " extends %s" (String.Join(", ", allExtends))
-        Pt.Print " {"
+        let genericIName = genericifyInterfaceName deconflictingIName
+        match finalExtends, asClass, hasConflicts with
+        | [], true, false -> ()
+        | [], _, _ -> Pt.Printl "interface %s {" genericIName
+        | allExtends, _, _ -> Pt.Printl "interface %s extends %s {" genericIName (String.Join(", ", allExtends))
+
+        if asClass && not hasConflicts then
+            if not finalExtends.IsEmpty then Pt.Print "}"
+            Pt.Printl "declare class %s {" genericIName
 
     /// To decide if a given method is an indexer and should be emited
     let ShouldEmitIndexerSignature (i: Browser.Interface) (m: Browser.Method) =
@@ -1293,15 +1291,22 @@ module Emit =
         Pt.ClearStack()
         EmitInterfaceEventMap i
 
+        let emitAsClass = not i.NoInterfaceObject.IsSome
+
         Pt.ResetIndent()
-        EmitInterfaceDeclaration i
+        EmitInterfaceDeclaration i emitAsClass
         Pt.IncreaseIndent()
 
         let prefix = ""
         EmitMembers flavor prefix EmitScope.InstanceOnly i
-        EmitConstants i
+        EmitConstants prefix i
         EmitEventHandlers prefix i
         EmitIndexers EmitScope.InstanceOnly i
+        if emitAsClass then
+            let prefix = "static "
+            EmitConstructorSignature flavor i
+            EmitConstants prefix i
+            EmitMembers flavor prefix EmitScope.StaticOnly i
 
         Pt.DecreaseIndent()
         Pt.Printl "}"
@@ -1353,7 +1358,7 @@ module Emit =
         // read to separate them into two functions.
         let emitStaticInterfaceWithNonStaticMembers () =
             Pt.ResetIndent()
-            EmitInterfaceDeclaration i
+            EmitInterfaceDeclaration i false
             Pt.IncreaseIndent()
 
             let prefix = ""
@@ -1366,7 +1371,7 @@ module Emit =
             Pt.Printl ""
             Pt.Printl "declare var %s: {" i.Name
             Pt.IncreaseIndent()
-            EmitConstants i
+            EmitConstants "" i
             EmitMembers flavor prefix EmitScope.StaticOnly i
             emitAddedConstructor ()
             Pt.DecreaseIndent()
@@ -1375,12 +1380,12 @@ module Emit =
 
         let emitPureStaticInterface () =
             Pt.ResetIndent()
-            EmitInterfaceDeclaration i
+            EmitInterfaceDeclaration i false
             Pt.IncreaseIndent()
 
             let prefix = ""
             EmitMembers flavor prefix EmitScope.StaticOnly i
-            EmitConstants i
+            EmitConstants "" i
             EmitEventHandlers prefix i
             EmitIndexers EmitScope.StaticOnly i
             emitAddedConstructor ()
@@ -1396,18 +1401,15 @@ module Emit =
             // If the static attribute has a value, it means the type doesn't have a constructor
             if i.Static.IsSome then
                 EmitStaticInterface flavor i
-            elif i.NoInterfaceObject.IsSome then
-                EmitInterface flavor i
             else
                 EmitInterface flavor i
-                EmitConstructor flavor i
 
     let EmitDictionaries flavor =
 
         let emitDictionary (dict:Browser.Dictionary) =
             match dict.Extends with
-            | "Object" -> Pt.Printl "interface %s {" (processInterfaceType dict.Name)
-            | _ -> Pt.Printl "interface %s extends %s {" (processInterfaceType dict.Name) dict.Extends
+            | "Object" -> Pt.Printl "interface %s {" (genericifyInterfaceName dict.Name)
+            | _ -> Pt.Printl "interface %s extends %s {" (genericifyInterfaceName dict.Name) dict.Extends
 
             let emitJsonProperty (p: InputJsonType.Root) =
                 let readOnlyModifier =
