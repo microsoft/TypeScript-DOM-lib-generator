@@ -1819,6 +1819,7 @@ declare var CryptoKeyPair: {
 };
 
 interface CSS {
+    escape(value: string): string;
     supports(property: string, value?: string): boolean;
 }
 declare var CSS: CSS;
