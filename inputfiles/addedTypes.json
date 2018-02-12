@@ -1575,7 +1575,9 @@
         "name": "HTMLSlotElement",
         "extends": "HTMLElement",
         "flavor": "Web",
-        "tagNames": [ "slot" ],
+        "tagNames": [
+            "slot"
+        ],
         "properties": [
             {
                 "name": "name",
@@ -1638,10 +1640,12 @@
         "kind": "interface",
         "name": "ElementCreationOptions",
         "flavor": "Web",
-        "properties": [{
-            "name": "is?",
-            "type": "string"
-        }]
+        "properties": [
+            {
+                "name": "is?",
+                "type": "string"
+            }
+        ]
     },
     {
         "kind": "interface",
@@ -2614,7 +2618,7 @@
                 "name": "signal",
                 "type": "AbortSignal"
             }
-	      ],
+        ],
         "methods": [
             {
                 "name": "abort",
@@ -3001,6 +3005,14 @@
         "interface": "Screen",
         "signatures": [
             "unlockOrientation(): void"
+        ]
+    },
+    {
+        "kind": "method",
+        "name": "escape",
+        "interface": "CSS",
+        "signatures": [
+            "escape(value: string): string"
         ]
     }
 ]

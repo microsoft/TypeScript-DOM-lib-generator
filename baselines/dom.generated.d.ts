@@ -1819,9 +1819,12 @@ declare var CryptoKeyPair: {
 };
 
 interface CSS {
-    supports(property: string, value?: string): boolean;
+    escape(value: string): string;
 }
-declare var CSS: CSS;
+
+declare var CSS: {
+    supports(property: string, value?: string): boolean;
+};
 
 interface CSSConditionRule extends CSSGroupingRule {
     conditionText: string;
