@@ -1843,6 +1843,8 @@ interface EventSourceInit {
     readonly withCredentials: boolean;
 }
 
+declare type EventListenerOrEventListenerObject = EventListener;
+
 interface DecodeErrorCallback {
     (error: DOMException): void;
 }

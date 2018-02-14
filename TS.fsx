@@ -1523,6 +1523,10 @@ module Emit =
         // Add missed interface definition from the spec
         InputJson.getAddedItems InputJson.Interface flavor |> Array.iter EmitAddedInterface
 
+        // Alias EventListener for compatibility
+        Pt.Printl "declare type EventListenerOrEventListenerObject = EventListener;"
+        Pt.Printl ""
+
         EmitCallBackFunctions flavor
 
         if flavor <> Worker then

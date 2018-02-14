@@ -14924,6 +14924,8 @@ declare var Animation: {
     new(effect?: AnimationEffectReadOnly, timeline?: AnimationTimeline): Animation;
 };
 
+declare type EventListenerOrEventListenerObject = EventListener;
+
 interface DecodeErrorCallback {
     (error: DOMException): void;
 }
