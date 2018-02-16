@@ -128,7 +128,7 @@ interface SyncEventInit extends ExtendableEventInit {
     lastChance?: boolean;
 }
 
-type EventListener = (evt: Event) => void | { handleEvent(evt: Event): void; };
+type EventListener = ((evt: Event) => any) | { handleEvent(evt: Event): any; };
 
 interface AudioBuffer {
     readonly duration: number;
@@ -1911,6 +1911,7 @@ type IDBValidKey = number | string | Date | IDBArrayKey;
 type BufferSource = ArrayBuffer | ArrayBufferView;
 type FormDataEntryValue = string | File;
 type HeadersInit = Headers | string[][] | { [key: string]: string };
+type EventListenerOrEventListenerObject = EventListener;
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
