@@ -873,8 +873,7 @@ module Emit =
                 let m = i.Methods.Value.Methods.[0]
                 let overload = (GetOverloads (Function.Method m) false).[0]
                 let paramsString = ParamsToString overload.ParamCombinations
-                let returnType = DomTypeToTsType m.Type
-                Pt.Printl "type %s = (%s) => %s | { %s(%s): %s; };" i.Name paramsString returnType m.Name.Value paramsString returnType
+                Pt.Printl "type %s = ((%s) => any) | { %s(%s): any; };" i.Name paramsString m.Name.Value paramsString
                 Pt.Printl ""
 
     let EmitCallBackFunctions flavor =

@@ -1169,13 +1169,13 @@ interface WheelEventInit extends MouseEventInit {
     deltaZ?: number;
 }
 
-type EventListener = (evt: Event) => void | { handleEvent(evt: Event): void; };
+type EventListener = ((evt: Event) => any) | { handleEvent(evt: Event): any; };
 
-type WebKitEntriesCallback = (entries: WebKitEntry[]) => void | { handleEvent(entries: WebKitEntry[]): void; };
+type WebKitEntriesCallback = ((entries: WebKitEntry[]) => any) | { handleEvent(entries: WebKitEntry[]): any; };
 
-type WebKitErrorCallback = (err: DOMError) => void | { handleEvent(err: DOMError): void; };
+type WebKitErrorCallback = ((err: DOMError) => any) | { handleEvent(err: DOMError): any; };
 
-type WebKitFileCallback = (file: File) => void | { handleEvent(file: File): void; };
+type WebKitFileCallback = ((file: File) => any) | { handleEvent(file: File): any; };
 
 interface AnalyserNode extends AudioNode {
     fftSize: number;
@@ -15435,6 +15435,7 @@ type InsertPosition = "beforebegin" | "afterbegin" | "beforeend" | "afterend";
 type HeadersInit = Headers | string[][] | { [key: string]: string };
 type AnimationKeyFrame = {offset?: number | null | (number | null)[]} & {[key: string]: string | number | number[] | string[]};
 type OrientationLockType = "any" | "natural" | "portrait" | "landscape" | "portrait-primary" | "portrait-secondary" | "landscape-primary"| "landscape-secondary";
+type EventListenerOrEventListenerObject = EventListener;
 type AppendMode = "segments" | "sequence";
 type AudioContextState = "suspended" | "running" | "closed";
 type BiquadFilterType = "lowpass" | "highpass" | "bandpass" | "lowshelf" | "highshelf" | "peaking" | "notch" | "allpass";
