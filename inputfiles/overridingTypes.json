@@ -1421,7 +1421,7 @@
         "interface": "EventTarget",
         "name": "addEventListener",
         "signatures": [
-            "addEventListener(type: string, listener: EventListener, options?: boolean | AddEventListenerOptions): void"
+            "addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void"
         ]
     },
     {
@@ -1429,7 +1429,7 @@
         "interface": "EventTarget",
         "name": "removeEventListener",
         "signatures": [
-            "removeEventListener(type: string, listener: EventListener, options?: boolean | EventListenerOptions): void"
+            "removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void"
         ]
     },
     {
@@ -1670,7 +1670,9 @@
         "kind": "method",
         "interface": "Element",
         "name": "getBoundingClientRect",
-        "signatures": ["getBoundingClientRect(): ClientRect | DOMRect"]
+        "signatures": [
+            "getBoundingClientRect(): ClientRect | DOMRect"
+        ]
     },
     {
         "kind": "method",
@@ -1842,7 +1844,7 @@
         "kind": "method",
         "name": "getSubscription",
         "interface": "PushManager",
-        "signatures":[
+        "signatures": [
             "getSubscription(): Promise<PushSubscription | null>"
         ]
     }
