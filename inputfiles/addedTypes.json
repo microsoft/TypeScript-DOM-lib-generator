@@ -3058,5 +3058,13 @@
         "interface": "HTMLElementEventMap",
         "name": "\"focusout\"",
         "type": "FocusEvent"
+    },
+    {
+        "kind": "method",
+        "name": "escape",
+        "interface": "CSS",
+        "signatures": [
+            "escape(value: string): string"
+        ]
     }
 ]
