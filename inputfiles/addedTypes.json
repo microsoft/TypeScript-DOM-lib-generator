@@ -410,6 +410,25 @@
         ]
     },
     {
+        "kind": "interface",
+        "name": "EventListenerObjectFor<T extends Event>", 
+        "methods": [
+            {
+                "name": "handleEvent",
+                "signatures": ["handleEvent(evt: T): void"]
+            }
+        ]
+    },
+    {
+        "kind": "interface",
+        "name": "EventListenerFor<T extends Event>", 
+        "methods": [
+            {
+                "signatures": ["(evt: T): void"]
+            }
+        ]
+    },
+    {
         "kind": "property",
         "interface": "MessageEventInit",
         "name": "lastEventId?",
