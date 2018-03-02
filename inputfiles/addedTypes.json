@@ -3071,5 +3071,15 @@
         "name": "origin",
         "readonly": true,
         "type": "string"
+    },
+    {
+        "kind": "interface",
+        "name": "GetRootNodeOptions",
+        "properties": [
+            {
+                "name": "composed",
+                "type": "boolean"
+            }
+        ]
     }
 ]
