@@ -3081,5 +3081,19 @@
                 "type": "boolean"
             }
         ]
+    },
+    {
+        "kind": "method",
+        "interface": "Node",
+        "signatures": [
+            "getRootNode(options?: GetRootNodeOptions): Node"
+        ]
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "isConnected",
+        "type": "boolean"
     }
 ]
