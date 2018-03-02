@@ -3071,5 +3071,29 @@
         "name": "origin",
         "readonly": true,
         "type": "string"
+    },
+    {
+        "kind": "interface",
+        "name": "GetRootNodeOptions",
+        "properties": [
+            {
+                "name": "composed",
+                "type": "boolean"
+            }
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Node",
+        "signatures": [
+            "getRootNode(options?: GetRootNodeOptions): Node"
+        ]
+    },
+    {
+        "kind": "property",
+        "interface": "Node",
+        "readonly": true,
+        "name": "isConnected",
+        "type": "boolean"
     }
 ]

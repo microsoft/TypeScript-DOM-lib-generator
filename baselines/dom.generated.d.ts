@@ -8691,6 +8691,10 @@ interface NavigatorUserMedia {
     readonly mediaDevices: MediaDevices;
     getUserMedia(constraints: MediaStreamConstraints, successCallback: NavigatorUserMediaSuccessCallback, errorCallback: NavigatorUserMediaErrorCallback): void;
 }
+                          
+interface GetRootNodeOptions {
+    composed?: boolean;
+}
 
 interface Node extends EventTarget {
     readonly attributes: NamedNodeMap;
@@ -8708,9 +8712,11 @@ interface Node extends EventTarget {
     readonly parentElement: HTMLElement | null;
     readonly parentNode: Node | null;
     readonly previousSibling: Node | null;
+    readonly isConnected: boolean;
     textContent: string | null;
     appendChild<T extends Node>(newChild: T): T;
     cloneNode(deep?: boolean): Node;
+    getRootNode(options?: GetRootNodeOptions): Node;
     compareDocumentPosition(other: Node): number;
     contains(child: Node): boolean;
     hasAttributes(): boolean;
