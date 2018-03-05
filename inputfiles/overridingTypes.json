@@ -97,6 +97,14 @@
     {
         "kind": "method",
         "interface": "Node",
+        "name": "cloneNode",
+        "signatures": [
+            "cloneNode(deep?: boolean): this"
+        ]
+    },
+    {
+        "kind": "method",
+        "interface": "Node",
         "name": "insertBefore",
         "signatures": [
             "insertBefore<T extends Node>(newChild: T, refChild: Node | null): T"

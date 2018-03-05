@@ -8710,7 +8710,7 @@ interface Node extends EventTarget {
     readonly previousSibling: Node | null;
     textContent: string | null;
     appendChild<T extends Node>(newChild: T): T;
-    cloneNode(deep?: boolean): Node;
+    cloneNode(deep?: boolean): this;
     compareDocumentPosition(other: Node): number;
     contains(child: Node): boolean;
     hasAttributes(): boolean;
