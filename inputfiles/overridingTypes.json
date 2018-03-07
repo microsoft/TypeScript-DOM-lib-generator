@@ -1854,5 +1854,45 @@
         "name": "type",
         "readonly": true,
         "type": "MutationRecordType"
+    },
+		{
+        "kind": "method",
+        "name": "createAnswer",
+        "interface": "RTCPeerConnection",
+        "signatures": [
+            "createAnswer(options?: RTCAnswerOptions): Promise<RTCSessionDescriptionInit>"
+        ]
+    },
+	{
+        "kind": "method",
+        "name": "createOffer",
+        "interface": "RTCPeerConnection",
+        "signatures": [
+            "createOffer(options?: RTCOfferOptions): Promise<RTCSessionDescriptionInit>"
+        ]
+    },
+	{
+        "kind": "method",
+        "name": "setLocalDescription",
+        "interface": "RTCPeerConnection",
+        "signatures": [
+            "setLocalDescription(description: RTCSessionDescriptionInit): Promise<void>"
+        ]
+    },
+	{
+        "kind": "method",
+        "name": "setRemoteDescription",
+        "interface": "RTCPeerConnection",
+        "signatures": [
+            "setRemoteDescription(description: RTCSessionDescriptionInit): Promise<void>"
+        ]
+    },
+	{
+        "kind": "method",
+        "name": "addIceCandidate",
+        "interface": "RTCPeerConnection",
+        "signatures": [
+            "addIceCandidate(candidate: RTCIceCandidateInit | RTCIceCandidate): Promise<void>"
+        ]
     }
 ]
