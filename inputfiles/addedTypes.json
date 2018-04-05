@@ -373,6 +373,12 @@
                                 "delete(name: string): void"
                             ]
                         },
+                        "entries": {
+                            "name": "entries",
+                            "override-signatures": [
+                                "entries(): IterableIterator<[string, string]>"
+                            ]
+                        },
                         "get": {
                             "name": "get",
                             "override-signatures": [
@@ -391,10 +397,28 @@
                                 "has(name: string): boolean"
                             ]
                         },
+                        "keys": {
+                            "name": "keys",
+                            "override-signatures": [
+                                "keys(): IterableIterator<[string, string]>"
+                            ]
+                        },
                         "set": {
                             "name": "set",
                             "override-signatures": [
                                 "set(name: string, value: string): void"
+                            ]
+                        },
+                        "toString": {
+                            "name": "toString",
+                            "override-signatures": [
+                                "toString(): string"
+                            ]
+                        },
+                        "values": {
+                            "name": "values",
+                            "override-signatures": [
+                                "values(): IterableIterator<[string, string]>"
                             ]
                         }
                     }

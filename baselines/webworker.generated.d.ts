@@ -1400,6 +1400,7 @@ interface URLSearchParams {
      * Deletes the given search parameter, and its associated value, from the list of all search parameters.
      */
     delete(name: string): void;
+    entries(): IterableIterator<[string, string]>;
     /**
      * Returns the first value associated to the given search parameter.
      */
@@ -1412,10 +1413,13 @@ interface URLSearchParams {
      * Returns a Boolean indicating if such a search parameter exists.
      */
     has(name: string): boolean;
+    keys(): IterableIterator<[string, string]>;
     /**
      * Sets the value associated to a given search parameter to the given value. If there were several values, delete the others.
      */
     set(name: string, value: string): void;
+    toString(): string;
+    values(): IterableIterator<[string, string]>;
 }
 
 declare var URLSearchParams: {
