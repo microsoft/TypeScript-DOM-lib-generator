@@ -1955,7 +1955,7 @@ interface AudioParam {
     linearRampToValueAtTime(value: number, endTime: number): AudioParam;
     setTargetAtTime(target: number, startTime: number, timeConstant: number): AudioParam;
     setValueAtTime(value: number, startTime: number): AudioParam;
-    setValueCurveAtTime(values: number[], startTime: number, duration: number): AudioParam;
+    setValueCurveAtTime(values: Float32Array, startTime: number, duration: number): AudioParam;
 }
 
 declare var AudioParam: {
