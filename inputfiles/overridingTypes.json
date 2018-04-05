@@ -1967,6 +1967,19 @@
                         "new(d?: Path2D | string): Path2D"
                     ]
                 }
+            },
+            "AudioParam": {
+                "name": "AudioParam",
+                "methods": {
+                    "method": {
+                        "setValueCurveAtTime": {
+                            "name": "setValueCurveAtTime",
+                            "override-signatures": [
+                                "setValueCurveAtTime(values: Float32Array, startTime: number, duration: number): AudioParam"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
