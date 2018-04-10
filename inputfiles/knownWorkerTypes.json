@@ -50,6 +50,7 @@
     "IDBOpenDBRequest",
     "IDBRequest",
     "IDBTransaction",
+    "IDBValidKey",
     "IDBVersionChangeEvent",
     "ImageData",
     "MessageChannel",
