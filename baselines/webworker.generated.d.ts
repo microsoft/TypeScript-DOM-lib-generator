@@ -1774,6 +1774,7 @@ type RequestInfo = Request | string;
 type PerformanceEntryList = PerformanceEntry[];
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type FormDataEntryValue = string | File;
+type IDBValidKey = number | string | Date | IDBArrayKey;
 type AlgorithmIdentifier = string | Algorithm;
 type AAGUID = string;
 type ByteString = string;
