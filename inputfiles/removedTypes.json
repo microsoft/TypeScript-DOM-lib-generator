@@ -68,14 +68,7 @@
                 }
             },
             "ClipboardItem": null,
-            "Console": {
-                "methods": {
-                    "method": {
-                        "msIsIndependentlyComposed": null,
-                        "select": null
-                    }
-                }
-            },
+            "Console": null,
             "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
@@ -322,7 +315,8 @@
                     "GlobalFetch",
                     "IDBEnvironment",
                     "WindowBase64",
-                    "WindowTimers"
+                    "WindowTimers",
+                    "WindowConsole"
                 ]
             },
             "XPathNSResolver": null

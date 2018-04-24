@@ -13,6 +13,10 @@
         "deprecated": true
     },
     {
+        "url": "https://console.spec.whatwg.org/",
+        "title": "Console"
+    },
+    {
         "url": "https://www.w3.org/TR/credential-management-1/",
         "title": "Credential Management"
     },

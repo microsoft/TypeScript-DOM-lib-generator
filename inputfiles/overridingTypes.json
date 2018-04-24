@@ -994,79 +994,6 @@
                     }
                 }
             },
-            "Console": {
-                "name": "Console",
-                "methods": {
-                    "method": {
-                        "debug": {
-                            "name": "debug",
-                            "override-signatures": [
-                                "debug(message?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "dir": {
-                            "name": "dir",
-                            "override-signatures": [
-                                "dir(value?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "dirxml": {
-                            "name": "dirxml",
-                            "override-signatures": [
-                                "dirxml(value: any): void"
-                            ]
-                        },
-                        "error": {
-                            "name": "error",
-                            "override-signatures": [
-                                "error(message?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "info": {
-                            "name": "info",
-                            "override-signatures": [
-                                "info(message?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "log": {
-                            "name": "log",
-                            "override-signatures": [
-                                "log(message?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "warn": {
-                            "name": "warn",
-                            "override-signatures": [
-                                "warn(message?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "group": {
-                            "name": "group",
-                            "override-signatures": [
-                                "group(groupTitle?: string, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "groupCollapsed": {
-                            "name": "groupCollapsed",
-                            "override-signatures": [
-                                "groupCollapsed(groupTitle?: string, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "trace": {
-                            "name": "trace",
-                            "override-signatures": [
-                                "trace(message?: any, ...optionalParams: any[]): void"
-                            ]
-                        },
-                        "profileEnd": {
-                            "name": "profileEnd",
-                            "override-signatures": [
-                                "profileEnd(reportName?: string): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "FormData": {
                 "name": "FormData",
                 "methods": {
@@ -3237,6 +3164,33 @@
         ]
     },
     "namespaces": [
+        {
+            "name": "console",
+            "methods": {
+                "method": {
+                    "exception": {
+                        "name": "exception",
+                        "override-signatures": [
+                            "exception(message?: string, ...optionalParams: any[]): void"
+                        ]
+                    },
+                    "timeStamp": {
+                        "name": "timeStamp",
+                        "override-signatures": [
+                            "timeStamp(label?: string): void"
+                        ]
+                    }
+                }
+            },
+            "properties": {
+                "property": {
+                    "memory": {
+                        "name": "memory",
+                        "type": "any"
+                    }
+                }
+            }
+        },
         {
             "name": "WebAssembly",
             "methods": {

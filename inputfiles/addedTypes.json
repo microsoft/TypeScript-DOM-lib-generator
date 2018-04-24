@@ -2237,10 +2237,7 @@
                             "type": "PromiseRejectionEvent"
                         }
                     ]
-                },
-                "implements": [
-                    "WindowConsole"
-                ]
+                }
             }
         }
     },
