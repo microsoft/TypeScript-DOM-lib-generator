@@ -2130,6 +2130,23 @@
             "ReadableStreamReader": {
                 "name": "ReadableStreamReader",
                 "override-exposed": "Window Worker"
+            },
+            "Worker": {
+                "name": "Worker",
+                "override-exposed": "Window Worker"
+            },
+            "Crypto": {
+                "name": "Crypto",
+                "methods": {
+                    "method": {
+                        "getRandomValues": {
+                            "name": "getRandomValues",
+                            "override-signatures": [
+                                "getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
