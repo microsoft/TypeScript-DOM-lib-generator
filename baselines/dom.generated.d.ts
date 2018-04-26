@@ -9774,14 +9774,6 @@ interface NavigatorID {
 }
 
 interface NavigatorLanguage {
-}
-
-declare var NavigatorLanguage: {
-    prototype: NavigatorLanguage;
-    new(): NavigatorLanguage;
-};
-
-interface NavigatorLanguage {
     readonly language: string;
     readonly languages: ReadonlyArray<string>;
 }

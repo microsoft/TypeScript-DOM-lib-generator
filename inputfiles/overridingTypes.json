@@ -1,6 +1,10 @@
 {
     "mixins": {
         "mixin": {
+            "NavigatorLanguage": {
+                "override-exposed": "Window Worker",
+                "name": "NavigatorLanguage"
+            },
             "Animatable": {
                 "name": "Animatable",
                 "methods": {
@@ -98,10 +102,6 @@
     },
     "interfaces": {
         "interface": {
-            "NavigatorLanguage": {
-                "override-exposed": "Window Worker",
-                "name": "NavigatorLanguage"
-            },
             "RTCIdentityProviderGlobalScope": {
                 "exposed": "RTCIdentityProviderGlobalScope",
                 "extends": "Object",

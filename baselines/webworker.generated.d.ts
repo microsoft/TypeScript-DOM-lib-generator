@@ -1293,12 +1293,9 @@ interface NavigatorID {
 }
 
 interface NavigatorLanguage {
+    readonly language: string;
+    readonly languages: ReadonlyArray<string>;
 }
-
-declare var NavigatorLanguage: {
-    prototype: NavigatorLanguage;
-    new(): NavigatorLanguage;
-};
 
 interface NavigatorOnLine {
     readonly onLine: boolean;
