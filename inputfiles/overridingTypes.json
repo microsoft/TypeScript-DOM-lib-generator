@@ -98,6 +98,10 @@
     },
     "interfaces": {
         "interface": {
+            "NavigatorLanguage": {
+                "override-exposed": "Window Worker",
+                "name": "NavigatorLanguage"
+            },
             "RTCIdentityProviderGlobalScope": {
                 "exposed": "RTCIdentityProviderGlobalScope",
                 "extends": "Object",
@@ -2125,10 +2129,6 @@
             },
             "ReadableStreamReader": {
                 "name": "ReadableStreamReader",
-                "override-exposed": "Window Worker"
-            },
-            "Worker": {
-                "name": "Worker",
                 "override-exposed": "Window Worker"
             }
         }

@@ -1863,6 +1863,12 @@ interface WheelEventInit extends MouseEventInit {
     deltaZ?: number;
 }
 
+interface WorkerOptions {
+    credentials?: RequestCredentials;
+    name?: string;
+    type?: WorkerType;
+}
+
 interface EventListener {
     (evt: Event): void;
 }
@@ -9768,6 +9774,14 @@ interface NavigatorID {
 }
 
 interface NavigatorLanguage {
+}
+
+declare var NavigatorLanguage: {
+    prototype: NavigatorLanguage;
+    new(): NavigatorLanguage;
+};
+
+interface NavigatorLanguage {
     readonly language: string;
     readonly languages: ReadonlyArray<string>;
 }
@@ -13418,6 +13432,19 @@ interface ShadowRootInit {
     mode: "open" | "closed";
 }
 
+interface SharedWorker extends EventTarget, AbstractWorker {
+    readonly port: MessagePort;
+    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SharedWorker: {
+    prototype: SharedWorker;
+    new(scriptURL: string, options?: string | WorkerOptions): SharedWorker;
+};
+
 interface SourceBuffer extends EventTarget {
     appendWindowEnd: number;
     appendWindowStart: number;
@@ -15699,11 +15726,12 @@ interface WindowTimersExtension {
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
+    "messageerror": MessageEvent;
 }
 
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    /** @deprecated */
+    onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
     postMessage(message: any, transfer?: any[]): void;
     terminate(): void;
     addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -15714,7 +15742,7 @@ interface Worker extends EventTarget, AbstractWorker {
 
 declare var Worker: {
     prototype: Worker;
-    new(stringUrl: string): Worker;
+    new(scriptURL: string, options?: WorkerOptions): Worker;
 };
 
 interface WritableStream {
@@ -16014,6 +16042,10 @@ interface NavigatorUserMediaSuccessCallback {
 
 interface NotificationPermissionCallback {
     (permission: NotificationPermission): void;
+}
+
+interface OnErrorEventHandlerNonNull {
+    (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any;
 }
 
 interface PerformanceObserverCallback {
@@ -16490,6 +16522,7 @@ type VibratePattern = number | number[];
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMTimeStamp = number;
 type FormDataEntryValue = File | string;
+type OnErrorEventHandler = OnErrorEventHandlerNonNull;
 type ScrollBehavior = "auto" | "instant" | "smooth";
 type ScrollLogicalPosition = "start" | "center" | "end" | "nearest";
 type MouseWheelEvent = WheelEvent;
@@ -16632,5 +16665,5 @@ type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted"
 type VREye = "left" | "right";
 type VideoFacingModeEnum = "user" | "environment" | "left" | "right";
 type VisibilityState = "hidden" | "visible" | "prerender" | "unloaded";
-type WorkerType = "classic" | "module";
+type WorkerType = "classic" | "module" | "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
