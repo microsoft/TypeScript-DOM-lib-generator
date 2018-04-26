@@ -2184,5 +2184,5 @@ type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaquer
 type ServiceWorkerState = "installing" | "installed" | "activating" | "activated" | "redundant";
 type ServiceWorkerUpdateViaCache = "imports" | "all" | "none";
 type VisibilityState = "hidden" | "visible" | "prerender" | "unloaded";
-type WorkerType = "classic" | "module" | "classic" | "module";
+type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

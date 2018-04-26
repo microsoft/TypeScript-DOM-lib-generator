@@ -16657,5 +16657,5 @@ type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted"
 type VREye = "left" | "right";
 type VideoFacingModeEnum = "user" | "environment" | "left" | "right";
 type VisibilityState = "hidden" | "visible" | "prerender" | "unloaded";
-type WorkerType = "classic" | "module" | "classic" | "module";
+type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
