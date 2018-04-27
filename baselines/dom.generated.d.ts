@@ -5748,6 +5748,7 @@ declare var HTMLCollection: {
 interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
     item(index: number): T;
     namedItem(name: string): T;
+    forEach(callbackfn: (value: T, key: number, parent: HTMLCollectionOf<T>) => void, thisArg?: any): void;
     [index: number]: T;
 }
 
@@ -9918,6 +9919,7 @@ declare var NodeList: {
 interface NodeListOf<TNode extends Node> extends NodeList {
     length: number;
     item(index: number): TNode;
+    forEach(callbackfn: (value: TNode, key: number, parent: NodeListOf<TNode>) => void, thisArg?: any): void;
     [index: number]: TNode;
 }
 
@@ -11103,6 +11105,7 @@ declare var RTCStatsProvider: {
 };
 
 interface RTCStatsReport {
+    forEach(callbackfn: (value: any, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
 }
 
 declare var RTCStatsReport: {

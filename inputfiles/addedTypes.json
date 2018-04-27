@@ -516,7 +516,13 @@
                 "no-interface-object": "1",
                 "overide-index-signatures": [
                     "[index: number]: TNode"
-                ]
+                ],
+                "iterator": {
+                    "type": "iterable",
+                    "subtype": [{
+                        "override-type": "TNode"
+                    }]
+                }
             },
             "HTMLCollectionOf<T extends Element>": {
                 "name": "HTMLCollectionOf<T extends Element>",
@@ -541,7 +547,13 @@
                 "no-interface-object": "1",
                 "overide-index-signatures": [
                     "[index: number]: T"
-                ]
+                ],
+                "iterator": {
+                    "type": "iterable",
+                    "subtype": [{
+                        "override-type": "T"
+                    }]
+                }
             },
             "EventListenerObject": {
                 "name": "EventListenerObject",

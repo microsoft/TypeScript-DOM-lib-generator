@@ -38,12 +38,33 @@ interface FileList {
     [Symbol.iterator](): IterableIterator<File>
 }
 
+interface FormData {
+    [Symbol.iterator](): IterableIterator<[string, FormDataEntryValue]>
+    entries(): IterableIterator<[string, FormDataEntryValue]>;
+    keys(): IterableIterator<string>;
+    values(): IterableIterator<FormDataEntryValue>;
+}
+
 interface HTMLAllCollection {
     [Symbol.iterator](): IterableIterator<Element>
 }
 
-interface HTMLCollection {
+interface HTMLCollectionBase {
     [Symbol.iterator](): IterableIterator<Element>
+}
+
+interface HTMLCollectionOf<T extends Element> {
+    [Symbol.iterator](): IterableIterator<T>
+    entries(): IterableIterator<[number, T]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<T>;
+}
+
+interface Headers {
+    [Symbol.iterator](): IterableIterator<[string, string]>
+    entries(): IterableIterator<[string, string]>;
+    keys(): IterableIterator<string>;
+    values(): IterableIterator<string>;
 }
 
 interface MediaList {
@@ -62,12 +83,22 @@ interface NodeList {
     [Symbol.iterator](): IterableIterator<Node>
 }
 
+interface NodeListOf<TNode extends Node> {
+    [Symbol.iterator](): IterableIterator<TNode>
+    entries(): IterableIterator<[number, TNode]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<TNode>;
+}
+
 interface Plugin {
     [Symbol.iterator](): IterableIterator<MimeType>
 }
 
 interface PluginArray {
     [Symbol.iterator](): IterableIterator<Plugin>
+}
+
+interface RTCStatsReport extends ReadonlyMap<string, any> {
 }
 
 interface SourceBufferList {
@@ -88,6 +119,13 @@ interface TextTrackList {
 
 interface TouchList {
     [Symbol.iterator](): IterableIterator<Touch>
+}
+
+interface URLSearchParams {
+    [Symbol.iterator](): IterableIterator<[string, string]>
+    entries(): IterableIterator<[string, string]>;
+    keys(): IterableIterator<string>;
+    values(): IterableIterator<string>;
 }
 
 interface VideoTrackList {

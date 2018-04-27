@@ -337,7 +337,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
                 if (flavor === Flavor.Web && objDomType === "Client") return "object";
                 // Name of an interface / enum / dict. Just return itself
                 if (allInterfacesMap[objDomType] ||
-                    allLegacyWindowAliases.includes(objDomType) || 
+                    allLegacyWindowAliases.includes(objDomType) ||
                     allCallbackFunctionsMap[objDomType] ||
                     allDictionariesMap[objDomType] ||
                     allEnumsMap[objDomType]) return objDomType;
@@ -692,15 +692,12 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
         if (!i.iterator) {
             return;
         }
-        if (i.iterator.type === "iterable") {
-            const subtype = i.iterator.subtype.map(convertDomTypeToTsType);
-            const key = subtype.length > 1 ? subtype[0] : "number";
-            const value = subtype[subtype.length - 1];
-            printer.printLine(`forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${i.name}) => void, thisArg?: any): void;`);
-        }
-        else {
-            throw new Error(`Unsupported type ${i.iterator.type}`);
-        }
+        const subtype = i.iterator.subtype.map(convertDomTypeToTsType);
+        const value = subtype[subtype.length - 1];
+        const key = subtype.length > 1 ? subtype[0] :
+            i.iterator.type === "iterable" ? "number" : value;
+        const name = i.name.replace(/ extends \w+/, "");
+        printer.printLine(`forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${name}) => void, thisArg?: any): void;`);
     }
 
     /// Emit the properties and methods of a given interface
@@ -1103,17 +1100,68 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
             return p.name === "length" && typeof p.type === "string" && integerTypes.has(p.type);
         }
 
-        if (i.name !== "Window" && i.properties) {
-            const iterableGetter = findIterableGetter();
-            const lengthProperty = mapToArray(i.properties.property).find(findLengthProperty);
-            if (iterableGetter && lengthProperty) {
-                printer.printLine(`interface ${i.name} {`);
-                printer.increaseIndent();
-                printer.printLine(`[Symbol.iterator](): IterableIterator<${convertDomTypeToTsType({ type: iterableGetter.signature[0].type, nullable: undefined })}>`);
-                printer.decreaseIndent();
-                printer.printLine("}");
-                printer.printLine("");
+        function getIteratorSubtypes() {
+            if (i.iterator) {
+                if (i.iterator.subtype.length === 1) {
+                    return [convertDomTypeToTsType(i.iterator.subtype[0])];
+                }
+                return i.iterator.subtype.map(convertDomTypeToTsType);
             }
+            else if (i.name !== "Window" && i.properties) {
+                const iterableGetter = findIterableGetter();
+                const lengthProperty = mapToArray(i.properties.property).find(findLengthProperty);
+                if (iterableGetter && lengthProperty) {
+                    return [convertDomTypeToTsType({ type: iterableGetter.signature[0].type })];
+                }
+            }
+        }
+
+        function stringifySingleOrTupleTypes(types: string[]) {
+            if (types.length === 1) {
+                return types[0]
+            }
+            return `[${types.join(", ")}]`;
+        }
+
+        function emitIterableDeclarationMethods(subtypes: string[]) {
+            let [keyType, valueType] = subtypes;
+            if (!valueType) {
+                valueType = keyType;
+                keyType = "number";
+            }
+            printer.printLine(`entries(): IterableIterator<[${keyType}, ${valueType}]>;`);
+            printer.printLine(`keys(): IterableIterator<${keyType}>;`);
+            printer.printLine(`values(): IterableIterator<${valueType}>;`);
+        }
+
+        function getIteratorExtends(iterator: Browser.Iterator | undefined, subtypes: string[]) {
+            if (!iterator) {
+                return "";
+            }
+            const base = iterator.type === "maplike" ? `Map<${subtypes[0]}, ${subtypes[1]}>` :
+                iterator.type === "setlike" ? `Set<${subtypes[0]}>` : undefined;
+            if (!base) {
+                return "";
+            }
+            const result = iterator.readonly ? `Readonly${base}` : base;
+            return `extends ${result} `;
+        }
+
+        const subtypes = getIteratorSubtypes();
+        if (subtypes) {
+            const iteratorExtends = getIteratorExtends(i.iterator, subtypes);
+            const name = extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name;
+            printer.printLine(`interface ${name} ${iteratorExtends}{`);
+            printer.increaseIndent();
+            if (!iteratorExtends) {
+                printer.printLine(`[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(subtypes)}>`);
+            }
+            if (i.iterator && i.iterator.type === "iterable") {
+                emitIterableDeclarationMethods(subtypes);
+            }
+            printer.decreaseIndent();
+            printer.printLine("}");
+            printer.printLine("");
         }
     }
 

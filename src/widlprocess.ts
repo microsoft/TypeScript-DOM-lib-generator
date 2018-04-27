@@ -50,18 +50,6 @@ export function convert(text: string) {
     return { browser, partialInterfaces, partialDictionaries, includes };
 }
 
-function getExposure(extAttrs: webidl2.ExtendedAttributes[], inheritedExposure?: string) {
-    for (const extAttr of extAttrs) {
-        if (extAttr.name === "Exposed") {
-            if (Array.isArray(extAttr.rhs.value)) {
-                return extAttr.rhs.value.join(' ');
-            }
-            return extAttr.rhs.value;
-        }
-    }
-    return inheritedExposure;
-}
-
 function hasExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
     return extAttrs.some(extAttr => extAttr.name === name);
 }
@@ -72,6 +60,13 @@ function getExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
         return;
     }
     return attr.rhs.type === "identifier-list" ? attr.rhs.value : [attr.rhs.value];
+}
+
+function getExtAttrConcatenated(extAttrs: webidl2.ExtendedAttributes[], name: string) {
+    const extAttr = getExtAttr(extAttrs, name);
+    if (extAttr) {
+        return extAttr.join(" ");
+    }
 }
 
 function convertInterface(i: webidl2.InterfaceType) {
@@ -96,7 +91,8 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         methods: { method: {} },
         properties: { property: {} },
         constructor: getConstructor(i.extAttrs, i.name),
-        exposed: getExposure(i.extAttrs),
+        exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
+        global: getExtAttrConcatenated(i.extAttrs, "Global"),
         "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
         "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias")
     };
@@ -120,7 +116,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
                 method[member.name] = operation;
             }
         }
-        else if (member.type === "iterable") {
+        else if (member.type === "iterable" || member.type === "maplike" || member.type === "setlike") {
             result.iterator = {
                 type: member.type,
                 readonly: member.readonly,
@@ -162,7 +158,7 @@ function convertOperation(operation: webidl2.OperationMemberType, inheritedExpos
         getter: operation.getter ? 1 : undefined,
         static: operation.static ? 1 : undefined,
         stringifier: operation.stringifier ? 1 : undefined,
-        exposed: getExposure(operation.extAttrs, inheritedExposure)
+        exposed: getExtAttrConcatenated(operation.extAttrs, "Exposed") || inheritedExposure
     };
 }
 
@@ -193,7 +189,7 @@ function convertAttribute(attribute: webidl2.AttributeMemberType, inheritedExpos
         static: attribute.static ? 1 : undefined,
         "read-only": attribute.readonly ? 1 : undefined,
         "event-handler": attribute.idlType.idlType === "EventHandler" ? attribute.name.slice(2) : undefined,
-        exposed: getExposure(attribute.extAttrs, inheritedExposure)
+        exposed: getExtAttrConcatenated(attribute.extAttrs, "Exposed") || inheritedExposure
     }
 }
 
