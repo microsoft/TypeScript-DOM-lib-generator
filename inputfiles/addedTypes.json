@@ -1,6 +1,10 @@
 {
     "mixins": {
         "mixin": {
+            "WindowOrWorkerGlobalScope": {
+                "name": "WindowOrWorkerGlobalScope",
+                "exposed": "Window WorkerGlobalScope"
+            },
             "HTMLHyperlinkElementUtils": {
                 "name": "HTMLHyperlinkElementUtils",
                 "properties": {

@@ -135,5 +135,6 @@
     "IDBArrayKey",
     "IDBVersionChangeEventInit",
     "BufferSource",
-    "NavigatorLanguage"
+    "NavigatorLanguage",
+    "WindowOrWorkerGlobalScope"
 ]

@@ -1924,6 +1924,14 @@ interface WindowConsole {
     readonly console: Console;
 }
 
+interface WindowOrWorkerGlobalScope {
+}
+
+declare var WindowOrWorkerGlobalScope: {
+    prototype: WindowOrWorkerGlobalScope;
+    new(): WindowOrWorkerGlobalScope;
+};
+
 interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;

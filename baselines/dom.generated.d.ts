@@ -15700,6 +15700,14 @@ interface WindowLocalStorage {
     readonly localStorage: Storage;
 }
 
+interface WindowOrWorkerGlobalScope {
+}
+
+declare var WindowOrWorkerGlobalScope: {
+    prototype: WindowOrWorkerGlobalScope;
+    new(): WindowOrWorkerGlobalScope;
+};
+
 interface WindowSessionStorage {
     readonly sessionStorage: Storage;
 }
