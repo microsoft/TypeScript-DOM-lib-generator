@@ -955,10 +955,6 @@ declare var FormData: {
     new(form?: object): FormData;
 };
 
-interface GlobalFetch {
-    fetch(input?: Request | string, init?: RequestInit): Promise<Response>;
-}
-
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -1271,10 +1267,6 @@ declare var NavigationPreloadManager: {
     prototype: NavigationPreloadManager;
     new(): NavigationPreloadManager;
 };
-
-interface NavigatorBeacon {
-    sendBeacon(url: string, data?: Blob | Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | FormData | string | null): boolean;
-}
 
 interface NavigatorConcurrentHardware {
     readonly hardwareConcurrency: number;
@@ -1902,11 +1894,6 @@ declare var WebSocket: {
     readonly OPEN: number;
 };
 
-interface WindowBase64 {
-    atob(encodedString: string): string;
-    btoa(rawString: string): string;
-}
-
 interface WindowClient extends Client {
     readonly ancestorOrigins: ReadonlyArray<string>;
     readonly focused: boolean;
@@ -1918,18 +1905,6 @@ interface WindowClient extends Client {
 declare var WindowClient: {
     prototype: WindowClient;
     new(): WindowClient;
-};
-
-interface WindowConsole {
-    readonly console: Console;
-}
-
-interface WindowOrWorkerGlobalScope {
-}
-
-declare var WindowOrWorkerGlobalScope: {
-    prototype: WindowOrWorkerGlobalScope;
-    new(): WindowOrWorkerGlobalScope;
 };
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
@@ -2010,19 +1985,6 @@ declare var WorkerNavigator: {
     prototype: WorkerNavigator;
     new(): WorkerNavigator;
 };
-
-interface WorkerUtils extends WindowBase64 {
-    readonly indexedDB: IDBFactory;
-    readonly msIndexedDB: IDBFactory;
-    readonly navigator: WorkerNavigator;
-    clearImmediate(handle: number): void;
-    clearInterval(handle: number): void;
-    clearTimeout(handle: number): void;
-    importScripts(...urls: string[]): void;
-    setImmediate(handler: any, ...args: any[]): number;
-    setInterval(handler: any, timeout?: any, ...args: any[]): number;
-    setTimeout(handler: any, timeout?: any, ...args: any[]): number;
-}
 
 interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
     "readystatechange": Event;
