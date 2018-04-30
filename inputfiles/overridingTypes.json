@@ -2111,10 +2111,6 @@
                 "name": "CryptoKey",
                 "override-exposed": "Window Worker"
             },
-            "DOMStringList": {
-                "name": "DOMStringList",
-                "override-exposed": "Window Worker"
-            },
             "ErrorEvent": {
                 "name": "ErrorEvent",
                 "override-exposed": "Window Worker"

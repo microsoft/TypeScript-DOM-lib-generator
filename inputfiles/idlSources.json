@@ -24,6 +24,10 @@
         "title": "High Resolution Time"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html",
+        "title": "HTML - Common DOM interfaces"
+    },
+    {
         "url": "https://www.w3.org/TR/IndexedDB-2/",
         "title": "Indexed Database"
     },
@@ -38,6 +42,10 @@
     {
         "url": "https://w3c.github.io/performance-timeline/",
         "title": "Performance Timeline"
+    },
+    {
+        "url": "https://www.w3.org/TR/pointerevents2/",
+        "title": "Pointer Events"
     },
     {
         "url": "https://www.w3.org/TR/push-api/",

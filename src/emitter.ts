@@ -813,7 +813,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     /// To decide if a given method is an indexer and should be emited
-    function shouldEmitIndexerSignature(i: Browser.Interface, m: Browser.Method) {
+    function shouldEmitIndexerSignature(i: Browser.Interface, m: Browser.AnonymousMethod) {
         if (m.getter && m.signature && m.signature[0].param && m.signature[0].param!.length === 1) {
             // TypeScript array indexer can only be number or string
             // for string, it must return a more generic type then all
@@ -844,7 +844,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
         }
         else {
             // The indices could be within either Methods or Anonymous Methods
-            mapToArray(i.methods && i.methods.method)
+            mapToArray<Browser.AnonymousMethod>(i.methods && i.methods.method)
                 .concat(i["anonymous-methods"] && i["anonymous-methods"]!.method || [])
                 .filter(m => shouldEmitIndexerSignature(i, m) && matchScope(emitScope, m))
                 .forEach(m => {
@@ -1065,7 +1065,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
     function emitIterator(i: Browser.Interface) {
 
         // check anonymous unsigned long getter and length property
-        const isIterableGetter = (m: Browser.Method) =>
+        const isIterableGetter = (m: Browser.AnonymousMethod) =>
             m.getter === 1 && !!m.signature.length && !!m.signature[0].param && m.signature[0].param!.length === 1 && typeof m.signature[0].param![0].type === "string" && integerTypes.has(<string>m.signature[0].param![0].type);
 
         function findIterableGetter() {

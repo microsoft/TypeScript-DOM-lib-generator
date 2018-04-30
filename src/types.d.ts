@@ -75,8 +75,7 @@ export interface Event {
     specs?: string;
 }
 
-export interface Method {
-    name: string;
+export interface AnonymousMethod {
     tags?: string;
     static?: 1;
     getter?: 1;
@@ -90,6 +89,10 @@ export interface Method {
     exposed?: string;
     deprecated?: 1;
     signature: Signature[];
+}
+
+export interface Method extends AnonymousMethod {
+    name: string;
 }
 
 export interface CallbackFunction {
@@ -154,7 +157,7 @@ export interface Interface {
     implements?: string[];
     static?: 1;
     "anonymous-methods"?: {
-        method: Method[];
+        method: AnonymousMethod[];
     }
     "anonymous-content-attributes"?: {
         parsedattribute: ParsedAttribute[];
