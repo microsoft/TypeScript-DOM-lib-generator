@@ -118,9 +118,9 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         }
         else if (member.type === "iterable" || member.type === "maplike" || member.type === "setlike") {
             result.iterator = {
-                type: member.type,
+                kind: member.type,
                 readonly: member.readonly,
-                subtype: member.idlType.map(convertIdlType)
+                type: member.idlType.map(convertIdlType)
             };
         }
     }

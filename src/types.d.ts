@@ -178,9 +178,9 @@ export interface Interface {
 }
 
 export interface Iterator {
-    type: "iterable" | "setlike" | "maplike";
+    kind: "iterable" | "setlike" | "maplike";
     readonly: boolean;
-    subtype: Typed[];
+    type: Typed[];
 }
 
 export interface Enum {

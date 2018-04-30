@@ -522,8 +522,8 @@
                     "[index: number]: TNode"
                 ],
                 "iterator": {
-                    "type": "iterable",
-                    "subtype": [{
+                    "kind": "iterable",
+                    "type": [{
                         "override-type": "TNode"
                     }]
                 }
@@ -553,8 +553,8 @@
                     "[index: number]: T"
                 ],
                 "iterator": {
-                    "type": "iterable",
-                    "subtype": [{
+                    "kind": "iterable",
+                    "type": [{
                         "override-type": "T"
                     }]
                 }

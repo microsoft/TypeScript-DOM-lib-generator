@@ -1,5 +1,5 @@
 import * as Browser from "./types";
-import { mapToArray, distinct, map, toNameMap, mapDefined, arrayToMap, flatMap } from "./helpers";
+import { mapToArray, distinct, map, toNameMap, mapDefined, arrayToMap, flatMap, integerTypes, baseTypeConversionMap } from "./helpers";
 
 export const enum Flavor {
     Web,
@@ -20,9 +20,6 @@ enum EmitScope {
 }
 
 const defaultEventType = "Event";
-// Extended types used but not defined in the spec
-const extendedTypes = new Set(["ArrayBuffer", "ArrayBufferView", "DataView", "Int8Array", "Uint8Array", "Int16Array", "Uint16Array", "Uint8ClampedArray", "Int32Array", "Uint32Array", "Float32Array", "Float64Array"]);
-const integerTypes = new Set(["byte", "octet", "short", "unsigned short", "long", "unsigned long", "long long", "unsigned long long"]);
 const tsKeywords = new Set(["default", "delete", "continue"]);
 const extendConflictsBaseTypes: Record<string, { extendType: string[], memberNames: Set<string> }> = {
     "AudioContext": { extendType: ["OfflineContext"], memberNames: new Set(["suspend"]) },
@@ -308,31 +305,14 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function convertDomTypeToTsTypeSimple(objDomType: string): string {
+        if (baseTypeConversionMap.has(objDomType)) {
+            return baseTypeConversionMap.get(objDomType)!;
+        }
         switch (objDomType) {
             case "DOMHighResTimeStamp": return "number";
             case "DOMTimeStamp": return "number";
             case "EventListener": return "EventListenerOrEventListenerObject";
-            case "double":
-            case "unrestricted double": return "number";
-            case "float": return "number";
-            case "object": return "any";
-            case "ByteString":
-            case "DOMString":
-            case "USVString": return "string";
-            case "sequence": return "Array";
-            case "record": return "Record";
-            case "FrozenArray": return "ReadonlyArray";
-            case "WindowProxy": return "Window";
-            case "any":
-            case "boolean":
-            case "BufferSource":
-            case "Date":
-            case "Function":
-            case "Promise":
-            case "void": return objDomType;
             default:
-                if (integerTypes.has(objDomType)) return "number";
-                if (extendedTypes.has(objDomType)) return objDomType;
                 if (flavor === Flavor.Worker && (objDomType === "Element" || objDomType === "Window" || objDomType === "Document" || objDomType === "AbortSignal" || objDomType === "HTMLFormElement")) return "object";
                 if (flavor === Flavor.Web && objDomType === "Client") return "object";
                 // Name of an interface / enum / dict. Just return itself
@@ -692,10 +672,10 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
         if (!i.iterator) {
             return;
         }
-        const subtype = i.iterator.subtype.map(convertDomTypeToTsType);
+        const subtype = i.iterator.type.map(convertDomTypeToTsType);
         const value = subtype[subtype.length - 1];
         const key = subtype.length > 1 ? subtype[0] :
-            i.iterator.type === "iterable" ? "number" : value;
+            i.iterator.kind === "iterable" ? "number" : value;
         const name = i.name.replace(/ extends \w+/, "");
         printer.printLine(`forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${name}) => void, thisArg?: any): void;`);
     }
@@ -1102,10 +1082,10 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
 
         function getIteratorSubtypes() {
             if (i.iterator) {
-                if (i.iterator.subtype.length === 1) {
-                    return [convertDomTypeToTsType(i.iterator.subtype[0])];
+                if (i.iterator.type.length === 1) {
+                    return [convertDomTypeToTsType(i.iterator.type[0])];
                 }
-                return i.iterator.subtype.map(convertDomTypeToTsType);
+                return i.iterator.type.map(convertDomTypeToTsType);
             }
             else if (i.name !== "Window" && i.properties) {
                 const iterableGetter = findIterableGetter();
@@ -1138,8 +1118,8 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
             if (!iterator) {
                 return "";
             }
-            const base = iterator.type === "maplike" ? `Map<${subtypes[0]}, ${subtypes[1]}>` :
-                iterator.type === "setlike" ? `Set<${subtypes[0]}>` : undefined;
+            const base = iterator.kind === "maplike" ? `Map<${subtypes[0]}, ${subtypes[1]}>` :
+                iterator.kind === "setlike" ? `Set<${subtypes[0]}>` : undefined;
             if (!base) {
                 return "";
             }
@@ -1156,7 +1136,7 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
             if (!iteratorExtends) {
                 printer.printLine(`[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(subtypes)}>`);
             }
-            if (i.iterator && i.iterator.type === "iterable") {
+            if (i.iterator && i.iterator.kind === "iterable") {
                 emitIterableDeclarationMethods(subtypes);
             }
             printer.decreaseIndent();

@@ -1,5 +1,25 @@
 import * as Browser from "./types";
 
+// Extended types used but not defined in the spec
+export const bufferSourceTypes = new Set(["ArrayBuffer", "ArrayBufferView", "DataView", "Int8Array", "Uint8Array", "Int16Array", "Uint16Array", "Uint8ClampedArray", "Int32Array", "Uint32Array", "Float32Array", "Float64Array"]);
+export const integerTypes = new Set(["byte", "octet", "short", "unsigned short", "long", "unsigned long", "long long", "unsigned long long"]);
+export const stringTypes = new Set(["ByteString", "DOMString", "USVString"]);
+const floatTypes = new Set(["float", "unrestricted float", "double", "unrestricted double"]);
+const sameTypes = new Set(["any", "boolean", "Date", "Function", "Promise", "void"]);
+export const baseTypeConversionMap = new Map<string, string>([
+    ...[...bufferSourceTypes].map(type => [type, type] as [string, string]),
+    ...[...integerTypes].map(type => [type, "number"] as [string, string]),
+    ...[...floatTypes].map(type => [type, "number"] as [string, string]),
+    ...[...stringTypes].map(type => [type, "string"] as [string, string]),
+    ...[...sameTypes].map(type => [type, type] as [string, string]),
+    ["object", "any"],
+    ["sequence", "Array"],
+    ["record", "Record"],
+    ["FrozenArray", "ReadonlyArray"],
+    ["WindowProxy", "Window"],
+    ["EventHandler", "EventHandler"]
+]);
+
 export function filter(obj: any, fn: (o: any, n: string | undefined) => boolean): any {
     if (typeof obj === "object") {
         if (Array.isArray(obj)) {
@@ -191,6 +211,67 @@ export function resolveExposure(obj: any, exposure: string, override?: boolean) 
     for (const key in obj) {
         if (typeof obj[key] === "object") {
             resolveExposure(obj[key], exposure, override);
+        }
+    }
+}
+
+function collectTypeReferences(obj: any): string[] {
+    const collection: string[] = [];
+    if (typeof obj !== "object") {
+        return collection;
+    }
+    if (Array.isArray(obj)) {
+        return collection.concat(...obj.map(collectTypeReferences));
+    }
+
+    if (typeof obj.type === "string") {
+        collection.push(obj.type);
+    }
+    if (Array.isArray(obj.implements)) {
+        collection.push(...obj.implements);
+    }
+    if (typeof obj.extends === "string") {
+        collection.push(obj.extends);
+    }
+
+    for (const e in obj) {
+        collection.push(...collectTypeReferences(obj[e]));
+    }
+    return collection;
+}
+
+function getNonValueTypeMap(webidl: Browser.WebIdl) {
+    const namedTypes: { name: string }[] = [
+        ...mapToArray(webidl["callback-functions"]!["callback-function"]),
+        ...mapToArray(webidl["callback-interfaces"]!.interface),
+        ...mapToArray(webidl.dictionaries!.dictionary),
+        ...mapToArray(webidl.enums!.enum),
+        ...mapToArray(webidl.mixins!.mixin)
+    ];
+    const map = new Map(namedTypes.map(t => [t.name, t] as [string, any]));
+    webidl.typedefs!.typedef.map(typedef => map.set(typedef["new-type"], typedef));
+    return map;
+}
+
+export function followTypeReferences(webidl: Browser.WebIdl, filteredInterfaces: Record<string, Browser.Interface>) {
+    const set = new Set<string>();
+    const map = getNonValueTypeMap(webidl);
+
+    new Set(collectTypeReferences(filteredInterfaces)).forEach(follow);
+    return set;
+
+    function follow(reference: string) {
+        if (baseTypeConversionMap.has(reference) ||
+            reference in filteredInterfaces) {
+            return;
+        }
+        const type = map.get(reference);
+        if (!type) {
+            return;
+        }
+        if (!set.has(type.name || type["new-type"])) {
+            set.add(type.name || type["new-type"]);
+            collectTypeReferences(type).forEach(follow);
         }
     }
 }

@@ -2112,20 +2112,8 @@ declare var XMLHttpRequestUpload: {
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
-interface ErrorEventHandler {
-    (event: Event | string, source?: string, fileno?: number, columnNumber?: number, error?: Error): void;
-}
-
-interface ForEachCallback {
-    (keyId: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | null, status: MediaKeyStatus): void;
-}
-
-interface FunctionStringCallback {
-    (data: string): void;
-}
-
-interface NotificationPermissionCallback {
-    (permission: NotificationPermission): void;
+interface EventHandlerNonNull {
+    (event: Event): any;
 }
 
 interface OnErrorEventHandlerNonNull {
@@ -2163,44 +2151,21 @@ type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream | string;
 type RequestInfo = Request | string;
 type BlobPart = BufferSource | Blob | string;
+type DOMHighResTimeStamp = number;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
 type VibratePattern = number | number[];
 type BufferSource = ArrayBufferView | ArrayBuffer;
+type DOMTimeStamp = number;
 type FormDataEntryValue = File | string;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull;
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
-type AlgorithmIdentifier = string | Algorithm;
-type AAGUID = string;
-type ByteString = string;
-type CryptoOperationData = ArrayBufferView;
-type GLbitfield = number;
-type GLboolean = boolean;
-type GLbyte = number;
-type GLclampf = number;
-type GLenum = number;
-type GLfloat = number;
-type GLint = number;
-type GLintptr = number;
-type GLshort = number;
-type GLsizei = number;
-type GLsizeiptr = number;
-type GLubyte = number;
-type GLuint = number;
-type GLushort = number;
-type IDBKeyPath = string;
-type USVString = string;
-type payloadtype = number;
 type MessageEventSource = object | MessagePort | ServiceWorker;
 type BinaryType = "blob" | "arraybuffer";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
-type KeyFormat = "raw" | "spki" | "pkcs8" | "jwk";
-type KeyType = "public" | "private" | "secret";
-type KeyUsage = "encrypt" | "decrypt" | "sign" | "verify" | "deriveKey" | "deriveBits" | "wrapKey" | "unwrapKey";
-type MediaKeyStatus = "usable" | "expired" | "output-downscaled" | "output-not-allowed" | "status-pending" | "internal-error";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type PushEncryptionKeyName = "p256dh" | "auth";

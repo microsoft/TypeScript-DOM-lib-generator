@@ -1,12 +1,16 @@
 import * as Browser from "./types";
 import * as fs from "fs";
 import * as path from "path";
-import { filter, merge, filterProperties, exposesTo, getEmptyWebIDL, resolveExposure } from "./helpers";
+import { filter, merge, filterProperties, exposesTo, getEmptyWebIDL, resolveExposure, followTypeReferences } from "./helpers";
 import { Flavor, emitWebIDl } from "./emitter";
 import { convert } from "./widlprocess";
 
-function emitDomWorker(webidl: Browser.WebIdl, knownWorkerTypes: Set<string>, tsWorkerOutput: string) {
+function emitDomWorker(webidl: Browser.WebIdl, forceKnownWorkerTypes: Set<string>, tsWorkerOutput: string) {
     const worker = getEmptyWebIDL();
+    if (webidl.interfaces) worker.interfaces!.interface = filter(webidl.interfaces.interface, o => exposesTo(o, "Worker"));
+
+    const knownWorkerTypes = followTypeReferences(webidl, worker.interfaces!.interface);
+    forceKnownWorkerTypes.forEach(t => knownWorkerTypes.add(t));
     const isKnownWorkerName = (o: { name: string }) => knownWorkerTypes.has(o.name);
 
     if (webidl["callback-functions"]) worker["callback-functions"]!["callback-function"] = filterProperties(webidl["callback-functions"]!["callback-function"], isKnownWorkerName);
@@ -14,7 +18,6 @@ function emitDomWorker(webidl: Browser.WebIdl, knownWorkerTypes: Set<string>, ts
     if (webidl.dictionaries) worker.dictionaries!.dictionary = filterProperties(webidl.dictionaries.dictionary, isKnownWorkerName);
     if (webidl.enums) worker.enums!.enum = filterProperties(webidl.enums.enum, isKnownWorkerName);
     if (webidl.mixins) worker.mixins!.mixin = filterProperties(webidl.mixins.mixin, isKnownWorkerName);
-    if (webidl.interfaces) worker.interfaces!.interface = filter(webidl.interfaces.interface, o => exposesTo(o, "Worker"));
     if (webidl.typedefs) worker.typedefs!.typedef = webidl.typedefs.typedef.filter(t => knownWorkerTypes.has(t["new-type"]));
 
     const result = emitWebIDl(worker, Flavor.Worker);
