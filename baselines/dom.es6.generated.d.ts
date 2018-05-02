@@ -60,6 +60,10 @@ interface HTMLCollectionOf<T extends Element> {
     values(): IterableIterator<T>;
 }
 
+interface HTMLSelectElement {
+    [Symbol.iterator](): IterableIterator<Element>
+}
+
 interface Headers {
     [Symbol.iterator](): IterableIterator<[string, string]>
     entries(): IterableIterator<[string, string]>;

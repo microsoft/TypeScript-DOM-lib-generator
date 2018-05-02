@@ -3,7 +3,7 @@ import * as Browser from "./types";
 // Extended types used but not defined in the spec
 export const bufferSourceTypes = new Set(["ArrayBuffer", "ArrayBufferView", "DataView", "Int8Array", "Uint8Array", "Int16Array", "Uint16Array", "Uint8ClampedArray", "Int32Array", "Uint32Array", "Float32Array", "Float64Array"]);
 export const integerTypes = new Set(["byte", "octet", "short", "unsigned short", "long", "unsigned long", "long long", "unsigned long long"]);
-export const stringTypes = new Set(["ByteString", "DOMString", "USVString"]);
+export const stringTypes = new Set(["ByteString", "DOMString", "USVString", "CSSOMString"]);
 const floatTypes = new Set(["float", "unrestricted float", "double", "unrestricted double"]);
 const sameTypes = new Set(["any", "boolean", "Date", "Function", "Promise", "void"]);
 export const baseTypeConversionMap = new Map<string, string>([

@@ -70,7 +70,8 @@ function emitDom() {
     }
     for (const w of widlStandardTypes) {
         for (const partial of w.partialInterfaces) {
-            const base = webidl.interfaces!.interface[partial.name];
+            // Fallback to mixins before every spec migrates to `partial interface mixin`.
+            const base = webidl.interfaces!.interface[partial.name] || webidl.mixins!.mixin[partial.name];
             if (base) {
                 resolveExposure(partial, base.exposed!);
                 merge(base.constants, partial.constants, true);

@@ -253,6 +253,11 @@ interface ResponseInit {
     statusText?: string;
 }
 
+interface StorageEstimate {
+    quota?: number;
+    usage?: number;
+}
+
 interface SyncEventInit extends ExtendableEventInit {
     lastChance?: boolean;
     tag: string;
@@ -1293,6 +1298,10 @@ interface NavigatorOnLine {
     readonly onLine: boolean;
 }
 
+interface NavigatorStorage {
+    readonly storage: StorageManager;
+}
+
 interface NotificationEventMap {
     "click": Event;
     "close": Event;
@@ -1756,6 +1765,16 @@ declare var SharedWorkerGlobalScope: {
     new(): SharedWorkerGlobalScope;
 };
 
+interface StorageManager {
+    estimate(): Promise<StorageEstimate>;
+    persisted(): Promise<boolean>;
+}
+
+declare var StorageManager: {
+    prototype: StorageManager;
+    new(): StorageManager;
+};
+
 interface SyncEvent extends ExtendableEvent {
     readonly lastChance: boolean;
     readonly tag: string;
@@ -1977,7 +1996,7 @@ declare var WorkerLocation: {
     new(): WorkerLocation;
 };
 
-interface WorkerNavigator extends NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorConcurrentHardware {
+interface WorkerNavigator extends NavigatorStorage, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorConcurrentHardware {
     readonly serviceWorker: ServiceWorkerContainer;
 }
 

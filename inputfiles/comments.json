@@ -994,9 +994,6 @@
             "HTMLLegendElement": {
                 "properties": {
                     "property": {
-                        "align": {
-                            "comment": "/**\r\n     * Retrieves a reference to the form that the object is embedded in.\r\n     */"
-                        },
                         "form": {
                             "comment": "/**\r\n     * Retrieves a reference to the form that the object is embedded in.\r\n     */"
                         }
@@ -1690,9 +1687,6 @@
             "HTMLFieldSetElement": {
                 "properties": {
                     "property": {
-                        "align": {
-                            "comment": "/**\r\n     * Sets or retrieves how the object is aligned with adjacent text.\r\n     */"
-                        },
                         "form": {
                             "comment": "/**\r\n     * Retrieves a reference to the form that the object is embedded in.\r\n     */"
                         },
@@ -1895,9 +1889,6 @@
                         },
                         "position": {
                             "comment": "/**\r\n     * Returns the quotient of value/max when the value attribute is set (determinate progress bar), or -1 when the value attribute is missing (indeterminate progress bar).\r\n     */"
-                        },
-                        "form": {
-                            "comment": "/**\r\n     * Retrieves a reference to the form that the object is embedded in.\r\n     */"
                         }
                     }
                 }

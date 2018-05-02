@@ -1,5 +1,9 @@
 [
     {
+        "url": "https://www.w3.org/TR/css-animations-1/",
+        "title": "CSS Animations"
+    },
+    {
         "url": "https://encoding.spec.whatwg.org/",
         "title": "Encoding"
     },
@@ -26,6 +30,14 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html",
         "title": "HTML - Common DOM interfaces"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/form-control-infrastructure.html",
+        "title": "HTML - Form control infrastructure"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/form-elements.html",
+        "title": "HTML - Form elements"
     },
     {
         "url": "https://www.w3.org/TR/IndexedDB-2/",
@@ -58,6 +70,10 @@
     {
         "url": "https://w3c.github.io/ServiceWorker/",
         "title": "Service Workers"
+    },
+    {
+        "url": "https://storage.spec.whatwg.org/",
+        "title": "Storage"
     },
     {
         "url": "https://w3c.github.io/touch-events/",

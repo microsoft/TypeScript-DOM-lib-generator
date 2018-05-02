@@ -92,6 +92,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         "anonymous-methods": { method: [] },
         properties: { property: {} },
         constructor: getConstructor(i.extAttrs, i.name),
+        "named-constructor": getNamedConstructor(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
         "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
@@ -146,6 +147,20 @@ function getConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string) 
     }
     if (constructor.signature.length) {
         return constructor;
+    }
+}
+
+function getNamedConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string): Browser.NamedConstructor | undefined {
+    for (const extAttr of extAttrs) {
+        if (extAttr.name === "NamedConstructor" && typeof extAttr.rhs.value === "string") {
+            return {
+                name: extAttr.rhs.value,
+                signature: [{
+                    type: parent,
+                    param: extAttr.arguments ? extAttr.arguments.map(convertArgument) : []
+                }]
+            }
+        }
     }
 }
 

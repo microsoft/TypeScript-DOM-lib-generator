@@ -56,6 +56,7 @@ interface AnalyserOptions extends AudioNodeOptions {
 interface AnimationEventInit extends EventInit {
     animationName?: string;
     elapsedTime?: number;
+    pseudoElement?: string;
 }
 
 interface AnimationPlaybackEventInit extends EventInit {
@@ -1750,6 +1751,11 @@ interface StereoPannerOptions extends AudioNodeOptions {
     pan?: number;
 }
 
+interface StorageEstimate {
+    quota?: number;
+    usage?: number;
+}
+
 interface StoreExceptionsInformation extends ExceptionInformation {
     detailURI?: string | null;
     explanationString?: string | null;
@@ -2013,11 +2019,12 @@ declare var AnimationEffect: {
 interface AnimationEvent extends Event {
     readonly animationName: string;
     readonly elapsedTime: number;
+    readonly pseudoElement: string;
 }
 
 declare var AnimationEvent: {
     prototype: AnimationEvent;
-    new(typeArg: string, eventInitDict?: AnimationEventInit): AnimationEvent;
+    new(type: string, animationEventInitDict?: AnimationEventInit): AnimationEvent;
 };
 
 interface AnimationPlaybackEvent extends Event {
@@ -2482,8 +2489,8 @@ interface CSSKeyframesRule extends CSSRule {
     readonly cssRules: CSSRuleList;
     name: string;
     appendRule(rule: string): void;
-    deleteRule(rule: string): void;
-    findRule(rule: string): CSSKeyframeRule | null;
+    deleteRule(select: string): void;
+    findRule(select: string): CSSKeyframeRule | null;
 }
 
 declare var CSSKeyframesRule: {
@@ -4368,10 +4375,6 @@ interface Document extends Node, GlobalEventHandlers, ParentNode, DocumentEvent 
      * @param ev The event.
      */
     ontimeupdate: ((this: Document, ev: Event) => any) | null;
-    ontouchcancel: ((this: Document, ev: TouchEvent) => any) | null;
-    ontouchend: ((this: Document, ev: TouchEvent) => any) | null;
-    ontouchmove: ((this: Document, ev: TouchEvent) => any) | null;
-    ontouchstart: ((this: Document, ev: TouchEvent) => any) | null;
     onvisibilitychange: (this: Document, ev: Event) => any;
     /**
      * Occurs when the volume is changed, or playback is muted or unmuted.
@@ -4891,8 +4894,6 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, ParentNod
     readonly msRegionOverflow: string;
     onariarequest: ((this: Element, ev: Event) => any) | null;
     oncommand: ((this: Element, ev: Event) => any) | null;
-    ongotpointercapture: ((this: Element, ev: PointerEvent) => any) | null;
-    onlostpointercapture: ((this: Element, ev: PointerEvent) => any) | null;
     onmsgesturechange: ((this: Element, ev: Event) => any) | null;
     onmsgesturedoubletap: ((this: Element, ev: Event) => any) | null;
     onmsgestureend: ((this: Element, ev: Event) => any) | null;
@@ -4910,10 +4911,6 @@ interface Element extends Node, GlobalEventHandlers, ElementTraversal, ParentNod
     onmspointerout: ((this: Element, ev: Event) => any) | null;
     onmspointerover: ((this: Element, ev: Event) => any) | null;
     onmspointerup: ((this: Element, ev: Event) => any) | null;
-    ontouchcancel: ((this: Element, ev: TouchEvent) => any) | null;
-    ontouchend: ((this: Element, ev: TouchEvent) => any) | null;
-    ontouchmove: ((this: Element, ev: TouchEvent) => any) | null;
-    ontouchstart: ((this: Element, ev: TouchEvent) => any) | null;
     onwebkitfullscreenchange: ((this: Element, ev: Event) => any) | null;
     onwebkitfullscreenerror: ((this: Element, ev: Event) => any) | null;
     outerHTML: string;
@@ -5304,6 +5301,12 @@ interface GetSVGDocument {
 }
 
 interface GlobalEventHandlersEventMap {
+    "animationcancel": AnimationEvent;
+    "animationend": AnimationEvent;
+    "animationiteration": AnimationEvent;
+    "animationstart": AnimationEvent;
+    "gotpointercapture": PointerEvent;
+    "lostpointercapture": PointerEvent;
     "pointercancel": PointerEvent;
     "pointerdown": PointerEvent;
     "pointerenter": PointerEvent;
@@ -5312,10 +5315,20 @@ interface GlobalEventHandlersEventMap {
     "pointerout": PointerEvent;
     "pointerover": PointerEvent;
     "pointerup": PointerEvent;
+    "touchcancel": TouchEvent;
+    "touchend": TouchEvent;
+    "touchmove": TouchEvent;
+    "touchstart": TouchEvent;
     "wheel": WheelEvent;
 }
 
 interface GlobalEventHandlers {
+    onanimationcancel: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationend: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationiteration: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationstart: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    ongotpointercapture: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onlostpointercapture: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     onpointercancel: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
@@ -5324,6 +5337,10 @@ interface GlobalEventHandlers {
     onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    ontouchcancel: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchend: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchmove: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchstart: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
     onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
     addEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -5642,11 +5659,11 @@ interface HTMLButtonElement extends HTMLElement {
      * Overrides the target attribute on a form element.
      */
     formTarget: string;
+    readonly labels: NodeListOf<HTMLLabelElement>;
     /**
      * Sets or retrieves the name of the object.
      */
     name: string;
-    status: any;
     /**
      * Gets the classification and default behavior of the button.
      */
@@ -5671,6 +5688,7 @@ interface HTMLButtonElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
@@ -6104,16 +6122,14 @@ declare var HTMLEmbedElement: {
 };
 
 interface HTMLFieldSetElement extends HTMLElement {
-    /**
-     * Sets or retrieves how the object is aligned with adjacent text.
-     */
-    align: string;
     disabled: boolean;
+    readonly elements: HTMLCollection;
     /**
      * Retrieves a reference to the form that the object is embedded in.
      */
     readonly form: HTMLFormElement | null;
     name: string;
+    readonly type: string;
     /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
      */
@@ -6130,6 +6146,7 @@ interface HTMLFieldSetElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
@@ -6881,11 +6898,6 @@ interface HTMLLegendElement extends HTMLElement {
     /**
      * Retrieves a reference to the form that the object is embedded in.
      */
-    /** @deprecated */
-    align: string;
-    /**
-     * Retrieves a reference to the form that the object is embedded in.
-     */
     readonly form: HTMLFormElement | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -7285,6 +7297,7 @@ declare var HTMLMetaElement: {
 
 interface HTMLMeterElement extends HTMLElement {
     high: number;
+    readonly labels: NodeListOf<HTMLLabelElement>;
     low: number;
     max: number;
     min: number;
@@ -7540,6 +7553,7 @@ interface HTMLOutputElement extends HTMLElement {
     defaultValue: string;
     readonly form: HTMLFormElement | null;
     readonly htmlFor: DOMTokenList;
+    readonly labels: NodeListOf<HTMLLabelElement>;
     name: string;
     readonly type: string;
     readonly validationMessage: string;
@@ -7638,10 +7652,7 @@ declare var HTMLPreElement: {
 };
 
 interface HTMLProgressElement extends HTMLElement {
-    /**
-     * Retrieves a reference to the form that the object is embedded in.
-     */
-    readonly form: HTMLFormElement | null;
+    readonly labels: NodeListOf<HTMLLabelElement>;
     /**
      * Defines the maximum, or "done" value for a progress element.
      */
@@ -7728,6 +7739,7 @@ declare var HTMLScriptElement: {
 };
 
 interface HTMLSelectElement extends HTMLElement {
+    autocomplete: string;
     /**
      * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.
      */
@@ -7737,6 +7749,7 @@ interface HTMLSelectElement extends HTMLElement {
      * Retrieves a reference to the form that the object is embedded in.
      */
     readonly form: HTMLFormElement | null;
+    readonly labels: NodeListOf<HTMLLabelElement>;
     /**
      * Sets or retrieves the number of objects in a collection.
      */
@@ -7788,7 +7801,7 @@ interface HTMLSelectElement extends HTMLElement {
      * @param element Variant of type Number that specifies the index position in the collection where the element is placed. If no value is given, the method places the element at the end of the collection.
      * @param before Variant of type Object that specifies an element to insert before, or null to append the object to the collection.
      */
-    add(element: HTMLOptionElement | HTMLOptGroupElement, before?: HTMLElement | number | null): void;
+    add(element: HTMLOptionElement | HTMLOptGroupElement, before?: HTMLElement | number): void;
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
@@ -7798,17 +7811,19 @@ interface HTMLSelectElement extends HTMLElement {
      * @param name Variant of type Number or String that specifies the object or collection to retrieve. If this parameter is an integer, it is the zero-based index of the object. If this parameter is a string, all objects with matching name or id properties are retrieved, and a collection is returned if more than one match is made.
      * @param index Variant of type Number that specifies the zero-based index of the object to retrieve when a collection is returned.
      */
-    item(name?: any, index?: any): Element | null;
+    item(index: number): Element | null;
     /**
      * Retrieves a select object or an object from an options collection.
      * @param namedItem A String that specifies the name or id property of the object to retrieve. A collection is returned if more than one match is made.
      */
-    namedItem(name: string): any;
+    namedItem(name: string): HTMLOptionElement | null;
     /**
      * Removes an element from the collection.
      * @param index Number that specifies the zero-based index of the element to remove from the collection.
      */
-    remove(index?: number): void;
+    remove(): void;
+    remove(index: number): void;
+    reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
@@ -7818,7 +7833,7 @@ interface HTMLSelectElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    [name: string]: any;
+    [index: number]: Element;
 }
 
 declare var HTMLSelectElement: {
@@ -8262,6 +8277,7 @@ declare var HTMLTemplateElement: {
 };
 
 interface HTMLTextAreaElement extends HTMLElement {
+    autocomplete: string;
     /**
      * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.
      */
@@ -8274,11 +8290,13 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Sets or retrieves the initial contents of the object.
      */
     defaultValue: string;
+    dirName: string;
     disabled: boolean;
     /**
      * Retrieves a reference to the form that the object is embedded in.
      */
     readonly form: HTMLFormElement | null;
+    readonly labels: NodeListOf<HTMLLabelElement>;
     /**
      * Sets or retrieves the maximum number of characters that the user can enter in a text control.
      */
@@ -8304,6 +8322,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Sets or retrieves the number of horizontal rows contained in the object.
      */
     rows: number;
+    selectionDirection: string;
     /**
      * Gets or sets the end position or offset of a text selection.
      */
@@ -8312,6 +8331,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Gets or sets the starting position or offset of a text selection.
      */
     selectionStart: number;
+    readonly textLength: number;
     /**
      * Retrieves the type of control.
      */
@@ -8340,6 +8360,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    reportValidity(): boolean;
     /**
      * Highlights the input area of a form element.
      */
@@ -8349,6 +8370,8 @@ interface HTMLTextAreaElement extends HTMLElement {
      * @param error Sets a custom error message that is displayed when a form is submitted.
      */
     setCustomValidity(error: string): void;
+    setRangeText(replacement: string): void;
+    setRangeText(replacement: string, start: number, end: number, selectionMode?: SelectionMode): void;
     /**
      * Sets the start and end positions of a selection in a text field.
      * @param start The offset into the text field for the start of the selection.
@@ -9725,7 +9748,7 @@ declare var NavigationPreloadManager: {
     new(): NavigationPreloadManager;
 };
 
-interface Navigator extends NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia, NavigatorLanguage {
+interface Navigator extends NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia, NavigatorLanguage, NavigatorStorage {
     readonly activeVRDisplays: ReadonlyArray<VRDisplay>;
     readonly authentication: WebAuthentication;
     readonly cookieEnabled: boolean;
@@ -9784,6 +9807,10 @@ interface NavigatorLanguage {
 
 interface NavigatorOnLine {
     readonly onLine: boolean;
+}
+
+interface NavigatorStorage {
+    readonly storage: StorageManager;
 }
 
 interface NavigatorStorageUtils {
@@ -13611,6 +13638,17 @@ interface StorageEventInit extends EventInit {
     url: string;
 }
 
+interface StorageManager {
+    estimate(): Promise<StorageEstimate>;
+    persist(): Promise<boolean>;
+    persisted(): Promise<boolean>;
+}
+
+declare var StorageManager: {
+    prototype: StorageManager;
+    new(): StorageManager;
+};
+
 interface StyleMedia {
     readonly type: string;
     matchMedium(mediaquery: string): boolean;
@@ -15439,10 +15477,6 @@ interface WindowEventMap extends GlobalEventHandlersEventMap {
     "submit": Event;
     "suspend": Event;
     "timeupdate": Event;
-    "touchcancel": TouchEvent;
-    "touchend": TouchEvent;
-    "touchmove": TouchEvent;
-    "touchstart": TouchEvent;
     "unload": Event;
     "volumechange": Event;
     "vrdisplayactivate": Event;
@@ -15572,10 +15606,6 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     onsubmit: ((this: Window, ev: Event) => any) | null;
     onsuspend: ((this: Window, ev: Event) => any) | null;
     ontimeupdate: ((this: Window, ev: Event) => any) | null;
-    ontouchcancel: (ev: TouchEvent) => any;
-    ontouchend: (ev: TouchEvent) => any;
-    ontouchmove: (ev: TouchEvent) => any;
-    ontouchstart: (ev: TouchEvent) => any;
     onunload: ((this: Window, ev: Event) => any) | null;
     onvolumechange: ((this: Window, ev: Event) => any) | null;
     onvrdisplayactivate: ((this: Window, ev: Event) => any) | null;
@@ -16413,10 +16443,6 @@ declare var onstorage: ((this: Window, ev: StorageEvent) => any) | null;
 declare var onsubmit: ((this: Window, ev: Event) => any) | null;
 declare var onsuspend: ((this: Window, ev: Event) => any) | null;
 declare var ontimeupdate: ((this: Window, ev: Event) => any) | null;
-declare var ontouchcancel: (ev: TouchEvent) => any;
-declare var ontouchend: (ev: TouchEvent) => any;
-declare var ontouchmove: (ev: TouchEvent) => any;
-declare var ontouchstart: (ev: TouchEvent) => any;
 declare var onunload: ((this: Window, ev: Event) => any) | null;
 declare var onvolumechange: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplayactivate: ((this: Window, ev: Event) => any) | null;
@@ -16504,6 +16530,12 @@ declare function setImmediate(handler: any, ...args: any[]): number;
 declare var sessionStorage: Storage;
 declare var localStorage: Storage;
 declare var console: Console;
+declare var onanimationcancel: ((this: Window, ev: AnimationEvent) => any) | null;
+declare var onanimationend: ((this: Window, ev: AnimationEvent) => any) | null;
+declare var onanimationiteration: ((this: Window, ev: AnimationEvent) => any) | null;
+declare var onanimationstart: ((this: Window, ev: AnimationEvent) => any) | null;
+declare var ongotpointercapture: ((this: Window, ev: PointerEvent) => any) | null;
+declare var onlostpointercapture: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointercancel: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerdown: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerenter: ((this: Window, ev: PointerEvent) => any) | null;
@@ -16512,6 +16544,10 @@ declare var onpointermove: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerout: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerover: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerup: ((this: Window, ev: PointerEvent) => any) | null;
+declare var ontouchcancel: ((this: Window, ev: TouchEvent) => any) | null;
+declare var ontouchend: ((this: Window, ev: TouchEvent) => any) | null;
+declare var ontouchmove: ((this: Window, ev: TouchEvent) => any) | null;
+declare var ontouchstart: ((this: Window, ev: TouchEvent) => any) | null;
 declare var onwheel: ((this: Window, ev: WheelEvent) => any) | null;
 declare var indexedDB: IDBFactory;
 declare function atob(encodedString: string): string;
@@ -16665,6 +16701,7 @@ type RequestMode = "navigate" | "same-origin" | "no-cors" | "cors";
 type RequestRedirect = "follow" | "error" | "manual";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
 type ScopedCredentialType = "ScopedCred";
+type SelectionMode = "select" | "start" | "end" | "preserve";
 type ServiceWorkerState = "installing" | "installed" | "activating" | "activated" | "redundant";
 type ServiceWorkerUpdateViaCache = "imports" | "all" | "none";
 type TextTrackKind = "subtitles" | "captions" | "descriptions" | "chapters" | "metadata";

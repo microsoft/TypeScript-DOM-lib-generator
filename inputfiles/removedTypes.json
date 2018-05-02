@@ -45,7 +45,11 @@
             "Window": {
                 "properties": {
                     "property": {
-                        "browser": null
+                        "browser": null,
+                        "ontouchcancel": null,
+                        "ontouchend": null,
+                        "ontouchmove": null,
+                        "ontouchstart": null
                     }
                 }
             }
