@@ -16,7 +16,6 @@ export const baseTypeConversionMap = new Map<string, string>([
     ["sequence", "Array"],
     ["record", "Record"],
     ["FrozenArray", "ReadonlyArray"],
-    ["WindowProxy", "Window"],
     ["EventHandler", "EventHandler"]
 ]);
 
@@ -215,7 +214,7 @@ export function resolveExposure(obj: any, exposure: string, override?: boolean) 
     }
 }
 
-function collectTypeReferences(obj: any): string[] {
+export function collectTypeReferences(obj: any): string[] {
     const collection: string[] = [];
     if (typeof obj !== "object") {
         return collection;

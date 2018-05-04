@@ -813,19 +813,6 @@
                     }
                 }
             },
-            "HTMLCanvasElement": {
-                "name": "HTMLCanvasElement",
-                "methods": {
-                    "method": {
-                        "toBlob": {
-                            "name": "toBlob",
-                            "override-signatures": [
-                                "toBlob(callback: (result: Blob | null) => void, type?: string, ...arguments: any[]): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "ClipboardEventInit": {
                 "exposed": "Window",
                 "name": "ClipboardEventInit",
@@ -1181,19 +1168,6 @@
                         "scrollRestoration": {
                             "name": "scrollRestoration",
                             "override-type": "ScrollRestoration"
-                        }
-                    }
-                }
-            },
-            "CanvasPattern": {
-                "name": "CanvasPattern",
-                "methods": {
-                    "method": {
-                        "setTransform": {
-                            "name": "setTransform",
-                            "override-signatures": [
-                                "setTransform(matrix: SVGMatrix): void"
-                            ]
                         }
                     }
                 }
@@ -2605,18 +2579,8 @@
                 "override-type": "number"
             },
             {
-                "new-type": "MessageEventSource",
-                "type": [
-                    {
-                        "type": "Window"
-                    },
-                    {
-                        "type": "MessagePort"
-                    },
-                    {
-                        "type": "ServiceWorker"
-                    }
-                ]
+                "new-type": "WindowProxy",
+                "type": "Window"
             }
         ]
     }

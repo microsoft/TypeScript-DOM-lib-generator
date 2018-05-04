@@ -1,7 +1,7 @@
 import * as Browser from "./types";
 import * as fs from "fs";
 import * as path from "path";
-import { filter, merge, filterProperties, exposesTo, getEmptyWebIDL, resolveExposure, followTypeReferences, markAsDeprecated, mapToArray } from "./helpers";
+import { filter, merge, filterProperties, exposesTo, getEmptyWebIDL, resolveExposure, collectTypeReferences, baseTypeConversionMap, followTypeReferences, markAsDeprecated, mapToArray } from "./helpers";
 import { Flavor, emitWebIDl } from "./emitter";
 import { convert } from "./widlprocess";
 
@@ -9,16 +9,26 @@ function emitDomWorker(webidl: Browser.WebIdl, forceKnownWorkerTypes: Set<string
     const worker = getEmptyWebIDL();
     if (webidl.interfaces) worker.interfaces!.interface = filter(webidl.interfaces.interface, o => exposesTo(o, "Worker"));
 
-    const knownWorkerTypes = followTypeReferences(webidl, worker.interfaces!.interface);
-    forceKnownWorkerTypes.forEach(t => knownWorkerTypes.add(t));
-    const isKnownWorkerName = (o: { name: string }) => knownWorkerTypes.has(o.name);
+    const knownWorkerIDLTypes = followTypeReferences(webidl, worker.interfaces!.interface);
+    forceKnownWorkerTypes.forEach(t => knownWorkerIDLTypes.add(t));
+    const knownWorkerAllTypes = new Set([
+        ...knownWorkerIDLTypes,
+        ...Object.keys(worker.interfaces!.interface),
+        ...baseTypeConversionMap.keys()
+    ]);
+    const isKnownWorkerName = (o: { name: string }) => knownWorkerIDLTypes.has(o.name);
+
+    if (webidl.typedefs) {
+        worker.typedefs!.typedef = webidl.typedefs.typedef
+            .filter(t => knownWorkerIDLTypes.has(t["new-type"]))
+            .filter(t => t["override-type"] || collectTypeReferences(t).some(r => knownWorkerAllTypes.has(r)));
+    }
 
     if (webidl["callback-functions"]) worker["callback-functions"]!["callback-function"] = filterProperties(webidl["callback-functions"]!["callback-function"], isKnownWorkerName);
     if (webidl["callback-interfaces"]) worker["callback-interfaces"]!.interface = filterProperties(webidl["callback-interfaces"]!.interface, isKnownWorkerName);
     if (webidl.dictionaries) worker.dictionaries!.dictionary = filterProperties(webidl.dictionaries.dictionary, isKnownWorkerName);
     if (webidl.enums) worker.enums!.enum = filterProperties(webidl.enums.enum, isKnownWorkerName);
     if (webidl.mixins) worker.mixins!.mixin = filterProperties(webidl.mixins.mixin, isKnownWorkerName);
-    if (webidl.typedefs) worker.typedefs!.typedef = webidl.typedefs.typedef.filter(t => knownWorkerTypes.has(t["new-type"]));
 
     const result = emitWebIDl(worker, Flavor.Worker);
     fs.writeFileSync(tsWorkerOutput, result);
@@ -56,7 +66,8 @@ function emitDom() {
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
     const comments = require(path.join(inputFolder, "comments.json"));
     const removedItems = require(path.join(inputFolder, "removedTypes.json"));
-    const widlStandardTypes = fs.readdirSync(path.join(inputFolder, "idl")).map(filename => {
+    // Note: sort readdir result to match OS sort behavior between Windows and Linux
+    const widlStandardTypes = fs.readdirSync(path.join(inputFolder, "idl")).sort().map(filename => {
         const file = fs.readFileSync(path.join(inputFolder, "idl", filename), { encoding: "utf-8" });
         const result = convert(file);
         if (filename.endsWith(".deprecated.widl")) {
@@ -135,7 +146,7 @@ function emitDom() {
             if (!template) return obj;
             const filtered: any = {};
             for (const k in obj) {
-                if (k in template) {
+                if (template.hasOwnProperty(k)) {
                     if (template[k] !== null) {
                         filtered[k] = filterByNull(obj[k], template[k]);
                     }

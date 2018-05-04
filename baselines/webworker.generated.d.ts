@@ -143,6 +143,11 @@ interface IDBVersionChangeEventInit extends EventInit {
     oldVersion?: number;
 }
 
+interface ImageEncodeOptions {
+    quality?: number;
+    type?: string;
+}
+
 interface KeyAlgorithm {
     name: string;
 }
@@ -153,7 +158,7 @@ interface MessageEventInit extends EventInit {
     lastEventId?: string;
     origin?: string;
     ports?: MessagePort[];
-    source?: object | null;
+    source?: MessageEventSource | null;
 }
 
 interface NavigationPreloadState {
@@ -243,7 +248,7 @@ interface RequestInit {
     redirect?: RequestRedirect;
     referrer?: string;
     referrerPolicy?: ReferrerPolicy;
-    signal?: object | null;
+    signal?: AbortSignal | null;
     window?: any;
 }
 
@@ -275,6 +280,24 @@ interface TextDecoderOptions {
 interface EventListener {
     (evt: Event): void;
 }
+
+interface AbortSignalEventMap {
+    "abort": ProgressEvent;
+}
+
+interface AbortSignal extends EventTarget {
+    readonly aborted: boolean;
+    onabort: ((this: AbortSignal, ev: ProgressEvent) => any) | null;
+    addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AbortSignal: {
+    prototype: AbortSignal;
+    new(): AbortSignal;
+};
 
 interface AbstractWorkerEventMap {
     "error": ErrorEvent;
@@ -367,6 +390,126 @@ declare var CacheStorage: {
     new(): CacheStorage;
 };
 
+interface CanvasCompositing {
+    globalAlpha: number;
+    globalCompositeOperation: string;
+}
+
+interface CanvasDrawImage {
+    drawImage(image: CanvasImageSource, dx: number, dy: number): void;
+    drawImage(image: CanvasImageSource, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void;
+}
+
+interface CanvasDrawPath {
+    beginPath(): void;
+    clip(fillRule?: CanvasFillRule): void;
+    clip(path: Path2D, fillRule?: CanvasFillRule): void;
+    fill(fillRule?: CanvasFillRule): void;
+    fill(path: Path2D, fillRule?: CanvasFillRule): void;
+    isPointInPath(x: number, y: number, fillRule?: CanvasFillRule): boolean;
+    isPointInPath(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
+    isPointInStroke(x: number, y: number): boolean;
+    isPointInStroke(path: Path2D, x: number, y: number): boolean;
+    resetClip(): void;
+    stroke(): void;
+    stroke(path: Path2D): void;
+}
+
+interface CanvasFillStrokeStyles {
+    fillStyle: string | CanvasGradient | CanvasPattern;
+    strokeStyle: string | CanvasGradient | CanvasPattern;
+    createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
+    createPattern(image: CanvasImageSource, repetition: string): CanvasPattern | null;
+    createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
+}
+
+interface CanvasFilters {
+    filter: string;
+}
+
+interface CanvasGradient {
+    addColorStop(offset: number, color: string): void;
+}
+
+declare var CanvasGradient: {
+    prototype: CanvasGradient;
+    new(): CanvasGradient;
+};
+
+interface CanvasImageData {
+    createImageData(sw: number, sh: number): ImageData;
+    createImageData(imagedata: ImageData): ImageData;
+    getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
+    putImageData(imagedata: ImageData, dx: number, dy: number): void;
+    putImageData(imagedata: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void;
+}
+
+interface CanvasImageSmoothing {
+    imageSmoothingEnabled: boolean;
+    imageSmoothingQuality: ImageSmoothingQuality;
+}
+
+interface CanvasPath {
+    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    closePath(): void;
+    ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    lineTo(x: number, y: number): void;
+    moveTo(x: number, y: number): void;
+    quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    rect(x: number, y: number, w: number, h: number): void;
+}
+
+interface CanvasPathDrawingStyles {
+    lineCap: CanvasLineCap;
+    lineDashOffset: number;
+    lineJoin: CanvasLineJoin;
+    lineWidth: number;
+    miterLimit: number;
+    getLineDash(): number[];
+    setLineDash(segments: number[]): void;
+}
+
+interface CanvasPattern {
+    setTransform(transform?: DOMMatrix2DInit): void;
+}
+
+declare var CanvasPattern: {
+    prototype: CanvasPattern;
+    new(): CanvasPattern;
+};
+
+interface CanvasRect {
+    clearRect(x: number, y: number, w: number, h: number): void;
+    fillRect(x: number, y: number, w: number, h: number): void;
+    strokeRect(x: number, y: number, w: number, h: number): void;
+}
+
+interface CanvasShadowStyles {
+    shadowBlur: number;
+    shadowColor: string;
+    shadowOffsetX: number;
+    shadowOffsetY: number;
+}
+
+interface CanvasState {
+    restore(): void;
+    save(): void;
+}
+
+interface CanvasTransform {
+    getTransform(): DOMMatrix;
+    resetTransform(): void;
+    rotate(angle: number): void;
+    scale(x: number, y: number): void;
+    setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    setTransform(transform?: DOMMatrix2DInit): void;
+    transform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    translate(x: number, y: number): void;
+}
+
 interface Client {
     readonly id: string;
     readonly type: ClientTypes;
@@ -429,10 +572,8 @@ interface Console {
     info(message?: any, ...optionalParams: any[]): void;
     log(message?: any, ...optionalParams: any[]): void;
     markTimeline(label?: string): void;
-    msIsIndependentlyComposed(element: object): boolean;
     profile(reportName?: string): void;
     profileEnd(): void;
-    select(element: object): void;
     table(...tabularData: any[]): void;
     time(label?: string): void;
     timeEnd(label?: string): void;
@@ -765,7 +906,7 @@ interface Event {
     readonly eventPhase: number;
     readonly isTrusted: boolean;
     returnValue: boolean;
-    readonly srcElement: object | null;
+    readonly srcElement: EventTarget | null;
     readonly target: EventTarget | null;
     readonly timeStamp: number;
     readonly type: string;
@@ -948,7 +1089,7 @@ interface FormData {
 
 declare var FormData: {
     prototype: FormData;
-    new(form?: object): FormData;
+    new(): FormData;
 };
 
 interface GlobalFetch {
@@ -1205,6 +1346,9 @@ interface ImageBitmapOptions {
 }
 
 interface ImageData {
+    readonly data: Uint8ClampedArray;
+    readonly height: number;
+    readonly width: number;
 }
 
 declare var ImageData: {
@@ -1225,10 +1369,11 @@ declare var MessageChannel: {
 
 interface MessageEvent extends Event {
     readonly data: any;
+    readonly lastEventId: string;
     readonly origin: string;
     readonly ports: ReadonlyArray<MessagePort>;
     readonly source: MessageEventSource;
-    initMessageEvent(type: string, bubbles: boolean, cancelable: boolean, data: any, origin: string, lastEventId: string, source: object): void;
+    initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
 }
 
 declare var MessageEvent: {
@@ -1345,6 +1490,38 @@ interface NotificationEvent extends ExtendableEvent {
 declare var NotificationEvent: {
     prototype: NotificationEvent;
     new(type: string, eventInitDict: NotificationEventInit): NotificationEvent;
+};
+
+interface OffscreenCanvas extends EventTarget {
+    height: number;
+    width: number;
+    convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
+    getContext(contextId: OffscreenRenderingContextId, options?: any): OffscreenRenderingContext | null;
+    transferToImageBitmap(): ImageBitmap;
+}
+
+declare var OffscreenCanvas: {
+    prototype: OffscreenCanvas;
+    new(width: number, height: number): OffscreenCanvas;
+};
+
+interface OffscreenCanvasRenderingContext2D extends CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasPath {
+    readonly canvas: OffscreenCanvas;
+    commit(): void;
+}
+
+declare var OffscreenCanvasRenderingContext2D: {
+    prototype: OffscreenCanvasRenderingContext2D;
+    new(): OffscreenCanvasRenderingContext2D;
+};
+
+interface Path2D extends CanvasPath {
+    addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
+}
+
+declare var Path2D: {
+    prototype: Path2D;
+    new(d?: Path2D | string): Path2D;
 };
 
 interface PerformanceEventMap {
@@ -1575,7 +1752,7 @@ interface Request extends Body {
     readonly redirect: RequestRedirect;
     readonly referrer: string;
     readonly referrerPolicy: ReferrerPolicy;
-    readonly signal: object;
+    readonly signal: AbortSignal;
     readonly url: string;
     clone(): Request;
 }
@@ -2004,7 +2181,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     open(method: string, url: string): void;
     open(method: string, url: string, async: boolean, username?: string | null, password?: string | null): void;
     overrideMimeType(mime: string): void;
-    send(body?: object | BodyInit): void;
+    send(body?: BodyInit): void;
     setRequestHeader(name: string, value: string): void;
     readonly DONE: number;
     readonly HEADERS_RECEIVED: number;
@@ -2114,6 +2291,9 @@ type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream | string;
 type RequestInfo = Request | string;
 type BlobPart = BufferSource | Blob | string;
+type CanvasImageSource = ImageBitmap | OffscreenCanvas;
+type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D;
+type MessageEventSource = MessagePort | ServiceWorker;
 type DOMHighResTimeStamp = number;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
@@ -2122,14 +2302,18 @@ type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMTimeStamp = number;
 type FormDataEntryValue = File | string;
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
-type MessageEventSource = object | MessagePort | ServiceWorker;
 type BinaryType = "blob" | "arraybuffer";
+type CanvasFillRule = "nonzero" | "evenodd";
+type CanvasLineCap = "butt" | "round" | "square";
+type CanvasLineJoin = "round" | "bevel" | "miter";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
+type ImageSmoothingQuality = "low" | "medium" | "high";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
+type OffscreenRenderingContextId = "2d" | "webgl";
 type PushEncryptionKeyName = "p256dh" | "auth";
 type PushPermissionState = "denied" | "granted" | "prompt";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin-only" | "origin-when-cross-origin" | "unsafe-url";

@@ -193,6 +193,10 @@
     },
     "interfaces": {
         "interface": {
+            "AbortSignal": {
+                "name": "AbortSignal",
+                "override-exposed": "Window Worker"
+            },
             "RTCIdentityProviderGlobalScope": {
                 "exposed": "RTCIdentityProviderGlobalScope",
                 "extends": "Object",
@@ -892,7 +896,12 @@
                             ]
                         }
                     }
-                }
+                },
+                "element": [
+                    {
+                        "name": "canvas"
+                    }
+                ]
             },
             "BeforeUnloadEvent": {
                 "name": "BeforeUnloadEvent",
@@ -2349,7 +2358,15 @@
             },
             "Event": {
                 "name": "Event",
-                "override-exposed": "Window Worker"
+                "override-exposed": "Window Worker",
+                "properties": {
+                    "property": {
+                        "srcElement": {
+                            "name": "srcElement",
+                            "override-type": "EventTarget | null"
+                        }
+                    }
+                }
             },
             "ReadableStream": {
                 "name": "ReadableStream",
