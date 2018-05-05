@@ -272,6 +272,12 @@ interface TextDecoderOptions {
     ignoreBOM?: boolean;
 }
 
+interface WorkerOptions {
+    credentials?: RequestCredentials;
+    name?: string;
+    type?: WorkerType;
+}
+
 interface EventListener {
     (evt: Event): void;
 }
@@ -705,10 +711,13 @@ declare var DOMStringList: {
 
 interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "message": MessageEvent;
+    "messageerror": MessageEvent;
 }
 
 interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {
+    readonly name: string;
     onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
     close(): void;
     postMessage(message: any, transfer?: any[]): void;
     addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -950,10 +959,6 @@ declare var FormData: {
     prototype: FormData;
     new(form?: object): FormData;
 };
-
-interface GlobalFetch {
-    fetch(input?: Request | string, init?: RequestInit): Promise<Response>;
-}
 
 interface Headers {
     append(name: string, value: string): void;
@@ -1268,10 +1273,6 @@ declare var NavigationPreloadManager: {
     new(): NavigationPreloadManager;
 };
 
-interface NavigatorBeacon {
-    sendBeacon(url: string, data?: Blob | Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | FormData | string | null): boolean;
-}
-
 interface NavigatorConcurrentHardware {
     readonly hardwareConcurrency: number;
 }
@@ -1286,6 +1287,11 @@ interface NavigatorID {
     readonly userAgent: string;
     readonly vendor: string;
     readonly vendorSub: string;
+}
+
+interface NavigatorLanguage {
+    readonly language: string;
+    readonly languages: ReadonlyArray<string>;
 }
 
 interface NavigatorOnLine {
@@ -1727,6 +1733,38 @@ declare var ServiceWorkerRegistration: {
     new(): ServiceWorkerRegistration;
 };
 
+interface SharedWorker extends EventTarget, AbstractWorker {
+    readonly port: MessagePort;
+    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SharedWorker: {
+    prototype: SharedWorker;
+    new(scriptURL: string, options?: string | WorkerOptions): SharedWorker;
+};
+
+interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
+    "connect": Event;
+}
+
+interface SharedWorkerGlobalScope extends WorkerGlobalScope {
+    readonly name: string;
+    onconnect: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
+    close(): void;
+    addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SharedWorkerGlobalScope: {
+    prototype: SharedWorkerGlobalScope;
+    new(): SharedWorkerGlobalScope;
+};
+
 interface StorageManager {
     estimate(): Promise<StorageEstimate>;
     persisted(): Promise<boolean>;
@@ -1875,11 +1913,6 @@ declare var WebSocket: {
     readonly OPEN: number;
 };
 
-interface WindowBase64 {
-    atob(encodedString: string): string;
-    btoa(rawString: string): string;
-}
-
 interface WindowClient extends Client {
     readonly ancestorOrigins: ReadonlyArray<string>;
     readonly focused: boolean;
@@ -1893,17 +1926,14 @@ declare var WindowClient: {
     new(): WindowClient;
 };
 
-interface WindowConsole {
-    readonly console: Console;
-}
-
 interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
+    "messageerror": MessageEvent;
 }
 
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    /** @deprecated */
+    onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
     postMessage(message: any, transfer?: any[]): void;
     terminate(): void;
     addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1914,23 +1944,30 @@ interface Worker extends EventTarget, AbstractWorker {
 
 declare var Worker: {
     prototype: Worker;
-    new(stringUrl: string): Worker;
+    new(scriptURL: string, options?: WorkerOptions): Worker;
 };
 
 interface WorkerGlobalScopeEventMap {
-    "error": ErrorEvent;
+    "languagechange": Event;
+    "offline": Event;
+    "online": Event;
+    "rejectionhandled": Event;
+    "unhandledrejection": Event;
 }
 
-interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, GlobalFetch {
-    readonly caches: CacheStorage;
-    readonly isSecureContext: boolean;
+interface WorkerGlobalScope extends EventTarget {
     readonly location: WorkerLocation;
-    onerror: ((this: WorkerGlobalScope, ev: ErrorEvent) => any) | null;
-    readonly performance: Performance;
+    readonly navigator: WorkerNavigator;
+    onerror: OnErrorEventHandler;
+    onlanguagechange: ((this: WorkerGlobalScope, ev: Event) => any) | null;
+    onoffline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
+    ononline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
+    onrejectionhandled: ((this: WorkerGlobalScope, ev: Event) => any) | null;
+    onunhandledrejection: ((this: WorkerGlobalScope, ev: Event) => any) | null;
     readonly self: WorkerGlobalScope;
     createImageBitmap(image: ImageBitmap | ImageData | Blob, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmap | ImageData | Blob, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-    msWriteProfilerMark(profilerMarkName: string): void;
+    importScripts(...urls: string[]): void;
     addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -1952,7 +1989,6 @@ interface WorkerLocation {
     readonly port: string;
     readonly protocol: string;
     readonly search: string;
-    toString(): string;
 }
 
 declare var WorkerLocation: {
@@ -1960,7 +1996,7 @@ declare var WorkerLocation: {
     new(): WorkerLocation;
 };
 
-interface WorkerNavigator extends NavigatorID, NavigatorOnLine, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorStorage {
+interface WorkerNavigator extends NavigatorStorage, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorConcurrentHardware {
     readonly serviceWorker: ServiceWorkerContainer;
 }
 
@@ -1968,19 +2004,6 @@ declare var WorkerNavigator: {
     prototype: WorkerNavigator;
     new(): WorkerNavigator;
 };
-
-interface WorkerUtils extends WindowBase64 {
-    readonly indexedDB: IDBFactory;
-    readonly msIndexedDB: IDBFactory;
-    readonly navigator: WorkerNavigator;
-    clearImmediate(handle: number): void;
-    clearInterval(handle: number): void;
-    clearTimeout(handle: number): void;
-    importScripts(...urls: string[]): void;
-    setImmediate(handler: any, ...args: any[]): number;
-    setInterval(handler: any, timeout?: any, ...args: any[]): number;
-    setTimeout(handler: any, timeout?: any, ...args: any[]): number;
-}
 
 interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
     "readystatechange": Event;
@@ -2074,38 +2097,33 @@ interface EventHandlerNonNull {
     (event: Event): any;
 }
 
+interface OnErrorEventHandlerNonNull {
+    (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any;
+}
+
 interface PerformanceObserverCallback {
     (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
 }
 
+declare var name: string;
 declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
 declare function close(): void;
 declare function postMessage(message: any, transfer?: any[]): void;
 declare function dispatchEvent(evt: Event): boolean;
-declare var caches: CacheStorage;
-declare var isSecureContext: boolean;
 declare var location: WorkerLocation;
-declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
-declare var performance: Performance;
+declare var navigator: WorkerNavigator;
+declare var onerror: OnErrorEventHandler;
+declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+declare var onoffline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+declare var ononline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+declare var onrejectionhandled: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+declare var onunhandledrejection: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 declare var self: WorkerGlobalScope;
 declare function createImageBitmap(image: ImageBitmap | ImageData | Blob, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmap | ImageData | Blob, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-declare function msWriteProfilerMark(profilerMarkName: string): void;
-declare function dispatchEvent(evt: Event): boolean;
-declare var indexedDB: IDBFactory;
-declare var msIndexedDB: IDBFactory;
-declare var navigator: WorkerNavigator;
-declare function clearImmediate(handle: number): void;
-declare function clearInterval(handle: number): void;
-declare function clearTimeout(handle: number): void;
 declare function importScripts(...urls: string[]): void;
-declare function setImmediate(handler: any, ...args: any[]): number;
-declare function setInterval(handler: any, timeout?: any, ...args: any[]): number;
-declare function setTimeout(handler: any, timeout?: any, ...args: any[]): number;
-declare function atob(encodedString: string): string;
-declare function btoa(rawString: string): string;
-declare var console: Console;
-declare function fetch(input?: Request | string, init?: RequestInit): Promise<Response>;
+declare function dispatchEvent(evt: Event): boolean;
 declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -2121,6 +2139,7 @@ type VibratePattern = number | number[];
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMTimeStamp = number;
 type FormDataEntryValue = File | string;
+type OnErrorEventHandler = OnErrorEventHandlerNonNull;
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
 type MessageEventSource = object | MessagePort | ServiceWorker;
 type BinaryType = "blob" | "arraybuffer";

@@ -3,5 +3,6 @@
     "IDBArrayKey",
     "IDBValidKey",
     "MessageEventSource",
-    "PromiseRejectionEventInit"
+    "PromiseRejectionEventInit",
+    "OnErrorEventHandlerNonNull"
 ]

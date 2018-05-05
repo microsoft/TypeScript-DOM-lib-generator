@@ -119,5 +119,9 @@
     {
         "url": "https://xhr.spec.whatwg.org/",
         "title": "XMLHttpRequest"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/workers.html",
+        "title": "Web Workers"
     }
 ]

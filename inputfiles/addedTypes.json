@@ -1,6 +1,10 @@
 {
     "mixins": {
         "mixin": {
+            "WindowOrWorkerGlobalScope": {
+                "name": "WindowOrWorkerGlobalScope",
+                "exposed": "Window WorkerGlobalScope"
+            },
             "HTMLHyperlinkElementUtils": {
                 "name": "HTMLHyperlinkElementUtils",
                 "properties": {
@@ -41,6 +45,16 @@
     "callback-interfaces": {
         "interface": {}
     },
+    "callback-functions": {
+        "callback-function": {
+            "OnErrorEventHandlerNonNull": {
+                "name": "OnErrorEventHandlerNonNull",
+                "override-signatures": [
+                    "(event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any"
+                ]
+            }
+        }
+    },
     "enums": {
         "enum": {
             "ClientTypes": {
@@ -50,13 +64,6 @@
                     "worker",
                     "sharedworker",
                     "all"
-                ]
-            },
-            "WorkerType": {
-                "name": "WorkerType",
-                "value": [
-                    "classic",
-                    "module"
                 ]
             }
         }
@@ -2448,6 +2455,10 @@
     },
     "typedefs": {
         "typedef": [
+            {
+                "override-type": "OnErrorEventHandlerNonNull",
+                "new-type": "OnErrorEventHandler"
+            },
             {
                 "override-type": "\"auto\" | \"instant\" | \"smooth\"",
                 "new-type": "ScrollBehavior"

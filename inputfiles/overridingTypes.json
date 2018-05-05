@@ -1,6 +1,10 @@
 {
     "mixins": {
         "mixin": {
+            "NavigatorLanguage": {
+                "override-exposed": "Window Worker",
+                "name": "NavigatorLanguage"
+            },
             "Animatable": {
                 "name": "Animatable",
                 "methods": {
