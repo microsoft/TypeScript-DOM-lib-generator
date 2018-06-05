@@ -209,6 +209,10 @@
                         "userSelect": {
                             "name": "userSelect",
                             "override-type": "string | null"
+                        },
+                        "willChange": {
+                            "name": "willChange",
+                            "override-type": "string | null"
                         }
                     }
                 }
