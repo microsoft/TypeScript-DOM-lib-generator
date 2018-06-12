@@ -152,6 +152,10 @@ interface CacheQueryOptions {
     ignoreVary?: boolean;
 }
 
+interface CanvasRenderingContext2DSettings {
+    alpha?: boolean;
+}
+
 interface ChannelMergerOptions extends AudioNodeOptions {
     numberOfInputs?: number;
 }
@@ -512,6 +516,15 @@ interface IDBVersionChangeEventInit extends EventInit {
 interface IIRFilterOptions extends AudioNodeOptions {
     feedback: number[];
     feedforward: number[];
+}
+
+interface ImageBitmapRenderingContextSettings {
+    alpha?: boolean;
+}
+
+interface ImageEncodeOptions {
+    quality?: number;
+    type?: string;
 }
 
 interface IntersectionObserverEntryInit {
@@ -3164,7 +3177,52 @@ interface Canvas2DContextAttributes {
     [attribute: string]: boolean | string | undefined;
 }
 
+interface CanvasCompositing {
+    globalAlpha: number;
+    globalCompositeOperation: string;
+}
+
+interface CanvasDrawImage {
+    drawImage(image: CanvasImageSource, dx: number, dy: number): void;
+    drawImage(image: CanvasImageSource, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void;
+}
+
+interface CanvasDrawPath {
+    beginPath(): void;
+    clip(fillRule?: CanvasFillRule): void;
+    clip(path: Path2D, fillRule?: CanvasFillRule): void;
+    fill(fillRule?: CanvasFillRule): void;
+    fill(path: Path2D, fillRule?: CanvasFillRule): void;
+    isPointInPath(x: number, y: number, fillRule?: CanvasFillRule): boolean;
+    isPointInPath(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
+    isPointInStroke(x: number, y: number): boolean;
+    isPointInStroke(path: Path2D, x: number, y: number): boolean;
+    resetClip(): void;
+    stroke(): void;
+    stroke(path: Path2D): void;
+}
+
+interface CanvasFillStrokeStyles {
+    fillStyle: string | CanvasGradient | CanvasPattern;
+    strokeStyle: string | CanvasGradient | CanvasPattern;
+    createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
+    createPattern(image: CanvasImageSource, repetition: string): CanvasPattern | null;
+    createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
+}
+
+interface CanvasFilters {
+    filter: string;
+}
+
 interface CanvasGradient {
+    /**
+     * Adds a color stop with the given color to the gradient at the given offset. 0.0 is the offset
+     * at one end of the gradient, 1.0 is the offset at the other end.
+     * Throws an "IndexSizeError" DOMException if the offset
+     * is out of range. Throws a "SyntaxError" DOMException if
+     * the color cannot be parsed.
+     */
     addColorStop(offset: number, color: string): void;
 }
 
@@ -3172,6 +3230,41 @@ declare var CanvasGradient: {
     prototype: CanvasGradient;
     new(): CanvasGradient;
 };
+
+interface CanvasImageData {
+    createImageData(sw: number, sh: number): ImageData;
+    createImageData(imagedata: ImageData): ImageData;
+    getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
+    putImageData(imagedata: ImageData, dx: number, dy: number): void;
+    putImageData(imagedata: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void;
+}
+
+interface CanvasImageSmoothing {
+    imageSmoothingEnabled: boolean;
+    imageSmoothingQuality: ImageSmoothingQuality;
+}
+
+interface CanvasPath {
+    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    closePath(): void;
+    ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    lineTo(x: number, y: number): void;
+    moveTo(x: number, y: number): void;
+    quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    rect(x: number, y: number, w: number, h: number): void;
+}
+
+interface CanvasPathDrawingStyles {
+    lineCap: CanvasLineCap;
+    lineDashOffset: number;
+    lineJoin: CanvasLineJoin;
+    lineWidth: number;
+    miterLimit: number;
+    getLineDash(): number[];
+    setLineDash(segments: number[]): void;
+}
 
 interface CanvasPathMethods {
     arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
@@ -3187,7 +3280,11 @@ interface CanvasPathMethods {
 }
 
 interface CanvasPattern {
-    setTransform(matrix: SVGMatrix): void;
+    /**
+     * Sets the transformation matrix that will be used when rendering the pattern during a fill or
+     * stroke painting operation.
+     */
+    setTransform(transform?: DOMMatrix2DInit): void;
 }
 
 declare var CanvasPattern: {
@@ -3195,71 +3292,73 @@ declare var CanvasPattern: {
     new(): CanvasPattern;
 };
 
-interface CanvasRenderingContext2D extends CanvasPathMethods {
+interface CanvasRect {
+    clearRect(x: number, y: number, w: number, h: number): void;
+    fillRect(x: number, y: number, w: number, h: number): void;
+    strokeRect(x: number, y: number, w: number, h: number): void;
+}
+
+interface CanvasRenderingContext2D extends CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasUserInterface, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
     readonly canvas: HTMLCanvasElement;
     fillStyle: string | CanvasGradient | CanvasPattern;
-    font: string;
-    globalAlpha: number;
-    globalCompositeOperation: string;
-    imageSmoothingEnabled: boolean;
-    lineCap: string;
-    lineDashOffset: number;
-    lineJoin: string;
-    lineWidth: number;
-    miterLimit: number;
     mozImageSmoothingEnabled: boolean;
-    msFillRule: CanvasFillRule;
     oImageSmoothingEnabled: boolean;
-    shadowBlur: number;
-    shadowColor: string;
-    shadowOffsetX: number;
-    shadowOffsetY: number;
     strokeStyle: string | CanvasGradient | CanvasPattern;
-    textAlign: string;
-    textBaseline: string;
     webkitImageSmoothingEnabled: boolean;
-    beginPath(): void;
-    clearRect(x: number, y: number, w: number, h: number): void;
-    clip(fillRule?: CanvasFillRule): void;
-    clip(path: Path2D, fillRule?: CanvasFillRule): void;
-    createImageData(imageDataOrSw: number | ImageData, sh?: number): ImageData;
-    createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
-    createPattern(image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement, repetition: string): CanvasPattern;
-    createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
-    drawFocusIfNeeded(element: Element): void;
-    drawFocusIfNeeded(path: Path2D, element: Element): void;
     drawImage(image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap, dstX: number, dstY: number): void;
     drawImage(image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap, dstX: number, dstY: number, dstW: number, dstH: number): void;
     drawImage(image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | ImageBitmap, srcX: number, srcY: number, srcW: number, srcH: number, dstX: number, dstY: number, dstW: number, dstH: number): void;
-    fill(fillRule?: CanvasFillRule): void;
-    fill(path: Path2D, fillRule?: CanvasFillRule): void;
-    fillRect(x: number, y: number, w: number, h: number): void;
-    fillText(text: string, x: number, y: number, maxWidth?: number): void;
-    getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
-    getLineDash(): number[];
-    isPointInPath(x: number, y: number, fillRule?: CanvasFillRule): boolean;
-    isPointInPath(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
     isPointInStroke(x: number, y: number, fillRule?: CanvasFillRule): boolean;
     isPointInStroke(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
-    measureText(text: string): TextMetrics;
-    putImageData(imagedata: ImageData, dx: number, dy: number, dirtyX?: number, dirtyY?: number, dirtyWidth?: number, dirtyHeight?: number): void;
-    restore(): void;
-    rotate(angle: number): void;
-    save(): void;
-    scale(x: number, y: number): void;
-    setLineDash(segments: number[]): void;
-    setTransform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
-    stroke(path?: Path2D): void;
-    strokeRect(x: number, y: number, w: number, h: number): void;
-    strokeText(text: string, x: number, y: number, maxWidth?: number): void;
-    transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
-    translate(x: number, y: number): void;
 }
 
 declare var CanvasRenderingContext2D: {
     prototype: CanvasRenderingContext2D;
     new(): CanvasRenderingContext2D;
 };
+
+interface CanvasShadowStyles {
+    shadowBlur: number;
+    shadowColor: string;
+    shadowOffsetX: number;
+    shadowOffsetY: number;
+}
+
+interface CanvasState {
+    restore(): void;
+    save(): void;
+}
+
+interface CanvasText {
+    fillText(text: string, x: number, y: number, maxWidth?: number): void;
+    measureText(text: string): TextMetrics;
+    strokeText(text: string, x: number, y: number, maxWidth?: number): void;
+}
+
+interface CanvasTextDrawingStyles {
+    direction: CanvasDirection;
+    font: string;
+    textAlign: CanvasTextAlign;
+    textBaseline: CanvasTextBaseline;
+}
+
+interface CanvasTransform {
+    getTransform(): DOMMatrix;
+    resetTransform(): void;
+    rotate(angle: number): void;
+    scale(x: number, y: number): void;
+    setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    setTransform(transform?: DOMMatrix2DInit): void;
+    transform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    translate(x: number, y: number): void;
+}
+
+interface CanvasUserInterface {
+    drawFocusIfNeeded(element: Element): void;
+    drawFocusIfNeeded(path: Path2D, element: Element): void;
+    scrollPathIntoView(): void;
+    scrollPathIntoView(path: Path2D): void;
+}
 
 interface ChannelMergerNode extends AudioNode {
 }
@@ -5881,16 +5980,13 @@ interface HTMLCanvasElement extends HTMLElement {
     getContext(contextId: "2d", contextAttributes?: Canvas2DContextAttributes): CanvasRenderingContext2D | null;
     getContext(contextId: "webgl" | "experimental-webgl", contextAttributes?: WebGLContextAttributes): WebGLRenderingContext | null;
     getContext(contextId: string, contextAttributes?: {}): CanvasRenderingContext2D | WebGLRenderingContext | null;
-    /**
-     * Returns a blob object encoded as a Portable Network Graphics (PNG) format from a canvas image or drawing.
-     */
-    msToBlob(): Blob;
-    toBlob(callback: (result: Blob | null) => void, type?: string, ...arguments: any[]): void;
+    toBlob(callback: BlobCallback, type?: string, quality?: any): void;
     /**
      * Returns the content of the current canvas as an image that you can use as a source for another canvas or an HTML element.
      * @param type The standard MIME type for the image format to return. If you do not specify this parameter, the default value is a PNG format image.
      */
-    toDataURL(type?: string, ...args: any[]): string;
+    toDataURL(type?: string, quality?: any): string;
+    transferControlToOffscreen(): OffscreenCanvas;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9239,8 +9335,34 @@ interface ImageBitmapOptions {
     resizeWidth?: number;
 }
 
+interface ImageBitmapRenderingContext {
+    /**
+     * Returns the canvas element that the context is bound to.
+     */
+    readonly canvas: HTMLCanvasElement;
+    /**
+     * Replaces contents of the canvas element to which context
+     * is bound with a transparent black bitmap whose size corresponds to the width and height
+     * content attributes of the canvas element.
+     */
+    transferFromImageBitmap(bitmap: ImageBitmap | null): void;
+}
+
+declare var ImageBitmapRenderingContext: {
+    prototype: ImageBitmapRenderingContext;
+    new(): ImageBitmapRenderingContext;
+};
+
 interface ImageData {
+    /**
+     * Returns the one-dimensional array containing the data in RGBA order, as integers in the
+     * range 0 to 255.
+     */
     readonly data: Uint8ClampedArray;
+    /**
+     * Returns the actual dimensions of the data in the ImageData object, in
+     * pixels.
+     */
     readonly height: number;
     readonly width: number;
 }
@@ -10516,6 +10638,62 @@ declare var OfflineAudioContext: {
     new(numberOfChannels: number, length: number, sampleRate: number): OfflineAudioContext;
 };
 
+interface OffscreenCanvas extends EventTarget {
+    /**
+     * These attributes return the dimensions of the OffscreenCanvas object's bitmap.
+     * They can be set, to replace the bitmap with a
+     * new, transparent black bitmap of the specified dimensions (effectively resizing
+     * it).
+     */
+    height: number;
+    width: number;
+    /**
+     * Returns a promise that will fulfill with a new Blob object representing a file
+     * containing the image in the OffscreenCanvas object.
+     * The argument, if provided, is a dictionary that controls the encoding options of the image
+     * file to be created. The type
+     * field specifies the file format and has a default value of "image/png"; that type
+     * is also used if the requested type isn't supported. If the image format supports variable
+     * quality (such as "image/jpeg"), then the quality field is a number in the range 0.0
+     * to 1.0 inclusive indicating the desired quality level for the resulting image.
+     */
+    convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
+    /**
+     * Returns an object that exposes an API for drawing on the OffscreenCanvas
+     * object. contextId specifies the desired API: "2d" or "webgl". options is handled by that
+     * API.
+     * This specification defines the "2d" context below,
+     * which is similar but distinct from the "2d"
+     * context that is created from a canvas element. There is also a specification that
+     * defines a "webgl" context. [WEBGL]
+     * Returns null if the canvas has already been initialized with another context type (e.g.,
+     * trying to get a "2d" context after getting a
+     * "webgl" context).
+     */
+    getContext(contextId: OffscreenRenderingContextId, options?: any): OffscreenRenderingContext | null;
+    /**
+     * Returns a newly created ImageBitmap object with the image in the
+     * OffscreenCanvas object. The image in the OffscreenCanvas object is
+     * replaced with a new blank image.
+     */
+    transferToImageBitmap(): ImageBitmap;
+}
+
+declare var OffscreenCanvas: {
+    prototype: OffscreenCanvas;
+    new(width: number, height: number): OffscreenCanvas;
+};
+
+interface OffscreenCanvasRenderingContext2D extends CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasPath {
+    readonly canvas: OffscreenCanvas;
+    commit(): void;
+}
+
+declare var OffscreenCanvasRenderingContext2D: {
+    prototype: OffscreenCanvasRenderingContext2D;
+    new(): OffscreenCanvasRenderingContext2D;
+};
+
 interface OscillatorNode extends AudioScheduledSourceNode {
     readonly detune: AudioParam;
     readonly frequency: AudioParam;
@@ -10597,7 +10775,8 @@ interface ParentNode {
     querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;
 }
 
-interface Path2D extends CanvasPathMethods {
+interface Path2D extends CanvasPath {
+    addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
 }
 
 declare var Path2D: {
@@ -14322,6 +14501,20 @@ declare var TextEvent: {
 };
 
 interface TextMetrics {
+    readonly actualBoundingBoxAscent: number;
+    readonly actualBoundingBoxDescent: number;
+    readonly actualBoundingBoxLeft: number;
+    readonly actualBoundingBoxRight: number;
+    readonly alphabeticBaseline: number;
+    readonly emHeightAscent: number;
+    readonly emHeightDescent: number;
+    readonly fontBoundingBoxAscent: number;
+    readonly fontBoundingBoxDescent: number;
+    readonly hangingBaseline: number;
+    /**
+     * Returns the measurement described below.
+     */
+    readonly ideographicBaseline: number;
     readonly width: number;
 }
 
@@ -16591,6 +16784,10 @@ declare var webkitRTCPeerConnection: {
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
+interface BlobCallback {
+    (blob: Blob | null): void;
+}
+
 interface DecodeErrorCallback {
     (error: DOMException): void;
 }
@@ -17139,6 +17336,10 @@ type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream | string;
 type RequestInfo = Request | string;
 type DOMHighResTimeStamp = number;
+type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext;
+type HTMLOrSVGImageElement = HTMLImageElement | SVGImageElement;
+type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | OffscreenCanvas;
+type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | WebGLRenderingContext;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
 type VibratePattern = number | number[];
@@ -17191,7 +17392,12 @@ type AutomationRate = "a-rate" | "k-rate";
 type BinaryType = "blob" | "arraybuffer";
 type BiquadFilterType = "lowpass" | "highpass" | "bandpass" | "lowshelf" | "highshelf" | "peaking" | "notch" | "allpass";
 type CanPlayTypeResult = "" | "maybe" | "probably";
+type CanvasDirection = "ltr" | "rtl" | "inherit";
 type CanvasFillRule = "nonzero" | "evenodd";
+type CanvasLineCap = "butt" | "round" | "square";
+type CanvasLineJoin = "round" | "bevel" | "miter";
+type CanvasTextAlign = "start" | "end" | "left" | "right" | "center";
+type CanvasTextBaseline = "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom";
 type ChannelCountMode = "max" | "clamped-max" | "explicit";
 type ChannelInterpretation = "speakers" | "discrete";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
@@ -17209,6 +17415,7 @@ type GamepadMappingType = "" | "standard";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
+type ImageSmoothingQuality = "low" | "medium" | "high";
 type IterationCompositeOperation = "replace" | "accumulate";
 type KeyFormat = "raw" | "spki" | "pkcs8" | "jwk";
 type KeyType = "public" | "private" | "secret";
@@ -17231,6 +17438,7 @@ type NavigationReason = "up" | "down" | "left" | "right";
 type NavigationType = "navigate" | "reload" | "back_forward" | "prerender";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
+type OffscreenRenderingContextId = "2d" | "webgl";
 type OrientationLockType = "any" | "natural" | "landscape" | "portrait" | "portrait-primary" | "portrait-secondary" | "landscape-primary" | "landscape-secondary";
 type OrientationType = "portrait-primary" | "portrait-secondary" | "landscape-primary" | "landscape-secondary";
 type OscillatorType = "sine" | "square" | "sawtooth" | "triangle" | "custom";

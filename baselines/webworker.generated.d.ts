@@ -143,6 +143,11 @@ interface IDBVersionChangeEventInit extends EventInit {
     oldVersion?: number;
 }
 
+interface ImageEncodeOptions {
+    quality?: number;
+    type?: string;
+}
+
 interface KeyAlgorithm {
     name: string;
 }
@@ -398,6 +403,137 @@ declare var CacheStorage: {
     prototype: CacheStorage;
     new(): CacheStorage;
 };
+
+interface CanvasCompositing {
+    globalAlpha: number;
+    globalCompositeOperation: string;
+}
+
+interface CanvasDrawImage {
+    drawImage(image: CanvasImageSource, dx: number, dy: number): void;
+    drawImage(image: CanvasImageSource, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(image: CanvasImageSource, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number): void;
+}
+
+interface CanvasDrawPath {
+    beginPath(): void;
+    clip(fillRule?: CanvasFillRule): void;
+    clip(path: Path2D, fillRule?: CanvasFillRule): void;
+    fill(fillRule?: CanvasFillRule): void;
+    fill(path: Path2D, fillRule?: CanvasFillRule): void;
+    isPointInPath(x: number, y: number, fillRule?: CanvasFillRule): boolean;
+    isPointInPath(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
+    isPointInStroke(x: number, y: number): boolean;
+    isPointInStroke(path: Path2D, x: number, y: number): boolean;
+    resetClip(): void;
+    stroke(): void;
+    stroke(path: Path2D): void;
+}
+
+interface CanvasFillStrokeStyles {
+    fillStyle: string | CanvasGradient | CanvasPattern;
+    strokeStyle: string | CanvasGradient | CanvasPattern;
+    createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
+    createPattern(image: CanvasImageSource, repetition: string): CanvasPattern | null;
+    createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
+}
+
+interface CanvasFilters {
+    filter: string;
+}
+
+interface CanvasGradient {
+    /**
+     * Adds a color stop with the given color to the gradient at the given offset. 0.0 is the offset
+     * at one end of the gradient, 1.0 is the offset at the other end.
+     * Throws an "IndexSizeError" DOMException if the offset
+     * is out of range. Throws a "SyntaxError" DOMException if
+     * the color cannot be parsed.
+     */
+    addColorStop(offset: number, color: string): void;
+}
+
+declare var CanvasGradient: {
+    prototype: CanvasGradient;
+    new(): CanvasGradient;
+};
+
+interface CanvasImageData {
+    createImageData(sw: number, sh: number): ImageData;
+    createImageData(imagedata: ImageData): ImageData;
+    getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
+    putImageData(imagedata: ImageData, dx: number, dy: number): void;
+    putImageData(imagedata: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void;
+}
+
+interface CanvasImageSmoothing {
+    imageSmoothingEnabled: boolean;
+    imageSmoothingQuality: ImageSmoothingQuality;
+}
+
+interface CanvasPath {
+    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+    bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    closePath(): void;
+    ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    lineTo(x: number, y: number): void;
+    moveTo(x: number, y: number): void;
+    quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    rect(x: number, y: number, w: number, h: number): void;
+}
+
+interface CanvasPathDrawingStyles {
+    lineCap: CanvasLineCap;
+    lineDashOffset: number;
+    lineJoin: CanvasLineJoin;
+    lineWidth: number;
+    miterLimit: number;
+    getLineDash(): number[];
+    setLineDash(segments: number[]): void;
+}
+
+interface CanvasPattern {
+    /**
+     * Sets the transformation matrix that will be used when rendering the pattern during a fill or
+     * stroke painting operation.
+     */
+    setTransform(transform?: DOMMatrix2DInit): void;
+}
+
+declare var CanvasPattern: {
+    prototype: CanvasPattern;
+    new(): CanvasPattern;
+};
+
+interface CanvasRect {
+    clearRect(x: number, y: number, w: number, h: number): void;
+    fillRect(x: number, y: number, w: number, h: number): void;
+    strokeRect(x: number, y: number, w: number, h: number): void;
+}
+
+interface CanvasShadowStyles {
+    shadowBlur: number;
+    shadowColor: string;
+    shadowOffsetX: number;
+    shadowOffsetY: number;
+}
+
+interface CanvasState {
+    restore(): void;
+    save(): void;
+}
+
+interface CanvasTransform {
+    getTransform(): DOMMatrix;
+    resetTransform(): void;
+    rotate(angle: number): void;
+    scale(x: number, y: number): void;
+    setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    setTransform(transform?: DOMMatrix2DInit): void;
+    transform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    translate(x: number, y: number): void;
+}
 
 interface Client {
     readonly id: string;
@@ -1518,6 +1654,17 @@ interface ImageBitmapOptions {
 }
 
 interface ImageData {
+    /**
+     * Returns the one-dimensional array containing the data in RGBA order, as integers in the
+     * range 0 to 255.
+     */
+    readonly data: Uint8ClampedArray;
+    /**
+     * Returns the actual dimensions of the data in the ImageData object, in
+     * pixels.
+     */
+    readonly height: number;
+    readonly width: number;
 }
 
 declare var ImageData: {
@@ -1672,6 +1819,71 @@ interface NotificationEvent extends ExtendableEvent {
 declare var NotificationEvent: {
     prototype: NotificationEvent;
     new(type: string, eventInitDict: NotificationEventInit): NotificationEvent;
+};
+
+interface OffscreenCanvas extends EventTarget {
+    /**
+     * These attributes return the dimensions of the OffscreenCanvas object's bitmap.
+     * They can be set, to replace the bitmap with a
+     * new, transparent black bitmap of the specified dimensions (effectively resizing
+     * it).
+     */
+    height: number;
+    width: number;
+    /**
+     * Returns a promise that will fulfill with a new Blob object representing a file
+     * containing the image in the OffscreenCanvas object.
+     * The argument, if provided, is a dictionary that controls the encoding options of the image
+     * file to be created. The type
+     * field specifies the file format and has a default value of "image/png"; that type
+     * is also used if the requested type isn't supported. If the image format supports variable
+     * quality (such as "image/jpeg"), then the quality field is a number in the range 0.0
+     * to 1.0 inclusive indicating the desired quality level for the resulting image.
+     */
+    convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
+    /**
+     * Returns an object that exposes an API for drawing on the OffscreenCanvas
+     * object. contextId specifies the desired API: "2d" or "webgl". options is handled by that
+     * API.
+     * This specification defines the "2d" context below,
+     * which is similar but distinct from the "2d"
+     * context that is created from a canvas element. There is also a specification that
+     * defines a "webgl" context. [WEBGL]
+     * Returns null if the canvas has already been initialized with another context type (e.g.,
+     * trying to get a "2d" context after getting a
+     * "webgl" context).
+     */
+    getContext(contextId: OffscreenRenderingContextId, options?: any): OffscreenRenderingContext | null;
+    /**
+     * Returns a newly created ImageBitmap object with the image in the
+     * OffscreenCanvas object. The image in the OffscreenCanvas object is
+     * replaced with a new blank image.
+     */
+    transferToImageBitmap(): ImageBitmap;
+}
+
+declare var OffscreenCanvas: {
+    prototype: OffscreenCanvas;
+    new(width: number, height: number): OffscreenCanvas;
+};
+
+interface OffscreenCanvasRenderingContext2D extends CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasPath {
+    readonly canvas: OffscreenCanvas;
+    commit(): void;
+}
+
+declare var OffscreenCanvasRenderingContext2D: {
+    prototype: OffscreenCanvasRenderingContext2D;
+    new(): OffscreenCanvasRenderingContext2D;
+};
+
+interface Path2D extends CanvasPath {
+    addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
+}
+
+declare var Path2D: {
+    prototype: Path2D;
+    new(d?: Path2D | string): Path2D;
 };
 
 interface PerformanceEventMap {
@@ -2589,6 +2801,8 @@ type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream | string;
 type RequestInfo = Request | string;
 type DOMHighResTimeStamp = number;
+type CanvasImageSource = ImageBitmap | OffscreenCanvas;
+type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
 type VibratePattern = number | number[];
@@ -2598,12 +2812,17 @@ type FormDataEntryValue = File | string;
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
 type MessageEventSource = MessagePort | ServiceWorker;
 type BinaryType = "blob" | "arraybuffer";
+type CanvasFillRule = "nonzero" | "evenodd";
+type CanvasLineCap = "butt" | "round" | "square";
+type CanvasLineJoin = "round" | "bevel" | "miter";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
+type ImageSmoothingQuality = "low" | "medium" | "high";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
+type OffscreenRenderingContextId = "2d" | "webgl";
 type PushEncryptionKeyName = "p256dh" | "auth";
 type PushPermissionState = "denied" | "granted" | "prompt";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin-only" | "origin-when-cross-origin" | "unsafe-url";

@@ -37,6 +37,10 @@
         "title": "High Resolution Time"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/canvas.html",
+        "title": "HTML - Canvas"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html",
         "title": "HTML - Common DOM interfaces"
     },
