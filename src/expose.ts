@@ -13,7 +13,7 @@ export function getExposedTypes(webidl: Browser.WebIdl, target: string, forceKno
     }
 
     const knownIDLTypes = followTypeReferences(webidl, filtered.interfaces!.interface);
-    const isKnownName = (o: { name: string }) => knownIDLTypes.has(o.name) || forceKnownTypes.has(o.name);
+    const isKnownName = <T extends { name: string }>(o: T ) => knownIDLTypes.has(o.name) || forceKnownTypes.has(o.name);
 
     if (webidl.typedefs) {
         const referenced = webidl.typedefs.typedef.filter(t => knownIDLTypes.has(t["new-type"]) || forceKnownTypes.has(t["new-type"]));
