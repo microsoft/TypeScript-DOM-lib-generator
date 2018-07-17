@@ -2,10 +2,10 @@
   "name": "tsjs-lib-generator",
   "private": true,
   "scripts": {
-    "build": "tsc --p ./tsconfig.json && node ./lib/index.js",
-    "fetch": "tsc --p ./tsconfig.json && node ./lib/fetcher.js",
+    "build": "tsc --project ./tsconfig.json && node ./lib/index.js",
+    "fetch": "tsc --project ./tsconfig.json && node ./lib/fetcher.js",
     "baseline-accept": "cpx \"generated\\*\" baselines\\",
-    "test": "tsc --p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
+    "test": "tsc --project ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
   },
   "dependencies": {
     "@types/jsdom": "^11.0.4",
