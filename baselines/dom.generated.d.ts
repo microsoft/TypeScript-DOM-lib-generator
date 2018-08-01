@@ -1709,16 +1709,10 @@ interface VRDisplayEventInit extends EventInit {
     reason?: VRDisplayEventReason;
 }
 
-interface VRLayer {
-    leftBounds?: number[] | Float32Array | null;
-    rightBounds?: number[] | Float32Array | null;
-    source?: HTMLCanvasElement | null;
-}
-
-interface VRStageParameters {
-    sittingToStandingTransform?: Float32Array;
-    sizeX?: number;
-    sizeY?: number;
+interface VRLayerInit {
+    leftBounds?: number[] | Float32Array;
+    rightBounds?: number[] | Float32Array;
+    source?: VRSource | null;
 }
 
 interface WaveShaperOptions extends AudioNodeOptions {
@@ -5520,6 +5514,8 @@ interface Gamepad {
     readonly axes: ReadonlyArray<number>;
     readonly buttons: ReadonlyArray<GamepadButton>;
     readonly connected: boolean;
+    /** @deprecated */
+    readonly displayId: number;
     readonly hand: GamepadHand;
     readonly hapticActuators: ReadonlyArray<GamepadHapticActuator>;
     readonly id: string;
@@ -10698,6 +10694,7 @@ declare var NavigationPreloadManager: {
 
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
 interface Navigator extends NavigatorID, NavigatorOnLine, NavigatorContentUtils, NavigatorStorageUtils, MSNavigatorDoNotTrack, MSFileSaver, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorUserMedia, NavigatorLanguage, NavigatorStorage, NavigatorAutomationInformation {
+    /** @deprecated */
     readonly activeVRDisplays: ReadonlyArray<VRDisplay>;
     readonly authentication: WebAuthentication;
     readonly clipboard: Clipboard;
@@ -10719,6 +10716,7 @@ interface Navigator extends NavigatorID, NavigatorOnLine, NavigatorContentUtils,
     readonly webdriver: boolean;
     getGamepads(): (Gamepad | null)[];
     getUserMedia(constraints: MediaStreamConstraints, successCallback: NavigatorUserMediaSuccessCallback, errorCallback: NavigatorUserMediaErrorCallback): void;
+    /** @deprecated */
     getVRDisplays(): Promise<VRDisplay[]>;
     javaEnabled(): boolean;
     msLaunchUri(uri: string, successCallback?: MSLaunchUriCallback, noHandlerCallback?: MSLaunchUriCallback): void;
@@ -15906,25 +15904,42 @@ declare var URLSearchParams: {
 
 /** This WebVR API interface represents any VR device supported by this API. It includes generic information such as device IDs and descriptions, as well as methods for starting to present a VR scene, retrieving eye parameters and display capabilities, and other important functionality. */
 interface VRDisplay extends EventTarget {
+    /** @deprecated */
     readonly capabilities: VRDisplayCapabilities;
+    /** @deprecated */
     depthFar: number;
+    /** @deprecated */
     depthNear: number;
+    /** @deprecated */
     readonly displayId: number;
+    /** @deprecated */
     readonly displayName: string;
+    /** @deprecated */
     readonly isConnected: boolean;
+    /** @deprecated */
     readonly isPresenting: boolean;
+    /** @deprecated */
     readonly stageParameters: VRStageParameters | null;
+    /** @deprecated */
     cancelAnimationFrame(handle: number): void;
+    /** @deprecated */
     exitPresent(): Promise<void>;
-    getEyeParameters(whichEye: string): VREyeParameters;
+    /** @deprecated */
+    getEyeParameters(whichEye: VREye): VREyeParameters;
+    /** @deprecated */
     getFrameData(frameData: VRFrameData): boolean;
-    getLayers(): VRLayer[];
+    /** @deprecated */
+    getLayers(): VRLayerInit[];
     /** @deprecated */
     getPose(): VRPose;
+    /** @deprecated */
     requestAnimationFrame(callback: FrameRequestCallback): number;
-    requestPresent(layers: VRLayer[]): Promise<void>;
+    /** @deprecated */
+    requestPresent(layers: VRLayerInit[]): Promise<void>;
+    /** @deprecated */
     resetPose(): void;
-    submitFrame(pose?: VRPose): void;
+    /** @deprecated */
+    submitFrame(): void;
 }
 
 declare var VRDisplay: {
@@ -15934,10 +15949,15 @@ declare var VRDisplay: {
 
 /** This WebVR API interface describes the capabilities of a VRDisplay — its features can be used to perform VR device capability tests, for example can it return position information. */
 interface VRDisplayCapabilities {
+    /** @deprecated */
     readonly canPresent: boolean;
+    /** @deprecated */
     readonly hasExternalDisplay: boolean;
+    /** @deprecated */
     readonly hasOrientation: boolean;
+    /** @deprecated */
     readonly hasPosition: boolean;
+    /** @deprecated */
     readonly maxLayers: number;
 }
 
@@ -15948,7 +15968,9 @@ declare var VRDisplayCapabilities: {
 
 /** This WebVR API interface represents represents the event object of WebVR-related events (see the list of WebVR window extensions). */
 interface VRDisplayEvent extends Event {
+    /** @deprecated */
     readonly display: VRDisplay;
+    /** @deprecated */
     readonly reason: VRDisplayEventReason | null;
 }
 
@@ -15961,8 +15983,11 @@ declare var VRDisplayEvent: {
 interface VREyeParameters {
     /** @deprecated */
     readonly fieldOfView: VRFieldOfView;
+    /** @deprecated */
     readonly offset: Float32Array;
+    /** @deprecated */
     readonly renderHeight: number;
+    /** @deprecated */
     readonly renderWidth: number;
 }
 
@@ -15973,9 +15998,13 @@ declare var VREyeParameters: {
 
 /** This WebVR API interface represents a field of view defined by 4 different degree values describing the view from a center point. */
 interface VRFieldOfView {
+    /** @deprecated */
     readonly downDegrees: number;
+    /** @deprecated */
     readonly leftDegrees: number;
+    /** @deprecated */
     readonly rightDegrees: number;
+    /** @deprecated */
     readonly upDegrees: number;
 }
 
@@ -15986,11 +16015,17 @@ declare var VRFieldOfView: {
 
 /** This WebVR API interface represents all the information needed to render a single frame of a VR scene; constructed by VRDisplay.getFrameData(). */
 interface VRFrameData {
+    /** @deprecated */
     readonly leftProjectionMatrix: Float32Array;
+    /** @deprecated */
     readonly leftViewMatrix: Float32Array;
+    /** @deprecated */
     readonly pose: VRPose;
+    /** @deprecated */
     readonly rightProjectionMatrix: Float32Array;
+    /** @deprecated */
     readonly rightViewMatrix: Float32Array;
+    /** @deprecated */
     readonly timestamp: number;
 }
 
@@ -16001,18 +16036,37 @@ declare var VRFrameData: {
 
 /** This WebVR API interface represents the state of a VR sensor at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
 interface VRPose {
+    /** @deprecated */
     readonly angularAcceleration: Float32Array | null;
+    /** @deprecated */
     readonly angularVelocity: Float32Array | null;
+    /** @deprecated */
     readonly linearAcceleration: Float32Array | null;
+    /** @deprecated */
     readonly linearVelocity: Float32Array | null;
+    /** @deprecated */
     readonly orientation: Float32Array | null;
+    /** @deprecated */
     readonly position: Float32Array | null;
-    readonly timestamp: number;
 }
 
 declare var VRPose: {
     prototype: VRPose;
     new(): VRPose;
+};
+
+interface VRStageParameters {
+    /** @deprecated */
+    readonly sittingToStandingTransform: Float32Array;
+    /** @deprecated */
+    readonly sizeX: number;
+    /** @deprecated */
+    readonly sizeZ: number;
+}
+
+declare var VRStageParameters: {
+    prototype: VRStageParameters;
+    new(): VRStageParameters;
 };
 
 interface VTTCue extends TextTrackCue {
@@ -18385,14 +18439,23 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     /** @deprecated */
     onorientationchange: ((this: Window, ev: Event) => any) | null;
     onreadystatechange: ((this: Window, ev: ProgressEvent) => any) | null;
+    /** @deprecated */
     onvrdisplayactivate: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplayblur: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplayconnect: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplaydeactivate: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplaydisconnect: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplayfocus: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplaypointerrestricted: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplaypointerunrestricted: ((this: Window, ev: Event) => any) | null;
+    /** @deprecated */
     onvrdisplaypresentchange: ((this: Window, ev: Event) => any) | null;
     opener: any;
     /** @deprecated */
@@ -19379,14 +19442,23 @@ declare var onmspointerup: ((this: Window, ev: Event) => any) | null;
 /** @deprecated */
 declare var onorientationchange: ((this: Window, ev: Event) => any) | null;
 declare var onreadystatechange: ((this: Window, ev: ProgressEvent) => any) | null;
+/** @deprecated */
 declare var onvrdisplayactivate: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplayblur: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplayconnect: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplaydeactivate: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplaydisconnect: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplayfocus: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplaypointerrestricted: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplaypointerunrestricted: ((this: Window, ev: Event) => any) | null;
+/** @deprecated */
 declare var onvrdisplaypresentchange: ((this: Window, ev: Event) => any) | null;
 declare var opener: any;
 /** @deprecated */
@@ -19807,6 +19879,7 @@ type GLuint64 = number;
 type Uint32List = Uint32Array | GLuint[];
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMTimeStamp = number;
+type VRSource = HTMLCanvasElement | OffscreenCanvas;
 type LineAndPositionSetting = number | AutoKeyword;
 type FormDataEntryValue = File | string;
 type InsertPosition = "beforebegin" | "afterbegin" | "beforeend" | "afterend";
@@ -19945,6 +20018,7 @@ type TextTrackMode = "disabled" | "hidden" | "showing";
 type TouchType = "direct" | "stylus";
 type Transport = "usb" | "nfc" | "ble";
 type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted";
+type VREye = "left" | "right";
 type VideoFacingModeEnum = "user" | "environment" | "left" | "right";
 type VisibilityState = "hidden" | "visible" | "prerender";
 type WebGLPowerPreference = "default" | "low-power" | "high-performance";

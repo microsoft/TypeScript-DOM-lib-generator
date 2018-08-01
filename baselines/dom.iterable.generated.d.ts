@@ -257,7 +257,8 @@ interface URLSearchParams {
 }
 
 interface VRDisplay {
-    requestPresent(layers: Iterable<VRLayer>): Promise<void>;
+    /** @deprecated */
+    requestPresent(layers: Iterable<VRLayerInit>): Promise<void>;
 }
 
 interface VideoTrackList {

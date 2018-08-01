@@ -488,6 +488,11 @@
         "title": "Web Speech API"
     },
     {
+        "url": "https://immersive-web.github.io/webvr/spec/1.1/",
+        "title": "WebVR",
+        "deprecated": true
+    },
+    {
         "url": "https://www.w3.org/TR/webvtt1/",
         "title": "WebVTT"
     },
