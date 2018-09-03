@@ -115,6 +115,9 @@ dictionary JsonWebKey {
   DOMString qi;
   sequence<RsaOtherPrimesInfo> oth;
   DOMString k;
+
+  // The following field is defined in Section 4.5 of RFC7517
+  DOMString kid;
 };
 
 typedef Uint8Array BigInteger;
