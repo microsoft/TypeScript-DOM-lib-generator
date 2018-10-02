@@ -396,45 +396,6 @@
                     }
                 }
             },
-            "ImageBitmapOptions": {
-                "flavor": "All",
-                "name": "ImageBitmapOptions",
-                "properties": {
-                    "property": {
-                        "imageOrientation": {
-                            "name": "imageOrientation",
-                            "override-type": "\"none\" | \"flipY\"",
-                            "required": 0
-                        },
-                        "premultiplyAlpha": {
-                            "name": "premultiplyAlpha",
-                            "override-type": "\"none\" | \"premultiply\" | \"default\"",
-                            "required": 0
-                        },
-                        "colorSpaceConversion": {
-                            "name": "colorSpaceConversion",
-                            "override-type": "\"none\" | \"default\"",
-                            "required": 0
-                        },
-                        "resizeWidth": {
-                            "name": "resizeWidth",
-                            "override-type": "number",
-                            "required": 0
-                        },
-                        "resizeHeight": {
-                            "name": "resizeHeight",
-                            "override-type": "number",
-                            "required": 0
-                        },
-                        "resizeQuality": {
-                            "name": "resizeQuality",
-                            "override-type": "\"pixelated\" | \"low\" | \"medium\" | \"high\"",
-                            "required": 0
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "Window": {
                 "name": "Window",
                 "properties": {
