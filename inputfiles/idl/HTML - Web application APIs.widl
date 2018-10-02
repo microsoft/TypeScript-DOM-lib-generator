@@ -160,4 +160,4 @@ interface mixin ImageBitmapWorker {
 Window includes WindowOrWorkerGlobalScope;
 Window includes ImageBitmapWindow;
 WorkerGlobalScope includes WindowOrWorkerGlobalScope;
-WorkerGlobalScope includes ImageBitmapWindow;
+WorkerGlobalScope includes ImageBitmapWorker;
