@@ -2577,6 +2577,14 @@
             {
                 "new-type": "WindowProxy",
                 "type": "Window"
+            },
+            {
+                "new-type": "ImageBitmapSourceWorker",
+                "type": "ImageBitmap | ImageData | Blob"
+            },
+            {
+                "new-type": "ImageBitmapSourceWindow",
+                "type": "HTMLImageElement | SVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | ImageData | Blob"
             }
         ]
     }
