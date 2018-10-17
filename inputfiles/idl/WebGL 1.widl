@@ -653,7 +653,7 @@ interface mixin WebGLRenderingContextBase
     void lineWidth(GLfloat width);
     void linkProgram(WebGLProgram program);
     void pixelStorei(GLenum pname, GLint param);
-    void pixelStorei(GLenum pname, GLBoolean param);
+    void pixelStorei(GLenum pname, GLboolean param);
     void polygonOffset(GLfloat factor, GLfloat units);
 
     void readPixels(GLint x, GLint y, GLsizei width, GLsizei height,
