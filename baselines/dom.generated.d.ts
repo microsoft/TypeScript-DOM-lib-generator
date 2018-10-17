@@ -15740,6 +15740,7 @@ interface WebGLRenderingContextBase {
     lineWidth(width: GLfloat): void;
     linkProgram(program: WebGLProgram): void;
     pixelStorei(pname: GLenum, param: GLint): void;
+    pixelStorei(pname: GLenum, param: GLboolean): void;
     polygonOffset(factor: GLfloat, units: GLfloat): void;
     readPixels(x: GLint, y: GLint, width: GLsizei, height: GLsizei, format: GLenum, type: GLenum, pixels: ArrayBufferView | null): void;
     renderbufferStorage(target: GLenum, internalformat: GLenum, width: GLsizei, height: GLsizei): void;
