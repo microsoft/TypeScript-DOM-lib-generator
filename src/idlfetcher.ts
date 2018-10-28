@@ -99,14 +99,19 @@ function processComments(dom: DocumentFragment) {
 
     const result: Record<string, string> = {};
     for (const element of elements) {
-        let child = element.firstElementChild;
-        while (child) {
-            const key = getKey(child.innerHTML);
-            child = child.nextElementSibling;
-            const childKey = child && getKey(child.innerHTML);
-            if (key && child && (child === element.lastElementChild || !isNextKey(key, childKey))) {
-                result[key] = getCommentText(child.textContent!);
-                child = child.nextElementSibling;
+        for (const {dt, dd} of generateDescriptionPairs(element)) {
+            const comment = dd
+                .map(desc => getCommentText(desc.textContent!))
+                .join("\n\n");
+            for (const key of dt.map(term => getKey(term.innerHTML))) {
+                if (!key) {
+                    continue;
+                }
+                const retargeted = retargetCommentKey(key, dom);
+                // prefer the first description
+                if (!result[retargeted]) {
+                    result[retargeted] = comment;
+                }
             }
         }
     }
@@ -116,12 +121,8 @@ function processComments(dom: DocumentFragment) {
     return JSON.stringify(result, undefined, 4);
 }
 
-function isNextKey(k1: string, k2: string | null | undefined) {
-    return k2 && k1.split("-")[0] === k2.split("-")[0];
-}
-
 function getKey(s: string) {
-    const keyRegexp = /#dom-([a-zA-Z-_]+)/i;
+    const keyRegexp = /#dom-([a-zA-Z0-9-_]+)/i;
     const match = s.match(keyRegexp);
     if (match) {
         return match[1];
@@ -136,6 +137,49 @@ function getCommentText(text: string) {
         .map(line => line.trim())
         .filter(line => !!line)
         .map(line => line.slice(getIndentation(line))).join("\n");
+}
+
+function* generateDescriptionPairs(domIntro: Element) {
+    const dt: Element[] = [];
+    const dd: Element[] = [];
+    let element = domIntro.firstElementChild;
+    while (element) {
+        switch (element.localName) {
+            case "dt":
+                if (dd.length) {
+                    yield { dt: [...dt], dd: [...dd] };
+                    dt.length = dd.length = 0;
+                }
+                dt.push(element)
+                break;
+            case "dd":
+                dd.push(element)
+                break;
+            default:
+                debugger;
+        }
+        element = element.nextElementSibling;
+    }
+    if (dd.length) {
+        yield { dt: [...dt], dd: [...dd] };
+    }
+}
+
+/**
+ * Specifications tends to keep existing keys even after a member relocation
+ * so that external links can be stable and won't broken.
+ */
+function retargetCommentKey(key: string, dom: DocumentFragment) {
+    const [parent, member] = key.split(/-/g);
+    if (!member) {
+        return parent;
+    }
+    const dfn = dom.getElementById(`dom-${key}`);
+    if (!dfn || !dfn.dataset.dfnFor) {
+        // The optional third word is for overloads and can be safely ignored.
+        return `${parent}-${member}`;
+    }
+    return `${dfn.dataset.dfnFor.toLowerCase()}-${member}`;
 }
 
 /**
