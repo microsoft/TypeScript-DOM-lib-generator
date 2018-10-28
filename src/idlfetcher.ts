@@ -92,7 +92,7 @@ function hyphenToCamelCase(name: string) {
 }
 
 function processComments(dom: DocumentFragment) {
-    const elements = dom.querySelectorAll("dl.domintro");
+    const elements = [...dom.querySelectorAll("dl.domintro")];
     if (!elements.length) {
         return undefined;
     }
@@ -100,6 +100,7 @@ function processComments(dom: DocumentFragment) {
     const result: Record<string, string> = {};
     for (const element of elements) {
         for (const {dt, dd} of generateDescriptionPairs(element)) {
+            elements.push(...importNestedList(dd));
             const comment = dd
                 .map(desc => getCommentText(desc.textContent!))
                 .join("\n\n");
@@ -162,6 +163,15 @@ function* generateDescriptionPairs(domIntro: Element) {
     }
     if (dd.length) {
         yield { dt: [...dt], dd: [...dd] };
+    }
+}
+
+function* importNestedList(elements: Element[]) {
+    for (const element of elements) {
+        for (const dl of element.getElementsByTagName("dl")) {
+            dl.remove();
+            yield dl;
+        }
     }
 }
 
