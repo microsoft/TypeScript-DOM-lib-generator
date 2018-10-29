@@ -546,6 +546,7 @@ interface JsonWebKey {
     ext?: boolean;
     k?: string;
     key_ops?: string[];
+    kid?: string;
     kty?: string;
     n?: string;
     oth?: RsaOtherPrimesInfo[];
