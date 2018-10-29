@@ -177,6 +177,30 @@
                                 "getExtension(extensionName: \"ANGLE_instanced_arrays\"): ANGLE_instanced_arrays | null",
                                 "getExtension(extensionName: string): any"
                             ]
+                        },
+                        "uniform1fv": {
+                            "name": "uniform1fv",
+                            "override-signatures": [
+                                "uniform1fv(location: WebGLUniformLocation | null, v: Float32List | ArrayLike<number>): void"
+                            ]
+                        },
+                        "uniform2fv": {
+                            "name": "uniform2fv",
+                            "override-signatures": [
+                                "uniform2fv(location: WebGLUniformLocation | null, v: Float32List | ArrayLike<number>): void"
+                            ]
+                        },
+                        "uniform3fv": {
+                            "name": "uniform3fv",
+                            "override-signatures": [
+                              "uniform3fv(location: WebGLUniformLocation | null, v: Float32List | ArrayLike<number>): void"
+                            ]
+                        },
+                        "uniform4fv": {
+                            "name": "uniform4fv",
+                            "override-signatures": [
+                                "uniform4fv(location: WebGLUniformLocation | null, v: Float32List | ArrayLike<number>): void"
+                            ]
                         }
                     }
                 }
