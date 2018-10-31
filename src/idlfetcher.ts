@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
+import innerText from "styleless-innertext";
 
 fetchIDLs(process.argv.slice(2));
 
@@ -102,7 +103,7 @@ function processComments(dom: DocumentFragment) {
         for (const {dt, dd} of generateDescriptionPairs(element)) {
             elements.push(...importNestedList(dd));
             const comment = dd
-                .map(desc => getCommentText(desc.textContent!))
+                .map(desc => getCommentText(innerText(desc)))
                 .join("\n\n");
             for (const key of dt.map(term => getKey(term.innerHTML))) {
                 if (!key) {
@@ -141,8 +142,8 @@ function getCommentText(text: string) {
 }
 
 function* generateDescriptionPairs(domIntro: Element) {
-    const dt: Element[] = [];
-    const dd: Element[] = [];
+    const dt: HTMLDataElement[] = [];
+    const dd: HTMLDataElement[] = [];
     let element = domIntro.firstElementChild;
     while (element) {
         switch (element.localName) {
@@ -151,10 +152,10 @@ function* generateDescriptionPairs(domIntro: Element) {
                     yield { dt: [...dt], dd: [...dd] };
                     dt.length = dd.length = 0;
                 }
-                dt.push(element)
+                dt.push(element as HTMLDataElement)
                 break;
             case "dd":
-                dd.push(element)
+                dd.push(element as HTMLDataElement)
                 break;
             default:
                 debugger;
