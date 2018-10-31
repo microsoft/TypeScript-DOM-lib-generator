@@ -356,6 +356,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitConstant(c: Browser.Constant) {
+        emitComments(c, printer.printLine);
         printer.printLine(`readonly ${c.name}: ${convertDomTypeToTsType(c)};`);
     }
 
@@ -1039,7 +1040,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         if (dict.members) {
             mapToArray(dict.members.member)
                 .sort(compareName)
-                .forEach(m => printer.printLine(`${m.name}${m.required === 1 ? "" : "?"}: ${convertDomTypeToTsType(m)};`));
+                .forEach(m => {
+                    emitComments(m, printer.printLine);
+                    printer.printLine(`${m.name}${m.required === 1 ? "" : "?"}: ${convertDomTypeToTsType(m)};`)
+                });
         }
         if (dict["override-index-signatures"]) {
             dict["override-index-signatures"]!.forEach(s => printer.printLine(`${s};`));
