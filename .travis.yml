@@ -6,5 +6,4 @@ node_js:
 sudo: false
 
 install:
-  - npm uninstall typescript --no-save
-  - npm install
+  - npm update typescript --no-save
