@@ -2,8 +2,14 @@ import * as fs from "fs";
 import * as path from "path";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
+import getUnmergedDiffSpecs from "./git-diff";
 
-fetchIDLs(process.argv.slice(2));
+if (process.argv[2] === "--compare") {
+    getUnmergedDiffSpecs().then(compareIDLs);
+}
+else {
+    fetchIDLs(process.argv.slice(2));
+}
 
 interface IDLSource {
     url: string;
@@ -34,6 +40,41 @@ async function fetchIDLs(filter: string[]) {
         }
     }));
 }
+
+async function compareIDLs(filter: Set<string>) {
+    const idlSources = (require("../inputfiles/idlSources.json") as IDLSource[])
+        .filter(source => !source.local && filter.has(source.title));
+    let hasAnyDiff = false;
+    await Promise.all(idlSources.map(async source => {
+        const { idl, comments } = await fetchIDL(source);
+        let hasDiff = hasDifference(
+            idl + '\n',
+            fs.readFileSync(path.join(__dirname, `../inputfiles/idl/${source.title}.widl`), "utf-8")
+        );
+        if (!hasDiff && comments) {
+            hasDiff = hasDifference(
+                comments + '\n',
+                fs.readFileSync(path.join(__dirname, `../inputfiles/idl/${source.title}.commentmap.json`), "utf-8")
+            );
+        }
+        if (hasDiff) {
+            hasAnyDiff = true;
+            console.error(`"${source.title}" is different from its upstream.`);
+        }
+        else {
+            console.log(`"${source.title}" is identical with its upstream.`);
+        }
+    }));
+    if (hasAnyDiff) {
+        process.exit(1);
+    }
+}
+
+function hasDifference(x: string, y: string) {
+    y = y.replace(/\r\n/g, "\n");
+    return x !== y;
+}
+
 
 async function fetchIDL(source: IDLSource) {
     const response = await fetch(source.url);
