@@ -903,18 +903,6 @@
                     }
                 }
             },
-            "SVGElement": {
-                "name": "SVGElement",
-                "properties": {
-                    "property": {
-                        "className": {
-                            "deprecated": 1,
-                            "name": "className",
-                            "override-type": "any"
-                        }
-                    }
-                }
-            },
             "SVGSVGElement": {
                 "name": "SVGSVGElement",
                 "methods": {

@@ -22,6 +22,7 @@ enum EmitScope {
 const defaultEventType = "Event";
 const tsKeywords = new Set(["default", "delete", "continue"]);
 const extendConflictsBaseTypes: Record<string, { extendType: string[], memberNames: Set<string> }> = {
+    "Element": { extendType: ["SVGElement"], memberNames: new Set(["className"]) },
     "HTMLCollection": { extendType: ["HTMLFormControlsCollection"], memberNames: new Set(["namedItem"]) },
 };
 const eventTypeMap: Record<string, string> = {
@@ -822,7 +823,8 @@ export function emitWebIDl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     function emitInterfaceDeclaration(i: Browser.Interface) {
         function processIName(iName: string) {
-            return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
+            const conflict = extendConflictsBaseTypes[iName];
+            return conflict && (iName === i.name || conflict.extendType.includes(i.name)) ? `${iName}Base` : iName;
         }
 
         const processedIName = processIName(i.name);

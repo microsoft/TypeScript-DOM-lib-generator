@@ -4752,7 +4752,7 @@ interface ElementEventMap {
     "fullscreenerror": Event;
 }
 
-interface Element extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slotable, Animatable {
+interface ElementBase extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slotable, Animatable {
     readonly assignedSlot: HTMLSlotElement | null;
     readonly attributes: NamedNodeMap;
     /**
@@ -4760,11 +4760,6 @@ interface Element extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode,
      * set of whitespace-separated tokens through a DOMTokenList object.
      */
     readonly classList: DOMTokenList;
-    /**
-     * Returns the value of element's class content attribute. Can be set
-     * to change it.
-     */
-    className: string;
     readonly clientHeight: number;
     readonly clientLeft: number;
     readonly clientTop: number;
@@ -4906,6 +4901,14 @@ interface Element extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode,
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+interface Element extends ElementBase {
+    /**
+     * Returns the value of element's class content attribute. Can be set
+     * to change it.
+     */
+    className: string;
 }
 
 declare var Element: {
@@ -6038,7 +6041,7 @@ declare var HTMLCollection: {
     new(): HTMLCollection;
 };
 
-interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
+interface HTMLCollectionOf<T extends Element> extends HTMLCollection {
     item(index: number): T | null;
     namedItem(name: string): T | null;
     [index: number]: T;
@@ -12354,9 +12357,8 @@ declare var SVGDescElement: {
 interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMap, DocumentAndElementEventHandlersEventMap {
 }
 
-interface SVGElement extends Element, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement, ElementCSSInlineStyle {
-    /** @deprecated */
-    readonly className: any;
+interface SVGElement extends ElementBase, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement, ElementCSSInlineStyle {
+    readonly className: SVGAnimatedString;
     readonly ownerSVGElement: SVGSVGElement | null;
     readonly viewportElement: SVGElement | null;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
