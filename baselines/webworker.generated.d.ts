@@ -532,13 +532,13 @@ declare var Blob: {
     new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
 };
 
-interface Body {
+interface Body<T = any> {
     readonly body: ReadableStream<Uint8Array> | null;
     readonly bodyUsed: boolean;
     arrayBuffer(): Promise<ArrayBuffer>;
     blob(): Promise<Blob>;
     formData(): Promise<FormData>;
-    json(): Promise<any>;
+    json<P = T>(): Promise<P>;
     text(): Promise<string>;
 }
 
@@ -1358,7 +1358,7 @@ declare var FormData: {
 };
 
 interface GlobalFetch {
-    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+    fetch<T = any>(input: RequestInfo, init?: RequestInit): Promise<Response<T>>;
 }
 
 interface Headers {
@@ -2392,7 +2392,7 @@ declare var ReadableStreamReader: {
     new(): ReadableStreamReader;
 };
 
-interface Request extends Body {
+interface Request<T = any> extends Body<T>, Body {
     /**
      * Returns the cache mode associated with request, which is a string indicating
      * how the request will interact with the browser's cache when fetching.
@@ -2477,7 +2477,7 @@ declare var Request: {
     new(input: RequestInfo, init?: RequestInit): Request;
 };
 
-interface Response extends Body {
+interface Response<T = any> extends Body<T>, Body {
     readonly headers: Headers;
     readonly ok: boolean;
     readonly redirected: boolean;
@@ -3859,7 +3859,7 @@ interface WindowOrWorkerGlobalScope {
     clearTimeout(handle?: number): void;
     createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
-    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+    fetch<T = any>(input: RequestInfo, init?: RequestInit): Promise<Response<T>>;
     queueMicrotask(callback: Function): void;
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
@@ -4194,7 +4194,7 @@ declare function importScripts(...urls: string[]): void;
 declare function atob(encodedString: string): string;
 declare function btoa(rawString: string): string;
 declare var console: Console;
-declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+declare function fetch<T = any>(input: RequestInfo, init?: RequestInit): Promise<Response<T>>;
 declare var caches: CacheStorage;
 declare var crypto: Crypto;
 declare var indexedDB: IDBFactory;
@@ -4206,7 +4206,7 @@ declare function clearInterval(handle?: number): void;
 declare function clearTimeout(handle?: number): void;
 declare function createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
-declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+declare function fetch<T = any>(input: RequestInfo, init?: RequestInit): Promise<Response<T>>;
 declare function queueMicrotask(callback: Function): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;

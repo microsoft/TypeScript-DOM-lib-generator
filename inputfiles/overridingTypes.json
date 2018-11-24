@@ -8,7 +8,20 @@
                         "fetch": {
                             "name": "fetch",
                             "override-signatures": [
-                                "fetch(input: RequestInfo, init?: RequestInit): Promise<Response>"
+                                "fetch<T = any>(input: RequestInfo, init?: RequestInit): Promise<Response<T>>"
+                            ]
+                        }
+                    }
+                }
+            },
+            "WindowOrWorkerGlobalScope": {
+                "name": "WindowOrWorkerGlobalScope",
+                "methods": {
+                    "method": {
+                        "fetch": {
+                            "name": "fetch",
+                            "override-signatures": [
+                                "fetch<T = any>(input: RequestInfo, init?: RequestInit): Promise<Response<T>>"
                             ]
                         }
                     }
@@ -188,6 +201,22 @@
                             "override-type": "ReadableStream<Uint8Array> | null"
                         }
                     }
+                },
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "json": {
+                            "name": "json",
+                            "override-signatures": [
+                                "json<P = T>(): Promise<P>"
+                            ]
+                        }
+                    }
                 }
             }
         }
@@ -292,6 +321,24 @@
     },
     "interfaces": {
         "interface": {
+            "Response": {
+                "extends": "Body<T>",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ]
+            },
+            "Request": {
+                "extends": "Body<T>",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ]
+            },
             "XPathNSResolver": {
                 "methods": {
                     "method": {
@@ -554,7 +601,7 @@
                         "caretRangeFromPoint": {
                             "name": "caretRangeFromPoint",
                             "deprecated": 1,
-                            "override-signatures" :[
+                            "override-signatures": [
                                 "caretRangeFromPoint(x: number, y: number): Range"
                             ]
                         }
@@ -611,7 +658,7 @@
                         },
                         "body": {
                             "nullable": false
-                       }
+                        }
                     }
                 }
             },
@@ -670,7 +717,7 @@
                             "override-type": "ChildNode | null"
                         },
                         "namespaceURI": {
-                            "name":"namespaceURI",
+                            "name": "namespaceURI",
                             "read-only": 1,
                             "override-type": "string | null",
                             "deprecated": 1
