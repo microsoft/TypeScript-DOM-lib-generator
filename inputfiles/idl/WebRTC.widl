@@ -486,7 +486,7 @@ dictionary RTCTrackEventInit : EventInit {
 
 partial interface RTCPeerConnection {
     readonly        attribute RTCSctpTransport? sctp;
-    RTCDataChannel createDataChannel (USVString label, optional RTCDataChannelInit dataChannelDict);
+    RTCDataChannel createDataChannel ((USVString or null) label, optional RTCDataChannelInit dataChannelDict);
                     attribute EventHandler      ondatachannel;
 };
 
