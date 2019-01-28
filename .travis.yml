@@ -9,4 +9,4 @@ install:
   - npm update typescript --no-save
 
 before_script:
-  - npm run fetch -- --compare
+  - npm run fetch-idl -- --compare
