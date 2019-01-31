@@ -64,6 +64,7 @@ interface mixin GlobalEventHandlers {
   attribute EventHandler onended;
   attribute OnErrorEventHandler onerror;
   attribute EventHandler onfocus;
+  attribute EventHandler onformdata;
   attribute EventHandler oninput;
   attribute EventHandler oninvalid;
   attribute EventHandler onkeydown;
@@ -144,7 +145,7 @@ interface mixin WindowOrWorkerGlobalScope {
   void clearInterval(optional long handle = 0);
 
   // microtask queuing
-  void queueMicrotask(Function callback);
+  void queueMicrotask(VoidFunction callback);
 
   // ImageBitmap
   Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, optional ImageBitmapOptions options);
