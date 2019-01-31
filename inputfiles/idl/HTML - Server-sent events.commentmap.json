@@ -1,0 +1,6 @@
+{
+    "eventsource": "Creates a new EventSource object.\nurl is a string giving the URL that will provide the event\nstream.\nSetting withCredentials to true\nwill set the credentials mode\nfor connection requests to url to \"include\".",
+    "eventsource-url": "Returns the URL providing the event stream.",
+    "eventsource-withcredentials": "Returns true if the credentials mode\nfor connection requests to the URL providing the\nevent stream is set to \"include\", and false otherwise.",
+    "eventsource-readystate": "Returns the state of this EventSource object's connection. It can have the\nvalues described below."
+}

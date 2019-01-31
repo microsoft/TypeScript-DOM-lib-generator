@@ -1,5 +1,15 @@
+enum FullscreenNavigationUI {
+  "auto",
+  "show",
+  "hide"
+};
+
+dictionary FullscreenOptions {
+  FullscreenNavigationUI navigationUI = "auto";
+};
+
 partial interface Element {
-  Promise<void> requestFullscreen();
+  Promise<void> requestFullscreen(optional FullscreenOptions options);
 
   attribute EventHandler onfullscreenchange;
   attribute EventHandler onfullscreenerror;
@@ -15,6 +25,6 @@ partial interface Document {
   attribute EventHandler onfullscreenerror;
 };
 
-partial interface DocumentOrShadowRoot {
+partial interface mixin DocumentOrShadowRoot {
   [LenientSetter] readonly attribute Element? fullscreenElement;
 };

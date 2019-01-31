@@ -100,7 +100,7 @@ interface RTCPeerConnection : EventTarget  {
     readonly        attribute RTCSessionDescription?    remoteDescription;
     readonly        attribute RTCSessionDescription?    currentRemoteDescription;
     readonly        attribute RTCSessionDescription?    pendingRemoteDescription;
-    Promise<void>                      addIceCandidate ((RTCIceCandidateInit or RTCIceCandidate) candidate);
+    Promise<void>                      addIceCandidate (RTCIceCandidateInit candidate);
     readonly        attribute RTCSignalingState         signalingState;
     readonly        attribute RTCIceGatheringState      iceGatheringState;
     readonly        attribute RTCIceConnectionState     iceConnectionState;
@@ -124,7 +124,7 @@ partial interface RTCPeerConnection {
     Promise<void> setLocalDescription (RTCSessionDescriptionInit description, VoidFunction successCallback, RTCPeerConnectionErrorCallback failureCallback);
     Promise<void> createAnswer (RTCSessionDescriptionCallback successCallback, RTCPeerConnectionErrorCallback failureCallback);
     Promise<void> setRemoteDescription (RTCSessionDescriptionInit description, VoidFunction successCallback, RTCPeerConnectionErrorCallback failureCallback);
-    Promise<void> addIceCandidate ((RTCIceCandidateInit or RTCIceCandidate) candidate, VoidFunction successCallback, RTCPeerConnectionErrorCallback failureCallback);
+    Promise<void> addIceCandidate (RTCIceCandidateInit candidate, VoidFunction successCallback, RTCPeerConnectionErrorCallback failureCallback);
 };
 
 callback RTCPeerConnectionErrorCallback = void (DOMException error);

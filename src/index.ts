@@ -2,13 +2,13 @@ import * as Browser from "./types";
 import * as fs from "fs";
 import * as path from "path";
 import { merge, resolveExposure, markAsDeprecated, mapToArray } from "./helpers";
-import { Flavor, emitWebIDl } from "./emitter";
+import { Flavor, emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
 import { getExposedTypes } from "./expose";
 
 function emitDomWorker(webidl: Browser.WebIdl, tsWorkerOutput: string, forceKnownWorkerTypes: Set<string>) {
     const worker = getExposedTypes(webidl, "Worker", forceKnownWorkerTypes);
-    const result = emitWebIDl(worker, Flavor.Worker);
+    const result = emitWebIdl(worker, Flavor.Worker);
     fs.writeFileSync(tsWorkerOutput, result);
     return;
 }
@@ -16,13 +16,13 @@ function emitDomWorker(webidl: Browser.WebIdl, tsWorkerOutput: string, forceKnow
 function emitDomWeb(webidl: Browser.WebIdl, tsWebOutput: string, forceKnownWindowTypes: Set<string>) {
     const browser = getExposedTypes(webidl, "Window", forceKnownWindowTypes);
 
-    const result = emitWebIDl(browser, Flavor.Web);
+    const result = emitWebIdl(browser, Flavor.Web);
     fs.writeFileSync(tsWebOutput, result);
     return;
 }
 
 function emitES6DomIterators(webidl: Browser.WebIdl, tsWebIteratorsOutput: string) {
-    fs.writeFileSync(tsWebIteratorsOutput, emitWebIDl(webidl, Flavor.ES6Iterators));
+    fs.writeFileSync(tsWebIteratorsOutput, emitWebIdl(webidl, Flavor.ES6Iterators));
 }
 
 function emitDom() {
@@ -43,6 +43,7 @@ function emitDom() {
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
     const comments = require(path.join(inputFolder, "comments.json"));
+    const documentationFromMDN = apiDescriptionsToIdl(require(path.join(inputFolder, 'mdn', 'apiDescriptions.json')));
     const removedItems = require(path.join(inputFolder, "removedTypes.json"));
     const idlSources: any[] = require(path.join(inputFolder, "idlSources.json"));
     const widlStandardTypes = idlSources.map(convertWidl);
@@ -58,6 +59,22 @@ function emitDom() {
             result.partialInterfaces.forEach(markAsDeprecated);
         }
         return result;
+    }
+
+    function apiDescriptionsToIdl(descriptions: Record<string, string>) {
+        const idl: Browser.WebIdl = {
+            interfaces: {
+                interface: {}
+            }
+        };
+
+        Object.keys(descriptions).forEach(name => {
+            idl.interfaces!.interface[name] = {
+                comment: descriptions[name],
+            } as Browser.Interface;
+        });
+
+        return idl;
     }
 
     /// Load the input file
@@ -106,6 +123,8 @@ function emitDom() {
             }
         }
     }
+
+    webidl = merge(webidl, documentationFromMDN);
     webidl = prune(webidl, removedItems);
     webidl = merge(webidl, addedItems);
     webidl = merge(webidl, overriddenItems);

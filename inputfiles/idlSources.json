@@ -1,5 +1,9 @@
 [
     {
+        "url": "https://www.w3.org/TR/clipboard-apis/",
+        "title": "Clipboard"
+    },
+    {
         "url": "https://compat.spec.whatwg.org/",
         "title": "Compatibility",
         "deprecated": true
@@ -29,7 +33,11 @@
         "title": "Encoding"
     },
     {
-        "url": "https://www.w3.org/TR/FileAPI/",
+        "url": "https://www.w3.org/TR/encrypted-media/",
+        "title": "Encrypted Media Extensions"
+    },
+    {
+        "url": "https://w3c.github.io/FileAPI/",
         "title": "File"
     },
     {
@@ -39,6 +47,14 @@
     {
         "url": "https://fullscreen.spec.whatwg.org/",
         "title": "Fullscreen"
+    },
+    {
+        "url": "https://www.w3.org/TR/gamepad/",
+        "title": "Gamepad"
+    },
+    {
+        "url": "https://w3c.github.io/gamepad/extensions.html",
+        "title": "Gamepad Extensions"
     },
     {
         "url": "https://www.w3.org/TR/geolocation-API/",
@@ -135,6 +151,10 @@
         "title": "HTML - Semantics"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/server-sent-events.html",
+        "title": "HTML - Server-sent events"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/history.html",
         "title": "HTML - Session history and navigation"
     },
@@ -151,6 +171,10 @@
         "title": "HTML - The input element"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/iframe-embed-object.html",
+        "title": "HTML - The iframe, embed, and object elements"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/webappapis.html",
         "title": "HTML - Web application APIs"
     },
@@ -163,12 +187,16 @@
         "title": "HTML - User interaction"
     },
     {
-        "url": "https://w3c.github.io/webrtc-pc/identity.html",
+        "url": "https://w3c.github.io/webrtc-identity/",
         "title": "Identity for WebRTC"
     },
     {
         "url": "https://www.w3.org/TR/IndexedDB-2/",
         "title": "Indexed Database"
+    },
+    {
+        "url": "https://www.w3.org/TR/media-source/",
+        "title": "Media Source Extensions"
     },
     {
         "url": "https://w3c.github.io/navigation-timing/",
@@ -191,8 +219,16 @@
         "title": "Pointer Events"
     },
     {
+        "url": "https://www.w3.org/TR/pointerlock-2/",
+        "title": "Pointer Lock"
+    },
+    {
         "url": "https://www.w3.org/TR/push-api/",
         "title": "Push"
+    },
+    {
+        "url": "https://www.w3.org/TR/referrer-policy/",
+        "title": "Referrer Policy"
     },
     {
         "url": "https://w3c.github.io/resource-timing/",
@@ -203,12 +239,21 @@
         "title": "Screen Orientation"
     },
     {
+        "url": "https://www.w3.org/TR/selection-api/",
+        "title": "Selection"
+    },
+    {
         "url": "https://w3c.github.io/ServiceWorker/",
         "title": "Service Workers"
     },
     {
         "url": "https://storage.spec.whatwg.org/",
         "title": "Storage"
+    },
+    {
+        "url": "https://streams.spec.whatwg.org/",
+        "title": "Streams",
+        "local": true
     },
     {
         "url": "https://svgwg.org/svg2-draft/types.html",
@@ -253,6 +298,94 @@
     {
         "url": "https://www.khronos.org/registry/webgl/specs/latest/1.0/webgl.idl",
         "title": "WebGL 1"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/ANGLE_instanced_arrays/",
+        "title": "WebGL ANGLE_instanced_arrays"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/EXT_blend_minmax/",
+        "title": "WebGL EXT_blend_minmax"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/EXT_frag_depth/",
+        "title": "WebGL EXT_frag_depth"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/EXT_shader_texture_lod/",
+        "title": "WebGL EXT_shader_texture_lod"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/EXT_texture_filter_anisotropic/",
+        "title": "WebGL EXT_texture_filter_anisotropic"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/EXT_sRGB/",
+        "title": "WebGL EXT_sRGB"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_element_index_uint/",
+        "title": "WebGL OES_element_index_uint"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_standard_derivatives/",
+        "title": "WebGL OES_standard_derivatives"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_texture_half_float/",
+        "title": "WebGL OES_texture_half_float"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_texture_half_float_linear/",
+        "title": "WebGL OES_texture_half_float_linear"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_texture_float/",
+        "title": "WebGL OES_texture_float"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_texture_float_linear/",
+        "title": "WebGL OES_texture_float_linear"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/OES_vertex_array_object/",
+        "title": "WebGL OES_vertex_array_object"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_color_buffer_float/",
+        "title": "WebGL WEBGL_color_buffer_float"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_astc/",
+        "title": "WebGL WEBGL_compressed_texture_astc"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc/",
+        "title": "WebGL WEBGL_compressed_texture_s3tc"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_compressed_texture_s3tc_srgb/",
+        "title": "WebGL WEBGL_compressed_texture_s3tc_srgb"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_debug_renderer_info/",
+        "title": "WebGL WEBGL_debug_renderer_info"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_debug_shaders/",
+        "title": "WebGL WEBGL_debug_shaders"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_depth_texture/",
+        "title": "WebGL WEBGL_depth_texture"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_draw_buffers/",
+        "title": "WebGL WEBGL_draw_buffers"
+    },
+    {
+        "url": "https://www.khronos.org/registry/webgl/extensions/WEBGL_lose_context/",
+        "title": "WebGL WEBGL_lose_context"
     },
     {
         "url": "https://heycam.github.io/webidl/",

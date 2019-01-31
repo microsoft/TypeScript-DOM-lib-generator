@@ -7,7 +7,7 @@
     "request-referrerpolicy": "Returns the referrer policy associated with request. This is used during\nfetching to compute the value of the request's referrer.",
     "request-mode": "Returns the mode associated with request, which is a string indicating\nwhether the request will use CORS, or will be restricted to same-origin URLs.",
     "request-credentials": "Returns the credentials mode associated with request, which is a string\nindicating whether credentials will be sent with the request always, never, or only when sent to a\nsame-origin URL.",
-    "request-cache": "Returns the cache mode associated with request, which is a string indicating\nhow the the request will interact with the browser's cache when fetching.",
+    "request-cache": "Returns the cache mode associated with request, which is a string indicating\nhow the request will interact with the browser's cache when fetching.",
     "request-redirect": "Returns the redirect mode associated with request, which is a string\nindicating how redirects for the request will be handled during fetching. A request will follow redirects by default.",
     "request-integrity": "Returns request's subresource integrity metadata, which is a cryptographic hash of\nthe resource being fetched. Its value consists of multiple hashes separated by whitespace. [SRI]",
     "request-keepalive": "Returns a boolean indicating whether or not request can outlive the global in which\nit was created.",

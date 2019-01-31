@@ -175,7 +175,7 @@ function getConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string) 
 
 function getNamedConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string): Browser.NamedConstructor | undefined {
     for (const extAttr of extAttrs) {
-        if (extAttr.name === "NamedConstructor" && typeof extAttr.rhs.value === "string") {
+        if (extAttr.name === "NamedConstructor" && extAttr.rhs && typeof extAttr.rhs.value === "string") {
             return {
                 name: extAttr.rhs.value,
                 signature: [{

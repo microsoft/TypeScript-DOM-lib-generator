@@ -2,6 +2,7 @@
     "callback-functions": {
         "callback-function": {
             "CustomElementConstructor": null,
+            "ErrorEventHandler": null,
             "Function": null
         }
     },
@@ -41,6 +42,14 @@
     },
     "interfaces": {
         "interface": {
+            "Clipboard": {
+                "methods": {
+                    "method": {
+                        "read": null,
+                        "write": null
+                    }
+                }
+            },
             "Console": {
                 "methods": {
                     "method": {
@@ -191,6 +200,15 @@
                         "ontouchend": null,
                         "ontouchmove": null,
                         "ontouchstart": null
+                    }
+                }
+            },
+            "WheelEvent": {
+                "properties": {
+                    "property": {
+                        "wheelDelta": null,
+                        "wheelDeltaX": null,
+                        "wheelDeltaY": null
                     }
                 }
             }

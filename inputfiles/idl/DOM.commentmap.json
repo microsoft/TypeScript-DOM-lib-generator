@@ -79,7 +79,7 @@
     "document-createcdatasection": "Returns a CDATASection node whose data is data.",
     "document-createcomment": "Returns a Comment node whose data is data.",
     "document-createprocessinginstruction": "Returns a ProcessingInstruction node whose target is target and data is data.\nIf target does not match the Name production an\n\"InvalidCharacterError\" DOMException will be thrown.\nIf data contains \"?>\" an\n\"InvalidCharacterError\" DOMException will be thrown.",
-    "document-importnode": "",
+    "document-importnode": "Returns a copy of node. If deep is true, the copy also includes the node's descendants.\nIf node is a document or a shadow root, throws a\n\"NotSupportedError\" DOMException.",
     "document-adoptnode": "Moves node from another document and returns it.\nIf node is a document, throws a \"NotSupportedError\" DOMException or, if node is a shadow root, throws a\n\"HierarchyRequestError\" DOMException.",
     "documentfragment-documentfragment": "Returns a new DocumentFragment node.",
     "element-namespaceuri": "Returns the namespace.",

@@ -14,6 +14,7 @@
         "ClientData",
         "ClientQueryOptions",
         "ClientTypes",
+        "CompositeOperationOrAuto",
         "ComputedKeyframe",
         "ConstrainBoolean",
         "ConstrainDOMString",
@@ -80,7 +81,8 @@
         "RsaPssParams",
         "Transferable",
         "VideoFacingModeEnum",
-        "MouseWheelEvent"
+        "MouseWheelEvent",
+        "WorkerOptions"
     ],
     "Worker": [
         "AesCbcParams",
@@ -108,6 +110,7 @@
         "RsaKeyGenParams",
         "RsaPssParams",
         "RsaOaepParams",
-        "Transferable"
+        "Transferable",
+        "WorkerOptions"
     ]
 }

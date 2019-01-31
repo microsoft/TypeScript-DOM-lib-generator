@@ -1,6 +1,15 @@
 {
     "mixins": {
         "mixin": {
+            "DocumentOrShadowRoot": {
+                "properties": {
+                    "property": {
+                        "styleSheets": {
+                            "comment": "/**\r\n * Retrieves a collection of styleSheet objects representing the style sheets that correspond to each instance of a link or style object in the document.\r\n */"
+                        }
+                    }
+                }
+            },
             "GlobalEventHandlers": {
                 "properties": {
                     "property": {
@@ -660,15 +669,6 @@
                         },
                         "type": {
                             "comment": "/**\r\n * Gets or sets the MIME type of a media resource.\r\n */"
-                        }
-                    }
-                }
-            },
-            "DocumentOrShadowRoot": {
-                "properties": {
-                    "property": {
-                        "styleSheets": {
-                            "comment": "/**\r\n * Retrieves a collection of styleSheet objects representing the style sheets that correspond to each instance of a link or style object in the document.\r\n */"
                         }
                     }
                 }
@@ -1593,7 +1593,7 @@
                             "comment": "/**\r\n * Gets a flag that specifies whether playback is paused.\r\n */"
                         },
                         "seeking": {
-                            "comment": "/**\r\n * Gets a flag that indicates whether the the client is currently moving to a new playback position in the media resource.\r\n */"
+                            "comment": "/**\r\n * Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource.\r\n */"
                         },
                         "currentTime": {
                             "comment": "/**\r\n * Gets or sets the current playback position, in seconds.\r\n */"
@@ -1744,9 +1744,6 @@
                         "type": {
                             "comment": "/**\r\n * Sets or retrieves the MIME type of the object.\r\n */"
                         },
-                        "BaseHref": {
-                            "comment": "/**\r\n * Retrieves a string of the URL where the object tag can be found. This is often the href of the document that the object is in, or the value set by a base element.\r\n */"
-                        },
                         "validationMessage": {
                             "comment": "/**\r\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\r\n */"
                         },
@@ -1755,18 +1752,6 @@
                         },
                         "willValidate": {
                             "comment": "/**\r\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\r\n */"
-                        },
-                        "msPlayToPreferredSourceUri": {
-                            "comment": "/**\r\n * Gets or sets the path to the preferred media source. This enables the Play To target device to stream the media content, which can be DRM protected, from a different location, such as a cloud media server.\r\n */"
-                        },
-                        "msPlayToPrimary": {
-                            "comment": "/**\r\n * Gets or sets the primary DLNA PlayTo device.\r\n */"
-                        },
-                        "msPlayToDisabled": {
-                            "comment": "/**\r\n * Gets or sets whether the DLNA PlayTo device is available.\r\n */"
-                        },
-                        "msPlayToSource": {
-                            "comment": "/**\r\n * Gets the source associated with the media element for use by the PlayToManager.\r\n */"
                         }
                     }
                 },
@@ -1787,35 +1772,14 @@
                         "width": {
                             "comment": "/**\r\n * Sets or retrieves the width of the object.\r\n */"
                         },
-                        "palette": {
-                            "comment": "/**\r\n * Retrieves the palette used for the embedded document.\r\n */"
-                        },
                         "src": {
                             "comment": "/**\r\n * Sets or retrieves a URL to be loaded by the object.\r\n */"
                         },
                         "name": {
                             "comment": "/**\r\n * Sets or retrieves the name of the object.\r\n */"
                         },
-                        "pluginspage": {
-                            "comment": "/**\r\n * Retrieves the URL of the plug-in used to view an embedded document.\r\n */"
-                        },
                         "height": {
                             "comment": "/**\r\n * Sets or retrieves the height of the object.\r\n */"
-                        },
-                        "units": {
-                            "comment": "/**\r\n * Sets or retrieves the height and width units of the embed object.\r\n */"
-                        },
-                        "msPlayToPreferredSourceUri": {
-                            "comment": "/**\r\n * Gets or sets the path to the preferred media source. This enables the Play To target device to stream the media content, which can be DRM protected, from a different location, such as a cloud media server.\r\n */"
-                        },
-                        "msPlayToPrimary": {
-                            "comment": "/**\r\n * Gets or sets the primary DLNA PlayTo device.\r\n */"
-                        },
-                        "msPlayToDisabled": {
-                            "comment": "/**\r\n * Gets or sets whether the DLNA PlayTo device is available.\r\n */"
-                        },
-                        "msPlayToSource": {
-                            "comment": "/**\r\n * Gets the source associated with the media element for use by the PlayToManager.\r\n */"
                         }
                     }
                 }

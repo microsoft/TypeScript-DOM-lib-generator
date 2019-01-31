@@ -19,6 +19,58 @@
                     ]
                 }
             },
+            "DocumentOrShadowRoot": {
+                "name": "DocumentOrShadowRoot",
+                "methods": {
+                    "method": {
+                        "getSelection": {
+                            "name": "getSelection",
+                            "override-signatures": [
+                                "getSelection(): Selection | null"
+                            ]
+                        },
+                        "elementFromPoint": {
+                            "name": "elementFromPoint",
+                            "override-signatures": [
+                                "elementFromPoint(x: number, y: number): Element | null"
+                            ]
+                        },
+                        "elementsFromPoint": {
+                            "name": "elementsFromPoint",
+                            "override-signatures": [
+                                "elementsFromPoint(x: number, y: number): Element[]"
+                            ]
+                        },
+                        "caretRangeFromPoint": {
+                            "name": "caretRangeFromPoint",
+                            "deprecated": 1,
+                            "override-signatures": [
+                                "caretRangeFromPoint(x: number, y: number): Range"
+                            ]
+                        },
+                        "caretPositionFromPoint": {
+                            "name": "caretPositionFromPoint",
+                            "override-signatures": [
+                                "caretPositionFromPoint(x: number, y: number): CaretPosition | null"
+                            ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "activeElement": {
+                            "name": "activeElement",
+                            "read-only": 1,
+                            "override-type": "Element | null"
+                        },
+                        "styleSheets": {
+                            "name": "styleSheets",
+                            "read-only": 1,
+                            "override-type": "StyleSheetList"
+                        }
+                    }
+                }
+            },
             "GlobalEventHandlers": {
                 "events": {
                     "event": [
@@ -96,11 +148,11 @@
                         },
                         {
                             "name": "scroll",
-                            "type": "UIEvent"
+                            "type": "Event"
                         },
                         {
                             "name": "select",
-                            "type": "UIEvent"
+                            "type": "Event"
                         },
                         {
                             "name": "wheel",
@@ -198,7 +250,7 @@
                     "event": [
                         {
                             "name": "abort",
-                            "type": "ProgressEvent"
+                            "type": "Event"
                         }
                     ]
                 }
@@ -389,6 +441,9 @@
                             "name": "resize",
                             "override-type": "string | null"
                         },
+                        "touchAction": {
+                            "deprecated": 0
+                        },
                         "userSelect": {
                             "name": "userSelect",
                             "override-type": "string | null"
@@ -438,7 +493,7 @@
                 "methods": {
                     "method": {
                         "createObjectURL": {
-                            "name": "createObjectURL",
+                            "exposed": "Window Worker",
                             "override-signatures": [
                                 "createObjectURL(object: any): string"
                             ]
@@ -599,12 +654,6 @@
                             "override-signatures": [
                                 "insertAdjacentText(where: InsertPosition, text: string): void"
                             ]
-                        },
-                        "attachShadow": {
-                            "name": "attachShadow",
-                            "override-signatures": [
-                                "attachShadow(shadowRootInitDict: ShadowRootInit): ShadowRoot"
-                            ]
                         }
                     }
                 },
@@ -618,11 +667,6 @@
                         "slot": {
                             "name": "slot",
                             "override-type": "string"
-                        },
-                        "shadowRoot": {
-                            "name": "shadowRoot",
-                            "read-only": 1,
-                            "override-type": "ShadowRoot | null"
                         }
                     }
                 }
@@ -634,67 +678,11 @@
                             "name": "createElementNS",
                             "additional-signatures": [
                                 "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement",
+                                "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"a\"): SVGAElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"circle\"): SVGCircleElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"clipPath\"): SVGClipPathElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"componentTransferFunction\"): SVGComponentTransferFunctionElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"defs\"): SVGDefsElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"desc\"): SVGDescElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"ellipse\"): SVGEllipseElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feBlend\"): SVGFEBlendElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feColorMatrix\"): SVGFEColorMatrixElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feComponentTransfer\"): SVGFEComponentTransferElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feComposite\"): SVGFECompositeElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feConvolveMatrix\"): SVGFEConvolveMatrixElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feDiffuseLighting\"): SVGFEDiffuseLightingElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feDisplacementMap\"): SVGFEDisplacementMapElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feDistantLight\"): SVGFEDistantLightElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feFlood\"): SVGFEFloodElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feFuncA\"): SVGFEFuncAElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feFuncB\"): SVGFEFuncBElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feFuncG\"): SVGFEFuncGElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feFuncR\"): SVGFEFuncRElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feGaussianBlur\"): SVGFEGaussianBlurElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feImage\"): SVGFEImageElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feMerge\"): SVGFEMergeElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feMergeNode\"): SVGFEMergeNodeElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feMorphology\"): SVGFEMorphologyElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feOffset\"): SVGFEOffsetElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"fePointLight\"): SVGFEPointLightElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feSpecularLighting\"): SVGFESpecularLightingElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feSpotLight\"): SVGFESpotLightElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feTile\"): SVGFETileElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"feTurbulence\"): SVGFETurbulenceElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"filter\"): SVGFilterElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"foreignObject\"): SVGForeignObjectElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"g\"): SVGGElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"image\"): SVGImageElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"gradient\"): SVGGradientElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"line\"): SVGLineElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"linearGradient\"): SVGLinearGradientElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"marker\"): SVGMarkerElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"mask\"): SVGMaskElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"path\"): SVGPathElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"metadata\"): SVGMetadataElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"pattern\"): SVGPatternElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"polygon\"): SVGPolygonElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"polyline\"): SVGPolylineElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"radialGradient\"): SVGRadialGradientElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"rect\"): SVGRectElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"svg\"): SVGSVGElement",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"script\"): SVGScriptElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"stop\"): SVGStopElement",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"style\"): SVGStyleElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"switch\"): SVGSwitchElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"symbol\"): SVGSymbolElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"tspan\"): SVGTSpanElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"textContent\"): SVGTextContentElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"text\"): SVGTextElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"textPath\"): SVGTextPathElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"textPositioning\"): SVGTextPositioningElement",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"title\"): SVGTitleElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"use\"): SVGUseElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"view\"): SVGViewElement",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement",
                                 "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
                             ]
@@ -737,26 +725,6 @@
                     }
                 }
             },
-            "ClipboardEventInit": {
-                "exposed": "Window",
-                "name": "ClipboardEventInit",
-                "extends": "EventInit",
-                "properties": {
-                    "property": {
-                        "data": {
-                            "name": "data",
-                            "override-type": "string",
-                            "required": 0
-                        },
-                        "dataType": {
-                            "name": "dataType",
-                            "override-type": "string",
-                            "required": 0
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "IDBArrayKey": {
                 "name": "IDBArrayKey",
                 "extends": "Array<IDBValidKey>",
@@ -766,12 +734,16 @@
                 "name": "HTMLIFrameElement",
                 "properties": {
                     "property": {
-                        "srcdoc": {
-                            "name": "srcdoc",
-                            "override-type": "string"
+                        "referrerPolicy": {
+                            "type": "ReferrerPolicy"
                         }
                     }
-                }
+                },
+                "element": [
+                    {
+                        "name": "iframe"
+                    }
+                ]
             },
             "HTMLTextAreaElement": {
                 "name": "HTMLTextAreaElement",
@@ -1056,83 +1028,16 @@
                     }
                 }
             },
-            "DocumentOrShadowRoot": {
-                "name": "DocumentOrShadowRoot",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "getSelection": {
-                            "name": "getSelection",
-                            "override-signatures": [
-                                "getSelection(): Selection | null"
-                            ]
-                        },
-                        "elementFromPoint": {
-                            "name": "elementFromPoint",
-                            "override-signatures": [
-                                "elementFromPoint(x: number, y: number): Element | null"
-                            ]
-                        },
-                        "elementsFromPoint": {
-                            "name": "elementsFromPoint",
-                            "override-signatures": [
-                                "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        }
-                    }
-                },
-                "properties": {
-                    "property": {
-                        "activeElement": {
-                            "name": "activeElement",
-                            "read-only": 1,
-                            "override-type": "Element | null"
-                        },
-                        "styleSheets": {
-                            "name": "styleSheets",
-                            "read-only": 1,
-                            "override-type": "StyleSheetList"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "ShadowRoot": {
                 "name": "ShadowRoot",
-                "extends": "DocumentOrShadowRoot, DocumentFragment",
-                "exposed": "Window",
                 "properties": {
                     "property": {
-                        "host": {
-                            "name": "host",
-                            "read-only": 1,
-                            "override-type": "Element"
-                        },
                         "innerHTML": {
                             "name": "innerHTML",
-                            "override-type": "string"
+                            "type": "DOMString"
                         }
                     }
-                },
-                "no-interface-object": "1"
-            },
-            "ShadowRootInit": {
-                "name": "ShadowRootInit",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "mode": {
-                            "name": "mode",
-                            "override-type": "\"open\" | \"closed\""
-                        },
-                        "delegatesFocus": {
-                            "name": "delegatesFocus",
-                            "override-type": "boolean",
-                            "required": 0
-                        }
-                    }
-                },
-                "no-interface-object": "1"
+                }
             },
             "SpeechRecognition": {
                 "events": {
@@ -1233,69 +1138,14 @@
                     ]
                 }
             },
-            "EXT_blend_minmax": {
-                "name": "EXT_blend_minmax",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "MIN_EXT": {
-                            "name": "MIN_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "MAX_EXT": {
-                            "name": "MAX_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
+            "DOMMatrixReadOnly": {
+                "methods": {
+                    "method": {
+                        "scaleNonUniform": {
+                            "deprecated": 1
                         }
                     }
-                },
-                "no-interface-object": "1"
-            },
-            "EXT_frag_depth": {
-                "name": "EXT_frag_depth",
-                "exposed": "Window",
-                "properties": {
-                    "property": {}
-                },
-                "no-interface-object": "1"
-            },
-            "EXT_shader_texture_lod": {
-                "name": "EXT_shader_texture_lod",
-                "exposed": "Window",
-                "properties": {
-                    "property": {}
-                },
-                "no-interface-object": "1"
-            },
-            "EXT_sRGB": {
-                "name": "EXT_sRGB",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "SRGB_EXT": {
-                            "name": "SRGB_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "SRGB_ALPHA_EXT": {
-                            "name": "SRGB_ALPHA_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "SRGB8_ALPHA8_EXT": {
-                            "name": "SRGB8_ALPHA8_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING_EXT": {
-                            "name": "FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
+                }
             },
             "DOMTokenList": {
                 "name": "DOMTokenList",
@@ -1311,596 +1161,15 @@
                     }
                 }
             },
-            "OES_vertex_array_object": {
-                "name": "OES_vertex_array_object",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "VERTEX_ARRAY_BINDING_OES": {
-                            "name": "VERTEX_ARRAY_BINDING_OES",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "createVertexArrayOES": {
-                            "name": "createVertexArrayOES",
-                            "override-signatures": [
-                                "createVertexArrayOES(): WebGLVertexArrayObjectOES"
-                            ]
-                        },
-                        "deleteVertexArrayOES": {
-                            "name": "deleteVertexArrayOES",
-                            "override-signatures": [
-                                "deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES): void"
-                            ]
-                        },
-                        "isVertexArrayOES": {
-                            "name": "isVertexArrayOES",
-                            "override-signatures": [
-                                "isVertexArrayOES(value: any): value is WebGLVertexArrayObjectOES"
-                            ]
-                        },
-                        "bindVertexArrayOES": {
-                            "name": "bindVertexArrayOES",
-                            "override-signatures": [
-                                "bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES): void"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "WebGLVertexArrayObjectOES": {
-                "name": "WebGLVertexArrayObjectOES",
-                "exposed": "Window",
-                "properties": {
-                    "property": {}
-                },
-                "no-interface-object": "1"
-            },
-            "WEBGL_color_buffer_float": {
-                "name": "WEBGL_color_buffer_float",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "RGBA32F_EXT": {
-                            "name": "RGBA32F_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "RGB32F_EXT": {
-                            "name": "RGB32F_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT": {
-                            "name": "FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "UNSIGNED_NORMALIZED_EXT": {
-                            "name": "UNSIGNED_NORMALIZED_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "WEBGL_compressed_texture_astc": {
-                "name": "WEBGL_compressed_texture_astc",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "COMPRESSED_RGBA_ASTC_4x4_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_4x4_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_5x4_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_5x4_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_5x5_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_5x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_6x5_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_6x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_6x6_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_6x6_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_8x5_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_8x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_8x6_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_8x6_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_8x8_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_8x8_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_10x5_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_10x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_10x6_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_10x6_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_10x8_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_10x8_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_10x10_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_10x10_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_12x10_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_12x10_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_RGBA_ASTC_12x12_KHR": {
-                            "name": "COMPRESSED_RGBA_ASTC_12x12_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_4x4_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_5x4_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_5x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_6x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_6x6_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_8x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_8x6_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_8x8_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x5_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x6_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x8_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_10x10_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_12x10_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR": {
-                            "name": "COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "getSupportedProfiles": {
-                            "name": "getSupportedProfiles",
-                            "override-signatures": [
-                                "getSupportedProfiles(): string[]"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "WEBGL_compressed_texture_s3tc_srgb": {
-                "name": "WEBGL_compressed_texture_s3tc_srgb",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "COMPRESSED_SRGB_S3TC_DXT1_EXT": {
-                            "name": "COMPRESSED_SRGB_S3TC_DXT1_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT": {
-                            "name": "COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT": {
-                            "name": "COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT": {
-                            "name": "COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "WEBGL_debug_shaders": {
-                "name": "WEBGL_debug_shaders",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "getTranslatedShaderSource": {
-                            "name": "getTranslatedShaderSource",
-                            "override-signatures": [
-                                "getTranslatedShaderSource(shader: WebGLShader): string"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "WEBGL_draw_buffers": {
-                "name": "WEBGL_draw_buffers",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "COLOR_ATTACHMENT0_WEBGL": {
-                            "name": "COLOR_ATTACHMENT0_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT1_WEBGL": {
-                            "name": "COLOR_ATTACHMENT1_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT2_WEBGL": {
-                            "name": "COLOR_ATTACHMENT2_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT3_WEBGL": {
-                            "name": "COLOR_ATTACHMENT3_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT4_WEBGL": {
-                            "name": "COLOR_ATTACHMENT4_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT5_WEBGL": {
-                            "name": "COLOR_ATTACHMENT5_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT6_WEBGL": {
-                            "name": "COLOR_ATTACHMENT6_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT7_WEBGL": {
-                            "name": "COLOR_ATTACHMENT7_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT8_WEBGL": {
-                            "name": "COLOR_ATTACHMENT8_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT9_WEBGL": {
-                            "name": "COLOR_ATTACHMENT9_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT10_WEBGL": {
-                            "name": "COLOR_ATTACHMENT10_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT11_WEBGL": {
-                            "name": "COLOR_ATTACHMENT11_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT12_WEBGL": {
-                            "name": "COLOR_ATTACHMENT12_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT13_WEBGL": {
-                            "name": "COLOR_ATTACHMENT13_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT14_WEBGL": {
-                            "name": "COLOR_ATTACHMENT14_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "COLOR_ATTACHMENT15_WEBGL": {
-                            "name": "COLOR_ATTACHMENT15_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER0_WEBGL": {
-                            "name": "DRAW_BUFFER0_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER1_WEBGL": {
-                            "name": "DRAW_BUFFER1_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER2_WEBGL": {
-                            "name": "DRAW_BUFFER2_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER3_WEBGL": {
-                            "name": "DRAW_BUFFER3_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER4_WEBGL": {
-                            "name": "DRAW_BUFFER4_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER5_WEBGL": {
-                            "name": "DRAW_BUFFER5_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER6_WEBGL": {
-                            "name": "DRAW_BUFFER6_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER7_WEBGL": {
-                            "name": "DRAW_BUFFER7_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER8_WEBGL": {
-                            "name": "DRAW_BUFFER8_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER9_WEBGL": {
-                            "name": "DRAW_BUFFER9_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER10_WEBGL": {
-                            "name": "DRAW_BUFFER10_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER11_WEBGL": {
-                            "name": "DRAW_BUFFER11_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER12_WEBGL": {
-                            "name": "DRAW_BUFFER12_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER13_WEBGL": {
-                            "name": "DRAW_BUFFER13_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER14_WEBGL": {
-                            "name": "DRAW_BUFFER14_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "DRAW_BUFFER15_WEBGL": {
-                            "name": "DRAW_BUFFER15_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "MAX_COLOR_ATTACHMENTS_WEBGL": {
-                            "name": "MAX_COLOR_ATTACHMENTS_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "MAX_DRAW_BUFFERS_WEBGL": {
-                            "name": "MAX_DRAW_BUFFERS_WEBGL",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "drawBuffersWEBGL": {
-                            "name": "drawBuffersWEBGL",
-                            "override-signatures": [
-                                "drawBuffersWEBGL(buffers: number[]): void"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "WEBGL_lose_context": {
-                "name": "WEBGL_lose_context",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "loseContext": {
-                            "name": "loseContext",
-                            "override-signatures": [
-                                "loseContext(): void"
-                            ]
-                        },
-                        "restoreContext": {
-                            "name": "restoreContext",
-                            "override-signatures": [
-                                "restoreContext(): void"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "HTMLObjectElement": {
-                "name": "HTMLObjectElement",
-                "properties": {
-                    "property": {
-                        "typemustmatch": {
-                            "name": "typemustmatch",
-                            "override-type": "boolean"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "reportValidity": {
-                            "name": "reportValidity",
-                            "override-signatures": [
-                                "reportValidity(): boolean"
-                            ]
-                        }
-                    }
-                }
-            },
             "EventSource": {
-                "name": "EventSource",
-                "extends": "EventTarget",
-                "properties": {
-                    "property": {
-                        "url": {
-                            "name": "url",
-                            "read-only": 1,
-                            "override-type": "string"
-                        },
-                        "withCredentials": {
-                            "name": "withCredentials",
-                            "read-only": 1,
-                            "override-type": "boolean"
-                        },
-                        "CONNECTING": {
-                            "name": "CONNECTING",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "OPEN": {
-                            "name": "OPEN",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "CLOSED": {
-                            "name": "CLOSED",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "readyState": {
-                            "name": "readyState",
-                            "read-only": 1,
-                            "override-type": "number"
-                        },
-                        "onopen": {
-                            "name": "onopen",
-                            "override-type": "(evt: MessageEvent) => any"
-                        },
-                        "onmessage": {
-                            "name": "onmessage",
-                            "override-type": "(evt: MessageEvent) => any"
-                        },
-                        "onerror": {
-                            "name": "onerror",
-                            "override-type": "(evt: MessageEvent) => any"
+                "events": {
+                    "event": [
+                        {
+                            "name": "error",
+                            "type": "Event"
                         }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "close": {
-                            "name": "close",
-                            "override-signatures": [
-                                "close(): void"
-                            ]
-                        }
-                    }
-                },
-                "constructor": {
-                    "override-signatures": [
-                        "new(url: string, eventSourceInitDict?: EventSourceInit): EventSource"
                     ]
                 }
-            },
-            "EventSourceInit": {
-                "name": "EventSourceInit",
-                "properties": {
-                    "property": {
-                        "withCredentials": {
-                            "name": "withCredentials",
-                            "read-only": 1,
-                            "override-type": "boolean"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
             },
             "HTMLAnchorElement": {
                 "element": [
@@ -1983,6 +1252,9 @@
                         "name": "b"
                     },
                     {
+                        "name": "bdi"
+                    },
+                    {
                         "name": "bdo"
                     },
                     {
@@ -2025,6 +1297,9 @@
                         "name": "kbd"
                     },
                     {
+                        "name": "main"
+                    },
+                    {
                         "name": "mark"
                     },
                     {
@@ -2032,6 +1307,9 @@
                     },
                     {
                         "name": "noscript"
+                    },
+                    {
+                        "name": "rp"
                     },
                     {
                         "name": "rt"
@@ -2058,6 +1336,9 @@
                         "name": "sub"
                     },
                     {
+                        "name": "summary"
+                    },
+                    {
                         "name": "sup"
                     },
                     {
@@ -2072,6 +1353,13 @@
                 ],
                 "implements": [
                     "ElementCSSInlineStyle"
+                ]
+            },
+            "HTMLEmbedElement": {
+                "element": [
+                    {
+                        "name": "embed"
+                    }
                 ]
             },
             "HTMLFormElement": {
@@ -2176,6 +1464,13 @@
                     }
                 ]
             },
+            "HTMLObjectElement": {
+                "element": [
+                    {
+                        "name": "object"
+                    }
+                ]
+            },
             "HTMLOListElement": {
                 "element": [
                     {
@@ -2187,6 +1482,13 @@
                 "element": [
                     {
                         "name": "p"
+                    }
+                ]
+            },
+            "HTMLParamElement": {
+                "element": [
+                    {
+                        "name": "param"
                     }
                 ]
             },
@@ -2434,6 +1736,145 @@
                         }
                     }
                 }
+            },
+            "EXT_blend_minmax": {
+                "override-exposed": "Window Worker"
+            },
+            "EXT_texture_filter_anisotropic": {
+                "override-exposed": "Window Worker"
+            },
+            "EXT_frag_depth": {
+                "override-exposed": "Window Worker"
+            },
+            "EXT_shader_texture_lod": {
+                "override-exposed": "Window Worker"
+            },
+            "EXT_sRGB": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_vertex_array_object": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_color_buffer_float": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_compressed_texture_astc": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_compressed_texture_s3tc_srgb": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_debug_shaders": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_draw_buffers": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_lose_context": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_depth_texture": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_debug_renderer_info": {
+                "override-exposed": "Window Worker"
+            },
+            "WEBGL_compressed_texture_s3tc": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_texture_half_float_linear": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_texture_half_float": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_texture_float_linear": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_texture_float": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_standard_derivatives": {
+                "override-exposed": "Window Worker"
+            },
+            "OES_element_index_uint": {
+                "override-exposed": "Window Worker"
+            },
+            "ANGLE_instanced_arrays": {
+                "override-exposed": "Window Worker"
+            },
+            "WebGLVertexArrayObjectOES": {
+                "override-exposed": "Window Worker"
+            },
+            "SVGCursorElement": {
+                "name": "SVGCursorElement",
+                "extends": "SVGElement",
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "x": {
+                            "name": "x",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedLength"
+                        },
+                        "y": {
+                            "name": "y",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedLength"
+                        }
+                    }
+                }
+            },
+            "SVGAnimationElement": {
+                "name": "SVGAnimationElement",
+                "extends": "SVGElement",
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "targetElement": {
+                            "name": "targetElement",
+                            "read-only": 1,
+                            "override-type": "SVGElement"
+                        }
+                    }
+                },
+                "methods": {
+                    "method":  {
+                        "getStartTime": {
+                            "name": "getStartTime",
+                            "override-signatures": [
+                                "getStartTime(): number"
+                            ]
+                        },
+                        "getCurrentTime": {
+                            "name": "getCurrentTime",
+                            "override-signatures": [
+                                "getCurrentTime(): number"
+                            ]
+                        },
+                        "getSimpleDuration": {
+                            "name": "getSimpleDuration",
+                            "override-signatures": [
+                                "getSimpleDuration(): number"
+                            ]
+                        }
+                    }
+                }
+            },
+            "SVGAnimateElement": {
+                "name": "SVGAnimateElement",
+                "extends": "SVGAnimationElement",
+                "exposed": "Window"
+            },
+            "SVGAnimateTransformElement": {
+                "name": "SVGAnimateTransformElement",
+                "extends": "SVGAnimationElement",
+                "exposed": "Window"
+            },
+            "SVGAnimateMotionElement": {
+                "name": "SVGAnimateMotionElement",
+                "extends": "SVGAnimationElement",
+                "exposed": "Window"
             }
         }
     },
@@ -2471,6 +1912,35 @@
                             "name": "composed",
                             "override-type": "boolean",
                             "required": 0
+                        }
+                    }
+                }
+            },
+            "ShadowRootInit": {
+                "members": {
+                    "member": {
+                        "delegatesFocus": {
+                            "name": "delegatesFocus",
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "WorkerOptions": {
+                "name": "WorkerOptions",
+                "members": {
+                    "member": {
+                        "type": {
+                            "name": "type",
+                            "type": "WorkerType"
+                        },
+                        "credentials": {
+                            "name": "credentials",
+                            "type": "RequestCredentials"
+                        },
+                        "name": {
+                            "name": "name",
+                            "type": "DOMString"
                         }
                     }
                 }
@@ -2533,7 +2003,8 @@
             },
             {
                 "new-type": "MouseWheelEvent",
-                "type": "WheelEvent"
+                "type": "WheelEvent",
+                "deprecated": 1
             },
             {
                 "new-type": "WindowProxy",

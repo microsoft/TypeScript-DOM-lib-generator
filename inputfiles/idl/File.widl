@@ -12,8 +12,11 @@ interface Blob {
             optional DOMString contentType);
 };
 
+enum EndingType { "transparent", "native" };
+
 dictionary BlobPropertyBag {
   DOMString type = "";
+  EndingType endings = "transparent";
 };
 
 typedef (BufferSource or Blob or USVString) BlobPart;
@@ -43,7 +46,7 @@ interface FileReader: EventTarget {
   // async read methods
   void readAsArrayBuffer(Blob blob);
   void readAsBinaryString(Blob blob);
-  void readAsText(Blob blob, optional DOMString label);
+  void readAsText(Blob blob, optional DOMString encoding);
   void readAsDataURL(Blob blob);
 
   void abort();
@@ -77,7 +80,7 @@ interface FileReaderSync {
 
   ArrayBuffer readAsArrayBuffer(Blob blob);
   DOMString readAsBinaryString(Blob blob);
-  DOMString readAsText(Blob blob, optional DOMString label);
+  DOMString readAsText(Blob blob, optional DOMString encoding);
   DOMString readAsDataURL(Blob blob);
 };
 

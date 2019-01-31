@@ -16,6 +16,7 @@ export interface Param extends Typed {
 export interface Signature extends Typed {
     param?: Param[];
     "param-min-required"?: number,
+    "deprecated"?: 1
 }
 
 export interface Member extends Typed {
@@ -102,6 +103,7 @@ export interface CallbackFunction {
     tags?: string;
     "override-signatures"?: string[];
     specs?: string;
+    "type-parameters"?: TypeParameter[];
 }
 
 export interface Constructor {
@@ -140,12 +142,14 @@ export interface Element {
 
 export interface TypeParameter {
     name: string;
+    extends?: string;
     default?: string;
 }
 
 export interface Interface {
     name: string;
     extends: string;
+    comment?: string;
     constants?: {
         constant: Record<string, Constant>;
     }
@@ -203,6 +207,7 @@ export interface Enum {
 
 export interface TypeDef extends Typed {
     "new-type": string;
+    deprecated?: 1;
 }
 
 export interface Dictionary {
@@ -211,6 +216,7 @@ export interface Dictionary {
     members: {
         member: Record<string, Member>;
     }
+    "override-index-signatures"?: string[];
     specs?: string;
     "type-parameters"?: TypeParameter[];
 }

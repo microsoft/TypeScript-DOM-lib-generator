@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "build": "tsc --p ./tsconfig.json && node ./lib/index.js",
-    "fetch": "tsc --p ./tsconfig.json && node ./lib/fetcher.js",
+    "fetch-idl": "npm run build && node ./lib/idlfetcher.js",
+    "fetch-mdn": "npm run build && node ./lib/mdnfetcher.js",
+    "fetch": "echo This could take a few minutes... && npm run fetch-idl && npm run fetch-mdn",
     "baseline-accept": "cpx \"generated\\*\" baselines\\",
     "test": "tsc --p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
   },
@@ -16,7 +18,7 @@
     "jsdom": "^11.11.0",
     "node-fetch": "^2.1.1",
     "print-diff": "^0.1.1",
-    "typescript": "^2.9.2",
+    "typescript": "next",
     "webidl2": "^13.0.2"
   }
 }

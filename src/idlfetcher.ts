@@ -3,12 +3,13 @@ import * as path from "path";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 
-fetchIDLs();
+fetchIDLs(process.argv.slice(2));
 
 interface IDLSource {
     url: string;
     title: string;
     deprecated?: boolean;
+    local?: boolean;
 }
 
 const idlSelector = [
@@ -17,9 +18,15 @@ const idlSelector = [
     "pre:not(.extract) code.idl" // HTML
 ].join(",");
 
-async function fetchIDLs() {
-    const idlSources = require("../inputfiles/idlSources.json") as IDLSource[];
+const cssPropSelector = "dfn.css[data-dfn-type=property]";
+
+async function fetchIDLs(filter: string[]) {
+    const idlSources = (require("../inputfiles/idlSources.json") as IDLSource[])
+        .filter(source => !filter.length || filter.includes(source.title));
     await Promise.all(idlSources.map(async source => {
+        if (source.local) {
+            return;
+        }
         const { idl, comments } = await fetchIDL(source);
         fs.writeFileSync(path.join(__dirname, `../inputfiles/idl/${source.title}.widl`), idl + '\n');
         if (comments) {
@@ -34,6 +41,19 @@ async function fetchIDL(source: IDLSource) {
         return { idl: await response.text() };
     }
     const dom = JSDOM.fragment(await response.text());
+    let idl = extractIDL(dom);
+    const css = extractCSSDefinitions(dom);
+    if (css) {
+        idl = idl ? idl + `\n\n${css}` : css;
+    }
+    if (!idl) {
+        throw new Error(`Found no IDL or CSS from ${source.url}`);
+    }
+    const comments = processComments(dom);
+    return { idl, comments };
+}
+
+function extractIDL(dom: DocumentFragment) {
     const elements = Array.from(dom.querySelectorAll(idlSelector))
         .filter(el => {
             if (el.parentElement && el.parentElement.classList.contains("example")) {
@@ -45,12 +65,29 @@ async function fetchIDL(source: IDLSource) {
             }
             return !previous.classList.contains("atrisk") && !previous.textContent!.includes("IDL Index");
         });
-    if (!elements.length) {
-        throw new Error(`Found no IDL code from ${source.url}`);
+    return elements.map(element => trimCommonIndentation(element.textContent!).trim()).join('\n\n');
+}
+
+function extractCSSDefinitions(dom: DocumentFragment) {
+    const properties = Array.from(dom.querySelectorAll(cssPropSelector))
+        .map(element => element.textContent!.trim());
+
+    if (!properties.length) {
+        return "";
     }
-    const idl = elements.map(element => trimCommonIndentation(element.textContent!).trim()).join('\n\n');
-    const comments = processComments(dom);
-    return { idl, comments };
+
+    return `partial interface CSSStyleDeclaration {${
+        properties.map(property => `\n  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString ${
+            hyphenToCamelCase(property)
+        };`).join("")
+    }\n};`
+}
+
+function hyphenToCamelCase(name: string) {
+    const camel = name
+        .replace(/^-(\w)/, (_, c) => c)
+        .replace(/-(\w)/g, (_, c) => c.toUpperCase());
+    return camel === "float" ? "_float" : camel;
 }
 
 function processComments(dom: DocumentFragment) {
