@@ -145,19 +145,10 @@ interface mixin WindowOrWorkerGlobalScope {
 
   // microtask queuing
   void queueMicrotask(Function callback);
-};
 
-// ImageBitmap
-interface mixin ImageBitmapWindow {
-  Promise<ImageBitmap> createImageBitmap(ImageBitmapSourceWindow image, optional ImageBitmapOptions options);
-  Promise<ImageBitmap> createImageBitmap(ImageBitmapSourceWindow image, long sx, long sy, long sw, long sh, optional ImageBitmapOptions options);
+  // ImageBitmap
+  Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, optional ImageBitmapOptions options);
+  Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, long sx, long sy, long sw, long sh, optional ImageBitmapOptions options);
 };
-interface mixin ImageBitmapWorker {
-  Promise<ImageBitmap> createImageBitmap(ImageBitmapSourceWorker image, optional ImageBitmapOptions options);
-  Promise<ImageBitmap> createImageBitmap(ImageBitmapSourceWorker image, long sx, long sy, long sw, long sh, optional ImageBitmapOptions options);
-};
-
 Window includes WindowOrWorkerGlobalScope;
-Window includes ImageBitmapWindow;
 WorkerGlobalScope includes WindowOrWorkerGlobalScope;
-WorkerGlobalScope includes ImageBitmapWorker;

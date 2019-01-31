@@ -7,11 +7,7 @@ interface ImageBitmap {
 
 typedef (CanvasImageSource or
          Blob or
-         ImageData) ImageBitmapSourceWindow;
-
-typedef (ImageBitmap or
-         Blob or
-         ImageData) ImageBitmapSourceWorker;
+         ImageData) ImageBitmapSource;
 
 enum ImageOrientation { "none", "flipY" };
 enum PremultiplyAlpha { "none", "premultiply", "default" };
