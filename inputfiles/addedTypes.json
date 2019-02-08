@@ -1067,17 +1067,6 @@
                     }
                 }
             },
-            "ShadowRoot": {
-                "name": "ShadowRoot",
-                "properties": {
-                    "property": {
-                        "innerHTML": {
-                            "name": "innerHTML",
-                            "type": "DOMString"
-                        }
-                    }
-                }
-            },
             "SpeechRecognition": {
                 "events": {
                     "event": [

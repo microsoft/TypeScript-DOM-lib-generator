@@ -14608,7 +14608,6 @@ declare var ServiceWorkerRegistration: {
 
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     readonly host: Element;
-    innerHTML: string;
     readonly mode: ShadowRootMode;
 }
 
