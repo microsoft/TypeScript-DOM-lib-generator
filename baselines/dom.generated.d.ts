@@ -3561,7 +3561,7 @@ declare var DOMException: {
     readonly WRONG_DOCUMENT_ERR: number;
 };
 
-/** Represent an object providing methods which are not dependent on any particular document. Such an object is returned by the Document.implementation property. */
+/** An object providing methods which are not dependent on any particular document. Such an object is returned by the Document.implementation property. */
 interface DOMImplementation {
     createDocument(namespaceURI: string | null, qualifiedName: string | null, doctype: DocumentType | null): Document;
     createDocumentType(qualifiedName: string, publicId: string, systemId: string): DocumentType;
@@ -8869,7 +8869,7 @@ declare var IDBCursor: {
     new(): IDBCursor;
 };
 
-/** Of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
+/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
 interface IDBCursorWithValue extends IDBCursor {
     /**
      * Returns the cursor's current value.
@@ -9410,7 +9410,7 @@ declare var IntersectionObserver: {
     new(callback: IntersectionObserverCallback, options?: IntersectionObserverInit): IntersectionObserver;
 };
 
-/** Of the Intersection Observer API describes the intersection between the target element and its root container at a specific moment of transition. */
+/** An interface of the Intersection Observer API describes the intersection between the target element and its root container at a specific moment of transition. */
 interface IntersectionObserverEntry {
     readonly boundingClientRect: ClientRect | DOMRect;
     readonly intersectionRatio: number;
@@ -9961,7 +9961,7 @@ declare var MediaKeySystemAccess: {
     new(): MediaKeySystemAccess;
 };
 
-/** Of EncryptedMediaExtensions API the represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback. */
+/** An interface of the EncryptedMediaExtensions API the represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback. */
 interface MediaKeys {
     createSession(sessionType?: MediaKeySessionType): MediaKeySession;
     setServerCertificate(serverCertificate: BufferSource): Promise<boolean>;
@@ -11051,7 +11051,7 @@ declare var Path2D: {
     new(path?: Path2D | string): Path2D;
 };
 
-/** Of the Payment Request API is used to store shipping or payment address information. */
+/** An interface of the Payment Request API is used to store shipping or payment address information. */
 interface PaymentAddress {
     readonly addressLine: string[];
     readonly city: string;
@@ -11109,7 +11109,7 @@ declare var PaymentRequestUpdateEvent: {
     new(type: string, eventInitDict?: PaymentRequestUpdateEventInit): PaymentRequestUpdateEvent;
 };
 
-/** Of the Payment Request API is returned after a user selects a payment method and approves a payment request. */
+/** An interface of the Payment Request API is returned after a user selects a payment method and approves a payment request. */
 interface PaymentResponse {
     readonly details: any;
     readonly methodName: string;
@@ -12127,7 +12127,7 @@ interface ReadableByteStreamController {
     error(error?: any): void;
 }
 
-/** Of the Streams API represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
+/** An interface of the Streams API represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
@@ -17194,7 +17194,7 @@ interface WritableStreamDefaultWriter<W = any> {
     write(chunk: W): Promise<void>;
 }
 
-/** Represent an XML document. It inherits from the generic Document and does not add any specific methods or properties to it: nevertheless, several algorithms behave differently with the two types of documents. */
+/** An XML document. It inherits from the generic Document and does not add any specific methods or properties to it: nevertheless, several algorithms behave differently with the two types of documents. */
 interface XMLDocument extends Document {
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: XMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
