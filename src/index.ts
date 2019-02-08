@@ -30,6 +30,15 @@ function emitDom() {
     const inputFolder = path.join(__SOURCE_DIRECTORY__, "../", "inputfiles");
     const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
 
+    const removeVerboseIntroductions = [
+        '^(The|A) ${name} (interface|event|object) (is|represents)?',
+        '^An object implementing the ${name} interface (is|represents)',
+        '^The ${name} is an interface representing',
+        '^This type (is|represents)?',
+
+        ['^The (Web Audio API(\\\'s)) ${name} (represents|is)', 'The $1 ']
+    ];
+
     // Create output folder
     if (!fs.existsSync(outputFolder)) {
         fs.mkdirSync(outputFolder);
@@ -70,11 +79,31 @@ function emitDom() {
 
         Object.keys(descriptions).forEach(name => {
             idl.interfaces!.interface[name] = {
-                comment: descriptions[name],
+                comment: transformVerbosity(name, descriptions[name]),
             } as Browser.Interface;
         });
 
         return idl;
+    }
+
+    function transformVerbosity(name: string, description: string): string {
+        let product = description;
+        for (const regTemplate of removeVerboseIntroductions) {
+            let template: string, replace: string;
+            if (typeof regTemplate === 'string') {
+                template = regTemplate;
+                replace = '';
+            }
+            else {
+                template = regTemplate[0];
+                replace = regTemplate[1];
+            }
+
+            const reg = new RegExp(template.replace(/\$\{name\}/g, name).replace(/\s+/, '\\s*') + '\\s*', 'i');
+            product = product.replace(reg, replace);
+        }
+        product = product.charAt(0).toUpperCase() + product.slice(1);
+        return product;
     }
 
     /// Load the input file
