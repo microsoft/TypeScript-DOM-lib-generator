@@ -5312,7 +5312,7 @@ declare var Gamepad: {
     new(): Gamepad;
 };
 
-/** Defines an individual button of a gamepad or other controller, allowing access to the current state of different types of buttons available on the control device. */
+/** An individual button of a gamepad or other controller, allowing access to the current state of different types of buttons available on the control device. */
 interface GamepadButton {
     readonly pressed: boolean;
     readonly touched: boolean;
@@ -12556,7 +12556,7 @@ declare var SVGClipPathElement: {
     new(): SVGClipPathElement;
 };
 
-/** Defines a base interface used by the component transfer function interfaces. */
+/** A base interface used by the component transfer function interfaces. */
 interface SVGComponentTransferFunctionElement extends SVGElement {
     readonly amplitude: SVGAnimatedNumber;
     readonly exponent: SVGAnimatedNumber;
@@ -14306,7 +14306,7 @@ interface SVGURIReference {
     readonly href: SVGAnimatedString;
 }
 
-/** Defines a commonly used set of constants used for reflecting gradientUnits, patternContentUnits and other similar attributes. */
+/** A commonly used set of constants used for reflecting gradientUnits, patternContentUnits and other similar attributes. */
 interface SVGUnitTypes {
     readonly SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: number;
     readonly SVG_UNIT_TYPE_UNKNOWN: number;
