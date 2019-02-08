@@ -2356,7 +2356,7 @@ declare var CSSImportRule: {
     new(): CSSImportRule;
 };
 
-/** Describes an object representing a set of style for a given keyframe. It corresponds to the contains of a single keyframe of a @keyframes at-rule. It implements the CSSRule interface with a type value of 8 (CSSRule.KEYFRAME_RULE). */
+/** An object representing a set of style for a given keyframe. It corresponds to the contains of a single keyframe of a @keyframes at-rule. It implements the CSSRule interface with a type value of 8 (CSSRule.KEYFRAME_RULE). */
 interface CSSKeyframeRule extends CSSRule {
     keyText: string;
     readonly style: CSSStyleDeclaration;
@@ -2367,7 +2367,7 @@ declare var CSSKeyframeRule: {
     new(): CSSKeyframeRule;
 };
 
-/** Describes an object representing a complete set of keyframes for a CSS animation. It corresponds to the contains of a whole @keyframes at-rule. It implements the CSSRule interface with a type value of 7 (CSSRule.KEYFRAMES_RULE). */
+/** An object representing a complete set of keyframes for a CSS animation. It corresponds to the contains of a whole @keyframes at-rule. It implements the CSSRule interface with a type value of 7 (CSSRule.KEYFRAMES_RULE). */
 interface CSSKeyframesRule extends CSSRule {
     readonly cssRules: CSSRuleList;
     name: string;
@@ -2391,7 +2391,7 @@ declare var CSSMediaRule: {
     new(): CSSMediaRule;
 };
 
-/** Describes an object representing a single CSS @namespace at-rule. It implements the CSSRule interface, with a type value of 10 (CSSRule.NAMESPACE_RULE). */
+/** An object representing a single CSS @namespace at-rule. It implements the CSSRule interface, with a type value of 10 (CSSRule.NAMESPACE_RULE). */
 interface CSSNamespaceRule extends CSSRule {
     readonly namespaceURI: string;
     readonly prefix: string;
@@ -2988,7 +2988,7 @@ declare var CSSStyleSheet: {
     new(): CSSStyleSheet;
 };
 
-/** Describes an object representing a single CSS @supports at-rule. It implements the CSSConditionRule interface, and therefore the CSSRule and CSSGroupingRule interfaces with a type value of 12 (CSSRule.SUPPORTS_RULE). */
+/** An object representing a single CSS @supports at-rule. It implements the CSSConditionRule interface, and therefore the CSSRule and CSSGroupingRule interfaces with a type value of 12 (CSSRule.SUPPORTS_RULE). */
 interface CSSSupportsRule extends CSSConditionRule {
 }
 
@@ -3488,7 +3488,7 @@ declare var CustomEvent: {
     new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
-/** Describes an error object that contains an error name. */
+/** An error object that contains an error name. */
 interface DOMError {
     readonly name: string;
     toString(): string;
@@ -11969,7 +11969,7 @@ declare var RTCSctpTransport: {
     new(): RTCSctpTransport;
 };
 
-/** Describes one end of a connection—or potential connection—and how it's configured. Each RTCSessionDescription consists of a description type indicating which part of the offer/answer negotiation process it describes and of the SDP descriptor of the session. */
+/** One end of a connection—or potential connection—and how it's configured. Each RTCSessionDescription consists of a description type indicating which part of the offer/answer negotiation process it describes and of the SDP descriptor of the session. */
 interface RTCSessionDescription {
     readonly sdp: string;
     readonly type: RTCSdpType;
