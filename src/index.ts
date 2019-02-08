@@ -32,7 +32,7 @@ function emitDom() {
 
     // ${name} will be substituted with the name of an interface
     const removeVerboseIntroductions: (RegExp | [RegExp, string])[] = [
-        [/^(The|A) ByteLengthQueuingStrategy interface of (the\s*)* (Streams API)/, 'An interface of the $3 '],
+        [/^(The|A) ${name} interface of (the\s*)* (Streams API)/, 'An interface of the $3 '],
         /^(The|A) ${name} (interface|event|object) (is|represents|describes)?/,
         /^An object implementing the ${name} interface (is|represents|describes)/,
         /^The ${name} is an interface representing/,
