@@ -586,7 +586,7 @@ interface BroadcastChannelEventMap {
     messageerror: MessageEvent;
 }
 
-/** Of the the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** An interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     highWaterMark: number;
     size(chunk: ArrayBufferView): number;

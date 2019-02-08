@@ -30,13 +30,15 @@ function emitDom() {
     const inputFolder = path.join(__SOURCE_DIRECTORY__, "../", "inputfiles");
     const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
 
-    const removeVerboseIntroductions = [
-        '^(The|A) ${name} (interface|event|object) (is|represents)?',
-        '^An object implementing the ${name} interface (is|represents)',
-        '^The ${name} is an interface representing',
-        '^This type (is|represents)?',
+    // ${name} will be substituted with the name of an interface
+    const removeVerboseIntroductions: (RegExp | [RegExp, string])[] = [
+        [/^(The|A) ByteLengthQueuingStrategy interface of (the\s*)* (Streams API)/, 'An interface of the $3 '],
+        /^(The|A) ${name} (interface|event|object) (is|represents)?/,
+        /^An object implementing the ${name} interface (is|represents)/,
+        /^The ${name} is an interface representing/,
+        /^This type (is|represents)?/,
 
-        ['^The (Web Audio API(\\\'s)) ${name} (represents|is)', 'The $1 ']
+        [/^The (Web Audio API(\\\'s)) ${name} (represents|is)/, 'The $1 ']
     ];
 
     // Create output folder
@@ -87,23 +89,25 @@ function emitDom() {
     }
 
     function transformVerbosity(name: string, description: string): string {
-        let product = description;
         for (const regTemplate of removeVerboseIntroductions) {
             let template: string, replace: string;
-            if (typeof regTemplate === 'string') {
-                template = regTemplate;
-                replace = '';
+            if (Array.isArray(regTemplate)) {
+                template = regTemplate[0].source;
+                replace = regTemplate[1];
             }
             else {
-                template = regTemplate[0];
-                replace = regTemplate[1];
+                template = regTemplate.source;
+                replace = '';
             }
 
             const reg = new RegExp(template.replace(/\$\{name\}/g, name).replace(/\s+/, '\\s*') + '\\s*', 'i');
-            product = product.replace(reg, replace);
+            const product = description.replace(reg, replace);
+            if (product !== description) {
+                return product.charAt(0).toUpperCase() + product.slice(1);
+            }
         }
-        product = product.charAt(0).toUpperCase() + product.slice(1);
-        return product;
+
+        return description;
     }
 
     /// Load the input file
