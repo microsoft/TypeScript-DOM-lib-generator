@@ -1420,7 +1420,7 @@ interface GlobalFetch {
     fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
 }
 
-/** Of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** An interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -1444,7 +1444,7 @@ interface HkdfCtrParams extends Algorithm {
 interface IDBArrayKey extends Array<IDBValidKey> {
 }
 
-/** Of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. */
+/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. */
 interface IDBCursor {
     /**
      * Returns the direction ("next", "nextunique", "prev" or "prevunique")
@@ -1518,7 +1518,7 @@ interface IDBDatabaseEventMap {
     "versionchange": IDBVersionChangeEvent;
 }
 
-/** Of the IndexedDB API provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
+/** An interface of the IndexedDB API provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
 interface IDBDatabase extends EventTarget {
     /**
      * Returns the name of the database.
@@ -1928,7 +1928,7 @@ declare var IDBTransaction: {
     new(): IDBTransaction;
 };
 
-/** Of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
+/** An interface of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
 interface IDBVersionChangeEvent extends Event {
     readonly newVersion: number | null;
     readonly oldVersion: number;
@@ -1991,7 +1991,7 @@ declare var ImageData: {
     new(array: Uint8ClampedArray, width: number, height: number): ImageData;
 };
 
-/** Of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties. */
+/** An interface of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
     readonly port1: MessagePort;
     readonly port2: MessagePort;
@@ -2041,7 +2041,7 @@ interface MessagePortEventMap {
     "messageerror": MessageEvent;
 }
 
-/** Of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
+/** An interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
 interface MessagePort extends EventTarget {
     onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
@@ -2119,7 +2119,7 @@ interface NotificationEventMap {
     "show": Event;
 }
 
-/** Of the Notifications API is used to configure and display desktop notifications to the user. */
+/** An interface of the Notifications API is used to configure and display desktop notifications to the user. */
 interface Notification extends EventTarget {
     readonly actions: ReadonlyArray<NotificationAction>;
     readonly badge: string;
@@ -2342,7 +2342,7 @@ declare var PromiseRejectionEvent: {
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
-/** Of the Push API represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription. */
+/** An interface of the Push API represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription. */
 interface PushEvent extends ExtendableEvent {
     readonly data: PushMessageData | null;
 }
@@ -2352,7 +2352,7 @@ declare var PushEvent: {
     new(type: string, eventInitDict?: PushEventInit): PushEvent;
 };
 
-/** Of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
+/** An interface of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
 interface PushManager {
     getSubscription(): Promise<PushSubscription | null>;
     permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
@@ -2365,7 +2365,7 @@ declare var PushManager: {
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
 
-/** Of the Push API provides methods which let you retrieve the push data sent by a server in various formats. */
+/** An interface of the Push API provides methods which let you retrieve the push data sent by a server in various formats. */
 interface PushMessageData {
     arrayBuffer(): ArrayBuffer;
     blob(): Blob;
@@ -2378,7 +2378,7 @@ declare var PushMessageData: {
     new(): PushMessageData;
 };
 
-/** Of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service. */
+/** An interface of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service. */
 interface PushSubscription {
     readonly endpoint: string;
     readonly expirationTime: number | null;
@@ -2486,7 +2486,7 @@ declare var ReadableStreamReader: {
     new(): ReadableStreamReader;
 };
 
-/** Of the Fetch API represents a resource request. */
+/** An interface of the Fetch API represents a resource request. */
 interface Request extends Body {
     /**
      * Returns the cache mode associated with request, which is a string indicating
@@ -2572,7 +2572,7 @@ declare var Request: {
     new(input: RequestInfo, init?: RequestInit): Request;
 };
 
-/** Of the Fetch API represents the response to a request. */
+/** An interface of the Fetch API represents the response to a request. */
 interface Response extends Body {
     readonly headers: Headers;
     readonly ok: boolean;
@@ -3992,7 +3992,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
 }
 
-/** Of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
+/** An interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
     postMessage(message: any, transfer?: Transferable[]): void;
@@ -4012,7 +4012,7 @@ interface WorkerGlobalScopeEventMap {
     "error": ErrorEvent;
 }
 
-/** Of the Web Workers API is an interface representing the scope of any worker. Workers have no browsing context; this scope contains the information usually conveyed by Window objects — in this case event handlers, the console or the associated WorkerNavigator object. Each WorkerGlobalScope has its own event loop. */
+/** An interface of the Web Workers API is an interface representing the scope of any worker. Workers have no browsing context; this scope contains the information usually conveyed by Window objects — in this case event handlers, the console or the associated WorkerNavigator object. Each WorkerGlobalScope has its own event loop. */
 interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, GlobalFetch, WindowOrWorkerGlobalScope {
     readonly caches: CacheStorage;
     readonly isSecureContext: boolean;

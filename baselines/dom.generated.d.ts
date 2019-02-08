@@ -5293,7 +5293,7 @@ declare var GainNode: {
     new(context: BaseAudioContext, options?: GainOptions): GainNode;
 };
 
-/** Of the Gamepad API defines an individual gamepad or other controller, allowing access to information such as button presses, axis positions, and id. */
+/** An interface of the Gamepad API defines an individual gamepad or other controller, allowing access to information such as button presses, axis positions, and id. */
 interface Gamepad {
     readonly axes: ReadonlyArray<number>;
     readonly buttons: ReadonlyArray<GamepadButton>;
@@ -5324,7 +5324,7 @@ declare var GamepadButton: {
     new(): GamepadButton;
 };
 
-/** Of the Gamepad API contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected and Window.gamepaddisconnected are fired in response to. */
+/** An interface of the Gamepad API contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected and Window.gamepaddisconnected are fired in response to. */
 interface GamepadEvent extends Event {
     readonly gamepad: Gamepad;
 }
@@ -5334,7 +5334,7 @@ declare var GamepadEvent: {
     new(type: string, eventInitDict: GamepadEventInit): GamepadEvent;
 };
 
-/** Of the Gamepad API represents hardware in the controller designed to provide haptic feedback to the user (if available), most commonly vibration hardware. */
+/** An interface of the Gamepad API represents hardware in the controller designed to provide haptic feedback to the user (if available), most commonly vibration hardware. */
 interface GamepadHapticActuator {
     readonly type: GamepadHapticActuatorType;
     pulse(value: number, duration: number): Promise<boolean>;
@@ -5345,7 +5345,7 @@ declare var GamepadHapticActuator: {
     new(): GamepadHapticActuator;
 };
 
-/** Of the Gamepad API represents the pose of a WebVR controller at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
+/** An interface of the Gamepad API represents the pose of a WebVR controller at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
 interface GamepadPose {
     readonly angularAcceleration: Float32Array | null;
     readonly angularVelocity: Float32Array | null;
@@ -8774,7 +8774,7 @@ declare var HashChangeEvent: {
     new(type: string, eventInitDict?: HashChangeEventInit): HashChangeEvent;
 };
 
-/** Of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** An interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -8815,7 +8815,7 @@ interface HkdfCtrParams extends Algorithm {
 interface IDBArrayKey extends Array<IDBValidKey> {
 }
 
-/** Of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. */
+/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. */
 interface IDBCursor {
     /**
      * Returns the direction ("next", "nextunique", "prev" or "prevunique")
@@ -8889,7 +8889,7 @@ interface IDBDatabaseEventMap {
     "versionchange": IDBVersionChangeEvent;
 }
 
-/** Of the IndexedDB API provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
+/** An interface of the IndexedDB API provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
 interface IDBDatabase extends EventTarget {
     /**
      * Returns the name of the database.
@@ -9303,7 +9303,7 @@ declare var IDBTransaction: {
     new(): IDBTransaction;
 };
 
-/** Of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
+/** An interface of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
 interface IDBVersionChangeEvent extends Event {
     readonly newVersion: number | null;
     readonly oldVersion: number;
@@ -9394,7 +9394,7 @@ declare var ImageData: {
     new(array: Uint8ClampedArray, width: number, height: number): ImageData;
 };
 
-/** Of the Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport. */
+/** An interface of the Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport. */
 interface IntersectionObserver {
     readonly root: Element | null;
     readonly rootMargin: string;
@@ -9896,7 +9896,7 @@ declare var MediaError: {
     readonly MS_MEDIA_ERR_ENCRYPTED: number;
 };
 
-/** Of the EncryptedMediaExtensions API contains the content and related data when the content decryption module generates a message for the session. */
+/** An interface of the EncryptedMediaExtensions API contains the content and related data when the content decryption module generates a message for the session. */
 interface MediaKeyMessageEvent extends Event {
     readonly message: ArrayBuffer;
     readonly messageType: MediaKeyMessageType;
@@ -9912,7 +9912,7 @@ interface MediaKeySessionEventMap {
     "message": MessageEvent;
 }
 
-/** Of the EncryptedMediaExtensions API represents a context for message exchange with a content decryption module (CDM). */
+/** An interface of the EncryptedMediaExtensions API represents a context for message exchange with a content decryption module (CDM). */
 interface MediaKeySession extends EventTarget {
     readonly closed: Promise<void>;
     readonly expiration: number;
@@ -9936,7 +9936,7 @@ declare var MediaKeySession: {
     new(): MediaKeySession;
 };
 
-/** Of the EncryptedMediaExtensions API is a read-only map of media key statuses by key IDs. */
+/** An interface of the EncryptedMediaExtensions API is a read-only map of media key statuses by key IDs. */
 interface MediaKeyStatusMap {
     readonly size: number;
     get(keyId: BufferSource): any;
@@ -9949,7 +9949,7 @@ declare var MediaKeyStatusMap: {
     new(): MediaKeyStatusMap;
 };
 
-/** Of the EncryptedMediaExtensions API provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess method. */
+/** An interface of the EncryptedMediaExtensions API provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess method. */
 interface MediaKeySystemAccess {
     readonly keySystem: string;
     createMediaKeys(): Promise<MediaKeys>;
@@ -10027,7 +10027,7 @@ interface MediaSourceEventMap {
     "sourceopen": Event;
 }
 
-/** Of the Media Source Extensions API represents a source of media data for an HTMLMediaElement object. A MediaSource object can be attached to a HTMLMediaElement to be played in the user agent. */
+/** An interface of the Media Source Extensions API represents a source of media data for an HTMLMediaElement object. A MediaSource object can be attached to a HTMLMediaElement to be played in the user agent. */
 interface MediaSource extends EventTarget {
     readonly activeSourceBuffers: SourceBufferList;
     duration: number;
@@ -10197,7 +10197,7 @@ declare var MediaStreamTrackEvent: {
     new(typeArg: string, eventInitDict?: MediaStreamTrackEventInit): MediaStreamTrackEvent;
 };
 
-/** Of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties. */
+/** An interface of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
     readonly port1: MessagePort;
     readonly port2: MessagePort;
@@ -10247,7 +10247,7 @@ interface MessagePortEventMap {
     "messageerror": MessageEvent;
 }
 
-/** Of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
+/** An interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
 interface MessagePort extends EventTarget {
     onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
@@ -10824,7 +10824,7 @@ interface NotificationEventMap {
     "show": Event;
 }
 
-/** Of the Notifications API is used to configure and display desktop notifications to the user. */
+/** An interface of the Notifications API is used to configure and display desktop notifications to the user. */
 interface Notification extends EventTarget {
     readonly actions: ReadonlyArray<NotificationAction>;
     readonly badge: string;
@@ -11077,7 +11077,7 @@ interface PaymentRequestEventMap {
     "shippingoptionchange": Event;
 }
 
-/** Of the Payment Request API is the primary access point into the API, and lets web content and apps accept payments from the end user. */
+/** An interface of the Payment Request API is the primary access point into the API , and lets web content and apps accept payments from the end user. */
 interface PaymentRequest extends EventTarget {
     readonly id: string;
     onshippingaddresschange: ((this: PaymentRequest, ev: Event) => any) | null;
@@ -11099,7 +11099,7 @@ declare var PaymentRequest: {
     new(methodData: PaymentMethodData[], details: PaymentDetailsInit, options?: PaymentOptions): PaymentRequest;
 };
 
-/** Of the the Payment Request API enables a web page to update the details of a PaymentRequest in response to a user action. */
+/** An interface of the Payment Request API enables a web page to update the details of a PaymentRequest in response to a user action. */
 interface PaymentRequestUpdateEvent extends Event {
     updateWith(detailsPromise: PaymentDetailsUpdate | Promise<PaymentDetailsUpdate>): void;
 }
@@ -11478,7 +11478,7 @@ declare var PromiseRejectionEvent: {
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
-/** Of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
+/** An interface of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
 interface PushManager {
     getSubscription(): Promise<PushSubscription | null>;
     permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
@@ -11491,7 +11491,7 @@ declare var PushManager: {
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
 
-/** Of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service. */
+/** An interface of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service. */
 interface PushSubscription {
     readonly endpoint: string;
     readonly expirationTime: number | null;
@@ -11896,7 +11896,7 @@ declare var RTCPeerConnectionIceEvent: {
     new(type: string, eventInitDict?: RTCPeerConnectionIceEventInit): RTCPeerConnectionIceEvent;
 };
 
-/** Of the the WebRTC API manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection. */
+/** An interface of the WebRTC API manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection. */
 interface RTCRtpReceiver {
     readonly rtcpTransport: RTCDtlsTransport | null;
     readonly track: MediaStreamTrack;
@@ -12192,7 +12192,7 @@ declare var ReadableStreamReader: {
     new(): ReadableStreamReader;
 };
 
-/** Of the Fetch API represents a resource request. */
+/** An interface of the Fetch API represents a resource request. */
 interface Request extends Body {
     /**
      * Returns the cache mode associated with request, which is a string indicating
@@ -12278,7 +12278,7 @@ declare var Request: {
     new(input: RequestInfo, init?: RequestInit): Request;
 };
 
-/** Of the Fetch API represents the response to a request. */
+/** An interface of the Fetch API represents the response to a request. */
 interface Response extends Body {
     readonly headers: Headers;
     readonly ok: boolean;
@@ -14811,7 +14811,7 @@ interface SpeechSynthesisEventMap {
     "voiceschanged": Event;
 }
 
-/** Of the Web Speech API is the controller interface for the speech service; this can be used to retrieve information about the synthesis voices available on the device, start and pause speech, and other commands besides. */
+/** An interface of the Web Speech API is the controller interface for the speech service; this can be used to retrieve information about the synthesis voices available on the device, start and pause speech, and other commands besides. */
 interface SpeechSynthesis extends EventTarget {
     onvoiceschanged: ((this: SpeechSynthesis, ev: Event) => any) | null;
     readonly paused: boolean;
@@ -14842,7 +14842,7 @@ declare var SpeechSynthesisErrorEvent: {
     new(): SpeechSynthesisErrorEvent;
 };
 
-/** Of the Web Speech API contains information about the current state of SpeechSynthesisUtterance objects that have been processed in the speech service. */
+/** An interface of the Web Speech API contains information about the current state of SpeechSynthesisUtterance objects that have been processed in the speech service. */
 interface SpeechSynthesisEvent extends Event {
     readonly charIndex: number;
     readonly elapsedTime: number;
@@ -14865,7 +14865,7 @@ interface SpeechSynthesisUtteranceEventMap {
     "start": SpeechSynthesisEvent;
 }
 
-/** Of the Web Speech API represents a speech request. It contains the content the speech service should read and information about how to read it (e.g. language, pitch and volume.) */
+/** An interface of the Web Speech API represents a speech request. It contains the content the speech service should read and information about how to read it (e.g. language, pitch and volume.) */
 interface SpeechSynthesisUtterance extends EventTarget {
     lang: string;
     onboundary: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => any) | null;
@@ -14892,7 +14892,7 @@ declare var SpeechSynthesisUtterance: {
     new(text: string): SpeechSynthesisUtterance;
 };
 
-/** Of the Web Speech API represents a voice that the system supports. Every SpeechSynthesisVoice has its own relative speech service including information about language, name and URI. */
+/** An interface of the Web Speech API represents a voice that the system supports. Every SpeechSynthesisVoice has its own relative speech service including information about language, name and URI. */
 interface SpeechSynthesisVoice {
     readonly default: boolean;
     readonly lang: string;
@@ -14924,7 +14924,7 @@ declare var StereoPannerNode: {
     new(context: BaseAudioContext, options?: StereoPannerOptions): StereoPannerNode;
 };
 
-/** Of the Web Storage API provides access to a particular domain's session or local storage. It allows, for example, the addition, modification, or deletion of stored data items. */
+/** An interface of the Web Storage API provides access to a particular domain's session or local storage. It allows, for example, the addition, modification, or deletion of stored data items. */
 interface Storage {
     /**
      * Returns the number of key/value pairs currently present in the list associated with the
@@ -15503,7 +15503,7 @@ declare var URLSearchParams: {
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
-/** Of the WebVR API represents any VR device supported by this API. It includes generic information such as device IDs and descriptions, as well as methods for starting to present a VR scene, retrieving eye parameters and display capabilities, and other important functionality. */
+/** An interface of the WebVR API represents any VR device supported by this API . It includes generic information such as device IDs and descriptions, as well as methods for starting to present a VR scene, retrieving eye parameters and display capabilities, and other important functionality. */
 interface VRDisplay extends EventTarget {
     readonly capabilities: VRDisplayCapabilities;
     depthFar: number;
@@ -15531,7 +15531,7 @@ declare var VRDisplay: {
     new(): VRDisplay;
 };
 
-/** Of the WebVR API describes the capabilities of a VRDisplay — its features can be used to perform VR device capability tests, for example can it return position information. */
+/** An interface of the WebVR API describes the capabilities of a VRDisplay — its features can be used to perform VR device capability tests, for example can it return position information. */
 interface VRDisplayCapabilities {
     readonly canPresent: boolean;
     readonly hasExternalDisplay: boolean;
@@ -15545,7 +15545,7 @@ declare var VRDisplayCapabilities: {
     new(): VRDisplayCapabilities;
 };
 
-/** Of the WebVR API represents represents the event object of WebVR-related events (see the list of WebVR window extensions). */
+/** An interface of the WebVR API represents represents the event object of WebVR-related events (see the list of WebVR window extensions). */
 interface VRDisplayEvent extends Event {
     readonly display: VRDisplay;
     readonly reason: VRDisplayEventReason | null;
@@ -15556,7 +15556,7 @@ declare var VRDisplayEvent: {
     new(type: string, eventInitDict: VRDisplayEventInit): VRDisplayEvent;
 };
 
-/** Of the WebVR API represents all the information required to correctly render a scene for a given eye, including field of view information. */
+/** An interface of the WebVR API represents all the information required to correctly render a scene for a given eye, including field of view information. */
 interface VREyeParameters {
     /** @deprecated */
     readonly fieldOfView: VRFieldOfView;
@@ -15570,7 +15570,7 @@ declare var VREyeParameters: {
     new(): VREyeParameters;
 };
 
-/** Of the WebVR API represents a field of view defined by 4 different degree values describing the view from a center point. */
+/** An interface of the WebVR API represents a field of view defined by 4 different degree values describing the view from a center point. */
 interface VRFieldOfView {
     readonly downDegrees: number;
     readonly leftDegrees: number;
@@ -15583,7 +15583,7 @@ declare var VRFieldOfView: {
     new(): VRFieldOfView;
 };
 
-/** Of the WebVR API represents all the information needed to render a single frame of a VR scene; constructed by VRDisplay.getFrameData(). */
+/** An interface of the WebVR API represents all the information needed to render a single frame of a VR scene; constructed by VRDisplay.getFrameData(). */
 interface VRFrameData {
     readonly leftProjectionMatrix: Float32Array;
     readonly leftViewMatrix: Float32Array;
@@ -15598,7 +15598,7 @@ declare var VRFrameData: {
     new(): VRFrameData;
 };
 
-/** Of the WebVR API represents the state of a VR sensor at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
+/** An interface of the WebVR API represents the state of a VR sensor at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
 interface VRPose {
     readonly angularAcceleration: Float32Array | null;
     readonly angularVelocity: Float32Array | null;
@@ -17141,7 +17141,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
 }
 
-/** Of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
+/** An interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
     postMessage(message: any, transfer?: Transferable[]): void;
