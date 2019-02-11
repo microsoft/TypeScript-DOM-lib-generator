@@ -291,6 +291,7 @@ interface PipeOptions {
     preventAbort?: boolean;
     preventCancel?: boolean;
     preventClose?: boolean;
+    signal?: AbortSignal;
 }
 
 interface ProgressEventInit extends EventInit {

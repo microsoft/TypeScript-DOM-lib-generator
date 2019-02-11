@@ -2959,6 +2959,9 @@
                         },
                         "preventCancel": {
                             "nullable": 0
+                        },
+                        "signal": {
+                            "nullable": 0
                         }
                     }
                 }

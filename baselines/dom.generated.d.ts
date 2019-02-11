@@ -910,6 +910,7 @@ interface PipeOptions {
     preventAbort?: boolean;
     preventCancel?: boolean;
     preventClose?: boolean;
+    signal?: AbortSignal;
 }
 
 interface PointerEventInit extends MouseEventInit {
