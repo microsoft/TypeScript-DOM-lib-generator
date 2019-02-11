@@ -12150,11 +12150,6 @@ interface ReadableStreamBYOBReader {
     releaseLock(): void;
 }
 
-declare var ReadableStreamBYOBReader: {
-    prototype: ReadableStreamBYOBReader;
-    new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
-};
-
 interface ReadableStreamBYOBRequest {
     readonly view: ArrayBufferView;
     respond(bytesWritten: number): void;

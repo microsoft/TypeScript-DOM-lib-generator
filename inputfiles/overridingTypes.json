@@ -2566,11 +2566,6 @@
                 "no-interface-object": "1"
             },
             "ReadableStreamBYOBReader": {
-                "constructor": {
-                    "override-signatures": [
-                        "new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader"
-                    ]
-                },
                 "methods": {
                     "method": {
                         "read": {
@@ -2579,7 +2574,8 @@
                             ]
                         }
                     }
-                }
+                },
+                "no-interface-object": 1
             },
             "ReadableStreamBYOBRequest": {
                 "no-interface-object": 1
