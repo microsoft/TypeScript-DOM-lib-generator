@@ -31,13 +31,12 @@ function emitDom() {
     const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
 
     // ${name} will be substituted with the name of an interface
-    const removeVerboseIntroductions: (RegExp | [RegExp, string])[] = [
+    const removeVerboseIntroductions: [RegExp, string][] = [
         [/^(The|A) ${name} interface of (the\s*)*([a-z\s]+ API)(\\\'s)?/, 'An interface of the $3 '],
-        /^(The|A) ${name} (interface|event|object) (is|represents|represent|describes|defines)?/,
-        /^An object implementing the ${name} interface (is|represents|represent|describes|defines)/,
-        /^The ${name} is an interface representing/,
-        /^This type (is|represents|represent|describes|defines)?/,
-
+        [/^(The|A) ${name} (interface|event|object) (is|represents|represent|describes|defines)?/, ''],
+        [/^An object implementing the ${name} interface (is|represents|represent|describes|defines)/, ''],
+        [/^The ${name} is an interface representing/, ''],
+        [/^This type (is|represents|represent|describes|defines)?/, ''],
         [/^The ([a-z\s]+ API(\\\'s)?) ${name} (represents|is|describes|defines)/, 'The $1 ']
     ];
 
@@ -90,17 +89,9 @@ function emitDom() {
 
     function transformVerbosity(name: string, description: string): string {
         for (const regTemplate of removeVerboseIntroductions) {
-            let template: string, replace: string;
-            if (Array.isArray(regTemplate)) {
-                template = regTemplate[0].source;
-                replace = regTemplate[1];
-            }
-            else {
-                template = regTemplate.source;
-                replace = '';
-            }
+            const [{ source: template }, replace] = regTemplate;
 
-            const reg = new RegExp(template.replace(/\$\{name\}/g, name).replace(/\s+/, '\\s*') + '\\s*', 'i');
+            const reg = new RegExp(template.replace(/\$\{name\}/g, name) + '\\s*', 'i');
             const product = description.replace(reg, replace);
             if (product !== description) {
                 return product.charAt(0).toUpperCase() + product.slice(1);
