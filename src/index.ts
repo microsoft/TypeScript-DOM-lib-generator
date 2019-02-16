@@ -36,7 +36,7 @@ function emitDom() {
         [/^(The|A) ${name} (interface|event|object) (is|represents|describes|defines)?/, ''],
         [/^An object implementing the ${name} interface (is|represents|describes|defines)/, ''],
         [/^The ${name} is an interface representing/, ''],
-        [/^This type (is|represents|represent|describes|defines)?/, ''],
+        [/^This type (is|represents|describes|defines)?/, ''],
         [/^The ([a-z\s]+ API(\\\'s)?) ${name} (represents|is|describes|defines)/, 'The $1 ']
     ];
 
