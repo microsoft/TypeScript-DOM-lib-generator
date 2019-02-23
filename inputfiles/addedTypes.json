@@ -512,6 +512,16 @@
                         "customElements": {
                             "name": "customElements",
                             "override-type": "CustomElementRegistry"
+                        },
+                        "TextEncoder": {
+                            "exposeGlobally": true,
+                            "name": "TextEncoder",
+                            "override-type": "typeof TextEncoder"
+                        },
+                        "TextDecoder": {
+                            "exposeGlobally": true,
+                            "name": "TextDecoder",
+                            "override-type": "typeof TextDecoder"
                         }
                     }
                 },

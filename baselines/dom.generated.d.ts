@@ -16922,6 +16922,8 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 /** The Window interface represents a window containing a DOM document; the document property points to the DOM document loaded in that window. */
 interface Window extends EventTarget, WindowTimers, WindowSessionStorage, WindowLocalStorage, WindowConsole, GlobalEventHandlers, IDBEnvironment, WindowBase64, GlobalFetch, WindowOrWorkerGlobalScope, WindowEventHandlers {
     Blob: typeof Blob;
+    TextDecoder: typeof TextDecoder;
+    TextEncoder: typeof TextEncoder;
     URL: typeof URL;
     URLSearchParams: typeof URLSearchParams;
     readonly applicationCache: ApplicationCache;
@@ -17802,6 +17804,8 @@ declare var Option: {
     new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
 };
 declare var Blob: typeof Blob;
+declare var TextDecoder: typeof TextDecoder;
+declare var TextEncoder: typeof TextEncoder;
 declare var URL: typeof URL;
 declare var URLSearchParams: typeof URLSearchParams;
 declare var applicationCache: ApplicationCache;
