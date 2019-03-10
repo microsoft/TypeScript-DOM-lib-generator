@@ -245,6 +245,50 @@
     },
     "interfaces": {
         "interface": {
+            "SVGFEDropShadowElement": {
+                "name": "SVGFEDropShadowElement",
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "in1": {
+                            "name": "in1",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedString"
+                        },
+                        "dx": {
+                            "name": "dx",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        },
+                        "dy": {
+                            "name": "dy",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        },
+                        "stdDeviationX": {
+                            "name": "stdDeviationX",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        },
+                        "stdDeviationY": {
+                            "name": "stdDeviationY",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "setStdDeviation": {
+                            "name": "setStdDeviation",
+                            "override-signatures": [
+                                "setStdDeviation(stdDeviationX: number, stdDeviationY: number): void"
+                            ]
+                        }
+                    }
+                },
+                "extends": "SVGElement"
+            },
             "AbortSignal": {
                 "events": {
                     "event": [
