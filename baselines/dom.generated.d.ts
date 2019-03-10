@@ -12905,6 +12905,24 @@ declare var SVGFEDistantLightElement: {
     new(): SVGFEDistantLightElement;
 };
 
+interface SVGFEDropShadowElement extends SVGElement {
+    readonly dx: SVGAnimatedNumber;
+    readonly dy: SVGAnimatedNumber;
+    readonly in1: SVGAnimatedString;
+    readonly stdDeviationX: SVGAnimatedNumber;
+    readonly stdDeviationY: SVGAnimatedNumber;
+    setStdDeviation(stdDeviationX: number, stdDeviationY: number): void;
+    addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDropShadowElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDropShadowElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SVGFEDropShadowElement: {
+    prototype: SVGFEDropShadowElement;
+    new(): SVGFEDropShadowElement;
+};
+
 /** The SVGFEFloodElement interface corresponds to the <feFlood> element. */
 interface SVGFEFloodElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFloodElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
