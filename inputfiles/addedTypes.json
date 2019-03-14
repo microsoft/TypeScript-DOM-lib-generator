@@ -417,22 +417,6 @@
                     }
                 ]
             },
-            "BroadcastChannelEventMap": {
-                "name": "BroadcastChannelEventMap",
-                "properties": {
-                    "property": {
-                        "message": {
-                            "name": "message",
-                            "override-type": "MessageEvent"
-                        },
-                        "messageerror": {
-                            "name": "messageerror",
-                            "override-type": "MessageEvent"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "CSSStyleDeclaration": {
                 "name": "CSSStyleDeclaration",
                 "properties": {
