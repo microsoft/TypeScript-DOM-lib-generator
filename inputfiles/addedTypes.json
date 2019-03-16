@@ -287,7 +287,8 @@
                         }
                     }
                 },
-                "extends": "SVGElement"
+                "extends": "SVGElement",
+                "implements": ["SVGFilterPrimitiveStandardAttributes"]
             },
             "AbortSignal": {
                 "events": {
