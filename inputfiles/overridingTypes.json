@@ -470,7 +470,7 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, targetOrigin: string, transfer?: Transferable[]): void"
+                                "postMessage(message: any, targetOrigin?: string, transfer?: Transferable[]): void"
                             ]
                         }
                     }

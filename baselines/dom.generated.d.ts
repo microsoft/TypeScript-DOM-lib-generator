@@ -17100,7 +17100,7 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     moveTo(x: number, y: number): void;
     msWriteProfilerMark(profilerMarkName: string): void;
     open(url?: string, target?: string, features?: string, replace?: boolean): Window | null;
-    postMessage(message: any, targetOrigin: string, transfer?: Transferable[]): void;
+    postMessage(message: any, targetOrigin?: string, transfer?: Transferable[]): void;
     print(): void;
     prompt(message?: string, _default?: string): string | null;
     /** @deprecated */
@@ -18095,7 +18095,7 @@ declare function moveBy(x: number, y: number): void;
 declare function moveTo(x: number, y: number): void;
 declare function msWriteProfilerMark(profilerMarkName: string): void;
 declare function open(url?: string, target?: string, features?: string, replace?: boolean): Window | null;
-declare function postMessage(message: any, targetOrigin: string, transfer?: Transferable[]): void;
+declare function postMessage(message: any, targetOrigin?: string, transfer?: Transferable[]): void;
 declare function print(): void;
 declare function prompt(message?: string, _default?: string): string | null;
 /** @deprecated */
