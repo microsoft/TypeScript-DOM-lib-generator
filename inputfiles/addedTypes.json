@@ -193,30 +193,6 @@
                         }
                     }
                 }
-            },
-            "ParentNode": {
-                "name": "ParentNode",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "firstElementChild": {
-                            "name": "firstElementChild",
-                            "read-only": 1,
-                            "override-type": "Element | null"
-                        },
-                        "lastElementChild": {
-                            "name": "lastElementChild",
-                            "read-only": 1,
-                            "override-type": "Element | null"
-                        },
-                        "childElementCount": {
-                            "name": "childElementCount",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
             }
         }
     },
@@ -462,22 +438,6 @@
                     }
                 ]
             },
-            "BroadcastChannelEventMap": {
-                "name": "BroadcastChannelEventMap",
-                "properties": {
-                    "property": {
-                        "message": {
-                            "name": "message",
-                            "override-type": "MessageEvent"
-                        },
-                        "messageerror": {
-                            "name": "messageerror",
-                            "override-type": "MessageEvent"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "CSSStyleDeclaration": {
                 "name": "CSSStyleDeclaration",
                 "properties": {
@@ -557,11 +517,24 @@
                         "customElements": {
                             "name": "customElements",
                             "override-type": "CustomElementRegistry"
+                        },
+                        "TextEncoder": {
+                            "exposeGlobally": true,
+                            "name": "TextEncoder",
+                            "override-type": "typeof TextEncoder"
+                        },
+                        "TextDecoder": {
+                            "exposeGlobally": true,
+                            "name": "TextDecoder",
+                            "override-type": "typeof TextDecoder"
                         }
                     }
                 },
                 "implements": [
                     "WindowEventHandlers"
+                ],
+                "override-index-signatures": [
+                    "[index: number]: Window"
                 ]
             },
             "URLSearchParams": {
@@ -1108,17 +1081,6 @@
                     }
                 }
             },
-            "ShadowRoot": {
-                "name": "ShadowRoot",
-                "properties": {
-                    "property": {
-                        "innerHTML": {
-                            "name": "innerHTML",
-                            "type": "DOMString"
-                        }
-                    }
-                }
-            },
             "SpeechRecognition": {
                 "events": {
                     "event": [
@@ -1192,30 +1154,6 @@
                             "override-type": "HTMLSlotElement | null"
                         }
                     }
-                }
-            },
-            "ElementCreationOptions": {
-                "name": "ElementCreationOptions",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "is": {
-                            "name": "is",
-                            "override-type": "string",
-                            "required": 0
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "HTMLMainElement": {
-                "name": "HTMLMainElement",
-                "extends": "HTMLElement",
-                "exposed": "Window",
-                "constructor": {
-                    "override-signatures": [
-                        "new(): HTMLMainElement"
-                    ]
                 }
             },
             "DOMMatrixReadOnly": {
@@ -1757,51 +1695,6 @@
                         "name": "dialog"
                     }
                 ]
-            },
-            "NodeSelector": {
-                "name": "NodeSelector",
-                "extends": "Object",
-                "no-interface-object": "1",
-                "methods": {
-                    "method": {
-                        "querySelectorAll": {
-                            "signature": [
-                                {
-                                    "param-min-required": 1,
-                                    "type": "NodeList",
-                                    "param": [
-                                        {
-                                            "name": "selectors",
-                                            "type": "DOMString",
-                                            "type-original": "DOMString"
-                                        }
-                                    ],
-                                    "type-original": "NodeList"
-                                }
-                            ],
-                            "name": "querySelectorAll"
-                        },
-                        "querySelector": {
-                            "signature": [
-                                {
-                                    "nullable": 1,
-                                    "param-min-required": 1,
-                                    "type": "Element",
-                                    "param": [
-                                        {
-                                            "name": "selectors",
-                                            "type": "DOMString",
-                                            "type-original": "DOMString"
-                                        }
-                                    ],
-                                    "type-original": "Element?"
-                                }
-                            ],
-                            "name": "querySelector"
-                        }
-                    }
-                },
-                "exposed": "Window"
             },
             "CSS": {
                 "name": "CSS",

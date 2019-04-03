@@ -1,23 +1,29 @@
 [Constructor, Exposed=Window]
-    interface DOMParser {
-      [NewObject] Document parseFromString(DOMString str, SupportedType type);
-    };
+interface DOMParser {
+  [NewObject] Document parseFromString(DOMString str, SupportedType type);
+};
 
-    enum SupportedType {
-      "text/html",
-      "text/xml",
-      "application/xml",
-      "application/xhtml+xml",
-      "image/svg+xml"
-    };
+enum SupportedType {
+  "text/html",
+  "text/xml",
+  "application/xml",
+  "application/xhtml+xml",
+  "image/svg+xml"
+};
 
 [Constructor, Exposed=Window] 
-  interface XMLSerializer {
+interface XMLSerializer {
   DOMString serializeToString(Node root);
 };
 
-partial interface Element {
+interface mixin InnerHTML {
   [CEReactions, TreatNullAs=EmptyString] attribute DOMString innerHTML;
+};
+
+Element includes InnerHTML;
+ShadowRoot includes InnerHTML;
+
+partial interface Element {
   [CEReactions, TreatNullAs=EmptyString] attribute DOMString outerHTML;
   [CEReactions] void insertAdjacentHTML(DOMString position, DOMString text);
 };

@@ -188,6 +188,12 @@ export interface Interface {
     iterable?: "value" | "pair" | "pair-iterator";
     iterator?: Iterator;
     "legacy-window-alias"?: string[];
+    "legacy-namespace"?: string;
+    nested?: {
+        interfaces: Interface[];
+        enums: Enum[];
+        dictionaries: Dictionary[];
+    }
 }
 
 export interface Iterator {
@@ -203,6 +209,7 @@ export interface Enum {
     name: string;
     value: string[];
     specs?: string;
+    "legacy-namespace"?: string;
 }
 
 export interface TypeDef extends Typed {
@@ -219,6 +226,7 @@ export interface Dictionary {
     "override-index-signatures"?: string[];
     specs?: string;
     "type-parameters"?: TypeParameter[];
+    "legacy-namespace"?: string;
 }
 
 export interface WebIdl {
@@ -242,5 +250,6 @@ export interface WebIdl {
     }
     typedefs?: {
         typedef: TypeDef[];
-    }
+    },
+    namespaces?: Interface[];
 }

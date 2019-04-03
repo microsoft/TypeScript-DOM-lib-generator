@@ -31,10 +31,15 @@ The `dom.generated.d.ts`, `webworker.generated.d.ts` and `dom.iterable.generated
 For each pull request, we will run the script and compare the generated files with the baseline files.
 In order to make the tests pass, please update the baseline as well in any pull requests.
 
-For common changes, it is sufficient to change the json files.
+It's recommended to first check which spec the wrong type belongs to. Say we are to update `IntersectionObserver` which belongs to [`Intersection Observer`](https://www.w3.org/TR/intersection-observer/) spec, and then we can do:
+
+1. First check we have the spec name `Intersection Observer` in `inputfiles/idlSources.json`. If not, add it.
+2. Run `npm run fetch-idl "Intersection Observer" && num run build && npm run baseline-accept`.
+
+If the above didn't fix the type issues, we can fix them via json files as a last resort.
 There are three json files that are typically used to alter the type generation: `addedTypes.json`, `overridingTypes.json`, and `removedTypes.json`.
 `comments.json` can used to add comments to the types.
-Finally, `knownWorkerTypes.json` determine which types are available in a WebWorker environment.
+Finally, `knownTypes.json` determine which types are available in a certain environment in case it couldn't be automatically determined.
 
 The format of each file can be inferred from their existing content.
 

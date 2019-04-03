@@ -58,6 +58,13 @@
                     }
                 }
             },
+            "Document": {
+                "methods": {
+                    "method": {
+                        "evaluate": null
+                    }
+                }
+            },
             "FileReaderProgressEvent": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
@@ -211,7 +218,15 @@
                         "wheelDeltaY": null
                     }
                 }
-            }
+            },
+            "XPathEvaluator": {
+                "methods": {
+                    "method": {
+                        "evaluate": null
+                    }
+                }
+            },
+            "XPathNSResolver": null
         }
     },
     "dictionaries": {

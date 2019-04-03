@@ -15,7 +15,8 @@ interface IDLSource {
 const idlSelector = [
     "pre.idl:not(.extract):not(.example)", // bikeshed and ReSpec
     "pre.code code.idl-code", // Web Cryptography
-    "pre:not(.extract) code.idl" // HTML
+    "pre:not(.extract) code.idl", // HTML
+    "#permission-registry + pre.highlight" // Permissions
 ].join(",");
 
 const cssPropSelector = "dfn.css[data-dfn-type=property]";
@@ -80,7 +81,7 @@ function extractCSSDefinitions(dom: DocumentFragment) {
         properties.map(property => `\n  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString ${
             hyphenToCamelCase(property)
         };`).join("")
-    }\n};`
+    }\n};`;
 }
 
 function hyphenToCamelCase(name: string) {
@@ -141,6 +142,7 @@ function getCommentText(text: string) {
  * Remove common indentation:
  *     <pre>
  *       typedef Type = "type";
+ *
  *       dictionary Dictionary {
  *         "member"
  *       };
@@ -155,7 +157,7 @@ function trimCommonIndentation(text: string) {
     if (!lines[lines.length - 1].trim()) {
         lines.pop();
     }
-    const commonIndentation = Math.min(...lines.map(getIndentation));
+    const commonIndentation = Math.min(...lines.filter(line => line.trim()).map(getIndentation));
     return lines.map(line => line.slice(commonIndentation)).join("\n");
 }
 
