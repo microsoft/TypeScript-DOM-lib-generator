@@ -403,6 +403,11 @@ interface TextDecoderOptions {
     ignoreBOM?: boolean;
 }
 
+interface TextEncoderEncodeIntoResult {
+    read?: number;
+    written?: number;
+}
+
 interface Transformer<I = any, O = any> {
     flush?: TransformStreamDefaultControllerCallback<O>;
     readableType?: undefined;
@@ -580,11 +585,6 @@ declare var BroadcastChannel: {
     prototype: BroadcastChannel;
     new(name: string): BroadcastChannel;
 };
-
-interface BroadcastChannelEventMap {
-    message: MessageEvent;
-    messageerror: MessageEvent;
-}
 
 /** An interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
@@ -1415,6 +1415,18 @@ declare var FormData: {
     prototype: FormData;
     new(): FormData;
 };
+
+interface GenericTransformStream {
+    readonly readable: ReadableStream;
+    /**
+     * Returns a writable stream which accepts string chunks and runs them through UTF-8's encoder before making them available to readable.
+     * Typically this will be used via the pipeThrough() method on a ReadableStream source.
+     * textReadable
+     * .pipeThrough(new TextEncoderStream())
+     * .pipeTo(byteWritable);
+     */
+    readonly writable: WritableStream;
+}
 
 interface GlobalFetch {
     fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
@@ -2770,23 +2782,10 @@ declare var SyncManager: {
 };
 
 /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
-interface TextDecoder {
+interface TextDecoder extends TextDecoderCommon {
     /**
-     * Returns encoding's name, lowercased.
-     */
-    readonly encoding: string;
-    /**
-     * Returns true if error mode is "fatal", and false
-     * otherwise.
-     */
-    readonly fatal: boolean;
-    /**
-     * Returns true if ignore BOM flag is set, and false otherwise.
-     */
-    readonly ignoreBOM: boolean;
-    /**
-     * Returns the result of running encoding's decoder. The
-     * method can be invoked zero or more times with options's stream set to
+     * Returns the result of running encoding's decoder.
+     * The method can be invoked zero or more times with options's stream set to
      * true, and then once without options's stream (or set to false), to process
      * a fragmented stream. If the invocation without options's stream (or set to
      * false) has no input, it's clearest to omit both arguments.
@@ -2805,21 +2804,47 @@ declare var TextDecoder: {
     new(label?: string, options?: TextDecoderOptions): TextDecoder;
 };
 
-/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
-interface TextEncoder {
-    /**
-     * Returns "utf-8".
-     */
+interface TextDecoderCommon {
     readonly encoding: string;
+    readonly fatal: boolean;
+    readonly ignoreBOM: boolean;
+}
+
+interface TextDecoderStream extends TextDecoderCommon, GenericTransformStream {
+}
+
+declare var TextDecoderStream: {
+    prototype: TextDecoderStream;
+    new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
+};
+
+/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+interface TextEncoder extends TextEncoderCommon {
     /**
      * Returns the result of running UTF-8's encoder.
      */
     encode(input?: string): Uint8Array;
+    /**
+     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as a dictionary whereby read is the number of converted code units of source and written is the number of bytes modified in destination.
+     */
+    encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
 
 declare var TextEncoder: {
     prototype: TextEncoder;
     new(): TextEncoder;
+};
+
+interface TextEncoderCommon {
+    readonly encoding: string;
+}
+
+interface TextEncoderStream extends TextEncoderCommon, GenericTransformStream {
+}
+
+declare var TextEncoderStream: {
+    prototype: TextEncoderStream;
+    new(): TextEncoderStream;
 };
 
 /** The dimensions of a piece of text in the canvas, as created by the CanvasRenderingContext2D.measureText() method. */
@@ -4250,6 +4275,99 @@ declare var XMLHttpRequestUpload: {
 };
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+
+declare namespace WebAssembly {
+    interface Global {
+        value: any;
+        valueOf(): any;
+    }
+    
+    var Global: {
+        prototype: Global;
+        new(descriptor: GlobalDescriptor, value?: any): Global;
+    };
+    
+    interface Instance {
+        readonly exports: any;
+    }
+    
+    var Instance: {
+        prototype: Instance;
+        new(module: Module, importObject?: any): Instance;
+    };
+    
+    interface Memory {
+        readonly buffer: ArrayBuffer;
+        grow(delta: number): number;
+    }
+    
+    var Memory: {
+        prototype: Memory;
+        new(descriptor: MemoryDescriptor): Memory;
+    };
+    
+    interface Module {
+    }
+    
+    var Module: {
+        prototype: Module;
+        new(bytes: BufferSource): Module;
+        customSections(module: Module, sectionName: string): ArrayBuffer[];
+        exports(module: Module): ModuleExportDescriptor[];
+        imports(module: Module): ModuleImportDescriptor[];
+    };
+    
+    interface Table {
+        readonly length: number;
+        get(index: number): Function | null;
+        grow(delta: number): number;
+        set(index: number, value: Function | null): void;
+    }
+    
+    var Table: {
+        prototype: Table;
+        new(descriptor: TableDescriptor): Table;
+    };
+    
+    interface GlobalDescriptor {
+        mutable?: boolean;
+        value: string;
+    }
+    
+    interface MemoryDescriptor {
+        initial: number;
+        maximum?: number;
+    }
+    
+    interface ModuleExportDescriptor {
+        kind: ImportExportKind;
+        name: string;
+    }
+    
+    interface ModuleImportDescriptor {
+        kind: ImportExportKind;
+        module: string;
+        name: string;
+    }
+    
+    interface TableDescriptor {
+        element: TableKind;
+        initial: number;
+        maximum?: number;
+    }
+    
+    interface WebAssemblyInstantiatedSource {
+        instance: Instance;
+        module: Module;
+    }
+    
+    type ImportExportKind = "function" | "table" | "memory" | "global";
+    type TableKind = "anyfunc";
+    function compile(bytes: BufferSource): Promise<Module>;
+    function instantiate(bytes: BufferSource, importObject?: any): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(moduleObject: Module, importObject?: any): Promise<Instance>;
+    function validate(bytes: BufferSource): boolean;
+}
 
 interface EventHandlerNonNull {
     (event: Event): any;

@@ -28,10 +28,10 @@ partial interface Navigator {
 
 [Constructor(DOMString type, GamepadEventInit eventInitDict), Exposed=Window]
 
-interface GamepadEvent : Event {
+interface GamepadEvent: Event {
   [SameObject] readonly attribute Gamepad gamepad;
 };
 
-dictionary GamepadEventInit : EventInit {
+dictionary GamepadEventInit: EventInit {
   required Gamepad gamepad;
 };

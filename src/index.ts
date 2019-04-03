@@ -49,7 +49,6 @@ function emitDom() {
     const tsWebIteratorsOutput = path.join(outputFolder, "dom.iterable.generated.d.ts");
     const tsWorkerOutput = path.join(outputFolder, "webworker.generated.d.ts");
 
-
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
     const comments = require(path.join(inputFolder, "comments.json"));

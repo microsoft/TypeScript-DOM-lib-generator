@@ -1,5 +1,5 @@
 import * as Browser from "./types";
-import { getEmptyWebIDL, filter, exposesTo, followTypeReferences, filterProperties, mapToArray } from "./helpers";
+import { getEmptyWebIDL, filter, exposesTo, followTypeReferences, filterProperties, mapToArray, arrayToMap } from "./helpers";
 
 export function getExposedTypes(webidl: Browser.WebIdl, target: string, forceKnownTypes: Set<string>) {
     const unexposedTypes = new Set<string>();
@@ -11,8 +11,14 @@ export function getExposedTypes(webidl: Browser.WebIdl, target: string, forceKno
             unexposedTypes.add(i.name);
         }
     }
+    if (webidl.namespaces) {
+        filtered.namespaces = webidl.namespaces.filter(o => exposesTo(o, target));
+    }
 
-    const knownIDLTypes = followTypeReferences(webidl, filtered.interfaces!.interface);
+    const knownIDLTypes = new Set([
+        ...followTypeReferences(webidl, filtered.interfaces!.interface),
+        ...followTypeReferences(webidl, arrayToMap(filtered.namespaces!, i => i.name, i => i))
+    ]);
     const isKnownName = (o: { name: string }) => knownIDLTypes.has(o.name) || forceKnownTypes.has(o.name);
 
     if (webidl.typedefs) {

@@ -196,7 +196,8 @@ export function getEmptyWebIDL(): Browser.WebIdl {
         },
         "typedefs": {
             "typedef": []
-        }
+        },
+        namespaces: []
     }
 }
 

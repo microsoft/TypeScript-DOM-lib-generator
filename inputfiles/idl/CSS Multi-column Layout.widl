@@ -1,0 +1,12 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnWidth;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnCount;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columns;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnGap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRuleColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRuleStyle;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRuleWidth;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRule;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnSpan;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnFill;
+};

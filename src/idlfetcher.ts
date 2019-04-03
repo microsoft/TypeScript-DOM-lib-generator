@@ -80,7 +80,7 @@ function extractCSSDefinitions(dom: DocumentFragment) {
         properties.map(property => `\n  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString ${
             hyphenToCamelCase(property)
         };`).join("")
-    }\n};`
+    }\n};`;
 }
 
 function hyphenToCamelCase(name: string) {

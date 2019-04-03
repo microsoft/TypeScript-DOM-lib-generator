@@ -8,6 +8,7 @@ export function convert(text: string, commentMap: Record<string, string>) {
     const partialMixins: Browser.Interface[] = [];
     const partialDictionaries: Browser.Dictionary[] = [];
     const includes: webidl2.IncludesType[] = [];
+    const namespaceNested: Record<string, Browser.Interface> = {};
     const browser = getEmptyWebIDL();
     for (const rootType of rootTypes) {
         if (rootType.type === "interface") {
@@ -27,6 +28,9 @@ export function convert(text: string, commentMap: Record<string, string>) {
             else {
                 browser["mixins"]!.mixin[rootType.name] = converted;
             }
+        }
+        else if (rootType.type === "namespace") {
+            browser.namespaces!.push(convertNamespace(rootType, commentMap));
         }
         else if (rootType.type === "callback interface") {
             browser["callback-interfaces"]!.interface[rootType.name] = convertInterface(rootType, commentMap);
@@ -55,7 +59,7 @@ export function convert(text: string, commentMap: Record<string, string>) {
             includes.push(rootType);
         }
     }
-    return { browser, partialInterfaces, partialMixins, partialDictionaries, includes };
+    return { browser, partialInterfaces, partialMixins, partialDictionaries, includes, namespaceNested };
 }
 
 function hasExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
@@ -65,14 +69,14 @@ function hasExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
 function getExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
     const attr = extAttrs.find(extAttr => extAttr.name === name);
     if (!attr || !attr.rhs) {
-        return;
+        return [];
     }
     return attr.rhs.type === "identifier-list" ? attr.rhs.value : [attr.rhs.value];
 }
 
 function getExtAttrConcatenated(extAttrs: webidl2.ExtendedAttributes[], name: string) {
     const extAttr = getExtAttr(extAttrs, name);
-    if (extAttr) {
+    if (extAttr.length) {
         return extAttr.join(" ");
     }
 }
@@ -114,7 +118,8 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
         "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
-        "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias")
+        "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias"),
+        "legacy-namespace": getExtAttr(i.extAttrs, "LegacyNamespace")[0]
     };
     if (!result.exposed && i.type === "interface" && !i.partial) {
         result.exposed = "Window";
@@ -134,7 +139,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
             if (!member.name) {
                 result["anonymous-methods"]!.method.push(operation);
             }
-            else if (method[member.name]) {
+            else if (method.hasOwnProperty(member.name)) {
                 method[member.name].signature.push(...operation.signature);
             }
             else {
@@ -262,6 +267,38 @@ function convertConstantValue(value: webidl2.ValueDescription): string {
         default:
             throw new Error("Not implemented");
     }
+}
+
+function convertNamespace(namespace: webidl2.NamespaceType, commentMap: Record<string, string>) {
+    const result: Browser.Interface = {
+        name: namespace.name,
+        extends: "Object",
+        constructor: { signature: [] },
+        methods: { method: {} },
+        properties: { property: {} },
+        exposed: getExtAttrConcatenated(namespace.extAttrs, "Exposed")
+    };
+    for (const member of namespace.members) {
+        if (member.type === "attribute") {
+            result.properties!.property[member.name] = convertAttribute(member, result.exposed);
+            addComments(result.properties!.property[member.name], commentMap, namespace.name, member.name);
+        }
+        else if (member.type === "operation" && member.idlType) {
+            const operation = convertOperation(member, result.exposed);
+            const { method } = result.methods;
+            if (method[member.name!]) {
+                method[member.name!].signature.push(...operation.signature);
+            }
+            else {
+                method[member.name!] = operation as Browser.Method;
+            }
+            if (member.name) {
+                addComments(method[member.name], commentMap, namespace.name, member.name);
+            }
+        }
+    }
+
+    return result;
 }
 
 function convertDictionary(dictionary: webidl2.DictionaryType, commentsMap: Record<string, string>) {
