@@ -2,7 +2,8 @@
 interface ServiceWorker : EventTarget {
   readonly attribute USVString scriptURL;
   readonly attribute ServiceWorkerState state;
-  void postMessage(any message, optional sequence<object> transfer = []);
+  void postMessage(any message, sequence<object> transfer);
+  void postMessage(any message, optional PostMessageOptions options);
 
   // event
   attribute EventHandler onstatechange;
@@ -105,9 +106,11 @@ interface ServiceWorkerGlobalScope : WorkerGlobalScope {
 [Exposed=ServiceWorker]
 interface Client {
   readonly attribute USVString url;
+  readonly attribute FrameType frameType;
   readonly attribute DOMString id;
   readonly attribute ClientType type;
-  void postMessage(any message, optional sequence<object> transfer = []);
+  void postMessage(any message, sequence<object> transfer);
+  void postMessage(any message, optional PostMessageOptions options);
 };
 
 [Exposed=ServiceWorker]
@@ -117,6 +120,13 @@ interface WindowClient : Client {
   [SameObject] readonly attribute FrozenArray<USVString> ancestorOrigins;
   [NewObject] Promise<WindowClient> focus();
   [NewObject] Promise<WindowClient?> navigate(USVString url);
+};
+
+enum FrameType {
+  "auxiliary",
+  "top-level",
+  "nested",
+  "none"
 };
 
 [Exposed=ServiceWorker]
@@ -155,7 +165,7 @@ interface FetchEvent : ExtendableEvent {
   readonly attribute Promise<any> preloadResponse;
   readonly attribute DOMString clientId;
   readonly attribute DOMString resultingClientId;
-  readonly attribute DOMString targetClientId;
+  readonly attribute DOMString replacesClientId;
 
   void respondWith(Promise<Response> r);
 };
@@ -165,7 +175,7 @@ dictionary FetchEventInit : ExtendableEventInit {
   Promise<any> preloadResponse;
   DOMString clientId = "";
   DOMString resultingClientId = "";
-  DOMString targetClientId = "";
+  DOMString replacesClientId = "";
 };
 
 [Constructor(DOMString type, optional ExtendableMessageEventInit eventInitDict), Exposed=ServiceWorker]
@@ -185,7 +195,7 @@ dictionary ExtendableMessageEventInit : ExtendableEventInit {
   sequence<MessagePort> ports = [];
 };
 
-partial interface WindowOrWorkerGlobalScope {
+partial interface mixin WindowOrWorkerGlobalScope {
   [SecureContext, SameObject] readonly attribute CacheStorage caches;
 };
 
@@ -204,14 +214,17 @@ dictionary CacheQueryOptions {
   boolean ignoreSearch = false;
   boolean ignoreMethod = false;
   boolean ignoreVary = false;
-  DOMString cacheName;
 };
 
 [SecureContext, Exposed=(Window,Worker)]
 interface CacheStorage {
-  [NewObject] Promise<any> match(RequestInfo request, optional CacheQueryOptions options);
+  [NewObject] Promise<any> match(RequestInfo request, optional MultiCacheQueryOptions options);
   [NewObject] Promise<boolean> has(DOMString cacheName);
   [NewObject] Promise<Cache> open(DOMString cacheName);
   [NewObject] Promise<boolean> delete(DOMString cacheName);
   [NewObject] Promise<sequence<DOMString>> keys();
+};
+
+dictionary MultiCacheQueryOptions : CacheQueryOptions {
+  DOMString cacheName;
 };

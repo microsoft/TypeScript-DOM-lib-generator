@@ -44,7 +44,6 @@ interface BlobPropertyBag {
 }
 
 interface CacheQueryOptions {
-    cacheName?: string;
     ignoreMethod?: boolean;
     ignoreSearch?: boolean;
     ignoreVary?: boolean;
@@ -177,9 +176,9 @@ interface ExtendableMessageEventInit extends ExtendableEventInit {
 interface FetchEventInit extends ExtendableEventInit {
     clientId?: string;
     preloadResponse?: Promise<any>;
+    replacesClientId?: string;
     request: Request;
     resultingClientId?: string;
-    targetClientId?: string;
 }
 
 interface FilePropertyBag extends BlobPropertyBag {
@@ -253,6 +252,10 @@ interface MidiPermissionDescriptor extends PermissionDescriptor {
     sysex?: boolean;
 }
 
+interface MultiCacheQueryOptions extends CacheQueryOptions {
+    cacheName?: string;
+}
+
 interface NavigationPreloadState {
     enabled?: boolean;
     headerValue?: string;
@@ -294,7 +297,8 @@ interface Pbkdf2Params extends Algorithm {
 
 interface PerformanceObserverInit {
     buffered?: boolean;
-    entryTypes: string[];
+    entryTypes?: string[];
+    type?: string;
 }
 
 interface PermissionDescriptor {
@@ -306,6 +310,10 @@ interface PipeOptions {
     preventCancel?: boolean;
     preventClose?: boolean;
     signal?: AbortSignal;
+}
+
+interface PostMessageOptions {
+    transfer?: any[];
 }
 
 interface ProgressEventInit extends EventInit {
@@ -692,6 +700,7 @@ declare var CanvasPattern: {
 
 /** The Client interface represents an executable context such as a Worker, or a SharedWorker. Window clients are represented by the more-specific WindowClient. You can get Client/WindowClient objects from methods such as Clients.matchAll() and Clients.get(). */
 interface Client {
+    readonly frameType: FrameType;
     readonly id: string;
     readonly type: ClientTypes;
     readonly url: string;
@@ -1087,7 +1096,8 @@ interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
 interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {
     onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
     close(): void;
-    postMessage(message: any, transfer?: Transferable[]): void;
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: PostMessageOptions): void;
     addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -1331,9 +1341,9 @@ declare var ExtendableMessageEvent: {
 interface FetchEvent extends ExtendableEvent {
     readonly clientId: string;
     readonly preloadResponse: Promise<any>;
+    readonly replacesClientId: string;
     readonly request: Request;
     readonly resultingClientId: string;
-    readonly targetClientId: string;
     respondWith(r: Response | Promise<Response>): void;
 }
 
@@ -2081,14 +2091,8 @@ interface MessagePort extends EventTarget {
      * Disconnects the port, so that it is no longer active.
      */
     close(): void;
-    /**
-     * Posts a message through the channel. Objects listed in transfer are
-     * transferred, not just cloned, meaning that they are no longer usable on the sending side.
-     * Throws a "DataCloneError" DOMException if
-     * transfer contains duplicate objects or port, or if message
-     * could not be cloned.
-     */
-    postMessage(message: any, transfer?: Transferable[]): void;
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: PostMessageOptions): void;
     /**
      * Begins dispatching messages received on the port.
      */
@@ -2305,13 +2309,14 @@ declare var PerformanceMeasure: {
 
 interface PerformanceObserver {
     disconnect(): void;
-    observe(options: PerformanceObserverInit): void;
+    observe(options?: PerformanceObserverInit): void;
     takeRecords(): PerformanceEntryList;
 }
 
 declare var PerformanceObserver: {
     prototype: PerformanceObserver;
     new(callback: PerformanceObserverCallback): PerformanceObserver;
+    readonly supportedEntryTypes: ReadonlyArray<string>;
 };
 
 interface PerformanceObserverEntryList {
@@ -2655,7 +2660,8 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     onstatechange: ((this: ServiceWorker, ev: Event) => any) | null;
     readonly scriptURL: string;
     readonly state: ServiceWorkerState;
-    postMessage(message: any, transfer?: Transferable[]): void;
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: PostMessageOptions): void;
     addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -4462,7 +4468,8 @@ interface WritableStreamErrorCallback {
 
 declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
 declare function close(): void;
-declare function postMessage(message: any, transfer?: Transferable[]): void;
+declare function postMessage(message: any, transfer: Transferable[]): void;
+declare function postMessage(message: any, options?: PostMessageOptions): void;
 /**
  * Dispatches a synthetic event event to target and returns true
  * if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
@@ -4544,6 +4551,7 @@ type Transferable = ArrayBuffer | MessagePort | ImageBitmap;
 type BinaryType = "blob" | "arraybuffer";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
 type EndingType = "transparent" | "native";
+type FrameType = "auxiliary" | "top-level" | "nested" | "none";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "pending" | "done";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
