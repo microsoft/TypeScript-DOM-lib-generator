@@ -37,6 +37,10 @@
         "title": "CSS Color"
     },
     {
+        "url": "https://drafts.csswg.org/css-conditional-3/",
+        "title": "CSS Conditional Rules"
+    },
+    {
         "url": "https://www.w3.org/TR/fill-stroke-3/",
         "title": "CSS Fill and Stroke"
     },
@@ -75,6 +79,10 @@
     {
         "url": "https://www.w3.org/TR/css-multicol-1/",
         "title": "CSS Multi-column Layout"
+    },
+    {
+        "url": "https://drafts.csswg.org/cssom/",
+        "title": "CSS Object Model"
     },
     {
         "url": "https://drafts.csswg.org/cssom-view/",

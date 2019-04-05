@@ -1057,6 +1057,9 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitNamespace(namespace: Browser.Interface) {
+        if (namespace.comment) {
+            printer.printLine(`/** ${namespace.comment} */`);
+        }
         printer.printLine(`declare namespace ${namespace.name} {`);
         printer.increaseIndent();
 

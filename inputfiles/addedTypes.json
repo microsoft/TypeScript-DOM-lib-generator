@@ -372,6 +372,14 @@
                 "name": "CSSStyleDeclaration",
                 "properties": {
                     "property": {
+                        "pointerEvents": {
+                            "name": "pointerEvents",
+                            "type": "CSSOMString"
+                        },
+                        "resize": {
+                            "name": "resize",
+                            "type": "CSSOMString"
+                        },
                         "touchAction": {
                             "deprecated": 0
                         },
@@ -380,7 +388,22 @@
                             "type": "CSSOMString"
                         },
                         "webkitAppearance": {
-                            "nullable": 0,
+                            "name": "webkitAppearance",
+                            "type": "CSSOMString",
+                            "deprecated": 1
+                        },
+                        "webkitUserSelect": {
+                            "name": "webkitUserSelect",
+                            "type": "CSSOMString",
+                            "deprecated": 1
+                        },
+                        "webkitTapHighlightColor": {
+                            "name": "webkitTapHighlightColor",
+                            "type": "CSSOMString"
+                        },
+                        "zoom": {
+                            "name": "zoom",
+                            "type": "CSSOMString",
                             "deprecated": 1
                         }
                     }
@@ -1060,7 +1083,8 @@
             },
             "SVGElement": {
                 "implements": [
-                    "ElementCSSInlineStyle"
+                    "GlobalEventHandlers",
+                    "DocumentAndElementEventHandlers"
                 ]
             },
             "Text": {
@@ -1294,9 +1318,6 @@
                     {
                         "name": "wbr"
                     }
-                ],
-                "implements": [
-                    "ElementCSSInlineStyle"
                 ]
             },
             "HTMLEmbedElement": {
@@ -1643,20 +1664,6 @@
                         "name": "dialog"
                     }
                 ]
-            },
-            "CSS": {
-                "name": "CSS",
-                "methods": {
-                    "method": {
-                        "escape": {
-                            "name": "escape",
-                            "override-signatures": [
-                                "escape(value: string): string"
-                            ],
-                            "static": 1
-                        }
-                    }
-                }
             },
             "EXT_blend_minmax": {
                 "override-exposed": "Window Worker"

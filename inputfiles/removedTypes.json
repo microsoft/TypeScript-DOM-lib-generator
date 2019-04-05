@@ -76,6 +76,7 @@
                     }
                 }
             },
+            "CSS": null,
             "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
