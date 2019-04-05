@@ -89,13 +89,6 @@
                     }
                 }
             },
-            "HTMLCanvasElement": {
-                "methods": {
-                    "method": {
-                        "transferControlToOffscreen": null
-                    }
-                }
-            },
             "HTMLHRElement": {
                 "implements": null
             },
