@@ -1863,6 +1863,38 @@
                 "extends": "SVGAnimationElement",
                 "exposed": "Window"
             },
+            "SVGRectElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "rect"
+                    }
+                ]
+            },
+            "SVGCircleElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "circle"
+                    }
+                ]
+            },
+            "SVGEllipseElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "ellipse"
+                    }
+                ]
+            },
+            "SVGLineElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "line"
+                    }
+                ]
+            },
             "MediaStream": {
                 "events": {
                     "event": [

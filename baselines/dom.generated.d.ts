@@ -17961,9 +17961,11 @@ interface HTMLElementDeprecatedTagNameMap {
 
 interface SVGElementTagNameMap {
     "a": SVGAElement;
+    "circle": SVGCircleElement;
     "clipPath": SVGClipPathElement;
     "defs": SVGDefsElement;
     "desc": SVGDescElement;
+    "ellipse": SVGEllipseElement;
     "feBlend": SVGFEBlendElement;
     "feColorMatrix": SVGFEColorMatrixElement;
     "feComponentTransfer": SVGFEComponentTransferElement;
@@ -17992,6 +17994,7 @@ interface SVGElementTagNameMap {
     "foreignObject": SVGForeignObjectElement;
     "g": SVGGElement;
     "image": SVGImageElement;
+    "line": SVGLineElement;
     "linearGradient": SVGLinearGradientElement;
     "marker": SVGMarkerElement;
     "mask": SVGMaskElement;
@@ -17999,6 +18002,7 @@ interface SVGElementTagNameMap {
     "path": SVGPathElement;
     "pattern": SVGPatternElement;
     "radialGradient": SVGRadialGradientElement;
+    "rect": SVGRectElement;
     "script": SVGScriptElement;
     "stop": SVGStopElement;
     "style": SVGStyleElement;
