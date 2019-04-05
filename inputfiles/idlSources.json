@@ -296,6 +296,10 @@
         "title": "SVG - Basic Data Types and Interfaces"
     },
     {
+        "url": "https://svgwg.org/svg2-draft/shapes.html",
+        "title": "SVG - Basic Shapes"
+    },
+    {
         "url": "https://w3c.github.io/touch-events/",
         "title": "Touch Events"
     },

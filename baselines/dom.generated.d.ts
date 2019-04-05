@@ -12608,7 +12608,7 @@ declare var SVGAnimationElement: {
 };
 
 /** An interface for the <circle> element. The circle element is defined by the cx and cy attributes that denote the coordinates of the centre of the circle. */
-interface SVGCircleElement extends SVGGraphicsElement {
+interface SVGCircleElement extends SVGGeometryElement {
     readonly cx: SVGAnimatedLength;
     readonly cy: SVGAnimatedLength;
     readonly r: SVGAnimatedLength;
@@ -12752,7 +12752,7 @@ declare var SVGElementInstanceList: {
 };
 
 /** Provides access to the properties of <ellipse> elements. */
-interface SVGEllipseElement extends SVGGraphicsElement {
+interface SVGEllipseElement extends SVGGeometryElement {
     readonly cx: SVGAnimatedLength;
     readonly cy: SVGAnimatedLength;
     readonly rx: SVGAnimatedLength;
@@ -13468,7 +13468,7 @@ declare var SVGLengthList: {
 };
 
 /** Provides access to the properties of <line> elements, as well as methods to manipulate them. */
-interface SVGLineElement extends SVGGraphicsElement {
+interface SVGLineElement extends SVGGeometryElement {
     readonly x1: SVGAnimatedLength;
     readonly x2: SVGAnimatedLength;
     readonly y1: SVGAnimatedLength;
@@ -13949,14 +13949,16 @@ declare var SVGPatternElement: {
 };
 
 interface SVGPointList {
+    readonly length: number;
     readonly numberOfItems: number;
-    appendItem(newItem: SVGPoint): SVGPoint;
+    appendItem(newItem: DOMPoint): DOMPoint;
     clear(): void;
-    getItem(index: number): SVGPoint;
-    initialize(newItem: SVGPoint): SVGPoint;
-    insertItemBefore(newItem: SVGPoint, index: number): SVGPoint;
-    removeItem(index: number): SVGPoint;
-    replaceItem(newItem: SVGPoint, index: number): SVGPoint;
+    getItem(index: number): DOMPoint;
+    initialize(newItem: DOMPoint): DOMPoint;
+    insertItemBefore(newItem: DOMPoint, index: number): DOMPoint;
+    removeItem(index: number): DOMPoint;
+    replaceItem(newItem: DOMPoint, index: number): DOMPoint;
+    [index: number]: DOMPoint;
 }
 
 declare var SVGPointList: {
@@ -13965,7 +13967,7 @@ declare var SVGPointList: {
 };
 
 /** Provides access to the properties of <polygon> elements, as well as methods to manipulate them. */
-interface SVGPolygonElement extends SVGGraphicsElement, SVGAnimatedPoints {
+interface SVGPolygonElement extends SVGGeometryElement, SVGAnimatedPoints {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolygonElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolygonElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13978,7 +13980,7 @@ declare var SVGPolygonElement: {
 };
 
 /** Provides access to the properties of <polyline> elements, as well as methods to manipulate them. */
-interface SVGPolylineElement extends SVGGraphicsElement, SVGAnimatedPoints {
+interface SVGPolylineElement extends SVGGeometryElement, SVGAnimatedPoints {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolylineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolylineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14048,7 +14050,7 @@ declare var SVGRadialGradientElement: {
 };
 
 /** Provides access to the properties of <rect> elements, as well as methods to manipulate them. */
-interface SVGRectElement extends SVGGraphicsElement {
+interface SVGRectElement extends SVGGeometryElement {
     readonly height: SVGAnimatedLength;
     readonly rx: SVGAnimatedLength;
     readonly ry: SVGAnimatedLength;
@@ -17959,11 +17961,9 @@ interface HTMLElementDeprecatedTagNameMap {
 
 interface SVGElementTagNameMap {
     "a": SVGAElement;
-    "circle": SVGCircleElement;
     "clipPath": SVGClipPathElement;
     "defs": SVGDefsElement;
     "desc": SVGDescElement;
-    "ellipse": SVGEllipseElement;
     "feBlend": SVGFEBlendElement;
     "feColorMatrix": SVGFEColorMatrixElement;
     "feComponentTransfer": SVGFEComponentTransferElement;
@@ -17992,17 +17992,13 @@ interface SVGElementTagNameMap {
     "foreignObject": SVGForeignObjectElement;
     "g": SVGGElement;
     "image": SVGImageElement;
-    "line": SVGLineElement;
     "linearGradient": SVGLinearGradientElement;
     "marker": SVGMarkerElement;
     "mask": SVGMaskElement;
     "metadata": SVGMetadataElement;
     "path": SVGPathElement;
     "pattern": SVGPatternElement;
-    "polygon": SVGPolygonElement;
-    "polyline": SVGPolylineElement;
     "radialGradient": SVGRadialGradientElement;
-    "rect": SVGRectElement;
     "script": SVGScriptElement;
     "stop": SVGStopElement;
     "style": SVGStyleElement;
