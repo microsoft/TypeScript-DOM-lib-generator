@@ -1,3 +1,3 @@
 {
-    "window-customelements": "Tries to upgrade all shadow-including\ninclusive descendant elements of root, even if they are not\nconnected."
+    "window-customelements": "Defines a new custom element, mapping the given name to the given constructor as an autonomous custom element."
 }
