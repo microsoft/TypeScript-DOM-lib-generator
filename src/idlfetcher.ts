@@ -137,10 +137,7 @@ function getCommentText(text: string) {
         .replace(/’/g, "'")
         .split("\n")
         .filter(line => !!line)
-        .join("\n")
-        // Filters out phrases for nested comments as we retargets them:
-        // "This operation receives a dictionary, which has these members:"
-        .replace(/[,.][^,.]+:/g, ".");
+        .join("\n");
 }
 
 function* generateDescriptionPairs(domIntro: Element) {
