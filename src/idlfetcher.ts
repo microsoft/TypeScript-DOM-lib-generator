@@ -103,7 +103,12 @@ function processComments(dom: DocumentFragment) {
         for (const {dt, dd} of generateDescriptionPairs(element)) {
             elements.push(...importNestedList(dd));
             const comment = dd
-                .map(desc => getCommentText(innerText(desc)))
+                .map(desc => {
+                    desc.normalize();
+                    convertChildPre(desc);
+                    return getCommentText(innerText(desc))
+                })
+                .filter(text => text)
                 .join("\n\n");
             for (const key of dt.map(term => getKey(term.innerHTML))) {
                 if (!key) {
@@ -121,6 +126,21 @@ function processComments(dom: DocumentFragment) {
         return undefined;
     }
     return JSON.stringify(result, undefined, 4);
+}
+
+function convertChildPre(e: Element) {
+    for (const pre of e.querySelectorAll("pre")) {
+        const code = pre.querySelector(":scope > code") as HTMLElement;
+        if (!code) {
+            continue;
+        }
+        const text = innerText(code, {
+            getComputedStyle(_: Element) {
+                return { whiteSpace: "pre" } as CSSStyleDeclaration;
+            }
+        });
+        pre.textContent = "```\n" + text + "\n```";
+    }
 }
 
 function getKey(s: string) {
