@@ -925,6 +925,22 @@
                             "override-signatures": [
                                 "getIntersectionList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                             ]
+                        },
+                        "setCurrentTime": {
+                            "name": "setCurrentTime",
+                            "deprecated": 0
+                        },
+                        "pauseAnimations": {
+                            "name": "pauseAnimations",
+                            "deprecated": 0
+                        },
+                        "unpauseAnimations": {
+                            "name": "unpauseAnimations",
+                            "deprecated": 0
+                        },
+                        "getCurrentTime": {
+                            "name": "getCurrentTime",
+                            "deprecated": 0
                         }
                     }
                 }

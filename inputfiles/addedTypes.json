@@ -225,6 +225,19 @@
     },
     "interfaces": {
         "interface": {
+            "SVGSVGElement": {
+                "name": "SVGSVGElement",
+                "methods": {
+                    "method": {
+                        "animationsPaused": {
+                            "name": "animationsPaused",
+                            "override-signatures": [
+                                "animationsPaused(): boolean"
+                            ]
+                        }
+                    }
+                }
+            },
             "SVGFEDropShadowElement": {
                 "name": "SVGFEDropShadowElement",
                 "exposed": "Window",
