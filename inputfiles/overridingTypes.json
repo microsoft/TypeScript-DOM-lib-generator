@@ -618,8 +618,7 @@
                             "nullable": false
                         },
                         "body": {
-                            "nullable": false,
-                            "override-type": "HTMLBodyElement | HTMLFrameSetElement"
+                            "nullable": false
                        }
                     }
                 }
