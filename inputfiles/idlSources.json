@@ -37,6 +37,10 @@
         "title": "CSS Will Change"
     },
     {
+        "url": "https://w3c.github.io/deviceorientation/",
+        "title": "DeviceOrientation Event"
+    },
+    {
         "url": "https://dom.spec.whatwg.org/",
         "title": "DOM"
     },
@@ -219,6 +223,10 @@
         "title": "Intersection Observer"
     },
     {
+        "url": "https://w3c.github.io/mediacapture-main/",
+        "title": "Media Capture and Streams"
+    },
+    {
         "url": "https://www.w3.org/TR/media-source/",
         "title": "Media Source Extensions"
     },
@@ -286,6 +294,10 @@
     {
         "url": "https://svgwg.org/svg2-draft/types.html",
         "title": "SVG - Basic Data Types and Interfaces"
+    },
+    {
+        "url": "https://svgwg.org/svg2-draft/shapes.html",
+        "title": "SVG - Basic Shapes"
     },
     {
         "url": "https://w3c.github.io/touch-events/",

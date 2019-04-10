@@ -1,29 +1,29 @@
 partial interface Navigator {
-   readonly attribute Geolocation geolocation;
- };
+  readonly attribute Geolocation geolocation;
+};
 
 [NoInterfaceObject]
- interface Geolocation { 
-   void getCurrentPosition(PositionCallback successCallback,
-                           optional PositionErrorCallback errorCallback,
-                           optional PositionOptions options);
+interface Geolocation { 
+  void getCurrentPosition(PositionCallback successCallback,
+                          optional PositionErrorCallback errorCallback,
+                          optional PositionOptions options);
 
-   long watchPosition(PositionCallback successCallback,
-                      optional PositionErrorCallback errorCallback,
-                      optional PositionOptions options);
+  long watchPosition(PositionCallback successCallback,
+                     optional PositionErrorCallback errorCallback,
+                     optional PositionOptions options);
 
-   void clearWatch(long watchId);
- };
+  void clearWatch(long watchId);
+};
 
- callback PositionCallback = void (Position position);
+callback PositionCallback = void (Position position);
 
- callback PositionErrorCallback = void (PositionError positionError);
+callback PositionErrorCallback = void (PositionError positionError);
 
 dictionary PositionOptions {
-    boolean enableHighAccuracy = false;
-    [Clamp] unsigned long timeout = 0xFFFFFFFF;
-    [Clamp] unsigned long maximumAge = 0;
-  };
+  boolean enableHighAccuracy = false;
+  [Clamp] unsigned long timeout = 0xFFFFFFFF;
+  [Clamp] unsigned long maximumAge = 0;
+};
 
 [NoInterfaceObject]
 interface Position {

@@ -6,13 +6,18 @@ interface MessageChannel {
 
 [Exposed=(Window,Worker,AudioWorklet), Transferable]
 interface MessagePort : EventTarget {
-  void postMessage(any message, optional sequence<object> transfer = []);
+  void postMessage(any message, sequence<object> transfer);
+  void postMessage(any message, optional PostMessageOptions options);
   void start();
   void close();
 
   // event handlers
   attribute EventHandler onmessage;
   attribute EventHandler onmessageerror;
+};
+
+dictionary PostMessageOptions {
+  sequence<object> transfer = [];
 };
 
 [Constructor(DOMString name), Exposed=(Window,Worker)]

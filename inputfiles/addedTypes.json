@@ -75,6 +75,10 @@
                 "events": {
                     "event": [
                         {
+                            "name": "auxclick",
+                            "type": "MouseEvent"
+                        },
+                        {
                             "name": "cancel",
                             "type": "Event"
                         },
@@ -221,6 +225,19 @@
     },
     "interfaces": {
         "interface": {
+            "SVGSVGElement": {
+                "name": "SVGSVGElement",
+                "methods": {
+                    "method": {
+                        "animationsPaused": {
+                            "name": "animationsPaused",
+                            "override-signatures": [
+                                "animationsPaused(): boolean"
+                            ]
+                        }
+                    }
+                }
+            },
             "SVGFEDropShadowElement": {
                 "name": "SVGFEDropShadowElement",
                 "exposed": "Window",
@@ -313,6 +330,12 @@
                         }
                     ]
                 }
+            },
+            "DeviceMotionEventAcceleration": {
+                "no-interface-object": 1
+            },
+            "DeviceMotionEventRotationRate": {
+                "no-interface-object": 1
             },
             "RTCError": {
                 "specs": "webrtc",
@@ -535,7 +558,15 @@
                 ],
                 "override-index-signatures": [
                     "[index: number]: Window"
-                ]
+                ],
+                "events": {
+                    "event": [
+                        {
+                            "name": "deviceorientationabsolute",
+                            "type": "DeviceOrientationEvent"
+                        }
+                    ]
+                }
             },
             "URLSearchParams": {
                 "name": "URLSearchParams",
@@ -1848,6 +1879,91 @@
                 "name": "SVGAnimateMotionElement",
                 "extends": "SVGAnimationElement",
                 "exposed": "Window"
+            },
+            "SVGRectElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "rect"
+                    }
+                ]
+            },
+            "SVGCircleElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "circle"
+                    }
+                ]
+            },
+            "SVGEllipseElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "ellipse"
+                    }
+                ]
+            },
+            "SVGLineElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "line"
+                    }
+                ]
+            },
+            "SVGPolygonElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "polygon"
+                    }
+                ]
+            },
+            "SVGPolylineElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "polyline"
+                    }
+                ]
+            },
+            "MediaStream": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "addtrack",
+                            "type": "MediaStreamTrackEvent"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "MediaStreamTrackEvent"
+                        }
+                    ]
+                }
+            },
+            "MediaStreamTrack": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "overconstrained",
+                            "type": "MediaStreamErrorEvent"
+                        }
+                    ]
+                }
+            },
+            "OverconstrainedError": {
+                "name": "OverconstrainedError",
+                "extends": "Error",
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "constraint": {
+                            "name": "constraint",
+                            "type": "DOMString"
+                        }
+                    }
+                }
             }
         }
     },
@@ -1941,22 +2057,6 @@
             {
                 "new-type": "MutationRecordType",
                 "override-type": "\"attributes\" | \"characterData\" | \"childList\""
-            },
-            {
-                "new-type": "ConstrainBoolean",
-                "override-type": "boolean | ConstrainBooleanParameters"
-            },
-            {
-                "new-type": "ConstrainDOMString",
-                "override-type": "string | string[] | ConstrainDOMStringParameters"
-            },
-            {
-                "new-type": "ConstrainDouble",
-                "override-type": "number | ConstrainDoubleRange"
-            },
-            {
-                "new-type": "ConstrainLong",
-                "override-type": "number | ConstrainLongRange"
             },
             {
                 "new-type": "IDBKeyPath",

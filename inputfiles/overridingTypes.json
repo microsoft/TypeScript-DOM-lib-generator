@@ -887,12 +887,6 @@
                     }
                 }
             },
-            "OffscreenCanvas": {
-                "exposed": ""
-            },
-            "OffscreenCanvasRenderingContext2D": {
-                "exposed": ""
-            },
             "BeforeUnloadEvent": {
                 "name": "BeforeUnloadEvent",
                 "properties": {
@@ -931,6 +925,22 @@
                             "override-signatures": [
                                 "getIntersectionList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                             ]
+                        },
+                        "setCurrentTime": {
+                            "name": "setCurrentTime",
+                            "deprecated": 0
+                        },
+                        "pauseAnimations": {
+                            "name": "pauseAnimations",
+                            "deprecated": 0
+                        },
+                        "unpauseAnimations": {
+                            "name": "unpauseAnimations",
+                            "deprecated": 0
+                        },
+                        "getCurrentTime": {
+                            "name": "getCurrentTime",
+                            "deprecated": 0
                         }
                     }
                 }
@@ -2394,7 +2404,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2407,7 +2418,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2420,7 +2432,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2857,25 +2870,6 @@
                         "type": {
                             "name": "type",
                             "override-type": "ClientTypes"
-                        }
-                    }
-                }
-            },
-            "MediaTrackConstraintSet": {
-                "name": "MediaTrackConstraintSet",
-                "members": {
-                    "member": {
-                        "echoCancellation": {
-                            "name": "echoCancellation",
-                            "override-type": "boolean | ConstrainBooleanParameters"
-                        },
-                        "channelCount": {
-                            "name": "channelCount",
-                            "override-type": "number | ConstrainLongRange"
-                        },
-                        "latency": {
-                            "name": "latency",
-                            "override-type": "number | ConstrainDoubleRange"
                         }
                     }
                 }

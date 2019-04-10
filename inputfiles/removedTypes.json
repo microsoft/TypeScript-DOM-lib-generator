@@ -58,6 +58,20 @@
                     }
                 }
             },
+            "DeviceMotionEvent": {
+                "methods": {
+                    "method": {
+                        "requestPermission": null
+                    }
+                }
+            },
+            "DeviceOrientationEvent": {
+                "methods": {
+                    "method": {
+                        "requestPermission": null
+                    }
+                }
+            },
             "Document": {
                 "methods": {
                     "method": {
@@ -89,13 +103,6 @@
                     }
                 }
             },
-            "HTMLCanvasElement": {
-                "methods": {
-                    "method": {
-                        "transferControlToOffscreen": null
-                    }
-                }
-            },
             "HTMLHRElement": {
                 "implements": null
             },
@@ -119,6 +126,7 @@
             "MSDSHEvent": null,
             "MSPortRange": null,
             "MSStreamReader": null,
+            "OverconstrainedErrorEvent": null,
             "Screen": {
                 "methods": {
                     "method": {
