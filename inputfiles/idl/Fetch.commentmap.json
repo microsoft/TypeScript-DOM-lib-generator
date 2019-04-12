@@ -1,5 +1,5 @@
 {
-    "request": "Returns a new request whose url property is input if input is a string, and input's url if input is a Request object.\nThe init argument is an object whose properties can be set as follows:",
+    "request": "Returns a new request whose url property is input if input is a string, and input's url if input is a Request object.\n\nThe init argument is an object whose properties can be set as follows:",
     "request-method": "Returns request's HTTP method, which is \"GET\" by default.",
     "request-url": "Returns the URL of request as a string.",
     "request-headers": "Returns a Headers object consisting of the headers associated with request. Note that headers added in the network layer by the user agent will not be accounted for in this object, e.g., the \"Host\" header.",

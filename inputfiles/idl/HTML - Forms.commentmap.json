@@ -6,6 +6,6 @@
     "form-checkvalidity": "Returns true if the form's controls are all valid; otherwise, returns false.",
     "form-reportvalidity": "Returns true if the form's controls are all valid; otherwise, returns false and informs the user.",
     "label-control": "Returns the form control that is associated with this element.",
-    "label-form": "Returns the form owner of the form control that is associated with this element.\nReturns null if there isn't one.",
+    "label-form": "Returns the form owner of the form control that is associated with this element.\n\nReturns null if there isn't one.",
     "lfe-labels": "Returns a NodeList of all the label elements that the form control is associated with."
 }

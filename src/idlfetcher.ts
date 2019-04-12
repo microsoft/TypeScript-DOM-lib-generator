@@ -106,7 +106,7 @@ function processComments(dom: DocumentFragment) {
                 .map(desc => {
                     desc.normalize();
                     convertChildPre(desc);
-                    return getCommentText(innerText(desc))
+                    return innerText(desc).replace(/’/g, "'");
                 })
                 .filter(text => text)
                 .join("\n\n");
@@ -152,17 +152,9 @@ function getKey(s: string) {
     return undefined;
 }
 
-function getCommentText(text: string) {
-    return text
-        .replace(/’/g, "'")
-        .split("\n")
-        .filter(line => !!line)
-        .join("\n");
-}
-
 function* generateDescriptionPairs(domIntro: Element) {
-    const dt: HTMLDataElement[] = [];
-    const dd: HTMLDataElement[] = [];
+    const dt: HTMLElement[] = [];
+    const dd: HTMLElement[] = [];
     let element = domIntro.firstElementChild;
     while (element) {
         switch (element.localName) {
@@ -171,10 +163,10 @@ function* generateDescriptionPairs(domIntro: Element) {
                     yield { dt: [...dt], dd: [...dd] };
                     dt.length = dd.length = 0;
                 }
-                dt.push(element as HTMLDataElement)
+                dt.push(element as HTMLElement)
                 break;
             case "dd":
-                dd.push(element as HTMLDataElement)
+                dd.push(element as HTMLElement)
                 break;
             default:
                 debugger;

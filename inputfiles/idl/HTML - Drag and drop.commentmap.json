@@ -1,7 +1,7 @@
 {
     "datatransfer": "Creates a new DataTransfer object with an empty drag data store.",
-    "datatransfer-dropeffect": "Returns the kind of operation that is currently selected. If the kind of operation isn't one of those that is allowed by the effectAllowed attribute, then the operation will fail.\nCan be set, to change the selected operation.\nThe possible values are \"none\", \"copy\", \"link\", and \"move\".",
-    "datatransfer-effectallowed": "Returns the kinds of operations that are to be allowed.\nCan be set (during the dragstart event), to change the allowed operations.\nThe possible values are \"none\", \"copy\", \"copyLink\", \"copyMove\", \"link\", \"linkMove\", \"move\", \"all\", and \"uninitialized\",",
+    "datatransfer-dropeffect": "Returns the kind of operation that is currently selected. If the kind of operation isn't one of those that is allowed by the effectAllowed attribute, then the operation will fail.\n\nCan be set, to change the selected operation.\n\nThe possible values are \"none\", \"copy\", \"link\", and \"move\".",
+    "datatransfer-effectallowed": "Returns the kinds of operations that are to be allowed.\n\nCan be set (during the dragstart event), to change the allowed operations.\n\nThe possible values are \"none\", \"copy\", \"copyLink\", \"copyMove\", \"link\", \"linkMove\", \"move\", \"all\", and \"uninitialized\",",
     "datatransfer-items": "Returns a DataTransferItemList object, with the drag data.",
     "datatransfer-setdragimage": "Uses the given element to update the drag feedback, replacing any previously specified feedback.",
     "datatransfer-types": "Returns a frozen array listing the formats that were set in the dragstart event. In addition, if any files are being dragged, then one of the types will be the string \"Files\".",
@@ -18,5 +18,5 @@
     "datatransferitem-getasstring": "Invokes the callback with the string data as the argument, if the drag data item kind is Plain Unicode string.",
     "datatransferitem-getasfile": "Returns a File object, if the drag data item kind is File.",
     "dragevent-datatransfer": "Returns the DataTransfer object for the event.",
-    "draggable": "Returns true if the element is draggable; otherwise, returns false.\nCan be set, to override the default and set the draggable content attribute."
+    "draggable": "Returns true if the element is draggable; otherwise, returns false.\n\nCan be set, to override the default and set the draggable content attribute."
 }

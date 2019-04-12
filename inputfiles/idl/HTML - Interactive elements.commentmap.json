@@ -1,6 +1,6 @@
 {
     "dialog-show": "Displays the dialog element.",
-    "dialog-showmodal": "Displays the dialog element and makes it the top-most modal dialog.\nThis method honors the autofocus attribute.",
-    "dialog-close": "Closes the dialog element.\nThe argument, if provided, provides a return value.",
-    "dialog-returnvalue": "Returns the dialog's return value.\nCan be set, to update the return value."
+    "dialog-showmodal": "Displays the dialog element and makes it the top-most modal dialog.\n\nThis method honors the autofocus attribute.",
+    "dialog-close": "Closes the dialog element.\n\nThe argument, if provided, provides a return value.",
+    "dialog-returnvalue": "Returns the dialog's return value.\n\nCan be set, to update the return value."
 }
