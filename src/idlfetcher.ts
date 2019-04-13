@@ -19,7 +19,10 @@ const idlSelector = [
     "#permission-registry + pre.highlight" // Permissions
 ].join(",");
 
-const cssPropSelector = "dfn.css[data-dfn-type=property]";
+const cssPropSelector = [
+    ".propdef dfn", // CSS Fonts, CSS Masking
+    "dfn.css[data-dfn-type=property]"
+].join(",");
 
 async function fetchIDLs(filter: string[]) {
     const idlSources = (require("../inputfiles/idlSources.json") as IDLSource[])

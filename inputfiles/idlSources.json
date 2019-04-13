@@ -13,16 +13,20 @@
         "title": "CSS Animations"
     },
     {
-        "url": "https://www.w3.org/TR/css-multicol-1/",
-        "title": "CSS Multi-column Layout"
-    },
-    {
         "url": "https://www.w3.org/TR/css-ui-3/",
         "title": "CSS Basic User Interface"
     },
     {
+        "url": "https://www.w3.org/TR/css-fonts-3/",
+        "title": "CSS Fonts"
+    },
+    {
         "url": "https://drafts.csswg.org/css-images-3/",
         "title": "CSS Images"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-multicol-1/",
+        "title": "CSS Multi-column Layout"
     },
     {
         "url": "https://drafts.csswg.org/cssom-view/",
