@@ -14,16 +14,16 @@ enum GamepadHapticActuatorType {
 };
 
 interface GamepadPose {
-          readonly attribute boolean hasOrientation;
-          readonly attribute boolean hasPosition;
+  readonly attribute boolean hasOrientation;
+  readonly attribute boolean hasPosition;
 
-          readonly attribute Float32Array? position;
-          readonly attribute Float32Array? linearVelocity;
-          readonly attribute Float32Array? linearAcceleration;
-          readonly attribute Float32Array? orientation;
-          readonly attribute Float32Array? angularVelocity;
-          readonly attribute Float32Array? angularAcceleration;
-        };
+  readonly attribute Float32Array? position;
+  readonly attribute Float32Array? linearVelocity;
+  readonly attribute Float32Array? linearAcceleration;
+  readonly attribute Float32Array? orientation;
+  readonly attribute Float32Array? angularVelocity;
+  readonly attribute Float32Array? angularAcceleration;
+};
 
 partial interface Gamepad {
   readonly attribute GamepadHand hand;

@@ -1,0 +1,12 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString boxSizing;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString outline;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString outlineWidth;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString outlineStyle;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString outlineColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString outlineOffset;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString resize;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString textOverflow;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString cursor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString caretColor;
+};

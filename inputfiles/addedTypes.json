@@ -75,6 +75,10 @@
                 "events": {
                     "event": [
                         {
+                            "name": "auxclick",
+                            "type": "MouseEvent"
+                        },
+                        {
                             "name": "cancel",
                             "type": "Event"
                         },
@@ -193,30 +197,6 @@
                         }
                     }
                 }
-            },
-            "ParentNode": {
-                "name": "ParentNode",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "firstElementChild": {
-                            "name": "firstElementChild",
-                            "read-only": 1,
-                            "override-type": "Element | null"
-                        },
-                        "lastElementChild": {
-                            "name": "lastElementChild",
-                            "read-only": 1,
-                            "override-type": "Element | null"
-                        },
-                        "childElementCount": {
-                            "name": "childElementCount",
-                            "read-only": 1,
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
             }
         }
     },
@@ -245,6 +225,64 @@
     },
     "interfaces": {
         "interface": {
+            "SVGSVGElement": {
+                "name": "SVGSVGElement",
+                "methods": {
+                    "method": {
+                        "animationsPaused": {
+                            "name": "animationsPaused",
+                            "override-signatures": [
+                                "animationsPaused(): boolean"
+                            ]
+                        }
+                    }
+                }
+            },
+            "SVGFEDropShadowElement": {
+                "name": "SVGFEDropShadowElement",
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "in1": {
+                            "name": "in1",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedString"
+                        },
+                        "dx": {
+                            "name": "dx",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        },
+                        "dy": {
+                            "name": "dy",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        },
+                        "stdDeviationX": {
+                            "name": "stdDeviationX",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        },
+                        "stdDeviationY": {
+                            "name": "stdDeviationY",
+                            "read-only": 1,
+                            "override-type": "SVGAnimatedNumber"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "setStdDeviation": {
+                            "name": "setStdDeviation",
+                            "override-signatures": [
+                                "setStdDeviation(stdDeviationX: number, stdDeviationY: number): void"
+                            ]
+                        }
+                    }
+                },
+                "extends": "SVGElement",
+                "implements": ["SVGFilterPrimitiveStandardAttributes"]
+            },
             "AbortSignal": {
                 "events": {
                     "event": [
@@ -292,6 +330,12 @@
                         }
                     ]
                 }
+            },
+            "DeviceMotionEventAcceleration": {
+                "no-interface-object": 1
+            },
+            "DeviceMotionEventRotationRate": {
+                "no-interface-object": 1
             },
             "RTCError": {
                 "specs": "webrtc",
@@ -417,22 +461,6 @@
                     }
                 ]
             },
-            "BroadcastChannelEventMap": {
-                "name": "BroadcastChannelEventMap",
-                "properties": {
-                    "property": {
-                        "message": {
-                            "name": "message",
-                            "override-type": "MessageEvent"
-                        },
-                        "messageerror": {
-                            "name": "messageerror",
-                            "override-type": "MessageEvent"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "CSSStyleDeclaration": {
                 "name": "CSSStyleDeclaration",
                 "properties": {
@@ -512,12 +540,33 @@
                         "customElements": {
                             "name": "customElements",
                             "override-type": "CustomElementRegistry"
+                        },
+                        "TextEncoder": {
+                            "exposeGlobally": true,
+                            "name": "TextEncoder",
+                            "override-type": "typeof TextEncoder"
+                        },
+                        "TextDecoder": {
+                            "exposeGlobally": true,
+                            "name": "TextDecoder",
+                            "override-type": "typeof TextDecoder"
                         }
                     }
                 },
                 "implements": [
                     "WindowEventHandlers"
-                ]
+                ],
+                "override-index-signatures": [
+                    "[index: number]: Window"
+                ],
+                "events": {
+                    "event": [
+                        {
+                            "name": "deviceorientationabsolute",
+                            "type": "DeviceOrientationEvent"
+                        }
+                    ]
+                }
             },
             "URLSearchParams": {
                 "name": "URLSearchParams",
@@ -718,10 +767,6 @@
                             "additional-signatures": [
                                 "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement",
                                 "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"a\"): SVGAElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"script\"): SVGScriptElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"style\"): SVGStyleElement",
-                                "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: \"title\"): SVGTitleElement",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement",
                                 "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
                             ]
@@ -1067,17 +1112,6 @@
                     }
                 }
             },
-            "ShadowRoot": {
-                "name": "ShadowRoot",
-                "properties": {
-                    "property": {
-                        "innerHTML": {
-                            "name": "innerHTML",
-                            "type": "DOMString"
-                        }
-                    }
-                }
-            },
             "SpeechRecognition": {
                 "events": {
                     "event": [
@@ -1151,30 +1185,6 @@
                             "override-type": "HTMLSlotElement | null"
                         }
                     }
-                }
-            },
-            "ElementCreationOptions": {
-                "name": "ElementCreationOptions",
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "is": {
-                            "name": "is",
-                            "override-type": "string",
-                            "required": 0
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
-            "HTMLMainElement": {
-                "name": "HTMLMainElement",
-                "extends": "HTMLElement",
-                "exposed": "Window",
-                "constructor": {
-                    "override-signatures": [
-                        "new(): HTMLMainElement"
-                    ]
                 }
             },
             "DOMMatrixReadOnly": {
@@ -1717,51 +1727,6 @@
                     }
                 ]
             },
-            "NodeSelector": {
-                "name": "NodeSelector",
-                "extends": "Object",
-                "no-interface-object": "1",
-                "methods": {
-                    "method": {
-                        "querySelectorAll": {
-                            "signature": [
-                                {
-                                    "param-min-required": 1,
-                                    "type": "NodeList",
-                                    "param": [
-                                        {
-                                            "name": "selectors",
-                                            "type": "DOMString",
-                                            "type-original": "DOMString"
-                                        }
-                                    ],
-                                    "type-original": "NodeList"
-                                }
-                            ],
-                            "name": "querySelectorAll"
-                        },
-                        "querySelector": {
-                            "signature": [
-                                {
-                                    "nullable": 1,
-                                    "param-min-required": 1,
-                                    "type": "Element",
-                                    "param": [
-                                        {
-                                            "name": "selectors",
-                                            "type": "DOMString",
-                                            "type-original": "DOMString"
-                                        }
-                                    ],
-                                    "type-original": "Element?"
-                                }
-                            ],
-                            "name": "querySelector"
-                        }
-                    }
-                },
-                "exposed": "Window"
-            },
             "CSS": {
                 "name": "CSS",
                 "methods": {
@@ -1914,6 +1879,91 @@
                 "name": "SVGAnimateMotionElement",
                 "extends": "SVGAnimationElement",
                 "exposed": "Window"
+            },
+            "SVGRectElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "rect"
+                    }
+                ]
+            },
+            "SVGCircleElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "circle"
+                    }
+                ]
+            },
+            "SVGEllipseElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "ellipse"
+                    }
+                ]
+            },
+            "SVGLineElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "line"
+                    }
+                ]
+            },
+            "SVGPolygonElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "polygon"
+                    }
+                ]
+            },
+            "SVGPolylineElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "polyline"
+                    }
+                ]
+            },
+            "MediaStream": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "addtrack",
+                            "type": "MediaStreamTrackEvent"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "MediaStreamTrackEvent"
+                        }
+                    ]
+                }
+            },
+            "MediaStreamTrack": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "overconstrained",
+                            "type": "MediaStreamErrorEvent"
+                        }
+                    ]
+                }
+            },
+            "OverconstrainedError": {
+                "name": "OverconstrainedError",
+                "extends": "Error",
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "constraint": {
+                            "name": "constraint",
+                            "type": "DOMString"
+                        }
+                    }
+                }
             }
         }
     },
@@ -2007,22 +2057,6 @@
             {
                 "new-type": "MutationRecordType",
                 "override-type": "\"attributes\" | \"characterData\" | \"childList\""
-            },
-            {
-                "new-type": "ConstrainBoolean",
-                "override-type": "boolean | ConstrainBooleanParameters"
-            },
-            {
-                "new-type": "ConstrainDOMString",
-                "override-type": "string | string[] | ConstrainDOMStringParameters"
-            },
-            {
-                "new-type": "ConstrainDouble",
-                "override-type": "number | ConstrainDoubleRange"
-            },
-            {
-                "new-type": "ConstrainLong",
-                "override-type": "number | ConstrainLongRange"
             },
             {
                 "new-type": "IDBKeyPath",

@@ -30,6 +30,16 @@ function emitDom() {
     const inputFolder = path.join(__SOURCE_DIRECTORY__, "../", "inputfiles");
     const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
 
+    // ${name} will be substituted with the name of an interface
+    const removeVerboseIntroductions: [RegExp, string][] = [
+        [/^(The|A) ${name} interface of (the\s*)*([a-z\d\s]+ API)(\\\'s)?/, 'An interface of the $3 '],
+        [/^(The|A) ${name} (interface|event|object) (is|represents|describes|defines)?/, ''],
+        [/^An object implementing the ${name} interface (is|represents|describes|defines)/, ''],
+        [/^The ${name} is an interface representing/, ''],
+        [/^This type (is|represents|describes|defines)?/, ''],
+        [/^The ([a-z\s]+ API(\\\'s)?) ${name} (represents|is|describes|defines)/, 'The $1 ']
+    ];
+
     // Create output folder
     if (!fs.existsSync(outputFolder)) {
         fs.mkdirSync(outputFolder);
@@ -38,7 +48,6 @@ function emitDom() {
     const tsWebOutput = path.join(outputFolder, "dom.generated.d.ts");
     const tsWebIteratorsOutput = path.join(outputFolder, "dom.iterable.generated.d.ts");
     const tsWorkerOutput = path.join(outputFolder, "webworker.generated.d.ts");
-
 
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
@@ -53,12 +62,21 @@ function emitDom() {
         const idl: string = fs.readFileSync(path.join(inputFolder, "idl", filename), { encoding: "utf-8" });
         const commentsMapFilePath = path.join(inputFolder, "idl", title + ".commentmap.json");
         const commentsMap: Record<string, string> = fs.existsSync(commentsMapFilePath) ? require(commentsMapFilePath) : {};
+        commentCleanup(commentsMap)
         const result = convert(idl, commentsMap);
         if (deprecated) {
             mapToArray(result.browser.interfaces!.interface).forEach(markAsDeprecated);
             result.partialInterfaces.forEach(markAsDeprecated);
         }
         return result;
+    }
+
+    function commentCleanup(commentsMap: Record<string, string>) {
+        for (const key in commentsMap) {
+            // Filters out phrases for nested comments as we retargets them:
+            // "This operation receives a dictionary, which has these members:"
+            commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
+        }
     }
 
     function apiDescriptionsToIdl(descriptions: Record<string, string>) {
@@ -70,11 +88,25 @@ function emitDom() {
 
         Object.keys(descriptions).forEach(name => {
             idl.interfaces!.interface[name] = {
-                comment: descriptions[name],
+                comment: transformVerbosity(name, descriptions[name]),
             } as Browser.Interface;
         });
 
         return idl;
+    }
+
+    function transformVerbosity(name: string, description: string): string {
+        for (const regTemplate of removeVerboseIntroductions) {
+            const [{ source: template }, replace] = regTemplate;
+
+            const reg = new RegExp(template.replace(/\$\{name\}/g, name) + '\\s*', 'i');
+            const product = description.replace(reg, replace);
+            if (product !== description) {
+                return product.charAt(0).toUpperCase() + product.slice(1);
+            }
+        }
+
+        return description;
     }
 
     /// Load the input file

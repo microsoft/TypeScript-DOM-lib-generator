@@ -1,7 +1,7 @@
 {
     "messageevent-data": "Returns the data of the message.",
-    "messageevent-origin": "Returns the origin of the message, for server-sent events and\ncross-document messaging.",
-    "messageevent-lasteventid": "Returns the last event ID string, for\nserver-sent events.",
-    "messageevent-source": "Returns the WindowProxy of the source window, for cross-document\nmessaging, and the MessagePort being attached, in the connect event fired at\nSharedWorkerGlobalScope objects.",
-    "messageevent-ports": "Returns the MessagePort array sent with the message, for cross-document\nmessaging and channel messaging."
+    "messageevent-origin": "Returns the origin of the message, for server-sent events and cross-document messaging.",
+    "messageevent-lasteventid": "Returns the last event ID string, for server-sent events.",
+    "messageevent-source": "Returns the WindowProxy of the source window, for cross-document messaging, and the MessagePort being attached, in the connect event fired at SharedWorkerGlobalScope objects.",
+    "messageevent-ports": "Returns the MessagePort array sent with the message, for cross-document messaging and channel messaging."
 }

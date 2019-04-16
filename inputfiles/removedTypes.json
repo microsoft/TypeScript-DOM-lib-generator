@@ -58,6 +58,27 @@
                     }
                 }
             },
+            "DeviceMotionEvent": {
+                "methods": {
+                    "method": {
+                        "requestPermission": null
+                    }
+                }
+            },
+            "DeviceOrientationEvent": {
+                "methods": {
+                    "method": {
+                        "requestPermission": null
+                    }
+                }
+            },
+            "Document": {
+                "methods": {
+                    "method": {
+                        "evaluate": null
+                    }
+                }
+            },
             "FileReaderProgressEvent": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
@@ -79,13 +100,6 @@
                         "insertAdjacentElement": null,
                         "insertAdjacentHTML": null,
                         "insertAdjacentText": null
-                    }
-                }
-            },
-            "HTMLCanvasElement": {
-                "methods": {
-                    "method": {
-                        "transferControlToOffscreen": null
                     }
                 }
             },
@@ -112,6 +126,7 @@
             "MSDSHEvent": null,
             "MSPortRange": null,
             "MSStreamReader": null,
+            "OverconstrainedErrorEvent": null,
             "Screen": {
                 "methods": {
                     "method": {
@@ -211,7 +226,15 @@
                         "wheelDeltaY": null
                     }
                 }
-            }
+            },
+            "XPathEvaluator": {
+                "methods": {
+                    "method": {
+                        "evaluate": null
+                    }
+                }
+            },
+            "XPathNSResolver": null
         }
     },
     "dictionaries": {

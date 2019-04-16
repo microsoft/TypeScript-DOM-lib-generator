@@ -13,6 +13,18 @@
         "title": "CSS Animations"
     },
     {
+        "url": "https://www.w3.org/TR/css-multicol-1/",
+        "title": "CSS Multi-column Layout"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-ui-3/",
+        "title": "CSS Basic User Interface"
+    },
+    {
+        "url": "https://drafts.csswg.org/css-images-3/",
+        "title": "CSS Images"
+    },
+    {
         "url": "https://drafts.csswg.org/cssom-view/",
         "title": "CSSOM View"
     },
@@ -21,12 +33,24 @@
         "title": "CSS Transitions"
     },
     {
+        "url": "https://www.w3.org/TR/css-will-change/",
+        "title": "CSS Will Change"
+    },
+    {
+        "url": "https://w3c.github.io/deviceorientation/",
+        "title": "DeviceOrientation Event"
+    },
+    {
         "url": "https://dom.spec.whatwg.org/",
         "title": "DOM"
     },
     {
         "url": "https://w3c.github.io/DOM-Parsing/",
         "title": "DOM Parsing and Serialization"
+    },
+    {
+        "url": "https://wiki.whatwg.org/wiki/DOM_XPath",
+        "title": "DOM XPath"
     },
     {
         "url": "https://encoding.spec.whatwg.org/",
@@ -195,6 +219,14 @@
         "title": "Indexed Database"
     },
     {
+        "url": "https://www.w3.org/TR/intersection-observer/",
+        "title": "Intersection Observer"
+    },
+    {
+        "url": "https://w3c.github.io/mediacapture-main/",
+        "title": "Media Capture and Streams"
+    },
+    {
         "url": "https://www.w3.org/TR/media-source/",
         "title": "Media Source Extensions"
     },
@@ -213,6 +245,10 @@
     {
         "url": "https://w3c.github.io/performance-timeline/",
         "title": "Performance Timeline"
+    },
+    {
+        "url": "https://www.w3.org/TR/permissions/",
+        "title": "Permissions"
     },
     {
         "url": "https://www.w3.org/TR/pointerevents2/",
@@ -260,6 +296,10 @@
         "title": "SVG - Basic Data Types and Interfaces"
     },
     {
+        "url": "https://svgwg.org/svg2-draft/shapes.html",
+        "title": "SVG - Basic Shapes"
+    },
+    {
         "url": "https://w3c.github.io/touch-events/",
         "title": "Touch Events"
     },
@@ -278,6 +318,10 @@
     {
         "url": "https://drafts.csswg.org/web-animations/",
         "title": "Web Animations"
+    },
+    {
+        "url": "https://www.w3.org/TR/wasm-js-api-1/",
+        "title": "WebAssembly JavaScript Interface"
     },
     {
         "url": "https://webaudio.github.io/web-audio-api/",

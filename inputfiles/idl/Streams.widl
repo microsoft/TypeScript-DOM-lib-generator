@@ -43,6 +43,7 @@ dictionary PipeOptions {
     boolean? preventClose;
     boolean? preventAbort;
     boolean? preventCancel;
+    AbortSignal? signal;
 };
 
 [Exposed=(Window,Worker)]

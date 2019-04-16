@@ -305,19 +305,18 @@
     "callback-interfaces": {
         "interface": {}
     },
+    "enums": {
+        "enum": {
+            "ImportExportKind": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "TableKind": {
+                "legacy-namespace": "WebAssembly"
+            }
+        }
+    },
     "interfaces": {
         "interface": {
-            "XPathNSResolver": {
-                "methods": {
-                    "method": {
-                        "lookupNamespaceURI": {
-                            "override-signatures": [
-                                "lookupNamespaceURI(prefix: string): string | null"
-                            ]
-                        }
-                    }
-                }
-            },
             "CryptoKey": {
                 "properties": {
                     "property": {
@@ -510,12 +509,6 @@
                             "name": "elementsFromPoint",
                             "override-signatures": [
                                 "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        },
-                        "evaluate": {
-                            "name": "evaluate",
-                            "override-signatures": [
-                                "evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | ((prefix: string) => string | null) | null, type: number, result: XPathResult | null): XPathResult"
                             ]
                         },
                         "getElementsByTagNameNS": {
@@ -893,12 +886,6 @@
                     }
                 }
             },
-            "OffscreenCanvas": {
-                "exposed": ""
-            },
-            "OffscreenCanvasRenderingContext2D": {
-                "exposed": ""
-            },
             "BeforeUnloadEvent": {
                 "name": "BeforeUnloadEvent",
                 "properties": {
@@ -937,6 +924,22 @@
                             "override-signatures": [
                                 "getIntersectionList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                             ]
+                        },
+                        "setCurrentTime": {
+                            "name": "setCurrentTime",
+                            "deprecated": 0
+                        },
+                        "pauseAnimations": {
+                            "name": "pauseAnimations",
+                            "deprecated": 0
+                        },
+                        "unpauseAnimations": {
+                            "name": "unpauseAnimations",
+                            "deprecated": 0
+                        },
+                        "getCurrentTime": {
+                            "name": "getCurrentTime",
+                            "deprecated": 0
                         }
                     }
                 }
@@ -1459,6 +1462,10 @@
                             "name": "form",
                             "read-only": 1,
                             "override-type": "HTMLFormElement | null"
+                        },
+                        "valueAsDate": {
+                            "name": "valueAsDate",
+                            "override-type": "Date | null"
                         }
                     }
                 },
@@ -1481,32 +1488,6 @@
                             "name": "initMouseEvent",
                             "override-signatures": [
                                 "initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void"
-                            ]
-                        }
-                    }
-                }
-            },
-            "XPathEvaluator": {
-                "name": "XPathEvaluator",
-                "methods": {
-                    "method": {
-                        "evaluate": {
-                            "name": "evaluate",
-                            "override-signatures": [
-                                "evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | ((prefix: string) => string | null) | null, type: number, result: XPathResult | null): XPathResult"
-                            ]
-                        }
-                    }
-                }
-            },
-            "XPathExpression": {
-                "name": "XPathExpression",
-                "methods": {
-                    "method": {
-                        "evaluate": {
-                            "name": "evaluate",
-                            "override-signatures": [
-                                "evaluate(contextNode: Node, type: number, result: XPathResult | null): XPathResult"
                             ]
                         }
                     }
@@ -2415,19 +2396,6 @@
                     ]
                 }
             },
-            "BroadcastChannel": {
-                "name": "BroadcastChannel",
-                "methods": {
-                    "method": {
-                        "postMessage": {
-                            "name": "postMessage",
-                            "override-signatures": [
-                                "postMessage(message: any): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "MessagePort": {
                 "name": "MessagePort",
                 "methods": {
@@ -2435,7 +2403,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2448,7 +2417,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2461,7 +2431,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2566,11 +2537,6 @@
                 "no-interface-object": "1"
             },
             "ReadableStreamBYOBReader": {
-                "constructor": {
-                    "override-signatures": [
-                        "new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader"
-                    ]
-                },
                 "methods": {
                     "method": {
                         "read": {
@@ -2579,7 +2545,8 @@
                             ]
                         }
                     }
-                }
+                },
+                "no-interface-object": 1
             },
             "ReadableStreamBYOBRequest": {
                 "no-interface-object": 1
@@ -2747,6 +2714,17 @@
                         }
                     }
                 }
+            },
+            "Permissions": {
+                "methods": {
+                    "method": {
+                        "query": {
+                            "override-signatures": [
+                                "query(permissionDesc: PermissionDescriptor | DevicePermissionDescriptor | MidiPermissionDescriptor | PushPermissionDescriptor): Promise<PermissionStatus>"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
@@ -2895,25 +2873,6 @@
                     }
                 }
             },
-            "MediaTrackConstraintSet": {
-                "name": "MediaTrackConstraintSet",
-                "members": {
-                    "member": {
-                        "echoCancellation": {
-                            "name": "echoCancellation",
-                            "override-type": "boolean | ConstrainBooleanParameters"
-                        },
-                        "channelCount": {
-                            "name": "channelCount",
-                            "override-type": "number | ConstrainLongRange"
-                        },
-                        "latency": {
-                            "name": "latency",
-                            "override-type": "number | ConstrainDoubleRange"
-                        }
-                    }
-                }
-            },
             "BaseKeyframe": {
                 "name": "Keyframe",
                 "override-index-signatures": [
@@ -2958,6 +2917,9 @@
                             "nullable": 0
                         },
                         "preventCancel": {
+                            "nullable": 0
+                        },
+                        "signal": {
                             "nullable": 0
                         }
                     }
@@ -3090,6 +3052,57 @@
                         }
                     }
                 }
+            },
+            "DevicePermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "name": "name",
+                            "required": 1,
+                            "override-type": "\"camera\" | \"microphone\" | \"speaker\""
+                        }
+                    }
+                }
+            },
+            "MidiPermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "name": "name",
+                            "required": 1,
+                            "override-type": "\"midi\""
+                        }
+                    }
+                }
+            },
+            "PushPermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "name": "name",
+                            "required": 1,
+                            "override-type": "\"push\""
+                        }
+                    }
+                }
+            },
+            "ModuleExportDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "ModuleImportDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "MemoryDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "TableDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "GlobalDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "WebAssemblyInstantiatedSource": {
+                "legacy-namespace": "WebAssembly"
             }
         }
     },

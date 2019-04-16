@@ -1096,6 +1096,9 @@
                         "value": {
                             "comment": "/**\r\n * Returns the value of the data at the cursor's current position.\r\n */"
                         },
+                        "valueAsDate": {
+                            "comment": "/**\r\n * Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an \"InvalidStateError\" DOMException if the control isn't date- or time-based.\r\n */"
+                        },
                         "src": {
                             "comment": "/**\r\n * The address or URL of the a media resource that is to be considered.\r\n */"
                         },

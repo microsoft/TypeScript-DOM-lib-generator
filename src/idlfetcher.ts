@@ -3,6 +3,7 @@ import * as path from "path";
 import fetch from "node-fetch";
 import { JSDOM } from "jsdom";
 import getUnmergedDiffSpecs from "./git-diff";
+import innerText from "styleless-innertext";
 
 if (process.argv[2] === "--compare") {
     getUnmergedDiffSpecs().then(compareIDLs);
@@ -21,7 +22,8 @@ interface IDLSource {
 const idlSelector = [
     "pre.idl:not(.extract):not(.example)", // bikeshed and ReSpec
     "pre.code code.idl-code", // Web Cryptography
-    "pre:not(.extract) code.idl" // HTML
+    "pre:not(.extract) code.idl", // HTML
+    "#permission-registry + pre.highlight" // Permissions
 ].join(",");
 
 const cssPropSelector = "dfn.css[data-dfn-type=property]";
@@ -121,7 +123,7 @@ function extractCSSDefinitions(dom: DocumentFragment) {
         properties.map(property => `\n  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString ${
             hyphenToCamelCase(property)
         };`).join("")
-    }\n};`
+    }\n};`;
 }
 
 function hyphenToCamelCase(name: string) {
@@ -132,21 +134,32 @@ function hyphenToCamelCase(name: string) {
 }
 
 function processComments(dom: DocumentFragment) {
-    const elements = dom.querySelectorAll("dl.domintro");
+    const elements = [...dom.querySelectorAll("dl.domintro")];
     if (!elements.length) {
         return undefined;
     }
 
     const result: Record<string, string> = {};
     for (const element of elements) {
-        let child = element.firstElementChild;
-        while (child) {
-            const key = getKey(child.innerHTML);
-            child = child.nextElementSibling;
-            const childKey = child && getKey(child.innerHTML);
-            if (key && child && (child === element.lastElementChild || !isNextKey(key, childKey))) {
-                result[key] = getCommentText(child.textContent!);
-                child = child.nextElementSibling;
+        for (const {dt, dd} of generateDescriptionPairs(element)) {
+            elements.push(...importNestedList(dd));
+            const comment = dd
+                .map(desc => {
+                    desc.normalize();
+                    convertChildPre(desc);
+                    return innerText(desc).replace(/’/g, "'");
+                })
+                .filter(text => text)
+                .join("\n\n");
+            for (const key of dt.map(term => getKey(term.innerHTML))) {
+                if (!key) {
+                    continue;
+                }
+                const retargeted = retargetCommentKey(key, dom);
+                // prefer the first description
+                if (!result[retargeted]) {
+                    result[retargeted] = comment;
+                }
             }
         }
     }
@@ -156,12 +169,23 @@ function processComments(dom: DocumentFragment) {
     return JSON.stringify(result, undefined, 4);
 }
 
-function isNextKey(k1: string, k2: string | null | undefined) {
-    return k2 && k1.split("-")[0] === k2.split("-")[0];
+function convertChildPre(e: Element) {
+    for (const pre of e.querySelectorAll("pre")) {
+        const code = pre.querySelector(":scope > code") as HTMLElement;
+        if (!code) {
+            continue;
+        }
+        const text = innerText(code, {
+            getComputedStyle(_: Element) {
+                return { whiteSpace: "pre" } as CSSStyleDeclaration;
+            }
+        });
+        pre.textContent = "```\n" + text + "\n```";
+    }
 }
 
 function getKey(s: string) {
-    const keyRegexp = /#dom-([a-zA-Z-_]+)/i;
+    const keyRegexp = /#dom-([a-zA-Z0-9-_]+)/i;
     const match = s.match(keyRegexp);
     if (match) {
         return match[1];
@@ -169,19 +193,63 @@ function getKey(s: string) {
     return undefined;
 }
 
-function getCommentText(text: string) {
-    return text
-        .replace(/’/g, "'")
-        .split("\n")
-        .map(line => line.trim())
-        .filter(line => !!line)
-        .map(line => line.slice(getIndentation(line))).join("\n");
+function* generateDescriptionPairs(domIntro: Element) {
+    const dt: HTMLElement[] = [];
+    const dd: HTMLElement[] = [];
+    let element = domIntro.firstElementChild;
+    while (element) {
+        switch (element.localName) {
+            case "dt":
+                if (dd.length) {
+                    yield { dt: [...dt], dd: [...dd] };
+                    dt.length = dd.length = 0;
+                }
+                dt.push(element as HTMLElement)
+                break;
+            case "dd":
+                dd.push(element as HTMLElement)
+                break;
+            default:
+                debugger;
+        }
+        element = element.nextElementSibling;
+    }
+    if (dd.length) {
+        yield { dt: [...dt], dd: [...dd] };
+    }
+}
+
+function* importNestedList(elements: Element[]) {
+    for (const element of elements) {
+        for (const dl of element.getElementsByTagName("dl")) {
+            dl.remove();
+            yield dl;
+        }
+    }
+}
+
+/**
+ * Specifications tends to keep existing keys even after a member relocation
+ * so that external links can be stable and won't broken.
+ */
+function retargetCommentKey(key: string, dom: DocumentFragment) {
+    const [parent, member] = key.split(/-/g);
+    if (!member) {
+        return parent;
+    }
+    const dfn = dom.getElementById(`dom-${key}`);
+    if (!dfn || !dfn.dataset.dfnFor) {
+        // The optional third word is for overloads and can be safely ignored.
+        return `${parent}-${member}`;
+    }
+    return `${dfn.dataset.dfnFor.toLowerCase()}-${member}`;
 }
 
 /**
  * Remove common indentation:
  *     <pre>
  *       typedef Type = "type";
+ *
  *       dictionary Dictionary {
  *         "member"
  *       };
@@ -196,7 +264,7 @@ function trimCommonIndentation(text: string) {
     if (!lines[lines.length - 1].trim()) {
         lines.pop();
     }
-    const commonIndentation = Math.min(...lines.map(getIndentation));
+    const commonIndentation = Math.min(...lines.filter(line => line.trim()).map(getIndentation));
     return lines.map(line => line.slice(commonIndentation)).join("\n");
 }
 
