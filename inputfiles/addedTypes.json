@@ -72,6 +72,19 @@
                 }
             },
             "GlobalEventHandlers": {
+                "name": "GlobalEventHandlers",
+                "properties": {
+                    "property": {
+                        "onfocusin": {
+                            "name": "onfocusin",
+                            "override-type": "((this: GlobalEventHandlers, ev: FocusEvent) => any) | null"
+                        },
+                        "onfocusout": {
+                            "name": "onfocusout",
+                            "override-type": "((this: GlobalEventHandlers, ev: FocusEvent) => any) | null"
+                        }
+                    }
+                },
                 "events": {
                     "event": [
                         {
@@ -109,6 +122,14 @@
                         {
                             "name": "drop",
                             "type": "DragEvent"
+                        },
+                        {
+                            "name": "focusin",
+                            "type": "FocusEvent"
+                        },
+                        {
+                            "name": "focusout",
+                            "type": "FocusEvent"
                         },
                         {
                             "name": "keydown",
