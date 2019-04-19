@@ -5728,8 +5728,6 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
-    onfocusin: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
-    onfocusout: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
     ongotpointercapture: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
@@ -18491,8 +18489,6 @@ declare var onerror: OnErrorEventHandler;
  * @param ev The event.
  */
 declare var onfocus: ((this: Window, ev: FocusEvent) => any) | null;
-declare var onfocusin: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
-declare var onfocusout: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
 declare var ongotpointercapture: ((this: Window, ev: PointerEvent) => any) | null;
 declare var oninput: ((this: Window, ev: Event) => any) | null;
 declare var oninvalid: ((this: Window, ev: Event) => any) | null;
