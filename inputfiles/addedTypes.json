@@ -72,6 +72,18 @@
                 }
             },
             "GlobalEventHandlers": {
+                "attributeless-events": {
+                    "event": [
+                        {
+                            "name": "focusin",
+                            "type": "FocusEvent"
+                        },
+                        {
+                            "name": "focusout",
+                            "type": "FocusEvent"
+                        }
+                    ]
+                },
                 "events": {
                     "event": [
                         {

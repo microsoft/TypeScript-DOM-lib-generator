@@ -5567,6 +5567,8 @@ interface GlobalEventHandlersEventMap {
     "ended": Event;
     "error": ErrorEvent;
     "focus": FocusEvent;
+    "focusin": FocusEvent;
+    "focusout": FocusEvent;
     "gotpointercapture": PointerEvent;
     "input": Event;
     "invalid": Event;
