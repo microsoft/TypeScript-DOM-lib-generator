@@ -165,6 +165,11 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return { name: p.name, eventName, eventType };
         }));
 
+    const iNameToAttributelessEhList = arrayToMap(allInterfaces, i => i.name, i =>
+        !i["attributeless-events"] ? [] : i["attributeless-events"].event.map(e => {
+            return { name: "on" + e.name, eventName: e.name, eventType: e.type };
+        }));
+
     const iNameToConstList = arrayToMap(allInterfaces, i => i.name, i =>
         !i.constants ? [] : mapToArray(i.constants.constant));
 
@@ -242,6 +247,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     function getEventTypeInInterface(eName: string, i: Browser.Interface) {
         if (i.events) {
             const event = i.events.event.find(e => e.name === eName);
+            if (event && event.type) {
+                return event.type;
+            }
+        }
+        if (i["attributeless-events"]) {
+            const event = i["attributeless-events"].event.find(e => e.name === eName);
             if (event && event.type) {
                 return event.type;
             }
@@ -885,9 +896,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         }
 
         const hasEventHandlers = iNameToEhList[i.name] && iNameToEhList[i.name].length;
+        const hasAttributelessEventHandlers = iNameToAttributelessEhList[i.name] && iNameToAttributelessEhList[i.name].length;
         const ehParentCount = iNameToEhParents[i.name] && iNameToEhParents[i.name].length;
 
-        if (hasEventHandlers || ehParentCount > 1) {
+        if (hasEventHandlers || hasAttributelessEventHandlers || ehParentCount > 1) {
             printer.print(`interface ${i.name}EventMap`);
             if (ehParentCount) {
                 const extend = iNameToEhParents[i.name].map(i => i.name + "EventMap");
@@ -897,6 +909,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             printer.endLine();
             printer.increaseIndent();
             iNameToEhList[i.name]
+                .concat(iNameToAttributelessEhList[i.name])
                 .sort(compareName)
                 .forEach(emitInterfaceEventMapEntry);
             printer.decreaseIndent();
@@ -1005,7 +1018,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     function emitNamespace(namespace: Browser.Interface) {
         printer.printLine(`declare namespace ${namespace.name} {`);
         printer.increaseIndent();
-        
+
         if (namespace.nested) {
             namespace.nested.interfaces
                 .sort(compareName)

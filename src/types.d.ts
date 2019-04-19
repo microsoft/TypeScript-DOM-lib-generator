@@ -161,6 +161,9 @@ export interface Interface {
     events?: {
         event: Event[];
     }
+    "attributeless-events"?: {
+        event: Event[];
+    }
     properties?: {
         property: Record<string, Property>;
     }
