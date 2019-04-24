@@ -1,4 +1,4 @@
-typedef (CanvasRenderingContext2D or ImageBitmapRenderingContext or WebGLRenderingContext) RenderingContext;
+typedef (CanvasRenderingContext2D or ImageBitmapRenderingContext or WebGLRenderingContext or WebGL2RenderingContext) RenderingContext;
 
 [Exposed=Window,
  HTMLConstructor]
@@ -8,8 +8,8 @@ interface HTMLCanvasElement : HTMLElement {
 
   RenderingContext? getContext(DOMString contextId, optional any options = null);
 
-  USVString toDataURL(optional DOMString type, optional any quality);
-  void toBlob(BlobCallback _callback, optional DOMString type, optional any quality);
+  USVString toDataURL(optional DOMString type = "image/png", optional any quality);
+  void toBlob(BlobCallback _callback, optional DOMString type = "image/png", optional any quality);
   OffscreenCanvas transferControlToOffscreen();
 };
 
@@ -28,6 +28,7 @@ enum CanvasFillRule { "nonzero", "evenodd" };
 
 dictionary CanvasRenderingContext2DSettings {
   boolean alpha = true;
+  boolean desynchronized = false;
 };
 
 enum ImageSmoothingQuality { "low", "medium", "high" };
@@ -36,6 +37,8 @@ enum ImageSmoothingQuality { "low", "medium", "high" };
 interface CanvasRenderingContext2D {
   // back-reference to the canvas
   readonly attribute HTMLCanvasElement canvas;
+
+  CanvasRenderingContext2DSettings getContextAttributes();
 };
 CanvasRenderingContext2D includes CanvasState;
 CanvasRenderingContext2D includes CanvasTransform;
@@ -260,20 +263,19 @@ dictionary ImageBitmapRenderingContextSettings {
   boolean alpha = true;
 };
 
-typedef (OffscreenCanvasRenderingContext2D or
-        WebGLRenderingContext) OffscreenRenderingContext;
+typedef (OffscreenCanvasRenderingContext2D or WebGLRenderingContext or WebGL2RenderingContext) OffscreenRenderingContext;
 
 dictionary ImageEncodeOptions {
   DOMString type = "image/png";
-  unrestricted double quality = 1.0;
+  unrestricted double quality;
 };
 
-enum OffscreenRenderingContextId { "2d", "webgl" };
+enum OffscreenRenderingContextId { "2d", "webgl", "webgl2" };
 
 [Constructor([EnforceRange] unsigned long long width, [EnforceRange] unsigned long long height), Exposed=(Window,Worker), Transferable]
 interface OffscreenCanvas : EventTarget {
-  attribute unsigned long long width;
-  attribute unsigned long long height;
+  attribute [EnforceRange] unsigned long long width;
+  attribute [EnforceRange] unsigned long long height;
 
   OffscreenRenderingContext? getContext(OffscreenRenderingContextId contextId, optional any options = null);
   ImageBitmap transferToImageBitmap();

@@ -384,6 +384,10 @@
         "title": "WebGL 1"
     },
     {
+        "url": "https://www.khronos.org/registry/webgl/specs/latest/2.0/webgl2.idl",
+        "title": "WebGL 2"
+    },
+    {
         "url": "https://www.khronos.org/registry/webgl/extensions/ANGLE_instanced_arrays/",
         "title": "WebGL ANGLE_instanced_arrays"
     },
