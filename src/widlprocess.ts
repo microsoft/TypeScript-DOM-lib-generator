@@ -197,7 +197,7 @@ function convertOperation(operation: webidl2.OperationMemberType, inheritedExpos
         throw new Error("Unexpected anonymous operation");
     }
     return {
-        name: operation.name,
+        name: operation.name || undefined,
         signature: [{
             ...convertIdlType(operation.idlType),
             param: operation.arguments.map(convertArgument)
