@@ -314,6 +314,9 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function convertDomTypeToTsTypeSimple(objDomType: string): string {
+        if (objDomType === "sequence" && flavor === Flavor.ES6Iterators) {
+            return "Iterable";
+        }
         if (baseTypeConversionMap.has(objDomType)) {
             return baseTypeConversionMap.get(objDomType)!;
         }
@@ -1194,8 +1197,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             });
         }
 
-        function getIteratorExtends(iterator: Browser.Iterator | undefined, subtypes: string[]) {
-            if (!iterator) {
+        function getIteratorExtends(iterator?: Browser.Iterator, subtypes?: string[]) {
+            if (!iterator || !subtypes) {
                 return "";
             }
             const base = iterator.kind === "maplike" ? `Map<${subtypes[0]}, ${subtypes[1]}>` :
@@ -1207,17 +1210,57 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return `extends ${result} `;
         }
 
+        function hasSequenceArgument(s: Browser.Signature) {
+            function typeIncludesSequence(type: string | Browser.Typed[]): boolean {
+                if (Array.isArray(type)) {
+                    return type.some(t => typeIncludesSequence(t.type))
+                }
+                return type === "sequence" || !!sequenceTypedefMap[type];
+            }
+            return !!s.param && s.param.some(p => typeIncludesSequence(p.type));
+        }
+
+        function filterSignaturesWithSequence(signature: Browser.Signature[]): Browser.Signature[] {
+            return signature.filter(hasSequenceArgument).map(s => {
+                const newParams = s.param!.map(p => {
+                    const typedef = typeof p.type === "string" ? sequenceTypedefMap[p.type]: undefined;
+                    if (!typedef) {
+                        return p;
+                    }
+                    return { ...p, type: typedef.type };
+                })
+                return { ...s, param: newParams };
+            });
+        }
+
+        const sequenceTypedefs = !webidl.typedefs ? [] :
+            webidl.typedefs.typedef
+                .filter(typedef => Array.isArray(typedef.type))
+                .map(typedef => ({ ...typedef, type: (typedef.type as Browser.Typed[]).filter(t => t.type === "sequence") }))
+                .filter(typedef => typedef.type.length)
+        const sequenceTypedefMap = arrayToMap(sequenceTypedefs, t => t["new-type"], t => t);
+
         const subtypes = getIteratorSubtypes();
-        if (subtypes) {
+        const methodsWithSequence: Browser.Method[] =
+            mapToArray(i.methods ? i.methods.method : {})
+                .filter(m => m.signature && !m["override-signatures"])
+                .map(m => ({ ...m, signature: filterSignaturesWithSequence(m.signature) }))
+                .filter(m => m.signature.length)
+                .sort();
+
+        if (subtypes || methodsWithSequence.length) {
             const iteratorExtends = getIteratorExtends(i.iterator, subtypes);
             const name = extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name;
             printer.printLine("");
             printer.printLine(`interface ${name} ${iteratorExtends}{`);
             printer.increaseIndent();
-            if (!iteratorExtends) {
+
+            methodsWithSequence.forEach(m => emitMethod("", m, new Set()));
+
+            if (subtypes && !iteratorExtends) {
                 printer.printLine(`[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(subtypes)}>;`);
             }
-            if (i.iterator && i.iterator.kind === "iterable") {
+            if (i.iterator && i.iterator.kind === "iterable" && subtypes) {
                 emitIterableDeclarationMethods(i, subtypes);
             }
             printer.decreaseIndent();
