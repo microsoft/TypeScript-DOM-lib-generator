@@ -689,7 +689,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     /// Emit the properties and methods of a given interface
     function emitMembers(prefix: string, emitScope: EmitScope, i: Browser.Interface) {
-        const conflictedMembers = extendConflictsBaseTypes[i.name] ? extendConflictsBaseTypes[i.name].memberNames : new Set();
+        const conflictedMembers = extendConflictsBaseTypes[i.name] ? extendConflictsBaseTypes[i.name].memberNames : new Set<string>();
         emitProperties(prefix, emitScope, i);
         const methodPrefix = prefix.startsWith("declare var") ? "declare function " : "";
         emitMethods(methodPrefix, emitScope, i, conflictedMembers);
