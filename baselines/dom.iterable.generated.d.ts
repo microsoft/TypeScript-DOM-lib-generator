@@ -134,7 +134,7 @@ interface MediaList {
 }
 
 interface MimeTypeArray {
-    [Symbol.iterator](): IterableIterator<Plugin>;
+    [Symbol.iterator](): IterableIterator<MimeType>;
 }
 
 interface NamedNodeMap {
