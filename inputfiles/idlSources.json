@@ -514,5 +514,9 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/web-messaging.html",
         "title": "Web Messaging"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/system-state.html",
+        "title": "HTML - System state and capabilities"
     }
 ]
