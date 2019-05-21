@@ -696,13 +696,13 @@
                         "openCursor": {
                             "name": "openCursor",
                             "override-signatures": [
-                                "openCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
+                                "openCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
                             ]
                         },
                         "openKeyCursor": {
                             "name": "openKeyCursor",
                             "override-signatures": [
-                                "openKeyCursor(query?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
+                                "openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
                             ]
                         },
                         "add": {
@@ -744,13 +744,13 @@
                         "getAll": {
                             "name": "getAll",
                             "override-signatures": [
-                                "getAll(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<any[]>"
+                                "getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>"
                             ]
                         },
                         "getAllKeys": {
                             "name": "getAllKeys",
                             "override-signatures": [
-                                "getAllKeys(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<IDBValidKey[]>"
+                                "getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>"
                             ]
                         },
                         "getKey": {
@@ -802,13 +802,13 @@
                         "openCursor": {
                             "name": "openCursor",
                             "override-signatures": [
-                                "openCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
+                                "openCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
                             ]
                         },
                         "openKeyCursor": {
                             "name": "openKeyCursor",
                             "override-signatures": [
-                                "openKeyCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
+                                "openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
                             ]
                         },
                         "count": {
@@ -826,13 +826,13 @@
                         "getAll": {
                             "name": "getAll",
                             "override-signatures": [
-                                "getAll(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<any[]>"
+                                "getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>"
                             ]
                         },
                         "getAllKeys": {
                             "name": "getAllKeys",
                             "override-signatures": [
-                                "getAllKeys(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<IDBValidKey[]>"
+                                "getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>"
                             ]
                         },
                         "getKey": {
