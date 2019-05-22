@@ -2312,8 +2312,10 @@
                     "method": {
                         "postMessage": {
                             "deprecated": 0,
+                            "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
