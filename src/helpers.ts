@@ -54,36 +54,36 @@ export function exposesTo(o: { exposed?: string }, target: string) {
     return o.exposed.includes(target);
 }
 
-export function merge<T>(src: T, target: T, shallow?: boolean): T {
-    if (typeof src !== "object" || typeof target !== "object") {
-        return target;
+export function merge<T>(target: T, src: T, shallow?: boolean): T {
+    if (typeof target !== "object" || typeof src !== "object") {
+        return src;
     }
-    for (const k in target) {
-        if (Object.getOwnPropertyDescriptor(target, k)) {
-            if (Object.getOwnPropertyDescriptor(src, k)) {
-                const srcProp = src[k];
+    for (const k in src) {
+        if (Object.getOwnPropertyDescriptor(src, k)) {
+            if (Object.getOwnPropertyDescriptor(target, k)) {
                 const targetProp = target[k];
-                if (Array.isArray(srcProp) && Array.isArray(targetProp)) {
-                    mergeNamedArrays(srcProp, targetProp);
+                const srcProp = src[k];
+                if (Array.isArray(targetProp) && Array.isArray(srcProp)) {
+                    mergeNamedArrays(targetProp, srcProp);
                 }
                 else {
-                    if (Array.isArray(srcProp) !== Array.isArray(targetProp)) {
-                        throw new Error("Mismatch on property: " + k + JSON.stringify(targetProp));
+                    if (Array.isArray(targetProp) !== Array.isArray(srcProp)) {
+                        throw new Error("Mismatch on property: " + k + JSON.stringify(srcProp));
                     }
-                    if (shallow && typeof (src[k] as any).name === "string" && typeof (target[k] as any).name === "string") {
-                        src[k] = target[k];
+                    if (shallow && typeof (target[k] as any).name === "string" && typeof (src[k] as any).name === "string") {
+                        target[k] = src[k];
                     }
                     else {
-                        src[k] = merge(src[k], target[k], shallow);
+                        target[k] = merge(target[k], src[k], shallow);
                     }
                 }
             }
             else {
-                src[k] = target[k];
+                target[k] = src[k];
             }
         }
     }
-    return src;
+    return target;
 }
 
 function mergeNamedArrays<T extends { name: string; "new-type": string; }>(srcProp: T[], targetProp: T[]) {

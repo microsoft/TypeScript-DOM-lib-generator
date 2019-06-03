@@ -1964,6 +1964,21 @@
                         }
                     }
                 }
+            },
+            "FileReaderProgressEvent": {
+                "name": "FileReaderProgressEvent",
+                "extends": "ProgressEvent",
+                "no-interface-object": 1,
+                "properties": {
+                    "property": {
+                        "target": {
+                            "name": "target",
+                            "read-only": 1,
+                            "nullable": 1,
+                            "type": "FileReader"
+                        }
+                    }
+                }
             }
         }
     },

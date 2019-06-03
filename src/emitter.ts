@@ -153,7 +153,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     /// Interface name to its related eventhandler name list map
     /// Note:
     /// In the xml file, each event handler has
-    /// 1. eventhanlder name: "onready", "onabort" etc.
+    /// 1. eventhandler name: "onready", "onabort" etc.
     /// 2. the event name that it handles: "ready", "SVGAbort" etc.
     /// And they don't just differ by an "on" prefix!
     const iNameToEhList = arrayToMap(allInterfaces, i => i.name, i =>

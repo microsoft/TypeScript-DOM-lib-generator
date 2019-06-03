@@ -79,7 +79,6 @@
                     }
                 }
             },
-            "FileReaderProgressEvent": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
                 "properties": {
