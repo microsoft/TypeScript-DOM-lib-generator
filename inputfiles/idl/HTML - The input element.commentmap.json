@@ -1,11 +1,13 @@
 {
-    "input-indeterminate": "When set, overrides the rendering of checkbox\ncontrols so that the current value is not visible.",
-    "input-height": "These attributes return the actual rendered dimensions of the image, or zero if the\ndimensions are not known.\nThey can be set, to change the corresponding content attributes.",
-    "input-value": "Returns the current value of the form control.\nCan be set, to change the value.\nThrows an \"InvalidStateError\" DOMException if it is\nset to any value other than the empty string when the control is a file upload control.",
-    "input-checked": "Returns the current checkedness of the form\ncontrol.\nCan be set, to change the checkedness.",
-    "input-files": "Returns a FileList object listing the selected files of the form control.\nReturns null if the control isn't a file control.\nCan be set to a FileList object to change the selected files of the form control. For\ninstance, as the result of a drag-and-drop operation.",
-    "input-valueasdate": "Returns a Date object representing the form control's value, if applicable; otherwise, returns null.\nCan be set, to change the value.\nThrows an \"InvalidStateError\" DOMException if the\ncontrol isn't date- or time-based.",
-    "input-valueasnumber": "Returns a number representing the form control's value,\nif applicable; otherwise, returns NaN.\nCan be set, to change the value. Setting this to NaN will set the underlying value to the\nempty string.\nThrows an \"InvalidStateError\" DOMException if the\ncontrol is neither date- or time-based nor numeric.",
-    "input-stepdown": "Changes the form control's value by the value given in\nthe step attribute, multiplied by n.\nThe default value for n is 1.\nThrows \"InvalidStateError\" DOMException if the control\nis neither date- or time-based nor numeric, or if the step\nattribute's value is \"any\".",
+    "input-indeterminate": "When set, overrides the rendering of checkbox controls so that the current value is not visible.",
+    "input-width": "These attributes return the actual rendered dimensions of the image, or zero if the dimensions are not known.\n\nThey can be set, to change the corresponding content attributes.",
+    "input-height": "These attributes return the actual rendered dimensions of the image, or zero if the dimensions are not known.\n\nThey can be set, to change the corresponding content attributes.",
+    "input-value": "Returns the current value of the form control.\n\nCan be set, to change the value.\n\nThrows an \"InvalidStateError\" DOMException if it is set to any value other than the empty string when the control is a file upload control.",
+    "input-checked": "Returns the current checkedness of the form control.\n\nCan be set, to change the checkedness.",
+    "input-files": "Returns a FileList object listing the selected files of the form control.\n\nReturns null if the control isn't a file control.\n\nCan be set to a FileList object to change the selected files of the form control. For instance, as the result of a drag-and-drop operation.",
+    "input-valueasdate": "Returns a Date object representing the form control's value, if applicable; otherwise, returns null.\n\nCan be set, to change the value.\n\nThrows an \"InvalidStateError\" DOMException if the control isn't date- or time-based.",
+    "input-valueasnumber": "Returns a number representing the form control's value, if applicable; otherwise, returns NaN.\n\nCan be set, to change the value. Setting this to NaN will set the underlying value to the empty string.\n\nThrows an \"InvalidStateError\" DOMException if the control is neither date- or time-based nor numeric.",
+    "input-stepup": "Changes the form control's value by the value given in the step attribute, multiplied by n. The default value for n is 1.\n\nThrows \"InvalidStateError\" DOMException if the control is neither date- or time-based nor numeric, or if the step attribute's value is \"any\".",
+    "input-stepdown": "Changes the form control's value by the value given in the step attribute, multiplied by n. The default value for n is 1.\n\nThrows \"InvalidStateError\" DOMException if the control is neither date- or time-based nor numeric, or if the step attribute's value is \"any\".",
     "input-list": "Returns the datalist element indicated by the list attribute."
 }

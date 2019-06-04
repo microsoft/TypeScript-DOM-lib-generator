@@ -1,8 +1,10 @@
 {
-    "img-height": "These attributes return the actual rendered dimensions of the\nimage, or zero if the dimensions are not known.\nThey can be set, to change the corresponding content\nattributes.",
-    "img-naturalheight": "These attributes return the intrinsic dimensions of the image,\nor zero if the dimensions are not known.",
-    "img-complete": "Returns true if the image has been completely downloaded or if\nno image is specified; otherwise, returns false.",
+    "img-width": "These attributes return the actual rendered dimensions of the image, or zero if the dimensions are not known.\n\nThey can be set, to change the corresponding content attributes.",
+    "img-height": "These attributes return the actual rendered dimensions of the image, or zero if the dimensions are not known.\n\nThey can be set, to change the corresponding content attributes.",
+    "img-naturalwidth": "These attributes return the intrinsic dimensions of the image, or zero if the dimensions are not known.",
+    "img-naturalheight": "These attributes return the intrinsic dimensions of the image, or zero if the dimensions are not known.",
+    "img-complete": "Returns true if the image has been completely downloaded or if no image is specified; otherwise, returns false.",
     "img-currentsrc": "Returns the image's absolute URL.",
-    "img-decode": "This method causes the user agent to decode the\nimage in parallel, returning a promise that fulfills when decoding is complete.\nThe promise will be rejected with an \"EncodingError\"\nDOMException if the image cannot be decoded.",
-    "image": "Returns a new img element, with the width and height attributes set to the values\npassed in the relevant arguments, if applicable."
+    "img-decode": "This method causes the user agent to decode the image in parallel, returning a promise that fulfills when decoding is complete.\n\nThe promise will be rejected with an \"EncodingError\" DOMException if the image cannot be decoded.",
+    "image": "Returns a new img element, with the width and height attributes set to the values passed in the relevant arguments, if applicable."
 }

@@ -32,12 +32,12 @@ function emitDom() {
 
     // ${name} will be substituted with the name of an interface
     const removeVerboseIntroductions: [RegExp, string][] = [
-        [/^(The|A) ${name} interface of (the\s*)*([a-z\s]+ API)(\\\'s)?/, 'An interface of the $3 '],
+        [/^(The|A) ${name} interface of (the\s*)*((?:(?!API)[A-Za-z\d\s])+ API)/, 'This $3 interface '],
         [/^(The|A) ${name} (interface|event|object) (is|represents|describes|defines)?/, ''],
         [/^An object implementing the ${name} interface (is|represents|describes|defines)/, ''],
         [/^The ${name} is an interface representing/, ''],
         [/^This type (is|represents|describes|defines)?/, ''],
-        [/^The ([a-z\s]+ API(\\\'s)?) ${name} (represents|is|describes|defines)/, 'The $1 ']
+        [/^The (((?:(?!API)[A-Za-z\s])+ API)) ${name} (represents|is|describes|defines)/, 'The $1 ']
     ];
 
     // Create output folder
@@ -62,12 +62,21 @@ function emitDom() {
         const idl: string = fs.readFileSync(path.join(inputFolder, "idl", filename), { encoding: "utf-8" });
         const commentsMapFilePath = path.join(inputFolder, "idl", title + ".commentmap.json");
         const commentsMap: Record<string, string> = fs.existsSync(commentsMapFilePath) ? require(commentsMapFilePath) : {};
+        commentCleanup(commentsMap)
         const result = convert(idl, commentsMap);
         if (deprecated) {
             mapToArray(result.browser.interfaces!.interface).forEach(markAsDeprecated);
             result.partialInterfaces.forEach(markAsDeprecated);
         }
         return result;
+    }
+
+    function commentCleanup(commentsMap: Record<string, string>) {
+        for (const key in commentsMap) {
+            // Filters out phrases for nested comments as we retargets them:
+            // "This operation receives a dictionary, which has these members:"
+            commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
+        }
     }
 
     function apiDescriptionsToIdl(descriptions: Record<string, string>) {
@@ -90,7 +99,7 @@ function emitDom() {
         for (const regTemplate of removeVerboseIntroductions) {
             const [{ source: template }, replace] = regTemplate;
 
-            const reg = new RegExp(template.replace(/\$\{name\}/g, name) + '\\s*', 'i');
+            const reg = new RegExp(template.replace(/\$\{name\}/g, name) + '\\s*');
             const product = description.replace(reg, replace);
             if (product !== description) {
                 return product.charAt(0).toUpperCase() + product.slice(1);

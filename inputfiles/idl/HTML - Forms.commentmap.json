@@ -1,11 +1,11 @@
 {
-    "form-elements": "Returns an HTMLFormControlsCollection of the form controls in the form (excluding image\nbuttons for historical reasons).",
-    "form-length": "Returns the number of form controls in the form (excluding image buttons for historical\nreasons).",
+    "form-elements": "Returns an HTMLFormControlsCollection of the form controls in the form (excluding image buttons for historical reasons).",
+    "form-length": "Returns the number of form controls in the form (excluding image buttons for historical reasons).",
     "form-submit": "Submits the form.",
     "form-reset": "Resets the form.",
     "form-checkvalidity": "Returns true if the form's controls are all valid; otherwise, returns false.",
     "form-reportvalidity": "Returns true if the form's controls are all valid; otherwise, returns false and informs the user.",
     "label-control": "Returns the form control that is associated with this element.",
-    "label-form": "Returns the form owner of the form control that is associated with this\nelement.\nReturns null if there isn't one.",
-    "lfe-labels": "Returns a NodeList of all the label elements that the form control\nis associated with."
+    "label-form": "Returns the form owner of the form control that is associated with this element.\n\nReturns null if there isn't one.",
+    "lfe-labels": "Returns a NodeList of all the label elements that the form control is associated with."
 }

@@ -1,13 +1,13 @@
 {
-    "hyperlink-href": "Returns the hyperlink's URL.\nCan be set, to change the URL.",
+    "hyperlink-href": "Returns the hyperlink's URL.\n\nCan be set, to change the URL.",
     "hyperlink-origin": "Returns the hyperlink's URL's origin.",
-    "hyperlink-protocol": "Returns the hyperlink's URL's scheme.\nCan be set, to change the URL's scheme.",
-    "hyperlink-username": "Returns the hyperlink's URL's username.\nCan be set, to change the URL's username.",
-    "hyperlink-password": "Returns the hyperlink's URL's password.\nCan be set, to change the URL's password.",
-    "hyperlink-host": "Returns the hyperlink's URL's host and port (if different from the default port for the\nscheme).\nCan be set, to change the URL's host and port.",
-    "hyperlink-hostname": "Returns the hyperlink's URL's host.\nCan be set, to change the URL's host.",
-    "hyperlink-port": "Returns the hyperlink's URL's port.\nCan be set, to change the URL's port.",
-    "hyperlink-pathname": "Returns the hyperlink's URL's path.\nCan be set, to change the URL's path.",
-    "hyperlink-search": "Returns the hyperlink's URL's query (includes leading \"?\" if\nnon-empty).\nCan be set, to change the URL's query (ignores leading \"?\").",
-    "hyperlink-hash": "Returns the hyperlink's URL's fragment (includes leading \"#\" if\nnon-empty).\nCan be set, to change the URL's fragment (ignores leading \"#\")."
+    "hyperlink-protocol": "Returns the hyperlink's URL's scheme.\n\nCan be set, to change the URL's scheme.",
+    "hyperlink-username": "Returns the hyperlink's URL's username.\n\nCan be set, to change the URL's username.",
+    "hyperlink-password": "Returns the hyperlink's URL's password.\n\nCan be set, to change the URL's password.",
+    "hyperlink-host": "Returns the hyperlink's URL's host and port (if different from the default port for the scheme).\n\nCan be set, to change the URL's host and port.",
+    "hyperlink-hostname": "Returns the hyperlink's URL's host.\n\nCan be set, to change the URL's host.",
+    "hyperlink-port": "Returns the hyperlink's URL's port.\n\nCan be set, to change the URL's port.",
+    "hyperlink-pathname": "Returns the hyperlink's URL's path.\n\nCan be set, to change the URL's path.",
+    "hyperlink-search": "Returns the hyperlink's URL's query (includes leading \"?\" if non-empty).\n\nCan be set, to change the URL's query (ignores leading \"?\").",
+    "hyperlink-hash": "Returns the hyperlink's URL's fragment (includes leading \"#\" if non-empty).\n\nCan be set, to change the URL's fragment (ignores leading \"#\")."
 }

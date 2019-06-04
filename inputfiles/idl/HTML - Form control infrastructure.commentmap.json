@@ -1,10 +1,15 @@
 {
-    "fae-form": "Returns the element's form owner.\nReturns null if there isn't one.",
-    "textarea": "Replaces a range of text with the new text. If the start and end arguments are not provided, the range is assumed to be the selection.\nThe final argument determines how the selection will be set after the text has been\nreplaced. The possible values are:\n\"select\"Selects the newly inserted text.\"start\"Moves the selection to just before the inserted text.\"end\"Moves the selection to just after the selected text.\"preserve\"Attempts to preserve the selection. This is the default.",
-    "cva-willvalidate": "Returns true if the element will be validated when the form is submitted; false\notherwise.",
-    "cva-setcustomvalidity": "Sets a custom error, so that the element would fail to validate. The given message is the\nmessage to be shown to the user when reporting the problem to the user.\nIf the argument is the empty string, clears the custom error.",
-    "cva-validity": "Returns true if the element's value has no validity problems; false otherwise.",
+    "fae-form": "Returns the element's form owner.\n\nReturns null if there isn't one.",
+    "textarea": "Selects everything in the text control.",
+    "cva-willvalidate": "Returns true if the element will be validated when the form is submitted; false otherwise.",
+    "cva-setcustomvalidity": "Sets a custom error, so that the element would fail to validate. The given message is the message to be shown to the user when reporting the problem to the user.\n\nIf the argument is the empty string, clears the custom error.",
+    "cva-validity": "Returns true if the element has no value but is a required field; false otherwise.",
     "cva-checkvalidity": "Returns true if the element's value has no validity problems; false otherwise. Fires an invalid event at the element in the latter case.",
-    "cva-reportvalidity": "Returns true if the element's value has no validity problems; otherwise, returns false, fires\nan invalid event at the element, and (if the event isn't\ncanceled) reports the problem to the user.",
-    "cva-validationmessage": "Returns the error message that would be shown to the user if the element was to be checked\nfor validity."
+    "cva-reportvalidity": "Returns true if the element's value has no validity problems; otherwise, returns false, fires an invalid event at the element, and (if the event isn't canceled) reports the problem to the user.",
+    "cva-validationmessage": "Returns the error message that would be shown to the user if the element was to be checked for validity.",
+    "formdataevent-formdata": "Returns a FormData object representing names and values of elements associated to the target form. Operations on the FormData object will affect form data to be submitted.",
+    "selectionmode-select": "Selects the newly inserted text.",
+    "selectionmode-start": "Moves the selection to just before the inserted text.",
+    "selectionmode-end": "Moves the selection to just after the selected text.",
+    "selectionmode-preserve": "Attempts to preserve the selection. This is the default."
 }

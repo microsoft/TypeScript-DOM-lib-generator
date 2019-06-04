@@ -24,6 +24,7 @@ export interface Member extends Typed {
     default?: string;
     required?: 1;
     specs?: string;
+    comment?: string;
 }
 
 export interface Property extends Typed {
@@ -124,6 +125,7 @@ export interface Constant extends Typed {
     tags?: string
     exposed?: string;
     specs?: string;
+    comment?: string;
 }
 
 export interface ParsedAttribute{

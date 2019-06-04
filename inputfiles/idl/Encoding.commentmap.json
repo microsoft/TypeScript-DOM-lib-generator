@@ -1,14 +1,15 @@
 {
-    "textdecoder": "Returns a new TextDecoder object.\nIf label is either not a label or is a label for replacement, throws a RangeError.",
-    "textdecoder-encoding": "Returns encoding's name, lowercased.",
-    "textdecoder-fatal": "Returns true if error mode is \"fatal\", and\nfalse otherwise.",
-    "textdecoder-ignorebom": "Returns true if ignore BOM flag is set, and false\notherwise.",
-    "textdecoder-decode": "Returns the result of running encoding's decoder.\nThe method can be invoked zero or more times with options's stream set to\ntrue, and then once without options's stream (or set to false), to process\na fragmented stream. If the invocation without options's stream (or set to\nfalse) has no input, it's clearest to omit both arguments.\nvar string = \"\", decoder = new TextDecoder(encoding), buffer;\nwhile(buffer = next_chunk()) {\nstring += decoder.decode(buffer, {stream:true});\n}\nstring += decoder.decode(); // end-of-stream\nIf the error mode is \"fatal\" and encoding's decoder returns error, throws a TypeError.",
+    "textdecoder": "Returns a new TextDecoder object.\n\nIf label is either not a label or is a label for replacement, throws a RangeError.",
+    "textdecodercommon-encoding": "Returns encoding's name, lowercased.",
+    "textdecodercommon-fatal": "Returns true if error mode is \"fatal\", and false otherwise.",
+    "textdecodercommon-ignorebom": "Returns true if ignore BOM flag is set, and false otherwise.",
+    "textdecoder-decode": "Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented stream. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.\n\n```\nvar string = \"\", decoder = new TextDecoder(encoding), buffer;\nwhile(buffer = next_chunk()) {\n  string += decoder.decode(buffer, {stream:true});\n}\nstring += decoder.decode(); // end-of-stream\n```\n\nIf the error mode is \"fatal\" and encoding's decoder returns error, throws a TypeError.",
     "textencoder": "Returns a new TextEncoder object.",
-    "textencoder-encoding": "Returns \"utf-8\".",
+    "textencodercommon-encoding": "Returns \"utf-8\".",
     "textencoder-encode": "Returns the result of running UTF-8's encoder.",
     "textencoder-encodeinto": "Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as a dictionary whereby read is the number of converted code units of source and written is the number of bytes modified in destination.",
-    "textdecoderstream": "Returns a new TextDecoderStream object.\nIf label is either not a label or is a label for replacement, throws a RangeError.",
-    "generictransformstream-writable": "Returns a writable stream which accepts string chunks and runs them through UTF-8's encoder before making them available to readable.\nTypically this will be used via the pipeThrough() method on a ReadableStream source.\ntextReadable\n.pipeThrough(new TextEncoderStream())\n.pipeTo(byteWritable);",
+    "textdecoderstream": "Returns a new TextDecoderStream object.\n\nIf label is either not a label or is a label for replacement, throws a RangeError.",
+    "generictransformstream-readable": "Returns a readable stream whose chunks are strings resulting from running encoding's decoder on the chunks written to writable.",
+    "generictransformstream-writable": "Returns a writable stream which accepts BufferSource chunks and runs them through encoding's decoder before making them available to readable.\n\nTypically this will be used via the pipeThrough() method on a ReadableStream source.\n\n```\nvar decoder = new TextDecoderStream(encoding);\nbyteReadable\n  .pipeThrough(decoder)\n  .pipeTo(textWritable);\n```\n\nIf the error mode is \"fatal\" and encoding's decoder returns error, both readable and writable will be errored with a TypeError.",
     "textencoderstream": "Returns a new TextEncoderStream object."
 }

@@ -1,16 +1,16 @@
 {
     "htmlallcollection-length": "Returns the number of elements in the collection.",
-    "htmlallcollection-item": "element = collection(index)",
-    "htmlallcollection-nameditem": "element = collection(name)",
+    "htmlallcollection-item": "Returns the item with index index from the collection (determined by tree order).",
+    "htmlallcollection-nameditem": "Returns the item with ID or name name from the collection.\n\nIf there are multiple matching items, then an HTMLCollection object containing all those elements is returned.\n\nOnly button, form, iframe, input, map, meta, object, select, and textarea elements can have a name for the purpose of this method; their name is given by the value of their name attribute.",
     "htmlcollection-length": "Returns the number of elements in the collection.",
-    "htmlcollection-item": "element = collection[index]",
-    "htmlformcontrolscollection-nameditem": "element = collection[name]",
-    "htmloptionscollection-length": "Returns the number of elements in the collection.\nWhen set to a smaller number, truncates the number of option elements in the corresponding container.\nWhen set to a greater number, adds new blank option elements to that container.",
-    "htmlcollection-nameditem": "element = collection[name]",
-    "htmloptionscollection-add": "Inserts element before the node given by before.\nThe before argument can be a number, in which case element is inserted before the item with that number, or an element from the\ncollection, in which case element is inserted before that element.\nIf before is omitted, null, or a number out of range, then element will be added at the end of the list.\nThis method will throw a \"HierarchyRequestError\" DOMException if\nelement is an ancestor of the element into which it is to be inserted.",
+    "htmlcollection-item": "Returns the item with index index from the collection. The items are sorted in tree order.",
+    "htmlformcontrolscollection-nameditem": "Returns the item with ID or name name from the collection.\n\nIf there are multiple matching items, then a RadioNodeList object containing all those elements is returned.",
+    "htmloptionscollection-length": "Returns the number of elements in the collection.\n\nWhen set to a smaller number, truncates the number of option elements in the corresponding container.\n\nWhen set to a greater number, adds new blank option elements to that container.",
+    "htmlcollection-nameditem": "Returns the item with ID or name name from the collection.\n\nIf there are multiple matching items, then the first is returned.",
+    "htmloptionscollection-add": "Inserts element before the node given by before.\n\nThe before argument can be a number, in which case element is inserted before the item with that number, or an element from the collection, in which case element is inserted before that element.\n\nIf before is omitted, null, or a number out of range, then element will be added at the end of the list.\n\nThis method will throw a \"HierarchyRequestError\" DOMException if element is an ancestor of the element into which it is to be inserted.",
     "htmloptionscollection-remove": "Removes the item with index index from the collection.",
-    "htmloptionscollection-selectedindex": "Returns the index of the first selected item, if any, or −1 if there is no selected\nitem.\nCan be set, to change the selection.",
+    "htmloptionscollection-selectedindex": "Returns the index of the first selected item, if any, or −1 if there is no selected item.\n\nCan be set, to change the selection.",
     "domstringlist-length": "Returns the number of strings in strings.",
     "domstringlist-item": "Returns the string with index index from strings.",
-    "domstringlist-contains": "Returns true if strings contains string, and false\notherwise."
+    "domstringlist-contains": "Returns true if strings contains string, and false otherwise."
 }

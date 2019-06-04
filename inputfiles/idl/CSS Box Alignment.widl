@@ -1,0 +1,17 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignContent;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString justifyContent;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString placeContent;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString justifySelf;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignSelf;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString placeSelf;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString justifyItems;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignItems;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString placeItems;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString rowGap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnGap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString gap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString gridRowGap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString gridColumnGap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString gridGap;
+};

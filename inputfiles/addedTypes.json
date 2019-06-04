@@ -281,7 +281,9 @@
                     }
                 },
                 "extends": "SVGElement",
-                "implements": ["SVGFilterPrimitiveStandardAttributes"]
+                "implements": [
+                    "SVGFilterPrimitiveStandardAttributes"
+                ]
             },
             "AbortSignal": {
                 "events": {
@@ -1843,7 +1845,7 @@
                     }
                 },
                 "methods": {
-                    "method":  {
+                    "method": {
                         "getStartTime": {
                             "name": "getStartTime",
                             "override-signatures": [
@@ -1901,6 +1903,206 @@
                     {
                         "namespace": "SVG",
                         "name": "ellipse"
+                    }
+                ]
+            },
+            "SVGFEBlendElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feBlend"
+                    }
+                ]
+            },
+            "SVGFEColorMatrixElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feColorMatrix"
+                    }
+                ]
+            },
+            "SVGFEComponentTransferElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feComponentTransfer"
+                    }
+                ]
+            },
+            "SVGFECompositeElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feComposite"
+                    }
+                ]
+            },
+            "SVGFEConvolveMatrixElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feConvolveMatrix"
+                    }
+                ]
+            },
+            "SVGFEDiffuseLightingElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feDiffuseLighting"
+                    }
+                ]
+            },
+            "SVGFEDisplacementMapElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feDisplacementMap"
+                    }
+                ]
+            },
+            "SVGFEDistantLightElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feDistantLight"
+                    }
+                ]
+            },
+            "SVGFEFloodElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feFlood"
+                    }
+                ]
+            },
+            "SVGFEFuncAElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feFuncA"
+                    }
+                ]
+            },
+            "SVGFEFuncBElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feFuncB"
+                    }
+                ]
+            },
+            "SVGFEFuncGElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feFuncG"
+                    }
+                ]
+            },
+            "SVGFEFuncRElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feFuncR"
+                    }
+                ]
+            },
+            "SVGFEGaussianBlurElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feGaussianBlur"
+                    }
+                ]
+            },
+            "SVGFEImageElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feImage"
+                    }
+                ]
+            },
+            "SVGFEMergeElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feMerge"
+                    }
+                ]
+            },
+            "SVGFEMergeNodeElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feMergeNode"
+                    }
+                ]
+            },
+            "SVGFEMorphologyElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feMorphology"
+                    }
+                ]
+            },
+            "SVGFEOffsetElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feOffset"
+                    }
+                ]
+            },
+            "SVGFEPointLightElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "fePointLight"
+                    }
+                ]
+            },
+            "SVGFESpecularLightingElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feSpecularLighting"
+                    }
+                ]
+            },
+            "SVGFESpotLightElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feSpotLight"
+                    }
+                ]
+            },
+            "SVGFETileElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feTile"
+                    }
+                ]
+            },
+            "SVGFETurbulenceElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "feTurbulence"
+                    }
+                ]
+            },
+            "SVGFilterElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "filter"
                     }
                 ]
             },
