@@ -1094,6 +1094,11 @@
                             "name": "code",
                             "read-only": 1,
                             "override-type": "string"
+                        },
+                        "isComposing": {
+                            "name": "isComposing",
+                            "read-only": 1,
+                            "override-type": "boolean"
                         }
                     }
                 }
