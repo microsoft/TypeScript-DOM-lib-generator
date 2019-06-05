@@ -226,6 +226,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return ehParents;
         }
 
+        if (!i.name) {
+            throw new Error("Unexpected nameless object: " + JSON.stringify(i));
+        }
+
         const iExtends = i.extends && i.extends.replace(/<.*>$/, '');
         const parentWithEventHandler = allInterfacesMap[iExtends] && getParentEventHandler(allInterfacesMap[iExtends]) || [];
         const mixinsWithEventHandler = flatMap(i.implements || [], i => getParentEventHandler(allInterfacesMap[i]));
@@ -695,7 +699,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         const value = subtype[subtype.length - 1];
         const key = subtype.length > 1 ? subtype[0] :
             i.iterator.kind === "iterable" ? "number" : value;
-        const name = i.name.replace(/ extends \w+/, "");
+        const name = i.name + (i.generic ? `<${i.generic.split(" ")[0]}>` : "");
         printer.printLine(`forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${name}) => void, thisArg?: any): void;`);
     }
 
@@ -1229,8 +1233,9 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         if (subtypes) {
             const iteratorExtends = getIteratorExtends(i.iterator, subtypes);
             const name = extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name;
+            const generic = i.generic ? `<${i.generic}>` : "";
             printer.printLine("");
-            printer.printLine(`interface ${name} ${iteratorExtends}{`);
+            printer.printLine(`interface ${name}${generic} ${iteratorExtends}{`);
             printer.increaseIndent();
             if (!iteratorExtends) {
                 printer.printLine(`[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(subtypes)}>;`);

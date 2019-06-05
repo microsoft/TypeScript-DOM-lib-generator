@@ -177,7 +177,7 @@
                     }
                 }
             },
-            "NodeListOf<TNode extends Node>": {
+            "NodeListOf": {
                 "methods": {
                     "method": {
                         "forEach": {
