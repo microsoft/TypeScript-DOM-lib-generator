@@ -1220,16 +1220,16 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return !!s.param && s.param.some(p => typeIncludesSequence(p.type));
         }
 
-        function filterSignaturesWithSequence(signature: Browser.Signature[]): Browser.Signature[] {
-            return signature.filter(hasSequenceArgument).map(s => {
-                const newParams = s.param!.map(p => {
-                    const typedef = typeof p.type === "string" ? sequenceTypedefMap[p.type]: undefined;
+        function replaceTypedefsInSignatures(signatures: Browser.Signature[]): Browser.Signature[] {
+            return signatures.map(s => {
+                const params = s.param!.map(p => {
+                    const typedef = typeof p.type === "string" ? sequenceTypedefMap[p.type] : undefined;
                     if (!typedef) {
                         return p;
                     }
                     return { ...p, type: typedef.type };
                 })
-                return { ...s, param: newParams };
+                return { ...s, param: params };
             });
         }
 
@@ -1244,7 +1244,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         const methodsWithSequence: Browser.Method[] =
             mapToArray(i.methods ? i.methods.method : {})
                 .filter(m => m.signature && !m["override-signatures"])
-                .map(m => ({ ...m, signature: filterSignaturesWithSequence(m.signature) }))
+                .map(m => ({
+                    ...m, 
+                    signature: replaceTypedefsInSignatures(m.signature.filter(hasSequenceArgument))
+                }))
                 .filter(m => m.signature.length)
                 .sort();
 
