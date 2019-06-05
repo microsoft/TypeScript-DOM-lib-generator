@@ -9,6 +9,10 @@
         "deprecated": true
     },
     {
+        "url": "https://www.w3.org/TR/credential-management-1/",
+        "title": "Credential Management"
+    },
+    {
         "url": "https://www.w3.org/TR/css-animations-1/",
         "title": "CSS Animations"
     },

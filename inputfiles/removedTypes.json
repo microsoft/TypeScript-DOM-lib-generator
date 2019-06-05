@@ -87,6 +87,7 @@
                     }
                 }
             },
+            "FederatedCredential": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
                 "properties": {
@@ -134,6 +135,7 @@
             "MSPortRange": null,
             "MSStreamReader": null,
             "OverconstrainedErrorEvent": null,
+            "PasswordCredential": null,
             "Screen": {
                 "methods": {
                     "method": {
@@ -276,6 +278,22 @@
     },
     "dictionaries": {
         "dictionary": {
+            "CredentialCreationOptions": {
+                "members": {
+                    "member": {
+                        "federated": null,
+                        "password": null
+                    }
+                }
+            },
+            "CredentialRequestOptions": {
+                "members": {
+                    "member": {
+                        "federated": null,
+                        "password": null
+                    }
+                }
+            },
             "ObjectURLOptions": null,
             "RTCIceGatherOptions": {
                 "members": {

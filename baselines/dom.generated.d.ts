@@ -250,6 +250,15 @@ interface ConvolverOptions extends AudioNodeOptions {
     disableNormalization?: boolean;
 }
 
+interface CredentialCreationOptions {
+    signal?: AbortSignal;
+}
+
+interface CredentialRequestOptions {
+    mediation?: CredentialMediationRequirement;
+    signal?: AbortSignal;
+}
+
 interface CustomEventInit<T = any> extends EventInit {
     detail?: T;
 }
@@ -3576,6 +3585,28 @@ interface CountQueuingStrategy extends QueuingStrategy {
 declare var CountQueuingStrategy: {
     prototype: CountQueuingStrategy;
     new(options: { highWaterMark: number }): CountQueuingStrategy;
+};
+
+interface Credential {
+    readonly id: string;
+    readonly type: string;
+}
+
+declare var Credential: {
+    prototype: Credential;
+    new(): Credential;
+};
+
+interface CredentialsContainer {
+    create(options?: CredentialCreationOptions): Promise<Credential | null>;
+    get(options?: CredentialRequestOptions): Promise<Credential | null>;
+    preventSilentAccess(): Promise<void>;
+    store(credential: Credential): Promise<Credential>;
+}
+
+declare var CredentialsContainer: {
+    prototype: CredentialsContainer;
+    new(): CredentialsContainer;
 };
 
 /** Basic cryptography features available in the current context. It allows access to a cryptographically strong random number generator and to cryptographic primitives. */
@@ -10657,6 +10688,7 @@ interface Navigator extends NavigatorID, NavigatorOnLine, NavigatorContentUtils,
     readonly authentication: WebAuthentication;
     readonly clipboard: Clipboard;
     readonly cookieEnabled: boolean;
+    readonly credentials: CredentialsContainer;
     readonly doNotTrack: string | null;
     gamepadInputEmulation: GamepadInputEmulationType;
     readonly geolocation: Geolocation;
@@ -18787,6 +18819,7 @@ type ChannelInterpretation = "speakers" | "discrete";
 type ClientTypes = "window" | "worker" | "sharedworker" | "all";
 type CompositeOperation = "replace" | "add" | "accumulate";
 type CompositeOperationOrAuto = "replace" | "add" | "accumulate" | "auto";
+type CredentialMediationRequirement = "silent" | "optional" | "required";
 type DirectionSetting = "" | "rl" | "lr";
 type DisplayCaptureSurfaceType = "monitor" | "window" | "application" | "browser";
 type DistanceModelType = "linear" | "inverse" | "exponential";
