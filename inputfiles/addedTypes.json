@@ -2174,6 +2174,19 @@
                         }
                     }
                 }
+            },
+            "ProgressEvent": {
+                "generic": "T extends EventTarget = EventTarget",
+                "properties": {
+                    "property": {
+                        "target": {
+                            "name": "target",
+                            "read-only": 1,
+                            "nullable": 1,
+                            "override-type": "T"
+                        }
+                    }
+                }
             }
         }
     },

@@ -248,7 +248,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         if (i.events) {
             const event = i.events.event.find(e => e.name === eName);
             if (event && event.type) {
-                return event.type;
+                const generic = event.generic ? `<${event.generic}>` : "";
+                return event.type + generic;
             }
         }
         if (i["attributeless-events"]) {
@@ -829,6 +830,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         }
 
         printer.print(`interface ${processInterfaceType(i, processedIName)}`);
+
+        if (i.generic) {
+            printer.print(`<${i.generic}>`)
+        }
 
         const finalExtends = distinct([i.extends || "Object"].concat(i.implements || [])
             .filter(i => i !== "Object")
