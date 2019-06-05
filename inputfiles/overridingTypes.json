@@ -1862,27 +1862,27 @@
                     "event": [
                         {
                             "name": "loadstart",
-                            "type": "FileReaderProgressEvent"
+                            "type": "ProgressEvent"
                         },
                         {
                             "name": "progress",
-                            "type": "FileReaderProgressEvent"
+                            "type": "ProgressEvent"
                         },
                         {
                             "name": "load",
-                            "type": "FileReaderProgressEvent"
+                            "type": "ProgressEvent"
                         },
                         {
                             "name": "abort",
-                            "type": "FileReaderProgressEvent"
+                            "type": "ProgressEvent"
                         },
                         {
                             "name": "error",
-                            "type": "FileReaderProgressEvent"
+                            "type": "ProgressEvent"
                         },
                         {
                             "name": "loadend",
-                            "type": "FileReaderProgressEvent"
+                            "type": "ProgressEvent"
                         }
                     ]
                 }
