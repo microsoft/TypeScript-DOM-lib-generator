@@ -58,6 +58,14 @@
                     }
                 }
             },
+            "CSSStyleDeclaration": {
+                "properties": {
+                    "property": {
+                        "hangingPunctuation": null,
+                        "textAlignAll": null
+                    }
+                }
+            },
             "DeviceMotionEvent": {
                 "methods": {
                     "method": {
@@ -79,7 +87,6 @@
                     }
                 }
             },
-            "FileReaderProgressEvent": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
                 "properties": {
@@ -159,6 +166,28 @@
                     }
                 }
             },
+            "SVGFEGaussianBlurElement": {
+                "properties": {
+                    "property": {
+                        "edgeMode": null
+                    }
+                },
+                "constants": {
+                    "constant": {
+                        "SVG_EDGEMODE_DUPLICATE": null,
+                        "SVG_EDGEMODE_NONE": null,
+                        "SVG_EDGEMODE_UNKNOWN": null,
+                        "SVG_EDGEMODE_WRAP": null
+                    }
+                }
+            },
+            "SVGFEImageElement": {
+                "properties": {
+                    "property": {
+                        "crossOrigin": null
+                    }
+                }
+            },
             "SVGFilterElement": {
                 "implements": [
                     "SVGUnitTypes"
@@ -216,7 +245,16 @@
                         "ontouchmove": null,
                         "ontouchstart": null
                     }
-                }
+                },
+                "methods": {
+                    "method": {
+                        "cancelAnimationFrame": null,
+                        "requestAnimationFrame": null
+                    }
+                },
+                "implements": [
+                    "GlobalFetch"
+                ]
             },
             "WheelEvent": {
                 "properties": {
@@ -226,6 +264,11 @@
                         "wheelDeltaY": null
                     }
                 }
+            },
+            "WorkerGlobalScope": {
+                "implements": [
+                    "GlobalFetch"
+                ]
             },
             "XPathEvaluator": {
                 "methods": {

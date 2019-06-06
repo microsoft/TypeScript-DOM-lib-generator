@@ -112,7 +112,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         constants: { constant: {} },
         methods: { method: {} },
         "anonymous-methods": { method: [] },
-        properties: { property: {} },
+        properties: { property: {}, namesakes: {} },
         constructor: getConstructor(i.extAttrs, i.name),
         "named-constructor": getNamedConstructor(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
@@ -130,8 +130,19 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
             addComments(result.constants!.constant[member.name], commentMap, i.name, member.name);
         }
         else if (member.type === "attribute") {
-            result.properties!.property[member.name] = convertAttribute(member, result.exposed);
-            addComments(result.properties!.property[member.name], commentMap, i.name, member.name);
+            const { properties } = result;
+            const prop = convertAttribute(member, result.exposed);
+            addComments(prop, commentMap, i.name, member.name);
+
+            if (member.name in properties!.namesakes!) {
+                properties!.namesakes![member.name].push(prop);
+            } else if (member.name in properties!.property) {
+                const existing = properties!.property[member.name];
+                delete properties!.property[member.name];
+                properties!.namesakes![member.name] = [existing, prop];
+            } else {
+                properties!.property[member.name] = prop;
+            }
         }
         else if (member.type === "operation" && member.idlType) {
             const operation = convertOperation(member, result.exposed);
@@ -197,7 +208,7 @@ function convertOperation(operation: webidl2.OperationMemberType, inheritedExpos
         throw new Error("Unexpected anonymous operation");
     }
     return {
-        name: operation.name,
+        name: operation.name || undefined,
         signature: [{
             ...convertIdlType(operation.idlType),
             param: operation.arguments.map(convertArgument)

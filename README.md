@@ -34,7 +34,7 @@ In order to make the tests pass, please update the baseline as well in any pull 
 It's recommended to first check which spec the wrong type belongs to. Say we are to update `IntersectionObserver` which belongs to [`Intersection Observer`](https://www.w3.org/TR/intersection-observer/) spec, and then we can do:
 
 1. First check we have the spec name `Intersection Observer` in `inputfiles/idlSources.json`. If not, add it.
-2. Run `npm run fetch-idl "Intersection Observer" && num run build && npm run baseline-accept`.
+2. Run `npm run fetch-idl "Intersection Observer" && npm run build && npm run baseline-accept`.
 
 If the above didn't fix the type issues, we can fix them via json files as a last resort.
 There are three json files that are typically used to alter the type generation: `addedTypes.json`, `overridingTypes.json`, and `removedTypes.json`.

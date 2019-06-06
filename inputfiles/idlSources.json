@@ -13,28 +13,56 @@
         "title": "CSS Animations"
     },
     {
-        "url": "https://www.w3.org/TR/css-multicol-1/",
-        "title": "CSS Multi-column Layout"
-    },
-    {
         "url": "https://www.w3.org/TR/css-ui-3/",
         "title": "CSS Basic User Interface"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-align-3/",
+        "title": "CSS Box Alignment"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-fonts-3/",
+        "title": "CSS Fonts"
     },
     {
         "url": "https://drafts.csswg.org/css-images-3/",
         "title": "CSS Images"
     },
     {
+        "url": "https://www.w3.org/TR/css-multicol-1/",
+        "title": "CSS Multi-column Layout"
+    },
+    {
         "url": "https://drafts.csswg.org/cssom-view/",
         "title": "CSSOM View"
+    },
+    {
+        "url": "https://drafts.csswg.org/css-scroll-anchoring/",
+        "title": "CSS Scroll Anchoring"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-text-3/",
+        "title": "CSS Text"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-text-decor-3/",
+        "title": "CSS Text Decoration"
     },
     {
         "url": "https://www.w3.org/TR/css-transitions-1/",
         "title": "CSS Transitions"
     },
     {
+        "url": "https://www.w3.org/TR/css-transforms-1/",
+        "title": "CSS Transforms"
+    },
+    {
         "url": "https://www.w3.org/TR/css-will-change/",
         "title": "CSS Will Change"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-writing-modes-3/",
+        "title": "CSS Writing Modes"
     },
     {
         "url": "https://w3c.github.io/deviceorientation/",
@@ -61,12 +89,16 @@
         "title": "Encrypted Media Extensions"
     },
     {
+        "url": "https://fetch.spec.whatwg.org/",
+        "title": "Fetch"
+    },
+    {
         "url": "https://w3c.github.io/FileAPI/",
         "title": "File"
     },
     {
-        "url": "https://fetch.spec.whatwg.org/",
-        "title": "Fetch"
+        "url": "https://www.w3.org/TR/filter-effects-1/",
+        "title": "Filter Effects"
     },
     {
         "url": "https://fullscreen.spec.whatwg.org/",
@@ -85,7 +117,7 @@
         "title": "Geolocation"
     },
     {
-        "url": "https://drafts.fxtf.org/geometry/",
+        "url": "https://www.w3.org/TR/geometry-1/",
         "title": "Geometry Interfaces"
     },
     {
@@ -316,7 +348,7 @@
         "title": "Vibration"
     },
     {
-        "url": "https://drafts.csswg.org/web-animations/",
+        "url": "https://www.w3.org/TR/web-animations-1/",
         "title": "Web Animations"
     },
     {

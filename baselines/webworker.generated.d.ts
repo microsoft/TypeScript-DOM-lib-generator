@@ -512,14 +512,15 @@ interface UnderlyingSource<R = any> {
 }
 
 interface WebGLContextAttributes {
-    alpha?: GLboolean;
-    antialias?: GLboolean;
-    depth?: GLboolean;
+    alpha?: boolean;
+    antialias?: boolean;
+    depth?: boolean;
+    desynchronized?: boolean;
     failIfMajorPerformanceCaveat?: boolean;
     powerPreference?: WebGLPowerPreference;
-    premultipliedAlpha?: GLboolean;
-    preserveDrawingBuffer?: GLboolean;
-    stencil?: GLboolean;
+    premultipliedAlpha?: boolean;
+    preserveDrawingBuffer?: boolean;
+    stencil?: boolean;
 }
 
 interface WebGLContextEventInit extends EventInit {
@@ -603,6 +604,11 @@ interface AesCmacParams extends Algorithm {
     length: number;
 }
 
+interface AnimationFrameProvider {
+    cancelAnimationFrame(handle: number): void;
+    requestAnimationFrame(callback: FrameRequestCallback): number;
+}
+
 /** A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system. */
 interface Blob {
     readonly size: number;
@@ -656,7 +662,7 @@ declare var BroadcastChannel: {
     new(name: string): BroadcastChannel;
 };
 
-/** An interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     highWaterMark: number;
     size(chunk: ArrayBufferView): number;
@@ -923,7 +929,7 @@ declare var Console: {
     new(): Console;
 };
 
-/** An interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
     highWaterMark: number;
     size(chunk: any): 1;
@@ -1232,7 +1238,7 @@ interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
 }
 
 /** (the Worker global scope) is accessible through the self keyword. Some additional global functions, namespaces objects, and constructors, not typically associated with the worker global scope, but available on it, are listed in the JavaScript Reference. See also: Functions available to workers. */
-interface DedicatedWorkerGlobalScope extends WorkerGlobalScope {
+interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider {
     onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
     close(): void;
     postMessage(message: any, transfer: Transferable[]): void;
@@ -1472,7 +1478,7 @@ declare var ExtendableEvent: {
     new(type: string, eventInitDict?: ExtendableEventInit): ExtendableEvent;
 };
 
-/** An interface of the ServiceWorker API represents the event object of a message event fired on a service worker (when a channel message is received on the ServiceWorkerGlobalScope from another context) — extends the lifetime of such events. */
+/** This ServiceWorker API interface represents the event object of a message event fired on a service worker (when a channel message is received on the ServiceWorkerGlobalScope from another context) — extends the lifetime of such events. */
 interface ExtendableMessageEvent extends ExtendableEvent {
     readonly data: any;
     readonly lastEventId: string;
@@ -1525,23 +1531,23 @@ declare var FileList: {
 };
 
 interface FileReaderEventMap {
-    "abort": ProgressEvent;
-    "error": ProgressEvent;
-    "load": ProgressEvent;
-    "loadend": ProgressEvent;
-    "loadstart": ProgressEvent;
-    "progress": ProgressEvent;
+    "abort": FileReaderProgressEvent;
+    "error": FileReaderProgressEvent;
+    "load": FileReaderProgressEvent;
+    "loadend": FileReaderProgressEvent;
+    "loadstart": FileReaderProgressEvent;
+    "progress": FileReaderProgressEvent;
 }
 
 /** Lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read. */
 interface FileReader extends EventTarget {
     readonly error: DOMException | null;
-    onabort: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onerror: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onload: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onloadend: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onloadstart: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onprogress: ((this: FileReader, ev: ProgressEvent) => any) | null;
+    onabort: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onerror: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onload: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onloadend: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onloadstart: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onprogress: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
     readonly readyState: number;
     readonly result: string | ArrayBuffer | null;
     abort(): void;
@@ -1565,6 +1571,10 @@ declare var FileReader: {
     readonly EMPTY: number;
     readonly LOADING: number;
 };
+
+interface FileReaderProgressEvent extends ProgressEvent {
+    readonly target: FileReader | null;
+}
 
 /** Allows to read File or Blob objects in a synchronous way. */
 interface FileReaderSync {
@@ -1617,11 +1627,7 @@ interface GenericTransformStream {
     readonly writable: WritableStream;
 }
 
-interface GlobalFetch {
-    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
-}
-
-/** An interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -1645,7 +1651,7 @@ interface HkdfCtrParams extends Algorithm {
 interface IDBArrayKey extends Array<IDBValidKey> {
 }
 
-/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. */
+/** This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. */
 interface IDBCursor {
     /**
      * Returns the direction ("next", "nextunique", "prev" or "prevunique") of the cursor.
@@ -1696,7 +1702,7 @@ declare var IDBCursor: {
     new(): IDBCursor;
 };
 
-/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
+/** This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
 interface IDBCursorWithValue extends IDBCursor {
     /**
      * Returns the cursor's current value.
@@ -1716,7 +1722,7 @@ interface IDBDatabaseEventMap {
     "versionchange": IDBVersionChangeEvent;
 }
 
-/** An interface of the IndexedDB API provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
+/** This IndexedDB API interface provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
 interface IDBDatabase extends EventTarget {
     /**
      * Returns the name of the database.
@@ -2116,7 +2122,7 @@ declare var IDBTransaction: {
     new(): IDBTransaction;
 };
 
-/** An interface of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
+/** This IndexedDB API interface indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
 interface IDBVersionChangeEvent extends Event {
     readonly newVersion: number | null;
     readonly oldVersion: number;
@@ -2178,7 +2184,7 @@ declare var ImageData: {
     new(array: Uint8ClampedArray, width: number, height: number): ImageData;
 };
 
-/** An interface of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties. */
+/** This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
     /**
      * Returns the first MessagePort object.
@@ -2229,7 +2235,7 @@ interface MessagePortEventMap {
     "messageerror": MessageEvent;
 }
 
-/** An interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
+/** This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
 interface MessagePort extends EventTarget {
     onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
@@ -2306,7 +2312,7 @@ interface NotificationEventMap {
     "show": Event;
 }
 
-/** An interface of the Notifications API is used to configure and display desktop notifications to the user. */
+/** This Notifications API interface is used to configure and display desktop notifications to the user. */
 interface Notification extends EventTarget {
     readonly actions: ReadonlyArray<NotificationAction>;
     readonly badge: string;
@@ -2434,7 +2440,7 @@ declare var OffscreenCanvasRenderingContext2D: {
     new(): OffscreenCanvasRenderingContext2D;
 };
 
-/** An interface of the Canvas 2D API is used to declare a path that can then be used on a CanvasRenderingContext2D object. The path methods of the CanvasRenderingContext2D interface are also present on this interface, which gives you the convenience of being able to retain and replay your path whenever desired. */
+/** This Canvas 2D API interface is used to declare a path that can then be used on a CanvasRenderingContext2D object. The path methods of the CanvasRenderingContext2D interface are also present on this interface, which gives you the convenience of being able to retain and replay your path whenever desired. */
 interface Path2D extends CanvasPath {
     /**
      * Adds to the path the path given by the argument.
@@ -2608,7 +2614,7 @@ declare var PromiseRejectionEvent: {
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
-/** An interface of the Push API represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription. */
+/** This Push API interface represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription. */
 interface PushEvent extends ExtendableEvent {
     readonly data: PushMessageData | null;
 }
@@ -2618,7 +2624,7 @@ declare var PushEvent: {
     new(type: string, eventInitDict?: PushEventInit): PushEvent;
 };
 
-/** An interface of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
+/** This Push API interface provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
 interface PushManager {
     getSubscription(): Promise<PushSubscription | null>;
     permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
@@ -2631,7 +2637,7 @@ declare var PushManager: {
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
 
-/** An interface of the Push API provides methods which let you retrieve the push data sent by a server in various formats. */
+/** This Push API interface provides methods which let you retrieve the push data sent by a server in various formats. */
 interface PushMessageData {
     arrayBuffer(): ArrayBuffer;
     blob(): Blob;
@@ -2644,7 +2650,7 @@ declare var PushMessageData: {
     new(): PushMessageData;
 };
 
-/** An interface of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service. */
+/** This Push API interface provides a subcription's URL endpoint and allows unsubscription from a push service. */
 interface PushSubscription {
     readonly endpoint: string;
     readonly expirationTime: number | null;
@@ -2687,7 +2693,7 @@ interface ReadableByteStreamController {
     error(error?: any): void;
 }
 
-/** An interface of the Streams API represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
+/** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
@@ -2747,7 +2753,7 @@ declare var ReadableStreamReader: {
     new(): ReadableStreamReader;
 };
 
-/** An interface of the Fetch API represents a resource request. */
+/** This Fetch API interface represents a resource request. */
 interface Request extends Body {
     /**
      * Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching.
@@ -2817,7 +2823,7 @@ declare var Request: {
     new(input: RequestInfo, init?: RequestInit): Request;
 };
 
-/** An interface of the Fetch API represents the response to a request. */
+/** This Fetch API interface represents the response to a request. */
 interface Response extends Body {
     readonly headers: Headers;
     readonly ok: boolean;
@@ -2841,7 +2847,7 @@ interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
     "statechange": Event;
 }
 
-/** An interface of the ServiceWorker API provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
+/** This ServiceWorker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
 interface ServiceWorker extends EventTarget, AbstractWorker {
     onstatechange: ((this: ServiceWorker, ev: Event) => any) | null;
     readonly scriptURL: string;
@@ -2900,7 +2906,7 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "sync": SyncEvent;
 }
 
-/** An interface of the ServiceWorker API represents the global execution context of a service worker. */
+/** This ServiceWorker API interface represents the global execution context of a service worker. */
 interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     readonly clients: Clients;
     onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
@@ -2930,7 +2936,7 @@ interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
 }
 
-/** An interface of the ServiceWorker API represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
+/** This ServiceWorker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
 interface ServiceWorkerRegistration extends EventTarget {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
@@ -2966,7 +2972,7 @@ declare var StorageManager: {
     new(): StorageManager;
 };
 
-/** An interface of the Web Crypto API provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
+/** This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
 interface SubtleCrypto {
     decrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): PromiseLike<ArrayBuffer>;
     deriveBits(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): PromiseLike<ArrayBuffer>;
@@ -3004,7 +3010,7 @@ declare var SyncEvent: {
     new(type: string, init: SyncEventInit): SyncEvent;
 };
 
-/** An interface of the ServiceWorker API provides an interface for registering and listing sync registrations. */
+/** This ServiceWorker API interface provides an interface for registering and listing sync registrations. */
 interface SyncManager {
     getTags(): Promise<string[]>;
     register(tag: string): Promise<void>;
@@ -3708,6 +3714,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
+    readonly canvas: OffscreenCanvas;
     readonly drawingBufferHeight: GLsizei;
     readonly drawingBufferWidth: GLsizei;
     activeTexture(texture: GLenum): void;
@@ -4256,7 +4263,7 @@ interface WindowBase64 {
     btoa(rawString: string): string;
 }
 
-/** An interface of the ServiceWorker API represents the scope of a service worker client that is a document in a browser context, controlled by an active worker. The service worker client independently selects and uses a service worker for its own loading and sub-resources. */
+/** This ServiceWorker API interface represents the scope of a service worker client that is a document in a browser context, controlled by an active worker. The service worker client independently selects and uses a service worker for its own loading and sub-resources. */
 interface WindowClient extends Client {
     readonly ancestorOrigins: ReadonlyArray<string>;
     readonly focused: boolean;
@@ -4296,10 +4303,11 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
 }
 
-/** An interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
+/** This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    postMessage(message: any, transfer?: Transferable[]): void;
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: PostMessageOptions): void;
     terminate(): void;
     addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -4316,8 +4324,8 @@ interface WorkerGlobalScopeEventMap {
     "error": ErrorEvent;
 }
 
-/** An interface of the Web Workers API is an interface representing the scope of any worker. Workers have no browsing context; this scope contains the information usually conveyed by Window objects — in this case event handlers, the console or the associated WorkerNavigator object. Each WorkerGlobalScope has its own event loop. */
-interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, GlobalFetch, WindowOrWorkerGlobalScope {
+/** This Web Workers API interface is an interface representing the scope of any worker. Workers have no browsing context; this scope contains the information usually conveyed by Window objects — in this case event handlers, the console or the associated WorkerNavigator object. Each WorkerGlobalScope has its own event loop. */
+interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, WindowOrWorkerGlobalScope {
     readonly caches: CacheStorage;
     readonly isSecureContext: boolean;
     readonly location: WorkerLocation;
@@ -4373,7 +4381,7 @@ interface WorkerUtils extends WindowBase64 {
     importScripts(...urls: string[]): void;
 }
 
-/** An interface of the Streams API provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
+/** This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
 interface WritableStream<W = any> {
     readonly locked: boolean;
     abort(reason?: any): Promise<void>;
@@ -4385,12 +4393,12 @@ declare var WritableStream: {
     new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
 };
 
-/** An interface of the Streams API represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
+/** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
     error(error?: any): void;
 }
 
-/** An interface of the Streams API is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
+/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
     readonly closed: Promise<void>;
     readonly desiredSize: number | null;
@@ -4651,6 +4659,10 @@ interface EventHandlerNonNull {
     (event: Event): any;
 }
 
+interface FrameRequestCallback {
+    (time: number): void;
+}
+
 interface PerformanceObserverCallback {
     (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
 }
@@ -4721,7 +4733,6 @@ declare function importScripts(...urls: string[]): void;
 declare function atob(encodedString: string): string;
 declare function btoa(rawString: string): string;
 declare var console: Console;
-declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
 declare var caches: CacheStorage;
 declare var crypto: Crypto;
 declare var indexedDB: IDBFactory;
@@ -4737,14 +4748,16 @@ declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response
 declare function queueMicrotask(callback: Function): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+declare function cancelAnimationFrame(handle: number): void;
+declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-type BlobPart = BufferSource | Blob | string;
 type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
 type RequestInfo = Request | string;
+type BlobPart = BufferSource | Blob | string;
 type DOMHighResTimeStamp = number;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | WebGLRenderingContext;
@@ -4768,7 +4781,7 @@ type GLsizeiptr = number;
 type GLuint = number;
 type GLfloat = number;
 type GLclampf = number;
-type TexImageSource = ImageBitmap | ImageData;
+type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
 type Float32List = Float32Array | GLfloat[];
 type Int32List = Int32Array | GLint[];
 type BufferSource = ArrayBufferView | ArrayBuffer;

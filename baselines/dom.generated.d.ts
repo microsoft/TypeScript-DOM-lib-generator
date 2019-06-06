@@ -1714,14 +1714,15 @@ interface WebAuthnExtensions {
 }
 
 interface WebGLContextAttributes {
-    alpha?: GLboolean;
-    antialias?: GLboolean;
-    depth?: GLboolean;
+    alpha?: boolean;
+    antialias?: boolean;
+    depth?: boolean;
+    desynchronized?: boolean;
     failIfMajorPerformanceCaveat?: boolean;
     powerPreference?: WebGLPowerPreference;
-    premultipliedAlpha?: GLboolean;
-    preserveDrawingBuffer?: GLboolean;
-    stencil?: GLboolean;
+    premultipliedAlpha?: boolean;
+    preserveDrawingBuffer?: boolean;
+    stencil?: boolean;
 }
 
 interface WebGLContextEventInit extends EventInit {
@@ -1926,6 +1927,11 @@ declare var AnimationEvent: {
     prototype: AnimationEvent;
     new(type: string, animationEventInitDict?: AnimationEventInit): AnimationEvent;
 };
+
+interface AnimationFrameProvider {
+    cancelAnimationFrame(handle: number): void;
+    requestAnimationFrame(callback: FrameRequestCallback): number;
+}
 
 interface AnimationPlaybackEvent extends Event {
     readonly currentTime: number | null;
@@ -2416,7 +2422,7 @@ declare var BroadcastChannel: {
     new(name: string): BroadcastChannel;
 };
 
-/** An interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     highWaterMark: number;
     size(chunk: ArrayBufferView): number;
@@ -2595,9 +2601,9 @@ declare var CSSRuleList: {
 
 /** An object that is a CSS declaration block, and exposes style information and various style-related methods and properties. */
 interface CSSStyleDeclaration {
-    alignContent: string | null;
-    alignItems: string | null;
-    alignSelf: string | null;
+    alignContent: string;
+    alignItems: string;
+    alignSelf: string;
     alignmentBaseline: string | null;
     animation: string;
     animationDelay: string;
@@ -2667,7 +2673,7 @@ interface CSSStyleDeclaration {
     clipPath: string | null;
     clipRule: string | null;
     color: string | null;
-    colorInterpolationFilters: string | null;
+    colorInterpolationFilters: string;
     columnCount: string;
     columnFill: string;
     columnGap: string;
@@ -2684,7 +2690,7 @@ interface CSSStyleDeclaration {
     cssFloat: string | null;
     cssText: string;
     cursor: string;
-    direction: string | null;
+    direction: string;
     display: string | null;
     dominantBaseline: string | null;
     emptyCells: string | null;
@@ -2692,7 +2698,7 @@ interface CSSStyleDeclaration {
     fill: string | null;
     fillOpacity: string | null;
     fillRule: string | null;
-    filter: string | null;
+    filter: string;
     flex: string | null;
     flexBasis: string | null;
     flexDirection: string | null;
@@ -2700,20 +2706,27 @@ interface CSSStyleDeclaration {
     flexGrow: string | null;
     flexShrink: string | null;
     flexWrap: string | null;
-    floodColor: string | null;
-    floodOpacity: string | null;
-    font: string | null;
-    fontFamily: string | null;
-    fontFeatureSettings: string | null;
-    fontSize: string | null;
-    fontSizeAdjust: string | null;
-    fontStretch: string | null;
-    fontStyle: string | null;
-    fontVariant: string | null;
-    fontWeight: string | null;
-    gap: string | null;
+    floodColor: string;
+    floodOpacity: string;
+    font: string;
+    fontFamily: string;
+    fontFeatureSettings: string;
+    fontKerning: string;
+    fontSize: string;
+    fontSizeAdjust: string;
+    fontStretch: string;
+    fontStyle: string;
+    fontSynthesis: string;
+    fontVariant: string;
+    fontVariantCaps: string;
+    fontVariantEastAsian: string;
+    fontVariantLigatures: string;
+    fontVariantNumeric: string;
+    fontVariantPosition: string;
+    fontWeight: string;
+    gap: string;
     glyphOrientationHorizontal: string | null;
-    glyphOrientationVertical: string | null;
+    glyphOrientationVertical: string;
     grid: string | null;
     gridArea: string | null;
     gridAutoColumns: string | null;
@@ -2721,24 +2734,25 @@ interface CSSStyleDeclaration {
     gridAutoRows: string | null;
     gridColumn: string | null;
     gridColumnEnd: string | null;
-    gridColumnGap: string | null;
+    gridColumnGap: string;
     gridColumnStart: string | null;
-    gridGap: string | null;
+    gridGap: string;
     gridRow: string | null;
     gridRowEnd: string | null;
-    gridRowGap: string | null;
+    gridRowGap: string;
     gridRowStart: string | null;
     gridTemplate: string | null;
     gridTemplateAreas: string | null;
     gridTemplateColumns: string | null;
     gridTemplateRows: string | null;
     height: string | null;
+    hyphens: string;
     imageOrientation: string;
     imageRendering: string;
     imeMode: string | null;
-    justifyContent: string | null;
-    justifyItems: string | null;
-    justifySelf: string | null;
+    justifyContent: string;
+    justifyItems: string;
+    justifySelf: string;
     kerning: string | null;
     layoutGrid: string | null;
     layoutGridChar: string | null;
@@ -2747,9 +2761,9 @@ interface CSSStyleDeclaration {
     layoutGridType: string | null;
     left: string | null;
     readonly length: number;
-    letterSpacing: string | null;
-    lightingColor: string | null;
-    lineBreak: string | null;
+    letterSpacing: string;
+    lightingColor: string;
+    lineBreak: string;
     lineHeight: string | null;
     listStyle: string | null;
     listStyleImage: string | null;
@@ -2828,6 +2842,8 @@ interface CSSStyleDeclaration {
     outlineStyle: string;
     outlineWidth: string;
     overflow: string | null;
+    overflowAnchor: string;
+    overflowWrap: string;
     overflowX: string | null;
     overflowY: string | null;
     padding: string | null;
@@ -2842,13 +2858,16 @@ interface CSSStyleDeclaration {
     penAction: string | null;
     perspective: string | null;
     perspectiveOrigin: string | null;
+    placeContent: string;
+    placeItems: string;
+    placeSelf: string;
     pointerEvents: string | null;
     position: string | null;
     quotes: string | null;
-    resize: string | null;
+    resize: string;
     right: string | null;
     rotate: string | null;
-    rowGap: string | null;
+    rowGap: string;
     rubyAlign: string | null;
     rubyOverhang: string | null;
     rubyPosition: string | null;
@@ -2864,24 +2883,34 @@ interface CSSStyleDeclaration {
     strokeMiterlimit: string | null;
     strokeOpacity: string | null;
     strokeWidth: string | null;
+    tabSize: string;
     tableLayout: string | null;
-    textAlign: string | null;
-    textAlignLast: string | null;
+    textAlign: string;
+    textAlignLast: string;
     textAnchor: string | null;
-    textCombineUpright: string | null;
-    textDecoration: string | null;
-    textIndent: string | null;
-    textJustify: string | null;
+    textCombineUpright: string;
+    textDecoration: string;
+    textDecorationColor: string;
+    textDecorationLine: string;
+    textDecorationStyle: string;
+    textEmphasis: string;
+    textEmphasisColor: string;
+    textEmphasisPosition: string;
+    textEmphasisStyle: string;
+    textIndent: string;
+    textJustify: string;
     textKashida: string | null;
     textKashidaSpace: string | null;
+    textOrientation: string;
     textOverflow: string;
-    textShadow: string | null;
-    textTransform: string | null;
-    textUnderlinePosition: string | null;
+    textShadow: string;
+    textTransform: string;
+    textUnderlinePosition: string;
     top: string | null;
     touchAction: string;
-    transform: string | null;
-    transformOrigin: string | null;
+    transform: string;
+    transformBox: string;
+    transformOrigin: string;
     transformStyle: string | null;
     transition: string;
     transitionDelay: string;
@@ -2889,8 +2918,8 @@ interface CSSStyleDeclaration {
     transitionProperty: string;
     transitionTimingFunction: string;
     translate: string | null;
-    unicodeBidi: string | null;
-    userSelect: string | null;
+    unicodeBidi: string;
+    userSelect: string;
     verticalAlign: string | null;
     visibility: string | null;
     /** @deprecated */
@@ -3046,14 +3075,14 @@ interface CSSStyleDeclaration {
     webkitUserModify: string | null;
     webkitUserSelect: string | null;
     webkitWritingMode: string | null;
-    whiteSpace: string | null;
+    whiteSpace: string;
     widows: string | null;
     width: string | null;
     willChange: string;
-    wordBreak: string | null;
-    wordSpacing: string | null;
-    wordWrap: string | null;
-    writingMode: string | null;
+    wordBreak: string;
+    wordSpacing: string;
+    wordWrap: string;
+    writingMode: string;
     zIndex: string | null;
     zoom: string | null;
     getPropertyPriority(propertyName: string): string;
@@ -3544,7 +3573,7 @@ interface Coordinates {
     readonly speed: number | null;
 }
 
-/** An interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
     highWaterMark: number;
     size(chunk: any): 1;
@@ -4535,6 +4564,7 @@ interface Document extends Node, NonElementParentNode, DocumentOrShadowRoot, Par
     createEvent(eventInterface: "ErrorEvent"): ErrorEvent;
     createEvent(eventInterface: "Event"): Event;
     createEvent(eventInterface: "Events"): Event;
+    createEvent(eventInterface: "FileReaderProgressEvent"): FileReaderProgressEvent;
     createEvent(eventInterface: "FocusEvent"): FocusEvent;
     createEvent(eventInterface: "FocusNavigationEvent"): FocusNavigationEvent;
     createEvent(eventInterface: "GamepadEvent"): GamepadEvent;
@@ -4619,8 +4649,6 @@ interface Document extends Node, NonElementParentNode, DocumentOrShadowRoot, Par
      * @param data String that specifies the nodeValue property of the text node.
      */
     createTextNode(data: string): Text;
-    createTouch(view: WindowProxy, target: EventTarget, identifier: number, pageX: number, pageY: number, screenX: number, screenY: number): Touch;
-    createTouchList(...touches: Touch[]): TouchList;
     /**
      * Creates a TreeWalker object that you can use to traverse filtered lists of nodes or elements in a document.
      * @param root The root element or node to start traversing on.
@@ -4786,6 +4814,7 @@ interface DocumentEvent {
     createEvent(eventInterface: "ErrorEvent"): ErrorEvent;
     createEvent(eventInterface: "Event"): Event;
     createEvent(eventInterface: "Events"): Event;
+    createEvent(eventInterface: "FileReaderProgressEvent"): FileReaderProgressEvent;
     createEvent(eventInterface: "FocusEvent"): FocusEvent;
     createEvent(eventInterface: "FocusNavigationEvent"): FocusNavigationEvent;
     createEvent(eventInterface: "GamepadEvent"): GamepadEvent;
@@ -5018,7 +5047,7 @@ interface Element extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode,
      */
     closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null;
     closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null;
-    closest(selector: string): Element | null;
+    closest<E extends Element = Element>(selector: string): E | null;
     /**
      * Returns element's first attribute whose qualified name is qualifiedName, and null if there is no such attribute otherwise.
      */
@@ -5323,6 +5352,11 @@ interface External {
     IsSearchProviderInstalled(): void;
 }
 
+declare var External: {
+    prototype: External;
+    new(): External;
+};
+
 /** Provides information about files and allows JavaScript in a web page to access their content. */
 interface File extends Blob {
     readonly lastModified: number;
@@ -5347,23 +5381,23 @@ declare var FileList: {
 };
 
 interface FileReaderEventMap {
-    "abort": ProgressEvent;
-    "error": ProgressEvent;
-    "load": ProgressEvent;
-    "loadend": ProgressEvent;
-    "loadstart": ProgressEvent;
-    "progress": ProgressEvent;
+    "abort": FileReaderProgressEvent;
+    "error": FileReaderProgressEvent;
+    "load": FileReaderProgressEvent;
+    "loadend": FileReaderProgressEvent;
+    "loadstart": FileReaderProgressEvent;
+    "progress": FileReaderProgressEvent;
 }
 
 /** Lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read. */
 interface FileReader extends EventTarget {
     readonly error: DOMException | null;
-    onabort: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onerror: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onload: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onloadend: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onloadstart: ((this: FileReader, ev: ProgressEvent) => any) | null;
-    onprogress: ((this: FileReader, ev: ProgressEvent) => any) | null;
+    onabort: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onerror: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onload: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onloadend: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onloadstart: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
+    onprogress: ((this: FileReader, ev: FileReaderProgressEvent) => any) | null;
     readonly readyState: number;
     readonly result: string | ArrayBuffer | null;
     abort(): void;
@@ -5387,6 +5421,10 @@ declare var FileReader: {
     readonly EMPTY: number;
     readonly LOADING: number;
 };
+
+interface FileReaderProgressEvent extends ProgressEvent {
+    readonly target: FileReader | null;
+}
 
 /** Focus-related events like focus, blur, focusin, or focusout. */
 interface FocusEvent extends UIEvent {
@@ -5439,7 +5477,7 @@ declare var GainNode: {
     new(context: BaseAudioContext, options?: GainOptions): GainNode;
 };
 
-/** An interface of the Gamepad API defines an individual gamepad or other controller, allowing access to information such as button presses, axis positions, and id. */
+/** This Gamepad API interface defines an individual gamepad or other controller, allowing access to information such as button presses, axis positions, and id. */
 interface Gamepad {
     readonly axes: ReadonlyArray<number>;
     readonly buttons: ReadonlyArray<GamepadButton>;
@@ -5470,7 +5508,7 @@ declare var GamepadButton: {
     new(): GamepadButton;
 };
 
-/** An interface of the Gamepad API contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected and Window.gamepaddisconnected are fired in response to. */
+/** This Gamepad API interface contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected and Window.gamepaddisconnected are fired in response to. */
 interface GamepadEvent extends Event {
     readonly gamepad: Gamepad;
 }
@@ -5480,7 +5518,7 @@ declare var GamepadEvent: {
     new(type: string, eventInitDict: GamepadEventInit): GamepadEvent;
 };
 
-/** An interface of the Gamepad API represents hardware in the controller designed to provide haptic feedback to the user (if available), most commonly vibration hardware. */
+/** This Gamepad API interface represents hardware in the controller designed to provide haptic feedback to the user (if available), most commonly vibration hardware. */
 interface GamepadHapticActuator {
     readonly type: GamepadHapticActuatorType;
     pulse(value: number, duration: number): Promise<boolean>;
@@ -5491,7 +5529,7 @@ declare var GamepadHapticActuator: {
     new(): GamepadHapticActuator;
 };
 
-/** An interface of the Gamepad API represents the pose of a WebVR controller at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
+/** This Gamepad API interface represents the pose of a WebVR controller at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
 interface GamepadPose {
     readonly angularAcceleration: Float32Array | null;
     readonly angularVelocity: Float32Array | null;
@@ -5567,6 +5605,8 @@ interface GlobalEventHandlersEventMap {
     "ended": Event;
     "error": ErrorEvent;
     "focus": FocusEvent;
+    "focusin": FocusEvent;
+    "focusout": FocusEvent;
     "gotpointercapture": PointerEvent;
     "input": Event;
     "invalid": Event;
@@ -5897,10 +5937,6 @@ interface GlobalEventHandlers {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-interface GlobalFetch {
-    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
 }
 
 interface HTMLAllCollection {
@@ -8942,7 +8978,7 @@ declare var HashChangeEvent: {
     new(type: string, eventInitDict?: HashChangeEventInit): HashChangeEvent;
 };
 
-/** An interface of the Fetch API allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -8983,7 +9019,7 @@ interface HkdfCtrParams extends Algorithm {
 interface IDBArrayKey extends Array<IDBValidKey> {
 }
 
-/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. */
+/** This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. */
 interface IDBCursor {
     /**
      * Returns the direction ("next", "nextunique", "prev" or "prevunique") of the cursor.
@@ -9034,7 +9070,7 @@ declare var IDBCursor: {
     new(): IDBCursor;
 };
 
-/** An interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
+/** This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
 interface IDBCursorWithValue extends IDBCursor {
     /**
      * Returns the cursor's current value.
@@ -9054,7 +9090,7 @@ interface IDBDatabaseEventMap {
     "versionchange": IDBVersionChangeEvent;
 }
 
-/** An interface of the IndexedDB API provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
+/** This IndexedDB API interface provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database. */
 interface IDBDatabase extends EventTarget {
     /**
      * Returns the name of the database.
@@ -9458,7 +9494,7 @@ declare var IDBTransaction: {
     new(): IDBTransaction;
 };
 
-/** An interface of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
+/** This IndexedDB API interface indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
 interface IDBVersionChangeEvent extends Event {
     readonly newVersion: number | null;
     readonly oldVersion: number;
@@ -9575,7 +9611,7 @@ declare var IntersectionObserver: {
     new(callback: IntersectionObserverCallback, options?: IntersectionObserverInit): IntersectionObserver;
 };
 
-/** An interface of the Intersection Observer API describes the intersection between the target element and its root container at a specific moment of transition. */
+/** This Intersection Observer API interface describes the intersection between the target element and its root container at a specific moment of transition. */
 interface IntersectionObserverEntry {
     readonly boundingClientRect: ClientRect | DOMRect;
     readonly intersectionRatio: number;
@@ -10068,7 +10104,7 @@ declare var MediaError: {
     readonly MS_MEDIA_ERR_ENCRYPTED: number;
 };
 
-/** An interface of the EncryptedMediaExtensions API contains the content and related data when the content decryption module generates a message for the session. */
+/** This EncryptedMediaExtensions API interface contains the content and related data when the content decryption module generates a message for the session. */
 interface MediaKeyMessageEvent extends Event {
     readonly message: ArrayBuffer;
     readonly messageType: MediaKeyMessageType;
@@ -10084,7 +10120,7 @@ interface MediaKeySessionEventMap {
     "message": MessageEvent;
 }
 
-/** An interface of the EncryptedMediaExtensions API represents a context for message exchange with a content decryption module (CDM). */
+/** This EncryptedMediaExtensions API interface represents a context for message exchange with a content decryption module (CDM). */
 interface MediaKeySession extends EventTarget {
     readonly closed: Promise<void>;
     readonly expiration: number;
@@ -10108,7 +10144,7 @@ declare var MediaKeySession: {
     new(): MediaKeySession;
 };
 
-/** An interface of the EncryptedMediaExtensions API is a read-only map of media key statuses by key IDs. */
+/** This EncryptedMediaExtensions API interface is a read-only map of media key statuses by key IDs. */
 interface MediaKeyStatusMap {
     readonly size: number;
     get(keyId: BufferSource): any;
@@ -10121,7 +10157,7 @@ declare var MediaKeyStatusMap: {
     new(): MediaKeyStatusMap;
 };
 
-/** An interface of the EncryptedMediaExtensions API provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess method. */
+/** This EncryptedMediaExtensions API interface provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess method. */
 interface MediaKeySystemAccess {
     readonly keySystem: string;
     createMediaKeys(): Promise<MediaKeys>;
@@ -10133,7 +10169,7 @@ declare var MediaKeySystemAccess: {
     new(): MediaKeySystemAccess;
 };
 
-/** An interface of the EncryptedMediaExtensions API the represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback. */
+/** This EncryptedMediaExtensions API interface the represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback. */
 interface MediaKeys {
     createSession(sessionType?: MediaKeySessionType): MediaKeySession;
     setServerCertificate(serverCertificate: BufferSource): Promise<boolean>;
@@ -10199,7 +10235,7 @@ interface MediaSourceEventMap {
     "sourceopen": Event;
 }
 
-/** An interface of the Media Source Extensions API represents a source of media data for an HTMLMediaElement object. A MediaSource object can be attached to a HTMLMediaElement to be played in the user agent. */
+/** This Media Source Extensions API interface represents a source of media data for an HTMLMediaElement object. A MediaSource object can be attached to a HTMLMediaElement to be played in the user agent. */
 interface MediaSource extends EventTarget {
     readonly activeSourceBuffers: SourceBufferList;
     duration: number;
@@ -10362,7 +10398,7 @@ declare var MediaStreamTrackEvent: {
     new(type: string, eventInitDict: MediaStreamTrackEventInit): MediaStreamTrackEvent;
 };
 
-/** An interface of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties. */
+/** This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
     /**
      * Returns the first MessagePort object.
@@ -10413,7 +10449,7 @@ interface MessagePortEventMap {
     "messageerror": MessageEvent;
 }
 
-/** An interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
+/** This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
 interface MessagePort extends EventTarget {
     onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
@@ -11022,7 +11058,7 @@ interface NotificationEventMap {
     "show": Event;
 }
 
-/** An interface of the Notifications API is used to configure and display desktop notifications to the user. */
+/** This Notifications API interface is used to configure and display desktop notifications to the user. */
 interface Notification extends EventTarget {
     readonly actions: ReadonlyArray<NotificationAction>;
     readonly badge: string;
@@ -11293,7 +11329,7 @@ interface ParentNode {
     querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;
 }
 
-/** An interface of the Canvas 2D API is used to declare a path that can then be used on a CanvasRenderingContext2D object. The path methods of the CanvasRenderingContext2D interface are also present on this interface, which gives you the convenience of being able to retain and replay your path whenever desired. */
+/** This Canvas 2D API interface is used to declare a path that can then be used on a CanvasRenderingContext2D object. The path methods of the CanvasRenderingContext2D interface are also present on this interface, which gives you the convenience of being able to retain and replay your path whenever desired. */
 interface Path2D extends CanvasPath {
     /**
      * Adds to the path the path given by the argument.
@@ -11306,7 +11342,7 @@ declare var Path2D: {
     new(path?: Path2D | string): Path2D;
 };
 
-/** An interface of the Payment Request API is used to store shipping or payment address information. */
+/** This Payment Request API interface is used to store shipping or payment address information. */
 interface PaymentAddress {
     readonly addressLine: string[];
     readonly city: string;
@@ -11332,7 +11368,7 @@ interface PaymentRequestEventMap {
     "shippingoptionchange": Event;
 }
 
-/** An interface of the Payment Request API is the primary access point into the API , and lets web content and apps accept payments from the end user. */
+/** This Payment Request API interface is the primary access point into the API, and lets web content and apps accept payments from the end user. */
 interface PaymentRequest extends EventTarget {
     readonly id: string;
     onshippingaddresschange: ((this: PaymentRequest, ev: Event) => any) | null;
@@ -11354,7 +11390,7 @@ declare var PaymentRequest: {
     new(methodData: PaymentMethodData[], details: PaymentDetailsInit, options?: PaymentOptions): PaymentRequest;
 };
 
-/** An interface of the Payment Request API enables a web page to update the details of a PaymentRequest in response to a user action. */
+/** This Payment Request API interface enables a web page to update the details of a PaymentRequest in response to a user action. */
 interface PaymentRequestUpdateEvent extends Event {
     updateWith(detailsPromise: PaymentDetailsUpdate | Promise<PaymentDetailsUpdate>): void;
 }
@@ -11364,7 +11400,7 @@ declare var PaymentRequestUpdateEvent: {
     new(type: string, eventInitDict?: PaymentRequestUpdateEventInit): PaymentRequestUpdateEvent;
 };
 
-/** An interface of the Payment Request API is returned after a user selects a payment method and approves a payment request. */
+/** This Payment Request API interface is returned after a user selects a payment method and approves a payment request. */
 interface PaymentResponse {
     readonly details: any;
     readonly methodName: string;
@@ -11761,7 +11797,7 @@ declare var PromiseRejectionEvent: {
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
-/** An interface of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
+/** This Push API interface provides a way to receive notifications from third-party servers as well as request URLs for push notifications. */
 interface PushManager {
     getSubscription(): Promise<PushSubscription | null>;
     permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
@@ -11774,7 +11810,7 @@ declare var PushManager: {
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
 
-/** An interface of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service. */
+/** This Push API interface provides a subcription's URL endpoint and allows unsubscription from a push service. */
 interface PushSubscription {
     readonly endpoint: string;
     readonly expirationTime: number | null;
@@ -12179,7 +12215,7 @@ declare var RTCPeerConnectionIceEvent: {
     new(type: string, eventInitDict?: RTCPeerConnectionIceEventInit): RTCPeerConnectionIceEvent;
 };
 
-/** An interface of the WebRTC API manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection. */
+/** This WebRTC API interface manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection. */
 interface RTCRtpReceiver {
     readonly rtcpTransport: RTCDtlsTransport | null;
     readonly track: MediaStreamTrack;
@@ -12408,7 +12444,7 @@ interface ReadableByteStreamController {
     error(error?: any): void;
 }
 
-/** An interface of the Streams API represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
+/** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
@@ -12468,7 +12504,7 @@ declare var ReadableStreamReader: {
     new(): ReadableStreamReader;
 };
 
-/** An interface of the Fetch API represents a resource request. */
+/** This Fetch API interface represents a resource request. */
 interface Request extends Body {
     /**
      * Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching.
@@ -12538,7 +12574,7 @@ declare var Request: {
     new(input: RequestInfo, init?: RequestInit): Request;
 };
 
-/** An interface of the Fetch API represents the response to a request. */
+/** This Fetch API interface represents the response to a request. */
 interface Response extends Body {
     readonly headers: Headers;
     readonly ok: boolean;
@@ -13448,18 +13484,12 @@ declare var SVGFETurbulenceElement: {
 
 /** Provides access to the properties of <filter> elements, as well as methods to manipulate them. */
 interface SVGFilterElement extends SVGElement, SVGURIReference {
-    /** @deprecated */
-    readonly filterResX: SVGAnimatedInteger;
-    /** @deprecated */
-    readonly filterResY: SVGAnimatedInteger;
     readonly filterUnits: SVGAnimatedEnumeration;
     readonly height: SVGAnimatedLength;
     readonly primitiveUnits: SVGAnimatedEnumeration;
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
-    /** @deprecated */
-    setFilterRes(filterResX: number, filterResY: number): void;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFilterElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFilterElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14796,7 +14826,7 @@ interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
     "statechange": Event;
 }
 
-/** An interface of the ServiceWorker API provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
+/** This ServiceWorker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
 interface ServiceWorker extends EventTarget, AbstractWorker {
     onstatechange: ((this: ServiceWorker, ev: Event) => any) | null;
     readonly scriptURL: string;
@@ -14842,7 +14872,7 @@ declare var ServiceWorkerContainer: {
     new(): ServiceWorkerContainer;
 };
 
-/** An interface of the ServiceWorker API contains information about an event sent to a ServiceWorkerContainer target. This extends the default message event to allow setting a ServiceWorker object as the source of a message. The event object is accessed via the handler function of a message event, when fired by a message received from a service worker. */
+/** This ServiceWorker API interface contains information about an event sent to a ServiceWorkerContainer target. This extends the default message event to allow setting a ServiceWorker object as the source of a message. The event object is accessed via the handler function of a message event, when fired by a message received from a service worker. */
 interface ServiceWorkerMessageEvent extends Event {
     readonly data: any;
     readonly lastEventId: string;
@@ -14860,7 +14890,7 @@ interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
 }
 
-/** An interface of the ServiceWorker API represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
+/** This ServiceWorker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
 interface ServiceWorkerRegistration extends EventTarget {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
@@ -15088,7 +15118,7 @@ interface SpeechSynthesisEventMap {
     "voiceschanged": Event;
 }
 
-/** An interface of the Web Speech API is the controller interface for the speech service; this can be used to retrieve information about the synthesis voices available on the device, start and pause speech, and other commands besides. */
+/** This Web Speech API interface is the controller interface for the speech service; this can be used to retrieve information about the synthesis voices available on the device, start and pause speech, and other commands besides. */
 interface SpeechSynthesis extends EventTarget {
     onvoiceschanged: ((this: SpeechSynthesis, ev: Event) => any) | null;
     readonly paused: boolean;
@@ -15119,7 +15149,7 @@ declare var SpeechSynthesisErrorEvent: {
     new(): SpeechSynthesisErrorEvent;
 };
 
-/** An interface of the Web Speech API contains information about the current state of SpeechSynthesisUtterance objects that have been processed in the speech service. */
+/** This Web Speech API interface contains information about the current state of SpeechSynthesisUtterance objects that have been processed in the speech service. */
 interface SpeechSynthesisEvent extends Event {
     readonly charIndex: number;
     readonly elapsedTime: number;
@@ -15142,7 +15172,7 @@ interface SpeechSynthesisUtteranceEventMap {
     "start": SpeechSynthesisEvent;
 }
 
-/** An interface of the Web Speech API represents a speech request. It contains the content the speech service should read and information about how to read it (e.g. language, pitch and volume.) */
+/** This Web Speech API interface represents a speech request. It contains the content the speech service should read and information about how to read it (e.g. language, pitch and volume.) */
 interface SpeechSynthesisUtterance extends EventTarget {
     lang: string;
     onboundary: ((this: SpeechSynthesisUtterance, ev: SpeechSynthesisEvent) => any) | null;
@@ -15169,7 +15199,7 @@ declare var SpeechSynthesisUtterance: {
     new(text: string): SpeechSynthesisUtterance;
 };
 
-/** An interface of the Web Speech API represents a voice that the system supports. Every SpeechSynthesisVoice has its own relative speech service including information about language, name and URI. */
+/** This Web Speech API interface represents a voice that the system supports. Every SpeechSynthesisVoice has its own relative speech service including information about language, name and URI. */
 interface SpeechSynthesisVoice {
     readonly default: boolean;
     readonly lang: string;
@@ -15201,7 +15231,7 @@ declare var StereoPannerNode: {
     new(context: BaseAudioContext, options?: StereoPannerOptions): StereoPannerNode;
 };
 
-/** An interface of the Web Storage API provides access to a particular domain's session or local storage. It allows, for example, the addition, modification, or deletion of stored data items. */
+/** This Web Storage API interface provides access to a particular domain's session or local storage. It allows, for example, the addition, modification, or deletion of stored data items. */
 interface Storage {
     /**
      * Returns the number of key/value pairs currently present in the list associated with the object.
@@ -15315,7 +15345,7 @@ declare var StyleSheetList: {
     new(): StyleSheetList;
 };
 
-/** An interface of the Web Crypto API provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
+/** This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
 interface SubtleCrypto {
     decrypt(algorithm: string | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): PromiseLike<ArrayBuffer>;
     deriveBits(algorithm: string | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): PromiseLike<ArrayBuffer>;
@@ -15342,7 +15372,7 @@ declare var SubtleCrypto: {
     new(): SubtleCrypto;
 };
 
-/** An interface of the ServiceWorker API provides an interface for registering and listing sync registrations. */
+/** This ServiceWorker API interface provides an interface for registering and listing sync registrations. */
 interface SyncManager {
     getTags(): Promise<string[]>;
     register(tag: string): Promise<void>;
@@ -15838,7 +15868,7 @@ declare var URLSearchParams: {
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
-/** An interface of the WebVR API represents any VR device supported by this API . It includes generic information such as device IDs and descriptions, as well as methods for starting to present a VR scene, retrieving eye parameters and display capabilities, and other important functionality. */
+/** This WebVR API interface represents any VR device supported by this API. It includes generic information such as device IDs and descriptions, as well as methods for starting to present a VR scene, retrieving eye parameters and display capabilities, and other important functionality. */
 interface VRDisplay extends EventTarget {
     readonly capabilities: VRDisplayCapabilities;
     depthFar: number;
@@ -15866,7 +15896,7 @@ declare var VRDisplay: {
     new(): VRDisplay;
 };
 
-/** An interface of the WebVR API describes the capabilities of a VRDisplay — its features can be used to perform VR device capability tests, for example can it return position information. */
+/** This WebVR API interface describes the capabilities of a VRDisplay — its features can be used to perform VR device capability tests, for example can it return position information. */
 interface VRDisplayCapabilities {
     readonly canPresent: boolean;
     readonly hasExternalDisplay: boolean;
@@ -15880,7 +15910,7 @@ declare var VRDisplayCapabilities: {
     new(): VRDisplayCapabilities;
 };
 
-/** An interface of the WebVR API represents represents the event object of WebVR-related events (see the list of WebVR window extensions). */
+/** This WebVR API interface represents represents the event object of WebVR-related events (see the list of WebVR window extensions). */
 interface VRDisplayEvent extends Event {
     readonly display: VRDisplay;
     readonly reason: VRDisplayEventReason | null;
@@ -15891,7 +15921,7 @@ declare var VRDisplayEvent: {
     new(type: string, eventInitDict: VRDisplayEventInit): VRDisplayEvent;
 };
 
-/** An interface of the WebVR API represents all the information required to correctly render a scene for a given eye, including field of view information. */
+/** This WebVR API interface represents all the information required to correctly render a scene for a given eye, including field of view information. */
 interface VREyeParameters {
     /** @deprecated */
     readonly fieldOfView: VRFieldOfView;
@@ -15905,7 +15935,7 @@ declare var VREyeParameters: {
     new(): VREyeParameters;
 };
 
-/** An interface of the WebVR API represents a field of view defined by 4 different degree values describing the view from a center point. */
+/** This WebVR API interface represents a field of view defined by 4 different degree values describing the view from a center point. */
 interface VRFieldOfView {
     readonly downDegrees: number;
     readonly leftDegrees: number;
@@ -15918,7 +15948,7 @@ declare var VRFieldOfView: {
     new(): VRFieldOfView;
 };
 
-/** An interface of the WebVR API represents all the information needed to render a single frame of a VR scene; constructed by VRDisplay.getFrameData(). */
+/** This WebVR API interface represents all the information needed to render a single frame of a VR scene; constructed by VRDisplay.getFrameData(). */
 interface VRFrameData {
     readonly leftProjectionMatrix: Float32Array;
     readonly leftViewMatrix: Float32Array;
@@ -15933,7 +15963,7 @@ declare var VRFrameData: {
     new(): VRFrameData;
 };
 
-/** An interface of the WebVR API represents the state of a VR sensor at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
+/** This WebVR API interface represents the state of a VR sensor at a given timestamp (which includes orientation, position, velocity, and acceleration information.) */
 interface VRPose {
     readonly angularAcceleration: Float32Array | null;
     readonly angularVelocity: Float32Array | null;
@@ -16580,7 +16610,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
-    readonly canvas: HTMLCanvasElement;
+    readonly canvas: HTMLCanvasElement | OffscreenCanvas;
     readonly drawingBufferHeight: GLsizei;
     readonly drawingBufferWidth: GLsizei;
     activeTexture(texture: GLenum): void;
@@ -17256,7 +17286,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 }
 
 /** A window containing a DOM document; the document property points to the DOM document loaded in that window. */
-interface Window extends EventTarget, WindowTimers, WindowSessionStorage, WindowLocalStorage, WindowConsole, GlobalEventHandlers, IDBEnvironment, WindowBase64, GlobalFetch, WindowOrWorkerGlobalScope, WindowEventHandlers {
+interface Window extends EventTarget, WindowTimers, WindowSessionStorage, WindowLocalStorage, WindowConsole, GlobalEventHandlers, IDBEnvironment, WindowBase64, AnimationFrameProvider, WindowOrWorkerGlobalScope, WindowEventHandlers {
     Blob: typeof Blob;
     TextDecoder: typeof TextDecoder;
     TextEncoder: typeof TextEncoder;
@@ -17351,7 +17381,6 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     readonly window: Window;
     alert(message?: any): void;
     blur(): void;
-    cancelAnimationFrame(handle: number): void;
     /** @deprecated */
     captureEvents(): void;
     close(): void;
@@ -17371,7 +17400,6 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     prompt(message?: string, _default?: string): string | null;
     /** @deprecated */
     releaseEvents(): void;
-    requestAnimationFrame(callback: FrameRequestCallback): number;
     resizeBy(x: number, y: number): void;
     resizeTo(x: number, y: number): void;
     scroll(options?: ScrollToOptions): void;
@@ -17481,10 +17509,11 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
     "message": MessageEvent;
 }
 
-/** An interface of the Web Workers API represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
+/** This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    postMessage(message: any, transfer?: Transferable[]): void;
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: PostMessageOptions): void;
     terminate(): void;
     addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -17506,7 +17535,7 @@ declare var Worklet: {
     new(): Worklet;
 };
 
-/** An interface of the Streams API provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
+/** This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
 interface WritableStream<W = any> {
     readonly locked: boolean;
     abort(reason?: any): Promise<void>;
@@ -17518,12 +17547,12 @@ declare var WritableStream: {
     new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
 };
 
-/** An interface of the Streams API represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
+/** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
     error(error?: any): void;
 }
 
-/** An interface of the Streams API is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
+/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
     readonly closed: Promise<void>;
     readonly desiredSize: number | null;
@@ -18346,7 +18375,6 @@ declare var top: Window;
 declare var window: Window;
 declare function alert(message?: any): void;
 declare function blur(): void;
-declare function cancelAnimationFrame(handle: number): void;
 /** @deprecated */
 declare function captureEvents(): void;
 declare function close(): void;
@@ -18366,7 +18394,6 @@ declare function print(): void;
 declare function prompt(message?: string, _default?: string): string | null;
 /** @deprecated */
 declare function releaseEvents(): void;
-declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 declare function resizeBy(x: number, y: number): void;
 declare function resizeTo(x: number, y: number): void;
 declare function scroll(options?: ScrollToOptions): void;
@@ -18657,7 +18684,8 @@ declare var onwheel: ((this: Window, ev: WheelEvent) => any) | null;
 declare var indexedDB: IDBFactory;
 declare function atob(encodedString: string): string;
 declare function btoa(rawString: string): string;
-declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+declare function cancelAnimationFrame(handle: number): void;
+declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 declare var caches: CacheStorage;
 declare var crypto: Crypto;
 declare var indexedDB: IDBFactory;
@@ -18695,10 +18723,10 @@ declare function addEventListener<K extends keyof WindowEventMap>(type: K, liste
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-type BlobPart = BufferSource | Blob | string;
 type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
 type RequestInfo = Request | string;
+type BlobPart = BufferSource | Blob | string;
 type DOMHighResTimeStamp = number;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext;
 type HTMLOrSVGImageElement = HTMLImageElement | SVGImageElement;
@@ -18730,7 +18758,7 @@ type GLsizeiptr = number;
 type GLuint = number;
 type GLfloat = number;
 type GLclampf = number;
-type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement;
+type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas;
 type Float32List = Float32Array | GLfloat[];
 type Int32List = Int32Array | GLint[];
 type BufferSource = ArrayBufferView | ArrayBuffer;
