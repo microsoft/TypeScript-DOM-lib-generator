@@ -5,7 +5,7 @@ interface RTCIdentityProviderGlobalScope : WorkerGlobalScope {
 
 [Exposed=RTCIdentityProviderGlobalScope]
 interface RTCIdentityProviderRegistrar {
-    void register (RTCIdentityProvider idp);
+    undefined register (RTCIdentityProvider idp);
 };
 
 dictionary RTCIdentityProvider {
@@ -35,11 +35,15 @@ dictionary RTCIdentityValidationResult {
 };
 
 partial interface RTCPeerConnection {
-    void               setIdentityProvider (DOMString provider, optional RTCIdentityProviderOptions options = {});
+    undefined               setIdentityProvider (DOMString provider, optional RTCIdentityProviderOptions options = {});
     Promise<DOMString> getIdentityAssertion ();
     readonly        attribute Promise<RTCIdentityAssertion> peerIdentity;
     readonly        attribute DOMString?                    idpLoginUrl;
     readonly        attribute DOMString?                    idpErrorInfo;
+};
+
+partial dictionary RTCConfiguration {
+  DOMString peerIdentity;
 };
 
 dictionary RTCIdentityProviderOptions {
@@ -53,6 +57,29 @@ interface RTCIdentityAssertion {
     constructor(DOMString idp, DOMString name);
     attribute DOMString idp;
     attribute DOMString name;
+};
+
+partial interface RTCError {
+  readonly attribute long? httpRequestStatusCode;
+};
+
+partial dictionary RTCErrorInit {
+  long httpRequestStatusCode;
+};
+
+// This is an extension of RTCErrorDetailType from [[WEBRTC-PC]]
+// Unfortunately, WebIDL does not support partial enums (yet).
+//
+// partial enum RTCErrorDetailType {
+enum RTCErrorDetailTypeIdp {
+  "idp-bad-script-failure",
+  "idp-execution-failure",
+  "idp-load-failure",
+  "idp-need-login",
+  "idp-timeout",
+  "idp-tls-failure",
+  "idp-token-expired",
+  "idp-token-invalid",
 };
 
 partial dictionary MediaStreamConstraints {

@@ -5,11 +5,11 @@ interface History {
   readonly attribute unsigned long length;
   attribute ScrollRestoration scrollRestoration;
   readonly attribute any state;
-  void go(optional long delta = 0);
-  void back();
-  void forward();
-  void pushState(any data, DOMString title, optional USVString? url = null);
-  void replaceState(any data, DOMString title, optional USVString? url = null);
+  undefined go(optional long delta = 0);
+  undefined back();
+  undefined forward();
+  undefined pushState(any data, DOMString title, optional USVString? url = null);
+  undefined replaceState(any data, DOMString title, optional USVString? url = null);
 };
 
 [Exposed=Window]
@@ -24,9 +24,9 @@ interface Location { // but see also additional creation steps and overridden in
   [LegacyUnforgeable] attribute USVString search;
   [LegacyUnforgeable] attribute USVString hash;
 
-  [LegacyUnforgeable] void assign(USVString url);
-  [LegacyUnforgeable] void replace(USVString url);
-  [LegacyUnforgeable] void reload();
+  [LegacyUnforgeable] undefined assign(USVString url);
+  [LegacyUnforgeable] undefined replace(USVString url);
+  [LegacyUnforgeable] undefined reload();
 
   [LegacyUnforgeable, SameObject] readonly attribute DOMStringList ancestorOrigins;
 };

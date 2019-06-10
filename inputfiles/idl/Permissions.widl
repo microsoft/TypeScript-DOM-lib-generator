@@ -16,12 +16,12 @@ interface PermissionStatus : EventTarget {
 
 [Exposed=(Window)]
 partial interface Navigator {
-  readonly attribute Permissions permissions;
+  [SameObject] readonly attribute Permissions permissions;
 };
 
 [Exposed=(Worker)]
 partial interface WorkerNavigator {
-  readonly attribute Permissions permissions;
+  [SameObject] readonly attribute Permissions permissions;
 };
 
 [Exposed=(Window,Worker)]
@@ -38,6 +38,7 @@ enum PermissionName {
   "microphone",
   "speaker",
   "device-info",
+  "background-fetch",
   "background-sync",
   "bluetooth",
   "persistent-storage",
@@ -45,7 +46,10 @@ enum PermissionName {
   "accelerometer",
   "gyroscope",
   "magnetometer",
-  "clipboard",
+  "clipboard-read",
+  "clipboard-write",
+  "display-capture",
+  "nfc",
 };
 
 dictionary PushPermissionDescriptor : PermissionDescriptor {
@@ -58,4 +62,14 @@ dictionary MidiPermissionDescriptor : PermissionDescriptor {
 
 dictionary DevicePermissionDescriptor : PermissionDescriptor {
   DOMString deviceId;
+};
+
+dictionary CameraDevicePermissionDescriptor : DevicePermissionDescriptor {
+  boolean panTiltZoom = false;
+};
+
+dictionary PermissionSetParameters {
+  required PermissionDescriptor descriptor;
+  required PermissionState state;
+  boolean oneRealm = false;
 };

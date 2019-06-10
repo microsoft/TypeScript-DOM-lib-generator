@@ -310,27 +310,6 @@
                     }
                 }
             },
-            "HTMLAppletElement": {
-                "properties": {
-                    "property": {
-                        "archive": {
-                            "comment": "/**\n * Sets or retrieves a character string that can be used to implement your own archive functionality for the object.\n */"
-                        },
-                        "alt": {
-                            "comment": "/**\n * Sets or retrieves a text alternative to the graphic.\n */"
-                        },
-                        "name": {
-                            "comment": "/**\n * Sets or retrieves the shape of the object.\n */"
-                        },
-                        "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
-                        },
-                        "codeBase": {
-                            "comment": "/**\n * Sets or retrieves the URL of the component.\n */"
-                        }
-                    }
-                }
-            },
             "HTMLOListElement": {
                 "properties": {
                     "property": {

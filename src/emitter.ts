@@ -123,7 +123,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
     // Global print target
     const printer = createTextWriter("\n");
 
-    const polluter = getElements(webidl.interfaces, "interface").find(i => flavor === Flavor.Window ? !!i["primary-global"] : !!i.global);
+    const polluter = getElements(webidl.interfaces, "interface").find(i => !!i.global);
 
     const allNonCallbackInterfaces = getElements(webidl.interfaces, "interface").concat(getElements(webidl.mixins, "mixin"));
     const allInterfaces = getElements(webidl.interfaces, "interface").concat(

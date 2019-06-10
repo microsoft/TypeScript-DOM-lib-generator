@@ -1,0 +1,108 @@
+partial interface Document {
+  readonly attribute SVGSVGElement? rootElement;
+};
+
+[Exposed=Window]
+interface SVGSVGElement : SVGGraphicsElement {
+
+  [SameObject] readonly attribute SVGAnimatedLength x;
+  [SameObject] readonly attribute SVGAnimatedLength y;
+  [SameObject] readonly attribute SVGAnimatedLength width;
+  [SameObject] readonly attribute SVGAnimatedLength height;
+
+  attribute float currentScale;
+  [SameObject] readonly attribute DOMPointReadOnly currentTranslate;
+
+  NodeList getIntersectionList(DOMRectReadOnly rect, SVGElement? referenceElement);
+  NodeList getEnclosureList(DOMRectReadOnly rect, SVGElement? referenceElement);
+  boolean checkIntersection(SVGElement element, DOMRectReadOnly rect);
+  boolean checkEnclosure(SVGElement element, DOMRectReadOnly rect);
+
+  void deselectAll();
+
+  SVGNumber createSVGNumber();
+  SVGLength createSVGLength();
+  SVGAngle createSVGAngle();
+  DOMPoint createSVGPoint();
+  DOMMatrix createSVGMatrix();
+  DOMRect createSVGRect();
+  SVGTransform createSVGTransform();
+  SVGTransform createSVGTransformFromMatrix(DOMMatrixReadOnly matrix);
+
+  Element getElementById(DOMString elementId);
+
+  // Deprecated methods that have no effect when called,
+  // but which are kept for compatibility reasons.
+  unsigned long suspendRedraw(unsigned long maxWaitMilliseconds);
+  void unsuspendRedraw(unsigned long suspendHandleID);
+  void unsuspendRedrawAll();
+  void forceRedraw();
+};
+
+SVGSVGElement includes SVGFitToViewBox;
+SVGSVGElement includes SVGZoomAndPan;
+SVGSVGElement includes WindowEventHandlers;
+
+[Exposed=Window]
+interface SVGGElement : SVGGraphicsElement {
+};
+
+[Exposed=Window]
+interface SVGUnknownElement : SVGGraphicsElement {
+};
+
+[Exposed=Window]
+interface SVGDefsElement : SVGGraphicsElement {
+};
+
+[Exposed=Window]
+interface SVGDescElement : SVGElement {
+};
+
+[Exposed=Window]
+interface SVGMetadataElement : SVGElement {
+};
+
+[Exposed=Window]
+interface SVGTitleElement : SVGElement {
+};
+
+[Exposed=Window]
+interface SVGSymbolElement : SVGGraphicsElement {
+};
+
+SVGSymbolElement includes SVGFitToViewBox;
+
+[Exposed=Window]
+interface SVGUseElement : SVGGraphicsElement {
+  [SameObject] readonly attribute SVGAnimatedLength x;
+  [SameObject] readonly attribute SVGAnimatedLength y;
+  [SameObject] readonly attribute SVGAnimatedLength width;
+  [SameObject] readonly attribute SVGAnimatedLength height;
+  [SameObject] readonly attribute SVGElement? instanceRoot;
+  [SameObject] readonly attribute SVGElement? animatedInstanceRoot;
+};
+
+SVGUseElement includes SVGURIReference;
+
+[Exposed=Window]
+interface SVGUseElementShadowRoot : ShadowRoot {
+};
+
+interface mixin SVGElementInstance {
+  [SameObject] readonly attribute SVGElement? correspondingElement;
+  [SameObject] readonly attribute SVGUseElement? correspondingUseElement;
+};
+
+[Constructor(Animation source, Animatable newTarget), Exposed=Window]
+interface ShadowAnimation : Animation {
+  [SameObject] readonly attribute Animation sourceAnimation;
+};
+
+[Exposed=Window]
+interface SVGSwitchElement : SVGGraphicsElement {
+};
+
+interface mixin GetSVGDocument {
+  Document getSVGDocument();
+};

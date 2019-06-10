@@ -72,8 +72,8 @@ dictionary PublicKeyCredentialUserEntity : PublicKeyCredentialEntity {
 
 dictionary AuthenticatorSelectionCriteria {
     DOMString                    authenticatorAttachment;
-    boolean                      requireResidentKey = false;
     DOMString                    residentKey;
+    boolean                      requireResidentKey = false;
     DOMString                    userVerification = "preferred";
 };
 
@@ -109,8 +109,6 @@ dictionary AuthenticationExtensionsClientInputs {
 
 dictionary AuthenticationExtensionsClientOutputs {
 };
-
-typedef record<DOMString, DOMString> AuthenticationExtensionsAuthenticatorInputs;
 
 dictionary CollectedClientData {
     required DOMString           type;
@@ -164,6 +162,10 @@ partial dictionary AuthenticationExtensionsClientInputs {
   USVString appidExclude;
 };
 
+partial dictionary AuthenticationExtensionsClientOutputs {
+  boolean appidExclude;
+};
+
 partial dictionary AuthenticationExtensionsClientInputs {
   boolean uvm;
 };
@@ -185,4 +187,29 @@ dictionary CredentialPropertiesOutput {
 
 partial dictionary AuthenticationExtensionsClientOutputs {
     CredentialPropertiesOutput credProps;
+};
+
+partial dictionary AuthenticationExtensionsClientInputs {
+    AuthenticationExtensionsLargeBlobInputs largeBlob;
+};
+
+enum LargeBlobSupport {
+  "required",
+  "preferred",
+};
+
+dictionary AuthenticationExtensionsLargeBlobInputs {
+    DOMString support;
+    boolean read;
+    BufferSource write;
+};
+
+partial dictionary AuthenticationExtensionsClientOutputs {
+    AuthenticationExtensionsLargeBlobOutputs largeBlob;
+};
+
+dictionary AuthenticationExtensionsLargeBlobOutputs {
+    boolean supported;
+    ArrayBuffer blob;
+    boolean written;
 };

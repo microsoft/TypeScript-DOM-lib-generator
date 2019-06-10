@@ -13,6 +13,8 @@ interface HTMLAnchorElement : HTMLElement {
   [CEReactions] attribute DOMString text;
 
   [CEReactions] attribute DOMString referrerPolicy;
+
+  // also has obsolete members
 };
 HTMLAnchorElement includes HTMLHyperlinkElementUtils;
 
@@ -38,4 +40,6 @@ interface HTMLSpanElement : HTMLElement {
 [Exposed=Window]
 interface HTMLBRElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };

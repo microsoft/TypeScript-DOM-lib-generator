@@ -1,7 +1,6 @@
 {
     "callback-functions": {
         "callback-function": {
-            "ErrorEventHandler": null,
             "Function": null
         }
     },
@@ -33,21 +32,12 @@
                         "replaceChildren": null
                     }
                 }
-            },
-            "XMLHttpRequestEventTarget": null
-        }
-    },
-    "callback-interfaces": {
-        "interface": {
-            "WebKitEntriesCallback": null,
-            "WebKitErrorCallback": null,
-            "WebKitFileCallback": null
+            }
         }
     },
     "enums": {
         "enum": {
-            "ClientType": null,
-            "RequestType": null
+            "ClientType": null
         }
     },
     "interfaces": {
@@ -77,9 +67,6 @@
                 }
             },
             "ClipboardItem": null,
-            "Console": null,
-            "Coordinates": null,
-            "CSS": null,
             "CSSMarginRule": null,
             "CSSRule": {
                 "constants": {
@@ -138,10 +125,7 @@
                         "insetInlineEnd": null,
                         "insetInlineStart": null,
                         "leadingTrim": null,
-                        "leadingTrimOver": null,
-                        "leadingTrimUnder": null,
                         "lineClamp": null,
-                        "lineSizing": null,
                         "marginBlock": null,
                         "marginInline": null,
                         "maskBorder": null,
@@ -175,16 +159,13 @@
                         "strokePosition": null,
                         "strokeRepeat": null,
                         "strokeSize": null,
-                        "textAlignAll": null,
-                        "textDecorationFill": null,
-                        "textDecorationStroke": null
+                        "textAlignAll": null
                     }
                 }
             },
             "ElementInternals": null,
             "FederatedCredential": null,
             "FormDataEvent": null,
-            "HTMLAreasCollection": null,
             "HTMLMediaElement": {
                 "methods": {
                     "method": {
@@ -219,16 +200,7 @@
                     }
                 }
             },
-            "MSCredentials": null,
-            "MSDCCEvent": null,
-            "MSDSHEvent": null,
-            "MSMediaKeyMessageEvent": null,
-            "MSMediaKeyNeededEvent": null,
-            "MSPointerEvent": null,
-            "MSStreamReader": null,
             "PasswordCredential": null,
-            "Position": null,
-            "PositionError": null,
             "ServiceWorkerGlobalScope": {
                 "properties": {
                     "property": {
@@ -247,18 +219,6 @@
                 "methods": {
                     "method": {
                         "initStorageEvent": null
-                    }
-                }
-            },
-            "SVGElementInstance": {
-                "properties": {
-                    "property": {
-                        "childNodes": null,
-                        "firstChild": null,
-                        "lastChild": null,
-                        "nextSibling": null,
-                        "parentNode": null,
-                        "previousSibling": null
                     }
                 }
             },
@@ -284,7 +244,6 @@
                     }
                 }
             },
-            "SVGMatrix": null,
             "SVGMarkerElement": {
                 "properties": {
                     "property": {
@@ -292,19 +251,6 @@
                     }
                 }
             },
-            "SVGPoint": null,
-            "SVGRect": null,
-            "SVGSVGElement": {
-                "properties": {
-                    "property": {
-                        "onabort": null,
-                        "onerror": null,
-                        "onresize": null,
-                        "onscroll": null
-                    }
-                }
-            },
-            "WebAuthnAssertion": null,
             "WebGLBuffer": {
                 "extends": null
             },
@@ -340,63 +286,7 @@
             },
             "WebGLVertexArrayObjectOES": {
                 "extends": null
-            },
-            "WebKitCSSMatrix": null,
-            "WebKitDirectoryEntry": null,
-            "WebKitDirectoryReader": null,
-            "WebKitEntry": null,
-            "WebKitFileEntry": null,
-            "WebKitFileSystem": null,
-            "Window": {
-                "properties": {
-                    "property": {
-                        "browser": null,
-                        "caches": null,
-                        "crypto": null,
-                        "isSecureContext": null,
-                        "msCredentials": null,
-                        "onmsgesturechange": null,
-                        "onmsgesturedoubletap": null,
-                        "onmsgestureend": null,
-                        "onmsgesturehold": null,
-                        "onmsgesturestart": null,
-                        "onmsgesturetap": null,
-                        "onmsinertiastart": null,
-                        "onmspointercancel": null,
-                        "onmspointerdown": null,
-                        "onmspointerenter": null,
-                        "onmspointerleave": null,
-                        "onmspointermove": null,
-                        "onmspointerout": null,
-                        "onmspointerover": null,
-                        "onmspointerup": null,
-                        "ontouchcancel": null,
-                        "ontouchend": null,
-                        "ontouchmove": null,
-                        "ontouchstart": null,
-                        "performance": null
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "cancelAnimationFrame": null,
-                        "requestAnimationFrame": null
-                    }
-                },
-                "events": {
-                    "event": [
-                        "devicelight"
-                    ]
-                },
-                "implements": [
-                    "GlobalFetch",
-                    "IDBEnvironment",
-                    "WindowBase64",
-                    "WindowTimers",
-                    "WindowConsole"
-                ]
-            },
-            "XPathNSResolver": null
+            }
         }
     },
     "dictionaries": {
@@ -414,14 +304,6 @@
                     "member": {
                         "federated": null,
                         "password": null
-                    }
-                }
-            },
-            "ObjectURLOptions": null,
-            "RTCIceGatherOptions": {
-                "members": {
-                    "member": {
-                        "portRange": null
                     }
                 }
             }

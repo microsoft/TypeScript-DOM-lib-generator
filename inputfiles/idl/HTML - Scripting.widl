@@ -12,6 +12,7 @@ interface HTMLScriptElement : HTMLElement {
   [CEReactions] attribute DOMString integrity;
   [CEReactions] attribute DOMString referrerPolicy;
 
+  // also has obsolete members
 };
 
 [Exposed=Window]

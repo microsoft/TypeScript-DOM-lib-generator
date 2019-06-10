@@ -19,5 +19,7 @@ interface HTMLAreaElement : HTMLElement {
   [CEReactions] attribute DOMString rel;
   [SameObject, PutForwards=value] readonly attribute DOMTokenList relList;
   [CEReactions] attribute DOMString referrerPolicy;
+
+  // also has obsolete members
 };
 HTMLAreaElement includes HTMLHyperlinkElementUtils;

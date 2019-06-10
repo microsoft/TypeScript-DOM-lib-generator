@@ -257,6 +257,7 @@ const forceKeepAlive: Record<string, string[]> = {
     "orientation",
     "position",
   ],
+  "VRStageParameters": ["sittingToStandingTransform", "sizeX", "sizeY"],
   "VTTCue": ["lineAlign", "positionAlign", "region"],
   "WebGLVertexArrayObjectOES": [],
   "Window": [

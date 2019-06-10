@@ -2370,14 +2370,6 @@
                 "override-type": "ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas"
             },
             {
-                "new-type": "RTCIceGatherCandidate",
-                "override-type": "RTCIceCandidateDictionary | RTCIceCandidateComplete"
-            },
-            {
-                "new-type": "RTCTransport",
-                "override-type": "RTCDtlsTransport | RTCSrtpSdesTransport"
-            },
-            {
                 "new-type": "MouseWheelEvent",
                 "type": "WheelEvent",
                 "deprecated": 1

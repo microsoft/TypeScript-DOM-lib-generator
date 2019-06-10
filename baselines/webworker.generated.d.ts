@@ -180,6 +180,7 @@ interface ExtendableMessageEventInit extends ExtendableEventInit {
 
 interface FetchEventInit extends ExtendableEventInit {
     clientId?: string;
+    handled?: Promise<undefined>;
     preloadResponse?: Promise<any>;
     replacesClientId?: string;
     request: Request;
@@ -334,13 +335,6 @@ interface PermissionDescriptor {
     name: PermissionName;
 }
 
-interface PipeOptions {
-    preventAbort?: boolean;
-    preventCancel?: boolean;
-    preventClose?: boolean;
-    signal?: AbortSignal;
-}
-
 interface PostMessageOptions {
     transfer?: any[];
 }
@@ -381,14 +375,37 @@ interface QueuingStrategy<T = any> {
     size?: QueuingStrategySizeCallback<T>;
 }
 
-interface ReadableStreamReadDoneResult<T> {
-    done: true;
-    value?: T;
+interface QueuingStrategyInit {
+    /**
+     * Creates a new ByteLengthQueuingStrategy with the provided high water mark.
+     * 
+     * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
+     */
+    highWaterMark: number;
 }
 
-interface ReadableStreamReadValueResult<T> {
-    done: false;
-    value: T;
+interface ReadableStreamDefaultReadResult {
+    done?: boolean;
+    value?: any;
+}
+
+interface ReadableStreamGetReaderOptions {
+    /**
+     * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
+     * 
+     * This call behaves the same way as the no-argument variant, except that it only works on readable byte streams, i.e. streams which were constructed specifically with the ability to handle "bring your own buffer" reading. The returned BYOB reader provides the ability to directly read individual chunks from the stream via its read() method, into developer-supplied buffers, allowing more precise control over allocation.
+     */
+    mode?: ReadableStreamReaderMode;
+}
+
+interface ReadableWritablePair {
+    readable: ReadableStream;
+    /**
+     * Provides a convenient, chainable way of piping this readable stream through a transform stream (or any other { writable, readable } pair). It simply pipes the stream into the writable side of the supplied pair, and returns the readable side for further use.
+     * 
+     * Piping a stream will lock it for the duration of the pipe, preventing any other consumer from acquiring a reader.
+     */
+    writable: WritableStream;
 }
 
 interface RegistrationOptions {
@@ -485,9 +502,48 @@ interface RsaPssParams extends Algorithm {
     saltLength: number;
 }
 
+interface SecurityPolicyViolationEventInit extends EventInit {
+    blockedURI?: string;
+    columnNumber?: number;
+    disposition: SecurityPolicyViolationEventDisposition;
+    documentURI: string;
+    effectiveDirective: string;
+    lineNumber?: number;
+    originalPolicy: string;
+    referrer?: string;
+    sample?: string;
+    sourceFile?: string;
+    statusCode: number;
+    violatedDirective: string;
+}
+
 interface StorageEstimate {
     quota?: number;
     usage?: number;
+}
+
+interface StreamPipeOptions {
+    preventAbort?: boolean;
+    preventCancel?: boolean;
+    /**
+     * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
+     * 
+     * Piping a stream will lock it for the duration of the pipe, preventing any other consumer from acquiring a reader.
+     * 
+     * Errors and closures of the source and destination streams propagate as follows:
+     * 
+     * An error in this source readable stream will abort destination, unless preventAbort is truthy. The returned promise will be rejected with the source's error, or with any error that occurs during aborting the destination.
+     * 
+     * An error in destination will cancel this source readable stream, unless preventCancel is truthy. The returned promise will be rejected with the destination's error, or with any error that occurs during canceling the source.
+     * 
+     * When this source readable stream closes, destination will be closed, unless preventClose is truthy. The returned promise will be fulfilled once this process completes, unless an error is encountered while closing the destination, in which case it will be rejected with that error.
+     * 
+     * If destination starts out closed or closing, this source readable stream will be canceled, unless preventCancel is true. The returned promise will be rejected with an error indicating piping to a closed stream failed, or with any error that occurs during canceling the source.
+     * 
+     * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
+     */
+    preventClose?: boolean;
+    signal?: AbortSignal;
 }
 
 interface SyncEventInit extends ExtendableEventInit {
@@ -507,29 +563,6 @@ interface TextDecoderOptions {
 interface TextEncoderEncodeIntoResult {
     read?: number;
     written?: number;
-}
-
-interface Transformer<I = any, O = any> {
-    flush?: TransformStreamDefaultControllerCallback<O>;
-    readableType?: undefined;
-    start?: TransformStreamDefaultControllerCallback<O>;
-    transform?: TransformStreamDefaultControllerTransformCallback<I, O>;
-    writableType?: undefined;
-}
-
-interface UnderlyingSink<W = any> {
-    abort?: WritableStreamErrorCallback;
-    close?: WritableStreamDefaultControllerCloseCallback;
-    start?: WritableStreamDefaultControllerStartCallback;
-    type?: undefined;
-    write?: WritableStreamDefaultControllerWriteCallback<W>;
-}
-
-interface UnderlyingSource<R = any> {
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableStreamDefaultControllerCallback<R>;
-    start?: ReadableStreamDefaultControllerCallback<R>;
-    type?: undefined;
 }
 
 interface WebGLContextAttributes {
@@ -688,8 +721,8 @@ declare var BroadcastChannel: {
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
-    highWaterMark: number;
-    size(chunk: ArrayBufferView): number;
+    readonly highWaterMark: number;
+    readonly size: Function;
 }
 
 declare var ByteLengthQueuingStrategy: {
@@ -927,8 +960,9 @@ interface ConcatParams extends Algorithm {
 }
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
-interface CountQueuingStrategy extends QueuingStrategy {
-    highWaterMark: number;
+interface CountQueuingStrategy {
+    readonly highWaterMark: number;
+    readonly size: Function;
     size(chunk: any): 1;
 }
 
@@ -1231,7 +1265,7 @@ declare var DOMStringList: {
 };
 
 interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
-    "message": MessageEvent;
+    "message": ExtendableMessageEvent;
     "messageerror": MessageEvent;
 }
 
@@ -1241,7 +1275,7 @@ interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFramePr
      * Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.
      */
     readonly name: string;
-    onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    onmessage: ((this: DedicatedWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
     onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
     /**
      * Aborts dedicatedWorkerGlobal.
@@ -1405,13 +1439,13 @@ interface EventListenerObject {
 
 interface EventSourceEventMap {
     "error": Event;
-    "message": MessageEvent;
+    "message": ExtendableMessageEvent;
     "open": Event;
 }
 
 interface EventSource extends EventTarget {
     onerror: ((this: EventSource, ev: Event) => any) | null;
-    onmessage: ((this: EventSource, ev: MessageEvent) => any) | null;
+    onmessage: ((this: EventSource, ev: ExtendableMessageEvent) => any) | null;
     onopen: ((this: EventSource, ev: Event) => any) | null;
     /**
      * Returns the state of this EventSource object's connection. It can have the values described below.
@@ -1504,6 +1538,7 @@ declare var ExtendableMessageEvent: {
 /** This is the event type for fetch events dispatched on the service worker global scope. It contains information about the fetch, including the request and how the receiver will treat the response. It provides the event.respondWith() method, which allows us to provide a response to this fetch. */
 interface FetchEvent extends ExtendableEvent {
     readonly clientId: string;
+    readonly handled: Promise<undefined>;
     readonly preloadResponse: Promise<any>;
     readonly request: Request;
     readonly resultingClientId: string;
@@ -1610,24 +1645,7 @@ declare var FormData: {
 };
 
 interface GenericTransformStream {
-    /**
-     * Returns a readable stream whose chunks are strings resulting from running encoding's decoder on the chunks written to writable.
-     */
     readonly readable: ReadableStream;
-    /**
-     * Returns a writable stream which accepts [AllowShared] BufferSource chunks and runs them through encoding's decoder before making them available to readable.
-     * 
-     * Typically this will be used via the pipeThrough() method on a ReadableStream source.
-     * 
-     * ```
-     * var decoder = new TextDecoderStream(encoding);
-     * byteReadable
-     *   .pipeThrough(decoder)
-     *   .pipeTo(textWritable);
-     * ```
-     * 
-     * If the error mode is "fatal" and encoding's decoder returns error, both readable and writable will be errored with a TypeError.
-     */
     readonly writable: WritableStream;
 }
 
@@ -2236,13 +2254,13 @@ declare var MessageEvent: {
 };
 
 interface MessagePortEventMap {
-    "message": MessageEvent;
+    "message": ExtendableMessageEvent;
     "messageerror": MessageEvent;
 }
 
 /** This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
 interface MessagePort extends EventTarget {
-    onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
+    onmessage: ((this: MessagePort, ev: ExtendableMessageEvent) => any) | null;
     onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
     /**
      * Disconnects the port, so that it is no longer active.
@@ -2691,6 +2709,7 @@ interface ReadableStream<R = any> {
     pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
     pipeTo(dest: WritableStream<R>, options?: PipeOptions): Promise<void>;
     tee(): [ReadableStream<R>, ReadableStream<R>];
+    forEach(callbackfn: (value: any, key: number, parent: ReadableStream<R>) => void, thisArg?: any): void;
 }
 
 declare var ReadableStream: {
@@ -2702,7 +2721,7 @@ interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
     close(): void;
     enqueue(chunk: R): void;
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var ReadableStreamDefaultController: {
@@ -2710,22 +2729,23 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
-interface ReadableStreamDefaultReader<R = any> {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
+interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
 
 declare var ReadableStreamDefaultReader: {
     prototype: ReadableStreamDefaultReader;
-    new(): ReadableStreamDefaultReader;
+    new(stream: ReadableStream): ReadableStreamDefaultReader;
 };
 
+interface ReadableStreamGenericReader {
+    readonly closed: Promise<undefined>;
+    cancel(reason?: any): Promise<void>;
+}
+
 interface ReadableStreamReader<R = any> {
-    cancel(): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
-    releaseLock(): void;
 }
 
 declare var ReadableStreamReader: {
@@ -2810,7 +2830,6 @@ interface Response extends Body {
     readonly redirected: boolean;
     readonly status: number;
     readonly statusText: string;
-    readonly trailer: Promise<Headers>;
     readonly type: ResponseType;
     readonly url: string;
     clone(): Response;
@@ -2821,6 +2840,27 @@ declare var Response: {
     new(body?: BodyInit | null, init?: ResponseInit): Response;
     error(): Response;
     redirect(url: string, status?: number): Response;
+};
+
+/** Inherits from Event, and represents the event object of an event sent on a document or worker when its content security policy is violated. */
+interface SecurityPolicyViolationEvent extends Event {
+    readonly blockedURI: string;
+    readonly columnNumber: number;
+    readonly disposition: SecurityPolicyViolationEventDisposition;
+    readonly documentURI: string;
+    readonly effectiveDirective: string;
+    readonly lineNumber: number;
+    readonly originalPolicy: string;
+    readonly referrer: string;
+    readonly sample: string;
+    readonly sourceFile: string;
+    readonly statusCode: number;
+    readonly violatedDirective: string;
+}
+
+declare var SecurityPolicyViolationEvent: {
+    prototype: SecurityPolicyViolationEvent;
+    new(type: string, eventInitDict?: SecurityPolicyViolationEventInit): SecurityPolicyViolationEvent;
 };
 
 interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
@@ -2941,24 +2981,8 @@ declare var ServiceWorkerRegistration: {
     new(): ServiceWorkerRegistration;
 };
 
-interface SharedWorker extends EventTarget, AbstractWorker {
-    /**
-     * Returns sharedWorker's MessagePort object which can be used to communicate with the global environment.
-     */
-    readonly port: MessagePort;
-    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var SharedWorker: {
-    prototype: SharedWorker;
-    new(scriptURL: string, options?: string | WorkerOptions): SharedWorker;
-};
-
 interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
-    "connect": MessageEvent;
+    "connect": Event;
 }
 
 interface SharedWorkerGlobalScope extends WorkerGlobalScope {
@@ -2966,7 +2990,7 @@ interface SharedWorkerGlobalScope extends WorkerGlobalScope {
      * Returns sharedWorkerGlobal's name, i.e. the value given to the SharedWorker constructor. Multiple SharedWorker objects can correspond to the same shared worker (and SharedWorkerGlobalScope), by reusing the same name.
      */
     readonly name: string;
-    onconnect: ((this: SharedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    onconnect: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
     /**
      * Aborts sharedWorkerGlobal.
      */
@@ -3044,14 +3068,14 @@ declare var SyncManager: {
 /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextDecoder extends TextDecoderCommon {
     /**
-     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented stream. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
+     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
      * 
      * ```
      * var string = "", decoder = new TextDecoder(encoding), buffer;
      * while(buffer = next_chunk()) {
      *   string += decoder.decode(buffer, {stream:true});
      * }
-     * string += decoder.decode(); // end-of-stream
+     * string += decoder.decode(); // end-of-queue
      * ```
      * 
      * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
@@ -3070,11 +3094,11 @@ interface TextDecoderCommon {
      */
     readonly encoding: string;
     /**
-     * Returns true if error mode is "fatal", and false otherwise.
+     * Returns true if error mode is "fatal", otherwise false.
      */
     readonly fatal: boolean;
     /**
-     * Returns true if ignore BOM flag is set, and false otherwise.
+     * Returns the value of ignore BOM.
      */
     readonly ignoreBOM: boolean;
 }
@@ -3096,7 +3120,7 @@ interface TextEncoder extends TextEncoderCommon {
      */
     encode(input?: string): Uint8Array;
     /**
-     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as a dictionary whereby read is the number of converted code units of source and written is the number of bytes modified in destination.
+     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      */
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
@@ -5227,7 +5251,7 @@ interface WebGLVertexArrayObjectOES {
 interface WebSocketEventMap {
     "close": CloseEvent;
     "error": Event;
-    "message": MessageEvent;
+    "message": ExtendableMessageEvent;
     "open": Event;
 }
 
@@ -5251,7 +5275,7 @@ interface WebSocket extends EventTarget {
     readonly extensions: string;
     onclose: ((this: WebSocket, ev: CloseEvent) => any) | null;
     onerror: ((this: WebSocket, ev: Event) => any) | null;
-    onmessage: ((this: WebSocket, ev: MessageEvent) => any) | null;
+    onmessage: ((this: WebSocket, ev: ExtendableMessageEvent) => any) | null;
     onopen: ((this: WebSocket, ev: Event) => any) | null;
     /**
      * Returns the subprotocol selected by the server, if any. It can be used in conjunction with the array form of the constructor's second argument to perform subprotocol negotiation.
@@ -5325,13 +5349,13 @@ interface WindowOrWorkerGlobalScope {
 }
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
-    "message": MessageEvent;
+    "message": ExtendableMessageEvent;
     "messageerror": MessageEvent;
 }
 
 /** This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
 interface Worker extends EventTarget, AbstractWorker {
-    onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
+    onmessage: ((this: Worker, ev: ExtendableMessageEvent) => any) | null;
     onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
     /**
      * Clones message and transmits it to worker's global environment. transfer can be passed as a list of objects that are to be transferred rather than cloned.
@@ -5368,6 +5392,9 @@ interface WorkerGlobalScope extends EventTarget, WindowOrWorkerGlobalScope {
      * Returns workerGlobal's WorkerLocation object.
      */
     readonly location: WorkerLocation;
+    /**
+     * Returns workerGlobal's WorkerNavigator object.
+     */
     readonly navigator: WorkerNavigator;
     onerror: ((this: WorkerGlobalScope, ev: ErrorEvent) => any) | null;
     onlanguagechange: ((this: WorkerGlobalScope, ev: Event) => any) | null;
@@ -5427,6 +5454,7 @@ declare var WorkerNavigator: {
 interface WritableStream<W = any> {
     readonly locked: boolean;
     abort(reason?: any): Promise<void>;
+    close(): Promise<void>;
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
@@ -5437,7 +5465,7 @@ declare var WritableStream: {
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var WritableStreamDefaultController: {
@@ -5447,9 +5475,9 @@ declare var WritableStreamDefaultController: {
 
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
-    readonly closed: Promise<void>;
+    readonly closed: Promise<undefined>;
     readonly desiredSize: number | null;
-    readonly ready: Promise<void>;
+    readonly ready: Promise<undefined>;
     abort(reason?: any): Promise<void>;
     close(): Promise<void>;
     releaseLock(): void;
@@ -5458,7 +5486,7 @@ interface WritableStreamDefaultWriter<W = any> {
 
 declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
-    new(): WritableStreamDefaultWriter;
+    new(stream: WritableStream): WritableStreamDefaultWriter;
 };
 
 interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
@@ -5473,11 +5501,11 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     readonly readyState: number;
     /**
-     * Returns the response's body.
+     * Returns the response body.
      */
     readonly response: any;
     /**
-     * Returns the text response.
+     * Returns response as text.
      * 
      * Throws an "InvalidStateError" DOMException if responseType is not the empty string or "text".
      */
@@ -5498,7 +5526,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     readonly status: number;
     readonly statusText: string;
     /**
-     * Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and the synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
+     * Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and this's synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
      * 
      * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
      */
@@ -5522,7 +5550,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     /**
      * Sets the request method, request URL, and synchronous flag.
      * 
-     * Throws a "SyntaxError" DOMException if either method is not a valid HTTP method or url cannot be parsed.
+     * Throws a "SyntaxError" DOMException if either method is not a valid method or url cannot be parsed.
      * 
      * Throws a "SecurityError" DOMException if method is a case-insensitive match for `CONNECT`, `TRACE`, or `TRACK`.
      * 
@@ -5531,7 +5559,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     open(method: string, url: string): void;
     open(method: string, url: string, async: boolean, username?: string | null, password?: string | null): void;
     /**
-     * Acts as if the `Content-Type` header value for response is mime. (It does not actually change the header though.)
+     * Acts as if the `Content-Type` header value for a response is mime. (It does not change the header.)
      * 
      * Throws an "InvalidStateError" DOMException if state is loading or done.
      */
@@ -5541,7 +5569,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      * 
      * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
      */
-    send(body?: BodyInit | null): void;
+    send(body?: XMLHttpRequestBodyInit | null): void;
     /**
      * Combines a header in author request headers.
      * 
@@ -5751,54 +5779,22 @@ interface OnErrorEventHandlerNonNull {
 }
 
 interface PerformanceObserverCallback {
-    (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
+    (entries: PerformanceObserverEntryList, observer: PerformanceObserver, hasDroppedEntry?: boolean): void;
 }
 
-interface QueuingStrategySizeCallback<T = any> {
-    (chunk: T): number;
-}
-
-interface ReadableStreamDefaultControllerCallback<R> {
-    (controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>;
-}
-
-interface ReadableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
-}
-
-interface TransformStreamDefaultControllerCallback<O> {
-    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
-}
-
-interface TransformStreamDefaultControllerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+interface QueuingStrategySize {
+    (chunk?: any): number;
 }
 
 interface VoidFunction {
     (): void;
 }
 
-interface WritableStreamDefaultControllerCloseCallback {
-    (): void | PromiseLike<void>;
-}
-
-interface WritableStreamDefaultControllerStartCallback {
-    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
-}
-
-interface WritableStreamDefaultControllerWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
-}
-
-interface WritableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
-}
-
 /**
  * Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.
  */
 declare var name: string;
-declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
 declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
 /**
  * Aborts dedicatedWorkerGlobal.
@@ -5817,6 +5813,9 @@ declare function dispatchEvent(event: Event): boolean;
  * Returns workerGlobal's WorkerLocation object.
  */
 declare var location: WorkerLocation;
+/**
+ * Returns workerGlobal's WorkerNavigator object.
+ */
 declare var navigator: WorkerNavigator;
 declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
 declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
@@ -5859,6 +5858,7 @@ declare function addEventListener(type: string, listener: EventListenerOrEventLi
 declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type HeadersInit = Headers | string[][] | Record<string, string>;
+type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
 type RequestInfo = Request | string;
 type BlobPart = BufferSource | Blob | string;
@@ -5871,7 +5871,6 @@ type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type TimerHandler = string | Function;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
-type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type VibratePattern = number | number[];
 type AlgorithmIdentifier = string | Algorithm;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
@@ -5920,19 +5919,21 @@ type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "u
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2";
-type PermissionName = "accelerometer" | "ambient-light-sensor" | "background-sync" | "bluetooth" | "camera" | "clipboard" | "device-info" | "geolocation" | "gyroscope" | "magnetometer" | "microphone" | "midi" | "notifications" | "persistent-storage" | "push" | "speaker";
+type PermissionName = "accelerometer" | "ambient-light-sensor" | "background-fetch" | "background-sync" | "bluetooth" | "camera" | "clipboard-read" | "clipboard-write" | "device-info" | "display-capture" | "geolocation" | "gyroscope" | "magnetometer" | "microphone" | "midi" | "nfc" | "notifications" | "persistent-storage" | "push" | "speaker";
 type PermissionState = "denied" | "granted" | "prompt";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
 type PushPermissionState = "denied" | "granted" | "prompt";
+type ReadableStreamReaderMode = "byob";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
-type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
+type SecurityPolicyViolationEventDisposition = "enforce" | "report";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type VisibilityState = "hidden" | "visible";

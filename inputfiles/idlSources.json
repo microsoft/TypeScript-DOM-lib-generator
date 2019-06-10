@@ -17,6 +17,10 @@
         "title": "Console"
     },
     {
+        "url": "https://www.w3.org/TR/CSP3/",
+        "title": "Content Security Policy"
+    },
+    {
         "url": "https://www.w3.org/TR/credential-management-1/",
         "title": "Credential Management"
     },
@@ -355,12 +359,20 @@
         "title": "HTML - The input element"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/window-object.html",
+        "title": "HTML - The Window object"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/iframe-embed-object.html",
         "title": "HTML - The iframe, embed, and object elements"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/webappapis.html",
         "title": "HTML - Web application APIs"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/web-messaging.html",
+        "title": "HTML - Web messaging"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/web-sockets.html",
@@ -375,8 +387,16 @@
         "title": "HTML - Web workers"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/worklets.html",
+        "title": "HTML - Worklets"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/interaction.html",
         "title": "HTML - User interaction"
+    },
+    {
+        "url": "https://www.w3.org/TR/webrtc-stats/",
+        "title": "Identifiers for WebRTC's Statistics API"
     },
     {
         "url": "https://w3c.github.io/webrtc-identity/",
@@ -413,6 +433,10 @@
     {
         "url": "https://w3c.github.io/page-visibility/",
         "title": "Page Visibility"
+    },
+    {
+        "url": "https://www.w3.org/TR/payment-request/",
+        "title": "Payment Request"
     },
     {
         "url": "https://w3c.github.io/performance-timeline/",
@@ -479,15 +503,43 @@
         "title": "SVG - Basic Shapes"
     },
     {
+        "url": "https://svgwg.org/svg2-draft/coords.html",
+        "title": "SVG - Coordinate Systems, Transformations and Units"
+    },
+    {
+        "url": "https://www.w3.org/TR/SVG2/struct.html",
+        "title": "SVG - Document Structure"
+    },
+    {
+        "url": "https://svgwg.org/svg2-draft/embedded.html",
+        "title": "SVG - Embedded Content"
+    },
+    {
+        "url": "https://svgwg.org/svg2-draft/linking.html",
+        "title": "SVG - Linking"
+    },
+    {
         "url": "https://www.w3.org/TR/SVG2/painting.html",
         "title": "SVG - Painting"
     },
     {
-        "url": "https://www.w3.org/TR/SVG2/pservers.html",
+        "url": "https://svgwg.org/svg2-draft/pservers.html",
         "title": "SVG - Paint Servers"
     },
     {
-        "url": "https://www.w3.org/TR/SVG2/text.html",
+        "url": "https://svgwg.org/svg2-draft/paths.html",
+        "title": "SVG - Paths"
+    },
+    {
+        "url": "https://svgwg.org/svg2-draft/interact.html",
+        "title": "SVG - Scripting and Interactivity"
+    },
+    {
+        "url": "https://svgwg.org/svg2-draft/styling.html",
+        "title": "SVG - Styling"
+    },
+    {
+        "url": "https://svgwg.org/svg2-draft/text.html",
         "title": "SVG - Text"
     },
     {
@@ -663,19 +715,20 @@
         "title": "Web VisualViewport API"
     },
     {
-        "url": "https://www.w3.org/TR/webvtt1/",
-        "title": "WebVTT"
+        "url": "https://immersive-web.github.io/webvr/spec/1.1/",
+        "title": "WebVR",
+        "deprecated": true
     },
     {
-        "url": "https://drafts.css-houdini.org/worklets/",
-        "title": "Worklets"
+        "url": "https://www.w3.org/TR/webvtt1/",
+        "title": "WebVTT"
     },
     {
         "url": "https://xhr.spec.whatwg.org/",
         "title": "XMLHttpRequest"
     },
     {
-        "url": "https://html.spec.whatwg.org/multipage/web-messaging.html",
-        "title": "Web Messaging"
+        "url": "https://wiki.whatwg.org/wiki/DOM_XSLTProcessor",
+        "title": "XSLTProcessor"
     }
 ]

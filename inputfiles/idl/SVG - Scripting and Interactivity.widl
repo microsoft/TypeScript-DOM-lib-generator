@@ -1,0 +1,11 @@
+[Exposed=Window]
+interface SVGScriptElement : SVGElement {
+  attribute DOMString type;
+  attribute DOMString? crossOrigin;
+};
+
+SVGScriptElement includes SVGURIReference;
+
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString pointerEvents;
+};

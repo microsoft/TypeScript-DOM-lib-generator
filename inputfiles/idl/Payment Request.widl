@@ -8,7 +8,7 @@ interface PaymentRequest : EventTarget {
   [NewObject]
   Promise<PaymentResponse> show(optional Promise<PaymentDetailsUpdate> detailsPromise);
   [NewObject]
-  Promise<undefined> abort();
+  Promise<void> abort();
   [NewObject]
   Promise<boolean> canMakePayment();
 
@@ -17,6 +17,7 @@ interface PaymentRequest : EventTarget {
   readonly attribute DOMString? shippingOption;
   readonly attribute PaymentShippingType? shippingType;
 
+  attribute EventHandler onmerchantvalidation;
   attribute EventHandler onshippingaddresschange;
   attribute EventHandler onshippingoptionchange;
   attribute EventHandler onpaymentmethodchange;
@@ -95,16 +96,16 @@ interface PaymentAddress {
 };
 
 dictionary AddressInit {
-  DOMString country = "";
-  sequence<DOMString> addressLine = [];
-  DOMString region = "";
-  DOMString city = "";
-  DOMString dependentLocality = "";
-  DOMString postalCode = "";
-  DOMString sortingCode = "";
-  DOMString organization = "";
-  DOMString recipient = "";
-  DOMString phone = "";
+  DOMString country;
+  sequence<DOMString> addressLine;
+  DOMString region;
+  DOMString city;
+  DOMString dependentLocality;
+  DOMString postalCode;
+  DOMString sortingCode;
+  DOMString organization;
+  DOMString recipient;
+  DOMString phone;
 };
 
 dictionary AddressErrors {
@@ -147,9 +148,9 @@ interface PaymentResponse : EventTarget  {
   readonly attribute DOMString? payerPhone;
 
   [NewObject]
-  Promise<undefined> complete(optional PaymentComplete result = "unknown");
+  Promise<void> complete(optional PaymentComplete result = "unknown");
   [NewObject]
-  Promise<undefined> retry(optional PaymentValidationErrors errorFields = {});
+  Promise<void> retry(optional PaymentValidationErrors errorFields = {});
 
   attribute EventHandler onpayerdetailchange;
 };
@@ -168,6 +169,19 @@ dictionary PayerErrors {
 };
 
 [SecureContext, Exposed=Window]
+interface MerchantValidationEvent : Event {
+  constructor(DOMString type, optional MerchantValidationEventInit eventInitDict = {});
+  readonly attribute DOMString methodName;
+  readonly attribute USVString validationURL;
+  void complete(Promise<any> merchantSessionPromise);
+};
+
+dictionary MerchantValidationEventInit : EventInit {
+  DOMString methodName = "";
+  USVString validationURL = "";
+};
+
+[SecureContext, Exposed=Window]
 interface PaymentMethodChangeEvent : PaymentRequestUpdateEvent {
   constructor(DOMString type, optional PaymentMethodChangeEventInit eventInitDict = {});
   readonly attribute DOMString methodName;
@@ -182,7 +196,7 @@ dictionary PaymentMethodChangeEventInit : PaymentRequestUpdateEventInit {
 [SecureContext, Exposed=Window]
 interface PaymentRequestUpdateEvent : Event {
   constructor(DOMString type, optional PaymentRequestUpdateEventInit eventInitDict = {});
-  undefined updateWith(Promise<PaymentDetailsUpdate> detailsPromise);
+  void updateWith(Promise<PaymentDetailsUpdate> detailsPromise);
 };
 
 dictionary PaymentRequestUpdateEventInit : EventInit {};

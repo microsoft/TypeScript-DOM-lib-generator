@@ -30,10 +30,6 @@ interface CanvasPathDrawingStyles {
     setLineDash(segments: Iterable<number>): void;
 }
 
-interface ClientRectList {
-    [Symbol.iterator](): IterableIterator<ClientRect>;
-}
-
 interface DOMRectList {
     [Symbol.iterator](): IterableIterator<DOMRect>;
 }
@@ -195,6 +191,13 @@ interface RTCRtpTransceiver {
 interface RTCStatsReport extends ReadonlyMap<string, any> {
 }
 
+interface ReadableStream<R = any> {
+    [Symbol.iterator](): IterableIterator<any>;
+    entries(): IterableIterator<[number, any]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<any>;
+}
+
 interface SVGLengthList {
     [Symbol.iterator](): IterableIterator<SVGLength>;
 }
@@ -209,6 +212,10 @@ interface SVGPointList {
 
 interface SVGStringList {
     [Symbol.iterator](): IterableIterator<string>;
+}
+
+interface SVGTransformList {
+    [Symbol.iterator](): IterableIterator<SVGTransform>;
 }
 
 interface SourceBufferList {
@@ -260,7 +267,8 @@ interface URLSearchParams {
 }
 
 interface VRDisplay {
-    requestPresent(layers: Iterable<VRLayer>): Promise<void>;
+    /** @deprecated */
+    requestPresent(layers: Iterable<VRLayerInit>): Promise<void>;
 }
 
 interface WEBGL_draw_buffers {

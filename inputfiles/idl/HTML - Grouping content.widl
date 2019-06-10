@@ -1,16 +1,22 @@
 [Exposed=Window]
 interface HTMLParagraphElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
 interface HTMLHRElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
 interface HTMLPreElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -27,16 +33,22 @@ interface HTMLOListElement : HTMLElement {
   [CEReactions] attribute boolean reversed;
   [CEReactions] attribute long start;
   [CEReactions] attribute DOMString type;
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
 interface HTMLUListElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
 interface HTMLMenuElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -44,14 +56,20 @@ interface HTMLLIElement : HTMLElement {
   [HTMLConstructor] constructor();
 
   [CEReactions] attribute long value;
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
 interface HTMLDListElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
 interface HTMLDivElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };

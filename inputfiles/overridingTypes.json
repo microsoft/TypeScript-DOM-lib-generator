@@ -587,10 +587,6 @@
                             "name": "anchors",
                             "override-type": "HTMLCollectionOf<HTMLAnchorElement>"
                         },
-                        "applets": {
-                            "name": "applets",
-                            "override-type": "HTMLCollectionOf<HTMLAppletElement>"
-                        },
                         "embeds": {
                             "name": "embeds",
                             "override-type": "HTMLCollectionOf<HTMLEmbedElement>"
@@ -634,7 +630,8 @@
                             "type": "Event"
                         }
                     ]
-                }
+                },
+                "legacy-window-alias": ["HTMLDocument"]
             },
             "Node": {
                 "name": "Node",
@@ -1315,18 +1312,6 @@
                                 "hasFeature(...args: any[]): true"
                             ],
                             "deprecated": 1
-                        }
-                    }
-                }
-            },
-            "HTMLAppletElement": {
-                "name": "HTMLAppletElement",
-                "properties": {
-                    "property": {
-                        "form": {
-                            "name": "form",
-                            "read-only": 1,
-                            "override-type": "HTMLFormElement | null"
                         }
                     }
                 }
@@ -2237,6 +2222,7 @@
                 }
             },
             "ReadableStreamReader": {
+                "name": "ReadableStreamReader",
                 "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
@@ -2407,23 +2393,12 @@
                 }
             },
             "Navigator": {
-                "implements": [
-                    "MSFileSaver",
-                    "MSNavigatorDoNotTrack",
-                    "NavigatorBeacon"
-                ],
                 "methods": {
                     "method": {
                         "getVRDisplays": {
                             "name": "getVRDisplays",
                             "override-signatures": [
                                 "getVRDisplays(): Promise<VRDisplay[]>"
-                            ]
-                        },
-                        "msLaunchUri": {
-                            "name": "msLaunchUri",
-                            "override-signatures": [
-                                "msLaunchUri(uri: string, successCallback?: MSLaunchUriCallback, noHandlerCallback?: MSLaunchUriCallback): void"
                             ]
                         }
                     }
@@ -2433,21 +2408,6 @@
                         "activeVRDisplays": {
                             "name": "activeVRDisplays",
                             "override-type": "ReadonlyArray<VRDisplay>",
-                            "read-only": 1
-                        },
-                        "msManipulationViewsEnabled": {
-                            "name": "msManipulationViewsEnabled",
-                            "override-type": "boolean",
-                            "read-only": 1
-                        },
-                        "msMaxTouchPoints": {
-                            "name": "msMaxTouchPoints",
-                            "override-type": "number",
-                            "read-only": 1
-                        },
-                        "msPointerEnabled": {
-                            "name": "msPointerEnabled",
-                            "override-type": "boolean",
                             "read-only": 1
                         }
                     }

@@ -1,0 +1,7 @@
+[Exposed=Window]
+interface SVGPathElement : SVGGeometryElement {
+};
+
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString d;
+};

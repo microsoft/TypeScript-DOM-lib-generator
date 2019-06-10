@@ -14,7 +14,7 @@
     "document-getelementsbyname": "Returns a NodeList of elements in the Document that have a name attribute with the value name.",
     "document-currentscript": "Returns the script element, or the SVG script element, that is currently executing, as long as the element represents a classic script. In the case of reentrant script execution, returns the one that most recently started executing amongst those that have not yet finished executing.\n\nReturns null if the Document is not currently executing a script or SVG script element (e.g., because the running script is an event handler, or a timeout), or if the currently executing script or SVG script element represents a module script.",
     "dir": "Returns the html element's dir attribute's value, if any.\n\nCan be set, to either \"ltr\", \"rtl\", or \"auto\" to replace the html element's dir attribute's value.\n\nIf there is no html element, returns the empty string and ignores new values.",
-    "style": "Returns a CSSStyleDeclaration object for the element's style attribute.",
+    "elementcssinlinestyle-style": "Returns a CSSStyleDeclaration object for the element's style attribute.",
     "dataset": "Returns a DOMStringMap object for the element's data-* attributes.\n\nHyphenated names become camel-cased. For example, data-foo-bar=\"\" becomes element.dataset.fooBar.",
     "innertext": "Returns the element's text content \"as rendered\".\n\nCan be set, to replace the element's children with the given value, but with line breaks converted to br elements."
 }

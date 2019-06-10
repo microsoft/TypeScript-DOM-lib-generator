@@ -1,0 +1,8 @@
+[Exposed=Window]
+interface SVGStyleElement : SVGElement {
+  attribute DOMString type;
+  attribute DOMString media;
+  attribute DOMString title;
+};
+
+SVGStyleElement includes LinkStyle;

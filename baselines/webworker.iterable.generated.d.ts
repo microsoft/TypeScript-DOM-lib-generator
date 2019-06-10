@@ -66,6 +66,13 @@ interface IDBObjectStore {
     createIndex(name: string, keyPath: string | Iterable<string>, options?: IDBIndexParameters): IDBIndex;
 }
 
+interface ReadableStream<R = any> {
+    [Symbol.iterator](): IterableIterator<any>;
+    entries(): IterableIterator<[number, any]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<any>;
+}
+
 interface URLSearchParams {
     [Symbol.iterator](): IterableIterator<[string, string]>;
     /**

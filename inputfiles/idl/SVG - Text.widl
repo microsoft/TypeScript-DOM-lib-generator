@@ -16,7 +16,7 @@ interface SVGTextContentElement : SVGGraphicsElement {
   DOMPoint getEndPositionOfChar(unsigned long charnum);
   DOMRect getExtentOfChar(unsigned long charnum);
   float getRotationOfChar(unsigned long charnum);
-  long getCharNumAtPosition(optional DOMPointInit point);
+  long getCharNumAtPosition(optional DOMPointInit point = {});
   void selectSubString(unsigned long charnum, unsigned long nchars);
 };
 
@@ -63,6 +63,4 @@ partial interface CSSStyleDeclaration {
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString shapeSubtract;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString shapeMargin;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textAnchor;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textDecorationFill;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textDecorationStroke;
 };

@@ -1,0 +1,19 @@
+{
+    "window": "These attributes all return window.",
+    "frames": "These attributes all return window.",
+    "self": "These attributes all return window.",
+    "document-2": "Returns the Document associated with window.",
+    "document-defaultview": "Returns the Window object of the active document.",
+    "open": "Opens a window to show url (defaults to about:blank), and returns it. The target argument gives the name of the new window. If a window exists with that name already, it is reused. The features argument can be used to influence the rendering of the new window.",
+    "name": "Returns the name of the window.\n\nCan be set, to change the name.",
+    "window-close": "Closes the window.",
+    "window-closed": "Returns true if the window has been closed, false otherwise.",
+    "window-stop": "Cancels the document load.",
+    "length": "Returns the number of document-tree child browsing contexts.",
+    "window-locationbar": "Returns true if the location bar is visible; otherwise, returns false.",
+    "window-menubar": "Returns true if the menu bar is visible; otherwise, returns false.",
+    "window-personalbar": "Returns true if the personal bar is visible; otherwise, returns false.",
+    "window-scrollbars": "Returns true if the scrollbars are visible; otherwise, returns false.",
+    "window-statusbar": "Returns true if the status bar is visible; otherwise, returns false.",
+    "window-toolbar": "Returns true if the toolbar is visible; otherwise, returns false."
+}
