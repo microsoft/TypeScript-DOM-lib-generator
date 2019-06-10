@@ -151,6 +151,7 @@ export interface TypeParameter {
 
 export interface Interface {
     name: string;
+    mixin?: boolean;
     generic?: string;
     extends: string;
     comment?: string;

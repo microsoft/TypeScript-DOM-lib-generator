@@ -91,6 +91,7 @@ function convertInterface(i: webidl2.InterfaceType, commentMap: Record<string, s
 
 function convertInterfaceMixin(i: webidl2.InterfaceMixinType, commentMap: Record<string, string>) {
     const result = convertInterfaceCommon(i, commentMap);
+    result.mixin = true;
     result['no-interface-object'] = 1;
     return result;
 }

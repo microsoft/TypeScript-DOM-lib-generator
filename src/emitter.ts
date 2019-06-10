@@ -249,11 +249,17 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function getEventTypeInInterface(eName: string, i: Browser.Interface) {
+        function getGenericEventType(baseName: string) {
+            if (baseName === "ProgressEvent" && !i.mixin) {
+                return `${baseName}<${i.name}>`;
+            }
+            return baseName;
+        }
+
         if (i.events) {
             const event = i.events.event.find(e => e.name === eName);
             if (event && event.type) {
-                const generic = event.generic ? `<${event.generic}>` : "";
-                return event.type + generic;
+                return getGenericEventType(event.type);
             }
         }
         if (i["attributeless-events"]) {
@@ -262,7 +268,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
                 return event.type;
             }
         }
-        return eNameToEType[eName] || "Event";
+        return getGenericEventType(eNameToEType[eName]) || "Event";
     }
 
     /// Determine if interface1 depends on interface2

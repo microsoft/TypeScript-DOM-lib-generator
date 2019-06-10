@@ -1953,7 +1953,7 @@ interface ApplicationCacheEventMap {
     "error": Event;
     "noupdate": Event;
     "obsolete": Event;
-    "progress": ProgressEvent;
+    "progress": ProgressEvent<ApplicationCache>;
     "updateready": Event;
 }
 
@@ -1971,7 +1971,7 @@ interface ApplicationCache extends EventTarget {
     /** @deprecated */
     onobsolete: ((this: ApplicationCache, ev: Event) => any) | null;
     /** @deprecated */
-    onprogress: ((this: ApplicationCache, ev: ProgressEvent) => any) | null;
+    onprogress: ((this: ApplicationCache, ev: ProgressEvent<ApplicationCache>) => any) | null;
     /** @deprecated */
     onupdateready: ((this: ApplicationCache, ev: Event) => any) | null;
     /** @deprecated */
@@ -4286,7 +4286,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap, DocumentAndEleme
     "fullscreenerror": Event;
     "pointerlockchange": Event;
     "pointerlockerror": Event;
-    "readystatechange": ProgressEvent;
+    "readystatechange": ProgressEvent<Document>;
     "visibilitychange": Event;
 }
 
@@ -4445,7 +4445,7 @@ interface Document extends Node, NonElementParentNode, DocumentOrShadowRoot, Par
      * Fires when the state of the object has changed.
      * @param ev The event
      */
-    onreadystatechange: ((this: Document, ev: ProgressEvent) => any) | null;
+    onreadystatechange: ((this: Document, ev: ProgressEvent<Document>) => any) | null;
     onvisibilitychange: ((this: Document, ev: Event) => any) | null;
     /**
      * Returns document's origin.
@@ -17241,9 +17241,9 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
     "play": Event;
     "playing": Event;
     "popstate": PopStateEvent;
-    "progress": ProgressEvent;
+    "progress": ProgressEvent<Window>;
     "ratechange": Event;
-    "readystatechange": ProgressEvent;
+    "readystatechange": ProgressEvent<Window>;
     "reset": Event;
     "resize": UIEvent;
     "scroll": Event;
@@ -17327,7 +17327,7 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     onmspointerup: ((this: Window, ev: Event) => any) | null;
     /** @deprecated */
     onorientationchange: ((this: Window, ev: Event) => any) | null;
-    onreadystatechange: ((this: Window, ev: ProgressEvent) => any) | null;
+    onreadystatechange: ((this: Window, ev: ProgressEvent<Window>) => any) | null;
     onvrdisplayactivate: ((this: Window, ev: Event) => any) | null;
     onvrdisplayblur: ((this: Window, ev: Event) => any) | null;
     onvrdisplayconnect: ((this: Window, ev: Event) => any) | null;
@@ -17679,13 +17679,13 @@ declare var XMLHttpRequest: {
 };
 
 interface XMLHttpRequestEventTargetEventMap {
-    "abort": ProgressEvent;
-    "error": ProgressEvent;
-    "load": ProgressEvent;
-    "loadend": ProgressEvent;
-    "loadstart": ProgressEvent;
-    "progress": ProgressEvent;
-    "timeout": ProgressEvent;
+    "abort": ProgressEvent<XMLHttpRequestEventTarget>;
+    "error": ProgressEvent<XMLHttpRequestEventTarget>;
+    "load": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadend": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadstart": ProgressEvent<XMLHttpRequestEventTarget>;
+    "progress": ProgressEvent<XMLHttpRequestEventTarget>;
+    "timeout": ProgressEvent<XMLHttpRequestEventTarget>;
 }
 
 interface XMLHttpRequestEventTarget extends EventTarget {
@@ -18323,7 +18323,7 @@ declare var onmspointerover: ((this: Window, ev: Event) => any) | null;
 declare var onmspointerup: ((this: Window, ev: Event) => any) | null;
 /** @deprecated */
 declare var onorientationchange: ((this: Window, ev: Event) => any) | null;
-declare var onreadystatechange: ((this: Window, ev: ProgressEvent) => any) | null;
+declare var onreadystatechange: ((this: Window, ev: ProgressEvent<Window>) => any) | null;
 declare var onvrdisplayactivate: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplayblur: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplayconnect: ((this: Window, ev: Event) => any) | null;
