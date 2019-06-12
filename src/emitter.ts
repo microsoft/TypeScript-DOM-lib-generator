@@ -265,7 +265,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         if (i["attributeless-events"]) {
             const event = i["attributeless-events"].event.find(e => e.name === eName);
             if (event && event.type) {
-                return event.type;
+                return getGenericEventType(event.type);
             }
         }
         return getGenericEventType(eNameToEType[eName]) || "Event";
