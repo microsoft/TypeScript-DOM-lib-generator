@@ -601,7 +601,12 @@
             },
             "NodeListOf": {
                 "name": "NodeListOf",
-                "generic": "TNode extends Node",
+                "type-parameters": [
+                    {
+                        "name": "TNode",
+                        "extends": "Node"
+                    }
+                ],
                 "exposed": "Window",
                 "extends": "NodeList",
                 "properties": {
@@ -637,7 +642,12 @@
             },
             "HTMLCollectionOf": {
                 "name": "HTMLCollectionOf",
-                "generic": "T extends Element",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "extends": "Element"
+                    }
+                ],
                 "exposed": "Window",
                 "extends": "HTMLCollection",
                 "methods": {
@@ -2178,7 +2188,13 @@
                 }
             },
             "ProgressEvent": {
-                "generic": "T extends EventTarget = EventTarget",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "extends": "EventTarget",
+                        "default": "EventTarget"
+                    }
+                ],
                 "properties": {
                     "property": {
                         "target": {

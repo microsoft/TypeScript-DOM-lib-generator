@@ -66,7 +66,6 @@ export interface Property extends Typed {
 export interface Event {
     name: string;
     type: string;
-    generic?: string;
     dispatch?: string;
     "skips-window"?: string;
     bubbles?: 1;
@@ -152,7 +151,6 @@ export interface TypeParameter {
 export interface Interface {
     name: string;
     mixin?: boolean;
-    generic?: string;
     extends: string;
     comment?: string;
     constants?: {
