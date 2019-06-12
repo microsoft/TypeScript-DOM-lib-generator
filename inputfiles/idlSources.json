@@ -25,6 +25,10 @@
         "title": "CSS Box Alignment"
     },
     {
+        "url": "https://www.w3.org/TR/css-flexbox-1/",
+        "title": "CSS Flexible Box Layout"
+    },
+    {
         "url": "https://www.w3.org/TR/css-fonts-3/",
         "title": "CSS Fonts"
     },
