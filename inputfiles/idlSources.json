@@ -17,6 +17,14 @@
         "title": "CSS Animations"
     },
     {
+        "url": "https://www.w3.org/TR/css-backgrounds-3/",
+        "title": "CSS Backgrounds and Borders"
+    },
+    {
+        "url": "https://drafts.csswg.org/css-backgrounds-4/",
+        "title": "CSS Backgrounds and Borders Level 4"
+    },
+    {
         "url": "https://www.w3.org/TR/css-ui-3/",
         "title": "CSS Basic User Interface"
     },

@@ -61,6 +61,16 @@
             "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
+                        "backgroundPositionBlock": null,
+                        "backgroundPositionInline": null,
+                        "borderClip": null,
+                        "borderClipBottom": null,
+                        "borderClipLeft": null,
+                        "borderClipRight": null,
+                        "borderClipTop": null,
+                        "borderLimit": null,
+                        "cornerShape": null,
+                        "corners": null,
                         "hangingPunctuation": null,
                         "textAlignAll": null
                     }
