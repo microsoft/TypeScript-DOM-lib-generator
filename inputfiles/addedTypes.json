@@ -532,34 +532,9 @@
                 "name": "Window",
                 "properties": {
                     "property": {
-                        "URL": {
-                            "exposeGlobally": false,
-                            "name": "URL",
-                            "override-type": "typeof URL"
-                        },
-                        "URLSearchParams": {
-                            "exposeGlobally": false,
-                            "name": "URLSearchParams",
-                            "override-type": "typeof URLSearchParams"
-                        },
-                        "Blob": {
-                            "exposeGlobally": false,
-                            "name": "Blob",
-                            "override-type": "typeof Blob"
-                        },
                         "customElements": {
                             "name": "customElements",
-                            "override-type": "CustomElementRegistry"
-                        },
-                        "TextEncoder": {
-                            "exposeGlobally": true,
-                            "name": "TextEncoder",
-                            "override-type": "typeof TextEncoder"
-                        },
-                        "TextDecoder": {
-                            "exposeGlobally": true,
-                            "name": "TextDecoder",
-                            "override-type": "typeof TextDecoder"
+                            "type": "CustomElementRegistry"
                         }
                     }
                 },

@@ -18478,11 +18478,6 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 
 /** A window containing a DOM document; the document property points to the DOM document loaded in that window. */
 interface Window extends EventTarget, WindowTimers, WindowSessionStorage, WindowLocalStorage, WindowConsole, GlobalEventHandlers, IDBEnvironment, WindowBase64, AnimationFrameProvider, WindowOrWorkerGlobalScope, WindowEventHandlers {
-    Blob: typeof Blob;
-    TextDecoder: typeof TextDecoder;
-    TextEncoder: typeof TextEncoder;
-    URL: typeof URL;
-    URLSearchParams: typeof URLSearchParams;
     readonly applicationCache: ApplicationCache;
     readonly caches: CacheStorage;
     readonly clientInformation: Navigator;
@@ -18562,14 +18557,14 @@ interface Window extends EventTarget, WindowTimers, WindowSessionStorage, Window
     readonly scrollX: number;
     readonly scrollY: number;
     readonly scrollbars: BarProp;
-    readonly self: Window;
+    readonly self: Window & typeof globalThis;
     readonly speechSynthesis: SpeechSynthesis;
     status: string;
     readonly statusbar: BarProp;
     readonly styleMedia: StyleMedia;
     readonly toolbar: BarProp;
     readonly top: Window;
-    readonly window: Window;
+    readonly window: Window & typeof globalThis;
     alert(message?: any): void;
     blur(): void;
     /** @deprecated */
@@ -19472,11 +19467,6 @@ declare var Image: {
 declare var Option: {
     new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
 };
-declare var Blob: typeof Blob;
-declare var TextDecoder: typeof TextDecoder;
-declare var TextEncoder: typeof TextEncoder;
-declare var URL: typeof URL;
-declare var URLSearchParams: typeof URLSearchParams;
 declare var applicationCache: ApplicationCache;
 declare var caches: CacheStorage;
 declare var clientInformation: Navigator;
@@ -19556,14 +19546,14 @@ declare var screenY: number;
 declare var scrollX: number;
 declare var scrollY: number;
 declare var scrollbars: BarProp;
-declare var self: Window;
+declare var self: Window & typeof globalThis;
 declare var speechSynthesis: SpeechSynthesis;
 declare var status: string;
 declare var statusbar: BarProp;
 declare var styleMedia: StyleMedia;
 declare var toolbar: BarProp;
 declare var top: Window;
-declare var window: Window;
+declare var window: Window & typeof globalThis;
 declare function alert(message?: any): void;
 declare function blur(): void;
 /** @deprecated */

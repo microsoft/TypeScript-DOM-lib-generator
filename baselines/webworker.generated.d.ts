@@ -5361,7 +5361,7 @@ interface WorkerGlobalScope extends EventTarget, WorkerUtils, WindowConsole, Win
     readonly location: WorkerLocation;
     onerror: ((this: WorkerGlobalScope, ev: ErrorEvent) => any) | null;
     readonly performance: Performance;
-    readonly self: WorkerGlobalScope;
+    readonly self: WorkerGlobalScope & typeof globalThis;
     msWriteProfilerMark(profilerMarkName: string): void;
     addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -5750,7 +5750,7 @@ declare var isSecureContext: boolean;
 declare var location: WorkerLocation;
 declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
 declare var performance: Performance;
-declare var self: WorkerGlobalScope;
+declare var self: WorkerGlobalScope & typeof globalThis;
 declare function msWriteProfilerMark(profilerMarkName: string): void;
 /**
  * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.

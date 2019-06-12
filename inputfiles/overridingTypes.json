@@ -439,6 +439,9 @@
                             "override-type": "Event | undefined",
                             "deprecated": 1
                         },
+                        "location": {
+                            "read-only": 0
+                        },
                         "orientation": {
                             "name": "orientation",
                             "override-type": "string | number"
@@ -448,8 +451,11 @@
                             "override-type": "any",
                             "read-only": 0
                         },
-                        "location": {
-                            "read-only": 0
+                        "self": {
+                            "override-type": "Window & typeof globalThis"
+                        },
+                        "window": {
+                            "override-type": "Window & typeof globalThis"
                         }
                     }
                 },
@@ -2784,6 +2790,15 @@
                             "name": "msPointerEnabled",
                             "override-type": "boolean",
                             "read-only": 1
+                        }
+                    }
+                }
+            },
+            "WorkerGlobalScope": {
+                "properties": {
+                    "property": {
+                        "self": {
+                            "override-type": "WorkerGlobalScope & typeof globalThis"
                         }
                     }
                 }
