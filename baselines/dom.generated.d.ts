@@ -10787,7 +10787,6 @@ declare var NavigationPreloadManager: {
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
 interface Navigator extends NavigatorStorage, NavigatorAutomationInformation, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
     readonly clipboard: Clipboard;
-    readonly cookieEnabled: boolean;
     readonly credentials: CredentialsContainer;
     readonly doNotTrack: string | null;
     readonly geolocation: Geolocation;
