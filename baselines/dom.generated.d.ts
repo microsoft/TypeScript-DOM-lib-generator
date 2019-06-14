@@ -9960,6 +9960,11 @@ declare var MSFIDOSignatureAssertion: {
     new(): MSFIDOSignatureAssertion;
 };
 
+interface MSFileSaver {
+    msSaveBlob(blob: any, defaultName?: string): boolean;
+    msSaveOrOpenBlob(blob: any, defaultName?: string): boolean;
+}
+
 interface MSGesture {
     target: Element;
     addPointer(pointerId: number): void;
@@ -10112,6 +10117,15 @@ declare var MSMediaKeys: {
     isTypeSupported(keySystem: string, type?: string | null): boolean;
     isTypeSupportedWithFeatures(keySystem: string, type?: string | null): string;
 };
+
+interface MSNavigatorDoNotTrack {
+    confirmSiteSpecificTrackingException(args: ConfirmSiteSpecificExceptionsInformation): boolean;
+    confirmWebWideTrackingException(args: ExceptionInformation): boolean;
+    removeSiteSpecificTrackingException(args: ExceptionInformation): void;
+    removeWebWideTrackingException(args: ExceptionInformation): void;
+    storeSiteSpecificTrackingException(args: StoreSiteSpecificExceptionsInformation): void;
+    storeWebWideTrackingException(args: StoreExceptionsInformation): void;
+}
 
 interface MSPointerEvent extends MouseEvent {
     readonly currentPoint: any;
@@ -10785,7 +10799,7 @@ declare var NavigationPreloadManager: {
 };
 
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
-interface Navigator extends NavigatorStorage, NavigatorAutomationInformation, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
+interface Navigator extends MSFileSaver, MSNavigatorDoNotTrack, NavigatorStorage, NavigatorAutomationInformation, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
     readonly clipboard: Clipboard;
     readonly credentials: CredentialsContainer;
     readonly doNotTrack: string | null;
