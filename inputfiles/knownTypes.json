@@ -44,6 +44,7 @@
         "KeyUsage",
         "Keyframe",
         "MidiPermissionDescriptor",
+        "MSLaunchUriCallback",
         "MutationRecordType",
         "NamedCurve",
         "Pbkdf2Params",
