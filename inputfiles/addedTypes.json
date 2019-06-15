@@ -2207,6 +2207,150 @@
                         }
                     }
                 }
+            },
+            "MSFileSaver": {
+                "name": "MSFileSaver",
+                "methods": {
+                    "method": {
+                        "msSaveBlob": {
+                            "name": "msSaveBlob",
+                            "override-signatures": [
+                                "msSaveBlob(blob: any, defaultName?: string): boolean"
+                            ]
+                        },
+                        "msSaveOrOpenBlob": {
+                            "name": "msSaveOrOpenBlob",
+                            "override-signatures": [
+                                "msSaveOrOpenBlob(blob: any, defaultName?: string): boolean"
+                            ]
+                        }
+                    }
+                },
+                "no-interface-object": 1
+            },
+            "MSLaunchUriCallback": {
+                "name": "MSLaunchUriCallback",
+                "methods": {
+                    "method": {
+                        "()": {
+                            "name": "",
+                            "override-signatures": [
+                                "(): void"
+                            ]
+                        }
+                    }
+                },
+                "no-interface-object": 1
+            },
+            "MSNavigatorDoNotTrack": {
+                "name": "MSNavigatorDoNotTrack",
+                "methods": {
+                    "method": {
+                        "confirmSiteSpecificTrackingException": {
+                            "name": "confirmSiteSpecificTrackingException",
+                            "override-signatures": [
+                                "confirmSiteSpecificTrackingException(args: ConfirmSiteSpecificExceptionsInformation): boolean"
+                            ]
+                        },
+                        "confirmWebWideTrackingException": {
+                            "name": "confirmWebWideTrackingException",
+                            "override-signatures": [
+                                "confirmWebWideTrackingException(args: ExceptionInformation): boolean"
+                            ]
+                        },
+                        "removeSiteSpecificTrackingException": {
+                            "name": "removeSiteSpecificTrackingException",
+                            "override-signatures": [
+                                "removeSiteSpecificTrackingException(args: ExceptionInformation): void"
+                            ]
+                        },
+                        "removeWebWideTrackingException": {
+                            "name": "removeWebWideTrackingException",
+                            "override-signatures": [
+                                "removeWebWideTrackingException(args: ExceptionInformation): void"
+                            ]
+                        },
+                        "storeSiteSpecificTrackingException": {
+                            "name": "storeSiteSpecificTrackingException",
+                            "override-signatures": [
+                                "storeSiteSpecificTrackingException(args: StoreSiteSpecificExceptionsInformation): void"
+                            ]
+                        },
+                        "storeWebWideTrackingException": {
+                            "name": "storeWebWideTrackingException",
+                            "override-signatures": [
+                                "storeWebWideTrackingException(args: StoreExceptionsInformation): void"
+                            ]
+                        }
+                    }
+                },
+                "no-interface-object": 1
+            },
+            "ExceptionInformation": {
+                "name": "ExceptionInformation",
+                "properties": {
+                    "property": {
+                        "domain": {
+                            "name": "domain",
+                            "required": 0,
+                            "override-type": "string | null"
+                        }
+
+                    }
+                },
+                "no-interface-object": 1
+            },
+            "ConfirmSiteSpecificExceptionsInformation": {
+                "name": "ConfirmSiteSpecificExceptionsInformation",
+                "extends": "ExceptionInformation",
+                "properties": {
+                    "property": {
+                        "arrayOfDomainStrings": {
+                            "name": "arrayOfDomainStrings",
+                            "required": 0,
+                            "override-type": "string[]"
+                        }
+                    }
+                },
+                "no-interface-object": 1
+            },
+            "StoreExceptionsInformation": {
+                "name": "StoreExceptionsInformation",
+                "extends": "ExceptionInformation",
+                "properties": {
+                    "property": {
+                        "detailURI": {
+                            "name": "detailURI",
+                            "required": 0,
+                            "override-type": "string | null"
+                        },
+                        "explanationString": {
+                            "name": "explanationString",
+                            "required": 0,
+                            "override-type": "string | null"
+                        },
+                        "siteName": {
+                            "name": "siteName",
+                            "required": 0,
+                            "override-type": "string | null"
+                        }
+                    }
+                },
+                "no-interface-object": 1
+            },
+            "StoreSiteSpecificExceptionsInformation": {
+                "name": "StoreSiteSpecificExceptionsInformation",
+                "extends": "StoreExceptionsInformation",
+                "properties": {
+                    "property": {
+                        "arrayOfDomainStrings": {
+                            "name": "arrayOfDomainStrings",
+                            "required": 0,
+                            "override-type": "string[]"
+                        }
+                    }
+                },
+                "no-interface-object": 1
             }
         }
     },
