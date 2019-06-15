@@ -3616,6 +3616,10 @@ interface ConcatParams extends Algorithm {
     publicInfo?: Uint8Array;
 }
 
+interface ConfirmSiteSpecificExceptionsInformation extends ExceptionInformation {
+    arrayOfDomainStrings?: string[];
+}
+
 /** Provides access to the browser's debugging console (e.g. the Web Console in Firefox). The specifics of how it works varies from browser to browser, but there is a de facto set of features that are typically provided. */
 interface Console {
     memory: any;
@@ -5461,6 +5465,10 @@ declare var EventTarget: {
     prototype: EventTarget;
     new(): EventTarget;
 };
+
+interface ExceptionInformation {
+    domain?: string | null;
+}
 
 interface ExtensionScriptApis {
     extensionIdToShortId(extensionId: string): number;
@@ -10052,6 +10060,10 @@ declare var MSInputMethodContext: {
     new(): MSInputMethodContext;
 };
 
+interface MSLaunchUriCallback {
+    (): void;
+}
+
 interface MSMediaKeyError {
     readonly code: number;
     readonly systemCode: number;
@@ -10799,18 +10811,22 @@ declare var NavigationPreloadManager: {
 };
 
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
-interface Navigator extends MSFileSaver, MSNavigatorDoNotTrack, NavigatorStorage, NavigatorAutomationInformation, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware {
+interface Navigator extends NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware, NavigatorStorage, NavigatorAutomationInformation, MSFileSaver, MSNavigatorDoNotTrack {
     readonly clipboard: Clipboard;
     readonly credentials: CredentialsContainer;
     readonly doNotTrack: string | null;
     readonly geolocation: Geolocation;
     readonly maxTouchPoints: number;
     readonly mediaDevices: MediaDevices;
+    readonly msManipulationViewsEnabled: boolean;
+    readonly msMaxTouchPoints: number;
+    readonly msPointerEnabled: boolean;
     readonly permissions: Permissions;
     readonly pointerEnabled: boolean;
     readonly serviceWorker: ServiceWorkerContainer;
     getGamepads(): (Gamepad | null)[];
     getUserMedia(constraints: MediaStreamConstraints, successCallback: NavigatorUserMediaSuccessCallback, errorCallback: NavigatorUserMediaErrorCallback): void;
+    msLaunchUri(uri: string, successCallback?: MSLaunchUriCallback, noHandlerCallback?: MSLaunchUriCallback): void;
     requestMediaKeySystemAccess(keySystem: string, supportedConfigurations: MediaKeySystemConfiguration[]): Promise<MediaKeySystemAccess>;
     vibrate(pattern: number | number[]): boolean;
 }
@@ -15463,6 +15479,16 @@ declare var StorageManager: {
     prototype: StorageManager;
     new(): StorageManager;
 };
+
+interface StoreExceptionsInformation extends ExceptionInformation {
+    detailURI?: string | null;
+    explanationString?: string | null;
+    siteName?: string | null;
+}
+
+interface StoreSiteSpecificExceptionsInformation extends StoreExceptionsInformation {
+    arrayOfDomainStrings?: string[];
+}
 
 interface StyleMedia {
     readonly type: string;

@@ -904,6 +904,10 @@ interface ConcatParams extends Algorithm {
     publicInfo?: Uint8Array;
 }
 
+interface ConfirmSiteSpecificExceptionsInformation extends ExceptionInformation {
+    arrayOfDomainStrings?: string[];
+}
+
 /** Provides access to the browser's debugging console (e.g. the Web Console in Firefox). The specifics of how it works varies from browser to browser, but there is a de facto set of features that are typically provided. */
 interface Console {
     memory: any;
@@ -1476,6 +1480,10 @@ declare var EventTarget: {
     prototype: EventTarget;
     new(): EventTarget;
 };
+
+interface ExceptionInformation {
+    domain?: string | null;
+}
 
 /** Extends the lifetime of the install and activate events dispatched on the global scope as part of the service worker lifecycle. This ensures that any functional events (like FetchEvent) are not dispatched until it upgrades database schemas and deletes the outdated cache entries. */
 interface ExtendableEvent extends Event {
@@ -2204,6 +2212,24 @@ declare var ImageData: {
     new(width: number, height: number): ImageData;
     new(array: Uint8ClampedArray, width: number, height: number): ImageData;
 };
+
+interface MSFileSaver {
+    msSaveBlob(blob: any, defaultName?: string): boolean;
+    msSaveOrOpenBlob(blob: any, defaultName?: string): boolean;
+}
+
+interface MSLaunchUriCallback {
+    (): void;
+}
+
+interface MSNavigatorDoNotTrack {
+    confirmSiteSpecificTrackingException(args: ConfirmSiteSpecificExceptionsInformation): boolean;
+    confirmWebWideTrackingException(args: ExceptionInformation): boolean;
+    removeSiteSpecificTrackingException(args: ExceptionInformation): void;
+    removeWebWideTrackingException(args: ExceptionInformation): void;
+    storeSiteSpecificTrackingException(args: StoreSiteSpecificExceptionsInformation): void;
+    storeWebWideTrackingException(args: StoreExceptionsInformation): void;
+}
 
 /** This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
@@ -2994,6 +3020,16 @@ declare var StorageManager: {
     prototype: StorageManager;
     new(): StorageManager;
 };
+
+interface StoreExceptionsInformation extends ExceptionInformation {
+    detailURI?: string | null;
+    explanationString?: string | null;
+    siteName?: string | null;
+}
+
+interface StoreSiteSpecificExceptionsInformation extends StoreExceptionsInformation {
+    arrayOfDomainStrings?: string[];
+}
 
 /** This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
 interface SubtleCrypto {
