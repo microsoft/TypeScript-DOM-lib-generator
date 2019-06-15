@@ -227,6 +227,10 @@
         "title": "HTML - Session history and navigation"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/system-state.html",
+        "title": "HTML - System state and capabilities"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/tables.html",
         "title": "HTML - Tabular data"
     },
@@ -514,9 +518,5 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/web-messaging.html",
         "title": "Web Messaging"
-    },
-    {
-        "url": "https://html.spec.whatwg.org/multipage/system-state.html",
-        "title": "HTML - System state and capabilities"
     }
 ]
