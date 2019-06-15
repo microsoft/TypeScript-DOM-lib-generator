@@ -2740,6 +2740,22 @@
                         }
                     }
                 }
+            },
+            "Navigator": {
+                "implements": [
+                    "MSFileSaver",
+                    "MSNavigatorDoNotTrack"
+                ],
+                "methods": {
+                    "method": {
+                        "msLaunchUri": {
+                            "name": "msLaunchUri",
+                            "override-signatures": [
+                                "msLaunchUri(uri: string, successCallback?: MSLaunchUriCallback, noHandlerCallback?: MSLaunchUriCallback): void"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
