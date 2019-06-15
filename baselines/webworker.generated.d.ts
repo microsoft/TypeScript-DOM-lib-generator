@@ -2205,10 +2205,6 @@ declare var ImageData: {
     new(array: Uint8ClampedArray, width: number, height: number): ImageData;
 };
 
-interface MSLaunchUriCallback {
-    (): void;
-}
-
 /** This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
     /**

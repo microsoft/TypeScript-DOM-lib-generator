@@ -10070,10 +10070,6 @@ declare var MSInputMethodContext: {
     new(): MSInputMethodContext;
 };
 
-interface MSLaunchUriCallback {
-    (): void;
-}
-
 interface MSMediaKeyError {
     readonly code: number;
     readonly systemCode: number;
@@ -19173,6 +19169,10 @@ interface FunctionStringCallback {
 
 interface IntersectionObserverCallback {
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void;
+}
+
+interface MSLaunchUriCallback {
+    (): void;
 }
 
 interface MutationCallback {

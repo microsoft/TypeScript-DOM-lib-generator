@@ -273,8 +273,8 @@ interface WebAuthentication {
 }
 
 interface WebGL2RenderingContextBase {
-    uniformMatrix2x4fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     invalidateFramebuffer(target: GLenum, attachments: Iterable<GLenum>): void;
+    invalidateSubFramebuffer(target: GLenum, attachments: Iterable<GLenum>, x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
     uniform1uiv(location: WebGLUniformLocation | null, data: Iterable<GLuint>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform2uiv(location: WebGLUniformLocation | null, data: Iterable<GLuint>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform3uiv(location: WebGLUniformLocation | null, data: Iterable<GLuint>, srcOffset?: GLuint, srcLength?: GLuint): void;
@@ -283,7 +283,7 @@ interface WebGL2RenderingContextBase {
     uniformMatrix4x2fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniformMatrix2x3fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniformMatrix4x3fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
-    invalidateSubFramebuffer(target: GLenum, attachments: Iterable<GLenum>, x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
+    uniformMatrix2x4fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniformMatrix3x4fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     vertexAttribI4iv(index: GLuint, values: Iterable<GLint>): void;
     vertexAttribI4uiv(index: GLuint, values: Iterable<GLuint>): void;
@@ -297,12 +297,12 @@ interface WebGL2RenderingContextBase {
 }
 
 interface WebGL2RenderingContextOverloads {
-    uniform2iv(location: WebGLUniformLocation | null, data: Iterable<GLint>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform1fv(location: WebGLUniformLocation | null, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
+    uniform2fv(location: WebGLUniformLocation | null, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform3fv(location: WebGLUniformLocation | null, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform4fv(location: WebGLUniformLocation | null, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform1iv(location: WebGLUniformLocation | null, data: Iterable<GLint>, srcOffset?: GLuint, srcLength?: GLuint): void;
-    uniform2fv(location: WebGLUniformLocation | null, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
+    uniform2iv(location: WebGLUniformLocation | null, data: Iterable<GLint>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform3iv(location: WebGLUniformLocation | null, data: Iterable<GLint>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniform4iv(location: WebGLUniformLocation | null, data: Iterable<GLint>, srcOffset?: GLuint, srcLength?: GLuint): void;
     uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Iterable<GLfloat>, srcOffset?: GLuint, srcLength?: GLuint): void;
@@ -318,12 +318,12 @@ interface WebGLRenderingContextBase {
 }
 
 interface WebGLRenderingContextOverloads {
-    uniform2iv(location: WebGLUniformLocation | null, v: Iterable<GLint>): void;
     uniform1fv(location: WebGLUniformLocation | null, v: Iterable<GLfloat>): void;
+    uniform2fv(location: WebGLUniformLocation | null, v: Iterable<GLfloat>): void;
     uniform3fv(location: WebGLUniformLocation | null, v: Iterable<GLfloat>): void;
     uniform4fv(location: WebGLUniformLocation | null, v: Iterable<GLfloat>): void;
     uniform1iv(location: WebGLUniformLocation | null, v: Iterable<GLint>): void;
-    uniform2fv(location: WebGLUniformLocation | null, v: Iterable<GLfloat>): void;
+    uniform2iv(location: WebGLUniformLocation | null, v: Iterable<GLint>): void;
     uniform3iv(location: WebGLUniformLocation | null, v: Iterable<GLint>): void;
     uniform4iv(location: WebGLUniformLocation | null, v: Iterable<GLint>): void;
     uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Iterable<GLfloat>): void;
