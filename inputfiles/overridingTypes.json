@@ -2755,6 +2755,25 @@
                             ]
                         }
                     }
+                },
+                "properties": {
+                    "property": {
+                        "msManipulationViewsEnabled": {
+                            "name": "msManipulationViewsEnabled",
+                            "override-type": "boolean",
+                            "read-only": 1
+                        },
+                        "msMaxTouchPoints": {
+                            "name": "msMaxTouchPoints",
+                            "override-type": "number",
+                            "read-only": 1
+                        },
+                        "msPointerEnabled": {
+                            "name": "msPointerEnabled",
+                            "override-type": "boolean",
+                            "read-only": 1
+                        }
+                    }
                 }
             }
         }
