@@ -2207,20 +2207,6 @@
                         }
                     }
                 }
-            },
-            "MSLaunchUriCallback": {
-                "name": "MSLaunchUriCallback",
-                "methods": {
-                    "method": {
-                        "()": {
-                            "name": "",
-                            "override-signatures": [
-                                "(): void"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": 1
             }
         }
     },
