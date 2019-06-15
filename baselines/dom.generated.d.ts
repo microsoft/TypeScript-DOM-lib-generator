@@ -241,6 +241,10 @@ interface ComputedKeyframe {
     [property: string]: string | number | null | undefined;
 }
 
+interface ConfirmSiteSpecificExceptionsInformation extends ExceptionInformation {
+    arrayOfDomainStrings?: string[];
+}
+
 interface ConstantSourceOptions {
     offset?: number;
 }
@@ -477,6 +481,10 @@ interface EventModifierInit extends UIEventInit {
 
 interface EventSourceInit {
     withCredentials?: boolean;
+}
+
+interface ExceptionInformation {
+    domain?: string | null;
 }
 
 interface FilePropertyBag extends BlobPropertyBag {
@@ -1671,6 +1679,16 @@ interface StorageEventInit extends EventInit {
     oldValue?: string | null;
     storageArea?: Storage | null;
     url?: string;
+}
+
+interface StoreExceptionsInformation extends ExceptionInformation {
+    detailURI?: string | null;
+    explanationString?: string | null;
+    siteName?: string | null;
+}
+
+interface StoreSiteSpecificExceptionsInformation extends StoreExceptionsInformation {
+    arrayOfDomainStrings?: string[];
 }
 
 interface TextDecodeOptions {
@@ -3616,10 +3634,6 @@ interface ConcatParams extends Algorithm {
     publicInfo?: Uint8Array;
 }
 
-interface ConfirmSiteSpecificExceptionsInformation extends ExceptionInformation {
-    arrayOfDomainStrings?: string[];
-}
-
 /** Provides access to the browser's debugging console (e.g. the Web Console in Firefox). The specifics of how it works varies from browser to browser, but there is a de facto set of features that are typically provided. */
 interface Console {
     memory: any;
@@ -5465,10 +5479,6 @@ declare var EventTarget: {
     prototype: EventTarget;
     new(): EventTarget;
 };
-
-interface ExceptionInformation {
-    domain?: string | null;
-}
 
 interface ExtensionScriptApis {
     extensionIdToShortId(extensionId: string): number;
@@ -15479,16 +15489,6 @@ declare var StorageManager: {
     prototype: StorageManager;
     new(): StorageManager;
 };
-
-interface StoreExceptionsInformation extends ExceptionInformation {
-    detailURI?: string | null;
-    explanationString?: string | null;
-    siteName?: string | null;
-}
-
-interface StoreSiteSpecificExceptionsInformation extends StoreExceptionsInformation {
-    arrayOfDomainStrings?: string[];
-}
 
 interface StyleMedia {
     readonly type: string;
