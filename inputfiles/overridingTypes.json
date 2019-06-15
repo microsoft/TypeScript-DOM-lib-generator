@@ -2744,10 +2744,17 @@
             "Navigator": {
                 "implements": [
                     "MSFileSaver",
-                    "MSNavigatorDoNotTrack"
+                    "MSNavigatorDoNotTrack",
+                    "NavigatorBeacon"
                 ],
                 "methods": {
                     "method": {
+                        "getVRDisplays": {
+                            "name": "getVRDisplays",
+                            "override-signatures": [
+                                "getVRDisplays(): Promise<VRDisplay[]>"
+                            ]
+                        },
                         "msLaunchUri": {
                             "name": "msLaunchUri",
                             "override-signatures": [
@@ -2758,6 +2765,11 @@
                 },
                 "properties": {
                     "property": {
+                        "activeVRDisplays": {
+                            "name": "activeVRDisplays",
+                            "override-type": "ReadonlyArray<VRDisplay>",
+                            "read-only": 1
+                        },
                         "msManipulationViewsEnabled": {
                             "name": "msManipulationViewsEnabled",
                             "override-type": "boolean",
