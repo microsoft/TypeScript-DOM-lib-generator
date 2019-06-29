@@ -1180,18 +1180,6 @@
                 "name": "Element",
                 "methods": {
                     "method": {
-                        "getBoundingClientRect": {
-                            "name": "getBoundingClientRect",
-                            "override-signatures": [
-                                "getBoundingClientRect(): ClientRect | DOMRect"
-                            ]
-                        },
-                        "getClientRects": {
-                            "name": "getClientRects",
-                            "override-signatures": [
-                                "getClientRects(): ClientRectList | DOMRectList"
-                            ]
-                        },
                         "getAttributeNodeNS": {
                             "name": "getAttributeNodeNS",
                             "override-signatures": [
@@ -1714,47 +1702,6 @@
                             "type": "MessageEvent"
                         }
                     ]
-                }
-            },
-            "IntersectionObserverEntry": {
-                "name": "IntersectionObserverEntry",
-                "properties": {
-                    "property": {
-                        "boundingClientRect": {
-                            "name": "boundingClientRect",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        },
-                        "intersectionRect": {
-                            "name": "intersectionRect",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        },
-                        "rootBounds": {
-                            "name": "rootBounds",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        }
-                    }
-                }
-            },
-            "Range": {
-                "name": "Range",
-                "methods": {
-                    "method": {
-                        "getBoundingClientRect": {
-                            "name": "getBoundingClientRect",
-                            "override-signatures": [
-                                "getBoundingClientRect(): ClientRect | DOMRect"
-                            ]
-                        },
-                        "getClientRects": {
-                            "name": "getClientRects",
-                            "override-signatures": [
-                                "getClientRects(): ClientRectList | DOMRectList"
-                            ]
-                        }
-                    }
                 }
             },
             "WebSocket": {
