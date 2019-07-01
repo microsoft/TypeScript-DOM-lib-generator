@@ -46,6 +46,8 @@ enum PermissionName {
   "gyroscope",
   "magnetometer",
   "clipboard",
+  "clipboard-read",
+  "clipboard-write",
 };
 
 dictionary PushPermissionDescriptor : PermissionDescriptor {
