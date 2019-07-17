@@ -2224,7 +2224,7 @@
                         "match": {
                             "name": "match",
                             "override-signatures": [
-                                "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
+                                "match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>"
                             ]
                         }
                     }
