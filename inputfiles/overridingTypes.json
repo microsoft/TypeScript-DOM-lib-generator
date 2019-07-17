@@ -204,6 +204,16 @@
                             "override-type": "ReadableStream<Uint8Array> | null"
                         }
                     }
+                },
+                "methods": {
+                    "method": {
+                        "json": {
+                            "name": "json",
+                            "override-signatures": [
+                                "json<T extends any>(): Promise<T>"
+                            ]
+                        }
+                    }
                 }
             }
         }

@@ -2513,7 +2513,7 @@ interface Body {
     arrayBuffer(): Promise<ArrayBuffer>;
     blob(): Promise<Blob>;
     formData(): Promise<FormData>;
-    json(): Promise<any>;
+    json<T extends any>(): Promise<T>;
     text(): Promise<string>;
 }
 
