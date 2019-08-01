@@ -10950,7 +10950,7 @@ interface Node extends EventTarget {
     /**
      * Returns the previous sibling.
      */
-    readonly previousSibling: Node | null;
+    readonly previousSibling: ChildNode | null;
     textContent: string | null;
     appendChild<T extends Node>(newChild: T): T;
     /**
