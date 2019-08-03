@@ -1482,6 +1482,10 @@
                             "read-only": 1,
                             "override-type": "HTMLFormElement | null"
                         },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "override-type": "\"forward\" | \"backward\" | \"none\""
+                        },
                         "valueAsDate": {
                             "name": "valueAsDate",
                             "override-type": "Date | null"
@@ -1674,6 +1678,10 @@
                         "labels": {
                             "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
+                        },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "override-type": "\"forward\" | \"backward\" | \"none\""
                         }
                     }
                 },
