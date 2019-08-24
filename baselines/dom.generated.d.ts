@@ -4381,6 +4381,7 @@ interface DeviceMotionEvent extends Event {
 declare var DeviceMotionEvent: {
     prototype: DeviceMotionEvent;
     new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
+    requestPermission(): Promise<PermissionState>;
 };
 
 interface DeviceMotionEventAcceleration {
@@ -4406,6 +4407,7 @@ interface DeviceOrientationEvent extends Event {
 declare var DeviceOrientationEvent: {
     prototype: DeviceOrientationEvent;
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
+    requestPermission(): Promise<PermissionState>;
 };
 
 /** Provides information about the rate at which the device is rotating around all three axes. */
