@@ -2561,7 +2561,6 @@
                 }
             },
             "WritableStream": {
-                "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
                         "new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>"
@@ -2584,7 +2583,6 @@
                 }
             },
             "WritableStreamDefaultWriter": {
-                "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
                         "name": "W",
@@ -2629,7 +2627,6 @@
                 }
             },
             "TransformStreamDefaultController": {
-                "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
                         "name": "O",
@@ -2647,7 +2644,6 @@
                 }
             },
             "ByteLengthQueuingStrategy": {
-                "override-exposed": "Window Worker",
                 "extends": "QueuingStrategy<ArrayBufferView>",
                 "constructor": {
                     "override-signatures": [
@@ -2656,7 +2652,6 @@
                 }
             },
             "CountQueuingStrategy": {
-                "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
                         "new(options: { highWaterMark: number }): CountQueuingStrategy"
