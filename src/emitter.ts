@@ -405,7 +405,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             expectedParamType.every((pt, idx) => convertDomTypeToTsType(m.signature[0].param![idx]) === pt);
     }
 
-    function getNameWithTypeParameter(i: Browser.Interface | Browser.Dictionary | Browser.CallbackFunction, name: string) {
+    function getNameWithTypeParameter(i: Browser.Interface | Browser.Dictionary | Browser.CallbackFunction | Browser.TypeDef, name: string) {
         function typeParameterWithDefault(type: Browser.TypeParameter) {
             return type.name
                 + (type.extends ? ` extends ${type.extends}` : "")
@@ -1094,7 +1094,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     function emitTypeDef(typeDef: Browser.TypeDef) {
         emitComments(typeDef, printer.printLine);
-        printer.printLine(`type ${typeDef["new-type"]} = ${convertDomTypeToTsType(typeDef)};`);
+        printer.printLine(`type ${getNameWithTypeParameter(typeDef, typeDef["new-type"])} = ${convertDomTypeToTsType(typeDef)};`);
     }
 
     function emitTypeDefs() {
