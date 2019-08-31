@@ -129,6 +129,18 @@
                     "property": {
                         "onerror": {
                             "override-type": "OnErrorEventHandler"
+                        },
+                        "ontouchcancel": {
+                            "required": 0
+                        },
+                        "ontouchend": {
+                            "required": 0
+                        },
+                        "ontouchmove": {
+                            "required": 0
+                        },
+                        "ontouchstart": {
+                            "required": 0
                         }
                     }
                 }

@@ -617,8 +617,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             else {
                 pType = convertDomTypeToTsType(p);
             }
-            const requiredModifier = p.required === undefined || p.required === 1 ? "" : "?";
+            const required = p.required === undefined || p.required === 1;
+            const requiredModifier = required || prefix ? "" : "?";
             pType = p.nullable ? makeNullable(pType) : pType;
+            if (!required && prefix) {
+                pType += " | undefined"
+            }
             const readOnlyModifier = p["read-only"] === 1 && prefix === "" ? "readonly " : "";
             printer.printLine(`${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`);
         }
