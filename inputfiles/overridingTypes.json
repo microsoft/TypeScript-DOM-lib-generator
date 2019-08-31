@@ -2492,20 +2492,6 @@
                     }
                 }
             },
-            "ReadableStreamReadResult": {
-                "type-parameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "properties": {
-                    "property": {
-                        "value": {
-                            "override-type": "T"
-                        }
-                    }
-                }
-            },
             "ReadableStreamBYOBReader": {
                 "methods": {
                     "method": {
@@ -2961,6 +2947,40 @@
                     }
                 }
             },
+            "ReadableStreamReadDoneResult": {
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "override-type": "true"
+                        },
+                        "value": {
+                            "override-type": "T"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamReadValueResult": {
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "override-type": "false"
+                        },
+                        "value": {
+                            "override-type": "T"
+                        }
+                    }
+                }
+            },
             "UnderlyingByteSource": {
                 "members": {
                     "member": {
@@ -3128,6 +3148,15 @@
             {
                 "override-type": "Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string",
                 "new-type": "BodyInit"
+            },
+            {
+                "override-type": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>",
+                "new-type": "ReadableStreamReadResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ]
             }
         ]
     },

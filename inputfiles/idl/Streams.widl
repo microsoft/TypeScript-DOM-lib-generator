@@ -46,12 +46,18 @@ dictionary PipeOptions {
     AbortSignal? signal;
 };
 
-[Exposed=(Window,Worker),
- NoInterfaceObject]
-interface ReadableStreamReadResult {
-    attribute boolean done;
-    attribute any value;
+dictionary ReadableStreamReadValueResult {
+    required boolean done;
+    required any value;
 };
+
+dictionary ReadableStreamReadDoneResult {
+    required boolean done;
+    any value;
+};
+
+[Exposed=(Window,Worker)]
+typedef (ReadableStreamReadValueResult or ReadableStreamReadDoneResult) ReadableStreamReadResult;
 
 [Exposed=(Window,Worker),
  NoInterfaceObject]
