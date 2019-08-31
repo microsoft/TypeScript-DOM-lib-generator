@@ -2504,8 +2504,7 @@
                             "override-type": "T"
                         }
                     }
-                },
-                "no-interface-object": "1"
+                }
             },
             "ReadableStreamBYOBReader": {
                 "methods": {
@@ -2516,11 +2515,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
-            },
-            "ReadableStreamBYOBRequest": {
-                "no-interface-object": 1
+                }
             },
             "ReadableStreamDefaultReader": {
                 "type-parameters": [
@@ -2537,8 +2532,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ReadableByteStreamController": {
                 "properties": {
@@ -2547,8 +2541,7 @@
                             "override-type": "ReadableStreamBYOBRequest | undefined"
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ReadableStreamDefaultController": {
                 "type-parameters": [
@@ -2565,8 +2558,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "WritableStream": {
                 "override-exposed": "Window Worker",
@@ -2591,10 +2583,6 @@
                     }
                 }
             },
-            "WritableStreamDefaultController": {
-                "override-exposed": "Window Worker",
-                "no-interface-object": 1
-            },
             "WritableStreamDefaultWriter": {
                 "override-exposed": "Window Worker",
                 "type-parameters": [
@@ -2611,8 +2599,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "TransformStream": {
                 "type-parameters": [
@@ -2657,8 +2644,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ByteLengthQueuingStrategy": {
                 "override-exposed": "Window Worker",
