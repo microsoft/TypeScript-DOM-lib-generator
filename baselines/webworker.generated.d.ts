@@ -327,7 +327,7 @@ interface PipeOptions {
 }
 
 interface PostMessageOptions {
-    transfer?: any[];
+    transfer?: object[];
 }
 
 interface ProgressEventInit extends EventInit {
@@ -906,7 +906,7 @@ interface ConcatParams extends Algorithm {
 
 /** Provides access to the browser's debugging console (e.g. the Web Console in Firefox). The specifics of how it works varies from browser to browser, but there is a de facto set of features that are typically provided. */
 interface Console {
-    memory: any;
+    memory: object;
     assert(condition?: boolean, message?: string, ...data: any[]): void;
     clear(): void;
     count(label?: string): void;
@@ -1132,7 +1132,7 @@ interface DOMMatrixReadOnly {
     skewY(sy?: number): DOMMatrix;
     toFloat32Array(): Float32Array;
     toFloat64Array(): Float64Array;
-    toJSON(): any;
+    toJSON(): object;
     transformPoint(point?: DOMPointInit): DOMPoint;
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
 }
@@ -1164,7 +1164,7 @@ interface DOMPointReadOnly {
     readonly y: number;
     readonly z: number;
     matrixTransform(matrix?: DOMMatrixInit): DOMPoint;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMPointReadOnly: {
@@ -1179,7 +1179,7 @@ interface DOMQuad {
     readonly p3: DOMPoint;
     readonly p4: DOMPoint;
     getBounds(): DOMRect;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMQuad: {
@@ -1211,7 +1211,7 @@ interface DOMRectReadOnly {
     readonly width: number;
     readonly x: number;
     readonly y: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMRectReadOnly: {
@@ -2493,7 +2493,7 @@ interface Performance extends EventTarget {
     measure(measureName: string, startMark?: string, endMark?: string): void;
     now(): number;
     setResourceTimingBufferSize(maxSize: number): void;
-    toJSON(): any;
+    toJSON(): object;
     addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -2511,7 +2511,7 @@ interface PerformanceEntry {
     readonly entryType: string;
     readonly name: string;
     readonly startTime: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceEntry: {
@@ -2579,7 +2579,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
     readonly secureConnectionStart: number;
     readonly transferSize: number;
     readonly workerStart: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceResourceTiming: {
@@ -5604,12 +5604,12 @@ declare namespace WebAssembly {
     };
     
     interface Instance {
-        readonly exports: any;
+        readonly exports: object;
     }
     
     var Instance: {
         prototype: Instance;
-        new(module: Module, importObject?: any): Instance;
+        new(module: Module, importObject?: object): Instance;
     };
     
     interface Memory {
@@ -5680,8 +5680,8 @@ declare namespace WebAssembly {
     type ImportExportKind = "function" | "table" | "memory" | "global";
     type TableKind = "anyfunc";
     function compile(bytes: BufferSource): Promise<Module>;
-    function instantiate(bytes: BufferSource, importObject?: any): Promise<WebAssemblyInstantiatedSource>;
-    function instantiate(moduleObject: Module, importObject?: any): Promise<Instance>;
+    function instantiate(bytes: BufferSource, importObject?: object): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(moduleObject: Module, importObject?: object): Promise<Instance>;
     function validate(bytes: BufferSource): boolean;
 }
 

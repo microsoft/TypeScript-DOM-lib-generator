@@ -130,7 +130,7 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
     numberOfOutputs?: number;
     outputChannelCount?: number[];
     parameterData?: Record<string, number>;
-    processorOptions?: any;
+    processorOptions?: object | null;
 }
 
 interface AuthenticationExtensionsClientInputs {
@@ -948,7 +948,7 @@ interface PaymentDetailsInit extends PaymentDetailsBase {
 
 interface PaymentDetailsModifier {
     additionalDisplayItems?: PaymentItem[];
-    data?: any;
+    data?: object;
     supportedMethods: string | string[];
     total?: PaymentItem;
 }
@@ -965,7 +965,7 @@ interface PaymentItem {
 }
 
 interface PaymentMethodData {
-    data?: any;
+    data?: object;
     supportedMethods: string | string[];
 }
 
@@ -1043,7 +1043,7 @@ interface PositionOptions {
 }
 
 interface PostMessageOptions {
-    transfer?: any[];
+    transfer?: object[];
 }
 
 interface ProgressEventInit extends EventInit {
@@ -2465,14 +2465,14 @@ interface BhxBrowser {
     clearLastError(): void;
     currentWindowId(): number;
     fireExtensionApiTelemetry(functionName: string, isSucceeded: boolean, isSupported: boolean, errorString: string): void;
-    genericFunction(functionId: number, destination: any, parameters?: string, callbackId?: number): void;
+    genericFunction(functionId: number, destination: object, parameters?: string, callbackId?: number): void;
     genericSynchronousFunction(functionId: number, parameters?: string): string;
     getExtensionId(): string;
-    getThisAddress(): any;
+    getThisAddress(): object;
     registerGenericFunctionCallbackHandler(callbackHandler: Function): void;
     registerGenericListenerHandler(eventHandler: Function): void;
     setLastError(parameters: string): void;
-    webPlatformGenericFunction(destination: any, parameters?: string, callbackId?: number): void;
+    webPlatformGenericFunction(destination: object, parameters?: string, callbackId?: number): void;
 }
 
 declare var BhxBrowser: {
@@ -3636,7 +3636,7 @@ interface ConcatParams extends Algorithm {
 
 /** Provides access to the browser's debugging console (e.g. the Web Console in Firefox). The specifics of how it works varies from browser to browser, but there is a de facto set of features that are typically provided. */
 interface Console {
-    memory: any;
+    memory: object;
     assert(condition?: boolean, message?: string, ...data: any[]): void;
     clear(): void;
     count(label?: string): void;
@@ -3978,7 +3978,7 @@ interface DOMMatrixReadOnly {
     skewY(sy?: number): DOMMatrix;
     toFloat32Array(): Float32Array;
     toFloat64Array(): Float64Array;
-    toJSON(): any;
+    toJSON(): object;
     transformPoint(point?: DOMPointInit): DOMPoint;
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
 }
@@ -4023,7 +4023,7 @@ interface DOMPointReadOnly {
     readonly y: number;
     readonly z: number;
     matrixTransform(matrix?: DOMMatrixInit): DOMPoint;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMPointReadOnly: {
@@ -4038,7 +4038,7 @@ interface DOMQuad {
     readonly p3: DOMPoint;
     readonly p4: DOMPoint;
     getBounds(): DOMRect;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMQuad: {
@@ -4084,7 +4084,7 @@ interface DOMRectReadOnly {
     readonly width: number;
     readonly x: number;
     readonly y: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var DOMRectReadOnly: {
@@ -5483,13 +5483,13 @@ declare var EventTarget: {
 interface ExtensionScriptApis {
     extensionIdToShortId(extensionId: string): number;
     fireExtensionApiTelemetry(functionName: string, isSucceeded: boolean, isSupported: boolean, errorString: string): void;
-    genericFunction(routerAddress: any, parameters?: string, callbackId?: number): void;
+    genericFunction(routerAddress: object, parameters?: string, callbackId?: number): void;
     genericSynchronousFunction(functionId: number, parameters?: string): string;
-    genericWebRuntimeCallout(to: any, from: any, payload: string): void;
+    genericWebRuntimeCallout(to: object, from: object, payload: string): void;
     getExtensionId(): string;
     registerGenericFunctionCallbackHandler(callbackHandler: Function): void;
     registerGenericPersistentCallbackHandler(callbackHandler: Function): void;
-    registerWebRuntimeCallbackHandler(handler: Function): any;
+    registerWebRuntimeCallbackHandler(handler: Function): object;
 }
 
 declare var ExtensionScriptApis: {
@@ -10185,7 +10185,7 @@ interface MediaDeviceInfo {
     readonly groupId: string;
     readonly kind: MediaDeviceKind;
     readonly label: string;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var MediaDeviceInfo: {
@@ -11559,7 +11559,7 @@ declare var PaymentRequestUpdateEvent: {
 
 /** This Payment Request API interface is returned after a user selects a payment method and approves a payment request. */
 interface PaymentResponse {
-    readonly details: any;
+    readonly details: object;
     readonly methodName: string;
     readonly payerEmail: string | null;
     readonly payerName: string | null;
@@ -11627,7 +11627,7 @@ interface Performance extends EventTarget {
     measure(measureName: string, startMark?: string, endMark?: string): void;
     now(): number;
     setResourceTimingBufferSize(maxSize: number): void;
-    toJSON(): any;
+    toJSON(): object;
     addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -11645,7 +11645,7 @@ interface PerformanceEntry {
     readonly entryType: string;
     readonly name: string;
     readonly startTime: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceEntry: {
@@ -11675,7 +11675,7 @@ declare var PerformanceMeasure: {
 interface PerformanceNavigation {
     readonly redirectCount: number;
     readonly type: number;
-    toJSON(): any;
+    toJSON(): object;
     readonly TYPE_BACK_FORWARD: number;
     readonly TYPE_NAVIGATE: number;
     readonly TYPE_RELOAD: number;
@@ -11703,7 +11703,7 @@ interface PerformanceNavigationTiming extends PerformanceResourceTiming {
     readonly type: NavigationType;
     readonly unloadEventEnd: number;
     readonly unloadEventStart: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceNavigationTiming: {
@@ -11753,7 +11753,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
     readonly secureConnectionStart: number;
     readonly transferSize: number;
     readonly workerStart: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceResourceTiming: {
@@ -11784,7 +11784,7 @@ interface PerformanceTiming {
     readonly secureConnectionStart: number;
     readonly unloadEventEnd: number;
     readonly unloadEventStart: number;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var PerformanceTiming: {
@@ -12476,7 +12476,7 @@ declare var RTCSctpTransport: {
 interface RTCSessionDescription {
     readonly sdp: string;
     readonly type: RTCSdpType;
-    toJSON(): any;
+    toJSON(): object;
 }
 
 declare var RTCSessionDescription: {
@@ -12532,7 +12532,7 @@ declare var RTCStatsProvider: {
 };
 
 interface RTCStatsReport {
-    forEach(callbackfn: (value: any, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
+    forEach(callbackfn: (value: object, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
 }
 
 declare var RTCStatsReport: {
@@ -19043,12 +19043,12 @@ declare namespace WebAssembly {
     };
     
     interface Instance {
-        readonly exports: any;
+        readonly exports: object;
     }
     
     var Instance: {
         prototype: Instance;
-        new(module: Module, importObject?: any): Instance;
+        new(module: Module, importObject?: object): Instance;
     };
     
     interface LinkError {
@@ -19135,8 +19135,8 @@ declare namespace WebAssembly {
     type ImportExportKind = "function" | "table" | "memory" | "global";
     type TableKind = "anyfunc";
     function compile(bytes: BufferSource): Promise<Module>;
-    function instantiate(bytes: BufferSource, importObject?: any): Promise<WebAssemblyInstantiatedSource>;
-    function instantiate(moduleObject: Module, importObject?: any): Promise<Instance>;
+    function instantiate(bytes: BufferSource, importObject?: object): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(moduleObject: Module, importObject?: object): Promise<Instance>;
     function validate(bytes: BufferSource): boolean;
 }
 

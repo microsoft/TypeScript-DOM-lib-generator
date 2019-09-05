@@ -5,14 +5,13 @@ export const bufferSourceTypes = new Set(["ArrayBuffer", "ArrayBufferView", "Dat
 export const integerTypes = new Set(["byte", "octet", "short", "unsigned short", "long", "unsigned long", "long long", "unsigned long long"]);
 export const stringTypes = new Set(["ByteString", "DOMString", "USVString", "CSSOMString"]);
 const floatTypes = new Set(["float", "unrestricted float", "double", "unrestricted double"]);
-const sameTypes = new Set(["any", "boolean", "Date", "Function", "Promise", "void"]);
+const sameTypes = new Set(["any", "boolean", "object", "Date", "Function", "Promise", "void"]);
 export const baseTypeConversionMap = new Map<string, string>([
     ...[...bufferSourceTypes].map(type => [type, type] as [string, string]),
     ...[...integerTypes].map(type => [type, "number"] as [string, string]),
     ...[...floatTypes].map(type => [type, "number"] as [string, string]),
     ...[...stringTypes].map(type => [type, "string"] as [string, string]),
     ...[...sameTypes].map(type => [type, type] as [string, string]),
-    ["object", "any"],
     ["sequence", "Array"],
     ["record", "Record"],
     ["FrozenArray", "ReadonlyArray"],
