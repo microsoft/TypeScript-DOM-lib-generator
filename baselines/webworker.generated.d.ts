@@ -5600,7 +5600,7 @@ declare namespace WebAssembly {
     
     var Global: {
         prototype: Global;
-        new(descriptor: GlobalDescriptor, value?: any): Global;
+        new(descriptor: GlobalDescriptor, v?: any): Global;
     };
     
     interface Instance {
@@ -5628,9 +5628,9 @@ declare namespace WebAssembly {
     var Module: {
         prototype: Module;
         new(bytes: BufferSource): Module;
-        customSections(module: Module, sectionName: string): ArrayBuffer[];
-        exports(module: Module): ModuleExportDescriptor[];
-        imports(module: Module): ModuleImportDescriptor[];
+        customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
+        exports(moduleObject: Module): ModuleExportDescriptor[];
+        imports(moduleObject: Module): ModuleImportDescriptor[];
     };
     
     interface Table {
@@ -5647,7 +5647,7 @@ declare namespace WebAssembly {
     
     interface GlobalDescriptor {
         mutable?: boolean;
-        value: string;
+        value: ValueType;
     }
     
     interface MemoryDescriptor {
@@ -5680,8 +5680,10 @@ declare namespace WebAssembly {
     type ImportExportKind = "function" | "table" | "memory" | "global";
     type TableKind = "anyfunc";
     function compile(bytes: BufferSource): Promise<Module>;
+    function compileStreaming(source: Response | Promise<Response>): Promise<Module>;
     function instantiate(bytes: BufferSource, importObject?: object): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: object): Promise<Instance>;
+    function instantiateStreaming(source: Response | Promise<Response>, importObject?: object): Promise<WebAssemblyInstantiatedSource>;
     function validate(bytes: BufferSource): boolean;
 }
 
@@ -5855,6 +5857,7 @@ type RequestRedirect = "follow" | "error" | "manual";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
 type ServiceWorkerState = "installing" | "installed" | "activating" | "activated" | "redundant";
 type ServiceWorkerUpdateViaCache = "imports" | "all" | "none";
+type ValueType = "i32" | "i64" | "f32" | "f64";
 type VisibilityState = "hidden" | "visible" | "prerender";
 type WebGLPowerPreference = "default" | "low-power" | "high-performance";
 type WorkerType = "classic" | "module";

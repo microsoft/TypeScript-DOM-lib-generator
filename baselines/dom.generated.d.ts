@@ -19039,7 +19039,7 @@ declare namespace WebAssembly {
     
     var Global: {
         prototype: Global;
-        new(descriptor: GlobalDescriptor, value?: any): Global;
+        new(descriptor: GlobalDescriptor, v?: any): Global;
     };
     
     interface Instance {
@@ -19075,9 +19075,9 @@ declare namespace WebAssembly {
     var Module: {
         prototype: Module;
         new(bytes: BufferSource): Module;
-        customSections(module: Module, sectionName: string): ArrayBuffer[];
-        exports(module: Module): ModuleExportDescriptor[];
-        imports(module: Module): ModuleImportDescriptor[];
+        customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
+        exports(moduleObject: Module): ModuleExportDescriptor[];
+        imports(moduleObject: Module): ModuleImportDescriptor[];
     };
     
     interface RuntimeError {
@@ -19102,7 +19102,7 @@ declare namespace WebAssembly {
     
     interface GlobalDescriptor {
         mutable?: boolean;
-        value: string;
+        value: ValueType;
     }
     
     interface MemoryDescriptor {
@@ -19135,8 +19135,10 @@ declare namespace WebAssembly {
     type ImportExportKind = "function" | "table" | "memory" | "global";
     type TableKind = "anyfunc";
     function compile(bytes: BufferSource): Promise<Module>;
+    function compileStreaming(source: Response | Promise<Response>): Promise<Module>;
     function instantiate(bytes: BufferSource, importObject?: object): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: object): Promise<Instance>;
+    function instantiateStreaming(source: Response | Promise<Response>, importObject?: object): Promise<WebAssemblyInstantiatedSource>;
     function validate(bytes: BufferSource): boolean;
 }
 
@@ -20095,6 +20097,7 @@ type TouchType = "direct" | "stylus";
 type Transport = "usb" | "nfc" | "ble";
 type UserVerificationRequirement = "required" | "preferred" | "discouraged";
 type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted";
+type ValueType = "i32" | "i64" | "f32" | "f64";
 type VideoFacingModeEnum = "user" | "environment" | "left" | "right";
 type VisibilityState = "hidden" | "visible" | "prerender";
 type WebGLPowerPreference = "default" | "low-power" | "high-performance";

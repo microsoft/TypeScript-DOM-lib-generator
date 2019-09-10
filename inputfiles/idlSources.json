@@ -376,6 +376,10 @@
         "title": "WebAssembly JavaScript Interface"
     },
     {
+        "url": "https://www.w3.org/TR/wasm-web-api-1/",
+        "title": "WebAssembly Web API"
+    },
+    {
         "url": "https://webaudio.github.io/web-audio-api/",
         "title": "Web Audio"
     },
