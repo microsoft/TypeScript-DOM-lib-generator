@@ -249,6 +249,7 @@ function convertAttribute(attribute: webidl2.AttributeMemberType, inheritedExpos
         name: attribute.name,
         ...convertIdlType(attribute.idlType),
         static: attribute.special === "static" ? 1 : undefined,
+        stringifier: attribute.special === "stringifier" ? 1 : undefined,
         "read-only": attribute.readonly ? 1 : undefined,
         "event-handler": isEventHandler ? attribute.name.slice(2) : undefined,
         exposed: getExtAttrConcatenated(attribute.extAttrs, "Exposed") || inheritedExposure

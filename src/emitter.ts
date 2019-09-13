@@ -622,6 +622,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             const readOnlyModifier = p["read-only"] === 1 && prefix === "" ? "readonly " : "";
             printer.printLine(`${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`);
         }
+
+        if (p.stringifier) {
+            printer.printLine("toString(): string;")
+        }
     }
 
     function emitComments(entity: { comment?: string; deprecated?: 1 }, print: (s: string) => void) {
@@ -662,7 +666,16 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             case "querySelector": return emitQuerySelectorOverloads(m);
             case "querySelectorAll": return emitQuerySelectorAllOverloads(m);
         }
-        emitSignatures(m, prefix, m.name, printLine);
+
+        // ignore toString() provided from browser.webidl.preprocessed.json
+        // to prevent duplication
+        if (m.name !== "toString") {
+            emitSignatures(m, prefix, m.name, printLine);
+
+            if (m.stringifier) {
+                printLine("toString(): string;")
+            }
+        }
     }
 
     function emitSignature(s: Browser.Signature, prefix: string | undefined, name: string | undefined, printLine: (s: string) => void) {

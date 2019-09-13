@@ -4146,6 +4146,7 @@ interface DOMTokenList {
      * Can be set, to change the associated attribute.
      */
     value: string;
+    toString(): string;
     /**
      * Adds all arguments passed, except those already present.
      * 
@@ -7024,6 +7025,7 @@ interface HTMLHyperlinkElementUtils {
     host: string;
     hostname: string;
     href: string;
+    toString(): string;
     readonly origin: string;
     password: string;
     pathname: string;
@@ -9877,6 +9879,7 @@ interface Location {
      * Can be set, to navigate to the given URL.
      */
     href: string;
+    toString(): string;
     /**
      * Returns the Location object's URL's origin.
      */
@@ -10335,10 +10338,10 @@ declare var MediaKeys: {
 interface MediaList {
     readonly length: number;
     mediaText: string;
+    toString(): string;
     appendMedium(medium: string): void;
     deleteMedium(medium: string): void;
     item(index: number): string | null;
-    toString(): number;
     [index: number]: string;
 }
 
@@ -15999,6 +16002,7 @@ interface URL {
     host: string;
     hostname: string;
     href: string;
+    toString(): string;
     readonly origin: string;
     password: string;
     pathname: string;

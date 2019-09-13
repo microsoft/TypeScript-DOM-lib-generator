@@ -3202,6 +3202,7 @@ interface URL {
     host: string;
     hostname: string;
     href: string;
+    toString(): string;
     readonly origin: string;
     password: string;
     pathname: string;
@@ -5380,12 +5381,12 @@ interface WorkerLocation {
     readonly host: string;
     readonly hostname: string;
     readonly href: string;
+    toString(): string;
     readonly origin: string;
     readonly pathname: string;
     readonly port: string;
     readonly protocol: string;
     readonly search: string;
-    toString(): string;
 }
 
 declare var WorkerLocation: {
