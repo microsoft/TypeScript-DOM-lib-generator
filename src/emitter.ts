@@ -707,6 +707,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
                 .sort(compareName)
                 .forEach(m => emitMethod(prefix, m, conflictedMembers));
         }
+        if (i["anonymous-methods"]) {
+            const stringifier = i["anonymous-methods"].method.find(m => m.stringifier);
+            if (stringifier) {
+                printer.printLine("toString(): string;");
+            }
+        }
 
         // The window interface inherited some methods from "Object",
         // which need to explicitly exposed

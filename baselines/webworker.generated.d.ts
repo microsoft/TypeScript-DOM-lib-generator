@@ -3247,12 +3247,14 @@ interface URLSearchParams {
      */
     set(name: string, value: string): void;
     sort(): void;
+    toString(): string;
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
 }
 
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+    toString(): string;
 };
 
 interface WEBGL_color_buffer_float {
