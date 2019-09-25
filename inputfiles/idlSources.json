@@ -125,6 +125,10 @@
         "title": "File"
     },
     {
+        "url": "https://wicg.github.io/entries-api/",
+        "title": "File and Directory Entries"
+    },
+    {
         "url": "https://www.w3.org/TR/filter-effects-1/",
         "title": "Filter Effects"
     },
