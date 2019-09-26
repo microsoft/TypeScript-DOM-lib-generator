@@ -57,6 +57,10 @@
         "title": "CSS Inline Layout"
     },
     {
+        "url": "https://www.w3.org/TR/css-logical-1/",
+        "title": "CSS Logical Properties and Values"
+    },
+    {
         "url": "https://drafts.fxtf.org/css-masking-1/",
         "title": "CSS Masking"
     },
