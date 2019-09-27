@@ -3032,9 +3032,9 @@ interface CSSStyleDeclaration {
     right: string;
     rotate: string;
     rowGap: string;
-    rubyAlign: string | null;
+    rubyAlign: string;
     rubyOverhang: string | null;
-    rubyPosition: string | null;
+    rubyPosition: string;
     scale: string;
     scrollBehavior: string;
     shapeRendering: string;
