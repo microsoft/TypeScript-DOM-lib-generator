@@ -3052,7 +3052,7 @@ interface CSSStyleDeclaration {
     tableLayout: string;
     textAlign: string;
     textAlignLast: string;
-    textAnchor: string | null;
+    textAnchor: string;
     textCombineUpright: string;
     textDecoration: string;
     textDecorationColor: string;
@@ -14680,13 +14680,13 @@ interface SVGTests {
 interface SVGTextContentElement extends SVGGraphicsElement {
     readonly lengthAdjust: SVGAnimatedEnumeration;
     readonly textLength: SVGAnimatedLength;
-    getCharNumAtPosition(point: SVGPoint): number;
+    getCharNumAtPosition(point?: DOMPointInit): number;
     getComputedTextLength(): number;
-    getEndPositionOfChar(charnum: number): SVGPoint;
-    getExtentOfChar(charnum: number): SVGRect;
+    getEndPositionOfChar(charnum: number): DOMPoint;
+    getExtentOfChar(charnum: number): DOMRect;
     getNumberOfChars(): number;
     getRotationOfChar(charnum: number): number;
-    getStartPositionOfChar(charnum: number): SVGPoint;
+    getStartPositionOfChar(charnum: number): DOMPoint;
     getSubStringLength(charnum: number, nchars: number): number;
     selectSubString(charnum: number, nchars: number): void;
     readonly LENGTHADJUST_SPACING: number;

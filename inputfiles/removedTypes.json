@@ -131,6 +131,9 @@
                         "overflowInline": null,
                         "paddingBlock": null,
                         "paddingInline": null,
+                        "shapeInside": null,
+                        "shapeMargin": null,
+                        "shapeSubtract": null,
                         "strokeAlign": null,
                         "strokeBreak": null,
                         "strokeColor": null,
@@ -141,7 +144,9 @@
                         "strokePosition": null,
                         "strokeRepeat": null,
                         "strokeSize": null,
-                        "textAlignAll": null
+                        "textAlignAll": null,
+                        "textDecorationFill": null,
+                        "textDecorationStroke": null
                     }
                 }
             },

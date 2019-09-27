@@ -2145,6 +2145,30 @@
                     }
                 ]
             },
+            "SVGTextElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "text"
+                    }
+                ]
+            },
+            "SVGTextPathElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "textPath"
+                    }
+                ]
+            },
+            "SVGTSpanElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "tspan"
+                    }
+                ]
+            },
             "MediaStream": {
                 "events": {
                     "event": [

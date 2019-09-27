@@ -420,6 +420,10 @@
         "title": "SVG - Painting"
     },
     {
+        "url": "https://www.w3.org/TR/SVG2/text.html",
+        "title": "SVG - Text"
+    },
+    {
         "url": "https://w3c.github.io/touch-events/",
         "title": "Touch Events"
     },
