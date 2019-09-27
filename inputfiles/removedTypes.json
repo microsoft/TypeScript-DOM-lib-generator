@@ -185,6 +185,10 @@
             "MSDSHEvent": null,
             "MSStreamReader": null,
             "PasswordCredential": null,
+            "SpeechRecognitionEvent": {
+                "constructor": null
+            },
+            "SpeechRecognitionErrorEvent": null,
             "StorageEvent": {
                 "methods": {
                     "method": {
