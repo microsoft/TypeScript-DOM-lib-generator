@@ -1,18 +1,21 @@
 {
     "callback-functions": {
         "callback-function": {
-            "CustomElementConstructor": null,
             "ErrorEventHandler": null,
             "Function": null
         }
     },
     "mixins": {
         "mixin": {
-            "XMLHttpRequestEventTarget": null,
-            "WindowTimers": {
-                "methods": null,
-                "implements": null
+            "GlobalEventHandlers": {
+                "properties": {
+                    "property": {
+                        "onformdata": null,
+                        "onslotchange": null
+                    }
+                }
             },
+            "XMLHttpRequestEventTarget": null,
             "WorkerUtils": {
                 "methods": {
                     "method": {
@@ -152,6 +155,7 @@
                 }
             },
             "FederatedCredential": null,
+            "FormDataEvent": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
                 "properties": {
@@ -162,6 +166,13 @@
                         "onload": null,
                         "onresize": null,
                         "onscroll": null
+                    }
+                }
+            },
+            "HTMLElement": {
+                "methods": {
+                    "method": {
+                        "attachInternals": null
                     }
                 }
             },
@@ -177,6 +188,13 @@
             "MSDSHEvent": null,
             "MSStreamReader": null,
             "PasswordCredential": null,
+            "ShadowRoot": {
+                "properties": {
+                    "property": {
+                        "onslotchange": null
+                    }
+                }
+            },
             "StorageEvent": {
                 "methods": {
                     "method": {
@@ -262,7 +280,8 @@
                     }
                 },
                 "implements": [
-                    "GlobalFetch"
+                    "GlobalFetch",
+                    "WindowTimers"
                 ]
             },
             "WorkerGlobalScope": {

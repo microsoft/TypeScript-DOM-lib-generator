@@ -489,6 +489,10 @@
                         "userSelect": {
                             "name": "userSelect",
                             "type": "CSSOMString"
+                        },
+                        "webkitAppearance": {
+                            "nullable": 0,
+                            "deprecated": 1
                         }
                     }
                 }

@@ -343,7 +343,6 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return baseTypeConversionMap.get(objDomType)!;
         }
         switch (objDomType) {
-            case "CustomElementConstructor": return "Function";
             case "DOMHighResTimeStamp": return "number";
             case "DOMTimeStamp": return "number";
             case "EventListener": return "EventListenerOrEventListenerObject";
