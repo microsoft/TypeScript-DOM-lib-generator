@@ -3038,8 +3038,8 @@ interface CSSStyleDeclaration {
     scale: string;
     scrollBehavior: string;
     shapeRendering: string;
-    stopColor: string | null;
-    stopOpacity: string | null;
+    stopColor: string;
+    stopOpacity: string;
     stroke: string;
     strokeDasharray: string;
     strokeDashoffset: string;
@@ -14358,7 +14358,7 @@ declare var SVGPathSegMovetoRel: {
 };
 
 /** Corresponds to the <pattern> element. */
-interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGTests, SVGURIReference {
+interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGURIReference {
     readonly height: SVGAnimatedLength;
     readonly patternContentUnits: SVGAnimatedEnumeration;
     readonly patternTransform: SVGAnimatedTransformList;
@@ -14464,6 +14464,7 @@ declare var SVGPreserveAspectRatio: {
 interface SVGRadialGradientElement extends SVGGradientElement {
     readonly cx: SVGAnimatedLength;
     readonly cy: SVGAnimatedLength;
+    readonly fr: SVGAnimatedLength;
     readonly fx: SVGAnimatedLength;
     readonly fy: SVGAnimatedLength;
     readonly r: SVGAnimatedLength;

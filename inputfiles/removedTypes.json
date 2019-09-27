@@ -226,11 +226,6 @@
                     }
                 }
             },
-            "SVGGradientElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
-            },
             "SVGMatrix": null,
             "SVGMarkerElement": {
                 "properties": {
@@ -238,11 +233,6 @@
                         "orient": null
                     }
                 }
-            },
-            "SVGPatternElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
             },
             "SVGPoint": null,
             "SVGRect": null,
