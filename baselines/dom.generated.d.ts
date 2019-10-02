@@ -10346,7 +10346,7 @@ declare var MediaKeySession: {
 /** This EncryptedMediaExtensions API interface is a read-only map of media key statuses by key IDs. */
 interface MediaKeyStatusMap {
     readonly size: number;
-    get(keyId: BufferSource): any;
+    get(keyId: BufferSource): MediaKeyStatus | undefined;
     has(keyId: BufferSource): boolean;
     forEach(callbackfn: (value: MediaKeyStatus, key: BufferSource, parent: MediaKeyStatusMap) => void, thisArg?: any): void;
 }

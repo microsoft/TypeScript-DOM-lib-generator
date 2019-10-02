@@ -2787,6 +2787,18 @@
                         }
                     ]
                 }
+            },
+            "MediaKeyStatusMap": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            "name": "get",
+                            "override-signatures": [
+                                "get(keyId: BufferSource): MediaKeyStatus | undefined"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
