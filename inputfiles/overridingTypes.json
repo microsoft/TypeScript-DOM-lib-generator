@@ -2761,6 +2761,16 @@
                         }
                     }
                 }
+            },
+            "MediaKeySession": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MediaKeyMessageEvent"
+                        }
+                    ]
+                }
             }
         }
     },

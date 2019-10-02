@@ -10316,7 +10316,7 @@ declare var MediaKeyMessageEvent: {
 
 interface MediaKeySessionEventMap {
     "keystatuseschange": Event;
-    "message": MessageEvent;
+    "message": MediaKeyMessageEvent;
 }
 
 /** This EncryptedMediaExtensions API interface represents a context for message exchange with a content decryption module (CDM). */
@@ -10325,7 +10325,7 @@ interface MediaKeySession extends EventTarget {
     readonly expiration: number;
     readonly keyStatuses: MediaKeyStatusMap;
     onkeystatuseschange: ((this: MediaKeySession, ev: Event) => any) | null;
-    onmessage: ((this: MediaKeySession, ev: MessageEvent) => any) | null;
+    onmessage: ((this: MediaKeySession, ev: MediaKeyMessageEvent) => any) | null;
     readonly sessionId: string;
     close(): Promise<void>;
     generateRequest(initDataType: string, initData: BufferSource): Promise<void>;
