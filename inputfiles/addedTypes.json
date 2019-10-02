@@ -2226,6 +2226,36 @@
                         }
                     }
                 }
+            },
+            "TextTrackList": {
+                "properties": {
+                    "property": {
+                        "onchange": {
+                            "name": "onchange",
+                            "type": "EventHandler",
+                            "event-handler": "change",
+                            "nullable": 1
+                        },
+                        "onremovetrack": {
+                            "name": "onremovetrack",
+                            "type": "EventHandler",
+                            "event-handler": "removetrack",
+                            "nullable": 1
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "change",
+                            "type": "Event"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "TrackEvent"
+                        }
+                    ]
+                }
             }
         }
     },

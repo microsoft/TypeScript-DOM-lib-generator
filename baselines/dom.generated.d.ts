@@ -15885,11 +15885,15 @@ declare var TextTrackCueList: {
 
 interface TextTrackListEventMap {
     "addtrack": TrackEvent;
+    "change": Event;
+    "removetrack": TrackEvent;
 }
 
 interface TextTrackList extends EventTarget {
     readonly length: number;
     onaddtrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
+    onchange: ((this: TextTrackList, ev: Event) => any) | null;
+    onremovetrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
     item(index: number): TextTrack;
     addEventListener<K extends keyof TextTrackListEventMap>(type: K, listener: (this: TextTrackList, ev: TextTrackListEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
