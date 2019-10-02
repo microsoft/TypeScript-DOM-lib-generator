@@ -1260,6 +1260,14 @@
                             ]
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "msneedkey",
+                            "type": "MSMediaKeyNeededEvent"
+                        }
+                    ]
                 }
             },
             "DataTransferItemList": {

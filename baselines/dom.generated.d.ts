@@ -7646,7 +7646,7 @@ declare var HTMLMarqueeElement: {
 
 interface HTMLMediaElementEventMap extends HTMLElementEventMap {
     "encrypted": MediaEncryptedEvent;
-    "msneedkey": Event;
+    "msneedkey": MSMediaKeyNeededEvent;
     "waitingforkey": Event;
 }
 
@@ -7743,7 +7743,7 @@ interface HTMLMediaElement extends HTMLElement {
     readonly networkState: number;
     onencrypted: ((this: HTMLMediaElement, ev: MediaEncryptedEvent) => any) | null;
     /** @deprecated */
-    onmsneedkey: ((this: HTMLMediaElement, ev: Event) => any) | null;
+    onmsneedkey: ((this: HTMLMediaElement, ev: MSMediaKeyNeededEvent) => any) | null;
     onwaitingforkey: ((this: HTMLMediaElement, ev: Event) => any) | null;
     /**
      * Gets a flag that specifies whether playback is paused.
