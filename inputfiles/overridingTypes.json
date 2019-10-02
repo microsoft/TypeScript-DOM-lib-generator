@@ -642,6 +642,14 @@
                             "nullable": false
                        }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "readystatechange",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             "Node": {

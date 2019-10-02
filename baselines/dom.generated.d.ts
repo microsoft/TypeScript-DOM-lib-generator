@@ -4491,7 +4491,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap, DocumentAndEleme
     "fullscreenerror": Event;
     "pointerlockchange": Event;
     "pointerlockerror": Event;
-    "readystatechange": ProgressEvent<Document>;
+    "readystatechange": Event;
     "visibilitychange": Event;
 }
 
@@ -4650,7 +4650,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Fires when the state of the object has changed.
      * @param ev The event
      */
-    onreadystatechange: ((this: Document, ev: ProgressEvent<Document>) => any) | null;
+    onreadystatechange: ((this: Document, ev: Event) => any) | null;
     onvisibilitychange: ((this: Document, ev: Event) => any) | null;
     /**
      * Returns document's origin.
