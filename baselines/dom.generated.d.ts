@@ -20002,7 +20002,7 @@ type InsertPosition = "beforebegin" | "afterbegin" | "beforeend" | "afterend";
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
 type MutationRecordType = "attributes" | "characterData" | "childList";
 type IDBKeyPath = string;
-type Transferable = ArrayBuffer | MessagePort | ImageBitmap;
+type Transferable = ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas;
 type RTCIceGatherCandidate = RTCIceCandidateDictionary | RTCIceCandidateComplete;
 type RTCTransport = RTCDtlsTransport | RTCSrtpSdesTransport;
 /** @deprecated */
