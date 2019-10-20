@@ -315,6 +315,30 @@
             },
             "ValueType": {
                 "legacy-namespace": "WebAssembly"
+            },
+            "PermissionName": {
+                "name": "PermissionName",
+                "value": [
+                    "geolocation",
+                    "notifications",
+                    "push",
+                    "midi",
+                    "camera",
+                    "microphone",
+                    "speaker",
+                    "device-info",
+                    "background-sync",
+                    "bluetooth",
+                    "persistent-storage",
+                    "ambient-light-sensor",
+                    "accelerometer",
+                    "gyroscope",
+                    "magnetometer" ,
+                    "accessibility-events",
+                    "clipboard-read",
+                    "clipboard-write",
+                    "payment-handler"
+                ]
             }
         }
     },
