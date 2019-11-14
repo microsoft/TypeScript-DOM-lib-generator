@@ -68,10 +68,54 @@
             "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
-                        "hangingPunctuation": null,
+                        "backgroundPositionBlock": null,
+                        "backgroundPositionInline": null,
                         "blockOverflow": null,
+                        "borderBlock": null,
+                        "borderBlockColor": null,
+                        "borderBlockStyle": null,
+                        "borderBlockWidth": null,
+                        "borderClip": null,
+                        "borderClipBottom": null,
+                        "borderClipLeft": null,
+                        "borderClipRight": null,
+                        "borderClipTop": null,
+                        "borderEndEndRadius": null,
+                        "borderEndStartRadius": null,
+                        "borderInline": null,
+                        "borderInlineColor": null,
+                        "borderInlineStyle": null,
+                        "borderInlineWidth": null,
+                        "borderLimit": null,
+                        "borderStartEndRadius": null,
+                        "borderStartStartRadius": null,
+                        "boxDecorationBreak": null,
+                        "colorRendering": null,
                         "continue": null,
+                        "cornerShape": null,
+                        "corners": null,
+                        "fillBreak": null,
+                        "fillColor": null,
+                        "fillImage": null,
+                        "fillOrigin": null,
+                        "fillPosition": null,
+                        "fillRepeat": null,
+                        "fillSize": null,
+                        "hangingPunctuation": null,
+                        "initialLetters": null,
+                        "initialLettersAlign": null,
+                        "initialLettersWrap": null,
+                        "inlineSizing": null,
+                        "inset": null,
+                        "insetBlock": null,
+                        "insetBlockEnd": null,
+                        "insetBlockStart": null,
+                        "insetInline": null,
+                        "insetInlineEnd": null,
+                        "insetInlineStart": null,
                         "lineClamp": null,
+                        "marginBlock": null,
+                        "marginInline": null,
                         "maskBorder": null,
                         "maskBorderMode": null,
                         "maskBorderOutset": null,
@@ -85,6 +129,18 @@
                         "maxLines": null,
                         "overflowBlock": null,
                         "overflowInline": null,
+                        "paddingBlock": null,
+                        "paddingInline": null,
+                        "strokeAlign": null,
+                        "strokeBreak": null,
+                        "strokeColor": null,
+                        "strokeDashCorner": null,
+                        "strokeDashJustify": null,
+                        "strokeImage": null,
+                        "strokeOrigin": null,
+                        "strokePosition": null,
+                        "strokeRepeat": null,
+                        "strokeSize": null,
                         "textAlignAll": null
                     }
                 }
@@ -176,6 +232,13 @@
                 ]
             },
             "SVGMatrix": null,
+            "SVGMarkerElement": {
+                "properties": {
+                    "property": {
+                        "orient": null
+                    }
+                }
+            },
             "SVGPatternElement": {
                 "implements": [
                     "SVGUnitTypes"
