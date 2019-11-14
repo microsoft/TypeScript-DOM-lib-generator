@@ -22,6 +22,11 @@ export function collectLegacyNamespaceTypes(webidl: Browser.WebIdl): Browser.Int
       getNamespace(i["legacy-namespace"]).nested!.enums.push(i);
     }
   }
+  for (const i of webidl.typedefs!.typedef) {
+    if (i["legacy-namespace"]) {
+      getNamespace(i["legacy-namespace"]).nested!.typedefs.push(i);
+    }
+  }
 
   return mapToArray(namespaceMap);
 
@@ -44,7 +49,8 @@ function addEmptyNested(namespace: Browser.Interface): Browser.Interface {
     nested: {
       interfaces: [],
       enums: [],
-      dictionaries: []
+      dictionaries: [],
+      typedefs: [],
     }
   };
 }

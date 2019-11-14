@@ -1496,6 +1496,16 @@ interface RTCTransportStats extends RTCStats {
     selectedCandidatePairId?: string;
 }
 
+interface ReadableStreamReadDoneResult<T> {
+    done: true;
+    value?: T;
+}
+
+interface ReadableStreamReadValueResult<T> {
+    done: false;
+    value: T;
+}
+
 interface RegistrationOptions {
     scope?: string;
     type?: WorkerType;
@@ -2730,7 +2740,7 @@ interface CSSStyleDeclaration {
     alignContent: string;
     alignItems: string;
     alignSelf: string;
-    alignmentBaseline: string | null;
+    alignmentBaseline: string;
     animation: string;
     animationDelay: string;
     animationDirection: string;
@@ -2740,65 +2750,83 @@ interface CSSStyleDeclaration {
     animationName: string;
     animationPlayState: string;
     animationTimingFunction: string;
-    backfaceVisibility: string | null;
-    background: string | null;
-    backgroundAttachment: string | null;
-    backgroundClip: string | null;
-    backgroundColor: string | null;
-    backgroundImage: string | null;
-    backgroundOrigin: string | null;
-    backgroundPosition: string | null;
-    backgroundPositionX: string | null;
-    backgroundPositionY: string | null;
-    backgroundRepeat: string | null;
-    backgroundSize: string | null;
-    baselineShift: string | null;
-    border: string | null;
-    borderBottom: string | null;
-    borderBottomColor: string | null;
-    borderBottomLeftRadius: string | null;
-    borderBottomRightRadius: string | null;
-    borderBottomStyle: string | null;
-    borderBottomWidth: string | null;
-    borderCollapse: string | null;
-    borderColor: string | null;
-    borderImage: string | null;
-    borderImageOutset: string | null;
-    borderImageRepeat: string | null;
-    borderImageSlice: string | null;
-    borderImageSource: string | null;
-    borderImageWidth: string | null;
-    borderLeft: string | null;
-    borderLeftColor: string | null;
-    borderLeftStyle: string | null;
-    borderLeftWidth: string | null;
-    borderRadius: string | null;
-    borderRight: string | null;
-    borderRightColor: string | null;
-    borderRightStyle: string | null;
-    borderRightWidth: string | null;
-    borderSpacing: string | null;
-    borderStyle: string | null;
-    borderTop: string | null;
-    borderTopColor: string | null;
-    borderTopLeftRadius: string | null;
-    borderTopRightRadius: string | null;
-    borderTopStyle: string | null;
-    borderTopWidth: string | null;
-    borderWidth: string | null;
-    bottom: string | null;
-    boxShadow: string | null;
+    backfaceVisibility: string;
+    background: string;
+    backgroundAttachment: string;
+    backgroundClip: string;
+    backgroundColor: string;
+    backgroundImage: string;
+    backgroundOrigin: string;
+    backgroundPosition: string;
+    backgroundPositionX: string;
+    backgroundPositionY: string;
+    backgroundRepeat: string;
+    backgroundSize: string;
+    baselineShift: string;
+    blockSize: string;
+    border: string;
+    borderBlockEnd: string;
+    borderBlockEndColor: string;
+    borderBlockEndStyle: string;
+    borderBlockEndWidth: string;
+    borderBlockStart: string;
+    borderBlockStartColor: string;
+    borderBlockStartStyle: string;
+    borderBlockStartWidth: string;
+    borderBottom: string;
+    borderBottomColor: string;
+    borderBottomLeftRadius: string;
+    borderBottomRightRadius: string;
+    borderBottomStyle: string;
+    borderBottomWidth: string;
+    borderCollapse: string;
+    borderColor: string;
+    borderImage: string;
+    borderImageOutset: string;
+    borderImageRepeat: string;
+    borderImageSlice: string;
+    borderImageSource: string;
+    borderImageWidth: string;
+    borderInlineEnd: string;
+    borderInlineEndColor: string;
+    borderInlineEndStyle: string;
+    borderInlineEndWidth: string;
+    borderInlineStart: string;
+    borderInlineStartColor: string;
+    borderInlineStartStyle: string;
+    borderInlineStartWidth: string;
+    borderLeft: string;
+    borderLeftColor: string;
+    borderLeftStyle: string;
+    borderLeftWidth: string;
+    borderRadius: string;
+    borderRight: string;
+    borderRightColor: string;
+    borderRightStyle: string;
+    borderRightWidth: string;
+    borderSpacing: string;
+    borderStyle: string;
+    borderTop: string;
+    borderTopColor: string;
+    borderTopLeftRadius: string;
+    borderTopRightRadius: string;
+    borderTopStyle: string;
+    borderTopWidth: string;
+    borderWidth: string;
+    bottom: string;
+    boxShadow: string;
     boxSizing: string;
-    breakAfter: string | null;
-    breakBefore: string | null;
-    breakInside: string | null;
-    captionSide: string | null;
+    breakAfter: string;
+    breakBefore: string;
+    breakInside: string;
+    captionSide: string;
     caretColor: string;
-    clear: string | null;
+    clear: string;
     clip: string;
     clipPath: string;
     clipRule: string;
     color: string | null;
+    colorInterpolation: string;
     colorInterpolationFilters: string;
     columnCount: string;
     columnFill: string;
@@ -2810,28 +2838,29 @@ interface CSSStyleDeclaration {
     columnSpan: string;
     columnWidth: string;
     columns: string;
-    content: string | null;
-    counterIncrement: string | null;
-    counterReset: string | null;
+    content: string;
+    counterIncrement: string;
+    counterReset: string;
     cssFloat: string | null;
     cssText: string;
     cursor: string;
     direction: string;
-    display: string | null;
-    dominantBaseline: string | null;
-    emptyCells: string | null;
+    display: string;
+    dominantBaseline: string;
+    emptyCells: string;
     enableBackground: string | null;
-    fill: string | null;
-    fillOpacity: string | null;
-    fillRule: string | null;
+    fill: string;
+    fillOpacity: string;
+    fillRule: string;
     filter: string;
-    flex: string | null;
-    flexBasis: string | null;
-    flexDirection: string | null;
-    flexFlow: string | null;
-    flexGrow: string | null;
-    flexShrink: string | null;
-    flexWrap: string | null;
+    flex: string;
+    flexBasis: string;
+    flexDirection: string;
+    flexFlow: string;
+    flexGrow: string;
+    flexShrink: string;
+    flexWrap: string;
+    float: string;
     floodColor: string;
     floodOpacity: string;
     font: string;
@@ -2853,29 +2882,30 @@ interface CSSStyleDeclaration {
     gap: string;
     glyphOrientationHorizontal: string | null;
     glyphOrientationVertical: string;
-    grid: string | null;
-    gridArea: string | null;
-    gridAutoColumns: string | null;
-    gridAutoFlow: string | null;
-    gridAutoRows: string | null;
-    gridColumn: string | null;
-    gridColumnEnd: string | null;
+    grid: string;
+    gridArea: string;
+    gridAutoColumns: string;
+    gridAutoFlow: string;
+    gridAutoRows: string;
+    gridColumn: string;
+    gridColumnEnd: string;
     gridColumnGap: string;
-    gridColumnStart: string | null;
+    gridColumnStart: string;
     gridGap: string;
-    gridRow: string | null;
-    gridRowEnd: string | null;
+    gridRow: string;
+    gridRowEnd: string;
     gridRowGap: string;
-    gridRowStart: string | null;
-    gridTemplate: string | null;
-    gridTemplateAreas: string | null;
-    gridTemplateColumns: string | null;
-    gridTemplateRows: string | null;
-    height: string | null;
+    gridRowStart: string;
+    gridTemplate: string;
+    gridTemplateAreas: string;
+    gridTemplateColumns: string;
+    gridTemplateRows: string;
+    height: string;
     hyphens: string;
     imageOrientation: string;
     imageRendering: string;
     imeMode: string | null;
+    inlineSize: string;
     justifyContent: string;
     justifyItems: string;
     justifySelf: string;
@@ -2885,25 +2915,29 @@ interface CSSStyleDeclaration {
     layoutGridLine: string | null;
     layoutGridMode: string | null;
     layoutGridType: string | null;
-    left: string | null;
+    left: string;
     readonly length: number;
     letterSpacing: string;
     lightingColor: string;
     lineBreak: string;
-    lineHeight: string | null;
-    listStyle: string | null;
-    listStyleImage: string | null;
-    listStylePosition: string | null;
-    listStyleType: string | null;
-    margin: string | null;
-    marginBottom: string | null;
-    marginLeft: string | null;
-    marginRight: string | null;
-    marginTop: string | null;
-    marker: string | null;
-    markerEnd: string | null;
-    markerMid: string | null;
-    markerStart: string | null;
+    lineHeight: string;
+    listStyle: string;
+    listStyleImage: string;
+    listStylePosition: string;
+    listStyleType: string;
+    margin: string;
+    marginBlockEnd: string;
+    marginBlockStart: string;
+    marginBottom: string;
+    marginInlineEnd: string;
+    marginInlineStart: string;
+    marginLeft: string;
+    marginRight: string;
+    marginTop: string;
+    marker: string;
+    markerEnd: string;
+    markerMid: string;
+    markerStart: string;
     mask: string;
     maskComposite: string;
     maskImage: string;
@@ -2911,10 +2945,14 @@ interface CSSStyleDeclaration {
     maskRepeat: string;
     maskSize: string;
     maskType: string;
-    maxHeight: string | null;
-    maxWidth: string | null;
-    minHeight: string | null;
-    minWidth: string | null;
+    maxBlockSize: string;
+    maxHeight: string;
+    maxInlineSize: string;
+    maxWidth: string;
+    minBlockSize: string;
+    minHeight: string;
+    minInlineSize: string;
+    minWidth: string;
     msContentZoomChaining: string | null;
     msContentZoomLimit: string | null;
     msContentZoomLimitMax: any;
@@ -2965,8 +3003,8 @@ interface CSSStyleDeclaration {
     objectFit: string;
     objectPosition: string;
     opacity: string | null;
-    order: string | null;
-    orphans: string | null;
+    order: string;
+    orphans: string;
     outline: string;
     outlineColor: string;
     outlineOffset: string;
@@ -2977,45 +3015,51 @@ interface CSSStyleDeclaration {
     overflowWrap: string;
     overflowX: string;
     overflowY: string;
-    padding: string | null;
-    paddingBottom: string | null;
-    paddingLeft: string | null;
-    paddingRight: string | null;
-    paddingTop: string | null;
-    pageBreakAfter: string | null;
-    pageBreakBefore: string | null;
-    pageBreakInside: string | null;
+    padding: string;
+    paddingBlockEnd: string;
+    paddingBlockStart: string;
+    paddingBottom: string;
+    paddingInlineEnd: string;
+    paddingInlineStart: string;
+    paddingLeft: string;
+    paddingRight: string;
+    paddingTop: string;
+    pageBreakAfter: string;
+    pageBreakBefore: string;
+    pageBreakInside: string;
+    paintOrder: string;
     readonly parentRule: CSSRule;
     penAction: string | null;
-    perspective: string | null;
-    perspectiveOrigin: string | null;
+    perspective: string;
+    perspectiveOrigin: string;
     placeContent: string;
     placeItems: string;
     placeSelf: string;
     pointerEvents: string | null;
-    position: string | null;
-    quotes: string | null;
+    position: string;
+    quotes: string;
     resize: string;
-    right: string | null;
-    rotate: string | null;
+    right: string;
+    rotate: string;
     rowGap: string;
     rubyAlign: string | null;
     rubyOverhang: string | null;
     rubyPosition: string | null;
-    scale: string | null;
+    scale: string;
     scrollBehavior: string;
+    shapeRendering: string;
     stopColor: string | null;
     stopOpacity: string | null;
-    stroke: string | null;
-    strokeDasharray: string | null;
-    strokeDashoffset: string | null;
-    strokeLinecap: string | null;
-    strokeLinejoin: string | null;
-    strokeMiterlimit: string | null;
-    strokeOpacity: string | null;
-    strokeWidth: string | null;
+    stroke: string;
+    strokeDasharray: string;
+    strokeDashoffset: string;
+    strokeLinecap: string;
+    strokeLinejoin: string;
+    strokeMiterlimit: string;
+    strokeOpacity: string;
+    strokeWidth: string;
     tabSize: string;
-    tableLayout: string | null;
+    tableLayout: string;
     textAlign: string;
     textAlignLast: string;
     textAnchor: string | null;
@@ -3034,25 +3078,26 @@ interface CSSStyleDeclaration {
     textKashidaSpace: string | null;
     textOrientation: string;
     textOverflow: string;
+    textRendering: string;
     textShadow: string;
     textTransform: string;
     textUnderlinePosition: string;
-    top: string | null;
+    top: string;
     touchAction: string;
     transform: string;
     transformBox: string;
     transformOrigin: string;
-    transformStyle: string | null;
+    transformStyle: string;
     transition: string;
     transitionDelay: string;
     transitionDuration: string;
     transitionProperty: string;
     transitionTimingFunction: string;
-    translate: string | null;
+    translate: string;
     unicodeBidi: string;
     userSelect: string;
-    verticalAlign: string | null;
-    visibility: string | null;
+    verticalAlign: string;
+    visibility: string;
     /** @deprecated */
     webkitAlignContent: string;
     /** @deprecated */
@@ -3208,14 +3253,14 @@ interface CSSStyleDeclaration {
     webkitUserSelect: string | null;
     webkitWritingMode: string | null;
     whiteSpace: string;
-    widows: string | null;
-    width: string | null;
+    widows: string;
+    width: string;
     willChange: string;
     wordBreak: string;
     wordSpacing: string;
     wordWrap: string;
     writingMode: string;
-    zIndex: string | null;
+    zIndex: string;
     zoom: string | null;
     getPropertyPriority(propertyName: string): string;
     getPropertyValue(propertyName: string): string;
@@ -3309,7 +3354,7 @@ interface CacheStorage {
     delete(cacheName: string): Promise<boolean>;
     has(cacheName: string): Promise<boolean>;
     keys(): Promise<string[]>;
-    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>;
+    match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>;
     open(cacheName: string): Promise<Cache>;
 }
 
@@ -3425,7 +3470,7 @@ interface CanvasRect {
 }
 
 /** The CanvasRenderingContext2D interface, part of the Canvas API, provides the 2D rendering context for the drawing surface of a <canvas> element. It is used for drawing shapes, text, images, and other objects. */
-interface CanvasRenderingContext2D extends CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasUserInterface, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
+interface CanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform, CanvasUserInterface {
     readonly canvas: HTMLCanvasElement;
 }
 
@@ -3507,7 +3552,7 @@ declare var ChannelSplitterNode: {
 };
 
 /** The CharacterData abstract interface represents a Node object that contains characters. This is an abstract interface, meaning there aren't any object of type CharacterData: it is implemented by other interfaces, like Text, Comment, or ProcessingInstruction which aren't abstract. */
-interface CharacterData extends Node, NonDocumentTypeChildNode, ChildNode {
+interface CharacterData extends Node, ChildNode, NonDocumentTypeChildNode {
     data: string;
     readonly length: number;
     appendData(data: string): void;
@@ -4384,6 +4429,7 @@ interface DeviceMotionEvent extends Event {
 declare var DeviceMotionEvent: {
     prototype: DeviceMotionEvent;
     new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
+    requestPermission(): Promise<PermissionState>;
 };
 
 interface DeviceMotionEventAcceleration {
@@ -4409,6 +4455,7 @@ interface DeviceOrientationEvent extends Event {
 declare var DeviceOrientationEvent: {
     prototype: DeviceOrientationEvent;
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
+    requestPermission(): Promise<PermissionState>;
 };
 
 /** Provides information about the rate at which the device is rotating around all three axes. */
@@ -4452,7 +4499,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap, DocumentAndEleme
 }
 
 /** Any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree. */
-interface Document extends Node, NonElementParentNode, DocumentOrShadowRoot, ParentNode, XPathEvaluatorBase, GlobalEventHandlers, DocumentAndElementEventHandlers {
+interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShadowRoot, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     /**
      * Sets or gets the URL for the current document.
      */
@@ -5143,7 +5190,7 @@ interface ElementEventMap {
 }
 
 /** Element is the most general base class from which all objects in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element. */
-interface Element extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode, Slotable, InnerHTML, Animatable {
+interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTypeChildNode, ParentNode, Slotable {
     readonly assignedSlot: HTMLSlotElement | null;
     readonly attributes: NamedNodeMap;
     /**
@@ -5217,8 +5264,8 @@ interface Element extends Node, ParentNode, NonDocumentTypeChildNode, ChildNode,
     getAttributeNames(): string[];
     getAttributeNode(name: string): Attr | null;
     getAttributeNodeNS(namespaceURI: string, localName: string): Attr | null;
-    getBoundingClientRect(): ClientRect | DOMRect;
-    getClientRects(): ClientRectList | DOMRectList;
+    getBoundingClientRect(): DOMRect;
+    getClientRects(): DOMRectList;
     /**
      * Returns a HTMLCollection of the elements in the object on which the method was invoked (a document or an element) that have all the classes given by classNames. The classNames argument is interpreted as a space-separated list of classes.
      */
@@ -6064,10 +6111,10 @@ interface GlobalEventHandlers {
      */
     ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    ontouchcancel: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
-    ontouchend: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
-    ontouchmove: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
-    ontouchstart: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchcancel?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchend?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchmove?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchstart?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
     ontransitioncancel: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
     ontransitionend: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
     ontransitionrun: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
@@ -6638,7 +6685,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
 }
 
 /** Any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it. */
-interface HTMLElement extends Element, GlobalEventHandlers, DocumentAndElementEventHandlers, ElementContentEditable, HTMLOrSVGElement, ElementCSSInlineStyle {
+interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
     accessKey: string;
     readonly accessKeyLabel: string;
     autocapitalize: string;
@@ -7313,7 +7360,7 @@ interface HTMLInputElement extends HTMLElement {
      * When present, marks an element that can't be submitted without a value.
      */
     required: boolean;
-    selectionDirection: string | null;
+    selectionDirection: "forward" | "backward" | "none" | null;
     /**
      * Gets or sets the end position or offset of a text selection.
      */
@@ -8904,7 +8951,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Sets or retrieves the number of horizontal rows contained in the object.
      */
     rows: number;
-    selectionDirection: string;
+    selectionDirection: "forward" | "backward" | "none";
     /**
      * Gets or sets the end position or offset of a text selection.
      */
@@ -9731,7 +9778,7 @@ interface ImageData {
 declare var ImageData: {
     prototype: ImageData;
     new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height: number): ImageData;
+    new(array: Uint8ClampedArray, width: number, height?: number): ImageData;
 };
 
 interface InnerHTML {
@@ -9776,11 +9823,11 @@ declare var IntersectionObserver: {
 
 /** This Intersection Observer API interface describes the intersection between the target element and its root container at a specific moment of transition. */
 interface IntersectionObserverEntry {
-    readonly boundingClientRect: ClientRect | DOMRect;
+    readonly boundingClientRect: DOMRectReadOnly;
     readonly intersectionRatio: number;
-    readonly intersectionRect: ClientRect | DOMRect;
+    readonly intersectionRect: DOMRectReadOnly;
     readonly isIntersecting: boolean;
-    readonly rootBounds: ClientRect | DOMRect | null;
+    readonly rootBounds: DOMRectReadOnly | null;
     readonly target: Element;
     readonly time: number;
 }
@@ -10822,7 +10869,7 @@ declare var NavigationPreloadManager: {
 };
 
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
-interface Navigator extends NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorContentUtils, NavigatorCookies, NavigatorPlugins, NavigatorConcurrentHardware, NavigatorStorage, NavigatorAutomationInformation, MSFileSaver, MSNavigatorDoNotTrack, NavigatorBeacon {
+interface Navigator extends MSFileSaver, MSNavigatorDoNotTrack, NavigatorAutomationInformation, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
     readonly activeVRDisplays: ReadonlyArray<VRDisplay>;
     readonly clipboard: Clipboard;
     readonly credentials: CredentialsContainer;
@@ -10955,7 +11002,7 @@ interface Node extends EventTarget {
     /**
      * Returns the previous sibling.
      */
-    readonly previousSibling: Node | null;
+    readonly previousSibling: ChildNode | null;
     textContent: string | null;
     appendChild<T extends Node>(newChild: T): T;
     /**
@@ -11361,7 +11408,7 @@ declare var OffscreenCanvas: {
     new(width: number, height: number): OffscreenCanvas;
 };
 
-interface OffscreenCanvasRenderingContext2D extends CanvasState, CanvasTransform, CanvasCompositing, CanvasImageSmoothing, CanvasFillStrokeStyles, CanvasShadowStyles, CanvasFilters, CanvasRect, CanvasDrawPath, CanvasText, CanvasDrawImage, CanvasImageData, CanvasPathDrawingStyles, CanvasTextDrawingStyles, CanvasPath {
+interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     readonly canvas: OffscreenCanvas;
     commit(): void;
 }
@@ -12593,8 +12640,8 @@ interface Range extends AbstractRange {
     deleteContents(): void;
     detach(): void;
     extractContents(): DocumentFragment;
-    getBoundingClientRect(): ClientRect | DOMRect;
-    getClientRects(): ClientRectList | DOMRectList;
+    getBoundingClientRect(): DOMRect;
+    getClientRects(): DOMRectList;
     insertNode(node: Node): void;
     /**
      * Returns whether range intersects node.
@@ -12677,11 +12724,6 @@ interface ReadableStreamDefaultReader<R = any> {
     cancel(reason?: any): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
-}
-
-interface ReadableStreamReadResult<T> {
-    done: boolean;
-    value: T;
 }
 
 interface ReadableStreamReader<R = any> {
@@ -13120,7 +13162,7 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
 }
 
 /** All of the SVG DOM interfaces that correspond directly to elements in the SVG language derive from the SVGElement interface. */
-interface SVGElement extends Element, GlobalEventHandlers, DocumentAndElementEventHandlers, SVGElementInstance, HTMLOrSVGElement, ElementCSSInlineStyle {
+interface SVGElement extends Element, DocumentAndElementEventHandlers, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement, SVGElementInstance {
     /** @deprecated */
     readonly className: any;
     readonly ownerSVGElement: SVGSVGElement | null;
@@ -14330,7 +14372,7 @@ declare var SVGPathSegMovetoRel: {
 };
 
 /** Corresponds to the <pattern> element. */
-interface SVGPatternElement extends SVGElement, SVGTests, SVGFitToViewBox, SVGURIReference {
+interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGTests, SVGURIReference {
     readonly height: SVGAnimatedLength;
     readonly patternContentUnits: SVGAnimatedEnumeration;
     readonly patternTransform: SVGAnimatedTransformList;
@@ -15633,7 +15675,9 @@ interface TextDecoderCommon {
     readonly ignoreBOM: boolean;
 }
 
-interface TextDecoderStream extends TextDecoderCommon, GenericTransformStream {
+interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
+    readonly readable: ReadableStream<string>;
+    readonly writable: WritableStream<BufferSource>;
 }
 
 declare var TextDecoderStream: {
@@ -15665,7 +15709,9 @@ interface TextEncoderCommon {
     readonly encoding: string;
 }
 
-interface TextEncoderStream extends TextEncoderCommon, GenericTransformStream {
+interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
+    readonly readable: ReadableStream<Uint8Array>;
+    readonly writable: WritableStream<string>;
 }
 
 declare var TextEncoderStream: {
@@ -16436,7 +16482,7 @@ declare var WebAuthnAssertion: {
     new(): WebAuthnAssertion;
 };
 
-interface WebGL2RenderingContext extends WebGLRenderingContextBase, WebGL2RenderingContextBase, WebGL2RenderingContextOverloads {
+interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
 }
 
 declare var WebGL2RenderingContext: {
@@ -18489,7 +18535,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 }
 
 /** A window containing a DOM document; the document property points to the DOM document loaded in that window. */
-interface Window extends EventTarget, WindowTimers, WindowSessionStorage, WindowLocalStorage, WindowConsole, GlobalEventHandlers, IDBEnvironment, WindowBase64, AnimationFrameProvider, WindowOrWorkerGlobalScope, WindowEventHandlers {
+interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, IDBEnvironment, WindowBase64, WindowConsole, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage, WindowTimers {
     readonly applicationCache: ApplicationCache;
     readonly caches: CacheStorage;
     readonly clientInformation: Navigator;
@@ -18645,7 +18691,7 @@ interface WindowEventHandlersEventMap {
     "pagehide": PageTransitionEvent;
     "pageshow": PageTransitionEvent;
     "popstate": PopStateEvent;
-    "rejectionhandled": Event;
+    "rejectionhandled": PromiseRejectionEvent;
     "storage": StorageEvent;
     "unhandledrejection": PromiseRejectionEvent;
     "unload": Event;
@@ -18664,7 +18710,7 @@ interface WindowEventHandlers {
     onpagehide: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
     onpageshow: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
     onpopstate: ((this: WindowEventHandlers, ev: PopStateEvent) => any) | null;
-    onrejectionhandled: ((this: WindowEventHandlers, ev: Event) => any) | null;
+    onrejectionhandled: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
     onstorage: ((this: WindowEventHandlers, ev: StorageEvent) => any) | null;
     onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
     onunload: ((this: WindowEventHandlers, ev: Event) => any) | null;
@@ -19055,12 +19101,12 @@ declare namespace WebAssembly {
     };
     
     interface Instance {
-        readonly exports: any;
+        readonly exports: Exports;
     }
     
     var Instance: {
         prototype: Instance;
-        new(module: Module, importObject?: any): Instance;
+        new(module: Module, importObject?: Imports): Instance;
     };
     
     interface LinkError {
@@ -19146,11 +19192,17 @@ declare namespace WebAssembly {
     
     type ImportExportKind = "function" | "table" | "memory" | "global";
     type TableKind = "anyfunc";
+    type ValueType = "i32" | "i64" | "f32" | "f64";
+    type ExportValue = Function | Global | Memory | Table;
+    type Exports = Record<string, ExportValue>;
+    type ImportValue = ExportValue | number;
+    type ModuleImports = Record<string, ImportValue>;
+    type Imports = Record<string, ModuleImports>;
     function compile(bytes: BufferSource): Promise<Module>;
     function compileStreaming(source: Response | Promise<Response>): Promise<Module>;
-    function instantiate(bytes: BufferSource, importObject?: any): Promise<WebAssemblyInstantiatedSource>;
-    function instantiate(moduleObject: Module, importObject?: any): Promise<Instance>;
-    function instantiateStreaming(source: Response | Promise<Response>, importObject?: any): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
+    function instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function validate(bytes: BufferSource): boolean;
 }
 
@@ -19857,10 +19909,10 @@ declare var onsuspend: ((this: Window, ev: Event) => any) | null;
  */
 declare var ontimeupdate: ((this: Window, ev: Event) => any) | null;
 declare var ontoggle: ((this: Window, ev: Event) => any) | null;
-declare var ontouchcancel: ((this: Window, ev: TouchEvent) => any) | null;
-declare var ontouchend: ((this: Window, ev: TouchEvent) => any) | null;
-declare var ontouchmove: ((this: Window, ev: TouchEvent) => any) | null;
-declare var ontouchstart: ((this: Window, ev: TouchEvent) => any) | null;
+declare var ontouchcancel: ((this: Window, ev: TouchEvent) => any) | null | undefined;
+declare var ontouchend: ((this: Window, ev: TouchEvent) => any) | null | undefined;
+declare var ontouchmove: ((this: Window, ev: TouchEvent) => any) | null | undefined;
+declare var ontouchstart: ((this: Window, ev: TouchEvent) => any) | null | undefined;
 declare var ontransitioncancel: ((this: Window, ev: TransitionEvent) => any) | null;
 declare var ontransitionend: ((this: Window, ev: TransitionEvent) => any) | null;
 declare var ontransitionrun: ((this: Window, ev: TransitionEvent) => any) | null;
@@ -19910,7 +19962,7 @@ declare var ononline: ((this: Window, ev: Event) => any) | null;
 declare var onpagehide: ((this: Window, ev: PageTransitionEvent) => any) | null;
 declare var onpageshow: ((this: Window, ev: PageTransitionEvent) => any) | null;
 declare var onpopstate: ((this: Window, ev: PopStateEvent) => any) | null;
-declare var onrejectionhandled: ((this: Window, ev: Event) => any) | null;
+declare var onrejectionhandled: ((this: Window, ev: PromiseRejectionEvent) => any) | null;
 declare var onstorage: ((this: Window, ev: StorageEvent) => any) | null;
 declare var onunhandledrejection: ((this: Window, ev: PromiseRejectionEvent) => any) | null;
 declare var onunload: ((this: Window, ev: Event) => any) | null;
@@ -19938,6 +19990,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type PerformanceEntryList = PerformanceEntry[];
+type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type VibratePattern = number | number[];
 type COSEAlgorithmIdentifier = number;
 type AuthenticatorSelectionList = AAGUID[];
@@ -20109,9 +20162,8 @@ type TouchType = "direct" | "stylus";
 type Transport = "usb" | "nfc" | "ble";
 type UserVerificationRequirement = "required" | "preferred" | "discouraged";
 type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted";
-type ValueType = "i32" | "i64" | "f32" | "f64";
 type VideoFacingModeEnum = "user" | "environment" | "left" | "right";
-type VisibilityState = "hidden" | "visible" | "prerender";
+type VisibilityState = "hidden" | "visible";
 type WebGLPowerPreference = "default" | "low-power" | "high-performance";
 type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

@@ -1,0 +1,7 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString captionSide;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString tableLayout;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderCollapse;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderSpacing;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString emptyCells;
+};

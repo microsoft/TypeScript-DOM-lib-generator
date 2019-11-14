@@ -405,7 +405,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             expectedParamType.every((pt, idx) => convertDomTypeToTsType(m.signature[0].param![idx]) === pt);
     }
 
-    function getNameWithTypeParameter(i: Browser.Interface | Browser.Dictionary | Browser.CallbackFunction, name: string) {
+    function getNameWithTypeParameter(i: Browser.Interface | Browser.Dictionary | Browser.CallbackFunction | Browser.TypeDef, name: string) {
         function typeParameterWithDefault(type: Browser.TypeParameter) {
             return type.name
                 + (type.extends ? ` extends ${type.extends}` : "")
@@ -617,8 +617,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             else {
                 pType = convertDomTypeToTsType(p);
             }
-            const requiredModifier = p.required === undefined || p.required === 1 ? "" : "?";
+            const required = p.required === undefined || p.required === 1;
+            const requiredModifier = required || prefix ? "" : "?";
             pType = p.nullable ? makeNullable(pType) : pType;
+            if (!required && prefix) {
+                pType += " | undefined"
+            }
             const readOnlyModifier = p["read-only"] === 1 && prefix === "" ? "readonly " : "";
             printer.printLine(`${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`);
         }
@@ -866,7 +870,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
         printer.print(`interface ${getNameWithTypeParameter(i, processedIName)}`);
 
-        const finalExtends = distinct([i.extends || "Object"].concat(i.implements || [])
+        const finalExtends = distinct([i.extends || "Object"].concat((i.implements || []).sort())
             .filter(i => i !== "Object")
             .map(processIName));
 
@@ -1068,6 +1072,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             namespace.nested.enums
                 .sort(compareName)
                 .forEach(emitEnum);
+            namespace.nested.typedefs
+                .forEach(emitTypeDef);
         }
 
         emitProperties("var ", EmitScope.InstanceOnly, namespace);
@@ -1111,12 +1117,14 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     function emitTypeDef(typeDef: Browser.TypeDef) {
         emitComments(typeDef, printer.printLine);
-        printer.printLine(`type ${typeDef["new-type"]} = ${convertDomTypeToTsType(typeDef)};`);
+        printer.printLine(`type ${getNameWithTypeParameter(typeDef, typeDef["new-type"])} = ${convertDomTypeToTsType(typeDef)};`);
     }
 
     function emitTypeDefs() {
         if (webidl.typedefs) {
-            webidl.typedefs.typedef.forEach(emitTypeDef);
+            webidl.typedefs.typedef
+            .filter(i => !i["legacy-namespace"])
+            .forEach(emitTypeDef);
         }
     }
 
@@ -1291,7 +1299,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             mapToArray(i.methods ? i.methods.method : {})
                 .filter(m => m.signature && !m["override-signatures"])
                 .map(m => ({
-                    ...m, 
+                    ...m,
                     signature: replaceTypedefsInSignatures(m.signature.filter(hasSequenceArgument))
                 }))
                 .filter(m => m.signature.length)
