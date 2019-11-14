@@ -145,7 +145,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
                 properties!.property[member.name] = prop;
             }
         }
-        else if (member.type === "operation" && member.idlType) {
+        else if (member.type === "operation") {
             const operation = convertOperation(member, result.exposed);
             const { method } = result.methods;
             if (!member.name) {
@@ -205,18 +205,23 @@ function getNamedConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: stri
 }
 
 function convertOperation(operation: webidl2.OperationMemberType, inheritedExposure: string | undefined): Browser.AnonymousMethod | Browser.Method {
-    if (!operation.idlType) {
+    const isStringifier = operation.special === "stringifier";
+    const type =
+        operation.idlType ? convertIdlType(operation.idlType) :
+        isStringifier ? { type: "DOMString" } :
+        undefined;
+    if (!type) {
         throw new Error("Unexpected anonymous operation");
     }
     return {
         name: operation.name || undefined,
         signature: [{
-            ...convertIdlType(operation.idlType),
+            ...type,
             param: operation.arguments.map(convertArgument)
         }],
         getter: operation.special === "getter" ? 1 : undefined,
         static: operation.special === "static" ? 1 : undefined,
-        stringifier: operation.special === "stringifier" ? 1 : undefined,
+        stringifier: isStringifier ? 1 : undefined,
         exposed: getExtAttrConcatenated(operation.extAttrs, "Exposed") || inheritedExposure
     };
 }
@@ -249,6 +254,7 @@ function convertAttribute(attribute: webidl2.AttributeMemberType, inheritedExpos
         name: attribute.name,
         ...convertIdlType(attribute.idlType),
         static: attribute.special === "static" ? 1 : undefined,
+        stringifier: attribute.special === "stringifier" ? 1 : undefined,
         "read-only": attribute.readonly ? 1 : undefined,
         "event-handler": isEventHandler ? attribute.name.slice(2) : undefined,
         exposed: getExtAttrConcatenated(attribute.extAttrs, "Exposed") || inheritedExposure

@@ -14,6 +14,7 @@
     "@types/node": "^9.6.52",
     "@types/node-fetch": "^1.6.9",
     "@types/webidl2": "^23.8.0",
+    "cpx2": "^2.0.0",
     "jsdom": "^11.12.0",
     "node-fetch": "^2.6.0",
     "print-diff": "^0.1.1",

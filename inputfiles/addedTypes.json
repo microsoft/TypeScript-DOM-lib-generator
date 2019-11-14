@@ -195,6 +195,10 @@
                         {
                             "name": "unhandledrejection",
                             "type": "PromiseRejectionEvent"
+                        },
+                        {
+                            "name": "rejectionhandled",
+                            "type": "PromiseRejectionEvent"
                         }
                     ]
                 }
@@ -2105,6 +2109,14 @@
                     }
                 ]
             },
+            "SVGLinearGradientElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "linearGradient"
+                    }
+                ]
+            },
             "SVGLineElement": {
                 "element": [
                     {
@@ -2129,6 +2141,14 @@
                     }
                 ]
             },
+            "SVGPatternElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "pattern"
+                    }
+                ]
+            },
             "SVGPolygonElement": {
                 "element": [
                     {
@@ -2142,6 +2162,46 @@
                     {
                         "namespace": "SVG",
                         "name": "polyline"
+                    }
+                ]
+            },
+            "SVGRadialGradientElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "radialGradient"
+                    }
+                ]
+            },
+            "SVGStopElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "stop"
+                    }
+                ]
+            },
+            "SVGTextElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "text"
+                    }
+                ]
+            },
+            "SVGTextPathElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "textPath"
+                    }
+                ]
+            },
+            "SVGTSpanElement": {
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "tspan"
                     }
                 ]
             },
@@ -2187,6 +2247,38 @@
                             "read-only": 1,
                             "nullable": 1,
                             "override-type": "T"
+                        }
+                    }
+                }
+            },
+            "TextDecoderStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "read-only": 1,
+                            "override-type": "ReadableStream<string>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "read-only": 1,
+                            "override-type": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "TextEncoderStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "read-only": 1,
+                            "override-type": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "read-only": 1,
+                            "override-type": "WritableStream<string>"
                         }
                     }
                 }

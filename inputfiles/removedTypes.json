@@ -132,6 +132,9 @@
                         "paddingBlock": null,
                         "paddingInline": null,
                         "rubyMerge": null,
+                        "shapeInside": null,
+                        "shapeMargin": null,
+                        "shapeSubtract": null,
                         "strokeAlign": null,
                         "strokeBreak": null,
                         "strokeColor": null,
@@ -142,21 +145,9 @@
                         "strokePosition": null,
                         "strokeRepeat": null,
                         "strokeSize": null,
-                        "textAlignAll": null
-                    }
-                }
-            },
-            "DeviceMotionEvent": {
-                "methods": {
-                    "method": {
-                        "requestPermission": null
-                    }
-                }
-            },
-            "DeviceOrientationEvent": {
-                "methods": {
-                    "method": {
-                        "requestPermission": null
+                        "textAlignAll": null,
+                        "textDecorationFill": null,
+                        "textDecorationStroke": null
                     }
                 }
             },
@@ -227,11 +218,6 @@
                     }
                 }
             },
-            "SVGGradientElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
-            },
             "SVGMatrix": null,
             "SVGMarkerElement": {
                 "properties": {
@@ -239,11 +225,6 @@
                         "orient": null
                     }
                 }
-            },
-            "SVGPatternElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
             },
             "SVGPoint": null,
             "SVGRect": null,

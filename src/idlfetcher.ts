@@ -21,7 +21,8 @@ const idlSelector = [
 ].join(",");
 
 const cssPropSelector = [
-    ".propdef dfn", // CSS Fonts
+    ".propdef dfn", // CSS Fonts, SVG
+    ".propdef-title", // SVG Paint Servers
     "dfn.css[data-dfn-type=property]"
 ].join(",");
 

@@ -33,6 +33,10 @@
         "title": "CSS Box Alignment"
     },
     {
+        "url": "https://www.w3.org/TR/css-color-3/",
+        "title": "CSS Color"
+    },
+    {
         "url": "https://www.w3.org/TR/fill-stroke-3/",
         "title": "CSS Fill and Stroke"
     },
@@ -422,6 +426,14 @@
     {
         "url": "https://www.w3.org/TR/SVG2/painting.html",
         "title": "SVG - Painting"
+    },
+    {
+        "url": "https://www.w3.org/TR/SVG2/pservers.html",
+        "title": "SVG - Paint Servers"
+    },
+    {
+        "url": "https://www.w3.org/TR/SVG2/text.html",
+        "title": "SVG - Text"
     },
     {
         "url": "https://w3c.github.io/touch-events/",
