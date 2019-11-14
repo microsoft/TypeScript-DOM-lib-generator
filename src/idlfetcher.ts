@@ -21,7 +21,7 @@ const idlSelector = [
 ].join(",");
 
 const cssPropSelector = [
-    ".propdef dfn", // CSS Fonts, CSS Masking
+    ".propdef dfn", // CSS Fonts
     "dfn.css[data-dfn-type=property]"
 ].join(",");
 

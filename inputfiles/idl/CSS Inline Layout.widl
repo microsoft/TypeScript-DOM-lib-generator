@@ -1,0 +1,10 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString dominantBaseline;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString verticalAlign;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignmentBaseline;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString baselineShift;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString inlineSizing;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString initialLetters;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString initialLettersAlign;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString initialLettersWrap;
+};

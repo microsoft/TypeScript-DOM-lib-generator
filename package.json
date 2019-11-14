@@ -10,16 +10,16 @@
     "test": "tsc --p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
   },
   "dependencies": {
-    "@types/jsdom": "^11.0.4",
-    "@types/node": "^9.6.49",
-    "@types/node-fetch": "^1.6.7",
-    "@types/webidl2": "^10.2.1",
-    "cpx": "^1.5.0",
-    "jsdom": "^11.11.0",
-    "node-fetch": "^2.1.1",
+    "@types/jsdom": "^11.12.0",
+    "@types/node": "^9.6.52",
+    "@types/node-fetch": "^1.6.9",
+    "@types/webidl2": "^23.8.0",
+    "cpx2": "^2.0.0",
+    "jsdom": "^11.12.0",
+    "node-fetch": "^2.6.0",
     "print-diff": "^0.1.1",
     "styleless-innertext": "^1.1.2",
     "typescript": "next",
-    "webidl2": "^13.0.2"
+    "webidl2": "^23.8.1"
   }
 }

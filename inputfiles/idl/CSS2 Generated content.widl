@@ -1,0 +1,10 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString content;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString quotes;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString counterReset;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString counterIncrement;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString listStyleType;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString listStyleImage;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString listStylePosition;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString listStyle;
+};

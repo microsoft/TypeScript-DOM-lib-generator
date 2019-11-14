@@ -312,6 +312,9 @@
             },
             "TableKind": {
                 "legacy-namespace": "WebAssembly"
+            },
+            "ValueType": {
+                "legacy-namespace": "WebAssembly"
             }
         }
     },
@@ -691,6 +694,9 @@
                         },
                         "nextSibling": {
                             "override-type": "ChildNode | null"
+                        },
+                        "previousSibling": {
+                            "override-type": "ChildNode | null"
                         }
                     }
                 }
@@ -1063,7 +1069,7 @@
                 "constructor": {
                     "override-signatures": [
                         "new(width: number, height: number): ImageData",
-                        "new(array: Uint8ClampedArray, width: number, height: number): ImageData"
+                        "new(array: Uint8ClampedArray, width: number, height?: number): ImageData"
                     ]
                 }
             },
@@ -1186,18 +1192,6 @@
                 "name": "Element",
                 "methods": {
                     "method": {
-                        "getBoundingClientRect": {
-                            "name": "getBoundingClientRect",
-                            "override-signatures": [
-                                "getBoundingClientRect(): ClientRect | DOMRect"
-                            ]
-                        },
-                        "getClientRects": {
-                            "name": "getClientRects",
-                            "override-signatures": [
-                                "getClientRects(): ClientRectList | DOMRectList"
-                            ]
-                        },
                         "getAttributeNodeNS": {
                             "name": "getAttributeNodeNS",
                             "override-signatures": [
@@ -1730,47 +1724,6 @@
                     ]
                 }
             },
-            "IntersectionObserverEntry": {
-                "name": "IntersectionObserverEntry",
-                "properties": {
-                    "property": {
-                        "boundingClientRect": {
-                            "name": "boundingClientRect",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        },
-                        "intersectionRect": {
-                            "name": "intersectionRect",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        },
-                        "rootBounds": {
-                            "name": "rootBounds",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        }
-                    }
-                }
-            },
-            "Range": {
-                "name": "Range",
-                "methods": {
-                    "method": {
-                        "getBoundingClientRect": {
-                            "name": "getBoundingClientRect",
-                            "override-signatures": [
-                                "getBoundingClientRect(): ClientRect | DOMRect"
-                            ]
-                        },
-                        "getClientRects": {
-                            "name": "getClientRects",
-                            "override-signatures": [
-                                "getClientRects(): ClientRectList | DOMRectList"
-                            ]
-                        }
-                    }
-                }
-            },
             "WebSocket": {
                 "name": "WebSocket",
                 "methods": {
@@ -2232,7 +2185,7 @@
                         "match": {
                             "name": "match",
                             "override-signatures": [
-                                "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
+                                "match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>"
                             ]
                         }
                     }
@@ -2810,6 +2763,25 @@
                         }
                     }
                 }
+            },
+            "Instance": {
+                "constructor": {
+                    "override-signatures": [
+                        "new(module: Module, importObject?: Imports): Instance"
+                    ],
+                    "force-references": [
+                        {
+                            "type": "Imports"
+                        }
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "exports": {
+                            "type": "Exports"
+                        }
+                    }
+                }
             }
         }
     },
@@ -3198,5 +3170,35 @@
                 "new-type": "BodyInit"
             }
         ]
-    }
+    },
+    "namespaces": [
+        {
+            "name": "WebAssembly",
+            "methods": {
+                "method": {
+                    "instantiate": {
+                        "override-signatures": [
+                            "instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>",
+                            "instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>"
+                        ],
+                        "force-references": [
+                            {
+                                "type": "Imports"
+                            }
+                        ]
+                    },
+                    "instantiateStreaming": {
+                        "override-signatures": [
+                            "instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>"
+                        ],
+                        "force-references": [
+                            {
+                                "type": "Imports"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
 }

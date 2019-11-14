@@ -847,7 +847,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
         printer.print(`interface ${getNameWithTypeParameter(i, processedIName)}`);
 
-        const finalExtends = distinct([i.extends || "Object"].concat(i.implements || [])
+        const finalExtends = distinct([i.extends || "Object"].concat((i.implements || []).sort())
             .filter(i => i !== "Object")
             .map(processIName));
 
@@ -1049,6 +1049,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             namespace.nested.enums
                 .sort(compareName)
                 .forEach(emitEnum);
+            namespace.nested.typedefs
+                .forEach(emitTypeDef);
         }
 
         emitProperties("var ", EmitScope.InstanceOnly, namespace);
@@ -1097,7 +1099,9 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     function emitTypeDefs() {
         if (webidl.typedefs) {
-            webidl.typedefs.typedef.forEach(emitTypeDef);
+            webidl.typedefs.typedef
+            .filter(i => !i["legacy-namespace"])
+            .forEach(emitTypeDef);
         }
     }
 
@@ -1272,7 +1276,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             mapToArray(i.methods ? i.methods.method : {})
                 .filter(m => m.signature && !m["override-signatures"])
                 .map(m => ({
-                    ...m, 
+                    ...m,
                     signature: replaceTypedefsInSignatures(m.signature.filter(hasSequenceArgument))
                 }))
                 .filter(m => m.signature.length)

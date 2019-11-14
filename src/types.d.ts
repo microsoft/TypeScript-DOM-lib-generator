@@ -200,6 +200,7 @@ export interface Interface {
         interfaces: Interface[];
         enums: Enum[];
         dictionaries: Dictionary[];
+        typedefs: TypeDef[];
     }
 }
 
@@ -222,6 +223,7 @@ export interface Enum {
 export interface TypeDef extends Typed {
     "new-type": string;
     deprecated?: 1;
+    "legacy-namespace"?: string;
 }
 
 export interface Dictionary {
