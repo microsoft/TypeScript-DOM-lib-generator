@@ -1855,6 +1855,9 @@
                         },
                         "set": {
                             "comment": "/**\n * Sets the value associated to a given search parameter to the given value. If there were several values, delete the others.\n */"
+                        },
+                        "toString": {
+                            "comment": "/**\n * Returns a string containing a query string suitable for use in a URL. Does not include the question mark.\n */"
                         }
                     },
                     "constructor": "/**\n * Constructor returning a URLSearchParams object.\n */"
