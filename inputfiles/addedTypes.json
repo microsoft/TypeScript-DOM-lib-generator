@@ -296,10 +296,7 @@
                         }
                     }
                 },
-                "extends": "SVGElement",
-                "implements": [
-                    "SVGFilterPrimitiveStandardAttributes"
-                ]
+                "extends": "SVGElement"
             },
             "AbortSignal": {
                 "events": {
@@ -1167,9 +1164,7 @@
             },
             "SVGElement": {
                 "implements": [
-                    "ElementCSSInlineStyle",
-                    "GlobalEventHandlers",
-                    "DocumentAndElementEventHandlers"
+                    "ElementCSSInlineStyle"
                 ]
             },
             "Text": {

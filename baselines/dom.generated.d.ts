@@ -9338,10 +9338,6 @@ declare var IDBDatabase: {
     new(): IDBDatabase;
 };
 
-interface IDBEnvironment {
-    readonly indexedDB: IDBFactory;
-}
-
 /** In the following code snippet, we make a request to open a database, and include handlers for the success and error cases. For a full working example, see our To-do Notifications app (view example live.) */
 interface IDBFactory {
     /**
@@ -18536,12 +18532,10 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 }
 
 /** A window containing a DOM document; the document property points to the DOM document loaded in that window. */
-interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, IDBEnvironment, WindowBase64, WindowConsole, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage, WindowTimers {
+interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, WindowConsole, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
     readonly applicationCache: ApplicationCache;
-    readonly caches: CacheStorage;
     readonly clientInformation: Navigator;
     readonly closed: boolean;
-    readonly crypto: Crypto;
     customElements: CustomElementRegistry;
     defaultStatus: string;
     readonly devicePixelRatio: number;
@@ -18606,7 +18600,6 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly pageXOffset: number;
     readonly pageYOffset: number;
     readonly parent: Window;
-    readonly performance: Performance;
     readonly personalbar: BarProp;
     readonly screen: Screen;
     readonly screenLeft: number;
@@ -18669,11 +18662,6 @@ declare var Window: {
     prototype: Window;
     new(): Window;
 };
-
-interface WindowBase64 {
-    atob(encodedString: string): string;
-    btoa(rawString: string): string;
-}
 
 interface WindowConsole {
     readonly console: Console;
@@ -18745,9 +18733,6 @@ interface WindowOrWorkerGlobalScope {
 
 interface WindowSessionStorage {
     readonly sessionStorage: Storage;
-}
-
-interface WindowTimers {
 }
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
@@ -19535,10 +19520,8 @@ declare var Option: {
     new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
 };
 declare var applicationCache: ApplicationCache;
-declare var caches: CacheStorage;
 declare var clientInformation: Navigator;
 declare var closed: boolean;
-declare var crypto: Crypto;
 declare var customElements: CustomElementRegistry;
 declare var defaultStatus: string;
 declare var devicePixelRatio: number;
@@ -19603,7 +19586,6 @@ declare var outerWidth: number;
 declare var pageXOffset: number;
 declare var pageYOffset: number;
 declare var parent: Window;
-declare var performance: Performance;
 declare var personalbar: BarProp;
 declare var screen: Screen;
 declare var screenLeft: number;
@@ -19929,9 +19911,6 @@ declare var onvolumechange: ((this: Window, ev: Event) => any) | null;
  */
 declare var onwaiting: ((this: Window, ev: Event) => any) | null;
 declare var onwheel: ((this: Window, ev: WheelEvent) => any) | null;
-declare var indexedDB: IDBFactory;
-declare function atob(encodedString: string): string;
-declare function btoa(rawString: string): string;
 declare function cancelAnimationFrame(handle: number): void;
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 declare var caches: CacheStorage;
@@ -19949,8 +19928,6 @@ declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response
 declare function queueMicrotask(callback: Function): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-declare var sessionStorage: Storage;
-declare var localStorage: Storage;
 declare var onafterprint: ((this: Window, ev: Event) => any) | null;
 declare var onbeforeprint: ((this: Window, ev: Event) => any) | null;
 declare var onbeforeunload: ((this: Window, ev: BeforeUnloadEvent) => any) | null;

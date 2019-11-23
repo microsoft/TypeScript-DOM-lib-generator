@@ -166,11 +166,12 @@ function emitDom() {
         for (const include of w.includes) {
             const target = webidl.interfaces!.interface[include.target];
             if (target) {
-                if (target.implements) {
-                    target.implements.push(include.includes);
-                }
-                else {
+                if (!target.implements) {
                     target.implements = [include.includes];
+                } else if (!target.implements.includes(include.includes)) {
+                    // This makes sure that browser.webidl.preprocessed.json
+                    // does not already have the mixin reference
+                    target.implements.push(include.includes);
                 }
             }
         }

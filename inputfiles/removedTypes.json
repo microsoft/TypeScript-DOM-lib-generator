@@ -9,10 +9,6 @@
     "mixins": {
         "mixin": {
             "XMLHttpRequestEventTarget": null,
-            "WindowTimers": {
-                "methods": null,
-                "implements": null
-            },
             "WorkerUtils": {
                 "methods": {
                     "method": {
@@ -248,11 +244,14 @@
                 "properties": {
                     "property": {
                         "browser": null,
+                        "caches": null,
+                        "crypto": null,
                         "msCredentials": null,
                         "ontouchcancel": null,
                         "ontouchend": null,
                         "ontouchmove": null,
-                        "ontouchstart": null
+                        "ontouchstart": null,
+                        "performance": null
                     }
                 },
                 "methods": {
@@ -262,7 +261,10 @@
                     }
                 },
                 "implements": [
-                    "GlobalFetch"
+                    "GlobalFetch",
+                    "IDBEnvironment",
+                    "WindowBase64",
+                    "WindowTimers"
                 ]
             },
             "WorkerGlobalScope": {
