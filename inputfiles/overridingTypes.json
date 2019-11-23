@@ -1233,27 +1233,6 @@
                     }
                 }
             },
-            "HTMLMediaElement": {
-                "name": "HTMLMediaElement",
-                "properties": {
-                    "property": {
-                        "readyState": {
-                            "name": "readyState",
-                            "override-type": "number"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "play": {
-                            "name": "play",
-                            "override-signatures": [
-                                "play(): Promise<void>"
-                            ]
-                        }
-                    }
-                }
-            },
             "DataTransferItemList": {
                 "name": "DataTransferItemList",
                 "methods": {

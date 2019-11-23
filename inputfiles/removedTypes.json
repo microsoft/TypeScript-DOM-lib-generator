@@ -165,6 +165,20 @@
                     }
                 }
             },
+            "HTMLMediaElement": {
+                "methods": {
+                    "method": {
+                        "getStartDate": null
+                    }
+                }
+            },
+            "HTMLVideoElement": {
+                "properties": {
+                    "property": {
+                        "playsInline": null
+                    }
+                }
+            },
             "MessageEvent": {
                 "methods": {
                     "method": {

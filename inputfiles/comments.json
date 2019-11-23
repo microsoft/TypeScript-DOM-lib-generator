@@ -1607,32 +1607,8 @@
                         "networkState": {
                             "comment": "/**\n * Gets the current network activity for the element.\n */"
                         },
-                        "msAudioCategory": {
-                            "comment": "/**\n * Specifies the purpose of the audio or video media, such as background audio or alerts.\n */"
-                        },
-                        "msRealTime": {
-                            "comment": "/**\n * Specifies whether or not to enable low-latency playback on the media element.\n */"
-                        },
-                        "msPlayToPrimary": {
-                            "comment": "/**\n * Gets or sets the primary DLNA PlayTo device.\n */"
-                        },
-                        "msPlayToDisabled": {
-                            "comment": "/**\n * Gets or sets whether the DLNA PlayTo device is available.\n */"
-                        },
                         "audioTracks": {
                             "comment": "/**\n * Returns an AudioTrackList object with the audio tracks for a given video element.\n */"
-                        },
-                        "msPlayToSource": {
-                            "comment": "/**\n * Gets the source associated with the media element for use by the PlayToManager.\n */"
-                        },
-                        "msAudioDeviceType": {
-                            "comment": "/**\n * Specifies the output device id that the audio will be sent to.\n */"
-                        },
-                        "msPlayToPreferredSourceUri": {
-                            "comment": "/**\n * Gets or sets the path to the preferred media source. This enables the Play To target device to stream the media content, which can be DRM protected, from a different location, such as a cloud media server.\n */"
-                        },
-                        "msKeys": {
-                            "comment": "/**\n * Gets the MSMediaKeys object, which is used for decrypting media data, that is associated with this media element.\n */"
                         }
                     }
                 },
@@ -1649,15 +1625,6 @@
                         },
                         "canPlayType": {
                             "comment": "/**\n * Returns a string that specifies whether the client can play a given media resource type.\n */"
-                        },
-                        "msClearEffects": {
-                            "comment": "/**\n * Clears all effects from the media pipeline.\n */"
-                        },
-                        "msSetMediaProtectionManager": {
-                            "comment": "/**\n * Specifies the media protection manager for a given media pipeline.\n */"
-                        },
-                        "msInsertAudioEffect": {
-                            "comment": "/**\n * Inserts the specified audio effect into media pipeline.\n */"
                         }
                     }
                 }

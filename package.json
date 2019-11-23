@@ -2,12 +2,12 @@
   "name": "tsjs-lib-generator",
   "private": true,
   "scripts": {
-    "build": "tsc --p ./tsconfig.json && node ./lib/index.js",
-    "fetch-idl": "tsc --p ./tsconfig.json && node ./lib/idlfetcher.js",
+    "build": "tsc -p ./tsconfig.json && node ./lib/index.js",
+    "fetch-idl": "tsc -p ./tsconfig.json && node ./lib/idlfetcher.js",
     "fetch-mdn": "npm run build && node ./lib/mdnfetcher.js",
     "fetch": "echo This could take a few minutes... && npm run fetch-idl && npm run fetch-mdn",
     "baseline-accept": "cpx \"generated\\*\" baselines\\",
-    "test": "tsc --p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
+    "test": "tsc -p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
   },
   "dependencies": {
     "@types/jsdom": "^11.12.0",

@@ -277,6 +277,10 @@
         "title": "HTML - Links"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/media.html",
+        "title": "HTML - Media"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/obsolete.html",
         "title": "HTML - Obsolete features",
         "deprecated": true
@@ -349,6 +353,10 @@
     {
         "url": "https://w3c.github.io/mediacapture-main/",
         "title": "Media Capture and Streams"
+    },
+    {
+        "url": "https://w3c.github.io/media-playback-quality/",
+        "title": "Media Playback Quality"
     },
     {
         "url": "https://www.w3.org/TR/media-source/",

@@ -163,6 +163,10 @@
                             "type": "MouseEvent"
                         },
                         {
+                            "name": "pause",
+                            "type": "Event"
+                        },
+                        {
                             "name": "scroll",
                             "type": "Event"
                         },
@@ -349,6 +353,24 @@
                     ]
                 }
             },
+            "AudioTrackList": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "addtrack",
+                            "type": "TrackEvent"
+                        },
+                        {
+                            "name": "change",
+                            "type": "Event"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "TrackEvent"
+                        }
+                    ]
+                }
+            },
             "DeviceMotionEventAcceleration": {
                 "no-interface-object": 1
             },
@@ -478,6 +500,16 @@
                         "name": "img"
                     }
                 ]
+            },
+            "HTMLMediaElement": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "encrypted",
+                            "type": "MediaEncryptedEvent"
+                        }
+                    ]
+                }
             },
             "CSSStyleDeclaration": {
                 "name": "CSSStyleDeclaration",
@@ -1184,6 +1216,20 @@
                     }
                 }
             },
+            "TextTrackList": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "addtrack",
+                            "type": "TrackEvent"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "TrackEvent"
+                        }
+                    ]
+                }
+            },
             "DOMMatrixReadOnly": {
                 "methods": {
                     "method": {
@@ -1228,6 +1274,13 @@
                 "element": [
                     {
                         "name": "area"
+                    }
+                ]
+            },
+            "HTMLAudioElement": {
+                "element": [
+                    {
+                        "name": "audio"
                     }
                 ]
             },
@@ -1710,10 +1763,24 @@
                     }
                 ]
             },
+            "HTMLTrackElement": {
+                "element": [
+                    {
+                        "name": "track"
+                    }
+                ]
+            },
             "HTMLUListElement": {
                 "element": [
                     {
                         "name": "ul"
+                    }
+                ]
+            },
+            "HTMLVideoElement": {
+                "element": [
+                    {
+                        "name": "video"
                     }
                 ]
             },
