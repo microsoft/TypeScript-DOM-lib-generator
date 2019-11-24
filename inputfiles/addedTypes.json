@@ -2282,6 +2282,20 @@
                         }
                     }
                 }
+            },
+            "WebSocket": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "close",
+                            "type": "CloseEvent"
+                        },
+                        {
+                            "name": "error",
+                            "type": "Event"
+                        }
+                    ]
+                }
             }
         }
     },

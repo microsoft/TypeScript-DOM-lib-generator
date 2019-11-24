@@ -327,6 +327,10 @@
         "title": "HTML - Web application APIs"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/web-sockets.html",
+        "title": "HTML - Web sockets"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/webstorage.html",
         "title": "HTML - Web storage"
     },
