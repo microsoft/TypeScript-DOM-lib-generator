@@ -2282,6 +2282,64 @@
                         }
                     }
                 }
+            },
+            "SharedWorker": {
+                "name": "SharedWorker",
+                "constructor": {
+                    "specs": "workers",
+                    "signature": [
+                        {
+                            "param-min-required": 1,
+                            "type": "SharedWorker",
+                            "param": [
+                                {
+                                    "name": "aURL",
+                                    "type": "DOMString",
+                                    "type-original": "DOMString"
+                                },
+                                {
+                                    "name": "name",
+                                    "type": "DOMString",
+                                    "type-original": "DOMString",
+                                    "optional": 1
+                                }
+                            ],
+                            "type-original": "SharedWorker"
+                        },
+                        {
+                            "param-min-required": 1,
+                            "type": "SharedWorker",
+                            "param": [
+                                {
+                                    "name": "aURL",
+                                    "type": "DOMString",
+                                    "type-original": "DOMString"
+                                },
+                                {
+                                    "name": "options",
+                                    "type": "WorkerOptions",
+                                    "type-original": "WorkerOptions",
+                                    "optional": 1
+                                }
+                            ],
+                            "type-original": "SharedWorker"
+                        }
+                    ],
+                    "name": ""
+                },
+                "properties": {
+                    "property": {
+                        "port": {
+                            "name": "port",
+                            "read-only": 1,
+                            "override-type": "MessagePort"
+                        }
+                    }
+                },
+                "extends": "EventTarget",
+                "implements": [
+                    "AbstractWorker"
+                ]
             }
         }
     },
