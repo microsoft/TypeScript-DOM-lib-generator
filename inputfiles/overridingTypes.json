@@ -1,6 +1,25 @@
 {
     "mixins": {
         "mixin": {
+            "WindowOrWorkerGlobalScope": {
+                "name": "WindowOrWorkerGlobalScope",
+                "methods": {
+                    "method": {
+                        "setTimeout": {
+                            "name": "setTimeout",
+                            "override-signatures": [
+                                "setTimeout<H extends TimerHandler>(handler: H, timeout?: number, ...arguments: H extends ((...args: infer A) => any) ? A : any[]): number"
+                            ]
+                        },
+                        "setInterval": {
+                            "name": "setInterval",
+                            "override-signatures": [
+                                "setInterval<H extends TimerHandler>(handler: H, timeout?: number, ...arguments: H extends ((...args: infer A) => any) ? A : any[]): number"
+                            ]
+                        }
+                    }
+                }
+            },
             "GlobalFetch": {
                 "name": "GlobalFetch",
                 "methods": {
