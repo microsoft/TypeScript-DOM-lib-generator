@@ -2127,6 +2127,7 @@ interface Attr extends Node {
     readonly prefix: string | null;
     readonly specified: boolean;
     value: string;
+    cloneNode(deep?: boolean): Attr;
 }
 
 declare var Attr: {
@@ -2571,6 +2572,7 @@ declare var ByteLengthQueuingStrategy: {
 
 /** A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section. */
 interface CDATASection extends Text {
+    cloneNode(deep?: boolean): CDATASection;
 }
 
 declare var CDATASection: {
@@ -3556,6 +3558,7 @@ interface CharacterData extends Node, ChildNode, NonDocumentTypeChildNode {
     data: string;
     readonly length: number;
     appendData(data: string): void;
+    cloneNode(deep?: boolean): CharacterData;
     deleteData(offset: number, count: number): void;
     insertData(offset: number, data: string): void;
     replaceData(offset: number, count: number, data: string): void;
@@ -3653,6 +3656,7 @@ declare var CloseEvent: {
 
 /** Textual notations within markup; although it is generally not visually shown, such comments are available to be read in the source view. */
 interface Comment extends CharacterData {
+    cloneNode(deep?: boolean): Comment;
 }
 
 declare var Comment: {
@@ -4700,6 +4704,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     caretRangeFromPoint(x: number, y: number): Range;
     /** @deprecated */
     clear(): void;
+    cloneNode(deep?: boolean): Document;
     /**
      * Closes an output stream and forces the sent data to display.
      */
@@ -5084,6 +5089,7 @@ interface DocumentEvent {
 
 /** A minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn't part of the active document tree structure, changes made to the fragment don't affect the document, cause reflow, or incur any performance impact that can occur when changes are made. */
 interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
+    cloneNode(deep?: boolean): DocumentFragment;
     getElementById(elementId: string): HTMLElement | null;
 }
 
@@ -5124,6 +5130,7 @@ interface DocumentType extends Node, ChildNode {
     readonly name: string;
     readonly publicId: string;
     readonly systemId: string;
+    cloneNode(deep?: boolean): DocumentType;
 }
 
 declare var DocumentType: {
@@ -5244,6 +5251,7 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
      * Creates a shadow root for element and returns it.
      */
     attachShadow(init: ShadowRootInit): ShadowRoot;
+    cloneNode(deep?: boolean): Element;
     /**
      * Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise.
      */
@@ -6209,6 +6217,7 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
      */
     text: string;
     type: string;
+    cloneNode(deep?: boolean): HTMLAnchorElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6259,6 +6268,7 @@ interface HTMLAppletElement extends HTMLElement {
     vspace: number;
     /** @deprecated */
     width: string;
+    cloneNode(deep?: boolean): HTMLAppletElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAppletElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAppletElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6298,6 +6308,7 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
      * Sets or retrieves the window or frame at which to target content.
      */
     target: string;
+    cloneNode(deep?: boolean): HTMLAreaElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6311,6 +6322,7 @@ declare var HTMLAreaElement: {
 
 /** Provides access to the properties of <audio> elements, as well as methods to manipulate them. It derives from the HTMLMediaElement interface. */
 interface HTMLAudioElement extends HTMLMediaElement {
+    cloneNode(deep?: boolean): HTMLAudioElement;
     addEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLAudioElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLAudioElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6329,6 +6341,7 @@ interface HTMLBRElement extends HTMLElement {
      */
     /** @deprecated */
     clear: string;
+    cloneNode(deep?: boolean): HTMLBRElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6350,6 +6363,7 @@ interface HTMLBaseElement extends HTMLElement {
      * Sets or retrieves the window or frame at which to target content.
      */
     target: string;
+    cloneNode(deep?: boolean): HTMLBaseElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6373,6 +6387,7 @@ interface HTMLBaseFontElement extends HTMLElement, DOML2DeprecatedColorProperty 
      */
     /** @deprecated */
     size: number;
+    cloneNode(deep?: boolean): HTMLBaseFontElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6407,6 +6422,7 @@ interface HTMLBodyElement extends HTMLElement, WindowEventHandlers {
     text: string;
     /** @deprecated */
     vLink: string;
+    cloneNode(deep?: boolean): HTMLBodyElement;
     addEventListener<K extends keyof HTMLBodyElementEventMap>(type: K, listener: (this: HTMLBodyElement, ev: HTMLBodyElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLBodyElementEventMap>(type: K, listener: (this: HTMLBodyElement, ev: HTMLBodyElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6478,6 +6494,7 @@ interface HTMLButtonElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLButtonElement;
     reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
@@ -6505,6 +6522,7 @@ interface HTMLCanvasElement extends HTMLElement {
      * Gets or sets the width of a canvas element on a document.
      */
     width: number;
+    cloneNode(deep?: boolean): HTMLCanvasElement;
     /**
      * Returns an object that provides methods and properties for drawing and manipulating images and graphics on a canvas element in a document. A context object includes information about colors, line widths, fonts, and other graphic parameters that can be drawn on a canvas.
      * @param contextId The identifier (ID) of the type of canvas to create. Internet Explorer 9 and Internet Explorer 10 support only a 2-D context using canvas.getContext("2d"); IE11 Preview also supports 3-D or WebGL context using canvas.getContext("experimental-webgl");
@@ -6567,6 +6585,7 @@ interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
 interface HTMLDListElement extends HTMLElement {
     /** @deprecated */
     compact: boolean;
+    cloneNode(deep?: boolean): HTMLDListElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6581,6 +6600,7 @@ declare var HTMLDListElement: {
 /** Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <data> elements. */
 interface HTMLDataElement extends HTMLElement {
     value: string;
+    cloneNode(deep?: boolean): HTMLDataElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6595,6 +6615,7 @@ declare var HTMLDataElement: {
 /** Provides special properties (beyond the HTMLElement object interface it also has available to it by inheritance) to manipulate <datalist> elements and their content. */
 interface HTMLDataListElement extends HTMLElement {
     readonly options: HTMLCollectionOf<HTMLOptionElement>;
+    cloneNode(deep?: boolean): HTMLDataListElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6608,6 +6629,7 @@ declare var HTMLDataListElement: {
 
 interface HTMLDetailsElement extends HTMLElement {
     open: boolean;
+    cloneNode(deep?: boolean): HTMLDetailsElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDetailsElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDetailsElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6622,6 +6644,7 @@ declare var HTMLDetailsElement: {
 interface HTMLDialogElement extends HTMLElement {
     open: boolean;
     returnValue: string;
+    cloneNode(deep?: boolean): HTMLDialogElement;
     close(returnValue?: string): void;
     show(): void;
     showModal(): void;
@@ -6639,6 +6662,7 @@ declare var HTMLDialogElement: {
 interface HTMLDirectoryElement extends HTMLElement {
     /** @deprecated */
     compact: boolean;
+    cloneNode(deep?: boolean): HTMLDirectoryElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDirectoryElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDirectoryElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6657,6 +6681,7 @@ interface HTMLDivElement extends HTMLElement {
      */
     /** @deprecated */
     align: string;
+    cloneNode(deep?: boolean): HTMLDivElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6670,6 +6695,7 @@ declare var HTMLDivElement: {
 
 /** The HTMLDocument property of Window objects is an alias that browsers expose for the Document interface object. */
 interface HTMLDocument extends Document {
+    cloneNode(deep?: boolean): HTMLDocument;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: HTMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: HTMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6703,6 +6729,7 @@ interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementC
     title: string;
     translate: boolean;
     click(): void;
+    cloneNode(deep?: boolean): HTMLElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6736,6 +6763,7 @@ interface HTMLEmbedElement extends HTMLElement {
      * Sets or retrieves the width of the object.
      */
     width: string;
+    cloneNode(deep?: boolean): HTMLEmbedElement;
     getSVGDocument(): Document | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLEmbedElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6774,6 +6802,7 @@ interface HTMLFieldSetElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLFieldSetElement;
     reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
@@ -6802,6 +6831,7 @@ interface HTMLFontElement extends HTMLElement {
     face: string;
     /** @deprecated */
     size: string;
+    cloneNode(deep?: boolean): HTMLFontElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6878,6 +6908,7 @@ interface HTMLFormElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLFormElement;
     reportValidity(): boolean;
     /**
      * Fires when the user resets a form.
@@ -6951,6 +6982,7 @@ interface HTMLFrameElement extends HTMLElement {
      */
     /** @deprecated */
     src: string;
+    cloneNode(deep?: boolean): HTMLFrameElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6977,6 +7009,7 @@ interface HTMLFrameSetElement extends HTMLElement, WindowEventHandlers {
      */
     /** @deprecated */
     rows: string;
+    cloneNode(deep?: boolean): HTMLFrameSetElement;
     addEventListener<K extends keyof HTMLFrameSetElementEventMap>(type: K, listener: (this: HTMLFrameSetElement, ev: HTMLFrameSetElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLFrameSetElementEventMap>(type: K, listener: (this: HTMLFrameSetElement, ev: HTMLFrameSetElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7009,6 +7042,7 @@ interface HTMLHRElement extends HTMLElement {
      */
     /** @deprecated */
     width: string;
+    cloneNode(deep?: boolean): HTMLHRElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7022,6 +7056,7 @@ declare var HTMLHRElement: {
 
 /** Contains the descriptive information, or metadata, for a document. This object inherits all of the properties and methods described in the HTMLElement interface. */
 interface HTMLHeadElement extends HTMLElement {
+    cloneNode(deep?: boolean): HTMLHeadElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7040,6 +7075,7 @@ interface HTMLHeadingElement extends HTMLElement {
      */
     /** @deprecated */
     align: string;
+    cloneNode(deep?: boolean): HTMLHeadingElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadingElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadingElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7058,6 +7094,7 @@ interface HTMLHtmlElement extends HTMLElement {
      */
     /** @deprecated */
     version: string;
+    cloneNode(deep?: boolean): HTMLHtmlElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHtmlElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHtmlElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7149,6 +7186,7 @@ interface HTMLIFrameElement extends HTMLElement {
      * Sets or retrieves the width of the object.
      */
     width: string;
+    cloneNode(deep?: boolean): HTMLIFrameElement;
     getSVGDocument(): Document | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLIFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -7239,6 +7277,7 @@ interface HTMLImageElement extends HTMLElement {
     width: number;
     readonly x: number;
     readonly y: number;
+    cloneNode(deep?: boolean): HTMLImageElement;
     decode(): Promise<void>;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLImageElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -7419,6 +7458,7 @@ interface HTMLInputElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLInputElement;
     reportValidity(): boolean;
     /**
      * Makes the selection equal to the current object.
@@ -7467,6 +7507,7 @@ interface HTMLLIElement extends HTMLElement {
      * Sets or retrieves the value of a list item.
      */
     value: number;
+    cloneNode(deep?: boolean): HTMLLIElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLIElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLIElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7489,6 +7530,7 @@ interface HTMLLabelElement extends HTMLElement {
      * Sets or retrieves the object to which the given label object is assigned.
      */
     htmlFor: string;
+    cloneNode(deep?: boolean): HTMLLabelElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLabelElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLabelElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7508,6 +7550,7 @@ interface HTMLLegendElement extends HTMLElement {
      * Retrieves a reference to the form that the object is embedded in.
      */
     readonly form: HTMLFormElement | null;
+    cloneNode(deep?: boolean): HTMLLegendElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7565,6 +7608,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      * Sets or retrieves the MIME type of the object.
      */
     type: string;
+    cloneNode(deep?: boolean): HTMLLinkElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLinkElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLinkElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7586,6 +7630,7 @@ interface HTMLMapElement extends HTMLElement {
      * Sets or retrieves the name of the object.
      */
     name: string;
+    cloneNode(deep?: boolean): HTMLMapElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMapElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMapElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7633,6 +7678,7 @@ interface HTMLMarqueeElement extends HTMLElement {
     vspace: number;
     /** @deprecated */
     width: string;
+    cloneNode(deep?: boolean): HTMLMarqueeElement;
     /** @deprecated */
     start(): void;
     /** @deprecated */
@@ -7790,6 +7836,7 @@ interface HTMLMediaElement extends HTMLElement {
      * Returns a string that specifies whether the client can play a given media resource type.
      */
     canPlayType(type: string): CanPlayTypeResult;
+    cloneNode(deep?: boolean): HTMLMediaElement;
     /**
      * Resets the audio or video object and loads a new media resource.
      */
@@ -7850,6 +7897,7 @@ declare var HTMLMediaElement: {
 interface HTMLMenuElement extends HTMLElement {
     /** @deprecated */
     compact: boolean;
+    cloneNode(deep?: boolean): HTMLMenuElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMenuElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMenuElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7880,6 +7928,7 @@ interface HTMLMetaElement extends HTMLElement {
      */
     /** @deprecated */
     scheme: string;
+    cloneNode(deep?: boolean): HTMLMetaElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7900,6 +7949,7 @@ interface HTMLMeterElement extends HTMLElement {
     min: number;
     optimum: number;
     value: number;
+    cloneNode(deep?: boolean): HTMLMeterElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMeterElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMeterElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7921,6 +7971,7 @@ interface HTMLModElement extends HTMLElement {
      * Sets or retrieves the date and time of a modification to the object.
      */
     dateTime: string;
+    cloneNode(deep?: boolean): HTMLModElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLModElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLModElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -7942,6 +7993,7 @@ interface HTMLOListElement extends HTMLElement {
      */
     start: number;
     type: string;
+    cloneNode(deep?: boolean): HTMLOListElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8039,6 +8091,7 @@ interface HTMLObjectElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLObjectElement;
     getSVGDocument(): Document | null;
     reportValidity(): boolean;
     /**
@@ -8068,6 +8121,7 @@ interface HTMLOptGroupElement extends HTMLElement {
      * Sets or retrieves a value that you can use to implement your own label functionality for the object.
      */
     label: string;
+    cloneNode(deep?: boolean): HTMLOptGroupElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptGroupElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptGroupElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8110,6 +8164,7 @@ interface HTMLOptionElement extends HTMLElement {
      * Sets or retrieves the value which is returned to the server when the form control is submitted.
      */
     value: string;
+    cloneNode(deep?: boolean): HTMLOptionElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8179,6 +8234,7 @@ interface HTMLOutputElement extends HTMLElement {
     value: string;
     readonly willValidate: boolean;
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLOutputElement;
     reportValidity(): boolean;
     setCustomValidity(error: string): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOutputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8199,6 +8255,7 @@ interface HTMLParagraphElement extends HTMLElement {
      */
     /** @deprecated */
     align: string;
+    cloneNode(deep?: boolean): HTMLParagraphElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParagraphElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParagraphElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8230,6 +8287,7 @@ interface HTMLParamElement extends HTMLElement {
      */
     /** @deprecated */
     valueType: string;
+    cloneNode(deep?: boolean): HTMLParamElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParamElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParamElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8243,6 +8301,7 @@ declare var HTMLParamElement: {
 
 /** A <picture> HTML element. It doesn't implement specific properties or methods. */
 interface HTMLPictureElement extends HTMLElement {
+    cloneNode(deep?: boolean): HTMLPictureElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPictureElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPictureElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8261,6 +8320,7 @@ interface HTMLPreElement extends HTMLElement {
      */
     /** @deprecated */
     width: number;
+    cloneNode(deep?: boolean): HTMLPreElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPreElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPreElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8287,6 +8347,7 @@ interface HTMLProgressElement extends HTMLElement {
      * Sets or gets the current value of a progress element. The value must be a non-negative number between 0 and the max value.
      */
     value: number;
+    cloneNode(deep?: boolean): HTMLProgressElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLProgressElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLProgressElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8304,6 +8365,7 @@ interface HTMLQuoteElement extends HTMLElement {
      * Sets or retrieves reference information about the object.
      */
     cite: string;
+    cloneNode(deep?: boolean): HTMLQuoteElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLQuoteElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLQuoteElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8353,6 +8415,7 @@ interface HTMLScriptElement extends HTMLElement {
      * Sets or retrieves the MIME type for the associated scripting engine.
      */
     type: string;
+    cloneNode(deep?: boolean): HTMLScriptElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8433,6 +8496,7 @@ interface HTMLSelectElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLSelectElement;
     /**
      * Retrieves a select object or an object from an options collection.
      * @param name Variant of type Number or String that specifies the object or collection to retrieve. If this parameter is an integer, it is the zero-based index of the object. If this parameter is a string, all objects with matching name or id properties are retrieved, and a collection is returned if more than one match is made.
@@ -8472,6 +8536,7 @@ interface HTMLSlotElement extends HTMLElement {
     name: string;
     assignedElements(options?: AssignedNodesOptions): Element[];
     assignedNodes(options?: AssignedNodesOptions): Node[];
+    cloneNode(deep?: boolean): HTMLSlotElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSlotElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSlotElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8499,6 +8564,7 @@ interface HTMLSourceElement extends HTMLElement {
      * Gets or sets the MIME type of a media resource.
      */
     type: string;
+    cloneNode(deep?: boolean): HTMLSourceElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8512,6 +8578,7 @@ declare var HTMLSourceElement: {
 
 /** A <span> element and derives from the HTMLElement interface, but without implementing any additional properties or methods. */
 interface HTMLSpanElement extends HTMLElement {
+    cloneNode(deep?: boolean): HTMLSpanElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSpanElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSpanElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8534,6 +8601,7 @@ interface HTMLStyleElement extends HTMLElement, LinkStyle {
      */
     /** @deprecated */
     type: string;
+    cloneNode(deep?: boolean): HTMLStyleElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLStyleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLStyleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8552,6 +8620,7 @@ interface HTMLTableCaptionElement extends HTMLElement {
      */
     /** @deprecated */
     align: string;
+    cloneNode(deep?: boolean): HTMLTableCaptionElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8622,6 +8691,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     /** @deprecated */
     width: string;
+    cloneNode(deep?: boolean): HTMLTableCellElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8655,6 +8725,7 @@ interface HTMLTableColElement extends HTMLElement {
      */
     /** @deprecated */
     width: string;
+    cloneNode(deep?: boolean): HTMLTableColElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableColElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableColElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8667,6 +8738,7 @@ declare var HTMLTableColElement: {
 };
 
 interface HTMLTableDataCellElement extends HTMLTableCellElement {
+    cloneNode(deep?: boolean): HTMLTableDataCellElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableDataCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableDataCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8742,6 +8814,7 @@ interface HTMLTableElement extends HTMLElement {
      */
     /** @deprecated */
     width: string;
+    cloneNode(deep?: boolean): HTMLTableElement;
     /**
      * Creates an empty caption element in the table.
      */
@@ -8793,6 +8866,7 @@ declare var HTMLTableElement: {
 
 interface HTMLTableHeaderCellElement extends HTMLTableCellElement {
     scope: string;
+    cloneNode(deep?: boolean): HTMLTableHeaderCellElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8831,6 +8905,7 @@ interface HTMLTableRowElement extends HTMLElement {
     readonly sectionRowIndex: number;
     /** @deprecated */
     vAlign: string;
+    cloneNode(deep?: boolean): HTMLTableRowElement;
     /**
      * Removes the specified cell from the table row, as well as from the cells collection.
      * @param index Number that specifies the zero-based position of the cell to remove from the table row. If no value is provided, the last cell in the cells collection is deleted.
@@ -8869,6 +8944,7 @@ interface HTMLTableSectionElement extends HTMLElement {
     readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
     /** @deprecated */
     vAlign: string;
+    cloneNode(deep?: boolean): HTMLTableSectionElement;
     /**
      * Removes the specified row (tr) from the element and from the rows collection.
      * @param index Number that specifies the zero-based position in the rows collection of the row to remove.
@@ -8893,6 +8969,7 @@ declare var HTMLTableSectionElement: {
 /** Enables access to the contents of an HTML <template> element. */
 interface HTMLTemplateElement extends HTMLElement {
     readonly content: DocumentFragment;
+    cloneNode(deep?: boolean): HTMLTemplateElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8989,6 +9066,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Returns whether a form will validate when it is submitted, without having to submit it.
      */
     checkValidity(): boolean;
+    cloneNode(deep?: boolean): HTMLTextAreaElement;
     reportValidity(): boolean;
     /**
      * Highlights the input area of a form element.
@@ -9022,6 +9100,7 @@ declare var HTMLTextAreaElement: {
 /** Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <time> elements. */
 interface HTMLTimeElement extends HTMLElement {
     dateTime: string;
+    cloneNode(deep?: boolean): HTMLTimeElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTimeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTimeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9039,6 +9118,7 @@ interface HTMLTitleElement extends HTMLElement {
      * Retrieves or sets the text of the object as a string.
      */
     text: string;
+    cloneNode(deep?: boolean): HTMLTitleElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTitleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTitleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9059,6 +9139,7 @@ interface HTMLTrackElement extends HTMLElement {
     src: string;
     srclang: string;
     readonly track: TextTrack;
+    cloneNode(deep?: boolean): HTMLTrackElement;
     readonly ERROR: number;
     readonly LOADED: number;
     readonly LOADING: number;
@@ -9084,6 +9165,7 @@ interface HTMLUListElement extends HTMLElement {
     compact: boolean;
     /** @deprecated */
     type: string;
+    cloneNode(deep?: boolean): HTMLUListElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9097,6 +9179,7 @@ declare var HTMLUListElement: {
 
 /** An invalid HTML element and derives from the HTMLElement interface, but without implementing any additional properties or methods. */
 interface HTMLUnknownElement extends HTMLElement {
+    cloneNode(deep?: boolean): HTMLUnknownElement;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUnknownElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUnknownElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9147,6 +9230,7 @@ interface HTMLVideoElement extends HTMLMediaElement {
      * Gets or sets the width of the video element.
      */
     width: number;
+    cloneNode(deep?: boolean): HTMLVideoElement;
     getVideoPlaybackQuality(): VideoPlaybackQuality;
     msFrameStep(forward: boolean): void;
     msInsertVideoEffect(activatableClassId: string, effectRequired: boolean, config?: any): void;
@@ -11991,6 +12075,7 @@ interface PositionError {
 /** A processing instruction embeds application-specific instructions in XML which can be ignored by other applications that don't recognize them. */
 interface ProcessingInstruction extends CharacterData {
     readonly target: string;
+    cloneNode(deep?: boolean): ProcessingInstruction;
 }
 
 declare var ProcessingInstruction: {
@@ -12830,6 +12915,7 @@ declare var Response: {
 /** Provides access to the properties of <a> element, as well as methods to manipulate them. */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
     readonly target: SVGAnimatedString;
+    cloneNode(deep?: boolean): SVGAElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -12867,6 +12953,7 @@ declare var SVGAngle: {
 };
 
 interface SVGAnimateElement extends SVGAnimationElement {
+    cloneNode(deep?: boolean): SVGAnimateElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -12879,6 +12966,7 @@ declare var SVGAnimateElement: {
 };
 
 interface SVGAnimateMotionElement extends SVGAnimationElement {
+    cloneNode(deep?: boolean): SVGAnimateMotionElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -12891,6 +12979,7 @@ declare var SVGAnimateMotionElement: {
 };
 
 interface SVGAnimateTransformElement extends SVGAnimationElement {
+    cloneNode(deep?: boolean): SVGAnimateTransformElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13041,6 +13130,7 @@ declare var SVGAnimatedTransformList: {
 
 interface SVGAnimationElement extends SVGElement {
     readonly targetElement: SVGElement;
+    cloneNode(deep?: boolean): SVGAnimationElement;
     getCurrentTime(): number;
     getSimpleDuration(): number;
     getStartTime(): number;
@@ -13060,6 +13150,7 @@ interface SVGCircleElement extends SVGGeometryElement {
     readonly cx: SVGAnimatedLength;
     readonly cy: SVGAnimatedLength;
     readonly r: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGCircleElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGCircleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGCircleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13075,6 +13166,7 @@ declare var SVGCircleElement: {
 interface SVGClipPathElement extends SVGElement {
     readonly clipPathUnits: SVGAnimatedEnumeration;
     readonly transform: SVGAnimatedTransformList;
+    cloneNode(deep?: boolean): SVGClipPathElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGClipPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGClipPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13095,6 +13187,7 @@ interface SVGComponentTransferFunctionElement extends SVGElement {
     readonly slope: SVGAnimatedNumber;
     readonly tableValues: SVGAnimatedNumberList;
     readonly type: SVGAnimatedEnumeration;
+    cloneNode(deep?: boolean): SVGComponentTransferFunctionElement;
     readonly SVG_FECOMPONENTTRANSFER_TYPE_DISCRETE: number;
     readonly SVG_FECOMPONENTTRANSFER_TYPE_GAMMA: number;
     readonly SVG_FECOMPONENTTRANSFER_TYPE_IDENTITY: number;
@@ -13121,6 +13214,7 @@ declare var SVGComponentTransferFunctionElement: {
 interface SVGCursorElement extends SVGElement {
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGCursorElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGCursorElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGCursorElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13134,6 +13228,7 @@ declare var SVGCursorElement: {
 
 /** Corresponds to the <defs> element. */
 interface SVGDefsElement extends SVGGraphicsElement {
+    cloneNode(deep?: boolean): SVGDefsElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGDefsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGDefsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13147,6 +13242,7 @@ declare var SVGDefsElement: {
 
 /** Corresponds to the <desc> element. */
 interface SVGDescElement extends SVGElement {
+    cloneNode(deep?: boolean): SVGDescElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGDescElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGDescElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13167,6 +13263,7 @@ interface SVGElement extends Element, DocumentAndElementEventHandlers, ElementCS
     readonly className: any;
     readonly ownerSVGElement: SVGSVGElement | null;
     readonly viewportElement: SVGElement | null;
+    cloneNode(deep?: boolean): SVGElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13206,6 +13303,7 @@ interface SVGEllipseElement extends SVGGeometryElement {
     readonly cy: SVGAnimatedLength;
     readonly rx: SVGAnimatedLength;
     readonly ry: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGEllipseElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGEllipseElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGEllipseElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13222,6 +13320,7 @@ interface SVGFEBlendElement extends SVGElement, SVGFilterPrimitiveStandardAttrib
     readonly in1: SVGAnimatedString;
     readonly in2: SVGAnimatedString;
     readonly mode: SVGAnimatedEnumeration;
+    cloneNode(deep?: boolean): SVGFEBlendElement;
     readonly SVG_FEBLEND_MODE_COLOR: number;
     readonly SVG_FEBLEND_MODE_COLOR_BURN: number;
     readonly SVG_FEBLEND_MODE_COLOR_DODGE: number;
@@ -13272,6 +13371,7 @@ interface SVGFEColorMatrixElement extends SVGElement, SVGFilterPrimitiveStandard
     readonly in1: SVGAnimatedString;
     readonly type: SVGAnimatedEnumeration;
     readonly values: SVGAnimatedNumberList;
+    cloneNode(deep?: boolean): SVGFEColorMatrixElement;
     readonly SVG_FECOLORMATRIX_TYPE_HUEROTATE: number;
     readonly SVG_FECOLORMATRIX_TYPE_LUMINANCETOALPHA: number;
     readonly SVG_FECOLORMATRIX_TYPE_MATRIX: number;
@@ -13296,6 +13396,7 @@ declare var SVGFEColorMatrixElement: {
 /** Corresponds to the <feComponentTransfer> element. */
 interface SVGFEComponentTransferElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
     readonly in1: SVGAnimatedString;
+    cloneNode(deep?: boolean): SVGFEComponentTransferElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEComponentTransferElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEComponentTransferElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13316,6 +13417,7 @@ interface SVGFECompositeElement extends SVGElement, SVGFilterPrimitiveStandardAt
     readonly k3: SVGAnimatedNumber;
     readonly k4: SVGAnimatedNumber;
     readonly operator: SVGAnimatedEnumeration;
+    cloneNode(deep?: boolean): SVGFECompositeElement;
     readonly SVG_FECOMPOSITE_OPERATOR_ARITHMETIC: number;
     readonly SVG_FECOMPOSITE_OPERATOR_ATOP: number;
     readonly SVG_FECOMPOSITE_OPERATOR_IN: number;
@@ -13355,6 +13457,7 @@ interface SVGFEConvolveMatrixElement extends SVGElement, SVGFilterPrimitiveStand
     readonly preserveAlpha: SVGAnimatedBoolean;
     readonly targetX: SVGAnimatedInteger;
     readonly targetY: SVGAnimatedInteger;
+    cloneNode(deep?: boolean): SVGFEConvolveMatrixElement;
     readonly SVG_EDGEMODE_DUPLICATE: number;
     readonly SVG_EDGEMODE_NONE: number;
     readonly SVG_EDGEMODE_UNKNOWN: number;
@@ -13381,6 +13484,7 @@ interface SVGFEDiffuseLightingElement extends SVGElement, SVGFilterPrimitiveStan
     readonly kernelUnitLengthX: SVGAnimatedNumber;
     readonly kernelUnitLengthY: SVGAnimatedNumber;
     readonly surfaceScale: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFEDiffuseLightingElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDiffuseLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDiffuseLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13399,6 +13503,7 @@ interface SVGFEDisplacementMapElement extends SVGElement, SVGFilterPrimitiveStan
     readonly scale: SVGAnimatedNumber;
     readonly xChannelSelector: SVGAnimatedEnumeration;
     readonly yChannelSelector: SVGAnimatedEnumeration;
+    cloneNode(deep?: boolean): SVGFEDisplacementMapElement;
     readonly SVG_CHANNEL_A: number;
     readonly SVG_CHANNEL_B: number;
     readonly SVG_CHANNEL_G: number;
@@ -13424,6 +13529,7 @@ declare var SVGFEDisplacementMapElement: {
 interface SVGFEDistantLightElement extends SVGElement {
     readonly azimuth: SVGAnimatedNumber;
     readonly elevation: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFEDistantLightElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDistantLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDistantLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13441,6 +13547,7 @@ interface SVGFEDropShadowElement extends SVGElement, SVGFilterPrimitiveStandardA
     readonly in1: SVGAnimatedString;
     readonly stdDeviationX: SVGAnimatedNumber;
     readonly stdDeviationY: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFEDropShadowElement;
     setStdDeviation(stdDeviationX: number, stdDeviationY: number): void;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDropShadowElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -13455,6 +13562,7 @@ declare var SVGFEDropShadowElement: {
 
 /** Corresponds to the <feFlood> element. */
 interface SVGFEFloodElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    cloneNode(deep?: boolean): SVGFEFloodElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFloodElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFloodElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13468,6 +13576,7 @@ declare var SVGFEFloodElement: {
 
 /** Corresponds to the <feFuncA> element. */
 interface SVGFEFuncAElement extends SVGComponentTransferFunctionElement {
+    cloneNode(deep?: boolean): SVGFEFuncAElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13481,6 +13590,7 @@ declare var SVGFEFuncAElement: {
 
 /** Corresponds to the <feFuncB> element. */
 interface SVGFEFuncBElement extends SVGComponentTransferFunctionElement {
+    cloneNode(deep?: boolean): SVGFEFuncBElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncBElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncBElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13494,6 +13604,7 @@ declare var SVGFEFuncBElement: {
 
 /** Corresponds to the <feFuncG> element. */
 interface SVGFEFuncGElement extends SVGComponentTransferFunctionElement {
+    cloneNode(deep?: boolean): SVGFEFuncGElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13507,6 +13618,7 @@ declare var SVGFEFuncGElement: {
 
 /** Corresponds to the <feFuncR> element. */
 interface SVGFEFuncRElement extends SVGComponentTransferFunctionElement {
+    cloneNode(deep?: boolean): SVGFEFuncRElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncRElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncRElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13523,6 +13635,7 @@ interface SVGFEGaussianBlurElement extends SVGElement, SVGFilterPrimitiveStandar
     readonly in1: SVGAnimatedString;
     readonly stdDeviationX: SVGAnimatedNumber;
     readonly stdDeviationY: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFEGaussianBlurElement;
     setStdDeviation(stdDeviationX: number, stdDeviationY: number): void;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEGaussianBlurElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -13538,6 +13651,7 @@ declare var SVGFEGaussianBlurElement: {
 /** Corresponds to the <feImage> element. */
 interface SVGFEImageElement extends SVGElement, SVGFilterPrimitiveStandardAttributes, SVGURIReference {
     readonly preserveAspectRatio: SVGAnimatedPreserveAspectRatio;
+    cloneNode(deep?: boolean): SVGFEImageElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEImageElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEImageElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13551,6 +13665,7 @@ declare var SVGFEImageElement: {
 
 /** Corresponds to the <feMerge> element. */
 interface SVGFEMergeElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    cloneNode(deep?: boolean): SVGFEMergeElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13565,6 +13680,7 @@ declare var SVGFEMergeElement: {
 /** Corresponds to the <feMergeNode> element. */
 interface SVGFEMergeNodeElement extends SVGElement {
     readonly in1: SVGAnimatedString;
+    cloneNode(deep?: boolean): SVGFEMergeNodeElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeNodeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeNodeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13582,6 +13698,7 @@ interface SVGFEMorphologyElement extends SVGElement, SVGFilterPrimitiveStandardA
     readonly operator: SVGAnimatedEnumeration;
     readonly radiusX: SVGAnimatedNumber;
     readonly radiusY: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFEMorphologyElement;
     readonly SVG_MORPHOLOGY_OPERATOR_DILATE: number;
     readonly SVG_MORPHOLOGY_OPERATOR_ERODE: number;
     readonly SVG_MORPHOLOGY_OPERATOR_UNKNOWN: number;
@@ -13604,6 +13721,7 @@ interface SVGFEOffsetElement extends SVGElement, SVGFilterPrimitiveStandardAttri
     readonly dx: SVGAnimatedNumber;
     readonly dy: SVGAnimatedNumber;
     readonly in1: SVGAnimatedString;
+    cloneNode(deep?: boolean): SVGFEOffsetElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEOffsetElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEOffsetElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13620,6 +13738,7 @@ interface SVGFEPointLightElement extends SVGElement {
     readonly x: SVGAnimatedNumber;
     readonly y: SVGAnimatedNumber;
     readonly z: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFEPointLightElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEPointLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEPointLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13639,6 +13758,7 @@ interface SVGFESpecularLightingElement extends SVGElement, SVGFilterPrimitiveSta
     readonly specularConstant: SVGAnimatedNumber;
     readonly specularExponent: SVGAnimatedNumber;
     readonly surfaceScale: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFESpecularLightingElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpecularLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpecularLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13660,6 +13780,7 @@ interface SVGFESpotLightElement extends SVGElement {
     readonly x: SVGAnimatedNumber;
     readonly y: SVGAnimatedNumber;
     readonly z: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGFESpotLightElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpotLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpotLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13674,6 +13795,7 @@ declare var SVGFESpotLightElement: {
 /** Corresponds to the <feTile> element. */
 interface SVGFETileElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
     readonly in1: SVGAnimatedString;
+    cloneNode(deep?: boolean): SVGFETileElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFETileElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFETileElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13693,6 +13815,7 @@ interface SVGFETurbulenceElement extends SVGElement, SVGFilterPrimitiveStandardA
     readonly seed: SVGAnimatedNumber;
     readonly stitchTiles: SVGAnimatedEnumeration;
     readonly type: SVGAnimatedEnumeration;
+    cloneNode(deep?: boolean): SVGFETurbulenceElement;
     readonly SVG_STITCHTYPE_NOSTITCH: number;
     readonly SVG_STITCHTYPE_STITCH: number;
     readonly SVG_STITCHTYPE_UNKNOWN: number;
@@ -13724,6 +13847,7 @@ interface SVGFilterElement extends SVGElement, SVGURIReference {
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGFilterElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFilterElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFilterElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13754,6 +13878,7 @@ interface SVGForeignObjectElement extends SVGGraphicsElement {
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGForeignObjectElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGForeignObjectElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGForeignObjectElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13767,6 +13892,7 @@ declare var SVGForeignObjectElement: {
 
 /** Corresponds to the <g> element. */
 interface SVGGElement extends SVGGraphicsElement {
+    cloneNode(deep?: boolean): SVGGElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13780,6 +13906,7 @@ declare var SVGGElement: {
 
 interface SVGGeometryElement extends SVGGraphicsElement {
     readonly pathLength: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGGeometryElement;
     getPointAtLength(distance: number): DOMPoint;
     getTotalLength(): number;
     isPointInFill(point?: DOMPointInit): boolean;
@@ -13800,6 +13927,7 @@ interface SVGGradientElement extends SVGElement, SVGURIReference {
     readonly gradientTransform: SVGAnimatedTransformList;
     readonly gradientUnits: SVGAnimatedEnumeration;
     readonly spreadMethod: SVGAnimatedEnumeration;
+    cloneNode(deep?: boolean): SVGGradientElement;
     readonly SVG_SPREADMETHOD_PAD: number;
     readonly SVG_SPREADMETHOD_REFLECT: number;
     readonly SVG_SPREADMETHOD_REPEAT: number;
@@ -13822,6 +13950,7 @@ declare var SVGGradientElement: {
 /** SVG elements whose primary purpose is to directly render graphics into a group. */
 interface SVGGraphicsElement extends SVGElement, SVGTests {
     readonly transform: SVGAnimatedTransformList;
+    cloneNode(deep?: boolean): SVGGraphicsElement;
     getBBox(options?: SVGBoundingBoxOptions): DOMRect;
     getCTM(): DOMMatrix | null;
     getScreenCTM(): DOMMatrix | null;
@@ -13843,6 +13972,7 @@ interface SVGImageElement extends SVGGraphicsElement, SVGURIReference {
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGImageElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGImageElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGImageElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13916,6 +14046,7 @@ interface SVGLineElement extends SVGGeometryElement {
     readonly x2: SVGAnimatedLength;
     readonly y1: SVGAnimatedLength;
     readonly y2: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGLineElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13933,6 +14064,7 @@ interface SVGLinearGradientElement extends SVGGradientElement {
     readonly x2: SVGAnimatedLength;
     readonly y1: SVGAnimatedLength;
     readonly y2: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGLinearGradientElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLinearGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLinearGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13952,6 +14084,7 @@ interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     readonly orientType: SVGAnimatedEnumeration;
     readonly refX: SVGAnimatedLength;
     readonly refY: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGMarkerElement;
     setOrientToAngle(angle: SVGAngle): void;
     setOrientToAuto(): void;
     readonly SVG_MARKERUNITS_STROKEWIDTH: number;
@@ -13985,6 +14118,7 @@ interface SVGMaskElement extends SVGElement {
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGMaskElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMaskElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMaskElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -13998,6 +14132,7 @@ declare var SVGMaskElement: {
 
 /** Corresponds to the <metadata> element. */
 interface SVGMetadataElement extends SVGElement {
+    cloneNode(deep?: boolean): SVGMetadataElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMetadataElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMetadataElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14042,6 +14177,7 @@ declare var SVGNumberList: {
 interface SVGPathElement extends SVGGraphicsElement {
     /** @deprecated */
     readonly pathSegList: SVGPathSegList;
+    cloneNode(deep?: boolean): SVGPathElement;
     /** @deprecated */
     createSVGPathSegArcAbs(x: number, y: number, r1: number, r2: number, angle: number, largeArcFlag: boolean, sweepFlag: boolean): SVGPathSegArcAbs;
     /** @deprecated */
@@ -14380,6 +14516,7 @@ interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGURIReference
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGPatternElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPatternElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPatternElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14411,6 +14548,7 @@ declare var SVGPointList: {
 
 /** Provides access to the properties of <polygon> elements, as well as methods to manipulate them. */
 interface SVGPolygonElement extends SVGGeometryElement, SVGAnimatedPoints {
+    cloneNode(deep?: boolean): SVGPolygonElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolygonElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolygonElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14424,6 +14562,7 @@ declare var SVGPolygonElement: {
 
 /** Provides access to the properties of <polyline> elements, as well as methods to manipulate them. */
 interface SVGPolylineElement extends SVGGeometryElement, SVGAnimatedPoints {
+    cloneNode(deep?: boolean): SVGPolylineElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolylineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolylineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14482,6 +14621,7 @@ interface SVGRadialGradientElement extends SVGGradientElement {
     readonly fx: SVGAnimatedLength;
     readonly fy: SVGAnimatedLength;
     readonly r: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGRadialGradientElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRadialGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRadialGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14501,6 +14641,7 @@ interface SVGRectElement extends SVGGeometryElement {
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGRectElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRectElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRectElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14544,6 +14685,7 @@ interface SVGSVGElement extends SVGGraphicsElement, DocumentEvent, SVGFitToViewB
     animationsPaused(): boolean;
     checkEnclosure(element: SVGElement, rect: SVGRect): boolean;
     checkIntersection(element: SVGElement, rect: SVGRect): boolean;
+    cloneNode(deep?: boolean): SVGSVGElement;
     createSVGAngle(): SVGAngle;
     createSVGLength(): SVGLength;
     createSVGMatrix(): SVGMatrix;
@@ -14586,6 +14728,7 @@ declare var SVGSVGElement: {
 /** Corresponds to the SVG <script> element. */
 interface SVGScriptElement extends SVGElement, SVGURIReference {
     type: string;
+    cloneNode(deep?: boolean): SVGScriptElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGScriptElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGScriptElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14600,6 +14743,7 @@ declare var SVGScriptElement: {
 /** Corresponds to the <stop> element. */
 interface SVGStopElement extends SVGElement {
     readonly offset: SVGAnimatedNumber;
+    cloneNode(deep?: boolean): SVGStopElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStopElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStopElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14636,6 +14780,7 @@ interface SVGStyleElement extends SVGElement {
     media: string;
     title: string;
     type: string;
+    cloneNode(deep?: boolean): SVGStyleElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStyleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStyleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14649,6 +14794,7 @@ declare var SVGStyleElement: {
 
 /** Corresponds to the <switch> element. */
 interface SVGSwitchElement extends SVGGraphicsElement {
+    cloneNode(deep?: boolean): SVGSwitchElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSwitchElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSwitchElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14662,6 +14808,7 @@ declare var SVGSwitchElement: {
 
 /** Corresponds to the <symbol> element. */
 interface SVGSymbolElement extends SVGElement, SVGFitToViewBox {
+    cloneNode(deep?: boolean): SVGSymbolElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSymbolElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSymbolElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14675,6 +14822,7 @@ declare var SVGSymbolElement: {
 
 /** A <tspan> element. */
 interface SVGTSpanElement extends SVGTextPositioningElement {
+    cloneNode(deep?: boolean): SVGTSpanElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTSpanElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTSpanElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14695,6 +14843,7 @@ interface SVGTests {
 interface SVGTextContentElement extends SVGGraphicsElement {
     readonly lengthAdjust: SVGAnimatedEnumeration;
     readonly textLength: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGTextContentElement;
     getCharNumAtPosition(point?: DOMPointInit): number;
     getComputedTextLength(): number;
     getEndPositionOfChar(charnum: number): DOMPoint;
@@ -14723,6 +14872,7 @@ declare var SVGTextContentElement: {
 
 /** Corresponds to the <text> elements. */
 interface SVGTextElement extends SVGTextPositioningElement {
+    cloneNode(deep?: boolean): SVGTextElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14739,6 +14889,7 @@ interface SVGTextPathElement extends SVGTextContentElement, SVGURIReference {
     readonly method: SVGAnimatedEnumeration;
     readonly spacing: SVGAnimatedEnumeration;
     readonly startOffset: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGTextPathElement;
     readonly TEXTPATH_METHODTYPE_ALIGN: number;
     readonly TEXTPATH_METHODTYPE_STRETCH: number;
     readonly TEXTPATH_METHODTYPE_UNKNOWN: number;
@@ -14769,6 +14920,7 @@ interface SVGTextPositioningElement extends SVGTextContentElement {
     readonly rotate: SVGAnimatedNumberList;
     readonly x: SVGAnimatedLengthList;
     readonly y: SVGAnimatedLengthList;
+    cloneNode(deep?: boolean): SVGTextPositioningElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextPositioningElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextPositioningElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14782,6 +14934,7 @@ declare var SVGTextPositioningElement: {
 
 /** Corresponds to the <title> element. */
 interface SVGTitleElement extends SVGElement {
+    cloneNode(deep?: boolean): SVGTitleElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTitleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTitleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14871,6 +15024,7 @@ interface SVGUseElement extends SVGGraphicsElement, SVGURIReference {
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
+    cloneNode(deep?: boolean): SVGUseElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGUseElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGUseElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14886,6 +15040,7 @@ declare var SVGUseElement: {
 interface SVGViewElement extends SVGElement, SVGFitToViewBox, SVGZoomAndPan {
     /** @deprecated */
     readonly viewTarget: SVGStringList;
+    cloneNode(deep?: boolean): SVGViewElement;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGViewElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGViewElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -15156,6 +15311,10 @@ declare var ServiceWorkerRegistration: {
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
     readonly host: Element;
     readonly mode: ShadowRootMode;
+    /**
+     * Throws a "NotSupportedError" DOMException if context object is a shadow root.
+     */
+    cloneNode(deep?: boolean): never;
 }
 
 declare var ShadowRoot: {
@@ -15627,6 +15786,7 @@ interface Text extends CharacterData, Slotable {
      * Returns the combined data of all direct Text node siblings.
      */
     readonly wholeText: string;
+    cloneNode(deep?: boolean): Text;
     /**
      * Splits data at the given offset and returns the remainder as Text node.
      */
@@ -18810,6 +18970,7 @@ interface WritableStreamDefaultWriter<W = any> {
 
 /** An XML document. It inherits from the generic Document and does not add any specific methods or properties to it: nevertheless, several algorithms behave differently with the two types of documents. */
 interface XMLDocument extends Document {
+    cloneNode(deep?: boolean): XMLDocument;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: XMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: XMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
