@@ -809,7 +809,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitConstructor(i: Browser.Interface, prefix = "") {
-        printer.printLine(`${prefix}var ${i.name}: {`);
+        printer.printLine(`interface ${i.name}Constructor {`);
         printer.increaseIndent();
 
         printer.printLine(`prototype: ${i.name};`);
@@ -823,7 +823,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         emitMembers(/*prefix*/ "", EmitScope.StaticOnly, i);
 
         printer.decreaseIndent();
-        printer.printLine("};");
+        printer.printLine("}");
+        printer.printLine(`${prefix}var ${i.name}: ${i.name}Constructor;`);
         printer.printLine("");
 
         if (flavor === Flavor.Web && i["legacy-window-alias"]) {
