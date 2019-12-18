@@ -4562,12 +4562,12 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Retrieves a collection of all a objects that have a name and/or id property. Objects in this collection are in HTML source order.
      */
     /** @deprecated */
-    readonly anchors: HTMLCollectionOf<HTMLAnchorElement>;
+    readonly anchors: HTMLCollection<HTMLAnchorElement>;
     /**
      * Retrieves a collection of all applet objects in the document.
      */
     /** @deprecated */
-    readonly applets: HTMLCollectionOf<HTMLAppletElement>;
+    readonly applets: HTMLCollection<HTMLAppletElement>;
     /**
      * Deprecated. Sets or retrieves a value that indicates the background color behind the object.
      */
@@ -4635,7 +4635,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Retrieves a collection of all embed objects in the document.
      */
-    readonly embeds: HTMLCollectionOf<HTMLEmbedElement>;
+    readonly embeds: HTMLCollection<HTMLEmbedElement>;
     /**
      * Sets or gets the foreground (text) color of the document.
      */
@@ -4644,7 +4644,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Retrieves a collection, in source order, of all form objects in the document.
      */
-    readonly forms: HTMLCollectionOf<HTMLFormElement>;
+    readonly forms: HTMLCollection<HTMLFormElement>;
     /** @deprecated */
     readonly fullscreen: boolean;
     /**
@@ -4659,7 +4659,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Retrieves a collection, in source order, of img objects in the document.
      */
-    readonly images: HTMLCollectionOf<HTMLImageElement>;
+    readonly images: HTMLCollection<HTMLImageElement>;
     /**
      * Gets the implementation object of the current document.
      */
@@ -4680,7 +4680,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Retrieves a collection of all a objects that specify the href property and all area objects in the document.
      */
-    readonly links: HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>;
+    readonly links: HTMLCollection<HTMLAnchorElement | HTMLAreaElement>;
     /**
      * Contains information about the current URL.
      */
@@ -4702,7 +4702,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Return an HTMLCollection of the embed elements in the Document.
      */
-    readonly plugins: HTMLCollectionOf<HTMLEmbedElement>;
+    readonly plugins: HTMLCollection<HTMLEmbedElement>;
     /**
      * Retrieves a value that indicates the current state of the object.
      */
@@ -4714,7 +4714,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Retrieves a collection of all script objects in the document.
      */
-    readonly scripts: HTMLCollectionOf<HTMLScriptElement>;
+    readonly scripts: HTMLCollection<HTMLScriptElement>;
     readonly scrollingElement: Element | null;
     readonly timeline: DocumentTimeline;
     /**
@@ -4928,7 +4928,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Returns a HTMLCollection of the elements in the object on which the method was invoked (a document or an element) that have all the classes given by classNames. The classNames argument is interpreted as a space-separated list of classes.
      */
-    getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+    getElementsByClassName(classNames: string): HTMLCollection;
     /**
      * Gets a collection of objects based on the value of the NAME or ID attribute.
      * @param elementName Gets a collection of objects based on the value of the NAME or ID attribute.
@@ -4938,9 +4938,9 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Retrieves a collection of objects based on the specified element name.
      * @param name Specifies the name of an element.
      */
-    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
-    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;
-    getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollection<HTMLElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollection<SVGElementTagNameMap[K]>;
+    getElementsByTagName(qualifiedName: string): HTMLCollection;
     /**
      * If namespace and localName are "*" returns a HTMLCollection of all descendant elements.
      * 
@@ -4950,9 +4950,9 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * 
      * Otherwise, returns a HTMLCollection of all descendant elements whose namespace is namespace and local name is localName.
      */
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
-    getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollection<HTMLElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollection<SVGElement>;
+    getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollection;
     /**
      * Returns an object representing the current selection of the document that is loaded into the object displaying a webpage.
      */
@@ -5307,13 +5307,13 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
     /**
      * Returns a HTMLCollection of the elements in the object on which the method was invoked (a document or an element) that have all the classes given by classNames. The classNames argument is interpreted as a space-separated list of classes.
      */
-    getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
-    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
-    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;
-    getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
-    getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>;
+    getElementsByClassName(classNames: string): HTMLCollection;
+    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollection<HTMLElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollection<SVGElementTagNameMap[K]>;
+    getElementsByTagName(qualifiedName: string): HTMLCollection;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollection<HTMLElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollection<SVGElement>;
+    getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollection;
     /**
      * Returns true if element has an attribute whose qualified name is qualifiedName, and false otherwise.
      */
@@ -6562,7 +6562,7 @@ declare var HTMLCanvasElement: {
 };
 
 /** A generic collection (array-like object similar to arguments) of elements (in document order) and offers methods and properties for selecting from the list. */
-interface HTMLCollectionBase {
+interface HTMLCollection<E extends Element = Element, N = never> {
     /**
      * Sets or retrieves the number of objects in a collection.
      */
@@ -6570,27 +6570,18 @@ interface HTMLCollectionBase {
     /**
      * Retrieves an object from various collections.
      */
-    item(index: number): Element | null;
-    [index: number]: Element;
-}
-
-interface HTMLCollection extends HTMLCollectionBase {
+    item(index: number): E | null;
     /**
      * Retrieves a select object or an object from an options collection.
      */
-    namedItem(name: string): Element | null;
+    namedItem(name: string): E | N | null;
+    [index: number]: E;
 }
 
 declare var HTMLCollection: {
     prototype: HTMLCollection;
     new(): HTMLCollection;
 };
-
-interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
-    item(index: number): T | null;
-    namedItem(name: string): T | null;
-    [index: number]: T;
-}
 
 /** Provides special properties (beyond those of the regular HTMLElement interface it also has available to it by inheritance) for manipulating definition list (<dl>) elements. */
 interface HTMLDListElement extends HTMLElement {
@@ -6623,7 +6614,7 @@ declare var HTMLDataElement: {
 
 /** Provides special properties (beyond the HTMLElement object interface it also has available to it by inheritance) to manipulate <datalist> elements and their content. */
 interface HTMLDataListElement extends HTMLElement {
-    readonly options: HTMLCollectionOf<HTMLOptionElement>;
+    readonly options: HTMLCollection<HTMLOptionElement>;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -6843,7 +6834,7 @@ declare var HTMLFontElement: {
 };
 
 /** A collection of HTML form control elements.  */
-interface HTMLFormControlsCollection extends HTMLCollectionBase {
+interface HTMLFormControlsCollection extends HTMLCollection<Element, RadioNodeList> {
     /**
      * Returns the item with ID or name name from the collection.
      * 
@@ -7606,7 +7597,7 @@ interface HTMLMapElement extends HTMLElement {
     /**
      * Retrieves a collection of the area objects defined for the given map object.
      */
-    readonly areas: HTMLCollection;
+    readonly areas: HTMLCollection<HTMLAreaElement>;
     /**
      * Sets or retrieves the name of the object.
      */
@@ -8147,7 +8138,7 @@ declare var HTMLOptionElement: {
 };
 
 /** HTMLOptionsCollection is an interface representing a collection of HTML option elements (in document order) and offers methods and properties for traversing the list as well as optionally altering its items. This type is returned solely by the "options" property of select. */
-interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
+interface HTMLOptionsCollection extends HTMLCollection<HTMLOptionElement> {
     /**
      * Returns the number of elements in the collection.
      * 
@@ -8420,7 +8411,7 @@ interface HTMLSelectElement extends HTMLElement {
      * Sets or retrieves the index of the selected option in a select object.
      */
     selectedIndex: number;
-    readonly selectedOptions: HTMLCollectionOf<HTMLOptionElement>;
+    readonly selectedOptions: HTMLCollection<HTMLOptionElement>;
     /**
      * Sets or retrieves the number of rows in the list box.
      */
@@ -8736,7 +8727,7 @@ interface HTMLTableElement extends HTMLElement {
     /**
      * Sets or retrieves the number of horizontal rows contained in the object.
      */
-    readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
+    readonly rows: HTMLCollection<HTMLTableRowElement>;
     /**
      * Sets or retrieves which dividing lines (inner borders) are displayed.
      */
@@ -8750,7 +8741,7 @@ interface HTMLTableElement extends HTMLElement {
     /**
      * Retrieves a collection of all tBody objects in the table. Objects in this collection are in source order.
      */
-    readonly tBodies: HTMLCollectionOf<HTMLTableSectionElement>;
+    readonly tBodies: HTMLCollection<HTMLTableSectionElement>;
     /**
      * Retrieves the tFoot object of the table.
      */
@@ -8838,7 +8829,7 @@ interface HTMLTableRowElement extends HTMLElement {
     /**
      * Retrieves a collection of all cells in the table row.
      */
-    readonly cells: HTMLCollectionOf<HTMLTableDataCellElement | HTMLTableHeaderCellElement>;
+    readonly cells: HTMLCollection<HTMLTableDataCellElement | HTMLTableHeaderCellElement>;
     /** @deprecated */
     ch: string;
     /** @deprecated */
@@ -8888,7 +8879,7 @@ interface HTMLTableSectionElement extends HTMLElement {
     /**
      * Sets or retrieves the number of horizontal rows contained in the object.
      */
-    readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
+    readonly rows: HTMLCollection<HTMLTableRowElement>;
     /** @deprecated */
     vAlign: string;
     /**
