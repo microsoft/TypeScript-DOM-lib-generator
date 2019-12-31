@@ -1,3 +1,13 @@
 {
-    "window-customelements": "Defines a new custom element, mapping the given name to the given constructor as an autonomous custom element."
+    "window-customelements": "Defines a new custom element, mapping the given name to the given constructor as an autonomous custom element.",
+    "attachinternals": "Returns an ElementInternals object targeting the custom element element. Throws an exception if element is not a custom element, if the \"internals\" feature was disabled as part of the element definition, or if it is called twice on the same element.",
+    "elementinternals-setformvalue": "Sets both the state and submission value of internals's target element to value.\n\nIf value is null, the element won't participate in form submission.",
+    "elementinternals-form": "Returns the form owner of internals's target element.",
+    "elementinternals-setvalidity": "Marks internals's target element as suffering from the constraints indicated by the flags argument, and sets the element's validation message to message. If anchor is specified, the user agent might use it to indicate problems with the constraints of internals's target element when the form owner is validated interactively or reportValidity() is called.",
+    "elementinternals-willvalidate": "Returns true if internals's target element will be validated when the form is submitted; false otherwise.",
+    "elementinternals-validity": "Returns the ValidityState object for internals's target element.",
+    "elementinternals-validationmessage": "Returns the error message that would be shown to the user if internals's target element was to be checked for validity.",
+    "elementinternals-checkvalidity": "Returns true if internals's target element has no validity problems; false otherwise. Fires an invalid event at the element in the latter case.",
+    "elementinternals-reportvalidity": "Returns true if internals's target element has no validity problems; otherwise, returns false, fires an invalid event at the element, and (if the event isn't canceled) reports the problem to the user.",
+    "elementinternals-labels": "Returns a NodeList of all the label elements that internals's target element is associated with."
 }

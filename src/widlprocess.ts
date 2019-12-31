@@ -114,7 +114,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         methods: { method: {} },
         "anonymous-methods": { method: [] },
         properties: { property: {}, namesakes: {} },
-        constructor: getConstructor(i.extAttrs, i.name),
+        constructor: getConstructor(i.members, i.name) || getOldStyleConstructor(i.extAttrs, i.name),
         "named-constructor": getNamedConstructor(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
@@ -173,7 +173,24 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
     return result;
 }
 
-function getConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: string) {
+function getConstructor(members: webidl2.IDLInterfaceMemberType[], parent: string) {
+    const constructor: Browser.Constructor = {
+        signature: []
+    };
+    for (const member of members) {
+        if (member.type === "constructor") {
+            constructor.signature.push({
+                type: parent,
+                param: member.arguments.map(convertArgument)
+            });
+        }
+    }
+    if (constructor.signature.length) {
+        return constructor;
+    }
+}
+
+function getOldStyleConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: string) {
     const constructor: Browser.Constructor = {
         signature: []
     };
@@ -181,7 +198,7 @@ function getConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: string) {
         if (extAttr.name === "Constructor") {
             constructor.signature.push({
                 type: parent,
-                param: extAttr.arguments ? extAttr.arguments.map(convertArgument) : []
+                param: extAttr.arguments.map(convertArgument)
             });
         }
     }

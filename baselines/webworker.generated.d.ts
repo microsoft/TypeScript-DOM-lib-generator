@@ -350,7 +350,7 @@ interface PushPermissionDescriptor extends PermissionDescriptor {
     userVisibleOnly?: boolean;
 }
 
-interface PushSubscriptionChangeInit extends ExtendableEventInit {
+interface PushSubscriptionChangeEventInit extends ExtendableEventInit {
     newSubscription?: PushSubscription;
     oldSubscription?: PushSubscription;
 }
@@ -632,7 +632,10 @@ interface AnimationFrameProvider {
 interface Blob {
     readonly size: number;
     readonly type: string;
+    arrayBuffer(): Promise<ArrayBuffer>;
     slice(start?: number, end?: number, contentType?: string): Blob;
+    stream(): ReadableStream;
+    text(): Promise<string>;
 }
 
 declare var Blob: {
@@ -1465,7 +1468,7 @@ interface EventTarget {
      * 
      * When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
      * 
-     * When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in §2.8 Observing event listeners.
+     * When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
      * 
      * When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
      * 
@@ -1626,7 +1629,7 @@ interface GenericTransformStream {
      */
     readonly readable: ReadableStream;
     /**
-     * Returns a writable stream which accepts BufferSource chunks and runs them through encoding's decoder before making them available to readable.
+     * Returns a writable stream which accepts [AllowShared] BufferSource chunks and runs them through encoding's decoder before making them available to readable.
      * 
      * Typically this will be used via the pipeThrough() method on a ReadableStream source.
      * 
@@ -2705,7 +2708,7 @@ interface PushSubscriptionChangeEvent extends ExtendableEvent {
 
 declare var PushSubscriptionChangeEvent: {
     prototype: PushSubscriptionChangeEvent;
-    new(type: string, eventInitDict?: PushSubscriptionChangeInit): PushSubscriptionChangeEvent;
+    new(type: string, eventInitDict?: PushSubscriptionChangeEventInit): PushSubscriptionChangeEvent;
 };
 
 interface PushSubscriptionOptions {
@@ -2948,6 +2951,7 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: PushSubscriptionChangeEvent) => any) | null;
     onsync: ((this: ServiceWorkerGlobalScope, ev: SyncEvent) => any) | null;
     readonly registration: ServiceWorkerRegistration;
+    readonly serviceWorker: ServiceWorker;
     skipWaiting(): Promise<void>;
     addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -5336,7 +5340,7 @@ interface WindowOrWorkerGlobalScope {
     createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
     fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
-    queueMicrotask(callback: Function): void;
+    queueMicrotask(callback: VoidFunction): void;
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 }
@@ -5689,9 +5693,9 @@ declare namespace WebAssembly {
         module: Module;
     }
     
-    type ImportExportKind = "function" | "table" | "memory" | "global";
+    type ImportExportKind = "function" | "global" | "memory" | "table";
     type TableKind = "anyfunc";
-    type ValueType = "i32" | "i64" | "f32" | "f64";
+    type ValueType = "f32" | "f64" | "i32" | "i64";
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
     type ImportValue = ExportValue | number;
@@ -5739,6 +5743,10 @@ interface TransformStreamDefaultControllerCallback<O> {
 
 interface TransformStreamDefaultControllerTransformCallback<I, O> {
     (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+}
+
+interface VoidFunction {
+    (): void;
 }
 
 interface WritableStreamDefaultControllerCloseCallback {
@@ -5795,7 +5803,7 @@ declare function clearTimeout(handle?: number): void;
 declare function createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
 declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
-declare function queueMicrotask(callback: Function): void;
+declare function queueMicrotask(callback: VoidFunction): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function cancelAnimationFrame(handle: number): void;
@@ -5842,41 +5850,41 @@ type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMTimeStamp = number;
 type FormDataEntryValue = File | string;
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
-type Transferable = ArrayBuffer | MessagePort | ImageBitmap;
-type BinaryType = "blob" | "arraybuffer";
-type CanvasDirection = "ltr" | "rtl" | "inherit";
-type CanvasFillRule = "nonzero" | "evenodd";
+type Transferable = ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas;
+type BinaryType = "arraybuffer" | "blob";
+type CanvasDirection = "inherit" | "ltr" | "rtl";
+type CanvasFillRule = "evenodd" | "nonzero";
 type CanvasLineCap = "butt" | "round" | "square";
-type CanvasLineJoin = "round" | "bevel" | "miter";
-type CanvasTextAlign = "start" | "end" | "left" | "right" | "center";
-type CanvasTextBaseline = "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom";
-type ClientTypes = "window" | "worker" | "sharedworker" | "all";
-type EndingType = "transparent" | "native";
-type FrameType = "auxiliary" | "top-level" | "nested" | "none";
+type CanvasLineJoin = "bevel" | "miter" | "round";
+type CanvasTextAlign = "center" | "end" | "left" | "right" | "start";
+type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top";
+type ClientTypes = "all" | "sharedworker" | "window" | "worker";
+type EndingType = "native" | "transparent";
+type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
-type IDBRequestReadyState = "pending" | "done";
+type IDBRequestReadyState = "done" | "pending";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
-type ImageSmoothingQuality = "low" | "medium" | "high";
-type KeyFormat = "raw" | "spki" | "pkcs8" | "jwk";
-type KeyType = "public" | "private" | "secret";
-type KeyUsage = "encrypt" | "decrypt" | "sign" | "verify" | "deriveKey" | "deriveBits" | "wrapKey" | "unwrapKey";
+type ImageSmoothingQuality = "high" | "low" | "medium";
+type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
+type KeyType = "private" | "public" | "secret";
+type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2";
-type PermissionName = "geolocation" | "notifications" | "push" | "midi" | "camera" | "microphone" | "speaker" | "device-info" | "background-sync" | "bluetooth" | "persistent-storage" | "ambient-light-sensor" | "accelerometer" | "gyroscope" | "magnetometer" | "clipboard";
-type PermissionState = "granted" | "denied" | "prompt";
-type PushEncryptionKeyName = "p256dh" | "auth";
+type PermissionName = "accelerometer" | "ambient-light-sensor" | "background-sync" | "bluetooth" | "camera" | "clipboard" | "device-info" | "geolocation" | "gyroscope" | "magnetometer" | "microphone" | "midi" | "notifications" | "persistent-storage" | "push" | "speaker";
+type PermissionState = "denied" | "granted" | "prompt";
+type PushEncryptionKeyName = "auth" | "p256dh";
 type PushPermissionState = "denied" | "granted" | "prompt";
-type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "same-origin" | "origin" | "strict-origin" | "origin-when-cross-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
-type RequestCache = "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
-type RequestCredentials = "omit" | "same-origin" | "include";
+type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
+type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
+type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
-type RequestMode = "navigate" | "same-origin" | "no-cors" | "cors";
-type RequestRedirect = "follow" | "error" | "manual";
+type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
+type RequestRedirect = "error" | "follow" | "manual";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
-type ServiceWorkerState = "installing" | "installed" | "activating" | "activated" | "redundant";
-type ServiceWorkerUpdateViaCache = "imports" | "all" | "none";
+type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
+type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type VisibilityState = "hidden" | "visible";
-type WebGLPowerPreference = "default" | "low-power" | "high-performance";
+type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
