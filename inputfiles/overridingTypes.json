@@ -129,6 +129,18 @@
                     "property": {
                         "onerror": {
                             "override-type": "OnErrorEventHandler"
+                        },
+                        "ontouchcancel": {
+                            "required": 0
+                        },
+                        "ontouchend": {
+                            "required": 0
+                        },
+                        "ontouchmove": {
+                            "required": 0
+                        },
+                        "ontouchstart": {
+                            "required": 0
                         }
                     }
                 }
@@ -630,6 +642,14 @@
                             "nullable": false
                        }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "readystatechange",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             "Node": {
@@ -693,6 +713,9 @@
                             "deprecated": 1
                         },
                         "nextSibling": {
+                            "override-type": "ChildNode | null"
+                        },
+                        "previousSibling": {
                             "override-type": "ChildNode | null"
                         }
                     }
@@ -1066,7 +1089,7 @@
                 "constructor": {
                     "override-signatures": [
                         "new(width: number, height: number): ImageData",
-                        "new(array: Uint8ClampedArray, width: number, height: number): ImageData"
+                        "new(array: Uint8ClampedArray, width: number, height?: number): ImageData"
                     ]
                 }
             },
@@ -1237,6 +1260,14 @@
                             ]
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "msneedkey",
+                            "type": "MSMediaKeyNeededEvent"
+                        }
+                    ]
                 }
             },
             "DataTransferItemList": {
@@ -1473,6 +1504,10 @@
                             "read-only": 1,
                             "override-type": "HTMLFormElement | null"
                         },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "override-type": "\"forward\" | \"backward\" | \"none\""
+                        },
                         "valueAsDate": {
                             "name": "valueAsDate",
                             "override-type": "Date | null"
@@ -1665,6 +1700,10 @@
                         "labels": {
                             "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
+                        },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "override-type": "\"forward\" | \"backward\" | \"none\""
                         }
                     }
                 },
@@ -2174,7 +2213,7 @@
                         "match": {
                             "name": "match",
                             "override-signatures": [
-                                "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
+                                "match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>"
                             ]
                         }
                     }
@@ -2492,21 +2531,6 @@
                     }
                 }
             },
-            "ReadableStreamReadResult": {
-                "type-parameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "properties": {
-                    "property": {
-                        "value": {
-                            "override-type": "T"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "ReadableStreamBYOBReader": {
                 "methods": {
                     "method": {
@@ -2516,11 +2540,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
-            },
-            "ReadableStreamBYOBRequest": {
-                "no-interface-object": 1
+                }
             },
             "ReadableStreamDefaultReader": {
                 "type-parameters": [
@@ -2537,8 +2557,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ReadableByteStreamController": {
                 "properties": {
@@ -2547,8 +2566,7 @@
                             "override-type": "ReadableStreamBYOBRequest | undefined"
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ReadableStreamDefaultController": {
                 "type-parameters": [
@@ -2565,11 +2583,9 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "WritableStream": {
-                "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
                         "new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>"
@@ -2591,12 +2607,7 @@
                     }
                 }
             },
-            "WritableStreamDefaultController": {
-                "override-exposed": "Window Worker",
-                "no-interface-object": 1
-            },
             "WritableStreamDefaultWriter": {
-                "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
                         "name": "W",
@@ -2611,8 +2622,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "TransformStream": {
                 "type-parameters": [
@@ -2642,7 +2652,6 @@
                 }
             },
             "TransformStreamDefaultController": {
-                "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
                         "name": "O",
@@ -2657,11 +2666,9 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ByteLengthQueuingStrategy": {
-                "override-exposed": "Window Worker",
                 "extends": "QueuingStrategy<ArrayBufferView>",
                 "constructor": {
                     "override-signatures": [
@@ -2670,7 +2677,6 @@
                 }
             },
             "CountQueuingStrategy": {
-                "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
                         "new(options: { highWaterMark: number }): CountQueuingStrategy"
@@ -2768,6 +2774,28 @@
                     "property": {
                         "exports": {
                             "type": "Exports"
+                        }
+                    }
+                }
+            },
+            "MediaKeySession": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MediaKeyMessageEvent"
+                        }
+                    ]
+                }
+            },
+            "MediaKeyStatusMap": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            "name": "get",
+                            "override-signatures": [
+                                "get(keyId: BufferSource): MediaKeyStatus | undefined"
+                            ]
                         }
                     }
                 }
@@ -2990,6 +3018,40 @@
                     }
                 }
             },
+            "ReadableStreamReadDoneResult": {
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "override-type": "true"
+                        },
+                        "value": {
+                            "override-type": "T"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamReadValueResult": {
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "override-type": "false"
+                        },
+                        "value": {
+                            "override-type": "T"
+                        }
+                    }
+                }
+            },
             "UnderlyingByteSource": {
                 "members": {
                     "member": {
@@ -3157,6 +3219,15 @@
             {
                 "override-type": "Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string",
                 "new-type": "BodyInit"
+            },
+            {
+                "override-type": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>",
+                "new-type": "ReadableStreamReadResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ]
             }
         ]
     },

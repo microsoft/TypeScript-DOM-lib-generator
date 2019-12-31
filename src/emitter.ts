@@ -343,7 +343,6 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return baseTypeConversionMap.get(objDomType)!;
         }
         switch (objDomType) {
-            case "CustomElementConstructor": return "Function";
             case "DOMHighResTimeStamp": return "number";
             case "DOMTimeStamp": return "number";
             case "EventListener": return "EventListenerOrEventListenerObject";
@@ -405,7 +404,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             expectedParamType.every((pt, idx) => convertDomTypeToTsType(m.signature[0].param![idx]) === pt);
     }
 
-    function getNameWithTypeParameter(i: Browser.Interface | Browser.Dictionary | Browser.CallbackFunction, name: string) {
+    function getNameWithTypeParameter(i: Browser.Interface | Browser.Dictionary | Browser.CallbackFunction | Browser.TypeDef, name: string) {
         function typeParameterWithDefault(type: Browser.TypeParameter) {
             return type.name
                 + (type.extends ? ` extends ${type.extends}` : "")
@@ -562,7 +561,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitEnum(e: Browser.Enum) {
-        printer.printLine(`type ${e.name} = ${e.value.map(v => `"${v}"`).join(" | ")};`);
+        const values = e.value.slice().sort();
+        printer.printLine(`type ${e.name} = ${values.map(v => `"${v}"`).join(" | ")};`);
     }
 
     function emitEnums() {
@@ -617,10 +617,18 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             else {
                 pType = convertDomTypeToTsType(p);
             }
-            const requiredModifier = p.required === undefined || p.required === 1 ? "" : "?";
+            const required = p.required === undefined || p.required === 1;
+            const requiredModifier = required || prefix ? "" : "?";
             pType = p.nullable ? makeNullable(pType) : pType;
+            if (!required && prefix) {
+                pType += " | undefined"
+            }
             const readOnlyModifier = p["read-only"] === 1 && prefix === "" ? "readonly " : "";
             printer.printLine(`${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`);
+        }
+
+        if (p.stringifier) {
+            printer.printLine("toString(): string;")
         }
     }
 
@@ -662,7 +670,16 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             case "querySelector": return emitQuerySelectorOverloads(m);
             case "querySelectorAll": return emitQuerySelectorAllOverloads(m);
         }
-        emitSignatures(m, prefix, m.name, printLine);
+
+        // ignore toString() provided from browser.webidl.preprocessed.json
+        // to prevent duplication
+        if (m.name !== "toString") {
+            emitSignatures(m, prefix, m.name, printLine);
+
+            if (m.stringifier) {
+                printLine("toString(): string;")
+            }
+        }
     }
 
     function emitSignature(s: Browser.Signature, prefix: string | undefined, name: string | undefined, printLine: (s: string) => void) {
@@ -693,6 +710,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
                 .filter(m => matchScope(emitScope, m) && !(prefix !== "" && (m.name === "addEventListener" || m.name === "removeEventListener")))
                 .sort(compareName)
                 .forEach(m => emitMethod(prefix, m, conflictedMembers));
+        }
+        if (i["anonymous-methods"]) {
+            const stringifier = i["anonymous-methods"].method.find(m => m.stringifier);
+            if (stringifier) {
+                printer.printLine("toString(): string;");
+            }
         }
 
         // The window interface inherited some methods from "Object",
@@ -1094,7 +1117,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     function emitTypeDef(typeDef: Browser.TypeDef) {
         emitComments(typeDef, printer.printLine);
-        printer.printLine(`type ${typeDef["new-type"]} = ${convertDomTypeToTsType(typeDef)};`);
+        printer.printLine(`type ${getNameWithTypeParameter(typeDef, typeDef["new-type"])} = ${convertDomTypeToTsType(typeDef)};`);
     }
 
     function emitTypeDefs() {

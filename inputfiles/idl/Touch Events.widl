@@ -21,8 +21,9 @@ dictionary TouchInit {
              TouchType   touchType = "direct";
 };
 
-[Constructor(TouchInit touchInitDict), Exposed=Window]
+[Exposed=Window]
 interface Touch {
+    constructor(TouchInit touchInitDict);
     readonly        attribute long        identifier;
     readonly        attribute EventTarget target;
     readonly        attribute double      screenX;
@@ -40,6 +41,7 @@ interface Touch {
     readonly        attribute TouchType   touchType;
 };
 
+[Exposed=Window]
 interface TouchList {
     readonly        attribute unsigned long length;
     getter Touch? item (unsigned long index);
@@ -51,8 +53,9 @@ dictionary TouchEventInit : EventModifierInit {
              sequence<Touch> changedTouches = [];
 };
 
-[Constructor(DOMString type, optional TouchEventInit eventInitDict), Exposed=Window]
+[Exposed=Window]
 interface TouchEvent : UIEvent {
+    constructor(DOMString type, optional TouchEventInit eventInitDict = {});
     readonly        attribute TouchList touches;
     readonly        attribute TouchList targetTouches;
     readonly        attribute TouchList changedTouches;
