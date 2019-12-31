@@ -46,14 +46,21 @@ dictionary PipeOptions {
     AbortSignal? signal;
 };
 
-[Exposed=(Window,Worker)]
-interface ReadableStreamReadResult {
-    attribute boolean done;
-    attribute any value;
+dictionary ReadableStreamReadValueResult {
+    required boolean done;
+    required any value;
 };
 
-[Constructor(ReadableStream stream),
- Exposed=(Window,Worker)]
+dictionary ReadableStreamReadDoneResult {
+    required boolean done;
+    any value;
+};
+
+[Exposed=(Window,Worker)]
+typedef (ReadableStreamReadValueResult or ReadableStreamReadDoneResult) ReadableStreamReadResult;
+
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface ReadableStreamDefaultReader {
     readonly attribute Promise<void> closed;
 
@@ -62,8 +69,8 @@ interface ReadableStreamDefaultReader {
     void releaseLock();
 };
 
-[Constructor(ReadableStream stream),
- Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface ReadableStreamBYOBReader {
     readonly attribute Promise<void> closed;
 
@@ -72,7 +79,8 @@ interface ReadableStreamBYOBReader {
     void releaseLock();
 };
 
-[Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface ReadableStreamDefaultController {
     readonly attribute unrestricted double? desiredSize;
 
@@ -81,7 +89,8 @@ interface ReadableStreamDefaultController {
     void error(optional any error);
 };
 
-[Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface ReadableByteStreamController {
     readonly attribute ReadableStreamBYOBRequest byobRequest;
     readonly attribute unrestricted double? desiredSize;
@@ -91,7 +100,8 @@ interface ReadableByteStreamController {
     void error(optional any error);
 };
 
-[Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface ReadableStreamBYOBRequest {
     readonly attribute ArrayBufferView view;
 
@@ -121,8 +131,8 @@ dictionary UnderlyingSink {
     any type;
 };
 
-[Constructor(ReadableStream stream),
- Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface WritableStreamDefaultWriter {
     readonly attribute Promise<void> closed;
     readonly attribute unrestricted double? desiredSize;
@@ -134,7 +144,8 @@ interface WritableStreamDefaultWriter {
     Promise<void> write(any chunk);
 };
 
-[Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface WritableStreamDefaultController {
     void error(optional any error);
 };
@@ -158,7 +169,8 @@ dictionary Transformer {
     any writableType;
 };
 
-[Exposed=(Window,Worker)]
+[Exposed=(Window,Worker),
+ NoInterfaceObject]
 interface TransformStreamDefaultController {
     readonly attribute unrestricted double? desiredSize;
 

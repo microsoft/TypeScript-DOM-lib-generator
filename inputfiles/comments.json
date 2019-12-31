@@ -370,9 +370,6 @@
                         "validationMessage": {
                             "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
                         },
-                        "autofocus": {
-                            "comment": "/**\n * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.\n */"
-                        },
                         "validity": {
                             "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
                         },
@@ -630,9 +627,6 @@
                         "formAction": {
                             "comment": "/**\n * Overrides the action attribute (where the data on a form is sent) on the parent form element.\n */"
                         },
-                        "autofocus": {
-                            "comment": "/**\n * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.\n */"
-                        },
                         "validity": {
                             "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
                         },
@@ -708,9 +702,6 @@
                         },
                         "inputEncoding": {
                             "comment": "/**\n * Returns the character encoding used to create the webpage that is loaded into the document object.\n */"
-                        },
-                        "activeElement": {
-                            "comment": "/**\n * Gets the object that has the focus when the parent document has focus.\n */"
                         },
                         "links": {
                             "comment": "/**\n * Retrieves a collection of all a objects that specify the href property and all area objects in the document.\n */"
@@ -1141,9 +1132,6 @@
                         "step": {
                             "comment": "/**\n * Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field.\n */"
                         },
-                        "autofocus": {
-                            "comment": "/**\n * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.\n */"
-                        },
                         "required": {
                             "comment": "/**\n * When present, marks an element that can't be submitted without a value.\n */"
                         },
@@ -1400,9 +1388,6 @@
                         },
                         "validationMessage": {
                             "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
-                        },
-                        "autofocus": {
-                            "comment": "/**\n * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.\n */"
                         },
                         "validity": {
                             "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"

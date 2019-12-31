@@ -33,6 +33,10 @@
         "title": "CSS Box Alignment"
     },
     {
+        "url": "https://www.w3.org/TR/css-color-3/",
+        "title": "CSS Color"
+    },
+    {
         "url": "https://www.w3.org/TR/fill-stroke-3/",
         "title": "CSS Fill and Stroke"
     },
@@ -79,6 +83,10 @@
     {
         "url": "https://www.w3.org/TR/css-overflow-3/",
         "title": "CSS Overflow"
+    },
+    {
+        "url": "https://www.w3.org/TR/css-ruby-1/",
+        "title": "CSS Ruby Layout"
     },
     {
         "url": "https://drafts.csswg.org/css-scroll-anchoring/",
@@ -155,10 +163,6 @@
     {
         "url": "https://w3c.github.io/DOM-Parsing/",
         "title": "DOM Parsing and Serialization"
-    },
-    {
-        "url": "https://wiki.whatwg.org/wiki/DOM_XPath",
-        "title": "DOM XPath"
     },
     {
         "url": "https://encoding.spec.whatwg.org/",
@@ -418,6 +422,14 @@
     {
         "url": "https://www.w3.org/TR/SVG2/painting.html",
         "title": "SVG - Painting"
+    },
+    {
+        "url": "https://www.w3.org/TR/SVG2/pservers.html",
+        "title": "SVG - Paint Servers"
+    },
+    {
+        "url": "https://www.w3.org/TR/SVG2/text.html",
+        "title": "SVG - Text"
     },
     {
         "url": "https://w3c.github.io/touch-events/",
