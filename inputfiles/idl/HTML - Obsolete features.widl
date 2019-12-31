@@ -1,6 +1,7 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLMarqueeElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute DOMString behavior;
   [CEReactions] attribute DOMString bgColor;
   [CEReactions] attribute DOMString direction;
@@ -21,17 +22,19 @@ interface HTMLMarqueeElement : HTMLElement {
   void stop();
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFrameSetElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute DOMString cols;
   [CEReactions] attribute DOMString rows;
 };
 HTMLFrameSetElement includes WindowEventHandlers;
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFrameElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute DOMString name;
   [CEReactions] attribute DOMString scrolling;
   [CEReactions] attribute USVString src;
@@ -82,9 +85,10 @@ partial interface HTMLTableColElement {
   [CEReactions] attribute DOMString width;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLDirectoryElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute boolean compact;
 };
 
@@ -101,9 +105,10 @@ partial interface HTMLEmbedElement {
   [CEReactions] attribute DOMString name;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFontElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute [TreatNullAs=EmptyString] DOMString color;
   [CEReactions] attribute DOMString face;
   [CEReactions] attribute DOMString size; 

@@ -1,0 +1,4 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString color;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString opacity;
+};

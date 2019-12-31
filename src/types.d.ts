@@ -224,6 +224,7 @@ export interface TypeDef extends Typed {
     "new-type": string;
     deprecated?: 1;
     "legacy-namespace"?: string;
+    "type-parameters"?: TypeParameter[];
 }
 
 export interface Dictionary {

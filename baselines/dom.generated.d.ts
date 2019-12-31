@@ -1177,7 +1177,16 @@ interface RTCDtlsParameters {
 }
 
 interface RTCErrorEventInit extends EventInit {
-    error?: RTCError | null;
+    error: RTCError;
+}
+
+interface RTCErrorInit {
+    errorDetail: RTCErrorDetailType;
+    httpRequestStatusCode?: number;
+    receivedAlert?: number;
+    sctpCauseCode?: number;
+    sdpLineNumber?: number;
+    sentAlert?: number;
 }
 
 interface RTCIceCandidateAttributes extends RTCStats {
@@ -1209,7 +1218,7 @@ interface RTCIceCandidateInit {
     candidate?: string;
     sdpMLineIndex?: number | null;
     sdpMid?: string | null;
-    usernameFragment?: string;
+    usernameFragment?: string | null;
 }
 
 interface RTCIceCandidatePair {
@@ -1365,6 +1374,7 @@ interface RTCRtpCodingParameters {
 
 interface RTCRtpContributingSource {
     audioLevel?: number;
+    rtpTimestamp: number;
     source: number;
     timestamp: number;
 }
@@ -1378,7 +1388,6 @@ interface RTCRtpEncodingParameters extends RTCRtpCodingParameters {
     dtx?: RTCDtxStatus;
     maxBitrate?: number;
     maxFramerate?: number;
-    priority?: RTCPriorityType;
     ptime?: number;
     scaleResolutionDownBy?: number;
 }
@@ -1422,6 +1431,7 @@ interface RTCRtpRtxParameters {
 interface RTCRtpSendParameters extends RTCRtpParameters {
     degradationPreference?: RTCDegradationPreference;
     encodings: RTCRtpEncodingParameters[];
+    priority?: RTCPriorityType;
     transactionId: string;
 }
 
@@ -1443,7 +1453,7 @@ interface RTCRtpUnhandled {
 
 interface RTCSessionDescriptionInit {
     sdp?: string;
-    type: RTCSdpType;
+    type?: RTCSdpType;
 }
 
 interface RTCSrtpKeyParam {
@@ -1494,6 +1504,16 @@ interface RTCTransportStats extends RTCStats {
     remoteCertificateId?: string;
     rtcpTransportStatsId?: string;
     selectedCandidatePairId?: string;
+}
+
+interface ReadableStreamReadDoneResult<T> {
+    done: true;
+    value?: T;
+}
+
+interface ReadableStreamReadValueResult<T> {
+    done: false;
+    value: T;
 }
 
 interface RegistrationOptions {
@@ -1674,6 +1694,13 @@ interface SpeechSynthesisEventInit extends EventInit {
     elapsedTime?: number;
     name?: string;
     utterance: SpeechSynthesisUtterance;
+}
+
+interface StaticRangeInit {
+    endContainer: Node;
+    endOffset: number;
+    startContainer: Node;
+    startOffset: number;
 }
 
 interface StereoPannerOptions extends AudioNodeOptions {
@@ -2142,8 +2169,8 @@ interface AudioBuffer {
     readonly length: number;
     readonly numberOfChannels: number;
     readonly sampleRate: number;
-    copyFromChannel(destination: Float32Array, channelNumber: number, startInChannel?: number): void;
-    copyToChannel(source: Float32Array, channelNumber: number, startInChannel?: number): void;
+    copyFromChannel(destination: Float32Array, channelNumber: number, bufferOffset?: number): void;
+    copyToChannel(source: Float32Array, channelNumber: number, bufferOffset?: number): void;
     getChannelData(channel: number): Float32Array;
 }
 
@@ -2511,7 +2538,10 @@ declare var BiquadFilterNode: {
 interface Blob {
     readonly size: number;
     readonly type: string;
+    arrayBuffer(): Promise<ArrayBuffer>;
     slice(start?: number, end?: number, contentType?: string): Blob;
+    stream(): ReadableStream;
+    text(): Promise<string>;
 }
 
 declare var Blob: {
@@ -2827,7 +2857,7 @@ interface CSSStyleDeclaration {
     clip: string;
     clipPath: string;
     clipRule: string;
-    color: string | null;
+    color: string;
     colorInterpolation: string;
     colorInterpolationFilters: string;
     columnCount: string;
@@ -3004,7 +3034,7 @@ interface CSSStyleDeclaration {
     msWrapThrough: string;
     objectFit: string;
     objectPosition: string;
-    opacity: string | null;
+    opacity: string;
     order: string;
     orphans: string;
     outline: string;
@@ -3044,14 +3074,14 @@ interface CSSStyleDeclaration {
     right: string;
     rotate: string;
     rowGap: string;
-    rubyAlign: string | null;
+    rubyAlign: string;
     rubyOverhang: string | null;
-    rubyPosition: string | null;
+    rubyPosition: string;
     scale: string;
     scrollBehavior: string;
     shapeRendering: string;
-    stopColor: string | null;
-    stopOpacity: string | null;
+    stopColor: string;
+    stopOpacity: string;
     stroke: string;
     strokeDasharray: string;
     strokeDashoffset: string;
@@ -3064,7 +3094,7 @@ interface CSSStyleDeclaration {
     tableLayout: string;
     textAlign: string;
     textAlignLast: string;
-    textAnchor: string | null;
+    textAnchor: string;
     textCombineUpright: string;
     textDecoration: string;
     textDecorationColor: string;
@@ -3152,7 +3182,8 @@ interface CSSStyleDeclaration {
     webkitBoxFlex: string;
     /** @deprecated */
     webkitBoxOrdinalGroup: string;
-    webkitBoxOrient: string | null;
+    /** @deprecated */
+    webkitBoxOrient: string;
     /** @deprecated */
     webkitBoxPack: string;
     /** @deprecated */
@@ -3356,7 +3387,7 @@ interface CacheStorage {
     delete(cacheName: string): Promise<boolean>;
     has(cacheName: string): Promise<boolean>;
     keys(): Promise<string[]>;
-    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>;
+    match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>;
     open(cacheName: string): Promise<Cache>;
 }
 
@@ -3819,7 +3850,7 @@ declare var CryptoKeyPair: {
 };
 
 interface CustomElementRegistry {
-    define(name: string, constructor: Function, options?: ElementDefinitionOptions): void;
+    define(name: string, constructor: CustomElementConstructor, options?: ElementDefinitionOptions): void;
     get(name: string): any;
     upgrade(root: Node): void;
     whenDefined(name: string): Promise<void>;
@@ -4028,6 +4059,7 @@ interface DOMMatrixReadOnly {
     toJSON(): any;
     transformPoint(point?: DOMPointInit): DOMPoint;
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
+    toString(): string;
 }
 
 declare var DOMMatrixReadOnly: {
@@ -4036,6 +4068,7 @@ declare var DOMMatrixReadOnly: {
     fromFloat32Array(array32: Float32Array): DOMMatrixReadOnly;
     fromFloat64Array(array64: Float64Array): DOMMatrixReadOnly;
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
+    toString(): string;
 };
 
 /** Provides the ability to parse XML or HTML source code from a string into a DOM Document. */
@@ -4193,6 +4226,7 @@ interface DOMTokenList {
      * Can be set, to change the associated attribute.
      */
     value: string;
+    toString(): string;
     /**
      * Adds all arguments passed, except those already present.
      * 
@@ -4333,7 +4367,7 @@ interface DataTransferItem {
      */
     getAsFile(): File | null;
     /**
-     * Invokes the callback with the string data as the argument, if the drag data item kind is Plain Unicode string.
+     * Invokes the callback with the string data as the argument, if the drag data item kind is text.
      */
     getAsString(callback: FunctionStringCallback | null): void;
     webkitGetAsEntry(): any;
@@ -4428,6 +4462,7 @@ interface DeviceMotionEvent extends Event {
 declare var DeviceMotionEvent: {
     prototype: DeviceMotionEvent;
     new(type: string, eventInitDict?: DeviceMotionEventInit): DeviceMotionEvent;
+    requestPermission(): Promise<PermissionState>;
 };
 
 interface DeviceMotionEventAcceleration {
@@ -4453,6 +4488,7 @@ interface DeviceOrientationEvent extends Event {
 declare var DeviceOrientationEvent: {
     prototype: DeviceOrientationEvent;
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
+    requestPermission(): Promise<PermissionState>;
 };
 
 /** Provides information about the rate at which the device is rotating around all three axes. */
@@ -4501,10 +4537,6 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Sets or gets the URL for the current document.
      */
     readonly URL: string;
-    /**
-     * Gets the object that has the focus when the parent document has focus.
-     */
-    readonly activeElement: Element | null;
     /**
      * Sets or gets the color of all active links in the document.
      */
@@ -5503,7 +5535,7 @@ interface EventTarget {
      * 
      * When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
      * 
-     * When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in §2.8 Observing event listeners.
+     * When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
      * 
      * When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
      * 
@@ -5744,7 +5776,7 @@ interface GenericTransformStream {
      */
     readonly readable: ReadableStream;
     /**
-     * Returns a writable stream which accepts BufferSource chunks and runs them through encoding's decoder before making them available to readable.
+     * Returns a writable stream which accepts [AllowShared] BufferSource chunks and runs them through encoding's decoder before making them available to readable.
      * 
      * Typically this will be used via the pipeThrough() method on a ReadableStream source.
      * 
@@ -5808,7 +5840,6 @@ interface GlobalEventHandlersEventMap {
     "load": Event;
     "loadeddata": Event;
     "loadedmetadata": Event;
-    "loadend": ProgressEvent;
     "loadstart": Event;
     "lostpointercapture": PointerEvent;
     "mousedown": MouseEvent;
@@ -5993,7 +6024,6 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onloadend: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
     /**
      * Occurs when Internet Explorer begins looking for media data.
      * @param ev The event.
@@ -6106,10 +6136,10 @@ interface GlobalEventHandlers {
      */
     ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    ontouchcancel: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
-    ontouchend: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
-    ontouchmove: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
-    ontouchstart: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchcancel?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchend?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchmove?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
+    ontouchstart?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null;
     ontransitioncancel: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
     ontransitionend: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
     ontransitionrun: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
@@ -6415,10 +6445,6 @@ declare var HTMLBodyElement: {
 
 /** Provides properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <button> elements. */
 interface HTMLButtonElement extends HTMLElement {
-    /**
-     * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.
-     */
-    autofocus: boolean;
     disabled: boolean;
     /**
      * Retrieves a reference to the form that the object is embedded in.
@@ -7069,6 +7095,7 @@ interface HTMLHyperlinkElementUtils {
     host: string;
     hostname: string;
     href: string;
+    toString(): string;
     readonly origin: string;
     password: string;
     pathname: string;
@@ -7265,10 +7292,6 @@ interface HTMLInputElement extends HTMLElement {
      */
     autocomplete: string;
     /**
-     * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.
-     */
-    autofocus: boolean;
-    /**
      * Sets or retrieves the state of the check box or radio button.
      */
     checked: boolean;
@@ -7354,7 +7377,7 @@ interface HTMLInputElement extends HTMLElement {
      * When present, marks an element that can't be submitted without a value.
      */
     required: boolean;
-    selectionDirection: string | null;
+    selectionDirection: "forward" | "backward" | "none" | null;
     /**
      * Gets or sets the end position or offset of a text selection.
      */
@@ -8153,6 +8176,7 @@ declare var HTMLOptionsCollection: {
 };
 
 interface HTMLOrSVGElement {
+    autofocus: boolean;
     readonly dataset: DOMStringMap;
     nonce?: string;
     tabIndex: number;
@@ -8361,10 +8385,6 @@ declare var HTMLScriptElement: {
 /** A <select> HTML Element. These elements also share all of the properties and methods of other HTML elements via the HTMLElement interface. */
 interface HTMLSelectElement extends HTMLElement {
     autocomplete: string;
-    /**
-     * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.
-     */
-    autofocus: boolean;
     disabled: boolean;
     /**
      * Retrieves a reference to the form that the object is embedded in.
@@ -8902,10 +8922,6 @@ declare var HTMLTemplateElement: {
 interface HTMLTextAreaElement extends HTMLElement {
     autocomplete: string;
     /**
-     * Provides a way to direct a user to a specific field when a document loads. This can provide both direction and convenience for a user, reducing the need to click or tab to a field when a page opens. This attribute is true when present on an element, and false when missing.
-     */
-    autofocus: boolean;
-    /**
      * Sets or retrieves the width of the object.
      */
     cols: number;
@@ -8945,7 +8961,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      * Sets or retrieves the number of horizontal rows contained in the object.
      */
     rows: number;
-    selectionDirection: string;
+    selectionDirection: "forward" | "backward" | "none";
     /**
      * Gets or sets the end position or offset of a text selection.
      */
@@ -9772,7 +9788,7 @@ interface ImageData {
 declare var ImageData: {
     prototype: ImageData;
     new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height: number): ImageData;
+    new(array: Uint8ClampedArray, width: number, height?: number): ImageData;
 };
 
 interface InnerHTML {
@@ -9922,6 +9938,7 @@ interface Location {
      * Can be set, to navigate to the given URL.
      */
     href: string;
+    toString(): string;
     /**
      * Returns the Location object's URL's origin.
      */
@@ -10380,10 +10397,10 @@ declare var MediaKeys: {
 interface MediaList {
     readonly length: number;
     mediaText: string;
+    toString(): string;
     appendMedium(medium: string): void;
     deleteMedium(medium: string): void;
     item(index: number): string | null;
-    toString(): number;
     [index: number]: string;
 }
 
@@ -10995,7 +11012,7 @@ interface Node extends EventTarget {
     /**
      * Returns the previous sibling.
      */
-    readonly previousSibling: Node | null;
+    readonly previousSibling: ChildNode | null;
     textContent: string | null;
     appendChild<T extends Node>(newChild: T): T;
     /**
@@ -12162,10 +12179,10 @@ interface RTCDtlsTransportEventMap {
 }
 
 interface RTCDtlsTransport extends EventTarget {
+    readonly iceTransport: RTCIceTransport;
     onerror: ((this: RTCDtlsTransport, ev: RTCErrorEvent) => any) | null;
     onstatechange: ((this: RTCDtlsTransport, ev: Event) => any) | null;
     readonly state: RTCDtlsTransportState;
-    readonly transport: RTCIceTransport;
     getRemoteCertificates(): ArrayBuffer[];
     addEventListener<K extends keyof RTCDtlsTransportEventMap>(type: K, listener: (this: RTCDtlsTransport, ev: RTCDtlsTransportEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -12210,24 +12227,22 @@ declare var RTCDtmfSender: {
     new(sender: RTCRtpSender): RTCDtmfSender;
 };
 
-interface RTCError extends Error {
-    errorDetail: string;
-    httpRequestStatusCode: number;
-    message: string;
-    name: string;
-    receivedAlert: number | null;
-    sctpCauseCode: number;
-    sdpLineNumber: number;
-    sentAlert: number | null;
+interface RTCError extends DOMException {
+    readonly errorDetail: RTCErrorDetailType;
+    readonly httpRequestStatusCode: number | null;
+    readonly receivedAlert: number | null;
+    readonly sctpCauseCode: number | null;
+    readonly sdpLineNumber: number | null;
+    readonly sentAlert: number | null;
 }
 
 declare var RTCError: {
     prototype: RTCError;
-    new(errorDetail?: string, message?: string): RTCError;
+    new(init: RTCErrorInit, message?: string): RTCError;
 };
 
 interface RTCErrorEvent extends Event {
-    readonly error: RTCError | null;
+    readonly error: RTCError;
 }
 
 declare var RTCErrorEvent: {
@@ -12240,7 +12255,6 @@ interface RTCIceCandidate {
     readonly candidate: string;
     readonly component: RTCIceComponent | null;
     readonly foundation: string | null;
-    readonly ip: string | null;
     readonly port: number | null;
     readonly priority: number | null;
     readonly protocol: RTCIceProtocol | null;
@@ -12486,7 +12500,6 @@ interface RTCRtpTransceiver {
     readonly mid: string | null;
     readonly receiver: RTCRtpReceiver;
     readonly sender: RTCRtpSender;
-    readonly stopped: boolean;
     setCodecPreferences(codecs: RTCRtpCodecCapability[]): void;
     stop(): void;
 }
@@ -12500,7 +12513,7 @@ interface RTCSctpTransportEventMap {
     "statechange": Event;
 }
 
-interface RTCSctpTransport {
+interface RTCSctpTransport extends EventTarget {
     readonly maxChannels: number | null;
     readonly maxMessageSize: number;
     onstatechange: ((this: RTCSctpTransport, ev: Event) => any) | null;
@@ -12526,7 +12539,7 @@ interface RTCSessionDescription {
 
 declare var RTCSessionDescription: {
     prototype: RTCSessionDescription;
-    new(descriptionInitDict: RTCSessionDescriptionInit): RTCSessionDescription;
+    new(descriptionInitDict?: RTCSessionDescriptionInit): RTCSessionDescription;
 };
 
 interface RTCSrtpSdesTransportEventMap {
@@ -12650,6 +12663,7 @@ interface Range extends AbstractRange {
     setStartAfter(node: Node): void;
     setStartBefore(node: Node): void;
     surroundContents(newParent: Node): void;
+    toString(): string;
     readonly END_TO_END: number;
     readonly END_TO_START: number;
     readonly START_TO_END: number;
@@ -12663,6 +12677,7 @@ declare var Range: {
     readonly END_TO_START: number;
     readonly START_TO_END: number;
     readonly START_TO_START: number;
+    toString(): string;
 };
 
 interface ReadableByteStreamController {
@@ -12715,11 +12730,6 @@ interface ReadableStreamDefaultReader<R = any> {
     cancel(reason?: any): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
-}
-
-interface ReadableStreamReadResult<T> {
-    done: boolean;
-    value: T;
 }
 
 interface ReadableStreamReader<R = any> {
@@ -14368,7 +14378,7 @@ declare var SVGPathSegMovetoRel: {
 };
 
 /** Corresponds to the <pattern> element. */
-interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGTests, SVGURIReference {
+interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGURIReference {
     readonly height: SVGAnimatedLength;
     readonly patternContentUnits: SVGAnimatedEnumeration;
     readonly patternTransform: SVGAnimatedTransformList;
@@ -14474,6 +14484,7 @@ declare var SVGPreserveAspectRatio: {
 interface SVGRadialGradientElement extends SVGGradientElement {
     readonly cx: SVGAnimatedLength;
     readonly cy: SVGAnimatedLength;
+    readonly fr: SVGAnimatedLength;
     readonly fx: SVGAnimatedLength;
     readonly fy: SVGAnimatedLength;
     readonly r: SVGAnimatedLength;
@@ -14690,13 +14701,13 @@ interface SVGTests {
 interface SVGTextContentElement extends SVGGraphicsElement {
     readonly lengthAdjust: SVGAnimatedEnumeration;
     readonly textLength: SVGAnimatedLength;
-    getCharNumAtPosition(point: SVGPoint): number;
+    getCharNumAtPosition(point?: DOMPointInit): number;
     getComputedTextLength(): number;
-    getEndPositionOfChar(charnum: number): SVGPoint;
-    getExtentOfChar(charnum: number): SVGRect;
+    getEndPositionOfChar(charnum: number): DOMPoint;
+    getExtentOfChar(charnum: number): DOMRect;
     getNumberOfChars(): number;
     getRotationOfChar(charnum: number): number;
-    getStartPositionOfChar(charnum: number): SVGPoint;
+    getStartPositionOfChar(charnum: number): DOMPoint;
     getSubStringLength(charnum: number, nchars: number): number;
     selectSubString(charnum: number, nchars: number): void;
     readonly LENGTHADJUST_SPACING: number;
@@ -15039,11 +15050,13 @@ interface Selection {
     selectAllChildren(node: Node): void;
     setBaseAndExtent(anchorNode: Node, anchorOffset: number, focusNode: Node, focusOffset: number): void;
     setPosition(node: Node | null, offset?: number): void;
+    toString(): string;
 }
 
 declare var Selection: {
     prototype: Selection;
     new(): Selection;
+    toString(): string;
 };
 
 interface ServiceUIFrameContext {
@@ -15435,7 +15448,7 @@ interface StaticRange extends AbstractRange {
 
 declare var StaticRange: {
     prototype: StaticRange;
-    new(): StaticRange;
+    new(init: StaticRangeInit): StaticRange;
 };
 
 /** The pan property takes a unitless value between -1 (full left pan) and 1 (full right pan). This interface was introduced as a much simpler way to apply a simple panning effect than having to use a full PannerNode. */
@@ -15657,6 +15670,8 @@ interface TextDecoderCommon {
 }
 
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
+    readonly readable: ReadableStream<string>;
+    readonly writable: WritableStream<BufferSource>;
 }
 
 declare var TextDecoderStream: {
@@ -15689,6 +15704,8 @@ interface TextEncoderCommon {
 }
 
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
+    readonly readable: ReadableStream<Uint8Array>;
+    readonly writable: WritableStream<string>;
 }
 
 declare var TextEncoderStream: {
@@ -16031,6 +16048,7 @@ interface URL {
     host: string;
     hostname: string;
     href: string;
+    toString(): string;
     readonly origin: string;
     password: string;
     pathname: string;
@@ -16078,12 +16096,14 @@ interface URLSearchParams {
      */
     set(name: string, value: string): void;
     sort(): void;
+    toString(): string;
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
 }
 
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+    toString(): string;
 };
 
 /** This WebVR API interface represents any VR device supported by this API. It includes generic information such as device IDs and descriptions, as well as methods for starting to present a VR scene, retrieving eye parameters and display capabilities, and other important functionality. */
@@ -18509,7 +18529,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 }
 
 /** A window containing a DOM document; the document property points to the DOM document loaded in that window. */
-interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, IDBEnvironment, WindowBase64, WindowConsole, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage, WindowTimers {
+interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, IDBEnvironment, WindowBase64, WindowConsole, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
     readonly applicationCache: ApplicationCache;
     readonly caches: CacheStorage;
     readonly clientInformation: Navigator;
@@ -18665,7 +18685,7 @@ interface WindowEventHandlersEventMap {
     "pagehide": PageTransitionEvent;
     "pageshow": PageTransitionEvent;
     "popstate": PopStateEvent;
-    "rejectionhandled": Event;
+    "rejectionhandled": PromiseRejectionEvent;
     "storage": StorageEvent;
     "unhandledrejection": PromiseRejectionEvent;
     "unload": Event;
@@ -18684,7 +18704,7 @@ interface WindowEventHandlers {
     onpagehide: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
     onpageshow: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
     onpopstate: ((this: WindowEventHandlers, ev: PopStateEvent) => any) | null;
-    onrejectionhandled: ((this: WindowEventHandlers, ev: Event) => any) | null;
+    onrejectionhandled: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
     onstorage: ((this: WindowEventHandlers, ev: StorageEvent) => any) | null;
     onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
     onunload: ((this: WindowEventHandlers, ev: Event) => any) | null;
@@ -18711,16 +18731,13 @@ interface WindowOrWorkerGlobalScope {
     createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
     fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
-    queueMicrotask(callback: Function): void;
+    queueMicrotask(callback: VoidFunction): void;
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 }
 
 interface WindowSessionStorage {
     readonly sessionStorage: Storage;
-}
-
-interface WindowTimers {
 }
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
@@ -19080,7 +19097,7 @@ declare namespace WebAssembly {
     
     var Instance: {
         prototype: Instance;
-        new(module: Module, importObject?: any): Instance;
+        new(module: Module, importObject?: Imports): Instance;
     };
     
     interface LinkError {
@@ -19164,9 +19181,9 @@ declare namespace WebAssembly {
         module: Module;
     }
     
-    type ImportExportKind = "function" | "table" | "memory" | "global";
+    type ImportExportKind = "function" | "global" | "memory" | "table";
     type TableKind = "anyfunc";
-    type ValueType = "i32" | "i64" | "f32" | "f64";
+    type ValueType = "f32" | "f64" | "i32" | "i64";
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
     type ImportValue = ExportValue | number;
@@ -19182,6 +19199,10 @@ declare namespace WebAssembly {
 
 interface BlobCallback {
     (blob: Blob | null): void;
+}
+
+interface CustomElementConstructor {
+    (): HTMLElement;
 }
 
 interface DecodeErrorCallback {
@@ -19770,7 +19791,6 @@ declare var onloadeddata: ((this: Window, ev: Event) => any) | null;
  * @param ev The event.
  */
 declare var onloadedmetadata: ((this: Window, ev: Event) => any) | null;
-declare var onloadend: ((this: Window, ev: ProgressEvent) => any) | null;
 /**
  * Occurs when Internet Explorer begins looking for media data.
  * @param ev The event.
@@ -19883,10 +19903,10 @@ declare var onsuspend: ((this: Window, ev: Event) => any) | null;
  */
 declare var ontimeupdate: ((this: Window, ev: Event) => any) | null;
 declare var ontoggle: ((this: Window, ev: Event) => any) | null;
-declare var ontouchcancel: ((this: Window, ev: TouchEvent) => any) | null;
-declare var ontouchend: ((this: Window, ev: TouchEvent) => any) | null;
-declare var ontouchmove: ((this: Window, ev: TouchEvent) => any) | null;
-declare var ontouchstart: ((this: Window, ev: TouchEvent) => any) | null;
+declare var ontouchcancel: ((this: Window, ev: TouchEvent) => any) | null | undefined;
+declare var ontouchend: ((this: Window, ev: TouchEvent) => any) | null | undefined;
+declare var ontouchmove: ((this: Window, ev: TouchEvent) => any) | null | undefined;
+declare var ontouchstart: ((this: Window, ev: TouchEvent) => any) | null | undefined;
 declare var ontransitioncancel: ((this: Window, ev: TransitionEvent) => any) | null;
 declare var ontransitionend: ((this: Window, ev: TransitionEvent) => any) | null;
 declare var ontransitionrun: ((this: Window, ev: TransitionEvent) => any) | null;
@@ -19919,7 +19939,7 @@ declare function clearTimeout(handle?: number): void;
 declare function createImageBitmap(image: ImageBitmapSource): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number): Promise<ImageBitmap>;
 declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
-declare function queueMicrotask(callback: Function): void;
+declare function queueMicrotask(callback: VoidFunction): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare var sessionStorage: Storage;
@@ -19936,7 +19956,7 @@ declare var ononline: ((this: Window, ev: Event) => any) | null;
 declare var onpagehide: ((this: Window, ev: PageTransitionEvent) => any) | null;
 declare var onpageshow: ((this: Window, ev: PageTransitionEvent) => any) | null;
 declare var onpopstate: ((this: Window, ev: PopStateEvent) => any) | null;
-declare var onrejectionhandled: ((this: Window, ev: Event) => any) | null;
+declare var onrejectionhandled: ((this: Window, ev: PromiseRejectionEvent) => any) | null;
 declare var onstorage: ((this: Window, ev: StorageEvent) => any) | null;
 declare var onunhandledrejection: ((this: Window, ev: PromiseRejectionEvent) => any) | null;
 declare var onunload: ((this: Window, ev: Event) => any) | null;
@@ -19964,6 +19984,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type PerformanceEntryList = PerformanceEntry[];
+type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type VibratePattern = number | number[];
 type COSEAlgorithmIdentifier = number;
 type AuthenticatorSelectionList = AAGUID[];
@@ -20005,137 +20026,137 @@ type RTCTransport = RTCDtlsTransport | RTCSrtpSdesTransport;
 /** @deprecated */
 type MouseWheelEvent = WheelEvent;
 type WindowProxy = Window;
-type AlignSetting = "start" | "center" | "end" | "left" | "right";
-type AnimationPlayState = "idle" | "running" | "paused" | "finished";
+type AlignSetting = "center" | "end" | "left" | "right" | "start";
+type AnimationPlayState = "finished" | "idle" | "paused" | "running";
 type AppendMode = "segments" | "sequence";
-type AttestationConveyancePreference = "none" | "indirect" | "direct";
+type AttestationConveyancePreference = "direct" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
-type AudioContextState = "suspended" | "running" | "closed";
-type AuthenticatorAttachment = "platform" | "cross-platform";
-type AuthenticatorTransport = "usb" | "nfc" | "ble" | "internal";
+type AudioContextState = "closed" | "running" | "suspended";
+type AuthenticatorAttachment = "cross-platform" | "platform";
+type AuthenticatorTransport = "ble" | "internal" | "nfc" | "usb";
 type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
-type BinaryType = "blob" | "arraybuffer";
-type BiquadFilterType = "lowpass" | "highpass" | "bandpass" | "lowshelf" | "highshelf" | "peaking" | "notch" | "allpass";
+type BinaryType = "arraybuffer" | "blob";
+type BiquadFilterType = "allpass" | "bandpass" | "highpass" | "highshelf" | "lowpass" | "lowshelf" | "notch" | "peaking";
 type CanPlayTypeResult = "" | "maybe" | "probably";
-type CanvasDirection = "ltr" | "rtl" | "inherit";
-type CanvasFillRule = "nonzero" | "evenodd";
+type CanvasDirection = "inherit" | "ltr" | "rtl";
+type CanvasFillRule = "evenodd" | "nonzero";
 type CanvasLineCap = "butt" | "round" | "square";
-type CanvasLineJoin = "round" | "bevel" | "miter";
-type CanvasTextAlign = "start" | "end" | "left" | "right" | "center";
-type CanvasTextBaseline = "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom";
-type ChannelCountMode = "max" | "clamped-max" | "explicit";
-type ChannelInterpretation = "speakers" | "discrete";
-type ClientTypes = "window" | "worker" | "sharedworker" | "all";
-type CompositeOperation = "replace" | "add" | "accumulate";
-type CompositeOperationOrAuto = "replace" | "add" | "accumulate" | "auto";
-type CredentialMediationRequirement = "silent" | "optional" | "required";
-type DirectionSetting = "" | "rl" | "lr";
-type DisplayCaptureSurfaceType = "monitor" | "window" | "application" | "browser";
-type DistanceModelType = "linear" | "inverse" | "exponential";
-type DocumentReadyState = "loading" | "interactive" | "complete";
-type EndOfStreamError = "network" | "decode";
-type EndingType = "transparent" | "native";
-type FillMode = "none" | "forwards" | "backwards" | "both" | "auto";
-type FullscreenNavigationUI = "auto" | "show" | "hide";
+type CanvasLineJoin = "bevel" | "miter" | "round";
+type CanvasTextAlign = "center" | "end" | "left" | "right" | "start";
+type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top";
+type ChannelCountMode = "clamped-max" | "explicit" | "max";
+type ChannelInterpretation = "discrete" | "speakers";
+type ClientTypes = "all" | "sharedworker" | "window" | "worker";
+type CompositeOperation = "accumulate" | "add" | "replace";
+type CompositeOperationOrAuto = "accumulate" | "add" | "auto" | "replace";
+type CredentialMediationRequirement = "optional" | "required" | "silent";
+type DirectionSetting = "" | "lr" | "rl";
+type DisplayCaptureSurfaceType = "application" | "browser" | "monitor" | "window";
+type DistanceModelType = "exponential" | "inverse" | "linear";
+type DocumentReadyState = "complete" | "interactive" | "loading";
+type EndOfStreamError = "decode" | "network";
+type EndingType = "native" | "transparent";
+type FillMode = "auto" | "backwards" | "both" | "forwards" | "none";
+type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GamepadHand = "" | "left" | "right";
 type GamepadHapticActuatorType = "vibration";
 type GamepadMappingType = "" | "standard";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
-type IDBRequestReadyState = "pending" | "done";
+type IDBRequestReadyState = "done" | "pending";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
-type ImageSmoothingQuality = "low" | "medium" | "high";
-type IterationCompositeOperation = "replace" | "accumulate";
-type KeyFormat = "raw" | "spki" | "pkcs8" | "jwk";
-type KeyType = "public" | "private" | "secret";
-type KeyUsage = "encrypt" | "decrypt" | "sign" | "verify" | "deriveKey" | "deriveBits" | "wrapKey" | "unwrapKey";
-type LineAlignSetting = "start" | "center" | "end";
-type ListeningState = "inactive" | "active" | "disambiguation";
+type ImageSmoothingQuality = "high" | "low" | "medium";
+type IterationCompositeOperation = "accumulate" | "replace";
+type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
+type KeyType = "private" | "public" | "secret";
+type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
+type LineAlignSetting = "center" | "end" | "start";
+type ListeningState = "active" | "disambiguation" | "inactive";
 type MSCredentialType = "FIDO_2_0";
-type MSTransportType = "Embedded" | "USB" | "NFC" | "BT";
-type MSWebViewPermissionState = "unknown" | "defer" | "allow" | "deny";
-type MSWebViewPermissionType = "geolocation" | "unlimitedIndexedDBQuota" | "media" | "pointerlock" | "webnotifications";
+type MSTransportType = "BT" | "Embedded" | "NFC" | "USB";
+type MSWebViewPermissionState = "allow" | "defer" | "deny" | "unknown";
+type MSWebViewPermissionType = "geolocation" | "media" | "pointerlock" | "unlimitedIndexedDBQuota" | "webnotifications";
 type MediaDeviceKind = "audioinput" | "audiooutput" | "videoinput";
-type MediaKeyMessageType = "license-request" | "license-renewal" | "license-release" | "individualization-request";
-type MediaKeySessionType = "temporary" | "persistent-license";
-type MediaKeyStatus = "usable" | "expired" | "released" | "output-restricted" | "output-downscaled" | "status-pending" | "internal-error";
-type MediaKeysRequirement = "required" | "optional" | "not-allowed";
-type MediaStreamTrackState = "live" | "ended";
-type NavigationReason = "up" | "down" | "left" | "right";
-type NavigationType = "navigate" | "reload" | "back_forward" | "prerender";
+type MediaKeyMessageType = "individualization-request" | "license-release" | "license-renewal" | "license-request";
+type MediaKeySessionType = "persistent-license" | "temporary";
+type MediaKeyStatus = "expired" | "internal-error" | "output-downscaled" | "output-restricted" | "released" | "status-pending" | "usable";
+type MediaKeysRequirement = "not-allowed" | "optional" | "required";
+type MediaStreamTrackState = "ended" | "live";
+type NavigationReason = "down" | "left" | "right" | "up";
+type NavigationType = "back_forward" | "navigate" | "prerender" | "reload";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2";
-type OrientationLockType = "any" | "natural" | "landscape" | "portrait" | "portrait-primary" | "portrait-secondary" | "landscape-primary" | "landscape-secondary";
-type OrientationType = "portrait-primary" | "portrait-secondary" | "landscape-primary" | "landscape-secondary";
-type OscillatorType = "sine" | "square" | "sawtooth" | "triangle" | "custom";
-type OverSampleType = "none" | "2x" | "4x";
-type PanningModelType = "equalpower" | "HRTF";
-type PaymentComplete = "success" | "fail" | "unknown";
-type PaymentShippingType = "shipping" | "delivery" | "pickup";
-type PermissionName = "geolocation" | "notifications" | "push" | "midi" | "camera" | "microphone" | "speaker" | "device-info" | "background-sync" | "bluetooth" | "persistent-storage" | "ambient-light-sensor" | "accelerometer" | "gyroscope" | "magnetometer" | "clipboard";
-type PermissionState = "granted" | "denied" | "prompt";
-type PlaybackDirection = "normal" | "reverse" | "alternate" | "alternate-reverse";
-type PositionAlignSetting = "line-left" | "center" | "line-right" | "auto";
+type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
+type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
+type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
+type OverSampleType = "2x" | "4x" | "none";
+type PanningModelType = "HRTF" | "equalpower";
+type PaymentComplete = "fail" | "success" | "unknown";
+type PaymentShippingType = "delivery" | "pickup" | "shipping";
+type PermissionName = "accelerometer" | "ambient-light-sensor" | "background-sync" | "bluetooth" | "camera" | "clipboard" | "device-info" | "geolocation" | "gyroscope" | "magnetometer" | "microphone" | "midi" | "notifications" | "persistent-storage" | "push" | "speaker";
+type PermissionState = "denied" | "granted" | "prompt";
+type PlaybackDirection = "alternate" | "alternate-reverse" | "normal" | "reverse";
+type PositionAlignSetting = "auto" | "center" | "line-left" | "line-right";
 type PublicKeyCredentialType = "public-key";
-type PushEncryptionKeyName = "p256dh" | "auth";
+type PushEncryptionKeyName = "auth" | "p256dh";
 type PushPermissionState = "denied" | "granted" | "prompt";
-type RTCBundlePolicy = "balanced" | "max-compat" | "max-bundle";
-type RTCDataChannelState = "connecting" | "open" | "closing" | "closed";
-type RTCDegradationPreference = "maintain-framerate" | "maintain-resolution" | "balanced";
+type RTCBundlePolicy = "balanced" | "max-bundle" | "max-compat";
+type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
+type RTCDegradationPreference = "balanced" | "maintain-framerate" | "maintain-resolution";
 type RTCDtlsRole = "auto" | "client" | "server";
-type RTCDtlsTransportState = "new" | "connecting" | "connected" | "closed" | "failed";
+type RTCDtlsTransportState = "closed" | "connected" | "connecting" | "failed" | "new";
 type RTCDtxStatus = "disabled" | "enabled";
-type RTCErrorDetailType = "data-channel-failure" | "dtls-failure" | "fingerprint-failure" | "idp-bad-script-failure" | "idp-execution-failure" | "idp-load-failure" | "idp-need-login" | "idp-timeout" | "idp-tls-failure" | "idp-token-expired" | "idp-token-invalid" | "sctp-failure" | "sdp-syntax-error" | "hardware-encoder-not-available" | "hardware-encoder-error";
-type RTCIceCandidateType = "host" | "srflx" | "prflx" | "relay";
-type RTCIceComponent = "rtp" | "rtcp";
-type RTCIceConnectionState = "new" | "checking" | "connected" | "completed" | "disconnected" | "failed" | "closed";
-type RTCIceCredentialType = "password" | "oauth";
+type RTCErrorDetailType = "data-channel-failure" | "dtls-failure" | "fingerprint-failure" | "hardware-encoder-error" | "hardware-encoder-not-available" | "idp-bad-script-failure" | "idp-execution-failure" | "idp-load-failure" | "idp-need-login" | "idp-timeout" | "idp-tls-failure" | "idp-token-expired" | "idp-token-invalid" | "sctp-failure" | "sdp-syntax-error";
+type RTCIceCandidateType = "host" | "prflx" | "relay" | "srflx";
+type RTCIceComponent = "rtcp" | "rtp";
+type RTCIceConnectionState = "checking" | "closed" | "completed" | "connected" | "disconnected" | "failed" | "new";
+type RTCIceCredentialType = "oauth" | "password";
 type RTCIceGatherPolicy = "all" | "nohost" | "relay";
-type RTCIceGathererState = "new" | "gathering" | "complete";
-type RTCIceGatheringState = "new" | "gathering" | "complete";
-type RTCIceProtocol = "udp" | "tcp";
-type RTCIceRole = "controlling" | "controlled";
+type RTCIceGathererState = "complete" | "gathering" | "new";
+type RTCIceGatheringState = "complete" | "gathering" | "new";
+type RTCIceProtocol = "tcp" | "udp";
+type RTCIceRole = "controlled" | "controlling" | "unknown";
 type RTCIceTcpCandidateType = "active" | "passive" | "so";
-type RTCIceTransportPolicy = "relay" | "all";
-type RTCIceTransportState = "new" | "checking" | "connected" | "completed" | "disconnected" | "failed" | "closed";
-type RTCPeerConnectionState = "new" | "connecting" | "connected" | "disconnected" | "failed" | "closed";
-type RTCPriorityType = "very-low" | "low" | "medium" | "high";
+type RTCIceTransportPolicy = "all" | "relay";
+type RTCIceTransportState = "checking" | "closed" | "completed" | "connected" | "disconnected" | "failed" | "new";
+type RTCPeerConnectionState = "closed" | "connected" | "connecting" | "disconnected" | "failed" | "new";
+type RTCPriorityType = "high" | "low" | "medium" | "very-low";
 type RTCRtcpMuxPolicy = "negotiate" | "require";
-type RTCRtpTransceiverDirection = "sendrecv" | "sendonly" | "recvonly" | "inactive";
-type RTCSctpTransportState = "connecting" | "connected" | "closed";
-type RTCSdpType = "offer" | "pranswer" | "answer" | "rollback";
-type RTCSignalingState = "stable" | "have-local-offer" | "have-remote-offer" | "have-local-pranswer" | "have-remote-pranswer" | "closed";
-type RTCStatsIceCandidatePairState = "frozen" | "waiting" | "inprogress" | "failed" | "succeeded" | "cancelled";
-type RTCStatsIceCandidateType = "host" | "serverreflexive" | "peerreflexive" | "relayed";
-type RTCStatsType = "inboundrtp" | "outboundrtp" | "session" | "datachannel" | "track" | "transport" | "candidatepair" | "localcandidate" | "remotecandidate";
-type ReadyState = "closed" | "open" | "ended";
-type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "same-origin" | "origin" | "strict-origin" | "origin-when-cross-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
-type RequestCache = "default" | "no-store" | "reload" | "no-cache" | "force-cache" | "only-if-cached";
-type RequestCredentials = "omit" | "same-origin" | "include";
+type RTCRtpTransceiverDirection = "inactive" | "recvonly" | "sendonly" | "sendrecv" | "stopped";
+type RTCSctpTransportState = "closed" | "connected" | "connecting";
+type RTCSdpType = "answer" | "offer" | "pranswer" | "rollback";
+type RTCSignalingState = "closed" | "have-local-offer" | "have-local-pranswer" | "have-remote-offer" | "have-remote-pranswer" | "stable";
+type RTCStatsIceCandidatePairState = "cancelled" | "failed" | "frozen" | "inprogress" | "succeeded" | "waiting";
+type RTCStatsIceCandidateType = "host" | "peerreflexive" | "relayed" | "serverreflexive";
+type RTCStatsType = "candidatepair" | "datachannel" | "inboundrtp" | "localcandidate" | "outboundrtp" | "remotecandidate" | "session" | "track" | "transport";
+type ReadyState = "closed" | "ended" | "open";
+type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
+type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
+type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
-type RequestMode = "navigate" | "same-origin" | "no-cors" | "cors";
-type RequestRedirect = "follow" | "error" | "manual";
+type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
+type RequestRedirect = "error" | "follow" | "manual";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
 type ScopedCredentialType = "ScopedCred";
 type ScrollBehavior = "auto" | "smooth";
-type ScrollLogicalPosition = "start" | "center" | "end" | "nearest";
+type ScrollLogicalPosition = "center" | "end" | "nearest" | "start";
 type ScrollRestoration = "auto" | "manual";
 type ScrollSetting = "" | "up";
-type SelectionMode = "select" | "start" | "end" | "preserve";
-type ServiceWorkerState = "installing" | "installed" | "activating" | "activated" | "redundant";
-type ServiceWorkerUpdateViaCache = "imports" | "all" | "none";
-type ShadowRootMode = "open" | "closed";
-type SpeechSynthesisErrorCode = "canceled" | "interrupted" | "audio-busy" | "audio-hardware" | "network" | "synthesis-unavailable" | "synthesis-failed" | "language-unavailable" | "voice-unavailable" | "text-too-long" | "invalid-argument" | "not-allowed";
-type SupportedType = "text/html" | "text/xml" | "application/xml" | "application/xhtml+xml" | "image/svg+xml";
-type TextTrackKind = "subtitles" | "captions" | "descriptions" | "chapters" | "metadata";
+type SelectionMode = "end" | "preserve" | "select" | "start";
+type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
+type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
+type ShadowRootMode = "closed" | "open";
+type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
+type SupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
+type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
 type TouchType = "direct" | "stylus";
-type Transport = "usb" | "nfc" | "ble";
-type UserVerificationRequirement = "required" | "preferred" | "discouraged";
+type Transport = "ble" | "nfc" | "usb";
+type UserVerificationRequirement = "discouraged" | "preferred" | "required";
 type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted";
-type VideoFacingModeEnum = "user" | "environment" | "left" | "right";
+type VideoFacingModeEnum = "environment" | "left" | "right" | "user";
 type VisibilityState = "hidden" | "visible";
-type WebGLPowerPreference = "default" | "low-power" | "high-performance";
+type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
