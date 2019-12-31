@@ -642,6 +642,14 @@
                             "nullable": false
                        }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "readystatechange",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             "Node": {
@@ -2737,6 +2745,28 @@
                     "property": {
                         "exports": {
                             "type": "Exports"
+                        }
+                    }
+                }
+            },
+            "MediaKeySession": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MediaKeyMessageEvent"
+                        }
+                    ]
+                }
+            },
+            "MediaKeyStatusMap": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            "name": "get",
+                            "override-signatures": [
+                                "get(keyId: BufferSource): MediaKeyStatus | undefined"
+                            ]
                         }
                     }
                 }

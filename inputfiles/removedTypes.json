@@ -1,18 +1,28 @@
 {
     "callback-functions": {
         "callback-function": {
-            "CustomElementConstructor": null,
             "ErrorEventHandler": null,
             "Function": null
         }
     },
     "mixins": {
         "mixin": {
-            "XMLHttpRequestEventTarget": null,
-            "WindowTimers": {
-                "methods": null,
-                "implements": null
+            "GlobalEventHandlers": {
+                "properties": {
+                    "property": {
+                        "onformdata": null,
+                        "onslotchange": null
+                    }
+                }
             },
+            "ElementContentEditable": {
+                "properties": {
+                    "property": {
+                        "enterKeyHint": null
+                    }
+                }
+            },
+            "XMLHttpRequestEventTarget": null,
             "WorkerUtils": {
                 "methods": {
                     "method": {
@@ -57,6 +67,7 @@
                     }
                 }
             },
+            "ClipboardItem": null,
             "Console": {
                 "methods": {
                     "method": {
@@ -151,7 +162,9 @@
                     }
                 }
             },
+            "ElementInternals": null,
             "FederatedCredential": null,
+            "FormDataEvent": null,
             "HTMLAreasCollection": null,
             "HTMLBodyElement": {
                 "properties": {
@@ -179,6 +192,26 @@
                     }
                 }
             },
+            "HTMLFormElement": {
+                "properties": {
+                    "property": {
+                        "rel": null,
+                        "relList": null
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "requestSubmit": null
+                    }
+                }
+            },
+            "HTMLElement": {
+                "methods": {
+                    "method": {
+                        "attachInternals": null
+                    }
+                }
+            },
             "MessageEvent": {
                 "methods": {
                     "method": {
@@ -191,6 +224,38 @@
             "MSDSHEvent": null,
             "MSStreamReader": null,
             "PasswordCredential": null,
+            "RTCDataChannel": {
+                "properties": {
+                    "property": {
+                        "onclosing": null
+                    }
+                }
+            },
+            "RTCIceCandidate": {
+                "properties": {
+                    "property": {
+                        "address": null
+                    }
+                }
+            },
+            "RTCPeerConnection": {
+                "methods": {
+                    "method": {
+                        "restartIce": null
+                    }
+                }
+            },
+            "ShadowRoot": {
+                "properties": {
+                    "property": {
+                        "onslotchange": null
+                    }
+                }
+            },
+            "SpeechRecognitionEvent": {
+                "constructor": null
+            },
+            "SpeechRecognitionErrorEvent": null,
             "StorageEvent": {
                 "methods": {
                     "method": {
@@ -262,11 +327,14 @@
                 "properties": {
                     "property": {
                         "browser": null,
+                        "caches": null,
+                        "crypto": null,
                         "msCredentials": null,
                         "ontouchcancel": null,
                         "ontouchend": null,
                         "ontouchmove": null,
-                        "ontouchstart": null
+                        "ontouchstart": null,
+                        "performance": null
                     }
                 },
                 "methods": {
@@ -276,7 +344,10 @@
                     }
                 },
                 "implements": [
-                    "GlobalFetch"
+                    "GlobalFetch",
+                    "IDBEnvironment",
+                    "WindowBase64",
+                    "WindowTimers"
                 ]
             },
             "WorkerGlobalScope": {

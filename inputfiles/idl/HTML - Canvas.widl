@@ -1,8 +1,9 @@
 typedef (CanvasRenderingContext2D or ImageBitmapRenderingContext or WebGLRenderingContext or WebGL2RenderingContext) RenderingContext;
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLCanvasElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute unsigned long width;
   [CEReactions] attribute unsigned long height;
 
@@ -72,7 +73,7 @@ interface mixin CanvasTransform {
 
   [NewObject] DOMMatrix getTransform();
   void setTransform(unrestricted double a, unrestricted double b, unrestricted double c, unrestricted double d, unrestricted double e, unrestricted double f);
-  void setTransform(optional DOMMatrix2DInit transform);
+  void setTransform(optional DOMMatrix2DInit transform = {});
   void resetTransform();
 
 };
@@ -214,7 +215,7 @@ interface CanvasGradient {
 [Exposed=(Window,Worker)]
 interface CanvasPattern {
   // opaque object
-  void setTransform(optional DOMMatrix2DInit transform);
+  void setTransform(optional DOMMatrix2DInit transform = {});
 };
 
 [Exposed=(Window,Worker)]
@@ -236,20 +237,22 @@ interface TextMetrics {
   readonly attribute double ideographicBaseline;
 };
 
-[Constructor(unsigned long sw, unsigned long sh),
- Constructor(Uint8ClampedArray data, unsigned long sw, optional unsigned long sh),
- Exposed=(Window,Worker),
+[Exposed=(Window,Worker),
  Serializable]
 interface ImageData {
+  constructor(unsigned long sw, unsigned long sh);
+  constructor(Uint8ClampedArray data, unsigned long sw, optional unsigned long sh);
+
   readonly attribute unsigned long width;
   readonly attribute unsigned long height;
   readonly attribute Uint8ClampedArray data;
 };
 
-[Constructor(optional (Path2D or DOMString) path),
- Exposed=(Window,Worker)]
+[Exposed=(Window,Worker)]
 interface Path2D {
-  void addPath(Path2D path, optional DOMMatrix2DInit transform);
+  constructor(optional (Path2D or DOMString) path);
+
+  void addPath(Path2D path, optional DOMMatrix2DInit transform = {});
 };
 Path2D includes CanvasPath;
 
@@ -272,14 +275,16 @@ dictionary ImageEncodeOptions {
 
 enum OffscreenRenderingContextId { "2d", "bitmaprenderer", "webgl", "webgl2" };
 
-[Constructor([EnforceRange] unsigned long long width, [EnforceRange] unsigned long long height), Exposed=(Window,Worker), Transferable]
+[Exposed=(Window,Worker), Transferable]
 interface OffscreenCanvas : EventTarget {
+  constructor([EnforceRange] unsigned long long width, [EnforceRange] unsigned long long height);
+
   attribute [EnforceRange] unsigned long long width;
   attribute [EnforceRange] unsigned long long height;
 
   OffscreenRenderingContext? getContext(OffscreenRenderingContextId contextId, optional any options = null);
   ImageBitmap transferToImageBitmap();
-  Promise<Blob> convertToBlob(optional ImageEncodeOptions options);
+  Promise<Blob> convertToBlob(optional ImageEncodeOptions options = {});
 };
 
 [Exposed=(Window,Worker)]

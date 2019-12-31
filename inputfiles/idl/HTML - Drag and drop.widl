@@ -37,7 +37,7 @@ interface DataTransferItem {
 callback FunctionStringCallback = void (DOMString data);
 
 [Exposed=Window,
- Constructor(DOMString type, optional DragEventInit eventInitDict)]
+ Constructor(DOMString type, optional DragEventInit eventInitDict = {})]
 interface DragEvent : MouseEvent {
   readonly attribute DataTransfer? dataTransfer;
 };
