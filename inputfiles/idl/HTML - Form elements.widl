@@ -1,7 +1,7 @@
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLButtonElement : HTMLElement {
-  [CEReactions] attribute boolean autofocus;
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute boolean disabled;
   readonly attribute HTMLFormElement? form;
   [CEReactions] attribute USVString formAction;
@@ -23,11 +23,11 @@ interface HTMLButtonElement : HTMLElement {
   readonly attribute NodeList labels;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLSelectElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute DOMString autocomplete;
-  [CEReactions] attribute boolean autofocus;
   [CEReactions] attribute boolean disabled;
   readonly attribute HTMLFormElement? form;
   [CEReactions] attribute boolean multiple;
@@ -60,15 +60,17 @@ interface HTMLSelectElement : HTMLElement {
   readonly attribute NodeList labels;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLDataListElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [SameObject] readonly attribute HTMLCollection options;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLOptGroupElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute boolean disabled;
   [CEReactions] attribute DOMString label;
 };
@@ -88,11 +90,11 @@ interface HTMLOptionElement : HTMLElement {
   readonly attribute long index;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLTextAreaElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute DOMString autocomplete;
-  [CEReactions] attribute boolean autofocus;
   [CEReactions] attribute unsigned long cols;
   [CEReactions] attribute DOMString dirName;
   [CEReactions] attribute boolean disabled;
@@ -129,9 +131,10 @@ interface HTMLTextAreaElement : HTMLElement {
   void setSelectionRange(unsigned long start, unsigned long end, optional DOMString direction);
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLOutputElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [SameObject, PutForwards=value] readonly attribute DOMTokenList htmlFor;
   readonly attribute HTMLFormElement? form;
   [CEReactions] attribute DOMString name;
@@ -150,18 +153,20 @@ interface HTMLOutputElement : HTMLElement {
   readonly attribute NodeList labels;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLProgressElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute double value;
   [CEReactions] attribute double max;
   readonly attribute double position;
   readonly attribute NodeList labels;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLMeterElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute double value;
   [CEReactions] attribute double min;
   [CEReactions] attribute double max;
@@ -171,9 +176,10 @@ interface HTMLMeterElement : HTMLElement {
   readonly attribute NodeList labels;
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLFieldSetElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute boolean disabled;
   readonly attribute HTMLFormElement? form;
   [CEReactions] attribute DOMString name;
@@ -190,8 +196,9 @@ interface HTMLFieldSetElement : HTMLElement {
   void setCustomValidity(DOMString error);
 };
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLLegendElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   readonly attribute HTMLFormElement? form;
 };

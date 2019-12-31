@@ -296,10 +296,7 @@
                         }
                     }
                 },
-                "extends": "SVGElement",
-                "implements": [
-                    "SVGFilterPrimitiveStandardAttributes"
-                ]
+                "extends": "SVGElement"
             },
             "AbortSignal": {
                 "events": {
@@ -355,114 +352,6 @@
             "DeviceMotionEventRotationRate": {
                 "no-interface-object": 1
             },
-            "RTCError": {
-                "specs": "webrtc",
-                "constructor": {
-                    "specs": "webrtc",
-                    "signature": [
-                        {
-                            "param-min-required": 0,
-                            "type-original": "RTCError",
-                            "type": "RTCError",
-                            "param": [
-                                {
-                                    "type-original": "DOMString",
-                                    "optional": 1,
-                                    "name": "errorDetail",
-                                    "type": "DOMString"
-                                },
-                                {
-                                    "type-original": "DOMString",
-                                    "optional": 1,
-                                    "name": "message",
-                                    "type": "DOMString"
-                                }
-                            ]
-                        }
-                    ],
-                    "name": "RTCError"
-                },
-                "properties": {
-                    "property": {
-                        "errorDetail": {
-                            "type-original": "DOMString",
-                            "nullable": 0,
-                            "default": "\"\"",
-                            "specs": "webrtc",
-                            "name": "errorDetail",
-                            "type": "DOMString"
-                        },
-                        "sdpLineNumber": {
-                            "type-original": "unsigned short",
-                            "nullable": 0,
-                            "default": "0",
-                            "specs": "webrtc",
-                            "name": "sdpLineNumber",
-                            "type": "unsigned short"
-                        },
-                        "httpRequestStatusCode": {
-                            "type-original": "unsigned short",
-                            "nullable": 0,
-                            "default": "0",
-                            "specs": "webrtc",
-                            "name": "httpRequestStatusCode",
-                            "type": "unsigned short"
-                        },
-                        "sctpCauseCode": {
-                            "type-original": "unsigned short",
-                            "nullable": 0,
-                            "default": "0",
-                            "specs": "webrtc",
-                            "name": "sctpCauseCode",
-                            "type": "unsigned short"
-                        },
-                        "receivedAlert": {
-                            "type-original": "unsigned long",
-                            "nullable": 1,
-                            "default": "null",
-                            "specs": "webrtc",
-                            "name": "receivedAlert",
-                            "type": "unsigned long"
-                        },
-                        "sentAlert": {
-                            "type-original": "unsigned long",
-                            "nullable": 1,
-                            "default": "null",
-                            "specs": "webrtc",
-                            "name": "sentAlert",
-                            "type": "unsigned long"
-                        },
-                        "message": {
-                            "type-original": "DOMString",
-                            "nullable": 0,
-                            "default": "\"\"",
-                            "specs": "webrtc",
-                            "name": "message",
-                            "type": "DOMString"
-                        },
-                        "name": {
-                            "type-original": "DOMString",
-                            "nullable": 0,
-                            "default": "RTCError",
-                            "specs": "webrtc",
-                            "name": "name",
-                            "type": "DOMString"
-                        }
-                    }
-                },
-                "anonymous-methods": {
-                    "method": []
-                },
-                "name": "RTCError",
-                "constants": {
-                    "constant": {}
-                },
-                "methods": {
-                    "method": {}
-                },
-                "exposed": "Window",
-                "extends": "Error"
-            },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
                 "properties": {
@@ -489,6 +378,10 @@
                         "userSelect": {
                             "name": "userSelect",
                             "type": "CSSOMString"
+                        },
+                        "webkitAppearance": {
+                            "nullable": 0,
+                            "deprecated": 1
                         }
                     }
                 }
@@ -1122,7 +1015,7 @@
                         },
                         {
                             "name": "error",
-                            "type": "SpeechRecognitionError"
+                            "type": "Event"
                         },
                         {
                             "name": "end",
@@ -1167,9 +1060,7 @@
             },
             "SVGElement": {
                 "implements": [
-                    "ElementCSSInlineStyle",
-                    "GlobalEventHandlers",
-                    "DocumentAndElementEventHandlers"
+                    "ElementCSSInlineStyle"
                 ]
             },
             "Text": {
@@ -2283,6 +2174,36 @@
                     }
                 }
             },
+            "TextTrackList": {
+                "properties": {
+                    "property": {
+                        "onchange": {
+                            "name": "onchange",
+                            "type": "EventHandler",
+                            "event-handler": "change",
+                            "nullable": 1
+                        },
+                        "onremovetrack": {
+                            "name": "onremovetrack",
+                            "type": "EventHandler",
+                            "event-handler": "removetrack",
+                            "nullable": 1
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "change",
+                            "type": "Event"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "TrackEvent"
+                        }
+                    ]
+                }
+            },
             "WebSocket": {
                 "events": {
                     "event": [
@@ -2360,7 +2281,7 @@
             },
             {
                 "new-type": "Transferable",
-                "override-type": "ArrayBuffer | MessagePort | ImageBitmap"
+                "override-type": "ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas"
             },
             {
                 "new-type": "RTCIceGatherCandidate",
