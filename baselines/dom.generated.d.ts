@@ -912,6 +912,10 @@ interface OscillatorOptions extends AudioNodeOptions {
     type?: OscillatorType;
 }
 
+interface PageTransitionEventInit extends EventInit {
+    persisted?: boolean;
+}
+
 interface PannerOptions extends AudioNodeOptions {
     coneInnerAngle?: number;
     coneOuterAngle?: number;
@@ -3688,11 +3692,18 @@ declare var ClipboardEvent: {
 
 /** A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute. */
 interface CloseEvent extends Event {
+    /**
+     * Returns the WebSocket connection close code provided by the server.
+     */
     readonly code: number;
+    /**
+     * Returns the WebSocket connection close reason provided by the server.
+     */
     readonly reason: string;
+    /**
+     * Returns true if the connection closed cleanly; false otherwise.
+     */
     readonly wasClean: boolean;
-    /** @deprecated */
-    initCloseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, wasCleanArg: boolean, codeArg: number, reasonArg: string): void;
 }
 
 declare var CloseEvent: {
@@ -6437,11 +6448,8 @@ interface HTMLBodyElement extends HTMLElement, WindowEventHandlers {
     background: string;
     /** @deprecated */
     bgColor: string;
-    bgProperties: string;
     /** @deprecated */
     link: string;
-    /** @deprecated */
-    noWrap: boolean;
     /** @deprecated */
     onorientationchange: ((this: HTMLBodyElement, ev: Event) => any) | null;
     /** @deprecated */
@@ -9119,7 +9127,13 @@ declare var HTMLVideoElement: {
 
 /** Events that fire when the fragment identifier of the URL has changed. */
 interface HashChangeEvent extends Event {
+    /**
+     * Returns the URL of the session history entry that is now current.
+     */
     readonly newURL: string;
+    /**
+     * Returns the URL of the session history entry that was previously current.
+     */
     readonly oldURL: string;
 }
 
@@ -11407,12 +11421,25 @@ declare var OverflowEvent: {
 
 /** The PageTransitionEvent is fired when a document is being loaded or unloaded. */
 interface PageTransitionEvent extends Event {
+    /**
+     * For the pageshow event, returns false if the page is newly being loaded (and the load event will fire). Otherwise, returns true.
+     * 
+     * For the pagehide event, returns false if the page is going away for the last time. Otherwise, returns true, meaning that (if nothing conspires to make the page unsalvageable) the page might be reused if the user navigates back to this page.
+     * 
+     * Things that can cause the page to be unsalvageable include:
+     * 
+     * Listening for beforeunload events
+     * Listening for unload events
+     * Having iframes that are not salvageable
+     * Active WebSocket objects
+     * Aborting a Document
+     */
     readonly persisted: boolean;
 }
 
 declare var PageTransitionEvent: {
     prototype: PageTransitionEvent;
-    new(): PageTransitionEvent;
+    new(type: string, eventInitDict?: PageTransitionEventInit): PageTransitionEvent;
 };
 
 /** A PannerNode always has exactly one input and one output: the input can be mono or stereo but the output is always stereo (2 channels); you can't have panning effects without at least two audio channels! */
@@ -11909,6 +11936,9 @@ declare var PointerEvent: {
 
 /** PopStateEvent is an event handler for the popstate event on the window. */
 interface PopStateEvent extends Event {
+    /**
+     * Returns a copy of the information that was provided to pushState() or replaceState().
+     */
     readonly state: any;
 }
 
@@ -18395,17 +18425,45 @@ interface WebSocketEventMap {
 
 /** Provides the API for creating and managing a WebSocket connection to a server, as well as for sending and receiving data on the connection. */
 interface WebSocket extends EventTarget {
+    /**
+     * Returns a string that indicates how binary data from the WebSocket object is exposed to scripts:
+     * 
+     * Can be set, to change how binary data is returned. The default is "blob".
+     */
     binaryType: BinaryType;
+    /**
+     * Returns the number of bytes of application data (UTF-8 text and binary data) that have been queued using send() but not yet been transmitted to the network.
+     * 
+     * If the WebSocket connection is closed, this attribute's value will only increase with each call to the send() method. (The number does not reset to zero once the connection closes.)
+     */
     readonly bufferedAmount: number;
+    /**
+     * Returns the extensions selected by the server, if any.
+     */
     readonly extensions: string;
     onclose: ((this: WebSocket, ev: CloseEvent) => any) | null;
     onerror: ((this: WebSocket, ev: Event) => any) | null;
     onmessage: ((this: WebSocket, ev: MessageEvent) => any) | null;
     onopen: ((this: WebSocket, ev: Event) => any) | null;
+    /**
+     * Returns the subprotocol selected by the server, if any. It can be used in conjunction with the array form of the constructor's second argument to perform subprotocol negotiation.
+     */
     readonly protocol: string;
+    /**
+     * Returns the state of the WebSocket object's connection. It can have the values described below.
+     */
     readonly readyState: number;
+    /**
+     * Returns the URL that was used to establish the WebSocket connection.
+     */
     readonly url: string;
+    /**
+     * Closes the WebSocket connection, optionally using code as the the WebSocket connection close code and reason as the the WebSocket connection close reason.
+     */
     close(code?: number, reason?: string): void;
+    /**
+     * Transmits data using the WebSocket connection. data can be a string, a Blob, an ArrayBuffer, or an ArrayBufferView.
+     */
     send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void;
     readonly CLOSED: number;
     readonly CLOSING: number;

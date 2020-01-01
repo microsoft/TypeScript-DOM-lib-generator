@@ -209,6 +209,10 @@
         "title": "High Resolution Time"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/browsing-the-web.html",
+        "title": "HTML - Browsing the Web"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/canvas.html",
         "title": "HTML - Canvas"
     },
@@ -291,6 +295,10 @@
         "title": "HTML - Scripting"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/sections.html",
+        "title": "HTML - Sections"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/semantics.html",
         "title": "HTML - Semantics"
     },
@@ -325,6 +333,10 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/webappapis.html",
         "title": "HTML - Web application APIs"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/web-sockets.html",
+        "title": "HTML - Web sockets"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/webstorage.html",

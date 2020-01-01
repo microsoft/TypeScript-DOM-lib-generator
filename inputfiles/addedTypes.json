@@ -1182,6 +1182,13 @@
                     }
                 ]
             },
+            "HTMLBodyElement": {
+                "element": [
+                    {
+                        "name": "body"
+                    }
+                ]
+            },
             "HTMLBRElement": {
                 "element": [
                     {
@@ -1363,6 +1370,28 @@
                 "element": [
                     {
                         "name": "head"
+                    }
+                ]
+            },
+            "HTMLHeadingElement": {
+                "element": [
+                    {
+                        "name": "h1"
+                    },
+                    {
+                        "name": "h2"
+                    },
+                    {
+                        "name": "h3"
+                    },
+                    {
+                        "name": "h4"
+                    },
+                    {
+                        "name": "h5"
+                    },
+                    {
+                        "name": "h6"
                     }
                 ]
             },
@@ -2255,6 +2284,20 @@
                         {
                             "name": "removetrack",
                             "type": "TrackEvent"
+                        }
+                    ]
+                }
+            },
+            "WebSocket": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "close",
+                            "type": "CloseEvent"
+                        },
+                        {
+                            "name": "error",
+                            "type": "Event"
                         }
                     ]
                 }
