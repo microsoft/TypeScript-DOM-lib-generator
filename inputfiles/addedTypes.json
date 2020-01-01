@@ -2241,25 +2241,13 @@
                     }
                 }
             },
-            "TextTrackList": {
-                "properties": {
-                    "property": {
-                        "onchange": {
-                            "name": "onchange",
-                            "type": "EventHandler",
-                            "event-handler": "change",
-                            "nullable": 1
-                        },
-                        "onremovetrack": {
-                            "name": "onremovetrack",
-                            "type": "EventHandler",
-                            "event-handler": "removetrack",
-                            "nullable": 1
-                        }
-                    }
-                },
+            "VideoTrackList": {
                 "events": {
                     "event": [
+                        {
+                            "name": "addtrack",
+                            "type": "TrackEvent"
+                        },
                         {
                             "name": "change",
                             "type": "Event"

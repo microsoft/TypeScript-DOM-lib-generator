@@ -15867,14 +15867,14 @@ declare var TextTrackCueList: {
 };
 
 interface TextTrackListEventMap {
-    "addtrack": MediaStreamTrackEvent;
+    "addtrack": TrackEvent;
     "change": Event;
     "removetrack": TrackEvent;
 }
 
 interface TextTrackList extends EventTarget {
     readonly length: number;
-    onaddtrack: ((this: TextTrackList, ev: MediaStreamTrackEvent) => any) | null;
+    onaddtrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
     onchange: ((this: TextTrackList, ev: Event) => any) | null;
     onremovetrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
     getTrackById(id: string): TextTrack | null;
@@ -16324,7 +16324,7 @@ declare var VideoTrack: {
 };
 
 interface VideoTrackListEventMap {
-    "addtrack": MediaStreamTrackEvent;
+    "addtrack": TrackEvent;
     "change": Event;
     "removetrack": TrackEvent;
 }
@@ -16332,7 +16332,7 @@ interface VideoTrackListEventMap {
 /** Used to represent a list of the video tracks contained within a <video> element, with each track represented by a separate VideoTrack object in the list. */
 interface VideoTrackList extends EventTarget {
     readonly length: number;
-    onaddtrack: ((this: VideoTrackList, ev: MediaStreamTrackEvent) => any) | null;
+    onaddtrack: ((this: VideoTrackList, ev: TrackEvent) => any) | null;
     onchange: ((this: VideoTrackList, ev: Event) => any) | null;
     onremovetrack: ((this: VideoTrackList, ev: TrackEvent) => any) | null;
     readonly selectedIndex: number;
