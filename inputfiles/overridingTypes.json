@@ -311,6 +311,11 @@
                 "override-signatures": [
                     "(chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
                 ]
+            },
+            "CustomElementConstructor": {
+                "override-signatures": [
+                    "new (): HTMLElement"
+                ]
             }
         }
     },
