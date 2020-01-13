@@ -2338,6 +2338,17 @@
                         "type": "ModuleImports"
                     }
                 ]
+            },
+            {
+                "deprecated": 1,
+                "new-type": "HTMLCollectionOf",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "extends": "Element"
+                    }
+                ],
+                "override-type": "HTMLCollection<T>"
             }
         ]
     }
