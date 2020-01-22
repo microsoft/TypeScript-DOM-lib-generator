@@ -162,7 +162,6 @@
                     }
                 }
             },
-            "ElementInternals": null,
             "FederatedCredential": null,
             "FormDataEvent": null,
             "HTMLAreasCollection": null,
@@ -176,13 +175,6 @@
                 "methods": {
                     "method": {
                         "requestSubmit": null
-                    }
-                }
-            },
-            "HTMLElement": {
-                "methods": {
-                    "method": {
-                        "attachInternals": null
                     }
                 }
             },
