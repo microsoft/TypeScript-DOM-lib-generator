@@ -596,6 +596,10 @@
                 },
                 "properties": {
                     "property": {
+                        "defaultView": {
+                            "name": "defaultView",
+                            "override-type": "(WindowProxy & typeof globalThis) | null"
+                        },
                         "documentElement": {
                             "name": "documentElement",
                             "override-type": "HTMLElement",
