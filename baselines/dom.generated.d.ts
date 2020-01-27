@@ -2165,6 +2165,7 @@ interface Attr extends Node {
     readonly localName: string;
     readonly name: string;
     readonly namespaceURI: string | null;
+    readonly ownerDocument: Document;
     readonly ownerElement: Element | null;
     readonly prefix: string | null;
     readonly specified: boolean;
@@ -3454,6 +3455,7 @@ declare var ChannelSplitterNode: {
 interface CharacterData extends Node, ChildNode, NonDocumentTypeChildNode {
     data: string;
     readonly length: number;
+    readonly ownerDocument: Document;
     appendData(data: string): void;
     cloneNode(deep?: boolean): CharacterData;
     deleteData(offset: number, count: number): void;
@@ -4529,6 +4531,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Returns document's origin.
      */
     readonly origin: string;
+    readonly ownerDocument: null;
     /**
      * Return an HTMLCollection of the embed elements in the Document.
      */
@@ -4953,6 +4956,7 @@ interface DocumentEvent {
 
 /** A minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn't part of the active document tree structure, changes made to the fragment don't affect the document, cause reflow, or incur any performance impact that can occur when changes are made. */
 interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
+    readonly ownerDocument: Document;
     cloneNode(deep?: boolean): DocumentFragment;
     getElementById(elementId: string): HTMLElement | null;
 }
@@ -4992,6 +4996,7 @@ declare var DocumentTimeline: {
 /** A Node containing a doctype. */
 interface DocumentType extends Node, ChildNode {
     readonly name: string;
+    readonly ownerDocument: Document;
     readonly publicId: string;
     readonly systemId: string;
     cloneNode(deep?: boolean): DocumentType;
@@ -5091,6 +5096,7 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
     onfullscreenchange: ((this: Element, ev: Event) => any) | null;
     onfullscreenerror: ((this: Element, ev: Event) => any) | null;
     outerHTML: string;
+    readonly ownerDocument: Document;
     /**
      * Returns the namespace prefix.
      */
@@ -11843,6 +11849,7 @@ interface PositionError {
 
 /** A processing instruction embeds application-specific instructions in XML which can be ignored by other applications that don't recognize them. */
 interface ProcessingInstruction extends CharacterData, LinkStyle {
+    readonly ownerDocument: Document;
     readonly target: string;
     cloneNode(deep?: boolean): ProcessingInstruction;
 }

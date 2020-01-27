@@ -686,6 +686,11 @@
                             "read-only": 1,
                             "override-type": "HTMLSlotElement | null"
                         },
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "Document"
+                        },
                         "slot": {
                             "name": "slot",
                             "override-type": "string"
@@ -720,6 +725,15 @@
                             "type": "Event"
                         }
                     ]
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "null"
+                        }
+                    }
                 }
             },
             "Navigator": {
@@ -1070,6 +1084,15 @@
                             "override-signatures": [
                                 "cloneNode(deep?: boolean): DocumentFragment"
                             ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "Document"
                         }
                     }
                 }
@@ -3284,6 +3307,15 @@
                             ]
                         }
                     }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "Document"
+                        }
+                    }
                 }
             },
             "CDATASection": {
@@ -3310,6 +3342,15 @@
                             ]
                         }
                     }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "Document"
+                        }
+                    }
                 }
             },
             "Comment": {
@@ -3334,6 +3375,15 @@
                             "override-signatures": [
                                 "cloneNode(deep?: boolean): DocumentType"
                             ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "Document"
                         }
                     }
                 }
@@ -3672,6 +3722,15 @@
                             "override-signatures": [
                                 "cloneNode(deep?: boolean): ProcessingInstruction"
                             ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "read-only": 1,
+                            "override-type": "Document"
                         }
                     }
                 }
