@@ -359,6 +359,10 @@
         "title": "Media Capture and Streams"
     },
     {
+        "url": "https://www.w3.org/TR/mediasession/",
+        "title": "Media Session"
+    },
+    {
         "url": "https://www.w3.org/TR/media-source/",
         "title": "Media Source Extensions"
     },

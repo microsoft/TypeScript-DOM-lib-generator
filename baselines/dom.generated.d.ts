@@ -669,6 +669,12 @@ interface MediaEncryptedEventInit extends EventInit {
     initDataType?: string;
 }
 
+interface MediaImage {
+    sizes?: string;
+    src: string;
+    type?: string;
+}
+
 interface MediaKeyMessageEventInit extends EventInit {
     message: ArrayBuffer;
     messageType: MediaKeyMessageType;
@@ -689,9 +695,26 @@ interface MediaKeySystemMediaCapability {
     robustness?: string;
 }
 
+interface MediaMetadataInit {
+    album?: string;
+    artist?: string;
+    artwork?: MediaImage[];
+    title?: string;
+}
+
+interface MediaPositionState {
+    duration?: number;
+    playbackRate?: number;
+    position?: number;
+}
+
 interface MediaQueryListEventInit extends EventInit {
     matches?: boolean;
     media?: string;
+}
+
+interface MediaSessionActionDetails {
+    action: MediaSessionAction;
 }
 
 interface MediaStreamAudioSourceOptions {
@@ -10419,6 +10442,18 @@ declare var MediaList: {
     new(): MediaList;
 };
 
+interface MediaMetadata {
+    album: string;
+    artist: string;
+    artwork: ReadonlyArray<MediaImage>;
+    title: string;
+}
+
+declare var MediaMetadata: {
+    prototype: MediaMetadata;
+    new(init?: MediaMetadataInit): MediaMetadata;
+};
+
 interface MediaQueryListEventMap {
     "change": MediaQueryListEvent;
 }
@@ -10451,6 +10486,18 @@ interface MediaQueryListEvent extends Event {
 declare var MediaQueryListEvent: {
     prototype: MediaQueryListEvent;
     new(type: string, eventInitDict?: MediaQueryListEventInit): MediaQueryListEvent;
+};
+
+interface MediaSession {
+    metadata: MediaMetadata | null;
+    playbackState: MediaSessionPlaybackState;
+    setActionHandler(action: MediaSessionAction, handler: MediaSessionActionHandler | null): void;
+    setPositionState(state?: MediaPositionState): void;
+}
+
+declare var MediaSession: {
+    prototype: MediaSession;
+    new(): MediaSession;
 };
 
 interface MediaSourceEventMap {
@@ -10897,6 +10944,7 @@ interface Navigator extends MSFileSaver, MSNavigatorDoNotTrack, NavigatorAutomat
     readonly geolocation: Geolocation;
     readonly maxTouchPoints: number;
     readonly mediaDevices: MediaDevices;
+    readonly mediaSession: MediaSession;
     readonly msManipulationViewsEnabled: boolean;
     readonly msMaxTouchPoints: number;
     readonly msPointerEnabled: boolean;
@@ -19290,6 +19338,10 @@ interface MSLaunchUriCallback {
     (): void;
 }
 
+interface MediaSessionActionHandler {
+    (details: MediaSessionActionDetails): void;
+}
+
 interface MutationCallback {
     (mutations: MutationRecord[], observer: MutationObserver): void;
 }
@@ -20126,6 +20178,8 @@ type MediaKeyMessageType = "individualization-request" | "license-release" | "li
 type MediaKeySessionType = "persistent-license" | "temporary";
 type MediaKeyStatus = "expired" | "internal-error" | "output-downscaled" | "output-restricted" | "released" | "status-pending" | "usable";
 type MediaKeysRequirement = "not-allowed" | "optional" | "required";
+type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
+type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
 type NavigationReason = "down" | "left" | "right" | "up";
 type NavigationType = "back_forward" | "navigate" | "prerender" | "reload";
