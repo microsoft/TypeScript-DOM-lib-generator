@@ -114,6 +114,7 @@ interface ReadableStreamBYOBRequest {
 interface WritableStream {
     readonly attribute boolean locked;
     Promise<void> abort(optional any reason);
+    Promise<void> close();
     WritableStreamDefaultWriter getWriter();
 };
 

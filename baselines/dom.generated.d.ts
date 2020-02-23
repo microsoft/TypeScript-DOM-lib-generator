@@ -18827,6 +18827,7 @@ declare var Worklet: {
 interface WritableStream<W = any> {
     readonly locked: boolean;
     abort(reason?: any): Promise<void>;
+    close(): Promise<void>;
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
