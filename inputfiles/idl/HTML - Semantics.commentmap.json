@@ -1,3 +1,3 @@
 {
-    "title-text": "Returns the child text content of the element.\nCan be set, to replace the element's children with the given value."
+    "title-text": "Returns the child text content of the element.\n\nCan be set, to replace the element's children with the given value."
 }

@@ -1,5 +1,7 @@
-[Constructor(DOMString type, optional ErrorEventInit eventInitDict), Exposed=(Window,Worker)]
+[Exposed=(Window,Worker)]
 interface ErrorEvent : Event {
+  constructor(DOMString type, optional ErrorEventInit eventInitDict = {});
+
   readonly attribute DOMString message;
   readonly attribute USVString filename;
   readonly attribute unsigned long lineno;
@@ -15,8 +17,10 @@ dictionary ErrorEventInit : EventInit {
   any error = null;
 };
 
-[Constructor(DOMString type, PromiseRejectionEventInit eventInitDict), Exposed=(Window,Worker)]
+[Exposed=(Window,Worker)]
 interface PromiseRejectionEvent : Event {
+  constructor(DOMString type, PromiseRejectionEventInit eventInitDict);
+
   readonly attribute Promise<any> promise;
   readonly attribute any reason;
 };
@@ -73,7 +77,6 @@ interface mixin GlobalEventHandlers {
   attribute EventHandler onload;
   attribute EventHandler onloadeddata;
   attribute EventHandler onloadedmetadata;
-  attribute EventHandler onloadend;
   attribute EventHandler onloadstart;
   attribute EventHandler onmousedown;
   [LenientThis] attribute EventHandler onmouseenter;
@@ -95,6 +98,7 @@ interface mixin GlobalEventHandlers {
   attribute EventHandler onseeked;
   attribute EventHandler onseeking;
   attribute EventHandler onselect;
+  attribute EventHandler onslotchange;
   attribute EventHandler onstalled;
   attribute EventHandler onsubmit;
   attribute EventHandler onsuspend;
@@ -148,8 +152,8 @@ interface mixin WindowOrWorkerGlobalScope {
   void queueMicrotask(VoidFunction callback);
 
   // ImageBitmap
-  Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, optional ImageBitmapOptions options);
-  Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, long sx, long sy, long sw, long sh, optional ImageBitmapOptions options);
+  Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, optional ImageBitmapOptions options = {});
+  Promise<ImageBitmap> createImageBitmap(ImageBitmapSource image, long sx, long sy, long sw, long sh, optional ImageBitmapOptions options = {});
 };
 Window includes WindowOrWorkerGlobalScope;
 WorkerGlobalScope includes WindowOrWorkerGlobalScope;

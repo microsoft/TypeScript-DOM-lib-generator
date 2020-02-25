@@ -1,3 +1,4 @@
+[Exposed=Window]
 interface Selection {
   readonly attribute Node? anchorNode;
   readonly attribute unsigned long anchorOffset;
@@ -32,7 +33,7 @@ partial interface Window {
   Selection? getSelection();
 };
 
-partial interface GlobalEventHandlers {
+partial interface mixin GlobalEventHandlers {
   attribute EventHandler onselectstart;
   attribute EventHandler onselectionchange;
 };

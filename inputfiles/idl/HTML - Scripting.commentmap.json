@@ -1,7 +1,7 @@
 {
-    "script-text": "Returns the child text content of the element.\nCan be set, to replace the element's children with the given value.",
+    "script-text": "Returns the child text content of the element.\n\nCan be set, to replace the element's children with the given value.",
     "template-content": "Returns the template contents (a DocumentFragment).",
     "slot-name": "Can be used to get and set slot's name.",
-    "slot-assignednodes": "Returns slot's assigned nodes, if any, and slot's children\notherwise, and does the same for any slot elements encountered therein, recursively,\nuntil there are no slot elements left.",
-    "slot-assignedelements": "Returns the same as assignedNodes({ flatten: true\n}), limited to elements."
+    "slot-assignednodes": "Returns slot's assigned nodes.",
+    "slot-assignedelements": "Returns slot's assigned nodes, limited to elements."
 }

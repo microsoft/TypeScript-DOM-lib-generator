@@ -31,10 +31,15 @@ The `dom.generated.d.ts`, `webworker.generated.d.ts` and `dom.iterable.generated
 For each pull request, we will run the script and compare the generated files with the baseline files.
 In order to make the tests pass, please update the baseline as well in any pull requests.
 
-For common changes, it is sufficient to change the json files.
+It's recommended to first check which spec the wrong type belongs to. Say we are to update `IntersectionObserver` which belongs to [`Intersection Observer`](https://www.w3.org/TR/intersection-observer/) spec, and then we can do:
+
+1. First check we have the spec name `Intersection Observer` in `inputfiles/idlSources.json`. If not, add it.
+2. Run `npm run fetch-idl "Intersection Observer" && npm run build && npm run baseline-accept`.
+
+If the above didn't fix the type issues, we can fix them via json files as a last resort.
 There are three json files that are typically used to alter the type generation: `addedTypes.json`, `overridingTypes.json`, and `removedTypes.json`.
 `comments.json` can used to add comments to the types.
-Finally, `knownWorkerTypes.json` determine which types are available in a WebWorker environment.
+Finally, `knownTypes.json` determine which types are available in a certain environment in case it couldn't be automatically determined.
 
 The format of each file can be inferred from their existing content.
 
@@ -48,19 +53,8 @@ The common steps to send a pull request are:
 
 ### When should a DOM API be included here?
 
-If a DOM API is still a draft, it belongs on [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped#readme).
-When it graduates past draft stage, it can be added here and removed from DefinitelyTyped.
-A feature is considered a draft if:
-
-#### W3C
-
-A Working Draft should go on DefinitelyTyped.
-A feature that is a Candidate Recommendation (or has passed that stage) should be added here.
-
-#### WhatWG
-
-A "Working Draft" ([example](https://whatwg.org/specs/web-controls/current-work/)) should go on DefinitelyTyped.
-A "Living Standard" ([example](https://xhr.spec.whatwg.org/)) should be added here.
+A feature is considered highly experimental if a DOM API lacks multiple implementations or a formal specification from W3C or WHATWG. Such a feature belongs on [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped#readme).
+When it gets multiple implementations and a proper specification, it can be added here and removed from DefinitelyTyped.
 
 
 ## Code Structure

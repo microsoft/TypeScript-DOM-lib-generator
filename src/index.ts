@@ -6,8 +6,28 @@ import { Flavor, emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
 import { getExposedTypes } from "./expose";
 
+function mergeNamesakes(filtered: Browser.WebIdl) {
+    const targets = [
+        ...Object.values(filtered.interfaces!.interface),
+        ...Object.values(filtered.mixins!.mixin),
+        ...filtered.namespaces!
+    ];
+    for (const i of targets) {
+        if (!i.properties || !i.properties.namesakes) {
+            continue;
+        }
+        const { property } = i.properties!;
+        for (const [prop] of Object.values(i.properties.namesakes)) {
+            if (prop && !(prop.name in property)) {
+                property[prop.name] = prop;
+            }
+        }
+    }
+}
+
 function emitDomWorker(webidl: Browser.WebIdl, tsWorkerOutput: string, forceKnownWorkerTypes: Set<string>) {
     const worker = getExposedTypes(webidl, "Worker", forceKnownWorkerTypes);
+    mergeNamesakes(worker);
     const result = emitWebIdl(worker, Flavor.Worker);
     fs.writeFileSync(tsWorkerOutput, result);
     return;
@@ -15,7 +35,7 @@ function emitDomWorker(webidl: Browser.WebIdl, tsWorkerOutput: string, forceKnow
 
 function emitDomWeb(webidl: Browser.WebIdl, tsWebOutput: string, forceKnownWindowTypes: Set<string>) {
     const browser = getExposedTypes(webidl, "Window", forceKnownWindowTypes);
-
+    mergeNamesakes(browser);
     const result = emitWebIdl(browser, Flavor.Web);
     fs.writeFileSync(tsWebOutput, result);
     return;
@@ -30,6 +50,16 @@ function emitDom() {
     const inputFolder = path.join(__SOURCE_DIRECTORY__, "../", "inputfiles");
     const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
 
+    // ${name} will be substituted with the name of an interface
+    const removeVerboseIntroductions: [RegExp, string][] = [
+        [/^(The|A) ${name} interface of (the\s*)*((?:(?!API)[A-Za-z\d\s])+ API)/, 'This $3 interface '],
+        [/^(The|A) ${name} (interface|event|object) (is|represents|describes|defines)?/, ''],
+        [/^An object implementing the ${name} interface (is|represents|describes|defines)/, ''],
+        [/^The ${name} is an interface representing/, ''],
+        [/^This type (is|represents|describes|defines)?/, ''],
+        [/^The (((?:(?!API)[A-Za-z\s])+ API)) ${name} (represents|is|describes|defines)/, 'The $1 ']
+    ];
+
     // Create output folder
     if (!fs.existsSync(outputFolder)) {
         fs.mkdirSync(outputFolder);
@@ -38,7 +68,6 @@ function emitDom() {
     const tsWebOutput = path.join(outputFolder, "dom.generated.d.ts");
     const tsWebIteratorsOutput = path.join(outputFolder, "dom.iterable.generated.d.ts");
     const tsWorkerOutput = path.join(outputFolder, "webworker.generated.d.ts");
-
 
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
@@ -53,12 +82,21 @@ function emitDom() {
         const idl: string = fs.readFileSync(path.join(inputFolder, "idl", filename), { encoding: "utf-8" });
         const commentsMapFilePath = path.join(inputFolder, "idl", title + ".commentmap.json");
         const commentsMap: Record<string, string> = fs.existsSync(commentsMapFilePath) ? require(commentsMapFilePath) : {};
+        commentCleanup(commentsMap)
         const result = convert(idl, commentsMap);
         if (deprecated) {
             mapToArray(result.browser.interfaces!.interface).forEach(markAsDeprecated);
             result.partialInterfaces.forEach(markAsDeprecated);
         }
         return result;
+    }
+
+    function commentCleanup(commentsMap: Record<string, string>) {
+        for (const key in commentsMap) {
+            // Filters out phrases for nested comments as we retargets them:
+            // "This operation receives a dictionary, which has these members:"
+            commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
+        }
     }
 
     function apiDescriptionsToIdl(descriptions: Record<string, string>) {
@@ -70,11 +108,25 @@ function emitDom() {
 
         Object.keys(descriptions).forEach(name => {
             idl.interfaces!.interface[name] = {
-                comment: descriptions[name],
+                comment: transformVerbosity(name, descriptions[name]),
             } as Browser.Interface;
         });
 
         return idl;
+    }
+
+    function transformVerbosity(name: string, description: string): string {
+        for (const regTemplate of removeVerboseIntroductions) {
+            const [{ source: template }, replace] = regTemplate;
+
+            const reg = new RegExp(template.replace(/\$\{name\}/g, name) + '\\s*');
+            const product = description.replace(reg, replace);
+            if (product !== description) {
+                return product.charAt(0).toUpperCase() + product.slice(1);
+            }
+        }
+
+        return description;
     }
 
     /// Load the input file
@@ -114,11 +166,12 @@ function emitDom() {
         for (const include of w.includes) {
             const target = webidl.interfaces!.interface[include.target];
             if (target) {
-                if (target.implements) {
-                    target.implements.push(include.includes);
-                }
-                else {
+                if (!target.implements) {
                     target.implements = [include.includes];
+                } else if (!target.implements.includes(include.includes)) {
+                    // This makes sure that browser.webidl.preprocessed.json
+                    // does not already have the mixin reference
+                    target.implements.push(include.includes);
                 }
             }
         }
@@ -145,12 +198,11 @@ function emitDom() {
 
         function filterByNull(obj: any, template: any) {
             if (!template) return obj;
-            const filtered: any = {};
-            for (const k in obj) {
-                if (!template.hasOwnProperty(k)) {
-                    filtered[k] = obj[k];
-                }
-                else if (Array.isArray(template[k])) {
+            const filtered = { ...obj };
+            for (const k in template) {
+                if (!obj[k]) {
+                    console.warn(`removedTypes.json has a redundant field ${k} in ${JSON.stringify(template)}`);
+                } else if (Array.isArray(template[k])) {
                     if (!Array.isArray(obj[k])) {
                         throw new Error(`Removal template ${k} is an array but the original field is not`);
                     }
@@ -159,9 +211,14 @@ function emitDom() {
                         const name = typeof item === "string" ? item : (item.name || item["new-type"]);
                         return !template[k].includes(name);
                     });
+                    if (filtered[k].length === obj[k].length) {
+                        console.warn(`removedTypes.json has a redundant array item in ${JSON.stringify(template[k])}`);
+                    }
                 }
                 else if (template[k] !== null) {
                     filtered[k] = filterByNull(obj[k], template[k]);
+                } else {
+                    delete filtered[k];
                 }
             }
             return filtered;

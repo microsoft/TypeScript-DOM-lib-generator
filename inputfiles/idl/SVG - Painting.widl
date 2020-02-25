@@ -1,0 +1,51 @@
+[Exposed=Window]
+interface SVGMarkerElement : SVGElement {
+
+  // Marker Unit Types
+  const unsigned short SVG_MARKERUNITS_UNKNOWN = 0;
+  const unsigned short SVG_MARKERUNITS_USERSPACEONUSE = 1;
+  const unsigned short SVG_MARKERUNITS_STROKEWIDTH = 2;
+
+  // Marker Orientation Types
+  const unsigned short SVG_MARKER_ORIENT_UNKNOWN = 0;
+  const unsigned short SVG_MARKER_ORIENT_AUTO = 1;
+  const unsigned short SVG_MARKER_ORIENT_ANGLE = 2;
+
+  [SameObject] readonly attribute SVGAnimatedLength refX;
+  [SameObject] readonly attribute SVGAnimatedLength refY;
+  [SameObject] readonly attribute SVGAnimatedEnumeration markerUnits;
+  [SameObject] readonly attribute SVGAnimatedLength markerWidth;
+  [SameObject] readonly attribute SVGAnimatedLength markerHeight;
+  [SameObject] readonly attribute SVGAnimatedEnumeration orientType;
+  [SameObject] readonly attribute SVGAnimatedAngle orientAngle;
+  attribute DOMString orient;
+
+  void setOrientToAuto();
+  void setOrientToAngle(SVGAngle angle);
+};
+
+SVGMarkerElement includes SVGFitToViewBox;
+
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fill;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fillRule;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fillOpacity;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString stroke;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeOpacity;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeWidth;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeLinecap;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeLinejoin;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeMiterlimit;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeDasharray;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString strokeDashoffset;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString markerStart;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString markerMid;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString markerEnd;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString marker;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString paintOrder;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString colorInterpolation;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString colorRendering;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString shapeRendering;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString textRendering;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString imageRendering;
+};

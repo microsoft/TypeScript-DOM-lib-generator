@@ -129,6 +129,18 @@
                     "property": {
                         "onerror": {
                             "override-type": "OnErrorEventHandler"
+                        },
+                        "ontouchcancel": {
+                            "required": 0
+                        },
+                        "ontouchend": {
+                            "required": 0
+                        },
+                        "ontouchmove": {
+                            "required": 0
+                        },
+                        "ontouchstart": {
+                            "required": 0
                         }
                     }
                 }
@@ -299,25 +311,32 @@
                 "override-signatures": [
                     "(chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
                 ]
+            },
+            "CustomElementConstructor": {
+                "override-signatures": [
+                    "new (): HTMLElement"
+                ]
             }
         }
     },
     "callback-interfaces": {
         "interface": {}
     },
+    "enums": {
+        "enum": {
+            "ImportExportKind": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "TableKind": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "ValueType": {
+                "legacy-namespace": "WebAssembly"
+            }
+        }
+    },
     "interfaces": {
         "interface": {
-            "XPathNSResolver": {
-                "methods": {
-                    "method": {
-                        "lookupNamespaceURI": {
-                            "override-signatures": [
-                                "lookupNamespaceURI(prefix: string): string | null"
-                            ]
-                        }
-                    }
-                }
-            },
             "CryptoKey": {
                 "properties": {
                     "property": {
@@ -440,6 +459,9 @@
                             "override-type": "Event | undefined",
                             "deprecated": 1
                         },
+                        "location": {
+                            "read-only": 0
+                        },
                         "orientation": {
                             "name": "orientation",
                             "override-type": "string | number"
@@ -449,8 +471,11 @@
                             "override-type": "any",
                             "read-only": 0
                         },
-                        "location": {
-                            "read-only": 0
+                        "self": {
+                            "override-type": "Window & typeof globalThis"
+                        },
+                        "window": {
+                            "override-type": "Window & typeof globalThis"
                         }
                     }
                 },
@@ -510,12 +535,6 @@
                             "name": "elementsFromPoint",
                             "override-signatures": [
                                 "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        },
-                        "evaluate": {
-                            "name": "evaluate",
-                            "override-signatures": [
-                                "evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | ((prefix: string) => string | null) | null, type: number, result: XPathResult | null): XPathResult"
                             ]
                         },
                         "getElementsByTagNameNS": {
@@ -628,6 +647,14 @@
                             "nullable": false
                        }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "readystatechange",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             "Node": {
@@ -692,6 +719,9 @@
                         },
                         "nextSibling": {
                             "override-type": "ChildNode | null"
+                        },
+                        "previousSibling": {
+                            "override-type": "ChildNode | null"
                         }
                     }
                 }
@@ -703,13 +733,13 @@
                         "openCursor": {
                             "name": "openCursor",
                             "override-signatures": [
-                                "openCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
+                                "openCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
                             ]
                         },
                         "openKeyCursor": {
                             "name": "openKeyCursor",
                             "override-signatures": [
-                                "openKeyCursor(query?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
+                                "openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
                             ]
                         },
                         "add": {
@@ -751,13 +781,13 @@
                         "getAll": {
                             "name": "getAll",
                             "override-signatures": [
-                                "getAll(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<any[]>"
+                                "getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>"
                             ]
                         },
                         "getAllKeys": {
                             "name": "getAllKeys",
                             "override-signatures": [
-                                "getAllKeys(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<IDBValidKey[]>"
+                                "getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>"
                             ]
                         },
                         "getKey": {
@@ -809,13 +839,13 @@
                         "openCursor": {
                             "name": "openCursor",
                             "override-signatures": [
-                                "openCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
+                                "openCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
                             ]
                         },
                         "openKeyCursor": {
                             "name": "openKeyCursor",
                             "override-signatures": [
-                                "openKeyCursor(range?: IDBValidKey | IDBKeyRange, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
+                                "openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
                             ]
                         },
                         "count": {
@@ -833,13 +863,13 @@
                         "getAll": {
                             "name": "getAll",
                             "override-signatures": [
-                                "getAll(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<any[]>"
+                                "getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>"
                             ]
                         },
                         "getAllKeys": {
                             "name": "getAllKeys",
                             "override-signatures": [
-                                "getAllKeys(query?: IDBValidKey | IDBKeyRange, count?: number): IDBRequest<IDBValidKey[]>"
+                                "getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>"
                             ]
                         },
                         "getKey": {
@@ -879,25 +909,32 @@
                 }
             },
             "HTMLCanvasElement": {
-                "name": "HTMLCanvasElement",
                 "methods": {
                     "method": {
                         "getContext": {
-                            "name": "getContext",
-                            "override-signatures": [
-                                "getContext(contextId: \"2d\", contextAttributes?: CanvasRenderingContext2DSettings): CanvasRenderingContext2D | null",
-                                "getContext(contextId: \"webgl\" | \"experimental-webgl\", contextAttributes?: WebGLContextAttributes): WebGLRenderingContext | null",
-                                "getContext(contextId: string, contextAttributes?: {}): CanvasRenderingContext2D | WebGLRenderingContext | null"
+                            "additional-signatures": [
+                                "getContext(contextId: \"2d\", options?: CanvasRenderingContext2DSettings): CanvasRenderingContext2D | null",
+                                "getContext(contextId: \"bitmaprenderer\", options?: ImageBitmapRenderingContextSettings): ImageBitmapRenderingContext | null",
+                                "getContext(contextId: \"webgl\", options?: WebGLContextAttributes): WebGLRenderingContext | null",
+                                "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null"
                             ]
                         }
                     }
                 }
             },
             "OffscreenCanvas": {
-                "exposed": ""
-            },
-            "OffscreenCanvasRenderingContext2D": {
-                "exposed": ""
+                "methods": {
+                    "method": {
+                        "getContext": {
+                            "additional-signatures": [
+                                "getContext(contextId: \"2d\", options?: CanvasRenderingContext2DSettings): OffscreenCanvasRenderingContext2D | null",
+                                "getContext(contextId: \"bitmaprenderer\", options?: ImageBitmapRenderingContextSettings): ImageBitmapRenderingContext | null",
+                                "getContext(contextId: \"webgl\", options?: WebGLContextAttributes): WebGLRenderingContext | null",
+                                "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null"
+                            ]
+                        }
+                    }
+                }
             },
             "BeforeUnloadEvent": {
                 "name": "BeforeUnloadEvent",
@@ -937,6 +974,22 @@
                             "override-signatures": [
                                 "getIntersectionList(rect: SVGRect, referenceElement: SVGElement): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                             ]
+                        },
+                        "setCurrentTime": {
+                            "name": "setCurrentTime",
+                            "deprecated": 0
+                        },
+                        "pauseAnimations": {
+                            "name": "pauseAnimations",
+                            "deprecated": 0
+                        },
+                        "unpauseAnimations": {
+                            "name": "unpauseAnimations",
+                            "deprecated": 0
+                        },
+                        "getCurrentTime": {
+                            "name": "getCurrentTime",
+                            "deprecated": 0
                         }
                     }
                 }
@@ -1041,7 +1094,7 @@
                 "constructor": {
                     "override-signatures": [
                         "new(width: number, height: number): ImageData",
-                        "new(array: Uint8ClampedArray, width: number, height: number): ImageData"
+                        "new(array: Uint8ClampedArray, width: number, height?: number): ImageData"
                     ]
                 }
             },
@@ -1164,18 +1217,6 @@
                 "name": "Element",
                 "methods": {
                     "method": {
-                        "getBoundingClientRect": {
-                            "name": "getBoundingClientRect",
-                            "override-signatures": [
-                                "getBoundingClientRect(): ClientRect | DOMRect"
-                            ]
-                        },
-                        "getClientRects": {
-                            "name": "getClientRects",
-                            "override-signatures": [
-                                "getClientRects(): ClientRectList | DOMRectList"
-                            ]
-                        },
                         "getAttributeNodeNS": {
                             "name": "getAttributeNodeNS",
                             "override-signatures": [
@@ -1224,6 +1265,14 @@
                             ]
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "msneedkey",
+                            "type": "MSMediaKeyNeededEvent"
+                        }
+                    ]
                 }
             },
             "DataTransferItemList": {
@@ -1459,6 +1508,14 @@
                             "name": "form",
                             "read-only": 1,
                             "override-type": "HTMLFormElement | null"
+                        },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "override-type": "\"forward\" | \"backward\" | \"none\""
+                        },
+                        "valueAsDate": {
+                            "name": "valueAsDate",
+                            "override-type": "Date | null"
                         }
                     }
                 },
@@ -1481,32 +1538,6 @@
                             "name": "initMouseEvent",
                             "override-signatures": [
                                 "initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void"
-                            ]
-                        }
-                    }
-                }
-            },
-            "XPathEvaluator": {
-                "name": "XPathEvaluator",
-                "methods": {
-                    "method": {
-                        "evaluate": {
-                            "name": "evaluate",
-                            "override-signatures": [
-                                "evaluate(expression: string, contextNode: Node, resolver: XPathNSResolver | ((prefix: string) => string | null) | null, type: number, result: XPathResult | null): XPathResult"
-                            ]
-                        }
-                    }
-                }
-            },
-            "XPathExpression": {
-                "name": "XPathExpression",
-                "methods": {
-                    "method": {
-                        "evaluate": {
-                            "name": "evaluate",
-                            "override-signatures": [
-                                "evaluate(contextNode: Node, type: number, result: XPathResult | null): XPathResult"
                             ]
                         }
                     }
@@ -1674,6 +1705,10 @@
                         "labels": {
                             "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
+                        },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "override-type": "\"forward\" | \"backward\" | \"none\""
                         }
                     }
                 },
@@ -1720,47 +1755,6 @@
                             "type": "MessageEvent"
                         }
                     ]
-                }
-            },
-            "IntersectionObserverEntry": {
-                "name": "IntersectionObserverEntry",
-                "properties": {
-                    "property": {
-                        "boundingClientRect": {
-                            "name": "boundingClientRect",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        },
-                        "intersectionRect": {
-                            "name": "intersectionRect",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        },
-                        "rootBounds": {
-                            "name": "rootBounds",
-                            "read-only": 1,
-                            "override-type": "ClientRect | DOMRect"
-                        }
-                    }
-                }
-            },
-            "Range": {
-                "name": "Range",
-                "methods": {
-                    "method": {
-                        "getBoundingClientRect": {
-                            "name": "getBoundingClientRect",
-                            "override-signatures": [
-                                "getBoundingClientRect(): ClientRect | DOMRect"
-                            ]
-                        },
-                        "getClientRects": {
-                            "name": "getClientRects",
-                            "override-signatures": [
-                                "getClientRects(): ClientRectList | DOMRectList"
-                            ]
-                        }
-                    }
                 }
             },
             "WebSocket": {
@@ -2224,7 +2218,7 @@
                         "match": {
                             "name": "match",
                             "override-signatures": [
-                                "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
+                                "match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>"
                             ]
                         }
                     }
@@ -2331,8 +2325,10 @@
                     "method": {
                         "postMessage": {
                             "deprecated": 0,
+                            "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2415,19 +2411,6 @@
                     ]
                 }
             },
-            "BroadcastChannel": {
-                "name": "BroadcastChannel",
-                "methods": {
-                    "method": {
-                        "postMessage": {
-                            "name": "postMessage",
-                            "override-signatures": [
-                                "postMessage(message: any): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "MessagePort": {
                 "name": "MessagePort",
                 "methods": {
@@ -2435,7 +2418,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2448,7 +2432,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2461,7 +2446,8 @@
                         "postMessage": {
                             "name": "postMessage",
                             "override-signatures": [
-                                "postMessage(message: any, transfer?: Transferable[]): void"
+                                "postMessage(message: any, transfer: Transferable[]): void",
+                                "postMessage(message: any, options?: PostMessageOptions): void"
                             ]
                         }
                     }
@@ -2550,27 +2536,7 @@
                     }
                 }
             },
-            "ReadableStreamReadResult": {
-                "type-parameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "properties": {
-                    "property": {
-                        "value": {
-                            "override-type": "T"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "ReadableStreamBYOBReader": {
-                "constructor": {
-                    "override-signatures": [
-                        "new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader"
-                    ]
-                },
                 "methods": {
                     "method": {
                         "read": {
@@ -2580,9 +2546,6 @@
                         }
                     }
                 }
-            },
-            "ReadableStreamBYOBRequest": {
-                "no-interface-object": 1
             },
             "ReadableStreamDefaultReader": {
                 "type-parameters": [
@@ -2599,8 +2562,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ReadableByteStreamController": {
                 "properties": {
@@ -2609,8 +2571,7 @@
                             "override-type": "ReadableStreamBYOBRequest | undefined"
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ReadableStreamDefaultController": {
                 "type-parameters": [
@@ -2627,11 +2588,9 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "WritableStream": {
-                "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
                         "new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>"
@@ -2653,12 +2612,7 @@
                     }
                 }
             },
-            "WritableStreamDefaultController": {
-                "override-exposed": "Window Worker",
-                "no-interface-object": 1
-            },
             "WritableStreamDefaultWriter": {
-                "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
                         "name": "W",
@@ -2673,8 +2627,7 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "TransformStream": {
                 "type-parameters": [
@@ -2704,7 +2657,6 @@
                 }
             },
             "TransformStreamDefaultController": {
-                "override-exposed": "Window Worker",
                 "type-parameters": [
                     {
                         "name": "O",
@@ -2719,11 +2671,9 @@
                             ]
                         }
                     }
-                },
-                "no-interface-object": 1
+                }
             },
             "ByteLengthQueuingStrategy": {
-                "override-exposed": "Window Worker",
                 "extends": "QueuingStrategy<ArrayBufferView>",
                 "constructor": {
                     "override-signatures": [
@@ -2732,7 +2682,6 @@
                 }
             },
             "CountQueuingStrategy": {
-                "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
                         "new(options: { highWaterMark: number }): CountQueuingStrategy"
@@ -2743,6 +2692,114 @@
                         "size": {
                             "override-signatures": [
                                 "size(chunk: any): 1"
+                            ]
+                        }
+                    }
+                }
+            },
+            "Permissions": {
+                "methods": {
+                    "method": {
+                        "query": {
+                            "override-signatures": [
+                                "query(permissionDesc: PermissionDescriptor | DevicePermissionDescriptor | MidiPermissionDescriptor | PushPermissionDescriptor): Promise<PermissionStatus>"
+                            ]
+                        }
+                    }
+                }
+            },
+            "Navigator": {
+                "implements": [
+                    "MSFileSaver",
+                    "MSNavigatorDoNotTrack",
+                    "NavigatorBeacon"
+                ],
+                "methods": {
+                    "method": {
+                        "getVRDisplays": {
+                            "name": "getVRDisplays",
+                            "override-signatures": [
+                                "getVRDisplays(): Promise<VRDisplay[]>"
+                            ]
+                        },
+                        "msLaunchUri": {
+                            "name": "msLaunchUri",
+                            "override-signatures": [
+                                "msLaunchUri(uri: string, successCallback?: MSLaunchUriCallback, noHandlerCallback?: MSLaunchUriCallback): void"
+                            ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "activeVRDisplays": {
+                            "name": "activeVRDisplays",
+                            "override-type": "ReadonlyArray<VRDisplay>",
+                            "read-only": 1
+                        },
+                        "msManipulationViewsEnabled": {
+                            "name": "msManipulationViewsEnabled",
+                            "override-type": "boolean",
+                            "read-only": 1
+                        },
+                        "msMaxTouchPoints": {
+                            "name": "msMaxTouchPoints",
+                            "override-type": "number",
+                            "read-only": 1
+                        },
+                        "msPointerEnabled": {
+                            "name": "msPointerEnabled",
+                            "override-type": "boolean",
+                            "read-only": 1
+                        }
+                    }
+                }
+            },
+            "WorkerGlobalScope": {
+                "properties": {
+                    "property": {
+                        "self": {
+                            "override-type": "WorkerGlobalScope & typeof globalThis"
+                        }
+                    }
+                }
+            },
+            "Instance": {
+                "constructor": {
+                    "override-signatures": [
+                        "new(module: Module, importObject?: Imports): Instance"
+                    ],
+                    "force-references": [
+                        {
+                            "type": "Imports"
+                        }
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "exports": {
+                            "type": "Exports"
+                        }
+                    }
+                }
+            },
+            "MediaKeySession": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MediaKeyMessageEvent"
+                        }
+                    ]
+                }
+            },
+            "MediaKeyStatusMap": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            "name": "get",
+                            "override-signatures": [
+                                "get(keyId: BufferSource): MediaKeyStatus | undefined"
                             ]
                         }
                     }
@@ -2895,25 +2952,6 @@
                     }
                 }
             },
-            "MediaTrackConstraintSet": {
-                "name": "MediaTrackConstraintSet",
-                "members": {
-                    "member": {
-                        "echoCancellation": {
-                            "name": "echoCancellation",
-                            "override-type": "boolean | ConstrainBooleanParameters"
-                        },
-                        "channelCount": {
-                            "name": "channelCount",
-                            "override-type": "number | ConstrainLongRange"
-                        },
-                        "latency": {
-                            "name": "latency",
-                            "override-type": "number | ConstrainDoubleRange"
-                        }
-                    }
-                }
-            },
             "BaseKeyframe": {
                 "name": "Keyframe",
                 "override-index-signatures": [
@@ -2959,6 +2997,9 @@
                         },
                         "preventCancel": {
                             "nullable": 0
+                        },
+                        "signal": {
+                            "nullable": 0
                         }
                     }
                 }
@@ -2978,6 +3019,40 @@
                         "size": {
                             "override-type": "QueuingStrategySizeCallback<T>",
                             "nullable": 0
+                        }
+                    }
+                }
+            },
+            "ReadableStreamReadDoneResult": {
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "override-type": "true"
+                        },
+                        "value": {
+                            "override-type": "T"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamReadValueResult": {
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "override-type": "false"
+                        },
+                        "value": {
+                            "override-type": "T"
                         }
                     }
                 }
@@ -3090,6 +3165,57 @@
                         }
                     }
                 }
+            },
+            "DevicePermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "name": "name",
+                            "required": 1,
+                            "override-type": "\"camera\" | \"microphone\" | \"speaker\""
+                        }
+                    }
+                }
+            },
+            "MidiPermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "name": "name",
+                            "required": 1,
+                            "override-type": "\"midi\""
+                        }
+                    }
+                }
+            },
+            "PushPermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "name": "name",
+                            "required": 1,
+                            "override-type": "\"push\""
+                        }
+                    }
+                }
+            },
+            "ModuleExportDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "ModuleImportDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "MemoryDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "TableDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "GlobalDescriptor": {
+                "legacy-namespace": "WebAssembly"
+            },
+            "WebAssemblyInstantiatedSource": {
+                "legacy-namespace": "WebAssembly"
             }
         }
     },
@@ -3098,7 +3224,46 @@
             {
                 "override-type": "Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string",
                 "new-type": "BodyInit"
+            },
+            {
+                "override-type": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>",
+                "new-type": "ReadableStreamReadResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ]
             }
         ]
-    }
+    },
+    "namespaces": [
+        {
+            "name": "WebAssembly",
+            "methods": {
+                "method": {
+                    "instantiate": {
+                        "override-signatures": [
+                            "instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>",
+                            "instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>"
+                        ],
+                        "force-references": [
+                            {
+                                "type": "Imports"
+                            }
+                        ]
+                    },
+                    "instantiateStreaming": {
+                        "override-signatures": [
+                            "instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>"
+                        ],
+                        "force-references": [
+                            {
+                                "type": "Imports"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
 }

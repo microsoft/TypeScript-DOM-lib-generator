@@ -35,7 +35,7 @@ dictionary RTCIdentityValidationResult {
 };
 
 partial interface RTCPeerConnection {
-    void               setIdentityProvider (DOMString provider, optional RTCIdentityProviderOptions options);
+    void               setIdentityProvider (DOMString provider, optional RTCIdentityProviderOptions options = {});
     Promise<DOMString> getIdentityAssertion ();
     readonly        attribute Promise<RTCIdentityAssertion> peerIdentity;
     readonly        attribute DOMString?                    idpLoginUrl;
@@ -48,8 +48,9 @@ dictionary RTCIdentityProviderOptions {
     DOMString peerIdentity;
 };
 
-[Constructor(DOMString idp, DOMString name), Exposed=Window]
+[Exposed=Window]
 interface RTCIdentityAssertion {
+    constructor(DOMString idp, DOMString name);
     attribute DOMString idp;
     attribute DOMString name;
 };

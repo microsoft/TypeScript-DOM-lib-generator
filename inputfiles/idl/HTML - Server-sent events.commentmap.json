@@ -1,6 +1,7 @@
 {
-    "eventsource": "Creates a new EventSource object.\nurl is a string giving the URL that will provide the event\nstream.\nSetting withCredentials to true\nwill set the credentials mode\nfor connection requests to url to \"include\".",
+    "eventsource": "Creates a new EventSource object.\n\nurl is a string giving the URL that will provide the event stream.\n\nSetting withCredentials to true will set the credentials mode for connection requests to url to \"include\".",
+    "eventsource-close": "Aborts any instances of the fetch algorithm started for this EventSource object, and sets the readyState attribute to CLOSED.",
     "eventsource-url": "Returns the URL providing the event stream.",
-    "eventsource-withcredentials": "Returns true if the credentials mode\nfor connection requests to the URL providing the\nevent stream is set to \"include\", and false otherwise.",
-    "eventsource-readystate": "Returns the state of this EventSource object's connection. It can have the\nvalues described below."
+    "eventsource-withcredentials": "Returns true if the credentials mode for connection requests to the URL providing the event stream is set to \"include\", and false otherwise.",
+    "eventsource-readystate": "Returns the state of this EventSource object's connection. It can have the values described below."
 }

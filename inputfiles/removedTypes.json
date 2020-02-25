@@ -1,18 +1,28 @@
 {
     "callback-functions": {
         "callback-function": {
-            "CustomElementConstructor": null,
             "ErrorEventHandler": null,
             "Function": null
         }
     },
     "mixins": {
         "mixin": {
-            "XMLHttpRequestEventTarget": null,
-            "WindowTimers": {
-                "methods": null,
-                "implements": null
+            "GlobalEventHandlers": {
+                "properties": {
+                    "property": {
+                        "onformdata": null,
+                        "onslotchange": null
+                    }
+                }
             },
+            "ElementContentEditable": {
+                "properties": {
+                    "property": {
+                        "enterKeyHint": null
+                    }
+                }
+            },
+            "XMLHttpRequestEventTarget": null,
             "WorkerUtils": {
                 "methods": {
                     "method": {
@@ -42,6 +52,13 @@
     },
     "interfaces": {
         "interface": {
+            "CanvasRenderingContext2D": {
+                "methods": {
+                    "method": {
+                        "getContextAttributes": null
+                    }
+                }
+            },
             "Clipboard": {
                 "methods": {
                     "method": {
@@ -50,6 +67,7 @@
                     }
                 }
             },
+            "ClipboardItem": null,
             "Console": {
                 "methods": {
                     "method": {
@@ -58,48 +76,116 @@
                     }
                 }
             },
-            "FileReaderProgressEvent": null,
-            "HTMLAreasCollection": null,
-            "HTMLBodyElement": {
+            "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
-                        "onblur": null,
-                        "onerror": null,
-                        "onfocus": null,
-                        "onload": null,
-                        "onresize": null,
-                        "onscroll": null
+                        "backgroundPositionBlock": null,
+                        "backgroundPositionInline": null,
+                        "blockOverflow": null,
+                        "borderBlock": null,
+                        "borderBlockColor": null,
+                        "borderBlockStyle": null,
+                        "borderBlockWidth": null,
+                        "borderClip": null,
+                        "borderClipBottom": null,
+                        "borderClipLeft": null,
+                        "borderClipRight": null,
+                        "borderClipTop": null,
+                        "borderEndEndRadius": null,
+                        "borderEndStartRadius": null,
+                        "borderInline": null,
+                        "borderInlineColor": null,
+                        "borderInlineStyle": null,
+                        "borderInlineWidth": null,
+                        "borderLimit": null,
+                        "borderStartEndRadius": null,
+                        "borderStartStartRadius": null,
+                        "boxDecorationBreak": null,
+                        "colorRendering": null,
+                        "continue": null,
+                        "cornerShape": null,
+                        "corners": null,
+                        "fillBreak": null,
+                        "fillColor": null,
+                        "fillImage": null,
+                        "fillOrigin": null,
+                        "fillPosition": null,
+                        "fillRepeat": null,
+                        "fillSize": null,
+                        "hangingPunctuation": null,
+                        "initialLetters": null,
+                        "initialLettersAlign": null,
+                        "initialLettersWrap": null,
+                        "inlineSizing": null,
+                        "inset": null,
+                        "insetBlock": null,
+                        "insetBlockEnd": null,
+                        "insetBlockStart": null,
+                        "insetInline": null,
+                        "insetInlineEnd": null,
+                        "insetInlineStart": null,
+                        "lineClamp": null,
+                        "marginBlock": null,
+                        "marginInline": null,
+                        "maskBorder": null,
+                        "maskBorderMode": null,
+                        "maskBorderOutset": null,
+                        "maskBorderRepeat": null,
+                        "maskBorderSlice": null,
+                        "maskBorderSource": null,
+                        "maskBorderWidth": null,
+                        "maskClip": null,
+                        "maskMode": null,
+                        "maskOrigin": null,
+                        "maxLines": null,
+                        "overflowBlock": null,
+                        "overflowInline": null,
+                        "paddingBlock": null,
+                        "paddingInline": null,
+                        "rubyMerge": null,
+                        "shapeInside": null,
+                        "shapeMargin": null,
+                        "shapeSubtract": null,
+                        "strokeAlign": null,
+                        "strokeBreak": null,
+                        "strokeColor": null,
+                        "strokeDashCorner": null,
+                        "strokeDashJustify": null,
+                        "strokeImage": null,
+                        "strokeOrigin": null,
+                        "strokePosition": null,
+                        "strokeRepeat": null,
+                        "strokeSize": null,
+                        "textAlignAll": null,
+                        "textDecorationFill": null,
+                        "textDecorationStroke": null
+                    }
+                }
+            },
+            "ElementInternals": null,
+            "FederatedCredential": null,
+            "FormDataEvent": null,
+            "HTMLAreasCollection": null,
+            "HTMLFormElement": {
+                "properties": {
+                    "property": {
+                        "rel": null,
+                        "relList": null
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "requestSubmit": null
                     }
                 }
             },
             "HTMLElement": {
                 "methods": {
                     "method": {
-                        "scrollIntoView": null,
-                        "insertAdjacentElement": null,
-                        "insertAdjacentHTML": null,
-                        "insertAdjacentText": null
+                        "attachInternals": null
                     }
                 }
             },
-            "HTMLCanvasElement": {
-                "methods": {
-                    "method": {
-                        "transferControlToOffscreen": null
-                    }
-                }
-            },
-            "HTMLHRElement": {
-                "implements": null
-            },
-            "HTMLIFrameElement": {
-                "properties": {
-                    "property": {
-                        "onload": null
-                    }
-                }
-            },
-            "MediaQueryListListener": null,
             "MessageEvent": {
                 "methods": {
                     "method": {
@@ -110,27 +196,46 @@
             "MSCredentials": null,
             "MSDCCEvent": null,
             "MSDSHEvent": null,
-            "MSPortRange": null,
             "MSStreamReader": null,
-            "Screen": {
-                "methods": {
-                    "method": {
-                        "msLockOrientation": null,
-                        "msUnlockOrientation": null
+            "PasswordCredential": null,
+            "RTCDataChannel": {
+                "properties": {
+                    "property": {
+                        "onclosing": null
                     }
                 }
             },
+            "RTCIceCandidate": {
+                "properties": {
+                    "property": {
+                        "address": null
+                    }
+                }
+            },
+            "RTCPeerConnection": {
+                "methods": {
+                    "method": {
+                        "restartIce": null
+                    }
+                }
+            },
+            "ShadowRoot": {
+                "properties": {
+                    "property": {
+                        "onslotchange": null
+                    }
+                }
+            },
+            "SpeechRecognitionEvent": {
+                "constructor": null
+            },
+            "SpeechRecognitionErrorEvent": null,
             "StorageEvent": {
                 "methods": {
                     "method": {
                         "initStorageEvent": null
                     }
                 }
-            },
-            "SVGClipPathElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
             },
             "SVGElementInstance": {
                 "properties": {
@@ -144,33 +249,39 @@
                     }
                 }
             },
-            "SVGFilterElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
+            "SVGFEGaussianBlurElement": {
+                "properties": {
+                    "property": {
+                        "edgeMode": null
+                    }
+                },
+                "constants": {
+                    "constant": {
+                        "SVG_EDGEMODE_DUPLICATE": null,
+                        "SVG_EDGEMODE_NONE": null,
+                        "SVG_EDGEMODE_UNKNOWN": null,
+                        "SVG_EDGEMODE_WRAP": null
+                    }
+                }
             },
-            "SVGGradientElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
-            },
-            "SVGMaskElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
+            "SVGFEImageElement": {
+                "properties": {
+                    "property": {
+                        "crossOrigin": null
+                    }
+                }
             },
             "SVGMatrix": null,
-            "SVGPatternElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
+            "SVGMarkerElement": {
+                "properties": {
+                    "property": {
+                        "orient": null
+                    }
+                }
             },
             "SVGPoint": null,
             "SVGRect": null,
             "SVGSVGElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ],
                 "properties": {
                     "property": {
                         "onabort": null,
@@ -179,11 +290,6 @@
                         "onscroll": null
                     }
                 }
-            },
-            "SVGViewElement": {
-                "implements": [
-                    "SVGUnitTypes"
-                ]
             },
             "WebKitCSSMatrix": null,
             "WebKitDirectoryEntry": null,
@@ -195,46 +301,60 @@
                 "properties": {
                     "property": {
                         "browser": null,
+                        "caches": null,
+                        "crypto": null,
                         "msCredentials": null,
                         "ontouchcancel": null,
                         "ontouchend": null,
                         "ontouchmove": null,
-                        "ontouchstart": null
+                        "ontouchstart": null,
+                        "performance": null
                     }
-                }
+                },
+                "methods": {
+                    "method": {
+                        "cancelAnimationFrame": null,
+                        "requestAnimationFrame": null
+                    }
+                },
+                "implements": [
+                    "GlobalFetch",
+                    "IDBEnvironment",
+                    "WindowBase64",
+                    "WindowTimers"
+                ]
             },
-            "WheelEvent": {
-                "properties": {
-                    "property": {
-                        "wheelDelta": null,
-                        "wheelDeltaX": null,
-                        "wheelDeltaY": null
-                    }
-                }
-            }
+            "WorkerGlobalScope": {
+                "implements": [
+                    "GlobalFetch"
+                ]
+            },
+            "XPathNSResolver": null
         }
     },
     "dictionaries": {
         "dictionary": {
+            "CredentialCreationOptions": {
+                "members": {
+                    "member": {
+                        "federated": null,
+                        "password": null
+                    }
+                }
+            },
+            "CredentialRequestOptions": {
+                "members": {
+                    "member": {
+                        "federated": null,
+                        "password": null
+                    }
+                }
+            },
             "ObjectURLOptions": null,
             "RTCIceGatherOptions": {
                 "members": {
                     "member": {
                         "portRange": null
-                    }
-                }
-            },
-            "RTCRtpContributingSource": {
-                "members": {
-                    "member": {
-                        "csrc": null
-                    }
-                }
-            },
-            "MediaTrackConstraintSet": {
-                "members": {
-                    "member": {
-                        "echoCancelation": null
                     }
                 }
             }

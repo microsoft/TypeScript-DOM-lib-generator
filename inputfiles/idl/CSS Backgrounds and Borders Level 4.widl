@@ -1,0 +1,22 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString backgroundPosition;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString backgroundPositionX;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString backgroundPositionY;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString backgroundPositionInline;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString backgroundPositionBlock;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString backgroundClip;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderTopColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderRightColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderBottomColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderLeftColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderColor;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderRadius;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString cornerShape;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString corners;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderLimit;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderClip;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderClipTop;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderClipRight;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderClipBottom;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString borderClipLeft;
+};
