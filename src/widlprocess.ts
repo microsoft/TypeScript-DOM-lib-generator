@@ -8,6 +8,7 @@ export function convert(text: string, commentMap: Record<string, string>) {
     const partialMixins: Browser.Interface[] = [];
     const partialDictionaries: Browser.Dictionary[] = [];
     const includes: webidl2.IncludesType[] = [];
+    const namespaceNested: Record<string, Browser.Interface> = {};
     const browser = getEmptyWebIDL();
     for (const rootType of rootTypes) {
         if (rootType.type === "interface") {
@@ -27,6 +28,9 @@ export function convert(text: string, commentMap: Record<string, string>) {
             else {
                 browser["mixins"]!.mixin[rootType.name] = converted;
             }
+        }
+        else if (rootType.type === "namespace") {
+            browser.namespaces!.push(convertNamespace(rootType, commentMap));
         }
         else if (rootType.type === "callback interface") {
             browser["callback-interfaces"]!.interface[rootType.name] = convertInterface(rootType, commentMap);
@@ -55,24 +59,24 @@ export function convert(text: string, commentMap: Record<string, string>) {
             includes.push(rootType);
         }
     }
-    return { browser, partialInterfaces, partialMixins, partialDictionaries, includes };
+    return { browser, partialInterfaces, partialMixins, partialDictionaries, includes, namespaceNested };
 }
 
-function hasExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
+function hasExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
     return extAttrs.some(extAttr => extAttr.name === name);
 }
 
-function getExtAttr(extAttrs: webidl2.ExtendedAttributes[], name: string) {
+function getExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
     const attr = extAttrs.find(extAttr => extAttr.name === name);
     if (!attr || !attr.rhs) {
-        return;
+        return [];
     }
-    return attr.rhs.type === "identifier-list" ? attr.rhs.value : [attr.rhs.value];
+    return attr.rhs.type === "identifier-list" ? attr.rhs.value.map(item => item.value) : [attr.rhs.value];
 }
 
-function getExtAttrConcatenated(extAttrs: webidl2.ExtendedAttributes[], name: string) {
+function getExtAttrConcatenated(extAttrs: webidl2.ExtendedAttribute[], name: string) {
     const extAttr = getExtAttr(extAttrs, name);
-    if (extAttr) {
+    if (extAttr.length) {
         return extAttr.join(" ");
     }
 }
@@ -87,6 +91,7 @@ function convertInterface(i: webidl2.InterfaceType, commentMap: Record<string, s
 
 function convertInterfaceMixin(i: webidl2.InterfaceMixinType, commentMap: Record<string, string>) {
     const result = convertInterfaceCommon(i, commentMap);
+    result.mixin = true;
     result['no-interface-object'] = 1;
     return result;
 }
@@ -108,13 +113,14 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         constants: { constant: {} },
         methods: { method: {} },
         "anonymous-methods": { method: [] },
-        properties: { property: {} },
-        constructor: getConstructor(i.extAttrs, i.name),
+        properties: { property: {}, namesakes: {} },
+        constructor: getConstructor(i.members, i.name) || getOldStyleConstructor(i.extAttrs, i.name),
         "named-constructor": getNamedConstructor(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
         "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
-        "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias")
+        "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias"),
+        "legacy-namespace": getExtAttr(i.extAttrs, "LegacyNamespace")[0]
     };
     if (!result.exposed && i.type === "interface" && !i.partial) {
         result.exposed = "Window";
@@ -125,16 +131,27 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
             addComments(result.constants!.constant[member.name], commentMap, i.name, member.name);
         }
         else if (member.type === "attribute") {
-            result.properties!.property[member.name] = convertAttribute(member, result.exposed);
-            addComments(result.properties!.property[member.name], commentMap, i.name, member.name);
+            const { properties } = result;
+            const prop = convertAttribute(member, result.exposed);
+            addComments(prop, commentMap, i.name, member.name);
+
+            if (member.name in properties!.namesakes!) {
+                properties!.namesakes![member.name].push(prop);
+            } else if (member.name in properties!.property) {
+                const existing = properties!.property[member.name];
+                delete properties!.property[member.name];
+                properties!.namesakes![member.name] = [existing, prop];
+            } else {
+                properties!.property[member.name] = prop;
+            }
         }
-        else if (member.type === "operation" && member.idlType) {
+        else if (member.type === "operation") {
             const operation = convertOperation(member, result.exposed);
             const { method } = result.methods;
             if (!member.name) {
                 result["anonymous-methods"]!.method.push(operation);
             }
-            else if (method[member.name]) {
+            else if (method.hasOwnProperty(member.name)) {
                 method[member.name].signature.push(...operation.signature);
             }
             else {
@@ -156,15 +173,15 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
     return result;
 }
 
-function getConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string) {
+function getConstructor(members: webidl2.IDLInterfaceMemberType[], parent: string) {
     const constructor: Browser.Constructor = {
         signature: []
     };
-    for (const extAttr of extAttrs) {
-        if (extAttr.name === "Constructor") {
+    for (const member of members) {
+        if (member.type === "constructor") {
             constructor.signature.push({
                 type: parent,
-                param: extAttr.arguments ? extAttr.arguments.map(convertArgument) : []
+                param: member.arguments.map(convertArgument)
             });
         }
     }
@@ -173,7 +190,24 @@ function getConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string) 
     }
 }
 
-function getNamedConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: string): Browser.NamedConstructor | undefined {
+function getOldStyleConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: string) {
+    const constructor: Browser.Constructor = {
+        signature: []
+    };
+    for (const extAttr of extAttrs) {
+        if (extAttr.name === "Constructor") {
+            constructor.signature.push({
+                type: parent,
+                param: extAttr.arguments.map(convertArgument)
+            });
+        }
+    }
+    if (constructor.signature.length) {
+        return constructor;
+    }
+}
+
+function getNamedConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: string): Browser.NamedConstructor | undefined {
     for (const extAttr of extAttrs) {
         if (extAttr.name === "NamedConstructor" && extAttr.rhs && typeof extAttr.rhs.value === "string") {
             return {
@@ -188,18 +222,23 @@ function getNamedConstructor(extAttrs: webidl2.ExtendedAttributes[], parent: str
 }
 
 function convertOperation(operation: webidl2.OperationMemberType, inheritedExposure: string | undefined): Browser.AnonymousMethod | Browser.Method {
-    if (!operation.idlType) {
+    const isStringifier = operation.special === "stringifier";
+    const type =
+        operation.idlType ? convertIdlType(operation.idlType) :
+        isStringifier ? { type: "DOMString" } :
+        undefined;
+    if (!type) {
         throw new Error("Unexpected anonymous operation");
     }
     return {
-        name: operation.name,
+        name: operation.name || undefined,
         signature: [{
-            ...convertIdlType(operation.idlType),
+            ...type,
             param: operation.arguments.map(convertArgument)
         }],
-        getter: operation.getter ? 1 : undefined,
-        static: operation.static ? 1 : undefined,
-        stringifier: operation.stringifier ? 1 : undefined,
+        getter: operation.special === "getter" ? 1 : undefined,
+        static: operation.special === "static" ? 1 : undefined,
+        stringifier: isStringifier ? 1 : undefined,
         exposed: getExtAttrConcatenated(operation.extAttrs, "Exposed") || inheritedExposure
     };
 }
@@ -231,7 +270,8 @@ function convertAttribute(attribute: webidl2.AttributeMemberType, inheritedExpos
     return {
         name: attribute.name,
         ...convertIdlType(attribute.idlType),
-        static: attribute.static ? 1 : undefined,
+        static: attribute.special === "static" ? 1 : undefined,
+        stringifier: attribute.special === "stringifier" ? 1 : undefined,
         "read-only": attribute.readonly ? 1 : undefined,
         "event-handler": isEventHandler ? attribute.name.slice(2) : undefined,
         exposed: getExtAttrConcatenated(attribute.extAttrs, "Exposed") || inheritedExposure
@@ -262,6 +302,38 @@ function convertConstantValue(value: webidl2.ValueDescription): string {
         default:
             throw new Error("Not implemented");
     }
+}
+
+function convertNamespace(namespace: webidl2.NamespaceType, commentMap: Record<string, string>) {
+    const result: Browser.Interface = {
+        name: namespace.name,
+        extends: "Object",
+        constructor: { signature: [] },
+        methods: { method: {} },
+        properties: { property: {} },
+        exposed: getExtAttrConcatenated(namespace.extAttrs, "Exposed")
+    };
+    for (const member of namespace.members) {
+        if (member.type === "attribute") {
+            result.properties!.property[member.name] = convertAttribute(member, result.exposed);
+            addComments(result.properties!.property[member.name], commentMap, namespace.name, member.name);
+        }
+        else if (member.type === "operation" && member.idlType) {
+            const operation = convertOperation(member, result.exposed);
+            const { method } = result.methods;
+            if (method[member.name!]) {
+                method[member.name!].signature.push(...operation.signature);
+            }
+            else {
+                method[member.name!] = operation as Browser.Method;
+            }
+            if (member.name) {
+                addComments(method[member.name], commentMap, namespace.name, member.name);
+            }
+        }
+    }
+
+    return result;
 }
 
 function convertDictionary(dictionary: webidl2.DictionaryType, commentsMap: Record<string, string>) {
@@ -311,7 +383,10 @@ function convertIdlType(i: webidl2.IDLTypeDescription): Browser.Typed {
     if (i.generic) {
         return {
             type: i.generic,
-            subtype: Array.isArray(i.idlType) ? i.idlType.map(convertIdlType) : convertIdlType(i.idlType),
+            subtype:
+                !Array.isArray(i.idlType) ? convertIdlType(i.idlType) :
+                i.idlType.length === 1 ? convertIdlType(i.idlType[0]) :
+                i.idlType.map(convertIdlType),
             nullable: i.nullable ? 1 : undefined
         };
     }

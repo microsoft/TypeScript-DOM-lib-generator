@@ -24,6 +24,7 @@ export interface Member extends Typed {
     default?: string;
     required?: 1;
     specs?: string;
+    comment?: string;
 }
 
 export interface Property extends Typed {
@@ -124,6 +125,7 @@ export interface Constant extends Typed {
     tags?: string
     exposed?: string;
     specs?: string;
+    comment?: string;
 }
 
 export interface ParsedAttribute{
@@ -148,7 +150,9 @@ export interface TypeParameter {
 
 export interface Interface {
     name: string;
+    mixin?: boolean;
     extends: string;
+    comment?: string;
     constants?: {
         constant: Record<string, Constant>;
     }
@@ -158,8 +162,12 @@ export interface Interface {
     events?: {
         event: Event[];
     }
+    "attributeless-events"?: {
+        event: Event[];
+    }
     properties?: {
         property: Record<string, Property>;
+        namesakes?: Record<string, Property[]>;
     }
     constructor?: Constructor;
     "secure-context"?: 1;
@@ -187,6 +195,13 @@ export interface Interface {
     iterable?: "value" | "pair" | "pair-iterator";
     iterator?: Iterator;
     "legacy-window-alias"?: string[];
+    "legacy-namespace"?: string;
+    nested?: {
+        interfaces: Interface[];
+        enums: Enum[];
+        dictionaries: Dictionary[];
+        typedefs: TypeDef[];
+    }
 }
 
 export interface Iterator {
@@ -202,11 +217,14 @@ export interface Enum {
     name: string;
     value: string[];
     specs?: string;
+    "legacy-namespace"?: string;
 }
 
 export interface TypeDef extends Typed {
     "new-type": string;
     deprecated?: 1;
+    "legacy-namespace"?: string;
+    "type-parameters"?: TypeParameter[];
 }
 
 export interface Dictionary {
@@ -218,6 +236,7 @@ export interface Dictionary {
     "override-index-signatures"?: string[];
     specs?: string;
     "type-parameters"?: TypeParameter[];
+    "legacy-namespace"?: string;
 }
 
 export interface WebIdl {
@@ -241,5 +260,6 @@ export interface WebIdl {
     }
     typedefs?: {
         typedef: TypeDef[];
-    }
+    },
+    namespaces?: Interface[];
 }

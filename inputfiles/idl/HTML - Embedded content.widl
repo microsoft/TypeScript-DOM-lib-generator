@@ -1,10 +1,12 @@
-[Exposed=Window,
- HTMLConstructor]
-interface HTMLPictureElement : HTMLElement {};
+[Exposed=Window]
+interface HTMLPictureElement : HTMLElement {
+  [HTMLConstructor] constructor();
+};
 
-[Exposed=Window,
- HTMLConstructor]
+[Exposed=Window]
 interface HTMLSourceElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute USVString src;
   [CEReactions] attribute DOMString type;
   [CEReactions] attribute USVString srcset;
@@ -13,9 +15,10 @@ interface HTMLSourceElement : HTMLElement {
 };
 
 [Exposed=Window,
- HTMLConstructor,
  NamedConstructor=Image(optional unsigned long width, optional unsigned long height)]
 interface HTMLImageElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
   [CEReactions] attribute DOMString alt;
   [CEReactions] attribute USVString src;
   [CEReactions] attribute USVString srcset;

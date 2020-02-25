@@ -1,12 +1,13 @@
-[Exposed=Window, Constructor]
+[Exposed=Window]
 interface SpeechRecognition : EventTarget {
+    constructor();
+
     // recognition parameters
     attribute SpeechGrammarList grammars;
     attribute DOMString lang;
     attribute boolean continuous;
     attribute boolean interimResults;
     attribute unsigned long maxAlternatives;
-    attribute DOMString serviceURI;
 
     // methods to drive the speech interaction
     void start();
@@ -39,9 +40,15 @@ enum SpeechRecognitionErrorCode {
 };
 
 [Exposed=Window]
-interface SpeechRecognitionError : Event {
+interface SpeechRecognitionErrorEvent : Event {
+    constructor(DOMString type, SpeechRecognitionErrorEventInit eventInitDict);
     readonly attribute SpeechRecognitionErrorCode error;
     readonly attribute DOMString message;
+};
+
+dictionary SpeechRecognitionErrorEventInit : EventInit {
+    required SpeechRecognitionErrorCode error;
+    DOMString message = "";
 };
 
 // Item in N-best list
@@ -69,28 +76,33 @@ interface SpeechRecognitionResultList {
 // A full response, which could be interim or final, part of a continuous response or not
 [Exposed=Window]
 interface SpeechRecognitionEvent : Event {
+    constructor(DOMString type, SpeechRecognitionEventInit eventInitDict);
     readonly attribute unsigned long resultIndex;
     readonly attribute SpeechRecognitionResultList results;
-    readonly attribute any interpretation;
-    readonly attribute Document? emma;
+};
+
+dictionary SpeechRecognitionEventInit : EventInit {
+    unsigned long resultIndex = 0;
+    required SpeechRecognitionResultList results;
 };
 
 // The object representing a speech grammar
-[Exposed=Window, Constructor]
+[Exposed=Window]
 interface SpeechGrammar {
     attribute DOMString src;
     attribute float weight;
 };
 
 // The object representing a speech grammar collection
-[Exposed=Window, Constructor]
+[Exposed=Window]
 interface SpeechGrammarList {
+    constructor();
     readonly attribute unsigned long length;
     getter SpeechGrammar item(unsigned long index);
     void addFromURI(DOMString src,
-                    optional float weight);
+                    optional float weight = 1.0);
     void addFromString(DOMString string,
-                    optional float weight);
+                    optional float weight = 1.0);
 };
 
 [Exposed=Window]
@@ -112,13 +124,13 @@ partial interface Window {
     [SameObject] readonly attribute SpeechSynthesis speechSynthesis;
 };
 
-[Exposed=Window,
-  Constructor,
-  Constructor(DOMString text)]
+[Exposed=Window]
 interface SpeechSynthesisUtterance : EventTarget {
+    constructor(optional DOMString text);
+
     attribute DOMString text;
     attribute DOMString lang;
-    attribute SpeechSynthesisVoice voice;
+    attribute SpeechSynthesisVoice? voice;
     attribute float volume;
     attribute float rate;
     attribute float pitch;
@@ -134,10 +146,20 @@ interface SpeechSynthesisUtterance : EventTarget {
 
 [Exposed=Window]
 interface SpeechSynthesisEvent : Event {
+    constructor(DOMString type, SpeechSynthesisEventInit eventInitDict);
     readonly attribute SpeechSynthesisUtterance utterance;
     readonly attribute unsigned long charIndex;
+    readonly attribute unsigned long charLength;
     readonly attribute float elapsedTime;
     readonly attribute DOMString name;
+};
+
+dictionary SpeechSynthesisEventInit : EventInit {
+    required SpeechSynthesisUtterance utterance;
+    unsigned long charIndex = 0;
+    unsigned long charLength = 0;
+    float elapsedTime = 0;
+    DOMString name = "";
 };
 
 enum SpeechSynthesisErrorCode {
@@ -152,11 +174,17 @@ enum SpeechSynthesisErrorCode {
     "voice-unavailable",
     "text-too-long",
     "invalid-argument",
+    "not-allowed",
 };
 
 [Exposed=Window]
 interface SpeechSynthesisErrorEvent : SpeechSynthesisEvent {
+    constructor(DOMString type, SpeechSynthesisErrorEventInit eventInitDict);
     readonly attribute SpeechSynthesisErrorCode error;
+};
+
+dictionary SpeechSynthesisErrorEventInit : SpeechSynthesisEventInit {
+    required SpeechSynthesisErrorCode error;
 };
 
 [Exposed=Window]

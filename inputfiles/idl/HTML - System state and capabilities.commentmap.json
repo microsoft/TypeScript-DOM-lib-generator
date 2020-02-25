@@ -1,0 +1,12 @@
+{
+    "navigator": "Returns the string \"Mozilla\".",
+    "plugin-name": "Returns the plugin's name.",
+    "plugin-description": "Returns the plugin's description.",
+    "plugin-filename": "Returns the plugin library's filename, if applicable on the current platform.",
+    "plugin-length": "Returns the number of MIME types, represented by MimeType objects, supported by the plugin.",
+    "plugin-item": "Returns the specified MimeType object.",
+    "mimetype-type": "Returns the MIME type.",
+    "mimetype-description": "Returns the MIME type's description.",
+    "mimetype-suffixes": "Returns the MIME type's typical file extensions, in a comma-separated list.",
+    "mimetype-enabledplugin": "Returns the Plugin object that implements this MIME type."
+}

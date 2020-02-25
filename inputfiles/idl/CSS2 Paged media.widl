@@ -1,0 +1,7 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString pageBreakBefore;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString pageBreakAfter;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString pageBreakInside;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString orphans;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString widows;
+};

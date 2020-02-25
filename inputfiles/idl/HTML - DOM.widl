@@ -35,7 +35,6 @@ partial interface Document {
 
   // user interaction
   readonly attribute WindowProxy? defaultView;
-  readonly attribute Element? activeElement;
   boolean hasFocus();
   [CEReactions] attribute DOMString designMode;
   [CEReactions] boolean execCommand(DOMString commandId, optional boolean showUI = false, optional DOMString value = "");
@@ -47,13 +46,20 @@ partial interface Document {
 
   // special event handler IDL attributes that only apply to Document objects
   [LenientThis] attribute EventHandler onreadystatechange;
+
+  // also has obsolete members
 };
 Document includes GlobalEventHandlers;
 Document includes DocumentAndElementEventHandlers;
 
-[Exposed=Window,
- HTMLConstructor]
+partial interface mixin DocumentOrShadowRoot {
+  readonly attribute Element? activeElement;
+};
+
+[Exposed=Window]
 interface HTMLElement : Element {
+  [HTMLConstructor] constructor();
+
   // metadata attributes
   [CEReactions] attribute DOMString title;
   [CEReactions] attribute DOMString lang;
@@ -70,6 +76,8 @@ interface HTMLElement : Element {
   [CEReactions] attribute DOMString autocapitalize;
 
   [CEReactions] attribute [TreatNullAs=EmptyString] DOMString innerText;
+
+  ElementInternals attachInternals();
 };
 
 HTMLElement includes GlobalEventHandlers;
@@ -77,16 +85,18 @@ HTMLElement includes DocumentAndElementEventHandlers;
 HTMLElement includes ElementContentEditable;
 HTMLElement includes HTMLOrSVGElement;
 
-// Note: intentionally not [HTMLConstructor]
 [Exposed=Window]
-interface HTMLUnknownElement : HTMLElement { };
+interface HTMLUnknownElement : HTMLElement {
+  // Note: intentionally no [HTMLConstructor]
+};
 
 interface mixin HTMLOrSVGElement {
   [SameObject] readonly attribute DOMStringMap dataset;
   attribute DOMString nonce; // intentionally no [CEReactions]
 
+  [CEReactions] attribute boolean autofocus;
   [CEReactions] attribute long tabIndex;
-  void focus(optional FocusOptions options);
+  void focus(optional FocusOptions options = {});
   void blur();
 };
 
