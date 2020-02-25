@@ -5615,7 +5615,7 @@ declare namespace console {
     function count(label?: string): void;
     function countReset(label?: string): void;
     function debug(...data: any[]): void;
-    function dir(item: any, options?: any): void;
+    function dir(item?: any, options?: any): void;
     function dirxml(...data: any[]): void;
     function error(...data: any[]): void;
     function exception(message?: string, ...optionalParams: any[]): void;
@@ -5624,7 +5624,7 @@ declare namespace console {
     function groupEnd(): void;
     function info(...data: any[]): void;
     function log(...data: any[]): void;
-    function table(tabularData: any, properties?: string[]): void;
+    function table(tabularData?: any, properties?: string[]): void;
     function time(label?: string): void;
     function timeEnd(label?: string): void;
     function timeLog(label?: string, ...data: any[]): void;
