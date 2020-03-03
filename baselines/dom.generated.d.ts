@@ -10848,6 +10848,7 @@ interface NamedNodeMap {
     removeNamedItemNS(namespace: string | null, localName: string): Attr;
     setNamedItem(attr: Attr): Attr | null;
     setNamedItemNS(attr: Attr): Attr | null;
+    [name: string]: Attr;
     [index: number]: Attr;
 }
 
