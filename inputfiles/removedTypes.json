@@ -52,6 +52,7 @@
     },
     "interfaces": {
         "interface": {
+            "AudioTrackList": null,
             "CanvasRenderingContext2D": {
                 "methods": {
                     "method": {
@@ -167,6 +168,12 @@
             "FormDataEvent": null,
             "HTMLAreasCollection": null,
             "HTMLMediaElement": {
+                "properties": {
+                    "property": {
+                        "audioTracks": null,
+                        "videoTracks": null
+                    }
+                },
                 "methods": {
                     "method": {
                         "getStartDate": null
@@ -240,6 +247,15 @@
                     }
                 }
             },
+            "SourceBuffer": {
+                "properties": {
+                    "property": {
+                        "audioTracks": null,
+                        "textTracks": null,
+                        "videoTracks": null
+                    }
+                }
+            },
             "SpeechRecognitionEvent": {
                 "constructor": null
             },
@@ -305,6 +321,7 @@
                     }
                 }
             },
+            "VideoTrackList": null,
             "WebKitCSSMatrix": null,
             "WebKitDirectoryEntry": null,
             "WebKitDirectoryReader": null,

@@ -95,6 +95,10 @@
                             "type": "Event"
                         },
                         {
+                            "name": "change",
+                            "type": "Event"
+                        },
+                        {
                             "name": "drag",
                             "type": "DragEvent"
                         },
@@ -245,6 +249,9 @@
     },
     "interfaces": {
         "interface": {
+            "AudioTrack": {
+                "exposed": ""
+            },
             "SVGSVGElement": {
                 "name": "SVGSVGElement",
                 "methods": {
@@ -346,24 +353,6 @@
                         {
                             "name": "error",
                             "type": "Event"
-                        }
-                    ]
-                }
-            },
-            "AudioTrackList": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "TrackEvent"
-                        },
-                        {
-                            "name": "change",
-                            "type": "Event"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "TrackEvent"
                         }
                     ]
                 }
@@ -2270,23 +2259,8 @@
                     }
                 }
             },
-            "VideoTrackList": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "TrackEvent"
-                        },
-                        {
-                            "name": "change",
-                            "type": "Event"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "TrackEvent"
-                        }
-                    ]
-                }
+            "VideoTrack": {
+                "exposed": ""
             },
             "WebSocket": {
                 "events": {

@@ -1773,7 +1773,7 @@ interface TouchInit {
 }
 
 interface TrackEventInit extends EventInit {
-    track?: VideoTrack | AudioTrack | TextTrack | null;
+    track?: TextTrack | null;
 }
 
 interface Transformer<I = any, O = any> {
@@ -2341,63 +2341,6 @@ interface AudioScheduledSourceNode extends AudioNode {
 declare var AudioScheduledSourceNode: {
     prototype: AudioScheduledSourceNode;
     new(): AudioScheduledSourceNode;
-};
-
-/** A single audio track from one of the HTML media elements, <audio> or <video>.  */
-interface AudioTrack {
-    /**
-     * Returns true if the given track is active, and false otherwise.
-     * 
-     * Can be set, to change whether the track is enabled or not. If multiple audio tracks are enabled simultaneously, they are mixed.
-     */
-    enabled: boolean;
-    /**
-     * Returns the ID of the given track. This is the ID that can be used with a fragment if the format supports media fragment syntax, and that can be used with the getTrackById() method.
-     */
-    readonly id: string;
-    /**
-     * Returns the category the given track falls into. The possible track categories are given below.
-     */
-    readonly kind: string;
-    /**
-     * Returns the label of the given track, if known, or the empty string otherwise.
-     */
-    readonly label: string;
-    /**
-     * Returns the language of the given track, if known, or the empty string otherwise.
-     */
-    readonly language: string;
-    readonly sourceBuffer: SourceBuffer | null;
-}
-
-declare var AudioTrack: {
-    prototype: AudioTrack;
-    new(): AudioTrack;
-};
-
-interface AudioTrackListEventMap {
-    "addtrack": TrackEvent;
-    "change": Event;
-    "removetrack": TrackEvent;
-}
-
-/** Used to represent a list of the audio tracks contained within a given HTML media element, with each track represented by a separate AudioTrack object in the list. */
-interface AudioTrackList extends EventTarget {
-    readonly length: number;
-    onaddtrack: ((this: AudioTrackList, ev: TrackEvent) => any) | null;
-    onchange: ((this: AudioTrackList, ev: Event) => any) | null;
-    onremovetrack: ((this: AudioTrackList, ev: TrackEvent) => any) | null;
-    getTrackById(id: string): AudioTrack | null;
-    addEventListener<K extends keyof AudioTrackListEventMap>(type: K, listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AudioTrackListEventMap>(type: K, listener: (this: AudioTrackList, ev: AudioTrackListEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    [index: number]: AudioTrack;
-}
-
-declare var AudioTrackList: {
-    prototype: AudioTrackList;
-    new(): AudioTrackList;
 };
 
 interface AudioWorklet extends Worklet {
@@ -7697,10 +7640,6 @@ interface HTMLMediaElementEventMap extends HTMLElementEventMap {
 /** Adds to HTMLElement the properties and methods needed to support basic media-related capabilities that are common to audio and video. */
 interface HTMLMediaElement extends HTMLElement {
     /**
-     * Returns an AudioTrackList object with the audio tracks for a given video element.
-     */
-    readonly audioTracks: AudioTrackList;
-    /**
      * Gets or sets a value that indicates whether to start playing the media automatically.
      */
     autoplay: boolean;
@@ -7784,7 +7723,6 @@ interface HTMLMediaElement extends HTMLElement {
     src: string;
     srcObject: MediaProvider | null;
     readonly textTracks: TextTrackList;
-    readonly videoTracks: VideoTrackList;
     /**
      * Gets or sets the volume level for audio portions of the media element.
      */
@@ -15149,7 +15087,6 @@ interface SourceBufferEventMap {
 interface SourceBuffer extends EventTarget {
     appendWindowEnd: number;
     appendWindowStart: number;
-    readonly audioTracks: AudioTrackList;
     readonly buffered: TimeRanges;
     mode: AppendMode;
     onabort: ((this: SourceBuffer, ev: Event) => any) | null;
@@ -15157,10 +15094,8 @@ interface SourceBuffer extends EventTarget {
     onupdate: ((this: SourceBuffer, ev: Event) => any) | null;
     onupdateend: ((this: SourceBuffer, ev: Event) => any) | null;
     onupdatestart: ((this: SourceBuffer, ev: Event) => any) | null;
-    readonly textTracks: TextTrackList;
     timestampOffset: number;
     readonly updating: boolean;
-    readonly videoTracks: VideoTrackList;
     abort(): void;
     appendBuffer(data: BufferSource): void;
     remove(start: number, end: number): void;
@@ -16002,7 +15937,7 @@ interface TrackEvent extends Event {
     /**
      * Returns the track object (TextTrack, AudioTrack, or VideoTrack) to which the event relates.
      */
-    readonly track: VideoTrack | AudioTrack | TextTrack | null;
+    readonly track: TextTrack | null;
 }
 
 declare var TrackEvent: {
@@ -16319,64 +16254,6 @@ interface VideoPlaybackQuality {
 declare var VideoPlaybackQuality: {
     prototype: VideoPlaybackQuality;
     new(): VideoPlaybackQuality;
-};
-
-/** A single video track from a <video> element. */
-interface VideoTrack {
-    /**
-     * Returns the ID of the given track. This is the ID that can be used with a fragment if the format supports media fragment syntax, and that can be used with the getTrackById() method.
-     */
-    readonly id: string;
-    /**
-     * Returns the category the given track falls into. The possible track categories are given below.
-     */
-    readonly kind: string;
-    /**
-     * Returns the label of the given track, if known, or the empty string otherwise.
-     */
-    readonly label: string;
-    /**
-     * Returns the language of the given track, if known, or the empty string otherwise.
-     */
-    readonly language: string;
-    /**
-     * Returns true if the given track is active, and false otherwise.
-     * 
-     * Can be set, to change whether the track is selected or not. Either zero or one video track is selected; selecting a new track while a previous one is selected will unselect the previous one.
-     */
-    selected: boolean;
-    readonly sourceBuffer: SourceBuffer | null;
-}
-
-declare var VideoTrack: {
-    prototype: VideoTrack;
-    new(): VideoTrack;
-};
-
-interface VideoTrackListEventMap {
-    "addtrack": TrackEvent;
-    "change": Event;
-    "removetrack": TrackEvent;
-}
-
-/** Used to represent a list of the video tracks contained within a <video> element, with each track represented by a separate VideoTrack object in the list. */
-interface VideoTrackList extends EventTarget {
-    readonly length: number;
-    onaddtrack: ((this: VideoTrackList, ev: TrackEvent) => any) | null;
-    onchange: ((this: VideoTrackList, ev: Event) => any) | null;
-    onremovetrack: ((this: VideoTrackList, ev: TrackEvent) => any) | null;
-    readonly selectedIndex: number;
-    getTrackById(id: string): VideoTrack | null;
-    addEventListener<K extends keyof VideoTrackListEventMap>(type: K, listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof VideoTrackListEventMap>(type: K, listener: (this: VideoTrackList, ev: VideoTrackListEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    [index: number]: VideoTrack;
-}
-
-declare var VideoTrackList: {
-    prototype: VideoTrackList;
-    new(): VideoTrackList;
 };
 
 interface WEBGL_color_buffer_float {

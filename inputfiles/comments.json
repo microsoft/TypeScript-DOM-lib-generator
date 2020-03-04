@@ -1591,9 +1591,6 @@
                         },
                         "networkState": {
                             "comment": "/**\n * Gets the current network activity for the element.\n */"
-                        },
-                        "audioTracks": {
-                            "comment": "/**\n * Returns an AudioTrackList object with the audio tracks for a given video element.\n */"
                         }
                     }
                 },
