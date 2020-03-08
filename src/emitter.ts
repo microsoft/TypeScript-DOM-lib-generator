@@ -38,6 +38,10 @@ const eventTypeMap: Record<string, string> = {
     "timeout": "ProgressEvent"
 };
 
+// Namespaces that have been in form of interfaces for years
+// and can't be converted to namespaces without breaking type packages
+const namespacesAsInterfaces = ["console"];
+
 // Used to decide if a member should be emitted given its static property and
 // the intended scope level.
 function matchScope(scope: EmitScope, x: { static?: 1 | undefined }) {
@@ -1057,6 +1061,14 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitNamespace(namespace: Browser.Interface) {
+        if (namespacesAsInterfaces.includes(namespace.name)) {
+            const name = namespace.name[0].toUpperCase() + namespace.name.slice(1);
+            emitInterface({ ...namespace, name });
+            printer.printLine(`declare var ${namespace.name}: ${name};`);
+            printer.printLine("");
+            return;
+        }
+
         printer.printLine(`declare namespace ${namespace.name} {`);
         printer.increaseIndent();
 

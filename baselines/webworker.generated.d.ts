@@ -5676,30 +5676,32 @@ declare var XMLHttpRequestUpload: {
 
 declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
-declare namespace console {
-    var memory: any;
-    function assert(condition?: boolean, ...data: any[]): void;
-    function clear(): void;
-    function count(label?: string): void;
-    function countReset(label?: string): void;
-    function debug(...data: any[]): void;
-    function dir(item?: any, options?: any): void;
-    function dirxml(...data: any[]): void;
-    function error(...data: any[]): void;
-    function exception(message?: string, ...optionalParams: any[]): void;
-    function group(...data: any[]): void;
-    function groupCollapsed(...data: any[]): void;
-    function groupEnd(): void;
-    function info(...data: any[]): void;
-    function log(...data: any[]): void;
-    function table(tabularData?: any, properties?: string[]): void;
-    function time(label?: string): void;
-    function timeEnd(label?: string): void;
-    function timeLog(label?: string, ...data: any[]): void;
-    function timeStamp(label?: string): void;
-    function trace(...data: any[]): void;
-    function warn(...data: any[]): void;
+interface Console {
+    memory: any;
+    assert(condition?: boolean, ...data: any[]): void;
+    clear(): void;
+    count(label?: string): void;
+    countReset(label?: string): void;
+    debug(...data: any[]): void;
+    dir(item?: any, options?: any): void;
+    dirxml(...data: any[]): void;
+    error(...data: any[]): void;
+    exception(message?: string, ...optionalParams: any[]): void;
+    group(...data: any[]): void;
+    groupCollapsed(...data: any[]): void;
+    groupEnd(): void;
+    info(...data: any[]): void;
+    log(...data: any[]): void;
+    table(tabularData?: any, properties?: string[]): void;
+    time(label?: string): void;
+    timeEnd(label?: string): void;
+    timeLog(label?: string, ...data: any[]): void;
+    timeStamp(label?: string): void;
+    trace(...data: any[]): void;
+    warn(...data: any[]): void;
 }
+
+declare var console: Console;
 
 declare namespace WebAssembly {
     interface Global {
