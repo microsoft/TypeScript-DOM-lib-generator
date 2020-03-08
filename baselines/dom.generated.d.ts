@@ -2681,16 +2681,6 @@ declare var CSSKeyframesRule: {
     new(): CSSKeyframesRule;
 };
 
-interface CSSMarginRule extends CSSRule {
-    readonly name: string;
-    readonly style: CSSStyleDeclaration;
-}
-
-declare var CSSMarginRule: {
-    prototype: CSSMarginRule;
-    new(): CSSMarginRule;
-};
-
 /** A single CSS @media rule. It implements the CSSConditionRule interface, and therefore the CSSGroupingRule and the CSSRule interface with a type value of 4 (CSSRule.MEDIA_RULE). */
 interface CSSMediaRule extends CSSConditionRule {
     readonly media: MediaList;
@@ -2734,7 +2724,6 @@ interface CSSRule {
     readonly IMPORT_RULE: number;
     readonly KEYFRAMES_RULE: number;
     readonly KEYFRAME_RULE: number;
-    readonly MARGIN_RULE: number;
     readonly MEDIA_RULE: number;
     readonly NAMESPACE_RULE: number;
     readonly PAGE_RULE: number;
@@ -2750,7 +2739,6 @@ declare var CSSRule: {
     readonly IMPORT_RULE: number;
     readonly KEYFRAMES_RULE: number;
     readonly KEYFRAME_RULE: number;
-    readonly MARGIN_RULE: number;
     readonly MEDIA_RULE: number;
     readonly NAMESPACE_RULE: number;
     readonly PAGE_RULE: number;
