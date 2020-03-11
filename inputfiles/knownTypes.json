@@ -35,6 +35,7 @@
         "HmacImportParams",
         "HmacKeyAlgorithm",
         "HmacKeyGenParams",
+        "HTMLCollectionOf",
         "IDBKeyPath",
         "IDBValidKey",
         "ImageBitmapRenderingContextSettings",

@@ -480,45 +480,6 @@
                     ]
                 }
             },
-            "HTMLCollectionOf": {
-                "name": "HTMLCollectionOf",
-                "type-parameters": [
-                    {
-                        "name": "T",
-                        "extends": "Element"
-                    }
-                ],
-                "exposed": "Window",
-                "extends": "HTMLCollection",
-                "methods": {
-                    "method": {
-                        "item": {
-                            "getter": 1,
-                            "signature": [
-                                {
-                                    "nullable": 1,
-                                    "override-type": "T",
-                                    "param": [
-                                        {
-                                            "name": "index",
-                                            "type": "unsigned long"
-                                        }
-                                    ]
-                                }
-                            ],
-                            "specs": "html5",
-                            "name": "item"
-                        },
-                        "namedItem": {
-                            "name": "namedItem",
-                            "override-signatures": [
-                                "namedItem(name: string): T | null"
-                            ]
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "EventListenerObject": {
                 "name": "EventListenerObject",
                 "methods": {
@@ -576,7 +537,7 @@
                         "getElementsByClassName": {
                             "name": "getElementsByClassName",
                             "override-signatures": [
-                                "getElementsByClassName(classNames: string): HTMLCollectionOf<Element>"
+                                "getElementsByClassName(classNames: string): HTMLCollection"
                             ]
                         },
                         "closest": {
@@ -2372,6 +2333,17 @@
                         "type": "ModuleImports"
                     }
                 ]
+            },
+            {
+                "deprecated": 1,
+                "new-type": "HTMLCollectionOf",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "extends": "Element"
+                    }
+                ],
+                "override-type": "HTMLCollection<T>"
             }
         ]
     }

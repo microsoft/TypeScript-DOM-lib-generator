@@ -540,15 +540,15 @@
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "override-signatures": [
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
-                                "getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollection<HTMLElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollection<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollection"
                             ]
                         },
                         "getElementsByClassName": {
                             "name": "getElementsByClassName",
                             "override-signatures": [
-                                "getElementsByClassName(classNames: string): HTMLCollectionOf<Element>"
+                                "getElementsByClassName(classNames: string): HTMLCollection"
                             ]
                         },
                         "getElementsByName": {
@@ -606,38 +606,38 @@
                         },
                         "anchors": {
                             "name": "anchors",
-                            "override-type": "HTMLCollectionOf<HTMLAnchorElement>"
+                            "override-type": "HTMLCollection<HTMLAnchorElement>"
                         },
                         "applets": {
                             "name": "applets",
-                            "override-type": "HTMLCollectionOf<HTMLAppletElement>"
+                            "override-type": "HTMLCollection<HTMLAppletElement>"
                         },
                         "embeds": {
                             "name": "embeds",
-                            "override-type": "HTMLCollectionOf<HTMLEmbedElement>"
+                            "override-type": "HTMLCollection<HTMLEmbedElement>"
                         },
                         "forms": {
                             "name": "forms",
-                            "override-type": "HTMLCollectionOf<HTMLFormElement>"
+                            "override-type": "HTMLCollection<HTMLFormElement>"
                         },
                         "fullscreen": {
                             "deprecated": 1
                         },
                         "images": {
                             "name": "images",
-                            "override-type": "HTMLCollectionOf<HTMLImageElement>"
+                            "override-type": "HTMLCollection<HTMLImageElement>"
                         },
                         "links": {
                             "name": "links",
-                            "override-type": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
+                            "override-type": "HTMLCollection<HTMLAnchorElement | HTMLAreaElement>"
                         },
                         "plugins": {
                             "name": "plugins",
-                            "override-type": "HTMLCollectionOf<HTMLEmbedElement>"
+                            "override-type": "HTMLCollection<HTMLEmbedElement>"
                         },
                         "scripts": {
                             "name": "scripts",
-                            "override-type": "HTMLCollectionOf<HTMLScriptElement>"
+                            "override-type": "HTMLCollection<HTMLScriptElement>"
                         },
                         "location": {
                             "read-only": 0,
@@ -1112,7 +1112,7 @@
                     "property": {
                         "selectedOptions": {
                             "name": "selectedOptions",
-                            "override-type": "HTMLCollectionOf<HTMLOptionElement>"
+                            "override-type": "HTMLCollection<HTMLOptionElement>"
                         },
                         "labels": {
                             "name": "labels",
@@ -1135,7 +1135,7 @@
                     "property": {
                         "options": {
                             "name": "options",
-                            "override-type": "HTMLCollectionOf<HTMLOptionElement>"
+                            "override-type": "HTMLCollection<HTMLOptionElement>"
                         }
                     }
                 },
@@ -1183,11 +1183,11 @@
                     "property": {
                         "rows": {
                             "name": "rows",
-                            "override-type": "HTMLCollectionOf<HTMLTableRowElement>"
+                            "override-type": "HTMLCollection<HTMLTableRowElement>"
                         },
                         "tBodies": {
                             "name": "tBodies",
-                            "override-type": "HTMLCollectionOf<HTMLTableSectionElement>"
+                            "override-type": "HTMLCollection<HTMLTableSectionElement>"
                         }
                     }
                 }
@@ -1208,7 +1208,7 @@
                     "property": {
                         "rows": {
                             "name": "rows",
-                            "override-type": "HTMLCollectionOf<HTMLTableRowElement>"
+                            "override-type": "HTMLCollection<HTMLTableRowElement>"
                         }
                     }
                 }
@@ -1232,9 +1232,9 @@
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "override-signatures": [
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
-                                "getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollection<HTMLElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollection<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollection"
                             ]
                         },
                         "msGetRegionContent": {
@@ -1245,6 +1245,41 @@
                         }
                     }
                 }
+            },
+            "HTMLCollection": {
+                "type-parameters": [
+                    {
+                        "name": "E",
+                        "extends": "Element",
+                        "default": "Element"
+                    },
+                    {
+                        "name": "N",
+                        "default": "never"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "item": {
+                            "name": "item",
+                            "override-signatures": [
+                                "item(index: number): E | null"
+                            ]
+                        },
+                        "namedItem": {
+                            "name": "namedItem",
+                            "override-signatures": [
+                                "namedItem(name: string): E | N | null"
+                            ]
+                        }
+                    }
+                },
+                "override-index-signatures": [
+                    "[index: number]: E"
+                ]
+            },
+            "HTMLFormControlsCollection": {
+                "extends": "HTMLCollection<Element, RadioNodeList>"
             },
             "HTMLMediaElement": {
                 "name": "HTMLMediaElement",
@@ -1408,7 +1443,7 @@
             },
             "HTMLOptionsCollection": {
                 "name": "HTMLOptionsCollection",
-                "extends": "HTMLCollectionOf<HTMLOptionElement>"
+                "extends": "HTMLCollection<HTMLOptionElement>"
             },
             "SubtleCrypto": {
                 "name": "SubtleCrypto",
@@ -1776,7 +1811,7 @@
                     "property": {
                         "cells": {
                             "name": "cells",
-                            "override-type": "HTMLCollectionOf<HTMLTableDataCellElement | HTMLTableHeaderCellElement>"
+                            "override-type": "HTMLCollection<HTMLTableDataCellElement | HTMLTableHeaderCellElement>"
                         }
                     }
                 },
@@ -2268,6 +2303,16 @@
                             "override-signatures": [
                                 "setKeyframes(keyframes: Keyframe[] | PropertyIndexedKeyframes | null): void"
                             ]
+                        }
+                    }
+                }
+            },
+            "HTMLMapElement": {
+                "properties": {
+                    "property": {
+                        "areas": {
+                            "name": "areas",
+                            "override-type": "HTMLCollection<HTMLAreaElement>"
                         }
                     }
                 }
