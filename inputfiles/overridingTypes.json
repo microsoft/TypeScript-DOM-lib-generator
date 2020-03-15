@@ -314,7 +314,7 @@
             },
             "CustomElementConstructor": {
                 "override-signatures": [
-                    "new (): HTMLElement"
+                    "new (...par: any[]): HTMLElement"
                 ]
             }
         }
