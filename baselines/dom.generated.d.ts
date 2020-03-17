@@ -6599,7 +6599,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
 }
 
 /** Any HTML element. Some elements directly implement this interface, while others implement it via an interface that inherits it. */
-interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
+interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementCSSInlineStyle, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
     accessKey: string;
     readonly accessKeyLabel: string;
     autocapitalize: string;
@@ -7579,7 +7579,7 @@ declare var HTMLMarqueeElement: {
 };
 
 interface HTMLMediaElementEventMap extends HTMLElementEventMap {
-    "encrypted": MediaEncryptedEvent;
+    "encrypted": Event;
     "waitingforkey": Event;
 }
 
@@ -7636,7 +7636,7 @@ interface HTMLMediaElement extends HTMLElement {
      * Gets the current network activity for the element.
      */
     readonly networkState: number;
-    onencrypted: ((this: HTMLMediaElement, ev: MediaEncryptedEvent) => any) | null;
+    onencrypted: ((this: HTMLMediaElement, ev: Event) => any) | null;
     onwaitingforkey: ((this: HTMLMediaElement, ev: Event) => any) | null;
     /**
      * Gets a flag that specifies whether playback is paused.
@@ -19365,14 +19365,12 @@ interface HTMLElementTagNameMap {
     "area": HTMLAreaElement;
     "article": HTMLElement;
     "aside": HTMLElement;
-    "audio": HTMLAudioElement;
     "b": HTMLElement;
     "base": HTMLBaseElement;
     "basefont": HTMLBaseFontElement;
     "bdi": HTMLElement;
     "bdo": HTMLElement;
     "blockquote": HTMLQuoteElement;
-    "body": HTMLBodyElement;
     "br": HTMLBRElement;
     "button": HTMLButtonElement;
     "canvas": HTMLCanvasElement;
@@ -19402,12 +19400,6 @@ interface HTMLElementTagNameMap {
     "form": HTMLFormElement;
     "frame": HTMLFrameElement;
     "frameset": HTMLFrameSetElement;
-    "h1": HTMLHeadingElement;
-    "h2": HTMLHeadingElement;
-    "h3": HTMLHeadingElement;
-    "h4": HTMLHeadingElement;
-    "h5": HTMLHeadingElement;
-    "h6": HTMLHeadingElement;
     "head": HTMLHeadElement;
     "header": HTMLElement;
     "hgroup": HTMLElement;
@@ -19471,11 +19463,9 @@ interface HTMLElementTagNameMap {
     "time": HTMLTimeElement;
     "title": HTMLTitleElement;
     "tr": HTMLTableRowElement;
-    "track": HTMLTrackElement;
     "u": HTMLElement;
     "ul": HTMLUListElement;
     "var": HTMLElement;
-    "video": HTMLVideoElement;
     "wbr": HTMLElement;
 }
 

@@ -2239,7 +2239,7 @@
                         "cloneNode": {
                             "name": "cloneNode",
                             "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDialogElement"
+                                "cloneNode(deep?: boolean): HTMLVideoElement"
                             ]
                         }
                     }
@@ -2250,7 +2250,17 @@
                     {
                         "name": "dialog"
                     }
-                ]
+                ],
+                "methods": {
+                    "method": {
+                        "cloneNode": {
+                            "name": "cloneNode",
+                            "override-signatures": [
+                                "cloneNode(deep?: boolean): HTMLDialogElement"
+                            ]
+                        }
+                    }
+                }
             },
             "EXT_blend_minmax": {
                 "override-exposed": "Window Worker"
