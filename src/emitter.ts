@@ -1061,6 +1061,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitNamespace(namespace: Browser.Interface) {
+        if (namespace.comment) {
+            printer.printLine(`/** ${namespace.comment} */`);
+        }
+
         if (namespacesAsInterfaces.includes(namespace.name)) {
             const name = namespace.name[0].toUpperCase() + namespace.name.slice(1);
             emitInterface({ ...namespace, name });

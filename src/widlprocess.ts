@@ -255,9 +255,14 @@ function convertCallbackFunctions(c: webidl2.CallbackType): Browser.CallbackFunc
 }
 
 function convertArgument(arg: webidl2.Argument): Browser.Param {
+    const allowNull = hasExtAttr(arg.extAttrs, "TreatNullAs");
+    const idlType = convertIdlType(arg.idlType);
+    if (allowNull) {
+        idlType.nullable = 1;
+    }
     return {
         name: arg.name,
-        ...convertIdlType(arg.idlType),
+        ...idlType,
         optional: arg.optional ? 1 : undefined,
         variadic: arg.variadic ? 1 : undefined,
     }

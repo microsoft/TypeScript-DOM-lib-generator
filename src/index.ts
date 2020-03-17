@@ -1,7 +1,7 @@
 import * as Browser from "./types";
 import * as fs from "fs";
 import * as path from "path";
-import { merge, resolveExposure, markAsDeprecated, mapToArray } from "./helpers";
+import { merge, resolveExposure, markAsDeprecated, mapToArray, arrayToMap } from "./helpers";
 import { Flavor, emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
 import { getExposedTypes } from "./expose";
@@ -72,7 +72,7 @@ function emitDom() {
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
     const comments = require(path.join(inputFolder, "comments.json"));
-    const documentationFromMDN = apiDescriptionsToIdl(require(path.join(inputFolder, 'mdn', 'apiDescriptions.json')));
+    const documentationFromMDN = require(path.join(inputFolder, 'mdn', 'apiDescriptions.json'));
     const removedItems = require(path.join(inputFolder, "removedTypes.json"));
     const idlSources: any[] = require(path.join(inputFolder, "idlSources.json"));
     const widlStandardTypes = idlSources.map(convertWidl);
@@ -99,19 +99,14 @@ function emitDom() {
         }
     }
 
-    function apiDescriptionsToIdl(descriptions: Record<string, string>) {
-        const idl: Browser.WebIdl = {
-            interfaces: {
-                interface: {}
+    function mergeApiDescriptions(idl: Browser.WebIdl, descriptions: Record<string, string>) {
+        const namespaces = arrayToMap(idl.namespaces!, i => i.name, i => i);
+        for (const [key, value] of Object.entries(descriptions)) {
+            const target = idl.interfaces!.interface[key] || namespaces[key];
+            if (target) {
+                target.comment = transformVerbosity(key, value);
             }
-        };
-
-        Object.keys(descriptions).forEach(name => {
-            idl.interfaces!.interface[name] = {
-                comment: transformVerbosity(name, descriptions[name]),
-            } as Browser.Interface;
-        });
-
+        }
         return idl;
     }
 
@@ -177,8 +172,8 @@ function emitDom() {
         }
     }
 
-    webidl = merge(webidl, documentationFromMDN);
     webidl = prune(webidl, removedItems);
+    webidl = mergeApiDescriptions(webidl, documentationFromMDN);
     webidl = merge(webidl, addedItems);
     webidl = merge(webidl, overriddenItems);
     webidl = merge(webidl, comments);
