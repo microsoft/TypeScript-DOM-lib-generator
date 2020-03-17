@@ -416,6 +416,16 @@
                             "type": "MediaEncryptedEvent"
                         }
                     ]
+                },
+                "methods": {
+                    "method": {
+                        "cloneNode": {
+                            "name": "cloneNode",
+                            "override-signatures": [
+                                "cloneNode(deep?: boolean): HTMLMediaElement"
+                            ]
+                        }
+                    }
                 }
             },
             "CSSStyleDeclaration": {
@@ -1277,7 +1287,17 @@
                     {
                         "name": "audio"
                     }
-                ]
+                ],
+                "methods": {
+                    "method": {
+                        "cloneNode": {
+                            "name": "cloneNode",
+                            "override-signatures": [
+                                "cloneNode(deep?: boolean): HTMLAudioElement"
+                            ]
+                        }
+                    }
+                }
             },
             "HTMLBaseElement": {
                 "element": [
@@ -1301,7 +1321,17 @@
                     {
                         "name": "body"
                     }
-                ]
+                ],
+                "methods": {
+                    "method": {
+                        "cloneNode": {
+                            "name": "cloneNode",
+                            "override-signatures": [
+                                "cloneNode(deep?: boolean): HTMLBodyElement"
+                            ]
+                        }
+                    }
+                }
             },
             "HTMLBRElement": {
                 "element": [
@@ -1607,7 +1637,17 @@
                     {
                         "name": "h6"
                     }
-                ]
+                ],
+                "methods": {
+                    "method": {
+                        "cloneNode": {
+                            "name": "cloneNode",
+                            "override-signatures": [
+                                "cloneNode(deep?: boolean): HTMLHeadingElement"
+                            ]
+                        }
+                    }
+                }
             },
             "HTMLHRElement": {
                 "element": [
@@ -2232,7 +2272,17 @@
                     {
                         "name": "track"
                     }
-                ]
+                ],
+                "methods": {
+                    "method": {
+                        "cloneNode": {
+                            "name": "cloneNode",
+                            "override-signatures": [
+                                "cloneNode(deep?: boolean): HTMLTrackElement"
+                            ]
+                        }
+                    }
+                }
             },
             "HTMLUListElement": {
                 "element": [
@@ -3401,19 +3451,6 @@
                     }
                 }
             },
-            "HTMLAudioElement": {
-                "name": "HTMLAudioElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLAudioElement"
-                            ]
-                        }
-                    }
-                }
-            },
             "HTMLBaseFontElement": {
                 "name": "HTMLBaseFontElement",
                 "methods": {
@@ -3422,19 +3459,6 @@
                             "name": "cloneNode",
                             "override-signatures": [
                                 "cloneNode(deep?: boolean): HTMLBaseFontElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLBodyElement": {
-                "name": "HTMLBodyElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLBodyElement"
                             ]
                         }
                     }
@@ -3544,19 +3568,6 @@
                     }
                 }
             },
-            "HTMLHeadingElement": {
-                "name": "HTMLHeadingElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLHeadingElement"
-                            ]
-                        }
-                    }
-                }
-            },
             "HTMLLegendElement": {
                 "name": "HTMLLegendElement",
                 "methods": {
@@ -3578,19 +3589,6 @@
                             "name": "cloneNode",
                             "override-signatures": [
                                 "cloneNode(deep?: boolean): HTMLMarqueeElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLMediaElement": {
-                "name": "HTMLMediaElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMediaElement"
                             ]
                         }
                     }
@@ -3674,19 +3672,6 @@
                     }
                 }
             },
-            "HTMLTrackElement": {
-                "name": "HTMLTrackElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTrackElement"
-                            ]
-                        }
-                    }
-                }
-            },
             "HTMLUnknownElement": {
                 "name": "HTMLUnknownElement",
                 "methods": {
@@ -3695,19 +3680,6 @@
                             "name": "cloneNode",
                             "override-signatures": [
                                 "cloneNode(deep?: boolean): HTMLUnknownElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLVideoElement": {
-                "name": "HTMLVideoElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLVideoElement"
                             ]
                         }
                     }
