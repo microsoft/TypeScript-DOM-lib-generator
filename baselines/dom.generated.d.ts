@@ -19280,7 +19280,7 @@ interface BlobCallback {
 }
 
 interface CustomElementConstructor {
-    new (): HTMLElement;
+    new (...par: any[]): HTMLElement;
 }
 
 interface DecodeErrorCallback {
