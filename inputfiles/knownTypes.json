@@ -56,7 +56,6 @@
         "RTCCertificateExpiration",
         "RTCDtlsParameters",
         "RTCDtlsRole",
-        "RTCErrorDetailType",
         "RTCIceCandidateAttributes",
         "RTCIceCandidatePairStats",
         "RTCIceGatherCandidate",

@@ -95,6 +95,10 @@
                             "type": "Event"
                         },
                         {
+                            "name": "change",
+                            "type": "Event"
+                        },
+                        {
                             "name": "drag",
                             "type": "DragEvent"
                         },
@@ -163,6 +167,10 @@
                             "type": "MouseEvent"
                         },
                         {
+                            "name": "pause",
+                            "type": "Event"
+                        },
+                        {
                             "name": "scroll",
                             "type": "Event"
                         },
@@ -229,18 +237,14 @@
                     "sharedworker",
                     "all"
                 ]
-            },
-            "WorkerType": {
-                "name": "WorkerType",
-                "value": [
-                    "classic",
-                    "module"
-                ]
             }
         }
     },
     "interfaces": {
         "interface": {
+            "AudioTrack": {
+                "exposed": ""
+            },
             "SVGSVGElement": {
                 "name": "SVGSVGElement",
                 "methods": {
@@ -308,10 +312,7 @@
                         }
                     }
                 },
-                "extends": "SVGElement",
-                "implements": [
-                    "SVGFilterPrimitiveStandardAttributes"
-                ]
+                "extends": "SVGElement"
             },
             "AbortSignal": {
                 "events": {
@@ -361,119 +362,25 @@
                     ]
                 }
             },
+            "BroadcastChannel": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
             "DeviceMotionEventAcceleration": {
                 "no-interface-object": 1
             },
             "DeviceMotionEventRotationRate": {
                 "no-interface-object": 1
-            },
-            "RTCError": {
-                "specs": "webrtc",
-                "constructor": {
-                    "specs": "webrtc",
-                    "signature": [
-                        {
-                            "param-min-required": 0,
-                            "type-original": "RTCError",
-                            "type": "RTCError",
-                            "param": [
-                                {
-                                    "type-original": "DOMString",
-                                    "optional": 1,
-                                    "name": "errorDetail",
-                                    "type": "DOMString"
-                                },
-                                {
-                                    "type-original": "DOMString",
-                                    "optional": 1,
-                                    "name": "message",
-                                    "type": "DOMString"
-                                }
-                            ]
-                        }
-                    ],
-                    "name": "RTCError"
-                },
-                "properties": {
-                    "property": {
-                        "errorDetail": {
-                            "type-original": "DOMString",
-                            "nullable": 0,
-                            "default": "\"\"",
-                            "specs": "webrtc",
-                            "name": "errorDetail",
-                            "type": "DOMString"
-                        },
-                        "sdpLineNumber": {
-                            "type-original": "unsigned short",
-                            "nullable": 0,
-                            "default": "0",
-                            "specs": "webrtc",
-                            "name": "sdpLineNumber",
-                            "type": "unsigned short"
-                        },
-                        "httpRequestStatusCode": {
-                            "type-original": "unsigned short",
-                            "nullable": 0,
-                            "default": "0",
-                            "specs": "webrtc",
-                            "name": "httpRequestStatusCode",
-                            "type": "unsigned short"
-                        },
-                        "sctpCauseCode": {
-                            "type-original": "unsigned short",
-                            "nullable": 0,
-                            "default": "0",
-                            "specs": "webrtc",
-                            "name": "sctpCauseCode",
-                            "type": "unsigned short"
-                        },
-                        "receivedAlert": {
-                            "type-original": "unsigned long",
-                            "nullable": 1,
-                            "default": "null",
-                            "specs": "webrtc",
-                            "name": "receivedAlert",
-                            "type": "unsigned long"
-                        },
-                        "sentAlert": {
-                            "type-original": "unsigned long",
-                            "nullable": 1,
-                            "default": "null",
-                            "specs": "webrtc",
-                            "name": "sentAlert",
-                            "type": "unsigned long"
-                        },
-                        "message": {
-                            "type-original": "DOMString",
-                            "nullable": 0,
-                            "default": "\"\"",
-                            "specs": "webrtc",
-                            "name": "message",
-                            "type": "DOMString"
-                        },
-                        "name": {
-                            "type-original": "DOMString",
-                            "nullable": 0,
-                            "default": "RTCError",
-                            "specs": "webrtc",
-                            "name": "name",
-                            "type": "DOMString"
-                        }
-                    }
-                },
-                "anonymous-methods": {
-                    "method": []
-                },
-                "name": "RTCError",
-                "constants": {
-                    "constant": {}
-                },
-                "methods": {
-                    "method": {}
-                },
-                "exposed": "Window",
-                "extends": "Error"
             },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
@@ -501,58 +408,56 @@
                     }
                 }
             },
+            "HTMLMediaElement": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "encrypted",
+                            "type": "MediaEncryptedEvent"
+                        }
+                    ]
+                }
+            },
             "CSSStyleDeclaration": {
                 "name": "CSSStyleDeclaration",
                 "properties": {
                     "property": {
+                        "pointerEvents": {
+                            "name": "pointerEvents",
+                            "type": "CSSOMString"
+                        },
+                        "resize": {
+                            "name": "resize",
+                            "type": "CSSOMString"
+                        },
                         "touchAction": {
                             "deprecated": 0
                         },
                         "userSelect": {
                             "name": "userSelect",
                             "type": "CSSOMString"
+                        },
+                        "webkitAppearance": {
+                            "name": "webkitAppearance",
+                            "type": "CSSOMString",
+                            "deprecated": 1
+                        },
+                        "webkitUserSelect": {
+                            "name": "webkitUserSelect",
+                            "type": "CSSOMString",
+                            "deprecated": 1
+                        },
+                        "webkitTapHighlightColor": {
+                            "name": "webkitTapHighlightColor",
+                            "type": "CSSOMString"
+                        },
+                        "zoom": {
+                            "name": "zoom",
+                            "type": "CSSOMString",
+                            "deprecated": 1
                         }
                     }
                 }
-            },
-            "ImageBitmapOptions": {
-                "flavor": "All",
-                "name": "ImageBitmapOptions",
-                "properties": {
-                    "property": {
-                        "imageOrientation": {
-                            "name": "imageOrientation",
-                            "override-type": "\"none\" | \"flipY\"",
-                            "required": 0
-                        },
-                        "premultiplyAlpha": {
-                            "name": "premultiplyAlpha",
-                            "override-type": "\"none\" | \"premultiply\" | \"default\"",
-                            "required": 0
-                        },
-                        "colorSpaceConversion": {
-                            "name": "colorSpaceConversion",
-                            "override-type": "\"none\" | \"default\"",
-                            "required": 0
-                        },
-                        "resizeWidth": {
-                            "name": "resizeWidth",
-                            "override-type": "number",
-                            "required": 0
-                        },
-                        "resizeHeight": {
-                            "name": "resizeHeight",
-                            "override-type": "number",
-                            "required": 0
-                        },
-                        "resizeQuality": {
-                            "name": "resizeQuality",
-                            "override-type": "\"pixelated\" | \"low\" | \"medium\" | \"high\"",
-                            "required": 0
-                        }
-                    }
-                },
-                "no-interface-object": "1"
             },
             "Window": {
                 "name": "Window",
@@ -1182,7 +1087,7 @@
                         },
                         {
                             "name": "error",
-                            "type": "SpeechRecognitionError"
+                            "type": "Event"
                         },
                         {
                             "name": "end",
@@ -1227,7 +1132,6 @@
             },
             "SVGElement": {
                 "implements": [
-                    "ElementCSSInlineStyle",
                     "GlobalEventHandlers",
                     "DocumentAndElementEventHandlers"
                 ],
@@ -1262,6 +1166,20 @@
                             ]
                         }
                     }
+                }
+            },
+            "TextTrackList": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "addtrack",
+                            "type": "TrackEvent"
+                        },
+                        {
+                            "name": "removetrack",
+                            "type": "TrackEvent"
+                        }
+                    ]
                 }
             },
             "DOMMatrixReadOnly": {
@@ -1331,6 +1249,13 @@
                     }
                 }
             },
+            "HTMLAudioElement": {
+                "element": [
+                    {
+                        "name": "audio"
+                    }
+                ]
+            },
             "HTMLBaseElement": {
                 "element": [
                     {
@@ -1347,6 +1272,13 @@
                         }
                     }
                 }
+            },
+            "HTMLBodyElement": {
+                "element": [
+                    {
+                        "name": "body"
+                    }
+                ]
             },
             "HTMLBRElement": {
                 "element": [
@@ -1631,6 +1563,28 @@
                         }
                     }
                 }
+            },
+            "HTMLHeadingElement": {
+                "element": [
+                    {
+                        "name": "h1"
+                    },
+                    {
+                        "name": "h2"
+                    },
+                    {
+                        "name": "h3"
+                    },
+                    {
+                        "name": "h4"
+                    },
+                    {
+                        "name": "h5"
+                    },
+                    {
+                        "name": "h6"
+                    }
+                ]
             },
             "HTMLHRElement": {
                 "element": [
@@ -2250,6 +2204,13 @@
                     }
                 }
             },
+            "HTMLTrackElement": {
+                "element": [
+                    {
+                        "name": "track"
+                    }
+                ]
+            },
             "HTMLUListElement": {
                 "element": [
                     {
@@ -2267,10 +2228,10 @@
                     }
                 }
             },
-            "HTMLDialogElement": {
+            "HTMLVideoElement": {
                 "element": [
                     {
-                        "name": "dialog"
+                        "name": "video"
                     }
                 ],
                 "methods": {
@@ -2284,19 +2245,12 @@
                     }
                 }
             },
-            "CSS": {
-                "name": "CSS",
-                "methods": {
-                    "method": {
-                        "escape": {
-                            "name": "escape",
-                            "override-signatures": [
-                                "escape(value: string): string"
-                            ],
-                            "static": 1
-                        }
+            "HTMLDialogElement": {
+                "element": [
+                    {
+                        "name": "dialog"
                     }
-                }
+                ]
             },
             "EXT_blend_minmax": {
                 "override-exposed": "Window Worker"
@@ -3267,6 +3221,16 @@
                     }
                 }
             },
+            "SharedWorker": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "connect",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
             "TextDecoderStream": {
                 "properties": {
                     "property": {
@@ -3988,6 +3952,40 @@
                     }
                 }
             },
+            "VideoTrack": {
+                "exposed": ""
+            },
+            "WebSocket": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "close",
+                            "type": "CloseEvent"
+                        },
+                        {
+                            "name": "error",
+                            "type": "Event"
+                        }
+                    ]
+                }
+            },
+            "WorkerGlobalScope": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "rejectionhandled",
+                            "type": "PromiseRejectionEvent"
+                        },
+                        {
+                            "name": "unhandledrejection",
+                            "type": "PromiseRejectionEvent"
+                        }
+                    ]
+                },
+                "implements": [
+                    "WindowConsole"
+                ]
+            },
             "XMLDocument": {
                 "name": "XMLDocument",
                 "methods": {
@@ -4064,7 +4062,7 @@
             },
             {
                 "new-type": "Transferable",
-                "override-type": "ArrayBuffer | MessagePort | ImageBitmap"
+                "override-type": "ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas"
             },
             {
                 "new-type": "RTCIceGatherCandidate",

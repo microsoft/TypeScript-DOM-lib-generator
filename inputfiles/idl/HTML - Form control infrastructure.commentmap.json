@@ -7,6 +7,7 @@
     "cva-checkvalidity": "Returns true if the element's value has no validity problems; false otherwise. Fires an invalid event at the element in the latter case.",
     "cva-reportvalidity": "Returns true if the element's value has no validity problems; otherwise, returns false, fires an invalid event at the element, and (if the event isn't canceled) reports the problem to the user.",
     "cva-validationmessage": "Returns the error message that would be shown to the user if the element was to be checked for validity.",
+    "submitevent-submitter": "Returns the element representing the submit button that triggered the form submission, or null if the submission was not triggered by a button.",
     "formdataevent-formdata": "Returns a FormData object representing names and values of elements associated to the target form. Operations on the FormData object will affect form data to be submitted.",
     "selectionmode-select": "Selects the newly inserted text.",
     "selectionmode-start": "Moves the selection to just before the inserted text.",

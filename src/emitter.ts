@@ -343,7 +343,6 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
             return baseTypeConversionMap.get(objDomType)!;
         }
         switch (objDomType) {
-            case "CustomElementConstructor": return "Function";
             case "DOMHighResTimeStamp": return "number";
             case "DOMTimeStamp": return "number";
             case "EventListener": return "EventListenerOrEventListenerObject";
@@ -562,7 +561,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitEnum(e: Browser.Enum) {
-        printer.printLine(`type ${e.name} = ${e.value.map(v => `"${v}"`).join(" | ")};`);
+        const values = e.value.slice().sort();
+        printer.printLine(`type ${e.name} = ${values.map(v => `"${v}"`).join(" | ")};`);
     }
 
     function emitEnums() {
@@ -870,9 +870,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
         printer.print(`interface ${getNameWithTypeParameter(i, processedIName)}`);
 
-        const finalExtends = distinct([i.extends || "Object"].concat((i.implements || []).sort())
+        const finalExtends = [i.extends || "Object"]
+            .concat((i.implements || []).sort())
             .filter(i => i !== "Object")
-            .map(processIName));
+            .map(processIName);
 
         if (finalExtends.length) {
             printer.print(` extends ${finalExtends.join(", ")}`);
@@ -1056,6 +1057,9 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function emitNamespace(namespace: Browser.Interface) {
+        if (namespace.comment) {
+            printer.printLine(`/** ${namespace.comment} */`);
+        }
         printer.printLine(`declare namespace ${namespace.name} {`);
         printer.increaseIndent();
 

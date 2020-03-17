@@ -1,5 +1,9 @@
 [
     {
+        "url": "https://www.w3.org/TR/beacon/",
+        "title": "Beacon"
+    },
+    {
         "url": "https://www.w3.org/TR/clipboard-apis/",
         "title": "Clipboard"
     },
@@ -35,6 +39,10 @@
     {
         "url": "https://www.w3.org/TR/css-color-3/",
         "title": "CSS Color"
+    },
+    {
+        "url": "https://drafts.csswg.org/css-conditional-3/",
+        "title": "CSS Conditional Rules"
     },
     {
         "url": "https://www.w3.org/TR/fill-stroke-3/",
@@ -75,6 +83,10 @@
     {
         "url": "https://www.w3.org/TR/css-multicol-1/",
         "title": "CSS Multi-column Layout"
+    },
+    {
+        "url": "https://drafts.csswg.org/cssom/",
+        "title": "CSS Object Model"
     },
     {
         "url": "https://drafts.csswg.org/cssom-view/",
@@ -165,10 +177,6 @@
         "title": "DOM Parsing and Serialization"
     },
     {
-        "url": "https://wiki.whatwg.org/wiki/DOM_XPath",
-        "title": "DOM XPath"
-    },
-    {
         "url": "https://encoding.spec.whatwg.org/",
         "title": "Encoding"
     },
@@ -211,6 +219,10 @@
     {
         "url": "https://www.w3.org/TR/hr-time-2/",
         "title": "High Resolution Time"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/browsing-the-web.html",
+        "title": "HTML - Browsing the Web"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/canvas.html",
@@ -277,6 +289,10 @@
         "title": "HTML - Links"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/media.html",
+        "title": "HTML - Media"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/obsolete.html",
         "title": "HTML - Obsolete features",
         "deprecated": true
@@ -289,6 +305,10 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/scripting.html",
         "title": "HTML - Scripting"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/sections.html",
+        "title": "HTML - Sections"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/semantics.html",
@@ -327,8 +347,16 @@
         "title": "HTML - Web application APIs"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/web-sockets.html",
+        "title": "HTML - Web sockets"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/webstorage.html",
         "title": "HTML - Web storage"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/workers.html",
+        "title": "HTML - Web workers"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/interaction.html",
@@ -349,6 +377,10 @@
     {
         "url": "https://w3c.github.io/mediacapture-main/",
         "title": "Media Capture and Streams"
+    },
+    {
+        "url": "https://w3c.github.io/media-playback-quality/",
+        "title": "Media Playback Quality"
     },
     {
         "url": "https://www.w3.org/TR/media-source/",
@@ -397,6 +429,10 @@
     {
         "url": "https://www.w3.org/TR/screen-orientation/",
         "title": "Screen Orientation"
+    },
+    {
+        "url": "https://www.w3.org/TR/secure-contexts/",
+        "title": "Secure Contexts"
     },
     {
         "url": "https://www.w3.org/TR/selection-api/",

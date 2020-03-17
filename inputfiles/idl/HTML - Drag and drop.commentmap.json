@@ -15,7 +15,7 @@
     "datatransferitemlist-add": "Adds a new entry for the given data to the drag data store. If the data is plain text then a type string has to be provided also.",
     "datatransferitem-kind": "Returns the drag data item kind, one of: \"string\", \"file\".",
     "datatransferitem-type": "Returns the drag data item type string.",
-    "datatransferitem-getasstring": "Invokes the callback with the string data as the argument, if the drag data item kind is Plain Unicode string.",
+    "datatransferitem-getasstring": "Invokes the callback with the string data as the argument, if the drag data item kind is text.",
     "datatransferitem-getasfile": "Returns a File object, if the drag data item kind is File.",
     "dragevent-datatransfer": "Returns the DataTransfer object for the event.",
     "draggable": "Returns true if the element is draggable; otherwise, returns false.\n\nCan be set, to override the default and set the draggable content attribute."

@@ -1,7 +1,8 @@
 {
     "form-elements": "Returns an HTMLFormControlsCollection of the form controls in the form (excluding image buttons for historical reasons).",
     "form-length": "Returns the number of form controls in the form (excluding image buttons for historical reasons).",
-    "form-submit": "Submits the form.",
+    "form-submit": "Submits the form, bypassing interactive constraint validation and without firing a submit event.",
+    "form-requestsubmit": "Requests to submit the form. Unlike submit(), this method includes interactive constraint validation and firing a submit event, either of which can cancel submission.\n\nThe submitter argument can be used to point to a specific submit button, whose formaction, formenctype, formmethod, formnovalidate, and formtarget attributes can impact submission. Additionally, the submitter will be included when constructing the entry list for submission; normally, buttons are excluded.",
     "form-reset": "Resets the form.",
     "form-checkvalidity": "Returns true if the form's controls are all valid; otherwise, returns false.",
     "form-reportvalidity": "Returns true if the form's controls are all valid; otherwise, returns false and informs the user.",

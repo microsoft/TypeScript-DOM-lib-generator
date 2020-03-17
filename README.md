@@ -51,17 +51,48 @@ The common steps to send a pull request are:
 3. Update the files in the `baselines` folder using the newly generated files
    under `generated` folder (`npm run baseline-accept`).
 
-### When should a DOM API be included here?
+### What are the TypeScript team's heuristics for PRs to the DOM APIs
 
-A feature is considered highly experimental if a DOM API lacks multiple implementations or a formal specification from W3C or WHATWG. Such a feature belongs on [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped#readme).
-When it gets multiple implementations and a proper specification, it can be added here and removed from DefinitelyTyped.
+Changes to this repo can have pretty drastic ecosystem effects, because these types are included by default in TypeScript. 
+Due to this, we tend to be quite conservative with our approach to introducing changes.
+To give you a sense of whether we will accept changes, you can use these heuristics to know up-front if we'll be open to merging. 
 
+#### Fixes
+
+> For example, changing a type on a field, or nullability references
+
+- Does the PR show examples of the changes being used in spec examples or reputable websites like MDN?
+- Did this change come from an IDL update?
+- Does the change appear to be high-impact on a well-used API?
+- Would the changes introduce a lot of breaking changes to existing code? For example the large corpus of typed code in DefinitelyTyped.
+
+#### Additions
+
+> For example, adding a new spec or subsection via a new or updated IDL file
+
+- Does the new objects or fields show up in [mdn/browser-compat-data](https://github.com/mdn/browser-compat-data)? If not, it's likely too soon.
+- Is the IDL source from WHATWG? 
+    - Are the additions available in at least two of Firefox, Safari and Chromium?
+- Is the IDL source from W3C? 
+    - What stage of the [W3C process](https://en.wikipedia.org/wiki/World_Wide_Web_Consortium#Specification_maturation) is the proposal for these changes: We aim for Proposed recommendation, but can accept Candidate recommendation for stable looking proposals.
+    - If it's at Working draft the additions available in all three of Firefox, Safari and Chromium
+- Could any types added at the global scope have naming conflicts?
+- Are the new features going to be used by a lot of people?
+
+#### Removals
+
+> For example, removing a browser-specific section of code
+
+- Do the removed objects or fields show up in [mdn/browser-compat-data](https://github.com/mdn/browser-compat-data)? If so, are they marked as deprecated?
+- Does an internet search for the fields show results in blogs/recommendations?
+- When was the deprecation (this can be hard to find) but was it at least 2 years ago if so?
+
+# This repo
 
 ## Code Structure
 
 - `src/index.ts`: handles the emitting of the `.d.ts` files.
 - `src/test.ts`: verifies the output by comparing the `generated/` and `baseline/` contents.
-
 
 ## Input Files
 
