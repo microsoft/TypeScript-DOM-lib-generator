@@ -3991,10 +3991,7 @@
                             "type": "PromiseRejectionEvent"
                         }
                     ]
-                },
-                "implements": [
-                    "WindowConsole"
-                ]
+                }
             },
             "XMLDocument": {
                 "name": "XMLDocument",
