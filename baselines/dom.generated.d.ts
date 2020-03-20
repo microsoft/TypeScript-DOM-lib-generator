@@ -4533,10 +4533,6 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      */
     onreadystatechange: ((this: Document, ev: Event) => any) | null;
     onvisibilitychange: ((this: Document, ev: Event) => any) | null;
-    /**
-     * Returns document's origin.
-     */
-    readonly origin: string;
     readonly ownerDocument: null;
     /**
      * Return an HTMLCollection of the embed elements in the Document.
@@ -5072,7 +5068,7 @@ interface ElementEventMap {
 }
 
 /** Element is the most general base class from which all objects in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element. */
-interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTypeChildNode, ParentNode, Slotable {
+interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTypeChildNode, ParentNode, Slottable {
     readonly assignedSlot: HTMLSlotElement | null;
     readonly attributes: NamedNodeMap;
     /**
@@ -15117,7 +15113,7 @@ declare var SharedWorker: {
     new(scriptURL: string, options?: string | WorkerOptions): SharedWorker;
 };
 
-interface Slotable {
+interface Slottable {
     readonly assignedSlot: HTMLSlotElement | null;
 }
 
@@ -15559,7 +15555,7 @@ declare var SyncManager: {
 };
 
 /** The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children. */
-interface Text extends CharacterData, Slotable {
+interface Text extends CharacterData, Slottable {
     readonly assignedSlot: HTMLSlotElement | null;
     /**
      * Returns the combined data of all direct Text node siblings.
