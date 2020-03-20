@@ -257,6 +257,10 @@
         "title": "HTML - Drag and drop"
     },
     {
+        "url": "https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html",
+        "title": "HTML - Dynamic markup insertion"
+    },
+    {
         "url": "https://html.spec.whatwg.org/multipage/edits.html",
         "title": "HTML - Edits"
     },

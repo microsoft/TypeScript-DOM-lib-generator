@@ -3922,7 +3922,16 @@ declare var DOMMatrixReadOnly: {
 
 /** Provides the ability to parse XML or HTML source code from a string into a DOM Document. */
 interface DOMParser {
-    parseFromString(str: string, type: SupportedType): Document;
+    /**
+     * Parses string using either the HTML or XML parser, according to type, and returns the resulting Document. type can be "text/html" (which will invoke the HTML parser), or any of "text/xml", "application/xml", "application/xhtml+xml", or "image/svg+xml" (which will invoke the XML parser).
+     * 
+     * For the XML parser, if string can be parsed, then the returned Document will contain elements describing the resulting error.
+     * 
+     * Note that script elements are not evaluated during parsing, and the resulting document's encoding will always be UTF-8.
+     * 
+     * Values other than the above for type will cause a TypeError exception to be thrown.
+     */
+    parseFromString(string: string, type: DOMParserSupportedType): Document;
 }
 
 declare var DOMParser: {
@@ -20074,6 +20083,7 @@ type ColorSpaceConversion = "default" | "none";
 type CompositeOperation = "accumulate" | "add" | "replace";
 type CompositeOperationOrAuto = "accumulate" | "add" | "auto" | "replace";
 type CredentialMediationRequirement = "optional" | "required" | "silent";
+type DOMParserSupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
 type DirectionSetting = "" | "lr" | "rl";
 type DisplayCaptureSurfaceType = "application" | "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
@@ -20174,7 +20184,6 @@ type ServiceWorkerState = "activated" | "activating" | "installed" | "installing
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type ShadowRootMode = "closed" | "open";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
-type SupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
 type TouchType = "direct" | "stylus";
