@@ -254,12 +254,6 @@
                             "override-signatures": [
                                 "animationsPaused(): boolean"
                             ]
-                        },
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGSVGElement"
-                            ]
                         }
                     }
                 }
@@ -302,12 +296,6 @@
                             "name": "setStdDeviation",
                             "override-signatures": [
                                 "setStdDeviation(stdDeviationX: number, stdDeviationY: number): void"
-                            ]
-                        },
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEDropShadowElement"
                             ]
                         }
                     }
@@ -396,17 +384,7 @@
                     {
                         "name": "img"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLImageElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLMediaElement": {
                 "events": {
@@ -416,16 +394,6 @@
                             "type": "MediaEncryptedEvent"
                         }
                     ]
-                },
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMediaElement"
-                            ]
-                        }
-                    }
                 }
             },
             "CSSStyleDeclaration": {
@@ -680,12 +648,6 @@
                             "override-signatures": [
                                 "insertAdjacentText(where: InsertPosition, text: string): void"
                             ]
-                        },
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): Element"
-                            ]
                         }
                     }
                 },
@@ -718,12 +680,6 @@
                                 "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement",
                                 "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
-                            ]
-                        },
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): Document"
                             ]
                         }
                     }
@@ -791,17 +747,7 @@
                     {
                         "name": "iframe"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLIFrameElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTextAreaElement": {
                 "name": "HTMLTextAreaElement",
@@ -810,16 +756,6 @@
                         "minLength": {
                             "name": "minLength",
                             "override-type": "number"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTextAreaElement"
-                            ]
                         }
                     }
                 }
@@ -1088,12 +1024,6 @@
                             "override-signatures": [
                                 "getElementById(elementId: string): HTMLElement | null"
                             ]
-                        },
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): DocumentFragment"
-                            ]
                         }
                     }
                 },
@@ -1167,17 +1097,7 @@
                 "implements": [
                     "GlobalEventHandlers",
                     "DocumentAndElementEventHandlers"
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "Text": {
                 "name": "Text",
@@ -1187,16 +1107,6 @@
                             "name": "assignedSlot",
                             "read-only": 1,
                             "override-type": "HTMLSlotElement | null"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): Text"
-                            ]
                         }
                     }
                 }
@@ -1253,187 +1163,77 @@
                     {
                         "name": "a"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLAnchorElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLAreaElement": {
                 "element": [
                     {
                         "name": "area"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLAreaElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLAudioElement": {
                 "element": [
                     {
                         "name": "audio"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLAudioElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLBaseElement": {
                 "element": [
                     {
                         "name": "base"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLBaseElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLBodyElement": {
                 "element": [
                     {
                         "name": "body"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLBodyElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLBRElement": {
                 "element": [
                     {
                         "name": "br"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLBRElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLCanvasElement": {
                 "element": [
                     {
                         "name": "canvas"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLCanvasElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLDataElement": {
                 "element": [
                     {
                         "name": "data"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDataElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLDetailsElement": {
                 "element": [
                     {
                         "name": "details"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDetailsElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLDivElement": {
                 "element": [
                     {
                         "name": "div"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDivElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLDListElement": {
                 "element": [
                     {
                         "name": "dl"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDListElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLElement": {
                 "element": [
@@ -1554,68 +1354,28 @@
                 ],
                 "implements": [
                     "ElementCSSInlineStyle"
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLEmbedElement": {
                 "element": [
                     {
                         "name": "embed"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLEmbedElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLFormElement": {
                 "element": [
                     {
                         "name": "form"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLFormElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLHeadElement": {
                 "element": [
                     {
                         "name": "head"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLHeadElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLHeadingElement": {
                 "element": [
@@ -1637,51 +1397,21 @@
                     {
                         "name": "h6"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLHeadingElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLHRElement": {
                 "element": [
                     {
                         "name": "hr"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLHRElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLHtmlElement": {
                 "element": [
                     {
                         "name": "html"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLHtmlElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLInputElement": {
                 "properties": {
@@ -1695,17 +1425,7 @@
                     {
                         "name": "input"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLInputElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLLinkElement": {
                 "properties": {
@@ -1720,102 +1440,42 @@
                     {
                         "name": "link"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLLinkElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLLabelElement": {
                 "element": [
                     {
                         "name": "label"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLLabelElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLLIElement": {
                 "element": [
                     {
                         "name": "li"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLLIElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLMapElement": {
                 "element": [
                     {
                         "name": "map"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMapElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLMenuElement": {
                 "element": [
                     {
                         "name": "menu"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMenuElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLMetaElement": {
                 "element": [
                     {
                         "name": "meta"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMetaElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLModElement": {
                 "element": [
@@ -1825,102 +1485,42 @@
                     {
                         "name": "ins"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLModElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLObjectElement": {
                 "element": [
                     {
                         "name": "object"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLObjectElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLOListElement": {
                 "element": [
                     {
                         "name": "ol"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLOListElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLParagraphElement": {
                 "element": [
                     {
                         "name": "p"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLParagraphElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLParamElement": {
                 "element": [
                     {
                         "name": "param"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLParamElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLPictureElement": {
                 "element": [
                     {
                         "name": "picture"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLPictureElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLPreElement": {
                 "element": [
@@ -1935,17 +1535,7 @@
                         "name": "xmp",
                         "deprecated": true
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLPreElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLQuoteElement": {
                 "element": [
@@ -1955,119 +1545,49 @@
                     {
                         "name": "q"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLQuoteElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLScriptElement": {
                 "element": [
                     {
                         "name": "script"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLScriptElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLSlotElement": {
                 "element": [
                     {
                         "name": "slot"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLSlotElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLSourceElement": {
                 "element": [
                     {
                         "name": "source"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLSourceElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLSpanElement": {
                 "element": [
                     {
                         "name": "span"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLSpanElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLStyleElement": {
                 "element": [
                     {
                         "name": "style"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLStyleElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableCaptionElement": {
                 "element": [
                     {
                         "name": "caption"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableCaptionElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableCellElement": {
                 "element": [
@@ -2077,17 +1597,7 @@
                     {
                         "name": "th"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableCellElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableColElement": {
                 "element": [
@@ -2097,17 +1607,7 @@
                     {
                         "name": "colgroup"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableColElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableDataCellElement": {
                 "name": "HTMLTableDataCellElement",
@@ -2119,34 +1619,14 @@
                         "namespace": "HTML",
                         "name": "td"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableDataCellElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableElement": {
                 "element": [
                     {
                         "name": "table"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableHeaderCellElement": {
                 "name": "HTMLTableHeaderCellElement",
@@ -2164,34 +1644,14 @@
                     {
                         "name": "th"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableHeaderCellElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableRowElement": {
                 "element": [
                     {
                         "name": "tr"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableRowElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTableSectionElement": {
                 "element": [
@@ -2204,136 +1664,56 @@
                     {
                         "name": "thead"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTableSectionElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTimeElement": {
                 "element": [
                     {
                         "name": "time"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTimeElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTitleElement": {
                 "element": [
                     {
                         "name": "title"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTitleElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTemplateElement": {
                 "element": [
                     {
                         "name": "template"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTemplateElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLTrackElement": {
                 "element": [
                     {
                         "name": "track"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLTrackElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLUListElement": {
                 "element": [
                     {
                         "name": "ul"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLUListElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLVideoElement": {
                 "element": [
                     {
                         "name": "video"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLVideoElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "HTMLDialogElement": {
                 "element": [
                     {
                         "name": "dialog"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDialogElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "EXT_blend_minmax": {
                 "override-exposed": "Window Worker"
@@ -2421,16 +1801,6 @@
                             "override-type": "SVGAnimatedLength"
                         }
                     }
-                },
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGCursorElement"
-                            ]
-                        }
-                    }
                 }
             },
             "SVGAnimationElement": {
@@ -2465,12 +1835,6 @@
                             "override-signatures": [
                                 "getSimpleDuration(): number"
                             ]
-                        },
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGAnimationElement"
-                            ]
                         }
                     }
                 }
@@ -2478,47 +1842,17 @@
             "SVGAnimateElement": {
                 "name": "SVGAnimateElement",
                 "extends": "SVGAnimationElement",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGAnimateElement"
-                            ]
-                        }
-                    }
-                }
+                "exposed": "Window"
             },
             "SVGAnimateTransformElement": {
                 "name": "SVGAnimateTransformElement",
                 "extends": "SVGAnimationElement",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGAnimateTransformElement"
-                            ]
-                        }
-                    }
-                }
+                "exposed": "Window"
             },
             "SVGAnimateMotionElement": {
                 "name": "SVGAnimateMotionElement",
                 "extends": "SVGAnimationElement",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGAnimateMotionElement"
-                            ]
-                        }
-                    }
-                }
+                "exposed": "Window"
             },
             "SVGRectElement": {
                 "element": [
@@ -2526,17 +1860,7 @@
                         "namespace": "SVG",
                         "name": "rect"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGRectElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGCircleElement": {
                 "element": [
@@ -2544,17 +1868,7 @@
                         "namespace": "SVG",
                         "name": "circle"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGCircleElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGClipPathElement": {
                 "element": [
@@ -2562,17 +1876,7 @@
                         "namespace": "SVG",
                         "name": "clipPath"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGClipPathElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGEllipseElement": {
                 "element": [
@@ -2580,17 +1884,7 @@
                         "namespace": "SVG",
                         "name": "ellipse"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGEllipseElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEBlendElement": {
                 "element": [
@@ -2598,17 +1892,7 @@
                         "namespace": "SVG",
                         "name": "feBlend"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEBlendElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEColorMatrixElement": {
                 "element": [
@@ -2616,17 +1900,7 @@
                         "namespace": "SVG",
                         "name": "feColorMatrix"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEColorMatrixElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEComponentTransferElement": {
                 "element": [
@@ -2634,17 +1908,7 @@
                         "namespace": "SVG",
                         "name": "feComponentTransfer"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEComponentTransferElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFECompositeElement": {
                 "element": [
@@ -2652,17 +1916,7 @@
                         "namespace": "SVG",
                         "name": "feComposite"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFECompositeElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEConvolveMatrixElement": {
                 "element": [
@@ -2670,17 +1924,7 @@
                         "namespace": "SVG",
                         "name": "feConvolveMatrix"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEConvolveMatrixElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEDiffuseLightingElement": {
                 "element": [
@@ -2688,17 +1932,7 @@
                         "namespace": "SVG",
                         "name": "feDiffuseLighting"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEDiffuseLightingElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEDisplacementMapElement": {
                 "element": [
@@ -2706,17 +1940,7 @@
                         "namespace": "SVG",
                         "name": "feDisplacementMap"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEDisplacementMapElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEDistantLightElement": {
                 "element": [
@@ -2724,17 +1948,7 @@
                         "namespace": "SVG",
                         "name": "feDistantLight"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEDistantLightElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEFloodElement": {
                 "element": [
@@ -2742,17 +1956,7 @@
                         "namespace": "SVG",
                         "name": "feFlood"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEFloodElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEFuncAElement": {
                 "element": [
@@ -2760,17 +1964,7 @@
                         "namespace": "SVG",
                         "name": "feFuncA"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEFuncAElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEFuncBElement": {
                 "element": [
@@ -2778,17 +1972,7 @@
                         "namespace": "SVG",
                         "name": "feFuncB"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEFuncBElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEFuncGElement": {
                 "element": [
@@ -2796,17 +1980,7 @@
                         "namespace": "SVG",
                         "name": "feFuncG"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEFuncGElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEFuncRElement": {
                 "element": [
@@ -2814,17 +1988,7 @@
                         "namespace": "SVG",
                         "name": "feFuncR"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEFuncRElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEGaussianBlurElement": {
                 "element": [
@@ -2832,17 +1996,7 @@
                         "namespace": "SVG",
                         "name": "feGaussianBlur"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEGaussianBlurElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEImageElement": {
                 "element": [
@@ -2850,17 +2004,7 @@
                         "namespace": "SVG",
                         "name": "feImage"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEImageElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEMergeElement": {
                 "element": [
@@ -2868,17 +2012,7 @@
                         "namespace": "SVG",
                         "name": "feMerge"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEMergeElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEMergeNodeElement": {
                 "element": [
@@ -2886,17 +2020,7 @@
                         "namespace": "SVG",
                         "name": "feMergeNode"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEMergeNodeElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEMorphologyElement": {
                 "element": [
@@ -2904,17 +2028,7 @@
                         "namespace": "SVG",
                         "name": "feMorphology"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEMorphologyElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEOffsetElement": {
                 "element": [
@@ -2922,17 +2036,7 @@
                         "namespace": "SVG",
                         "name": "feOffset"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEOffsetElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFEPointLightElement": {
                 "element": [
@@ -2940,17 +2044,7 @@
                         "namespace": "SVG",
                         "name": "fePointLight"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFEPointLightElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFESpecularLightingElement": {
                 "element": [
@@ -2958,17 +2052,7 @@
                         "namespace": "SVG",
                         "name": "feSpecularLighting"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFESpecularLightingElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFESpotLightElement": {
                 "element": [
@@ -2976,17 +2060,7 @@
                         "namespace": "SVG",
                         "name": "feSpotLight"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFESpotLightElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFETileElement": {
                 "element": [
@@ -2994,17 +2068,7 @@
                         "namespace": "SVG",
                         "name": "feTile"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFETileElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFETurbulenceElement": {
                 "element": [
@@ -3012,17 +2076,7 @@
                         "namespace": "SVG",
                         "name": "feTurbulence"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFETurbulenceElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGFilterElement": {
                 "element": [
@@ -3030,17 +2084,7 @@
                         "namespace": "SVG",
                         "name": "filter"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGFilterElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGLinearGradientElement": {
                 "element": [
@@ -3048,17 +2092,7 @@
                         "namespace": "SVG",
                         "name": "linearGradient"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGLinearGradientElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGLineElement": {
                 "element": [
@@ -3066,17 +2100,7 @@
                         "namespace": "SVG",
                         "name": "line"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGLineElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGMarkerElement": {
                 "element": [
@@ -3084,17 +2108,7 @@
                         "namespace": "SVG",
                         "name": "marker"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGMarkerElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGMaskElement": {
                 "element": [
@@ -3102,17 +2116,7 @@
                         "namespace": "SVG",
                         "name": "mask"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGMaskElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGPatternElement": {
                 "element": [
@@ -3120,17 +2124,7 @@
                         "namespace": "SVG",
                         "name": "pattern"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGPatternElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGPolygonElement": {
                 "element": [
@@ -3138,17 +2132,7 @@
                         "namespace": "SVG",
                         "name": "polygon"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGPolygonElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGPolylineElement": {
                 "element": [
@@ -3156,17 +2140,7 @@
                         "namespace": "SVG",
                         "name": "polyline"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGPolylineElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGRadialGradientElement": {
                 "element": [
@@ -3174,17 +2148,7 @@
                         "namespace": "SVG",
                         "name": "radialGradient"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGRadialGradientElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGStopElement": {
                 "element": [
@@ -3192,17 +2156,7 @@
                         "namespace": "SVG",
                         "name": "stop"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGStopElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGTextElement": {
                 "element": [
@@ -3210,17 +2164,7 @@
                         "namespace": "SVG",
                         "name": "text"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGTextElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGTextPathElement": {
                 "element": [
@@ -3228,17 +2172,7 @@
                         "namespace": "SVG",
                         "name": "textPath"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGTextPathElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "SVGTSpanElement": {
                 "element": [
@@ -3246,17 +2180,7 @@
                         "namespace": "SVG",
                         "name": "tspan"
                     }
-                ],
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGTSpanElement"
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "MediaStream": {
                 "events": {
@@ -3348,647 +2272,48 @@
             },
             "Attr": {
                 "name": "Attr",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): Attr"
-                            ]
-                        }
-                    }
-                },
                 "properties": {
                     "property": {
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
                             "override-type": "Document"
-                        }
-                    }
-                }
-            },
-            "CDATASection": {
-                "name": "CDATASection",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): CDATASection"
-                            ]
                         }
                     }
                 }
             },
             "CharacterData": {
                 "name": "CharacterData",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): CharacterData"
-                            ]
-                        }
-                    }
-                },
                 "properties": {
                     "property": {
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
                             "override-type": "Document"
-                        }
-                    }
-                }
-            },
-            "Comment": {
-                "name": "Comment",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): Comment"
-                            ]
                         }
                     }
                 }
             },
             "DocumentType": {
                 "name": "DocumentType",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): DocumentType"
-                            ]
-                        }
-                    }
-                },
                 "properties": {
                     "property": {
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
                             "override-type": "Document"
-                        }
-                    }
-                }
-            },
-            "HTMLAppletElement": {
-                "name": "HTMLAppletElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLAppletElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLBaseFontElement": {
-                "name": "HTMLBaseFontElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLBaseFontElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLButtonElement": {
-                "name": "HTMLButtonElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLButtonElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLDataListElement": {
-                "name": "HTMLDataListElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDataListElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLDirectoryElement": {
-                "name": "HTMLDirectoryElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDirectoryElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLDocument": {
-                "name": "HTMLDocument",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLDocument"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLFieldSetElement": {
-                "name": "HTMLFieldSetElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLFieldSetElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLFontElement": {
-                "name": "HTMLFontElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLFontElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLFrameElement": {
-                "name": "HTMLFrameElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLFrameElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLFrameSetElement": {
-                "name": "HTMLFrameSetElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLFrameSetElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLLegendElement": {
-                "name": "HTMLLegendElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLLegendElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLMarqueeElement": {
-                "name": "HTMLMarqueeElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMarqueeElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLMeterElement": {
-                "name": "HTMLMeterElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLMeterElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLOptGroupElement": {
-                "name": "HTMLOptGroupElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLOptGroupElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLOptionElement": {
-                "name": "HTMLOptionElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLOptionElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLOutputElement": {
-                "name": "HTMLOutputElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLOutputElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLProgressElement": {
-                "name": "HTMLProgressElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLProgressElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLSelectElement": {
-                "name": "HTMLSelectElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLSelectElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "HTMLUnknownElement": {
-                "name": "HTMLUnknownElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): HTMLUnknownElement"
-                            ]
                         }
                     }
                 }
             },
             "ProcessingInstruction": {
                 "name": "ProcessingInstruction",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): ProcessingInstruction"
-                            ]
-                        }
-                    }
-                },
                 "properties": {
                     "property": {
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
                             "override-type": "Document"
-                        }
-                    }
-                }
-            },
-            "ShadowRoot": {
-                "name": "ShadowRoot",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): never"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGAElement": {
-                "name": "SVGAElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGAElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGComponentTransferFunctionElement": {
-                "name": "SVGComponentTransferFunctionElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGComponentTransferFunctionElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGDefsElement": {
-                "name": "SVGDefsElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGDefsElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGDescElement": {
-                "name": "SVGDescElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGDescElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGForeignObjectElement": {
-                "name": "SVGForeignObjectElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGForeignObjectElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGGElement": {
-                "name": "SVGGElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGGElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGGeometryElement": {
-                "name": "SVGGeometryElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGGeometryElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGGradientElement": {
-                "name": "SVGGradientElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGGradientElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGGraphicsElement": {
-                "name": "SVGGraphicsElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGGraphicsElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGImageElement": {
-                "name": "SVGImageElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGImageElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGMetadataElement": {
-                "name": "SVGMetadataElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGMetadataElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGPathElement": {
-                "name": "SVGPathElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGPathElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGScriptElement": {
-                "name": "SVGScriptElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGScriptElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGStyleElement": {
-                "name": "SVGStyleElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGStyleElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGSwitchElement": {
-                "name": "SVGSwitchElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGSwitchElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGSymbolElement": {
-                "name": "SVGSymbolElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGSymbolElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGTextContentElement": {
-                "name": "SVGTextContentElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGTextContentElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGTextPositioningElement": {
-                "name": "SVGTextPositioningElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGTextPositioningElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGTitleElement": {
-                "name": "SVGTitleElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGTitleElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGUseElement": {
-                "name": "SVGUseElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGUseElement"
-                            ]
-                        }
-                    }
-                }
-            },
-            "SVGViewElement": {
-                "name": "SVGViewElement",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): SVGViewElement"
-                            ]
                         }
                     }
                 }
@@ -4022,19 +2347,6 @@
                             "type": "PromiseRejectionEvent"
                         }
                     ]
-                }
-            },
-            "XMLDocument": {
-                "name": "XMLDocument",
-                "methods": {
-                    "method": {
-                        "cloneNode": {
-                            "name": "cloneNode",
-                            "override-signatures": [
-                                "cloneNode(deep?: boolean): XMLDocument"
-                            ]
-                        }
-                    }
                 }
             }
         }
