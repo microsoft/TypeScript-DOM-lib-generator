@@ -2695,6 +2695,17 @@
                         }
                     }
                 }
+            },
+            "Clients": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            "override-signatures": [
+                                "get(id: string): Promise<Client | undefined>"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },

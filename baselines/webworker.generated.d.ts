@@ -893,7 +893,7 @@ declare var Client: {
 /** Provides access to Client objects. Access it via self.clients within a service worker. */
 interface Clients {
     claim(): Promise<void>;
-    get(id: string): Promise<any>;
+    get(id: string): Promise<Client | undefined>;
     matchAll(options?: ClientQueryOptions): Promise<ReadonlyArray<Client>>;
     openWindow(url: string): Promise<WindowClient | null>;
 }
