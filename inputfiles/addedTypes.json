@@ -1050,7 +1050,7 @@
                         },
                         {
                             "name": "error",
-                            "type": "Event"
+                            "type": "ErrorEvent"
                         },
                         {
                             "name": "end",
