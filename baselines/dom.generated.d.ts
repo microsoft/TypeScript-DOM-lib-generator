@@ -3992,7 +3992,7 @@ declare var SVGRect: typeof DOMRect;
 interface DOMRectList {
     readonly length: number;
     item(index: number): DOMRect | null;
-    [index: number]: DOMRect;
+    [index: number]: DOMRect | undefined;
 }
 
 declare var DOMRectList: {
