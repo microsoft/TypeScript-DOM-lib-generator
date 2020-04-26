@@ -9148,8 +9148,6 @@ interface IDBDatabase {
     readonly version: number;
 }
 
-}
-
 declare var IDBFactory: {
     prototype: IDBFactory;
     new(): IDBFactory;
