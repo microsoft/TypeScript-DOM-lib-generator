@@ -246,6 +246,7 @@
             "PasswordCredential": null,
             "Position": null,
             "PositionError": null,
+            "ReadableStreamReader": null,
             "RTCDataChannel": {
                 "properties": {
                     "property": {
@@ -406,6 +407,7 @@
                 }
             },
             "ObjectURLOptions": null,
+            "ReadableStreamDefaultReadResult": null,
             "RTCIceGatherOptions": {
                 "members": {
                     "member": {

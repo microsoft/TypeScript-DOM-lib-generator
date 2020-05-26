@@ -2320,6 +2320,44 @@
                         }
                     }
                 }
+            },
+            "ReadableStreamDefaultReadDoneResult": {
+                "name": "ReadableStreamDefaultReadDoneResult",
+                "members": {
+                    "member": {
+                        "done": {
+                            "name": "done",
+                            "override-type": "true",
+                            "required": 1
+                        },
+                        "value": {
+                            "name": "value",
+                            "override-type": "undefined"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamDefaultReadValueResult": {
+                "name": "ReadableStreamDefaultReadValueResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "name": "done",
+                            "override-type": "false",
+                            "required": 1
+                        },
+                        "value": {
+                            "name": "value",
+                            "override-type": "T",
+                            "required": 1
+                        }
+                    }
+                }
             }
         }
     },
@@ -2418,6 +2456,40 @@
                         "type": "ModuleImports"
                     }
                 ]
+            },
+            {
+                "new-type": "ReadableStreamDefaultReadResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReadValueResult"
+                    },
+                    {
+                        "type": "ReadableStreamDefaultReadDoneResult"
+                    }
+                ],
+                "override-type": "ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult"
+            },
+            {
+                "new-type": "ReadableStreamReader",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReader"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReader"
+                    }
+                ],
+                "override-type": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
             }
         ]
     }
