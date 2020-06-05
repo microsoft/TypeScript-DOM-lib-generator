@@ -71,7 +71,10 @@ function getExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
     if (!attr || !attr.rhs) {
         return [];
     }
-    return attr.rhs.type === "identifier-list" ? attr.rhs.value.map(item => item.value) : [attr.rhs.value];
+    return attr.rhs.type === "identifier-list"
+        || attr.rhs.type === "string-list"
+        || attr.rhs.type === "decimal-list"
+        || attr.rhs.type === "integer-list" ? (attr.rhs.value as webidl2.ExtendedAttributeRightHandSideIdentifier[]).map(item => item.value) : [attr.rhs.value];
 }
 
 function getExtAttrConcatenated(extAttrs: webidl2.ExtendedAttribute[], name: string) {
