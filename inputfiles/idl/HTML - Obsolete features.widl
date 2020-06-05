@@ -44,8 +44,8 @@ interface HTMLFrameElement : HTMLElement {
   readonly attribute Document? contentDocument;
   readonly attribute WindowProxy? contentWindow;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString marginHeight;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString marginWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString marginHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString marginWidth;
 };
 
 partial interface HTMLAnchorElement {
@@ -61,11 +61,11 @@ partial interface HTMLAreaElement {
 };
 
 partial interface HTMLBodyElement {
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString text;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString link;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString vLink;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString aLink;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString bgColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString text;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString link;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString vLink;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString aLink;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString bgColor;
   [CEReactions] attribute DOMString background;
 };
 
@@ -109,7 +109,7 @@ partial interface HTMLEmbedElement {
 interface HTMLFontElement : HTMLElement {
   [HTMLConstructor] constructor();
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString color;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString color;
   [CEReactions] attribute DOMString face;
   [CEReactions] attribute DOMString size; 
 };
@@ -136,8 +136,8 @@ partial interface HTMLIFrameElement {
   [CEReactions] attribute DOMString frameBorder;
   [CEReactions] attribute USVString longDesc;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString marginHeight;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString marginWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString marginHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString marginWidth;
 };
 
 partial interface HTMLImageElement {
@@ -148,7 +148,7 @@ partial interface HTMLImageElement {
   [CEReactions] attribute unsigned long vspace;
   [CEReactions] attribute USVString longDesc;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString border;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString border;
 };
 
 partial interface HTMLInputElement {
@@ -189,7 +189,7 @@ partial interface HTMLObjectElement {
   [CEReactions] attribute DOMString codeBase;
   [CEReactions] attribute DOMString codeType;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString border;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString border;
 };
 
 partial interface HTMLOListElement {
@@ -227,9 +227,9 @@ partial interface HTMLTableElement {
   [CEReactions] attribute DOMString summary;
   [CEReactions] attribute DOMString width;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString bgColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString cellPadding;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString cellSpacing;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString bgColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString cellPadding;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString cellSpacing;
 };
 
 partial interface HTMLTableSectionElement {
@@ -250,7 +250,7 @@ partial interface HTMLTableCellElement {
   [CEReactions] attribute boolean noWrap;
   [CEReactions] attribute DOMString vAlign;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString bgColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString bgColor;
 };
 
 partial interface HTMLTableRowElement {
@@ -259,7 +259,7 @@ partial interface HTMLTableRowElement {
   [CEReactions] attribute DOMString chOff;
   [CEReactions] attribute DOMString vAlign;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString bgColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString bgColor;
 };
 
 partial interface HTMLUListElement {
@@ -268,11 +268,11 @@ partial interface HTMLUListElement {
 };
 
 partial interface Document {
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString fgColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString linkColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString vlinkColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString alinkColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString bgColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString fgColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString linkColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString vlinkColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString alinkColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString bgColor;
 
   [SameObject] readonly attribute HTMLCollection anchors;
   [SameObject] readonly attribute HTMLCollection applets;

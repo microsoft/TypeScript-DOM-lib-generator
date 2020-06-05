@@ -1,6 +1,7 @@
-[Exposed=Window,
- Constructor(DOMString type, optional PopStateEventInit eventInitDict = {})]
+[Exposed=Window]
 interface PopStateEvent : Event {
+  constructor(DOMString type, optional PopStateEventInit eventInitDict = {});
+
   readonly attribute any state;
 };
 
@@ -8,9 +9,10 @@ dictionary PopStateEventInit : EventInit {
   any state = null;
 };
 
-[Exposed=Window,
- Constructor(DOMString type, optional HashChangeEventInit eventInitDict = {})]
+[Exposed=Window]
 interface HashChangeEvent : Event {
+  constructor(DOMString type, optional HashChangeEventInit eventInitDict = {});
+
   readonly attribute USVString oldURL;
   readonly attribute USVString newURL;
 };
@@ -20,9 +22,10 @@ dictionary HashChangeEventInit : EventInit {
   USVString newURL = "";
 };
 
-[Exposed=Window,
- Constructor(DOMString type, optional PageTransitionEventInit eventInitDict = {})]
+[Exposed=Window]
 interface PageTransitionEvent : Event {
+  constructor(DOMString type, optional PageTransitionEventInit eventInitDict = {});
+
   readonly attribute boolean persisted;
 };
 

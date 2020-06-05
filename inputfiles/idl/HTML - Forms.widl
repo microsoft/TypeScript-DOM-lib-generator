@@ -1,5 +1,5 @@
 [Exposed=Window,
- OverrideBuiltins,
+ LegacyOverrideBuiltIns,
  LegacyUnenumerableNamedProperties]
 interface HTMLFormElement : HTMLElement {
   [HTMLConstructor] constructor();

@@ -3926,7 +3926,7 @@ interface DOMParser {
     /**
      * Parses string using either the HTML or XML parser, according to type, and returns the resulting Document. type can be "text/html" (which will invoke the HTML parser), or any of "text/xml", "application/xml", "application/xhtml+xml", or "image/svg+xml" (which will invoke the XML parser).
      * 
-     * For the XML parser, if string can be parsed, then the returned Document will contain elements describing the resulting error.
+     * For the XML parser, if string cannot be parsed, then the returned Document will contain elements describing the resulting error.
      * 
      * Note that script elements are not evaluated during parsing, and the resulting document's encoding will always be UTF-8.
      * 
@@ -18488,7 +18488,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     /** @deprecated */
     releaseEvents(): void;
     resizeBy(x: number, y: number): void;
-    resizeTo(x: number, y: number): void;
+    resizeTo(width: number, height: number): void;
     scroll(options?: ScrollToOptions): void;
     scroll(x: number, y: number): void;
     scrollBy(options?: ScrollToOptions): void;
@@ -19408,9 +19408,6 @@ declare var Audio: {
 declare var Image: {
     new(width?: number, height?: number): HTMLImageElement;
 };
-declare var Option: {
-    new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
-};
 declare var applicationCache: ApplicationCache;
 declare var clientInformation: Navigator;
 declare var closed: boolean;
@@ -19516,7 +19513,7 @@ declare function prompt(message?: string, _default?: string): string | null;
 /** @deprecated */
 declare function releaseEvents(): void;
 declare function resizeBy(x: number, y: number): void;
-declare function resizeTo(x: number, y: number): void;
+declare function resizeTo(width: number, height: number): void;
 declare function scroll(options?: ScrollToOptions): void;
 declare function scroll(x: number, y: number): void;
 declare function scrollBy(options?: ScrollToOptions): void;
