@@ -1,13 +1,14 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overflowX;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overflowY;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overflow;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overflowInline;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overflowBlock;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString textOverflow;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString blockOverflow;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString lineClamp;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString webkitLineClamp;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString maxLines;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString continue;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflowX;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflowY;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflow;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflowClipMargin;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflowInline;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflowBlock;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textOverflow;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString blockEllipsis;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lineClamp;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString webkitLineClamp;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString maxLines;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString continue;
 };

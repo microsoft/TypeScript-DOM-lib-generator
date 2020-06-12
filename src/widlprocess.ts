@@ -258,7 +258,7 @@ function convertCallbackFunctions(c: webidl2.CallbackType): Browser.CallbackFunc
 }
 
 function convertArgument(arg: webidl2.Argument): Browser.Param {
-    const allowNull = hasExtAttr(arg.extAttrs, "TreatNullAs");
+    const allowNull = hasExtAttr(arg.extAttrs, "LegacyNullToEmptyString");
     const idlType = convertIdlType(arg.idlType);
     if (allowNull) {
         idlType.nullable = 1;

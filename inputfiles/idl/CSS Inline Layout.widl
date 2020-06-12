@@ -1,10 +1,16 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString dominantBaseline;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString verticalAlign;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignmentBaseline;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString baselineShift;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString inlineSizing;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString initialLetters;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString initialLettersAlign;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString initialLettersWrap;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString dominantBaseline;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString verticalAlign;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString baselineSource;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString alignmentBaseline;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString baselineShift;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lineHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lineSizing;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString leadingTrimOver;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString leadingTrimUnder;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString leadingTrim;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString inlineSizing;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString initialLetter;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString initialLetterAlign;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString initialLetterWrap;
 };

@@ -58,11 +58,11 @@ interface SVGTextPathElement : SVGTextContentElement {
 SVGTextPathElement includes SVGURIReference;
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString inlineSize;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString shapeInside;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString shapeSubtract;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString shapeMargin;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString textAnchor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString textDecorationFill;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString textDecorationStroke;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString inlineSize;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString shapeInside;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString shapeSubtract;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString shapeMargin;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textAnchor;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textDecorationFill;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textDecorationStroke;
 };

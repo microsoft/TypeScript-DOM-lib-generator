@@ -1,14 +1,14 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flexDirection;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flexWrap;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flexFlow;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString order;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flex;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flexGrow;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flexShrink;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString flexBasis;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString justifyContent;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignItems;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignSelf;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString alignContent;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flexDirection;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flexWrap;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flexFlow;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString order;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flex;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flexGrow;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flexShrink;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString flexBasis;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString justifyContent;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString alignItems;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString alignSelf;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString alignContent;
 };

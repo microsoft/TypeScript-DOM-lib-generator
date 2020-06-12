@@ -154,5 +154,5 @@ partial dictionary MouseEventInit {
 };
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString scrollBehavior;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString scrollBehavior;
 };

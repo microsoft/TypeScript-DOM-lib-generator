@@ -40,13 +40,13 @@ partial interface mixin GlobalEventHandlers {
 };
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationName;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationDuration;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationTimingFunction;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationIterationCount;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationDirection;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationPlayState;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationDelay;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animationFillMode;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString animation;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationName;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationDuration;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationTimingFunction;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationIterationCount;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationDirection;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationPlayState;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationDelay;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationFillMode;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animation;
 };

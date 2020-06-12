@@ -20,9 +20,9 @@ partial interface GlobalEventHandlers {
 };
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString transitionProperty;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString transitionDuration;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString transitionTimingFunction;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString transitionDelay;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString transition;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString transitionProperty;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString transitionDuration;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString transitionTimingFunction;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString transitionDelay;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString transition;
 };
