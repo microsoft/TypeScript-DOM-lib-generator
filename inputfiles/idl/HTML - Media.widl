@@ -11,7 +11,7 @@ interface HTMLVideoElement : HTMLMediaElement {
 };
 
 [Exposed=Window,
- NamedConstructor=Audio(optional DOMString src)]
+ LegacyFactoryFunction=Audio(optional DOMString src)]
 interface HTMLAudioElement : HTMLMediaElement {
   [HTMLConstructor] constructor();
 };
@@ -210,9 +210,10 @@ interface TimeRanges {
   double end(unsigned long index);
 };
 
-[Exposed=Window,
- Constructor(DOMString type, optional TrackEventInit eventInitDict = {})]
+[Exposed=Window]
 interface TrackEvent : Event {
+  constructor(DOMString type, optional TrackEventInit eventInitDict = {});
+
   readonly attribute (VideoTrack or AudioTrack or TextTrack)? track;
 };
 

@@ -7075,6 +7075,7 @@ interface HTMLImageElement extends HTMLElement {
      * Sets or retrieves whether the image is a server-side image map.
      */
     isMap: boolean;
+    loading: string;
     /**
      * Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object.
      */

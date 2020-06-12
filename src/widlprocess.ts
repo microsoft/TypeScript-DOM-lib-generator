@@ -118,7 +118,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         "anonymous-methods": { method: [] },
         properties: { property: {}, namesakes: {} },
         constructor: getConstructor(i.members, i.name) || getOldStyleConstructor(i.extAttrs, i.name),
-        "named-constructor": getNamedConstructor(i.extAttrs, i.name),
+        "named-constructor": getLegacyFactoryFunction(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
         "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
@@ -210,9 +210,9 @@ function getOldStyleConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: s
     }
 }
 
-function getNamedConstructor(extAttrs: webidl2.ExtendedAttribute[], parent: string): Browser.NamedConstructor | undefined {
+function getLegacyFactoryFunction(extAttrs: webidl2.ExtendedAttribute[], parent: string): Browser.NamedConstructor | undefined {
     for (const extAttr of extAttrs) {
-        if (extAttr.name === "NamedConstructor" && extAttr.rhs && typeof extAttr.rhs.value === "string") {
+        if (extAttr.name === "LegacyFactoryFunction" && extAttr.rhs && typeof extAttr.rhs.value === "string") {
             return {
                 name: extAttr.rhs.value,
                 signature: [{
