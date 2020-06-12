@@ -202,4 +202,6 @@ interface HTMLLegendElement : HTMLElement {
   [HTMLConstructor] constructor();
 
   readonly attribute HTMLFormElement? form;
+
+  // also has obsolete members
 };

@@ -652,6 +652,10 @@
         "title": "Web Speech API"
     },
     {
+        "url": "https://wicg.github.io/visual-viewport/",
+        "title": "Web VisualViewport API"
+    },
+    {
         "url": "https://www.w3.org/TR/webvtt1/",
         "title": "WebVTT"
     },
