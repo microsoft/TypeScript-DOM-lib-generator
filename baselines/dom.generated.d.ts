@@ -19436,6 +19436,9 @@ declare var Audio: {
 declare var Image: {
     new(width?: number, height?: number): HTMLImageElement;
 };
+declare var Option: {
+    new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
+};
 declare var applicationCache: ApplicationCache;
 declare var clientInformation: Navigator;
 declare var closed: boolean;
