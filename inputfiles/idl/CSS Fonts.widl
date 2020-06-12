@@ -3,20 +3,20 @@ interface CSSFontFaceRule : CSSRule {
 };
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontFamily;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontWeight;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontStretch;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontStyle;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontSize;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontSizeAdjust;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString font;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontSynthesis;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontKerning;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontVariantLigatures;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontVariantPosition;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontVariantCaps;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontVariantNumeric;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontVariantEastAsian;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontVariant;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString fontFeatureSettings;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontFamily;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontWeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontStretch;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontStyle;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontSize;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontSizeAdjust;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString font;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontSynthesis;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontKerning;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontVariantLigatures;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontVariantPosition;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontVariantCaps;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontVariantNumeric;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontVariantEastAsian;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontVariant;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString fontFeatureSettings;
 };

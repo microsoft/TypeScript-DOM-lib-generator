@@ -1,10 +1,10 @@
 enum DocumentReadyState { "loading", "interactive", "complete" };
 typedef (HTMLScriptElement or SVGScriptElement) HTMLOrSVGScriptElement;
 
-[OverrideBuiltins]
+[LegacyOverrideBuiltIns]
 partial interface Document {
   // resource metadata management
-  [PutForwards=href, Unforgeable] readonly attribute Location? location;
+  [PutForwards=href, LegacyUnforgeable] readonly attribute Location? location;
   attribute USVString domain;
   readonly attribute USVString referrer;
   attribute USVString cookie;
@@ -45,7 +45,7 @@ partial interface Document {
   DOMString queryCommandValue(DOMString commandId);
 
   // special event handler IDL attributes that only apply to Document objects
-  [LenientThis] attribute EventHandler onreadystatechange;
+  [LegacyLenientThis] attribute EventHandler onreadystatechange;
 
   // also has obsolete members
 };
@@ -75,7 +75,7 @@ interface HTMLElement : Element {
   [CEReactions] attribute boolean spellcheck;
   [CEReactions] attribute DOMString autocapitalize;
 
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString innerText;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString innerText;
 
   ElementInternals attachInternals();
 };
@@ -101,7 +101,7 @@ interface mixin HTMLOrSVGElement {
 };
 
 [Exposed=Window,
- OverrideBuiltins]
+ LegacyOverrideBuiltIns]
 interface DOMStringMap {
   getter DOMString (DOMString name);
   [CEReactions] setter void (DOMString name, DOMString value);

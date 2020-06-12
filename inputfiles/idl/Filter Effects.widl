@@ -309,9 +309,9 @@ interface SVGFETurbulenceElement : SVGElement {
 SVGFETurbulenceElement includes SVGFilterPrimitiveStandardAttributes;
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString filter;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString floodColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString floodOpacity;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString colorInterpolationFilters;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString lightingColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString filter;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString floodColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString floodOpacity;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString colorInterpolationFilters;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lightingColor;
 };

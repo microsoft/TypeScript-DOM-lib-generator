@@ -1,5 +1,5 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overflow;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString clip;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString visibility;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString overflow;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString clip;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString visibility;
 };

@@ -83,7 +83,7 @@ function extractCSSDefinitions(dom: DocumentFragment) {
     }
 
     return `partial interface CSSStyleDeclaration {${
-        properties.map(property => `\n  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString ${
+        properties.map(property => `\n  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString ${
             hyphenToCamelCase(property)
         };`).join("")
     }\n};`;

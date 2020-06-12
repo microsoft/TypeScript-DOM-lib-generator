@@ -1,6 +1,6 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString display;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString rubyPosition;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString rubyMerge;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString rubyAlign;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString rubyPosition;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString rubyMerge;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString rubyAlign;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString rubyOverhang;
 };

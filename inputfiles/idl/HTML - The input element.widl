@@ -34,7 +34,7 @@ interface HTMLInputElement : HTMLElement {
   [CEReactions] attribute DOMString step;
   [CEReactions] attribute DOMString type;
   [CEReactions] attribute DOMString defaultValue;
-  [CEReactions] attribute [TreatNullAs=EmptyString] DOMString value;
+  [CEReactions] attribute [LegacyNullToEmptyString] DOMString value;
   attribute object? valueAsDate;
   attribute unrestricted double valueAsNumber;
   [CEReactions] attribute unsigned long width;
@@ -58,4 +58,6 @@ interface HTMLInputElement : HTMLElement {
   void setRangeText(DOMString replacement);
   void setRangeText(DOMString replacement, unsigned long start, unsigned long end, optional SelectionMode selectionMode = "preserve");
   void setSelectionRange(unsigned long start, unsigned long end, optional DOMString direction);
+
+  // also has obsolete members
 };

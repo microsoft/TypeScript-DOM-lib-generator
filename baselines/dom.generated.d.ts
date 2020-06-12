@@ -18516,7 +18516,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     /** @deprecated */
     releaseEvents(): void;
     resizeBy(x: number, y: number): void;
-    resizeTo(x: number, y: number): void;
+    resizeTo(width: number, height: number): void;
     scroll(options?: ScrollToOptions): void;
     scroll(x: number, y: number): void;
     scrollBy(options?: ScrollToOptions): void;
@@ -19545,7 +19545,7 @@ declare function prompt(message?: string, _default?: string): string | null;
 /** @deprecated */
 declare function releaseEvents(): void;
 declare function resizeBy(x: number, y: number): void;
-declare function resizeTo(x: number, y: number): void;
+declare function resizeTo(width: number, height: number): void;
 declare function scroll(options?: ScrollToOptions): void;
 declare function scroll(x: number, y: number): void;
 declare function scrollBy(options?: ScrollToOptions): void;

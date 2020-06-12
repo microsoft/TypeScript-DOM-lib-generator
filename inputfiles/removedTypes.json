@@ -27,6 +27,13 @@
                     }
                 }
             },
+            "ParentNode": {
+                "methods": {
+                    "method": {
+                        "replaceChildren": null
+                    }
+                }
+            },
             "XMLHttpRequestEventTarget": null,
             "WorkerUtils": {
                 "methods": {
@@ -89,7 +96,8 @@
                     "property": {
                         "backgroundPositionBlock": null,
                         "backgroundPositionInline": null,
-                        "blockOverflow": null,
+                        "baselineSource": null,
+                        "blockEllipsis": null,
                         "borderBlock": null,
                         "borderBlockColor": null,
                         "borderBlockStyle": null,
@@ -121,9 +129,9 @@
                         "fillRepeat": null,
                         "fillSize": null,
                         "hangingPunctuation": null,
-                        "initialLetters": null,
-                        "initialLettersAlign": null,
-                        "initialLettersWrap": null,
+                        "initialLetter": null,
+                        "initialLetterAlign": null,
+                        "initialLetterWrap": null,
                         "inlineSizing": null,
                         "inset": null,
                         "insetBlock": null,
@@ -132,7 +140,11 @@
                         "insetInline": null,
                         "insetInlineEnd": null,
                         "insetInlineStart": null,
+                        "leadingTrim": null,
+                        "leadingTrimOver": null,
+                        "leadingTrimUnder": null,
                         "lineClamp": null,
+                        "lineSizing": null,
                         "marginBlock": null,
                         "marginInline": null,
                         "maskBorder": null,
@@ -147,10 +159,12 @@
                         "maskOrigin": null,
                         "maxLines": null,
                         "overflowBlock": null,
+                        "overflowClipMargin": null,
                         "overflowInline": null,
                         "paddingBlock": null,
                         "paddingInline": null,
                         "rubyMerge": null,
+                        "rubyOverhang": null,
                         "shapeInside": null,
                         "shapeMargin": null,
                         "shapeSubtract": null,

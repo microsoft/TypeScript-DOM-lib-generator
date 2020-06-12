@@ -1,11 +1,11 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnWidth;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnCount;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columns;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRuleColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRuleStyle;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRuleWidth;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnRule;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnSpan;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString columnFill;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnCount;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columns;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnRuleColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnRuleStyle;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnRuleWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnRule;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnSpan;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString columnFill;
 };

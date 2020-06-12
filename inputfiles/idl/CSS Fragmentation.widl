@@ -1,8 +1,8 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString breakBefore;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString breakAfter;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString breakInside;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString orphans;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString widows;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString boxDecorationBreak;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString breakBefore;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString breakAfter;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString breakInside;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString orphans;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString widows;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString boxDecorationBreak;
 };

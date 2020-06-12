@@ -52,6 +52,6 @@ SVGPatternElement includes SVGFitToViewBox;
 SVGPatternElement includes SVGURIReference;
 
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString stopColor;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString stopOpacity;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString stopColor;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString stopOpacity;
 };

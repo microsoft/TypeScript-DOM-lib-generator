@@ -1,13 +1,13 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString display;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString position;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString top;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString right;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString bottom;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString left;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString _float;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString clear;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString zIndex;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString direction;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString unicodeBidi;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString display;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString position;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString top;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString right;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString bottom;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString left;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString _float;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString clear;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString zIndex;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString direction;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString unicodeBidi;
 };

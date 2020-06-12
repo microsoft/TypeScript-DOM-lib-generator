@@ -1,10 +1,10 @@
 partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString width;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString minWidth;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString maxWidth;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString height;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString minHeight;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString maxHeight;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString lineHeight;
-  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString verticalAlign;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString width;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString minWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString maxWidth;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString height;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString minHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString maxHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lineHeight;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString verticalAlign;
 };

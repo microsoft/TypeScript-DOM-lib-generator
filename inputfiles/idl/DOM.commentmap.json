@@ -30,6 +30,7 @@
     "parentnode-lastelementchild": "Returns the last child that is an element, and null otherwise.",
     "parentnode-prepend": "Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.",
     "parentnode-append": "Inserts nodes after the last child of node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.",
+    "parentnode-replacechildren": "Replace all children of node with nodes, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.",
     "parentnode-queryselector": "Returns the first element that is a descendant of node that matches selectors.",
     "parentnode-queryselectorall": "Returns all element descendants of node that match selectors.",
     "nondocumenttypechildnode-previouselementsibling": "Returns the first preceding sibling that is an element, and null otherwise.",
