@@ -105,6 +105,10 @@
         "title": "CSS Overflow"
     },
     {
+        "url": "https://www.w3.org/TR/css-overscroll-1/",
+        "title": "CSS Overscroll Behavior"
+    },
+    {
         "url": "https://www.w3.org/TR/css-ruby-1/",
         "title": "CSS Ruby Layout"
     },
@@ -255,6 +259,10 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/dnd.html",
         "title": "HTML - Drag and drop"
+    },
+    {
+        "url": "https://html.spec.whatwg.org/multipage/dynamic-markup-insertion.html",
+        "title": "HTML - Dynamic markup insertion"
     },
     {
         "url": "https://html.spec.whatwg.org/multipage/edits.html",
@@ -520,7 +528,7 @@
         "title": "Web Authentication"
     },
     {
-        "url": "https://wicg.github.io/BackgroundSync/spec/",
+        "url": "https://wicg.github.io/background-sync/spec/",
         "title": "Web Background Synchronization"
     },
     {
@@ -640,8 +648,12 @@
         "title": "Web Share"
     },
     {
-        "url": "https://w3c.github.io/speech-api/",
+        "url": "https://wicg.github.io/speech-api/",
         "title": "Web Speech API"
+    },
+    {
+        "url": "https://wicg.github.io/visual-viewport/",
+        "title": "Web VisualViewport API"
     },
     {
         "url": "https://www.w3.org/TR/webvtt1/",

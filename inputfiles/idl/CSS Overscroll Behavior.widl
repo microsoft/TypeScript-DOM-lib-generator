@@ -1,0 +1,7 @@
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overscrollBehavior;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overscrollBehaviorBlock;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overscrollBehaviorInline;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overscrollBehaviorX;
+  [CEReactions] attribute [TreatNullAs=EmptyString] CSSOMString overscrollBehaviorY;
+};

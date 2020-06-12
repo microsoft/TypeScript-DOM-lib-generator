@@ -79,7 +79,6 @@
     "document-implementation": "Returns document's DOMImplementation object.",
     "document-url": "Returns document's URL.",
     "document-documenturi": "Returns document's URL.",
-    "document-origin": "Returns document's origin.",
     "document-compatmode": "Returns the string \"BackCompat\" if document's mode is \"quirks\", and \"CSS1Compat\" otherwise.",
     "document-characterset": "Returns document's encoding.",
     "document-contenttype": "Returns document's content type.",
