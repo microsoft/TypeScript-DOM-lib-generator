@@ -19104,7 +19104,7 @@ declare namespace WebAssembly {
     function compileStreaming(source: Response | Promise<Response>): Promise<Module>;
     function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
-    function instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiateStreaming(response: Response | Promise<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function validate(bytes: BufferSource): boolean;
 }
 
@@ -19201,23 +19201,23 @@ interface RTCStatsCallback {
 }
 
 interface ReadableByteStreamControllerCallback {
-    (controller: ReadableByteStreamController): void | PromiseLike<void>;
+    (controller: ReadableByteStreamController): void | Promise<void>;
 }
 
 interface ReadableStreamDefaultControllerCallback<R> {
-    (controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>;
+    (controller: ReadableStreamDefaultController<R>): void | Promise<void>;
 }
 
 interface ReadableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
+    (reason: any): void | Promise<void>;
 }
 
 interface TransformStreamDefaultControllerCallback<O> {
-    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+    (controller: TransformStreamDefaultController<O>): void | Promise<void>;
 }
 
 interface TransformStreamDefaultControllerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+    (chunk: I, controller: TransformStreamDefaultController<O>): void | Promise<void>;
 }
 
 interface VoidFunction {
@@ -19225,19 +19225,19 @@ interface VoidFunction {
 }
 
 interface WritableStreamDefaultControllerCloseCallback {
-    (): void | PromiseLike<void>;
+    (): void | Promise<void>;
 }
 
 interface WritableStreamDefaultControllerStartCallback {
-    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
+    (controller: WritableStreamDefaultController): void | Promise<void>;
 }
 
 interface WritableStreamDefaultControllerWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
+    (chunk: W, controller: WritableStreamDefaultController): void | Promise<void>;
 }
 
 interface WritableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
+    (reason: any): void | Promise<void>;
 }
 
 interface HTMLElementTagNameMap {

@@ -512,12 +512,17 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         }
     }
 
+    function replacePromiseTypeWithUnion<T extends Browser.Typed>(type: T) {
+        if (type.type === "Promise" && !Array.isArray(type.subtype)) {
+            return { ...type, type: [type.subtype!, type], subtype: undefined };
+        }
+        return type;
+    }
+
     /// Generate the parameters string for function signatures
     function paramsToString(ps: Browser.Param[]) {
         function paramToString(p: Browser.Param) {
-            if (p.type === "Promise" && !Array.isArray(p.subtype)) {
-                p = { name: p.name, type: [p.subtype!, p] }
-            }
+            p = replacePromiseTypeWithUnion(p);
             const isOptional = !p.variadic && p.optional;
             const pType = convertDomTypeToTsType(p);
             const variadicParams = p.variadic && pType.indexOf('|') !== -1;
@@ -552,7 +557,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     function emitCallBackFunction(cb: Browser.CallbackFunction) {
         printer.printLine(`interface ${getNameWithTypeParameter(cb, cb.name)} {`);
         printer.increaseIndent();
-        emitSignatures(cb, "", "", printer.printLine);
+        const signature = cb.signature.map(replacePromiseTypeWithUnion);
+        emitSignatures({ ...cb, signature }, "", "", printer.printLine);
         printer.decreaseIndent();
         printer.printLine("}");
         printer.printLine("");

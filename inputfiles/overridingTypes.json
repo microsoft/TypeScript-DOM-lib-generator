@@ -244,11 +244,6 @@
                     "(chunk: T): number"
                 ]
             },
-            "ReadableByteStreamControllerCallback": {
-                "override-signatures": [
-                    "(controller: ReadableByteStreamController): void | PromiseLike<void>"
-                ]
-            },
             "ReadableStreamDefaultControllerCallback": {
                 "type-parameters": [
                     {
@@ -256,17 +251,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>"
-                ]
-            },
-            "ReadableStreamErrorCallback": {
-                "override-signatures": [
-                    "(reason: any): void | PromiseLike<void>"
-                ]
-            },
-            "WritableStreamDefaultControllerStartCallback": {
-                "override-signatures": [
-                    "(controller: WritableStreamDefaultController): void | PromiseLike<void>"
+                    "(controller: ReadableStreamDefaultController<R>): void | Promise<void>"
                 ]
             },
             "WritableStreamDefaultControllerWriteCallback": {
@@ -276,17 +261,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>"
-                ]
-            },
-            "WritableStreamDefaultControllerCloseCallback": {
-                "override-signatures": [
-                    "(): void | PromiseLike<void>"
-                ]
-            },
-            "WritableStreamErrorCallback": {
-                "override-signatures": [
-                    "(reason: any): void | PromiseLike<void>"
+                    "(chunk: W, controller: WritableStreamDefaultController): void | Promise<void>"
                 ]
             },
             "TransformStreamDefaultControllerCallback": {
@@ -296,7 +271,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
+                    "(controller: TransformStreamDefaultController<O>): void | Promise<void>"
                 ]
             },
             "TransformStreamDefaultControllerTransformCallback": {
@@ -309,7 +284,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
+                    "(chunk: I, controller: TransformStreamDefaultController<O>): void | Promise<void>"
                 ]
             },
             "CustomElementConstructor": {
@@ -3224,7 +3199,7 @@
                     },
                     "instantiateStreaming": {
                         "override-signatures": [
-                            "instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>"
+                            "instantiateStreaming(response: Response | Promise<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>"
                         ],
                         "force-references": [
                             {
