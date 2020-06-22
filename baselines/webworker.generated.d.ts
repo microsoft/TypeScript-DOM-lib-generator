@@ -1791,6 +1791,7 @@ interface IDBFactory {
      * Throws a "DataError" DOMException if either input is not a valid key.
      */
     cmp(first: any, second: any): number;
+    databases(): Promise<IDBDatabase>;
     /**
      * Attempts to delete the named database. If the database already exists and there are open connections that don't close in response to a versionchange event, the request will be blocked until all they close. If the request is successful request's result will be null.
      */

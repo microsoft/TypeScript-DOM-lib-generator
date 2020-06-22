@@ -45,7 +45,7 @@ interface IDBFactory {
                                     optional [EnforceRange] unsigned long long version);
   [NewObject] IDBOpenDBRequest deleteDatabase(DOMString name);
 
-  [NewObject] IDBDatabase databases;
+  [NewObject] Promise<IDBDatabase> databases();
 
   short cmp(any first, any second);
 };
