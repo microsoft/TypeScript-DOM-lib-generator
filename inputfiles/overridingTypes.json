@@ -1280,7 +1280,7 @@
                         "setSelectionRange": {
                             "name": "setSelectionRange",
                             "override-signatures": [
-                                "setSelectionRange(start: number, end: number, direction?: \"forward\" | \"backward\" | \"none\"): void"
+                                "setSelectionRange(start: number | null, end: number | null, direction?: \"forward\" | \"backward\" | \"none\"): void"
                             ]
                         }
                     }
@@ -1467,7 +1467,7 @@
                         "setSelectionRange": {
                             "name": "setSelectionRange",
                             "override-signatures": [
-                                "setSelectionRange(start: number, end: number, direction?: \"forward\" | \"backward\" | \"none\"): void"
+                                "setSelectionRange(start: number | null, end: number | null, direction?: \"forward\" | \"backward\" | \"none\"): void"
                             ]
                         }
                     }
