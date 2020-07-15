@@ -599,9 +599,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     function emitProperty(prefix: string, i: Browser.Interface, emitScope: EmitScope, p: Browser.Property) {
         emitComments(p, printer.printLine);
 
-        // Treat window.name specially because of https://github.com/Microsoft/TypeScript/issues/9850
+        // Treat window.name specially because of
+        //   - https://github.com/Microsoft/TypeScript/issues/9850
+        //   - https://github.com/microsoft/TypeScript/issues/18433
         if (p.name === "name" && i.name === "Window" && emitScope === EmitScope.All) {
-            printer.printLine("declare const name: never;");
+            printer.printLine("/** @deprecated */");
+            printer.printLine("declare const name: void;");
         }
         else {
             let pType: string;
