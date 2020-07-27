@@ -1761,7 +1761,7 @@ interface IDBDatabase extends EventTarget {
      * 
      * Throws a "InvalidStateError" DOMException if not called within an upgrade transaction.
      */
-    createObjectStore(name: string, optionalParameters?: IDBObjectStoreParameters): IDBObjectStore;
+    createObjectStore(name: string, options?: IDBObjectStoreParameters): IDBObjectStore;
     /**
      * Deletes the object store with the given name.
      * 
@@ -2199,8 +2199,8 @@ interface ImageData {
 
 declare var ImageData: {
     prototype: ImageData;
-    new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height?: number): ImageData;
+    new(sw: number, sh: number): ImageData;
+    new(data: Uint8ClampedArray, sw: number, sh?: number): ImageData;
 };
 
 /** This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties. */

@@ -1,19 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "GlobalFetch": {
-                "name": "GlobalFetch",
-                "methods": {
-                    "method": {
-                        "fetch": {
-                            "name": "fetch",
-                            "override-signatures": [
-                                "fetch(input: RequestInfo, init?: RequestInit): Promise<Response>"
-                            ]
-                        }
-                    }
-                }
-            },
             "Animatable": {
                 "name": "Animatable",
                 "methods": {
@@ -225,12 +212,6 @@
             "OnErrorEventHandlerNonNull": {
                 "override-signatures": [
                     "(event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any"
-                ]
-            },
-            "DecodeErrorCallback": {
-                "name": "DecodeErrorCallback",
-                "override-signatures": [
-                    "(error: DOMException): void"
                 ]
             },
             "QueuingStrategySizeCallback": {
@@ -531,12 +512,6 @@
                                 "getElementById(elementId: string): HTMLElement | null"
                             ]
                         },
-                        "elementsFromPoint": {
-                            "name": "elementsFromPoint",
-                            "override-signatures": [
-                                "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        },
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "override-signatures": [
@@ -693,13 +668,6 @@
                 },
                 "properties": {
                     "property": {
-                        "isConnected": {
-                            "name": "isConnected",
-                            "default": "false",
-                            "read-only": 1,
-                            "type-original": "boolean",
-                            "type": "boolean"
-                        },
                         "parentNode": {
                             "override-type": "Node & ParentNode | null"
                         },
@@ -811,23 +779,6 @@
                     }
                 }
             },
-            "MediaError": {
-                "name": "MediaError",
-                "properties": {
-                    "property": {
-                        "message": {
-                            "specs": "html5",
-                            "name": "message",
-                            "tags": "Media",
-                            "type": "DOMString",
-                            "type-original": "DOMString",
-                            "read-only": 1,
-                            "exposed": "Window",
-                            "default": "\"\""
-                        }
-                    }
-                }
-            },
             "IDBIndex": {
                 "name": "IDBIndex",
                 "properties": {
@@ -881,33 +832,6 @@
                             "override-signatures": [
                                 "getKey(key: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>"
                             ]
-                        }
-                    }
-                }
-            },
-            "IDBDatabase": {
-                "name": "IDBDatabase",
-                "methods": {
-                    "method": {
-                        "createObjectStore": {
-                            "name": "createObjectStore",
-                            "override-signatures": [
-                                "createObjectStore(name: string, optionalParameters?: IDBObjectStoreParameters): IDBObjectStore"
-                            ]
-                        },
-                        "transaction": {
-                            "name": "transaction",
-                            "override-signatures": [
-                                "transaction(storeNames: string | string[], mode?: IDBTransactionMode): IDBTransaction"
-                            ]
-                        }
-                    }
-                },
-                "properties": {
-                    "property": {
-                        "version": {
-                            "name": "version",
-                            "override-type": "number"
                         }
                     }
                 }
@@ -1019,24 +943,6 @@
                     }
                 }
             },
-            "ImageData": {
-                "name": "ImageData",
-                "exposed": "Window Worker",
-                "constructor": {
-                    "override-signatures": [
-                        "new(width: number, height: number): ImageData",
-                        "new(array: Uint8ClampedArray, width: number, height?: number): ImageData"
-                    ]
-                }
-            },
-            "DOMException": {
-                "name": "DOMException",
-                "constructor": {
-                    "override-signatures": [
-                        "new(message?: string, name?: string): DOMException"
-                    ]
-                }
-            },
             "HTMLSelectElement": {
                 "name": "HTMLSelectElement",
                 "properties": {
@@ -1125,16 +1031,6 @@
             },
             "HTMLTableSectionElement": {
                 "name": "HTMLTableSectionElement",
-                "methods": {
-                    "method": {
-                        "insertRow": {
-                            "name": "insertRow",
-                            "override-signatures": [
-                                "insertRow(index?: number): HTMLTableRowElement"
-                            ]
-                        }
-                    }
-                },
                 "properties": {
                     "property": {
                         "rows": {
@@ -1148,18 +1044,6 @@
                 "name": "Element",
                 "methods": {
                     "method": {
-                        "getAttributeNodeNS": {
-                            "name": "getAttributeNodeNS",
-                            "override-signatures": [
-                                "getAttributeNodeNS(namespaceURI: string, localName: string): Attr | null"
-                            ]
-                        },
-                        "getAttributeNode": {
-                            "name": "getAttributeNode",
-                            "override-signatures": [
-                                "getAttributeNode(name: string): Attr | null"
-                            ]
-                        },
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "override-signatures": [
@@ -1287,23 +1171,6 @@
                 }
             },
             "Storage": {
-                "name": "Storage",
-                "methods": {
-                    "method": {
-                        "getItem": {
-                            "name": "getItem",
-                            "override-signatures": [
-                                "getItem(key: string): string | null"
-                            ]
-                        },
-                        "key": {
-                            "name": "key",
-                            "override-signatures": [
-                                "key(index: number): string | null"
-                            ]
-                        }
-                    }
-                },
                 "override-index-signatures": [
                     "[name: string]: any"
                 ]
@@ -1401,16 +1268,6 @@
                 "name": "HTMLInputElement",
                 "properties": {
                     "property": {
-                        "files": {
-                            "name": "files",
-                            "read-only": 0,
-                            "override-type": "FileList | null"
-                        },
-                        "form": {
-                            "name": "form",
-                            "read-only": 1,
-                            "override-type": "HTMLFormElement | null"
-                        },
                         "selectionDirection": {
                             "name": "selectionDirection",
                             "override-type": "\"forward\" | \"backward\" | \"none\""
@@ -1461,12 +1318,6 @@
                                 "hasFeature(...args: any[]): true"
                             ],
                             "deprecated": 1
-                        },
-                        "createDocument": {
-                            "name": "createDocument",
-                            "override-signatures": [
-                                "createDocument(namespaceURI: string | null, qualifiedName: string | null, doctype: DocumentType | null): Document"
-                            ]
                         }
                     }
                 }

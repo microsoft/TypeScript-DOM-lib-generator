@@ -3799,7 +3799,7 @@ declare var DOMException: {
 
 /** An object providing methods which are not dependent on any particular document. Such an object is returned by the Document.implementation property. */
 interface DOMImplementation {
-    createDocument(namespaceURI: string | null, qualifiedName: string | null, doctype: DocumentType | null): Document;
+    createDocument(namespace: string | null, qualifiedName: string | null, doctype?: DocumentType | null): XMLDocument;
     createDocumentType(qualifiedName: string, publicId: string, systemId: string): DocumentType;
     createHTMLDocument(title?: string): Document;
     /** @deprecated */
@@ -5148,8 +5148,8 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
      * Returns the qualified names of all element's attributes. Can contain duplicates.
      */
     getAttributeNames(): string[];
-    getAttributeNode(name: string): Attr | null;
-    getAttributeNodeNS(namespaceURI: string, localName: string): Attr | null;
+    getAttributeNode(qualifiedName: string): Attr | null;
+    getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
     getBoundingClientRect(): DOMRect;
     getClientRects(): DOMRectList;
     /**
@@ -9110,7 +9110,7 @@ interface IDBDatabase extends EventTarget {
      * 
      * Throws a "InvalidStateError" DOMException if not called within an upgrade transaction.
      */
-    createObjectStore(name: string, optionalParameters?: IDBObjectStoreParameters): IDBObjectStore;
+    createObjectStore(name: string, options?: IDBObjectStoreParameters): IDBObjectStore;
     /**
      * Deletes the object store with the given name.
      * 
@@ -9558,8 +9558,8 @@ interface ImageData {
 
 declare var ImageData: {
     prototype: ImageData;
-    new(width: number, height: number): ImageData;
-    new(array: Uint8ClampedArray, width: number, height?: number): ImageData;
+    new(sw: number, sh: number): ImageData;
+    new(data: Uint8ClampedArray, sw: number, sh?: number): ImageData;
 };
 
 interface InnerHTML {
