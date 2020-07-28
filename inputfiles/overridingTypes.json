@@ -2481,6 +2481,38 @@
                     }
                 }
             },
+            "TextDecoderStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "read-only": 1,
+                            "override-type": "ReadableStream<string>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "read-only": 1,
+                            "override-type": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "TextEncoderStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "read-only": 1,
+                            "override-type": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "read-only": 1,
+                            "override-type": "WritableStream<string>"
+                        }
+                    }
+                }
+            },
             "Permissions": {
                 "methods": {
                     "method": {
