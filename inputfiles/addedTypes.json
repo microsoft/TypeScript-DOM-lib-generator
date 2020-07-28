@@ -2452,12 +2452,9 @@
                 "type": [
                     {
                         "type": "ReadableStreamDefaultReader"
-                    },
-                    {
-                        "type": "ReadableStreamBYOBReader"
                     }
                 ],
-                "override-type": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+                "override-type": "ReadableStreamDefaultReader<T>"
             }
         ]
     }
