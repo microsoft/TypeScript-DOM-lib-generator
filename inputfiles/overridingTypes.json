@@ -2230,25 +2230,16 @@
                     }
                 ],
                 "constructor": {
-                    "signature": [
-                        {
-                            "type": "ReadableStream",
-                            "param": [
-                                {
-                                    "name": "underlyingSource",
-                                    "type": "UnderlyingSource",
-                                    "optional": 1
-                                },
-                                {
-                                    "name": "strategy",
-                                    "type": "QueuingStrategy",
-                                    "optional": 1
-                                }
-                            ]
-                        }
-                    ],
                     "override-signatures": [
                         "new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>"
+                    ],
+                    "force-references": [
+                        {
+                            "type": "UnderlyingSource"
+                        },
+                        {
+                            "type": "QueuingStrategy"
+                        }
                     ]
                 },
                 "methods": {
@@ -2330,25 +2321,16 @@
             },
             "WritableStream": {
                 "constructor": {
-                    "signature": [
-                        {
-                            "type": "WritableStream",
-                            "param": [
-                                {
-                                    "name": "underlyingSink",
-                                    "type": "UnderlyingSink",
-                                    "optional": 1
-                                },
-                                {
-                                    "name": "strategy",
-                                    "type": "QueuingStrategy",
-                                    "optional": 1
-                                }
-                            ]
-                        }
-                    ],
                     "override-signatures": [
                         "new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>"
+                    ],
+                    "force-references": [
+                        {
+                            "type": "UnderlyingSink"
+                        },
+                        {
+                            "type": "QueuingStrategy"
+                        }
                     ]
                 },
                 "type-parameters": [
@@ -2411,30 +2393,16 @@
                     }
                 },
                 "constructor": {
-                    "signature": [
-                        {
-                            "type": "TransformStream",
-                            "param": [
-                                {
-                                    "name": "transformer",
-                                    "type": "Transformer",
-                                    "optional": 1
-                                },
-                                {
-                                    "name": "writableStrategy",
-                                    "type": "QueuingStrategy",
-                                    "optional": 1
-                                },
-                                {
-                                    "name": "readableStrategy",
-                                    "type": "QueuingStrategy",
-                                    "optional": 1
-                                }
-                            ]
-                        }
-                    ],
                     "override-signatures": [
                         "new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>"
+                    ],
+                    "force-references": [
+                        {
+                            "type": "Transformer"
+                        },
+                        {
+                            "type": "QueuingStrategy"
+                        }
                     ]
                 }
             },
