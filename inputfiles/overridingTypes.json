@@ -275,7 +275,7 @@
                     "(reason: any): void | PromiseLike<void>"
                 ]
             },
-            "TransformStreamDefaultControllerCallback": {
+            "TransformerFlushCallback": {
                 "type-parameters": [
                     {
                         "name": "O"
@@ -285,7 +285,17 @@
                     "(controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
                 ]
             },
-            "TransformStreamDefaultControllerTransformCallback": {
+            "TransformerStartCallback": {
+                "type-parameters": [
+                    {
+                        "name": "O"
+                    }
+                ],
+                "override-signatures": [
+                    "(controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
+                ]
+            },
+            "TransformerTransformCallback": {
                 "type-parameters": [
                     {
                         "name": "I"
@@ -3004,15 +3014,15 @@
                 "members": {
                     "member": {
                         "start": {
-                            "override-type": "TransformStreamDefaultControllerCallback<O>",
+                            "override-type": "TransformerStartCallback<O>",
                             "nullable": 0
                         },
                         "transform": {
-                            "override-type": "TransformStreamDefaultControllerTransformCallback<I, O>",
+                            "override-type": "TransformerTransformCallback<I, O>",
                             "nullable": 0
                         },
                         "flush": {
-                            "override-type": "TransformStreamDefaultControllerCallback<O>",
+                            "override-type": "TransformerFlushCallback<O>",
                             "nullable": 0
                         },
                         "readableType": {
