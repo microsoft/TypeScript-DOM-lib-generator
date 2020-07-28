@@ -2286,6 +2286,11 @@
                         "default": "any"
                     }
                 ],
+                "constructor": {
+                    "override-signatures": [
+                        "new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>"
+                    ]
+                },
                 "methods": {
                     "method": {
                         "read": {
