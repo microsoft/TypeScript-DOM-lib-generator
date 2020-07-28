@@ -246,6 +246,9 @@
             "PasswordCredential": null,
             "Position": null,
             "PositionError": null,
+            "ReadableStream": {
+                "iterator": null
+            },
             "ReadableStreamReader": null,
             "RTCDataChannel": {
                 "properties": {
