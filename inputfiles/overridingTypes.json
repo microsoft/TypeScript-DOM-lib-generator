@@ -1177,6 +1177,21 @@
                     }
                 }
             },
+            "DataTransfer": {
+                "name": "DataTransfer",
+                "properties": {
+                    "property": {
+                        "dropEffect": {
+                            "name": "dropEffect",
+                            "override-type": "\"node\" | \"copy\" | \"link\" | \"move\""
+                        },
+                        "effectAllowed": {
+                            "name": "effectAllowed",
+                            "override-type": "\"none\" | \"copy\" | \"copyLink\" | \"copyMove\" | \"link\" | \"linkMove\" | \"move\" | \"all\" | \"uninitialized\""
+                        }
+                    }
+                }
+            },
             "DataTransferItemList": {
                 "name": "DataTransferItemList",
                 "methods": {
