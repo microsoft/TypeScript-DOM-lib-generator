@@ -1183,7 +1183,7 @@
                     "property": {
                         "dropEffect": {
                             "name": "dropEffect",
-                            "override-type": "\"node\" | \"copy\" | \"link\" | \"move\""
+                            "override-type": "\"none\" | \"copy\" | \"link\" | \"move\""
                         },
                         "effectAllowed": {
                             "name": "effectAllowed",

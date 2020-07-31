@@ -4167,7 +4167,7 @@ interface DataTransfer {
      * 
      * The possible values are "none", "copy", "link", and "move".
      */
-    dropEffect: "node" | "copy" | "link" | "move";
+    dropEffect: "none" | "copy" | "link" | "move";
     /**
      * Returns the kinds of operations that are to be allowed.
      * 
