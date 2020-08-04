@@ -5,9 +5,7 @@ partial interface CSSStyleDeclaration {
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString alignmentBaseline;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString baselineShift;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lineHeight;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString lineSizing;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString leadingTrimOver;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString leadingTrimUnder;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textEdge;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString leadingTrim;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString inlineSizing;
   [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString initialLetter;

@@ -12,9 +12,9 @@ interface ApplicationCache : EventTarget {
   readonly attribute unsigned short status;
 
   // updates
-  void update();
-  void abort();
-  void swapCache();
+  undefined update();
+  undefined abort();
+  undefined swapCache();
 
   // events
   attribute EventHandler onchecking;

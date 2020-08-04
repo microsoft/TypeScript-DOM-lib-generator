@@ -1,6 +1,8 @@
 [Exposed=Window]
 interface HTMLHtmlElement : HTMLElement {
   [HTMLConstructor] constructor();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -40,6 +42,9 @@ interface HTMLLinkElement : HTMLElement {
   [CEReactions] attribute USVString imageSrcset;
   [CEReactions] attribute DOMString imageSizes;
   [CEReactions] attribute DOMString referrerPolicy;
+  [CEReactions] attribute boolean disabled;
+
+  // also has obsolete members
 };
 HTMLLinkElement includes LinkStyle;
 
@@ -50,6 +55,8 @@ interface HTMLMetaElement : HTMLElement {
   [CEReactions] attribute DOMString name;
   [CEReactions] attribute DOMString httpEquiv;
   [CEReactions] attribute DOMString content;
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -57,5 +64,7 @@ interface HTMLStyleElement : HTMLElement {
   [HTMLConstructor] constructor();
 
   [CEReactions] attribute DOMString media;
+
+  // also has obsolete members
 };
 HTMLStyleElement includes LinkStyle;

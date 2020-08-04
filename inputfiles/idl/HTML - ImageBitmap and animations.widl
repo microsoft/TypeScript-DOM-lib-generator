@@ -2,7 +2,7 @@
 interface ImageBitmap {
   readonly attribute unsigned long width;
   readonly attribute unsigned long height;
-  void close();
+  undefined close();
 };
 
 typedef (CanvasImageSource or
@@ -23,11 +23,11 @@ dictionary ImageBitmapOptions {
   ResizeQuality resizeQuality = "low";
 };
 
-callback FrameRequestCallback = void (DOMHighResTimeStamp time);
+callback FrameRequestCallback = undefined (DOMHighResTimeStamp time);
 
 interface mixin AnimationFrameProvider {
   unsigned long requestAnimationFrame(FrameRequestCallback callback);
-  void cancelAnimationFrame(unsigned long handle);
+  undefined cancelAnimationFrame(unsigned long handle);
 };
 Window includes AnimationFrameProvider;
 DedicatedWorkerGlobalScope includes AnimationFrameProvider;

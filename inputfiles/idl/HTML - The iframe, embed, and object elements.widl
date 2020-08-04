@@ -12,9 +12,12 @@ interface HTMLIFrameElement : HTMLElement {
   [CEReactions] attribute DOMString width;
   [CEReactions] attribute DOMString height;
   [CEReactions] attribute DOMString referrerPolicy;
+  [CEReactions] attribute DOMString loading;
   readonly attribute Document? contentDocument;
   readonly attribute WindowProxy? contentWindow;
   Document? getSVGDocument();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -26,6 +29,8 @@ interface HTMLEmbedElement : HTMLElement {
   [CEReactions] attribute DOMString width;
   [CEReactions] attribute DOMString height;
   Document? getSVGDocument();
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -48,7 +53,9 @@ interface HTMLObjectElement : HTMLElement {
   readonly attribute DOMString validationMessage;
   boolean checkValidity();
   boolean reportValidity();
-  void setCustomValidity(DOMString error);
+  undefined setCustomValidity(DOMString error);
+
+  // also has obsolete members
 };
 
 [Exposed=Window]
@@ -57,4 +64,6 @@ interface HTMLParamElement : HTMLElement {
 
   [CEReactions] attribute DOMString name;
   [CEReactions] attribute DOMString value;
+
+  // also has obsolete members
 };

@@ -18,8 +18,8 @@ interface HTMLMarqueeElement : HTMLElement {
   attribute EventHandler onfinish;
   attribute EventHandler onstart;
 
-  void start();
-  void stop();
+  undefined start();
+  undefined stop();
 };
 
 [Exposed=Window]
@@ -277,22 +277,22 @@ partial interface Document {
   [SameObject] readonly attribute HTMLCollection anchors;
   [SameObject] readonly attribute HTMLCollection applets;
 
-  void clear();
-  void captureEvents();
-  void releaseEvents();
+  undefined clear();
+  undefined captureEvents();
+  undefined releaseEvents();
 
   [SameObject] readonly attribute HTMLAllCollection all;
 };
 
 partial interface Window {
-  void captureEvents();
-  void releaseEvents();
+  undefined captureEvents();
+  undefined releaseEvents();
 
   [Replaceable, SameObject] readonly attribute External external;
 };
 
 [Exposed=Window]
 interface External {
-  void AddSearchProvider();
-  void IsSearchProviderInstalled();
+  undefined AddSearchProvider();
+  undefined IsSearchProviderInstalled();
 };

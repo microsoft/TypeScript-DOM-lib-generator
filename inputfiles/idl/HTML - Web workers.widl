@@ -3,7 +3,7 @@ interface WorkerGlobalScope : EventTarget {
   readonly attribute WorkerGlobalScope self;
   readonly attribute WorkerLocation location;
   readonly attribute WorkerNavigator navigator;
-  void importScripts(USVString... urls);
+  undefined importScripts(USVString... urls);
 
   attribute OnErrorEventHandler onerror;
   attribute EventHandler onlanguagechange;
@@ -17,10 +17,10 @@ interface WorkerGlobalScope : EventTarget {
 interface DedicatedWorkerGlobalScope : WorkerGlobalScope {
   [Replaceable] readonly attribute DOMString name;
 
-  void postMessage(any message, sequence<object> transfer);
-  void postMessage(any message, optional PostMessageOptions options = {});
+  undefined postMessage(any message, sequence<object> transfer);
+  undefined postMessage(any message, optional PostMessageOptions options = {});
 
-  void close();
+  undefined close();
 
   attribute EventHandler onmessage;
   attribute EventHandler onmessageerror;
@@ -30,7 +30,7 @@ interface DedicatedWorkerGlobalScope : WorkerGlobalScope {
 interface SharedWorkerGlobalScope : WorkerGlobalScope {
   [Replaceable] readonly attribute DOMString name;
 
-  void close();
+  undefined close();
 
   attribute EventHandler onconnect;
 };
@@ -39,14 +39,14 @@ interface mixin AbstractWorker {
   attribute EventHandler onerror;
 };
 
-[Exposed=(Window,Worker)]
+[Exposed=(Window,DedicatedWorker,SharedWorker)]
 interface Worker : EventTarget {
   constructor(USVString scriptURL, optional WorkerOptions options = {});
 
-  void terminate();
+  undefined terminate();
 
-  void postMessage(any message, sequence<object> transfer);
-  void postMessage(any message, optional PostMessageOptions options = {});
+  undefined postMessage(any message, sequence<object> transfer);
+  undefined postMessage(any message, optional PostMessageOptions options = {});
   attribute EventHandler onmessage;
   attribute EventHandler onmessageerror;
 };
@@ -61,7 +61,7 @@ enum WorkerType { "classic", "module" };
 
 Worker includes AbstractWorker;
 
-[Exposed=(Window,Worker)]
+[Exposed=Window]
 interface SharedWorker : EventTarget {
   constructor(USVString scriptURL, optional (DOMString or WorkerOptions) options = {});
 

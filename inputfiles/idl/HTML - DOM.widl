@@ -29,9 +29,9 @@ partial interface Document {
   // dynamic markup insertion
   [CEReactions] Document open(optional DOMString unused1, optional DOMString unused2); // both arguments are ignored
   WindowProxy? open(USVString url, DOMString name, DOMString features);
-  [CEReactions] void close();
-  [CEReactions] void write(DOMString... text);
-  [CEReactions] void writeln(DOMString... text);
+  [CEReactions] undefined close();
+  [CEReactions] undefined write(DOMString... text);
+  [CEReactions] undefined writeln(DOMString... text);
 
   // user interaction
   readonly attribute WindowProxy? defaultView;
@@ -68,7 +68,7 @@ interface HTMLElement : Element {
 
   // user interaction
   [CEReactions] attribute boolean hidden;
-  void click();
+  undefined click();
   [CEReactions] attribute DOMString accessKey;
   readonly attribute DOMString accessKeyLabel;
   [CEReactions] attribute boolean draggable;
@@ -96,14 +96,14 @@ interface mixin HTMLOrSVGElement {
 
   [CEReactions] attribute boolean autofocus;
   [CEReactions] attribute long tabIndex;
-  void focus(optional FocusOptions options = {});
-  void blur();
+  undefined focus(optional FocusOptions options = {});
+  undefined blur();
 };
 
 [Exposed=Window,
  LegacyOverrideBuiltIns]
 interface DOMStringMap {
   getter DOMString (DOMString name);
-  [CEReactions] setter void (DOMString name, DOMString value);
-  [CEReactions] deleter void (DOMString name);
+  [CEReactions] setter undefined (DOMString name, DOMString value);
+  [CEReactions] deleter undefined (DOMString name);
 };

@@ -1,9 +1,9 @@
 [Exposed=Window]
 interface CustomElementRegistry {
-  [CEReactions] void define(DOMString name, CustomElementConstructor constructor, optional ElementDefinitionOptions options = {});
-  any get(DOMString name);
-  Promise<void> whenDefined(DOMString name);
-  [CEReactions] void upgrade(Node root);
+  [CEReactions] undefined define(DOMString name, CustomElementConstructor constructor, optional ElementDefinitionOptions options = {});
+  (CustomElementConstructor or undefined) get(DOMString name);
+  Promise<CustomElementConstructor> whenDefined(DOMString name);
+  [CEReactions] undefined upgrade(Node root);
 };
 
 callback CustomElementConstructor = HTMLElement ();
@@ -16,12 +16,12 @@ dictionary ElementDefinitionOptions {
 interface ElementInternals {
   // Form-associated custom elements
 
-  void setFormValue((File or USVString or FormData)? value,
+  undefined setFormValue((File or USVString or FormData)? value,
                     optional (File or USVString or FormData)? state);
 
   readonly attribute HTMLFormElement? form;
 
-  void setValidity(ValidityStateFlags flags,
+  undefined setValidity(optional ValidityStateFlags flags = {},
                    optional DOMString message,
                    optional HTMLElement anchor);
   readonly attribute boolean willValidate;

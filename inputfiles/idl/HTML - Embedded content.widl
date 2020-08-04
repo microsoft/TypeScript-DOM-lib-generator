@@ -36,7 +36,7 @@ interface HTMLImageElement : HTMLElement {
   [CEReactions] attribute DOMString decoding;
   [CEReactions] attribute DOMString loading;
 
-  Promise<void> decode();
+  Promise<undefined> decode();
 
   // also has obsolete members
 };

@@ -18,6 +18,7 @@
     "media-ended": "Returns true if playback has reached the end of the media resource.",
     "media-defaultplaybackrate": "Returns the default rate of playback, for when the user is not fast-forwarding or reversing through the media resource.\n\nCan be set, to change the default rate of playback.\n\nThe default rate has no direct effect on playback, but if the user switches to a fast-forward mode, when they return to the normal playback mode, it is expected that the rate of playback will be returned to the default rate of playback.",
     "media-playbackrate": "Returns the current rate playback, where 1.0 is normal speed.\n\nCan be set, to change the rate of playback.",
+    "media-preservespitch": "Returns true if pitch-preserving algorithms are used when the playbackRate is not 1.0. The default value is true.\n\nCan be set to false to have the media resource's audio pitch change up or down depending on the playbackRate. This is useful for aesthetic and performance reasons.",
     "media-played": "Returns a TimeRanges object that represents the ranges of the media resource that the user agent has played.",
     "media-play": "Sets the paused attribute to false, loading the media resource and beginning playback if necessary. If the playback had ended, will restart it from the start.",
     "media-pause": "Sets the paused attribute to true, loading the media resource if necessary.",
