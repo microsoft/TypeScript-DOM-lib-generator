@@ -71,6 +71,9 @@ function extractIDL(dom: DocumentFragment) {
             }
             return !previous.classList.contains("atrisk") && !previous.textContent!.includes("IDL Index");
         });
+    elements.forEach(el => {
+        el.querySelector("span.idlHeader")?.remove();
+    });
     return elements.map(element => trimCommonIndentation(element.textContent!).trim()).join('\n\n');
 }
 
