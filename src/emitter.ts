@@ -815,7 +815,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
 
         // Emit constructor signature
         if (constructor) {
-            emitComments(constructor, printer.print);
+            emitComments(constructor, printer.printLine);
             emitSignatures(constructor, "", "new", printer.printLine);
         }
         else {
