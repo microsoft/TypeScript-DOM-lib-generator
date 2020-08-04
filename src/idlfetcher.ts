@@ -209,12 +209,14 @@ function retargetCommentKey(key: string, dom: DocumentFragment) {
         if (dfn.dataset.dfnFor) {
             parent = dfn.dataset.dfnFor;
         }
-        if (dfn.dataset.dfnType === 'constructor') {
+        if (member === 'constructor' || dfn.dataset.dfnType === 'constructor') {
             member = 'constructor';
         } else {
             member = dfn.textContent!.trim();
-            // Remove arguments from methods
+            // Remove arguments from methods like `createElement(localName, options)`
             member = member.replace(/\([\s\S]*$/, '');
+            // Remove target from method calls like `document.write(...)`
+            member = member.replace(/^[^.]+\./, '');
         }
     }
     if (!member) {
