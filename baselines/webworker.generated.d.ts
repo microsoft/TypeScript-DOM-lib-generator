@@ -180,6 +180,7 @@ interface ExtendableMessageEventInit extends ExtendableEventInit {
 
 interface FetchEventInit extends ExtendableEventInit {
     clientId?: string;
+    handled?: Promise<void>;
     preloadResponse?: Promise<any>;
     replacesClientId?: string;
     request: Request;
@@ -1517,6 +1518,7 @@ declare var ExtendableMessageEvent: {
 /** This is the event type for fetch events dispatched on the service worker global scope. It contains information about the fetch, including the request and how the receiver will treat the response. It provides the event.respondWith() method, which allows us to provide a response to this fetch. */
 interface FetchEvent extends ExtendableEvent {
     readonly clientId: string;
+    readonly handled: Promise<void>;
     readonly preloadResponse: Promise<any>;
     readonly replacesClientId: string;
     readonly request: Request;
@@ -2872,7 +2874,6 @@ interface Response extends Body {
     readonly redirected: boolean;
     readonly status: number;
     readonly statusText: string;
-    readonly trailer: Promise<Headers>;
     readonly type: ResponseType;
     readonly url: string;
     clone(): Response;
@@ -3005,24 +3006,8 @@ declare var ServiceWorkerRegistration: {
     new(): ServiceWorkerRegistration;
 };
 
-interface SharedWorker extends EventTarget, AbstractWorker {
-    /**
-     * Returns sharedWorker's MessagePort object which can be used to communicate with the global environment.
-     */
-    readonly port: MessagePort;
-    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var SharedWorker: {
-    prototype: SharedWorker;
-    new(scriptURL: string, options?: string | WorkerOptions): SharedWorker;
-};
-
 interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
-    "connect": MessageEvent;
+    "connect": Event;
 }
 
 interface SharedWorkerGlobalScope extends WorkerGlobalScope {
@@ -3030,7 +3015,7 @@ interface SharedWorkerGlobalScope extends WorkerGlobalScope {
      * Returns sharedWorkerGlobal's name, i.e. the value given to the SharedWorker constructor. Multiple SharedWorker objects can correspond to the same shared worker (and SharedWorkerGlobalScope), by reusing the same name.
      */
     readonly name: string;
-    onconnect: ((this: SharedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    onconnect: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
     /**
      * Aborts sharedWorkerGlobal.
      */
@@ -3108,14 +3093,14 @@ declare var SyncManager: {
 /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextDecoder extends TextDecoderCommon {
     /**
-     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented stream. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
+     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
      * 
      * ```
      * var string = "", decoder = new TextDecoder(encoding), buffer;
      * while(buffer = next_chunk()) {
      *   string += decoder.decode(buffer, {stream:true});
      * }
-     * string += decoder.decode(); // end-of-stream
+     * string += decoder.decode(); // end-of-queue
      * ```
      * 
      * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
@@ -3134,11 +3119,11 @@ interface TextDecoderCommon {
      */
     readonly encoding: string;
     /**
-     * Returns true if error mode is "fatal", and false otherwise.
+     * Returns true if error mode is "fatal", otherwise false.
      */
     readonly fatal: boolean;
     /**
-     * Returns true if ignore BOM flag is set, and false otherwise.
+     * Returns the value of ignore BOM.
      */
     readonly ignoreBOM: boolean;
 }
@@ -3160,7 +3145,7 @@ interface TextEncoder extends TextEncoderCommon {
      */
     encode(input?: string): Uint8Array;
     /**
-     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as a dictionary whereby read is the number of converted code units of source and written is the number of bytes modified in destination.
+     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      */
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
@@ -5408,6 +5393,7 @@ declare var WindowClient: {
 
 interface WindowOrWorkerGlobalScope {
     readonly caches: CacheStorage;
+    readonly crossOriginIsolated: boolean;
     readonly crypto: Crypto;
     readonly indexedDB: IDBFactory;
     readonly isSecureContext: boolean;
@@ -5643,7 +5629,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      * 
      * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
      */
-    send(body?: BodyInit | null): void;
+    send(body?: XMLHttpRequestBodyInit | null): void;
     /**
      * Combines a header in author request headers.
      * 
@@ -5853,7 +5839,7 @@ interface OnErrorEventHandlerNonNull {
 }
 
 interface PerformanceObserverCallback {
-    (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
+    (entries: PerformanceObserverEntryList, observer: PerformanceObserver, hasDroppedEntry?: boolean): void;
 }
 
 interface QueuingStrategySizeCallback<T = any> {
@@ -5943,6 +5929,7 @@ declare function importScripts(...urls: string[]): void;
  */
 declare function dispatchEvent(event: Event): boolean;
 declare var caches: CacheStorage;
+declare var crossOriginIsolated: boolean;
 declare var crypto: Crypto;
 declare var indexedDB: IDBFactory;
 declare var isSecureContext: boolean;
@@ -5965,7 +5952,8 @@ declare function addEventListener(type: string, listener: EventListenerOrEventLi
 declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type HeadersInit = Headers | string[][] | Record<string, string>;
-type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
+type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type BodyInit = ReadableStream<Uint8Array> | XMLHttpRequestBodyInit;
 type RequestInfo = Request | string;
 type BlobPart = BufferSource | Blob | string;
 type DOMHighResTimeStamp = number;
@@ -6026,7 +6014,7 @@ type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "u
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2";
-type PermissionName = "accelerometer" | "ambient-light-sensor" | "background-sync" | "bluetooth" | "camera" | "clipboard" | "device-info" | "geolocation" | "gyroscope" | "magnetometer" | "microphone" | "midi" | "notifications" | "persistent-storage" | "push" | "speaker";
+type PermissionName = "accelerometer" | "ambient-light-sensor" | "background-fetch" | "background-sync" | "bluetooth" | "camera" | "clipboard-read" | "clipboard-write" | "device-info" | "display-capture" | "geolocation" | "gyroscope" | "magnetometer" | "microphone" | "midi" | "nfc" | "notifications" | "persistent-storage" | "push" | "speaker";
 type PermissionState = "denied" | "granted" | "prompt";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
@@ -6034,7 +6022,7 @@ type PushPermissionState = "denied" | "granted" | "prompt";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
-type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
