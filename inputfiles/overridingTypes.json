@@ -1864,10 +1864,6 @@
                         {
                             "name": "isolationchange",
                             "type": "Event"
-                        },
-                        {
-                            "name": "statsended",
-                            "type": "RTCStatsEvent"
                         }
                     ]
                 }
