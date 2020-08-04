@@ -593,6 +593,9 @@ interface AbortController {
 
 declare var AbortController: {
     prototype: AbortController;
+    /**
+     * Returns a new controller whose signal is set to a newly created AbortSignal object.
+     */
     new(): AbortController;
 };
 
@@ -753,14 +756,23 @@ interface CanvasDrawImage {
 
 interface CanvasDrawPath {
     beginPath(): void;
+    /**
+     * Further constrains the clipping region to the current default path or the given path, using the given fill rule to determine what points are in the path.
+     */
     clip(fillRule?: CanvasFillRule): void;
     clip(path: Path2D, fillRule?: CanvasFillRule): void;
+    /**
+     * Fills the subpaths of the current default path or the given path with the current fill style, obeying the given fill rule.
+     */
     fill(fillRule?: CanvasFillRule): void;
     fill(path: Path2D, fillRule?: CanvasFillRule): void;
     isPointInPath(x: number, y: number, fillRule?: CanvasFillRule): boolean;
     isPointInPath(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
     isPointInStroke(x: number, y: number): boolean;
     isPointInStroke(path: Path2D, x: number, y: number): boolean;
+    /**
+     * Strokes the subpaths of the current default path or the given path with the current stroke style.
+     */
     stroke(): void;
     stroke(path: Path2D): void;
 }
@@ -774,6 +786,11 @@ interface CanvasFillStrokeStyles {
 }
 
 interface CanvasFilters {
+    /**
+     * Returns the current filter.
+     * 
+     * Can be set, to change the filter. Values that cannot be parsed as a <filter-function-list> value are ignored.
+     */
     filter: string;
 }
 
@@ -806,14 +823,27 @@ interface CanvasImageSmoothing {
 }
 
 interface CanvasPath {
+    /**
+     * Adds points to the subpath such that the arc described by the circumference of the circle described by the arguments, starting at the given start angle and ending at the given end angle, going in the given direction (defaulting to clockwise), is added to the path, connected to the previous point by a straight line.
+     * 
+     * Throws an "IndexSizeError" DOMException if the given radius is negative.
+     */
     arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
     arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
     bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
     closePath(): void;
+    /**
+     * Adds points to the subpath such that the arc described by the circumference of the ellipse described by the arguments, starting at the given start angle and ending at the given end angle, going in the given direction (defaulting to clockwise), is added to the path, connected to the previous point by a straight line.
+     * 
+     * Throws an "IndexSizeError" DOMException if the given radius is negative.
+     */
     ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
     lineTo(x: number, y: number): void;
     moveTo(x: number, y: number): void;
     quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    /**
+     * Adds a new closed subpath to the path, representing the given rectangle.
+     */
     rect(x: number, y: number, w: number, h: number): void;
 }
 
@@ -854,7 +884,13 @@ interface CanvasShadowStyles {
 }
 
 interface CanvasState {
+    /**
+     * Pops the top state on the stack, restoring the context to that state.
+     */
     restore(): void;
+    /**
+     * Pushes the current state onto the stack.
+     */
     save(): void;
 }
 
@@ -865,7 +901,19 @@ interface CanvasText {
 }
 
 interface CanvasTextDrawingStyles {
+    /**
+     * Returns the current directionality.
+     * 
+     * Can be set, to change the directionality. The possible values and their meanings are given below. Other values are ignored. The default is "inherit".
+     */
     direction: CanvasDirection;
+    /**
+     * Returns the current font settings.
+     * 
+     * Can be set, to change the font. The syntax is the same as for the CSS 'font' property; values that cannot be parsed as CSS font values are ignored.
+     * 
+     * Relative keywords and lengths are computed relative to the font of the canvas element.
+     */
     font: string;
     textAlign: CanvasTextAlign;
     textBaseline: CanvasTextBaseline;
@@ -874,11 +922,23 @@ interface CanvasTextDrawingStyles {
 interface CanvasTransform {
     getTransform(): DOMMatrix;
     resetTransform(): void;
+    /**
+     * Changes the current transformation matrix to apply a rotation transformation with the given characteristics. The angle is in radians.
+     */
     rotate(angle: number): void;
+    /**
+     * Changes the current transformation matrix to apply a scaling transformation with the given characteristics.
+     */
     scale(x: number, y: number): void;
     setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
     setTransform(transform?: DOMMatrix2DInit): void;
+    /**
+     * Changes the current transformation matrix to apply the matrix given by the arguments as described below.
+     */
     transform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    /**
+     * Changes the current transformation matrix to apply a translation transformation with the given characteristics.
+     */
     translate(x: number, y: number): void;
 }
 
@@ -984,6 +1044,9 @@ interface CustomEvent<T = any> extends Event {
 
 declare var CustomEvent: {
     prototype: CustomEvent;
+    /**
+     * Works analogously to the constructor for Event except that the eventInitDict argument now allows for setting the detail attribute too.
+     */
     new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
@@ -1405,6 +1468,9 @@ interface Event {
 
 declare var Event: {
     prototype: Event;
+    /**
+     * Returns a new event whose type attribute value is set to type. The eventInitDict argument allows for setting the bubbles and cancelable attributes via object members of the same name.
+     */
     new(type: string, eventInitDict?: EventInit): Event;
     readonly AT_TARGET: number;
     readonly BUBBLING_PHASE: number;
@@ -1487,6 +1553,9 @@ interface EventTarget {
 
 declare var EventTarget: {
     prototype: EventTarget;
+    /**
+     * Creates a new EventTarget object, which can be used by developers to dispatch and listen for events.
+     */
     new(): EventTarget;
 };
 
