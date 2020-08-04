@@ -3096,7 +3096,7 @@
     "typedefs": {
         "typedef": [
             {
-                "override-type": "Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string",
+                "override-type": "ReadableStream<Uint8Array> | XMLHttpRequestBodyInit",
                 "new-type": "BodyInit"
             },
             {
