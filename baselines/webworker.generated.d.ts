@@ -580,7 +580,7 @@ interface ANGLE_instanced_arrays {
     readonly VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE: GLenum;
 }
 
-/** A controller object that allows you to abort one or more DOM requests as and when desired. */
+/** A controller object that allows you to abort one or more Web requests as and when desired. */
 interface AbortController {
     /**
      * Returns the AbortSignal object associated with this object.
@@ -644,7 +644,7 @@ interface AnimationFrameProvider {
     requestAnimationFrame(callback: FrameRequestCallback): number;
 }
 
-/** A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system. */
+/** A blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data. */
 interface Blob {
     readonly size: number;
     readonly type: string;
@@ -940,7 +940,7 @@ interface ConcatParams extends Algorithm {
     publicInfo?: Uint8Array;
 }
 
-/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** This Streams API interface provides a built-in chunk counting queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
     highWaterMark: number;
     size(chunk: any): 1;
@@ -962,7 +962,7 @@ declare var Crypto: {
     new(): Crypto;
 };
 
-/** The CryptoKey dictionary of the Web Crypto API represents a cryptographic key. */
+/** This Web Crypto API interface represents a cryptographic key obtained from one of the SubtleCrypto methods generateKey(), deriveKey(), importKey(), or unwrapKey(). */
 interface CryptoKey {
     readonly algorithm: KeyAlgorithm;
     readonly extractable: boolean;
@@ -988,7 +988,7 @@ declare var CustomEvent: {
     new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
-/** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
+/** An abnormal event (called an exception) that occurs as a result of calling a method or accessing a property of a web API. */
 interface DOMException {
     readonly code: number;
     readonly message: string;
@@ -1501,7 +1501,7 @@ declare var ExtendableEvent: {
     new(type: string, eventInitDict?: ExtendableEventInit): ExtendableEvent;
 };
 
-/** This ServiceWorker API interface represents the event object of a message event fired on a service worker (when a channel message is received on the ServiceWorkerGlobalScope from another context) — extends the lifetime of such events. */
+/** This Service Worker API interface represents the event object of a message event fired on a service worker (when a message is received on the ServiceWorkerGlobalScope from another context) — extends the lifetime of such events. */
 interface ExtendableMessageEvent extends ExtendableEvent {
     readonly data: any;
     readonly lastEventId: string;
@@ -1596,7 +1596,7 @@ declare var FileReader: {
     readonly LOADING: number;
 };
 
-/** Allows to read File or Blob objects in a synchronous way. */
+/** Allows to read File or Blob objects synchronously. */
 interface FileReaderSync {
     readAsArrayBuffer(blob: Blob): ArrayBuffer;
     readAsBinaryString(blob: Blob): string;
@@ -1647,7 +1647,7 @@ interface GenericTransformStream {
     readonly writable: WritableStream;
 }
 
-/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers. */
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -2890,7 +2890,7 @@ interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
     "statechange": Event;
 }
 
-/** This ServiceWorker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
+/** This Service Worker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
 interface ServiceWorker extends EventTarget, AbstractWorker {
     onstatechange: ((this: ServiceWorker, ev: Event) => any) | null;
     readonly scriptURL: string;
@@ -2914,7 +2914,7 @@ interface ServiceWorkerContainerEventMap {
     "messageerror": MessageEvent;
 }
 
-/** The ServiceWorkerContainer interface of the ServiceWorker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations. */
+/** The ServiceWorkerContainer interface of the Service Worker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations. */
 interface ServiceWorkerContainer extends EventTarget {
     readonly controller: ServiceWorker | null;
     oncontrollerchange: ((this: ServiceWorkerContainer, ev: Event) => any) | null;
@@ -2949,7 +2949,7 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "sync": SyncEvent;
 }
 
-/** This ServiceWorker API interface represents the global execution context of a service worker. */
+/** This Service Worker API interface represents the global execution context of a service worker. */
 interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     readonly clients: Clients;
     onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
@@ -2980,7 +2980,7 @@ interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
 }
 
-/** This ServiceWorker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
+/** This Service Worker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
 interface ServiceWorkerRegistration extends EventTarget {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
@@ -3041,7 +3041,7 @@ declare var StorageManager: {
     new(): StorageManager;
 };
 
-/** This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
+/** This Web Crypto API interface provides a number of low-level cryptographic functions. Access to the features of SubtleCrypto is obtained through the subtle property of the Crypto object you get from Window.crypto. */
 interface SubtleCrypto {
     decrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>;
     deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>;
@@ -3090,7 +3090,7 @@ declare var SyncManager: {
     new(): SyncManager;
 };
 
-/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/** A decoder for a specific text encoding, such as UTF-8, ISO-8859-2, KOI8-R, GBK, etc. A decoder takes a stream of bytes as input and emits a stream of code points. */
 interface TextDecoder extends TextDecoderCommon {
     /**
      * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
@@ -3138,7 +3138,7 @@ declare var TextDecoderStream: {
     new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
 };
 
-/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/** TextEncoder takes a stream of code points as input and emits a stream of UTF-8 bytes. */
 interface TextEncoder extends TextEncoderCommon {
     /**
      * Returns the result of running UTF-8's encoder.
@@ -3172,7 +3172,7 @@ declare var TextEncoderStream: {
     new(): TextEncoderStream;
 };
 
-/** The dimensions of a piece of text in the canvas, as created by the CanvasRenderingContext2D.measureText() method. */
+/** The dimensions of a piece of text in the canvas; a textMetrics() instance can be retrieved using the CanvasRenderingContext2D.measureText() method. */
 interface TextMetrics {
     /**
      * Returns the measurement described below.
@@ -3251,7 +3251,7 @@ declare var TransformStreamDefaultController: {
     new(): TransformStreamDefaultController;
 };
 
-/** The URL interface represents an object providing static methods used for creating object URLs. */
+/** Used to parse, construct, normalize, and encode URLs. It works by providing properties which allow you to easily read and modify the components of a URL. */
 interface URL {
     hash: string;
     host: string;
@@ -5377,7 +5377,7 @@ declare var WebSocket: {
     readonly OPEN: number;
 };
 
-/** This ServiceWorker API interface represents the scope of a service worker client that is a document in a browser context, controlled by an active worker. The service worker client independently selects and uses a service worker for its own loading and sub-resources. */
+/** This ServiceWorker API interface represents the scope of a service worker client that is a document in a browsing context, controlled by an active worker. The service worker client independently selects and uses a service worker for its own loading and sub-resources. */
 interface WindowClient extends Client {
     readonly ancestorOrigins: ReadonlyArray<string>;
     readonly focused: boolean;
@@ -5416,7 +5416,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
     "messageerror": MessageEvent;
 }
 
-/** This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
+/** This Web Workers API interface represents a background task that can be created via script, which can send messages back to its creator. */
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
@@ -5533,7 +5533,7 @@ declare var WritableStreamDefaultController: {
     new(): WritableStreamDefaultController;
 };
 
-/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
+/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
     readonly closed: Promise<void>;
     readonly desiredSize: number | null;
@@ -5553,7 +5553,7 @@ interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
     "readystatechange": Event;
 }
 
-/** Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing. */
+/** XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing. */
 interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
     /**

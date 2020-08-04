@@ -1935,7 +1935,7 @@ interface ANGLE_instanced_arrays {
     readonly VERTEX_ATTRIB_ARRAY_DIVISOR_ANGLE: GLenum;
 }
 
-/** A controller object that allows you to abort one or more DOM requests as and when desired. */
+/** A controller object that allows you to abort one or more Web requests as and when desired. */
 interface AbortController {
     /**
      * Returns the AbortSignal object associated with this object.
@@ -2186,7 +2186,7 @@ declare var ApplicationCache: {
     readonly UPDATEREADY: number;
 };
 
-/** A DOM element's attribute as an object. In most DOM methods, you will probably directly retrieve the attribute as a string (e.g., Element.getAttribute(), but certain functions (e.g., Element.getAttributeNode()) or means of iterating give Attr types. */
+/** One of a DOM element's attributes as an object. In most DOM methods, you will directly retrieve the attribute as a string (e.g., Element.getAttribute()), but certain functions (e.g., Element.getAttributeNode()) or means of iterating return Attr types. */
 interface Attr extends Node {
     readonly localName: string;
     readonly name: string;
@@ -2262,7 +2262,7 @@ declare var AudioContext: {
     new(contextOptions?: AudioContextOptions): AudioContext;
 };
 
-/** AudioDestinationNode has no output (as it is the output, no more AudioNode can be linked after it in the audio graph) and one input. The number of channels in the input must be between 0 and the maxChannelCount value or an exception is raised. */
+/** The end destination of an audio graph in a given context — usually the speakers of your device. It can also be the node that will "record" the audio data when used with an OfflineAudioContext. */
 interface AudioDestinationNode extends AudioNode {
     readonly maxChannelCount: number;
 }
@@ -2294,7 +2294,7 @@ declare var AudioListener: {
     new(): AudioListener;
 };
 
-/** A generic interface for representing an audio processing module. Examples include: */
+/** A generic interface for representing an audio processing module. */
 interface AudioNode extends EventTarget {
     channelCount: number;
     channelCountMode: ChannelCountMode;
@@ -2533,7 +2533,7 @@ declare var BiquadFilterNode: {
     new(context: BaseAudioContext, options?: BiquadFilterOptions): BiquadFilterNode;
 };
 
-/** A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system. */
+/** A blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data. */
 interface Blob {
     readonly size: number;
     readonly type: string;
@@ -2662,7 +2662,7 @@ declare var CSSKeyframeRule: {
     new(): CSSKeyframeRule;
 };
 
-/** An object representing a complete set of keyframes for a CSS animation. It corresponds to the contains of a whole @keyframes at-rule. It implements the CSSRule interface with a type value of 7 (CSSRule.KEYFRAMES_RULE). */
+/** An object representing a complete set of keyframes for a CSS animation. It corresponds to the contents of a whole @keyframes at-rule. It implements the CSSRule interface with a type value of 7 (CSSRule.KEYFRAMES_RULE). */
 interface CSSKeyframesRule extends CSSRule {
     readonly cssRules: CSSRuleList;
     name: string;
@@ -3248,7 +3248,7 @@ declare var CSSStyleRule: {
     new(): CSSStyleRule;
 };
 
-/** A single CSS style sheet. It inherits properties and methods from its parent, StyleSheet. */
+/** A single CSS stylesheet, and lets you inspect and modify the list of rules contained in the stylesheet. */
 interface CSSStyleSheet extends StyleSheet {
     readonly cssRules: CSSRuleList;
     readonly ownerRule: CSSRule | null;
@@ -3651,7 +3651,7 @@ declare var ConvolverNode: {
     new(context: BaseAudioContext, options?: ConvolverOptions): ConvolverNode;
 };
 
-/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/** This Streams API interface provides a built-in chunk counting queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
     highWaterMark: number;
     size(chunk: any): 1;
@@ -3695,7 +3695,7 @@ declare var Crypto: {
     new(): Crypto;
 };
 
-/** The CryptoKey dictionary of the Web Crypto API represents a cryptographic key. */
+/** This Web Crypto API interface represents a cryptographic key obtained from one of the SubtleCrypto methods generateKey(), deriveKey(), importKey(), or unwrapKey(). */
 interface CryptoKey {
     readonly algorithm: KeyAlgorithm;
     readonly extractable: boolean;
@@ -3755,7 +3755,7 @@ declare var DOMError: {
     new(): DOMError;
 };
 
-/** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
+/** An abnormal event (called an exception) that occurs as a result of calling a method or accessing a property of a web API. */
 interface DOMException {
     readonly code: number;
     readonly message: string;
@@ -4083,7 +4083,7 @@ declare var DOMStringList: {
     new(): DOMStringList;
 };
 
-/** Used by the dataset HTML attribute to represent data for custom attributes added to elements. */
+/** Used for the HTMLElement.dataset attribute, to represent data for custom attributes added to elements. */
 interface DOMStringMap {
     [name: string]: string | undefined;
 }
@@ -4308,7 +4308,7 @@ declare var DelayNode: {
     new(context: BaseAudioContext, options?: DelayOptions): DelayNode;
 };
 
-/** Provides information about the amount of acceleration the device is experiencing along all three axes. */
+/** REDIRECT  DeviceMotionEventAcceleration */
 interface DeviceAcceleration {
     readonly x: number | null;
     readonly y: number | null;
@@ -4370,7 +4370,7 @@ declare var DeviceOrientationEvent: {
     requestPermission(): Promise<PermissionState>;
 };
 
-/** Provides information about the rate at which the device is rotating around all three axes. */
+/** REDIRECT DeviceMotionEventRotationRate */
 interface DeviceRotationRate {
     readonly alpha: number | null;
     readonly beta: number | null;
@@ -4985,7 +4985,7 @@ interface DocumentEvent {
     createEvent(eventInterface: string): Event;
 }
 
-/** A minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn't part of the active document tree structure, changes made to the fragment don't affect the document, cause reflow, or incur any performance impact that can occur when changes are made. */
+/** A minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. */
 interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
     readonly ownerDocument: Document;
     getElementById(elementId: string): HTMLElement | null;
@@ -5094,7 +5094,7 @@ interface ElementEventMap {
     "fullscreenerror": Event;
 }
 
-/** Element is the most general base class from which all objects in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element. */
+/** Element is the most general base class from which all element objects (i.e. objects that represent elements) in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element. */
 interface Element extends Node, Animatable, ChildNode, GeometryUtils, InnerHTML, NonDocumentTypeChildNode, ParentNode, Slottable {
     readonly assignedSlot: HTMLSlotElement | null;
     readonly attributes: NamedNodeMap;
@@ -5532,7 +5532,7 @@ declare var FileReader: {
     readonly LOADING: number;
 };
 
-/** Focus-related events like focus, blur, focusin, or focusout. */
+/** Focus-related events, including focus, blur, focusin, and focusout. */
 interface FocusEvent extends UIEvent {
     readonly relatedTarget: EventTarget | null;
 }
@@ -6126,7 +6126,7 @@ declare var HTMLAllCollection: {
     new(): HTMLAllCollection;
 };
 
-/** Hyperlink elements and provides special properties and methods (beyond those of the regular HTMLElement object interface that they inherit from) for manipulating the layout and presentation of such elements. */
+/** Hyperlink elements and provides special properties and methods (beyond those of the regular HTMLElement object interface that they inherit from) for manipulating the layout and presentation of such elements. This interface corresponds to <a> element; not to be confused with <link>, which is represented by HTMLLinkElement) */
 interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
     /**
      * Sets or retrieves the character set used to encode the object.
@@ -6274,7 +6274,7 @@ declare var HTMLAreaElement: {
     new(): HTMLAreaElement;
 };
 
-/** Provides access to the properties of <audio> elements, as well as methods to manipulate them. It derives from the HTMLMediaElement interface. */
+/** Provides access to the properties of <audio> elements, as well as methods to manipulate them. */
 interface HTMLAudioElement extends HTMLMediaElement {
     addEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLAudioElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6626,7 +6626,7 @@ declare var HTMLDivElement: {
     new(): HTMLDivElement;
 };
 
-/** The HTMLDocument property of Window objects is an alias that browsers expose for the Document interface object. */
+/** The HTMLDocument interface, which may be accessed through the Window.HTMLDocument property, extends the Window.HTMLDocument property to include methods and properties that are specific to HTML documents. */
 interface HTMLDocument extends Document {
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: HTMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6786,7 +6786,7 @@ declare var HTMLFormControlsCollection: {
     new(): HTMLFormControlsCollection;
 };
 
-/** A <form> element in the DOM; it allows access to and in some cases modification of aspects of the form, as well as access to its component elements. */
+/** A <form> element in the DOM. It allows access to—and, in some cases, modification of—aspects of the form, as well as access to its component elements. */
 interface HTMLFormElement extends HTMLElement {
     /**
      * Sets or retrieves a list of character encodings for input data that must be accepted by the server processing the form.
@@ -6991,7 +6991,7 @@ declare var HTMLHeadElement: {
     new(): HTMLHeadElement;
 };
 
-/** The different heading elements. It inherits methods and properties from the HTMLElement interface. */
+/** The different heading elements, <h1> through <h6>. It inherits methods and properties from the HTMLElement interface. */
 interface HTMLHeadingElement extends HTMLElement {
     /**
      * Sets or retrieves a value that indicates the table alignment.
@@ -7120,7 +7120,7 @@ declare var HTMLIFrameElement: {
     new(): HTMLIFrameElement;
 };
 
-/** Provides special properties and methods for manipulating <img> elements. */
+/** An HTML <img> element, providing the properties and methods used to manipulate image elements. */
 interface HTMLImageElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
@@ -7475,7 +7475,7 @@ declare var HTMLLegendElement: {
     new(): HTMLLegendElement;
 };
 
-/** Reference information for external resources and the relationship of those resources to a document and vice-versa. This object inherits all of the properties and methods of the HTMLElement interface. */
+/** Reference information for external resources and the relationship of those resources to a document and vice-versa (corresponds to <link> element; not to be confused with <a>, which is represented by HTMLAnchorElement). This object inherits all of the properties and methods of the HTMLElement interface. */
 interface HTMLLinkElement extends HTMLElement, LinkStyle {
     as: string;
     /**
@@ -7609,7 +7609,7 @@ interface HTMLMediaElementEventMap extends HTMLElementEventMap {
     "waitingforkey": Event;
 }
 
-/** Adds to HTMLElement the properties and methods needed to support basic media-related capabilities that are common to audio and video. */
+/** Adds to HTMLElement the properties and methods needed to support basic media-related capabilities that are common to audio and video. */
 interface HTMLMediaElement extends HTMLElement {
     /**
      * Gets or sets a value that indicates whether to start playing the media automatically.
@@ -7748,6 +7748,7 @@ declare var HTMLMediaElement: {
     readonly NETWORK_NO_SOURCE: number;
 };
 
+/** Provides special properties (beyond those defined on the regular HTMLElement interface it also has available to it by inheritance) for manipulating <menu> elements. */
 interface HTMLMenuElement extends HTMLElement {
     /** @deprecated */
     compact: boolean;
@@ -8022,7 +8023,7 @@ declare var HTMLOptionElement: {
     new(): HTMLOptionElement;
 };
 
-/** HTMLOptionsCollection is an interface representing a collection of HTML option elements (in document order) and offers methods and properties for traversing the list as well as optionally altering its items. This type is returned solely by the "options" property of select. */
+/** This interface inherits the methods of its parent, HTMLCollection. */
 interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
     /**
      * Returns the number of elements in the collection.
@@ -8944,7 +8945,7 @@ declare var HTMLTitleElement: {
     new(): HTMLTitleElement;
 };
 
-/** The HTMLTrackElement */
+/** An HTML <track> element within the DOM. This element can be used as a child of either <audio> or <video> to specify a text track containing information such as closed captions or subtitles. */
 interface HTMLTrackElement extends HTMLElement {
     default: boolean;
     kind: string;
@@ -9053,7 +9054,7 @@ declare var HashChangeEvent: {
     new(type: string, eventInitDict?: HashChangeEventInit): HashChangeEvent;
 };
 
-/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
+/** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers. */
 interface Headers {
     append(name: string, value: string): void;
     delete(name: string): void;
@@ -10088,7 +10089,7 @@ declare var MSStream: {
     new(): MSStream;
 };
 
-/** The MediaDevicesInfo interface contains information that describes a single media input or output device. */
+/** Contains information that describes a single media input or output device. */
 interface MediaDeviceInfo {
     readonly deviceId: string;
     readonly groupId: string;
@@ -10123,7 +10124,7 @@ declare var MediaDevices: {
     new(): MediaDevices;
 };
 
-/** A MediaElementSourceNode has no inputs and exactly one output, and is created using the AudioContext.createMediaElementSource method. The amount of channels in the output equals the number of channels of the audio referenced by the HTMLMediaElement used in the creation of the node, or is 1 if the HTMLMediaElement has no audio. */
+/** A MediaElementSourceNode has no inputs and exactly one output, and is created using the AudioContext.createMediaElementSource() method. The amount of channels in the output equals the number of channels of the audio referenced by the HTMLMediaElement used in the creation of the node, or is 1 if the HTMLMediaElement has no audio. */
 interface MediaElementAudioSourceNode extends AudioNode {
     readonly mediaElement: HTMLMediaElement;
 }
@@ -10215,7 +10216,7 @@ declare var MediaKeyStatusMap: {
     new(): MediaKeyStatusMap;
 };
 
-/** This EncryptedMediaExtensions API interface provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess method. */
+/** This EncryptedMediaExtensions API interface provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess() method. */
 interface MediaKeySystemAccess {
     readonly keySystem: string;
     createMediaKeys(): Promise<MediaKeys>;
@@ -10227,7 +10228,7 @@ declare var MediaKeySystemAccess: {
     new(): MediaKeySystemAccess;
 };
 
-/** This EncryptedMediaExtensions API interface the represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback. */
+/** This EncryptedMediaExtensions API interface represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback. */
 interface MediaKeys {
     createSession(sessionType?: MediaKeySessionType): MediaKeySession;
     setServerCertificate(serverCertificate: BufferSource): Promise<boolean>;
@@ -10238,6 +10239,7 @@ declare var MediaKeys: {
     new(): MediaKeys;
 };
 
+/** The media queries of a stylesheet, e.g. those set using a <link> element's media attribute. */
 interface MediaList {
     readonly length: number;
     mediaText: string;
@@ -10257,7 +10259,7 @@ interface MediaQueryListEventMap {
     "change": MediaQueryListEvent;
 }
 
-/** Stores information on a media query applied to a document, and handles sending notifications to listeners when the media query state change (i.e. when the media query test starts or stops evaluating to true). */
+/** Stores information on a media query applied to a document, with support for both immediate and event-driven matching against the state of the document. */
 interface MediaQueryList extends EventTarget {
     readonly matches: boolean;
     readonly media: string;
@@ -10324,7 +10326,7 @@ interface MediaStreamEventMap {
     "removetrack": MediaStreamTrackEvent;
 }
 
-/** A stream of media content. A stream consists of several tracks such as video or audio tracks. Each track is specified as an instance of MediaStreamTrack. */
+/** A stream of media content. A stream consists of several tracks such as video or audio tracks. Each track is specified as an instance of MediaStreamTrack. */
 interface MediaStream extends EventTarget {
     readonly active: boolean;
     readonly id: string;
@@ -10624,7 +10626,7 @@ declare var MutationEvent: {
     readonly REMOVAL: number;
 };
 
-/** Provides the ability to watch for changes being made to the DOM tree. It is designed as a replacement for the older Mutation Events feature which was part of the DOM3 Events specification. */
+/** Provides the ability to watch for changes being made to the DOM tree. It is designed as a replacement for the older Mutation Events feature, which was part of the DOM3 Events specification. */
 interface MutationObserver {
     /**
      * Stops observer from observing any mutations. Until the observe() method is used again, observer's callback will not be invoked.
@@ -10804,7 +10806,7 @@ interface NavigatorStorage {
     readonly storage: StorageManager;
 }
 
-/** Node is an interface from which a number of DOM API object types inherit. It allows those types to be treated similarly; for example, inheriting the same set of methods, or being tested in the same way. */
+/** The DOM Node interface is an abstract base class upon which many other DOM API objects are based, thus letting those object types to be used similarly and often interchangeably. */
 interface Node extends EventTarget {
     /**
      * Returns node's node document's document base URL.
@@ -11015,7 +11017,7 @@ declare var Node: {
     readonly TEXT_NODE: number;
 };
 
-/** An object used to filter the nodes in a NodeIterator or TreeWalker. They don't know anything about the DOM or how to traverse nodes; they just know how to evaluate a single node against the provided filter. */
+/** An object used to filter the nodes in a NodeIterator or TreeWalker. A NodeFilter knows nothing about the document or traversing nodes; it only knows how to evaluate a single node against the provided filter. */
 interface NodeFilter {
     acceptNode(node: Node): number;
 }
@@ -11315,7 +11317,7 @@ declare var OverflowEvent: {
     readonly VERTICAL: number;
 };
 
-/** The PageTransitionEvent is fired when a document is being loaded or unloaded. */
+/** Object is available inside handler functions for the pageshow and pagehide events, fired when a document is being loaded or unloaded. */
 interface PageTransitionEvent extends Event {
     /**
      * For the pageshow event, returns false if the page is newly being loaded (and the load event will fire). Otherwise, returns true.
@@ -11444,7 +11446,7 @@ interface PaymentRequestEventMap {
     "shippingoptionchange": Event;
 }
 
-/** This Payment Request API interface is the primary access point into the API, and lets web content and apps accept payments from the end user. */
+/** The Payment Request API's PaymentRequest interface the primary access point into the API, and lets web content and apps accept payments from the end user on behalf of the operator of the site or the publisher of the app. */
 interface PaymentRequest extends EventTarget {
     readonly id: string;
     onshippingaddresschange: ((this: PaymentRequest, ev: Event) => any) | null;
@@ -11466,7 +11468,7 @@ declare var PaymentRequest: {
     new(methodData: PaymentMethodData[], details: PaymentDetailsInit, options?: PaymentOptions): PaymentRequest;
 };
 
-/** This Payment Request API interface enables a web page to update the details of a PaymentRequest in response to a user action. */
+/** Used for events sent to a PaymentRequest instance when changes are made to shipping-related information for a pending PaymentRequest. Those events are: */
 interface PaymentRequestUpdateEvent extends Event {
     updateWith(detailsPromise: PaymentDetailsUpdate | Promise<PaymentDetailsUpdate>): void;
 }
@@ -11843,7 +11845,7 @@ declare var PopStateEvent: {
     new(type: string, eventInitDict?: PopStateEventInit): PopStateEvent;
 };
 
-/** A processing instruction embeds application-specific instructions in XML which can be ignored by other applications that don't recognize them. */
+/** A processing instruction; that is, a Node which embeds an instruction targeting a specific application but that can be ignored by any other applications which don't recognize the instruction. */
 interface ProcessingInstruction extends CharacterData, LinkStyle {
     readonly ownerDocument: Document;
     readonly target: string;
@@ -12022,6 +12024,7 @@ interface RTCDtlsTransportEventMap {
     "statechange": Event;
 }
 
+/** Provides access to information about the Datagram Transport Layer Security (DTLS) transport over which a RTCPeerConnection's RTP and RTCP packets are sent and received by its RTCRtpSender and RTCRtpReceiver objects. */
 interface RTCDtlsTransport extends EventTarget {
     readonly iceTransport: RTCIceTransport;
     onerror: ((this: RTCDtlsTransport, ev: RTCErrorEvent) => any) | null;
@@ -12289,7 +12292,7 @@ declare var RTCPeerConnectionIceErrorEvent: {
     new(type: string, eventInitDict: RTCPeerConnectionIceErrorEventInit): RTCPeerConnectionIceErrorEvent;
 };
 
-/** Events that occurs in relation to ICE candidates with the target, usually an RTCPeerConnection. Only one event is of this type: icecandidate. */
+/** Events that occurs in relation to ICE candidates with the target, usually an RTCPeerConnection. */
 interface RTCPeerConnectionIceEvent extends Event {
     readonly candidate: RTCIceCandidate | null;
     readonly url: string | null;
@@ -12916,7 +12919,7 @@ declare var SVGAnimationElement: {
     new(): SVGAnimationElement;
 };
 
-/** An interface for the <circle> element. The circle element is defined by the cx and cy attributes that denote the coordinates of the centre of the circle. */
+/** An interface for the <circle> element. */
 interface SVGCircleElement extends SVGGeometryElement {
     readonly cx: SVGAnimatedLength;
     readonly cy: SVGAnimatedLength;
@@ -14882,7 +14885,7 @@ declare var SecurityPolicyViolationEvent: {
     new(type: string, eventInitDict?: SecurityPolicyViolationEventInit): SecurityPolicyViolationEvent;
 };
 
-/** A Selection object represents the range of text selected by the user or the current position of the caret. To obtain a Selection object for examination or modification, call Window.getSelection(). */
+/** The range of text selected by the user or the current position of the caret. To obtain a Selection object for examination or manipulation, call window.getSelection(). */
 interface Selection {
     readonly anchorNode: Node | null;
     readonly anchorOffset: number;
@@ -14924,7 +14927,7 @@ interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
     "statechange": Event;
 }
 
-/** This ServiceWorker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
+/** This Service Worker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object. */
 interface ServiceWorker extends EventTarget, AbstractWorker {
     onstatechange: ((this: ServiceWorker, ev: Event) => any) | null;
     readonly scriptURL: string;
@@ -14948,7 +14951,7 @@ interface ServiceWorkerContainerEventMap {
     "messageerror": MessageEvent;
 }
 
-/** The ServiceWorkerContainer interface of the ServiceWorker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations. */
+/** The ServiceWorkerContainer interface of the Service Worker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations. */
 interface ServiceWorkerContainer extends EventTarget {
     readonly controller: ServiceWorker | null;
     oncontrollerchange: ((this: ServiceWorkerContainer, ev: Event) => any) | null;
@@ -14988,7 +14991,7 @@ interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
 }
 
-/** This ServiceWorker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
+/** This Service Worker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin. */
 interface ServiceWorkerRegistration extends EventTarget {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
@@ -15464,7 +15467,7 @@ declare var SubmitEvent: {
     new(type: string, eventInitDict?: SubmitEventInit): SubmitEvent;
 };
 
-/** This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
+/** This Web Crypto API interface provides a number of low-level cryptographic functions. Access to the features of SubtleCrypto is obtained through the subtle property of the Crypto object you get from Window.crypto. */
 interface SubtleCrypto {
     decrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>;
     deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>;
@@ -15502,7 +15505,7 @@ declare var SyncManager: {
     new(): SyncManager;
 };
 
-/** The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children. */
+/** The textual content of Element or Attr.  */
 interface Text extends CharacterData, GeometryUtils, Slottable {
     readonly assignedSlot: HTMLSlotElement | null;
     /**
@@ -15520,7 +15523,7 @@ declare var Text: {
     new(data?: string): Text;
 };
 
-/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/** A decoder for a specific text encoding, such as UTF-8, ISO-8859-2, KOI8-R, GBK, etc. A decoder takes a stream of bytes as input and emits a stream of code points. */
 interface TextDecoder extends TextDecoderCommon {
     /**
      * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
@@ -15568,7 +15571,7 @@ declare var TextDecoderStream: {
     new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
 };
 
-/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/** TextEncoder takes a stream of code points as input and emits a stream of UTF-8 bytes. */
 interface TextEncoder extends TextEncoderCommon {
     /**
      * Returns the result of running UTF-8's encoder.
@@ -15632,7 +15635,7 @@ declare var TextEvent: {
     readonly DOM_INPUT_METHOD_VOICE: number;
 };
 
-/** The dimensions of a piece of text in the canvas, as created by the CanvasRenderingContext2D.measureText() method. */
+/** The dimensions of a piece of text in the canvas; a textMetrics() instance can be retrieved using the CanvasRenderingContext2D.measureText() method. */
 interface TextMetrics {
     /**
      * Returns the measurement described below.
@@ -15759,7 +15762,7 @@ interface TextTrackCueEventMap {
     "exit": Event;
 }
 
-/** TextTrackCues represent a string of text that will be displayed for some duration of time on a TextTrack. This includes the start and end times that the cue will be displayed. A TextTrackCue cannot be used directly, instead one of the derived types (e.g. VTTCue) must be used. */
+/** TextTrackCue is an abstract class which is used as the basis for the various derived cue types, such as VTTCue; you will instead work with those derived types. */
 interface TextTrackCue extends EventTarget {
     /**
      * Returns the text track cue end time, in seconds.
@@ -15827,6 +15830,7 @@ interface TextTrackListEventMap {
     "removetrack": TrackEvent;
 }
 
+/** Used to represent a list of the text tracks defined by the <track> element, with each track represented by a separate textTrack object in the list. */
 interface TextTrackList extends EventTarget {
     readonly length: number;
     onaddtrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
@@ -15894,7 +15898,7 @@ declare var Touch: {
     new(touchInitDict: TouchInit): Touch;
 };
 
-/** An event sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth. */
+/** An UIEvent which is sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth. */
 interface TouchEvent extends UIEvent {
     readonly altKey: boolean;
     readonly changedTouches: TouchList;
@@ -15922,7 +15926,7 @@ declare var TouchList: {
     new(): TouchList;
 };
 
-/** The TrackEvent interface, part of the HTML DOM specification, is used for events which represent changes to the set of available tracks on an HTML media element; these events are addtrack and removetrack. */
+/** The TrackEvent interface, which is part of the HTML DOM specification, is used for events which represent changes to a set of available tracks on an HTML media element; these events are addtrack and removetrack. */
 interface TrackEvent extends Event {
     /**
      * Returns the track object (TextTrack, AudioTrack, or VideoTrack) to which the event relates.
@@ -16002,7 +16006,7 @@ declare var UIEvent: {
     new(type: string, eventInitDict?: UIEventInit): UIEvent;
 };
 
-/** The URL interface represents an object providing static methods used for creating object URLs. */
+/** Used to parse, construct, normalize, and encode URLs. It works by providing properties which allow you to easily read and modify the components of a URL. */
 interface URL {
     hash: string;
     host: string;
@@ -18709,7 +18713,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
     "messageerror": MessageEvent;
 }
 
-/** This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread. */
+/** This Web Workers API interface represents a background task that can be created via script, which can send messages back to its creator. */
 interface Worker extends EventTarget, AbstractWorker {
     onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
@@ -18764,7 +18768,7 @@ declare var WritableStreamDefaultController: {
     new(): WritableStreamDefaultController;
 };
 
-/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
+/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
     readonly closed: Promise<void>;
     readonly desiredSize: number | null;
@@ -18797,7 +18801,7 @@ interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
     "readystatechange": Event;
 }
 
-/** Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing. */
+/** XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing. */
 interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
     /**
@@ -18975,7 +18979,7 @@ interface XPathEvaluatorBase {
     evaluate(expression: string, contextNode: Node, resolver?: XPathNSResolver | null, type?: number, result?: XPathResult | null): XPathResult;
 }
 
-/** This interface is a compiled XPath expression that can be evaluated on a document or specific node to return information its DOM tree. */
+/** This interface is a compiled XPath expression that can be evaluated on a document or specific node to return information from its DOM tree. */
 interface XPathExpression {
     evaluate(contextNode: Node, type?: number, result?: XPathResult | null): XPathResult;
 }
@@ -19081,7 +19085,7 @@ interface Console {
 
 declare var console: Console;
 
-/** Holds useful CSS-related methods. No object with this interface are implemented: it contains only static methods and therefore is a utilitarian interface. */
+/** Holds useful CSS-related methods. No objects with this interface are implemented: it contains only static methods and is therefore a utilitarian interface. */
 declare namespace CSS {
     function escape(ident: string): string;
     function supports(property: string, value: string): boolean;
