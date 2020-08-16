@@ -5057,7 +5057,6 @@ interface ElementEventMap {
 
 /** Element is the most general base class from which all objects in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element. */
 interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTypeChildNode, ParentNode, Slottable {
-    readonly assignedSlot: HTMLSlotElement | null;
     readonly attributes: NamedNodeMap;
     /**
      * Allows for manipulation of element's class content attribute as a set of whitespace-separated tokens through a DOMTokenList object.
@@ -8635,7 +8634,6 @@ declare var HTMLTableElement: {
 };
 
 interface HTMLTableHeaderCellElement extends HTMLTableCellElement {
-    scope: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -11030,7 +11028,6 @@ declare var NodeList: {
 };
 
 interface NodeListOf<TNode extends Node> extends NodeList {
-    length: number;
     item(index: number): TNode;
     /**
      * Performs the specified action for each node in an list.

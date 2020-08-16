@@ -882,7 +882,7 @@
                         "className": {
                             "deprecated": 1,
                             "name": "className",
-                            "override-type": "any"
+                            "type": "any"
                         }
                     }
                 }
@@ -1111,11 +1111,11 @@
                     "property": {
                         "key": {
                             "name": "key",
-                            "override-type": "IDBValidKey"
+                            "type": "IDBValidKey"
                         },
                         "primaryKey": {
                             "name": "primaryKey",
-                            "override-type": "IDBValidKey"
+                            "type": "IDBValidKey"
                         }
                     }
                 },
@@ -1150,15 +1150,9 @@
                 "name": "IDBRequest",
                 "properties": {
                     "property": {
-                        "error": {
-                            "name": "error",
-                            "read-only": 1,
-                            "override-type": "DOMException"
-                        },
                         "source": {
                             "name": "source",
-                            "nullable": false,
-                            "override-type": "IDBObjectStore | IDBIndex | IDBCursor"
+                            "nullable": false
                         },
                         "result": {
                             "name": "result",
@@ -1172,18 +1166,6 @@
                         "default": "any"
                     }
                 ]
-            },
-            "IDBTransaction": {
-                "name": "IDBTransaction",
-                "properties": {
-                    "property": {
-                        "error": {
-                            "name": "error",
-                            "read-only": 1,
-                            "override-type": "DOMException"
-                        }
-                    }
-                }
             },
             "Storage": {
                 "override-index-signatures": [
@@ -1666,17 +1648,6 @@
                             "type": "ProgressEvent"
                         }
                     ]
-                }
-            },
-            "MediaList": {
-                "name": "MediaList",
-                "properties": {
-                    "property": {
-                        "mediaText": {
-                            "name": "mediaText",
-                            "override-type": "string"
-                        }
-                    }
                 }
             },
             "MutationRecord": {

@@ -62,11 +62,6 @@
                             "name": "activeElement",
                             "read-only": 1,
                             "override-type": "Element | null"
-                        },
-                        "styleSheets": {
-                            "name": "styleSheets",
-                            "read-only": 1,
-                            "override-type": "StyleSheetList"
                         }
                     }
                 }
@@ -210,17 +205,6 @@
                         }
                     ]
                 }
-            },
-            "HTMLHyperlinkElementUtils": {
-                "name": "HTMLHyperlinkElementUtils",
-                "properties": {
-                    "property": {
-                        "origin": {
-                            "name": "origin",
-                            "override-type": "string"
-                        }
-                    }
-                }
             }
         }
     },
@@ -266,27 +250,27 @@
                         "in1": {
                             "name": "in1",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedString"
+                            "type": "SVGAnimatedString"
                         },
                         "dx": {
                             "name": "dx",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedNumber"
+                            "type": "SVGAnimatedNumber"
                         },
                         "dy": {
                             "name": "dy",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedNumber"
+                            "type": "SVGAnimatedNumber"
                         },
                         "stdDeviationX": {
                             "name": "stdDeviationX",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedNumber"
+                            "type": "SVGAnimatedNumber"
                         },
                         "stdDeviationY": {
                             "name": "stdDeviationY",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedNumber"
+                            "type": "SVGAnimatedNumber"
                         }
                     }
                 },
@@ -493,14 +477,6 @@
                 ],
                 "exposed": "Window",
                 "extends": "NodeList",
-                "properties": {
-                    "property": {
-                        "length": {
-                            "name": "length",
-                            "override-type": "number"
-                        }
-                    }
-                },
                 "methods": {
                     "method": {
                         "item": {
@@ -653,19 +629,10 @@
                 },
                 "properties": {
                     "property": {
-                        "assignedSlot": {
-                            "name": "assignedSlot",
-                            "read-only": 1,
-                            "override-type": "HTMLSlotElement | null"
-                        },
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
-                            "override-type": "Document"
-                        },
-                        "slot": {
-                            "name": "slot",
-                            "override-type": "string"
+                            "type": "Document"
                         }
                     }
                 }
@@ -719,12 +686,13 @@
                         "pointerEnabled": {
                             "name": "pointerEnabled",
                             "read-only": 1,
-                            "override-type": "boolean"
+                            "type": "boolean"
                         },
                         "doNotTrack": {
                             "name": "doNotTrack",
                             "read-only": 1,
-                            "override-type": "string | null"
+                            "nullable": 1,
+                            "type": "DOMString"
                         }
                     }
                 }
@@ -748,17 +716,6 @@
                         "name": "iframe"
                     }
                 ]
-            },
-            "HTMLTextAreaElement": {
-                "name": "HTMLTextAreaElement",
-                "properties": {
-                    "property": {
-                        "minLength": {
-                            "name": "minLength",
-                            "override-type": "number"
-                        }
-                    }
-                }
             },
             "IDBDatabase": {
                 "name": "IDBDatabase",
@@ -815,7 +772,7 @@
                 }
             },
             "IDBTransaction": {
-                "name": "IDBRequest",
+                "name": "IDBTransaction",
                 "events": {
                     "event": [
                         {
@@ -840,7 +797,7 @@
                     "property": {
                         "length": {
                             "name": "length",
-                            "override-type": "number"
+                            "type": "unsigned long"
                         }
                     }
                 },
@@ -866,11 +823,11 @@
                     "property": {
                         "prime": {
                             "name": "prime",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         },
                         "generator": {
                             "name": "generator",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         }
                     }
                 },
@@ -883,11 +840,11 @@
                     "property": {
                         "prime": {
                             "name": "prime",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         },
                         "generator": {
                             "name": "generator",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         }
                     }
                 },
@@ -900,7 +857,7 @@
                     "property": {
                         "prime": {
                             "name": "public",
-                            "override-type": "CryptoKey"
+                            "type": "CryptoKey"
                         }
                     }
                 },
@@ -913,11 +870,11 @@
                     "property": {
                         "prime": {
                             "name": "prime",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         },
                         "generator": {
                             "name": "generator",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         }
                     }
                 },
@@ -935,24 +892,24 @@
                         },
                         "algorithmId": {
                             "name": "algorithmId",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         },
                         "partyUInfo": {
                             "name": "partyUInfo",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         },
                         "partyVInfo": {
                             "name": "partyVInfo",
-                            "override-type": "Uint8Array"
+                            "type": "Uint8Array"
                         },
                         "publicInfo": {
                             "name": "publicInfo",
-                            "override-type": "Uint8Array",
+                            "type": "Uint8Array",
                             "required": 0
                         },
                         "privateInfo": {
                             "name": "privateInfo",
-                            "override-type": "Uint8Array",
+                            "type": "Uint8Array",
                             "required": 0
                         }
                     }
@@ -1011,7 +968,7 @@
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
-                            "override-type": "Document"
+                            "type": "Document"
                         }
                     }
                 }
@@ -1611,14 +1568,6 @@
                 "name": "HTMLTableHeaderCellElement",
                 "extends": "HTMLTableCellElement",
                 "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "scope": {
-                            "name": "scope",
-                            "override-type": "string"
-                        }
-                    }
-                },
                 "element": [
                     {
                         "name": "th"
@@ -1772,12 +1721,12 @@
                         "x": {
                             "name": "x",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedLength"
+                            "type": "SVGAnimatedLength"
                         },
                         "y": {
                             "name": "y",
                             "read-only": 1,
-                            "override-type": "SVGAnimatedLength"
+                            "type": "SVGAnimatedLength"
                         }
                     }
                 }
@@ -1791,7 +1740,7 @@
                         "targetElement": {
                             "name": "targetElement",
                             "read-only": 1,
-                            "override-type": "SVGElement"
+                            "type": "SVGElement"
                         }
                     }
                 },
@@ -2256,7 +2205,7 @@
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
-                            "override-type": "Document"
+                            "type": "Document"
                         }
                     }
                 }
@@ -2268,7 +2217,7 @@
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
-                            "override-type": "Document"
+                            "type": "Document"
                         }
                     }
                 }
@@ -2280,7 +2229,7 @@
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
-                            "override-type": "Document"
+                            "type": "Document"
                         }
                     }
                 }
@@ -2292,7 +2241,7 @@
                         "ownerDocument": {
                             "name": "ownerDocument",
                             "read-only": 1,
-                            "override-type": "Document"
+                            "type": "Document"
                         }
                     }
                 }
@@ -2398,7 +2347,7 @@
             },
             {
                 "new-type": "IDBKeyPath",
-                "override-type": "string"
+                "type": "DOMString"
             },
             {
                 "new-type": "Transferable",
