@@ -2,11 +2,9 @@
     "mixins": {
         "mixin": {
             "Animatable": {
-                "name": "Animatable",
                 "methods": {
                     "method": {
                         "animate": {
-                            "name": "animate",
                             "override-signatures": [
                                 "animate(keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeAnimationOptions): Animation"
                             ]
@@ -15,11 +13,9 @@
                 }
             },
             "ChildNode": {
-                "name": "ChildNode",
                 "extends": "Node"
             },
             "GlobalEventHandlers": {
-                "name": "GlobalEventHandlers",
                 "events": {
                     "event": [
                         {
@@ -133,7 +129,6 @@
                 }
             },
             "HTMLOrSVGElement": {
-              "name": "HTMLOrSVGElement",
               "properties": {
                 "property": {
                   "nonce": {
@@ -147,7 +142,6 @@
                 "methods": {
                     "method": {
                         "getRandomValues": {
-                            "name": "getRandomValues",
                             "override-signatures": [
                                 "getRandomValues<T extends Int8Array | Uint8ClampedArray | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array>(array: T): T"
                             ]
@@ -156,11 +150,9 @@
                 }
             },
             "WebGLRenderingContextBase": {
-                "name": "WebGLRenderingContextBase",
                 "methods": {
                     "method": {
                         "getExtension": {
-                            "name": "getExtension",
                             "override-signatures": [
                                 "getExtension(extensionName: \"EXT_blend_minmax\"): EXT_blend_minmax | null",
                                 "getExtension(extensionName: \"EXT_texture_filter_anisotropic\"): EXT_texture_filter_anisotropic | null",
@@ -188,7 +180,6 @@
                             ]
                         },
                         "pixelStorei": {
-                            "name": "pixelStorei",
                             "override-signatures": [
                                 "pixelStorei(pname: GLenum, param: GLint | GLboolean): void"
                             ]
@@ -360,7 +351,6 @@
                 }
             },
             "HTMLAnchorElement": {
-                "name": "HTMLAnchorElement",
                 "properties": {
                     "property": {
                         "relList": {
@@ -372,7 +362,6 @@
                 }
             },
             "HTMLAreaElement": {
-                "name": "HTMLAreaElement",
                 "properties": {
                     "property": {
                         "relList": {
@@ -384,7 +373,6 @@
                 }
             },
             "SourceBuffer": {
-                "name": "SourceBuffer",
                 "events": {
                     "event": [
                         {
@@ -399,7 +387,6 @@
                 }
             },
             "CustomEvent": {
-                "name": "CustomEvent",
                 "properties": {
                     "property": {
                         "detail": {
@@ -412,7 +399,6 @@
                 "methods": {
                     "method": {
                         "initCustomEvent": {
-                            "name": "initCustomEvent",
                             "override-signatures": [
                                 "initCustomEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, detailArg: T): void"
                             ]
@@ -432,11 +418,9 @@
                 }
             },
             "Window": {
-                "name": "Window",
                 "properties": {
                     "property": {
                         "event": {
-                            "name": "event",
                             "override-type": "Event | undefined",
                             "deprecated": 1
                         },
@@ -444,11 +428,9 @@
                             "read-only": 0
                         },
                         "orientation": {
-                            "name": "orientation",
                             "override-type": "string | number"
                         },
                         "opener": {
-                            "name": "opener",
                             "override-type": "any",
                             "read-only": 0
                         },
@@ -463,19 +445,16 @@
                 "methods": {
                     "method": {
                         "open": {
-                            "name": "open",
                             "override-signatures": [
                                 "open(url?: string, target?: string, features?: string, replace?: boolean): Window | null"
                             ]
                         },
                         "alert": {
-                            "name": "alert",
                             "override-signatures": [
                                 "alert(message?: any): void"
                             ]
                         },
                         "postMessage": {
-                            "name": "postMessage",
                             "override-signatures": [
                                 "postMessage(message: any, targetOrigin: string, transfer?: Transferable[]): void"
                             ]
@@ -485,23 +464,19 @@
                 "override-index-signatures": []
             },
             "Document": {
-                "name": "Document",
                 "methods": {
                     "method": {
                         "adoptNode": {
-                            "name": "adoptNode",
                             "override-signatures": [
                                 "adoptNode<T extends Node>(source: T): T"
                             ]
                         },
                         "importNode": {
-                            "name": "importNode",
                             "override-signatures": [
                                 "importNode<T extends Node>(importedNode: T, deep: boolean): T"
                             ]
                         },
                         "open": {
-                            "name": "open",
                             "override-signatures": [
                                 "open(url?: string, name?: string, features?: string, replace?: boolean): Document"
                             ]
@@ -513,7 +488,6 @@
                             ]
                         },
                         "getElementsByTagNameNS": {
-                            "name": "getElementsByTagNameNS",
                             "override-signatures": [
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
@@ -521,13 +495,11 @@
                             ]
                         },
                         "getElementsByClassName": {
-                            "name": "getElementsByClassName",
                             "override-signatures": [
                                 "getElementsByClassName(classNames: string): HTMLCollectionOf<Element>"
                             ]
                         },
                         "getElementsByName": {
-                            "name": "getElementsByName",
                             "override-signatures": [
                                 "getElementsByName(elementName: string): NodeListOf<HTMLElement>"
                             ]
@@ -572,11 +544,9 @@
                 "properties": {
                     "property": {
                         "defaultView": {
-                            "name": "defaultView",
                             "override-type": "(WindowProxy & typeof globalThis) | null"
                         },
                         "documentElement": {
-                            "name": "documentElement",
                             "override-type": "HTMLElement",
                             "nullable": false
                         },
@@ -584,38 +554,30 @@
                             "nullable": false
                         },
                         "anchors": {
-                            "name": "anchors",
                             "override-type": "HTMLCollectionOf<HTMLAnchorElement>"
                         },
                         "applets": {
-                            "name": "applets",
                             "override-type": "HTMLCollectionOf<HTMLAppletElement>"
                         },
                         "embeds": {
-                            "name": "embeds",
                             "override-type": "HTMLCollectionOf<HTMLEmbedElement>"
                         },
                         "forms": {
-                            "name": "forms",
                             "override-type": "HTMLCollectionOf<HTMLFormElement>"
                         },
                         "fullscreen": {
                             "deprecated": 1
                         },
                         "images": {
-                            "name": "images",
                             "override-type": "HTMLCollectionOf<HTMLImageElement>"
                         },
                         "links": {
-                            "name": "links",
                             "override-type": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
                         },
                         "plugins": {
-                            "name": "plugins",
                             "override-type": "HTMLCollectionOf<HTMLEmbedElement>"
                         },
                         "scripts": {
-                            "name": "scripts",
                             "override-type": "HTMLCollectionOf<HTMLScriptElement>"
                         },
                         "location": {
@@ -637,29 +599,24 @@
                 }
             },
             "Node": {
-                "name": "Node",
                 "methods": {
                     "method": {
                         "appendChild": {
-                            "name": "appendChild",
                             "override-signatures": [
                                 "appendChild<T extends Node>(newChild: T): T"
                             ]
                         },
                         "insertBefore": {
-                            "name": "insertBefore",
                             "override-signatures": [
                                 "insertBefore<T extends Node>(newChild: T, refChild: Node | null): T"
                             ]
                         },
                         "removeChild": {
-                            "name": "removeChild",
                             "override-signatures": [
                                 "removeChild<T extends Node>(oldChild: T): T"
                             ]
                         },
                         "replaceChild": {
-                            "name": "replaceChild",
                             "override-signatures": [
                                 "replaceChild<T extends Node>(newChild: Node, oldChild: T): T"
                             ]
@@ -699,71 +656,59 @@
                 }
             },
             "IDBObjectStore": {
-                "name": "IDBObjectStore",
                 "methods": {
                     "method": {
                         "openCursor": {
-                            "name": "openCursor",
                             "override-signatures": [
                                 "openCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
                             ]
                         },
                         "openKeyCursor": {
-                            "name": "openKeyCursor",
                             "override-signatures": [
                                 "openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
                             ]
                         },
                         "add": {
-                            "name": "add",
                             "override-signatures": [
                                 "add(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>"
                             ]
                         },
                         "clear": {
-                            "name": "clear",
                             "override-signatures": [
                                 "clear(): IDBRequest<undefined>"
                             ]
                         },
                         "count": {
-                            "name": "count",
                             "override-signatures": [
                                 "count(key?: IDBValidKey | IDBKeyRange): IDBRequest<number>"
                             ]
                         },
                         "delete": {
-                            "name": "delete",
                             "override-signatures": [
                                 "delete(key: IDBValidKey | IDBKeyRange): IDBRequest<undefined>"
                             ]
                         },
                         "put": {
-                            "name": "put",
                             "override-signatures": [
                                 "put(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>"
                             ]
                         },
                         "get": {
-                            "name": "get",
                             "override-signatures": [
                                 "get(query: IDBValidKey | IDBKeyRange): IDBRequest<any | undefined>"
                             ]
                         },
                         "getAll": {
-                            "name": "getAll",
                             "override-signatures": [
                                 "getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>"
                             ]
                         },
                         "getAllKeys": {
-                            "name": "getAllKeys",
                             "override-signatures": [
                                 "getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>"
                             ]
                         },
                         "getKey": {
-                            "name": "getKey",
                             "override-signatures": [
                                 "getKey(query: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>"
                             ]
@@ -773,18 +718,15 @@
                 "properties": {
                     "property": {
                         "keyPath": {
-                            "name": "keyPath",
                             "override-type": "string | string[]"
                         }
                     }
                 }
             },
             "IDBIndex": {
-                "name": "IDBIndex",
                 "properties": {
                     "property": {
                         "keyPath": {
-                            "name": "keyPath",
                             "override-type": "string | string[]"
                         }
                     }
@@ -792,43 +734,36 @@
                 "methods": {
                     "method": {
                         "openCursor": {
-                            "name": "openCursor",
                             "override-signatures": [
                                 "openCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursorWithValue | null>"
                             ]
                         },
                         "openKeyCursor": {
-                            "name": "openKeyCursor",
                             "override-signatures": [
                                 "openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>"
                             ]
                         },
                         "count": {
-                            "name": "count",
                             "override-signatures": [
                                 "count(key?: IDBValidKey | IDBKeyRange): IDBRequest<number>"
                             ]
                         },
                         "get": {
-                            "name": "get",
                             "override-signatures": [
                                 "get(key: IDBValidKey | IDBKeyRange): IDBRequest<any | undefined>"
                             ]
                         },
                         "getAll": {
-                            "name": "getAll",
                             "override-signatures": [
                                 "getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>"
                             ]
                         },
                         "getAllKeys": {
-                            "name": "getAllKeys",
                             "override-signatures": [
                                 "getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>"
                             ]
                         },
                         "getKey": {
-                            "name": "getKey",
                             "override-signatures": [
                                 "getKey(key: IDBValidKey | IDBKeyRange): IDBRequest<IDBValidKey | undefined>"
                             ]
@@ -865,40 +800,33 @@
                 }
             },
             "BeforeUnloadEvent": {
-                "name": "BeforeUnloadEvent",
                 "properties": {
                     "property": {
                         "returnValue": {
-                            "name": "returnValue",
                             "override-type": "any"
                         }
                     }
                 }
             },
             "SVGElement": {
-                "name": "SVGElement",
                 "properties": {
                     "property": {
                         "className": {
                             "deprecated": 1,
-                            "name": "className",
                             "override-type": "any"
                         }
                     }
                 }
             },
             "SVGSVGElement": {
-                "name": "SVGSVGElement",
                 "methods": {
                     "method": {
                         "getEnclosureList": {
-                            "name": "getEnclosureList",
                             "override-signatures": [
                                 "getEnclosureList(rect: SVGRect, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                             ]
                         },
                         "getIntersectionList": {
-                            "name": "getIntersectionList",
                             "override-signatures": [
                                 "getIntersectionList(rect: SVGRect, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                             ]
@@ -923,7 +851,6 @@
                 }
             },
             "FormData": {
-                "name": "FormData",
                 "methods": {
                     "method": {
                         "append": {
@@ -944,15 +871,12 @@
                 }
             },
             "HTMLSelectElement": {
-                "name": "HTMLSelectElement",
                 "properties": {
                     "property": {
                         "selectedOptions": {
-                            "name": "selectedOptions",
                             "override-type": "HTMLCollectionOf<HTMLOptionElement>"
                         },
                         "labels": {
-                            "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
@@ -967,11 +891,9 @@
                 ]
             },
             "HTMLDataListElement": {
-                "name": "HTMLDataListElement",
                 "properties": {
                     "property": {
                         "options": {
-                            "name": "options",
                             "override-type": "HTMLCollectionOf<HTMLOptionElement>"
                         }
                     }
@@ -983,7 +905,6 @@
                 ]
             },
             "HTMLDirectoryElement": {
-                "name": "HTMLDirectoryElement",
                 "element": [
                     {
                         "name": "dir"
@@ -991,7 +912,6 @@
                 ]
             },
             "HTMLFontElement": {
-                "name": "HTMLFontElement",
                 "element": [
                     {
                         "name": "font"
@@ -999,7 +919,6 @@
                 ]
             },
             "HTMLFrameElement": {
-                "name": "HTMLFrameElement",
                 "element": [
                     {
                         "name": "frame"
@@ -1007,7 +926,6 @@
                 ]
             },
             "HTMLFrameSetElement": {
-                "name": "HTMLFrameSetElement",
                 "element": [
                     {
                         "name": "frameset"
@@ -1015,37 +933,30 @@
                 ]
             },
             "HTMLTableElement": {
-                "name": "HTMLTableElement",
                 "properties": {
                     "property": {
                         "rows": {
-                            "name": "rows",
                             "override-type": "HTMLCollectionOf<HTMLTableRowElement>"
                         },
                         "tBodies": {
-                            "name": "tBodies",
                             "override-type": "HTMLCollectionOf<HTMLTableSectionElement>"
                         }
                     }
                 }
             },
             "HTMLTableSectionElement": {
-                "name": "HTMLTableSectionElement",
                 "properties": {
                     "property": {
                         "rows": {
-                            "name": "rows",
                             "override-type": "HTMLCollectionOf<HTMLTableRowElement>"
                         }
                     }
                 }
             },
             "Element": {
-                "name": "Element",
                 "methods": {
                     "method": {
                         "getElementsByTagNameNS": {
-                            "name": "getElementsByTagNameNS",
                             "override-signatures": [
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
@@ -1077,7 +988,6 @@
                 }
             },
             "DataTransferItemList": {
-                "name": "DataTransferItemList",
                 "methods": {
                     "method": {
                         "item": {
@@ -1093,11 +1003,9 @@
                 ]
             },
             "DataTransferItem": {
-                "name": "DataTransferItem",
                 "methods": {
                     "method": {
                         "webkitGetAsEntry": {
-                            "name": "webkitGetAsEntry",
                             "override-signatures": [
                                 "webkitGetAsEntry(): any"
                             ]
@@ -1106,15 +1014,12 @@
                 }
             },
             "IDBCursor": {
-                "name": "IDBCursor",
                 "properties": {
                     "property": {
                         "key": {
-                            "name": "key",
                             "override-type": "IDBValidKey"
                         },
                         "primaryKey": {
-                            "name": "primaryKey",
                             "override-type": "IDBValidKey"
                         }
                     }
@@ -1122,13 +1027,11 @@
                 "methods": {
                     "method": {
                         "continue": {
-                            "name": "continue",
                             "override-signatures": [
                                 "continue(key?: IDBValidKey): void"
                             ]
                         },
                         "continuePrimaryKey": {
-                            "name": "continuePrimaryKey",
                             "override-signatures": [
                                 "continuePrimaryKey(key: IDBValidKey, primaryKey: IDBValidKey): void"
                             ]
@@ -1147,7 +1050,6 @@
                 }
             },
             "IDBRequest": {
-                "name": "IDBRequest",
                 "properties": {
                     "property": {
                         "error": {
@@ -1161,7 +1063,6 @@
                             "override-type": "IDBObjectStore | IDBIndex | IDBCursor"
                         },
                         "result": {
-                            "name": "result",
                             "override-type": "T"
                         }
                     }
@@ -1174,7 +1075,6 @@
                 ]
             },
             "IDBTransaction": {
-                "name": "IDBTransaction",
                 "properties": {
                     "property": {
                         "error": {
@@ -1191,45 +1091,37 @@
                 ]
             },
             "HTMLOptionsCollection": {
-                "name": "HTMLOptionsCollection",
                 "extends": "HTMLCollectionOf<HTMLOptionElement>"
             },
             "SubtleCrypto": {
-                "name": "SubtleCrypto",
                 "methods": {
                     "method": {
                         "decrypt": {
-                            "name": "decrypt",
                             "override-signatures": [
                                 "decrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>"
                             ]
                         },
                         "deriveBits": {
-                            "name": "deriveBits",
                             "override-signatures": [
                                 "deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>"
                             ]
                         },
                         "deriveKey": {
-                            "name": "deriveKey",
                             "override-signatures": [
                                 "deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
                             ]
                         },
                         "digest": {
-                            "name": "digest",
                             "override-signatures": [
                                 "digest(algorithm: AlgorithmIdentifier, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>"
                             ]
                         },
                         "encrypt": {
-                            "name": "encrypt",
                             "override-signatures": [
                                 "encrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>"
                             ]
                         },
                         "exportKey": {
-                            "name": "exportKey",
                             "override-signatures": [
                                 "exportKey(format: \"jwk\", key: CryptoKey): Promise<JsonWebKey>",
                                 "exportKey(format: \"raw\" | \"pkcs8\" | \"spki\", key: CryptoKey): Promise<ArrayBuffer>",
@@ -1237,7 +1129,6 @@
                             ]
                         },
                         "generateKey": {
-                            "name": "generateKey",
                             "override-signatures": [
                                 "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams | DhKeyGenParams, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>",
@@ -1245,7 +1136,6 @@
                             ]
                         },
                         "importKey": {
-                            "name": "importKey",
                             "override-signatures": [
                                 "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>",
                                 "importKey(format: \"raw\" | \"pkcs8\" | \"spki\", keyData: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>",
@@ -1253,25 +1143,21 @@
                             ]
                         },
                         "sign": {
-                            "name": "sign",
                             "override-signatures": [
                                 "sign(algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams | AesCmacParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>"
                             ]
                         },
                         "unwrapKey": {
-                            "name": "unwrapKey",
                             "override-signatures": [
                                 "unwrapKey(format: \"raw\" | \"pkcs8\" | \"spki\" | \"jwk\" | string, wrappedKey: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, unwrappedKeyAlgorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | DhImportKeyParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
                             ]
                         },
                         "verify": {
-                            "name": "verify",
                             "override-signatures": [
                                 "verify(algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams | AesCmacParams, key: CryptoKey, signature: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<boolean>"
                             ]
                         },
                         "wrapKey": {
-                            "name": "wrapKey",
                             "override-signatures": [
                                 "wrapKey(format: \"raw\" | \"pkcs8\" | \"spki\" | \"jwk\" | string, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams): Promise<ArrayBuffer>"
                             ]
@@ -1280,15 +1166,12 @@
                 }
             },
             "HTMLInputElement": {
-                "name": "HTMLInputElement",
                 "properties": {
                     "property": {
                         "selectionDirection": {
-                            "name": "selectionDirection",
                             "override-type": "\"forward\" | \"backward\" | \"none\""
                         },
                         "valueAsDate": {
-                            "name": "valueAsDate",
                             "override-type": "Date | null"
                         }
                     }
@@ -1296,7 +1179,6 @@
                 "methods": {
                     "method": {
                         "setSelectionRange": {
-                            "name": "setSelectionRange",
                             "override-signatures": [
                                 "setSelectionRange(start: number, end: number, direction?: \"forward\" | \"backward\" | \"none\"): void"
                             ]
@@ -1305,11 +1187,9 @@
                 }
             },
             "MouseEvent": {
-                "name": "MouseEvent",
                 "methods": {
                     "method": {
                         "initMouseEvent": {
-                            "name": "initMouseEvent",
                             "override-signatures": [
                                 "initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void"
                             ]
@@ -1318,17 +1198,14 @@
                 }
             },
             "DOMStringMap": {
-                "name": "DOMStringMap",
                 "override-index-signatures": [
                     "[name: string]: string | undefined"
                 ]
             },
             "DOMImplementation": {
-                "name": "DOMImplementation",
                 "methods": {
                     "method": {
                         "hasFeature": {
-                            "name": "hasFeature",
                             "override-signatures": [
                                 "hasFeature(...args: any[]): true"
                             ],
@@ -1338,7 +1215,6 @@
                 }
             },
             "HTMLAppletElement": {
-                "name": "HTMLAppletElement",
                 "properties": {
                     "property": {
                         "form": {
@@ -1350,11 +1226,9 @@
                 }
             },
             "HTMLButtonElement": {
-                "name": "HTMLButtonElement",
                 "properties": {
                     "property": {
                         "labels": {
-                            "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
@@ -1366,7 +1240,6 @@
                 ]
             },
             "HTMLFieldSetElement": {
-                "name": "HTMLFieldSetElement",
                 "element": [
                     {
                         "name": "fieldset"
@@ -1374,7 +1247,6 @@
                 ]
             },
             "HTMLLabelElement": {
-                "name": "HTMLLabelElement",
                 "properties": {
                     "property": {
                         "form": {
@@ -1386,7 +1258,6 @@
                 }
             },
             "HTMLLegendElement": {
-                "name": "HTMLLegendElement",
                 "element": [
                     {
                         "name": "legend"
@@ -1394,11 +1265,9 @@
                 ]
             },
             "HTMLMeterElement": {
-                "name": "HTMLMeterElement",
                 "properties": {
                     "property": {
                         "labels": {
-                            "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
@@ -1410,7 +1279,6 @@
                 ]
             },
             "HTMLOptGroupElement": {
-                "name": "HTMLOptGroupElement",
                 "properties": {
                     "property": {
                         "form": {
@@ -1427,7 +1295,6 @@
                 ]
             },
             "HTMLOptionElement": {
-                "name": "HTMLOptionElement",
                 "element": [
                     {
                         "name": "option"
@@ -1435,11 +1302,9 @@
                 ]
             },
             "HTMLOutputElement": {
-                "name": "HTMLOutputElement",
                 "properties": {
                     "property": {
                         "labels": {
-                            "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
@@ -1451,11 +1316,9 @@
                 ]
             },
             "HTMLProgressElement": {
-                "name": "HTMLProgressElement",
                 "properties": {
                     "property": {
                         "labels": {
-                            "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
@@ -1467,15 +1330,12 @@
                 ]
             },
             "HTMLTextAreaElement": {
-                "name": "HTMLTextAreaElement",
                 "properties": {
                     "property": {
                         "labels": {
-                            "name": "labels",
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         },
                         "selectionDirection": {
-                            "name": "selectionDirection",
                             "override-type": "\"forward\" | \"backward\" | \"none\""
                         }
                     }
@@ -1483,7 +1343,6 @@
                 "methods": {
                     "method": {
                         "setSelectionRange": {
-                            "name": "setSelectionRange",
                             "override-signatures": [
                                 "setSelectionRange(start: number, end: number, direction?: \"forward\" | \"backward\" | \"none\"): void"
                             ]
@@ -1497,11 +1356,9 @@
                 ]
             },
             "ServiceWorkerContainer": {
-                "name": "ServiceWorkerContainer",
                 "methods": {
                     "method": {
                         "getRegistration": {
-                            "name": "getRegistration",
                             "override-signatures": [
                                 "getRegistration(clientURL?: string): Promise<ServiceWorkerRegistration | undefined>"
                             ]
@@ -1526,11 +1383,9 @@
                 }
             },
             "WebSocket": {
-                "name": "WebSocket",
                 "methods": {
                     "method": {
                         "send": {
-                            "name": "send",
                             "override-signatures": [
                                 "send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void"
                             ]
@@ -1539,11 +1394,9 @@
                 }
             },
             "HTMLTableRowElement": {
-                "name": "HTMLTableRowElement",
                 "properties": {
                     "property": {
                         "cells": {
-                            "name": "cells",
                             "override-type": "HTMLCollectionOf<HTMLTableDataCellElement | HTMLTableHeaderCellElement>"
                         }
                     }
@@ -1551,7 +1404,6 @@
                 "methods": {
                     "method": {
                         "insertCell": {
-                            "name": "insertCell",
                             "override-signatures": [
                                 "insertCell(index?: number): HTMLTableDataCellElement"
                             ]
@@ -1560,7 +1412,6 @@
                 }
             },
             "XMLHttpRequest": {
-                "name": "XMLHttpRequest",
                 "events": {
                     "event": [
                         {
@@ -1571,35 +1422,27 @@
                 }
             },
             "XMLHttpRequestEventTarget": {
-                "name": "XMLHttpRequestEventTarget",
                 "properties": {
                     "property": {
                         "onloadstart": {
-                            "name": "onloadstart",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         },
                         "onprogress": {
-                            "name": "onprogress",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         },
                         "onabort": {
-                            "name": "onabort",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         },
                         "onerror": {
-                            "name": "onerror",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         },
                         "onload": {
-                            "name": "onload",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         },
                         "ontimeout": {
-                            "name": "ontimeout",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         },
                         "onloadend": {
-                            "name": "onloadend",
                             "override-type": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
                         }
                     }
@@ -1638,7 +1481,6 @@
                 }
             },
             "FileReader": {
-                "name": "FileReader",
                 "events": {
                     "event": [
                         {
@@ -1669,29 +1511,24 @@
                 }
             },
             "MediaList": {
-                "name": "MediaList",
                 "properties": {
                     "property": {
                         "mediaText": {
-                            "name": "mediaText",
                             "override-type": "string"
                         }
                     }
                 }
             },
             "MutationRecord": {
-                "name": "MutationRecord",
                 "properties": {
                     "property": {
                         "type": {
-                            "name": "type",
                             "override-type": "MutationRecordType"
                         }
                     }
                 }
             },
             "KeyboardEvent": {
-                "name": "KeyboardEvent",
                 "properties": {
                     "property": {
                         "char": {
@@ -1703,7 +1540,6 @@
                 }
             },
             "URL": {
-                "name": "URL",
                 "constructor": {
                     "override-signatures": [
                         "new(url: string, base?: string | URL): URL"
@@ -1711,12 +1547,10 @@
                 }
             },
             "EventTarget": {
-                "name": "EventTarget",
                 "override-exposed": "Window Worker",
                 "methods": {
                     "method": {
                         "addEventListener": {
-                            "name": "addEventListener",
                             "override-signatures": [
                                 "addEventListener(type: string, listener: EventListenerOrEventListenerObject | null, options?: boolean | AddEventListenerOptions): void"
                             ]
@@ -1725,11 +1559,9 @@
                 }
             },
             "Client": {
-                "name": "Client",
                 "properties": {
                     "property": {
                         "type": {
-                            "name": "type",
                             "override-type": "ClientTypes"
                         }
                     }
@@ -1737,7 +1569,6 @@
                 "methods": {
                     "method": {
                         "postMessage": {
-                            "name": "postMessage",
                             "override-signatures": [
                                 "postMessage(message: any, transfer?: Transferable[]): void"
                             ]
@@ -1746,7 +1577,6 @@
                 }
             },
             "RTCDataChannel": {
-                "name": "RTCDataChannel",
                 "events": {
                     "event": [
                         {
@@ -1773,7 +1603,6 @@
                 }
             },
             "RTCDtlsTransport": {
-                "name": "RTCDtlsTransport",
                 "events": {
                     "event": [
                         {
@@ -1788,35 +1617,29 @@
                 }
             },
             "RTCPeerConnection": {
-                "name": "RTCPeerConnection",
                 "methods": {
                     "method": {
                         "createAnswer": {
-                            "name": "createAnswer",
                             "override-signatures": [
                                 "createAnswer(options?: RTCOfferOptions): Promise<RTCSessionDescriptionInit>"
                             ]
                         },
                         "createOffer": {
-                            "name": "createOffer",
                             "override-signatures": [
                                 "createOffer(options?: RTCOfferOptions): Promise<RTCSessionDescriptionInit>"
                             ]
                         },
                         "setLocalDescription": {
-                            "name": "setLocalDescription",
                             "override-signatures": [
                                 "setLocalDescription(description: RTCSessionDescriptionInit): Promise<void>"
                             ]
                         },
                         "setRemoteDescription": {
-                            "name": "setRemoteDescription",
                             "override-signatures": [
                                 "setRemoteDescription(description: RTCSessionDescriptionInit): Promise<void>"
                             ]
                         },
                         "addIceCandidate": {
-                            "name": "addIceCandidate",
                             "override-signatures": [
                                 "addIceCandidate(candidate: RTCIceCandidateInit | RTCIceCandidate): Promise<void>"
                             ]
@@ -1873,7 +1696,6 @@
                 }
             },
             "Performance": {
-                "name": "Performance",
                 "properties": {
                     "property": {
                         "navigation": {
@@ -1886,7 +1708,6 @@
                 }
             },
             "ServiceWorkerGlobalScope": {
-                "name": "ServiceWorkerGlobalScope",
                 "events": {
                     "event": [
                         {
@@ -1933,7 +1754,6 @@
                 }
             },
             "Notification": {
-                "name": "Notification",
                 "events": {
                     "event": [
                         {
@@ -1956,11 +1776,9 @@
                 }
             },
             "Cache": {
-                "name": "Cache",
                 "methods": {
                     "method": {
                         "match": {
-                            "name": "match",
                             "override-signatures": [
                                 "match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>"
                             ]
@@ -1969,11 +1787,9 @@
                 }
             },
             "CacheStorage": {
-                "name": "CacheStorage",
                 "methods": {
                     "method": {
                         "match": {
-                            "name": "match",
                             "override-signatures": [
                                 "match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>"
                             ]
@@ -1982,7 +1798,6 @@
                 }
             },
             "Animation": {
-                "name": "Animation",
                 "events": {
                     "event": [
                         {
@@ -1997,7 +1812,6 @@
                 }
             },
             "KeyframeEffect": {
-                "name": "KeyframeEffect",
                 "constructor": {
                     "override-signatures": [
                         "new(target: Element | null, keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeEffectOptions): KeyframeEffect",
@@ -2007,7 +1821,6 @@
                 "properties": {
                     "property": {
                         "target": {
-                            "name": "target",
                             "override-type": "Element | null"
                         }
                     }
@@ -2015,13 +1828,11 @@
                 "methods": {
                     "method": {
                         "getKeyframes": {
-                            "name": "getKeyframes",
                             "override-signatures": [
                                 "getKeyframes(): ComputedKeyframe[]"
                             ]
                         },
                         "setKeyframes": {
-                            "name": "setKeyframes",
                             "override-signatures": [
                                 "setKeyframes(keyframes: Keyframe[] | PropertyIndexedKeyframes | null): void"
                             ]
@@ -2030,7 +1841,6 @@
                 }
             },
             "HTMLMarqueeElement": {
-                "name": "HTMLMarqueeElement",
                 "events": {
                     "event": [
                         {
@@ -2054,11 +1864,9 @@
                 ]
             },
             "AbortSignal": {
-                "name": "AbortSignal",
                 "override-exposed": "Window Worker"
             },
             "ErrorEvent": {
-                "name": "ErrorEvent",
                 "override-exposed": "Window Worker"
             },
             "Event": {
@@ -2071,7 +1879,6 @@
                 }
             },
             "Worker": {
-                "name": "Worker",
                 "override-exposed": "Window Worker",
                 "constructor": {
                     "override-signatures": [
@@ -2082,7 +1889,6 @@
                     "method": {
                         "postMessage": {
                             "deprecated": 0,
-                            "name": "postMessage",
                             "override-signatures": [
                                 "postMessage(message: any, transfer: Transferable[]): void",
                                 "postMessage(message: any, options?: PostMessageOptions): void"
@@ -2096,7 +1902,6 @@
                 "methods": {
                     "method": {
                         "getRandomValues": {
-                            "name": "getRandomValues",
                             "override-signatures": [
                                 "getRandomValues<T extends Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | null>(array: T): T"
                             ]
@@ -2105,7 +1910,6 @@
                 }
             },
             "AudioListener": {
-                "name": "AudioListener",
                 "methods": {
                     "method": {
                         "setPosition": {
@@ -2120,7 +1924,6 @@
                 }
             },
             "OfflineAudioContext": {
-                "name": "OfflineAudioContext",
                 "events": {
                     "event": [
                         {
@@ -2131,7 +1934,6 @@
                 }
             },
             "PannerNode": {
-                "name": "PannerNode",
                 "methods": {
                     "method": {
                         "setPosition": {
@@ -2146,7 +1948,6 @@
                 }
             },
             "ScriptProcessorNode": {
-                "name": "ScriptProcessorNode",
                 "properties": {
                     "property": {
                         "onaudioprocess": {
@@ -2169,11 +1970,9 @@
                 }
             },
             "MessagePort": {
-                "name": "MessagePort",
                 "methods": {
                     "method": {
                         "postMessage": {
-                            "name": "postMessage",
                             "override-signatures": [
                                 "postMessage(message: any, transfer: Transferable[]): void",
                                 "postMessage(message: any, options?: PostMessageOptions): void"
@@ -2183,11 +1982,9 @@
                 }
             },
             "ServiceWorker": {
-                "name": "ServiceWorker",
                 "methods": {
                     "method": {
                         "postMessage": {
-                            "name": "postMessage",
                             "override-signatures": [
                                 "postMessage(message: any, transfer: Transferable[]): void",
                                 "postMessage(message: any, options?: PostMessageOptions): void"
@@ -2197,11 +1994,9 @@
                 }
             },
             "DedicatedWorkerGlobalScope": {
-                "name": "DedicatedWorkerGlobalScope",
                 "methods": {
                     "method": {
                         "postMessage": {
-                            "name": "postMessage",
                             "override-signatures": [
                                 "postMessage(message: any, transfer: Transferable[]): void",
                                 "postMessage(message: any, options?: PostMessageOptions): void"
@@ -2554,7 +2349,6 @@
                 "methods": {
                     "method": {
                         "get": {
-                            "name": "get",
                             "override-signatures": [
                                 "get(keyId: BufferSource): MediaKeyStatus | undefined"
                             ]
@@ -2563,7 +2357,6 @@
                 }
             },
             "MessageEvent": {
-                "name": "MessageEvent",
                 "properties": {
                     "property": {
                         "data": {
@@ -2601,11 +2394,9 @@
     "dictionaries": {
         "dictionary": {
             "MessageEventInit": {
-                "name": "MessageEventInit",
                 "members": {
                     "member": {
                         "data": {
-                            "name": "data",
                             "override-type": "T",
                             "required": 0
                         }
@@ -2619,11 +2410,9 @@
                 ]
             },
             "CustomEventInit": {
-                "name": "CustomEventInit",
                 "members": {
                     "member": {
                         "detail": {
-                            "name": "detail",
                             "override-type": "T",
                             "required": 0
                         }
@@ -2640,11 +2429,9 @@
                 "members": {
                     "member": {
                         "iv": {
-                            "name": "iv",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         },
                         "additionalData": {
-                            "name": "additionalData",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         }
                     }
@@ -2654,7 +2441,6 @@
                 "members": {
                     "member": {
                         "salt": {
-                            "name": "salt",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         }
                     }
@@ -2664,11 +2450,9 @@
                 "members": {
                     "member": {
                         "info": {
-                            "name": "info",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         },
                         "salt": {
-                            "name": "salt",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         }
                     }
@@ -2678,7 +2462,6 @@
                 "members": {
                     "member": {
                         "iv": {
-                            "name": "iv",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         }
                     }
@@ -2688,7 +2471,6 @@
                 "members": {
                     "member": {
                         "counter": {
-                            "name": "counter",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         }
                     }
@@ -2698,18 +2480,15 @@
                 "members": {
                     "member": {
                         "label": {
-                            "name": "label",
                             "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
                         }
                     }
                 }
             },
             "RequestInit": {
-                "name": "RequestInit",
                 "members": {
                     "member": {
                         "headers": {
-                            "name": "headers",
                             "override-type": "HeadersInit",
                             "required": 0
                         }
@@ -2717,11 +2496,9 @@
                 }
             },
             "ResponseInit": {
-                "name": "ResponseInit",
                 "members": {
                     "member": {
                         "headers": {
-                            "name": "headers",
                             "override-type": "HeadersInit",
                             "required": 0
                         }
@@ -2729,33 +2506,27 @@
                 }
             },
             "PaymentMethodData": {
-                "name": "PaymentMethodData",
                 "members": {
                     "member": {
                         "supportedMethods": {
-                            "name": "supportedMethods",
                             "override-type": "string | string[]"
                         }
                     }
                 }
             },
             "PaymentDetailsModifier": {
-                "name": "PaymentDetailsModifier",
                 "members": {
                     "member": {
                         "supportedMethods": {
-                            "name": "supportedMethods",
                             "override-type": "string | string[]"
                         }
                     }
                 }
             },
             "ClientQueryOptions": {
-                "name": "ClientQueryOptions",
                 "members": {
                     "member": {
                         "type": {
-                            "name": "type",
                             "override-type": "ClientTypes"
                         }
                     }

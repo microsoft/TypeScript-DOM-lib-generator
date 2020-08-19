@@ -20,7 +20,6 @@
                 }
             },
             "DocumentOrShadowRoot": {
-                "name": "DocumentOrShadowRoot",
                 "methods": {
                     "method": {
                         "getSelection": {
@@ -212,11 +211,9 @@
                 }
             },
             "HTMLHyperlinkElementUtils": {
-                "name": "HTMLHyperlinkElementUtils",
                 "properties": {
                     "property": {
                         "origin": {
-                            "name": "origin",
                             "override-type": "string"
                         }
                     }
@@ -246,7 +243,6 @@
                 "exposed": ""
             },
             "SVGSVGElement": {
-                "name": "SVGSVGElement",
                 "methods": {
                     "method": {
                         "animationsPaused": {
@@ -259,7 +255,6 @@
                 }
             },
             "SVGFEDropShadowElement": {
-                "name": "SVGFEDropShadowElement",
                 "exposed": "Window",
                 "properties": {
                     "property": {
@@ -293,7 +288,6 @@
                 "methods": {
                     "method": {
                         "setStdDeviation": {
-                            "name": "setStdDeviation",
                             "override-signatures": [
                                 "setStdDeviation(stdDeviationX: number, stdDeviationY: number): void"
                             ]
@@ -371,11 +365,9 @@
                 "no-interface-object": 1
             },
             "HTMLImageElement": {
-                "name": "HTMLImageElement",
                 "properties": {
                     "property": {
                         "decoding": {
-                            "name": "decoding",
                             "override-type": "\"async\" | \"sync\" | \"auto\""
                         }
                     }
@@ -397,7 +389,6 @@
                 }
             },
             "CSSStyleDeclaration": {
-                "name": "CSSStyleDeclaration",
                 "properties": {
                     "property": {
                         "pointerEvents": {
@@ -438,7 +429,6 @@
                 }
             },
             "Window": {
-                "name": "Window",
                 "properties": {
                     "property": {
                         "customElements": {
@@ -463,7 +453,6 @@
                 }
             },
             "URLSearchParams": {
-                "name": "URLSearchParams",
                 "constructor": {
                     "override-signatures": [
                         "new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams"
@@ -471,7 +460,6 @@
                 }
             },
             "URL": {
-                "name": "URL",
                 "methods": {
                     "method": {
                         "createObjectURL": {
@@ -554,7 +542,6 @@
                             "name": "item"
                         },
                         "namedItem": {
-                            "name": "namedItem",
                             "override-signatures": [
                                 "namedItem(name: string): T | null"
                             ]
@@ -568,7 +555,6 @@
                 "methods": {
                     "method": {
                         "handleEvent": {
-                            "name": "handleEvent",
                             "override-signatures": [
                                 "handleEvent(evt: Event): void"
                             ]
@@ -614,17 +600,14 @@
                         }
                     ]
                 },
-                "name": "Element",
                 "methods": {
                     "method": {
                         "getElementsByClassName": {
-                            "name": "getElementsByClassName",
                             "override-signatures": [
                                 "getElementsByClassName(classNames: string): HTMLCollectionOf<Element>"
                             ]
                         },
                         "closest": {
-                            "name": "closest",
                             "override-signatures": [
                                 "closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null",
                                 "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null",
@@ -632,19 +615,16 @@
                             ]
                         },
                         "insertAdjacentElement": {
-                            "name": "insertAdjacentElement",
                             "override-signatures": [
                                 "insertAdjacentElement(position: InsertPosition, insertedElement: Element): Element | null"
                             ]
                         },
                         "insertAdjacentHTML": {
-                            "name": "insertAdjacentHTML",
                             "override-signatures": [
                                 "insertAdjacentHTML(where: InsertPosition, html: string): void"
                             ]
                         },
                         "insertAdjacentText": {
-                            "name": "insertAdjacentText",
                             "override-signatures": [
                                 "insertAdjacentText(where: InsertPosition, text: string): void"
                             ]
@@ -664,7 +644,6 @@
                             "override-type": "Document"
                         },
                         "slot": {
-                            "name": "slot",
                             "override-type": "string"
                         }
                     }
@@ -703,11 +682,9 @@
                 }
             },
             "Navigator": {
-                "name": "Navigator",
                 "methods": {
                     "method": {
                         "vibrate": {
-                            "name": "vibrate",
                             "override-signatures": [
                                 "vibrate(pattern: number | number[]): boolean"
                             ]
@@ -735,7 +712,6 @@
                 "no-interface-object": "1"
             },
             "HTMLIFrameElement": {
-                "name": "HTMLIFrameElement",
                 "properties": {
                     "property": {
                         "referrerPolicy": {
@@ -750,18 +726,15 @@
                 ]
             },
             "HTMLTextAreaElement": {
-                "name": "HTMLTextAreaElement",
                 "properties": {
                     "property": {
                         "minLength": {
-                            "name": "minLength",
                             "override-type": "number"
                         }
                     }
                 }
             },
             "IDBDatabase": {
-                "name": "IDBDatabase",
                 "events": {
                     "event": [
                         {
@@ -784,7 +757,6 @@
                 }
             },
             "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
                 "extends": "IDBRequest<IDBDatabase>",
                 "events": {
                     "event": [
@@ -800,7 +772,6 @@
                 }
             },
             "IDBRequest": {
-                "name": "IDBRequest",
                 "events": {
                     "event": [
                         {
@@ -815,7 +786,6 @@
                 }
             },
             "IDBTransaction": {
-                "name": "IDBRequest",
                 "events": {
                     "event": [
                         {
@@ -960,11 +930,9 @@
                 "no-interface-object": "1"
             },
             "DataTransfer": {
-                "name": "DataTransfer",
                 "methods": {
                     "method": {
                         "setDragImage": {
-                            "name": "setDragImage",
                             "override-signatures": [
                                 "setDragImage(image: Element, x: number, y: number): void"
                             ]
@@ -994,7 +962,6 @@
                 }
             },
             "DocumentFragment": {
-                "name": "DocumentFragment",
                 "methods": {
                     "method": {
                         "getElementById": {
@@ -1079,7 +1046,6 @@
                 ]
             },
             "Text": {
-                "name": "Text",
                 "properties": {
                     "property": {
                         "assignedSlot": {
@@ -1114,12 +1080,10 @@
                 }
             },
             "DOMTokenList": {
-                "name": "DOMTokenList",
                 "exposed": "Window",
                 "methods": {
                     "method": {
                         "replace": {
-                            "name": "replace",
                             "override-signatures": [
                                 "replace(oldToken: string, newToken: string): void"
                             ]
@@ -2250,7 +2214,6 @@
                 }
             },
             "Attr": {
-                "name": "Attr",
                 "properties": {
                     "property": {
                         "ownerDocument": {
@@ -2262,7 +2225,6 @@
                 }
             },
             "CharacterData": {
-                "name": "CharacterData",
                 "properties": {
                     "property": {
                         "ownerDocument": {
@@ -2274,7 +2236,6 @@
                 }
             },
             "DocumentType": {
-                "name": "DocumentType",
                 "properties": {
                     "property": {
                         "ownerDocument": {
@@ -2286,7 +2247,6 @@
                 }
             },
             "ProcessingInstruction": {
-                "name": "ProcessingInstruction",
                 "properties": {
                     "property": {
                         "ownerDocument": {
@@ -2343,7 +2303,6 @@
                 }
             },
             "WorkerOptions": {
-                "name": "WorkerOptions",
                 "members": {
                     "member": {
                         "type": {
