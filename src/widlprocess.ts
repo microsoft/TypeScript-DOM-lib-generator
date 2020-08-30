@@ -33,7 +33,10 @@ export function convert(text: string, commentMap: Record<string, string>) {
             browser.namespaces!.push(convertNamespace(rootType, commentMap));
         }
         else if (rootType.type === "callback interface") {
-            browser["callback-interfaces"]!.interface[rootType.name] = convertInterface(rootType, commentMap);
+            browser["callback-interfaces"]!.interface[rootType.name] = convertInterface(
+                rootType as unknown as webidl2.InterfaceType, 
+                commentMap
+            );
         }
         else if (rootType.type === "callback") {
             browser["callback-functions"]!["callback-function"][rootType.name]
