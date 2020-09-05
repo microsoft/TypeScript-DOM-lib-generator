@@ -33,10 +33,7 @@ export function convert(text: string, commentMap: Record<string, string>) {
             browser.namespaces!.push(convertNamespace(rootType, commentMap));
         }
         else if (rootType.type === "callback interface") {
-            browser["callback-interfaces"]!.interface[rootType.name] = convertInterface(
-                rootType as unknown as webidl2.InterfaceType, 
-                commentMap
-            );
+            browser["callback-interfaces"]!.interface[rootType.name] = convertCallbackInterface(rootType, commentMap);
         }
         else if (rootType.type === "callback") {
             browser["callback-functions"]!["callback-function"][rootType.name]
@@ -95,6 +92,10 @@ function convertInterface(i: webidl2.InterfaceType, commentMap: Record<string, s
     return result;
 }
 
+function convertCallbackInterface(i: webidl2.CallbackInterfaceType, commentMap: Record<string, string>) {
+    return convertInterfaceCommon(i, commentMap);
+}
+
 function convertInterfaceMixin(i: webidl2.InterfaceMixinType, commentMap: Record<string, string>) {
     const result = convertInterfaceCommon(i, commentMap);
     result.mixin = true;
@@ -112,7 +113,7 @@ function addComments(obj: any, commentMap: Record<string, string>, container: st
     }
 }
 
-function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixinType, commentMap: Record<string, string>) {
+function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.CallbackInterfaceType | webidl2.InterfaceMixinType, commentMap: Record<string, string>) {
     const result: Browser.Interface = {
         name: i.name,
         extends: "Object",
