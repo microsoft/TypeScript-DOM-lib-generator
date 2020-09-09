@@ -121,7 +121,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         "named-constructor": getLegacyFactoryFunction(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
-        "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
+        "no-interface-object": hasExtAttr(i.extAttrs, "LegacyNoInterfaceObject") ? 1 : undefined,
         "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias"),
         "legacy-namespace": getExtAttr(i.extAttrs, "LegacyNamespace")[0]
     };

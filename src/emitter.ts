@@ -3,9 +3,8 @@ import { mapToArray, distinct, map, toNameMap, mapDefined, arrayToMap, flatMap, 
 import { collectLegacyNamespaceTypes } from "./legacy-namespace";
 
 export const enum Flavor {
-    Web,
-    Worker,
-    ES6Iterators
+    Window,
+    Worker
 }
 
 // Note:
@@ -120,11 +119,11 @@ function isEventHandler(p: Browser.Property) {
     return typeof p["event-handler"] === "string";
 }
 
-export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
+export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boolean) {
     // Global print target
     const printer = createTextWriter("\n");
 
-    const pollutor = getElements(webidl.interfaces, "interface").find(i => flavor === Flavor.Web ? !!i["primary-global"] : !!i.global);
+    const pollutor = getElements(webidl.interfaces, "interface").find(i => flavor === Flavor.Window ? !!i["primary-global"] : !!i.global);
 
     const allNonCallbackInterfaces = getElements(webidl.interfaces, "interface").concat(getElements(webidl.mixins, "mixin"));
     const allInterfaces = getElements(webidl.interfaces, "interface").concat(
@@ -182,7 +181,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     const iNameToConstParents = arrayToMap(allInterfaces, i => i.name, getParentsWithConstant);
 
-    return flavor === Flavor.ES6Iterators ? emitES6DomIterators() : emit();
+    return iterator ? emitES6DomIterators() : emit();
 
     function getTagNameToElementNameMap() {
         const htmlResult: Record<string, string> = {};
@@ -340,7 +339,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     }
 
     function convertDomTypeToTsTypeSimple(objDomType: string): string {
-        if (objDomType === "sequence" && flavor === Flavor.ES6Iterators) {
+        if (objDomType === "sequence" && iterator) {
             return "Iterable";
         }
         if (baseTypeConversionMap.has(objDomType)) {
@@ -837,7 +836,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
         printer.printLine("};");
         printer.printLine("");
 
-        if (flavor === Flavor.Web && i["legacy-window-alias"]) {
+        if (flavor === Flavor.Window && i["legacy-window-alias"]) {
             for (const alias of i["legacy-window-alias"]!) {
                 printer.printLine(`type ${alias} = ${i.name};`);
                 printer.printLine(`declare var ${alias}: typeof ${i.name};`);
@@ -1181,7 +1180,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
         emitCallBackFunctions();
 
-        if (flavor !== Flavor.Worker) {
+        if (flavor === Flavor.Window) {
             emitHTMLElementTagNameMap();
             emitHTMLElementDeprecatedTagNameMap();
             emitSVGElementTagNameMap();
@@ -1352,7 +1351,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
     function emitES6DomIterators() {
         printer.reset();
         printer.printLine("/////////////////////////////");
-        printer.printLine("/// DOM Iterable APIs");
+        if (flavor === Flavor.Worker) {
+            printer.printLine("/// Worker Iterable APIs");
+        }
+        else {
+            printer.printLine("/// DOM Iterable APIs");
+        }
         printer.printLine("/////////////////////////////");
 
         allInterfaces

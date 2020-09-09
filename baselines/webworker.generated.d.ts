@@ -2715,6 +2715,11 @@ interface ReadableByteStreamController {
     error(error?: any): void;
 }
 
+declare var ReadableByteStreamController: {
+    prototype: ReadableByteStreamController;
+    new(): ReadableByteStreamController;
+};
+
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
@@ -2739,11 +2744,21 @@ interface ReadableStreamBYOBReader {
     releaseLock(): void;
 }
 
+declare var ReadableStreamBYOBReader: {
+    prototype: ReadableStreamBYOBReader;
+    new(): ReadableStreamBYOBReader;
+};
+
 interface ReadableStreamBYOBRequest {
     readonly view: ArrayBufferView;
     respond(bytesWritten: number): void;
     respondWithNewView(view: ArrayBufferView): void;
 }
+
+declare var ReadableStreamBYOBRequest: {
+    prototype: ReadableStreamBYOBRequest;
+    new(): ReadableStreamBYOBRequest;
+};
 
 interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
@@ -2752,12 +2767,22 @@ interface ReadableStreamDefaultController<R = any> {
     error(error?: any): void;
 }
 
+declare var ReadableStreamDefaultController: {
+    prototype: ReadableStreamDefaultController;
+    new(): ReadableStreamDefaultController;
+};
+
 interface ReadableStreamDefaultReader<R = any> {
     readonly closed: Promise<void>;
     cancel(reason?: any): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
+
+declare var ReadableStreamDefaultReader: {
+    prototype: ReadableStreamDefaultReader;
+    new(): ReadableStreamDefaultReader;
+};
 
 interface ReadableStreamReader<R = any> {
     cancel(): Promise<void>;
@@ -3235,6 +3260,11 @@ interface TransformStreamDefaultController<O = any> {
     error(reason?: any): void;
     terminate(): void;
 }
+
+declare var TransformStreamDefaultController: {
+    prototype: TransformStreamDefaultController;
+    new(): TransformStreamDefaultController;
+};
 
 /** The URL interface represents an object providing static methods used for creating object URLs. */
 interface URL {
@@ -5512,6 +5542,11 @@ interface WritableStreamDefaultController {
     error(error?: any): void;
 }
 
+declare var WritableStreamDefaultController: {
+    prototype: WritableStreamDefaultController;
+    new(): WritableStreamDefaultController;
+};
+
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
     readonly closed: Promise<void>;
@@ -5522,6 +5557,11 @@ interface WritableStreamDefaultWriter<W = any> {
     releaseLock(): void;
     write(chunk: W): Promise<void>;
 }
+
+declare var WritableStreamDefaultWriter: {
+    prototype: WritableStreamDefaultWriter;
+    new(): WritableStreamDefaultWriter;
+};
 
 interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
     "readystatechange": Event;

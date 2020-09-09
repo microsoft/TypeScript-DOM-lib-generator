@@ -25,24 +25,22 @@ function mergeNamesakes(filtered: Browser.WebIdl) {
     }
 }
 
-function emitDomWorker(webidl: Browser.WebIdl, tsWorkerOutput: string, forceKnownWorkerTypes: Set<string>) {
-    const worker = getExposedTypes(webidl, "Worker", forceKnownWorkerTypes);
-    mergeNamesakes(worker);
-    const result = emitWebIdl(worker, Flavor.Worker);
-    fs.writeFileSync(tsWorkerOutput, result);
-    return;
+interface EmitOptions {
+    flavor: Flavor;
+    global: string;
+    name: string;
+    outputFolder: string;
 }
 
-function emitDomWeb(webidl: Browser.WebIdl, tsWebOutput: string, forceKnownWindowTypes: Set<string>) {
-    const browser = getExposedTypes(webidl, "Window", forceKnownWindowTypes);
-    mergeNamesakes(browser);
-    const result = emitWebIdl(browser, Flavor.Web);
-    fs.writeFileSync(tsWebOutput, result);
-    return;
-}
+function emitFlavor(webidl: Browser.WebIdl, forceKnownTypes: Set<string>, options: EmitOptions) {
+    const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
+    mergeNamesakes(exposed);
 
-function emitES6DomIterators(webidl: Browser.WebIdl, tsWebIteratorsOutput: string) {
-    fs.writeFileSync(tsWebIteratorsOutput, emitWebIdl(webidl, Flavor.ES6Iterators));
+    const result = emitWebIdl(exposed, options.flavor, false);
+    fs.writeFileSync(`${options.outputFolder}/${options.name}.generated.d.ts`, result);
+
+    const iterators = emitWebIdl(exposed, options.flavor, true);
+    fs.writeFileSync(`${options.outputFolder}/${options.name}.iterable.generated.d.ts`, iterators);
 }
 
 function emitDom() {
@@ -64,10 +62,6 @@ function emitDom() {
     if (!fs.existsSync(outputFolder)) {
         fs.mkdirSync(outputFolder);
     }
-
-    const tsWebOutput = path.join(outputFolder, "dom.generated.d.ts");
-    const tsWebIteratorsOutput = path.join(outputFolder, "dom.iterable.generated.d.ts");
-    const tsWorkerOutput = path.join(outputFolder, "webworker.generated.d.ts");
 
     const overriddenItems = require(path.join(inputFolder, "overridingTypes.json"));
     const addedItems = require(path.join(inputFolder, "addedTypes.json"));
@@ -184,9 +178,8 @@ function emitDom() {
         }
     }
 
-    emitDomWeb(webidl, tsWebOutput, new Set(knownTypes.Window));
-    emitDomWorker(webidl, tsWorkerOutput, new Set(knownTypes.Worker));
-    emitES6DomIterators(webidl, tsWebIteratorsOutput);
+    emitFlavor(webidl, new Set(knownTypes.Window), { name: "dom", flavor: Flavor.Window, global: "Window", outputFolder });
+    emitFlavor(webidl, new Set(knownTypes.Worker), { name: "webworker", flavor: Flavor.Worker, global: "Worker", outputFolder });
 
     function prune(obj: Browser.WebIdl, template: Partial<Browser.WebIdl>): Browser.WebIdl {
         return filterByNull(obj, template);

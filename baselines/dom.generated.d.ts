@@ -135,29 +135,21 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
 
 interface AuthenticationExtensionsClientInputs {
     appid?: string;
-    authnSel?: AuthenticatorSelectionList;
-    exts?: boolean;
-    loc?: boolean;
-    txAuthGeneric?: txAuthGenericArg;
-    txAuthSimple?: string;
-    uvi?: boolean;
+    appidExclude?: string;
+    credProps?: boolean;
     uvm?: boolean;
 }
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
-    authnSel?: boolean;
-    exts?: AuthenticationExtensionsSupported;
-    loc?: Coordinates;
-    txAuthGeneric?: ArrayBuffer;
-    txAuthSimple?: string;
-    uvi?: ArrayBuffer;
+    credProps?: CredentialPropertiesOutput;
     uvm?: UvmEntries;
 }
 
 interface AuthenticatorSelectionCriteria {
     authenticatorAttachment?: AuthenticatorAttachment;
     requireResidentKey?: boolean;
+    residentKey?: ResidentKeyRequirement;
     userVerification?: UserVerificationRequirement;
 }
 
@@ -282,6 +274,10 @@ interface ConvolverOptions extends AudioNodeOptions {
 interface CredentialCreationOptions {
     publicKey?: PublicKeyCredentialCreationOptions;
     signal?: AbortSignal;
+}
+
+interface CredentialPropertiesOutput {
+    rk?: boolean;
 }
 
 interface CredentialRequestOptions {
@@ -1096,7 +1092,6 @@ interface PublicKeyCredentialDescriptor {
 }
 
 interface PublicKeyCredentialEntity {
-    icon?: string;
     name: string;
 }
 
@@ -1894,11 +1889,6 @@ interface WorkerOptions {
 
 interface WorkletOptions {
     credentials?: RequestCredentials;
-}
-
-interface txAuthGenericArg {
-    content: ArrayBuffer;
-    contentType: string;
 }
 
 interface EventListener {
@@ -3619,17 +3609,6 @@ declare var ConvolverNode: {
     prototype: ConvolverNode;
     new(context: BaseAudioContext, options?: ConvolverOptions): ConvolverNode;
 };
-
-/** The position and altitude of the device on Earth, as well as the accuracy with which these properties are calculated. */
-interface Coordinates {
-    readonly accuracy: number;
-    readonly altitude: number | null;
-    readonly altitudeAccuracy: number | null;
-    readonly heading: number | null;
-    readonly latitude: number;
-    readonly longitude: number;
-    readonly speed: number | null;
-}
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
@@ -5658,6 +5637,52 @@ interface Geolocation {
     getCurrentPosition(successCallback: PositionCallback, errorCallback?: PositionErrorCallback, options?: PositionOptions): void;
     watchPosition(successCallback: PositionCallback, errorCallback?: PositionErrorCallback, options?: PositionOptions): number;
 }
+
+declare var Geolocation: {
+    prototype: Geolocation;
+    new(): Geolocation;
+};
+
+interface GeolocationCoordinates {
+    readonly accuracy: number;
+    readonly altitude: number | null;
+    readonly altitudeAccuracy: number | null;
+    readonly heading: number | null;
+    readonly latitude: number;
+    readonly longitude: number;
+    readonly speed: number | null;
+}
+
+declare var GeolocationCoordinates: {
+    prototype: GeolocationCoordinates;
+    new(): GeolocationCoordinates;
+};
+
+interface GeolocationPosition {
+    readonly coords: GeolocationCoordinates;
+    readonly timestamp: number;
+}
+
+declare var GeolocationPosition: {
+    prototype: GeolocationPosition;
+    new(): GeolocationPosition;
+};
+
+interface GeolocationPositionError {
+    readonly code: number;
+    readonly message: string;
+    readonly PERMISSION_DENIED: number;
+    readonly POSITION_UNAVAILABLE: number;
+    readonly TIMEOUT: number;
+}
+
+declare var GeolocationPositionError: {
+    prototype: GeolocationPositionError;
+    new(): GeolocationPositionError;
+    readonly PERMISSION_DENIED: number;
+    readonly POSITION_UNAVAILABLE: number;
+    readonly TIMEOUT: number;
+};
 
 interface GlobalEventHandlersEventMap {
     "abort": UIEvent;
@@ -11767,21 +11792,6 @@ declare var PopStateEvent: {
     new(type: string, eventInitDict?: PopStateEventInit): PopStateEvent;
 };
 
-/** The position of the concerned device at a given time. The position, represented by a Coordinates object, comprehends the 2D position of the device, on a spheroid representing the Earth, but also its altitude and its speed. */
-interface Position {
-    readonly coords: Coordinates;
-    readonly timestamp: number;
-}
-
-/** The reason of an error occurring when using the geolocating device. */
-interface PositionError {
-    readonly code: number;
-    readonly message: string;
-    readonly PERMISSION_DENIED: number;
-    readonly POSITION_UNAVAILABLE: number;
-    readonly TIMEOUT: number;
-}
-
 /** A processing instruction embeds application-specific instructions in XML which can be ignored by other applications that don't recognize them. */
 interface ProcessingInstruction extends CharacterData, LinkStyle {
     readonly ownerDocument: Document;
@@ -12473,6 +12483,11 @@ interface ReadableByteStreamController {
     error(error?: any): void;
 }
 
+declare var ReadableByteStreamController: {
+    prototype: ReadableByteStreamController;
+    new(): ReadableByteStreamController;
+};
+
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
@@ -12497,11 +12512,21 @@ interface ReadableStreamBYOBReader {
     releaseLock(): void;
 }
 
+declare var ReadableStreamBYOBReader: {
+    prototype: ReadableStreamBYOBReader;
+    new(): ReadableStreamBYOBReader;
+};
+
 interface ReadableStreamBYOBRequest {
     readonly view: ArrayBufferView;
     respond(bytesWritten: number): void;
     respondWithNewView(view: ArrayBufferView): void;
 }
+
+declare var ReadableStreamBYOBRequest: {
+    prototype: ReadableStreamBYOBRequest;
+    new(): ReadableStreamBYOBRequest;
+};
 
 interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
@@ -12510,12 +12535,22 @@ interface ReadableStreamDefaultController<R = any> {
     error(error?: any): void;
 }
 
+declare var ReadableStreamDefaultController: {
+    prototype: ReadableStreamDefaultController;
+    new(): ReadableStreamDefaultController;
+};
+
 interface ReadableStreamDefaultReader<R = any> {
     readonly closed: Promise<void>;
     cancel(reason?: any): Promise<void>;
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
+
+declare var ReadableStreamDefaultReader: {
+    prototype: ReadableStreamDefaultReader;
+    new(): ReadableStreamDefaultReader;
+};
 
 interface ReadableStreamReader<R = any> {
     cancel(): Promise<void>;
@@ -15864,6 +15899,11 @@ interface TransformStreamDefaultController<O = any> {
     terminate(): void;
 }
 
+declare var TransformStreamDefaultController: {
+    prototype: TransformStreamDefaultController;
+    new(): TransformStreamDefaultController;
+};
+
 /** Events providing information related to transitions. */
 interface TransitionEvent extends Event {
     readonly elapsedTime: number;
@@ -18664,6 +18704,11 @@ interface WritableStreamDefaultController {
     error(error?: any): void;
 }
 
+declare var WritableStreamDefaultController: {
+    prototype: WritableStreamDefaultController;
+    new(): WritableStreamDefaultController;
+};
+
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
     readonly closed: Promise<void>;
@@ -18674,6 +18719,11 @@ interface WritableStreamDefaultWriter<W = any> {
     releaseLock(): void;
     write(chunk: W): Promise<void>;
 }
+
+declare var WritableStreamDefaultWriter: {
+    prototype: WritableStreamDefaultWriter;
+    new(): WritableStreamDefaultWriter;
+};
 
 /** An XML document. It inherits from the generic Document and does not add any specific methods or properties to it: nevertheless, several algorithms behave differently with the two types of documents. */
 interface XMLDocument extends Document {
@@ -19177,11 +19227,11 @@ interface PerformanceObserverCallback {
 }
 
 interface PositionCallback {
-    (position: Position): void;
+    (position: GeolocationPosition): void;
 }
 
 interface PositionErrorCallback {
-    (positionError: PositionError): void;
+    (positionError: GeolocationPositionError): void;
 }
 
 interface QueuingStrategySizeCallback<T = any> {
@@ -19891,9 +19941,6 @@ type PerformanceEntryList = PerformanceEntry[];
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type VibratePattern = number | number[];
 type COSEAlgorithmIdentifier = number;
-type AuthenticatorSelectionList = AAGUID[];
-type AAGUID = BufferSource;
-type AuthenticationExtensionsSupported = string[];
 type UvmEntry = number[];
 type UvmEntries = UvmEntry[];
 type AlgorithmIdentifier = string | Algorithm;
@@ -19933,7 +19980,7 @@ type WindowProxy = Window;
 type AlignSetting = "center" | "end" | "left" | "right" | "start";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
 type AppendMode = "segments" | "sequence";
-type AttestationConveyancePreference = "direct" | "indirect" | "none";
+type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "running" | "suspended";
 type AuthenticatorAttachment = "cross-platform" | "platform";
@@ -20045,6 +20092,7 @@ type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
+type ResidentKeyRequirement = "discouraged" | "preferred" | "required";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
 type ScopedCredentialType = "ScopedCred";
