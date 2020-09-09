@@ -5800,7 +5800,7 @@ declare namespace WebAssembly {
     function compileStreaming(source: Response | PromiseLike<Response>): Promise<Module>;
     function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
-    function instantiateStreaming(response: Response | Promise<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function validate(bytes: BufferSource): boolean;
 }
 
@@ -5825,7 +5825,7 @@ interface ReadableByteStreamControllerCallback {
 }
 
 interface ReadableStreamDefaultControllerCallback<R> {
-    (controller: ReadableStreamDefaultController<R>): void | Promise<void>;
+    (controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>;
 }
 
 interface ReadableStreamErrorCallback {
@@ -5833,11 +5833,11 @@ interface ReadableStreamErrorCallback {
 }
 
 interface TransformStreamDefaultControllerCallback<O> {
-    (controller: TransformStreamDefaultController<O>): void | Promise<void>;
+    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
 interface TransformStreamDefaultControllerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): void | Promise<void>;
+    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
 interface VoidFunction {
@@ -5853,7 +5853,7 @@ interface WritableStreamDefaultControllerStartCallback {
 }
 
 interface WritableStreamDefaultControllerWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | Promise<void>;
+    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
 }
 
 interface WritableStreamErrorCallback {
