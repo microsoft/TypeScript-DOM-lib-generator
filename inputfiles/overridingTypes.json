@@ -251,7 +251,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(controller: ReadableStreamDefaultController<R>): void | Promise<void>"
+                    "(controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>"
                 ]
             },
             "WritableStreamDefaultControllerWriteCallback": {
@@ -261,7 +261,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(chunk: W, controller: WritableStreamDefaultController): void | Promise<void>"
+                    "(chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>"
                 ]
             },
             "TransformStreamDefaultControllerCallback": {
@@ -271,7 +271,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(controller: TransformStreamDefaultController<O>): void | Promise<void>"
+                    "(controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
                 ]
             },
             "TransformStreamDefaultControllerTransformCallback": {
@@ -284,7 +284,7 @@
                     }
                 ],
                 "override-signatures": [
-                    "(chunk: I, controller: TransformStreamDefaultController<O>): void | Promise<void>"
+                    "(chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>"
                 ]
             },
             "CustomElementConstructor": {
@@ -3199,7 +3199,7 @@
                     },
                     "instantiateStreaming": {
                         "override-signatures": [
-                            "instantiateStreaming(response: Response | Promise<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>"
+                            "instantiateStreaming(response: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>"
                         ],
                         "force-references": [
                             {

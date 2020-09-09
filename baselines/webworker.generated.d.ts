@@ -1515,7 +1515,7 @@ interface FetchEvent extends ExtendableEvent {
     readonly replacesClientId: string;
     readonly request: Request;
     readonly resultingClientId: string;
-    respondWith(r: Response | Promise<Response>): void;
+    respondWith(r: Response | PromiseLike<Response>): void;
 }
 
 declare var FetchEvent: {
@@ -5797,7 +5797,7 @@ declare namespace WebAssembly {
     type ModuleImports = Record<string, ImportValue>;
     type Imports = Record<string, ModuleImports>;
     function compile(bytes: BufferSource): Promise<Module>;
-    function compileStreaming(source: Response | Promise<Response>): Promise<Module>;
+    function compileStreaming(source: Response | PromiseLike<Response>): Promise<Module>;
     function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
     function instantiateStreaming(response: Response | Promise<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
@@ -5821,7 +5821,7 @@ interface QueuingStrategySizeCallback<T = any> {
 }
 
 interface ReadableByteStreamControllerCallback {
-    (controller: ReadableByteStreamController): void | Promise<void>;
+    (controller: ReadableByteStreamController): void | PromiseLike<void>;
 }
 
 interface ReadableStreamDefaultControllerCallback<R> {
@@ -5829,7 +5829,7 @@ interface ReadableStreamDefaultControllerCallback<R> {
 }
 
 interface ReadableStreamErrorCallback {
-    (reason: any): void | Promise<void>;
+    (reason: any): void | PromiseLike<void>;
 }
 
 interface TransformStreamDefaultControllerCallback<O> {
@@ -5845,11 +5845,11 @@ interface VoidFunction {
 }
 
 interface WritableStreamDefaultControllerCloseCallback {
-    (): void | Promise<void>;
+    (): void | PromiseLike<void>;
 }
 
 interface WritableStreamDefaultControllerStartCallback {
-    (controller: WritableStreamDefaultController): void | Promise<void>;
+    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
 }
 
 interface WritableStreamDefaultControllerWriteCallback<W> {
@@ -5857,7 +5857,7 @@ interface WritableStreamDefaultControllerWriteCallback<W> {
 }
 
 interface WritableStreamErrorCallback {
-    (reason: any): void | Promise<void>;
+    (reason: any): void | PromiseLike<void>;
 }
 
 /**

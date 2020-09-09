@@ -514,7 +514,8 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor) {
 
     function replacePromiseTypeWithUnion<T extends Browser.Typed>(type: T) {
         if (type.type === "Promise" && !Array.isArray(type.subtype)) {
-            return { ...type, type: [type.subtype!, type], subtype: undefined };
+            const promiseLike = { ...type, type: "PromiseLike" };
+            return { ...type, type: [type.subtype!, promiseLike], subtype: undefined };
         }
         return type;
     }
