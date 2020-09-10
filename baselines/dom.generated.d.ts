@@ -611,7 +611,7 @@ interface IntersectionObserverEntryInit {
 }
 
 interface IntersectionObserverInit {
-    root?: Element | null;
+    root?: Element | Document | null;
     rootMargin?: string;
     threshold?: number | number[];
 }
@@ -9611,7 +9611,7 @@ declare var InputEvent: {
 
 /** provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport. */
 interface IntersectionObserver {
-    readonly root: Element | null;
+    readonly root: Node | null;
     readonly rootMargin: string;
     readonly thresholds: ReadonlyArray<number>;
     disconnect(): void;
