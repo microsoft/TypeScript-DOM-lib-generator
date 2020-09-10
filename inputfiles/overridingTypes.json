@@ -1325,13 +1325,13 @@
                         "deriveBits": {
                             "name": "deriveBits",
                             "override-signatures": [
-                                "deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>"
+                                "deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>"
                             ]
                         },
                         "deriveKey": {
                             "name": "deriveKey",
                             "override-signatures": [
-                                "deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
                             ]
                         },
                         "digest": {
@@ -2895,6 +2895,21 @@
                     }
                 }
             },
+            "AuthenticatorSelectionCriteria": {
+                "members": {
+                    "member": {
+                        "authenticatorAttachment": {
+                            "type": "AuthenticatorAttachment"
+                        },
+                        "residentKey": {
+                            "type": "ResidentKeyRequirement"
+                        },
+                        "userVerification": {
+                            "type": "UserVerificationRequirement"
+                        }
+                    }
+                }
+            },
             "BaseKeyframe": {
                 "name": "Keyframe",
                 "override-index-signatures": [
@@ -2943,6 +2958,47 @@
                         },
                         "signal": {
                             "nullable": 0
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialCreationOptions": {
+                "members": {
+                    "member": {
+                        "attestation": {
+                            "type": "AttestationConveyancePreference"
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialDescriptor": {
+                "members": {
+                    "member": {
+                        "type": {
+                            "type": "PublicKeyCredentialType"
+                        },
+                        "transports": {
+                            "subtype": {
+                                "type": "AuthenticatorTransport"
+                            }
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialParameters": {
+                "members": {
+                    "member": {
+                        "type": {
+                            "type": "PublicKeyCredentialType"
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialRequestOptions": {
+                "members": {
+                    "member": {
+                        "userVerification": {
+                            "type": "UserVerificationRequirement"
                         }
                     }
                 }
@@ -3071,6 +3127,15 @@
                         },
                         "type": {
                             "override-type": "undefined"
+                        }
+                    }
+                }
+            },
+            "TokenBinding": {
+                "members": {
+                    "member": {
+                        "status": {
+                            "type": "TokenBindingStatus"
                         }
                     }
                 }

@@ -33,7 +33,7 @@ export function convert(text: string, commentMap: Record<string, string>) {
             browser.namespaces!.push(convertNamespace(rootType, commentMap));
         }
         else if (rootType.type === "callback interface") {
-            browser["callback-interfaces"]!.interface[rootType.name] = convertInterface(rootType, commentMap);
+            browser["callback-interfaces"]!.interface[rootType.name] = convertInterfaceCommon(rootType, commentMap);
         }
         else if (rootType.type === "callback") {
             browser["callback-functions"]!["callback-function"][rootType.name]
@@ -109,7 +109,7 @@ function addComments(obj: any, commentMap: Record<string, string>, container: st
     }
 }
 
-function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixinType, commentMap: Record<string, string>) {
+function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixinType | webidl2.CallbackInterfaceType, commentMap: Record<string, string>) {
     const result: Browser.Interface = {
         name: i.name,
         extends: "Object",
@@ -121,7 +121,7 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
         "named-constructor": getLegacyFactoryFunction(i.extAttrs, i.name),
         exposed: getExtAttrConcatenated(i.extAttrs, "Exposed"),
         global: getExtAttrConcatenated(i.extAttrs, "Global"),
-        "no-interface-object": hasExtAttr(i.extAttrs, "NoInterfaceObject") ? 1 : undefined,
+        "no-interface-object": hasExtAttr(i.extAttrs, "LegacyNoInterfaceObject") ? 1 : undefined,
         "legacy-window-alias": getExtAttr(i.extAttrs, "LegacyWindowAlias"),
         "legacy-namespace": getExtAttr(i.extAttrs, "LegacyNamespace")[0]
     };

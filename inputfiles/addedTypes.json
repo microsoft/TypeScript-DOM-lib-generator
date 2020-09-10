@@ -959,27 +959,6 @@
                 },
                 "no-interface-object": "1"
             },
-            "HkdfCtrParams": {
-                "name": "HkdfCtrParams",
-                "extends": "Algorithm",
-                "properties": {
-                    "property": {
-                        "hash": {
-                            "name": "hash",
-                            "override-type": "string | Algorithm"
-                        },
-                        "label": {
-                            "name": "label",
-                            "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
-                        },
-                        "context": {
-                            "name": "context",
-                            "override-type": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer"
-                        }
-                    }
-                },
-                "no-interface-object": "1"
-            },
             "DataTransfer": {
                 "name": "DataTransfer",
                 "methods": {

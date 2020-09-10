@@ -107,6 +107,7 @@
         "EcKeyGenParams",
         "EcKeyImportParams",
         "HashAlgorithmIdentifier",
+        "HkdfParams",
         "HmacImportParams",
         "HmacKeyGenParams",
         "IDBArrayKey",

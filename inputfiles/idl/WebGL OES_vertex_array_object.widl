@@ -1,8 +1,8 @@
-[NoInterfaceObject]
+[LegacyNoInterfaceObject]
 interface WebGLVertexArrayObjectOES : WebGLObject {
 };
 
-[NoInterfaceObject]
+[LegacyNoInterfaceObject]
 interface OES_vertex_array_object {
     const GLenum VERTEX_ARRAY_BINDING_OES = 0x85B5;
 

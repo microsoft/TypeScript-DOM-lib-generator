@@ -221,7 +221,7 @@
         "title": "Gamepad Extensions"
     },
     {
-        "url": "https://www.w3.org/TR/geolocation-API/",
+        "url": "https://w3c.github.io/geolocation-api/",
         "title": "Geolocation"
     },
     {
@@ -464,8 +464,7 @@
     },
     {
         "url": "https://streams.spec.whatwg.org/",
-        "title": "Streams",
-        "local": true
+        "title": "Streams"
     },
     {
         "url": "https://www.w3.org/TR/SVG2/types.html",
@@ -524,7 +523,7 @@
         "title": "Web Audio"
     },
     {
-        "url": "https://www.w3.org/TR/2019/REC-webauthn-1-20190304/",
+        "url": "https://w3c.github.io/webauthn/",
         "title": "Web Authentication"
     },
     {

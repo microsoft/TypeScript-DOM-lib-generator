@@ -1,4 +1,4 @@
-[NoInterfaceObject]
+[LegacyNoInterfaceObject]
 interface WEBGL_compressed_texture_s3tc_srgb {
     /* Compressed Texture Formats */
     const GLenum COMPRESSED_SRGB_S3TC_DXT1_EXT        = 0x8C4C;
