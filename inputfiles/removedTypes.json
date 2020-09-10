@@ -388,6 +388,13 @@
                     "WindowConsole"
                 ]
             },
+            "WritableStream": {
+                "methods": {
+                    "method": {
+                        "close": null
+                    }
+                }
+            },
             "XPathNSResolver": null
         }
     },
