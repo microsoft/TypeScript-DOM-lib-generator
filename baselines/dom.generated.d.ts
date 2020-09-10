@@ -19505,7 +19505,8 @@ declare var location: Location;
 declare var locationbar: BarProp;
 declare var menubar: BarProp;
 declare var msContentScript: ExtensionScriptApis;
-declare const name: never;
+/** @deprecated */
+declare const name: void;
 declare var navigator: Navigator;
 declare var offscreenBuffering: string | boolean;
 declare var oncompassneedscalibration: ((this: Window, ev: Event) => any) | null;
