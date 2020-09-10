@@ -15,6 +15,7 @@ export const baseTypeConversionMap = new Map<string, string>([
     ["object", "any"],
     ["sequence", "Array"],
     ["record", "Record"],
+    ["undefined", "void"],
     ["FrozenArray", "ReadonlyArray"],
     ["EventHandler", "EventHandler"]
 ]);
