@@ -3721,7 +3721,7 @@ declare var CryptoKeyPair: {
 
 interface CustomElementRegistry {
     define(name: string, constructor: CustomElementConstructor, options?: ElementDefinitionOptions): void;
-    get(name: string): CustomElementConstructor | void;
+    get(name: string): CustomElementConstructor | undefined;
     upgrade(root: Node): void;
     whenDefined(name: string): Promise<CustomElementConstructor>;
 }

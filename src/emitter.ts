@@ -295,7 +295,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
             type = { name: convertDomTypeToTsTypeSimple(obj.type), nullable: !!obj.nullable };
         }
         else {
-            const types = obj.type.map(convertDomTypeToTsTypeWorker);
+            const types = obj.type.map(convertDomTypeToTsTypeInUnion);
             const isAny = types.find(t => t.name === "any");
             if (isAny) {
                 type = {
@@ -318,6 +318,18 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
             name: (type.name === "Array" && subtypeString) ? makeArrayType(subtypeString, obj) : `${type.name}${subtypeString ? `<${subtypeString}>` : ""}`,
             nullable: type.nullable
         };
+    }
+
+    function convertDomTypeToTsTypeInUnion(obj: Browser.Typed): { name: string; nullable: boolean } {
+        const type = convertDomTypeToTsTypeWorker(obj);
+        if (type.name === "void") {
+            // Replace "void" with "undefined" when used inside a union type
+            return {
+                name: "undefined",
+                nullable: type.nullable
+            };
+        }
+        return type;
     }
 
     function makeArrayType(elementType: string, obj: Browser.Typed): string {
