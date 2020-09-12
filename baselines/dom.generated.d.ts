@@ -5823,10 +5823,6 @@ interface GlobalEventHandlersEventMap {
     "transitionstart": TransitionEvent;
     "volumechange": Event;
     "waiting": Event;
-    "webkitanimationend": Event;
-    "webkitanimationiteration": Event;
-    "webkitanimationstart": Event;
-    "webkittransitionend": Event;
     "wheel": WheelEvent;
 }
 
@@ -6094,10 +6090,6 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onwebkitanimationiteration: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onwebkitanimationstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
     addEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -19941,10 +19933,6 @@ declare var onvolumechange: ((this: Window, ev: Event) => any) | null;
  * @param ev The event.
  */
 declare var onwaiting: ((this: Window, ev: Event) => any) | null;
-declare var onwebkitanimationend: ((this: Window, ev: Event) => any) | null;
-declare var onwebkitanimationiteration: ((this: Window, ev: Event) => any) | null;
-declare var onwebkitanimationstart: ((this: Window, ev: Event) => any) | null;
-declare var onwebkittransitionend: ((this: Window, ev: Event) => any) | null;
 declare var onwheel: ((this: Window, ev: WheelEvent) => any) | null;
 declare function cancelAnimationFrame(handle: number): void;
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;

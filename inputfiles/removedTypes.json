@@ -11,7 +11,11 @@
                 "properties": {
                     "property": {
                         "onformdata": null,
-                        "onslotchange": null
+                        "onslotchange": null,
+                        "onwebkitanimationend": null,
+                        "onwebkitanimationiteration": null,
+                        "onwebkitanimationstart": null,
+                        "onwebkittransitionend": null
                     }
                 }
             },
