@@ -98,7 +98,14 @@ function emitDom() {
         for (const [key, value] of Object.entries(descriptions)) {
             const target = idl.interfaces!.interface[key] || namespaces[key];
             if (target) {
-                target.comment = transformVerbosity(key, value);
+                if (value.startsWith("REDIRECT")) {
+                    // When an MDN article for an interface redirects to a different one,
+                    // it implies the interface was renamed in the specification and
+                    // its old name should be deprecated.
+                    markAsDeprecated(target);
+                } else {
+                    target.comment = transformVerbosity(key, value);
+                }
             }
         }
         return idl;

@@ -4308,10 +4308,12 @@ declare var DelayNode: {
     new(context: BaseAudioContext, options?: DelayOptions): DelayNode;
 };
 
-/** REDIRECT  DeviceMotionEventAcceleration */
 interface DeviceAcceleration {
+    /** @deprecated */
     readonly x: number | null;
+    /** @deprecated */
     readonly y: number | null;
+    /** @deprecated */
     readonly z: number | null;
 }
 
@@ -4370,10 +4372,12 @@ declare var DeviceOrientationEvent: {
     requestPermission(): Promise<PermissionState>;
 };
 
-/** REDIRECT DeviceMotionEventRotationRate */
 interface DeviceRotationRate {
+    /** @deprecated */
     readonly alpha: number | null;
+    /** @deprecated */
     readonly beta: number | null;
+    /** @deprecated */
     readonly gamma: number | null;
 }
 
