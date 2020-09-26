@@ -1751,6 +1751,9 @@
             "HTMLVideoElement": {
                 "properties": {
                     "property": {
+                        "playsInline": {
+                            "comment": "/**\n * Gets or sets the playsinline of the video element. for example, On iPhone, video elements will now be allowed to play inline, and will not automatically enter fullscreen mode when playback begins.\n */"
+                        },
                         "width": {
                             "comment": "/**\n * Gets or sets the width of the video element.\n */"
                         },

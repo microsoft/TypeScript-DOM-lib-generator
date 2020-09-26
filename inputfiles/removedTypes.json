@@ -212,13 +212,6 @@
                     }
                 }
             },
-            "HTMLVideoElement": {
-                "properties": {
-                    "property": {
-                        "playsInline": null
-                    }
-                }
-            },
             "HTMLFormElement": {
                 "properties": {
                     "property": {

@@ -1,19 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "GlobalFetch": {
-                "name": "GlobalFetch",
-                "methods": {
-                    "method": {
-                        "fetch": {
-                            "name": "fetch",
-                            "override-signatures": [
-                                "fetch(input: RequestInfo, init?: RequestInit): Promise<Response>"
-                            ]
-                        }
-                    }
-                }
-            },
             "Animatable": {
                 "name": "Animatable",
                 "methods": {
@@ -225,12 +212,6 @@
             "OnErrorEventHandlerNonNull": {
                 "override-signatures": [
                     "(event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any"
-                ]
-            },
-            "DecodeErrorCallback": {
-                "name": "DecodeErrorCallback",
-                "override-signatures": [
-                    "(error: DOMException): void"
                 ]
             },
             "QueuingStrategySizeCallback": {
@@ -506,12 +487,6 @@
                                 "getElementById(elementId: string): HTMLElement | null"
                             ]
                         },
-                        "elementsFromPoint": {
-                            "name": "elementsFromPoint",
-                            "override-signatures": [
-                                "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        },
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "override-signatures": [
@@ -668,13 +643,6 @@
                 },
                 "properties": {
                     "property": {
-                        "isConnected": {
-                            "name": "isConnected",
-                            "default": "false",
-                            "read-only": 1,
-                            "type-original": "boolean",
-                            "type": "boolean"
-                        },
                         "parentNode": {
                             "override-type": "Node & ParentNode | null"
                         },
@@ -786,23 +754,6 @@
                     }
                 }
             },
-            "MediaError": {
-                "name": "MediaError",
-                "properties": {
-                    "property": {
-                        "message": {
-                            "specs": "html5",
-                            "name": "message",
-                            "tags": "Media",
-                            "type": "DOMString",
-                            "type-original": "DOMString",
-                            "read-only": 1,
-                            "exposed": "Window",
-                            "default": "\"\""
-                        }
-                    }
-                }
-            },
             "IDBIndex": {
                 "name": "IDBIndex",
                 "properties": {
@@ -860,33 +811,6 @@
                     }
                 }
             },
-            "IDBDatabase": {
-                "name": "IDBDatabase",
-                "methods": {
-                    "method": {
-                        "createObjectStore": {
-                            "name": "createObjectStore",
-                            "override-signatures": [
-                                "createObjectStore(name: string, optionalParameters?: IDBObjectStoreParameters): IDBObjectStore"
-                            ]
-                        },
-                        "transaction": {
-                            "name": "transaction",
-                            "override-signatures": [
-                                "transaction(storeNames: string | string[], mode?: IDBTransactionMode): IDBTransaction"
-                            ]
-                        }
-                    }
-                },
-                "properties": {
-                    "property": {
-                        "version": {
-                            "name": "version",
-                            "override-type": "number"
-                        }
-                    }
-                }
-            },
             "HTMLCanvasElement": {
                 "methods": {
                     "method": {
@@ -933,7 +857,7 @@
                         "className": {
                             "deprecated": 1,
                             "name": "className",
-                            "override-type": "any"
+                            "type": "any"
                         }
                     }
                 }
@@ -992,24 +916,6 @@
                             ]
                         }
                     }
-                }
-            },
-            "ImageData": {
-                "name": "ImageData",
-                "exposed": "Window Worker",
-                "constructor": {
-                    "override-signatures": [
-                        "new(width: number, height: number): ImageData",
-                        "new(array: Uint8ClampedArray, width: number, height?: number): ImageData"
-                    ]
-                }
-            },
-            "DOMException": {
-                "name": "DOMException",
-                "constructor": {
-                    "override-signatures": [
-                        "new(message?: string, name?: string): DOMException"
-                    ]
                 }
             },
             "HTMLSelectElement": {
@@ -1100,16 +1006,6 @@
             },
             "HTMLTableSectionElement": {
                 "name": "HTMLTableSectionElement",
-                "methods": {
-                    "method": {
-                        "insertRow": {
-                            "name": "insertRow",
-                            "override-signatures": [
-                                "insertRow(index?: number): HTMLTableRowElement"
-                            ]
-                        }
-                    }
-                },
                 "properties": {
                     "property": {
                         "rows": {
@@ -1123,18 +1019,6 @@
                 "name": "Element",
                 "methods": {
                     "method": {
-                        "getAttributeNodeNS": {
-                            "name": "getAttributeNodeNS",
-                            "override-signatures": [
-                                "getAttributeNodeNS(namespaceURI: string, localName: string): Attr | null"
-                            ]
-                        },
-                        "getAttributeNode": {
-                            "name": "getAttributeNode",
-                            "override-signatures": [
-                                "getAttributeNode(name: string): Attr | null"
-                            ]
-                        },
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "override-signatures": [
@@ -1148,6 +1032,21 @@
                             "override-signatures": [
                                 "msGetRegionContent(): any"
                             ]
+                        }
+                    }
+                }
+            },
+            "DataTransfer": {
+                "name": "DataTransfer",
+                "properties": {
+                    "property": {
+                        "dropEffect": {
+                            "name": "dropEffect",
+                            "override-type": "\"none\" | \"copy\" | \"link\" | \"move\""
+                        },
+                        "effectAllowed": {
+                            "name": "effectAllowed",
+                            "override-type": "\"none\" | \"copy\" | \"copyLink\" | \"copyMove\" | \"link\" | \"linkMove\" | \"move\" | \"all\" | \"uninitialized\""
                         }
                     }
                 }
@@ -1187,11 +1086,11 @@
                     "property": {
                         "key": {
                             "name": "key",
-                            "override-type": "IDBValidKey"
+                            "type": "IDBValidKey"
                         },
                         "primaryKey": {
                             "name": "primaryKey",
-                            "override-type": "IDBValidKey"
+                            "type": "IDBValidKey"
                         }
                     }
                 },
@@ -1226,15 +1125,9 @@
                 "name": "IDBRequest",
                 "properties": {
                     "property": {
-                        "error": {
-                            "name": "error",
-                            "read-only": 1,
-                            "override-type": "DOMException"
-                        },
                         "source": {
                             "name": "source",
-                            "nullable": false,
-                            "override-type": "IDBObjectStore | IDBIndex | IDBCursor"
+                            "nullable": false
                         },
                         "result": {
                             "name": "result",
@@ -1249,36 +1142,7 @@
                     }
                 ]
             },
-            "IDBTransaction": {
-                "name": "IDBTransaction",
-                "properties": {
-                    "property": {
-                        "error": {
-                            "name": "error",
-                            "read-only": 1,
-                            "override-type": "DOMException"
-                        }
-                    }
-                }
-            },
             "Storage": {
-                "name": "Storage",
-                "methods": {
-                    "method": {
-                        "getItem": {
-                            "name": "getItem",
-                            "override-signatures": [
-                                "getItem(key: string): string | null"
-                            ]
-                        },
-                        "key": {
-                            "name": "key",
-                            "override-signatures": [
-                                "key(index: number): string | null"
-                            ]
-                        }
-                    }
-                },
                 "override-index-signatures": [
                     "[name: string]: any"
                 ]
@@ -1300,13 +1164,13 @@
                         "deriveBits": {
                             "name": "deriveBits",
                             "override-signatures": [
-                                "deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>"
+                                "deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>"
                             ]
                         },
                         "deriveKey": {
                             "name": "deriveKey",
                             "override-signatures": [
-                                "deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfCtrParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | DhKeyDeriveParams | ConcatParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: string | AesDerivedKeyParams | HmacImportParams | ConcatParams | HkdfParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
                             ]
                         },
                         "digest": {
@@ -1332,9 +1196,9 @@
                         "generateKey": {
                             "name": "generateKey",
                             "override-signatures": [
-                                "generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair | CryptoKey>",
                                 "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams | DhKeyGenParams, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair>",
-                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>",
+                                "generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair | CryptoKey>"
                             ]
                         },
                         "importKey": {
@@ -1376,16 +1240,6 @@
                 "name": "HTMLInputElement",
                 "properties": {
                     "property": {
-                        "files": {
-                            "name": "files",
-                            "read-only": 0,
-                            "override-type": "FileList | null"
-                        },
-                        "form": {
-                            "name": "form",
-                            "read-only": 1,
-                            "override-type": "HTMLFormElement | null"
-                        },
                         "selectionDirection": {
                             "name": "selectionDirection",
                             "override-type": "\"forward\" | \"backward\" | \"none\""
@@ -1436,12 +1290,6 @@
                                 "hasFeature(...args: any[]): true"
                             ],
                             "deprecated": 1
-                        },
-                        "createDocument": {
-                            "name": "createDocument",
-                            "override-signatures": [
-                                "createDocument(namespaceURI: string | null, qualifiedName: string | null, doctype: DocumentType | null): Document"
-                            ]
                         }
                     }
                 }
@@ -1775,17 +1623,6 @@
                             "type": "ProgressEvent"
                         }
                     ]
-                }
-            },
-            "MediaList": {
-                "name": "MediaList",
-                "properties": {
-                    "property": {
-                        "mediaText": {
-                            "name": "mediaText",
-                            "override-type": "string"
-                        }
-                    }
                 }
             },
             "MutationRecord": {
