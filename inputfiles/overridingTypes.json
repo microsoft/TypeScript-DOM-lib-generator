@@ -2887,12 +2887,8 @@
                 ],
                 "members": {
                     "member": {
-                        "highWaterMark": {
-                            "nullable": 0
-                        },
                         "size": {
-                            "override-type": "QueuingStrategySize<T>",
-                            "nullable": 0
+                            "override-type": "QueuingStrategySize<T>"
                         }
                     }
                 }
@@ -2930,12 +2926,10 @@
                 "members": {
                     "member": {
                         "readable": {
-                            "override-type": "ReadableStream<R>",
-                            "nullable": 0
+                            "override-type": "ReadableStream<R>"
                         },
                         "writable": {
-                            "override-type": "WritableStream<W>",
-                            "nullable": 0
+                            "override-type": "WritableStream<W>"
                         }
                     }
                 }
@@ -2950,15 +2944,10 @@
                 "members": {
                     "member": {
                         "start": {
-                            "override-type": "UnderlyingSourceStartCallback<R>",
-                            "nullable": 0
+                            "override-type": "UnderlyingSourceStartCallback<R>"
                         },
                         "pull": {
-                            "override-type": "UnderlyingSourcePullCallback<R>",
-                            "nullable": 0
-                        },
-                        "cancel": {
-                            "nullable": 0
+                            "override-type": "UnderlyingSourcePullCallback<R>"
                         }
                     }
                 }
@@ -2972,18 +2961,8 @@
                 ],
                 "members": {
                     "member": {
-                        "start": {
-                            "nullable": 0
-                        },
                         "write": {
-                            "override-type": "UnderlyingSinkWriteCallback<W>",
-                            "nullable": 0
-                        },
-                        "close": {
-                            "nullable": 0
-                        },
-                        "abort": {
-                            "nullable": 0
+                            "override-type": "UnderlyingSinkWriteCallback<W>"
                         },
                         "type": {
                             "override-type": "undefined"
@@ -3014,16 +2993,13 @@
                 "members": {
                     "member": {
                         "start": {
-                            "override-type": "TransformerStartCallback<O>",
-                            "nullable": 0
+                            "override-type": "TransformerStartCallback<O>"
                         },
                         "transform": {
-                            "override-type": "TransformerTransformCallback<I, O>",
-                            "nullable": 0
+                            "override-type": "TransformerTransformCallback<I, O>"
                         },
                         "flush": {
-                            "override-type": "TransformerFlushCallback<O>",
-                            "nullable": 0
+                            "override-type": "TransformerFlushCallback<O>"
                         },
                         "readableType": {
                             "override-type": "undefined"
