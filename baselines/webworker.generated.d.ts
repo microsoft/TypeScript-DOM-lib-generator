@@ -334,13 +334,6 @@ interface PermissionDescriptor {
     name: PermissionName;
 }
 
-interface PipeOptions {
-    preventAbort?: boolean;
-    preventCancel?: boolean;
-    preventClose?: boolean;
-    signal?: AbortSignal;
-}
-
 interface PostMessageOptions {
     transfer?: any[];
 }
@@ -383,17 +376,50 @@ interface PushSubscriptionOptionsInit {
 
 interface QueuingStrategy<T = any> {
     highWaterMark?: number;
-    size?: QueuingStrategySizeCallback<T>;
+    size?: QueuingStrategySize<T>;
 }
 
-interface ReadableStreamReadDoneResult<T> {
-    done: true;
+interface QueuingStrategyInit {
+    /**
+     * Creates a new ByteLengthQueuingStrategy with the provided high water mark.
+     * 
+     * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
+     */
+    highWaterMark: number;
+}
+
+interface ReadableStreamBYOBReadResult<T extends ArrayBufferView = ArrayBufferView> {
+    done: boolean;
     value?: T;
 }
 
-interface ReadableStreamReadValueResult<T> {
+interface ReadableStreamDefaultReadDoneResult {
+    done: true;
+    value?: undefined;
+}
+
+interface ReadableStreamDefaultReadValueResult<T> {
     done: false;
     value: T;
+}
+
+interface ReadableStreamGetReaderOptions {
+    /**
+     * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
+     * 
+     * This call behaves the same way as the no-argument variant, except that it only works on readable byte streams, i.e. streams which were constructed specifically with the ability to handle "bring your own buffer" reading. The returned BYOB reader provides the ability to directly read individual chunks from the stream via its read() method, into developer-supplied buffers, allowing more precise control over allocation.
+     */
+    mode?: ReadableStreamReaderMode;
+}
+
+interface ReadableWritablePair<R = any, W = any> {
+    readable: ReadableStream<R>;
+    /**
+     * Provides a convenient, chainable way of piping this readable stream through a transform stream (or any other { writable, readable } pair). It simply pipes the stream into the writable side of the supplied pair, and returns the readable side for further use.
+     * 
+     * Piping a stream will lock it for the duration of the pipe, preventing any other consumer from acquiring a reader.
+     */
+    writable: WritableStream<W>;
 }
 
 interface RegistrationOptions {
@@ -495,6 +521,30 @@ interface StorageEstimate {
     usage?: number;
 }
 
+interface StreamPipeOptions {
+    preventAbort?: boolean;
+    preventCancel?: boolean;
+    /**
+     * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
+     * 
+     * Piping a stream will lock it for the duration of the pipe, preventing any other consumer from acquiring a reader.
+     * 
+     * Errors and closures of the source and destination streams propagate as follows:
+     * 
+     * An error in this source readable stream will abort destination, unless preventAbort is truthy. The returned promise will be rejected with the source's error, or with any error that occurs during aborting the destination.
+     * 
+     * An error in destination will cancel this source readable stream, unless preventCancel is truthy. The returned promise will be rejected with the destination's error, or with any error that occurs during canceling the source.
+     * 
+     * When this source readable stream closes, destination will be closed, unless preventCancel is truthy. The returned promise will be fulfilled once this process completes, unless an error is encountered while closing the destination, in which case it will be rejected with that error.
+     * 
+     * If destination starts out closed or closing, this source readable stream will be canceled, unless preventCancel is true. The returned promise will be rejected with an error indicating piping to a closed stream failed, or with any error that occurs during canceling the source.
+     * 
+     * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
+     */
+    preventClose?: boolean;
+    signal?: AbortSignal;
+}
+
 interface SyncEventInit extends ExtendableEventInit {
     lastChance?: boolean;
     tag: string;
@@ -515,34 +565,27 @@ interface TextEncoderEncodeIntoResult {
 }
 
 interface Transformer<I = any, O = any> {
-    flush?: TransformStreamDefaultControllerCallback<O>;
+    flush?: TransformerFlushCallback<O>;
     readableType?: undefined;
-    start?: TransformStreamDefaultControllerCallback<O>;
-    transform?: TransformStreamDefaultControllerTransformCallback<I, O>;
+    start?: TransformerStartCallback<O>;
+    transform?: TransformerTransformCallback<I, O>;
     writableType?: undefined;
 }
 
-interface UnderlyingByteSource {
-    autoAllocateChunkSize?: number;
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableByteStreamControllerCallback;
-    start?: ReadableByteStreamControllerCallback;
-    type: "bytes";
-}
-
 interface UnderlyingSink<W = any> {
-    abort?: WritableStreamErrorCallback;
-    close?: WritableStreamDefaultControllerCloseCallback;
-    start?: WritableStreamDefaultControllerStartCallback;
+    abort?: UnderlyingSinkAbortCallback;
+    close?: UnderlyingSinkCloseCallback;
+    start?: UnderlyingSinkStartCallback;
     type?: undefined;
-    write?: WritableStreamDefaultControllerWriteCallback<W>;
+    write?: UnderlyingSinkWriteCallback<W>;
 }
 
 interface UnderlyingSource<R = any> {
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableStreamDefaultControllerCallback<R>;
-    start?: ReadableStreamDefaultControllerCallback<R>;
-    type?: undefined;
+    autoAllocateChunkSize?: number;
+    cancel?: UnderlyingSourceCancelCallback;
+    pull?: UnderlyingSourcePullCallback<R>;
+    start?: UnderlyingSourceStartCallback<R>;
+    type?: ReadableStreamType;
 }
 
 interface WebGLContextAttributes {
@@ -701,13 +744,13 @@ declare var BroadcastChannel: {
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
-    highWaterMark: number;
-    size(chunk: ArrayBufferView): number;
+    readonly highWaterMark: number;
+    readonly size: QueuingStrategySize<ArrayBufferView>;
 }
 
 declare var ByteLengthQueuingStrategy: {
     prototype: ByteLengthQueuingStrategy;
-    new(options: { highWaterMark: number }): ByteLengthQueuingStrategy;
+    new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
 /** Provides a storage mechanism for Request / Response object pairs that are cached, for example as part of the ServiceWorker life cycle. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec. */
@@ -941,13 +984,13 @@ interface ConcatParams extends Algorithm {
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
-    highWaterMark: number;
-    size(chunk: any): 1;
+    readonly highWaterMark: number;
+    readonly size: QueuingStrategySize;
 }
 
 declare var CountQueuingStrategy: {
     prototype: CountQueuingStrategy;
-    new(options: { highWaterMark: number }): CountQueuingStrategy;
+    new(init: QueuingStrategyInit): CountQueuingStrategy;
 };
 
 /** Basic cryptography features available in the current context. It allows access to a cryptographically strong random number generator and to cryptographic primitives. */
@@ -2708,11 +2751,11 @@ declare var PushSubscriptionOptions: {
 };
 
 interface ReadableByteStreamController {
-    readonly byobRequest: ReadableStreamBYOBRequest | undefined;
+    readonly byobRequest: ReadableStreamBYOBRequest | null;
     readonly desiredSize: number | null;
     close(): void;
     enqueue(chunk: ArrayBufferView): void;
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var ReadableByteStreamController: {
@@ -2726,31 +2769,29 @@ interface ReadableStream<R = any> {
     cancel(reason?: any): Promise<void>;
     getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
-    pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
-    pipeTo(dest: WritableStream<R>, options?: PipeOptions): Promise<void>;
+    getReader(options?: ReadableStreamGetReaderOptions): ReadableStreamReader<R>;
+    pipeThrough<T>(transform: ReadableWritablePair<T, R>, options?: StreamPipeOptions): ReadableStream<T>;
+    pipeTo(dest: WritableStream<R>, options?: StreamPipeOptions): Promise<void>;
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
 declare var ReadableStream: {
     prototype: ReadableStream;
-    new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
 };
 
-interface ReadableStreamBYOBReader {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
+    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamBYOBReadResult<T>>;
     releaseLock(): void;
 }
 
 declare var ReadableStreamBYOBReader: {
     prototype: ReadableStreamBYOBReader;
-    new(): ReadableStreamBYOBReader;
+    new(stream: ReadableStream): ReadableStreamBYOBReader;
 };
 
 interface ReadableStreamBYOBRequest {
-    readonly view: ArrayBufferView;
+    readonly view: ArrayBufferView | null;
     respond(bytesWritten: number): void;
     respondWithNewView(view: ArrayBufferView): void;
 }
@@ -2764,7 +2805,7 @@ interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
     close(): void;
     enqueue(chunk: R): void;
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var ReadableStreamDefaultController: {
@@ -2772,28 +2813,20 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
-interface ReadableStreamDefaultReader<R = any> {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
-    read(): Promise<ReadableStreamReadResult<R>>;
+interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
+    read(): Promise<ReadableStreamDefaultReadResult<R>>;
     releaseLock(): void;
 }
 
 declare var ReadableStreamDefaultReader: {
     prototype: ReadableStreamDefaultReader;
-    new(): ReadableStreamDefaultReader;
+    new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>;
 };
 
-interface ReadableStreamReader<R = any> {
-    cancel(): Promise<void>;
-    read(): Promise<ReadableStreamReadResult<R>>;
-    releaseLock(): void;
+interface ReadableStreamGenericReader {
+    readonly closed: Promise<undefined>;
+    cancel(reason?: any): Promise<void>;
 }
-
-declare var ReadableStreamReader: {
-    prototype: ReadableStreamReader;
-    new(): ReadableStreamReader;
-};
 
 /** This Fetch API interface represents a resource request. */
 interface Request extends Body {
@@ -5529,6 +5562,7 @@ declare var WorkerNavigator: {
 interface WritableStream<W = any> {
     readonly locked: boolean;
     abort(reason?: any): Promise<void>;
+    close(): Promise<void>;
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
@@ -5539,7 +5573,7 @@ declare var WritableStream: {
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var WritableStreamDefaultController: {
@@ -5549,9 +5583,9 @@ declare var WritableStreamDefaultController: {
 
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
-    readonly closed: Promise<void>;
+    readonly closed: Promise<undefined>;
     readonly desiredSize: number | null;
-    readonly ready: Promise<void>;
+    readonly ready: Promise<undefined>;
     abort(reason?: any): Promise<void>;
     close(): Promise<void>;
     releaseLock(): void;
@@ -5560,7 +5594,7 @@ interface WritableStreamDefaultWriter<W = any> {
 
 declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
-    new(): WritableStreamDefaultWriter;
+    new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
 };
 
 interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
@@ -5856,48 +5890,52 @@ interface PerformanceObserverCallback {
     (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
 }
 
-interface QueuingStrategySizeCallback<T = any> {
+interface QueuingStrategySize<T = any> {
     (chunk: T): number;
 }
 
-interface ReadableByteStreamControllerCallback {
-    (controller: ReadableByteStreamController): void | PromiseLike<void>;
-}
-
-interface ReadableStreamDefaultControllerCallback<R> {
-    (controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>;
-}
-
-interface ReadableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
-}
-
-interface TransformStreamDefaultControllerCallback<O> {
+interface TransformerFlushCallback<O> {
     (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
-interface TransformStreamDefaultControllerTransformCallback<I, O> {
+interface TransformerStartCallback<O> {
+    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+}
+
+interface TransformerTransformCallback<I, O> {
     (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkAbortCallback {
+    (reason: any): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkCloseCallback {
+    (): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkStartCallback {
+    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkWriteCallback<W> {
+    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
+}
+
+interface UnderlyingSourceCancelCallback {
+    (reason: any): void | PromiseLike<void>;
+}
+
+interface UnderlyingSourcePullCallback<R> {
+    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
+}
+
+interface UnderlyingSourceStartCallback<R> {
+    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
 }
 
 interface VoidFunction {
     (): void;
-}
-
-interface WritableStreamDefaultControllerCloseCallback {
-    (): void | PromiseLike<void>;
-}
-
-interface WritableStreamDefaultControllerStartCallback {
-    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
-}
-
-interface WritableStreamDefaultControllerWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
-}
-
-interface WritableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
 }
 
 /**
@@ -5977,7 +6015,8 @@ type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type TimerHandler = string | Function;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
-type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
+type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
+type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type VibratePattern = number | number[];
 type AlgorithmIdentifier = string | Algorithm;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
@@ -6004,6 +6043,7 @@ type DOMTimeStamp = number;
 type FormDataEntryValue = File | string;
 type IDBValidKey = number | string | Date | BufferSource | IDBArrayKey;
 type Transferable = ArrayBuffer | MessagePort | ImageBitmap | OffscreenCanvas;
+type ReadableStreamDefaultReadResult<T> = ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
 type BinaryType = "arraybuffer" | "blob";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
@@ -6031,6 +6071,8 @@ type PermissionState = "denied" | "granted" | "prompt";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
 type PushPermissionState = "denied" | "granted" | "prompt";
+type ReadableStreamReaderMode = "byob";
+type ReadableStreamType = "bytes";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
