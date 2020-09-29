@@ -214,3 +214,8 @@ interface CountQueuingStrategy {
   readonly attribute unrestricted double highWaterMark;
   readonly attribute Function size;
 };
+
+interface mixin GenericTransformStream {
+  readonly attribute ReadableStream readable;
+  readonly attribute WritableStream writable;
+};
