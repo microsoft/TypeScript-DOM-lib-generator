@@ -9,5 +9,6 @@
     "elementinternals-validationmessage": "Returns the error message that would be shown to the user if internals's target element was to be checked for validity.",
     "elementinternals-checkvalidity": "Returns true if internals's target element has no validity problems; false otherwise. Fires an invalid event at the element in the latter case.",
     "elementinternals-reportvalidity": "Returns true if internals's target element has no validity problems; otherwise, returns false, fires an invalid event at the element, and (if the event isn't canceled) reports the problem to the user.",
-    "elementinternals-labels": "Returns a NodeList of all the label elements that internals's target element is associated with."
+    "elementinternals-labels": "Returns a NodeList of all the label elements that internals's target element is associated with.",
+    "ElementInternals-accessibility": "Sets or retrieves the default ARIA role for internals's target element, which will be used unless the page author overrides it using the role attribute."
 }
