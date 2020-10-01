@@ -2086,6 +2086,22 @@
                     }
                 ]
             },
+            "SVGStyleElement": {
+                "properties": {
+                    "property": {
+                        "disabled": {
+                            "name": "disabled",
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "element": [
+                    {
+                        "namespace": "SVG",
+                        "name": "style"
+                    }
+                ]
+            },
             "SVGTextElement": {
                 "element": [
                     {
