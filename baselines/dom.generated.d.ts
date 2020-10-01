@@ -14457,6 +14457,7 @@ declare var SVGStringList: {
 interface SVGStyleElement extends SVGElement {
     disabled: boolean;
     media: string;
+    sheet: CSSStyleSheet;
     title: string;
     type: string;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStyleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
