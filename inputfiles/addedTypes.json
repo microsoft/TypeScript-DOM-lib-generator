@@ -226,6 +226,20 @@
     },
     "interfaces": {
         "interface": {
+            "ServiceWorkerEvent": {
+                "name": "ServiceWorkerEvent",
+                "extends": "Event"
+                ,
+                "properties": {
+                    "property": {
+                        "target": {
+                            "name": "target",
+                            "read-only": 1,
+                            "type": "ServiceWorker"
+                        }
+                    }
+                }
+            },
             "AudioTrack": {
                 "exposed": ""
             },
@@ -330,6 +344,10 @@
                         {
                             "name": "error",
                             "type": "Event"
+                        },
+                        {
+                            "name": "serviceworker",
+                            "type": "ServiceWorkerEvent"
                         }
                     ]
                 }
