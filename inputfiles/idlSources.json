@@ -391,10 +391,6 @@
         "title": "Intersection Observer"
     },
     {
-        "url": "https://drafts.csswg.org/cssom/",
-        "title": "Link Style"
-    },
-    {
         "url": "https://w3c.github.io/mediacapture-main/",
         "title": "Media Capture and Streams"
     },

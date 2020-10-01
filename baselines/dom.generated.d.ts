@@ -19025,7 +19025,6 @@ declare var console: Console;
 /** Holds useful CSS-related methods. No object with this interface are implemented: it contains only static methods and therefore is a utilitarian interface. */
 declare namespace CSS {
     function escape(ident: string): string;
-    function escape(ident: string): string;
     function supports(property: string, value: string): boolean;
     function supports(conditionText: string): boolean;
 }
