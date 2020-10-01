@@ -14454,8 +14454,7 @@ declare var SVGStringList: {
 };
 
 /** Corresponds to the SVG <style> element. */
-interface SVGStyleElement extends SVGElement {
-    disabled: boolean;
+interface SVGStyleElement extends SVGElement, LinkStyle {
     media: string;
     title: string;
     type: string;
@@ -19026,6 +19025,7 @@ declare var console: Console;
 /** Holds useful CSS-related methods. No object with this interface are implemented: it contains only static methods and therefore is a utilitarian interface. */
 declare namespace CSS {
     function escape(ident: string): string;
+    function escape(ident: string): string;
     function supports(property: string, value: string): boolean;
     function supports(conditionText: string): boolean;
 }
@@ -19462,7 +19462,6 @@ interface SVGElementTagNameMap {
     "rect": SVGRectElement;
     "script": SVGScriptElement;
     "stop": SVGStopElement;
-    "style": SVGStyleElement;
     "svg": SVGSVGElement;
     "switch": SVGSwitchElement;
     "symbol": SVGSymbolElement;
