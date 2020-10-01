@@ -283,17 +283,6 @@
                     }
                 }
             },
-            "SpeechRecognitionEvent": {
-                "constructor": null
-            },
-            "SpeechRecognitionErrorEvent": null,
-            "StorageEvent": {
-                "methods": {
-                    "method": {
-                        "initStorageEvent": null
-                    }
-                }
-            },
             "SVGElementInstance": {
                 "properties": {
                     "property": {

@@ -76,7 +76,7 @@ function emitDom() {
         const idl: string = fs.readFileSync(path.join(inputFolder, "idl", filename), { encoding: "utf-8" });
         const commentsMapFilePath = path.join(inputFolder, "idl", title + ".commentmap.json");
         const commentsMap: Record<string, string> = fs.existsSync(commentsMapFilePath) ? require(commentsMapFilePath) : {};
-        commentCleanup(commentsMap)
+        commentCleanup(commentsMap);
         const result = convert(idl, commentsMap);
         if (deprecated) {
             mapToArray(result.browser.interfaces!.interface).forEach(markAsDeprecated);
