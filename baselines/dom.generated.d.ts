@@ -14455,6 +14455,7 @@ declare var SVGStringList: {
 
 /** Corresponds to the SVG <style> element. */
 interface SVGStyleElement extends SVGElement, LinkStyle {
+    disabled: boolean;
     media: string;
     title: string;
     type: string;
@@ -19461,6 +19462,7 @@ interface SVGElementTagNameMap {
     "rect": SVGRectElement;
     "script": SVGScriptElement;
     "stop": SVGStopElement;
+    "style": SVGStyleElement;
     "svg": SVGSVGElement;
     "switch": SVGSwitchElement;
     "symbol": SVGSymbolElement;
