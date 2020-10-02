@@ -428,6 +428,20 @@
                         "customElements": {
                             "name": "customElements",
                             "type": "CustomElementRegistry"
+                        },
+                        "ongamepadconnected": {
+                            "name": "ongamepadconnected",
+                            "type-original": "EventHandler",
+                            "nullable": 1,
+                            "type": "EventHandlerNonNull",
+                            "event-handler": "gamepadconnected"
+                        },
+                        "ongamepaddisconnected": {
+                            "name": "ongamepaddisconnected",
+                            "type-original": "EventHandler",
+                            "nullable": 1,
+                            "type": "EventHandlerNonNull",
+                            "event-handler": "gamepaddisconnected"
                         }
                     }
                 },
