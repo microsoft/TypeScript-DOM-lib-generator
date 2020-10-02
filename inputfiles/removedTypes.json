@@ -283,6 +283,13 @@
                     }
                 }
             },
+            "StorageEvent": {
+                "methods": {
+                    "method": {
+                        "initStorageEvent": null
+                    }
+                }
+            },
             "SVGElementInstance": {
                 "properties": {
                     "property": {
