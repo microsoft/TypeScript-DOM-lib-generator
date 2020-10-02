@@ -15374,7 +15374,6 @@ interface StorageEvent extends Event {
      * Returns the URL of the document whose storage item changed.
      */
     readonly url: string;
-    initStorageEvent(type: string, bubbles?: boolean, cancelable?: boolean, key?: string | null, oldValue?: string | null, newValue?: string | null, url?: string, storageArea?: Storage | null): void;
 }
 
 declare var StorageEvent: {
