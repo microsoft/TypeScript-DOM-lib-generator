@@ -16,8 +16,7 @@ export const baseTypeConversionMap = new Map<string, string>([
     ["sequence", "Array"],
     ["record", "Record"],
     ["FrozenArray", "ReadonlyArray"],
-    ["EventHandler", "EventHandler"],
-    ["undefined", "void"]
+    ["EventHandler", "EventHandler"]
 ]);
 
 export function filter<T>(obj: T, fn: (o: any, n: string | undefined) => boolean): T {
