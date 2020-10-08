@@ -199,16 +199,30 @@ function* importNestedList(elements: Element[]) {
  * so that external links can be stable and won't broken.
  */
 function retargetCommentKey(key: string, dom: DocumentFragment) {
-    const [parent, member] = key.split(/-/g);
-    if (!member) {
-        return parent;
+    const match = key.match(/^([^\-]+)-(.+)$/);
+    if (!match) {
+        return key;
     }
+    let [, parent, member] = match;
     const dfn = dom.getElementById(`dom-${key}`);
-    if (!dfn || !dfn.dataset.dfnFor) {
-        // The optional third word is for overloads and can be safely ignored.
-        return `${parent}-${member}`;
+    if (dfn) {
+        if (dfn.dataset.dfnFor) {
+            parent = dfn.dataset.dfnFor;
+        }
+        if (member === 'constructor' || dfn.dataset.dfnType === 'constructor') {
+            member = 'constructor';
+        } else {
+            member = dfn.textContent!.trim();
+            // Remove arguments from methods like `createElement(localName, options)`
+            member = member.replace(/\([\s\S]*$/, '');
+            // Remove target from method calls like `document.write(...)`
+            member = member.replace(/^[^.]+\./, '');
+        }
     }
-    return `${dfn.dataset.dfnFor.toLowerCase()}-${member}`;
+    if (!member) {
+        return parent.toLowerCase();
+    }
+    return `${parent.toLowerCase()}-${member.toLowerCase()}`;
 }
 
 /**

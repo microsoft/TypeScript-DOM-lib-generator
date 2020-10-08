@@ -1931,6 +1931,9 @@ interface AbortController {
 
 declare var AbortController: {
     prototype: AbortController;
+    /**
+     * Returns a new controller whose signal is set to a newly created AbortSignal object.
+     */
     new(): AbortController;
 };
 
@@ -2137,12 +2140,29 @@ interface ApplicationCache extends EventTarget {
     onprogress: ((this: ApplicationCache, ev: ProgressEvent<ApplicationCache>) => any) | null;
     /** @deprecated */
     onupdateready: ((this: ApplicationCache, ev: Event) => any) | null;
+    /**
+     * Returns the current status of the application cache, as given by the constants defined below.
+     */
     /** @deprecated */
     readonly status: number;
+    /**
+     * Cancels the application cache download process.
+     * 
+     * This method is intended to be used by web application showing their own caching progress UI, in case the user wants to stop the update (e.g. because bandwidth is limited).
+     */
     /** @deprecated */
     abort(): void;
     /** @deprecated */
     swapCache(): void;
+    /**
+     * Invokes the application cache download process.
+     * 
+     * Throws an "InvalidStateError" DOMException if there is no application cache to update.
+     * 
+     * Calling this method is not usually necessary, as user agents will generally take care of updating application caches automatically.
+     * 
+     * The method can be useful in situations such as long-lived applications. For example, a web mail application might stay open in a browser tab for weeks at a time. Such an application could want to test for updates each day.
+     */
     /** @deprecated */
     update(): void;
     readonly CHECKING: number;
@@ -3287,14 +3307,23 @@ interface CanvasDrawImage {
 
 interface CanvasDrawPath {
     beginPath(): void;
+    /**
+     * Further constrains the clipping region to the current default path or the given path, using the given fill rule to determine what points are in the path.
+     */
     clip(fillRule?: CanvasFillRule): void;
     clip(path: Path2D, fillRule?: CanvasFillRule): void;
+    /**
+     * Fills the subpaths of the current default path or the given path with the current fill style, obeying the given fill rule.
+     */
     fill(fillRule?: CanvasFillRule): void;
     fill(path: Path2D, fillRule?: CanvasFillRule): void;
     isPointInPath(x: number, y: number, fillRule?: CanvasFillRule): boolean;
     isPointInPath(path: Path2D, x: number, y: number, fillRule?: CanvasFillRule): boolean;
     isPointInStroke(x: number, y: number): boolean;
     isPointInStroke(path: Path2D, x: number, y: number): boolean;
+    /**
+     * Strokes the subpaths of the current default path or the given path with the current stroke style.
+     */
     stroke(): void;
     stroke(path: Path2D): void;
 }
@@ -3308,6 +3337,11 @@ interface CanvasFillStrokeStyles {
 }
 
 interface CanvasFilters {
+    /**
+     * Returns the current filter.
+     * 
+     * Can be set, to change the filter. Values that cannot be parsed as a <filter-function-list> value are ignored.
+     */
     filter: string;
 }
 
@@ -3340,14 +3374,27 @@ interface CanvasImageSmoothing {
 }
 
 interface CanvasPath {
+    /**
+     * Adds points to the subpath such that the arc described by the circumference of the circle described by the arguments, starting at the given start angle and ending at the given end angle, going in the given direction (defaulting to clockwise), is added to the path, connected to the previous point by a straight line.
+     * 
+     * Throws an "IndexSizeError" DOMException if the given radius is negative.
+     */
     arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
     arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
     bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
     closePath(): void;
+    /**
+     * Adds points to the subpath such that the arc described by the circumference of the ellipse described by the arguments, starting at the given start angle and ending at the given end angle, going in the given direction (defaulting to clockwise), is added to the path, connected to the previous point by a straight line.
+     * 
+     * Throws an "IndexSizeError" DOMException if the given radius is negative.
+     */
     ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
     lineTo(x: number, y: number): void;
     moveTo(x: number, y: number): void;
     quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    /**
+     * Adds a new closed subpath to the path, representing the given rectangle.
+     */
     rect(x: number, y: number, w: number, h: number): void;
 }
 
@@ -3382,6 +3429,9 @@ interface CanvasRect {
 
 /** The CanvasRenderingContext2D interface, part of the Canvas API, provides the 2D rendering context for the drawing surface of a <canvas> element. It is used for drawing shapes, text, images, and other objects. */
 interface CanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform, CanvasUserInterface {
+    /**
+     * Returns the canvas element.
+     */
     readonly canvas: HTMLCanvasElement;
 }
 
@@ -3398,7 +3448,13 @@ interface CanvasShadowStyles {
 }
 
 interface CanvasState {
+    /**
+     * Pops the top state on the stack, restoring the context to that state.
+     */
     restore(): void;
+    /**
+     * Pushes the current state onto the stack.
+     */
     save(): void;
 }
 
@@ -3409,7 +3465,19 @@ interface CanvasText {
 }
 
 interface CanvasTextDrawingStyles {
+    /**
+     * Returns the current directionality.
+     * 
+     * Can be set, to change the directionality. The possible values and their meanings are given below. Other values are ignored. The default is "inherit".
+     */
     direction: CanvasDirection;
+    /**
+     * Returns the current font settings.
+     * 
+     * Can be set, to change the font. The syntax is the same as for the CSS 'font' property; values that cannot be parsed as CSS font values are ignored.
+     * 
+     * Relative keywords and lengths are computed relative to the font of the canvas element.
+     */
     font: string;
     textAlign: CanvasTextAlign;
     textBaseline: CanvasTextBaseline;
@@ -3418,11 +3486,23 @@ interface CanvasTextDrawingStyles {
 interface CanvasTransform {
     getTransform(): DOMMatrix;
     resetTransform(): void;
+    /**
+     * Changes the current transformation matrix to apply a rotation transformation with the given characteristics. The angle is in radians.
+     */
     rotate(angle: number): void;
+    /**
+     * Changes the current transformation matrix to apply a scaling transformation with the given characteristics.
+     */
     scale(x: number, y: number): void;
     setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
     setTransform(transform?: DOMMatrix2DInit): void;
+    /**
+     * Changes the current transformation matrix to apply the matrix given by the arguments as described below.
+     */
     transform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    /**
+     * Changes the current transformation matrix to apply a translation transformation with the given characteristics.
+     */
     translate(x: number, y: number): void;
 }
 
@@ -3576,6 +3656,9 @@ interface Comment extends CharacterData {
 
 declare var Comment: {
     prototype: Comment;
+    /**
+     * Returns a new Comment node whose data is data.
+     */
     new(data?: string): Comment;
 };
 
@@ -3712,6 +3795,9 @@ interface CustomEvent<T = any> extends Event {
 
 declare var CustomEvent: {
     prototype: CustomEvent;
+    /**
+     * Works analogously to the constructor for Event except that the eventInitDict argument now allows for setting the detail attribute too.
+     */
     new<T>(typeArg: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
@@ -3928,6 +4014,9 @@ interface DOMParser {
 
 declare var DOMParser: {
     prototype: DOMParser;
+    /**
+     * Constructs a new DOMParser object.
+     */
     new(): DOMParser;
 };
 
@@ -4857,6 +4946,9 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
 
 declare var Document: {
     prototype: Document;
+    /**
+     * Returns a new document.
+     */
     new(): Document;
 };
 
@@ -4966,6 +5058,9 @@ interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
 
 declare var DocumentFragment: {
     prototype: DocumentFragment;
+    /**
+     * Returns a new DocumentFragment node.
+     */
     new(): DocumentFragment;
 };
 
@@ -5324,6 +5419,9 @@ interface Event {
 
 declare var Event: {
     prototype: Event;
+    /**
+     * Returns a new event whose type attribute value is set to type. The eventInitDict argument allows for setting the bubbles and cancelable attributes via object members of the same name.
+     */
     new(type: string, eventInitDict?: EventInit): Event;
     readonly AT_TARGET: number;
     readonly BUBBLING_PHASE: number;
@@ -5406,6 +5504,9 @@ interface EventTarget {
 
 declare var EventTarget: {
     prototype: EventTarget;
+    /**
+     * Creates a new EventTarget object, which can be used by developers to dispatch and listen for events.
+     */
     new(): EventTarget;
 };
 
@@ -6510,6 +6611,9 @@ declare var HTMLDataElement: {
 
 /** Provides special properties (beyond the HTMLElement object interface it also has available to it by inheritance) to manipulate <datalist> elements and their content. */
 interface HTMLDataListElement extends HTMLElement {
+    /**
+     * Returns an HTMLCollection of the option elements of the datalist element.
+     */
     readonly options: HTMLCollectionOf<HTMLOptionElement>;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6538,7 +6642,15 @@ declare var HTMLDetailsElement: {
 interface HTMLDialogElement extends HTMLElement {
     open: boolean;
     returnValue: string;
+    /**
+     * Closes the dialog element.
+     * 
+     * The argument, if provided, provides a return value.
+     */
     close(returnValue?: string): void;
+    /**
+     * Displays the dialog element.
+     */
     show(): void;
     showModal(): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDialogElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -6667,12 +6779,18 @@ declare var HTMLEmbedElement: {
 /** Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <fieldset> elements. */
 interface HTMLFieldSetElement extends HTMLElement {
     disabled: boolean;
+    /**
+     * Returns an HTMLCollection of the form controls in the element.
+     */
     readonly elements: HTMLCollection;
     /**
      * Retrieves a reference to the form that the object is embedded in.
      */
     readonly form: HTMLFormElement | null;
     name: string;
+    /**
+     * Returns the string "fieldset".
+     */
     readonly type: string;
     /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
@@ -6986,17 +7104,70 @@ declare var HTMLHtmlElement: {
 };
 
 interface HTMLHyperlinkElementUtils {
+    /**
+     * Returns the hyperlink's URL's fragment (includes leading "#" if non-empty).
+     * 
+     * Can be set, to change the URL's fragment (ignores leading "#").
+     */
     hash: string;
+    /**
+     * Returns the hyperlink's URL's host and port (if different from the default port for the scheme).
+     * 
+     * Can be set, to change the URL's host and port.
+     */
     host: string;
+    /**
+     * Returns the hyperlink's URL's host.
+     * 
+     * Can be set, to change the URL's host.
+     */
     hostname: string;
+    /**
+     * Returns the hyperlink's URL.
+     * 
+     * Can be set, to change the URL.
+     */
     href: string;
     toString(): string;
+    /**
+     * Returns the hyperlink's URL's origin.
+     */
     readonly origin: string;
+    /**
+     * Returns the hyperlink's URL's password.
+     * 
+     * Can be set, to change the URL's password.
+     */
     password: string;
+    /**
+     * Returns the hyperlink's URL's path.
+     * 
+     * Can be set, to change the URL's path.
+     */
     pathname: string;
+    /**
+     * Returns the hyperlink's URL's port.
+     * 
+     * Can be set, to change the URL's port.
+     */
     port: string;
+    /**
+     * Returns the hyperlink's URL's scheme.
+     * 
+     * Can be set, to change the URL's scheme.
+     */
     protocol: string;
+    /**
+     * Returns the hyperlink's URL's query (includes leading "?" if non-empty).
+     * 
+     * Can be set, to change the URL's query (ignores leading "?").
+     */
     search: string;
+    /**
+     * Returns the hyperlink's URL's username.
+     * 
+     * Can be set, to change the URL's username.
+     */
     username: string;
 }
 
@@ -7233,6 +7404,9 @@ interface HTMLInputElement extends HTMLElement {
      * Sets or retrieves the height of the object.
      */
     height: number;
+    /**
+     * When set, overrides the rendering of checkbox controls so that the current value is not visible.
+     */
     indeterminate: boolean;
     readonly labels: NodeListOf<HTMLLabelElement> | null;
     /**
@@ -7393,6 +7567,9 @@ declare var HTMLLIElement: {
 
 /** Gives access to properties specific to <label> elements. It inherits methods and properties from the base HTMLElement interface. */
 interface HTMLLabelElement extends HTMLElement {
+    /**
+     * Returns the form control that is associated with this element.
+     */
     readonly control: HTMLElement | null;
     /**
      * Retrieves a reference to the form that the object is embedded in.
@@ -8031,9 +8208,17 @@ interface HTMLOutputElement extends HTMLElement {
     readonly htmlFor: DOMTokenList;
     readonly labels: NodeListOf<HTMLLabelElement>;
     name: string;
+    /**
+     * Returns the string "output".
+     */
     readonly type: string;
     readonly validationMessage: string;
     readonly validity: ValidityState;
+    /**
+     * Returns the element's current value.
+     * 
+     * Can be set, to change the value.
+     */
     value: string;
     readonly willValidate: boolean;
     checkValidity(): boolean;
@@ -8243,6 +8428,9 @@ interface HTMLSelectElement extends HTMLElement {
      * Sets or retrieves the name of the object.
      */
     name: string;
+    /**
+     * Returns an HTMLOptionsCollection of the list of options.
+     */
     readonly options: HTMLOptionsCollection;
     /**
      * When present, marks an element that can't be submitted without a value.
@@ -8745,6 +8933,9 @@ declare var HTMLTableSectionElement: {
 
 /** Enables access to the contents of an HTML <template> element. */
 interface HTMLTemplateElement extends HTMLElement {
+    /**
+     * Returns the template contents (a DocumentFragment).
+     */
     readonly content: DocumentFragment;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8907,6 +9098,9 @@ interface HTMLTrackElement extends HTMLElement {
     readonly readyState: number;
     src: string;
     srclang: string;
+    /**
+     * Returns the TextTrack object corresponding to the text track of the track element.
+     */
     readonly track: TextTrack;
     readonly ERROR: number;
     readonly LOADED: number;
@@ -10603,6 +10797,9 @@ interface MutationObserver {
 
 declare var MutationObserver: {
     prototype: MutationObserver;
+    /**
+     * Constructs a MutationObserver object and sets its callback to callback. The callback is invoked with a list of MutationRecord objects as first argument and the constructed MutationObserver object as second argument. It is invoked after nodes registered with the observe() method, are mutated.
+     */
     new(callback: MutationCallback): MutationObserver;
 };
 
@@ -12476,6 +12673,9 @@ interface Range extends AbstractRange {
 
 declare var Range: {
     prototype: Range;
+    /**
+     * Returns a new live range.
+     */
     new(): Range;
     readonly END_TO_END: number;
     readonly END_TO_START: number;
@@ -15303,6 +15503,9 @@ interface StaticRange extends AbstractRange {
 
 declare var StaticRange: {
     prototype: StaticRange;
+    /**
+     * Returns a new range object that does not update when the node tree mutates.
+     */
     new(init: StaticRangeInit): StaticRange;
 };
 
@@ -15319,29 +15522,35 @@ declare var StereoPannerNode: {
 /** This Web Storage API interface provides access to a particular domain's session or local storage. It allows, for example, the addition, modification, or deletion of stored data items. */
 interface Storage {
     /**
-     * Returns the number of key/value pairs currently present in the list associated with the object.
+     * Returns the number of key/value pairs.
      */
     readonly length: number;
     /**
-     * Empties the list associated with the object of all key/value pairs, if there are any.
+     * Removes all key/value pairs, if there are any.
+     * 
+     * Dispatches a storage event on Window objects holding an equivalent Storage object.
      */
     clear(): void;
     /**
-     * Returns the current value associated with the given key, or null if the given key does not exist in the list associated with the object.
+     * Returns the current value associated with the given key, or null if the given key does not exist.
      */
     getItem(key: string): string | null;
     /**
-     * Returns the name of the nth key in the list, or null if n is greater than or equal to the number of key/value pairs in the object.
+     * Returns the name of the nth key, or null if n is greater than or equal to the number of key/value pairs.
      */
     key(index: number): string | null;
     /**
-     * Removes the key/value pair with the given key from the list associated with the object, if a key/value pair with the given key exists.
+     * Removes the key/value pair with the given key, if a key/value pair with the given key exists.
+     * 
+     * Dispatches a storage event on Window objects holding an equivalent Storage object.
      */
     removeItem(key: string): void;
     /**
      * Sets the value of the pair identified by key to value, creating a new key/value pair if none existed for key previously.
      * 
      * Throws a "QuotaExceededError" DOMException exception if the new value couldn't be set. (Setting could fail if, e.g., the user has disabled storage for the site, or if the quota has been exceeded.)
+     * 
+     * Dispatches a storage event on Window objects holding an equivalent Storage object.
      */
     setItem(key: string, value: string): void;
     [name: string]: any;
@@ -15483,20 +15692,23 @@ interface Text extends CharacterData, Slottable {
 
 declare var Text: {
     prototype: Text;
+    /**
+     * Returns a new Text node whose data is data.
+     */
     new(data?: string): Text;
 };
 
 /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextDecoder extends TextDecoderCommon {
     /**
-     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented stream. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
+     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
      * 
      * ```
      * var string = "", decoder = new TextDecoder(encoding), buffer;
      * while(buffer = next_chunk()) {
      *   string += decoder.decode(buffer, {stream:true});
      * }
-     * string += decoder.decode(); // end-of-stream
+     * string += decoder.decode(); // end-of-queue
      * ```
      * 
      * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
@@ -15515,11 +15727,11 @@ interface TextDecoderCommon {
      */
     readonly encoding: string;
     /**
-     * Returns true if error mode is "fatal", and false otherwise.
+     * Returns true if error mode is "fatal", otherwise false.
      */
     readonly fatal: boolean;
     /**
-     * Returns true if ignore BOM flag is set, and false otherwise.
+     * Returns the value of ignore BOM.
      */
     readonly ignoreBOM: boolean;
 }
@@ -15541,7 +15753,7 @@ interface TextEncoder extends TextEncoderCommon {
      */
     encode(input?: string): Uint8Array;
     /**
-     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as a dictionary whereby read is the number of converted code units of source and written is the number of bytes modified in destination.
+     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      */
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }

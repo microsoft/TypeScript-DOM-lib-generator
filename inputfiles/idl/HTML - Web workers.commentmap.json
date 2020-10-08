@@ -1,7 +1,7 @@
 {
     "workerglobalscope-self": "Returns workerGlobal.",
     "workerglobalscope-location": "Returns workerGlobal's WorkerLocation object.",
-    "worker-navigator": "Returns workerGlobal's WorkerNavigator object.",
+    "workerglobalscope-navigator": "Returns workerGlobal's WorkerNavigator object.",
     "workerglobalscope-importscripts": "Fetches each URL in urls, executes them one-by-one in the order they are passed, and then returns (or throws if something went amiss).",
     "dedicatedworkerglobalscope-name": "Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.",
     "dedicatedworkerglobalscope-postmessage": "Clones message and transmits it to the Worker object associated with dedicatedWorkerGlobal. transfer can be passed as a list of objects that are to be transferred rather than cloned.",

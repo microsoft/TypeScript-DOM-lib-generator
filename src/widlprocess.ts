@@ -172,6 +172,9 @@ function convertInterfaceCommon(i: webidl2.InterfaceType | webidl2.InterfaceMixi
             };
         }
     }
+    if (result.constructor) {
+        addComments(result.constructor, commentMap, i.name, 'constructor');
+    }
 
     return result;
 }
