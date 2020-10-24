@@ -517,14 +517,6 @@ interface Transformer<I = any, O = any> {
     writableType?: undefined;
 }
 
-interface UnderlyingByteSource {
-    autoAllocateChunkSize?: number;
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableByteStreamControllerCallback;
-    start?: ReadableByteStreamControllerCallback;
-    type: "bytes";
-}
-
 interface UnderlyingSink<W = any> {
     abort?: WritableStreamErrorCallback;
     close?: WritableStreamDefaultControllerCloseCallback;
@@ -1513,7 +1505,6 @@ declare var ExtendableMessageEvent: {
 interface FetchEvent extends ExtendableEvent {
     readonly clientId: string;
     readonly preloadResponse: Promise<any>;
-    readonly replacesClientId: string;
     readonly request: Request;
     readonly resultingClientId: string;
     respondWith(r: Response | Promise<Response>): void;
@@ -2692,24 +2683,10 @@ declare var PushSubscriptionOptions: {
     new(): PushSubscriptionOptions;
 };
 
-interface ReadableByteStreamController {
-    readonly byobRequest: ReadableStreamBYOBRequest | undefined;
-    readonly desiredSize: number | null;
-    close(): void;
-    enqueue(chunk: ArrayBufferView): void;
-    error(error?: any): void;
-}
-
-declare var ReadableByteStreamController: {
-    prototype: ReadableByteStreamController;
-    new(): ReadableByteStreamController;
-};
-
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
-    getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
     pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
     pipeTo(dest: WritableStream<R>, options?: PipeOptions): Promise<void>;
@@ -2718,31 +2695,7 @@ interface ReadableStream<R = any> {
 
 declare var ReadableStream: {
     prototype: ReadableStream;
-    new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-};
-
-interface ReadableStreamBYOBReader {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
-    releaseLock(): void;
-}
-
-declare var ReadableStreamBYOBReader: {
-    prototype: ReadableStreamBYOBReader;
-    new(): ReadableStreamBYOBReader;
-};
-
-interface ReadableStreamBYOBRequest {
-    readonly view: ArrayBufferView;
-    respond(bytesWritten: number): void;
-    respondWithNewView(view: ArrayBufferView): void;
-}
-
-declare var ReadableStreamBYOBRequest: {
-    prototype: ReadableStreamBYOBRequest;
-    new(): ReadableStreamBYOBRequest;
 };
 
 interface ReadableStreamDefaultController<R = any> {
@@ -5803,10 +5756,6 @@ interface PerformanceObserverCallback {
 
 interface QueuingStrategySizeCallback<T = any> {
     (chunk: T): number;
-}
-
-interface ReadableByteStreamControllerCallback {
-    (controller: ReadableByteStreamController): void | PromiseLike<void>;
 }
 
 interface ReadableStreamDefaultControllerCallback<R> {

@@ -1,5 +1,5 @@
 [Constructor(optional UnderlyingSource underlyingSource, optional QueuingStrategy strategy),
- Constructor(optional UnderlyingByteSource underlyingSource, optional QueuingStrategy strategy),
+//  Constructor(optional UnderlyingByteSource underlyingSource, optional QueuingStrategy strategy),
  Exposed=(Window,Worker)]
 interface ReadableStream {
     readonly attribute boolean locked;

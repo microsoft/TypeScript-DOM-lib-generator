@@ -10,6 +10,7 @@
     "test": "tsc -p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js"
   },
   "dependencies": {
+    "@mdn/browser-compat-data": "2.0.3",
     "@types/jsdom": "^16.2.4",
     "@types/node": "^14.6.4",
     "@types/node-fetch": "^2.5.7",

@@ -1889,10 +1889,6 @@
                             "type": "PushEvent"
                         },
                         {
-                            "name": "pushsubscriptionchange",
-                            "type": "PushSubscriptionChangeEvent"
-                        },
-                        {
                             "name": "sync",
                             "type": "SyncEvent"
                         }
@@ -2212,7 +2208,6 @@
                 ],
                 "constructor": {
                     "override-signatures": [
-                        "new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>",
                         "new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>"
                     ]
                 },
@@ -2220,7 +2215,6 @@
                     "method": {
                         "getReader": {
                             "override-signatures": [
-                                "getReader(options: { mode: \"byob\" }): ReadableStreamBYOBReader",
                                 "getReader(): ReadableStreamDefaultReader<R>"
                             ]
                         },
@@ -2260,17 +2254,6 @@
                     }
                 }
             },
-            "ReadableStreamBYOBReader": {
-                "methods": {
-                    "method": {
-                        "read": {
-                            "override-signatures": [
-                                "read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>"
-                            ]
-                        }
-                    }
-                }
-            },
             "ReadableStreamDefaultReader": {
                 "type-parameters": [
                     {
@@ -2284,15 +2267,6 @@
                             "override-signatures": [
                                 "read(): Promise<ReadableStreamReadResult<R>>"
                             ]
-                        }
-                    }
-                }
-            },
-            "ReadableByteStreamController": {
-                "properties": {
-                    "property": {
-                        "byobRequest": {
-                            "override-type": "ReadableStreamBYOBRequest | undefined"
                         }
                     }
                 }

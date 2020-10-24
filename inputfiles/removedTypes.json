@@ -34,19 +34,7 @@
                     }
                 }
             },
-            "XMLHttpRequestEventTarget": null,
-            "WorkerUtils": {
-                "methods": {
-                    "method": {
-                        "clearImmediate": null,
-                        "clearInterval": null,
-                        "clearTimeout": null,
-                        "setImmediate": null,
-                        "setInterval": null,
-                        "setTimeout": null
-                    }
-                }
-            }
+            "XMLHttpRequestEventTarget": null
         }
     },
     "callback-interfaces": {
@@ -64,14 +52,12 @@
     },
     "interfaces": {
         "interface": {
-            "AudioTrackList": null,
             "AuthenticatorAttestationResponse": {
                 "methods": {
                     "method": {
                         "getAuthenticatorData": null,
                         "getPublicKey": null,
-                        "getPublicKeyAlgorithm": null,
-                        "getTransports": null
+                        "getPublicKeyAlgorithm": null
                     }
                 }
             },
@@ -195,19 +181,11 @@
                     }
                 }
             },
-            "DeviceLightEvent": null,
             "ElementInternals": null,
             "FederatedCredential": null,
             "FormDataEvent": null,
             "HTMLAreasCollection": null,
-            "HTMLBaseFontElement": null,
             "HTMLMediaElement": {
-                "properties": {
-                    "property": {
-                        "audioTracks": null,
-                        "videoTracks": null
-                    }
-                },
                 "methods": {
                     "method": {
                         "getStartDate": null
@@ -234,14 +212,6 @@
                     }
                 }
             },
-            "MediaStreamTrack": {
-                "properties": {
-                    "property": {
-                        "isolated": null,
-                        "onisolationchange": null
-                    }
-                }
-            },
             "MessageEvent": {
                 "methods": {
                     "method": {
@@ -252,7 +222,6 @@
             "MSCredentials": null,
             "MSDCCEvent": null,
             "MSDSHEvent": null,
-            "MSGestureEvent": null,
             "MSMediaKeyMessageEvent": null,
             "MSMediaKeyNeededEvent": null,
             "MSPointerEvent": null,
@@ -260,37 +229,6 @@
             "PasswordCredential": null,
             "Position": null,
             "PositionError": null,
-            "PushSubscriptionChangeEvent": null,
-            "RTCDataChannel": {
-                "properties": {
-                    "property": {
-                        "onclosing": null
-                    }
-                }
-            },
-            "RTCIceCandidate": {
-                "properties": {
-                    "property": {
-                        "address": null
-                    }
-                }
-            },
-            "RTCIceTransport": {
-                "properties": {
-                    "property": {
-                        "component": null
-                    }
-                }
-            },
-            "RTCPeerConnectionIceEvent": {
-                "properties": {
-                    "property": {
-                        "url": null
-                    }
-                }
-            },
-            "ScopedCredential": null,
-            "ScopedCredentialInfo": null,
             "ServiceWorkerGlobalScope": {
                 "properties": {
                     "property": {
@@ -298,20 +236,10 @@
                     }
                 }
             },
-            "ServiceWorkerMessageEvent": null,
             "ShadowRoot": {
                 "properties": {
                     "property": {
                         "onslotchange": null
-                    }
-                }
-            },
-            "SourceBuffer": {
-                "properties": {
-                    "property": {
-                        "audioTracks": null,
-                        "textTracks": null,
-                        "videoTracks": null
                     }
                 }
             },
@@ -376,44 +304,6 @@
                     }
                 }
             },
-            "SVGUseElement": {
-                "properties": {
-                    "property": {
-                        "animatedInstanceRoot": null,
-                        "instanceRoot": null
-                    }
-                }
-            },
-            "SVGZoomAndPan": null,
-            "TextMetrics": {
-                "properties": {
-                    "property": {
-                        "alphabeticBaseline": null,
-                        "emHeightAscent": null,
-                        "emHeightDescent": null,
-                        "fontBoundingBoxAscent": null,
-                        "fontBoundingBoxDescent": null,
-                        "hangingBaseline": null,
-                        "ideographicBaseline": null
-                    }
-                }
-            },
-            "TextTrack": {
-                "properties": {
-                    "property": {
-                        "sourceBuffer": null
-                    }
-                }
-            },
-            "VideoTrackList": null,
-            "VRPose": {
-                "properties": {
-                    "property": {
-                        "timestamp": null
-                    }
-                }
-            },
-            "WebAuthentication": null,
             "WebAuthnAssertion": null,
             "WebGLBuffer": {
                 "extends": null
@@ -421,7 +311,6 @@
             "WebGLFramebuffer": {
                 "extends": null
             },
-            "WebGLObject": null,
             "WebGLProgram": {
                 "extends": null
             },
@@ -466,7 +355,6 @@
                         "crypto": null,
                         "isSecureContext": null,
                         "msCredentials": null,
-                        "ondevicelight": null,
                         "onmsgesturechange": null,
                         "onmsgesturedoubletap": null,
                         "onmsgestureend": null,
@@ -486,9 +374,6 @@
                         "ontouchend": null,
                         "ontouchmove": null,
                         "ontouchstart": null,
-                        "onvrdisplayfocus": null,
-                        "onvrdisplaypointerrestricted": null,
-                        "onvrdisplaypointerunrestricted": null,
                         "performance": null
                     }
                 },
@@ -510,20 +395,6 @@
                     "WindowTimers",
                     "WindowConsole"
                 ]
-            },
-            "WindowClient": {
-                "properties": {
-                    "property": {
-                        "ancestorOrigins": null
-                    }
-                }
-            },
-            "WorkerNavigator": {
-                "properties": {
-                    "property": {
-                        "serviceWorker": null
-                    }
-                }
             },
             "XPathNSResolver": null
         }

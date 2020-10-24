@@ -1785,14 +1785,6 @@ interface ULongRange {
     min?: number;
 }
 
-interface UnderlyingByteSource {
-    autoAllocateChunkSize?: number;
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableByteStreamControllerCallback;
-    start?: ReadableByteStreamControllerCallback;
-    type: "bytes";
-}
-
 interface UnderlyingSink<W = any> {
     abort?: WritableStreamErrorCallback;
     close?: WritableStreamDefaultControllerCloseCallback;
@@ -12317,24 +12309,10 @@ declare var Range: {
     toString(): string;
 };
 
-interface ReadableByteStreamController {
-    readonly byobRequest: ReadableStreamBYOBRequest | undefined;
-    readonly desiredSize: number | null;
-    close(): void;
-    enqueue(chunk: ArrayBufferView): void;
-    error(error?: any): void;
-}
-
-declare var ReadableByteStreamController: {
-    prototype: ReadableByteStreamController;
-    new(): ReadableByteStreamController;
-};
-
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
-    getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
     pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
     pipeTo(dest: WritableStream<R>, options?: PipeOptions): Promise<void>;
@@ -12343,31 +12321,7 @@ interface ReadableStream<R = any> {
 
 declare var ReadableStream: {
     prototype: ReadableStream;
-    new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-};
-
-interface ReadableStreamBYOBReader {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
-    releaseLock(): void;
-}
-
-declare var ReadableStreamBYOBReader: {
-    prototype: ReadableStreamBYOBReader;
-    new(): ReadableStreamBYOBReader;
-};
-
-interface ReadableStreamBYOBRequest {
-    readonly view: ArrayBufferView;
-    respond(bytesWritten: number): void;
-    respondWithNewView(view: ArrayBufferView): void;
-}
-
-declare var ReadableStreamBYOBRequest: {
-    prototype: ReadableStreamBYOBRequest;
-    new(): ReadableStreamBYOBRequest;
 };
 
 interface ReadableStreamDefaultController<R = any> {
@@ -13710,46 +13664,6 @@ declare var SVGNumberList: {
 interface SVGPathElement extends SVGGraphicsElement {
     /** @deprecated */
     readonly pathSegList: SVGPathSegList;
-    /** @deprecated */
-    createSVGPathSegArcAbs(x: number, y: number, r1: number, r2: number, angle: number, largeArcFlag: boolean, sweepFlag: boolean): SVGPathSegArcAbs;
-    /** @deprecated */
-    createSVGPathSegArcRel(x: number, y: number, r1: number, r2: number, angle: number, largeArcFlag: boolean, sweepFlag: boolean): SVGPathSegArcRel;
-    /** @deprecated */
-    createSVGPathSegClosePath(): SVGPathSegClosePath;
-    /** @deprecated */
-    createSVGPathSegCurvetoCubicAbs(x: number, y: number, x1: number, y1: number, x2: number, y2: number): SVGPathSegCurvetoCubicAbs;
-    /** @deprecated */
-    createSVGPathSegCurvetoCubicRel(x: number, y: number, x1: number, y1: number, x2: number, y2: number): SVGPathSegCurvetoCubicRel;
-    /** @deprecated */
-    createSVGPathSegCurvetoCubicSmoothAbs(x: number, y: number, x2: number, y2: number): SVGPathSegCurvetoCubicSmoothAbs;
-    /** @deprecated */
-    createSVGPathSegCurvetoCubicSmoothRel(x: number, y: number, x2: number, y2: number): SVGPathSegCurvetoCubicSmoothRel;
-    /** @deprecated */
-    createSVGPathSegCurvetoQuadraticAbs(x: number, y: number, x1: number, y1: number): SVGPathSegCurvetoQuadraticAbs;
-    /** @deprecated */
-    createSVGPathSegCurvetoQuadraticRel(x: number, y: number, x1: number, y1: number): SVGPathSegCurvetoQuadraticRel;
-    /** @deprecated */
-    createSVGPathSegCurvetoQuadraticSmoothAbs(x: number, y: number): SVGPathSegCurvetoQuadraticSmoothAbs;
-    /** @deprecated */
-    createSVGPathSegCurvetoQuadraticSmoothRel(x: number, y: number): SVGPathSegCurvetoQuadraticSmoothRel;
-    /** @deprecated */
-    createSVGPathSegLinetoAbs(x: number, y: number): SVGPathSegLinetoAbs;
-    /** @deprecated */
-    createSVGPathSegLinetoHorizontalAbs(x: number): SVGPathSegLinetoHorizontalAbs;
-    /** @deprecated */
-    createSVGPathSegLinetoHorizontalRel(x: number): SVGPathSegLinetoHorizontalRel;
-    /** @deprecated */
-    createSVGPathSegLinetoRel(x: number, y: number): SVGPathSegLinetoRel;
-    /** @deprecated */
-    createSVGPathSegLinetoVerticalAbs(y: number): SVGPathSegLinetoVerticalAbs;
-    /** @deprecated */
-    createSVGPathSegLinetoVerticalRel(y: number): SVGPathSegLinetoVerticalRel;
-    /** @deprecated */
-    createSVGPathSegMovetoAbs(x: number, y: number): SVGPathSegMovetoAbs;
-    /** @deprecated */
-    createSVGPathSegMovetoRel(x: number, y: number): SVGPathSegMovetoRel;
-    /** @deprecated */
-    getPathSegAtLength(distance: number): number;
     getPointAtLength(distance: number): SVGPoint;
     getTotalLength(): number;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -14187,25 +14101,11 @@ interface SVGSVGElementEventMap extends SVGElementEventMap {
 
 /** Provides access to the properties of <svg> elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices. */
 interface SVGSVGElement extends SVGGraphicsElement, DocumentEvent, SVGFitToViewBox, SVGZoomAndPan {
-    /** @deprecated */
-    contentScriptType: string;
-    /** @deprecated */
-    contentStyleType: string;
     currentScale: number;
     readonly currentTranslate: SVGPoint;
     readonly height: SVGAnimatedLength;
     onunload: ((this: SVGSVGElement, ev: Event) => any) | null;
     onzoom: ((this: SVGSVGElement, ev: SVGZoomEvent) => any) | null;
-    /** @deprecated */
-    readonly pixelUnitToMillimeterX: number;
-    /** @deprecated */
-    readonly pixelUnitToMillimeterY: number;
-    /** @deprecated */
-    readonly screenPixelToMillimeterX: number;
-    /** @deprecated */
-    readonly screenPixelToMillimeterY: number;
-    /** @deprecated */
-    readonly viewport: SVGRect;
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
@@ -18962,10 +18862,6 @@ interface RTCSessionDescriptionCallback {
 
 interface RTCStatsCallback {
     (report: RTCStatsReport): void;
-}
-
-interface ReadableByteStreamControllerCallback {
-    (controller: ReadableByteStreamController): void | PromiseLike<void>;
 }
 
 interface ReadableStreamDefaultControllerCallback<R> {

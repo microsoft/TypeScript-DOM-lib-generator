@@ -7,7 +7,8 @@
         "esModuleInterop": true,
         "sourceMap": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true
+        "noUnusedParameters": true,
+        "resolveJsonModule": true
     },
     "include": [
         "./src"
