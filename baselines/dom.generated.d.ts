@@ -358,10 +358,6 @@ interface DelayOptions extends AudioNodeOptions {
     maxDelayTime?: number;
 }
 
-interface DeviceLightEventInit extends EventInit {
-    value?: number;
-}
-
 interface DeviceMotionEventAccelerationInit {
     x?: number | null;
     y?: number | null;
@@ -4365,16 +4361,6 @@ declare var DeviceAcceleration: {
     new(): DeviceAcceleration;
 };
 
-/** The DeviceLightEvent provides web developers with information from photo sensors or similiar detectors about ambient light levels near the device. For example this may be useful to adjust the screen's brightness based on the current ambient light level in order to save energy or provide better readability. */
-interface DeviceLightEvent extends Event {
-    readonly value: number;
-}
-
-declare var DeviceLightEvent: {
-    prototype: DeviceLightEvent;
-    new(typeArg: string, eventInitDict?: DeviceLightEventInit): DeviceLightEvent;
-};
-
 /** The DeviceMotionEvent provides web developers with information about the speed of changes for the device's position and orientation. */
 interface DeviceMotionEvent extends Event {
     readonly acceleration: DeviceMotionEventAcceleration | null;
@@ -4709,7 +4695,6 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
     createEvent(eventInterface: "CustomEvent"): CustomEvent;
-    createEvent(eventInterface: "DeviceLightEvent"): DeviceLightEvent;
     createEvent(eventInterface: "DeviceMotionEvent"): DeviceMotionEvent;
     createEvent(eventInterface: "DeviceOrientationEvent"): DeviceOrientationEvent;
     createEvent(eventInterface: "DragEvent"): DragEvent;
@@ -4954,7 +4939,6 @@ interface DocumentEvent {
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
     createEvent(eventInterface: "CustomEvent"): CustomEvent;
-    createEvent(eventInterface: "DeviceLightEvent"): DeviceLightEvent;
     createEvent(eventInterface: "DeviceMotionEvent"): DeviceMotionEvent;
     createEvent(eventInterface: "DeviceOrientationEvent"): DeviceOrientationEvent;
     createEvent(eventInterface: "DragEvent"): DragEvent;
@@ -18272,7 +18256,6 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
     "compassneedscalibration": Event;
     "contextmenu": MouseEvent;
     "dblclick": MouseEvent;
-    "devicelight": DeviceLightEvent;
     "devicemotion": DeviceMotionEvent;
     "deviceorientation": DeviceOrientationEvent;
     "deviceorientationabsolute": DeviceOrientationEvent;
@@ -18371,7 +18354,6 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly navigator: Navigator;
     offscreenBuffering: string | boolean;
     oncompassneedscalibration: ((this: Window, ev: Event) => any) | null;
-    ondevicelight: ((this: Window, ev: DeviceLightEvent) => any) | null;
     ondevicemotion: ((this: Window, ev: DeviceMotionEvent) => any) | null;
     ondeviceorientation: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
     ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
@@ -19402,7 +19384,6 @@ declare const name: void;
 declare var navigator: Navigator;
 declare var offscreenBuffering: string | boolean;
 declare var oncompassneedscalibration: ((this: Window, ev: Event) => any) | null;
-declare var ondevicelight: ((this: Window, ev: DeviceLightEvent) => any) | null;
 declare var ondevicemotion: ((this: Window, ev: DeviceMotionEvent) => any) | null;
 declare var ondeviceorientation: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
 declare var ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
