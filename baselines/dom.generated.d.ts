@@ -3888,10 +3888,6 @@ declare var DOMImplementation: {
     new(): DOMImplementation;
 };
 
-interface DOML2DeprecatedColorProperty {
-    color: string;
-}
-
 interface DOMMatrix extends DOMMatrixReadOnly {
     a: number;
     b: number;
@@ -6347,29 +6343,6 @@ interface HTMLBaseElement extends HTMLElement {
 declare var HTMLBaseElement: {
     prototype: HTMLBaseElement;
     new(): HTMLBaseElement;
-};
-
-/** Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <basefont> elements. */
-interface HTMLBaseFontElement extends HTMLElement, DOML2DeprecatedColorProperty {
-    /**
-     * Sets or retrieves the current typeface family.
-     */
-    /** @deprecated */
-    face: string;
-    /**
-     * Sets or retrieves the font size of the object.
-     */
-    /** @deprecated */
-    size: number;
-    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var HTMLBaseFontElement: {
-    prototype: HTMLBaseFontElement;
-    new(): HTMLBaseFontElement;
 };
 
 interface HTMLBodyElementEventMap extends HTMLElementEventMap, WindowEventHandlersEventMap {
@@ -19241,7 +19214,6 @@ interface HTMLElementTagNameMap {
     "audio": HTMLAudioElement;
     "b": HTMLElement;
     "base": HTMLBaseElement;
-    "basefont": HTMLBaseFontElement;
     "bdi": HTMLElement;
     "bdo": HTMLElement;
     "blockquote": HTMLQuoteElement;

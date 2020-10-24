@@ -201,6 +201,7 @@
             "FederatedCredential": null,
             "FormDataEvent": null,
             "HTMLAreasCollection": null,
+            "HTMLBaseFontElement": null,
             "HTMLMediaElement": {
                 "properties": {
                     "property": {
