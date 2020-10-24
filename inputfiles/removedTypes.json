@@ -295,6 +295,7 @@
                     }
                 }
             },
+            "ServiceWorkerMessageEvent": null,
             "ShadowRoot": {
                 "properties": {
                     "property": {
