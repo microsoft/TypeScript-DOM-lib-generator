@@ -2,14 +2,6 @@
 /// DOM APIs
 /////////////////////////////
 
-interface Account {
-    displayName: string;
-    id: string;
-    imageURL?: string;
-    name?: string;
-    rpDisplayName: string;
-}
-
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
@@ -62,13 +54,6 @@ interface AnimationEventInit extends EventInit {
 interface AnimationPlaybackEventInit extends EventInit {
     currentTime?: number | null;
     timelineTime?: number | null;
-}
-
-interface AssertionOptions {
-    allowList?: ScopedCredentialDescriptor[];
-    extensions?: WebAuthnExtensions;
-    rpId?: string;
-    timeoutSeconds?: number;
 }
 
 interface AssignedNodesOptions {
@@ -187,15 +172,6 @@ interface ChannelMergerOptions extends AudioNodeOptions {
 
 interface ChannelSplitterOptions extends AudioNodeOptions {
     numberOfOutputs?: number;
-}
-
-interface ClientData {
-    challenge: string;
-    extensions?: WebAuthnExtensions;
-    hashAlg: string | Algorithm;
-    origin: string;
-    rpId: string;
-    tokenBinding?: string;
 }
 
 interface ClientQueryOptions {
@@ -1636,24 +1612,6 @@ interface SVGBoundingBoxOptions {
     stroke?: boolean;
 }
 
-interface ScopedCredentialDescriptor {
-    id: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | null;
-    transports?: Transport[];
-    type: ScopedCredentialType;
-}
-
-interface ScopedCredentialOptions {
-    excludeList?: ScopedCredentialDescriptor[];
-    extensions?: WebAuthnExtensions;
-    rpId?: string;
-    timeoutSeconds?: number;
-}
-
-interface ScopedCredentialParameters {
-    algorithm: string | Algorithm;
-    type: ScopedCredentialType;
-}
-
 interface ScrollIntoViewOptions extends ScrollOptions {
     block?: ScrollLogicalPosition;
     inline?: ScrollLogicalPosition;
@@ -1865,9 +1823,6 @@ interface VRStageParameters {
 interface WaveShaperOptions extends AudioNodeOptions {
     curve?: number[] | Float32Array;
     oversample?: OverSampleType;
-}
-
-interface WebAuthnExtensions {
 }
 
 interface WebGLContextAttributes {
@@ -14759,26 +14714,6 @@ declare var SVGZoomEvent: {
     new(): SVGZoomEvent;
 };
 
-interface ScopedCredential {
-    readonly id: ArrayBuffer;
-    readonly type: ScopedCredentialType;
-}
-
-declare var ScopedCredential: {
-    prototype: ScopedCredential;
-    new(): ScopedCredential;
-};
-
-interface ScopedCredentialInfo {
-    readonly credential: ScopedCredential;
-    readonly publicKey: CryptoKey;
-}
-
-declare var ScopedCredentialInfo: {
-    prototype: ScopedCredentialInfo;
-    new(): ScopedCredentialInfo;
-};
-
 /** A screen, usually the one on which the current window is being rendered, and is obtained using window.screen. */
 interface Screen {
     readonly availHeight: number;
@@ -16363,28 +16298,6 @@ interface WaveShaperNode extends AudioNode {
 declare var WaveShaperNode: {
     prototype: WaveShaperNode;
     new(context: BaseAudioContext, options?: WaveShaperOptions): WaveShaperNode;
-};
-
-interface WebAuthentication {
-    getAssertion(assertionChallenge: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | null, options?: AssertionOptions): Promise<WebAuthnAssertion>;
-    makeCredential(accountInformation: Account, cryptoParameters: ScopedCredentialParameters[], attestationChallenge: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer | null, options?: ScopedCredentialOptions): Promise<ScopedCredentialInfo>;
-}
-
-declare var WebAuthentication: {
-    prototype: WebAuthentication;
-    new(): WebAuthentication;
-};
-
-interface WebAuthnAssertion {
-    readonly authenticatorData: ArrayBuffer;
-    readonly clientData: ArrayBuffer;
-    readonly credential: ScopedCredential;
-    readonly signature: ArrayBuffer;
-}
-
-declare var WebAuthnAssertion: {
-    prototype: WebAuthnAssertion;
-    new(): WebAuthnAssertion;
 };
 
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
@@ -20115,7 +20028,6 @@ type RequestRedirect = "error" | "follow" | "manual";
 type ResidentKeyRequirement = "discouraged" | "preferred" | "required";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
-type ScopedCredentialType = "ScopedCred";
 type ScrollBehavior = "auto" | "smooth";
 type ScrollLogicalPosition = "center" | "end" | "nearest" | "start";
 type ScrollRestoration = "auto" | "manual";
@@ -20129,7 +20041,6 @@ type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
 type TouchType = "direct" | "stylus";
-type Transport = "ble" | "nfc" | "usb";
 type UserVerificationRequirement = "discouraged" | "preferred" | "required";
 type VRDisplayEventReason = "mounted" | "navigation" | "requested" | "unmounted";
 type VideoFacingModeEnum = "environment" | "left" | "right" | "user";

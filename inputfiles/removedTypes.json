@@ -267,6 +267,8 @@
                     }
                 }
             },
+            "ScopedCredential": null,
+            "ScopedCredentialInfo": null,
             "ShadowRoot": {
                 "properties": {
                     "property": {
@@ -345,6 +347,8 @@
                 }
             },
             "VideoTrackList": null,
+            "WebAuthentication": null,
+            "WebAuthnAssertion": null,
             "WebKitCSSMatrix": null,
             "WebKitDirectoryEntry": null,
             "WebKitDirectoryReader": null,
