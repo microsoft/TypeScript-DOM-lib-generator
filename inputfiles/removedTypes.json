@@ -195,6 +195,7 @@
                     }
                 }
             },
+            "DeviceLightEvent": null,
             "ElementInternals": null,
             "FederatedCredential": null,
             "FormDataEvent": null,
@@ -359,6 +360,7 @@
                         "crypto": null,
                         "isSecureContext": null,
                         "msCredentials": null,
+                        "ondevicelight": null,
                         "ontouchcancel": null,
                         "ontouchend": null,
                         "ontouchmove": null,
@@ -371,6 +373,11 @@
                         "cancelAnimationFrame": null,
                         "requestAnimationFrame": null
                     }
+                },
+                "events": {
+                    "event": [
+                        "devicelight"
+                    ]
                 },
                 "implements": [
                     "GlobalFetch",
