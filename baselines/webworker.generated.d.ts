@@ -1545,7 +1545,6 @@ declare var ExtendableMessageEvent: {
 interface FetchEvent extends ExtendableEvent {
     readonly clientId: string;
     readonly preloadResponse: Promise<any>;
-    readonly replacesClientId: string;
     readonly request: Request;
     readonly resultingClientId: string;
     respondWith(r: Response | Promise<Response>): void;

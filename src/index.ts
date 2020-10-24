@@ -5,6 +5,7 @@ import { merge, resolveExposure, markAsDeprecated, mapToArray, arrayToMap } from
 import { Flavor, emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
 import { getExposedTypes } from "./expose";
+import { getRemovalDataFromBcd } from "./bcd";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
     const targets = [
@@ -187,6 +188,7 @@ function emitDom() {
         }
     }
 
+    webidl = merge(webidl, getRemovalDataFromBcd(webidl) as any);
     webidl = prune(webidl, removedItems);
     webidl = mergeApiDescriptions(webidl, documentationFromMDN);
     webidl = merge(webidl, addedItems);
@@ -210,7 +212,7 @@ function emitDom() {
             if (!template) return obj;
             const filtered = { ...obj };
             for (const k in template) {
-                if (!obj[k]) {
+                if (!obj[k] || obj[k].exposed === "") {
                     console.warn(`removedTypes.json has a redundant field ${k} in ${JSON.stringify(template)}`);
                 } else if (Array.isArray(template[k])) {
                     if (!Array.isArray(obj[k])) {

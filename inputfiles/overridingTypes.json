@@ -1985,10 +1985,6 @@
                             "type": "PushEvent"
                         },
                         {
-                            "name": "pushsubscriptionchange",
-                            "type": "PushSubscriptionChangeEvent"
-                        },
-                        {
                             "name": "sync",
                             "type": "SyncEvent"
                         }
