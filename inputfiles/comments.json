@@ -1338,18 +1338,6 @@
                     }
                 }
             },
-            "HTMLBaseFontElement": {
-                "properties": {
-                    "property": {
-                        "face": {
-                            "comment": "/**\n * Sets or retrieves the current typeface family.\n */"
-                        },
-                        "size": {
-                            "comment": "/**\n * Sets or retrieves the font size of the object.\n */"
-                        }
-                    }
-                }
-            },
             "HTMLTextAreaElement": {
                 "properties": {
                     "property": {
