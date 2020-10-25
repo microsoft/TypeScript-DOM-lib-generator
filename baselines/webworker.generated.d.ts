@@ -3160,34 +3160,6 @@ interface TextMetrics {
     /**
      * Returns the measurement described below.
      */
-    readonly alphabeticBaseline: number;
-    /**
-     * Returns the measurement described below.
-     */
-    readonly emHeightAscent: number;
-    /**
-     * Returns the measurement described below.
-     */
-    readonly emHeightDescent: number;
-    /**
-     * Returns the measurement described below.
-     */
-    readonly fontBoundingBoxAscent: number;
-    /**
-     * Returns the measurement described below.
-     */
-    readonly fontBoundingBoxDescent: number;
-    /**
-     * Returns the measurement described below.
-     */
-    readonly hangingBaseline: number;
-    /**
-     * Returns the measurement described below.
-     */
-    readonly ideographicBaseline: number;
-    /**
-     * Returns the measurement described below.
-     */
     readonly width: number;
 }
 

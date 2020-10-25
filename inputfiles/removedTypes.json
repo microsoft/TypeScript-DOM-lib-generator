@@ -369,6 +369,19 @@
                     }
                 }
             },
+            "TextMetrics": {
+                "properties": {
+                    "property": {
+                        "alphabeticBaseline": null,
+                        "emHeightAscent": null,
+                        "emHeightDescent": null,
+                        "fontBoundingBoxAscent": null,
+                        "fontBoundingBoxDescent": null,
+                        "hangingBaseline": null,
+                        "ideographicBaseline": null
+                    }
+                }
+            },
             "TextTrack": {
                 "properties": {
                     "property": {
