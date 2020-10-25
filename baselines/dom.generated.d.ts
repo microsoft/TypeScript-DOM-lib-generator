@@ -16196,7 +16196,6 @@ interface VRPose {
     readonly linearVelocity: Float32Array | null;
     readonly orientation: Float32Array | null;
     readonly position: Float32Array | null;
-    readonly timestamp: number;
 }
 
 declare var VRPose: {
@@ -18512,9 +18511,6 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
     "vrdisplayconnect": Event;
     "vrdisplaydeactivate": Event;
     "vrdisplaydisconnect": Event;
-    "vrdisplayfocus": Event;
-    "vrdisplaypointerrestricted": Event;
-    "vrdisplaypointerunrestricted": Event;
     "vrdisplaypresentchange": Event;
     "waiting": Event;
 }
@@ -18577,9 +18573,6 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     onvrdisplayconnect: ((this: Window, ev: Event) => any) | null;
     onvrdisplaydeactivate: ((this: Window, ev: Event) => any) | null;
     onvrdisplaydisconnect: ((this: Window, ev: Event) => any) | null;
-    onvrdisplayfocus: ((this: Window, ev: Event) => any) | null;
-    onvrdisplaypointerrestricted: ((this: Window, ev: Event) => any) | null;
-    onvrdisplaypointerunrestricted: ((this: Window, ev: Event) => any) | null;
     onvrdisplaypresentchange: ((this: Window, ev: Event) => any) | null;
     opener: any;
     /** @deprecated */
@@ -19627,9 +19620,6 @@ declare var onvrdisplayblur: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplayconnect: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplaydeactivate: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplaydisconnect: ((this: Window, ev: Event) => any) | null;
-declare var onvrdisplayfocus: ((this: Window, ev: Event) => any) | null;
-declare var onvrdisplaypointerrestricted: ((this: Window, ev: Event) => any) | null;
-declare var onvrdisplaypointerunrestricted: ((this: Window, ev: Event) => any) | null;
 declare var onvrdisplaypresentchange: ((this: Window, ev: Event) => any) | null;
 declare var opener: any;
 /** @deprecated */
