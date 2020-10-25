@@ -344,6 +344,15 @@
                     }
                 }
             },
+            "SVGUseElement": {
+                "properties": {
+                    "property": {
+                        "animatedInstanceRoot": null,
+                        "instanceRoot": null
+                    }
+                }
+            },
+            "SVGZoomAndPan": null,
             "VideoTrackList": null,
             "WebKitCSSMatrix": null,
             "WebKitDirectoryEntry": null,
