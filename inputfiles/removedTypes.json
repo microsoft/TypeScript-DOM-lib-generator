@@ -370,6 +370,43 @@
                 }
             },
             "VideoTrackList": null,
+            "WebGLBuffer": {
+                "extends": null
+            },
+            "WebGLFramebuffer": {
+                "extends": null
+            },
+            "WebGLObject": null,
+            "WebGLProgram": {
+                "extends": null
+            },
+            "WebGLQuery": {
+                "extends": null
+            },
+            "WebGLRenderbuffer": {
+                "extends": null
+            },
+            "WebGLSampler": {
+                "extends": null
+            },
+            "WebGLShader": {
+                "extends": null
+            },
+            "WebGLSync": {
+                "extends": null
+            },
+            "WebGLTexture": {
+                "extends": null
+            },
+            "WebGLTransformFeedback": {
+                "extends": null
+            },
+            "WebGLVertexArrayObject": {
+                "extends": null
+            },
+            "WebGLVertexArrayObjectOES": {
+                "extends": null
+            },
             "WebKitCSSMatrix": null,
             "WebKitDirectoryEntry": null,
             "WebKitDirectoryReader": null,

@@ -17422,7 +17422,7 @@ declare var WebGLActiveInfo: {
 };
 
 /** Part of the WebGL API and represents an opaque buffer object storing data such as vertices or colors. */
-interface WebGLBuffer extends WebGLObject {
+interface WebGLBuffer {
 }
 
 declare var WebGLBuffer: {
@@ -17441,7 +17441,7 @@ declare var WebGLContextEvent: {
 };
 
 /** Part of the WebGL API and represents a collection of buffers that serve as a rendering destination. */
-interface WebGLFramebuffer extends WebGLObject {
+interface WebGLFramebuffer {
 }
 
 declare var WebGLFramebuffer: {
@@ -17449,16 +17449,8 @@ declare var WebGLFramebuffer: {
     new(): WebGLFramebuffer;
 };
 
-interface WebGLObject {
-}
-
-declare var WebGLObject: {
-    prototype: WebGLObject;
-    new(): WebGLObject;
-};
-
 /** The WebGLProgram is part of the WebGL API and is a combination of two compiled WebGLShaders consisting of a vertex shader and a fragment shader (both written in GLSL). */
-interface WebGLProgram extends WebGLObject {
+interface WebGLProgram {
 }
 
 declare var WebGLProgram: {
@@ -17466,7 +17458,7 @@ declare var WebGLProgram: {
     new(): WebGLProgram;
 };
 
-interface WebGLQuery extends WebGLObject {
+interface WebGLQuery {
 }
 
 declare var WebGLQuery: {
@@ -17475,7 +17467,7 @@ declare var WebGLQuery: {
 };
 
 /** Part of the WebGL API and represents a buffer that can contain an image, or can be source or target of an rendering operation. */
-interface WebGLRenderbuffer extends WebGLObject {
+interface WebGLRenderbuffer {
 }
 
 declare var WebGLRenderbuffer: {
@@ -18254,7 +18246,7 @@ interface WebGLRenderingContextOverloads {
     uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void;
 }
 
-interface WebGLSampler extends WebGLObject {
+interface WebGLSampler {
 }
 
 declare var WebGLSampler: {
@@ -18263,7 +18255,7 @@ declare var WebGLSampler: {
 };
 
 /** The WebGLShader is part of the WebGL API and can either be a vertex or a fragment shader. A WebGLProgram requires both types of shaders. */
-interface WebGLShader extends WebGLObject {
+interface WebGLShader {
 }
 
 declare var WebGLShader: {
@@ -18283,7 +18275,7 @@ declare var WebGLShaderPrecisionFormat: {
     new(): WebGLShaderPrecisionFormat;
 };
 
-interface WebGLSync extends WebGLObject {
+interface WebGLSync {
 }
 
 declare var WebGLSync: {
@@ -18292,7 +18284,7 @@ declare var WebGLSync: {
 };
 
 /** Part of the WebGL API and represents an opaque texture object providing storage and state for texturing operations. */
-interface WebGLTexture extends WebGLObject {
+interface WebGLTexture {
 }
 
 declare var WebGLTexture: {
@@ -18300,7 +18292,7 @@ declare var WebGLTexture: {
     new(): WebGLTexture;
 };
 
-interface WebGLTransformFeedback extends WebGLObject {
+interface WebGLTransformFeedback {
 }
 
 declare var WebGLTransformFeedback: {
@@ -18317,7 +18309,7 @@ declare var WebGLUniformLocation: {
     new(): WebGLUniformLocation;
 };
 
-interface WebGLVertexArrayObject extends WebGLObject {
+interface WebGLVertexArrayObject {
 }
 
 declare var WebGLVertexArrayObject: {
@@ -18325,7 +18317,7 @@ declare var WebGLVertexArrayObject: {
     new(): WebGLVertexArrayObject;
 };
 
-interface WebGLVertexArrayObjectOES extends WebGLObject {
+interface WebGLVertexArrayObjectOES {
 }
 
 interface WebKitPoint {
