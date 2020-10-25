@@ -15700,7 +15700,6 @@ interface TextTrack extends EventTarget {
      */
     mode: TextTrackMode;
     oncuechange: ((this: TextTrack, ev: Event) => any) | null;
-    readonly sourceBuffer: SourceBuffer | null;
     /**
      * Adds the given cue to textTrack's text track list of cues.
      */
