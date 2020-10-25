@@ -352,6 +352,13 @@
                     }
                 }
             },
+            "TextTrack": {
+                "properties": {
+                    "property": {
+                        "sourceBuffer": null
+                    }
+                }
+            },
             "VideoTrackList": null,
             "VRPose": {
                 "properties": {
