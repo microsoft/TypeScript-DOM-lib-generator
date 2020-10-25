@@ -246,6 +246,7 @@
             "PasswordCredential": null,
             "Position": null,
             "PositionError": null,
+            "PushSubscriptionChangeEvent": null,
             "RTCDataChannel": {
                 "properties": {
                     "property": {
@@ -264,6 +265,13 @@
                 "methods": {
                     "method": {
                         "restartIce": null
+                    }
+                }
+            },
+            "ServiceWorkerGlobalScope": {
+                "properties": {
+                    "property": {
+                        "onpushsubscriptionchange": null
                     }
                 }
             },
