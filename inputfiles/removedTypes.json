@@ -234,6 +234,14 @@
                     }
                 }
             },
+            "MediaStreamTrack": {
+                "properties": {
+                    "property": {
+                        "isolated": null,
+                        "onisolationchange": null
+                    }
+                }
+            },
             "MessageEvent": {
                 "methods": {
                     "method": {
