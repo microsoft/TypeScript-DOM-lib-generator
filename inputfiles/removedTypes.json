@@ -404,6 +404,13 @@
                     }
                 }
             },
+            "WorkerNavigator": {
+                "properties": {
+                    "property": {
+                        "serviceWorker": null
+                    }
+                }
+            },
             "WritableStream": {
                 "methods": {
                     "method": {
