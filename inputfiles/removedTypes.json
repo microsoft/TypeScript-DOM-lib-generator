@@ -345,6 +345,13 @@
                 }
             },
             "VideoTrackList": null,
+            "VRPose": {
+                "properties": {
+                    "property": {
+                        "timestamp": null
+                    }
+                }
+            },
             "WebKitCSSMatrix": null,
             "WebKitDirectoryEntry": null,
             "WebKitDirectoryReader": null,
@@ -363,6 +370,9 @@
                         "ontouchend": null,
                         "ontouchmove": null,
                         "ontouchstart": null,
+                        "onvrdisplayfocus": null,
+                        "onvrdisplaypointerrestricted": null,
+                        "onvrdisplaypointerunrestricted": null,
                         "performance": null
                     }
                 },
