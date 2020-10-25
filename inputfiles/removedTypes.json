@@ -260,10 +260,17 @@
                     }
                 }
             },
-            "RTCPeerConnection": {
-                "methods": {
-                    "method": {
-                        "restartIce": null
+            "RTCIceTransport": {
+                "properties": {
+                    "property": {
+                        "component": null
+                    }
+                }
+            },
+            "RTCPeerConnectionIceEvent": {
+                "properties": {
+                    "property": {
+                        "url": null
                     }
                 }
             },
