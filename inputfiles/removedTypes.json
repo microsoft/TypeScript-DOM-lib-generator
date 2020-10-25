@@ -369,6 +369,15 @@
                     }
                 }
             },
+            "SVGUseElement": {
+                "properties": {
+                    "property": {
+                        "animatedInstanceRoot": null,
+                        "instanceRoot": null
+                    }
+                }
+            },
+            "SVGZoomAndPan": null,
             "TextMetrics": {
                 "properties": {
                     "property": {

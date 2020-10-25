@@ -14754,9 +14754,7 @@ declare var SVGUnitTypes: {
 
 /** Corresponds to the <use> element. */
 interface SVGUseElement extends SVGGraphicsElement, SVGURIReference {
-    readonly animatedInstanceRoot: SVGElementInstance | null;
     readonly height: SVGAnimatedLength;
-    readonly instanceRoot: SVGElementInstance | null;
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
     readonly y: SVGAnimatedLength;
@@ -14789,16 +14787,12 @@ declare var SVGViewElement: {
     readonly SVG_ZOOMANDPAN_UNKNOWN: number;
 };
 
-/** Used to reflect the zoomAndPan attribute, and is mixed in to other interfaces for elements that support this attribute. */
 interface SVGZoomAndPan {
-    readonly zoomAndPan: number;
-}
-
-declare var SVGZoomAndPan: {
+    zoomAndPan: number;
     readonly SVG_ZOOMANDPAN_DISABLE: number;
     readonly SVG_ZOOMANDPAN_MAGNIFY: number;
     readonly SVG_ZOOMANDPAN_UNKNOWN: number;
-};
+}
 
 interface SVGZoomEvent extends UIEvent {
     readonly newScale: number;
