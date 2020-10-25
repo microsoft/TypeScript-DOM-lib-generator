@@ -387,6 +387,13 @@
                     }
                 }
             },
+            "WorkerNavigator": {
+                "properties": {
+                    "property": {
+                        "serviceWorker": null
+                    }
+                }
+            },
             "XPathNSResolver": null
         }
     },
