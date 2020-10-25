@@ -248,6 +248,7 @@
             "PasswordCredential": null,
             "Position": null,
             "PositionError": null,
+            "PushSubscriptionChangeEvent": null,
             "ReadableByteStreamController": null,
             "ReadableStream": {
                 "iterator": null
@@ -281,6 +282,13 @@
                 "methods": {
                     "method": {
                         "restartIce": null
+                    }
+                }
+            },
+            "ServiceWorkerGlobalScope": {
+                "properties": {
+                    "property": {
+                        "onpushsubscriptionchange": null
                     }
                 }
             },

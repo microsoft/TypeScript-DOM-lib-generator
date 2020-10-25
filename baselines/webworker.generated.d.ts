@@ -362,11 +362,6 @@ interface PushPermissionDescriptor extends PermissionDescriptor {
     userVisibleOnly?: boolean;
 }
 
-interface PushSubscriptionChangeEventInit extends ExtendableEventInit {
-    newSubscription?: PushSubscription;
-    oldSubscription?: PushSubscription;
-}
-
 interface PushSubscriptionJSON {
     endpoint?: string;
     expirationTime?: number | null;
@@ -2702,16 +2697,6 @@ declare var PushSubscription: {
     new(): PushSubscription;
 };
 
-interface PushSubscriptionChangeEvent extends ExtendableEvent {
-    readonly newSubscription: PushSubscription | null;
-    readonly oldSubscription: PushSubscription | null;
-}
-
-declare var PushSubscriptionChangeEvent: {
-    prototype: PushSubscriptionChangeEvent;
-    new(type: string, eventInitDict?: PushSubscriptionChangeEventInit): PushSubscriptionChangeEvent;
-};
-
 interface PushSubscriptionOptions {
     readonly applicationServerKey: ArrayBuffer | null;
     readonly userVisibleOnly: boolean;
@@ -2913,7 +2898,6 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "notificationclick": NotificationEvent;
     "notificationclose": NotificationEvent;
     "push": PushEvent;
-    "pushsubscriptionchange": PushSubscriptionChangeEvent;
     "sync": SyncEvent;
 }
 
@@ -2928,7 +2912,6 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     onnotificationclick: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
     onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
     onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
-    onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: PushSubscriptionChangeEvent) => any) | null;
     onsync: ((this: ServiceWorkerGlobalScope, ev: SyncEvent) => any) | null;
     readonly registration: ServiceWorkerRegistration;
     readonly serviceWorker: ServiceWorker;
