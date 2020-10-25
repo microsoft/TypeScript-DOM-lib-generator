@@ -435,6 +435,10 @@
         "title": "Push"
     },
     {
+        "url": "https://w3c.github.io/payment-request/",
+        "title": "Payment Request"
+    },
+    {
         "url": "https://www.w3.org/TR/referrer-policy/",
         "title": "Referrer Policy"
     },

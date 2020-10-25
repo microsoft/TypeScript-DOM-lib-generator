@@ -15,6 +15,19 @@ interface AddEventListenerOptions extends EventListenerOptions {
     passive?: boolean;
 }
 
+interface AddressErrors {
+    addressLine?: string;
+    city?: string;
+    country?: string;
+    dependentLocality?: string;
+    organization?: string;
+    phone?: string;
+    postalCode?: string;
+    recipient?: string;
+    region?: string;
+    sortingCode?: string;
+}
+
 interface AesCbcParams extends Algorithm {
     iv: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer;
 }
@@ -946,9 +959,14 @@ interface PannerOptions extends AudioNodeOptions {
     rolloffFactor?: number;
 }
 
+interface PayerErrors {
+    email?: string;
+    name?: string;
+    phone?: string;
+}
+
 interface PaymentCurrencyAmount {
     currency: string;
-    currencySystem?: string;
     value: string;
 }
 
@@ -972,6 +990,9 @@ interface PaymentDetailsModifier {
 
 interface PaymentDetailsUpdate extends PaymentDetailsBase {
     error?: string;
+    payerErrors?: PayerErrors;
+    paymentMethodErrors?: any;
+    shippingAddressErrors?: AddressErrors;
     total?: PaymentItem;
 }
 
@@ -981,17 +1002,23 @@ interface PaymentItem {
     pending?: boolean;
 }
 
+interface PaymentMethodChangeEventInit extends PaymentRequestUpdateEventInit {
+    methodDetails?: any;
+    methodName?: string;
+}
+
 interface PaymentMethodData {
     data?: any;
     supportedMethods: string | string[];
 }
 
 interface PaymentOptions {
+    requestBillingAddress?: boolean;
     requestPayerEmail?: boolean;
     requestPayerName?: boolean;
     requestPayerPhone?: boolean;
     requestShipping?: boolean;
-    shippingType?: string;
+    shippingType?: PaymentShippingType;
 }
 
 interface PaymentRequestUpdateEventInit extends EventInit {
@@ -1002,6 +1029,13 @@ interface PaymentShippingOption {
     id: string;
     label: string;
     selected?: boolean;
+}
+
+interface PaymentValidationErrors {
+    error?: string;
+    payer?: PayerErrors;
+    paymentMethod?: any;
+    shippingAddress?: AddressErrors;
 }
 
 interface Pbkdf2Params extends Algorithm {
@@ -4720,6 +4754,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "OfflineAudioCompletionEvent"): OfflineAudioCompletionEvent;
     createEvent(eventInterface: "OverflowEvent"): OverflowEvent;
     createEvent(eventInterface: "PageTransitionEvent"): PageTransitionEvent;
+    createEvent(eventInterface: "PaymentMethodChangeEvent"): PaymentMethodChangeEvent;
     createEvent(eventInterface: "PaymentRequestUpdateEvent"): PaymentRequestUpdateEvent;
     createEvent(eventInterface: "PermissionRequestedEvent"): PermissionRequestedEvent;
     createEvent(eventInterface: "PointerEvent"): PointerEvent;
@@ -4969,6 +5004,7 @@ interface DocumentEvent {
     createEvent(eventInterface: "OfflineAudioCompletionEvent"): OfflineAudioCompletionEvent;
     createEvent(eventInterface: "OverflowEvent"): OverflowEvent;
     createEvent(eventInterface: "PageTransitionEvent"): PageTransitionEvent;
+    createEvent(eventInterface: "PaymentMethodChangeEvent"): PaymentMethodChangeEvent;
     createEvent(eventInterface: "PaymentRequestUpdateEvent"): PaymentRequestUpdateEvent;
     createEvent(eventInterface: "PermissionRequestedEvent"): PermissionRequestedEvent;
     createEvent(eventInterface: "PointerEvent"): PointerEvent;
@@ -11417,11 +11453,10 @@ declare var Path2D: {
 
 /** This Payment Request API interface is used to store shipping or payment address information. */
 interface PaymentAddress {
-    readonly addressLine: string[];
+    readonly addressLine: ReadonlyArray<string>;
     readonly city: string;
     readonly country: string;
     readonly dependentLocality: string;
-    readonly languageCode: string;
     readonly organization: string;
     readonly phone: string;
     readonly postalCode: string;
@@ -11436,7 +11471,18 @@ declare var PaymentAddress: {
     new(): PaymentAddress;
 };
 
+interface PaymentMethodChangeEvent extends PaymentRequestUpdateEvent {
+    readonly methodDetails: any;
+    readonly methodName: string;
+}
+
+declare var PaymentMethodChangeEvent: {
+    prototype: PaymentMethodChangeEvent;
+    new(type: string, eventInitDict?: PaymentMethodChangeEventInit): PaymentMethodChangeEvent;
+};
+
 interface PaymentRequestEventMap {
+    "paymentmethodchange": Event;
     "shippingaddresschange": Event;
     "shippingoptionchange": Event;
 }
@@ -11444,6 +11490,7 @@ interface PaymentRequestEventMap {
 /** This Payment Request API interface is the primary access point into the API, and lets web content and apps accept payments from the end user. */
 interface PaymentRequest extends EventTarget {
     readonly id: string;
+    onpaymentmethodchange: ((this: PaymentRequest, ev: Event) => any) | null;
     onshippingaddresschange: ((this: PaymentRequest, ev: Event) => any) | null;
     onshippingoptionchange: ((this: PaymentRequest, ev: Event) => any) | null;
     readonly shippingAddress: PaymentAddress | null;
@@ -11451,7 +11498,7 @@ interface PaymentRequest extends EventTarget {
     readonly shippingType: PaymentShippingType | null;
     abort(): Promise<void>;
     canMakePayment(): Promise<boolean>;
-    show(): Promise<PaymentResponse>;
+    show(detailsPromise: PaymentDetailsUpdate | Promise<PaymentDetailsUpdate>): Promise<PaymentResponse>;
     addEventListener<K extends keyof PaymentRequestEventMap>(type: K, listener: (this: PaymentRequest, ev: PaymentRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PaymentRequestEventMap>(type: K, listener: (this: PaymentRequest, ev: PaymentRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -11473,10 +11520,15 @@ declare var PaymentRequestUpdateEvent: {
     new(type: string, eventInitDict?: PaymentRequestUpdateEventInit): PaymentRequestUpdateEvent;
 };
 
+interface PaymentResponseEventMap {
+    "payerdetailchange": Event;
+}
+
 /** This Payment Request API interface is returned after a user selects a payment method and approves a payment request. */
-interface PaymentResponse {
+interface PaymentResponse extends EventTarget {
     readonly details: any;
     readonly methodName: string;
+    onpayerdetailchange: ((this: PaymentResponse, ev: Event) => any) | null;
     readonly payerEmail: string | null;
     readonly payerName: string | null;
     readonly payerPhone: string | null;
@@ -11484,7 +11536,12 @@ interface PaymentResponse {
     readonly shippingAddress: PaymentAddress | null;
     readonly shippingOption: string | null;
     complete(result?: PaymentComplete): Promise<void>;
+    retry(errorFields?: PaymentValidationErrors): Promise<void>;
     toJSON(): any;
+    addEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var PaymentResponse: {
