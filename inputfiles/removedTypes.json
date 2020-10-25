@@ -380,6 +380,13 @@
                     "WindowConsole"
                 ]
             },
+            "WindowClient": {
+                "properties": {
+                    "property": {
+                        "ancestorOrigins": null
+                    }
+                }
+            },
             "XPathNSResolver": null
         }
     },
