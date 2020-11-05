@@ -10,7 +10,6 @@ const forceKeepAlive: Record<string, string[]> = {
   "ByteLengthQueuingStrategy": ["size"],
   "ConstantSourceNode": ["offset"],
   "CountQueuingStrategy": ["size"],
-  "CSSSupportsRule": [],
   "ExtendableMessageEvent": ["lastEventId", "origin", "ports", "source"],
   "GlobalEventHandlers": [
     "onabort",
