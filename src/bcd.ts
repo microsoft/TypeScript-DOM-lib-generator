@@ -28,7 +28,6 @@ const forceKeepAlive: Record<string, string[]> = {
   ],
   "MediaSource": ["clearLiveSeekableRange", "setLiveSeekableRange"],
   "NavigatorPlugins": ["javaEnabled", "mimeTypes", "plugins"],
-  "RTCDataChannel": ["id", "onerror"],
   "SharedWorkerGlobalScope": ["close"],
   "ServiceWorkerGlobalScope": ["onmessageerror"],
   "SVGSVGElement": ["getCurrentTime", "pauseAnimations", "setCurrentTime", "unpauseAnimations"],
@@ -89,8 +88,6 @@ const forceKeepAlive: Record<string, string[]> = {
   "InputDeviceInfo": ["getCapabilities"],
   "ResizeObserverSize": ["blockSize", "inlineSize"],
   "Request": ["keepalive"],
-  "RTCCertificate": ["getFingerprints"],
-  "RTCDTMFSender": ["canInsertDTMF"],
   "RTCDtlsTransport": [
     "getRemoteCertificates",
     "iceTransport",
@@ -134,7 +131,7 @@ const forceKeepAlive: Record<string, string[]> = {
     "sctp",
   ],
   "RTCPeerConnectionIceErrorEvent": ["errorCode", "errorText", "hostCandidate", "url"],
-  "RTCRtpSender": ["getCapabilities", "rtcpTransport", "transport"],
+  "RTCRtpSender": ["rtcpTransport", "transport"],
   "RTCRtpTransceiver": ["setCodecPreferences"],
   "RTCSctpTransport": [
     "maxChannels",
