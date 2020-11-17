@@ -391,6 +391,14 @@ interface RTCRtpReceiver {
   sequence<RTCRtpContributingSource> getContributingSources();
   sequence<RTCRtpSynchronizationSource> getSynchronizationSources();
   Promise<RTCStatsReport> getStats();
+  /**
+   * Chrome exclusive hint to control jitter buffer delay.
+   * See https://henbos.github.io/webrtc-timing/#dom-rtcrtpreceiver-playoutdelayhint
+   * This later got renamed to playoutDelay and defined in WebRTC extensions.
+   * See https://w3c.github.io/webrtc-extensions/#dom-rtcrtpreceiver-playoutdelay
+   * It is expected that playoutDelayHint be playoutDelay in the future. 
+   */
+  double playoutDelayHint;
 };
 
 dictionary RTCRtpContributingSource {
