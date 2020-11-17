@@ -12264,6 +12264,14 @@ declare var RTCPeerConnectionIceEvent: {
 
 /** This WebRTC API interface manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection. */
 interface RTCRtpReceiver {
+    /**
+     * Chrome exclusive hint to control jitter buffer delay.
+     * See https://henbos.github.io/webrtc-timing/#dom-rtcrtpreceiver-playoutdelayhint.
+     * This attribute later got renamed to playoutDelay and defined in WebRTC extensions.
+     * See https://w3c.github.io/webrtc-extensions/#dom-rtcrtpreceiver-playoutdelay.
+     * It is expected that playoutDelayHint be playoutDelay in the future.
+     */
+    playoutDelayHint: number | null;
     readonly rtcpTransport: RTCDtlsTransport | null;
     readonly track: MediaStreamTrack;
     readonly transport: RTCDtlsTransport | null;
