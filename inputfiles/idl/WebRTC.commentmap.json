@@ -1,0 +1,3 @@
+{
+    "rtcrtpreceiver-playoutdelayhint": "Chrome exclusive hint to control jitter buffer delay.\nSee https://henbos.github.io/webrtc-timing/#dom-rtcrtpreceiver-playoutdelayhint.\nThis attribute later got renamed to playoutDelay and defined in WebRTC extensions.\nSee https://w3c.github.io/webrtc-extensions/#dom-rtcrtpreceiver-playoutdelay.\nIt is expected that playoutDelayHint be playoutDelay in the future."
+}
