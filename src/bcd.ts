@@ -30,15 +30,12 @@ const forceKeepAlive: Record<string, string[]> = {
   "NavigatorPlugins": ["javaEnabled", "mimeTypes", "plugins"],
   "SharedWorkerGlobalScope": ["close"],
   "ServiceWorkerGlobalScope": ["onmessageerror"],
-  "SVGSVGElement": ["getCurrentTime", "pauseAnimations", "setCurrentTime", "unpauseAnimations"],
   "TextTrackCue": ["endTime", "id", "pauseOnExit", "startTime", "track"],
   "TrackEvent": ["track"],
   "WebKitCSSMatrix": [],
   "WindowEventHandlers": ["onmessage"],
 
   // Widely supported but without being correctly exposed to global
-  "DeviceMotionEventAcceleration": ["x", "y", "z"],
-  "DeviceMotionEventRotationRate": ["alpha", "beta", "gamma"],
   "ReadableStreamDefaultReader": ["closed", "cancel", "read", "releaseLock"],
   "ReadableStreamDefaultController": ["desiredSize", "close", "enqueue", "error"],
 

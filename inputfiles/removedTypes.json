@@ -318,6 +318,7 @@
                     }
                 }
             },
+            "WebAuthentication": null,
             "WebAuthnAssertion": null,
             "WebGLBuffer": {
                 "extends": null
