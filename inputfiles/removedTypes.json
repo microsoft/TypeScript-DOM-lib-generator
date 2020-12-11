@@ -59,6 +59,8 @@
     "enums": {
         "enum": {
             "ClientType": null,
+            "ReadableStreamReaderMode": null,
+            "ReadableStreamType": null,
             "RequestType": null
         }
     },
@@ -246,6 +248,13 @@
             "PasswordCredential": null,
             "Position": null,
             "PositionError": null,
+            "ReadableByteStreamController": null,
+            "ReadableStream": {
+                "iterator": null
+            },
+            "ReadableStreamBYOBReader": null,
+            "ReadableStreamBYOBRequest": null,
+            "ReadableStreamReader": null,
             "RTCDataChannel": {
                 "properties": {
                     "property": {
@@ -387,6 +396,13 @@
                     }
                 }
             },
+            "WritableStream": {
+                "methods": {
+                    "method": {
+                        "close": null
+                    }
+                }
+            },
             "XPathNSResolver": null
         }
     },
@@ -409,10 +425,20 @@
                 }
             },
             "ObjectURLOptions": null,
+            "ReadableStreamBYOBReadResult": null,
+            "ReadableStreamDefaultReadResult": null,
+            "ReadableStreamGetReaderOptions": null,
             "RTCIceGatherOptions": {
                 "members": {
                     "member": {
                         "portRange": null
+                    }
+                }
+            },
+            "UnderlyingSource": {
+                "members": {
+                    "member": {
+                        "autoAllocateChunkSize": null
                     }
                 }
             }
