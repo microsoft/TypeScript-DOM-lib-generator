@@ -393,16 +393,16 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
         return `${i.name}<${typeParameters.map(t => t.name)}>`;
     }
 
-    function emitConstant(c: Browser.Constant) {
+    function emitConstant(c: Browser.Constant, prefix = "") {
         emitComments(c, printer.printLine);
-        printer.printLine(`readonly ${c.name}: ${convertDomTypeToTsType(c)};`);
+        printer.printLine(`${prefix}readonly ${c.name}: ${convertDomTypeToTsType(c)};`);
     }
 
-    function emitConstants(i: Browser.Interface) {
+    function emitConstants(i: Browser.Interface, prefix = "") {
         if (i.constants) {
             mapToArray(i.constants.constant)
                 .sort(compareName)
-                .forEach(emitConstant);
+                .forEach(c => emitConstant(c, prefix));
         }
     }
 
@@ -635,12 +635,12 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
                 pType = convertDomTypeToTsType(p);
             }
             const required = p.required === undefined || p.required === 1;
-            const requiredModifier = required || prefix ? "" : "?";
+            const requiredModifier = required || (prefix && prefix !== "static ") ? "" : "?";
             pType = p.nullable ? makeNullable(pType) : pType;
             if (!required && prefix) {
                 pType += " | undefined"
             }
-            const readOnlyModifier = p["read-only"] === 1 && prefix === "" ? "readonly " : "";
+            const readOnlyModifier = p["read-only"] === 1 && (prefix === "" || prefix === "static ") ? "readonly " : "";
             printer.printLine(`${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`);
         }
 
@@ -699,21 +699,25 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
         }
     }
 
-    function emitSignature(s: Browser.Signature, prefix: string | undefined, name: string | undefined, printLine: (s: string) => void) {
+    function emitSignature(s: Browser.Signature, prefix: string | undefined, name: string | undefined, printLine: (s: string) => void, isClass = false) {
         const paramsString = s.param ? paramsToString(s.param) : "";
-        let returnType = convertDomTypeToTsReturnType(s);
-        returnType = s.nullable ? makeNullable(returnType) : returnType;
+        let returnSuffix = "";
+        if (!isClass || name !== "constructor") {
+            let returnType = convertDomTypeToTsReturnType(s);
+            returnType = s.nullable ? makeNullable(returnType) : returnType;
+            returnSuffix = `: ${returnType}`;
+        }
         emitComments(s, printLine);
-        printLine(`${prefix || ""}${name || ""}(${paramsString}): ${returnType};`);
+        printLine(`${prefix || ""}${name || ""}(${paramsString})${returnSuffix};`);
     }
 
-    function emitSignatures(method: { signature?: Browser.Signature[], "override-signatures"?: string[], "additional-signatures"?: string[] }, prefix: string, name: string, printLine: (s: string) => void) {
+    function emitSignatures(method: { signature?: Browser.Signature[], "override-signatures"?: string[], "additional-signatures"?: string[] }, prefix: string, name: string, printLine: (s: string) => void, isClass = false) {
         if (method["override-signatures"]) {
             method["override-signatures"]!.forEach(s => printLine(`${prefix}${s};`));
         }
         else if (method.signature) {
             method["additional-signatures"]?.forEach(s => printLine(`${prefix}${s};`));
-            method.signature.forEach(sig => emitSignature(sig, prefix, name, printLine));
+            method.signature.forEach(sig => emitSignature(sig, prefix, name, printLine, isClass));
         }
     }
 
@@ -757,7 +761,9 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
     function emitMembers(prefix: string, emitScope: EmitScope, i: Browser.Interface) {
         const conflictedMembers = extendConflictsBaseTypes[i.name] ? extendConflictsBaseTypes[i.name].memberNames : new Set<string>();
         emitProperties(prefix, emitScope, i);
-        const methodPrefix = prefix.startsWith("declare var") ? "declare function " : "";
+        const methodPrefix = prefix.startsWith("declare var") ? "declare function "
+            : prefix.startsWith("static") ? "static "
+            : "";
         emitMethods(methodPrefix, emitScope, i, conflictedMembers);
         if (emitScope === EmitScope.InstanceOnly) {
             emitIteratorForEach(i);
@@ -810,15 +816,15 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
         }
     }
 
-    function emitConstructorSignature(i: Browser.Interface) {
+    function emitConstructorSignature(i: Browser.Interface, isClass = false) {
         const constructor = typeof i.constructor === "object" ? i.constructor : undefined;
 
         // Emit constructor signature
         if (constructor) {
             emitComments(constructor, printer.print);
-            emitSignatures(constructor, "", "new", printer.printLine);
+            emitSignatures(constructor, "", isClass ? "constructor" : "new", printer.printLine, isClass);
         }
-        else {
+        else if (!isClass) {
             printer.printLine(`new(): ${i.name};`);
         }
     }
@@ -868,11 +874,11 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
             .forEach(emitNamedConstructor);
     }
 
-    function emitInterfaceDeclaration(i: Browser.Interface) {
-        function processIName(iName: string) {
-            return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
-        }
+    function processIName(iName: string) {
+        return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
+    }
 
+    function emitInterfaceDeclaration(i: Browser.Interface) {
         const processedIName = processIName(i.name);
 
         if (processedIName !== i.name) {
@@ -997,6 +1003,63 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
         }
     }
 
+    function emitClassDeclaration(i: Browser.Interface, prefix = "") {
+        let finalExtendsName = i.extends && i.extends !== "Object" ? i.extends : null;
+        let extendsKeyword = "extends";
+        const finalImplements = (i.implements || []).sort().map(processIName);
+
+        if (finalExtendsName) {
+            if (finalExtendsName !== processIName(finalExtendsName) ||
+                !allInterfacesMap[finalExtendsName] ||
+                allInterfacesMap[finalExtendsName]["no-interface-object"]) {
+                finalImplements.unshift(processIName(finalExtendsName));
+                finalExtendsName = null;
+            }
+        }
+
+
+        if (i.comment) {
+            printer.printLine(`/** ${i.comment} */`);
+        }
+
+        if (finalImplements.length) {
+            printer.printLine(`interface ${getNameWithTypeParameter(i, i.name)} extends ${finalImplements.join(", ")} {}`);
+        }
+
+        printer.print(`${prefix}class ${getNameWithTypeParameter(i, i.name)}`);
+        if (finalExtendsName) {
+            printer.print(` ${extendsKeyword} ${finalExtendsName}`)
+        }
+        printer.print(" {");
+        printer.endLine();
+    }
+
+    function emitClass(i: Browser.Interface, prefix = "") {
+        printer.clearStack();
+        emitInterfaceEventMap(i);
+
+        emitClassDeclaration(i, prefix);
+        printer.increaseIndent();
+        emitConstructorSignature(i, true);
+
+        emitMembers(/*prefix*/ "", EmitScope.InstanceOnly, i);
+        emitConstants(i);
+        emitEventHandlers(/*prefix*/ "", i);
+        emitIndexers(EmitScope.InstanceOnly, i);
+
+        emitMembers(/*prefix*/ "static ", EmitScope.StaticOnly, i);
+        emitConstants(i, /*prefix*/ "static ");
+        if (iNameToConstParents[i.name] && iNameToConstParents[i.name].length) {
+            for (const parent of iNameToConstParents[i.name]) {
+                emitConstants(parent, /*prefix*/ "static ");
+            }
+        }
+
+        printer.decreaseIndent();
+        printer.printLine("}");
+        printer.printLine("");
+    }
+
     function emitStaticInterface(i: Browser.Interface) {
         // Some types are static types with non-static members. For example,
         // NodeFilter is a static method itself, however it has an "acceptNode" method
@@ -1091,8 +1154,13 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
             namespace.nested.interfaces
                 .sort(compareName)
                 .forEach(i => {
-                    emitInterface(i);
-                    emitConstructor(i);
+                    if (processIName(i.name) === i.name) {
+                        emitClass(i);
+                    }
+                    else {
+                        emitInterface(i);
+                        emitConstructor(i);
+                    }
                 });
             namespace.nested.dictionaries
                 .sort(compareName)
