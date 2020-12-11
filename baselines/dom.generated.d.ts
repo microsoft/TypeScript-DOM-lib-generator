@@ -594,6 +594,10 @@ interface ImageEncodeOptions {
     type?: string;
 }
 
+interface ImportMeta {
+    url?: string;
+}
+
 interface InputEventInit extends UIEventInit {
     data?: string | null;
     inputType?: string;
@@ -642,6 +646,8 @@ interface KeyAlgorithm {
 }
 
 interface KeyboardEventInit extends EventModifierInit {
+    /** @deprecated */
+    charCode?: number;
     code?: string;
     isComposing?: boolean;
     key?: string;
@@ -1023,18 +1029,13 @@ interface PermissionDescriptor {
     name: PermissionName;
 }
 
-interface PipeOptions {
-    preventAbort?: boolean;
-    preventCancel?: boolean;
-    preventClose?: boolean;
-    signal?: AbortSignal;
-}
-
 interface PointerEventInit extends MouseEventInit {
+    coalescedEvents?: PointerEvent[];
     height?: number;
     isPrimary?: boolean;
     pointerId?: number;
     pointerType?: string;
+    predictedEvents?: PointerEvent[];
     pressure?: number;
     tangentialPressure?: number;
     tiltX?: number;
@@ -1138,7 +1139,16 @@ interface PushSubscriptionOptionsInit {
 
 interface QueuingStrategy<T = any> {
     highWaterMark?: number;
-    size?: QueuingStrategySizeCallback<T>;
+    size?: QueuingStrategySize<T>;
+}
+
+interface QueuingStrategyInit {
+    /**
+     * Creates a new ByteLengthQueuingStrategy with the provided high water mark.
+     * 
+     * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
+     */
+    highWaterMark: number;
 }
 
 interface RTCAnswerOptions extends RTCOfferAnswerOptions {
@@ -1516,14 +1526,24 @@ interface RTCTransportStats extends RTCStats {
     selectedCandidatePairId?: string;
 }
 
-interface ReadableStreamReadDoneResult<T> {
+interface ReadableStreamDefaultReadDoneResult {
     done: true;
-    value?: T;
+    value?: undefined;
 }
 
-interface ReadableStreamReadValueResult<T> {
+interface ReadableStreamDefaultReadValueResult<T> {
     done: false;
     value: T;
+}
+
+interface ReadableWritablePair<R = any, W = any> {
+    readable: ReadableStream<R>;
+    /**
+     * Provides a convenient, chainable way of piping this readable stream through a transform stream (or any other { writable, readable } pair). It simply pipes the stream into the writable side of the supplied pair, and returns the readable side for further use.
+     * 
+     * Piping a stream will lock it for the duration of the pipe, preventing any other consumer from acquiring a reader.
+     */
+    writable: WritableStream<W>;
 }
 
 interface RegistrationOptions {
@@ -1748,6 +1768,30 @@ interface StoreSiteSpecificExceptionsInformation extends StoreExceptionsInformat
     arrayOfDomainStrings?: string[];
 }
 
+interface StreamPipeOptions {
+    preventAbort?: boolean;
+    preventCancel?: boolean;
+    /**
+     * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
+     * 
+     * Piping a stream will lock it for the duration of the pipe, preventing any other consumer from acquiring a reader.
+     * 
+     * Errors and closures of the source and destination streams propagate as follows:
+     * 
+     * An error in this source readable stream will abort destination, unless preventAbort is truthy. The returned promise will be rejected with the source's error, or with any error that occurs during aborting the destination.
+     * 
+     * An error in destination will cancel this source readable stream, unless preventCancel is truthy. The returned promise will be rejected with the destination's error, or with any error that occurs during canceling the source.
+     * 
+     * When this source readable stream closes, destination will be closed, unless preventClose is truthy. The returned promise will be fulfilled once this process completes, unless an error is encountered while closing the destination, in which case it will be rejected with that error.
+     * 
+     * If destination starts out closed or closing, this source readable stream will be canceled, unless preventCancel is true. The returned promise will be rejected with an error indicating piping to a closed stream failed, or with any error that occurs during canceling the source.
+     * 
+     * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
+     */
+    preventClose?: boolean;
+    signal?: AbortSignal;
+}
+
 interface TextDecodeOptions {
     stream?: boolean;
 }
@@ -1791,10 +1835,10 @@ interface TrackEventInit extends EventInit {
 }
 
 interface Transformer<I = any, O = any> {
-    flush?: TransformStreamDefaultControllerCallback<O>;
+    flush?: TransformerFlushCallback<O>;
     readableType?: undefined;
-    start?: TransformStreamDefaultControllerCallback<O>;
-    transform?: TransformStreamDefaultControllerTransformCallback<I, O>;
+    start?: TransformerStartCallback<O>;
+    transform?: TransformerTransformCallback<I, O>;
     writableType?: undefined;
 }
 
@@ -1814,26 +1858,18 @@ interface ULongRange {
     min?: number;
 }
 
-interface UnderlyingByteSource {
-    autoAllocateChunkSize?: number;
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableByteStreamControllerCallback;
-    start?: ReadableByteStreamControllerCallback;
-    type: "bytes";
-}
-
 interface UnderlyingSink<W = any> {
-    abort?: WritableStreamErrorCallback;
-    close?: WritableStreamDefaultControllerCloseCallback;
-    start?: WritableStreamDefaultControllerStartCallback;
+    abort?: UnderlyingSinkAbortCallback;
+    close?: UnderlyingSinkCloseCallback;
+    start?: UnderlyingSinkStartCallback;
     type?: undefined;
-    write?: WritableStreamDefaultControllerWriteCallback<W>;
+    write?: UnderlyingSinkWriteCallback<W>;
 }
 
 interface UnderlyingSource<R = any> {
-    cancel?: ReadableStreamErrorCallback;
-    pull?: ReadableStreamDefaultControllerCallback<R>;
-    start?: ReadableStreamDefaultControllerCallback<R>;
+    cancel?: UnderlyingSourceCancelCallback;
+    pull?: UnderlyingSourcePullCallback<R>;
+    start?: UnderlyingSourceStartCallback<R>;
     type?: undefined;
 }
 
@@ -2322,7 +2358,9 @@ declare var AudioParamMap: {
     new(): AudioParamMap;
 };
 
-/** The Web Audio API events that occur when a ScriptProcessorNode input buffer is ready to be processed. */
+/** The Web Audio API events that occur when a ScriptProcessorNode input buffer is ready to be processed.
+ * @deprecated As of the August 29 2014 Web Audio API spec publication, this feature has been marked as deprecated, and is soon to be replaced by AudioWorklet.
+ */
 interface AudioProcessingEvent extends Event {
     readonly inputBuffer: AudioBuffer;
     readonly outputBuffer: AudioBuffer;
@@ -2565,13 +2603,13 @@ declare var BroadcastChannel: {
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
-    highWaterMark: number;
-    size(chunk: ArrayBufferView): number;
+    readonly highWaterMark: number;
+    readonly size: QueuingStrategySize<ArrayBufferView>;
 }
 
 declare var ByteLengthQueuingStrategy: {
     prototype: ByteLengthQueuingStrategy;
-    new(options: { highWaterMark: number }): ByteLengthQueuingStrategy;
+    new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
 /** A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section. */
@@ -3616,13 +3654,13 @@ declare var ConvolverNode: {
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
-    highWaterMark: number;
-    size(chunk: any): 1;
+    readonly highWaterMark: number;
+    readonly size: QueuingStrategySize;
 }
 
 declare var CountQueuingStrategy: {
     prototype: CountQueuingStrategy;
-    new(options: { highWaterMark: number }): CountQueuingStrategy;
+    new(init: QueuingStrategyInit): CountQueuingStrategy;
 };
 
 interface Credential {
@@ -5613,24 +5651,7 @@ declare var GamepadPose: {
 };
 
 interface GenericTransformStream {
-    /**
-     * Returns a readable stream whose chunks are strings resulting from running encoding's decoder on the chunks written to writable.
-     */
     readonly readable: ReadableStream;
-    /**
-     * Returns a writable stream which accepts [AllowShared] BufferSource chunks and runs them through encoding's decoder before making them available to readable.
-     * 
-     * Typically this will be used via the pipeThrough() method on a ReadableStream source.
-     * 
-     * ```
-     * var decoder = new TextDecoderStream(encoding);
-     * byteReadable
-     *   .pipeThrough(decoder)
-     *   .pipeTo(textWritable);
-     * ```
-     * 
-     * If the error mode is "fatal" and encoding's decoder returns error, both readable and writable will be errored with a TypeError.
-     */
     readonly writable: WritableStream;
 }
 
@@ -10552,7 +10573,8 @@ declare var MouseEvent: {
     new(type: string, eventInitDict?: MouseEventInit): MouseEvent;
 };
 
-/** Provides event properties that are specific to modifications to the Document Object Model (DOM) hierarchy and nodes. */
+/** Provides event properties that are specific to modifications to the Document Object Model (DOM) hierarchy and nodes.
+ * @deprecated DOM4 [DOM] provides a new mechanism using a MutationObserver interface which addresses the use cases that mutation events solve, but in a more performant manner. Thus, this specification describes mutation events for reference and completeness of legacy behavior, but deprecates the use of the MutationEvent interface. */
 interface MutationEvent extends Event {
     readonly attrChange: number;
     readonly attrName: string;
@@ -11538,7 +11560,9 @@ declare var PerformanceMeasure: {
     new(): PerformanceMeasure;
 };
 
-/** The legacy PerformanceNavigation interface represents information about how the navigation to the current document was done. */
+/** The legacy PerformanceNavigation interface represents information about how the navigation to the current document was done.
+ * @deprecated This interface is deprecated in the Navigation Timing Level 2 specification. Please use the PerformanceNavigationTiming interface instead.
+ */
 interface PerformanceNavigation {
     readonly redirectCount: number;
     readonly type: number;
@@ -11628,7 +11652,9 @@ declare var PerformanceResourceTiming: {
     new(): PerformanceResourceTiming;
 };
 
-/** A legacy interface kept for backwards compatibility and contains properties that offer performance timing information for various events which occur during the loading and use of the current page. You get a PerformanceTiming object describing your page using the window.performance.timing property. */
+/** A legacy interface kept for backwards compatibility and contains properties that offer performance timing information for various events which occur during the loading and use of the current page. You get a PerformanceTiming object describing your page using the window.performance.timing property.
+ * @deprecated This interface is deprecated in the Navigation Timing Level 2 specification. Please use the PerformanceNavigationTiming interface instead.
+ */
 interface PerformanceTiming {
     readonly connectEnd: number;
     readonly connectStart: number;
@@ -11771,6 +11797,8 @@ interface PointerEvent extends MouseEvent {
     readonly tiltY: number;
     readonly twist: number;
     readonly width: number;
+    getCoalescedEvents(): PointerEvent[];
+    getPredictedEvents(): PointerEvent[];
 }
 
 declare var PointerEvent: {
@@ -12474,64 +12502,26 @@ declare var Range: {
     toString(): string;
 };
 
-interface ReadableByteStreamController {
-    readonly byobRequest: ReadableStreamBYOBRequest | undefined;
-    readonly desiredSize: number | null;
-    close(): void;
-    enqueue(chunk: ArrayBufferView): void;
-    error(error?: any): void;
-}
-
-declare var ReadableByteStreamController: {
-    prototype: ReadableByteStreamController;
-    new(): ReadableByteStreamController;
-};
-
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
-    getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
-    pipeThrough<T>({ writable, readable }: { writable: WritableStream<R>, readable: ReadableStream<T> }, options?: PipeOptions): ReadableStream<T>;
-    pipeTo(dest: WritableStream<R>, options?: PipeOptions): Promise<void>;
+    pipeThrough<T>(transform: ReadableWritablePair<T, R>, options?: StreamPipeOptions): ReadableStream<T>;
+    pipeTo(dest: WritableStream<R>, options?: StreamPipeOptions): Promise<void>;
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
 declare var ReadableStream: {
     prototype: ReadableStream;
-    new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number, size?: undefined }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-};
-
-interface ReadableStreamBYOBReader {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
-    releaseLock(): void;
-}
-
-declare var ReadableStreamBYOBReader: {
-    prototype: ReadableStreamBYOBReader;
-    new(): ReadableStreamBYOBReader;
-};
-
-interface ReadableStreamBYOBRequest {
-    readonly view: ArrayBufferView;
-    respond(bytesWritten: number): void;
-    respondWithNewView(view: ArrayBufferView): void;
-}
-
-declare var ReadableStreamBYOBRequest: {
-    prototype: ReadableStreamBYOBRequest;
-    new(): ReadableStreamBYOBRequest;
 };
 
 interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
     close(): void;
     enqueue(chunk: R): void;
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var ReadableStreamDefaultController: {
@@ -12539,28 +12529,20 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
-interface ReadableStreamDefaultReader<R = any> {
-    readonly closed: Promise<void>;
-    cancel(reason?: any): Promise<void>;
-    read(): Promise<ReadableStreamReadResult<R>>;
+interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
+    read(): Promise<ReadableStreamDefaultReadResult<R>>;
     releaseLock(): void;
 }
 
 declare var ReadableStreamDefaultReader: {
     prototype: ReadableStreamDefaultReader;
-    new(): ReadableStreamDefaultReader;
+    new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>;
 };
 
-interface ReadableStreamReader<R = any> {
-    cancel(): Promise<void>;
-    read(): Promise<ReadableStreamReadResult<R>>;
-    releaseLock(): void;
+interface ReadableStreamGenericReader {
+    readonly closed: Promise<undefined>;
+    cancel(reason?: any): Promise<void>;
 }
-
-declare var ReadableStreamReader: {
-    prototype: ReadableStreamReader;
-    new(): ReadableStreamReader;
-};
 
 /** This Fetch API interface represents a resource request. */
 interface Request extends Body {
@@ -14810,7 +14792,9 @@ interface ScriptProcessorNodeEventMap {
     "audioprocess": AudioProcessingEvent;
 }
 
-/** Allows the generation, processing, or analyzing of audio using JavaScript. */
+/** Allows the generation, processing, or analyzing of audio using JavaScript.
+ * @deprecated As of the August 29 2014 Web Audio API spec publication, this feature has been marked as deprecated, and was replaced by AudioWorklet (see AudioWorkletNode).
+ */
 interface ScriptProcessorNode extends AudioNode {
     /** @deprecated */
     readonly bufferSize: number;
@@ -15465,14 +15449,14 @@ declare var Text: {
 /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextDecoder extends TextDecoderCommon {
     /**
-     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented stream. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
+     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
      * 
      * ```
      * var string = "", decoder = new TextDecoder(encoding), buffer;
      * while(buffer = next_chunk()) {
      *   string += decoder.decode(buffer, {stream:true});
      * }
-     * string += decoder.decode(); // end-of-stream
+     * string += decoder.decode(); // end-of-queue
      * ```
      * 
      * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
@@ -15491,11 +15475,11 @@ interface TextDecoderCommon {
      */
     readonly encoding: string;
     /**
-     * Returns true if error mode is "fatal", and false otherwise.
+     * Returns true if error mode is "fatal", otherwise false.
      */
     readonly fatal: boolean;
     /**
-     * Returns true if ignore BOM flag is set, and false otherwise.
+     * Returns the value of ignore BOM.
      */
     readonly ignoreBOM: boolean;
 }
@@ -15517,7 +15501,7 @@ interface TextEncoder extends TextEncoderCommon {
      */
     encode(input?: string): Uint8Array;
     /**
-     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as a dictionary whereby read is the number of converted code units of source and written is the number of bytes modified in destination.
+     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      */
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
@@ -18372,6 +18356,8 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
     "ended": Event;
     "error": ErrorEvent;
     "focus": FocusEvent;
+    "gamepadconnected": GamepadEvent;
+    "gamepaddisconnected": GamepadEvent;
     "hashchange": HashChangeEvent;
     "input": Event;
     "invalid": Event;
@@ -18475,6 +18461,8 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     ondevicemotion: ((this: Window, ev: DeviceMotionEvent) => any) | null;
     ondeviceorientation: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
     ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
+    ongamepadconnected: ((this: Window, ev: GamepadEvent) => any) | null;
+    ongamepaddisconnected: ((this: Window, ev: GamepadEvent) => any) | null;
     onmousewheel: ((this: Window, ev: Event) => any) | null;
     onmsgesturechange: ((this: Window, ev: Event) => any) | null;
     onmsgesturedoubletap: ((this: Window, ev: Event) => any) | null;
@@ -18696,7 +18684,7 @@ declare var WritableStream: {
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
-    error(error?: any): void;
+    error(e?: any): void;
 }
 
 declare var WritableStreamDefaultController: {
@@ -18706,9 +18694,9 @@ declare var WritableStreamDefaultController: {
 
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
-    readonly closed: Promise<void>;
+    readonly closed: Promise<undefined>;
     readonly desiredSize: number | null;
-    readonly ready: Promise<void>;
+    readonly ready: Promise<undefined>;
     abort(reason?: any): Promise<void>;
     close(): Promise<void>;
     releaseLock(): void;
@@ -18717,7 +18705,7 @@ interface WritableStreamDefaultWriter<W = any> {
 
 declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
-    new(): WritableStreamDefaultWriter;
+    new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
 };
 
 /** An XML document. It inherits from the generic Document and does not add any specific methods or properties to it: nevertheless, several algorithms behave differently with the two types of documents. */
@@ -19229,7 +19217,7 @@ interface PositionErrorCallback {
     (positionError: GeolocationPositionError): void;
 }
 
-interface QueuingStrategySizeCallback<T = any> {
+interface QueuingStrategySize<T = any> {
     (chunk: T): number;
 }
 
@@ -19245,44 +19233,48 @@ interface RTCStatsCallback {
     (report: RTCStatsReport): void;
 }
 
-interface ReadableByteStreamControllerCallback {
-    (controller: ReadableByteStreamController): void | PromiseLike<void>;
-}
-
-interface ReadableStreamDefaultControllerCallback<R> {
-    (controller: ReadableStreamDefaultController<R>): void | PromiseLike<void>;
-}
-
-interface ReadableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
-}
-
-interface TransformStreamDefaultControllerCallback<O> {
+interface TransformerFlushCallback<O> {
     (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
-interface TransformStreamDefaultControllerTransformCallback<I, O> {
+interface TransformerStartCallback<O> {
+    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+}
+
+interface TransformerTransformCallback<I, O> {
     (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkAbortCallback {
+    (reason: any): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkCloseCallback {
+    (): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkStartCallback {
+    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
+}
+
+interface UnderlyingSinkWriteCallback<W> {
+    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
+}
+
+interface UnderlyingSourceCancelCallback {
+    (reason: any): void | PromiseLike<void>;
+}
+
+interface UnderlyingSourcePullCallback<R> {
+    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
+}
+
+interface UnderlyingSourceStartCallback<R> {
+    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
 }
 
 interface VoidFunction {
     (): void;
-}
-
-interface WritableStreamDefaultControllerCloseCallback {
-    (): void | PromiseLike<void>;
-}
-
-interface WritableStreamDefaultControllerStartCallback {
-    (controller: WritableStreamDefaultController): void | PromiseLike<void>;
-}
-
-interface WritableStreamDefaultControllerWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
-}
-
-interface WritableStreamErrorCallback {
-    (reason: any): void | PromiseLike<void>;
 }
 
 interface HTMLElementTagNameMap {
@@ -19515,6 +19507,8 @@ declare var ondevicelight: ((this: Window, ev: DeviceLightEvent) => any) | null;
 declare var ondevicemotion: ((this: Window, ev: DeviceMotionEvent) => any) | null;
 declare var ondeviceorientation: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
 declare var ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
+declare var ongamepadconnected: ((this: Window, ev: GamepadEvent) => any) | null;
+declare var ongamepaddisconnected: ((this: Window, ev: GamepadEvent) => any) | null;
 declare var onmousewheel: ((this: Window, ev: Event) => any) | null;
 declare var onmsgesturechange: ((this: Window, ev: Event) => any) | null;
 declare var onmsgesturedoubletap: ((this: Window, ev: Event) => any) | null;
@@ -19934,7 +19928,8 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type PerformanceEntryList = PerformanceEntry[];
-type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
+type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
+type ReadableStreamController<T> = ReadableStreamDefaultController<T>;
 type VibratePattern = number | number[];
 type COSEAlgorithmIdentifier = number;
 type UvmEntry = number[];
@@ -19973,6 +19968,7 @@ type RTCTransport = RTCDtlsTransport | RTCSrtpSdesTransport;
 /** @deprecated */
 type MouseWheelEvent = WheelEvent;
 type WindowProxy = Window;
+type ReadableStreamDefaultReadResult<T> = ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
 type AlignSetting = "center" | "end" | "left" | "right" | "start";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
 type AppendMode = "segments" | "sequence";

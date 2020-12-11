@@ -70,11 +70,11 @@ export function merge<T>(target: T, src: T, shallow?: boolean): T {
                     if (Array.isArray(targetProp) !== Array.isArray(srcProp)) {
                         throw new Error("Mismatch on property: " + k + JSON.stringify(srcProp));
                     }
-                    if (shallow && typeof (target[k] as any).name === "string" && typeof (src[k] as any).name === "string") {
-                        target[k] = src[k];
+                    if (shallow && typeof (targetProp as any).name === "string" && typeof (srcProp as any).name === "string") {
+                        target[k] = srcProp;
                     }
                     else {
-                        target[k] = merge(target[k], src[k], shallow);
+                        target[k] = merge(targetProp, srcProp, shallow);
                     }
                 }
             }

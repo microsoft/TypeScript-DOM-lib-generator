@@ -428,6 +428,20 @@
                         "customElements": {
                             "name": "customElements",
                             "type": "CustomElementRegistry"
+                        },
+                        "ongamepadconnected": {
+                            "name": "ongamepadconnected",
+                            "type-original": "EventHandler",
+                            "nullable": 1,
+                            "type": "EventHandlerNonNull",
+                            "event-handler": "gamepadconnected"
+                        },
+                        "ongamepaddisconnected": {
+                            "name": "ongamepaddisconnected",
+                            "type-original": "EventHandler",
+                            "nullable": 1,
+                            "type": "EventHandlerNonNull",
+                            "event-handler": "gamepaddisconnected"
                         }
                     }
                 },
@@ -2182,38 +2196,6 @@
                     ]
                 }
             },
-            "TextDecoderStream": {
-                "properties": {
-                    "property": {
-                        "readable": {
-                            "name": "readable",
-                            "read-only": 1,
-                            "override-type": "ReadableStream<string>"
-                        },
-                        "writable": {
-                            "name": "writable",
-                            "read-only": 1,
-                            "override-type": "WritableStream<BufferSource>"
-                        }
-                    }
-                }
-            },
-            "TextEncoderStream": {
-                "properties": {
-                    "property": {
-                        "readable": {
-                            "name": "readable",
-                            "read-only": 1,
-                            "override-type": "ReadableStream<Uint8Array>"
-                        },
-                        "writable": {
-                            "name": "writable",
-                            "read-only": 1,
-                            "override-type": "WritableStream<string>"
-                        }
-                    }
-                }
-            },
             "Attr": {
                 "name": "Attr",
                 "properties": {
@@ -2297,6 +2279,17 @@
     },
     "dictionaries": {
         "dictionary": {
+            "ImportMeta": {
+                "name": "ImportMeta",
+                "members": {
+                    "member": {
+                        "url": {
+                            "name": "url",
+                            "type": "DOMString"
+                        }
+                    }
+                }
+            },
             "ShadowRootInit": {
                 "members": {
                     "member": {
@@ -2329,10 +2322,49 @@
             "KeyboardEventInit": {
                 "members": {
                     "member": {
+                        "charCode": {
+                            "deprecated": 1
+                        },
                         "keyCode": {
-                            "name": "keyCode",
-                            "deprecated": 1,
-                            "type": "unsigned long"
+                            "deprecated": 1
+                        }
+                    }
+                }
+            },
+            "ReadableStreamDefaultReadDoneResult": {
+                "name": "ReadableStreamDefaultReadDoneResult",
+                "members": {
+                    "member": {
+                        "done": {
+                            "name": "done",
+                            "override-type": "true",
+                            "required": 1
+                        },
+                        "value": {
+                            "name": "value",
+                            "override-type": "undefined"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamDefaultReadValueResult": {
+                "name": "ReadableStreamDefaultReadValueResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "name": "done",
+                            "override-type": "false",
+                            "required": 1
+                        },
+                        "value": {
+                            "name": "value",
+                            "override-type": "T",
+                            "required": 1
                         }
                     }
                 }
@@ -2434,6 +2466,37 @@
                         "type": "ModuleImports"
                     }
                 ]
+            },
+            {
+                "new-type": "ReadableStreamDefaultReadResult",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReadValueResult"
+                    },
+                    {
+                        "type": "ReadableStreamDefaultReadDoneResult"
+                    }
+                ],
+                "override-type": "ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult"
+            },
+            {
+                "new-type": "ReadableStreamReader",
+                "type-parameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReader"
+                    }
+                ],
+                "override-type": "ReadableStreamDefaultReader<T>"
             }
         ]
     }
