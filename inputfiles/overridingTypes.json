@@ -2566,7 +2566,7 @@
                         },
                         "matchAll": {
                             "override-signatures": [
-                                "matchAll<T extends ClientQueryOptions>(options?: T): Promise<ReadonlyArray<T extends { type: \"window\" } ? WindowClient : Client>>"
+                                "matchAll<T extends ClientQueryOptions>(options?: T): Promise<ReadonlyArray<T[\"type\"] extends \"window\" ? WindowClient : Client>>"
                             ]
                         }
                     }
