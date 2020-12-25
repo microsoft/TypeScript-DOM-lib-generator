@@ -11,7 +11,7 @@ import {
 
 export function getExposedTypes(
   webidl: Browser.WebIdl,
-  target: string,
+  target: string[],
   forceKnownTypes: Set<string>
 ): Browser.WebIdl {
   const unexposedTypes = new Set<string>();
@@ -21,7 +21,7 @@ export function getExposedTypes(
       exposesTo(o, target)
     );
     const unexposedInterfaces = mapToArray(webidl.interfaces.interface).filter(
-      (i) => !i.exposed || !i.exposed.includes(target)
+      (i) => !exposesTo(i, target)
     );
     for (const i of unexposedInterfaces) {
       unexposedTypes.add(i.name);

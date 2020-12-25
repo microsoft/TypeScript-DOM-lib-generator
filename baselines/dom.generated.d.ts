@@ -1,5 +1,5 @@
 /////////////////////////////
-/// DOM APIs
+/// Window APIs
 /////////////////////////////
 
 interface AddEventListenerOptions extends EventListenerOptions {

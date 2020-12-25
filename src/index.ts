@@ -8,7 +8,7 @@ import {
   mapToArray,
   arrayToMap,
 } from "./helpers";
-import { Flavor, emitWebIdl } from "./emitter";
+import { emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
 import { getExposedTypes } from "./expose";
 import { getRemovalDataFromBcd } from "./bcd";
@@ -33,8 +33,7 @@ function mergeNamesakes(filtered: Browser.WebIdl) {
 }
 
 interface EmitOptions {
-  flavor: Flavor;
-  global: string;
+  global: string[];
   name: string;
   outputFolder: string;
 }
@@ -47,13 +46,13 @@ function emitFlavor(
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
 
-  const result = emitWebIdl(exposed, options.flavor, false);
+  const result = emitWebIdl(exposed, options.global[0], false);
   fs.writeFileSync(
     `${options.outputFolder}/${options.name}.generated.d.ts`,
     result
   );
 
-  const iterators = emitWebIdl(exposed, options.flavor, true);
+  const iterators = emitWebIdl(exposed, options.global[0], true);
   fs.writeFileSync(
     `${options.outputFolder}/${options.name}.iterable.generated.d.ts`,
     iterators
@@ -280,14 +279,22 @@ function emitDom() {
 
   emitFlavor(webidl, new Set(knownTypes.Window), {
     name: "dom",
-    flavor: Flavor.Window,
-    global: "Window",
+    global: ["Window"],
     outputFolder,
   });
   emitFlavor(webidl, new Set(knownTypes.Worker), {
     name: "webworker",
-    flavor: Flavor.Worker,
-    global: "Worker",
+    global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
+    outputFolder,
+  });
+  emitFlavor(webidl, new Set(knownTypes.Worker), {
+    name: "sharedworker",
+    global: ["SharedWorker", "Worker"],
+    outputFolder,
+  });
+  emitFlavor(webidl, new Set(knownTypes.Worker), {
+    name: "serviceworker",
+    global: ["ServiceWorker", "Worker"],
     outputFolder,
   });
 

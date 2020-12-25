@@ -94,11 +94,11 @@ export function filterProperties<T, U extends T>(
   return result;
 }
 
-export function exposesTo(o: { exposed?: string }, target: string): boolean {
+export function exposesTo(o: { exposed?: string }, target: string[]): boolean {
   if (!o || typeof o.exposed !== "string") {
     return true;
   }
-  return o.exposed.includes(target);
+  return o.exposed.split(" ").some((e) => target.includes(e));
 }
 
 export function merge<T>(target: T, src: T, shallow?: boolean): T {

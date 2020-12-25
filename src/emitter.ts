@@ -156,14 +156,14 @@ function isEventHandler(p: Browser.Property) {
 
 export function emitWebIdl(
   webidl: Browser.WebIdl,
-  flavor: Flavor,
+  global: string,
   iterator: boolean
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
 
   const polluter = getElements(webidl.interfaces, "interface").find((i) =>
-    flavor === Flavor.Window ? !!i["primary-global"] : !!i.global
+    global === "Window" ? !!i["primary-global"] : !!i.global
   );
 
   const allNonCallbackInterfaces = getElements(
@@ -1178,7 +1178,7 @@ export function emitWebIdl(
     printer.printLine("};");
     printer.printLine("");
 
-    if (flavor === Flavor.Window && i["legacy-window-alias"]) {
+    if (global === "Window" && i["legacy-window-alias"]) {
       for (const alias of i["legacy-window-alias"]!) {
         printer.printLine(`type ${alias} = ${i.name};`);
         printer.printLine(`declare var ${alias}: typeof ${i.name};`);
@@ -1600,11 +1600,7 @@ export function emitWebIdl(
   function emit() {
     printer.reset();
     printer.printLine("/////////////////////////////");
-    if (flavor === Flavor.Worker) {
-      printer.printLine("/// Worker APIs");
-    } else {
-      printer.printLine("/// DOM APIs");
-    }
+    printer.printLine(`/// ${global} APIs`);
     printer.printLine("/////////////////////////////");
     printer.printLine("");
 
@@ -1623,7 +1619,7 @@ export function emitWebIdl(
 
     emitCallBackFunctions();
 
-    if (flavor === Flavor.Window) {
+    if (global === "Window") {
       emitHTMLElementTagNameMap();
       emitHTMLElementDeprecatedTagNameMap();
       emitSVGElementTagNameMap();
@@ -1845,11 +1841,7 @@ export function emitWebIdl(
   function emitES6DomIterators() {
     printer.reset();
     printer.printLine("/////////////////////////////");
-    if (flavor === Flavor.Worker) {
-      printer.printLine("/// Worker Iterable APIs");
-    } else {
-      printer.printLine("/// DOM Iterable APIs");
-    }
+    printer.printLine(`/// ${global} Iterable APIs`);
     printer.printLine("/////////////////////////////");
 
     allInterfaces.sort(compareName).forEach(emitIterator);
