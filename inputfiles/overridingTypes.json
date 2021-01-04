@@ -687,7 +687,7 @@
                     "event": [
                         {
                             "name": "readystatechange",
-                            "type": "Event"
+                            "type": "ProgressEvent<Document>"
                         }
                     ]
                 }

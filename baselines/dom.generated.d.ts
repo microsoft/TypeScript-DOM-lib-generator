@@ -4446,7 +4446,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap, DocumentAndEleme
     "fullscreenerror": Event;
     "pointerlockchange": Event;
     "pointerlockerror": Event;
-    "readystatechange": Event;
+    "readystatechange": ProgressEvent<Document>;
     "visibilitychange": Event;
 }
 
@@ -4601,7 +4601,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Fires when the state of the object has changed.
      * @param ev The event
      */
-    onreadystatechange: ((this: Document, ev: Event) => any) | null;
+    onreadystatechange: ((this: Document, ev: ProgressEvent<Document>) => any) | null;
     onvisibilitychange: ((this: Document, ev: Event) => any) | null;
     readonly ownerDocument: null;
     /**
@@ -4742,6 +4742,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "PointerEvent"): PointerEvent;
     createEvent(eventInterface: "PopStateEvent"): PopStateEvent;
     createEvent(eventInterface: "ProgressEvent"): ProgressEvent;
+    createEvent(eventInterface: "ProgressEvent<Document>"): ProgressEvent<Document>;
     createEvent(eventInterface: "PromiseRejectionEvent"): PromiseRejectionEvent;
     createEvent(eventInterface: "RTCDTMFToneChangeEvent"): RTCDTMFToneChangeEvent;
     createEvent(eventInterface: "RTCDataChannelEvent"): RTCDataChannelEvent;
@@ -4992,6 +4993,7 @@ interface DocumentEvent {
     createEvent(eventInterface: "PointerEvent"): PointerEvent;
     createEvent(eventInterface: "PopStateEvent"): PopStateEvent;
     createEvent(eventInterface: "ProgressEvent"): ProgressEvent;
+    createEvent(eventInterface: "ProgressEvent<Document>"): ProgressEvent<Document>;
     createEvent(eventInterface: "PromiseRejectionEvent"): PromiseRejectionEvent;
     createEvent(eventInterface: "RTCDTMFToneChangeEvent"): RTCDTMFToneChangeEvent;
     createEvent(eventInterface: "RTCDataChannelEvent"): RTCDataChannelEvent;
