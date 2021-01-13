@@ -588,10 +588,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
 
     function emitEventHandlerThis(prefix: string, i: Browser.Interface) {
         if (prefix === "") {
-            return `this: ${nameWithForwardedTypes(i)}, `;
+            return `this: ${i.mixin ? "this" : nameWithForwardedTypes(i)}, `;
         }
         else {
-            return polluter ? `this: ${polluter.name}, ` : "";
+            return polluter ? `this: ${polluter.name} & typeof globalThis, ` : "";
         }
     }
 
@@ -791,7 +791,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
         return;
 
         function emitTypedEventHandler(prefix: string, addOrRemove: string, iParent: Browser.Interface, optionsType: string) {
-            printer.printLine(`${prefix}${addOrRemove}EventListener<K extends keyof ${iParent.name}EventMap>(type: K, listener: (this: ${nameWithForwardedTypes(i)}, ev: ${iParent.name}EventMap[K]) => any, options?: boolean | ${optionsType}): void;`);
+            printer.printLine(`${prefix}${addOrRemove}EventListener<K extends keyof ${iParent.name}EventMap>(type: K, listener: (this: ${iParent.mixin ? "this" : iParent === polluter ? `${nameWithForwardedTypes(i)} & typeof globalThis` : nameWithForwardedTypes(i)}, ev: ${iParent.name}EventMap[K]) => any, options?: boolean | ${optionsType}): void;`);
         }
 
         function tryEmitTypedEventHandlerForInterface(addOrRemove: string, optionsType: string) {

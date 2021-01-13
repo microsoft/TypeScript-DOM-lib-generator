@@ -655,10 +655,10 @@ interface AbstractWorkerEventMap {
 }
 
 interface AbstractWorker {
-    onerror: ((this: AbstractWorker, ev: ErrorEvent) => any) | null;
-    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    onerror: ((this: this, ev: ErrorEvent) => any) | null;
+    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: this, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: this, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -1297,9 +1297,9 @@ interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFramePr
      */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: PostMessageOptions): void;
-    addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope & typeof globalThis, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope & typeof globalThis, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -2979,9 +2979,9 @@ interface SharedWorker extends EventTarget, AbstractWorker {
      * Returns sharedWorker's MessagePort object which can be used to communicate with the global environment.
      */
     readonly port: MessagePort;
-    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: this, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: this, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -5877,8 +5877,8 @@ interface VoidFunction {
  * Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.
  */
 declare var name: string;
-declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
-declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare var onmessage: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: MessageEvent) => any) | null;
+declare var onmessageerror: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: MessageEvent) => any) | null;
 /**
  * Aborts dedicatedWorkerGlobal.
  */
@@ -5897,12 +5897,12 @@ declare function dispatchEvent(event: Event): boolean;
  */
 declare var location: WorkerLocation;
 declare var navigator: WorkerNavigator;
-declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
-declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
-declare var onoffline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
-declare var ononline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
-declare var onrejectionhandled: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
-declare var onunhandledrejection: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onerror: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: ErrorEvent) => any) | null;
+declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: Event) => any) | null;
+declare var onoffline: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: Event) => any) | null;
+declare var ononline: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: Event) => any) | null;
+declare var onrejectionhandled: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: PromiseRejectionEvent) => any) | null;
+declare var onunhandledrejection: ((this: DedicatedWorkerGlobalScope & typeof globalThis, ev: PromiseRejectionEvent) => any) | null;
 /**
  * Returns workerGlobal.
  */
@@ -5933,9 +5933,9 @@ declare function setInterval(handler: TimerHandler, timeout?: number, ...argumen
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function cancelAnimationFrame(handle: number): void;
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
-declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope & typeof globalThis, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope & typeof globalThis, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
