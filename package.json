@@ -8,6 +8,7 @@
     "fetch": "echo This could take a few minutes... && npm run fetch-idl && npm run fetch-mdn",
     "baseline-accept": "cpx \"generated\\*\" baselines\\",
     "test": "tsc -p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js",
+    "danger": "danger",
     "migrate": "node ./lib/migrate-to-tsc.js"
   },
   "dependencies": {
@@ -16,8 +17,10 @@
     "@types/node-fetch": "^2.5.7",
     "@types/webidl2": "^23.13.2",
     "cpx2": "^2.0.0",
+    "danger": "^10.5.4",
     "jsdom": "^16.4.0",
     "node-fetch": "^2.6.1",
+    "parse-diff": "^0.7.0",
     "print-diff": "^1.0.0",
     "styleless-innertext": "^1.1.2",
     "typescript": "4.1.0-dev.20200908",

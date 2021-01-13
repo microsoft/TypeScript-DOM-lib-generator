@@ -285,3 +285,4 @@ inputfiles/browser.webidl.json
 !.vscode/launch.template.json
 package-lock.json
 yarn.lock
+TypeScript
