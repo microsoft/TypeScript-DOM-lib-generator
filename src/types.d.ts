@@ -91,6 +91,7 @@ export interface AnonymousMethod {
     exposed?: string;
     deprecated?: 1;
     signature: Signature[];
+    "excluded-from"?: string[];
 }
 
 export interface Method extends AnonymousMethod {

@@ -4,7 +4,7 @@ import * as path from "path";
 import { merge, resolveExposure, markAsDeprecated, mapToArray, arrayToMap } from "./helpers";
 import { Flavor, emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
-import { getExposedTypes } from "./expose";
+import { getExposedTypes, getWebAssemblyTypes } from "./expose";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
     const targets = [
@@ -41,6 +41,14 @@ function emitFlavor(webidl: Browser.WebIdl, forceKnownTypes: Set<string>, option
 
     const iterators = emitWebIdl(exposed, options.flavor, true);
     fs.writeFileSync(`${options.outputFolder}/${options.name}.iterable.generated.d.ts`, iterators);
+}
+
+function emitWebAssembly(webidl: Browser.WebIdl, options: Pick<EmitOptions, 'name' | 'outputFolder'>) {
+    const exposed = getWebAssemblyTypes(webidl);
+    mergeNamesakes(exposed);
+
+    const result = emitWebIdl(exposed, Flavor.WebAssembly, false);
+    fs.writeFileSync(`${options.outputFolder}/${options.name}.generated.d.ts`, result);
 }
 
 function emitDom() {
@@ -202,6 +210,7 @@ function emitDom() {
 
     emitFlavor(webidl, new Set(knownTypes.Window), { name: "dom", flavor: Flavor.Window, global: "Window", outputFolder });
     emitFlavor(webidl, new Set(knownTypes.Worker), { name: "webworker", flavor: Flavor.Worker, global: "Worker", outputFolder });
+    emitWebAssembly(webidl, { name: "webassembly", outputFolder });
 
     function prune(obj: Browser.WebIdl, template: Partial<Browser.WebIdl>): Browser.WebIdl {
         return filterByNull(obj, template);

@@ -95,11 +95,11 @@ interface Global {
   attribute any value;
 };
 
-[LegacyNamespace=WebAssembly]
+[LegacyNamespace=WebAssembly, Exposed=(Window,Worker,Worklet)]
 interface CompileError { };
 
-[LegacyNamespace=WebAssembly]
+[LegacyNamespace=WebAssembly, Exposed=(Window,Worker,Worklet)]
 interface LinkError { };
 
-[LegacyNamespace=WebAssembly]
+[LegacyNamespace=WebAssembly, Exposed=(Window,Worker,Worklet)]
 interface RuntimeError { };

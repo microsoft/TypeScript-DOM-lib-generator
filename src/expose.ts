@@ -1,6 +1,72 @@
 import * as Browser from "./types";
 import { getEmptyWebIDL, filter, exposesTo, followTypeReferences, filterProperties, mapToArray, arrayToMap } from "./helpers";
 
+export function getWebAssemblyTypes(webidl: Browser.WebIdl) {
+    const unexposedTypes = new Set<string>(['Response']);
+    const filtered = getEmptyWebIDL();
+
+    if (webidl.interfaces) {
+        const wasmInterfaces = mapToArray(webidl.interfaces.interface)
+            .filter(i => {
+                if (i["legacy-namespace"] === "WebAssembly") {
+                    return true;
+                }
+
+                unexposedTypes.add(i?.name);
+                return false;
+            })
+            .map(i => {
+                const method = filterProperties(
+                    i.methods.method,
+                    (m: Browser.Method) => !m["excluded-from"]?.includes("webassembly"),
+                );
+                return { ...i, methods: { method } };
+            });
+        filtered.interfaces!.interface = arrayToMap(wasmInterfaces, i => i.name, i => i);
+    }
+
+    if (webidl.namespaces) {
+        filtered.namespaces = webidl.namespaces
+            .filter(o => o.name === "WebAssembly")
+            .map(i => {
+                const method = filterProperties(
+                    i.methods.method,
+                    (m: Browser.Method) => !m["excluded-from"]?.includes("webassembly"),
+                );
+                return { ...i, methods: { method } };
+            });
+    }
+
+    const knownIDLTypes = new Set([
+        ...followTypeReferences(webidl, filtered.interfaces!.interface),
+        ...followTypeReferences(webidl, arrayToMap(filtered.namespaces!, i => i.name, i => i)),
+    ]);
+    const isKnownName = (o: { name: string }) => knownIDLTypes.has(o.name);
+    const isWasmType = (o: { "legacy-namespace"?: string }) => o["legacy-namespace"] === "WebAssembly";
+    const isKnownWasmName = (o: { name: string; "legacy-namespace"?: string }) => isWasmType(o) && isKnownName(o);
+
+    if (webidl.typedefs) {
+        const referenced = webidl.typedefs.typedef.filter(t => knownIDLTypes.has(t["new-type"]));
+        const { exposed, removed } = filterTypedefs(referenced, unexposedTypes);
+        removed.forEach(s => unexposedTypes.add(s));
+        filtered.typedefs!.typedef = exposed;
+    }
+
+    if (webidl.dictionaries) {
+        filtered.dictionaries!.dictionary = filterProperties(webidl.dictionaries.dictionary, isKnownWasmName);
+    }
+
+    if (webidl.enums) {
+        filtered.enums!.enum = filterProperties(webidl.enums.enum, isKnownWasmName);
+    }
+
+    if (webidl.mixins) {
+        filtered.mixins!.mixin = filterProperties(webidl.mixins.mixin, isKnownWasmName);
+    }
+
+    return deepFilterUnexposedTypes(filtered, unexposedTypes);
+}
+
 export function getExposedTypes(webidl: Browser.WebIdl, target: string, forceKnownTypes: Set<string>) {
     const unexposedTypes = new Set<string>();
     const filtered = getEmptyWebIDL();
@@ -141,7 +207,7 @@ function deepClone<T>(o: T, custom: (o: any) => any): T {
         return o;
     }
     if (Array.isArray(o)) {
-        return o.map(v => deepClone(v, custom)) as any as T;
+        return (o as readonly any[]).map(v => deepClone(v, custom)) as any as T;
     }
     const mapped = custom(o);
     if (mapped !== undefined) {

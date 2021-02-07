@@ -4,7 +4,8 @@ import { collectLegacyNamespaceTypes } from "./legacy-namespace";
 
 export const enum Flavor {
     Window,
-    Worker
+    Worker,
+    WebAssembly,
 }
 
 // Note:
@@ -68,11 +69,13 @@ function createTextWriter(newLine: string) {
     }
 
     function write(s: string) {
-        if (lineStart) {
-            output += getIndentString(indent);
-            lineStart = false;
+        if (s.length > 0) {
+            if (lineStart) {
+                output += getIndentString(indent);
+                lineStart = false;
+            }
+            output += s;
         }
-        output += s;
     }
 
     function reset(): void {
@@ -1163,11 +1166,16 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
     function emit() {
         printer.reset();
         printer.printLine("/////////////////////////////");
-        if (flavor === Flavor.Worker) {
-            printer.printLine("/// Worker APIs");
-        }
-        else {
-            printer.printLine("/// DOM APIs");
+        switch (flavor) {
+            case Flavor.Worker:
+                printer.printLine("/// Worker APIs");
+                break;
+            case Flavor.WebAssembly:
+                printer.printLine("/// WebAssembly APIs");
+                break;
+            default:
+                printer.printLine("/// DOM APIs");
+                break;
         }
         printer.printLine("/////////////////////////////");
         printer.printLine("");
@@ -1178,8 +1186,10 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
             .forEach(i => emitCallBackInterface(i));
         emitNonCallbackInterfaces();
 
-        printer.printLine("declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;");
-        printer.printLine("");
+        if (flavor !== Flavor.WebAssembly) {
+            printer.printLine("declare type EventListenerOrEventListenerObject = EventListener | EventListenerObject;");
+            printer.printLine("");
+        }
 
         collectLegacyNamespaceTypes(webidl).forEach(emitNamespace);
 

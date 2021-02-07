@@ -2623,6 +2623,33 @@
                         }
                     }
                 }
+            },
+            "CompileError": {
+                "extends": "Error",
+                "constructor": {
+                    "override-signatures": [
+                        "new(message?: string): CompileError",
+                        "(message?: string): CompileError"
+                    ]
+                }
+            },
+            "LinkError": {
+                "extends": "Error",
+                "constructor": {
+                    "override-signatures": [
+                        "new(message?: string): LinkError",
+                        "(message?: string): LinkError"
+                    ]
+                }
+            },
+            "RuntimeError": {
+                "extends": "Error",
+                "constructor": {
+                    "override-signatures": [
+                        "new(message?: string): RuntimeError",
+                        "(message?: string): RuntimeError"
+                    ]
+                }
             }
         }
     },
@@ -3097,6 +3124,11 @@
             "name": "WebAssembly",
             "methods": {
                 "method": {
+                    "compileStreaming": {
+                        "excluded-from": [
+                            "webassembly"
+                        ]
+                    },
                     "instantiate": {
                         "override-signatures": [
                             "instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>",
@@ -3116,6 +3148,9 @@
                             {
                                 "type": "Imports"
                             }
+                        ],
+                        "excluded-from": [
+                            "webassembly"
                         ]
                     }
                 }

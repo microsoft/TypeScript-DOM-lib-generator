@@ -19,6 +19,7 @@ export const baseTypeConversionMap = new Map<string, string>([
     ["EventHandler", "EventHandler"]
 ]);
 
+// FIXME: This should be named `deepFilter`
 export function filter<T>(obj: T, fn: (o: any, n: string | undefined) => boolean): T {
     if (typeof obj === "object") {
         if (Array.isArray(obj)) {
@@ -64,7 +65,7 @@ export function merge<T>(target: T, src: T, shallow?: boolean): T {
                 const targetProp = target[k];
                 const srcProp = src[k];
                 if (Array.isArray(targetProp) && Array.isArray(srcProp)) {
-                    mergeNamedArrays(targetProp, srcProp);
+                    mergeNamedArrays(targetProp as any, srcProp as any);
                 }
                 else {
                     if (Array.isArray(targetProp) !== Array.isArray(srcProp)) {
