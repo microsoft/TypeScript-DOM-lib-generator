@@ -377,6 +377,10 @@
                         "decoding": {
                             "name": "decoding",
                             "override-type": "\"async\" | \"sync\" | \"auto\""
+                        },
+                        "loading": {
+                            "name": "loading",
+                            "override-type": "\"eager\" | \"lazy\""
                         }
                     }
                 },
@@ -738,6 +742,10 @@
                     "property": {
                         "referrerPolicy": {
                             "type": "ReferrerPolicy"
+                        },
+                        "loading": {
+                            "name": "loading",
+                            "override-type": "\"eager\" | \"lazy\""
                         }
                     }
                 },
