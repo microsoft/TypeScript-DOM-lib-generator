@@ -2290,6 +2290,42 @@
                         }
                     ]
                 }
+            },
+            "CompileError": {
+                "name": "CompileError",
+                "legacy-namespace": "WebAssembly",
+                "extends": "Error",
+                "exposed": "Window Worker Worklet",
+                "constructor": {
+                    "override-signatures": [
+                        "new(message?: string): CompileError",
+                        "(message?: string): CompileError"
+                    ]
+                }
+            },
+            "LinkError":{
+                "name": "LinkError",
+                "legacy-namespace": "WebAssembly",
+                "extends": "Error",
+                "exposed": "Window Worker Worklet",
+                "constructor": {
+                    "override-signatures": [
+                        "new(message?: string): LinkError",
+                        "(message?: string): LinkError"
+                    ]
+                }
+            },
+            "RuntimeError":{
+                "name": "RuntimeError",
+                "legacy-namespace": "WebAssembly",
+                "extends": "Error",
+                "exposed": "Window Worker Worklet",
+                "constructor": {
+                    "override-signatures": [
+                        "new(message?: string): RuntimeError",
+                        "(message?: string): RuntimeError"
+                    ]
+                }
             }
         }
     },
