@@ -86,6 +86,7 @@
         "RsaOaepParams",
         "RsaPssParams",
         "Transferable",
+        "ValueTypeMap",
         "VideoFacingModeEnum",
         "MouseWheelEvent",
         "WorkerOptions"
@@ -125,6 +126,7 @@
         "RsaPssParams",
         "RsaOaepParams",
         "Transferable",
+        "ValueTypeMap",
         "WorkerOptions"
     ]
 }

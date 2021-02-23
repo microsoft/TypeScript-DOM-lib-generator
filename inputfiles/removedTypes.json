@@ -61,7 +61,8 @@
             "ClientType": null,
             "ReadableStreamReaderMode": null,
             "ReadableStreamType": null,
-            "RequestType": null
+            "RequestType": null,
+            "ValueType": null
         }
     },
     "interfaces": {

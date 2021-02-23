@@ -325,9 +325,6 @@
             },
             "TableKind": {
                 "legacy-namespace": "WebAssembly"
-            },
-            "ValueType": {
-                "legacy-namespace": "WebAssembly"
             }
         }
     },
@@ -2623,6 +2620,37 @@
                         }
                     }
                 }
+            },
+            "Global": {
+                "name": "Global",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "extends": "ValueType",
+                        "default": "ValueType"
+                    }
+                ],
+                "constructor": {
+                    "override-signatures": [
+                        "new<T extends ValueType = ValueType>(descriptor: GlobalDescriptor<T>, v?: ValueTypeMap[T]): Global<T>"
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "value": {
+                            "override-type": "ValueTypeMap[T]"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "valueOf": {
+                            "override-signatures": [
+                                "valueOf(): ValueTypeMap[T]"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
@@ -3041,7 +3069,21 @@
                 "legacy-namespace": "WebAssembly"
             },
             "GlobalDescriptor": {
-                "legacy-namespace": "WebAssembly"
+                "legacy-namespace": "WebAssembly",
+                "type-parameters": [
+                    {
+                        "name": "T",
+                        "extends": "ValueType",
+                        "default": "ValueType"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "value": {
+                            "override-type": "T"
+                        }
+                    }
+                }
             },
             "WebAssemblyInstantiatedSource": {
                 "legacy-namespace": "WebAssembly"

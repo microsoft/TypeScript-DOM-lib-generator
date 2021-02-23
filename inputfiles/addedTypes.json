@@ -2396,6 +2396,35 @@
                         }
                     }
                 }
+            },
+            "ValueTypeMap": {
+                "name": "ValueTypeMap",
+                "legacy-namespace": "WebAssembly",
+                "exposed":"Window Worker Worklet",
+                "members": {
+                    "member": {
+                        "f32": {
+                            "name": "f32",
+                            "override-type": "number",
+                            "required": 1
+                        },
+                        "f64": {
+                            "name": "f64",
+                            "override-type": "number",
+                            "required": 1
+                        },
+                        "i32": {
+                            "name": "i32",
+                            "override-type": "number",
+                            "required": 1
+                        },
+                        "i64": {
+                            "name": "i64",
+                            "override-type": "bigint",
+                            "required": 1
+                        }
+                    }
+                }
             }
         }
     },
@@ -2445,6 +2474,11 @@
             {
                 "new-type": "WindowProxy",
                 "type": "Window"
+            },
+            {
+                "new-type": "ValueType",
+                "legacy-namespace": "WebAssembly",
+                "override-type": "keyof ValueTypeMap"
             },
             {
                 "new-type": "ExportValue",
