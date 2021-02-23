@@ -19111,81 +19111,46 @@ declare namespace CSS {
 }
 
 declare namespace WebAssembly {
-    interface CompileError {
+    class CompileError {
     }
     
-    var CompileError: {
-        prototype: CompileError;
-        new(): CompileError;
-    };
-    
-    interface Global {
+    class Global {
+        constructor(descriptor: GlobalDescriptor, v?: any);
         value: any;
         valueOf(): any;
     }
     
-    var Global: {
-        prototype: Global;
-        new(descriptor: GlobalDescriptor, v?: any): Global;
-    };
-    
-    interface Instance {
+    class Instance {
+        constructor(module: Module, importObject?: Imports);
         readonly exports: Exports;
     }
     
-    var Instance: {
-        prototype: Instance;
-        new(module: Module, importObject?: Imports): Instance;
-    };
-    
-    interface LinkError {
+    class LinkError {
     }
     
-    var LinkError: {
-        prototype: LinkError;
-        new(): LinkError;
-    };
-    
-    interface Memory {
+    class Memory {
+        constructor(descriptor: MemoryDescriptor);
         readonly buffer: ArrayBuffer;
         grow(delta: number): number;
     }
     
-    var Memory: {
-        prototype: Memory;
-        new(descriptor: MemoryDescriptor): Memory;
-    };
-    
-    interface Module {
+    class Module {
+        constructor(bytes: BufferSource);
+        static customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
+        static exports(moduleObject: Module): ModuleExportDescriptor[];
+        static imports(moduleObject: Module): ModuleImportDescriptor[];
     }
     
-    var Module: {
-        prototype: Module;
-        new(bytes: BufferSource): Module;
-        customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
-        exports(moduleObject: Module): ModuleExportDescriptor[];
-        imports(moduleObject: Module): ModuleImportDescriptor[];
-    };
-    
-    interface RuntimeError {
+    class RuntimeError {
     }
     
-    var RuntimeError: {
-        prototype: RuntimeError;
-        new(): RuntimeError;
-    };
-    
-    interface Table {
+    class Table {
+        constructor(descriptor: TableDescriptor);
         readonly length: number;
         get(index: number): Function | null;
         grow(delta: number): number;
         set(index: number, value: Function | null): void;
     }
-    
-    var Table: {
-        prototype: Table;
-        new(descriptor: TableDescriptor): Table;
-    };
     
     interface GlobalDescriptor {
         mutable?: boolean;

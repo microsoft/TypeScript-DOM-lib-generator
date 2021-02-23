@@ -2547,7 +2547,7 @@
             "Instance": {
                 "constructor": {
                     "override-signatures": [
-                        "new(module: Module, importObject?: Imports): Instance"
+                        "constructor(module: Module, importObject?: Imports)"
                     ],
                     "force-references": [
                         {
