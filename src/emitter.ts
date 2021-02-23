@@ -827,7 +827,7 @@ export function emitWebIdl(webidl: Browser.WebIdl, flavor: Flavor, iterator: boo
         printer.printLine(`${prefix}var ${i.name}: {`);
         printer.increaseIndent();
 
-        printer.printLine(`prototype: ${i.name};`);
+        printer.printLine(`readonly prototype: ${i.name};`);
         emitConstructorSignature(i);
         emitConstants(i);
         if (iNameToConstParents[i.name] && iNameToConstParents[i.name].length) {
