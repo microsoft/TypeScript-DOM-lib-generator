@@ -357,6 +357,7 @@ function convertAttribute(
     exposed:
       getExtAttrConcatenated(attribute.extAttrs, "Exposed") ||
       inheritedExposure,
+    "put-forwards": getExtAttr(attribute.extAttrs, "PutForwards")[0],
   };
 }
 

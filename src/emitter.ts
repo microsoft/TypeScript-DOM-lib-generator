@@ -882,11 +882,27 @@ export function emitWebIdl(
       if (!required && prefix) {
         pType += " | undefined";
       }
-      const readOnlyModifier =
-        p["read-only"] === 1 && prefix === "" ? "readonly " : "";
-      printer.printLine(
-        `${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`
-      );
+      if (!prefix && !p["read-only"] && p["put-forwards"]) {
+        printer.printLine(`get ${p.name}${requiredModifier}(): ${pType};`);
+
+        const forwardingProperty =
+          allInterfacesMap[pType].properties?.property[p["put-forwards"]];
+        if (!forwardingProperty) {
+          throw new Error("Couldn't find [PutForwards]");
+        }
+        const setterType = `${convertDomTypeToTsType(
+          forwardingProperty
+        )} | ${pType}`;
+        printer.printLine(
+          `set ${p.name}${requiredModifier}(${p["put-forwards"]}: ${setterType});`
+        );
+      } else {
+        const readOnlyModifier =
+          p["read-only"] === 1 && prefix === "" ? "readonly " : "";
+        printer.printLine(
+          `${prefix}${readOnlyModifier}${p.name}${requiredModifier}: ${pType};`
+        );
+      }
     }
 
     if (p.stringifier) {

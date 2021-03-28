@@ -4538,7 +4538,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Contains information about the current URL.
      */
-    location: Location;
+    get location(): Location;
+    set location(href: string | Location);
     onfullscreenchange: ((this: Document, ev: Event) => any) | null;
     onfullscreenerror: ((this: Document, ev: Event) => any) | null;
     onpointerlockchange: ((this: Document, ev: Event) => any) | null;
@@ -18225,7 +18226,8 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly innerHeight: number;
     readonly innerWidth: number;
     readonly length: number;
-    location: Location;
+    get location(): Location;
+    set location(href: string | Location);
     readonly locationbar: BarProp;
     readonly menubar: BarProp;
     readonly msContentScript: ExtensionScriptApis;
