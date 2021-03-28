@@ -390,7 +390,7 @@ interface RequestInit {
      */
     cache?: RequestCache;
     /**
-     * A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL. Sets request's credentials.
+     * A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL — as well as whether any credentials sent back in the response will be used always, never, or only when received from a same-origin URL. Sets request's credentials. If input is a string, it defaults to "same-origin".
      */
     credentials?: RequestCredentials;
     /**
@@ -410,7 +410,7 @@ interface RequestInit {
      */
     method?: string;
     /**
-     * A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode.
+     * A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode. If input is a string, it defaults to "cors".
      */
     mode?: RequestMode;
     /**
@@ -643,12 +643,33 @@ declare var Blob: {
 };
 
 interface Body {
+    /**
+     * Returns requestOrResponse's body as ReadableStream.
+     */
     readonly body: ReadableStream<Uint8Array> | null;
+    /**
+     * Returns whether requestOrResponse's body has been read from.
+     */
     readonly bodyUsed: boolean;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as ArrayBuffer.
+     */
     arrayBuffer(): Promise<ArrayBuffer>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as Blob.
+     */
     blob(): Promise<Blob>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as FormData.
+     */
     formData(): Promise<FormData>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body parsed as JSON.
+     */
     json(): Promise<any>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as string.
+     */
     text(): Promise<string>;
 }
 
@@ -1515,10 +1536,25 @@ interface GenericTransformStream {
 
 /** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
+    /**
+     * Appends a header to headers.
+     */
     append(name: string, value: string): void;
+    /**
+     * Removes a header from headers.
+     */
     delete(name: string): void;
+    /**
+     * Returns as a string the values of all headers whose name is name, separated by a comma and a space.
+     */
     get(name: string): string | null;
+    /**
+     * Returns whether there is a header whose name is name.
+     */
     has(name: string): boolean;
+    /**
+     * Replaces the value of the first header whose name is name with value and removes any remaining headers whose name is name.
+     */
     set(name: string, value: string): void;
     forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
 }
@@ -2648,6 +2684,9 @@ interface Request extends Body {
      * Returns the URL of request as a string.
      */
     readonly url: string;
+    /**
+     * Returns a clone of request.
+     */
     clone(): Request;
 }
 
@@ -2658,21 +2697,50 @@ declare var Request: {
 
 /** This Fetch API interface represents the response to a request. */
 interface Response extends Body {
+    /**
+     * Returns response's headers as Headers.
+     */
     readonly headers: Headers;
+    /**
+     * Returns whether response's status is an ok status.
+     */
     readonly ok: boolean;
+    /**
+     * Returns whether response was obtained through a redirect.
+     */
     readonly redirected: boolean;
+    /**
+     * Returns response's status.
+     */
     readonly status: number;
+    /**
+     * Returns response's status message.
+     */
     readonly statusText: string;
-    readonly trailer: Promise<Headers>;
+    /**
+     * Returns response's type, e.g., "cors".
+     */
     readonly type: ResponseType;
+    /**
+     * Returns response's URL, if it has one; otherwise the empty string.
+     */
     readonly url: string;
+    /**
+     * Returns a clone of response.
+     */
     clone(): Response;
 }
 
 declare var Response: {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
+    /**
+     * Creates network error Response.
+     */
     error(): Response;
+    /**
+     * Creates a redirect Response that redirects to url with status status.
+     */
     redirect(url: string, status?: number): Response;
 };
 
@@ -5275,11 +5343,11 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     readonly readyState: number;
     /**
-     * Returns the response's body.
+     * Returns the response body.
      */
     readonly response: any;
     /**
-     * Returns the text response.
+     * Returns response as text.
      *
      * Throws an "InvalidStateError" DOMException if responseType is not the empty string or "text".
      */
@@ -5300,7 +5368,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     readonly status: number;
     readonly statusText: string;
     /**
-     * Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and the synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
+     * Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and this's synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
      *
      * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
      */
@@ -5324,7 +5392,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     /**
      * Sets the request method, request URL, and synchronous flag.
      *
-     * Throws a "SyntaxError" DOMException if either method is not a valid HTTP method or url cannot be parsed.
+     * Throws a "SyntaxError" DOMException if either method is not a valid method or url cannot be parsed.
      *
      * Throws a "SecurityError" DOMException if method is a case-insensitive match for `CONNECT`, `TRACE`, or `TRACK`.
      *
@@ -5333,7 +5401,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     open(method: string, url: string): void;
     open(method: string, url: string, async: boolean, username?: string | null, password?: string | null): void;
     /**
-     * Acts as if the `Content-Type` header value for response is mime. (It does not actually change the header though.)
+     * Acts as if the `Content-Type` header value for a response is mime. (It does not change the header.)
      *
      * Throws an "InvalidStateError" DOMException if state is loading or done.
      */
@@ -5343,7 +5411,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      *
      * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
      */
-    send(body?: BodyInit | null): void;
+    send(body?: XMLHttpRequestBodyInit | null): void;
     /**
      * Combines a header in author request headers.
      *
@@ -5658,6 +5726,7 @@ declare function addEventListener(type: string, listener: EventListenerOrEventLi
 declare function removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type HeadersInit = Headers | string[][] | Record<string, string>;
+type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
 type RequestInfo = Request | string;
 type BlobPart = BufferSource | Blob | string;
@@ -5727,7 +5796,7 @@ type PushPermissionState = "denied" | "granted" | "prompt";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
-type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";

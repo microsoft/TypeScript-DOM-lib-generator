@@ -58,11 +58,28 @@ function test() {
   if (
     compareToBaselines() &&
     compileGeneratedFiles("es5", "dom.generated.d.ts") &&
-    compileGeneratedFiles("es5", "webworker.generated.d.ts") &&
     compileGeneratedFiles(
       "es6",
       "dom.generated.d.ts",
       "dom.iterable.generated.d.ts"
+    ) &&
+    compileGeneratedFiles("es5", "webworker.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "webworker.generated.d.ts",
+      "webworker.iterable.generated.d.ts"
+    ) &&
+    compileGeneratedFiles("es5", "sharedworker.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "sharedworker.generated.d.ts",
+      "sharedworker.iterable.generated.d.ts"
+    ) &&
+    compileGeneratedFiles("es5", "serviceworker.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "serviceworker.generated.d.ts",
+      "serviceworker.iterable.generated.d.ts"
     )
   ) {
     console.log("All tests passed.");

@@ -342,6 +342,12 @@ interface PostMessageOptions {
     transfer?: any[];
 }
 
+interface ProgressEventInit extends EventInit {
+    lengthComputable?: boolean;
+    loaded?: number;
+    total?: number;
+}
+
 interface PromiseRejectionEventInit extends EventInit {
     promise: Promise<any>;
     reason?: any;
@@ -417,7 +423,7 @@ interface RequestInit {
      */
     cache?: RequestCache;
     /**
-     * A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL. Sets request's credentials.
+     * A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL — as well as whether any credentials sent back in the response will be used always, never, or only when received from a same-origin URL. Sets request's credentials. If input is a string, it defaults to "same-origin".
      */
     credentials?: RequestCredentials;
     /**
@@ -437,7 +443,7 @@ interface RequestInit {
      */
     method?: string;
     /**
-     * A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode.
+     * A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode. If input is a string, it defaults to "cors".
      */
     mode?: RequestMode;
     /**
@@ -675,12 +681,33 @@ declare var Blob: {
 };
 
 interface Body {
+    /**
+     * Returns requestOrResponse's body as ReadableStream.
+     */
     readonly body: ReadableStream<Uint8Array> | null;
+    /**
+     * Returns whether requestOrResponse's body has been read from.
+     */
     readonly bodyUsed: boolean;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as ArrayBuffer.
+     */
     arrayBuffer(): Promise<ArrayBuffer>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as Blob.
+     */
     blob(): Promise<Blob>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as FormData.
+     */
     formData(): Promise<FormData>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body parsed as JSON.
+     */
     json(): Promise<any>;
+    /**
+     * Returns a promise fulfilled with requestOrResponse's body as string.
+     */
     text(): Promise<string>;
 }
 
@@ -1599,10 +1626,25 @@ interface GenericTransformStream {
 
 /** This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence. */
 interface Headers {
+    /**
+     * Appends a header to headers.
+     */
     append(name: string, value: string): void;
+    /**
+     * Removes a header from headers.
+     */
     delete(name: string): void;
+    /**
+     * Returns as a string the values of all headers whose name is name, separated by a comma and a space.
+     */
     get(name: string): string | null;
+    /**
+     * Returns whether there is a header whose name is name.
+     */
     has(name: string): boolean;
+    /**
+     * Replaces the value of the first header whose name is name with value and removes any remaining headers whose name is name.
+     */
     set(name: string, value: string): void;
     forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
 }
@@ -2578,6 +2620,19 @@ declare var Permissions: {
     new(): Permissions;
 };
 
+/** Events measuring progress of an underlying process, like an HTTP request (for an XMLHttpRequest, or the loading of the underlying resource of an <img>, <audio>, <video>, <style> or <link>). */
+interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
+    readonly lengthComputable: boolean;
+    readonly loaded: number;
+    readonly target: T | null;
+    readonly total: number;
+}
+
+declare var ProgressEvent: {
+    prototype: ProgressEvent;
+    new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
+};
+
 interface PromiseRejectionEvent extends Event {
     readonly promise: Promise<any>;
     readonly reason: any;
@@ -2753,6 +2808,9 @@ interface Request extends Body {
      * Returns the URL of request as a string.
      */
     readonly url: string;
+    /**
+     * Returns a clone of request.
+     */
     clone(): Request;
 }
 
@@ -2763,21 +2821,50 @@ declare var Request: {
 
 /** This Fetch API interface represents the response to a request. */
 interface Response extends Body {
+    /**
+     * Returns response's headers as Headers.
+     */
     readonly headers: Headers;
+    /**
+     * Returns whether response's status is an ok status.
+     */
     readonly ok: boolean;
+    /**
+     * Returns whether response was obtained through a redirect.
+     */
     readonly redirected: boolean;
+    /**
+     * Returns response's status.
+     */
     readonly status: number;
+    /**
+     * Returns response's status message.
+     */
     readonly statusText: string;
-    readonly trailer: Promise<Headers>;
+    /**
+     * Returns response's type, e.g., "cors".
+     */
     readonly type: ResponseType;
+    /**
+     * Returns response's URL, if it has one; otherwise the empty string.
+     */
     readonly url: string;
+    /**
+     * Returns a clone of response.
+     */
     clone(): Response;
 }
 
 declare var Response: {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
+    /**
+     * Creates network error Response.
+     */
     error(): Response;
+    /**
+     * Creates a redirect Response that redirects to url with status status.
+     */
     redirect(url: string, status?: number): Response;
 };
 
@@ -5652,6 +5739,7 @@ declare function addEventListener(type: string, listener: EventListenerOrEventLi
 declare function removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type HeadersInit = Headers | string[][] | Record<string, string>;
+type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
 type RequestInfo = Request | string;
 type BlobPart = BufferSource | Blob | string;
@@ -5723,7 +5811,7 @@ type PushPermissionState = "denied" | "granted" | "prompt";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
-type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
