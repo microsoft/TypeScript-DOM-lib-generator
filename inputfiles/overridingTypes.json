@@ -2078,6 +2078,15 @@
                     }
                 }
             },
+            "SharedWorker": {
+                "name": "SharedWorker",
+                "override-exposed": "Window Worker",
+                "constructor": {
+                    "override-signatures": [
+                        "new(scriptURL: string | URL, options?: string | WorkerOptions): SharedWorker"
+                    ]
+                }
+            },
             "Crypto": {
                 "name": "Crypto",
                 "methods": {
