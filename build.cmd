@@ -2,4 +2,4 @@
 cls
 
 @echo "Building..."
-npm run build  & npm run test
+npm run build & npm run test
