@@ -15238,6 +15238,7 @@ declare var StyleSheetList: {
 };
 
 interface SubmitEvent extends Event {
+    readonly submitter: HTMLElement | null;
     readonly target: HTMLFormElement;
 }
 

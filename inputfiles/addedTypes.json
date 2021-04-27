@@ -2220,6 +2220,12 @@
                             "read-only": 1,
                             "nullable": 0,
                             "override-type": "HTMLFormElement"
+                        },
+                        "submitter": {
+                            "name": "submitter",
+                            "read-only": 1,
+                            "nullable": 1,
+                            "override-type": "HTMLElement"
                         }
                     }
                 }
