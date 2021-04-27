@@ -196,6 +196,10 @@ interface ClipboardEventInit extends EventInit {
     clipboardData?: DataTransfer | null;
 }
 
+interface ClipboardItemOptions {
+    presentationStyle?: PresentationStyle;
+}
+
 interface CloseEventInit extends EventInit {
     code?: number;
     reason?: string;
@@ -3560,6 +3564,7 @@ declare var ClientRectList: {
 
 interface Clipboard extends EventTarget {
     readText(): Promise<string>;
+    write(data: ClipboardItems): Promise<void>;
     writeText(data: string): Promise<void>;
 }
 
@@ -3576,6 +3581,18 @@ interface ClipboardEvent extends Event {
 declare var ClipboardEvent: {
     prototype: ClipboardEvent;
     new(type: string, eventInitDict?: ClipboardEventInit): ClipboardEvent;
+};
+
+interface ClipboardItem {
+    readonly delayed: boolean;
+    readonly lastModified: number;
+    readonly presentationStyle: PresentationStyle;
+}
+
+declare var ClipboardItem: {
+    prototype: ClipboardItem;
+    new(items: Record<string, ClipboardItemData>, options?: ClipboardItemOptions): ClipboardItem;
+    createDelayed(items: Record<string, ClipboardItemDelayedCallback>, options?: ClipboardItemOptions): ClipboardItem;
 };
 
 /** A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute. */
@@ -18905,6 +18922,10 @@ interface BlobCallback {
     (blob: Blob | null): void;
 }
 
+interface ClipboardItemDelayedCallback {
+    (): ClipboardItemData;
+}
+
 interface CustomElementConstructor {
     new (...params: any[]): HTMLElement;
 }
@@ -19651,6 +19672,9 @@ declare function addEventListener<K extends keyof WindowEventMap>(type: K, liste
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+type ClipboardItems = ClipboardItem[];
+type ClipboardItemDataType = string | Blob;
+type ClipboardItemData = Promise<ClipboardItemDataType>;
 type HeadersInit = Headers | string[][] | Record<string, string>;
 type BodyInit = Blob | BufferSource | FormData | URLSearchParams | ReadableStream<Uint8Array> | string;
 type RequestInfo = Request | string;
@@ -19789,6 +19813,7 @@ type PermissionState = "denied" | "granted" | "prompt";
 type PlaybackDirection = "alternate" | "alternate-reverse" | "normal" | "reverse";
 type PositionAlignSetting = "auto" | "center" | "line-left" | "line-right";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
+type PresentationStyle = "attachment" | "inline" | "unspecified";
 type PublicKeyCredentialType = "public-key";
 type PushEncryptionKeyName = "auth" | "p256dh";
 type PushPermissionState = "denied" | "granted" | "prompt";
