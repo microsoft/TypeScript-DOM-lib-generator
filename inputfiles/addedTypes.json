@@ -2213,6 +2213,7 @@
             "SubmitEvent": {
                 "name": "SubmitEvent",
                 "extends": "Event",
+                "exposed": "Window",
                 "properties": {
                     "property": {
                         "target": {
