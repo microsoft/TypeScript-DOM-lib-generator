@@ -4705,6 +4705,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "SpeechSynthesisErrorEvent"): SpeechSynthesisErrorEvent;
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
+    createEvent(eventInterface: "SubmitEvent"): SubmitEvent;
     createEvent(eventInterface: "TextEvent"): TextEvent;
     createEvent(eventInterface: "TouchEvent"): TouchEvent;
     createEvent(eventInterface: "TrackEvent"): TrackEvent;
@@ -4949,6 +4950,7 @@ interface DocumentEvent {
     createEvent(eventInterface: "SpeechSynthesisErrorEvent"): SpeechSynthesisErrorEvent;
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
+    createEvent(eventInterface: "SubmitEvent"): SubmitEvent;
     createEvent(eventInterface: "TextEvent"): TextEvent;
     createEvent(eventInterface: "TouchEvent"): TouchEvent;
     createEvent(eventInterface: "TrackEvent"): TrackEvent;
@@ -5761,7 +5763,7 @@ interface GlobalEventHandlersEventMap {
     "selectionchange": Event;
     "selectstart": Event;
     "stalled": Event;
-    "submit": Event;
+    "submit": SubmitEvent;
     "suspend": Event;
     "timeupdate": Event;
     "toggle": Event;
@@ -6013,7 +6015,7 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onsubmit: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
     /**
      * Occurs if the load operation has been intentionally halted.
      * @param ev The event.
@@ -15235,6 +15237,15 @@ declare var StyleSheetList: {
     new(): StyleSheetList;
 };
 
+interface SubmitEvent extends Event {
+    readonly target: HTMLFormElement;
+}
+
+declare var SubmitEvent: {
+    prototype: SubmitEvent;
+    new(): SubmitEvent;
+};
+
 /** This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto). */
 interface SubtleCrypto {
     decrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesCmacParams | AesGcmParams | AesCfbParams, key: CryptoKey, data: Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | Float32Array | Float64Array | DataView | ArrayBuffer): Promise<ArrayBuffer>;
@@ -18192,7 +18203,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
     "select": Event;
     "stalled": Event;
     "storage": StorageEvent;
-    "submit": Event;
+    "submit": SubmitEvent;
     "suspend": Event;
     "timeupdate": Event;
     "unload": Event;
@@ -19582,7 +19593,7 @@ declare var onselectstart: ((this: Window, ev: Event) => any) | null;
  * @param ev The event.
  */
 declare var onstalled: ((this: Window, ev: Event) => any) | null;
-declare var onsubmit: ((this: Window, ev: Event) => any) | null;
+declare var onsubmit: ((this: Window, ev: SubmitEvent) => any) | null;
 /**
  * Occurs if the load operation has been intentionally halted.
  * @param ev The event.

@@ -1334,7 +1334,15 @@
                     {
                         "name": "form"
                     }
-                ]
+                ],
+                "events": {
+                    "event": [
+                        {
+                            "name": "submit",
+                            "type": "SubmitEvent"
+                        }
+                    ]
+                }
             },
             "HTMLHeadElement": {
                 "element": [
@@ -2198,6 +2206,20 @@
                             "read-only": 1,
                             "nullable": 1,
                             "override-type": "T"
+                        }
+                    }
+                }
+            },
+            "SubmitEvent": {
+                "name": "SubmitEvent",
+                "extends": "Event",
+                "properties": {
+                    "property": {
+                        "target": {
+                            "name": "target",
+                            "read-only": 1,
+                            "nullable": 0,
+                            "override-type": "HTMLFormElement"
                         }
                     }
                 }
