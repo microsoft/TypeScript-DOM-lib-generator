@@ -4219,28 +4219,28 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly URL: string;
     /**
      * Sets or gets the color of all active links in the document.
+     * @deprecated
      */
-    /** @deprecated */
     alinkColor: string;
     /**
      * Returns a reference to the collection of elements contained by the object.
+     * @deprecated
      */
-    /** @deprecated */
     readonly all: HTMLAllCollection;
     /**
      * Retrieves a collection of all a objects that have a name and/or id property. Objects in this collection are in HTML source order.
+     * @deprecated
      */
-    /** @deprecated */
     readonly anchors: HTMLCollectionOf<HTMLAnchorElement>;
     /**
      * Retrieves a collection of all applet objects in the document.
+     * @deprecated
      */
-    /** @deprecated */
-    readonly applets: HTMLCollection;
+    readonly applets: HTMLCollectionOf<HTMLAppletElement>;
     /**
      * Deprecated. Sets or retrieves a value that indicates the background color behind the object.
+     * @deprecated
      */
-    /** @deprecated */
     bgColor: string;
     /**
      * Specifies the beginning and end of the document body.
@@ -4310,8 +4310,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly embeds: HTMLCollectionOf<HTMLEmbedElement>;
     /**
      * Sets or gets the foreground (text) color of the document.
+     * @deprecated
      */
-    /** @deprecated */
     fgColor: string;
     /**
      * Retrieves a collection, in source order, of all form objects in the document.
@@ -4346,8 +4346,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly lastModified: string;
     /**
      * Sets or gets the color of the document links.
+     * @deprecated
      */
-    /** @deprecated */
     linkColor: string;
     /**
      * Retrieves a collection of all a objects that specify the href property and all area objects in the document.
@@ -4395,8 +4395,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly visibilityState: VisibilityState;
     /**
      * Sets or gets the color of the links that the user has visited.
+     * @deprecated
      */
-    /** @deprecated */
     vlinkColor: string;
     /**
      * Moves node from another document and returns it.
@@ -5925,13 +5925,13 @@ declare var HTMLAllCollection: {
 interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
     /**
      * Sets or retrieves the character set used to encode the object.
+     * @deprecated
      */
-    /** @deprecated */
     charset: string;
     /**
      * Sets or retrieves the coordinates of the object.
+     * @deprecated
      */
-    /** @deprecated */
     coords: string;
     download: string;
     /**
@@ -5940,8 +5940,8 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
     hreflang: string;
     /**
      * Sets or retrieves the shape of the object.
+     * @deprecated
      */
-    /** @deprecated */
     name: string;
     ping: string;
     referrerPolicy: string;
@@ -5952,13 +5952,13 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
     readonly relList: DOMTokenList;
     /**
      * Sets or retrieves the relationship between the object and the destination of the link.
+     * @deprecated
      */
-    /** @deprecated */
     rev: string;
     /**
      * Sets or retrieves the shape of the object.
+     * @deprecated
      */
-    /** @deprecated */
     shape: string;
     /**
      * Sets or retrieves the window or frame at which to target content.
@@ -5980,6 +5980,56 @@ declare var HTMLAnchorElement: {
     new(): HTMLAnchorElement;
 };
 
+interface HTMLAppletElement extends HTMLElement {
+    /** @deprecated */
+    align: string;
+    /**
+     * Sets or retrieves a text alternative to the graphic.
+     * @deprecated
+     */
+    alt: string;
+    /**
+     * Sets or retrieves a character string that can be used to implement your own archive functionality for the object.
+     * @deprecated
+     */
+    archive: string;
+    /** @deprecated */
+    code: string;
+    /**
+     * Sets or retrieves the URL of the component.
+     * @deprecated
+     */
+    codeBase: string;
+    readonly form: HTMLFormElement | null;
+    /**
+     * Sets or retrieves the height of the object.
+     * @deprecated
+     */
+    height: string;
+    /** @deprecated */
+    hspace: number;
+    /**
+     * Sets or retrieves the shape of the object.
+     * @deprecated
+     */
+    name: string;
+    /** @deprecated */
+    object: string;
+    /** @deprecated */
+    vspace: number;
+    /** @deprecated */
+    width: string;
+    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAppletElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAppletElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var HTMLAppletElement: {
+    prototype: HTMLAppletElement;
+    new(): HTMLAppletElement;
+};
+
 /** Provides special properties and methods (beyond those of the regular object HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <area> elements. */
 interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
     /**
@@ -5993,8 +6043,8 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
     download: string;
     /**
      * Sets or gets whether clicks in this region cause action.
+     * @deprecated
      */
-    /** @deprecated */
     noHref: boolean;
     ping: string;
     referrerPolicy: string;
@@ -6036,8 +6086,8 @@ declare var HTMLAudioElement: {
 interface HTMLBRElement extends HTMLElement {
     /**
      * Sets or retrieves the side on which floating objects are not to be positioned when any IHTMLBlockElement is inserted into the document.
+     * @deprecated
      */
-    /** @deprecated */
     clear: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6330,8 +6380,8 @@ declare var HTMLDirectoryElement: {
 interface HTMLDivElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6396,8 +6446,8 @@ interface HTMLEmbedElement extends HTMLElement {
     height: string;
     /**
      * Sets or retrieves the name of the object.
+     * @deprecated
      */
-    /** @deprecated */
     name: string;
     /**
      * Sets or retrieves a URL to be loaded by the object.
@@ -6476,8 +6526,8 @@ interface HTMLFontElement extends HTMLElement {
     color: string;
     /**
      * Sets or retrieves the current typeface family.
+     * @deprecated
      */
-    /** @deprecated */
     face: string;
     /** @deprecated */
     size: string;
@@ -6585,53 +6635,53 @@ declare var HTMLFormElement: {
 interface HTMLFrameElement extends HTMLElement {
     /**
      * Retrieves the document object of the page or frame.
+     * @deprecated
      */
-    /** @deprecated */
     readonly contentDocument: Document | null;
     /**
      * Retrieves the object of the specified.
+     * @deprecated
      */
-    /** @deprecated */
     readonly contentWindow: WindowProxy | null;
     /**
      * Sets or retrieves whether to display a border for the frame.
+     * @deprecated
      */
-    /** @deprecated */
     frameBorder: string;
     /**
      * Sets or retrieves a URI to a long description of the object.
+     * @deprecated
      */
-    /** @deprecated */
     longDesc: string;
     /**
      * Sets or retrieves the top and bottom margin heights before displaying the text in a frame.
+     * @deprecated
      */
-    /** @deprecated */
     marginHeight: string;
     /**
      * Sets or retrieves the left and right margin widths before displaying the text in a frame.
+     * @deprecated
      */
-    /** @deprecated */
     marginWidth: string;
     /**
      * Sets or retrieves the frame name.
+     * @deprecated
      */
-    /** @deprecated */
     name: string;
     /**
      * Sets or retrieves whether the user can resize the frame.
+     * @deprecated
      */
-    /** @deprecated */
     noResize: boolean;
     /**
      * Sets or retrieves whether the frame can be scrolled.
+     * @deprecated
      */
-    /** @deprecated */
     scrolling: string;
     /**
      * Sets or retrieves a URL to be loaded by the object.
+     * @deprecated
      */
-    /** @deprecated */
     src: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6653,13 +6703,13 @@ interface HTMLFrameSetElementEventMap extends HTMLElementEventMap, WindowEventHa
 interface HTMLFrameSetElement extends HTMLElement, WindowEventHandlers {
     /**
      * Sets or retrieves the frame widths of the object.
+     * @deprecated
      */
-    /** @deprecated */
     cols: string;
     /**
      * Sets or retrieves the frame heights of the object.
+     * @deprecated
      */
-    /** @deprecated */
     rows: string;
     addEventListener<K extends keyof HTMLFrameSetElementEventMap>(type: K, listener: (this: HTMLFrameSetElement, ev: HTMLFrameSetElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6677,22 +6727,22 @@ declare var HTMLFrameSetElement: {
 interface HTMLHRElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /** @deprecated */
     color: string;
     /**
      * Sets or retrieves whether the horizontal rule is drawn with 3-D shading.
+     * @deprecated
      */
-    /** @deprecated */
     noShade: boolean;
     /** @deprecated */
     size: string;
     /**
      * Sets or retrieves the width of the object.
+     * @deprecated
      */
-    /** @deprecated */
     width: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6722,8 +6772,8 @@ declare var HTMLHeadElement: {
 interface HTMLHeadingElement extends HTMLElement {
     /**
      * Sets or retrieves a value that indicates the table alignment.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadingElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6740,8 +6790,8 @@ declare var HTMLHeadingElement: {
 interface HTMLHtmlElement extends HTMLElement {
     /**
      * Sets or retrieves the DTD version that governs the current document.
+     * @deprecated
      */
-    /** @deprecated */
     version: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHtmlElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -6826,8 +6876,8 @@ interface HTMLHyperlinkElementUtils {
 interface HTMLIFrameElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     allow: string;
     allowFullscreen: boolean;
@@ -6841,8 +6891,8 @@ interface HTMLIFrameElement extends HTMLElement {
     readonly contentWindow: WindowProxy | null;
     /**
      * Sets or retrieves whether to display a border for the frame.
+     * @deprecated
      */
-    /** @deprecated */
     frameBorder: string;
     /**
      * Sets or retrieves the height of the object.
@@ -6850,18 +6900,18 @@ interface HTMLIFrameElement extends HTMLElement {
     height: string;
     /**
      * Sets or retrieves a URI to a long description of the object.
+     * @deprecated
      */
-    /** @deprecated */
     longDesc: string;
     /**
      * Sets or retrieves the top and bottom margin heights before displaying the text in a frame.
+     * @deprecated
      */
-    /** @deprecated */
     marginHeight: string;
     /**
      * Sets or retrieves the left and right margin widths before displaying the text in a frame.
+     * @deprecated
      */
-    /** @deprecated */
     marginWidth: string;
     /**
      * Sets or retrieves the frame name.
@@ -6871,8 +6921,8 @@ interface HTMLIFrameElement extends HTMLElement {
     readonly sandbox: DOMTokenList;
     /**
      * Sets or retrieves whether the frame can be scrolled.
+     * @deprecated
      */
-    /** @deprecated */
     scrolling: string;
     /**
      * Sets or retrieves a URL to be loaded by the object.
@@ -6902,8 +6952,8 @@ declare var HTMLIFrameElement: {
 interface HTMLImageElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /**
      * Sets or retrieves a text alternative to the graphic.
@@ -6911,8 +6961,8 @@ interface HTMLImageElement extends HTMLElement {
     alt: string;
     /**
      * Specifies the properties of a border drawn around an object.
+     * @deprecated
      */
-    /** @deprecated */
     border: string;
     /**
      * Retrieves whether the object is fully loaded.
@@ -6927,8 +6977,8 @@ interface HTMLImageElement extends HTMLElement {
     height: number;
     /**
      * Sets or retrieves the width of the border to draw around the object.
+     * @deprecated
      */
-    /** @deprecated */
     hspace: number;
     /**
      * Sets or retrieves whether the image is a server-side image map.
@@ -6937,15 +6987,15 @@ interface HTMLImageElement extends HTMLElement {
     loading: string;
     /**
      * Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object.
+     * @deprecated
      */
-    /** @deprecated */
     longDesc: string;
     /** @deprecated */
     lowsrc: string;
     /**
      * Sets or retrieves the name of the object.
+     * @deprecated
      */
-    /** @deprecated */
     name: string;
     /**
      * The original height of the image resource before sizing.
@@ -6968,8 +7018,8 @@ interface HTMLImageElement extends HTMLElement {
     useMap: string;
     /**
      * Sets or retrieves the vertical margin for the object.
+     * @deprecated
      */
-    /** @deprecated */
     vspace: number;
     /**
      * Sets or retrieves the width of the object.
@@ -6997,8 +7047,8 @@ interface HTMLInputElement extends HTMLElement {
     accept: string;
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /**
      * Sets or retrieves a text alternative to the graphic.
@@ -7122,8 +7172,8 @@ interface HTMLInputElement extends HTMLElement {
     type: string;
     /**
      * Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.
+     * @deprecated
      */
-    /** @deprecated */
     useMap: string;
     /**
      * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
@@ -7267,8 +7317,8 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     as: string;
     /**
      * Sets or retrieves the character set used to encode the object.
+     * @deprecated
      */
-    /** @deprecated */
     charset: string;
     crossOrigin: string | null;
     disabled: boolean;
@@ -7295,14 +7345,14 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     readonly relList: DOMTokenList;
     /**
      * Sets or retrieves the relationship between the object and the destination of the link.
+     * @deprecated
      */
-    /** @deprecated */
     rev: string;
     readonly sizes: DOMTokenList;
     /**
      * Sets or retrieves the window or frame at which to target content.
+     * @deprecated
      */
-    /** @deprecated */
     target: string;
     /**
      * Sets or retrieves the MIME type of the object.
@@ -7556,8 +7606,8 @@ interface HTMLMetaElement extends HTMLElement {
     name: string;
     /**
      * Sets or retrieves a scheme to be used in interpreting the value of a property specified for the object.
+     * @deprecated
      */
-    /** @deprecated */
     scheme: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -7638,25 +7688,25 @@ interface HTMLObjectElement extends HTMLElement {
     align: string;
     /**
      * Sets or retrieves a character string that can be used to implement your own archive functionality for the object.
+     * @deprecated
      */
-    /** @deprecated */
     archive: string;
     /** @deprecated */
     border: string;
     /**
      * Sets or retrieves the URL of the file containing the compiled Java class.
+     * @deprecated
      */
-    /** @deprecated */
     code: string;
     /**
      * Sets or retrieves the URL of the component.
+     * @deprecated
      */
-    /** @deprecated */
     codeBase: string;
     /**
      * Sets or retrieves the Internet media type for the code associated with the object.
+     * @deprecated
      */
-    /** @deprecated */
     codeType: string;
     /**
      * Retrieves the document object of the page or frame.
@@ -7685,8 +7735,8 @@ interface HTMLObjectElement extends HTMLElement {
     name: string;
     /**
      * Sets or retrieves a message to be displayed while an object is loading.
+     * @deprecated
      */
-    /** @deprecated */
     standby: string;
     /**
      * Sets or retrieves the MIME type of the object.
@@ -7879,8 +7929,8 @@ declare var HTMLOutputElement: {
 interface HTMLParagraphElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParagraphElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -7901,8 +7951,8 @@ interface HTMLParamElement extends HTMLElement {
     name: string;
     /**
      * Sets or retrieves the content type of the resource designated by the value attribute.
+     * @deprecated
      */
-    /** @deprecated */
     type: string;
     /**
      * Sets or retrieves the value of an input parameter for an element.
@@ -7910,8 +7960,8 @@ interface HTMLParamElement extends HTMLElement {
     value: string;
     /**
      * Sets or retrieves the data type of the value attribute.
+     * @deprecated
      */
-    /** @deprecated */
     valueType: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParamElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -7941,8 +7991,8 @@ declare var HTMLPictureElement: {
 interface HTMLPreElement extends HTMLElement {
     /**
      * Sets or gets a value that you can use to implement your own width functionality for the object.
+     * @deprecated
      */
-    /** @deprecated */
     width: number;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPreElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8003,8 +8053,8 @@ interface HTMLScriptElement extends HTMLElement {
     async: boolean;
     /**
      * Sets or retrieves the character set used to encode the object.
+     * @deprecated
      */
-    /** @deprecated */
     charset: string;
     crossOrigin: string | null;
     /**
@@ -8013,13 +8063,13 @@ interface HTMLScriptElement extends HTMLElement {
     defer: boolean;
     /**
      * Sets or retrieves the event for which the script is written.
+     * @deprecated
      */
-    /** @deprecated */
     event: string;
     /**
      * Sets or retrieves the object that is bound to the event script.
+     * @deprecated
      */
-    /** @deprecated */
     htmlFor: string;
     integrity: string;
     noModule: boolean;
@@ -8213,8 +8263,8 @@ interface HTMLStyleElement extends HTMLElement, LinkStyle {
     media: string;
     /**
      * Retrieves the CSS language in which the style sheet is written.
+     * @deprecated
      */
-    /** @deprecated */
     type: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLStyleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8231,8 +8281,8 @@ declare var HTMLStyleElement: {
 interface HTMLTableCaptionElement extends HTMLElement {
     /**
      * Sets or retrieves the alignment of the caption or legend.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8253,13 +8303,13 @@ interface HTMLTableCellElement extends HTMLElement {
     abbr: string;
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /**
      * Sets or retrieves a comma-delimited list of conceptual categories associated with the object.
+     * @deprecated
      */
-    /** @deprecated */
     axis: string;
     /** @deprecated */
     bgColor: string;
@@ -8281,13 +8331,13 @@ interface HTMLTableCellElement extends HTMLElement {
     headers: string;
     /**
      * Sets or retrieves the height of the object.
+     * @deprecated
      */
-    /** @deprecated */
     height: string;
     /**
      * Sets or retrieves whether the browser automatically performs wordwrap.
+     * @deprecated
      */
-    /** @deprecated */
     noWrap: boolean;
     /**
      * Sets or retrieves how many rows in a table the cell should span.
@@ -8301,8 +8351,8 @@ interface HTMLTableCellElement extends HTMLElement {
     vAlign: string;
     /**
      * Sets or retrieves the width of the object.
+     * @deprecated
      */
-    /** @deprecated */
     width: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8319,8 +8369,8 @@ declare var HTMLTableCellElement: {
 interface HTMLTableColElement extends HTMLElement {
     /**
      * Sets or retrieves the alignment of the object relative to the display or table.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /** @deprecated */
     ch: string;
@@ -8334,8 +8384,8 @@ interface HTMLTableColElement extends HTMLElement {
     vAlign: string;
     /**
      * Sets or retrieves the width of the object.
+     * @deprecated
      */
-    /** @deprecated */
     width: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableColElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8360,15 +8410,15 @@ interface HTMLTableDataCellElement extends HTMLTableCellElement {
 interface HTMLTableElement extends HTMLElement {
     /**
      * Sets or retrieves a value that indicates the table alignment.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /** @deprecated */
     bgColor: string;
     /**
      * Sets or retrieves the width of the border to draw around the object.
+     * @deprecated
      */
-    /** @deprecated */
     border: string;
     /**
      * Retrieves the caption object of a table.
@@ -8376,18 +8426,18 @@ interface HTMLTableElement extends HTMLElement {
     caption: HTMLTableCaptionElement | null;
     /**
      * Sets or retrieves the amount of space between the border of the cell and the content of the cell.
+     * @deprecated
      */
-    /** @deprecated */
     cellPadding: string;
     /**
      * Sets or retrieves the amount of space between cells in a table.
+     * @deprecated
      */
-    /** @deprecated */
     cellSpacing: string;
     /**
      * Sets or retrieves the way the border frame around the table is displayed.
+     * @deprecated
      */
-    /** @deprecated */
     frame: string;
     /**
      * Sets or retrieves the number of horizontal rows contained in the object.
@@ -8395,13 +8445,13 @@ interface HTMLTableElement extends HTMLElement {
     readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
     /**
      * Sets or retrieves which dividing lines (inner borders) are displayed.
+     * @deprecated
      */
-    /** @deprecated */
     rules: string;
     /**
      * Sets or retrieves a description and/or structure of the object.
+     * @deprecated
      */
-    /** @deprecated */
     summary: string;
     /**
      * Retrieves a collection of all tBody objects in the table. Objects in this collection are in source order.
@@ -8417,8 +8467,8 @@ interface HTMLTableElement extends HTMLElement {
     tHead: HTMLTableSectionElement | null;
     /**
      * Sets or retrieves the width of the object.
+     * @deprecated
      */
-    /** @deprecated */
     width: string;
     /**
      * Creates an empty caption element in the table.
@@ -8481,8 +8531,8 @@ interface HTMLTableHeaderCellElement extends HTMLTableCellElement {
 interface HTMLTableRowElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /** @deprecated */
     bgColor: string;
@@ -8529,8 +8579,8 @@ declare var HTMLTableRowElement: {
 interface HTMLTableSectionElement extends HTMLElement {
     /**
      * Sets or retrieves a value that indicates the table alignment.
+     * @deprecated
      */
-    /** @deprecated */
     align: string;
     /** @deprecated */
     ch: string;
