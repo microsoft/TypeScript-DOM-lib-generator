@@ -1,0 +1,4 @@
+[Exposed=Window]
+interface CSSTransition : Animation {
+  readonly attribute CSSOMString transitionProperty;
+};

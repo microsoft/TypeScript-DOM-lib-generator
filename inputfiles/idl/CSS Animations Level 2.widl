@@ -1,0 +1,9 @@
+[Exposed=Window]
+interface CSSAnimation : Animation {
+  readonly attribute CSSOMString animationName;
+};
+
+partial interface CSSStyleDeclaration {
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationComposition;
+  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString animationTimeline;
+};

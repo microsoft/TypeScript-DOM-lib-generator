@@ -93,6 +93,8 @@
             "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
+                        "animationComposition": null,
+                        "animationTimeline": null,
                         "backgroundPositionBlock": null,
                         "backgroundPositionInline": null,
                         "baselineSource": null,

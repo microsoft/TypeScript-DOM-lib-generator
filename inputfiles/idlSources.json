@@ -25,6 +25,10 @@
         "title": "CSS Animations"
     },
     {
+        "url": "https://drafts.csswg.org/css-animations-2/",
+        "title": "CSS Animations Level 2"
+    },
+    {
         "url": "https://www.w3.org/TR/css-backgrounds-3/",
         "title": "CSS Backgrounds and Borders"
     },
@@ -127,6 +131,10 @@
     {
         "url": "https://www.w3.org/TR/css-transitions-1/",
         "title": "CSS Transitions"
+    },
+    {
+        "url": "https://drafts.csswg.org/css-transitions-2/",
+        "title": "CSS Transitions Level 2"
     },
     {
         "url": "https://www.w3.org/TR/css-transforms-1/",
