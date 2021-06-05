@@ -503,6 +503,11 @@
         "title": "SVG - Style Element"
     },
     {
+        "url": "https://svgwg.org/specs/animations/",
+        "title": "SVG Animations",
+        "shortName": "svg-animations"
+    },
+    {
         "url": "https://w3c.github.io/touch-events/",
         "title": "Touch Events"
     },

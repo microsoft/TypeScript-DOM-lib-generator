@@ -4706,6 +4706,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
     createEvent(eventInterface: "TextEvent"): TextEvent;
+    createEvent(eventInterface: "TimeEvent"): TimeEvent;
     createEvent(eventInterface: "TouchEvent"): TouchEvent;
     createEvent(eventInterface: "TrackEvent"): TrackEvent;
     createEvent(eventInterface: "TransitionEvent"): TransitionEvent;
@@ -4950,6 +4951,7 @@ interface DocumentEvent {
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
     createEvent(eventInterface: "TextEvent"): TextEvent;
+    createEvent(eventInterface: "TimeEvent"): TimeEvent;
     createEvent(eventInterface: "TouchEvent"): TouchEvent;
     createEvent(eventInterface: "TrackEvent"): TrackEvent;
     createEvent(eventInterface: "TransitionEvent"): TransitionEvent;
@@ -12599,9 +12601,9 @@ declare var SVGAngle: {
 };
 
 interface SVGAnimateElement extends SVGAnimationElement {
-    addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -12611,9 +12613,9 @@ declare var SVGAnimateElement: {
 };
 
 interface SVGAnimateMotionElement extends SVGAnimationElement {
-    addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -12623,9 +12625,9 @@ declare var SVGAnimateMotionElement: {
 };
 
 interface SVGAnimateTransformElement extends SVGAnimationElement {
-    addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -12771,14 +12773,27 @@ declare var SVGAnimatedTransformList: {
     new(): SVGAnimatedTransformList;
 };
 
-interface SVGAnimationElement extends SVGElement {
-    readonly targetElement: SVGElement;
+interface SVGAnimationElementEventMap extends SVGElementEventMap {
+    "begin": Event;
+    "end": Event;
+    "repeat": Event;
+}
+
+interface SVGAnimationElement extends SVGElement, SVGTests {
+    onbegin: ((this: SVGAnimationElement, ev: Event) => any) | null;
+    onend: ((this: SVGAnimationElement, ev: Event) => any) | null;
+    onrepeat: ((this: SVGAnimationElement, ev: Event) => any) | null;
+    readonly targetElement: SVGElement | null;
+    beginElement(): void;
+    beginElementAt(offset: number): void;
+    endElement(): void;
+    endElementAt(offset: number): void;
     getCurrentTime(): number;
     getSimpleDuration(): number;
     getStartTime(): number;
-    addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimationElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimationElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimationElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGAnimationElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -12888,6 +12903,18 @@ interface SVGDescElement extends SVGElement {
 declare var SVGDescElement: {
     prototype: SVGDescElement;
     new(): SVGDescElement;
+};
+
+interface SVGDiscardElement extends SVGAnimationElement {
+    addEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGDiscardElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGDiscardElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SVGDiscardElement: {
+    prototype: SVGDiscardElement;
+    new(): SVGDiscardElement;
 };
 
 interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMap, DocumentAndElementEventHandlersEventMap {
@@ -13676,6 +13703,18 @@ declare var SVGLinearGradientElement: {
     new(): SVGLinearGradientElement;
 };
 
+interface SVGMPathElement extends SVGElement, SVGURIReference {
+    addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SVGMPathElement: {
+    prototype: SVGMPathElement;
+    new(): SVGMPathElement;
+};
+
 interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     readonly markerHeight: SVGAnimatedLength;
     readonly markerUnits: SVGAnimatedEnumeration;
@@ -14273,6 +14312,18 @@ interface SVGScriptElement extends SVGElement, SVGURIReference {
 declare var SVGScriptElement: {
     prototype: SVGScriptElement;
     new(): SVGScriptElement;
+};
+
+interface SVGSetElement extends SVGAnimationElement {
+    addEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGSetElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SVGAnimationElementEventMap>(type: K, listener: (this: SVGSetElement, ev: SVGAnimationElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SVGSetElement: {
+    prototype: SVGSetElement;
+    new(): SVGSetElement;
 };
 
 /** Corresponds to the <stop> element. */
@@ -15585,6 +15636,17 @@ interface TextTrackList extends EventTarget {
 declare var TextTrackList: {
     prototype: TextTrackList;
     new(): TextTrackList;
+};
+
+interface TimeEvent extends Event {
+    readonly detail: number;
+    readonly view: WindowProxy | null;
+    initTimeEvent(typeArg: string, viewArg: Window | null, detailArg: number): void;
+}
+
+declare var TimeEvent: {
+    prototype: TimeEvent;
+    new(): TimeEvent;
 };
 
 /** Used to represent a set of time ranges, primarily for the purpose of tracking which portions of media have been buffered when loading it for use by the <audio> and <video> elements. */
@@ -19145,11 +19207,11 @@ interface HTMLElementTagNameMap {
     "sup": HTMLElement;
     "table": HTMLTableElement;
     "tbody": HTMLTableSectionElement;
-    "td": HTMLTableDataCellElement;
+    "td": HTMLTableCellElement;
     "template": HTMLTemplateElement;
     "textarea": HTMLTextAreaElement;
     "tfoot": HTMLTableSectionElement;
-    "th": HTMLTableHeaderCellElement;
+    "th": HTMLTableCellElement;
     "thead": HTMLTableSectionElement;
     "time": HTMLTimeElement;
     "title": HTMLTitleElement;
@@ -19169,6 +19231,9 @@ interface HTMLElementDeprecatedTagNameMap {
 
 interface SVGElementTagNameMap {
     "a": SVGAElement;
+    "animate": SVGAnimateElement;
+    "animateMotion": SVGAnimateMotionElement;
+    "animateTransform": SVGAnimateTransformElement;
     "circle": SVGCircleElement;
     "clipPath": SVGClipPathElement;
     "defs": SVGDefsElement;
@@ -19182,6 +19247,7 @@ interface SVGElementTagNameMap {
     "feDiffuseLighting": SVGFEDiffuseLightingElement;
     "feDisplacementMap": SVGFEDisplacementMapElement;
     "feDistantLight": SVGFEDistantLightElement;
+    "feDropShadow": SVGFEDropShadowElement;
     "feFlood": SVGFEFloodElement;
     "feFuncA": SVGFEFuncAElement;
     "feFuncB": SVGFEFuncBElement;
@@ -19207,6 +19273,7 @@ interface SVGElementTagNameMap {
     "marker": SVGMarkerElement;
     "mask": SVGMaskElement;
     "metadata": SVGMetadataElement;
+    "mpath": SVGMPathElement;
     "path": SVGPathElement;
     "pattern": SVGPatternElement;
     "polygon": SVGPolygonElement;
@@ -19214,6 +19281,7 @@ interface SVGElementTagNameMap {
     "radialGradient": SVGRadialGradientElement;
     "rect": SVGRectElement;
     "script": SVGScriptElement;
+    "set": SVGSetElement;
     "stop": SVGStopElement;
     "style": SVGStyleElement;
     "svg": SVGSVGElement;

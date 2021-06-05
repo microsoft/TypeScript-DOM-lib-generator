@@ -377,9 +377,9 @@ export function getRemovalDataFromBcd(webidl: Browser.WebIdl): Browser.WebIdl {
     const properties: Record<string, any> = {};
     for (const [memberKey, memberValue] of Object.entries(value)) {
       if (!isSuitable(memberKey, memberValue, key)) {
-        if (base.methods.method.hasOwnProperty(memberKey)) {
+        if (base.methods?.method.hasOwnProperty(memberKey)) {
           methods[memberKey] = { exposed: "" };
-        } else if (base.properties!.property.hasOwnProperty(memberKey)) {
+        } else if (base.properties?.property.hasOwnProperty(memberKey)) {
           properties[memberKey] = { exposed: "" };
         }
       }

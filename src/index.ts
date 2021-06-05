@@ -12,6 +12,9 @@ import { Flavor, emitWebIdl } from "./emitter";
 import { convert } from "./widlprocess";
 import { getExposedTypes } from "./expose";
 import { getRemovalDataFromBcd } from "./bcd";
+import { getInterfaceElementMergeData } from "./webref/elements";
+import { IDLSource } from "./idlfetcher";
+import { getWidl } from "./webref/idl";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -60,7 +63,7 @@ function emitFlavor(
   );
 }
 
-function emitDom() {
+async function emitDom() {
   const __SOURCE_DIRECTORY__ = __dirname;
   const inputFolder = path.join(__SOURCE_DIRECTORY__, "../", "inputfiles");
   const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
@@ -109,20 +112,11 @@ function emitDom() {
   ));
   const removedItems = require(path.join(inputFolder, "removedTypes.json"));
   const idlSources: any[] = require(path.join(inputFolder, "idlSources.json"));
-  const widlStandardTypes = idlSources.map(convertWidl);
+  const widlStandardTypes = await Promise.all(idlSources.map(convertWidl));
 
-  function convertWidl({
-    title,
-    deprecated,
-  }: {
-    title: string;
-    deprecated?: boolean;
-  }) {
-    const filename = title + ".widl";
-    const idl: string = fs.readFileSync(
-      path.join(inputFolder, "idl", filename),
-      { encoding: "utf-8" }
-    );
+  async function convertWidl(source: IDLSource) {
+    const { title, deprecated } = source;
+    const idl: string = await getWidl(source);
     const commentsMapFilePath = path.join(
       inputFolder,
       "idl",
@@ -264,6 +258,7 @@ function emitDom() {
     }
   }
 
+  webidl = merge(webidl, await getInterfaceElementMergeData());
   webidl = merge(webidl, getRemovalDataFromBcd(webidl) as any);
   webidl = prune(webidl, removedItems);
   webidl = mergeApiDescriptions(webidl, documentationFromMDN);

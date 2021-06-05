@@ -23,6 +23,8 @@
     "@types/webidl2": "^23.13.5",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
+    "@webref/elements": "1.0.0",
+    "@webref/idl": "2.2.1",
     "cpx2": "^3.0.0",
     "danger": "^10.6.4",
     "eslint": "^7.27.0",

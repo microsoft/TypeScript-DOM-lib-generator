@@ -975,11 +975,6 @@
                         }
                     }
                 },
-                "element": [
-                    {
-                        "name": "select"
-                    }
-                ],
                 "override-index-signatures": [
                     "[name: number]: HTMLOptionElement | HTMLOptGroupElement"
                 ]
@@ -993,12 +988,7 @@
                             "override-type": "HTMLCollectionOf<HTMLOptionElement>"
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "datalist"
-                    }
-                ]
+                }
             },
             "HTMLDirectoryElement": {
                 "name": "HTMLDirectoryElement",
@@ -1358,20 +1348,7 @@
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "button"
-                    }
-                ]
-            },
-            "HTMLFieldSetElement": {
-                "name": "HTMLFieldSetElement",
-                "element": [
-                    {
-                        "name": "fieldset"
-                    }
-                ]
+                }
             },
             "HTMLLabelElement": {
                 "name": "HTMLLabelElement",
@@ -1385,14 +1362,6 @@
                     }
                 }
             },
-            "HTMLLegendElement": {
-                "name": "HTMLLegendElement",
-                "element": [
-                    {
-                        "name": "legend"
-                    }
-                ]
-            },
             "HTMLMeterElement": {
                 "name": "HTMLMeterElement",
                 "properties": {
@@ -1402,12 +1371,7 @@
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "meter"
-                    }
-                ]
+                }
             },
             "HTMLOptGroupElement": {
                 "name": "HTMLOptGroupElement",
@@ -1419,20 +1383,7 @@
                             "override-type": "HTMLFormElement | null"
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "optgroup"
-                    }
-                ]
-            },
-            "HTMLOptionElement": {
-                "name": "HTMLOptionElement",
-                "element": [
-                    {
-                        "name": "option"
-                    }
-                ]
+                }
             },
             "HTMLOutputElement": {
                 "name": "HTMLOutputElement",
@@ -1443,12 +1394,7 @@
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "output"
-                    }
-                ]
+                }
             },
             "HTMLProgressElement": {
                 "name": "HTMLProgressElement",
@@ -1459,12 +1405,7 @@
                             "override-type": "NodeListOf<HTMLLabelElement>"
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "progress"
-                    }
-                ]
+                }
             },
             "HTMLTextAreaElement": {
                 "name": "HTMLTextAreaElement",
@@ -1489,12 +1430,7 @@
                             ]
                         }
                     }
-                },
-                "element": [
-                    {
-                        "name": "textarea"
-                    }
-                ]
+                }
             },
             "ServiceWorkerContainer": {
                 "name": "ServiceWorkerContainer",
