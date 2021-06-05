@@ -4135,7 +4135,7 @@ interface DOMTokenList {
      *
      * Throws an "InvalidCharacterError" DOMException if one of the arguments contains any ASCII whitespace.
      */
-    replace(oldToken: string, newToken: string): void;
+    replace(token: string, newToken: string): boolean;
     /**
      * Returns true if token is in the associated attribute's supported tokens. Returns false otherwise.
      *
