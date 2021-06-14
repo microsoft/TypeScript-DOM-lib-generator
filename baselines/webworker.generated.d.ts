@@ -5,6 +5,7 @@
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
+    signal?: AbortSignal;
 }
 
 interface AesCbcParams extends Algorithm {
@@ -630,7 +631,7 @@ interface AbortSignalEventMap {
 /** A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object. */
 interface AbortSignal extends EventTarget {
     /**
-     * Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise.
+     * Returns true if this AbortSignal's AbortController has signaled to abort; otherwise false.
      */
     readonly aborted: boolean;
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
@@ -643,6 +644,10 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
+    /**
+     * Returns an AbortSignal instance whose aborted flag is set.
+     */
+    abort(): AbortSignal;
 };
 
 interface AbstractWorkerEventMap {
@@ -1364,7 +1369,7 @@ declare var ErrorEvent: {
 /** An event which takes place in the DOM. */
 interface Event {
     /**
-     * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
+     * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order; otherwise false.
      */
     readonly bubbles: boolean;
     cancelBubble: boolean;
@@ -1373,7 +1378,7 @@ interface Event {
      */
     readonly cancelable: boolean;
     /**
-     * Returns true or false depending on how event was initialized. True if event invokes listeners past a ShadowRoot node that is the root of its target, and false otherwise.
+     * Returns true or false depending on how event was initialized. True if event invokes listeners past a ShadowRoot node that is the root of its target; otherwise false.
      */
     readonly composed: boolean;
     /**
@@ -1381,7 +1386,7 @@ interface Event {
      */
     readonly currentTarget: EventTarget | null;
     /**
-     * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
+     * Returns true if preventDefault() was invoked successfully to indicate cancelation; otherwise false.
      */
     readonly defaultPrevented: boolean;
     /**
@@ -1499,11 +1504,13 @@ interface EventTarget {
      *
      * When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
      *
+     * If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+     *
      * The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
      */
     addEventListener(type: string, listener: EventListenerOrEventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
     /**
-     * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+     * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked; otherwise false.
      */
     dispatchEvent(event: Event): boolean;
     /**
@@ -5858,7 +5865,7 @@ declare function close(): void;
 declare function postMessage(message: any, transfer: Transferable[]): void;
 declare function postMessage(message: any, options?: PostMessageOptions): void;
 /**
- * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+ * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked; otherwise false.
  */
 declare function dispatchEvent(event: Event): boolean;
 /**
@@ -5881,7 +5888,7 @@ declare var self: WorkerGlobalScope & typeof globalThis;
  */
 declare function importScripts(...urls: string[]): void;
 /**
- * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+ * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked; otherwise false.
  */
 declare function dispatchEvent(event: Event): boolean;
 declare var caches: CacheStorage;

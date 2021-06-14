@@ -5,6 +5,7 @@
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
+    signal?: AbortSignal;
 }
 
 interface AddressErrors {
@@ -1706,6 +1707,7 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 interface ShadowRootInit {
     delegatesFocus?: boolean;
     mode: ShadowRootMode;
+    slotAssignment?: SlotAssignmentMode;
 }
 
 interface ShareData {
@@ -1968,7 +1970,7 @@ interface AbortSignalEventMap {
 /** A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object. */
 interface AbortSignal extends EventTarget {
     /**
-     * Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise.
+     * Returns true if this AbortSignal's AbortController has signaled to abort; otherwise false.
      */
     readonly aborted: boolean;
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
@@ -1981,11 +1983,15 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
+    /**
+     * Returns an AbortSignal instance whose aborted flag is set.
+     */
+    abort(): AbortSignal;
 };
 
 interface AbstractRange {
     /**
-     * Returns true if range is collapsed, and false otherwise.
+     * Returns true if range is collapsed; otherwise false.
      */
     readonly collapsed: boolean;
     /**
@@ -4111,7 +4117,7 @@ interface DOMTokenList {
      */
     add(...tokens: string[]): void;
     /**
-     * Returns true if token is present, and false otherwise.
+     * Returns true if token is present; otherwise false.
      */
     contains(token: string): boolean;
     /**
@@ -4129,7 +4135,7 @@ interface DOMTokenList {
     /**
      * Replaces token with newToken.
      *
-     * Returns true if token was replaced with newToken, and false otherwise.
+     * Returns true if token was replaced with newToken; otherwise false.
      *
      * Throws a "SyntaxError" DOMException if one of the arguments is the empty string.
      *
@@ -4145,7 +4151,7 @@ interface DOMTokenList {
     /**
      * If force is not given, "toggles" token, removing it if it's present and adding it if it's not present. If force is true, adds token (same as add()). If force is false, removes token (same as remove()).
      *
-     * Returns true if token is now present, and false otherwise.
+     * Returns true if token is now present; otherwise false.
      *
      * Throws a "SyntaxError" DOMException if token is empty.
      *
@@ -4626,11 +4632,10 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Returns an element with namespace namespace. Its namespace prefix will be everything before ":" (U+003E) in qualifiedName or null. Its local name will be everything after ":" (U+003E) in qualifiedName or qualifiedName.
      *
-     * If localName does not match the Name production an "InvalidCharacterError" DOMException will be thrown.
+     * If qualifiedName does not match the QName production an "InvalidCharacterError" DOMException will be thrown.
      *
      * If one of the following conditions is true a "NamespaceError" DOMException will be thrown:
      *
-     * localName does not match the QName production.
      * Namespace prefix is not null and namespace is the empty string.
      * Namespace prefix is "xml" and namespace is not the XML namespace.
      * qualifiedName or namespace prefix is "xmlns" and namespace is not the XMLNS namespace.
@@ -5159,7 +5164,7 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
     getElementsByTagNameNS(namespaceURI: string, localName: string): HTMLCollectionOf<Element>;
     /**
-     * Returns true if element has an attribute whose qualified name is qualifiedName, and false otherwise.
+     * Returns true if element has an attribute whose qualified name is qualifiedName; otherwise false.
      */
     hasAttribute(qualifiedName: string): boolean;
     /**
@@ -5167,7 +5172,7 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
      */
     hasAttributeNS(namespace: string | null, localName: string): boolean;
     /**
-     * Returns true if element has attributes, and false otherwise.
+     * Returns true if element has attributes; otherwise false.
      */
     hasAttributes(): boolean;
     hasPointerCapture(pointerId: number): boolean;
@@ -5175,7 +5180,7 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
     insertAdjacentHTML(where: InsertPosition, html: string): void;
     insertAdjacentText(where: InsertPosition, text: string): void;
     /**
-     * Returns true if matching selectors against element's root yields element, and false otherwise.
+     * Returns true if matching selectors against element's root yields element; otherwise false.
      */
     matches(selectors: string): boolean;
     msGetRegionContent(): any;
@@ -5217,7 +5222,7 @@ interface Element extends Node, Animatable, ChildNode, InnerHTML, NonDocumentTyp
     /**
      * If force is not given, "toggles" qualifiedName, removing it if it is present and adding it if it is not present. If force is true, adds qualifiedName. If force is false, removes qualifiedName.
      *
-     * Returns true if qualifiedName is now present, and false otherwise.
+     * Returns true if qualifiedName is now present; otherwise false.
      */
     toggleAttribute(qualifiedName: string, force?: boolean): boolean;
     webkitMatchesSelector(selectors: string): boolean;
@@ -5260,7 +5265,7 @@ declare var ErrorEvent: {
 /** An event which takes place in the DOM. */
 interface Event {
     /**
-     * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
+     * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order; otherwise false.
      */
     readonly bubbles: boolean;
     cancelBubble: boolean;
@@ -5269,7 +5274,7 @@ interface Event {
      */
     readonly cancelable: boolean;
     /**
-     * Returns true or false depending on how event was initialized. True if event invokes listeners past a ShadowRoot node that is the root of its target, and false otherwise.
+     * Returns true or false depending on how event was initialized. True if event invokes listeners past a ShadowRoot node that is the root of its target; otherwise false.
      */
     readonly composed: boolean;
     /**
@@ -5277,7 +5282,7 @@ interface Event {
      */
     readonly currentTarget: EventTarget | null;
     /**
-     * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
+     * Returns true if preventDefault() was invoked successfully to indicate cancelation; otherwise false.
      */
     readonly defaultPrevented: boolean;
     /**
@@ -5395,11 +5400,13 @@ interface EventTarget {
      *
      * When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
      *
+     * If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+     *
      * The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
      */
     addEventListener(type: string, listener: EventListenerOrEventListenerObject | null, options?: boolean | AddEventListenerOptions): void;
     /**
-     * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+     * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked; otherwise false.
      */
     dispatchEvent(event: Event): boolean;
     /**
@@ -10500,15 +10507,15 @@ interface MutationRecord {
      */
     readonly addedNodes: NodeList;
     /**
-     * Returns the local name of the changed attribute, and null otherwise.
+     * Returns the local name of the changed attribute; otherwise null.
      */
     readonly attributeName: string | null;
     /**
-     * Returns the namespace of the changed attribute, and null otherwise.
+     * Returns the namespace of the changed attribute; otherwise null.
      */
     readonly attributeNamespace: string | null;
     /**
-     * Return the previous and next sibling respectively of the added or removed nodes, and null otherwise.
+     * Return the previous and next sibling respectively of the added or removed nodes; otherwise null.
      */
     readonly nextSibling: Node | null;
     /**
@@ -10516,7 +10523,7 @@ interface MutationRecord {
      */
     readonly oldValue: string | null;
     /**
-     * Return the previous and next sibling respectively of the added or removed nodes, and null otherwise.
+     * Return the previous and next sibling respectively of the added or removed nodes; otherwise null.
      */
     readonly previousSibling: Node | null;
     /**
@@ -10665,7 +10672,7 @@ interface Node extends EventTarget {
      */
     readonly firstChild: ChildNode | null;
     /**
-     * Returns true if node is connected and false otherwise.
+     * Returns true if node is connected; otherwise false.
      */
     readonly isConnected: boolean;
     /**
@@ -10714,7 +10721,7 @@ interface Node extends EventTarget {
      */
     compareDocumentPosition(other: Node): number;
     /**
-     * Returns true if other is an inclusive descendant of node, and false otherwise.
+     * Returns true if other is an inclusive descendant of node; otherwise false.
      */
     contains(other: Node | null): boolean;
     /**
@@ -10939,11 +10946,11 @@ interface NodeListOf<TNode extends Node> extends NodeList {
 
 interface NonDocumentTypeChildNode {
     /**
-     * Returns the first following sibling that is an element, and null otherwise.
+     * Returns the first following sibling that is an element; otherwise null.
      */
     readonly nextElementSibling: Element | null;
     /**
-     * Returns the first preceding sibling that is an element, and null otherwise.
+     * Returns the first preceding sibling that is an element; otherwise null.
      */
     readonly previousElementSibling: Element | null;
 }
@@ -11217,11 +11224,11 @@ interface ParentNode {
      */
     readonly children: HTMLCollection;
     /**
-     * Returns the first child that is an element, and null otherwise.
+     * Returns the first child that is an element; otherwise null.
      */
     readonly firstElementChild: Element | null;
     /**
-     * Returns the last child that is an element, and null otherwise.
+     * Returns the last child that is an element; otherwise null.
      */
     readonly lastElementChild: Element | null;
     /**
@@ -14796,6 +14803,7 @@ declare var ServiceWorkerRegistration: {
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
     readonly host: Element;
     readonly mode: ShadowRootMode;
+    readonly slotAssignment: SlotAssignmentMode;
     /**
      * Throws a "NotSupportedError" DOMException if context object is a shadow root.
      */
@@ -18713,13 +18721,13 @@ declare var XPathResult: {
 /** An XSLTProcessor applies an XSLT stylesheet transformation to an XML document to produce a new XML document as output. It has methods to load the XSLT stylesheet, to manipulate <xsl:param> parameter values, and to apply the transformation to documents. */
 interface XSLTProcessor {
     clearParameters(): void;
-    getParameter(namespaceURI: string, localName: string): any;
+    getParameter(namespaceURI: string | null, localName: string): any;
     importStylesheet(style: Node): void;
-    removeParameter(namespaceURI: string, localName: string): void;
+    removeParameter(namespaceURI: string | null, localName: string): void;
     reset(): void;
-    setParameter(namespaceURI: string, localName: string, value: any): void;
+    setParameter(namespaceURI: string | null, localName: string, value: any): void;
     transformToDocument(source: Node): Document;
-    transformToFragment(source: Node, document: Document): DocumentFragment;
+    transformToFragment(source: Node, output: Document): DocumentFragment;
 }
 
 declare var XSLTProcessor: {
@@ -19343,7 +19351,7 @@ declare function webkitConvertPointFromPageToNode(node: Node, pt: WebKitPoint): 
 declare function webkitRequestAnimationFrame(callback: FrameRequestCallback): number;
 declare function toString(): string;
 /**
- * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+ * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked; otherwise false.
  */
 declare function dispatchEvent(event: Event): boolean;
 declare var sessionStorage: Storage;
@@ -19837,6 +19845,7 @@ type SelectionMode = "end" | "preserve" | "select" | "start";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type ShadowRootMode = "closed" | "open";
+type SlotAssignmentMode = "manual" | "named";
 type SpeechRecognitionErrorCode = "aborted" | "audio-capture" | "bad-grammar" | "language-not-supported" | "network" | "no-speech" | "not-allowed" | "service-not-allowed";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
