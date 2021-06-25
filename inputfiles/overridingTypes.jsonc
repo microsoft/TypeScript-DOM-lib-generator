@@ -3288,6 +3288,23 @@
                         "name": "T"
                     }
                 ]
+            },
+            {
+                "name": "ReadableStreamReader",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReader"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReader"
+                    }
+                ],
+                "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
             }
         ]
     },

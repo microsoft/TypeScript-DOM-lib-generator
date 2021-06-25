@@ -1310,23 +1310,6 @@
                 "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>"
             },
             {
-                "name": "ReadableStreamReader",
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "type": [
-                    {
-                        "type": "ReadableStreamDefaultReader"
-                    },
-                    {
-                        "type": "ReadableStreamBYOBReader"
-                    }
-                ],
-                "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
-            },
-            {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
             }
