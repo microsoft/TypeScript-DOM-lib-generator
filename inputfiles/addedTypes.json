@@ -699,6 +699,12 @@
                     }
                 }
             },
+            "NamedNodeMap": {
+                "override-index-signatures": [
+                    "[name: string]: Attr",
+                    "[index: number]: Attr"
+                ]
+            },
             "Navigator": {
                 "name": "Navigator",
                 "methods": {
