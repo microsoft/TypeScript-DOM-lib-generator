@@ -66,6 +66,10 @@ interface IDBObjectStore {
     createIndex(name: string, keyPath: string | Iterable<string>, options?: IDBIndexParameters): IDBIndex;
 }
 
+interface NavigatorUAData {
+    getHighEntropyValues(hints: Iterable<string>): Promise<UADataValues>;
+}
+
 interface URLSearchParams {
     [Symbol.iterator](): IterableIterator<[string, string]>;
     /**

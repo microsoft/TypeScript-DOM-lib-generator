@@ -148,6 +148,10 @@ interface Navigator {
     requestMediaKeySystemAccess(keySystem: string, supportedConfigurations: Iterable<MediaKeySystemConfiguration>): Promise<MediaKeySystemAccess>;
 }
 
+interface NavigatorUAData {
+    getHighEntropyValues(hints: Iterable<string>): Promise<UADataValues>;
+}
+
 interface NodeList {
     [Symbol.iterator](): IterableIterator<Node>;
     /**
