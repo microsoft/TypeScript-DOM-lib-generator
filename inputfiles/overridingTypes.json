@@ -1705,6 +1705,14 @@
                     ]
                 }
             },
+            "URLSearchParams": {
+                "name": "URLSearchParams",
+                "constructor": {
+                    "override-signatures": [
+                        "new(init?: FormData): URLSearchParams"
+                    ]
+                }
+            },
             "EventTarget": {
                 "name": "EventTarget",
                 "override-exposed": "Window Worker",

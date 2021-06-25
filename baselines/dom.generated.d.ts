@@ -15808,6 +15808,7 @@ interface URLSearchParams {
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+    new(init?: FormData): URLSearchParams;
     toString(): string;
 };
 
