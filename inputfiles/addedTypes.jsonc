@@ -1155,6 +1155,11 @@
             },
             "ReadableStreamReadDoneResult": {
                 "name": "ReadableStreamReadDoneResult",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
                 "members": {
                     "member": {
                         "done": {
@@ -1164,7 +1169,7 @@
                         },
                         "value": {
                             "name": "value",
-                            "overrideType": "undefined"
+                            "overrideType": "T"
                         }
                     }
                 }
@@ -1302,7 +1307,7 @@
                         "type": "ReadableStreamReadDoneResult"
                     }
                 ],
-                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult"
+                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>"
             },
             {
                 "name": "ReadableStreamReader",
@@ -1314,9 +1319,12 @@
                 "type": [
                     {
                         "type": "ReadableStreamDefaultReader"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReader"
                     }
                 ],
-                "overrideType": "ReadableStreamDefaultReader<T>"
+                "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
             },
             {
                 "name": "EventListenerOrEventListenerObject",

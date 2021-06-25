@@ -2380,11 +2380,23 @@
                 "methods": {
                     "method": {
                         "getReader": {
+                            "additionalSignatures": [
+                                "getReader(options: { mode: \"byob\" }): ReadableStreamBYOBReader",
+                                "getReader(): ReadableStreamDefaultReader<R>"
+                            ],
                             "signature": {
                                 "0": {
-                                    "overrideType": "ReadableStreamDefaultReader<R>"
+                                    "overrideType": "ReadableStreamReader<R>"
                                 }
-                            }
+                            },
+                            "force-references": [
+                                {
+                                    "type": "ReadableStreamDefaultReader"
+                                },
+                                {
+                                    "type": "ReadableStreamBYOBReader"
+                                }
+                            ]
                         },
                         "pipeThrough": {
                             "signature": {
@@ -2432,11 +2444,19 @@
                         "read": {
                             "signature": {
                                 "0": {
-                                    "subtype": {
-                                        "subtype": {
-                                            "type": "ArrayBufferView"
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "ArrayBufferView"
                                         }
-                                    }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "view",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ReadableStreamReadResult<T>>"
                                 }
                             }
                         }
@@ -3167,9 +3187,6 @@
                         },
                         "pull": {
                             "overrideType": "UnderlyingSourcePullCallback<R>"
-                        },
-                        "type": {
-                            "overrideType": "undefined"
                         }
                     }
                 }
@@ -3264,7 +3281,7 @@
     "typedefs": {
         "typedef": [
             {
-                "overrideType": "ReadableStreamDefaultController<T>",
+                "overrideType": "ReadableStreamDefaultController<T> | ReadableByteStreamController",
                 "name": "ReadableStreamController",
                 "typeParameters": [
                     {

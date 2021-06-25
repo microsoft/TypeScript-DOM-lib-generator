@@ -19,8 +19,6 @@
             "CredentialMediationRequirement": {
                 "value": ["conditional"] // tied to Credential#isConditionalMediationAvailable
             },
-            "ReadableStreamReaderMode": null,
-            "ReadableStreamType": null,
             "RTCStatsType": {
                 "value": [
                     "stream",
@@ -72,19 +70,6 @@
             },
             "NetworkInformation": {
                 "implements": ["NetworkInformationSaveData"]
-            },
-            "ReadableStream": {
-                "methods": {
-                    "method": {
-                        "getReader": {
-                            "signature": {
-                                "0": {
-                                    "param": ["options"]
-                                }
-                            }
-                        }
-                    }
-                }
             },
             "Response": {
                 "methods": {
@@ -377,7 +362,6 @@
                 }
             },
             "ReadableStreamReadResult": null,
-            "ReadableStreamGetReaderOptions": null,
             "RequestInit": {
                 "members": {
                     "member": {
@@ -572,13 +556,6 @@
                 "members": {
                     "member": {
                         "sourceCapabilities": null
-                    }
-                }
-            },
-            "UnderlyingSource": {
-                "members": {
-                    "member": {
-                        "autoAllocateChunkSize": null
                     }
                 }
             },
