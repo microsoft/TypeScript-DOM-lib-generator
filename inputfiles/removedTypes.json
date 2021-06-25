@@ -73,12 +73,10 @@
             "Clipboard": {
                 "methods": {
                     "method": {
-                        "read": null,
-                        "write": null
+                        "read": null
                     }
                 }
             },
-            "ClipboardItem": null,
             "Console": null,
             "Coordinates": null,
             "CSS": null,
