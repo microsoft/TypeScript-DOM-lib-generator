@@ -2620,6 +2620,19 @@ declare var CDATASection: {
     new(): CDATASection;
 };
 
+interface CSSAnimation extends Animation {
+    readonly animationName: string;
+    addEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSAnimation, ev: AnimationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSAnimation, ev: AnimationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var CSSAnimation: {
+    prototype: CSSAnimation;
+    new(): CSSAnimation;
+};
+
 /** A single condition CSS at-rule, which consists of a condition and a statement block. It is a child of CSSGroupingRule. */
 interface CSSConditionRule extends CSSGroupingRule {
     conditionText: string;
@@ -3271,6 +3284,19 @@ interface CSSSupportsRule extends CSSConditionRule {
 declare var CSSSupportsRule: {
     prototype: CSSSupportsRule;
     new(): CSSSupportsRule;
+};
+
+interface CSSTransition extends Animation {
+    readonly transitionProperty: string;
+    addEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSTransition, ev: AnimationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSTransition, ev: AnimationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var CSSTransition: {
+    prototype: CSSTransition;
+    new(): CSSTransition;
 };
 
 /** Provides a storage mechanism for Request / Response object pairs that are cached, for example as part of the ServiceWorker life cycle. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec. */
