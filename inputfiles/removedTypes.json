@@ -27,13 +27,6 @@
                     }
                 }
             },
-            "ParentNode": {
-                "methods": {
-                    "method": {
-                        "replaceChildren": null
-                    }
-                }
-            },
             "XMLHttpRequestEventTarget": null
         }
     },
