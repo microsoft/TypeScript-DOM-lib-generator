@@ -403,6 +403,10 @@
         "title": "Media Source Extensions"
     },
     {
+        "url": "https://w3c.github.io/mediacapture-record/",
+        "title": "MediaStream Recording"
+    },
+    {
         "url": "https://w3c.github.io/navigation-timing/",
         "title": "Navigation Timing"
     },

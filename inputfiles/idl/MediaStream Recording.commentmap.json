@@ -1,0 +1,3 @@
+{
+    "domhighrestimestamp": "The difference between the timestamp of the first chunk in data and the timestamp of the first chunk in the first BlobEvent produced by this recorder as a DOMHighResTimeStamp [HR-TIME]. Note that the timecode in the first produced BlobEvent does not need to be zero."
+}

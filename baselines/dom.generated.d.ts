@@ -159,6 +159,11 @@ interface BiquadFilterOptions extends AudioNodeOptions {
     type?: BiquadFilterType;
 }
 
+interface BlobEventInit {
+    data: Blob;
+    timecode?: number;
+}
+
 interface BlobPropertyBag {
     endings?: EndingType;
     type?: string;
@@ -690,6 +695,14 @@ interface MediaKeySystemMediaCapability {
 interface MediaQueryListEventInit extends EventInit {
     matches?: boolean;
     media?: string;
+}
+
+interface MediaRecorderOptions {
+    audioBitrateMode?: BitrateMode;
+    audioBitsPerSecond?: number;
+    bitsPerSecond?: number;
+    mimeType?: string;
+    videoBitsPerSecond?: number;
 }
 
 interface MediaStreamAudioSourceOptions {
@@ -2557,6 +2570,15 @@ interface Blob {
 declare var Blob: {
     prototype: Blob;
     new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
+};
+
+interface BlobEvent extends Event {
+    readonly data: Blob;
+}
+
+declare var BlobEvent: {
+    prototype: BlobEvent;
+    new(type: string, eventInitDict: BlobEventInit): BlobEvent;
 };
 
 interface Body {
@@ -4647,6 +4669,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "AnimationPlaybackEvent"): AnimationPlaybackEvent;
     createEvent(eventInterface: "AudioProcessingEvent"): AudioProcessingEvent;
     createEvent(eventInterface: "BeforeUnloadEvent"): BeforeUnloadEvent;
+    createEvent(eventInterface: "BlobEvent"): BlobEvent;
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
@@ -4891,6 +4914,7 @@ interface DocumentEvent {
     createEvent(eventInterface: "AnimationPlaybackEvent"): AnimationPlaybackEvent;
     createEvent(eventInterface: "AudioProcessingEvent"): AudioProcessingEvent;
     createEvent(eventInterface: "BeforeUnloadEvent"): BeforeUnloadEvent;
+    createEvent(eventInterface: "BlobEvent"): BlobEvent;
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
@@ -10133,6 +10157,45 @@ interface MediaQueryListEvent extends Event {
 declare var MediaQueryListEvent: {
     prototype: MediaQueryListEvent;
     new(type: string, eventInitDict?: MediaQueryListEventInit): MediaQueryListEvent;
+};
+
+interface MediaRecorderEventMap {
+    "dataavailable": Event;
+    "error": ErrorEvent;
+    "pause": Event;
+    "resume": SpeechSynthesisEvent;
+    "start": Event;
+    "stop": Event;
+}
+
+interface MediaRecorder extends EventTarget {
+    readonly audioBitrateMode: BitrateMode;
+    readonly audioBitsPerSecond: number;
+    readonly mimeType: string;
+    ondataavailable: ((this: MediaRecorder, ev: Event) => any) | null;
+    onerror: ((this: MediaRecorder, ev: ErrorEvent) => any) | null;
+    onpause: ((this: MediaRecorder, ev: Event) => any) | null;
+    onresume: ((this: MediaRecorder, ev: SpeechSynthesisEvent) => any) | null;
+    onstart: ((this: MediaRecorder, ev: Event) => any) | null;
+    onstop: ((this: MediaRecorder, ev: Event) => any) | null;
+    readonly state: RecordingState;
+    readonly stream: MediaStream;
+    readonly videoBitsPerSecond: number;
+    pause(): void;
+    requestData(): void;
+    resume(): void;
+    start(timeslice?: number): void;
+    stop(): void;
+    addEventListener<K extends keyof MediaRecorderEventMap>(type: K, listener: (this: MediaRecorder, ev: MediaRecorderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MediaRecorderEventMap>(type: K, listener: (this: MediaRecorder, ev: MediaRecorderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var MediaRecorder: {
+    prototype: MediaRecorder;
+    new(stream: MediaStream, options?: MediaRecorderOptions): MediaRecorder;
+    isTypeSupported(type: string): boolean;
 };
 
 interface MediaSourceEventMap {
@@ -19725,6 +19788,7 @@ type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
 type BinaryType = "arraybuffer" | "blob";
 type BiquadFilterType = "allpass" | "bandpass" | "highpass" | "highshelf" | "lowpass" | "lowshelf" | "notch" | "peaking";
+type BitrateMode = "constant" | "variable";
 type CanPlayTypeResult = "" | "maybe" | "probably";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
@@ -19819,6 +19883,7 @@ type RTCStatsIceCandidatePairState = "failed" | "frozen" | "in-progress" | "succ
 type RTCStatsIceCandidateType = "host" | "peerreflexive" | "relayed" | "serverreflexive";
 type RTCStatsType = "candidate-pair" | "certificate" | "codec" | "csrc" | "data-channel" | "ice-server" | "inbound-rtp" | "local-candidate" | "media-source" | "outbound-rtp" | "peer-connection" | "receiver" | "remote-candidate" | "remote-inbound-rtp" | "remote-outbound-rtp" | "sctp-transport" | "sender" | "stream" | "track" | "transceiver" | "transport";
 type ReadyState = "closed" | "ended" | "open";
+type RecordingState = "inactive" | "paused" | "recording";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
