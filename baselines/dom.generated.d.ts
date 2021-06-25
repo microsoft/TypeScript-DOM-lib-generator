@@ -6996,6 +6996,10 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     height: string;
     /**
+     * Sets or retrieves the policy for loading iframe elements that are outside the viewport.
+     */
+    loading: "eager" | "lazy";
+    /**
      * Sets or retrieves a URI to a long description of the object.
      */
     /** @deprecated */
@@ -7081,7 +7085,10 @@ interface HTMLImageElement extends HTMLElement {
      * Sets or retrieves whether the image is a server-side image map.
      */
     isMap: boolean;
-    loading: string;
+    /**
+     * Sets or retrieves the policy for loading image elements that are outside the viewport.
+     */
+    loading: "eager" | "lazy";
     /**
      * Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object.
      */
