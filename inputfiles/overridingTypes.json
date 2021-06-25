@@ -2053,6 +2053,12 @@
                     "property": {
                         "srcElement": {
                             "deprecated": 1
+                        },
+                        "target": {
+                            "override-type": "EventTarget | ServiceWorker | null"
+                        },
+                        "currentTarget": {
+                            "override-type": "EventTarget | ServiceWorker | null"
                         }
                     }
                 }
@@ -2169,6 +2175,10 @@
                     }
                 }
             },
+            "ServiceWorkerEventMap": {
+                "name": "ServiceWorkerEventMap",
+                "override-index-signatures": ["[property: string]: ServiceWorkerEvent"]
+            },
             "ServiceWorker": {
                 "name": "ServiceWorker",
                 "methods": {
@@ -2178,6 +2188,12 @@
                             "override-signatures": [
                                 "postMessage(message: any, transfer: Transferable[]): void",
                                 "postMessage(message: any, options?: PostMessageOptions): void"
+                            ]
+                        },
+                        "onstatechange": {
+                            "name": "onstatechange",
+                            "overriding-signatures": [
+                                "((this: ServiceWorker, ev: ServiceWorkerEvent) => any) | null"
                             ]
                         }
                     }
