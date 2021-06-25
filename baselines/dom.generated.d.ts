@@ -859,6 +859,11 @@ interface NavigationPreloadState {
     headerValue?: string;
 }
 
+interface NavigatorUABrandVersion {
+    brand?: string;
+    version?: string;
+}
+
 interface NotificationAction {
     action: string;
     icon?: string;
@@ -1848,6 +1853,23 @@ interface TransitionEventInit extends EventInit {
     elapsedTime?: number;
     propertyName?: string;
     pseudoElement?: string;
+}
+
+interface UADataValues {
+    architecture?: string;
+    bitness?: string;
+    brands?: NavigatorUABrandVersion[];
+    mobile?: boolean;
+    model?: string;
+    platform?: string;
+    platformVersion?: string;
+    uaFullVersion?: string;
+}
+
+interface UALowEntropyJSON {
+    brands?: NavigatorUABrandVersion[];
+    mobile?: boolean;
+    platform?: string;
 }
 
 interface UIEventInit extends EventInit {
@@ -10569,7 +10591,7 @@ declare var NavigationPreloadManager: {
 };
 
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
-interface Navigator extends MSFileSaver, MSNavigatorDoNotTrack, NavigatorAutomationInformation, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
+interface Navigator extends MSFileSaver, MSNavigatorDoNotTrack, NavigatorAutomationInformation, NavigatorBeacon, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorPlugins, NavigatorStorage, NavigatorUA {
     readonly activeVRDisplays: ReadonlyArray<VRDisplay>;
     readonly clipboard: Clipboard;
     readonly credentials: CredentialsContainer;
@@ -10649,6 +10671,23 @@ interface NavigatorPlugins {
 interface NavigatorStorage {
     readonly storage: StorageManager;
 }
+
+interface NavigatorUA {
+    readonly userAgentData: NavigatorUAData;
+}
+
+interface NavigatorUAData {
+    readonly brands: ReadonlyArray<NavigatorUABrandVersion>;
+    readonly mobile: boolean;
+    readonly platform: string;
+    getHighEntropyValues(hints: string[]): Promise<UADataValues>;
+    toJSON(): UALowEntropyJSON;
+}
+
+declare var NavigatorUAData: {
+    prototype: NavigatorUAData;
+    new(): NavigatorUAData;
+};
 
 /** Node is an interface from which a number of DOM API object types inherit. It allows those types to be treated similarly; for example, inheriting the same set of methods, or being tested in the same way. */
 interface Node extends EventTarget {

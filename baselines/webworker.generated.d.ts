@@ -294,6 +294,11 @@ interface NavigationPreloadState {
     headerValue?: string;
 }
 
+interface NavigatorUABrandVersion {
+    brand?: string;
+    version?: string;
+}
+
 interface NotificationAction {
     action: string;
     icon?: string;
@@ -555,6 +560,23 @@ interface Transformer<I = any, O = any> {
     start?: TransformerStartCallback<O>;
     transform?: TransformerTransformCallback<I, O>;
     writableType?: undefined;
+}
+
+interface UADataValues {
+    architecture?: string;
+    bitness?: string;
+    brands?: NavigatorUABrandVersion[];
+    mobile?: boolean;
+    model?: string;
+    platform?: string;
+    platformVersion?: string;
+    uaFullVersion?: string;
+}
+
+interface UALowEntropyJSON {
+    brands?: NavigatorUABrandVersion[];
+    mobile?: boolean;
+    platform?: string;
 }
 
 interface UnderlyingSink<W = any> {
@@ -2330,6 +2352,23 @@ interface NavigatorOnLine {
 interface NavigatorStorage {
     readonly storage: StorageManager;
 }
+
+interface NavigatorUA {
+    readonly userAgentData: NavigatorUAData;
+}
+
+interface NavigatorUAData {
+    readonly brands: ReadonlyArray<NavigatorUABrandVersion>;
+    readonly mobile: boolean;
+    readonly platform: string;
+    getHighEntropyValues(hints: string[]): Promise<UADataValues>;
+    toJSON(): UALowEntropyJSON;
+}
+
+declare var NavigatorUAData: {
+    prototype: NavigatorUAData;
+    new(): NavigatorUAData;
+};
 
 interface NotificationEventMap {
     "click": Event;
@@ -5453,7 +5492,7 @@ declare var WorkerLocation: {
 };
 
 /** A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator. */
-interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorStorage {
+interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorOnLine, NavigatorStorage, NavigatorUA {
     readonly permissions: Permissions;
 }
 

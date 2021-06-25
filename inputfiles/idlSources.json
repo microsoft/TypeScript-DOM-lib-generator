@@ -519,6 +519,10 @@
         "title": "User Timing"
     },
     {
+        "url": "https://wicg.github.io/ua-client-hints/",
+        "title": "User-Agent Client Hints"
+    },
+    {
         "url": "https://www.w3.org/TR/vibration/",
         "title": "Vibration"
     },
