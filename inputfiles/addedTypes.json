@@ -1100,20 +1100,6 @@
                     }
                 }
             },
-            "DOMTokenList": {
-                "name": "DOMTokenList",
-                "exposed": "Window",
-                "methods": {
-                    "method": {
-                        "replace": {
-                            "name": "replace",
-                            "override-signatures": [
-                                "replace(oldToken: string, newToken: string): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "EventSource": {
                 "events": {
                     "event": [
