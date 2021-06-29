@@ -697,5 +697,13 @@
     {
         "url": "https://html.spec.whatwg.org/multipage/web-messaging.html",
         "title": "Web Messaging"
+    },
+    {
+        "url": "https://www.w3.org/TR/CSP3",
+        "title": "Content Security Policy Level 3"
+    },
+    {
+        "url": "https://www.w3.org/TR/reporting/",
+        "title": "Reporting"
     }
 ]
