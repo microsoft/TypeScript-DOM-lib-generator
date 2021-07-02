@@ -2615,6 +2615,21 @@
                         }
                     }
                 }
+            },
+            "CompileError": {
+                "name": "CompileError",
+                "extends": "Error",
+                "legacy-namespace": "WebAssembly"
+            },
+            "LinkError": {
+                "name": "LinkError",
+                "extends": "Error",
+                "legacy-namespace": "WebAssembly"
+            },
+            "RuntimeError": {
+                "name": "RuntimeError",
+                "extends": "Error",
+                "legacy-namespace": "WebAssembly"
             }
         }
     },

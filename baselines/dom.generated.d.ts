@@ -18776,7 +18776,7 @@ declare namespace CSS {
 }
 
 declare namespace WebAssembly {
-    interface CompileError {
+    interface CompileError extends Error {
     }
 
     var CompileError: {
@@ -18803,7 +18803,7 @@ declare namespace WebAssembly {
         new(module: Module, importObject?: Imports): Instance;
     };
 
-    interface LinkError {
+    interface LinkError extends Error {
     }
 
     var LinkError: {
@@ -18832,7 +18832,7 @@ declare namespace WebAssembly {
         imports(moduleObject: Module): ModuleImportDescriptor[];
     };
 
-    interface RuntimeError {
+    interface RuntimeError extends Error {
     }
 
     var RuntimeError: {
