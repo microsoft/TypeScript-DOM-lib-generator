@@ -172,7 +172,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "uniform4iv",
   ],
   WindowEventHandlers: [
-    "onmessage",
     "onoffline",
     "ononline",
     "onpagehide",
