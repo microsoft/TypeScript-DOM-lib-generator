@@ -171,12 +171,7 @@ export const forceKeepAlive: Record<string, string[]> = {
     "uniform4fv",
     "uniform4iv",
   ],
-  WindowEventHandlers: [
-    "onoffline",
-    "ononline",
-    "onpagehide",
-    "onpageshow",
-  ],
+  WindowEventHandlers: ["onoffline", "ononline", "onpagehide", "onpageshow"],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
   WorkletGlobalScope: [],
   // (WebAssembly namespace members)
