@@ -33,26 +33,6 @@
                 "events": {
                     "event": [
                         {
-                            "name": "beforeinput",
-                            "type": "InputEvent"
-                        },
-                        {
-                            "name": "compositionstart",
-                            "type": "CompositionEvent"
-                        },
-                        {
-                            "name": "compositionupdate",
-                            "type": "CompositionEvent"
-                        },
-                        {
-                            "name": "compositionend",
-                            "type": "CompositionEvent"
-                        },
-                        {
-                            "name": "focusin",
-                            "type": "FocusEvent"
-                        },
-                        {
                             "name": "abort",
                             "type": "UIEvent"
                         },
@@ -644,7 +624,7 @@
                     }
                 }
             },
-            // This is used in the React d.ts files, and not including 
+            // This is used in the React d.ts files, and not including
             // it would force an update for anyone using React.
             "StyleMedia": {
                 "name": "StyleMedia",
@@ -1059,28 +1039,6 @@
                         "url": {
                             "name": "url",
                             "type": "DOMString",
-                            "required": 1
-                        }
-                    }
-                }
-            },
-            "MemoryDescriptor": {
-                "legacy-namespace": "WebAssembly",
-                "members": {
-                    "member": {
-                        "shared": {
-                            "name": "shared",
-                            "type": "boolean"
-                        }
-                    }
-                }
-            },
-            "ShadowRootInit": {
-                "members": {
-                    "member": {
-                        "delegatesFocus": {
-                            "name": "delegatesFocus",
-                            "type": "boolean",
                             "required": true
                         }
                     }
@@ -1094,6 +1052,16 @@
                         },
                         "keyCode": {
                             "deprecated": true
+                        }
+                    }
+                }
+            },
+            "MemoryDescriptor": {
+                "members": {
+                    "member": {
+                        "shared": {
+                            "name": "shared",
+                            "type": "boolean"
                         }
                     }
                 }

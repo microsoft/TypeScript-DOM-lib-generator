@@ -1,630 +1,630 @@
 {
-  "callbackFunctions": {
-      "callbackFunction": {
-          "Function": null,
-          "PerformanceObserverCallback": {
-              "signature": {
-                  "0": {
-                      "param": ["options"]
-                  }
-              }
-          }
-      }
-  },
-  "mixins": {
-      "mixin": {
-          "WebGLRenderingContextBase": {
-              "properties": {
-                  "namesakes": {
-                      "canvas": null
-                  }
-              }
-          }
-      }
-  },
-  "enums": {
-      "enum": {
-          "ClientType": null,
-          "ConnectionType": {
-              "value": ["wimax"]
-          },
-          "PermissionName": {
-              "value": [
-                  "midi",
-                  "camera",
-                  "microphone",
-                  "speaker-selection",
-                  "device-info",
-                  "background-fetch",
-                  "background-sync",
-                  "bluetooth",
-                  "ambient-light-sensor",
-                  "accelerometer",
-                  "gyroscope",
-                  "magnetometer",
-                  "clipboard-read",
-                  "clipboard-write",
-                  "display-capture",
-                  "nfc"
-              ]
-          },
-          "ReadableStreamReaderMode": null,
-          "ReadableStreamType": null,
-          "RTCStatsType": {
-              "value": [
-                  "stream",
-                  "transceiver",
-                  "sender",
-                  "receiver",
-                  "sctp-transport",
-                  "ice-server"
-              ]
-          }
-      }
-  },
-  "interfaces": {
-      "interface": {
-          "CSSRule": {
-              "constants": {
-                  "constant": {
-                      "COUNTER_STYLE_RULE": null,
-                      "FONT_FEATURE_VALUES_RULE": null,
-                      "FONT_PALETTE_VALUES_RULE": null,
-                      "MARGIN_RULE": null,
-                      "VIEWPORT_RULE": null
-                  }
-              }
-          },
-          "Document": {
-              "implements": ["GeometryUtils"]
-          },
-          "Element": {
-              "implements": ["GeometryUtils", "Region"]
-          },
-          "IDBDatabase": {
-              "methods": {
-                  "method": {
-                      "transaction": {
-                          "signature": {
-                              "0": {
-                                  "param": ["options"]
-                              }
-                          }
-                      }
-                  }
-              }
-          },
-          "Navigator": {
-              "implements": [
-                  "NavigatorBadge",
-                  "NavigatorDeviceMemory",
-                  "NavigatorFonts",
-                  "NavigatorGPU",
-                  "NavigatorLocks",
-                  "NavigatorML",
-                  "NavigatorUA"
-              ]
-          },
-          "NetworkInformation": {
-              "properties": {
-                  "property": {
-                      "effectiveType": null
-                  }
-              },
-              "implements": ["NetworkInformationSaveData"]
-          },
-          "ReadableStream": {
-              "methods": {
-                  "method": {
-                      "getReader": {
-                          "signature": {
-                              "0": {
-                                  "param": ["options"]
-                              }
-                          }
-                      }
-                  }
-              }
-          },
-          "ServiceWorkerGlobalScope": {
-              "properties": {
-                  "property": {
-                      "onpushsubscriptionchange": null,
-                      "onsync": null
-                  }
-              }
-          },
-          "ServiceWorkerRegistration": {
-              "properties": {
-                  "property": {
-                      "navigationPreload": null
-                  }
-              }
-          },
-          "SVGAltGlyphElement": null,
-          "SVGAnimationElement": {
-              "properties": {
-                  "property": {
-                      "onbegin": null,
-                      "onend": null,
-                      "onrepeat": null
-                  }
-              }
-          },
-          "SVGElement": {
-              "implements": ["SVGElementInstance"]
-          },
-          "SVGFEGaussianBlurElement": {
-              "constants": {
-                  "constant": {
-                      "SVG_EDGEMODE_DUPLICATE": null,
-                      "SVG_EDGEMODE_NONE": null,
-                      "SVG_EDGEMODE_UNKNOWN": null,
-                      "SVG_EDGEMODE_WRAP": null
-                  }
-              }
-          },
-          "Text": {
-              "implements": ["GeometryUtils"]
-          },
-          "WebGLBuffer": {
-              "extends": null
-          },
-          "WebGLFramebuffer": {
-              "extends": null
-          },
-          "WebGLProgram": {
-              "extends": null
-          },
-          "WebGLQuery": {
-              "extends": null
-          },
-          "WebGLRenderbuffer": {
-              "extends": null
-          },
-          "WebGLSampler": {
-              "extends": null
-          },
-          "WebGLShader": {
-              "extends": null
-          },
-          "WebGLSync": {
-              "extends": null
-          },
-          "WebGLTexture": {
-              "extends": null
-          },
-          "WebGLTransformFeedback": {
-              "extends": null
-          },
-          "WebGLVertexArrayObject": {
-              "extends": null
-          },
-          "WebGLVertexArrayObjectOES": {
-              "extends": null
-          },
-          "WorkerNavigator": {
-              "implements": [
-                  "NavigatorBadge",
-                  "NavigatorDeviceMemory",
-                  "NavigatorFonts",
-                  "NavigatorGPU",
-                  "NavigatorLocks",
-                  "NavigatorML",
-                  "NavigatorUA"
-              ]
-          }
-      }
-  },
-  "dictionaries": {
-      "dictionary": {
-          "AuthenticationExtensionsClientInputs": {
-              "members": {
-                  "member": {
-                      "largeBlob": null
-                  }
-              }
-          },
-          "AuthenticationExtensionsClientOutputs": {
-              "members": {
-                  "member": {
-                      "appidExclude": null,
-                      "largeBlob": null
-                  }
-              }
-          },
-          "CredentialCreationOptions": {
-              "members": {
-                  "member": {
-                      "federated": null,
-                      "password": null
-                  }
-              }
-          },
-          "CredentialRequestOptions": {
-              "members": {
-                  "member": {
-                      "federated": null,
-                      "otp": null,
-                      "password": null
-                  }
-              }
-          },
-          "FontFaceDescriptors": {
-              "members": {
-                  "member": {
-                      "ascentOverride": null,
-                      "descentOverride": null,
-                      "lineGapOverride": null,
-                      "variationSettings": null
-                  }
-              }
-          },
-          "KeyframeAnimationOptions": {
-              "members": {
-                  "member": {
-                      "timeline": null
-                  }
-              }
-          },
-          "MediaCapabilitiesDecodingInfo": {
-              "members": {
-                  "member": {
-                      "keySystemAccess": null
-                  }
-              }
-          },
-          "MediaDecodingConfiguration": {
-              "members": {
-                  "member": {
-                      "keySystemConfiguration": null
-                  }
-              }
-          },
-          "MediaRecorderOptions": {
-              "members": {
-                  "member": {
-                      "audioBitrateMode": null
-                  }
-              }
-          },
-          "MediaTrackCapabilities": {
-              "members": {
-                  "member": {
-                      "whiteBalanceMode": null,
-                      "exposureMode": null,
-                      "focusMode": null,
-                      "exposureCompensation": null,
-                      "exposureTime": null,
-                      "colorTemperature": null,
-                      "iso": null,
-                      "brightness": null,
-                      "contrast": null,
-                      "saturation": null,
-                      "sharpness": null,
-                      "focusDistance": null,
-                      "pan": null,
-                      "tilt": null,
-                      "zoom": null,
-                      "torch": null,
-                      "videoKind": null
-                  }
-              }
-          },
-          "MediaTrackConstraintSet": {
-              "members": {
-                  "member": {
-                      "autoGainControl": null,
-                      "cursor": null,
-                      "displaySurface": null,
-                      "logicalSurface": null,
-                      "noiseSuppression": null,
-                      "resizeMode": null,
-                      "restrictOwnAudio": null,
-                      "whiteBalanceMode": null,
-                      "exposureMode": null,
-                      "focusMode": null,
-                      "pointsOfInterest": null,
-                      "exposureCompensation": null,
-                      "exposureTime": null,
-                      "colorTemperature": null,
-                      "iso": null,
-                      "brightness": null,
-                      "contrast": null,
-                      "saturation": null,
-                      "sharpness": null,
-                      "focusDistance": null,
-                      "pan": null,
-                      "tilt": null,
-                      "zoom": null,
-                      "torch": null,
-                      "videoKind": null
-                  }
-              }
-          },
-          "MediaTrackSettings": {
-              "members": {
-                  "member": {
-                      "autoGainControl": null,
-                      "channelCount": null,
-                      "cursor": null,
-                      "displaySurface": null,
-                      "latency": null,
-                      "logicalSurface": null,
-                      "noiseSuppression": null,
-                      "resizeMode": null,
-                      "whiteBalanceMode": null,
-                      "exposureMode": null,
-                      "focusMode": null,
-                      "pointsOfInterest": null,
-                      "exposureCompensation": null,
-                      "exposureTime": null,
-                      "colorTemperature": null,
-                      "iso": null,
-                      "brightness": null,
-                      "contrast": null,
-                      "saturation": null,
-                      "sharpness": null,
-                      "focusDistance": null,
-                      "pan": null,
-                      "tilt": null,
-                      "zoom": null,
-                      "torch": null,
-                      "videoKind": null
-                  }
-              }
-          },
-          "MediaTrackSupportedConstraints": {
-              "members": {
-                  "member": {
-                      "autoGainControl": null,
-                      "channelCount": null,
-                      "cursor": null,
-                      "displaySurface": null,
-                      "latency": null,
-                      "logicalSurface": null,
-                      "noiseSuppression": null,
-                      "resizeMode": null,
-                      "restrictOwnAudio": null,
-                      "whiteBalanceMode": null,
-                      "exposureMode": null,
-                      "focusMode": null,
-                      "pointsOfInterest": null,
-                      "exposureCompensation": null,
-                      "exposureTime": null,
-                      "colorTemperature": null,
-                      "iso": null,
-                      "brightness": null,
-                      "contrast": null,
-                      "saturation": null,
-                      "sharpness": null,
-                      "focusDistance": null,
-                      "pan": null,
-                      "tilt": null,
-                      "zoom": null,
-                      "torch": null,
-                      "videoKind": null
-                  }
-              }
-          },
-          "PerformanceObserverInit": {
-              "members": {
-                  "member": {
-                      "durationThreshold": null
-                  }
-              }
-          },
-          "PointerEventInit": {
-              "members": {
-                  "member": {
-                      "altitudeAngle": null,
-                      "azimuthAngle": null
-                  }
-              }
-          },
-          "ReadableStreamBYOBReadResult": null,
-          "ReadableStreamDefaultReadResult": null,
-          "ReadableStreamGetReaderOptions": null,
-          "RTCConfiguration": {
-              "members": {
-                  "member": {
-                      "peerIdentity": null
-                  }
-              }
-          },
-          "RTCDataChannelInit": {
-              "members": {
-                  "member": {
-                      "priority": null
-                  }
-              }
-          },
-          "RTCIceCandidatePairStats": {
-              "members": {
-                  "member": {
-                      "bytesDiscardedOnSend": null,
-                      "circuitBreakerTriggerCount": null,
-                      "consentExpiredTimestamp": null,
-                      "consentRequestBytesSent": null,
-                      "consentRequestsSent": null,
-                      "firstRequestTimestamp": null,
-                      "lastPacketReceivedTimestamp": null,
-                      "lastPacketSentTimestamp": null,
-                      "lastRequestTimestamp": null,
-                      "lastResponseTimestamp": null,
-                      "packetsDiscardedOnSend": null,
-                      "packetsReceived": null,
-                      "packetsSent": null,
-                      "requestBytesSent": null,
-                      "responseBytesSent": null,
-                      "retransmissionsReceived": null,
-                      "retransmissionsSent": null
-                  }
-              }
-          },
-          "RTCInboundRtpStreamStats": {
-              "members": {
-                  "member": {
-                      "receiverId": null,
-                      "keyFramesDecoded": null,
-                      "frameWidth": null,
-                      "frameHeight": null,
-                      "frameBitDepth": null,
-                      "framesPerSecond": null,
-                      "totalDecodeTime": null,
-                      "totalInterFrameDelay": null,
-                      "totalSquaredInterFrameDelay": null,
-                      "voiceActivityFlag": null,
-                      "lastPacketReceivedTimestamp": null,
-                      "averageRtcpInterval": null,
-                      "headerBytesReceived": null,
-                      "fecPacketsReceived": null,
-                      "fecPacketsDiscarded": null,
-                      "bytesReceived": null,
-                      "packetsFailedDecryption": null,
-                      "packetsDuplicated": null,
-                      "perDscpPacketsReceived": null,
-                      "sliCount": null,
-                      "totalProcessingDelay": null,
-                      "estimatedPlayoutTimestamp": null,
-                      "jitterBufferDelay": null,
-                      "jitterBufferEmittedCount": null,
-                      "totalSamplesReceived": null,
-                      "totalSamplesDecoded": null,
-                      "samplesDecodedWithSilk": null,
-                      "samplesDecodedWithCelt": null,
-                      "concealedSamples": null,
-                      "silentConcealedSamples": null,
-                      "concealmentEvents": null,
-                      "insertedSamplesForDeceleration": null,
-                      "removedSamplesForAcceleration": null,
-                      "audioLevel": null,
-                      "totalAudioEnergy": null,
-                      "totalSamplesDuration": null,
-                      "framesReceived": null,
-                      "decoderImplementation": null
-                  }
-              }
-          },
-          "RTCOutboundRtpStreamStats": {
-              "members": {
-                  "member": {
-                      "rtxSsrc": null,
-                      "mediaSourceId": null,
-                      "senderId": null,
-                      "rid": null,
-                      "lastPacketSentTimestamp": null,
-                      "headerBytesSent": null,
-                      "packetsDiscardedOnSend": null,
-                      "bytesDiscardedOnSend": null,
-                      "fecPacketsSent": null,
-                      "retransmittedPacketsSent": null,
-                      "retransmittedBytesSent": null,
-                      "targetBitrate": null,
-                      "totalEncodedBytesTarget": null,
-                      "frameWidth": null,
-                      "frameHeight": null,
-                      "frameBitDepth": null,
-                      "framesPerSecond": null,
-                      "framesSent": null,
-                      "hugeFramesSent": null,
-                      "keyFramesEncoded": null,
-                      "framesDiscardedOnSend": null,
-                      "totalSamplesSent": null,
-                      "samplesEncodedWithSilk": null,
-                      "samplesEncodedWithCelt": null,
-                      "voiceActivityFlag": null,
-                      "totalEncodeTime": null,
-                      "totalPacketSendDelay": null,
-                      "averageRtcpInterval": null,
-                      "qualityLimitationReason": null,
-                      "qualityLimitationDurations": null,
-                      "qualityLimitationResolutionChanges": null,
-                      "perDscpPacketsSent": null,
-                      "sliCount": null,
-                      "encoderImplementation": null
-                  }
-              }
-          },
-          "RTCReceivedRtpStreamStats": {
-              "members": {
-                  "member": {
-                      "packetsRepaired": null,
-                      "burstPacketsLost": null,
-                      "burstPacketsDiscarded": null,
-                      "burstLossCount": null,
-                      "burstDiscardCount": null,
-                      "burstLossRate": null,
-                      "burstDiscardRate": null,
-                      "gapLossRate": null,
-                      "gapDiscardRate": null,
-                      "framesDropped": null,
-                      "partialFramesLost": null,
-                      "fullFramesLost": null
-                  }
-              }
-          },
-          "RTCRtpCodecCapability": {
-              "members": {
-                  "member": {
-                      "scalabilityModes": null
-                  }
-              }
-          },
-          "RTCRtpEncodingParameters": {
-              "members": {
-                  "member": {
-                      "networkPriority": null,
-                      "scalabilityMode": null
-                  }
-              }
-          },
-          "RTCTransportStats": {
-              "members": {
-                  "member": {
-                      "packetsSent": null,
-                      "packetsReceived": null,
-                      "iceRole": null,
-                      "iceLocalUsernameFragment": null,
-                      "iceState": null,
-                      "tlsGroup": null,
-                      "selectedCandidatePairChanges": null
-                  }
-              }
-          },
-          "UIEventInit": {
-              "members": {
-                  "member": {
-                      "sourceCapabilities": null
-                  }
-              }
-          },
-          "UnderlyingSource": {
-              "members": {
-                  "member": {
-                      "autoAllocateChunkSize": null
-                  }
-              }
-          },
-          "VideoConfiguration": {
-              "members": {
-                  "member": {
-                      "hasAlphaChannel": null
-                  }
-              }
-          },
-          "WebGLContextAttributes": {
-              "members": {
-                  "member": {
-                      "xrCompatible": null
-                  }
-              }
-          }
-      }
-  },
-  "typedefs": {
-      "typedef": [
-          "ArrayBufferView"
-      ]
-  }
+    "callbackFunctions": {
+        "callbackFunction": {
+            "Function": null,
+            "PerformanceObserverCallback": {
+                "signature": {
+                    "0": {
+                        "param": ["options"]
+                    }
+                }
+            }
+        }
+    },
+    "mixins": {
+        "mixin": {
+            "WebGLRenderingContextBase": {
+                "properties": {
+                    "namesakes": {
+                        "canvas": null
+                    }
+                }
+            }
+        }
+    },
+    "enums": {
+        "enum": {
+            "ClientType": null,
+            "ConnectionType": {
+                "value": ["wimax"]
+            },
+            "PermissionName": {
+                "value": [
+                    "midi",
+                    "camera",
+                    "microphone",
+                    "speaker-selection",
+                    "device-info",
+                    "background-fetch",
+                    "background-sync",
+                    "bluetooth",
+                    "ambient-light-sensor",
+                    "accelerometer",
+                    "gyroscope",
+                    "magnetometer",
+                    "clipboard-read",
+                    "clipboard-write",
+                    "display-capture",
+                    "nfc"
+                ]
+            },
+            "ReadableStreamReaderMode": null,
+            "ReadableStreamType": null,
+            "RTCStatsType": {
+                "value": [
+                    "stream",
+                    "transceiver",
+                    "sender",
+                    "receiver",
+                    "sctp-transport",
+                    "ice-server"
+                ]
+            }
+        }
+    },
+    "interfaces": {
+        "interface": {
+            "CSSRule": {
+                "constants": {
+                    "constant": {
+                        "COUNTER_STYLE_RULE": null,
+                        "FONT_FEATURE_VALUES_RULE": null,
+                        "FONT_PALETTE_VALUES_RULE": null,
+                        "MARGIN_RULE": null,
+                        "VIEWPORT_RULE": null
+                    }
+                }
+            },
+            "Document": {
+                "implements": ["GeometryUtils"]
+            },
+            "Element": {
+                "implements": ["GeometryUtils", "Region"]
+            },
+            "IDBDatabase": {
+                "methods": {
+                    "method": {
+                        "transaction": {
+                            "signature": {
+                                "0": {
+                                    "param": ["options"]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Navigator": {
+                "implements": [
+                    "NavigatorBadge",
+                    "NavigatorDeviceMemory",
+                    "NavigatorFonts",
+                    "NavigatorGPU",
+                    "NavigatorLocks",
+                    "NavigatorML",
+                    "NavigatorUA"
+                ]
+            },
+            "NetworkInformation": {
+                "properties": {
+                    "property": {
+                        "effectiveType": null
+                    }
+                },
+                "implements": ["NetworkInformationSaveData"]
+            },
+            "ReadableStream": {
+                "methods": {
+                    "method": {
+                        "getReader": {
+                            "signature": {
+                                "0": {
+                                    "param": ["options"]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ServiceWorkerGlobalScope": {
+                "properties": {
+                    "property": {
+                        "onpushsubscriptionchange": null,
+                        "onsync": null
+                    }
+                }
+            },
+            "ServiceWorkerRegistration": {
+                "properties": {
+                    "property": {
+                        "navigationPreload": null
+                    }
+                }
+            },
+            "SVGAltGlyphElement": null,
+            "SVGAnimationElement": {
+                "properties": {
+                    "property": {
+                        "onbegin": null,
+                        "onend": null,
+                        "onrepeat": null
+                    }
+                }
+            },
+            "SVGElement": {
+                "implements": ["SVGElementInstance"]
+            },
+            "SVGFEGaussianBlurElement": {
+                "constants": {
+                    "constant": {
+                        "SVG_EDGEMODE_DUPLICATE": null,
+                        "SVG_EDGEMODE_NONE": null,
+                        "SVG_EDGEMODE_UNKNOWN": null,
+                        "SVG_EDGEMODE_WRAP": null
+                    }
+                }
+            },
+            "Text": {
+                "implements": ["GeometryUtils"]
+            },
+            "WebGLBuffer": {
+                "extends": null
+            },
+            "WebGLFramebuffer": {
+                "extends": null
+            },
+            "WebGLProgram": {
+                "extends": null
+            },
+            "WebGLQuery": {
+                "extends": null
+            },
+            "WebGLRenderbuffer": {
+                "extends": null
+            },
+            "WebGLSampler": {
+                "extends": null
+            },
+            "WebGLShader": {
+                "extends": null
+            },
+            "WebGLSync": {
+                "extends": null
+            },
+            "WebGLTexture": {
+                "extends": null
+            },
+            "WebGLTransformFeedback": {
+                "extends": null
+            },
+            "WebGLVertexArrayObject": {
+                "extends": null
+            },
+            "WebGLVertexArrayObjectOES": {
+                "extends": null
+            },
+            "WorkerNavigator": {
+                "implements": [
+                    "NavigatorBadge",
+                    "NavigatorDeviceMemory",
+                    "NavigatorFonts",
+                    "NavigatorGPU",
+                    "NavigatorLocks",
+                    "NavigatorML",
+                    "NavigatorUA"
+                ]
+            }
+        }
+    },
+    "dictionaries": {
+        "dictionary": {
+            "AuthenticationExtensionsClientInputs": {
+                "members": {
+                    "member": {
+                        "largeBlob": null
+                    }
+                }
+            },
+            "AuthenticationExtensionsClientOutputs": {
+                "members": {
+                    "member": {
+                        "appidExclude": null,
+                        "largeBlob": null
+                    }
+                }
+            },
+            "CredentialCreationOptions": {
+                "members": {
+                    "member": {
+                        "federated": null,
+                        "password": null
+                    }
+                }
+            },
+            "CredentialRequestOptions": {
+                "members": {
+                    "member": {
+                        "federated": null,
+                        "otp": null,
+                        "password": null
+                    }
+                }
+            },
+            "FontFaceDescriptors": {
+                "members": {
+                    "member": {
+                        "ascentOverride": null,
+                        "descentOverride": null,
+                        "lineGapOverride": null,
+                        "variationSettings": null
+                    }
+                }
+            },
+            "KeyframeAnimationOptions": {
+                "members": {
+                    "member": {
+                        "timeline": null
+                    }
+                }
+            },
+            "MediaCapabilitiesDecodingInfo": {
+                "members": {
+                    "member": {
+                        "keySystemAccess": null
+                    }
+                }
+            },
+            "MediaDecodingConfiguration": {
+                "members": {
+                    "member": {
+                        "keySystemConfiguration": null
+                    }
+                }
+            },
+            "MediaRecorderOptions": {
+                "members": {
+                    "member": {
+                        "audioBitrateMode": null
+                    }
+                }
+            },
+            "MediaTrackCapabilities": {
+                "members": {
+                    "member": {
+                        "whiteBalanceMode": null,
+                        "exposureMode": null,
+                        "focusMode": null,
+                        "exposureCompensation": null,
+                        "exposureTime": null,
+                        "colorTemperature": null,
+                        "iso": null,
+                        "brightness": null,
+                        "contrast": null,
+                        "saturation": null,
+                        "sharpness": null,
+                        "focusDistance": null,
+                        "pan": null,
+                        "tilt": null,
+                        "zoom": null,
+                        "torch": null,
+                        "videoKind": null
+                    }
+                }
+            },
+            "MediaTrackConstraintSet": {
+                "members": {
+                    "member": {
+                        "autoGainControl": null,
+                        "cursor": null,
+                        "displaySurface": null,
+                        "logicalSurface": null,
+                        "noiseSuppression": null,
+                        "resizeMode": null,
+                        "restrictOwnAudio": null,
+                        "whiteBalanceMode": null,
+                        "exposureMode": null,
+                        "focusMode": null,
+                        "pointsOfInterest": null,
+                        "exposureCompensation": null,
+                        "exposureTime": null,
+                        "colorTemperature": null,
+                        "iso": null,
+                        "brightness": null,
+                        "contrast": null,
+                        "saturation": null,
+                        "sharpness": null,
+                        "focusDistance": null,
+                        "pan": null,
+                        "tilt": null,
+                        "zoom": null,
+                        "torch": null,
+                        "videoKind": null
+                    }
+                }
+            },
+            "MediaTrackSettings": {
+                "members": {
+                    "member": {
+                        "autoGainControl": null,
+                        "channelCount": null,
+                        "cursor": null,
+                        "displaySurface": null,
+                        "latency": null,
+                        "logicalSurface": null,
+                        "noiseSuppression": null,
+                        "resizeMode": null,
+                        "whiteBalanceMode": null,
+                        "exposureMode": null,
+                        "focusMode": null,
+                        "pointsOfInterest": null,
+                        "exposureCompensation": null,
+                        "exposureTime": null,
+                        "colorTemperature": null,
+                        "iso": null,
+                        "brightness": null,
+                        "contrast": null,
+                        "saturation": null,
+                        "sharpness": null,
+                        "focusDistance": null,
+                        "pan": null,
+                        "tilt": null,
+                        "zoom": null,
+                        "torch": null,
+                        "videoKind": null
+                    }
+                }
+            },
+            "MediaTrackSupportedConstraints": {
+                "members": {
+                    "member": {
+                        "autoGainControl": null,
+                        "channelCount": null,
+                        "cursor": null,
+                        "displaySurface": null,
+                        "latency": null,
+                        "logicalSurface": null,
+                        "noiseSuppression": null,
+                        "resizeMode": null,
+                        "restrictOwnAudio": null,
+                        "whiteBalanceMode": null,
+                        "exposureMode": null,
+                        "focusMode": null,
+                        "pointsOfInterest": null,
+                        "exposureCompensation": null,
+                        "exposureTime": null,
+                        "colorTemperature": null,
+                        "iso": null,
+                        "brightness": null,
+                        "contrast": null,
+                        "saturation": null,
+                        "sharpness": null,
+                        "focusDistance": null,
+                        "pan": null,
+                        "tilt": null,
+                        "zoom": null,
+                        "torch": null,
+                        "videoKind": null
+                    }
+                }
+            },
+            "PerformanceObserverInit": {
+                "members": {
+                    "member": {
+                        "durationThreshold": null
+                    }
+                }
+            },
+            "PointerEventInit": {
+                "members": {
+                    "member": {
+                        "altitudeAngle": null,
+                        "azimuthAngle": null
+                    }
+                }
+            },
+            "ReadableStreamBYOBReadResult": null,
+            "ReadableStreamDefaultReadResult": null,
+            "ReadableStreamGetReaderOptions": null,
+            "RTCConfiguration": {
+                "members": {
+                    "member": {
+                        "peerIdentity": null
+                    }
+                }
+            },
+            "RTCDataChannelInit": {
+                "members": {
+                    "member": {
+                        "priority": null
+                    }
+                }
+            },
+            "RTCIceCandidatePairStats": {
+                "members": {
+                    "member": {
+                        "bytesDiscardedOnSend": null,
+                        "circuitBreakerTriggerCount": null,
+                        "consentExpiredTimestamp": null,
+                        "consentRequestBytesSent": null,
+                        "consentRequestsSent": null,
+                        "firstRequestTimestamp": null,
+                        "lastPacketReceivedTimestamp": null,
+                        "lastPacketSentTimestamp": null,
+                        "lastRequestTimestamp": null,
+                        "lastResponseTimestamp": null,
+                        "packetsDiscardedOnSend": null,
+                        "packetsReceived": null,
+                        "packetsSent": null,
+                        "requestBytesSent": null,
+                        "responseBytesSent": null,
+                        "retransmissionsReceived": null,
+                        "retransmissionsSent": null
+                    }
+                }
+            },
+            "RTCInboundRtpStreamStats": {
+                "members": {
+                    "member": {
+                        "receiverId": null,
+                        "keyFramesDecoded": null,
+                        "frameWidth": null,
+                        "frameHeight": null,
+                        "frameBitDepth": null,
+                        "framesPerSecond": null,
+                        "totalDecodeTime": null,
+                        "totalInterFrameDelay": null,
+                        "totalSquaredInterFrameDelay": null,
+                        "voiceActivityFlag": null,
+                        "lastPacketReceivedTimestamp": null,
+                        "averageRtcpInterval": null,
+                        "headerBytesReceived": null,
+                        "fecPacketsReceived": null,
+                        "fecPacketsDiscarded": null,
+                        "bytesReceived": null,
+                        "packetsFailedDecryption": null,
+                        "packetsDuplicated": null,
+                        "perDscpPacketsReceived": null,
+                        "sliCount": null,
+                        "totalProcessingDelay": null,
+                        "estimatedPlayoutTimestamp": null,
+                        "jitterBufferDelay": null,
+                        "jitterBufferEmittedCount": null,
+                        "totalSamplesReceived": null,
+                        "totalSamplesDecoded": null,
+                        "samplesDecodedWithSilk": null,
+                        "samplesDecodedWithCelt": null,
+                        "concealedSamples": null,
+                        "silentConcealedSamples": null,
+                        "concealmentEvents": null,
+                        "insertedSamplesForDeceleration": null,
+                        "removedSamplesForAcceleration": null,
+                        "audioLevel": null,
+                        "totalAudioEnergy": null,
+                        "totalSamplesDuration": null,
+                        "framesReceived": null,
+                        "decoderImplementation": null
+                    }
+                }
+            },
+            "RTCOutboundRtpStreamStats": {
+                "members": {
+                    "member": {
+                        "rtxSsrc": null,
+                        "mediaSourceId": null,
+                        "senderId": null,
+                        "rid": null,
+                        "lastPacketSentTimestamp": null,
+                        "headerBytesSent": null,
+                        "packetsDiscardedOnSend": null,
+                        "bytesDiscardedOnSend": null,
+                        "fecPacketsSent": null,
+                        "retransmittedPacketsSent": null,
+                        "retransmittedBytesSent": null,
+                        "targetBitrate": null,
+                        "totalEncodedBytesTarget": null,
+                        "frameWidth": null,
+                        "frameHeight": null,
+                        "frameBitDepth": null,
+                        "framesPerSecond": null,
+                        "framesSent": null,
+                        "hugeFramesSent": null,
+                        "keyFramesEncoded": null,
+                        "framesDiscardedOnSend": null,
+                        "totalSamplesSent": null,
+                        "samplesEncodedWithSilk": null,
+                        "samplesEncodedWithCelt": null,
+                        "voiceActivityFlag": null,
+                        "totalEncodeTime": null,
+                        "totalPacketSendDelay": null,
+                        "averageRtcpInterval": null,
+                        "qualityLimitationReason": null,
+                        "qualityLimitationDurations": null,
+                        "qualityLimitationResolutionChanges": null,
+                        "perDscpPacketsSent": null,
+                        "sliCount": null,
+                        "encoderImplementation": null
+                    }
+                }
+            },
+            "RTCReceivedRtpStreamStats": {
+                "members": {
+                    "member": {
+                        "packetsRepaired": null,
+                        "burstPacketsLost": null,
+                        "burstPacketsDiscarded": null,
+                        "burstLossCount": null,
+                        "burstDiscardCount": null,
+                        "burstLossRate": null,
+                        "burstDiscardRate": null,
+                        "gapLossRate": null,
+                        "gapDiscardRate": null,
+                        "framesDropped": null,
+                        "partialFramesLost": null,
+                        "fullFramesLost": null
+                    }
+                }
+            },
+            "RTCRtpCodecCapability": {
+                "members": {
+                    "member": {
+                        "scalabilityModes": null
+                    }
+                }
+            },
+            "RTCRtpEncodingParameters": {
+                "members": {
+                    "member": {
+                        "networkPriority": null,
+                        "scalabilityMode": null
+                    }
+                }
+            },
+            "RTCTransportStats": {
+                "members": {
+                    "member": {
+                        "packetsSent": null,
+                        "packetsReceived": null,
+                        "iceRole": null,
+                        "iceLocalUsernameFragment": null,
+                        "iceState": null,
+                        "tlsGroup": null,
+                        "selectedCandidatePairChanges": null
+                    }
+                }
+            },
+            "UIEventInit": {
+                "members": {
+                    "member": {
+                        "sourceCapabilities": null
+                    }
+                }
+            },
+            "UnderlyingSource": {
+                "members": {
+                    "member": {
+                        "autoAllocateChunkSize": null
+                    }
+                }
+            },
+            "VideoConfiguration": {
+                "members": {
+                    "member": {
+                        "hasAlphaChannel": null
+                    }
+                }
+            },
+            "WebGLContextAttributes": {
+                "members": {
+                    "member": {
+                        "xrCompatible": null
+                    }
+                }
+            }
+        }
+    },
+    "typedefs": {
+        "typedef": [
+            "ArrayBufferView"
+        ]
+    }
 }

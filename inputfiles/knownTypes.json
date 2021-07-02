@@ -43,13 +43,11 @@
         "RTCInboundRtpStreamStats",
         "RTCOutboundRtpStreamStats",
         "RTCReceivedRtpStreamStats",
-        "RTCQualityLimitationReason",
         "RTCRtpStreamStats",
         "RTCSentRtpStreamStats",
         "RTCStats",
         "RTCStatsIceCandidatePairState",
         "RTCStatsType",
-        "RTCIceRole",
         "RTCTransportStats",
         "Transferable",
         "VideoFacingModeEnum"

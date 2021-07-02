@@ -1592,7 +1592,7 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 }
 
 interface ShadowRootInit {
-    delegatesFocus: boolean;
+    delegatesFocus?: boolean;
     mode: ShadowRootMode;
     slotAssignment?: SlotAssignmentMode;
 }
@@ -18786,13 +18786,11 @@ type RTCIceCredentialType = "password";
 type RTCIceGathererState = "complete" | "gathering" | "new";
 type RTCIceGatheringState = "complete" | "gathering" | "new";
 type RTCIceProtocol = "tcp" | "udp";
-type RTCIceRole = "controlled" | "controlling" | "unknown";
 type RTCIceTcpCandidateType = "active" | "passive" | "so";
 type RTCIceTransportPolicy = "all" | "relay";
 type RTCIceTransportState = "checking" | "closed" | "completed" | "connected" | "disconnected" | "failed" | "new";
 type RTCPeerConnectionState = "closed" | "connected" | "connecting" | "disconnected" | "failed" | "new";
 type RTCPriorityType = "high" | "low" | "medium" | "very-low";
-type RTCQualityLimitationReason = "bandwidth" | "cpu" | "none" | "other";
 type RTCRtcpMuxPolicy = "require";
 type RTCRtpTransceiverDirection = "inactive" | "recvonly" | "sendonly" | "sendrecv" | "stopped";
 type RTCSdpType = "answer" | "offer" | "pranswer" | "rollback";
