@@ -491,6 +491,10 @@
         "title": "SVG - Painting"
     },
     {
+        "url": "https://www.w3.org/TR/SVG2/paths.html",
+        "title": "SVG - Paths"
+    },
+    {
         "url": "https://www.w3.org/TR/SVG2/pservers.html",
         "title": "SVG - Paint Servers"
     },

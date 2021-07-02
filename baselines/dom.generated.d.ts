@@ -2874,6 +2874,7 @@ interface CSSStyleDeclaration {
     cssFloat: string;
     cssText: string;
     cursor: string;
+    d: string;
     direction: string;
     display: string;
     dominantBaseline: string;
@@ -13771,11 +13772,7 @@ declare var SVGNumberList: {
 };
 
 /** Corresponds to the <path> element. */
-interface SVGPathElement extends SVGGraphicsElement {
-    /** @deprecated */
-    readonly pathSegList: SVGPathSegList;
-    getPointAtLength(distance: number): SVGPoint;
-    getTotalLength(): number;
+interface SVGPathElement extends SVGGeometryElement {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -19207,7 +19204,6 @@ interface SVGElementTagNameMap {
     "marker": SVGMarkerElement;
     "mask": SVGMaskElement;
     "metadata": SVGMetadataElement;
-    "path": SVGPathElement;
     "pattern": SVGPatternElement;
     "polygon": SVGPolygonElement;
     "polyline": SVGPolylineElement;
