@@ -1,0 +1,34 @@
+name: Deploy to npm
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "15.x"
+          registry-url: "https://registry.npmjs.org"
+
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+  
+      - name: Create packages for .d.ts files
+        run: node deploy/createTypesPackages.mjs
+        
+      # Deploy anything which differs from the npm version of a tsconfig
+      - name: 'Deploy built packages to NPM'
+        run: node deploy/deployChangedPackages.mjs
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        

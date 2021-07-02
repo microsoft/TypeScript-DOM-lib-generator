@@ -29,5 +29,5 @@ jobs:
           commit-message: "chore(package): update core dependencies"
           title: "chore(package): update core dependencies"
           branch: update-core-deps
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.TS_GITHUB_BOT_AUTH }}
 

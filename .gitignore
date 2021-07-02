@@ -284,3 +284,5 @@ inputfiles/browser.webidl.json
 .vscode/*
 !.vscode/launch.template.json
 yarn.lock
+TypeScript
+deploy/generated

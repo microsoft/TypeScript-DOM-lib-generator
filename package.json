@@ -1,6 +1,7 @@
 {
-  "name": "types-web",
-  "version": "0.1.19",
+  "name": "typescript-dom-lib-generator",
+  "version": "0.0.1",
+  "private": true,
   "description": "Provides TypeScript types for the latest web APIs.",
   "keywords": [
     "typescript",
@@ -19,6 +20,7 @@
     "lint": "eslint --max-warnings 0 src",
     "test": "npm run lint && npm run build && node ./lib/test.js && node ./unittests/index.js",
     "changelog": "tsc && node ./lib/changelog.js",
+    "migrate": "node ./lib/migrate.js",
     "version": "npm i && tsc && node ./lib/version.js"
   },
   "author": {
@@ -26,9 +28,12 @@
     "email": "saschanaz@outlook.com",
     "url": "https://github.com/saschanaz"
   },
+  "contributors": [
+    "Microsoft Corp."
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/saschanaz/types-web/"
+    "url": "https://github.com/microsoft/TypeScript-DOM-lib-generator/"
   },
   "license": "Apache-2.0",
   "type": "module",
@@ -44,6 +49,7 @@
     "@webref/elements": "1.0.1",
     "@webref/idl": "2.2.6",
     "cpx2": "^3.0.0",
+    "danger": "^10.6.6",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
@@ -55,8 +61,5 @@
     "styleless-innertext": "^1.1.3",
     "typescript": "^4.3.5",
     "webidl2": "^24.1.2"
-  },
-  "files": [
-    "baselines/*"
-  ]
+  }
 }

@@ -295,7 +295,7 @@ async function emitDom() {
           console.warn(
             `removedTypes.json has a redundant field ${k} in ${JSON.stringify(
               template
-            )}`
+            ).slice(0, 100)}`
           );
         } else if (Array.isArray(template[k])) {
           if (!Array.isArray(obj[k])) {
