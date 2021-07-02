@@ -501,6 +501,21 @@ interface RsaPssParams extends Algorithm {
     saltLength: number;
 }
 
+interface SecurityPolicyViolationEventInit extends EventInit {
+    blockedURI?: string;
+    columnNumber?: number;
+    disposition: SecurityPolicyViolationEventDisposition;
+    documentURI: string;
+    effectiveDirective: string;
+    lineNumber?: number;
+    originalPolicy: string;
+    referrer?: string;
+    sample?: string;
+    sourceFile?: string;
+    statusCode: number;
+    violatedDirective: string;
+}
+
 interface StorageEstimate {
     quota?: number;
     usage?: number;
@@ -2849,6 +2864,27 @@ declare var Response: {
     new(body?: BodyInit | null, init?: ResponseInit): Response;
     error(): Response;
     redirect(url: string, status?: number): Response;
+};
+
+/** Inherits from Event, and represents the event object of an event sent on a document or worker when its content security policy is violated. */
+interface SecurityPolicyViolationEvent extends Event {
+    readonly blockedURI: string;
+    readonly columnNumber: number;
+    readonly disposition: SecurityPolicyViolationEventDisposition;
+    readonly documentURI: string;
+    readonly effectiveDirective: string;
+    readonly lineNumber: number;
+    readonly originalPolicy: string;
+    readonly referrer: string;
+    readonly sample: string;
+    readonly sourceFile: string;
+    readonly statusCode: number;
+    readonly violatedDirective: string;
+}
+
+declare var SecurityPolicyViolationEvent: {
+    prototype: SecurityPolicyViolationEvent;
+    new(type: string, eventInitDict?: SecurityPolicyViolationEventInit): SecurityPolicyViolationEvent;
 };
 
 interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
@@ -5983,6 +6019,7 @@ type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
+type SecurityPolicyViolationEventDisposition = "enforce" | "report";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type VisibilityState = "hidden" | "visible";

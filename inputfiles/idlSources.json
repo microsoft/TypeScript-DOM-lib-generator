@@ -177,6 +177,10 @@
         "title": "CSS2 Visual formatting details"
     },
     {
+        "url": "https://www.w3.org/TR/CSP3/",
+        "title": "Content Security Policy"
+    },
+    {
         "url": "https://w3c.github.io/deviceorientation/",
         "title": "DeviceOrientation Event"
     },
