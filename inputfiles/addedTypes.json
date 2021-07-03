@@ -179,6 +179,17 @@
                     ]
                 }
             },
+            "WebGLRenderingContextBase": {
+                "properties": {
+                    "property": {
+                        "canvas": {
+                            "name": "canvas",
+                            "exposed": "Window",
+                            "type": "HTMLCanvasElement"
+                        }
+                    }
+                }
+            },
             "WindowEventHandlers": {
                 "events": {
                     "event": [

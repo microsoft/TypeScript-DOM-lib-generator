@@ -16,6 +16,7 @@
             "WebGLRenderingContextBase": {
                 "properties": {
                     "namesakes": {
+                        // This will become redundant when https://github.com/KhronosGroup/WebGL/pull/3296 merges.
                         "canvas": null
                     }
                 }
