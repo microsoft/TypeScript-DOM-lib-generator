@@ -242,14 +242,8 @@
     },
     "enums": {
         "enum": {
-            "ClientTypes": {
-                "name": "ClientTypes",
-                "value": [
-                    "window",
-                    "worker",
-                    "sharedworker",
-                    "all"
-                ]
+            "ClientType": {
+                "name": "ClientTypes"
             },
             "RTCStatsIceCandidatePairState": {
                 "value": [

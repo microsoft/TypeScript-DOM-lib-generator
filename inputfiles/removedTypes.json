@@ -25,7 +25,6 @@
     },
     "enums": {
         "enum": {
-            "ClientType": null,
             "ConnectionType": {
                 "value": ["wimax"]
             },
