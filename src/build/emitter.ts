@@ -826,21 +826,22 @@ export function emitWebIdl(
     entity: { comment?: string; deprecated?: boolean },
     print: (s: string) => void
   ) {
-    let comment = entity.comment;
     if (
-      entity.comment &&
       entity.deprecated &&
-      !entity.comment?.includes("@deprecated") &&
-      entity.comment.startsWith("/*")
+      entity.comment?.endsWith(`*/`) &&
+      !entity.comment?.includes("@deprecated")
     ) {
-      comment = entity.comment.replace("*/", "* @deprecated\n */");
+      entity.comment = entity.comment.replace("*/", "* @deprecated\n */");
     }
 
-    if (comment) {
-      comment.split("\n").forEach(print);
+    if (entity.comment) {
+      if (entity.comment.startsWith("/*")) {
+        entity.comment.split("\n").forEach(print);
+      } else {
+        print(`/** ${entity.comment} */`);
+      }
     }
-
-    if (entity.deprecated && !comment?.includes("@deprecated")) {
+    if (entity.deprecated && !entity.comment?.includes("@deprecated")) {
       print(`/** @deprecated */`);
     }
   }
