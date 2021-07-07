@@ -4236,7 +4236,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Retrieves a collection of all applet objects in the document.
      * @deprecated
      */
-    readonly applets: HTMLCollectionOf<HTMLAppletElement>;
+    readonly applets: HTMLCollection;
     /**
      * Deprecated. Sets or retrieves a value that indicates the background color behind the object.
      * @deprecated
@@ -4556,8 +4556,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * @param commandId String that specifies the command to execute. This command can be any of the command identifiers that can be executed in script.
      * @param showUI Display the user interface, defaults to false.
      * @param value Value to assign.
+     * @deprecated
      */
-    /** @deprecated */
     execCommand(commandId: string, showUI?: boolean, value?: string): boolean;
     /**
      * Stops document's fullscreen element from being displayed fullscreen and resolves promise when done.
@@ -4625,8 +4625,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Returns a Boolean value that indicates whether a specified command can be successfully executed using execCommand, given the current state of the document.
      * @param commandId Specifies a command identifier.
+     * @deprecated
      */
-    /** @deprecated */
     queryCommandEnabled(commandId: string): boolean;
     /**
      * Returns a Boolean value that indicates whether the specified command is in the indeterminate state.
@@ -4636,14 +4636,14 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /**
      * Returns a Boolean value that indicates the current state of the command.
      * @param commandId String that specifies a command identifier.
+     * @deprecated
      */
-    /** @deprecated */
     queryCommandState(commandId: string): boolean;
     /**
      * Returns a Boolean value that indicates whether the current command is supported on the current range.
      * @param commandId Specifies a command identifier.
+     * @deprecated
      */
-    /** @deprecated */
     queryCommandSupported(commandId: string): boolean;
     /**
      * Returns the current value of the document, range, or current selection for the given command.
@@ -5733,8 +5733,8 @@ interface GlobalEventHandlers {
     /**
      * Fires when the user presses an alphanumeric key.
      * @param ev The event.
+     * @deprecated
      */
-    /** @deprecated */
     onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
     /**
      * Fires when the user releases a key.
@@ -5978,56 +5978,6 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
 declare var HTMLAnchorElement: {
     prototype: HTMLAnchorElement;
     new(): HTMLAnchorElement;
-};
-
-interface HTMLAppletElement extends HTMLElement {
-    /** @deprecated */
-    align: string;
-    /**
-     * Sets or retrieves a text alternative to the graphic.
-     * @deprecated
-     */
-    alt: string;
-    /**
-     * Sets or retrieves a character string that can be used to implement your own archive functionality for the object.
-     * @deprecated
-     */
-    archive: string;
-    /** @deprecated */
-    code: string;
-    /**
-     * Sets or retrieves the URL of the component.
-     * @deprecated
-     */
-    codeBase: string;
-    readonly form: HTMLFormElement | null;
-    /**
-     * Sets or retrieves the height of the object.
-     * @deprecated
-     */
-    height: string;
-    /** @deprecated */
-    hspace: number;
-    /**
-     * Sets or retrieves the shape of the object.
-     * @deprecated
-     */
-    name: string;
-    /** @deprecated */
-    object: string;
-    /** @deprecated */
-    vspace: number;
-    /** @deprecated */
-    width: string;
-    addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAppletElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAppletElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var HTMLAppletElement: {
-    prototype: HTMLAppletElement;
-    new(): HTMLAppletElement;
 };
 
 /** Provides special properties and methods (beyond those of the regular object HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <area> elements. */
@@ -10184,23 +10134,23 @@ declare var MessagePort: {
 interface MimeType {
     /**
      * Returns the MIME type's description.
+     * @deprecated
      */
-    /** @deprecated */
     readonly description: undefined;
     /**
      * Returns the Plugin object that implements this MIME type.
+     * @deprecated
      */
-    /** @deprecated */
     readonly enabledPlugin: undefined;
     /**
      * Returns the MIME type's typical file extensions, in a comma-separated list.
+     * @deprecated
      */
-    /** @deprecated */
     readonly suffixes: undefined;
     /**
      * Returns the MIME type.
+     * @deprecated
      */
-    /** @deprecated */
     readonly type: undefined;
 }
 
@@ -11390,28 +11340,28 @@ declare var PictureInPictureWindow: {
 interface Plugin {
     /**
      * Returns the plugin's description.
+     * @deprecated
      */
-    /** @deprecated */
     readonly description: undefined;
     /**
      * Returns the plugin library's filename, if applicable on the current platform.
+     * @deprecated
      */
-    /** @deprecated */
     readonly filename: undefined;
     /**
      * Returns the number of MIME types, represented by MimeType objects, supported by the plugin.
+     * @deprecated
      */
-    /** @deprecated */
     readonly length: undefined;
     /**
      * Returns the plugin's name.
+     * @deprecated
      */
-    /** @deprecated */
     readonly name: undefined;
     /**
      * Returns the specified MimeType object.
+     * @deprecated
      */
-    /** @deprecated */
     item(index: number): void;
     /** @deprecated */
     namedItem(name: string): void;
@@ -18479,8 +18429,8 @@ declare var onkeydown: ((this: Window, ev: KeyboardEvent) => any) | null;
 /**
  * Fires when the user presses an alphanumeric key.
  * @param ev The event.
+ * @deprecated
  */
-/** @deprecated */
 declare var onkeypress: ((this: Window, ev: KeyboardEvent) => any) | null;
 /**
  * Fires when the user releases a key.
