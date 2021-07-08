@@ -6469,8 +6469,10 @@ declare var HTMLFieldSetElement: {
     new(): HTMLFieldSetElement;
 };
 
-/** Implements the document object model (DOM) representation of the font element. The HTML Font Element <font> defines the font size, font face and color of text. */
-/** @deprecated */
+/**
+ * Implements the document object model (DOM) representation of the font element. The HTML Font Element <font> defines the font size, font face and color of text.
+ * @deprecated
+ */
 interface HTMLFontElement extends HTMLElement {
     /** @deprecated */
     color: string;
@@ -6648,8 +6650,10 @@ declare var HTMLFrameElement: {
 interface HTMLFrameSetElementEventMap extends HTMLElementEventMap, WindowEventHandlersEventMap {
 }
 
-/** Provides special properties (beyond those of the regular HTMLElement interface they also inherit) for manipulating <frameset> elements. */
-/** @deprecated */
+/**
+ * Provides special properties (beyond those of the regular HTMLElement interface they also inherit) for manipulating <frameset> elements.
+ * @deprecated
+ */
 interface HTMLFrameSetElement extends HTMLElement, WindowEventHandlers {
     /**
      * Sets or retrieves the frame widths of the object.
@@ -7340,8 +7344,10 @@ declare var HTMLMapElement: {
     new(): HTMLMapElement;
 };
 
-/** Provides methods to manipulate <marquee> elements. */
-/** @deprecated */
+/**
+ * Provides methods to manipulate <marquee> elements.
+ * @deprecated
+ */
 interface HTMLMarqueeElement extends HTMLElement {
     /** @deprecated */
     behavior: string;
@@ -10129,8 +10135,10 @@ declare var MessagePort: {
     new(): MessagePort;
 };
 
-/** Provides contains information about a MIME type associated with a particular plugin. NavigatorPlugins.mimeTypes returns an array of this object. */
-/** @deprecated */
+/**
+ * Provides contains information about a MIME type associated with a particular plugin. NavigatorPlugins.mimeTypes returns an array of this object.
+ * @deprecated
+ */
 interface MimeType {
     /**
      * Returns the MIME type's description.
@@ -10160,8 +10168,10 @@ declare var MimeType: {
     new(): MimeType;
 };
 
-/** Returns an array of MimeType instances, each of which contains information about a supported browser plugins. This object is returned by NavigatorPlugins.mimeTypes. */
-/** @deprecated */
+/**
+ * Returns an array of MimeType instances, each of which contains information about a supported browser plugins. This object is returned by NavigatorPlugins.mimeTypes.
+ * @deprecated
+ */
 interface MimeTypeArray {
     /** @deprecated */
     readonly length: number;
@@ -10939,8 +10949,10 @@ declare var Path2D: {
     new(path?: Path2D | string): Path2D;
 };
 
-/** This Payment Request API interface is used to store shipping or payment address information. */
-/** @deprecated */
+/**
+ * This Payment Request API interface is used to store shipping or payment address information.
+ * @deprecated
+ */
 interface PaymentAddress {
     /** @deprecated */
     readonly addressLine: ReadonlyArray<string>;
@@ -11335,8 +11347,10 @@ declare var PictureInPictureWindow: {
     new(): PictureInPictureWindow;
 };
 
-/** Provides information about a browser plugin. */
-/** @deprecated */
+/**
+ * Provides information about a browser plugin.
+ * @deprecated
+ */
 interface Plugin {
     /**
      * Returns the plugin's description.
@@ -11374,8 +11388,10 @@ declare var Plugin: {
     new(): Plugin;
 };
 
-/** Used to store a list of Plugin objects describing the available plugins; it's returned by the window.navigator.plugins property. The PluginArray is not a JavaScript array, but has the length property and supports accessing individual items using bracket notation (plugins[2]), as well as via item(index) and namedItem("name") methods. */
-/** @deprecated */
+/**
+ * Used to store a list of Plugin objects describing the available plugins; it's returned by the window.navigator.plugins property. The PluginArray is not a JavaScript array, but has the length property and supports accessing individual items using bracket notation (plugins[2]), as well as via item(index) and namedItem("name") methods.
+ * @deprecated
+ */
 interface PluginArray {
     /** @deprecated */
     readonly length: number;
