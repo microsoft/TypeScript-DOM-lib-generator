@@ -837,13 +837,11 @@ export function emitWebIdl(
         }
 
         split.forEach(print);
+      } else if (entity.deprecated && !entity.comment.includes("@deprecated")) {
+        // Convert into multi-line comment with deprecation notice.
+        print(`/**\n * ${entity.comment}\n * @deprecated\n */`);
       } else {
-        if (entity.deprecated && !entity.comment.includes("@deprecated")) {
-          // Convert into multi-line comment with deprecation notice.
-          print(`/**\n * ${entity.comment}\n * @deprecated\n */`);
-        } else {
-          print(`/** ${entity.comment} */`);
-        }
+        print(`/** ${entity.comment} */`);
       }
     } else if (entity.deprecated) {
       print(`/** @deprecated */`);
