@@ -13,6 +13,42 @@ export const packages = [
         { from: "../generated/dom.iterable.generated.d.ts", to: "index.iterable.d.ts" }
       ],
     },
+    {
+      name: "@types/webworker",
+      description: "Types for the global scope of Web Workers",
+      readme: "./readmes/webworker.md",
+      files: [
+        { from: "../generated/webworker.generated.d.ts", to: "index.d.ts" },
+        { from: "../generated/webworker.iterable.generated.d.ts", to: "index.iterable.d.ts" }
+      ],
+    },
+    {
+      name: "@types/serviceworker",
+      description: "Types for the global scope of Service Workers",
+      readme: "./readmes/serviceworker.md",
+      files: [
+        { from: "../generated/serviceworker.generated.d.ts", to: "index.d.ts" },
+        { from: "../generated/serviceworker.iterable.generated.d.ts", to: "index.iterable.d.ts" }
+      ],
+    },
+    {
+      name: "@types/audioworklet",
+      description: "Types for the global scope of Audio Worklets",
+      readme: "./readmes/audioworklet.md",
+      files: [
+        { from: "../generated/audioworklet.generated.d.ts", to: "index.d.ts" },
+        { from: "../generated/audioworklet.iterable.generated.d.ts", to: "index.iterable.d.ts" }
+      ],
+    },
+    {
+      name: "@types/sharedworker",
+      description: "Types for the global scope of Shared Workers",
+      readme: "./readmes/sharedworker.md",
+      files: [
+        { from: "../generated/sharedworker.generated.d.ts", to: "index.d.ts" },
+        { from: "../generated/sharedworker.iterable.generated.d.ts", to: "index.iterable.d.ts" }
+      ],
+    },
   ];
 
 // Note: You can add 'version: "1.0.0"' to a package above

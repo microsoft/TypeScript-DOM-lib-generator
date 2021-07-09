@@ -2,7 +2,7 @@
 
 This module contains the DOM types for the majority of the web APIs used in a web browser. 
 
-The APIs inside `@types/web` are generated from the specifications for CSS, HTML and JavaScript. Given the size and state of constant change in web browsers, `@types/web` only has APIs which have passed a certain level of standardization and are available in at least two different browser engines. 
+The APIs inside `@types/web` are [generated from](https://github.com/microsoft/TypeScript-DOM-lib-generator/) the specifications for CSS, HTML and JavaScript. Given the size and state of constant change in web browsers, `@types/web` only has APIs which have passed a certain level of standardization and are available in at least two of the most popular browser engines. 
  
 `@types/web` is also included inside TypeScript, available as `dom` in the [`lib`](https://www.typescriptlang.org/tsconfig#lib) section and included in projects by default. By using `@types/web` you can lock your the web APIs used in your projects, easing the process of updating TypeScript and offering more control in your environment. 
 
