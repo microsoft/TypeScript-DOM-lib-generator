@@ -655,6 +655,27 @@
                     }
                 }
             },
+            "DocumentFragment": {
+                "methods": {
+                    "method": {
+                        "getElementById": {
+                            "name": "getElementById",
+                            "overrideSignatures": [
+                                "getElementById(elementId: string): HTMLElement | null"
+                            ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "readonly": 1,
+                            "type": "Document"
+                        }
+                    }
+                }
+            },
             "Node": {
                 "name": "Node",
                 "methods": {
