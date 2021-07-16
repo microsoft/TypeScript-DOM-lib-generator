@@ -175,9 +175,6 @@ function convertInterfaceCommon(
         member.name
       );
     } else if (member.type === "attribute") {
-      if ((member.special as string) === "inherit") {
-        continue; // no need to redeclare
-      }
       const { properties } = result;
       const prop = convertAttribute(member, result.exposed);
       addComments(prop, commentMap, i.name, member.name);
