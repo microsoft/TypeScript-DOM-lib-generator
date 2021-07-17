@@ -134,17 +134,6 @@ export const forceKeepAlive: Record<string, string[]> = {
   HTMLIFrameElement: ["allowPaymentRequest"],
   KeyframeEffect: ["iterationComposite"],
   MediaCapabilities: ["encodingInfo"],
-  MutationEvent: [
-    "attrChange",
-    "attrName",
-    "newValue",
-    "prevValue",
-    "relatedNode",
-    "initMutationEvent",
-    "ADDITION",
-    "MODIFICATION",
-    "REMOVAL",
-  ],
   PaymentRequest: ["shippingAddress"],
   PictureInPictureWindow: [
     "requestPictureInPicture",
