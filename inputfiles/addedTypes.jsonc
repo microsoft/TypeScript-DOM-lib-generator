@@ -619,6 +619,13 @@
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement",
                                 "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
                             ]
+                        },
+                        "caretRangeFromPoint": {
+                            "name": "caretRangeFromPoint",
+                            "deprecated": true,
+                            "overrideSignatures": [
+                                "caretRangeFromPoint(x: number, y: number): Range | null"
+                            ]
                         }
                     }
                 },

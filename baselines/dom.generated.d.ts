@@ -4439,6 +4439,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     /** @deprecated */
     captureEvents(): void;
     /** @deprecated */
+    caretRangeFromPoint(x: number, y: number): Range | null;
+    /** @deprecated */
     clear(): void;
     /**
      * Closes an output stream and forces the sent data to display.
