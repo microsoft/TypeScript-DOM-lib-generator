@@ -725,24 +725,6 @@
                     }
                 }
             },
-            "SpeechRecognition": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "result",
-                            "type": "SpeechRecognitionEvent"
-                        },
-                        {
-                            "name": "nomatch",
-                            "type": "SpeechRecognitionEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "SpeechRecognitionErrorEvent"
-                        }
-                    ]
-                }
-            },
             "SpeechSynthesisUtterance": {
                 "events": {
                     "event": [

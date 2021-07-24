@@ -1,32 +1,7 @@
 export const forceKeepAlive: Record<string, string[]> = {
   // Things that are incorrectly reported as unsupported.
   // These should be filed to https://github.com/mdn/browser-compat-data/issues
-  BeforeUnloadEvent: ["returnValue"],
-  console: [
-    "assert",
-    "clear",
-    "count",
-    "countReset",
-    "debug",
-    "dir",
-    "dirxml",
-    "error",
-    "group",
-    "groupCollapsed",
-    "groupEnd",
-    "info",
-    "log",
-    "profile",
-    "profileEnd",
-    "table",
-    "time",
-    "timeEnd",
-    "timeLog",
-    "timeStamp",
-    "trace",
-    "warn",
-  ],
-  CSSGroupingRule: ["cssRules", "deleteRule", "insertRule"],
+  console: ["profile", "profileEnd", "timeStamp"],
   CSSStyleDeclaration: [
     "alignContent",
     "alignItems",
@@ -90,12 +65,7 @@ export const forceKeepAlive: Record<string, string[]> = {
     "webkitMaskBoxImageWidth",
     "wordWrap", // TODO: Support for alternative names
   ],
-  CloseEvent: ["code", "reason", "wasClean"],
-  DOMRectList: ["item", "length"],
   DOMMatrix: [
-    "fromFloat32Array",
-    "fromFloat64Array",
-    "fromMatrix",
     "a",
     "b",
     "c",
@@ -119,10 +89,9 @@ export const forceKeepAlive: Record<string, string[]> = {
     "m43",
     "m44",
   ],
-  DOMRect: ["fromRect", "x", "y", "width", "height"],
+  DOMRect: ["x", "y", "width", "height"],
   Document: ["charset", "inputEncoding"],
   Element: ["webkitMatchesSelector"],
-  FileReader: ["onloadstart"],
   Gamepad: ["hapticActuators"],
   GlobalEventHandlers: [
     "ontoggle",
@@ -145,21 +114,6 @@ export const forceKeepAlive: Record<string, string[]> = {
   Request: ["keepalive"],
   RTCDtlsTransport: ["onstatechange", "state"],
   RTCPeerConnection: ["canTrickleIceCandidates"],
-  SVGAnimatedTransformList: ["animVal", "baseVal"],
-  SVGElement: ["ownerSVGElement", "viewportElement"],
-  SVGTransformList: [
-    "numberOfItems",
-    "appendItem",
-    "clear",
-    "consolidate",
-    "createSVGTransformFromMatrix",
-    "getItem",
-    "initialize",
-    "insertItemBefore",
-    "removeItem",
-    "replaceItem",
-  ],
-  SpeechSynthesisEvent: ["charLength"],
   WebAssembly: [
     "compile",
     "compileStreaming",
@@ -188,7 +142,6 @@ export const forceKeepAlive: Record<string, string[]> = {
   ],
   WindowEventHandlers: ["onoffline", "ononline", "onpagehide", "onpageshow"],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
-  WorkletGlobalScope: [],
   // (WebAssembly namespace members)
   // TODO: Shouldn't these be inside "WebAssembly"?
   Instance: ["exports"],
@@ -196,7 +149,4 @@ export const forceKeepAlive: Record<string, string[]> = {
   Memory: ["buffer", "grow"],
   Module: ["customSections", "exports", "imports"],
   Table: ["length", "get", "grow", "set"],
-
-  // Widely supported but without being correctly exposed to global
-  WritableStreamDefaultController: ["error"],
 };

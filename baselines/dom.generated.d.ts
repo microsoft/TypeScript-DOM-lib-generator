@@ -1604,11 +1604,6 @@ interface ShareData {
     url?: string;
 }
 
-interface SpeechRecognitionErrorEventInit extends EventInit {
-    error: SpeechRecognitionErrorCode;
-    message?: string;
-}
-
 interface SpeechSynthesisErrorEventInit extends SpeechSynthesisEventInit {
     error: SpeechSynthesisErrorCode;
 }
@@ -4414,6 +4409,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Gets the URL of the location that referred the user to the current page.
      */
     readonly referrer: string;
+    /** @deprecated */
+    readonly rootElement: SVGSVGElement | null;
     /**
      * Retrieves a collection of all script objects in the document.
      */
@@ -4538,7 +4535,6 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "RTCPeerConnectionIceEvent"): RTCPeerConnectionIceEvent;
     createEvent(eventInterface: "RTCTrackEvent"): RTCTrackEvent;
     createEvent(eventInterface: "SecurityPolicyViolationEvent"): SecurityPolicyViolationEvent;
-    createEvent(eventInterface: "SpeechRecognitionErrorEvent"): SpeechRecognitionErrorEvent;
     createEvent(eventInterface: "SpeechSynthesisErrorEvent"): SpeechSynthesisErrorEvent;
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
@@ -9553,6 +9549,8 @@ interface KeyboardEvent extends UIEvent {
     readonly repeat: boolean;
     readonly shiftKey: boolean;
     getModifierState(keyArg: string): boolean;
+    /** @deprecated */
+    initKeyboardEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window | null, keyArg?: string, locationArg?: number, ctrlKey?: boolean, altKey?: boolean, shiftKey?: boolean, metaKey?: boolean): void;
     readonly DOM_KEY_LOCATION_LEFT: number;
     readonly DOM_KEY_LOCATION_NUMPAD: number;
     readonly DOM_KEY_LOCATION_RIGHT: number;
@@ -11471,6 +11469,7 @@ interface PointerEvent extends MouseEvent {
     readonly twist: number;
     readonly width: number;
     getCoalescedEvents(): PointerEvent[];
+    getPredictedEvents(): PointerEvent[];
 }
 
 declare var PointerEvent: {
@@ -11790,8 +11789,10 @@ declare var RTCPeerConnection: {
 };
 
 interface RTCPeerConnectionIceErrorEvent extends Event {
+    readonly address: string | null;
     readonly errorCode: number;
     readonly errorText: string;
+    readonly port: number | null;
     readonly url: string;
 }
 
@@ -14148,16 +14149,6 @@ interface SpeechRecognitionAlternative {
 declare var SpeechRecognitionAlternative: {
     prototype: SpeechRecognitionAlternative;
     new(): SpeechRecognitionAlternative;
-};
-
-interface SpeechRecognitionErrorEvent extends Event {
-    readonly error: SpeechRecognitionErrorCode;
-    readonly message: string;
-}
-
-declare var SpeechRecognitionErrorEvent: {
-    prototype: SpeechRecognitionErrorEvent;
-    new(type: string, eventInitDict: SpeechRecognitionErrorEventInit): SpeechRecognitionErrorEvent;
 };
 
 interface SpeechRecognitionResult {
@@ -18890,7 +18881,6 @@ type ServiceWorkerState = "activated" | "activating" | "installed" | "installing
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type ShadowRootMode = "closed" | "open";
 type SlotAssignmentMode = "manual" | "named";
-type SpeechRecognitionErrorCode = "aborted" | "audio-capture" | "bad-grammar" | "language-not-supported" | "network" | "no-speech" | "not-allowed" | "service-not-allowed";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
