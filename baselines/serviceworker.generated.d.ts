@@ -5330,6 +5330,7 @@ declare var WorkerLocation: {
 
 /** A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator. */
 interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorNetworkInformation, NavigatorOnLine, NavigatorStorage {
+    readonly mediaCapabilities: MediaCapabilities;
 }
 
 declare var WorkerNavigator: {
