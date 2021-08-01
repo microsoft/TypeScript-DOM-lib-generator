@@ -65,12 +65,13 @@ export function getRemovalData(webidl: Browser.WebIdl): Browser.WebIdl {
 }
 
 export function getDeprecationData(webidl: Browser.WebIdl): Browser.WebIdl {
-  return mapToBcdCompat(webidl, ({ key, compat }) => {
-    if (
-      compat?.status?.deprecated ||
-      (compat?.status?.preferred_name && key.startsWith("webkit"))
-    ) {
+  return mapToBcdCompat(webidl, ({ compat }) => {
+    if (compat?.status?.deprecated) {
       return { deprecated: 1 };
+    } else if (compat?.status?.preferred_name) {
+      return {
+        deprecated: `This is a legacy alias of \`${compat.status.preferred_name}\`.`,
+      };
     }
   }) as Browser.WebIdl;
 }

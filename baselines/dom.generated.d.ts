@@ -3033,49 +3033,49 @@ interface CSSStyleDeclaration {
     userSelect: string;
     verticalAlign: string;
     visibility: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `alignContent`. */
     webkitAlignContent: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `alignItems`. */
     webkitAlignItems: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `alignSelf`. */
     webkitAlignSelf: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animation`. */
     webkitAnimation: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationDelay`. */
     webkitAnimationDelay: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationDirection`. */
     webkitAnimationDirection: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationDuration`. */
     webkitAnimationDuration: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationFillMode`. */
     webkitAnimationFillMode: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationIterationCount`. */
     webkitAnimationIterationCount: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationName`. */
     webkitAnimationName: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationPlayState`. */
     webkitAnimationPlayState: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `animationTimingFunction`. */
     webkitAnimationTimingFunction: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `appearance`. */
     webkitAppearance: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `backfaceVisibility`. */
     webkitBackfaceVisibility: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `backgroundClip`. */
     webkitBackgroundClip: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `backgroundOrigin`. */
     webkitBackgroundOrigin: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `backgroundSize`. */
     webkitBackgroundSize: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `borderBottomLeftRadius`. */
     webkitBorderBottomLeftRadius: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `borderBottomRightRadius`. */
     webkitBorderBottomRightRadius: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `borderRadius`. */
     webkitBorderRadius: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `borderTopLeftRadius`. */
     webkitBorderTopLeftRadius: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `borderTopRightRadius`. */
     webkitBorderTopRightRadius: string;
     /** @deprecated */
     webkitBoxAlign: string;
@@ -3087,83 +3087,83 @@ interface CSSStyleDeclaration {
     webkitBoxOrient: string;
     /** @deprecated */
     webkitBoxPack: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxShadow`. */
     webkitBoxShadow: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxSizing`. */
     webkitBoxSizing: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `filter`. */
     webkitFilter: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flex`. */
     webkitFlex: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flexBasis`. */
     webkitFlexBasis: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flexDirection`. */
     webkitFlexDirection: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flexFlow`. */
     webkitFlexFlow: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flexGrow`. */
     webkitFlexGrow: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flexShrink`. */
     webkitFlexShrink: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `flexWrap`. */
     webkitFlexWrap: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `justifyContent`. */
     webkitJustifyContent: string;
     webkitLineClamp: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `mask`. */
     webkitMask: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskBorder`. */
     webkitMaskBoxImage: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskBorderOutset`. */
     webkitMaskBoxImageOutset: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskBorderRepeat`. */
     webkitMaskBoxImageRepeat: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskBorderSlice`. */
     webkitMaskBoxImageSlice: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskBorderSource`. */
     webkitMaskBoxImageSource: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskBorderWidth`. */
     webkitMaskBoxImageWidth: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskClip`. */
     webkitMaskClip: string;
     webkitMaskComposite: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskImage`. */
     webkitMaskImage: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskOrigin`. */
     webkitMaskOrigin: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskPosition`. */
     webkitMaskPosition: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskRepeat`. */
     webkitMaskRepeat: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `maskSize`. */
     webkitMaskSize: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `order`. */
     webkitOrder: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `perspective`. */
     webkitPerspective: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `perspectiveOrigin`. */
     webkitPerspectiveOrigin: string;
     webkitTextFillColor: string;
     webkitTextStroke: string;
     webkitTextStrokeColor: string;
     webkitTextStrokeWidth: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transform`. */
     webkitTransform: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transformOrigin`. */
     webkitTransformOrigin: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transformStyle`. */
     webkitTransformStyle: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transition`. */
     webkitTransition: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transitionDelay`. */
     webkitTransitionDelay: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transitionDuration`. */
     webkitTransitionDuration: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transitionProperty`. */
     webkitTransitionProperty: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `transitionTimingFunction`. */
     webkitTransitionTimingFunction: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `userSelect`. */
     webkitUserSelect: string;
     whiteSpace: string;
     widows: string;
@@ -4274,6 +4274,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly characterSet: string;
     /**
      * Gets or sets the character set used to encode the object.
+     * @deprecated This is a legacy alias of `characterSet`.
      */
     readonly charset: string;
     /**
@@ -4360,6 +4361,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly implementation: DOMImplementation;
     /**
      * Returns the character encoding used to create the webpage that is loaded into the document object.
+     * @deprecated This is a legacy alias of `characterSet`.
      */
     readonly inputEncoding: string;
     /**
@@ -4996,7 +4998,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
      * Returns true if qualifiedName is now present, and false otherwise.
      */
     toggleAttribute(qualifiedName: string, force?: boolean): boolean;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `matches`. */
     webkitMatchesSelector(selectors: string): boolean;
     addEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -17181,6 +17183,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
 /** A window containing a DOM document; the document property points to the DOM document loaded in that window. */
 interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
     HTMLDocument: Document;
+    /** @deprecated This is a legacy alias of `navigator`. */
     readonly clientInformation: Navigator;
     /**
      * Returns true if the window has been closed, false otherwise.
@@ -17223,7 +17226,9 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly orientation: number;
     readonly outerHeight: number;
     readonly outerWidth: number;
+    /** @deprecated This is a legacy alias of `scrollX`. */
     readonly pageXOffset: number;
+    /** @deprecated This is a legacy alias of `scrollY`. */
     readonly pageYOffset: number;
     readonly parent: WindowProxy | null;
     /**
@@ -18242,6 +18247,7 @@ declare var Option: {
     new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
 };
 declare var HTMLDocument: Document;
+/** @deprecated This is a legacy alias of `navigator`. */
 declare var clientInformation: Navigator;
 /**
  * Returns true if the window has been closed, false otherwise.
@@ -18284,7 +18290,9 @@ declare var opener: any;
 declare var orientation: number;
 declare var outerHeight: number;
 declare var outerWidth: number;
+/** @deprecated This is a legacy alias of `scrollX`. */
 declare var pageXOffset: number;
+/** @deprecated This is a legacy alias of `scrollY`. */
 declare var pageYOffset: number;
 declare var parent: WindowProxy | null;
 /**
