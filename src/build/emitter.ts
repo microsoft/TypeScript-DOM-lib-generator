@@ -791,7 +791,7 @@ export function emitWebIdl(
       } else {
         pType = convertDomTypeToTsType(p);
       }
-      if (p.optional && prefix) {
+      if (p.optional) {
         pType += " | undefined";
       }
       const optionalModifier = !p.optional || prefix ? "" : "?";
