@@ -409,7 +409,7 @@
                         "createObjectURL": {
                             "exposed": "Window Worker",
                             "overrideSignatures": [
-                                "createObjectURL(object: any): string"
+                                "createObjectURL(object: File | Blob | MediaSource): string"
                             ]
                         }
                     }
