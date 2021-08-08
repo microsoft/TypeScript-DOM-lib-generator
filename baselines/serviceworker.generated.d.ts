@@ -3105,7 +3105,6 @@ interface URL {
 declare var URL: {
     prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
-    createObjectURL(object: File | Blob | MediaSource): string;
 };
 
 interface URLSearchParams {

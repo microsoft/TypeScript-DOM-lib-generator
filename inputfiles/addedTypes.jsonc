@@ -402,19 +402,6 @@
                     }
                 }
             },
-            "URL": {
-                "name": "URL",
-                "methods": {
-                    "method": {
-                        "createObjectURL": {
-                            "exposed": "Window Worker",
-                            "overrideSignatures": [
-                                "createObjectURL(object: File | Blob | MediaSource): string"
-                            ]
-                        }
-                    }
-                }
-            },
             "NodeListOf": {
                 "name": "NodeListOf",
                 "typeParameters": [
