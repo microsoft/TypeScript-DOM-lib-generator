@@ -25,10 +25,6 @@ interface MessageEventInit<T = any> extends EventInit {
     source?: MessageEventSource | null;
 }
 
-interface PostMessageOptions {
-    transfer?: any[];
-}
-
 interface QueuingStrategy<T = any> {
     highWaterMark?: number;
     size?: QueuingStrategySize<T>;
@@ -84,6 +80,10 @@ interface StreamPipeOptions {
      * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
      */
     preventClose?: boolean;
+}
+
+interface StructuredSerializeOptions {
+    transfer?: any[];
 }
 
 interface Transformer<I = any, O = any> {
@@ -323,7 +323,7 @@ interface MessagePort extends EventTarget {
      * Throws a "DataCloneError" DOMException if transfer contains duplicate objects or port, or if message could not be cloned.
      */
     postMessage(message: any, transfer: Transferable[]): void;
-    postMessage(message: any, options?: PostMessageOptions): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
     /**
      * Begins dispatching messages received on the port.
      */

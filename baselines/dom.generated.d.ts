@@ -777,6 +777,7 @@ interface MediaStreamAudioSourceOptions {
 interface MediaStreamConstraints {
     audio?: boolean | MediaTrackConstraints;
     peerIdentity?: string;
+    preferCurrentTab?: boolean;
     video?: boolean | MediaTrackConstraints;
 }
 
@@ -1092,10 +1093,6 @@ interface PositionOptions {
     enableHighAccuracy?: boolean;
     maximumAge?: number;
     timeout?: number;
-}
-
-interface PostMessageOptions {
-    transfer?: any[];
 }
 
 interface ProgressEventInit extends EventInit {
@@ -1664,6 +1661,10 @@ interface StreamPipeOptions {
     signal?: AbortSignal;
 }
 
+interface StructuredSerializeOptions {
+    transfer?: any[];
+}
+
 interface SubmitEventInit extends EventInit {
     submitter?: HTMLElement | null;
 }
@@ -1791,7 +1792,7 @@ interface WheelEventInit extends MouseEventInit {
     deltaZ?: number;
 }
 
-interface WindowPostMessageOptions extends PostMessageOptions {
+interface WindowPostMessageOptions extends StructuredSerializeOptions {
     targetOrigin?: string;
 }
 
@@ -5914,9 +5915,13 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** @deprecated This is a legacy alias of `onanimationend`. */
     onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** @deprecated This is a legacy alias of `onanimationiteration`. */
     onwebkitanimationiteration: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** @deprecated This is a legacy alias of `onanimationstart`. */
     onwebkitanimationstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** @deprecated This is a legacy alias of `ontransitionend`. */
     onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
     addEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -10150,7 +10155,7 @@ interface MessagePort extends EventTarget {
      * Throws a "DataCloneError" DOMException if transfer contains duplicate objects or port, or if message could not be cloned.
      */
     postMessage(message: any, transfer: Transferable[]): void;
-    postMessage(message: any, options?: PostMessageOptions): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
     /**
      * Begins dispatching messages received on the port.
      */
@@ -13978,7 +13983,7 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     readonly scriptURL: string;
     readonly state: ServiceWorkerState;
     postMessage(message: any, transfer: Transferable[]): void;
-    postMessage(message: any, options?: PostMessageOptions): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
     addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -17415,7 +17420,7 @@ interface Worker extends EventTarget, AbstractWorker {
      * Clones message and transmits it to worker's global environment. transfer can be passed as a list of objects that are to be transferred rather than cloned.
      */
     postMessage(message: any, transfer: Transferable[]): void;
-    postMessage(message: any, options?: PostMessageOptions): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
     /**
      * Aborts worker's associated global environment.
      */
@@ -18655,9 +18660,13 @@ declare var onvolumechange: ((this: Window, ev: Event) => any) | null;
  * @param ev The event.
  */
 declare var onwaiting: ((this: Window, ev: Event) => any) | null;
+/** @deprecated This is a legacy alias of `onanimationend`. */
 declare var onwebkitanimationend: ((this: Window, ev: Event) => any) | null;
+/** @deprecated This is a legacy alias of `onanimationiteration`. */
 declare var onwebkitanimationiteration: ((this: Window, ev: Event) => any) | null;
+/** @deprecated This is a legacy alias of `onanimationstart`. */
 declare var onwebkitanimationstart: ((this: Window, ev: Event) => any) | null;
+/** @deprecated This is a legacy alias of `ontransitionend`. */
 declare var onwebkittransitionend: ((this: Window, ev: Event) => any) | null;
 declare var onwheel: ((this: Window, ev: WheelEvent) => any) | null;
 declare var onafterprint: ((this: Window, ev: Event) => any) | null;
@@ -18841,7 +18850,7 @@ type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";
 type PanningModelType = "HRTF" | "equalpower";
 type PaymentComplete = "fail" | "success" | "unknown";
-type PermissionName = "gamepad" | "geolocation" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock";
+type PermissionName = "geolocation" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock";
 type PermissionState = "denied" | "granted" | "prompt";
 type PlaybackDirection = "alternate" | "alternate-reverse" | "normal" | "reverse";
 type PositionAlignSetting = "auto" | "center" | "line-left" | "line-right";
