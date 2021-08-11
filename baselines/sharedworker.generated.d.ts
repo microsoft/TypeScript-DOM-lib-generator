@@ -892,7 +892,7 @@ declare var CustomEvent: {
 };
 
 /** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
-interface DOMException {
+interface DOMException extends Error {
     readonly code: number;
     readonly message: string;
     readonly name: string;
