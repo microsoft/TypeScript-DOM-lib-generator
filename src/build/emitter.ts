@@ -153,7 +153,6 @@ export function emitWebIdl(
   );
 
   const allInterfacesMap = toNameMap(allInterfaces);
-  const allTypedefsMap = toNameMap(webidl.typedefs?.typedef ?? []);
   const allLegacyWindowAliases = allInterfaces.flatMap(
     (i) => i.legacyWindowAlias
   );
@@ -161,7 +160,7 @@ export function emitWebIdl(
   const allEnumsMap = webidl.enums ? webidl.enums.enum : {};
   const allCallbackFunctionsMap =
     webidl.callbackFunctions?.callbackFunction ?? {};
-  const allTypeDefsMap = new Set(webidl.typedefs?.typedef.map((td) => td.name));
+  const allTypedefsMap = toNameMap(webidl.typedefs?.typedef ?? []);
 
   /// Tag name to element name map
   const tagNameToEleName = getTagNameToElementNameMap();
@@ -416,7 +415,7 @@ export function emitWebIdl(
     )
       return objDomType;
     // Name of a type alias. Just return itself
-    if (allTypeDefsMap.has(objDomType)) return objDomType;
+    if (allTypedefsMap[objDomType]) return objDomType;
 
     throw new Error("Unknown DOM type: " + objDomType);
   }
