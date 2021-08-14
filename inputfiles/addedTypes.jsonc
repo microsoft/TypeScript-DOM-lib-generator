@@ -201,6 +201,10 @@
                             "type": "BeforeUnloadEvent"
                         },
                         {
+                            "name": "hashchange",
+                            "type": "HashChangeEvent"
+                        },
+                        {
                             "name": "message",
                             "type": "MessageEvent"
                         },

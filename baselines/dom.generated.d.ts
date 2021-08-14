@@ -16129,7 +16129,7 @@ interface WindowEventHandlersEventMap {
     "beforeunload": BeforeUnloadEvent;
     "gamepadconnected": Event;
     "gamepaddisconnected": Event;
-    "hashchange": Event;
+    "hashchange": HashChangeEvent;
     "languagechange": Event;
     "message": MessageEvent;
     "messageerror": MessageEvent;
@@ -16150,7 +16150,7 @@ interface WindowEventHandlers {
     onbeforeunload: ((this: WindowEventHandlers, ev: BeforeUnloadEvent) => any) | null;
     ongamepadconnected: ((this: WindowEventHandlers, ev: Event) => any) | null;
     ongamepaddisconnected: ((this: WindowEventHandlers, ev: Event) => any) | null;
-    onhashchange: ((this: WindowEventHandlers, ev: Event) => any) | null;
+    onhashchange: ((this: WindowEventHandlers, ev: HashChangeEvent) => any) | null;
     onlanguagechange: ((this: WindowEventHandlers, ev: Event) => any) | null;
     onmessage: ((this: WindowEventHandlers, ev: MessageEvent) => any) | null;
     onmessageerror: ((this: WindowEventHandlers, ev: MessageEvent) => any) | null;
@@ -17428,7 +17428,7 @@ declare var onbeforeprint: ((this: Window, ev: Event) => any) | null;
 declare var onbeforeunload: ((this: Window, ev: BeforeUnloadEvent) => any) | null;
 declare var ongamepadconnected: ((this: Window, ev: Event) => any) | null;
 declare var ongamepaddisconnected: ((this: Window, ev: Event) => any) | null;
-declare var onhashchange: ((this: Window, ev: Event) => any) | null;
+declare var onhashchange: ((this: Window, ev: HashChangeEvent) => any) | null;
 declare var onlanguagechange: ((this: Window, ev: Event) => any) | null;
 declare var onmessage: ((this: Window, ev: MessageEvent) => any) | null;
 declare var onmessageerror: ((this: Window, ev: MessageEvent) => any) | null;
