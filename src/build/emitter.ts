@@ -153,6 +153,7 @@ export function emitWebIdl(
   );
 
   const allInterfacesMap = toNameMap(allInterfaces);
+  const allTypedefsMap = toNameMap(webidl.typedefs?.typedef ?? []);
   const allLegacyWindowAliases = allInterfaces.flatMap(
     (i) => i.legacyWindowAlias
   );
@@ -648,11 +649,22 @@ export function emitWebIdl(
   }
 
   function resolvePromise<T extends Browser.Typed>(t: T): T {
-    if (t.type !== "Promise") {
+    const typedef =
+      typeof t.type === "string" ? allTypedefsMap[t.type] : undefined;
+    const typeOwner = typedef ?? t;
+    if (typeOwner.type !== "Promise") {
+      if (t.subtype) {
+        return {
+          ...t,
+          subtype: Array.isArray(t.subtype)
+            ? t.subtype.map(resolvePromise)
+            : resolvePromise(t.subtype),
+        };
+      }
       return t;
     }
-    const type = [t.subtype!].flat();
-    type.push({ ...t, type: "PromiseLike" });
+    const type = [typeOwner.subtype!].flat();
+    type.push({ ...typeOwner, type: "PromiseLike" });
     return { ...t, subtype: undefined, type };
   }
 

@@ -3456,7 +3456,7 @@ interface ClipboardItem {
 
 declare var ClipboardItem: {
     prototype: ClipboardItem;
-    new(items: Record<string, ClipboardItemData>, options?: ClipboardItemOptions): ClipboardItem;
+    new(items: Record<string, ClipboardItemDataType | PromiseLike<ClipboardItemDataType>>, options?: ClipboardItemOptions): ClipboardItem;
 };
 
 /** A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute. */
