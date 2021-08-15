@@ -169,6 +169,10 @@
                             "type": "SecurityPolicyViolationEvent"
                         },
                         {
+                            "name": "submit",
+                            "type": "SubmitEvent"
+                        },
+                        {
                             "name": "dblclick",
                             "type": "MouseEvent"
                         },
