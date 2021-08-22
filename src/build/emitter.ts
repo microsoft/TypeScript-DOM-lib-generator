@@ -8,6 +8,7 @@ import {
   arrayToMap,
   integerTypes,
   baseTypeConversionMap,
+  assertUnique,
 } from "./helpers.js";
 import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
 
@@ -1198,7 +1199,7 @@ export function emitWebIdl(
       .map(processIName);
 
     if (finalExtends.length) {
-      printer.print(` extends ${finalExtends.join(", ")}`);
+      printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);
     }
     printer.print(" {");
     printer.endLine();
@@ -1314,7 +1315,7 @@ export function emitWebIdl(
       printer.print(`interface ${i.name}EventMap`);
       if (ehParentCount) {
         const extend = iNameToEhParents[i.name].map((i) => i.name + "EventMap");
-        printer.print(` extends ${extend.join(", ")}`);
+        printer.print(` extends ${assertUnique(extend).join(", ")}`);
       }
       printer.print(" {");
       printer.endLine();

@@ -325,3 +325,10 @@ export function followTypeReferences(
     }
   }
 }
+
+export function assertUnique(list: string[]): string[] {
+  if (new Set(list).size < list.length) {
+    throw new Error(`Duplicate items found in the list: ${list}`);
+  }
+  return list;
+}
