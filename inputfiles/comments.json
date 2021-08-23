@@ -1554,7 +1554,7 @@
                             "comment": "Gets or sets the current playback position, in seconds."
                         },
                         "preload": {
-                            "comment": "Gets or sets the current playback position, in seconds."
+                            "comment": "Gets or sets a value indicating what data should be preloaded, if any."
                         },
                         "networkState": {
                             "comment": "Gets the current network activity for the element."
