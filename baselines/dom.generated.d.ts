@@ -6941,7 +6941,7 @@ interface HTMLMediaElement extends HTMLElement {
     /** Gets TimeRanges for the current media resource that has been played. */
     readonly played: TimeRanges;
     /** Gets or sets a value indicating what data should be preloaded, if any. */
-    preload: "none" | "metadata" | "auto";
+    preload: "none" | "metadata" | "auto" | "";
     readonly readyState: number;
     readonly remote: RemotePlayback;
     /** Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked. */
