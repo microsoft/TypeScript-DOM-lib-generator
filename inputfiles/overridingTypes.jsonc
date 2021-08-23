@@ -2797,8 +2797,7 @@
                 "properties": {
                     "property": {
                         "preload": {
-                            "name": "preload",
-                            "overrideType": "\"none\" | \"metadata\" | \"auto\""
+                            "overrideType": "\"none\" | \"metadata\" | \"auto\" | \"\""
                         }
                     }
                 }
