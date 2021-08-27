@@ -13348,7 +13348,6 @@ declare var SubtleCrypto: {
 
 /** The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children. */
 interface Text extends CharacterData, Slottable {
-    readonly assignedSlot: HTMLSlotElement | null;
     /** Returns the combined data of all direct Text node siblings. */
     readonly wholeText: string;
     /** Splits data at the given offset and returns the remainder as Text node. */

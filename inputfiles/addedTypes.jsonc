@@ -581,8 +581,7 @@
                             ]
                         }
                     }
-                },
-
+                }
             },
             "EventListenerObject": {
                 "name": "EventListenerObject",
@@ -595,7 +594,7 @@
                             ]
                         }
                     }
-                },
+                }
             },
             "Document": {
                 "methods": {
@@ -746,18 +745,6 @@
                             "type": "SpeechSynthesisEvent"
                         }
                     ]
-                }
-            },
-            "Text": {
-                "name": "Text",
-                "properties": {
-                    "property": {
-                        "assignedSlot": {
-                            "name": "assignedSlot",
-                            "readonly": true,
-                            "overrideType": "HTMLSlotElement | null"
-                        }
-                    }
                 }
             },
             "TextTrackList": {
