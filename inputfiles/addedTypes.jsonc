@@ -658,11 +658,6 @@
                 "name": "Navigator",
                 "properties": {
                     "property": {
-                        "pointerEnabled": {
-                            "name": "pointerEnabled",
-                            "readonly": true,
-                            "type": "boolean"
-                        },
                         "doNotTrack": {
                             "name": "doNotTrack",
                             "readonly": true,
