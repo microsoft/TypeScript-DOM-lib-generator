@@ -64,6 +64,14 @@
                 }
             },
             "Document": {
+                "methods": {
+                    "method": {
+                        // Manually moved to DocumentOrShadowRoot
+                        // See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
+                        "elementFromPoint": null,
+                        "elementsFromPoint": null
+                    }
+                },
                 "implements": ["GeometryUtils"]
             },
             "Element": {

@@ -2,6 +2,13 @@
     "mixins": {
         "mixin": {
             "DocumentOrShadowRoot": {
+                "methods": {
+                    "method": {
+                        "elementFromPoint": {
+                            "comment": "Returns the element for the specified x coordinate and the specified y coordinate.\n@param x The x-offset\n@param y The y-offset"
+                        }
+                    }
+                },
                 "properties": {
                     "property": {
                         "styleSheets": {
@@ -751,9 +758,6 @@
                         },
                         "execCommand": {
                             "comment": "Executes a command on the current document, current selection, or the given range.\n@param commandId String that specifies the command to execute. This command can be any of the command identifiers that can be executed in script.\n@param showUI Display the user interface, defaults to false.\n@param value Value to assign."
-                        },
-                        "elementFromPoint": {
-                            "comment": "Returns the element for the specified x coordinate and the specified y coordinate.\n@param x The x-offset\n@param y The y-offset"
                         },
                         "write": {
                             "comment": "Writes one or more HTML expressions to a document in the specified window.\n@param content Specifies the text and HTML tags to write."
