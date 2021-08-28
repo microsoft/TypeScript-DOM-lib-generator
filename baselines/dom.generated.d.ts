@@ -2600,6 +2600,7 @@ declare var CSSRuleList: {
 
 /** An object that is a CSS declaration block, and exposes style information and various style-related methods and properties. */
 interface CSSStyleDeclaration {
+    accentColor: string;
     alignContent: string;
     alignItems: string;
     alignSelf: string;
@@ -7523,6 +7524,7 @@ declare var HTMLSelectElement: {
 
 interface HTMLSlotElement extends HTMLElement {
     name: string;
+    assign(...nodes: (Element | Text)[]): void;
     assignedElements(options?: AssignedNodesOptions): Element[];
     assignedNodes(options?: AssignedNodesOptions): Node[];
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSlotElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -9451,6 +9453,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorConcurrentH
     readonly mediaSession: MediaSession;
     readonly permissions: Permissions;
     readonly serviceWorker: ServiceWorkerContainer;
+    canShare(data?: ShareData): boolean;
     getGamepads(): (Gamepad | null)[];
     requestMediaKeySystemAccess(keySystem: string, supportedConfigurations: MediaKeySystemConfiguration[]): Promise<MediaKeySystemAccess>;
     sendBeacon(url: string | URL, data?: BodyInit | null): boolean;

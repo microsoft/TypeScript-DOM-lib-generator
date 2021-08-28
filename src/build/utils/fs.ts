@@ -5,7 +5,7 @@ export async function tryReadFile(
 ): Promise<string | undefined> {
   try {
     return await readFile(path, "utf-8");
-  } catch (err) {
+  } catch (err: any) {
     if (err.code !== "ENOENT") {
       throw err;
     }

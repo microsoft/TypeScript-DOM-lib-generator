@@ -44,7 +44,7 @@ function compileGeneratedFiles(lib: string, ...files: string[]) {
         .map((file) => fileURLToPath(new URL(file, outputFolder)))
         .join(" ")}`
     );
-  } catch (e) {
+  } catch (e: any) {
     console.error(`Test failed: could not compile '${files.join(",")}':`);
     console.error(e.stdout.toString());
     console.error();
