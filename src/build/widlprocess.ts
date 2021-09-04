@@ -199,7 +199,7 @@ function convertInterfaceCommon(
         addComments(method[member.name], commentMap, i.name, member.name);
       }
     } else if (
-      member.type === "iterable" ||
+      (member.type === "iterable" && !member.async) ||
       member.type === "maplike" ||
       member.type === "setlike"
     ) {

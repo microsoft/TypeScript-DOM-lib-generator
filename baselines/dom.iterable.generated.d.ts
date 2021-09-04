@@ -170,13 +170,6 @@ interface PluginArray {
 interface RTCStatsReport extends ReadonlyMap<string, any> {
 }
 
-interface ReadableStream<R = any> {
-    [Symbol.iterator](): IterableIterator<any>;
-    entries(): IterableIterator<[number, any]>;
-    keys(): IterableIterator<number>;
-    values(): IterableIterator<any>;
-}
-
 interface SVGLengthList {
     [Symbol.iterator](): IterableIterator<SVGLength>;
 }
