@@ -1505,6 +1505,13 @@ export function emitWebIdl(
     return printer.getResult();
   }
 
+  function stringifySingleOrTupleTypes(types: string[]) {
+    if (types.length === 1) {
+      return types[0];
+    }
+    return `[${types.join(", ")}]`;
+  }
+
   function emitIterator(i: Browser.Interface) {
     // https://heycam.github.io/webidl/#dfn-indexed-property-getter
     const isIndexedPropertyGetter = (m: Browser.AnonymousMethod) =>
@@ -1541,13 +1548,6 @@ export function emitWebIdl(
           ];
         }
       }
-    }
-
-    function stringifySingleOrTupleTypes(types: string[]) {
-      if (types.length === 1) {
-        return types[0];
-      }
-      return `[${types.join(", ")}]`;
     }
 
     function emitIterableDeclarationMethods(
@@ -1697,13 +1697,6 @@ export function emitWebIdl(
         }
         return i.iterator.type.map(convertDomTypeToTsType);
       }
-    }
-
-    function stringifySingleOrTupleTypes(types: string[]) {
-      if (types.length === 1) {
-        return types[0];
-      }
-      return `[${types.join(", ")}]`;
     }
 
     function emitAsyncIterableDeclarationMethods(
