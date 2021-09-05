@@ -10,6 +10,6 @@ interface FileSystemDirectoryHandle {
 }
 
 interface ReadableStream<R = any> {
-    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): AsyncIterableIterator<any>;
-    values(options?: ReadableStreamIteratorOptions): AsyncIterableIterator<any>;
+    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): AsyncIterableIterator<R>;
+    values(options?: ReadableStreamIteratorOptions): AsyncIterableIterator<R>;
 }
