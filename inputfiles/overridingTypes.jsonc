@@ -2332,6 +2332,13 @@
                             }
                         }
                     }
+                },
+                "iterator": {
+                    "type": {
+                        "0": {
+                            "overrideType": "R"
+                        }
+                    }
                 }
             },
             "ReadableStreamDefaultReader": {
