@@ -42,16 +42,25 @@ async function emitFlavor(
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
 
-  const result = emitWebIdl(exposed, options.global[0], false);
+  const result = emitWebIdl(exposed, options.global[0], "");
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
     result
   );
 
-  const iterators = emitWebIdl(exposed, options.global[0], true);
+  const iterators = emitWebIdl(exposed, options.global[0], "sync");
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
     iterators
+  );
+
+  const asyncIterators = emitWebIdl(exposed, options.global[0], "async");
+  await fs.writeFile(
+    new URL(
+      `${options.name}.asynciterable.generated.d.ts`,
+      options.outputFolder
+    ),
+    asyncIterators
   );
 }
 

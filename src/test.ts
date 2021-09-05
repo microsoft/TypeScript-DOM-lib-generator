@@ -62,11 +62,21 @@ function test() {
       "dom.generated.d.ts",
       "dom.iterable.generated.d.ts"
     ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "dom.generated.d.ts",
+      "dom.asynciterable.generated.d.ts"
+    ) &&
     compileGeneratedFiles("es5", "webworker.generated.d.ts") &&
     compileGeneratedFiles(
       "es6",
       "webworker.generated.d.ts",
       "webworker.iterable.generated.d.ts"
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "webworker.generated.d.ts",
+      "webworker.asynciterable.generated.d.ts"
     ) &&
     compileGeneratedFiles("es5", "sharedworker.generated.d.ts") &&
     compileGeneratedFiles(
@@ -74,17 +84,32 @@ function test() {
       "sharedworker.generated.d.ts",
       "sharedworker.iterable.generated.d.ts"
     ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "sharedworker.generated.d.ts",
+      "sharedworker.asynciterable.generated.d.ts"
+    ) &&
     compileGeneratedFiles("es5", "serviceworker.generated.d.ts") &&
     compileGeneratedFiles(
       "es6",
       "serviceworker.generated.d.ts",
       "serviceworker.iterable.generated.d.ts"
     ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "serviceworker.generated.d.ts",
+      "serviceworker.asynciterable.generated.d.ts"
+    ) &&
     compileGeneratedFiles("es5", "audioworklet.generated.d.ts") &&
     compileGeneratedFiles(
       "es6",
       "audioworklet.generated.d.ts",
       "audioworklet.iterable.generated.d.ts"
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "audioworklet.generated.d.ts",
+      "audioworklet.asynciterable.generated.d.ts"
     )
   ) {
     console.log("All tests passed.");

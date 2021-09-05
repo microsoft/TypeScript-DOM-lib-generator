@@ -135,7 +135,7 @@ function isEventHandler(p: Browser.Property) {
 export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
-  iterator: boolean
+  iterator: "" | "sync" | "async"
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
@@ -225,7 +225,14 @@ export function emitWebIdl(
     getParentsWithConstant
   );
 
-  return iterator ? emitES6DomIterators() : emit();
+  switch (iterator) {
+    case "sync":
+      return emitES6DomIterators();
+    case "async":
+      return emitES2018DomAsyncIterators();
+    default:
+      return emit();
+  }
 
   function getTagNameToElementNameMap() {
     const htmlResult: Record<string, string> = {};
@@ -402,7 +409,7 @@ export function emitWebIdl(
   }
 
   function convertDomTypeToTsTypeSimple(objDomType: string): string {
-    if (objDomType === "sequence" && iterator) {
+    if (objDomType === "sequence" && iterator !== "") {
       return "Iterable";
     }
     if (baseTypeConversionMap.has(objDomType)) {
@@ -1012,7 +1019,7 @@ export function emitWebIdl(
 
   // Emit forEach for iterators
   function emitIteratorForEach(i: Browser.Interface) {
-    if (!i.iterator) {
+    if (!i.iterator || i.iterator.async) {
       return;
     }
     const subtype = i.iterator.type.map(convertDomTypeToTsType);
@@ -1541,7 +1548,7 @@ export function emitWebIdl(
     }
 
     function getIteratorSubtypes() {
-      if (i.iterator) {
+      if (i.iterator && !i.iterator.async) {
         if (i.iterator.type.length === 1) {
           return [convertDomTypeToTsType(i.iterator.type[0])];
         }
@@ -1705,6 +1712,90 @@ export function emitWebIdl(
     }
   }
 
+  function emitAsyncIterator(i: Browser.Interface) {
+    function getAsyncIteratorSubtypes() {
+      if (i.iterator && i.iterator.kind === "iterable" && i.iterator.async) {
+        if (i.iterator.type.length === 1) {
+          return [convertDomTypeToTsType(i.iterator.type[0])];
+        }
+        return i.iterator.type.map(convertDomTypeToTsType);
+      }
+    }
+
+    function stringifySingleOrTupleTypes(types: string[]) {
+      if (types.length === 1) {
+        return types[0];
+      }
+      return `[${types.join(", ")}]`;
+    }
+
+    function emitAsyncIterableDeclarationMethods(
+      i: Browser.Interface,
+      subtypes: string[],
+      paramsString: string
+    ) {
+      let methods;
+      if (subtypes.length === 1) {
+        // https://heycam.github.io/webidl/#value-asynchronously-iterable-declaration
+        const [valueType] = subtypes;
+        methods = [
+          {
+            name: "values",
+            definition: `AsyncIterableIterator<${valueType}>`,
+          },
+        ];
+      } else {
+        // https://heycam.github.io/webidl/#pair-asynchronously-iterable-declaration
+        const [keyType, valueType] = subtypes;
+        methods = [
+          {
+            name: "entries",
+            definition: `AsyncIterableIterator<[${keyType}, ${valueType}]>`,
+          },
+          {
+            name: "keys",
+            definition: `AsyncIterableIterator<${keyType}>`,
+          },
+          {
+            name: "values",
+            definition: `AsyncIterableIterator<${valueType}>`,
+          },
+        ];
+      }
+
+      const comments = i.iterator!.comments?.comment;
+
+      methods.forEach((m) => {
+        emitComments({ comment: comments?.[m.name] }, printer.printLine);
+        printer.printLine(`${m.name}(${paramsString}): ${m.definition};`);
+      });
+    }
+
+    const subtypes = getAsyncIteratorSubtypes();
+    if (subtypes) {
+      const name = getNameWithTypeParameter(
+        i.typeParameters,
+        extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name
+      );
+      const paramsString = i.iterator!.param
+        ? paramsToString(i.iterator!.param)
+        : "";
+      printer.printLine("");
+      printer.printLine(`interface ${name} {`);
+      printer.increaseIndent();
+
+      printer.printLine(
+        `[Symbol.asyncIterator](${paramsString}): AsyncIterableIterator<${stringifySingleOrTupleTypes(
+          subtypes
+        )}>;`
+      );
+      emitAsyncIterableDeclarationMethods(i, subtypes, paramsString);
+
+      printer.decreaseIndent();
+      printer.printLine("}");
+    }
+  }
+
   function emitES6DomIterators() {
     printer.reset();
     printer.printLine("/////////////////////////////");
@@ -1712,6 +1803,17 @@ export function emitWebIdl(
     printer.printLine("/////////////////////////////");
 
     allInterfaces.sort(compareName).forEach(emitIterator);
+
+    return printer.getResult();
+  }
+
+  function emitES2018DomAsyncIterators() {
+    printer.reset();
+    printer.printLine("/////////////////////////////");
+    printer.printLine(`/// ${global} Async Iterable APIs`);
+    printer.printLine("/////////////////////////////");
+
+    allInterfaces.sort(compareName).forEach(emitAsyncIterator);
 
     return printer.getResult();
   }

@@ -204,13 +204,15 @@ function convertInterfaceCommon(
         addComments(method[member.name], commentMap, i.name, member.name);
       }
     } else if (
-      (member.type === "iterable" && !member.async) ||
+      member.type === "iterable" ||
       member.type === "maplike" ||
       member.type === "setlike"
     ) {
       result.iterator = {
         kind: member.type,
         readonly: member.readonly,
+        async: member.async,
+        param: member.arguments.map(convertArgument),
         type: member.idlType.map(convertIdlType),
       };
     }
