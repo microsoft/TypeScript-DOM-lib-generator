@@ -2812,6 +2812,20 @@
             },
             "SourceBufferList": {
                 "exposed": "Window"
+            },
+            "ClipboardItem": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "items",
+                                    "overrideType": "Record<string, ClipboardItemDataType>"
+                                }
+                            ]
+                        }
+                    }
+                }
             }
         }
     },
@@ -3104,6 +3118,10 @@
                         "name": "T"
                     }
                 ]
+            },
+            {
+                "overrideType": "Blob",
+                "name": "ClipboardItemDataType"
             }
         ]
     },
