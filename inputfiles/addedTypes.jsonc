@@ -882,6 +882,10 @@
                         {
                             "name": "dataavailable",
                             "type": "BlobEvent"
+                        },
+                        {
+                            "name": "error",
+                            "type": "MediaRecorderErrorEvent"
                         }
                     ]
                 }

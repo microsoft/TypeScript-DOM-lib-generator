@@ -9013,7 +9013,7 @@ declare var MediaQueryListEvent: {
 
 interface MediaRecorderEventMap {
     "dataavailable": BlobEvent;
-    "error": Event;
+    "error": MediaRecorderErrorEvent;
     "pause": Event;
     "resume": Event;
     "start": Event;
@@ -9024,7 +9024,7 @@ interface MediaRecorder extends EventTarget {
     readonly audioBitsPerSecond: number;
     readonly mimeType: string;
     ondataavailable: ((this: MediaRecorder, ev: BlobEvent) => any) | null;
-    onerror: ((this: MediaRecorder, ev: Event) => any) | null;
+    onerror: ((this: MediaRecorder, ev: MediaRecorderErrorEvent) => any) | null;
     onpause: ((this: MediaRecorder, ev: Event) => any) | null;
     onresume: ((this: MediaRecorder, ev: Event) => any) | null;
     onstart: ((this: MediaRecorder, ev: Event) => any) | null;
