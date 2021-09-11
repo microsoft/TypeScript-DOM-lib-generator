@@ -216,7 +216,8 @@
             "AuthenticationExtensionsClientInputs": {
                 "members": {
                     "member": {
-                        "largeBlob": null
+                        "largeBlob": null,
+                        "payment": null
                     }
                 }
             },

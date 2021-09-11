@@ -558,7 +558,7 @@ interface AudioWorkletProcessorConstructor {
 }
 
 interface QueuingStrategySize<T = any> {
-    (chunk?: T): number;
+    (chunk: T): number;
 }
 
 interface TransformerFlushCallback<O> {
