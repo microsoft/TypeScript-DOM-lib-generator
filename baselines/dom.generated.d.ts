@@ -5591,7 +5591,6 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    onsecuritypolicyviolation: ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any) | null;
     /**
      * Occurs when the seek operation ends.
      * @param ev The event.
@@ -8511,7 +8510,6 @@ interface IDBTransactionEventMap {
 interface IDBTransaction extends EventTarget {
     /** Returns the transaction's connection. */
     readonly db: IDBDatabase;
-    readonly durability: IDBTransactionDurability;
     /** If the transaction was aborted, returns the error (a DOMException) providing the reason. */
     readonly error: DOMException | null;
     /** Returns the mode the transaction was created with ("readonly" or "readwrite"), or "versionchange" for an upgrade transaction. */
@@ -17341,7 +17339,6 @@ declare var onresize: ((this: Window, ev: UIEvent) => any) | null;
  * @param ev The event.
  */
 declare var onscroll: ((this: Window, ev: Event) => any) | null;
-declare var onsecuritypolicyviolation: ((this: Window, ev: SecurityPolicyViolationEvent) => any) | null;
 /**
  * Occurs when the seek operation ends.
  * @param ev The event.
@@ -17556,7 +17553,6 @@ type GamepadMappingType = "" | "standard" | "xr-standard";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
-type IDBTransactionDurability = "default" | "relaxed" | "strict";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
 type ImageOrientation = "flipY" | "none";
 type ImageSmoothingQuality = "high" | "low" | "medium";

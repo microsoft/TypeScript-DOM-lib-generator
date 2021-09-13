@@ -1951,7 +1951,6 @@ interface IDBTransactionEventMap {
 interface IDBTransaction extends EventTarget {
     /** Returns the transaction's connection. */
     readonly db: IDBDatabase;
-    readonly durability: IDBTransactionDurability;
     /** If the transaction was aborted, returns the error (a DOMException) providing the reason. */
     readonly error: DOMException | null;
     /** Returns the mode the transaction was created with ("readonly" or "readwrite"), or "versionchange" for an upgrade transaction. */
@@ -5639,7 +5638,6 @@ type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
-type IDBTransactionDurability = "default" | "relaxed" | "strict";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
 type ImageOrientation = "flipY" | "none";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";

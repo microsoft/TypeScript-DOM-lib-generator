@@ -15,6 +15,9 @@ export function hasStableImplementation(
   }
   return (
     !!latest.version_added &&
+    // "preview" means BCD has no idea about whether it will ride the train
+    // https://github.com/mdn/browser-compat-data/issues/12344
+    latest.version_added !== "preview" &&
     !latest.version_removed &&
     !latest.flags &&
     latest.prefix === prefix &&
