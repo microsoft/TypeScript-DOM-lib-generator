@@ -1463,7 +1463,7 @@ interface RequestInit {
     /** An AbortSignal to set request's signal. */
     signal?: AbortSignal | null;
     /** Can only be null. Used to disassociate request from any Window. */
-    window?: any;
+    window?: null;
 }
 
 interface ResizeObserverOptions {

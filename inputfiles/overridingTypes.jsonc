@@ -2986,6 +2986,15 @@
                     }
                 }
             },
+            "RequestInit": {
+                "members": {
+                    "member": {
+                        "window": {
+                            "overrideType": "null"
+                        }
+                    }
+                }
+            },
             "UnderlyingSource": {
                 "typeParameters": [
                     {
