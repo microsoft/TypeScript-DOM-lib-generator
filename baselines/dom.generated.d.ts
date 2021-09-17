@@ -6080,6 +6080,7 @@ interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementC
     spellcheck: boolean;
     title: string;
     translate: boolean;
+    attachInternals(): ElementInternals;
     click(): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
