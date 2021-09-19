@@ -310,11 +310,9 @@
             "MediaTrackConstraintSet": {
                 "members": {
                     "member": {
-                        "autoGainControl": null,
                         "cursor": null,
                         "displaySurface": null,
                         "logicalSurface": null,
-                        "noiseSuppression": null,
                         "resizeMode": null,
                         "restrictOwnAudio": null,
                         "whiteBalanceMode": null,
@@ -341,13 +339,11 @@
             "MediaTrackSettings": {
                 "members": {
                     "member": {
-                        "autoGainControl": null,
                         "channelCount": null,
                         "cursor": null,
                         "displaySurface": null,
                         "latency": null,
                         "logicalSurface": null,
-                        "noiseSuppression": null,
                         "resizeMode": null,
                         "whiteBalanceMode": null,
                         "exposureMode": null,
@@ -373,13 +369,11 @@
             "MediaTrackSupportedConstraints": {
                 "members": {
                     "member": {
-                        "autoGainControl": null,
                         "channelCount": null,
                         "cursor": null,
                         "displaySurface": null,
                         "latency": null,
                         "logicalSurface": null,
-                        "noiseSuppression": null,
                         "resizeMode": null,
                         "restrictOwnAudio": null,
                         "whiteBalanceMode": null,
