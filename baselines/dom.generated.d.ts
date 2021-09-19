@@ -808,6 +808,7 @@ interface MediaTrackCapabilities {
 
 interface MediaTrackConstraintSet {
     aspectRatio?: ConstrainDouble;
+    autoGainControl?: ConstrainBoolean;
     channelCount?: ConstrainULong;
     deviceId?: ConstrainDOMString;
     echoCancellation?: ConstrainBoolean;
@@ -816,6 +817,7 @@ interface MediaTrackConstraintSet {
     groupId?: ConstrainDOMString;
     height?: ConstrainULong;
     latency?: ConstrainDouble;
+    noiseSuppression?: ConstrainBoolean;
     sampleRate?: ConstrainULong;
     sampleSize?: ConstrainULong;
     suppressLocalAudioPlayback?: ConstrainBoolean;
@@ -828,12 +830,14 @@ interface MediaTrackConstraints extends MediaTrackConstraintSet {
 
 interface MediaTrackSettings {
     aspectRatio?: number;
+    autoGainControl?: boolean;
     deviceId?: string;
     echoCancellation?: boolean;
     facingMode?: string;
     frameRate?: number;
     groupId?: string;
     height?: number;
+    noiseSuppression?: boolean;
     restrictOwnAudio?: boolean;
     sampleRate?: number;
     sampleSize?: number;
@@ -842,12 +846,14 @@ interface MediaTrackSettings {
 
 interface MediaTrackSupportedConstraints {
     aspectRatio?: boolean;
+    autoGainControl?: boolean;
     deviceId?: boolean;
     echoCancellation?: boolean;
     facingMode?: boolean;
     frameRate?: boolean;
     groupId?: boolean;
     height?: boolean;
+    noiseSuppression?: boolean;
     sampleRate?: boolean;
     sampleSize?: boolean;
     suppressLocalAudioPlayback?: boolean;
