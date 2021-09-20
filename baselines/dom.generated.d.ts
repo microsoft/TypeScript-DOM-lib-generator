@@ -2780,11 +2780,14 @@ interface CSSStyleDeclaration {
     gridAutoRows: string;
     gridColumn: string;
     gridColumnEnd: string;
+    /** @deprecated This is a legacy alias of `columnGap`. */
     gridColumnGap: string;
     gridColumnStart: string;
+    /** @deprecated This is a legacy alias of `gap`. */
     gridGap: string;
     gridRow: string;
     gridRowEnd: string;
+    /** @deprecated This is a legacy alias of `rowGap`. */
     gridRowGap: string;
     gridRowStart: string;
     gridTemplate: string;
@@ -3023,15 +3026,15 @@ interface CSSStyleDeclaration {
     webkitBorderTopLeftRadius: string;
     /** @deprecated This is a legacy alias of `borderTopRightRadius`. */
     webkitBorderTopRightRadius: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxAlign`. */
     webkitBoxAlign: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxFlex`. */
     webkitBoxFlex: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxOrdinalGroup`. */
     webkitBoxOrdinalGroup: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxOrient`. */
     webkitBoxOrient: string;
-    /** @deprecated */
+    /** @deprecated This is a legacy alias of `boxPack`. */
     webkitBoxPack: string;
     /** @deprecated This is a legacy alias of `boxShadow`. */
     webkitBoxShadow: string;
