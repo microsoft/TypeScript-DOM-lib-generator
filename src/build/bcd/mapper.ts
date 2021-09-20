@@ -57,7 +57,11 @@ function mapInterfaceLike(
   i: Browser.Interface,
   mapper: (data: DataToMap) => any
 ) {
-  const data = i.mixin ? api.__mixins[name] : api[name];
+  const data = i.mixin
+    ? api.__mixins[name]
+    : i.legacyNamespace
+    ? api[i.legacyNamespace][name]
+    : api[name];
   const intCompat = data?.__compat;
   const mapped = mapper({ key: name, compat: intCompat, mixin: !!i.mixin });
   if (!data) {

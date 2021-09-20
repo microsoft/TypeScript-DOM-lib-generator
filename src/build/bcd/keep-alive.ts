@@ -48,13 +48,6 @@ export const forceKeepAlive: Record<string, string[]> = {
   Request: ["keepalive"],
   RTCDtlsTransport: ["onstatechange", "state"],
   RTCPeerConnection: ["canTrickleIceCandidates"],
-  WebAssembly: [
-    "compile",
-    "compileStreaming",
-    "instantiate",
-    "instantiateStreaming",
-    "validate",
-  ],
   WebGLRenderingContextBase: ["lineWidth"],
   WebGL2RenderingContextOverloads: [
     // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately
@@ -76,11 +69,4 @@ export const forceKeepAlive: Record<string, string[]> = {
   ],
   WindowEventHandlers: ["onoffline", "ononline", "onpagehide", "onpageshow"],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
-  // (WebAssembly namespace members)
-  // TODO: Shouldn't these be inside "WebAssembly"?
-  Instance: ["exports"],
-  Global: ["value", "valueOf"],
-  Memory: ["buffer", "grow"],
-  Module: ["customSections", "exports", "imports"],
-  Table: ["length", "get", "grow", "set"],
 };
