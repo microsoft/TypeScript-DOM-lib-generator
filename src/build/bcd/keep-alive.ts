@@ -1,7 +1,6 @@
 export const forceKeepAlive: Record<string, string[]> = {
   // Things that are incorrectly reported as unsupported.
   // These should be filed to https://github.com/mdn/browser-compat-data/issues
-  console: ["profile", "profileEnd", "timeStamp"],
   CSSStyleDeclaration: [
     "alignmentBaseline",
     "baselineShift",
@@ -44,17 +43,8 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onwebkitanimationstart",
     "onwebkittransitionend",
   ],
-  HTMLIFrameElement: ["allowPaymentRequest"],
   KeyframeEffect: ["iterationComposite"],
   MediaCapabilities: ["encodingInfo"],
-  PaymentRequest: ["shippingAddress"],
-  PictureInPictureWindow: [
-    "requestPictureInPicture",
-    "onenterpictureinpicture",
-    "onleavepictureinpicture",
-    "autoPictureInPicture",
-    "disablePictureInPicture",
-  ],
   Request: ["keepalive"],
   RTCDtlsTransport: ["onstatechange", "state"],
   RTCPeerConnection: ["canTrickleIceCandidates"],
