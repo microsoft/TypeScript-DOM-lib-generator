@@ -5108,7 +5108,8 @@ declare namespace WebAssembly {
 
     var CompileError: {
         prototype: CompileError;
-        new(): CompileError;
+        new(message?: string): CompileError;
+        (message?: string): CompileError;
     };
 
     interface Global {
@@ -5135,7 +5136,8 @@ declare namespace WebAssembly {
 
     var LinkError: {
         prototype: LinkError;
-        new(): LinkError;
+        new(message?: string): LinkError;
+        (message?: string): LinkError;
     };
 
     interface Memory {
@@ -5164,7 +5166,8 @@ declare namespace WebAssembly {
 
     var RuntimeError: {
         prototype: RuntimeError;
-        new(): RuntimeError;
+        new(message?: string): RuntimeError;
+        (message?: string): RuntimeError;
     };
 
     interface Table {

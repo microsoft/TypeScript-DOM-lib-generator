@@ -302,7 +302,13 @@
             "CompileError": {
                 "name": "CompileError",
                 "extends": "Error",
-                "legacyNamespace": "WebAssembly"
+                "legacyNamespace": "WebAssembly",
+                "constructor": {
+                    "overrideSignatures": [
+                        "new(message?: string): CompileError",
+                        "(message?: string): CompileError"
+                    ]
+                }
             },
             "DeviceMotionEventAcceleration": {
                 "noInterfaceObject": true
@@ -859,7 +865,13 @@
             "RuntimeError": {
                 "name": "RuntimeError",
                 "extends": "Error",
-                "legacyNamespace": "WebAssembly"
+                "legacyNamespace": "WebAssembly",
+                "constructor": {
+                    "overrideSignatures": [
+                        "new(message?: string): RuntimeError",
+                        "(message?: string): RuntimeError"
+                    ]
+                }
             },
             "SVGStyleElement": {
                 "properties": {
@@ -874,7 +886,13 @@
             "LinkError": {
                 "name": "LinkError",
                 "extends": "Error",
-                "legacyNamespace": "WebAssembly"
+                "legacyNamespace": "WebAssembly",
+                "constructor": {
+                    "overrideSignatures": [
+                        "new(message?: string): LinkError",
+                        "(message?: string): LinkError"
+                    ]
+                }
             },
             "MediaRecorder": {
                 "events": {
