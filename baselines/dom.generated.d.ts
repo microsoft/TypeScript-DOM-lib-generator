@@ -53,8 +53,8 @@ interface AnimationEventInit extends EventInit {
 }
 
 interface AnimationPlaybackEventInit extends EventInit {
-    currentTime?: number | null;
-    timelineTime?: number | null;
+    currentTime?: CSSNumberish | null;
+    timelineTime?: CSSNumberish | null;
 }
 
 interface AssignedNodesOptions {
@@ -1936,7 +1936,7 @@ interface AnimationEventMap {
 }
 
 interface Animation extends EventTarget {
-    currentTime: number | null;
+    currentTime: CSSNumberish | null;
     effect: AnimationEffect | null;
     readonly finished: Promise<Animation>;
     id: string;
@@ -1948,7 +1948,7 @@ interface Animation extends EventTarget {
     playbackRate: number;
     readonly ready: Promise<Animation>;
     readonly replaceState: AnimationReplaceState;
-    startTime: number | null;
+    startTime: CSSNumberish | null;
     timeline: AnimationTimeline | null;
     cancel(): void;
     commitStyles(): void;
@@ -1998,8 +1998,8 @@ interface AnimationFrameProvider {
 }
 
 interface AnimationPlaybackEvent extends Event {
-    readonly currentTime: number | null;
-    readonly timelineTime: number | null;
+    readonly currentTime: CSSNumberish | null;
+    readonly timelineTime: CSSNumberish | null;
 }
 
 declare var AnimationPlaybackEvent: {
