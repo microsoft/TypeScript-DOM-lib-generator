@@ -5690,7 +5690,7 @@ interface GlobalEventHandlers {
      * @param ev The event.
      */
     onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    /** @deprecated This is a legacy alias of `onanimationend`. */
+    /** @deprecated This is a legacy alias of `onanimationstart`. */
     onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** @deprecated This is a legacy alias of `onanimationiteration`. */
     onwebkitanimationiteration: ((this: GlobalEventHandlers, ev: Event) => any) | null;
@@ -8661,6 +8661,14 @@ declare var ImageData: {
 interface InnerHTML {
     innerHTML: string;
 }
+
+interface InputDeviceInfo extends MediaDeviceInfo {
+}
+
+declare var InputDeviceInfo: {
+    prototype: InputDeviceInfo;
+    new(): InputDeviceInfo;
+};
 
 interface InputEvent extends UIEvent {
     readonly data: string | null;
@@ -17512,7 +17520,7 @@ declare var onvolumechange: ((this: Window, ev: Event) => any) | null;
  * @param ev The event.
  */
 declare var onwaiting: ((this: Window, ev: Event) => any) | null;
-/** @deprecated This is a legacy alias of `onanimationend`. */
+/** @deprecated This is a legacy alias of `onanimationstart`. */
 declare var onwebkitanimationend: ((this: Window, ev: Event) => any) | null;
 /** @deprecated This is a legacy alias of `onanimationiteration`. */
 declare var onwebkitanimationiteration: ((this: Window, ev: Event) => any) | null;
