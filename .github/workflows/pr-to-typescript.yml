@@ -31,7 +31,7 @@ jobs:
           npm i
           gulp runtests-parallel || true
           gulp baseline-accept
-          git checkout package-lock.json
+          git restore package-lock.json
 
       - uses: peter-evans/create-pull-request@v3
         with:

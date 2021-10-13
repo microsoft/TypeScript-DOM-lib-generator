@@ -42,7 +42,6 @@ export const forceKeepAlive: Record<string, string[]> = {
   ],
   KeyframeEffect: ["iterationComposite"],
   MediaCapabilities: ["encodingInfo"],
-  Request: ["keepalive"],
   RTCDtlsTransport: ["onstatechange", "state"],
   RTCPeerConnection: ["canTrickleIceCandidates"],
   WebGLRenderingContextBase: ["lineWidth"],
