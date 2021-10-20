@@ -1064,8 +1064,13 @@ export function emitWebIdl(
           : "EventListenerOptions";
       if (tryEmitTypedEventHandlerForInterface(addOrRemove, optionsType)) {
         // only emit the string event handler if we just emitted a typed handler
+        const listener =
+          i.name === "EventSource"
+            ? "(this: EventSource, event: MessageEvent) => any"
+            : "EventListenerOrEventListenerObject";
+
         printer.printLine(
-          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`
+          `${fPrefix}${addOrRemove}EventListener(type: string, listener: ${listener}, options?: boolean | ${optionsType}): void;`
         );
       }
     }
