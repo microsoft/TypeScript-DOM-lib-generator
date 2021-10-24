@@ -2817,6 +2817,19 @@
     },
     "dictionaries": {
         "dictionary": {
+            "CryptoKeyPair": {
+                "exposed": "Window Worker",
+                "members": {
+                    "member": {
+                        "privateKey": {
+                            "required": true
+                        },
+                        "publicKey": {
+                            "required": true
+                        }
+                    }
+                }
+            },
             "MessageEventInit": {
                 "members": {
                     "member": {
