@@ -353,7 +353,7 @@ interface NotificationOptions {
     requireInteraction?: boolean;
     silent?: boolean;
     tag?: string;
-    timestamp?: DOMTimeStamp;
+    timestamp?: EpochTimeStamp;
     vibrate?: VibratePattern;
 }
 
@@ -402,7 +402,7 @@ interface PushEventInit extends ExtendableEventInit {
 
 interface PushSubscriptionJSON {
     endpoint?: string;
-    expirationTime?: DOMTimeStamp | null;
+    expirationTime?: EpochTimeStamp | null;
     keys?: Record<string, string>;
 }
 
@@ -2411,7 +2411,7 @@ declare var PushEvent: {
  */
 interface PushManager {
     getSubscription(): Promise<PushSubscription | null>;
-    permissionState(options?: PushSubscriptionOptionsInit): Promise<PushPermissionState>;
+    permissionState(options?: PushSubscriptionOptionsInit): Promise<PermissionState>;
     subscribe(options?: PushSubscriptionOptionsInit): Promise<PushSubscription>;
 }
 
@@ -5389,7 +5389,7 @@ type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type DOMHighResTimeStamp = number;
-type DOMTimeStamp = number;
+type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;
@@ -5451,7 +5451,6 @@ type PermissionState = "denied" | "granted" | "prompt";
 type PredefinedColorSpace = "display-p3" | "srgb";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
-type PushPermissionState = "denied" | "granted" | "prompt";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
