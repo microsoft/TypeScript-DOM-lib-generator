@@ -2817,8 +2817,8 @@
     },
     "dictionaries": {
         "dictionary": {
+            // https://github.com/microsoft/TypeScript/issues/46036
             "CryptoKeyPair": {
-                "exposed": "Window Worker",
                 "members": {
                     "member": {
                         "privateKey": {
