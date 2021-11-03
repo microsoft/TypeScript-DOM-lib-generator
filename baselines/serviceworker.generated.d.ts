@@ -874,6 +874,8 @@ interface Crypto {
     /** Available only in secure contexts. */
     readonly subtle: SubtleCrypto;
     getRandomValues<T extends ArrayBufferView | null>(array: T): T;
+    /** Available only in secure contexts. */
+    randomUUID(): string;
 }
 
 declare var Crypto: {
@@ -1911,6 +1913,7 @@ interface IDBTransactionEventMap {
 interface IDBTransaction extends EventTarget {
     /** Returns the transaction's connection. */
     readonly db: IDBDatabase;
+    readonly durability: IDBTransactionDurability;
     /** If the transaction was aborted, returns the error (a DOMException) providing the reason. */
     readonly error: DOMException | null;
     /** Returns the mode the transaction was created with ("readonly" or "readwrite"), or "versionchange" for an upgrade transaction. */
@@ -3039,6 +3042,13 @@ interface WEBGL_draw_buffers {
 interface WEBGL_lose_context {
     loseContext(): void;
     restoreContext(): void;
+}
+
+interface WEBGL_multi_draw {
+    multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: GLuint, countsList: Int32Array | GLsizei[], countsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: GLuint, countsList: Int32Array | GLsizei[], countsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array | GLint[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLint[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, drawcount: GLsizei): void;
 }
 
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
@@ -5437,6 +5447,7 @@ type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
+type IDBTransactionDurability = "default" | "relaxed" | "strict";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
 type ImageOrientation = "flipY" | "none";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";

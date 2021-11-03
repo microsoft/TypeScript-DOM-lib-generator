@@ -3259,6 +3259,7 @@ interface CanvasDrawPath {
 interface CanvasFillStrokeStyles {
     fillStyle: string | CanvasGradient | CanvasPattern;
     strokeStyle: string | CanvasGradient | CanvasPattern;
+    createConicGradient(startAngle: number, x: number, y: number): CanvasGradient;
     createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
     createPattern(image: CanvasImageSource, repetition: string | null): CanvasPattern | null;
     createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
@@ -3582,6 +3583,8 @@ interface Crypto {
     /** Available only in secure contexts. */
     readonly subtle: SubtleCrypto;
     getRandomValues<T extends ArrayBufferView | null>(array: T): T;
+    /** Available only in secure contexts. */
+    randomUUID(): string;
 }
 
 declare var Crypto: {
@@ -7599,6 +7602,7 @@ declare var HTMLSlotElement: {
 
 /** Provides special properties (beyond the regular HTMLElement object interface it also has available to it by inheritance) for manipulating <source> elements. */
 interface HTMLSourceElement extends HTMLElement {
+    height: number;
     /** Gets or sets the intended media type of the media source. */
     media: string;
     sizes: string;
@@ -7607,6 +7611,7 @@ interface HTMLSourceElement extends HTMLElement {
     srcset: string;
     /** Gets or sets the MIME type of a media resource. */
     type: string;
+    width: number;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8562,6 +8567,7 @@ interface IDBTransactionEventMap {
 interface IDBTransaction extends EventTarget {
     /** Returns the transaction's connection. */
     readonly db: IDBDatabase;
+    readonly durability: IDBTransactionDurability;
     /** If the transaction was aborted, returns the error (a DOMException) providing the reason. */
     readonly error: DOMException | null;
     /** Returns the mode the transaction was created with ("readonly" or "readwrite"), or "versionchange" for an upgrade transaction. */
@@ -14130,6 +14136,13 @@ interface WEBGL_lose_context {
     restoreContext(): void;
 }
 
+interface WEBGL_multi_draw {
+    multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: GLuint, countsList: Int32Array | GLsizei[], countsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: GLuint, countsList: Int32Array | GLsizei[], countsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array | GLint[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLint[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, drawcount: GLsizei): void;
+}
+
 /** A WaveShaperNode always has exactly one input and one output. */
 interface WaveShaperNode extends AudioNode {
     curve: Float32Array | null;
@@ -17697,6 +17710,7 @@ type GamepadMappingType = "" | "standard" | "xr-standard";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
+type IDBTransactionDurability = "default" | "relaxed" | "strict";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
 type ImageOrientation = "flipY" | "none";
 type ImageSmoothingQuality = "high" | "low" | "medium";
