@@ -611,7 +611,7 @@ interface AbortController {
     /** Returns the AbortSignal object associated with this object. */
     readonly signal: AbortSignal;
     /** Invoking this method will set this object's AbortSignal's aborted flag and signal to any observers that the associated activity is to be aborted. */
-    abort(): void;
+    abort(reason?: any): void;
 }
 
 declare var AbortController: {
@@ -637,7 +637,7 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
-    abort(): AbortSignal;
+    abort(reason?: any): AbortSignal;
 };
 
 interface AbstractWorkerEventMap {

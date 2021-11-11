@@ -1179,7 +1179,7 @@ interface RTCAnswerOptions extends RTCOfferAnswerOptions {
 }
 
 interface RTCCertificateExpiration {
-    expires?: DOMTimeStamp;
+    expires?: EpochTimeStamp;
 }
 
 interface RTCConfiguration {
@@ -1804,42 +1804,42 @@ interface ANGLE_instanced_arrays {
 }
 
 interface ARIAMixin {
-    ariaAtomic: string;
-    ariaAutoComplete: string;
-    ariaBusy: string;
-    ariaChecked: string;
-    ariaColCount: string;
-    ariaColIndex: string;
-    ariaColSpan: string;
-    ariaCurrent: string;
-    ariaDisabled: string;
-    ariaExpanded: string;
-    ariaHasPopup: string;
-    ariaHidden: string;
-    ariaKeyShortcuts: string;
-    ariaLabel: string;
-    ariaLevel: string;
-    ariaLive: string;
-    ariaModal: string;
-    ariaMultiLine: string;
-    ariaMultiSelectable: string;
-    ariaOrientation: string;
-    ariaPlaceholder: string;
-    ariaPosInSet: string;
-    ariaPressed: string;
-    ariaReadOnly: string;
-    ariaRequired: string;
-    ariaRoleDescription: string;
-    ariaRowCount: string;
-    ariaRowIndex: string;
-    ariaRowSpan: string;
-    ariaSelected: string;
-    ariaSetSize: string;
-    ariaSort: string;
-    ariaValueMax: string;
-    ariaValueMin: string;
-    ariaValueNow: string;
-    ariaValueText: string;
+    ariaAtomic: string | null;
+    ariaAutoComplete: string | null;
+    ariaBusy: string | null;
+    ariaChecked: string | null;
+    ariaColCount: string | null;
+    ariaColIndex: string | null;
+    ariaColSpan: string | null;
+    ariaCurrent: string | null;
+    ariaDisabled: string | null;
+    ariaExpanded: string | null;
+    ariaHasPopup: string | null;
+    ariaHidden: string | null;
+    ariaKeyShortcuts: string | null;
+    ariaLabel: string | null;
+    ariaLevel: string | null;
+    ariaLive: string | null;
+    ariaModal: string | null;
+    ariaMultiLine: string | null;
+    ariaMultiSelectable: string | null;
+    ariaOrientation: string | null;
+    ariaPlaceholder: string | null;
+    ariaPosInSet: string | null;
+    ariaPressed: string | null;
+    ariaReadOnly: string | null;
+    ariaRequired: string | null;
+    ariaRoleDescription: string | null;
+    ariaRowCount: string | null;
+    ariaRowIndex: string | null;
+    ariaRowSpan: string | null;
+    ariaSelected: string | null;
+    ariaSetSize: string | null;
+    ariaSort: string | null;
+    ariaValueMax: string | null;
+    ariaValueMin: string | null;
+    ariaValueNow: string | null;
+    ariaValueText: string | null;
 }
 
 /** A controller object that allows you to abort one or more DOM requests as and when desired. */
@@ -1847,7 +1847,7 @@ interface AbortController {
     /** Returns the AbortSignal object associated with this object. */
     readonly signal: AbortSignal;
     /** Invoking this method will set this object's AbortSignal's aborted flag and signal to any observers that the associated activity is to be aborted. */
-    abort(): void;
+    abort(reason?: any): void;
 }
 
 declare var AbortController: {
@@ -1873,7 +1873,7 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
-    abort(): AbortSignal;
+    abort(reason?: any): AbortSignal;
 };
 
 interface AbstractRange {
@@ -4291,7 +4291,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     readonly timeline: DocumentTimeline;
     /** Contains the title of the document. */
     title: string;
-    readonly visibilityState: VisibilityState;
+    readonly visibilityState: DocumentVisibilityState;
     /**
      * Sets or gets the color of the links that the user has visited.
      * @deprecated
@@ -10617,7 +10617,7 @@ declare var PushSubscriptionOptions: {
 };
 
 interface RTCCertificate {
-    readonly expires: DOMTimeStamp;
+    readonly expires: EpochTimeStamp;
     getFingerprints(): RTCDtlsFingerprint[];
 }
 
@@ -17614,7 +17614,6 @@ type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type DOMHighResTimeStamp = number;
-type DOMTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type Float32List = Float32Array | GLfloat[];
@@ -17699,6 +17698,7 @@ type DirectionSetting = "" | "lr" | "rl";
 type DisplayCaptureSurfaceType = "application" | "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
 type DocumentReadyState = "complete" | "interactive" | "loading";
+type DocumentVisibilityState = "hidden" | "visible";
 type EndOfStreamError = "decode" | "network";
 type EndingType = "native" | "transparent";
 type FillMode = "auto" | "backwards" | "both" | "forwards" | "none";
@@ -17800,7 +17800,6 @@ type TouchType = "direct" | "stylus";
 type TransferFunction = "hlg" | "pq" | "srgb";
 type UserVerificationRequirement = "discouraged" | "preferred" | "required";
 type VideoFacingModeEnum = "environment" | "left" | "right" | "user";
-type VisibilityState = "hidden" | "visible";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
