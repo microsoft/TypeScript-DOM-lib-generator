@@ -467,6 +467,18 @@ interface FileSystemFlags {
     exclusive?: boolean;
 }
 
+interface FileSystemGetDirectoryOptions {
+    create?: boolean;
+}
+
+interface FileSystemGetFileOptions {
+    create?: boolean;
+}
+
+interface FileSystemRemoveOptions {
+    recursive?: boolean;
+}
+
 interface FocusEventInit extends UIEventInit {
     relatedTarget?: EventTarget | null;
 }
@@ -5076,6 +5088,19 @@ declare var FileSystemDirectoryEntry: {
     new(): FileSystemDirectoryEntry;
 };
 
+/** Available only in secure contexts. */
+interface FileSystemDirectoryHandle extends FileSystemHandle {
+    getDirectoryHandle(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
+    getFileHandle(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
+    removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
+    resolve(possibleDescendant: FileSystemHandle): Promise<string[] | null>;
+}
+
+declare var FileSystemDirectoryHandle: {
+    prototype: FileSystemDirectoryHandle;
+    new(): FileSystemDirectoryHandle;
+};
+
 interface FileSystemDirectoryReader {
     readEntries(successCallback: FileSystemEntriesCallback, errorCallback?: ErrorCallback): void;
 }
@@ -5106,6 +5131,28 @@ interface FileSystemFileEntry extends FileSystemEntry {
 declare var FileSystemFileEntry: {
     prototype: FileSystemFileEntry;
     new(): FileSystemFileEntry;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemFileHandle extends FileSystemHandle {
+    getFile(): Promise<File>;
+}
+
+declare var FileSystemFileHandle: {
+    prototype: FileSystemFileHandle;
+    new(): FileSystemFileHandle;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemHandle {
+    readonly kind: FileSystemHandleKind;
+    readonly name: string;
+    isSameEntry(other: FileSystemHandle): Promise<boolean>;
+}
+
+declare var FileSystemHandle: {
+    prototype: FileSystemHandle;
+    new(): FileSystemHandle;
 };
 
 /** Focus-related events like focus, blur, focusin, or focusout. */
@@ -7083,6 +7130,7 @@ interface HTMLMetaElement extends HTMLElement {
     content: string;
     /** Gets or sets information used to bind the value of a content attribute of a meta element to an HTTP response header. */
     httpEquiv: string;
+    media: string;
     /** Sets or retrieves the value specified in the content attribute of the meta object. */
     name: string;
     /**
@@ -13375,6 +13423,7 @@ declare var StorageEvent: {
 /** Available only in secure contexts. */
 interface StorageManager {
     estimate(): Promise<StorageEstimate>;
+    getDirectory(): Promise<FileSystemDirectoryHandle>;
     persist(): Promise<boolean>;
     persisted(): Promise<boolean>;
 }
@@ -17701,6 +17750,7 @@ type DocumentReadyState = "complete" | "interactive" | "loading";
 type DocumentVisibilityState = "hidden" | "visible";
 type EndOfStreamError = "decode" | "network";
 type EndingType = "native" | "transparent";
+type FileSystemHandleKind = "directory" | "file";
 type FillMode = "auto" | "backwards" | "both" | "forwards" | "none";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";

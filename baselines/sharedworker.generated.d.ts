@@ -165,6 +165,18 @@ interface FilePropertyBag extends BlobPropertyBag {
     lastModified?: number;
 }
 
+interface FileSystemGetDirectoryOptions {
+    create?: boolean;
+}
+
+interface FileSystemGetFileOptions {
+    create?: boolean;
+}
+
+interface FileSystemRemoveOptions {
+    recursive?: boolean;
+}
+
 interface FontFaceDescriptors {
     display?: string;
     featureSettings?: string;
@@ -1368,6 +1380,41 @@ interface FileReaderSync {
 declare var FileReaderSync: {
     prototype: FileReaderSync;
     new(): FileReaderSync;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemDirectoryHandle extends FileSystemHandle {
+    getDirectoryHandle(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
+    getFileHandle(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
+    removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
+    resolve(possibleDescendant: FileSystemHandle): Promise<string[] | null>;
+}
+
+declare var FileSystemDirectoryHandle: {
+    prototype: FileSystemDirectoryHandle;
+    new(): FileSystemDirectoryHandle;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemFileHandle extends FileSystemHandle {
+    getFile(): Promise<File>;
+}
+
+declare var FileSystemFileHandle: {
+    prototype: FileSystemFileHandle;
+    new(): FileSystemFileHandle;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemHandle {
+    readonly kind: FileSystemHandleKind;
+    readonly name: string;
+    isSameEntry(other: FileSystemHandle): Promise<boolean>;
+}
+
+declare var FileSystemHandle: {
+    prototype: FileSystemHandle;
+    new(): FileSystemHandle;
 };
 
 interface FontFace {
@@ -2576,6 +2623,7 @@ declare var SharedWorkerGlobalScope: {
 /** Available only in secure contexts. */
 interface StorageManager {
     estimate(): Promise<StorageEstimate>;
+    getDirectory(): Promise<FileSystemDirectoryHandle>;
     persisted(): Promise<boolean>;
 }
 
@@ -5457,6 +5505,7 @@ type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type ConnectionType = "bluetooth" | "cellular" | "ethernet" | "mixed" | "none" | "other" | "unknown" | "wifi";
 type EndingType = "native" | "transparent";
+type FileSystemHandleKind = "directory" | "file";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
