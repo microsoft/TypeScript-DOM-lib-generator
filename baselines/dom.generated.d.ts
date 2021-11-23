@@ -3245,7 +3245,7 @@ declare var CacheStorage: {
 
 interface CanvasCompositing {
     globalAlpha: number;
-    globalCompositeOperation: string;
+    globalCompositeOperation: GlobalCompositeOperation;
 }
 
 interface CanvasDrawImage {
@@ -17757,6 +17757,7 @@ type FontFaceSetLoadStatus = "loaded" | "loading";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GamepadHapticActuatorType = "vibration";
 type GamepadMappingType = "" | "standard" | "xr-standard";
+type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
