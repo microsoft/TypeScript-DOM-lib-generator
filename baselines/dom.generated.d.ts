@@ -6672,7 +6672,8 @@ interface HTMLImageElement extends HTMLElement {
     hspace: number;
     /** Sets or retrieves whether the image is a server-side image map. */
     isMap: boolean;
-    loading: string;
+    /** Sets or retrieves the policy for loading image elements that are outside the viewport. */
+    loading: "eager" | "lazy";
     /**
      * Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object.
      * @deprecated
