@@ -561,6 +561,12 @@ interface Transformer<I = any, O = any> {
     writableType?: undefined;
 }
 
+interface TrustedTypePolicyOptions {
+    createHTML?: CreateHTMLCallback | null;
+    createScript?: CreateScriptCallback | null;
+    createScriptURL?: CreateScriptURLCallback | null;
+}
+
 interface UnderlyingSink<W = any> {
     abort?: UnderlyingSinkAbortCallback;
     close?: UnderlyingSinkCloseCallback;
@@ -2775,6 +2781,66 @@ declare var TransformStreamDefaultController: {
     new(): TransformStreamDefaultController;
 };
 
+interface TrustedHTML {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedHTML: {
+    prototype: TrustedHTML;
+    fromLiteral(templateStringsArray: any): TrustedHTML;
+    toString(): string;
+};
+
+interface TrustedScript {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScript: {
+    prototype: TrustedScript;
+    fromLiteral(templateStringsArray: any): TrustedScript;
+    toString(): string;
+};
+
+interface TrustedScriptURL {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScriptURL: {
+    prototype: TrustedScriptURL;
+    fromLiteral(templateStringsArray: any): TrustedScriptURL;
+    toString(): string;
+};
+
+interface TrustedTypePolicy {
+    readonly name: string;
+    createHTML(input: string, ...arguments: any[]): TrustedHTML;
+    createScript(input: string, ...arguments: any[]): TrustedScript;
+    createScriptURL(input: string, ...arguments: any[]): TrustedScriptURL;
+}
+
+declare var TrustedTypePolicy: {
+    prototype: TrustedTypePolicy;
+};
+
+interface TrustedTypePolicyFactory {
+    readonly defaultPolicy: TrustedTypePolicy | null;
+    readonly emptyHTML: TrustedHTML;
+    readonly emptyScript: TrustedScript;
+    createPolicy(policyName: string, policyOptions?: TrustedTypePolicyOptions): TrustedTypePolicy;
+    getAttributeType(tagName: string, attribute: string, elementNs?: string, attrNs?: string): string | null;
+    getPropertyType(tagName: string, property: string, elementNs?: string): string | null;
+    isHTML(value: any): boolean;
+    isScript(value: any): boolean;
+    isScriptURL(value: any): boolean;
+}
+
+declare var TrustedTypePolicyFactory: {
+    prototype: TrustedTypePolicyFactory;
+};
+
 /** The URL interface represents an object providing static methods used for creating object URLs. */
 interface URL {
     hash: string;
@@ -4914,6 +4980,7 @@ interface WindowOrWorkerGlobalScope {
     readonly isSecureContext: boolean;
     readonly origin: string;
     readonly performance: Performance;
+    readonly trustedTypes: TrustedTypePolicyFactory;
     atob(data: string): string;
     btoa(data: string): string;
     clearInterval(id?: number): void;
@@ -5353,6 +5420,18 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
 interface OnErrorEventHandlerNonNull {
     (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any;
 }
@@ -5441,6 +5520,7 @@ declare var indexedDB: IDBFactory;
 declare var isSecureContext: boolean;
 declare var origin: string;
 declare var performance: Performance;
+declare var trustedTypes: TrustedTypePolicyFactory;
 declare function atob(data: string): string;
 declare function btoa(data: string): string;
 declare function clearInterval(id?: number): void;

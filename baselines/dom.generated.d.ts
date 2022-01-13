@@ -1703,6 +1703,12 @@ interface TransitionEventInit extends EventInit {
     pseudoElement?: string;
 }
 
+interface TrustedTypePolicyOptions {
+    createHTML?: CreateHTMLCallback | null;
+    createScript?: CreateScriptCallback | null;
+    createScriptURL?: CreateScriptURLCallback | null;
+}
+
 interface UIEventInit extends EventInit {
     detail?: number;
     view?: Window | null;
@@ -4544,11 +4550,13 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
      */
+    write(text: TrustedHTML): void;
     write(...text: string[]): void;
     /**
      * Writes one or more HTML expressions, followed by a carriage return, to a document in the specified window.
      * @param content The text and HTML tags to write.
      */
+    writeln(text: TrustedHTML): void;
     writeln(...text: string[]): void;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -13884,6 +13892,66 @@ declare var TreeWalker: {
     new(): TreeWalker;
 };
 
+interface TrustedHTML {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedHTML: {
+    prototype: TrustedHTML;
+    fromLiteral(templateStringsArray: any): TrustedHTML;
+    toString(): string;
+};
+
+interface TrustedScript {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScript: {
+    prototype: TrustedScript;
+    fromLiteral(templateStringsArray: any): TrustedScript;
+    toString(): string;
+};
+
+interface TrustedScriptURL {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScriptURL: {
+    prototype: TrustedScriptURL;
+    fromLiteral(templateStringsArray: any): TrustedScriptURL;
+    toString(): string;
+};
+
+interface TrustedTypePolicy {
+    readonly name: string;
+    createHTML(input: string, ...arguments: any[]): TrustedHTML;
+    createScript(input: string, ...arguments: any[]): TrustedScript;
+    createScriptURL(input: string, ...arguments: any[]): TrustedScriptURL;
+}
+
+declare var TrustedTypePolicy: {
+    prototype: TrustedTypePolicy;
+};
+
+interface TrustedTypePolicyFactory {
+    readonly defaultPolicy: TrustedTypePolicy | null;
+    readonly emptyHTML: TrustedHTML;
+    readonly emptyScript: TrustedScript;
+    createPolicy(policyName: string, policyOptions?: TrustedTypePolicyOptions): TrustedTypePolicy;
+    getAttributeType(tagName: string, attribute: string, elementNs?: string, attrNs?: string): string | null;
+    getPropertyType(tagName: string, property: string, elementNs?: string): string | null;
+    isHTML(value: any): boolean;
+    isScript(value: any): boolean;
+    isScriptURL(value: any): boolean;
+}
+
+declare var TrustedTypePolicyFactory: {
+    prototype: TrustedTypePolicyFactory;
+};
+
 /** Simple user interface events. */
 interface UIEvent extends Event {
     readonly detail: number;
@@ -16356,6 +16424,7 @@ interface WindowOrWorkerGlobalScope {
     readonly isSecureContext: boolean;
     readonly origin: string;
     readonly performance: Performance;
+    readonly trustedTypes: TrustedTypePolicyFactory;
     atob(data: string): string;
     btoa(data: string): string;
     clearInterval(id?: number): void;
@@ -16869,6 +16938,18 @@ declare namespace WebAssembly {
 
 interface BlobCallback {
     (blob: Blob | null): void;
+}
+
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string;
 }
 
 interface CustomElementConstructor {
@@ -17631,6 +17712,7 @@ declare var indexedDB: IDBFactory;
 declare var isSecureContext: boolean;
 declare var origin: string;
 declare var performance: Performance;
+declare var trustedTypes: TrustedTypePolicyFactory;
 declare function atob(data: string): string;
 declare function btoa(data: string): string;
 declare function clearInterval(id?: number): void;
