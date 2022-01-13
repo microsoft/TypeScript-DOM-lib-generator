@@ -612,6 +612,18 @@
                                     "overrideType": "NodeListOf<HTMLElement>"
                                 }
                             }
+                        },
+                        "write": {
+                            "name": "write",
+                            "additionalSignatures": [
+                                "write(text: TrustedHTML): void"
+                            ]
+                        },
+                        "writeln": {
+                            "name": "writeln",
+                            "additionalSignatures": [
+                                "writeln(text: TrustedHTML): void"
+                            ]
                         }
                     }
                 },
@@ -2821,6 +2833,36 @@
             },
             "SourceBufferList": {
                 "exposed": "Window"
+            },
+            "TrustedHTML": {
+                "name": "TrustedHTML",
+                "constructor": {
+                    "signature": []
+                }
+            },
+            "TrustedScript": {
+                "name": "TrustedScript",
+                "constructor": {
+                    "signature": []
+                }
+            },
+            "TrustedScriptURL": {
+                "name": "TrustedScriptURL",
+                "constructor": {
+                    "signature": []
+                }
+            },
+            "TrustedTypePolicy": {
+                "name": "TrustedTypePolicy",
+                "constructor": {
+                    "signature": []
+                }
+            },
+            "TrustedTypePolicyFactory": {
+                "name": "TrustedTypePolicyFactory",
+                "constructor": {
+                    "signature": []
+                }
             }
         }
     },

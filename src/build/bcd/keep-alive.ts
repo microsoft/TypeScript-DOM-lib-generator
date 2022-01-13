@@ -44,6 +44,22 @@ export const forceKeepAlive: Record<string, string[]> = {
   MediaCapabilities: ["encodingInfo"],
   RTCDtlsTransport: ["onstatechange", "state"],
   RTCPeerConnection: ["canTrickleIceCandidates"],
+  TrustedHTML: ["fromLiteral", "toJSON"],
+  TrustedScript: ["fromLiteral", "toJSON"],
+  TrustedScriptURL: ["fromLiteral", "toJSON"],
+  TrustedTypePolicy: ["createHTML", "createScript", "createScriptURL", "name"],
+  TrustedTypePolicyFactory: [
+    "createPolicy",
+    "defaultPolicy",
+    "emptyHTML",
+    "emptyScript",
+    "getAttributeType",
+    "getPropertyType",
+    "getTypeMapping",
+    "isHTML",
+    "isScript",
+    "isScriptURL",
+  ],
   WebGLRenderingContextBase: ["lineWidth"],
   WebGL2RenderingContextOverloads: [
     // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately
@@ -64,5 +80,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "uniform4iv",
   ],
   WindowEventHandlers: ["onpagehide", "onpageshow"],
+  WindowOrWorkerGlobalScope: ["trustedTypes"],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
 };
