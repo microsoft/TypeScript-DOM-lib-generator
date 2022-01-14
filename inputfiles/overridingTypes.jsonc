@@ -2,10 +2,96 @@
     "mixins": {
         "mixin": {
             "ChildNode": {
-                "extends": "Node"
+                "extends": "Node",
+                "methods": {
+                    "method": {
+                        "after": {
+                            "name": "after",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "nodes",
+                                            "overrideType": "Node | string | TrustedScript"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "before": {
+                            "name": "before",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "nodes",
+                                            "overrideType": "Node | string | TrustedScript"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "replaceWith": {
+                            "name": "replaceWith",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "nodes",
+                                            "overrideType": "Node | string | TrustedScript"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "ParentNode": {
-                "extends": "Node"
+                "extends": "Node",
+                "methods": {
+                    "method": {
+                        "append": {
+                            "name": "append",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "nodes",
+                                            "overrideType": "Node | string | TrustedScript"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "prepend": {
+                            "name": "prepend",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "nodes",
+                                            "overrideType": "Node | string | TrustedScript"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "replaceChildren": {
+                            "name": "replaceChildren",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "nodes",
+                                            "overrideType": "Node | string | TrustedScript"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "Animatable": {
                 "methods": {
@@ -613,6 +699,19 @@
                                 }
                             }
                         },
+                        "execCommand": {
+                            "name": "execCommand",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "value",
+                                            "overrideType": "string | TrustedHTML"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
                         "write": {
                             "name": "write",
                             "additionalSignatures": [
@@ -803,6 +902,9 @@
                         },
                         "previousSibling": {
                             "overrideType": "ChildNode"
+                        },
+                        "textContent": {
+                            "overrideType": "string | TrustedScript"
                         }
                     }
                 }
@@ -1252,6 +1354,27 @@
                                     "overrideType": "HTMLCollectionOf<Element>"
                                 }
                             }
+                        },
+                        "insertAdjacentHTML": {
+                            "name": "insertAdjacentHTML",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "text",
+                                            "overrideType": "string | TrustedHTML"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "outerHTML": {
+                            "name": "outerHTML",
+                            "overrideType": "string | TrustedHTML"
                         }
                     }
                 }
@@ -1712,6 +1835,18 @@
                                     "overrideType": "Promise<ServiceWorkerRegistration | undefined>"
                                 }
                             }
+                        },
+                        "register": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "scriptURL",
+                                            "overrideType": "string | URL | TrustedScriptURL"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     }
                 },
@@ -2123,6 +2258,18 @@
                             "type": "MessageEvent"
                         }
                     ]
+                },
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "scriptURL",
+                                    "overrideType": "string | URL | TrustedScriptURL"
+                                }
+                            ]
+                        }
+                    }
                 }
             },
             "Crypto": {
@@ -2716,6 +2863,23 @@
                             "type": "ErrorEvent"
                         }
                     ]
+                },
+                "methods": {
+                    "method": {
+                        "importScripts": {
+                            "name": "importScripts",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "urls",
+                                            "overrideType": "string | URL | TrustedScriptURL"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "Instance": {
@@ -2833,6 +2997,136 @@
             },
             "SourceBufferList": {
                 "exposed": "Window"
+            },
+            "DOMParser": {
+                "name": "DOMParser",
+                "methods": {
+                    "method": {
+                        "parseFromString": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "string",
+                                            "overrideType": "string | TrustedHTML"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HTMLElement": {
+                "name": "HTMLElement",
+                "properties": {
+                    "property": {
+                        "innerText": {
+                            "overrideType": "string | TrustedScript"
+                        }
+                    }
+                }
+            },
+            "HTMLEmbedElement": {
+                "name": "HTMLEmbedElement",
+                "properties": {
+                    "property": {
+                        "src": {
+                            "overrideType": "string | TrustedScriptURL"
+                        }
+                    }
+                }
+
+            },
+            "HTMLIFrameElement": {
+                "name": "HTMLIFrameElement",
+                "properties": {
+                    "property": {
+                        "srcdoc": {
+                            "overrideType": "string | TrustedHTML"
+                        }
+                    }
+                }
+            },
+            "HTMLObjectElement": {
+                "name": "HTMLObjectElement",
+                "properties": {
+                    "property": {
+                        "codeBase": {
+                            "overrideType": "string | TrustedHTML"
+                        },
+                        "data": {
+                            "overrideType": "string | TrustedHTML"
+                        }
+                    }
+                }
+            },
+            "HTMLScriptElement": {
+                "name": "HTMLScriptElement",
+                "properties": {
+                    "property": {
+                        "src": {
+                            "overrideType": "string | TrustedScriptURL"
+                        },
+                        "text": {
+                            "overrideType": "string | TrustedScript"
+                        }
+                    }
+                }
+            },
+            "InnerHTML": {
+                "name": "InnerHTML",
+                "properties": {
+                    "property": {
+                        "innerHTML": {
+                            "name": "innerHTML",
+                            "overrideType": "string | TrustedHTML"
+                        }
+                    }
+                }
+            },
+            "Range": {
+                "name": "Range",
+                "methods": {
+                    "method": {
+                        "createContextualFragment": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "fragment",
+                                            "overrideType": "string | TrustedHTML"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "SharedWorker": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "scriptURL",
+                                    "overrideType": "string | URL | TrustedScriptURL"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "SVGAnimatedString": {
+                "properties": {
+                    "property": {
+                        "baseVal": {
+                            "name": "baseVal",
+                            "overrideType": "string | TrustedScriptURL"
+                        }
+                    }
+                }
             },
             "TrustedHTML": {
                 "name": "TrustedHTML",
@@ -3186,6 +3480,10 @@
                         "name": "T"
                     }
                 ]
+            },
+            {
+                "name": "TimerHandler",
+                "overrideType": "string | Function | TrustedScript"
             }
         ]
     },
