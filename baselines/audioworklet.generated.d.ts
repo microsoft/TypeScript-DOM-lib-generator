@@ -241,15 +241,6 @@ declare var EventTarget: {
     new(): EventTarget;
 };
 
-interface InnerHTML {
-    innerHTML: string | TrustedHTML;
-}
-
-declare var InnerHTML: {
-    prototype: InnerHTML;
-    new(): InnerHTML;
-};
-
 /** A message received by a target object. */
 interface MessageEvent<T = any> extends Event {
     /** Returns the data of the message. */

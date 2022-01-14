@@ -305,6 +305,17 @@
                         }
                     }
                 }
+            },
+            "InnerHTML": {
+                "name": "InnerHTML",
+                "properties": {
+                    "property": {
+                        "innerHTML": {
+                            "name": "innerHTML",
+                            "overrideType": "string | TrustedHTML"
+                        }
+                    }
+                }
             }
         }
     },
@@ -3070,17 +3081,6 @@
                         },
                         "text": {
                             "overrideType": "string | TrustedScript"
-                        }
-                    }
-                }
-            },
-            "InnerHTML": {
-                "name": "InnerHTML",
-                "properties": {
-                    "property": {
-                        "innerHTML": {
-                            "name": "innerHTML",
-                            "overrideType": "string | TrustedHTML"
                         }
                     }
                 }

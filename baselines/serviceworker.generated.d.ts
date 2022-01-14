@@ -2043,15 +2043,6 @@ declare var ImageData: {
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
-interface InnerHTML {
-    innerHTML: string | TrustedHTML;
-}
-
-declare var InnerHTML: {
-    prototype: InnerHTML;
-    new(): InnerHTML;
-};
-
 interface KHR_parallel_shader_compile {
     readonly COMPLETION_STATUS_KHR: GLenum;
 }

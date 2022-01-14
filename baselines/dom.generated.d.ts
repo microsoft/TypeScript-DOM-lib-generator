@@ -8727,11 +8727,6 @@ interface InnerHTML {
     innerHTML: string | TrustedHTML;
 }
 
-declare var InnerHTML: {
-    prototype: InnerHTML;
-    new(): InnerHTML;
-};
-
 interface InputDeviceInfo extends MediaDeviceInfo {
 }
 
