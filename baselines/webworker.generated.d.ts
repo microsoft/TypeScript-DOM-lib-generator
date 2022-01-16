@@ -302,6 +302,24 @@ interface KeyAlgorithm {
     name: string;
 }
 
+interface LockInfo {
+    clientId?: string;
+    mode?: LockMode;
+    name?: string;
+}
+
+interface LockManagerSnapshot {
+    held?: LockInfo[];
+    pending?: LockInfo[];
+}
+
+interface LockOptions {
+    ifAvailable?: boolean;
+    mode?: LockMode;
+    signal?: AbortSignal;
+    steal?: boolean;
+}
+
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
     configuration?: MediaDecodingConfiguration;
 }
@@ -2092,6 +2110,29 @@ declare var ImageData: {
 interface KHR_parallel_shader_compile {
     readonly COMPLETION_STATUS_KHR: GLenum;
 }
+
+/** Available only in secure contexts. */
+interface Lock {
+    readonly mode: LockMode;
+    readonly name: string;
+}
+
+declare var Lock: {
+    prototype: Lock;
+    new(): Lock;
+};
+
+/** Available only in secure contexts. */
+interface LockManager {
+    query(): Promise<LockManagerSnapshot>;
+    request(name: string, callback: LockGrantedCallback): Promise<any>;
+    request(name: string, options: LockOptions, callback: LockGrantedCallback): Promise<any>;
+}
+
+declare var LockManager: {
+    prototype: LockManager;
+    new(): LockManager;
+};
 
 interface MediaCapabilities {
     decodingInfo(configuration: MediaDecodingConfiguration): Promise<MediaCapabilitiesDecodingInfo>;
@@ -5058,9 +5099,7 @@ interface WebGLVertexArrayObjectOES {
 
 interface WebSocketEventMap {
     "close": CloseEvent;
-    "error": Event;
     "message": MessageEvent;
-    "open": Event;
 }
 
 /** Provides the API for creating and managing a WebSocket connection to a server, as well as for sending and receiving data on the connection. */
@@ -5079,10 +5118,6 @@ interface WebSocket extends EventTarget {
     readonly bufferedAmount: number;
     /** Returns the extensions selected by the server, if any. */
     readonly extensions: string;
-    onclose: ((this: WebSocket, ev: CloseEvent) => any) | null;
-    onerror: ((this: WebSocket, ev: Event) => any) | null;
-    onmessage: ((this: WebSocket, ev: MessageEvent) => any) | null;
-    onopen: ((this: WebSocket, ev: Event) => any) | null;
     /** Returns the subprotocol selected by the server, if any. It can be used in conjunction with the array form of the constructor's second argument to perform subprotocol negotiation. */
     readonly protocol: string;
     /** Returns the state of the WebSocket object's connection. It can have the values described below. */
@@ -5577,6 +5612,10 @@ interface FrameRequestCallback {
     (time: DOMHighResTimeStamp): void;
 }
 
+interface LockGrantedCallback {
+    (lock: Lock | null): any;
+}
+
 interface OnErrorEventHandlerNonNull {
     (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any;
 }
@@ -5750,6 +5789,7 @@ type ImageOrientation = "flipY" | "none";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
 type KeyType = "private" | "public" | "secret";
 type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
+type LockMode = "exclusive" | "shared";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaEncodingType = "record" | "webrtc";
 type NotificationDirection = "auto" | "ltr" | "rtl";
