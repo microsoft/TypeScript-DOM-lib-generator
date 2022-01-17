@@ -807,19 +807,24 @@ export function emitWebIdl(
         pType += " | undefined";
       }
       const optionalModifier = !p.optional || prefix ? "" : "?";
-      if (!prefix && !p.readonly && p.putForwards) {
+      if (!prefix && !p.readonly && (p.putForwards || p.setterType)) {
         printer.printLine(`get ${p.name}${optionalModifier}(): ${pType};`);
 
-        const forwardingProperty =
-          allInterfacesMap[pType].properties?.property[p.putForwards];
-        if (!forwardingProperty) {
-          throw new Error("Couldn't find [PutForwards]");
+        let setterType: string;
+        if (p.putForwards) {
+          const forwardingProperty =
+            allInterfacesMap[pType].properties?.property[p.putForwards];
+          if (!forwardingProperty) {
+            throw new Error("Couldn't find [PutForwards]");
+          }
+          setterType = `${convertDomTypeToTsType(
+            forwardingProperty
+          )} | ${pType}`;
+        } else  {
+          setterType = p.setterType ?? "undefined";
         }
-        const setterType = `${convertDomTypeToTsType(
-          forwardingProperty
-        )} | ${pType}`;
         printer.printLine(
-          `set ${p.name}${optionalModifier}(${p.putForwards}: ${setterType});`
+          `set ${p.name}${optionalModifier}(${p.putForwards ?? p.name}: ${setterType});`
         );
       } else {
         const readOnlyModifier = p.readonly && prefix === "" ? "readonly " : "";

@@ -5461,6 +5461,18 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
 interface LockGrantedCallback {
     (lock: Lock | null): any;
 }

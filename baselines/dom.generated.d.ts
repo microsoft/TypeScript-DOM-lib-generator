@@ -4769,7 +4769,8 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     readonly namespaceURI: string | null;
     onfullscreenchange: ((this: Element, ev: Event) => any) | null;
     onfullscreenerror: ((this: Element, ev: Event) => any) | null;
-    outerHTML: string | TrustedHTML;
+    get outerHTML(): string;
+    set outerHTML(outerHTML: string | TrustedHTML);
     readonly ownerDocument: Document;
     readonly part: DOMTokenList;
     /** Returns the namespace prefix. */
@@ -6211,7 +6212,8 @@ interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementC
     dir: string;
     draggable: boolean;
     hidden: boolean;
-    innerText: string | TrustedScript;
+    get innerText(): string;
+    set innerText(innerText: string | TrustedScript);
     lang: string;
     readonly offsetHeight: number;
     readonly offsetLeft: number;
@@ -6247,7 +6249,8 @@ interface HTMLEmbedElement extends HTMLElement {
      */
     name: string;
     /** Sets or retrieves a URL to be loaded by the object. */
-    src: string | TrustedScriptURL;
+    get src(): string;
+    set src(src: string | TrustedScriptURL);
     type: string;
     /** Sets or retrieves the width of the object. */
     width: string;
@@ -6672,7 +6675,8 @@ interface HTMLIFrameElement extends HTMLElement {
     /** Sets or retrieves a URL to be loaded by the object. */
     src: string;
     /** Sets or retrives the content of the page that is to contain. */
-    srcdoc: string | TrustedHTML;
+    get srcdoc(): string;
+    set srcdoc(srcdoc: string | TrustedHTML);
     /** Sets or retrieves the width of the object. */
     width: string;
     getSVGDocument(): Document | null;
@@ -7269,7 +7273,8 @@ interface HTMLObjectElement extends HTMLElement {
      * Sets or retrieves the URL of the component.
      * @deprecated
      */
-    codeBase: string | TrustedHTML;
+    get codeBase(): string;
+    set codeBase(codeBase: string | TrustedHTML);
     /**
      * Sets or retrieves the Internet media type for the code associated with the object.
      * @deprecated
@@ -7279,7 +7284,8 @@ interface HTMLObjectElement extends HTMLElement {
     readonly contentDocument: Document | null;
     readonly contentWindow: WindowProxy | null;
     /** Sets or retrieves the URL that references the data of the object. */
-    data: string | TrustedHTML;
+    get data(): string;
+    set data(data: string | TrustedHTML);
     /** @deprecated */
     declare: boolean;
     /** Retrieves a reference to the form that the object is embedded in. */
@@ -7585,9 +7591,11 @@ interface HTMLScriptElement extends HTMLElement {
     noModule: boolean;
     referrerPolicy: string;
     /** Retrieves the URL to an external file that contains the source code or data. */
-    src: string | TrustedScriptURL;
+    get src(): string;
+    set src(src: string | TrustedScriptURL);
     /** Retrieves or sets the text of the object as a string. */
-    text: string | TrustedScript;
+    get text(): string;
+    set text(text: string | TrustedScript);
     /** Sets or retrieves the MIME type for the associated scripting engine. */
     type: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8759,7 +8767,8 @@ declare var ImageData: {
 };
 
 interface InnerHTML {
-    innerHTML: string | TrustedHTML;
+    get innerHTML(): string;
+    set innerHTML(innerHTML: string | TrustedHTML);
 }
 
 interface InputDeviceInfo extends MediaDeviceInfo {
@@ -9781,7 +9790,8 @@ interface Node extends EventTarget {
     readonly parentNode: ParentNode | null;
     /** Returns the previous sibling. */
     readonly previousSibling: ChildNode | null;
-    textContent: string | TrustedScript | null;
+    get textContent(): string | null;
+    set textContent(textContent: string | TrustedScript);
     appendChild<T extends Node>(node: T): T;
     /** Returns a copy of node. If deep is true, the copy also includes the node's descendants. */
     cloneNode(deep?: boolean): Node;
@@ -11459,7 +11469,8 @@ declare var SVGAnimatedRect: {
 /** The SVGAnimatedString interface represents string attributes which can be animated from each SVG declaration. You need to create SVG attribute before doing anything else, everything should be declared inside this. */
 interface SVGAnimatedString {
     readonly animVal: string;
-    baseVal: string | TrustedScriptURL;
+    get baseVal(): string;
+    set baseVal(baseVal: string | TrustedScriptURL);
 }
 
 declare var SVGAnimatedString: {

@@ -312,7 +312,7 @@
                     "property": {
                         "innerHTML": {
                             "name": "innerHTML",
-                            "overrideType": "string | TrustedHTML"
+                            "setterType": "string | TrustedHTML"
                         }
                     }
                 }
@@ -915,7 +915,7 @@
                             "overrideType": "ChildNode"
                         },
                         "textContent": {
-                            "overrideType": "string | TrustedScript"
+                            "setterType": "string | TrustedScript"
                         }
                     }
                 }
@@ -1385,7 +1385,7 @@
                     "property": {
                         "outerHTML": {
                             "name": "outerHTML",
-                            "overrideType": "string | TrustedHTML"
+                            "setterType": "string | TrustedHTML"
                         }
                     }
                 }
@@ -3033,7 +3033,7 @@
                 "properties": {
                     "property": {
                         "innerText": {
-                            "overrideType": "string | TrustedScript"
+                            "setterType": "string | TrustedScript"
                         }
                     }
                 }
@@ -3043,7 +3043,7 @@
                 "properties": {
                     "property": {
                         "src": {
-                            "overrideType": "string | TrustedScriptURL"
+                            "setterType": "string | TrustedScriptURL"
                         }
                     }
                 }
@@ -3054,7 +3054,7 @@
                 "properties": {
                     "property": {
                         "srcdoc": {
-                            "overrideType": "string | TrustedHTML"
+                            "setterType": "string | TrustedHTML"
                         }
                     }
                 }
@@ -3064,10 +3064,10 @@
                 "properties": {
                     "property": {
                         "codeBase": {
-                            "overrideType": "string | TrustedHTML"
+                            "setterType": "string | TrustedHTML"
                         },
                         "data": {
-                            "overrideType": "string | TrustedHTML"
+                            "setterType": "string | TrustedHTML"
                         }
                     }
                 }
@@ -3077,10 +3077,10 @@
                 "properties": {
                     "property": {
                         "src": {
-                            "overrideType": "string | TrustedScriptURL"
+                            "setterType": "string | TrustedScriptURL"
                         },
                         "text": {
-                            "overrideType": "string | TrustedScript"
+                            "setterType": "string | TrustedScript"
                         }
                     }
                 }
@@ -3123,7 +3123,7 @@
                     "property": {
                         "baseVal": {
                             "name": "baseVal",
-                            "overrideType": "string | TrustedScriptURL"
+                            "setterType": "string | TrustedScriptURL"
                         }
                     }
                 }

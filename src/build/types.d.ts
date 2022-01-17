@@ -59,6 +59,7 @@ export interface Property extends Typed {
   deprecated?: boolean;
   exposed?: string;
   secureContext?: boolean;
+  setterType?: string;
 }
 
 export interface Event {
