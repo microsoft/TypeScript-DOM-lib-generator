@@ -820,11 +820,13 @@ export function emitWebIdl(
           setterType = `${convertDomTypeToTsType(
             forwardingProperty
           )} | ${pType}`;
-        } else  {
+        } else {
           setterType = p.setterType ?? "undefined";
         }
         printer.printLine(
-          `set ${p.name}${optionalModifier}(${p.putForwards ?? p.name}: ${setterType});`
+          `set ${p.name}${optionalModifier}(${
+            p.putForwards ?? p.name
+          }: ${setterType});`
         );
       } else {
         const readOnlyModifier = p.readonly && prefix === "" ? "readonly " : "";

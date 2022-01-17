@@ -9791,7 +9791,7 @@ interface Node extends EventTarget {
     /** Returns the previous sibling. */
     readonly previousSibling: ChildNode | null;
     get textContent(): string | null;
-    set textContent(textContent: string | TrustedScript);
+    set textContent(textContent: string | TrustedScript | null);
     appendChild<T extends Node>(node: T): T;
     /** Returns a copy of node. If deep is true, the copy also includes the node's descendants. */
     cloneNode(deep?: boolean): Node;

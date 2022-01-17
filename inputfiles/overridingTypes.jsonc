@@ -915,7 +915,7 @@
                             "overrideType": "ChildNode"
                         },
                         "textContent": {
-                            "setterType": "string | TrustedScript"
+                            "setterType": "string | TrustedScript | null"
                         }
                     }
                 }
