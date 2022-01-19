@@ -1689,7 +1689,7 @@ declare var TaskSignal: {
     new(): TaskSignal;
 }
 
-interface TaskSignalEventMap extends AbortSignalEventMap {
+interface TaskSignalEventMap {
     "prioritychange": Event;
 }
 

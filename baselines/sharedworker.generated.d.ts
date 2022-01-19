@@ -509,6 +509,22 @@ interface RsaPssParams extends Algorithm {
     saltLength: number;
 }
 
+interface SchedulerPostTaskOptions {
+    delay?: number;
+    priority?: TaskPriority;
+    signal?: AbortSignal;
+}
+  
+interface Scheduler {
+    postTask<T, P extends readonly unknown[] | []>(
+      callback: (...params: P) => T,
+      options?: SchedulerPostTaskOptions,
+      ...arguments: P
+    ): Promise<T>;
+}
+  
+declare var scheduler: Scheduler;
+
 interface SecurityPolicyViolationEventInit extends EventInit {
     blockedURI?: string;
     columnNumber?: number;
@@ -555,6 +571,30 @@ interface StreamPipeOptions {
 
 interface StructuredSerializeOptions {
     transfer?: Transferable[];
+}
+
+interface TaskSignal extends AbortSignal {
+    readonly priority: TaskPriority;
+    onprioritychange: ((this: TaskSignal, ev: Event) => any) | null;
+    addEventListener<K extends keyof TaskSignalEventMap>(
+      type: K,
+      listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any,
+      options?: boolean | AddEventListenerOptions
+    ): void;
+    removeEventListener<K extends keyof TaskSignalEventMap>(
+      type: K,
+      listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any,
+      options?: boolean | EventListenerOptions
+    ): void;
+}
+  
+declare var TaskSignal: {
+    prototype: TaskSignal;
+    new (): TaskSignal;
+};
+  
+interface TaskSignalEventMap {
+    prioritychange: Event;
 }
 
 interface TextDecodeOptions {
@@ -5410,6 +5450,34 @@ interface QueuingStrategySize<T = any> {
     (chunk: T): number;
 }
 
+interface SchedulerPostTaskOptions {
+    delay?: number;
+    priority?: TaskPriority;
+    signal?: AbortSignal;
+}
+
+interface Scheduler {
+    postTask<T, P extends readonly unknown[] | []>(callback: (...params: P) => T, options?: SchedulerPostTaskOptions, ...arguments: P): Promise<T>;
+}
+
+declare var scheduler: Scheduler;
+
+interface TaskSignal extends AbortSignal {
+    readonly priority: TaskPriority;
+    onprioritychange: ((this: TaskSignal, ev: Event) => any) | null;
+    addEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+}
+
+declare var TaskSignal: {
+    prototype: TaskSignal;
+    new(): TaskSignal;
+}
+
+interface TaskSignalEventMap {
+    "prioritychange": Event;
+}
+
 interface TransformerFlushCallback<O> {
     (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
@@ -5583,6 +5651,7 @@ type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaquer
 type SecurityPolicyViolationEventDisposition = "enforce" | "report";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
+type TaskPriority = "user-blocking" | "user-visible" | "background";
 type TransferFunction = "hlg" | "pq" | "srgb";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
