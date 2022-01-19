@@ -2964,6 +2964,7 @@ interface CSSStyleDeclaration {
     scrollSnapAlign: string;
     scrollSnapStop: string;
     scrollSnapType: string;
+    scrollbarGutter: string;
     shapeImageThreshold: string;
     shapeMargin: string;
     shapeOutside: string;
