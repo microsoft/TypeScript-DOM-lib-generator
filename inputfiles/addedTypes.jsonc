@@ -1062,7 +1062,6 @@
                 }
             },
             "FileSystemFileHandle": {
-                "name": "FileSystemFileHandle",
                 "properties": {
                     "property": {
                         "kind": {
@@ -1074,7 +1073,6 @@
                 }
             },
             "FileSystemDirectoryHandle": {
-                "name": "FileSystemDirectoryHandle",
                 "properties": {
                     "property": {
                         "kind": {
