@@ -1402,6 +1402,7 @@ declare var FileReaderSync: {
 
 /** Available only in secure contexts. */
 interface FileSystemDirectoryHandle extends FileSystemHandle {
+    readonly kind: "directory";
     getDirectoryHandle(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
     getFileHandle(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
     removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
@@ -1415,6 +1416,7 @@ declare var FileSystemDirectoryHandle: {
 
 /** Available only in secure contexts. */
 interface FileSystemFileHandle extends FileSystemHandle {
+    readonly kind: "file";
     getFile(): Promise<File>;
 }
 

@@ -1060,6 +1060,30 @@
                         }
                     ]
                 }
+            },
+            "FileSystemFileHandle": {
+                "name": "FileSystemFileHandle",
+                "properties": {
+                    "property": {
+                        "kind": {
+                            "name": "kind",
+                            "readonly": true,
+                            "overrideType": "\"file\""
+                        }
+                    }
+                }
+            },
+            "FileSystemDirectoryHandle": {
+                "name": "FileSystemDirectoryHandle",
+                "properties": {
+                    "property": {
+                        "kind": {
+                            "name": "kind",
+                            "readonly": true,
+                            "overrideType": "\"directory\""
+                        }
+                    }
+                }
             }
         }
     },
