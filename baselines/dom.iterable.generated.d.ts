@@ -49,6 +49,9 @@ interface DataTransferItemList {
     [Symbol.iterator](): IterableIterator<DataTransferItem>;
 }
 
+interface EventCounts extends ReadonlyMap<string, number> {
+}
+
 interface FileList {
     [Symbol.iterator](): IterableIterator<File>;
 }
