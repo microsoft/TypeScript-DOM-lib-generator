@@ -375,12 +375,6 @@
                 "deprecated": "prefer HTMLTableCellElement",
                 "exposed": "Window"
             },
-            "HTMLDialogElement": {
-                "name": "HTMLDialogElement",
-                "noInterfaceObject": true,
-                "deprecated": "this is not available in most browsers",
-                "exposed": "Window"
-            },
             "OffscreenCanvas": {
                 "name": "OffscreenCanvas",
                 "noInterfaceObject": true,
