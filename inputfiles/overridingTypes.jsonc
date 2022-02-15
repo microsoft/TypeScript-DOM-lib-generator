@@ -3137,6 +3137,10 @@
     "typedefs": {
         "typedef": [
             {
+                "overrideType": "Float32Array | ReadonlyArray<GLfloat>",
+                "name": "Float32List"
+            },
+            {
                 "overrideType": "ReadableStreamDefaultController<T>",
                 "name": "ReadableStreamController",
                 "typeParameters": [
