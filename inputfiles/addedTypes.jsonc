@@ -439,6 +439,10 @@
                         {
                             "name": "gamepaddisconnected",
                             "type": "GamepadEvent"
+                        },
+                        {
+                            "name": "DOMContentLoaded",
+                            "type": "Event"
                         }
                     ]
                 }
@@ -679,6 +683,14 @@
                             "overrideType": "null"
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "DOMContentLoaded",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             // This is used in the React d.ts files, and not including
