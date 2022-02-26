@@ -672,7 +672,10 @@ export function emitWebIdl(
   function paramsToString(ps: Browser.Param[]) {
     function paramToString(p: Browser.Param) {
       p = resolvePromise(p);
-      if (p.name.toLowerCase().includes("url") && p.type === "USVString") {
+      if (
+        (p.name.toLowerCase().includes("url") && p.type === "USVString") ||
+        p.type === "RequestInfo"
+      ) {
         p = { ...p, additionalTypes: [...(p.additionalTypes ?? [])] };
         p.additionalTypes!.push("URL");
       }

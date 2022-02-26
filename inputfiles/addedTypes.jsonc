@@ -1276,10 +1276,6 @@
             {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
-            },
-            {
-                "additionalTypes": ["URL"],
-                "name": "RequestInfo"
             }
         ]
     }
