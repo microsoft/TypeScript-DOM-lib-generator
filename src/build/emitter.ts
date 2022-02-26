@@ -648,6 +648,13 @@ export function emitWebIdl(
     }
   }
 
+  function isUrlLike(p: Browser.Param) {
+    return (
+      (p.name.toLowerCase().includes("url") && p.type === "USVString") ||
+      p.type === "RequestInfo"
+    );
+  }
+
   function resolvePromise<T extends Browser.Typed>(t: T): T {
     const typedef =
       typeof t.type === "string" ? allTypedefsMap[t.type] : undefined;
@@ -672,10 +679,7 @@ export function emitWebIdl(
   function paramsToString(ps: Browser.Param[]) {
     function paramToString(p: Browser.Param) {
       p = resolvePromise(p);
-      if (
-        (p.name.toLowerCase().includes("url") && p.type === "USVString") ||
-        p.type === "RequestInfo"
-      ) {
+      if (isUrlLike(p)) {
         p = { ...p, additionalTypes: [...(p.additionalTypes ?? [])] };
         p.additionalTypes!.push("URL");
       }
