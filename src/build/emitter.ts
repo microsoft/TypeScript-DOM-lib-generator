@@ -648,7 +648,7 @@ export function emitWebIdl(
     }
   }
 
-  function isUrlLike(p: Browser.Param) {
+  function acceptsUrl(p: Browser.Param) {
     return (
       (p.name.toLowerCase().includes("url") && p.type === "USVString") ||
       p.type === "RequestInfo"
@@ -679,7 +679,7 @@ export function emitWebIdl(
   function paramsToString(ps: Browser.Param[]) {
     function paramToString(p: Browser.Param) {
       p = resolvePromise(p);
-      if (isUrlLike(p)) {
+      if (acceptsUrl(p)) {
         p = { ...p, additionalTypes: [...(p.additionalTypes ?? [])] };
         p.additionalTypes!.push("URL");
       }
