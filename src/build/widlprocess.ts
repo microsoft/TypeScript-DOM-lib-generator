@@ -80,6 +80,9 @@ function getExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
   if (!attr || !attr.rhs) {
     return [];
   }
+  if (attr.rhs.type === ("*" as any)) {
+    return ["*"];
+  }
   return attr.rhs.type === "identifier-list" ||
     attr.rhs.type === "string-list" ||
     attr.rhs.type === "decimal-list" ||
