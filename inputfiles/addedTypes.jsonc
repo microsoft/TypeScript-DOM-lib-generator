@@ -311,6 +311,28 @@
                     "color",
                     "luminosity"
                 ]
+            },
+            "PermissionName": {
+                "name": "PermissionName",
+                // This is a subset of the permissions defined in the spec:
+                // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
+                // Please add a feature only when it's supported by multiple engines.
+                "value": [
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility
+                    "geolocation",
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API#browser_compatibility
+                    "notifications",
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#browser_compatibility
+                    "persistent-storage",
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Push_API#browser_compatibility
+                    "push",
+                    // Wake Lock is actually Blink-only, but for now let's keep it here for backward compatibility.
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
+                    "screen-wake-lock",
+                    // WebXR is also actually Blink-only
+                    // https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API#browser_compatibility
+                    "xr-spatial-tracking"
+                ]
             }
         }
     },

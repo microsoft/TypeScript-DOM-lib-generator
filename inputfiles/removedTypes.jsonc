@@ -19,26 +19,6 @@
             "CredentialMediationRequirement": {
                 "value": ["conditional"] // tied to Credential#isConditionalMediationAvailable
             },
-            "PermissionName": {
-                "value": [
-                    "midi",
-                    "camera",
-                    "microphone",
-                    "speaker-selection",
-                    "device-info",
-                    "background-fetch",
-                    "background-sync",
-                    "bluetooth",
-                    "ambient-light-sensor",
-                    "accelerometer",
-                    "gyroscope",
-                    "magnetometer",
-                    "clipboard-read",
-                    "clipboard-write",
-                    "display-capture",
-                    "nfc"
-                ]
-            },
             "ReadableStreamReaderMode": null,
             "ReadableStreamType": null,
             "RTCStatsType": {
@@ -104,11 +84,6 @@
                 ]
             },
             "NetworkInformation": {
-                "properties": {
-                    "property": {
-                        "effectiveType": null
-                    }
-                },
                 "implements": ["NetworkInformationSaveData"]
             },
             "ReadableStream": {
@@ -303,8 +278,7 @@
                         "pan": null,
                         "tilt": null,
                         "zoom": null,
-                        "torch": null,
-                        "videoKind": null
+                        "torch": null
                     }
                 }
             },
@@ -332,8 +306,7 @@
                         "pan": null,
                         "tilt": null,
                         "zoom": null,
-                        "torch": null,
-                        "videoKind": null
+                        "torch": null
                     }
                 }
             },
@@ -362,8 +335,7 @@
                         "pan": null,
                         "tilt": null,
                         "zoom": null,
-                        "torch": null,
-                        "videoKind": null
+                        "torch": null
                     }
                 }
             },
@@ -393,8 +365,7 @@
                         "pan": null,
                         "tilt": null,
                         "zoom": null,
-                        "torch": null,
-                        "videoKind": null
+                        "torch": null
                     }
                 }
             },
@@ -421,6 +392,20 @@
                     "member": {
                         // Corresponds to Request#importance
                         "importance": null
+                    }
+                }
+            },
+            "RTCEncodedAudioFrameMetadata": {
+                "members": {
+                    "member": {
+                        "payloadType": null
+                    }
+                }
+            },
+            "RTCEncodedVideoFrameMetadata": {
+                "members": {
+                    "member": {
+                        "payloadType": null
                     }
                 }
             },

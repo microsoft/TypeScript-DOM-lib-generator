@@ -2952,6 +2952,15 @@
                     "[property: string]: string | number | null | undefined"
                 ]
             },
+            "PermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "type": "PermissionName"
+                        }
+                    }
+                }
+            },
             "PublicKeyCredentialCreationOptions": {
                 "members": {
                     "member": {

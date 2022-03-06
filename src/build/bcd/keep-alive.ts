@@ -41,9 +41,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onwebkittransitionend",
   ],
   KeyframeEffect: ["iterationComposite"],
-  MediaCapabilities: ["encodingInfo"],
-  RTCDtlsTransport: ["onstatechange", "state"],
-  RTCPeerConnection: ["canTrickleIceCandidates"],
   WebGLRenderingContextBase: ["lineWidth"],
   WebGL2RenderingContextOverloads: [
     // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately

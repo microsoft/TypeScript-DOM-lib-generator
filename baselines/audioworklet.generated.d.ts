@@ -5,6 +5,19 @@
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
+    signal?: AbortSignal;
+}
+
+interface CustomEventInit<T = any> extends EventInit {
+    detail?: T;
+}
+
+interface ErrorEventInit extends EventInit {
+    colno?: number;
+    error?: any;
+    filename?: string;
+    lineno?: number;
+    message?: string;
 }
 
 interface EventInit {
@@ -23,6 +36,29 @@ interface MessageEventInit<T = any> extends EventInit {
     origin?: string;
     ports?: MessagePort[];
     source?: MessageEventSource | null;
+}
+
+interface PerformanceMarkOptions {
+    detail?: any;
+    startTime?: DOMHighResTimeStamp;
+}
+
+interface PerformanceMeasureOptions {
+    detail?: any;
+    duration?: DOMHighResTimeStamp;
+    end?: string | DOMHighResTimeStamp;
+    start?: string | DOMHighResTimeStamp;
+}
+
+interface PerformanceObserverInit {
+    buffered?: boolean;
+    entryTypes?: string[];
+    type?: string;
+}
+
+interface PromiseRejectionEventInit extends EventInit {
+    promise: Promise<any>;
+    reason?: any;
 }
 
 interface QueuingStrategy<T = any> {
@@ -80,10 +116,25 @@ interface StreamPipeOptions {
      * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
      */
     preventClose?: boolean;
+    signal?: AbortSignal;
 }
 
 interface StructuredSerializeOptions {
     transfer?: Transferable[];
+}
+
+interface TextDecodeOptions {
+    stream?: boolean;
+}
+
+interface TextDecoderOptions {
+    fatal?: boolean;
+    ignoreBOM?: boolean;
+}
+
+interface TextEncoderEncodeIntoResult {
+    read?: number;
+    written?: number;
 }
 
 interface Transformer<I = any, O = any> {
@@ -108,6 +159,40 @@ interface UnderlyingSource<R = any> {
     start?: UnderlyingSourceStartCallback<R>;
     type?: undefined;
 }
+
+/** A controller object that allows you to abort one or more DOM requests as and when desired. */
+interface AbortController {
+    /** Returns the AbortSignal object associated with this object. */
+    readonly signal: AbortSignal;
+    /** Invoking this method will set this object's AbortSignal's aborted flag and signal to any observers that the associated activity is to be aborted. */
+    abort(reason?: any): void;
+}
+
+declare var AbortController: {
+    prototype: AbortController;
+    new(): AbortController;
+};
+
+interface AbortSignalEventMap {
+    "abort": Event;
+}
+
+/** A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object. */
+interface AbortSignal extends EventTarget {
+    /** Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise. */
+    readonly aborted: boolean;
+    onabort: ((this: AbortSignal, ev: Event) => any) | null;
+    addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AbortSignal: {
+    prototype: AbortSignal;
+    new(): AbortSignal;
+    abort(reason?: any): AbortSignal;
+};
 
 interface AudioWorkletGlobalScope extends WorkletGlobalScope {
     readonly currentFrame: number;
@@ -150,6 +235,32 @@ interface CountQueuingStrategy extends QueuingStrategy {
 declare var CountQueuingStrategy: {
     prototype: CountQueuingStrategy;
     new(init: QueuingStrategyInit): CountQueuingStrategy;
+};
+
+interface CustomEvent<T = any> extends Event {
+    /** Returns any custom data event was created with. Typically used for synthetic events. */
+    readonly detail: T;
+    /** @deprecated */
+    initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
+}
+
+declare var CustomEvent: {
+    prototype: CustomEvent;
+    new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
+};
+
+/** Events providing information related to errors in scripts or in files. */
+interface ErrorEvent extends Event {
+    readonly colno: number;
+    readonly error: any;
+    readonly filename: string;
+    readonly lineno: number;
+    readonly message: string;
+}
+
+declare var ErrorEvent: {
+    prototype: ErrorEvent;
+    new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
 };
 
 /** An event which takes place in the DOM. */
@@ -241,6 +352,11 @@ declare var EventTarget: {
     new(): EventTarget;
 };
 
+interface GenericTransformStream {
+    readonly readable: ReadableStream;
+    readonly writable: WritableStream;
+}
+
 /** A message received by a target object. */
 interface MessageEvent<T = any> extends Event {
     /** Returns the data of the message. */
@@ -293,6 +409,103 @@ declare var MessagePort: {
     new(): MessagePort;
 };
 
+interface PerformanceEventMap {
+    "resourcetimingbufferfull": Event;
+}
+
+/** Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API. */
+interface Performance extends EventTarget {
+    onresourcetimingbufferfull: ((this: Performance, ev: Event) => any) | null;
+    readonly timeOrigin: DOMHighResTimeStamp;
+    clearMarks(markName?: string): void;
+    clearMeasures(measureName?: string): void;
+    clearResourceTimings(): void;
+    getEntries(): PerformanceEntryList;
+    getEntriesByName(name: string, type?: string): PerformanceEntryList;
+    getEntriesByType(type: string): PerformanceEntryList;
+    mark(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
+    measure(measureName: string, startOrMeasureOptions?: string | PerformanceMeasureOptions, endMark?: string): PerformanceMeasure;
+    now(): DOMHighResTimeStamp;
+    setResourceTimingBufferSize(maxSize: number): void;
+    toJSON(): any;
+    addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var Performance: {
+    prototype: Performance;
+    new(): Performance;
+};
+
+/** Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image). */
+interface PerformanceEntry {
+    readonly duration: DOMHighResTimeStamp;
+    readonly entryType: string;
+    readonly name: string;
+    readonly startTime: DOMHighResTimeStamp;
+    toJSON(): any;
+}
+
+declare var PerformanceEntry: {
+    prototype: PerformanceEntry;
+    new(): PerformanceEntry;
+};
+
+/** PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline. */
+interface PerformanceMark extends PerformanceEntry {
+    readonly detail: any;
+}
+
+declare var PerformanceMark: {
+    prototype: PerformanceMark;
+    new(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
+};
+
+/** PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline. */
+interface PerformanceMeasure extends PerformanceEntry {
+    readonly detail: any;
+}
+
+declare var PerformanceMeasure: {
+    prototype: PerformanceMeasure;
+    new(): PerformanceMeasure;
+};
+
+interface PerformanceObserver {
+    disconnect(): void;
+    observe(options?: PerformanceObserverInit): void;
+    takeRecords(): PerformanceEntryList;
+}
+
+declare var PerformanceObserver: {
+    prototype: PerformanceObserver;
+    new(callback: PerformanceObserverCallback): PerformanceObserver;
+    readonly supportedEntryTypes: ReadonlyArray<string>;
+};
+
+interface PerformanceObserverEntryList {
+    getEntries(): PerformanceEntryList;
+    getEntriesByName(name: string, type?: string): PerformanceEntryList;
+    getEntriesByType(type: string): PerformanceEntryList;
+}
+
+declare var PerformanceObserverEntryList: {
+    prototype: PerformanceObserverEntryList;
+    new(): PerformanceObserverEntryList;
+};
+
+interface PromiseRejectionEvent extends Event {
+    readonly promise: Promise<any>;
+    readonly reason: any;
+}
+
+declare var PromiseRejectionEvent: {
+    prototype: PromiseRejectionEvent;
+    new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
+};
+
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
     readonly locked: boolean;
@@ -335,6 +548,76 @@ interface ReadableStreamGenericReader {
     cancel(reason?: any): Promise<void>;
 }
 
+/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+interface TextDecoder extends TextDecoderCommon {
+    /**
+     * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
+     *
+     * ```
+     * var string = "", decoder = new TextDecoder(encoding), buffer;
+     * while(buffer = next_chunk()) {
+     *   string += decoder.decode(buffer, {stream:true});
+     * }
+     * string += decoder.decode(); // end-of-queue
+     * ```
+     *
+     * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
+     */
+    decode(input?: BufferSource, options?: TextDecodeOptions): string;
+}
+
+declare var TextDecoder: {
+    prototype: TextDecoder;
+    new(label?: string, options?: TextDecoderOptions): TextDecoder;
+};
+
+interface TextDecoderCommon {
+    /** Returns encoding's name, lowercased. */
+    readonly encoding: string;
+    /** Returns true if error mode is "fatal", otherwise false. */
+    readonly fatal: boolean;
+    /** Returns the value of ignore BOM. */
+    readonly ignoreBOM: boolean;
+}
+
+interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
+    readonly readable: ReadableStream<string>;
+    readonly writable: WritableStream<BufferSource>;
+}
+
+declare var TextDecoderStream: {
+    prototype: TextDecoderStream;
+    new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
+};
+
+/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+interface TextEncoder extends TextEncoderCommon {
+    /** Returns the result of running UTF-8's encoder. */
+    encode(input?: string): Uint8Array;
+    /** Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination. */
+    encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
+}
+
+declare var TextEncoder: {
+    prototype: TextEncoder;
+    new(): TextEncoder;
+};
+
+interface TextEncoderCommon {
+    /** Returns "utf-8". */
+    readonly encoding: string;
+}
+
+interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
+    readonly readable: ReadableStream<Uint8Array>;
+    readonly writable: WritableStream<string>;
+}
+
+declare var TextEncoderStream: {
+    prototype: TextEncoderStream;
+    new(): TextEncoderStream;
+};
+
 interface TransformStream<I = any, O = any> {
     readonly readable: ReadableStream<O>;
     readonly writable: WritableStream<I>;
@@ -355,6 +638,54 @@ interface TransformStreamDefaultController<O = any> {
 declare var TransformStreamDefaultController: {
     prototype: TransformStreamDefaultController;
     new(): TransformStreamDefaultController;
+};
+
+/** The URL interface represents an object providing static methods used for creating object URLs. */
+interface URL {
+    hash: string;
+    host: string;
+    hostname: string;
+    href: string;
+    toString(): string;
+    readonly origin: string;
+    password: string;
+    pathname: string;
+    port: string;
+    protocol: string;
+    search: string;
+    readonly searchParams: URLSearchParams;
+    username: string;
+    toJSON(): string;
+}
+
+declare var URL: {
+    prototype: URL;
+    new(url: string | URL, base?: string | URL): URL;
+};
+
+interface URLSearchParams {
+    /** Appends a specified key/value pair as a new search parameter. */
+    append(name: string, value: string): void;
+    /** Deletes the given search parameter, and its associated value, from the list of all search parameters. */
+    delete(name: string): void;
+    /** Returns the first value associated to the given search parameter. */
+    get(name: string): string | null;
+    /** Returns all the values association with a given search parameter. */
+    getAll(name: string): string[];
+    /** Returns a Boolean indicating if such a search parameter exists. */
+    has(name: string): boolean;
+    /** Sets the value associated to a given search parameter to the given value. If there were several values, delete the others. */
+    set(name: string, value: string): void;
+    sort(): void;
+    /** Returns a string containing a query string suitable for use in a URL. Does not include the question mark. */
+    toString(): string;
+    forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
+}
+
+declare var URLSearchParams: {
+    prototype: URLSearchParams;
+    new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+    toString(): string;
 };
 
 /** Available only in secure contexts. */
@@ -561,6 +892,10 @@ interface AudioWorkletProcessorConstructor {
     (options: any): AudioWorkletProcessor;
 }
 
+interface PerformanceObserverCallback {
+    (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
+}
+
 interface QueuingStrategySize<T = any> {
     (chunk: T): number;
 }
@@ -613,6 +948,7 @@ type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMHighResTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type MessageEventSource = MessagePort;
+type PerformanceEntryList = PerformanceEntry[];
 type ReadableStreamController<T> = ReadableStreamDefaultController<T>;
 type ReadableStreamDefaultReadResult<T> = ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
