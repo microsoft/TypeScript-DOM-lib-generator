@@ -391,7 +391,9 @@
                 "members": {
                     "member": {
                         // Corresponds to Request#importance
-                        "importance": null
+                        "importance": null,
+                        // Corresponds to Request#priority
+                        "priority": null
                     }
                 }
             },

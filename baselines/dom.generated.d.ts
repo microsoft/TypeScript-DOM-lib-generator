@@ -3582,6 +3582,7 @@ declare var ClipboardEvent: {
     new(type: string, eventInitDict?: ClipboardEventInit): ClipboardEvent;
 };
 
+/** Available only in secure contexts. */
 interface ClipboardItem {
     readonly types: ReadonlyArray<string>;
     getType(type: string): Promise<Blob>;
@@ -3589,7 +3590,7 @@ interface ClipboardItem {
 
 declare var ClipboardItem: {
     prototype: ClipboardItem;
-    new(items: Record<string, ClipboardItemDataType | PromiseLike<ClipboardItemDataType>>, options?: ClipboardItemOptions): ClipboardItem;
+    new(items: Record<string, string | Blob | PromiseLike<string | Blob>>, options?: ClipboardItemOptions): ClipboardItem;
 };
 
 /** A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute. */
@@ -10468,7 +10469,7 @@ interface PerformanceNavigationTiming extends PerformanceResourceTiming {
     readonly loadEventEnd: DOMHighResTimeStamp;
     readonly loadEventStart: DOMHighResTimeStamp;
     readonly redirectCount: number;
-    readonly type: NavigationType;
+    readonly type: NavigationTimingType;
     readonly unloadEventEnd: DOMHighResTimeStamp;
     readonly unloadEventStart: DOMHighResTimeStamp;
     toJSON(): any;
@@ -17952,8 +17953,7 @@ type BufferSource = ArrayBufferView | ArrayBuffer;
 type COSEAlgorithmIdentifier = number;
 type CSSNumberish = number;
 type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap;
-type ClipboardItemData = Promise<ClipboardItemDataType>;
-type ClipboardItemDataType = string | Blob;
+type ClipboardItemData = Promise<string | Blob>;
 type ClipboardItems = ClipboardItem[];
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
@@ -18079,7 +18079,7 @@ type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type MediaSessionAction = "hangup" | "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop" | "togglecamera" | "togglemicrophone";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
-type NavigationType = "back_forward" | "navigate" | "prerender" | "reload";
+type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
