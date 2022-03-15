@@ -9767,7 +9767,7 @@ declare var NavigationPreloadManager: {
 };
 
 /** The state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities. */
-interface Navigator extends NavigatorAutomationInformation, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorID, NavigatorLanguage, NavigatorNetworkInformation, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
+interface Navigator extends NavigatorAutomationInformation, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorNetworkInformation, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
     /** Available only in secure contexts. */
     readonly clipboard: Clipboard;
     /** Available only in secure contexts. */
@@ -9837,6 +9837,11 @@ interface NavigatorID {
 interface NavigatorLanguage {
     readonly language: string;
     readonly languages: ReadonlyArray<string>;
+}
+
+/** Available only in secure contexts. */
+interface NavigatorLocks {
+    readonly locks: LockManager;
 }
 
 interface NavigatorNetworkInformation {
