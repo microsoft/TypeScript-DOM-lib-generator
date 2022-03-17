@@ -105,13 +105,6 @@
                     }
                 }
             },
-            "ServiceWorkerRegistration": {
-                "properties": {
-                    "property": {
-                        "navigationPreload": null
-                    }
-                }
-            },
             "SVGAnimationElement": {
                 "properties": {
                     "property": {
