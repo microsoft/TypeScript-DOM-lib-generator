@@ -13373,6 +13373,7 @@ interface ServiceWorkerRegistrationEventMap {
 interface ServiceWorkerRegistration extends EventTarget {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
+    readonly navigationPreload: NavigationPreloadManager;
     onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
     readonly pushManager: PushManager;
     readonly scope: string;
