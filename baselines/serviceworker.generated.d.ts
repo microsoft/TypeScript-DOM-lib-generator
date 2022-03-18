@@ -691,6 +691,7 @@ interface AbortSignal extends EventTarget {
     /** Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise. */
     readonly aborted: boolean;
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
+    readonly reason: any;
     addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -1671,9 +1672,7 @@ declare var IDBCursorWithValue: {
 };
 
 interface IDBDatabaseEventMap {
-    "abort": Event;
     "close": Event;
-    "error": Event;
     "versionchange": IDBVersionChangeEvent;
 }
 
@@ -1683,9 +1682,7 @@ interface IDBDatabase extends EventTarget {
     readonly name: string;
     /** Returns a list of the names of object stores in the database. */
     readonly objectStoreNames: DOMStringList;
-    onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
-    onerror: ((this: IDBDatabase, ev: Event) => any) | null;
     onversionchange: ((this: IDBDatabase, ev: IDBVersionChangeEvent) => any) | null;
     /** Returns the version of the database. */
     readonly version: number;
@@ -3079,13 +3076,6 @@ interface WEBGL_compressed_texture_etc {
 
 interface WEBGL_compressed_texture_etc1 {
     readonly COMPRESSED_RGB_ETC1_WEBGL: GLenum;
-}
-
-interface WEBGL_compressed_texture_pvrtc {
-    readonly COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGBA_PVRTC_4BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_4BPPV1_IMG: GLenum;
 }
 
 /** The WEBGL_compressed_texture_s3tc extension is part of the WebGL API and exposes four S3TC compressed texture formats. */
