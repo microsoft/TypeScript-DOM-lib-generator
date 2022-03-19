@@ -2804,7 +2804,6 @@ interface CSSStyleDeclaration {
     clipPath: string;
     clipRule: string;
     color: string;
-    colorAdjust: string;
     colorInterpolation: string;
     colorInterpolationFilters: string;
     colorScheme: string;
@@ -2995,6 +2994,7 @@ interface CSSStyleDeclaration {
     placeSelf: string;
     pointerEvents: string;
     position: string;
+    printColorAdjust: string;
     quotes: string;
     resize: string;
     right: string;
