@@ -701,6 +701,19 @@ interface LockOptions {
     steal?: boolean;
 }
 
+interface MIDIConnectionEventInit extends EventInit {
+    port?: MIDIPort;
+}
+
+interface MIDIMessageEventInit extends EventInit {
+    data?: Uint8Array;
+}
+
+interface MIDIOptions {
+    software?: boolean;
+    sysex?: boolean;
+}
+
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
     configuration?: MediaDecodingConfiguration;
 }
@@ -2949,7 +2962,6 @@ interface CSSStyleDeclaration {
     objectFit: string;
     objectPosition: string;
     offset: string;
-    offsetAnchor: string;
     offsetDistance: string;
     offsetPath: string;
     offsetRotate: string;
@@ -4488,6 +4500,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createEvent(eventInterface: "IDBVersionChangeEvent"): IDBVersionChangeEvent;
     createEvent(eventInterface: "InputEvent"): InputEvent;
     createEvent(eventInterface: "KeyboardEvent"): KeyboardEvent;
+    createEvent(eventInterface: "MIDIConnectionEvent"): MIDIConnectionEvent;
+    createEvent(eventInterface: "MIDIMessageEvent"): MIDIMessageEvent;
     createEvent(eventInterface: "MediaEncryptedEvent"): MediaEncryptedEvent;
     createEvent(eventInterface: "MediaKeyMessageEvent"): MediaKeyMessageEvent;
     createEvent(eventInterface: "MediaQueryListEvent"): MediaQueryListEvent;
@@ -9066,6 +9080,126 @@ declare var LockManager: {
     new(): LockManager;
 };
 
+interface MIDIAccessEventMap {
+    "statechange": Event;
+}
+
+/** Available only in secure contexts. */
+interface MIDIAccess extends EventTarget {
+    readonly inputs: MIDIInputMap;
+    onstatechange: ((this: MIDIAccess, ev: Event) => any) | null;
+    readonly outputs: MIDIOutputMap;
+    readonly sysexEnabled: boolean;
+    addEventListener<K extends keyof MIDIAccessEventMap>(type: K, listener: (this: MIDIAccess, ev: MIDIAccessEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MIDIAccessEventMap>(type: K, listener: (this: MIDIAccess, ev: MIDIAccessEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var MIDIAccess: {
+    prototype: MIDIAccess;
+    new(): MIDIAccess;
+};
+
+/** Available only in secure contexts. */
+interface MIDIConnectionEvent extends Event {
+    readonly port: MIDIPort;
+}
+
+declare var MIDIConnectionEvent: {
+    prototype: MIDIConnectionEvent;
+    new(type: string, eventInitDict?: MIDIConnectionEventInit): MIDIConnectionEvent;
+};
+
+interface MIDIInputEventMap extends MIDIPortEventMap {
+    "midimessage": Event;
+}
+
+/** Available only in secure contexts. */
+interface MIDIInput extends MIDIPort {
+    onmidimessage: ((this: MIDIInput, ev: Event) => any) | null;
+    addEventListener<K extends keyof MIDIInputEventMap>(type: K, listener: (this: MIDIInput, ev: MIDIInputEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MIDIInputEventMap>(type: K, listener: (this: MIDIInput, ev: MIDIInputEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var MIDIInput: {
+    prototype: MIDIInput;
+    new(): MIDIInput;
+};
+
+/** Available only in secure contexts. */
+interface MIDIInputMap {
+    forEach(callbackfn: (value: MIDIInput, key: string, parent: MIDIInputMap) => void, thisArg?: any): void;
+}
+
+declare var MIDIInputMap: {
+    prototype: MIDIInputMap;
+    new(): MIDIInputMap;
+};
+
+/** Available only in secure contexts. */
+interface MIDIMessageEvent extends Event {
+    readonly data: Uint8Array;
+}
+
+declare var MIDIMessageEvent: {
+    prototype: MIDIMessageEvent;
+    new(type: string, eventInitDict?: MIDIMessageEventInit): MIDIMessageEvent;
+};
+
+/** Available only in secure contexts. */
+interface MIDIOutput extends MIDIPort {
+    send(data: number[], timestamp?: DOMHighResTimeStamp): void;
+    addEventListener<K extends keyof MIDIPortEventMap>(type: K, listener: (this: MIDIOutput, ev: MIDIPortEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MIDIPortEventMap>(type: K, listener: (this: MIDIOutput, ev: MIDIPortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var MIDIOutput: {
+    prototype: MIDIOutput;
+    new(): MIDIOutput;
+};
+
+/** Available only in secure contexts. */
+interface MIDIOutputMap {
+    forEach(callbackfn: (value: MIDIOutput, key: string, parent: MIDIOutputMap) => void, thisArg?: any): void;
+}
+
+declare var MIDIOutputMap: {
+    prototype: MIDIOutputMap;
+    new(): MIDIOutputMap;
+};
+
+interface MIDIPortEventMap {
+    "statechange": Event;
+}
+
+/** Available only in secure contexts. */
+interface MIDIPort extends EventTarget {
+    readonly connection: MIDIPortConnectionState;
+    readonly id: string;
+    readonly manufacturer: string | null;
+    readonly name: string | null;
+    onstatechange: ((this: MIDIPort, ev: Event) => any) | null;
+    readonly state: MIDIPortDeviceState;
+    readonly type: MIDIPortType;
+    readonly version: string | null;
+    close(): Promise<MIDIPort>;
+    open(): Promise<MIDIPort>;
+    addEventListener<K extends keyof MIDIPortEventMap>(type: K, listener: (this: MIDIPort, ev: MIDIPortEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MIDIPortEventMap>(type: K, listener: (this: MIDIPort, ev: MIDIPortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var MIDIPort: {
+    prototype: MIDIPort;
+    new(): MIDIPort;
+};
+
 interface MathMLElementEventMap extends ElementEventMap, DocumentAndElementEventHandlersEventMap, GlobalEventHandlersEventMap {
 }
 
@@ -9786,6 +9920,8 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorConcurrentH
     /** Available only in secure contexts. */
     canShare(data?: ShareData): boolean;
     getGamepads(): (Gamepad | null)[];
+    /** Available only in secure contexts. */
+    requestMIDIAccess(options?: MIDIOptions): Promise<MIDIAccess>;
     /** Available only in secure contexts. */
     requestMediaKeySystemAccess(keySystem: string, supportedConfigurations: MediaKeySystemConfiguration[]): Promise<MediaKeySystemAccess>;
     sendBeacon(url: string | URL, data?: BodyInit | null): boolean;
@@ -18067,6 +18203,9 @@ type KeyType = "private" | "public" | "secret";
 type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
 type LineAlignSetting = "center" | "end" | "start";
 type LockMode = "exclusive" | "shared";
+type MIDIPortConnectionState = "closed" | "open" | "pending";
+type MIDIPortDeviceState = "connected" | "disconnected";
+type MIDIPortType = "input" | "output";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaDeviceKind = "audioinput" | "audiooutput" | "videoinput";
 type MediaEncodingType = "record" | "webrtc";
