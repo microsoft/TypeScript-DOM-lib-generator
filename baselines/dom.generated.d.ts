@@ -2855,7 +2855,6 @@ interface CSSStyleDeclaration {
     fontStyle: string;
     fontSynthesis: string;
     fontVariant: string;
-    /** @deprecated */
     fontVariantAlternates: string;
     fontVariantCaps: string;
     fontVariantEastAsian: string;
@@ -7699,6 +7698,7 @@ interface HTMLScriptElement extends HTMLElement {
 declare var HTMLScriptElement: {
     prototype: HTMLScriptElement;
     new(): HTMLScriptElement;
+    supports(type: string): boolean;
 };
 
 /** A <select> HTML Element. These elements also share all of the properties and methods of other HTML elements via the HTMLElement interface. */
@@ -14393,13 +14393,6 @@ interface WEBGL_compressed_texture_etc {
 
 interface WEBGL_compressed_texture_etc1 {
     readonly COMPRESSED_RGB_ETC1_WEBGL: GLenum;
-}
-
-interface WEBGL_compressed_texture_pvrtc {
-    readonly COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGBA_PVRTC_4BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_4BPPV1_IMG: GLenum;
 }
 
 /** The WEBGL_compressed_texture_s3tc extension is part of the WebGL API and exposes four S3TC compressed texture formats. */

@@ -2947,13 +2947,6 @@ interface WEBGL_compressed_texture_etc1 {
     readonly COMPRESSED_RGB_ETC1_WEBGL: GLenum;
 }
 
-interface WEBGL_compressed_texture_pvrtc {
-    readonly COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGBA_PVRTC_4BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_4BPPV1_IMG: GLenum;
-}
-
 /** The WEBGL_compressed_texture_s3tc extension is part of the WebGL API and exposes four S3TC compressed texture formats. */
 interface WEBGL_compressed_texture_s3tc {
     readonly COMPRESSED_RGBA_S3TC_DXT1_EXT: GLenum;

@@ -39,6 +39,16 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onwebkitanimationiteration",
     "onwebkitanimationstart",
     "onwebkittransitionend",
+
+    // Improper BCD change
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "oncuechange",
+  ],
+  IDBDatabase: [
+    // Improper BCD change
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onabort",
+    "onerror",
   ],
   KeyframeEffect: ["iterationComposite"],
   WebGLRenderingContextBase: ["lineWidth"],
@@ -62,4 +72,15 @@ export const forceKeepAlive: Record<string, string[]> = {
   ],
   WindowEventHandlers: ["onpagehide", "onpageshow"],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
+  XMLHttpRequestEventTarget: [
+    // Improper BCD change
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onabort",
+    "onerror",
+    "onload",
+    "onloadend",
+    "onloadstart",
+    "onprogress",
+    "ontimeout",
+  ],
 };
