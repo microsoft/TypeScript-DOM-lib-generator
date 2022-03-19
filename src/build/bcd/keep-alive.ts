@@ -40,12 +40,12 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onwebkitanimationstart",
     "onwebkittransitionend",
 
-    // Improper BCD change
+    // BCD unexpectedly is removing valid event data
     // https://github.com/mdn/browser-compat-data/issues/15345
     "oncuechange",
   ],
   IDBDatabase: [
-    // Improper BCD change
+    // BCD unexpectedly is removing valid event data
     // https://github.com/mdn/browser-compat-data/issues/15345
     "onabort",
     "onerror",
@@ -70,10 +70,18 @@ export const forceKeepAlive: Record<string, string[]> = {
     "uniform4fv",
     "uniform4iv",
   ],
-  WindowEventHandlers: ["onpagehide", "onpageshow"],
+  WindowEventHandlers: [
+    "onpagehide",
+    "onpageshow",
+
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "ongamepadconnected",
+    "ongamepaddisconnected",
+  ],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
   XMLHttpRequestEventTarget: [
-    // Improper BCD change
+    // BCD unexpectedly is removing valid event data
     // https://github.com/mdn/browser-compat-data/issues/15345
     "onabort",
     "onerror",
