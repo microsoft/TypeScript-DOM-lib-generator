@@ -366,6 +366,11 @@
                 "overrideSignatures": [
                     "new (...params: any[]): HTMLElement"
                 ]
+            },
+            "AudioWorkletProcessorConstructor": {
+                "overrideSignatures": [
+                    "new (options: any): AudioWorkletProcessor"
+                ]
             }
         }
     },

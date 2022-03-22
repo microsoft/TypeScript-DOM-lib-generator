@@ -890,7 +890,7 @@ declare namespace WebAssembly {
 }
 
 interface AudioWorkletProcessorConstructor {
-    (options: any): AudioWorkletProcessor;
+    new (options: any): AudioWorkletProcessor;
 }
 
 interface PerformanceObserverCallback {
