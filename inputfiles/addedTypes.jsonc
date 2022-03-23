@@ -351,7 +351,8 @@
                         }
                     }
                 },
-                "exposed": "AudioWorklet"
+                "exposed": "AudioWorklet",
+                "noInterfaceObject": true
             },
             "BroadcastChannel": {
                 "events": {
