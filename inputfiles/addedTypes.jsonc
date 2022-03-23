@@ -338,6 +338,21 @@
     },
     "interfaces": {
         "interface": {
+            "AudioWorkletProcessorImpl": {
+                "name": "AudioWorkletProcessorImpl",
+                "extends": "AudioWorkletProcessor",
+                "methods": {
+                    "method": {
+                        "process": {
+                            "name": "process",
+                            "overrideSignatures": [
+                                "process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: {[name: string]: Float32Array}): boolean"
+                            ]
+                        }
+                    }
+                },
+                "exposed": "AudioWorklet"
+            },
             "BroadcastChannel": {
                 "events": {
                     "event": [

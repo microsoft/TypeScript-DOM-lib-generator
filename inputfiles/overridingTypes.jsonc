@@ -369,7 +369,7 @@
             },
             "AudioWorkletProcessorConstructor": {
                 "overrideSignatures": [
-                    "new (options: any): AudioWorkletProcessor"
+                    "new (options: any): AudioWorkletProcessorImpl"
                 ]
             }
         }
