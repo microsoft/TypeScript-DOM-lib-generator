@@ -1962,6 +1962,7 @@ interface AbortSignal extends EventTarget {
     readonly aborted: boolean;
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
     readonly reason: any;
+    throwIfAborted(): void;
     addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -1997,7 +1998,6 @@ interface AbstractWorkerEventMap {
 }
 
 interface AbstractWorker {
-    onerror: ((this: AbstractWorker, ev: ErrorEvent) => any) | null;
     addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -16747,8 +16747,6 @@ interface WindowEventHandlers {
     ongamepaddisconnected: ((this: WindowEventHandlers, ev: GamepadEvent) => any) | null;
     onhashchange: ((this: WindowEventHandlers, ev: HashChangeEvent) => any) | null;
     onlanguagechange: ((this: WindowEventHandlers, ev: Event) => any) | null;
-    onmessage: ((this: WindowEventHandlers, ev: MessageEvent) => any) | null;
-    onmessageerror: ((this: WindowEventHandlers, ev: MessageEvent) => any) | null;
     onoffline: ((this: WindowEventHandlers, ev: Event) => any) | null;
     ononline: ((this: WindowEventHandlers, ev: Event) => any) | null;
     onpagehide: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
@@ -18043,8 +18041,6 @@ declare var ongamepadconnected: ((this: Window, ev: GamepadEvent) => any) | null
 declare var ongamepaddisconnected: ((this: Window, ev: GamepadEvent) => any) | null;
 declare var onhashchange: ((this: Window, ev: HashChangeEvent) => any) | null;
 declare var onlanguagechange: ((this: Window, ev: Event) => any) | null;
-declare var onmessage: ((this: Window, ev: MessageEvent) => any) | null;
-declare var onmessageerror: ((this: Window, ev: MessageEvent) => any) | null;
 declare var onoffline: ((this: Window, ev: Event) => any) | null;
 declare var ononline: ((this: Window, ev: Event) => any) | null;
 declare var onpagehide: ((this: Window, ev: PageTransitionEvent) => any) | null;
