@@ -70,15 +70,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "uniform4fv",
     "uniform4iv",
   ],
-  WindowEventHandlers: [
-    "onpagehide",
-    "onpageshow",
-
-    // BCD unexpectedly is removing valid event data
-    // https://github.com/mdn/browser-compat-data/issues/15345
-    "ongamepadconnected",
-    "ongamepaddisconnected",
-  ],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
   XMLHttpRequestEventTarget: [
     // BCD unexpectedly is removing valid event data

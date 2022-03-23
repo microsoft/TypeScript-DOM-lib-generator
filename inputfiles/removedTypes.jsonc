@@ -105,15 +105,6 @@
                     }
                 }
             },
-            "SVGAnimationElement": {
-                "properties": {
-                    "property": {
-                        "onbegin": null,
-                        "onend": null,
-                        "onrepeat": null
-                    }
-                }
-            },
             "SVGElement": {
                 "implements": ["SVGElementInstance"]
             },
