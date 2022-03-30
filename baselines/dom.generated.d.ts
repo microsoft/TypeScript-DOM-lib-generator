@@ -7216,6 +7216,8 @@ interface HTMLMediaElement extends HTMLElement {
     readonly played: TimeRanges;
     /** Gets or sets a value indicating what data should be preloaded, if any. */
     preload: "none" | "metadata" | "auto" | "";
+    /** Gets or sets a flag that indicate whether or not the browser should adjust the pitch of the audio to compensate for changes to the playback rate. */
+    preservesPitch: boolean;
     readonly readyState: number;
     readonly remote: RemotePlayback;
     /** Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked. */

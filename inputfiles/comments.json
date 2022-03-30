@@ -1542,6 +1542,9 @@
                         "playbackRate": {
                             "comment": "Gets or sets the current rate of speed for the media resource to play. This speed is expressed as a multiple of the normal speed of the media resource."
                         },
+                        "preservesPitch": {
+                            "comment": "Gets or sets a flag that indicate whether or not the browser should adjust the pitch of the audio to compensate for changes to the playback rate."
+                        },
                         "duration": {
                             "comment": "Returns the duration in seconds of the current media resource. A NaN value is returned if duration is not available, or Infinity if the media resource is streaming."
                         },

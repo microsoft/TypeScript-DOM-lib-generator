@@ -2824,6 +2824,9 @@
                     "property": {
                         "preload": {
                             "overrideType": "\"none\" | \"metadata\" | \"auto\" | \"\""
+                        },
+                        "preservesPitch": {
+                            "exposed": "Window"
                         }
                     }
                 }
