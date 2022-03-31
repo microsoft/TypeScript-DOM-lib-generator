@@ -1128,7 +1128,6 @@
                 }
             },
             "HTMLStyleElement": {
-                "name": "HTMLStyleElement",
                 "properties": {
                     "property": {
                         "disabled": {
