@@ -1281,6 +1281,9 @@
                         },
                         "type": {
                             "comment": "Retrieves the CSS language in which the style sheet is written."
+                        },
+                        "disabled": {
+                            "comment": "Enables or disables the style sheet."
                         }
                     }
                 }

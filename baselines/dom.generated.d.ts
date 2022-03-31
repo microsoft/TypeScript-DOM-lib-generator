@@ -7846,6 +7846,8 @@ declare var HTMLSpanElement: {
 
 /** A <style> element. It inherits properties and methods from its parent, HTMLElement, and from LinkStyle. */
 interface HTMLStyleElement extends HTMLElement, LinkStyle {
+    /** Enables or disables the style sheet. */
+    disabled: boolean;
     /** Sets or retrieves the media type. */
     media: string;
     /**
