@@ -2267,7 +2267,6 @@ interface NavigatorID {
     readonly appName: string;
     /** @deprecated */
     readonly appVersion: string;
-    /** @deprecated */
     readonly platform: string;
     /** @deprecated */
     readonly product: string;
@@ -2284,10 +2283,6 @@ interface NavigatorLocks {
     readonly locks: LockManager;
 }
 
-interface NavigatorNetworkInformation {
-    readonly connection: NetworkInformation;
-}
-
 interface NavigatorOnLine {
     readonly onLine: boolean;
 }
@@ -2296,15 +2291,6 @@ interface NavigatorOnLine {
 interface NavigatorStorage {
     readonly storage: StorageManager;
 }
-
-interface NetworkInformation extends EventTarget {
-    readonly type: ConnectionType;
-}
-
-declare var NetworkInformation: {
-    prototype: NetworkInformation;
-    new(): NetworkInformation;
-};
 
 interface NotificationEventMap {
     "click": Event;
@@ -5351,7 +5337,7 @@ declare var WorkerLocation: {
 };
 
 /** A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator. */
-interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorNetworkInformation, NavigatorOnLine, NavigatorStorage {
+interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     readonly mediaCapabilities: MediaCapabilities;
 }
 
@@ -5862,7 +5848,6 @@ type BinaryType = "arraybuffer" | "blob";
 type ClientTypes = "all" | "sharedworker" | "window" | "worker";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
-type ConnectionType = "bluetooth" | "cellular" | "ethernet" | "mixed" | "none" | "other" | "unknown" | "wifi";
 type DocumentVisibilityState = "hidden" | "visible";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";

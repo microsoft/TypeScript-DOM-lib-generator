@@ -79,6 +79,7 @@
                     "NavigatorFonts",
                     "NavigatorGPU",
                     "NavigatorML",
+                    "NavigatorNetworkInformation",
                     "NavigatorUA"
                 ]
             },
@@ -164,6 +165,7 @@
                     "NavigatorFonts",
                     "NavigatorGPU",
                     "NavigatorML",
+                    "NavigatorNetworkInformation",
                     "NavigatorUA"
                 ]
             }
@@ -575,7 +577,8 @@
             "VideoConfiguration": {
                 "members": {
                     "member": {
-                        "hasAlphaChannel": null
+                        "hasAlphaChannel": null,
+                        "spatialScalability": null
                     }
                 }
             },
