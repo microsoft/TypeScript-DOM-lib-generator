@@ -6,5 +6,5 @@ await octokit.issues.createComment({
   owner: "microsoft",
   repo: "TypeScript-DOM-lib-generator",
   issue_number: 1282,
-  body: "Hi @saschanaz, kindly pinging you as the 'Update core dependencies' job failed today.",
+  body: "Hello contributors in this thread, kindly pinging y'all as the 'Update core dependencies' job failed today. Please fix it when you have time, thanks!",
 });
