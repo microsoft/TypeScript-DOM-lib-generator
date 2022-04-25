@@ -460,12 +460,12 @@ interface QueuingStrategyInit {
     highWaterMark: number;
 }
 
-interface ReadableStreamDefaultReadDoneResult {
+interface ReadableStreamReadDoneResult {
     done: true;
     value?: undefined;
 }
 
-interface ReadableStreamDefaultReadValueResult<T> {
+interface ReadableStreamReadValueResult<T> {
     done: false;
     value: T;
 }
@@ -5529,7 +5529,7 @@ type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T>;
-type ReadableStreamDefaultReadResult<T> = ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
+type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;

@@ -1494,12 +1494,12 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
-interface ReadableStreamDefaultReadDoneResult {
+interface ReadableStreamReadDoneResult {
     done: true;
     value?: undefined;
 }
 
-interface ReadableStreamDefaultReadValueResult<T> {
+interface ReadableStreamReadValueResult<T> {
     done: false;
     value: T;
 }
@@ -2547,7 +2547,7 @@ declare var CSSAnimation: {
 
 /** A single condition CSS at-rule, which consists of a condition and a statement block. It is a child of CSSGroupingRule. */
 interface CSSConditionRule extends CSSGroupingRule {
-    conditionText: string;
+    readonly conditionText: string;
 }
 
 declare var CSSConditionRule: {
@@ -2833,7 +2833,6 @@ interface CSSStyleDeclaration {
     columns: string;
     contain: string;
     content: string;
-    contentVisibility: string;
     counterIncrement: string;
     counterReset: string;
     counterSet: string;
@@ -3207,6 +3206,8 @@ interface CSSStyleDeclaration {
     /** @deprecated This is a legacy alias of `perspectiveOrigin`. */
     webkitPerspectiveOrigin: string;
     webkitTextFillColor: string;
+    /** @deprecated This is a legacy alias of `textSizeAdjust`. */
+    webkitTextSizeAdjust: string;
     webkitTextStroke: string;
     webkitTextStrokeColor: string;
     webkitTextStrokeWidth: string;
@@ -18115,7 +18116,7 @@ type OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull | null;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
 type ReadableStreamController<T> = ReadableStreamDefaultController<T>;
-type ReadableStreamDefaultReadResult<T> = ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
+type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type RequestInfo = Request | string;
@@ -18162,7 +18163,7 @@ type CompositeOperationOrAuto = "accumulate" | "add" | "auto" | "replace";
 type CredentialMediationRequirement = "optional" | "required" | "silent";
 type DOMParserSupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
 type DirectionSetting = "" | "lr" | "rl";
-type DisplayCaptureSurfaceType = "application" | "browser" | "monitor" | "window";
+type DisplayCaptureSurfaceType = "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
 type DocumentReadyState = "complete" | "interactive" | "loading";
 type DocumentVisibilityState = "hidden" | "visible";

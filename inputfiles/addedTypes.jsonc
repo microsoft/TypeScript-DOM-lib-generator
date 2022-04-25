@@ -1175,8 +1175,8 @@
                     }
                 }
             },
-            "ReadableStreamDefaultReadDoneResult": {
-                "name": "ReadableStreamDefaultReadDoneResult",
+            "ReadableStreamReadDoneResult": {
+                "name": "ReadableStreamReadDoneResult",
                 "members": {
                     "member": {
                         "done": {
@@ -1191,8 +1191,8 @@
                     }
                 }
             },
-            "ReadableStreamDefaultReadValueResult": {
-                "name": "ReadableStreamDefaultReadValueResult",
+            "ReadableStreamReadValueResult": {
+                "name": "ReadableStreamReadValueResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1303,7 +1303,7 @@
                 ]
             },
             {
-                "name": "ReadableStreamDefaultReadResult",
+                "name": "ReadableStreamReadResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1311,13 +1311,13 @@
                 ],
                 "type": [
                     {
-                        "type": "ReadableStreamDefaultReadValueResult"
+                        "type": "ReadableStreamReadValueResult"
                     },
                     {
-                        "type": "ReadableStreamDefaultReadDoneResult"
+                        "type": "ReadableStreamReadDoneResult"
                     }
                 ],
-                "overrideType": "ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult"
+                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult"
             },
             {
                 "name": "ReadableStreamReader",

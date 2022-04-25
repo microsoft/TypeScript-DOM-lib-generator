@@ -206,6 +206,13 @@
                     }
                 }
             },
+            "DisplayMediaStreamConstraints": {
+                "members": {
+                    "member": {
+                        "selfBrowserSurface": null
+                    }
+                }
+            },
             "FontFaceDescriptors": {
                 "members": {
                     "member": {
@@ -368,8 +375,7 @@
                     }
                 }
             },
-            "ReadableStreamBYOBReadResult": null,
-            "ReadableStreamDefaultReadResult": null,
+            "ReadableStreamReadResult": null,
             "ReadableStreamGetReaderOptions": null,
             "RequestInit": {
                 "members": {
