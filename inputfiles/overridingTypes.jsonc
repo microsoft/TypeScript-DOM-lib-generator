@@ -2403,7 +2403,7 @@
                         "read": {
                             "signature": {
                                 "0": {
-                                    "overrideType": "Promise<ReadableStreamDefaultReadResult<R>>"
+                                    "overrideType": "Promise<ReadableStreamReadResult<R>>"
                                 }
                             }
                         }
