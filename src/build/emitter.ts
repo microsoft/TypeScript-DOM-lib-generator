@@ -236,7 +236,7 @@ export function emitWebIdl(
         for (const e of i.element) {
           if (e.namespace === "SVG") {
             svgResult[e.name] = i.name;
-          } else if (e.deprecated) {
+          } else if (e.deprecated || i.deprecated) {
             htmlDeprecatedResult[e.name] = i.name;
           } else {
             htmlResult[e.name] = i.name;
