@@ -1,14 +1,14 @@
-import { listAll, Element as WebRefElement } from "@webref/elements";
+import { listAll, Element as WebrefElement } from "@webref/elements";
 import { Interface, WebIdl } from "../types.js";
 import { addToArrayMap } from "../utils/map.js";
 
 async function getInterfaceToElementMap(): Promise<{
-  html: Map<string, WebRefElement[]>;
-  svg: Map<string, WebRefElement[]>;
+  html: Map<string, WebrefElement[]>;
+  svg: Map<string, WebrefElement[]>;
 }> {
   const all = await listAll();
-  const html = new Map<string, WebRefElement[]>();
-  const svg = new Map<string, WebRefElement[]>();
+  const html = new Map<string, WebrefElement[]>();
+  const svg = new Map<string, WebrefElement[]>();
   for (const item of Object.values(all)) {
     const { elements } = item;
     for (const element of elements) {
