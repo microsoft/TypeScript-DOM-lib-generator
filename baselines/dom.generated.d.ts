@@ -7214,6 +7214,7 @@ interface HTMLMediaElement extends HTMLElement {
     readonly played: TimeRanges;
     /** Gets or sets a value indicating what data should be preloaded, if any. */
     preload: "none" | "metadata" | "auto" | "";
+    preservesPitch: boolean;
     readonly readyState: number;
     readonly remote: RemotePlayback;
     /** Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked. */
@@ -7580,16 +7581,25 @@ declare var HTMLParagraphElement: {
     new(): HTMLParagraphElement;
 };
 
-/** Provides special properties (beyond those of the regular HTMLElement object interface it inherits) for manipulating <param> elements, representing a pair of a key and a value that acts as a parameter for an <object> element. */
+/**
+ * Provides special properties (beyond those of the regular HTMLElement object interface it inherits) for manipulating <param> elements, representing a pair of a key and a value that acts as a parameter for an <object> element.
+ * @deprecated
+ */
 interface HTMLParamElement extends HTMLElement {
-    /** Sets or retrieves the name of an input parameter for an element. */
+    /**
+     * Sets or retrieves the name of an input parameter for an element.
+     * @deprecated
+     */
     name: string;
     /**
      * Sets or retrieves the content type of the resource designated by the value attribute.
      * @deprecated
      */
     type: string;
-    /** Sets or retrieves the value of an input parameter for an element. */
+    /**
+     * Sets or retrieves the value of an input parameter for an element.
+     * @deprecated
+     */
     value: string;
     /**
      * Sets or retrieves the data type of the value attribute.
@@ -7602,6 +7612,7 @@ interface HTMLParamElement extends HTMLElement {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
+/** @deprecated */
 declare var HTMLParamElement: {
     prototype: HTMLParamElement;
     new(): HTMLParamElement;
@@ -17431,21 +17442,28 @@ interface VoidFunction {
 interface HTMLElementTagNameMap {
     "a": HTMLAnchorElement;
     "abbr": HTMLElement;
+    "acronym": HTMLElement;
     "address": HTMLElement;
+    "applet": HTMLUnknownElement;
     "area": HTMLAreaElement;
     "article": HTMLElement;
     "aside": HTMLElement;
     "audio": HTMLAudioElement;
     "b": HTMLElement;
     "base": HTMLBaseElement;
+    "basefont": HTMLElement;
     "bdi": HTMLElement;
     "bdo": HTMLElement;
+    "bgsound": HTMLUnknownElement;
+    "big": HTMLElement;
+    "blink": HTMLUnknownElement;
     "blockquote": HTMLQuoteElement;
     "body": HTMLBodyElement;
     "br": HTMLBRElement;
     "button": HTMLButtonElement;
     "canvas": HTMLCanvasElement;
     "caption": HTMLTableCaptionElement;
+    "center": HTMLElement;
     "cite": HTMLElement;
     "code": HTMLElement;
     "col": HTMLTableColElement;
@@ -17487,7 +17505,9 @@ interface HTMLElementTagNameMap {
     "img": HTMLImageElement;
     "input": HTMLInputElement;
     "ins": HTMLModElement;
+    "isindex": HTMLUnknownElement;
     "kbd": HTMLElement;
+    "keygen": HTMLUnknownElement;
     "label": HTMLLabelElement;
     "legend": HTMLLegendElement;
     "li": HTMLLIElement;
@@ -17497,9 +17517,15 @@ interface HTMLElementTagNameMap {
     "mark": HTMLElement;
     "marquee": HTMLMarqueeElement;
     "menu": HTMLMenuElement;
+    "menuitem": HTMLElement;
     "meta": HTMLMetaElement;
     "meter": HTMLMeterElement;
+    "multicol": HTMLUnknownElement;
     "nav": HTMLElement;
+    "nextid": HTMLUnknownElement;
+    "nobr": HTMLElement;
+    "noembed": HTMLElement;
+    "noframes": HTMLElement;
     "noscript": HTMLElement;
     "object": HTMLObjectElement;
     "ol": HTMLOListElement;
@@ -17509,11 +17535,14 @@ interface HTMLElementTagNameMap {
     "p": HTMLParagraphElement;
     "param": HTMLParamElement;
     "picture": HTMLPictureElement;
+    "plaintext": HTMLElement;
     "pre": HTMLPreElement;
     "progress": HTMLProgressElement;
     "q": HTMLQuoteElement;
+    "rb": HTMLElement;
     "rp": HTMLElement;
     "rt": HTMLElement;
+    "rtc": HTMLElement;
     "ruby": HTMLElement;
     "s": HTMLElement;
     "samp": HTMLElement;
@@ -17523,7 +17552,9 @@ interface HTMLElementTagNameMap {
     "slot": HTMLSlotElement;
     "small": HTMLElement;
     "source": HTMLSourceElement;
+    "spacer": HTMLUnknownElement;
     "span": HTMLSpanElement;
+    "strike": HTMLElement;
     "strong": HTMLElement;
     "style": HTMLStyleElement;
     "sub": HTMLElement;
@@ -17541,6 +17572,7 @@ interface HTMLElementTagNameMap {
     "title": HTMLTitleElement;
     "tr": HTMLTableRowElement;
     "track": HTMLTrackElement;
+    "tt": HTMLElement;
     "u": HTMLElement;
     "ul": HTMLUListElement;
     "var": HTMLElement;
