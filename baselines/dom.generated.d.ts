@@ -17442,28 +17442,21 @@ interface VoidFunction {
 interface HTMLElementTagNameMap {
     "a": HTMLAnchorElement;
     "abbr": HTMLElement;
-    "acronym": HTMLElement;
     "address": HTMLElement;
-    "applet": HTMLUnknownElement;
     "area": HTMLAreaElement;
     "article": HTMLElement;
     "aside": HTMLElement;
     "audio": HTMLAudioElement;
     "b": HTMLElement;
     "base": HTMLBaseElement;
-    "basefont": HTMLElement;
     "bdi": HTMLElement;
     "bdo": HTMLElement;
-    "bgsound": HTMLUnknownElement;
-    "big": HTMLElement;
-    "blink": HTMLUnknownElement;
     "blockquote": HTMLQuoteElement;
     "body": HTMLBodyElement;
     "br": HTMLBRElement;
     "button": HTMLButtonElement;
     "canvas": HTMLCanvasElement;
     "caption": HTMLTableCaptionElement;
-    "center": HTMLElement;
     "cite": HTMLElement;
     "code": HTMLElement;
     "col": HTMLTableColElement;
@@ -17501,9 +17494,7 @@ interface HTMLElementTagNameMap {
     "img": HTMLImageElement;
     "input": HTMLInputElement;
     "ins": HTMLModElement;
-    "isindex": HTMLUnknownElement;
     "kbd": HTMLElement;
-    "keygen": HTMLUnknownElement;
     "label": HTMLLabelElement;
     "legend": HTMLLegendElement;
     "li": HTMLLIElement;
@@ -17512,15 +17503,9 @@ interface HTMLElementTagNameMap {
     "map": HTMLMapElement;
     "mark": HTMLElement;
     "menu": HTMLMenuElement;
-    "menuitem": HTMLElement;
     "meta": HTMLMetaElement;
     "meter": HTMLMeterElement;
-    "multicol": HTMLUnknownElement;
     "nav": HTMLElement;
-    "nextid": HTMLUnknownElement;
-    "nobr": HTMLElement;
-    "noembed": HTMLElement;
-    "noframes": HTMLElement;
     "noscript": HTMLElement;
     "object": HTMLObjectElement;
     "ol": HTMLOListElement;
@@ -17528,16 +17513,12 @@ interface HTMLElementTagNameMap {
     "option": HTMLOptionElement;
     "output": HTMLOutputElement;
     "p": HTMLParagraphElement;
-    "param": HTMLParamElement;
     "picture": HTMLPictureElement;
-    "plaintext": HTMLElement;
     "pre": HTMLPreElement;
     "progress": HTMLProgressElement;
     "q": HTMLQuoteElement;
-    "rb": HTMLElement;
     "rp": HTMLElement;
     "rt": HTMLElement;
-    "rtc": HTMLElement;
     "ruby": HTMLElement;
     "s": HTMLElement;
     "samp": HTMLElement;
@@ -17547,9 +17528,7 @@ interface HTMLElementTagNameMap {
     "slot": HTMLSlotElement;
     "small": HTMLElement;
     "source": HTMLSourceElement;
-    "spacer": HTMLUnknownElement;
     "span": HTMLSpanElement;
-    "strike": HTMLElement;
     "strong": HTMLElement;
     "style": HTMLStyleElement;
     "sub": HTMLElement;
@@ -17567,7 +17546,6 @@ interface HTMLElementTagNameMap {
     "title": HTMLTitleElement;
     "tr": HTMLTableRowElement;
     "track": HTMLTrackElement;
-    "tt": HTMLElement;
     "u": HTMLElement;
     "ul": HTMLUListElement;
     "var": HTMLElement;
@@ -17576,12 +17554,34 @@ interface HTMLElementTagNameMap {
 }
 
 interface HTMLElementDeprecatedTagNameMap {
+    "acronym": HTMLElement;
+    "applet": HTMLUnknownElement;
+    "basefont": HTMLElement;
+    "bgsound": HTMLUnknownElement;
+    "big": HTMLElement;
+    "blink": HTMLUnknownElement;
+    "center": HTMLElement;
     "dir": HTMLDirectoryElement;
     "font": HTMLFontElement;
     "frame": HTMLFrameElement;
     "frameset": HTMLFrameSetElement;
+    "isindex": HTMLUnknownElement;
+    "keygen": HTMLUnknownElement;
     "listing": HTMLPreElement;
     "marquee": HTMLMarqueeElement;
+    "menuitem": HTMLElement;
+    "multicol": HTMLUnknownElement;
+    "nextid": HTMLUnknownElement;
+    "nobr": HTMLElement;
+    "noembed": HTMLElement;
+    "noframes": HTMLElement;
+    "param": HTMLParamElement;
+    "plaintext": HTMLElement;
+    "rb": HTMLElement;
+    "rtc": HTMLElement;
+    "spacer": HTMLUnknownElement;
+    "strike": HTMLElement;
+    "tt": HTMLElement;
     "xmp": HTMLPreElement;
 }
 
