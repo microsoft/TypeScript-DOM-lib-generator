@@ -2010,7 +2010,23 @@
                             "name": "push",
                             "type": "PushEvent"
                         }
-                    ]
+                    ],
+                    "methods": {
+                        "method": {
+                            "waitUntil": {
+                                "signature": {
+                                    "0": {
+                                        "param": [
+                                            {
+                                                "name": "f",
+                                                "overrideType": "Promise<any>"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "Cache": {
@@ -2680,6 +2696,24 @@
                                         {
                                             "name": "permissionDesc",
                                             "type": "PermissionDescriptor"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ExtendableEvent": {
+                "methods": {
+                    "method": {
+                        "waitUntil": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "f",
+                                            "overrideType": "Promise<any>"
                                         }
                                     ]
                                 }
