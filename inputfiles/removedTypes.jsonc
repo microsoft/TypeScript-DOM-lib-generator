@@ -59,19 +59,6 @@
             "Element": {
                 "implements": ["GeometryUtils", "Region"]
             },
-            "IDBDatabase": {
-                "methods": {
-                    "method": {
-                        "transaction": {
-                            "signature": {
-                                "0": {
-                                    "param": ["options"]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "Navigator": {
                 "implements": [
                     "NavigatorBadge",
