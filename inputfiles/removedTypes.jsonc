@@ -548,6 +548,7 @@
                         "iceRole": null,
                         "iceLocalUsernameFragment": null,
                         "iceState": null,
+                        "dtlsRole": null,
                         "tlsGroup": null,
                         "selectedCandidatePairChanges": null
                     }
