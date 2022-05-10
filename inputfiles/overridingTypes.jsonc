@@ -218,6 +218,38 @@
                         }
                     }
                 }
+            },
+            "WindowOrWorkerGlobalScope": {
+                "methods": {
+                    "method": {
+                        "clearInterval": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "clearTimeout": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },
