@@ -1786,6 +1786,19 @@ interface UnderlyingSource<R = any> {
     type?: undefined;
 }
 
+interface ValidityStateFlags {
+    badInput?: boolean;
+    customError?: boolean;
+    patternMismatch?: boolean;
+    rangeOverflow?: boolean;
+    rangeUnderflow?: boolean;
+    stepMismatch?: boolean;
+    tooLong?: boolean;
+    tooShort?: boolean;
+    typeMismatch?: boolean;
+    valueMissing?: boolean;
+}
+
 interface VideoColorSpaceInit {
     fullRange?: boolean;
     matrix?: VideoMatrixCoefficients;
@@ -3749,6 +3762,7 @@ declare var CustomEvent: {
 
 /** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
 interface DOMException extends Error {
+    /** @deprecated */
     readonly code: number;
     readonly message: string;
     readonly name: string;
@@ -4951,14 +4965,24 @@ interface ElementInternals extends ARIAMixin {
     readonly labels: NodeList;
     /** Returns the ShadowRoot for internals's target element, if the target element is a shadow host, or null otherwise. */
     readonly shadowRoot: ShadowRoot | null;
+    /** Returns the error message that would be shown to the user if internals's target element was to be checked for validity. */
+    readonly validationMessage: string;
+    /** Returns the ValidityState object for internals's target element. */
+    readonly validity: ValidityState;
     /** Returns true if internals's target element will be validated when the form is submitted; false otherwise. */
     readonly willValidate: boolean;
+    /** Returns true if internals's target element has no validity problems; false otherwise. Fires an invalid event at the element in the latter case. */
+    checkValidity(): boolean;
+    /** Returns true if internals's target element has no validity problems; otherwise, returns false, fires an invalid event at the element, and (if the event isn't canceled) reports the problem to the user. */
+    reportValidity(): boolean;
     /**
      * Sets both the state and submission value of internals's target element to value.
      *
      * If value is null, the element won't participate in form submission.
      */
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    /** Marks internals's target element as suffering from the constraints indicated by the flags argument, and sets the element's validation message to message. If anchor is specified, the user agent might use it to indicate problems with the constraints of internals's target element when the form owner is validated interactively or reportValidity() is called. */
+    setValidity(flags?: ValidityStateFlags, message?: string, anchor?: HTMLElement): void;
 }
 
 declare var ElementInternals: {
@@ -16719,6 +16743,7 @@ declare var WritableStream: {
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
+    readonly signal: AbortSignal;
     error(e?: any): void;
 }
 
