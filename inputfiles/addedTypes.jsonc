@@ -133,6 +133,10 @@
                             "type": "FormDataEvent"
                         },
                         {
+                            "name": "input",
+                            "type": "InputEvent"
+                        },
+                        {
                             "name": "keydown",
                             "type": "KeyboardEvent"
                         },
