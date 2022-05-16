@@ -1212,7 +1212,7 @@
                 "name": "InsertPosition"
             },
             {
-                "additionalTypes": ["Headers"],
+                "overrideType": "[string, string][] | Record<string, string> | Headers",
                 "name": "HeadersInit"
             },
             {
