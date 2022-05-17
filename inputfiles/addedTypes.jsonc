@@ -311,11 +311,49 @@
                     "color",
                     "luminosity"
                 ]
+            },
+            "PermissionName": {
+                "name": "PermissionName",
+                // This is a subset of the permissions defined in the spec:
+                // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
+                // Please add a feature only when it's supported by multiple engines.
+                "value": [
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility
+                    "geolocation",
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API#browser_compatibility
+                    "notifications",
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#browser_compatibility
+                    "persistent-storage",
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Push_API#browser_compatibility
+                    "push",
+                    // Wake Lock is actually Blink-only, but for now let's keep it here for backward compatibility.
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
+                    "screen-wake-lock",
+                    // WebXR is also actually Blink-only
+                    // https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API#browser_compatibility
+                    "xr-spatial-tracking"
+                ]
             }
         }
     },
     "interfaces": {
         "interface": {
+            "AudioWorkletProcessorImpl": {
+                "name": "AudioWorkletProcessorImpl",
+                "extends": "AudioWorkletProcessor",
+                "methods": {
+                    "method": {
+                        "process": {
+                            "name": "process",
+                            "overrideSignatures": [
+                                "process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean"
+                            ]
+                        }
+                    }
+                },
+                "exposed": "AudioWorklet",
+                "noInterfaceObject": true
+            },
             "BroadcastChannel": {
                 "events": {
                     "event": [
@@ -373,12 +411,6 @@
                 "extends": "HTMLTableCellElement",
                 "noInterfaceObject": true,
                 "deprecated": "prefer HTMLTableCellElement",
-                "exposed": "Window"
-            },
-            "HTMLDialogElement": {
-                "name": "HTMLDialogElement",
-                "noInterfaceObject": true,
-                "deprecated": "this is not available in most browsers",
                 "exposed": "Window"
             },
             "OffscreenCanvas": {
@@ -445,6 +477,10 @@
                         {
                             "name": "gamepaddisconnected",
                             "type": "GamepadEvent"
+                        },
+                        {
+                            "name": "DOMContentLoaded",
+                            "type": "Event"
                         }
                     ]
                 }
@@ -685,6 +721,14 @@
                             "overrideType": "null"
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "DOMContentLoaded",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             // This is used in the React d.ts files, and not including
@@ -1060,6 +1104,28 @@
                         }
                     ]
                 }
+            },
+            "FileSystemFileHandle": {
+                "properties": {
+                    "property": {
+                        "kind": {
+                            "name": "kind",
+                            "readonly": true,
+                            "overrideType": "\"file\""
+                        }
+                    }
+                }
+            },
+            "FileSystemDirectoryHandle": {
+                "properties": {
+                    "property": {
+                        "kind": {
+                            "name": "kind",
+                            "readonly": true,
+                            "overrideType": "\"directory\""
+                        }
+                    }
+                }
             }
         }
     },
@@ -1099,8 +1165,8 @@
                     }
                 }
             },
-            "ReadableStreamDefaultReadDoneResult": {
-                "name": "ReadableStreamDefaultReadDoneResult",
+            "ReadableStreamReadDoneResult": {
+                "name": "ReadableStreamReadDoneResult",
                 "members": {
                     "member": {
                         "done": {
@@ -1115,8 +1181,8 @@
                     }
                 }
             },
-            "ReadableStreamDefaultReadValueResult": {
-                "name": "ReadableStreamDefaultReadValueResult",
+            "ReadableStreamReadValueResult": {
+                "name": "ReadableStreamReadValueResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1146,6 +1212,13 @@
                 "name": "InsertPosition"
             },
             {
+                "type": {
+                    "0": {
+                        "subtype": {
+                            "overrideType": "[string, string]"
+                        }
+                    }
+                },
                 "additionalTypes": ["Headers"],
                 "name": "HeadersInit"
             },
@@ -1227,7 +1300,7 @@
                 ]
             },
             {
-                "name": "ReadableStreamDefaultReadResult",
+                "name": "ReadableStreamReadResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1235,13 +1308,13 @@
                 ],
                 "type": [
                     {
-                        "type": "ReadableStreamDefaultReadValueResult"
+                        "type": "ReadableStreamReadValueResult"
                     },
                     {
-                        "type": "ReadableStreamDefaultReadDoneResult"
+                        "type": "ReadableStreamReadDoneResult"
                     }
                 ],
-                "overrideType": "ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult"
+                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult"
             },
             {
                 "name": "ReadableStreamReader",

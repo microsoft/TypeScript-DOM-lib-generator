@@ -6,6 +6,7 @@ declare module "@webref/elements" {
   interface Element {
     name: string;
     interface?: string;
+    obsolete?: true;
   }
   interface Item {
     spec: Spec;

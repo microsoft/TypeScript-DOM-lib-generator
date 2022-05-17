@@ -199,8 +199,8 @@ function prependAutoImports(pkg, packagePath) {
 export function postProcessDTSFiles(pkg, packagePath) {
   iterateThroughFiles((content) => {
     return content.replace(
-      "abort(): AbortSignal;",
-      "// abort(): AbortSignal; - To be re-added in the future"
+      "abort(reason?: any): AbortSignal;",
+      "// abort(reason?: any): AbortSignal; - To be re-added in the future"
     );
   });
 

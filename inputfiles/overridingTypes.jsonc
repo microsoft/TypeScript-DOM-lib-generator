@@ -255,7 +255,6 @@
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_astc\"): WEBGL_compressed_texture_astc | null",
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_etc\"): WEBGL_compressed_texture_etc | null",
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_etc1\"): WEBGL_compressed_texture_etc1 | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_pvrtc\"): WEBGL_compressed_texture_pvrtc | null",
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc_srgb\"): WEBGL_compressed_texture_s3tc_srgb | null",
                                 "getExtension(extensionName: \"WEBGL_debug_shaders\"): WEBGL_debug_shaders | null",
                                 "getExtension(extensionName: \"WEBGL_draw_buffers\"): WEBGL_draw_buffers | null",
@@ -313,6 +312,38 @@
                         "innerHTML": {
                             "name": "innerHTML",
                             "setterType": "string | TrustedHTML"
+                        }
+                    }
+                }
+            },
+            "WindowOrWorkerGlobalScope": {
+                "methods": {
+                    "method": {
+                        "clearInterval": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "clearTimeout": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
@@ -464,6 +495,11 @@
                 "overrideSignatures": [
                     "new (...params: any[]): HTMLElement"
                 ]
+            },
+            "AudioWorkletProcessorConstructor": {
+                "overrideSignatures": [
+                    "new (options: any): AudioWorkletProcessorImpl"
+                ]
             }
         }
     },
@@ -496,6 +532,21 @@
                             "subtype": {
                                 "type": "KeyUsage"
                             }
+                        }
+                    }
+                }
+            },
+            "HTMLElement": {
+                "properties": {
+                    "property": {
+                        "hidden": {
+                            // https://github.com/whatwg/html/pull/7475
+                            // Revisit when this get browser supports.
+                            "overrideType": "boolean",
+                            "nullable": false
+                        },
+                        "innerText": {
+                            "setterType": "string | TrustedScript"
                         }
                     }
                 }
@@ -1584,8 +1635,8 @@
                         "generateKey": {
                             "name": "generateKey",
                             "additionalSignatures": [
-                                "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair>",
-                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
                             "signature": {
                                 "0": {
@@ -1596,7 +1647,7 @@
                         "importKey": {
                             "name": "importKey",
                             "additionalSignatures": [
-                                "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
                             "signature": {
                                 "0": {
@@ -2152,7 +2203,23 @@
                             "name": "push",
                             "type": "PushEvent"
                         }
-                    ]
+                    ],
+                    "methods": {
+                        "method": {
+                            "waitUntil": {
+                                "signature": {
+                                    "0": {
+                                        "param": [
+                                            {
+                                                "name": "f",
+                                                "overrideType": "Promise<any>"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "Cache": {
@@ -2426,6 +2493,19 @@
                     "[name: string]: any"
                 ]
             },
+            "Blob": {
+              "methods": {
+                "method": {
+                  "stream": {
+                    "signature": {
+                      "0": {
+                        "overrideType": "ReadableStream<Uint8Array>"
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "ReadableStream": {
                 "typeParameters": [
                     {
@@ -2544,7 +2624,7 @@
                         "read": {
                             "signature": {
                                 "0": {
-                                    "overrideType": "Promise<ReadableStreamDefaultReadResult<R>>"
+                                    "overrideType": "Promise<ReadableStreamReadResult<R>>"
                                 }
                             }
                         }
@@ -2829,6 +2909,24 @@
                     }
                 }
             },
+            "ExtendableEvent": {
+                "methods": {
+                    "method": {
+                        "waitUntil": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "f",
+                                            "overrideType": "Promise<any>"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "EventTarget": {
                 "methods": {
                     "method": {
@@ -3024,16 +3122,6 @@
                                     ]
                                 }
                             }
-                        }
-                    }
-                }
-            },
-            "HTMLElement": {
-                "name": "HTMLElement",
-                "properties": {
-                    "property": {
-                        "innerText": {
-                            "setterType": "string | TrustedScript"
                         }
                     }
                 }
@@ -3274,6 +3362,15 @@
                 "overrideIndexSignatures": [
                     "[property: string]: string | number | null | undefined"
                 ]
+            },
+            "PermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "type": "PermissionName"
+                        }
+                    }
+                }
             },
             "PublicKeyCredentialCreationOptions": {
                 "members": {

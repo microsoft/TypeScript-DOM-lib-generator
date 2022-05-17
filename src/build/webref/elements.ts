@@ -1,14 +1,14 @@
-import { listAll } from "@webref/elements";
+import { listAll, Element as WebrefElement } from "@webref/elements";
 import { Interface, WebIdl } from "../types.js";
 import { addToArrayMap } from "../utils/map.js";
 
 async function getInterfaceToElementMap(): Promise<{
-  html: Map<string, string[]>;
-  svg: Map<string, string[]>;
+  html: Map<string, WebrefElement[]>;
+  svg: Map<string, WebrefElement[]>;
 }> {
   const all = await listAll();
-  const html = new Map<string, string[]>();
-  const svg = new Map<string, string[]>();
+  const html = new Map<string, WebrefElement[]>();
+  const svg = new Map<string, WebrefElement[]>();
   for (const item of Object.values(all)) {
     const { elements } = item;
     for (const element of elements) {
@@ -16,7 +16,7 @@ async function getInterfaceToElementMap(): Promise<{
         continue;
       }
       const targetMap = element.interface.startsWith("SVG") ? svg : html;
-      addToArrayMap(targetMap, element.interface, element.name);
+      addToArrayMap(targetMap, element.interface, element);
     }
   }
   return { html, svg };
@@ -28,7 +28,8 @@ export async function getInterfaceElementMergeData(): Promise<WebIdl> {
   for (const [key, elements] of html) {
     data.interfaces!.interface[key] = {
       element: elements.map((el) => ({
-        name: el,
+        name: el.name,
+        deprecated: el.obsolete,
       })),
     } as Interface;
   }
@@ -36,7 +37,8 @@ export async function getInterfaceElementMergeData(): Promise<WebIdl> {
     data.interfaces!.interface[key] = {
       element: elements.map((el) => ({
         namespace: "SVG",
-        name: el,
+        name: el.name,
+        deprecated: el.obsolete,
       })),
     } as Interface;
   }

@@ -226,6 +226,10 @@ interface IDBObjectStoreParameters {
     keyPath?: string | string[] | null;
 }
 
+interface IDBTransactionOptions {
+    durability?: IDBTransactionDurability;
+}
+
 interface IDBVersionChangeEventInit extends EventInit {
     newVersion?: number | null;
     oldVersion?: number;
@@ -334,6 +338,11 @@ interface MultiCacheQueryOptions extends CacheQueryOptions {
     cacheName?: string;
 }
 
+interface NavigationPreloadState {
+    enabled?: boolean;
+    headerValue?: string;
+}
+
 interface NotificationAction {
     action: string;
     icon?: string;
@@ -421,12 +430,12 @@ interface QueuingStrategyInit {
     highWaterMark: number;
 }
 
-interface ReadableStreamDefaultReadDoneResult {
+interface ReadableStreamReadDoneResult {
     done: true;
     value?: undefined;
 }
 
-interface ReadableStreamDefaultReadValueResult<T> {
+interface ReadableStreamReadValueResult<T> {
     done: false;
     value: T;
 }
@@ -664,6 +673,8 @@ interface AbortSignal extends EventTarget {
     /** Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise. */
     readonly aborted: boolean;
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
+    readonly reason: any;
+    throwIfAborted(): void;
     addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -694,7 +705,7 @@ interface Blob {
     readonly type: string;
     arrayBuffer(): Promise<ArrayBuffer>;
     slice(start?: number, end?: number, contentType?: string): Blob;
-    stream(): ReadableStream;
+    stream(): ReadableStream<Uint8Array>;
     text(): Promise<string>;
 }
 
@@ -754,13 +765,13 @@ declare var ByteLengthQueuingStrategy: {
  * Available only in secure contexts.
  */
 interface Cache {
-    add(request: RequestInfo): Promise<void>;
+    add(request: RequestInfo | URL): Promise<void>;
     addAll(requests: RequestInfo[]): Promise<void>;
-    delete(request: RequestInfo, options?: CacheQueryOptions): Promise<boolean>;
-    keys(request?: RequestInfo, options?: CacheQueryOptions): Promise<ReadonlyArray<Request>>;
-    match(request: RequestInfo, options?: CacheQueryOptions): Promise<Response | undefined>;
-    matchAll(request?: RequestInfo, options?: CacheQueryOptions): Promise<ReadonlyArray<Response>>;
-    put(request: RequestInfo, response: Response): Promise<void>;
+    delete(request: RequestInfo | URL, options?: CacheQueryOptions): Promise<boolean>;
+    keys(request?: RequestInfo | URL, options?: CacheQueryOptions): Promise<ReadonlyArray<Request>>;
+    match(request: RequestInfo | URL, options?: CacheQueryOptions): Promise<Response | undefined>;
+    matchAll(request?: RequestInfo | URL, options?: CacheQueryOptions): Promise<ReadonlyArray<Response>>;
+    put(request: RequestInfo | URL, response: Response): Promise<void>;
 }
 
 declare var Cache: {
@@ -776,7 +787,7 @@ interface CacheStorage {
     delete(cacheName: string): Promise<boolean>;
     has(cacheName: string): Promise<boolean>;
     keys(): Promise<string[]>;
-    match(request: RequestInfo, options?: MultiCacheQueryOptions): Promise<Response | undefined>;
+    match(request: RequestInfo | URL, options?: MultiCacheQueryOptions): Promise<Response | undefined>;
     open(cacheName: string): Promise<Cache>;
 }
 
@@ -893,6 +904,7 @@ declare var CustomEvent: {
 
 /** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
 interface DOMException extends Error {
+    /** @deprecated */
     readonly code: number;
     readonly message: string;
     readonly name: string;
@@ -1408,6 +1420,7 @@ declare var FileReaderSync: {
 
 /** Available only in secure contexts. */
 interface FileSystemDirectoryHandle extends FileSystemHandle {
+    readonly kind: "directory";
     getDirectoryHandle(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
     getFileHandle(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
     removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
@@ -1421,6 +1434,7 @@ declare var FileSystemDirectoryHandle: {
 
 /** Available only in secure contexts. */
 interface FileSystemFileHandle extends FileSystemHandle {
+    readonly kind: "file";
     getFile(): Promise<File>;
 }
 
@@ -1622,7 +1636,7 @@ interface IDBDatabase extends EventTarget {
      */
     deleteObjectStore(name: string): void;
     /** Returns a new transaction with the given mode ("readonly" or "readwrite") and scope which can be a single object store name or an array of names. */
-    transaction(storeNames: string | string[], mode?: IDBTransactionMode): IDBTransaction;
+    transaction(storeNames: string | string[], mode?: IDBTransactionMode, options?: IDBTransactionOptions): IDBTransaction;
     addEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -1967,6 +1981,7 @@ declare var ImageBitmapRenderingContext: {
 
 /** The underlying pixel data of an area of a <canvas> element. It is created using the ImageData() constructor or creator methods on the CanvasRenderingContext2D object associated with a canvas: createImageData() and getImageData(). It can also be used to set a part of the canvas by using putImageData(). */
 interface ImageData {
+    readonly colorSpace: PredefinedColorSpace;
     /** Returns the one-dimensional array containing the data in RGBA order, as integers in the range 0 to 255. */
     readonly data: Uint8ClampedArray;
     /** Returns the actual dimensions of the data in the ImageData object, in pixels. */
@@ -2083,6 +2098,19 @@ declare var MessagePort: {
     new(): MessagePort;
 };
 
+/** Available only in secure contexts. */
+interface NavigationPreloadManager {
+    disable(): Promise<void>;
+    enable(): Promise<void>;
+    getState(): Promise<NavigationPreloadState>;
+    setHeaderValue(value: string): Promise<void>;
+}
+
+declare var NavigationPreloadManager: {
+    prototype: NavigationPreloadManager;
+    new(): NavigationPreloadManager;
+};
+
 interface NavigatorConcurrentHardware {
     readonly hardwareConcurrency: number;
 }
@@ -2094,7 +2122,6 @@ interface NavigatorID {
     readonly appName: string;
     /** @deprecated */
     readonly appVersion: string;
-    /** @deprecated */
     readonly platform: string;
     /** @deprecated */
     readonly product: string;
@@ -2106,8 +2133,9 @@ interface NavigatorLanguage {
     readonly languages: ReadonlyArray<string>;
 }
 
-interface NavigatorNetworkInformation {
-    readonly connection: NetworkInformation;
+/** Available only in secure contexts. */
+interface NavigatorLocks {
+    readonly locks: LockManager;
 }
 
 interface NavigatorOnLine {
@@ -2118,15 +2146,6 @@ interface NavigatorOnLine {
 interface NavigatorStorage {
     readonly storage: StorageManager;
 }
-
-interface NetworkInformation extends EventTarget {
-    readonly type: ConnectionType;
-}
-
-declare var NetworkInformation: {
-    prototype: NetworkInformation;
-    new(): NetworkInformation;
-};
 
 interface NotificationEventMap {
     "click": Event;
@@ -2469,7 +2488,7 @@ declare var ReadableStreamDefaultController: {
 };
 
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
-    read(): Promise<ReadableStreamDefaultReadResult<R>>;
+    read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
 
@@ -2516,7 +2535,7 @@ interface Request extends Body {
 
 declare var Request: {
     prototype: Request;
-    new(input: RequestInfo, init?: RequestInit): Request;
+    new(input: RequestInfo | URL, init?: RequestInit): Request;
 };
 
 /** This Fetch API interface represents the response to a request. */
@@ -2626,6 +2645,7 @@ interface ServiceWorkerRegistrationEventMap {
 interface ServiceWorkerRegistration extends EventTarget {
     readonly active: ServiceWorker | null;
     readonly installing: ServiceWorker | null;
+    readonly navigationPreload: NavigationPreloadManager;
     onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
     readonly pushManager: PushManager;
     readonly scope: string;
@@ -2691,10 +2711,10 @@ interface SubtleCrypto {
     encrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, key: CryptoKey, data: BufferSource): Promise<any>;
     exportKey(format: "jwk", key: CryptoKey): Promise<JsonWebKey>;
     exportKey(format: Exclude<KeyFormat, "jwk">, key: CryptoKey): Promise<ArrayBuffer>;
-    generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair>;
-    generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
+    generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>;
+    generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
     generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair | CryptoKey>;
-    importKey(format: "jwk", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
+    importKey(format: "jwk", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
     importKey(format: Exclude<KeyFormat, "jwk">, keyData: BufferSource, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
     sign(algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams, key: CryptoKey, data: BufferSource): Promise<ArrayBuffer>;
     unwrapKey(format: KeyFormat, wrappedKey: BufferSource, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, unwrappedKeyAlgorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
@@ -2985,13 +3005,6 @@ interface WEBGL_compressed_texture_etc {
 
 interface WEBGL_compressed_texture_etc1 {
     readonly COMPRESSED_RGB_ETC1_WEBGL: GLenum;
-}
-
-interface WEBGL_compressed_texture_pvrtc {
-    readonly COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGBA_PVRTC_4BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_2BPPV1_IMG: GLenum;
-    readonly COMPRESSED_RGB_PVRTC_4BPPV1_IMG: GLenum;
 }
 
 /** The WEBGL_compressed_texture_s3tc extension is part of the WebGL API and exposes four S3TC compressed texture formats. */
@@ -4484,7 +4497,6 @@ interface WebGLRenderingContextBase {
     getExtension(extensionName: "WEBGL_compressed_texture_astc"): WEBGL_compressed_texture_astc | null;
     getExtension(extensionName: "WEBGL_compressed_texture_etc"): WEBGL_compressed_texture_etc | null;
     getExtension(extensionName: "WEBGL_compressed_texture_etc1"): WEBGL_compressed_texture_etc1 | null;
-    getExtension(extensionName: "WEBGL_compressed_texture_pvrtc"): WEBGL_compressed_texture_pvrtc | null;
     getExtension(extensionName: "WEBGL_compressed_texture_s3tc_srgb"): WEBGL_compressed_texture_s3tc_srgb | null;
     getExtension(extensionName: "WEBGL_debug_shaders"): WEBGL_debug_shaders | null;
     getExtension(extensionName: "WEBGL_draw_buffers"): WEBGL_draw_buffers | null;
@@ -5024,15 +5036,16 @@ interface WindowOrWorkerGlobalScope {
     readonly trustedTypes: TrustedTypePolicyFactory;
     atob(data: string): string;
     btoa(data: string): string;
-    clearInterval(id?: number): void;
-    clearTimeout(id?: number): void;
+    clearInterval(id: number | undefined): void;
+    clearTimeout(id: number | undefined): void;
     createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-    fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+    fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
     queueMicrotask(callback: VoidFunction): void;
     reportError(e: any): void;
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+    structuredClone(value: any, options?: StructuredSerializeOptions): any;
 }
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
@@ -5116,7 +5129,7 @@ declare var WorkerLocation: {
 };
 
 /** A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator. */
-interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorNetworkInformation, NavigatorOnLine, NavigatorStorage {
+interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     readonly mediaCapabilities: MediaCapabilities;
 }
 
@@ -5140,6 +5153,7 @@ declare var WritableStream: {
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
+    readonly signal: AbortSignal;
     error(e?: any): void;
 }
 
@@ -5568,15 +5582,16 @@ declare var performance: Performance;
 declare var trustedTypes: TrustedTypePolicyFactory;
 declare function atob(data: string): string;
 declare function btoa(data: string): string;
-declare function clearInterval(id?: number): void;
-declare function clearTimeout(id?: number): void;
+declare function clearInterval(id: number | undefined): void;
+declare function clearTimeout(id: number | undefined): void;
 declare function createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>;
+declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
 declare function queueMicrotask(callback: VoidFunction): void;
 declare function reportError(e: any): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+declare function structuredClone(value: any, options?: StructuredSerializeOptions): any;
 declare function addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -5606,7 +5621,7 @@ type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
-type HeadersInit = string[][] | Record<string, string> | Headers;
+type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
 type Int32List = Int32Array | GLint[];
@@ -5615,7 +5630,7 @@ type NamedCurve = string;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
 type ReadableStreamController<T> = ReadableStreamDefaultController<T>;
-type ReadableStreamDefaultReadResult<T> = ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
+type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
@@ -5629,7 +5644,6 @@ type BinaryType = "arraybuffer" | "blob";
 type ClientTypes = "all" | "sharedworker" | "window" | "worker";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
-type ConnectionType = "bluetooth" | "cellular" | "ethernet" | "mixed" | "none" | "other" | "unknown" | "wifi";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";

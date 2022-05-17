@@ -22,7 +22,11 @@ jobs:
       - run: ncu -u
       - run: npm i
       - run: git restore package.json
-      - run: npm run build && npm run baseline-accept
+      - id: build
+        run: npm run build && npm run baseline-accept
+        continue-on-error: true
+      - if: ${{ steps.build.outcome == 'failure' }}
+        run: node deploy/onUpdateFailure.js
       - id: git-diff
         run: git diff --quiet HEAD baselines
         continue-on-error: true

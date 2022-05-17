@@ -99,6 +99,9 @@ export function exposesTo(o: { exposed?: string }, target: string[]): boolean {
   if (!o || typeof o.exposed !== "string") {
     return true;
   }
+  if (o.exposed === "*") {
+    return true;
+  }
   return o.exposed.split(" ").some((e) => target.includes(e));
 }
 
