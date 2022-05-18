@@ -10862,6 +10862,7 @@ declare var PushManager: {
  */
 interface PushSubscription {
     readonly endpoint: string;
+    readonly expirationTime: EpochTimeStamp | null;
     readonly options: PushSubscriptionOptions;
     getKey(name: PushEncryptionKeyName): ArrayBuffer | null;
     toJSON(): PushSubscriptionJSON;
