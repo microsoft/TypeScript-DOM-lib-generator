@@ -2549,7 +2549,6 @@ declare var Response: {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
     error(): Response;
-    json(data: any, init?: ResponseInit): Response;
     redirect(url: string | URL, status?: number): Response;
 };
 

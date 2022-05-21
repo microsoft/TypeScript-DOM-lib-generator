@@ -912,18 +912,6 @@
                     }
                 }
             },
-            "HTMLPreElement": {
-                "element": [
-                    {
-                        "name": "listing",
-                        "deprecated": true
-                    },
-                    {
-                        "name": "xmp",
-                        "deprecated": true
-                    }
-                ]
-            },
             "KHR_parallel_shader_compile": {
                 "overrideExposed": "Window Worker"
             },
