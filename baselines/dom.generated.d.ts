@@ -355,6 +355,7 @@ interface DeviceOrientationEventInit extends EventInit {
 
 interface DisplayMediaStreamConstraints {
     audio?: boolean | MediaTrackConstraints;
+    systemAudio?: SystemAudioPreferenceEnum;
     video?: boolean | MediaTrackConstraints;
 }
 
@@ -11497,6 +11498,7 @@ declare var Response: {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
     error(): Response;
+    json(data: any, init?: ResponseInit): Response;
     redirect(url: string | URL, status?: number): Response;
 };
 
@@ -18195,6 +18197,7 @@ type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type ShadowRootMode = "closed" | "open";
 type SlotAssignmentMode = "manual" | "named";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
+type SystemAudioPreferenceEnum = "exclude" | "include";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
 type TouchType = "direct" | "stylus";
