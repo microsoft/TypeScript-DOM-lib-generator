@@ -55,6 +55,7 @@ export const baseTypeConversionMap = new Map<string, string>([
   ...[...sameTypes].map((type) => [type, type] as [string, string]),
   ["object", "any"],
   ["sequence", "Array"],
+  ["ObservableArray", "Array"],
   ["record", "Record"],
   ["FrozenArray", "ReadonlyArray"],
   ["EventHandler", "EventHandler"],

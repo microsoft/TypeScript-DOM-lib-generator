@@ -2420,6 +2420,23 @@
                     }
                 }
             },
+            "ReadableStreamBYOBReader": {
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "subtype": {
+                                        "subtype": {
+                                            "type": "ArrayBufferView"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ReadableStreamDefaultReader": {
                 "typeParameters": [
                     {
