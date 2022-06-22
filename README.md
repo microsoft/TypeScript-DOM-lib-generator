@@ -38,6 +38,14 @@ npm run test
 | `@types/web` [0.0.25](https://www.npmjs.com/package/@types/web/v/0.0.25)  | 4.4         | 4.4            |
 | `@types/web` [0.0.28](https://www.npmjs.com/package/@types/web/v/0.0.28)  | 4.5 beta    | 4.4            |
 | `@types/web` [0.0.37](https://www.npmjs.com/package/@types/web/v/0.0.37)  | 4.5 rc      | 4.4            |
+| `@types/web` [0.0.37](https://www.npmjs.com/package/@types/web/v/0.0.37)  | 4.5         | 4.4            |
+| `@types/web` [0.0.50](https://www.npmjs.com/package/@types/web/v/0.0.50)  | 4.6 beta    | 4.4            |
+| `@types/web` [0.0.51](https://www.npmjs.com/package/@types/web/v/0.0.51)  | 4.6 rc      | 4.4            |
+| `@types/web` [0.0.51](https://www.npmjs.com/package/@types/web/v/0.0.51)  | 4.6         | 4.4            |
+| `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7 beta    | 4.4            |
+| `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7 rc      | 4.4            |
+| `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7         | 4.4            |
+| `@types/web` [0.0.68](https://www.npmjs.com/package/@types/web/v/0.0.68)  | 4.8 beta    | 4.4            |
 
 ## `@types/[lib]` Minimum Target
 
