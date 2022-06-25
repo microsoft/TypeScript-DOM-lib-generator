@@ -13,9 +13,6 @@
   ],
   "scripts": {
     "build": "tsc && node ./lib/build.js",
-    "fetch-comment": "tsc && node ./lib/fetch-comment.js",
-    "fetch-mdn": "npm run build && node ./lib/fetch-mdn.js",
-    "fetch": "echo This could take a few minutes... && npm run fetch-comment && npm run fetch-mdn",
     "baseline-accept": "cpx \"generated\\*\" baselines\\",
     "lint": "eslint --max-warnings 0 src deploy/*.js && tsc -p deploy/jsconfig.json",
     "test": "npm run lint && npm run build && node ./lib/test.js && node ./unittests/index.js",
@@ -41,7 +38,6 @@
   "devDependencies": {
     "@mdn/browser-compat-data": "^5.0.0",
     "@octokit/rest": "^18.12.0",
-    "@types/jsdom": "^16.2.14",
     "@types/node": "^17.0.41",
     "@types/prettier": "^2.6.3",
     "@types/webidl2": "^23.13.6",
@@ -56,7 +52,6 @@
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "jsdom": "^19.0.0",
     "jsonc-parser": "^3.0.0",
     "node-fetch": "^3.2.5",
     "prettier": "^2.6.2",
