@@ -1414,7 +1414,8 @@
                                             "name": "algorithm",
                                             "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         }
-                                    ]
+                                    ],
+                                    "overrideType": "Promise<ArrayBuffer>"
                                 }
                             }
                         },
@@ -1463,7 +1464,8 @@
                                             "name": "algorithm",
                                             "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         }
-                                    ]
+                                    ],
+                                    "overrideType": "Promise<ArrayBuffer>"
                                 }
                             }
                         },
