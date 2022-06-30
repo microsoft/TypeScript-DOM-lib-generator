@@ -1415,7 +1415,9 @@
                                             "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         }
                                     ],
-                                    "overrideType": "Promise<ArrayBuffer>"
+                                    "subtype": {
+                                      "type": "ArrayBuffer"
+                                    }
                                 }
                             }
                         },
@@ -1465,7 +1467,9 @@
                                             "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         }
                                     ],
-                                    "overrideType": "Promise<ArrayBuffer>"
+                                    "subtype": {
+                                      "type": "ArrayBuffer"
+                                    }
                                 }
                             }
                         },
