@@ -1504,6 +1504,7 @@
                         "importKey": {
                             "name": "importKey",
                             "additionalSignatures": [
+                                "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: EcKeyImportParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
                                 "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
                             "signature": {
@@ -1521,7 +1522,8 @@
                                             "name": "algorithm",
                                             "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
                                         }
-                                    ]
+                                    ],
+                                    "overrideType": "Promise<CryptoKeyPair | CryptoKey>"
                                 }
                             },
                             "force-references": [
