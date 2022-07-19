@@ -1523,7 +1523,7 @@
                                             "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
                                         }
                                     ],
-                                    "overrideType": "Promise<CryptoKeyPair | CryptoKey>"
+                                    "overrideType": "Promise<CryptoKey | CryptoKeyPair>"
                                 }
                             },
                             "force-references": [
