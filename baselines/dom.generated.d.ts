@@ -1485,9 +1485,18 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
-interface ReadableStreamReadDoneResult {
+interface ReadableStreamGetReaderOptions {
+    /**
+     * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
+     *
+     * This call behaves the same way as the no-argument variant, except that it only works on readable byte streams, i.e. streams which were constructed specifically with the ability to handle "bring your own buffer" reading. The returned BYOB reader provides the ability to directly read individual chunks from the stream via its read() method, into developer-supplied buffers, allowing more precise control over allocation.
+     */
+    mode?: ReadableStreamReaderMode;
+}
+
+interface ReadableStreamReadDoneResult<T> {
     done: true;
-    value?: undefined;
+    value?: T;
 }
 
 interface ReadableStreamReadValueResult<T> {
@@ -1780,10 +1789,11 @@ interface UnderlyingSink<W = any> {
 }
 
 interface UnderlyingSource<R = any> {
+    autoAllocateChunkSize?: number;
     cancel?: UnderlyingSourceCancelCallback;
     pull?: UnderlyingSourcePullCallback<R>;
     start?: UnderlyingSourceStartCallback<R>;
-    type?: undefined;
+    type?: ReadableStreamType;
 }
 
 interface ValidityStateFlags {
@@ -11365,7 +11375,9 @@ declare var ReadableByteStreamController: {
 interface ReadableStream<R = any> {
     readonly locked: boolean;
     cancel(reason?: any): Promise<void>;
+    getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
+    getReader(options?: ReadableStreamGetReaderOptions): ReadableStreamReader<R>;
     pipeThrough<T>(transform: ReadableWritablePair<T, R>, options?: StreamPipeOptions): ReadableStream<T>;
     pipeTo(destination: WritableStream<R>, options?: StreamPipeOptions): Promise<void>;
     tee(): [ReadableStream<R>, ReadableStream<R>];
@@ -11377,7 +11389,7 @@ declare var ReadableStream: {
 };
 
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
-    read(view: ArrayBufferView): Promise<ReadableStreamReadResult<ArrayBufferView>>;
+    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
     releaseLock(): void;
 }
 
@@ -18080,9 +18092,9 @@ type NamedCurve = string;
 type OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull | null;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
-type ReadableStreamController<T> = ReadableStreamDefaultController<T>;
-type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult;
-type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
+type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
+type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
+type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement;
@@ -18209,6 +18221,8 @@ type RTCSdpType = "answer" | "offer" | "pranswer" | "rollback";
 type RTCSignalingState = "closed" | "have-local-offer" | "have-local-pranswer" | "have-remote-offer" | "have-remote-pranswer" | "stable";
 type RTCStatsIceCandidatePairState = "failed" | "frozen" | "in-progress" | "inprogress" | "succeeded" | "waiting";
 type RTCStatsType = "candidate-pair" | "certificate" | "codec" | "csrc" | "data-channel" | "inbound-rtp" | "local-candidate" | "media-source" | "outbound-rtp" | "peer-connection" | "remote-candidate" | "remote-inbound-rtp" | "remote-outbound-rtp" | "track" | "transport";
+type ReadableStreamReaderMode = "byob";
+type ReadableStreamType = "bytes";
 type ReadyState = "closed" | "ended" | "open";
 type RecordingState = "inactive" | "paused" | "recording";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
