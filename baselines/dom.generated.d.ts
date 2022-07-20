@@ -1780,6 +1780,21 @@ interface ULongRange {
     min?: number;
 }
 
+interface UnderlyingByteSource {
+    autoAllocateChunkSize?: number;
+    cancel?: UnderlyingSourceCancelCallback;
+    pull?: (controller: ReadableByteStreamController) => void | PromiseLike<void>;
+    start?: (controller: ReadableByteStreamController) => any;
+    type: "bytes";
+}
+
+interface UnderlyingDefaultSource<R = any> {
+    cancel?: UnderlyingSourceCancelCallback;
+    pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>;
+    start?: (controller: ReadableStreamDefaultController<R>) => any;
+    type?: undefined;
+}
+
 interface UnderlyingSink<W = any> {
     abort?: UnderlyingSinkAbortCallback;
     close?: UnderlyingSinkCloseCallback;
@@ -11385,6 +11400,8 @@ interface ReadableStream<R = any> {
 
 declare var ReadableStream: {
     prototype: ReadableStream;
+    new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array>;
+    new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
 };
 
