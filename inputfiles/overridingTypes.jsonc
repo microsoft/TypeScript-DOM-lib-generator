@@ -2431,15 +2431,7 @@
                                 "0": {
                                     "overrideType": "ReadableStreamReader<R>"
                                 }
-                            },
-                            "force-references": [
-                                {
-                                    "type": "ReadableStreamDefaultReader"
-                                },
-                                {
-                                    "type": "ReadableStreamBYOBReader"
-                                }
-                            ]
+                            }
                         },
                         "pipeThrough": {
                             "signature": {
