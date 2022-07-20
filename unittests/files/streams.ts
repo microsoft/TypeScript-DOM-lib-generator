@@ -1,6 +1,25 @@
+const readableStream = new ReadableStream<string>({
+  start(controller) {
+    controller.desiredSize;
+    controller.enqueue("a");
+  },
+  pull(controller) {
+    controller.enqueue("b");
+    controller.close();
+  },
+});
+
+const defaultReader1 = readableStream.getReader();
+defaultReader1.read().then((result) => {
+  if (!result.done) {
+    result.value.charAt(0);
+  }
+});
+
 const readableByteStream = new ReadableStream({
   type: "bytes",
   start(controller) {
+    controller.desiredSize;
     controller.byobRequest;
   },
   pull(controller) {
@@ -15,8 +34,8 @@ const readableByteStream = new ReadableStream({
   },
 });
 
-const defaultReader = readableByteStream.getReader();
-defaultReader.read().then((result) => {
+const defaultReader2 = readableByteStream.getReader();
+defaultReader2.read().then((result) => {
   if (!result.done) {
     result.value.buffer;
     result.value[0];
