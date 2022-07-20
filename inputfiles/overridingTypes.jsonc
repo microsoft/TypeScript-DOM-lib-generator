@@ -2349,6 +2349,20 @@
                 "constructor": {
                     "signature": {
                         "0": {
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": false,
+                                    "overrideType": "UnderlyingByteSource"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "overrideType": "{ highWaterMark?: number }"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "1": {
                             "typeParameters": [
                                 {
                                     "name": "R",
@@ -2358,10 +2372,33 @@
                             "param": [
                                 {
                                     "name": "underlyingSource",
+                                    "optional": false,
+                                    "overrideType": "UnderlyingDefaultSource<R>"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "optional": true,
+                                    "overrideType": "QueuingStrategy<R>"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<R>"
+                        },
+                        "2": {
+                            "typeParameters": [
+                                {
+                                    "name": "R",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": true,
                                     "overrideType": "UnderlyingSource<R>"
                                 },
                                 {
                                     "name": "strategy",
+                                    "optional": true,
                                     "overrideType": "QueuingStrategy<R>"
                                 }
                             ],
@@ -2371,6 +2408,12 @@
                     "force-references": [
                         {
                             "type": "UnderlyingSource"
+                        },
+                        {
+                            "type": "UnderlyingByteSource"
+                        },
+                        {
+                            "type": "UnderlyingDefaultSource"
                         },
                         {
                             "type": "QueuingStrategy"
