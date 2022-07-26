@@ -428,6 +428,9 @@
     },
     "interfaces": {
         "interface": {
+            "AudioParamMap": {
+                "extends": "ReadonlyMap<string, AudioParam>"
+            },
             "CryptoKey": {
                 "properties": {
                     "property": {

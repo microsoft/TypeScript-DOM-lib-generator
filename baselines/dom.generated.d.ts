@@ -2276,7 +2276,7 @@ declare var AudioParam: {
     new(): AudioParam;
 };
 
-interface AudioParamMap {
+interface AudioParamMap extends ReadonlyMap<string, AudioParam> {
     forEach(callbackfn: (value: AudioParam, key: string, parent: AudioParamMap) => void, thisArg?: any): void;
 }
 
