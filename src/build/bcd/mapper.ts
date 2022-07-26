@@ -1,4 +1,5 @@
 import {
+  BrowserName,
   CompatStatement,
   Identifier,
   SimpleSupportStatement,
@@ -27,7 +28,7 @@ function mergeCompatStatements(data?: Identifier): CompatStatement | undefined {
 
   // Some items have no top level __compat and instead have contexts with compat data for each
 
-  const statements = Object.values(data)
+  const statements = Object.values(data as Record<string, Identifier>)
     .map((d) => d.__compat)
     .filter((n) => n) as CompatStatement[];
 
@@ -38,7 +39,7 @@ function mergeCompatStatements(data?: Identifier): CompatStatement | undefined {
   );
 
   for (const statement of statements) {
-    for (const key of Object.keys(statement.support)) {
+    for (const key of Object.keys(statement.support) as BrowserName[]) {
       const support = statement.support[key];
       if (support && hasStableImplementation(support)) {
         if (!base[key]) {

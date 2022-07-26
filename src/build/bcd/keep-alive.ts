@@ -34,15 +34,10 @@ export const forceKeepAlive: Record<string, string[]> = {
   ],
   Gamepad: ["hapticActuators"],
   GlobalEventHandlers: [
-    "ontoggle",
     "onwebkitanimationend",
     "onwebkitanimationiteration",
     "onwebkitanimationstart",
     "onwebkittransitionend",
-
-    // BCD unexpectedly is removing valid event data
-    // https://github.com/mdn/browser-compat-data/issues/15345
-    "oncuechange",
   ],
   IDBDatabase: [
     // BCD unexpectedly is removing valid event data
