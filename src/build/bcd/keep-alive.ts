@@ -46,6 +46,22 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onerror",
   ],
   KeyframeEffect: ["iterationComposite"],
+  TrustedHTML: ["fromLiteral", "toJSON"],
+  TrustedScript: ["fromLiteral", "toJSON"],
+  TrustedScriptURL: ["fromLiteral", "toJSON"],
+  TrustedTypePolicy: ["createHTML", "createScript", "createScriptURL", "name"],
+  TrustedTypePolicyFactory: [
+    "createPolicy",
+    "defaultPolicy",
+    "emptyHTML",
+    "emptyScript",
+    "getAttributeType",
+    "getPropertyType",
+    "getTypeMapping",
+    "isHTML",
+    "isScript",
+    "isScriptURL",
+  ],
   WebGLRenderingContextBase: ["lineWidth"],
   WebGL2RenderingContextOverloads: [
     // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately
@@ -65,6 +81,7 @@ export const forceKeepAlive: Record<string, string[]> = {
     "uniform4fv",
     "uniform4iv",
   ],
+  WindowOrWorkerGlobalScope: ["trustedTypes"],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
   XMLHttpRequestEventTarget: [
     // BCD unexpectedly is removing valid event data

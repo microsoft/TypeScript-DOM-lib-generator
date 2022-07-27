@@ -1763,6 +1763,12 @@ interface TransitionEventInit extends EventInit {
     pseudoElement?: string;
 }
 
+interface TrustedTypePolicyOptions {
+    createHTML?: CreateHTMLCallback | null;
+    createScript?: CreateScriptCallback | null;
+    createScriptURL?: CreateScriptURLCallback | null;
+}
+
 interface UIEventInit extends EventInit {
     detail?: number;
     view?: Window | null;
@@ -3566,13 +3572,13 @@ interface ChildNode extends Node {
      *
      * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
      */
-    after(...nodes: (Node | string)[]): void;
+    after(...nodes: (Node | string | TrustedScript)[]): void;
     /**
      * Inserts nodes just before node, while replacing strings in nodes with equivalent Text nodes.
      *
      * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
      */
-    before(...nodes: (Node | string)[]): void;
+    before(...nodes: (Node | string | TrustedScript)[]): void;
     /** Removes node. */
     remove(): void;
     /**
@@ -3580,7 +3586,7 @@ interface ChildNode extends Node {
      *
      * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
      */
-    replaceWith(...nodes: (Node | string)[]): void;
+    replaceWith(...nodes: (Node | string | TrustedScript)[]): void;
 }
 
 /** @deprecated */
@@ -3964,7 +3970,7 @@ interface DOMParser {
      *
      * Values other than the above for type will cause a TypeError exception to be thrown.
      */
-    parseFromString(string: string, type: DOMParserSupportedType): Document;
+    parseFromString(string: string | TrustedHTML, type: DOMParserSupportedType): Document;
 }
 
 declare var DOMParser: {
@@ -4585,7 +4591,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * @param value Value to assign.
      * @deprecated
      */
-    execCommand(commandId: string, showUI?: boolean, value?: string): boolean;
+    execCommand(commandId: string, showUI?: boolean, value?: string | TrustedHTML): boolean;
     /** Stops document's fullscreen element from being displayed fullscreen and resolves promise when done. */
     exitFullscreen(): Promise<void>;
     exitPictureInPicture(): Promise<void>;
@@ -4676,11 +4682,13 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
      */
+    write(text: TrustedHTML): void;
     write(...text: string[]): void;
     /**
      * Writes one or more HTML expressions, followed by a carriage return, to a document in the specified window.
      * @param content The text and HTML tags to write.
      */
+    writeln(text: TrustedHTML): void;
     writeln(...text: string[]): void;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -4869,7 +4877,8 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     readonly namespaceURI: string | null;
     onfullscreenchange: ((this: Element, ev: Event) => any) | null;
     onfullscreenerror: ((this: Element, ev: Event) => any) | null;
-    outerHTML: string;
+    get outerHTML(): string;
+    set outerHTML(outerHTML: string | TrustedHTML);
     readonly ownerDocument: Document;
     readonly part: DOMTokenList;
     /** Returns the namespace prefix. */
@@ -4916,7 +4925,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     hasAttributes(): boolean;
     hasPointerCapture(pointerId: number): boolean;
     insertAdjacentElement(where: InsertPosition, element: Element): Element | null;
-    insertAdjacentHTML(position: InsertPosition, text: string): void;
+    insertAdjacentHTML(position: InsertPosition, text: string | TrustedHTML): void;
     insertAdjacentText(where: InsertPosition, data: string): void;
     /** Returns true if matching selectors against element's root yields element, and false otherwise. */
     matches(selectors: string): boolean;
@@ -6357,7 +6366,8 @@ interface HTMLElement extends Element, DocumentAndElementEventHandlers, ElementC
     draggable: boolean;
     hidden: boolean;
     inert: boolean;
-    innerText: string;
+    get innerText(): string;
+    set innerText(innerText: string | TrustedScript);
     lang: string;
     readonly offsetHeight: number;
     readonly offsetLeft: number;
@@ -6393,7 +6403,8 @@ interface HTMLEmbedElement extends HTMLElement {
      */
     name: string;
     /** Sets or retrieves a URL to be loaded by the object. */
-    src: string;
+    get src(): string;
+    set src(src: string | TrustedScriptURL);
     type: string;
     /** Sets or retrieves the width of the object. */
     width: string;
@@ -6818,7 +6829,8 @@ interface HTMLIFrameElement extends HTMLElement {
     /** Sets or retrieves a URL to be loaded by the object. */
     src: string;
     /** Sets or retrives the content of the page that is to contain. */
-    srcdoc: string;
+    get srcdoc(): string;
+    set srcdoc(srcdoc: string | TrustedHTML);
     /** Sets or retrieves the width of the object. */
     width: string;
     getSVGDocument(): Document | null;
@@ -7417,7 +7429,8 @@ interface HTMLObjectElement extends HTMLElement {
      * Sets or retrieves the URL of the component.
      * @deprecated
      */
-    codeBase: string;
+    get codeBase(): string;
+    set codeBase(codeBase: string | TrustedHTML);
     /**
      * Sets or retrieves the Internet media type for the code associated with the object.
      * @deprecated
@@ -7427,7 +7440,8 @@ interface HTMLObjectElement extends HTMLElement {
     readonly contentDocument: Document | null;
     readonly contentWindow: WindowProxy | null;
     /** Sets or retrieves the URL that references the data of the object. */
-    data: string;
+    get data(): string;
+    set data(data: string | TrustedHTML);
     /** @deprecated */
     declare: boolean;
     /** Retrieves a reference to the form that the object is embedded in. */
@@ -7743,9 +7757,11 @@ interface HTMLScriptElement extends HTMLElement {
     noModule: boolean;
     referrerPolicy: string;
     /** Retrieves the URL to an external file that contains the source code or data. */
-    src: string;
+    get src(): string;
+    set src(src: string | TrustedScriptURL);
     /** Retrieves or sets the text of the object as a string. */
-    text: string;
+    get text(): string;
+    set text(text: string | TrustedScript);
     /** Sets or retrieves the MIME type for the associated scripting engine. */
     type: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -8923,7 +8939,8 @@ declare var ImageData: {
 };
 
 interface InnerHTML {
-    innerHTML: string;
+    get innerHTML(): string;
+    set innerHTML(innerHTML: string | TrustedHTML);
 }
 
 interface InputDeviceInfo extends MediaDeviceInfo {
@@ -9950,7 +9967,8 @@ interface Node extends EventTarget {
     readonly parentNode: ParentNode | null;
     /** Returns the previous sibling. */
     readonly previousSibling: ChildNode | null;
-    textContent: string | null;
+    get textContent(): string | null;
+    set textContent(textContent: string | TrustedScript | null);
     appendChild<T extends Node>(node: T): T;
     /** Returns a copy of node. If deep is true, the copy also includes the node's descendants. */
     cloneNode(deep?: boolean): Node;
@@ -10303,13 +10321,13 @@ interface ParentNode extends Node {
      *
      * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
      */
-    append(...nodes: (Node | string)[]): void;
+    append(...nodes: (Node | string | TrustedScript)[]): void;
     /**
      * Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
      *
      * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
      */
-    prepend(...nodes: (Node | string)[]): void;
+    prepend(...nodes: (Node | string | TrustedScript)[]): void;
     /** Returns the first element that is a descendant of node that matches selectors. */
     querySelector<K extends keyof HTMLElementTagNameMap>(selectors: K): HTMLElementTagNameMap[K] | null;
     querySelector<K extends keyof SVGElementTagNameMap>(selectors: K): SVGElementTagNameMap[K] | null;
@@ -10323,7 +10341,7 @@ interface ParentNode extends Node {
      *
      * Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
      */
-    replaceChildren(...nodes: (Node | string)[]): void;
+    replaceChildren(...nodes: (Node | string | TrustedScript)[]): void;
 }
 
 /** This Canvas 2D API interface is used to declare a path that can then be used on a CanvasRenderingContext2D object. The path methods of the CanvasRenderingContext2D interface are also present on this interface, which gives you the convenience of being able to retain and replay your path whenever desired. */
@@ -11338,7 +11356,7 @@ interface Range extends AbstractRange {
     compareBoundaryPoints(how: number, sourceRange: Range): number;
     /** Returns −1 if the point is before the range, 0 if the point is in the range, and 1 if the point is after the range. */
     comparePoint(node: Node, offset: number): number;
-    createContextualFragment(fragment: string): DocumentFragment;
+    createContextualFragment(fragment: string | TrustedHTML): DocumentFragment;
     deleteContents(): void;
     detach(): void;
     extractContents(): DocumentFragment;
@@ -11759,7 +11777,8 @@ declare var SVGAnimatedRect: {
 /** The SVGAnimatedString interface represents string attributes which can be animated from each SVG declaration. You need to create SVG attribute before doing anything else, everything should be declared inside this. */
 interface SVGAnimatedString {
     readonly animVal: string;
-    baseVal: string;
+    get baseVal(): string;
+    set baseVal(baseVal: string | TrustedScriptURL);
 }
 
 declare var SVGAnimatedString: {
@@ -13443,7 +13462,7 @@ interface ServiceWorkerContainer extends EventTarget {
     readonly ready: Promise<ServiceWorkerRegistration>;
     getRegistration(clientURL?: string | URL): Promise<ServiceWorkerRegistration | undefined>;
     getRegistrations(): Promise<ReadonlyArray<ServiceWorkerRegistration>>;
-    register(scriptURL: string | URL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
+    register(scriptURL: string | URL | TrustedScriptURL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
     startMessages(): void;
     addEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -13521,7 +13540,7 @@ interface SharedWorker extends EventTarget, AbstractWorker {
 
 declare var SharedWorker: {
     prototype: SharedWorker;
-    new(scriptURL: string | URL, options?: string | WorkerOptions): SharedWorker;
+    new(scriptURL: string | URL | TrustedScriptURL, options?: string | WorkerOptions): SharedWorker;
 };
 
 interface Slottable {
@@ -14253,6 +14272,66 @@ interface TreeWalker {
 declare var TreeWalker: {
     prototype: TreeWalker;
     new(): TreeWalker;
+};
+
+interface TrustedHTML {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedHTML: {
+    prototype: TrustedHTML;
+    fromLiteral(templateStringsArray: any): TrustedHTML;
+    toString(): string;
+};
+
+interface TrustedScript {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScript: {
+    prototype: TrustedScript;
+    fromLiteral(templateStringsArray: any): TrustedScript;
+    toString(): string;
+};
+
+interface TrustedScriptURL {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScriptURL: {
+    prototype: TrustedScriptURL;
+    fromLiteral(templateStringsArray: any): TrustedScriptURL;
+    toString(): string;
+};
+
+interface TrustedTypePolicy {
+    readonly name: string;
+    createHTML(input: string, ...arguments: any[]): TrustedHTML;
+    createScript(input: string, ...arguments: any[]): TrustedScript;
+    createScriptURL(input: string, ...arguments: any[]): TrustedScriptURL;
+}
+
+declare var TrustedTypePolicy: {
+    prototype: TrustedTypePolicy;
+};
+
+interface TrustedTypePolicyFactory {
+    readonly defaultPolicy: TrustedTypePolicy | null;
+    readonly emptyHTML: TrustedHTML;
+    readonly emptyScript: TrustedScript;
+    createPolicy(policyName: string, policyOptions?: TrustedTypePolicyOptions): TrustedTypePolicy;
+    getAttributeType(tagName: string, attribute: string, elementNs?: string, attrNs?: string): string | null;
+    getPropertyType(tagName: string, property: string, elementNs?: string): string | null;
+    isHTML(value: any): boolean;
+    isScript(value: any): boolean;
+    isScriptURL(value: any): boolean;
+}
+
+declare var TrustedTypePolicyFactory: {
+    prototype: TrustedTypePolicyFactory;
 };
 
 /** Simple user interface events. */
@@ -16737,6 +16816,7 @@ interface WindowOrWorkerGlobalScope {
     readonly isSecureContext: boolean;
     readonly origin: string;
     readonly performance: Performance;
+    readonly trustedTypes: TrustedTypePolicyFactory;
     atob(data: string): string;
     btoa(data: string): string;
     clearInterval(id: number | undefined): void;
@@ -16777,7 +16857,7 @@ interface Worker extends EventTarget, AbstractWorker {
 
 declare var Worker: {
     prototype: Worker;
-    new(scriptURL: string | URL, options?: WorkerOptions): Worker;
+    new(scriptURL: string | URL | TrustedScriptURL, options?: WorkerOptions): Worker;
 };
 
 /** Available only in secure contexts. */
@@ -17252,6 +17332,18 @@ declare namespace WebAssembly {
 
 interface BlobCallback {
     (blob: Blob | null): void;
+}
+
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string;
 }
 
 interface CustomElementConstructor {
@@ -18045,6 +18137,7 @@ declare var indexedDB: IDBFactory;
 declare var isSecureContext: boolean;
 declare var origin: string;
 declare var performance: Performance;
+declare var trustedTypes: TrustedTypePolicyFactory;
 declare function atob(data: string): string;
 declare function btoa(data: string): string;
 declare function clearInterval(id: number | undefined): void;
@@ -18116,8 +18209,9 @@ type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement;
-type TimerHandler = string | Function;
+type TimerHandler = string | Function | TrustedScript;
 type Transferable = ArrayBuffer | MessagePort | ImageBitmap;
+type TrustedType = TrustedHTML | TrustedScript | TrustedScriptURL;
 type Uint32List = Uint32Array | GLuint[];
 type UvmEntries = UvmEntry[];
 type UvmEntry = number[];

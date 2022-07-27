@@ -622,6 +622,12 @@ interface Transformer<I = any, O = any> {
     writableType?: undefined;
 }
 
+interface TrustedTypePolicyOptions {
+    createHTML?: CreateHTMLCallback | null;
+    createScript?: CreateScriptCallback | null;
+    createScriptURL?: CreateScriptURLCallback | null;
+}
+
 interface UnderlyingSink<W = any> {
     abort?: UnderlyingSinkAbortCallback;
     close?: UnderlyingSinkCloseCallback;
@@ -2781,7 +2787,7 @@ interface ServiceWorkerContainer extends EventTarget {
     readonly ready: Promise<ServiceWorkerRegistration>;
     getRegistration(clientURL?: string | URL): Promise<ServiceWorkerRegistration | undefined>;
     getRegistrations(): Promise<ReadonlyArray<ServiceWorkerRegistration>>;
-    register(scriptURL: string | URL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
+    register(scriptURL: string | URL | TrustedScriptURL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
     startMessages(): void;
     addEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -3017,6 +3023,66 @@ interface TransformStreamDefaultController<O = any> {
 declare var TransformStreamDefaultController: {
     prototype: TransformStreamDefaultController;
     new(): TransformStreamDefaultController;
+};
+
+interface TrustedHTML {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedHTML: {
+    prototype: TrustedHTML;
+    fromLiteral(templateStringsArray: any): TrustedHTML;
+    toString(): string;
+};
+
+interface TrustedScript {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScript: {
+    prototype: TrustedScript;
+    fromLiteral(templateStringsArray: any): TrustedScript;
+    toString(): string;
+};
+
+interface TrustedScriptURL {
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScriptURL: {
+    prototype: TrustedScriptURL;
+    fromLiteral(templateStringsArray: any): TrustedScriptURL;
+    toString(): string;
+};
+
+interface TrustedTypePolicy {
+    readonly name: string;
+    createHTML(input: string, ...arguments: any[]): TrustedHTML;
+    createScript(input: string, ...arguments: any[]): TrustedScript;
+    createScriptURL(input: string, ...arguments: any[]): TrustedScriptURL;
+}
+
+declare var TrustedTypePolicy: {
+    prototype: TrustedTypePolicy;
+};
+
+interface TrustedTypePolicyFactory {
+    readonly defaultPolicy: TrustedTypePolicy | null;
+    readonly emptyHTML: TrustedHTML;
+    readonly emptyScript: TrustedScript;
+    createPolicy(policyName: string, policyOptions?: TrustedTypePolicyOptions): TrustedTypePolicy;
+    getAttributeType(tagName: string, attribute: string, elementNs?: string, attrNs?: string): string | null;
+    getPropertyType(tagName: string, property: string, elementNs?: string): string | null;
+    isHTML(value: any): boolean;
+    isScript(value: any): boolean;
+    isScriptURL(value: any): boolean;
+}
+
+declare var TrustedTypePolicyFactory: {
+    prototype: TrustedTypePolicyFactory;
 };
 
 /** The URL interface represents an object providing static methods used for creating object URLs. */
@@ -5165,6 +5231,7 @@ interface WindowOrWorkerGlobalScope {
     readonly isSecureContext: boolean;
     readonly origin: string;
     readonly performance: Performance;
+    readonly trustedTypes: TrustedTypePolicyFactory;
     atob(data: string): string;
     btoa(data: string): string;
     clearInterval(id: number | undefined): void;
@@ -5203,7 +5270,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
     /** Returns workerGlobal. */
     readonly self: WorkerGlobalScope & typeof globalThis;
     /** Fetches each URL in urls, executes them one-by-one in the order they are passed, and then returns (or throws if something went amiss). */
-    importScripts(...urls: (string | URL)[]): void;
+    importScripts(...urls: (string | URL | TrustedScriptURL)[]): void;
     addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -5438,6 +5505,18 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string;
+}
+
 interface LockGrantedCallback {
     (lock: Lock | null): any;
 }
@@ -5526,7 +5605,7 @@ declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseR
 /** Returns workerGlobal. */
 declare var self: WorkerGlobalScope & typeof globalThis;
 /** Fetches each URL in urls, executes them one-by-one in the order they are passed, and then returns (or throws if something went amiss). */
-declare function importScripts(...urls: (string | URL)[]): void;
+declare function importScripts(...urls: (string | URL | TrustedScriptURL)[]): void;
 /** Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise. */
 declare function dispatchEvent(event: Event): boolean;
 declare var fonts: FontFaceSet;
@@ -5538,6 +5617,7 @@ declare var indexedDB: IDBFactory;
 declare var isSecureContext: boolean;
 declare var origin: string;
 declare var performance: Performance;
+declare var trustedTypes: TrustedTypePolicyFactory;
 declare function atob(data: string): string;
 declare function btoa(data: string): string;
 declare function clearInterval(id: number | undefined): void;
@@ -5593,8 +5673,9 @@ type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableSt
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T>;
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
-type TimerHandler = string | Function;
+type TimerHandler = string | Function | TrustedScript;
 type Transferable = ArrayBuffer | MessagePort | ImageBitmap;
+type TrustedType = TrustedHTML | TrustedScript | TrustedScriptURL;
 type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
