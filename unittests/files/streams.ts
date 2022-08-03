@@ -11,6 +11,9 @@ const readableStream = new ReadableStream<string>({
     controller.enqueue("b");
     controller.close();
   },
+  cancel(reason) {
+    assertType<any>(reason);
+  },
 });
 
 const defaultReader1 = readableStream.getReader();
@@ -41,6 +44,9 @@ const readableByteStream = new ReadableStream({
     }
     controller.close();
   },
+  cancel(reason) {
+    assertType<any>(reason);
+  },
 });
 
 const defaultReader2 = readableByteStream.getReader();
@@ -62,3 +68,43 @@ byobReader.read(new DataView(new ArrayBuffer(1))).then((result) => {
     result.value.getUint8(0);
   }
 });
+
+const writableStream = new WritableStream<number>({
+  start(controller) {
+    assertType<WritableStreamDefaultController>(controller);
+  },
+  write(chunk, controller) {
+    assertType<number>(chunk);
+    assertType<WritableStreamDefaultController>(controller);
+    chunk.toFixed(3);
+    controller.error("boom!");
+  },
+  close() {},
+  abort(reason) {
+    assertType<any>(reason);
+  },
+});
+
+const defaultWriter = writableStream.getWriter();
+assertType<WritableStreamDefaultWriter<number>>(defaultWriter);
+defaultWriter.write(42);
+defaultWriter.close();
+defaultWriter.abort("boom!");
+
+const transformStream = new TransformStream<string, number>({
+  start(controller) {
+    assertType<TransformStreamDefaultController<number>>(controller);
+  },
+  transform(chunk, controller) {
+    assertType<string>(chunk);
+    assertType<TransformStreamDefaultController<number>>(controller);
+    controller.enqueue(chunk.length);
+    controller.error("boom!");
+  },
+  flush(controller) {
+    assertType<TransformStreamDefaultController<number>>(controller);
+    controller.terminate();
+  },
+});
+assertType<ReadableStream<number>>(transformStream.readable);
+assertType<WritableStream<string>>(transformStream.writable);
