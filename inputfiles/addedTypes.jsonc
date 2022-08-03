@@ -1207,7 +1207,7 @@
                         },
                         "autoAllocateChunkSize": {
                             "name": "autoAllocateChunkSize",
-                            "overrideType": "number"
+                            "type": "unsigned long long"
                         },
                         "start": {
                             "name": "start",
