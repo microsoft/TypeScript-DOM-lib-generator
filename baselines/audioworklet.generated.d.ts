@@ -193,10 +193,11 @@ interface AbortController {
     abort(reason?: any): void;
 }
 
-declare var AbortController: {
+declare interface AbortControllerConstructor {
     prototype: AbortController;
     new(): AbortController;
-};
+}
+declare var AbortController: AbortControllerConstructor
 
 interface AbortSignalEventMap {
     "abort": Event;
@@ -215,11 +216,12 @@ interface AbortSignal extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var AbortSignal: {
+declare interface AbortSignalConstructor {
     prototype: AbortSignal;
     new(): AbortSignal;
     abort(reason?: any): AbortSignal;
-};
+}
+declare var AbortSignal: AbortSignalConstructor
 
 interface AudioWorkletGlobalScope extends WorkletGlobalScope {
     readonly currentFrame: number;
@@ -228,19 +230,21 @@ interface AudioWorkletGlobalScope extends WorkletGlobalScope {
     registerProcessor(name: string, processorCtor: AudioWorkletProcessorConstructor): void;
 }
 
-declare var AudioWorkletGlobalScope: {
+declare interface AudioWorkletGlobalScopeConstructor {
     prototype: AudioWorkletGlobalScope;
     new(): AudioWorkletGlobalScope;
-};
+}
+declare var AudioWorkletGlobalScope: AudioWorkletGlobalScopeConstructor
 
 interface AudioWorkletProcessor {
     readonly port: MessagePort;
 }
 
-declare var AudioWorkletProcessor: {
+declare interface AudioWorkletProcessorConstructor {
     prototype: AudioWorkletProcessor;
     new(): AudioWorkletProcessor;
-};
+}
+declare var AudioWorkletProcessor: AudioWorkletProcessorConstructor
 
 interface AudioWorkletProcessorImpl extends AudioWorkletProcessor {
     process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean;
@@ -252,10 +256,11 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     readonly size: QueuingStrategySize<ArrayBufferView>;
 }
 
-declare var ByteLengthQueuingStrategy: {
+declare interface ByteLengthQueuingStrategyConstructor {
     prototype: ByteLengthQueuingStrategy;
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
-};
+}
+declare var ByteLengthQueuingStrategy: ByteLengthQueuingStrategyConstructor
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
@@ -263,10 +268,11 @@ interface CountQueuingStrategy extends QueuingStrategy {
     readonly size: QueuingStrategySize;
 }
 
-declare var CountQueuingStrategy: {
+declare interface CountQueuingStrategyConstructor {
     prototype: CountQueuingStrategy;
     new(init: QueuingStrategyInit): CountQueuingStrategy;
-};
+}
+declare var CountQueuingStrategy: CountQueuingStrategyConstructor
 
 interface CustomEvent<T = any> extends Event {
     /** Returns any custom data event was created with. Typically used for synthetic events. */
@@ -275,10 +281,11 @@ interface CustomEvent<T = any> extends Event {
     initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
 }
 
-declare var CustomEvent: {
+declare interface CustomEventConstructor {
     prototype: CustomEvent;
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
-};
+}
+declare var CustomEvent: CustomEventConstructor
 
 /** Events providing information related to errors in scripts or in files. */
 interface ErrorEvent extends Event {
@@ -289,10 +296,11 @@ interface ErrorEvent extends Event {
     readonly message: string;
 }
 
-declare var ErrorEvent: {
+declare interface ErrorEventConstructor {
     prototype: ErrorEvent;
     new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
-};
+}
+declare var ErrorEvent: ErrorEventConstructor
 
 /** An event which takes place in the DOM. */
 interface Event {
@@ -337,14 +345,15 @@ interface Event {
     readonly NONE: number;
 }
 
-declare var Event: {
+declare interface EventConstructor {
     prototype: Event;
     new(type: string, eventInitDict?: EventInit): Event;
     readonly AT_TARGET: number;
     readonly BUBBLING_PHASE: number;
     readonly CAPTURING_PHASE: number;
     readonly NONE: number;
-};
+}
+declare var Event: EventConstructor
 
 interface EventListener {
     (evt: Event): void;
@@ -378,10 +387,11 @@ interface EventTarget {
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
 }
 
-declare var EventTarget: {
+declare interface EventTargetConstructor {
     prototype: EventTarget;
     new(): EventTarget;
-};
+}
+declare var EventTarget: EventTargetConstructor
 
 interface GenericTransformStream {
     readonly readable: ReadableStream;
@@ -404,10 +414,11 @@ interface MessageEvent<T = any> extends Event {
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
 }
 
-declare var MessageEvent: {
+declare interface MessageEventConstructor {
     prototype: MessageEvent;
     new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
-};
+}
+declare var MessageEvent: MessageEventConstructor
 
 interface MessagePortEventMap {
     "message": MessageEvent;
@@ -435,10 +446,11 @@ interface MessagePort extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var MessagePort: {
+declare interface MessagePortConstructor {
     prototype: MessagePort;
     new(): MessagePort;
-};
+}
+declare var MessagePort: MessagePortConstructor
 
 interface PerformanceEventMap {
     "resourcetimingbufferfull": Event;
@@ -465,10 +477,11 @@ interface Performance extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Performance: {
+declare interface PerformanceConstructor {
     prototype: Performance;
     new(): Performance;
-};
+}
+declare var Performance: PerformanceConstructor
 
 /** Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image). */
 interface PerformanceEntry {
@@ -479,30 +492,33 @@ interface PerformanceEntry {
     toJSON(): any;
 }
 
-declare var PerformanceEntry: {
+declare interface PerformanceEntryConstructor {
     prototype: PerformanceEntry;
     new(): PerformanceEntry;
-};
+}
+declare var PerformanceEntry: PerformanceEntryConstructor
 
 /** PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline. */
 interface PerformanceMark extends PerformanceEntry {
     readonly detail: any;
 }
 
-declare var PerformanceMark: {
+declare interface PerformanceMarkConstructor {
     prototype: PerformanceMark;
     new(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
-};
+}
+declare var PerformanceMark: PerformanceMarkConstructor
 
 /** PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline. */
 interface PerformanceMeasure extends PerformanceEntry {
     readonly detail: any;
 }
 
-declare var PerformanceMeasure: {
+declare interface PerformanceMeasureConstructor {
     prototype: PerformanceMeasure;
     new(): PerformanceMeasure;
-};
+}
+declare var PerformanceMeasure: PerformanceMeasureConstructor
 
 interface PerformanceObserver {
     disconnect(): void;
@@ -510,11 +526,12 @@ interface PerformanceObserver {
     takeRecords(): PerformanceEntryList;
 }
 
-declare var PerformanceObserver: {
+declare interface PerformanceObserverConstructor {
     prototype: PerformanceObserver;
     new(callback: PerformanceObserverCallback): PerformanceObserver;
     readonly supportedEntryTypes: ReadonlyArray<string>;
-};
+}
+declare var PerformanceObserver: PerformanceObserverConstructor
 
 interface PerformanceObserverEntryList {
     getEntries(): PerformanceEntryList;
@@ -522,20 +539,22 @@ interface PerformanceObserverEntryList {
     getEntriesByType(type: string): PerformanceEntryList;
 }
 
-declare var PerformanceObserverEntryList: {
+declare interface PerformanceObserverEntryListConstructor {
     prototype: PerformanceObserverEntryList;
     new(): PerformanceObserverEntryList;
-};
+}
+declare var PerformanceObserverEntryList: PerformanceObserverEntryListConstructor
 
 interface PromiseRejectionEvent extends Event {
     readonly promise: Promise<any>;
     readonly reason: any;
 }
 
-declare var PromiseRejectionEvent: {
+declare interface PromiseRejectionEventConstructor {
     prototype: PromiseRejectionEvent;
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
-};
+}
+declare var PromiseRejectionEvent: PromiseRejectionEventConstructor
 
 interface ReadableByteStreamController {
     readonly byobRequest: ReadableStreamBYOBRequest | null;
@@ -545,10 +564,11 @@ interface ReadableByteStreamController {
     error(e?: any): void;
 }
 
-declare var ReadableByteStreamController: {
+declare interface ReadableByteStreamControllerConstructor {
     prototype: ReadableByteStreamController;
     new(): ReadableByteStreamController;
-};
+}
+declare var ReadableByteStreamController: ReadableByteStreamControllerConstructor
 
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
@@ -562,22 +582,24 @@ interface ReadableStream<R = any> {
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
-declare var ReadableStream: {
+declare interface ReadableStreamConstructor {
     prototype: ReadableStream;
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-};
+}
+declare var ReadableStream: ReadableStreamConstructor
 
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamBYOBReader: {
+declare interface ReadableStreamBYOBReaderConstructor {
     prototype: ReadableStreamBYOBReader;
     new(stream: ReadableStream): ReadableStreamBYOBReader;
-};
+}
+declare var ReadableStreamBYOBReader: ReadableStreamBYOBReaderConstructor
 
 interface ReadableStreamBYOBRequest {
     readonly view: ArrayBufferView | null;
@@ -585,10 +607,11 @@ interface ReadableStreamBYOBRequest {
     respondWithNewView(view: ArrayBufferView): void;
 }
 
-declare var ReadableStreamBYOBRequest: {
+declare interface ReadableStreamBYOBRequestConstructor {
     prototype: ReadableStreamBYOBRequest;
     new(): ReadableStreamBYOBRequest;
-};
+}
+declare var ReadableStreamBYOBRequest: ReadableStreamBYOBRequestConstructor
 
 interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
@@ -597,20 +620,22 @@ interface ReadableStreamDefaultController<R = any> {
     error(e?: any): void;
 }
 
-declare var ReadableStreamDefaultController: {
+declare interface ReadableStreamDefaultControllerConstructor {
     prototype: ReadableStreamDefaultController;
     new(): ReadableStreamDefaultController;
-};
+}
+declare var ReadableStreamDefaultController: ReadableStreamDefaultControllerConstructor
 
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamDefaultReader: {
+declare interface ReadableStreamDefaultReaderConstructor {
     prototype: ReadableStreamDefaultReader;
     new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>;
-};
+}
+declare var ReadableStreamDefaultReader: ReadableStreamDefaultReaderConstructor
 
 interface ReadableStreamGenericReader {
     readonly closed: Promise<undefined>;
@@ -635,10 +660,11 @@ interface TextDecoder extends TextDecoderCommon {
     decode(input?: BufferSource, options?: TextDecodeOptions): string;
 }
 
-declare var TextDecoder: {
+declare interface TextDecoderConstructor {
     prototype: TextDecoder;
     new(label?: string, options?: TextDecoderOptions): TextDecoder;
-};
+}
+declare var TextDecoder: TextDecoderConstructor
 
 interface TextDecoderCommon {
     /** Returns encoding's name, lowercased. */
@@ -654,10 +680,11 @@ interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly writable: WritableStream<BufferSource>;
 }
 
-declare var TextDecoderStream: {
+declare interface TextDecoderStreamConstructor {
     prototype: TextDecoderStream;
     new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
-};
+}
+declare var TextDecoderStream: TextDecoderStreamConstructor
 
 /** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextEncoder extends TextEncoderCommon {
@@ -667,10 +694,11 @@ interface TextEncoder extends TextEncoderCommon {
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
 
-declare var TextEncoder: {
+declare interface TextEncoderConstructor {
     prototype: TextEncoder;
     new(): TextEncoder;
-};
+}
+declare var TextEncoder: TextEncoderConstructor
 
 interface TextEncoderCommon {
     /** Returns "utf-8". */
@@ -682,20 +710,22 @@ interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly writable: WritableStream<string>;
 }
 
-declare var TextEncoderStream: {
+declare interface TextEncoderStreamConstructor {
     prototype: TextEncoderStream;
     new(): TextEncoderStream;
-};
+}
+declare var TextEncoderStream: TextEncoderStreamConstructor
 
 interface TransformStream<I = any, O = any> {
     readonly readable: ReadableStream<O>;
     readonly writable: WritableStream<I>;
 }
 
-declare var TransformStream: {
+declare interface TransformStreamConstructor {
     prototype: TransformStream;
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
-};
+}
+declare var TransformStream: TransformStreamConstructor
 
 interface TransformStreamDefaultController<O = any> {
     readonly desiredSize: number | null;
@@ -704,10 +734,11 @@ interface TransformStreamDefaultController<O = any> {
     terminate(): void;
 }
 
-declare var TransformStreamDefaultController: {
+declare interface TransformStreamDefaultControllerConstructor {
     prototype: TransformStreamDefaultController;
     new(): TransformStreamDefaultController;
-};
+}
+declare var TransformStreamDefaultController: TransformStreamDefaultControllerConstructor
 
 /** The URL interface represents an object providing static methods used for creating object URLs. */
 interface URL {
@@ -727,10 +758,11 @@ interface URL {
     toJSON(): string;
 }
 
-declare var URL: {
+declare interface URLConstructor {
     prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
-};
+}
+declare var URL: URLConstructor
 
 interface URLSearchParams {
     /** Appends a specified key/value pair as a new search parameter. */
@@ -751,20 +783,22 @@ interface URLSearchParams {
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
 }
 
-declare var URLSearchParams: {
+declare interface URLSearchParamsConstructor {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
     toString(): string;
-};
+}
+declare var URLSearchParams: URLSearchParamsConstructor
 
 /** Available only in secure contexts. */
 interface WorkletGlobalScope {
 }
 
-declare var WorkletGlobalScope: {
+declare interface WorkletGlobalScopeConstructor {
     prototype: WorkletGlobalScope;
     new(): WorkletGlobalScope;
-};
+}
+declare var WorkletGlobalScope: WorkletGlobalScopeConstructor
 
 /** This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
 interface WritableStream<W = any> {
@@ -774,10 +808,11 @@ interface WritableStream<W = any> {
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
-declare var WritableStream: {
+declare interface WritableStreamConstructor {
     prototype: WritableStream;
     new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
-};
+}
+declare var WritableStream: WritableStreamConstructor
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
@@ -785,10 +820,11 @@ interface WritableStreamDefaultController {
     error(e?: any): void;
 }
 
-declare var WritableStreamDefaultController: {
+declare interface WritableStreamDefaultControllerConstructor {
     prototype: WritableStreamDefaultController;
     new(): WritableStreamDefaultController;
-};
+}
+declare var WritableStreamDefaultController: WritableStreamDefaultControllerConstructor
 
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
@@ -801,10 +837,11 @@ interface WritableStreamDefaultWriter<W = any> {
     write(chunk?: W): Promise<void>;
 }
 
-declare var WritableStreamDefaultWriter: {
+declare interface WritableStreamDefaultWriterConstructor {
     prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
-};
+}
+declare var WritableStreamDefaultWriter: WritableStreamDefaultWriterConstructor
 
 interface Console {
     assert(condition?: boolean, ...data: any[]): void;
@@ -835,69 +872,76 @@ declare namespace WebAssembly {
     interface CompileError extends Error {
     }
 
-    var CompileError: {
+    interface CompileErrorConstructor {
         prototype: CompileError;
         new(message?: string): CompileError;
         (message?: string): CompileError;
-    };
+    }
+    var CompileError: CompileErrorConstructor
 
     interface Global {
         value: any;
         valueOf(): any;
     }
 
-    var Global: {
+    interface GlobalConstructor {
         prototype: Global;
         new(descriptor: GlobalDescriptor, v?: any): Global;
-    };
+    }
+    var Global: GlobalConstructor
 
     interface Instance {
         readonly exports: Exports;
     }
 
-    var Instance: {
+    interface InstanceConstructor {
         prototype: Instance;
         new(module: Module, importObject?: Imports): Instance;
-    };
+    }
+    var Instance: InstanceConstructor
 
     interface LinkError extends Error {
     }
 
-    var LinkError: {
+    interface LinkErrorConstructor {
         prototype: LinkError;
         new(message?: string): LinkError;
         (message?: string): LinkError;
-    };
+    }
+    var LinkError: LinkErrorConstructor
 
     interface Memory {
         readonly buffer: ArrayBuffer;
         grow(delta: number): number;
     }
 
-    var Memory: {
+    interface MemoryConstructor {
         prototype: Memory;
         new(descriptor: MemoryDescriptor): Memory;
-    };
+    }
+    var Memory: MemoryConstructor
 
     interface Module {
     }
 
-    var Module: {
+    interface ModuleConstructor {
         prototype: Module;
         new(bytes: BufferSource): Module;
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
         exports(moduleObject: Module): ModuleExportDescriptor[];
         imports(moduleObject: Module): ModuleImportDescriptor[];
-    };
+    }
+    var Module: ModuleConstructor
 
     interface RuntimeError extends Error {
     }
 
-    var RuntimeError: {
+    interface RuntimeErrorConstructor {
         prototype: RuntimeError;
         new(message?: string): RuntimeError;
         (message?: string): RuntimeError;
-    };
+    }
+    var RuntimeError: RuntimeErrorConstructor
 
     interface Table {
         readonly length: number;
@@ -906,10 +950,11 @@ declare namespace WebAssembly {
         set(index: number, value?: any): void;
     }
 
-    var Table: {
+    interface TableConstructor {
         prototype: Table;
         new(descriptor: TableDescriptor, value?: any): Table;
-    };
+    }
+    var Table: TableConstructor
 
     interface GlobalDescriptor {
         mutable?: boolean;
