@@ -103,14 +103,19 @@ async function emitDom() {
     await Promise.all([...(await getWebidls()).entries()].map(convertWidl))
   ).filter((i) => i) as ReturnType<typeof convert>[];
 
-  const transferables = widlStandardTypes.flatMap(st => {
-    return Object.values(st.browser.interfaces?.interface ?? {}).filter(i => i.transferable)
-  })
-  
+  const transferables = widlStandardTypes.flatMap((st) => {
+    return Object.values(st.browser.interfaces?.interface ?? {}).filter(
+      (i) => i.transferable
+    );
+  });
+
   addedItems.typedefs.typedef.push({
-    "name": "Transferable",
-    "type": [...transferables.map(v=>({type: v.name})), {type: 'ArrayBuffer'}]
-  })
+    name: "Transferable",
+    type: [
+      ...transferables.map((v) => ({ type: v.name })),
+      { type: "ArrayBuffer" },
+    ],
+  });
 
   async function convertWidl([shortName, idl]: string[]) {
     let commentsMap: Record<string, string>;

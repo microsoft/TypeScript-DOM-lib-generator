@@ -194,7 +194,7 @@ export interface Interface {
   };
   deprecated?: boolean | string;
   secureContext?: boolean;
-  transferable?: boolean
+  transferable?: boolean;
 }
 
 export interface Iterator {
