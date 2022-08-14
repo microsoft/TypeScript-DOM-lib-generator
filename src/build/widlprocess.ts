@@ -162,6 +162,7 @@ function convertInterfaceCommon(
     legacyWindowAlias: getExtAttr(i.extAttrs, "LegacyWindowAlias"),
     legacyNamespace: getExtAttr(i.extAttrs, "LegacyNamespace")[0],
     secureContext: hasExtAttr(i.extAttrs, "SecureContext"),
+    transferable: hasExtAttr(i.extAttrs, "Transferable"),
   };
   if (!result.exposed && i.type === "interface" && !i.partial) {
     result.exposed = "Window";

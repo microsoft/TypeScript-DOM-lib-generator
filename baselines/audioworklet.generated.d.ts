@@ -1022,6 +1022,6 @@ type PerformanceEntryList = PerformanceEntry[];
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
-type Transferable = ArrayBuffer | MessagePort;
+type Transferable = MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";

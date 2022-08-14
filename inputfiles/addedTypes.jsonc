@@ -1289,14 +1289,6 @@
                 "overrideType": "\"attributes\" | \"characterData\" | \"childList\""
             },
             {
-                "name": "Transferable",
-                "type": [
-                    { "type": "ArrayBuffer" },
-                    { "type": "MessagePort" },
-                    { "type": "ImageBitmap" }
-                ]
-            },
-            {
                 "name": "WindowProxy",
                 "type": "Window"
             },
