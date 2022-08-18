@@ -706,10 +706,11 @@ interface AbortController {
     abort(reason?: any): void;
 }
 
-declare var AbortController: {
+declare interface AbortControllerConstructor {
     prototype: AbortController;
     new(): AbortController;
-};
+}
+declare var AbortController: AbortControllerConstructor
 
 interface AbortSignalEventMap {
     "abort": Event;
@@ -728,12 +729,13 @@ interface AbortSignal extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var AbortSignal: {
+declare interface AbortSignalConstructor {
     prototype: AbortSignal;
     new(): AbortSignal;
     abort(reason?: any): AbortSignal;
     timeout(milliseconds: number): AbortSignal;
-};
+}
+declare var AbortSignal: AbortSignalConstructor
 
 interface AbstractWorkerEventMap {
     "error": ErrorEvent;
@@ -757,10 +759,11 @@ interface Blob {
     text(): Promise<string>;
 }
 
-declare var Blob: {
+declare interface BlobConstructor {
     prototype: Blob;
     new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
-};
+}
+declare var Blob: BlobConstructor
 
 interface Body {
     readonly body: ReadableStream<Uint8Array> | null;
@@ -792,10 +795,11 @@ interface BroadcastChannel extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var BroadcastChannel: {
+declare interface BroadcastChannelConstructor {
     prototype: BroadcastChannel;
     new(name: string): BroadcastChannel;
-};
+}
+declare var BroadcastChannel: BroadcastChannelConstructor
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
@@ -803,10 +807,11 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     readonly size: QueuingStrategySize<ArrayBufferView>;
 }
 
-declare var ByteLengthQueuingStrategy: {
+declare interface ByteLengthQueuingStrategyConstructor {
     prototype: ByteLengthQueuingStrategy;
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
-};
+}
+declare var ByteLengthQueuingStrategy: ByteLengthQueuingStrategyConstructor
 
 /**
  * Provides a storage mechanism for Request / Response object pairs that are cached, for example as part of the ServiceWorker life cycle. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec.
@@ -822,10 +827,11 @@ interface Cache {
     put(request: RequestInfo | URL, response: Response): Promise<void>;
 }
 
-declare var Cache: {
+declare interface CacheConstructor {
     prototype: Cache;
     new(): Cache;
-};
+}
+declare var Cache: CacheConstructor
 
 /**
  * The storage for Cache objects.
@@ -839,10 +845,11 @@ interface CacheStorage {
     open(cacheName: string): Promise<Cache>;
 }
 
-declare var CacheStorage: {
+declare interface CacheStorageConstructor {
     prototype: CacheStorage;
     new(): CacheStorage;
-};
+}
+declare var CacheStorage: CacheStorageConstructor
 
 /** An opaque object describing a gradient. It is returned by the methods CanvasRenderingContext2D.createLinearGradient() or CanvasRenderingContext2D.createRadialGradient(). */
 interface CanvasGradient {
@@ -854,10 +861,11 @@ interface CanvasGradient {
     addColorStop(offset: number, color: string): void;
 }
 
-declare var CanvasGradient: {
+declare interface CanvasGradientConstructor {
     prototype: CanvasGradient;
     new(): CanvasGradient;
-};
+}
+declare var CanvasGradient: CanvasGradientConstructor
 
 interface CanvasPath {
     arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void;
@@ -877,10 +885,11 @@ interface CanvasPattern {
     setTransform(transform?: DOMMatrix2DInit): void;
 }
 
-declare var CanvasPattern: {
+declare interface CanvasPatternConstructor {
     prototype: CanvasPattern;
     new(): CanvasPattern;
-};
+}
+declare var CanvasPattern: CanvasPatternConstructor
 
 /** The Client interface represents an executable context such as a Worker, or a SharedWorker. Window clients are represented by the more-specific WindowClient. You can get Client/WindowClient objects from methods such as Clients.matchAll() and Clients.get(). */
 interface Client {
@@ -892,10 +901,11 @@ interface Client {
     postMessage(message: any, options?: StructuredSerializeOptions): void;
 }
 
-declare var Client: {
+declare interface ClientConstructor {
     prototype: Client;
     new(): Client;
-};
+}
+declare var Client: ClientConstructor
 
 /** Provides access to Client objects. Access it via self.clients within a service worker. */
 interface Clients {
@@ -905,10 +915,11 @@ interface Clients {
     openWindow(url: string | URL): Promise<WindowClient | null>;
 }
 
-declare var Clients: {
+declare interface ClientsConstructor {
     prototype: Clients;
     new(): Clients;
-};
+}
+declare var Clients: ClientsConstructor
 
 /** A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute. */
 interface CloseEvent extends Event {
@@ -920,10 +931,11 @@ interface CloseEvent extends Event {
     readonly wasClean: boolean;
 }
 
-declare var CloseEvent: {
+declare interface CloseEventConstructor {
     prototype: CloseEvent;
     new(type: string, eventInitDict?: CloseEventInit): CloseEvent;
-};
+}
+declare var CloseEvent: CloseEventConstructor
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
@@ -931,10 +943,11 @@ interface CountQueuingStrategy extends QueuingStrategy {
     readonly size: QueuingStrategySize;
 }
 
-declare var CountQueuingStrategy: {
+declare interface CountQueuingStrategyConstructor {
     prototype: CountQueuingStrategy;
     new(init: QueuingStrategyInit): CountQueuingStrategy;
-};
+}
+declare var CountQueuingStrategy: CountQueuingStrategyConstructor
 
 /** Basic cryptography features available in the current context. It allows access to a cryptographically strong random number generator and to cryptographic primitives. */
 interface Crypto {
@@ -945,10 +958,11 @@ interface Crypto {
     randomUUID(): string;
 }
 
-declare var Crypto: {
+declare interface CryptoConstructor {
     prototype: Crypto;
     new(): Crypto;
-};
+}
+declare var Crypto: CryptoConstructor
 
 /**
  * The CryptoKey dictionary of the Web Crypto API represents a cryptographic key.
@@ -961,10 +975,11 @@ interface CryptoKey {
     readonly usages: KeyUsage[];
 }
 
-declare var CryptoKey: {
+declare interface CryptoKeyConstructor {
     prototype: CryptoKey;
     new(): CryptoKey;
-};
+}
+declare var CryptoKey: CryptoKeyConstructor
 
 interface CustomEvent<T = any> extends Event {
     /** Returns any custom data event was created with. Typically used for synthetic events. */
@@ -973,10 +988,11 @@ interface CustomEvent<T = any> extends Event {
     initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
 }
 
-declare var CustomEvent: {
+declare interface CustomEventConstructor {
     prototype: CustomEvent;
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
-};
+}
+declare var CustomEvent: CustomEventConstructor
 
 /** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
 interface DOMException extends Error {
@@ -1011,7 +1027,7 @@ interface DOMException extends Error {
     readonly WRONG_DOCUMENT_ERR: number;
 }
 
-declare var DOMException: {
+declare interface DOMExceptionConstructor {
     prototype: DOMException;
     new(message?: string, name?: string): DOMException;
     readonly ABORT_ERR: number;
@@ -1039,7 +1055,8 @@ declare var DOMException: {
     readonly URL_MISMATCH_ERR: number;
     readonly VALIDATION_ERR: number;
     readonly WRONG_DOCUMENT_ERR: number;
-};
+}
+declare var DOMException: DOMExceptionConstructor
 
 interface DOMMatrix extends DOMMatrixReadOnly {
     a: number;
@@ -1077,13 +1094,14 @@ interface DOMMatrix extends DOMMatrixReadOnly {
     translateSelf(tx?: number, ty?: number, tz?: number): DOMMatrix;
 }
 
-declare var DOMMatrix: {
+declare interface DOMMatrixConstructor {
     prototype: DOMMatrix;
     new(init?: string | number[]): DOMMatrix;
     fromFloat32Array(array32: Float32Array): DOMMatrix;
     fromFloat64Array(array64: Float64Array): DOMMatrix;
     fromMatrix(other?: DOMMatrixInit): DOMMatrix;
-};
+}
+declare var DOMMatrix: DOMMatrixConstructor
 
 interface DOMMatrixReadOnly {
     readonly a: number;
@@ -1130,13 +1148,14 @@ interface DOMMatrixReadOnly {
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
 }
 
-declare var DOMMatrixReadOnly: {
+declare interface DOMMatrixReadOnlyConstructor {
     prototype: DOMMatrixReadOnly;
     new(init?: string | number[]): DOMMatrixReadOnly;
     fromFloat32Array(array32: Float32Array): DOMMatrixReadOnly;
     fromFloat64Array(array64: Float64Array): DOMMatrixReadOnly;
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
-};
+}
+declare var DOMMatrixReadOnly: DOMMatrixReadOnlyConstructor
 
 interface DOMPoint extends DOMPointReadOnly {
     w: number;
@@ -1145,11 +1164,12 @@ interface DOMPoint extends DOMPointReadOnly {
     z: number;
 }
 
-declare var DOMPoint: {
+declare interface DOMPointConstructor {
     prototype: DOMPoint;
     new(x?: number, y?: number, z?: number, w?: number): DOMPoint;
     fromPoint(other?: DOMPointInit): DOMPoint;
-};
+}
+declare var DOMPoint: DOMPointConstructor
 
 interface DOMPointReadOnly {
     readonly w: number;
@@ -1160,11 +1180,12 @@ interface DOMPointReadOnly {
     toJSON(): any;
 }
 
-declare var DOMPointReadOnly: {
+declare interface DOMPointReadOnlyConstructor {
     prototype: DOMPointReadOnly;
     new(x?: number, y?: number, z?: number, w?: number): DOMPointReadOnly;
     fromPoint(other?: DOMPointInit): DOMPointReadOnly;
-};
+}
+declare var DOMPointReadOnly: DOMPointReadOnlyConstructor
 
 interface DOMQuad {
     readonly p1: DOMPoint;
@@ -1175,12 +1196,13 @@ interface DOMQuad {
     toJSON(): any;
 }
 
-declare var DOMQuad: {
+declare interface DOMQuadConstructor {
     prototype: DOMQuad;
     new(p1?: DOMPointInit, p2?: DOMPointInit, p3?: DOMPointInit, p4?: DOMPointInit): DOMQuad;
     fromQuad(other?: DOMQuadInit): DOMQuad;
     fromRect(other?: DOMRectInit): DOMQuad;
-};
+}
+declare var DOMQuad: DOMQuadConstructor
 
 interface DOMRect extends DOMRectReadOnly {
     height: number;
@@ -1189,11 +1211,12 @@ interface DOMRect extends DOMRectReadOnly {
     y: number;
 }
 
-declare var DOMRect: {
+declare interface DOMRectConstructor {
     prototype: DOMRect;
     new(x?: number, y?: number, width?: number, height?: number): DOMRect;
     fromRect(other?: DOMRectInit): DOMRect;
-};
+}
+declare var DOMRect: DOMRectConstructor
 
 interface DOMRectReadOnly {
     readonly bottom: number;
@@ -1207,11 +1230,12 @@ interface DOMRectReadOnly {
     toJSON(): any;
 }
 
-declare var DOMRectReadOnly: {
+declare interface DOMRectReadOnlyConstructor {
     prototype: DOMRectReadOnly;
     new(x?: number, y?: number, width?: number, height?: number): DOMRectReadOnly;
     fromRect(other?: DOMRectInit): DOMRectReadOnly;
-};
+}
+declare var DOMRectReadOnly: DOMRectReadOnlyConstructor
 
 /** A type returned by some APIs which contains a list of DOMString (strings). */
 interface DOMStringList {
@@ -1224,10 +1248,11 @@ interface DOMStringList {
     [index: number]: string;
 }
 
-declare var DOMStringList: {
+declare interface DOMStringListConstructor {
     prototype: DOMStringList;
     new(): DOMStringList;
-};
+}
+declare var DOMStringList: DOMStringListConstructor
 
 interface EXT_blend_minmax {
     readonly MAX_EXT: GLenum;
@@ -1290,10 +1315,11 @@ interface ErrorEvent extends Event {
     readonly message: string;
 }
 
-declare var ErrorEvent: {
+declare interface ErrorEventConstructor {
     prototype: ErrorEvent;
     new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
-};
+}
+declare var ErrorEvent: ErrorEventConstructor
 
 /** An event which takes place in the DOM. */
 interface Event {
@@ -1338,14 +1364,15 @@ interface Event {
     readonly NONE: number;
 }
 
-declare var Event: {
+declare interface EventConstructor {
     prototype: Event;
     new(type: string, eventInitDict?: EventInit): Event;
     readonly AT_TARGET: number;
     readonly BUBBLING_PHASE: number;
     readonly CAPTURING_PHASE: number;
     readonly NONE: number;
-};
+}
+declare var Event: EventConstructor
 
 interface EventListener {
     (evt: Event): void;
@@ -1384,13 +1411,14 @@ interface EventSource extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var EventSource: {
+declare interface EventSourceConstructor {
     prototype: EventSource;
     new(url: string | URL, eventSourceInitDict?: EventSourceInit): EventSource;
     readonly CLOSED: number;
     readonly CONNECTING: number;
     readonly OPEN: number;
-};
+}
+declare var EventSource: EventSourceConstructor
 
 /** EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them. */
 interface EventTarget {
@@ -1416,20 +1444,22 @@ interface EventTarget {
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
 }
 
-declare var EventTarget: {
+declare interface EventTargetConstructor {
     prototype: EventTarget;
     new(): EventTarget;
-};
+}
+declare var EventTarget: EventTargetConstructor
 
 /** Extends the lifetime of the install and activate events dispatched on the global scope as part of the service worker lifecycle. This ensures that any functional events (like FetchEvent) are not dispatched until it upgrades database schemas and deletes the outdated cache entries. */
 interface ExtendableEvent extends Event {
     waitUntil(f: Promise<any>): void;
 }
 
-declare var ExtendableEvent: {
+declare interface ExtendableEventConstructor {
     prototype: ExtendableEvent;
     new(type: string, eventInitDict?: ExtendableEventInit): ExtendableEvent;
-};
+}
+declare var ExtendableEvent: ExtendableEventConstructor
 
 /** This ServiceWorker API interface represents the event object of a message event fired on a service worker (when a channel message is received on the ServiceWorkerGlobalScope from another context) — extends the lifetime of such events. */
 interface ExtendableMessageEvent extends ExtendableEvent {
@@ -1440,10 +1470,11 @@ interface ExtendableMessageEvent extends ExtendableEvent {
     readonly source: Client | ServiceWorker | MessagePort | null;
 }
 
-declare var ExtendableMessageEvent: {
+declare interface ExtendableMessageEventConstructor {
     prototype: ExtendableMessageEvent;
     new(type: string, eventInitDict?: ExtendableMessageEventInit): ExtendableMessageEvent;
-};
+}
+declare var ExtendableMessageEvent: ExtendableMessageEventConstructor
 
 /** This is the event type for fetch events dispatched on the service worker global scope. It contains information about the fetch, including the request and how the receiver will treat the response. It provides the event.respondWith() method, which allows us to provide a response to this fetch. */
 interface FetchEvent extends ExtendableEvent {
@@ -1455,10 +1486,11 @@ interface FetchEvent extends ExtendableEvent {
     respondWith(r: Response | PromiseLike<Response>): void;
 }
 
-declare var FetchEvent: {
+declare interface FetchEventConstructor {
     prototype: FetchEvent;
     new(type: string, eventInitDict: FetchEventInit): FetchEvent;
-};
+}
+declare var FetchEvent: FetchEventConstructor
 
 /** Provides information about files and allows JavaScript in a web page to access their content. */
 interface File extends Blob {
@@ -1467,10 +1499,11 @@ interface File extends Blob {
     readonly webkitRelativePath: string;
 }
 
-declare var File: {
+declare interface FileConstructor {
     prototype: File;
     new(fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): File;
-};
+}
+declare var File: FileConstructor
 
 /** An object of this type is returned by the files property of the HTML <input> element; this lets you access the list of files selected with the <input type="file"> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage. */
 interface FileList {
@@ -1479,10 +1512,11 @@ interface FileList {
     [index: number]: File;
 }
 
-declare var FileList: {
+declare interface FileListConstructor {
     prototype: FileList;
     new(): FileList;
-};
+}
+declare var FileList: FileListConstructor
 
 interface FileReaderEventMap {
     "abort": ProgressEvent<FileReader>;
@@ -1518,13 +1552,14 @@ interface FileReader extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var FileReader: {
+declare interface FileReaderConstructor {
     prototype: FileReader;
     new(): FileReader;
     readonly DONE: number;
     readonly EMPTY: number;
     readonly LOADING: number;
-};
+}
+declare var FileReader: FileReaderConstructor
 
 /** Available only in secure contexts. */
 interface FileSystemDirectoryHandle extends FileSystemHandle {
@@ -1535,10 +1570,11 @@ interface FileSystemDirectoryHandle extends FileSystemHandle {
     resolve(possibleDescendant: FileSystemHandle): Promise<string[] | null>;
 }
 
-declare var FileSystemDirectoryHandle: {
+declare interface FileSystemDirectoryHandleConstructor {
     prototype: FileSystemDirectoryHandle;
     new(): FileSystemDirectoryHandle;
-};
+}
+declare var FileSystemDirectoryHandle: FileSystemDirectoryHandleConstructor
 
 /** Available only in secure contexts. */
 interface FileSystemFileHandle extends FileSystemHandle {
@@ -1546,10 +1582,11 @@ interface FileSystemFileHandle extends FileSystemHandle {
     getFile(): Promise<File>;
 }
 
-declare var FileSystemFileHandle: {
+declare interface FileSystemFileHandleConstructor {
     prototype: FileSystemFileHandle;
     new(): FileSystemFileHandle;
-};
+}
+declare var FileSystemFileHandle: FileSystemFileHandleConstructor
 
 /** Available only in secure contexts. */
 interface FileSystemHandle {
@@ -1558,10 +1595,11 @@ interface FileSystemHandle {
     isSameEntry(other: FileSystemHandle): Promise<boolean>;
 }
 
-declare var FileSystemHandle: {
+declare interface FileSystemHandleConstructor {
     prototype: FileSystemHandle;
     new(): FileSystemHandle;
-};
+}
+declare var FileSystemHandle: FileSystemHandleConstructor
 
 interface FontFace {
     ascentOverride: string;
@@ -1581,10 +1619,11 @@ interface FontFace {
     load(): Promise<FontFace>;
 }
 
-declare var FontFace: {
+declare interface FontFaceConstructor {
     prototype: FontFace;
     new(family: string, source: string | BinaryData, descriptors?: FontFaceDescriptors): FontFace;
-};
+}
+declare var FontFace: FontFaceConstructor
 
 interface FontFaceSetEventMap {
     "loading": Event;
@@ -1607,19 +1646,21 @@ interface FontFaceSet extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var FontFaceSet: {
+declare interface FontFaceSetConstructor {
     prototype: FontFaceSet;
     new(initialFaces: FontFace[]): FontFaceSet;
-};
+}
+declare var FontFaceSet: FontFaceSetConstructor
 
 interface FontFaceSetLoadEvent extends Event {
     readonly fontfaces: ReadonlyArray<FontFace>;
 }
 
-declare var FontFaceSetLoadEvent: {
+declare interface FontFaceSetLoadEventConstructor {
     prototype: FontFaceSetLoadEvent;
     new(type: string, eventInitDict?: FontFaceSetLoadEventInit): FontFaceSetLoadEvent;
-};
+}
+declare var FontFaceSetLoadEvent: FontFaceSetLoadEventConstructor
 
 interface FontFaceSource {
     readonly fonts: FontFaceSet;
@@ -1636,10 +1677,11 @@ interface FormData {
     forEach(callbackfn: (value: FormDataEntryValue, key: string, parent: FormData) => void, thisArg?: any): void;
 }
 
-declare var FormData: {
+declare interface FormDataConstructor {
     prototype: FormData;
     new(): FormData;
-};
+}
+declare var FormData: FormDataConstructor
 
 interface GenericTransformStream {
     readonly readable: ReadableStream;
@@ -1656,10 +1698,11 @@ interface Headers {
     forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
 }
 
-declare var Headers: {
+declare interface HeadersConstructor {
     prototype: Headers;
     new(init?: HeadersInit): Headers;
-};
+}
+declare var Headers: HeadersConstructor
 
 /** This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. */
 interface IDBCursor {
@@ -1694,10 +1737,11 @@ interface IDBCursor {
     update(value: any): IDBRequest<IDBValidKey>;
 }
 
-declare var IDBCursor: {
+declare interface IDBCursorConstructor {
     prototype: IDBCursor;
     new(): IDBCursor;
-};
+}
+declare var IDBCursor: IDBCursorConstructor
 
 /** This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property. */
 interface IDBCursorWithValue extends IDBCursor {
@@ -1705,10 +1749,11 @@ interface IDBCursorWithValue extends IDBCursor {
     readonly value: any;
 }
 
-declare var IDBCursorWithValue: {
+declare interface IDBCursorWithValueConstructor {
     prototype: IDBCursorWithValue;
     new(): IDBCursorWithValue;
-};
+}
+declare var IDBCursorWithValue: IDBCursorWithValueConstructor
 
 interface IDBDatabaseEventMap {
     "abort": Event;
@@ -1751,10 +1796,11 @@ interface IDBDatabase extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBDatabase: {
+declare interface IDBDatabaseConstructor {
     prototype: IDBDatabase;
     new(): IDBDatabase;
-};
+}
+declare var IDBDatabase: IDBDatabaseConstructor
 
 /** In the following code snippet, we make a request to open a database, and include handlers for the success and error cases. For a full working example, see our To-do Notifications app (view example live.) */
 interface IDBFactory {
@@ -1771,10 +1817,11 @@ interface IDBFactory {
     open(name: string, version?: number): IDBOpenDBRequest;
 }
 
-declare var IDBFactory: {
+declare interface IDBFactoryConstructor {
     prototype: IDBFactory;
     new(): IDBFactory;
-};
+}
+declare var IDBFactory: IDBFactoryConstructor
 
 /** IDBIndex interface of the IndexedDB API provides asynchronous access to an index in a database. An index is a kind of object store for looking up records in another object store, called the referenced object store. You use this interface to retrieve data. */
 interface IDBIndex {
@@ -1829,10 +1876,11 @@ interface IDBIndex {
     openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>;
 }
 
-declare var IDBIndex: {
+declare interface IDBIndexConstructor {
     prototype: IDBIndex;
     new(): IDBIndex;
-};
+}
+declare var IDBIndex: IDBIndexConstructor
 
 /** A key range can be a single value or a range with upper and lower bounds or endpoints. If the key range has both upper and lower bounds, then it is bounded; if it has no bounds, it is unbounded. A bounded key range can either be open (the endpoints are excluded) or closed (the endpoints are included). To retrieve all keys within a certain range, you can use the following code constructs: */
 interface IDBKeyRange {
@@ -1848,7 +1896,7 @@ interface IDBKeyRange {
     includes(key: any): boolean;
 }
 
-declare var IDBKeyRange: {
+declare interface IDBKeyRangeConstructor {
     prototype: IDBKeyRange;
     new(): IDBKeyRange;
     /** Returns a new IDBKeyRange spanning from lower to upper. If lowerOpen is true, lower is not included in the range. If upperOpen is true, upper is not included in the range. */
@@ -1859,7 +1907,8 @@ declare var IDBKeyRange: {
     only(value: any): IDBKeyRange;
     /** Returns a new IDBKeyRange with no lower bound and ending at key. If open is true, key is not included in the range. */
     upperBound(upper: any, open?: boolean): IDBKeyRange;
-};
+}
+declare var IDBKeyRange: IDBKeyRangeConstructor
 
 /** This example shows a variety of different uses of object stores, from updating the data structure with IDBObjectStore.createIndex inside an onupgradeneeded function, to adding a new item to our object store with IDBObjectStore.add. For a full working example, see our To-do Notifications app (view example live.) */
 interface IDBObjectStore {
@@ -1962,10 +2011,11 @@ interface IDBObjectStore {
     put(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>;
 }
 
-declare var IDBObjectStore: {
+declare interface IDBObjectStoreConstructor {
     prototype: IDBObjectStore;
     new(): IDBObjectStore;
-};
+}
+declare var IDBObjectStore: IDBObjectStoreConstructor
 
 interface IDBOpenDBRequestEventMap extends IDBRequestEventMap {
     "blocked": Event;
@@ -1982,10 +2032,11 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBOpenDBRequest: {
+declare interface IDBOpenDBRequestConstructor {
     prototype: IDBOpenDBRequest;
     new(): IDBOpenDBRequest;
-};
+}
+declare var IDBOpenDBRequest: IDBOpenDBRequestConstructor
 
 interface IDBRequestEventMap {
     "error": Event;
@@ -2012,10 +2063,11 @@ interface IDBRequest<T = any> extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBRequest: {
+declare interface IDBRequestConstructor {
     prototype: IDBRequest;
     new(): IDBRequest;
-};
+}
+declare var IDBRequest: IDBRequestConstructor
 
 interface IDBTransactionEventMap {
     "abort": Event;
@@ -2047,10 +2099,11 @@ interface IDBTransaction extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var IDBTransaction: {
+declare interface IDBTransactionConstructor {
     prototype: IDBTransaction;
     new(): IDBTransaction;
-};
+}
+declare var IDBTransaction: IDBTransactionConstructor
 
 /** This IndexedDB API interface indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function. */
 interface IDBVersionChangeEvent extends Event {
@@ -2058,10 +2111,11 @@ interface IDBVersionChangeEvent extends Event {
     readonly oldVersion: number;
 }
 
-declare var IDBVersionChangeEvent: {
+declare interface IDBVersionChangeEventConstructor {
     prototype: IDBVersionChangeEvent;
     new(type: string, eventInitDict?: IDBVersionChangeEventInit): IDBVersionChangeEvent;
-};
+}
+declare var IDBVersionChangeEvent: IDBVersionChangeEventConstructor
 
 interface ImageBitmap {
     /** Returns the intrinsic height of the image, in CSS pixels. */
@@ -2072,20 +2126,22 @@ interface ImageBitmap {
     close(): void;
 }
 
-declare var ImageBitmap: {
+declare interface ImageBitmapConstructor {
     prototype: ImageBitmap;
     new(): ImageBitmap;
-};
+}
+declare var ImageBitmap: ImageBitmapConstructor
 
 interface ImageBitmapRenderingContext {
     /** Transfers the underlying bitmap data from imageBitmap to context, and the bitmap becomes the contents of the canvas element to which context is bound. */
     transferFromImageBitmap(bitmap: ImageBitmap | null): void;
 }
 
-declare var ImageBitmapRenderingContext: {
+declare interface ImageBitmapRenderingContextConstructor {
     prototype: ImageBitmapRenderingContext;
     new(): ImageBitmapRenderingContext;
-};
+}
+declare var ImageBitmapRenderingContext: ImageBitmapRenderingContextConstructor
 
 /** The underlying pixel data of an area of a <canvas> element. It is created using the ImageData() constructor or creator methods on the CanvasRenderingContext2D object associated with a canvas: createImageData() and getImageData(). It can also be used to set a part of the canvas by using putImageData(). */
 interface ImageData {
@@ -2098,11 +2154,12 @@ interface ImageData {
     readonly width: number;
 }
 
-declare var ImageData: {
+declare interface ImageDataConstructor {
     prototype: ImageData;
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
-};
+}
+declare var ImageData: ImageDataConstructor
 
 interface KHR_parallel_shader_compile {
     readonly COMPLETION_STATUS_KHR: GLenum;
@@ -2114,10 +2171,11 @@ interface Lock {
     readonly name: string;
 }
 
-declare var Lock: {
+declare interface LockConstructor {
     prototype: Lock;
     new(): Lock;
-};
+}
+declare var Lock: LockConstructor
 
 /** Available only in secure contexts. */
 interface LockManager {
@@ -2126,20 +2184,22 @@ interface LockManager {
     request(name: string, options: LockOptions, callback: LockGrantedCallback): Promise<any>;
 }
 
-declare var LockManager: {
+declare interface LockManagerConstructor {
     prototype: LockManager;
     new(): LockManager;
-};
+}
+declare var LockManager: LockManagerConstructor
 
 interface MediaCapabilities {
     decodingInfo(configuration: MediaDecodingConfiguration): Promise<MediaCapabilitiesDecodingInfo>;
     encodingInfo(configuration: MediaEncodingConfiguration): Promise<MediaCapabilitiesEncodingInfo>;
 }
 
-declare var MediaCapabilities: {
+declare interface MediaCapabilitiesConstructor {
     prototype: MediaCapabilities;
     new(): MediaCapabilities;
-};
+}
+declare var MediaCapabilities: MediaCapabilitiesConstructor
 
 /** This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties. */
 interface MessageChannel {
@@ -2149,10 +2209,11 @@ interface MessageChannel {
     readonly port2: MessagePort;
 }
 
-declare var MessageChannel: {
+declare interface MessageChannelConstructor {
     prototype: MessageChannel;
     new(): MessageChannel;
-};
+}
+declare var MessageChannel: MessageChannelConstructor
 
 /** A message received by a target object. */
 interface MessageEvent<T = any> extends Event {
@@ -2170,10 +2231,11 @@ interface MessageEvent<T = any> extends Event {
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
 }
 
-declare var MessageEvent: {
+declare interface MessageEventConstructor {
     prototype: MessageEvent;
     new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
-};
+}
+declare var MessageEvent: MessageEventConstructor
 
 interface MessagePortEventMap {
     "message": MessageEvent;
@@ -2201,10 +2263,11 @@ interface MessagePort extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var MessagePort: {
+declare interface MessagePortConstructor {
     prototype: MessagePort;
     new(): MessagePort;
-};
+}
+declare var MessagePort: MessagePortConstructor
 
 /** Available only in secure contexts. */
 interface NavigationPreloadManager {
@@ -2214,10 +2277,11 @@ interface NavigationPreloadManager {
     setHeaderValue(value: string): Promise<void>;
 }
 
-declare var NavigationPreloadManager: {
+declare interface NavigationPreloadManagerConstructor {
     prototype: NavigationPreloadManager;
     new(): NavigationPreloadManager;
-};
+}
+declare var NavigationPreloadManager: NavigationPreloadManagerConstructor
 
 interface NavigatorConcurrentHardware {
     readonly hardwareConcurrency: number;
@@ -2282,11 +2346,12 @@ interface Notification extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Notification: {
+declare interface NotificationConstructor {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
     readonly permission: NotificationPermission;
-};
+}
+declare var Notification: NotificationConstructor
 
 /** The parameter passed into the onnotificationclick handler, the NotificationEvent interface represents a notification click event that is dispatched on the ServiceWorkerGlobalScope of a ServiceWorker. */
 interface NotificationEvent extends ExtendableEvent {
@@ -2294,10 +2359,11 @@ interface NotificationEvent extends ExtendableEvent {
     readonly notification: Notification;
 }
 
-declare var NotificationEvent: {
+declare interface NotificationEventConstructor {
     prototype: NotificationEvent;
     new(type: string, eventInitDict: NotificationEventInit): NotificationEvent;
-};
+}
+declare var NotificationEvent: NotificationEventConstructor
 
 /** The OES_element_index_uint extension is part of the WebGL API and adds support for gl.UNSIGNED_INT types to WebGLRenderingContext.drawElements(). */
 interface OES_element_index_uint {
@@ -2354,10 +2420,11 @@ interface Path2D extends CanvasPath {
     addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
 }
 
-declare var Path2D: {
+declare interface Path2DConstructor {
     prototype: Path2D;
     new(path?: Path2D | string): Path2D;
-};
+}
+declare var Path2D: Path2DConstructor
 
 interface PerformanceEventMap {
     "resourcetimingbufferfull": Event;
@@ -2384,10 +2451,11 @@ interface Performance extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var Performance: {
+declare interface PerformanceConstructor {
     prototype: Performance;
     new(): Performance;
-};
+}
+declare var Performance: PerformanceConstructor
 
 /** Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image). */
 interface PerformanceEntry {
@@ -2398,30 +2466,33 @@ interface PerformanceEntry {
     toJSON(): any;
 }
 
-declare var PerformanceEntry: {
+declare interface PerformanceEntryConstructor {
     prototype: PerformanceEntry;
     new(): PerformanceEntry;
-};
+}
+declare var PerformanceEntry: PerformanceEntryConstructor
 
 /** PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline. */
 interface PerformanceMark extends PerformanceEntry {
     readonly detail: any;
 }
 
-declare var PerformanceMark: {
+declare interface PerformanceMarkConstructor {
     prototype: PerformanceMark;
     new(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
-};
+}
+declare var PerformanceMark: PerformanceMarkConstructor
 
 /** PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline. */
 interface PerformanceMeasure extends PerformanceEntry {
     readonly detail: any;
 }
 
-declare var PerformanceMeasure: {
+declare interface PerformanceMeasureConstructor {
     prototype: PerformanceMeasure;
     new(): PerformanceMeasure;
-};
+}
+declare var PerformanceMeasure: PerformanceMeasureConstructor
 
 interface PerformanceObserver {
     disconnect(): void;
@@ -2429,11 +2500,12 @@ interface PerformanceObserver {
     takeRecords(): PerformanceEntryList;
 }
 
-declare var PerformanceObserver: {
+declare interface PerformanceObserverConstructor {
     prototype: PerformanceObserver;
     new(callback: PerformanceObserverCallback): PerformanceObserver;
     readonly supportedEntryTypes: ReadonlyArray<string>;
-};
+}
+declare var PerformanceObserver: PerformanceObserverConstructor
 
 interface PerformanceObserverEntryList {
     getEntries(): PerformanceEntryList;
@@ -2441,10 +2513,11 @@ interface PerformanceObserverEntryList {
     getEntriesByType(type: string): PerformanceEntryList;
 }
 
-declare var PerformanceObserverEntryList: {
+declare interface PerformanceObserverEntryListConstructor {
     prototype: PerformanceObserverEntryList;
     new(): PerformanceObserverEntryList;
-};
+}
+declare var PerformanceObserverEntryList: PerformanceObserverEntryListConstructor
 
 /** Enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources. An application can use the timing metrics to determine, for example, the length of time it takes to fetch a specific resource, such as an XMLHttpRequest, <SVG>, image, or script. */
 interface PerformanceResourceTiming extends PerformanceEntry {
@@ -2469,10 +2542,11 @@ interface PerformanceResourceTiming extends PerformanceEntry {
     toJSON(): any;
 }
 
-declare var PerformanceResourceTiming: {
+declare interface PerformanceResourceTimingConstructor {
     prototype: PerformanceResourceTiming;
     new(): PerformanceResourceTiming;
-};
+}
+declare var PerformanceResourceTiming: PerformanceResourceTimingConstructor
 
 interface PerformanceServerTiming {
     readonly description: string;
@@ -2481,10 +2555,11 @@ interface PerformanceServerTiming {
     toJSON(): any;
 }
 
-declare var PerformanceServerTiming: {
+declare interface PerformanceServerTimingConstructor {
     prototype: PerformanceServerTiming;
     new(): PerformanceServerTiming;
-};
+}
+declare var PerformanceServerTiming: PerformanceServerTimingConstructor
 
 interface PermissionStatusEventMap {
     "change": Event;
@@ -2500,19 +2575,21 @@ interface PermissionStatus extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var PermissionStatus: {
+declare interface PermissionStatusConstructor {
     prototype: PermissionStatus;
     new(): PermissionStatus;
-};
+}
+declare var PermissionStatus: PermissionStatusConstructor
 
 interface Permissions {
     query(permissionDesc: PermissionDescriptor): Promise<PermissionStatus>;
 }
 
-declare var Permissions: {
+declare interface PermissionsConstructor {
     prototype: Permissions;
     new(): Permissions;
-};
+}
+declare var Permissions: PermissionsConstructor
 
 /** Events measuring progress of an underlying process, like an HTTP request (for an XMLHttpRequest, or the loading of the underlying resource of an <img>, <audio>, <video>, <style> or <link>). */
 interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
@@ -2522,20 +2599,22 @@ interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
     readonly total: number;
 }
 
-declare var ProgressEvent: {
+declare interface ProgressEventConstructor {
     prototype: ProgressEvent;
     new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
-};
+}
+declare var ProgressEvent: ProgressEventConstructor
 
 interface PromiseRejectionEvent extends Event {
     readonly promise: Promise<any>;
     readonly reason: any;
 }
 
-declare var PromiseRejectionEvent: {
+declare interface PromiseRejectionEventConstructor {
     prototype: PromiseRejectionEvent;
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
-};
+}
+declare var PromiseRejectionEvent: PromiseRejectionEventConstructor
 
 /**
  * This Push API interface represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription.
@@ -2545,10 +2624,11 @@ interface PushEvent extends ExtendableEvent {
     readonly data: PushMessageData | null;
 }
 
-declare var PushEvent: {
+declare interface PushEventConstructor {
     prototype: PushEvent;
     new(type: string, eventInitDict?: PushEventInit): PushEvent;
-};
+}
+declare var PushEvent: PushEventConstructor
 
 /**
  * This Push API interface provides a way to receive notifications from third-party servers as well as request URLs for push notifications.
@@ -2560,11 +2640,12 @@ interface PushManager {
     subscribe(options?: PushSubscriptionOptionsInit): Promise<PushSubscription>;
 }
 
-declare var PushManager: {
+declare interface PushManagerConstructor {
     prototype: PushManager;
     new(): PushManager;
     readonly supportedContentEncodings: ReadonlyArray<string>;
-};
+}
+declare var PushManager: PushManagerConstructor
 
 /**
  * This Push API interface provides methods which let you retrieve the push data sent by a server in various formats.
@@ -2577,10 +2658,11 @@ interface PushMessageData {
     text(): string;
 }
 
-declare var PushMessageData: {
+declare interface PushMessageDataConstructor {
     prototype: PushMessageData;
     new(): PushMessageData;
-};
+}
+declare var PushMessageData: PushMessageDataConstructor
 
 /**
  * This Push API interface provides a subcription's URL endpoint and allows unsubscription from a push service.
@@ -2595,10 +2677,11 @@ interface PushSubscription {
     unsubscribe(): Promise<boolean>;
 }
 
-declare var PushSubscription: {
+declare interface PushSubscriptionConstructor {
     prototype: PushSubscription;
     new(): PushSubscription;
-};
+}
+declare var PushSubscription: PushSubscriptionConstructor
 
 /** Available only in secure contexts. */
 interface PushSubscriptionOptions {
@@ -2606,10 +2689,11 @@ interface PushSubscriptionOptions {
     readonly userVisibleOnly: boolean;
 }
 
-declare var PushSubscriptionOptions: {
+declare interface PushSubscriptionOptionsConstructor {
     prototype: PushSubscriptionOptions;
     new(): PushSubscriptionOptions;
-};
+}
+declare var PushSubscriptionOptions: PushSubscriptionOptionsConstructor
 
 interface ReadableByteStreamController {
     readonly byobRequest: ReadableStreamBYOBRequest | null;
@@ -2619,10 +2703,11 @@ interface ReadableByteStreamController {
     error(e?: any): void;
 }
 
-declare var ReadableByteStreamController: {
+declare interface ReadableByteStreamControllerConstructor {
     prototype: ReadableByteStreamController;
     new(): ReadableByteStreamController;
-};
+}
+declare var ReadableByteStreamController: ReadableByteStreamControllerConstructor
 
 /** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
 interface ReadableStream<R = any> {
@@ -2636,22 +2721,24 @@ interface ReadableStream<R = any> {
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
-declare var ReadableStream: {
+declare interface ReadableStreamConstructor {
     prototype: ReadableStream;
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
-};
+}
+declare var ReadableStream: ReadableStreamConstructor
 
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamBYOBReader: {
+declare interface ReadableStreamBYOBReaderConstructor {
     prototype: ReadableStreamBYOBReader;
     new(stream: ReadableStream): ReadableStreamBYOBReader;
-};
+}
+declare var ReadableStreamBYOBReader: ReadableStreamBYOBReaderConstructor
 
 interface ReadableStreamBYOBRequest {
     readonly view: ArrayBufferView | null;
@@ -2659,10 +2746,11 @@ interface ReadableStreamBYOBRequest {
     respondWithNewView(view: ArrayBufferView): void;
 }
 
-declare var ReadableStreamBYOBRequest: {
+declare interface ReadableStreamBYOBRequestConstructor {
     prototype: ReadableStreamBYOBRequest;
     new(): ReadableStreamBYOBRequest;
-};
+}
+declare var ReadableStreamBYOBRequest: ReadableStreamBYOBRequestConstructor
 
 interface ReadableStreamDefaultController<R = any> {
     readonly desiredSize: number | null;
@@ -2671,20 +2759,22 @@ interface ReadableStreamDefaultController<R = any> {
     error(e?: any): void;
 }
 
-declare var ReadableStreamDefaultController: {
+declare interface ReadableStreamDefaultControllerConstructor {
     prototype: ReadableStreamDefaultController;
     new(): ReadableStreamDefaultController;
-};
+}
+declare var ReadableStreamDefaultController: ReadableStreamDefaultControllerConstructor
 
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     read(): Promise<ReadableStreamReadResult<R>>;
     releaseLock(): void;
 }
 
-declare var ReadableStreamDefaultReader: {
+declare interface ReadableStreamDefaultReaderConstructor {
     prototype: ReadableStreamDefaultReader;
     new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>;
-};
+}
+declare var ReadableStreamDefaultReader: ReadableStreamDefaultReaderConstructor
 
 interface ReadableStreamGenericReader {
     readonly closed: Promise<undefined>;
@@ -2722,10 +2812,11 @@ interface Request extends Body {
     clone(): Request;
 }
 
-declare var Request: {
+declare interface RequestConstructor {
     prototype: Request;
     new(input: RequestInfo | URL, init?: RequestInit): Request;
-};
+}
+declare var Request: RequestConstructor
 
 /** This Fetch API interface represents the response to a request. */
 interface Response extends Body {
@@ -2739,12 +2830,13 @@ interface Response extends Body {
     clone(): Response;
 }
 
-declare var Response: {
+declare interface ResponseConstructor {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
     error(): Response;
     redirect(url: string | URL, status?: number): Response;
-};
+}
+declare var Response: ResponseConstructor
 
 /** Inherits from Event, and represents the event object of an event sent on a document or worker when its content security policy is violated. */
 interface SecurityPolicyViolationEvent extends Event {
@@ -2762,10 +2854,11 @@ interface SecurityPolicyViolationEvent extends Event {
     readonly violatedDirective: string;
 }
 
-declare var SecurityPolicyViolationEvent: {
+declare interface SecurityPolicyViolationEventConstructor {
     prototype: SecurityPolicyViolationEvent;
     new(type: string, eventInitDict?: SecurityPolicyViolationEventInit): SecurityPolicyViolationEvent;
-};
+}
+declare var SecurityPolicyViolationEvent: SecurityPolicyViolationEventConstructor
 
 interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
     "statechange": Event;
@@ -2787,10 +2880,11 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorker: {
+declare interface ServiceWorkerConstructor {
     prototype: ServiceWorker;
     new(): ServiceWorker;
-};
+}
+declare var ServiceWorker: ServiceWorkerConstructor
 
 interface ServiceWorkerContainerEventMap {
     "controllerchange": Event;
@@ -2818,10 +2912,11 @@ interface ServiceWorkerContainer extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerContainer: {
+declare interface ServiceWorkerContainerConstructor {
     prototype: ServiceWorkerContainer;
     new(): ServiceWorkerContainer;
-};
+}
+declare var ServiceWorkerContainer: ServiceWorkerContainerConstructor
 
 interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "activate": ExtendableEvent;
@@ -2856,10 +2951,11 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerGlobalScope: {
+declare interface ServiceWorkerGlobalScopeConstructor {
     prototype: ServiceWorkerGlobalScope;
     new(): ServiceWorkerGlobalScope;
-};
+}
+declare var ServiceWorkerGlobalScope: ServiceWorkerGlobalScopeConstructor
 
 interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
@@ -2888,10 +2984,11 @@ interface ServiceWorkerRegistration extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var ServiceWorkerRegistration: {
+declare interface ServiceWorkerRegistrationConstructor {
     prototype: ServiceWorkerRegistration;
     new(): ServiceWorkerRegistration;
-};
+}
+declare var ServiceWorkerRegistration: ServiceWorkerRegistrationConstructor
 
 /** Available only in secure contexts. */
 interface StorageManager {
@@ -2900,10 +2997,11 @@ interface StorageManager {
     persisted(): Promise<boolean>;
 }
 
-declare var StorageManager: {
+declare interface StorageManagerConstructor {
     prototype: StorageManager;
     new(): StorageManager;
-};
+}
+declare var StorageManager: StorageManagerConstructor
 
 /**
  * This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto).
@@ -2928,10 +3026,11 @@ interface SubtleCrypto {
     wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams): Promise<ArrayBuffer>;
 }
 
-declare var SubtleCrypto: {
+declare interface SubtleCryptoConstructor {
     prototype: SubtleCrypto;
     new(): SubtleCrypto;
-};
+}
+declare var SubtleCrypto: SubtleCryptoConstructor
 
 /** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextDecoder extends TextDecoderCommon {
@@ -2951,10 +3050,11 @@ interface TextDecoder extends TextDecoderCommon {
     decode(input?: BufferSource, options?: TextDecodeOptions): string;
 }
 
-declare var TextDecoder: {
+declare interface TextDecoderConstructor {
     prototype: TextDecoder;
     new(label?: string, options?: TextDecoderOptions): TextDecoder;
-};
+}
+declare var TextDecoder: TextDecoderConstructor
 
 interface TextDecoderCommon {
     /** Returns encoding's name, lowercased. */
@@ -2970,10 +3070,11 @@ interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly writable: WritableStream<BufferSource>;
 }
 
-declare var TextDecoderStream: {
+declare interface TextDecoderStreamConstructor {
     prototype: TextDecoderStream;
     new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
-};
+}
+declare var TextDecoderStream: TextDecoderStreamConstructor
 
 /** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
 interface TextEncoder extends TextEncoderCommon {
@@ -2983,10 +3084,11 @@ interface TextEncoder extends TextEncoderCommon {
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
 
-declare var TextEncoder: {
+declare interface TextEncoderConstructor {
     prototype: TextEncoder;
     new(): TextEncoder;
-};
+}
+declare var TextEncoder: TextEncoderConstructor
 
 interface TextEncoderCommon {
     /** Returns "utf-8". */
@@ -2998,10 +3100,11 @@ interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly writable: WritableStream<string>;
 }
 
-declare var TextEncoderStream: {
+declare interface TextEncoderStreamConstructor {
     prototype: TextEncoderStream;
     new(): TextEncoderStream;
-};
+}
+declare var TextEncoderStream: TextEncoderStreamConstructor
 
 /** The dimensions of a piece of text in the canvas, as created by the CanvasRenderingContext2D.measureText() method. */
 interface TextMetrics {
@@ -3021,20 +3124,22 @@ interface TextMetrics {
     readonly width: number;
 }
 
-declare var TextMetrics: {
+declare interface TextMetricsConstructor {
     prototype: TextMetrics;
     new(): TextMetrics;
-};
+}
+declare var TextMetrics: TextMetricsConstructor
 
 interface TransformStream<I = any, O = any> {
     readonly readable: ReadableStream<O>;
     readonly writable: WritableStream<I>;
 }
 
-declare var TransformStream: {
+declare interface TransformStreamConstructor {
     prototype: TransformStream;
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
-};
+}
+declare var TransformStream: TransformStreamConstructor
 
 interface TransformStreamDefaultController<O = any> {
     readonly desiredSize: number | null;
@@ -3043,10 +3148,11 @@ interface TransformStreamDefaultController<O = any> {
     terminate(): void;
 }
 
-declare var TransformStreamDefaultController: {
+declare interface TransformStreamDefaultControllerConstructor {
     prototype: TransformStreamDefaultController;
     new(): TransformStreamDefaultController;
-};
+}
+declare var TransformStreamDefaultController: TransformStreamDefaultControllerConstructor
 
 /** The URL interface represents an object providing static methods used for creating object URLs. */
 interface URL {
@@ -3066,10 +3172,11 @@ interface URL {
     toJSON(): string;
 }
 
-declare var URL: {
+declare interface URLConstructor {
     prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
-};
+}
+declare var URL: URLConstructor
 
 interface URLSearchParams {
     /** Appends a specified key/value pair as a new search parameter. */
@@ -3090,11 +3197,12 @@ interface URLSearchParams {
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
 }
 
-declare var URLSearchParams: {
+declare interface URLSearchParamsConstructor {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
     toString(): string;
-};
+}
+declare var URLSearchParams: URLSearchParamsConstructor
 
 interface WEBGL_color_buffer_float {
     readonly FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT: GLenum;
@@ -3234,7 +3342,7 @@ interface WEBGL_multi_draw {
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
 }
 
-declare var WebGL2RenderingContext: {
+declare interface WebGL2RenderingContextConstructor {
     prototype: WebGL2RenderingContext;
     new(): WebGL2RenderingContext;
     readonly ACTIVE_UNIFORM_BLOCKS: GLenum;
@@ -3796,7 +3904,8 @@ declare var WebGL2RenderingContext: {
     readonly VERTEX_SHADER: GLenum;
     readonly VIEWPORT: GLenum;
     readonly ZERO: GLenum;
-};
+}
+declare var WebGL2RenderingContext: WebGL2RenderingContextConstructor
 
 interface WebGL2RenderingContextBase {
     beginQuery(target: GLenum, query: WebGLQuery): void;
@@ -4202,70 +4311,77 @@ interface WebGLActiveInfo {
     readonly type: GLenum;
 }
 
-declare var WebGLActiveInfo: {
+declare interface WebGLActiveInfoConstructor {
     prototype: WebGLActiveInfo;
     new(): WebGLActiveInfo;
-};
+}
+declare var WebGLActiveInfo: WebGLActiveInfoConstructor
 
 /** Part of the WebGL API and represents an opaque buffer object storing data such as vertices or colors. */
 interface WebGLBuffer {
 }
 
-declare var WebGLBuffer: {
+declare interface WebGLBufferConstructor {
     prototype: WebGLBuffer;
     new(): WebGLBuffer;
-};
+}
+declare var WebGLBuffer: WebGLBufferConstructor
 
 /** The WebContextEvent interface is part of the WebGL API and is an interface for an event that is generated in response to a status change to the WebGL rendering context. */
 interface WebGLContextEvent extends Event {
     readonly statusMessage: string;
 }
 
-declare var WebGLContextEvent: {
+declare interface WebGLContextEventConstructor {
     prototype: WebGLContextEvent;
     new(type: string, eventInit?: WebGLContextEventInit): WebGLContextEvent;
-};
+}
+declare var WebGLContextEvent: WebGLContextEventConstructor
 
 /** Part of the WebGL API and represents a collection of buffers that serve as a rendering destination. */
 interface WebGLFramebuffer {
 }
 
-declare var WebGLFramebuffer: {
+declare interface WebGLFramebufferConstructor {
     prototype: WebGLFramebuffer;
     new(): WebGLFramebuffer;
-};
+}
+declare var WebGLFramebuffer: WebGLFramebufferConstructor
 
 /** The WebGLProgram is part of the WebGL API and is a combination of two compiled WebGLShaders consisting of a vertex shader and a fragment shader (both written in GLSL). */
 interface WebGLProgram {
 }
 
-declare var WebGLProgram: {
+declare interface WebGLProgramConstructor {
     prototype: WebGLProgram;
     new(): WebGLProgram;
-};
+}
+declare var WebGLProgram: WebGLProgramConstructor
 
 interface WebGLQuery {
 }
 
-declare var WebGLQuery: {
+declare interface WebGLQueryConstructor {
     prototype: WebGLQuery;
     new(): WebGLQuery;
-};
+}
+declare var WebGLQuery: WebGLQueryConstructor
 
 /** Part of the WebGL API and represents a buffer that can contain an image, or can be source or target of an rendering operation. */
 interface WebGLRenderbuffer {
 }
 
-declare var WebGLRenderbuffer: {
+declare interface WebGLRenderbufferConstructor {
     prototype: WebGLRenderbuffer;
     new(): WebGLRenderbuffer;
-};
+}
+declare var WebGLRenderbuffer: WebGLRenderbufferConstructor
 
 /** Provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML <canvas> element. */
 interface WebGLRenderingContext extends WebGLRenderingContextBase, WebGLRenderingContextOverloads {
 }
 
-declare var WebGLRenderingContext: {
+declare interface WebGLRenderingContextConstructor {
     prototype: WebGLRenderingContext;
     new(): WebGLRenderingContext;
     readonly ACTIVE_ATTRIBUTES: GLenum;
@@ -4564,7 +4680,8 @@ declare var WebGLRenderingContext: {
     readonly VERTEX_SHADER: GLenum;
     readonly VIEWPORT: GLenum;
     readonly ZERO: GLenum;
-};
+}
+declare var WebGLRenderingContext: WebGLRenderingContextConstructor
 
 interface WebGLRenderingContextBase {
     readonly drawingBufferHeight: GLsizei;
@@ -5045,19 +5162,21 @@ interface WebGLRenderingContextOverloads {
 interface WebGLSampler {
 }
 
-declare var WebGLSampler: {
+declare interface WebGLSamplerConstructor {
     prototype: WebGLSampler;
     new(): WebGLSampler;
-};
+}
+declare var WebGLSampler: WebGLSamplerConstructor
 
 /** The WebGLShader is part of the WebGL API and can either be a vertex or a fragment shader. A WebGLProgram requires both types of shaders. */
 interface WebGLShader {
 }
 
-declare var WebGLShader: {
+declare interface WebGLShaderConstructor {
     prototype: WebGLShader;
     new(): WebGLShader;
-};
+}
+declare var WebGLShader: WebGLShaderConstructor
 
 /** Part of the WebGL API and represents the information returned by calling the WebGLRenderingContext.getShaderPrecisionFormat() method. */
 interface WebGLShaderPrecisionFormat {
@@ -5066,52 +5185,58 @@ interface WebGLShaderPrecisionFormat {
     readonly rangeMin: GLint;
 }
 
-declare var WebGLShaderPrecisionFormat: {
+declare interface WebGLShaderPrecisionFormatConstructor {
     prototype: WebGLShaderPrecisionFormat;
     new(): WebGLShaderPrecisionFormat;
-};
+}
+declare var WebGLShaderPrecisionFormat: WebGLShaderPrecisionFormatConstructor
 
 interface WebGLSync {
 }
 
-declare var WebGLSync: {
+declare interface WebGLSyncConstructor {
     prototype: WebGLSync;
     new(): WebGLSync;
-};
+}
+declare var WebGLSync: WebGLSyncConstructor
 
 /** Part of the WebGL API and represents an opaque texture object providing storage and state for texturing operations. */
 interface WebGLTexture {
 }
 
-declare var WebGLTexture: {
+declare interface WebGLTextureConstructor {
     prototype: WebGLTexture;
     new(): WebGLTexture;
-};
+}
+declare var WebGLTexture: WebGLTextureConstructor
 
 interface WebGLTransformFeedback {
 }
 
-declare var WebGLTransformFeedback: {
+declare interface WebGLTransformFeedbackConstructor {
     prototype: WebGLTransformFeedback;
     new(): WebGLTransformFeedback;
-};
+}
+declare var WebGLTransformFeedback: WebGLTransformFeedbackConstructor
 
 /** Part of the WebGL API and represents the location of a uniform variable in a shader program. */
 interface WebGLUniformLocation {
 }
 
-declare var WebGLUniformLocation: {
+declare interface WebGLUniformLocationConstructor {
     prototype: WebGLUniformLocation;
     new(): WebGLUniformLocation;
-};
+}
+declare var WebGLUniformLocation: WebGLUniformLocationConstructor
 
 interface WebGLVertexArrayObject {
 }
 
-declare var WebGLVertexArrayObject: {
+declare interface WebGLVertexArrayObjectConstructor {
     prototype: WebGLVertexArrayObject;
     new(): WebGLVertexArrayObject;
-};
+}
+declare var WebGLVertexArrayObject: WebGLVertexArrayObjectConstructor
 
 interface WebGLVertexArrayObjectOES {
 }
@@ -5163,14 +5288,15 @@ interface WebSocket extends EventTarget {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var WebSocket: {
+declare interface WebSocketConstructor {
     prototype: WebSocket;
     new(url: string | URL, protocols?: string | string[]): WebSocket;
     readonly CLOSED: number;
     readonly CLOSING: number;
     readonly CONNECTING: number;
     readonly OPEN: number;
-};
+}
+declare var WebSocket: WebSocketConstructor
 
 /** This ServiceWorker API interface represents the scope of a service worker client that is a document in a browser context, controlled by an active worker. The service worker client independently selects and uses a service worker for its own loading and sub-resources. */
 interface WindowClient extends Client {
@@ -5180,10 +5306,11 @@ interface WindowClient extends Client {
     navigate(url: string | URL): Promise<WindowClient | null>;
 }
 
-declare var WindowClient: {
+declare interface WindowClientConstructor {
     prototype: WindowClient;
     new(): WindowClient;
-};
+}
+declare var WindowClient: WindowClientConstructor
 
 interface WindowOrWorkerGlobalScope {
     /** Available only in secure contexts. */
@@ -5239,10 +5366,11 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-declare var WorkerGlobalScope: {
+declare interface WorkerGlobalScopeConstructor {
     prototype: WorkerGlobalScope;
     new(): WorkerGlobalScope;
-};
+}
+declare var WorkerGlobalScope: WorkerGlobalScopeConstructor
 
 /** The absolute location of the script executed by the Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.location property obtained by calling self.location. */
 interface WorkerLocation {
@@ -5258,20 +5386,22 @@ interface WorkerLocation {
     readonly search: string;
 }
 
-declare var WorkerLocation: {
+declare interface WorkerLocationConstructor {
     prototype: WorkerLocation;
     new(): WorkerLocation;
-};
+}
+declare var WorkerLocation: WorkerLocationConstructor
 
 /** A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator. */
 interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     readonly mediaCapabilities: MediaCapabilities;
 }
 
-declare var WorkerNavigator: {
+declare interface WorkerNavigatorConstructor {
     prototype: WorkerNavigator;
     new(): WorkerNavigator;
-};
+}
+declare var WorkerNavigator: WorkerNavigatorConstructor
 
 /** This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
 interface WritableStream<W = any> {
@@ -5281,10 +5411,11 @@ interface WritableStream<W = any> {
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
-declare var WritableStream: {
+declare interface WritableStreamConstructor {
     prototype: WritableStream;
     new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
-};
+}
+declare var WritableStream: WritableStreamConstructor
 
 /** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
 interface WritableStreamDefaultController {
@@ -5292,10 +5423,11 @@ interface WritableStreamDefaultController {
     error(e?: any): void;
 }
 
-declare var WritableStreamDefaultController: {
+declare interface WritableStreamDefaultControllerConstructor {
     prototype: WritableStreamDefaultController;
     new(): WritableStreamDefaultController;
-};
+}
+declare var WritableStreamDefaultController: WritableStreamDefaultControllerConstructor
 
 /** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
 interface WritableStreamDefaultWriter<W = any> {
@@ -5308,10 +5440,11 @@ interface WritableStreamDefaultWriter<W = any> {
     write(chunk?: W): Promise<void>;
 }
 
-declare var WritableStreamDefaultWriter: {
+declare interface WritableStreamDefaultWriterConstructor {
     prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
-};
+}
+declare var WritableStreamDefaultWriter: WritableStreamDefaultWriterConstructor
 
 interface Console {
     assert(condition?: boolean, ...data: any[]): void;
@@ -5342,69 +5475,76 @@ declare namespace WebAssembly {
     interface CompileError extends Error {
     }
 
-    var CompileError: {
+    interface CompileErrorConstructor {
         prototype: CompileError;
         new(message?: string): CompileError;
         (message?: string): CompileError;
-    };
+    }
+    var CompileError: CompileErrorConstructor
 
     interface Global {
         value: any;
         valueOf(): any;
     }
 
-    var Global: {
+    interface GlobalConstructor {
         prototype: Global;
         new(descriptor: GlobalDescriptor, v?: any): Global;
-    };
+    }
+    var Global: GlobalConstructor
 
     interface Instance {
         readonly exports: Exports;
     }
 
-    var Instance: {
+    interface InstanceConstructor {
         prototype: Instance;
         new(module: Module, importObject?: Imports): Instance;
-    };
+    }
+    var Instance: InstanceConstructor
 
     interface LinkError extends Error {
     }
 
-    var LinkError: {
+    interface LinkErrorConstructor {
         prototype: LinkError;
         new(message?: string): LinkError;
         (message?: string): LinkError;
-    };
+    }
+    var LinkError: LinkErrorConstructor
 
     interface Memory {
         readonly buffer: ArrayBuffer;
         grow(delta: number): number;
     }
 
-    var Memory: {
+    interface MemoryConstructor {
         prototype: Memory;
         new(descriptor: MemoryDescriptor): Memory;
-    };
+    }
+    var Memory: MemoryConstructor
 
     interface Module {
     }
 
-    var Module: {
+    interface ModuleConstructor {
         prototype: Module;
         new(bytes: BufferSource): Module;
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
         exports(moduleObject: Module): ModuleExportDescriptor[];
         imports(moduleObject: Module): ModuleImportDescriptor[];
-    };
+    }
+    var Module: ModuleConstructor
 
     interface RuntimeError extends Error {
     }
 
-    var RuntimeError: {
+    interface RuntimeErrorConstructor {
         prototype: RuntimeError;
         new(message?: string): RuntimeError;
         (message?: string): RuntimeError;
-    };
+    }
+    var RuntimeError: RuntimeErrorConstructor
 
     interface Table {
         readonly length: number;
@@ -5413,10 +5553,11 @@ declare namespace WebAssembly {
         set(index: number, value?: any): void;
     }
 
-    var Table: {
+    interface TableConstructor {
         prototype: Table;
         new(descriptor: TableDescriptor, value?: any): Table;
-    };
+    }
+    var Table: TableConstructor
 
     interface GlobalDescriptor {
         mutable?: boolean;

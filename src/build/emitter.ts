@@ -1141,7 +1141,7 @@ export function emitWebIdl(
     if (i.deprecated) {
       printer.printLine(`/** @deprecated */`);
     }
-    printer.printLine(`${prefix}var ${i.name}: {`);
+    printer.printLine(`${prefix}interface ${i.name}Constructor {`);
     printer.increaseIndent();
 
     // TODO: To be more accurate, this should be `readonly prototype`
@@ -1158,7 +1158,12 @@ export function emitWebIdl(
     emitMembers(/*prefix*/ "", EmitScope.StaticOnly, i);
 
     printer.decreaseIndent();
-    printer.printLine("};");
+    printer.printLine("}");
+
+    if (i.deprecated) {
+      printer.printLine(`/** @deprecated */`);
+    }
+    printer.printLine(`${prefix}var ${i.name}: ${i.name}Constructor`);
     printer.printLine("");
 
     if (global === "Window" && i.legacyWindowAlias) {
