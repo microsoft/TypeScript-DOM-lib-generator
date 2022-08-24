@@ -666,6 +666,7 @@
             "EventListener": {
                 "name": "EventListener",
                 "noInterfaceObject": true,
+                "exposed": "Window Worker Worklet",
                 "methods": {
                     "method": {
                         // This is a hack to add a call signature, but I think it's reasonable
@@ -682,6 +683,7 @@
             "EventListenerObject": {
                 "name": "EventListenerObject",
                 "noInterfaceObject": true,
+                "exposed": "Window Worker Worklet",
                 "methods": {
                     "method": {
                         "handleEvent": {

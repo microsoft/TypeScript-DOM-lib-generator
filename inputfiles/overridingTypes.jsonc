@@ -2884,6 +2884,7 @@
                 }
             },
             "Instance": {
+                "overrideExposed": "Window Worker Worklet WebAssembly",
                 "constructor": {
                     "signature": {
                         "0": {
@@ -2987,6 +2988,18 @@
                         }
                     }
                 }
+            },
+            "Global": {
+                "overrideExposed": "Window Worker Worklet WebAssembly"
+            },
+            "Module": {
+                "overrideExposed": "Window Worker Worklet WebAssembly"
+            },
+            "Memory": {
+                "overrideExposed": "Window Worker Worklet WebAssembly"
+            },
+            "Table": {
+                "overrideExposed": "Window Worker Worklet WebAssembly"
             },
 
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
@@ -3363,9 +3376,17 @@
         },
         {
             "name": "WebAssembly",
+            "exposed": "Window Worker Worklet WebAssembly",
             "methods": {
                 "method": {
+                    "validate": {
+                        "exposed": "Window Worker Worklet WebAssembly"
+                    },
+                    "compile": {
+                        "exposed": "Window Worker Worklet WebAssembly"
+                    },
                     "instantiate": {
+                        "exposed": "Window Worker Worklet WebAssembly",
                         "signature": {
                             "0": {
                                 "param": [

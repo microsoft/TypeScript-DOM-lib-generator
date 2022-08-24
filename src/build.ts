@@ -32,6 +32,7 @@ interface EmitOptions {
   global: string[];
   name: string;
   outputFolder: URL;
+  emitIterators?: boolean;
 }
 
 async function emitFlavor(
@@ -47,6 +48,10 @@ async function emitFlavor(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
     result
   );
+
+  if (options.emitIterators === false) {
+    return;
+  }
 
   const iterators = emitWebIdl(exposed, options.global[0], true);
   await fs.writeFile(
@@ -283,6 +288,13 @@ async function emitDom() {
     name: "audioworklet",
     global: ["AudioWorklet", "Worklet"],
     outputFolder,
+  });
+  emitFlavor(webidl, new Set(knownTypes.WebAssembly), {
+    name: "webassembly",
+    global: ["WebAssembly"],
+    outputFolder,
+    // WebAssembly has no iterable interfaces.
+    emitIterators: false,
   });
 
   function prune(

@@ -1,4 +1,6 @@
 {
+    "WebAssembly": [
+    ],
     "Window": [
         "AesCbcParams",
         "AesCtrParams",
