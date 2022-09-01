@@ -373,7 +373,7 @@
                 "extends": "Error",
                 "legacyNamespace": "WebAssembly",
                 "constructor": {
-                    "overrideSignatures": [
+                    "inheritedSignatures": [
                         "new(message?: string): CompileError",
                         "(message?: string): CompileError"
                     ]
@@ -532,45 +532,6 @@
                         }
                     ]
                 }
-            },
-            "HTMLCollectionOf": {
-                "name": "HTMLCollectionOf",
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "extends": "Element"
-                    }
-                ],
-                "exposed": "Window",
-                "extends": "HTMLCollection",
-                "methods": {
-                    "method": {
-                        "item": {
-                            "getter": true,
-                            "signature": [
-                                {
-                                    "nullable": true,
-                                    "overrideType": "T",
-                                    "param": [
-                                        {
-                                            "name": "index",
-                                            "type": "unsigned long"
-                                        }
-                                    ]
-                                }
-                            ],
-                            "specs": "html5",
-                            "name": "item"
-                        },
-                        "namedItem": {
-                            "name": "namedItem",
-                            "overrideSignatures": [
-                                "namedItem(name: string): T | null"
-                            ]
-                        }
-                    }
-                },
-                "noInterfaceObject": true
             },
             "Element": {
                 "name": "Element",
@@ -933,7 +894,7 @@
                 "extends": "Error",
                 "legacyNamespace": "WebAssembly",
                 "constructor": {
-                    "overrideSignatures": [
+                    "inheritedSignatures": [
                         "new(message?: string): RuntimeError",
                         "(message?: string): RuntimeError"
                     ]
@@ -954,7 +915,7 @@
                 "extends": "Error",
                 "legacyNamespace": "WebAssembly",
                 "constructor": {
-                    "overrideSignatures": [
+                    "inheritedSignatures": [
                         "new(message?: string): LinkError",
                         "(message?: string): LinkError"
                     ]
@@ -1361,6 +1322,17 @@
             {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
+            },
+            {
+                "deprecated": 1,
+                "name": "HTMLCollectionOf",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "extends": "Element"
+                    }
+                ],
+                "overrideType": "HTMLCollection<T>"
             }
         ]
     }

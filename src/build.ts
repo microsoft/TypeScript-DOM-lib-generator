@@ -42,17 +42,25 @@ async function emitFlavor(
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
 
-  const result = emitWebIdl(exposed, options.global[0], false);
+  const result = emitWebIdl(exposed, options.global[0], false, false);
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
     result
   );
 
-  const iterators = emitWebIdl(exposed, options.global[0], true);
+  const iterators = emitWebIdl(exposed, options.global[0], true, false);
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
     iterators
   );
+
+  if (options.name === "dom") {
+    const modular = emitWebIdl(exposed, options.global[0], false, true);
+    await fs.writeFile(
+      new URL(`${options.name}.modular.generated.d.ts`, options.outputFolder),
+      modular
+    );
+  }
 }
 
 async function emitDom() {

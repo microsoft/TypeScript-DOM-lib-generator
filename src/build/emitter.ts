@@ -24,10 +24,10 @@ const extendConflictsBaseTypes: Record<
   string,
   { extendType: string[]; memberNames: Set<string> }
 > = {
-  HTMLCollection: {
-    extendType: ["HTMLFormControlsCollection"],
-    memberNames: new Set(["namedItem"]),
-  },
+  // HTMLCollection: {
+  //   extendType: ["HTMLFormControlsCollection"],
+  //   memberNames: new Set(["namedItem"]),
+  // },
 };
 
 // Namespaces that have been in form of interfaces for years
@@ -135,7 +135,8 @@ function isEventHandler(p: Browser.Property) {
 export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
-  iterator: boolean
+  iterator: boolean,
+  modular: boolean
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
@@ -225,6 +226,11 @@ export function emitWebIdl(
     getParentsWithConstant
   );
 
+  if (modular) {
+    const result = emit();
+    iterator = true;
+    return result + "\n" + emitES6DomIterators();
+  }
   return iterator ? emitES6DomIterators() : emit();
 
   function getTagNameToElementNameMap() {
@@ -443,14 +449,18 @@ export function emitWebIdl(
     return `${i.name}<${typeParameters.map((t) => t.name)}>`;
   }
 
-  function emitConstant(c: Browser.Constant) {
+  function emitConstant(c: Browser.Constant, prefix: string) {
     emitComments(c, printer.printLine);
-    printer.printLine(`readonly ${c.name}: ${convertDomTypeToTsType(c)};`);
+    printer.printLine(
+      `${prefix}readonly ${c.name}: ${convertDomTypeToTsType(c)};`
+    );
   }
 
-  function emitConstants(i: Browser.Interface) {
+  function emitConstants(i: Browser.Interface, prefix = "") {
     if (i.constants) {
-      mapToArray(i.constants.constant).sort(compareName).forEach(emitConstant);
+      mapToArray(i.constants.constant)
+        .sort(compareName)
+        .forEach((c) => emitConstant(c, prefix));
     }
   }
 
@@ -579,6 +589,9 @@ export function emitWebIdl(
   }
 
   function emitHTMLElementTagNameMap() {
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine("interface HTMLElementTagNameMap {");
     printer.increaseIndent();
     for (const [e, value] of Object.entries(
@@ -592,6 +605,9 @@ export function emitWebIdl(
   }
 
   function emitHTMLElementDeprecatedTagNameMap() {
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine("interface HTMLElementDeprecatedTagNameMap {");
     printer.increaseIndent();
     for (const [e, value] of Object.entries(
@@ -605,6 +621,9 @@ export function emitWebIdl(
   }
 
   function emitSVGElementTagNameMap() {
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine("interface SVGElementTagNameMap {");
     printer.increaseIndent();
     for (const [e, value] of Object.entries(
@@ -708,6 +727,9 @@ export function emitWebIdl(
     const returnType = overload.type
       ? convertDomTypeToTsReturnType(overload)
       : "void";
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine(
       `type ${i.name} = ((${paramsString}) => ${returnType}) | { ${m.name}(${paramsString}): ${returnType}; };`
     );
@@ -717,6 +739,9 @@ export function emitWebIdl(
       return;
     }
 
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine(`declare var ${i.name}: {`);
     printer.increaseIndent();
     emitConstants(i);
@@ -726,6 +751,9 @@ export function emitWebIdl(
   }
 
   function emitCallBackFunction(cb: Browser.CallbackFunction) {
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine(
       `interface ${getNameWithTypeParameter(cb.typeParameters, cb.name)} {`
     );
@@ -744,6 +772,9 @@ export function emitWebIdl(
 
   function emitEnum(e: Browser.Enum) {
     const values = e.value.slice().sort();
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine(
       `type ${e.name} = ${values.map((v) => `"${v}"`).join(" | ")};`
     );
@@ -934,13 +965,20 @@ export function emitWebIdl(
   ) {
     const paramsString = s.param ? paramsToString(s.param) : "";
     const resolved = shouldResolvePromise ? resolvePromise(s) : s;
-    const returnType = convertDomTypeToTsReturnType(resolved);
     emitComments(s, printLine);
+
+    const returnTypeString =
+      !modular || name !== "constructor"
+        ? `: ${convertDomTypeToTsReturnType(resolved)}`
+        : "";
+    const nameWithTypeParameter =
+      !modular || name !== "constructor"
+        ? getNameWithTypeParameter(s.typeParameters, name || "")
+        : name;
     printLine(
-      `${prefix || ""}${getNameWithTypeParameter(
-        s.typeParameters,
-        name || ""
-      )}(${paramsString}): ${returnType};`
+      `${
+        prefix || ""
+      }${nameWithTypeParameter}(${paramsString})${returnTypeString};`
     );
   }
 
@@ -953,6 +991,8 @@ export function emitWebIdl(
   ) {
     if (method.overrideSignatures) {
       method.overrideSignatures!.forEach((s) => printLine(`${prefix}${s};`));
+    } else if (method.inheritedSignatures && !modular) {
+      method.inheritedSignatures!.forEach((s) => printLine(`${prefix}${s};`));
     } else if (method.signature) {
       method.additionalSignatures?.forEach((s) => printLine(`${prefix}${s};`));
       method.signature.forEach((sig) =>
@@ -1130,9 +1170,10 @@ export function emitWebIdl(
 
     // Emit constructor signature
     if (constructor) {
+      const name = modular ? "constructor" : "new";
       emitComments(constructor, printer.print);
-      emitSignatures(constructor, "", "new", printer.printLine);
-    } else {
+      emitSignatures(constructor, "", name, printer.printLine);
+    } else if (!modular) {
       printer.printLine(`new(): ${i.name};`);
     }
   }
@@ -1141,31 +1182,37 @@ export function emitWebIdl(
     if (i.deprecated) {
       printer.printLine(`/** @deprecated */`);
     }
-    printer.printLine(`${prefix}var ${i.name}: {`);
-    printer.increaseIndent();
+    if (!modular) {
+      printer.printLine(`${prefix}var ${i.name}: {`);
+      printer.increaseIndent();
 
-    // TODO: To be more accurate, this should be `readonly prototype`
-    // however, TypeScript's ability to keep track of readonly-ness can
-    // sometimes fail in un-expected ways, making this not backwards compatible.
-    printer.printLine(`prototype: ${i.name};`);
+      // TODO: To be more accurate, this should be `readonly prototype`
+      // however, TypeScript's ability to keep track of readonly-ness can
+      // sometimes fail in un-expected ways, making this not backwards compatible.
+      printer.printLine(`prototype: ${i.name};`);
+    }
     emitConstructorSignature(i);
-    emitConstants(i);
-    if (iNameToConstParents[i.name]?.length) {
+    if (!modular || !i.noInterfaceObject) {
+      emitConstants(i, modular ? "static " : "");
+    }
+    if (!modular && iNameToConstParents[i.name]?.length) {
       for (const parent of iNameToConstParents[i.name]) {
         emitConstants(parent);
       }
     }
     emitMembers(/*prefix*/ "", EmitScope.StaticOnly, i);
 
-    printer.decreaseIndent();
-    printer.printLine("};");
-    printer.printLine("");
+    if (!modular) {
+      printer.decreaseIndent();
+      printer.printLine("};");
+      printer.printLine("");
 
-    if (global === "Window" && i.legacyWindowAlias) {
-      for (const alias of i.legacyWindowAlias!) {
-        printer.printLine(`type ${alias} = ${i.name};`);
-        printer.printLine(`declare var ${alias}: typeof ${i.name};`);
-        printer.printLine("");
+      if (global === "Window" && i.legacyWindowAlias) {
+        for (const alias of i.legacyWindowAlias!) {
+          printer.printLine(`type ${alias} = ${i.name};`);
+          printer.printLine(`declare var ${alias}: typeof ${i.name};`);
+          printer.printLine("");
+        }
       }
     }
   }
@@ -1200,8 +1247,9 @@ export function emitWebIdl(
     const processedIName = processIName(i.name);
 
     if (processedIName !== i.name) {
+      const declString = modular ? "export declare class" : "interface";
       printer.printLineToStack(
-        `interface ${getNameWithTypeParameter(
+        `${declString} ${getNameWithTypeParameter(
           i.typeParameters,
           i.name
         )} extends ${processedIName} {`
@@ -1210,12 +1258,19 @@ export function emitWebIdl(
 
     emitComments(i, printer.printLine);
 
-    printer.print(
-      `interface ${getNameWithTypeParameter(i.typeParameters, processedIName)}`
-    );
+    if (!modular) {
+      printer.print("interface ");
+    } else if (i.noInterfaceObject) {
+      printer.print("export interface ");
+    } else if (i.legacyNamespace) {
+      printer.print("class ");
+    } else {
+      printer.print("export declare class ");
+    }
+    printer.print(getNameWithTypeParameter(i.typeParameters, processedIName));
 
     const finalExtends = [i.extends || "Object"]
-      .concat(getImplementList(i.name))
+      .concat(!modular ? getImplementList(i.name) : [])
       .filter((i) => i !== "Object")
       .map(processIName);
 
@@ -1333,6 +1388,9 @@ export function emitWebIdl(
     const ehParentCount = iNameToEhParents[i.name]?.length;
 
     if (hasEventHandlers || ehParentCount > 1) {
+      if (modular) {
+        printer.print("export ");
+      }
       printer.print(`interface ${i.name}EventMap`);
       if (ehParentCount) {
         const extend = iNameToEhParents[i.name].map((i) => i.name + "EventMap");
@@ -1359,10 +1417,20 @@ export function emitWebIdl(
     emitConstants(i);
     emitEventHandlers(/*prefix*/ "", i);
     emitIndexers(EmitScope.InstanceOnly, i);
+    if (modular && !i.noInterfaceObject) {
+      emitConstructor(i);
+    }
 
     printer.decreaseIndent();
     printer.printLine("}");
     printer.printLine("");
+
+    if (modular && i.implements?.length) {
+      printer.printLine(
+        `export interface ${i.name} extends ${i.implements.join(", ")} {}`
+      );
+      printer.printLine("");
+    }
 
     if (!printer.stackIsEmpty()) {
       printer.printStackContent();
@@ -1375,11 +1443,11 @@ export function emitWebIdl(
     for (const i of allNonCallbackInterfaces.sort(compareName)) {
       if (i.legacyNamespace) {
         continue;
-      } else if (i.noInterfaceObject) {
-        emitInterface(i);
       } else {
         emitInterface(i);
-        emitConstructor(i, "declare ");
+        if (!i.noInterfaceObject && !modular) {
+          emitConstructor(i, "declare ");
+        }
       }
     }
   }
@@ -1392,18 +1460,25 @@ export function emitWebIdl(
     if (namespacesAsInterfaces.includes(namespace.name)) {
       const name = namespace.name[0].toUpperCase() + namespace.name.slice(1);
       emitInterface({ ...namespace, name });
-      printer.printLine(`declare var ${namespace.name}: ${name};`);
-      printer.printLine("");
+      if (!modular) {
+        printer.printLine(`declare var ${namespace.name}: ${name};`);
+        printer.printLine("");
+      }
       return;
     }
 
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine(`declare namespace ${namespace.name} {`);
     printer.increaseIndent();
 
     if (namespace.nested) {
       namespace.nested.interfaces.sort(compareName).forEach((i) => {
         emitInterface(i);
-        emitConstructor(i);
+        if (!modular) {
+          emitConstructor(i);
+        }
       });
       namespace.nested.dictionaries.sort(compareName).forEach(emitDictionary);
       namespace.nested.enums.sort(compareName).forEach(emitEnum);
@@ -1420,6 +1495,9 @@ export function emitWebIdl(
 
   function emitDictionary(dict: Browser.Dictionary) {
     if (!dict.extends || dict.extends === "Object") {
+      if (modular) {
+        printer.print("export ");
+      }
       printer.printLine(
         `interface ${getNameWithTypeParameter(
           dict.typeParameters,
@@ -1427,6 +1505,9 @@ export function emitWebIdl(
         )} {`
       );
     } else {
+      if (modular) {
+        printer.print("export ");
+      }
       printer.printLine(
         `interface ${getNameWithTypeParameter(
           dict.typeParameters,
@@ -1462,6 +1543,9 @@ export function emitWebIdl(
 
   function emitTypeDef(typeDef: Browser.TypeDef) {
     emitComments(typeDef, printer.printLine);
+    if (modular) {
+      printer.print("export ");
+    }
     printer.printLine(
       `type ${getNameWithTypeParameter(
         typeDef.typeParameters,
@@ -1505,10 +1589,12 @@ export function emitWebIdl(
       emitHTMLElementDeprecatedTagNameMap();
       emitSVGElementTagNameMap();
       emitElementTagNameMap();
-      emitNamedConstructors();
+      if (!modular) {
+        emitNamedConstructors();
+      }
     }
 
-    if (polluter) {
+    if (polluter && !modular) {
       emitAllMembers(polluter);
       emitEventHandlers("declare var ", polluter);
     }
@@ -1683,6 +1769,9 @@ export function emitWebIdl(
         extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name
       );
       printer.printLine("");
+      if (modular) {
+        printer.print("export ");
+      }
       printer.printLine(`interface ${name} ${iteratorExtends}{`);
       printer.increaseIndent();
 

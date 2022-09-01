@@ -24,6 +24,7 @@
         "HmacImportParams",
         "HmacKeyAlgorithm",
         "HmacKeyGenParams",
+        "HTMLCollectionOf",
         "ImageBitmapRenderingContextSettings",
         "ImportMeta",
         "Keyframe",

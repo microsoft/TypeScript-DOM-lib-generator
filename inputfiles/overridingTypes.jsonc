@@ -1405,7 +1405,7 @@
                 ]
             },
             "HTMLOptionsCollection": {
-                "extends": "HTMLCollectionOf<HTMLOptionElement>"
+                "extends": "HTMLCollection<HTMLOptionElement>"
             },
             "SubtleCrypto": {
                 "methods": {
@@ -2743,7 +2743,6 @@
                 }
             },
             "ByteLengthQueuingStrategy": {
-                "extends": "QueuingStrategy<ArrayBufferView>",
                 "properties": {
                     "property": {
                         "size": {
@@ -2756,7 +2755,6 @@
                 }
             },
             "CountQueuingStrategy": {
-                "extends": "QueuingStrategy",
                 "properties": {
                     "property": {
                         "size": {
@@ -2978,6 +2976,41 @@
                         }
                     }
                 }
+            },
+            "HTMLCollection": {
+                "typeParameters": [
+                    {
+                        "name": "E",
+                        "extends": "Element",
+                        "default": "Element"
+                    },
+                    {
+                        "name": "N",
+                        "default": "never"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "item": {
+                            "name": "item",
+                            "overrideSignatures": [
+                                "item(index: number): E | null"
+                            ]
+                        },
+                        "namedItem": {
+                            "name": "namedItem",
+                            "overrideSignatures": [
+                                "namedItem(name: string): E | N | null"
+                            ]
+                        }
+                    }
+                },
+                "overrideIndexSignatures": [
+                    "[index: number]: E"
+                ]
+            },
+            "HTMLFormControlsCollection": {
+                "extends": "HTMLCollection<Element, RadioNodeList>"
             },
             "HTMLMediaElement": {
                 "properties": {

@@ -62,6 +62,7 @@ function test() {
       "dom.generated.d.ts",
       "dom.iterable.generated.d.ts"
     ) &&
+    compileGeneratedFiles("es6", "dom.modular.generated.d.ts") &&
     compileGeneratedFiles("es5", "webworker.generated.d.ts") &&
     compileGeneratedFiles(
       "es6",
