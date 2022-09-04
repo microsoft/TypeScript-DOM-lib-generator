@@ -16,9 +16,6 @@
             "ConnectionType": {
                 "value": ["wimax"]
             },
-            "CredentialMediationRequirement": {
-                "value": ["conditional"] // tied to Credential#isConditionalMediationAvailable
-            },
             "RTCStatsType": {
                 "value": [
                     "stream",
