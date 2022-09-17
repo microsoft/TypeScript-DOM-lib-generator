@@ -56,25 +56,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     // https://github.com/mdn/browser-compat-data/issues/15345
     "onslotchange",
   ],
-  WebGLRenderingContextBase: ["lineWidth"],
-  WebGL2RenderingContextOverloads: [
-    // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately
-    // but BCD only have them in WebGLRenderingContext
-    "bufferData",
-    "compressedTexImage2D",
-    "compressedTexSubImage2D",
-    "readPixels",
-    "texImage2D",
-    "texSubImage2D",
-    "uniform1fv",
-    "uniform1iv",
-    "uniform2fv",
-    "uniform2iv",
-    "uniform3fv",
-    "uniform3iv",
-    "uniform4fv",
-    "uniform4iv",
-  ],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
   XMLHttpRequestEventTarget: [
     // BCD unexpectedly is removing valid event data
