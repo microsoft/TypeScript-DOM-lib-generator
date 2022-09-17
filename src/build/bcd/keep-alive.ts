@@ -32,12 +32,17 @@ export const forceKeepAlive: Record<string, string[]> = {
     "strokeWidth",
     "textAnchor",
   ],
+  Document: [
+    // Accidental removal in BCD?
+    // https://github.com/mdn/browser-compat-data/issues/17821
+    "onpointerlockchange",
+    "onpointerlockerror",
+  ],
   Gamepad: ["hapticActuators"],
   GlobalEventHandlers: [
     "onwebkitanimationend",
     "onwebkitanimationiteration",
     "onwebkitanimationstart",
-    "onwebkittransitionend",
   ],
   IDBDatabase: [
     // BCD unexpectedly is removing valid event data
@@ -46,6 +51,11 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onerror",
   ],
   KeyframeEffect: ["iterationComposite"],
+  ShadowRoot: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onslotchange",
+  ],
   WebGLRenderingContextBase: ["lineWidth"],
   WebGL2RenderingContextOverloads: [
     // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately

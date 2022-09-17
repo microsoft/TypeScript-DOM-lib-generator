@@ -5588,6 +5588,7 @@ interface GlobalEventHandlersEventMap {
     "auxclick": MouseEvent;
     "beforeinput": InputEvent;
     "blur": FocusEvent;
+    "cancel": Event;
     "canplay": Event;
     "canplaythrough": Event;
     "change": Event;
@@ -5693,6 +5694,7 @@ interface GlobalEventHandlers {
      * @param ev The focus event.
      */
     onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+    oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /**
      * Occurs when playback is possible, but would require further buffering.
      * @param ev The event.
@@ -9447,10 +9449,13 @@ declare var MediaRecorder: {
     isTypeSupported(type: string): boolean;
 };
 
+/** @deprecated */
 interface MediaRecorderErrorEvent extends Event {
+    /** @deprecated */
     readonly error: DOMException;
 }
 
+/** @deprecated */
 declare var MediaRecorderErrorEvent: {
     prototype: MediaRecorderErrorEvent;
     new(type: string, eventInitDict: MediaRecorderErrorEventInit): MediaRecorderErrorEvent;
@@ -17788,6 +17793,7 @@ declare var onauxclick: ((this: Window, ev: MouseEvent) => any) | null;
  * @param ev The focus event.
  */
 declare var onblur: ((this: Window, ev: FocusEvent) => any) | null;
+declare var oncancel: ((this: Window, ev: Event) => any) | null;
 /**
  * Occurs when playback is possible, but would require further buffering.
  * @param ev The event.
