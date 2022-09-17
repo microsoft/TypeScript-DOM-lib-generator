@@ -258,7 +258,9 @@ export function emitWebIdl(
     return i?.implements?.sort() || [];
   }
 
-  function getParentsWithEventHandler(i: Browser.Interface) {
+  function getParentsWithEventHandler(
+    i: Browser.Interface
+  ): Browser.Interface[] {
     function getParentEventHandler(i: Browser.Interface): Browser.Interface[] {
       const hasEventListener = iNameToEhList[i.name]?.length;
       if (hasEventListener) {
@@ -275,7 +277,7 @@ export function emitWebIdl(
       return [];
     }
 
-    const iExtends = i.extends?.replace(/<.*>$/, "");
+    const iExtends = i.extends?.replace(/<.*>$/, "") || "";
     const parentWithEventHandler =
       (allInterfacesMap[iExtends] &&
         getParentEventHandler(allInterfacesMap[iExtends])) ||

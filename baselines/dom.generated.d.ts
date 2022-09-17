@@ -116,15 +116,12 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
 
 interface AuthenticationExtensionsClientInputs {
     appid?: string;
-    appidExclude?: string;
     credProps?: boolean;
-    uvm?: boolean;
 }
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
     credProps?: CredentialPropertiesOutput;
-    uvm?: UvmEntries;
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -353,7 +350,7 @@ interface DeviceOrientationEventInit extends EventInit {
     gamma?: number | null;
 }
 
-interface DisplayMediaStreamConstraints {
+interface DisplayMediaStreamOptions {
     audio?: boolean | MediaTrackConstraints;
     video?: boolean | MediaTrackConstraints;
 }
@@ -786,10 +783,6 @@ interface MediaQueryListEventInit extends EventInit {
     media?: string;
 }
 
-interface MediaRecorderErrorEventInit extends EventInit {
-    error: DOMException;
-}
-
 interface MediaRecorderOptions {
     audioBitsPerSecond?: number;
     bitsPerSecond?: number;
@@ -799,9 +792,9 @@ interface MediaRecorderOptions {
 
 interface MediaSessionActionDetails {
     action: MediaSessionAction;
-    fastSeek?: boolean | null;
-    seekOffset?: number | null;
-    seekTime?: number | null;
+    fastSeek?: boolean;
+    seekOffset?: number;
+    seekTime?: number;
 }
 
 interface MediaStreamAudioSourceOptions {
@@ -1298,6 +1291,8 @@ interface RTCIceCandidatePairStats extends RTCStats {
     bytesReceived?: number;
     bytesSent?: number;
     currentRoundTripTime?: number;
+    lastPacketReceivedTimestamp?: DOMHighResTimeStamp;
+    lastPacketSentTimestamp?: DOMHighResTimeStamp;
     localCandidateId: string;
     nominated?: boolean;
     remoteCandidateId: string;
@@ -1312,18 +1307,45 @@ interface RTCIceCandidatePairStats extends RTCStats {
 
 interface RTCIceServer {
     credential?: string;
-    credentialType?: RTCIceCredentialType;
     urls: string | string[];
     username?: string;
 }
 
 interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
+    audioLevel?: number;
+    bytesReceived?: number;
+    concealedSamples?: number;
+    concealmentEvents?: number;
+    decoderImplementation?: string;
+    estimatedPlayoutTimestamp?: DOMHighResTimeStamp;
+    fecPacketsDiscarded?: number;
+    fecPacketsReceived?: number;
     firCount?: number;
+    frameHeight?: number;
+    frameWidth?: number;
     framesDecoded?: number;
+    framesPerSecond?: number;
+    framesReceived?: number;
+    headerBytesReceived?: number;
+    insertedSamplesForDeceleration?: number;
+    jitterBufferDelay?: number;
+    jitterBufferEmittedCount?: number;
+    keyFramesDecoded?: number;
+    kind: string;
+    lastPacketReceivedTimestamp?: DOMHighResTimeStamp;
     nackCount?: number;
+    packetsDiscarded?: number;
     pliCount?: number;
     qpSum?: number;
     remoteId?: string;
+    removedSamplesForAcceleration?: number;
+    silentConcealedSamples?: number;
+    totalAudioEnergy?: number;
+    totalDecodeTime?: number;
+    totalInterFrameDelay?: number;
+    totalSamplesDuration?: number;
+    totalSamplesReceived?: number;
+    totalSquaredInterFrameDelay?: number;
 }
 
 interface RTCLocalSessionDescriptionInit {
@@ -1342,11 +1364,27 @@ interface RTCOfferOptions extends RTCOfferAnswerOptions {
 
 interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     firCount?: number;
+    frameHeight?: number;
+    frameWidth?: number;
     framesEncoded?: number;
+    framesPerSecond?: number;
+    framesSent?: number;
+    headerBytesSent?: number;
+    hugeFramesSent?: number;
+    keyFramesEncoded?: number;
+    mediaSourceId?: string;
     nackCount?: number;
     pliCount?: number;
     qpSum?: number;
+    qualityLimitationResolutionChanges?: number;
     remoteId?: string;
+    retransmittedBytesSent?: number;
+    retransmittedPacketsSent?: number;
+    rid?: string;
+    targetBitrate?: number;
+    totalEncodeTime?: number;
+    totalEncodedBytesTarget?: number;
+    totalPacketSendDelay?: number;
 }
 
 interface RTCPeerConnectionIceErrorEventInit extends EventInit {
@@ -1363,8 +1401,8 @@ interface RTCPeerConnectionIceEventInit extends EventInit {
 }
 
 interface RTCReceivedRtpStreamStats extends RTCRtpStreamStats {
+    framesDropped?: number;
     jitter?: number;
-    packetsDiscarded?: number;
     packetsLost?: number;
     packetsReceived?: number;
 }
@@ -1483,7 +1521,6 @@ interface RTCTransportStats extends RTCStats {
     dtlsState: RTCDtlsTransportState;
     localCertificateId?: string;
     remoteCertificateId?: string;
-    rtcpTransportStatsId?: string;
     selectedCandidatePairId?: string;
     srtpCipher?: string;
     tlsVersion?: string;
@@ -5734,6 +5771,7 @@ interface GlobalEventHandlers {
     onanimationiteration: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
     onanimationstart: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
     onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
     /**
      * Fires when the object loses the input focus.
      * @param ev The focus event.
@@ -9251,7 +9289,7 @@ interface MediaDevicesEventMap {
 interface MediaDevices extends EventTarget {
     ondevicechange: ((this: MediaDevices, ev: Event) => any) | null;
     enumerateDevices(): Promise<MediaDeviceInfo[]>;
-    getDisplayMedia(constraints?: DisplayMediaStreamConstraints): Promise<MediaStream>;
+    getDisplayMedia(options?: DisplayMediaStreamOptions): Promise<MediaStream>;
     getSupportedConstraints(): MediaTrackSupportedConstraints;
     getUserMedia(constraints?: MediaStreamConstraints): Promise<MediaStream>;
     addEventListener<K extends keyof MediaDevicesEventMap>(type: K, listener: (this: MediaDevices, ev: MediaDevicesEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -9492,18 +9530,6 @@ declare var MediaRecorder: {
     prototype: MediaRecorder;
     new(stream: MediaStream, options?: MediaRecorderOptions): MediaRecorder;
     isTypeSupported(type: string): boolean;
-};
-
-/** @deprecated */
-interface MediaRecorderErrorEvent extends Event {
-    /** @deprecated */
-    readonly error: DOMException;
-}
-
-/** @deprecated */
-declare var MediaRecorderErrorEvent: {
-    prototype: MediaRecorderErrorEvent;
-    new(type: string, eventInitDict: MediaRecorderErrorEventInit): MediaRecorderErrorEvent;
 };
 
 interface MediaSession {
@@ -13469,6 +13495,7 @@ interface Selection {
     empty(): void;
     extend(node: Node, offset?: number): void;
     getRangeAt(index: number): Range;
+    modify(alter?: string, direction?: string, granularity?: string): void;
     removeAllRanges(): void;
     removeRange(range: Range): void;
     selectAllChildren(node: Node): void;
@@ -14650,8 +14677,8 @@ interface WEBGL_lose_context {
 interface WEBGL_multi_draw {
     multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: GLuint, countsList: Int32Array | GLsizei[], countsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
     multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: GLuint, countsList: Int32Array | GLsizei[], countsOffset: GLuint, drawcount: GLsizei): void;
-    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array | GLint[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
-    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLint[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array | GLsizei[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: GLuint, drawcount: GLsizei): void;
+    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLsizei[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, drawcount: GLsizei): void;
 }
 
 /** A WaveShaperNode always has exactly one input and one output. */
@@ -17838,6 +17865,7 @@ declare var onanimationend: ((this: Window, ev: AnimationEvent) => any) | null;
 declare var onanimationiteration: ((this: Window, ev: AnimationEvent) => any) | null;
 declare var onanimationstart: ((this: Window, ev: AnimationEvent) => any) | null;
 declare var onauxclick: ((this: Window, ev: MouseEvent) => any) | null;
+declare var onbeforeinput: ((this: Window, ev: InputEvent) => any) | null;
 /**
  * Fires when the object loses the input focus.
  * @param ev The focus event.
@@ -18204,8 +18232,6 @@ type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasEle
 type TimerHandler = string | Function;
 type Transferable = ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
-type UvmEntries = UvmEntry[];
-type UvmEntry = number[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
@@ -18217,7 +18243,7 @@ type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "n
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "running" | "suspended";
 type AuthenticatorAttachment = "cross-platform" | "platform";
-type AuthenticatorTransport = "ble" | "internal" | "nfc" | "usb";
+type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";
 type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
 type BinaryType = "arraybuffer" | "blob";
@@ -18278,7 +18304,7 @@ type MediaKeySessionClosedReason = "closed-by-application" | "hardware-context-r
 type MediaKeySessionType = "persistent-license" | "temporary";
 type MediaKeyStatus = "expired" | "internal-error" | "output-downscaled" | "output-restricted" | "released" | "status-pending" | "usable" | "usable-in-future";
 type MediaKeysRequirement = "not-allowed" | "optional" | "required";
-type MediaSessionAction = "hangup" | "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop" | "togglecamera" | "togglemicrophone";
+type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
 type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
@@ -18308,7 +18334,6 @@ type RTCErrorDetailType = "data-channel-failure" | "dtls-failure" | "fingerprint
 type RTCIceCandidateType = "host" | "prflx" | "relay" | "srflx";
 type RTCIceComponent = "rtcp" | "rtp";
 type RTCIceConnectionState = "checking" | "closed" | "completed" | "connected" | "disconnected" | "failed" | "new";
-type RTCIceCredentialType = "password";
 type RTCIceGathererState = "complete" | "gathering" | "new";
 type RTCIceGatheringState = "complete" | "gathering" | "new";
 type RTCIceProtocol = "tcp" | "udp";
@@ -18323,7 +18348,7 @@ type RTCSctpTransportState = "closed" | "connected" | "connecting";
 type RTCSdpType = "answer" | "offer" | "pranswer" | "rollback";
 type RTCSignalingState = "closed" | "have-local-offer" | "have-local-pranswer" | "have-remote-offer" | "have-remote-pranswer" | "stable";
 type RTCStatsIceCandidatePairState = "failed" | "frozen" | "in-progress" | "inprogress" | "succeeded" | "waiting";
-type RTCStatsType = "candidate-pair" | "certificate" | "codec" | "csrc" | "data-channel" | "inbound-rtp" | "local-candidate" | "media-source" | "outbound-rtp" | "peer-connection" | "remote-candidate" | "remote-inbound-rtp" | "remote-outbound-rtp" | "track" | "transport";
+type RTCStatsType = "candidate-pair" | "certificate" | "codec" | "data-channel" | "inbound-rtp" | "local-candidate" | "media-source" | "outbound-rtp" | "peer-connection" | "remote-candidate" | "remote-inbound-rtp" | "remote-outbound-rtp" | "track" | "transport";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
 type ReadyState = "closed" | "ended" | "open";

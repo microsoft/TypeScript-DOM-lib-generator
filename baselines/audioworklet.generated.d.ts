@@ -38,24 +38,6 @@ interface MessageEventInit<T = any> extends EventInit {
     source?: MessageEventSource | null;
 }
 
-interface PerformanceMarkOptions {
-    detail?: any;
-    startTime?: DOMHighResTimeStamp;
-}
-
-interface PerformanceMeasureOptions {
-    detail?: any;
-    duration?: DOMHighResTimeStamp;
-    end?: string | DOMHighResTimeStamp;
-    start?: string | DOMHighResTimeStamp;
-}
-
-interface PerformanceObserverInit {
-    buffered?: boolean;
-    entryTypes?: string[];
-    type?: string;
-}
-
 interface PromiseRejectionEventInit extends EventInit {
     promise: Promise<any>;
     reason?: any;
@@ -439,93 +421,6 @@ interface MessagePort extends EventTarget {
 declare var MessagePort: {
     prototype: MessagePort;
     new(): MessagePort;
-};
-
-interface PerformanceEventMap {
-    "resourcetimingbufferfull": Event;
-}
-
-/** Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API. */
-interface Performance extends EventTarget {
-    onresourcetimingbufferfull: ((this: Performance, ev: Event) => any) | null;
-    readonly timeOrigin: DOMHighResTimeStamp;
-    clearMarks(markName?: string): void;
-    clearMeasures(measureName?: string): void;
-    clearResourceTimings(): void;
-    getEntries(): PerformanceEntryList;
-    getEntriesByName(name: string, type?: string): PerformanceEntryList;
-    getEntriesByType(type: string): PerformanceEntryList;
-    mark(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
-    measure(measureName: string, startOrMeasureOptions?: string | PerformanceMeasureOptions, endMark?: string): PerformanceMeasure;
-    now(): DOMHighResTimeStamp;
-    setResourceTimingBufferSize(maxSize: number): void;
-    toJSON(): any;
-    addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var Performance: {
-    prototype: Performance;
-    new(): Performance;
-};
-
-/** Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image). */
-interface PerformanceEntry {
-    readonly duration: DOMHighResTimeStamp;
-    readonly entryType: string;
-    readonly name: string;
-    readonly startTime: DOMHighResTimeStamp;
-    toJSON(): any;
-}
-
-declare var PerformanceEntry: {
-    prototype: PerformanceEntry;
-    new(): PerformanceEntry;
-};
-
-/** PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline. */
-interface PerformanceMark extends PerformanceEntry {
-    readonly detail: any;
-}
-
-declare var PerformanceMark: {
-    prototype: PerformanceMark;
-    new(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
-};
-
-/** PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline. */
-interface PerformanceMeasure extends PerformanceEntry {
-    readonly detail: any;
-}
-
-declare var PerformanceMeasure: {
-    prototype: PerformanceMeasure;
-    new(): PerformanceMeasure;
-};
-
-interface PerformanceObserver {
-    disconnect(): void;
-    observe(options?: PerformanceObserverInit): void;
-    takeRecords(): PerformanceEntryList;
-}
-
-declare var PerformanceObserver: {
-    prototype: PerformanceObserver;
-    new(callback: PerformanceObserverCallback): PerformanceObserver;
-    readonly supportedEntryTypes: ReadonlyArray<string>;
-};
-
-interface PerformanceObserverEntryList {
-    getEntries(): PerformanceEntryList;
-    getEntriesByName(name: string, type?: string): PerformanceEntryList;
-    getEntriesByType(type: string): PerformanceEntryList;
-}
-
-declare var PerformanceObserverEntryList: {
-    prototype: PerformanceObserverEntryList;
-    new(): PerformanceObserverEntryList;
 };
 
 interface PromiseRejectionEvent extends Event {
@@ -963,10 +858,6 @@ interface AudioWorkletProcessorConstructor {
     new (options: any): AudioWorkletProcessorImpl;
 }
 
-interface PerformanceObserverCallback {
-    (entries: PerformanceObserverEntryList, observer: PerformanceObserver): void;
-}
-
 interface QueuingStrategySize<T = any> {
     (chunk: T): number;
 }
@@ -1019,7 +910,6 @@ type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMHighResTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type MessageEventSource = MessagePort;
-type PerformanceEntryList = PerformanceEntry[];
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;

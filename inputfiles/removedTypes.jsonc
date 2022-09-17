@@ -19,6 +19,15 @@
             "CredentialMediationRequirement": {
                 "value": ["conditional"] // tied to Credential#isConditionalMediationAvailable
             },
+            "MediaSessionAction": {
+                "value": [
+                    "hangup", // Blink only as of 2022-09
+                    "nextslide", // No implementation as of 2022-09
+                    "previousslide", // No implementation as of 2022-09
+                    "togglecamera", // Blink only as of 2022-09
+                    "togglemicrophone" // Blink only as of 2022-09
+                ]
+            },
             "RTCStatsType": {
                 "value": [
                     "stream",
@@ -63,6 +72,19 @@
                         // Safari https://webkit.org/b/240375
                         // MDN https://github.com/mdn/content/discussions/5121#discussioncomment-2735488
                         "json": null
+                    }
+                }
+            },
+            "PaymentResponse": {
+                "methods": {
+                    "method": {
+                        "complete": {
+                            "signature": {
+                                "0": {
+                                    "param": ["details"]
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -126,16 +148,26 @@
             "AuthenticationExtensionsClientInputs": {
                 "members": {
                     "member": {
+                        // only `appid` and `credProps` are implemented by 2+ engines, everything else is currently Blink only.
+                        // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
+                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
+                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/authentication_extensions_client_inputs.idl
+                        "appidExclude": null,
                         "largeBlob": null,
-                        "payment": null
+                        "payment": null,
+                        "prf": null,
+                        "uvm": null
                     }
                 }
             },
             "AuthenticationExtensionsClientOutputs": {
                 "members": {
                     "member": {
+                        // (same)
                         "appidExclude": null,
-                        "largeBlob": null
+                        "largeBlob": null,
+                        "prf": null,
+                        "uvm": null
                     }
                 }
             },
@@ -150,17 +182,34 @@
             "CredentialRequestOptions": {
                 "members": {
                     "member": {
+                        // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
+                        // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
+                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
+                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
                         "federated": null,
+                        "identity": null,
                         "otp": null,
                         "password": null
                     }
                 }
             },
-            "DisplayMediaStreamConstraints": {
+            "DisplayMediaStreamOptions": {
                 "members": {
                     "member": {
+                        // Only `audio` and `video` are implemented by 2+ engines, everything else is currently Blink only.
+                        // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
+                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
+                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
                         "selfBrowserSurface": null,
+                        "surfaceSwitching": null,
                         "systemAudio": null
+                    }
+                }
+            },
+            "FocusOptions": {
+                "members": {
+                    "member": {
+                        "focusVisible": null // Gecko only as of 2022-09
                     }
                 }
             },
@@ -330,8 +379,8 @@
             "RequestInit": {
                 "members": {
                     "member": {
-                        // Corresponds to Request#priority
-                        "priority": null
+                        "duplex": null, // Blink only as of 2022-09
+                        "priority": null // Corresponds to Request#priority, no implementation as of 2022-09
                     }
                 }
             },
@@ -366,125 +415,33 @@
             "RTCIceCandidatePairStats": {
                 "members": {
                     "member": {
-                        "bytesDiscardedOnSend": null,
-                        "circuitBreakerTriggerCount": null,
-                        "consentExpiredTimestamp": null,
-                        "consentRequestBytesSent": null,
-                        "consentRequestsSent": null,
-                        "firstRequestTimestamp": null,
-                        "lastPacketReceivedTimestamp": null,
-                        "lastPacketSentTimestamp": null,
-                        "lastRequestTimestamp": null,
-                        "lastResponseTimestamp": null,
-                        "packetsDiscardedOnSend": null,
-                        "packetsReceived": null,
-                        "packetsSent": null,
-                        "requestBytesSent": null,
-                        "responseBytesSent": null,
-                        "retransmissionsReceived": null,
-                        "retransmissionsSent": null
+                        "bytesDiscardedOnSend": null, // Blink only as of 2022-09
+                        "consentRequestsSent": null, // Blink only as of 2022-09
+                        "packetsDiscardedOnSend": null, // Blink only as of 2022-09
+                        "packetsReceived": null, // Blink only as of 2022-09
+                        "packetsSent": null // Blink only as of 2022-09
                     }
                 }
             },
             "RTCInboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "receiverId": null,
-                        "keyFramesDecoded": null,
-                        "frameWidth": null,
-                        "frameHeight": null,
-                        "frameBitDepth": null,
-                        "framesPerSecond": null,
-                        "totalDecodeTime": null,
-                        "totalInterFrameDelay": null,
-                        "totalSquaredInterFrameDelay": null,
-                        "voiceActivityFlag": null,
-                        "lastPacketReceivedTimestamp": null,
-                        "averageRtcpInterval": null,
-                        "headerBytesReceived": null,
-                        "fecPacketsReceived": null,
-                        "fecPacketsDiscarded": null,
-                        "bytesReceived": null,
-                        "packetsFailedDecryption": null,
-                        "packetsDuplicated": null,
-                        "perDscpPacketsReceived": null,
-                        "sliCount": null,
-                        "totalProcessingDelay": null,
-                        "estimatedPlayoutTimestamp": null,
-                        "jitterBufferDelay": null,
-                        "jitterBufferEmittedCount": null,
-                        "totalSamplesReceived": null,
-                        "totalSamplesDecoded": null,
-                        "samplesDecodedWithSilk": null,
-                        "samplesDecodedWithCelt": null,
-                        "concealedSamples": null,
-                        "silentConcealedSamples": null,
-                        "concealmentEvents": null,
-                        "insertedSamplesForDeceleration": null,
-                        "removedSamplesForAcceleration": null,
-                        "audioLevel": null,
-                        "totalAudioEnergy": null,
-                        "totalSamplesDuration": null,
-                        "framesReceived": null,
-                        "decoderImplementation": null
+                        "jitterBufferMinimumDelay": null, // No implementation as of 2022-09
+                        "jitterBufferTargetDelay": null, // No implementation as of 2022-09
+                        "mid": null, // No implementation as of 2022-09
+                        "totalProcessingDelay": null, // Gecko only as of 2022-09
+                        "trackIdentifier": null // No implementation as of 2022-09
                     }
                 }
             },
             "RTCOutboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "rtxSsrc": null,
-                        "mediaSourceId": null,
-                        "senderId": null,
-                        "rid": null,
-                        "lastPacketSentTimestamp": null,
-                        "headerBytesSent": null,
-                        "packetsDiscardedOnSend": null,
-                        "bytesDiscardedOnSend": null,
-                        "fecPacketsSent": null,
-                        "retransmittedPacketsSent": null,
-                        "retransmittedBytesSent": null,
-                        "targetBitrate": null,
-                        "totalEncodedBytesTarget": null,
-                        "frameWidth": null,
-                        "frameHeight": null,
-                        "frameBitDepth": null,
-                        "framesPerSecond": null,
-                        "framesSent": null,
-                        "hugeFramesSent": null,
-                        "keyFramesEncoded": null,
-                        "framesDiscardedOnSend": null,
-                        "totalSamplesSent": null,
-                        "samplesEncodedWithSilk": null,
-                        "samplesEncodedWithCelt": null,
-                        "voiceActivityFlag": null,
-                        "totalEncodeTime": null,
-                        "totalPacketSendDelay": null,
-                        "averageRtcpInterval": null,
-                        "qualityLimitationReason": null,
-                        "qualityLimitationDurations": null,
-                        "qualityLimitationResolutionChanges": null,
-                        "perDscpPacketsSent": null,
-                        "sliCount": null,
-                        "encoderImplementation": null
-                    }
-                }
-            },
-            "RTCReceivedRtpStreamStats": {
-                "members": {
-                    "member": {
-                        "packetsRepaired": null,
-                        "burstPacketsLost": null,
-                        "burstPacketsDiscarded": null,
-                        "burstLossCount": null,
-                        "burstDiscardCount": null,
-                        "burstLossRate": null,
-                        "burstDiscardRate": null,
-                        "gapLossRate": null,
-                        "gapDiscardRate": null,
-                        "framesDropped": null,
-                        "partialFramesLost": null,
-                        "fullFramesLost": null
+                        "active": null, // No implementation as of 2022-09
+                        "mid": null, // No implementation as of 2022-09
+                        "qualityLimitationReason": null, // Blink only as of 2022-09
+                        "qualityLimitationDurations": null, // Blink only as of 2022-09
+                        "encoderImplementation": null // Blink only as of 2022-09
                     }
                 }
             },
@@ -512,7 +469,6 @@
                         "iceLocalUsernameFragment": null,
                         "iceState": null,
                         "dtlsRole": null,
-                        "tlsGroup": null,
                         "selectedCandidatePairChanges": null
                     }
                 }

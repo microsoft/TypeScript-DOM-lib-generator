@@ -110,6 +110,9 @@ export function merge<T>(target: T, src: T, shallow?: boolean): T {
   if (typeof target !== "object" || typeof src !== "object") {
     return src;
   }
+  if (!target || !src) {
+    throw new Error("Either `target` or `src` is null");
+  }
   for (const k in src) {
     if (Object.getOwnPropertyDescriptor(src, k)) {
       if (Object.getOwnPropertyDescriptor(target, k)) {
