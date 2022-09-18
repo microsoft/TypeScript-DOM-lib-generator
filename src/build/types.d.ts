@@ -206,6 +206,8 @@ export interface Iterator {
   comments?: {
     comment: Record<string, string>;
   };
+  exposed?: string;
+  deprecated?: boolean | string;
 }
 
 export interface Enum {

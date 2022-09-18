@@ -84,6 +84,23 @@ function mapInterfaceLike(
   };
   const methods = filterMapRecord(i.methods?.method, recordMapper);
   const properties = filterMapRecord(i.properties?.property, recordMapper);
+
+  if (i.iterator) {
+    const iteratorKey = i.iterator.async ? "@@asyncIterator" : "@@iterator";
+    const iteratorCompat = mergeCompatStatements(
+      data[iteratorKey] ?? data["values"]
+    );
+    const iteratorMapped = mapper({
+      key: iteratorKey,
+      parentKey: name,
+      compat: iteratorCompat,
+      mixin: !!i.mixin,
+    });
+    if (iteratorMapped !== undefined) {
+      result.iterator = iteratorMapped;
+    }
+  }
+
   if (!isEmptyRecord(methods)) {
     result.methods = { method: methods! };
   }
