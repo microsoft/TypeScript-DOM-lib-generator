@@ -1536,7 +1536,7 @@ export function emitWebIdl(
   }
 
   function emitIterator(i: Browser.Interface) {
-    // https://heycam.github.io/webidl/#dfn-indexed-property-getter
+    // https://webidl.spec.whatwg.org/#dfn-indexed-property-getter
     const isIndexedPropertyGetter = (m: Browser.AnonymousMethod) =>
       m.getter &&
       m.signature[0]?.param?.length === 1 &&
@@ -1729,7 +1729,7 @@ export function emitWebIdl(
     ) {
       let methods;
       if (subtypes.length === 1) {
-        // https://heycam.github.io/webidl/#value-asynchronously-iterable-declaration
+        // https://webidl.spec.whatwg.org/#value-asynchronously-iterable-declaration
         const [valueType] = subtypes;
         methods = [
           {
@@ -1738,7 +1738,7 @@ export function emitWebIdl(
           },
         ];
       } else {
-        // https://heycam.github.io/webidl/#pair-asynchronously-iterable-declaration
+        // https://webidl.spec.whatwg.org/#pair-asynchronously-iterable-declaration
         const [keyType, valueType] = subtypes;
         methods = [
           {
