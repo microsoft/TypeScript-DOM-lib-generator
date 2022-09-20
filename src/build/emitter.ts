@@ -1685,7 +1685,10 @@ export function emitWebIdl(
       .filter((m) => m.signature.length)
       .sort(compareName);
 
-    if (subtypes || methodsWithSequence.length) {
+    if (!subtypes && !methodsWithSequence.length) {
+      return;
+    }
+
       const iteratorExtends = getIteratorExtends(i.iterator, subtypes);
       const name = getNameWithTypeParameter(
         i.typeParameters,
@@ -1709,7 +1712,6 @@ export function emitWebIdl(
       }
       printer.decreaseIndent();
       printer.printLine("}");
-    }
   }
 
   function emitAsyncIterator(i: Browser.Interface) {
@@ -1765,7 +1767,10 @@ export function emitWebIdl(
     }
 
     const subtypes = getAsyncIteratorSubtypes();
-    if (subtypes) {
+    if (!subtypes) {
+      return;
+    }
+
       const name = getNameWithTypeParameter(
         i.typeParameters,
         extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name
@@ -1786,7 +1791,6 @@ export function emitWebIdl(
 
       printer.decreaseIndent();
       printer.printLine("}");
-    }
   }
 
   function emitES6DomIterators() {
