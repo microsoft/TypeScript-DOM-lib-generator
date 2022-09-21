@@ -2236,10 +2236,6 @@
                     }
                 }
             },
-            "Performance": {
-                // See https://github.com/w3c/hr-time/pull/138
-                "exposed": "Window Worker"
-            },
             "ScriptProcessorNode": {
                 "events": {
                     "event": [

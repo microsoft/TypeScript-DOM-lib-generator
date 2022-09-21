@@ -32,12 +32,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "strokeWidth",
     "textAnchor",
   ],
-  Document: [
-    // Accidental removal in BCD?
-    // https://github.com/mdn/browser-compat-data/issues/17821
-    "onpointerlockchange",
-    "onpointerlockerror",
-  ],
   Gamepad: ["hapticActuators"],
   GlobalEventHandlers: [
     "onwebkitanimationend",

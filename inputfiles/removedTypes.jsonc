@@ -30,12 +30,13 @@
             },
             "RTCStatsType": {
                 "value": [
-                    "stream",
-                    "transceiver",
-                    "sender",
-                    "receiver",
-                    "sctp-transport",
-                    "ice-server"
+                    "ice-server", // Blink only as of 2022-09
+                    "media-playout", // No implementation as of 2022-09
+                    "receiver", // Blink only as of 2022-09
+                    "sctp-transport", // No implementation as of 2022-09
+                    "sender", // Blink only as of 2022-09
+                    "stream", // Blink only as of 2022-09
+                    "transceiver" // Blink only as of 2022-09
                 ]
             }
         }
@@ -429,6 +430,7 @@
                         "jitterBufferMinimumDelay": null, // No implementation as of 2022-09
                         "jitterBufferTargetDelay": null, // No implementation as of 2022-09
                         "mid": null, // No implementation as of 2022-09
+                        "playoutId": null, // No implementation as of 2022-09
                         "totalProcessingDelay": null, // Gecko only as of 2022-09
                         "trackIdentifier": null // No implementation as of 2022-09
                     }

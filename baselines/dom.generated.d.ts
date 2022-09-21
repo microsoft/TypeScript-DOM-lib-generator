@@ -2182,7 +2182,7 @@ declare var AnimationPlaybackEvent: {
 };
 
 interface AnimationTimeline {
-    readonly currentTime: number | null;
+    readonly currentTime: CSSNumberish | null;
 }
 
 declare var AnimationTimeline: {
