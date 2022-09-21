@@ -6,6 +6,10 @@ interface Cache {
     addAll(requests: Iterable<RequestInfo>): Promise<void>;
 }
 
+interface CanvasPath {
+    roundRect(x: number, y: number, w: number, h: number, radii?: number | DOMPointInit | Iterable<number | DOMPointInit>): void;
+}
+
 interface DOMStringList {
     [Symbol.iterator](): IterableIterator<string>;
 }

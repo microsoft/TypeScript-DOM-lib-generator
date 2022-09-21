@@ -2435,6 +2435,8 @@ declare var AuthenticatorAssertionResponse: {
 interface AuthenticatorAttestationResponse extends AuthenticatorResponse {
     readonly attestationObject: ArrayBuffer;
     getAuthenticatorData(): ArrayBuffer;
+    getPublicKey(): ArrayBuffer | null;
+    getPublicKeyAlgorithm(): COSEAlgorithmIdentifier;
     getTransports(): string[];
 }
 
@@ -2632,6 +2634,14 @@ interface CSSConditionRule extends CSSGroupingRule {
 declare var CSSConditionRule: {
     prototype: CSSConditionRule;
     new(): CSSConditionRule;
+};
+
+interface CSSContainerRule extends CSSConditionRule {
+}
+
+declare var CSSContainerRule: {
+    prototype: CSSContainerRule;
+    new(): CSSContainerRule;
 };
 
 interface CSSCounterStyleRule extends CSSRule {
@@ -2943,6 +2953,9 @@ interface CSSStyleDeclaration {
     columnWidth: string;
     columns: string;
     contain: string;
+    container: string;
+    containerName: string;
+    containerType: string;
     content: string;
     counterIncrement: string;
     counterReset: string;
@@ -3011,6 +3024,7 @@ interface CSSStyleDeclaration {
     gridTemplateColumns: string;
     gridTemplateRows: string;
     height: string;
+    hyphenateCharacter: string;
     hyphens: string;
     /** @deprecated */
     imageOrientation: string;
@@ -3544,6 +3558,7 @@ interface CanvasPath {
     moveTo(x: number, y: number): void;
     quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
     rect(x: number, y: number, w: number, h: number): void;
+    roundRect(x: number, y: number, w: number, h: number, radii?: number | DOMPointInit | (number | DOMPointInit)[]): void;
 }
 
 interface CanvasPathDrawingStyles {
@@ -4948,6 +4963,17 @@ interface EXT_texture_compression_rgtc {
 interface EXT_texture_filter_anisotropic {
     readonly MAX_TEXTURE_MAX_ANISOTROPY_EXT: GLenum;
     readonly TEXTURE_MAX_ANISOTROPY_EXT: GLenum;
+}
+
+interface EXT_texture_norm16 {
+    readonly R16_EXT: GLenum;
+    readonly R16_SNORM_EXT: GLenum;
+    readonly RG16_EXT: GLenum;
+    readonly RG16_SNORM_EXT: GLenum;
+    readonly RGB16_EXT: GLenum;
+    readonly RGB16_SNORM_EXT: GLenum;
+    readonly RGBA16_EXT: GLenum;
+    readonly RGBA16_SNORM_EXT: GLenum;
 }
 
 interface ElementEventMap {
@@ -10238,6 +10264,16 @@ declare var Notification: {
     readonly permission: NotificationPermission;
     requestPermission(deprecatedCallback?: NotificationPermissionCallback): Promise<NotificationPermission>;
 };
+
+interface OES_draw_buffers_indexed {
+    blendEquationSeparateiOES(buf: GLuint, modeRGB: GLenum, modeAlpha: GLenum): void;
+    blendEquationiOES(buf: GLuint, mode: GLenum): void;
+    blendFuncSeparateiOES(buf: GLuint, srcRGB: GLenum, dstRGB: GLenum, srcAlpha: GLenum, dstAlpha: GLenum): void;
+    blendFunciOES(buf: GLuint, src: GLenum, dst: GLenum): void;
+    colorMaskiOES(buf: GLuint, r: GLboolean, g: GLboolean, b: GLboolean, a: GLboolean): void;
+    disableiOES(target: GLenum, index: GLuint): void;
+    enableiOES(target: GLenum, index: GLuint): void;
+}
 
 /** The OES_element_index_uint extension is part of the WebGL API and adds support for gl.UNSIGNED_INT types to WebGLRenderingContext.drawElements(). */
 interface OES_element_index_uint {
