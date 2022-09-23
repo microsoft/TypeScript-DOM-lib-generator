@@ -1884,7 +1884,7 @@ interface VideoConfiguration {
     width: number;
 }
 
-interface VideoFrameMetadata {
+interface VideoFrameCallbackMetadata {
     captureTime?: DOMHighResTimeStamp;
     expectedDisplayTime: DOMHighResTimeStamp;
     height: number;
@@ -17541,7 +17541,7 @@ interface UnderlyingSourceStartCallback<R> {
 }
 
 interface VideoFrameRequestCallback {
-    (now: DOMHighResTimeStamp, metadata: VideoFrameMetadata): void;
+    (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata): void;
 }
 
 interface VoidFunction {
