@@ -1491,12 +1491,15 @@
                             }
                         },
                         "deriveBits": {
+                            "additionalSignatures": [
+                                "deriveBits(algorithm: EcdhKeyDeriveParams, baseKey: CryptoKey, length?: number | null): Promise<ArrayBuffer>"
+                            ],
                             "signature": {
                                 "0": {
                                     "param": [
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": ["EcdhKeyDeriveParams", "HkdfParams", "Pbkdf2Params"]
+                                            "additionalTypes": ["HkdfParams", "Pbkdf2Params"]
                                         }
                                     ]
                                 }
