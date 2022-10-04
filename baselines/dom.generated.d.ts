@@ -116,12 +116,21 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
 
 interface AuthenticationExtensionsClientInputs {
     appid?: string;
+    credBlob?: ArrayBuffer;
     credProps?: boolean;
+    credentialProtectionPolicy?: string;
+    enforceCredentialProtectionPolicy?: boolean;
+    getCredBlob?: boolean;
+    hmacCreateSecret?: boolean;
+    hmacGetSecret?: HMACGetSecretInput;
+    minPinLength?: boolean;
 }
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
     credProps?: CredentialPropertiesOutput;
+    hmacCreateSecret?: boolean;
+    hmacGetSecret?: HMACGetSecretOutput;
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -524,6 +533,16 @@ interface GetNotificationOptions {
 
 interface GetRootNodeOptions {
     composed?: boolean;
+}
+
+interface HMACGetSecretInput {
+    salt1: ArrayBuffer;
+    salt2?: ArrayBuffer;
+}
+
+interface HMACGetSecretOutput {
+    output1: ArrayBuffer;
+    output2?: ArrayBuffer;
 }
 
 interface HashChangeEventInit extends EventInit {
@@ -1336,6 +1355,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     nackCount?: number;
     packetsDiscarded?: number;
     pliCount?: number;
+    powerEfficientDecoder?: boolean;
     qpSum?: number;
     remoteId?: string;
     removedSamplesForAcceleration?: number;
@@ -1375,6 +1395,7 @@ interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     mediaSourceId?: string;
     nackCount?: number;
     pliCount?: number;
+    powerEfficientEncoder?: boolean;
     qpSum?: number;
     qualityLimitationResolutionChanges?: number;
     remoteId?: string;
@@ -3101,6 +3122,7 @@ interface CSSStyleDeclaration {
     outlineWidth: string;
     overflow: string;
     overflowAnchor: string;
+    overflowClipMargin: string;
     overflowWrap: string;
     overflowX: string;
     overflowY: string;
@@ -9061,6 +9083,7 @@ interface InnerHTML {
     innerHTML: string;
 }
 
+/** Available only in secure contexts. */
 interface InputDeviceInfo extends MediaDeviceInfo {
 }
 
