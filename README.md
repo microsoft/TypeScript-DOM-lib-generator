@@ -46,6 +46,8 @@ npm run test
 | `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7 rc      | 4.4            |
 | `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7         | 4.4            |
 | `@types/web` [0.0.68](https://www.npmjs.com/package/@types/web/v/0.0.68)  | 4.8 beta    | 4.4            |
+| `@types/web` [0.0.69](https://www.npmjs.com/package/@types/web/v/0.0.69)  | 4.8 rc      | 4.4            |
+| `@types/web` [0.0.69](https://www.npmjs.com/package/@types/web/v/0.0.69)  | 4.8         | 4.4            |
 
 ## `@types/[lib]` Minimum Target
 
