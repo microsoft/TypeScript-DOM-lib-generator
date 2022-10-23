@@ -117,11 +117,13 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
 interface AuthenticationExtensionsClientInputs {
     appid?: string;
     credProps?: boolean;
+    hmacCreateSecret?: boolean;
 }
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
     credProps?: CredentialPropertiesOutput;
+    hmacCreateSecret?: boolean;
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -1324,6 +1326,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     frameHeight?: number;
     frameWidth?: number;
     framesDecoded?: number;
+    framesDropped?: number;
     framesPerSecond?: number;
     framesReceived?: number;
     headerBytesReceived?: number;
@@ -1343,6 +1346,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     totalAudioEnergy?: number;
     totalDecodeTime?: number;
     totalInterFrameDelay?: number;
+    totalProcessingDelay?: number;
     totalSamplesDuration?: number;
     totalSamplesReceived?: number;
     totalSquaredInterFrameDelay?: number;
@@ -1401,7 +1405,6 @@ interface RTCPeerConnectionIceEventInit extends EventInit {
 }
 
 interface RTCReceivedRtpStreamStats extends RTCRtpStreamStats {
-    framesDropped?: number;
     jitter?: number;
     packetsLost?: number;
     packetsReceived?: number;
@@ -1446,6 +1449,8 @@ interface RTCRtpContributingSource {
 interface RTCRtpEncodingParameters extends RTCRtpCodingParameters {
     active?: boolean;
     maxBitrate?: number;
+    maxFramerate?: number;
+    networkPriority?: RTCPriorityType;
     priority?: RTCPriorityType;
     scaleResolutionDownBy?: number;
 }
@@ -1866,10 +1871,10 @@ interface ValidityStateFlags {
 }
 
 interface VideoColorSpaceInit {
-    fullRange?: boolean;
-    matrix?: VideoMatrixCoefficients;
-    primaries?: VideoColorPrimaries;
-    transfer?: VideoTransferCharacteristics;
+    fullRange?: boolean | null;
+    matrix?: VideoMatrixCoefficients | null;
+    primaries?: VideoColorPrimaries | null;
+    transfer?: VideoTransferCharacteristics | null;
 }
 
 interface VideoConfiguration {
@@ -3101,6 +3106,7 @@ interface CSSStyleDeclaration {
     outlineWidth: string;
     overflow: string;
     overflowAnchor: string;
+    overflowClipMargin: string;
     overflowWrap: string;
     overflowX: string;
     overflowY: string;
@@ -6316,6 +6322,7 @@ interface HTMLCanvasElement extends HTMLElement {
      * @param type The standard MIME type for the image format to return. If you do not specify this parameter, the default value is a PNG format image.
      */
     toDataURL(type?: string, quality?: any): string;
+    transferControlToOffscreen(): OffscreenCanvas;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -9030,7 +9037,7 @@ declare var ImageBitmap: {
 
 interface ImageBitmapRenderingContext {
     /** Returns the canvas element that the context is bound to. */
-    readonly canvas: HTMLCanvasElement;
+    readonly canvas: HTMLCanvasElement | OffscreenCanvas;
     /** Transfers the underlying bitmap data from imageBitmap to context, and the bitmap becomes the contents of the canvas element to which context is bound. */
     transferFromImageBitmap(bitmap: ImageBitmap | null): void;
 }
@@ -9061,6 +9068,7 @@ interface InnerHTML {
     innerHTML: string;
 }
 
+/** Available only in secure contexts. */
 interface InputDeviceInfo extends MediaDeviceInfo {
 }
 
@@ -10351,6 +10359,57 @@ declare var OfflineAudioContext: {
     prototype: OfflineAudioContext;
     new(contextOptions: OfflineAudioContextOptions): OfflineAudioContext;
     new(numberOfChannels: number, length: number, sampleRate: number): OfflineAudioContext;
+};
+
+interface OffscreenCanvasEventMap {
+    "contextlost": Event;
+    "contextrestored": Event;
+}
+
+interface OffscreenCanvas extends EventTarget {
+    /**
+     * These attributes return the dimensions of the OffscreenCanvas object's bitmap.
+     *
+     * They can be set, to replace the bitmap with a new, transparent black bitmap of the specified dimensions (effectively resizing it).
+     */
+    height: number;
+    oncontextlost: ((this: OffscreenCanvas, ev: Event) => any) | null;
+    oncontextrestored: ((this: OffscreenCanvas, ev: Event) => any) | null;
+    /**
+     * These attributes return the dimensions of the OffscreenCanvas object's bitmap.
+     *
+     * They can be set, to replace the bitmap with a new, transparent black bitmap of the specified dimensions (effectively resizing it).
+     */
+    width: number;
+    /**
+     * Returns an object that exposes an API for drawing on the OffscreenCanvas object. contextId specifies the desired API: "2d", "bitmaprenderer", "webgl", or "webgl2". options is handled by that API.
+     *
+     * This specification defines the "2d" context below, which is similar but distinct from the "2d" context that is created from a canvas element. The WebGL specifications define the "webgl" and "webgl2" contexts. [WEBGL]
+     *
+     * Returns null if the canvas has already been initialized with another context type (e.g., trying to get a "2d" context after getting a "webgl" context).
+     */
+    getContext(contextId: OffscreenRenderingContextId, options?: any): OffscreenRenderingContext | null;
+    /** Returns a newly created ImageBitmap object with the image in the OffscreenCanvas object. The image in the OffscreenCanvas object is replaced with a new blank image. */
+    transferToImageBitmap(): ImageBitmap;
+    addEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var OffscreenCanvas: {
+    prototype: OffscreenCanvas;
+    new(width: number, height: number): OffscreenCanvas;
+};
+
+interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
+    readonly canvas: OffscreenCanvas;
+    commit(): void;
+}
+
+declare var OffscreenCanvasRenderingContext2D: {
+    prototype: OffscreenCanvasRenderingContext2D;
+    new(): OffscreenCanvasRenderingContext2D;
 };
 
 /** The OscillatorNode interface represents a periodic waveform, such as a sine wave. It is an AudioScheduledSourceNode audio-processing module that causes a specified frequency of a given wave to be created—in effect, a constant tone. */
@@ -16063,7 +16122,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
-    readonly canvas: HTMLCanvasElement;
+    readonly canvas: HTMLCanvasElement | OffscreenCanvas;
     readonly drawingBufferHeight: GLsizei;
     readonly drawingBufferWidth: GLsizei;
     activeTexture(texture: GLenum): void;
@@ -18218,7 +18277,7 @@ type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type COSEAlgorithmIdentifier = number;
 type CSSNumberish = number;
-type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap;
+type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | OffscreenCanvas;
 type ClipboardItemData = Promise<string | Blob>;
 type ClipboardItems = ClipboardItem[];
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
@@ -18255,6 +18314,7 @@ type MediaProvider = MediaStream | MediaSource | Blob;
 type MessageEventSource = WindowProxy | MessagePort | ServiceWorker;
 type MutationRecordType = "attributes" | "characterData" | "childList";
 type NamedCurve = string;
+type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull | null;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
@@ -18263,9 +18323,9 @@ type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableSt
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type RequestInfo = Request | string;
-type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement;
+type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas;
 type TimerHandler = string | Function;
-type Transferable = ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;
@@ -18345,6 +18405,7 @@ type MediaStreamTrackState = "ended" | "live";
 type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
+type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
 type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";

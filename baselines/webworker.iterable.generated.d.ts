@@ -10,6 +10,10 @@ interface CanvasPath {
     roundRect(x: number, y: number, w: number, h: number, radii?: number | DOMPointInit | Iterable<number | DOMPointInit>): void;
 }
 
+interface CanvasPathDrawingStyles {
+    setLineDash(segments: Iterable<number>): void;
+}
+
 interface DOMStringList {
     [Symbol.iterator](): IterableIterator<string>;
 }

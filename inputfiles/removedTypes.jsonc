@@ -38,6 +38,24 @@
                     "stream", // Blink only as of 2022-09
                     "transceiver" // Blink only as of 2022-09
                 ]
+            },
+            "VideoColorPrimaries": {
+                "value": [
+                    "bt2020", // Blink only as of 2022-10
+                    "smpte432" // Blink only as of 2022-10
+                ]
+            },
+            "VideoMatrixCoefficients": {
+                "value": [
+                    "bt2020-ncl" // Blink only as of 2022-10
+                ]
+            },
+            "VideoTransferCharacteristics": {
+                "value": [
+                    "hlg", // Blink only as of 2022-10
+                    "linear", // Blink only as of 2022-10
+                    "pq" // Blink only as of 2022-10
+                ]
             }
         }
     },
@@ -48,8 +66,7 @@
                     "constant": {
                         "COUNTER_STYLE_RULE": null,
                         "FONT_FEATURE_VALUES_RULE": null,
-                        "MARGIN_RULE": null,
-                        "VIEWPORT_RULE": null
+                        "MARGIN_RULE": null
                     }
                 }
             },
@@ -146,15 +163,29 @@
     },
     "dictionaries": {
         "dictionary": {
+            "AudioContextOptions": {
+                "members": {
+                    "member": {
+                        "sinkId": null // No implementation as of 2022-10
+                    }
+                }
+            },
             "AuthenticationExtensionsClientInputs": {
                 "members": {
                     "member": {
-                        // only `appid` and `credProps` are implemented by 2+ engines, everything else is currently Blink only.
+                        // only `appid`, `credProps`, and `hmacCreateSecret` are implemented by 2+ engines, everything else is Blink only as of 2022-10.
                         // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/authentication_extensions_client_inputs.idl
                         "appidExclude": null,
+                        "credBlob": null,
+                        "credentialProtectionPolicy": null,
+                        "devicePubKey": null,
+                        "enforceCredentialProtectionPolicy": null,
+                        "getCredBlob": null,
+                        "hmacGetSecret": null, // No implementation as of 2022-10
                         "largeBlob": null,
+                        "minPinLength": null,
                         "payment": null,
                         "prf": null,
                         "uvm": null
@@ -164,8 +195,10 @@
             "AuthenticationExtensionsClientOutputs": {
                 "members": {
                     "member": {
-                        // (same)
+                        // (same as *Inputs)
                         "appidExclude": null,
+                        "devicePubKey": null,
+                        "hmacGetSecret": null, // No implementation as of 2022-10
                         "largeBlob": null,
                         "prf": null,
                         "uvm": null
@@ -376,6 +409,21 @@
                     }
                 }
             },
+            "PublicKeyCredentialCreationOptions": {
+                "members": {
+                    "member": {
+                        "attestationFormats": null // No implementation as of 2022-10
+                    }
+                }
+            },
+            "PublicKeyCredentialRequestOptions": {
+                "members": {
+                    "member": {
+                        "attestation": null, // No implementation as of 2022-10
+                        "attestationFormats": null // No implementation as of 2022-10
+                    }
+                }
+            },
             "ReadableStreamReadResult": null,
             "RequestInit": {
                 "members": {
@@ -427,11 +475,20 @@
             "RTCInboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "jitterBufferMinimumDelay": null, // No implementation as of 2022-09
-                        "jitterBufferTargetDelay": null, // No implementation as of 2022-09
-                        "mid": null, // No implementation as of 2022-09
+                        // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl
+                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/RTCStatsReport.idl
+                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/stats/rtcstats_objects.cc
+                        "framesAssembledFromMultiplePackets": null, // Blink only as of 2022-10
+                        "freezeCount": null, // Blink only as of 2022-10
+                        "jitterBufferMinimumDelay": null, // Blink only as of 2022-10
+                        "jitterBufferTargetDelay": null, // Blink only as of 2022-10
+                        "mid": null, // Blink only as of 2022-10
+                        "pauseCount": null, // Blink only as of 2022-10
                         "playoutId": null, // No implementation as of 2022-09
-                        "totalProcessingDelay": null, // Gecko only as of 2022-09
+                        "powerEfficientDecoder": null, // No implementation as of 2022-09
+                        "totalAssemblyTime": null, // Blink only as of 2022-10
+                        "totalFreezesDuration": null, // Blink only as of 2022-10
+                        "totalPausesDuration": null, // Blink only as of 2022-10
                         "trackIdentifier": null // No implementation as of 2022-09
                     }
                 }
@@ -439,8 +496,9 @@
             "RTCOutboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "active": null, // No implementation as of 2022-09
-                        "mid": null, // No implementation as of 2022-09
+                        "active": null, // Blink only as of 2022-10
+                        "mid": null, // Blink only as of 2022-10
+                        "powerEfficientEncoder": null, // No implementation as of 2022-10
                         "qualityLimitationReason": null, // Blink only as of 2022-09
                         "qualityLimitationDurations": null, // Blink only as of 2022-09
                         "encoderImplementation": null // Blink only as of 2022-09
@@ -457,8 +515,7 @@
             "RTCRtpEncodingParameters": {
                 "members": {
                     "member": {
-                        "networkPriority": null,
-                        "scalabilityMode": null
+                        "scalabilityMode": null // Blink only as of 2022-09
                     }
                 }
             },
@@ -494,18 +551,6 @@
                 "members": {
                     "member": {
                         "xrCompatible": null
-                    }
-                }
-            }
-        }
-    },
-    "mixins": {
-        "mixin":{
-            "NavigatorNetworkInformation": {
-                "properties": {
-                    "property": {
-                        // https://github.com/mdn/browser-compat-data/pull/17824
-                        "connection": null
                     }
                 }
             }

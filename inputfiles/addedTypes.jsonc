@@ -413,12 +413,6 @@
                 "deprecated": "prefer HTMLTableCellElement",
                 "exposed": "Window"
             },
-            "OffscreenCanvas": {
-                "name": "OffscreenCanvas",
-                "noInterfaceObject": true,
-                "deprecated": "this is not available in most browsers",
-                "exposed": "Worker"
-            },
             "HTMLDocument": {
                 "name": "HTMLDocument",
                 "extends": "Document",
