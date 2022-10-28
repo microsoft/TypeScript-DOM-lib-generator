@@ -250,10 +250,8 @@
             "FontFaceDescriptors": {
                 "members": {
                     "member": {
-                        "ascentOverride": null,
-                        "descentOverride": null,
-                        "lineGapOverride": null,
-                        "variationSettings": null
+                        "display": null,
+                        "variant": null
                     }
                 }
             },

@@ -1778,7 +1778,7 @@ declare var FileSystemSyncAccessHandle: {
 interface FontFace {
     ascentOverride: string;
     descentOverride: string;
-    display: string;
+    display: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
     family: string;
     featureSettings: string;
     lineGapOverride: string;

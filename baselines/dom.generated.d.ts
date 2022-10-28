@@ -487,7 +487,6 @@ interface FocusOptions {
 }
 
 interface FontFaceDescriptors {
-    display?: string;
     featureSettings?: string;
     stretch?: string;
     style?: string;
@@ -5479,7 +5478,7 @@ declare var FocusEvent: {
 interface FontFace {
     ascentOverride: string;
     descentOverride: string;
-    display: string;
+    display: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
     family: string;
     featureSettings: string;
     lineGapOverride: string;

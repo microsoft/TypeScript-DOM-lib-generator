@@ -1247,6 +1247,26 @@
                     }
                 ]
             },
+            "FontFace": {
+              "properties": {
+                "property": {
+                  "display": {
+                    "name": "display",
+                    "overrideType": "'auto' | 'block' | 'swap' | 'fallback' | 'optional'"
+                  }
+                }
+              }
+            },
+            "FontFaceDescriptors": {
+              "properties": {
+                "property": {
+                  "variant": {
+                    "name": "variationSettings",
+                    "overrideType": "'normal' | string"
+                  }
+                }
+              }
+            },
             "HTMLFrameSetElement": {
                 "element": [
                     {
