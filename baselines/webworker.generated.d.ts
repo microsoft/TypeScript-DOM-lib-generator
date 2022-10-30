@@ -198,10 +198,6 @@ interface FileSystemGetFileOptions {
     create?: boolean;
 }
 
-interface FileSystemReadWriteOptions {
-    at?: number;
-}
-
 interface FileSystemRemoveOptions {
     recursive?: boolean;
 }
@@ -1739,7 +1735,6 @@ declare var FileSystemDirectoryHandle: {
 /** Available only in secure contexts. */
 interface FileSystemFileHandle extends FileSystemHandle {
     readonly kind: "file";
-    createSyncAccessHandle(): Promise<FileSystemSyncAccessHandle>;
     getFile(): Promise<File>;
 }
 
@@ -1758,21 +1753,6 @@ interface FileSystemHandle {
 declare var FileSystemHandle: {
     prototype: FileSystemHandle;
     new(): FileSystemHandle;
-};
-
-/** Available only in secure contexts. */
-interface FileSystemSyncAccessHandle {
-    close(): void;
-    flush(): void;
-    getSize(): number;
-    read(buffer: BufferSource, options?: FileSystemReadWriteOptions): number;
-    truncate(newSize: number): void;
-    write(buffer: BufferSource, options?: FileSystemReadWriteOptions): number;
-}
-
-declare var FileSystemSyncAccessHandle: {
-    prototype: FileSystemSyncAccessHandle;
-    new(): FileSystemSyncAccessHandle;
 };
 
 interface FontFace {

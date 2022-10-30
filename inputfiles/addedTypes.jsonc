@@ -273,6 +273,15 @@
     },
     "enums": {
         "enum": {
+            "InsertPosition": {
+              "name": "InsertPosition",
+              "value": [
+                "beforebegin",
+                "beforeend",
+                "afterbegin",
+                "afterend"
+              ]
+            },
             "ClientType": {
                 "name": "ClientTypes"
             },
@@ -1251,10 +1260,6 @@
     },
     "typedefs": {
         "typedef": [
-            {
-                "overrideType": "\"beforebegin\" | \"afterbegin\" | \"beforeend\" | \"afterend\"",
-                "name": "InsertPosition"
-            },
             {
                 "type": {
                     "0": {
