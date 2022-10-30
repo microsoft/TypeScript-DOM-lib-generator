@@ -209,12 +209,13 @@ interface FileSystemRemoveOptions {
 interface FontFaceDescriptors {
     ascentOverride?: string;
     descentOverride?: string;
+    display?: FontDisplay;
     featureSettings?: string;
     lineGapOverride?: string;
     stretch?: string;
     style?: string;
     unicodeRange?: string;
-    variationSettings?: 'normal' | string;
+    variant?: string;
     weight?: string;
 }
 

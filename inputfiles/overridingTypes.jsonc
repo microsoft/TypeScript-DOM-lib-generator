@@ -3023,9 +3023,8 @@
             "FontFaceDescriptors": {
               "members": {
                 "member": {
-                  "variant": {
-                    "name": "variationSettings",
-                    "overrideType": "'normal' | string"
+                  "display":{
+                    "overrideType": "FontDisplay"
                   }
                 }
               }
