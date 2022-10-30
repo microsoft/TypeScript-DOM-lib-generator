@@ -1252,7 +1252,7 @@
                 "property": {
                   "display": {
                     "name": "display",
-                    "overrideType": "'auto' | 'block' | 'swap' | 'fallback' | 'optional'"
+                    "type": "'auto' | 'block' | 'swap' | 'fallback' | 'optional'"
                   }
                 }
               }
@@ -1262,7 +1262,7 @@
                 "property": {
                   "variant": {
                     "name": "variationSettings",
-                    "overrideType": "'normal' | string"
+                    "type": "'normal' | string"
                   }
                 }
               }
