@@ -487,11 +487,14 @@ interface FocusOptions {
 }
 
 interface FontFaceDescriptors {
+    ascentOverride?: string;
+    descentOverride?: string;
     featureSettings?: string;
+    lineGapOverride?: string;
     stretch?: string;
     style?: string;
     unicodeRange?: string;
-    variant?: string;
+    variationSettings?: 'normal' | string;
     weight?: string;
 }
 
@@ -5478,7 +5481,7 @@ declare var FocusEvent: {
 interface FontFace {
     ascentOverride: string;
     descentOverride: string;
-    display: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
+    display: FontDisplay;
     family: string;
     featureSettings: string;
     lineGapOverride: string;
@@ -18287,6 +18290,7 @@ type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type Float32List = Float32Array | GLfloat[];
+type FontDisplay = 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
 type FormDataEntryValue = File | string;
 type GLbitfield = number;
 type GLboolean = boolean;

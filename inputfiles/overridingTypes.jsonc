@@ -1252,17 +1252,7 @@
                 "property": {
                   "display": {
                     "name": "display",
-                    "type": "'auto' | 'block' | 'swap' | 'fallback' | 'optional'"
-                  }
-                }
-              }
-            },
-            "FontFaceDescriptors": {
-              "properties": {
-                "property": {
-                  "variant": {
-                    "name": "variationSettings",
-                    "type": "'normal' | string"
+                    "type": "FontDisplay"
                   }
                 }
               }
@@ -3029,7 +3019,17 @@
         }
     },
     "dictionaries": {
-        "dictionary": {
+          "dictionary": {
+            "FontFaceDescriptors": {
+              "members": {
+                "member": {
+                  "variant": {
+                    "name": "variationSettings",
+                    "overrideType": "'normal' | string"
+                  }
+                }
+              }
+            },
             // https://github.com/microsoft/TypeScript/issues/46036
             "CryptoKeyPair": {
                 "members": {
