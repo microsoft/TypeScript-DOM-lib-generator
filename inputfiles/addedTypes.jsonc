@@ -282,6 +282,16 @@
                 "afterend"
               ]
             },
+            "FontDisplay": {
+              "name": "FontDisplay",
+              "value": [
+                "auto",
+                "block",
+                "swap",
+                "fallback",
+                "optional"
+              ]
+            },
             "ClientType": {
                 "name": "ClientTypes"
             },
