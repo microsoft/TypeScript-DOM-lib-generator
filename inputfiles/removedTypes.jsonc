@@ -250,8 +250,7 @@
             "FontFaceDescriptors": {
                 "members": {
                     "member": {
-                        "display": null,
-                        "variant": null
+                        "variationSettings": null // Gecko-only as of 2022-10
                     }
                 }
             },
