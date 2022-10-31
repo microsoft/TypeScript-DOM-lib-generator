@@ -3023,7 +3023,7 @@
               "members": {
                 "member": {
                   "display":{
-                    "overrideType": "FontDisplay"
+                    "type": "FontDisplay"
                   }
                 }
               }
