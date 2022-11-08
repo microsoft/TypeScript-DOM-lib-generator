@@ -2961,6 +2961,11 @@ interface CSSStyleDeclaration {
     columnWidth: string;
     columns: string;
     contain: string;
+    containIntrinsicBlockSize: string;
+    containIntrinsicHeight: string;
+    containIntrinsicInlineSize: string;
+    containIntrinsicSize: string;
+    containIntrinsicWidth: string;
     container: string;
     containerName: string;
     containerType: string;
@@ -5492,7 +5497,6 @@ interface FontFace {
     style: string;
     unicodeRange: string;
     variant: string;
-    variationSettings: string;
     weight: string;
     load(): Promise<FontFace>;
 }

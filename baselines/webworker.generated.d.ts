@@ -1791,7 +1791,6 @@ interface FontFace {
     style: string;
     unicodeRange: string;
     variant: string;
-    variationSettings: string;
     weight: string;
     load(): Promise<FontFace>;
 }
