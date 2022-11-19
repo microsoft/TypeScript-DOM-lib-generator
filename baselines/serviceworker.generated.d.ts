@@ -1050,7 +1050,7 @@ interface Crypto {
     readonly subtle: SubtleCrypto;
     getRandomValues<T extends ArrayBufferView | null>(array: T): T;
     /** Available only in secure contexts. */
-    randomUUID(): string;
+    randomUUID(): `${string}-${string}-${string}-${string}-${string}`;
 }
 
 declare var Crypto: {
