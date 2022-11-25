@@ -873,6 +873,7 @@ interface MediaTrackSettings {
     restrictOwnAudio?: boolean;
     sampleRate?: number;
     sampleSize?: number;
+    suppressLocalAudioPlayback?: boolean;
     width?: number;
 }
 
@@ -2734,6 +2735,7 @@ interface CSSKeyframesRule extends CSSRule {
     appendRule(rule: string): void;
     deleteRule(select: string): void;
     findRule(select: string): CSSKeyframeRule | null;
+    [index: number]: CSSKeyframeRule;
 }
 
 declare var CSSKeyframesRule: {
