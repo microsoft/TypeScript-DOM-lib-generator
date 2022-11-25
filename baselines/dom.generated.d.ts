@@ -821,7 +821,6 @@ interface MediaTrackCapabilities {
     aspectRatio?: DoubleRange;
     autoGainControl?: boolean[];
     channelCount?: ULongRange;
-    cursor?: string[];
     deviceId?: string;
     displaySurface?: string;
     echoCancellation?: boolean[];
@@ -829,10 +828,7 @@ interface MediaTrackCapabilities {
     frameRate?: DoubleRange;
     groupId?: string;
     height?: ULongRange;
-    latency?: DoubleRange;
-    logicalSurface?: boolean;
     noiseSuppression?: boolean[];
-    resizeMode?: string[];
     sampleRate?: ULongRange;
     sampleSize?: ULongRange;
     width?: ULongRange;
@@ -843,16 +839,15 @@ interface MediaTrackConstraintSet {
     autoGainControl?: ConstrainBoolean;
     channelCount?: ConstrainULong;
     deviceId?: ConstrainDOMString;
+    displaySurface?: ConstrainDOMString;
     echoCancellation?: ConstrainBoolean;
     facingMode?: ConstrainDOMString;
     frameRate?: ConstrainDouble;
     groupId?: ConstrainDOMString;
     height?: ConstrainULong;
-    latency?: ConstrainDouble;
     noiseSuppression?: ConstrainBoolean;
     sampleRate?: ConstrainULong;
     sampleSize?: ConstrainULong;
-    suppressLocalAudioPlayback?: ConstrainBoolean;
     width?: ConstrainULong;
 }
 
@@ -863,14 +858,15 @@ interface MediaTrackConstraints extends MediaTrackConstraintSet {
 interface MediaTrackSettings {
     aspectRatio?: number;
     autoGainControl?: boolean;
+    channelCount?: number;
     deviceId?: string;
+    displaySurface?: string;
     echoCancellation?: boolean;
     facingMode?: string;
     frameRate?: number;
     groupId?: string;
     height?: number;
     noiseSuppression?: boolean;
-    restrictOwnAudio?: boolean;
     sampleRate?: number;
     sampleSize?: number;
     width?: number;
@@ -879,7 +875,9 @@ interface MediaTrackSettings {
 interface MediaTrackSupportedConstraints {
     aspectRatio?: boolean;
     autoGainControl?: boolean;
+    channelCount?: boolean;
     deviceId?: boolean;
+    displaySurface?: boolean;
     echoCancellation?: boolean;
     facingMode?: boolean;
     frameRate?: boolean;
@@ -888,7 +886,6 @@ interface MediaTrackSupportedConstraints {
     noiseSuppression?: boolean;
     sampleRate?: boolean;
     sampleSize?: boolean;
-    suppressLocalAudioPlayback?: boolean;
     width?: boolean;
 }
 
@@ -2734,6 +2731,7 @@ interface CSSKeyframesRule extends CSSRule {
     appendRule(rule: string): void;
     deleteRule(select: string): void;
     findRule(select: string): CSSKeyframeRule | null;
+    [index: number]: CSSKeyframeRule;
 }
 
 declare var CSSKeyframesRule: {

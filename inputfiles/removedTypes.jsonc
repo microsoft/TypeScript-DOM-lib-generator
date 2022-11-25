@@ -285,6 +285,19 @@
             "MediaTrackCapabilities": {
                 "members": {
                     "member": {
+                        // Gecko: Unsupported
+                        // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
+                        // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_capabilities.idl
+                        "latency": null, // Blink only as of 2022-11
+                        "resizeMode": null, // Blink only as of 2022-11
+
+                        // Screen Share extensions
+                        // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                        "cursor": null,
+                        "logicalSurface": null,
+
+                        // Image Capture extensions which is Blink only as of 2022-11
+                        // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
                         "whiteBalanceMode": null,
                         "exposureMode": null,
                         "focusMode": null,
@@ -307,11 +320,21 @@
             "MediaTrackConstraintSet": {
                 "members": {
                     "member": {
+                        // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaStreamTrack.webidl
+                        // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackConstraints.idl#28
+                        // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_constraint_set.idl
+                        "latency": null, // Blink only as of 2022-11
+                        "resizeMode": null, // Blink only as of 2022-11
+
+                        // Screen Share extensions
+                        // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
                         "cursor": null,
-                        "displaySurface": null,
                         "logicalSurface": null,
-                        "resizeMode": null,
                         "restrictOwnAudio": null,
+                        "suppressLocalAudioPlayback": null,
+
+                        // Image Capture extensions which is Blink only as of 2022-11
+                        // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
                         "whiteBalanceMode": null,
                         "exposureMode": null,
                         "focusMode": null,
@@ -335,12 +358,21 @@
             "MediaTrackSettings": {
                 "members": {
                     "member": {
-                        "channelCount": null,
-                        "cursor": null,
-                        "displaySurface": null,
-                        "latency": null,
-                        "logicalSurface": null,
-                        "resizeMode": null,
+                        // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSettings.webidl
+                        // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
+                        // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_settings.idl
+                        "latency": null, // Blink only as of 2022-11
+                        "resizeMode": null, // Blink only as of 2022-11
+
+                        // Screen Share extensions
+                        // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                        "cursor": null, // Blink only as of 2022-11
+                        "logicalSurface": null, // Blink only as of 2022-11
+                        "restrictOwnAudio": null, // Blink only as of 2022-11
+                        "suppressLocalAudioPlayback": null, // Blink only as of 2022-11
+
+                        // Image Capture extensions which are Blink only as of 2022-11
+                        // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
                         "whiteBalanceMode": null,
                         "exposureMode": null,
                         "focusMode": null,
@@ -364,13 +396,21 @@
             "MediaTrackSupportedConstraints": {
                 "members": {
                     "member": {
-                        "channelCount": null,
-                        "cursor": null,
-                        "displaySurface": null,
+                        // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSupportedConstraints.webidl
+                        // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackSupportedConstraints.idl
+                        // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_supported_constraints.idl
                         "latency": null,
-                        "logicalSurface": null,
                         "resizeMode": null,
+
+                        // Screen Share extensions
+                        // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                        "cursor": null,
+                        "logicalSurface": null,
                         "restrictOwnAudio": null,
+                        "suppressLocalAudioPlayback": null, // Blink only as of 2022-11
+
+                        // Image Capture extensions which are Blink only as of 2022-11
+                        // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
                         "whiteBalanceMode": null,
                         "exposureMode": null,
                         "focusMode": null,

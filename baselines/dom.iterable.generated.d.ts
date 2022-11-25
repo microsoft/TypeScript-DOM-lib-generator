@@ -14,6 +14,10 @@ interface BaseAudioContext {
     createPeriodicWave(real: Iterable<number>, imag: Iterable<number>, constraints?: PeriodicWaveConstraints): PeriodicWave;
 }
 
+interface CSSKeyframesRule {
+    [Symbol.iterator](): IterableIterator<CSSKeyframeRule>;
+}
+
 interface CSSRuleList {
     [Symbol.iterator](): IterableIterator<CSSRule>;
 }
