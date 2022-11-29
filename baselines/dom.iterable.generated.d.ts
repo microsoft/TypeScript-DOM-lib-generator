@@ -121,6 +121,16 @@ interface IDBObjectStore {
     createIndex(name: string, keyPath: string | Iterable<string>, options?: IDBIndexParameters): IDBIndex;
 }
 
+interface MIDIInputMap extends ReadonlyMap<string, MIDIInput> {
+}
+
+interface MIDIOutput {
+    send(data: Iterable<number>, timestamp?: DOMHighResTimeStamp): void;
+}
+
+interface MIDIOutputMap extends ReadonlyMap<string, MIDIOutput> {
+}
+
 interface MediaKeyStatusMap {
     [Symbol.iterator](): IterableIterator<[BufferSource, MediaKeyStatus]>;
     entries(): IterableIterator<[BufferSource, MediaKeyStatus]>;
