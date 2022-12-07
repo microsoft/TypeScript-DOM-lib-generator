@@ -1801,6 +1801,51 @@
                             "type": "MessageEvent"
                         }
                     ]
+                },
+                "constants": {
+                    "constant": {
+                        "CONNECTING": {
+                            "name": "CONNECTING",
+                            "readonly": true,
+                            "overrideType": "0"
+                        },
+                        "OPEN": {
+                            "name": "OPEN",
+                            "readonly": true,
+                            "overrideType": "1"
+                        },
+                        "CLOSING": {
+                            "name": "CLOSING",
+                            "readonly": true,
+                            "overrideType": "2"
+                        },
+                        "CLOSED": {
+                            "name": "CLOSED",
+                            "readonly": true,
+                            "overrideType": "3"
+                        }
+                    }
+                }
+            },
+            "EventSource": {
+                "constants": {
+                    "constant": {
+                        "CONNECTING": {
+                            "name": "CONNECTING",
+                            "readonly": true,
+                            "overrideType": "0"
+                        },
+                        "OPEN": {
+                            "name": "OPEN",
+                            "readonly": true,
+                            "overrideType": "1"
+                        },
+                        "CLOSED": {
+                            "name": "CLOSED",
+                            "readonly": true,
+                            "overrideType": "2"
+                        }
+                    }
                 }
             },
             "HTMLTableRowElement": {
@@ -1880,6 +1925,25 @@
                 }
             },
             "FileReader": {
+                "constants": {
+                    "constant": {
+                        "EMPTY": {
+                            "name": "EMPTY",
+                            "readonly": true,
+                            "overrideType": "0"
+                        },
+                        "LOADING": {
+                            "name": "LOADING",
+                            "readonly": true,
+                            "overrideType": "1"
+                        },
+                        "DONE": {
+                            "name": "DONE",
+                            "readonly": true,
+                            "overrideType": "2"
+                        }
+                    }
+                },
                 "events": {
                     "event": [
                         {

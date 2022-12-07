@@ -1437,9 +1437,9 @@ interface EventSource extends EventTarget {
     readonly withCredentials: boolean;
     /** Aborts any instances of the fetch algorithm started for this EventSource object, and sets the readyState attribute to CLOSED. */
     close(): void;
-    readonly CLOSED: number;
-    readonly CONNECTING: number;
-    readonly OPEN: number;
+    readonly CLOSED: 2;
+    readonly CONNECTING: 0;
+    readonly OPEN: 1;
     addEventListener<K extends keyof EventSourceEventMap>(type: K, listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -1451,9 +1451,9 @@ interface EventSource extends EventTarget {
 declare var EventSource: {
     prototype: EventSource;
     new(url: string | URL, eventSourceInitDict?: EventSourceInit): EventSource;
-    readonly CLOSED: number;
-    readonly CONNECTING: number;
-    readonly OPEN: number;
+    readonly CLOSED: 2;
+    readonly CONNECTING: 0;
+    readonly OPEN: 1;
 };
 
 /** EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them. */
@@ -1534,9 +1534,9 @@ interface FileReader extends EventTarget {
     readAsBinaryString(blob: Blob): void;
     readAsDataURL(blob: Blob): void;
     readAsText(blob: Blob, encoding?: string): void;
-    readonly DONE: number;
-    readonly EMPTY: number;
-    readonly LOADING: number;
+    readonly DONE: 2;
+    readonly EMPTY: 0;
+    readonly LOADING: 1;
     addEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -1546,9 +1546,9 @@ interface FileReader extends EventTarget {
 declare var FileReader: {
     prototype: FileReader;
     new(): FileReader;
-    readonly DONE: number;
-    readonly EMPTY: number;
-    readonly LOADING: number;
+    readonly DONE: 2;
+    readonly EMPTY: 0;
+    readonly LOADING: 1;
 };
 
 /** Allows to read File or Blob objects in a synchronous way. */
@@ -5194,10 +5194,10 @@ interface WebSocket extends EventTarget {
     close(code?: number, reason?: string): void;
     /** Transmits data using the WebSocket connection. data can be a string, a Blob, an ArrayBuffer, or an ArrayBufferView. */
     send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void;
-    readonly CLOSED: number;
-    readonly CLOSING: number;
-    readonly CONNECTING: number;
-    readonly OPEN: number;
+    readonly CLOSED: 3;
+    readonly CLOSING: 2;
+    readonly CONNECTING: 0;
+    readonly OPEN: 1;
     addEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -5207,10 +5207,10 @@ interface WebSocket extends EventTarget {
 declare var WebSocket: {
     prototype: WebSocket;
     new(url: string | URL, protocols?: string | string[]): WebSocket;
-    readonly CLOSED: number;
-    readonly CLOSING: number;
-    readonly CONNECTING: number;
-    readonly OPEN: number;
+    readonly CLOSED: 3;
+    readonly CLOSING: 2;
+    readonly CONNECTING: 0;
+    readonly OPEN: 1;
 };
 
 interface WindowOrWorkerGlobalScope {
