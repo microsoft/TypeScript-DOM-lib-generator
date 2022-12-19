@@ -165,6 +165,11 @@ export function emitWebIdl(
 
   /// Tag name to element name map
   const tagNameToEleName = getTagNameToElementNameMap();
+  const tagNameMapNames = [
+    "HTMLElementTagNameMap",
+    "SVGElementTagNameMap",
+    "MathMLElementTagNameMap",
+  ];
 
   /// Interface name to all its implemented / inherited interfaces name list map
   /// e.g. If i1 depends on i2, i2 should be in dependencyMap.[i1.Name]
@@ -238,11 +243,14 @@ export function emitWebIdl(
     const htmlResult: Record<string, string> = {};
     const htmlDeprecatedResult: Record<string, string> = {};
     const svgResult: Record<string, string> = {};
+    const mathMLResult: Record<string, string> = {};
     for (const i of allNonCallbackInterfaces) {
       if (i.element) {
         for (const e of i.element) {
           if (e.namespace === "SVG") {
             svgResult[e.name] = i.name;
+          } else if (e.namespace === "MathML") {
+            mathMLResult[e.name] = i.name;
           } else if (e.deprecated || i.deprecated) {
             htmlDeprecatedResult[e.name] = i.name;
           } else {
@@ -251,7 +259,7 @@ export function emitWebIdl(
         }
       }
     }
-    return { htmlResult, htmlDeprecatedResult, svgResult };
+    return { htmlResult, htmlDeprecatedResult, svgResult, mathMLResult };
   }
 
   function getExtendList(iName: string): string[] {
@@ -535,20 +543,18 @@ export function emitWebIdl(
         "string"
       )
     ) {
+      const paramName = m.signature[0].param![0].name;
+      for (const mapName of tagNameMapNames) {
+        printer.printLine(
+          `getElementsByTagName<K extends keyof ${mapName}>(${paramName}: K): HTMLCollectionOf<${mapName}[K]>;`
+        );
+      }
+      printer.printLine("/** @deprecated */");
       printer.printLine(
-        `getElementsByTagName<K extends keyof HTMLElementTagNameMap>(${
-          m.signature[0].param![0].name
-        }: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;`
+        `getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;`
       );
       printer.printLine(
-        `getElementsByTagName<K extends keyof SVGElementTagNameMap>(${
-          m.signature[0].param![0].name
-        }: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;`
-      );
-      printer.printLine(
-        `getElementsByTagName(${
-          m.signature[0].param![0].name
-        }: string): HTMLCollectionOf<Element>;`
+        `getElementsByTagName(${paramName}: string): HTMLCollectionOf<Element>;`
       );
     }
   }
@@ -558,14 +564,18 @@ export function emitWebIdl(
     if (
       matchParamMethodSignature(m, "querySelector", "Element | null", "string")
     ) {
+      const paramName = m.signature[0].param![0].name;
+      for (const mapName of tagNameMapNames) {
+        printer.printLine(
+          `querySelector<K extends keyof ${mapName}>(${paramName}: K): ${mapName}[K] | null;`
+        );
+      }
+      printer.printLine("/** @deprecated */");
       printer.printLine(
-        "querySelector<K extends keyof HTMLElementTagNameMap>(selectors: K): HTMLElementTagNameMap[K] | null;"
+        `querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLElementDeprecatedTagNameMap[K] | null;`
       );
       printer.printLine(
-        "querySelector<K extends keyof SVGElementTagNameMap>(selectors: K): SVGElementTagNameMap[K] | null;"
-      );
-      printer.printLine(
-        "querySelector<E extends Element = Element>(selectors: string): E | null;"
+        `querySelector<E extends Element = Element>(${paramName}: string): E | null;`
       );
     }
   }
@@ -575,50 +585,26 @@ export function emitWebIdl(
     if (
       matchParamMethodSignature(m, "querySelectorAll", "NodeList", "string")
     ) {
+      const paramName = m.signature[0].param![0].name;
+      for (const mapName of tagNameMapNames) {
+        printer.printLine(
+          `querySelectorAll<K extends keyof ${mapName}>(${paramName}: K): NodeListOf<${mapName}[K]>;`
+        );
+      }
+      printer.printLine("/** @deprecated */");
       printer.printLine(
-        "querySelectorAll<K extends keyof HTMLElementTagNameMap>(selectors: K): NodeListOf<HTMLElementTagNameMap[K]>;"
+        `querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;`
       );
       printer.printLine(
-        "querySelectorAll<K extends keyof SVGElementTagNameMap>(selectors: K): NodeListOf<SVGElementTagNameMap[K]>;"
-      );
-      printer.printLine(
-        "querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;"
+        `querySelectorAll<E extends Element = Element>(${paramName}: string): NodeListOf<E>;`
       );
     }
   }
 
-  function emitHTMLElementTagNameMap() {
-    printer.printLine("interface HTMLElementTagNameMap {");
+  function emitElementTagNameMap(name: string, map: Record<string, string>) {
+    printer.printLine(`interface ${name} {`);
     printer.increaseIndent();
-    for (const [e, value] of Object.entries(
-      tagNameToEleName.htmlResult
-    ).sort()) {
-      printer.printLine(`"${e.toLowerCase()}": ${value};`);
-    }
-    printer.decreaseIndent();
-    printer.printLine("}");
-    printer.printLine("");
-  }
-
-  function emitHTMLElementDeprecatedTagNameMap() {
-    printer.printLine("interface HTMLElementDeprecatedTagNameMap {");
-    printer.increaseIndent();
-    for (const [e, value] of Object.entries(
-      tagNameToEleName.htmlDeprecatedResult
-    ).sort()) {
-      printer.printLine(`"${e.toLowerCase()}": ${value};`);
-    }
-    printer.decreaseIndent();
-    printer.printLine("}");
-    printer.printLine("");
-  }
-
-  function emitSVGElementTagNameMap() {
-    printer.printLine("interface SVGElementTagNameMap {");
-    printer.increaseIndent();
-    for (const [e, value] of Object.entries(
-      tagNameToEleName.svgResult
-    ).sort()) {
+    for (const [e, value] of Object.entries(map).sort()) {
       printer.printLine(`"${e}": ${value};`);
     }
     printer.decreaseIndent();
@@ -626,7 +612,7 @@ export function emitWebIdl(
     printer.printLine("");
   }
 
-  function emitElementTagNameMap() {
+  function emitDeprecatedHTMLOrSVGElementTagNameMap() {
     printer.printLine(
       "/** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */"
     );
@@ -1510,10 +1496,20 @@ export function emitWebIdl(
     emitCallBackFunctions();
 
     if (global === "Window") {
-      emitHTMLElementTagNameMap();
-      emitHTMLElementDeprecatedTagNameMap();
-      emitSVGElementTagNameMap();
-      emitElementTagNameMap();
+      emitElementTagNameMap(
+        "HTMLElementTagNameMap",
+        tagNameToEleName.htmlResult
+      );
+      emitElementTagNameMap(
+        "HTMLElementDeprecatedTagNameMap",
+        tagNameToEleName.htmlDeprecatedResult
+      );
+      emitElementTagNameMap("SVGElementTagNameMap", tagNameToEleName.svgResult);
+      emitElementTagNameMap(
+        "MathMLElementTagNameMap",
+        tagNameToEleName.mathMLResult
+      );
+      emitDeprecatedHTMLOrSVGElementTagNameMap();
       emitNamedConstructors();
     }
 

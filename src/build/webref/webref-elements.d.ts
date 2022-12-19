@@ -12,5 +12,5 @@ declare module "@webref/elements" {
     spec: Spec;
     elements: Element[];
   }
-  function listAll(): Promise<Item[]>;
+  function listAll(): Promise<Record<string, Item>>;
 }

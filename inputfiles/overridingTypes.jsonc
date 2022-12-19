@@ -641,7 +641,8 @@
                             "name": "getElementsByTagNameNS",
                             "additionalSignatures": [
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
                             ],
                             "signature": {
                                 "0": {
@@ -1294,7 +1295,8 @@
                             "name": "getElementsByTagNameNS",
                             "additionalSignatures": [
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
                             ],
                             "signature": {
                                 "0": {

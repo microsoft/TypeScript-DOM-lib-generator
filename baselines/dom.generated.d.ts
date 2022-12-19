@@ -612,6 +612,11 @@ interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
 }
 
+interface ImageEncodeOptions {
+    quality?: number;
+    type?: string;
+}
+
 interface ImportMeta {
     url: string;
 }
@@ -2205,7 +2210,7 @@ declare var AnimationPlaybackEvent: {
 };
 
 interface AnimationTimeline {
-    readonly currentTime: CSSNumberish | null;
+    readonly currentTime: number | null;
 }
 
 declare var AnimationTimeline: {
@@ -4641,6 +4646,8 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
     createElementNS(namespaceURI: "http://www.w3.org/1999/xhtml", qualifiedName: string): HTMLElement;
     createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: K): SVGElementTagNameMap[K];
     createElementNS(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: string): SVGElement;
+    createElementNS<K extends keyof MathMLElementTagNameMap>(namespaceURI: "http://www.w3.org/1998/Math/MathML", qualifiedName: K): MathMLElementTagNameMap[K];
+    createElementNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", qualifiedName: string): MathMLElement;
     createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element;
     createElementNS(namespace: string | null, qualifiedName: string, options?: string | ElementCreationOptions): Element;
     createEvent(eventInterface: "AnimationEvent"): AnimationEvent;
@@ -4758,6 +4765,9 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      */
     getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
     getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+    /** @deprecated */
+    getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
     getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
     /**
      * If namespace and localName are "*" returns a HTMLCollection of all descendant elements.
@@ -4770,6 +4780,7 @@ interface Document extends Node, DocumentAndElementEventHandlers, DocumentOrShad
      */
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollectionOf<MathMLElement>;
     getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollectionOf<Element>;
     /** Returns an object representing the current selection of the document that is loaded into the object displaying a webpage. */
     getSelection(): Selection | null;
@@ -5053,6 +5064,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     /** Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise. */
     closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null;
     closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null;
+    closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null;
     closest<E extends Element = Element>(selectors: string): E | null;
     /** Returns element's first attribute whose qualified name is qualifiedName, and null if there is no such attribute otherwise. */
     getAttribute(qualifiedName: string): string | null;
@@ -5068,9 +5080,13 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
     getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
     getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+    /** @deprecated */
+    getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
     getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollectionOf<MathMLElement>;
     getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollectionOf<Element>;
     /** Returns true if element has an attribute whose qualified name is qualifiedName, and false otherwise. */
     hasAttribute(qualifiedName: string): boolean;
@@ -10530,6 +10546,12 @@ interface OffscreenCanvas extends EventTarget {
      */
     width: number;
     /**
+     * Returns a promise that will fulfill with a new Blob object representing a file containing the image in the OffscreenCanvas object.
+     *
+     * The argument, if provided, is a dictionary that controls the encoding options of the image file to be created. The type field specifies the file format and has a default value of "image/png"; that type is also used if the requested type isn't supported. If the image format supports variable quality (such as "image/jpeg"), then the quality field is a number in the range 0.0 to 1.0 inclusive indicating the desired quality level for the resulting image.
+     */
+    convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
+    /**
      * Returns an object that exposes an API for drawing on the OffscreenCanvas object. contextId specifies the desired API: "2d", "bitmaprenderer", "webgl", or "webgl2". options is handled by that API.
      *
      * This specification defines the "2d" context below, which is similar but distinct from the "2d" context that is created from a canvas element. The WebGL specifications define the "webgl" and "webgl2" contexts. [WEBGL]
@@ -10658,10 +10680,16 @@ interface ParentNode extends Node {
     /** Returns the first element that is a descendant of node that matches selectors. */
     querySelector<K extends keyof HTMLElementTagNameMap>(selectors: K): HTMLElementTagNameMap[K] | null;
     querySelector<K extends keyof SVGElementTagNameMap>(selectors: K): SVGElementTagNameMap[K] | null;
+    querySelector<K extends keyof MathMLElementTagNameMap>(selectors: K): MathMLElementTagNameMap[K] | null;
+    /** @deprecated */
+    querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K): HTMLElementDeprecatedTagNameMap[K] | null;
     querySelector<E extends Element = Element>(selectors: string): E | null;
     /** Returns all element descendants of node that match selectors. */
     querySelectorAll<K extends keyof HTMLElementTagNameMap>(selectors: K): NodeListOf<HTMLElementTagNameMap[K]>;
     querySelectorAll<K extends keyof SVGElementTagNameMap>(selectors: K): NodeListOf<SVGElementTagNameMap[K]>;
+    querySelectorAll<K extends keyof MathMLElementTagNameMap>(selectors: K): NodeListOf<MathMLElementTagNameMap[K]>;
+    /** @deprecated */
+    querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
     querySelectorAll<E extends Element = Element>(selectors: string): NodeListOf<E>;
     /**
      * Replace all children of node with nodes, while replacing strings in nodes with equivalent Text nodes.
@@ -17965,6 +17993,39 @@ interface SVGElementTagNameMap {
     "tspan": SVGTSpanElement;
     "use": SVGUseElement;
     "view": SVGViewElement;
+}
+
+interface MathMLElementTagNameMap {
+    "annotation": MathMLElement;
+    "annotation-xml": MathMLElement;
+    "maction": MathMLElement;
+    "math": MathMLElement;
+    "merror": MathMLElement;
+    "mfrac": MathMLElement;
+    "mi": MathMLElement;
+    "mmultiscripts": MathMLElement;
+    "mn": MathMLElement;
+    "mo": MathMLElement;
+    "mover": MathMLElement;
+    "mpadded": MathMLElement;
+    "mphantom": MathMLElement;
+    "mprescripts": MathMLElement;
+    "mroot": MathMLElement;
+    "mrow": MathMLElement;
+    "ms": MathMLElement;
+    "mspace": MathMLElement;
+    "msqrt": MathMLElement;
+    "mstyle": MathMLElement;
+    "msub": MathMLElement;
+    "msubsup": MathMLElement;
+    "msup": MathMLElement;
+    "mtable": MathMLElement;
+    "mtd": MathMLElement;
+    "mtext": MathMLElement;
+    "mtr": MathMLElement;
+    "munder": MathMLElement;
+    "munderover": MathMLElement;
+    "semantics": MathMLElement;
 }
 
 /** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */
