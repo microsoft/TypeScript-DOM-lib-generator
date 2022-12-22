@@ -6691,6 +6691,8 @@ interface HTMLFormElement extends HTMLElement {
     name: string;
     /** Designates a form that is not validated when submitted. */
     noValidate: boolean;
+    rel: string;
+    readonly relList: DOMTokenList;
     /** Sets or retrieves the window or frame at which to target content. */
     target: string;
     /** Returns whether a form will validate when it is submitted, without having to submit it. */
@@ -11240,6 +11242,7 @@ interface PublicKeyCredential extends Credential {
 declare var PublicKeyCredential: {
     prototype: PublicKeyCredential;
     new(): PublicKeyCredential;
+    isConditionalMediationAvailable(): Promise<boolean>;
     isUserVerifyingPlatformAuthenticatorAvailable(): Promise<boolean>;
 };
 
