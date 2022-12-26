@@ -16,9 +16,6 @@
             "ConnectionType": {
                 "value": ["wimax"]
             },
-            "CredentialMediationRequirement": {
-                "value": ["conditional"] // tied to Credential#isConditionalMediationAvailable
-            },
             "GamepadHapticActuatorType": {
                 "value": ["dual-rumble"] // Blink only as of 2022-12
             },
