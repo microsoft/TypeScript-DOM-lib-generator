@@ -84,19 +84,6 @@
                     }
                 }
             },
-            "Response": {
-                "methods": {
-                    "method": {
-                        // BCD's api.Response.json is not about the static method but about Body#json.
-                        // See:
-                        // Firefox https://bugzil.la/1758943
-                        // Chrome https://crbug.com/1305358
-                        // Safari https://webkit.org/b/240375
-                        // MDN https://github.com/mdn/content/discussions/5121#discussioncomment-2735488
-                        "json": null
-                    }
-                }
-            },
             "PaymentResponse": {
                 "methods": {
                     "method": {
