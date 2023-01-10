@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
           cache: npm
@@ -25,7 +25,7 @@ jobs:
       - name: Create packages for .d.ts files
         run: node deploy/createTypesPackages.js
 
-      - name: "Deploy built packages to NPM" 
+      - name: "Deploy built packages to NPM"
         run: |
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           npm i -g npm@latest

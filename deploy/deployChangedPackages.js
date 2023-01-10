@@ -8,7 +8,7 @@
 import * as fs from "fs";
 import { spawnSync } from "child_process";
 import { Octokit } from "@octokit/rest";
-import printDiff from "print-diff";
+import { printInlineDiff } from "print-diff";
 import { generateChangelogFrom } from "../lib/changelog.js";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
@@ -65,7 +65,7 @@ for (const dirName of fs.readdirSync(generatedDir)) {
       );
       console.log(` - ${file}`);
       if (oldFile !== generatedDTSContent)
-        printDiff(oldFile, generatedDTSContent);
+        printInlineDiff(oldFile, generatedDTSContent);
 
       const title = `## \`${file}\``;
       const notes = generateChangelogFrom(oldFile, generatedDTSContent);
