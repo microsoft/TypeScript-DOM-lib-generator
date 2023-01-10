@@ -6,6 +6,7 @@
         "AesGcmParams",
         "AesKeyAlgorithm",
         "AesKeyGenParams",
+        "AutoFill",
         "BigInteger",
         "ClientQueryOptions",
         "ClientTypes",
