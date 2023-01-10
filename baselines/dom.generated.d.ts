@@ -5766,7 +5766,7 @@ interface GlobalEventHandlersEventMap {
     "focusout": FocusEvent;
     "formdata": FormDataEvent;
     "gotpointercapture": PointerEvent;
-    "input": Event;
+    "input": InputEvent;
     "invalid": Event;
     "keydown": KeyboardEvent;
     "keypress": KeyboardEvent;
@@ -5935,7 +5935,7 @@ interface GlobalEventHandlers {
     onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
     onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
     ongotpointercapture: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
-    oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oninput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
     oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /**
      * Fires when the user presses a key.
@@ -18265,7 +18265,7 @@ declare var onerror: OnErrorEventHandler;
 declare var onfocus: ((this: Window, ev: FocusEvent) => any) | null;
 declare var onformdata: ((this: Window, ev: FormDataEvent) => any) | null;
 declare var ongotpointercapture: ((this: Window, ev: PointerEvent) => any) | null;
-declare var oninput: ((this: Window, ev: Event) => any) | null;
+declare var oninput: ((this: Window, ev: InputEvent) => any) | null;
 declare var oninvalid: ((this: Window, ev: Event) => any) | null;
 /**
  * Fires when the user presses a key.

@@ -50,6 +50,10 @@
                             "type": "PointerEvent"
                         },
                         {
+                            "name": "input",
+                            "type": "InputEvent"
+                        },
+                        {
                             "name": "lostpointercapture",
                             "type": "PointerEvent"
                         },
