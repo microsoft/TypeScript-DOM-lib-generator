@@ -1136,6 +1136,20 @@
                     }
                 }
             },
+            "OffscreenCanvas": {
+                "methods": {
+                    "method": {
+                        "getContext": {
+                            "additionalSignatures": [
+                                "getContext(contextId: \"2d\", options?: any): OffscreenCanvasRenderingContext2D | null",
+                                "getContext(contextId: \"bitmaprenderer\", options?: any): ImageBitmapRenderingContext | null",
+                                "getContext(contextId: \"webgl\", options?: any): WebGLRenderingContext | null",
+                                "getContext(contextId: \"webgl2\", options?: any): WebGL2RenderingContext | null"
+                            ]
+                        }
+                    }
+                }
+            },
             "BeforeUnloadEvent": {
                 "properties": {
                     "property": {
