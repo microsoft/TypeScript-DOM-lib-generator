@@ -2005,7 +2005,6 @@ interface ARIAMixin {
     ariaChecked: string | null;
     ariaColCount: string | null;
     ariaColIndex: string | null;
-    ariaColIndexText: string | null;
     ariaColSpan: string | null;
     ariaCurrent: string | null;
     ariaDisabled: string | null;
@@ -2029,7 +2028,6 @@ interface ARIAMixin {
     ariaRoleDescription: string | null;
     ariaRowCount: string | null;
     ariaRowIndex: string | null;
-    ariaRowIndexText: string | null;
     ariaRowSpan: string | null;
     ariaSelected: string | null;
     ariaSetSize: string | null;
@@ -3000,6 +2998,7 @@ interface CSSStyleDeclaration {
     containerName: string;
     containerType: string;
     content: string;
+    contentVisibility: string;
     counterIncrement: string;
     counterReset: string;
     counterSet: string;
@@ -3119,6 +3118,7 @@ interface CSSStyleDeclaration {
     maskRepeat: string;
     maskSize: string;
     maskType: string;
+    mathStyle: string;
     maxBlockSize: string;
     maxHeight: string;
     maxInlineSize: string;
@@ -3772,6 +3772,7 @@ declare var ClipboardEvent: {
 
 /** Available only in secure contexts. */
 interface ClipboardItem {
+    readonly presentationStyle: PresentationStyle;
     readonly types: ReadonlyArray<string>;
     getType(type: string): Promise<Blob>;
 }
