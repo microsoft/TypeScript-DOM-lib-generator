@@ -1923,6 +1923,14 @@
                             "type": "ProgressEvent"
                         }
                     ]
+                },
+                "properties": {
+                    "property": {
+                        "readyState": {
+                            "name": "readyState",
+                            "overrideType": "typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
+                        }
+                    }
                 }
             },
             "FileSystemDirectoryHandle": {
