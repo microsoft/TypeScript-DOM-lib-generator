@@ -46,6 +46,18 @@
                             "type": "AnimationEvent"
                         },
                         {
+                            "name": "cut",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "copy",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "paste",
+                            "type": "ClipboardEvent"
+                        },
+                        {
                             "name": "gotpointercapture",
                             "type": "PointerEvent"
                         },
