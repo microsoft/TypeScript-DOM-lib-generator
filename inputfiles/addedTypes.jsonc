@@ -353,19 +353,25 @@
                     "xr-spatial-tracking"
                 ]
             },
-            "AutoFill": {
-                "name": "AutoFill",
-                // See the full list of possible autofill values for the `autocomplete`attribut:
-                // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-                // Note that other values are also possible, like section-*, so it should still allow a string.
-                // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+            "AutoFillBase": {
+                "name": "AutoFillBase",
                 "value": [
                     // Off
                     "off",
                     // Automatic
-                    "on",
-
-                    // Normal
+                    "on"
+                ]
+            },
+            "AutoFillAddressKind": {
+                "name": "AutoFillAddressKind",
+                "value": [
+                    "shipping",
+                    "billing"
+                ]
+            },
+            "AutoFillNormalField": {
+                "name": "AutoFillNormalField",
+                "value": [
                     "name",
                     "honorific-prefix",
                     "given-name",
@@ -373,13 +379,13 @@
                     "family-name",
                     "honorific-suffix",
                     "nickname",
-                    "organization-title",
 
                     "username",
                     "new-password",
                     "current-password",
                     "one-time-code",
 
+                    "organization-title",
                     "organization",
                     "street-address",
                     "address-line1",
@@ -413,20 +419,37 @@
                     "bday-year",
                     "sex",
                     "url",
-                    "photo",
-
-                    // Contact
+                    "photo"
+                ]
+            },
+            "AutoFillContactKind": {
+                "name": "AutoFillContactKind",
+                "value": [
+                    "home",
+                    "work",
+                    "mobile",
+                    "fax",
+                    "pager"
+                ]
+            },
+            "AutoFillContactField": {
+                "name": "AutoFillContactField",
+                "value": [
                     "tel",
                     "tel-country-code",
                     "tel-national",
                     "tel-area-code",
                     "tel-local",
+                    "tel-local-prefix",
+                    "tel-local-suffix",
                     "tel-extension",
-
                     "email",
-                    "impp",
-
-                    // Credential
+                    "impp"
+                ]
+            },
+            "AutoFillCredentialField": {
+                "name": "AutoFillCredentialField",
+                "value": [
                     "webauthn"
                 ]
             }
@@ -1499,6 +1522,21 @@
             {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
+            },
+            {
+                "name": "AutoFillSection",
+                "overrideType": "`section-${string}`"
+            },
+            {
+                "name": "AutoFillField",
+                "overrideType": "AutoFillNormalField | AutoFillContactField | `${AutoFillContactKind} ${AutoFillContactField}`"
+            },
+            {
+                // See the full list of possible autofill values for the `autocomplete` attribute:
+                // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+                // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+                "name": "AutoFill",
+                "overrideType": "AutoFillBase | AutoFillField | `${AutoFillSection} ${AutoFillField}` | `${AutoFillAddressKind} ${AutoFillField}` | `${AutoFillSection} ${AutoFillAddressKind} ${AutoFillField}` | `${AutoFillSection} ${AutoFillAddressKind} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillAddressKind} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillSection} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillField} ${AutoFillCredentialField}`"
             }
         ]
     }

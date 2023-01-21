@@ -10260,7 +10260,7 @@ interface HTMLFormElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/autocomplete)
      */
-    autocomplete: "off" | "on";
+    autocomplete: AutoFillBase;
     /**
      * Retrieves a collection, in source order, of all controls in a given form.
      *
@@ -10928,7 +10928,7 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/autocomplete)
      */
-    autocomplete: AutoFill | (string & {});
+    autocomplete: AutoFill;
     capture: string;
     /** Sets or retrieves the state of the check box or radio button. */
     checked: boolean;
@@ -12309,7 +12309,7 @@ declare var HTMLScriptElement: {
  */
 interface HTMLSelectElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/autocomplete) */
-    autocomplete: AutoFill | (string & {});
+    autocomplete: AutoFill;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/disabled) */
     disabled: boolean;
     /**
@@ -13111,7 +13111,7 @@ declare var HTMLTemplateElement: {
  */
 interface HTMLTextAreaElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/autocomplete) */
-    autocomplete: AutoFill | (string & {});
+    autocomplete: AutoFill;
     /** Sets or retrieves the width of the object. */
     cols: number;
     /** Sets or retrieves the initial contents of the object. */
@@ -27926,6 +27926,9 @@ declare function addEventListener(type: string, listener: EventListenerOrEventLi
 declare function removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = Algorithm | string;
+type AutoFill = AutoFillBase | AutoFillField | `${AutoFillSection} ${AutoFillField}` | `${AutoFillAddressKind} ${AutoFillField}` | `${AutoFillSection} ${AutoFillAddressKind} ${AutoFillField}` | `${AutoFillSection} ${AutoFillAddressKind} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillAddressKind} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillSection} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillField} ${AutoFillCredentialField}`;
+type AutoFillField = AutoFillNormalField | AutoFillContactField | `${AutoFillContactKind} ${AutoFillContactField}`;
+type AutoFillSection = `section-${string}`;
 type BigInteger = Uint8Array;
 type BinaryData = ArrayBuffer | ArrayBufferView;
 type BlobPart = BufferSource | Blob | string;
@@ -28000,7 +28003,12 @@ type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "running" | "suspended";
 type AuthenticatorAttachment = "cross-platform" | "platform";
 type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";
-type AutoFill = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday" | "bday-day" | "bday-month" | "bday-year" | "cc-additional-name" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "impp" | "language" | "name" | "new-password" | "nickname" | "off" | "on" | "one-time-code" | "organization" | "organization-title" | "photo" | "postal-code" | "sex" | "street-address" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-national" | "transaction-amount" | "transaction-currency" | "url" | "username" | "webauthn";
+type AutoFillAddressKind = "billing" | "shipping";
+type AutoFillBase = "off" | "on";
+type AutoFillContactField = "email" | "impp" | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local" | "tel-local-prefix" | "tel-local-suffix" | "tel-national";
+type AutoFillContactKind = "fax" | "home" | "mobile" | "pager" | "work";
+type AutoFillCredentialField = "webauthn";
+type AutoFillNormalField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "bday" | "bday-day" | "bday-month" | "bday-year" | "cc-additional-name" | "cc-csc" | "cc-exp" | "cc-exp-month" | "cc-exp-year" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-type" | "country" | "country-name" | "current-password" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization" | "organization-title" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username";
 type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
 type AvcBitstreamFormat = "annexb" | "avc";

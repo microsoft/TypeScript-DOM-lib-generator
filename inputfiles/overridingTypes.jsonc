@@ -1283,8 +1283,7 @@
                     "property": {
                         "autocomplete": {
                             "name": "autocomplete",
-                            // allow custom values like section-* without losing type completion
-                            "overrideType": "AutoFill | (string & {})"
+                            "overrideType": "AutoFill"
                         },
                         "selectedOptions": {
                             "name": "selectedOptions",
@@ -1691,8 +1690,7 @@
                     "property": {
                         "autocomplete": {
                             "name": "autocomplete",
-                            // allow custom values like section-* without losing type completion
-                            "overrideType": "AutoFill | (string & {})"
+                            "overrideType": "AutoFill"
                         },
                         "selectionDirection": {
                             "name": "selectionDirection",
@@ -1818,8 +1816,7 @@
                     "property": {
                         "autocomplete": {
                             "name": "autocomplete",
-                            // allow custom values like section-* without losing type completion
-                            "overrideType": "AutoFill | (string & {})"
+                            "overrideType": "AutoFill"
                         },
                         "labels": {
                             "name": "labels",
@@ -2463,7 +2460,7 @@
                     "property": {
                         "autocomplete": {
                             "name": "autocomplete",
-                            "overrideType": "\"off\" | \"on\""
+                            "overrideType": "AutoFillBase"
                         }
                     }
                 }
