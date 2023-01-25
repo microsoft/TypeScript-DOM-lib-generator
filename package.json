@@ -36,7 +36,7 @@
   "license": "Apache-2.0",
   "type": "module",
   "devDependencies": {
-    "@mdn/browser-compat-data": "^5.2.26",
+    "@mdn/browser-compat-data": "^5.2.31",
     "@octokit/rest": "^19.0.5",
     "@types/node": "^18.11.18",
     "@types/prettier": "^2.7.2",
