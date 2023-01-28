@@ -2639,16 +2639,6 @@ declare var CDATASection: {
     new(): CDATASection;
 };
 
-interface CSPViolationReportBody extends ReportBody {
-    readonly effectiveDirective: string;
-    readonly statusCode: number;
-}
-
-declare var CSPViolationReportBody: {
-    prototype: CSPViolationReportBody;
-    new(): CSPViolationReportBody;
-};
-
 interface CSSAnimation extends Animation {
     readonly animationName: string;
     addEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSAnimation, ev: AnimationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
