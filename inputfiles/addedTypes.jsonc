@@ -443,8 +443,7 @@
                     "tel-local-prefix",
                     "tel-local-suffix",
                     "tel-extension",
-                    "email",
-                    "impp"
+                    "email"
                 ]
             },
             "AutoFillCredentialField": {
