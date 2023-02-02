@@ -378,14 +378,12 @@
                     "additional-name",
                     "family-name",
                     "honorific-suffix",
-                    "nickname",
 
                     "username",
                     "new-password",
                     "current-password",
                     "one-time-code",
 
-                    "organization-title",
                     "organization",
                     "street-address",
                     "address-line1",
@@ -401,7 +399,6 @@
 
                     "cc-name",
                     "cc-given-name",
-                    "cc-additional-name",
                     "cc-family-name",
                     "cc-number",
                     "cc-exp",
@@ -412,14 +409,9 @@
                     "transaction-currency",
                     "transaction-amount",
 
-                    "language",
-                    "bday",
                     "bday-day",
                     "bday-month",
-                    "bday-year",
-                    "sex",
-                    "url",
-                    "photo"
+                    "bday-year"
                 ]
             },
             "AutoFillContactKind": {
@@ -427,9 +419,7 @@
                 "value": [
                     "home",
                     "work",
-                    "mobile",
-                    "fax",
-                    "pager"
+                    "mobile"
                 ]
             },
             "AutoFillContactField": {
