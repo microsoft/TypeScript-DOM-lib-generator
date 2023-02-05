@@ -478,6 +478,7 @@ interface QueuingStrategyInit {
 
 interface RTCEncodedAudioFrameMetadata {
     contributingSources?: number[];
+    sequenceNumber?: number;
     synchronizationSource?: number;
 }
 
