@@ -476,7 +476,8 @@
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
-                        "payloadType": null
+                        "payloadType": null, // Blink only as of 2023-02
+                        "sequenceNumber": null // Blink only as of 2023-02
                     }
                 }
             },
@@ -544,13 +545,6 @@
                         "qualityLimitationDurations": null, // Blink only as of 2022-09
                         "scalabilityMode": null, // No implementation as of 2022-12
                         "encoderImplementation": null // Blink only as of 2022-09
-                    }
-                }
-            },
-            "RTCRtpCodecCapability": {
-                "members": {
-                    "member": {
-                        "scalabilityModes": null
                     }
                 }
             },

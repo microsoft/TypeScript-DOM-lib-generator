@@ -2208,7 +2208,7 @@ declare var AnimationPlaybackEvent: {
 };
 
 interface AnimationTimeline {
-    readonly currentTime: number | null;
+    readonly currentTime: CSSNumberish | null;
 }
 
 declare var AnimationTimeline: {
@@ -5587,7 +5587,7 @@ interface FormData {
 
 declare var FormData: {
     prototype: FormData;
-    new(form?: HTMLFormElement): FormData;
+    new(form?: HTMLFormElement, submitter?: HTMLElement | null): FormData;
 };
 
 interface FormDataEvent extends Event {
