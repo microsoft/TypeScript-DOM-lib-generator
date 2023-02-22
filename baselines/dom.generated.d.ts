@@ -2998,7 +2998,6 @@ interface CSSStyleDeclaration {
     containerName: string;
     containerType: string;
     content: string;
-    contentVisibility: string;
     counterIncrement: string;
     counterReset: string;
     counterSet: string;
