@@ -3072,6 +3072,18 @@
             },
             "SourceBufferList": {
                 "exposed": "Window"
+            },
+            "Performance": {
+              "methods": {
+                "method": {
+                  "measure": {
+                    "overrideSignatures": [
+                      "measure(measureName: string, options?: PerformanceMeasureOptions): PerformanceMeasure",
+                      "measure(measureName: string, startMark?: string, endMark?: string): PerformanceMeasure"
+                    ]
+                  }
+                }
+              }
             }
         }
     },

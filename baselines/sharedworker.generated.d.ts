@@ -2474,7 +2474,8 @@ interface Performance extends EventTarget {
     getEntriesByName(name: string, type?: string): PerformanceEntryList;
     getEntriesByType(type: string): PerformanceEntryList;
     mark(markName: string, markOptions?: PerformanceMarkOptions): PerformanceMark;
-    measure(measureName: string, startOrMeasureOptions?: string | PerformanceMeasureOptions, endMark?: string): PerformanceMeasure;
+    measure(measureName: string, options?: PerformanceMeasureOptions): PerformanceMeasure;
+    measure(measureName: string, startMark?: string, endMark?: string): PerformanceMeasure;
     now(): DOMHighResTimeStamp;
     setResourceTimingBufferSize(maxSize: number): void;
     toJSON(): any;
