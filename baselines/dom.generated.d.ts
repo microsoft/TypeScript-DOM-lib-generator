@@ -6313,7 +6313,7 @@ interface HTMLButtonElement extends HTMLElement {
     /** Sets or retrieves the name of the object. */
     name: string;
     /** Gets the classification and default behavior of the button. */
-    type: "submit" | "reset" | "button" | undefined;
+    type: "submit" | "reset" | "button";
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
     /** Returns a  ValidityState object that represents the validity states of an element. */
