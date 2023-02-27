@@ -1707,7 +1707,7 @@
                             "overrideType": "NodeListOf<HTMLLabelElement>"
                         },
                         "type": {
-                            "overrideType": "\"submit\" | \"reset\" | \"button\" | undefined"
+                            "overrideType": "\"submit\" | \"reset\" | \"button\"
                         }
                     }
                 }
