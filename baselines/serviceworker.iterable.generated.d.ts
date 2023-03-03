@@ -64,6 +64,13 @@ interface MessageEvent<T = any> {
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: Iterable<MessagePort>): void;
 }
 
+interface StylePropertyMapReadOnly {
+    [Symbol.iterator](): IterableIterator<[string, Iterable<CSSStyleValue>]>;
+    entries(): IterableIterator<[string, Iterable<CSSStyleValue>]>;
+    keys(): IterableIterator<string>;
+    values(): IterableIterator<Iterable<CSSStyleValue>>;
+}
+
 interface SubtleCrypto {
     deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier | AesDerivedKeyParams | HmacImportParams | HkdfParams | Pbkdf2Params, extractable: boolean, keyUsages: Iterable<KeyUsage>): Promise<CryptoKey>;
     generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>;

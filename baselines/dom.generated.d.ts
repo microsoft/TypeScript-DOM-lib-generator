@@ -3444,6 +3444,7 @@ declare var CSSStyleDeclaration: {
 interface CSSStyleRule extends CSSRule {
     selectorText: string;
     readonly style: CSSStyleDeclaration;
+    readonly styleMap: StylePropertyMap;
 }
 
 declare var CSSStyleRule: {
@@ -5088,6 +5089,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null;
     closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null;
     closest<E extends Element = Element>(selectors: string): E | null;
+    computedStyleMap(): StylePropertyMapReadOnly;
     /** Returns element's first attribute whose qualified name is qualifiedName, and null if there is no such attribute otherwise. */
     getAttribute(qualifiedName: string): string | null;
     /** Returns element's attribute whose namespace is namespace and local name is localName, and null if there is no such attribute otherwise. */
@@ -5169,6 +5171,7 @@ declare var Element: {
 };
 
 interface ElementCSSInlineStyle {
+    readonly attributeStyleMap: StylePropertyMap;
     readonly style: CSSStyleDeclaration;
 }
 
@@ -14224,6 +14227,31 @@ interface StyleMedia {
     type: string;
     matchMedium(mediaquery: string): boolean;
 }
+
+interface StylePropertyMap extends StylePropertyMapReadOnly {
+    append(property: string, ...values: (CSSStyleValue | string)[]): void;
+    clear(): void;
+    delete(property: string): void;
+    set(property: string, ...values: (CSSStyleValue | string)[]): void;
+}
+
+declare var StylePropertyMap: {
+    prototype: StylePropertyMap;
+    new(): StylePropertyMap;
+};
+
+interface StylePropertyMapReadOnly {
+    readonly size: number;
+    get(property: string): undefined | CSSStyleValue;
+    getAll(property: string): CSSStyleValue[];
+    has(property: string): boolean;
+    forEach(callbackfn: (value: CSSStyleValue[], key: string, parent: StylePropertyMapReadOnly) => void, thisArg?: any): void;
+}
+
+declare var StylePropertyMapReadOnly: {
+    prototype: StylePropertyMapReadOnly;
+    new(): StylePropertyMapReadOnly;
+};
 
 /** A single style sheet. CSS style sheets will further implement the more specialized CSSStyleSheet interface. */
 interface StyleSheet {

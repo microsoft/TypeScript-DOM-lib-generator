@@ -3075,6 +3075,20 @@
             },
             "SourceBufferList": {
                 "exposed": "Window"
+            },
+            "StylePropertyMapReadOnly": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            // https://github.com/w3c/css-houdini-drafts/pull/1087
+                            "signature": {
+                                "0": {
+                                    "overrideType": "undefined | CSSStyleValue"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },

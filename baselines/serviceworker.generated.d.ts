@@ -3106,6 +3106,19 @@ declare var StorageManager: {
     new(): StorageManager;
 };
 
+interface StylePropertyMapReadOnly {
+    readonly size: number;
+    get(property: string): undefined | CSSStyleValue;
+    getAll(property: string): CSSStyleValue[];
+    has(property: string): boolean;
+    forEach(callbackfn: (value: CSSStyleValue[], key: string, parent: StylePropertyMapReadOnly) => void, thisArg?: any): void;
+}
+
+declare var StylePropertyMapReadOnly: {
+    prototype: StylePropertyMapReadOnly;
+    new(): StylePropertyMapReadOnly;
+};
+
 /**
  * This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto).
  * Available only in secure contexts.

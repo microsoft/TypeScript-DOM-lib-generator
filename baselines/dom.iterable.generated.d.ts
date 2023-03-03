@@ -228,6 +228,13 @@ interface SpeechRecognitionResultList {
     [Symbol.iterator](): IterableIterator<SpeechRecognitionResult>;
 }
 
+interface StylePropertyMapReadOnly {
+    [Symbol.iterator](): IterableIterator<[string, Iterable<CSSStyleValue>]>;
+    entries(): IterableIterator<[string, Iterable<CSSStyleValue>]>;
+    keys(): IterableIterator<string>;
+    values(): IterableIterator<Iterable<CSSStyleValue>>;
+}
+
 interface StyleSheetList {
     [Symbol.iterator](): IterableIterator<CSSStyleSheet>;
 }
