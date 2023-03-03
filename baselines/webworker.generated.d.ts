@@ -874,6 +874,15 @@ declare var CSSKeywordValue: {
     new(value: string): CSSKeywordValue;
 };
 
+interface CSSMathNegate extends CSSMathValue {
+    readonly value: CSSNumericValue;
+}
+
+declare var CSSMathNegate: {
+    prototype: CSSMathNegate;
+    new(arg: CSSNumberish): CSSMathNegate;
+};
+
 interface CSSMathProduct extends CSSMathValue {
     readonly values: CSSNumericArray;
 }

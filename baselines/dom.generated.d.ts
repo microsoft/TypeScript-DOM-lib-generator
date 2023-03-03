@@ -2814,6 +2814,15 @@ declare var CSSLayerStatementRule: {
     new(): CSSLayerStatementRule;
 };
 
+interface CSSMathNegate extends CSSMathValue {
+    readonly value: CSSNumericValue;
+}
+
+declare var CSSMathNegate: {
+    prototype: CSSMathNegate;
+    new(arg: CSSNumberish): CSSMathNegate;
+};
+
 interface CSSMathProduct extends CSSMathValue {
     readonly values: CSSNumericArray;
 }
