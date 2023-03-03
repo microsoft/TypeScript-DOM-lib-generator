@@ -2814,6 +2814,17 @@ declare var CSSLayerStatementRule: {
     new(): CSSLayerStatementRule;
 };
 
+interface CSSMathClamp extends CSSMathValue {
+    readonly lower: CSSNumericValue;
+    readonly upper: CSSNumericValue;
+    readonly value: CSSNumericValue;
+}
+
+declare var CSSMathClamp: {
+    prototype: CSSMathClamp;
+    new(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish): CSSMathClamp;
+};
+
 interface CSSMathInvert extends CSSMathValue {
     readonly value: CSSNumericValue;
 }
