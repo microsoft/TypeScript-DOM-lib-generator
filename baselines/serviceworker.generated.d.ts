@@ -52,6 +52,17 @@ interface BlobPropertyBag {
     type?: string;
 }
 
+interface CSSNumericType {
+    angle?: number;
+    flex?: number;
+    frequency?: number;
+    length?: number;
+    percent?: number;
+    percentHint?: CSSNumericBaseType;
+    resolution?: number;
+    time?: number;
+}
+
 interface CacheQueryOptions {
     ignoreMethod?: boolean;
     ignoreSearch?: boolean;
@@ -823,6 +834,23 @@ interface CSSKeywordValue extends CSSStyleValue {
 declare var CSSKeywordValue: {
     prototype: CSSKeywordValue;
     new(value: string): CSSKeywordValue;
+};
+
+interface CSSNumericValue extends CSSStyleValue {
+    add(...values: CSSNumberish[]): CSSNumericValue;
+    div(...values: CSSNumberish[]): CSSNumericValue;
+    equals(...value: CSSNumberish[]): boolean;
+    max(...values: CSSNumberish[]): CSSNumericValue;
+    min(...values: CSSNumberish[]): CSSNumericValue;
+    mul(...values: CSSNumberish[]): CSSNumericValue;
+    sub(...values: CSSNumberish[]): CSSNumericValue;
+    to(unit: string): CSSUnitValue;
+    type(): CSSNumericType;
+}
+
+declare var CSSNumericValue: {
+    prototype: CSSNumericValue;
+    new(): CSSNumericValue;
 };
 
 interface CSSStyleValue {
@@ -5841,6 +5869,7 @@ type BlobPart = BufferSource | Blob | string;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type CSSKeywordish = string | CSSKeywordValue;
+type CSSNumberish = number | CSSNumericValue;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type DOMHighResTimeStamp = number;
@@ -5882,6 +5911,7 @@ type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
+type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
 type CanvasFontKerning = "auto" | "none" | "normal";

@@ -151,6 +151,17 @@ interface BlobPropertyBag {
     type?: string;
 }
 
+interface CSSNumericType {
+    angle?: number;
+    flex?: number;
+    frequency?: number;
+    length?: number;
+    percent?: number;
+    percentHint?: CSSNumericBaseType;
+    resolution?: number;
+    time?: number;
+}
+
 interface CSSStyleSheetInit {
     baseURL?: string;
     disabled?: boolean;
@@ -406,7 +417,7 @@ interface EcdsaParams extends Algorithm {
 interface EffectTiming {
     delay?: number;
     direction?: PlaybackDirection;
-    duration?: number | string;
+    duration?: number | CSSNumericValue | string;
     easing?: string;
     endDelay?: number;
     fill?: FillMode;
@@ -2822,6 +2833,24 @@ interface CSSNamespaceRule extends CSSRule {
 declare var CSSNamespaceRule: {
     prototype: CSSNamespaceRule;
     new(): CSSNamespaceRule;
+};
+
+interface CSSNumericValue extends CSSStyleValue {
+    add(...values: CSSNumberish[]): CSSNumericValue;
+    div(...values: CSSNumberish[]): CSSNumericValue;
+    equals(...value: CSSNumberish[]): boolean;
+    max(...values: CSSNumberish[]): CSSNumericValue;
+    min(...values: CSSNumberish[]): CSSNumericValue;
+    mul(...values: CSSNumberish[]): CSSNumericValue;
+    sub(...values: CSSNumberish[]): CSSNumericValue;
+    to(unit: string): CSSUnitValue;
+    type(): CSSNumericType;
+}
+
+declare var CSSNumericValue: {
+    prototype: CSSNumericValue;
+    new(): CSSNumericValue;
+    parse(cssText: string): CSSNumericValue;
 };
 
 /** CSSPageRule is an interface representing a single CSS @page rule. It implements the CSSRule interface with a type value of 6 (CSSRule.PAGE_RULE). */
@@ -18588,7 +18617,7 @@ type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type COSEAlgorithmIdentifier = number;
 type CSSKeywordish = string | CSSKeywordValue;
-type CSSNumberish = number;
+type CSSNumberish = number | CSSNumericValue;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | OffscreenCanvas;
 type ClipboardItemData = Promise<string | Blob>;
@@ -18655,6 +18684,7 @@ type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
 type BinaryType = "arraybuffer" | "blob";
 type BiquadFilterType = "allpass" | "bandpass" | "highpass" | "highshelf" | "lowpass" | "lowshelf" | "notch" | "peaking";
+type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanPlayTypeResult = "" | "maybe" | "probably";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
