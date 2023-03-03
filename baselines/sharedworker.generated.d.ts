@@ -816,6 +816,16 @@ declare var CSSMathInvert: {
     prototype: CSSMathInvert;
     new(arg: CSSNumberish): CSSMathInvert;
 };
+
+interface CSSMathMax extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathMax: {
+    prototype: CSSMathMax;
+    new(...args: CSSNumberish[]): CSSMathMax;
+};
+
 interface CSSMathMin extends CSSMathValue {
     readonly values: CSSNumericArray;
 }
