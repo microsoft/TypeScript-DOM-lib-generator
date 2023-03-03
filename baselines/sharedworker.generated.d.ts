@@ -808,6 +808,15 @@ declare var CSSKeywordValue: {
     new(value: string): CSSKeywordValue;
 };
 
+interface CSSMathProduct extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathProduct: {
+    prototype: CSSMathProduct;
+    new(...args: CSSNumberish[]): CSSMathProduct;
+};
+
 interface CSSMathSum extends CSSMathValue {
     readonly values: CSSNumericArray;
 }
