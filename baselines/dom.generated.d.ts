@@ -2814,6 +2814,15 @@ declare var CSSLayerStatementRule: {
     new(): CSSLayerStatementRule;
 };
 
+interface CSSMathValue extends CSSNumericValue {
+    readonly operator: CSSMathOperator;
+}
+
+declare var CSSMathValue: {
+    prototype: CSSMathValue;
+    new(): CSSMathValue;
+};
+
 /** A single CSS @media rule. It implements the CSSConditionRule interface, and therefore the CSSGroupingRule and the CSSRule interface with a type value of 4 (CSSRule.MEDIA_RULE). */
 interface CSSMediaRule extends CSSConditionRule {
     readonly media: MediaList;
@@ -18694,6 +18703,7 @@ type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
 type BinaryType = "arraybuffer" | "blob";
 type BiquadFilterType = "allpass" | "bandpass" | "highpass" | "highshelf" | "lowpass" | "lowshelf" | "notch" | "peaking";
+type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanPlayTypeResult = "" | "maybe" | "probably";
 type CanvasDirection = "inherit" | "ltr" | "rtl";

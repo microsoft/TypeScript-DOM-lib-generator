@@ -836,6 +836,15 @@ declare var CSSKeywordValue: {
     new(value: string): CSSKeywordValue;
 };
 
+interface CSSMathValue extends CSSNumericValue {
+    readonly operator: CSSMathOperator;
+}
+
+declare var CSSMathValue: {
+    prototype: CSSMathValue;
+    new(): CSSMathValue;
+};
+
 interface CSSNumericValue extends CSSStyleValue {
     add(...values: CSSNumberish[]): CSSNumericValue;
     div(...values: CSSNumberish[]): CSSNumericValue;
@@ -5921,6 +5930,7 @@ type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
+type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
