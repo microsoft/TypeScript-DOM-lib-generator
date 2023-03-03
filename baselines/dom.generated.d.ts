@@ -17720,10 +17720,64 @@ declare var console: Console;
 
 /** Holds useful CSS-related methods. No object with this interface are implemented: it contains only static methods and therefore is a utilitarian interface. */
 declare namespace CSS {
+    function Hz(value: number): CSSUnitValue;
+    function Q(value: number): CSSUnitValue;
+    function ch(value: number): CSSUnitValue;
+    function cm(value: number): CSSUnitValue;
+    function cqb(value: number): CSSUnitValue;
+    function cqh(value: number): CSSUnitValue;
+    function cqi(value: number): CSSUnitValue;
+    function cqmax(value: number): CSSUnitValue;
+    function cqmin(value: number): CSSUnitValue;
+    function cqw(value: number): CSSUnitValue;
+    function deg(value: number): CSSUnitValue;
+    function dpcm(value: number): CSSUnitValue;
+    function dpi(value: number): CSSUnitValue;
+    function dppx(value: number): CSSUnitValue;
+    function dvb(value: number): CSSUnitValue;
+    function dvh(value: number): CSSUnitValue;
+    function dvi(value: number): CSSUnitValue;
+    function dvmax(value: number): CSSUnitValue;
+    function dvmin(value: number): CSSUnitValue;
+    function dvw(value: number): CSSUnitValue;
+    function em(value: number): CSSUnitValue;
     function escape(ident: string): string;
+    function ex(value: number): CSSUnitValue;
+    function fr(value: number): CSSUnitValue;
+    function grad(value: number): CSSUnitValue;
+    function kHz(value: number): CSSUnitValue;
+    function lvb(value: number): CSSUnitValue;
+    function lvh(value: number): CSSUnitValue;
+    function lvi(value: number): CSSUnitValue;
+    function lvmax(value: number): CSSUnitValue;
+    function lvmin(value: number): CSSUnitValue;
+    function lvw(value: number): CSSUnitValue;
+    function mm(value: number): CSSUnitValue;
+    function ms(value: number): CSSUnitValue;
+    function number(value: number): CSSUnitValue;
+    function pc(value: number): CSSUnitValue;
+    function percent(value: number): CSSUnitValue;
+    function pt(value: number): CSSUnitValue;
+    function px(value: number): CSSUnitValue;
+    function rad(value: number): CSSUnitValue;
     function registerProperty(definition: PropertyDefinition): void;
+    function rem(value: number): CSSUnitValue;
+    function s(value: number): CSSUnitValue;
     function supports(property: string, value: string): boolean;
     function supports(conditionText: string): boolean;
+    function svb(value: number): CSSUnitValue;
+    function svh(value: number): CSSUnitValue;
+    function svi(value: number): CSSUnitValue;
+    function svmax(value: number): CSSUnitValue;
+    function svmin(value: number): CSSUnitValue;
+    function svw(value: number): CSSUnitValue;
+    function turn(value: number): CSSUnitValue;
+    function vb(value: number): CSSUnitValue;
+    function vh(value: number): CSSUnitValue;
+    function vi(value: number): CSSUnitValue;
+    function vmax(value: number): CSSUnitValue;
+    function vmin(value: number): CSSUnitValue;
+    function vw(value: number): CSSUnitValue;
 }
 
 declare namespace WebAssembly {

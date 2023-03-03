@@ -3499,6 +3499,18 @@
                     }
                 }
             }
+        },
+        {
+            "name": "CSS",
+            "methods": {
+                "method": {
+                    // `in` is a keyword and needs a special emit, which will be done in a separate PR
+                    // Not in removedTypes as removals in arrays are not well supported
+                    "in": {
+                        "exposed": ""
+                    }
+                }
+            }
         }
     ]
 }
