@@ -845,6 +845,15 @@ declare var CSSMathInvert: {
     new(arg: CSSNumberish): CSSMathInvert;
 };
 
+interface CSSMathMin extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathMin: {
+    prototype: CSSMathMin;
+    new(...args: CSSNumberish[]): CSSMathMin;
+};
+
 interface CSSMathNegate extends CSSMathValue {
     readonly value: CSSNumericValue;
 }
