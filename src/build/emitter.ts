@@ -909,15 +909,7 @@ export function emitWebIdl(
         return emitQuerySelectorAllOverloads(m);
     }
 
-    // ignore toString() provided from browser.webidl.preprocessed.json
-    // to prevent duplication
-    if (m.name !== "toString") {
-      emitSignatures(m, prefix, m.name, printLine);
-
-      if (m.stringifier) {
-        printLine("toString(): string;");
-      }
-    }
+    emitSignatures(m, prefix, m.name, printLine);
   }
 
   function emitSignature(
@@ -989,7 +981,7 @@ export function emitWebIdl(
         .sort(compareName)
         .forEach((m) => emitMethod(prefix, m, conflictedMembers));
     }
-    if (i.anonymousMethods) {
+    if (i.anonymousMethods && emitScope === EmitScope.InstanceOnly) {
       const stringifier = i.anonymousMethods.method.find((m) => m.stringifier);
       if (stringifier) {
         printer.printLine("toString(): string;");

@@ -4110,7 +4110,6 @@ declare var DOMMatrixReadOnly: {
     fromFloat32Array(array32: Float32Array): DOMMatrixReadOnly;
     fromFloat64Array(array64: Float64Array): DOMMatrixReadOnly;
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
-    toString(): string;
 };
 
 /** Provides the ability to parse XML or HTML source code from a string into a DOM Document. */
@@ -11751,7 +11750,6 @@ declare var Range: {
     readonly START_TO_END: 1;
     readonly END_TO_END: 2;
     readonly END_TO_START: 3;
-    toString(): string;
 };
 
 interface ReadableByteStreamController {
@@ -13783,7 +13781,6 @@ interface Selection {
 declare var Selection: {
     prototype: Selection;
     new(): Selection;
-    toString(): string;
 };
 
 interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
@@ -14707,7 +14704,6 @@ interface URLSearchParams {
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
-    toString(): string;
 };
 
 interface VTTCue extends TextTrackCue {

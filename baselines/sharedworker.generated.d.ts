@@ -3149,7 +3149,6 @@ interface URLSearchParams {
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
-    toString(): string;
 };
 
 interface WEBGL_color_buffer_float {
