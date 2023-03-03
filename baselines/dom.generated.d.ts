@@ -1159,6 +1159,13 @@ interface PromiseRejectionEventInit extends EventInit {
     reason?: any;
 }
 
+interface PropertyDefinition {
+    inherits: boolean;
+    initialValue?: string;
+    name: string;
+    syntax?: string;
+}
+
 interface PropertyIndexedKeyframes {
     composite?: CompositeOperationOrAuto | CompositeOperationOrAuto[];
     easing?: string | string[];
@@ -2817,6 +2824,18 @@ interface CSSPageRule extends CSSGroupingRule {
 declare var CSSPageRule: {
     prototype: CSSPageRule;
     new(): CSSPageRule;
+};
+
+interface CSSPropertyRule extends CSSRule {
+    readonly inherits: boolean;
+    readonly initialValue: string | null;
+    readonly name: string;
+    readonly syntax: string;
+}
+
+declare var CSSPropertyRule: {
+    prototype: CSSPropertyRule;
+    new(): CSSPropertyRule;
 };
 
 /** A single CSS rule. There are several types of rules, listed in the Type constants section below. */
@@ -17508,6 +17527,7 @@ declare var console: Console;
 /** Holds useful CSS-related methods. No object with this interface are implemented: it contains only static methods and therefore is a utilitarian interface. */
 declare namespace CSS {
     function escape(ident: string): string;
+    function registerProperty(definition: PropertyDefinition): void;
     function supports(property: string, value: string): boolean;
     function supports(conditionText: string): boolean;
 }
