@@ -2844,6 +2844,17 @@ declare var CSSNamespaceRule: {
     new(): CSSNamespaceRule;
 };
 
+interface CSSNumericArray {
+    readonly length: number;
+    forEach(callbackfn: (value: CSSNumericValue, key: number, parent: CSSNumericArray) => void, thisArg?: any): void;
+    [index: number]: CSSNumericValue;
+}
+
+declare var CSSNumericArray: {
+    prototype: CSSNumericArray;
+    new(): CSSNumericArray;
+};
+
 interface CSSNumericValue extends CSSStyleValue {
     add(...values: CSSNumberish[]): CSSNumericValue;
     div(...values: CSSNumberish[]): CSSNumericValue;

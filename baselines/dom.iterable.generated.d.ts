@@ -18,6 +18,13 @@ interface CSSKeyframesRule {
     [Symbol.iterator](): IterableIterator<CSSKeyframeRule>;
 }
 
+interface CSSNumericArray {
+    [Symbol.iterator](): IterableIterator<CSSNumericValue>;
+    entries(): IterableIterator<[number, CSSNumericValue]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<CSSNumericValue>;
+}
+
 interface CSSRuleList {
     [Symbol.iterator](): IterableIterator<CSSRule>;
 }

@@ -2,6 +2,13 @@
 /// ServiceWorker Iterable APIs
 /////////////////////////////
 
+interface CSSNumericArray {
+    [Symbol.iterator](): IterableIterator<CSSNumericValue>;
+    entries(): IterableIterator<[number, CSSNumericValue]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<CSSNumericValue>;
+}
+
 interface CSSUnparsedValue {
     [Symbol.iterator](): IterableIterator<CSSUnparsedSegment>;
     entries(): IterableIterator<[number, CSSUnparsedSegment]>;
