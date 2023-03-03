@@ -874,6 +874,15 @@ declare var CSSKeywordValue: {
     new(value: string): CSSKeywordValue;
 };
 
+interface CSSMathSum extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathSum: {
+    prototype: CSSMathSum;
+    new(...args: CSSNumberish[]): CSSMathSum;
+};
+
 interface CSSMathValue extends CSSNumericValue {
     readonly operator: CSSMathOperator;
 }
@@ -903,6 +912,7 @@ interface CSSNumericValue extends CSSStyleValue {
     mul(...values: CSSNumberish[]): CSSNumericValue;
     sub(...values: CSSNumberish[]): CSSNumericValue;
     to(unit: string): CSSUnitValue;
+    toSum(...units: string[]): CSSMathSum;
     type(): CSSNumericType;
 }
 
