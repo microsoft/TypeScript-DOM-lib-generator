@@ -3472,6 +3472,17 @@ declare var CSSStyleSheet: {
     new(options?: CSSStyleSheetInit): CSSStyleSheet;
 };
 
+interface CSSStyleValue {
+    toString(): string;
+}
+
+declare var CSSStyleValue: {
+    prototype: CSSStyleValue;
+    new(): CSSStyleValue;
+    parse(property: string, cssText: string): CSSStyleValue;
+    parseAll(property: string, cssText: string): CSSStyleValue[];
+};
+
 /** An object representing a single CSS @supports at-rule. It implements the CSSConditionRule interface, and therefore the CSSRule and CSSGroupingRule interfaces with a type value of 12 (CSSRule.SUPPORTS_RULE). */
 interface CSSSupportsRule extends CSSConditionRule {
 }
