@@ -26,6 +26,13 @@ interface CSSStyleDeclaration {
     [Symbol.iterator](): IterableIterator<string>;
 }
 
+interface CSSUnparsedValue {
+    [Symbol.iterator](): IterableIterator<CSSUnparsedSegment>;
+    entries(): IterableIterator<[number, CSSUnparsedSegment]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<CSSUnparsedSegment>;
+}
+
 interface Cache {
     addAll(requests: Iterable<RequestInfo>): Promise<void>;
 }
