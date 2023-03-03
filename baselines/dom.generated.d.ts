@@ -3544,6 +3544,16 @@ declare var CSSTransition: {
     new(): CSSTransition;
 };
 
+interface CSSUnitValue extends CSSNumericValue {
+    readonly unit: string;
+    value: number;
+}
+
+declare var CSSUnitValue: {
+    prototype: CSSUnitValue;
+    new(value: number, unit: string): CSSUnitValue;
+};
+
 interface CSSUnparsedValue extends CSSStyleValue {
     readonly length: number;
     forEach(callbackfn: (value: CSSUnparsedSegment, key: number, parent: CSSUnparsedValue) => void, thisArg?: any): void;
