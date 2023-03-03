@@ -2776,6 +2776,15 @@ declare var CSSKeyframesRule: {
     new(): CSSKeyframesRule;
 };
 
+interface CSSKeywordValue extends CSSStyleValue {
+    value: string;
+}
+
+declare var CSSKeywordValue: {
+    prototype: CSSKeywordValue;
+    new(value: string): CSSKeywordValue;
+};
+
 interface CSSLayerBlockRule extends CSSGroupingRule {
     readonly name: string;
 }
@@ -18578,6 +18587,7 @@ type BlobPart = BufferSource | Blob | string;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type COSEAlgorithmIdentifier = number;
+type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | OffscreenCanvas;
