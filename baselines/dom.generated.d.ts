@@ -2753,6 +2753,14 @@ declare var CSSGroupingRule: {
     new(): CSSGroupingRule;
 };
 
+interface CSSImageValue extends CSSStyleValue {
+}
+
+declare var CSSImageValue: {
+    prototype: CSSImageValue;
+    new(): CSSImageValue;
+};
+
 interface CSSImportRule extends CSSRule {
     readonly href: string;
     readonly layerName: string | null;
