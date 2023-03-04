@@ -580,6 +580,13 @@
                     }
                 }
             },
+            "VideoFrameInit": {
+                "members": {
+                    "member": {
+                        "metadata": null // No implementation as of 2023-04. Linked to VideoFrame.metadata()
+                    }
+                }
+            },
             "WebGLContextAttributes": {
                 "members": {
                     "member": {

@@ -451,6 +451,11 @@ interface PermissionDescriptor {
     name: PermissionName;
 }
 
+interface PlaneLayout {
+    offset: number;
+    stride: number;
+}
+
 interface ProgressEventInit extends EventInit {
     lengthComputable?: boolean;
     loaded?: number;
@@ -727,6 +732,33 @@ interface VideoConfiguration {
     scalabilityMode?: string;
     transferFunction?: TransferFunction;
     width: number;
+}
+
+interface VideoFrameBufferInit {
+    codedHeight: number;
+    codedWidth: number;
+    colorSpace?: VideoColorSpaceInit;
+    displayHeight?: number;
+    displayWidth?: number;
+    duration?: number;
+    format: VideoPixelFormat;
+    layout?: PlaneLayout[];
+    timestamp: number;
+    visibleRect?: DOMRectInit;
+}
+
+interface VideoFrameCopyToOptions {
+    layout?: PlaneLayout[];
+    rect?: DOMRectInit;
+}
+
+interface VideoFrameInit {
+    alpha?: AlphaOption;
+    displayHeight?: number;
+    displayWidth?: number;
+    duration?: number;
+    timestamp?: number;
+    visibleRect?: DOMRectInit;
 }
 
 interface WebGLContextAttributes {
@@ -3787,6 +3819,29 @@ declare var VideoColorSpace: {
     new(init?: VideoColorSpaceInit): VideoColorSpace;
 };
 
+interface VideoFrame {
+    readonly codedHeight: number;
+    readonly codedRect: DOMRectReadOnly | null;
+    readonly codedWidth: number;
+    readonly colorSpace: VideoColorSpace;
+    readonly displayHeight: number;
+    readonly displayWidth: number;
+    readonly duration: number | null;
+    readonly format: VideoPixelFormat | null;
+    readonly timestamp: number;
+    readonly visibleRect: DOMRectReadOnly | null;
+    allocationSize(options?: VideoFrameCopyToOptions): number;
+    clone(): VideoFrame;
+    close(): void;
+    copyTo(destination: BufferSource, options?: VideoFrameCopyToOptions): Promise<PlaneLayout[]>;
+}
+
+declare var VideoFrame: {
+    prototype: VideoFrame;
+    new(image: CanvasImageSource, init?: VideoFrameInit): VideoFrame;
+    new(data: BufferSource, init: VideoFrameBufferInit): VideoFrame;
+};
+
 interface WEBGL_color_buffer_float {
     readonly RGBA32F_EXT: 0x8814;
     readonly FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT: 0x8211;
@@ -6468,7 +6523,7 @@ type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number | CSSNumericValue;
 type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
-type CanvasImageSource = ImageBitmap | OffscreenCanvas;
+type CanvasImageSource = ImageBitmap | OffscreenCanvas | VideoFrame;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
@@ -6502,12 +6557,13 @@ type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableSt
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type ReportList = Report[];
 type RequestInfo = Request | string;
-type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
+type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AlphaOption = "discard" | "keep";
 type BinaryType = "arraybuffer" | "blob";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
@@ -6570,6 +6626,7 @@ type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type TransferFunction = "hlg" | "pq" | "srgb";
 type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
 type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";
+type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I422" | "I444" | "NV12" | "RGBA" | "RGBX";
 type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
