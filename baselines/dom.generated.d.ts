@@ -1611,6 +1611,11 @@ interface RegistrationOptions {
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
+interface ReportingObserverOptions {
+    buffered?: boolean;
+    types?: string[];
+}
+
 interface RequestInit {
     /** A BodyInit object or null to set request's body. */
     body?: BodyInit | null;
@@ -12178,6 +12183,38 @@ declare var RemotePlayback: {
     new(): RemotePlayback;
 };
 
+interface Report {
+    readonly body: ReportBody | null;
+    readonly type: string;
+    readonly url: string;
+    toJSON(): any;
+}
+
+declare var Report: {
+    prototype: Report;
+    new(): Report;
+};
+
+interface ReportBody {
+    toJSON(): any;
+}
+
+declare var ReportBody: {
+    prototype: ReportBody;
+    new(): ReportBody;
+};
+
+interface ReportingObserver {
+    disconnect(): void;
+    observe(): void;
+    takeRecords(): ReportList;
+}
+
+declare var ReportingObserver: {
+    prototype: ReportingObserver;
+    new(callback: ReportingObserverCallback, options?: ReportingObserverOptions): ReportingObserver;
+};
+
 /** This Fetch API interface represents a resource request. */
 interface Request extends Body {
     /** Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching. */
@@ -18142,6 +18179,10 @@ interface RemotePlaybackAvailabilityCallback {
     (available: boolean): void;
 }
 
+interface ReportingObserverCallback {
+    (reports: Report[], observer: ReportingObserver): void;
+}
+
 interface ResizeObserverCallback {
     (entries: ResizeObserverEntry[], observer: ResizeObserver): void;
 }
@@ -18947,6 +18988,7 @@ type ReadableStreamController<T> = ReadableStreamDefaultController<T> | Readable
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
+type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas;
 type TimerHandler = string | Function;
