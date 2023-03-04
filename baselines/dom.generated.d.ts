@@ -3628,6 +3628,19 @@ declare var CSSTransformComponent: {
     new(): CSSTransformComponent;
 };
 
+interface CSSTransformValue extends CSSStyleValue {
+    readonly is2D: boolean;
+    readonly length: number;
+    toMatrix(): DOMMatrix;
+    forEach(callbackfn: (value: CSSTransformComponent, key: number, parent: CSSTransformValue) => void, thisArg?: any): void;
+    [index: number]: CSSTransformComponent;
+}
+
+declare var CSSTransformValue: {
+    prototype: CSSTransformValue;
+    new(transforms: CSSTransformComponent[]): CSSTransformValue;
+};
+
 interface CSSTransition extends Animation {
     readonly transitionProperty: string;
     addEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSTransition, ev: AnimationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;

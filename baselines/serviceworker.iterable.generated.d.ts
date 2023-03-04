@@ -9,6 +9,13 @@ interface CSSNumericArray {
     values(): IterableIterator<CSSNumericValue>;
 }
 
+interface CSSTransformValue {
+    [Symbol.iterator](): IterableIterator<CSSTransformComponent>;
+    entries(): IterableIterator<[number, CSSTransformComponent]>;
+    keys(): IterableIterator<number>;
+    values(): IterableIterator<CSSTransformComponent>;
+}
+
 interface CSSUnparsedValue {
     [Symbol.iterator](): IterableIterator<CSSUnparsedSegment>;
     entries(): IterableIterator<[number, CSSUnparsedSegment]>;
