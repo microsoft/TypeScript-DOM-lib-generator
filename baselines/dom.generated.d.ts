@@ -3374,6 +3374,9 @@ interface CSSStyleDeclaration {
     fontStretch: string;
     fontStyle: string;
     fontSynthesis: string;
+    fontSynthesisSmallCaps: string;
+    fontSynthesisStyle: string;
+    fontSynthesisWeight: string;
     fontVariant: string;
     fontVariantAlternates: string;
     fontVariantCaps: string;
@@ -7428,6 +7431,7 @@ interface HTMLIFrameElement extends HTMLElement {
     frameBorder: string;
     /** Sets or retrieves the height of the object. */
     height: string;
+    loading: string;
     /**
      * Sets or retrieves a URI to a long description of the object.
      * @deprecated
