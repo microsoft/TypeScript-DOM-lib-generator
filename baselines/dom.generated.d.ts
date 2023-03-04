@@ -10466,6 +10466,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorConcurrentH
     /** Available only in secure contexts. */
     readonly serviceWorker: ServiceWorkerContainer;
     readonly userActivation: UserActivation;
+    readonly wakeLock: WakeLock;
     /** Available only in secure contexts. */
     canShare(data?: ShareData): boolean;
     getGamepads(): (Gamepad | null)[];
@@ -15354,6 +15355,37 @@ interface WEBGL_multi_draw {
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLsizei[], countsOffset: GLuint, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: GLuint, drawcount: GLsizei): void;
 }
 
+/** Available only in secure contexts. */
+interface WakeLock {
+    request(type?: WakeLockType): Promise<WakeLockSentinel>;
+}
+
+declare var WakeLock: {
+    prototype: WakeLock;
+    new(): WakeLock;
+};
+
+interface WakeLockSentinelEventMap {
+    "release": Event;
+}
+
+/** Available only in secure contexts. */
+interface WakeLockSentinel extends EventTarget {
+    onrelease: ((this: WakeLockSentinel, ev: Event) => any) | null;
+    readonly released: boolean;
+    readonly type: WakeLockType;
+    release(): Promise<void>;
+    addEventListener<K extends keyof WakeLockSentinelEventMap>(type: K, listener: (this: WakeLockSentinel, ev: WakeLockSentinelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WakeLockSentinelEventMap>(type: K, listener: (this: WakeLockSentinel, ev: WakeLockSentinelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var WakeLockSentinel: {
+    prototype: WakeLockSentinel;
+    new(): WakeLockSentinel;
+};
+
 /** A WaveShaperNode always has exactly one input and one output. */
 interface WaveShaperNode extends AudioNode {
     curve: Float32Array | null;
@@ -19165,6 +19197,7 @@ type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
 type VideoFacingModeEnum = "environment" | "left" | "right" | "user";
 type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";
 type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
+type WakeLockType = "screen";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
