@@ -151,6 +151,10 @@ interface BlobPropertyBag {
     type?: string;
 }
 
+interface CSSMatrixComponentOptions {
+    is2D?: boolean;
+}
+
 interface CSSNumericType {
     angle?: number;
     flex?: number;
@@ -2886,6 +2890,15 @@ interface CSSMathValue extends CSSNumericValue {
 declare var CSSMathValue: {
     prototype: CSSMathValue;
     new(): CSSMathValue;
+};
+
+interface CSSMatrixComponent extends CSSTransformComponent {
+    matrix: DOMMatrix;
+}
+
+declare var CSSMatrixComponent: {
+    prototype: CSSMatrixComponent;
+    new(matrix: DOMMatrixReadOnly, options?: CSSMatrixComponentOptions): CSSMatrixComponent;
 };
 
 /** A single CSS @media rule. It implements the CSSConditionRule interface, and therefore the CSSGroupingRule and the CSSRule interface with a type value of 4 (CSSRule.MEDIA_RULE). */

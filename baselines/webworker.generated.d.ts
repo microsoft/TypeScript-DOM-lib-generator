@@ -52,6 +52,10 @@ interface BlobPropertyBag {
     type?: string;
 }
 
+interface CSSMatrixComponentOptions {
+    is2D?: boolean;
+}
+
 interface CSSNumericType {
     angle?: number;
     flex?: number;
@@ -946,6 +950,15 @@ interface CSSMathValue extends CSSNumericValue {
 declare var CSSMathValue: {
     prototype: CSSMathValue;
     new(): CSSMathValue;
+};
+
+interface CSSMatrixComponent extends CSSTransformComponent {
+    matrix: DOMMatrix;
+}
+
+declare var CSSMatrixComponent: {
+    prototype: CSSMatrixComponent;
+    new(matrix: DOMMatrixReadOnly, options?: CSSMatrixComponentOptions): CSSMatrixComponent;
 };
 
 interface CSSNumericArray {
