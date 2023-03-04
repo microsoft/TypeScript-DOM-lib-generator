@@ -13,7 +13,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "fillRule",
     "floodColor",
     "floodOpacity",
-    "fontSizeAdjust",
     "lightingColor",
     "marker",
     "markerEnd",
@@ -44,7 +43,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onabort",
     "onerror",
   ],
-  KeyframeEffect: ["iterationComposite"],
   ShadowRoot: [
     // BCD unexpectedly is removing valid event data
     // https://github.com/mdn/browser-compat-data/issues/15345
