@@ -4120,6 +4120,14 @@ declare var CompositionEvent: {
     new(type: string, eventInitDict?: CompositionEventInit): CompositionEvent;
 };
 
+interface CompressionStream extends GenericTransformStream {
+}
+
+declare var CompressionStream: {
+    prototype: CompressionStream;
+    new(format: string): CompressionStream;
+};
+
 interface ConstantSourceNode extends AudioScheduledSourceNode {
     readonly offset: AudioParam;
     addEventListener<K extends keyof AudioScheduledSourceNodeEventMap>(type: K, listener: (this: ConstantSourceNode, ev: AudioScheduledSourceNodeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -4692,6 +4700,14 @@ interface DataTransferItemList {
 declare var DataTransferItemList: {
     prototype: DataTransferItemList;
     new(): DataTransferItemList;
+};
+
+interface DecompressionStream extends GenericTransformStream {
+}
+
+declare var DecompressionStream: {
+    prototype: DecompressionStream;
+    new(format: string): DecompressionStream;
 };
 
 /** A delay-line; an AudioNode audio-processing module that causes a delay between the arrival of an input data and its propagation to the output. */

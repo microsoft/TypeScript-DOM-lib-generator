@@ -239,6 +239,14 @@ declare var ByteLengthQueuingStrategy: {
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
+interface CompressionStream extends GenericTransformStream {
+}
+
+declare var CompressionStream: {
+    prototype: CompressionStream;
+    new(format: string): CompressionStream;
+};
+
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
 interface CountQueuingStrategy extends QueuingStrategy {
     readonly highWaterMark: number;
@@ -323,6 +331,14 @@ declare var DOMException: {
     readonly TIMEOUT_ERR: 23;
     readonly INVALID_NODE_TYPE_ERR: 24;
     readonly DATA_CLONE_ERR: 25;
+};
+
+interface DecompressionStream extends GenericTransformStream {
+}
+
+declare var DecompressionStream: {
+    prototype: DecompressionStream;
+    new(format: string): DecompressionStream;
 };
 
 /** Events providing information related to errors in scripts or in files. */
