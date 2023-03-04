@@ -133,6 +133,10 @@ interface AuthenticatorSelectionCriteria {
     userVerification?: UserVerificationRequirement;
 }
 
+interface AvcEncoderConfig {
+    format?: AvcBitstreamFormat;
+}
+
 interface BiquadFilterOptions extends AudioNodeOptions {
     Q?: number;
     detune?: number;
@@ -443,6 +447,10 @@ interface EncodedVideoChunkInit {
     duration?: number;
     timestamp: number;
     type: EncodedVideoChunkType;
+}
+
+interface EncodedVideoChunkMetadata {
+    decoderConfig?: VideoDecoderConfig;
 }
 
 interface ErrorEventInit extends EventInit {
@@ -1977,6 +1985,36 @@ interface VideoDecoderInit {
 
 interface VideoDecoderSupport {
     config?: VideoDecoderConfig;
+    supported?: boolean;
+}
+
+interface VideoEncoderConfig {
+    alpha?: AlphaOption;
+    avc?: AvcEncoderConfig;
+    bitrate?: number;
+    bitrateMode?: BitrateMode;
+    codec: string;
+    displayHeight?: number;
+    displayWidth?: number;
+    framerate?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    height: number;
+    latencyMode?: LatencyMode;
+    scalabilityMode?: string;
+    width: number;
+}
+
+interface VideoEncoderEncodeOptions {
+    keyFrame?: boolean;
+}
+
+interface VideoEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedVideoChunkOutputCallback;
+}
+
+interface VideoEncoderSupport {
+    config?: VideoEncoderConfig;
     supported?: boolean;
 }
 
@@ -15283,6 +15321,32 @@ declare var VideoDecoder: {
     isConfigSupported(config: VideoDecoderConfig): Promise<VideoDecoderSupport>;
 };
 
+interface VideoEncoderEventMap {
+    "dequeue": Event;
+}
+
+/** Available only in secure contexts. */
+interface VideoEncoder extends EventTarget {
+    readonly encodeQueueSize: number;
+    ondequeue: ((this: VideoEncoder, ev: Event) => any) | null;
+    readonly state: CodecState;
+    close(): void;
+    configure(config: VideoEncoderConfig): void;
+    encode(frame: VideoFrame, options?: VideoEncoderEncodeOptions): void;
+    flush(): Promise<void>;
+    reset(): void;
+    addEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoEncoder: {
+    prototype: VideoEncoder;
+    new(init: VideoEncoderInit): VideoEncoder;
+    isConfigSupported(config: VideoEncoderConfig): Promise<VideoEncoderSupport>;
+};
+
 interface VideoFrame {
     readonly codedHeight: number;
     readonly codedRect: DOMRectReadOnly | null;
@@ -18272,6 +18336,10 @@ interface DecodeSuccessCallback {
     (decodedData: AudioBuffer): void;
 }
 
+interface EncodedVideoChunkOutputCallback {
+    (chunk: EncodedVideoChunk, metadata?: EncodedVideoChunkMetadata): void;
+}
+
 interface ErrorCallback {
     (err: DOMException): void;
 }
@@ -19194,8 +19262,10 @@ type AuthenticatorAttachment = "cross-platform" | "platform";
 type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";
 type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
+type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
 type BiquadFilterType = "allpass" | "bandpass" | "highpass" | "highshelf" | "lowpass" | "lowshelf" | "notch" | "peaking";
+type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanPlayTypeResult = "" | "maybe" | "probably";
@@ -19251,6 +19321,7 @@ type IterationCompositeOperation = "accumulate" | "replace";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
 type KeyType = "private" | "public" | "secret";
 type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
+type LatencyMode = "quality" | "realtime";
 type LineAlignSetting = "center" | "end" | "start";
 type LockMode = "exclusive" | "shared";
 type MIDIPortConnectionState = "closed" | "open" | "pending";

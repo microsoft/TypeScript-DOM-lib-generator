@@ -47,6 +47,10 @@ interface AudioConfiguration {
     spatialRendering?: boolean;
 }
 
+interface AvcEncoderConfig {
+    format?: AvcBitstreamFormat;
+}
+
 interface BlobPropertyBag {
     endings?: EndingType;
     type?: string;
@@ -164,6 +168,10 @@ interface EncodedVideoChunkInit {
     duration?: number;
     timestamp: number;
     type: EncodedVideoChunkType;
+}
+
+interface EncodedVideoChunkMetadata {
+    decoderConfig?: VideoDecoderConfig;
 }
 
 interface ErrorEventInit extends EventInit {
@@ -760,6 +768,36 @@ interface VideoDecoderInit {
 
 interface VideoDecoderSupport {
     config?: VideoDecoderConfig;
+    supported?: boolean;
+}
+
+interface VideoEncoderConfig {
+    alpha?: AlphaOption;
+    avc?: AvcEncoderConfig;
+    bitrate?: number;
+    bitrateMode?: BitrateMode;
+    codec: string;
+    displayHeight?: number;
+    displayWidth?: number;
+    framerate?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    height: number;
+    latencyMode?: LatencyMode;
+    scalabilityMode?: string;
+    width: number;
+}
+
+interface VideoEncoderEncodeOptions {
+    keyFrame?: boolean;
+}
+
+interface VideoEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedVideoChunkOutputCallback;
+}
+
+interface VideoEncoderSupport {
+    config?: VideoEncoderConfig;
     supported?: boolean;
 }
 
@@ -3887,6 +3925,32 @@ declare var VideoDecoder: {
     isConfigSupported(config: VideoDecoderConfig): Promise<VideoDecoderSupport>;
 };
 
+interface VideoEncoderEventMap {
+    "dequeue": Event;
+}
+
+/** Available only in secure contexts. */
+interface VideoEncoder extends EventTarget {
+    readonly encodeQueueSize: number;
+    ondequeue: ((this: VideoEncoder, ev: Event) => any) | null;
+    readonly state: CodecState;
+    close(): void;
+    configure(config: VideoEncoderConfig): void;
+    encode(frame: VideoFrame, options?: VideoEncoderEncodeOptions): void;
+    flush(): Promise<void>;
+    reset(): void;
+    addEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoEncoder: {
+    prototype: VideoEncoder;
+    new(init: VideoEncoderInit): VideoEncoder;
+    isConfigSupported(config: VideoEncoderConfig): Promise<VideoEncoderSupport>;
+};
+
 interface VideoFrame {
     readonly codedHeight: number;
     readonly codedRect: DOMRectReadOnly | null;
@@ -6459,6 +6523,10 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
+interface EncodedVideoChunkOutputCallback {
+    (chunk: EncodedVideoChunk, metadata?: EncodedVideoChunkMetadata): void;
+}
+
 interface FrameRequestCallback {
     (time: DOMHighResTimeStamp): void;
 }
@@ -6640,7 +6708,9 @@ type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type AlphaOption = "discard" | "keep";
+type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
+type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
@@ -6677,6 +6747,7 @@ type ImageSmoothingQuality = "high" | "low" | "medium";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
 type KeyType = "private" | "public" | "secret";
 type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
+type LatencyMode = "quality" | "realtime";
 type LockMode = "exclusive" | "shared";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaEncodingType = "record" | "webrtc";
