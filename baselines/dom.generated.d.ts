@@ -535,6 +535,13 @@ interface GainOptions extends AudioNodeOptions {
     gain?: number;
 }
 
+interface GamepadEffectParameters {
+    duration?: number;
+    startDelay?: number;
+    strongMagnitude?: number;
+    weakMagnitude?: number;
+}
+
 interface GamepadEventInit extends EventInit {
     gamepad: Gamepad;
 }
@@ -5947,6 +5954,7 @@ interface Gamepad {
     readonly index: number;
     readonly mapping: GamepadMappingType;
     readonly timestamp: DOMHighResTimeStamp;
+    readonly vibrationActuator: GamepadHapticActuator | null;
 }
 
 declare var Gamepad: {
@@ -5985,6 +5993,8 @@ declare var GamepadEvent: {
 /** This Gamepad API interface represents hardware in the controller designed to provide haptic feedback to the user (if available), most commonly vibration hardware. */
 interface GamepadHapticActuator {
     readonly type: GamepadHapticActuatorType;
+    playEffect(type: GamepadHapticEffectType, params?: GamepadEffectParameters): Promise<GamepadHapticsResult>;
+    reset(): Promise<GamepadHapticsResult>;
 }
 
 declare var GamepadHapticActuator: {
@@ -19090,6 +19100,8 @@ type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GamepadHapticActuatorType = "vibration";
+type GamepadHapticEffectType = "dual-rumble";
+type GamepadHapticsResult = "complete" | "preempted";
 type GamepadMappingType = "" | "standard" | "xr-standard";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
