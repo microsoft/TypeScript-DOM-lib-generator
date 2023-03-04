@@ -1359,6 +1359,11 @@ interface RTCIceCandidateInit {
     usernameFragment?: string | null;
 }
 
+interface RTCIceCandidatePair {
+    local?: RTCIceCandidate;
+    remote?: RTCIceCandidate;
+}
+
 interface RTCIceCandidatePairStats extends RTCStats {
     availableIncomingBitrate?: number;
     availableOutgoingBitrate?: number;
@@ -11928,6 +11933,7 @@ declare var RTCIceCandidate: {
 
 interface RTCIceTransportEventMap {
     "gatheringstatechange": Event;
+    "selectedcandidatepairchange": Event;
     "statechange": Event;
 }
 
@@ -11935,8 +11941,10 @@ interface RTCIceTransportEventMap {
 interface RTCIceTransport extends EventTarget {
     readonly gatheringState: RTCIceGathererState;
     ongatheringstatechange: ((this: RTCIceTransport, ev: Event) => any) | null;
+    onselectedcandidatepairchange: ((this: RTCIceTransport, ev: Event) => any) | null;
     onstatechange: ((this: RTCIceTransport, ev: Event) => any) | null;
     readonly state: RTCIceTransportState;
+    getSelectedCandidatePair(): RTCIceCandidatePair | null;
     addEventListener<K extends keyof RTCIceTransportEventMap>(type: K, listener: (this: RTCIceTransport, ev: RTCIceTransportEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCIceTransportEventMap>(type: K, listener: (this: RTCIceTransport, ev: RTCIceTransportEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
