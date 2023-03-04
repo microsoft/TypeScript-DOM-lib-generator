@@ -2950,6 +2950,15 @@ declare var CSSPageRule: {
     new(): CSSPageRule;
 };
 
+interface CSSPerspective extends CSSTransformComponent {
+    length: CSSPerspectiveValue;
+}
+
+declare var CSSPerspective: {
+    prototype: CSSPerspective;
+    new(length: CSSPerspectiveValue): CSSPerspective;
+};
+
 interface CSSPropertyRule extends CSSRule {
     readonly inherits: boolean;
     readonly initialValue: string | null;
@@ -18855,6 +18864,7 @@ type BufferSource = ArrayBufferView | ArrayBuffer;
 type COSEAlgorithmIdentifier = number;
 type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number | CSSNumericValue;
+type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | OffscreenCanvas;
 type ClipboardItemData = Promise<string | Blob>;

@@ -911,6 +911,15 @@ declare var CSSNumericValue: {
     new(): CSSNumericValue;
 };
 
+interface CSSPerspective extends CSSTransformComponent {
+    length: CSSPerspectiveValue;
+}
+
+declare var CSSPerspective: {
+    prototype: CSSPerspective;
+    new(length: CSSPerspectiveValue): CSSPerspective;
+};
+
 interface CSSRotate extends CSSTransformComponent {
     angle: CSSNumericValue;
     x: CSSNumberish;
@@ -6064,6 +6073,7 @@ type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number | CSSNumericValue;
+type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type DOMHighResTimeStamp = number;
