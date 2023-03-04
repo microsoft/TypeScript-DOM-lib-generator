@@ -3617,6 +3617,17 @@ declare var CSSSupportsRule: {
     new(): CSSSupportsRule;
 };
 
+interface CSSTransformComponent {
+    is2D: boolean;
+    toMatrix(): DOMMatrix;
+    toString(): string;
+}
+
+declare var CSSTransformComponent: {
+    prototype: CSSTransformComponent;
+    new(): CSSTransformComponent;
+};
+
 interface CSSTransition extends Animation {
     readonly transitionProperty: string;
     addEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSTransition, ev: AnimationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;

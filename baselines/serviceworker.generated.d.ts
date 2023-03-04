@@ -948,6 +948,17 @@ declare var CSSStyleValue: {
     new(): CSSStyleValue;
 };
 
+interface CSSTransformComponent {
+    is2D: boolean;
+    toMatrix(): DOMMatrix;
+    toString(): string;
+}
+
+declare var CSSTransformComponent: {
+    prototype: CSSTransformComponent;
+    new(): CSSTransformComponent;
+};
+
 interface CSSUnitValue extends CSSNumericValue {
     readonly unit: string;
     value: number;
