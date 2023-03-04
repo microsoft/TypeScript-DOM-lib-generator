@@ -1958,6 +1958,28 @@ interface VideoConfiguration {
     width: number;
 }
 
+interface VideoDecoderConfig {
+    codec: string;
+    codedHeight?: number;
+    codedWidth?: number;
+    colorSpace?: VideoColorSpaceInit;
+    description?: BufferSource;
+    displayAspectHeight?: number;
+    displayAspectWidth?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    optimizeForLatency?: boolean;
+}
+
+interface VideoDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: VideoFrameOutputCallback;
+}
+
+interface VideoDecoderSupport {
+    config?: VideoDecoderConfig;
+    supported?: boolean;
+}
+
 interface VideoFrameBufferInit {
     codedHeight: number;
     codedWidth: number;
@@ -15235,6 +15257,32 @@ declare var VideoColorSpace: {
     new(init?: VideoColorSpaceInit): VideoColorSpace;
 };
 
+interface VideoDecoderEventMap {
+    "dequeue": Event;
+}
+
+/** Available only in secure contexts. */
+interface VideoDecoder extends EventTarget {
+    readonly decodeQueueSize: number;
+    ondequeue: ((this: VideoDecoder, ev: Event) => any) | null;
+    readonly state: CodecState;
+    close(): void;
+    configure(config: VideoDecoderConfig): void;
+    decode(chunk: EncodedVideoChunk): void;
+    flush(): Promise<void>;
+    reset(): void;
+    addEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoDecoder: {
+    prototype: VideoDecoder;
+    new(init: VideoDecoderInit): VideoDecoder;
+    isConfigSupported(config: VideoDecoderConfig): Promise<VideoDecoderSupport>;
+};
+
 interface VideoFrame {
     readonly codedHeight: number;
     readonly codedRect: DOMRectReadOnly | null;
@@ -18356,12 +18404,20 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
+interface VideoFrameOutputCallback {
+    (output: VideoFrame): void;
+}
+
 interface VideoFrameRequestCallback {
     (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata): void;
 }
 
 interface VoidFunction {
     (): void;
+}
+
+interface WebCodecsErrorCallback {
+    (error: DOMException): void;
 }
 
 interface HTMLElementTagNameMap {
@@ -19156,6 +19212,7 @@ type CanvasTextRendering = "auto" | "geometricPrecision" | "optimizeLegibility" 
 type ChannelCountMode = "clamped-max" | "explicit" | "max";
 type ChannelInterpretation = "discrete" | "speakers";
 type ClientTypes = "all" | "sharedworker" | "window" | "worker";
+type CodecState = "closed" | "configured" | "unconfigured";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompositeOperation = "accumulate" | "add" | "replace";
@@ -19181,6 +19238,7 @@ type GamepadHapticEffectType = "dual-rumble";
 type GamepadHapticsResult = "complete" | "preempted";
 type GamepadMappingType = "" | "standard" | "xr-standard";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
+type HardwareAcceleration = "no-preference" | "prefer-hardware" | "prefer-software";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
