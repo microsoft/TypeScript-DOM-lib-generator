@@ -3032,6 +3032,34 @@ declare var CSSScale: {
     new(x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
 };
 
+interface CSSSkew extends CSSTransformComponent {
+    ax: CSSNumericValue;
+    ay: CSSNumericValue;
+}
+
+declare var CSSSkew: {
+    prototype: CSSSkew;
+    new(ax: CSSNumericValue, ay: CSSNumericValue): CSSSkew;
+};
+
+interface CSSSkewX extends CSSTransformComponent {
+    ax: CSSNumericValue;
+}
+
+declare var CSSSkewX: {
+    prototype: CSSSkewX;
+    new(ax: CSSNumericValue): CSSSkewX;
+};
+
+interface CSSSkewY extends CSSTransformComponent {
+    ay: CSSNumericValue;
+}
+
+declare var CSSSkewY: {
+    prototype: CSSSkewY;
+    new(ay: CSSNumericValue): CSSSkewY;
+};
+
 /** An object that is a CSS declaration block, and exposes style information and various style-related methods and properties. */
 interface CSSStyleDeclaration {
     accentColor: string;
