@@ -2962,6 +2962,19 @@ declare var CSSPropertyRule: {
     new(): CSSPropertyRule;
 };
 
+interface CSSRotate extends CSSTransformComponent {
+    angle: CSSNumericValue;
+    x: CSSNumberish;
+    y: CSSNumberish;
+    z: CSSNumberish;
+}
+
+declare var CSSRotate: {
+    prototype: CSSRotate;
+    new(angle: CSSNumericValue): CSSRotate;
+    new(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue): CSSRotate;
+};
+
 /** A single CSS rule. There are several types of rules, listed in the Type constants section below. */
 interface CSSRule {
     cssText: string;
