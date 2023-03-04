@@ -4975,6 +4975,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
+    drawingBufferColorSpace: PredefinedColorSpace;
     readonly drawingBufferHeight: GLsizei;
     readonly drawingBufferWidth: GLsizei;
     activeTexture(texture: GLenum): void;
