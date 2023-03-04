@@ -10465,6 +10465,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorConcurrentH
     readonly permissions: Permissions;
     /** Available only in secure contexts. */
     readonly serviceWorker: ServiceWorkerContainer;
+    readonly userActivation: UserActivation;
     /** Available only in secure contexts. */
     canShare(data?: ShareData): boolean;
     getGamepads(): (Gamepad | null)[];
@@ -15087,6 +15088,16 @@ interface URLSearchParams {
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+};
+
+interface UserActivation {
+    readonly hasBeenActive: boolean;
+    readonly isActive: boolean;
+}
+
+declare var UserActivation: {
+    prototype: UserActivation;
+    new(): UserActivation;
 };
 
 interface VTTCue extends TextTrackCue {
