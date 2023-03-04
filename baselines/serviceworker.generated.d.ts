@@ -52,6 +52,21 @@ interface BlobPropertyBag {
     type?: string;
 }
 
+interface CSSMatrixComponentOptions {
+    is2D?: boolean;
+}
+
+interface CSSNumericType {
+    angle?: number;
+    flex?: number;
+    frequency?: number;
+    length?: number;
+    percent?: number;
+    percentHint?: CSSNumericBaseType;
+    resolution?: number;
+    time?: number;
+}
+
 interface CacheQueryOptions {
     ignoreMethod?: boolean;
     ignoreSearch?: boolean;
@@ -507,6 +522,11 @@ interface RegistrationOptions {
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
+interface ReportingObserverOptions {
+    buffered?: boolean;
+    types?: string[];
+}
+
 interface RequestInit {
     /** A BodyInit object or null to set request's body. */
     body?: BodyInit | null;
@@ -816,6 +836,271 @@ declare var ByteLengthQueuingStrategy: {
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
+interface CSSImageValue extends CSSStyleValue {
+}
+
+declare var CSSImageValue: {
+    prototype: CSSImageValue;
+    new(): CSSImageValue;
+};
+
+interface CSSKeywordValue extends CSSStyleValue {
+    value: string;
+}
+
+declare var CSSKeywordValue: {
+    prototype: CSSKeywordValue;
+    new(value: string): CSSKeywordValue;
+};
+
+interface CSSMathClamp extends CSSMathValue {
+    readonly lower: CSSNumericValue;
+    readonly upper: CSSNumericValue;
+    readonly value: CSSNumericValue;
+}
+
+declare var CSSMathClamp: {
+    prototype: CSSMathClamp;
+    new(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish): CSSMathClamp;
+};
+
+interface CSSMathInvert extends CSSMathValue {
+    readonly value: CSSNumericValue;
+}
+
+declare var CSSMathInvert: {
+    prototype: CSSMathInvert;
+    new(arg: CSSNumberish): CSSMathInvert;
+};
+
+interface CSSMathMax extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathMax: {
+    prototype: CSSMathMax;
+    new(...args: CSSNumberish[]): CSSMathMax;
+};
+
+interface CSSMathMin extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathMin: {
+    prototype: CSSMathMin;
+    new(...args: CSSNumberish[]): CSSMathMin;
+};
+
+interface CSSMathNegate extends CSSMathValue {
+    readonly value: CSSNumericValue;
+}
+
+declare var CSSMathNegate: {
+    prototype: CSSMathNegate;
+    new(arg: CSSNumberish): CSSMathNegate;
+};
+
+interface CSSMathProduct extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathProduct: {
+    prototype: CSSMathProduct;
+    new(...args: CSSNumberish[]): CSSMathProduct;
+};
+
+interface CSSMathSum extends CSSMathValue {
+    readonly values: CSSNumericArray;
+}
+
+declare var CSSMathSum: {
+    prototype: CSSMathSum;
+    new(...args: CSSNumberish[]): CSSMathSum;
+};
+
+interface CSSMathValue extends CSSNumericValue {
+    readonly operator: CSSMathOperator;
+}
+
+declare var CSSMathValue: {
+    prototype: CSSMathValue;
+    new(): CSSMathValue;
+};
+
+interface CSSMatrixComponent extends CSSTransformComponent {
+    matrix: DOMMatrix;
+}
+
+declare var CSSMatrixComponent: {
+    prototype: CSSMatrixComponent;
+    new(matrix: DOMMatrixReadOnly, options?: CSSMatrixComponentOptions): CSSMatrixComponent;
+};
+
+interface CSSNumericArray {
+    readonly length: number;
+    forEach(callbackfn: (value: CSSNumericValue, key: number, parent: CSSNumericArray) => void, thisArg?: any): void;
+    [index: number]: CSSNumericValue;
+}
+
+declare var CSSNumericArray: {
+    prototype: CSSNumericArray;
+    new(): CSSNumericArray;
+};
+
+interface CSSNumericValue extends CSSStyleValue {
+    add(...values: CSSNumberish[]): CSSNumericValue;
+    div(...values: CSSNumberish[]): CSSNumericValue;
+    equals(...value: CSSNumberish[]): boolean;
+    max(...values: CSSNumberish[]): CSSNumericValue;
+    min(...values: CSSNumberish[]): CSSNumericValue;
+    mul(...values: CSSNumberish[]): CSSNumericValue;
+    sub(...values: CSSNumberish[]): CSSNumericValue;
+    to(unit: string): CSSUnitValue;
+    toSum(...units: string[]): CSSMathSum;
+    type(): CSSNumericType;
+}
+
+declare var CSSNumericValue: {
+    prototype: CSSNumericValue;
+    new(): CSSNumericValue;
+};
+
+interface CSSPerspective extends CSSTransformComponent {
+    length: CSSPerspectiveValue;
+}
+
+declare var CSSPerspective: {
+    prototype: CSSPerspective;
+    new(length: CSSPerspectiveValue): CSSPerspective;
+};
+
+interface CSSRotate extends CSSTransformComponent {
+    angle: CSSNumericValue;
+    x: CSSNumberish;
+    y: CSSNumberish;
+    z: CSSNumberish;
+}
+
+declare var CSSRotate: {
+    prototype: CSSRotate;
+    new(angle: CSSNumericValue): CSSRotate;
+    new(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue): CSSRotate;
+};
+
+interface CSSScale extends CSSTransformComponent {
+    x: CSSNumberish;
+    y: CSSNumberish;
+    z: CSSNumberish;
+}
+
+declare var CSSScale: {
+    prototype: CSSScale;
+    new(x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
+};
+
+interface CSSSkew extends CSSTransformComponent {
+    ax: CSSNumericValue;
+    ay: CSSNumericValue;
+}
+
+declare var CSSSkew: {
+    prototype: CSSSkew;
+    new(ax: CSSNumericValue, ay: CSSNumericValue): CSSSkew;
+};
+
+interface CSSSkewX extends CSSTransformComponent {
+    ax: CSSNumericValue;
+}
+
+declare var CSSSkewX: {
+    prototype: CSSSkewX;
+    new(ax: CSSNumericValue): CSSSkewX;
+};
+
+interface CSSSkewY extends CSSTransformComponent {
+    ay: CSSNumericValue;
+}
+
+declare var CSSSkewY: {
+    prototype: CSSSkewY;
+    new(ay: CSSNumericValue): CSSSkewY;
+};
+
+interface CSSStyleValue {
+    toString(): string;
+}
+
+declare var CSSStyleValue: {
+    prototype: CSSStyleValue;
+    new(): CSSStyleValue;
+};
+
+interface CSSTransformComponent {
+    is2D: boolean;
+    toMatrix(): DOMMatrix;
+    toString(): string;
+}
+
+declare var CSSTransformComponent: {
+    prototype: CSSTransformComponent;
+    new(): CSSTransformComponent;
+};
+
+interface CSSTransformValue extends CSSStyleValue {
+    readonly is2D: boolean;
+    readonly length: number;
+    toMatrix(): DOMMatrix;
+    forEach(callbackfn: (value: CSSTransformComponent, key: number, parent: CSSTransformValue) => void, thisArg?: any): void;
+    [index: number]: CSSTransformComponent;
+}
+
+declare var CSSTransformValue: {
+    prototype: CSSTransformValue;
+    new(transforms: CSSTransformComponent[]): CSSTransformValue;
+};
+
+interface CSSTranslate extends CSSTransformComponent {
+    x: CSSNumericValue;
+    y: CSSNumericValue;
+    z: CSSNumericValue;
+}
+
+declare var CSSTranslate: {
+    prototype: CSSTranslate;
+    new(x: CSSNumericValue, y: CSSNumericValue, z?: CSSNumericValue): CSSTranslate;
+};
+
+interface CSSUnitValue extends CSSNumericValue {
+    readonly unit: string;
+    value: number;
+}
+
+declare var CSSUnitValue: {
+    prototype: CSSUnitValue;
+    new(value: number, unit: string): CSSUnitValue;
+};
+
+interface CSSUnparsedValue extends CSSStyleValue {
+    readonly length: number;
+    forEach(callbackfn: (value: CSSUnparsedSegment, key: number, parent: CSSUnparsedValue) => void, thisArg?: any): void;
+    [index: number]: CSSUnparsedSegment;
+}
+
+declare var CSSUnparsedValue: {
+    prototype: CSSUnparsedValue;
+    new(members: CSSUnparsedSegment[]): CSSUnparsedValue;
+};
+
+interface CSSVariableReferenceValue {
+    readonly fallback: CSSUnparsedValue | null;
+    variable: string;
+}
+
+declare var CSSVariableReferenceValue: {
+    prototype: CSSVariableReferenceValue;
+    new(variable: string, fallback?: CSSUnparsedValue | null): CSSVariableReferenceValue;
+};
+
 /**
  * Provides a storage mechanism for Request / Response object pairs that are cached, for example as part of the ServiceWorker life cycle. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec.
  * Available only in secure contexts.
@@ -1036,6 +1321,14 @@ interface CloseEvent extends Event {
 declare var CloseEvent: {
     prototype: CloseEvent;
     new(type: string, eventInitDict?: CloseEventInit): CloseEvent;
+};
+
+interface CompressionStream extends GenericTransformStream {
+}
+
+declare var CompressionStream: {
+    prototype: CompressionStream;
+    new(format: string): CompressionStream;
 };
 
 /** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
@@ -1340,6 +1633,14 @@ interface DOMStringList {
 declare var DOMStringList: {
     prototype: DOMStringList;
     new(): DOMStringList;
+};
+
+interface DecompressionStream extends GenericTransformStream {
+}
+
+declare var DecompressionStream: {
+    prototype: DecompressionStream;
+    new(format: string): DecompressionStream;
 };
 
 interface EXT_blend_minmax {
@@ -2883,6 +3184,38 @@ interface ReadableStreamGenericReader {
     cancel(reason?: any): Promise<void>;
 }
 
+interface Report {
+    readonly body: ReportBody | null;
+    readonly type: string;
+    readonly url: string;
+    toJSON(): any;
+}
+
+declare var Report: {
+    prototype: Report;
+    new(): Report;
+};
+
+interface ReportBody {
+    toJSON(): any;
+}
+
+declare var ReportBody: {
+    prototype: ReportBody;
+    new(): ReportBody;
+};
+
+interface ReportingObserver {
+    disconnect(): void;
+    observe(): void;
+    takeRecords(): ReportList;
+}
+
+declare var ReportingObserver: {
+    prototype: ReportingObserver;
+    new(callback: ReportingObserverCallback, options?: ReportingObserverOptions): ReportingObserver;
+};
+
 /** This Fetch API interface represents a resource request. */
 interface Request extends Body {
     /** Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching. */
@@ -3095,6 +3428,19 @@ interface StorageManager {
 declare var StorageManager: {
     prototype: StorageManager;
     new(): StorageManager;
+};
+
+interface StylePropertyMapReadOnly {
+    readonly size: number;
+    get(property: string): any;
+    getAll(property: string): CSSStyleValue[];
+    has(property: string): boolean;
+    forEach(callbackfn: (value: CSSStyleValue[], key: string, parent: StylePropertyMapReadOnly) => void, thisArg?: any): void;
+}
+
+declare var StylePropertyMapReadOnly: {
+    prototype: StylePropertyMapReadOnly;
+    new(): StylePropertyMapReadOnly;
 };
 
 /**
@@ -4765,6 +5111,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
+    drawingBufferColorSpace: PredefinedColorSpace;
     readonly drawingBufferHeight: GLsizei;
     readonly drawingBufferWidth: GLsizei;
     activeTexture(texture: GLenum): void;
@@ -5465,6 +5812,7 @@ declare var WorkerLocation: {
 /** A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator. */
 interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     readonly mediaCapabilities: MediaCapabilities;
+    readonly permissions: Permissions;
 }
 
 declare var WorkerNavigator: {
@@ -5682,6 +6030,10 @@ interface QueuingStrategySize<T = any> {
     (chunk: T): number;
 }
 
+interface ReportingObserverCallback {
+    (reports: Report[], observer: ReportingObserver): void;
+}
+
 interface TransformerFlushCallback<O> {
     (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
@@ -5788,6 +6140,10 @@ type BinaryData = ArrayBuffer | ArrayBufferView;
 type BlobPart = BufferSource | Blob | string;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
+type CSSKeywordish = string | CSSKeywordValue;
+type CSSNumberish = number | CSSNumericValue;
+type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
+type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
@@ -5820,6 +6176,7 @@ type PushMessageDataInit = BufferSource | string;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
+type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
 type TimerHandler = string | Function;
@@ -5828,6 +6185,8 @@ type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
+type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
+type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
 type CanvasFontKerning = "auto" | "none" | "normal";
