@@ -438,6 +438,13 @@ interface ElementDefinitionOptions {
     extends?: string;
 }
 
+interface EncodedVideoChunkInit {
+    data: BufferSource;
+    duration?: number;
+    timestamp: number;
+    type: EncodedVideoChunkType;
+}
+
 interface ErrorEventInit extends EventInit {
     colno?: number;
     error?: any;
@@ -5544,6 +5551,19 @@ interface ElementInternals extends ARIAMixin {
 declare var ElementInternals: {
     prototype: ElementInternals;
     new(): ElementInternals;
+};
+
+interface EncodedVideoChunk {
+    readonly byteLength: number;
+    readonly duration: number | null;
+    readonly timestamp: number;
+    readonly type: EncodedVideoChunkType;
+    copyTo(destination: BufferSource): void;
+}
+
+declare var EncodedVideoChunk: {
+    prototype: EncodedVideoChunk;
+    new(init: EncodedVideoChunkInit): EncodedVideoChunk;
 };
 
 /** Events providing information related to errors in scripts or in files. */
@@ -19147,6 +19167,7 @@ type DisplayCaptureSurfaceType = "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
 type DocumentReadyState = "complete" | "interactive" | "loading";
 type DocumentVisibilityState = "hidden" | "visible";
+type EncodedVideoChunkType = "delta" | "key";
 type EndOfStreamError = "decode" | "network";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";

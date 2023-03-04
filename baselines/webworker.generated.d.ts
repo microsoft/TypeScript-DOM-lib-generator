@@ -159,6 +159,13 @@ interface EcdsaParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
 }
 
+interface EncodedVideoChunkInit {
+    data: BufferSource;
+    duration?: number;
+    timestamp: number;
+    type: EncodedVideoChunkType;
+}
+
 interface ErrorEventInit extends EventInit {
     colno?: number;
     error?: any;
@@ -1802,6 +1809,19 @@ interface EXT_texture_norm16 {
     readonly RGB16_SNORM_EXT: 0x8F9A;
     readonly RGBA16_SNORM_EXT: 0x8F9B;
 }
+
+interface EncodedVideoChunk {
+    readonly byteLength: number;
+    readonly duration: number | null;
+    readonly timestamp: number;
+    readonly type: EncodedVideoChunkType;
+    copyTo(destination: BufferSource): void;
+}
+
+declare var EncodedVideoChunk: {
+    prototype: EncodedVideoChunk;
+    new(init: EncodedVideoChunkInit): EncodedVideoChunk;
+};
 
 /** Events providing information related to errors in scripts or in files. */
 interface ErrorEvent extends Event {
@@ -6581,6 +6601,7 @@ type ClientTypes = "all" | "sharedworker" | "window" | "worker";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type DocumentVisibilityState = "hidden" | "visible";
+type EncodedVideoChunkType = "delta" | "key";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
