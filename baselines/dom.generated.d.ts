@@ -18047,7 +18047,7 @@ declare var XPathEvaluator: {
 
 interface XPathEvaluatorBase {
     createExpression(expression: string, resolver?: XPathNSResolver | null): XPathExpression;
-    createNSResolver(nodeResolver: Node): XPathNSResolver;
+    createNSResolver(nodeResolver: Node): Node;
     evaluate(expression: string, contextNode: Node, resolver?: XPathNSResolver | null, type?: number, result?: XPathResult | null): XPathResult;
 }
 
