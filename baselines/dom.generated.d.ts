@@ -3507,6 +3507,7 @@ interface CSSStyleDeclaration {
     paddingLeft: string;
     paddingRight: string;
     paddingTop: string;
+    page: string;
     pageBreakAfter: string;
     pageBreakBefore: string;
     pageBreakInside: string;
