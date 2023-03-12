@@ -1190,6 +1190,12 @@ interface PositionOptions {
     timeout?: number;
 }
 
+interface PrivateToken {
+    issuers?: string[];
+    operation: OperationType;
+    refreshPolicy?: RefreshPolicy;
+}
+
 interface ProgressEventInit extends EventInit {
     lengthComputable?: boolean;
     loaded?: number;
@@ -1665,6 +1671,7 @@ interface RequestInit {
     method?: string;
     /** A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode. */
     mode?: RequestMode;
+    privateToken?: PrivateToken;
     /** A string indicating whether request follows redirects, results in an error upon encountering a redirect, or returns the redirect (in an opaque fashion). Sets request's redirect. */
     redirect?: RequestRedirect;
     /** A string whose value is a same-origin URL, "about:client", or the empty string, to set request's referrer. */
@@ -3507,6 +3514,7 @@ interface CSSStyleDeclaration {
     paddingLeft: string;
     paddingRight: string;
     paddingTop: string;
+    page: string;
     pageBreakAfter: string;
     pageBreakBefore: string;
     pageBreakInside: string;
@@ -19354,6 +19362,7 @@ type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload"
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
+type OperationType = "send-redemption-record" | "token-redemption" | "token-request";
 type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
@@ -19398,6 +19407,7 @@ type ReadableStreamType = "bytes";
 type ReadyState = "closed" | "ended" | "open";
 type RecordingState = "inactive" | "paused" | "recording";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
+type RefreshPolicy = "none" | "refresh";
 type RemotePlaybackState = "connected" | "connecting" | "disconnected";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
