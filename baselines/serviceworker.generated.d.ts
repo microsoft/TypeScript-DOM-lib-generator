@@ -5751,7 +5751,7 @@ interface WindowOrWorkerGlobalScope {
     reportError(e: any): void;
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-    structuredClone(value: any, options?: StructuredSerializeOptions): any;
+    structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
 
 interface WorkerGlobalScopeEventMap {
@@ -6129,7 +6129,7 @@ declare function queueMicrotask(callback: VoidFunction): void;
 declare function reportError(e: any): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-declare function structuredClone(value: any, options?: StructuredSerializeOptions): any;
+declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 declare function addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;

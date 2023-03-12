@@ -6092,7 +6092,7 @@ interface WindowOrWorkerGlobalScope {
     reportError(e: any): void;
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-    structuredClone(value: any, options?: StructuredSerializeOptions): any;
+    structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
 
 interface WorkerEventMap extends AbstractWorkerEventMap {
@@ -6650,7 +6650,7 @@ declare function queueMicrotask(callback: VoidFunction): void;
 declare function reportError(e: any): void;
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-declare function structuredClone(value: any, options?: StructuredSerializeOptions): any;
+declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 declare function cancelAnimationFrame(handle: number): void;
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;

@@ -252,6 +252,25 @@
                                 }
                             }
                         },
+                        "structuredClone": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "default": "any"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "value",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
                         "clearTimeout": {
                             "signature": {
                                 "0": {
