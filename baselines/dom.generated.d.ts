@@ -496,6 +496,10 @@ interface FilePropertyBag extends BlobPropertyBag {
     lastModified?: number;
 }
 
+interface FileSystemCreateWritableOptions {
+    keepExistingData?: boolean;
+}
+
 interface FileSystemFlags {
     create?: boolean;
     exclusive?: boolean;
@@ -2105,6 +2109,13 @@ interface WorkletOptions {
     credentials?: RequestCredentials;
 }
 
+interface WriteParams {
+    data?: BufferSource | Blob | string | null;
+    position?: number | null;
+    size?: number | null;
+    type: WriteCommandType;
+}
+
 type NodeFilter = ((node: Node) => number) | { acceptNode(node: Node): number; };
 
 declare var NodeFilter: {
@@ -2801,6 +2812,8 @@ declare var CSSConditionRule: {
 };
 
 interface CSSContainerRule extends CSSConditionRule {
+    readonly containerName: string;
+    readonly containerQuery: string;
 }
 
 declare var CSSContainerRule: {
@@ -5935,6 +5948,7 @@ declare var FileSystemFileEntry: {
 /** Available only in secure contexts. */
 interface FileSystemFileHandle extends FileSystemHandle {
     readonly kind: "file";
+    createWritable(options?: FileSystemCreateWritableOptions): Promise<FileSystemWritableFileStream>;
     getFile(): Promise<File>;
 }
 
@@ -5953,6 +5967,18 @@ interface FileSystemHandle {
 declare var FileSystemHandle: {
     prototype: FileSystemHandle;
     new(): FileSystemHandle;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemWritableFileStream extends WritableStream {
+    seek(position: number): Promise<void>;
+    truncate(size: number): Promise<void>;
+    write(data: FileSystemWriteChunkType): Promise<void>;
+}
+
+declare var FileSystemWritableFileStream: {
+    prototype: FileSystemWritableFileStream;
+    new(): FileSystemWritableFileStream;
 };
 
 /** Focus-related events like focus, blur, focusin, or focusout. */
@@ -19220,6 +19246,7 @@ type ConstrainULong = number | ConstrainULongRange;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;
 type GLbitfield = number;
@@ -19433,4 +19460,5 @@ type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
 type WakeLockType = "screen";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
+type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

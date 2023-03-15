@@ -180,6 +180,10 @@ interface FilePropertyBag extends BlobPropertyBag {
     lastModified?: number;
 }
 
+interface FileSystemCreateWritableOptions {
+    keepExistingData?: boolean;
+}
+
 interface FileSystemGetDirectoryOptions {
     create?: boolean;
 }
@@ -688,6 +692,13 @@ interface WorkerOptions {
     credentials?: RequestCredentials;
     name?: string;
     type?: WorkerType;
+}
+
+interface WriteParams {
+    data?: BufferSource | Blob | string | null;
+    position?: number | null;
+    size?: number | null;
+    type: WriteCommandType;
 }
 
 /** The ANGLE_instanced_arrays extension is part of the WebGL API and allows to draw the same object, or groups of similar objects multiple times, if they share the same vertex data, primitive count and type. */
@@ -1888,6 +1899,7 @@ declare var FileSystemDirectoryHandle: {
 /** Available only in secure contexts. */
 interface FileSystemFileHandle extends FileSystemHandle {
     readonly kind: "file";
+    createWritable(options?: FileSystemCreateWritableOptions): Promise<FileSystemWritableFileStream>;
     getFile(): Promise<File>;
 }
 
@@ -1906,6 +1918,18 @@ interface FileSystemHandle {
 declare var FileSystemHandle: {
     prototype: FileSystemHandle;
     new(): FileSystemHandle;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemWritableFileStream extends WritableStream {
+    seek(position: number): Promise<void>;
+    truncate(size: number): Promise<void>;
+    write(data: FileSystemWriteChunkType): Promise<void>;
+}
+
+declare var FileSystemWritableFileStream: {
+    prototype: FileSystemWritableFileStream;
+    new(): FileSystemWritableFileStream;
 };
 
 interface FontFace {
@@ -6159,6 +6183,7 @@ type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;
 type GLbitfield = number;
@@ -6253,4 +6278,5 @@ type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type TransferFunction = "hlg" | "pq" | "srgb";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
+type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

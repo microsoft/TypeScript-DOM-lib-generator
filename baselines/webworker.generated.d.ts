@@ -220,6 +220,10 @@ interface FilePropertyBag extends BlobPropertyBag {
     lastModified?: number;
 }
 
+interface FileSystemCreateWritableOptions {
+    keepExistingData?: boolean;
+}
+
 interface FileSystemGetDirectoryOptions {
     create?: boolean;
 }
@@ -848,6 +852,13 @@ interface WorkerOptions {
     credentials?: RequestCredentials;
     name?: string;
     type?: WorkerType;
+}
+
+interface WriteParams {
+    data?: BufferSource | Blob | string | null;
+    position?: number | null;
+    size?: number | null;
+    type: WriteCommandType;
 }
 
 /** The ANGLE_instanced_arrays extension is part of the WebGL API and allows to draw the same object, or groups of similar objects multiple times, if they share the same vertex data, primitive count and type. */
@@ -2161,6 +2172,7 @@ declare var FileSystemDirectoryHandle: {
 interface FileSystemFileHandle extends FileSystemHandle {
     readonly kind: "file";
     createSyncAccessHandle(): Promise<FileSystemSyncAccessHandle>;
+    createWritable(options?: FileSystemCreateWritableOptions): Promise<FileSystemWritableFileStream>;
     getFile(): Promise<File>;
 }
 
@@ -2194,6 +2206,18 @@ interface FileSystemSyncAccessHandle {
 declare var FileSystemSyncAccessHandle: {
     prototype: FileSystemSyncAccessHandle;
     new(): FileSystemSyncAccessHandle;
+};
+
+/** Available only in secure contexts. */
+interface FileSystemWritableFileStream extends WritableStream {
+    seek(position: number): Promise<void>;
+    truncate(size: number): Promise<void>;
+    write(data: FileSystemWriteChunkType): Promise<void>;
+}
+
+declare var FileSystemWritableFileStream: {
+    prototype: FileSystemWritableFileStream;
+    new(): FileSystemWritableFileStream;
 };
 
 interface FontFace {
@@ -6671,6 +6695,7 @@ type CanvasImageSource = ImageBitmap | OffscreenCanvas | VideoFrame;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;
 type GLbitfield = number;
@@ -6780,4 +6805,5 @@ type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I422" | "I444" | "
 type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WorkerType = "classic" | "module";
+type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
