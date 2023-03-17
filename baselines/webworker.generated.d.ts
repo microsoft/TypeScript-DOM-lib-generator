@@ -779,7 +779,7 @@ interface VideoEncoderConfig {
     alpha?: AlphaOption;
     avc?: AvcEncoderConfig;
     bitrate?: number;
-    bitrateMode?: BitrateMode;
+    bitrateMode?: VideoEncoderBitrateMode;
     codec: string;
     displayHeight?: number;
     displayWidth?: number;
@@ -793,6 +793,11 @@ interface VideoEncoderConfig {
 
 interface VideoEncoderEncodeOptions {
     keyFrame?: boolean;
+    vp9?: VideoEncoderEncodeOptionsForVp9;
+}
+
+interface VideoEncoderEncodeOptionsForVp9 {
+    quantizer?: number | null;
 }
 
 interface VideoEncoderInit {
@@ -6735,7 +6740,6 @@ type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams |
 type AlphaOption = "discard" | "keep";
 type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
-type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
@@ -6800,6 +6804,7 @@ type ServiceWorkerState = "activated" | "activating" | "installed" | "installing
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type TransferFunction = "hlg" | "pq" | "srgb";
 type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
+type VideoEncoderBitrateMode = "constant" | "quantizer" | "variable";
 type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";
 type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I422" | "I444" | "NV12" | "RGBA" | "RGBX";
 type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
