@@ -596,6 +596,13 @@
                     }
                 }
             },
+            "VideoEncoderEncodeOptions": {
+                "members": {
+                    "member": {
+                        "vp9": null // Blink only as of 2023-03
+                    }
+                }
+            },
             "VideoFrameInit": {
                 "members": {
                     "member": {
