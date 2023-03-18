@@ -15,7 +15,6 @@ export interface Param extends Typed {
 export interface Signature extends Typed {
   param?: Param[];
   deprecated?: boolean;
-  mdnUrl?: string;
   typeParameters?: TypeParameter[];
 }
 
@@ -25,7 +24,6 @@ export interface Member extends Typed {
   required?: boolean;
   specs?: string;
   comment?: string;
-  mdnUrl?: string;
 }
 
 export interface Property extends Typed {
@@ -110,7 +108,6 @@ export interface CallbackFunction {
 export interface Constructor {
   signature: Signature[];
   comment?: string;
-  mdnUrl?: string;
   specs?: string;
 }
 
@@ -127,7 +124,6 @@ export interface Constant extends Typed {
   exposed?: string;
   specs?: string;
   comment?: string;
-  mdnUrl?: string;
 }
 
 export interface ParsedAttribute {
@@ -140,7 +136,6 @@ export interface Element {
   name: string;
   namespace?: string;
   deprecated?: boolean;
-  mdnUrl?: string;
   specs?: string;
 }
 
@@ -216,7 +211,6 @@ export interface Iterator {
   };
   exposed?: string;
   deprecated?: boolean | string;
-  mdnUrl?: string;
 }
 
 export interface Enum {
@@ -229,7 +223,6 @@ export interface Enum {
 export interface TypeDef extends Typed {
   name: string;
   deprecated?: boolean;
-  mdnUrl?: string;
   legacyNamespace?: string;
   typeParameters?: TypeParameter[];
 }
