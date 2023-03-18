@@ -4312,7 +4312,7 @@ interface CredentialsContainer {
     create(options?: CredentialCreationOptions): Promise<Credential | null>;
     get(options?: CredentialRequestOptions): Promise<Credential | null>;
     preventSilentAccess(): Promise<void>;
-    store(credential: Credential): Promise<Credential>;
+    store(credential: Credential): Promise<void>;
 }
 
 declare var CredentialsContainer: {
