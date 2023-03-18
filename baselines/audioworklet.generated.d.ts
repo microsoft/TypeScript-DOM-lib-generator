@@ -167,11 +167,23 @@ interface UnderlyingSource<R = any> {
     type?: ReadableStreamType;
 }
 
-/** A controller object that allows you to abort one or more DOM requests as and when desired. */
+/**
+ * A controller object that allows you to abort one or more DOM requests as and when desired.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController)
+ */
 interface AbortController {
-    /** Returns the AbortSignal object associated with this object. */
+    /**
+     * Returns the AbortSignal object associated with this object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController/signal)
+     */
     readonly signal: AbortSignal;
-    /** Invoking this method will set this object's AbortSignal's aborted flag and signal to any observers that the associated activity is to be aborted. */
+    /**
+     * Invoking this method will set this object's AbortSignal's aborted flag and signal to any observers that the associated activity is to be aborted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController/abort)
+     */
     abort(reason?: any): void;
 }
 
@@ -184,12 +196,23 @@ interface AbortSignalEventMap {
     "abort": Event;
 }
 
-/** A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object. */
+/**
+ * A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal)
+ */
 interface AbortSignal extends EventTarget {
-    /** Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise. */
+    /**
+     * Returns true if this AbortSignal's AbortController has signaled to abort, and false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/aborted)
+     */
     readonly aborted: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_event) */
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/reason) */
     readonly reason: any;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/throwIfAborted) */
     throwIfAborted(): void;
     addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -200,13 +223,19 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort) */
     abort(reason?: any): AbortSignal;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope) */
 interface AudioWorkletGlobalScope extends WorkletGlobalScope {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentFrame) */
     readonly currentFrame: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentTime) */
     readonly currentTime: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/sampleRate) */
     readonly sampleRate: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/registerProcessor) */
     registerProcessor(name: string, processorCtor: AudioWorkletProcessorConstructor): void;
 }
 
@@ -215,7 +244,9 @@ declare var AudioWorkletGlobalScope: {
     new(): AudioWorkletGlobalScope;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor) */
 interface AudioWorkletProcessor {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor/port) */
     readonly port: MessagePort;
 }
 
@@ -228,9 +259,14 @@ interface AudioWorkletProcessorImpl extends AudioWorkletProcessor {
     process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean;
 }
 
-/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/**
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy)
+ */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     readonly highWaterMark: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/size) */
     readonly size: QueuingStrategySize<ArrayBufferView>;
 }
 
@@ -239,6 +275,7 @@ declare var ByteLengthQueuingStrategy: {
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
 }
 
@@ -247,9 +284,14 @@ declare var CompressionStream: {
     new(format: string): CompressionStream;
 };
 
-/** This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams. */
+/**
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy)
+ */
 interface CountQueuingStrategy extends QueuingStrategy {
     readonly highWaterMark: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
     readonly size: QueuingStrategySize;
 }
 
@@ -258,10 +300,19 @@ declare var CountQueuingStrategy: {
     new(init: QueuingStrategyInit): CountQueuingStrategy;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent) */
 interface CustomEvent<T = any> extends Event {
-    /** Returns any custom data event was created with. Typically used for synthetic events. */
+    /**
+     * Returns any custom data event was created with. Typically used for synthetic events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
+     */
     readonly detail: T;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/initCustomEvent)
+     */
     initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
 }
 
@@ -270,11 +321,21 @@ declare var CustomEvent: {
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
-/** An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API. */
+/**
+ * An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException)
+ */
 interface DOMException extends Error {
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
+     */
     readonly code: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/message) */
     readonly message: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/name) */
     readonly name: string;
     readonly INDEX_SIZE_ERR: 1;
     readonly DOMSTRING_SIZE_ERR: 2;
@@ -333,6 +394,7 @@ declare var DOMException: {
     readonly DATA_CLONE_ERR: 25;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
 }
 
@@ -341,12 +403,21 @@ declare var DecompressionStream: {
     new(format: string): DecompressionStream;
 };
 
-/** Events providing information related to errors in scripts or in files. */
+/**
+ * Events providing information related to errors in scripts or in files.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent)
+ */
 interface ErrorEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/colno) */
     readonly colno: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
     readonly error: any;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/filename) */
     readonly filename: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/lineno) */
     readonly lineno: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message) */
     readonly message: string;
 }
 
@@ -355,43 +426,119 @@ declare var ErrorEvent: {
     new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
 };
 
-/** An event which takes place in the DOM. */
+/**
+ * An event which takes place in the DOM.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
+ */
 interface Event {
-    /** Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise. */
+    /**
+     * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)
+     */
     readonly bubbles: boolean;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)
+     */
     cancelBubble: boolean;
-    /** Returns true or false depending on how event was initialized. Its return value does not always carry meaning, but true can indicate that part of the operation during which event was dispatched, can be canceled by invoking the preventDefault() method. */
+    /**
+     * Returns true or false depending on how event was initialized. Its return value does not always carry meaning, but true can indicate that part of the operation during which event was dispatched, can be canceled by invoking the preventDefault() method.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)
+     */
     readonly cancelable: boolean;
-    /** Returns true or false depending on how event was initialized. True if event invokes listeners past a ShadowRoot node that is the root of its target, and false otherwise. */
+    /**
+     * Returns true or false depending on how event was initialized. True if event invokes listeners past a ShadowRoot node that is the root of its target, and false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)
+     */
     readonly composed: boolean;
-    /** Returns the object whose event listener's callback is currently being invoked. */
+    /**
+     * Returns the object whose event listener's callback is currently being invoked.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)
+     */
     readonly currentTarget: EventTarget | null;
-    /** Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise. */
+    /**
+     * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)
+     */
     readonly defaultPrevented: boolean;
-    /** Returns the event's phase, which is one of NONE, CAPTURING_PHASE, AT_TARGET, and BUBBLING_PHASE. */
+    /**
+     * Returns the event's phase, which is one of NONE, CAPTURING_PHASE, AT_TARGET, and BUBBLING_PHASE.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)
+     */
     readonly eventPhase: number;
-    /** Returns true if event was dispatched by the user agent, and false otherwise. */
+    /**
+     * Returns true if event was dispatched by the user agent, and false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
+     */
     readonly isTrusted: boolean;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)
+     */
     returnValue: boolean;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)
+     */
     readonly srcElement: EventTarget | null;
-    /** Returns the object to which event is dispatched (its target). */
+    /**
+     * Returns the object to which event is dispatched (its target).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)
+     */
     readonly target: EventTarget | null;
-    /** Returns the event's timestamp as the number of milliseconds measured relative to the time origin. */
+    /**
+     * Returns the event's timestamp as the number of milliseconds measured relative to the time origin.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)
+     */
     readonly timeStamp: DOMHighResTimeStamp;
-    /** Returns the type of event, e.g. "click", "hashchange", or "submit". */
+    /**
+     * Returns the type of event, e.g. "click", "hashchange", or "submit".
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)
+     */
     readonly type: string;
-    /** Returns the invocation target objects of event's path (objects on which listeners will be invoked), except for any nodes in shadow trees of which the shadow root's mode is "closed" that are not reachable from event's currentTarget. */
+    /**
+     * Returns the invocation target objects of event's path (objects on which listeners will be invoked), except for any nodes in shadow trees of which the shadow root's mode is "closed" that are not reachable from event's currentTarget.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)
+     */
     composedPath(): EventTarget[];
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)
+     */
     initEvent(type: string, bubbles?: boolean, cancelable?: boolean): void;
-    /** If invoked when the cancelable attribute value is true, and while executing a listener for the event with passive set to false, signals to the operation that caused event to be dispatched that it needs to be canceled. */
+    /**
+     * If invoked when the cancelable attribute value is true, and while executing a listener for the event with passive set to false, signals to the operation that caused event to be dispatched that it needs to be canceled.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)
+     */
     preventDefault(): void;
-    /** Invoking this method prevents event from reaching any registered event listeners after the current one finishes running and, when dispatched in a tree, also prevents event from reaching any other objects. */
+    /**
+     * Invoking this method prevents event from reaching any registered event listeners after the current one finishes running and, when dispatched in a tree, also prevents event from reaching any other objects.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)
+     */
     stopImmediatePropagation(): void;
-    /** When dispatched in a tree, invoking this method prevents event from reaching any objects other than the current object. */
+    /**
+     * When dispatched in a tree, invoking this method prevents event from reaching any objects other than the current object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)
+     */
     stopPropagation(): void;
     readonly NONE: 0;
     readonly CAPTURING_PHASE: 1;
@@ -416,7 +563,11 @@ interface EventListenerObject {
     handleEvent(object: Event): void;
 }
 
-/** EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them. */
+/**
+ * EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget)
+ */
 interface EventTarget {
     /**
      * Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
@@ -432,11 +583,21 @@ interface EventTarget {
      * If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
      *
      * The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
      */
     addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
-    /** Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise. */
+    /**
+     * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
+     */
     dispatchEvent(event: Event): boolean;
-    /** Removes the event listener in target's event listener list with the same type, callback, and options. */
+    /**
+     * Removes the event listener in target's event listener list with the same type, callback, and options.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+     */
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
 }
 
@@ -446,23 +607,53 @@ declare var EventTarget: {
 };
 
 interface GenericTransformStream {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream/readable) */
     readonly readable: ReadableStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream/writable) */
     readonly writable: WritableStream;
 }
 
-/** A message received by a target object. */
+/**
+ * A message received by a target object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent)
+ */
 interface MessageEvent<T = any> extends Event {
-    /** Returns the data of the message. */
+    /**
+     * Returns the data of the message.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/data)
+     */
     readonly data: T;
-    /** Returns the last event ID string, for server-sent events. */
+    /**
+     * Returns the last event ID string, for server-sent events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/lastEventId)
+     */
     readonly lastEventId: string;
-    /** Returns the origin of the message, for server-sent events and cross-document messaging. */
+    /**
+     * Returns the origin of the message, for server-sent events and cross-document messaging.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/origin)
+     */
     readonly origin: string;
-    /** Returns the MessagePort array sent with the message, for cross-document messaging and channel messaging. */
+    /**
+     * Returns the MessagePort array sent with the message, for cross-document messaging and channel messaging.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/ports)
+     */
     readonly ports: ReadonlyArray<MessagePort>;
-    /** Returns the WindowProxy of the source window, for cross-document messaging, and the MessagePort being attached, in the connect event fired at SharedWorkerGlobalScope objects. */
+    /**
+     * Returns the WindowProxy of the source window, for cross-document messaging, and the MessagePort being attached, in the connect event fired at SharedWorkerGlobalScope objects.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/source)
+     */
     readonly source: MessageEventSource | null;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/initMessageEvent)
+     */
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
 }
 
@@ -476,20 +667,36 @@ interface MessagePortEventMap {
     "messageerror": MessageEvent;
 }
 
-/** This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other. */
+/**
+ * This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
+ */
 interface MessagePort extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/message_event) */
     onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/messageerror_event) */
     onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
-    /** Disconnects the port, so that it is no longer active. */
+    /**
+     * Disconnects the port, so that it is no longer active.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/close)
+     */
     close(): void;
     /**
      * Posts a message through the channel. Objects listed in transfer are transferred, not just cloned, meaning that they are no longer usable on the sending side.
      *
      * Throws a "DataCloneError" DOMException if transfer contains duplicate objects or port, or if message could not be cloned.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/postMessage)
      */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
-    /** Begins dispatching messages received on the port. */
+    /**
+     * Begins dispatching messages received on the port.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/start)
+     */
     start(): void;
     addEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -502,8 +709,11 @@ declare var MessagePort: {
     new(): MessagePort;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent) */
 interface PromiseRejectionEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise) */
     readonly promise: Promise<any>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason) */
     readonly reason: any;
 }
 
@@ -512,11 +722,17 @@ declare var PromiseRejectionEvent: {
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController) */
 interface ReadableByteStreamController {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
     readonly byobRequest: ReadableStreamBYOBRequest | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/desiredSize) */
     readonly desiredSize: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/close) */
     close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/enqueue) */
     enqueue(chunk: ArrayBufferView): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/error) */
     error(e?: any): void;
 }
 
@@ -525,15 +741,25 @@ declare var ReadableByteStreamController: {
     new(): ReadableByteStreamController;
 };
 
-/** This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object. */
+/**
+ * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
+ */
 interface ReadableStream<R = any> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/locked) */
     readonly locked: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/cancel) */
     cancel(reason?: any): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/getReader) */
     getReader(options: { mode: "byob" }): ReadableStreamBYOBReader;
     getReader(): ReadableStreamDefaultReader<R>;
     getReader(options?: ReadableStreamGetReaderOptions): ReadableStreamReader<R>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/pipeThrough) */
     pipeThrough<T>(transform: ReadableWritablePair<T, R>, options?: StreamPipeOptions): ReadableStream<T>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/pipeTo) */
     pipeTo(destination: WritableStream<R>, options?: StreamPipeOptions): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee) */
     tee(): [ReadableStream<R>, ReadableStream<R>];
 }
 
@@ -544,8 +770,11 @@ declare var ReadableStream: {
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock) */
     releaseLock(): void;
 }
 
@@ -554,9 +783,13 @@ declare var ReadableStreamBYOBReader: {
     new(stream: ReadableStream): ReadableStreamBYOBReader;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest) */
 interface ReadableStreamBYOBRequest {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view) */
     readonly view: ArrayBufferView | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respond) */
     respond(bytesWritten: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respondWithNewView) */
     respondWithNewView(view: ArrayBufferView): void;
 }
 
@@ -565,10 +798,15 @@ declare var ReadableStreamBYOBRequest: {
     new(): ReadableStreamBYOBRequest;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController) */
 interface ReadableStreamDefaultController<R = any> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/close) */
     close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/enqueue) */
     enqueue(chunk?: R): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/error) */
     error(e?: any): void;
 }
 
@@ -577,8 +815,11 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader) */
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/read) */
     read(): Promise<ReadableStreamReadResult<R>>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/releaseLock) */
     releaseLock(): void;
 }
 
@@ -588,11 +829,17 @@ declare var ReadableStreamDefaultReader: {
 };
 
 interface ReadableStreamGenericReader {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/closed) */
     readonly closed: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/cancel) */
     cancel(reason?: any): Promise<void>;
 }
 
-/** A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/**
+ * A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder)
+ */
 interface TextDecoder extends TextDecoderCommon {
     /**
      * Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.
@@ -606,6 +853,8 @@ interface TextDecoder extends TextDecoderCommon {
      * ```
      *
      * If the error mode is "fatal" and encoding's decoder returns error, throws a TypeError.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
     decode(input?: BufferSource, options?: TextDecodeOptions): string;
 }
@@ -616,14 +865,27 @@ declare var TextDecoder: {
 };
 
 interface TextDecoderCommon {
-    /** Returns encoding's name, lowercased. */
+    /**
+     * Returns encoding's name, lowercased.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/encoding)
+     */
     readonly encoding: string;
-    /** Returns true if error mode is "fatal", otherwise false. */
+    /**
+     * Returns true if error mode is "fatal", otherwise false.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/fatal)
+     */
     readonly fatal: boolean;
-    /** Returns the value of ignore BOM. */
+    /**
+     * Returns the value of ignore BOM.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/ignoreBOM)
+     */
     readonly ignoreBOM: boolean;
 }
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream) */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     readonly writable: WritableStream<BufferSource>;
@@ -634,11 +896,23 @@ declare var TextDecoderStream: {
     new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
 };
 
-/** TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays. */
+/**
+ * TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder)
+ */
 interface TextEncoder extends TextEncoderCommon {
-    /** Returns the result of running UTF-8's encoder. */
+    /**
+     * Returns the result of running UTF-8's encoder.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
+     */
     encode(input?: string): Uint8Array;
-    /** Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination. */
+    /**
+     * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
+     */
     encodeInto(source: string, destination: Uint8Array): TextEncoderEncodeIntoResult;
 }
 
@@ -648,10 +922,15 @@ declare var TextEncoder: {
 };
 
 interface TextEncoderCommon {
-    /** Returns "utf-8". */
+    /**
+     * Returns "utf-8".
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encoding)
+     */
     readonly encoding: string;
 }
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
@@ -662,8 +941,11 @@ declare var TextEncoderStream: {
     new(): TextEncoderStream;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream) */
 interface TransformStream<I = any, O = any> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/readable) */
     readonly readable: ReadableStream<O>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/writable) */
     readonly writable: WritableStream<I>;
 }
 
@@ -672,10 +954,15 @@ declare var TransformStream: {
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
 interface TransformStreamDefaultController<O = any> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/enqueue) */
     enqueue(chunk?: O): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/error) */
     error(reason?: any): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/terminate) */
     terminate(): void;
 }
 
@@ -684,21 +971,38 @@ declare var TransformStreamDefaultController: {
     new(): TransformStreamDefaultController;
 };
 
-/** The URL interface represents an object providing static methods used for creating object URLs. */
+/**
+ * The URL interface represents an object providing static methods used for creating object URLs.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
+ */
 interface URL {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hash) */
     hash: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/host) */
     host: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hostname) */
     hostname: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/href) */
     href: string;
     toString(): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/origin) */
     readonly origin: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/password) */
     password: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/pathname) */
     pathname: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/port) */
     port: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/protocol) */
     protocol: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/search) */
     search: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/searchParams) */
     readonly searchParams: URLSearchParams;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/username) */
     username: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/toJSON) */
     toJSON(): string;
 }
 
@@ -707,19 +1011,45 @@ declare var URL: {
     new(url: string | URL, base?: string | URL): URL;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 interface URLSearchParams {
-    /** Appends a specified key/value pair as a new search parameter. */
+    /**
+     * Appends a specified key/value pair as a new search parameter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/append)
+     */
     append(name: string, value: string): void;
-    /** Deletes the given search parameter, and its associated value, from the list of all search parameters. */
+    /**
+     * Deletes the given search parameter, and its associated value, from the list of all search parameters.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/delete)
+     */
     delete(name: string): void;
-    /** Returns the first value associated to the given search parameter. */
+    /**
+     * Returns the first value associated to the given search parameter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/get)
+     */
     get(name: string): string | null;
-    /** Returns all the values association with a given search parameter. */
+    /**
+     * Returns all the values association with a given search parameter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll)
+     */
     getAll(name: string): string[];
-    /** Returns a Boolean indicating if such a search parameter exists. */
+    /**
+     * Returns a Boolean indicating if such a search parameter exists.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/has)
+     */
     has(name: string): boolean;
-    /** Sets the value associated to a given search parameter to the given value. If there were several values, delete the others. */
+    /**
+     * Sets the value associated to a given search parameter to the given value. If there were several values, delete the others.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/set)
+     */
     set(name: string, value: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/sort) */
     sort(): void;
     /** Returns a string containing a query string suitable for use in a URL. Does not include the question mark. */
     toString(): string;
@@ -740,11 +1070,18 @@ declare var WorkletGlobalScope: {
     new(): WorkletGlobalScope;
 };
 
-/** This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing. */
+/**
+ * This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream)
+ */
 interface WritableStream<W = any> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/locked) */
     readonly locked: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/abort) */
     abort(reason?: any): Promise<void>;
     close(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/getWriter) */
     getWriter(): WritableStreamDefaultWriter<W>;
 }
 
@@ -753,9 +1090,15 @@ declare var WritableStream: {
     new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
 };
 
-/** This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate. */
+/**
+ * This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
+ */
 interface WritableStreamDefaultController {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/signal) */
     readonly signal: AbortSignal;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error) */
     error(e?: any): void;
 }
 
@@ -764,14 +1107,25 @@ declare var WritableStreamDefaultController: {
     new(): WritableStreamDefaultController;
 };
 
-/** This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink. */
+/**
+ * This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter)
+ */
 interface WritableStreamDefaultWriter<W = any> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/closed) */
     readonly closed: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/desiredSize) */
     readonly desiredSize: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/ready) */
     readonly ready: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/abort) */
     abort(reason?: any): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/close) */
     close(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/releaseLock) */
     releaseLock(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/write) */
     write(chunk?: W): Promise<void>;
 }
 
@@ -780,26 +1134,46 @@ declare var WritableStreamDefaultWriter: {
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console) */
 interface Console {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert) */
     assert(condition?: boolean, ...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear) */
     clear(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count) */
     count(label?: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset) */
     countReset(label?: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug) */
     debug(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir) */
     dir(item?: any, options?: any): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dirxml) */
     dirxml(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error) */
     error(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group) */
     group(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed) */
     groupCollapsed(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd) */
     groupEnd(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info) */
     info(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/log) */
     log(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table) */
     table(tabularData?: any, properties?: string[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time) */
     time(label?: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd) */
     timeEnd(label?: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog) */
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace) */
     trace(...data: any[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn) */
     warn(...data: any[]): void;
 }
 
@@ -815,8 +1189,11 @@ declare namespace WebAssembly {
         (message?: string): CompileError;
     };
 
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Global) */
     interface Global {
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Global/value) */
         value: any;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Global/valueOf) */
         valueOf(): any;
     }
 
@@ -825,7 +1202,9 @@ declare namespace WebAssembly {
         new(descriptor: GlobalDescriptor, v?: any): Global;
     };
 
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Instance) */
     interface Instance {
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Instance/exports) */
         readonly exports: Exports;
     }
 
@@ -843,8 +1222,11 @@ declare namespace WebAssembly {
         (message?: string): LinkError;
     };
 
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory) */
     interface Memory {
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory/buffer) */
         readonly buffer: ArrayBuffer;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory/grow) */
         grow(delta: number): number;
     }
 
@@ -853,14 +1235,18 @@ declare namespace WebAssembly {
         new(descriptor: MemoryDescriptor): Memory;
     };
 
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module) */
     interface Module {
     }
 
     var Module: {
         prototype: Module;
         new(bytes: BufferSource): Module;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/customSections) */
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/exports) */
         exports(moduleObject: Module): ModuleExportDescriptor[];
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/imports) */
         imports(moduleObject: Module): ModuleImportDescriptor[];
     };
 
@@ -873,10 +1259,15 @@ declare namespace WebAssembly {
         (message?: string): RuntimeError;
     };
 
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Table) */
     interface Table {
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Table/length) */
         readonly length: number;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Table/get) */
         get(index: number): any;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Table/grow) */
         grow(delta: number, value?: any): number;
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Table/set) */
         set(index: number, value?: any): void;
     }
 
@@ -926,9 +1317,12 @@ declare namespace WebAssembly {
     type ImportValue = ExportValue | number;
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/compile) */
     function compile(bytes: BufferSource): Promise<Module>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/instantiate) */
     function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/validate) */
     function validate(bytes: BufferSource): boolean;
 }
 
@@ -980,9 +1374,13 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentFrame) */
 declare var currentFrame: number;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentTime) */
 declare var currentTime: number;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/sampleRate) */
 declare var sampleRate: number;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/registerProcessor) */
 declare function registerProcessor(name: string, processorCtor: AudioWorkletProcessorConstructor): void;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMHighResTimeStamp = number;

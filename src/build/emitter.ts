@@ -841,6 +841,7 @@ export function emitWebIdl(
       comment?: string;
       deprecated?: boolean | string;
       secureContext?: boolean;
+      mdnUrl?: string;
     },
     print: (s: string) => void
   ) {
@@ -856,6 +857,10 @@ export function emitWebIdl(
     }
     if (entity.secureContext) {
       comments.push("Available only in secure contexts.");
+    }
+    if (entity.mdnUrl) {
+      if (comments.length > 0) comments.push("");
+      comments.push(`[MDN Reference](${entity.mdnUrl})`);
     }
 
     if (comments.length > 1) {

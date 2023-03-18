@@ -76,3 +76,11 @@ export function getDeprecationData(webidl: Browser.WebIdl): Browser.WebIdl {
     }
   }) as Browser.WebIdl;
 }
+
+export function getDocsData(webidl: Browser.WebIdl): Browser.WebIdl {
+  return mapToBcdCompat(webidl, ({ compat }) => {
+    if (compat?.mdn_url) {
+      return { mdnUrl: compat.mdn_url };
+    }
+  }) as Browser.WebIdl;
+}

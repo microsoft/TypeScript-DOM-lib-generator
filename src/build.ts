@@ -4,7 +4,11 @@ import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
 import { emitWebIdl } from "./build/emitter.js";
 import { convert } from "./build/widlprocess.js";
 import { getExposedTypes } from "./build/expose.js";
-import { getDeprecationData, getRemovalData } from "./build/bcd.js";
+import {
+  getDeprecationData,
+  getDocsData,
+  getRemovalData,
+} from "./build/bcd.js";
 import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
@@ -253,6 +257,7 @@ async function emitDom() {
 
   webidl = merge(webidl, getDeprecationData(webidl));
   webidl = merge(webidl, getRemovalData(webidl));
+  webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
   webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   webidl = merge(webidl, addedItems);
