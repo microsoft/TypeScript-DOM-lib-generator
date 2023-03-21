@@ -38,6 +38,8 @@
         "Keyframe",
         "MutationRecordType",
         "NamedCurve",
+        "OptionalPrefixToken",
+        "OptionalPostfixToken",
         "Pbkdf2Params",
         "PropertyIndexedKeyframes",
         "RsaHashedImportParams",

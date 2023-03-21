@@ -1513,19 +1513,37 @@
                 "overrideType": "EventListener | EventListenerObject"
             },
             {
+                "name": "OptionalPrefixToken",
+                "typeParameters": [
+                    {
+                        "name": "T extends string"
+                    }
+                ],
+                "overrideType": "`${T} ` | \"\""
+            },
+            {
+                "name": "OptionalPostfixToken",
+                "typeParameters": [
+                    {
+                        "name": "T extends string"
+                    }
+                ],
+                "overrideType": "` ${T}` | \"\""
+            },
+            {
                 "name": "AutoFillSection",
                 "overrideType": "`section-${string}`"
             },
             {
                 "name": "AutoFillField",
-                "overrideType": "AutoFillNormalField | AutoFillContactField | `${AutoFillContactKind} ${AutoFillContactField}`"
+                "overrideType": "AutoFillNormalField | `${OptionalPrefixToken<AutoFillContactKind>}${AutoFillContactField}`"
             },
             {
                 // See the full list of possible autofill values for the `autocomplete` attribute:
                 // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
                 // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                 "name": "AutoFill",
-                "overrideType": "AutoFillBase | AutoFillField | `${AutoFillSection} ${AutoFillField}` | `${AutoFillAddressKind} ${AutoFillField}` | `${AutoFillSection} ${AutoFillAddressKind} ${AutoFillField}` | `${AutoFillSection} ${AutoFillAddressKind} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillAddressKind} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillSection} ${AutoFillField} ${AutoFillCredentialField}` | `${AutoFillField} ${AutoFillCredentialField}`"
+                "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
             }
         ]
     }
