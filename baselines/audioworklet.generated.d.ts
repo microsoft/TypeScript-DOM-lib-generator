@@ -265,6 +265,7 @@ interface AudioWorkletProcessorImpl extends AudioWorkletProcessor {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy)
  */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/highWaterMark) */
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/size) */
     readonly size: QueuingStrategySize<ArrayBufferView>;
@@ -290,6 +291,7 @@ declare var CompressionStream: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy)
  */
 interface CountQueuingStrategy extends QueuingStrategy {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/highWaterMark) */
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
     readonly size: QueuingStrategySize;
@@ -1080,6 +1082,7 @@ interface WritableStream<W = any> {
     readonly locked: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/abort) */
     abort(reason?: any): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/close) */
     close(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/getWriter) */
     getWriter(): WritableStreamDefaultWriter<W>;

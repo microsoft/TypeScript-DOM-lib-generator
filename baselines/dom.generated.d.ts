@@ -3153,6 +3153,7 @@ declare var BroadcastChannel: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy)
  */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/highWaterMark) */
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/size) */
     readonly size: QueuingStrategySize<ArrayBufferView>;
@@ -3268,10 +3269,15 @@ declare var CSSFontFeatureValuesRule: {
     new(): CSSFontFeatureValuesRule;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule) */
 interface CSSFontPaletteValuesRule extends CSSRule {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule/basePalette) */
     readonly basePalette: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule/fontFamily) */
     readonly fontFamily: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule/name) */
     readonly name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule/overrideColors) */
     readonly overrideColors: string;
 }
 
@@ -5715,6 +5721,7 @@ declare var ConvolverNode: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy)
  */
 interface CountQueuingStrategy extends QueuingStrategy {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/highWaterMark) */
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
     readonly size: QueuingStrategySize;
@@ -25778,6 +25785,7 @@ interface WritableStream<W = any> {
     readonly locked: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/abort) */
     abort(reason?: any): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/close) */
     close(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/getWriter) */
     getWriter(): WritableStreamDefaultWriter<W>;
