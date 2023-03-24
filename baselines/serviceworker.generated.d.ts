@@ -1660,13 +1660,13 @@ declare var Crypto: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey)
  */
 interface CryptoKey {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/algorithm) */
     readonly algorithm: KeyAlgorithm;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/extractable) */
     readonly extractable: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/type) */
     readonly type: KeyType;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/usages) */
     readonly usages: KeyUsage[];
 }
 
@@ -4758,6 +4758,7 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     readonly scriptURL: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker/state) */
     readonly state: ServiceWorkerState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker/postMessage) */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
     addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -7889,6 +7890,7 @@ declare var WorkerLocation: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator)
  */
 interface WorkerNavigator extends NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/mediaCapabilities) */
     readonly mediaCapabilities: MediaCapabilities;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/permissions) */
     readonly permissions: Permissions;

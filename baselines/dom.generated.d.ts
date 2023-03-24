@@ -3209,7 +3209,9 @@ declare var CSSConditionRule: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule) */
 interface CSSContainerRule extends CSSConditionRule {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerName) */
     readonly containerName: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerQuery) */
     readonly containerQuery: string;
 }
 
@@ -3260,7 +3262,9 @@ declare var CSSFontFaceRule: {
     new(): CSSFontFaceRule;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule) */
 interface CSSFontFeatureValuesRule extends CSSRule {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule/fontFamily) */
     fontFamily: string;
 }
 
@@ -3383,7 +3387,9 @@ declare var CSSKeywordValue: {
     new(value: string): CSSKeywordValue;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule) */
 interface CSSLayerBlockRule extends CSSGroupingRule {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule/name) */
     readonly name: string;
 }
 
@@ -3392,7 +3398,9 @@ declare var CSSLayerBlockRule: {
     new(): CSSLayerBlockRule;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule) */
 interface CSSLayerStatementRule extends CSSRule {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule/nameList) */
     readonly nameList: ReadonlyArray<string>;
 }
 
@@ -5804,13 +5812,13 @@ declare var Crypto: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey)
  */
 interface CryptoKey {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/algorithm) */
     readonly algorithm: KeyAlgorithm;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/extractable) */
     readonly extractable: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/type) */
     readonly type: KeyType;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/usages) */
     readonly usages: KeyUsage[];
 }
 
@@ -14718,6 +14726,7 @@ interface MediaDeviceInfo {
     readonly kind: MediaDeviceKind;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaDeviceInfo/label) */
     readonly label: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaDeviceInfo/toJSON) */
     toJSON(): any;
 }
 
@@ -16824,6 +16833,7 @@ interface PaymentResponse extends EventTarget {
     complete(result?: PaymentComplete): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/retry) */
     retry(errorFields?: PaymentValidationErrors): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/toJSON) */
     toJSON(): any;
 }
 
@@ -17283,7 +17293,11 @@ interface PerformanceTiming {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/unloadEventStart)
      */
     readonly unloadEventStart: number;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/toJSON)
+     */
     toJSON(): any;
 }
 
@@ -19032,7 +19046,9 @@ declare var SVGCircleElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGClipPathElement)
  */
 interface SVGClipPathElement extends SVGElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGClipPathElement/clipPathUnits) */
     readonly clipPathUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGClipPathElement/transform) */
     readonly transform: SVGAnimatedTransformList;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGClipPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20103,11 +20119,17 @@ declare var SVGMarkerElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement)
  */
 interface SVGMaskElement extends SVGElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/height) */
     readonly height: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/maskContentUnits) */
     readonly maskContentUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/maskUnits) */
     readonly maskUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/width) */
     readonly width: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/x) */
     readonly x: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/y) */
     readonly y: SVGAnimatedLength;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMaskElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21020,6 +21042,7 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     readonly scriptURL: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker/state) */
     readonly state: ServiceWorkerState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker/postMessage) */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
     addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -25509,7 +25532,11 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     blur(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelIdleCallback) */
     cancelIdleCallback(handle: number): void;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/captureEvents)
+     */
     captureEvents(): void;
     /**
      * Closes the window.
@@ -26727,6 +26754,7 @@ interface HTMLElementTagNameMap {
     "s": HTMLElement;
     "samp": HTMLElement;
     "script": HTMLScriptElement;
+    "search": HTMLElement;
     "section": HTMLElement;
     "select": HTMLSelectElement;
     "slot": HTMLSlotElement;
@@ -27075,7 +27103,11 @@ declare function alert(message?: any): void;
 declare function blur(): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelIdleCallback) */
 declare function cancelIdleCallback(handle: number): void;
-/** @deprecated */
+/**
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/captureEvents)
+ */
 declare function captureEvents(): void;
 /**
  * Closes the window.
