@@ -3779,6 +3779,8 @@ interface CSSStyleDeclaration {
     all: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation) */
     animation: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-composition) */
+    animationComposition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-delay) */
     animationDelay: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-direction) */
@@ -6923,7 +6925,11 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/referrer)
      */
     readonly referrer: string;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/rootElement)
+     */
     readonly rootElement: SVGSVGElement | null;
     /**
      * Retrieves a collection of all script objects in the document.
@@ -21157,6 +21163,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/mode) */
     readonly mode: ShadowRootMode;
     onslotchange: ((this: ShadowRoot, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/slotAssignment) */
     readonly slotAssignment: SlotAssignmentMode;
     /** Throws a "NotSupportedError" DOMException if context object is a shadow root. */
     addEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
