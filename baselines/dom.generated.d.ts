@@ -1501,19 +1501,18 @@ interface RTCRtpCapabilities {
     headerExtensions: RTCRtpHeaderExtensionCapability[];
 }
 
-interface RTCRtpCodecCapability {
+interface RTCRtpCodec {
     channels?: number;
     clockRate: number;
     mimeType: string;
     sdpFmtpLine?: string;
 }
 
-interface RTCRtpCodecParameters {
-    channels?: number;
-    clockRate: number;
-    mimeType: string;
+interface RTCRtpCodecCapability extends RTCRtpCodec {
+}
+
+interface RTCRtpCodecParameters extends RTCRtpCodec {
     payloadType: number;
-    sdpFmtpLine?: string;
 }
 
 interface RTCRtpCodingParameters {
@@ -1537,7 +1536,7 @@ interface RTCRtpEncodingParameters extends RTCRtpCodingParameters {
 }
 
 interface RTCRtpHeaderExtensionCapability {
-    uri?: string;
+    uri: string;
 }
 
 interface RTCRtpHeaderExtensionParameters {
@@ -5690,7 +5689,7 @@ interface CompressionStream extends GenericTransformStream {
 
 declare var CompressionStream: {
     prototype: CompressionStream;
-    new(format: string): CompressionStream;
+    new(format: CompressionFormat): CompressionStream;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ConstantSourceNode) */
@@ -6564,7 +6563,7 @@ interface DecompressionStream extends GenericTransformStream {
 
 declare var DecompressionStream: {
     prototype: DecompressionStream;
-    new(format: string): DecompressionStream;
+    new(format: CompressionFormat): DecompressionStream;
 };
 
 /**
@@ -27813,6 +27812,7 @@ type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompositeOperation = "accumulate" | "add" | "replace";
 type CompositeOperationOrAuto = "accumulate" | "add" | "auto" | "replace";
+type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type CredentialMediationRequirement = "conditional" | "optional" | "required" | "silent";
 type DOMParserSupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
 type DirectionSetting = "" | "lr" | "rl";

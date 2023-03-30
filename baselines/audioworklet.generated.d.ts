@@ -282,7 +282,7 @@ interface CompressionStream extends GenericTransformStream {
 
 declare var CompressionStream: {
     prototype: CompressionStream;
-    new(format: string): CompressionStream;
+    new(format: CompressionFormat): CompressionStream;
 };
 
 /**
@@ -402,7 +402,7 @@ interface DecompressionStream extends GenericTransformStream {
 
 declare var DecompressionStream: {
     prototype: DecompressionStream;
-    new(format: string): DecompressionStream;
+    new(format: CompressionFormat): DecompressionStream;
 };
 
 /**
@@ -1393,5 +1393,6 @@ type ReadableStreamController<T> = ReadableStreamDefaultController<T> | Readable
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type Transferable = MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
