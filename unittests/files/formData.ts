@@ -23,3 +23,10 @@ formData.set("myProp", new Blob(), "myFile");
 
 // @ts-expect-error will error on runtime
 formData.set("myProp", "value", "myFile");
+
+// Should work for union type
+type stringBlobUnion = string | Blob;
+const unionValue = "value" as stringBlobUnion;
+
+formData.set("myProp", unionValue);
+formData.append("myProp", unionValue);
