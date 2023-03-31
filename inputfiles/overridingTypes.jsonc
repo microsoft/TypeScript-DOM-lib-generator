@@ -1241,14 +1241,16 @@
                             "name": "append",
                             "flavor": "Web",
                             "overrideSignatures": [
-                                "append(name: string, value: string | Blob, fileName?: string): void"
+                                "append(name: string, value: string): void",
+                                "append(name: string, value: Blob, fileName?: string): void"
                             ]
                         },
                         "set": {
                             "name": "set",
                             "flavor": "Web",
                             "overrideSignatures": [
-                                "set(name: string, value: string | Blob, fileName?: string): void"
+                                "set(name: string, value: string): void",
+                                "set(name: string, value: Blob, fileName?: string): void"
                             ]
                         }
                     }

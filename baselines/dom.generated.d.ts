@@ -8548,7 +8548,8 @@ interface FontFaceSource {
  */
 interface FormData {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData/append) */
-    append(name: string, value: string | Blob, fileName?: string): void;
+    append(name: string, value: string): void;
+    append(name: string, value: Blob, fileName?: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData/delete) */
     delete(name: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData/get) */
@@ -8558,7 +8559,8 @@ interface FormData {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData/has) */
     has(name: string): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData/set) */
-    set(name: string, value: string | Blob, fileName?: string): void;
+    set(name: string, value: string): void;
+    set(name: string, value: Blob, fileName?: string): void;
     forEach(callbackfn: (value: FormDataEntryValue, key: string, parent: FormData) => void, thisArg?: any): void;
 }
 
