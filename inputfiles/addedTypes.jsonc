@@ -688,7 +688,7 @@
                         // emitter for this one case.
                         "callable": {
                             "overrideSignatures": [
-                                "(evt: Event): void"
+                                "(evt: Event | CustomEvent): void"
                             ]
                         }
                     }
@@ -701,7 +701,7 @@
                     "method": {
                         "handleEvent": {
                             "overrideSignatures": [
-                                "handleEvent(object: Event): void"
+                                "handleEvent(object: Event | CustomEvent): void"
                             ]
                         }
                     }
