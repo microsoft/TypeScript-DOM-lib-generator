@@ -2293,11 +2293,11 @@ declare var Event: {
 };
 
 interface EventListener {
-    (evt: Event): void;
+    (evt: Event | CustomEvent): void;
 }
 
 interface EventListenerObject {
-    handleEvent(object: Event): void;
+    handleEvent(object: Event | CustomEvent): void;
 }
 
 interface EventSourceEventMap {
