@@ -978,7 +978,7 @@ interface Blob {
 
 declare var Blob: {
     prototype: Blob;
-    new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
+    new(blobParts?: Iterable<BlobPart>, options?: BlobPropertyBag): Blob;
 };
 
 interface Body {
