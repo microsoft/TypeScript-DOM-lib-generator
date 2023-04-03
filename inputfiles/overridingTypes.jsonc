@@ -2446,6 +2446,20 @@
                 }
               }
             },
+            "File": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "fileBits",
+                                    "overrideType": "Iterable<BlobPart>"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
             "ReadableStream": {
                 "typeParameters": [
                     {
