@@ -39,6 +39,11 @@ interface Algorithm {
     name: string;
 }
 
+interface AttributionReportingRequestOptions {
+    eventSourceEligible: boolean;
+    triggerEligible: boolean;
+}
+
 interface AudioConfiguration {
     bitrate?: number;
     channels?: string;
@@ -532,6 +537,7 @@ interface ReportingObserverOptions {
 }
 
 interface RequestInit {
+    attributionReporting?: AttributionReportingRequestOptions;
     /** A BodyInit object or null to set request's body. */
     body?: BodyInit | null;
     /** A string indicating how the request will interact with the browser's cache to set request's cache. */
@@ -1478,6 +1484,8 @@ interface CanvasShadowStyles {
 }
 
 interface CanvasState {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/reset) */
+    reset(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/restore) */
     restore(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/save) */
@@ -4803,7 +4811,6 @@ interface ServiceWorkerContainer extends EventTarget {
     oncontrollerchange: ((this: ServiceWorkerContainer, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/message_event) */
     onmessage: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/messageerror_event) */
     onmessageerror: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/ready) */
     readonly ready: Promise<ServiceWorkerRegistration>;

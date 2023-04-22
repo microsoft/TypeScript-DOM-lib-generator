@@ -61,6 +61,11 @@ interface AssignedNodesOptions {
     flatten?: boolean;
 }
 
+interface AttributionReportingRequestOptions {
+    eventSourceEligible: boolean;
+    triggerEligible: boolean;
+}
+
 interface AudioBufferOptions {
     length: number;
     numberOfChannels?: number;
@@ -732,6 +737,8 @@ interface Keyframe {
 
 interface KeyframeAnimationOptions extends KeyframeEffectOptions {
     id?: string;
+    rangeEnd?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string;
+    rangeStart?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string;
 }
 
 interface KeyframeEffectOptions extends EffectTiming {
@@ -1652,6 +1659,7 @@ interface ReportingObserverOptions {
 }
 
 interface RequestInit {
+    attributionReporting?: AttributionReportingRequestOptions;
     /** A BodyInit object or null to set request's body. */
     body?: BodyInit | null;
     /** A string indicating how the request will interact with the browser's cache to set request's cache. */
@@ -1857,6 +1865,11 @@ interface TextEncoderEncodeIntoResult {
     written?: number;
 }
 
+interface TimelineRangeOffset {
+    offset?: CSSNumericValue;
+    rangeName?: string | null;
+}
+
 interface TouchEventInit extends EventModifierInit {
     changedTouches?: Touch[];
     targetTouches?: Touch[];
@@ -2013,7 +2026,12 @@ interface VideoEncoderConfig {
 }
 
 interface VideoEncoderEncodeOptions {
+    av1?: VideoEncoderEncodeOptionsForAv1;
     keyFrame?: boolean;
+}
+
+interface VideoEncoderEncodeOptionsForAv1 {
+    quantizer?: number | null;
 }
 
 interface VideoEncoderInit {
@@ -5420,6 +5438,8 @@ interface CanvasShadowStyles {
 }
 
 interface CanvasState {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/reset) */
+    reset(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/restore) */
     restore(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/save) */
@@ -21092,7 +21112,6 @@ interface ServiceWorkerContainer extends EventTarget {
     oncontrollerchange: ((this: ServiceWorkerContainer, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/message_event) */
     onmessage: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/messageerror_event) */
     onmessageerror: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/ready) */
     readonly ready: Promise<ServiceWorkerRegistration>;
