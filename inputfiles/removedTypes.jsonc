@@ -265,7 +265,8 @@
             "KeyframeAnimationOptions": {
                 "members": {
                     "member": {
-                        "timeline": null
+                        "rangeEnd": null, // Blink only as of 2023-04
+                        "rangeStart": null // Blink only as of 2023-04
                     }
                 }
             },
@@ -475,7 +476,8 @@
                     "member": {
                         "duplex": null, // Blink only as of 2022-09
                         "priority": null, // Corresponds to Request#priority, no implementation as of 2022-09,
-                        "privateToken": null // Blink only of 2023-03 (but not enabled there either)
+                        "privateToken": null, // Blink only as of 2023-03 (but not enabled there either)
+                        "attributionReporting": null // No implementation as of 2023-04
                     }
                 }
             },
@@ -599,6 +601,7 @@
             "VideoEncoderEncodeOptions": {
                 "members": {
                     "member": {
+                        "av1": null, // Blink only as of 2023-04
                         "vp9": null // Blink only as of 2023-03
                     }
                 }
