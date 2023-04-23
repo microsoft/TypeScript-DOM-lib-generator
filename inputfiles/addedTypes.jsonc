@@ -1305,6 +1305,11 @@
                             "name": "i64",
                             "overrideType": "bigint",
                             "required": 1
+                        },
+                        "v128": {
+                            "name": "v128",
+                            "overrideType": "never",
+                            "required": 1
                         }
                     }
                 }

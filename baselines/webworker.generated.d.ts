@@ -8822,6 +8822,7 @@ declare namespace WebAssembly {
         f64: number;
         i32: number;
         i64: bigint;
+        v128: never;
     }
 
     interface WebAssemblyInstantiatedSource {
