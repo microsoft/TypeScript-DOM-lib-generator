@@ -39,6 +39,7 @@
                     "transceiver" // Blink only as of 2022-09
                 ]
             },
+            "ValueType": null,
             "VideoColorPrimaries": {
                 "value": [
                     "bt2020", // Blink only as of 2022-10
@@ -56,8 +57,7 @@
                     "linear", // Blink only as of 2022-10
                     "pq" // Blink only as of 2022-10
                 ]
-            },
-            "ValueType": null
+            }
         }
     },
     "interfaces": {
