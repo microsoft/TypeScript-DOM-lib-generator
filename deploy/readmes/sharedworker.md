@@ -11,13 +11,14 @@ This package contains type definitions which will set up the global environment 
 To use `@types/sharedworker` you need to do two things:
 
 1. Install the dependency: `npm install @types/sharedworker --save-dev`, `yarn add @types/sharedworker --dev` or `pnpm add @types/sharedworker --dev`.
+
 1. Update your [`tsconfig.json`](https://www.typescriptlang.org/tsconfig) to avoid clashing with the DOM APIs. There are two cases to consider depending on if you have `lib` defined in your `tsconfig.json` or not.
 
     1. **Without "lib"** - You will need to add `"lib": []`. The value you want to add inside your lib should correlate to your [`"target"`](https://www.typescriptlang.org/tsconfig#target). For example if you had `"target": "es2017"`, then you would add `"lib": ["es2017"]`
     1. **With "lib"**  - You should remove `"dom"`.
 
-That's all. 
 
+If you'd like to ensure that the DOM types are never accidentally included, you can use [@orta/types-noop](https://www.npmjs.com/package/@orta/type-noops) in TypeScript 4.5+.
 
 ## SemVer
 

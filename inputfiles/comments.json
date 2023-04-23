@@ -553,6 +553,9 @@
                         "hspace": {
                             "comment": "Sets or retrieves the width of the border to draw around the object."
                         },
+                        "loading": {
+                            "comment": "Sets or retrieves the policy for loading image elements that are outside the viewport."
+                        },
                         "longDesc": {
                             "comment": "Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object."
                         },
@@ -1278,6 +1281,9 @@
                         },
                         "type": {
                             "comment": "Retrieves the CSS language in which the style sheet is written."
+                        },
+                        "disabled": {
+                            "comment": "Enables or disables the style sheet."
                         }
                     }
                 }

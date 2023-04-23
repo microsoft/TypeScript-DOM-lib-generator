@@ -52,8 +52,9 @@ function isSuitable(
 
 export function getRemovalData(webidl: Browser.WebIdl): Browser.WebIdl {
   return mapToBcdCompat(webidl, ({ key, parentKey, compat, mixin }) => {
-    // Allow all mixins for now, but not their members
-    // Ultimately expose.ts should be updated to check empty mixins
+    // Allow all mixins here, but not their members.
+    // Empty mixins created by this will be managed by exposed.ts.
+    // (It's better to manage mixins there as mixins can also conditionally be empty by exposure settings)
     if (mixin && !parentKey) {
       return;
     }
@@ -72,6 +73,14 @@ export function getDeprecationData(webidl: Browser.WebIdl): Browser.WebIdl {
       return {
         deprecated: `This is a legacy alias of \`${compat.status.preferred_name}\`.`,
       };
+    }
+  }) as Browser.WebIdl;
+}
+
+export function getDocsData(webidl: Browser.WebIdl): Browser.WebIdl {
+  return mapToBcdCompat(webidl, ({ compat }) => {
+    if (compat?.mdn_url) {
+      return { mdnUrl: compat.mdn_url };
     }
   }) as Browser.WebIdl;
 }

@@ -1,10 +1,13 @@
+// @ts-check
 // Mainly a quick script to migrate the generated files into the
 // lib folder of a TypeScript clone.
 //
-// node ./lib/migrate.js [optional/file/path/to/tsc]
+// node ./deploy/migrate.js [optional/file/path/to/tsc]
 
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
+
+import { postProcessDTSFiles } from "./createTypesPackages.js";
 
 const maybeTSWorkingDir = [process.argv[2], "../TypeScript", "TypeScript"];
 const tscWD = maybeTSWorkingDir.find((wd) => existsSync(wd));
@@ -18,6 +21,14 @@ const generatedFiles = readdirSync("generated");
 const filesToSend = generatedFiles.filter(
   (file) => file.includes("dom.") || file.includes("webworker.")
 );
+
+const generatedDir = new URL("../generated/", import.meta.url);
+postProcessDTSFiles(
+  /** @type {any} */
+  ({ files: filesToSend.map((f) => ({ to: f })) }),
+  generatedDir
+);
+
 filesToSend.forEach((file) => {
   const contents = readFileSync(join("generated", file), "utf8");
   const newFilePath = join(tscWD, "src", "lib", file);

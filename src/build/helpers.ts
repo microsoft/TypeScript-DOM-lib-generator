@@ -55,6 +55,7 @@ export const baseTypeConversionMap = new Map<string, string>([
   ...[...sameTypes].map((type) => [type, type] as [string, string]),
   ["object", "any"],
   ["sequence", "Array"],
+  ["ObservableArray", "Array"],
   ["record", "Record"],
   ["FrozenArray", "ReadonlyArray"],
   ["EventHandler", "EventHandler"],
@@ -99,12 +100,18 @@ export function exposesTo(o: { exposed?: string }, target: string[]): boolean {
   if (!o || typeof o.exposed !== "string") {
     return true;
   }
+  if (o.exposed === "*") {
+    return true;
+  }
   return o.exposed.split(" ").some((e) => target.includes(e));
 }
 
 export function merge<T>(target: T, src: T, shallow?: boolean): T {
   if (typeof target !== "object" || typeof src !== "object") {
     return src;
+  }
+  if (!target || !src) {
+    throw new Error("Either `target` or `src` is null");
   }
   for (const k in src) {
     if (Object.getOwnPropertyDescriptor(src, k)) {

@@ -13,7 +13,6 @@ export const forceKeepAlive: Record<string, string[]> = {
     "fillRule",
     "floodColor",
     "floodOpacity",
-    "fontSizeAdjust",
     "lightingColor",
     "marker",
     "markerEnd",
@@ -34,36 +33,31 @@ export const forceKeepAlive: Record<string, string[]> = {
   ],
   Gamepad: ["hapticActuators"],
   GlobalEventHandlers: [
-    "ontoggle",
     "onwebkitanimationend",
     "onwebkitanimationiteration",
     "onwebkitanimationstart",
-    "onwebkittransitionend",
   ],
-  KeyframeEffect: ["iterationComposite"],
-  MediaCapabilities: ["encodingInfo"],
-  Request: ["keepalive"],
-  RTCDtlsTransport: ["onstatechange", "state"],
-  RTCPeerConnection: ["canTrickleIceCandidates"],
-  WebGLRenderingContextBase: ["lineWidth"],
-  WebGL2RenderingContextOverloads: [
-    // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately
-    // but BCD only have them in WebGLRenderingContext
-    "bufferData",
-    "compressedTexImage2D",
-    "compressedTexSubImage2D",
-    "readPixels",
-    "texImage2D",
-    "texSubImage2D",
-    "uniform1fv",
-    "uniform1iv",
-    "uniform2fv",
-    "uniform2iv",
-    "uniform3fv",
-    "uniform3iv",
-    "uniform4fv",
-    "uniform4iv",
+  IDBDatabase: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onabort",
+    "onerror",
   ],
-  WindowEventHandlers: ["onoffline", "ononline", "onpagehide", "onpageshow"],
+  ShadowRoot: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onslotchange",
+  ],
   WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
+  XMLHttpRequestEventTarget: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onabort",
+    "onerror",
+    "onload",
+    "onloadend",
+    "onloadstart",
+    "onprogress",
+    "ontimeout",
+  ],
 };

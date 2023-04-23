@@ -13,7 +13,7 @@ export async function getWebidls(): Promise<Map<string, string>> {
     map.set(key, text);
   }
   for (const [key, data] of Object.entries(css)) {
-    const properties = Object.keys(data.properties);
+    const properties = data.properties.map((p) => p.name);
     if (properties.length) {
       addToStringMap(map, key, generateWebIdlFromCssProperties(properties));
     }

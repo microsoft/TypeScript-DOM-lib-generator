@@ -18,6 +18,7 @@ To use `@types/serviceworker` you need to do two things:
 
 That's all. 
 
+If you'd like to ensure that the DOM types are never accidentally included, you can use [@orta/types-noop](https://www.npmjs.com/package/@orta/type-noops) in TypeScript 4.5+.
 
 ## SemVer
 

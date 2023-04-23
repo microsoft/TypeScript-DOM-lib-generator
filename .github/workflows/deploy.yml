@@ -11,11 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "15.x"
-          registry-url: "https://registry.npmjs.org"
+          node-version: "lts/*"
           cache: npm
 
       - run: git pull --tags
@@ -26,9 +25,12 @@ jobs:
       - name: Create packages for .d.ts files
         run: node deploy/createTypesPackages.js
 
-      # Deploy anything which differs from the npm version of a tsconfig
       - name: "Deploy built packages to NPM"
-        run: node deploy/deployChangedPackages.js
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          npm i -g npm@latest
+          npm whoami
+          node deploy/deployChangedPackages.js
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

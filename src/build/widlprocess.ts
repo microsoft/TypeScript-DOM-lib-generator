@@ -80,6 +80,9 @@ function getExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
   if (!attr || !attr.rhs) {
     return [];
   }
+  if (attr.rhs.type === ("*" as any)) {
+    return ["*"];
+  }
   return attr.rhs.type === "identifier-list" ||
     attr.rhs.type === "string-list" ||
     attr.rhs.type === "decimal-list" ||
@@ -158,6 +161,8 @@ function convertInterfaceCommon(
       hasExtAttr(i.extAttrs, "NoInterfaceObject"),
     legacyWindowAlias: getExtAttr(i.extAttrs, "LegacyWindowAlias"),
     legacyNamespace: getExtAttr(i.extAttrs, "LegacyNamespace")[0],
+    secureContext: hasExtAttr(i.extAttrs, "SecureContext"),
+    transferable: hasExtAttr(i.extAttrs, "Transferable"),
   };
   if (!result.exposed && i.type === "interface" && !i.partial) {
     result.exposed = "Window";
@@ -199,13 +204,15 @@ function convertInterfaceCommon(
         addComments(method[member.name], commentMap, i.name, member.name);
       }
     } else if (
-      (member.type === "iterable" && !member.async) ||
+      member.type === "iterable" ||
       member.type === "maplike" ||
       member.type === "setlike"
     ) {
       result.iterator = {
         kind: member.type,
         readonly: member.readonly,
+        async: member.async,
+        param: member.arguments.map(convertArgument),
         type: member.idlType.map(convertIdlType),
       };
     }
@@ -306,6 +313,7 @@ function convertOperation(
     exposed:
       getExtAttrConcatenated(operation.extAttrs, "Exposed") ||
       inheritedExposure,
+    secureContext: hasExtAttr(operation.extAttrs, "SecureContext"),
   };
 }
 
@@ -354,6 +362,7 @@ function convertAttribute(
       getExtAttrConcatenated(attribute.extAttrs, "Exposed") ||
       inheritedExposure,
     putForwards: getExtAttr(attribute.extAttrs, "PutForwards")[0],
+    secureContext: hasExtAttr(attribute.extAttrs, "SecureContext"),
   };
 }
 

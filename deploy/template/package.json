@@ -2,7 +2,7 @@
     "name": "@types/xyz",
     "version": "0.0.x",
     "description": "TypeScript definitions for xyz",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "contributors": [],
     "main": "",
     "types": "index.d.ts",

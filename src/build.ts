@@ -4,7 +4,11 @@ import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
 import { emitWebIdl } from "./build/emitter.js";
 import { convert } from "./build/widlprocess.js";
 import { getExposedTypes } from "./build/expose.js";
-import { getDeprecationData, getRemovalData } from "./build/bcd.js";
+import {
+  getDeprecationData,
+  getDocsData,
+  getRemovalData,
+} from "./build/bcd.js";
 import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
@@ -42,16 +46,25 @@ async function emitFlavor(
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
 
-  const result = emitWebIdl(exposed, options.global[0], false);
+  const result = emitWebIdl(exposed, options.global[0], "");
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
     result
   );
 
-  const iterators = emitWebIdl(exposed, options.global[0], true);
+  const iterators = emitWebIdl(exposed, options.global[0], "sync");
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
     iterators
+  );
+
+  const asyncIterators = emitWebIdl(exposed, options.global[0], "async");
+  await fs.writeFile(
+    new URL(
+      `${options.name}.asynciterable.generated.d.ts`,
+      options.outputFolder
+    ),
+    asyncIterators
   );
 }
 
@@ -102,6 +115,20 @@ async function emitDom() {
   const widlStandardTypes = (
     await Promise.all([...(await getWebidls()).entries()].map(convertWidl))
   ).filter((i) => i) as ReturnType<typeof convert>[];
+
+  const transferables = widlStandardTypes.flatMap((st) => {
+    return Object.values(st.browser.interfaces?.interface ?? {}).filter(
+      (i) => i.transferable
+    );
+  });
+
+  addedItems.typedefs.typedef.push({
+    name: "Transferable",
+    type: [
+      ...transferables.map((v) => ({ type: v.name })),
+      { type: "ArrayBuffer" },
+    ],
+  });
 
   async function convertWidl([shortName, idl]: string[]) {
     let commentsMap: Record<string, string>;
@@ -230,6 +257,7 @@ async function emitDom() {
 
   webidl = merge(webidl, getDeprecationData(webidl));
   webidl = merge(webidl, getRemovalData(webidl));
+  webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
   webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   webidl = merge(webidl, addedItems);

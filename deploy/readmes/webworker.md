@@ -8,16 +8,34 @@ This package contains type definitions which will set up the global environment 
 
 ## Installation 
 
-To use `@types/webworker` you need to do two things:
+With TypeScript 4.5+ using [lib replacement](https://github.com/microsoft/TypeScript/pull/45771), you can swap the WebWorker lib with this dependency:
 
-1. Install the dependency: `npm install @types/webworker --save-dev`, `yarn add @types/webworker --dev` or `pnpm add @types/webworker --dev`.
-1. Update your [`tsconfig.json`](https://www.typescriptlang.org/tsconfig) to avoid clashing with the DOM APIs. There are two cases to consider depending on if you have `lib` defined in your `tsconfig.json` or not.
-
-    1. **Without "lib"** - You will need to add `"lib": []`. The value you want to add inside your lib should correlate to your [`"target"`](https://www.typescriptlang.org/tsconfig#target). For example if you had `"target": "es2017"`, then you would add `"lib": ["es2017"]`
-    1. **With "lib"**  - You should remove `"dom"`.
+```sh
+pnpm add @typescript/lib-webworker@npm:@types/webworker --save-dev
+npm install @typescript/lib-webworker@npm:@types/webworker --save-dev
+yarn add @typescript/lib-webworker@npm:@types/webworker --dev
+```
 
 That's all. 
 
+<details>
+<summary>TypeScript 4.4 and below</summary>
+
+<br/>
+To use `@types/webworker` you need to do two things:
+
+1. Install the dependency: `npm install @types/webworker --save-dev`, `yarn add @types/webworker --dev` or `pnpm add @types/webworker --save-dev`.
+
+1. Update your [`tsconfig.json`](https://www.typescriptlang.org/tsconfig). There are two cases to consider depending on if you have `lib` defined in your `tsconfig.json` or not.
+
+    1. **Without "lib"** - You will need to add `"lib": []`. The value you want to add inside your lib should correlate to your [`"target"`](https://www.typescriptlang.org/tsconfig#target). For example if you had `"target": "es2017"`, then you would add `"lib": ["es2017"]`
+    1. **With "lib"**  - You should remove `"webworker"`.
+
+Removing `"webworker"` gives @types/webworker the chance to provide the same set of global declarations. However, It's possible that your dependencies pull in the TypeScript Web Worker library, in which case you can either try to make that not happen, or use TypeScript 4.5 to systematically replace the library.
+
+</details>
+
+If you'd like to ensure that the DOM types are never accidentally included, you can use [@orta/types-noop](https://www.npmjs.com/package/@orta/type-noops) in TypeScript 4.5+.
 
 ## SemVer
 

@@ -1,4 +1,5 @@
 import {
+  BrowserName,
   CompatStatement,
   Identifier,
   SimpleSupportStatement,
@@ -27,7 +28,7 @@ function mergeCompatStatements(data?: Identifier): CompatStatement | undefined {
 
   // Some items have no top level __compat and instead have contexts with compat data for each
 
-  const statements = Object.values(data)
+  const statements = Object.values(data as Record<string, Identifier>)
     .map((d) => d.__compat)
     .filter((n) => n) as CompatStatement[];
 
@@ -38,7 +39,7 @@ function mergeCompatStatements(data?: Identifier): CompatStatement | undefined {
   );
 
   for (const statement of statements) {
-    for (const key of Object.keys(statement.support)) {
+    for (const key of Object.keys(statement.support) as BrowserName[]) {
       const support = statement.support[key];
       if (support && hasStableImplementation(support)) {
         if (!base[key]) {
@@ -83,6 +84,26 @@ function mapInterfaceLike(
   };
   const methods = filterMapRecord(i.methods?.method, recordMapper);
   const properties = filterMapRecord(i.properties?.property, recordMapper);
+
+  if (i.iterator) {
+    const iteratorKey = i.iterator.async ? "@@asyncIterator" : "@@iterator";
+    // BCD often doesn't have an @@iterator entry, but it does usually have an entry
+    // for iterable methods such as values(). Use that as a fallback.
+    // See also: https://github.com/mdn/browser-compat-data/issues/6367
+    const iteratorCompat = mergeCompatStatements(
+      data[iteratorKey] ?? data["values"]
+    );
+    const iteratorMapped = mapper({
+      key: iteratorKey,
+      parentKey: name,
+      compat: iteratorCompat,
+      mixin: !!i.mixin,
+    });
+    if (iteratorMapped !== undefined) {
+      result.iterator = iteratorMapped;
+    }
+  }
+
   if (!isEmptyRecord(methods)) {
     result.methods = { method: methods! };
   }

@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Run Codeowners merge check
-        uses: OSS-Docs-Tools/code-owner-self-merge@1.6.2
+        uses: OSS-Docs-Tools/code-owner-self-merge@1.6.3
         if: github.repository == 'microsoft/TypeScript-DOM-lib-generator'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

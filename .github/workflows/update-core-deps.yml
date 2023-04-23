@@ -11,10 +11,10 @@ jobs:
   update-webref:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "15"
+          node-version: "lts/*"
           cache: npm
 
       # Use ncu to detect major version changes
@@ -22,18 +22,17 @@ jobs:
       - run: ncu -u
       - run: npm i
       - run: git restore package.json
-      - run: npm run build && npm run baseline-accept
+      # package-lock wants to remember the original version numbers of package.json
+      # This prevents annoying change when contributors run `npm i` on their local machine.
+      # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
+      - run: npm i
+      - id: build
+        run: npm run build && npm run baseline-accept
+        continue-on-error: true
+      - if: ${{ steps.build.outcome == 'failure' }}
+        run: node deploy/onUpdateFailure.js
       - id: git-diff
         run: git diff --quiet HEAD baselines
-        continue-on-error: true
-      # TODO: Remove the following command after the fork is created
-      - env:
-          TS_TOKEN: ${{ secrets.TS_GITHUB_BOT_AUTH }}
-        run: |
-          echo $TS_TOKEN > ts_token
-          gh auth login --with-token < ts_token
-          gh repo fork --remote false
-          rm ts_token
         continue-on-error: true
       - uses: peter-evans/create-pull-request@v3
         if: ${{ steps.git-diff.outcome == 'failure' }}

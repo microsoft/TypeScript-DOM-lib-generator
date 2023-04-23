@@ -8,6 +8,7 @@ import {
   mapToArray,
   arrayToMap,
 } from "./helpers.js";
+import { isEmptyRecord } from "./utils/record.js";
 
 class LoggedSet extends Set<string> {
   private unvisited: Set<string>;
@@ -52,6 +53,24 @@ export function getExposedTypes(
     );
   }
 
+  if (webidl.mixins) {
+    const allIncludes = Object.values(filtered.interfaces?.interface || {})
+      .map((i) => i.implements || [])
+      .flat();
+    const mixins = deepFilter(webidl.mixins.mixin, (o) => exposesTo(o, target));
+    filtered.mixins!.mixin = filterProperties(
+      mixins,
+      (m: Browser.Interface) => allIncludes.includes(m.name) && !isEmptyMixin(m)
+    );
+    for (const value of Object.values(filtered.interfaces!.interface || {})) {
+      if (value.implements) {
+        value.implements = value.implements.filter(
+          (i) => !!filtered.mixins!.mixin[i]
+        );
+      }
+    }
+  }
+
   const knownIDLTypes = new Set([
     ...followTypeReferences(webidl, filtered.interfaces!.interface),
     ...followTypeReferences(
@@ -92,10 +111,6 @@ export function getExposedTypes(
     );
   if (webidl.enums)
     filtered.enums!.enum = filterProperties(webidl.enums.enum, isKnownName);
-  if (webidl.mixins) {
-    const mixins = deepFilter(webidl.mixins.mixin, (o) => exposesTo(o, target));
-    filtered.mixins!.mixin = filterProperties(mixins, isKnownName);
-  }
 
   for (const unvisited of forceKnownTypesLogged.unvisitedValues()) {
     console.warn(`${unvisited} is redundant in knownTypes.json (${target})`);
@@ -263,4 +278,15 @@ function flattenType(type: Browser.Typed[]) {
     return type[0].type;
   }
   throw new Error("Cannot process empty union type");
+}
+
+function isEmptyMixin(i?: Browser.Interface) {
+  return (
+    !!i?.mixin &&
+    isEmptyRecord(i.properties?.property) &&
+    isEmptyRecord(i.methods?.method) &&
+    isEmptyRecord(i.constants?.constant) &&
+    !i.anonymousMethods?.method.length &&
+    !i.events?.event.length
+  );
 }

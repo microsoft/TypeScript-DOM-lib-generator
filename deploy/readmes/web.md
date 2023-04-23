@@ -8,6 +8,20 @@ The APIs inside `@types/web` are [generated from](https://github.com/microsoft/T
 
 ## Installation 
 
+With TypeScript 4.5+ using [lib replacement](https://github.com/microsoft/TypeScript/pull/45771), you can swap the DOM lib with this dependency:
+
+```sh
+pnpm add @typescript/lib-dom@npm:@types/web --save-dev
+npm install @typescript/lib-dom@npm:@types/web --save-dev
+yarn add @typescript/lib-dom@npm:@types/web --dev
+```
+
+That's all. 
+
+<details>
+<summary>TypeScript 4.4 and below</summary>
+
+<br/>
 To use `@types/web` you need to do two things:
 
 1. Install the dependency: `npm install @types/web --save-dev`, `yarn add @types/web --dev` or `pnpm add @types/web --dev`.
@@ -17,7 +31,10 @@ To use `@types/web` you need to do two things:
     1. **Without "lib"** - You will need to add `"lib": []`. The value you want to add inside your lib should correlate to your [`"target"`](https://www.typescriptlang.org/tsconfig#target). For example if you had `"target": "es2017"`, then you would add `"lib": ["es2017"]`
     1. **With "lib"**  - You should remove `"dom"`.
 
-That's all. 
+Removing `"dom"` gives @types/web the chance to provide the same set of global declarations. However, It's possible that your dependencies pull in the TypeScript DOM library, in which case you can either try to make that not happen, or use TypeScript 4.5 to systematically replace the library.
+
+</details>
+
 
 ## SemVer
 

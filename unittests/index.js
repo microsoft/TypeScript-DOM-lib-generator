@@ -8,3 +8,11 @@ for (const filename of await readdir(new URL("files/", import.meta.url))) {
     });
   }
 }
+
+for (const filename of await readdir(new URL("files/audioworklet", import.meta.url))) {
+  if (filename.endsWith(".ts")) {
+    execSync(`npx tsc generated/audioworklet.generated.d.ts unittests/files/audioworklet/${filename} --target es2020 --lib es2020 --types --noEmit`, {
+      stdio: "inherit"
+    });
+  }
+}
