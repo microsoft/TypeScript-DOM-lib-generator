@@ -584,6 +584,17 @@
                     }
                 }
             },
+            "Location": {
+                "methods": {
+                    "method": {
+                        "reload": {
+                            "overrideSignatures": [
+                                "reload(): never"
+                            ]
+                        }
+                    }
+                }
+            },
             "Window": {
                 "properties": {
                     "property": {
