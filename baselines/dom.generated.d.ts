@@ -14475,7 +14475,7 @@ interface Location {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Location/reload)
      */
-    reload(): never;
+    reload(): void;
     /**
      * Removes the current page from the session history and navigates to the given URL.
      *
