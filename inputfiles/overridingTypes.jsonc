@@ -3367,6 +3367,7 @@
                     }
                 }
             },
+            // TextEncoderEncodeIntoResult is used only for return type, always with all fields defined
             "TextEncoderEncodeIntoResult": {
                 "members": {
                     "member": {
