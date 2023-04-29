@@ -3367,6 +3367,18 @@
                     }
                 }
             },
+            "TextEncoderEncodeIntoResult": {
+                "members": {
+                    "member": {
+                        "read": {
+                            "required": true
+                        },
+                        "written": {
+                            "required": true
+                        }
+                    }
+                }
+            },
             "UnderlyingSource": {
                 "typeParameters": [
                     {

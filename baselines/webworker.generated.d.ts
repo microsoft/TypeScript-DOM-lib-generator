@@ -691,8 +691,8 @@ interface TextDecoderOptions {
 }
 
 interface TextEncoderEncodeIntoResult {
-    read?: number;
-    written?: number;
+    read: number;
+    written: number;
 }
 
 interface Transformer<I = any, O = any> {

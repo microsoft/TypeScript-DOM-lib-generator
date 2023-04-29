@@ -1854,8 +1854,8 @@ interface TextDecoderOptions {
 }
 
 interface TextEncoderEncodeIntoResult {
-    read?: number;
-    written?: number;
+    read: number;
+    written: number;
 }
 
 interface TouchEventInit extends EventModifierInit {
