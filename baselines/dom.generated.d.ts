@@ -4112,6 +4112,8 @@ interface CSSStyleDeclaration {
     fontVariationSettings: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight) */
     fontWeight: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/forced-color-adjust) */
+    forcedColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/gap) */
     gap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid) */
@@ -5608,8 +5610,6 @@ declare var ClipboardEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem)
  */
 interface ClipboardItem {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/presentationStyle) */
-    readonly presentationStyle: PresentationStyle;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/types) */
     readonly types: ReadonlyArray<string>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/getType) */
@@ -13376,6 +13376,8 @@ interface Headers {
     delete(name: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/get) */
     get(name: string): string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/getSetCookie) */
+    getSetCookie(): string[];
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/has) */
     has(name: string): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/set) */
@@ -22476,6 +22478,8 @@ declare var webkitURL: typeof URL;
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 interface URLSearchParams {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
+    readonly size: number;
     /**
      * Appends a specified key/value pair as a new search parameter.
      *
@@ -22605,6 +22609,7 @@ declare var VTTRegion: {
 interface ValidityState {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/badInput) */
     readonly badInput: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/customError) */
     readonly customError: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/patternMismatch) */
     readonly patternMismatch: boolean;
@@ -22620,7 +22625,9 @@ interface ValidityState {
     readonly tooShort: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/typeMismatch) */
     readonly typeMismatch: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valid) */
     readonly valid: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valueMissing) */
     readonly valueMissing: boolean;
 }
 
