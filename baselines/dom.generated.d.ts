@@ -2,6 +2,10 @@
 /// Window APIs
 /////////////////////////////
 
+interface AV1EncoderConfig {
+    forceScreenContentTools?: boolean;
+}
+
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
@@ -858,6 +862,8 @@ interface MediaRecorderOptions {
     bitsPerSecond?: number;
     mimeType?: string;
     videoBitsPerSecond?: number;
+    videoKeyFrameIntervalCount?: number;
+    videoKeyFrameIntervalDuration?: DOMHighResTimeStamp;
 }
 
 interface MediaSessionActionDetails {
@@ -1341,6 +1347,7 @@ interface RTCEncodedVideoFrameMetadata {
     spatialIndex?: number;
     synchronizationSource?: number;
     temporalIndex?: number;
+    timestamp?: number;
     width?: number;
 }
 
@@ -1424,6 +1431,8 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     qpSum?: number;
     remoteId?: string;
     removedSamplesForAcceleration?: number;
+    retransmittedBytesReceived?: number;
+    retransmittedPacketsReceived?: number;
     silentConcealedSamples?: number;
     totalAudioEnergy?: number;
     totalDecodeTime?: number;
@@ -1999,6 +2008,7 @@ interface VideoDecoderSupport {
 
 interface VideoEncoderConfig {
     alpha?: AlphaOption;
+    av1?: AV1EncoderConfig;
     avc?: AvcEncoderConfig;
     bitrate?: number;
     bitrateMode?: VideoEncoderBitrateMode;
@@ -2014,7 +2024,12 @@ interface VideoEncoderConfig {
 }
 
 interface VideoEncoderEncodeOptions {
+    avc?: VideoEncoderEncodeOptionsForAvc;
     keyFrame?: boolean;
+}
+
+interface VideoEncoderEncodeOptionsForAvc {
+    quantizer?: number | null;
 }
 
 interface VideoEncoderInit {
@@ -3327,7 +3342,7 @@ interface CSSImportRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/media) */
     readonly media: MediaList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/styleSheet) */
-    readonly styleSheet: CSSStyleSheet;
+    readonly styleSheet: CSSStyleSheet | null;
 }
 
 declare var CSSImportRule: {
@@ -4112,6 +4127,8 @@ interface CSSStyleDeclaration {
     fontVariationSettings: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight) */
     fontWeight: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/forced-color-adjust) */
+    forcedColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/gap) */
     gap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid) */
@@ -5608,8 +5625,6 @@ declare var ClipboardEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem)
  */
 interface ClipboardItem {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/presentationStyle) */
-    readonly presentationStyle: PresentationStyle;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/types) */
     readonly types: ReadonlyArray<string>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/getType) */
@@ -13376,6 +13391,8 @@ interface Headers {
     delete(name: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/get) */
     get(name: string): string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/getSetCookie) */
+    getSetCookie(): string[];
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/has) */
     has(name: string): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/set) */
@@ -22476,6 +22493,8 @@ declare var webkitURL: typeof URL;
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 interface URLSearchParams {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
+    readonly size: number;
     /**
      * Appends a specified key/value pair as a new search parameter.
      *
@@ -22605,6 +22624,7 @@ declare var VTTRegion: {
 interface ValidityState {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/badInput) */
     readonly badInput: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/customError) */
     readonly customError: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/patternMismatch) */
     readonly patternMismatch: boolean;
@@ -22620,7 +22640,9 @@ interface ValidityState {
     readonly tooShort: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/typeMismatch) */
     readonly typeMismatch: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valid) */
     readonly valid: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valueMissing) */
     readonly valueMissing: boolean;
 }
 
@@ -27809,7 +27831,7 @@ type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "n
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "running" | "suspended";
 type AuthenticatorAttachment = "cross-platform" | "platform";
-type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";
+type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "smart-card" | "usb";
 type AutoKeyword = "auto";
 type AutomationRate = "a-rate" | "k-rate";
 type AvcBitstreamFormat = "annexb" | "avc";
