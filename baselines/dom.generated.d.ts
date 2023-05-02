@@ -1334,7 +1334,6 @@ interface RTCEncodedAudioFrameMetadata {
 }
 
 interface RTCEncodedVideoFrameMetadata {
-    contributingSources?: number[];
     dependencies?: number[];
     frameId?: number;
     height?: number;
@@ -3327,7 +3326,7 @@ interface CSSImportRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/media) */
     readonly media: MediaList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/styleSheet) */
-    readonly styleSheet: CSSStyleSheet;
+    readonly styleSheet: CSSStyleSheet | null;
 }
 
 declare var CSSImportRule: {

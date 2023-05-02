@@ -13,6 +13,9 @@
     },
     "enums": {
         "enum": {
+            "AuthenticatorTransport": {
+                "value": ["smart-card"] // WebKit only as of 2023-05
+            },
             "ConnectionType": {
                 "value": ["wimax"]
             },
@@ -288,7 +291,9 @@
             "MediaRecorderOptions": {
                 "members": {
                     "member": {
-                        "audioBitrateMode": null
+                        "audioBitrateMode": null, // Blink only as of 2023-05
+                        "videoKeyFrameIntervalCount": null, // No implementation as of 2023-05
+                        "videoKeyFrameIntervalDuration": null // No implementation as of 2023-05
                     }
                 }
             },
@@ -493,7 +498,9 @@
             "RTCEncodedVideoFrameMetadata": {
                 "members": {
                     "member": {
-                        "payloadType": null
+                        "contributingSources": null, // Blink only as of 2023-05
+                        "payloadType": null, // Blink only as of 2023-05
+                        "timestamp": null // No implementation as of 2023-05
                     }
                 }
             },
@@ -537,6 +544,8 @@
                         "pauseCount": null, // Blink only as of 2022-10
                         "playoutId": null, // No implementation as of 2022-09
                         "powerEfficientDecoder": null, // No implementation as of 2022-09
+                        "retransmittedBytesReceived": null, // Blink only as of 2023-05
+                        "retransmittedPacketsReceived": null, // Blink only as of 2023-05
                         "totalAssemblyTime": null, // Blink only as of 2022-10
                         "totalFreezesDuration": null, // Blink only as of 2022-10
                         "totalPausesDuration": null, // Blink only as of 2022-10
@@ -595,6 +604,7 @@
             "VideoEncoderConfig": {
                 "members": {
                     "member": {
+                        "av1": null, // Blink only as of 2023-05
                         "hevc": null // Blink only as of 2023-03
                     }
                 }
@@ -603,6 +613,7 @@
                 "members": {
                     "member": {
                         "av1": null, // Blink only as of 2023-04
+                        "avc": null, // No implementation as of 2023-05
                         "vp9": null // Blink only as of 2023-03
                     }
                 }

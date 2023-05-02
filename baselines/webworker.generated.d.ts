@@ -521,7 +521,6 @@ interface RTCEncodedAudioFrameMetadata {
 }
 
 interface RTCEncodedVideoFrameMetadata {
-    contributingSources?: number[];
     dependencies?: number[];
     frameId?: number;
     height?: number;
