@@ -2286,9 +2286,9 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout_static) */
     timeout(milliseconds: number): AbortSignal;
 };
 
@@ -13754,25 +13754,25 @@ declare var IDBKeyRange: {
     /**
      * Returns a new IDBKeyRange spanning from lower to upper. If lowerOpen is true, lower is not included in the range. If upperOpen is true, upper is not included in the range.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/bound)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/bound_static)
      */
     bound(lower: any, upper: any, lowerOpen?: boolean, upperOpen?: boolean): IDBKeyRange;
     /**
      * Returns a new IDBKeyRange starting at key with no upper bound. If open is true, key is not included in the range.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/lowerBound)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/lowerBound_static)
      */
     lowerBound(lower: any, open?: boolean): IDBKeyRange;
     /**
      * Returns a new IDBKeyRange spanning only key.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/only)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/only_static)
      */
     only(value: any): IDBKeyRange;
     /**
      * Returns a new IDBKeyRange with no lower bound and ending at key. If open is true, key is not included in the range.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/upperBound)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/upperBound_static)
      */
     upperBound(upper: any, open?: boolean): IDBKeyRange;
 };
@@ -15097,7 +15097,7 @@ interface MediaRecorder extends EventTarget {
 declare var MediaRecorder: {
     prototype: MediaRecorder;
     new(stream: MediaStream, options?: MediaRecorderOptions): MediaRecorder;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/isTypeSupported) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/isTypeSupported_static) */
     isTypeSupported(type: string): boolean;
 };
 
@@ -15163,7 +15163,7 @@ interface MediaSource extends EventTarget {
 declare var MediaSource: {
     prototype: MediaSource;
     new(): MediaSource;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/isTypeSupported) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/isTypeSupported_static) */
     isTypeSupported(type: string): boolean;
 };
 
@@ -16343,7 +16343,7 @@ interface Notification extends EventTarget {
 declare var Notification: {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/permission) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/permission_static) */
     readonly permission: NotificationPermission;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/requestPermission) */
     requestPermission(deprecatedCallback?: NotificationPermissionCallback): Promise<NotificationPermission>;
@@ -17085,7 +17085,7 @@ interface PerformanceObserver {
 declare var PerformanceObserver: {
     prototype: PerformanceObserver;
     new(callback: PerformanceObserverCallback): PerformanceObserver;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes_static) */
     readonly supportedEntryTypes: ReadonlyArray<string>;
 };
 
@@ -17631,7 +17631,7 @@ declare var PublicKeyCredential: {
     prototype: PublicKeyCredential;
     new(): PublicKeyCredential;
     isConditionalMediationAvailable(): Promise<boolean>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable_static) */
     isUserVerifyingPlatformAuthenticatorAvailable(): Promise<boolean>;
 };
 
@@ -18098,7 +18098,7 @@ interface RTCPeerConnection extends EventTarget {
 declare var RTCPeerConnection: {
     prototype: RTCPeerConnection;
     new(configuration?: RTCConfiguration): RTCPeerConnection;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/generateCertificate) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/generateCertificate_static) */
     generateCertificate(keygenAlgorithm: AlgorithmIdentifier): Promise<RTCCertificate>;
 };
 
@@ -18734,9 +18734,9 @@ interface Response extends Body {
 declare var Response: {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/error) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/error_static) */
     error(): Response;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
     redirect(url: string | URL, status?: number): Response;
 };
 
@@ -22466,9 +22466,9 @@ interface URL {
 declare var URL: {
     prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static) */
     createObjectURL(obj: Blob | MediaSource): string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static) */
     revokeObjectURL(url: string): void;
 };
 
@@ -26314,7 +26314,7 @@ declare namespace CSS {
     function dvw(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/em) */
     function em(value: number): CSSUnitValue;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/escape) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/escape_static) */
     function escape(ident: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/ex) */
     function ex(value: number): CSSUnitValue;

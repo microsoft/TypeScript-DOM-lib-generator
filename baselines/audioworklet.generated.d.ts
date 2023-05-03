@@ -223,7 +223,7 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
 };
 

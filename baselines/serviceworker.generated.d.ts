@@ -800,9 +800,9 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout_static) */
     timeout(milliseconds: number): AbortSignal;
 };
 
@@ -3126,25 +3126,25 @@ declare var IDBKeyRange: {
     /**
      * Returns a new IDBKeyRange spanning from lower to upper. If lowerOpen is true, lower is not included in the range. If upperOpen is true, upper is not included in the range.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/bound)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/bound_static)
      */
     bound(lower: any, upper: any, lowerOpen?: boolean, upperOpen?: boolean): IDBKeyRange;
     /**
      * Returns a new IDBKeyRange starting at key with no upper bound. If open is true, key is not included in the range.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/lowerBound)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/lowerBound_static)
      */
     lowerBound(lower: any, open?: boolean): IDBKeyRange;
     /**
      * Returns a new IDBKeyRange spanning only key.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/only)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/only_static)
      */
     only(value: any): IDBKeyRange;
     /**
      * Returns a new IDBKeyRange with no lower bound and ending at key. If open is true, key is not included in the range.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/upperBound)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/upperBound_static)
      */
     upperBound(upper: any, open?: boolean): IDBKeyRange;
 };
@@ -3859,7 +3859,7 @@ interface Notification extends EventTarget {
 declare var Notification: {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/permission) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/permission_static) */
     readonly permission: NotificationPermission;
 };
 
@@ -4183,7 +4183,7 @@ interface PerformanceObserver {
 declare var PerformanceObserver: {
     prototype: PerformanceObserver;
     new(callback: PerformanceObserverCallback): PerformanceObserver;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes_static) */
     readonly supportedEntryTypes: ReadonlyArray<string>;
 };
 
@@ -4714,9 +4714,9 @@ interface Response extends Body {
 declare var Response: {
     prototype: Response;
     new(body?: BodyInit | null, init?: ResponseInit): Response;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/error) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/error_static) */
     error(): Response;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
     redirect(url: string | URL, status?: number): Response;
 };
 
