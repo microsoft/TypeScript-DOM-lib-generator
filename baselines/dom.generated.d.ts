@@ -26495,8 +26495,6 @@ declare namespace CSS {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function grad(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
-    function in(value: number): CSSUnitValue;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function kHz(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function lvb(value: number): CSSUnitValue;
