@@ -82,8 +82,15 @@ function mapInterfaceLike(
       mixin: !!i.mixin,
     });
   };
-  const methods = filterMapRecord(i.methods?.method, recordMapper);
-  const properties = filterMapRecord(i.properties?.property, recordMapper);
+  // https://github.com/mdn/browser-compat-data/issues/20114 for inconsistent static member problem
+  const needsStatic =
+    name === "CSS" ? true : name === "Module" ? false : undefined;
+  const methods = filterMapRecord(i.methods?.method, recordMapper, needsStatic);
+  const properties = filterMapRecord(
+    i.properties?.property,
+    recordMapper,
+    needsStatic
+  );
 
   if (i.iterator) {
     const iteratorKey = i.iterator.async ? "@@asyncIterator" : "@@iterator";

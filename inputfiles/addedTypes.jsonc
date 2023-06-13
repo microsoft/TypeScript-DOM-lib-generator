@@ -346,7 +346,6 @@
                     "persistent-storage",
                     // https://developer.mozilla.org/en-US/docs/Web/API/Push_API#browser_compatibility
                     "push",
-                    // Wake Lock is actually Blink-only, but for now let's keep it here for backward compatibility.
                     // https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
                     "screen-wake-lock",
                     // WebXR is also actually Blink-only

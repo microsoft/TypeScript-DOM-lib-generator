@@ -627,6 +627,33 @@
                 },
                 "overrideIndexSignatures": []
             },
+            "WebTransport": {
+                "methods": {
+                    "method": {
+                        "createUnidirectionalStream": {
+                            "signature": {
+                                "0": {
+                                    "subtype": {
+                                        "type": "WritableStream"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "WebTransportBidirectionalStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "type": "ReadableStream"
+                        },
+                        "writable": {
+                            "type": "WritableStream"
+                        }
+                    }
+                }
+            },
             "Document": {
                 "methods": {
                     "method": {
@@ -3589,7 +3616,7 @@
                     // `in` is a keyword and needs a special emit, which will be done in a separate PR
                     // Not in removedTypes as removals in arrays are not well supported
                     // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1515
-                    "in": {
+                    "in_static": {
                         "exposed": ""
                     }
                 }
