@@ -468,7 +468,6 @@
                 "members": {
                     "member": {
                         "duplex": null, // Blink only as of 2022-09
-                        "priority": null, // Corresponds to Request#priority, no implementation as of 2022-09,
                         "privateToken": null, // Blink only as of 2023-03 (but not enabled there either)
                         "attributionReporting": null // No implementation as of 2023-04
                     }
