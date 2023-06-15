@@ -470,6 +470,15 @@ interface PermissionDescriptor {
     name: PermissionName;
 }
 
+interface PermissionNameMap {
+    "persistent-storage": "persistent-storage";
+    "screen-wake-lock": "screen-wake-lock";
+    "xr-spatial-tracking": "xr-spatial-tracking";
+    geolocation: "geolocation";
+    notifications: "notifications";
+    push: "push";
+}
+
 interface PlaneLayout {
     offset: number;
     stride: number;
@@ -9213,6 +9222,7 @@ type NamedCurve = string;
 type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
+type PermissionName = keyof PermissionNameMap;
 type PushMessageDataInit = BufferSource | string;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
@@ -9272,7 +9282,6 @@ type MediaEncodingType = "record" | "webrtc";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
-type PermissionName = "geolocation" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "xr-spatial-tracking";
 type PermissionState = "denied" | "granted" | "prompt";
 type PredefinedColorSpace = "display-p3" | "srgb";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
