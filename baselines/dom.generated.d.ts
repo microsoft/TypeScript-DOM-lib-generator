@@ -1161,6 +1161,15 @@ interface PermissionDescriptor {
     name: PermissionName;
 }
 
+interface PermissionNameMap {
+    "persistent-storage": "persistent-storage";
+    "screen-wake-lock": "screen-wake-lock";
+    "xr-spatial-tracking": "xr-spatial-tracking";
+    geolocation: "geolocation";
+    notifications: "notifications";
+    push: "push";
+}
+
 interface PictureInPictureEventInit extends EventInit {
     pictureInPictureWindow: PictureInPictureWindow;
 }
@@ -27977,6 +27986,7 @@ type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | ImageBitmap
 type OnBeforeUnloadEventHandler = OnBeforeUnloadEventHandlerNonNull | null;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
+type PermissionName = keyof PermissionNameMap;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
@@ -28087,7 +28097,6 @@ type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";
 type PanningModelType = "HRTF" | "equalpower";
 type PaymentComplete = "fail" | "success" | "unknown";
-type PermissionName = "geolocation" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "xr-spatial-tracking";
 type PermissionState = "denied" | "granted" | "prompt";
 type PlaybackDirection = "alternate" | "alternate-reverse" | "normal" | "reverse";
 type PositionAlignSetting = "auto" | "center" | "line-left" | "line-right";
