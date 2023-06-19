@@ -1,7 +1,5 @@
 // @ts-expect-error should be a string
 document.body.getElementsByTagName("input")[0].autocomplete = false;
-// @ts-expect-error should not be empty
-document.body.getElementsByTagName("input")[0].autocomplete = "";
 // @ts-expect-error wrong value for this attribute
 document.body.getElementsByTagName("input")[0].autocomplete = "undefined";
 // @ts-expect-error does not accept boolean attributes
@@ -32,11 +30,13 @@ document.body.getElementsByTagName("input")[0].autocomplete = "mobile username";
 // @ts-expect-error should probably be current-password or new-password
 document.body.getElementsByTagName("input")[0].autocomplete = "password";
 
+document.body.getElementsByTagName("input")[0].autocomplete = "";
 document.body.getElementsByTagName("input")[0].autocomplete = "on";
 document.body.getElementsByTagName("input")[0].autocomplete = "off";
 document.body.getElementsByTagName("input")[0].autocomplete = "new-password";
 document.body.getElementsByTagName("input")[0].autocomplete =
   "current-password";
+document.body.getElementsByTagName("input")[0].autocomplete = "one-time-code";
 
 document.body.getElementsByTagName("input")[0].autocomplete =
   "username webauthn";

@@ -359,7 +359,8 @@
                     // Off
                     "off",
                     // Automatic
-                    "on"
+                    "on",
+                    ""
                 ]
             },
             "AutoFillAddressKind": {
@@ -382,6 +383,8 @@
                     "username",
                     "new-password",
                     "current-password",
+                    // Supported in iOS Safari too even though WPT tests
+                    // for Safari currently fail as of 2023-06.
                     "one-time-code",
 
                     "organization",
@@ -1532,6 +1535,9 @@
             },
             {
                 "name": "AutoFillSection",
+                // Note: this will also eagerly match any invalid string
+                // after section- instead of stopping at the first whitespace.
+                // It should be something like /section-\S/ if it were supported.
                 "overrideType": "`section-${string}`"
             },
             {
