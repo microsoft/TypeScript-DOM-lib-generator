@@ -2887,11 +2887,11 @@ interface FileSystemSyncAccessHandle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/getSize) */
     getSize(): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/read) */
-    read(buffer: BufferSource, options?: FileSystemReadWriteOptions): number;
+    read(buffer: AllowSharedBufferSource, options?: FileSystemReadWriteOptions): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/truncate) */
     truncate(newSize: number): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/write) */
-    write(buffer: BufferSource, options?: FileSystemReadWriteOptions): number;
+    write(buffer: AllowSharedBufferSource, options?: FileSystemReadWriteOptions): number;
 }
 
 declare var FileSystemSyncAccessHandle: {
@@ -5365,7 +5365,7 @@ interface TextDecoder extends TextDecoderCommon {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
-    decode(input?: BufferSource, options?: TextDecodeOptions): string;
+    decode(input?: AllowSharedBufferSource, options?: TextDecodeOptions): string;
 }
 
 declare var TextDecoder: {
@@ -9175,6 +9175,7 @@ declare function addEventListener(type: string, listener: EventListenerOrEventLi
 declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = Algorithm | string;
+type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
 type BigInteger = Uint8Array;
 type BinaryData = ArrayBuffer | ArrayBufferView;
 type BlobPart = BufferSource | Blob | string;

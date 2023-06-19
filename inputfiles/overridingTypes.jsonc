@@ -3573,6 +3573,11 @@
                     }
                 ],
                 "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+            },
+            {
+                "name": "AllowSharedBufferSource",
+                // No SharedArrayBuffer in ES5, oh no.
+                "overrideType": "ArrayBuffer | ArrayBufferView"
             }
         ]
     },

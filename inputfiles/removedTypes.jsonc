@@ -522,6 +522,7 @@
                         // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/RTCStatsReport.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/stats/rtcstats_objects.cc
+                        "fecBytesReceived": null, // No implementation as of 2023-06
                         "framesAssembledFromMultiplePackets": null, // Blink only as of 2022-10
                         "framesRendered": null, // No implementation as of 2022-12
                         "freezeCount": null, // Blink only as of 2022-10
@@ -609,6 +610,13 @@
                 "members": {
                     "member": {
                         "metadata": null // No implementation as of 2023-03. Linked to VideoFrame.metadata()
+                    }
+                }
+            },
+            "VideoFrameBufferInit": {
+                "members": {
+                    "member": {
+                        "transfer": null // No implementation as of 2023-06.
                     }
                 }
             },

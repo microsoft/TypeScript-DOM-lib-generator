@@ -3,6 +3,7 @@ import * as Browser from "./types.js";
 // Extended types used but not defined in the spec
 export const bufferSourceTypes = new Set([
   "ArrayBuffer",
+  "SharedArrayBuffer",
   "ArrayBufferView",
   "DataView",
   "Int8Array",

@@ -858,7 +858,7 @@ interface TextDecoder extends TextDecoderCommon {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
-    decode(input?: BufferSource, options?: TextDecodeOptions): string;
+    decode(input?: AllowSharedBufferSource, options?: TextDecodeOptions): string;
 }
 
 declare var TextDecoder: {
@@ -1399,6 +1399,7 @@ declare var currentTime: number;
 declare var sampleRate: number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/registerProcessor) */
 declare function registerProcessor(name: string, processorCtor: AudioWorkletProcessorConstructor): void;
+type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
 type BufferSource = ArrayBufferView | ArrayBuffer;
 type DOMHighResTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
