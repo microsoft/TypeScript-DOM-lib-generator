@@ -4122,8 +4122,11 @@ interface CSSStyleDeclaration {
     fontStyle: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis) */
     fontSynthesis: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis-small-caps) */
     fontSynthesisSmallCaps: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis-style) */
     fontSynthesisStyle: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis-weight) */
     fontSynthesisWeight: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant) */
     fontVariant: string;
@@ -8885,6 +8888,7 @@ interface GlobalEventHandlersEventMap {
     "reset": Event;
     "resize": UIEvent;
     "scroll": Event;
+    "scrollend": Event;
     "securitypolicyviolation": SecurityPolicyViolationEvent;
     "seeked": Event;
     "seeking": Event;
@@ -9235,6 +9239,8 @@ interface GlobalEventHandlers {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scroll_event)
      */
     onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scrollend_event) */
+    onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/securitypolicyviolation_event) */
     onsecuritypolicyviolation: ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any) | null;
     /**
@@ -27730,6 +27736,8 @@ declare var onresize: ((this: Window, ev: UIEvent) => any) | null;
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scroll_event)
  */
 declare var onscroll: ((this: Window, ev: Event) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scrollend_event) */
+declare var onscrollend: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/securitypolicyviolation_event) */
 declare var onsecuritypolicyviolation: ((this: Window, ev: SecurityPolicyViolationEvent) => any) | null;
 /**
