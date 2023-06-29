@@ -536,7 +536,7 @@
                 "properties": {
                     "property": {
                         "detail": {
-                            "overrideType": "T"
+                            "overrideType": "T extends {} ? T : null"
                         }
                     }
                 },
