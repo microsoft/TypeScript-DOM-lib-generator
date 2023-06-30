@@ -6516,10 +6516,10 @@ interface WebGL2RenderingContextBase {
 interface WebGL2RenderingContextOverloads {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/bufferData) */
     bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum): void;
-    bufferData(target: GLenum, srcData: BufferSource | null, usage: GLenum): void;
+    bufferData(target: GLenum, srcData: AllowSharedBufferSource | null, usage: GLenum): void;
     bufferData(target: GLenum, srcData: ArrayBufferView, usage: GLenum, srcOffset: GLuint, length?: GLuint): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/bufferSubData) */
-    bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: BufferSource): void;
+    bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: AllowSharedBufferSource): void;
     bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: ArrayBufferView, srcOffset: GLuint, length?: GLuint): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/compressedTexImage2D) */
     compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr): void;
@@ -7547,9 +7547,9 @@ interface WebGLRenderingContextBase {
 interface WebGLRenderingContextOverloads {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/bufferData) */
     bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum): void;
-    bufferData(target: GLenum, data: BufferSource | null, usage: GLenum): void;
+    bufferData(target: GLenum, data: AllowSharedBufferSource | null, usage: GLenum): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/bufferSubData) */
-    bufferSubData(target: GLenum, offset: GLintptr, data: BufferSource): void;
+    bufferSubData(target: GLenum, offset: GLintptr, data: AllowSharedBufferSource): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/compressedTexImage2D) */
     compressedTexImage2D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, border: GLint, data: ArrayBufferView): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/compressedTexSubImage2D) */
