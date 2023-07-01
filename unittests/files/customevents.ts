@@ -2,7 +2,7 @@ new CustomEvent<null>("a").detail satisfies null;
 new CustomEvent<void>("b").detail satisfies null;
 new CustomEvent<undefined>("c").detail satisfies null;
 new CustomEvent<string>("d").detail satisfies string;
-new CustomEvent<string | undefined>("d").detail satisfies string | null;
+new CustomEvent<string | undefined>("e").detail satisfies string | null;
 
 // @ts-expect-error Wrong type
 new CustomEvent<null>("a").detail satisfies undefined;
@@ -13,4 +13,4 @@ new CustomEvent<undefined>("c").detail satisfies undefined;
 // @ts-expect-error Wrong type
 new CustomEvent<string>("d").detail satisfies number;
 // @ts-expect-error Wrong type
-new CustomEvent<string | undefined>("d").detail satisfies string | undefined;
+new CustomEvent<string | undefined>("e").detail satisfies string | undefined;
