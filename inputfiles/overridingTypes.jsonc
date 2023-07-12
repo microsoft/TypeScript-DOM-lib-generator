@@ -1579,7 +1579,7 @@
                                     "param": [
                                         {
                                             "name": "format",
-                                            "overrideType": "Exclude<KeyFormat, \"jwk\">"
+                                            "overrideType": "KeyFormat"
                                         }
                                     ],
                                     "overrideType": "Promise<ArrayBuffer>"
