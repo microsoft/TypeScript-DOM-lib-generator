@@ -1,3 +1,11 @@
+function assertType<T>(_x: T) {}
+
+const mockKey = {} as CryptoKey;
+assertType<Promise<JsonWebKey>>(crypto.subtle.exportKey('jwk', mockKey));
+assertType<Promise<ArrayBuffer>>(crypto.subtle.exportKey('pkcs8', mockKey));
+assertType<Promise<ArrayBuffer>>(crypto.subtle.exportKey('raw', mockKey));
+assertType<Promise<ArrayBuffer>>(crypto.subtle.exportKey('spki', mockKey));
+
 const usageInline = crypto.subtle.generateKey({
   name: "AES-GCM",
   length: 256,
