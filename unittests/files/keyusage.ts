@@ -1,6 +1,7 @@
 function assertType<T>(_x: T) {}
 
 const mockKey = {} as CryptoKey;
+assertType<Promise<ArrayBuffer | JsonWebKey>>(crypto.subtle.exportKey('' as KeyFormat, mockKey));
 assertType<Promise<JsonWebKey>>(crypto.subtle.exportKey('jwk', mockKey));
 assertType<Promise<ArrayBuffer>>(crypto.subtle.exportKey('pkcs8', mockKey));
 assertType<Promise<ArrayBuffer>>(crypto.subtle.exportKey('raw', mockKey));
