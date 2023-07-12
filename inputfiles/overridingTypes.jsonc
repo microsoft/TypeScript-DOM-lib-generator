@@ -1608,7 +1608,7 @@
                                     "param": [
                                         {
                                             "name": "format",
-                                            "overrideType": "Exclude<KeyFormat, \"jwk\">"
+                                            "overrideType": "KeyFormat"
                                         },
                                         {
                                             "name": "keyData",
