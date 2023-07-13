@@ -5811,7 +5811,7 @@ interface CredentialsContainer {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CredentialsContainer/preventSilentAccess) */
     preventSilentAccess(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CredentialsContainer/store) */
-    store(credential: Credential): Promise<Credential>;
+    store(credential: Credential): Promise<void>;
 }
 
 declare var CredentialsContainer: {
