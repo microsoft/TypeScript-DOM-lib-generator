@@ -8,10 +8,10 @@ assertType<Promise<ArrayBuffer>>(crypto.subtle.exportKey("spki", mockKey));
 assertType<Promise<ArrayBuffer | JsonWebKey>>(
   crypto.subtle
     .exportKey("" as KeyFormat, mockKey)
-    .then((ambiguousKey) =>
-      ambiguousKey instanceof ArrayBuffer
-        ? (ambiguousKey satisfies ArrayBuffer)
-        : (ambiguousKey satisfies JsonWebKey)
+    .then((ambiguousExportedKeyData) =>
+      ambiguousExportedKeyData instanceof ArrayBuffer
+        ? (ambiguousExportedKeyData satisfies ArrayBuffer)
+        : (ambiguousExportedKeyData satisfies JsonWebKey)
     )
 );
 
