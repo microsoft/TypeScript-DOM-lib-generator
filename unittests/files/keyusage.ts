@@ -1,3 +1,5 @@
+function assertType<T>(_x: T) {}
+
 const mockKey = {} as CryptoKey;
 
 assertType<Promise<JsonWebKey>>(crypto.subtle.exportKey("jwk", mockKey));
