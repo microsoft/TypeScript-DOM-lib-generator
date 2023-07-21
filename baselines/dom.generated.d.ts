@@ -1586,6 +1586,9 @@ interface RTCSessionDescriptionInit {
     type: RTCSdpType;
 }
 
+interface RTCSetParameterOptions {
+}
+
 interface RTCStats {
     id: string;
     timestamp: DOMHighResTimeStamp;
@@ -5014,16 +5017,13 @@ declare var CSSStyleDeclaration: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule)
  */
-interface CSSStyleRule extends CSSRule {
-    readonly cssRules: CSSRuleList;
+interface CSSStyleRule extends CSSGroupingRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/selectorText) */
     selectorText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style) */
     readonly style: CSSStyleDeclaration;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/styleMap) */
     readonly styleMap: StylePropertyMap;
-    deleteRule(index: number): void;
-    insertRule(rule: string, index?: number): number;
 }
 
 declare var CSSStyleRule: {
@@ -18256,7 +18256,7 @@ interface RTCRtpSender {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpSender/replaceTrack) */
     replaceTrack(withTrack: MediaStreamTrack | null): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpSender/setParameters) */
-    setParameters(parameters: RTCRtpSendParameters): Promise<void>;
+    setParameters(parameters: RTCRtpSendParameters, setParameterOptions?: RTCSetParameterOptions): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpSender/setStreams) */
     setStreams(...streams: MediaStream[]): void;
 }
