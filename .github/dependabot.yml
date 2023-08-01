@@ -12,3 +12,7 @@ updates:
       interval: "monthly"
     # Bump versions only in package-lock.json
     versioning-strategy: "lockfile-only"
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*"
