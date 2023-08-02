@@ -4292,6 +4292,8 @@ interface CSSStyleDeclaration {
     maskSize: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-type) */
     maskType: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/math-depth) */
+    mathDepth: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/math-style) */
     mathStyle: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/max-block-size) */
