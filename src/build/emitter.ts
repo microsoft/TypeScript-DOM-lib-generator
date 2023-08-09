@@ -1065,11 +1065,24 @@ export function emitWebIdl(
         // only emit the string event handler if we just emitted a typed handler
 
         if (i.name === "EventSource") {
+          // Extra overload so that the argument name matches
+          // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#syntax
+          // This is useful for tooling which makes use of the argument name such as
+          // https://github.com/microsoft/TypeScript/blob/b5557271a51704e0469dd86974335a4775a68ffd/scripts/eslint/rules/argument-trivia.cjs
+          printer.printLine(
+            `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, useCapture: boolean): void;`
+          );
           printer.printLine(
             `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | ${optionsType}): void;`
           );
         }
 
+        // Extra overload so that the argument name matches MDN. See above
+        // comment in emitEventHandlers for explanation of why this may be
+        // useful.
+        printer.printLine(
+          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture: boolean): void;`
+        );
         printer.printLine(
           `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`
         );
@@ -1084,6 +1097,16 @@ export function emitWebIdl(
       iParent: Browser.Interface,
       optionsType: string
     ) {
+      // Extra overload so that the argument name matches MDN. See above
+      // comment in emitEventHandlers for explanation of why this may be
+      // useful.
+      printer.printLine(
+        `${prefix}${addOrRemove}EventListener<K extends keyof ${
+          iParent.name
+        }EventMap>(type: K, listener: (this: ${nameWithForwardedTypes(
+          i
+        )}, ev: ${iParent.name}EventMap[K]) => any, useCapture: boolean): void;`
+      );
       printer.printLine(
         `${prefix}${addOrRemove}EventListener<K extends keyof ${
           iParent.name
