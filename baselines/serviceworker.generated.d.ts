@@ -1528,10 +1528,14 @@ interface CanvasTextDrawingStyles {
     font: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/fontKerning) */
     fontKerning: CanvasFontKerning;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/letterSpacing) */
+    letterSpacing: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textAlign) */
     textAlign: CanvasTextAlign;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textBaseline) */
     textBaseline: CanvasTextBaseline;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/wordSpacing) */
+    wordSpacing: string;
 }
 
 interface CanvasTransform {
@@ -3852,6 +3856,8 @@ interface NotificationEventMap {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification)
  */
 interface Notification extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/badge) */
+    readonly badge: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/body) */
     readonly body: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/data) */
