@@ -378,6 +378,7 @@ interface DeviceOrientationEventInit extends EventInit {
 
 interface DisplayMediaStreamOptions {
     audio?: boolean | MediaTrackConstraints;
+    monitorTypeSurfaces?: MonitorTypeSurfacesEnum;
     video?: boolean | MediaTrackConstraints;
 }
 
@@ -1186,6 +1187,7 @@ interface PointerEventInit extends MouseEventInit {
 }
 
 interface PopStateEventInit extends EventInit {
+    hasUAVisualTransition?: boolean;
     state?: any;
 }
 
@@ -1226,6 +1228,7 @@ interface PublicKeyCredentialCreationOptions {
     challenge: BufferSource;
     excludeCredentials?: PublicKeyCredentialDescriptor[];
     extensions?: AuthenticationExtensionsClientInputs;
+    hints?: string[];
     pubKeyCredParams: PublicKeyCredentialParameters[];
     rp: PublicKeyCredentialRpEntity;
     timeout?: number;
@@ -1251,6 +1254,7 @@ interface PublicKeyCredentialRequestOptions {
     allowCredentials?: PublicKeyCredentialDescriptor[];
     challenge: BufferSource;
     extensions?: AuthenticationExtensionsClientInputs;
+    hints?: string[];
     rpId?: string;
     timeout?: number;
     userVerification?: UserVerificationRequirement;
@@ -1403,6 +1407,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     estimatedPlayoutTimestamp?: DOMHighResTimeStamp;
     fecPacketsDiscarded?: number;
     fecPacketsReceived?: number;
+    fecSsrc?: number;
     firCount?: number;
     frameHeight?: number;
     frameWidth?: number;
@@ -1415,7 +1420,6 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     jitterBufferDelay?: number;
     jitterBufferEmittedCount?: number;
     keyFramesDecoded?: number;
-    kind: string;
     lastPacketReceivedTimestamp?: DOMHighResTimeStamp;
     nackCount?: number;
     packetsDiscarded?: number;
@@ -1423,6 +1427,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     qpSum?: number;
     remoteId?: string;
     removedSamplesForAcceleration?: number;
+    rtxSsrc?: number;
     silentConcealedSamples?: number;
     totalAudioEnergy?: number;
     totalDecodeTime?: number;
@@ -1466,6 +1471,7 @@ interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     retransmittedBytesSent?: number;
     retransmittedPacketsSent?: number;
     rid?: string;
+    rtxSsrc?: number;
     targetBitrate?: number;
     totalEncodeTime?: number;
     totalEncodedBytesTarget?: number;
@@ -1679,6 +1685,7 @@ interface RequestInit {
     referrerPolicy?: ReferrerPolicy;
     /** An AbortSignal to set request's signal. */
     signal?: AbortSignal | null;
+    targetAddressSpace?: RequestTargetAddressSpace;
     /** Can only be null. Used to disassociate request from any Window. */
     window?: null;
 }
@@ -2021,7 +2028,12 @@ interface VideoEncoderConfig {
 }
 
 interface VideoEncoderEncodeOptions {
+    hevc?: VideoEncoderEncodeOptionsForHevc;
     keyFrame?: boolean;
+}
+
+interface VideoEncoderEncodeOptionsForHevc {
+    quantizer?: number | null;
 }
 
 interface VideoEncoderInit {
@@ -3864,6 +3876,8 @@ interface CSSStyleDeclaration {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-size) */
     backgroundSize: string;
     baselineShift: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/baseline-source) */
+    baselineSource: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/block-size) */
     blockSize: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border) */
@@ -4320,6 +4334,8 @@ interface CSSStyleDeclaration {
     objectPosition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset) */
     offset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-anchor) */
+    offsetAnchor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-distance) */
     offsetDistance: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-path) */
@@ -5492,6 +5508,8 @@ interface CanvasTextDrawingStyles {
     textAlign: CanvasTextAlign;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textBaseline) */
     textBaseline: CanvasTextBaseline;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textRendering) */
+    textRendering: CanvasTextRendering;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/wordSpacing) */
     wordSpacing: string;
 }
@@ -22057,6 +22075,24 @@ interface TextMetrics {
     /**
      * Returns the measurement described below.
      *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/alphabeticBaseline)
+     */
+    readonly alphabeticBaseline: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/emHeightAscent)
+     */
+    readonly emHeightAscent: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/emHeightDescent)
+     */
+    readonly emHeightDescent: number;
+    /**
+     * Returns the measurement described below.
+     *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/fontBoundingBoxAscent)
      */
     readonly fontBoundingBoxAscent: number;
@@ -22066,6 +22102,18 @@ interface TextMetrics {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/fontBoundingBoxDescent)
      */
     readonly fontBoundingBoxDescent: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/hangingBaseline)
+     */
+    readonly hangingBaseline: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/ideographicBaseline)
+     */
+    readonly ideographicBaseline: number;
     /**
      * Returns the measurement described below.
      *
@@ -28145,6 +28193,7 @@ type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
+type MonitorTypeSurfacesEnum = "exclude" | "include";
 type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
@@ -28198,6 +28247,7 @@ type RequestCredentials = "include" | "omit" | "same-origin";
 type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
+type RequestTargetAddressSpace = "local" | "private";
 type ResidentKeyRequirement = "discouraged" | "preferred" | "required";
 type ResizeObserverBoxOptions = "border-box" | "content-box" | "device-pixel-content-box";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
