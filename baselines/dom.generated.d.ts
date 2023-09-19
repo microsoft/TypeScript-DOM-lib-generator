@@ -1415,8 +1415,8 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     jitterBufferDelay?: number;
     jitterBufferEmittedCount?: number;
     keyFramesDecoded?: number;
-    kind: string;
     lastPacketReceivedTimestamp?: DOMHighResTimeStamp;
+    mid?: string;
     nackCount?: number;
     packetsDiscarded?: number;
     pliCount?: number;
@@ -1431,6 +1431,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     totalSamplesDuration?: number;
     totalSamplesReceived?: number;
     totalSquaredInterFrameDelay?: number;
+    trackIdentifier: string;
 }
 
 interface RTCLocalSessionDescriptionInit {
@@ -1466,6 +1467,7 @@ interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     retransmittedBytesSent?: number;
     retransmittedPacketsSent?: number;
     rid?: string;
+    rtxSsrc?: number;
     targetBitrate?: number;
     totalEncodeTime?: number;
     totalEncodedBytesTarget?: number;
@@ -3864,6 +3866,8 @@ interface CSSStyleDeclaration {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-size) */
     backgroundSize: string;
     baselineShift: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/baseline-source) */
+    baselineSource: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/block-size) */
     blockSize: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border) */
@@ -4320,6 +4324,8 @@ interface CSSStyleDeclaration {
     objectPosition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset) */
     offset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-anchor) */
+    offsetAnchor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-distance) */
     offsetDistance: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-path) */
@@ -5492,6 +5498,8 @@ interface CanvasTextDrawingStyles {
     textAlign: CanvasTextAlign;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textBaseline) */
     textBaseline: CanvasTextBaseline;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textRendering) */
+    textRendering: CanvasTextRendering;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/wordSpacing) */
     wordSpacing: string;
 }
@@ -22057,6 +22065,24 @@ interface TextMetrics {
     /**
      * Returns the measurement described below.
      *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/alphabeticBaseline)
+     */
+    readonly alphabeticBaseline: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/emHeightAscent)
+     */
+    readonly emHeightAscent: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/emHeightDescent)
+     */
+    readonly emHeightDescent: number;
+    /**
+     * Returns the measurement described below.
+     *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/fontBoundingBoxAscent)
      */
     readonly fontBoundingBoxAscent: number;
@@ -22066,6 +22092,18 @@ interface TextMetrics {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/fontBoundingBoxDescent)
      */
     readonly fontBoundingBoxDescent: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/hangingBaseline)
+     */
+    readonly hangingBaseline: number;
+    /**
+     * Returns the measurement described below.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/ideographicBaseline)
+     */
+    readonly ideographicBaseline: number;
     /**
      * Returns the measurement described below.
      *

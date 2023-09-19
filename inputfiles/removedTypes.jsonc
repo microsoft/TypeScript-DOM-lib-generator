@@ -225,6 +225,7 @@
                         // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
+                        "monitorTypeSurfaces": null,
                         "selfBrowserSurface": null,
                         "surfaceSwitching": null,
                         "systemAudio": null
@@ -448,18 +449,27 @@
                     }
                 }
             },
+            "PopStateEventInit": {
+                "members": {
+                    "member": {
+                        "hasUAVisualTransition": null // Blink only as of 2023-09
+                    }
+                }
+            },
             "PublicKeyCredentialCreationOptions": {
                 "members": {
                     "member": {
-                        "attestationFormats": null // No implementation as of 2022-10
+                        "attestationFormats": null, // No implementation as of 2023-09
+                        "hints": null // No implementation as of 2023-09
                     }
                 }
             },
             "PublicKeyCredentialRequestOptions": {
                 "members": {
                     "member": {
-                        "attestation": null, // No implementation as of 2022-10
-                        "attestationFormats": null // No implementation as of 2022-10
+                        "attestation": null, // No implementation as of 2023-09
+                        "attestationFormats": null, // No implementation as of 2023-09
+                        "hints": null // // No implementation as of 2023-09
                     }
                 }
             },
@@ -467,10 +477,11 @@
             "RequestInit": {
                 "members": {
                     "member": {
-                        "duplex": null, // Blink only as of 2022-09
-                        "priority": null, // Corresponds to Request#priority, no implementation as of 2022-09,
-                        "privateToken": null, // Blink only as of 2023-03 (but not enabled there either)
-                        "attributionReporting": null // No implementation as of 2023-04
+                        "attributionReporting": null, // No implementation as of 2023-04
+                        "duplex": null, // Blink only as of 2023-09
+                        "priority": null, // Blink only as of 2023-09,
+                        "privateToken": null, // Blink only as of 2023-09
+                        "targetAddressSpace": null // Blink only as of 2023-09
                     }
                 }
             },
@@ -522,34 +533,34 @@
                         // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/RTCStatsReport.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/stats/rtcstats_objects.cc
-                        "fecBytesReceived": null, // No implementation as of 2023-06
-                        "framesAssembledFromMultiplePackets": null, // Blink only as of 2022-10
-                        "framesRendered": null, // No implementation as of 2022-12
-                        "freezeCount": null, // Blink only as of 2022-10
-                        "jitterBufferMinimumDelay": null, // Blink only as of 2022-10
-                        "jitterBufferTargetDelay": null, // Blink only as of 2022-10
-                        "mid": null, // Blink only as of 2022-10
-                        "pauseCount": null, // Blink only as of 2022-10
-                        "playoutId": null, // No implementation as of 2022-09
-                        "powerEfficientDecoder": null, // No implementation as of 2022-09
-                        "retransmittedBytesReceived": null, // Blink only as of 2023-05
-                        "retransmittedPacketsReceived": null, // Blink only as of 2023-05
-                        "totalAssemblyTime": null, // Blink only as of 2022-10
-                        "totalFreezesDuration": null, // Blink only as of 2022-10
-                        "totalPausesDuration": null, // Blink only as of 2022-10
-                        "trackIdentifier": null // No implementation as of 2022-09
+                        "fecBytesReceived": null, // Blink only as of 2023-09
+                        "fecSsrc": null, // Blink only as of 2023-09
+                        "framesAssembledFromMultiplePackets": null, // Blink only as of 2023-09
+                        "framesRendered": null, // No implementation as of 2023-09
+                        "freezeCount": null, // Blink only as of 2023-09
+                        "jitterBufferMinimumDelay": null, // Blink only as of 2023-09
+                        "jitterBufferTargetDelay": null, // Blink only as of 2023-09
+                        "pauseCount": null, // Blink only as of 2023-09
+                        "playoutId": null, // Blink only as of 2023-09
+                        "powerEfficientDecoder": null, // Blink only as of 2023-09
+                        "retransmittedBytesReceived": null, // Blink only as of 2023-09
+                        "retransmittedPacketsReceived": null, // Blink only as of 2023-09
+                        "rtxSsrc": null, // Blink only as of 2023-09
+                        "totalAssemblyTime": null, // Blink only as of 2023-09
+                        "totalFreezesDuration": null, // Blink only as of 2023-09
+                        "totalPausesDuration": null // Blink only as of 2023-09
                     }
                 }
             },
             "RTCOutboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "active": null, // Blink only as of 2022-10
-                        "mid": null, // Blink only as of 2022-10
-                        "powerEfficientEncoder": null, // No implementation as of 2022-10
-                        "qualityLimitationReason": null, // Blink only as of 2022-09
-                        "qualityLimitationDurations": null, // Blink only as of 2022-09
-                        "scalabilityMode": null, // No implementation as of 2022-12
+                        "active": null, // Blink only as of 2023-09
+                        "mid": null, // Blink only as of 2023-09
+                        "powerEfficientEncoder": null, // Blink only as of 2023-09
+                        "qualityLimitationReason": null, // Blink only as of 2023-09
+                        "qualityLimitationDurations": null, // Blink only as of 2023-09
+                        "scalabilityMode": null, // Blink only as of 2023-09
                         "encoderImplementation": null // Blink only as of 2022-09
                     }
                 }
@@ -600,9 +611,10 @@
             "VideoEncoderEncodeOptions": {
                 "members": {
                     "member": {
-                        "av1": null, // Blink only as of 2023-04
-                        "avc": null, // No implementation as of 2023-05
-                        "vp9": null // Blink only as of 2023-03
+                        "av1": null, // Blink only as of 2023-09
+                        "avc": null, // Blink only as of 2023-09
+                        "hevc": null, // No implementation as of 2023-09
+                        "vp9": null // Blink only as of 2023-09
                     }
                 }
             },
