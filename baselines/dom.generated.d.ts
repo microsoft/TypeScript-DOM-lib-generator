@@ -5721,7 +5721,7 @@ declare var Comment: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompositionEvent)
  */
-interface CompositionEvent extends UIEvent {
+interface CompositionEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompositionEvent/data) */
     readonly data: string;
     /**
@@ -7462,7 +7462,7 @@ declare var DocumentType: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DragEvent)
  */
-interface DragEvent extends MouseEvent {
+interface DragEvent<T extends EventTarget = EventTarget> extends MouseEvent<T> {
     /**
      * Returns the DataTransfer object for the event.
      *
@@ -7982,7 +7982,7 @@ declare var ErrorEvent: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
-interface Event {
+interface Event<T extends EventTarget = EventTarget> {
     /**
      * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
      *
@@ -8012,7 +8012,7 @@ interface Event {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)
      */
-    readonly currentTarget: EventTarget | null;
+    readonly currentTarget: T | null;
     /**
      * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
      *
@@ -8048,7 +8048,7 @@ interface Event {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)
      */
-    readonly target: EventTarget | null;
+    readonly target: T | null;
     /**
      * Returns the event's timestamp as the number of milliseconds measured relative to the time origin.
      *
@@ -8116,12 +8116,12 @@ declare var EventCounts: {
     new(): EventCounts;
 };
 
-interface EventListener {
-    (evt: Event): void;
+interface EventListener<T extends EventTarget = EventTarget> {
+    (evt: Event<T>): void;
 }
 
-interface EventListenerObject {
-    handleEvent(object: Event): void;
+interface EventListenerObject<T extends EventTarget = EventTarget> {
+    handleEvent(object: Event<T>): void;
 }
 
 interface EventSourceEventMap {
@@ -8204,7 +8204,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
      */
-    addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
+    addEventListener(type: string, callback: EventListenerOrEventListenerObject<this> | null, options?: AddEventListenerOptions | boolean): void;
     /**
      * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
      *
@@ -8216,7 +8216,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
-    removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    removeEventListener(type: string, callback: EventListenerOrEventListenerObject<this> | null, options?: EventListenerOptions | boolean): void;
 }
 
 declare var EventTarget: {
@@ -8501,7 +8501,7 @@ declare var FileSystemWritableFileStream: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)
  */
-interface FocusEvent extends UIEvent {
+interface FocusEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */
     readonly relatedTarget: EventTarget | null;
 }
@@ -14303,7 +14303,7 @@ declare var InputDeviceInfo: {
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent) */
-interface InputEvent extends UIEvent {
+interface InputEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent/data) */
     readonly data: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent/dataTransfer) */
@@ -14385,7 +14385,7 @@ interface KHR_parallel_shader_compile {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)
  */
-interface KeyboardEvent extends UIEvent {
+interface KeyboardEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */
     readonly altKey: boolean;
     /**
@@ -15592,7 +15592,7 @@ declare var MimeTypeArray: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)
  */
-interface MouseEvent extends UIEvent {
+interface MouseEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */
     readonly altKey: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */
@@ -17593,7 +17593,7 @@ declare var PluginArray: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)
  */
-interface PointerEvent extends MouseEvent {
+interface PointerEvent<T extends EventTarget = EventTarget> extends MouseEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/height) */
     readonly height: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/isPrimary) */
@@ -22414,7 +22414,7 @@ declare var Touch: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent)
  */
-interface TouchEvent extends UIEvent {
+interface TouchEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/altKey) */
     readonly altKey: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/changedTouches) */
@@ -22562,7 +22562,7 @@ declare var TreeWalker: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent)
  */
-interface UIEvent extends Event {
+interface UIEvent<T extends EventTarget = EventTarget> extends Event<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent/detail) */
     readonly detail: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent/view) */
@@ -25596,7 +25596,7 @@ declare var WebTransportError: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WheelEvent)
  */
-interface WheelEvent extends MouseEvent {
+interface WheelEvent<T extends EventTarget = EventTarget> extends MouseEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WheelEvent/deltaMode) */
     readonly deltaMode: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WheelEvent/deltaX) */
@@ -28041,7 +28041,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
-type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+type EventListenerOrEventListenerObject<T extends EventTarget = EventTarget> = EventListener<T> | EventListenerObject<T>;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;

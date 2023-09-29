@@ -1729,7 +1729,79 @@
                     }
                 }
             },
+            "Event": {
+                // !!!!!!!!!
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "properties": {
+                    "property": {
+                        "target": {
+                            "name": "target",
+                            "readonly": true,
+                            "overrideType": "T"
+                        },
+                        "currentTarget": {
+                            "name": "currentTarget",
+                            "readonly": true,
+                            "overrideType": "T"
+                        }
+                    }
+                }
+            },
+            "CompositionEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "UIEvent<T>"
+            },
+            "FocusEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "UIEvent<T>"                
+            },
+            "InputEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "UIEvent<T>"                
+            },
+            "KeyboardEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "UIEvent<T>"                
+            },
             "MouseEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "UIEvent<T>" ,
                 "methods": {
                     "method": {
                         "initMouseEvent": {
@@ -1740,6 +1812,46 @@
                         }
                     }
                 }
+            },
+            "TouchEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "UIEvent<T>"                
+            },
+            "DragEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "MouseEvent<T>"                
+            },
+            "PointerEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "MouseEvent<T>"                
+            },
+            "WheelEvent": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "extends": "MouseEvent<T>"                
             },
             "DOMException": {
                 "extends": "Error"
@@ -2989,7 +3101,7 @@
                                     "param": [
                                         {
                                             "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
+                                            "overrideType": "EventListenerOrEventListenerObject<this>"
                                         }
                                     ]
                                 }
@@ -3001,7 +3113,7 @@
                                     "param": [
                                         {
                                             "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
+                                            "overrideType": "EventListenerOrEventListenerObject<this>"
                                         }
                                     ]
                                 }
