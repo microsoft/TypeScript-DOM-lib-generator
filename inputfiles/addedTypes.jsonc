@@ -938,7 +938,6 @@
                         "extends": "EventTarget"
                     }
                 ],
-                //!!!!!!!!!!!!!
                 "properties": {
                     "property": {
                         "which": {

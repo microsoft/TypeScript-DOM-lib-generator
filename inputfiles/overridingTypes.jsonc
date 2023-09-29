@@ -1730,7 +1730,6 @@
                 }
             },
             "Event": {
-                // !!!!!!!!!
                 "typeParameters": [
                     {
                         "name": "T",
