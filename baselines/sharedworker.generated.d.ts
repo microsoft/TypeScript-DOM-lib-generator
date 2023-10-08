@@ -205,7 +205,6 @@ interface FontFaceDescriptors {
     stretch?: string;
     style?: string;
     unicodeRange?: string;
-    variant?: string;
     weight?: string;
 }
 
@@ -370,27 +369,16 @@ interface NavigationPreloadState {
     headerValue?: string;
 }
 
-interface NotificationAction {
-    action: string;
-    icon?: string;
-    title: string;
-}
-
 interface NotificationOptions {
-    actions?: NotificationAction[];
     badge?: string;
     body?: string;
     data?: any;
     dir?: NotificationDirection;
     icon?: string;
-    image?: string;
     lang?: string;
-    renotify?: boolean;
     requireInteraction?: boolean;
     silent?: boolean | null;
     tag?: string;
-    timestamp?: EpochTimeStamp;
-    vibrate?: VibratePattern;
 }
 
 interface Pbkdf2Params extends Algorithm {
@@ -1500,6 +1488,10 @@ interface CanvasTextDrawingStyles {
     font: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/fontKerning) */
     fontKerning: CanvasFontKerning;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/fontStretch) */
+    fontStretch: CanvasFontStretch;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/fontVariantCaps) */
+    fontVariantCaps: CanvasFontVariantCaps;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/letterSpacing) */
     letterSpacing: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/textAlign) */
@@ -2585,8 +2577,6 @@ interface FontFace {
     style: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/unicodeRange) */
     unicodeRange: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variant) */
-    variant: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/weight) */
     weight: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/load) */
@@ -3767,6 +3757,8 @@ interface Notification extends EventTarget {
     onerror: ((this: Notification, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/show_event) */
     onshow: ((this: Notification, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/requireInteraction) */
+    readonly requireInteraction: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/silent) */
     readonly silent: boolean | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/tag) */
@@ -8591,7 +8583,6 @@ type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
 type TimerHandler = string | Function;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
-type VibratePattern = number | number[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";

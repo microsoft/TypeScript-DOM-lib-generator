@@ -442,6 +442,18 @@
                     }
                 }
             },
+            "NotificationOptions": {
+                "members": {
+                    "member": {
+                        // All Blink only as of 2023-10
+                        "actions": null,
+                        "image": null,
+                        "renotify": null,
+                        "timestamp": null,
+                        "vibrate": null
+                    }
+                }
+            },
             "OfflineAudioContextOptions": {
                 "members": {
                     "member": {
@@ -504,17 +516,14 @@
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
-                        "payloadType": null, // Blink only as of 2023-02
-                        "sequenceNumber": null // Blink only as of 2023-02
+                        "rtpTimestamp": null // Blink only as of 2023-10
                     }
                 }
             },
             "RTCEncodedVideoFrameMetadata": {
                 "members": {
                     "member": {
-                        "contributingSources": null, // Blink only as of 2023-05
-                        "payloadType": null, // Blink only as of 2023-05
-                        "timestamp": null // No implementation as of 2023-05
+                        "rtpTimestamp": null // Blink only as of 2023-10
                     }
                 }
             },
@@ -598,6 +607,13 @@
                         "iceState": null,
                         "dtlsRole": null,
                         "selectedCandidatePairChanges": null
+                    }
+                }
+            },
+            "Transformer": {
+                "members": {
+                    "member": {
+                        "cancel": null // No implementation as of 2023-10
                     }
                 }
             },
