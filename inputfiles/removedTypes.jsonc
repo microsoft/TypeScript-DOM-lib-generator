@@ -157,7 +157,8 @@
             "AudioContextOptions": {
                 "members": {
                     "member": {
-                        "sinkId": null // No implementation as of 2022-10
+                        "renderSizeHint": null, // No implementation as of 2023-10
+                        "sinkId": null // Blink only as of 2023-10
                     }
                 }
             },
@@ -251,6 +252,13 @@
                 "members": {
                     "member": {
                         "variationSettings": null // Gecko-only as of 2022-10
+                    }
+                }
+            },
+            "IntersectionObserverInit": {
+                "members": {
+                    "member": {
+                        "scrollMargin": null // Blink only as of 2023-10
                     }
                 }
             },
@@ -434,6 +442,13 @@
                     }
                 }
             },
+            "OfflineAudioContextOptions": {
+                "members": {
+                    "member": {
+                        "renderSizeHint": null // No implementation as of 2023-10
+                    }
+                }
+            },
             "PerformanceObserverInit": {
                 "members": {
                     "member": {
@@ -477,10 +492,11 @@
             "RequestInit": {
                 "members": {
                     "member": {
-                        "attributionReporting": null, // No implementation as of 2023-04
+                        "attributionReporting": null, // Blink only as of 2023-10
                         "duplex": null, // Blink only as of 2023-09
                         "priority": null, // Blink only as of 2023-09,
                         "privateToken": null, // Blink only as of 2023-09
+                        "sharedStorageWritable": null, // Blink only as of 2023-10
                         "targetAddressSpace": null // Blink only as of 2023-09
                     }
                 }
