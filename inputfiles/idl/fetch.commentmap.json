@@ -4,7 +4,7 @@
     "request-url": "Returns the URL of request as a string.",
     "request-headers": "Returns a Headers object consisting of the headers associated with request. Note that headers added in the network layer by the user agent will not be accounted for in this object, e.g., the \"Host\" header.",
     "request-destination": "Returns the kind of resource requested by request, e.g., \"document\" or \"script\".",
-    "request-referrer": "Returns the referrer of request. Its value can be a same-origin URL if explicitly set in init, the empty string to indicate no referrer, and \"about:client\" when defaulting to the global's default. This is used during fetching to determine the value of the `Referer` header of the request being made.",
+    "request-referrer": "Returns the referrer of request. Its value can be a same-origin URL if explicitly set in init, the empty string to indicate no referrer, and \"about:client\" when defaulting to the global's default. This is used during fetching to determine the value of the `Referrer` header of the request being made.",
     "request-referrerpolicy": "Returns the referrer policy associated with request. This is used during fetching to compute the value of the request's referrer.",
     "request-mode": "Returns the mode associated with request, which is a string indicating whether the request will use CORS, or will be restricted to same-origin URLs.",
     "request-credentials": "Returns the credentials mode associated with request, which is a string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL.",

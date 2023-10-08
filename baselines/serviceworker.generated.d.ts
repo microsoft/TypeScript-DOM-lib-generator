@@ -4434,7 +4434,7 @@ declare var PushMessageData: {
 };
 
 /**
- * This Push API interface provides a subcription's URL endpoint and allows unsubscription from a push service.
+ * This Push API interface provides a subscription's URL endpoint and allows unsubscription from a push service.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription)
@@ -4691,7 +4691,7 @@ interface Request extends Body {
      */
     readonly redirect: RequestRedirect;
     /**
-     * Returns the referrer of request. Its value can be a same-origin URL if explicitly set in init, the empty string to indicate no referrer, and "about:client" when defaulting to the global's default. This is used during fetching to determine the value of the `Referer` header of the request being made.
+     * Returns the referrer of request. Its value can be a same-origin URL if explicitly set in init, the empty string to indicate no referrer, and "about:client" when defaulting to the global's default. This is used during fetching to determine the value of the `Referrer` header of the request being made.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/referrer)
      */
