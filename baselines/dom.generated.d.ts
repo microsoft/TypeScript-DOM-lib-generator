@@ -6327,7 +6327,7 @@ declare var DOMRectReadOnly: {
  */
 interface DOMStringList {
     /**
-     * Returns the number of strings in strings.
+     * Returns the number of strings in a list of DOMString (strings).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMStringList/length)
      */
@@ -6339,7 +6339,7 @@ interface DOMStringList {
      */
     contains(string: string): boolean;
     /**
-     * Returns the string with the specified index from a list strings.
+     * Returns the string with the specified index from a list of DOMString (strings).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMStringList/item)
      */
