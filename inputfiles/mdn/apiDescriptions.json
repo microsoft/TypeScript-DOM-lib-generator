@@ -259,7 +259,7 @@
   "PushEvent": "The PushEvent interface of the Push API represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription.",
   "PushManager": "The PushManager interface of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications.",
   "PushMessageData": "The PushMessageData interface of the Push API provides methods which let you retrieve the push data sent by a server in various formats.",
-  "PushSubscription": "The PushSubscription interface of the Push API provides a subcription's URL endpoint and allows unsubscription from a push service.",
+  "PushSubscription": "The PushSubscription interface of the Push API provides a subscription'sURL endpoint and allows unsubscription from a push service.",
   "RTCDTMFToneChangeEvent": "The RTCDTMFToneChangeEvent interface represents events sent to indicate that DTMF tones have started or finished playing. This interface is used by the tonechange event.",
   "RTCIceCandidate": "The RTCIceCandidate interface—part of the WebRTC API—represents a candidate Internet Connectivity Establishment (ICE) configuration which may be used to establish an RTCPeerConnection.",
   "RTCIceTransport": "The RTCIceTransport interface provides access to information about the ICE transport layer over which the data is being sent and received.",
