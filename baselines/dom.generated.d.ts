@@ -6339,7 +6339,7 @@ interface DOMStringList {
      */
     contains(string: string): boolean;
     /**
-     * Returns the string with index index from strings.
+     * Returns the string with the specified index from a list strings.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMStringList/item)
      */
@@ -6404,7 +6404,7 @@ interface DOMTokenList {
      */
     contains(token: string): boolean;
     /**
-     * Returns the token with index index.
+     * Returns the token with the specified index.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/item)
      */
@@ -7078,7 +7078,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createElement<K extends keyof HTMLElementDeprecatedTagNameMap>(tagName: K, options?: ElementCreationOptions): HTMLElementDeprecatedTagNameMap[K];
     createElement(tagName: string, options?: ElementCreationOptions): HTMLElement;
     /**
-     * Returns an element with namespace namespace. Its namespace prefix will be everything before ":" (U+003E) in qualifiedName or null. Its local name will be everything after ":" (U+003E) in qualifiedName or qualifiedName.
+     * Returns an element with the specified namespace. Its namespace prefix will be everything before ":" (U+003E) in qualifiedName or null. Its local name will be everything after ":" (U+003E) in qualifiedName or qualifiedName.
      *
      * If localName does not match the Name production an "InvalidCharacterError" DOMException will be thrown.
      *
@@ -9382,7 +9382,7 @@ interface HTMLAllCollection {
      */
     readonly length: number;
     /**
-     * Returns the item with index index from the collection (determined by tree order).
+     * Returns the item with the specified index from the collection (determined by tree order).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection/item)
      */
@@ -12037,7 +12037,7 @@ interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
      */
     add(element: HTMLOptionElement | HTMLOptGroupElement, before?: HTMLElement | number | null): void;
     /**
-     * Removes the item with index index from the collection.
+     * Removes the item with the specified index from the collection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection/remove)
      */
@@ -16323,7 +16323,7 @@ interface NodeList {
      */
     readonly length: number;
     /**
-     * Returns the node with index index from the collection. The nodes are sorted in tree order.
+     * Returns the node with the specified index from the collection. The nodes are sorted in tree order.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NodeList/item)
      */
