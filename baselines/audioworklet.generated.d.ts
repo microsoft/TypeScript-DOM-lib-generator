@@ -129,6 +129,7 @@ interface TextEncoderEncodeIntoResult {
 }
 
 interface Transformer<I = any, O = any> {
+    cancel?: TransformerCancelCallback;
     flush?: TransformerFlushCallback<O>;
     readableType?: undefined;
     start?: TransformerStartCallback<O>;
@@ -590,7 +591,7 @@ interface EventTarget {
      */
     addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
     /**
-     * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+     * Dispatches a specified synthetic event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
      */
@@ -1349,6 +1350,10 @@ interface AudioWorkletProcessorConstructor {
 
 interface QueuingStrategySize<T = any> {
     (chunk: T): number;
+}
+
+interface TransformerCancelCallback {
+    (reason: any): void | PromiseLike<void>;
 }
 
 interface TransformerFlushCallback<O> {
