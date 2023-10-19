@@ -24,6 +24,7 @@
             },
             "MediaSessionAction": {
                 "value": [
+                    "enterpictureinpicture", // Blink only as of 2023-10
                     "hangup", // Blink only as of 2022-09
                     "nextslide", // No implementation as of 2022-09
                     "previousslide", // No implementation as of 2022-09
@@ -68,9 +69,8 @@
             "CSSRule": {
                 "constants": {
                     "constant": {
-                        "COUNTER_STYLE_RULE": null,
-                        "FONT_FEATURE_VALUES_RULE": null,
-                        "MARGIN_RULE": null
+                        "MARGIN_RULE": null, // WebKit only as of 2023-10
+                        "VIEW_TRANSITION_RULE": null // No implementation as of 2023-10
                     }
                 }
             },

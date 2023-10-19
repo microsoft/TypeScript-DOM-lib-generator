@@ -3711,7 +3711,8 @@ interface CSSRule {
     readonly KEYFRAMES_RULE: 7;
     readonly KEYFRAME_RULE: 8;
     readonly SUPPORTS_RULE: 12;
-    readonly VIEW_TRANSITION_RULE: 15;
+    readonly COUNTER_STYLE_RULE: 11;
+    readonly FONT_FEATURE_VALUES_RULE: 14;
 }
 
 declare var CSSRule: {
@@ -3727,7 +3728,8 @@ declare var CSSRule: {
     readonly KEYFRAMES_RULE: 7;
     readonly KEYFRAME_RULE: 8;
     readonly SUPPORTS_RULE: 12;
-    readonly VIEW_TRANSITION_RULE: 15;
+    readonly COUNTER_STYLE_RULE: 11;
+    readonly FONT_FEATURE_VALUES_RULE: 14;
 };
 
 /**
@@ -28196,7 +28198,7 @@ type MediaKeySessionClosedReason = "closed-by-application" | "hardware-context-r
 type MediaKeySessionType = "persistent-license" | "temporary";
 type MediaKeyStatus = "expired" | "internal-error" | "output-downscaled" | "output-restricted" | "released" | "status-pending" | "usable" | "usable-in-future";
 type MediaKeysRequirement = "not-allowed" | "optional" | "required";
-type MediaSessionAction = "enterpictureinpicture" | "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
+type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
 type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
