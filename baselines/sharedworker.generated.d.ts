@@ -699,7 +699,7 @@ interface WebTransportOptions {
 }
 
 interface WebTransportSendStreamOptions {
-    sendOrder?: number | null;
+    sendOrder?: number;
 }
 
 interface WorkerOptions {
