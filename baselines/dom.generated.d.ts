@@ -277,7 +277,6 @@ interface CredentialCreationOptions {
 }
 
 interface CredentialPropertiesOutput {
-    authenticatorDisplayName?: string;
     rk?: boolean;
 }
 
