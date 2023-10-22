@@ -4333,6 +4333,8 @@ interface CSSStyleDeclaration {
     offsetDistance: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-path) */
     offsetPath: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-position) */
+    offsetPosition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-rotate) */
     offsetRotate: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/opacity) */
@@ -20081,6 +20083,8 @@ declare var SVGGraphicsElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGImageElement)
  */
 interface SVGImageElement extends SVGGraphicsElement, SVGURIReference {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGImageElement/crossorigin) */
+    crossOrigin: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGImageElement/height) */
     readonly height: SVGAnimatedLength;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGImageElement/preserveAspectRatio) */
