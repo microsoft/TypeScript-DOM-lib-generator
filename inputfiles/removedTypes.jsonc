@@ -60,6 +60,19 @@
     },
     "interfaces": {
         "interface": {
+            "Clipboard": {
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "param": ["formats"]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "CSSRule": {
                 "constants": {
                     "constant": {
@@ -699,6 +712,13 @@
                 "members": {
                     "member": {
                         "xrCompatible": null
+                    }
+                }
+            },
+            "WebTransportSendStreamOptions": {
+                "members": {
+                    "member": {
+                        "waitUntilAvailable": null // No implementation as of 2023-11
                     }
                 }
             }
