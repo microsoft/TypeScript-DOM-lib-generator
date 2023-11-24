@@ -326,12 +326,12 @@ async function emitDom() {
             const name = typeof item === "string" ? item : item.name;
             return !template[k].includes(name);
           });
-          if (filtered[k].length === obj[k].length) {
+          if (filtered[k].length !== obj[k].length - template[k].length) {
             const differences = template[k].filter(
               (t: any) => !obj[k].includes(t)
             );
             console.warn(
-              `removedTypes.json has a redundant array items: ${differences}`
+              `removedTypes.json has redundant array items: ${differences}`
             );
           }
         } else if (template[k] !== null) {

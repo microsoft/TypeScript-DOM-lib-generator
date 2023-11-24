@@ -7863,13 +7863,13 @@ interface WebTransportDatagramDuplexStream {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark) */
     incomingHighWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge) */
-    incomingMaxAge: number;
+    incomingMaxAge: number | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/maxDatagramSize) */
     readonly maxDatagramSize: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark) */
     outgoingHighWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge) */
-    outgoingMaxAge: number;
+    outgoingMaxAge: number | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/readable) */
     readonly readable: ReadableStream;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable) */

@@ -32,15 +32,9 @@
                     "togglemicrophone" // Blink only as of 2022-09
                 ]
             },
-            "RTCStatsType": {
+            "RequestDestination": {
                 "value": [
-                    "ice-server", // Blink only as of 2022-09
-                    "media-playout", // No implementation as of 2022-09
-                    "receiver", // Blink only as of 2022-09
-                    "sctp-transport", // No implementation as of 2022-09
-                    "sender", // Blink only as of 2022-09
-                    "stream", // Blink only as of 2022-09
-                    "transceiver" // Blink only as of 2022-09
+                    "json" // No implementation as of 2023-11
                 ]
             },
             "ValueType": null,
@@ -237,6 +231,13 @@
                         "selfBrowserSurface": null,
                         "surfaceSwitching": null,
                         "systemAudio": null
+                    }
+                }
+            },
+            "EncodedVideoChunkInit": {
+                "members": {
+                    "member": {
+                        "transfer": null, // Blink only as of 2023-11
                     }
                 }
             },
@@ -511,6 +512,7 @@
             "RequestInit": {
                 "members": {
                     "member": {
+                        "adAuctionHeaders": null, // Blink only as of 2023-11
                         "attributionReporting": null, // Blink only as of 2023-10
                         "duplex": null, // Blink only as of 2023-09
                         "priority": null, // Blink only as of 2023-09,
@@ -523,6 +525,7 @@
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
+                        "mimeType": null, // Blink only as of 2023-11
                         "rtpTimestamp": null // Blink only as of 2023-10
                     }
                 }
@@ -530,6 +533,7 @@
             "RTCEncodedVideoFrameMetadata": {
                 "members": {
                     "member": {
+                        "mimeType": null, // Blink only as of 2023-11
                         "rtpTimestamp": null // Blink only as of 2023-10
                     }
                 }
@@ -617,6 +621,13 @@
                     }
                 }
             },
+            "ShadowRootInit": {
+                "members": {
+                    "member": {
+                        "clonable": null // WebKit only as of 2023-11
+                    }
+                }
+            },
             "Transformer": {
                 "members": {
                     "member": {
@@ -643,6 +654,7 @@
                 "members": {
                     "member": {
                         "av1": null, // Blink only as of 2023-05
+                        "contentHint": null, // Blink only as of 2023-11
                         "hevc": null // Blink only as of 2023-03
                     }
                 }
