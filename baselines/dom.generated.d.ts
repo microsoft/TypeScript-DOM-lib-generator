@@ -4080,6 +4080,9 @@ interface CSSStyleDeclaration {
     cssText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
+    cx: string;
+    cy: string;
+    d: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/direction) */
     direction: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/display) */
@@ -4174,11 +4177,10 @@ interface CSSStyleDeclaration {
     gridColumn: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column-end) */
     gridColumnEnd: string;
-    /** @deprecated This is a legacy alias of `columnGap`. */
     gridColumnGap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column-start) */
     gridColumnStart: string;
-    /** @deprecated This is a legacy alias of `gap`. */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/gap) */
     gridGap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-row) */
     gridRow: string;
@@ -4427,6 +4429,7 @@ interface CSSStyleDeclaration {
     printColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
     quotes: string;
+    r: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/resize) */
     resize: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/right) */
@@ -4437,6 +4440,8 @@ interface CSSStyleDeclaration {
     rowGap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ruby-position) */
     rubyPosition: string;
+    rx: string;
+    ry: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scale) */
     scale: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-behavior) */
@@ -4491,8 +4496,12 @@ interface CSSStyleDeclaration {
     scrollSnapStop: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-snap-type) */
     scrollSnapType: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-color) */
+    scrollbarColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-gutter) */
     scrollbarGutter: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-width) */
+    scrollbarWidth: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-image-threshold) */
     shapeImageThreshold: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-margin) */
@@ -4585,6 +4594,7 @@ interface CSSStyleDeclaration {
     unicodeBidi: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/user-select) */
     userSelect: string;
+    vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/visibility) */
@@ -4997,14 +5007,12 @@ interface CSSStyleDeclaration {
     wordBreak: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/word-spacing) */
     wordSpacing: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-wrap)
-     */
+    /** @deprecated */
     wordWrap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/writing-mode) */
     writingMode: string;
+    x: string;
+    y: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/z-index) */
     zIndex: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyPriority) */
@@ -11014,11 +11022,7 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/height)
      */
     height: number;
-    /**
-     * When set, overrides the rendering of checkbox controls so that the current value is not visible.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/indeterminate)
-     */
+    /** When set, overrides the rendering of checkbox controls so that the current value is not visible. */
     indeterminate: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement> | null;
@@ -26508,44 +26512,44 @@ declare var XSLTProcessor: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console) */
 interface Console {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static) */
     assert(condition?: boolean, ...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear_static) */
     clear(): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static) */
     count(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static) */
     countReset(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static) */
     debug(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static) */
     dir(item?: any, options?: any): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dirxml) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dirxml_static) */
     dirxml(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static) */
     error(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static) */
     group(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static) */
     groupCollapsed(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd_static) */
     groupEnd(): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static) */
     info(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/log) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/log_static) */
     log(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table_static) */
     table(tabularData?: any, properties?: string[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static) */
     time(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static) */
     timeEnd(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static) */
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static) */
     trace(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static) */
     warn(...data: any[]): void;
 }
 
@@ -26603,8 +26607,10 @@ declare namespace CSS {
     function fr(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function grad(value: number): CSSUnitValue;
+    function ic(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function kHz(value: number): CSSUnitValue;
+    function lh(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function lvb(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
@@ -26637,6 +26643,7 @@ declare namespace CSS {
     function registerProperty(definition: PropertyDefinition): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function rem(value: number): CSSUnitValue;
+    function rlh(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function s(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/supports_static) */

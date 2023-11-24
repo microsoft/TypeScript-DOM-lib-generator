@@ -402,6 +402,7 @@ function convertNamespace(
 ) {
   const result: Browser.Interface = {
     name: namespace.name,
+    namespace: true,
     constructor: { signature: [] },
     methods: { method: {} },
     properties: { property: {} },

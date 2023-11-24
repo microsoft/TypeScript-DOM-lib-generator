@@ -83,8 +83,9 @@ function mapInterfaceLike(
     });
   };
   // https://github.com/mdn/browser-compat-data/issues/20114 for inconsistent static member problem
-  const needsStatic =
-    name === "CSS" ? true : name === "Module" ? false : undefined;
+  const needsStatic = ["Module", "WebAssembly"].includes(name)
+    ? false
+    : i.namespace;
   const methods = filterMapRecord(i.methods?.method, recordMapper, needsStatic);
   const properties = filterMapRecord(
     i.properties?.property,
