@@ -118,12 +118,24 @@ interface AuthenticationExtensionsClientInputs {
     appid?: string;
     credProps?: boolean;
     hmacCreateSecret?: boolean;
+    supplementalPubKeys?: AuthenticationExtensionsSupplementalPubKeysInputs;
 }
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
     credProps?: CredentialPropertiesOutput;
     hmacCreateSecret?: boolean;
+    supplementalPubKeys?: AuthenticationExtensionsSupplementalPubKeysOutputs;
+}
+
+interface AuthenticationExtensionsSupplementalPubKeysInputs {
+    attestation?: string;
+    attestationFormats?: string[];
+    scopes: string[];
+}
+
+interface AuthenticationExtensionsSupplementalPubKeysOutputs {
+    signatures?: ArrayBuffer[];
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -213,6 +225,10 @@ interface ClipboardEventInit extends EventInit {
 
 interface ClipboardItemOptions {
     presentationStyle?: PresentationStyle;
+}
+
+interface ClipboardUnsanitizedFormats {
+    unsanitized?: string[];
 }
 
 interface CloseEventInit extends EventInit {
@@ -446,6 +462,7 @@ interface EncodedVideoChunkInit {
     data: AllowSharedBufferSource;
     duration?: number;
     timestamp: number;
+    transfer?: ArrayBuffer[];
     type: EncodedVideoChunkType;
 }
 
@@ -1318,6 +1335,7 @@ interface RTCDtlsFingerprint {
 
 interface RTCEncodedAudioFrameMetadata {
     contributingSources?: number[];
+    mimeType?: string;
     payloadType?: number;
     sequenceNumber?: number;
     synchronizationSource?: number;
@@ -1328,6 +1346,7 @@ interface RTCEncodedVideoFrameMetadata {
     dependencies?: number[];
     frameId?: number;
     height?: number;
+    mimeType?: string;
     payloadType?: number;
     spatialIndex?: number;
     synchronizationSource?: number;
@@ -1609,6 +1628,10 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
+interface ReadableStreamBYOBReaderReadOptions {
+    min?: number;
+}
+
 interface ReadableStreamGetReaderOptions {
     /**
      * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
@@ -1650,6 +1673,7 @@ interface ReportingObserverOptions {
 }
 
 interface RequestInit {
+    adAuctionHeaders?: boolean;
     /** A BodyInit object or null to set request's body. */
     body?: BodyInit | null;
     /** A string indicating how the request will interact with the browser's cache to set request's cache. */
@@ -1761,6 +1785,7 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 }
 
 interface ShadowRootInit {
+    clonable?: boolean;
     delegatesFocus?: boolean;
     mode: ShadowRootMode;
     slotAssignment?: SlotAssignmentMode;
@@ -2005,6 +2030,7 @@ interface VideoEncoderConfig {
     bitrate?: number;
     bitrateMode?: VideoEncoderBitrateMode;
     codec: string;
+    contentHint?: string;
     displayHeight?: number;
     displayWidth?: number;
     framerate?: number;
@@ -2114,6 +2140,7 @@ interface WebTransportOptions {
 
 interface WebTransportSendStreamOptions {
     sendOrder?: number;
+    waitUntilAvailable?: boolean;
 }
 
 interface WheelEventInit extends MouseEventInit {
@@ -5643,7 +5670,7 @@ interface ClientRect extends DOMRect {
  */
 interface Clipboard extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clipboard/read) */
-    read(): Promise<ClipboardItems>;
+    read(formats?: ClipboardUnsanitizedFormats): Promise<ClipboardItems>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clipboard/readText) */
     readText(): Promise<string>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clipboard/write) */
@@ -18566,7 +18593,7 @@ declare var ReadableStream: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    read<T extends ArrayBufferView>(view: T, options?: ReadableStreamBYOBReaderReadOptions): Promise<ReadableStreamReadResult<T>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock) */
     releaseLock(): void;
 }
@@ -25579,13 +25606,13 @@ interface WebTransportDatagramDuplexStream {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark) */
     incomingHighWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge) */
-    incomingMaxAge: number;
+    incomingMaxAge: number | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/maxDatagramSize) */
     readonly maxDatagramSize: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark) */
     outgoingHighWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge) */
-    outgoingMaxAge: number;
+    outgoingMaxAge: number | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/readable) */
     readonly readable: ReadableStream;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable) */
@@ -28261,7 +28288,7 @@ type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origi
 type RemotePlaybackState = "connected" | "connecting" | "disconnected";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
 type RequestCredentials = "include" | "omit" | "same-origin";
-type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
+type RequestDestination = "" | "audio" | "audioworklet" | "document" | "embed" | "font" | "frame" | "iframe" | "image" | "json" | "manifest" | "object" | "paintworklet" | "report" | "script" | "sharedworker" | "style" | "track" | "video" | "worker" | "xslt";
 type RequestMode = "cors" | "navigate" | "no-cors" | "same-origin";
 type RequestRedirect = "error" | "follow" | "manual";
 type ResidentKeyRequirement = "discouraged" | "preferred" | "required";
