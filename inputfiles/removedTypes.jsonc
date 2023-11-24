@@ -84,7 +84,20 @@
                         "complete": {
                             "signature": {
                                 "0": {
-                                    "param": ["details"]
+                                    "param": ["details"] // WebKit-only as of 2023-11
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ReadableStreamBYOBReader": {
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "param": ["options"] // No implementations as of 2023-11
                                 }
                             }
                         }
@@ -94,7 +107,7 @@
             "ServiceWorkerGlobalScope": {
                 "properties": {
                     "property": {
-                        "onsync": null
+                        "onsync": null // No implementations as of 2023-11
                     }
                 }
             },
@@ -166,14 +179,13 @@
                         "appidExclude": null,
                         "credBlob": null,
                         "credentialProtectionPolicy": null,
-                        "devicePubKey": null,
                         "enforceCredentialProtectionPolicy": null,
                         "getCredBlob": null,
-                        "hmacGetSecret": null, // No implementation as of 2022-10
+                        "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
-                        "minPinLength": null,
                         "payment": null,
                         "prf": null,
+                        "supplementalPubKeys": null, // No implementation as of 2023-11
                         "uvm": null
                     }
                 }
@@ -182,11 +194,11 @@
                 "members": {
                     "member": {
                         // (same as *Inputs)
-                        "appidExclude": null,
-                        "devicePubKey": null,
-                        "hmacGetSecret": null, // No implementation as of 2022-10
+                        "appidExclude": null, // No implementation as of 2023-11
+                        "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
                         "prf": null,
+                        "supplementalPubKeys": null, // No implementation as of 2023-11
                         "uvm": null
                     }
                 }
