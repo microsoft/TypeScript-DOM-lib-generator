@@ -10,7 +10,7 @@ import { hasStableImplementation } from "./bcd/stable.js";
 
 function hasMultipleImplementations(support: SupportBlock, prefix?: string) {
   const hasStableImpl = (
-    browser: SimpleSupportStatement | SimpleSupportStatement[] | undefined
+    browser: SimpleSupportStatement | SimpleSupportStatement[] | undefined,
   ) => hasStableImplementation(browser, prefix);
   let count = 0;
   if (hasStableImpl(support.chrome) || hasStableImpl(support.chrome_android)) {
@@ -32,7 +32,7 @@ function isSuitable(
   key: string,
   compat?: CompatStatement,
   parentKey?: string,
-  prefix?: string
+  prefix?: string,
 ) {
   const forceAlive = parentKey
     ? forceKeepAlive[parentKey]?.includes(key)

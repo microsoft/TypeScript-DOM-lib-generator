@@ -64,12 +64,12 @@ export const baseTypeConversionMap = new Map<string, string>([
 
 export function deepFilter<T>(
   obj: T,
-  fn: (o: any, n: string | undefined) => boolean
+  fn: (o: any, n: string | undefined) => boolean,
 ): T {
   if (typeof obj === "object") {
     if (Array.isArray(obj)) {
       return mapDefined(obj, (e) =>
-        fn(e, undefined) ? deepFilter(e, fn) : undefined
+        fn(e, undefined) ? deepFilter(e, fn) : undefined,
       ) as any as T;
     } else {
       const result: any = {};
@@ -86,7 +86,7 @@ export function deepFilter<T>(
 
 export function filterProperties<T, U extends T>(
   obj: Record<string, U>,
-  fn: (o: T) => boolean
+  fn: (o: T) => boolean,
 ): Record<string, U> {
   const result: Record<string, U> = {};
   for (const e in obj) {
@@ -131,7 +131,7 @@ export function merge<T>(target: T, src: T, shallow?: boolean): T {
           } else {
             if (targetProp === srcProp && k !== "name") {
               console.warn(
-                `Redundant merge value ${targetProp} in ${JSON.stringify(src)}`
+                `Redundant merge value ${targetProp} in ${JSON.stringify(src)}`,
               );
             }
             target[k] = merge(targetProp, srcProp, shallow);
@@ -147,7 +147,7 @@ export function merge<T>(target: T, src: T, shallow?: boolean): T {
 
 function mergeNamedArrays<T extends { name: string }>(
   srcProp: T[],
-  targetProp: T[]
+  targetProp: T[],
 ) {
   const map: any = {};
   for (const e1 of srcProp) {
@@ -178,7 +178,7 @@ export function mapToArray<T>(m?: Record<string, T>): T[] {
 export function arrayToMap<T, U>(
   array: ReadonlyArray<T>,
   makeKey: (value: T) => string,
-  makeValue: (value: T) => U
+  makeValue: (value: T) => U,
 ): Record<string, U> {
   const result: Record<string, U> = {};
   for (const value of array) {
@@ -189,14 +189,14 @@ export function arrayToMap<T, U>(
 
 export function mapValues<T, U>(
   obj: Record<string, T> | undefined,
-  fn: (o: T) => U
+  fn: (o: T) => U,
 ): U[] {
   return Object.keys(obj || {}).map((k) => fn(obj![k]));
 }
 
 export function mapDefined<T, U>(
   array: ReadonlyArray<T> | undefined,
-  mapFn: (x: T, i: number) => U | undefined
+  mapFn: (x: T, i: number) => U | undefined,
 ): U[] {
   const result: U[] = [];
   if (array) {
@@ -211,7 +211,7 @@ export function mapDefined<T, U>(
 }
 
 export function toNameMap<T extends { name: string }>(
-  array: T[]
+  array: T[],
 ): Record<string, T> {
   const result: Record<string, T> = {};
   for (const value of array) {
@@ -254,7 +254,7 @@ export function getEmptyWebIDL(): Browser.WebIdl {
 export function resolveExposure(
   obj: Record<string, any>,
   exposure: string,
-  override?: boolean
+  override?: boolean,
 ): void {
   if (!exposure) {
     throw new Error("No exposure set");
@@ -308,7 +308,7 @@ function getNonValueTypeMap(webidl: Browser.WebIdl) {
 
 export function followTypeReferences(
   webidl: Browser.WebIdl,
-  filteredInterfaces: Record<string, Browser.Interface>
+  filteredInterfaces: Record<string, Browser.Interface>,
 ): Set<string> {
   const set = new Set<string>();
   const map = getNonValueTypeMap(webidl);

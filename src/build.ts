@@ -41,7 +41,7 @@ interface EmitOptions {
 async function emitFlavor(
   webidl: Browser.WebIdl,
   forceKnownTypes: Set<string>,
-  options: EmitOptions
+  options: EmitOptions,
 ) {
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
@@ -49,22 +49,22 @@ async function emitFlavor(
   const result = emitWebIdl(exposed, options.global[0], "");
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
-    result
+    result,
   );
 
   const iterators = emitWebIdl(exposed, options.global[0], "sync");
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
-    iterators
+    iterators,
   );
 
   const asyncIterators = emitWebIdl(exposed, options.global[0], "async");
   await fs.writeFile(
     new URL(
       `${options.name}.asynciterable.generated.d.ts`,
-      options.outputFolder
+      options.outputFolder,
     ),
-    asyncIterators
+    asyncIterators,
   );
 }
 
@@ -118,7 +118,7 @@ async function emitDom() {
 
   const transferables = widlStandardTypes.flatMap((st) => {
     return Object.values(st.browser.interfaces?.interface ?? {}).filter(
-      (i) => i.transferable
+      (i) => i.transferable,
     );
   });
 
@@ -152,12 +152,12 @@ async function emitDom() {
 
   function mergeApiDescriptions(
     idl: Browser.WebIdl,
-    descriptions: Record<string, string>
+    descriptions: Record<string, string>,
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
       (i) => i.name,
-      (i) => i
+      (i) => i,
     );
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
@@ -170,12 +170,12 @@ async function emitDom() {
 
   function mergeDeprecatedMessage(
     idl: Browser.WebIdl,
-    descriptions: Record<string, string>
+    descriptions: Record<string, string>,
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
       (i) => i.name,
-      (i) => i
+      (i) => i,
     );
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
@@ -301,7 +301,7 @@ async function emitDom() {
 
   function prune(
     obj: Browser.WebIdl,
-    template: Partial<Browser.WebIdl>
+    template: Partial<Browser.WebIdl>,
   ): Browser.WebIdl {
     return filterByNull(obj, template);
 
@@ -312,13 +312,13 @@ async function emitDom() {
         if (!obj[k]) {
           console.warn(
             `removedTypes.json has a redundant field ${k} in ${JSON.stringify(
-              template
-            ).slice(0, 100)}`
+              template,
+            ).slice(0, 100)}`,
           );
         } else if (Array.isArray(template[k])) {
           if (!Array.isArray(obj[k])) {
             throw new Error(
-              `Removal template ${k} is an array but the original field is not`
+              `Removal template ${k} is an array but the original field is not`,
             );
           }
           // template should include strings
@@ -328,10 +328,10 @@ async function emitDom() {
           });
           if (filtered[k].length !== obj[k].length - template[k].length) {
             const differences = template[k].filter(
-              (t: any) => !obj[k].includes(t)
+              (t: any) => !obj[k].includes(t),
             );
             console.warn(
-              `removedTypes.json has redundant array items: ${differences}`
+              `removedTypes.json has redundant array items: ${differences}`,
             );
           }
         } else if (template[k] !== null) {
@@ -339,7 +339,7 @@ async function emitDom() {
         } else {
           if (obj[k].exposed === "") {
             console.warn(
-              `removedTypes.json removes ${k} that has already been disabled by BCD.`
+              `removedTypes.json removes ${k} that has already been disabled by BCD.`,
             );
           }
           delete filtered[k];
