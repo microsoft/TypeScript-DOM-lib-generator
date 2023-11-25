@@ -1249,12 +1249,6 @@ declare namespace WebAssembly {
     var Module: {
         prototype: Module;
         new(bytes: BufferSource): Module;
-        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/Module/customSections) */
-        customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
-        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/Module/exports) */
-        exports(moduleObject: Module): ModuleExportDescriptor[];
-        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/Module/imports) */
-        imports(moduleObject: Module): ModuleImportDescriptor[];
     };
 
     interface RuntimeError extends Error {
@@ -1294,17 +1288,6 @@ declare namespace WebAssembly {
         shared?: boolean;
     }
 
-    interface ModuleExportDescriptor {
-        kind: ImportExportKind;
-        name: string;
-    }
-
-    interface ModuleImportDescriptor {
-        kind: ImportExportKind;
-        module: string;
-        name: string;
-    }
-
     interface TableDescriptor {
         element: TableKind;
         initial: number;
@@ -1321,12 +1304,6 @@ declare namespace WebAssembly {
         v128: never;
     }
 
-    interface WebAssemblyInstantiatedSource {
-        instance: Instance;
-        module: Module;
-    }
-
-    type ImportExportKind = "function" | "global" | "memory" | "table";
     type TableKind = "anyfunc" | "externref";
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
@@ -1334,13 +1311,6 @@ declare namespace WebAssembly {
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
     type ValueType = keyof ValueTypeMap;
-    /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/compile) */
-    function compile(bytes: BufferSource): Promise<Module>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/instantiate) */
-    function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
-    function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/validate) */
-    function validate(bytes: BufferSource): boolean;
 }
 
 interface AudioWorkletProcessorConstructor {
