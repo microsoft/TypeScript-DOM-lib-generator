@@ -4899,6 +4899,7 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
     readonly registration: ServiceWorkerRegistration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */
     readonly serviceWorker: ServiceWorker;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting) */
     skipWaiting(): Promise<void>;
@@ -8429,6 +8430,7 @@ declare var onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | n
 declare var onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
 declare var registration: ServiceWorkerRegistration;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */
 declare var serviceWorker: ServiceWorker;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting) */
 declare function skipWaiting(): Promise<void>;
