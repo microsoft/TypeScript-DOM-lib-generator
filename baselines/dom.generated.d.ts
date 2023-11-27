@@ -14671,7 +14671,7 @@ declare var MIDIConnectionEvent: {
 };
 
 interface MIDIInputEventMap extends MIDIPortEventMap {
-    "midimessage": Event;
+    "midimessage": MIDIMessageEvent;
 }
 
 /**
@@ -14681,7 +14681,7 @@ interface MIDIInputEventMap extends MIDIPortEventMap {
  */
 interface MIDIInput extends MIDIPort {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIInput/midimessage_event) */
-    onmidimessage: ((this: MIDIInput, ev: Event) => any) | null;
+    onmidimessage: ((this: MIDIInput, ev: MIDIMessageEvent) => any) | null;
     addEventListener<K extends keyof MIDIInputEventMap>(type: K, listener: (this: MIDIInput, ev: MIDIInputEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MIDIInputEventMap>(type: K, listener: (this: MIDIInput, ev: MIDIInputEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14756,7 +14756,7 @@ declare var MIDIOutputMap: {
 };
 
 interface MIDIPortEventMap {
-    "statechange": Event;
+    "statechange": MIDIConnectionEvent;
 }
 
 /**
@@ -14774,7 +14774,7 @@ interface MIDIPort extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIPort/name) */
     readonly name: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIPort/statechange_event) */
-    onstatechange: ((this: MIDIPort, ev: Event) => any) | null;
+    onstatechange: ((this: MIDIPort, ev: MIDIConnectionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIPort/state) */
     readonly state: MIDIPortDeviceState;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIPort/type) */
