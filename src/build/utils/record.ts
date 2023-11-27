@@ -1,7 +1,7 @@
 export function filterMapRecord<T extends object, V>(
   object: Record<string, T> | undefined,
   mapper: (key: string, value: T) => V | undefined,
-  forNamespace?: boolean
+  forNamespace?: boolean,
 ): Record<string, V> | undefined {
   if (!object) {
     return;
