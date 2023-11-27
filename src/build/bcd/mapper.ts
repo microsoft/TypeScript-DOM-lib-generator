@@ -87,7 +87,7 @@ function mapInterfaceLike(
   const properties = filterMapRecord(
     i.properties?.property,
     recordMapper,
-    i.namespace
+    i.namespace,
   );
 
   if (i.iterator) {
