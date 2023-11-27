@@ -82,15 +82,12 @@ function mapInterfaceLike(
       mixin: !!i.mixin,
     });
   };
-  // https://github.com/mdn/browser-compat-data/issues/20114 for inconsistent static member problem
-  const needsStatic = ["Module", "WebAssembly"].includes(name)
-    ? false
-    : i.namespace;
-  const methods = filterMapRecord(i.methods?.method, recordMapper, needsStatic);
+
+  const methods = filterMapRecord(i.methods?.method, recordMapper, i.namespace);
   const properties = filterMapRecord(
     i.properties?.property,
     recordMapper,
-    needsStatic,
+    i.namespace
   );
 
   if (i.iterator) {

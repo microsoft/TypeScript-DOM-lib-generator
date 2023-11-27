@@ -3091,10 +3091,30 @@
                     }
                 }
             },
+            "MIDIInput": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "midimessage",
+                            "type": "MIDIMessageEvent"
+                        }
+                    ]
+                }
+            },
             "MIDIInputMap": {
                 "iterator": {
                     // https://github.com/mdn/browser-compat-data/pull/18352
                     "exposed": "Window"
+                }
+            },
+            "MIDIPort": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "statechange",
+                            "type": "MIDIConnectionEvent"
+                        }
+                    ]
                 }
             },
             "Clients": {

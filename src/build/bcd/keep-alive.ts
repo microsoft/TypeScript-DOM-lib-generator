@@ -1,8 +1,6 @@
 export const forceKeepAlive: Record<string, string[]> = {
   // Things that are incorrectly reported as unsupported.
   // These should be filed to https://github.com/mdn/browser-compat-data/issues
-  CSSStyleDeclaration: ["stopColor", "stopOpacity"],
-  Gamepad: ["hapticActuators"],
   GlobalEventHandlers: [
     "onwebkitanimationend",
     "onwebkitanimationiteration",
