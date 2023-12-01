@@ -4178,10 +4178,11 @@ interface CSSStyleDeclaration {
     gridColumn: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column-end) */
     gridColumnEnd: string;
+    /** @deprecated This is a legacy alias of `columnGap`. */
     gridColumnGap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column-start) */
     gridColumnStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/gap) */
+    /** @deprecated This is a legacy alias of `gap`. */
     gridGap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-row) */
     gridRow: string;
@@ -4510,7 +4511,6 @@ interface CSSStyleDeclaration {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-outside) */
     shapeOutside: string;
     shapeRendering: string;
-    speak: string;
     stopColor: string;
     stopOpacity: string;
     stroke: string;
