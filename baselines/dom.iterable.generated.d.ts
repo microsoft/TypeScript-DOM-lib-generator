@@ -134,6 +134,12 @@ interface Headers {
     values(): IterableIterator<string>;
 }
 
+interface Highlight extends Set<AbstractRange> {
+}
+
+interface HighlightRegistry extends Map<string, Highlight> {
+}
+
 interface IDBDatabase {
     /**
      * Returns a new transaction with the given mode ("readonly" or "readwrite") and scope which can be a single object store name or an array of names.
