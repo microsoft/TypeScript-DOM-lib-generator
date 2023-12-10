@@ -24,6 +24,7 @@
             },
             "MediaSessionAction": {
                 "value": [
+                    "enterpictureinpicture", // Blink only as of 2023-10
                     "hangup", // Blink only as of 2022-09
                     "nextslide", // No implementation as of 2022-09
                     "previousslide", // No implementation as of 2022-09
@@ -31,15 +32,9 @@
                     "togglemicrophone" // Blink only as of 2022-09
                 ]
             },
-            "RTCStatsType": {
+            "RequestDestination": {
                 "value": [
-                    "ice-server", // Blink only as of 2022-09
-                    "media-playout", // No implementation as of 2022-09
-                    "receiver", // Blink only as of 2022-09
-                    "sctp-transport", // No implementation as of 2022-09
-                    "sender", // Blink only as of 2022-09
-                    "stream", // Blink only as of 2022-09
-                    "transceiver" // Blink only as of 2022-09
+                    "json" // No implementation as of 2023-11
                 ]
             },
             "ValueType": null,
@@ -65,12 +60,24 @@
     },
     "interfaces": {
         "interface": {
+            "Clipboard": {
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "param": ["formats"] // Blink-only as of 2023-11
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "CSSRule": {
                 "constants": {
                     "constant": {
-                        "COUNTER_STYLE_RULE": null,
-                        "FONT_FEATURE_VALUES_RULE": null,
-                        "MARGIN_RULE": null
+                        "MARGIN_RULE": null, // WebKit only as of 2023-10
+                        "VIEW_TRANSITION_RULE": null // No implementation as of 2023-10
                     }
                 }
             },
@@ -90,7 +97,20 @@
                         "complete": {
                             "signature": {
                                 "0": {
-                                    "param": ["details"]
+                                    "param": ["details"] // WebKit-only as of 2023-11
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ReadableStreamBYOBReader": {
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "param": ["options"] // No implementations as of 2023-11
                                 }
                             }
                         }
@@ -100,7 +120,7 @@
             "ServiceWorkerGlobalScope": {
                 "properties": {
                     "property": {
-                        "onsync": null
+                        "onsync": null // No implementations as of 2023-11
                     }
                 }
             },
@@ -157,7 +177,8 @@
             "AudioContextOptions": {
                 "members": {
                     "member": {
-                        "sinkId": null // No implementation as of 2022-10
+                        "renderSizeHint": null, // No implementation as of 2023-10
+                        "sinkId": null // Blink only as of 2023-10
                     }
                 }
             },
@@ -171,14 +192,13 @@
                         "appidExclude": null,
                         "credBlob": null,
                         "credentialProtectionPolicy": null,
-                        "devicePubKey": null,
                         "enforceCredentialProtectionPolicy": null,
                         "getCredBlob": null,
-                        "hmacGetSecret": null, // No implementation as of 2022-10
+                        "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
-                        "minPinLength": null,
                         "payment": null,
                         "prf": null,
+                        "supplementalPubKeys": null, // No implementation as of 2023-11
                         "uvm": null
                     }
                 }
@@ -187,11 +207,11 @@
                 "members": {
                     "member": {
                         // (same as *Inputs)
-                        "appidExclude": null,
-                        "devicePubKey": null,
-                        "hmacGetSecret": null, // No implementation as of 2022-10
+                        "appidExclude": null, // No implementation as of 2023-11
+                        "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
                         "prf": null,
+                        "supplementalPubKeys": null, // No implementation as of 2023-11
                         "uvm": null
                     }
                 }
@@ -201,6 +221,13 @@
                     "member": {
                         "federated": null,
                         "password": null
+                    }
+                }
+            },
+            "CredentialPropertiesOutput": {
+                "members": {
+                    "member": {
+                        "authenticatorDisplayName": null // No implementation as of 2023-10
                     }
                 }
             },
@@ -225,9 +252,17 @@
                         // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
+                        "monitorTypeSurfaces": null,
                         "selfBrowserSurface": null,
                         "surfaceSwitching": null,
                         "systemAudio": null
+                    }
+                }
+            },
+            "EncodedVideoChunkInit": {
+                "members": {
+                    "member": {
+                        "transfer": null, // Blink only as of 2023-11
                     }
                 }
             },
@@ -250,6 +285,13 @@
                 "members": {
                     "member": {
                         "variationSettings": null // Gecko-only as of 2022-10
+                    }
+                }
+            },
+            "IntersectionObserverInit": {
+                "members": {
+                    "member": {
+                        "scrollMargin": null // Blink only as of 2023-10
                     }
                 }
             },
@@ -433,6 +475,25 @@
                     }
                 }
             },
+            "NotificationOptions": {
+                "members": {
+                    "member": {
+                        // All Blink only as of 2023-10
+                        "actions": null,
+                        "image": null,
+                        "renotify": null,
+                        "timestamp": null,
+                        "vibrate": null
+                    }
+                }
+            },
+            "OfflineAudioContextOptions": {
+                "members": {
+                    "member": {
+                        "renderSizeHint": null // No implementation as of 2023-10
+                    }
+                }
+            },
             "PerformanceObserverInit": {
                 "members": {
                     "member": {
@@ -448,18 +509,27 @@
                     }
                 }
             },
+            "PopStateEventInit": {
+                "members": {
+                    "member": {
+                        "hasUAVisualTransition": null // Blink only as of 2023-09
+                    }
+                }
+            },
             "PublicKeyCredentialCreationOptions": {
                 "members": {
                     "member": {
-                        "attestationFormats": null // No implementation as of 2022-10
+                        "attestationFormats": null, // No implementation as of 2023-09
+                        "hints": null // No implementation as of 2023-09
                     }
                 }
             },
             "PublicKeyCredentialRequestOptions": {
                 "members": {
                     "member": {
-                        "attestation": null, // No implementation as of 2022-10
-                        "attestationFormats": null // No implementation as of 2022-10
+                        "attestation": null, // No implementation as of 2023-09
+                        "attestationFormats": null, // No implementation as of 2023-09
+                        "hints": null // // No implementation as of 2023-09
                     }
                 }
             },
@@ -467,26 +537,28 @@
             "RequestInit": {
                 "members": {
                     "member": {
-                        "duplex": null, // Blink only as of 2022-09
-                        "privateToken": null, // Blink only as of 2023-03 (but not enabled there either)
-                        "attributionReporting": null // No implementation as of 2023-04
+                        "adAuctionHeaders": null, // Blink only as of 2023-11
+                        "attributionReporting": null, // Blink only as of 2023-10
+                        "duplex": null, // Blink only as of 2023-09
+                        "privateToken": null, // Blink only as of 2023-09
+                        "sharedStorageWritable": null, // Blink only as of 2023-10
+                        "targetAddressSpace": null // Blink only as of 2023-09
                     }
                 }
             },
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
-                        "payloadType": null, // Blink only as of 2023-02
-                        "sequenceNumber": null // Blink only as of 2023-02
+                        "mimeType": null, // Blink only as of 2023-11
+                        "rtpTimestamp": null // Blink only as of 2023-10
                     }
                 }
             },
             "RTCEncodedVideoFrameMetadata": {
                 "members": {
                     "member": {
-                        "contributingSources": null, // Blink only as of 2023-05
-                        "payloadType": null, // Blink only as of 2023-05
-                        "timestamp": null // No implementation as of 2023-05
+                        "mimeType": null, // Blink only as of 2023-11
+                        "rtpTimestamp": null // Blink only as of 2023-10
                     }
                 }
             },
@@ -521,33 +593,34 @@
                         // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/RTCStatsReport.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/stats/rtcstats_objects.cc
-                        "framesAssembledFromMultiplePackets": null, // Blink only as of 2022-10
-                        "framesRendered": null, // No implementation as of 2022-12
-                        "freezeCount": null, // Blink only as of 2022-10
-                        "jitterBufferMinimumDelay": null, // Blink only as of 2022-10
-                        "jitterBufferTargetDelay": null, // Blink only as of 2022-10
-                        "mid": null, // Blink only as of 2022-10
-                        "pauseCount": null, // Blink only as of 2022-10
-                        "playoutId": null, // No implementation as of 2022-09
-                        "powerEfficientDecoder": null, // No implementation as of 2022-09
-                        "retransmittedBytesReceived": null, // Blink only as of 2023-05
-                        "retransmittedPacketsReceived": null, // Blink only as of 2023-05
-                        "totalAssemblyTime": null, // Blink only as of 2022-10
-                        "totalFreezesDuration": null, // Blink only as of 2022-10
-                        "totalPausesDuration": null, // Blink only as of 2022-10
-                        "trackIdentifier": null // No implementation as of 2022-09
+                        "fecBytesReceived": null, // Blink only as of 2023-09
+                        "fecSsrc": null, // Blink only as of 2023-09
+                        "framesAssembledFromMultiplePackets": null, // Blink only as of 2023-09
+                        "framesRendered": null, // No implementation as of 2023-09
+                        "freezeCount": null, // Blink only as of 2023-09
+                        "jitterBufferMinimumDelay": null, // Blink only as of 2023-09
+                        "jitterBufferTargetDelay": null, // Blink only as of 2023-09
+                        "pauseCount": null, // Blink only as of 2023-09
+                        "playoutId": null, // Blink only as of 2023-09
+                        "powerEfficientDecoder": null, // Blink only as of 2023-09
+                        "retransmittedBytesReceived": null, // Blink only as of 2023-09
+                        "retransmittedPacketsReceived": null, // Blink only as of 2023-09
+                        "rtxSsrc": null, // Blink only as of 2023-09
+                        "totalAssemblyTime": null, // Blink only as of 2023-09
+                        "totalFreezesDuration": null, // Blink only as of 2023-09
+                        "totalPausesDuration": null // Blink only as of 2023-09
                     }
                 }
             },
             "RTCOutboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "active": null, // Blink only as of 2022-10
-                        "mid": null, // Blink only as of 2022-10
-                        "powerEfficientEncoder": null, // No implementation as of 2022-10
-                        "qualityLimitationReason": null, // Blink only as of 2022-09
-                        "qualityLimitationDurations": null, // Blink only as of 2022-09
-                        "scalabilityMode": null, // No implementation as of 2022-12
+                        "active": null, // Blink only as of 2023-09
+                        "mid": null, // Blink only as of 2023-09
+                        "powerEfficientEncoder": null, // Blink only as of 2023-09
+                        "qualityLimitationReason": null, // Blink only as of 2023-09
+                        "qualityLimitationDurations": null, // Blink only as of 2023-09
+                        "scalabilityMode": null, // Blink only as of 2023-09
                         "encoderImplementation": null // Blink only as of 2022-09
                     }
                 }
@@ -572,6 +645,20 @@
                     }
                 }
             },
+            "ShadowRootInit": {
+                "members": {
+                    "member": {
+                        "clonable": null // WebKit only as of 2023-11
+                    }
+                }
+            },
+            "Transformer": {
+                "members": {
+                    "member": {
+                        "cancel": null // No implementation as of 2023-10
+                    }
+                }
+            },
             "UIEventInit": {
                 "members": {
                     "member": {
@@ -591,6 +678,7 @@
                 "members": {
                     "member": {
                         "av1": null, // Blink only as of 2023-05
+                        "contentHint": null, // Blink only as of 2023-11
                         "hevc": null // Blink only as of 2023-03
                     }
                 }
@@ -598,9 +686,10 @@
             "VideoEncoderEncodeOptions": {
                 "members": {
                     "member": {
-                        "av1": null, // Blink only as of 2023-04
-                        "avc": null, // No implementation as of 2023-05
-                        "vp9": null // Blink only as of 2023-03
+                        "av1": null, // Blink only as of 2023-09
+                        "avc": null, // Blink only as of 2023-09
+                        "hevc": null, // No implementation as of 2023-09
+                        "vp9": null // Blink only as of 2023-09
                     }
                 }
             },
@@ -611,10 +700,24 @@
                     }
                 }
             },
+            "VideoFrameBufferInit": {
+                "members": {
+                    "member": {
+                        "transfer": null // No implementation as of 2023-06.
+                    }
+                }
+            },
             "WebGLContextAttributes": {
                 "members": {
                     "member": {
                         "xrCompatible": null
+                    }
+                }
+            },
+            "WebTransportSendStreamOptions": {
+                "members": {
+                    "member": {
+                        "waitUntilAvailable": null // No implementation as of 2023-11
                     }
                 }
             }

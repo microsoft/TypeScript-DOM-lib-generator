@@ -49,7 +49,7 @@ function adjustParamName(name: string) {
 
 function getElements<K extends string, T>(
   a: Record<K, Record<string, T>> | undefined,
-  k: K
+  k: K,
 ): T[] {
   return a ? mapToArray(a[k]) : [];
 }
@@ -135,27 +135,27 @@ function isEventHandler(p: Browser.Property) {
 export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
-  iterator: "" | "sync" | "async"
+  iterator: "" | "sync" | "async",
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
 
   const polluter = getElements(webidl.interfaces, "interface").find(
-    (i) => !!i.global
+    (i) => !!i.global,
   );
 
   const allNonCallbackInterfaces = getElements(
     webidl.interfaces,
-    "interface"
+    "interface",
   ).concat(getElements(webidl.mixins, "mixin"));
   const allInterfaces = getElements(webidl.interfaces, "interface").concat(
     getElements(webidl.callbackInterfaces, "interface"),
-    getElements(webidl.mixins, "mixin")
+    getElements(webidl.mixins, "mixin"),
   );
 
   const allInterfacesMap = toNameMap(allInterfaces);
   const allLegacyWindowAliases = allInterfaces.flatMap(
-    (i) => i.legacyWindowAlias
+    (i) => i.legacyWindowAlias,
   );
   const allDictionariesMap = webidl.dictionaries?.dictionary ?? {};
   const allEnumsMap = webidl.enums ? webidl.enums.enum : {};
@@ -176,7 +176,7 @@ export function emitWebIdl(
   const iNameToIDependList = arrayToMap(
     allNonCallbackInterfaces,
     (i) => i.name,
-    (i) => getExtendList(i.name).concat(getImplementList(i.name))
+    (i) => getExtendList(i.name).concat(getImplementList(i.name)),
   );
 
   /// Distinct event type list, used in the "createEvent" function
@@ -186,10 +186,10 @@ export function emitWebIdl(
       .concat(
         allNonCallbackInterfaces
           .filter(
-            (i) => i.extends?.endsWith("Event") && i.name.endsWith("Event")
+            (i) => i.extends?.endsWith("Event") && i.name.endsWith("Event"),
           )
-          .map((i) => i.name)
-      )
+          .map((i) => i.name),
+      ),
   ).sort();
 
   /// Interface name to its related eventhandler name list map
@@ -204,30 +204,30 @@ export function emitWebIdl(
     (i) => {
       const fromProperties = mapDefined(
         mapToArray(i.properties?.property),
-        (p) => p.eventHandler
+        (p) => p.eventHandler,
       );
       const fromEvents = (i.events?.event ?? []).map((e) => e.name);
       return distinct([...fromProperties, ...fromEvents]).sort();
-    }
+    },
   );
 
   const iNameToConstList = arrayToMap(
     allInterfaces,
     (i) => i.name,
-    (i) => (!i.constants ? [] : mapToArray(i.constants.constant))
+    (i) => (!i.constants ? [] : mapToArray(i.constants.constant)),
   );
 
   // Map of interface.Name -> List of base interfaces with event handlers
   const iNameToEhParents = arrayToMap(
     allInterfaces,
     (i) => i.name,
-    getParentsWithEventHandler
+    getParentsWithEventHandler,
   );
 
   const iNameToConstParents = arrayToMap(
     allInterfaces,
     (i) => i.name,
-    getParentsWithConstant
+    getParentsWithConstant,
   );
 
   switch (iterator) {
@@ -274,7 +274,7 @@ export function emitWebIdl(
   }
 
   function getParentsWithEventHandler(
-    i: Browser.Interface
+    i: Browser.Interface,
   ): Browser.Interface[] {
     function getParentEventHandler(i: Browser.Interface): Browser.Interface[] {
       const hasEventListener = iNameToEhList[i.name]?.length;
@@ -298,7 +298,7 @@ export function emitWebIdl(
         getParentEventHandler(allInterfacesMap[iExtends])) ||
       [];
     const mixinsWithEventHandler = getImplementList(i.name).flatMap((i) =>
-      getParentEventHandler(allInterfacesMap[i])
+      getParentEventHandler(allInterfacesMap[i]),
     );
 
     return distinct(parentWithEventHandler.concat(mixinsWithEventHandler));
@@ -311,7 +311,7 @@ export function emitWebIdl(
     }
 
     const mixinsWithConstant = getImplementList(i.name).flatMap((i) =>
-      getParentConstant(allInterfacesMap[i])
+      getParentConstant(allInterfacesMap[i]),
     );
 
     return distinct(mixinsWithConstant);
@@ -475,7 +475,7 @@ export function emitWebIdl(
     m: Browser.Method,
     expectedMName: string,
     expectedMType: string,
-    expectedParamType: string | string[]
+    expectedParamType: string | string[],
   ) {
     if (!Array.isArray(expectedParamType)) {
       expectedParamType = [expectedParamType];
@@ -487,14 +487,14 @@ export function emitWebIdl(
       convertDomTypeToTsType(m.signature[0]) === expectedMType &&
       m.signature[0].param?.length === expectedParamType.length &&
       expectedParamType.every(
-        (pt, idx) => convertDomTypeToTsType(m.signature[0].param![idx]) === pt
+        (pt, idx) => convertDomTypeToTsType(m.signature[0].param![idx]) === pt,
       )
     );
   }
 
   function getNameWithTypeParameter(
     typeParameters: Browser.TypeParameter[] | undefined,
-    name: string
+    name: string,
   ) {
     function typeParameterWithDefault(type: Browser.TypeParameter) {
       return (
@@ -521,14 +521,14 @@ export function emitWebIdl(
       ])
     ) {
       printer.printLine(
-        "createElement<K extends keyof HTMLElementTagNameMap>(tagName: K, options?: ElementCreationOptions): HTMLElementTagNameMap[K];"
+        "createElement<K extends keyof HTMLElementTagNameMap>(tagName: K, options?: ElementCreationOptions): HTMLElementTagNameMap[K];",
       );
       printer.printLine("/** @deprecated */");
       printer.printLine(
-        "createElement<K extends keyof HTMLElementDeprecatedTagNameMap>(tagName: K, options?: ElementCreationOptions): HTMLElementDeprecatedTagNameMap[K];"
+        "createElement<K extends keyof HTMLElementDeprecatedTagNameMap>(tagName: K, options?: ElementCreationOptions): HTMLElementDeprecatedTagNameMap[K];",
       );
       printer.printLine(
-        "createElement(tagName: string, options?: ElementCreationOptions): HTMLElement;"
+        "createElement(tagName: string, options?: ElementCreationOptions): HTMLElement;",
       );
     }
   }
@@ -540,21 +540,21 @@ export function emitWebIdl(
         m,
         "getElementsByTagName",
         "HTMLCollection",
-        "string"
+        "string",
       )
     ) {
       const paramName = m.signature[0].param![0].name;
       for (const mapName of tagNameMapNames) {
         printer.printLine(
-          `getElementsByTagName<K extends keyof ${mapName}>(${paramName}: K): HTMLCollectionOf<${mapName}[K]>;`
+          `getElementsByTagName<K extends keyof ${mapName}>(${paramName}: K): HTMLCollectionOf<${mapName}[K]>;`,
         );
       }
       printer.printLine("/** @deprecated */");
       printer.printLine(
-        `getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;`
+        `getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;`,
       );
       printer.printLine(
-        `getElementsByTagName(${paramName}: string): HTMLCollectionOf<Element>;`
+        `getElementsByTagName(${paramName}: string): HTMLCollectionOf<Element>;`,
       );
     }
   }
@@ -567,15 +567,15 @@ export function emitWebIdl(
       const paramName = m.signature[0].param![0].name;
       for (const mapName of tagNameMapNames) {
         printer.printLine(
-          `querySelector<K extends keyof ${mapName}>(${paramName}: K): ${mapName}[K] | null;`
+          `querySelector<K extends keyof ${mapName}>(${paramName}: K): ${mapName}[K] | null;`,
         );
       }
       printer.printLine("/** @deprecated */");
       printer.printLine(
-        `querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLElementDeprecatedTagNameMap[K] | null;`
+        `querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLElementDeprecatedTagNameMap[K] | null;`,
       );
       printer.printLine(
-        `querySelector<E extends Element = Element>(${paramName}: string): E | null;`
+        `querySelector<E extends Element = Element>(${paramName}: string): E | null;`,
       );
     }
   }
@@ -588,15 +588,15 @@ export function emitWebIdl(
       const paramName = m.signature[0].param![0].name;
       for (const mapName of tagNameMapNames) {
         printer.printLine(
-          `querySelectorAll<K extends keyof ${mapName}>(${paramName}: K): NodeListOf<${mapName}[K]>;`
+          `querySelectorAll<K extends keyof ${mapName}>(${paramName}: K): NodeListOf<${mapName}[K]>;`,
         );
       }
       printer.printLine("/** @deprecated */");
       printer.printLine(
-        `querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;`
+        `querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;`,
       );
       printer.printLine(
-        `querySelectorAll<E extends Element = Element>(${paramName}: string): NodeListOf<E>;`
+        `querySelectorAll<E extends Element = Element>(${paramName}: string): NodeListOf<E>;`,
       );
     }
   }
@@ -614,10 +614,10 @@ export function emitWebIdl(
 
   function emitDeprecatedHTMLOrSVGElementTagNameMap() {
     printer.printLine(
-      "/** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */"
+      "/** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */",
     );
     printer.printLine(
-      "type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;"
+      "type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;",
     );
     printer.printLine("");
   }
@@ -704,7 +704,7 @@ export function emitWebIdl(
       ? convertDomTypeToTsReturnType(overload)
       : "void";
     printer.printLine(
-      `type ${i.name} = ((${paramsString}) => ${returnType}) | { ${m.name}(${paramsString}): ${returnType}; };`
+      `type ${i.name} = ((${paramsString}) => ${returnType}) | { ${m.name}(${paramsString}): ${returnType}; };`,
     );
     printer.printLine("");
 
@@ -722,7 +722,7 @@ export function emitWebIdl(
 
   function emitCallBackFunction(cb: Browser.CallbackFunction) {
     printer.printLine(
-      `interface ${getNameWithTypeParameter(cb.typeParameters, cb.name)} {`
+      `interface ${getNameWithTypeParameter(cb.typeParameters, cb.name)} {`,
     );
     printer.increaseIndent();
     emitSignatures(cb, "", "", printer.printLine, true);
@@ -740,7 +740,7 @@ export function emitWebIdl(
   function emitEnum(e: Browser.Enum) {
     const values = e.value.slice().sort();
     printer.printLine(
-      `type ${e.name} = ${values.map((v) => `"${v}"`).join(" | ")};`
+      `type ${e.name} = ${values.map((v) => `"${v}"`).join(" | ")};`,
     );
   }
 
@@ -765,8 +765,8 @@ export function emitWebIdl(
   function isCovariantEventHandler(i: Browser.Interface, p: Browser.Property) {
     return (
       isEventHandler(p) &&
-      iNameToEhParents[i.name].some((parent) =>
-        parent.properties?.property.hasOwnProperty(p.name)
+      iNameToEhParents[i.name].some(
+        (parent) => parent.properties?.property.hasOwnProperty(p.name),
       )
     );
   }
@@ -775,7 +775,7 @@ export function emitWebIdl(
     prefix: string,
     i: Browser.Interface,
     emitScope: EmitScope,
-    p: Browser.Property
+    p: Browser.Property,
   ) {
     emitComments(p, printer.printLine);
 
@@ -818,15 +818,15 @@ export function emitWebIdl(
           throw new Error("Couldn't find [PutForwards]");
         }
         const setterType = `${convertDomTypeToTsType(
-          forwardingProperty
+          forwardingProperty,
         )} | ${pType}`;
         printer.printLine(
-          `set ${p.name}${optionalModifier}(${p.putForwards}: ${setterType});`
+          `set ${p.name}${optionalModifier}(${p.putForwards}: ${setterType});`,
         );
       } else {
         const readOnlyModifier = p.readonly && prefix === "" ? "readonly " : "";
         printer.printLine(
-          `${prefix}${readOnlyModifier}${p.name}${optionalModifier}: ${pType};`
+          `${prefix}${readOnlyModifier}${p.name}${optionalModifier}: ${pType};`,
         );
       }
     }
@@ -843,15 +843,15 @@ export function emitWebIdl(
       secureContext?: boolean;
       mdnUrl?: string;
     },
-    print: (s: string) => void
+    print: (s: string) => void,
   ) {
     const comments = entity.comment?.split("\n") ?? [];
     const deprecated =
       typeof entity.deprecated === "string"
         ? `@deprecated ${entity.deprecated}`
         : entity.deprecated
-        ? "@deprecated"
-        : null;
+          ? "@deprecated"
+          : null;
     if (deprecated) {
       comments.push(deprecated);
     }
@@ -875,7 +875,7 @@ export function emitWebIdl(
   function emitProperties(
     prefix: string,
     emitScope: EmitScope,
-    i: Browser.Interface
+    i: Browser.Interface,
   ) {
     if (i.properties) {
       mapToArray(i.properties.property)
@@ -889,7 +889,7 @@ export function emitWebIdl(
   function emitMethod(
     prefix: string,
     m: Browser.Method,
-    conflictedMembers: Set<string>
+    conflictedMembers: Set<string>,
   ) {
     function printLine(content: string) {
       if (m.name && conflictedMembers.has(m.name)) {
@@ -922,7 +922,7 @@ export function emitWebIdl(
     prefix: string | undefined,
     name: string | undefined,
     printLine: (s: string) => void,
-    shouldResolvePromise?: boolean
+    shouldResolvePromise?: boolean,
   ) {
     const paramsString = s.param ? paramsToString(s.param) : "";
     const resolved = shouldResolvePromise ? resolvePromise(s) : s;
@@ -931,8 +931,8 @@ export function emitWebIdl(
     printLine(
       `${prefix || ""}${getNameWithTypeParameter(
         s.typeParameters,
-        name || ""
-      )}(${paramsString}): ${returnType};`
+        name || "",
+      )}(${paramsString}): ${returnType};`,
     );
   }
 
@@ -941,14 +941,14 @@ export function emitWebIdl(
     prefix: string,
     name: string,
     printLine: (s: string) => void,
-    shouldResolvePromise?: boolean
+    shouldResolvePromise?: boolean,
   ) {
     if (method.overrideSignatures) {
       method.overrideSignatures!.forEach((s) => printLine(`${prefix}${s};`));
     } else if (method.signature) {
       method.additionalSignatures?.forEach((s) => printLine(`${prefix}${s};`));
       method.signature.forEach((sig) =>
-        emitSignature(sig, prefix, name, printLine, shouldResolvePromise)
+        emitSignature(sig, prefix, name, printLine, shouldResolvePromise),
       );
     }
   }
@@ -957,7 +957,7 @@ export function emitWebIdl(
     prefix: string,
     emitScope: EmitScope,
     i: Browser.Interface,
-    conflictedMembers: Set<string>
+    conflictedMembers: Set<string>,
   ) {
     // If prefix is not empty, then this is the global declare function addEventListener, we want to override this
     // Otherwise, this is EventTarget.addEventListener, we want to keep that.
@@ -970,7 +970,7 @@ export function emitWebIdl(
               prefix !== "" &&
               (m.name === "addEventListener" ||
                 m.name === "removeEventListener")
-            )
+            ),
         )
         .filter((m) => {
           // Already covered by `extends`.
@@ -1011,13 +1011,13 @@ export function emitWebIdl(
       subtype.length > 1
         ? subtype[0]
         : i.iterator.kind === "iterable"
-        ? "number"
-        : value;
+          ? "number"
+          : value;
     const name = i.typeParameters
       ? `${i.name}<${i.typeParameters!.map((p) => p.name).join(", ")}>`
       : i.name;
     printer.printLine(
-      `forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${name}) => void, thisArg?: any): void;`
+      `forEach(callbackfn: (value: ${value}, key: ${key}, parent: ${name}) => void, thisArg?: any): void;`,
     );
   }
 
@@ -1025,7 +1025,7 @@ export function emitWebIdl(
   function emitMembers(
     prefix: string,
     emitScope: EmitScope,
-    i: Browser.Interface
+    i: Browser.Interface,
   ) {
     const conflictedMembers = extendConflictsBaseTypes[i.name]
       ? extendConflictsBaseTypes[i.name].memberNames
@@ -1066,12 +1066,12 @@ export function emitWebIdl(
 
         if (i.name === "EventSource") {
           printer.printLine(
-            `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | ${optionsType}): void;`
+            `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | ${optionsType}): void;`,
           );
         }
 
         printer.printLine(
-          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`
+          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`,
         );
       }
     }
@@ -1082,22 +1082,22 @@ export function emitWebIdl(
       prefix: string,
       addOrRemove: string,
       iParent: Browser.Interface,
-      optionsType: string
+      optionsType: string,
     ) {
       printer.printLine(
         `${prefix}${addOrRemove}EventListener<K extends keyof ${
           iParent.name
         }EventMap>(type: K, listener: (this: ${nameWithForwardedTypes(
-          i
+          i,
         )}, ev: ${
           iParent.name
-        }EventMap[K]) => any, options?: boolean | ${optionsType}): void;`
+        }EventMap[K]) => any, options?: boolean | ${optionsType}): void;`,
       );
     }
 
     function tryEmitTypedEventHandlerForInterface(
       addOrRemove: string,
-      optionsType: string
+      optionsType: string,
     ) {
       const hasEventListener = iNameToEhList[i.name]?.length;
       const ehParentCount = iNameToEhParents[i.name]?.length;
@@ -1169,8 +1169,8 @@ export function emitWebIdl(
       printer.increaseIndent();
       nc.signature.forEach((s) =>
         printer.printLine(
-          `new(${s.param ? paramsToString(s.param) : ""}): ${i.name};`
-        )
+          `new(${s.param ? paramsToString(s.param) : ""}): ${i.name};`,
+        ),
       );
       printer.decreaseIndent();
       printer.printLine(`};`);
@@ -1195,15 +1195,15 @@ export function emitWebIdl(
       printer.printLineToStack(
         `interface ${getNameWithTypeParameter(
           i.typeParameters,
-          i.name
-        )} extends ${processedIName} {`
+          i.name,
+        )} extends ${processedIName} {`,
       );
     }
 
     emitComments(i, printer.printLine);
 
     printer.print(
-      `interface ${getNameWithTypeParameter(i.typeParameters, processedIName)}`
+      `interface ${getNameWithTypeParameter(i.typeParameters, processedIName)}`,
     );
 
     const finalExtends = [i.extends || "Object"]
@@ -1221,7 +1221,7 @@ export function emitWebIdl(
   /// To decide if a given method is an indexer and should be emitted
   function shouldEmitIndexerSignature(
     i: Browser.Interface,
-    m: Browser.AnonymousMethod
+    m: Browser.AnonymousMethod,
   ) {
     if (m.getter && m.signature[0]?.param?.length === 1) {
       // TypeScript array indexer can only be number or string
@@ -1238,18 +1238,18 @@ export function emitWebIdl(
           const mTypes = distinct(
             mapValues(
               i.methods?.method,
-              (m) => m.signature?.[0].type || "void"
-            ).filter((t) => t !== "void") || []
+              (m) => m.signature?.[0].type || "void",
+            ).filter((t) => t !== "void") || [],
           );
           const amTypes = distinct(
             i.anonymousMethods?.method
               .map((m) => m.signature[0].type)
-              .filter((t) => t !== "void") || []
+              .filter((t) => t !== "void") || [],
           ); // |>  Array.distinct
           const pTypes = distinct(
             mapValues(i.properties?.property, (m) => m.type).filter(
-              (t) => t !== "void"
-            ) || []
+              (t) => t !== "void",
+            ) || [],
           ); // |>  Array.distinct
 
           if (
@@ -1294,20 +1294,20 @@ export function emitWebIdl(
       mapToArray<Browser.AnonymousMethod>(i.methods?.method)
         .concat(i.anonymousMethods?.method || [])
         .filter(
-          (m) => shouldEmitIndexerSignature(i, m) && matchScope(emitScope, m)
+          (m) => shouldEmitIndexerSignature(i, m) && matchScope(emitScope, m),
         )
         .forEach((m) => {
           const indexer = m.signature?.[0].param?.[0];
           if (indexer) {
             printer.printLine(
               `[${indexer.name}: ${convertDomTypeToTsType(
-                indexer
+                indexer,
               )}]: ${convertDomTypeToTsType({
                 type: m.signature[0].type,
                 overrideType: m.signature[0].overrideType,
                 subtype: m.signature[0].subtype,
                 nullable: undefined,
-              })};`
+              })};`,
             );
           }
         });
@@ -1317,7 +1317,7 @@ export function emitWebIdl(
   function emitInterfaceEventMap(i: Browser.Interface) {
     function emitInterfaceEventMapEntry(eventName: string) {
       printer.printLine(
-        `"${eventName}": ${getEventTypeInInterface(eventName, i)};`
+        `"${eventName}": ${getEventTypeInInterface(eventName, i)};`,
       );
     }
 
@@ -1415,15 +1415,15 @@ export function emitWebIdl(
       printer.printLine(
         `interface ${getNameWithTypeParameter(
           dict.typeParameters,
-          dict.name
-        )} {`
+          dict.name,
+        )} {`,
       );
     } else {
       printer.printLine(
         `interface ${getNameWithTypeParameter(
           dict.typeParameters,
-          dict.name
-        )} extends ${dict.extends} {`
+          dict.name,
+        )} extends ${dict.extends} {`,
       );
     }
     printer.increaseIndent();
@@ -1433,7 +1433,7 @@ export function emitWebIdl(
         .forEach((m) => {
           emitComments(m, printer.printLine);
           printer.printLine(
-            `${m.name}${m.required ? "" : "?"}: ${convertDomTypeToTsType(m)};`
+            `${m.name}${m.required ? "" : "?"}: ${convertDomTypeToTsType(m)};`,
           );
         });
     }
@@ -1457,8 +1457,8 @@ export function emitWebIdl(
     printer.printLine(
       `type ${getNameWithTypeParameter(
         typeDef.typeParameters,
-        typeDef.name
-      )} = ${convertDomTypeToTsType(typeDef)};`
+        typeDef.name,
+      )} = ${convertDomTypeToTsType(typeDef)};`,
     );
   }
 
@@ -1495,16 +1495,16 @@ export function emitWebIdl(
     if (global === "Window") {
       emitElementTagNameMap(
         "HTMLElementTagNameMap",
-        tagNameToEleName.htmlResult
+        tagNameToEleName.htmlResult,
       );
       emitElementTagNameMap(
         "HTMLElementDeprecatedTagNameMap",
-        tagNameToEleName.htmlDeprecatedResult
+        tagNameToEleName.htmlDeprecatedResult,
       );
       emitElementTagNameMap("SVGElementTagNameMap", tagNameToEleName.svgResult);
       emitElementTagNameMap(
         "MathMLElementTagNameMap",
-        tagNameToEleName.mathMLResult
+        tagNameToEleName.mathMLResult,
       );
       emitDeprecatedHTMLOrSVGElementTagNameMap();
       emitNamedConstructors();
@@ -1538,7 +1538,7 @@ export function emitWebIdl(
 
     function findIterableGetter() {
       const anonymousGetter = i.anonymousMethods?.method.find(
-        isIndexedPropertyGetter
+        isIndexedPropertyGetter,
       );
 
       if (anonymousGetter) return anonymousGetter;
@@ -1568,7 +1568,7 @@ export function emitWebIdl(
 
     function emitIterableDeclarationMethods(
       i: Browser.Interface,
-      subtypes: string[]
+      subtypes: string[],
     ) {
       let [keyType, valueType] = subtypes;
       if (!valueType) {
@@ -1601,7 +1601,7 @@ export function emitWebIdl(
 
     function getIteratorExtends(
       iterator?: Browser.Iterator,
-      subtypes?: string[]
+      subtypes?: string[],
     ) {
       if (!iterator || !subtypes) {
         return "";
@@ -1610,8 +1610,8 @@ export function emitWebIdl(
         iterator.kind === "maplike"
           ? `Map<${subtypes[0]}, ${subtypes[1]}>`
           : iterator.kind === "setlike"
-          ? `Set<${subtypes[0]}>`
-          : undefined;
+            ? `Set<${subtypes[0]}>`
+            : undefined;
       if (!base) {
         return "";
       }
@@ -1627,12 +1627,12 @@ export function emitWebIdl(
         return type === "sequence" || !!sequenceTypedefMap[type];
       }
       return s.param?.some(
-        (p) => !p.overrideType && typeIncludesSequence(p.type)
+        (p) => !p.overrideType && typeIncludesSequence(p.type),
       );
     }
 
     function replaceTypedefsInSignatures(
-      signatures: Browser.Signature[]
+      signatures: Browser.Signature[],
     ): Browser.Signature[] {
       return signatures.map((s) => {
         const params = s.param!.map((p) => {
@@ -1654,25 +1654,25 @@ export function emitWebIdl(
           .map((typedef) => ({
             ...typedef,
             type: (typedef.type as Browser.Typed[]).filter(
-              (t) => t.type === "sequence"
+              (t) => t.type === "sequence",
             ),
           }))
           .filter((typedef) => typedef.type.length);
     const sequenceTypedefMap = arrayToMap(
       sequenceTypedefs,
       (t) => t.name,
-      (t) => t
+      (t) => t,
     );
 
     const subtypes = getIteratorSubtypes();
     const methodsWithSequence: Browser.Method[] = mapToArray(
-      i.methods ? i.methods.method : {}
+      i.methods ? i.methods.method : {},
     )
       .filter((m) => m.signature && !m.overrideSignatures)
       .map((m) => ({
         ...m,
         signature: replaceTypedefsInSignatures(
-          m.signature.filter(hasSequenceArgument)
+          m.signature.filter(hasSequenceArgument),
         ),
       }))
       .filter((m) => m.signature.length)
@@ -1685,7 +1685,7 @@ export function emitWebIdl(
     const iteratorExtends = getIteratorExtends(i.iterator, subtypes);
     const name = getNameWithTypeParameter(
       i.typeParameters,
-      extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name
+      extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name,
     );
     printer.printLine("");
     printer.printLine(`interface ${name} ${iteratorExtends}{`);
@@ -1696,8 +1696,8 @@ export function emitWebIdl(
     if (subtypes && !iteratorExtends) {
       printer.printLine(
         `[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(
-          subtypes
-        )}>;`
+          subtypes,
+        )}>;`,
       );
     }
     if (i.iterator?.kind === "iterable" && subtypes) {
@@ -1720,7 +1720,7 @@ export function emitWebIdl(
     function emitAsyncIterableDeclarationMethods(
       i: Browser.Interface,
       subtypes: string[],
-      paramsString: string
+      paramsString: string,
     ) {
       let methods;
       if (subtypes.length === 1) {
@@ -1766,7 +1766,7 @@ export function emitWebIdl(
 
     const name = getNameWithTypeParameter(
       i.typeParameters,
-      extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name
+      extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name,
     );
     const paramsString = i.iterator!.param
       ? paramsToString(i.iterator!.param)
@@ -1777,8 +1777,8 @@ export function emitWebIdl(
 
     printer.printLine(
       `[Symbol.asyncIterator](${paramsString}): AsyncIterableIterator<${stringifySingleOrTupleTypes(
-        subtypes
-      )}>;`
+        subtypes,
+      )}>;`,
     );
     emitAsyncIterableDeclarationMethods(i, subtypes, paramsString);
 

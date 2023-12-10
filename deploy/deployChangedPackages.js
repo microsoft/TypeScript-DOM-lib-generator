@@ -8,7 +8,7 @@
 import * as fs from "fs";
 import { spawnSync } from "child_process";
 import { Octokit } from "@octokit/rest";
-import { printInlineDiff } from "print-diff";
+import { printUnifiedDiff } from "print-diff";
 import { generateChangelogFrom } from "../lib/changelog.js";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
@@ -61,11 +61,11 @@ for (const dirName of fs.readdirSync(generatedDir)) {
 
     try {
       const oldFile = await getFileFromUnpkg(
-        `${pkgJSON.name}@${olderVersion}/${filemap.to}`
+        `${pkgJSON.name}@${olderVersion}/${filemap.to}`,
       );
       console.log(` - ${file}`);
       if (oldFile !== generatedDTSContent)
-        printInlineDiff(oldFile, generatedDTSContent);
+        printUnifiedDiff(oldFile, generatedDTSContent);
 
       const title = `## \`${file}\``;
       const notes = generateChangelogFrom(oldFile, generatedDTSContent);
@@ -100,13 +100,13 @@ Assuming that this means we need to upload this package.`);
 
         await createRelease(
           `${pkgJSON.name}@${pkgJSON.version}`,
-          releaseNotes.join("\n\n")
+          releaseNotes.join("\n\n"),
         );
       }
     } else {
       console.log(
         "Wanting to run: 'npm publish --access public' in " +
-          fileURLToPath(packageDir)
+          fileURLToPath(packageDir),
       );
     }
 
@@ -148,7 +148,7 @@ async function createRelease(tag, body) {
     });
   } catch (error) {
     console.error(
-      "Creating the GitHub release failed, this is likely due to re-running the deploy."
+      "Creating the GitHub release failed, this is likely due to re-running the deploy.",
     );
   }
 }
@@ -157,7 +157,7 @@ function verify() {
   const authToken = process.env.GITHUB_TOKEN || process.env.GITHUB_API_TOKEN;
   if (!authToken) {
     throw new Error(
-      "There isn't an ENV var set up for creating a GitHub release, expected GITHUB_TOKEN."
+      "There isn't an ENV var set up for creating a GitHub release, expected GITHUB_TOKEN.",
     );
   }
 }

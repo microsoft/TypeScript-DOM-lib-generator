@@ -1,7 +1,7 @@
 export function filterMapRecord<T extends object, V>(
   object: Record<string, T> | undefined,
   mapper: (key: string, value: T) => V | undefined,
-  needsStatic?: boolean
+  forNamespace?: boolean,
 ): Record<string, V> | undefined {
   if (!object) {
     return;
@@ -9,9 +9,7 @@ export function filterMapRecord<T extends object, V>(
   const result = {} as Record<string, V>;
   for (const [key, value] of Object.entries(object)) {
     const mdnKey =
-      needsStatic === false
-        ? key
-        : needsStatic === true || ("static" in value && value.static)
+      forNamespace || ("static" in value && value.static)
         ? `${key}_static`
         : key;
     const newValue = mapper(mdnKey, value);

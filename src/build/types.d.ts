@@ -148,6 +148,7 @@ export interface TypeParameter {
 export interface Interface {
   name: string;
   mixin?: boolean;
+  namespace?: boolean;
   extends?: string;
   comment?: string;
   constants?: {
