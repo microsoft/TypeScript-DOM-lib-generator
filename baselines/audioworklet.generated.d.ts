@@ -39,7 +39,7 @@ interface MessageEventInit<T = any> extends EventInit {
 }
 
 interface PromiseRejectionEventInit extends EventInit {
-    promise: Promise<any>;
+    promise: any;
     reason?: any;
 }
 
@@ -714,7 +714,7 @@ declare var MessagePort: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent) */
 interface PromiseRejectionEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise) */
-    readonly promise: Promise<any>;
+    readonly promise: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason) */
     readonly reason: any;
 }
