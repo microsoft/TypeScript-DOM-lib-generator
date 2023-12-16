@@ -2365,6 +2365,15 @@
                     }
                 }
             },
+            "PromiseRejectionEvent": {
+                "properties": {
+                    "property": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
+                        }
+                    }
+                }
+            },
             "ScriptProcessorNode": {
                 "events": {
                     "event": [
@@ -3345,6 +3354,15 @@
                     "member": {
                         "name": {
                             "type": "PermissionName"
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEventInit": {
+                "members": {
+                    "member": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
                         }
                     }
                 }
