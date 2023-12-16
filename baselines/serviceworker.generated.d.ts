@@ -2705,19 +2705,19 @@ declare var FontFace: {
 };
 
 interface FontFaceSetEventMap {
-    "loading": Event;
-    "loadingdone": Event;
-    "loadingerror": Event;
+    "loading": FontFaceSetLoadEvent;
+    "loadingdone": FontFaceSetLoadEvent;
+    "loadingerror": FontFaceSetLoadEvent;
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet) */
 interface FontFaceSet extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loading_event) */
-    onloading: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloading: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loadingdone_event) */
-    onloadingdone: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloadingdone: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loadingerror_event) */
-    onloadingerror: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloadingerror: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/ready) */
     readonly ready: Promise<FontFaceSet>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/status) */
@@ -4873,7 +4873,7 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "notificationclick": NotificationEvent;
     "notificationclose": NotificationEvent;
     "push": PushEvent;
-    "pushsubscriptionchange": Event;
+    "pushsubscriptionchange": PushSubscriptionChangeEvent;
 }
 
 /**
@@ -4901,7 +4901,7 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/push_event) */
     onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) */
-    onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+    onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: PushSubscriptionChangeEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
     readonly registration: ServiceWorkerRegistration;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */
@@ -8432,7 +8432,7 @@ declare var onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: Notificat
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/push_event) */
 declare var onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) */
-declare var onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: PushSubscriptionChangeEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
 declare var registration: ServiceWorkerRegistration;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */

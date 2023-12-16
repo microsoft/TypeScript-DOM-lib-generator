@@ -2418,7 +2418,7 @@ interface Animatable {
 interface AnimationEventMap {
     "cancel": AnimationPlaybackEvent;
     "finish": AnimationPlaybackEvent;
-    "remove": Event;
+    "remove": AnimationPlaybackEvent;
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation) */
@@ -2436,7 +2436,7 @@ interface Animation extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/finish_event) */
     onfinish: ((this: Animation, ev: AnimationPlaybackEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/remove_event) */
-    onremove: ((this: Animation, ev: Event) => any) | null;
+    onremove: ((this: Animation, ev: AnimationPlaybackEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/pending) */
     readonly pending: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/playState) */
@@ -2877,7 +2877,7 @@ declare var AudioWorklet: {
 };
 
 interface AudioWorkletNodeEventMap {
-    "processorerror": Event;
+    "processorerror": ErrorEvent;
 }
 
 /**
@@ -2887,7 +2887,7 @@ interface AudioWorkletNodeEventMap {
  */
 interface AudioWorkletNode extends AudioNode {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletNode/processorerror_event) */
-    onprocessorerror: ((this: AudioWorkletNode, ev: Event) => any) | null;
+    onprocessorerror: ((this: AudioWorkletNode, ev: ErrorEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletNode/parameters) */
     readonly parameters: AudioParamMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletNode/port) */
@@ -8573,19 +8573,19 @@ declare var FontFace: {
 };
 
 interface FontFaceSetEventMap {
-    "loading": Event;
-    "loadingdone": Event;
-    "loadingerror": Event;
+    "loading": FontFaceSetLoadEvent;
+    "loadingdone": FontFaceSetLoadEvent;
+    "loadingerror": FontFaceSetLoadEvent;
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet) */
 interface FontFaceSet extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loading_event) */
-    onloading: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloading: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loadingdone_event) */
-    onloadingdone: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloadingdone: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loadingerror_event) */
-    onloadingerror: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloadingerror: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/ready) */
     readonly ready: Promise<FontFaceSet>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/status) */
@@ -13379,8 +13379,8 @@ declare var HTMLUnknownElement: {
 };
 
 interface HTMLVideoElementEventMap extends HTMLMediaElementEventMap {
-    "enterpictureinpicture": Event;
-    "leavepictureinpicture": Event;
+    "enterpictureinpicture": PictureInPictureEvent;
+    "leavepictureinpicture": PictureInPictureEvent;
 }
 
 /**
@@ -13398,9 +13398,9 @@ interface HTMLVideoElement extends HTMLMediaElement {
      */
     height: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/enterpictureinpicture_event) */
-    onenterpictureinpicture: ((this: HTMLVideoElement, ev: Event) => any) | null;
+    onenterpictureinpicture: ((this: HTMLVideoElement, ev: PictureInPictureEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/leavepictureinpicture_event) */
-    onleavepictureinpicture: ((this: HTMLVideoElement, ev: Event) => any) | null;
+    onleavepictureinpicture: ((this: HTMLVideoElement, ev: PictureInPictureEvent) => any) | null;
     /** Gets or sets the playsinline of the video element. for example, On iPhone, video elements will now be allowed to play inline, and will not automatically enter fullscreen mode when playback begins. */
     playsInline: boolean;
     /**
@@ -14654,7 +14654,7 @@ declare var LockManager: {
 };
 
 interface MIDIAccessEventMap {
-    "statechange": Event;
+    "statechange": MIDIConnectionEvent;
 }
 
 /**
@@ -14666,7 +14666,7 @@ interface MIDIAccess extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIAccess/inputs) */
     readonly inputs: MIDIInputMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIAccess/statechange_event) */
-    onstatechange: ((this: MIDIAccess, ev: Event) => any) | null;
+    onstatechange: ((this: MIDIAccess, ev: MIDIConnectionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIAccess/outputs) */
     readonly outputs: MIDIOutputMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIAccess/sysexEnabled) */
@@ -15175,7 +15175,7 @@ declare var MediaQueryListEvent: {
 
 interface MediaRecorderEventMap {
     "dataavailable": BlobEvent;
-    "error": Event;
+    "error": ErrorEvent;
     "pause": Event;
     "resume": Event;
     "start": Event;
@@ -15191,7 +15191,7 @@ interface MediaRecorder extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/dataavailable_event) */
     ondataavailable: ((this: MediaRecorder, ev: BlobEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/error_event) */
-    onerror: ((this: MediaRecorder, ev: Event) => any) | null;
+    onerror: ((this: MediaRecorder, ev: ErrorEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/pause_event) */
     onpause: ((this: MediaRecorder, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/resume_event) */
@@ -16928,7 +16928,7 @@ declare var PaymentMethodChangeEvent: {
 };
 
 interface PaymentRequestEventMap {
-    "paymentmethodchange": Event;
+    "paymentmethodchange": PaymentMethodChangeEvent;
 }
 
 /**
@@ -16941,7 +16941,7 @@ interface PaymentRequest extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/id) */
     readonly id: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/paymentmethodchange_event) */
-    onpaymentmethodchange: ((this: PaymentRequest, ev: Event) => any) | null;
+    onpaymentmethodchange: ((this: PaymentRequest, ev: PaymentMethodChangeEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/abort) */
     abort(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/canMakePayment) */
@@ -17903,7 +17903,7 @@ interface RTCDataChannelEventMap {
     "bufferedamountlow": Event;
     "close": Event;
     "closing": Event;
-    "error": Event;
+    "error": RTCErrorEvent;
     "message": MessageEvent;
     "open": Event;
 }
@@ -17933,7 +17933,7 @@ interface RTCDataChannel extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/closing_event) */
     onclosing: ((this: RTCDataChannel, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/error_event) */
-    onerror: ((this: RTCDataChannel, ev: Event) => any) | null;
+    onerror: ((this: RTCDataChannel, ev: RTCErrorEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/message_event) */
     onmessage: ((this: RTCDataChannel, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/open_event) */
@@ -17974,7 +17974,7 @@ declare var RTCDataChannelEvent: {
 };
 
 interface RTCDtlsTransportEventMap {
-    "error": Event;
+    "error": RTCErrorEvent;
     "statechange": Event;
 }
 
@@ -17982,7 +17982,7 @@ interface RTCDtlsTransportEventMap {
 interface RTCDtlsTransport extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/iceTransport) */
     readonly iceTransport: RTCIceTransport;
-    onerror: ((this: RTCDtlsTransport, ev: Event) => any) | null;
+    onerror: ((this: RTCDtlsTransport, ev: RTCErrorEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/statechange_event) */
     onstatechange: ((this: RTCDtlsTransport, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/state) */
@@ -18144,7 +18144,7 @@ interface RTCPeerConnectionEventMap {
     "connectionstatechange": Event;
     "datachannel": RTCDataChannelEvent;
     "icecandidate": RTCPeerConnectionIceEvent;
-    "icecandidateerror": Event;
+    "icecandidateerror": RTCPeerConnectionIceErrorEvent;
     "iceconnectionstatechange": Event;
     "icegatheringstatechange": Event;
     "negotiationneeded": Event;
@@ -18179,7 +18179,7 @@ interface RTCPeerConnection extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/icecandidate_event) */
     onicecandidate: ((this: RTCPeerConnection, ev: RTCPeerConnectionIceEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/icecandidateerror_event) */
-    onicecandidateerror: ((this: RTCPeerConnection, ev: Event) => any) | null;
+    onicecandidateerror: ((this: RTCPeerConnection, ev: RTCPeerConnectionIceErrorEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/iceconnectionstatechange_event) */
     oniceconnectionstatechange: ((this: RTCPeerConnection, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/icegatheringstatechange_event) */
