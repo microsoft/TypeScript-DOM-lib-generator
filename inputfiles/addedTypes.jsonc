@@ -576,6 +576,10 @@
                             "type": "DeviceOrientationEvent"
                         },
                         {
+                            "name": "deviceorientationabsolute",
+                            "type": "DeviceOrientationEvent"
+                        },
+                        {
                             "name": "gamepadconnected",
                             "type": "GamepadEvent"
                         },
