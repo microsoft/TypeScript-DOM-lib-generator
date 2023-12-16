@@ -2173,11 +2173,6 @@
                         {
                             "name": "push",
                             "type": "PushEvent"
-                        },
-                        {
-                            "name": "pushsubscriptionchange",
-                            // No PushSubscriptionChangeEvent implementation as of 2023-12
-                            "type": "Event"
                         }
                     ],
                     "methods": {

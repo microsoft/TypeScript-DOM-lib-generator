@@ -339,7 +339,7 @@ export function emitWebIdl(
     }
 
     const event = webidl.events?.get(i.name)?.get(eName);
-    if (event) {
+    if (event && allInterfacesMap[event]) {
       return getGenericEventType(event);
     }
     return "Event";
