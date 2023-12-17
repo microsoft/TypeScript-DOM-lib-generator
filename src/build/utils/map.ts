@@ -23,7 +23,7 @@ export function addToNestedMap(
   key: string,
   value: string,
 ): void {
-  const nested = map.get(name) || new Map();
+  const nested = map.get(name) ?? new Map();
   nested.set(key, value);
   map.set(name, nested);
 }
