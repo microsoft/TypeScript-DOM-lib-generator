@@ -1126,10 +1126,6 @@
                     ]
                 }
             },
-            "OverconstrainedError": {
-                "name": "OverconstrainedError",
-                "extends": "Error"
-            },
             "ProgressEvent": {
                 "typeParameters": [
                     {

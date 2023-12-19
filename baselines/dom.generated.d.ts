@@ -16740,7 +16740,7 @@ declare var OscillatorNode: {
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OverconstrainedError) */
-interface OverconstrainedError extends Error {
+interface OverconstrainedError extends DOMException {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OverconstrainedError/constraint) */
     readonly constraint: string;
 }
