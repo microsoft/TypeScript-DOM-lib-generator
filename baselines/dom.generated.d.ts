@@ -3366,6 +3366,8 @@ interface CSSImportRule extends CSSRule {
     readonly media: MediaList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/styleSheet) */
     readonly styleSheet: CSSStyleSheet | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/supportsText) */
+    readonly supportsText: string | null;
 }
 
 declare var CSSImportRule: {
