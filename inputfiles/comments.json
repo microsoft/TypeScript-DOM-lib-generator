@@ -1574,7 +1574,7 @@
                 "methods": {
                     "method": {
                         "pause": {
-                            "comment": "Pauses the current playback and sets paused to TRUE. This can be used to test whether the media is playing or paused. You can also use the pause or play events to tell whether the media is playing or not."
+                            "comment": "Pauses the current playback and sets paused to TRUE."
                         },
                         "play": {
                             "comment": "Loads and starts playback of a media resource."
@@ -1811,7 +1811,7 @@
                 "properties": {
                     "property": {
                         "parent": {
-                            "comment" : "Refers to either the parent WindowProxy, or itself.\n\nIt can rarely be null e.g. for contentWindow of an iframe that is already removed from the parent."
+                            "comment": "Refers to either the parent WindowProxy, or itself.\n\nIt can rarely be null e.g. for contentWindow of an iframe that is already removed from the parent."
                         }
                     }
                 }
