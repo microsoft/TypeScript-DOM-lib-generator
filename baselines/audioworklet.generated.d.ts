@@ -1067,7 +1067,11 @@ declare var URLSearchParams: {
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
-/** Available only in secure contexts. */
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
+ */
 interface WorkletGlobalScope {
 }
 

@@ -17689,6 +17689,7 @@ interface PointerEvent extends MouseEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/getCoalescedEvents)
      */
     getCoalescedEvents(): PointerEvent[];
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/getPredictedEvents) */
     getPredictedEvents(): PointerEvent[];
 }
 
