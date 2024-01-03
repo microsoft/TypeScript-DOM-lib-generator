@@ -7709,6 +7709,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attachShadow)
      */
     attachShadow(init: ShadowRootInit): ShadowRoot;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/checkVisibility) */
     checkVisibility(options?: CheckVisibilityOptions): boolean;
     /**
      * Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise.
@@ -10995,6 +10996,7 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     /** Sets or retrieves the initial contents of the object. */
     defaultValue: string;
     dirName: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/disabled) */
     disabled: boolean;
     /**
      * Returns a FileList object on a file type input object.
@@ -11291,7 +11293,11 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     disabled: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/fetchPriority) */
     fetchPriority: string;
-    /** Sets or retrieves a destination URL or an anchor point. */
+    /**
+     * Sets or retrieves a destination URL or an anchor point.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/href)
+     */
     href: string;
     /** Sets or retrieves the language code of the object. */
     hreflang: string;
