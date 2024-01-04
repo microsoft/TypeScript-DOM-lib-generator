@@ -6926,7 +6926,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     readonly head: HTMLHeadElement;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/hidden) */
-    readonly hidden: boolean;
+    readonly hidden: boolean | "until-found";
     /**
      * Retrieves a collection, in source order, of img objects in the document.
      *
