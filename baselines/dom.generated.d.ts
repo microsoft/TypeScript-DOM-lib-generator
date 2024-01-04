@@ -6926,7 +6926,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     readonly head: HTMLHeadElement;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/hidden) */
-    readonly hidden: boolean | "until-found";
+    readonly hidden: boolean;
     /**
      * Retrieves a collection, in source order, of img objects in the document.
      *
@@ -10090,7 +10090,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/draggable) */
     draggable: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/hidden) */
-    hidden: boolean;
+    hidden: boolean | "until-found";
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/inert) */
     inert: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/innerText) */
