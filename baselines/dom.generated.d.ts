@@ -10115,6 +10115,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     spellcheck: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/title) */
     title: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/translate) */
     translate: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attachInternals) */
     attachInternals(): ElementInternals;
@@ -11299,7 +11300,11 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/href)
      */
     href: string;
-    /** Sets or retrieves the language code of the object. */
+    /**
+     * Sets or retrieves the language code of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/hreflang)
+     */
     hreflang: string;
     imageSizes: string;
     imageSrcset: string;
@@ -12091,6 +12096,7 @@ declare var HTMLOptionsCollection: {
 };
 
 interface HTMLOrSVGElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autofocus) */
     autofocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset) */
     readonly dataset: DOMStringMap;
@@ -12341,6 +12347,7 @@ interface HTMLScriptElement extends HTMLElement {
      * @deprecated
      */
     charset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/crossOrigin) */
     crossOrigin: string | null;
     /** Sets or retrieves the status of the script. */
     defer: boolean;
@@ -13512,8 +13519,11 @@ declare var Headers: {
     new(init?: HeadersInit): Headers;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight) */
 interface Highlight {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight/priority) */
     priority: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight/type) */
     type: HighlightType;
     forEach(callbackfn: (value: AbstractRange, key: AbstractRange, parent: Highlight) => void, thisArg?: any): void;
 }
@@ -13523,6 +13533,7 @@ declare var Highlight: {
     new(...initialRanges: AbstractRange[]): Highlight;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry) */
 interface HighlightRegistry {
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
 }
