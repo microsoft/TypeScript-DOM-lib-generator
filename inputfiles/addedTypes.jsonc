@@ -1304,6 +1304,28 @@
                     }
                 }
             },
+            "ReadableStreamBYOBReadDoneResult": {
+                "name": "ReadableStreamReadDoneResult",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "done": {
+                            "name": "done",
+                            "overrideType": "true",
+                            "required": true
+                        },
+                        "value": {
+                            "name": "value",
+                            "overrideType": "T",
+                            "required": true
+                        }
+                    }
+                }
+            },
             "ReadableStreamReadValueResult": {
                 "name": "ReadableStreamReadValueResult",
                 "typeParameters": [
@@ -1517,7 +1539,7 @@
                 ]
             },
             {
-                "name": "ReadableStreamReadResult",
+                "name": "ReadableStreamDefaultReadResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1528,10 +1550,44 @@
                         "type": "ReadableStreamReadValueResult"
                     },
                     {
-                        "type": "ReadableStreamReadDoneResult"
+                        "type": "ReadableStreamDefaultReadDoneResult"
                     }
                 ],
-                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult"
+                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamDefaultReadDoneResult"
+            },
+            {
+                "name": "ReadableStreamBYOBReadResult",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamReadValueResult"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReadDoneResult"
+                    }
+                ],
+                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamBYOBReadDoneResult<T>"
+            },
+            {
+                "name": "ReadableStreamReadResult",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReadResult"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReadResult"
+                    }
+                ],
+                "overrideType": "ReadableStreamDefaultReadResult<T> | ReadableStreamBYOBReadResult<T>"
             },
             {
                 "name": "EventListenerOrEventListenerObject",
