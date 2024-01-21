@@ -1619,11 +1619,6 @@ interface ReadableStreamGetReaderOptions {
     mode?: ReadableStreamReaderMode;
 }
 
-interface ReadableStreamReadDoneResult<T> {
-    done: true;
-    value?: T;
-}
-
 interface ReadableStreamReadValueResult<T> {
     done: false;
     value: T;
@@ -18633,7 +18628,7 @@ declare var ReadableStream: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamBYOBReadResult<T>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock) */
     releaseLock(): void;
 }
@@ -18678,7 +18673,7 @@ declare var ReadableStreamDefaultController: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader) */
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/read) */
-    read(): Promise<ReadableStreamReadResult<R>>;
+    read(): Promise<ReadableStreamDefaultReadResult<R>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/releaseLock) */
     releaseLock(): void;
 }
@@ -28203,8 +28198,10 @@ type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
 type RTCRtpTransform = RTCRtpScriptTransform;
+type ReadableStreamBYOBReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamBYOBReadDoneResult<T>;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
-type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
+type ReadableStreamDefaultReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
+type ReadableStreamReadResult<T> = ReadableStreamDefaultReadResult<T> | ReadableStreamBYOBReadResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type ReportList = Report[];
