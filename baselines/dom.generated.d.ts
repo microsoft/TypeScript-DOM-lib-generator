@@ -1610,6 +1610,16 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
+interface ReadableStreamBYOBReadDoneResult<T> {
+    done: true;
+    value: T | undefined;
+}
+
+interface ReadableStreamDefaultReadDoneResult {
+    done: true;
+    value: undefined;
+}
+
 interface ReadableStreamGetReaderOptions {
     /**
      * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
