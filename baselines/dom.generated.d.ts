@@ -201,6 +201,9 @@ interface ChannelSplitterOptions extends AudioNodeOptions {
 interface CheckVisibilityOptions {
     checkOpacity?: boolean;
     checkVisibilityCSS?: boolean;
+    contentVisibilityAuto?: boolean;
+    opacityProperty?: boolean;
+    visibilityProperty?: boolean;
 }
 
 interface ClientQueryOptions {
@@ -8712,7 +8715,7 @@ interface Gamepad {
     readonly mapping: GamepadMappingType;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Gamepad/timestamp) */
     readonly timestamp: DOMHighResTimeStamp;
-    readonly vibrationActuator: GamepadHapticActuator | null;
+    readonly vibrationActuator: GamepadHapticActuator;
 }
 
 declare var Gamepad: {
@@ -8762,8 +8765,6 @@ declare var GamepadEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadHapticActuator)
  */
 interface GamepadHapticActuator {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadHapticActuator/type) */
-    readonly type: GamepadHapticActuatorType;
     playEffect(type: GamepadHapticEffectType, params?: GamepadEffectParameters): Promise<GamepadHapticsResult>;
     reset(): Promise<GamepadHapticsResult>;
 }
@@ -9474,6 +9475,7 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/name)
      */
     name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/ping) */
     ping: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/referrerPolicy) */
     referrerPolicy: string;
@@ -9551,6 +9553,7 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/noHref)
      */
     noHref: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/ping) */
     ping: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/referrerPolicy) */
     referrerPolicy: string;
@@ -10146,7 +10149,11 @@ declare var HTMLElement: {
 interface HTMLEmbedElement extends HTMLElement {
     /** @deprecated */
     align: string;
-    /** Sets or retrieves the height of the object. */
+    /**
+     * Sets or retrieves the height of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/height)
+     */
     height: string;
     /**
      * Sets or retrieves the name of the object.
@@ -10156,7 +10163,11 @@ interface HTMLEmbedElement extends HTMLElement {
     /** Sets or retrieves a URL to be loaded by the object. */
     src: string;
     type: string;
-    /** Sets or retrieves the width of the object. */
+    /**
+     * Sets or retrieves the width of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/width)
+     */
     width: string;
     getSVGDocument(): Document | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLEmbedElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -13451,11 +13462,13 @@ interface HTMLVideoElement extends HTMLMediaElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/width)
      */
     width: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/cancelVideoFrameCallback) */
     cancelVideoFrameCallback(handle: number): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality) */
     getVideoPlaybackQuality(): VideoPlaybackQuality;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/requestPictureInPicture) */
     requestPictureInPicture(): Promise<PictureInPictureWindow>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/requestVideoFrameCallback) */
     requestVideoFrameCallback(callback: VideoFrameRequestCallback): number;
     addEventListener<K extends keyof HTMLVideoElementEventMap>(type: K, listener: (this: HTMLVideoElement, ev: HTMLVideoElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -14535,6 +14548,29 @@ declare var KeyframeEffect: {
     prototype: KeyframeEffect;
     new(target: Element | null, keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeEffectOptions): KeyframeEffect;
     new(source: KeyframeEffect): KeyframeEffect;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint) */
+interface LargestContentfulPaint extends PerformanceEntry {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/element) */
+    readonly element: Element | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/id) */
+    readonly id: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/loadTime) */
+    readonly loadTime: DOMHighResTimeStamp;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/renderTime) */
+    readonly renderTime: DOMHighResTimeStamp;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/size) */
+    readonly size: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/url) */
+    readonly url: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/toJSON) */
+    toJSON(): any;
+}
+
+declare var LargestContentfulPaint: {
+    prototype: LargestContentfulPaint;
+    new(): LargestContentfulPaint;
 };
 
 interface LinkStyle {
@@ -28275,7 +28311,6 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
-type GamepadHapticActuatorType = "vibration";
 type GamepadHapticEffectType = "dual-rumble";
 type GamepadHapticsResult = "complete" | "preempted";
 type GamepadMappingType = "" | "standard" | "xr-standard";
