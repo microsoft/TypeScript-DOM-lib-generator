@@ -10740,6 +10740,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     align: string;
     allow: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/allowFullscreen) */
     allowFullscreen: boolean;
     /**
      * Retrieves the document object of the page or frame.
@@ -10766,6 +10767,7 @@ interface HTMLIFrameElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/height)
      */
     height: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading) */
     loading: string;
     /**
      * Sets or retrieves a URI to a long description of the object.
@@ -11688,16 +11690,31 @@ declare var HTMLMenuElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement)
  */
 interface HTMLMetaElement extends HTMLElement {
-    /** Gets or sets meta-information to associate with httpEquiv or name. */
+    /**
+     * Gets or sets meta-information to associate with httpEquiv or name.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement/content)
+     */
     content: string;
-    /** Gets or sets information used to bind the value of a content attribute of a meta element to an HTTP response header. */
+    /**
+     * Gets or sets information used to bind the value of a content attribute of a meta element to an HTTP response header.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement/httpEquiv)
+     */
     httpEquiv: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement/media) */
     media: string;
-    /** Sets or retrieves the value specified in the content attribute of the meta object. */
+    /**
+     * Sets or retrieves the value specified in the content attribute of the meta object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement/name)
+     */
     name: string;
     /**
      * Sets or retrieves a scheme to be used in interpreting the value of a property specified for the object.
      * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement/scheme)
      */
     scheme: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
