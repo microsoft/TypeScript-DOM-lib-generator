@@ -5031,6 +5031,8 @@ interface CSSStyleDeclaration {
     y: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/z-index) */
     zIndex: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/zoom) */
+    zoom: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyPriority) */
     getPropertyPriority(property: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyValue) */
