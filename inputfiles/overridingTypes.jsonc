@@ -1729,24 +1729,6 @@
                     }
                 }
             },
-            "Event": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "properties": {
-                    "property": {
-                        "currentTarget": {
-                            "name": "currentTarget",
-                            "readonly": true,
-                            "overrideType": "T"
-                        }
-                    }
-                }
-            },
             "CompositionEvent": {
                 "typeParameters": [
                     {
