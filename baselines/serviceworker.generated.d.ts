@@ -2268,7 +2268,7 @@ interface Event<T extends EventTarget = EventTarget> {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)
      */
-    readonly target: T | null;
+    readonly target: EventTarget | null;
     /**
      * Returns the event's timestamp as the number of milliseconds measured relative to the time origin.
      *

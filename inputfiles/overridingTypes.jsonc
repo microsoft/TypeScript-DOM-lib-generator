@@ -1739,11 +1739,6 @@
                 ],
                 "properties": {
                     "property": {
-                        "target": {
-                            "name": "target",
-                            "readonly": true,
-                            "overrideType": "T"
-                        },
                         "currentTarget": {
                             "name": "currentTarget",
                             "readonly": true,
