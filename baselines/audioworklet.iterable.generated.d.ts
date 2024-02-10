@@ -2,6 +2,11 @@
 /// AudioWorklet Iterable APIs
 /////////////////////////////
 
+interface AbortSignal {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static) */
+    any(signals: Iterable<AbortSignal>): AbortSignal;
+}
+
 interface MessageEvent<T = any> {
     /**
      * @deprecated

@@ -2324,6 +2324,8 @@ declare var AbortSignal: {
     new(): AbortSignal;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static) */
+    any(signals: AbortSignal[]): AbortSignal;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout_static) */
     timeout(milliseconds: number): AbortSignal;
 };
@@ -3773,6 +3775,16 @@ declare var CSSScale: {
     new(x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
 };
 
+interface CSSScopeRule extends CSSGroupingRule {
+    readonly end: string | null;
+    readonly start: string | null;
+}
+
+declare var CSSScopeRule: {
+    prototype: CSSScopeRule;
+    new(): CSSScopeRule;
+};
+
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew) */
 interface CSSSkew extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew/ax) */
@@ -4033,6 +4045,7 @@ interface CSSStyleDeclaration {
     clipRule: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color) */
     color: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-interpolation) */
     colorInterpolation: string;
     colorInterpolationFilters: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-scheme) */
@@ -4592,6 +4605,8 @@ interface CSSStyleDeclaration {
     transformStyle: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition) */
     transition: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-behavior) */
+    transitionBehavior: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-delay) */
     transitionDelay: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-duration) */
@@ -5013,6 +5028,8 @@ interface CSSStyleDeclaration {
     webkitUserSelect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/white-space) */
     whiteSpace: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/white-space-collapse) */
+    whiteSpaceCollapse: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/widows) */
     widows: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/width) */
@@ -7406,6 +7423,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
 declare var Document: {
     prototype: Document;
     new(): Document;
+    parseHTMLUnsafe(html: string): Document;
 };
 
 /**
@@ -7856,6 +7874,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     setAttributeNode(attr: Attr): Attr | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNodeNS) */
     setAttributeNodeNS(attr: Attr): Attr | null;
+    setHTMLUnsafe(html: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setPointerCapture) */
     setPointerCapture(pointerId: number): void;
     /**
@@ -11113,7 +11132,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     src: string;
     /** Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field. */
     step: string;
-    /** Returns the content type of the object. */
+    /**
+     * Returns the content type of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/type)
+     */
     type: string;
     /**
      * Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.
@@ -11928,6 +11951,7 @@ interface HTMLObjectElement extends HTMLElement {
     type: string;
     /**
      * Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/useMap)
      */
@@ -13258,7 +13282,11 @@ interface HTMLTextAreaElement extends HTMLElement {
     selectionStart: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/textLength) */
     readonly textLength: number;
-    /** Retrieves the type of control. */
+    /**
+     * Retrieves the type of control.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/type)
+     */
     readonly type: string;
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
@@ -21438,6 +21466,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
     onslotchange: ((this: ShadowRoot, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/slotAssignment) */
     readonly slotAssignment: SlotAssignmentMode;
+    setHTMLUnsafe(html: string): void;
     /** Throws a "NotSupportedError" DOMException if context object is a shadow root. */
     addEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
