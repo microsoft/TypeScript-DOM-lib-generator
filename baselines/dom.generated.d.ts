@@ -11028,7 +11028,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     checked: boolean;
     /** Sets or retrieves the state of the check box or radio button. */
     defaultChecked: boolean;
-    /** Sets or retrieves the initial contents of the object. */
+    /**
+     * Sets or retrieves the initial contents of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/defaultValue)
+     */
     defaultValue: string;
     dirName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/disabled) */
@@ -11087,12 +11091,25 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/list)
      */
     readonly list: HTMLDataListElement | null;
-    /** Defines the maximum acceptable value for an input element with type="number".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field. */
+    /**
+     * Defines the maximum acceptable value for an input element with type="number".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/max)
+     */
     max: string;
-    /** Sets or retrieves the maximum number of characters that the user can enter in a text control. */
+    /**
+     * Sets or retrieves the maximum number of characters that the user can enter in a text control.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/maxLength)
+     */
     maxLength: number;
-    /** Defines the minimum acceptable value for an input element with type="number". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field. */
+    /**
+     * Defines the minimum acceptable value for an input element with type="number". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/min)
+     */
     min: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/minLength) */
     minLength: number;
     /**
      * Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.
@@ -11123,9 +11140,17 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     required: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionDirection) */
     selectionDirection: "forward" | "backward" | "none" | null;
-    /** Gets or sets the end position or offset of a text selection. */
+    /**
+     * Gets or sets the end position or offset of a text selection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionEnd)
+     */
     selectionEnd: number | null;
-    /** Gets or sets the starting position or offset of a text selection. */
+    /**
+     * Gets or sets the starting position or offset of a text selection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionStart)
+     */
     selectionStart: number | null;
     size: number;
     /** The address or URL of the a media resource that is to be considered. */
@@ -11155,7 +11180,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/validity)
      */
     readonly validity: ValidityState;
-    /** Returns the value of the data at the cursor's current position. */
+    /**
+     * Returns the value of the data at the cursor's current position.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/value)
+     */
     value: string;
     /** Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an "InvalidStateError" DOMException if the control isn't date- or time-based. */
     valueAsDate: Date | null;
@@ -12618,6 +12647,7 @@ declare var HTMLSlotElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement)
  */
 interface HTMLSourceElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/height) */
     height: number;
     /**
      * Gets or sets the intended media type of the media source.
@@ -12641,6 +12671,7 @@ interface HTMLSourceElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/type)
      */
     type: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/width) */
     width: number;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
