@@ -26,8 +26,8 @@ export async function getInterfaceElementMergeData(): Promise<WebIdl> {
     const namespace = key.startsWith("SVG")
       ? "SVG"
       : key.startsWith("MathML")
-      ? "MathML"
-      : undefined;
+        ? "MathML"
+        : undefined;
     data.interfaces!.interface[key] = {
       element: elements.map((el) => ({
         namespace,

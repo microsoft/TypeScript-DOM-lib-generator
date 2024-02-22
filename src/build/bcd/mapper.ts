@@ -35,7 +35,7 @@ function mergeCompatStatements(data?: Identifier): CompatStatement | undefined {
   const base = Object.fromEntries(
     Object.keys(statements[0].support).map((key) => {
       return [key, [] as SimpleSupportStatement[]];
-    })
+    }),
   );
 
   for (const statement of statements) {
@@ -56,13 +56,13 @@ function mergeCompatStatements(data?: Identifier): CompatStatement | undefined {
 function mapInterfaceLike(
   name: string,
   i: Browser.Interface,
-  mapper: (data: DataToMap) => any
+  mapper: (data: DataToMap) => any,
 ) {
   const data = i.mixin
     ? api.__mixins[name]
     : i.legacyNamespace
-    ? api[i.legacyNamespace][name]
-    : api[name];
+      ? api[i.legacyNamespace][name]
+      : api[name];
   const intCompat = data?.__compat;
   const mapped = mapper({ key: name, compat: intCompat, mixin: !!i.mixin });
   if (!data) {
@@ -82,14 +82,12 @@ function mapInterfaceLike(
       mixin: !!i.mixin,
     });
   };
-  // https://github.com/mdn/browser-compat-data/issues/20114 for inconsistent static member problem
-  const needsStatic =
-    name === "CSS" ? true : name === "Module" ? false : undefined;
-  const methods = filterMapRecord(i.methods?.method, recordMapper, needsStatic);
+
+  const methods = filterMapRecord(i.methods?.method, recordMapper, i.namespace);
   const properties = filterMapRecord(
     i.properties?.property,
     recordMapper,
-    needsStatic
+    i.namespace,
   );
 
   if (i.iterator) {
@@ -98,7 +96,7 @@ function mapInterfaceLike(
     // for iterable methods such as values(). Use that as a fallback.
     // See also: https://github.com/mdn/browser-compat-data/issues/6367
     const iteratorCompat = mergeCompatStatements(
-      data[iteratorKey] ?? data["values"]
+      data[iteratorKey] ?? data["values"],
     );
     const iteratorMapped = mapper({
       key: iteratorKey,
@@ -124,7 +122,7 @@ function mapInterfaceLike(
 
 export function mapToBcdCompat(
   webidl: Browser.WebIdl,
-  mapper: (data: DataToMap) => any
+  mapper: (data: DataToMap) => any,
 ): Browser.WebIdl | undefined {
   const map = (name: string, i: Browser.Interface) =>
     mapInterfaceLike(name, i, mapper);
@@ -132,7 +130,7 @@ export function mapToBcdCompat(
   const interfaces = filterMapRecord(webidl.interfaces?.interface, map);
   const mixins = filterMapRecord(webidl.mixins?.mixin, map);
   const namespaces = mapDefined(webidl.namespaces, (n) =>
-    mapInterfaceLike(n.name, n, mapper)
+    mapInterfaceLike(n.name, n, mapper),
   );
   if (
     !isEmptyRecord(interfaces) ||

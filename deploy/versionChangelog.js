@@ -9,7 +9,7 @@ import { basename } from "path";
 const [name, before, to] = process.argv.slice(2);
 if (!name || !before || !to) {
   throw new Error(
-    "Expected three arguments: package name, version before, version to"
+    "Expected three arguments: package name, version before, version to",
   );
 }
 

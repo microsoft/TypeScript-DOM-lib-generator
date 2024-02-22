@@ -6,7 +6,7 @@ This tool is used to generate the web-based `lib.dom.d.ts` file which is include
 
 A feature needs to be supported by two or more major browser engines to be included here, to make sure there is a good consensus among vendors: __Gecko__ (Firefox), __Blink__ (Chrome/Edge), and __WebKit__ (Safari).
 
-If the condition is met but still is not available here, first check the [contribution guidelines](#contribution-guidelines) below and then please [file an issue](hthttps://github.com/microsoft/TypeScript-DOM-lib-generator/issues/new).
+If the condition is met but still is not available here, first check the [contribution guidelines](#contribution-guidelines) below and then please [file an issue](https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/new).
 
 ## Build Instructions
 

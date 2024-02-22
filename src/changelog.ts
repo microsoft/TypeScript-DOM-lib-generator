@@ -17,7 +17,7 @@ function mapInterfaceToMembers(interfaces: ts.InterfaceDeclaration[]) {
   for (const decl of interfaces) {
     interfaceToMemberMap.set(
       decl.name.text,
-      decl.members.map((m) => m.name?.getText()).filter((n) => n) as string[]
+      decl.members.map((m) => m.name?.getText()).filter((n) => n) as string[],
     );
   }
   return interfaceToMemberMap;
@@ -28,7 +28,7 @@ function extractTypesFromFile(file: string) {
     "dom",
     file,
     ts.ScriptTarget.ES2015,
-    /*setParentNodes */ true
+    /*setParentNodes */ true,
   );
 
   const interfaceNames = source.statements
@@ -36,10 +36,10 @@ function extractTypesFromFile(file: string) {
     .map((v) => v.declarationList.declarations[0].name.getText(source));
   const tsInterfacedecls = source.statements.filter(ts.isInterfaceDeclaration);
   const idlInterfaceDecls = tsInterfacedecls.filter((i) =>
-    interfaceNames.includes(i.name.text)
+    interfaceNames.includes(i.name.text),
   );
   const otherDecls = tsInterfacedecls.filter(
-    (i) => !interfaceNames.includes(i.name.text)
+    (i) => !interfaceNames.includes(i.name.text),
   );
 
   const interfaceToMemberMap = mapInterfaceToMembers(idlInterfaceDecls);
@@ -74,11 +74,11 @@ function compareSet<T>(x: Set<T>, y: Set<T>) {
 function diffTypes(previous: string, current: string) {
   function diff(
     previousMap: Map<string, string[]>,
-    currentMap: Map<string, string[]>
+    currentMap: Map<string, string[]>,
   ) {
     const { added, removed, common } = compareSet(
       new Set(previousMap.keys()),
-      new Set(currentMap.keys())
+      new Set(currentMap.keys()),
     );
     const modified = new Map<
       string,
@@ -101,7 +101,7 @@ function diffTypes(previous: string, current: string) {
   return {
     interfaces: diff(
       previousTypes.interfaceToMemberMap,
-      currentTypes.interfaceToMemberMap
+      currentTypes.interfaceToMemberMap,
     ),
     others: diff(previousTypes.otherToMemberMap, currentTypes.otherToMemberMap),
   };
@@ -150,7 +150,7 @@ export function generateDefaultFromRecentTag(): string {
 
 export function generateChangelogFrom(
   previous: string,
-  current: string
+  current: string,
 ): string {
   const {
     interfaces: { added, removed, modified },

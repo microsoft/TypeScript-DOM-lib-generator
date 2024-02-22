@@ -14,19 +14,19 @@ const tscWD = maybeTSWorkingDir.find((wd) => existsSync(wd));
 
 if (!tscWD)
   throw new Error(
-    "Could not find a TypeScript clone to put the generated files in."
+    "Could not find a TypeScript clone to put the generated files in.",
   );
 
 const generatedFiles = readdirSync("generated");
 const filesToSend = generatedFiles.filter(
-  (file) => file.includes("dom.") || file.includes("webworker.")
+  (file) => file.includes("dom.") || file.includes("webworker."),
 );
 
 const generatedDir = new URL("../generated/", import.meta.url);
 postProcessDTSFiles(
   /** @type {any} */
   ({ files: filesToSend.map((f) => ({ to: f })) }),
-  generatedDir
+  generatedDir,
 );
 
 filesToSend.forEach((file) => {
@@ -38,5 +38,5 @@ filesToSend.forEach((file) => {
 console.log(
   `Moved ${filesToSend
     .map((f) => f.replace(".generated", ""))
-    .join(", ")} to '${tscWD}/src/lib'.`
+    .join(", ")} to '${tscWD}/src/lib'.`,
 );

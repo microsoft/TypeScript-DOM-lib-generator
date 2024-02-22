@@ -86,7 +86,7 @@ const go = async () => {
     pkg.files.forEach((fileRef) => {
       fs.copyFileSync(
         new URL(fileRef.from, import.meta.url),
-        new URL(fileRef.to, packagePath)
+        new URL(fileRef.to, packagePath),
       );
     });
 
@@ -120,7 +120,7 @@ async function updatePackageJSON(pkg, packagePath) {
   let version = "0.0.1";
   try {
     const npmResponse = await fetch(
-      `https://registry.npmjs.org/${packageJSON.name}`
+      `https://registry.npmjs.org/${packageJSON.name}`,
     );
     /** @type {*} */
     const npmPackage = await npmResponse.json();
@@ -143,9 +143,9 @@ async function updatePackageJSON(pkg, packagePath) {
 
   fs.writeFileSync(
     pkgJSONPath,
-    format(JSON.stringify(packageJSON), {
+    await format(JSON.stringify(packageJSON), {
       filepath: fileURLToPath(pkgJSONPath),
-    })
+    }),
   );
 
   return packageJSON;
@@ -167,7 +167,7 @@ function copyREADME(pkg, pkgJSON, writePath) {
     .replace("{{version}}", pkgJSON.version)
     .replace(
       "{{release_href}}",
-      `https://github.com/microsoft/TypeScript-DOM-lib-generator/releases/tag/${htmlEncodedTag}`
+      `https://github.com/microsoft/TypeScript-DOM-lib-generator/releases/tag/${htmlEncodedTag}`,
     );
 
   fs.writeFileSync(writePath, readme);
@@ -200,7 +200,7 @@ export function postProcessDTSFiles(pkg, packagePath) {
   iterateThroughFiles((content) => {
     return content.replace(
       "abort(reason?: any): AbortSignal;",
-      "// abort(reason?: any): AbortSignal; - To be re-added in the future"
+      "// abort(reason?: any): AbortSignal; - To be re-added in the future",
     );
   });
 

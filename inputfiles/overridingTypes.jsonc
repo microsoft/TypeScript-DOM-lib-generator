@@ -2096,6 +2096,10 @@
                         {
                             "name": "datachannel",
                             "type": "RTCDataChannelEvent"
+                        },
+                        {
+                            "name": "icecandidateerror",
+                            "type": "RTCPeerConnectionIceErrorEvent"
                         }
                     ]
                 },
@@ -2361,6 +2365,15 @@
                         "setOrientation": {
                             "name": "setOrientation",
                             "deprecated": true
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEvent": {
+                "properties": {
+                    "property": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
                         }
                     }
                 }
@@ -3091,10 +3104,30 @@
                     }
                 }
             },
+            "MIDIInput": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "midimessage",
+                            "type": "MIDIMessageEvent"
+                        }
+                    ]
+                }
+            },
             "MIDIInputMap": {
                 "iterator": {
                     // https://github.com/mdn/browser-compat-data/pull/18352
                     "exposed": "Window"
+                }
+            },
+            "MIDIPort": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "statechange",
+                            "type": "MIDIConnectionEvent"
+                        }
+                    ]
                 }
             },
             "Clients": {
@@ -3325,6 +3358,15 @@
                     "member": {
                         "name": {
                             "type": "PermissionName"
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEventInit": {
+                "members": {
+                    "member": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
                         }
                     }
                 }

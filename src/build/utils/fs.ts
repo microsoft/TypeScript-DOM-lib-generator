@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 
 export async function tryReadFile(
-  path: string | URL
+  path: string | URL,
 ): Promise<string | undefined> {
   try {
     return await readFile(path, "utf-8");
