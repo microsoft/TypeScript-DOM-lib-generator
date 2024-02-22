@@ -1217,17 +1217,17 @@ export function emitWebIdl(
         extendedGenericEventSupertype
           ? [{ name: "T", default: "EventTarget", extends: "EventTarget" }]
           : i.typeParameters,
-        processedIName
-      )}`
+        processedIName,
+      )}`,
     );
 
     if (finalExtends.length) {
       printer.print(
         ` extends ${assertUnique(
           finalExtends.map((name) =>
-            name === extendedGenericEventSupertype ? `${name}<T>` : name
-          )
-        ).join(", ")}`
+            name === extendedGenericEventSupertype ? `${name}<T>` : name,
+          ),
+        ).join(", ")}`,
       );
     }
     printer.print(" {");
