@@ -1729,55 +1729,7 @@
                     }
                 }
             },
-            "CompositionEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "UIEvent<T>"
-            },
-            "FocusEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "UIEvent<T>"                
-            },
-            "InputEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "UIEvent<T>"                
-            },
-            "KeyboardEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "UIEvent<T>"                
-            },
             "MouseEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "UIEvent<T>" ,
                 "methods": {
                     "method": {
                         "initMouseEvent": {
@@ -1788,46 +1740,6 @@
                         }
                     }
                 }
-            },
-            "TouchEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "UIEvent<T>"                
-            },
-            "DragEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "MouseEvent<T>"                
-            },
-            "PointerEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "MouseEvent<T>"                
-            },
-            "WheelEvent": {
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "EventTarget",
-                        "extends": "EventTarget"
-                    }
-                ],
-                "extends": "MouseEvent<T>"                
             },
             "DOMException": {
                 "extends": "Error"

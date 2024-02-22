@@ -62,6 +62,8 @@ export const baseTypeConversionMap = new Map<string, string>([
   ["EventHandler", "EventHandler"],
 ]);
 
+export const genericEventSupertypes = new Set(["UIEvent", "MouseEvent"]);
+
 export function deepFilter<T>(
   obj: T,
   fn: (o: any, n: string | undefined) => boolean

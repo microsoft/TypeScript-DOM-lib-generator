@@ -9,6 +9,7 @@ import {
   integerTypes,
   baseTypeConversionMap,
   assertUnique,
+  genericEventSupertypes,
 } from "./helpers.js";
 import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
 
@@ -1202,17 +1203,32 @@ export function emitWebIdl(
 
     emitComments(i, printer.printLine);
 
-    printer.print(
-      `interface ${getNameWithTypeParameter(i.typeParameters, processedIName)}`
-    );
-
     const finalExtends = [i.extends || "Object"]
       .concat(getImplementList(i.name))
       .filter((i) => i !== "Object")
       .map(processIName);
 
+    const extendedGenericEventSupertype = i.typeParameters
+      ? undefined
+      : finalExtends.find((name) => genericEventSupertypes.has(name));
+
+    printer.print(
+      `interface ${getNameWithTypeParameter(
+        extendedGenericEventSupertype
+          ? [{ name: "T", default: "EventTarget", extends: "EventTarget" }]
+          : i.typeParameters,
+        processedIName
+      )}`
+    );
+
     if (finalExtends.length) {
-      printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);
+      printer.print(
+        ` extends ${assertUnique(
+          finalExtends.map((name) =>
+            name === extendedGenericEventSupertype ? `${name}<T>` : name
+          )
+        ).join(", ")}`
+      );
     }
     printer.print(" {");
     printer.endLine();
