@@ -318,9 +318,25 @@ export function emitWebIdl(
     return distinct(mixinsWithConstant);
   }
 
-  function getEventTypeInInterface(eName: string, i: Browser.Interface) {
+  function getEventTypeInInterface(
+    eName: string,
+    i: Browser.Interface,
+    specifyEventTypeParameter = false,
+  ) {
     function getGenericEventType(baseName: string) {
-      if (baseName === "ProgressEvent" && !i.mixin) {
+      if (
+        specifyEventTypeParameter &&
+        genericEventSupertypes.has(baseName) &&
+        i.typeParameters?.some((typeParameter) => typeParameter.name === "T")
+      ) {
+        return `${baseName}<T>`;
+      }
+
+      if (
+        (genericEventSupertypes.has(baseName) ||
+          baseName === "ProgressEvent") &&
+        !i.mixin
+      ) {
         return `${baseName}<${i.name}>`;
       }
       return baseName;
@@ -797,7 +813,11 @@ export function emitWebIdl(
         // events in different interfaces. For example, "onerror" handles "ErrorEvent"
         // normally, but in "SVGSVGElement" it handles "SVGError" event instead.
         const eType = p.eventHandler
-          ? getEventTypeInInterface(p.eventHandler!, i)
+          ? getEventTypeInInterface(
+              p.eventHandler!,
+              i,
+              emitScope === EmitScope.InstanceOnly,
+            )
           : "Event";
         pType = `(${emitEventHandlerThis(prefix, i)}ev: ${eType}) => any`;
         if (typeof p.type === "string" && !p.type.endsWith("NonNull")) {
@@ -1187,6 +1207,8 @@ export function emitWebIdl(
 
   function emitInterfaceDeclaration(i: Browser.Interface) {
     function processIName(iName: string) {
+      if (iName === "GlobalEventHandlers" && i.name !== iName)
+        return `${iName}<${i.name}>`;
       return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
     }
 

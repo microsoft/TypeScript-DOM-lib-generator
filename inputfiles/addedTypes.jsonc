@@ -50,6 +50,13 @@
                 }
             },
             "GlobalEventHandlers": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
                 "events": {
                     "event": [
                         {
