@@ -585,16 +585,16 @@ interface RsaPssParams extends Algorithm {
 interface SecurityPolicyViolationEventInit extends EventInit {
     blockedURI?: string;
     columnNumber?: number;
-    disposition: SecurityPolicyViolationEventDisposition;
-    documentURI: string;
-    effectiveDirective: string;
+    disposition?: SecurityPolicyViolationEventDisposition;
+    documentURI?: string;
+    effectiveDirective?: string;
     lineNumber?: number;
-    originalPolicy: string;
+    originalPolicy?: string;
     referrer?: string;
     sample?: string;
     sourceFile?: string;
-    statusCode: number;
-    violatedDirective: string;
+    statusCode?: number;
+    violatedDirective?: string;
 }
 
 interface StorageEstimate {
@@ -728,6 +728,8 @@ interface WebTransportHash {
 
 interface WebTransportOptions {
     allowPooling?: boolean;
+    anticipatedConcurrentIncomingBidirectionalStreams?: number | null;
+    anticipatedConcurrentIncomingUnidirectionalStreams?: number | null;
     congestionControl?: WebTransportCongestionControl;
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
@@ -3575,6 +3577,20 @@ declare var ImageData: {
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
+/**
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InstallEvent)
+ */
+interface InstallEvent extends ExtendableEvent {
+}
+
+/** @deprecated */
+declare var InstallEvent: {
+    prototype: InstallEvent;
+    new(): InstallEvent;
+};
+
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile) */
 interface KHR_parallel_shader_compile {
     readonly COMPLETION_STATUS_KHR: 0x91B1;
@@ -4881,6 +4897,7 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
 
 /**
  * This ServiceWorker API interface represents the global execution context of a service worker.
+ * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope)
  */

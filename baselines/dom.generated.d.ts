@@ -270,6 +270,10 @@ interface ConstrainULongRange extends ULongRange {
     ideal?: number;
 }
 
+interface ContentVisibilityAutoStateChangeEventInit extends EventInit {
+    skipped?: boolean;
+}
+
 interface ConvolverOptions extends AudioNodeOptions {
     buffer?: AudioBuffer | null;
     disableNormalization?: boolean;
@@ -285,6 +289,7 @@ interface CredentialPropertiesOutput {
 }
 
 interface CredentialRequestOptions {
+    digital?: DigitalCredentialRequestOptions;
     mediation?: CredentialMediationRequirement;
     publicKey?: PublicKeyCredentialRequestOptions;
     signal?: AbortSignal;
@@ -378,6 +383,10 @@ interface DeviceOrientationEventInit extends EventInit {
     alpha?: number | null;
     beta?: number | null;
     gamma?: number | null;
+}
+
+interface DigitalCredentialRequestOptions {
+    providers?: IdentityRequestProvider[];
 }
 
 interface DisplayMediaStreamOptions {
@@ -635,6 +644,11 @@ interface IIRFilterOptions extends AudioNodeOptions {
     feedforward: number[];
 }
 
+interface IdentityRequestProvider {
+    protocol: string;
+    request: string;
+}
+
 interface IdleRequestOptions {
     timeout?: number;
 }
@@ -865,9 +879,6 @@ interface MediaRecorderOptions {
 
 interface MediaSessionActionDetails {
     action: MediaSessionAction;
-    fastSeek?: boolean;
-    seekOffset?: number;
-    seekTime?: number;
 }
 
 interface MediaStreamAudioSourceOptions {
@@ -1753,16 +1764,16 @@ interface ScrollToOptions extends ScrollOptions {
 interface SecurityPolicyViolationEventInit extends EventInit {
     blockedURI?: string;
     columnNumber?: number;
-    disposition: SecurityPolicyViolationEventDisposition;
-    documentURI: string;
-    effectiveDirective: string;
+    disposition?: SecurityPolicyViolationEventDisposition;
+    documentURI?: string;
+    effectiveDirective?: string;
     lineNumber?: number;
-    originalPolicy: string;
+    originalPolicy?: string;
     referrer?: string;
     sample?: string;
     sourceFile?: string;
-    statusCode: number;
-    violatedDirective: string;
+    statusCode?: number;
+    violatedDirective?: string;
 }
 
 interface ShadowRootInit {
@@ -2112,6 +2123,8 @@ interface WebTransportHash {
 
 interface WebTransportOptions {
     allowPooling?: boolean;
+    anticipatedConcurrentIncomingBidirectionalStreams?: number | null;
+    anticipatedConcurrentIncomingUnidirectionalStreams?: number | null;
     congestionControl?: WebTransportCongestionControl;
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
@@ -4090,6 +4103,8 @@ interface CSSStyleDeclaration {
     containerType: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/content) */
     content: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/content-visibility) */
+    contentVisibility: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-increment) */
     counterIncrement: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-reset) */
@@ -4591,6 +4606,7 @@ interface CSSStyleDeclaration {
     textUnderlinePosition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap) */
     textWrap: string;
+    textWrapMode: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/top) */
     top: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/touch-action) */
@@ -5813,6 +5829,17 @@ declare var ConstantSourceNode: {
     new(context: BaseAudioContext, options?: ConstantSourceOptions): ConstantSourceNode;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent) */
+interface ContentVisibilityAutoStateChangeEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped) */
+    readonly skipped: boolean;
+}
+
+declare var ContentVisibilityAutoStateChangeEvent: {
+    prototype: ContentVisibilityAutoStateChangeEvent;
+    new(type: string, eventInitDict?: ContentVisibilityAutoStateChangeEventInit): ContentVisibilityAutoStateChangeEvent;
+};
+
 /**
  * An AudioNode that performs a Linear Convolution on a given AudioBuffer, often used to achieve a reverb effect. A ConvolverNode always has exactly one input and one output.
  *
@@ -5972,6 +5999,16 @@ interface CustomEvent<T = any> extends Event {
 declare var CustomEvent: {
     prototype: CustomEvent;
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomStateSet) */
+interface CustomStateSet {
+    forEach(callbackfn: (value: string, key: string, parent: CustomStateSet) => void, thisArg?: any): void;
+}
+
+declare var CustomStateSet: {
+    prototype: CustomStateSet;
+    new(): CustomStateSet;
 };
 
 /**
@@ -7162,6 +7199,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
+    createEvent(eventInterface: "ContentVisibilityAutoStateChangeEvent"): ContentVisibilityAutoStateChangeEvent;
     createEvent(eventInterface: "CustomEvent"): CustomEvent;
     createEvent(eventInterface: "DeviceMotionEvent"): DeviceMotionEvent;
     createEvent(eventInterface: "DeviceOrientationEvent"): DeviceOrientationEvent;
@@ -7939,6 +7977,8 @@ interface ElementInternals extends ARIAMixin {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/shadowRoot)
      */
     readonly shadowRoot: ShadowRoot | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/states) */
+    readonly states: CustomStateSet;
     /**
      * Returns the error message that would be shown to the user if internals's target element was to be checked for validity.
      *
@@ -8717,7 +8757,6 @@ declare var GainNode: {
 
 /**
  * This Gamepad API interface defines an individual gamepad or other controller, allowing access to information such as button presses, axis positions, and id.
- * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Gamepad)
  */
@@ -8746,7 +8785,6 @@ declare var Gamepad: {
 
 /**
  * An individual button of a gamepad or other controller, allowing access to the current state of different types of buttons available on the control device.
- * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadButton)
  */
@@ -8766,7 +8804,6 @@ declare var GamepadButton: {
 
 /**
  * This Gamepad API interface contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected and Window.gamepaddisconnected are fired in response to.
- * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadEvent)
  */
@@ -21488,6 +21525,8 @@ interface ShadowRootEventMap {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot) */
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/clonable) */
+    readonly clonable: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/delegatesFocus) */
     readonly delegatesFocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/host) */
@@ -26018,7 +26057,11 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly window: Window & typeof globalThis;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/alert) */
     alert(message?: any): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur) */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur)
+     */
     blur(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelIdleCallback) */
     cancelIdleCallback(handle: number): void;
@@ -27643,7 +27686,11 @@ declare var visualViewport: VisualViewport | null;
 declare var window: Window & typeof globalThis;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/alert) */
 declare function alert(message?: any): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur) */
+/**
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur)
+ */
 declare function blur(): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelIdleCallback) */
 declare function cancelIdleCallback(handle: number): void;
@@ -28503,7 +28550,7 @@ type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
 type VideoEncoderBitrateMode = "constant" | "quantizer" | "variable";
 type VideoFacingModeEnum = "environment" | "left" | "right" | "user";
 type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";
-type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I422" | "I444" | "NV12" | "RGBA" | "RGBX";
+type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I420AP10" | "I420AP12" | "I420P10" | "I420P12" | "I422" | "I422A" | "I422AP10" | "I422AP12" | "I422P10" | "I422P12" | "I444" | "I444A" | "I444AP10" | "I444AP12" | "I444P10" | "I444P12" | "NV12" | "RGBA" | "RGBX";
 type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
 type WakeLockType = "screen";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";

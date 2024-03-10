@@ -551,16 +551,16 @@ interface RsaPssParams extends Algorithm {
 interface SecurityPolicyViolationEventInit extends EventInit {
     blockedURI?: string;
     columnNumber?: number;
-    disposition: SecurityPolicyViolationEventDisposition;
-    documentURI: string;
-    effectiveDirective: string;
+    disposition?: SecurityPolicyViolationEventDisposition;
+    documentURI?: string;
+    effectiveDirective?: string;
     lineNumber?: number;
-    originalPolicy: string;
+    originalPolicy?: string;
     referrer?: string;
     sample?: string;
     sourceFile?: string;
-    statusCode: number;
-    violatedDirective: string;
+    statusCode?: number;
+    violatedDirective?: string;
 }
 
 interface StorageEstimate {
@@ -694,6 +694,8 @@ interface WebTransportHash {
 
 interface WebTransportOptions {
     allowPooling?: boolean;
+    anticipatedConcurrentIncomingBidirectionalStreams?: number | null;
+    anticipatedConcurrentIncomingUnidirectionalStreams?: number | null;
     congestionControl?: WebTransportCongestionControl;
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];

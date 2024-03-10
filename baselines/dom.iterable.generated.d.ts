@@ -70,6 +70,9 @@ interface CanvasPathDrawingStyles {
     setLineDash(segments: Iterable<number>): void;
 }
 
+interface CustomStateSet extends Set<string> {
+}
+
 interface DOMRectList {
     [Symbol.iterator](): IterableIterator<DOMRect>;
 }
