@@ -270,6 +270,10 @@ interface ConstrainULongRange extends ULongRange {
     ideal?: number;
 }
 
+interface ContentVisibilityAutoStateChangeEventInit extends EventInit {
+    skipped?: boolean;
+}
+
 interface ConvolverOptions extends AudioNodeOptions {
     buffer?: AudioBuffer | null;
     disableNormalization?: boolean;
@@ -4090,6 +4094,8 @@ interface CSSStyleDeclaration {
     containerType: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/content) */
     content: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/content-visibility) */
+    contentVisibility: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-increment) */
     counterIncrement: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-reset) */
@@ -4591,6 +4597,7 @@ interface CSSStyleDeclaration {
     textUnderlinePosition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap) */
     textWrap: string;
+    textWrapMode: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/top) */
     top: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/touch-action) */
@@ -5813,6 +5820,17 @@ declare var ConstantSourceNode: {
     new(context: BaseAudioContext, options?: ConstantSourceOptions): ConstantSourceNode;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent) */
+interface ContentVisibilityAutoStateChangeEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped) */
+    readonly skipped: boolean;
+}
+
+declare var ContentVisibilityAutoStateChangeEvent: {
+    prototype: ContentVisibilityAutoStateChangeEvent;
+    new(type: string, eventInitDict?: ContentVisibilityAutoStateChangeEventInit): ContentVisibilityAutoStateChangeEvent;
+};
+
 /**
  * An AudioNode that performs a Linear Convolution on a given AudioBuffer, often used to achieve a reverb effect. A ConvolverNode always has exactly one input and one output.
  *
@@ -5972,6 +5990,16 @@ interface CustomEvent<T = any> extends Event {
 declare var CustomEvent: {
     prototype: CustomEvent;
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomStateSet) */
+interface CustomStateSet {
+    forEach(callbackfn: (value: string, key: string, parent: CustomStateSet) => void, thisArg?: any): void;
+}
+
+declare var CustomStateSet: {
+    prototype: CustomStateSet;
+    new(): CustomStateSet;
 };
 
 /**
@@ -7162,6 +7190,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
+    createEvent(eventInterface: "ContentVisibilityAutoStateChangeEvent"): ContentVisibilityAutoStateChangeEvent;
     createEvent(eventInterface: "CustomEvent"): CustomEvent;
     createEvent(eventInterface: "DeviceMotionEvent"): DeviceMotionEvent;
     createEvent(eventInterface: "DeviceOrientationEvent"): DeviceOrientationEvent;
@@ -7939,6 +7968,8 @@ interface ElementInternals extends ARIAMixin {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/shadowRoot)
      */
     readonly shadowRoot: ShadowRoot | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/states) */
+    readonly states: CustomStateSet;
     /**
      * Returns the error message that would be shown to the user if internals's target element was to be checked for validity.
      *
@@ -21488,6 +21519,8 @@ interface ShadowRootEventMap {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot) */
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/clonable) */
+    readonly clonable: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/delegatesFocus) */
     readonly delegatesFocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/host) */
@@ -26018,7 +26051,11 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly window: Window & typeof globalThis;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/alert) */
     alert(message?: any): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur) */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur)
+     */
     blur(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelIdleCallback) */
     cancelIdleCallback(handle: number): void;
@@ -27643,7 +27680,11 @@ declare var visualViewport: VisualViewport | null;
 declare var window: Window & typeof globalThis;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/alert) */
 declare function alert(message?: any): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur) */
+/**
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/blur)
+ */
 declare function blur(): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelIdleCallback) */
 declare function cancelIdleCallback(handle: number): void;
