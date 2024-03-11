@@ -1617,6 +1617,16 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
+interface ReadableStreamBYOBReadDoneResult<T> {
+    done: true;
+    value: T | undefined;
+}
+
+interface ReadableStreamDefaultReadDoneResult {
+    done: true;
+    value: undefined;
+}
+
 interface ReadableStreamGetReaderOptions {
     /**
      * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
@@ -1624,11 +1634,6 @@ interface ReadableStreamGetReaderOptions {
      * This call behaves the same way as the no-argument variant, except that it only works on readable byte streams, i.e. streams which were constructed specifically with the ability to handle "bring your own buffer" reading. The returned BYOB reader provides the ability to directly read individual chunks from the stream via its read() method, into developer-supplied buffers, allowing more precise control over allocation.
      */
     mode?: ReadableStreamReaderMode;
-}
-
-interface ReadableStreamReadDoneResult<T> {
-    done: true;
-    value?: T;
 }
 
 interface ReadableStreamReadValueResult<T> {
@@ -18775,7 +18780,7 @@ declare var ReadableStream: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamBYOBReadResult<T>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock) */
     releaseLock(): void;
 }
@@ -18820,7 +18825,7 @@ declare var ReadableStreamDefaultController: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader) */
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/read) */
-    read(): Promise<ReadableStreamReadResult<R>>;
+    read(): Promise<ReadableStreamDefaultReadResult<R>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/releaseLock) */
     releaseLock(): void;
 }
@@ -28356,8 +28361,10 @@ type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
 type RTCRtpTransform = RTCRtpScriptTransform;
+type ReadableStreamBYOBReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamBYOBReadDoneResult<T>;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
-type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
+type ReadableStreamDefaultReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamDefaultReadDoneResult;
+type ReadableStreamReadResult<T> = ReadableStreamDefaultReadResult<T> | ReadableStreamBYOBReadResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type ReportList = Report[];

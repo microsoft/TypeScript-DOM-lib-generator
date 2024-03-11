@@ -2656,7 +2656,7 @@
                                             "overrideType": "T"
                                         }
                                     ],
-                                    "overrideType": "Promise<ReadableStreamReadResult<T>>"
+                                    "overrideType": "Promise<ReadableStreamBYOBReadResult<T>>"
                                 }
                             }
                         }
@@ -2694,7 +2694,7 @@
                         "read": {
                             "signature": {
                                 "0": {
-                                    "overrideType": "Promise<ReadableStreamReadResult<R>>"
+                                    "overrideType": "Promise<ReadableStreamDefaultReadResult<R>>"
                                 }
                             }
                         }
