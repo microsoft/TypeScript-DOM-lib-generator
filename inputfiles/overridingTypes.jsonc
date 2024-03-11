@@ -1281,6 +1281,10 @@
             "HTMLSelectElement": {
                 "properties": {
                     "property": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "\"select-one\" | \"select-multiple\""
+                        },
                         "autocomplete": {
                             "name": "autocomplete",
                             "overrideType": "AutoFill"
