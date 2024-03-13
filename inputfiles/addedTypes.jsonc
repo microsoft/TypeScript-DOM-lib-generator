@@ -50,6 +50,13 @@
                 }
             },
             "GlobalEventHandlers": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
                 "events": {
                     "event": [
                         {
@@ -768,6 +775,24 @@
                 "extends": "DOMRect",
                 "noInterfaceObject": true
             },
+            "Event": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
+                "properties": {
+                    "property": {
+                        "currentTarget": {
+                            "name": "currentTarget",
+                            "readonly": true,
+                            "overrideType": "T"
+                        }
+                    }
+                }
+            },
             /*
               Keeping EventListener and EventListenerObject isn't the most elegant way to handle
               the event listeners, but we need to keep the EventListener as an extendable interface
@@ -776,6 +801,13 @@
             "EventListener": {
                 "name": "EventListener",
                 "noInterfaceObject": true,
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
                 "methods": {
                     "method": {
                         // This is a hack to add a call signature, but I think it's reasonable
@@ -783,7 +815,7 @@
                         // emitter for this one case.
                         "callable": {
                             "overrideSignatures": [
-                                "(evt: Event): void"
+                                "(evt: Event<T>): void"
                             ]
                         }
                     }
@@ -792,11 +824,18 @@
             "EventListenerObject": {
                 "name": "EventListenerObject",
                 "noInterfaceObject": true,
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
                 "methods": {
                     "method": {
                         "handleEvent": {
                             "overrideSignatures": [
-                                "handleEvent(object: Event): void"
+                                "handleEvent(object: Event<T>): void"
                             ]
                         }
                     }
@@ -920,6 +959,14 @@
                 }
             },
             "UIEvent": {
+                "extends": "Event<T>",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ],
                 "properties": {
                     "property": {
                         "which": {
@@ -1539,7 +1586,14 @@
             },
             {
                 "name": "EventListenerOrEventListenerObject",
-                "overrideType": "EventListener | EventListenerObject"
+                "overrideType": "EventListener<T> | EventListenerObject<T>",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "EventTarget",
+                        "extends": "EventTarget"
+                    }
+                ]
             },
             {
                 "name": "OptionalPrefixToken",
