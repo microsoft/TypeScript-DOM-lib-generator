@@ -5978,7 +5978,7 @@ interface CustomEvent<T = any> extends Event {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
      */
-    readonly detail: T;
+    readonly detail: T extends {} ? T : null;
     /**
      * @deprecated
      *
