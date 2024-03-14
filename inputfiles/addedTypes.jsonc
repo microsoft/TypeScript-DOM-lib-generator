@@ -624,7 +624,7 @@
                         "item": {
                             "name": "item",
                             "overrideSignatures": [
-                                "item(index: number): TNode"
+                                "item(index: number): TNode | null"
                             ]
                         }
                     }
