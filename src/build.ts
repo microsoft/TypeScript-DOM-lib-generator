@@ -52,6 +52,12 @@ async function emitFlavor(
     result,
   );
 
+  const toStringTag = emitWebIdl(exposed, options.global[0], "toStringTag");
+  await fs.writeFile(
+    new URL(`${options.name}.tostringtag.d.ts`, options.outputFolder),
+    toStringTag,
+  );
+
   const iterators = emitWebIdl(exposed, options.global[0], "sync");
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
