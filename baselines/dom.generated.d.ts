@@ -1626,6 +1626,17 @@ interface ReadableStreamGetReaderOptions {
     mode?: ReadableStreamReaderMode;
 }
 
+interface ReadableStreamIteratorOptions {
+    /**
+     * Asynchronously iterates over the chunks in the stream's internal queue.
+     *
+     * Asynchronously iterating over the stream will lock it, preventing any other consumer from acquiring a reader. The lock will be released if the async iterator's return() method is called, e.g. by breaking out of the loop.
+     *
+     * By default, calling the async iterator's return() method will also cancel the stream. To prevent this, use the stream's values() method, passing true for the preventCancel option.
+     */
+    preventCancel?: boolean;
+}
+
 interface ReadableStreamReadDoneResult<T> {
     done: true;
     value?: T;
@@ -2196,6 +2207,8 @@ interface ARIAMixin {
     ariaAtomic: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete) */
     ariaAutoComplete: string | null;
+    ariaBrailleLabel: string | null;
+    ariaBrailleRoleDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBusy) */
     ariaBusy: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaChecked) */
@@ -3824,6 +3837,15 @@ declare var CSSSkewY: {
     new(ay: CSSNumericValue): CSSSkewY;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStartingStyleRule) */
+interface CSSStartingStyleRule extends CSSGroupingRule {
+}
+
+declare var CSSStartingStyleRule: {
+    prototype: CSSStartingStyleRule;
+    new(): CSSStartingStyleRule;
+};
+
 /**
  * An object that is a CSS declaration block, and exposes style information and various style-related methods and properties.
  *
@@ -4598,6 +4620,7 @@ interface CSSStyleDeclaration {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap) */
     textWrap: string;
     textWrapMode: string;
+    textWrapStyle: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/top) */
     top: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/touch-action) */
