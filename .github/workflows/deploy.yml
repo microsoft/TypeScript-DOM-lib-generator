@@ -6,6 +6,9 @@ on:
     - cron: "0 4 * * *"
   workflow_dispatch: null
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
