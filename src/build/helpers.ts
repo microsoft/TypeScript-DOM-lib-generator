@@ -32,6 +32,12 @@ export const stringTypes = new Set([
   "USVString",
   "CSSOMString",
 ]);
+// Trusted Types https://w3c.github.io/trusted-types/dist/spec/
+export const trustedStringTypes = new Set([
+  "HTMLString",
+  "ScriptString",
+  "ScriptURLString",
+]);
 const floatTypes = new Set([
   "float",
   "unrestricted float",
@@ -49,11 +55,12 @@ const sameTypes = new Set([
   "void",
 ]);
 export const baseTypeConversionMap = new Map<string, string>([
-  ...[...bufferSourceTypes].map((type) => [type, type] as [string, string]),
-  ...[...integerTypes].map((type) => [type, "number"] as [string, string]),
-  ...[...floatTypes].map((type) => [type, "number"] as [string, string]),
-  ...[...stringTypes].map((type) => [type, "string"] as [string, string]),
-  ...[...sameTypes].map((type) => [type, type] as [string, string]),
+  ...[...bufferSourceTypes].map((type) => [type, type] as const),
+  ...[...integerTypes, ...floatTypes].map((type) => [type, "number"] as const),
+  ...[...stringTypes, ...trustedStringTypes].map(
+    (type) => [type, "string"] as const,
+  ),
+  ...[...sameTypes].map((type) => [type, type] as const),
   ["object", "any"],
   ["sequence", "Array"],
   ["ObservableArray", "Array"],
