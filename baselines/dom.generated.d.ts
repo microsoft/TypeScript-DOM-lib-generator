@@ -563,6 +563,8 @@ interface GainOptions extends AudioNodeOptions {
 
 interface GamepadEffectParameters {
     duration?: number;
+    leftTrigger?: number;
+    rightTrigger?: number;
     startDelay?: number;
     strongMagnitude?: number;
     weakMagnitude?: number;
@@ -1365,8 +1367,8 @@ interface RTCIceCandidateInit {
 }
 
 interface RTCIceCandidatePair {
-    local?: RTCIceCandidate;
-    remote?: RTCIceCandidate;
+    local: RTCIceCandidate;
+    remote: RTCIceCandidate;
 }
 
 interface RTCIceCandidatePairStats extends RTCStats {
@@ -1783,6 +1785,7 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 interface ShadowRootInit {
     delegatesFocus?: boolean;
     mode: ShadowRootMode;
+    serializable?: boolean;
     slotAssignment?: SlotAssignmentMode;
 }
 
@@ -28451,7 +28454,7 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
-type GamepadHapticEffectType = "dual-rumble";
+type GamepadHapticEffectType = "dual-rumble" | "trigger-rumble";
 type GamepadHapticsResult = "complete" | "preempted";
 type GamepadMappingType = "" | "standard" | "xr-standard";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";

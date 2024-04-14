@@ -327,6 +327,13 @@
                     }
                 }
             },
+            "MediaMetadataInit": {
+                "members": {
+                    "member": {
+                        "chapterInfo": null // Blink experimental only as of 2024-04
+                    }
+                }
+            },
             "MediaRecorderOptions": {
                 "members": {
                     "member": {
@@ -711,7 +718,8 @@
             "VideoFrameBufferInit": {
                 "members": {
                     "member": {
-                        "transfer": null // No implementation as of 2023-06.
+                        "transfer": null, // Blink only as of 2024-04.
+                        "metadata": null // No implementation as of 2024-04. Linked to VideoFrame.metadata()
                     }
                 }
             },
