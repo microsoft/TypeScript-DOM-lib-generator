@@ -23,3 +23,8 @@ updates:
       dev-dependencies:
         patterns:
           - "*"
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
