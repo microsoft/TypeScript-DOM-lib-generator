@@ -14,6 +14,12 @@ updates:
     versioning-strategy: "increase-if-necessary"
     # Update all dependencies in a single PR
     groups:
+      # ESLint usually requires updating together for major updates
+      eslint:
+        patterns:
+          - "eslint*"
+          - "@typescript-eslint/*"
+      # Other updates should be okay all at once
       dev-dependencies:
         patterns:
           - "*"
