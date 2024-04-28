@@ -10,5 +10,10 @@ updates:
     # Check the npm registry for updates every month
     schedule:
       interval: "monthly"
-    # Bump versions only in package-lock.json
-    versioning-strategy: "lockfile-only"
+    # Usually only bump versions in package-lock.json, but update package.json for major version updates
+    versioning-strategy: "increase-if-necessary"
+    # Update all dependencies in a single PR
+    groups:
+      dev-dependencies:
+        patterns:
+          - "*"
