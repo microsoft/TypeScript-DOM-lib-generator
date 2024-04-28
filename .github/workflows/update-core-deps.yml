@@ -20,7 +20,7 @@ jobs:
       # Use ncu to detect major version changes
       - run: npm i -g npm-check-updates
       # typescript-eslint doesn't yet support eslint 9
-      - run: ncu -u -x eslint
+      - run: ncu -u -x eslint -x @eslint/js
       - run: npm i
       - run: git restore package.json
       # package-lock wants to remember the original version numbers of package.json
