@@ -234,6 +234,23 @@
                             "overrideType": "ReadableStream<Uint8Array>"
                         }
                     }
+                },
+                "methods": {
+                    "method": {
+                        "json": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "default": "any"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<T>"
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "WindowOrWorkerGlobalScope": {
