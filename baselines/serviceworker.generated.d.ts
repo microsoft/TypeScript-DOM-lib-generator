@@ -884,7 +884,7 @@ interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/formData) */
     formData(): Promise<FormData>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/json) */
-    json(): Promise<any>;
+    json<T = any>(): Promise<T>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/text) */
     text(): Promise<string>;
 }
