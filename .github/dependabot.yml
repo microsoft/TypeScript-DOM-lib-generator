@@ -23,6 +23,9 @@ updates:
       dev-dependencies:
         patterns:
           - "*"
+        exclude-patterns:
+          - "@mdn/*"
+          - "@webref/*"
   # Enable version updates for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"

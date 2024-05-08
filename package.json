@@ -56,7 +56,6 @@
     "node-fetch": "^3.3.2",
     "prettier": "^3.2.5",
     "print-diff": "^2.0.0",
-    "styleless-innertext": "^1.1.5",
     "typescript": "^5.4.5",
     "webidl2": "^24.4.1"
   }
