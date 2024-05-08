@@ -19,7 +19,7 @@ jobs:
 
       # Use ncu to detect major version changes
       - run: npm i -g npm-check-updates
-      - run: ncu -u
+      - run: ncu -u @webref* @mdn*
       - run: npm i
       - run: git restore package.json
       # package-lock wants to remember the original version numbers of package.json
