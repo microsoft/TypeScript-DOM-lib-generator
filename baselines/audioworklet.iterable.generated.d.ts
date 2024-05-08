@@ -17,11 +17,11 @@ interface MessageEvent<T = any> {
 }
 
 interface URLSearchParams {
-    [Symbol.iterator](): IterableIterator<[string, string]>;
+    [Symbol.iterator](): IterableIterator<[string, string], BuiltinIteratorReturn>;
     /** Returns an array of key, value pairs for every entry in the search params. */
-    entries(): IterableIterator<[string, string]>;
+    entries(): IterableIterator<[string, string], BuiltinIteratorReturn>;
     /** Returns a list of keys in the search params. */
-    keys(): IterableIterator<string>;
+    keys(): IterableIterator<string, BuiltinIteratorReturn>;
     /** Returns a list of values in the search params. */
-    values(): IterableIterator<string>;
+    values(): IterableIterator<string, BuiltinIteratorReturn>;
 }

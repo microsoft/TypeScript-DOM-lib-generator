@@ -1581,15 +1581,15 @@ export function emitWebIdl(
       const methods = [
         {
           name: "entries",
-          definition: `IterableIterator<[${keyType}, ${valueType}]>`,
+          definition: `IterableIterator<[${keyType}, ${valueType}], BuiltinIteratorReturn>`,
         },
         {
           name: "keys",
-          definition: `IterableIterator<${keyType}>`,
+          definition: `IterableIterator<${keyType}, BuiltinIteratorReturn>`,
         },
         {
           name: "values",
-          definition: `IterableIterator<${valueType}>`,
+          definition: `IterableIterator<${valueType}, BuiltinIteratorReturn>`,
         },
       ];
 
@@ -1699,7 +1699,7 @@ export function emitWebIdl(
       printer.printLine(
         `[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(
           subtypes,
-        )}>;`,
+        )}, BuiltinIteratorReturn>;`,
       );
     }
     if (i.iterator?.kind === "iterable" && subtypes) {
@@ -1731,7 +1731,7 @@ export function emitWebIdl(
         methods = [
           {
             name: "values",
-            definition: `AsyncIterableIterator<${valueType}>`,
+            definition: `AsyncIterableIterator<${valueType}, BuiltinIteratorReturn>`,
           },
         ];
       } else {
@@ -1740,15 +1740,15 @@ export function emitWebIdl(
         methods = [
           {
             name: "entries",
-            definition: `AsyncIterableIterator<[${keyType}, ${valueType}]>`,
+            definition: `AsyncIterableIterator<[${keyType}, ${valueType}], BuiltinIteratorReturn>`,
           },
           {
             name: "keys",
-            definition: `AsyncIterableIterator<${keyType}>`,
+            definition: `AsyncIterableIterator<${keyType}, BuiltinIteratorReturn>`,
           },
           {
             name: "values",
-            definition: `AsyncIterableIterator<${valueType}>`,
+            definition: `AsyncIterableIterator<${valueType}, BuiltinIteratorReturn>`,
           },
         ];
       }
@@ -1780,7 +1780,7 @@ export function emitWebIdl(
     printer.printLine(
       `[Symbol.asyncIterator](${paramsString}): AsyncIterableIterator<${stringifySingleOrTupleTypes(
         subtypes,
-      )}>;`,
+      )}, BuiltinIteratorReturn>;`,
     );
     emitAsyncIterableDeclarationMethods(i, subtypes, paramsString);
 

@@ -3,6 +3,6 @@
 /////////////////////////////
 
 interface ReadableStream<R = any> {
-    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): AsyncIterableIterator<R>;
-    values(options?: ReadableStreamIteratorOptions): AsyncIterableIterator<R>;
+    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): AsyncIterableIterator<R, BuiltinIteratorReturn>;
+    values(options?: ReadableStreamIteratorOptions): AsyncIterableIterator<R, BuiltinIteratorReturn>;
 }

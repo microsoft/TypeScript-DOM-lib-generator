@@ -57,7 +57,7 @@
     "prettier": "^3.2.5",
     "print-diff": "^2.0.0",
     "styleless-innertext": "^1.1.5",
-    "typescript": "^5.4.5",
+    "typescript": "https://typescript.visualstudio.com/cf7ac146-d525-443c-b23c-0d58337efebc/_apis/build/builds/161649/artifacts?artifactName=tgz&fileId=C5994DAD6E68EB22CEBC874AC424247EC9A7E65004713CA7344555BE7947DB2202&fileName=/typescript-5.5.0-insiders.20240507.tgz",
     "webidl2": "^24.4.1"
   }
 }
