@@ -7706,7 +7706,7 @@ interface ElementEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
-interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, NonDocumentTypeChildNode, ParentNode, Slottable {
+interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attributes) */
     readonly attributes: NamedNodeMap;
     /**
@@ -7735,6 +7735,8 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id)
      */
     id: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/innerHTML) */
+    innerHTML: string;
     /**
      * Returns the local name.
      *
@@ -7874,7 +7876,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, InnerHTML, Non
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentElement) */
     insertAdjacentElement(where: InsertPosition, element: Element): Element | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentHTML) */
-    insertAdjacentHTML(position: InsertPosition, text: string): void;
+    insertAdjacentHTML(position: InsertPosition, string: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentText) */
     insertAdjacentText(where: InsertPosition, data: string): void;
     /**
@@ -14547,11 +14549,6 @@ declare var ImageData: {
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
-interface InnerHTML {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/innerHTML) */
-    innerHTML: string;
-}
-
 /**
  * Available only in secure contexts.
  *
@@ -16940,12 +16937,6 @@ declare var OffscreenCanvas: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D) */
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     readonly canvas: OffscreenCanvas;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D/commit)
-     */
-    commit(): void;
 }
 
 declare var OffscreenCanvasRenderingContext2D: {
@@ -18624,7 +18615,7 @@ interface RTCRtpTransceiver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver/sender) */
     readonly sender: RTCRtpSender;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver/setCodecPreferences) */
-    setCodecPreferences(codecs: RTCRtpCodecCapability[]): void;
+    setCodecPreferences(codecs: RTCRtpCodec[]): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver/stop) */
     stop(): void;
 }
@@ -18744,7 +18735,7 @@ interface Range extends AbstractRange {
      */
     comparePoint(node: Node, offset: number): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/createContextualFragment) */
-    createContextualFragment(fragment: string): DocumentFragment;
+    createContextualFragment(string: string): DocumentFragment;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/deleteContents) */
     deleteContents(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/detach) */
@@ -21591,13 +21582,15 @@ interface ShadowRootEventMap {
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot) */
-interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot, InnerHTML {
+interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/clonable) */
     readonly clonable: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/delegatesFocus) */
     readonly delegatesFocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/host) */
     readonly host: Element;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/innerHTML) */
+    innerHTML: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/mode) */
     readonly mode: ShadowRootMode;
     onslotchange: ((this: ShadowRoot, ev: Event) => any) | null;

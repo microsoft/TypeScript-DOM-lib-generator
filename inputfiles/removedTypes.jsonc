@@ -133,6 +133,12 @@
                     }
                 }
             },
+            "RTCEncodedAudioFrame": {
+                "constructor": null // Blink experimental only as of 2024-05
+            },
+            "RTCEncodedVideoFrame": {
+                "constructor": null // Blink experimental only as of 2024-05
+            },
             "SVGFEGaussianBlurElement": {
                 "constants": {
                     "constant": {
@@ -720,6 +726,14 @@
                     "member": {
                         "transfer": null, // Blink only as of 2024-04.
                         "metadata": null // No implementation as of 2024-04. Linked to VideoFrame.metadata()
+                    }
+                }
+            },
+            "VideoFrameCopyToOptions": {
+                "members": {
+                    "member": {
+                        "colorSpace": null, // Blink experimental only as of 2024-05
+                        "format": null // Blink experimental only as of 2024-05
                     }
                 }
             },
