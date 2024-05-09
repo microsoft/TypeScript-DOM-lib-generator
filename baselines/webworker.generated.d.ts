@@ -510,6 +510,10 @@ interface RTCEncodedAudioFrameMetadata {
     synchronizationSource?: number;
 }
 
+interface RTCEncodedAudioFrameOptions {
+    metadata?: RTCEncodedAudioFrameMetadata;
+}
+
 interface RTCEncodedVideoFrameMetadata {
     contributingSources?: number[];
     dependencies?: number[];
@@ -521,6 +525,10 @@ interface RTCEncodedVideoFrameMetadata {
     temporalIndex?: number;
     timestamp?: number;
     width?: number;
+}
+
+interface RTCEncodedVideoFrameOptions {
+    metadata?: RTCEncodedVideoFrameMetadata;
 }
 
 interface ReadableStreamGetReaderOptions {
@@ -823,6 +831,8 @@ interface VideoFrameBufferInit {
 }
 
 interface VideoFrameCopyToOptions {
+    colorSpace?: PredefinedColorSpace;
+    format?: VideoPixelFormat;
     layout?: PlaneLayout[];
     rect?: DOMRectInit;
 }
@@ -1649,6 +1659,8 @@ interface CanvasShadowStyles {
 }
 
 interface CanvasState {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/isContextLost) */
+    isContextLost(): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/reset) */
     reset(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/restore) */
@@ -4350,8 +4362,6 @@ declare var OffscreenCanvas: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D) */
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     readonly canvas: OffscreenCanvas;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D/commit) */
-    commit(): void;
 }
 
 declare var OffscreenCanvasRenderingContext2D: {
@@ -4760,7 +4770,7 @@ interface RTCEncodedAudioFrame {
 
 declare var RTCEncodedAudioFrame: {
     prototype: RTCEncodedAudioFrame;
-    new(): RTCEncodedAudioFrame;
+    new(originalFrame: RTCEncodedAudioFrame, options?: RTCEncodedAudioFrameOptions): RTCEncodedAudioFrame;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame) */
@@ -4777,7 +4787,7 @@ interface RTCEncodedVideoFrame {
 
 declare var RTCEncodedVideoFrame: {
     prototype: RTCEncodedVideoFrame;
-    new(): RTCEncodedVideoFrame;
+    new(originalFrame: RTCEncodedVideoFrame, options?: RTCEncodedVideoFrameOptions): RTCEncodedVideoFrame;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer) */
