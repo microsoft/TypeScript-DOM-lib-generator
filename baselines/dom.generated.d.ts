@@ -5806,7 +5806,7 @@ declare var Comment: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompositionEvent)
  */
-interface CompositionEvent extends UIEvent {
+interface CompositionEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompositionEvent/data) */
     readonly data: string;
     /**
@@ -6830,7 +6830,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document)
  */
-interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
+interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers<Document>, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     /**
      * Sets or gets the URL for the current document.
      *
@@ -7570,7 +7570,7 @@ declare var DocumentType: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DragEvent)
  */
-interface DragEvent extends MouseEvent {
+interface DragEvent<T extends EventTarget = EventTarget> extends MouseEvent<T> {
     /**
      * Returns the DataTransfer object for the event.
      *
@@ -8094,7 +8094,7 @@ declare var ErrorEvent: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
-interface Event {
+interface Event<T extends EventTarget = EventTarget> {
     /**
      * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
      *
@@ -8124,7 +8124,7 @@ interface Event {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)
      */
-    readonly currentTarget: EventTarget | null;
+    readonly currentTarget: T | null;
     /**
      * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
      *
@@ -8228,12 +8228,12 @@ declare var EventCounts: {
     new(): EventCounts;
 };
 
-interface EventListener {
-    (evt: Event): void;
+interface EventListener<T extends EventTarget = EventTarget> {
+    (evt: Event<T>): void;
 }
 
-interface EventListenerObject {
-    handleEvent(object: Event): void;
+interface EventListenerObject<T extends EventTarget = EventTarget> {
+    handleEvent(object: Event<T>): void;
 }
 
 interface EventSourceEventMap {
@@ -8316,7 +8316,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
      */
-    addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
+    addEventListener(type: string, callback: EventListenerOrEventListenerObject<this> | null, options?: AddEventListenerOptions | boolean): void;
     /**
      * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
      *
@@ -8328,7 +8328,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
-    removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    removeEventListener(type: string, callback: EventListenerOrEventListenerObject<this> | null, options?: EventListenerOptions | boolean): void;
 }
 
 declare var EventTarget: {
@@ -8617,7 +8617,7 @@ declare var FileSystemWritableFileStream: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)
  */
-interface FocusEvent extends UIEvent {
+interface FocusEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget) */
     readonly relatedTarget: EventTarget | null;
 }
@@ -9042,147 +9042,147 @@ interface GlobalEventHandlersEventMap {
     "wheel": WheelEvent;
 }
 
-interface GlobalEventHandlers {
+interface GlobalEventHandlers<T extends EventTarget = EventTarget> {
     /**
      * Fires when the user aborts the download.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/abort_event)
      */
-    onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+    onabort: ((this: GlobalEventHandlers<T>, ev: UIEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationcancel_event) */
-    onanimationcancel: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationcancel: ((this: GlobalEventHandlers<T>, ev: AnimationEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationend_event) */
-    onanimationend: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationend: ((this: GlobalEventHandlers<T>, ev: AnimationEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationiteration_event) */
-    onanimationiteration: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationiteration: ((this: GlobalEventHandlers<T>, ev: AnimationEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event) */
-    onanimationstart: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
+    onanimationstart: ((this: GlobalEventHandlers<T>, ev: AnimationEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/auxclick_event) */
-    onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onauxclick: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
-    onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+    onbeforeinput: ((this: GlobalEventHandlers<T>, ev: InputEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
-    onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onbeforetoggle: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the object loses the input focus.
      * @param ev The focus event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/blur_event)
      */
-    onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+    onblur: ((this: GlobalEventHandlers<T>, ev: FocusEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/cancel_event) */
-    oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oncancel: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when playback is possible, but would require further buffering.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canplay_event)
      */
-    oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oncanplay: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canplaythrough_event) */
-    oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oncanplaythrough: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the contents of the object or selection have changed.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/change_event)
      */
-    onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onchange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the user clicks the left mouse button on the object
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/click_event)
      */
-    onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onclick: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
-    onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onclose: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the user clicks the right mouse button in the client area, opening the context menu.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event)
      */
-    oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    oncontextmenu: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/copy_event) */
-    oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+    oncopy: ((this: GlobalEventHandlers<T>, ev: ClipboardEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/cuechange_event) */
-    oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oncuechange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/cut_event) */
-    oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+    oncut: ((this: GlobalEventHandlers<T>, ev: ClipboardEvent) => any) | null;
     /**
      * Fires when the user double-clicks the object.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/dblclick_event)
      */
-    ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    ondblclick: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /**
      * Fires on the source object continuously during a drag operation.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/drag_event)
      */
-    ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondrag: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /**
      * Fires on the source object when the user releases the mouse at the close of a drag operation.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragend_event)
      */
-    ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondragend: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /**
      * Fires on the target element when the user drags the object to a valid drop target.
      * @param ev The drag event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragenter_event)
      */
-    ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondragenter: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /**
      * Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.
      * @param ev The drag event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragleave_event)
      */
-    ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondragleave: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /**
      * Fires on the target element continuously while the user drags the object over a valid drop target.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragover_event)
      */
-    ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondragover: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /**
      * Fires on the source object when the user starts to drag a text selection or selected object.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragstart_event)
      */
-    ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondragstart: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/drop_event) */
-    ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+    ondrop: ((this: GlobalEventHandlers<T>, ev: DragEvent) => any) | null;
     /**
      * Occurs when the duration attribute is updated.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/durationchange_event)
      */
-    ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    ondurationchange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the media element is reset to its initial state.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/emptied_event)
      */
-    onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onemptied: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the end of playback is reached.
      * @param ev The event
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended_event)
      */
-    onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onended: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when an error occurs during object loading.
      * @param ev The event.
@@ -9196,22 +9196,22 @@ interface GlobalEventHandlers {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/focus_event)
      */
-    onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+    onfocus: ((this: GlobalEventHandlers<T>, ev: FocusEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event) */
-    onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+    onformdata: ((this: GlobalEventHandlers<T>, ev: FormDataEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/gotpointercapture_event) */
-    ongotpointercapture: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    ongotpointercapture: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/input_event) */
-    oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oninput: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/invalid_event) */
-    oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    oninvalid: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the user presses a key.
      * @param ev The keyboard event
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/keydown_event)
      */
-    onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+    onkeydown: ((this: GlobalEventHandlers<T>, ev: KeyboardEvent) => any) | null;
     /**
      * Fires when the user presses an alphanumeric key.
      * @param ev The event.
@@ -9219,267 +9219,267 @@ interface GlobalEventHandlers {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/keypress_event)
      */
-    onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+    onkeypress: ((this: GlobalEventHandlers<T>, ev: KeyboardEvent) => any) | null;
     /**
      * Fires when the user releases a key.
      * @param ev The keyboard event
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/keyup_event)
      */
-    onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+    onkeyup: ((this: GlobalEventHandlers<T>, ev: KeyboardEvent) => any) | null;
     /**
      * Fires immediately after the browser loads the object.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/load_event)
      */
-    onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onload: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when media data is loaded at the current playback position.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loadeddata_event)
      */
-    onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onloadeddata: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the duration and dimensions of the media have been determined.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loadedmetadata_event)
      */
-    onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onloadedmetadata: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when Internet Explorer begins looking for media data.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loadstart_event)
      */
-    onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onloadstart: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lostpointercapture_event) */
-    onlostpointercapture: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onlostpointercapture: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /**
      * Fires when the user clicks the object with either mouse button.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mousedown_event)
      */
-    onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmousedown: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseenter_event) */
-    onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmouseenter: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseleave_event) */
-    onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmouseleave: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /**
      * Fires when the user moves the mouse over the object.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mousemove_event)
      */
-    onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmousemove: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /**
      * Fires when the user moves the mouse pointer outside the boundaries of the object.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseout_event)
      */
-    onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmouseout: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /**
      * Fires when the user moves the mouse pointer into the object.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseover_event)
      */
-    onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmouseover: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /**
      * Fires when the user releases a mouse button while the mouse is over the object.
      * @param ev The mouse event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseup_event)
      */
-    onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onmouseup: ((this: GlobalEventHandlers<T>, ev: MouseEvent<T>) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/paste_event) */
-    onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+    onpaste: ((this: GlobalEventHandlers<T>, ev: ClipboardEvent) => any) | null;
     /**
      * Occurs when playback is paused.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/pause_event)
      */
-    onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onpause: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the play method is requested.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/play_event)
      */
-    onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onplay: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the audio or video has started playing.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/playing_event)
      */
-    onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onplaying: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointercancel_event) */
-    onpointercancel: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointercancel: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerdown_event) */
-    onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointerdown: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerenter_event) */
-    onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointerenter: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerleave_event) */
-    onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointerleave: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointermove_event) */
-    onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointermove: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerout_event) */
-    onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointerout: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event) */
-    onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointerover: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event) */
-    onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    onpointerup: ((this: GlobalEventHandlers<T>, ev: PointerEvent) => any) | null;
     /**
      * Occurs to indicate progress while downloading media data.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/progress_event)
      */
-    onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+    onprogress: ((this: GlobalEventHandlers<T>, ev: ProgressEvent) => any) | null;
     /**
      * Occurs when the playback rate is increased or decreased.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ratechange_event)
      */
-    onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onratechange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the user resets a form.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/reset_event)
      */
-    onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onreset: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/resize_event) */
-    onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+    onresize: ((this: GlobalEventHandlers<T>, ev: UIEvent<T>) => any) | null;
     /**
      * Fires when the user repositions the scroll box in the scroll bar on the object.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scroll_event)
      */
-    onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onscroll: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scrollend_event) */
-    onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onscrollend: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/securitypolicyviolation_event) */
-    onsecuritypolicyviolation: ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any) | null;
+    onsecuritypolicyviolation: ((this: GlobalEventHandlers<T>, ev: SecurityPolicyViolationEvent) => any) | null;
     /**
      * Occurs when the seek operation ends.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seeked_event)
      */
-    onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onseeked: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the current playback position is moved.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seeking_event)
      */
-    onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onseeking: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Fires when the current selection changes.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/select_event)
      */
-    onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onselect: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/selectionchange_event) */
-    onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onselectionchange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/selectstart_event) */
-    onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onselectstart: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/slotchange_event) */
-    onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onslotchange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when the download has stopped.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/stalled_event)
      */
-    onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onstalled: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/submit_event) */
-    onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+    onsubmit: ((this: GlobalEventHandlers<T>, ev: SubmitEvent) => any) | null;
     /**
      * Occurs if the load operation has been intentionally halted.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/suspend_event)
      */
-    onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onsuspend: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs to indicate the current playback position.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/timeupdate_event)
      */
-    ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    ontimeupdate: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/toggle_event) */
-    ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    ontoggle: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchcancel_event) */
-    ontouchcancel?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined;
+    ontouchcancel?: ((this: GlobalEventHandlers<T>, ev: TouchEvent) => any) | null | undefined;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchend_event) */
-    ontouchend?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined;
+    ontouchend?: ((this: GlobalEventHandlers<T>, ev: TouchEvent) => any) | null | undefined;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchmove_event) */
-    ontouchmove?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined;
+    ontouchmove?: ((this: GlobalEventHandlers<T>, ev: TouchEvent) => any) | null | undefined;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchstart_event) */
-    ontouchstart?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined;
+    ontouchstart?: ((this: GlobalEventHandlers<T>, ev: TouchEvent) => any) | null | undefined;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitioncancel_event) */
-    ontransitioncancel: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
+    ontransitioncancel: ((this: GlobalEventHandlers<T>, ev: TransitionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionend_event) */
-    ontransitionend: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
+    ontransitionend: ((this: GlobalEventHandlers<T>, ev: TransitionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionrun_event) */
-    ontransitionrun: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
+    ontransitionrun: ((this: GlobalEventHandlers<T>, ev: TransitionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionstart_event) */
-    ontransitionstart: ((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null;
+    ontransitionstart: ((this: GlobalEventHandlers<T>, ev: TransitionEvent) => any) | null;
     /**
      * Occurs when the volume is changed, or playback is muted or unmuted.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/volumechange_event)
      */
-    onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onvolumechange: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * Occurs when playback stops because the next frame of a video resource is not available.
      * @param ev The event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/waiting_event)
      */
-    onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onwaiting: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * @deprecated This is a legacy alias of `onanimationend`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationend_event)
      */
-    onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onwebkitanimationend: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * @deprecated This is a legacy alias of `onanimationiteration`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationiteration_event)
      */
-    onwebkitanimationiteration: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onwebkitanimationiteration: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * @deprecated This is a legacy alias of `onanimationstart`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event)
      */
-    onwebkitanimationstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onwebkitanimationstart: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /**
      * @deprecated This is a legacy alias of `ontransitionend`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionend_event)
      */
-    onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onwebkittransitionend: ((this: GlobalEventHandlers<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/wheel_event) */
-    onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
-    addEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    onwheel: ((this: GlobalEventHandlers<T>, ev: WheelEvent) => any) | null;
+    addEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers<T>, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof GlobalEventHandlersEventMap>(type: K, listener: (this: GlobalEventHandlers<T>, ev: GlobalEventHandlersEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -10157,7 +10157,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
  */
-interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
+interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers<HTMLElement>, HTMLOrSVGElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKey) */
     accessKey: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKeyLabel) */
@@ -14524,7 +14524,7 @@ declare var InputDeviceInfo: {
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent) */
-interface InputEvent extends UIEvent {
+interface InputEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent/data) */
     readonly data: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent/dataTransfer) */
@@ -14606,7 +14606,7 @@ interface KHR_parallel_shader_compile {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)
  */
-interface KeyboardEvent extends UIEvent {
+interface KeyboardEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey) */
     readonly altKey: boolean;
     /**
@@ -15027,7 +15027,7 @@ interface MathMLElementEventMap extends ElementEventMap, GlobalEventHandlersEven
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MathMLElement) */
-interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers<MathMLElement>, HTMLOrSVGElement {
     addEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -15840,7 +15840,7 @@ declare var MimeTypeArray: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)
  */
-interface MouseEvent extends UIEvent {
+interface MouseEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/altKey) */
     readonly altKey: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/button) */
@@ -17847,7 +17847,7 @@ declare var PluginArray: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)
  */
-interface PointerEvent extends MouseEvent {
+interface PointerEvent<T extends EventTarget = EventTarget> extends MouseEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/height) */
     readonly height: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/isPrimary) */
@@ -19531,7 +19531,7 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement)
  */
-interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers<SVGElement>, HTMLOrSVGElement {
     /** @deprecated */
     readonly className: any;
     readonly ownerSVGElement: SVGSVGElement | null;
@@ -22676,7 +22676,7 @@ declare var Touch: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent)
  */
-interface TouchEvent extends UIEvent {
+interface TouchEvent<T extends EventTarget = EventTarget> extends UIEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/altKey) */
     readonly altKey: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/changedTouches) */
@@ -22824,7 +22824,7 @@ declare var TreeWalker: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent)
  */
-interface UIEvent extends Event {
+interface UIEvent<T extends EventTarget = EventTarget> extends Event<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent/detail) */
     readonly detail: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent/view) */
@@ -25859,7 +25859,7 @@ declare var WebTransportError: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WheelEvent)
  */
-interface WheelEvent extends MouseEvent {
+interface WheelEvent<T extends EventTarget = EventTarget> extends MouseEvent<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WheelEvent/deltaMode) */
     readonly deltaMode: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WheelEvent/deltaX) */
@@ -25896,7 +25896,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window)
  */
-interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
+interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers<Window>, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
     /**
      * @deprecated This is a legacy alias of `navigator`.
      *
@@ -28347,7 +28347,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
-type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+type EventListenerOrEventListenerObject<T extends EventTarget = EventTarget> = EventListener<T> | EventListenerObject<T>;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;

@@ -9,6 +9,7 @@ import {
   integerTypes,
   baseTypeConversionMap,
   assertUnique,
+  genericEventSupertypes,
 } from "./helpers.js";
 import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
 
@@ -317,9 +318,25 @@ export function emitWebIdl(
     return distinct(mixinsWithConstant);
   }
 
-  function getEventTypeInInterface(eName: string, i: Browser.Interface) {
+  function getEventTypeInInterface(
+    eName: string,
+    i: Browser.Interface,
+    specifyEventTypeParameter = false,
+  ) {
     function getGenericEventType(baseName: string) {
-      if (baseName === "ProgressEvent" && !i.mixin) {
+      if (
+        specifyEventTypeParameter &&
+        genericEventSupertypes.has(baseName) &&
+        i.typeParameters?.some((typeParameter) => typeParameter.name === "T")
+      ) {
+        return `${baseName}<T>`;
+      }
+
+      if (
+        (genericEventSupertypes.has(baseName) ||
+          baseName === "ProgressEvent") &&
+        !i.mixin
+      ) {
         return `${baseName}<${i.name}>`;
       }
       return baseName;
@@ -798,7 +815,11 @@ export function emitWebIdl(
         // events in different interfaces. For example, "onerror" handles "ErrorEvent"
         // normally, but in "SVGSVGElement" it handles "SVGError" event instead.
         const eType = p.eventHandler
-          ? getEventTypeInInterface(p.eventHandler!, i)
+          ? getEventTypeInInterface(
+              p.eventHandler!,
+              i,
+              emitScope === EmitScope.InstanceOnly,
+            )
           : "Event";
         pType = `(${emitEventHandlerThis(prefix, i)}ev: ${eType}) => any`;
         if (typeof p.type === "string" && !p.type.endsWith("NonNull")) {
@@ -1188,6 +1209,8 @@ export function emitWebIdl(
 
   function emitInterfaceDeclaration(i: Browser.Interface) {
     function processIName(iName: string) {
+      if (iName === "GlobalEventHandlers" && i.name !== iName)
+        return `${iName}<${i.name}>`;
       return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
     }
 
@@ -1204,17 +1227,32 @@ export function emitWebIdl(
 
     emitComments(i, printer.printLine);
 
-    printer.print(
-      `interface ${getNameWithTypeParameter(i.typeParameters, processedIName)}`,
-    );
-
     const finalExtends = [i.extends || "Object"]
       .concat(getImplementList(i.name))
       .filter((i) => i !== "Object")
       .map(processIName);
 
+    const extendedGenericEventSupertype = i.typeParameters
+      ? undefined
+      : finalExtends.find((name) => genericEventSupertypes.has(name));
+
+    printer.print(
+      `interface ${getNameWithTypeParameter(
+        extendedGenericEventSupertype
+          ? [{ name: "T", default: "EventTarget", extends: "EventTarget" }]
+          : i.typeParameters,
+        processedIName,
+      )}`,
+    );
+
     if (finalExtends.length) {
-      printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);
+      printer.print(
+        ` extends ${assertUnique(
+          finalExtends.map((name) =>
+            name === extendedGenericEventSupertype ? `${name}<T>` : name,
+          ),
+        ).join(", ")}`,
+      );
     }
     printer.print(" {");
     printer.endLine();

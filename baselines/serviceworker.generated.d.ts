@@ -2208,7 +2208,7 @@ declare var ErrorEvent: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
-interface Event {
+interface Event<T extends EventTarget = EventTarget> {
     /**
      * Returns true or false depending on how event was initialized. True if event goes through its target's ancestors in reverse tree order, and false otherwise.
      *
@@ -2238,7 +2238,7 @@ interface Event {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)
      */
-    readonly currentTarget: EventTarget | null;
+    readonly currentTarget: T | null;
     /**
      * Returns true if preventDefault() was invoked successfully to indicate cancelation, and false otherwise.
      *
@@ -2332,12 +2332,12 @@ declare var Event: {
     readonly BUBBLING_PHASE: 3;
 };
 
-interface EventListener {
-    (evt: Event): void;
+interface EventListener<T extends EventTarget = EventTarget> {
+    (evt: Event<T>): void;
 }
 
-interface EventListenerObject {
-    handleEvent(object: Event): void;
+interface EventListenerObject<T extends EventTarget = EventTarget> {
+    handleEvent(object: Event<T>): void;
 }
 
 interface EventSourceEventMap {
@@ -2420,7 +2420,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
      */
-    addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
+    addEventListener(type: string, callback: EventListenerOrEventListenerObject<this> | null, options?: AddEventListenerOptions | boolean): void;
     /**
      * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
      *
@@ -2432,7 +2432,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
-    removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    removeEventListener(type: string, callback: EventListenerOrEventListenerObject<this> | null, options?: EventListenerOptions | boolean): void;
 }
 
 declare var EventTarget: {
@@ -8562,7 +8562,7 @@ type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
-type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
+type EventListenerOrEventListenerObject<T extends EventTarget = EventTarget> = EventListener<T> | EventListenerObject<T>;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
 type Float32List = Float32Array | GLfloat[];
 type FormDataEntryValue = File | string;

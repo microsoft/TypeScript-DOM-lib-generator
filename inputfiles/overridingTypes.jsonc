@@ -3006,7 +3006,7 @@
                                     "param": [
                                         {
                                             "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
+                                            "overrideType": "EventListenerOrEventListenerObject<this>"
                                         }
                                     ]
                                 }
@@ -3018,7 +3018,7 @@
                                     "param": [
                                         {
                                             "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
+                                            "overrideType": "EventListenerOrEventListenerObject<this>"
                                         }
                                     ]
                                 }
