@@ -7967,6 +7967,7 @@ declare var Element: {
 };
 
 interface ElementCSSInlineStyle {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attributeStyleMap) */
     readonly attributeStyleMap: StylePropertyMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style) */
     readonly style: CSSStyleDeclaration;
@@ -10829,6 +10830,7 @@ interface HTMLIFrameElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/align)
      */
     align: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/allow) */
     allow: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/allowFullscreen) */
     allowFullscreen: boolean;
