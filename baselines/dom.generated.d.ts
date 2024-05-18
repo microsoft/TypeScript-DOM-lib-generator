@@ -18664,7 +18664,7 @@ interface RTCSessionDescription {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSessionDescription/type) */
     readonly type: RTCSdpType;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSessionDescription/toJSON) */
-    toJSON(): any;
+    toJSON(): RTCSessionDescriptionInit;
 }
 
 declare var RTCSessionDescription: {
