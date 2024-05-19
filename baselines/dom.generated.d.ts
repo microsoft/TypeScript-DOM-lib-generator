@@ -11430,6 +11430,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     charset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/crossOrigin) */
     crossOrigin: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/disabled) */
     disabled: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/fetchPriority) */
     fetchPriority: string;
