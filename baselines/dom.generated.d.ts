@@ -5752,6 +5752,8 @@ declare var ClipboardEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem)
  */
 interface ClipboardItem {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/presentationStyle) */
+    readonly presentationStyle: PresentationStyle;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/types) */
     readonly types: ReadonlyArray<string>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/getType) */
@@ -5761,6 +5763,7 @@ interface ClipboardItem {
 declare var ClipboardItem: {
     prototype: ClipboardItem;
     new(items: Record<string, string | Blob | PromiseLike<string | Blob>>, options?: ClipboardItemOptions): ClipboardItem;
+    supports(type: string): boolean;
 };
 
 /**
@@ -11450,7 +11453,11 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     imageSrcset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/integrity) */
     integrity: string;
-    /** Sets or retrieves the media type. */
+    /**
+     * Sets or retrieves the media type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/media)
+     */
     media: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/referrerPolicy) */
     referrerPolicy: string;
