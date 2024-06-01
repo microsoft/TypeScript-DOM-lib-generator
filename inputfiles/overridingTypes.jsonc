@@ -1281,6 +1281,10 @@
             "HTMLSelectElement": {
                 "properties": {
                     "property": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "\"select-one\" | \"select-multiple\""
+                        },
                         "autocomplete": {
                             "name": "autocomplete",
                             "overrideType": "AutoFill"
@@ -2096,6 +2100,10 @@
                         {
                             "name": "datachannel",
                             "type": "RTCDataChannelEvent"
+                        },
+                        {
+                            "name": "icecandidateerror",
+                            "type": "RTCPeerConnectionIceErrorEvent"
                         }
                     ]
                 },
@@ -2361,6 +2369,15 @@
                         "setOrientation": {
                             "name": "setOrientation",
                             "deprecated": true
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEvent": {
+                "properties": {
+                    "property": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
                         }
                     }
                 }
@@ -3027,6 +3044,10 @@
                     ]
                 }
             },
+            "InstallEvent": {
+                // https://github.com/mdn/browser-compat-data/issues/22591
+                "exposed": ""
+            },
             "Instance": {
                 "constructor": {
                     "signature": {
@@ -3145,6 +3166,63 @@
                                     "overrideType": "Promise<ReadonlyArray<T[\"type\"] extends \"window\" ? WindowClient : Client>>"
                                 }
                             }
+                        }
+                    }
+                }
+            },
+            "CSSFontFaceRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSFontFaceDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSKeyframeRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSPageRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSPageDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSStyleDeclaration": {
+                "properties": {
+                    "property": {
+                        "cssFloat": {
+                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "name": "cssFloat",
+                            "type": "CSSOMString",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
+                        }
+                    }
+                }
+            },
+            "CSSStyleRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
                         }
                     }
                 }
@@ -3340,11 +3418,39 @@
                     "[property: string]: string | number | null | undefined"
                 ]
             },
+            // https://github.com/w3c/mediasession/issues/322
+            "MediaSessionActionDetails": {
+                "members": {
+                    "member": {
+                        "fastSeek": {
+                            "name": "fastSeek",
+                            "type": "boolean"
+                        },
+                        "seekOffset": {
+                            "name": "seekOffset",
+                            "type": "double"
+                        },
+                        "seekTime": {
+                            "name": "seekTime",
+                            "type": "double"
+                        }
+                    }
+                }
+            },
             "PermissionDescriptor": {
                 "members": {
                     "member": {
                         "name": {
                             "type": "PermissionName"
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEventInit": {
+                "members": {
+                    "member": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
                         }
                     }
                 }

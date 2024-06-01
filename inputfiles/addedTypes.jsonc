@@ -576,6 +576,10 @@
                             "type": "DeviceOrientationEvent"
                         },
                         {
+                            "name": "deviceorientationabsolute",
+                            "type": "DeviceOrientationEvent"
+                        },
+                        {
                             "name": "gamepadconnected",
                             "type": "GamepadEvent"
                         },
@@ -1121,10 +1125,6 @@
                         }
                     ]
                 }
-            },
-            "OverconstrainedError": {
-                "name": "OverconstrainedError",
-                "extends": "Error"
             },
             "ProgressEvent": {
                 "typeParameters": [

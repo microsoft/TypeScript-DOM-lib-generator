@@ -532,6 +532,17 @@ interface ReadableStreamGetReaderOptions {
     mode?: ReadableStreamReaderMode;
 }
 
+interface ReadableStreamIteratorOptions {
+    /**
+     * Asynchronously iterates over the chunks in the stream's internal queue.
+     *
+     * Asynchronously iterating over the stream will lock it, preventing any other consumer from acquiring a reader. The lock will be released if the async iterator's return() method is called, e.g. by breaking out of the loop.
+     *
+     * By default, calling the async iterator's return() method will also cancel the stream. To prevent this, use the stream's values() method, passing true for the preventCancel option.
+     */
+    preventCancel?: boolean;
+}
+
 interface ReadableStreamReadDoneResult<T> {
     done: true;
     value?: T;
@@ -629,16 +640,16 @@ interface RsaPssParams extends Algorithm {
 interface SecurityPolicyViolationEventInit extends EventInit {
     blockedURI?: string;
     columnNumber?: number;
-    disposition: SecurityPolicyViolationEventDisposition;
-    documentURI: string;
-    effectiveDirective: string;
+    disposition?: SecurityPolicyViolationEventDisposition;
+    documentURI?: string;
+    effectiveDirective?: string;
     lineNumber?: number;
-    originalPolicy: string;
+    originalPolicy?: string;
     referrer?: string;
     sample?: string;
     sourceFile?: string;
-    statusCode: number;
-    violatedDirective: string;
+    statusCode?: number;
+    violatedDirective?: string;
 }
 
 interface StorageEstimate {
@@ -953,6 +964,8 @@ declare var AbortSignal: {
     new(): AbortSignal;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static) */
+    any(signals: AbortSignal[]): AbortSignal;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout_static) */
     timeout(milliseconds: number): AbortSignal;
 };
@@ -971,7 +984,9 @@ interface AbstractWorker {
 }
 
 interface AnimationFrameProvider {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
     cancelAnimationFrame(handle: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
     requestAnimationFrame(callback: FrameRequestCallback): number;
 }
 
@@ -4766,7 +4781,7 @@ declare var RTCEncodedVideoFrame: {
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer) */
-interface RTCRtpScriptTransformer {
+interface RTCRtpScriptTransformer extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/options) */
     readonly options: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/readable) */
@@ -5164,6 +5179,7 @@ interface ServiceWorkerContainer extends EventTarget {
     oncontrollerchange: ((this: ServiceWorkerContainer, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/message_event) */
     onmessage: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/messageerror_event) */
     onmessageerror: ((this: ServiceWorkerContainer, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/ready) */
     readonly ready: Promise<ServiceWorkerRegistration>;
@@ -5200,6 +5216,7 @@ interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
 
 /**
  * This ServiceWorker API interface represents the global execution context of a service worker.
+ * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope)
  */
@@ -6039,7 +6056,6 @@ declare var WebGL2RenderingContext: {
     readonly STENCIL: 0x1802;
     readonly RED: 0x1903;
     readonly RGB8: 0x8051;
-    readonly RGBA8: 0x8058;
     readonly RGB10_A2: 0x8059;
     readonly TEXTURE_BINDING_3D: 0x806A;
     readonly UNPACK_SKIP_IMAGES: 0x806D;
@@ -6550,6 +6566,7 @@ declare var WebGL2RenderingContext: {
     readonly RENDERBUFFER: 0x8D41;
     readonly RGBA4: 0x8056;
     readonly RGB5_A1: 0x8057;
+    readonly RGBA8: 0x8058;
     readonly RGB565: 0x8D62;
     readonly DEPTH_COMPONENT16: 0x81A5;
     readonly STENCIL_INDEX8: 0x8D48;
@@ -6784,7 +6801,6 @@ interface WebGL2RenderingContextBase {
     readonly STENCIL: 0x1802;
     readonly RED: 0x1903;
     readonly RGB8: 0x8051;
-    readonly RGBA8: 0x8058;
     readonly RGB10_A2: 0x8059;
     readonly TEXTURE_BINDING_3D: 0x806A;
     readonly UNPACK_SKIP_IMAGES: 0x806D;
@@ -7457,6 +7473,7 @@ declare var WebGLRenderingContext: {
     readonly RENDERBUFFER: 0x8D41;
     readonly RGBA4: 0x8056;
     readonly RGB5_A1: 0x8057;
+    readonly RGBA8: 0x8058;
     readonly RGB565: 0x8D62;
     readonly DEPTH_COMPONENT16: 0x81A5;
     readonly STENCIL_INDEX8: 0x8D48;
@@ -8030,6 +8047,7 @@ interface WebGLRenderingContextBase {
     readonly RENDERBUFFER: 0x8D41;
     readonly RGBA4: 0x8056;
     readonly RGB5_A1: 0x8057;
+    readonly RGBA8: 0x8058;
     readonly RGB565: 0x8D62;
     readonly DEPTH_COMPONENT16: 0x81A5;
     readonly STENCIL_INDEX8: 0x8D48;
@@ -9255,7 +9273,9 @@ declare function setInterval(handler: TimerHandler, timeout?: number, ...argumen
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
 declare function cancelAnimationFrame(handle: number): void;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;

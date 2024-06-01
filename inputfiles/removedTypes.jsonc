@@ -19,9 +19,6 @@
             "ConnectionType": {
                 "value": ["wimax"]
             },
-            "GamepadHapticActuatorType": {
-                "value": ["dual-rumble"] // Blink only as of 2022-12
-            },
             "MediaSessionAction": {
                 "value": [
                     "enterpictureinpicture", // Blink only as of 2023-10
@@ -47,6 +44,25 @@
             "VideoMatrixCoefficients": {
                 "value": [
                     "bt2020-ncl" // Blink only as of 2022-10
+                ]
+            },
+            "VideoPixelFormat": {
+                "value": [
+                    // All no implementation as of 2024-03
+                    "I420AP10",
+                    "I420AP12",
+                    "I420P10",
+                    "I420P12",
+                    "I422A",
+                    "I422AP10",
+                    "I422AP12",
+                    "I422P10",
+                    "I422P12",
+                    "I444A",
+                    "I444AP10",
+                    "I444AP12",
+                    "I444P10",
+                    "I444P12"
                 ]
             },
             "VideoTransferCharacteristics": {
@@ -114,13 +130,6 @@
                                 }
                             }
                         }
-                    }
-                }
-            },
-            "ServiceWorkerGlobalScope": {
-                "properties": {
-                    "property": {
-                        "onsync": null // No implementations as of 2023-11
                     }
                 }
             },
@@ -238,6 +247,7 @@
                         // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
+                        "digital": null, // Behind a flag in WebKit and Blink as of 2024-03
                         "federated": null,
                         "identity": null,
                         "otp": null,
@@ -314,6 +324,13 @@
                 "members": {
                     "member": {
                         "keySystemConfiguration": null
+                    }
+                }
+            },
+            "MediaMetadataInit": {
+                "members": {
+                    "member": {
+                        "chapterInfo": null // Blink experimental only as of 2024-04
                     }
                 }
             },
@@ -527,8 +544,6 @@
             "PublicKeyCredentialRequestOptions": {
                 "members": {
                     "member": {
-                        "attestation": null, // No implementation as of 2023-09
-                        "attestationFormats": null, // No implementation as of 2023-09
                         "hints": null // // No implementation as of 2023-09
                     }
                 }
@@ -703,7 +718,8 @@
             "VideoFrameBufferInit": {
                 "members": {
                     "member": {
-                        "transfer": null // No implementation as of 2023-06.
+                        "transfer": null, // Blink only as of 2024-04.
+                        "metadata": null // No implementation as of 2024-04. Linked to VideoFrame.metadata()
                     }
                 }
             },
@@ -711,6 +727,14 @@
                 "members": {
                     "member": {
                         "xrCompatible": null
+                    }
+                }
+            },
+            "WebTransportOptions": {
+                "members": {
+                    "member": {
+                        "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2024-03
+                        "anticipatedConcurrentIncomingUnidirectionalStreams": null // No implementation as of 2024-03
                     }
                 }
             },

@@ -4,14 +4,18 @@ on:
   issue_comment: { types: [created] }
   pull_request_review: { types: [submitted] }
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run Codeowners merge check
-        uses: OSS-Docs-Tools/code-owner-self-merge@1.6.3
+        uses: OSS-Docs-Tools/code-owner-self-merge@1.6.6
         if: github.repository == 'microsoft/TypeScript-DOM-lib-generator'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

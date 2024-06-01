@@ -10,5 +10,24 @@ updates:
     # Check the npm registry for updates every month
     schedule:
       interval: "monthly"
-    # Bump versions only in package-lock.json
-    versioning-strategy: "lockfile-only"
+    # Usually only bump versions in package-lock.json, but update package.json for major version updates
+    versioning-strategy: "increase-if-necessary"
+    # Update all dependencies in a single PR
+    groups:
+      # ESLint usually requires updating together for major updates
+      eslint:
+        patterns:
+          - "eslint*"
+          - "@typescript-eslint/*"
+      # Other updates should be okay all at once
+      dev-dependencies:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "@mdn/*"
+          - "@webref/*"
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

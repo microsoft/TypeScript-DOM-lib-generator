@@ -66,6 +66,17 @@ interface ReadableStreamGetReaderOptions {
     mode?: ReadableStreamReaderMode;
 }
 
+interface ReadableStreamIteratorOptions {
+    /**
+     * Asynchronously iterates over the chunks in the stream's internal queue.
+     *
+     * Asynchronously iterating over the stream will lock it, preventing any other consumer from acquiring a reader. The lock will be released if the async iterator's return() method is called, e.g. by breaking out of the loop.
+     *
+     * By default, calling the async iterator's return() method will also cancel the stream. To prevent this, use the stream's values() method, passing true for the preventCancel option.
+     */
+    preventCancel?: boolean;
+}
+
 interface ReadableStreamReadDoneResult<T> {
     done: true;
     value?: T;
@@ -225,6 +236,8 @@ declare var AbortSignal: {
     new(): AbortSignal;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static) */
+    any(signals: AbortSignal[]): AbortSignal;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope) */
@@ -1067,7 +1080,11 @@ declare var URLSearchParams: {
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
-/** Available only in secure contexts. */
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
+ */
 interface WorkletGlobalScope {
 }
 

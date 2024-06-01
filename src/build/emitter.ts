@@ -650,7 +650,9 @@ export function emitWebIdl(
 
   function acceptsUrl(p: Browser.Param) {
     return (
-      (p.name.toLowerCase().includes("url") && p.type === "USVString") ||
+      (p.name.toLowerCase().includes("url") &&
+        typeof p.type === "string" &&
+        ["USVString", "ScriptURLString"].includes(p.type)) ||
       p.type === "RequestInfo"
     );
   }
@@ -770,8 +772,8 @@ export function emitWebIdl(
   function isCovariantEventHandler(i: Browser.Interface, p: Browser.Property) {
     return (
       isEventHandler(p) &&
-      iNameToEhParents[i.name].some(
-        (parent) => parent.properties?.property.hasOwnProperty(p.name),
+      iNameToEhParents[i.name].some((parent) =>
+        parent.properties?.property.hasOwnProperty(p.name),
       )
     );
   }

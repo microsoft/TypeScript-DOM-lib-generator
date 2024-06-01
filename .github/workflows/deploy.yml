@@ -6,13 +6,16 @@ on:
     - cron: "0 4 * * *"
   workflow_dispatch: null
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
           cache: npm
