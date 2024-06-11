@@ -2111,7 +2111,21 @@
                     "method": {
                         "addIceCandidate": {
                             "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "overrideType": "RTCIceCandidateInit | null"
+                                        }
+                                    ]
+                                },
                                 "1": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "overrideType": "RTCIceCandidateInit | null"
+                                        }
+                                    ],
                                     "deprecated": true
                                 }
                             }
