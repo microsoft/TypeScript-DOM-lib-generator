@@ -2173,7 +2173,7 @@
                                     "param": [
                                         {
                                             "name": "candidate",
-                                            "overrideType": "RTCIceCandidateInit | null"
+                                            "nullable": true
                                         }
                                     ]
                                 },
@@ -2181,7 +2181,7 @@
                                     "param": [
                                         {
                                             "name": "candidate",
-                                            "overrideType": "RTCIceCandidateInit | null"
+                                            "nullable": true
                                         }
                                     ],
                                     "deprecated": true
