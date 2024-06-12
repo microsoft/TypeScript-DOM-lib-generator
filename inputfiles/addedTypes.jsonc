@@ -449,6 +449,7 @@
     },
     "interfaces": {
         "interface": {
+            // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to allow method definitions.
             "ImportMeta": {
                 "name": "ImportMeta",
                 "exposed": "Window Worker",
