@@ -1263,7 +1263,10 @@
                             "required": true
                         }
                     }
-                }
+                },
+                "overrideIndexSignatures": [
+                    "resolve(moduleName: string): string"
+                ]
             },
             "KeyboardEventInit": {
                 "members": {

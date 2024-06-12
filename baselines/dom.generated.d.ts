@@ -669,6 +669,7 @@ interface ImageEncodeOptions {
 
 interface ImportMeta {
     url: string;
+    resolve(moduleName: string): string;
 }
 
 interface InputEventInit extends UIEventInit {
