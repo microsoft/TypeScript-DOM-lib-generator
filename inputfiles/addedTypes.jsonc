@@ -449,6 +449,37 @@
     },
     "interfaces": {
         "interface": {
+            "ImportMeta": {
+                "name": "ImportMeta",
+                "exposed": "Window Worker",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "url": {
+                            "name": "url",
+                            "type": "DOMString"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "resolve": {
+                            "name": "resolve",
+                            "signature": [
+                                {
+                                    "param": [
+                                        {
+                                            "name": "moduleName",
+                                            "type": "DOMString"
+                                        }
+                                    ],
+                                    "type": "DOMString"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
             "AudioWorkletProcessorImpl": {
                 "name": "AudioWorkletProcessorImpl",
                 "extends": "AudioWorkletProcessor",
@@ -1253,21 +1284,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "ImportMeta": {
-                "name": "ImportMeta",
-                "members": {
-                    "member": {
-                        "url": {
-                            "name": "url",
-                            "type": "DOMString",
-                            "required": true
-                        }
-                    }
-                },
-                "overrideIndexSignatures": [
-                    "resolve(moduleName: string): string"
-                ]
-            },
             "KeyboardEventInit": {
                 "members": {
                     "member": {

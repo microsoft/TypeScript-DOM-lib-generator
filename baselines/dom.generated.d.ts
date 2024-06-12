@@ -667,11 +667,6 @@ interface ImageEncodeOptions {
     type?: string;
 }
 
-interface ImportMeta {
-    url: string;
-    resolve(moduleName: string): string;
-}
-
 interface InputEventInit extends UIEventInit {
     data?: string | null;
     dataTransfer?: DataTransfer | null;
@@ -14559,6 +14554,11 @@ declare var ImageData: {
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
+
+interface ImportMeta {
+    url: string;
+    resolve(moduleName: string): string;
+}
 
 /**
  * Available only in secure contexts.

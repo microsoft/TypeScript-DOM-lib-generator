@@ -322,11 +322,6 @@ interface ImageEncodeOptions {
     type?: string;
 }
 
-interface ImportMeta {
-    url: string;
-    resolve(moduleName: string): string;
-}
-
 interface JsonWebKey {
     alg?: string;
     crv?: string;
@@ -3850,6 +3845,11 @@ declare var ImageData: {
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
+
+interface ImportMeta {
+    url: string;
+    resolve(moduleName: string): string;
+}
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile) */
 interface KHR_parallel_shader_compile {
