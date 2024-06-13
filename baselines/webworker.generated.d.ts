@@ -3848,7 +3848,7 @@ declare var ImageData: {
 
 interface ImportMeta {
     url: string;
-    resolve(moduleName: string): string;
+    resolve(specifier: string): string;
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile) */

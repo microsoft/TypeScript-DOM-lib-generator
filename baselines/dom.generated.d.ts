@@ -14557,7 +14557,7 @@ declare var ImageData: {
 
 interface ImportMeta {
     url: string;
-    resolve(moduleName: string): string;
+    resolve(specifier: string): string;
 }
 
 /**
