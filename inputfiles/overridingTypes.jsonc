@@ -2080,6 +2080,10 @@
                 "events": {
                     "event": [
                         {
+                            "name": "error",
+                            "type": "RTCErrorEvent"
+                        },
+                        {
                             "name": "message",
                             "type": "MessageEvent"
                         }
