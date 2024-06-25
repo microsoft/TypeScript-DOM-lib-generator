@@ -392,6 +392,10 @@ interface MediaEncodingConfiguration extends MediaConfiguration {
     type: MediaEncodingType;
 }
 
+interface MediaStreamTrackProcessorInit {
+    maxBufferSize?: number;
+}
+
 interface MessageEventInit<T = any> extends EventInit {
     data?: T;
     lastEventId?: string;
@@ -3904,6 +3908,26 @@ declare var MediaCapabilities: {
     new(): MediaCapabilities;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle) */
+interface MediaSourceHandle {
+}
+
+declare var MediaSourceHandle: {
+    prototype: MediaSourceHandle;
+    new(): MediaSourceHandle;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor) */
+interface MediaStreamTrackProcessor {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor/readable) */
+    readonly readable: ReadableStream;
+}
+
+declare var MediaStreamTrackProcessor: {
+    prototype: MediaStreamTrackProcessor;
+    new(init: MediaStreamTrackProcessorInit): MediaStreamTrackProcessor;
+};
+
 /**
  * This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties.
  *
@@ -5680,6 +5704,8 @@ declare var URL: {
     canParse(url: string | URL, base?: string): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static) */
     createObjectURL(obj: Blob): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static) */
+    parse(url: string | URL, base?: string): URL | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static) */
     revokeObjectURL(url: string): void;
 };
@@ -7514,6 +7540,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferColorSpace) */
     drawingBufferColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferHeight) */
     readonly drawingBufferHeight: GLsizei;
@@ -8548,7 +8575,9 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
     onoffline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
     ononline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
     onrejectionhandled: ((this: WorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
     onunhandledrejection: ((this: WorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
     /**
      * Returns workerGlobal.
@@ -9211,7 +9240,9 @@ declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope, ev: Event) => 
 declare var onoffline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
 declare var ononline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
 declare var onrejectionhandled: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
 declare var onunhandledrejection: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /**
  * Returns workerGlobal.
@@ -9330,7 +9361,7 @@ type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type AlphaOption = "discard" | "keep";

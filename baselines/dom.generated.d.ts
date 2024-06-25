@@ -578,6 +578,11 @@ interface GetAnimationsOptions {
     subtree?: boolean;
 }
 
+interface GetHTMLOptions {
+    serializableShadowRoots?: boolean;
+    shadowRoots?: ShadowRoot[];
+}
+
 interface GetNotificationOptions {
     tag?: string;
 }
@@ -838,6 +843,10 @@ interface MediaKeySystemMediaCapability {
     contentType?: string;
     encryptionScheme?: string | null;
     robustness?: string;
+}
+
+interface MediaKeysPolicy {
+    minHdcpVersion?: string;
 }
 
 interface MediaMetadataInit {
@@ -4648,6 +4657,8 @@ interface CSSStyleDeclaration {
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
+    viewTransitionName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/visibility) */
     visibility: string;
     /**
@@ -7456,6 +7467,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     releaseEvents(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/requestStorageAccess) */
     requestStorageAccess(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/startViewTransition) */
+    startViewTransition(callbackOptions?: UpdateCallback): ViewTransition;
     /**
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
@@ -7847,6 +7860,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
     getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollectionOf<MathMLElement>;
     getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollectionOf<Element>;
+    getHTML(options?: GetHTMLOptions): string;
     /**
      * Returns true if element has an attribute whose qualified name is qualifiedName, and false otherwise.
      *
@@ -8899,6 +8913,7 @@ interface GeolocationCoordinates {
     readonly longitude: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/speed) */
     readonly speed: number | null;
+    toJSON(): any;
 }
 
 declare var GeolocationCoordinates: {
@@ -8916,6 +8931,7 @@ interface GeolocationPosition {
     readonly coords: GeolocationCoordinates;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPosition/timestamp) */
     readonly timestamp: EpochTimeStamp;
+    toJSON(): any;
 }
 
 declare var GeolocationPosition: {
@@ -10172,6 +10188,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     accessKey: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKeyLabel) */
     readonly accessKeyLabel: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autocapitalize) */
     autocapitalize: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dir) */
     dir: string;
@@ -10245,7 +10262,11 @@ interface HTMLEmbedElement extends HTMLElement {
      * @deprecated
      */
     name: string;
-    /** Sets or retrieves a URL to be loaded by the object. */
+    /**
+     * Sets or retrieves a URL to be loaded by the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/src)
+     */
     src: string;
     type: string;
     /**
@@ -13365,6 +13386,8 @@ interface HTMLTemplateElement extends HTMLElement {
     shadowRootDelegatesFocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootMode) */
     shadowRootMode: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootSerializable) */
+    shadowRootSerializable: boolean;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -15321,6 +15344,7 @@ declare var MediaKeySystemAccess: {
 interface MediaKeys {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys/createSession) */
     createSession(sessionType?: MediaKeySessionType): MediaKeySession;
+    getStatusForPolicy(policy?: MediaKeysPolicy): Promise<MediaKeyStatus>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys/setServerCertificate) */
     setServerCertificate(serverCertificate: BufferSource): Promise<boolean>;
 }
@@ -15538,8 +15562,19 @@ interface MediaSource extends EventTarget {
 declare var MediaSource: {
     prototype: MediaSource;
     new(): MediaSource;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/canConstructInDedicatedWorker_static) */
+    readonly canConstructInDedicatedWorker: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/isTypeSupported_static) */
     isTypeSupported(type: string): boolean;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle) */
+interface MediaSourceHandle {
+}
+
+declare var MediaSourceHandle: {
+    prototype: MediaSourceHandle;
+    new(): MediaSourceHandle;
 };
 
 interface MediaStreamEventMap {
@@ -17934,6 +17969,7 @@ declare var PointerEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent)
  */
 interface PopStateEvent extends Event {
+    readonly hasUAVisualTransition: boolean;
     /**
      * Returns a copy of the information that was provided to pushState() or replaceState().
      *
@@ -21605,8 +21641,10 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/mode) */
     readonly mode: ShadowRootMode;
     onslotchange: ((this: ShadowRoot, ev: Event) => any) | null;
+    readonly serializable: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/slotAssignment) */
     readonly slotAssignment: SlotAssignmentMode;
+    getHTML(options?: GetHTMLOptions): string;
     setHTMLUnsafe(html: string): void;
     /** Throws a "NotSupportedError" DOMException if context object is a shadow root. */
     addEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -22954,6 +22992,8 @@ declare var URL: {
     canParse(url: string | URL, base?: string): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static) */
     createObjectURL(obj: Blob | MediaSource): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static) */
+    parse(url: string | URL, base?: string): URL | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static) */
     revokeObjectURL(url: string): void;
 };
@@ -23273,6 +23313,23 @@ interface VideoPlaybackQuality {
 declare var VideoPlaybackQuality: {
     prototype: VideoPlaybackQuality;
     new(): VideoPlaybackQuality;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition) */
+interface ViewTransition {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/finished) */
+    readonly finished: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/ready) */
+    readonly ready: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/updateCallbackDone) */
+    readonly updateCallbackDone: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/skipTransition) */
+    skipTransition(): void;
+}
+
+declare var ViewTransition: {
+    prototype: ViewTransition;
+    new(): ViewTransition;
 };
 
 interface VisualViewportEventMap {
@@ -25023,6 +25080,7 @@ declare var WebGLRenderingContext: {
 interface WebGLRenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/canvas) */
     readonly canvas: HTMLCanvasElement | OffscreenCanvas;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferColorSpace) */
     drawingBufferColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferHeight) */
     readonly drawingBufferHeight: GLsizei;
@@ -27316,6 +27374,10 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
+interface UpdateCallback {
+    (): any;
+}
+
 interface VideoFrameOutputCallback {
     (output: VideoFrame): void;
 }
@@ -28458,7 +28520,7 @@ type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;

@@ -5323,6 +5323,8 @@ declare var URL: {
     new(url: string | URL, base?: string | URL): URL;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
     canParse(url: string | URL, base?: string): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static) */
+    parse(url: string | URL, base?: string): URL | null;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
@@ -7026,6 +7028,7 @@ declare var WebGLRenderingContext: {
 };
 
 interface WebGLRenderingContextBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferColorSpace) */
     drawingBufferColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferHeight) */
     readonly drawingBufferHeight: GLsizei;
@@ -8021,7 +8024,9 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
     onoffline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
     ononline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
     onrejectionhandled: ((this: WorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
     onunhandledrejection: ((this: WorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
     /**
      * Returns workerGlobal.
@@ -8482,7 +8487,9 @@ declare var onlanguagechange: ((this: ServiceWorkerGlobalScope, ev: Event) => an
 declare var onoffline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
 declare var ononline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
 declare var onrejectionhandled: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
 declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /**
  * Returns workerGlobal.
