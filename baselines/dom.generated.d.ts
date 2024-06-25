@@ -1188,6 +1188,10 @@ interface PointerEventInit extends MouseEventInit {
     width?: number;
 }
 
+interface PointerLockOptions {
+    unadjustedMovement?: boolean;
+}
+
 interface PopStateEventInit extends EventInit {
     state?: any;
 }
@@ -1502,7 +1506,7 @@ interface RTCRtcpParameters {
 }
 
 interface RTCRtpCapabilities {
-    codecs: RTCRtpCodecCapability[];
+    codecs: RTCRtpCodec[];
     headerExtensions: RTCRtpHeaderExtensionCapability[];
 }
 
@@ -1511,9 +1515,6 @@ interface RTCRtpCodec {
     clockRate: number;
     mimeType: string;
     sdpFmtpLine?: string;
-}
-
-interface RTCRtpCodecCapability extends RTCRtpCodec {
 }
 
 interface RTCRtpCodecParameters extends RTCRtpCodec {
@@ -7918,7 +7919,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     requestFullscreen(options?: FullscreenOptions): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestPointerLock) */
-    requestPointerLock(): void;
+    requestPointerLock(options?: PointerLockOptions): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll) */
     scroll(options?: ScrollToOptions): void;
     scroll(x: number, y: number): void;
