@@ -23,10 +23,11 @@
                 "value": [
                     "enterpictureinpicture", // Blink only as of 2023-10
                     "hangup", // Blink only as of 2022-09
-                    "nextslide", // No implementation as of 2022-09
-                    "previousslide", // No implementation as of 2022-09
+                    "nextslide", // Blink only as of as of 2024-06
+                    "previousslide", // Blink only as of as of 2024-06
                     "togglecamera", // Blink only as of 2022-09
-                    "togglemicrophone" // Blink only as of 2022-09
+                    "togglemicrophone", // Blink only as of 2022-09
+                    "togglescreenshare" // No implementation as of 2022-09
                 ]
             },
             "RequestDestination": {
@@ -234,8 +235,9 @@
             "CredentialCreationOptions": {
                 "members": {
                     "member": {
-                        "federated": null,
-                        "password": null
+                        "federated": null, // Blink only as of 2024-06
+                        "password": null, // Blink only as of 2024-06
+                        "mediation": null // WebKit only as of 2024-06
                     }
                 }
             },

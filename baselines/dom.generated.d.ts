@@ -1362,11 +1362,6 @@ interface RTCIceCandidateInit {
     usernameFragment?: string | null;
 }
 
-interface RTCIceCandidatePair {
-    local: RTCIceCandidate;
-    remote: RTCIceCandidate;
-}
-
 interface RTCIceCandidatePairStats extends RTCStats {
     availableIncomingBitrate?: number;
     availableOutgoingBitrate?: number;
@@ -18355,6 +18350,11 @@ declare var RTCIceCandidate: {
     prototype: RTCIceCandidate;
     new(candidateInitDict?: RTCIceCandidateInit): RTCIceCandidate;
 };
+
+interface RTCIceCandidatePair {
+    local: RTCIceCandidate;
+    remote: RTCIceCandidate;
+}
 
 interface RTCIceTransportEventMap {
     "gatheringstatechange": Event;

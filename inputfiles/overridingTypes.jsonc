@@ -2086,6 +2086,23 @@
                     ]
                 }
             },
+            "RTCIceCandidatePair": {
+                // https://github.com/w3c/webrtc-pc/pull/2961 made this from dictionary to interface,
+                // but nobody did the change as of 2024-06.
+                // For now let's roll this back to the dictionary form.
+                "exposed": "Window",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "local": {
+                            "readonly": false
+                        },
+                        "remote": {
+                            "readonly": false
+                        }
+                    }
+                }
+            },
             "RTCPeerConnection": {
                 "events": {
                     "event": [
@@ -3120,12 +3137,6 @@
                             "type": "MIDIMessageEvent"
                         }
                     ]
-                }
-            },
-            "MIDIInputMap": {
-                "iterator": {
-                    // https://github.com/mdn/browser-compat-data/pull/18352
-                    "exposed": "Window"
                 }
             },
             "MIDIPort": {
