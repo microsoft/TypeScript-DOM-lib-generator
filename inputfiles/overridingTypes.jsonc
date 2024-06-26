@@ -3315,6 +3315,24 @@
                         }
                     }
                 }
+            },
+            "Navigator": {
+                "methods": {
+                    "method": {
+                        "share": {
+                            "name": "share",
+                            "overrideSignatures": [
+                                "share?(data?: ShareData): Promise<void>"
+                            ]
+                        },
+                        "canShare": {
+                            "name": "canShare",
+                            "overrideSignatures": [
+                                "canShare?(data?: ShareData): boolean"
+                            ]
+                        }
+                    }
+                }
             }
         }
     },

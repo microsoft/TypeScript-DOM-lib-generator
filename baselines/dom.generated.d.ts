@@ -16239,7 +16239,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/canShare)
      */
-    canShare(data?: ShareData): boolean;
+    canShare?(data?: ShareData): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/getGamepads) */
     getGamepads(): (Gamepad | null)[];
     /**
@@ -16261,7 +16261,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/share)
      */
-    share(data?: ShareData): Promise<void>;
+    share?(data?: ShareData): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/vibrate) */
     vibrate(pattern: VibratePattern): boolean;
 }
