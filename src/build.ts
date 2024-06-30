@@ -52,13 +52,23 @@ async function emitFlavor(
     result,
   );
 
-  const iterators = emitWebIdl(exposed, options.global[0], "sync");
+  const toStringTag = emitWebIdl(exposed, options.global[0], "toStringTag");
+  await fs.writeFile(
+    new URL(`${options.name}.tostringtag.d.ts`, options.outputFolder),
+    toStringTag,
+  );
+
+  const iterators = emitWebIdl(exposed, options.global[0], "iterator");
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
     iterators,
   );
 
-  const asyncIterators = emitWebIdl(exposed, options.global[0], "async");
+  const asyncIterators = emitWebIdl(
+    exposed,
+    options.global[0],
+    "asyncIterator",
+  );
   await fs.writeFile(
     new URL(
       `${options.name}.asynciterable.generated.d.ts`,
