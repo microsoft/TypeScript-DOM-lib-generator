@@ -16492,7 +16492,7 @@ interface Node extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/cloneNode)
      */
-    cloneNode(deep?: boolean): Node;
+    cloneNode(deep?: boolean): this;
     /**
      * Returns a bitmask indicating the position of other relative to node.
      *
