@@ -49,7 +49,7 @@
     "bcd-idl-mapper": "^2.3.0",
     "cpx2": "^7.0.1",
     "danger": "^12.2.0",
-    "eslint": "^8.54.0",
+    "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "jsonc-parser": "^3.2.1",
