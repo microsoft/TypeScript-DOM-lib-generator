@@ -347,7 +347,10 @@ export function emitWebIdl(
     }
     if (!obj.type)
       throw new Error("Missing 'type' field in " + JSON.stringify(obj));
-    const type = convertDomTypeToTsTypeWorker(obj);
+    let type = convertDomTypeToTsTypeWorker(obj);
+    if (type === "Promise<undefined>") {
+      type = "Promise<void>";
+    }
     return obj.nullable ? makeNullable(type) : type;
   }
 
@@ -355,9 +358,6 @@ export function emitWebIdl(
     const type = convertDomTypeToTsType(obj);
     if (type === "undefined") {
       return "void";
-    }
-    if (type === "Promise<undefined>") {
-      return "Promise<void>";
     }
     if (type === "undefined | PromiseLike<undefined>") {
       return "void | PromiseLike<void>";
