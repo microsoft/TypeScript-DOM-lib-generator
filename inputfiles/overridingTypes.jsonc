@@ -2061,6 +2061,34 @@
                             ]
                         }
                     }
+                },
+                "methods": {
+                    "method": {
+                        "canParse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "parse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "Client": {
