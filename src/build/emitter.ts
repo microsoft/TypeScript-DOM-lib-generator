@@ -236,7 +236,7 @@ export function emitWebIdl(
     "callback",
     "successCallback",
     "errorCallback",
-    "failureCallback"
+    "failureCallback",
   ]);
 
   switch (iterator) {
