@@ -230,7 +230,14 @@ export function emitWebIdl(
     getParentsWithConstant,
   );
 
-  const deferredParameterNames = new Set(["handler", "listener", "callback", "successCallback", "errorCallback", "failureCallback"]);
+  const deferredParameterNames = new Set([
+    "handler",
+    "listener",
+    "callback",
+    "successCallback",
+    "errorCallback",
+    "failureCallback"
+  ]);
 
   switch (iterator) {
     case "sync":
@@ -687,7 +694,7 @@ export function emitWebIdl(
       const isOptional = !p.variadic && p.optional;
       const variadicParams = p.variadic && pType.indexOf("|") !== -1;
       return (
-        (deferredParameterNames.has(p.name) ? "/** @deferred */ ": "") +
+        (deferredParameterNames.has(p.name) ? "/** @deferred */ " : "") +
         (p.variadic ? "..." : "") +
         adjustParamName(p.name) +
         (isOptional ? "?: " : ": ") +
