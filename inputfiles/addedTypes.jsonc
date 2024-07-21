@@ -817,7 +817,7 @@
                         // emitter for this one case.
                         "callable": {
                             "overrideSignatures": [
-                                "(evt: Event): void | PromiseLike<void>"
+                                "(evt: Event): void"
                             ]
                         }
                     }
@@ -830,7 +830,7 @@
                     "method": {
                         "handleEvent": {
                             "overrideSignatures": [
-                                "handleEvent(object: Event): void | PromiseLike<void>"
+                                "handleEvent(object: Event): void"
                             ]
                         }
                     }
