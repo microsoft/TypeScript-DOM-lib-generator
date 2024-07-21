@@ -2987,6 +2987,38 @@
                     }
                 }
             },
+            "CompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "DecompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
             "TextDecoderStream": {
                 "properties": {
                     "property": {
