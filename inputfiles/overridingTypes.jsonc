@@ -2697,6 +2697,18 @@
                 }
             },
             "ReadableStreamBYOBReader": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "ReadableStream<Uint8Array>"
+                                }
+                            ]
+                        }
+                    }
+                },
                 "methods": {
                     "method": {
                         "read": {
