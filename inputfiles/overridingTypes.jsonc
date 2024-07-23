@@ -2573,6 +2573,8 @@
                                 },
                                 {
                                     "name": "strategy",
+                                    // NOTE: When a `ReadableStream` constructor receives an UnderlyingByteSource as the underlyingSource, `strategy[“size”]` must not exist.
+                                    // https://streams.spec.whatwg.org/#rs-constructor
                                     "overrideType": "{ highWaterMark?: number; size?: undefined }"
                                 }
                             ],
