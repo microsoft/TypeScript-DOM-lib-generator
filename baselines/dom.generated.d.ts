@@ -5683,7 +5683,7 @@ declare var CharacterData: {
     new(): CharacterData;
 };
 
-interface ChildNode extends Node {
+interface ChildNode {
     /**
      * Inserts nodes just after node, while replacing strings in nodes with equivalent Text nodes.
      *
@@ -16502,7 +16502,7 @@ declare var PannerNode: {
     new(context: BaseAudioContext, options?: PannerOptions): PannerNode;
 };
 
-interface ParentNode extends Node {
+interface ParentNode {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/childElementCount) */
     readonly childElementCount: number;
     /**
