@@ -1800,9 +1800,6 @@ export function emitWebIdl(
       type: "USVString",
       name: "[Symbol.toStringTag]",
       readonly: true,
-      comment:
-        "The well-known symbol @@toStringTag.\n\n" +
-        "[MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag)",
     };
 
     const interfaces = getElements(webidl.interfaces, "interface");
