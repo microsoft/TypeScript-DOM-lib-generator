@@ -380,6 +380,24 @@ interface MediaCapabilities {
     readonly [Symbol.toStringTag]: string;
 }
 
+interface MediaSourceHandle {
+    /**
+     * The well-known symbol @@toStringTag.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag)
+     */
+    readonly [Symbol.toStringTag]: string;
+}
+
+interface MediaStreamTrackProcessor {
+    /**
+     * The well-known symbol @@toStringTag.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag)
+     */
+    readonly [Symbol.toStringTag]: string;
+}
+
 interface MessageChannel {
     /**
      * The well-known symbol @@toStringTag.

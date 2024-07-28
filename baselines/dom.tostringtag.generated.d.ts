@@ -866,6 +866,15 @@ interface MediaSession {
     readonly [Symbol.toStringTag]: string;
 }
 
+interface MediaSourceHandle {
+    /**
+     * The well-known symbol @@toStringTag.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag)
+     */
+    readonly [Symbol.toStringTag]: string;
+}
+
 interface MessageChannel {
     /**
      * The well-known symbol @@toStringTag.
@@ -1794,6 +1803,15 @@ interface VideoFrame {
 }
 
 interface VideoPlaybackQuality {
+    /**
+     * The well-known symbol @@toStringTag.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag)
+     */
+    readonly [Symbol.toStringTag]: string;
+}
+
+interface ViewTransition {
     /**
      * The well-known symbol @@toStringTag.
      *
