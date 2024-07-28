@@ -10056,6 +10056,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     title: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/translate) */
     translate: boolean;
+    writingSuggestions: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attachInternals) */
     attachInternals(): ElementInternals;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/click) */
@@ -26153,7 +26154,11 @@ declare var XPathEvaluator: {
 interface XPathEvaluatorBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createExpression) */
     createExpression(expression: string, resolver?: XPathNSResolver | null): XPathExpression;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createNSResolver) */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createNSResolver)
+     */
     createNSResolver(nodeResolver: Node): Node;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/evaluate) */
     evaluate(expression: string, contextNode: Node, resolver?: XPathNSResolver | null, type?: number, result?: XPathResult | null): XPathResult;

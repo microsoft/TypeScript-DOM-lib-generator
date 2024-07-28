@@ -700,7 +700,6 @@
             "VideoEncoderConfig": {
                 "members": {
                     "member": {
-                        "av1": null, // Blink only as of 2023-05
                         "contentHint": null, // Blink only as of 2023-11
                         "hevc": null // Blink only as of 2023-03
                     }
