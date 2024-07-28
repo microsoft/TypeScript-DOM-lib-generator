@@ -3214,7 +3214,15 @@
                     }
                 }
             },
+            "MIDIAccess": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "transferable": false // Not transferable on Gecko/Blink as of 2024-07
+            },
+            "MIDIConnectionEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
             "MIDIInput": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
                 "events": {
                     "event": [
                         {
@@ -3224,7 +3232,20 @@
                     ]
                 }
             },
+            "MIDIInputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIMessageEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutput": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
             "MIDIPort": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
                 "events": {
                     "event": [
                         {
