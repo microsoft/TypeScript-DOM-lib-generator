@@ -9699,7 +9699,11 @@ declare var HTMLBRElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBaseElement)
  */
 interface HTMLBaseElement extends HTMLElement {
-    /** Gets or sets the baseline URL on which relative links are based. */
+    /**
+     * Gets or sets the baseline URL on which relative links are based.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBaseElement/href)
+     */
     href: string;
     /**
      * Sets or retrieves the window or frame at which to target content.
@@ -11188,7 +11192,11 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     imageSrcset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/integrity) */
     integrity: string;
-    /** Sets or retrieves the media type. */
+    /**
+     * Sets or retrieves the media type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/media)
+     */
     media: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/referrerPolicy) */
     referrerPolicy: string;
@@ -11234,7 +11242,11 @@ declare var HTMLLinkElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMapElement)
  */
 interface HTMLMapElement extends HTMLElement {
-    /** Retrieves a collection of the area objects defined for the given map object. */
+    /**
+     * Retrieves a collection of the area objects defined for the given map object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMapElement/areas)
+     */
     readonly areas: HTMLCollection;
     /**
      * Sets or retrieves the name of the object.
@@ -14828,6 +14840,7 @@ declare var MediaKeySystemAccess: {
 interface MediaKeys {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys/createSession) */
     createSession(sessionType?: MediaKeySessionType): MediaKeySession;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys/getStatusForPolicy) */
     getStatusForPolicy(policy?: MediaKeysPolicy): Promise<MediaKeyStatus>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys/setServerCertificate) */
     setServerCertificate(serverCertificate: BufferSource): Promise<boolean>;
@@ -16436,6 +16449,7 @@ declare var OffscreenCanvas: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D) */
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas) */
     readonly canvas: OffscreenCanvas;
 }
 
@@ -17024,6 +17038,8 @@ interface PerformanceResourceTiming extends PerformanceEntry {
     readonly responseEnd: DOMHighResTimeStamp;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/responseStart) */
     readonly responseStart: DOMHighResTimeStamp;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/responseStatus) */
+    readonly responseStatus: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/secureConnectionStart) */
     readonly secureConnectionStart: DOMHighResTimeStamp;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/serverTiming) */
@@ -21812,11 +21828,15 @@ declare var TextEncoderStream: {
     new(): TextEncoderStream;
 };
 
+/** @deprecated */
 interface TextEvent extends UIEvent {
+    /** @deprecated */
     readonly data: string;
+    /** @deprecated */
     initTextEvent(type: string, bubbles?: boolean, cancelable?: boolean, view?: Window | null, data?: string): void;
 }
 
+/** @deprecated */
 declare var TextEvent: {
     prototype: TextEvent;
     new(): TextEvent;
@@ -22552,6 +22572,7 @@ declare var VTTRegion: {
 interface ValidityState {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/badInput) */
     readonly badInput: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/customError) */
     readonly customError: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/patternMismatch) */
     readonly patternMismatch: boolean;
@@ -22567,6 +22588,7 @@ interface ValidityState {
     readonly tooShort: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/typeMismatch) */
     readonly typeMismatch: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valid) */
     readonly valid: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valueMissing) */
     readonly valueMissing: boolean;
