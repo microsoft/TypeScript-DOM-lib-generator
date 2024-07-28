@@ -4495,6 +4495,7 @@ interface CSSStyleDeclaration {
     printColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
     quotes: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/r) */
     r: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/resize) */
     resize: string;
@@ -4506,7 +4507,9 @@ interface CSSStyleDeclaration {
     rowGap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ruby-position) */
     rubyPosition: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/rx) */
     rx: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ry) */
     ry: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scale) */
     scale: string;
@@ -21828,11 +21831,23 @@ declare var TextEncoderStream: {
     new(): TextEncoderStream;
 };
 
-/** @deprecated */
+/**
+ * @deprecated
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent)
+ */
 interface TextEvent extends UIEvent {
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent/data)
+     */
     readonly data: string;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent/initTextEvent)
+     */
     initTextEvent(type: string, bubbles?: boolean, cancelable?: boolean, view?: Window | null, data?: string): void;
 }
 
@@ -25841,7 +25856,7 @@ interface WindowOrWorkerGlobalScope {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
     createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
     fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
     queueMicrotask(callback: VoidFunction): void;
@@ -27881,7 +27896,7 @@ declare function clearTimeout(id: number | undefined): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
 declare function createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
 declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
 declare function queueMicrotask(callback: VoidFunction): void;

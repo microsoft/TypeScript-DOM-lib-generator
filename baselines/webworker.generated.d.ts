@@ -8493,7 +8493,7 @@ interface WindowOrWorkerGlobalScope {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
     createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
     fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
     queueMicrotask(callback: VoidFunction): void;
@@ -9297,7 +9297,7 @@ declare function clearTimeout(id: number | undefined): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
 declare function createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/fetch) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
 declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
 declare function queueMicrotask(callback: VoidFunction): void;
