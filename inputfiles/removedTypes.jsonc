@@ -21,13 +21,14 @@
             },
             "MediaSessionAction": {
                 "value": [
-                    "enterpictureinpicture", // Blink only as of 2023-10
-                    "hangup", // Blink only as of 2022-09
-                    "nextslide", // Blink only as of as of 2024-06
-                    "previousslide", // Blink only as of as of 2024-06
-                    "togglecamera", // Blink only as of 2022-09
-                    "togglemicrophone", // Blink only as of 2022-09
-                    "togglescreenshare" // No implementation as of 2022-09
+                    "enterpictureinpicture", // Blink only as of 2024-07
+                    "hangup", // Blink only as of 2024-07
+                    "nextslide", // Blink only as of as of 2024-07
+                    "previousslide", // Blink only as of as of 2024-07
+                    "togglecamera", // Blink only as of 2024-07
+                    "togglemicrophone", // Blink only as of 2024-07
+                    "togglescreenshare", // No implementation as of 2024-07
+                    "voiceactivity" // No implementation as of 2024-07
                 ]
             },
             "RequestDestination": {

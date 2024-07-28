@@ -2635,7 +2635,7 @@ interface FontFaceSet extends EventTarget {
 
 declare var FontFaceSet: {
     prototype: FontFaceSet;
-    new(initialFaces: FontFace[]): FontFaceSet;
+    new(): FontFaceSet;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent) */
