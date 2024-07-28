@@ -1262,9 +1262,6 @@
                     }
                 }
             },
-            "SVGSymbolElement": {
-                "extends": "SVGElement"
-            },
             "FormData": {
                 "methods": {
                     "method": {
