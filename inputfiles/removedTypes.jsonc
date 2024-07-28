@@ -94,8 +94,7 @@
             "CSSRule": {
                 "constants": {
                     "constant": {
-                        "MARGIN_RULE": null, // WebKit only as of 2023-10
-                        "VIEW_TRANSITION_RULE": null // No implementation as of 2023-10
+                        "MARGIN_RULE": null // WebKit only as of 2023-10
                     }
                 }
             },
@@ -217,9 +216,7 @@
                         "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
                         "payment": null,
-                        "prf": null,
-                        "supplementalPubKeys": null, // No implementation as of 2023-11
-                        "uvm": null
+                        "supplementalPubKeys": null // No implementation as of 2023-11
                     }
                 }
             },
@@ -230,9 +227,7 @@
                         "appidExclude": null, // No implementation as of 2023-11
                         "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
-                        "prf": null,
-                        "supplementalPubKeys": null, // No implementation as of 2023-11
-                        "uvm": null
+                        "supplementalPubKeys": null // No implementation as of 2023-11
                     }
                 }
             },
