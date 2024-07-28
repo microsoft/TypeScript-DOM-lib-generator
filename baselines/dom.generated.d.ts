@@ -684,16 +684,6 @@ interface InputEventInit extends UIEventInit {
     targetRanges?: StaticRange[];
 }
 
-interface IntersectionObserverEntryInit {
-    boundingClientRect: DOMRectInit;
-    intersectionRatio: number;
-    intersectionRect: DOMRectInit;
-    isIntersecting: boolean;
-    rootBounds: DOMRectInit | null;
-    target: Element;
-    time: DOMHighResTimeStamp;
-}
-
 interface IntersectionObserverInit {
     root?: Element | Document | null;
     rootMargin?: string;
@@ -903,6 +893,7 @@ interface MediaStreamTrackEventInit extends EventInit {
 interface MediaTrackCapabilities {
     aspectRatio?: DoubleRange;
     autoGainControl?: boolean[];
+    backgroundBlur?: boolean[];
     channelCount?: ULongRange;
     deviceId?: string;
     displaySurface?: string;
@@ -920,6 +911,7 @@ interface MediaTrackCapabilities {
 interface MediaTrackConstraintSet {
     aspectRatio?: ConstrainDouble;
     autoGainControl?: ConstrainBoolean;
+    backgroundBlur?: ConstrainBoolean;
     channelCount?: ConstrainULong;
     deviceId?: ConstrainDOMString;
     displaySurface?: ConstrainDOMString;
@@ -941,6 +933,7 @@ interface MediaTrackConstraints extends MediaTrackConstraintSet {
 interface MediaTrackSettings {
     aspectRatio?: number;
     autoGainControl?: boolean;
+    backgroundBlur?: boolean;
     channelCount?: number;
     deviceId?: string;
     displaySurface?: string;
@@ -958,6 +951,7 @@ interface MediaTrackSettings {
 interface MediaTrackSupportedConstraints {
     aspectRatio?: boolean;
     autoGainControl?: boolean;
+    backgroundBlur?: boolean;
     channelCount?: boolean;
     deviceId?: boolean;
     displaySurface?: boolean;
@@ -14205,7 +14199,7 @@ interface IntersectionObserverEntry {
 
 declare var IntersectionObserverEntry: {
     prototype: IntersectionObserverEntry;
-    new(intersectionObserverEntryInit: IntersectionObserverEntryInit): IntersectionObserverEntry;
+    new(): IntersectionObserverEntry;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile) */
@@ -21709,7 +21703,7 @@ interface SubtleCrypto {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/decrypt) */
     decrypt(algorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, key: CryptoKey, data: BufferSource): Promise<ArrayBuffer>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/deriveBits) */
-    deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length: number): Promise<ArrayBuffer>;
+    deriveBits(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, length?: number | null): Promise<ArrayBuffer>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/deriveKey) */
     deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier | AesDerivedKeyParams | HmacImportParams | HkdfParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/digest) */

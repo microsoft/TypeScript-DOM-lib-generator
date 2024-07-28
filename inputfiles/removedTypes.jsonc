@@ -108,6 +108,9 @@
                     }
                 }
             },
+            "IntersectionObserverEntry": {
+                "constructor": null // WebKit-only as of 2024-07
+            },
             "PaymentResponse": {
                 "methods": {
                     "method": {
@@ -309,7 +312,9 @@
             "IntersectionObserverInit": {
                 "members": {
                     "member": {
-                        "scrollMargin": null // Blink only as of 2023-10
+                        "delay": null, // Blink only as of 2024-07
+                        "scrollMargin": null, // Blink only as of 2024-07
+                        "trackVisibility": null // Blink only as of 2024-07
                     }
                 }
             },
