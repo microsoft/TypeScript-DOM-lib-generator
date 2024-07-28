@@ -190,6 +190,10 @@ interface CanvasRenderingContext2DSettings {
     willReadFrequently?: boolean;
 }
 
+interface CaretPositionFromPointOptions {
+    shadowRoots?: ShadowRoot[];
+}
+
 interface ChannelMergerOptions extends AudioNodeOptions {
     numberOfInputs?: number;
 }
@@ -2223,6 +2227,8 @@ interface ARIAMixin {
     ariaColCount: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndex) */
     ariaColIndex: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndexText) */
+    ariaColIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan) */
     ariaColSpan: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent) */
@@ -2270,6 +2276,8 @@ interface ARIAMixin {
     ariaRowCount: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndex) */
     ariaRowIndex: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndexText) */
+    ariaRowIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowSpan) */
     ariaRowSpan: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSelected) */
@@ -4145,7 +4153,9 @@ interface CSSStyleDeclaration {
     cssText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cx) */
     cx: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cy) */
     cy: string;
     d: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/direction) */
@@ -4505,6 +4515,8 @@ interface CSSStyleDeclaration {
     rotate: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/row-gap) */
     rowGap: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ruby-align) */
+    rubyAlign: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ruby-position) */
     rubyPosition: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/rx) */
@@ -5637,6 +5649,18 @@ interface CanvasUserInterface {
     drawFocusIfNeeded(element: Element): void;
     drawFocusIfNeeded(path: Path2D, element: Element): void;
 }
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CaretPosition) */
+interface CaretPosition {
+    readonly offset: number;
+    readonly offsetNode: Node;
+    getClientRect(): DOMRect | null;
+}
+
+declare var CaretPosition: {
+    prototype: CaretPosition;
+    new(): CaretPosition;
+};
 
 /**
  * The ChannelMergerNode interface, often used in conjunction with its opposite, ChannelSplitterNode, reunites different mono inputs into a single output. Each input is used to fill a channel of the output. This is useful for accessing each channels separately, e.g. for performing channel mixing where gain must be separately controlled on each channel.
@@ -7157,6 +7181,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     adoptNode<T extends Node>(node: T): T;
     /** @deprecated */
     captureEvents(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/caretPositionFromPoint) */
+    caretPositionFromPoint(x: number, y: number, options?: CaretPositionFromPointOptions): CaretPosition | null;
     /** @deprecated */
     caretRangeFromPoint(x: number, y: number): Range | null;
     /**
@@ -7744,6 +7770,8 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
     readonly clientTop: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientWidth) */
     readonly clientWidth: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/currentCSSZoom) */
+    readonly currentCSSZoom: number;
     /**
      * Returns the value of element's id content attribute. Can be set to change it.
      *
@@ -8854,6 +8882,7 @@ declare var GamepadEvent: {
 interface GamepadHapticActuator {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadHapticActuator/playEffect) */
     playEffect(type: GamepadHapticEffectType, params?: GamepadEffectParameters): Promise<GamepadHapticsResult>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadHapticActuator/reset) */
     reset(): Promise<GamepadHapticsResult>;
 }
 
@@ -12404,6 +12433,8 @@ interface HTMLTableCaptionElement extends HTMLElement {
     /**
      * Sets or retrieves the alignment of the caption or legend.
      * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCaptionElement/align)
      */
     align: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -12766,6 +12797,8 @@ interface HTMLTableRowElement extends HTMLElement {
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
      * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/align)
      */
     align: string;
     /**
@@ -12804,7 +12837,11 @@ interface HTMLTableRowElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/sectionRowIndex)
      */
     readonly sectionRowIndex: number;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/vAlign)
+     */
     vAlign: string;
     /**
      * Removes the specified cell from the table row, as well as from the cells collection.
@@ -12840,6 +12877,8 @@ interface HTMLTableSectionElement extends HTMLElement {
     /**
      * Sets or retrieves a value that indicates the table alignment.
      * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableSectionElement/align)
      */
     align: string;
     /**
@@ -12860,7 +12899,11 @@ interface HTMLTableSectionElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableSectionElement/rows)
      */
     readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableSectionElement/vAlign)
+     */
     vAlign: string;
     /**
      * Removes the specified row (tr) from the element and from the rows collection.
