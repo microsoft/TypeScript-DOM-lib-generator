@@ -1,26 +1,62 @@
 {
-  "name": "tsjs-lib-generator",
+  "name": "typescript-dom-lib-generator",
+  "version": "0.0.1",
   "private": true,
+  "description": "Provides TypeScript types for the latest web APIs.",
+  "keywords": [
+    "typescript",
+    "web",
+    "api",
+    "dom",
+    "worker",
+    "worklet"
+  ],
   "scripts": {
-    "build": "tsc -p ./tsconfig.json && node ./lib/index.js",
-    "fetch-idl": "tsc -p ./tsconfig.json && node ./lib/idlfetcher.js",
-    "fetch-mdn": "npm run build && node ./lib/mdnfetcher.js",
-    "fetch": "echo This could take a few minutes... && npm run fetch-idl && npm run fetch-mdn",
+    "build": "tsc && node ./lib/build.js",
     "baseline-accept": "cpx \"generated\\*\" baselines\\",
-    "test": "tsc -p ./tsconfig.json && node ./lib/index.js && node ./lib/test.js",
-    "migrate": "node ./lib/migrate-to-tsc.js"
+    "lint": "eslint --max-warnings 0 src deploy/*.js && tsc -p deploy/jsconfig.json",
+    "test": "npm run lint && npm run build && node ./lib/test.js && node ./unittests/index.js",
+    "changelog": "tsc && node ./lib/changelog.js",
+    "ts-changelog": "node ./deploy/versionChangelog.js",
+    "migrate": "node ./deploy/migrate.js",
+    "version": "npm i && tsc && node ./lib/version.js"
   },
-  "dependencies": {
-    "@types/jsdom": "^16.2.4",
-    "@types/node": "^14.6.4",
-    "@types/node-fetch": "^2.5.7",
-    "@types/webidl2": "^23.13.2",
-    "cpx2": "^2.0.0",
-    "jsdom": "^16.4.0",
-    "node-fetch": "^2.6.1",
-    "print-diff": "^1.0.0",
-    "styleless-innertext": "^1.1.2",
-    "typescript": "4.1.0-dev.20200908",
-    "webidl2": "^23.13.0"
+  "author": {
+    "name": "Kagami Sascha Rosylight",
+    "email": "saschanaz@outlook.com",
+    "url": "https://github.com/saschanaz"
+  },
+  "contributors": [
+    "Microsoft Corp."
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/TypeScript-DOM-lib-generator/"
+  },
+  "license": "Apache-2.0",
+  "type": "module",
+  "devDependencies": {
+    "@mdn/browser-compat-data": "^5.5.21",
+    "@octokit/rest": "^21.0.0",
+    "@types/node": "^20.12.7",
+    "@types/prettier": "^3.0.0",
+    "@types/webidl2": "^24.4.3",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "@webref/css": "^6.12.7",
+    "@webref/elements": "^2.3.0",
+    "@webref/idl": "^3.46.1",
+    "bcd-idl-mapper": "^2.3.0",
+    "cpx2": "^7.0.1",
+    "danger": "^12.2.0",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "jsonc-parser": "^3.2.1",
+    "node-fetch": "^3.3.2",
+    "prettier": "^3.2.5",
+    "print-diff": "^2.0.0",
+    "typescript": "^5.4.5",
+    "webidl2": "^24.4.1"
   }
 }

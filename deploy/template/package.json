@@ -1,0 +1,15 @@
+{
+    "name": "@types/xyz",
+    "version": "0.0.x",
+    "description": "TypeScript definitions for xyz",
+    "license": "Apache-2.0",
+    "contributors": [],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/TypeScript-DOM-Lib-Generator.git"
+    },
+    "scripts": {},
+    "dependencies": {}
+}

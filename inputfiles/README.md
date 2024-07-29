@@ -1,7 +1,6 @@
 # Hey! Read This!
 
-Some files in this directory are generated.
-Please do not edit them.
+Some files in this directory are generated. Please do not edit them.
 This specifically includes:
 
 * `browser.webidl.preprocessed.json`

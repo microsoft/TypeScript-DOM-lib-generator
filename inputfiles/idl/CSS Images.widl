@@ -1,6 +1,0 @@
-partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString objectFit;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString objectPosition;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString imageOrientation;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString imageRendering;
-};

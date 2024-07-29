@@ -1,0 +1,49 @@
+name: Runs with TypeScript Tests
+on:
+  push:
+    paths:
+      - "baselines/*"
+  pull_request:
+    paths:
+      - "baselines/*"
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: npm
+
+      - name: Run TypeScript Compiler Tests with new dom.d.ts
+        run: |
+          # Get local dependencies
+          npm install
+          # Make our new dom APIs
+          npm run build
+
+          # Clone TypeScript, set it up
+          git clone https://github.com/microsoft/TypeScript --depth 1
+
+          # Migrate the generated files into the repo
+          npm run migrate
+
+          cd TypeScript
+          npm i
+
+
+          # Run TypeScript's tests with the new DOM libs, but don't fail
+          npm test || true
+          gulp baseline-accept
+
+          # The git diff now is the difference between tests
+          git diff > baseline-changes.diff
+
+      - name: Danger
+        run: npx danger -- ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

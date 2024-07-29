@@ -2,10 +2,17 @@
     "mixins": {
         "mixin": {
             "DocumentOrShadowRoot": {
+                "methods": {
+                    "method": {
+                        "elementFromPoint": {
+                            "comment": "Returns the element for the specified x coordinate and the specified y coordinate.\n@param x The x-offset\n@param y The y-offset"
+                        }
+                    }
+                },
                 "properties": {
                     "property": {
                         "styleSheets": {
-                            "comment": "/**\n * Retrieves a collection of styleSheet objects representing the style sheets that correspond to each instance of a link or style object in the document.\n */"
+                            "comment": "Retrieves a collection of styleSheet objects representing the style sheets that correspond to each instance of a link or style object in the document."
                         }
                     }
                 }
@@ -14,139 +21,139 @@
                 "properties": {
                     "property": {
                         "ondragleave": {
-                            "comment": "/**\n * Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.\n * @param ev The drag event.\n */"
+                            "comment": "Fires on the target object when the user moves the mouse out of a valid drop target during a drag operation.\n@param ev The drag event."
                         },
                         "ondragenter": {
-                            "comment": "/**\n * Fires on the target element when the user drags the object to a valid drop target.\n * @param ev The drag event.\n */"
+                            "comment": "Fires on the target element when the user drags the object to a valid drop target.\n@param ev The drag event."
                         },
                         "ondragend": {
-                            "comment": "/**\n * Fires on the source object when the user releases the mouse at the close of a drag operation.\n * @param ev The event.\n */"
+                            "comment": "Fires on the source object when the user releases the mouse at the close of a drag operation.\n@param ev The event."
                         },
                         "ondragover": {
-                            "comment": "/**\n * Fires on the target element continuously while the user drags the object over a valid drop target.\n * @param ev The event.\n */"
+                            "comment": "Fires on the target element continuously while the user drags the object over a valid drop target.\n@param ev The event."
                         },
                         "ondragstart": {
-                            "comment": "/**\n * Fires on the source object when the user starts to drag a text selection or selected object.\n * @param ev The event.\n */"
+                            "comment": "Fires on the source object when the user starts to drag a text selection or selected object.\n@param ev The event."
                         },
                         "ondrag": {
-                            "comment": "/**\n * Fires on the source object continuously during a drag operation.\n * @param ev The event.\n */"
+                            "comment": "Fires on the source object continuously during a drag operation.\n@param ev The event."
                         },
                         "onseeked": {
-                            "comment": "/**\n * Occurs when the seek operation ends.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the seek operation ends.\n@param ev The event."
                         },
                         "onseeking": {
-                            "comment": "/**\n * Occurs when the current playback position is moved.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the current playback position is moved.\n@param ev The event."
                         },
                         "onreset": {
-                            "comment": "/**\n * Fires when the user resets a form.\n * @param ev The event.\n */"
+                            "comment": "Fires when the user resets a form.\n@param ev The event."
                         },
                         "onkeydown": {
-                            "comment": "/**\n * Fires when the user presses a key.\n * @param ev The keyboard event\n */"
+                            "comment": "Fires when the user presses a key.\n@param ev The keyboard event"
                         },
                         "onkeyup": {
-                            "comment": "/**\n * Fires when the user releases a key.\n * @param ev The keyboard event\n */"
+                            "comment": "Fires when the user releases a key.\n@param ev The keyboard event"
                         },
                         "ondurationchange": {
-                            "comment": "/**\n * Occurs when the duration attribute is updated.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the duration attribute is updated.\n@param ev The event."
                         },
                         "onblur": {
-                            "comment": "/**\n * Fires when the object loses the input focus.\n * @param ev The focus event.\n */"
+                            "comment": "Fires when the object loses the input focus.\n@param ev The focus event."
                         },
                         "onload": {
-                            "comment": "/**\n * Fires immediately after the browser loads the object.\n * @param ev The event.\n */"
+                            "comment": "Fires immediately after the browser loads the object.\n@param ev The event."
                         },
                         "onscroll": {
-                            "comment": "/**\n * Fires when the user repositions the scroll box in the scroll bar on the object.\n * @param ev The event.\n */"
+                            "comment": "Fires when the user repositions the scroll box in the scroll bar on the object.\n@param ev The event."
                         },
                         "onpause": {
-                            "comment": "/**\n * Occurs when playback is paused.\n * @param ev The event.\n */"
+                            "comment": "Occurs when playback is paused.\n@param ev The event."
                         },
                         "onmousedown": {
-                            "comment": "/**\n * Fires when the user clicks the object with either mouse button.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user clicks the object with either mouse button.\n@param ev The mouse event."
                         },
                         "onclick": {
-                            "comment": "/**\n * Fires when the user clicks the left mouse button on the object\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user clicks the left mouse button on the object\n@param ev The mouse event."
                         },
                         "onwaiting": {
-                            "comment": "/**\n * Occurs when playback stops because the next frame of a video resource is not available.\n * @param ev The event.\n */"
+                            "comment": "Occurs when playback stops because the next frame of a video resource is not available.\n@param ev The event."
                         },
                         "onkeypress": {
-                            "comment": "/**\n * Fires when the user presses an alphanumeric key.\n * @param ev The event.\n */"
+                            "comment": "Fires when the user presses an alphanumeric key.\n@param ev The event."
                         },
                         "onloadeddata": {
-                            "comment": "/**\n * Occurs when media data is loaded at the current playback position.\n * @param ev The event.\n */"
+                            "comment": "Occurs when media data is loaded at the current playback position.\n@param ev The event."
                         },
                         "onfocus": {
-                            "comment": "/**\n * Fires when the object receives focus.\n * @param ev The event.\n */"
+                            "comment": "Fires when the object receives focus.\n@param ev The event."
                         },
                         "ontimeupdate": {
-                            "comment": "/**\n * Occurs to indicate the current playback position.\n * @param ev The event.\n */"
+                            "comment": "Occurs to indicate the current playback position.\n@param ev The event."
                         },
                         "onselect": {
-                            "comment": "/**\n * Fires when the current selection changes.\n * @param ev The event.\n */"
+                            "comment": "Fires when the current selection changes.\n@param ev The event."
                         },
                         "onended": {
-                            "comment": "/**\n * Occurs when the end of playback is reached.\n * @param ev The event\n */"
+                            "comment": "Occurs when the end of playback is reached.\n@param ev The event"
                         },
                         "onabort": {
-                            "comment": "/**\n * Fires when the user aborts the download.\n * @param ev The event.\n */"
+                            "comment": "Fires when the user aborts the download.\n@param ev The event."
                         },
                         "onratechange": {
-                            "comment": "/**\n * Occurs when the playback rate is increased or decreased.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the playback rate is increased or decreased.\n@param ev The event."
                         },
                         "onprogress": {
-                            "comment": "/**\n * Occurs to indicate progress while downloading media data.\n * @param ev The event.\n */"
+                            "comment": "Occurs to indicate progress while downloading media data.\n@param ev The event."
                         },
                         "ondblclick": {
-                            "comment": "/**\n * Fires when the user double-clicks the object.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user double-clicks the object.\n@param ev The mouse event."
                         },
                         "oncontextmenu": {
-                            "comment": "/**\n * Fires when the user clicks the right mouse button in the client area, opening the context menu.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user clicks the right mouse button in the client area, opening the context menu.\n@param ev The mouse event."
                         },
                         "onloadedmetadata": {
-                            "comment": "/**\n * Occurs when the duration and dimensions of the media have been determined.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the duration and dimensions of the media have been determined.\n@param ev The event."
                         },
                         "onerror": {
-                            "comment": "/**\n * Fires when an error occurs during object loading.\n * @param ev The event.\n */"
+                            "comment": "Fires when an error occurs during object loading.\n@param ev The event."
                         },
                         "onplay": {
-                            "comment": "/**\n * Occurs when the play method is requested.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the play method is requested.\n@param ev The event."
                         },
                         "onplaying": {
-                            "comment": "/**\n * Occurs when the audio or video has started playing.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the audio or video has started playing.\n@param ev The event."
                         },
                         "onstalled": {
-                            "comment": "/**\n * Occurs when the download has stopped.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the download has stopped.\n@param ev The event."
                         },
                         "onmousemove": {
-                            "comment": "/**\n * Fires when the user moves the mouse over the object.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user moves the mouse over the object.\n@param ev The mouse event."
                         },
                         "onmouseup": {
-                            "comment": "/**\n * Fires when the user releases a mouse button while the mouse is over the object.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user releases a mouse button while the mouse is over the object.\n@param ev The mouse event."
                         },
                         "onmouseover": {
-                            "comment": "/**\n * Fires when the user moves the mouse pointer into the object.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user moves the mouse pointer into the object.\n@param ev The mouse event."
                         },
                         "onsuspend": {
-                            "comment": "/**\n * Occurs if the load operation has been intentionally halted.\n * @param ev The event.\n */"
+                            "comment": "Occurs if the load operation has been intentionally halted.\n@param ev The event."
                         },
                         "onmouseout": {
-                            "comment": "/**\n * Fires when the user moves the mouse pointer outside the boundaries of the object.\n * @param ev The mouse event.\n */"
+                            "comment": "Fires when the user moves the mouse pointer outside the boundaries of the object.\n@param ev The mouse event."
                         },
                         "onvolumechange": {
-                            "comment": "/**\n * Occurs when the volume is changed, or playback is muted or unmuted.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the volume is changed, or playback is muted or unmuted.\n@param ev The event."
                         },
                         "onchange": {
-                            "comment": "/**\n * Fires when the contents of the object or selection have changed.\n * @param ev The event.\n */"
+                            "comment": "Fires when the contents of the object or selection have changed.\n@param ev The event."
                         },
                         "oncanplay": {
-                            "comment": "/**\n * Occurs when playback is possible, but would require further buffering.\n * @param ev The event.\n */"
+                            "comment": "Occurs when playback is possible, but would require further buffering.\n@param ev The event."
                         },
                         "onloadstart": {
-                            "comment": "/**\n * Occurs when Internet Explorer begins looking for media data.\n * @param ev The event.\n */"
+                            "comment": "Occurs when Internet Explorer begins looking for media data.\n@param ev The event."
                         },
                         "onemptied": {
-                            "comment": "/**\n * Occurs when the media element is reset to its initial state.\n * @param ev The event.\n */"
+                            "comment": "Occurs when the media element is reset to its initial state.\n@param ev The event."
                         }
                     }
                 }
@@ -159,9 +166,9 @@
                 "iterator": {
                     "comments": {
                         "comment": {
-                            "entries": "/**\n * Returns an iterator allowing to go through all key/value pairs contained in this object.\n */",
-                            "keys": "/**\n * Returns an iterator allowing to go through all keys of the key/value pairs contained in this object.\n */",
-                            "values": "/**\n * Returns an iterator allowing to go through all values of the key/value pairs contained in this object.\n */"
+                            "entries": "Returns an iterator allowing to go through all key/value pairs contained in this object.",
+                            "keys": "Returns an iterator allowing to go through all keys of the key/value pairs contained in this object.",
+                            "values": "Returns an iterator allowing to go through all values of the key/value pairs contained in this object."
                         }
                     }
                 }
@@ -170,9 +177,9 @@
                 "iterator": {
                     "comments": {
                         "comment": {
-                            "entries": "/**\n * Returns an array of key, value pairs for every entry in the list.\n */",
-                            "keys": "/**\n * Returns a list of keys in the list.\n */",
-                            "values": "/**\n * Returns a list of values in the list.\n */"
+                            "entries": "Returns an array of key, value pairs for every entry in the list.",
+                            "keys": "Returns a list of keys in the list.",
+                            "values": "Returns a list of values in the list."
                         }
                     }
                 }
@@ -181,16 +188,16 @@
                 "methods": {
                     "method": {
                         "forEach": {
-                            "comment": "/**\n * Performs the specified action for each node in an list.\n * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the list.\n * @param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n */"
+                            "comment": "Performs the specified action for each node in an list.\n@param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the list.\n@param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value."
                         }
                     }
                 },
                 "iterator": {
                     "comments": {
                         "comment": {
-                            "entries": "/**\n * Returns an array of key, value pairs for every entry in the list.\n */",
-                            "keys": "/**\n * Returns an list of keys in the list.\n */",
-                            "values": "/**\n * Returns an list of values in the list.\n */"
+                            "entries": "Returns an array of key, value pairs for every entry in the list.",
+                            "keys": "Returns an list of keys in the list.",
+                            "values": "Returns an list of values in the list."
                         }
                     }
                 }
@@ -199,16 +206,16 @@
                 "methods": {
                     "method": {
                         "forEach": {
-                            "comment": "/**\n * Performs the specified action for each node in an list.\n * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the list.\n * @param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.\n */"
+                            "comment": "Performs the specified action for each node in an list.\n@param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the list.\n@param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value."
                         }
                     }
                 },
                 "iterator": {
                     "comments": {
                         "comment": {
-                            "entries": "/**\n * Returns an array of key, value pairs for every entry in the list.\n */",
-                            "keys": "/**\n * Returns an list of keys in the list.\n */",
-                            "values": "/**\n * Returns an list of values in the list.\n */"
+                            "entries": "Returns an array of key, value pairs for every entry in the list.",
+                            "keys": "Returns an list of keys in the list.",
+                            "values": "Returns an list of values in the list."
                         }
                     }
                 }
@@ -217,74 +224,74 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "cellSpacing": {
-                            "comment": "/**\n * Sets or retrieves the amount of space between cells in a table.\n */"
+                            "comment": "Sets or retrieves the amount of space between cells in a table."
                         },
                         "tFoot": {
-                            "comment": "/**\n * Retrieves the tFoot object of the table.\n */"
+                            "comment": "Retrieves the tFoot object of the table."
                         },
                         "frame": {
-                            "comment": "/**\n * Sets or retrieves the way the border frame around the table is displayed.\n */"
+                            "comment": "Sets or retrieves the way the border frame around the table is displayed."
                         },
                         "rows": {
-                            "comment": "/**\n * Sets or retrieves the number of horizontal rows contained in the object.\n */"
+                            "comment": "Sets or retrieves the number of horizontal rows contained in the object."
                         },
                         "rules": {
-                            "comment": "/**\n * Sets or retrieves which dividing lines (inner borders) are displayed.\n */"
+                            "comment": "Sets or retrieves which dividing lines (inner borders) are displayed."
                         },
                         "summary": {
-                            "comment": "/**\n * Sets or retrieves a description and/or structure of the object.\n */"
+                            "comment": "Sets or retrieves a description and/or structure of the object."
                         },
                         "caption": {
-                            "comment": "/**\n * Retrieves the caption object of a table.\n */"
+                            "comment": "Retrieves the caption object of a table."
                         },
                         "tBodies": {
-                            "comment": "/**\n * Retrieves a collection of all tBody objects in the table. Objects in this collection are in source order.\n */"
+                            "comment": "Retrieves a collection of all tBody objects in the table. Objects in this collection are in source order."
                         },
                         "tHead": {
-                            "comment": "/**\n * Retrieves the tHead object of the table.\n */"
+                            "comment": "Retrieves the tHead object of the table."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves a value that indicates the table alignment.\n */"
+                            "comment": "Sets or retrieves a value that indicates the table alignment."
                         },
                         "cellPadding": {
-                            "comment": "/**\n * Sets or retrieves the amount of space between the border of the cell and the content of the cell.\n */"
+                            "comment": "Sets or retrieves the amount of space between the border of the cell and the content of the cell."
                         },
                         "border": {
-                            "comment": "/**\n * Sets or retrieves the width of the border to draw around the object.\n */"
+                            "comment": "Sets or retrieves the width of the border to draw around the object."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "deleteRow": {
-                            "comment": "/**\n * Removes the specified row (tr) from the element and from the rows collection.\n * @param index Number that specifies the zero-based position in the rows collection of the row to remove.\n */"
+                            "comment": "Removes the specified row (tr) from the element and from the rows collection.\n@param index Number that specifies the zero-based position in the rows collection of the row to remove."
                         },
                         "createTBody": {
-                            "comment": "/**\n * Creates an empty tBody element in the table.\n */"
+                            "comment": "Creates an empty tBody element in the table."
                         },
                         "deleteCaption": {
-                            "comment": "/**\n * Deletes the caption element and its contents from the table.\n */"
+                            "comment": "Deletes the caption element and its contents from the table."
                         },
                         "insertRow": {
-                            "comment": "/**\n * Creates a new row (tr) in the table, and adds the row to the rows collection.\n * @param index Number that specifies where to insert the row in the rows collection. The default value is -1, which appends the new row to the end of the rows collection.\n */"
+                            "comment": "Creates a new row (tr) in the table, and adds the row to the rows collection.\n@param index Number that specifies where to insert the row in the rows collection. The default value is -1, which appends the new row to the end of the rows collection."
                         },
                         "deleteTFoot": {
-                            "comment": "/**\n * Deletes the tFoot element and its contents from the table.\n */"
+                            "comment": "Deletes the tFoot element and its contents from the table."
                         },
                         "createTHead": {
-                            "comment": "/**\n * Returns the tHead element object if successful, or null otherwise.\n */"
+                            "comment": "Returns the tHead element object if successful, or null otherwise."
                         },
                         "deleteTHead": {
-                            "comment": "/**\n * Deletes the tHead element and its contents from the table.\n */"
+                            "comment": "Deletes the tHead element and its contents from the table."
                         },
                         "createCaption": {
-                            "comment": "/**\n * Creates an empty caption element in the table.\n */"
+                            "comment": "Creates an empty caption element in the table."
                         },
                         "createTFoot": {
-                            "comment": "/**\n * Creates an empty tFoot element in the table.\n */"
+                            "comment": "Creates an empty tFoot element in the table."
                         }
                     }
                 }
@@ -293,10 +300,10 @@
                 "properties": {
                     "property": {
                         "target": {
-                            "comment": "/**\n * Sets or retrieves the window or frame at which to target content.\n */"
+                            "comment": "Sets or retrieves the window or frame at which to target content."
                         },
                         "href": {
-                            "comment": "/**\n * Gets or sets the baseline URL on which relative links are based.\n */"
+                            "comment": "Gets or sets the baseline URL on which relative links are based."
                         }
                     }
                 }
@@ -305,28 +312,7 @@
                 "properties": {
                     "property": {
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
-                        }
-                    }
-                }
-            },
-            "HTMLAppletElement": {
-                "properties": {
-                    "property": {
-                        "archive": {
-                            "comment": "/**\n * Sets or retrieves a character string that can be used to implement your own archive functionality for the object.\n */"
-                        },
-                        "alt": {
-                            "comment": "/**\n * Sets or retrieves a text alternative to the graphic.\n */"
-                        },
-                        "name": {
-                            "comment": "/**\n * Sets or retrieves the shape of the object.\n */"
-                        },
-                        "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
-                        },
-                        "codeBase": {
-                            "comment": "/**\n * Sets or retrieves the URL of the component.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         }
                     }
                 }
@@ -335,7 +321,7 @@
                 "properties": {
                     "property": {
                         "start": {
-                            "comment": "/**\n * The starting number.\n */"
+                            "comment": "The starting number."
                         }
                     }
                 }
@@ -344,62 +330,62 @@
                 "properties": {
                     "property": {
                         "value": {
-                            "comment": "/**\n * Sets or retrieves the value which is returned to the server when the form control is submitted.\n */"
+                            "comment": "Sets or retrieves the value which is returned to the server when the form control is submitted."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "size": {
-                            "comment": "/**\n * Sets or retrieves the number of rows in the list box.\n */"
+                            "comment": "Sets or retrieves the number of rows in the list box."
                         },
                         "length": {
-                            "comment": "/**\n * Sets or retrieves the number of objects in a collection.\n */"
+                            "comment": "Sets or retrieves the number of objects in a collection."
                         },
                         "selectedIndex": {
-                            "comment": "/**\n * Sets or retrieves the index of the selected option in a select object.\n */"
+                            "comment": "Sets or retrieves the index of the selected option in a select object."
                         },
                         "multiple": {
-                            "comment": "/**\n * Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.\n */"
+                            "comment": "Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list."
                         },
                         "type": {
-                            "comment": "/**\n * Retrieves the type of select control based on the value of the MULTIPLE attribute.\n */"
+                            "comment": "Retrieves the type of select control based on the value of the MULTIPLE attribute."
                         },
                         "validationMessage": {
-                            "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
+                            "comment": "Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting."
                         },
                         "validity": {
-                            "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
+                            "comment": "Returns a  ValidityState object that represents the validity states of an element."
                         },
                         "required": {
-                            "comment": "/**\n * When present, marks an element that can't be submitted without a value.\n */"
+                            "comment": "When present, marks an element that can't be submitted without a value."
                         },
                         "willValidate": {
-                            "comment": "/**\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\n */"
+                            "comment": "Returns whether an element will successfully validate based on forms validation rules and constraints."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "remove": {
-                            "comment": "/**\n * Removes an element from the collection.\n * @param index Number that specifies the zero-based index of the element to remove from the collection.\n */"
+                            "comment": "Removes an element from the collection.\n@param index Number that specifies the zero-based index of the element to remove from the collection."
                         },
                         "add": {
-                            "comment": "/**\n * Adds an element to the areas, controlRange, or options collection.\n * @param element Variant of type Number that specifies the index position in the collection where the element is placed. If no value is given, the method places the element at the end of the collection.\n * @param before Variant of type Object that specifies an element to insert before, or null to append the object to the collection.\n */"
+                            "comment": "Adds an element to the areas, controlRange, or options collection.\n@param element Variant of type Number that specifies the index position in the collection where the element is placed. If no value is given, the method places the element at the end of the collection.\n@param before Variant of type Object that specifies an element to insert before, or null to append the object to the collection."
                         },
                         "item": {
-                            "comment": "/**\n * Retrieves a select object or an object from an options collection.\n * @param name Variant of type Number or String that specifies the object or collection to retrieve. If this parameter is an integer, it is the zero-based index of the object. If this parameter is a string, all objects with matching name or id properties are retrieved, and a collection is returned if more than one match is made.\n * @param index Variant of type Number that specifies the zero-based index of the object to retrieve when a collection is returned.\n */"
+                            "comment": "Retrieves a select object or an object from an options collection.\n@param name Variant of type Number or String that specifies the object or collection to retrieve. If this parameter is an integer, it is the zero-based index of the object. If this parameter is a string, all objects with matching name or id properties are retrieved, and a collection is returned if more than one match is made.\n@param index Variant of type Number that specifies the zero-based index of the object to retrieve when a collection is returned."
                         },
                         "namedItem": {
-                            "comment": "/**\n * Retrieves a select object or an object from an options collection.\n * @param namedItem A String that specifies the name or id property of the object to retrieve. A collection is returned if more than one match is made.\n */"
+                            "comment": "Retrieves a select object or an object from an options collection.\n@param namedItem A String that specifies the name or id property of the object to retrieve. A collection is returned if more than one match is made."
                         },
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         },
                         "setCustomValidity": {
-                            "comment": "/**\n * Sets a custom error message that is displayed when a form is submitted.\n * @param error Sets a custom error message that is displayed when a form is submitted.\n */"
+                            "comment": "Sets a custom error message that is displayed when a form is submitted.\n@param error Sets a custom error message that is displayed when a form is submitted."
                         }
                     }
                 }
@@ -408,16 +394,16 @@
                 "properties": {
                     "property": {
                         "httpEquiv": {
-                            "comment": "/**\n * Gets or sets information used to bind the value of a content attribute of a meta element to an HTTP response header.\n */"
+                            "comment": "Gets or sets information used to bind the value of a content attribute of a meta element to an HTTP response header."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the value specified in the content attribute of the meta object.\n */"
+                            "comment": "Sets or retrieves the value specified in the content attribute of the meta object."
                         },
                         "content": {
-                            "comment": "/**\n * Gets or sets meta-information to associate with httpEquiv or name.\n */"
+                            "comment": "Gets or sets meta-information to associate with httpEquiv or name."
                         },
                         "scheme": {
-                            "comment": "/**\n * Sets or retrieves a scheme to be used in interpreting the value of a property specified for the object.\n */"
+                            "comment": "Sets or retrieves a scheme to be used in interpreting the value of a property specified for the object."
                         }
                     }
                 }
@@ -426,28 +412,28 @@
                 "properties": {
                     "property": {
                         "rel": {
-                            "comment": "/**\n * Sets or retrieves the relationship between the object and the destination of the link.\n */"
+                            "comment": "Sets or retrieves the relationship between the object and the destination of the link."
                         },
                         "target": {
-                            "comment": "/**\n * Sets or retrieves the window or frame at which to target content.\n */"
+                            "comment": "Sets or retrieves the window or frame at which to target content."
                         },
                         "href": {
-                            "comment": "/**\n * Sets or retrieves a destination URL or an anchor point.\n */"
+                            "comment": "Sets or retrieves a destination URL or an anchor point."
                         },
                         "media": {
-                            "comment": "/**\n * Sets or retrieves the media type.\n */"
+                            "comment": "Sets or retrieves the media type."
                         },
                         "rev": {
-                            "comment": "/**\n * Sets or retrieves the relationship between the object and the destination of the link.\n */"
+                            "comment": "Sets or retrieves the relationship between the object and the destination of the link."
                         },
                         "type": {
-                            "comment": "/**\n * Sets or retrieves the MIME type of the object.\n */"
+                            "comment": "Sets or retrieves the MIME type of the object."
                         },
                         "charset": {
-                            "comment": "/**\n * Sets or retrieves the character set used to encode the object.\n */"
+                            "comment": "Sets or retrieves the character set used to encode the object."
                         },
                         "hreflang": {
-                            "comment": "/**\n * Sets or retrieves the language code of the object.\n */"
+                            "comment": "Sets or retrieves the language code of the object."
                         }
                     }
                 }
@@ -456,7 +442,7 @@
                 "properties": {
                     "property": {
                         "face": {
-                            "comment": "/**\n * Sets or retrieves the current typeface family.\n */"
+                            "comment": "Sets or retrieves the current typeface family."
                         }
                     }
                 }
@@ -465,7 +451,7 @@
                 "properties": {
                     "property": {
                         "align": {
-                            "comment": "/**\n * Sets or retrieves the alignment of the caption or legend.\n */"
+                            "comment": "Sets or retrieves the alignment of the caption or legend."
                         }
                     }
                 }
@@ -474,25 +460,25 @@
                 "properties": {
                     "property": {
                         "index": {
-                            "comment": "/**\n * Sets or retrieves the ordinal position of an option in a list box.\n */"
+                            "comment": "Sets or retrieves the ordinal position of an option in a list box."
                         },
                         "defaultSelected": {
-                            "comment": "/**\n * Sets or retrieves the status of an option.\n */"
+                            "comment": "Sets or retrieves the status of an option."
                         },
                         "value": {
-                            "comment": "/**\n * Sets or retrieves the value which is returned to the server when the form control is submitted.\n */"
+                            "comment": "Sets or retrieves the value which is returned to the server when the form control is submitted."
                         },
                         "text": {
-                            "comment": "/**\n * Sets or retrieves the text string specified by the option tag.\n */"
+                            "comment": "Sets or retrieves the text string specified by the option tag."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "label": {
-                            "comment": "/**\n * Sets or retrieves a value that you can use to implement your own label functionality for the object.\n */"
+                            "comment": "Sets or retrieves a value that you can use to implement your own label functionality for the object."
                         },
                         "selected": {
-                            "comment": "/**\n * Sets or retrieves whether the option in the list box is the default item.\n */"
+                            "comment": "Sets or retrieves whether the option in the list box is the default item."
                         }
                     }
                 }
@@ -501,10 +487,10 @@
                 "properties": {
                     "property": {
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "areas": {
-                            "comment": "/**\n * Retrieves a collection of the area objects defined for the given map object.\n */"
+                            "comment": "Retrieves a collection of the area objects defined for the given map object."
                         }
                     }
                 }
@@ -513,17 +499,17 @@
                 "properties": {
                     "property": {
                         "length": {
-                            "comment": "/**\n * Sets or retrieves the number of objects in a collection.\n */"
+                            "comment": "Sets or retrieves the number of objects in a collection."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "item": {
-                            "comment": "/**\n * Retrieves an object from various collections.\n */"
+                            "comment": "Retrieves an object from various collections."
                         },
                         "namedItem": {
-                            "comment": "/**\n * Retrieves a select object or an object from an options collection.\n */"
+                            "comment": "Retrieves a select object or an object from an options collection."
                         }
                     }
                 }
@@ -532,49 +518,52 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "vspace": {
-                            "comment": "/**\n * Sets or retrieves the vertical margin for the object.\n */"
+                            "comment": "Sets or retrieves the vertical margin for the object."
                         },
                         "naturalHeight": {
-                            "comment": "/**\n * The original height of the image resource before sizing.\n */"
+                            "comment": "The original height of the image resource before sizing."
                         },
                         "alt": {
-                            "comment": "/**\n * Sets or retrieves a text alternative to the graphic.\n */"
+                            "comment": "Sets or retrieves a text alternative to the graphic."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         },
                         "src": {
-                            "comment": "/**\n * The address or URL of the a media resource that is to be considered.\n */"
+                            "comment": "The address or URL of the a media resource that is to be considered."
                         },
                         "useMap": {
-                            "comment": "/**\n * Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.\n */"
+                            "comment": "Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map."
                         },
                         "naturalWidth": {
-                            "comment": "/**\n * The original width of the image resource before sizing.\n */"
+                            "comment": "The original width of the image resource before sizing."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
+                            "comment": "Sets or retrieves the height of the object."
                         },
                         "border": {
-                            "comment": "/**\n * Specifies the properties of a border drawn around an object.\n */"
+                            "comment": "Specifies the properties of a border drawn around an object."
                         },
                         "hspace": {
-                            "comment": "/**\n * Sets or retrieves the width of the border to draw around the object.\n */"
+                            "comment": "Sets or retrieves the width of the border to draw around the object."
+                        },
+                        "loading": {
+                            "comment": "Sets or retrieves the policy for loading image elements that are outside the viewport."
                         },
                         "longDesc": {
-                            "comment": "/**\n * Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object.\n */"
+                            "comment": "Sets or retrieves a Uniform Resource Identifier (URI) to a long description of the object."
                         },
                         "isMap": {
-                            "comment": "/**\n * Sets or retrieves whether the image is a server-side image map.\n */"
+                            "comment": "Sets or retrieves whether the image is a server-side image map."
                         },
                         "complete": {
-                            "comment": "/**\n * Retrieves whether the object is fully loaded.\n */"
+                            "comment": "Retrieves whether the object is fully loaded."
                         }
                     }
                 }
@@ -583,19 +572,19 @@
                 "properties": {
                     "property": {
                         "alt": {
-                            "comment": "/**\n * Sets or retrieves a text alternative to the graphic.\n */"
+                            "comment": "Sets or retrieves a text alternative to the graphic."
                         },
                         "coords": {
-                            "comment": "/**\n * Sets or retrieves the coordinates of the object.\n */"
+                            "comment": "Sets or retrieves the coordinates of the object."
                         },
                         "target": {
-                            "comment": "/**\n * Sets or retrieves the window or frame at which to target content.\n */"
+                            "comment": "Sets or retrieves the window or frame at which to target content."
                         },
                         "noHref": {
-                            "comment": "/**\n * Sets or gets whether clicks in this region cause action.\n */"
+                            "comment": "Sets or gets whether clicks in this region cause action."
                         },
                         "shape": {
-                            "comment": "/**\n * Sets or retrieves the shape of the object.\n */"
+                            "comment": "Sets or retrieves the shape of the object."
                         }
                     }
                 }
@@ -604,50 +593,50 @@
                 "properties": {
                     "property": {
                         "value": {
-                            "comment": "/**\n * Sets or retrieves the default or selected value of the control.\n */"
+                            "comment": "Sets or retrieves the default or selected value of the control."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "type": {
-                            "comment": "/**\n * Gets the classification and default behavior of the button.\n */"
+                            "comment": "Gets the classification and default behavior of the button."
                         },
                         "validationMessage": {
-                            "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
+                            "comment": "Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting."
                         },
                         "formTarget": {
-                            "comment": "/**\n * Overrides the target attribute on a form element.\n */"
+                            "comment": "Overrides the target attribute on a form element."
                         },
                         "willValidate": {
-                            "comment": "/**\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\n */"
+                            "comment": "Returns whether an element will successfully validate based on forms validation rules and constraints."
                         },
                         "formAction": {
-                            "comment": "/**\n * Overrides the action attribute (where the data on a form is sent) on the parent form element.\n */"
+                            "comment": "Overrides the action attribute (where the data on a form is sent) on the parent form element."
                         },
                         "validity": {
-                            "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
+                            "comment": "Returns a  ValidityState object that represents the validity states of an element."
                         },
                         "formNoValidate": {
-                            "comment": "/**\n * Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a \"save draft\"-type submit option.\n */"
+                            "comment": "Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a \"save draft\"-type submit option."
                         },
                         "formEnctype": {
-                            "comment": "/**\n * Used to override the encoding (formEnctype attribute) specified on the form element.\n */"
+                            "comment": "Used to override the encoding (formEnctype attribute) specified on the form element."
                         },
                         "formMethod": {
-                            "comment": "/**\n * Overrides the submit method attribute previously specified on a form element.\n */"
+                            "comment": "Overrides the submit method attribute previously specified on a form element."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         },
                         "setCustomValidity": {
-                            "comment": "/**\n * Sets a custom error message that is displayed when a form is submitted.\n * @param error Sets a custom error message that is displayed when a form is submitted.\n */"
+                            "comment": "Sets a custom error message that is displayed when a form is submitted.\n@param error Sets a custom error message that is displayed when a form is submitted."
                         }
                     }
                 }
@@ -656,13 +645,13 @@
                 "properties": {
                     "property": {
                         "src": {
-                            "comment": "/**\n * The address or URL of the a media resource that is to be considered.\n */"
+                            "comment": "The address or URL of the a media resource that is to be considered."
                         },
                         "media": {
-                            "comment": "/**\n * Gets or sets the intended media type of the media source.\n */"
+                            "comment": "Gets or sets the intended media type of the media source."
                         },
                         "type": {
-                            "comment": "/**\n * Gets or sets the MIME type of a media resource.\n */"
+                            "comment": "Gets or sets the MIME type of a media resource."
                         }
                     }
                 }
@@ -671,170 +660,167 @@
                 "properties": {
                     "property": {
                         "implementation": {
-                            "comment": "/**\n * Gets the implementation object of the current document.\n */"
+                            "comment": "Gets the implementation object of the current document."
                         },
                         "scripts": {
-                            "comment": "/**\n * Retrieves a collection of all script objects in the document.\n */"
+                            "comment": "Retrieves a collection of all script objects in the document."
                         },
                         "charset": {
-                            "comment": "/**\n * Gets or sets the character set used to encode the object.\n */"
+                            "comment": "Gets or sets the character set used to encode the object."
                         },
                         "vlinkColor": {
-                            "comment": "/**\n * Sets or gets the color of the links that the user has visited.\n */"
+                            "comment": "Sets or gets the color of the links that the user has visited."
                         },
                         "title": {
-                            "comment": "/**\n * Contains the title of the document.\n */"
+                            "comment": "Contains the title of the document."
                         },
                         "embeds": {
-                            "comment": "/**\n * Retrieves a collection of all embed objects in the document.\n */"
+                            "comment": "Retrieves a collection of all embed objects in the document."
                         },
                         "all": {
-                            "comment": "/**\n * Returns a reference to the collection of elements contained by the object.\n */"
+                            "comment": "Returns a reference to the collection of elements contained by the object."
                         },
                         "forms": {
-                            "comment": "/**\n * Retrieves a collection, in source order, of all form objects in the document.\n */"
+                            "comment": "Retrieves a collection, in source order, of all form objects in the document."
                         },
                         "dir": {
-                            "comment": "/**\n * Sets or retrieves a value that indicates the reading order of the object.\n */"
+                            "comment": "Sets or retrieves a value that indicates the reading order of the object."
                         },
                         "designMode": {
-                            "comment": "/**\n * Sets or gets a value that indicates whether the document can be edited.\n */"
+                            "comment": "Sets or gets a value that indicates whether the document can be edited."
                         },
                         "inputEncoding": {
-                            "comment": "/**\n * Returns the character encoding used to create the webpage that is loaded into the document object.\n */"
+                            "comment": "Returns the character encoding used to create the webpage that is loaded into the document object."
                         },
                         "links": {
-                            "comment": "/**\n * Retrieves a collection of all a objects that specify the href property and all area objects in the document.\n */"
+                            "comment": "Retrieves a collection of all a objects that specify the href property and all area objects in the document."
                         },
                         "URL": {
-                            "comment": "/**\n * Sets or gets the URL for the current document.\n */"
+                            "comment": "Sets or gets the URL for the current document."
                         },
                         "anchors": {
-                            "comment": "/**\n * Retrieves a collection of all a objects that have a name and/or id property. Objects in this collection are in HTML source order.\n */"
+                            "comment": "Retrieves a collection of all a objects that have a name and/or id property. Objects in this collection are in HTML source order."
                         },
                         "readyState": {
-                            "comment": "/**\n * Retrieves a value that indicates the current state of the object.\n */"
+                            "comment": "Retrieves a value that indicates the current state of the object."
                         },
                         "referrer": {
-                            "comment": "/**\n * Gets the URL of the location that referred the user to the current page.\n */"
+                            "comment": "Gets the URL of the location that referred the user to the current page."
                         },
                         "alinkColor": {
-                            "comment": "/**\n * Sets or gets the color of all active links in the document.\n */"
+                            "comment": "Sets or gets the color of all active links in the document."
                         },
                         "doctype": {
-                            "comment": "/**\n * Gets an object representing the document type declaration associated with the current document.\n */"
+                            "comment": "Gets an object representing the document type declaration associated with the current document."
                         },
                         "bgColor": {
-                            "comment": "/**\n * Deprecated. Sets or retrieves a value that indicates the background color behind the object.\n */"
+                            "comment": "Deprecated. Sets or retrieves a value that indicates the background color behind the object."
                         },
                         "linkColor": {
-                            "comment": "/**\n * Sets or gets the color of the document links.\n */"
+                            "comment": "Sets or gets the color of the document links."
                         },
                         "applets": {
-                            "comment": "/**\n * Retrieves a collection of all applet objects in the document.\n */"
+                            "comment": "Retrieves a collection of all applet objects in the document."
                         },
                         "body": {
-                            "comment": "/**\n * Specifies the beginning and end of the document body.\n */"
+                            "comment": "Specifies the beginning and end of the document body."
                         },
                         "domain": {
-                            "comment": "/**\n * Sets or gets the security domain of the document.\n */"
+                            "comment": "Sets or gets the security domain of the document."
                         },
                         "documentElement": {
-                            "comment": "/**\n * Gets a reference to the root node of the document.\n */"
+                            "comment": "Gets a reference to the root node of the document."
                         },
                         "images": {
-                            "comment": "/**\n * Retrieves a collection, in source order, of img objects in the document.\n */"
+                            "comment": "Retrieves a collection, in source order, of img objects in the document."
                         },
                         "location": {
-                            "comment": "/**\n * Contains information about the current URL.\n */"
+                            "comment": "Contains information about the current URL."
                         },
                         "onreadystatechange": {
-                            "comment": "/**\n * Fires when the state of the object has changed.\n * @param ev The event\n */"
+                            "comment": "Fires when the state of the object has changed.\n@param ev The event"
                         },
                         "lastModified": {
-                            "comment": "/**\n * Gets the date that the page was last modified, if the page supplies one.\n */"
+                            "comment": "Gets the date that the page was last modified, if the page supplies one."
                         },
                         "fgColor": {
-                            "comment": "/**\n * Sets or gets the foreground (text) color of the document.\n */"
+                            "comment": "Sets or gets the foreground (text) color of the document."
                         },
                         "compatMode": {
-                            "comment": "/**\n * Gets a value that indicates whether standards-compliant mode is switched on for the object.\n */"
+                            "comment": "Gets a value that indicates whether standards-compliant mode is switched on for the object."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "queryCommandValue": {
-                            "comment": "/**\n * Returns the current value of the document, range, or current selection for the given command.\n * @param commandId String that specifies a command identifier.\n */"
+                            "comment": "Returns the current value of the document, range, or current selection for the given command.\n@param commandId String that specifies a command identifier."
                         },
                         "queryCommandIndeterm": {
-                            "comment": "/**\n * Returns a Boolean value that indicates whether the specified command is in the indeterminate state.\n * @param commandId String that specifies a command identifier.\n */"
+                            "comment": "Returns a Boolean value that indicates whether the specified command is in the indeterminate state.\n@param commandId String that specifies a command identifier."
                         },
                         "execCommand": {
-                            "comment": "/**\n * Executes a command on the current document, current selection, or the given range.\n * @param commandId String that specifies the command to execute. This command can be any of the command identifiers that can be executed in script.\n * @param showUI Display the user interface, defaults to false.\n * @param value Value to assign.\n */"
-                        },
-                        "elementFromPoint": {
-                            "comment": "/**\n * Returns the element for the specified x coordinate and the specified y coordinate.\n * @param x The x-offset\n * @param y The y-offset\n */"
+                            "comment": "Executes a command on the current document, current selection, or the given range.\n@param commandId String that specifies the command to execute. This command can be any of the command identifiers that can be executed in script.\n@param showUI Display the user interface, defaults to false.\n@param value Value to assign."
                         },
                         "write": {
-                            "comment": "/**\n * Writes one or more HTML expressions to a document in the specified window.\n * @param content Specifies the text and HTML tags to write.\n */"
+                            "comment": "Writes one or more HTML expressions to a document in the specified window.\n@param content Specifies the text and HTML tags to write."
                         },
                         "createElement": {
-                            "comment": "/**\n * Creates an instance of the element for the specified tag.\n * @param tagName The name of an element.\n */"
+                            "comment": "Creates an instance of the element for the specified tag.\n@param tagName The name of an element."
                         },
                         "writeln": {
-                            "comment": "/**\n * Writes one or more HTML expressions, followed by a carriage return, to a document in the specified window.\n * @param content The text and HTML tags to write.\n */"
+                            "comment": "Writes one or more HTML expressions, followed by a carriage return, to a document in the specified window.\n@param content The text and HTML tags to write."
                         },
                         "open": {
-                            "comment": "/**\n * Opens a new window and loads a document specified by a given URL. Also, opens a new window that uses the url parameter and the name parameter to collect the output of the write method and the writeln method.\n * @param url Specifies a MIME type for the document.\n * @param name Specifies the name of the window. This name is used as the value for the TARGET attribute on a form or an anchor element.\n * @param features Contains a list of items separated by commas. Each item consists of an option and a value, separated by an equals sign (for example, \"fullscreen=yes, toolbar=yes\"). The following values are supported.\n * @param replace Specifies whether the existing entry for the document is replaced in the history list.\n */"
+                            "comment": "Opens a new window and loads a document specified by a given URL. Also, opens a new window that uses the url parameter and the name parameter to collect the output of the write method and the writeln method.\n@param url Specifies a MIME type for the document.\n@param name Specifies the name of the window. This name is used as the value for the TARGET attribute on a form or an anchor element.\n@param features Contains a list of items separated by commas. Each item consists of an option and a value, separated by an equals sign (for example, \"fullscreen=yes, toolbar=yes\"). The following values are supported.\n@param replace Specifies whether the existing entry for the document is replaced in the history list."
                         },
                         "queryCommandSupported": {
-                            "comment": "/**\n * Returns a Boolean value that indicates whether the current command is supported on the current range.\n * @param commandId Specifies a command identifier.\n */"
+                            "comment": "Returns a Boolean value that indicates whether the current command is supported on the current range.\n@param commandId Specifies a command identifier."
                         },
                         "createTreeWalker": {
-                            "comment": "/**\n * Creates a TreeWalker object that you can use to traverse filtered lists of nodes or elements in a document.\n * @param root The root element or node to start traversing on.\n * @param whatToShow The type of nodes or elements to appear in the node list. For more information, see whatToShow.\n * @param filter A custom NodeFilter function to use.\n * @param entityReferenceExpansion A flag that specifies whether entity reference nodes are expanded.\n */"
+                            "comment": "Creates a TreeWalker object that you can use to traverse filtered lists of nodes or elements in a document.\n@param root The root element or node to start traversing on.\n@param whatToShow The type of nodes or elements to appear in the node list. For more information, see whatToShow.\n@param filter A custom NodeFilter function to use."
                         },
                         "queryCommandEnabled": {
-                            "comment": "/**\n * Returns a Boolean value that indicates whether a specified command can be successfully executed using execCommand, given the current state of the document.\n * @param commandId Specifies a command identifier.\n */"
+                            "comment": "Returns a Boolean value that indicates whether a specified command can be successfully executed using execCommand, given the current state of the document.\n@param commandId Specifies a command identifier."
                         },
                         "close": {
-                            "comment": "/**\n * Closes an output stream and forces the sent data to display.\n */"
+                            "comment": "Closes an output stream and forces the sent data to display."
                         },
                         "createRange": {
-                            "comment": "/**\n *  Returns an empty range object that has both of its boundary points positioned at the beginning of the document.\n */"
+                            "comment": " Returns an empty range object that has both of its boundary points positioned at the beginning of the document."
                         },
                         "createComment": {
-                            "comment": "/**\n * Creates a comment object with the specified data.\n * @param data Sets the comment object's data.\n */"
+                            "comment": "Creates a comment object with the specified data.\n@param data Sets the comment object's data."
                         },
                         "getElementsByTagName": {
-                            "comment": "/**\n * Retrieves a collection of objects based on the specified element name.\n * @param name Specifies the name of an element.\n */"
+                            "comment": "Retrieves a collection of objects based on the specified element name.\n@param name Specifies the name of an element."
                         },
                         "createDocumentFragment": {
-                            "comment": "/**\n * Creates a new document.\n */"
+                            "comment": "Creates a new document."
                         },
                         "getElementsByName": {
-                            "comment": "/**\n * Gets a collection of objects based on the value of the NAME or ID attribute.\n * @param elementName Gets a collection of objects based on the value of the NAME or ID attribute.\n */"
+                            "comment": "Gets a collection of objects based on the value of the NAME or ID attribute.\n@param elementName Gets a collection of objects based on the value of the NAME or ID attribute."
                         },
                         "queryCommandState": {
-                            "comment": "/**\n * Returns a Boolean value that indicates the current state of the command.\n * @param commandId String that specifies a command identifier.\n */"
+                            "comment": "Returns a Boolean value that indicates the current state of the command.\n@param commandId String that specifies a command identifier."
                         },
                         "hasFocus": {
-                            "comment": "/**\n * Gets a value indicating whether the object currently has focus.\n */"
+                            "comment": "Gets a value indicating whether the object currently has focus."
                         },
                         "createAttribute": {
-                            "comment": "/**\n * Creates an attribute object with a specified name.\n * @param name String that sets the attribute object's name.\n */"
+                            "comment": "Creates an attribute object with a specified name.\n@param name String that sets the attribute object's name."
                         },
                         "createTextNode": {
-                            "comment": "/**\n * Creates a text string from the specified value.\n * @param data String that specifies the nodeValue property of the text node.\n */"
+                            "comment": "Creates a text string from the specified value.\n@param data String that specifies the nodeValue property of the text node."
                         },
                         "createNodeIterator": {
-                            "comment": "/**\n * Creates a NodeIterator object that you can use to traverse filtered lists of nodes or elements in a document.\n * @param root The root element or node to start traversing on.\n * @param whatToShow The type of nodes or elements to appear in the node list\n * @param filter A custom NodeFilter function to use. For more information, see filter. Use null for no filter.\n * @param entityReferenceExpansion A flag that specifies whether entity reference nodes are expanded.\n */"
+                            "comment": "Creates a NodeIterator object that you can use to traverse filtered lists of nodes or elements in a document.\n@param root The root element or node to start traversing on.\n@param whatToShow The type of nodes or elements to appear in the node list\n@param filter A custom NodeFilter function to use. For more information, see filter. Use null for no filter."
                         },
                         "getSelection": {
-                            "comment": "/**\n * Returns an object representing the current selection of the document that is loaded into the object displaying a webpage.\n */"
+                            "comment": "Returns an object representing the current selection of the document that is loaded into the object displaying a webpage."
                         },
                         "getElementById": {
-                            "comment": "/**\n * Returns a reference to the first object with the specified value of the ID attribute.\n * @param elementId String that specifies the ID value.\n */"
+                            "comment": "Returns a reference to the first object with the specified value of the ID attribute.\n@param elementId String that specifies the ID value."
                         }
                     }
                 }
@@ -843,25 +829,25 @@
                 "properties": {
                     "property": {
                         "defer": {
-                            "comment": "/**\n * Sets or retrieves the status of the script.\n */"
+                            "comment": "Sets or retrieves the status of the script."
                         },
                         "text": {
-                            "comment": "/**\n * Retrieves or sets the text of the object as a string.\n */"
+                            "comment": "Retrieves or sets the text of the object as a string."
                         },
                         "src": {
-                            "comment": "/**\n * Retrieves the URL to an external file that contains the source code or data.\n */"
+                            "comment": "Retrieves the URL to an external file that contains the source code or data."
                         },
                         "htmlFor": {
-                            "comment": "/**\n * Sets or retrieves the object that is bound to the event script.\n */"
+                            "comment": "Sets or retrieves the object that is bound to the event script."
                         },
                         "charset": {
-                            "comment": "/**\n * Sets or retrieves the character set used to encode the object.\n */"
+                            "comment": "Sets or retrieves the character set used to encode the object."
                         },
                         "type": {
-                            "comment": "/**\n * Sets or retrieves the MIME type for the associated scripting engine.\n */"
+                            "comment": "Sets or retrieves the MIME type for the associated scripting engine."
                         },
                         "event": {
-                            "comment": "/**\n * Sets or retrieves the event for which the script is written.\n */"
+                            "comment": "Sets or retrieves the event for which the script is written."
                         }
                     }
                 }
@@ -870,26 +856,26 @@
                 "properties": {
                     "property": {
                         "rowIndex": {
-                            "comment": "/**\n * Retrieves the position of the object in the rows collection for the table.\n */"
+                            "comment": "Retrieves the position of the object in the rows collection for the table."
                         },
                         "cells": {
-                            "comment": "/**\n * Retrieves a collection of all cells in the table row.\n */"
+                            "comment": "Retrieves a collection of all cells in the table row."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         },
                         "sectionRowIndex": {
-                            "comment": "/**\n * Retrieves the position of the object in the collection.\n */"
+                            "comment": "Retrieves the position of the object in the collection."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "deleteCell": {
-                            "comment": "/**\n * Removes the specified cell from the table row, as well as from the cells collection.\n * @param index Number that specifies the zero-based position of the cell to remove from the table row. If no value is provided, the last cell in the cells collection is deleted.\n */"
+                            "comment": "Removes the specified cell from the table row, as well as from the cells collection.\n@param index Number that specifies the zero-based position of the cell to remove from the table row. If no value is provided, the last cell in the cells collection is deleted."
                         },
                         "insertCell": {
-                            "comment": "/**\n * Creates a new cell in the table row, and adds the cell to the cells collection.\n * @param index Number that specifies where to insert the cell in the tr. The default value is -1, which appends the new cell to the end of the cells collection.\n */"
+                            "comment": "Creates a new cell in the table row, and adds the cell to the cells collection.\n@param index Number that specifies where to insert the cell in the tr. The default value is -1, which appends the new cell to the end of the cells collection."
                         }
                     }
                 }
@@ -898,7 +884,7 @@
                 "properties": {
                     "property": {
                         "version": {
-                            "comment": "/**\n * Sets or retrieves the DTD version that governs the current document.\n */"
+                            "comment": "Sets or retrieves the DTD version that governs the current document."
                         }
                     }
                 }
@@ -907,34 +893,34 @@
                 "properties": {
                     "property": {
                         "scrolling": {
-                            "comment": "/**\n * Sets or retrieves whether the frame can be scrolled.\n */"
+                            "comment": "Sets or retrieves whether the frame can be scrolled."
                         },
                         "marginHeight": {
-                            "comment": "/**\n * Sets or retrieves the top and bottom margin heights before displaying the text in a frame.\n */"
+                            "comment": "Sets or retrieves the top and bottom margin heights before displaying the text in a frame."
                         },
                         "marginWidth": {
-                            "comment": "/**\n * Sets or retrieves the left and right margin widths before displaying the text in a frame.\n */"
+                            "comment": "Sets or retrieves the left and right margin widths before displaying the text in a frame."
                         },
                         "frameBorder": {
-                            "comment": "/**\n * Sets or retrieves whether to display a border for the frame.\n */"
+                            "comment": "Sets or retrieves whether to display a border for the frame."
                         },
                         "noResize": {
-                            "comment": "/**\n * Sets or retrieves whether the user can resize the frame.\n */"
+                            "comment": "Sets or retrieves whether the user can resize the frame."
                         },
                         "contentWindow": {
-                            "comment": "/**\n * Retrieves the object of the specified.\n */"
+                            "comment": "Retrieves the object of the specified."
                         },
                         "src": {
-                            "comment": "/**\n * Sets or retrieves a URL to be loaded by the object.\n */"
+                            "comment": "Sets or retrieves a URL to be loaded by the object."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the frame name.\n */"
+                            "comment": "Sets or retrieves the frame name."
                         },
                         "contentDocument": {
-                            "comment": "/**\n * Retrieves the document object of the page or frame.\n */"
+                            "comment": "Retrieves the document object of the page or frame."
                         },
                         "longDesc": {
-                            "comment": "/**\n * Sets or retrieves a URI to a long description of the object.\n */"
+                            "comment": "Sets or retrieves a URI to a long description of the object."
                         }
                     }
                 }
@@ -943,7 +929,7 @@
                 "properties": {
                     "property": {
                         "cite": {
-                            "comment": "/**\n * Sets or retrieves reference information about the object.\n */"
+                            "comment": "Sets or retrieves reference information about the object."
                         }
                     }
                 }
@@ -952,10 +938,10 @@
                 "properties": {
                     "property": {
                         "rows": {
-                            "comment": "/**\n * Sets or retrieves the frame heights of the object.\n */"
+                            "comment": "Sets or retrieves the frame heights of the object."
                         },
                         "cols": {
-                            "comment": "/**\n * Sets or retrieves the frame widths of the object.\n */"
+                            "comment": "Sets or retrieves the frame widths of the object."
                         }
                     }
                 }
@@ -964,10 +950,10 @@
                 "properties": {
                     "property": {
                         "htmlFor": {
-                            "comment": "/**\n * Sets or retrieves the object to which the given label object is assigned.\n */"
+                            "comment": "Sets or retrieves the object to which the given label object is assigned."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         }
                     }
                 }
@@ -976,7 +962,7 @@
                 "properties": {
                     "property": {
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         }
                     }
                 }
@@ -985,7 +971,7 @@
                 "properties": {
                     "property": {
                         "value": {
-                            "comment": "/**\n * Sets or retrieves the value of a list item.\n */"
+                            "comment": "Sets or retrieves the value of a list item."
                         }
                     }
                 }
@@ -994,43 +980,43 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "scrolling": {
-                            "comment": "/**\n * Sets or retrieves whether the frame can be scrolled.\n */"
+                            "comment": "Sets or retrieves whether the frame can be scrolled."
                         },
                         "marginHeight": {
-                            "comment": "/**\n * Sets or retrieves the top and bottom margin heights before displaying the text in a frame.\n */"
+                            "comment": "Sets or retrieves the top and bottom margin heights before displaying the text in a frame."
                         },
                         "marginWidth": {
-                            "comment": "/**\n * Sets or retrieves the left and right margin widths before displaying the text in a frame.\n */"
+                            "comment": "Sets or retrieves the left and right margin widths before displaying the text in a frame."
                         },
                         "frameBorder": {
-                            "comment": "/**\n * Sets or retrieves whether to display a border for the frame.\n */"
+                            "comment": "Sets or retrieves whether to display a border for the frame."
                         },
                         "contentWindow": {
-                            "comment": "/**\n * Retrieves the object of the specified.\n */"
+                            "comment": "Retrieves the object of the specified."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         },
                         "src": {
-                            "comment": "/**\n * Sets or retrieves a URL to be loaded by the object.\n */"
+                            "comment": "Sets or retrieves a URL to be loaded by the object."
                         },
                         "srcdoc": {
-                            "comment": "/**\n * Sets or retrives the content of the page that is to contain.\n */"
+                            "comment": "Sets or retrives the content of the page that is to contain."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the frame name.\n */"
+                            "comment": "Sets or retrieves the frame name."
                         },
                         "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
+                            "comment": "Sets or retrieves the height of the object."
                         },
                         "contentDocument": {
-                            "comment": "/**\n * Retrieves the document object of the page or frame.\n */"
+                            "comment": "Retrieves the document object of the page or frame."
                         },
                         "longDesc": {
-                            "comment": "/**\n * Sets or retrieves a URI to a long description of the object.\n */"
+                            "comment": "Sets or retrieves a URI to a long description of the object."
                         }
                     }
                 }
@@ -1039,20 +1025,20 @@
                 "properties": {
                     "property": {
                         "align": {
-                            "comment": "/**\n * Sets or retrieves a value that indicates the table alignment.\n */"
+                            "comment": "Sets or retrieves a value that indicates the table alignment."
                         },
                         "rows": {
-                            "comment": "/**\n * Sets or retrieves the number of horizontal rows contained in the object.\n */"
+                            "comment": "Sets or retrieves the number of horizontal rows contained in the object."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "deleteRow": {
-                            "comment": "/**\n * Removes the specified row (tr) from the element and from the rows collection.\n * @param index Number that specifies the zero-based position in the rows collection of the row to remove.\n */"
+                            "comment": "Removes the specified row (tr) from the element and from the rows collection.\n@param index Number that specifies the zero-based position in the rows collection of the row to remove."
                         },
                         "insertRow": {
-                            "comment": "/**\n * Creates a new row (tr) in the table, and adds the row to the rows collection.\n * @param index Number that specifies where to insert the row in the rows collection. The default value is -1, which appends the new row to the end of the rows collection.\n */"
+                            "comment": "Creates a new row (tr) in the table, and adds the row to the rows collection.\n@param index Number that specifies where to insert the row in the rows collection. The default value is -1, which appends the new row to the end of the rows collection."
                         }
                     }
                 }
@@ -1061,137 +1047,137 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "selectionStart": {
-                            "comment": "/**\n * Gets or sets the starting position or offset of a text selection.\n */"
+                            "comment": "Gets or sets the starting position or offset of a text selection."
                         },
                         "selectionEnd": {
-                            "comment": "/**\n * Gets or sets the end position or offset of a text selection.\n */"
+                            "comment": "Gets or sets the end position or offset of a text selection."
                         },
                         "accept": {
-                            "comment": "/**\n * Sets or retrieves a comma-separated list of content types.\n */"
+                            "comment": "Sets or retrieves a comma-separated list of content types."
                         },
                         "alt": {
-                            "comment": "/**\n * Sets or retrieves a text alternative to the graphic.\n */"
+                            "comment": "Sets or retrieves a text alternative to the graphic."
                         },
                         "defaultChecked": {
-                            "comment": "/**\n * Sets or retrieves the state of the check box or radio button.\n */"
+                            "comment": "Sets or retrieves the state of the check box or radio button."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         },
                         "value": {
-                            "comment": "/**\n * Returns the value of the data at the cursor's current position.\n */"
+                            "comment": "Returns the value of the data at the cursor's current position."
                         },
                         "valueAsDate": {
-                            "comment": "/**\n * Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an \"InvalidStateError\" DOMException if the control isn't date- or time-based.\n */"
+                            "comment": "Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an \"InvalidStateError\" DOMException if the control isn't date- or time-based."
                         },
                         "src": {
-                            "comment": "/**\n * The address or URL of the a media resource that is to be considered.\n */"
+                            "comment": "The address or URL of the a media resource that is to be considered."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "useMap": {
-                            "comment": "/**\n * Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.\n */"
+                            "comment": "Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map."
                         },
                         "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
+                            "comment": "Sets or retrieves the height of the object."
                         },
                         "checked": {
-                            "comment": "/**\n * Sets or retrieves the state of the check box or radio button.\n */"
+                            "comment": "Sets or retrieves the state of the check box or radio button."
                         },
                         "maxLength": {
-                            "comment": "/**\n * Sets or retrieves the maximum number of characters that the user can enter in a text control.\n */"
+                            "comment": "Sets or retrieves the maximum number of characters that the user can enter in a text control."
                         },
                         "type": {
-                            "comment": "/**\n * Returns the content type of the object.\n */"
+                            "comment": "Returns the content type of the object."
                         },
                         "defaultValue": {
-                            "comment": "/**\n * Sets or retrieves the initial contents of the object.\n */"
+                            "comment": "Sets or retrieves the initial contents of the object."
                         },
                         "validationMessage": {
-                            "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
+                            "comment": "Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting."
                         },
                         "files": {
-                            "comment": "/**\n * Returns a FileList object on a file type input object.\n */"
+                            "comment": "Returns a FileList object on a file type input object."
                         },
                         "max": {
-                            "comment": "/**\n * Defines the maximum acceptable value for an input element with type=\"number\".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field.\n */"
+                            "comment": "Defines the maximum acceptable value for an input element with type=\"number\".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field."
                         },
                         "formTarget": {
-                            "comment": "/**\n * Overrides the target attribute on a form element.\n */"
+                            "comment": "Overrides the target attribute on a form element."
                         },
                         "willValidate": {
-                            "comment": "/**\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\n */"
+                            "comment": "Returns whether an element will successfully validate based on forms validation rules and constraints."
                         },
                         "step": {
-                            "comment": "/**\n * Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field.\n */"
+                            "comment": "Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field."
                         },
                         "required": {
-                            "comment": "/**\n * When present, marks an element that can't be submitted without a value.\n */"
+                            "comment": "When present, marks an element that can't be submitted without a value."
                         },
                         "formEnctype": {
-                            "comment": "/**\n * Used to override the encoding (formEnctype attribute) specified on the form element.\n */"
+                            "comment": "Used to override the encoding (formEnctype attribute) specified on the form element."
                         },
                         "valueAsNumber": {
-                            "comment": "/**\n * Returns the input field value as a number.\n */"
+                            "comment": "Returns the input field value as a number."
                         },
                         "placeholder": {
-                            "comment": "/**\n * Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field.\n */"
+                            "comment": "Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field."
                         },
                         "formMethod": {
-                            "comment": "/**\n * Overrides the submit method attribute previously specified on a form element.\n */"
+                            "comment": "Overrides the submit method attribute previously specified on a form element."
                         },
                         "list": {
-                            "comment": "/**\n * Specifies the ID of a pre-defined datalist of options for an input element.\n */"
+                            "comment": "Specifies the ID of a pre-defined datalist of options for an input element."
                         },
                         "autocomplete": {
-                            "comment": "/**\n * Specifies whether autocomplete is applied to an editable text field.\n */"
+                            "comment": "Specifies whether autocomplete is applied to an editable text field."
                         },
                         "min": {
-                            "comment": "/**\n * Defines the minimum acceptable value for an input element with type=\"number\". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field.\n */"
+                            "comment": "Defines the minimum acceptable value for an input element with type=\"number\". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field."
                         },
                         "formAction": {
-                            "comment": "/**\n * Overrides the action attribute (where the data on a form is sent) on the parent form element.\n */"
+                            "comment": "Overrides the action attribute (where the data on a form is sent) on the parent form element."
                         },
                         "pattern": {
-                            "comment": "/**\n * Gets or sets a string containing a regular expression that the user's input must match.\n */"
+                            "comment": "Gets or sets a string containing a regular expression that the user's input must match."
                         },
                         "validity": {
-                            "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
+                            "comment": "Returns a  ValidityState object that represents the validity states of an element."
                         },
                         "formNoValidate": {
-                            "comment": "/**\n * Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a \"save draft\"-type submit option.\n */"
+                            "comment": "Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a \"save draft\"-type submit option."
                         },
                         "multiple": {
-                            "comment": "/**\n * Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.\n */"
+                            "comment": "Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "setSelectionRange": {
-                            "comment": "/**\n * Sets the start and end positions of a selection in a text field.\n * @param start The offset into the text field for the start of the selection.\n * @param end The offset into the text field for the end of the selection.\n * @param direction The direction in which the selection is performed.\n */"
+                            "comment": "Sets the start and end positions of a selection in a text field.\n@param start The offset into the text field for the start of the selection.\n@param end The offset into the text field for the end of the selection.\n@param direction The direction in which the selection is performed."
                         },
                         "select": {
-                            "comment": "/**\n * Makes the selection equal to the current object.\n */"
+                            "comment": "Makes the selection equal to the current object."
                         },
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         },
                         "stepDown": {
-                            "comment": "/**\n * Decrements a range input control's value by the value given by the Step attribute. If the optional parameter is used, it will decrement the input control's step value multiplied by the parameter's value.\n * @param n Value to decrement the value by.\n */"
+                            "comment": "Decrements a range input control's value by the value given by the Step attribute. If the optional parameter is used, it will decrement the input control's step value multiplied by the parameter's value.\n@param n Value to decrement the value by."
                         },
                         "stepUp": {
-                            "comment": "/**\n * Increments a range input control's value by the value given by the Step attribute. If the optional parameter is used, will increment the input control's value by that value.\n * @param n Value to increment the value by.\n */"
+                            "comment": "Increments a range input control's value by the value given by the Step attribute. If the optional parameter is used, will increment the input control's value by that value.\n@param n Value to increment the value by."
                         },
                         "setCustomValidity": {
-                            "comment": "/**\n * Sets a custom error message that is displayed when a form is submitted.\n * @param error Sets a custom error message that is displayed when a form is submitted.\n */"
+                            "comment": "Sets a custom error message that is displayed when a form is submitted.\n@param error Sets a custom error message that is displayed when a form is submitted."
                         }
                     }
                 }
@@ -1200,31 +1186,31 @@
                 "properties": {
                     "property": {
                         "rel": {
-                            "comment": "/**\n * Sets or retrieves the relationship between the object and the destination of the link.\n */"
+                            "comment": "Sets or retrieves the relationship between the object and the destination of the link."
                         },
                         "coords": {
-                            "comment": "/**\n * Sets or retrieves the coordinates of the object.\n */"
+                            "comment": "Sets or retrieves the coordinates of the object."
                         },
                         "target": {
-                            "comment": "/**\n * Sets or retrieves the window or frame at which to target content.\n */"
+                            "comment": "Sets or retrieves the window or frame at which to target content."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the shape of the object.\n */"
+                            "comment": "Sets or retrieves the shape of the object."
                         },
                         "charset": {
-                            "comment": "/**\n * Sets or retrieves the character set used to encode the object.\n */"
+                            "comment": "Sets or retrieves the character set used to encode the object."
                         },
                         "hreflang": {
-                            "comment": "/**\n * Sets or retrieves the language code of the object.\n */"
+                            "comment": "Sets or retrieves the language code of the object."
                         },
                         "rev": {
-                            "comment": "/**\n * Sets or retrieves the relationship between the object and the destination of the link.\n */"
+                            "comment": "Sets or retrieves the relationship between the object and the destination of the link."
                         },
                         "shape": {
-                            "comment": "/**\n * Sets or retrieves the shape of the object.\n */"
+                            "comment": "Sets or retrieves the shape of the object."
                         },
                         "text": {
-                            "comment": "/**\n * Retrieves or sets the text of the object as a string.\n */"
+                            "comment": "Retrieves or sets the text of the object as a string."
                         }
                     }
                 }
@@ -1233,16 +1219,16 @@
                 "properties": {
                     "property": {
                         "value": {
-                            "comment": "/**\n * Sets or retrieves the value of an input parameter for an element.\n */"
+                            "comment": "Sets or retrieves the value of an input parameter for an element."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of an input parameter for an element.\n */"
+                            "comment": "Sets or retrieves the name of an input parameter for an element."
                         },
                         "type": {
-                            "comment": "/**\n * Sets or retrieves the content type of the resource designated by the value attribute.\n */"
+                            "comment": "Sets or retrieves the content type of the resource designated by the value attribute."
                         },
                         "valueType": {
-                            "comment": "/**\n * Sets or retrieves the data type of the value attribute.\n */"
+                            "comment": "Sets or retrieves the data type of the value attribute."
                         }
                     }
                 }
@@ -1251,7 +1237,7 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or gets a value that you can use to implement your own width functionality for the object.\n */"
+                            "comment": "Sets or gets a value that you can use to implement your own width functionality for the object."
                         }
                     }
                 }
@@ -1260,20 +1246,20 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Gets or sets the width of a canvas element on a document.\n */"
+                            "comment": "Gets or sets the width of a canvas element on a document."
                         },
                         "height": {
-                            "comment": "/**\n * Gets or sets the height of a canvas element on a document.\n */"
+                            "comment": "Gets or sets the height of a canvas element on a document."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "toDataURL": {
-                            "comment": "/**\n * Returns the content of the current canvas as an image that you can use as a source for another canvas or an HTML element.\n * @param type The standard MIME type for the image format to return. If you do not specify this parameter, the default value is a PNG format image.\n */"
+                            "comment": "Returns the content of the current canvas as an image that you can use as a source for another canvas or an HTML element.\n@param type The standard MIME type for the image format to return. If you do not specify this parameter, the default value is a PNG format image."
                         },
                         "getContext": {
-                            "comment": "/**\n * Returns an object that provides methods and properties for drawing and manipulating images and graphics on a canvas element in a document. A context object includes information about colors, line widths, fonts, and other graphic parameters that can be drawn on a canvas.\n * @param contextId The identifier (ID) of the type of canvas to create. Internet Explorer 9 and Internet Explorer 10 support only a 2-D context using canvas.getContext(\"2d\"); IE11 Preview also supports 3-D or WebGL context using canvas.getContext(\"experimental-webgl\");\n */"
+                            "comment": "Returns an object that provides methods and properties for drawing and manipulating images and graphics on a canvas element in a document. A context object includes information about colors, line widths, fonts, and other graphic parameters that can be drawn on a canvas.\n@param contextId The identifier (ID) of the type of canvas to create. Internet Explorer 9 and Internet Explorer 10 support only a 2-D context using canvas.getContext(\"2d\"); IE11 Preview also supports 3-D or WebGL context using canvas.getContext(\"experimental-webgl\");"
                         }
                     }
                 }
@@ -1282,7 +1268,7 @@
                 "properties": {
                     "property": {
                         "text": {
-                            "comment": "/**\n * Retrieves or sets the text of the object as a string.\n */"
+                            "comment": "Retrieves or sets the text of the object as a string."
                         }
                     }
                 }
@@ -1291,10 +1277,13 @@
                 "properties": {
                     "property": {
                         "media": {
-                            "comment": "/**\n * Sets or retrieves the media type.\n */"
+                            "comment": "Sets or retrieves the media type."
                         },
                         "type": {
-                            "comment": "/**\n * Retrieves the CSS language in which the style sheet is written.\n */"
+                            "comment": "Retrieves the CSS language in which the style sheet is written."
+                        },
+                        "disabled": {
+                            "comment": "Enables or disables the style sheet."
                         }
                     }
                 }
@@ -1303,49 +1292,37 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "headers": {
-                            "comment": "/**\n * Sets or retrieves a list of header cells that provide information for the object.\n */"
+                            "comment": "Sets or retrieves a list of header cells that provide information for the object."
                         },
                         "cellIndex": {
-                            "comment": "/**\n * Retrieves the position of the object in the cells collection of a row.\n */"
+                            "comment": "Retrieves the position of the object in the cells collection of a row."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         },
                         "colSpan": {
-                            "comment": "/**\n * Sets or retrieves the number columns in the table that the object should span.\n */"
+                            "comment": "Sets or retrieves the number columns in the table that the object should span."
                         },
                         "axis": {
-                            "comment": "/**\n * Sets or retrieves a comma-delimited list of conceptual categories associated with the object.\n */"
+                            "comment": "Sets or retrieves a comma-delimited list of conceptual categories associated with the object."
                         },
                         "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
+                            "comment": "Sets or retrieves the height of the object."
                         },
                         "noWrap": {
-                            "comment": "/**\n * Sets or retrieves whether the browser automatically performs wordwrap.\n */"
+                            "comment": "Sets or retrieves whether the browser automatically performs wordwrap."
                         },
                         "abbr": {
-                            "comment": "/**\n * Sets or retrieves abbreviated text for the object.\n */"
+                            "comment": "Sets or retrieves abbreviated text for the object."
                         },
                         "rowSpan": {
-                            "comment": "/**\n * Sets or retrieves how many rows in a table the cell should span.\n */"
+                            "comment": "Sets or retrieves how many rows in a table the cell should span."
                         },
                         "scope": {
-                            "comment": "/**\n * Sets or retrieves the group of cells in a table to which the object's information applies.\n */"
-                        }
-                    }
-                }
-            },
-            "HTMLBaseFontElement": {
-                "properties": {
-                    "property": {
-                        "face": {
-                            "comment": "/**\n * Sets or retrieves the current typeface family.\n */"
-                        },
-                        "size": {
-                            "comment": "/**\n * Sets or retrieves the font size of the object.\n */"
+                            "comment": "Sets or retrieves the group of cells in a table to which the object's information applies."
                         }
                     }
                 }
@@ -1354,71 +1331,71 @@
                 "properties": {
                     "property": {
                         "value": {
-                            "comment": "/**\n * Retrieves or sets the text in the entry field of the textArea element.\n */"
+                            "comment": "Retrieves or sets the text in the entry field of the textArea element."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "selectionStart": {
-                            "comment": "/**\n * Gets or sets the starting position or offset of a text selection.\n */"
+                            "comment": "Gets or sets the starting position or offset of a text selection."
                         },
                         "rows": {
-                            "comment": "/**\n * Sets or retrieves the number of horizontal rows contained in the object.\n */"
+                            "comment": "Sets or retrieves the number of horizontal rows contained in the object."
                         },
                         "cols": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "readOnly": {
-                            "comment": "/**\n * Sets or retrieves the value indicated whether the content of the object is read-only.\n */"
+                            "comment": "Sets or retrieves the value indicated whether the content of the object is read-only."
                         },
                         "wrap": {
-                            "comment": "/**\n * Sets or retrieves how to handle wordwrapping in the object.\n */"
+                            "comment": "Sets or retrieves how to handle wordwrapping in the object."
                         },
                         "selectionEnd": {
-                            "comment": "/**\n * Gets or sets the end position or offset of a text selection.\n */"
+                            "comment": "Gets or sets the end position or offset of a text selection."
                         },
                         "type": {
-                            "comment": "/**\n * Retrieves the type of control.\n */"
+                            "comment": "Retrieves the type of control."
                         },
                         "defaultValue": {
-                            "comment": "/**\n * Sets or retrieves the initial contents of the object.\n */"
+                            "comment": "Sets or retrieves the initial contents of the object."
                         },
                         "validationMessage": {
-                            "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
+                            "comment": "Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting."
                         },
                         "validity": {
-                            "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
+                            "comment": "Returns a  ValidityState object that represents the validity states of an element."
                         },
                         "required": {
-                            "comment": "/**\n * When present, marks an element that can't be submitted without a value.\n */"
+                            "comment": "When present, marks an element that can't be submitted without a value."
                         },
                         "maxLength": {
-                            "comment": "/**\n * Sets or retrieves the maximum number of characters that the user can enter in a text control.\n */"
+                            "comment": "Sets or retrieves the maximum number of characters that the user can enter in a text control."
                         },
                         "willValidate": {
-                            "comment": "/**\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\n */"
+                            "comment": "Returns whether an element will successfully validate based on forms validation rules and constraints."
                         },
                         "placeholder": {
-                            "comment": "/**\n * Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field.\n */"
+                            "comment": "Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "setSelectionRange": {
-                            "comment": "/**\n * Sets the start and end positions of a selection in a text field.\n * @param start The offset into the text field for the start of the selection.\n * @param end The offset into the text field for the end of the selection.\n * @param direction The direction in which the selection is performed.\n */"
+                            "comment": "Sets the start and end positions of a selection in a text field.\n@param start The offset into the text field for the start of the selection.\n@param end The offset into the text field for the end of the selection.\n@param direction The direction in which the selection is performed."
                         },
                         "select": {
-                            "comment": "/**\n * Highlights the input area of a form element.\n */"
+                            "comment": "Highlights the input area of a form element."
                         },
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         },
                         "setCustomValidity": {
-                            "comment": "/**\n * Sets a custom error message that is displayed when a form is submitted.\n * @param error Sets a custom error message that is displayed when a form is submitted.\n */"
+                            "comment": "Sets a custom error message that is displayed when a form is submitted.\n@param error Sets a custom error message that is displayed when a form is submitted."
                         }
                     }
                 }
@@ -1427,10 +1404,10 @@
                 "properties": {
                     "property": {
                         "dateTime": {
-                            "comment": "/**\n * Sets or retrieves the date and time of a modification to the object.\n */"
+                            "comment": "Sets or retrieves the date and time of a modification to the object."
                         },
                         "cite": {
-                            "comment": "/**\n * Sets or retrieves reference information about the object.\n */"
+                            "comment": "Sets or retrieves reference information about the object."
                         }
                     }
                 }
@@ -1439,13 +1416,13 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves the alignment of the object relative to the display or table.\n */"
+                            "comment": "Sets or retrieves the alignment of the object relative to the display or table."
                         },
                         "span": {
-                            "comment": "/**\n * Sets or retrieves the number of columns in the group.\n */"
+                            "comment": "Sets or retrieves the number of columns in the group."
                         }
                     }
                 }
@@ -1454,7 +1431,7 @@
                 "properties": {
                     "property": {
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         }
                     }
                 }
@@ -1463,7 +1440,7 @@
                 "properties": {
                     "property": {
                         "clear": {
-                            "comment": "/**\n * Sets or retrieves the side on which floating objects are not to be positioned when any IHTMLBlockElement is inserted into the document.\n */"
+                            "comment": "Sets or retrieves the side on which floating objects are not to be positioned when any IHTMLBlockElement is inserted into the document."
                         }
                     }
                 }
@@ -1472,7 +1449,7 @@
                 "properties": {
                     "property": {
                         "align": {
-                            "comment": "/**\n * Sets or retrieves a value that indicates the table alignment.\n */"
+                            "comment": "Sets or retrieves a value that indicates the table alignment."
                         }
                     }
                 }
@@ -1481,50 +1458,50 @@
                 "properties": {
                     "property": {
                         "length": {
-                            "comment": "/**\n * Sets or retrieves the number of objects in a collection.\n */"
+                            "comment": "Sets or retrieves the number of objects in a collection."
                         },
                         "target": {
-                            "comment": "/**\n * Sets or retrieves the window or frame at which to target content.\n */"
+                            "comment": "Sets or retrieves the window or frame at which to target content."
                         },
                         "acceptCharset": {
-                            "comment": "/**\n * Sets or retrieves a list of character encodings for input data that must be accepted by the server processing the form.\n */"
+                            "comment": "Sets or retrieves a list of character encodings for input data that must be accepted by the server processing the form."
                         },
                         "enctype": {
-                            "comment": "/**\n * Sets or retrieves the encoding type for the form.\n */"
+                            "comment": "Sets or retrieves the encoding type for the form."
                         },
                         "elements": {
-                            "comment": "/**\n * Retrieves a collection, in source order, of all controls in a given form.\n */"
+                            "comment": "Retrieves a collection, in source order, of all controls in a given form."
                         },
                         "action": {
-                            "comment": "/**\n * Sets or retrieves the URL to which the form content is sent for processing.\n */"
+                            "comment": "Sets or retrieves the URL to which the form content is sent for processing."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "method": {
-                            "comment": "/**\n * Sets or retrieves how to send the form data to the server.\n */"
+                            "comment": "Sets or retrieves how to send the form data to the server."
                         },
                         "encoding": {
-                            "comment": "/**\n * Sets or retrieves the MIME encoding for the form.\n */"
+                            "comment": "Sets or retrieves the MIME encoding for the form."
                         },
                         "autocomplete": {
-                            "comment": "/**\n * Specifies whether autocomplete is applied to an editable text field.\n */"
+                            "comment": "Specifies whether autocomplete is applied to an editable text field."
                         },
                         "noValidate": {
-                            "comment": "/**\n * Designates a form that is not validated when submitted.\n */"
+                            "comment": "Designates a form that is not validated when submitted."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "reset": {
-                            "comment": "/**\n * Fires when the user resets a form.\n */"
+                            "comment": "Fires when the user resets a form."
                         },
                         "submit": {
-                            "comment": "/**\n * Fires when a FORM is about to be submitted.\n */"
+                            "comment": "Fires when a FORM is about to be submitted."
                         },
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         }
                     }
                 }
@@ -1533,80 +1510,80 @@
                 "properties": {
                     "property": {
                         "played": {
-                            "comment": "/**\n * Gets TimeRanges for the current media resource that has been played.\n */"
+                            "comment": "Gets TimeRanges for the current media resource that has been played."
                         },
                         "currentSrc": {
-                            "comment": "/**\n * Gets the address or URL of the current media resource that is selected by IHTMLMediaElement.\n */"
+                            "comment": "Gets the address or URL of the current media resource that is selected by IHTMLMediaElement."
                         },
                         "loop": {
-                            "comment": "/**\n * Gets or sets a flag to specify whether playback should restart after it completes.\n */"
+                            "comment": "Gets or sets a flag to specify whether playback should restart after it completes."
                         },
                         "ended": {
-                            "comment": "/**\n * Gets information about whether the playback has ended or not.\n */"
+                            "comment": "Gets information about whether the playback has ended or not."
                         },
                         "buffered": {
-                            "comment": "/**\n * Gets a collection of buffered time ranges.\n */"
+                            "comment": "Gets a collection of buffered time ranges."
                         },
                         "error": {
-                            "comment": "/**\n * Returns an object representing the current error state of the audio or video element.\n */"
+                            "comment": "Returns an object representing the current error state of the audio or video element."
                         },
                         "seekable": {
-                            "comment": "/**\n * Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked.\n */"
+                            "comment": "Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked."
                         },
                         "autoplay": {
-                            "comment": "/**\n * Gets or sets a value that indicates whether to start playing the media automatically.\n */"
+                            "comment": "Gets or sets a value that indicates whether to start playing the media automatically."
                         },
                         "controls": {
-                            "comment": "/**\n * Gets or sets a flag that indicates whether the client provides a set of controls for the media (in case the developer does not include controls for the player).\n */"
+                            "comment": "Gets or sets a flag that indicates whether the client provides a set of controls for the media (in case the developer does not include controls for the player)."
                         },
                         "volume": {
-                            "comment": "/**\n * Gets or sets the volume level for audio portions of the media element.\n */"
+                            "comment": "Gets or sets the volume level for audio portions of the media element."
                         },
                         "src": {
-                            "comment": "/**\n * The address or URL of the a media resource that is to be considered.\n */"
+                            "comment": "The address or URL of the a media resource that is to be considered."
                         },
                         "playbackRate": {
-                            "comment": "/**\n * Gets or sets the current rate of speed for the media resource to play. This speed is expressed as a multiple of the normal speed of the media resource.\n */"
+                            "comment": "Gets or sets the current rate of speed for the media resource to play. This speed is expressed as a multiple of the normal speed of the media resource."
                         },
                         "duration": {
-                            "comment": "/**\n * Returns the duration in seconds of the current media resource. A NaN value is returned if duration is not available, or Infinity if the media resource is streaming.\n */"
+                            "comment": "Returns the duration in seconds of the current media resource. A NaN value is returned if duration is not available, or Infinity if the media resource is streaming."
                         },
                         "muted": {
-                            "comment": "/**\n * Gets or sets a flag that indicates whether the audio (either audio or the audio track on video media) is muted.\n */"
+                            "comment": "Gets or sets a flag that indicates whether the audio (either audio or the audio track on video media) is muted."
                         },
                         "defaultPlaybackRate": {
-                            "comment": "/**\n * Gets or sets the default playback rate when the user is not using fast forward or reverse for a video or audio resource.\n */"
+                            "comment": "Gets or sets the default playback rate when the user is not using fast forward or reverse for a video or audio resource."
                         },
                         "paused": {
-                            "comment": "/**\n * Gets a flag that specifies whether playback is paused.\n */"
+                            "comment": "Gets a flag that specifies whether playback is paused."
                         },
                         "seeking": {
-                            "comment": "/**\n * Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource.\n */"
+                            "comment": "Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource."
                         },
                         "currentTime": {
-                            "comment": "/**\n * Gets or sets the current playback position, in seconds.\n */"
+                            "comment": "Gets or sets the current playback position, in seconds."
                         },
                         "preload": {
-                            "comment": "/**\n * Gets or sets the current playback position, in seconds.\n */"
+                            "comment": "Gets or sets a value indicating what data should be preloaded, if any."
                         },
                         "networkState": {
-                            "comment": "/**\n * Gets the current network activity for the element.\n */"
+                            "comment": "Gets the current network activity for the element."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "pause": {
-                            "comment": "/**\n * Pauses the current playback and sets paused to TRUE. This can be used to test whether the media is playing or paused. You can also use the pause or play events to tell whether the media is playing or not.\n */"
+                            "comment": "Pauses the current playback and sets paused to TRUE."
                         },
                         "play": {
-                            "comment": "/**\n * Loads and starts playback of a media resource.\n */"
+                            "comment": "Loads and starts playback of a media resource."
                         },
                         "load": {
-                            "comment": "/**\n * Resets the audio or video object and loads a new media resource.\n */"
+                            "comment": "Resets the audio or video object and loads a new media resource."
                         },
                         "canPlayType": {
-                            "comment": "/**\n * Returns a string that specifies whether the client can play a given media resource type.\n */"
+                            "comment": "Returns a string that specifies whether the client can play a given media resource type."
                         }
                     }
                 }
@@ -1615,26 +1592,26 @@
                 "properties": {
                     "property": {
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "validationMessage": {
-                            "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
+                            "comment": "Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting."
                         },
                         "validity": {
-                            "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
+                            "comment": "Returns a  ValidityState object that represents the validity states of an element."
                         },
                         "willValidate": {
-                            "comment": "/**\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\n */"
+                            "comment": "Returns whether an element will successfully validate based on forms validation rules and constraints."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         },
                         "setCustomValidity": {
-                            "comment": "/**\n * Sets a custom error message that is displayed when a form is submitted.\n * @param error Sets a custom error message that is displayed when a form is submitted.\n */"
+                            "comment": "Sets a custom error message that is displayed when a form is submitted.\n@param error Sets a custom error message that is displayed when a form is submitted."
                         }
                     }
                 }
@@ -1643,13 +1620,13 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "align": {
-                            "comment": "/**\n * Sets or retrieves how the object is aligned with adjacent text.\n */"
+                            "comment": "Sets or retrieves how the object is aligned with adjacent text."
                         },
                         "noShade": {
-                            "comment": "/**\n * Sets or retrieves whether the horizontal rule is drawn with 3-D shading.\n */"
+                            "comment": "Sets or retrieves whether the horizontal rule is drawn with 3-D shading."
                         }
                     }
                 }
@@ -1658,62 +1635,62 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "codeType": {
-                            "comment": "/**\n * Sets or retrieves the Internet media type for the code associated with the object.\n */"
+                            "comment": "Sets or retrieves the Internet media type for the code associated with the object."
                         },
                         "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
+                            "comment": "Retrieves a reference to the form that the object is embedded in."
                         },
                         "code": {
-                            "comment": "/**\n * Sets or retrieves the URL of the file containing the compiled Java class.\n */"
+                            "comment": "Sets or retrieves the URL of the file containing the compiled Java class."
                         },
                         "archive": {
-                            "comment": "/**\n * Sets or retrieves a character string that can be used to implement your own archive functionality for the object.\n */"
+                            "comment": "Sets or retrieves a character string that can be used to implement your own archive functionality for the object."
                         },
                         "standby": {
-                            "comment": "/**\n * Sets or retrieves a message to be displayed while an object is loading.\n */"
+                            "comment": "Sets or retrieves a message to be displayed while an object is loading."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "useMap": {
-                            "comment": "/**\n * Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.\n */"
+                            "comment": "Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map."
                         },
                         "data": {
-                            "comment": "/**\n * Sets or retrieves the URL that references the data of the object.\n */"
+                            "comment": "Sets or retrieves the URL that references the data of the object."
                         },
                         "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
+                            "comment": "Sets or retrieves the height of the object."
                         },
                         "contentDocument": {
-                            "comment": "/**\n * Retrieves the document object of the page or frame.\n */"
+                            "comment": "Retrieves the document object of the page or frame."
                         },
                         "codeBase": {
-                            "comment": "/**\n * Sets or retrieves the URL of the component.\n */"
+                            "comment": "Sets or retrieves the URL of the component."
                         },
                         "type": {
-                            "comment": "/**\n * Sets or retrieves the MIME type of the object.\n */"
+                            "comment": "Sets or retrieves the MIME type of the object."
                         },
                         "validationMessage": {
-                            "comment": "/**\n * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting.\n */"
+                            "comment": "Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as \"this is a required field\". The result is that the user sees validation messages without actually submitting."
                         },
                         "validity": {
-                            "comment": "/**\n * Returns a  ValidityState object that represents the validity states of an element.\n */"
+                            "comment": "Returns a  ValidityState object that represents the validity states of an element."
                         },
                         "willValidate": {
-                            "comment": "/**\n * Returns whether an element will successfully validate based on forms validation rules and constraints.\n */"
+                            "comment": "Returns whether an element will successfully validate based on forms validation rules and constraints."
                         }
                     }
                 },
                 "methods": {
                     "method": {
                         "checkValidity": {
-                            "comment": "/**\n * Returns whether a form will validate when it is submitted, without having to submit it.\n */"
+                            "comment": "Returns whether a form will validate when it is submitted, without having to submit it."
                         },
                         "setCustomValidity": {
-                            "comment": "/**\n * Sets a custom error message that is displayed when a form is submitted.\n * @param error Sets a custom error message that is displayed when a form is submitted.\n */"
+                            "comment": "Sets a custom error message that is displayed when a form is submitted.\n@param error Sets a custom error message that is displayed when a form is submitted."
                         }
                     }
                 }
@@ -1722,16 +1699,16 @@
                 "properties": {
                     "property": {
                         "width": {
-                            "comment": "/**\n * Sets or retrieves the width of the object.\n */"
+                            "comment": "Sets or retrieves the width of the object."
                         },
                         "src": {
-                            "comment": "/**\n * Sets or retrieves a URL to be loaded by the object.\n */"
+                            "comment": "Sets or retrieves a URL to be loaded by the object."
                         },
                         "name": {
-                            "comment": "/**\n * Sets or retrieves the name of the object.\n */"
+                            "comment": "Sets or retrieves the name of the object."
                         },
                         "height": {
-                            "comment": "/**\n * Sets or retrieves the height of the object.\n */"
+                            "comment": "Sets or retrieves the height of the object."
                         }
                     }
                 }
@@ -1739,11 +1716,8 @@
             "HTMLOptGroupElement": {
                 "properties": {
                     "property": {
-                        "form": {
-                            "comment": "/**\n * Retrieves a reference to the form that the object is embedded in.\n */"
-                        },
                         "label": {
-                            "comment": "/**\n * Sets or retrieves a value that you can use to implement your own label functionality for the object.\n */"
+                            "comment": "Sets or retrieves a value that you can use to implement your own label functionality for the object."
                         }
                     }
                 }
@@ -1752,22 +1726,22 @@
                 "properties": {
                     "property": {
                         "playsInline": {
-                            "comment": "/**\n * Gets or sets the playsinline of the video element. for example, On iPhone, video elements will now be allowed to play inline, and will not automatically enter fullscreen mode when playback begins.\n */"
+                            "comment": "Gets or sets the playsinline of the video element. for example, On iPhone, video elements will now be allowed to play inline, and will not automatically enter fullscreen mode when playback begins."
                         },
                         "width": {
-                            "comment": "/**\n * Gets or sets the width of the video element.\n */"
+                            "comment": "Gets or sets the width of the video element."
                         },
                         "videoWidth": {
-                            "comment": "/**\n * Gets the intrinsic width of a video in CSS pixels, or zero if the dimensions are not known.\n */"
+                            "comment": "Gets the intrinsic width of a video in CSS pixels, or zero if the dimensions are not known."
                         },
                         "videoHeight": {
-                            "comment": "/**\n * Gets the intrinsic height of a video in CSS pixels, or zero if the dimensions are not known.\n */"
+                            "comment": "Gets the intrinsic height of a video in CSS pixels, or zero if the dimensions are not known."
                         },
                         "height": {
-                            "comment": "/**\n * Gets or sets the height of the video element.\n */"
+                            "comment": "Gets or sets the height of the video element."
                         },
                         "poster": {
-                            "comment": "/**\n * Gets or sets a URL of an image to display, for example, like a movie poster. This can be a still frame from the video, or another image if no video data is available.\n */"
+                            "comment": "Gets or sets a URL of an image to display, for example, like a movie poster. This can be a still frame from the video, or another image if no video data is available."
                         }
                     }
                 }
@@ -1776,13 +1750,13 @@
                 "properties": {
                     "property": {
                         "value": {
-                            "comment": "/**\n * Sets or gets the current value of a progress element. The value must be a non-negative number between 0 and the max value.\n */"
+                            "comment": "Sets or gets the current value of a progress element. The value must be a non-negative number between 0 and the max value."
                         },
                         "max": {
-                            "comment": "/**\n * Defines the maximum, or \"done\" value for a progress element.\n */"
+                            "comment": "Defines the maximum, or \"done\" value for a progress element."
                         },
                         "position": {
-                            "comment": "/**\n * Returns the quotient of value/max when the value attribute is set (determinate progress bar), or -1 when the value attribute is missing (indeterminate progress bar).\n */"
+                            "comment": "Returns the quotient of value/max when the value attribute is set (determinate progress bar), or -1 when the value attribute is missing (indeterminate progress bar)."
                         }
                     }
                 }
@@ -1791,35 +1765,35 @@
                 "methods": {
                     "method": {
                         "append": {
-                            "comment": "/**\n * Appends a specified key/value pair as a new search parameter.\n */"
+                            "comment": "Appends a specified key/value pair as a new search parameter."
                         },
                         "delete": {
-                            "comment": "/**\n * Deletes the given search parameter, and its associated value, from the list of all search parameters.\n */"
+                            "comment": "Deletes the given search parameter, and its associated value, from the list of all search parameters."
                         },
                         "get": {
-                            "comment": "/**\n * Returns the first value associated to the given search parameter.\n */"
+                            "comment": "Returns the first value associated to the given search parameter."
                         },
                         "getAll": {
-                            "comment": "/**\n * Returns all the values association with a given search parameter.\n */"
+                            "comment": "Returns all the values association with a given search parameter."
                         },
                         "has": {
-                            "comment": "/**\n * Returns a Boolean indicating if such a search parameter exists.\n */"
+                            "comment": "Returns a Boolean indicating if such a search parameter exists."
                         },
                         "set": {
-                            "comment": "/**\n * Sets the value associated to a given search parameter to the given value. If there were several values, delete the others.\n */"
+                            "comment": "Sets the value associated to a given search parameter to the given value. If there were several values, delete the others."
                         },
                         "toString": {
-                            "comment": "/**\n * Returns a string containing a query string suitable for use in a URL. Does not include the question mark.\n */"
+                            "comment": "Returns a string containing a query string suitable for use in a URL. Does not include the question mark."
                         }
                     },
-                    "constructor": "/**\n * Constructor returning a URLSearchParams object.\n */"
+                    "constructor": "Constructor returning a URLSearchParams object."
                 },
                 "iterator": {
                     "comments": {
                         "comment": {
-                            "entries": "/**\n * Returns an array of key, value pairs for every entry in the search params.\n */",
-                            "keys": "/**\n * Returns a list of keys in the search params.\n */",
-                            "values": "/**\n * Returns a list of values in the search params.\n */"
+                            "entries": "Returns an array of key, value pairs for every entry in the search params.",
+                            "keys": "Returns a list of keys in the search params.",
+                            "values": "Returns a list of values in the search params."
                         }
                     }
                 }
@@ -1828,7 +1802,16 @@
                 "methods": {
                     "method": {
                         "cloneNode": {
-                            "comment": "/**\n * Throws a \"NotSupportedError\" DOMException if context object is a shadow root.\n */"
+                            "comment": "Throws a \"NotSupportedError\" DOMException if context object is a shadow root."
+                        }
+                    }
+                }
+            },
+            "Window": {
+                "properties": {
+                    "property": {
+                        "parent": {
+                            "comment": "Refers to either the parent WindowProxy, or itself.\n\nIt can rarely be null e.g. for contentWindow of an iframe that is already removed from the parent."
                         }
                     }
                 }

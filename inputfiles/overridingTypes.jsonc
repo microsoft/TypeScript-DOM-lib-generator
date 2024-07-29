@@ -1,0 +1,3896 @@
+{
+    "mixins": {
+        "mixin": {
+            "ChildNode": {
+                "extends": "Node"
+            },
+            "ParentNode": {
+                "extends": "Node"
+            },
+            "Animatable": {
+                "methods": {
+                    "method": {
+                        "animate": {
+                            "name": "animate",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "keyframes",
+                                            "overrideType": "Keyframe[] | PropertyIndexedKeyframes"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GlobalEventHandlers": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "animationcancel",
+                            "type": "AnimationEvent"
+                        },
+                        {
+                            "name": "animationend",
+                            "type": "AnimationEvent"
+                        },
+                        {
+                            "name": "animationiteration",
+                            "type": "AnimationEvent"
+                        },
+                        {
+                            "name": "animationstart",
+                            "type": "AnimationEvent"
+                        },
+                        {
+                            "name": "cut",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "copy",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "paste",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "gotpointercapture",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "lostpointercapture",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointercancel",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointerdown",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointerenter",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointerleave",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointermove",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointerout",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointerover",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "pointerup",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "touchcancel",
+                            "type": "TouchEvent"
+                        },
+                        {
+                            "name": "touchend",
+                            "type": "TouchEvent"
+                        },
+                        {
+                            "name": "touchmove",
+                            "type": "TouchEvent"
+                        },
+                        {
+                            "name": "touchstart",
+                            "type": "TouchEvent"
+                        },
+                        {
+                            "name": "transitionrun",
+                            "type": "TransitionEvent"
+                        },
+                        {
+                            "name": "transitionstart",
+                            "type": "TransitionEvent"
+                        },
+                        {
+                            "name": "transitionend",
+                            "type": "TransitionEvent"
+                        },
+                        {
+                            "name": "transitioncancel",
+                            "type": "TransitionEvent"
+                        }
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "onerror": {
+                            "overrideType": "OnErrorEventHandler"
+                        },
+                        "ontouchcancel": {
+                            "optional": true
+                        },
+                        "ontouchend": {
+                            "optional": true
+                        },
+                        "ontouchmove": {
+                            "optional": true
+                        },
+                        "ontouchstart": {
+                            "optional": true
+                        }
+                    }
+                }
+            },
+            "HTMLOrSVGElement": {
+              "properties": {
+                "property": {
+                  "nonce": {
+                    "name": "nonce?"
+                  }
+                }
+              }
+            },
+            "WebGLRenderingContextBase": {
+                "methods": {
+                    "method": {
+                        "getExtension": {
+                            "name": "getExtension",
+                            "additionalSignatures": [
+                                "getExtension(extensionName: \"ANGLE_instanced_arrays\"): ANGLE_instanced_arrays | null",
+                                "getExtension(extensionName: \"EXT_blend_minmax\"): EXT_blend_minmax | null",
+                                "getExtension(extensionName: \"EXT_color_buffer_float\"): EXT_color_buffer_float | null",
+                                "getExtension(extensionName: \"EXT_color_buffer_half_float\"): EXT_color_buffer_half_float | null",
+                                "getExtension(extensionName: \"EXT_float_blend\"): EXT_float_blend | null",
+                                "getExtension(extensionName: \"EXT_frag_depth\"): EXT_frag_depth | null",
+                                "getExtension(extensionName: \"EXT_sRGB\"): EXT_sRGB | null",
+                                "getExtension(extensionName: \"EXT_shader_texture_lod\"): EXT_shader_texture_lod | null",
+                                "getExtension(extensionName: \"EXT_texture_compression_bptc\"): EXT_texture_compression_bptc | null",
+                                "getExtension(extensionName: \"EXT_texture_compression_rgtc\"): EXT_texture_compression_rgtc | null",
+                                "getExtension(extensionName: \"EXT_texture_filter_anisotropic\"): EXT_texture_filter_anisotropic | null",
+                                "getExtension(extensionName: \"KHR_parallel_shader_compile\"): KHR_parallel_shader_compile | null",
+                                "getExtension(extensionName: \"OES_element_index_uint\"): OES_element_index_uint | null",
+                                "getExtension(extensionName: \"OES_fbo_render_mipmap\"): OES_fbo_render_mipmap | null",
+                                "getExtension(extensionName: \"OES_standard_derivatives\"): OES_standard_derivatives | null",
+                                "getExtension(extensionName: \"OES_texture_float\"): OES_texture_float | null",
+                                "getExtension(extensionName: \"OES_texture_float_linear\"): OES_texture_float_linear | null",
+                                "getExtension(extensionName: \"OES_texture_half_float\"): OES_texture_half_float | null",
+                                "getExtension(extensionName: \"OES_texture_half_float_linear\"): OES_texture_half_float_linear | null",
+                                "getExtension(extensionName: \"OES_vertex_array_object\"): OES_vertex_array_object | null",
+                                "getExtension(extensionName: \"OVR_multiview2\"): OVR_multiview2 | null",
+                                "getExtension(extensionName: \"WEBGL_color_buffer_float\"): WEBGL_color_buffer_float | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_astc\"): WEBGL_compressed_texture_astc | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_etc\"): WEBGL_compressed_texture_etc | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_etc1\"): WEBGL_compressed_texture_etc1 | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_pvrtc\"): WEBGL_compressed_texture_pvrtc | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc\"): WEBGL_compressed_texture_s3tc | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc_srgb\"): WEBGL_compressed_texture_s3tc_srgb | null",
+                                "getExtension(extensionName: \"WEBGL_debug_renderer_info\"): WEBGL_debug_renderer_info | null",
+                                "getExtension(extensionName: \"WEBGL_debug_shaders\"): WEBGL_debug_shaders | null",
+                                "getExtension(extensionName: \"WEBGL_depth_texture\"): WEBGL_depth_texture | null",
+                                "getExtension(extensionName: \"WEBGL_draw_buffers\"): WEBGL_draw_buffers | null",
+                                "getExtension(extensionName: \"WEBGL_lose_context\"): WEBGL_lose_context | null",
+                                "getExtension(extensionName: \"WEBGL_multi_draw\"): WEBGL_multi_draw | null"
+                            ]
+                        },
+                        "pixelStorei": {
+                            "name": "pixelStorei",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "param",
+                                            "additionalTypes": ["GLboolean"]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "CanvasCompositing": {
+              "properties": {
+                "property": {
+                  "globalCompositeOperation": {
+                    "type": "GlobalCompositeOperation"
+                  }
+                }
+              }
+            },
+            "Body": {
+                "properties": {
+                    "property": {
+                        "body": {
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        }
+                    }
+                }
+            },
+            "WindowOrWorkerGlobalScope": {
+                "methods": {
+                    "method": {
+                        "clearInterval": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "structuredClone": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "default": "any"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "value",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "clearTimeout": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "callbackFunctions": {
+        "callbackFunction": {
+            "OnErrorEventHandlerNonNull": {
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "error",
+                                "overrideType": "Error"
+                            }
+                        ]
+                    }
+                }
+            },
+            "QueuingStrategySize": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "chunk",
+                                "overrideType": "T"
+                            }
+                        ]
+                    }
+                }
+            },
+            "UnderlyingSourceStartCallback": {
+                "typeParameters": [
+                    {
+                        "name": "R"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "controller",
+                                "overrideType": "ReadableStreamController<R>"
+                            }
+                        ]
+                    }
+                }
+            },
+            "UnderlyingSourcePullCallback": {
+                "typeParameters": [
+                    {
+                        "name": "R"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "controller",
+                                "overrideType": "ReadableStreamController<R>"
+                            }
+                        ]
+                    }
+                }
+            },
+            "UnderlyingSinkWriteCallback": {
+                "typeParameters": [
+                    {
+                        "name": "W"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "chunk",
+                                "overrideType": "W"
+                            }
+                        ]
+                    }
+                }
+            },
+            "TransformerFlushCallback": {
+                "typeParameters": [
+                    {
+                        "name": "O"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "controller",
+                                "overrideType": "TransformStreamDefaultController<O>"
+                            }
+                        ]
+                    }
+                }
+            },
+            "TransformerStartCallback": {
+                "typeParameters": [
+                    {
+                        "name": "O"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "controller",
+                                "overrideType": "TransformStreamDefaultController<O>"
+                            }
+                        ]
+                    }
+                }
+            },
+            "TransformerTransformCallback": {
+                "typeParameters": [
+                    {
+                        "name": "I"
+                    },
+                    {
+                        "name": "O"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "param": [
+                            {
+                                "name": "chunk",
+                                "overrideType": "I"
+                            },
+                            {
+                                "name": "controller",
+                                "overrideType": "TransformStreamDefaultController<O>"
+                            }
+                        ]
+                    }
+                }
+            },
+            "CustomElementConstructor": {
+                "overrideSignatures": [
+                    "new (...params: any[]): HTMLElement"
+                ]
+            },
+            "AudioWorkletProcessorConstructor": {
+                "overrideSignatures": [
+                    "new (options: any): AudioWorkletProcessorImpl"
+                ]
+            }
+        }
+    },
+    "callbackInterfaces": {
+        "interface": {}
+    },
+    "enums": {
+        "enum": {
+            "ImportExportKind": {
+                "legacyNamespace": "WebAssembly"
+            },
+            "TableKind": {
+                "legacyNamespace": "WebAssembly"
+            },
+            "ImageOrientation": {
+                "value": [
+                    // The spec removed this but it's still in browsers and WebKit doesn't support the new one.
+                    // Keep it until it's safer to fully migrate.
+                    // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
+                    "none"
+                ]
+            }
+        }
+    },
+    "interfaces": {
+        "interface": {
+            "CryptoKey": {
+                "properties": {
+                    "property": {
+                        "algorithm": {
+                            "type": "KeyAlgorithm"
+                        },
+                        "usages": {
+                            "type": "sequence",
+                            "subtype": {
+                                "type": "KeyUsage"
+                            }
+                        }
+                    }
+                }
+            },
+            "HTMLElement": {
+                "properties": {
+                    "property": {
+                        "hidden": {
+                            // https://github.com/whatwg/html/pull/7475
+                            // Revisit when this get browser supports.
+                            "overrideType": "boolean",
+                            "nullable": false
+                        }
+                    }
+                }
+            },
+            "MediaQueryList": {
+                "methods": {
+                    "method": {
+                        "addListener": {
+                            "deprecated": true,
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "(this: MediaQueryList, ev: MediaQueryListEvent) => any"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "removeListener": {
+                            "deprecated": true,
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "(this: MediaQueryList, ev: MediaQueryListEvent) => any"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "change",
+                            "type": "MediaQueryListEvent"
+                        }
+                    ]
+                }
+            },
+            "CustomEvent": {
+                "properties": {
+                    "property": {
+                        "detail": {
+                            "overrideType": "T"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "initCustomEvent": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "detail",
+                                            "overrideType": "T"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ],
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "typeParameters": [
+                                {
+                                    "name": "T"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "eventInitDict",
+                                    "overrideType": "CustomEventInit<T>"
+                                }
+                            ],
+                            "overrideType": "CustomEvent<T>"
+                        }
+                    }
+                }
+            },
+            "Window": {
+                "properties": {
+                    "property": {
+                        "event": {
+                            "deprecated": true
+                        },
+                        "location": {
+                            "readonly": false
+                        },
+                        "onorientationchange": {
+                            "deprecated": true
+                        },
+                        "self": {
+                            "overrideType": "Window & typeof globalThis"
+                        },
+                        "window": {
+                            "overrideType": "Window & typeof globalThis"
+                        },
+                        "parent": {
+                            "nullable": false
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "alert": {
+                            "overrideSignatures": [
+                                "alert(message?: any): void"
+                            ]
+                        },
+                        "postMessage": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "transfer",
+                                            "overrideType": "Transferable[]"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "overrideIndexSignatures": []
+            },
+            "WebTransport": {
+                "methods": {
+                    "method": {
+                        "createUnidirectionalStream": {
+                            "signature": {
+                                "0": {
+                                    "subtype": {
+                                        "type": "WritableStream"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "WebTransportBidirectionalStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "type": "ReadableStream"
+                        },
+                        "writable": {
+                            "type": "WritableStream"
+                        }
+                    }
+                }
+            },
+            "Document": {
+                "methods": {
+                    "method": {
+                        "adoptNode": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "Node"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "node",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "importNode": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "Node"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "node",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "getElementById": {
+                            "name": "getElementById",
+                            "overrideSignatures": [
+                                "getElementById(elementId: string): HTMLElement | null"
+                            ]
+                        },
+                        "getElementsByTagNameNS": {
+                            "name": "getElementsByTagNameNS",
+                            "additionalSignatures": [
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
+                            ],
+                            "signature": {
+                                "0": {
+                                    "overrideType": "HTMLCollectionOf<Element>"
+                                }
+                            }
+                        },
+                        "getElementsByClassName": {
+                            "name": "getElementsByClassName",
+                            "signature": {
+                                "0": {
+                                    "overrideType": "HTMLCollectionOf<Element>"
+                                }
+                            }
+                        },
+                        "getElementsByName": {
+                            "name": "getElementsByName",
+                            "signature": {
+                                "0": {
+                                    "overrideType": "NodeListOf<HTMLElement>"
+                                }
+                            }
+                        },
+                        "startViewTransition": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        // StartViewTransitionOptions is not implemented as of 2024-06
+                                        {
+                                            "name": "callbackOptions",
+                                            "type": "UpdateCallback"
+                                        }
+                                    ],
+                                }
+                            }
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "defaultView": {
+                            "name": "defaultView",
+                            "overrideType": "WindowProxy & typeof globalThis"
+                        },
+                        "documentElement": {
+                            "name": "documentElement",
+                            "overrideType": "HTMLElement",
+                            "nullable": false
+                        },
+                        "head": {
+                            "nullable": false
+                        },
+                        "anchors": {
+                            "name": "anchors",
+                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement>"
+                        },
+                        "embeds": {
+                            "name": "embeds",
+                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
+                        },
+                        "forms": {
+                            "name": "forms",
+                            "overrideType": "HTMLCollectionOf<HTMLFormElement>"
+                        },
+                        "images": {
+                            "name": "images",
+                            "overrideType": "HTMLCollectionOf<HTMLImageElement>"
+                        },
+                        "links": {
+                            "name": "links",
+                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
+                        },
+                        "plugins": {
+                            "name": "plugins",
+                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
+                        },
+                        "scripts": {
+                            "name": "scripts",
+                            "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
+                        },
+                        "location": {
+                            "readonly": false,
+                            "nullable": false
+                        },
+                        "body": {
+                            "nullable": false
+                       }
+                    }
+                }
+            },
+            "DocumentFragment": {
+                "methods": {
+                    "method": {
+                        "getElementById": {
+                            "name": "getElementById",
+                            "overrideSignatures": [
+                                "getElementById(elementId: string): HTMLElement | null"
+                            ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "ownerDocument": {
+                            "name": "ownerDocument",
+                            "readonly": 1,
+                            "type": "Document"
+                        }
+                    }
+                }
+            },
+            "Node": {
+                "methods": {
+                    "method": {
+                        "appendChild": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "Node"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "node",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "insertBefore": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "Node"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "node",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "removeChild": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "Node"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "child",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "replaceChild": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "Node"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "child",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "parentNode": {
+                            "overrideType": "ParentNode"
+                        },
+                        "parentElement": {
+                            "overrideType": "HTMLElement"
+                        },
+                        "childNodes": {
+                            "overrideType": "NodeListOf<ChildNode>"
+                        },
+                        "firstChild": {
+                            "overrideType": "ChildNode"
+                        },
+                        "lastChild": {
+                            "overrideType": "ChildNode"
+                        },
+                        "nextSibling": {
+                            "overrideType": "ChildNode"
+                        },
+                        "previousSibling": {
+                            "overrideType": "ChildNode"
+                        }
+                    }
+                }
+            },
+            "IDBObjectStore": {
+                "methods": {
+                    "method": {
+                        "openCursor": {
+                            "name": "openCursor",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBCursorWithValue | null>"
+                                }
+                            }
+                        },
+                        "openKeyCursor": {
+                            "name": "openKeyCursor",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBCursor | null>"
+                                }
+                            }
+                        },
+                        "add": {
+                            "name": "add",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "key",
+                                            "overrideType": "IDBValidKey"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBValidKey>"
+                                }
+                            }
+                        },
+                        "clear": {
+                            "name": "clear",
+                            "signature": {
+                                "0": {
+                                    "overrideType": "IDBRequest<undefined>"
+                                }
+                            }
+                        },
+                        "count": {
+                            "name": "count",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<number>"
+                                }
+                            }
+                        },
+                        "delete": {
+                            "name": "delete",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<undefined>"
+                                }
+                            }
+                        },
+                        "put": {
+                            "name": "put",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "key",
+                                            "overrideType": "IDBValidKey"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBValidKey>"
+                                }
+                            }
+                        },
+                        "get": {
+                            "name": "get",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<any>"
+                                }
+                            }
+                        },
+                        "getAll": {
+                            "name": "getAll",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<any[]>"
+                                }
+                            }
+                        },
+                        "getAllKeys": {
+                            "name": "getAllKeys",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBValidKey[]>"
+                                }
+                            }
+                        },
+                        "getKey": {
+                            "name": "getKey",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBValidKey | undefined>"
+                                }
+                            }
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "keyPath": {
+                            "name": "keyPath",
+                            "overrideType": "string | string[]"
+                        }
+                    }
+                }
+            },
+            "IDBIndex": {
+                "properties": {
+                    "property": {
+                        "keyPath": {
+                            "name": "keyPath",
+                            "overrideType": "string | string[]"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "openCursor": {
+                            "name": "openCursor",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBCursorWithValue | null>"
+                                }
+                            }
+                        },
+                        "openKeyCursor": {
+                            "name": "openKeyCursor",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBCursor | null>"
+                                }
+                            }
+                        },
+                        "count": {
+                            "name": "count",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<number>"
+                                }
+                            }
+                        },
+                        "get": {
+                            "name": "get",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<any>"
+                                }
+                            }
+                        },
+                        "getAll": {
+                            "name": "getAll",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<any[]>"
+                                }
+                            }
+                        },
+                        "getAllKeys": {
+                            "name": "getAllKeys",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange | null"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBValidKey[]>"
+                                }
+                            }
+                        },
+                        "getKey": {
+                            "name": "getKey",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "query",
+                                            "overrideType": "IDBValidKey | IDBKeyRange"
+                                        }
+                                    ],
+                                    "overrideType": "IDBRequest<IDBValidKey | undefined>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HTMLCanvasElement": {
+                "methods": {
+                    "method": {
+                        "getContext": {
+                            "additionalSignatures": [
+                                "getContext(contextId: \"2d\", options?: CanvasRenderingContext2DSettings): CanvasRenderingContext2D | null",
+                                "getContext(contextId: \"bitmaprenderer\", options?: ImageBitmapRenderingContextSettings): ImageBitmapRenderingContext | null",
+                                "getContext(contextId: \"webgl\", options?: WebGLContextAttributes): WebGLRenderingContext | null",
+                                "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null"
+                            ]
+                        }
+                    }
+                }
+            },
+            "OffscreenCanvas": {
+                "methods": {
+                    "method": {
+                        "getContext": {
+                            "additionalSignatures": [
+                                "getContext(contextId: \"2d\", options?: any): OffscreenCanvasRenderingContext2D | null",
+                                "getContext(contextId: \"bitmaprenderer\", options?: any): ImageBitmapRenderingContext | null",
+                                "getContext(contextId: \"webgl\", options?: any): WebGLRenderingContext | null",
+                                "getContext(contextId: \"webgl2\", options?: any): WebGL2RenderingContext | null"
+                            ]
+                        }
+                    }
+                }
+            },
+            "BeforeUnloadEvent": {
+                "properties": {
+                    "property": {
+                        "returnValue": {
+                            "name": "returnValue",
+                            "overrideType": "any"
+                        }
+                    }
+                }
+            },
+            "SVGElement": {
+                "properties": {
+                    "property": {
+                        "className": {
+                            "deprecated": true,
+                            "name": "className",
+                            "type": "any"
+                        }
+                    }
+                }
+            },
+            "SVGSVGElement": {
+                "methods": {
+                    "method": {
+                        "getEnclosureList": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
+                                }
+                            }
+                        },
+                        "getIntersectionList": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "SVGSymbolElement": {
+                "extends": "SVGElement"
+            },
+            "FormData": {
+                "methods": {
+                    "method": {
+                        "append": {
+                            "name": "append",
+                            "flavor": "Web",
+                            "additionalSignatures": [
+                                "append(name: string, value: string | Blob): void"
+                            ]
+                        },
+                        "set": {
+                            "name": "set",
+                            "flavor": "Web",
+                            "additionalSignatures": [
+                                "set(name: string, value: string | Blob): void"
+                            ]
+                        }
+                    }
+                }
+            },
+            "HTMLSelectElement": {
+                "properties": {
+                    "property": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "\"select-one\" | \"select-multiple\""
+                        },
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFill"
+                        },
+                        "selectedOptions": {
+                            "name": "selectedOptions",
+                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
+                        },
+                        "labels": {
+                            "name": "labels",
+                            "overrideType": "NodeListOf<HTMLLabelElement>"
+                        }
+                    }
+                },
+                "overrideIndexSignatures": [
+                    "[name: number]: HTMLOptionElement | HTMLOptGroupElement"
+                ]
+            },
+            "HTMLDataListElement": {
+                "properties": {
+                    "property": {
+                        "options": {
+                            "name": "options",
+                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
+                        }
+                    }
+                }
+            },
+            "HTMLDirectoryElement": {
+                "element": [
+                    {
+                        "name": "dir"
+                    }
+                ]
+            },
+            "HTMLFontElement": {
+                "element": [
+                    {
+                        "name": "font"
+                    }
+                ]
+            },
+            "HTMLFrameElement": {
+                "element": [
+                    {
+                        "name": "frame"
+                    }
+                ]
+            },
+            "FontFace": {
+              "properties": {
+                "property": {
+                  "display": {
+                    "type": "FontDisplay"
+                  }
+                }
+              }
+            },
+            "HTMLFrameSetElement": {
+                "element": [
+                    {
+                        "name": "frameset"
+                    }
+                ]
+            },
+            "HTMLTableElement": {
+                "properties": {
+                    "property": {
+                        "rows": {
+                            "name": "rows",
+                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
+                        },
+                        "tBodies": {
+                            "name": "tBodies",
+                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
+                        }
+                    }
+                }
+            },
+            "HTMLTableSectionElement": {
+                "properties": {
+                    "property": {
+                        "rows": {
+                            "name": "rows",
+                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
+                        }
+                    }
+                }
+            },
+            "Element": {
+                "methods": {
+                    "method": {
+                        "getElementsByTagNameNS": {
+                            "name": "getElementsByTagNameNS",
+                            "additionalSignatures": [
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
+                            ],
+                            "signature": {
+                                "0": {
+                                    "overrideType": "HTMLCollectionOf<Element>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "DataTransfer": {
+                "properties": {
+                    "property": {
+                        "dropEffect": {
+                            "name": "dropEffect",
+                            "overrideType": "\"none\" | \"copy\" | \"link\" | \"move\""
+                        },
+                        "effectAllowed": {
+                            "name": "effectAllowed",
+                            "overrideType": "\"none\" | \"copy\" | \"copyLink\" | \"copyMove\" | \"link\" | \"linkMove\" | \"move\" | \"all\" | \"uninitialized\""
+                        }
+                    }
+                }
+            },
+            "IDBCursor": {
+                "properties": {
+                    "property": {
+                        "key": {
+                            "name": "key",
+                            "type": "IDBValidKey"
+                        },
+                        "primaryKey": {
+                            "name": "primaryKey",
+                            "type": "IDBValidKey"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "continue": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "key",
+                                            "overrideType": "IDBValidKey"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "continuePrimaryKey": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "key",
+                                            "overrideType": "IDBValidKey"
+                                        },
+                                        {
+                                            "name": "primaryKey",
+                                            "overrideType": "IDBValidKey"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "delete": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "IDBRequest<undefined>"
+                                }
+                            }
+                        },
+                        "update": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "IDBRequest<IDBValidKey>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "IDBRequest": {
+                "properties": {
+                    "property": {
+                        "source": {
+                            "name": "source",
+                            "nullable": false
+                        },
+                        "result": {
+                            "name": "result",
+                            "overrideType": "T"
+                        }
+                    }
+                },
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ]
+            },
+            "ImageBitmapRenderingContext": {
+                "properties": {
+                    "property": {
+                        "canvas": {
+                            "exposed": "Window"
+                        }
+                    }
+                }
+            },
+            "Storage": {
+                "overrideIndexSignatures": [
+                    "[name: string]: any"
+                ]
+            },
+            "HTMLOptionsCollection": {
+                "extends": "HTMLCollectionOf<HTMLOptionElement>"
+            },
+            "SubtleCrypto": {
+                "methods": {
+                    "method": {
+                        "decrypt": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
+                                        }
+                                    ],
+                                    "subtype": {
+                                      "type": "ArrayBuffer"
+                                    }
+                                }
+                            }
+                        },
+                        "deriveBits": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["EcdhKeyDeriveParams", "HkdfParams", "Pbkdf2Params"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "deriveKey": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["EcdhKeyDeriveParams", "HkdfParams", "Pbkdf2Params"]
+                                        },
+                                        {
+                                            "name": "derivedKeyType",
+                                            "additionalTypes": ["AesDerivedKeyParams", "HmacImportParams", "HkdfParams", "Pbkdf2Params"]
+                                        }
+                                    ],
+                                    "overrideType": "Promise<CryptoKey>"
+                                }
+                            }
+                        },
+                        "digest": {
+                            "name": "digest",
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<ArrayBuffer>"
+                                }
+                            }
+                        },
+                        "encrypt": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
+                                        }
+                                    ],
+                                    "subtype": {
+                                      "type": "ArrayBuffer"
+                                    }
+                                }
+                            }
+                        },
+                        "exportKey": {
+                            "additionalSignatures": [
+                                "exportKey(format: \"jwk\", key: CryptoKey): Promise<JsonWebKey>",
+                                "exportKey(format: Exclude<KeyFormat, \"jwk\">, key: CryptoKey): Promise<ArrayBuffer>"
+                            ],
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "format",
+                                            "overrideType": "KeyFormat"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ArrayBuffer | JsonWebKey>"
+                                }
+                            }
+                        },
+                        "generateKey": {
+                            "name": "generateKey",
+                            "additionalSignatures": [
+                                "generateKey(algorithm: \"Ed25519\", extractable: boolean, keyUsages: ReadonlyArray<\"sign\" | \"verify\">): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
+                            ],
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<CryptoKeyPair | CryptoKey>"
+                                }
+                            }
+                        },
+                        "importKey": {
+                            "name": "importKey",
+                            "additionalSignatures": [
+                                "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
+                            ],
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "format",
+                                            "overrideType": "Exclude<KeyFormat, \"jwk\">"
+                                        },
+                                        {
+                                            "name": "keyData",
+                                            "type": "BufferSource"
+                                        },
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
+                                        }
+                                    ]
+                                }
+                            },
+                            "force-references": [
+                                {
+                                    "type": "JsonWebKey"
+                                }
+                            ]
+                        },
+                        "sign": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["RsaPssParams", "EcdsaParams"]
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ArrayBuffer>"
+                                }
+                            }
+                        },
+                        "unwrapKey": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "unwrapAlgorithm",
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
+                                        },
+                                        {
+                                            "name": "unwrappedKeyAlgorithm",
+                                            "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "verify": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "algorithm",
+                                            "additionalTypes": ["RsaPssParams", "EcdsaParams"]
+                                        }
+                                    ],
+                                    "overrideType": "Promise<boolean>"
+                                }
+                            }
+                        },
+                        "wrapKey": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "wrapAlgorithm",
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ArrayBuffer>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HTMLInputElement": {
+                "properties": {
+                    "property": {
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFill"
+                        },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "overrideType": "\"forward\" | \"backward\" | \"none\""
+                        },
+                        "valueAsDate": {
+                            "name": "valueAsDate",
+                            "overrideType": "Date"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "setSelectionRange": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "start",
+                                            "nullable": true
+                                        },
+                                        {
+                                            "name": "end",
+                                            "nullable": true
+                                        },
+                                        {
+                                            "name": "direction",
+                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "MouseEvent": {
+                "methods": {
+                    "method": {
+                        "initMouseEvent": {
+                            "name": "initMouseEvent",
+                            "overrideSignatures": [
+                                "initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void"
+                            ]
+                        }
+                    }
+                }
+            },
+            "DOMException": {
+                "extends": "Error"
+            },
+            "DOMStringMap": {
+                "overrideIndexSignatures": [
+                    "[name: string]: string | undefined"
+                ]
+            },
+            "DOMImplementation": {
+                "methods": {
+                    "method": {
+                        "hasFeature": {
+                            "overrideSignatures": [
+                                "hasFeature(...args: any[]): true"
+                            ]
+                        }
+                    }
+                }
+            },
+            "HTMLButtonElement": {
+                "properties": {
+                    "property": {
+                        "labels": {
+                            "name": "labels",
+                            "overrideType": "NodeListOf<HTMLLabelElement>"
+                        },
+                        "type": {
+                            "overrideType": "\"submit\" | \"reset\" | \"button\""
+                        }
+                    }
+                }
+            },
+            "HTMLLabelElement": {
+                "properties": {
+                    "property": {
+                        "form": {
+                            "name": "form",
+                            "overrideType": "HTMLFormElement"
+                        }
+                    }
+                }
+            },
+            "HTMLMeterElement": {
+                "properties": {
+                    "property": {
+                        "labels": {
+                            "name": "labels",
+                            "overrideType": "NodeListOf<HTMLLabelElement>"
+                        }
+                    }
+                }
+            },
+            "HTMLOutputElement": {
+                "properties": {
+                    "property": {
+                        "labels": {
+                            "name": "labels",
+                            "overrideType": "NodeListOf<HTMLLabelElement>"
+                        }
+                    }
+                }
+            },
+            "HTMLProgressElement": {
+                "properties": {
+                    "property": {
+                        "labels": {
+                            "name": "labels",
+                            "overrideType": "NodeListOf<HTMLLabelElement>"
+                        }
+                    }
+                }
+            },
+            "HTMLTextAreaElement": {
+                "properties": {
+                    "property": {
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFill"
+                        },
+                        "labels": {
+                            "name": "labels",
+                            "overrideType": "NodeListOf<HTMLLabelElement>"
+                        },
+                        "selectionDirection": {
+                            "name": "selectionDirection",
+                            "overrideType": "\"forward\" | \"backward\" | \"none\""
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "setSelectionRange": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "start",
+                                            "nullable": true
+                                        },
+                                        {
+                                            "name": "end",
+                                            "nullable": true
+                                        },
+                                        {
+                                            "name": "direction",
+                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ServiceWorkerContainer": {
+                "methods": {
+                    "method": {
+                        "getRegistration": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<ServiceWorkerRegistration | undefined>"
+                                }
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
+            "WebSocket": {
+                "methods": {
+                    "method": {
+                        "send": {
+                            "name": "send",
+                            "overrideSignatures": [
+                                "send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void"
+                            ]
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
+            "HTMLTableRowElement": {
+                "properties": {
+                    "property": {
+                        "cells": {
+                            "name": "cells",
+                            "overrideType": "HTMLCollectionOf<HTMLTableCellElement>"
+                        }
+                    }
+                }
+            },
+            "XMLHttpRequestEventTarget": {
+                "properties": {
+                    "property": {
+                        "onloadstart": {
+                            "name": "onloadstart",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        },
+                        "onprogress": {
+                            "name": "onprogress",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        },
+                        "onabort": {
+                            "name": "onabort",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        },
+                        "onerror": {
+                            "name": "onerror",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        },
+                        "onload": {
+                            "name": "onload",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        },
+                        "ontimeout": {
+                            "name": "ontimeout",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        },
+                        "onloadend": {
+                            "name": "onloadend",
+                            "overrideType": "((this: XMLHttpRequest, ev: ProgressEvent) => any) | null"
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "loadstart",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "progress",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "abort",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "error",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "load",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "timeout",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "loadend",
+                            "type": "ProgressEvent"
+                        }
+                    ]
+                }
+            },
+            "FileReader": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "loadstart",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "progress",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "load",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "abort",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "error",
+                            "type": "ProgressEvent"
+                        },
+                        {
+                            "name": "loadend",
+                            "type": "ProgressEvent"
+                        }
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "readyState": {
+                            "name": "readyState",
+                            "overrideType": "typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
+                        }
+                    }
+                }
+            },
+            "FileSystemDirectoryHandle": {
+                "iterator": {
+                    // It's true that Blink is the only supported engine for Symbol.asyncIterator,
+                    // WebKit does support the keys/values/entries method and Gecko will soon follow.
+                    // Let's not go back and forth for this one.
+                    "exposed": "Window Worker"
+                }
+            },
+            "MutationRecord": {
+                "properties": {
+                    "property": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "MutationRecordType"
+                        }
+                    }
+                }
+            },
+            "URL": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "base",
+                                    "additionalTypes": ["URL"]
+                                }
+                            ]
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "canParse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "parse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Client": {
+                "properties": {
+                    "property": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "ClientTypes"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "postMessage": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "transfer",
+                                            "overrideType": "Transferable[]"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "RTCDataChannel": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
+            "RTCIceCandidatePair": {
+                // https://github.com/w3c/webrtc-pc/pull/2961 made this from dictionary to interface,
+                // but nobody did the change as of 2024-06.
+                // For now let's roll this back to the dictionary form.
+                "exposed": "Window",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "local": {
+                            "readonly": false
+                        },
+                        "remote": {
+                            "readonly": false
+                        }
+                    }
+                }
+            },
+            "RTCPeerConnection": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "track",
+                            "type": "RTCTrackEvent"
+                        },
+                        {
+                            "name": "icecandidate",
+                            "type": "RTCPeerConnectionIceEvent"
+                        },
+                        {
+                            "name": "datachannel",
+                            "type": "RTCDataChannelEvent"
+                        },
+                        {
+                            "name": "icecandidateerror",
+                            "type": "RTCPeerConnectionIceErrorEvent"
+                        }
+                    ]
+                },
+                "methods": {
+                    "method": {
+                        "addIceCandidate": {
+                            "signature": {
+                                "1": {
+                                    "deprecated": true
+                                }
+                            }
+                        },
+                        "createAnswer": {
+                            "signature": {
+                                "1": {
+                                    "deprecated": true
+                                }
+                            }
+                        },
+                        "createOffer": {
+                            "signature": {
+                                "1": {
+                                    "deprecated": true
+                                }
+                            }
+                        },
+                        "setLocalDescription": {
+                            "signature": {
+                                "1": {
+                                    "deprecated": true
+                                }
+                            }
+                        },
+                        "setRemoteDescription": {
+                            "signature": {
+                                "1": {
+                                    "deprecated": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ServiceWorkerGlobalScope": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "install",
+                            "type": "ExtendableEvent"
+                        },
+                        {
+                            "name": "activate",
+                            "type": "ExtendableEvent"
+                        },
+                        {
+                            "name": "fetch",
+                            "type": "FetchEvent"
+                        },
+                        {
+                            "name": "message",
+                            "type": "ExtendableMessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "notificationclick",
+                            "type": "NotificationEvent"
+                        },
+                        {
+                            "name": "notificationclose",
+                            "type": "NotificationEvent"
+                        },
+                        {
+                            "name": "push",
+                            "type": "PushEvent"
+                        }
+                    ],
+                    "methods": {
+                        "method": {
+                            "waitUntil": {
+                                "signature": {
+                                    "0": {
+                                        "param": [
+                                            {
+                                                "name": "f",
+                                                "overrideType": "Promise<any>"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Cache": {
+                "methods": {
+                    "method": {
+                        "match": {
+                            "name": "match",
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<Response | undefined>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "CacheStorage": {
+                "methods": {
+                    "method": {
+                        "match": {
+                            "name": "match",
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<Response | undefined>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "Animation": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "finish",
+                            "type": "AnimationPlaybackEvent"
+                        },
+                        {
+                            "name": "cancel",
+                            "type": "AnimationPlaybackEvent"
+                        }
+                    ]
+                }
+            },
+            "KeyframeEffect": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "keyframes",
+                                    "overrideType": "Keyframe[] | PropertyIndexedKeyframes"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "getKeyframes": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "ComputedKeyframe[]"
+                                }
+                            }
+                        },
+                        "setKeyframes": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "keyframes",
+                                            "overrideType": "Keyframe[] | PropertyIndexedKeyframes"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HTMLMarqueeElement": {
+                "element": [
+                    {
+                        "name": "marquee"
+                    }
+                ]
+            },
+            "Worker": {
+                "methods": {
+                    "method": {
+                        "postMessage": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "transfer",
+                                            "overrideType": "Transferable[]"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
+            "Crypto": {
+                "methods": {
+                    "method": {
+                        "getRandomValues": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "ArrayBufferView | null"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "array",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "randomUUID": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "`${string}-${string}-${string}-${string}-${string}`"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "OfflineAudioContext": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "complete",
+                            "type": "OfflineAudioCompletionEvent"
+                        }
+                    ]
+                }
+            },
+            "PannerNode": {
+                "methods": {
+                    "method": {
+                        "setPosition": {
+                            "name": "setPosition",
+                            "deprecated": true
+                        },
+                        "setOrientation": {
+                            "name": "setOrientation",
+                            "deprecated": true
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEvent": {
+                "properties": {
+                    "property": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
+                        }
+                    }
+                }
+            },
+            "ScriptProcessorNode": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "audioprocess",
+                            "type": "AudioProcessingEvent"
+                        }
+                    ]
+                }
+            },
+            "MessagePort": {
+                "methods": {
+                    "method": {
+                        "postMessage": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "transfer",
+                                            "overrideType": "Transferable[]"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
+            "ServiceWorker": {
+                "methods": {
+                    "method": {
+                        "postMessage": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "transfer",
+                                            "overrideType": "Transferable[]"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "DedicatedWorkerGlobalScope": {
+                "methods": {
+                    "method": {
+                        "postMessage": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "transfer",
+                                            "overrideType": "Transferable[]"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
+            "HTMLFormElement": {
+                "overrideIndexSignatures": [
+                    "[index: number]: Element",
+                    "[name: string]: any"
+                ],
+                "properties": {
+                    "property": {
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFillBase"
+                        }
+                    }
+                }
+            },
+            "Blob": {
+              "methods": {
+                "method": {
+                  "stream": {
+                    "signature": {
+                      "0": {
+                        "overrideType": "ReadableStream<Uint8Array>"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "ReadableStream": {
+                "typeParameters": [
+                    {
+                        "name": "R",
+                        "default": "any"
+                    }
+                ],
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": false,
+                                    "type": "UnderlyingByteSource"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "overrideType": "{ highWaterMark?: number }"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "1": {
+                            "typeParameters": [
+                                {
+                                    "name": "R",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": false,
+                                    "overrideType": "UnderlyingDefaultSource<R>"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "optional": true,
+                                    "overrideType": "QueuingStrategy<R>"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<R>"
+                        },
+                        "2": {
+                            "typeParameters": [
+                                {
+                                    "name": "R",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": true,
+                                    "overrideType": "UnderlyingSource<R>"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "optional": true,
+                                    "overrideType": "QueuingStrategy<R>"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<R>"
+                        }
+                    },
+                    "force-references": [
+                        {
+                            "type": "UnderlyingSource"
+                        },
+                        {
+                            "type": "UnderlyingByteSource"
+                        },
+                        {
+                            "type": "UnderlyingDefaultSource"
+                        },
+                        {
+                            "type": "QueuingStrategy"
+                        }
+                    ]
+                },
+                "methods": {
+                    "method": {
+                        "getReader": {
+                            "additionalSignatures": [
+                                "getReader(options: { mode: \"byob\" }): ReadableStreamBYOBReader",
+                                "getReader(): ReadableStreamDefaultReader<R>"
+                            ],
+                            "signature": {
+                                "0": {
+                                    "overrideType": "ReadableStreamReader<R>"
+                                }
+                            }
+                        },
+                        "pipeThrough": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "transform",
+                                            "overrideType": "ReadableWritablePair<T, R>"
+                                        }
+                                    ],
+                                    "overrideType": "ReadableStream<T>"
+                                }
+                            }
+                        },
+                        "pipeTo": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "destination",
+                                            "overrideType": "WritableStream<R>"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "tee": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "[ReadableStream<R>, ReadableStream<R>]"
+                                }
+                            }
+                        }
+                    }
+                },
+                "iterator": {
+                    "type": {
+                        "0": {
+                            "overrideType": "R"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamBYOBReader": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "ReadableStream<Uint8Array>"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "ArrayBufferView"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "view",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ReadableStreamReadResult<T>>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ReadableStreamDefaultReader": {
+                "typeParameters": [
+                    {
+                        "name": "R",
+                        "default": "any"
+                    }
+                ],
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "typeParameters": [
+                                {
+                                    "name": "R",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "ReadableStream<R>"
+                                }
+                            ],
+                            "overrideType": "ReadableStreamDefaultReader<R>"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<ReadableStreamReadResult<R>>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ReadableStreamDefaultController": {
+                "typeParameters": [
+                    {
+                        "name": "R",
+                        "default": "any"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "enqueue": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "chunk",
+                                            "overrideType": "R"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "WritableStream": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "typeParameters": [
+                                {
+                                    "name": "W",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "underlyingSink",
+                                    "overrideType": "UnderlyingSink<W>"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "overrideType": "QueuingStrategy<W>"
+                                }
+                            ],
+                            "overrideType": "WritableStream<W>"
+                        }
+                    },
+                    "force-references": [
+                        {
+                            "type": "UnderlyingSink"
+                        },
+                        {
+                            "type": "QueuingStrategy"
+                        }
+                    ]
+                },
+                "typeParameters": [
+                    {
+                        "name": "W",
+                        "default": "any"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "getWriter": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "WritableStreamDefaultWriter<W>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "WritableStreamDefaultWriter": {
+                "typeParameters": [
+                    {
+                        "name": "W",
+                        "default": "any"
+                    }
+                ],
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "typeParameters": [
+                                {
+                                    "name": "W",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "WritableStream<W>"
+                                }
+                            ],
+                            "overrideType": "WritableStreamDefaultWriter<W>"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "write": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "chunk",
+                                            "overrideType": "W"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "TransformStream": {
+                "typeParameters": [
+                    {
+                        "name": "I",
+                        "default": "any"
+                    },
+                    {
+                        "name": "O",
+                        "default": "any"
+                    }
+                ],
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "overrideType": "ReadableStream<O>"
+                        },
+                        "writable": {
+                            "overrideType": "WritableStream<I>"
+                        }
+                    }
+                },
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "typeParameters": [
+                                {
+                                    "name": "I",
+                                    "default": "any"
+                                },
+                                {
+                                    "name": "O",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "transformer",
+                                    "overrideType": "Transformer<I, O>"
+                                },
+                                {
+                                    "name": "writableStrategy",
+                                    "overrideType": "QueuingStrategy<I>"
+                                },
+                                {
+                                    "name": "readableStrategy",
+                                    "overrideType": "QueuingStrategy<O>"
+                                }
+                            ],
+                            "overrideType": "TransformStream<I, O>"
+                        }
+                    },
+                    "force-references": [
+                        {
+                            "type": "Transformer"
+                        },
+                        {
+                            "type": "QueuingStrategy"
+                        }
+                    ]
+                }
+            },
+            "TransformStreamDefaultController": {
+                "typeParameters": [
+                    {
+                        "name": "O",
+                        "default": "any"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "enqueue": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "chunk",
+                                            "overrideType": "O"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ByteLengthQueuingStrategy": {
+                "extends": "QueuingStrategy<ArrayBufferView>",
+                "properties": {
+                    "property": {
+                        "size": {
+                            "name": "size",
+                            "overrideType": [
+                                "QueuingStrategySize<ArrayBufferView>"
+                            ]
+                        }
+                    }
+                }
+            },
+            "CountQueuingStrategy": {
+                "extends": "QueuingStrategy",
+                "properties": {
+                    "property": {
+                        "size": {
+                            "name": "size",
+                            "overrideType": [
+                                "QueuingStrategySize"
+                            ]
+                        }
+                    }
+                }
+            },
+            "CompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "DecompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "TextDecoderStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<string>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "TextEncoderStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<string>"
+                        }
+                    }
+                }
+            },
+            "Permissions": {
+                "methods": {
+                    "method": {
+                        "query": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "permissionDesc",
+                                            "type": "PermissionDescriptor"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ExtendableEvent": {
+                "methods": {
+                    "method": {
+                        "waitUntil": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "f",
+                                            "overrideType": "Promise<any>"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "EventTarget": {
+                "methods": {
+                    "method": {
+                        "addEventListener": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "EventListenerOrEventListenerObject"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "removeEventListener": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "EventListenerOrEventListenerObject"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "WorkerGlobalScope": {
+                "properties": {
+                    "property": {
+                        "self": {
+                            "overrideType": "WorkerGlobalScope & typeof globalThis"
+                        }
+                    }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "error",
+                            "type": "ErrorEvent"
+                        }
+                    ]
+                }
+            },
+            "InstallEvent": {
+                // https://github.com/mdn/browser-compat-data/issues/22591
+                "exposed": ""
+            },
+            "Instance": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "importObject",
+                                    "type": "Imports"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "properties": {
+                    "property": {
+                        "exports": {
+                            "type": "Exports"
+                        }
+                    }
+                }
+            },
+            "MediaKeySession": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MediaKeyMessageEvent"
+                        }
+                    ]
+                }
+            },
+            "MessageEvent": {
+                "properties": {
+                    "property": {
+                        "data": {
+                            "overrideType": "T"
+                        }
+                    }
+                },
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ],
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "typeParameters": [
+                                {
+                                    "name": "T"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "eventInitDict",
+                                    "overrideType": "MessageEventInit<T>"
+                                }
+                            ],
+                            "overrideType": "MessageEvent<T>"
+                        }
+                    }
+                }
+            },
+            "MIDIAccess": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "transferable": false // Not transferable on Gecko/Blink as of 2024-07
+            },
+            "MIDIConnectionEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIInput": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "events": {
+                    "event": [
+                        {
+                            "name": "midimessage",
+                            "type": "MIDIMessageEvent"
+                        }
+                    ]
+                }
+            },
+            "MIDIInputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIMessageEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutput": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIPort": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "events": {
+                    "event": [
+                        {
+                            "name": "statechange",
+                            "type": "MIDIConnectionEvent"
+                        }
+                    ]
+                }
+            },
+            "Clients": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<Client | undefined>"
+                                }
+                            }
+                        },
+                        "matchAll": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "ClientQueryOptions"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "options",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ReadonlyArray<T[\"type\"] extends \"window\" ? WindowClient : Client>>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "CSSFontFaceRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSFontFaceDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSKeyframeRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSPageRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSPageDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSStyleDeclaration": {
+                "properties": {
+                    "property": {
+                        "cssFloat": {
+                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "name": "cssFloat",
+                            "type": "CSSOMString",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
+                        }
+                    }
+                }
+            },
+            "CSSStyleRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "HTMLMediaElement": {
+                "properties": {
+                    "property": {
+                        "preload": {
+                            "overrideType": "\"none\" | \"metadata\" | \"auto\" | \"\""
+                        }
+                    }
+                }
+            },
+            "Global": {
+                "name": "Global",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "extends": "ValueType",
+                        "default": "ValueType"
+                    }
+                ],
+                "constructor": {
+                    "overrideSignatures": [
+                        "new<T extends ValueType = ValueType>(descriptor: GlobalDescriptor<T>, v?: ValueTypeMap[T]): Global<T>"
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "value": {
+                            "overrideType": "ValueTypeMap[T]"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "valueOf": {
+                            "overrideSignatures": [
+                                "valueOf(): ValueTypeMap[T]"
+                            ]
+                        }
+                    }
+                }
+            },
+
+            // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
+            "MediaSource": {
+                "exposed": "Window"
+            },
+            "SourceBuffer": {
+                "exposed": "Window"
+            },
+            "SourceBufferList": {
+                "exposed": "Window"
+            },
+            "StylePropertyMapReadOnly": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            // https://github.com/w3c/css-houdini-drafts/pull/1087
+                            "signature": {
+                                "0": {
+                                    "overrideType": "undefined | CSSStyleValue"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "dictionaries": {
+          "dictionary": {
+            "FontFaceDescriptors": {
+              "members": {
+                "member": {
+                  "display":{
+                    "type": "FontDisplay"
+                  }
+                }
+              }
+            },
+            // https://github.com/microsoft/TypeScript/issues/46036
+            "CryptoKeyPair": {
+                "members": {
+                    "member": {
+                        "privateKey": {
+                            "required": true
+                        },
+                        "publicKey": {
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "StructuredSerializeOptions": {
+                "members": {
+                    "member": {
+                        "transfer": {
+                            "overrideType": "Transferable[]"
+                        }
+                    }
+                }
+            },
+            "MessageEventInit": {
+                "members": {
+                    "member": {
+                        "data": {
+                            "name": "data",
+                            "overrideType": "T"
+                        }
+                    }
+                },
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ]
+            },
+            "CustomEventInit": {
+                "members": {
+                    "member": {
+                        "detail": {
+                            "name": "detail",
+                            "overrideType": "T"
+                        }
+                    }
+                },
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ]
+            },
+            "ClientQueryOptions": {
+                "members": {
+                    "member": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "ClientTypes"
+                        }
+                    }
+                }
+            },
+            "AuthenticatorSelectionCriteria": {
+                "members": {
+                    "member": {
+                        "authenticatorAttachment": {
+                            "type": "AuthenticatorAttachment"
+                        },
+                        "residentKey": {
+                            "type": "ResidentKeyRequirement"
+                        },
+                        "userVerification": {
+                            "type": "UserVerificationRequirement"
+                        }
+                    }
+                }
+            },
+            "BaseKeyframe": {
+                "name": "Keyframe",
+                "overrideIndexSignatures": [
+                    "[property: string]: string | number | null | undefined"
+                ]
+            },
+            "BasePropertyIndexedKeyframe": {
+                "name": "PropertyIndexedKeyframes",
+                "overrideIndexSignatures": [
+                    "[property: string]: string | string[] | number | null | (number | null)[] | undefined"
+                ]
+            },
+            "BaseComputedKeyframe": {
+                "name": "ComputedKeyframe",
+                "members": {
+                    "member": {
+                        "offset": {
+                            "required": true
+                        },
+                        "computedOffset": {
+                            "required": true
+                        },
+                        "easing": {
+                            "required": true
+                        },
+                        "composite": {
+                            "required": true
+                        }
+                    }
+                },
+                "overrideIndexSignatures": [
+                    "[property: string]: string | number | null | undefined"
+                ]
+            },
+            // https://github.com/w3c/mediasession/issues/322
+            "MediaSessionActionDetails": {
+                "members": {
+                    "member": {
+                        "fastSeek": {
+                            "name": "fastSeek",
+                            "type": "boolean"
+                        },
+                        "seekOffset": {
+                            "name": "seekOffset",
+                            "type": "double"
+                        },
+                        "seekTime": {
+                            "name": "seekTime",
+                            "type": "double"
+                        }
+                    }
+                }
+            },
+            "PermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "type": "PermissionName"
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEventInit": {
+                "members": {
+                    "member": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialCreationOptions": {
+                "members": {
+                    "member": {
+                        "attestation": {
+                            "type": "AttestationConveyancePreference"
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialDescriptor": {
+                "members": {
+                    "member": {
+                        "type": {
+                            "type": "PublicKeyCredentialType"
+                        },
+                        "transports": {
+                            "subtype": {
+                                "type": "AuthenticatorTransport"
+                            }
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialParameters": {
+                "members": {
+                    "member": {
+                        "type": {
+                            "type": "PublicKeyCredentialType"
+                        }
+                    }
+                }
+            },
+            "PublicKeyCredentialRequestOptions": {
+                "members": {
+                    "member": {
+                        "userVerification": {
+                            "type": "UserVerificationRequirement"
+                        }
+                    }
+                }
+            },
+            "QueuingStrategy": {
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "default": "any"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "size": {
+                            "overrideType": "QueuingStrategySize<T>"
+                        }
+                    }
+                }
+            },
+            "ReadableWritablePair": {
+                "typeParameters": [
+                    {
+                        "name": "R",
+                        "default": "any"
+                    },
+                    {
+                        "name": "W",
+                        "default": "any"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "readable": {
+                            "overrideType": "ReadableStream<R>"
+                        },
+                        "writable": {
+                            "overrideType": "WritableStream<W>"
+                        }
+                    }
+                }
+            },
+            "RequestInit": {
+                "members": {
+                    "member": {
+                        "window": {
+                            "overrideType": "null"
+                        }
+                    }
+                }
+            },
+            // TextEncoderEncodeIntoResult is used only for return type, always with all fields defined
+            "TextEncoderEncodeIntoResult": {
+                "members": {
+                    "member": {
+                        "read": {
+                            "required": true
+                        },
+                        "written": {
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "UnderlyingSource": {
+                "typeParameters": [
+                    {
+                        "name": "R",
+                        "default": "any"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "start": {
+                            "overrideType": "UnderlyingSourceStartCallback<R>"
+                        },
+                        "pull": {
+                            "overrideType": "UnderlyingSourcePullCallback<R>"
+                        }
+                    }
+                }
+            },
+            "UIEventInit": {
+                "members": {
+                    "member": {
+                        "which": {
+                            "deprecated": true
+                        }
+                    }
+                }
+            },
+            "UnderlyingSink": {
+                "typeParameters": [
+                    {
+                        "name": "W",
+                        "default": "any"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "write": {
+                            "overrideType": "UnderlyingSinkWriteCallback<W>"
+                        },
+                        "type": {
+                            "overrideType": "undefined"
+                        }
+                    }
+                }
+            },
+            "TokenBinding": {
+                "members": {
+                    "member": {
+                        "status": {
+                            "type": "TokenBindingStatus"
+                        }
+                    }
+                }
+            },
+            "Transformer": {
+                "typeParameters": [
+                    {
+                        "name": "I",
+                        "default": "any"
+                    },
+                    {
+                        "name": "O",
+                        "default": "any"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "start": {
+                            "overrideType": "TransformerStartCallback<O>"
+                        },
+                        "transform": {
+                            "overrideType": "TransformerTransformCallback<I, O>"
+                        },
+                        "flush": {
+                            "overrideType": "TransformerFlushCallback<O>"
+                        },
+                        "readableType": {
+                            "overrideType": "undefined"
+                        },
+                        "writableType": {
+                            "overrideType": "undefined"
+                        }
+                    }
+                }
+            },
+            "ModuleExportDescriptor": {
+                "legacyNamespace": "WebAssembly"
+            },
+            "ModuleImportDescriptor": {
+                "legacyNamespace": "WebAssembly"
+            },
+            "MemoryDescriptor": {
+                "legacyNamespace": "WebAssembly"
+            },
+            "TableDescriptor": {
+                "legacyNamespace": "WebAssembly"
+            },
+            "GlobalDescriptor": {
+                "legacyNamespace": "WebAssembly",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "extends": "ValueType",
+                        "default": "ValueType"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "value": {
+                            "overrideType": "T"
+                        }
+                    }
+                }
+            },
+            "WebAssemblyInstantiatedSource": {
+                "legacyNamespace": "WebAssembly"
+            }
+        }
+    },
+    "typedefs": {
+        "typedef": [
+            {
+                "overrideType": "ReadableStreamDefaultController<T> | ReadableByteStreamController",
+                "name": "ReadableStreamController",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ]
+            },
+            {
+                "name": "ReadableStreamReader",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReader"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReader"
+                    }
+                ],
+                "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+            },
+            {
+                "name": "AllowSharedBufferSource",
+                // No SharedArrayBuffer in ES5, oh no.
+                "overrideType": "ArrayBuffer | ArrayBufferView"
+            }
+        ]
+    },
+    "namespaces": [
+        {
+            "name": "console",
+            "methods": {
+                "method": {
+                    "timeStamp": {
+                        "name": "timeStamp",
+                        "overrideSignatures": [
+                            "timeStamp(label?: string): void"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "name": "WebAssembly",
+            "methods": {
+                "method": {
+                    "instantiate": {
+                        "signature": {
+                            "0": {
+                                "param": [
+                                    {
+                                        "name": "importObject",
+                                        "type": "Imports"
+                                    }
+                                ]
+                            },
+                            "1": {
+                                "param": [
+                                    {
+                                        "name": "importObject",
+                                        "type": "Imports"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "instantiateStreaming": {
+                        "signature": {
+                            "0": {
+                                "param": [
+                                    {
+                                        "name": "importObject",
+                                        "type": "Imports"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "CSS",
+            "methods": {
+                "method": {
+                    // `in` is a keyword and needs a special emit, which will be done in a separate PR
+                    // Not in removedTypes as removals in arrays are not well supported
+                    // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1515
+                    "in": {
+                        "exposed": ""
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,9 +1,0 @@
-partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textIndent;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textAlign;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textDecoration;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString letterSpacing;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString wordSpacing;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString textTransform;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString whiteSpace;
-};

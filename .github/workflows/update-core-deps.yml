@@ -1,0 +1,46 @@
+name: Update core dependencies
+on:
+  workflow_dispatch: null
+  schedule:
+    # https://crontab.guru/#5_8_*_*_*
+    - cron: "5 8 * * *"
+
+# Conditional runs
+# https://stackoverflow.com/a/61832535/2460034
+jobs:
+  update-webref:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: npm
+
+      # Use ncu to detect major version changes
+      - run: npm i -g npm-check-updates
+      - run: ncu -u @mdn* @webref*
+      - run: npm i
+      - run: git restore package.json
+      # package-lock wants to remember the original version numbers of package.json
+      # This prevents annoying change when contributors run `npm i` on their local machine.
+      # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
+      - run: npm i
+      - id: build
+        run: npm run build && npm run baseline-accept
+        continue-on-error: true
+      - if: ${{ steps.build.outcome == 'failure' }}
+        run: node deploy/onUpdateFailure.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.TS_GITHUB_BOT_AUTH }}
+      - id: git-diff
+        run: git diff --quiet HEAD baselines
+        continue-on-error: true
+      - uses: peter-evans/create-pull-request@v6
+        if: ${{ steps.git-diff.outcome == 'failure' }}
+        with:
+          commit-message: "🤖 Update core dependencies"
+          title: "Update core dependencies"
+          push-to-fork: typescript-bot/TypeScript-DOM-lib-generator
+          branch: update-core-deps
+          token: ${{ secrets.TS_GITHUB_BOT_AUTH }}

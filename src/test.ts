@@ -1,54 +1,121 @@
 import * as fs from "fs";
-import * as path from "path";
 import child_process from "child_process";
-import printDiff from "print-diff";
+import { printInlineDiff } from "print-diff";
+import { fileURLToPath } from "url";
 
-const __SOURCE_DIRECTORY__ = __dirname;
-const baselineFolder = path.join(__SOURCE_DIRECTORY__, "../", "baselines");
-const outputFolder = path.join(__SOURCE_DIRECTORY__, "../", "generated");
-const tscPath = path.join(__SOURCE_DIRECTORY__, "../", "node_modules", "typescript", "lib", "tsc.js");
+const baselineFolder = new URL("../baselines/", import.meta.url);
+const outputFolder = new URL("../generated/", import.meta.url);
+const tscPath = new URL(
+  "../node_modules/typescript/lib/tsc.js",
+  import.meta.url,
+);
 
 function normalizeLineEndings(text: string): string {
-    return text.replace(/\r\n?/g, "\n");
+  return text.replace(/\r\n?/g, "\n");
 }
 
 function compareToBaselines() {
-    for (const file of fs.readdirSync(baselineFolder)) {
-        if (file.startsWith(".")) continue
-
-        const baseline = normalizeLineEndings(fs.readFileSync(path.join(baselineFolder, file)).toString());
-        const generated = normalizeLineEndings(fs.readFileSync(path.join(outputFolder, file)).toString());
-        if (baseline !== generated) {
-            console.error(`Test failed: '${file}' is different from baseline file.`);
-            printDiff(generated, baseline);
-            return false;
-        }
+  for (const file of fs.readdirSync(baselineFolder)) {
+    if (file.startsWith(".")) {
+      continue;
     }
-    return true;
 
+    const baseline = normalizeLineEndings(
+      fs.readFileSync(new URL(file, baselineFolder)).toString(),
+    );
+    const generated = normalizeLineEndings(
+      fs.readFileSync(new URL(file, outputFolder)).toString(),
+    );
+    if (baseline !== generated) {
+      console.error(`Test failed: '${file}' is different from baseline file.`);
+      printInlineDiff(baseline, generated);
+      return false;
+    }
+  }
+  return true;
 }
 
 function compileGeneratedFiles(lib: string, ...files: string[]) {
-    try {
-        child_process.execSync(`node ${tscPath} --strict --lib ${lib} --types --noEmit ${files.map(file => path.join(outputFolder, file)).join(" ")}`);
-    } catch (e) {
-        console.error(`Test failed: could not compile '${files.join(",")}':`);
-        console.error(e.stdout.toString());
-        console.error();
-        return false;
-    }
-    return true;
+  try {
+    child_process.execSync(
+      `node ${fileURLToPath(
+        tscPath,
+      )} --strict --lib ${lib} --types --noEmit ${files
+        .map((file) => fileURLToPath(new URL(file, outputFolder)))
+        .join(" ")}`,
+    );
+  } catch (e: any) {
+    console.error(`Test failed: could not compile '${files.join(",")}':`);
+    console.error(e.stdout.toString());
+    console.error();
+    return false;
+  }
+  return true;
 }
 
 function test() {
-    if (compareToBaselines() &&
-        compileGeneratedFiles("es5", "dom.generated.d.ts") &&
-        compileGeneratedFiles("es5", "webworker.generated.d.ts") &&
-        compileGeneratedFiles("es6", "dom.generated.d.ts", "dom.iterable.generated.d.ts")) {
-        console.log("All tests passed.");
-        process.exit(0);
-    }
-    process.exit(1);
+  if (
+    compareToBaselines() &&
+    compileGeneratedFiles("es5", "dom.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "dom.generated.d.ts",
+      "dom.iterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "dom.generated.d.ts",
+      "dom.asynciterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles("es5", "webworker.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "webworker.generated.d.ts",
+      "webworker.iterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "webworker.generated.d.ts",
+      "webworker.asynciterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles("es5", "sharedworker.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "sharedworker.generated.d.ts",
+      "sharedworker.iterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "sharedworker.generated.d.ts",
+      "sharedworker.asynciterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles("es5", "serviceworker.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "serviceworker.generated.d.ts",
+      "serviceworker.iterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "serviceworker.generated.d.ts",
+      "serviceworker.asynciterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles("es5", "audioworklet.generated.d.ts") &&
+    compileGeneratedFiles(
+      "es6",
+      "audioworklet.generated.d.ts",
+      "audioworklet.iterable.generated.d.ts",
+    ) &&
+    compileGeneratedFiles(
+      "es2018",
+      "audioworklet.generated.d.ts",
+      "audioworklet.asynciterable.generated.d.ts",
+    )
+  ) {
+    console.log("All tests passed.");
+    process.exit(0);
+  }
+  process.exit(1);
 }
 
 test();

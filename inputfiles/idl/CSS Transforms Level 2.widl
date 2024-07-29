@@ -1,9 +1,0 @@
-partial interface CSSStyleDeclaration {
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString translate;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString rotate;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString scale;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString transformStyle;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString perspective;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString perspectiveOrigin;
-  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString backfaceVisibility;
-};
