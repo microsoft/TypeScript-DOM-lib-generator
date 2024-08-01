@@ -4002,7 +4002,7 @@ interface OES_vertex_array_object {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/bindVertexArrayOES) */
     bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/createVertexArrayOES) */
-    createVertexArrayOES(): WebGLVertexArrayObjectOES | null;
+    createVertexArrayOES(): WebGLVertexArrayObjectOES;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/deleteVertexArrayOES) */
     deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/isVertexArrayOES) */
@@ -6158,13 +6158,13 @@ interface WebGL2RenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/copyTexSubImage3D) */
     copyTexSubImage3D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/createQuery) */
-    createQuery(): WebGLQuery | null;
+    createQuery(): WebGLQuery;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/createSampler) */
-    createSampler(): WebGLSampler | null;
+    createSampler(): WebGLSampler;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/createTransformFeedback) */
-    createTransformFeedback(): WebGLTransformFeedback | null;
+    createTransformFeedback(): WebGLTransformFeedback;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/createVertexArray) */
-    createVertexArray(): WebGLVertexArrayObject | null;
+    createVertexArray(): WebGLVertexArrayObject;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/deleteQuery) */
     deleteQuery(query: WebGLQuery | null): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/deleteSampler) */
@@ -7077,17 +7077,17 @@ interface WebGLRenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/copyTexSubImage2D) */
     copyTexSubImage2D(target: GLenum, level: GLint, xoffset: GLint, yoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/createBuffer) */
-    createBuffer(): WebGLBuffer | null;
+    createBuffer(): WebGLBuffer;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/createFramebuffer) */
-    createFramebuffer(): WebGLFramebuffer | null;
+    createFramebuffer(): WebGLFramebuffer;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/createProgram) */
-    createProgram(): WebGLProgram | null;
+    createProgram(): WebGLProgram;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/createRenderbuffer) */
-    createRenderbuffer(): WebGLRenderbuffer | null;
+    createRenderbuffer(): WebGLRenderbuffer;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/createShader) */
     createShader(type: GLenum): WebGLShader | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/createTexture) */
-    createTexture(): WebGLTexture | null;
+    createTexture(): WebGLTexture;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/cullFace) */
     cullFace(mode: GLenum): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/deleteBuffer) */
