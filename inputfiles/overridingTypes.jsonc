@@ -2169,7 +2169,21 @@
                     "method": {
                         "addIceCandidate": {
                             "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ]
+                                },
                                 "1": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ],
                                     "deprecated": true
                                 }
                             }
