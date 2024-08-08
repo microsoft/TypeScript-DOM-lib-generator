@@ -2543,6 +2543,18 @@
                 }
             },
             "Blob": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "blobParts",
+                                    "overrideType": "Iterable<BlobPart>"
+                                }
+                            ]
+                        }
+                    }
+                },
               "methods": {
                 "method": {
                   "stream": {
@@ -2554,6 +2566,20 @@
                   }
                 }
               }
+            },
+            "File": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "fileBits",
+                                    "overrideType": "Iterable<BlobPart>"
+                                }
+                            ]
+                        }
+                    }
+                }
             },
             "ReadableStream": {
                 "typeParameters": [
