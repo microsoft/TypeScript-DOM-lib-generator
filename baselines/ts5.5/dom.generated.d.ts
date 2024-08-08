@@ -4600,6 +4600,7 @@ interface CSSStyleDeclaration {
     shapeMargin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-outside) */
     shapeOutside: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-rendering) */
     shapeRendering: string;
     stopColor: string;
     stopOpacity: string;
@@ -4619,6 +4620,7 @@ interface CSSStyleDeclaration {
     textAlign: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-align-last) */
     textAlignLast: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-combine-upright) */
     textCombineUpright: string;
