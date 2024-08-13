@@ -39,7 +39,7 @@
   "devDependencies": {
     "@mdn/browser-compat-data": "^5.5.21",
     "@octokit/rest": "^21.0.0",
-    "@types/node": "^20.12.7",
+    "@types/node": "^22.2.0",
     "@types/prettier": "^3.0.0",
     "@types/webidl2": "^24.4.3",
     "@typescript-eslint/eslint-plugin": "^8",
