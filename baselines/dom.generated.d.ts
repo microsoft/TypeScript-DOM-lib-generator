@@ -4102,11 +4102,13 @@ interface CSSStyleDeclaration {
     clip: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/clip-path) */
     clipPath: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/clip-rule) */
     clipRule: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color) */
     color: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-interpolation) */
     colorInterpolation: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-interpolation-filters) */
     colorInterpolationFilters: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-scheme) */
     colorScheme: string;
@@ -4176,8 +4178,11 @@ interface CSSStyleDeclaration {
     dominantBaseline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
     emptyCells: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill) */
     fill: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill-opacity) */
     fillOpacity: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill-rule) */
     fillRule: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/filter) */
     filter: string;
@@ -4602,7 +4607,9 @@ interface CSSStyleDeclaration {
     shapeOutside: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-rendering) */
     shapeRendering: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stop-color) */
     stopColor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stop-opacity) */
     stopOpacity: string;
     stroke: string;
     strokeDasharray: string;
@@ -5125,7 +5132,9 @@ interface CSSStyleDeclaration {
     wordWrap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/writing-mode) */
     writingMode: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/x) */
     x: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/y) */
     y: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/z-index) */
     zIndex: string;
