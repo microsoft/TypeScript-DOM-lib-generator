@@ -231,6 +231,15 @@ export function emitWebIdl(
     getParentsWithConstant,
   );
 
+  const deferredParameterNames = new Set([
+    "handler",
+    "listener",
+    "callback",
+    "successCallback",
+    "errorCallback",
+    "failureCallback",
+  ]);
+
   switch (iterator) {
     case "sync":
       return emitES6DomIterators();
@@ -690,6 +699,7 @@ export function emitWebIdl(
       const isOptional = !p.variadic && p.optional;
       const variadicParams = p.variadic && pType.indexOf("|") !== -1;
       return (
+        (deferredParameterNames.has(p.name) ? "/** @deferred */ " : "") +
         (p.variadic ? "..." : "") +
         adjustParamName(p.name) +
         (isOptional ? "?: " : ": ") +
@@ -1073,12 +1083,12 @@ export function emitWebIdl(
 
         if (i.name === "EventSource") {
           printer.printLine(
-            `${fPrefix}${addOrRemove}EventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | ${optionsType}): void;`,
+            `${fPrefix}${addOrRemove}EventListener(type: string, /** @deferred */ listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | ${optionsType}): void;`,
           );
         }
 
         printer.printLine(
-          `${fPrefix}${addOrRemove}EventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`,
+          `${fPrefix}${addOrRemove}EventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | ${optionsType}): void;`,
         );
       }
     }
@@ -1094,7 +1104,7 @@ export function emitWebIdl(
       printer.printLine(
         `${prefix}${addOrRemove}EventListener<K extends keyof ${
           iParent.name
-        }EventMap>(type: K, listener: (this: ${nameWithForwardedTypes(
+        }EventMap>(type: K, /** @deferred */ listener: (this: ${nameWithForwardedTypes(
           i,
         )}, ev: ${
           iParent.name

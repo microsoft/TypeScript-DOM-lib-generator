@@ -785,10 +785,10 @@ interface AbortSignal extends EventTarget {
     readonly reason: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/throwIfAborted) */
     throwIfAborted(): void;
-    addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof AbortSignalEventMap>(type: K, /** @deferred */ listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbortSignalEventMap>(type: K, /** @deferred */ listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var AbortSignal: {
@@ -809,10 +809,10 @@ interface AbstractWorkerEventMap {
 interface AbstractWorker {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker/error_event) */
     onerror: ((this: AbstractWorker, ev: ErrorEvent) => any) | null;
-    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof AbstractWorkerEventMap>(type: K, /** @deferred */ listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, /** @deferred */ listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 /**
@@ -890,10 +890,10 @@ interface BroadcastChannel extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BroadcastChannel/postMessage)
      */
     postMessage(message: any): void;
-    addEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof BroadcastChannelEventMap>(type: K, /** @deferred */ listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof BroadcastChannelEventMap>(type: K, /** @deferred */ listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var BroadcastChannel: {
@@ -2306,12 +2306,12 @@ interface EventSource extends EventTarget {
     readonly CONNECTING: 0;
     readonly OPEN: 1;
     readonly CLOSED: 2;
-    addEventListener<K extends keyof EventSourceEventMap>(type: K, listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof EventSourceEventMap>(type: K, listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof EventSourceEventMap>(type: K, /** @deferred */ listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof EventSourceEventMap>(type: K, /** @deferred */ listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var EventSource: {
@@ -2345,7 +2345,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
      */
-    addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
+    addEventListener(type: string, /** @deferred */ callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
     /**
      * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
      *
@@ -2357,7 +2357,7 @@ interface EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
-    removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    removeEventListener(type: string, /** @deferred */ callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
 }
 
 declare var EventTarget: {
@@ -2452,10 +2452,10 @@ interface FileReader extends EventTarget {
     readonly EMPTY: 0;
     readonly LOADING: 1;
     readonly DONE: 2;
-    addEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof FileReaderEventMap>(type: K, /** @deferred */ listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof FileReaderEventMap>(type: K, /** @deferred */ listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var FileReader: {
@@ -2627,10 +2627,10 @@ interface FontFaceSet extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/load) */
     load(font: string, text?: string): Promise<FontFace[]>;
     forEach(callbackfn: (value: FontFace, key: FontFace, parent: FontFaceSet) => void, thisArg?: any): void;
-    addEventListener<K extends keyof FontFaceSetEventMap>(type: K, listener: (this: FontFaceSet, ev: FontFaceSetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof FontFaceSetEventMap>(type: K, listener: (this: FontFaceSet, ev: FontFaceSetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof FontFaceSetEventMap>(type: K, /** @deferred */ listener: (this: FontFaceSet, ev: FontFaceSetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof FontFaceSetEventMap>(type: K, /** @deferred */ listener: (this: FontFaceSet, ev: FontFaceSetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var FontFaceSet: {
@@ -2876,10 +2876,10 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/transaction)
      */
     transaction(storeNames: string | string[], mode?: IDBTransactionMode, options?: IDBTransactionOptions): IDBTransaction;
-    addEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof IDBDatabaseEventMap>(type: K, /** @deferred */ listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof IDBDatabaseEventMap>(type: K, /** @deferred */ listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var IDBDatabase: {
@@ -3248,10 +3248,10 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
     onblocked: ((this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBOpenDBRequest/upgradeneeded_event) */
     onupgradeneeded: ((this: IDBOpenDBRequest, ev: IDBVersionChangeEvent) => any) | null;
-    addEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, /** @deferred */ listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, /** @deferred */ listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var IDBOpenDBRequest: {
@@ -3304,10 +3304,10 @@ interface IDBRequest<T = any> extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/transaction)
      */
     readonly transaction: IDBTransaction | null;
-    addEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof IDBRequestEventMap>(type: K, /** @deferred */ listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, /** @deferred */ listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var IDBRequest: {
@@ -3369,10 +3369,10 @@ interface IDBTransaction extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/objectStore)
      */
     objectStore(name: string): IDBObjectStore;
-    addEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof IDBTransactionEventMap>(type: K, /** @deferred */ listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof IDBTransactionEventMap>(type: K, /** @deferred */ listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var IDBTransaction: {
@@ -3509,8 +3509,8 @@ interface LockManager {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/query) */
     query(): Promise<LockManagerSnapshot>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/request) */
-    request(name: string, callback: LockGrantedCallback): Promise<any>;
-    request(name: string, options: LockOptions, callback: LockGrantedCallback): Promise<any>;
+    request(name: string, /** @deferred */ callback: LockGrantedCallback): Promise<any>;
+    request(name: string, options: LockOptions, /** @deferred */ callback: LockGrantedCallback): Promise<any>;
 }
 
 declare var LockManager: {
@@ -3637,10 +3637,10 @@ interface MessagePort extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/start)
      */
     start(): void;
-    addEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof MessagePortEventMap>(type: K, /** @deferred */ listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MessagePortEventMap>(type: K, /** @deferred */ listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var MessagePort: {
@@ -3784,10 +3784,10 @@ interface Notification extends EventTarget {
     readonly title: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/close) */
     close(): void;
-    addEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof NotificationEventMap>(type: K, /** @deferred */ listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof NotificationEventMap>(type: K, /** @deferred */ listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var Notification: {
@@ -3947,10 +3947,10 @@ interface OffscreenCanvas extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas/transferToImageBitmap)
      */
     transferToImageBitmap(): ImageBitmap;
-    addEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, /** @deferred */ listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, /** @deferred */ listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var OffscreenCanvas: {
@@ -4024,10 +4024,10 @@ interface Performance extends EventTarget {
     setResourceTimingBufferSize(maxSize: number): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/toJSON) */
     toJSON(): any;
-    addEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof PerformanceEventMap>(type: K, /** @deferred */ listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof PerformanceEventMap>(type: K, /** @deferred */ listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var Performance: {
@@ -4100,7 +4100,7 @@ interface PerformanceObserver {
 
 declare var PerformanceObserver: {
     prototype: PerformanceObserver;
-    new(callback: PerformanceObserverCallback): PerformanceObserver;
+    new(/** @deferred */ callback: PerformanceObserverCallback): PerformanceObserver;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/supportedEntryTypes_static) */
     readonly supportedEntryTypes: ReadonlyArray<string>;
 };
@@ -4202,10 +4202,10 @@ interface PermissionStatus extends EventTarget {
     onchange: ((this: PermissionStatus, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus/state) */
     readonly state: PermissionState;
-    addEventListener<K extends keyof PermissionStatusEventMap>(type: K, listener: (this: PermissionStatus, ev: PermissionStatusEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof PermissionStatusEventMap>(type: K, listener: (this: PermissionStatus, ev: PermissionStatusEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof PermissionStatusEventMap>(type: K, /** @deferred */ listener: (this: PermissionStatus, ev: PermissionStatusEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof PermissionStatusEventMap>(type: K, /** @deferred */ listener: (this: PermissionStatus, ev: PermissionStatusEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var PermissionStatus: {
@@ -4474,7 +4474,7 @@ interface ReportingObserver {
 
 declare var ReportingObserver: {
     prototype: ReportingObserver;
-    new(callback: ReportingObserverCallback, options?: ReportingObserverOptions): ReportingObserver;
+    new(/** @deferred */ callback: ReportingObserverCallback, options?: ReportingObserverOptions): ReportingObserver;
 };
 
 /**
@@ -4658,10 +4658,10 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker/postMessage) */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
-    addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof ServiceWorkerEventMap>(type: K, /** @deferred */ listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, /** @deferred */ listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var ServiceWorker: {
@@ -4700,10 +4700,10 @@ interface ServiceWorkerContainer extends EventTarget {
     register(scriptURL: string | URL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/startMessages) */
     startMessages(): void;
-    addEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, /** @deferred */ listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, /** @deferred */ listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var ServiceWorkerContainer: {
@@ -4746,10 +4746,10 @@ interface ServiceWorkerRegistration extends EventTarget {
     unregister(): Promise<boolean>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/update) */
     update(): Promise<void>;
-    addEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, /** @deferred */ listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, /** @deferred */ listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var ServiceWorkerRegistration: {
@@ -4777,10 +4777,10 @@ interface SharedWorkerGlobalScope extends WorkerGlobalScope {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/close)
      */
     close(): void;
-    addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, /** @deferred */ listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, /** @deferred */ listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var SharedWorkerGlobalScope: {
@@ -7630,10 +7630,10 @@ interface WebSocket extends EventTarget {
     readonly OPEN: 1;
     readonly CLOSING: 2;
     readonly CLOSED: 3;
-    addEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof WebSocketEventMap>(type: K, /** @deferred */ listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WebSocketEventMap>(type: K, /** @deferred */ listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var WebSocket: {
@@ -7768,13 +7768,13 @@ interface WindowOrWorkerGlobalScope {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
     fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
-    queueMicrotask(callback: VoidFunction): void;
+    queueMicrotask(/** @deferred */ callback: VoidFunction): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/reportError) */
     reportError(e: any): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
-    setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+    setInterval(/** @deferred */ handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
-    setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+    setTimeout(/** @deferred */ handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/structuredClone) */
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
@@ -7807,10 +7807,10 @@ interface Worker extends EventTarget, AbstractWorker {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/terminate)
      */
     terminate(): void;
-    addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof WorkerEventMap>(type: K, /** @deferred */ listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WorkerEventMap>(type: K, /** @deferred */ listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var Worker: {
@@ -7869,10 +7869,10 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
      */
     importScripts(...urls: (string | URL)[]): void;
-    addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, /** @deferred */ listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, /** @deferred */ listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var WorkerGlobalScope: {
@@ -8122,10 +8122,10 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     readonly HEADERS_RECEIVED: 2;
     readonly LOADING: 3;
     readonly DONE: 4;
-    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, /** @deferred */ listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, /** @deferred */ listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var XMLHttpRequest: {
@@ -8157,10 +8157,10 @@ interface XMLHttpRequestEventTarget extends EventTarget {
     onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
     onprogress: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
     ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
-    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, /** @deferred */ listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, /** @deferred */ listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var XMLHttpRequestEventTarget: {
@@ -8170,10 +8170,10 @@ declare var XMLHttpRequestEventTarget: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload) */
 interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
-    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, /** @deferred */ listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, /** @deferred */ listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var XMLHttpRequestUpload: {
@@ -8545,19 +8545,19 @@ declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: num
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
 declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/queueMicrotask) */
-declare function queueMicrotask(callback: VoidFunction): void;
+declare function queueMicrotask(/** @deferred */ callback: VoidFunction): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/reportError) */
 declare function reportError(e: any): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
-declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+declare function setInterval(/** @deferred */ handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
-declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
+declare function setTimeout(/** @deferred */ handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
-declare function addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-declare function removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+declare function addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, /** @deferred */ listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+declare function addEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+declare function removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, /** @deferred */ listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+declare function removeEventListener(type: string, /** @deferred */ listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
 type BigInteger = Uint8Array;
