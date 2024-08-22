@@ -199,7 +199,7 @@ interface AbortController {
 }
 
 declare var AbortController: {
-    prototype: AbortController;
+    readonly prototype: AbortController;
     new(): AbortController;
 };
 
@@ -232,7 +232,7 @@ interface AbortSignal extends EventTarget {
 }
 
 declare var AbortSignal: {
-    prototype: AbortSignal;
+    readonly prototype: AbortSignal;
     new(): AbortSignal;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
     abort(reason?: any): AbortSignal;
@@ -253,7 +253,7 @@ interface AudioWorkletGlobalScope extends WorkletGlobalScope {
 }
 
 declare var AudioWorkletGlobalScope: {
-    prototype: AudioWorkletGlobalScope;
+    readonly prototype: AudioWorkletGlobalScope;
     new(): AudioWorkletGlobalScope;
 };
 
@@ -264,7 +264,7 @@ interface AudioWorkletProcessor {
 }
 
 declare var AudioWorkletProcessor: {
-    prototype: AudioWorkletProcessor;
+    readonly prototype: AudioWorkletProcessor;
     new(): AudioWorkletProcessor;
 };
 
@@ -285,7 +285,7 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
 }
 
 declare var ByteLengthQueuingStrategy: {
-    prototype: ByteLengthQueuingStrategy;
+    readonly prototype: ByteLengthQueuingStrategy;
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
@@ -296,7 +296,7 @@ interface CompressionStream extends GenericTransformStream {
 }
 
 declare var CompressionStream: {
-    prototype: CompressionStream;
+    readonly prototype: CompressionStream;
     new(format: CompressionFormat): CompressionStream;
 };
 
@@ -313,7 +313,7 @@ interface CountQueuingStrategy extends QueuingStrategy {
 }
 
 declare var CountQueuingStrategy: {
-    prototype: CountQueuingStrategy;
+    readonly prototype: CountQueuingStrategy;
     new(init: QueuingStrategyInit): CountQueuingStrategy;
 };
 
@@ -334,7 +334,7 @@ interface CustomEvent<T = any> extends Event {
 }
 
 declare var CustomEvent: {
-    prototype: CustomEvent;
+    readonly prototype: CustomEvent;
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
@@ -382,7 +382,7 @@ interface DOMException extends Error {
 }
 
 declare var DOMException: {
-    prototype: DOMException;
+    readonly prototype: DOMException;
     new(message?: string, name?: string): DOMException;
     readonly INDEX_SIZE_ERR: 1;
     readonly DOMSTRING_SIZE_ERR: 2;
@@ -418,7 +418,7 @@ interface DecompressionStream extends GenericTransformStream {
 }
 
 declare var DecompressionStream: {
-    prototype: DecompressionStream;
+    readonly prototype: DecompressionStream;
     new(format: CompressionFormat): DecompressionStream;
 };
 
@@ -436,7 +436,7 @@ interface ErrorEvent extends Event {
 }
 
 declare var ErrorEvent: {
-    prototype: ErrorEvent;
+    readonly prototype: ErrorEvent;
     new(type: string, eventInitDict?: ErrorEventInit): ErrorEvent;
 };
 
@@ -561,7 +561,7 @@ interface Event {
 }
 
 declare var Event: {
-    prototype: Event;
+    readonly prototype: Event;
     new(type: string, eventInitDict?: EventInit): Event;
     readonly NONE: 0;
     readonly CAPTURING_PHASE: 1;
@@ -616,7 +616,7 @@ interface EventTarget {
 }
 
 declare var EventTarget: {
-    prototype: EventTarget;
+    readonly prototype: EventTarget;
     new(): EventTarget;
 };
 
@@ -668,7 +668,7 @@ interface MessageEvent<T = any> extends Event {
 }
 
 declare var MessageEvent: {
-    prototype: MessageEvent;
+    readonly prototype: MessageEvent;
     new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
 };
 
@@ -715,7 +715,7 @@ interface MessagePort extends EventTarget {
 }
 
 declare var MessagePort: {
-    prototype: MessagePort;
+    readonly prototype: MessagePort;
     new(): MessagePort;
 };
 
@@ -728,7 +728,7 @@ interface PromiseRejectionEvent extends Event {
 }
 
 declare var PromiseRejectionEvent: {
-    prototype: PromiseRejectionEvent;
+    readonly prototype: PromiseRejectionEvent;
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
@@ -747,7 +747,7 @@ interface ReadableByteStreamController {
 }
 
 declare var ReadableByteStreamController: {
-    prototype: ReadableByteStreamController;
+    readonly prototype: ReadableByteStreamController;
     new(): ReadableByteStreamController;
 };
 
@@ -774,7 +774,7 @@ interface ReadableStream<R = any> {
 }
 
 declare var ReadableStream: {
-    prototype: ReadableStream;
+    readonly prototype: ReadableStream;
     new(underlyingSource: UnderlyingByteSource, strategy?: { highWaterMark?: number }): ReadableStream<Uint8Array>;
     new<R = any>(underlyingSource: UnderlyingDefaultSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
@@ -789,7 +789,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
 }
 
 declare var ReadableStreamBYOBReader: {
-    prototype: ReadableStreamBYOBReader;
+    readonly prototype: ReadableStreamBYOBReader;
     new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
 };
 
@@ -804,7 +804,7 @@ interface ReadableStreamBYOBRequest {
 }
 
 declare var ReadableStreamBYOBRequest: {
-    prototype: ReadableStreamBYOBRequest;
+    readonly prototype: ReadableStreamBYOBRequest;
     new(): ReadableStreamBYOBRequest;
 };
 
@@ -821,7 +821,7 @@ interface ReadableStreamDefaultController<R = any> {
 }
 
 declare var ReadableStreamDefaultController: {
-    prototype: ReadableStreamDefaultController;
+    readonly prototype: ReadableStreamDefaultController;
     new(): ReadableStreamDefaultController;
 };
 
@@ -834,7 +834,7 @@ interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericRead
 }
 
 declare var ReadableStreamDefaultReader: {
-    prototype: ReadableStreamDefaultReader;
+    readonly prototype: ReadableStreamDefaultReader;
     new<R = any>(stream: ReadableStream<R>): ReadableStreamDefaultReader<R>;
 };
 
@@ -870,7 +870,7 @@ interface TextDecoder extends TextDecoderCommon {
 }
 
 declare var TextDecoder: {
-    prototype: TextDecoder;
+    readonly prototype: TextDecoder;
     new(label?: string, options?: TextDecoderOptions): TextDecoder;
 };
 
@@ -902,7 +902,7 @@ interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
 }
 
 declare var TextDecoderStream: {
-    prototype: TextDecoderStream;
+    readonly prototype: TextDecoderStream;
     new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
 };
 
@@ -927,7 +927,7 @@ interface TextEncoder extends TextEncoderCommon {
 }
 
 declare var TextEncoder: {
-    prototype: TextEncoder;
+    readonly prototype: TextEncoder;
     new(): TextEncoder;
 };
 
@@ -947,7 +947,7 @@ interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
 }
 
 declare var TextEncoderStream: {
-    prototype: TextEncoderStream;
+    readonly prototype: TextEncoderStream;
     new(): TextEncoderStream;
 };
 
@@ -960,7 +960,7 @@ interface TransformStream<I = any, O = any> {
 }
 
 declare var TransformStream: {
-    prototype: TransformStream;
+    readonly prototype: TransformStream;
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
 };
 
@@ -977,7 +977,7 @@ interface TransformStreamDefaultController<O = any> {
 }
 
 declare var TransformStreamDefaultController: {
-    prototype: TransformStreamDefaultController;
+    readonly prototype: TransformStreamDefaultController;
     new(): TransformStreamDefaultController;
 };
 
@@ -1017,7 +1017,7 @@ interface URL {
 }
 
 declare var URL: {
-    prototype: URL;
+    readonly prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
     canParse(url: string | URL, base?: string | URL): boolean;
@@ -1073,7 +1073,7 @@ interface URLSearchParams {
 }
 
 declare var URLSearchParams: {
-    prototype: URLSearchParams;
+    readonly prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
@@ -1086,7 +1086,7 @@ interface WorkletGlobalScope {
 }
 
 declare var WorkletGlobalScope: {
-    prototype: WorkletGlobalScope;
+    readonly prototype: WorkletGlobalScope;
     new(): WorkletGlobalScope;
 };
 
@@ -1107,7 +1107,7 @@ interface WritableStream<W = any> {
 }
 
 declare var WritableStream: {
-    prototype: WritableStream;
+    readonly prototype: WritableStream;
     new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
 };
 
@@ -1124,7 +1124,7 @@ interface WritableStreamDefaultController {
 }
 
 declare var WritableStreamDefaultController: {
-    prototype: WritableStreamDefaultController;
+    readonly prototype: WritableStreamDefaultController;
     new(): WritableStreamDefaultController;
 };
 
@@ -1151,7 +1151,7 @@ interface WritableStreamDefaultWriter<W = any> {
 }
 
 declare var WritableStreamDefaultWriter: {
-    prototype: WritableStreamDefaultWriter;
+    readonly prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
 };
 
@@ -1205,7 +1205,7 @@ declare namespace WebAssembly {
     }
 
     var CompileError: {
-        prototype: CompileError;
+        readonly prototype: CompileError;
         new(message?: string): CompileError;
         (message?: string): CompileError;
     };
@@ -1217,7 +1217,7 @@ declare namespace WebAssembly {
     }
 
     var Global: {
-        prototype: Global;
+        readonly prototype: Global;
         new<T extends ValueType = ValueType>(descriptor: GlobalDescriptor<T>, v?: ValueTypeMap[T]): Global<T>;
     };
 
@@ -1228,7 +1228,7 @@ declare namespace WebAssembly {
     }
 
     var Instance: {
-        prototype: Instance;
+        readonly prototype: Instance;
         new(module: Module, importObject?: Imports): Instance;
     };
 
@@ -1236,7 +1236,7 @@ declare namespace WebAssembly {
     }
 
     var LinkError: {
-        prototype: LinkError;
+        readonly prototype: LinkError;
         new(message?: string): LinkError;
         (message?: string): LinkError;
     };
@@ -1250,7 +1250,7 @@ declare namespace WebAssembly {
     }
 
     var Memory: {
-        prototype: Memory;
+        readonly prototype: Memory;
         new(descriptor: MemoryDescriptor): Memory;
     };
 
@@ -1259,7 +1259,7 @@ declare namespace WebAssembly {
     }
 
     var Module: {
-        prototype: Module;
+        readonly prototype: Module;
         new(bytes: BufferSource): Module;
         /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/JavaScript_interface/Module/customSections_static) */
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
@@ -1273,7 +1273,7 @@ declare namespace WebAssembly {
     }
 
     var RuntimeError: {
-        prototype: RuntimeError;
+        readonly prototype: RuntimeError;
         new(message?: string): RuntimeError;
         (message?: string): RuntimeError;
     };
@@ -1291,7 +1291,7 @@ declare namespace WebAssembly {
     }
 
     var Table: {
-        prototype: Table;
+        readonly prototype: Table;
         new(descriptor: TableDescriptor, value?: any): Table;
     };
 
