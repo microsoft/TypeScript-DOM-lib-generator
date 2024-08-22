@@ -136,6 +136,7 @@ export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
   iterator: "" | "sync" | "async",
+  useIteratorObject: boolean,
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
@@ -497,7 +498,11 @@ export function emitWebIdl(
     );
   }
 
-  function getNameWithTypeParameter(
+  function getName(i: Browser.Interface) {
+    return extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name;
+  }
+
+  function getNameWithTypeParameters(
     typeParameters: Browser.TypeParameter[] | undefined,
     name: string,
   ) {
@@ -729,7 +734,7 @@ export function emitWebIdl(
 
   function emitCallBackFunction(cb: Browser.CallbackFunction) {
     printer.printLine(
-      `interface ${getNameWithTypeParameter(cb.typeParameters, cb.name)} {`,
+      `interface ${getNameWithTypeParameters(cb.typeParameters, cb.name)} {`,
     );
     printer.increaseIndent();
     emitSignatures(cb, "", "", printer.printLine, true);
@@ -936,7 +941,7 @@ export function emitWebIdl(
     const returnType = convertDomTypeToTsReturnType(resolved);
     emitComments(s, printLine);
     printLine(
-      `${prefix || ""}${getNameWithTypeParameter(
+      `${prefix || ""}${getNameWithTypeParameters(
         s.typeParameters,
         name || "",
       )}(${paramsString}): ${returnType};`,
@@ -1200,7 +1205,7 @@ export function emitWebIdl(
 
     if (processedIName !== i.name) {
       printer.printLineToStack(
-        `interface ${getNameWithTypeParameter(
+        `interface ${getNameWithTypeParameters(
           i.typeParameters,
           i.name,
         )} extends ${processedIName} {`,
@@ -1210,7 +1215,7 @@ export function emitWebIdl(
     emitComments(i, printer.printLine);
 
     printer.print(
-      `interface ${getNameWithTypeParameter(i.typeParameters, processedIName)}`,
+      `interface ${getNameWithTypeParameters(i.typeParameters, processedIName)}`,
     );
 
     const finalExtends = [i.extends || "Object"]
@@ -1420,14 +1425,14 @@ export function emitWebIdl(
   function emitDictionary(dict: Browser.Dictionary) {
     if (!dict.extends || dict.extends === "Object") {
       printer.printLine(
-        `interface ${getNameWithTypeParameter(
+        `interface ${getNameWithTypeParameters(
           dict.typeParameters,
           dict.name,
         )} {`,
       );
     } else {
       printer.printLine(
-        `interface ${getNameWithTypeParameter(
+        `interface ${getNameWithTypeParameters(
           dict.typeParameters,
           dict.name,
         )} extends ${dict.extends} {`,
@@ -1462,7 +1467,7 @@ export function emitWebIdl(
   function emitTypeDef(typeDef: Browser.TypeDef) {
     emitComments(typeDef, printer.printLine);
     printer.printLine(
-      `type ${getNameWithTypeParameter(
+      `type ${getNameWithTypeParameters(
         typeDef.typeParameters,
         typeDef.name,
       )} = ${convertDomTypeToTsType(typeDef)};`,
@@ -1535,6 +1540,87 @@ export function emitWebIdl(
     return `[${types.join(", ")}]`;
   }
 
+  function emitSelfIterator(i: Browser.Interface) {
+    if (!useIteratorObject) return;
+    const async = i.iterator?.async;
+    const name = getName(i);
+    const iteratorBaseType = `${async ? "Async" : ""}IteratorObject`;
+    const iteratorType = `${name}${async ? "Async" : ""}Iterator`;
+    const iteratorSymbol = async ? "Symbol.asyncIterator" : "Symbol.iterator";
+    printer.printLine("");
+    printer.printLine(
+      `interface ${iteratorType}<T> extends ${iteratorBaseType}<T, BuiltinIteratorReturn, unknown> {`,
+    );
+    printer.increaseIndent();
+    printer.printLine(`[${iteratorSymbol}](): ${iteratorType}<T>;`);
+    printer.decreaseIndent();
+    printer.printLine("}");
+  }
+
+  function emitIterableMethods(
+    i: Browser.Interface,
+    name: string,
+    subtypes: string[],
+  ) {
+    switch (i.iterator?.kind) {
+      case "maplike":
+      case "setlike":
+        return;
+    }
+    const async = i.iterator?.async;
+    const iteratorType = async
+      ? !useIteratorObject
+        ? "AsyncIterableIterator"
+        : `${name}AsyncIterator`
+      : !useIteratorObject
+        ? "IterableIterator"
+        : subtypes.length !== 1
+          ? `${name}Iterator`
+          : "ArrayIterator";
+    const methods = [];
+    methods.push({
+      name: `[Symbol.${async ? "asyncIterator" : "iterator"}]`,
+      type: stringifySingleOrTupleTypes(subtypes),
+    });
+    if (i.iterator?.kind === "iterable") {
+      if (subtypes.length === 2) {
+        const [keyType, valueType] = subtypes;
+        methods.push(
+          { name: "entries", type: stringifySingleOrTupleTypes(subtypes) },
+          { name: "keys", type: keyType },
+          { name: "values", type: valueType },
+        );
+      } else if (subtypes.length === 1) {
+        subtypes.unshift("number");
+        const [keyType, valueType] = subtypes;
+        if (!async) {
+          methods.push(
+            { name: "entries", type: stringifySingleOrTupleTypes(subtypes) },
+            { name: "keys", type: keyType },
+            { name: "values", type: valueType },
+          );
+        } else {
+          methods.push({ name: "values", type: valueType });
+        }
+      }
+    }
+
+    if (methods.length) {
+      const comments = i.iterator?.comments?.comment;
+
+      const paramsString = i.iterator?.param
+        ? paramsToString(i.iterator.param)
+        : "";
+
+      methods.forEach((m) => {
+        emitComments({ comment: comments?.[m.name] }, printer.printLine);
+        printer.printLine(
+          `${m.name}(${paramsString}): ${iteratorType}<${m.type}>;`,
+        );
+      });
+    }
+  }
+
   function emitIterator(i: Browser.Interface) {
     // https://webidl.spec.whatwg.org/#dfn-indexed-property-getter
     const isIndexedPropertyGetter = (m: Browser.AnonymousMethod) =>
@@ -1571,39 +1657,6 @@ export function emitWebIdl(
           ];
         }
       }
-    }
-
-    function emitIterableDeclarationMethods(
-      i: Browser.Interface,
-      subtypes: string[],
-    ) {
-      let [keyType, valueType] = subtypes;
-      if (!valueType) {
-        valueType = keyType;
-        keyType = "number";
-      }
-
-      const methods = [
-        {
-          name: "entries",
-          definition: `IterableIterator<[${keyType}, ${valueType}]>`,
-        },
-        {
-          name: "keys",
-          definition: `IterableIterator<${keyType}>`,
-        },
-        {
-          name: "values",
-          definition: `IterableIterator<${valueType}>`,
-        },
-      ];
-
-      const comments = i.iterator?.comments?.comment;
-
-      methods.forEach((m) => {
-        emitComments({ comment: comments?.[m.name] }, printer.printLine);
-        printer.printLine(`${m.name}(): ${m.definition};`);
-      });
     }
 
     function getIteratorExtends(
@@ -1690,26 +1743,28 @@ export function emitWebIdl(
     }
 
     const iteratorExtends = getIteratorExtends(i.iterator, subtypes);
-    const name = getNameWithTypeParameter(
+    const name = getName(i);
+    const nameWithTypeParameters = getNameWithTypeParameters(
       i.typeParameters,
-      extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name,
+      name,
     );
+
+    if (i.iterator?.kind === "iterable" && subtypes?.length === 2) {
+      emitSelfIterator(i);
+    }
+
     printer.printLine("");
-    printer.printLine(`interface ${name} ${iteratorExtends}{`);
+    printer.printLine(
+      `interface ${nameWithTypeParameters} ${iteratorExtends}{`,
+    );
     printer.increaseIndent();
 
     methodsWithSequence.forEach((m) => emitMethod("", m, new Set()));
 
-    if (subtypes && !iteratorExtends) {
-      printer.printLine(
-        `[Symbol.iterator](): IterableIterator<${stringifySingleOrTupleTypes(
-          subtypes,
-        )}>;`,
-      );
+    if (subtypes) {
+      emitIterableMethods(i, name, subtypes);
     }
-    if (i.iterator?.kind === "iterable" && subtypes) {
-      emitIterableDeclarationMethods(i, subtypes);
-    }
+
     printer.decreaseIndent();
     printer.printLine("}");
   }
@@ -1724,70 +1779,24 @@ export function emitWebIdl(
       }
     }
 
-    function emitAsyncIterableDeclarationMethods(
-      i: Browser.Interface,
-      subtypes: string[],
-      paramsString: string,
-    ) {
-      let methods;
-      if (subtypes.length === 1) {
-        // https://webidl.spec.whatwg.org/#value-asynchronously-iterable-declaration
-        const [valueType] = subtypes;
-        methods = [
-          {
-            name: "values",
-            definition: `AsyncIterableIterator<${valueType}>`,
-          },
-        ];
-      } else {
-        // https://webidl.spec.whatwg.org/#pair-asynchronously-iterable-declaration
-        const [keyType, valueType] = subtypes;
-        methods = [
-          {
-            name: "entries",
-            definition: `AsyncIterableIterator<[${keyType}, ${valueType}]>`,
-          },
-          {
-            name: "keys",
-            definition: `AsyncIterableIterator<${keyType}>`,
-          },
-          {
-            name: "values",
-            definition: `AsyncIterableIterator<${valueType}>`,
-          },
-        ];
-      }
-
-      const comments = i.iterator!.comments?.comment;
-
-      methods.forEach((m) => {
-        emitComments({ comment: comments?.[m.name] }, printer.printLine);
-        printer.printLine(`${m.name}(${paramsString}): ${m.definition};`);
-      });
-    }
-
     const subtypes = getAsyncIteratorSubtypes();
     if (!subtypes) {
       return;
     }
 
-    const name = getNameWithTypeParameter(
+    const name = getName(i);
+    const nameWithTypeParameters = getNameWithTypeParameters(
       i.typeParameters,
-      extendConflictsBaseTypes[i.name] ? `${i.name}Base` : i.name,
+      name,
     );
-    const paramsString = i.iterator!.param
-      ? paramsToString(i.iterator!.param)
-      : "";
+
+    emitSelfIterator(i);
+
     printer.printLine("");
-    printer.printLine(`interface ${name} {`);
+    printer.printLine(`interface ${nameWithTypeParameters} {`);
     printer.increaseIndent();
 
-    printer.printLine(
-      `[Symbol.asyncIterator](${paramsString}): AsyncIterableIterator<${stringifySingleOrTupleTypes(
-        subtypes,
-      )}>;`,
-    );
-    emitAsyncIterableDeclarationMethods(i, subtypes, paramsString);
+    emitIterableMethods(i, name, subtypes);
 
     printer.decreaseIndent();
     printer.printLine("}");

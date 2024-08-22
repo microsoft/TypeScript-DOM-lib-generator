@@ -729,6 +729,19 @@
                                     "overrideType": "NodeListOf<HTMLElement>"
                                 }
                             }
+                        },
+                        "startViewTransition": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        // StartViewTransitionOptions is not implemented as of 2024-06
+                                        {
+                                            "name": "callbackOptions",
+                                            "type": "UpdateCallback"
+                                        }
+                                    ],
+                                }
+                            }
                         }
                     }
                 },
@@ -2048,6 +2061,34 @@
                             ]
                         }
                     }
+                },
+                "methods": {
+                    "method": {
+                        "canParse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "parse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "Client": {
@@ -2084,6 +2125,23 @@
                             "type": "MessageEvent"
                         }
                     ]
+                }
+            },
+            "RTCIceCandidatePair": {
+                // https://github.com/w3c/webrtc-pc/pull/2961 made this from dictionary to interface,
+                // but nobody did the change as of 2024-06.
+                // For now let's roll this back to the dictionary form.
+                "exposed": "Window",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "local": {
+                            "readonly": false
+                        },
+                        "remote": {
+                            "readonly": false
+                        }
+                    }
                 }
             },
             "RTCPeerConnection": {
@@ -2639,6 +2697,18 @@
                 }
             },
             "ReadableStreamBYOBReader": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "ReadableStream<Uint8Array>"
+                                }
+                            ]
+                        }
+                    }
+                },
                 "methods": {
                     "method": {
                         "read": {
@@ -2929,6 +2999,38 @@
                     }
                 }
             },
+            "CompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "DecompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
             "TextDecoderStream": {
                 "properties": {
                     "property": {
@@ -3112,7 +3214,15 @@
                     }
                 }
             },
+            "MIDIAccess": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "transferable": false // Not transferable on Gecko/Blink as of 2024-07
+            },
+            "MIDIConnectionEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
             "MIDIInput": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
                 "events": {
                     "event": [
                         {
@@ -3123,12 +3233,19 @@
                 }
             },
             "MIDIInputMap": {
-                "iterator": {
-                    // https://github.com/mdn/browser-compat-data/pull/18352
-                    "exposed": "Window"
-                }
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIMessageEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutput": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
             },
             "MIDIPort": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
                 "events": {
                     "event": [
                         {

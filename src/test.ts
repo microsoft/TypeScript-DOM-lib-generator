@@ -14,22 +14,72 @@ function normalizeLineEndings(text: string): string {
   return text.replace(/\r\n?/g, "\n");
 }
 
-function compareToBaselines() {
-  for (const file of fs.readdirSync(baselineFolder)) {
+function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
+  let baselineFiles: string[] = [];
+  try {
+    baselineFiles = fs.readdirSync(baselineFolder);
+  } catch {
+    // do nothing
+  }
+
+  let outputFiles: string[] = [];
+  try {
+    outputFiles = fs.readdirSync(outputFolder);
+  } catch {
+    // do nothing
+  }
+
+  for (const file of new Set([...baselineFiles, ...outputFiles])) {
     if (file.startsWith(".")) {
       continue;
     }
 
-    const baseline = normalizeLineEndings(
-      fs.readFileSync(new URL(file, baselineFolder)).toString(),
-    );
-    const generated = normalizeLineEndings(
-      fs.readFileSync(new URL(file, outputFolder)).toString(),
-    );
-    if (baseline !== generated) {
-      console.error(`Test failed: '${file}' is different from baseline file.`);
-      printInlineDiff(baseline, generated);
-      return false;
+    let baselineStats: fs.Stats | undefined;
+    try {
+      baselineStats = fs.statSync(new URL(file, baselineFolder));
+    } catch {
+      // do nothing
+    }
+
+    let outputStats: fs.Stats | undefined;
+    try {
+      outputStats = fs.statSync(new URL(file, outputFolder));
+    } catch {
+      // do nothing
+    }
+
+    const baseline = baselineStats?.isFile()
+      ? normalizeLineEndings(
+          fs.readFileSync(new URL(file, baselineFolder)).toString(),
+        )
+      : null;
+
+    const generated = outputStats?.isFile()
+      ? normalizeLineEndings(
+          fs.readFileSync(new URL(file, outputFolder)).toString(),
+        )
+      : null;
+
+    if (baseline !== null || generated !== null) {
+      if (baseline !== generated) {
+        console.error(
+          `Test failed: '${file}' is different from baseline file.`,
+        );
+        printInlineDiff(baseline ?? "", generated ?? "");
+        return false;
+      }
+
+      continue;
+    }
+
+    if (baselineStats?.isDirectory() || outputStats?.isDirectory()) {
+      const childBaselineFolder = new URL(`${file}/`, baselineFolder);
+      const childOutputFolder = new URL(`${file}/`, outputFolder);
+      if (!compareToBaselines(childBaselineFolder, childOutputFolder)) {
+        return false;
+      }
+
+      continue;
     }
   }
   return true;
@@ -55,7 +105,7 @@ function compileGeneratedFiles(lib: string, ...files: string[]) {
 
 function test() {
   if (
-    compareToBaselines() &&
+    compareToBaselines(baselineFolder, outputFolder) &&
     compileGeneratedFiles("es5", "dom.generated.d.ts") &&
     compileGeneratedFiles(
       "es6",

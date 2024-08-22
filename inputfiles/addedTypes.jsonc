@@ -338,19 +338,20 @@
                 // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
                 // Please add a feature only when it's supported by multiple engines.
                 "value": [
-                    // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility
                     "geolocation",
-                    // https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API#browser_compatibility
+                    // Gecko and Blink: https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API#browser_compatibility
+                    "midi",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API#browser_compatibility
                     "notifications",
-                    // https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#browser_compatibility
+                    // Gecko and Blink: https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#browser_compatibility
                     "persistent-storage",
-                    // https://developer.mozilla.org/en-US/docs/Web/API/Push_API#browser_compatibility
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Push_API#browser_compatibility
                     "push",
-                    // https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
                     "screen-wake-lock",
-                    // WebXR is also actually Blink-only
-                    // https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API#browser_compatibility
-                    "xr-spatial-tracking"
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API#browser_compatibility
+                    "storage-access"
                 ]
             },
             "AutoFillBase": {
@@ -449,6 +450,40 @@
     },
     "interfaces": {
         "interface": {
+            // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
+            // We cannot define methods as dictionary properties with function types,
+            // as this would cause conflicts with ImportMeta method overrides in places like @types/node.
+            "ImportMeta": {
+                "name": "ImportMeta",
+                "exposed": "Window Worker",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "url": {
+                            "name": "url",
+                            "type": "DOMString"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "resolve": {
+                            "name": "resolve",
+                            "signature": [
+                                {
+                                    "param": [
+                                        {
+                                            "name": "specifier",
+                                            "type": "DOMString"
+                                        }
+                                    ],
+                                    "type": "DOMString"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
             "AudioWorkletProcessorImpl": {
                 "name": "AudioWorkletProcessorImpl",
                 "extends": "AudioWorkletProcessor",
@@ -1253,18 +1288,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "ImportMeta": {
-                "name": "ImportMeta",
-                "members": {
-                    "member": {
-                        "url": {
-                            "name": "url",
-                            "type": "DOMString",
-                            "required": true
-                        }
-                    }
-                }
-            },
             "KeyboardEventInit": {
                 "members": {
                     "member": {

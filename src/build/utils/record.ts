@@ -20,7 +20,6 @@ export function filterMapRecord<T extends object, V>(
   return result;
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function isEmptyRecord(o: object | undefined): boolean {
   return !o || !Object.keys(o).length;
 }
