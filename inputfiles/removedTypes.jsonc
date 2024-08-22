@@ -215,8 +215,7 @@
                         "getCredBlob": null,
                         "hmacGetSecret": null, // No implementation as of 2023-11
                         "largeBlob": null,
-                        "payment": null,
-                        "supplementalPubKeys": null // No implementation as of 2023-11
+                        "payment": null
                     }
                 }
             },
@@ -226,8 +225,7 @@
                         // (same as *Inputs)
                         "appidExclude": null, // No implementation as of 2023-11
                         "hmacGetSecret": null, // No implementation as of 2023-11
-                        "largeBlob": null,
-                        "supplementalPubKeys": null // No implementation as of 2023-11
+                        "largeBlob": null
                     }
                 }
             },
@@ -520,6 +518,27 @@
                     }
                 }
             },
+            "PaymentDetailsUpdate": {
+                "members": {
+                    "member": {
+                        "payerErrors": null // WebKit only as of 2024-08
+                    }
+                }
+            },
+            "PaymentOptions": {
+                "members": {
+                    "member": {
+                        "requestBillingAddress": null // WebKit only as of 2024-08
+                    }
+                }
+            },
+            "PaymentValidationErrors": {
+                "members": {
+                    "member": {
+                        "paymentMethod": null // WebKit only as of 2024-08
+                    }
+                }
+            },
             "PerformanceObserverInit": {
                 "members": {
                     "member": {
@@ -530,8 +549,7 @@
             "PointerEventInit": {
                 "members": {
                     "member": {
-                        "altitudeAngle": null,
-                        "azimuthAngle": null
+                        "persistentDeviceId": null // Blink only as of 2024-08
                     }
                 }
             },
