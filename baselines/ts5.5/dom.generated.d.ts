@@ -18158,9 +18158,9 @@ interface RTCPeerConnection extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/signalingState) */
     readonly signalingState: RTCSignalingState;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/addIceCandidate) */
-    addIceCandidate(candidate?: RTCIceCandidateInit): Promise<void>;
+    addIceCandidate(candidate?: RTCIceCandidateInit | null): Promise<void>;
     /** @deprecated */
-    addIceCandidate(candidate: RTCIceCandidateInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback): Promise<void>;
+    addIceCandidate(candidate: RTCIceCandidateInit | null, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/addTrack) */
     addTrack(track: MediaStreamTrack, ...streams: MediaStream[]): RTCRtpSender;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/addTransceiver) */
