@@ -563,15 +563,22 @@
             "PublicKeyCredentialCreationOptions": {
                 "members": {
                     "member": {
-                        "attestationFormats": null, // No implementation as of 2023-09
-                        "hints": null // No implementation as of 2023-09
+                        "attestationFormats": null, // Blink only as of 2024-08
+                        "hints": null // Blink only as of 2024-08
+                    }
+                }
+            },
+            "PublicKeyCredentialCreationOptionsJSON": {
+                "members": {
+                    "member": {
+                        "attestationFormats": null // Gecko only as of 2024-08
                     }
                 }
             },
             "PublicKeyCredentialRequestOptions": {
                 "members": {
                     "member": {
-                        "hints": null // // No implementation as of 2023-09
+                        "hints": null // Blink only as of 2024-08
                     }
                 }
             },

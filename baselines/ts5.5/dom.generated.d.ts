@@ -1299,7 +1299,6 @@ interface PublicKeyCredentialCreationOptions {
 
 interface PublicKeyCredentialCreationOptionsJSON {
     attestation?: string;
-    attestationFormats?: string[];
     authenticatorSelection?: AuthenticatorSelectionCriteria;
     challenge: Base64URLString;
     excludeCredentials?: PublicKeyCredentialDescriptorJSON[];
