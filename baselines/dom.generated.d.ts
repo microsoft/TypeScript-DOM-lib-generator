@@ -135,6 +135,9 @@ interface AuthenticationExtensionsClientInputs {
     prf?: AuthenticationExtensionsPRFInputs;
 }
 
+interface AuthenticationExtensionsClientInputsJSON {
+}
+
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
     credProps?: CredentialPropertiesOutput;
@@ -1294,10 +1297,30 @@ interface PublicKeyCredentialCreationOptions {
     user: PublicKeyCredentialUserEntity;
 }
 
+interface PublicKeyCredentialCreationOptionsJSON {
+    attestation?: string;
+    attestationFormats?: string[];
+    authenticatorSelection?: AuthenticatorSelectionCriteria;
+    challenge: Base64URLString;
+    excludeCredentials?: PublicKeyCredentialDescriptorJSON[];
+    extensions?: AuthenticationExtensionsClientInputsJSON;
+    hints?: string[];
+    pubKeyCredParams: PublicKeyCredentialParameters[];
+    rp: PublicKeyCredentialRpEntity;
+    timeout?: number;
+    user: PublicKeyCredentialUserEntityJSON;
+}
+
 interface PublicKeyCredentialDescriptor {
     id: BufferSource;
     transports?: AuthenticatorTransport[];
     type: PublicKeyCredentialType;
+}
+
+interface PublicKeyCredentialDescriptorJSON {
+    id: Base64URLString;
+    transports?: string[];
+    type: string;
 }
 
 interface PublicKeyCredentialEntity {
@@ -1318,6 +1341,16 @@ interface PublicKeyCredentialRequestOptions {
     userVerification?: UserVerificationRequirement;
 }
 
+interface PublicKeyCredentialRequestOptionsJSON {
+    allowCredentials?: PublicKeyCredentialDescriptorJSON[];
+    challenge: Base64URLString;
+    extensions?: AuthenticationExtensionsClientInputsJSON;
+    hints?: string[];
+    rpId?: string;
+    timeout?: number;
+    userVerification?: string;
+}
+
 interface PublicKeyCredentialRpEntity extends PublicKeyCredentialEntity {
     id?: string;
 }
@@ -1325,6 +1358,12 @@ interface PublicKeyCredentialRpEntity extends PublicKeyCredentialEntity {
 interface PublicKeyCredentialUserEntity extends PublicKeyCredentialEntity {
     displayName: string;
     id: BufferSource;
+}
+
+interface PublicKeyCredentialUserEntityJSON {
+    displayName: string;
+    id: Base64URLString;
+    name: string;
 }
 
 interface PushSubscriptionJSON {
@@ -3494,6 +3533,7 @@ declare var CSSKeyframeRule: {
 interface CSSKeyframesRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/cssRules) */
     readonly cssRules: CSSRuleList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/length) */
     readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/name) */
     name: string;
@@ -11108,11 +11148,23 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     readonly validationMessage: string;
     /** Returns a  ValidityState object that represents the validity states of an element. */
     readonly validity: ValidityState;
-    /** Returns the value of the data at the cursor's current position. */
+    /**
+     * Returns the value of the data at the cursor's current position.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/value)
+     */
     value: string;
-    /** Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an "InvalidStateError" DOMException if the control isn't date- or time-based. */
+    /**
+     * Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an "InvalidStateError" DOMException if the control isn't date- or time-based.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/valueAsDate)
+     */
     valueAsDate: Date | null;
-    /** Returns the input field value as a number. */
+    /**
+     * Returns the input field value as a number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/valueAsNumber)
+     */
     valueAsNumber: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitEntries) */
     readonly webkitEntries: ReadonlyArray<FileSystemEntry>;
@@ -14136,7 +14188,11 @@ declare var ImageBitmap: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext) */
 interface ImageBitmapRenderingContext {
-    /** Returns the canvas element that the context is bound to. */
+    /**
+     * Returns the canvas element that the context is bound to.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext/canvas)
+     */
     readonly canvas: HTMLCanvasElement | OffscreenCanvas;
     /**
      * Transfers the underlying bitmap data from imageBitmap to context, and the bitmap becomes the contents of the canvas element to which context is bound.
@@ -17723,6 +17779,8 @@ interface PublicKeyCredential extends Credential {
     readonly response: AuthenticatorResponse;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/getClientExtensionResults) */
     getClientExtensionResults(): AuthenticationExtensionsClientOutputs;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/toJSON) */
+    toJSON(): PublicKeyCredentialJSON;
 }
 
 declare var PublicKeyCredential: {
@@ -17732,6 +17790,10 @@ declare var PublicKeyCredential: {
     isConditionalMediationAvailable(): Promise<boolean>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable_static) */
     isUserVerifyingPlatformAuthenticatorAvailable(): Promise<boolean>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/parseCreationOptionsFromJSON_static) */
+    parseCreationOptionsFromJSON(options: PublicKeyCredentialCreationOptionsJSON): PublicKeyCredentialCreationOptions;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/parseRequestOptionsFromJSON_static) */
+    parseRequestOptionsFromJSON(options: PublicKeyCredentialRequestOptionsJSON): PublicKeyCredentialRequestOptions;
 };
 
 /**
@@ -28139,6 +28201,7 @@ type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
 type AutoFill = AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`;
 type AutoFillField = AutoFillNormalField | `${OptionalPrefixToken<AutoFillContactKind>}${AutoFillContactField}`;
 type AutoFillSection = `section-${string}`;
+type Base64URLString = string;
 type BigInteger = Uint8Array;
 type BlobPart = BufferSource | Blob | string;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
@@ -28191,6 +28254,7 @@ type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
+type PublicKeyCredentialJSON = any;
 type RTCRtpTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
