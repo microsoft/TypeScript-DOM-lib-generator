@@ -7610,7 +7610,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/requestStorageAccess) */
     requestStorageAccess(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/startViewTransition) */
-    startViewTransition(callbackOptions?: UpdateCallback): ViewTransition;
+    startViewTransition(callbackOptions?: ViewTransitionUpdateCallback): ViewTransition;
     /**
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
@@ -27116,16 +27116,16 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
-interface UpdateCallback {
-    (): any;
-}
-
 interface VideoFrameOutputCallback {
     (output: VideoFrame): void;
 }
 
 interface VideoFrameRequestCallback {
     (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata): void;
+}
+
+interface ViewTransitionUpdateCallback {
+    (): any;
 }
 
 interface VoidFunction {

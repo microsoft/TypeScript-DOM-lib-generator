@@ -737,7 +737,7 @@
                                         // StartViewTransitionOptions is not implemented as of 2024-06
                                         {
                                             "name": "callbackOptions",
-                                            "type": "UpdateCallback"
+                                            "type": "ViewTransitionUpdateCallback"
                                         }
                                     ],
                                 }

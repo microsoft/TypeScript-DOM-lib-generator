@@ -677,7 +677,8 @@
             "RTCRtpEncodingParameters": {
                 "members": {
                     "member": {
-                        "scalabilityMode": null // Blink only as of 2022-09
+                        "codec": null, // Blink only as of 2024-08
+                        "scalabilityMode": null // Blink only as of 2024-08
                     }
                 }
             },
