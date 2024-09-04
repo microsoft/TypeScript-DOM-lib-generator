@@ -4698,12 +4698,19 @@ interface CSSStyleDeclaration {
     stopOpacity: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke) */
     stroke: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-dasharray) */
     strokeDasharray: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-dashoffset) */
     strokeDashoffset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-linecap) */
     strokeLinecap: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-linejoin) */
     strokeLinejoin: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-miterlimit) */
     strokeMiterlimit: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-opacity) */
     strokeOpacity: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-width) */
     strokeWidth: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/tab-size) */
     tabSize: string;
@@ -9917,7 +9924,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
     formTarget: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
-    /** Sets or retrieves the name of the object. */
+    /**
+     * Sets or retrieves the name of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/name)
+     */
     name: string;
     /**
      * Gets the classification and default behavior of the button.
@@ -9929,12 +9940,21 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
     readonly validationMessage: string;
     /** Returns a  ValidityState object that represents the validity states of an element. */
     readonly validity: ValidityState;
-    /** Sets or retrieves the default or selected value of the control. */
+    /**
+     * Sets or retrieves the default or selected value of the control.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/value)
+     */
     value: string;
     /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
     readonly willValidate: boolean;
-    /** Returns whether a form will validate when it is submitted, without having to submit it. */
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/checkValidity)
+     */
     checkValidity(): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/reportValidity) */
     reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
@@ -10105,6 +10125,7 @@ declare var HTMLDataListElement: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement) */
 interface HTMLDetailsElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/open) */
     name: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/open) */
     open: boolean;
@@ -10328,6 +10349,7 @@ interface HTMLFieldSetElement extends HTMLElement {
     readonly elements: HTMLCollection;
     /** Retrieves a reference to the form that the object is embedded in. */
     readonly form: HTMLFormElement | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/name) */
     name: string;
     /** Returns the string "fieldset". */
     readonly type: string;
@@ -10337,8 +10359,13 @@ interface HTMLFieldSetElement extends HTMLElement {
     readonly validity: ValidityState;
     /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
     readonly willValidate: boolean;
-    /** Returns whether a form will validate when it is submitted, without having to submit it. */
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/checkValidity)
+     */
     checkValidity(): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/reportValidity) */
     reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
@@ -10481,7 +10508,11 @@ interface HTMLFormElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/target)
      */
     target: string;
-    /** Returns whether a form will validate when it is submitted, without having to submit it. */
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/checkValidity)
+     */
     checkValidity(): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/reportValidity) */
     reportValidity(): boolean;
@@ -11060,7 +11091,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     checked: boolean;
     /** Sets or retrieves the state of the check box or radio button. */
     defaultChecked: boolean;
-    /** Sets or retrieves the initial contents of the object. */
+    /**
+     * Sets or retrieves the initial contents of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/defaultValue)
+     */
     defaultValue: string;
     dirName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/disabled) */
@@ -11089,14 +11124,31 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     indeterminate: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement> | null;
-    /** Specifies the ID of a pre-defined datalist of options for an input element. */
+    /**
+     * Specifies the ID of a pre-defined datalist of options for an input element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/list)
+     */
     readonly list: HTMLDataListElement | null;
-    /** Defines the maximum acceptable value for an input element with type="number".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field. */
+    /**
+     * Defines the maximum acceptable value for an input element with type="number".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/max)
+     */
     max: string;
-    /** Sets or retrieves the maximum number of characters that the user can enter in a text control. */
+    /**
+     * Sets or retrieves the maximum number of characters that the user can enter in a text control.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/maxLength)
+     */
     maxLength: number;
-    /** Defines the minimum acceptable value for an input element with type="number". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field. */
+    /**
+     * Defines the minimum acceptable value for an input element with type="number". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/min)
+     */
     min: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/minLength) */
     minLength: number;
     /**
      * Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.
@@ -11104,7 +11156,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/multiple)
      */
     multiple: boolean;
-    /** Sets or retrieves the name of the object. */
+    /**
+     * Sets or retrieves the name of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/name)
+     */
     name: string;
     /** Gets or sets a string containing a regular expression that the user's input must match. */
     pattern: string;
@@ -11130,7 +11186,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     size: number;
     /** The address or URL of the a media resource that is to be considered. */
     src: string;
-    /** Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field. */
+    /**
+     * Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/step)
+     */
     step: string;
     /**
      * Returns the content type of the object.
@@ -11750,13 +11810,19 @@ declare var HTMLMetaElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement)
  */
 interface HTMLMeterElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/high) */
     high: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/low) */
     low: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/max) */
     max: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/min) */
     min: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/optimum) */
     optimum: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/value) */
     value: number;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMeterElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -11936,6 +12002,7 @@ interface HTMLObjectElement extends HTMLElement {
      */
     checkValidity(): boolean;
     getSVGDocument(): Document | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/reportValidity) */
     reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
@@ -11994,7 +12061,11 @@ interface HTMLOptionElement extends HTMLElement {
     selected: boolean;
     /** Sets or retrieves the text string specified by the option tag. */
     text: string;
-    /** Sets or retrieves the value which is returned to the server when the form control is submitted. */
+    /**
+     * Sets or retrieves the value which is returned to the server when the form control is submitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/value)
+     */
     value: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -12072,6 +12143,7 @@ interface HTMLOutputElement extends HTMLElement {
     readonly htmlFor: DOMTokenList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/name) */
     name: string;
     /** Returns the string "output". */
     readonly type: string;
@@ -12081,10 +12153,14 @@ interface HTMLOutputElement extends HTMLElement {
      * Returns the element's current value.
      *
      * Can be set, to change the value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/value)
      */
     value: string;
     readonly willValidate: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/checkValidity) */
     checkValidity(): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/reportValidity) */
     reportValidity(): boolean;
     setCustomValidity(error: string): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOutputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -12345,7 +12421,11 @@ interface HTMLSelectElement extends HTMLElement {
     length: number;
     /** Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list. */
     multiple: boolean;
-    /** Sets or retrieves the name of the object. */
+    /**
+     * Sets or retrieves the name of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/name)
+     */
     name: string;
     /**
      * Returns an HTMLOptionsCollection of the list of options.
@@ -12420,6 +12500,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     remove(): void;
     remove(index: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/reportValidity) */
     reportValidity(): boolean;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
@@ -13102,7 +13183,11 @@ interface HTMLTextAreaElement extends HTMLElement {
     /** Sets or retrieves the maximum number of characters that the user can enter in a text control. */
     maxLength: number;
     minLength: number;
-    /** Sets or retrieves the name of the object. */
+    /**
+     * Sets or retrieves the name of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/name)
+     */
     name: string;
     /** Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field. */
     placeholder: string;
@@ -13128,14 +13213,23 @@ interface HTMLTextAreaElement extends HTMLElement {
     readonly validationMessage: string;
     /** Returns a  ValidityState object that represents the validity states of an element. */
     readonly validity: ValidityState;
-    /** Retrieves or sets the text in the entry field of the textArea element. */
+    /**
+     * Retrieves or sets the text in the entry field of the textArea element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/value)
+     */
     value: string;
     /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
     readonly willValidate: boolean;
     /** Sets or retrieves how to handle wordwrapping in the object. */
     wrap: string;
-    /** Returns whether a form will validate when it is submitted, without having to submit it. */
+    /**
+     * Returns whether a form will validate when it is submitted, without having to submit it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/checkValidity)
+     */
     checkValidity(): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/reportValidity) */
     reportValidity(): boolean;
     /** Highlights the input area of a form element. */
     select(): void;
@@ -16977,43 +17071,19 @@ interface PaymentResponse extends EventTarget {
     readonly details: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/methodName) */
     readonly methodName: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerdetailchange_event)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerdetailchange_event) */
     onpayerdetailchange: ((this: PaymentResponse, ev: Event) => any) | null;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerEmail)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerEmail) */
     readonly payerEmail: string | null;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerName)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerName) */
     readonly payerName: string | null;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerPhone)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerPhone) */
     readonly payerPhone: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/requestId) */
     readonly requestId: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingAddress)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingAddress) */
     readonly shippingAddress: PaymentAddress | null;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingOption)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingOption) */
     readonly shippingOption: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/complete) */
     complete(result?: PaymentComplete): Promise<void>;
