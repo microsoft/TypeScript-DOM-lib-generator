@@ -8,6 +8,19 @@ interface AddEventListenerOptions extends EventListenerOptions {
     signal?: AbortSignal;
 }
 
+interface AddressErrors {
+    addressLine?: string;
+    city?: string;
+    country?: string;
+    dependentLocality?: string;
+    organization?: string;
+    phone?: string;
+    postalCode?: string;
+    recipient?: string;
+    region?: string;
+    sortingCode?: string;
+}
+
 interface AesCbcParams extends Algorithm {
     iv: BufferSource;
 }
@@ -120,6 +133,9 @@ interface AuthenticationExtensionsClientInputs {
     hmacCreateSecret?: boolean;
     minPinLength?: boolean;
     prf?: AuthenticationExtensionsPRFInputs;
+}
+
+interface AuthenticationExtensionsClientInputsJSON {
 }
 
 interface AuthenticationExtensionsClientOutputs {
@@ -1091,6 +1107,12 @@ interface PannerOptions extends AudioNodeOptions {
     rolloffFactor?: number;
 }
 
+interface PayerErrors {
+    email?: string;
+    name?: string;
+    phone?: string;
+}
+
 interface PaymentCurrencyAmount {
     currency: string;
     value: string;
@@ -1099,6 +1121,7 @@ interface PaymentCurrencyAmount {
 interface PaymentDetailsBase {
     displayItems?: PaymentItem[];
     modifiers?: PaymentDetailsModifier[];
+    shippingOptions?: PaymentShippingOption[];
 }
 
 interface PaymentDetailsInit extends PaymentDetailsBase {
@@ -1114,7 +1137,9 @@ interface PaymentDetailsModifier {
 }
 
 interface PaymentDetailsUpdate extends PaymentDetailsBase {
+    error?: string;
     paymentMethodErrors?: any;
+    shippingAddressErrors?: AddressErrors;
     total?: PaymentItem;
 }
 
@@ -1134,12 +1159,28 @@ interface PaymentMethodData {
     supportedMethods: string;
 }
 
+interface PaymentOptions {
+    requestPayerEmail?: boolean;
+    requestPayerName?: boolean;
+    requestPayerPhone?: boolean;
+    requestShipping?: boolean;
+    shippingType?: PaymentShippingType;
+}
+
 interface PaymentRequestUpdateEventInit extends EventInit {
+}
+
+interface PaymentShippingOption {
+    amount: PaymentCurrencyAmount;
+    id: string;
+    label: string;
+    selected?: boolean;
 }
 
 interface PaymentValidationErrors {
     error?: string;
-    paymentMethod?: any;
+    payer?: PayerErrors;
+    shippingAddress?: AddressErrors;
 }
 
 interface Pbkdf2Params extends Algorithm {
@@ -1189,6 +1230,8 @@ interface PlaneLayout {
 }
 
 interface PointerEventInit extends MouseEventInit {
+    altitudeAngle?: number;
+    azimuthAngle?: number;
     coalescedEvents?: PointerEvent[];
     height?: number;
     isPrimary?: boolean;
@@ -1254,10 +1297,29 @@ interface PublicKeyCredentialCreationOptions {
     user: PublicKeyCredentialUserEntity;
 }
 
+interface PublicKeyCredentialCreationOptionsJSON {
+    attestation?: string;
+    authenticatorSelection?: AuthenticatorSelectionCriteria;
+    challenge: Base64URLString;
+    excludeCredentials?: PublicKeyCredentialDescriptorJSON[];
+    extensions?: AuthenticationExtensionsClientInputsJSON;
+    hints?: string[];
+    pubKeyCredParams: PublicKeyCredentialParameters[];
+    rp: PublicKeyCredentialRpEntity;
+    timeout?: number;
+    user: PublicKeyCredentialUserEntityJSON;
+}
+
 interface PublicKeyCredentialDescriptor {
     id: BufferSource;
     transports?: AuthenticatorTransport[];
     type: PublicKeyCredentialType;
+}
+
+interface PublicKeyCredentialDescriptorJSON {
+    id: Base64URLString;
+    transports?: string[];
+    type: string;
 }
 
 interface PublicKeyCredentialEntity {
@@ -1278,6 +1340,16 @@ interface PublicKeyCredentialRequestOptions {
     userVerification?: UserVerificationRequirement;
 }
 
+interface PublicKeyCredentialRequestOptionsJSON {
+    allowCredentials?: PublicKeyCredentialDescriptorJSON[];
+    challenge: Base64URLString;
+    extensions?: AuthenticationExtensionsClientInputsJSON;
+    hints?: string[];
+    rpId?: string;
+    timeout?: number;
+    userVerification?: string;
+}
+
 interface PublicKeyCredentialRpEntity extends PublicKeyCredentialEntity {
     id?: string;
 }
@@ -1285,6 +1357,12 @@ interface PublicKeyCredentialRpEntity extends PublicKeyCredentialEntity {
 interface PublicKeyCredentialUserEntity extends PublicKeyCredentialEntity {
     displayName: string;
     id: BufferSource;
+}
+
+interface PublicKeyCredentialUserEntityJSON {
+    displayName: string;
+    id: Base64URLString;
+    name: string;
 }
 
 interface PushSubscriptionJSON {
@@ -3418,7 +3496,7 @@ interface CSSImportRule extends CSSRule {
     readonly layerName: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/media) */
     readonly media: MediaList;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/stylesheet) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/styleSheet) */
     readonly styleSheet: CSSStyleSheet | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/supportsText) */
     readonly supportsText: string | null;
@@ -3454,6 +3532,7 @@ declare var CSSKeyframeRule: {
 interface CSSKeyframesRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/cssRules) */
     readonly cssRules: CSSRuleList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/length) */
     readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/name) */
     name: string;
@@ -3711,7 +3790,7 @@ declare var CSSPerspective: {
 interface CSSPropertyRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule/inherits) */
     readonly inherits: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule/initialvalue) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule/initialValue) */
     readonly initialValue: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule/name) */
     readonly name: string;
@@ -4170,11 +4249,13 @@ interface CSSStyleDeclaration {
     cx: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cy) */
     cy: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/d) */
     d: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/direction) */
     direction: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/display) */
     display: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dominant-baseline) */
     dominantBaseline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
     emptyCells: string;
@@ -4369,9 +4450,13 @@ interface CSSStyleDeclaration {
     marginRight: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-top) */
     marginTop: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker) */
     marker: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker-end) */
     markerEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker-mid) */
     markerMid: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker-start) */
     markerStart: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask) */
     mask: string;
@@ -4611,6 +4696,7 @@ interface CSSStyleDeclaration {
     stopColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stop-opacity) */
     stopOpacity: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke) */
     stroke: string;
     strokeDasharray: string;
     strokeDashoffset: string;
@@ -4703,6 +4789,7 @@ interface CSSStyleDeclaration {
     unicodeBidi: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/user-select) */
     userSelect: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vector-effect) */
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
@@ -7523,7 +7610,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/requestStorageAccess) */
     requestStorageAccess(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/startViewTransition) */
-    startViewTransition(callbackOptions?: UpdateCallback): ViewTransition;
+    startViewTransition(callbackOptions?: ViewTransitionUpdateCallback): ViewTransition;
     /**
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
@@ -8720,7 +8807,7 @@ interface FontFace {
 
 declare var FontFace: {
     prototype: FontFace;
-    new(family: string, source: string | BinaryData, descriptors?: FontFaceDescriptors): FontFace;
+    new(family: string, source: string | BufferSource, descriptors?: FontFaceDescriptors): FontFace;
 };
 
 interface FontFaceSetEventMap {
@@ -11060,11 +11147,23 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     readonly validationMessage: string;
     /** Returns a  ValidityState object that represents the validity states of an element. */
     readonly validity: ValidityState;
-    /** Returns the value of the data at the cursor's current position. */
+    /**
+     * Returns the value of the data at the cursor's current position.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/value)
+     */
     value: string;
-    /** Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an "InvalidStateError" DOMException if the control isn't date- or time-based. */
+    /**
+     * Returns a Date object representing the form control's value, if applicable; otherwise, returns null. Can be set, to change the value. Throws an "InvalidStateError" DOMException if the control isn't date- or time-based.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/valueAsDate)
+     */
     valueAsDate: Date | null;
-    /** Returns the input field value as a number. */
+    /**
+     * Returns the input field value as a number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/valueAsNumber)
+     */
     valueAsNumber: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitEntries) */
     readonly webkitEntries: ReadonlyArray<FileSystemEntry>;
@@ -13980,7 +14079,7 @@ interface IDBTransaction extends EventTarget {
     /**
      * Returns a list of the names of object stores in the transaction's scope. For an upgrade transaction this is all object stores in the database.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/ObjectStoreNames)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
@@ -14088,7 +14187,11 @@ declare var ImageBitmap: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext) */
 interface ImageBitmapRenderingContext {
-    /** Returns the canvas element that the context is bound to. */
+    /**
+     * Returns the canvas element that the context is bound to.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext/canvas)
+     */
     readonly canvas: HTMLCanvasElement | OffscreenCanvas;
     /**
      * Transfers the underlying bitmap data from imageBitmap to context, and the bitmap becomes the contents of the canvas element to which context is bound.
@@ -16731,6 +16834,37 @@ declare var Path2D: {
     new(path?: Path2D | string): Path2D;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress) */
+interface PaymentAddress {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/addressLine) */
+    readonly addressLine: ReadonlyArray<string>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/city) */
+    readonly city: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/country) */
+    readonly country: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/dependentLocality) */
+    readonly dependentLocality: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/organization) */
+    readonly organization: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/phone) */
+    readonly phone: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/postalCode) */
+    readonly postalCode: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/recipient) */
+    readonly recipient: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/region) */
+    readonly region: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/sortingCode) */
+    readonly sortingCode: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/toJSON) */
+    toJSON(): any;
+}
+
+declare var PaymentAddress: {
+    prototype: PaymentAddress;
+    new(): PaymentAddress;
+};
+
 /**
  * Available only in secure contexts.
  *
@@ -16750,6 +16884,8 @@ declare var PaymentMethodChangeEvent: {
 
 interface PaymentRequestEventMap {
     "paymentmethodchange": PaymentMethodChangeEvent;
+    "shippingaddresschange": Event;
+    "shippingoptionchange": Event;
 }
 
 /**
@@ -16763,6 +16899,36 @@ interface PaymentRequest extends EventTarget {
     readonly id: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/paymentmethodchange_event) */
     onpaymentmethodchange: ((this: PaymentRequest, ev: PaymentMethodChangeEvent) => any) | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingaddresschange_event)
+     */
+    onshippingaddresschange: ((this: PaymentRequest, ev: Event) => any) | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingoptionchange_event)
+     */
+    onshippingoptionchange: ((this: PaymentRequest, ev: Event) => any) | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingAddress)
+     */
+    readonly shippingAddress: PaymentAddress | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingOption)
+     */
+    readonly shippingOption: string | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingType)
+     */
+    readonly shippingType: PaymentShippingType | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/abort) */
     abort(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/canMakePayment) */
@@ -16777,7 +16943,7 @@ interface PaymentRequest extends EventTarget {
 
 declare var PaymentRequest: {
     prototype: PaymentRequest;
-    new(methodData: PaymentMethodData[], details: PaymentDetailsInit): PaymentRequest;
+    new(methodData: PaymentMethodData[], details: PaymentDetailsInit, options?: PaymentOptions): PaymentRequest;
 };
 
 /**
@@ -16796,6 +16962,10 @@ declare var PaymentRequestUpdateEvent: {
     new(type: string, eventInitDict?: PaymentRequestUpdateEventInit): PaymentRequestUpdateEvent;
 };
 
+interface PaymentResponseEventMap {
+    "payerdetailchange": Event;
+}
+
 /**
  * This Payment Request API interface is returned after a user selects a payment method and approves a payment request.
  * Available only in secure contexts.
@@ -16807,14 +16977,54 @@ interface PaymentResponse extends EventTarget {
     readonly details: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/methodName) */
     readonly methodName: string;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerdetailchange_event)
+     */
+    onpayerdetailchange: ((this: PaymentResponse, ev: Event) => any) | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerEmail)
+     */
+    readonly payerEmail: string | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerName)
+     */
+    readonly payerName: string | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerPhone)
+     */
+    readonly payerPhone: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/requestId) */
     readonly requestId: string;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingAddress)
+     */
+    readonly shippingAddress: PaymentAddress | null;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingOption)
+     */
+    readonly shippingOption: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/complete) */
     complete(result?: PaymentComplete): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/retry) */
     retry(errorFields?: PaymentValidationErrors): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/toJSON) */
     toJSON(): any;
+    addEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var PaymentResponse: {
@@ -17568,15 +17778,21 @@ interface PublicKeyCredential extends Credential {
     readonly response: AuthenticatorResponse;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/getClientExtensionResults) */
     getClientExtensionResults(): AuthenticationExtensionsClientOutputs;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/toJSON) */
+    toJSON(): PublicKeyCredentialJSON;
 }
 
 declare var PublicKeyCredential: {
     prototype: PublicKeyCredential;
     new(): PublicKeyCredential;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable_static) */
     isConditionalMediationAvailable(): Promise<boolean>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable_static) */
     isUserVerifyingPlatformAuthenticatorAvailable(): Promise<boolean>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/parseCreationOptionsFromJSON_static) */
+    parseCreationOptionsFromJSON(options: PublicKeyCredentialCreationOptionsJSON): PublicKeyCredentialCreationOptions;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/parseRequestOptionsFromJSON_static) */
+    parseRequestOptionsFromJSON(options: PublicKeyCredentialRequestOptionsJSON): PublicKeyCredentialRequestOptions;
 };
 
 /**
@@ -18003,9 +18219,9 @@ interface RTCPeerConnection extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/signalingState) */
     readonly signalingState: RTCSignalingState;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/addIceCandidate) */
-    addIceCandidate(candidate?: RTCIceCandidateInit): Promise<void>;
+    addIceCandidate(candidate?: RTCIceCandidateInit | null): Promise<void>;
     /** @deprecated */
-    addIceCandidate(candidate: RTCIceCandidateInit, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback): Promise<void>;
+    addIceCandidate(candidate: RTCIceCandidateInit | null, successCallback: VoidFunction, failureCallback: RTCPeerConnectionErrorCallback): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/addTrack) */
     addTrack(track: MediaStreamTrack, ...streams: MediaStream[]): RTCRtpSender;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/addTransceiver) */
@@ -22198,7 +22414,7 @@ interface TextTrackList extends EventTarget {
     onaddtrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList/change_event) */
     onchange: ((this: TextTrackList, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList/removeTrack_event) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList/removetrack_event) */
     onremovetrack: ((this: TextTrackList, ev: TrackEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList/getTrackById) */
     getTrackById(id: string): TextTrack | null;
@@ -26423,7 +26639,7 @@ interface Console {
     clear(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static) */
     count(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countreset_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static) */
     countReset(label?: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static) */
     debug(...data: any[]): void;
@@ -26435,9 +26651,9 @@ interface Console {
     error(...data: any[]): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static) */
     group(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupcollapsed_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static) */
     groupCollapsed(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupend_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd_static) */
     groupEnd(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static) */
     info(...data: any[]): void;
@@ -26447,9 +26663,9 @@ interface Console {
     table(tabularData?: any, properties?: string[]): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static) */
     time(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeend_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static) */
     timeEnd(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timelog_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static) */
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static) */
@@ -26900,16 +27116,16 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
-interface UpdateCallback {
-    (): any;
-}
-
 interface VideoFrameOutputCallback {
     (output: VideoFrame): void;
 }
 
 interface VideoFrameRequestCallback {
     (now: DOMHighResTimeStamp, metadata: VideoFrameCallbackMetadata): void;
+}
+
+interface ViewTransitionUpdateCallback {
+    (): any;
 }
 
 interface VoidFunction {
@@ -27984,8 +28200,8 @@ type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
 type AutoFill = AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`;
 type AutoFillField = AutoFillNormalField | `${OptionalPrefixToken<AutoFillContactKind>}${AutoFillContactField}`;
 type AutoFillSection = `section-${string}`;
+type Base64URLString = string;
 type BigInteger = Uint8Array;
-type BinaryData = ArrayBuffer | ArrayBufferView;
 type BlobPart = BufferSource | Blob | string;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;
@@ -28037,6 +28253,7 @@ type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
+type PublicKeyCredentialJSON = any;
 type RTCRtpTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
@@ -28154,6 +28371,7 @@ type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";
 type PanningModelType = "HRTF" | "equalpower";
 type PaymentComplete = "fail" | "success" | "unknown";
+type PaymentShippingType = "delivery" | "pickup" | "shipping";
 type PermissionName = "geolocation" | "midi" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "storage-access";
 type PermissionState = "denied" | "granted" | "prompt";
 type PlaybackDirection = "alternate" | "alternate-reverse" | "normal" | "reverse";

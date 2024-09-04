@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import child_process from "child_process";
-import { printInlineDiff } from "print-diff";
+import { printUnifiedDiff } from "print-diff";
 import { fileURLToPath } from "url";
 
 const baselineFolder = new URL("../baselines/", import.meta.url);
@@ -65,7 +65,7 @@ function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
         console.error(
           `Test failed: '${file}' is different from baseline file.`,
         );
-        printInlineDiff(baseline ?? "", generated ?? "");
+        printUnifiedDiff(baseline ?? "", generated ?? "");
         return false;
       }
 
