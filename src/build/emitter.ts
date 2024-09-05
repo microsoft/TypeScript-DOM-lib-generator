@@ -338,6 +338,11 @@ export function emitWebIdl(
         return getGenericEventType(event.type);
       }
     }
+
+    const event = webidl.events?.get(i.name)?.get(eName);
+    if (event && allInterfacesMap[event]) {
+      return getGenericEventType(event);
+    }
     return "Event";
   }
 

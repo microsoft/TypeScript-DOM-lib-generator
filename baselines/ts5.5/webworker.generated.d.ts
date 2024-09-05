@@ -2253,7 +2253,7 @@ declare var DecompressionStream: {
 interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
-    "rtctransform": Event;
+    "rtctransform": RTCTransformEvent;
 }
 
 /**
@@ -2273,7 +2273,7 @@ interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFramePr
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
     onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
-    onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+    onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
     /**
      * Aborts dedicatedWorkerGlobal.
      *
@@ -2978,23 +2978,23 @@ interface FontFace {
 
 declare var FontFace: {
     prototype: FontFace;
-    new(family: string, source: string | BinaryData, descriptors?: FontFaceDescriptors): FontFace;
+    new(family: string, source: string | BufferSource, descriptors?: FontFaceDescriptors): FontFace;
 };
 
 interface FontFaceSetEventMap {
-    "loading": Event;
-    "loadingdone": Event;
-    "loadingerror": Event;
+    "loading": FontFaceSetLoadEvent;
+    "loadingdone": FontFaceSetLoadEvent;
+    "loadingerror": FontFaceSetLoadEvent;
 }
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet) */
 interface FontFaceSet extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loading_event) */
-    onloading: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloading: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loadingdone_event) */
-    onloadingdone: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloadingdone: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loadingerror_event) */
-    onloadingerror: ((this: FontFaceSet, ev: Event) => any) | null;
+    onloadingerror: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/ready) */
     readonly ready: Promise<FontFaceSet>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/status) */
@@ -3723,7 +3723,7 @@ interface IDBTransaction extends EventTarget {
     /**
      * Returns a list of the names of object stores in the transaction's scope. For an upgrade transaction this is all object stores in the database.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/ObjectStoreNames)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
@@ -8917,7 +8917,7 @@ interface Console {
     clear(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static) */
     count(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countreset_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static) */
     countReset(label?: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static) */
     debug(...data: any[]): void;
@@ -8929,9 +8929,9 @@ interface Console {
     error(...data: any[]): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static) */
     group(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupcollapsed_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static) */
     groupCollapsed(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupend_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd_static) */
     groupEnd(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static) */
     info(...data: any[]): void;
@@ -8941,9 +8941,9 @@ interface Console {
     table(tabularData?: any, properties?: string[]): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static) */
     time(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeend_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static) */
     timeEnd(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timelog_static) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static) */
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static) */
@@ -9204,7 +9204,7 @@ declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
 declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
-declare var onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+declare var onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
 /**
  * Aborts dedicatedWorkerGlobal.
  *
@@ -9320,7 +9320,6 @@ declare function removeEventListener(type: string, listener: EventListenerOrEven
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
 type BigInteger = Uint8Array;
-type BinaryData = ArrayBuffer | ArrayBufferView;
 type BlobPart = BufferSource | Blob | string;
 type BodyInit = ReadableStream | XMLHttpRequestBodyInit;
 type BufferSource = ArrayBufferView | ArrayBuffer;

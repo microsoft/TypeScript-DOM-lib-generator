@@ -737,7 +737,7 @@
                                         // StartViewTransitionOptions is not implemented as of 2024-06
                                         {
                                             "name": "callbackOptions",
-                                            "type": "UpdateCallback"
+                                            "type": "ViewTransitionUpdateCallback"
                                         }
                                     ],
                                 }
@@ -2169,7 +2169,21 @@
                     "method": {
                         "addIceCandidate": {
                             "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ]
+                                },
                                 "1": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ],
                                     "deprecated": true
                                 }
                             }
@@ -3344,6 +3358,9 @@
                     }
                 }
             },
+            "ContactAddress": {
+                "name": "PaymentAddress"
+            },
             "HTMLMediaElement": {
                 "properties": {
                     "property": {
@@ -3389,6 +3406,28 @@
             "MediaSource": {
                 "exposed": "Window"
             },
+
+            // Payment Request added shippingAddress with a different type
+            // https://github.com/w3c/payment-request/pull/996
+            "PaymentRequest": {
+                "properties": {
+                    "property": {
+                        "shippingAddress": {
+                            "type": "PaymentAddress"
+                        }
+                    }
+                }
+            },
+            "PaymentResponse": {
+                "properties": {
+                    "property": {
+                        "shippingAddress": {
+                            "type": "PaymentAddress"
+                        }
+                    }
+                }
+            },
+
             "SourceBuffer": {
                 "exposed": "Window"
             },

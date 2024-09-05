@@ -10,6 +10,7 @@ import {
   getRemovalData,
 } from "./build/bcd.js";
 import { getInterfaceElementMergeData } from "./build/webref/elements.js";
+import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
 
@@ -46,6 +47,7 @@ async function emitFlavor(
 ) {
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
+  exposed.events = webidl.events;
 
   const result = emitWebIdl(
     exposed,
@@ -197,7 +199,9 @@ async function emitDom() {
   }
 
   /// Load the input file
-  let webidl: Browser.WebIdl = {};
+  let webidl: Browser.WebIdl = {
+    events: await getInterfaceToEventMap(),
+  };
 
   for (const w of widlStandardTypes) {
     webidl = merge(webidl, w.browser, true);

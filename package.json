@@ -47,6 +47,7 @@
     "@typescript-eslint/parser": "^8",
     "@webref/css": "^6.12.7",
     "@webref/elements": "^2.3.0",
+    "@webref/events": "^1.11.3",
     "@webref/idl": "^3.46.1",
     "bcd-idl-mapper": "^2.3.0",
     "cpx2": "^7.0.1",
