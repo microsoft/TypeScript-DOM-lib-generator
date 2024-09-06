@@ -146,7 +146,7 @@ async function createRelease(tag, body) {
       name: tag,
       body,
     });
-  } catch (error) {
+  } catch {
     console.error(
       "Creating the GitHub release failed, this is likely due to re-running the deploy.",
     );

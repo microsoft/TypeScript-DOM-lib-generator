@@ -10,6 +10,7 @@ import {
   getRemovalData,
 } from "./build/bcd.js";
 import { getInterfaceElementMergeData } from "./build/webref/elements.js";
+import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
 
@@ -36,6 +37,7 @@ interface EmitOptions {
   global: string[];
   name: string;
   outputFolder: URL;
+  useIteratorObject: boolean;
 }
 
 async function emitFlavor(
@@ -45,8 +47,14 @@ async function emitFlavor(
 ) {
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
+  exposed.events = webidl.events;
 
-  const result = emitWebIdl(exposed, options.global[0], "");
+  const result = emitWebIdl(
+    exposed,
+    options.global[0],
+    "",
+    options.useIteratorObject,
+  );
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
     result,
@@ -58,7 +66,12 @@ async function emitFlavor(
     toStringTag,
   );
 
-  const iterators = emitWebIdl(exposed, options.global[0], "iterator");
+  const iterators = emitWebIdl(
+    exposed,
+    options.global[0],
+    "iterator",
+    options.useIteratorObject,
+  );
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
     iterators,
@@ -68,6 +81,7 @@ async function emitFlavor(
     exposed,
     options.global[0],
     "asyncIterator",
+    options.useIteratorObject,
   );
   await fs.writeFile(
     new URL(
@@ -104,12 +118,6 @@ async function emitDom() {
     ],
   ];
 
-  // Create output folder
-  await fs.mkdir(outputFolder, {
-    // Doesn't need to be recursive, but this helpfully ignores EEXIST
-    recursive: true,
-  });
-
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
@@ -125,20 +133,6 @@ async function emitDom() {
   const widlStandardTypes = (
     await Promise.all([...(await getWebidls()).entries()].map(convertWidl))
   ).filter((i) => i) as ReturnType<typeof convert>[];
-
-  const transferables = widlStandardTypes.flatMap((st) => {
-    return Object.values(st.browser.interfaces?.interface ?? {}).filter(
-      (i) => i.transferable,
-    );
-  });
-
-  addedItems.typedefs.typedef.push({
-    name: "Transferable",
-    type: [
-      ...transferables.map((v) => ({ type: v.name })),
-      { type: "ArrayBuffer" },
-    ],
-  });
 
   async function convertWidl([shortName, idl]: string[]) {
     let commentsMap: Record<string, string>;
@@ -211,7 +205,9 @@ async function emitDom() {
   }
 
   /// Load the input file
-  let webidl: Browser.WebIdl = {};
+  let webidl: Browser.WebIdl = {
+    events: await getInterfaceToEventMap(),
+  };
 
   for (const w of widlStandardTypes) {
     webidl = merge(webidl, w.browser, true);
@@ -281,33 +277,72 @@ async function emitDom() {
     }
   }
 
+  const transferables = Object.values(
+    webidl.interfaces?.interface ?? {},
+  ).filter((i) => i.transferable);
+
+  webidl = merge(webidl, {
+    typedefs: {
+      typedef: [
+        {
+          name: "Transferable",
+          type: [
+            ...transferables.map((v) => ({ type: v.name })),
+            { type: "ArrayBuffer" },
+          ],
+        },
+      ],
+    },
+  });
+
   const knownTypes = await readInputJSON("knownTypes.json");
 
-  emitFlavor(webidl, new Set(knownTypes.Window), {
-    name: "dom",
-    global: ["Window"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worker), {
-    name: "webworker",
-    global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worker), {
-    name: "sharedworker",
-    global: ["SharedWorker", "Worker"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worker), {
-    name: "serviceworker",
-    global: ["ServiceWorker", "Worker"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worklet), {
-    name: "audioworklet",
-    global: ["AudioWorklet", "Worklet"],
-    outputFolder,
-  });
+  const emitVariations = [
+    {
+      outputFolder: new URL("./ts5.5/", outputFolder),
+      useIteratorObject: false,
+    },
+    { outputFolder, useIteratorObject: true },
+  ];
+
+  for (const { outputFolder, useIteratorObject } of emitVariations) {
+    // Create output folder
+    await fs.mkdir(outputFolder, {
+      // Doesn't need to be recursive, but this helpfully ignores EEXIST
+      recursive: true,
+    });
+
+    emitFlavor(webidl, new Set(knownTypes.Window), {
+      name: "dom",
+      global: ["Window"],
+      outputFolder,
+      useIteratorObject,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
+      name: "webworker",
+      global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
+      outputFolder,
+      useIteratorObject,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
+      name: "sharedworker",
+      global: ["SharedWorker", "Worker"],
+      outputFolder,
+      useIteratorObject,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
+      name: "serviceworker",
+      global: ["ServiceWorker", "Worker"],
+      outputFolder,
+      useIteratorObject,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worklet), {
+      name: "audioworklet",
+      global: ["AudioWorklet", "Worklet"],
+      outputFolder,
+      useIteratorObject,
+    });
+  }
 
   function prune(
     obj: Browser.WebIdl,

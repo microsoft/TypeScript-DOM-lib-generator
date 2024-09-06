@@ -263,4 +263,5 @@ export interface WebIdl {
     typedef: TypeDef[];
   };
   namespaces?: Interface[];
+  events?: Map<string, Map<string, string>>;
 }

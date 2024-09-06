@@ -1,8 +1,6 @@
 // @ts-check
 // node deploy/createTypesPackages.js
 
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
 /**
  * @template T
  * @typedef {T extends (infer U)[] ? U : T} ArrayInner
@@ -17,8 +15,10 @@ export const packages = [
     description: "Types for the DOM, and other web technologies in browsers",
     readme: "./readmes/web.md",
     files: [
-      { from: "../generated/dom.generated.d.ts", to: "index.d.ts" },
+      { from: "../generated/dom.generated.d.ts", to: "index.d.ts", index: true },
       { from: "../generated/dom.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
+      { from: "../generated/ts5.5/dom.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
+      { from: "../generated/ts5.5/dom.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
     ],
   },
   {
@@ -26,8 +26,10 @@ export const packages = [
     description: "Types for the global scope of Service Workers",
     readme: "./readmes/serviceworker.md",
     files: [
-      { from: "../generated/serviceworker.generated.d.ts", to: "index.d.ts" },
-      { from: "../generated/serviceworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true  },
+      { from: "../generated/serviceworker.generated.d.ts", to: "index.d.ts", index: true },
+      { from: "../generated/serviceworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
+      { from: "../generated/ts5.5/serviceworker.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
+      { from: "../generated/ts5.5/serviceworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true , group: "ts5.5" },
     ],
   },
   {
@@ -35,8 +37,10 @@ export const packages = [
     description: "Types for the global scope of Audio Worklets",
     readme: "./readmes/audioworklet.md",
     files: [
-      { from: "../generated/audioworklet.generated.d.ts", to: "index.d.ts" },
-      { from: "../generated/audioworklet.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true  },
+      { from: "../generated/audioworklet.generated.d.ts", to: "index.d.ts", index: true },
+      { from: "../generated/audioworklet.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
+      { from: "../generated/ts5.5/audioworklet.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
+      { from: "../generated/ts5.5/audioworklet.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true , group: "ts5.5" },
     ],
   },
   {
@@ -44,8 +48,10 @@ export const packages = [
     description: "Types for the global scope of Shared Workers",
     readme: "./readmes/sharedworker.md",
     files: [
-      { from: "../generated/sharedworker.generated.d.ts", to: "index.d.ts" },
+      { from: "../generated/sharedworker.generated.d.ts", to: "index.d.ts", index: true },
       { from: "../generated/sharedworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
+      { from: "../generated/ts5.5/sharedworker.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
+      { from: "../generated/ts5.5/sharedworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
     ],
   },
 ];
@@ -59,6 +65,7 @@ import fetch from "node-fetch";
 import { fileURLToPath } from "url";
 import semver from "semver";
 import pkg from "prettier";
+import path from "path";
 const { format } = pkg;
 
 const go = async () => {
@@ -84,10 +91,10 @@ const go = async () => {
 
     // Add the reference files in the config above
     pkg.files.forEach((fileRef) => {
-      fs.copyFileSync(
-        new URL(fileRef.from, import.meta.url),
-        new URL(fileRef.to, packagePath),
-      );
+      const from = new URL(fileRef.from, import.meta.url);
+      const to = new URL(fileRef.to, packagePath);
+      fs.mkdirSync(new URL(".", to), { recursive: true });
+      fs.copyFileSync(from, to);
     });
 
     prependAutoImports(pkg, packagePath);
@@ -179,16 +186,48 @@ function copyREADME(pkg, pkgJSON, writePath) {
  * @param {URL} packagePath
  */
 function prependAutoImports(pkg, packagePath) {
-  const index = new URL("index.d.ts", packagePath);
-  if (!fs.existsSync(index)) return;
+  /**
+   * @type {Map<string | undefined, typeof pkg.files[number][]>}
+   */
+  const groups = new Map();
+  for (const file of pkg.files) {
+    let files = groups.get(file.group);
+    if (!files) groups.set(file.group, (files = []));
+    files.push(file);
+  }
+  for (const files of groups.values()) {
+    const indexFile = files.find((file) => file.index);
+    if (!indexFile) continue;
 
-  const toPrepend = pkg.files
-    .filter((f) => !!f.autoImport)
-    .map((f) => `/// <reference path="./${f.to}" />`)
-    .join("\n");
+    const index = new URL(indexFile.to, packagePath);
+    if (!fs.existsSync(index)) continue;
 
-  let indexText = fs.readFileSync(index, "utf-8");
-  fs.writeFileSync(index, `${toPrepend}\n\n${indexText}`);
+    const toPrepend = files
+      .filter((f) => !!f.autoImport)
+      .map((f) => relativeUrl(index, new URL(f.to, packagePath)))
+      .map((f) => `/// <reference path="${f}" />`)
+      .join("\n");
+
+    if (toPrepend) {
+      const indexText = fs.readFileSync(index, "utf-8");
+      fs.writeFileSync(index, `${toPrepend}\n\n${indexText}`);
+    }
+  }
+}
+
+/**
+ * @param {URL} from
+ * @param {URL} to
+ */
+function relativeUrl(from, to) {
+  if (from.origin !== to.origin) return to.toString();
+  if (!from.pathname.endsWith("/")) from = new URL("./", from);
+  const relative = path.posix.relative(from.pathname, to.pathname);
+  return path.isAbsolute(relative) ||
+    relative.startsWith("../") ||
+    relative.startsWith("./")
+    ? relative
+    : `./${relative}`;
 }
 
 /**

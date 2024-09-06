@@ -737,7 +737,7 @@
                                         // StartViewTransitionOptions is not implemented as of 2024-06
                                         {
                                             "name": "callbackOptions",
-                                            "type": "UpdateCallback"
+                                            "type": "ViewTransitionUpdateCallback"
                                         }
                                     ],
                                 }
@@ -2169,7 +2169,21 @@
                     "method": {
                         "addIceCandidate": {
                             "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ]
+                                },
                                 "1": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ],
                                     "deprecated": true
                                 }
                             }
@@ -2697,6 +2711,18 @@
                 }
             },
             "ReadableStreamBYOBReader": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "ReadableStream<Uint8Array>"
+                                }
+                            ]
+                        }
+                    }
+                },
                 "methods": {
                     "method": {
                         "read": {
@@ -2987,6 +3013,38 @@
                     }
                 }
             },
+            "CompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "DecompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
             "TextDecoderStream": {
                 "properties": {
                     "property": {
@@ -3170,7 +3228,15 @@
                     }
                 }
             },
+            "MIDIAccess": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "transferable": false // Not transferable on Gecko/Blink as of 2024-07
+            },
+            "MIDIConnectionEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
             "MIDIInput": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
                 "events": {
                     "event": [
                         {
@@ -3180,7 +3246,20 @@
                     ]
                 }
             },
+            "MIDIInputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIMessageEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutput": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
             "MIDIPort": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
                 "events": {
                     "event": [
                         {
@@ -3279,6 +3358,9 @@
                     }
                 }
             },
+            "ContactAddress": {
+                "name": "PaymentAddress"
+            },
             "HTMLMediaElement": {
                 "properties": {
                     "property": {
@@ -3324,6 +3406,28 @@
             "MediaSource": {
                 "exposed": "Window"
             },
+
+            // Payment Request added shippingAddress with a different type
+            // https://github.com/w3c/payment-request/pull/996
+            "PaymentRequest": {
+                "properties": {
+                    "property": {
+                        "shippingAddress": {
+                            "type": "PaymentAddress"
+                        }
+                    }
+                }
+            },
+            "PaymentResponse": {
+                "properties": {
+                    "property": {
+                        "shippingAddress": {
+                            "type": "PaymentAddress"
+                        }
+                    }
+                }
+            },
+
             "SourceBuffer": {
                 "exposed": "Window"
             },
