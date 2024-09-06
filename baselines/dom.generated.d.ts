@@ -16978,8 +16978,8 @@ declare var PaymentMethodChangeEvent: {
 
 interface PaymentRequestEventMap {
     "paymentmethodchange": PaymentMethodChangeEvent;
-    "shippingaddresschange": Event;
-    "shippingoptionchange": Event;
+    "shippingaddresschange": PaymentRequestUpdateEvent;
+    "shippingoptionchange": PaymentRequestUpdateEvent;
 }
 
 /**
@@ -16998,13 +16998,13 @@ interface PaymentRequest extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingaddresschange_event)
      */
-    onshippingaddresschange: ((this: PaymentRequest, ev: Event) => any) | null;
+    onshippingaddresschange: ((this: PaymentRequest, ev: PaymentRequestUpdateEvent) => any) | null;
     /**
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingoptionchange_event)
      */
-    onshippingoptionchange: ((this: PaymentRequest, ev: Event) => any) | null;
+    onshippingoptionchange: ((this: PaymentRequest, ev: PaymentRequestUpdateEvent) => any) | null;
     /**
      * @deprecated
      *
@@ -17057,7 +17057,7 @@ declare var PaymentRequestUpdateEvent: {
 };
 
 interface PaymentResponseEventMap {
-    "payerdetailchange": Event;
+    "payerdetailchange": PaymentRequestUpdateEvent;
 }
 
 /**
@@ -17072,7 +17072,7 @@ interface PaymentResponse extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/methodName) */
     readonly methodName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerdetailchange_event) */
-    onpayerdetailchange: ((this: PaymentResponse, ev: Event) => any) | null;
+    onpayerdetailchange: ((this: PaymentResponse, ev: PaymentRequestUpdateEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerEmail) */
     readonly payerEmail: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerName) */
