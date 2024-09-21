@@ -695,6 +695,7 @@ interface VideoConfiguration {
     colorGamut?: ColorGamut;
     contentType: string;
     framerate: number;
+    hasAlphaChannel?: boolean;
     hdrMetadataType?: HdrMetadataType;
     height: number;
     scalabilityMode?: string;

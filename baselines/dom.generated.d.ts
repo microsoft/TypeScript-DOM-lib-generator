@@ -2161,6 +2161,7 @@ interface VideoConfiguration {
     colorGamut?: ColorGamut;
     contentType: string;
     framerate: number;
+    hasAlphaChannel?: boolean;
     hdrMetadataType?: HdrMetadataType;
     height: number;
     scalabilityMode?: string;
@@ -2196,6 +2197,7 @@ interface VideoEncoderConfig {
     bitrate?: number;
     bitrateMode?: VideoEncoderBitrateMode;
     codec: string;
+    contentHint?: string;
     displayHeight?: number;
     displayWidth?: number;
     framerate?: number;
@@ -2207,7 +2209,12 @@ interface VideoEncoderConfig {
 }
 
 interface VideoEncoderEncodeOptions {
+    avc?: VideoEncoderEncodeOptionsForAvc;
     keyFrame?: boolean;
+}
+
+interface VideoEncoderEncodeOptionsForAvc {
+    quantizer?: number | null;
 }
 
 interface VideoEncoderInit {
@@ -2247,6 +2254,8 @@ interface VideoFrameCallbackMetadata {
 }
 
 interface VideoFrameCopyToOptions {
+    colorSpace?: PredefinedColorSpace;
+    format?: VideoPixelFormat;
     layout?: PlaneLayout[];
     rect?: DOMRectInit;
 }
