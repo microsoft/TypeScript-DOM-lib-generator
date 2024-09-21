@@ -201,6 +201,14 @@
                     }
                 }
             },
+            "AudioEncoderConfig": {
+                "members": {
+                    "member": {
+                        "aac": null, // Blink only as of 2024-09
+                        "flac": null // Blink only as of 2024-09
+                    }
+                }
+            },
             "AuthenticationExtensionsClientInputs": {
                 "members": {
                     "member": {
@@ -515,6 +523,14 @@
                 "members": {
                     "member": {
                         "renderSizeHint": null // No implementation as of 2023-10
+                    }
+                }
+            },
+            "OpusEncoderConfig": {
+                "members": {
+                    "member": {
+                        "application": null, // Blink only as of 2024-09
+                        "signal": null // Blink only as of 2024-09
                     }
                 }
             },

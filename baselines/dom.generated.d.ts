@@ -102,6 +102,59 @@ interface AudioContextOptions {
     sampleRate?: number;
 }
 
+interface AudioDataCopyToOptions {
+    format?: AudioSampleFormat;
+    frameCount?: number;
+    frameOffset?: number;
+    planeIndex: number;
+}
+
+interface AudioDataInit {
+    data: BufferSource;
+    format: AudioSampleFormat;
+    numberOfChannels: number;
+    numberOfFrames: number;
+    sampleRate: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+}
+
+interface AudioDecoderConfig {
+    codec: string;
+    description?: BufferSource;
+    numberOfChannels: number;
+    sampleRate: number;
+}
+
+interface AudioDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: AudioDataOutputCallback;
+}
+
+interface AudioDecoderSupport {
+    config?: AudioDecoderConfig;
+    supported?: boolean;
+}
+
+interface AudioEncoderConfig {
+    bitrate?: number;
+    bitrateMode?: BitrateMode;
+    codec: string;
+    numberOfChannels: number;
+    opus?: OpusEncoderConfig;
+    sampleRate: number;
+}
+
+interface AudioEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedAudioChunkOutputCallback;
+}
+
+interface AudioEncoderSupport {
+    config?: AudioEncoderConfig;
+    supported?: boolean;
+}
+
 interface AudioNodeOptions {
     channelCount?: number;
     channelCountMode?: ChannelCountMode;
@@ -485,6 +538,18 @@ interface ElementCreationOptions {
 
 interface ElementDefinitionOptions {
     extends?: string;
+}
+
+interface EncodedAudioChunkInit {
+    data: AllowSharedBufferSource;
+    duration?: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+    type: EncodedAudioChunkType;
+}
+
+interface EncodedAudioChunkMetadata {
+    decoderConfig?: AudioDecoderConfig;
 }
 
 interface EncodedVideoChunkInit {
@@ -1077,6 +1142,15 @@ interface OptionalEffectTiming {
     iterationStart?: number;
     iterations?: number;
     playbackRate?: number;
+}
+
+interface OpusEncoderConfig {
+    complexity?: number;
+    format?: OpusBitstreamFormat;
+    frameDuration?: number;
+    packetlossperc?: number;
+    usedtx?: boolean;
+    useinbandfec?: boolean;
 }
 
 interface OscillatorOptions extends AudioNodeOptions {
@@ -2793,6 +2867,74 @@ declare var AudioContext: {
     new(contextOptions?: AudioContextOptions): AudioContext;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData) */
+interface AudioData {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/duration) */
+    readonly duration: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/format) */
+    readonly format: AudioSampleFormat | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfChannels) */
+    readonly numberOfChannels: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfFrames) */
+    readonly numberOfFrames: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/sampleRate) */
+    readonly sampleRate: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/allocationSize) */
+    allocationSize(options: AudioDataCopyToOptions): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/clone) */
+    clone(): AudioData;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/copyTo) */
+    copyTo(destination: AllowSharedBufferSource, options: AudioDataCopyToOptions): void;
+}
+
+declare var AudioData: {
+    prototype: AudioData;
+    new(init: AudioDataInit): AudioData;
+};
+
+interface AudioDecoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder)
+ */
+interface AudioDecoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decodeQueueSize) */
+    readonly decodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/dequeue_event) */
+    ondequeue: ((this: AudioDecoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/configure) */
+    configure(config: AudioDecoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decode) */
+    decode(chunk: EncodedAudioChunk): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioDecoder: {
+    prototype: AudioDecoder;
+    new(init: AudioDecoderInit): AudioDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/isConfigSupported_static) */
+    isConfigSupported(config: AudioDecoderConfig): Promise<AudioDecoderSupport>;
+};
+
 /**
  * AudioDestinationNode has no output (as it is the output, no more AudioNode can be linked after it in the audio graph) and one input. The number of channels in the input must be between 0 and the maxChannelCount value or an exception is raised.
  *
@@ -2806,6 +2948,45 @@ interface AudioDestinationNode extends AudioNode {
 declare var AudioDestinationNode: {
     prototype: AudioDestinationNode;
     new(): AudioDestinationNode;
+};
+
+interface AudioEncoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder)
+ */
+interface AudioEncoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encodeQueueSize) */
+    readonly encodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/dequeue_event) */
+    ondequeue: ((this: AudioEncoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/configure) */
+    configure(config: AudioEncoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encode) */
+    encode(data: AudioData): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioEncoder: {
+    prototype: AudioEncoder;
+    new(init: AudioEncoderInit): AudioEncoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/isConfigSupported_static) */
+    isConfigSupported(config: AudioEncoderConfig): Promise<AudioEncoderSupport>;
 };
 
 /**
@@ -7153,6 +7334,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/forms)
      */
     readonly forms: HTMLCollectionOf<HTMLFormElement>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/fragmentDirective) */
+    readonly fragmentDirective: FragmentDirective;
     /**
      * @deprecated
      *
@@ -8217,6 +8400,25 @@ declare var ElementInternals: {
     new(): ElementInternals;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk) */
+interface EncodedAudioChunk {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/byteLength) */
+    readonly byteLength: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/duration) */
+    readonly duration: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/type) */
+    readonly type: EncodedAudioChunkType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/copyTo) */
+    copyTo(destination: AllowSharedBufferSource): void;
+}
+
+declare var EncodedAudioChunk: {
+    prototype: EncodedAudioChunk;
+    new(init: EncodedAudioChunkInit): EncodedAudioChunk;
+};
+
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk) */
 interface EncodedVideoChunk {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/byteLength) */
@@ -8908,6 +9110,15 @@ interface FormDataEvent extends Event {
 declare var FormDataEvent: {
     prototype: FormDataEvent;
     new(type: string, eventInitDict: FormDataEventInit): FormDataEvent;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FragmentDirective) */
+interface FragmentDirective {
+}
+
+declare var FragmentDirective: {
+    prototype: FragmentDirective;
+    new(): FragmentDirective;
 };
 
 /**
@@ -9908,7 +10119,11 @@ declare var HTMLBodyElement: {
 interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/disabled) */
     disabled: boolean;
-    /** Retrieves a reference to the form that the object is embedded in. */
+    /**
+     * Retrieves a reference to the form that the object is embedded in.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/form)
+     */
     readonly form: HTMLFormElement | null;
     /** Overrides the action attribute (where the data on a form is sent) on the parent form element. */
     formAction: string;
@@ -9936,7 +10151,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
     type: "submit" | "reset" | "button";
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
-    /** Returns a  ValidityState object that represents the validity states of an element. */
+    /**
+     * Returns a  ValidityState object that represents the validity states of an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/validity)
+     */
     readonly validity: ValidityState;
     /**
      * Sets or retrieves the default or selected value of the control.
@@ -9944,7 +10163,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/value)
      */
     value: string;
-    /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
+    /**
+     * Returns whether an element will successfully validate based on forms validation rules and constraints.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/willValidate)
+     */
     readonly willValidate: boolean;
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -10108,7 +10331,11 @@ declare var HTMLDataElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataListElement)
  */
 interface HTMLDataListElement extends HTMLElement {
-    /** Returns an HTMLCollection of the option elements of the datalist element. */
+    /**
+     * Returns an HTMLCollection of the option elements of the datalist element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataListElement/options)
+     */
     readonly options: HTMLCollectionOf<HTMLOptionElement>;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -10345,17 +10572,33 @@ interface HTMLFieldSetElement extends HTMLElement {
     disabled: boolean;
     /** Returns an HTMLCollection of the form controls in the element. */
     readonly elements: HTMLCollection;
-    /** Retrieves a reference to the form that the object is embedded in. */
+    /**
+     * Retrieves a reference to the form that the object is embedded in.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/form)
+     */
     readonly form: HTMLFormElement | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/name) */
     name: string;
-    /** Returns the string "fieldset". */
+    /**
+     * Returns the string "fieldset".
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/type)
+     */
     readonly type: string;
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
-    /** Returns a  ValidityState object that represents the validity states of an element. */
+    /**
+     * Returns a  ValidityState object that represents the validity states of an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/validity)
+     */
     readonly validity: ValidityState;
-    /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
+    /**
+     * Returns whether an element will successfully validate based on forms validation rules and constraints.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/willValidate)
+     */
     readonly willValidate: boolean;
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -11073,17 +11316,30 @@ declare var HTMLImageElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)
  */
 interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
-    /** Sets or retrieves a comma-separated list of content types. */
+    /**
+     * Sets or retrieves a comma-separated list of content types.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/accept)
+     */
     accept: string;
     /**
      * Sets or retrieves how the object is aligned with adjacent text.
      * @deprecated
      */
     align: string;
-    /** Sets or retrieves a text alternative to the graphic. */
+    /**
+     * Sets or retrieves a text alternative to the graphic.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/alt)
+     */
     alt: string;
-    /** Specifies whether autocomplete is applied to an editable text field. */
+    /**
+     * Specifies whether autocomplete is applied to an editable text field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/autocomplete)
+     */
     autocomplete: AutoFill;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/capture) */
     capture: string;
     /** Sets or retrieves the state of the check box or radio button. */
     checked: boolean;
@@ -11104,7 +11360,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/files)
      */
     files: FileList | null;
-    /** Retrieves a reference to the form that the object is embedded in. */
+    /**
+     * Retrieves a reference to the form that the object is embedded in.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/form)
+     */
     readonly form: HTMLFormElement | null;
     /** Overrides the action attribute (where the data on a form is sent) on the parent form element. */
     formAction: string;
@@ -11116,7 +11376,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     formNoValidate: boolean;
     /** Overrides the target attribute on a form element. */
     formTarget: string;
-    /** Sets or retrieves the height of the object. */
+    /**
+     * Sets or retrieves the height of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/height)
+     */
     height: number;
     /** When set, overrides the rendering of checkbox controls so that the current value is not visible. */
     indeterminate: boolean;
@@ -11160,12 +11424,25 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/name)
      */
     name: string;
-    /** Gets or sets a string containing a regular expression that the user's input must match. */
+    /**
+     * Gets or sets a string containing a regular expression that the user's input must match.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/pattern)
+     */
     pattern: string;
-    /** Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field. */
+    /**
+     * Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/placeholder)
+     */
     placeholder: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/readOnly) */
     readOnly: boolean;
-    /** When present, marks an element that can't be submitted without a value. */
+    /**
+     * When present, marks an element that can't be submitted without a value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/required)
+     */
     required: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionDirection) */
     selectionDirection: "forward" | "backward" | "none" | null;
@@ -11181,8 +11458,13 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionStart)
      */
     selectionStart: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/size) */
     size: number;
-    /** The address or URL of the a media resource that is to be considered. */
+    /**
+     * The address or URL of the a media resource that is to be considered.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/src)
+     */
     src: string;
     /**
      * Defines an increment or jump between values that you want to allow the user to enter. When used with the max and min attributes, lets you control the range and increment (for example, allow only even numbers) that the user can enter into an input field.
@@ -11203,7 +11485,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     useMap: string;
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
-    /** Returns a  ValidityState object that represents the validity states of an element. */
+    /**
+     * Returns a  ValidityState object that represents the validity states of an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/validity)
+     */
     readonly validity: ValidityState;
     /**
      * Returns the value of the data at the cursor's current position.
@@ -11227,9 +11513,17 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     readonly webkitEntries: ReadonlyArray<FileSystemEntry>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitdirectory) */
     webkitdirectory: boolean;
-    /** Sets or retrieves the width of the object. */
+    /**
+     * Sets or retrieves the width of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/width)
+     */
     width: number;
-    /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
+    /**
+     * Returns whether an element will successfully validate based on forms validation rules and constraints.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/willValidate)
+     */
     readonly willValidate: boolean;
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -11355,7 +11649,11 @@ declare var HTMLLabelElement: {
 interface HTMLLegendElement extends HTMLElement {
     /** @deprecated */
     align: string;
-    /** Retrieves a reference to the form that the object is embedded in. */
+    /**
+     * Retrieves a reference to the form that the object is embedded in.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLegendElement/form)
+     */
     readonly form: HTMLFormElement | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -12049,7 +12347,11 @@ interface HTMLOptionElement extends HTMLElement {
     /** Sets or retrieves the status of an option. */
     defaultSelected: boolean;
     disabled: boolean;
-    /** Retrieves a reference to the form that the object is embedded in. */
+    /**
+     * Retrieves a reference to the form that the object is embedded in.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/form)
+     */
     readonly form: HTMLFormElement | null;
     /** Sets or retrieves the ordinal position of an option in a list box. */
     readonly index: number;
@@ -12137,15 +12439,21 @@ interface HTMLOrSVGElement {
  */
 interface HTMLOutputElement extends HTMLElement {
     defaultValue: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/form) */
     readonly form: HTMLFormElement | null;
     readonly htmlFor: DOMTokenList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/name) */
     name: string;
-    /** Returns the string "output". */
+    /**
+     * Returns the string "output".
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/type)
+     */
     readonly type: string;
     readonly validationMessage: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validity) */
     readonly validity: ValidityState;
     /**
      * Returns the element's current value.
@@ -12155,6 +12463,7 @@ interface HTMLOutputElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/value)
      */
     value: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/willValidate) */
     readonly willValidate: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/checkValidity) */
     checkValidity(): boolean;
@@ -12415,9 +12724,17 @@ interface HTMLSelectElement extends HTMLElement {
     readonly form: HTMLFormElement | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
-    /** Sets or retrieves the number of objects in a collection. */
+    /**
+     * Sets or retrieves the number of objects in a collection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/length)
+     */
     length: number;
-    /** Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list. */
+    /**
+     * Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/multiple)
+     */
     multiple: boolean;
     /**
      * Sets or retrieves the name of the object.
@@ -12431,7 +12748,11 @@ interface HTMLSelectElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/options)
      */
     readonly options: HTMLOptionsCollection;
-    /** When present, marks an element that can't be submitted without a value. */
+    /**
+     * When present, marks an element that can't be submitted without a value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/required)
+     */
     required: boolean;
     /**
      * Sets or retrieves the index of the selected option in a select object.
@@ -12441,7 +12762,11 @@ interface HTMLSelectElement extends HTMLElement {
     selectedIndex: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/selectedOptions) */
     readonly selectedOptions: HTMLCollectionOf<HTMLOptionElement>;
-    /** Sets or retrieves the number of rows in the list box. */
+    /**
+     * Sets or retrieves the number of rows in the list box.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/size)
+     */
     size: number;
     /**
      * Retrieves the type of select control based on the value of the MULTIPLE attribute.
@@ -12451,7 +12776,11 @@ interface HTMLSelectElement extends HTMLElement {
     readonly type: "select-one" | "select-multiple";
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
-    /** Returns a  ValidityState object that represents the validity states of an element. */
+    /**
+     * Returns a  ValidityState object that represents the validity states of an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/validity)
+     */
     readonly validity: ValidityState;
     /**
      * Sets or retrieves the value which is returned to the server when the form control is submitted.
@@ -12459,7 +12788,11 @@ interface HTMLSelectElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/value)
      */
     value: string;
-    /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
+    /**
+     * Returns whether an element will successfully validate based on forms validation rules and constraints.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/willValidate)
+     */
     readonly willValidate: boolean;
     /**
      * Adds an element to the areas, controlRange, or options collection.
@@ -13167,19 +13500,38 @@ declare var HTMLTemplateElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement)
  */
 interface HTMLTextAreaElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/autocomplete) */
     autocomplete: AutoFill;
-    /** Sets or retrieves the width of the object. */
+    /**
+     * Sets or retrieves the width of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/cols)
+     */
     cols: number;
-    /** Sets or retrieves the initial contents of the object. */
+    /**
+     * Sets or retrieves the initial contents of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/defaultValue)
+     */
     defaultValue: string;
     dirName: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/disabled) */
     disabled: boolean;
-    /** Retrieves a reference to the form that the object is embedded in. */
+    /**
+     * Retrieves a reference to the form that the object is embedded in.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/form)
+     */
     readonly form: HTMLFormElement | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
-    /** Sets or retrieves the maximum number of characters that the user can enter in a text control. */
+    /**
+     * Sets or retrieves the maximum number of characters that the user can enter in a text control.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/maxLength)
+     */
     maxLength: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/minLength) */
     minLength: number;
     /**
      * Sets or retrieves the name of the object.
@@ -13187,19 +13539,36 @@ interface HTMLTextAreaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/name)
      */
     name: string;
-    /** Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field. */
+    /**
+     * Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/placeholder)
+     */
     placeholder: string;
-    /** Sets or retrieves the value indicated whether the content of the object is read-only. */
+    /**
+     * Sets or retrieves the value indicated whether the content of the object is read-only.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/readOnly)
+     */
     readOnly: boolean;
-    /** When present, marks an element that can't be submitted without a value. */
+    /**
+     * When present, marks an element that can't be submitted without a value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/required)
+     */
     required: boolean;
-    /** Sets or retrieves the number of horizontal rows contained in the object. */
+    /**
+     * Sets or retrieves the number of horizontal rows contained in the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/rows)
+     */
     rows: number;
     selectionDirection: "forward" | "backward" | "none";
     /** Gets or sets the end position or offset of a text selection. */
     selectionEnd: number;
     /** Gets or sets the starting position or offset of a text selection. */
     selectionStart: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/textLength) */
     readonly textLength: number;
     /**
      * Retrieves the type of control.
@@ -13209,7 +13578,11 @@ interface HTMLTextAreaElement extends HTMLElement {
     readonly type: string;
     /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
     readonly validationMessage: string;
-    /** Returns a  ValidityState object that represents the validity states of an element. */
+    /**
+     * Returns a  ValidityState object that represents the validity states of an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/validity)
+     */
     readonly validity: ValidityState;
     /**
      * Retrieves or sets the text in the entry field of the textArea element.
@@ -13217,9 +13590,17 @@ interface HTMLTextAreaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/value)
      */
     value: string;
-    /** Returns whether an element will successfully validate based on forms validation rules and constraints. */
+    /**
+     * Returns whether an element will successfully validate based on forms validation rules and constraints.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/willValidate)
+     */
     readonly willValidate: boolean;
-    /** Sets or retrieves how to handle wordwrapping in the object. */
+    /**
+     * Sets or retrieves how to handle wordwrapping in the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/wrap)
+     */
     wrap: string;
     /**
      * Returns whether a form will validate when it is submitted, without having to submit it.
@@ -17664,6 +18045,10 @@ declare var PluginArray: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent)
  */
 interface PointerEvent extends MouseEvent {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/altitudeAngle) */
+    readonly altitudeAngle: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/azimuthAngle) */
+    readonly azimuthAngle: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/height) */
     readonly height: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/isPrimary) */
@@ -22810,7 +23195,7 @@ declare var URLSearchParams: {
 interface UserActivation {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation/hasBeenActive) */
     readonly hasBeenActive: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation/hasBeenActive) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation/isActive) */
     readonly isActive: boolean;
 }
 
@@ -26975,6 +27360,10 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
+interface AudioDataOutputCallback {
+    (output: AudioData): void;
+}
+
 interface BlobCallback {
     (blob: Blob | null): void;
 }
@@ -26989,6 +27378,10 @@ interface DecodeErrorCallback {
 
 interface DecodeSuccessCallback {
     (decodedData: AudioBuffer): void;
+}
+
+interface EncodedAudioChunkOutputCallback {
+    (output: EncodedAudioChunk, metadata?: EncodedAudioChunkMetadata): void;
 }
 
 interface EncodedVideoChunkOutputCallback {
@@ -28274,7 +28667,7 @@ type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;
@@ -28287,6 +28680,7 @@ type AppendMode = "segments" | "sequence";
 type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "running" | "suspended";
+type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
 type AuthenticatorAttachment = "cross-platform" | "platform";
 type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";
 type AutoFillAddressKind = "billing" | "shipping";
@@ -28300,6 +28694,7 @@ type AutomationRate = "a-rate" | "k-rate";
 type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
 type BiquadFilterType = "allpass" | "bandpass" | "highpass" | "highshelf" | "lowpass" | "lowshelf" | "notch" | "peaking";
+type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanPlayTypeResult = "" | "maybe" | "probably";
@@ -28329,6 +28724,7 @@ type DisplayCaptureSurfaceType = "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
 type DocumentReadyState = "complete" | "interactive" | "loading";
 type DocumentVisibilityState = "hidden" | "visible";
+type EncodedAudioChunkType = "delta" | "key";
 type EncodedVideoChunkType = "delta" | "key";
 type EndOfStreamError = "decode" | "network";
 type EndingType = "native" | "transparent";
@@ -28377,6 +28773,7 @@ type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload"
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
+type OpusBitstreamFormat = "ogg" | "opus";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";

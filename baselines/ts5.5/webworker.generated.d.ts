@@ -47,6 +47,59 @@ interface AudioConfiguration {
     spatialRendering?: boolean;
 }
 
+interface AudioDataCopyToOptions {
+    format?: AudioSampleFormat;
+    frameCount?: number;
+    frameOffset?: number;
+    planeIndex: number;
+}
+
+interface AudioDataInit {
+    data: BufferSource;
+    format: AudioSampleFormat;
+    numberOfChannels: number;
+    numberOfFrames: number;
+    sampleRate: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+}
+
+interface AudioDecoderConfig {
+    codec: string;
+    description?: BufferSource;
+    numberOfChannels: number;
+    sampleRate: number;
+}
+
+interface AudioDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: AudioDataOutputCallback;
+}
+
+interface AudioDecoderSupport {
+    config?: AudioDecoderConfig;
+    supported?: boolean;
+}
+
+interface AudioEncoderConfig {
+    bitrate?: number;
+    bitrateMode?: BitrateMode;
+    codec: string;
+    numberOfChannels: number;
+    opus?: OpusEncoderConfig;
+    sampleRate: number;
+}
+
+interface AudioEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedAudioChunkOutputCallback;
+}
+
+interface AudioEncoderSupport {
+    config?: AudioEncoderConfig;
+    supported?: boolean;
+}
+
 interface AvcEncoderConfig {
     format?: AvcBitstreamFormat;
 }
@@ -161,6 +214,18 @@ interface EcdhKeyDeriveParams extends Algorithm {
 
 interface EcdsaParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
+}
+
+interface EncodedAudioChunkInit {
+    data: AllowSharedBufferSource;
+    duration?: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+    type: EncodedAudioChunkType;
+}
+
+interface EncodedAudioChunkMetadata {
+    decoderConfig?: AudioDecoderConfig;
 }
 
 interface EncodedVideoChunkInit {
@@ -428,6 +493,15 @@ interface NotificationOptions {
     requireInteraction?: boolean;
     silent?: boolean | null;
     tag?: string;
+}
+
+interface OpusEncoderConfig {
+    complexity?: number;
+    format?: OpusBitstreamFormat;
+    frameDuration?: number;
+    packetlossperc?: number;
+    usedtx?: boolean;
+    useinbandfec?: boolean;
 }
 
 interface Pbkdf2Params extends Algorithm {
@@ -989,6 +1063,113 @@ interface AnimationFrameProvider {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
     requestAnimationFrame(callback: FrameRequestCallback): number;
 }
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData) */
+interface AudioData {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/duration) */
+    readonly duration: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/format) */
+    readonly format: AudioSampleFormat | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfChannels) */
+    readonly numberOfChannels: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfFrames) */
+    readonly numberOfFrames: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/sampleRate) */
+    readonly sampleRate: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/allocationSize) */
+    allocationSize(options: AudioDataCopyToOptions): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/clone) */
+    clone(): AudioData;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/copyTo) */
+    copyTo(destination: AllowSharedBufferSource, options: AudioDataCopyToOptions): void;
+}
+
+declare var AudioData: {
+    prototype: AudioData;
+    new(init: AudioDataInit): AudioData;
+};
+
+interface AudioDecoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder)
+ */
+interface AudioDecoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decodeQueueSize) */
+    readonly decodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/dequeue_event) */
+    ondequeue: ((this: AudioDecoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/configure) */
+    configure(config: AudioDecoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decode) */
+    decode(chunk: EncodedAudioChunk): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioDecoder: {
+    prototype: AudioDecoder;
+    new(init: AudioDecoderInit): AudioDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/isConfigSupported_static) */
+    isConfigSupported(config: AudioDecoderConfig): Promise<AudioDecoderSupport>;
+};
+
+interface AudioEncoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder)
+ */
+interface AudioEncoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encodeQueueSize) */
+    readonly encodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/dequeue_event) */
+    ondequeue: ((this: AudioEncoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/configure) */
+    configure(config: AudioEncoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encode) */
+    encode(data: AudioData): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioEncoder: {
+    prototype: AudioEncoder;
+    new(init: AudioEncoderInit): AudioEncoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/isConfigSupported_static) */
+    isConfigSupported(config: AudioEncoderConfig): Promise<AudioEncoderSupport>;
+};
 
 /**
  * A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system.
@@ -2377,6 +2558,25 @@ interface EXT_texture_norm16 {
     readonly RGB16_SNORM_EXT: 0x8F9A;
     readonly RGBA16_SNORM_EXT: 0x8F9B;
 }
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk) */
+interface EncodedAudioChunk {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/byteLength) */
+    readonly byteLength: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/duration) */
+    readonly duration: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/type) */
+    readonly type: EncodedAudioChunkType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/copyTo) */
+    copyTo(destination: AllowSharedBufferSource): void;
+}
+
+declare var EncodedAudioChunk: {
+    prototype: EncodedAudioChunk;
+    new(init: EncodedAudioChunkInit): EncodedAudioChunk;
+};
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk) */
 interface EncodedVideoChunk {
@@ -9113,6 +9313,14 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
+interface AudioDataOutputCallback {
+    (output: AudioData): void;
+}
+
+interface EncodedAudioChunkOutputCallback {
+    (output: EncodedAudioChunk, metadata?: EncodedAudioChunkMetadata): void;
+}
+
 interface EncodedVideoChunkOutputCallback {
     (chunk: EncodedVideoChunk, metadata?: EncodedVideoChunkMetadata): void;
 }
@@ -9364,12 +9572,14 @@ type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | VideoFrame | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type AlphaOption = "discard" | "keep";
+type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
 type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
+type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
@@ -9388,6 +9598,7 @@ type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type DocumentVisibilityState = "hidden" | "visible";
+type EncodedAudioChunkType = "delta" | "key";
 type EncodedVideoChunkType = "delta" | "key";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
@@ -9414,6 +9625,7 @@ type MediaEncodingType = "record" | "webrtc";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
+type OpusBitstreamFormat = "ogg" | "opus";
 type PermissionName = "geolocation" | "midi" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "storage-access";
 type PermissionState = "denied" | "granted" | "prompt";
 type PredefinedColorSpace = "display-p3" | "srgb";
