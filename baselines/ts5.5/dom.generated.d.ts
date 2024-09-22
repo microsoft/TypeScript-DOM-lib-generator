@@ -2308,6 +2308,7 @@ interface WebTransportHash {
 interface WebTransportOptions {
     allowPooling?: boolean;
     congestionControl?: WebTransportCongestionControl;
+    protocols?: string[];
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
 }
@@ -11350,9 +11351,17 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     autocomplete: AutoFill;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/capture) */
     capture: string;
-    /** Sets or retrieves the state of the check box or radio button. */
+    /**
+     * Sets or retrieves the state of the check box or radio button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/checked)
+     */
     checked: boolean;
-    /** Sets or retrieves the state of the check box or radio button. */
+    /**
+     * Sets or retrieves the state of the check box or radio button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/defaultChecked)
+     */
     defaultChecked: boolean;
     /**
      * Sets or retrieves the initial contents of the object.
@@ -13572,10 +13581,19 @@ interface HTMLTextAreaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/rows)
      */
     rows: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/selectionDirection) */
     selectionDirection: "forward" | "backward" | "none";
-    /** Gets or sets the end position or offset of a text selection. */
+    /**
+     * Gets or sets the end position or offset of a text selection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/selectionEnd)
+     */
     selectionEnd: number;
-    /** Gets or sets the starting position or offset of a text selection. */
+    /**
+     * Gets or sets the starting position or offset of a text selection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/selectionStart)
+     */
     selectionStart: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/textLength) */
     readonly textLength: number;
@@ -13619,13 +13637,18 @@ interface HTMLTextAreaElement extends HTMLElement {
     checkValidity(): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/reportValidity) */
     reportValidity(): boolean;
-    /** Highlights the input area of a form element. */
+    /**
+     * Highlights the input area of a form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/select)
+     */
     select(): void;
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
      */
     setCustomValidity(error: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/setRangeText) */
     setRangeText(replacement: string): void;
     setRangeText(replacement: string, start: number, end: number, selectionMode?: SelectionMode): void;
     /**
@@ -13633,6 +13656,8 @@ interface HTMLTextAreaElement extends HTMLElement {
      * @param start The offset into the text field for the start of the selection.
      * @param end The offset into the text field for the end of the selection.
      * @param direction The direction in which the selection is performed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
      */
     setSelectionRange(start: number | null, end: number | null, direction?: "forward" | "backward" | "none"): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -20612,14 +20637,23 @@ declare var SVGLength: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList)
  */
 interface SVGLengthList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/length) */
     readonly length: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/numberOfItems) */
     readonly numberOfItems: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/appendItem) */
     appendItem(newItem: SVGLength): SVGLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/clear) */
     clear(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/getItem) */
     getItem(index: number): SVGLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/initialize) */
     initialize(newItem: SVGLength): SVGLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/insertItemBefore) */
     insertItemBefore(newItem: SVGLength, index: number): SVGLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/removeItem) */
     removeItem(index: number): SVGLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/replaceItem) */
     replaceItem(newItem: SVGLength, index: number): SVGLength;
     [index: number]: SVGLength;
 }
