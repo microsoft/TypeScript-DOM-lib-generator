@@ -2515,6 +2515,13 @@
             "DedicatedWorkerGlobalScope": {
                 "methods": {
                     "method": {
+                        "close": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "never"
+                                }
+                            }
+                        },
                         "postMessage": {
                             "signature": {
                                 "0": {
@@ -2540,6 +2547,19 @@
                             "type": "MessageEvent"
                         }
                     ]
+                }
+            },
+            "SharedWorkerGlobalScope": {
+                "methods": {
+                    "method": {
+                        "close": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "never"
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "HTMLFormElement": {
