@@ -780,15 +780,16 @@
             "WebTransportOptions": {
                 "members": {
                     "member": {
-                        "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2024-03
-                        "anticipatedConcurrentIncomingUnidirectionalStreams": null // No implementation as of 2024-03
+                        "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2024-09
+                        "anticipatedConcurrentIncomingUnidirectionalStreams": null, // No implementation as of 2024-09
+                        "protocols": null // No implementation as of 2024-09
                     }
                 }
             },
             "WebTransportSendStreamOptions": {
                 "members": {
                     "member": {
-                        "waitUntilAvailable": null // No implementation as of 2023-11
+                        "waitUntilAvailable": null // Blink only as of 2024-09
                     }
                 }
             }
