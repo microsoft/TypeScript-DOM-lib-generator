@@ -10158,7 +10158,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/type)
      */
     type: "submit" | "reset" | "button";
-    /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/validationMessage)
+     */
     readonly validationMessage: string;
     /**
      * Returns a  ValidityState object that represents the validity states of an element.
@@ -10189,6 +10193,8 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/setCustomValidity)
      */
     setCustomValidity(error: string): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLButtonElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -10578,8 +10584,13 @@ declare var HTMLEmbedElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement)
  */
 interface HTMLFieldSetElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/disabled) */
     disabled: boolean;
-    /** Returns an HTMLCollection of the form controls in the element. */
+    /**
+     * Returns an HTMLCollection of the form controls in the element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/elements)
+     */
     readonly elements: HTMLCollection;
     /**
      * Retrieves a reference to the form that the object is embedded in.
@@ -10595,7 +10606,11 @@ interface HTMLFieldSetElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/type)
      */
     readonly type: string;
-    /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/validationMessage)
+     */
     readonly validationMessage: string;
     /**
      * Returns a  ValidityState object that represents the validity states of an element.
@@ -10620,6 +10635,8 @@ interface HTMLFieldSetElement extends HTMLElement {
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/setCustomValidity)
      */
     setCustomValidity(error: string): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFieldSetElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -11399,7 +11416,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/height)
      */
     height: number;
-    /** When set, overrides the rendering of checkbox controls so that the current value is not visible. */
+    /**
+     * When set, overrides the rendering of checkbox controls so that the current value is not visible.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/indeterminate)
+     */
     indeterminate: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement> | null;
@@ -11500,7 +11521,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * @deprecated
      */
     useMap: string;
-    /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/validationMessage)
+     */
     readonly validationMessage: string;
     /**
      * Returns a  ValidityState object that represents the validity states of an element.
@@ -12341,8 +12366,13 @@ declare var HTMLObjectElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptGroupElement)
  */
 interface HTMLOptGroupElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptGroupElement/disabled) */
     disabled: boolean;
-    /** Sets or retrieves a value that you can use to implement your own label functionality for the object. */
+    /**
+     * Sets or retrieves a value that you can use to implement your own label functionality for the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptGroupElement/label)
+     */
     label: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptGroupElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -12361,8 +12391,13 @@ declare var HTMLOptGroupElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement)
  */
 interface HTMLOptionElement extends HTMLElement {
-    /** Sets or retrieves the status of an option. */
+    /**
+     * Sets or retrieves the status of an option.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/defaultSelected)
+     */
     defaultSelected: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/disabled) */
     disabled: boolean;
     /**
      * Retrieves a reference to the form that the object is embedded in.
@@ -12370,13 +12405,29 @@ interface HTMLOptionElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/form)
      */
     readonly form: HTMLFormElement | null;
-    /** Sets or retrieves the ordinal position of an option in a list box. */
+    /**
+     * Sets or retrieves the ordinal position of an option in a list box.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/index)
+     */
     readonly index: number;
-    /** Sets or retrieves a value that you can use to implement your own label functionality for the object. */
+    /**
+     * Sets or retrieves a value that you can use to implement your own label functionality for the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/label)
+     */
     label: string;
-    /** Sets or retrieves whether the option in the list box is the default item. */
+    /**
+     * Sets or retrieves whether the option in the list box is the default item.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/selected)
+     */
     selected: boolean;
-    /** Sets or retrieves the text string specified by the option tag. */
+    /**
+     * Sets or retrieves the text string specified by the option tag.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/text)
+     */
     text: string;
     /**
      * Sets or retrieves the value which is returned to the server when the form control is submitted.
@@ -12469,6 +12520,7 @@ interface HTMLOutputElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/type)
      */
     readonly type: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validationMessage) */
     readonly validationMessage: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validity) */
     readonly validity: ValidityState;
@@ -12486,6 +12538,7 @@ interface HTMLOutputElement extends HTMLElement {
     checkValidity(): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/reportValidity) */
     reportValidity(): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/setCustomValidity) */
     setCustomValidity(error: string): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOutputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -12791,7 +12844,11 @@ interface HTMLSelectElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/type)
      */
     readonly type: "select-one" | "select-multiple";
-    /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/validationMessage)
+     */
     readonly validationMessage: string;
     /**
      * Returns a  ValidityState object that represents the validity states of an element.
@@ -13602,7 +13659,11 @@ interface HTMLTextAreaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/type)
      */
     readonly type: string;
-    /** Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. */
+    /**
+     * Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/validationMessage)
+     */
     readonly validationMessage: string;
     /**
      * Returns a  ValidityState object that represents the validity states of an element.
@@ -13645,6 +13706,8 @@ interface HTMLTextAreaElement extends HTMLElement {
     /**
      * Sets a custom error message that is displayed when a form is submitted.
      * @param error Sets a custom error message that is displayed when a form is submitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/setCustomValidity)
      */
     setCustomValidity(error: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/setRangeText) */
