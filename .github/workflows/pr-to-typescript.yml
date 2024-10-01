@@ -33,7 +33,7 @@ jobs:
           gulp baseline-accept
           git restore package-lock.json
 
-      - uses: peter-evans/create-pull-request@v6
+      - uses: peter-evans/create-pull-request@v7
         with:
           path: TypeScript
           commit-message: "🤖 Update TypeScript DOM Libs"
