@@ -358,6 +358,13 @@
                     }
                 }
             },
+            "MediaSessionActionDetails": {
+                "members": {
+                    "member": {
+                        "isActivating": null // WebKit only as of 2024-10
+                    }
+                }
+            },
             "MediaTrackCapabilities": {
                 "members": {
                     "member": {

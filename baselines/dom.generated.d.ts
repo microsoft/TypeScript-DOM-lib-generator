@@ -969,7 +969,6 @@ interface MediaRecorderOptions {
 interface MediaSessionActionDetails {
     action: MediaSessionAction;
     fastSeek?: boolean;
-    isActivating?: boolean;
     seekOffset?: number;
     seekTime?: number;
 }
