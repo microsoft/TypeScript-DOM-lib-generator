@@ -3334,6 +3334,17 @@
                     }
                 }
             },
+            "CSSNestedDeclarations": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSPageDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
             "CSSStyleDeclaration": {
                 "properties": {
                     "property": {
@@ -3573,25 +3584,6 @@
                 "overrideIndexSignatures": [
                     "[property: string]: string | number | null | undefined"
                 ]
-            },
-            // https://github.com/w3c/mediasession/issues/322
-            "MediaSessionActionDetails": {
-                "members": {
-                    "member": {
-                        "fastSeek": {
-                            "name": "fastSeek",
-                            "type": "boolean"
-                        },
-                        "seekOffset": {
-                            "name": "seekOffset",
-                            "type": "double"
-                        },
-                        "seekTime": {
-                            "name": "seekTime",
-                            "type": "double"
-                        }
-                    }
-                }
             },
             "PermissionDescriptor": {
                 "members": {

@@ -3904,6 +3904,15 @@ declare var CSSNamespaceRule: {
     new(): CSSNamespaceRule;
 };
 
+interface CSSNestedDeclarations extends CSSRule {
+    readonly style: CSSStyleDeclaration;
+}
+
+declare var CSSNestedDeclarations: {
+    prototype: CSSNestedDeclarations;
+    new(): CSSNestedDeclarations;
+};
+
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray) */
 interface CSSNumericArray {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray/length) */
@@ -4347,6 +4356,8 @@ interface CSSStyleDeclaration {
     borderWidth: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/bottom) */
     bottom: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-decoration-break) */
+    boxDecorationBreak: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-shadow) */
     boxShadow: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-sizing) */
@@ -12015,6 +12026,7 @@ interface HTMLMediaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/volume)
      */
     volume: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/addTextTrack) */
     addTextTrack(kind: TextTrackKind, label?: string, language?: string): TextTrack;
     /**
      * Returns a string that specifies whether the client can play a given media resource type.
@@ -12458,12 +12470,16 @@ interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
      * When set to a smaller number, truncates the number of option elements in the corresponding container.
      *
      * When set to a greater number, adds new blank option elements to that container.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection/length)
      */
     length: number;
     /**
      * Returns the index of the first selected item, if any, or −1 if there is no selected item.
      *
      * Can be set, to change the selection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection/selectedIndex)
      */
     selectedIndex: number;
     /**
@@ -12474,9 +12490,15 @@ interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
      * If before is omitted, null, or a number out of range, then element will be added at the end of the list.
      *
      * This method will throw a "HierarchyRequestError" DOMException if element is an ancestor of the element into which it is to be inserted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection/add)
      */
     add(element: HTMLOptionElement | HTMLOptGroupElement, before?: HTMLElement | number | null): void;
-    /** Removes the item with index index from the collection. */
+    /**
+     * Removes the item with index index from the collection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection/remove)
+     */
     remove(index: number): void;
 }
 
@@ -12506,9 +12528,11 @@ interface HTMLOrSVGElement {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement)
  */
 interface HTMLOutputElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/defaultValue) */
     defaultValue: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/form) */
     readonly form: HTMLFormElement | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/htmlFor) */
     readonly htmlFor: DOMTokenList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
@@ -25327,6 +25351,7 @@ interface WebGLRenderingContextBase {
     readonly drawingBufferHeight: GLsizei;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferWidth) */
     readonly drawingBufferWidth: GLsizei;
+    unpackColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/activeTexture) */
     activeTexture(texture: GLenum): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/attachShader) */
@@ -26631,11 +26656,11 @@ interface WindowOrWorkerGlobalScope {
     atob(data: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
     btoa(data: string): string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearInterval) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearInterval) */
     clearInterval(id: number | undefined): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearTimeout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearTimeout) */
     clearTimeout(id: number | undefined): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/createImageBitmap) */
     createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
@@ -26644,9 +26669,9 @@ interface WindowOrWorkerGlobalScope {
     queueMicrotask(callback: VoidFunction): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/reportError) */
     reportError(e: any): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setInterval) */
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setTimeout) */
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
@@ -28679,11 +28704,11 @@ declare var performance: Performance;
 declare function atob(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
 declare function btoa(data: string): string;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearInterval) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearInterval) */
 declare function clearInterval(id: number | undefined): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearTimeout) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearTimeout) */
 declare function clearTimeout(id: number | undefined): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/createImageBitmap) */
 declare function createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
@@ -28692,9 +28717,9 @@ declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Re
 declare function queueMicrotask(callback: VoidFunction): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/reportError) */
 declare function reportError(e: any): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setInterval) */
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setTimeout) */
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;

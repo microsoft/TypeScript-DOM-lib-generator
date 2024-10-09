@@ -7824,6 +7824,7 @@ interface WebGLRenderingContextBase {
     readonly drawingBufferHeight: GLsizei;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferWidth) */
     readonly drawingBufferWidth: GLsizei;
+    unpackColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/activeTexture) */
     activeTexture(texture: GLenum): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/attachShader) */
@@ -8758,11 +8759,11 @@ interface WindowOrWorkerGlobalScope {
     atob(data: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
     btoa(data: string): string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearInterval) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearInterval) */
     clearInterval(id: number | undefined): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearTimeout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearTimeout) */
     clearTimeout(id: number | undefined): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/createImageBitmap) */
     createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
@@ -8771,9 +8772,9 @@ interface WindowOrWorkerGlobalScope {
     queueMicrotask(callback: VoidFunction): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/reportError) */
     reportError(e: any): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setInterval) */
     setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setTimeout) */
     setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
@@ -9570,11 +9571,11 @@ declare var performance: Performance;
 declare function atob(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
 declare function btoa(data: string): string;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearInterval) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearInterval) */
 declare function clearInterval(id: number | undefined): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/clearTimeout) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/clearTimeout) */
 declare function clearTimeout(id: number | undefined): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/createImageBitmap) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/createImageBitmap) */
 declare function createImageBitmap(image: ImageBitmapSource, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 declare function createImageBitmap(image: ImageBitmapSource, sx: number, sy: number, sw: number, sh: number, options?: ImageBitmapOptions): Promise<ImageBitmap>;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/fetch) */
@@ -9583,9 +9584,9 @@ declare function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Re
 declare function queueMicrotask(callback: VoidFunction): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/reportError) */
 declare function reportError(e: any): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setInterval) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setInterval) */
 declare function setInterval(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/setTimeout) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/setTimeout) */
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
