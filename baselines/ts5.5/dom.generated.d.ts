@@ -15643,7 +15643,7 @@ interface MediaMetadata {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata/artist) */
     artist: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata/artwork) */
-    artwork: ReadonlyArray<any>;
+    artwork: ReadonlyArray<MediaImage>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata/title) */
     title: string;
 }

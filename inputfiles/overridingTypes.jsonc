@@ -492,6 +492,17 @@
                     }
                 }
             },
+            "MediaMetadata": {
+                "properties": {
+                    "property": {
+                        "artwork": {
+                            "subtype": {
+                                "type": "MediaImage"
+                            }
+                        }
+                    }
+                }
+            },
             "MediaQueryList": {
                 "methods": {
                     "method": {
