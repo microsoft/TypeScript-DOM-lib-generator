@@ -5301,7 +5301,11 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/integrity)
      */
     readonly integrity: string;
-    /** Returns a boolean indicating whether or not request can outlive the global in which it was created. */
+    /**
+     * Returns a boolean indicating whether or not request can outlive the global in which it was created.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
+     */
     readonly keepalive: boolean;
     /**
      * Returns request's HTTP method, which is "GET" by default.

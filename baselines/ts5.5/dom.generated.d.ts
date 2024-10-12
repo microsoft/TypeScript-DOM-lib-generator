@@ -4803,6 +4803,8 @@ interface CSSStyleDeclaration {
     pointerEvents: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position) */
     position: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-area) */
+    positionArea: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/print-color-adjust) */
     printColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
@@ -10145,7 +10147,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/form)
      */
     readonly form: HTMLFormElement | null;
-    /** Overrides the action attribute (where the data on a form is sent) on the parent form element. */
+    /**
+     * Overrides the action attribute (where the data on a form is sent) on the parent form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formAction)
+     */
     formAction: string;
     /** Used to override the encoding (formEnctype attribute) specified on the form element. */
     formEnctype: string;
@@ -11411,7 +11417,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/form)
      */
     readonly form: HTMLFormElement | null;
-    /** Overrides the action attribute (where the data on a form is sent) on the parent form element. */
+    /**
+     * Overrides the action attribute (where the data on a form is sent) on the parent form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formAction)
+     */
     formAction: string;
     /** Used to override the encoding (formEnctype attribute) specified on the form element. */
     formEnctype: string;
@@ -19307,7 +19317,11 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/integrity)
      */
     readonly integrity: string;
-    /** Returns a boolean indicating whether or not request can outlive the global in which it was created. */
+    /**
+     * Returns a boolean indicating whether or not request can outlive the global in which it was created.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
+     */
     readonly keepalive: boolean;
     /**
      * Returns request's HTTP method, which is "GET" by default.
