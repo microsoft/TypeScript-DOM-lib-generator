@@ -8467,9 +8467,12 @@ declare var EncodedVideoChunk: {
  */
 interface ErrorEvent extends Event {
     readonly colno: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
     readonly error: any;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/filename) */
     readonly filename: string;
     readonly lineno: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message) */
     readonly message: string;
 }
 
@@ -10155,7 +10158,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
     formAction: string;
     /** Used to override the encoding (formEnctype attribute) specified on the form element. */
     formEnctype: string;
-    /** Overrides the submit method attribute previously specified on a form element. */
+    /**
+     * Overrides the submit method attribute previously specified on a form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formMethod)
+     */
     formMethod: string;
     /** Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option. */
     formNoValidate: boolean;
@@ -10744,7 +10751,11 @@ interface HTMLFormElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/action)
      */
     action: string;
-    /** Specifies whether autocomplete is applied to an editable text field. */
+    /**
+     * Specifies whether autocomplete is applied to an editable text field.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/autocomplete)
+     */
     autocomplete: AutoFillBase;
     /**
      * Retrieves a collection, in source order, of all controls in a given form.
@@ -11425,7 +11436,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
     formAction: string;
     /** Used to override the encoding (formEnctype attribute) specified on the form element. */
     formEnctype: string;
-    /** Overrides the submit method attribute previously specified on a form element. */
+    /**
+     * Overrides the submit method attribute previously specified on a form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formMethod)
+     */
     formMethod: string;
     /** Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option. */
     formNoValidate: boolean;
