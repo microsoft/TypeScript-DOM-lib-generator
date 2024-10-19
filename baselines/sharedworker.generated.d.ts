@@ -2117,11 +2117,13 @@ interface EXT_texture_norm16 {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent)
  */
 interface ErrorEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/colno) */
     readonly colno: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
     readonly error: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/filename) */
     readonly filename: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/lineno) */
     readonly lineno: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message) */
     readonly message: string;
@@ -6853,6 +6855,7 @@ interface WebGLRenderingContextBase {
     readonly drawingBufferHeight: GLsizei;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferWidth) */
     readonly drawingBufferWidth: GLsizei;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/unpackColorSpace) */
     unpackColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/activeTexture) */
     activeTexture(texture: GLenum): void;

@@ -8466,11 +8466,13 @@ declare var EncodedVideoChunk: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent)
  */
 interface ErrorEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/colno) */
     readonly colno: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error) */
     readonly error: any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/filename) */
     readonly filename: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/lineno) */
     readonly lineno: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message) */
     readonly message: string;
@@ -10156,7 +10158,11 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formAction)
      */
     formAction: string;
-    /** Used to override the encoding (formEnctype attribute) specified on the form element. */
+    /**
+     * Used to override the encoding (formEnctype attribute) specified on the form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formEnctype)
+     */
     formEnctype: string;
     /**
      * Overrides the submit method attribute previously specified on a form element.
@@ -11434,7 +11440,11 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formAction)
      */
     formAction: string;
-    /** Used to override the encoding (formEnctype attribute) specified on the form element. */
+    /**
+     * Used to override the encoding (formEnctype attribute) specified on the form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formEnctype)
+     */
     formEnctype: string;
     /**
      * Overrides the submit method attribute previously specified on a form element.
@@ -25380,6 +25390,7 @@ interface WebGLRenderingContextBase {
     readonly drawingBufferHeight: GLsizei;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferWidth) */
     readonly drawingBufferWidth: GLsizei;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/unpackColorSpace) */
     unpackColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/activeTexture) */
     activeTexture(texture: GLenum): void;
