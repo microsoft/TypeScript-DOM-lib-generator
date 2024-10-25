@@ -484,9 +484,7 @@
                 "properties": {
                     "property": {
                         "hidden": {
-                            // https://github.com/whatwg/html/pull/7475
-                            // Revisit when this get browser supports.
-                            "overrideType": "boolean",
+                            "overrideType": "boolean | \"until-found\"",
                             "nullable": false
                         }
                     }

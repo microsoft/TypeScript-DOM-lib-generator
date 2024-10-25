@@ -10515,7 +10515,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/draggable) */
     draggable: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/hidden) */
-    hidden: boolean;
+    hidden: boolean | "until-found";
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/inert) */
     inert: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/innerText) */
