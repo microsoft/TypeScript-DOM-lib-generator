@@ -12842,6 +12842,7 @@ declare var HTMLScriptElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement)
  */
 interface HTMLSelectElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/autocomplete) */
     autocomplete: AutoFill;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/disabled) */
     disabled: boolean;
