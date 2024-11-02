@@ -37,7 +37,7 @@ interface EmitOptions {
   global: string[];
   name: string;
   outputFolder: URL;
-  compilerBehavior;
+  compilerBehavior: CompilerBehavior;
 }
 
 async function emitFlavor(
