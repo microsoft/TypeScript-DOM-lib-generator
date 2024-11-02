@@ -1,7 +1,7 @@
 import * as Browser from "./build/types.js";
 import { promises as fs } from "fs";
 import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
-import { emitWebIdl } from "./build/emitter.js";
+import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";
 import { convert } from "./build/widlprocess.js";
 import { getExposedTypes } from "./build/expose.js";
 import {
@@ -37,7 +37,7 @@ interface EmitOptions {
   global: string[];
   name: string;
   outputFolder: URL;
-  useIteratorObject: boolean;
+  compilerBehavior: CompilerBehavior;
 }
 
 async function emitFlavor(
@@ -53,7 +53,7 @@ async function emitFlavor(
     exposed,
     options.global[0],
     "",
-    options.useIteratorObject,
+    options.compilerBehavior,
   );
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
@@ -64,7 +64,7 @@ async function emitFlavor(
     exposed,
     options.global[0],
     "sync",
-    options.useIteratorObject,
+    options.compilerBehavior,
   );
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
@@ -75,7 +75,7 @@ async function emitFlavor(
     exposed,
     options.global[0],
     "async",
-    options.useIteratorObject,
+    options.compilerBehavior,
   );
   await fs.writeFile(
     new URL(
@@ -294,12 +294,18 @@ async function emitDom() {
   const emitVariations = [
     {
       outputFolder: new URL("./ts5.5/", outputFolder),
-      useIteratorObject: false,
+      compat: {},
     },
-    { outputFolder, useIteratorObject: true },
+    {
+      outputFolder,
+      compat: {
+        useIteratorObject: true,
+        allowUnrelatedSetterType: true,
+      } as CompilerBehavior,
+    },
   ];
 
-  for (const { outputFolder, useIteratorObject } of emitVariations) {
+  for (const { outputFolder, compat } of emitVariations) {
     // Create output folder
     await fs.mkdir(outputFolder, {
       // Doesn't need to be recursive, but this helpfully ignores EEXIST
@@ -310,31 +316,31 @@ async function emitDom() {
       name: "dom",
       global: ["Window"],
       outputFolder,
-      useIteratorObject,
+      compilerBehavior: compat,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "webworker",
       global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
       outputFolder,
-      useIteratorObject,
+      compilerBehavior: compat,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "sharedworker",
       global: ["SharedWorker", "Worker"],
       outputFolder,
-      useIteratorObject,
+      compilerBehavior: compat,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "serviceworker",
       global: ["ServiceWorker", "Worker"],
       outputFolder,
-      useIteratorObject,
+      compilerBehavior: compat,
     });
     emitFlavor(webidl, new Set(knownTypes.Worklet), {
       name: "audioworklet",
       global: ["AudioWorklet", "Worklet"],
       outputFolder,
-      useIteratorObject,
+      compilerBehavior: compat,
     });
   }
 

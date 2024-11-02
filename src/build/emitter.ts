@@ -132,11 +132,16 @@ function isEventHandler(p: Browser.Property) {
   return typeof p.eventHandler === "string";
 }
 
+export interface CompilerBehavior {
+  useIteratorObject?: boolean;
+  allowUnrelatedSetterType?: boolean;
+}
+
 export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
   iterator: "" | "sync" | "async",
-  useIteratorObject: boolean,
+  compilerBehavior: CompilerBehavior,
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
@@ -821,7 +826,9 @@ export function emitWebIdl(
         pType += " | undefined";
       }
       const optionalModifier = !p.optional || prefix ? "" : "?";
-      if (!prefix && !p.readonly && p.putForwards) {
+      const canPutForward =
+        compilerBehavior.allowUnrelatedSetterType || !p.readonly;
+      if (!prefix && canPutForward && p.putForwards) {
         printer.printLine(`get ${p.name}${optionalModifier}(): ${pType};`);
 
         const forwardingProperty =
@@ -829,9 +836,10 @@ export function emitWebIdl(
         if (!forwardingProperty) {
           throw new Error("Couldn't find [PutForwards]");
         }
-        const setterType = `${convertDomTypeToTsType(
-          forwardingProperty,
-        )} | ${pType}`;
+        let setterType = `${convertDomTypeToTsType(forwardingProperty)}`;
+        if (!compilerBehavior.allowUnrelatedSetterType) {
+          setterType += ` | ${pType}`;
+        }
         printer.printLine(
           `set ${p.name}${optionalModifier}(${p.putForwards}: ${setterType});`,
         );
@@ -1541,7 +1549,7 @@ export function emitWebIdl(
   }
 
   function emitSelfIterator(i: Browser.Interface) {
-    if (!useIteratorObject) return;
+    if (!compilerBehavior.useIteratorObject) return;
     const async = i.iterator?.async;
     const name = getName(i);
     const iteratorBaseType = `${async ? "Async" : ""}IteratorObject`;
@@ -1569,10 +1577,10 @@ export function emitWebIdl(
     }
     const async = i.iterator?.async;
     const iteratorType = async
-      ? !useIteratorObject
+      ? !compilerBehavior.useIteratorObject
         ? "AsyncIterableIterator"
         : `${name}AsyncIterator`
-      : !useIteratorObject
+      : !compilerBehavior.useIteratorObject
         ? "IterableIterator"
         : subtypes.length !== 1
           ? `${name}Iterator`

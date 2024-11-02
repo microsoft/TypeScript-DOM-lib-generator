@@ -599,6 +599,7 @@
                             "deprecated": true
                         },
                         "location": {
+                            // Pre-TS-5.1 hack to make window.location assignable
                             "readonly": false
                         },
                         "onorientationchange": {
@@ -799,7 +800,10 @@
                             "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
                         },
                         "location": {
+                            // Pre-TS-5.1 hack to make document.location assignable
                             "readonly": false,
+                            // Technically this can be null for a detached iframe.
+                            // But that's an edge case and flipping this also breaks compatibility.
                             "nullable": false
                         },
                         "body": {
