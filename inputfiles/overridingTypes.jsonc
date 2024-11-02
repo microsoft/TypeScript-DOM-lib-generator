@@ -3378,7 +3378,7 @@
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
                         },
                         "webkitLineClamp": {
-                            // The corresponding standardized property is not supported by anyone as of 2024-04.
+                            // The corresponding standardized property is not supported by anyone as of 2024-10.
                             "deprecated": false
                         }
                     }
