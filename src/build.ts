@@ -37,7 +37,7 @@ interface EmitOptions {
   global: string[];
   name: string;
   outputFolder: URL;
-  compilerBehavior: CompilerBehavior;
+  compilerBehavior;
 }
 
 async function emitFlavor(
@@ -294,18 +294,18 @@ async function emitDom() {
   const emitVariations = [
     {
       outputFolder: new URL("./ts5.5/", outputFolder),
-      compat: {},
+      compilerBehavior: {},
     },
     {
       outputFolder,
-      compat: {
+      compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
       } as CompilerBehavior,
     },
   ];
 
-  for (const { outputFolder, compat } of emitVariations) {
+  for (const { outputFolder, compilerBehavior } of emitVariations) {
     // Create output folder
     await fs.mkdir(outputFolder, {
       // Doesn't need to be recursive, but this helpfully ignores EEXIST
@@ -316,31 +316,31 @@ async function emitDom() {
       name: "dom",
       global: ["Window"],
       outputFolder,
-      compilerBehavior: compat,
+      compilerBehavior,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "webworker",
       global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
       outputFolder,
-      compilerBehavior: compat,
+      compilerBehavior,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "sharedworker",
       global: ["SharedWorker", "Worker"],
       outputFolder,
-      compilerBehavior: compat,
+      compilerBehavior,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "serviceworker",
       global: ["ServiceWorker", "Worker"],
       outputFolder,
-      compilerBehavior: compat,
+      compilerBehavior,
     });
     emitFlavor(webidl, new Set(knownTypes.Worklet), {
       name: "audioworklet",
       global: ["AudioWorklet", "Worklet"],
       outputFolder,
-      compilerBehavior: compat,
+      compilerBehavior,
     });
   }
 
