@@ -610,7 +610,18 @@
                         "window": {
                             "overrideType": "Window & typeof globalThis"
                         },
+                        "pageXOffset": {
+                            // While this is indeed an alias of scrollX, it's not a vendor prefixed legacy as aliases usually are.
+                            "deprecated": false
+                        },
+                        "pageYOffset": {
+                            // While this is indeed an alias of scrollY, it's not a vendor prefixed legacy as aliases usually are.
+                            "deprecated": false
+                        },
                         "parent": {
+                            // This is technically nullable, but it only happens in some edge cases, and
+                            // making it nullable breaks compatibility as it has historically been non-nullable in TS lib.
+                            // See the example in https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-parent.
                             "nullable": false
                         }
                     }
@@ -3365,6 +3376,10 @@
                             "name": "cssFloat",
                             "type": "CSSOMString",
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
+                        },
+                        "webkitLineClamp": {
+                            // The corresponding standardized property is not supported by anyone as of 2024-04.
+                            "deprecated": false
                         }
                     }
                 }

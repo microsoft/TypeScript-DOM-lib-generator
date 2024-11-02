@@ -5255,11 +5255,7 @@ interface CSSStyleDeclaration {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/justify-content)
      */
     webkitJustifyContent: string;
-    /**
-     * @deprecated This is a legacy alias of `lineClamp`.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/-webkit-line-clamp)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/-webkit-line-clamp) */
     webkitLineClamp: string;
     /**
      * @deprecated This is a legacy alias of `mask`.
@@ -26531,17 +26527,9 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly outerHeight: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/outerWidth) */
     readonly outerWidth: number;
-    /**
-     * @deprecated This is a legacy alias of `scrollX`.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollX)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollX) */
     readonly pageXOffset: number;
-    /**
-     * @deprecated This is a legacy alias of `scrollY`.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollY)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollY) */
     readonly pageYOffset: number;
     /**
      * Refers to either the parent WindowProxy, or itself.
@@ -28174,17 +28162,9 @@ declare var orientation: number;
 declare var outerHeight: number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/outerWidth) */
 declare var outerWidth: number;
-/**
- * @deprecated This is a legacy alias of `scrollX`.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollX)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollX) */
 declare var pageXOffset: number;
-/**
- * @deprecated This is a legacy alias of `scrollY`.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollY)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollY) */
 declare var pageYOffset: number;
 /**
  * Refers to either the parent WindowProxy, or itself.
