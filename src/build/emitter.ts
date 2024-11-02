@@ -1736,7 +1736,7 @@ export function emitWebIdl(
     const methodsWithSequence: Browser.Method[] = mapToArray(
       i.methods ? i.methods.method : {},
     )
-      .filter((m) => m.signature && !m.overrideSignatures)
+      .filter((m) => m.signature && !m.overrideSignatures && !m.static)
       .map((m) => ({
         ...m,
         signature: replaceTypedefsInSignatures(
