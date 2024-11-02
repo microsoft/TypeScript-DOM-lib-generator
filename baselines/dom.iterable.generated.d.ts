@@ -176,6 +176,10 @@ interface IDBObjectStore {
     createIndex(name: string, keyPath: string | Iterable<string>, options?: IDBIndexParameters): IDBIndex;
 }
 
+interface ImageTrackList {
+    [Symbol.iterator](): ArrayIterator<ImageTrack>;
+}
+
 interface MIDIInputMap extends ReadonlyMap<string, MIDIInput> {
 }
 

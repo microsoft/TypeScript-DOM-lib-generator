@@ -7934,6 +7934,12 @@ interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, N
     readonly mediaCapabilities: MediaCapabilities;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/permissions) */
     readonly permissions: Permissions;
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/serviceWorker)
+     */
+    readonly serviceWorker: ServiceWorkerContainer;
 }
 
 declare var WorkerNavigator: {

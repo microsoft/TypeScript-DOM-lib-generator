@@ -769,6 +769,26 @@ interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
 }
 
+interface ImageDecodeOptions {
+    completeFramesOnly?: boolean;
+    frameIndex?: number;
+}
+
+interface ImageDecodeResult {
+    complete: boolean;
+    image: VideoFrame;
+}
+
+interface ImageDecoderInit {
+    colorSpaceConversion?: ColorSpaceConversion;
+    data: ImageBufferSource;
+    desiredHeight?: number;
+    desiredWidth?: number;
+    preferAnimation?: boolean;
+    transfer?: ArrayBuffer[];
+    type: string;
+}
+
 interface ImageEncodeOptions {
     quality?: number;
     type?: string;
@@ -9471,7 +9491,7 @@ interface GlobalEventHandlers {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/blur_event)
      */
     onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/cancel_event) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/cancel_event) */
     oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /**
      * Occurs when playback is possible, but would require further buffering.
@@ -10170,9 +10190,17 @@ interface HTMLButtonElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formMethod)
      */
     formMethod: string;
-    /** Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option. */
+    /**
+     * Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formNoValidate)
+     */
     formNoValidate: boolean;
-    /** Overrides the target attribute on a form element. */
+    /**
+     * Overrides the target attribute on a form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formTarget)
+     */
     formTarget: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
@@ -10799,7 +10827,11 @@ interface HTMLFormElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/name)
      */
     name: string;
-    /** Designates a form that is not validated when submitted. */
+    /**
+     * Designates a form that is not validated when submitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/noValidate)
+     */
     noValidate: boolean;
     rel: string;
     readonly relList: DOMTokenList;
@@ -11452,9 +11484,17 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formMethod)
      */
     formMethod: string;
-    /** Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option. */
+    /**
+     * Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formNoValidate)
+     */
     formNoValidate: boolean;
-    /** Overrides the target attribute on a form element. */
+    /**
+     * Overrides the target attribute on a form element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formTarget)
+     */
     formTarget: string;
     /**
      * Sets or retrieves the height of the object.
@@ -14867,6 +14907,70 @@ declare var ImageData: {
     prototype: ImageData;
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
+};
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder)
+ */
+interface ImageDecoder {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete) */
+    readonly complete: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed) */
+    readonly completed: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks) */
+    readonly tracks: ImageTrackList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type) */
+    readonly type: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/decode) */
+    decode(options?: ImageDecodeOptions): Promise<ImageDecodeResult>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/reset) */
+    reset(): void;
+}
+
+declare var ImageDecoder: {
+    prototype: ImageDecoder;
+    new(init: ImageDecoderInit): ImageDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/isTypeSupported_static) */
+    isTypeSupported(type: string): Promise<boolean>;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack) */
+interface ImageTrack {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated) */
+    readonly animated: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/frameCount) */
+    readonly frameCount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/repetitionCount) */
+    readonly repetitionCount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected) */
+    selected: boolean;
+}
+
+declare var ImageTrack: {
+    prototype: ImageTrack;
+    new(): ImageTrack;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList) */
+interface ImageTrackList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
+    readonly length: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready) */
+    readonly ready: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex) */
+    readonly selectedIndex: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack) */
+    readonly selectedTrack: ImageTrack | null;
+    [index: number]: ImageTrack;
+}
+
+declare var ImageTrackList: {
+    prototype: ImageTrackList;
+    new(): ImageTrackList;
 };
 
 interface ImportMeta {
@@ -28271,7 +28375,7 @@ declare var onbeforetoggle: ((this: Window, ev: Event) => any) | null;
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/blur_event)
  */
 declare var onblur: ((this: Window, ev: FocusEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/cancel_event) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/cancel_event) */
 declare var oncancel: ((this: Window, ev: Event) => any) | null;
 /**
  * Occurs when playback is possible, but would require further buffering.
@@ -28816,6 +28920,7 @@ type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
+type ImageBufferSource = AllowSharedBufferSource | ReadableStream;
 type Int32List = Int32Array | GLint[];
 type LineAndPositionSetting = number | AutoKeyword;
 type MediaProvider = MediaStream | MediaSource | Blob;

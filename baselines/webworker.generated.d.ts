@@ -382,6 +382,26 @@ interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
 }
 
+interface ImageDecodeOptions {
+    completeFramesOnly?: boolean;
+    frameIndex?: number;
+}
+
+interface ImageDecodeResult {
+    complete: boolean;
+    image: VideoFrame;
+}
+
+interface ImageDecoderInit {
+    colorSpaceConversion?: ColorSpaceConversion;
+    data: ImageBufferSource;
+    desiredHeight?: number;
+    desiredWidth?: number;
+    preferAnimation?: boolean;
+    transfer?: ArrayBuffer[];
+    type: string;
+}
+
 interface ImageEncodeOptions {
     quality?: number;
     type?: string;
@@ -4062,6 +4082,70 @@ declare var ImageData: {
     prototype: ImageData;
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
+};
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder)
+ */
+interface ImageDecoder {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete) */
+    readonly complete: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed) */
+    readonly completed: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks) */
+    readonly tracks: ImageTrackList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type) */
+    readonly type: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/decode) */
+    decode(options?: ImageDecodeOptions): Promise<ImageDecodeResult>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/reset) */
+    reset(): void;
+}
+
+declare var ImageDecoder: {
+    prototype: ImageDecoder;
+    new(init: ImageDecoderInit): ImageDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/isTypeSupported_static) */
+    isTypeSupported(type: string): Promise<boolean>;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack) */
+interface ImageTrack {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated) */
+    readonly animated: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/frameCount) */
+    readonly frameCount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/repetitionCount) */
+    readonly repetitionCount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected) */
+    selected: boolean;
+}
+
+declare var ImageTrack: {
+    prototype: ImageTrack;
+    new(): ImageTrack;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList) */
+interface ImageTrackList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
+    readonly length: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready) */
+    readonly ready: Promise<undefined>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex) */
+    readonly selectedIndex: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack) */
+    readonly selectedTrack: ImageTrack | null;
+    [index: number]: ImageTrack;
+}
+
+declare var ImageTrackList: {
+    prototype: ImageTrackList;
+    new(): ImageTrackList;
 };
 
 interface ImportMeta {
@@ -8933,6 +9017,12 @@ interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, N
     readonly mediaCapabilities: MediaCapabilities;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/permissions) */
     readonly permissions: Permissions;
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/serviceWorker)
+     */
+    readonly serviceWorker: ServiceWorkerContainer;
 }
 
 declare var WorkerNavigator: {
@@ -9641,6 +9731,7 @@ type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
+type ImageBufferSource = AllowSharedBufferSource | ReadableStream;
 type Int32List = Int32Array | GLint[];
 type MessageEventSource = MessagePort | ServiceWorker;
 type NamedCurve = string;
