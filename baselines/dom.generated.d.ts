@@ -2404,89 +2404,89 @@ interface ANGLE_instanced_arrays {
 
 interface ARIAMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAtomic) */
-    ariaAtomic: string | null;
+    ariaAtomic: ("false" | "true" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete) */
-    ariaAutoComplete: string | null;
+    ariaAutoComplete: ("inline" | "list" | "both" | "none" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleLabel) */
-    ariaBrailleLabel: string | null;
+    ariaBrailleLabel: ("string" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleRoleDescription) */
-    ariaBrailleRoleDescription: string | null;
+    ariaBrailleRoleDescription: ("string" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBusy) */
-    ariaBusy: string | null;
+    ariaBusy: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaChecked) */
-    ariaChecked: string | null;
+    ariaChecked: ("true" | "mixed" | "false" | "undefined" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColCount) */
-    ariaColCount: string | null;
+    ariaColCount: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndex) */
-    ariaColIndex: string | null;
+    ariaColIndex: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndexText) */
     ariaColIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan) */
-    ariaColSpan: string | null;
+    ariaColSpan: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent) */
-    ariaCurrent: string | null;
+    ariaCurrent: ("page" | "step" | "location" | "date" | "time" | "true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescription) */
     ariaDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDisabled) */
-    ariaDisabled: string | null;
+    ariaDisabled: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaExpanded) */
-    ariaExpanded: string | null;
+    ariaExpanded: ("true" | "false" | "undefined" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHasPopup) */
-    ariaHasPopup: string | null;
+    ariaHasPopup: ("false" | "true" | "menu" | "listbox" | "tree" | "grid" | "dialog" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHidden) */
-    ariaHidden: string | null;
+    ariaHidden: ("true" | "false" | "undefined" | (string & {})) | null;
     ariaInvalid: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaKeyShortcuts) */
     ariaKeyShortcuts: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabel) */
     ariaLabel: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLevel) */
-    ariaLevel: string | null;
+    ariaLevel: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLive) */
-    ariaLive: string | null;
+    ariaLive: ("assertive" | "off" | "polite" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaModal) */
-    ariaModal: string | null;
+    ariaModal: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiLine) */
-    ariaMultiLine: string | null;
+    ariaMultiLine: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiSelectable) */
-    ariaMultiSelectable: string | null;
+    ariaMultiSelectable: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOrientation) */
-    ariaOrientation: string | null;
+    ariaOrientation: ("horizontal" | "vertical" | "undefined" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPlaceholder) */
     ariaPlaceholder: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPosInSet) */
-    ariaPosInSet: string | null;
+    ariaPosInSet: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPressed) */
-    ariaPressed: string | null;
+    ariaPressed: ("true" | "false" | "mixed" | "undefined" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaReadOnly) */
-    ariaReadOnly: string | null;
+    ariaReadOnly: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRequired) */
     ariaRequired: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRoleDescription) */
     ariaRoleDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowCount) */
-    ariaRowCount: string | null;
+    ariaRowCount: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndex) */
-    ariaRowIndex: string | null;
+    ariaRowIndex: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndexText) */
     ariaRowIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowSpan) */
-    ariaRowSpan: string | null;
+    ariaRowSpan: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSelected) */
-    ariaSelected: string | null;
+    ariaSelected: ("true" | "false" | "undefined" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSetSize) */
-    ariaSetSize: string | null;
+    ariaSetSize: `${bigint}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSort) */
-    ariaSort: string | null;
+    ariaSort: ("ascending" | "descending" | "none" | "other" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMax) */
-    ariaValueMax: string | null;
+    ariaValueMax: `${number}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMin) */
-    ariaValueMin: string | null;
+    ariaValueMin: `${number}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueNow) */
-    ariaValueNow: string | null;
+    ariaValueNow: `${number}` | "" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueText) */
     ariaValueText: string | null;
-    role: string | null;
+    role: ("toolbar" | "tooltip" | "feed" | "math" | "presentation" | "none" | "note" | "application" | "article" | "cell" | "columnheader" | "definition" | "directory" | "document" | "figure" | "group" | "heading" | "img" | "list" | "listitem" | "meter" | "row" | "rowgroup" | "rowheader" | "separator" | "table" | "term" | "associationlist" | "associationlistitemkey" | "associationlistitemvalue" | "blockquote" | "caption" | "code" | "deletion" | "emphasis" | "insertion" | "paragraph" | "strong" | "subscript" | "superscript" | "time" | "scrollbar" | "searchbox" | "separator" | "slider" | "spinbutton" | "switch" | "tab" | "tabpanel" | "treeitem" | "combobox" | "menu" | "menubar" | "tablist" | "tree" | "treegrid" | "banner" | "complementary" | "contentinfo" | "form" | "main" | "navigation" | "region" | "search" | "alert" | "log" | "marquee" | "status" | "timer" | "alertdialog" | "dialog" | (string & {})) | null;
 }
 
 /**
