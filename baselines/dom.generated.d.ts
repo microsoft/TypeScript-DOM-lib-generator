@@ -2461,7 +2461,7 @@ interface ARIAMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaReadOnly) */
     ariaReadOnly: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRequired) */
-    ariaRequired: string | null;
+    ariaRequired: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRoleDescription) */
     ariaRoleDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowCount) */

@@ -374,6 +374,9 @@
                         "ariaReadOnly": {
                             "overrideType": "\"true\" | \"false\" | (string & {})"
                         },
+                        "ariaRequired": {
+                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                        },
                         // "ariaRoleDescription": {
                         //     "overrideType": ""
                         // },
