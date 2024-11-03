@@ -2408,9 +2408,9 @@ interface ARIAMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete) */
     ariaAutoComplete: ("inline" | "list" | "both" | "none" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleLabel) */
-    ariaBrailleLabel: ("string" | (string & {})) | null;
+    ariaBrailleLabel: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleRoleDescription) */
-    ariaBrailleRoleDescription: ("string" | (string & {})) | null;
+    ariaBrailleRoleDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBusy) */
     ariaBusy: ("true" | "false" | (string & {})) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaChecked) */

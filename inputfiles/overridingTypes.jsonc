@@ -314,12 +314,12 @@
                         "ariaAutoComplete": {
                             "overrideType": "\"inline\" | \"list\" | \"both\" | \"none\" | (string & {})"
                         },
-                        "ariaBrailleLabel": {
-                            "overrideType": "\"string\" | (string & {})"
-                        },
-                        "ariaBrailleRoleDescription": {
-                            "overrideType": "\"string\" | (string & {})"
-                        },
+                        // "ariaBrailleLabel": {
+                        //     "overrideType": ""
+                        // },
+                        // "ariaBrailleRoleDescription": {
+                        //     "overrideType": ""
+                        // },
                         "ariaBusy": {
                             "overrideType": "\"true\" | \"false\" | (string & {})"
                         },
