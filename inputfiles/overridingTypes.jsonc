@@ -291,130 +291,103 @@
                 "properties": {
                     "property": {
                         "ariaColCount": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaColIndex": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
-                        // "ariaColIndexText": {
-                        //     "overrideType": ""
-                        // },
                         "ariaColSpan": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaCurrent": {
-                            "overrideType": "\"page\" | \"step\" | \"location\" | \"date\" | \"time\" | \"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"page\" | \"step\" | \"location\" | \"date\" | \"time\" | \"true\" | \"false\""
                         },
-                        // "ariaDescription": {
-                        //     "overrideType": ""
-                        // },
                         "ariaAtomic": {
-                            "overrideType": "\"false\" | \"true\" | (string & {})"
+                            "overrideType": "\"false\" | \"true\""
                         },
                         "ariaAutoComplete": {
-                            "overrideType": "\"inline\" | \"list\" | \"both\" | \"none\" | (string & {})"
+                            "overrideType": "\"inline\" | \"list\" | \"both\" | \"none\""
                         },
-                        // "ariaBrailleLabel": {
-                        //     "overrideType": ""
-                        // },
-                        // "ariaBrailleRoleDescription": {
-                        //     "overrideType": ""
-                        // },
                         "ariaBusy": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
                         "ariaChecked": {
-                            "overrideType": "\"true\" | \"mixed\" | \"false\" | \"undefined\" | (string & {})"
+                            "overrideType": "\"true\" | \"mixed\" | \"false\" | \"undefined\""
                         },
                         "ariaDisabled": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
                         "ariaExpanded": {
-                            "overrideType": "\"true\" | \"false\" | \"undefined\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\" | \"undefined\""
                         },
                         "ariaHasPopup": {
-                            "overrideType": "\"false\" | \"true\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\" | \"dialog\" | (string & {})"
+                            "overrideType": "\"false\" | \"true\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\" | \"dialog\""
                         },
                         "ariaHidden": {
-                            "overrideType": "\"true\" | \"false\" | \"undefined\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\" | \"undefined\""
                         },
-                        // "ariaKeyShortcuts": {
-                        //     "overrideType": ""
-                        // },
-                        // "ariaLabel": {
-                        //     "overrideType": ""
-                        // },
+                        "ariaInvalid": {
+                            "overrideType": "\"true\" | \"false\" | \"grammar\" | \"spelling\""
+                        },
                         "ariaLevel": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaLive": {
-                            "overrideType": "\"assertive\" | \"off\" | \"polite\" | (string & {})"
+                            "overrideType": "\"assertive\" | \"off\" | \"polite\""
                         },
                         "ariaModal": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
                         "ariaMultiLine": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
                         "ariaMultiSelectable": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
                         "ariaOrientation": {
-                            "overrideType": "\"horizontal\" | \"vertical\" | \"undefined\" | (string & {})"
+                            "overrideType": "\"horizontal\" | \"vertical\" | \"undefined\""
                         },
-                        // "ariaPlaceholder": {
-                        //     "overrideType": ""
-                        // },
                         "ariaPosInSet": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaPressed": {
-                            "overrideType": "\"true\" | \"false\" | \"mixed\" | \"undefined\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\" | \"mixed\" | \"undefined\""
                         },
                         "ariaReadOnly": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
                         "ariaRequired": {
-                            "overrideType": "\"true\" | \"false\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\""
                         },
-                        // "ariaRoleDescription": {
-                        //     "overrideType": ""
-                        // },
                         "ariaRowCount": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaRowIndex": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
-                        // "ariaRowIndexText": {
-                        //     "overrideType": ""
-                        // },
                         "ariaRowSpan": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaSelected": {
-                            "overrideType": "\"true\" | \"false\" | \"undefined\" | (string & {})"
+                            "overrideType": "\"true\" | \"false\" | \"undefined\""
                         },
                         "ariaSetSize": {
-                            "overrideType": "`${bigint}` | \"\""
+                            "overrideType": "`${bigint}`"
                         },
                         "ariaSort": {
-                            "overrideType": "\"ascending\" | \"descending\" | \"none\" | \"other\" | (string & {})"
+                            "overrideType": "\"ascending\" | \"descending\" | \"none\" | \"other\""
                         },
                         "ariaValueMax": {
-                            "overrideType": "`${number}` | \"\""
+                            "overrideType": "`${number}`"
                         },
                         "ariaValueMin": {
-                            "overrideType": "`${number}` | \"\""
+                            "overrideType": "`${number}`"
                         },
                         "ariaValueNow": {
-                            "overrideType": "`${number}` | \"\""
+                            "overrideType": "`${number}`"
                         },
-                        // "ariaValueText": {
-                        //     "overrideType": ""
-                        // }
                         "role": {
-                            "overrideType": "\"toolbar\" | \"tooltip\" | \"feed\" | \"math\" | \"presentation\" | \"none\" | \"note\" | \"application\" | \"article\" | \"cell\" | \"columnheader\" | \"definition\" | \"directory\" | \"document\" | \"figure\" | \"group\" | \"heading\" | \"img\" | \"list\" | \"listitem\" | \"meter\" | \"row\" | \"rowgroup\" | \"rowheader\" | \"separator\" | \"table\" | \"term\" | \"associationlist\" | \"associationlistitemkey\" | \"associationlistitemvalue\" | \"blockquote\" | \"caption\" | \"code\" | \"deletion\" | \"emphasis\" | \"insertion\" | \"paragraph\" | \"strong\" | \"subscript\" | \"superscript\" | \"time\" | \"scrollbar\" | \"searchbox\" | \"separator\" | \"slider\" | \"spinbutton\" | \"switch\" | \"tab\" | \"tabpanel\" | \"treeitem\" | \"combobox\" | \"menu\" | \"menubar\" | \"tablist\" | \"tree\" | \"treegrid\" | \"banner\" | \"complementary\" | \"contentinfo\" | \"form\" | \"main\" | \"navigation\" | \"region\" | \"search\" | \"alert\" | \"log\" | \"marquee\" | \"status\" | \"timer\" | \"alertdialog\" | \"dialog\" | (string & {})"
+                            "type": "ARIARole"
                         }
                     }
                 }

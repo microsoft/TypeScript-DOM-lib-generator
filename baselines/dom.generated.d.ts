@@ -2404,89 +2404,89 @@ interface ANGLE_instanced_arrays {
 
 interface ARIAMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAtomic) */
-    ariaAtomic: ("false" | "true" | (string & {})) | null;
+    ariaAtomic: "false" | "true" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete) */
-    ariaAutoComplete: ("inline" | "list" | "both" | "none" | (string & {})) | null;
+    ariaAutoComplete: "inline" | "list" | "both" | "none" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleLabel) */
     ariaBrailleLabel: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleRoleDescription) */
     ariaBrailleRoleDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBusy) */
-    ariaBusy: ("true" | "false" | (string & {})) | null;
+    ariaBusy: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaChecked) */
-    ariaChecked: ("true" | "mixed" | "false" | "undefined" | (string & {})) | null;
+    ariaChecked: "true" | "mixed" | "false" | "undefined" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColCount) */
-    ariaColCount: `${bigint}` | "" | null;
+    ariaColCount: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndex) */
-    ariaColIndex: `${bigint}` | "" | null;
+    ariaColIndex: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndexText) */
     ariaColIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan) */
-    ariaColSpan: `${bigint}` | "" | null;
+    ariaColSpan: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent) */
-    ariaCurrent: ("page" | "step" | "location" | "date" | "time" | "true" | "false" | (string & {})) | null;
+    ariaCurrent: "page" | "step" | "location" | "date" | "time" | "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescription) */
     ariaDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDisabled) */
-    ariaDisabled: ("true" | "false" | (string & {})) | null;
+    ariaDisabled: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaExpanded) */
-    ariaExpanded: ("true" | "false" | "undefined" | (string & {})) | null;
+    ariaExpanded: "true" | "false" | "undefined" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHasPopup) */
-    ariaHasPopup: ("false" | "true" | "menu" | "listbox" | "tree" | "grid" | "dialog" | (string & {})) | null;
+    ariaHasPopup: "false" | "true" | "menu" | "listbox" | "tree" | "grid" | "dialog" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHidden) */
-    ariaHidden: ("true" | "false" | "undefined" | (string & {})) | null;
-    ariaInvalid: string | null;
+    ariaHidden: "true" | "false" | "undefined" | null;
+    ariaInvalid: "true" | "false" | "grammar" | "spelling" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaKeyShortcuts) */
     ariaKeyShortcuts: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabel) */
     ariaLabel: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLevel) */
-    ariaLevel: `${bigint}` | "" | null;
+    ariaLevel: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLive) */
-    ariaLive: ("assertive" | "off" | "polite" | (string & {})) | null;
+    ariaLive: "assertive" | "off" | "polite" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaModal) */
-    ariaModal: ("true" | "false" | (string & {})) | null;
+    ariaModal: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiLine) */
-    ariaMultiLine: ("true" | "false" | (string & {})) | null;
+    ariaMultiLine: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiSelectable) */
-    ariaMultiSelectable: ("true" | "false" | (string & {})) | null;
+    ariaMultiSelectable: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOrientation) */
-    ariaOrientation: ("horizontal" | "vertical" | "undefined" | (string & {})) | null;
+    ariaOrientation: "horizontal" | "vertical" | "undefined" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPlaceholder) */
     ariaPlaceholder: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPosInSet) */
-    ariaPosInSet: `${bigint}` | "" | null;
+    ariaPosInSet: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPressed) */
-    ariaPressed: ("true" | "false" | "mixed" | "undefined" | (string & {})) | null;
+    ariaPressed: "true" | "false" | "mixed" | "undefined" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaReadOnly) */
-    ariaReadOnly: ("true" | "false" | (string & {})) | null;
+    ariaReadOnly: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRequired) */
-    ariaRequired: ("true" | "false" | (string & {})) | null;
+    ariaRequired: "true" | "false" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRoleDescription) */
     ariaRoleDescription: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowCount) */
-    ariaRowCount: `${bigint}` | "" | null;
+    ariaRowCount: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndex) */
-    ariaRowIndex: `${bigint}` | "" | null;
+    ariaRowIndex: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndexText) */
     ariaRowIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowSpan) */
-    ariaRowSpan: `${bigint}` | "" | null;
+    ariaRowSpan: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSelected) */
-    ariaSelected: ("true" | "false" | "undefined" | (string & {})) | null;
+    ariaSelected: "true" | "false" | "undefined" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSetSize) */
-    ariaSetSize: `${bigint}` | "" | null;
+    ariaSetSize: `${bigint}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSort) */
-    ariaSort: ("ascending" | "descending" | "none" | "other" | (string & {})) | null;
+    ariaSort: "ascending" | "descending" | "none" | "other" | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMax) */
-    ariaValueMax: `${number}` | "" | null;
+    ariaValueMax: `${number}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMin) */
-    ariaValueMin: `${number}` | "" | null;
+    ariaValueMin: `${number}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueNow) */
-    ariaValueNow: `${number}` | "" | null;
+    ariaValueNow: `${number}` | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueText) */
     ariaValueText: string | null;
-    role: ("toolbar" | "tooltip" | "feed" | "math" | "presentation" | "none" | "note" | "application" | "article" | "cell" | "columnheader" | "definition" | "directory" | "document" | "figure" | "group" | "heading" | "img" | "list" | "listitem" | "meter" | "row" | "rowgroup" | "rowheader" | "separator" | "table" | "term" | "associationlist" | "associationlistitemkey" | "associationlistitemvalue" | "blockquote" | "caption" | "code" | "deletion" | "emphasis" | "insertion" | "paragraph" | "strong" | "subscript" | "superscript" | "time" | "scrollbar" | "searchbox" | "separator" | "slider" | "spinbutton" | "switch" | "tab" | "tabpanel" | "treeitem" | "combobox" | "menu" | "menubar" | "tablist" | "tree" | "treegrid" | "banner" | "complementary" | "contentinfo" | "form" | "main" | "navigation" | "region" | "search" | "alert" | "log" | "marquee" | "status" | "timer" | "alertdialog" | "dialog" | (string & {})) | null;
+    role: ARIARole | null;
 }
 
 /**
@@ -28947,6 +28947,7 @@ type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type ARIARole = "alert" | "alertdialog" | "application" | "article" | "banner" | "blockquote" | "button" | "caption" | "cell" | "checkbox" | "code" | "columnheader" | "combobox" | "comment" | "complementary" | "contentinfo" | "definition" | "deletion" | "dialog" | "document" | "emphasis" | "feed" | "figure" | "form" | "generic" | "grid" | "gridcell" | "group" | "heading" | "image" | "img" | "insertion" | "link" | "list" | "listbox" | "listitem" | "log" | "main" | "mark" | "marquee" | "math" | "menu" | "menubar" | "menuitem" | "menuitemcheckbox" | "menuitemradio" | "meter" | "navigation" | "none" | "note" | "option" | "paragraph" | "presentation" | "progressbar" | "radio" | "radiogroup" | "region" | "row" | "rowgroup" | "rowheader" | "scrollbar" | "search" | "searchbox" | "separator" | "slider" | "spinbutton" | "status" | "strong" | "subscript" | "suggestion" | "superscript" | "switch" | "tab" | "table" | "tablist" | "tabpanel" | "term" | "textbox" | "time" | "timer" | "toolbar" | "tooltip" | "tree" | "treegrid" | "treeitem";
 type AlignSetting = "center" | "end" | "left" | "right" | "start";
 type AlphaOption = "discard" | "keep";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
