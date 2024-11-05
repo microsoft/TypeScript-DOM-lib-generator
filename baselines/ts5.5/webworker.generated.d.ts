@@ -917,8 +917,10 @@ interface VideoFrameBufferInit {
     displayHeight?: number;
     displayWidth?: number;
     duration?: number;
+    flip?: boolean;
     format: VideoPixelFormat;
     layout?: PlaneLayout[];
+    rotation?: number;
     timestamp: number;
     visibleRect?: DOMRectInit;
 }
@@ -935,6 +937,8 @@ interface VideoFrameInit {
     displayHeight?: number;
     displayWidth?: number;
     duration?: number;
+    flip?: boolean;
+    rotation?: number;
     timestamp?: number;
     visibleRect?: DOMRectInit;
 }
