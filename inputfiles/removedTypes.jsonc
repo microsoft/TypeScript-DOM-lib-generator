@@ -311,6 +311,13 @@
                     }
                 }
             },
+            "GetAnimationsOptions": {
+                "members": {
+                    "member": {
+                        "pseudoElement": null // No implementation as of 2024-11
+                    }
+                }
+            },
             "IntersectionObserverInit": {
                 "members": {
                     "member": {
@@ -765,15 +772,19 @@
             "VideoFrameInit": {
                 "members": {
                     "member": {
-                        "metadata": null // No implementation as of 2023-03. Linked to VideoFrame.metadata()
+                        "flip": null, // No implementation as of 2024-11
+                        "metadata": null, // No implementation as of 2024-11. Linked to VideoFrame.metadata()
+                        "rotation": null // No implementation as of 2024-11
                     }
                 }
             },
             "VideoFrameBufferInit": {
                 "members": {
                     "member": {
-                        "transfer": null, // Blink only as of 2024-04.
-                        "metadata": null // No implementation as of 2024-04. Linked to VideoFrame.metadata()
+                        "flip": null, // No implementation as of 2024-11
+                        "metadata": null, // No implementation as of 2024-04. Linked to VideoFrame.metadata()
+                        "rotation": null, // No implementation as of 2024-11
+                        "transfer": null // Blink only as of 2024-11
                     }
                 }
             },
