@@ -1180,6 +1180,15 @@ interface OscillatorOptions extends AudioNodeOptions {
     type?: OscillatorType;
 }
 
+interface PageRevealEventInit extends EventInit {
+    viewTransition?: ViewTransition | null;
+}
+
+interface PageSwapEventInit extends EventInit {
+    activation?: NavigationActivation | null;
+    viewTransition?: ViewTransition | null;
+}
+
 interface PageTransitionEventInit extends EventInit {
     persisted?: boolean;
 }
@@ -5029,6 +5038,7 @@ interface CSSStyleDeclaration {
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
+    viewTransitionClass: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
     viewTransitionName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/visibility) */
@@ -5665,6 +5675,16 @@ interface CSSVariableReferenceValue {
 declare var CSSVariableReferenceValue: {
     prototype: CSSVariableReferenceValue;
     new(variable: string, fallback?: CSSUnparsedValue | null): CSSVariableReferenceValue;
+};
+
+interface CSSViewTransitionRule extends CSSRule {
+    readonly navigation: string;
+    readonly types: ReadonlyArray<string>;
+}
+
+declare var CSSViewTransitionRule: {
+    prototype: CSSViewTransitionRule;
+    new(): CSSViewTransitionRule;
 };
 
 /**
@@ -7638,6 +7658,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "MouseEvent"): MouseEvent;
     createEvent(eventInterface: "MouseEvents"): MouseEvent;
     createEvent(eventInterface: "OfflineAudioCompletionEvent"): OfflineAudioCompletionEvent;
+    createEvent(eventInterface: "PageRevealEvent"): PageRevealEvent;
+    createEvent(eventInterface: "PageSwapEvent"): PageSwapEvent;
     createEvent(eventInterface: "PageTransitionEvent"): PageTransitionEvent;
     createEvent(eventInterface: "PaymentMethodChangeEvent"): PaymentMethodChangeEvent;
     createEvent(eventInterface: "PaymentRequestUpdateEvent"): PaymentRequestUpdateEvent;
@@ -11812,6 +11834,9 @@ declare var HTMLLegendElement: {
 interface HTMLLinkElement extends HTMLElement, LinkStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/as) */
     as: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/blocking) */
+    get blocking(): DOMTokenList;
+    set blocking(value: string);
     /**
      * Sets or retrieves the character set used to encode the object.
      * @deprecated
@@ -12827,6 +12852,9 @@ declare var HTMLQuoteElement: {
 interface HTMLScriptElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/async) */
     async: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/blocking) */
+    get blocking(): DOMTokenList;
+    set blocking(value: string);
     /**
      * Sets or retrieves the character set used to encode the object.
      * @deprecated
@@ -13114,6 +13142,9 @@ declare var HTMLSpanElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement)
  */
 interface HTMLStyleElement extends HTMLElement, LinkStyle {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/blocking) */
+    get blocking(): DOMTokenList;
+    set blocking(value: string);
     /**
      * Enables or disables the style sheet.
      *
@@ -16497,6 +16528,52 @@ declare var NamedNodeMap: {
     new(): NamedNodeMap;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation) */
+interface NavigationActivation {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation/entry) */
+    readonly entry: NavigationHistoryEntry;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation/from) */
+    readonly from: NavigationHistoryEntry | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation/navigationType) */
+    readonly navigationType: NavigationType;
+}
+
+declare var NavigationActivation: {
+    prototype: NavigationActivation;
+    new(): NavigationActivation;
+};
+
+interface NavigationHistoryEntryEventMap {
+    "dispose": Event;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry) */
+interface NavigationHistoryEntry extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/id) */
+    readonly id: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/index) */
+    readonly index: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/key) */
+    readonly key: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/dispose_event) */
+    ondispose: ((this: NavigationHistoryEntry, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/sameDocument) */
+    readonly sameDocument: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/url) */
+    readonly url: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/getState) */
+    getState(): any;
+    addEventListener<K extends keyof NavigationHistoryEntryEventMap>(type: K, listener: (this: NavigationHistoryEntry, ev: NavigationHistoryEntryEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof NavigationHistoryEntryEventMap>(type: K, listener: (this: NavigationHistoryEntry, ev: NavigationHistoryEntryEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var NavigationHistoryEntry: {
+    prototype: NavigationHistoryEntry;
+    new(): NavigationHistoryEntry;
+};
+
 /**
  * Available only in secure contexts.
  *
@@ -17352,6 +17429,30 @@ interface OverconstrainedError extends DOMException {
 declare var OverconstrainedError: {
     prototype: OverconstrainedError;
     new(constraint: string, message?: string): OverconstrainedError;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageRevealEvent) */
+interface PageRevealEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageRevealEvent/viewTransition) */
+    readonly viewTransition: ViewTransition | null;
+}
+
+declare var PageRevealEvent: {
+    prototype: PageRevealEvent;
+    new(type: string, eventInitDict?: PageRevealEventInit): PageRevealEvent;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent) */
+interface PageSwapEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent/activation) */
+    readonly activation: NavigationActivation | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent/viewTransition) */
+    readonly viewTransition: ViewTransition | null;
+}
+
+declare var PageSwapEvent: {
+    prototype: PageSwapEvent;
+    new(type: string, eventInitDict?: PageSwapEventInit): PageSwapEvent;
 };
 
 /**
@@ -23745,6 +23846,7 @@ interface ViewTransition {
     readonly finished: Promise<undefined>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/ready) */
     readonly ready: Promise<undefined>;
+    types: ViewTransitionTypeSet;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/updateCallbackDone) */
     readonly updateCallbackDone: Promise<undefined>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/skipTransition) */
@@ -23754,6 +23856,15 @@ interface ViewTransition {
 declare var ViewTransition: {
     prototype: ViewTransition;
     new(): ViewTransition;
+};
+
+interface ViewTransitionTypeSet {
+    forEach(callbackfn: (value: string, key: string, parent: ViewTransitionTypeSet) => void, thisArg?: any): void;
+}
+
+declare var ViewTransitionTypeSet: {
+    prototype: ViewTransitionTypeSet;
+    new(): ViewTransitionTypeSet;
 };
 
 interface VisualViewportEventMap {
@@ -29045,6 +29156,7 @@ type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "se
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
 type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
+type NavigationType = "push" | "reload" | "replace" | "traverse";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";

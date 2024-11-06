@@ -329,6 +329,9 @@ interface URLSearchParams {
     values(): IterableIterator<string>;
 }
 
+interface ViewTransitionTypeSet extends Set<string> {
+}
+
 interface WEBGL_draw_buffers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL) */
     drawBuffersWEBGL(buffers: Iterable<GLenum>): void;
