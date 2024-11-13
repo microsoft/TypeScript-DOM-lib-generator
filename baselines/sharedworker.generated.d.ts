@@ -1934,7 +1934,9 @@ interface DOMQuad {
     readonly p2: DOMPoint;
     readonly p3: DOMPoint;
     readonly p4: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/getBounds) */
     getBounds(): DOMRect;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/toJSON) */
     toJSON(): any;
 }
 

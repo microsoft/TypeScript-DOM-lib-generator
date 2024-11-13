@@ -6772,7 +6772,9 @@ interface DOMQuad {
     readonly p2: DOMPoint;
     readonly p3: DOMPoint;
     readonly p4: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/getBounds) */
     getBounds(): DOMRect;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/toJSON) */
     toJSON(): any;
 }
 
@@ -10054,6 +10056,7 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
     alt: string;
     /** Sets or retrieves the coordinates of the object. */
     coords: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/download) */
     download: string;
     /**
      * Sets or gets whether clicks in this region cause action.
@@ -11753,7 +11756,11 @@ declare var HTMLInputElement: {
 interface HTMLLIElement extends HTMLElement {
     /** @deprecated */
     type: string;
-    /** Sets or retrieves the value of a list item. */
+    /**
+     * Sets or retrieves the value of a list item.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLIElement/value)
+     */
     value: number;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLIElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -26836,7 +26843,9 @@ interface WindowEventHandlersEventMap {
     "offline": Event;
     "online": Event;
     "pagehide": PageTransitionEvent;
+    "pagereveal": Event;
     "pageshow": PageTransitionEvent;
+    "pageswap": Event;
     "popstate": PopStateEvent;
     "rejectionhandled": PromiseRejectionEvent;
     "storage": StorageEvent;
@@ -26869,8 +26878,12 @@ interface WindowEventHandlers {
     ononline: ((this: WindowEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event) */
     onpagehide: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagereveal_event) */
+    onpagereveal: ((this: WindowEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageshow_event) */
     onpageshow: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageswap_event) */
+    onpageswap: ((this: WindowEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/popstate_event) */
     onpopstate: ((this: WindowEventHandlers, ev: PopStateEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/rejectionhandled_event) */
@@ -28919,8 +28932,12 @@ declare var onoffline: ((this: Window, ev: Event) => any) | null;
 declare var ononline: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event) */
 declare var onpagehide: ((this: Window, ev: PageTransitionEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagereveal_event) */
+declare var onpagereveal: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageshow_event) */
 declare var onpageshow: ((this: Window, ev: PageTransitionEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageswap_event) */
+declare var onpageswap: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/popstate_event) */
 declare var onpopstate: ((this: Window, ev: PopStateEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/rejectionhandled_event) */
