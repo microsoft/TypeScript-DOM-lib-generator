@@ -1602,6 +1602,7 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     bytesReceived?: number;
     concealedSamples?: number;
     concealmentEvents?: number;
+    corruptionMeasurements?: number;
     decoderImplementation?: string;
     estimatedPlayoutTimestamp?: DOMHighResTimeStamp;
     fecPacketsDiscarded?: number;
@@ -1628,11 +1629,13 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     removedSamplesForAcceleration?: number;
     silentConcealedSamples?: number;
     totalAudioEnergy?: number;
+    totalCorruptionProbability?: number;
     totalDecodeTime?: number;
     totalInterFrameDelay?: number;
     totalProcessingDelay?: number;
     totalSamplesDuration?: number;
     totalSamplesReceived?: number;
+    totalSquaredCorruptionProbability?: number;
     totalSquaredInterFrameDelay?: number;
     trackIdentifier: string;
 }
