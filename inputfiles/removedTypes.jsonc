@@ -628,41 +628,30 @@
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
-                        "mimeType": null, // Blink only as of 2023-11
-                        "rtpTimestamp": null // Blink only as of 2023-10
+                        "mimeType": null, // Blink only as of 2024-11
+                        "rtpTimestamp": null // Blink only as of 2024-11
                     }
                 }
             },
             "RTCEncodedVideoFrameMetadata": {
                 "members": {
                     "member": {
-                        "mimeType": null, // Blink only as of 2023-11
-                        "rtpTimestamp": null // Blink only as of 2023-10
+                        "mimeType": null, // Blink only as of 2024-11
+                        "rtpTimestamp": null // Blink only as of 2024-11
                     }
                 }
             },
             "RTCConfiguration": {
                 "members": {
                     "member": {
-                        "peerIdentity": null
+                        "peerIdentity": null // Gecko only as of 2024-11
                     }
                 }
             },
             "RTCDataChannelInit": {
                 "members": {
                     "member": {
-                        "priority": null
-                    }
-                }
-            },
-            "RTCIceCandidatePairStats": {
-                "members": {
-                    "member": {
-                        "bytesDiscardedOnSend": null, // Blink only as of 2022-09
-                        "consentRequestsSent": null, // Blink only as of 2022-09
-                        "packetsDiscardedOnSend": null, // Blink only as of 2022-09
-                        "packetsReceived": null, // Blink only as of 2022-09
-                        "packetsSent": null // Blink only as of 2022-09
+                        "priority": null // Blink experimental only as of 2024-11
                     }
                 }
             },
@@ -692,19 +681,6 @@
                     "member": {
                         "codec": null, // Blink only as of 2024-11
                         "scalabilityMode": null // Blink only as of 2024-11
-                    }
-                }
-            },
-            "RTCTransportStats": {
-                "members": {
-                    "member": {
-                        "packetsSent": null,
-                        "packetsReceived": null,
-                        "iceRole": null,
-                        "iceLocalUsernameFragment": null,
-                        "iceState": null,
-                        "dtlsRole": null,
-                        "selectedCandidatePairChanges": null
                     }
                 }
             },
