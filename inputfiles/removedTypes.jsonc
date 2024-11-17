@@ -246,13 +246,6 @@
                     }
                 }
             },
-            "CredentialPropertiesOutput": {
-                "members": {
-                    "member": {
-                        "authenticatorDisplayName": null // No implementation as of 2023-10
-                    }
-                }
-            },
             "CredentialRequestOptions": {
                 "members": {
                     "member": {
