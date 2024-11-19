@@ -480,6 +480,16 @@
                     }
                 }
             },
+            "GPUError": {
+                "exposed": "Window Worker",
+                "properties": {
+                    "property": {
+                        "message": {
+                            "exposed": "Window Worker"
+                        }
+                    }
+                }
+            },
             "HTMLElement": {
                 "properties": {
                     "property": {
