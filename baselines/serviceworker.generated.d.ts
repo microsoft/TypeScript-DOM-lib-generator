@@ -3592,7 +3592,7 @@ interface GPUPipelineError extends DOMException {
 
 declare var GPUPipelineError: {
     prototype: GPUPipelineError;
-    new(message?: string, options: GPUPipelineErrorInit): GPUPipelineError;
+    new(message: string, options: GPUPipelineErrorInit): GPUPipelineError;
 };
 
 /**
