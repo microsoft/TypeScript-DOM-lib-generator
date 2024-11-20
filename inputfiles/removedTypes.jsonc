@@ -318,6 +318,13 @@
                     }
                 }
             },
+            "GPUShaderModuleCompilationHint": {
+                "members": {
+                    "member": {
+                        "entryPoint": null // Blink only as of 2024-11
+                    }
+                }
+            },
             "IntersectionObserverInit": {
                 "members": {
                     "member": {

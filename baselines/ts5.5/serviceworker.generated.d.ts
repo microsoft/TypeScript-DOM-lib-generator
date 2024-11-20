@@ -519,7 +519,6 @@ interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
 }
 
 interface GPUShaderModuleCompilationHint {
-    entryPoint: string;
     layout?: GPUPipelineLayout | GPUAutoLayoutMode;
 }
 
