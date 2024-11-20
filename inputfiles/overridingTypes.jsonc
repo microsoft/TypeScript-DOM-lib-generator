@@ -482,6 +482,8 @@
             },
             "GPUError": {
                 "exposed": "Window Worker",
+                // WebKit doesn't have GPUError interface but only subinterfaces
+                "noInterfaceObject": true,
                 "properties": {
                     "property": {
                         "message": {

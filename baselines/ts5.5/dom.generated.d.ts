@@ -9945,11 +9945,6 @@ interface GPUError {
     readonly message: string;
 }
 
-declare var GPUError: {
-    prototype: GPUError;
-    new(): GPUError;
-};
-
 /**
  * Available only in secure contexts.
  *
