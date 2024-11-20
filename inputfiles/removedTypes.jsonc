@@ -311,6 +311,13 @@
                     }
                 }
             },
+            "GPURequestAdapterOptions": {
+                "members": {
+                    "member": {
+                        "featureLevel": null // Blink experimental only as of 2024-11
+                    }
+                }
+            },
             "IntersectionObserverInit": {
                 "members": {
                     "member": {

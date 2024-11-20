@@ -497,7 +497,6 @@ interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
 }
 
 interface GPURequestAdapterOptions {
-    featureLevel?: string;
     forceFallbackAdapter?: boolean;
     powerPreference?: GPUPowerPreference;
 }
