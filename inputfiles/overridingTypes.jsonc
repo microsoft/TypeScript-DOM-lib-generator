@@ -482,7 +482,7 @@
             },
             "GPUError": {
                 "exposed": "Window Worker",
-                // WebKit doesn't have GPUError interface but only subinterfaces
+                // WebKit doesn't have GPUError interface but only subinterfaces as of 2024-11-20
                 "noInterfaceObject": true,
                 "properties": {
                     "property": {
