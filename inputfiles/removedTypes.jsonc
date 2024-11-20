@@ -318,10 +318,10 @@
                     }
                 }
             },
-            "GPUShaderModuleCompilationHint": {
+            "GPUShaderModuleDescriptor": {
                 "members": {
                     "member": {
-                        "entryPoint": null // Blink only as of 2024-11
+                        "compilationHints": null // Blink only as of 2024-11
                     }
                 }
             },

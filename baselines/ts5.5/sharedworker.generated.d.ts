@@ -493,13 +493,8 @@ interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
     mipmapFilter?: GPUMipmapFilterMode;
 }
 
-interface GPUShaderModuleCompilationHint {
-    layout?: GPUPipelineLayout | GPUAutoLayoutMode;
-}
-
 interface GPUShaderModuleDescriptor extends GPUObjectDescriptorBase {
     code: string;
-    compilationHints?: GPUShaderModuleCompilationHint[];
 }
 
 interface GPUStencilFaceState {
