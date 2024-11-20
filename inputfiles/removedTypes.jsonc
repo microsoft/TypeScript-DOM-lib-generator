@@ -19,6 +19,14 @@
             "ConnectionType": {
                 "value": ["wimax"]
             },
+            "GPUBlendFactor": {
+                "value": [
+                    "one-minus-src1", // Blink only as of 2024-11
+                    "one-minus-src1-alpha", // Blink only as of 2024-11
+                    "src1", // Blink only as of 2024-11
+                    "src1-alpha" // Blink only as of 2024-11
+                ]
+            },
             "MediaSessionAction": {
                 "value": [
                     "enterpictureinpicture", // Blink only as of 2024-07
