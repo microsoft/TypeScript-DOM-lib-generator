@@ -325,6 +325,13 @@
                     }
                 }
             },
+            "GPUTextureViewDescriptor": {
+                "members": {
+                    "member": {
+                        "usage": null // Blink only as of 2024-11
+                    }
+                }
+            },
             "IntersectionObserverInit": {
                 "members": {
                     "member": {

@@ -661,7 +661,6 @@ interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
     dimension?: GPUTextureViewDimension;
     format?: GPUTextureFormat;
     mipLevelCount?: GPUIntegerCoordinate;
-    usage?: GPUTextureUsageFlags;
 }
 
 interface GPUUncapturedErrorEventInit extends EventInit {
