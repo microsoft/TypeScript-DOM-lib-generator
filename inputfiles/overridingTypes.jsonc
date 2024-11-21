@@ -513,9 +513,26 @@
                     "property": {
                         "hidden": {
                             // https://github.com/whatwg/html/pull/7475
-                            // Revisit when this get browser supports.
+                            // Blink only as of 2024-11
                             "overrideType": "boolean",
                             "nullable": false
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "togglePopover": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            // dictionary support is Blink only as of 2024-11
+                                            "name": "options",
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     }
                 }

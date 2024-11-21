@@ -139,6 +139,19 @@
                     }
                 }
             },
+            "HTMLElement": {
+                "methods": {
+                    "method": {
+                        "showPopover": {
+                            "signature": {
+                                "0": {
+                                    "param": ["options"] // Blink only as of 2024-11
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "IntersectionObserverEntry": {
                 "constructor": null // WebKit-only as of 2024-07
             },
