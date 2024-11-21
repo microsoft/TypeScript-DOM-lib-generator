@@ -474,6 +474,7 @@ interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
 interface GPURequestAdapterOptions {
     forceFallbackAdapter?: boolean;
     powerPreference?: GPUPowerPreference;
+    xrCompatible?: boolean;
 }
 
 interface GPUSamplerBindingLayout {
@@ -2291,9 +2292,13 @@ declare var DOMPointReadOnly: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad) */
 interface DOMQuad {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p1) */
     readonly p1: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p2) */
     readonly p2: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p3) */
     readonly p3: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p4) */
     readonly p4: DOMPoint;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/getBounds) */
     getBounds(): DOMRect;
@@ -2310,9 +2315,13 @@ declare var DOMQuad: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect) */
 interface DOMRect extends DOMRectReadOnly {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/height) */
     height: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/width) */
     width: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/x) */
     x: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/y) */
     y: number;
 }
 
@@ -2341,6 +2350,7 @@ interface DOMRectReadOnly {
     readonly x: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/y) */
     readonly y: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/toJSON) */
     toJSON(): any;
 }
 

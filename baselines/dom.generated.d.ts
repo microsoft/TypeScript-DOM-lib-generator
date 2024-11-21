@@ -922,6 +922,7 @@ interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
 interface GPURequestAdapterOptions {
     forceFallbackAdapter?: boolean;
     powerPreference?: GPUPowerPreference;
+    xrCompatible?: boolean;
 }
 
 interface GPUSamplerBindingLayout {
@@ -2387,6 +2388,10 @@ interface ShareData {
     url?: string;
 }
 
+interface ShowPopoverOptions {
+    source?: HTMLElement;
+}
+
 interface SpeechSynthesisErrorEventInit extends SpeechSynthesisEventInit {
     error: SpeechSynthesisErrorCode;
 }
@@ -2472,6 +2477,10 @@ interface TextEncoderEncodeIntoResult {
 interface ToggleEventInit extends EventInit {
     newState?: string;
     oldState?: string;
+}
+
+interface TogglePopoverOptions extends ShowPopoverOptions {
+    force?: boolean;
 }
 
 interface TouchEventInit extends EventModifierInit {
@@ -5856,7 +5865,11 @@ interface CSSStyleDeclaration {
     wordBreak: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/word-spacing) */
     wordSpacing: string;
-    /** @deprecated */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-wrap)
+     */
     wordWrap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/writing-mode) */
     writingMode: string;
@@ -7167,9 +7180,13 @@ declare var DOMPointReadOnly: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad) */
 interface DOMQuad {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p1) */
     readonly p1: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p2) */
     readonly p2: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p3) */
     readonly p3: DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p4) */
     readonly p4: DOMPoint;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/getBounds) */
     getBounds(): DOMRect;
@@ -7186,9 +7203,13 @@ declare var DOMQuad: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect) */
 interface DOMRect extends DOMRectReadOnly {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/height) */
     height: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/width) */
     width: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/x) */
     x: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/y) */
     y: number;
 }
 
@@ -7234,6 +7255,7 @@ interface DOMRectReadOnly {
     readonly x: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/y) */
     readonly y: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/toJSON) */
     toJSON(): any;
 }
 
@@ -11206,7 +11228,11 @@ declare var HTMLAnchorElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement)
  */
 interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
-    /** Sets or retrieves a text alternative to the graphic. */
+    /**
+     * Sets or retrieves a text alternative to the graphic.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/alt)
+     */
     alt: string;
     /** Sets or retrieves the coordinates of the object. */
     coords: string;
@@ -11765,9 +11791,9 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/hidePopover) */
     hidePopover(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/showPopover) */
-    showPopover(): void;
+    showPopover(options?: ShowPopoverOptions): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/togglePopover) */
-    togglePopover(force?: boolean): boolean;
+    togglePopover(options?: TogglePopoverOptions | boolean): boolean;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
