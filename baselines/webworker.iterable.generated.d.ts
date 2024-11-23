@@ -63,39 +63,6 @@ interface FormData {
     values(): FormDataIterator<FormDataEntryValue>;
 }
 
-interface GPUBindingCommandsMixin {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
-    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: Iterable<GPUBufferDynamicOffset>): void;
-}
-
-interface GPUCommandEncoder {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToTexture) */
-    copyBufferToTexture(source: GPUTexelCopyBufferInfo, destination: GPUTexelCopyTextureInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer) */
-    copyTextureToBuffer(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyBufferInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToTexture) */
-    copyTextureToTexture(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyTextureInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
-}
-
-interface GPUQueue {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/copyExternalImageToTexture) */
-    copyExternalImageToTexture(source: GPUCopyExternalImageSourceInfo, destination: GPUCopyExternalImageDestInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/submit) */
-    submit(commandBuffers: Iterable<GPUCommandBuffer>): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/writeTexture) */
-    writeTexture(destination: GPUTexelCopyTextureInfo, data: AllowSharedBufferSource, dataLayout: GPUTexelCopyBufferLayout, size: Iterable<GPUIntegerCoordinate>): void;
-}
-
-interface GPURenderPassEncoder {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/executeBundles) */
-    executeBundles(bundles: Iterable<GPURenderBundle>): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setBlendConstant) */
-    setBlendConstant(color: Iterable<number>): void;
-}
-
-interface GPUSupportedFeatures extends ReadonlySet<string> {
-}
-
 interface HeadersIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): HeadersIterator<T>;
 }
@@ -193,9 +160,6 @@ interface WEBGL_multi_draw {
     multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array | Iterable<GLsizei>, offsetsOffset: number, instanceCountsList: Int32Array | Iterable<GLsizei>, instanceCountsOffset: number, drawcount: GLsizei): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL) */
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array | Iterable<GLsizei>, offsetsOffset: number, drawcount: GLsizei): void;
-}
-
-interface WGSLLanguageFeatures extends ReadonlySet<string> {
 }
 
 interface WebGL2RenderingContextBase {
