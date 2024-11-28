@@ -677,7 +677,23 @@ declare var MessageEvent: {
     new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
 };
 
-interface MessagePortEventMap {
+interface MessageEventTargetEventMap {
+    "message": Event;
+    "messageerror": Event;
+}
+
+interface MessageEventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
+    onmessage: ((this: MessageEventTarget, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
+    onmessageerror: ((this: MessageEventTarget, ev: Event) => any) | null;
+    addEventListener<K extends keyof MessageEventTargetEventMap>(type: K, listener: (this: MessageEventTarget, ev: MessageEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MessageEventTargetEventMap>(type: K, listener: (this: MessageEventTarget, ev: MessageEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+interface MessagePortEventMap extends MessageEventTargetEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
 }
@@ -687,11 +703,7 @@ interface MessagePortEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/message_event) */
-    onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/messageerror_event) */
-    onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * Disconnects the port, so that it is no longer active.
      *

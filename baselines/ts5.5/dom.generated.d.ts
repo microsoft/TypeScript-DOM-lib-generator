@@ -16290,7 +16290,23 @@ declare var MessageEvent: {
     new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
 };
 
-interface MessagePortEventMap {
+interface MessageEventTargetEventMap {
+    "message": Event;
+    "messageerror": Event;
+}
+
+interface MessageEventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
+    onmessage: ((this: MessageEventTarget, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
+    onmessageerror: ((this: MessageEventTarget, ev: Event) => any) | null;
+    addEventListener<K extends keyof MessageEventTargetEventMap>(type: K, listener: (this: MessageEventTarget, ev: MessageEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MessageEventTargetEventMap>(type: K, listener: (this: MessageEventTarget, ev: MessageEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+interface MessagePortEventMap extends MessageEventTargetEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
 }
@@ -16300,11 +16316,7 @@ interface MessagePortEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/message_event) */
-    onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/messageerror_event) */
-    onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * Disconnects the port, so that it is no longer active.
      *
@@ -27008,7 +27020,7 @@ interface WindowSessionStorage {
     readonly sessionStorage: Storage;
 }
 
-interface WorkerEventMap extends AbstractWorkerEventMap {
+interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
 }
@@ -27018,11 +27030,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
-interface Worker extends EventTarget, AbstractWorker {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/message_event) */
-    onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/messageerror_event) */
-    onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget {
     /**
      * Clones message and transmits it to worker's global environment. transfer can be passed as a list of objects that are to be transferred rather than cloned.
      *

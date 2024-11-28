@@ -2471,7 +2471,7 @@ declare var DecompressionStream: {
     new(format: CompressionFormat): DecompressionStream;
 };
 
-interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
+interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap, MessageEventTargetEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
     "rtctransform": RTCTransformEvent;
@@ -2482,17 +2482,13 @@ interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope)
  */
-interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider {
+interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider, MessageEventTarget {
     /**
      * Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/name)
      */
     readonly name: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
-    onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
-    onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
     onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
     /**
@@ -4317,7 +4313,23 @@ declare var MessageEvent: {
     new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
 };
 
-interface MessagePortEventMap {
+interface MessageEventTargetEventMap {
+    "message": Event;
+    "messageerror": Event;
+}
+
+interface MessageEventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
+    onmessage: ((this: MessageEventTarget, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
+    onmessageerror: ((this: MessageEventTarget, ev: Event) => any) | null;
+    addEventListener<K extends keyof MessageEventTargetEventMap>(type: K, listener: (this: MessageEventTarget, ev: MessageEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof MessageEventTargetEventMap>(type: K, listener: (this: MessageEventTarget, ev: MessageEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+interface MessagePortEventMap extends MessageEventTargetEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
 }
@@ -4327,11 +4339,7 @@ interface MessagePortEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/message_event) */
-    onmessage: ((this: MessagePort, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/messageerror_event) */
-    onmessageerror: ((this: MessagePort, ev: MessageEvent) => any) | null;
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * Disconnects the port, so that it is no longer active.
      *
@@ -8895,7 +8903,7 @@ interface WindowOrWorkerGlobalScope {
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
 
-interface WorkerEventMap extends AbstractWorkerEventMap {
+interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEventMap {
     "message": MessageEvent;
     "messageerror": MessageEvent;
 }
@@ -8905,11 +8913,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
-interface Worker extends EventTarget, AbstractWorker {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/message_event) */
-    onmessage: ((this: Worker, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/messageerror_event) */
-    onmessageerror: ((this: Worker, ev: MessageEvent) => any) | null;
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget {
     /**
      * Clones message and transmits it to worker's global environment. transfer can be passed as a list of objects that are to be transferred rather than cloned.
      *
@@ -9601,10 +9605,6 @@ interface WebCodecsErrorCallback {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/name)
  */
 declare var name: string;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
-declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
-declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
 declare var onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
 /**
@@ -9715,6 +9715,10 @@ declare function structuredClone<T = any>(value: T, options?: StructuredSerializ
 declare function cancelAnimationFrame(handle: number): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
+declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
+declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
