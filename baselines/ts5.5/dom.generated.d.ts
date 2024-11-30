@@ -10709,6 +10709,7 @@ interface HTMLEmbedElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/src)
      */
     src: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/type) */
     type: string;
     /**
      * Sets or retrieves the width of the object.
@@ -10716,6 +10717,7 @@ interface HTMLEmbedElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/width)
      */
     width: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement/getSVGDocument) */
     getSVGDocument(): Document | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLEmbedElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -11341,6 +11343,7 @@ interface HTMLIFrameElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/width)
      */
     width: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIframeElement/getSVGDocument) */
     getSVGDocument(): Document | null;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLIFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -11948,6 +11951,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      * @deprecated
      */
     rev: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/sizes) */
     readonly sizes: DOMTokenList;
     /**
      * Sets or retrieves the window or frame at which to target content.
@@ -12525,6 +12529,7 @@ interface HTMLObjectElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/checkValidity)
      */
     checkValidity(): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/getSVGDocument) */
     getSVGDocument(): Document | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/reportValidity) */
     reportValidity(): boolean;
@@ -13158,13 +13163,27 @@ declare var HTMLSlotElement: {
 interface HTMLSourceElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/height) */
     height: number;
-    /** Gets or sets the intended media type of the media source. */
+    /**
+     * Gets or sets the intended media type of the media source.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/media)
+     */
     media: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/sizes) */
     sizes: string;
-    /** The address or URL of the a media resource that is to be considered. */
+    /**
+     * The address or URL of the a media resource that is to be considered.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/src)
+     */
     src: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/srcset) */
     srcset: string;
-    /** Gets or sets the MIME type of a media resource. */
+    /**
+     * Gets or sets the MIME type of a media resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/type)
+     */
     type: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/width) */
     width: number;
@@ -13984,14 +14003,23 @@ declare var HTMLTitleElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement)
  */
 interface HTMLTrackElement extends HTMLElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/default) */
     default: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/kind) */
     kind: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/label) */
     label: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/readyState) */
     readonly readyState: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/src) */
     src: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/srclang) */
     srclang: string;
-    /** Returns the TextTrack object corresponding to the text track of the track element. */
+    /**
+     * Returns the TextTrack object corresponding to the text track of the track element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/track)
+     */
     readonly track: TextTrack;
     readonly NONE: 0;
     readonly LOADING: 1;
