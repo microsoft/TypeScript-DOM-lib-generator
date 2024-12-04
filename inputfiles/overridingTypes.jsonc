@@ -286,6 +286,111 @@
                         }
                     }
                 }
+            },
+            "ARIAMixin": {
+                "properties": {
+                    "property": {
+                        "ariaColCount": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaColIndex": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaColSpan": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaCurrent": {
+                            "overrideType": "\"page\" | \"step\" | \"location\" | \"date\" | \"time\" | \"true\" | \"false\""
+                        },
+                        "ariaAtomic": {
+                            "overrideType": "\"false\" | \"true\""
+                        },
+                        "ariaAutoComplete": {
+                            "overrideType": "\"inline\" | \"list\" | \"both\" | \"none\""
+                        },
+                        "ariaBusy": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaChecked": {
+                            "overrideType": "\"true\" | \"mixed\" | \"false\" | \"undefined\""
+                        },
+                        "ariaDisabled": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaExpanded": {
+                            "overrideType": "\"true\" | \"false\" | \"undefined\""
+                        },
+                        "ariaHasPopup": {
+                            "overrideType": "\"false\" | \"true\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\" | \"dialog\""
+                        },
+                        "ariaHidden": {
+                            "overrideType": "\"true\" | \"false\" | \"undefined\""
+                        },
+                        "ariaInvalid": {
+                            "overrideType": "\"true\" | \"false\" | \"grammar\" | \"spelling\""
+                        },
+                        "ariaLevel": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaLive": {
+                            "overrideType": "\"assertive\" | \"off\" | \"polite\""
+                        },
+                        "ariaModal": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaMultiLine": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaMultiSelectable": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaOrientation": {
+                            "overrideType": "\"horizontal\" | \"vertical\" | \"undefined\""
+                        },
+                        "ariaPosInSet": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaPressed": {
+                            "overrideType": "\"true\" | \"false\" | \"mixed\" | \"undefined\""
+                        },
+                        "ariaReadOnly": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaRequired": {
+                            "overrideType": "\"true\" | \"false\""
+                        },
+                        "ariaRowCount": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaRowIndex": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaRowSpan": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaSelected": {
+                            "overrideType": "\"true\" | \"false\" | \"undefined\""
+                        },
+                        "ariaSetSize": {
+                            "overrideType": "`${bigint}`"
+                        },
+                        "ariaSort": {
+                            "overrideType": "\"ascending\" | \"descending\" | \"none\" | \"other\""
+                        },
+                        "ariaValueMax": {
+                            "overrideType": "`${number}`"
+                        },
+                        "ariaValueMin": {
+                            "overrideType": "`${number}`"
+                        },
+                        "ariaValueNow": {
+                            "overrideType": "`${number}`"
+                        },
+                        "role": {
+                            "type": "ARIARole"
+                        }
+                    }
+                }
             }
         }
     },
