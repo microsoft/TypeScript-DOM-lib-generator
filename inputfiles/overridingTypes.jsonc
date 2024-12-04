@@ -980,6 +980,19 @@
                                 }
                             }
                         },
+                        "cloneNode": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "deep",
+                                            "overrideType": "boolean"
+                                        }
+                                    ],
+                                    "overrideType": "this"
+                                }
+                            }
+                        },
                         "removeChild": {
                             "signature": {
                                 "0": {
