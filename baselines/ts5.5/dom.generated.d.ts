@@ -10114,7 +10114,11 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/alt)
      */
     alt: string;
-    /** Sets or retrieves the coordinates of the object. */
+    /**
+     * Sets or retrieves the coordinates of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/coords)
+     */
     coords: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/download) */
     download: string;
@@ -10131,7 +10135,11 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
     rel: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/relList) */
     readonly relList: DOMTokenList;
-    /** Sets or retrieves the shape of the object. */
+    /**
+     * Sets or retrieves the shape of the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/shape)
+     */
     shape: string;
     /**
      * Sets or retrieves the window or frame at which to target content.
@@ -12369,7 +12377,11 @@ declare var HTMLMeterElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLModElement)
  */
 interface HTMLModElement extends HTMLElement {
-    /** Sets or retrieves reference information about the object. */
+    /**
+     * Sets or retrieves reference information about the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLModElement/cite)
+     */
     cite: string;
     /** Sets or retrieves the date and time of a modification to the object. */
     dateTime: string;
@@ -12897,7 +12909,11 @@ declare var HTMLProgressElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLQuoteElement)
  */
 interface HTMLQuoteElement extends HTMLElement {
-    /** Sets or retrieves reference information about the object. */
+    /**
+     * Sets or retrieves reference information about the object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLQuoteElement/cite)
+     */
     cite: string;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLQuoteElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21873,6 +21889,7 @@ declare var SVGTransformList: {
 };
 
 interface SVGURIReference {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/href) */
     readonly href: SVGAnimatedString;
 }
 
