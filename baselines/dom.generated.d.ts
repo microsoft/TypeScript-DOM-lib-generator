@@ -6119,7 +6119,7 @@ declare var CharacterData: {
     new(): CharacterData;
 };
 
-interface ChildNode extends Node {
+interface ChildNode {
     /**
      * Inserts nodes just after node, while replacing strings in nodes with equivalent Text nodes.
      *
@@ -16961,13 +16961,13 @@ interface Node extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/childNodes)
      */
-    readonly childNodes: NodeListOf<ChildNode>;
+    readonly childNodes: NodeListOf<Node & ChildNode>;
     /**
      * Returns the first child.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/firstChild)
      */
-    readonly firstChild: ChildNode | null;
+    readonly firstChild: (Node & ChildNode) | null;
     /**
      * Returns true if node is connected and false otherwise.
      *
@@ -16979,13 +16979,13 @@ interface Node extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lastChild)
      */
-    readonly lastChild: ChildNode | null;
+    readonly lastChild: (Node & ChildNode) | null;
     /**
      * Returns the next sibling.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)
      */
-    readonly nextSibling: ChildNode | null;
+    readonly nextSibling: (Node & ChildNode) | null;
     /**
      * Returns a string appropriate for the type of node.
      *
@@ -17017,13 +17017,13 @@ interface Node extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentNode)
      */
-    readonly parentNode: ParentNode | null;
+    readonly parentNode: (Node & ParentNode) | null;
     /**
      * Returns the previous sibling.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/previousSibling)
      */
-    readonly previousSibling: ChildNode | null;
+    readonly previousSibling: (Node & ChildNode) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     textContent: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/appendChild) */
@@ -17671,7 +17671,7 @@ declare var PannerNode: {
     new(context: BaseAudioContext, options?: PannerOptions): PannerNode;
 };
 
-interface ParentNode extends Node {
+interface ParentNode {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/childElementCount) */
     readonly childElementCount: number;
     /**
@@ -21691,7 +21691,7 @@ declare var SVGSwitchElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSymbolElement)
  */
-interface SVGSymbolElement extends SVGElement, SVGFitToViewBox {
+interface SVGSymbolElement extends SVGGraphicsElement, SVGFitToViewBox {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSymbolElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSymbolElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
