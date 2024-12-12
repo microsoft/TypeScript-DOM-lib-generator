@@ -1330,6 +1330,41 @@
                                 "getContext(contextId: \"webgl\", options?: WebGLContextAttributes): WebGLRenderingContext | null",
                                 "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null"
                             ]
+                        },
+                        "toBlob": {
+                            "name": "toBlob",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "callback"
+                                        },
+                                        {
+                                            "name": "type",
+                                        },
+                                        {
+                                            "name": "quality",
+                                            "overrideType": "number"
+                                        }
+                                    ],
+                                }
+                            }
+                        },
+                        "toDataURL": {
+                            "name": "toDataURL",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "type",
+                                        },
+                                        {
+                                            "name": "quality",
+                                            "overrideType": "number"
+                                        }
+                                    ],
+                                }
+                            }
                         }
                     }
                 }
