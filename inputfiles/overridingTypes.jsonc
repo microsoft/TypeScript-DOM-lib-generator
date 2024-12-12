@@ -1337,12 +1337,6 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "callback"
-                                        },
-                                        {
-                                            "name": "type",
-                                        },
-                                        {
                                             "name": "quality",
                                             "overrideType": "number"
                                         }
@@ -1355,9 +1349,6 @@
                             "signature": {
                                 "0": {
                                     "param": [
-                                        {
-                                            "name": "type",
-                                        },
                                         {
                                             "name": "quality",
                                             "overrideType": "number"
