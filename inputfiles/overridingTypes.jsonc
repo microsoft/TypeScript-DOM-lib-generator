@@ -3600,12 +3600,22 @@
                 "methods": {
                     "method": {
                         "get": {
-                            // https://github.com/w3c/css-houdini-drafts/pull/1087
-                            "signature": {
-                                "0": {
-                                    "overrideType": "undefined | CSSStyleValue"
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/get",
+                            "overrideSignatures": [
+                                "get(parameter: string): undefined | CSSStyleValue",
+                                {
+                                    "signature": "get(parameter: \"animation-delay\" | ... | \"y\"): undefined | CSSUnitValue",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSUnitValue"
+                                },
+                                {
+                                    "signature": "get(parameter: \"transform\"): undefined | CSSTransformValue",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSTransformValue"
+                                },
+                                {
+                                    "signature": "get(parameter: \"accent-color\" | ... | \"z-index\"): undefined | CSSKeywordValue",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSKeywordValue"
                                 }
-                            }
+                            ]
                         }
                     }
                 }
