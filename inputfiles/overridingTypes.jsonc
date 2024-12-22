@@ -3602,6 +3602,7 @@
                         "get": {
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/get",
                             "overrideSignatures": [
+                                // https://github.com/w3c/css-houdini-drafts/pull/1087
                                 "get(parameter: string): undefined | CSSStyleValue",
                                 {
                                     "signature": "get(parameter: \"animation-delay\" | ... | \"y\"): undefined | CSSUnitValue",
