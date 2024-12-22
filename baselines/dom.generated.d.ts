@@ -22785,6 +22785,7 @@ interface StylePropertyMapReadOnly {
     readonly size: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/get) */
     get(property: string): undefined | CSSStyleValue;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/getAll) */
     getAll(property: string): CSSStyleValue[];
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/has) */
     has(property: string): boolean;
