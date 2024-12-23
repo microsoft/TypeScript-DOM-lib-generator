@@ -7277,6 +7277,7 @@ interface WebGLRenderingContextBase {
     isShader(shader: WebGLShader | null): GLboolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/isTexture) */
     isTexture(texture: WebGLTexture | null): GLboolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/lineWidth) */
     lineWidth(width: GLfloat): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/linkProgram) */
     linkProgram(program: WebGLProgram): void;

@@ -4875,8 +4875,6 @@ interface CSSStyleDeclaration {
     pointerEvents: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position) */
     position: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-area) */
-    positionArea: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/print-color-adjust) */
     printColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
@@ -4997,6 +4995,9 @@ interface CSSStyleDeclaration {
     textAlignLast: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
+    textBox: string;
+    textBoxEdge: string;
+    textBoxTrim: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-combine-upright) */
     textCombineUpright: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration) */
@@ -25957,6 +25958,7 @@ interface WebGLRenderingContextBase {
     isShader(shader: WebGLShader | null): GLboolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/isTexture) */
     isTexture(texture: WebGLTexture | null): GLboolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/lineWidth) */
     lineWidth(width: GLfloat): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/linkProgram) */
     linkProgram(program: WebGLProgram): void;
