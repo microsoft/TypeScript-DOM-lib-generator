@@ -19911,7 +19911,9 @@ declare var SVGAnimateTransformElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle)
  */
 interface SVGAnimatedAngle {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle/animVal) */
     readonly animVal: SVGAngle;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle/baseVal) */
     readonly baseVal: SVGAngle;
 }
 
@@ -20087,7 +20089,9 @@ declare var SVGAnimatedString: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedTransformList)
  */
 interface SVGAnimatedTransformList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedTransformList/animVal) */
     readonly animVal: SVGTransformList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedTransformList/baseVal) */
     readonly baseVal: SVGTransformList;
 }
 
