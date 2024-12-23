@@ -7937,6 +7937,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     /**
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/write)
      */
