@@ -3608,7 +3608,7 @@
                                             "overrideType": "`--${string}`"
                                         }
                                     ],
-                                    "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSSUnparsedValue",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue",
                                     "overrideType": "undefined | CSSUnparsedValue" 
                                 },
                                 {
@@ -3618,7 +3618,7 @@
                                             "overrideType": "\"transform\""
                                         }
                                     ],
-                                    "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSSTransformValue",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSTransformValue",
                                     "overrideType": "undefined | CSSKeywordValue | CSSTransformValue" 
                                 },
                                 {
@@ -3648,7 +3648,7 @@
                                             "overrideType": "\"background-image\" | \"border-image-source\" | \"list-style-image \""
                                         }
                                     ],
-                                    "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
                                     "overrideType": "undefined | CSSKeywordValue | CSSStyleValue | CSSImageValue" 
                                 },
                                 {
@@ -3658,7 +3658,7 @@
                                             "overrideType": "\"-webkit-line-clamp\" | \"column-width\" | \"contain-intrinsic-block-size\" | \"contain-intrinsic-height\" | \"contain-intrinsic-inline-size\" | \"contain-intrinsic-width\" | \"perspective\" | \"scale\" | \"stroke-dasharray\" | \"text-underline-offset\""
                                         }
                                     ],
-                                    "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
                                     "overrideType": "undefined | CSSKeywordValue | CSSUnitValue" 
                                 },
                                 {
@@ -3668,7 +3668,7 @@
                                             "overrideType": "\"background-position-x\" | \"background-position-y\" | \"column-gap\" | \"cx\" | \"cy\" | \"letter-spacing\" | \"min-block-size\" | \"min-height\" | \"min-inline-size\" | \"min-width\" | \"offset-distance\" | \"padding-block-end\" | \"padding-block-start\" | \"padding-bottom\" | \"padding-inline-end\" | \"padding-inline-start\" | \"padding-left\" | \"padding-right\" | \"padding-top\" | \"r\" | \"row-gap\" | \"shape-margin\" | \"stroke-dashoffset\" | \"stroke-width\" | \"text-indent\" | \"vertical-align\" | \"word-spacing\" | \"x\" | \"y\""
                                         }
                                     ],
-                                    "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
                                     "overrideType": "undefined | CSSMathSum | CSSUnitValue" 
                                 },
                                 {
@@ -3678,7 +3678,7 @@
                                             "overrideType": "\"width\" | \"height\" | \"background-size\" | \"block-size\" | \"bottom\" | \"flex-basis\" | \"grid-auto-columns\" | \"grid-auto-rows\" | \"grid-template-columns\" | \"grid-template-rows\" | \"inline-size\" | \"inset-block-end\" | \"inset-block-start\" | \"inset-inline-end\" | \"inset-inline-start\" | \"left\" | \"margin-block-end\" | \"margin-block-start\" | \"margin-bottom\" | \"margin-inline-end\" | \"margin-inline-start\" | \"margin-left\" | \"margin-right\" | \"margin-top\" | \"mask-size\" | \"max-block-size\" | \"max-height\" | \"max-inline-size\" | \"max-width\" | \"right\" | \"rx\" | \"ry\" | \"scroll-padding-block-end\" | \"scroll-padding-block-start\" | \"scroll-padding-bottom\" | \"scroll-padding-inline-end\" | \"scroll-padding-inline-start\" | \"scroll-padding-left\" | \"scroll-padding-right\" | \"scroll-padding-top\" | \"text-decoration-thickness\" | \"top\" | \"translate\""
                                         }
                                     ],
-                                    "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
+                                    "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSS_Typed_OM_API#cssstylevalue_interfaces",
                                     "overrideType": "undefined | CSSKeywordValue | CSSUnitValue | CSSMathValue" 
                                 }
                             ]
