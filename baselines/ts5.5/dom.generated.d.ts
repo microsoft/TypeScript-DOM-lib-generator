@@ -6722,10 +6722,13 @@ interface DOMMatrixReadOnly {
     scaleNonUniform(scaleX?: number, scaleY?: number): DOMMatrix;
     skewX(sx?: number): DOMMatrix;
     skewY(sy?: number): DOMMatrix;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toFloat32Array) */
     toFloat32Array(): Float32Array;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toFloat64Array) */
     toFloat64Array(): Float64Array;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toJSON) */
     toJSON(): any;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/transformPoint) */
     transformPoint(point?: DOMPointInit): DOMPoint;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/translate) */
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
@@ -6797,6 +6800,7 @@ interface DOMPointReadOnly {
     readonly y: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/z) */
     readonly z: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/matrixTransform) */
     matrixTransform(matrix?: DOMMatrixInit): DOMPoint;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/toJSON) */
     toJSON(): any;
@@ -20271,7 +20275,9 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
 interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
     /** @deprecated */
     readonly className: any;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/ownerSVGElement) */
     readonly ownerSVGElement: SVGSVGElement | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/viewportElement) */
     readonly viewportElement: SVGElement | null;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21178,9 +21184,13 @@ declare var SVGLineElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLinearGradientElement)
  */
 interface SVGLinearGradientElement extends SVGGradientElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLinearGradientElement/x1) */
     readonly x1: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLinearGradientElement/x2) */
     readonly x2: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLinearGradientElement/y1) */
     readonly y1: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLinearGradientElement/y2) */
     readonly y2: SVGAnimatedLength;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLinearGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21356,8 +21366,11 @@ declare var SVGPathElement: {
  */
 interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGURIReference {
     readonly height: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPatternElement/patternContentUnits) */
     readonly patternContentUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPatternElement/patternTransform) */
     readonly patternTransform: SVGAnimatedTransformList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPatternElement/patternUnits) */
     readonly patternUnits: SVGAnimatedEnumeration;
     readonly width: SVGAnimatedLength;
     readonly x: SVGAnimatedLength;
@@ -21484,11 +21497,16 @@ declare var SVGPreserveAspectRatio: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement)
  */
 interface SVGRadialGradientElement extends SVGGradientElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/cx) */
     readonly cx: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/cy) */
     readonly cy: SVGAnimatedLength;
     readonly fr: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/fx) */
     readonly fx: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/fy) */
     readonly fy: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/r) */
     readonly r: SVGAnimatedLength;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRadialGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21864,14 +21882,23 @@ declare var SVGTitleElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform)
  */
 interface SVGTransform {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/angle) */
     readonly angle: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/matrix) */
     readonly matrix: DOMMatrix;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/type) */
     readonly type: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/setMatrix) */
     setMatrix(matrix?: DOMMatrix2DInit): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/setRotate) */
     setRotate(angle: number, cx: number, cy: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/setScale) */
     setScale(sx: number, sy: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/setSkewX) */
     setSkewX(angle: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/setSkewY) */
     setSkewY(angle: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform/setTranslate) */
     setTranslate(tx: number, ty: number): void;
     readonly SVG_TRANSFORM_UNKNOWN: 0;
     readonly SVG_TRANSFORM_MATRIX: 1;
