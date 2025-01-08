@@ -20075,7 +20075,9 @@ declare var SVGAnimatedNumberList: {
 };
 
 interface SVGAnimatedPoints {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPolygonElement/animatedPoints) */
     readonly animatedPoints: SVGPointList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPolygonElement/points) */
     readonly points: SVGPointList;
 }
 
@@ -20392,8 +20394,11 @@ declare var SVGFEBlendElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEColorMatrixElement)
  */
 interface SVGFEColorMatrixElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEColorMatrixElement/in1) */
     readonly in1: SVGAnimatedString;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEColorMatrixElement/type) */
     readonly type: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEColorMatrixElement/values) */
     readonly values: SVGAnimatedNumberList;
     readonly SVG_FECOLORMATRIX_TYPE_UNKNOWN: 0;
     readonly SVG_FECOLORMATRIX_TYPE_MATRIX: 1;
@@ -20569,7 +20574,9 @@ declare var SVGFEDisplacementMapElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDistantLightElement)
  */
 interface SVGFEDistantLightElement extends SVGElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDistantLightElement/azimuth) */
     readonly azimuth: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDistantLightElement/elevation) */
     readonly elevation: SVGAnimatedNumber;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDistantLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20692,9 +20699,13 @@ declare var SVGFEFuncRElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEGaussianBlurElement)
  */
 interface SVGFEGaussianBlurElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEGaussianBlurElement/in1) */
     readonly in1: SVGAnimatedString;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEGaussianBlurElement/stdDeviationX) */
     readonly stdDeviationX: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEGaussianBlurElement/stdDeviationY) */
     readonly stdDeviationY: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEGaussianBlurElement/setStdDeviation) */
     setStdDeviation(stdDeviationX: number, stdDeviationY: number): void;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEGaussianBlurElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20833,11 +20844,15 @@ declare var SVGFEPointLightElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement)
  */
 interface SVGFESpecularLightingElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/in1) */
     readonly in1: SVGAnimatedString;
     readonly kernelUnitLengthX: SVGAnimatedNumber;
     readonly kernelUnitLengthY: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/specularConstant) */
     readonly specularConstant: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/specularExponent) */
     readonly specularExponent: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/surfaceScale) */
     readonly surfaceScale: SVGAnimatedNumber;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpecularLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20934,11 +20949,17 @@ declare var SVGFETurbulenceElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement)
  */
 interface SVGFilterElement extends SVGElement, SVGURIReference {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement/filterUnits) */
     readonly filterUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement/height) */
     readonly height: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement/primitiveUnits) */
     readonly primitiveUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement/width) */
     readonly width: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement/x) */
     readonly x: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement/y) */
     readonly y: SVGAnimatedLength;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFilterElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21033,8 +21054,11 @@ declare var SVGGeometryElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGradientElement)
  */
 interface SVGGradientElement extends SVGElement, SVGURIReference {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGradientElement/gradientTransform) */
     readonly gradientTransform: SVGAnimatedTransformList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGradientElement/gradientUnits) */
     readonly gradientUnits: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGradientElement/spreadMethod) */
     readonly spreadMethod: SVGAnimatedEnumeration;
     readonly SVG_SPREADMETHOD_UNKNOWN: 0;
     readonly SVG_SPREADMETHOD_PAD: 1;
@@ -21346,14 +21370,23 @@ declare var SVGNumber: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList)
  */
 interface SVGNumberList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/length) */
     readonly length: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/numberOfItems) */
     readonly numberOfItems: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/appendItem) */
     appendItem(newItem: SVGNumber): SVGNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/clear) */
     clear(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/getItem) */
     getItem(index: number): SVGNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/initialize) */
     initialize(newItem: SVGNumber): SVGNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/insertItemBefore) */
     insertItemBefore(newItem: SVGNumber, index: number): SVGNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/removeItem) */
     removeItem(index: number): SVGNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/replaceItem) */
     replaceItem(newItem: SVGNumber, index: number): SVGNumber;
     [index: number]: SVGNumber;
 }
@@ -21653,6 +21686,7 @@ declare var SVGSetElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStopElement)
  */
 interface SVGStopElement extends SVGElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStopElement/offset) */
     readonly offset: SVGAnimatedNumber;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStopElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21780,15 +21814,25 @@ interface SVGTests {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement)
  */
 interface SVGTextContentElement extends SVGGraphicsElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/lengthAdjust) */
     readonly lengthAdjust: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/textLength) */
     readonly textLength: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getCharNumAtPosition) */
     getCharNumAtPosition(point?: DOMPointInit): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getComputedTextLength) */
     getComputedTextLength(): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getEndPositionOfChar) */
     getEndPositionOfChar(charnum: number): DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getExtentOfChar) */
     getExtentOfChar(charnum: number): DOMRect;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getNumberOfChars) */
     getNumberOfChars(): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getRotationOfChar) */
     getRotationOfChar(charnum: number): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getStartPositionOfChar) */
     getStartPositionOfChar(charnum: number): DOMPoint;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement/getSubStringLength) */
     getSubStringLength(charnum: number, nchars: number): number;
     /** @deprecated */
     selectSubString(charnum: number, nchars: number): void;
@@ -21832,8 +21876,11 @@ declare var SVGTextElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement)
  */
 interface SVGTextPathElement extends SVGTextContentElement, SVGURIReference {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/method) */
     readonly method: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/spacing) */
     readonly spacing: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement/startOffset) */
     readonly startOffset: SVGAnimatedLength;
     readonly TEXTPATH_METHODTYPE_UNKNOWN: 0;
     readonly TEXTPATH_METHODTYPE_ALIGN: 1;
@@ -21948,16 +21995,27 @@ declare var SVGTransform: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList)
  */
 interface SVGTransformList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/length) */
     readonly length: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/numberOfItems) */
     readonly numberOfItems: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/appendItem) */
     appendItem(newItem: SVGTransform): SVGTransform;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/clear) */
     clear(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/consolidate) */
     consolidate(): SVGTransform | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/createSVGTransformFromMatrix) */
     createSVGTransformFromMatrix(matrix?: DOMMatrix2DInit): SVGTransform;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/getItem) */
     getItem(index: number): SVGTransform;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/initialize) */
     initialize(newItem: SVGTransform): SVGTransform;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/insertItemBefore) */
     insertItemBefore(newItem: SVGTransform, index: number): SVGTransform;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/removeItem) */
     removeItem(index: number): SVGTransform;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList/replaceItem) */
     replaceItem(newItem: SVGTransform, index: number): SVGTransform;
     [index: number]: SVGTransform;
 }
