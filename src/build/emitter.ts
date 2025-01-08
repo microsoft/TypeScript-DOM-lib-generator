@@ -141,7 +141,7 @@ export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
   iterator: "" | "sync" | "async",
-  compilerBehavior: CompilerBehavior,
+  { allowUnrelatedSetterType, useIteratorObject }: CompilerBehavior,
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
@@ -826,8 +826,7 @@ export function emitWebIdl(
         pType += " | undefined";
       }
       const optionalModifier = !p.optional || prefix ? "" : "?";
-      const canPutForward =
-        compilerBehavior.allowUnrelatedSetterType || !p.readonly;
+      const canPutForward = allowUnrelatedSetterType || !p.readonly;
       if (!prefix && canPutForward && p.putForwards) {
         printer.printLine(`get ${p.name}${optionalModifier}(): ${pType};`);
 
@@ -837,7 +836,7 @@ export function emitWebIdl(
           throw new Error("Couldn't find [PutForwards]");
         }
         let setterType = `${convertDomTypeToTsType(forwardingProperty)}`;
-        if (!compilerBehavior.allowUnrelatedSetterType) {
+        if (!allowUnrelatedSetterType) {
           setterType += ` | ${pType}`;
         }
         printer.printLine(
@@ -1549,7 +1548,7 @@ export function emitWebIdl(
   }
 
   function emitSelfIterator(i: Browser.Interface) {
-    if (!compilerBehavior.useIteratorObject) return;
+    if (!useIteratorObject) return;
     const async = i.iterator?.async;
     const name = getName(i);
     const iteratorBaseType = `${async ? "Async" : ""}IteratorObject`;
@@ -1577,10 +1576,10 @@ export function emitWebIdl(
     }
     const async = i.iterator?.async;
     const iteratorType = async
-      ? !compilerBehavior.useIteratorObject
+      ? !useIteratorObject
         ? "AsyncIterableIterator"
         : `${name}AsyncIterator`
-      : !compilerBehavior.useIteratorObject
+      : !useIteratorObject
         ? "IterableIterator"
         : subtypes.length !== 1
           ? `${name}Iterator`
