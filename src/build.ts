@@ -297,6 +297,12 @@ async function emitDom() {
       compilerBehavior: {},
     },
     {
+      outputFolder: new URL("./module/", outputFolder),
+      compilerBehavior: {
+        exportTypes: true,
+      },
+    },
+    {
       outputFolder,
       compilerBehavior: {
         useIteratorObject: true,

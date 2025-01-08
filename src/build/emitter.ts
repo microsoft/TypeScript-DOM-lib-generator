@@ -135,13 +135,18 @@ function isEventHandler(p: Browser.Property) {
 export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
+  exportTypes?: boolean;
 }
 
 export function emitWebIdl(
   webidl: Browser.WebIdl,
   global: string,
   iterator: "" | "sync" | "async",
-  { allowUnrelatedSetterType, useIteratorObject }: CompilerBehavior,
+  {
+    allowUnrelatedSetterType,
+    useIteratorObject,
+    exportTypes,
+  }: CompilerBehavior,
 ): string {
   // Global print target
   const printer = createTextWriter("\n");
@@ -149,6 +154,8 @@ export function emitWebIdl(
   const polluter = getElements(webidl.interfaces, "interface").find(
     (i) => !!i.global,
   );
+
+  const exportPrefix = exportTypes ? "export " : "";
 
   const allNonCallbackInterfaces = getElements(
     webidl.interfaces,
@@ -617,7 +624,7 @@ export function emitWebIdl(
   }
 
   function emitElementTagNameMap(name: string, map: Record<string, string>) {
-    printer.printLine(`interface ${name} {`);
+    printer.printLine(`${exportPrefix}interface ${name} {`);
     printer.increaseIndent();
     for (const [e, value] of Object.entries(map).sort()) {
       printer.printLine(`"${e}": ${value};`);
@@ -721,7 +728,7 @@ export function emitWebIdl(
       ? convertDomTypeToTsReturnType(overload)
       : "void";
     printer.printLine(
-      `type ${i.name} = ((${paramsString}) => ${returnType}) | { ${m.name}(${paramsString}): ${returnType}; };`,
+      `${exportPrefix}type ${i.name} = ((${paramsString}) => ${returnType}) | { ${m.name}(${paramsString}): ${returnType}; };`,
     );
     printer.printLine("");
 
@@ -739,7 +746,7 @@ export function emitWebIdl(
 
   function emitCallBackFunction(cb: Browser.CallbackFunction) {
     printer.printLine(
-      `interface ${getNameWithTypeParameters(cb.typeParameters, cb.name)} {`,
+      `${exportPrefix}interface ${getNameWithTypeParameters(cb.typeParameters, cb.name)} {`,
     );
     printer.increaseIndent();
     emitSignatures(cb, "", "", printer.printLine, true);
@@ -757,7 +764,7 @@ export function emitWebIdl(
   function emitEnum(e: Browser.Enum) {
     const values = e.value.slice().sort();
     printer.printLine(
-      `type ${e.name} = ${values.map((v) => `"${v}"`).join(" | ")};`,
+      `${exportPrefix}type ${e.name} = ${values.map((v) => `"${v}"`).join(" | ")};`,
     );
   }
 
@@ -1212,7 +1219,7 @@ export function emitWebIdl(
 
     if (processedIName !== i.name) {
       printer.printLineToStack(
-        `interface ${getNameWithTypeParameters(
+        `${exportPrefix}interface ${getNameWithTypeParameters(
           i.typeParameters,
           i.name,
         )} extends ${processedIName} {`,
@@ -1222,7 +1229,7 @@ export function emitWebIdl(
     emitComments(i, printer.printLine);
 
     printer.print(
-      `interface ${getNameWithTypeParameters(i.typeParameters, processedIName)}`,
+      `${exportPrefix}interface ${getNameWithTypeParameters(i.typeParameters, processedIName)}`,
     );
 
     const finalExtends = [i.extends || "Object"]
@@ -1344,7 +1351,7 @@ export function emitWebIdl(
     const ehParentCount = iNameToEhParents[i.name]?.length;
 
     if (hasEventHandlers || ehParentCount > 1) {
-      printer.print(`interface ${i.name}EventMap`);
+      printer.print(`${exportPrefix}interface ${i.name}EventMap`);
       if (ehParentCount) {
         const extend = iNameToEhParents[i.name].map((i) => i.name + "EventMap");
         printer.print(` extends ${assertUnique(extend).join(", ")}`);
@@ -1432,14 +1439,14 @@ export function emitWebIdl(
   function emitDictionary(dict: Browser.Dictionary) {
     if (!dict.extends || dict.extends === "Object") {
       printer.printLine(
-        `interface ${getNameWithTypeParameters(
+        `${exportPrefix}interface ${getNameWithTypeParameters(
           dict.typeParameters,
           dict.name,
         )} {`,
       );
     } else {
       printer.printLine(
-        `interface ${getNameWithTypeParameters(
+        `${exportPrefix}interface ${getNameWithTypeParameters(
           dict.typeParameters,
           dict.name,
         )} extends ${dict.extends} {`,
@@ -1474,7 +1481,7 @@ export function emitWebIdl(
   function emitTypeDef(typeDef: Browser.TypeDef) {
     emitComments(typeDef, printer.printLine);
     printer.printLine(
-      `type ${getNameWithTypeParameters(
+      `${exportPrefix}type ${getNameWithTypeParameters(
         typeDef.typeParameters,
         typeDef.name,
       )} = ${convertDomTypeToTsType(typeDef)};`,
@@ -1556,7 +1563,7 @@ export function emitWebIdl(
     const iteratorSymbol = async ? "Symbol.asyncIterator" : "Symbol.iterator";
     printer.printLine("");
     printer.printLine(
-      `interface ${iteratorType}<T> extends ${iteratorBaseType}<T, BuiltinIteratorReturn, unknown> {`,
+      `${exportPrefix}interface ${iteratorType}<T> extends ${iteratorBaseType}<T, BuiltinIteratorReturn, unknown> {`,
     );
     printer.increaseIndent();
     printer.printLine(`[${iteratorSymbol}](): ${iteratorType}<T>;`);
@@ -1762,7 +1769,7 @@ export function emitWebIdl(
 
     printer.printLine("");
     printer.printLine(
-      `interface ${nameWithTypeParameters} ${iteratorExtends}{`,
+      `${exportPrefix}interface ${nameWithTypeParameters} ${iteratorExtends}{`,
     );
     printer.increaseIndent();
 
@@ -1800,7 +1807,7 @@ export function emitWebIdl(
     emitSelfIterator(i);
 
     printer.printLine("");
-    printer.printLine(`interface ${nameWithTypeParameters} {`);
+    printer.printLine(`${exportPrefix}interface ${nameWithTypeParameters} {`);
     printer.increaseIndent();
 
     emitIterableMethods(i, name, subtypes);
