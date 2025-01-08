@@ -301,9 +301,12 @@ async function emitDom() {
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
-      } as CompilerBehavior,
+      },
     },
-  ];
+  ] satisfies {
+    outputFolder: URL;
+    compilerBehavior: CompilerBehavior;
+  }[];
 
   for (const { outputFolder, compilerBehavior } of emitVariations) {
     // Create output folder
