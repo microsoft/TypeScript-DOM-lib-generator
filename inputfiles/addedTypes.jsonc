@@ -338,8 +338,12 @@
                 // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
                 // Please add a feature only when it's supported by multiple engines.
                 "value": [
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
+                    "camera",
                     // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility
                     "geolocation",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
+                    "microphone",
                     // Gecko and Blink: https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API#browser_compatibility
                     "midi",
                     // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API#browser_compatibility
