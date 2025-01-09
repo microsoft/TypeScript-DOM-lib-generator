@@ -87,6 +87,10 @@ function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
 
 function compileGeneratedFiles(lib: string, ...files: string[]) {
   try {
+    console.log("Testing:");
+    console.log("\tlib:", lib);
+    console.log("\tfiles:", files.join(","));
+
     child_process.execSync(
       `node ${fileURLToPath(
         tscPath,
