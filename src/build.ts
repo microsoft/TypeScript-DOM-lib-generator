@@ -300,6 +300,7 @@ async function emitDom() {
       outputFolder: new URL("./module/", outputFolder),
       compilerBehavior: {
         exportTypes: true,
+        omitDeclares: true,
       },
     },
     {

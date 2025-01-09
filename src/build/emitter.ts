@@ -136,6 +136,7 @@ export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
   exportTypes?: boolean;
+  omitDeclares?: boolean;
 }
 
 export function emitWebIdl(
@@ -146,6 +147,7 @@ export function emitWebIdl(
     allowUnrelatedSetterType,
     useIteratorObject,
     exportTypes,
+    omitDeclares,
   }: CompilerBehavior,
 ): string {
   // Global print target
@@ -736,6 +738,10 @@ export function emitWebIdl(
       return;
     }
 
+    if (omitDeclares) {
+      return;
+    }
+
     printer.printLine(`declare var ${i.name}: {`);
     printer.increaseIndent();
     emitConstants(i);
@@ -1179,7 +1185,7 @@ export function emitWebIdl(
     printer.printLine("};");
     printer.printLine("");
 
-    if (global === "Window" && i.legacyWindowAlias) {
+    if (global === "Window" && i.legacyWindowAlias && !omitDeclares) {
       for (const alias of i.legacyWindowAlias!) {
         printer.printLine(`type ${alias} = ${i.name};`);
         printer.printLine(`declare var ${alias}: typeof ${i.name};`);
@@ -1397,7 +1403,9 @@ export function emitWebIdl(
         emitInterface(i);
       } else {
         emitInterface(i);
-        emitConstructor(i, "declare ");
+        if (!omitDeclares) {
+          emitConstructor(i, "declare ");
+        }
       }
     }
   }
@@ -1410,11 +1418,15 @@ export function emitWebIdl(
     if (namespacesAsInterfaces.includes(namespace.name)) {
       const name = namespace.name[0].toUpperCase() + namespace.name.slice(1);
       emitInterface({ ...namespace, name });
-      printer.printLine(`declare var ${namespace.name}: ${name};`);
+      if (!omitDeclares) {
+        printer.printLine(`declare var ${namespace.name}: ${name};`);
+      }
       printer.printLine("");
       return;
     }
 
+    // Emitting the declare statement here, even if `omitDeclares` is true on purpose, to prevent:
+    // Top-level declarations in .d.ts files must start with either a 'declare' or 'export' modifier. ts(1046)
     printer.printLine(`declare namespace ${namespace.name} {`);
     printer.increaseIndent();
 
@@ -1433,6 +1445,9 @@ export function emitWebIdl(
 
     printer.decreaseIndent();
     printer.printLine("}");
+    if (exportTypes) {
+      printer.printLine(`export type { ${namespace.name} };`);
+    }
     printer.printLine("");
   }
 
@@ -1533,10 +1548,12 @@ export function emitWebIdl(
         tagNameToEleName.mathMLResult,
       );
       emitDeprecatedHTMLOrSVGElementTagNameMap();
-      emitNamedConstructors();
+      if (!omitDeclares) {
+        emitNamedConstructors();
+      }
     }
 
-    if (polluter) {
+    if (polluter && !omitDeclares) {
       emitAllMembers(polluter);
       emitEventHandlers("declare var ", polluter);
     }
