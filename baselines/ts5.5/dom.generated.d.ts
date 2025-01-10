@@ -2501,6 +2501,8 @@ interface ARIAMixin {
     ariaPressed: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaReadOnly) */
     ariaReadOnly: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRelevant) */
+    ariaRelevant: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRequired) */
     ariaRequired: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRoleDescription) */
