@@ -4238,6 +4238,7 @@ interface CSSStyleDeclaration {
     alignItems: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-self) */
     alignSelf: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/alignment-baseline) */
     alignmentBaseline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/all) */
     all: string;
@@ -6710,6 +6711,7 @@ interface DOMMatrixReadOnly {
     readonly m44: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/flipX) */
     flipX(): DOMMatrix;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/flipY) */
     flipY(): DOMMatrix;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/inverse) */
     inverse(): DOMMatrix;
@@ -9621,7 +9623,7 @@ interface GlobalEventHandlers {
     onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
     onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/webglcontextlost_event) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
     oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /**
      * Fires when the user clicks the right mouse button in the client area, opening the context menu.
@@ -10539,7 +10541,7 @@ declare var HTMLDataListElement: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement) */
 interface HTMLDetailsElement extends HTMLElement {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/open) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/name) */
     name: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/open) */
     open: boolean;
@@ -12185,7 +12187,11 @@ interface HTMLMediaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/playbackRate)
      */
     playbackRate: number;
-    /** Gets TimeRanges for the current media resource that has been played. */
+    /**
+     * Gets TimeRanges for the current media resource that has been played.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/played)
+     */
     readonly played: TimeRanges;
     /**
      * Gets or sets a value indicating what data should be preloaded, if any.
@@ -12205,7 +12211,11 @@ interface HTMLMediaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seekable)
      */
     readonly seekable: TimeRanges;
-    /** Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource. */
+    /**
+     * Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seeking)
+     */
     readonly seeking: boolean;
     /**
      * Available only in secure contexts.
@@ -18596,6 +18606,7 @@ declare var PointerEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent)
  */
 interface PopStateEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent/hasUAVisualTransition) */
     readonly hasUAVisualTransition: boolean;
     /**
      * Returns a copy of the information that was provided to pushState() or replaceState().
@@ -18687,6 +18698,7 @@ interface PublicKeyCredential extends Credential {
 declare var PublicKeyCredential: {
     prototype: PublicKeyCredential;
     new(): PublicKeyCredential;
+    getClientCapabilities(): Promise<PublicKeyCredentialClientCapabilities>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable_static) */
     isConditionalMediationAvailable(): Promise<boolean>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable_static) */
@@ -19859,11 +19871,17 @@ declare var SVGAElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle)
  */
 interface SVGAngle {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle/unitType) */
     readonly unitType: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle/value) */
     value: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle/valueAsString) */
     valueAsString: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle/valueInSpecifiedUnits) */
     valueInSpecifiedUnits: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle/convertToSpecifiedUnits) */
     convertToSpecifiedUnits(unitType: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle/newValueSpecifiedUnits) */
     newValueSpecifiedUnits(unitType: number, valueInSpecifiedUnits: number): void;
     readonly SVG_ANGLETYPE_UNKNOWN: 0;
     readonly SVG_ANGLETYPE_UNSPECIFIED: 1;
@@ -19978,7 +19996,9 @@ declare var SVGAnimatedEnumeration: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger)
  */
 interface SVGAnimatedInteger {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger/animVal) */
     readonly animVal: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger/baseVal) */
     baseVal: number;
 }
 
@@ -20068,7 +20088,9 @@ interface SVGAnimatedPoints {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedPreserveAspectRatio)
  */
 interface SVGAnimatedPreserveAspectRatio {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedPreserveAspectRatio/animVal) */
     readonly animVal: SVGPreserveAspectRatio;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedPreserveAspectRatio/baseVal) */
     readonly baseVal: SVGPreserveAspectRatio;
 }
 
@@ -20501,10 +20523,15 @@ declare var SVGFEConvolveMatrixElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement)
  */
 interface SVGFEDiffuseLightingElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement/diffuseConstant) */
     readonly diffuseConstant: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement/in1) */
     readonly in1: SVGAnimatedString;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement/kernelUnitLengthX) */
     readonly kernelUnitLengthX: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement/kernelUnitLengthY) */
     readonly kernelUnitLengthY: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement/surfaceScale) */
     readonly surfaceScale: SVGAnimatedNumber;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDiffuseLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20740,6 +20767,7 @@ declare var SVGFEMergeElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMergeNodeElement)
  */
 interface SVGFEMergeNodeElement extends SVGElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMergeNodeElement/in1) */
     readonly in1: SVGAnimatedString;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeNodeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20758,9 +20786,13 @@ declare var SVGFEMergeNodeElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMorphologyElement)
  */
 interface SVGFEMorphologyElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMorphologyElement/in1) */
     readonly in1: SVGAnimatedString;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMorphologyElement/operator) */
     readonly operator: SVGAnimatedEnumeration;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMorphologyElement/radiusX) */
     readonly radiusX: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMorphologyElement/radiusY) */
     readonly radiusY: SVGAnimatedNumber;
     readonly SVG_MORPHOLOGY_OPERATOR_UNKNOWN: 0;
     readonly SVG_MORPHOLOGY_OPERATOR_ERODE: 1;
@@ -21189,9 +21221,13 @@ declare var SVGLengthList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLineElement)
  */
 interface SVGLineElement extends SVGGeometryElement {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLineElement/x1) */
     readonly x1: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLineElement/x2) */
     readonly x2: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLineElement/y1) */
     readonly y1: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLineElement/y2) */
     readonly y2: SVGAnimatedLength;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -22226,7 +22262,7 @@ interface Selection {
     containsNode(node: Node, allowPartialContainment?: boolean): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/deleteFromDocument) */
     deleteFromDocument(): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/removeAllRanges) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/empty) */
     empty(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/extend) */
     extend(node: Node, offset?: number): void;
@@ -22242,7 +22278,7 @@ interface Selection {
     selectAllChildren(node: Node): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/setBaseAndExtent) */
     setBaseAndExtent(anchorNode: Node, anchorOffset: number, focusNode: Node, focusOffset: number): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/collapse) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/setPosition) */
     setPosition(node: Node | null, offset?: number): void;
     toString(): string;
 }
@@ -24964,7 +25000,7 @@ interface WebGL2RenderingContextBase {
     clearBufferuiv(buffer: GLenum, drawbuffer: GLint, values: Uint32List, srcOffset?: number): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/clientWaitSync) */
     clientWaitSync(sync: WebGLSync, flags: GLbitfield, timeout: GLuint64): GLenum;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/compressedTexImage2D) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/compressedTexImage3D) */
     compressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, imageSize: GLsizei, offset: GLintptr): void;
     compressedTexImage3D(target: GLenum, level: GLint, internalformat: GLenum, width: GLsizei, height: GLsizei, depth: GLsizei, border: GLint, srcData: ArrayBufferView, srcOffset?: number, srcLengthOverride?: GLuint): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage3D) */
@@ -25386,11 +25422,11 @@ interface WebGL2RenderingContextBase {
 }
 
 interface WebGL2RenderingContextOverloads {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/bufferData) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/bufferData) */
     bufferData(target: GLenum, size: GLsizeiptr, usage: GLenum): void;
     bufferData(target: GLenum, srcData: AllowSharedBufferSource | null, usage: GLenum): void;
     bufferData(target: GLenum, srcData: ArrayBufferView, usage: GLenum, srcOffset: number, length?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/bufferSubData) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/bufferSubData) */
     bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: AllowSharedBufferSource): void;
     bufferSubData(target: GLenum, dstByteOffset: GLintptr, srcData: ArrayBufferView, srcOffset: number, length?: GLuint): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/compressedTexImage2D) */
@@ -25431,7 +25467,7 @@ interface WebGL2RenderingContextOverloads {
     uniform4fv(location: WebGLUniformLocation | null, data: Float32List, srcOffset?: number, srcLength?: GLuint): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
     uniform4iv(location: WebGLUniformLocation | null, data: Int32List, srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
     uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Float32List, srcOffset?: number, srcLength?: GLuint): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
     uniformMatrix3fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: Float32List, srcOffset?: number, srcLength?: GLuint): void;
@@ -25847,7 +25883,7 @@ declare var WebGLRenderingContext: {
 interface WebGLRenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/canvas) */
     readonly canvas: HTMLCanvasElement | OffscreenCanvas;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferColorSpace) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/drawingBufferColorSpace) */
     drawingBufferColorSpace: PredefinedColorSpace;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/drawingBufferHeight) */
     readonly drawingBufferHeight: GLsizei;
@@ -28747,7 +28783,7 @@ declare var onchange: ((this: Window, ev: Event) => any) | null;
 declare var onclick: ((this: Window, ev: MouseEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
 declare var onclose: ((this: Window, ev: Event) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/webglcontextlost_event) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
 declare var oncontextlost: ((this: Window, ev: Event) => any) | null;
 /**
  * Fires when the user clicks the right mouse button in the client area, opening the context menu.
@@ -29282,6 +29318,7 @@ type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
+type PublicKeyCredentialClientCapabilities = Record<string, boolean>;
 type PublicKeyCredentialJSON = any;
 type RTCRtpTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
