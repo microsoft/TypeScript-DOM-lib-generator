@@ -3609,6 +3609,33 @@
                         }
                     }
                 }
+            },
+            "HTMLImageElement": {
+                "properties": {
+                    "property": {
+                        "fetchPriority": {
+                            "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
+            },
+            "HTMLLinkElement": {
+                "properties": {
+                    "property": {
+                        "fetchPriority": {
+                            "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
+            },
+            "HTMLScriptElement": {
+                "properties": {
+                    "property": {
+                        "fetchPriority": {
+                            "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
             }
         }
     },

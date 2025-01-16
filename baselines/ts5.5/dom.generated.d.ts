@@ -11425,7 +11425,7 @@ interface HTMLImageElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/decoding) */
     decoding: "async" | "sync" | "auto";
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority) */
-    fetchPriority: string;
+    fetchPriority: "high" | "low" | "auto";
     /**
      * Sets or retrieves the height of the object.
      *
@@ -11943,7 +11943,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/disabled) */
     disabled: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/fetchPriority) */
-    fetchPriority: string;
+    fetchPriority: "high" | "low" | "auto";
     /**
      * Sets or retrieves a destination URL or an anchor point.
      *
@@ -12985,7 +12985,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     event: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/fetchPriority) */
-    fetchPriority: string;
+    fetchPriority: "high" | "low" | "auto";
     /**
      * Sets or retrieves the object that is bound to the event script.
      * @deprecated
