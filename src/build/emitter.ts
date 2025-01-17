@@ -773,10 +773,10 @@ export function emitWebIdl(
     prefix: string,
     i: Browser.Interface,
   ) {
-    if (overrideThisType) {
-      return `this: ${overrideThisType}, `;
-    } else if (prefix === "") {
-      return `this: ${nameWithForwardedTypes(i)}, `;
+    if (prefix === "") {
+      return overrideThisType
+        ? `this: ${overrideThisType}, `
+        : `this: ${nameWithForwardedTypes(i)}, `;
     } else {
       return polluter ? `this: ${polluter.name}, ` : "";
     }
