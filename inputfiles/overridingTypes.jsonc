@@ -1,6 +1,20 @@
 {
     "mixins": {
         "mixin": {
+            "MessageEventTarget": {
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
             "ChildNode": {
                 "extends": "Node"
             },
