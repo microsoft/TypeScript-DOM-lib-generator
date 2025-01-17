@@ -2,6 +2,7 @@
     "mixins": {
         "mixin": {
             "MessageEventTarget": {
+                "overrideThisType": "this",
                 "events": {
                     "event": [
                         {
