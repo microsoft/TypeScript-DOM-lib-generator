@@ -2,7 +2,6 @@
     "mixins": {
         "mixin": {
             "MessageEventTarget": {
-                "overrideThisType": "this",
                 "events": {
                     "event": [
                         {
@@ -41,7 +40,14 @@
                     }
                 }
             },
+            "AbstractWorker": {
+                "concreteThisParameter": true
+            },
+            "WindowEventHandlers": {
+                "concreteThisParameter": true
+            },
             "GlobalEventHandlers": {
+                "concreteThisParameter": true,
                 "events": {
                     "event": [
                         {

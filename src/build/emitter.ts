@@ -768,15 +768,12 @@ export function emitWebIdl(
       .forEach(emitEnum);
   }
 
-  function emitEventHandlerThis(
-    overrideThisType: string | undefined,
-    prefix: string,
-    i: Browser.Interface,
-  ) {
+  function emitEventHandlerThis(prefix: string, i: Browser.Interface) {
     if (prefix === "") {
-      return overrideThisType
-        ? `this: ${overrideThisType}, `
-        : `this: ${nameWithForwardedTypes(i)}, `;
+      if (i.mixin && !i.concreteThisParameter) {
+        return `this: this, `;
+      }
+      return `this: ${nameWithForwardedTypes(i)}, `;
     } else {
       return polluter ? `this: ${polluter.name}, ` : "";
     }
@@ -821,7 +818,7 @@ export function emitWebIdl(
         const eType = p.eventHandler
           ? getEventTypeInInterface(p.eventHandler!, i)
           : "Event";
-        pType = `(${emitEventHandlerThis(i.overrideThisType, prefix, i)}ev: ${eType}) => any`;
+        pType = `(${emitEventHandlerThis(prefix, i)}ev: ${eType}) => any`;
         if (typeof p.type === "string" && !p.type.endsWith("NonNull")) {
           pType = `(${pType}) | null`;
         }

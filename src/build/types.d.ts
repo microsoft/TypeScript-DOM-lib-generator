@@ -181,7 +181,7 @@ export interface Interface {
   overrideExposed?: string;
   tags?: string;
   "implicit-this"?: 1;
-  overrideThisType?: string;
+  concreteThisParameter?: boolean;
   noInterfaceObject?: boolean;
   global?: string;
   typeParameters?: TypeParameter[];
