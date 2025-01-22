@@ -2,6 +2,11 @@
     "mixins": {
         "mixin": {
             "MessageEventTarget": {
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
                 "events": {
                     "event": [
                         {
@@ -40,14 +45,7 @@
                     }
                 }
             },
-            "AbstractWorker": {
-                "concreteThisParameter": true
-            },
-            "WindowEventHandlers": {
-                "concreteThisParameter": true
-            },
             "GlobalEventHandlers": {
-                "concreteThisParameter": true,
                 "events": {
                     "event": [
                         {
@@ -2528,6 +2526,7 @@
                 ]
             },
             "Worker": {
+                "overrideImplements": ["AbstractWorker", "MessageEventTarget<Worker>"],
                 "methods": {
                     "method": {
                         "postMessage": {
@@ -2543,18 +2542,6 @@
                             }
                         }
                     }
-                },
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
                 }
             },
             "Crypto": {
@@ -2633,6 +2620,7 @@
                 }
             },
             "MessagePort": {
+                "overrideImplements": ["MessageEventTarget<MessagePort>"],
                 "methods": {
                     "method": {
                         "postMessage": {
@@ -2681,6 +2669,7 @@
                 }
             },
             "DedicatedWorkerGlobalScope": {
+                "overrideImplements": ["AnimationFrameProvider", "MessageEventTarget<DedicatedWorkerGlobalScope>"],
                 "methods": {
                     "method": {
                         "postMessage": {

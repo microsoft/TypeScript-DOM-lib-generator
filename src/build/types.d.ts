@@ -169,6 +169,7 @@ export interface Interface {
   };
   constructor?: Constructor;
   implements?: string[];
+  overrideImplements?: string[];
   anonymousMethods?: {
     method: AnonymousMethod[];
   };
@@ -181,7 +182,6 @@ export interface Interface {
   overrideExposed?: string;
   tags?: string;
   "implicit-this"?: 1;
-  concreteThisParameter?: boolean;
   noInterfaceObject?: boolean;
   global?: string;
   typeParameters?: TypeParameter[];
