@@ -2526,7 +2526,6 @@
                 ]
             },
             "Worker": {
-                "overrideImplements": ["AbstractWorker", "MessageEventTarget<Worker>"],
                 "methods": {
                     "method": {
                         "postMessage": {
@@ -2620,7 +2619,6 @@
                 }
             },
             "MessagePort": {
-                "overrideImplements": ["MessageEventTarget<MessagePort>"],
                 "methods": {
                     "method": {
                         "postMessage": {
@@ -2669,7 +2667,6 @@
                 }
             },
             "DedicatedWorkerGlobalScope": {
-                "overrideImplements": ["AnimationFrameProvider", "MessageEventTarget<DedicatedWorkerGlobalScope>"],
                 "methods": {
                     "method": {
                         "postMessage": {

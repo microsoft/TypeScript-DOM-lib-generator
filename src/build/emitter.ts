@@ -1227,9 +1227,10 @@ export function emitWebIdl(
     );
 
     const finalExtends = [i.extends || "Object"]
-      .concat(i.overrideImplements ?? getImplementList(i.name))
+      .concat(getImplementList(i.name))
       .filter((i) => i !== "Object")
       .map(processIName);
+
     if (finalExtends.length) {
       printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);
     }
