@@ -4125,7 +4125,7 @@ interface ImageDecoder {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete) */
     readonly complete: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed) */
-    readonly completed: Promise<undefined>;
+    readonly completed: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks) */
     readonly tracks: ImageTrackList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type) */
@@ -4167,7 +4167,7 @@ interface ImageTrackList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
     readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready) */
-    readonly ready: Promise<undefined>;
+    readonly ready: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex) */
     readonly selectedIndex: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack) */

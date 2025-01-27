@@ -15115,7 +15115,7 @@ interface ImageDecoder {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete) */
     readonly complete: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed) */
-    readonly completed: Promise<undefined>;
+    readonly completed: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks) */
     readonly tracks: ImageTrackList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type) */
@@ -15157,7 +15157,7 @@ interface ImageTrackList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
     readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready) */
-    readonly ready: Promise<undefined>;
+    readonly ready: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex) */
     readonly selectedIndex: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack) */
@@ -24149,12 +24149,12 @@ declare var VideoPlaybackQuality: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition) */
 interface ViewTransition {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/finished) */
-    readonly finished: Promise<undefined>;
+    readonly finished: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/ready) */
-    readonly ready: Promise<undefined>;
+    readonly ready: Promise<void>;
     types: ViewTransitionTypeSet;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/updateCallbackDone) */
-    readonly updateCallbackDone: Promise<undefined>;
+    readonly updateCallbackDone: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/skipTransition) */
     skipTransition(): void;
 }

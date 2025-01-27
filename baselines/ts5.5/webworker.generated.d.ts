@@ -274,7 +274,7 @@ interface ExtendableMessageEventInit extends ExtendableEventInit {
 
 interface FetchEventInit extends ExtendableEventInit {
     clientId?: string;
-    handled?: Promise<undefined>;
+    handled?: Promise<void>;
     preloadResponse?: Promise<any>;
     replacesClientId?: string;
     request: Request;
@@ -2955,7 +2955,7 @@ interface FetchEvent extends ExtendableEvent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/clientId) */
     readonly clientId: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/handled) */
-    readonly handled: Promise<undefined>;
+    readonly handled: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse) */
     readonly preloadResponse: Promise<any>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/request) */
@@ -4125,7 +4125,7 @@ interface ImageDecoder {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete) */
     readonly complete: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed) */
-    readonly completed: Promise<undefined>;
+    readonly completed: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks) */
     readonly tracks: ImageTrackList;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type) */
@@ -4167,7 +4167,7 @@ interface ImageTrackList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
     readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready) */
-    readonly ready: Promise<undefined>;
+    readonly ready: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex) */
     readonly selectedIndex: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack) */
@@ -5351,7 +5351,7 @@ declare var ReadableStreamDefaultReader: {
 
 interface ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/closed) */
-    readonly closed: Promise<undefined>;
+    readonly closed: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/cancel) */
     cancel(reason?: any): Promise<void>;
 }
@@ -8779,7 +8779,7 @@ interface WebTransport {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/incomingUnidirectionalStreams) */
     readonly incomingUnidirectionalStreams: ReadableStream;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/ready) */
-    readonly ready: Promise<undefined>;
+    readonly ready: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/close) */
     close(closeInfo?: WebTransportCloseInfo): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createBidirectionalStream) */
@@ -9114,11 +9114,11 @@ declare var WritableStreamDefaultController: {
  */
 interface WritableStreamDefaultWriter<W = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/closed) */
-    readonly closed: Promise<undefined>;
+    readonly closed: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/desiredSize) */
     readonly desiredSize: number | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/ready) */
-    readonly ready: Promise<undefined>;
+    readonly ready: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/abort) */
     abort(reason?: any): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/close) */
