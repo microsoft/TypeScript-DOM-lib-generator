@@ -155,6 +155,9 @@
             "IntersectionObserverEntry": {
                 "constructor": null // WebKit-only as of 2024-07
             },
+            "OffscreenCanvasRenderingContext2D": {
+                "implements": ["CanvasSettings"] // Blink only as of 2025-01
+            },
             "PaymentResponse": {
                 "methods": {
                     "method": {
