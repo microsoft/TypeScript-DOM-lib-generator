@@ -465,6 +465,7 @@ export function emitWebIdl(
   function nameWithForwardedTypes(i: Browser.Interface) {
     const typeParameters = i.typeParameters;
 
+    if (i.overrideThis) return i.overrideThis;
     if (!typeParameters) return i.name;
     if (!typeParameters.length) return i.name;
 
