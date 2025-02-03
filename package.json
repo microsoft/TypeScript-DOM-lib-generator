@@ -1,5 +1,5 @@
 {
-  "name": "typescript-dom-lib-generator",
+  "name": "@microsoft/typescript-dom-lib-generator",
   "version": "0.0.1",
   "private": true,
   "description": "Provides TypeScript types for the latest web APIs.",
