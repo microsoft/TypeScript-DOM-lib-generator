@@ -293,6 +293,18 @@
                     }
                 }
             },
+            "CookieListItem": {
+                "members": {
+                    "member": {
+                        "domain": null, // Blink only as of 2025-02
+                        "path": null, // Blink only as of 2025-02
+                        "expires": null, // Blink only as of 2025-02
+                        "secure": null, // Blink only as of 2025-02
+                        "sameSite": null, // Blink only as of 2025-02
+                        "partitioned": null // Blink only as of 2025-02
+                    }
+                }
+            },
             "CredentialRequestOptions": {
                 "members": {
                     "member": {

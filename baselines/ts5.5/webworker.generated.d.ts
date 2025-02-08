@@ -152,13 +152,7 @@ interface CookieInit {
 }
 
 interface CookieListItem {
-    domain?: string | null;
-    expires?: DOMHighResTimeStamp | null;
     name?: string;
-    partitioned?: boolean;
-    path?: string;
-    sameSite?: CookieSameSite;
-    secure?: boolean;
     value?: string;
 }
 
