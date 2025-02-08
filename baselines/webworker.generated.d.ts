@@ -887,10 +887,8 @@ interface VideoDecoderConfig {
     description?: AllowSharedBufferSource;
     displayAspectHeight?: number;
     displayAspectWidth?: number;
-    flip?: boolean;
     hardwareAcceleration?: HardwareAcceleration;
     optimizeForLatency?: boolean;
-    rotation?: number;
 }
 
 interface VideoDecoderInit {

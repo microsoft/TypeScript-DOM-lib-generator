@@ -785,6 +785,14 @@
                     }
                 }
             },
+            "VideoDecoderConfig": {
+                "members": {
+                    "member": {
+                        "flip": null, // No implementation as of 2025-02
+                        "rotation": null // No implementation as of 2025-02
+                    }
+                }
+            },
             "VideoEncoderConfig": {
                 "members": {
                     "member": {
