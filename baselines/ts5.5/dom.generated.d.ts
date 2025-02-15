@@ -272,7 +272,6 @@ interface CacheQueryOptions {
 interface CanvasRenderingContext2DSettings {
     alpha?: boolean;
     colorSpace?: PredefinedColorSpace;
-    colorType?: CanvasColorType;
     desynchronized?: boolean;
     willReadFrequently?: boolean;
 }
@@ -2017,7 +2016,6 @@ interface SVGBoundingBoxOptions {
 
 interface ScrollIntoViewOptions extends ScrollOptions {
     block?: ScrollLogicalPosition;
-    container?: ScrollIntoViewContainer;
     inline?: ScrollLogicalPosition;
 }
 
@@ -2046,6 +2044,7 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 }
 
 interface ShadowRootInit {
+    clonable?: boolean;
     delegatesFocus?: boolean;
     mode: ShadowRootMode;
     serializable?: boolean;
@@ -29624,7 +29623,6 @@ type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanPlayTypeResult = "" | "maybe" | "probably";
-type CanvasColorType = "float16" | "unorm8";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
 type CanvasFillRule = "evenodd" | "nonzero";
 type CanvasFontKerning = "auto" | "none" | "normal";
@@ -29762,7 +29760,6 @@ type ResizeObserverBoxOptions = "border-box" | "content-box" | "device-pixel-con
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
 type ScrollBehavior = "auto" | "instant" | "smooth";
-type ScrollIntoViewContainer = "all" | "nearest";
 type ScrollLogicalPosition = "center" | "end" | "nearest" | "start";
 type ScrollRestoration = "auto" | "manual";
 type ScrollSetting = "" | "up";

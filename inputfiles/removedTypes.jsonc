@@ -284,6 +284,13 @@
                     }
                 }
             },
+            "CanvasRenderingContext2DSettings": {
+                "members": {
+                    "member": {
+                        "colorType": null // No implementation as of 2025-02
+                    }
+                }
+            },
             "CredentialCreationOptions": {
                 "members": {
                     "member": {
@@ -757,10 +764,10 @@
                     }
                 }
             },
-            "ShadowRootInit": {
+            "ScrollIntoViewOptions": {
                 "members": {
                     "member": {
-                        "clonable": null // WebKit only as of 2023-11
+                        "container": null // No implementation as of 2025-02
                     }
                 }
             },
