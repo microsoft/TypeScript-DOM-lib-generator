@@ -21849,9 +21849,13 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
     currentScale: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/currentTranslate) */
     readonly currentTranslate: DOMPointReadOnly;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/height) */
     readonly height: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/width) */
     readonly width: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/x) */
     readonly x: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/y) */
     readonly y: SVGAnimatedLength;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/animationsPaused) */
     animationsPaused(): boolean;
