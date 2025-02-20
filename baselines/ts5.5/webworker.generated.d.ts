@@ -666,7 +666,7 @@ interface ReadableStreamIteratorOptions {
 
 interface ReadableStreamReadDoneResult<T> {
     done: true;
-    value?: T;
+    value: T | undefined;
 }
 
 interface ReadableStreamReadValueResult<T> {

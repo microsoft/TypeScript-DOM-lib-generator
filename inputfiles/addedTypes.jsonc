@@ -1330,7 +1330,8 @@
                         },
                         "value": {
                             "name": "value",
-                            "overrideType": "T"
+                            "overrideType": "T | undefined",
+                            "required": true
                         }
                     }
                 }
