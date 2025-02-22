@@ -1439,12 +1439,12 @@ declare var CanvasGradient: {
 interface CanvasImageData {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/createImageData) */
     createImageData(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
-    createImageData(imagedata: ImageData): ImageData;
+    createImageData(imageData: ImageData): ImageData;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/getImageData) */
     getImageData(sx: number, sy: number, sw: number, sh: number, settings?: ImageDataSettings): ImageData;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/putImageData) */
-    putImageData(imagedata: ImageData, dx: number, dy: number): void;
-    putImageData(imagedata: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void;
+    putImageData(imageData: ImageData, dx: number, dy: number): void;
+    putImageData(imageData: ImageData, dx: number, dy: number, dirtyX: number, dirtyY: number, dirtyWidth: number, dirtyHeight: number): void;
 }
 
 interface CanvasImageSmoothing {
