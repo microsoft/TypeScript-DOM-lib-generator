@@ -2090,6 +2090,11 @@ interface SpeechSynthesisEventInit extends EventInit {
     utterance: SpeechSynthesisUtterance;
 }
 
+interface StartViewTransitionOptions {
+    types?: string[] | null;
+    update?: ViewTransitionUpdateCallback | null;
+}
+
 interface StaticRangeInit {
     endContainer: Node;
     endOffset: number;
@@ -8069,7 +8074,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/requestStorageAccess) */
     requestStorageAccess(): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/startViewTransition) */
-    startViewTransition(callbackOptions?: ViewTransitionUpdateCallback): ViewTransition;
+    startViewTransition(callbackOptions?: ViewTransitionUpdateCallback | StartViewTransitionOptions): ViewTransition;
     /**
      * Writes one or more HTML expressions to a document in the specified window.
      * @param content Specifies the text and HTML tags to write.
