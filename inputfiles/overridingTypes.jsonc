@@ -817,19 +817,6 @@
                                     "overrideType": "NodeListOf<HTMLElement>"
                                 }
                             }
-                        },
-                        "startViewTransition": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        // StartViewTransitionOptions is not implemented as of 2024-06
-                                        {
-                                            "name": "callbackOptions",
-                                            "type": "ViewTransitionUpdateCallback"
-                                        }
-                                    ],
-                                }
-                            }
                         }
                     }
                 },
