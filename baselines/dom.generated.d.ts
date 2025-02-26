@@ -1025,6 +1025,12 @@ interface MediaSessionActionDetails {
     seekTime?: number;
 }
 
+interface MediaSettingsRange {
+    max?: number;
+    min?: number;
+    step?: number;
+}
+
 interface MediaStreamAudioSourceOptions {
     mediaStream: MediaStream;
 }
@@ -1353,6 +1359,20 @@ interface PeriodicWaveOptions extends PeriodicWaveConstraints {
 
 interface PermissionDescriptor {
     name: PermissionName;
+}
+
+interface PhotoCapabilities {
+    fillLightMode?: FillLightMode[];
+    imageHeight?: MediaSettingsRange;
+    imageWidth?: MediaSettingsRange;
+    redEyeReduction?: RedEyeReduction;
+}
+
+interface PhotoSettings {
+    fillLightMode?: FillLightMode;
+    imageHeight?: number;
+    imageWidth?: number;
+    redEyeReduction?: boolean;
 }
 
 interface PictureInPictureEventInit extends EventInit {
@@ -15190,6 +15210,23 @@ declare var ImageBitmapRenderingContext: {
     new(): ImageBitmapRenderingContext;
 };
 
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture) */
+interface ImageCapture {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/track) */
+    readonly track: MediaStreamTrack;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/getPhotoCapabilities) */
+    getPhotoCapabilities(): Promise<PhotoCapabilities>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/getPhotoSettings) */
+    getPhotoSettings(): Promise<PhotoSettings>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/takePhoto) */
+    takePhoto(photoSettings?: PhotoSettings): Promise<Blob>;
+}
+
+declare var ImageCapture: {
+    prototype: ImageCapture;
+    new(videoTrack: MediaStreamTrack): ImageCapture;
+};
+
 /**
  * The underlying pixel data of an area of a <canvas> element. It is created using the ImageData() constructor or creator methods on the CanvasRenderingContext2D object associated with a canvas: createImageData() and getImageData(). It can also be used to set a part of the canvas by using putImageData().
  *
@@ -16224,6 +16261,10 @@ interface MediaSession {
     playbackState: MediaSessionPlaybackState;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/setActionHandler) */
     setActionHandler(action: MediaSessionAction, handler: MediaSessionActionHandler | null): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/setCameraActive) */
+    setCameraActive(active: boolean): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/setMicrophoneActive) */
+    setMicrophoneActive(active: boolean): Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/setPositionState) */
     setPositionState(state?: MediaPositionState): void;
 }
@@ -29681,6 +29722,7 @@ type EncodedVideoChunkType = "delta" | "key";
 type EndOfStreamError = "decode" | "network";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
+type FillLightMode = "auto" | "flash" | "off";
 type FillMode = "auto" | "backwards" | "both" | "forwards" | "none";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
@@ -29773,6 +29815,7 @@ type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
 type ReadyState = "closed" | "ended" | "open";
 type RecordingState = "inactive" | "paused" | "recording";
+type RedEyeReduction = "always" | "controllable" | "never";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
 type RemotePlaybackState = "connected" | "connecting" | "disconnected";
 type RequestCache = "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";

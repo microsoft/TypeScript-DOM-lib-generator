@@ -288,6 +288,11 @@ interface EventSourceInit {
     withCredentials?: boolean;
 }
 
+interface ExtendableCookieChangeEventInit extends ExtendableEventInit {
+    changed?: CookieList;
+    deleted?: CookieList;
+}
+
 interface ExtendableEventInit extends EventInit {
 }
 
@@ -2969,6 +2974,19 @@ interface EventTarget {
 declare var EventTarget: {
     prototype: EventTarget;
     new(): EventTarget;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent) */
+interface ExtendableCookieChangeEvent extends ExtendableEvent {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent/changed) */
+    readonly changed: ReadonlyArray<CookieListItem>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent/deleted) */
+    readonly deleted: ReadonlyArray<CookieListItem>;
+}
+
+declare var ExtendableCookieChangeEvent: {
+    prototype: ExtendableCookieChangeEvent;
+    new(type: string, eventInitDict?: ExtendableCookieChangeEventInit): ExtendableCookieChangeEvent;
 };
 
 /**
