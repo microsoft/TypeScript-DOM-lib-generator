@@ -4634,7 +4634,11 @@ interface CSSStyleDeclaration {
     fontSize: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size-adjust) */
     fontSizeAdjust: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-stretch) */
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-stretch)
+     */
     fontStretch: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-style) */
     fontStyle: string;
@@ -5068,8 +5072,11 @@ interface CSSStyleDeclaration {
     textAlignLast: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box) */
     textBox: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box-edge) */
     textBoxEdge: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box-trim) */
     textBoxTrim: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-combine-upright) */
     textCombineUpright: string;
