@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Codeowners merge check
-        uses: OSS-Docs-Tools/code-owner-self-merge@1.6.6
+        uses: OSS-Docs-Tools/code-owner-self-merge@1.6.7
         if: github.repository == 'microsoft/TypeScript-DOM-lib-generator'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
