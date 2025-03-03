@@ -708,16 +708,22 @@
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
-                        "mimeType": null, // Blink only as of 2024-11
-                        "rtpTimestamp": null // Blink only as of 2024-11
+                        "captureTime": null, // Blink experimental only as of 2025-03
+                        "mimeType": null, // Blink only as of 2025-03
+                        "receiveTime": null, // Blink experimental only as of 2025-03
+                        "rtpTimestamp": null, // Blink only as of 2025-03
+                        "senderCaptureTimeOffset": null // Blink experimental only as of 2025-03
                     }
                 }
             },
             "RTCEncodedVideoFrameMetadata": {
                 "members": {
                     "member": {
-                        "mimeType": null, // Blink only as of 2024-11
-                        "rtpTimestamp": null // Blink only as of 2024-11
+                        "captureTime": null, // Blink experimental only as of 2025-03
+                        "mimeType": null, // Blink only as of 2025-03
+                        "receiveTime": null, // Blink experimental only as of 2025-03
+                        "rtpTimestamp": null, // Blink only as of 2025-03
+                        "senderCaptureTimeOffset": null // Blink experimental only as of 2025-03
                     }
                 }
             },
