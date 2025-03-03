@@ -630,18 +630,24 @@ interface QueuingStrategyInit {
 }
 
 interface RTCEncodedAudioFrameMetadata {
+    captureTime?: DOMHighResTimeStamp;
     contributingSources?: number[];
     payloadType?: number;
+    receiveTime?: DOMHighResTimeStamp;
+    senderCaptureTimeOffset?: DOMHighResTimeStamp;
     sequenceNumber?: number;
     synchronizationSource?: number;
 }
 
 interface RTCEncodedVideoFrameMetadata {
+    captureTime?: DOMHighResTimeStamp;
     contributingSources?: number[];
     dependencies?: number[];
     frameId?: number;
     height?: number;
     payloadType?: number;
+    receiveTime?: DOMHighResTimeStamp;
+    senderCaptureTimeOffset?: DOMHighResTimeStamp;
     spatialIndex?: number;
     synchronizationSource?: number;
     temporalIndex?: number;
