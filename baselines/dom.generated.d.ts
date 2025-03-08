@@ -2502,6 +2502,7 @@ interface ANGLE_instanced_arrays {
 }
 
 interface ARIAMixin {
+    ariaActiveDescendantElement: Element | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAtomic) */
     ariaAtomic: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete) */
@@ -2522,14 +2523,19 @@ interface ARIAMixin {
     ariaColIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan) */
     ariaColSpan: string | null;
+    ariaControlsElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent) */
     ariaCurrent: string | null;
+    ariaDescribedByElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescription) */
     ariaDescription: string | null;
+    ariaDetailsElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDisabled) */
     ariaDisabled: string | null;
+    ariaErrorMessageElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaExpanded) */
     ariaExpanded: string | null;
+    ariaFlowToElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHasPopup) */
     ariaHasPopup: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHidden) */
@@ -2539,6 +2545,7 @@ interface ARIAMixin {
     ariaKeyShortcuts: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabel) */
     ariaLabel: string | null;
+    ariaLabelledByElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLevel) */
     ariaLevel: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLive) */
@@ -2551,6 +2558,7 @@ interface ARIAMixin {
     ariaMultiSelectable: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOrientation) */
     ariaOrientation: string | null;
+    ariaOwnsElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPlaceholder) */
     ariaPlaceholder: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPosInSet) */
@@ -4712,6 +4720,8 @@ interface CSSStyleDeclaration {
     height: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/hyphenate-character) */
     hyphenateCharacter: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/hyphenate-limit-chars) */
+    hyphenateLimitChars: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/hyphens) */
     hyphens: string;
     /**
@@ -4874,8 +4884,12 @@ interface CSSStyleDeclaration {
     overflow: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-anchor) */
     overflowAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-block) */
+    overflowBlock: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-clip-margin) */
     overflowClipMargin: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-inline) */
+    overflowInline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-wrap) */
     overflowWrap: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-x) */
