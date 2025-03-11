@@ -9638,7 +9638,7 @@ interface GlobalEventHandlersEventMap {
     "animationend": AnimationEvent;
     "animationiteration": AnimationEvent;
     "animationstart": AnimationEvent;
-    "auxclick": MouseEvent;
+    "auxclick": PointerEvent;
     "beforeinput": InputEvent;
     "beforetoggle": Event;
     "blur": FocusEvent;
@@ -9652,7 +9652,7 @@ interface GlobalEventHandlersEventMap {
     "compositionstart": CompositionEvent;
     "compositionupdate": CompositionEvent;
     "contextlost": Event;
-    "contextmenu": MouseEvent;
+    "contextmenu": PointerEvent;
     "contextrestored": Event;
     "copy": ClipboardEvent;
     "cuechange": Event;
@@ -9755,7 +9755,7 @@ interface GlobalEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event) */
     onanimationstart: ((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/auxclick_event) */
-    onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onauxclick: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
     onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
@@ -9802,7 +9802,7 @@ interface GlobalEventHandlers {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event)
      */
-    oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    oncontextmenu: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextrestored_event) */
     oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/copy_event) */
@@ -29099,7 +29099,7 @@ declare var onanimationiteration: ((this: Window, ev: AnimationEvent) => any) | 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event) */
 declare var onanimationstart: ((this: Window, ev: AnimationEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/auxclick_event) */
-declare var onauxclick: ((this: Window, ev: MouseEvent) => any) | null;
+declare var onauxclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
 declare var onbeforeinput: ((this: Window, ev: InputEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
@@ -29146,7 +29146,7 @@ declare var oncontextlost: ((this: Window, ev: Event) => any) | null;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event)
  */
-declare var oncontextmenu: ((this: Window, ev: MouseEvent) => any) | null;
+declare var oncontextmenu: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextrestored_event) */
 declare var oncontextrestored: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/copy_event) */
