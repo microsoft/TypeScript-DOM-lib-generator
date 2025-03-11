@@ -66,12 +66,20 @@
                             "type": "AnimationEvent"
                         },
                         {
+                            "name": "auxclick",
+                            "type": "PointerEvent"
+                        },
+                        {
                             "name": "cut",
                             "type": "ClipboardEvent"
                         },
                         {
                             "name": "copy",
                             "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "contextmenu",
+                            "type": "PointerEvent"
                         },
                         {
                             "name": "paste",
