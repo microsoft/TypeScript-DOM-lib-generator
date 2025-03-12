@@ -9931,7 +9931,7 @@ interface GlobalEventHandlers {
      * Fires immediately after the browser loads the object.
      * @param ev The event.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/load_event)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/load_event)
      */
     onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /**
@@ -10743,6 +10743,8 @@ interface HTMLDialogElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close)
      */
     close(returnValue?: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/requestClose) */
+    requestClose(returnValue?: string): void;
     /**
      * Displays the dialog element.
      *
@@ -29275,7 +29277,7 @@ declare var onkeyup: ((this: Window, ev: KeyboardEvent) => any) | null;
  * Fires immediately after the browser loads the object.
  * @param ev The event.
  *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/load_event)
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/load_event)
  */
 declare var onload: ((this: Window, ev: Event) => any) | null;
 /**
