@@ -3633,6 +3633,16 @@
                         }
                     }
                 }
+            },
+            "ViewTransition": {
+                "properties": {
+                    "property": {
+                        "types": {
+                            "name": "types",
+                            "overrideType": "Set<string>"
+                        }
+                    }
+                }
             }
         }
     },

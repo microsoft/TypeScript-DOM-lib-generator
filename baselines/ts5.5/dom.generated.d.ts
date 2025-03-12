@@ -9921,7 +9921,7 @@ interface GlobalEventHandlers {
      * Fires immediately after the browser loads the object.
      * @param ev The event.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/load_event)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/load_event)
      */
     onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /**
@@ -10731,8 +10731,6 @@ interface HTMLDialogElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close)
      */
     close(returnValue?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/requestClose) */
-    requestClose(returnValue?: string): void;
     /**
      * Displays the dialog element.
      *
@@ -24447,7 +24445,7 @@ interface ViewTransition {
     readonly finished: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/ready) */
     readonly ready: Promise<void>;
-    types: ViewTransitionTypeSet;
+    types: Set<string>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/updateCallbackDone) */
     readonly updateCallbackDone: Promise<void>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/skipTransition) */
@@ -29255,7 +29253,7 @@ declare var onkeyup: ((this: Window, ev: KeyboardEvent) => any) | null;
  * Fires immediately after the browser loads the object.
  * @param ev The event.
  *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/load_event)
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/load_event)
  */
 declare var onload: ((this: Window, ev: Event) => any) | null;
 /**
