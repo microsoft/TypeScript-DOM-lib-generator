@@ -1218,7 +1218,7 @@
                     "property": {
                         "keyPath": {
                             "name": "keyPath",
-                            "overrideType": "string | string[]"
+                            "overrideType": "string | string[] | null"
                         }
                     }
                 }
