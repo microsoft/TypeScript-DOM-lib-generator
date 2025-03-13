@@ -3215,6 +3215,19 @@
                     }
                 }
             },
+            "TextEncoder": {
+                "methods": {
+                    "method": {
+                        "encode": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Uint8Array<ArrayBuffer>"
+                                }
+                            }
+                        }
+                    }
+                } 
+            },
             "TextEncoderStream": {
                 "properties": {
                     "property": {
