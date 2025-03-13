@@ -2073,6 +2073,16 @@
                     ]
                 }
             },
+            "WebTransportDatagramDuplexStream": {
+                "properties": {
+                    "property": {
+                        // WebTransportDatagramsWritable is not implemented by anyone as of 2025-03
+                        "writable": {
+                            "type": "WritableStream"
+                        }
+                    }
+                }
+            },
             "HTMLTableRowElement": {
                 "properties": {
                     "property": {
