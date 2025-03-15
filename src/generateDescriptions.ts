@@ -40,7 +40,7 @@ async function getFolders(dirPath: string) {
 }
 
 async function getIndexMdContents(folders: string[]) {
-    const results = [];
+    const results: { [key: string]: string } = {};
 
     for (const folder of folders) {
         const indexPath = path.join(folder, 'index.md');
@@ -50,7 +50,7 @@ async function getIndexMdContents(folders: string[]) {
             const titleMatch = content.match(/title: (.*)/);
             const title = titleMatch ? titleMatch[1] : '';
             const summary = extractSummary(content)
-            results.push({ [title]: summary });
+            results[title] = summary;
 
         } catch (error) {
             // Ignore missing index.md files
