@@ -463,78 +463,50 @@
                         "type": {
                             "name": "type",
                             "type": "ResponseType",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/type"
                         },
                         "url": {
                             "name": "url",
                             "type": "USVString",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/url"
                         },
                         "redirected": {
                             "name": "redirected",
                             "type": "boolean",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/redirected"
                         },
                         "status": {
                             "name": "status",
                             "type": "unsigned short",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/status"
                         },
                         "ok": {
                             "name": "ok",
                             "type": "boolean",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/ok"
                         },
                         "statusText": {
                             "name": "statusText",
                             "type": "ByteString",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/statusText"
                         },
                         "headers": {
                             "name": "headers",
                             "type": "Headers",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "readonly": true,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/headers"
                         }
                     },
@@ -580,9 +552,6 @@
                         "prototype": {
                             "name": "prototype",
                             "type": "Response",
-                            "nullable": false,
-                            "static": false,
-                            "stringifier": false,
                             "exposed": "Window Worker"
                         }
                     }
@@ -628,7 +597,6 @@
                             "getter": false,
                             "stringifier": false,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/error_static"
                         },
                         "redirect": {
@@ -658,7 +626,6 @@
                             "getter": false,
                             "stringifier": false,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/redirect_static"
                         },
                         "json": {
@@ -688,7 +655,6 @@
                             "getter": false,
                             "stringifier": false,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/json_static"
                         },
                         "clone": {
@@ -704,7 +670,6 @@
                             "static": false,
                             "stringifier": false,
                             "exposed": "Window Worker",
-                            "secureContext": false,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Response/clone"
                         }
                     }
