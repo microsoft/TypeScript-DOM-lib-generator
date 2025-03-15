@@ -2431,11 +2431,8 @@ interface WebTransportOptions {
     serverCertificateHashes?: WebTransportHash[];
 }
 
-interface WebTransportSendOptions {
+interface WebTransportSendStreamOptions {
     sendOrder?: number;
-}
-
-interface WebTransportSendStreamOptions extends WebTransportSendOptions {
 }
 
 interface WheelEventInit extends MouseEventInit {
@@ -2602,7 +2599,7 @@ interface ARIAMixin {
 }
 
 /**
- * A controller object that allows you to abort one or more DOM requests as and when desired.
+ * A controller object that allows you to abort one or more Web requests as and when desired.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController)
  */
@@ -2631,7 +2628,7 @@ interface AbortSignalEventMap {
 }
 
 /**
- * A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object.
+ * A signal object that allows you to communicate with an asynchronous operation (such as a fetch request) and abort it if required via an AbortController object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal)
  */
@@ -2665,7 +2662,11 @@ declare var AbortSignal: {
     timeout(milliseconds: number): AbortSignal;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange) */
+/**
+ * The AbstractRange abstract interface is the base class upon which all DOM range types are defined. A range is an object that indicates the start and end points of a section of content within the document.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange)
+ */
 interface AbstractRange {
     /**
      * Returns true if range is collapsed, and false otherwise.
@@ -2761,7 +2762,11 @@ interface AnimationEventMap {
     "remove": AnimationPlaybackEvent;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation) */
+/**
+ * This Web Animations API interface represents a single animation player and provides playback controls and a timeline for an animation node or source.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation)
+ */
 interface Animation extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/currentTime) */
     currentTime: CSSNumberish | null;
@@ -2818,7 +2823,11 @@ declare var Animation: {
     new(effect?: AnimationEffect | null, timeline?: AnimationTimeline | null): Animation;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEffect) */
+/**
+ * This Web Animations API interface is an interface representing animation effects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEffect)
+ */
 interface AnimationEffect {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEffect/getComputedTiming) */
     getComputedTiming(): ComputedEffectTiming;
@@ -2859,7 +2868,11 @@ interface AnimationFrameProvider {
     requestAnimationFrame(callback: FrameRequestCallback): number;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationPlaybackEvent) */
+/**
+ * This Web Animations API interface represents animation events.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationPlaybackEvent)
+ */
 interface AnimationPlaybackEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationPlaybackEvent/currentTime) */
     readonly currentTime: CSSNumberish | null;
@@ -2872,7 +2885,11 @@ declare var AnimationPlaybackEvent: {
     new(type: string, eventInitDict?: AnimationPlaybackEventInit): AnimationPlaybackEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline) */
+/**
+ * This Web Animations API interface represents the timeline of an animation. This interface exists to define timeline features, inherited by other timeline types:
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline)
+ */
 interface AnimationTimeline {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime) */
     readonly currentTime: CSSNumberish | null;
@@ -2884,7 +2901,7 @@ declare var AnimationTimeline: {
 };
 
 /**
- * A DOM element's attribute as an object. In most DOM methods, you will probably directly retrieve the attribute as a string (e.g., Element.getAttribute(), but certain functions (e.g., Element.getAttributeNode()) or means of iterating give Attr types.
+ * One of an element's attributes as an object. In most situations, you will directly retrieve the attribute value as a string (e.g., Element.getAttribute()), but some cases may require interacting with Attr instances (e.g., Element.getAttributeNode()).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr)
  */
@@ -2916,7 +2933,7 @@ declare var Attr: {
 };
 
 /**
- * A short audio asset residing in memory, created from an audio file using the AudioContext.decodeAudioData() method, or from raw data using AudioContext.createBuffer(). Once put into an AudioBuffer, the audio can then be played by being passed into an AudioBufferSourceNode.
+ * A short audio asset residing in memory, created from an audio file using the {{ domxref("BaseAudioContext/decodeAudioData", "AudioContext.decodeAudioData()") }} method, or from raw data using {{ domxref("BaseAudioContext/createBuffer", "AudioContext.createBuffer()") }}. Once put into an AudioBuffer, the audio can then be played by being passed into an {{ domxref("AudioBufferSourceNode") }}.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioBuffer)
  */
@@ -2943,7 +2960,7 @@ declare var AudioBuffer: {
 };
 
 /**
- * An AudioScheduledSourceNode which represents an audio source consisting of in-memory audio data, stored in an AudioBuffer. It's especially useful for playing back audio which has particularly stringent timing accuracy requirements, such as for sounds that must match a specific rhythm and can be kept in memory rather than being played from disk or the network.
+ * An AudioScheduledSourceNode which represents an audio source consisting of in-memory audio data, stored in an AudioBuffer.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode)
  */
@@ -3008,7 +3025,11 @@ declare var AudioContext: {
     new(contextOptions?: AudioContextOptions): AudioContext;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData) */
+/**
+ * This WebCodecs API interface represents an audio sample.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData)
+ */
 interface AudioData {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/duration) */
     readonly duration: number;
@@ -3042,6 +3063,7 @@ interface AudioDecoderEventMap {
 }
 
 /**
+ * Of the {{domxref('WebCodecs API','','',' ')}} decodes chunks of audio.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder)
@@ -3077,7 +3099,7 @@ declare var AudioDecoder: {
 };
 
 /**
- * AudioDestinationNode has no output (as it is the output, no more AudioNode can be linked after it in the audio graph) and one input. The number of channels in the input must be between 0 and the maxChannelCount value or an exception is raised.
+ * The end destination of an audio graph in a given context — usually the speakers of your device. It can also be the node that will "record" the audio data when used with an OfflineAudioContext.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDestinationNode)
  */
@@ -3096,6 +3118,7 @@ interface AudioEncoderEventMap {
 }
 
 /**
+ * This WebCodecs API interface encodes AudioData objects.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder)
@@ -3174,7 +3197,7 @@ declare var AudioListener: {
 };
 
 /**
- * A generic interface for representing an audio processing module. Examples include:
+ * A generic interface for representing an audio processing module.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioNode)
  */
@@ -3210,7 +3233,7 @@ declare var AudioNode: {
 };
 
 /**
- * The Web Audio API's AudioParam interface represents an audio-related parameter, usually a parameter of an AudioNode (such as GainNode.gain).
+ * The Web Audio API's AudioParam interface represents an audio-related parameter, usually a parameter of an AudioNode (such as {{ domxref("GainNode.gain") }}).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioParam)
  */
@@ -3245,7 +3268,11 @@ declare var AudioParam: {
     new(): AudioParam;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioParamMap) */
+/**
+ * This Web Audio API interface represents an iterable and read-only set of multiple audio parameters.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioParamMap)
+ */
 interface AudioParamMap {
     forEach(callbackfn: (value: AudioParam, key: string, parent: AudioParamMap) => void, thisArg?: any): void;
 }
@@ -3256,7 +3283,7 @@ declare var AudioParamMap: {
 };
 
 /**
- * The Web Audio API events that occur when a ScriptProcessorNode input buffer is ready to be processed.
+ * This Web Audio API interface represents events that occur when a ScriptProcessorNode input buffer is ready to be processed.
  * @deprecated As of the August 29 2014 Web Audio API spec publication, this feature has been marked as deprecated, and is soon to be replaced by AudioWorklet.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioProcessingEvent)
@@ -3292,7 +3319,11 @@ interface AudioScheduledSourceNodeEventMap {
     "ended": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioScheduledSourceNode) */
+/**
+ * The AudioScheduledSourceNode interface—part of the Web Audio API—is a parent interface for several types of audio source node interfaces which share the ability to be started and stopped, optionally at specified times. Specifically, this interface defines the {{domxref("AudioScheduledSourceNode.start", "start()")}} and {{domxref("AudioScheduledSourceNode.stop", "stop()")}} methods, as well as the {{domxref("AudioScheduledSourceNode.ended_event", "ended")}} event.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioScheduledSourceNode)
+ */
 interface AudioScheduledSourceNode extends AudioNode {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioScheduledSourceNode/ended_event) */
     onended: ((this: AudioScheduledSourceNode, ev: Event) => any) | null;
@@ -3312,6 +3343,7 @@ declare var AudioScheduledSourceNode: {
 };
 
 /**
+ * This Web Audio API interface is used to supply custom audio processing scripts that execute in a separate thread to provide very low latency audio processing.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorklet)
@@ -3329,6 +3361,7 @@ interface AudioWorkletNodeEventMap {
 }
 
 /**
+ * This Web Audio API interface represents a base class for a user-defined AudioNode, which can be connected to an audio routing graph along with other nodes. It has an associated AudioWorkletProcessor, which does the actual audio processing in a Web Audio rendering thread.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletNode)
@@ -3352,6 +3385,7 @@ declare var AudioWorkletNode: {
 };
 
 /**
+ * This Web Authentication API interface contains a digital signature from the private key of a particular WebAuthn credential. The relying party's server can verify this signature to authenticate a user, for example when they sign in.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AuthenticatorAssertionResponse)
@@ -3371,6 +3405,7 @@ declare var AuthenticatorAssertionResponse: {
 };
 
 /**
+ * This Web Authentication API interface is the result of a WebAuthn credential registration. It contains information about the credential that the server needs to perform WebAuthn assertions, such as its credential ID and public key.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AuthenticatorAttestationResponse)
@@ -3394,6 +3429,7 @@ declare var AuthenticatorAttestationResponse: {
 };
 
 /**
+ * This Web Authentication API interface is the base interface for interfaces that provide a cryptographic root of trust for a key pair. The child interfaces include information from the browser such as the challenge origin and either may be returned from PublicKeyCredential.response.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AuthenticatorResponse)
@@ -3408,7 +3444,11 @@ declare var AuthenticatorResponse: {
     new(): AuthenticatorResponse;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BarProp) */
+/**
+ * Of the Document Object Model represents the web browser user interface elements that are exposed to scripts in web pages. Each of the following interface elements are represented by a BarProp object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BarProp)
+ */
 interface BarProp {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BarProp/visible) */
     readonly visible: boolean;
@@ -3423,7 +3463,11 @@ interface BaseAudioContextEventMap {
     "statechange": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BaseAudioContext) */
+/**
+ * This Web Audio API interface acts as a base definition for online and offline audio-processing graphs, as represented by AudioContext and OfflineAudioContext respectively. You wouldn't use BaseAudioContext directly — you'd use its features via one of these two inheriting interfaces.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BaseAudioContext)
+ */
 interface BaseAudioContext extends EventTarget {
     /**
      * Available only in secure contexts.
@@ -3497,7 +3541,7 @@ declare var BaseAudioContext: {
 };
 
 /**
- * The beforeunload event is fired when the window, the document and its resources are about to be unloaded.
+ * The event object for the {{domxref("Window/beforeunload_event", "beforeunload")}} event, which is fired when the current window, contained document, and associated resources are about to be unloaded.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BeforeUnloadEvent)
  */
@@ -3516,7 +3560,7 @@ declare var BeforeUnloadEvent: {
 };
 
 /**
- * A simple low-order filter, and is created using the AudioContext.createBiquadFilter() method. It is an AudioNode that can represent different kinds of filters, tone control devices, and graphic equalizers.
+ * A simple low-order filter, and is created using the {{ domxref("BaseAudioContext/createBiquadFilter") }} method. It is an AudioNode that can represent different kinds of filters, tone control devices, and graphic equalizers. A BiquadFilterNode always has exactly one input and one output.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BiquadFilterNode)
  */
@@ -3541,7 +3585,7 @@ declare var BiquadFilterNode: {
 };
 
 /**
- * A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system.
+ * A blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob)
  */
@@ -3567,7 +3611,11 @@ declare var Blob: {
     new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BlobEvent) */
+/**
+ * This MediaStream Recording API interface represents events associated with a Blob. These blobs are typically, but not necessarily, associated with media content.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BlobEvent)
+ */
 interface BlobEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BlobEvent/data) */
     readonly data: Blob;
@@ -3604,7 +3652,11 @@ interface BroadcastChannelEventMap {
     "messageerror": MessageEvent;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BroadcastChannel) */
+/**
+ * A named channel that any browsing context of a given origin can subscribe to. It allows communication between different documents (in different windows, tabs, frames or iframes) of the same origin. Messages are broadcasted via a {{domxref("BroadcastChannel/message_event", "message")}} event fired at all BroadcastChannel objects listening to the channel, except the object that sent the message.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BroadcastChannel)
+ */
 interface BroadcastChannel extends EventTarget {
     /**
      * Returns the channel name (as passed to the constructor).
@@ -3640,7 +3692,7 @@ declare var BroadcastChannel: {
 };
 
 /**
- * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy)
  */
@@ -3657,7 +3709,7 @@ declare var ByteLengthQueuingStrategy: {
 };
 
 /**
- * A CDATA section that can be used within XML to include extended portions of unescaped text. The symbols < and & don’t need escaping as they normally do when inside a CDATA section.
+ * A CDATA section
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CDATASection)
  */
@@ -3669,7 +3721,11 @@ declare var CDATASection: {
     new(): CDATASection;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSAnimation) */
+/**
+ * Of the {{domxref('Web Animations API','','',' ')}} represents an Animation object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSAnimation)
+ */
 interface CSSAnimation extends Animation {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSAnimation/animationName) */
     readonly animationName: string;
@@ -3685,7 +3741,7 @@ declare var CSSAnimation: {
 };
 
 /**
- * A single condition CSS at-rule, which consists of a condition and a statement block. It is a child of CSSGroupingRule.
+ * A single condition CSS at-rule, which consists of a condition and a statement block.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSConditionRule)
  */
@@ -3699,7 +3755,11 @@ declare var CSSConditionRule: {
     new(): CSSConditionRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule) */
+/**
+ * A single CSS @container rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule)
+ */
 interface CSSContainerRule extends CSSConditionRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerName) */
     readonly containerName: string;
@@ -3712,7 +3772,11 @@ declare var CSSContainerRule: {
     new(): CSSContainerRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSCounterStyleRule) */
+/**
+ * An @counter-style at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSCounterStyleRule)
+ */
 interface CSSCounterStyleRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSCounterStyleRule/additiveSymbols) */
     additiveSymbols: string;
@@ -3743,7 +3807,11 @@ declare var CSSCounterStyleRule: {
     new(): CSSCounterStyleRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule) */
+/**
+ * An @font-face at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule)
+ */
 interface CSSFontFaceRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style) */
     get style(): CSSStyleDeclaration;
@@ -3755,7 +3823,11 @@ declare var CSSFontFaceRule: {
     new(): CSSFontFaceRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule) */
+/**
+ * An @font-feature-values at-rule, letting developers assign for each font face a common name to specify features indices to be used in font-variant-alternates.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule)
+ */
 interface CSSFontFeatureValuesRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule/fontFamily) */
     fontFamily: string;
@@ -3766,7 +3838,11 @@ declare var CSSFontFeatureValuesRule: {
     new(): CSSFontFeatureValuesRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule) */
+/**
+ * An @font-palette-values at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule)
+ */
 interface CSSFontPaletteValuesRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule/basePalette) */
     readonly basePalette: string;
@@ -3784,7 +3860,7 @@ declare var CSSFontPaletteValuesRule: {
 };
 
 /**
- * Any CSS at-rule that contains other rules nested within it.
+ * Of the CSS Object Model represents any CSS at-rule that contains other rules nested within it.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSGroupingRule)
  */
@@ -3802,7 +3878,11 @@ declare var CSSGroupingRule: {
     new(): CSSGroupingRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImageValue) */
+/**
+ * This CSS Typed Object Model API interface represents values for properties that take an image, for example {{cssxref('background-image')}}, {{cssxref('list-style-image')}}, or {{cssxref('border-image-source')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImageValue)
+ */
 interface CSSImageValue extends CSSStyleValue {
 }
 
@@ -3811,7 +3891,11 @@ declare var CSSImageValue: {
     new(): CSSImageValue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule) */
+/**
+ * An @import at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule)
+ */
 interface CSSImportRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/href) */
     readonly href: string;
@@ -3832,7 +3916,7 @@ declare var CSSImportRule: {
 };
 
 /**
- * An object representing a set of style for a given keyframe. It corresponds to the contains of a single keyframe of a @keyframes at-rule. It implements the CSSRule interface with a type value of 8 (CSSRule.KEYFRAME_RULE).
+ * An object representing a set of styles for a given keyframe. It corresponds to the contents of a single keyframe of a @keyframes at-rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule)
  */
@@ -3850,7 +3934,7 @@ declare var CSSKeyframeRule: {
 };
 
 /**
- * An object representing a complete set of keyframes for a CSS animation. It corresponds to the contains of a whole @keyframes at-rule. It implements the CSSRule interface with a type value of 7 (CSSRule.KEYFRAMES_RULE).
+ * An object representing a complete set of keyframes for a CSS animation. It corresponds to the contents of a whole @keyframes at-rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule)
  */
@@ -3875,7 +3959,11 @@ declare var CSSKeyframesRule: {
     new(): CSSKeyframesRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue) */
+/**
+ * This CSS Typed Object Model API interface creates an object to represent CSS keywords and other identifiers.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue)
+ */
 interface CSSKeywordValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue/value) */
     value: string;
@@ -3886,7 +3974,11 @@ declare var CSSKeywordValue: {
     new(value: string): CSSKeywordValue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule) */
+/**
+ * The CSSLayerBlockRule represents a @layer block rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule)
+ */
 interface CSSLayerBlockRule extends CSSGroupingRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule/name) */
     readonly name: string;
@@ -3897,7 +3989,11 @@ declare var CSSLayerBlockRule: {
     new(): CSSLayerBlockRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule) */
+/**
+ * The CSSLayerStatementRule represents a @layer statement rule. Unlike CSSLayerBlockRule, it doesn't contain other rules and merely defines one or several layers by providing their names.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule)
+ */
 interface CSSLayerStatementRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule/nameList) */
     readonly nameList: ReadonlyArray<string>;
@@ -3919,7 +4015,11 @@ declare var CSSMathClamp: {
     new(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish): CSSMathClamp;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert) */
+/**
+ * This CSS Typed Object Model API interface represents a CSS {{CSSXref('calc','calc()')}} used as calc(1 / <value>). It inherits properties and methods from its parent {{domxref('CSSNumericValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
+ */
 interface CSSMathInvert extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert/value) */
     readonly value: CSSNumericValue;
@@ -3930,7 +4030,11 @@ declare var CSSMathInvert: {
     new(arg: CSSNumberish): CSSMathInvert;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax) */
+/**
+ * This CSS Typed Object Model API interface represents the CSS {{CSSXref('max','max()')}} function. It inherits properties and methods from its parent {{domxref('CSSNumericValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax)
+ */
 interface CSSMathMax extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax/values) */
     readonly values: CSSNumericArray;
@@ -3941,7 +4045,11 @@ declare var CSSMathMax: {
     new(...args: CSSNumberish[]): CSSMathMax;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin) */
+/**
+ * This CSS Typed Object Model API interface represents the CSS {{CSSXref('min','min()')}} function. It inherits properties and methods from its parent {{domxref('CSSNumericValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin)
+ */
 interface CSSMathMin extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin/values) */
     readonly values: CSSNumericArray;
@@ -3952,7 +4060,11 @@ declare var CSSMathMin: {
     new(...args: CSSNumberish[]): CSSMathMin;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate) */
+/**
+ * This CSS Typed Object Model API interface negates the value passed into it. It inherits properties and methods from its parent {{domxref('CSSNumericValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate)
+ */
 interface CSSMathNegate extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate/value) */
     readonly value: CSSNumericValue;
@@ -3963,7 +4075,11 @@ declare var CSSMathNegate: {
     new(arg: CSSNumberish): CSSMathNegate;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct) */
+/**
+ * This CSS Typed Object Model API interface represents the result obtained by calling {{domxref('CSSNumericValue.add','add()')}}, {{domxref('CSSNumericValue.sub','sub()')}}, or {{domxref('CSSNumericValue.toSum','toSum()')}} on {{domxref('CSSNumericValue')}}. It inherits properties and methods from its parent {{domxref('CSSNumericValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct)
+ */
 interface CSSMathProduct extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct/values) */
     readonly values: CSSNumericArray;
@@ -3974,7 +4090,11 @@ declare var CSSMathProduct: {
     new(...args: CSSNumberish[]): CSSMathProduct;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum) */
+/**
+ * This CSS Typed Object Model API interface represents the result obtained by calling {{domxref('CSSNumericValue.add','add()')}}, {{domxref('CSSNumericValue.sub','sub()')}}, or {{domxref('CSSNumericValue.toSum','toSum()')}} on {{domxref('CSSNumericValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum)
+ */
 interface CSSMathSum extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum/values) */
     readonly values: CSSNumericArray;
@@ -3985,7 +4105,11 @@ declare var CSSMathSum: {
     new(...args: CSSNumberish[]): CSSMathSum;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue) */
+/**
+ * This CSS Typed Object Model API interface a base class for classes representing complex numeric values.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue)
+ */
 interface CSSMathValue extends CSSNumericValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue/operator) */
     readonly operator: CSSMathOperator;
@@ -3996,7 +4120,11 @@ declare var CSSMathValue: {
     new(): CSSMathValue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent) */
+/**
+ * This CSS Typed Object Model API interface represents the matrix() and matrix3d() values of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent {{domxref('CSSTransformValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent)
+ */
 interface CSSMatrixComponent extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent/matrix) */
     matrix: DOMMatrix;
@@ -4008,7 +4136,7 @@ declare var CSSMatrixComponent: {
 };
 
 /**
- * A single CSS @media rule. It implements the CSSConditionRule interface, and therefore the CSSGroupingRule and the CSSRule interface with a type value of 4 (CSSRule.MEDIA_RULE).
+ * A single CSS @media rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMediaRule)
  */
@@ -4024,7 +4152,7 @@ declare var CSSMediaRule: {
 };
 
 /**
- * An object representing a single CSS @namespace at-rule. It implements the CSSRule interface, with a type value of 10 (CSSRule.NAMESPACE_RULE).
+ * An object representing a single CSS {{ cssxref("@namespace") }} at-rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNamespaceRule)
  */
@@ -4040,7 +4168,11 @@ declare var CSSNamespaceRule: {
     new(): CSSNamespaceRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations) */
+/**
+ * This CSS Rule API interface is used to group nested CSSRules.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations)
+ */
 interface CSSNestedDeclarations extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations/style) */
     get style(): CSSStyleDeclaration;
@@ -4052,7 +4184,11 @@ declare var CSSNestedDeclarations: {
     new(): CSSNestedDeclarations;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray) */
+/**
+ * This CSS Typed Object Model API interface contains a list of CSSNumericValue objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray)
+ */
 interface CSSNumericArray {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray/length) */
     readonly length: number;
@@ -4065,7 +4201,11 @@ declare var CSSNumericArray: {
     new(): CSSNumericArray;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue) */
+/**
+ * This CSS Typed Object Model API interface represents operations that all numeric values can perform.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue)
+ */
 interface CSSNumericValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/add) */
     add(...values: CSSNumberish[]): CSSNumericValue;
@@ -4097,7 +4237,7 @@ declare var CSSNumericValue: {
 };
 
 /**
- * CSSPageRule is an interface representing a single CSS @page rule. It implements the CSSRule interface with a type value of 6 (CSSRule.PAGE_RULE).
+ * CSSPageRule represents a single CSS @page rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule)
  */
@@ -4114,7 +4254,11 @@ declare var CSSPageRule: {
     new(): CSSPageRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective) */
+/**
+ * This CSS Typed Object Model API interface represents the perspective() value of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent {{domxref('CSSTransformValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective)
+ */
 interface CSSPerspective extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective/length) */
     length: CSSPerspectiveValue;
@@ -4125,7 +4269,11 @@ declare var CSSPerspective: {
     new(length: CSSPerspectiveValue): CSSPerspective;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule) */
+/**
+ * This CSS Properties and Values API interface represents a single CSS @property rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule)
+ */
 interface CSSPropertyRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule/inherits) */
     readonly inherits: boolean;
@@ -4142,7 +4290,11 @@ declare var CSSPropertyRule: {
     new(): CSSPropertyRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate) */
+/**
+ * This CSS Typed Object Model API interface represents the rotate value of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent {{domxref('CSSTransformValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate)
+ */
 interface CSSRotate extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate/angle) */
     angle: CSSNumericValue;
@@ -4161,7 +4313,7 @@ declare var CSSRotate: {
 };
 
 /**
- * A single CSS rule. There are several types of rules, listed in the Type constants section below.
+ * A single CSS rule. There are several types of rules which inherit properties from CSSRule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRule)
  */
@@ -4210,7 +4362,7 @@ declare var CSSRule: {
 };
 
 /**
- * A CSSRuleList is an (indirect-modify only) array-like object containing an ordered collection of CSSRule objects.
+ * A CSSRuleList represents an ordered collection of read-only CSSRule objects.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRuleList)
  */
@@ -4227,7 +4379,11 @@ declare var CSSRuleList: {
     new(): CSSRuleList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale) */
+/**
+ * This CSS Typed Object Model API interface represents the scale() and scale3d() values of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent {{domxref('CSSTransformValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale)
+ */
 interface CSSScale extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale/x) */
     x: CSSNumberish;
@@ -4242,7 +4398,11 @@ declare var CSSScale: {
     new(x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScopeRule) */
+/**
+ * Of the CSS Object Model represents a CSS @scope at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScopeRule)
+ */
 interface CSSScopeRule extends CSSGroupingRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScopeRule/end) */
     readonly end: string | null;
@@ -4255,7 +4415,11 @@ declare var CSSScopeRule: {
     new(): CSSScopeRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew) */
+/**
+ * This CSS Typed Object Model API interface is part of the {{domxref('CSSTransformValue')}} interface. It represents the skew() value of the individual {{CSSXRef('transform')}} property in CSS.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew)
+ */
 interface CSSSkew extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew/ax) */
     ax: CSSNumericValue;
@@ -4268,7 +4432,11 @@ declare var CSSSkew: {
     new(ax: CSSNumericValue, ay: CSSNumericValue): CSSSkew;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX) */
+/**
+ * This CSS Typed Object Model API interface represents the skewX() value of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent CSSTransformValue.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX)
+ */
 interface CSSSkewX extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX/ax) */
     ax: CSSNumericValue;
@@ -4279,7 +4447,11 @@ declare var CSSSkewX: {
     new(ax: CSSNumericValue): CSSSkewX;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY) */
+/**
+ * This CSS Typed Object Model API interface represents the skewY() value of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent CSSTransformValue.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY)
+ */
 interface CSSSkewY extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY/ay) */
     ay: CSSNumericValue;
@@ -4290,7 +4462,11 @@ declare var CSSSkewY: {
     new(ay: CSSNumericValue): CSSSkewY;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStartingStyleRule) */
+/**
+ * Of the CSS Object Model represents a CSS @starting-style at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStartingStyleRule)
+ */
 interface CSSStartingStyleRule extends CSSGroupingRule {
 }
 
@@ -5627,7 +5803,7 @@ declare var CSSStyleDeclaration: {
 };
 
 /**
- * CSSStyleRule represents a single CSS style rule. It implements the CSSRule interface with a type value of 1 (CSSRule.STYLE_RULE).
+ * A single CSS style rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule)
  */
@@ -5647,7 +5823,7 @@ declare var CSSStyleRule: {
 };
 
 /**
- * A single CSS style sheet. It inherits properties and methods from its parent, StyleSheet.
+ * A single CSS stylesheet, and lets you inspect and modify the list of rules contained in the stylesheet. It inherits properties and methods from its parent, StyleSheet.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleSheet)
  */
@@ -5689,7 +5865,11 @@ declare var CSSStyleSheet: {
     new(options?: CSSStyleSheetInit): CSSStyleSheet;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleValue) */
+/**
+ * This CSS Typed Object Model API interface is the base class of all CSS values accessible through the Typed OM API. An instance of this class may be used anywhere a string is expected.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleValue)
+ */
 interface CSSStyleValue {
     toString(): string;
 }
@@ -5704,7 +5884,7 @@ declare var CSSStyleValue: {
 };
 
 /**
- * An object representing a single CSS @supports at-rule. It implements the CSSConditionRule interface, and therefore the CSSRule and CSSGroupingRule interfaces with a type value of 12 (CSSRule.SUPPORTS_RULE).
+ * A single CSS @supports at-rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSupportsRule)
  */
@@ -5716,7 +5896,11 @@ declare var CSSSupportsRule: {
     new(): CSSSupportsRule;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformComponent) */
+/**
+ * This CSS Typed Object Model API interface is part of the {{domxref('CSSTransformValue')}} interface.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformComponent)
+ */
 interface CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformComponent/is2D) */
     is2D: boolean;
@@ -5730,7 +5914,11 @@ declare var CSSTransformComponent: {
     new(): CSSTransformComponent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformValue) */
+/**
+ * This CSS Typed Object Model API interface represents transform-list values as used by the CSS {{CSSxref('transform')}} property.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformValue)
+ */
 interface CSSTransformValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformValue/is2D) */
     readonly is2D: boolean;
@@ -5747,7 +5935,11 @@ declare var CSSTransformValue: {
     new(transforms: CSSTransformComponent[]): CSSTransformValue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransition) */
+/**
+ * Of the {{domxref('Web Animations API','','',' ')}} represents an Animation object used for a CSS Transition.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransition)
+ */
 interface CSSTransition extends Animation {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransition/transitionProperty) */
     readonly transitionProperty: string;
@@ -5762,7 +5954,11 @@ declare var CSSTransition: {
     new(): CSSTransition;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate) */
+/**
+ * This CSS Typed Object Model API interface represents the translate() value of the individual {{CSSXRef('transform')}} property in CSS. It inherits properties and methods from its parent {{domxref('CSSTransformValue')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate)
+ */
 interface CSSTranslate extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate/x) */
     x: CSSNumericValue;
@@ -5777,7 +5973,11 @@ declare var CSSTranslate: {
     new(x: CSSNumericValue, y: CSSNumericValue, z?: CSSNumericValue): CSSTranslate;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue) */
+/**
+ * This CSS Typed Object Model API interface represents values that contain a single unit type. For example, "42px" would be represented by a CSSNumericValue.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue)
+ */
 interface CSSUnitValue extends CSSNumericValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue/unit) */
     readonly unit: string;
@@ -5790,7 +5990,11 @@ declare var CSSUnitValue: {
     new(value: number, unit: string): CSSUnitValue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue) */
+/**
+ * This CSS Typed Object Model API interface represents property values that reference custom properties. It consists of a list of string fragments and variable references.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue)
+ */
 interface CSSUnparsedValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue/length) */
     readonly length: number;
@@ -5803,7 +6007,11 @@ declare var CSSUnparsedValue: {
     new(members: CSSUnparsedSegment[]): CSSUnparsedValue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue) */
+/**
+ * This CSS Typed Object Model API interface allows you to create a custom name for a built-in CSS value. This object functionality is sometimes called a "CSS variable" and serves the same purpose as the {{cssxref("var", "var()")}} function. The custom name must begin with two dashes.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue)
+ */
 interface CSSVariableReferenceValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue/fallback) */
     readonly fallback: CSSUnparsedValue | null;
@@ -5827,7 +6035,7 @@ declare var CSSViewTransitionRule: {
 };
 
 /**
- * Provides a storage mechanism for Request / Response object pairs that are cached, for example as part of the ServiceWorker life cycle. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec.
+ * Provides a persistent storage mechanism for Request / Response object pairs that are cached in long lived memory. How long a Cache object lives is browser dependent, but a single origin's scripts can typically rely on the presence of a previously populated Cache object. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache)
@@ -5878,7 +6086,11 @@ declare var CacheStorage: {
     new(): CacheStorage;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasCaptureMediaStreamTrack) */
+/**
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} represents the video track contained in a MediaStream being generated from a canvas following a call to HTMLCanvasElement.captureStream().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasCaptureMediaStreamTrack)
+ */
 interface CanvasCaptureMediaStreamTrack extends MediaStreamTrack {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasCaptureMediaStreamTrack/canvas) */
     readonly canvas: HTMLCanvasElement;
@@ -5950,7 +6162,7 @@ interface CanvasFilters {
 }
 
 /**
- * An opaque object describing a gradient. It is returned by the methods CanvasRenderingContext2D.createLinearGradient() or CanvasRenderingContext2D.createRadialGradient().
+ * An opaque object describing a gradient. It is returned by the methods CanvasRenderingContext2D.createLinearGradient(), CanvasRenderingContext2D.createConicGradient() or CanvasRenderingContext2D.createRadialGradient().
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasGradient)
  */
@@ -6057,7 +6269,7 @@ interface CanvasRect {
 }
 
 /**
- * The CanvasRenderingContext2D interface, part of the Canvas API, provides the 2D rendering context for the drawing surface of a <canvas> element. It is used for drawing shapes, text, images, and other objects.
+ * The CanvasRenderingContext2D interface, part of the Canvas API, provides the 2D rendering context for the drawing surface of a canvas element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D)
  */
@@ -6154,7 +6366,11 @@ interface CanvasUserInterface {
     drawFocusIfNeeded(path: Path2D, element: Element): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CaretPosition) */
+/**
+ * The caret position, an indicator for the text insertion point.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CaretPosition)
+ */
 interface CaretPosition {
     readonly offset: number;
     readonly offsetNode: Node;
@@ -6193,7 +6409,7 @@ declare var ChannelSplitterNode: {
 };
 
 /**
- * The CharacterData abstract interface represents a Node object that contains characters. This is an abstract interface, meaning there aren't any object of type CharacterData: it is implemented by other interfaces, like Text, Comment, or ProcessingInstruction which aren't abstract.
+ * The CharacterData abstract interface represents a Node object that contains characters. This is an abstract interface, meaning there aren't any objects of type CharacterData: it is implemented by other interfaces like Text, Comment, CDATASection, or ProcessingInstruction, which aren't abstract.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData)
  */
@@ -6258,6 +6474,7 @@ interface ClientRect extends DOMRect {
 }
 
 /**
+ * This Clipboard API interface provides read and write access to the contents of the system clipboard.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clipboard)
@@ -6279,7 +6496,7 @@ declare var Clipboard: {
 };
 
 /**
- * Events providing information related to modification of the clipboard, that is cut, copy, and paste events.
+ * This Clipboard API interface represents events providing information related to modification of the clipboard, that is {{domxref("Element/cut_event", "cut")}}, {{domxref("Element/copy_event", "copy")}}, and {{domxref("Element/paste_event", "paste")}} events.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardEvent)
  */
@@ -6294,6 +6511,7 @@ declare var ClipboardEvent: {
 };
 
 /**
+ * This Clipboard API interface represents a single item format, used when reading or writing clipboard data using Clipboard.read() and Clipboard.write() respectively.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem)
@@ -6379,7 +6597,11 @@ declare var CompositionEvent: {
     new(type: string, eventInitDict?: CompositionEventInit): CompositionEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
+/**
+ * Of the {{domxref('Compression Streams API','','',' ')}} is an API for compressing a stream of data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
+ */
 interface CompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
@@ -6390,7 +6612,11 @@ declare var CompressionStream: {
     new(format: CompressionFormat): CompressionStream;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ConstantSourceNode) */
+/**
+ * The ConstantSourceNode interface—part of the Web Audio API—represents an audio source (based upon AudioScheduledSourceNode) whose output is single unchanging value. This makes it useful for cases in which you need a constant value coming in from an audio source. In addition, it can be used like a constructible AudioParam by automating the value of its {{domxref("ConstantSourceNode.offset", "offset")}} or by connecting another node to it; see Controlling multiple parameters with ConstantSourceNode.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ConstantSourceNode)
+ */
 interface ConstantSourceNode extends AudioScheduledSourceNode {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ConstantSourceNode/offset) */
     readonly offset: AudioParam;
@@ -6405,7 +6631,11 @@ declare var ConstantSourceNode: {
     new(context: BaseAudioContext, options?: ConstantSourceOptions): ConstantSourceNode;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent) */
+/**
+ * The event object for the {{domxref("element/contentvisibilityautostatechange_event", "contentvisibilityautostatechange")}} event, which fires on any element with {{cssxref("content-visibility", "content-visibility: auto")}} set on it when it starts or stops being relevant to the user and skipping its contents.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent)
+ */
 interface ContentVisibilityAutoStateChangeEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped) */
     readonly skipped: boolean;
@@ -6434,6 +6664,7 @@ declare var ConvolverNode: {
 };
 
 /**
+ * Of the {{domxref("Cookie Store API", "", "", "nocode")}} is the event type of the {{domxref("CookieStore/change_event", "change")}} event fired at a CookieStore when any cookies are created or deleted.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieChangeEvent)
@@ -6455,6 +6686,7 @@ interface CookieStoreEventMap {
 }
 
 /**
+ * Of the {{domxref("Cookie Store API", "", "", "nocode")}} provides methods for getting and setting cookies asynchronously from either a page or a service worker.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStore)
@@ -6486,7 +6718,7 @@ declare var CookieStore: {
 };
 
 /**
- * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
+ * This Streams API interface provides a built-in chunk counting queuing strategy that can be used when constructing streams.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy)
  */
@@ -6503,6 +6735,7 @@ declare var CountQueuingStrategy: {
 };
 
 /**
+ * This Credential Management API interface provides information about an entity (usually a user) normally as a prerequisite to a trust decision.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Credential)
@@ -6520,6 +6753,7 @@ declare var Credential: {
 };
 
 /**
+ * This Credential Management API interface exposes methods to request credentials and notify the user agent when events such as successful sign in or sign out happen. This interface is accessible from {{domxref('Navigator.credentials')}}.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CredentialsContainer)
@@ -6541,7 +6775,7 @@ declare var CredentialsContainer: {
 };
 
 /**
- * Basic cryptography features available in the current context. It allows access to a cryptographically strong random number generator and to cryptographic primitives.
+ * Basic cryptography features available in the current context.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto)
  */
@@ -6568,7 +6802,7 @@ declare var Crypto: {
 };
 
 /**
- * The CryptoKey dictionary of the Web Crypto API represents a cryptographic key.
+ * This Web Crypto API interface represents a cryptographic key obtained from one of the SubtleCrypto methods {{domxref("SubtleCrypto.generateKey", "generateKey()")}}, {{domxref("SubtleCrypto.deriveKey", "deriveKey()")}}, {{domxref("SubtleCrypto.importKey", "importKey()")}}, or {{domxref("SubtleCrypto.unwrapKey", "unwrapKey()")}}.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey)
@@ -6589,7 +6823,11 @@ declare var CryptoKey: {
     new(): CryptoKey;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry) */
+/**
+ * Provides methods for registering custom elements and querying registered elements. To get an instance of it, use the window.customElements property.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry)
+ */
 interface CustomElementRegistry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry/define) */
     define(name: string, constructor: CustomElementConstructor, options?: ElementDefinitionOptions): void;
@@ -6608,7 +6846,11 @@ declare var CustomElementRegistry: {
     new(): CustomElementRegistry;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent) */
+/**
+ * Events initialized by an application for any purpose.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
+ */
 interface CustomEvent<T = any> extends Event {
     /**
      * Returns any custom data event was created with. Typically used for synthetic events.
@@ -6629,7 +6871,11 @@ declare var CustomEvent: {
     new<T>(type: string, eventInitDict?: CustomEventInit<T>): CustomEvent<T>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomStateSet) */
+/**
+ * Of the Document Object Model stores a list of states for an autonomous custom element, and allows states to be added and removed from the set.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomStateSet)
+ */
 interface CustomStateSet {
     forEach(callbackfn: (value: string, key: string, parent: CustomStateSet) => void, thisArg?: any): void;
 }
@@ -6640,7 +6886,7 @@ declare var CustomStateSet: {
 };
 
 /**
- * An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API.
+ * An abnormal event (called an exception) that occurs as a result of calling a method or accessing a property of a web API. This is how error conditions are described in web APIs.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException)
  */
@@ -6737,7 +6983,11 @@ declare var DOMImplementation: {
     new(): DOMImplementation;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix) */
+/**
+ * 4×4 matrices, suitable for 2D and 3D operations including rotation and translation. It is a mutable version of the DOMMatrixReadOnly interface.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix)
+ */
 interface DOMMatrix extends DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix#instance_properties) */
     a: number;
@@ -6822,7 +7072,11 @@ declare var SVGMatrix: typeof DOMMatrix;
 type WebKitCSSMatrix = DOMMatrix;
 declare var WebKitCSSMatrix: typeof DOMMatrix;
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly) */
+/**
+ * A read-only 4×4 matrix, suitable for 2D and 3D operations. The DOMMatrix interface — which is based upon DOMMatrixReadOnly—adds mutability, allowing you to alter the matrix after creating it.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly)
+ */
 interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly a: number;
@@ -6918,7 +7172,7 @@ declare var DOMMatrixReadOnly: {
 };
 
 /**
- * Provides the ability to parse XML or HTML source code from a string into a DOM Document.
+ * Provides
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMParser)
  */
@@ -6942,7 +7196,11 @@ declare var DOMParser: {
     new(): DOMParser;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint) */
+/**
+ * A 2D or 3D point in a coordinate system; it includes values for the coordinates in up to three dimensions, as well as an optional perspective value. DOMPoint is based on DOMPointReadOnly but allows its properties' values to be changed.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint)
+ */
 interface DOMPoint extends DOMPointReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint/w) */
     w: number;
@@ -6964,7 +7222,11 @@ declare var DOMPoint: {
 type SVGPoint = DOMPoint;
 declare var SVGPoint: typeof DOMPoint;
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly) */
+/**
+ * Specifies the coordinate and perspective fields used by DOMPoint to define a 2D or 3D point in a coordinate system.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly)
+ */
 interface DOMPointReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/w) */
     readonly w: number;
@@ -6987,7 +7249,11 @@ declare var DOMPointReadOnly: {
     fromPoint(other?: DOMPointInit): DOMPointReadOnly;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad) */
+/**
+ * A DOMQuad is a collection of four DOMPoints defining the corners of an arbitrary quadrilateral. Returning DOMQuads lets getBoxQuads() return accurate information even when arbitrary 2D or 3D transforms are present. It has a handy bounds attribute returning a DOMRectReadOnly for those cases where you just want an axis-aligned bounding rectangle.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad)
+ */
 interface DOMQuad {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p1) */
     readonly p1: DOMPoint;
@@ -7010,7 +7276,11 @@ declare var DOMQuad: {
     fromRect(other?: DOMRectInit): DOMQuad;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect) */
+/**
+ * A DOMRect describes the size and position of a rectangle.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect)
+ */
 interface DOMRect extends DOMRectReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/height) */
     height: number;
@@ -7032,7 +7302,11 @@ declare var DOMRect: {
 type SVGRect = DOMRect;
 declare var SVGRect: typeof DOMRect;
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectList) */
+/**
+ * A collection of DOMRect objects, typically used to hold the rectangles associated with a particular element, like bounding boxes returned by methods such as {{domxref("Element.getClientRects", "getClientRects()")}}. It provides access to each rectangle in the list via its index, along with a length property that indicates the total number of rectangles in the list.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectList)
+ */
 interface DOMRectList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectList/length) */
     readonly length: number;
@@ -7046,7 +7320,11 @@ declare var DOMRectList: {
     new(): DOMRectList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly) */
+/**
+ * Specifies the standard properties (also used by DOMRect) to define a rectangle whose properties are immutable.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly)
+ */
 interface DOMRectReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/bottom) */
     readonly bottom: number;
@@ -7076,7 +7354,7 @@ declare var DOMRectReadOnly: {
 };
 
 /**
- * A type returned by some APIs which contains a list of DOMString (strings).
+ * A legacy type returned by some APIs and represents a non-modifiable list of strings (DOMString).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMStringList)
  */
@@ -7108,7 +7386,7 @@ declare var DOMStringList: {
 };
 
 /**
- * Used by the dataset HTML attribute to represent data for custom attributes added to elements.
+ * Used for the HTMLElement.dataset attribute, to represent data for custom attributes added to elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMStringMap)
  */
@@ -7122,7 +7400,7 @@ declare var DOMStringMap: {
 };
 
 /**
- * A set of space-separated tokens. Such a set is returned by Element.classList, HTMLLinkElement.relList, HTMLAnchorElement.relList, HTMLAreaElement.relList, HTMLIframeElement.sandbox, or HTMLOutputElement.htmlFor. It is indexed beginning with 0 as with JavaScript Array objects. DOMTokenList is always case-sensitive.
+ * A set of space-separated tokens. Such a set is returned by Element.classList or HTMLLinkElement.relList, and many others.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList)
  */
@@ -7216,7 +7494,7 @@ declare var DOMTokenList: {
 };
 
 /**
- * Used to hold the data that is being dragged during a drag and drop operation. It may hold one or more data items, each of one or more data types. For more information about drag and drop, see HTML Drag and Drop API.
+ * Used to hold any data transferred between contexts, such as a drag and drop operation, or clipboard read/write. It may hold one or more data items, each of one or more data types.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransfer)
  */
@@ -7291,7 +7569,7 @@ declare var DataTransfer: {
 };
 
 /**
- * One drag data item. During a drag operation, each drag event has a dataTransfer property which contains a list of drag data items. Each item in the list is a DataTransferItem object.
+ * One drag data item. During a _drag operation_, each DragEvent has a {{domxref("DragEvent.dataTransfer","dataTransfer")}} property which contains a {{domxref("DataTransferItemList","list")}} of drag data items. Each item in the list is a DataTransferItem object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransferItem)
  */
@@ -7330,7 +7608,7 @@ declare var DataTransferItem: {
 };
 
 /**
- * A list of DataTransferItem objects representing items being dragged. During a drag operation, each DragEvent has a dataTransfer property and that property is a DataTransferItemList.
+ * A list of DataTransferItem objects representing items being dragged. During a _drag operation_, each DragEvent has a {{domxref("DragEvent.dataTransfer","dataTransfer")}} property and that property is a DataTransferItemList.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransferItemList)
  */
@@ -7368,7 +7646,11 @@ declare var DataTransferItemList: {
     new(): DataTransferItemList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
+/**
+ * Of the {{domxref('Compression Streams API','','',' ')}} is an API for decompressing a stream of data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
+ */
 interface DecompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
@@ -7395,7 +7677,7 @@ declare var DelayNode: {
 };
 
 /**
- * The DeviceMotionEvent provides web developers with information about the speed of changes for the device's position and orientation.
+ * Of the {{domxref("Device Orientation Events", "", "", "nocode")}} provides web developers with information about the speed of changes for the device's position and orientation.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceMotionEvent)
@@ -7417,6 +7699,7 @@ declare var DeviceMotionEvent: {
 };
 
 /**
+ * Of the {{domxref("Device Orientation Events", "", "", "nocode")}} provides information about the amount of acceleration the device is experiencing along all three axes.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceMotionEventAcceleration)
@@ -7431,6 +7714,7 @@ interface DeviceMotionEventAcceleration {
 }
 
 /**
+ * Of the {{domxref("Device Orientation Events", "", "", "nocode")}} provides information about the rate at which the device is rotating around all three axes.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceMotionEventRotationRate)
@@ -7445,7 +7729,7 @@ interface DeviceMotionEventRotationRate {
 }
 
 /**
- * The DeviceOrientationEvent provides web developers with information from the physical orientation of the device running the web page.
+ * Of the {{domxref("Device Orientation Events", "", "", "nocode")}} provides web developers with information from the physical orientation of the device running the web page.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceOrientationEvent)
@@ -8135,7 +8419,7 @@ declare var Document: {
 };
 
 /**
- * A minimal document object that has no parent. It is used as a lightweight version of Document that stores a segment of a document structure comprised of nodes just like a standard document. The key difference is that because the document fragment isn't part of the active document tree structure, changes made to the fragment don't affect the document, cause reflow, or incur any performance impact that can occur when changes are made.
+ * A minimal document object that has no parent.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DocumentFragment)
  */
@@ -8189,7 +8473,11 @@ interface DocumentOrShadowRoot {
     getAnimations(): Animation[];
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DocumentTimeline) */
+/**
+ * This Web Animations API interface represents animation timelines, including the default document timeline (accessed via Document.timeline).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DocumentTimeline)
+ */
 interface DocumentTimeline extends AnimationTimeline {
 }
 
@@ -8238,7 +8526,7 @@ declare var DragEvent: {
 };
 
 /**
- * Inherits properties from its parent, AudioNode.
+ * Provides a compression effect, which lowers the volume of the loudest parts of the signal in order to help prevent clipping and distortion that can occur when multiple sounds are played and multiplexed together at once. This is often used in musical production and game audio. DynamicsCompressorNode is an AudioNode that has exactly one input and one output.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DynamicsCompressorNode)
  */
@@ -8284,11 +8572,7 @@ interface EXT_color_buffer_half_float {
 interface EXT_float_blend {
 }
 
-/**
- * The EXT_frag_depth extension is part of the WebGL API and enables to set a depth value of a fragment from within the fragment shader.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_frag_depth)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_frag_depth) */
 interface EXT_frag_depth {
 }
 
@@ -8320,11 +8604,7 @@ interface EXT_texture_compression_rgtc {
     readonly COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT: 0x8DBE;
 }
 
-/**
- * The EXT_texture_filter_anisotropic extension is part of the WebGL API and exposes two constants for anisotropic filtering (AF).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_filter_anisotropic)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_filter_anisotropic) */
 interface EXT_texture_filter_anisotropic {
     readonly TEXTURE_MAX_ANISOTROPY_EXT: 0x84FE;
     readonly MAX_TEXTURE_MAX_ANISOTROPY_EXT: 0x84FF;
@@ -8348,7 +8628,7 @@ interface ElementEventMap {
 }
 
 /**
- * Element is the most general base class from which all objects in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element.
+ * Element is the most general base class from which all element objects (i.e. objects that represent elements) in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
@@ -8638,7 +8918,11 @@ interface ElementContentEditable {
     readonly isContentEditable: boolean;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals) */
+/**
+ * Of the Document Object Model gives web developers a way to allow custom elements to fully participate in HTML forms. It provides utilities for working with these elements in the same way you would work with any standard HTML form element, and also exposes the Accessibility Object Model to the element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals)
+ */
 interface ElementInternals extends ARIAMixin {
     /**
      * Returns the form owner of internals's target element.
@@ -8711,7 +8995,11 @@ declare var ElementInternals: {
     new(): ElementInternals;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk) */
+/**
+ * Of the {{domxref('WebCodecs API','','',' ')}} represents a chunk of encoded audio data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk)
+ */
 interface EncodedAudioChunk {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/byteLength) */
     readonly byteLength: number;
@@ -8730,7 +9018,11 @@ declare var EncodedAudioChunk: {
     new(init: EncodedAudioChunkInit): EncodedAudioChunk;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk) */
+/**
+ * Of the {{domxref('WebCodecs API','','',' ')}} represents a chunk of encoded video data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk)
+ */
 interface EncodedVideoChunk {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/byteLength) */
     readonly byteLength: number;
@@ -8773,7 +9065,7 @@ declare var ErrorEvent: {
 };
 
 /**
- * An event which takes place in the DOM.
+ * An event which takes place on an EventTarget.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
@@ -8901,7 +9193,11 @@ declare var Event: {
     readonly BUBBLING_PHASE: 3;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventCounts) */
+/**
+ * This Performance API interface provides the number of events that have been dispatched for each event type.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventCounts)
+ */
 interface EventCounts {
     forEach(callbackfn: (value: number, key: string, parent: EventCounts) => void, thisArg?: any): void;
 }
@@ -8925,7 +9221,11 @@ interface EventSourceEventMap {
     "open": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource) */
+/**
+ * Web content's interface to server-sent events.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource)
+ */
 interface EventSource extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource/error_event) */
     onerror: ((this: EventSource, ev: Event) => any) | null;
@@ -8977,7 +9277,7 @@ declare var EventSource: {
 };
 
 /**
- * EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them.
+ * Implemented by objects that can receive events and may have listeners for them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget)
  */
@@ -9053,7 +9353,7 @@ declare var File: {
 };
 
 /**
- * An object of this type is returned by the files property of the HTML <input> element; this lets you access the list of files selected with the <input type="file"> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage.
+ * An object of this type returned by the files property of the HTML input element; this lets you access the list of files selected with the <input type="file"> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileList)
  */
@@ -9134,7 +9434,11 @@ declare var FileReader: {
     readonly DONE: 2;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystem) */
+/**
+ * The File and Directory Entries API interface FileSystem is used to represent a file system. These objects can be obtained from the {{domxref("FileSystemEntry.filesystem", "filesystem")}} property on any file system entry. Some browsers offer additional APIs to create and manage file systems, such as Chrome's {{domxref("Window.requestFileSystem", "requestFileSystem()")}} method.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystem)
+ */
 interface FileSystem {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystem/name) */
     readonly name: string;
@@ -9147,7 +9451,11 @@ declare var FileSystem: {
     new(): FileSystem;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryEntry) */
+/**
+ * This File and Directory Entries API interface represents a directory in a file system. It provides methods which make it possible to access and manipulate the files in a directory, as well as to access the entries within the directory.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryEntry)
+ */
 interface FileSystemDirectoryEntry extends FileSystemEntry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryEntry/createReader) */
     createReader(): FileSystemDirectoryReader;
@@ -9163,6 +9471,7 @@ declare var FileSystemDirectoryEntry: {
 };
 
 /**
+ * Of the {{domxref("File System API", "File System API", "", "nocode")}} provides a handle to a file system directory.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryHandle)
@@ -9184,7 +9493,11 @@ declare var FileSystemDirectoryHandle: {
     new(): FileSystemDirectoryHandle;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryReader) */
+/**
+ * This File and Directory Entries API interface lets you access the FileSystemFileEntry-based objects (generally FileSystemFileEntry or FileSystemDirectoryEntry) representing each entry in a directory.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryReader)
+ */
 interface FileSystemDirectoryReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryReader/readEntries) */
     readEntries(successCallback: FileSystemEntriesCallback, errorCallback?: ErrorCallback): void;
@@ -9195,7 +9508,11 @@ declare var FileSystemDirectoryReader: {
     new(): FileSystemDirectoryReader;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry) */
+/**
+ * This File and Directory Entries API interface represents a single entry in a file system. The entry can be a file or a directory (directories are represented by the FileSystemDirectoryEntry interface). It includes methods for working with files—including copying, moving, removing, and reading files—as well as information about a file it points to—including the file name and its path from the root to the entry.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry)
+ */
 interface FileSystemEntry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry/filesystem) */
     readonly filesystem: FileSystem;
@@ -9216,7 +9533,11 @@ declare var FileSystemEntry: {
     new(): FileSystemEntry;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileEntry) */
+/**
+ * This File and Directory Entries API interface represents a file in a file system. It offers properties describing the file's attributes, as well as the {{domxref("FileSystemFileEntry.file", "file()")}} method, which creates a File object that can be used to read the file.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileEntry)
+ */
 interface FileSystemFileEntry extends FileSystemEntry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileEntry/file) */
     file(successCallback: FileCallback, errorCallback?: ErrorCallback): void;
@@ -9228,6 +9549,7 @@ declare var FileSystemFileEntry: {
 };
 
 /**
+ * Of the {{domxref("File System API", "File System API", "", "nocode")}} represents a handle to a file system entry. The interface is accessed through the {{domxref('window.showOpenFilePicker()')}} method.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle)
@@ -9246,6 +9568,7 @@ declare var FileSystemFileHandle: {
 };
 
 /**
+ * Of the {{domxref('File System API', '', '', 'nocode')}} is an object which represents a file or directory entry. Multiple handles can represent the same entry. For the most part you do not work with FileSystemHandle directly but rather its child interfaces {{domxref('FileSystemFileHandle')}} and {{domxref('FileSystemDirectoryHandle')}}.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemHandle)
@@ -9265,6 +9588,7 @@ declare var FileSystemHandle: {
 };
 
 /**
+ * Of the {{domxref("File System API", "File System API", "", "nocode")}} is a {{domxref('WritableStream')}} object with additional convenience methods, which operates on a single file on disk. The interface is accessed through the {{domxref('FileSystemFileHandle.createWritable()')}} method.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemWritableFileStream)
@@ -9284,7 +9608,7 @@ declare var FileSystemWritableFileStream: {
 };
 
 /**
- * Focus-related events like focus, blur, focusin, or focusout.
+ * Focus-related events, including {{domxref("Element/focus_event", "focus")}}, {{domxref("Element/blur_event", "blur")}}, {{domxref("Element/focusin_event", "focusin")}}, and {{domxref("Element/focusout_event", "focusout")}}.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)
  */
@@ -9298,7 +9622,11 @@ declare var FocusEvent: {
     new(type: string, eventInitDict?: FocusEventInit): FocusEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace) */
+/**
+ * This CSS Font Loading API interface represents a single usable font face.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace)
+ */
 interface FontFace {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/ascentOverride) */
     ascentOverride: string;
@@ -9339,7 +9667,11 @@ interface FontFaceSetEventMap {
     "loadingerror": FontFaceSetLoadEvent;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet) */
+/**
+ * This CSS Font Loading API interface manages the loading of font-faces and querying of their download status.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet)
+ */
 interface FontFaceSet extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loading_event) */
     onloading: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
@@ -9367,7 +9699,11 @@ declare var FontFaceSet: {
     new(): FontFaceSet;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent) */
+/**
+ * This CSS Font Loading API interface represents events fired at a FontFaceSet after it starts loading font faces.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent)
+ */
 interface FontFaceSetLoadEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent/fontfaces) */
     readonly fontfaces: ReadonlyArray<FontFace>;
@@ -9384,7 +9720,7 @@ interface FontFaceSource {
 }
 
 /**
- * Provides a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the XMLHttpRequest.send() method. It uses the same format a form would use if the encoding type were set to "multipart/form-data".
+ * Provides a way to construct a set of key/value pairs representing form fields and their values, which can be sent using the {{domxref("Window/fetch", "fetch()")}}, XMLHttpRequest.send() or navigator.sendBeacon() methods. It uses the same format a form would use if the encoding type were set to "multipart/form-data".
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData)
  */
@@ -9413,7 +9749,11 @@ declare var FormData: {
     new(form?: HTMLFormElement, submitter?: HTMLElement | null): FormData;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormDataEvent) */
+/**
+ * A formdata event — such an event is fired on an HTMLFormElement object after the entry list representing the form's data is constructed. This happens when the form is submitted, but can also be triggered by the invocation of a {{domxref("FormData.FormData", "FormData()")}} constructor.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormDataEvent)
+ */
 interface FormDataEvent extends Event {
     /**
      * Returns a FormData object representing names and values of elements associated to the target form. Operations on the FormData object will affect form data to be submitted.
@@ -9428,7 +9768,11 @@ declare var FormDataEvent: {
     new(type: string, eventInitDict: FormDataEventInit): FormDataEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FragmentDirective) */
+/**
+ * An object exposed to allow code to check whether or not a browser supports text fragments.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FragmentDirective)
+ */
 interface FragmentDirective {
 }
 
@@ -9438,6 +9782,7 @@ declare var FragmentDirective: {
 };
 
 /**
+ * Of the {{domxref("WebGPU API", "WebGPU API", "", "nocode")}} is the base interface for errors surfaced by GPUDevice.popErrorScope and the {{domxref("GPUDevice.uncapturederror_event", "uncapturederror")}} event.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUError)
@@ -9511,7 +9856,7 @@ declare var GamepadButton: {
 };
 
 /**
- * This Gamepad API interface contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected and Window.gamepaddisconnected are fired in response to.
+ * This Gamepad API interface contains references to gamepads connected to the system, which is what the gamepad events {{domxref("Window.gamepadconnected_event", "gamepadconnected")}} and {{domxref("Window.gamepaddisconnected_event", "gamepaddisconnected")}} are fired in response to.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadEvent)
  */
@@ -9550,7 +9895,7 @@ interface GenericTransformStream {
 }
 
 /**
- * An object able to programmatically obtain the position of the device. It gives Web content access to the location of the device. This allows a Web site or app to offer customized results based on the user's location.
+ * An object able to obtain the position of the device programmatically. It gives Web content access to the location of the device. This allows a website or app to offer customized results based on the user's location.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Geolocation)
  */
@@ -9569,6 +9914,7 @@ declare var Geolocation: {
 };
 
 /**
+ * The position and altitude of the device on Earth, as well as the accuracy with which these properties are calculated.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates)
@@ -9598,6 +9944,7 @@ declare var GeolocationCoordinates: {
 };
 
 /**
+ * The position of the concerned device at a given time. The position, represented by a GeolocationCoordinates object, comprehends the 2D position of the device, on a spheroid representing the Earth, but also its altitude and its speed.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPosition)
@@ -9616,7 +9963,11 @@ declare var GeolocationPosition: {
     new(): GeolocationPosition;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPositionError) */
+/**
+ * The reason of an error occurring when using the geolocating device.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPositionError)
+ */
 interface GeolocationPositionError {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPositionError/code) */
     readonly code: number;
@@ -10186,7 +10537,11 @@ interface GlobalEventHandlers {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection) */
+/**
+ * A collection of _all_ of the document's elements, accessible by index (like an array) and by the element's id. It is returned by the document.all property.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection)
+ */
 interface HTMLAllCollection {
     /**
      * Returns the number of elements in the collection.
@@ -10219,7 +10574,7 @@ declare var HTMLAllCollection: {
 };
 
 /**
- * Hyperlink elements and provides special properties and methods (beyond those of the regular HTMLElement object interface that they inherit from) for manipulating the layout and presentation of such elements.
+ * Hyperlink elements and provides special properties and methods (beyond those of the regular HTMLElement object interface that they inherit from) for manipulating the layout and presentation of such elements. This interface corresponds to <a> element; not to be confused with <link>, which is represented by HTMLLinkElement.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement)
  */
@@ -10296,7 +10651,7 @@ declare var HTMLAnchorElement: {
 };
 
 /**
- * Provides special properties and methods (beyond those of the regular object HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <area> elements.
+ * Provides special properties and methods (beyond those of the regular object HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of area elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement)
  */
@@ -10353,7 +10708,7 @@ declare var HTMLAreaElement: {
 };
 
 /**
- * Provides access to the properties of <audio> elements, as well as methods to manipulate them. It derives from the HTMLMediaElement interface.
+ * Provides access to the properties of audio elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAudioElement)
  */
@@ -10370,7 +10725,7 @@ declare var HTMLAudioElement: {
 };
 
 /**
- * A HTML line break element (<br>). It inherits from HTMLElement.
+ * An HTML line break element (br). It inherits from HTMLElement.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBRElement)
  */
@@ -10392,7 +10747,7 @@ declare var HTMLBRElement: {
 };
 
 /**
- * Contains the base URI for a document. This object inherits all of the properties and methods as described in the HTMLElement interface.
+ * Contains the base URI for a document. This object inherits all of the properties and methods as described in the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBaseElement)
  */
@@ -10424,7 +10779,7 @@ interface HTMLBodyElementEventMap extends HTMLElementEventMap, WindowEventHandle
 }
 
 /**
- * Provides special properties (beyond those inherited from the regular HTMLElement interface) for manipulating <body> elements.
+ * Provides special properties (beyond those inherited from the regular {{ domxref("HTMLElement") }} interface) for manipulating body elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBodyElement)
  */
@@ -10453,7 +10808,7 @@ declare var HTMLBodyElement: {
 };
 
 /**
- * Provides properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <button> elements.
+ * Provides properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating button elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement)
  */
@@ -10561,7 +10916,7 @@ declare var HTMLButtonElement: {
 };
 
 /**
- * Provides properties and methods for manipulating the layout and presentation of <canvas> elements. The HTMLCanvasElement interface also inherits the properties and methods of the HTMLElement interface.
+ * Provides properties and methods for manipulating the layout and presentation of canvas elements. The HTMLCanvasElement interface also inherits the properties and methods of the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement)
  */
@@ -10614,7 +10969,7 @@ declare var HTMLCanvasElement: {
 };
 
 /**
- * A generic collection (array-like object similar to arguments) of elements (in document order) and offers methods and properties for selecting from the list.
+ * A generic collection (array-like object similar to {{jsxref("Functions/arguments", "arguments")}}) of elements (in document order) and offers methods and properties for selecting from the list.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection)
  */
@@ -10655,7 +11010,7 @@ interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
 }
 
 /**
- * Provides special properties (beyond those of the regular HTMLElement interface it also has available to it by inheritance) for manipulating definition list (<dl>) elements.
+ * Provides special properties (beyond those of the regular HTMLElement interface it also has available to it by inheritance) for manipulating definition list (dl) elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDListElement)
  */
@@ -10674,7 +11029,7 @@ declare var HTMLDListElement: {
 };
 
 /**
- * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <data> elements.
+ * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating data elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataElement)
  */
@@ -10693,7 +11048,7 @@ declare var HTMLDataElement: {
 };
 
 /**
- * Provides special properties (beyond the HTMLElement object interface it also has available to it by inheritance) to manipulate <datalist> elements and their content.
+ * Provides special properties (beyond the HTMLElement object interface it also has available to it by inheritance) to manipulate {{ HTMLElement("datalist") }} elements and their content.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataListElement)
  */
@@ -10715,7 +11070,11 @@ declare var HTMLDataListElement: {
     new(): HTMLDataListElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement) */
+/**
+ * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating details elements.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement)
+ */
 interface HTMLDetailsElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/name) */
     name: string;
@@ -10732,7 +11091,11 @@ declare var HTMLDetailsElement: {
     new(): HTMLDetailsElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement) */
+/**
+ * Provides methods to manipulate dialog elements. It inherits properties and methods from the HTMLElement interface.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement)
+ */
 interface HTMLDialogElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/open) */
     open: boolean;
@@ -10784,7 +11147,7 @@ declare var HTMLDirectoryElement: {
 };
 
 /**
- * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <div> elements.
+ * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating div elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDivElement)
  */
@@ -10892,7 +11255,7 @@ declare var HTMLElement: {
 };
 
 /**
- * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <embed> elements.
+ * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating embed elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLEmbedElement)
  */
@@ -10938,7 +11301,7 @@ declare var HTMLEmbedElement: {
 };
 
 /**
- * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <fieldset> elements.
+ * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of {{ HTMLElement("fieldset") }} elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement)
  */
@@ -11010,7 +11373,7 @@ declare var HTMLFieldSetElement: {
 };
 
 /**
- * Implements the document object model (DOM) representation of the font element. The HTML Font Element <font> defines the font size, font face and color of text.
+ * Implements the document object model (DOM) representation of the font element. The HTML Font Element font defines the font size, font face and color of text.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFontElement)
@@ -11048,7 +11411,7 @@ declare var HTMLFontElement: {
 };
 
 /**
- * A collection of HTML form control elements.
+ * A _collection_ of HTML _form control elements_, returned by the HTMLFormElement interface's {{domxref("HTMLFormElement.elements", "elements")}} property.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormControlsCollection)
  */
@@ -11069,7 +11432,7 @@ declare var HTMLFormControlsCollection: {
 };
 
 /**
- * A <form> element in the DOM; it allows access to and in some cases modification of aspects of the form, as well as access to its component elements.
+ * A form element in the DOM. It allows access to—and, in some cases, modification of—aspects of the form, as well as access to its component elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement)
  */
@@ -11246,7 +11609,7 @@ interface HTMLFrameSetElementEventMap extends HTMLElementEventMap, WindowEventHa
 }
 
 /**
- * Provides special properties (beyond those of the regular HTMLElement interface they also inherit) for manipulating <frameset> elements.
+ * Provides special properties (beyond those of the regular HTMLElement interface they also inherit) for manipulating frameset elements.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFrameSetElement)
@@ -11275,7 +11638,7 @@ declare var HTMLFrameSetElement: {
 };
 
 /**
- * Provides special properties (beyond those of the HTMLElement interface it also has available to it by inheritance) for manipulating <hr> elements.
+ * Provides special properties (beyond those of the HTMLElement interface it also has available to it by inheritance) for manipulating hr elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLHRElement)
  */
@@ -11328,7 +11691,7 @@ declare var HTMLHeadElement: {
 };
 
 /**
- * The different heading elements. It inherits methods and properties from the HTMLElement interface.
+ * The different heading elements, <h1> through <h6>. It inherits methods and properties from the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLHeadingElement)
  */
@@ -11566,7 +11929,7 @@ declare var HTMLIFrameElement: {
 };
 
 /**
- * Provides special properties and methods for manipulating <img> elements.
+ * An HTML img element, providing the properties and methods used to manipulate image elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement)
  */
@@ -11707,7 +12070,7 @@ declare var HTMLImageElement: {
 };
 
 /**
- * Provides special properties and methods for manipulating the options, layout, and presentation of <input> elements.
+ * Provides special properties and methods for manipulating the options, layout, and presentation of input elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)
  */
@@ -12043,7 +12406,7 @@ declare var HTMLLIElement: {
 };
 
 /**
- * Gives access to properties specific to <label> elements. It inherits methods and properties from the base HTMLElement interface.
+ * Gives access to properties specific to label elements. It inherits methods and properties from the base HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement)
  */
@@ -12078,7 +12441,7 @@ declare var HTMLLabelElement: {
 };
 
 /**
- * The HTMLLegendElement is an interface allowing to access properties of the <legend> elements. It inherits properties and methods from the HTMLElement interface.
+ * The HTMLLegendElement is an interface allowing to access properties of the legend elements. It inherits properties and methods from the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLegendElement)
  */
@@ -12103,7 +12466,7 @@ declare var HTMLLegendElement: {
 };
 
 /**
- * Reference information for external resources and the relationship of those resources to a document and vice-versa. This object inherits all of the properties and methods of the HTMLElement interface.
+ * Reference information for external resources and the relationship of those resources to a document and vice versa (corresponds to <link> element; not to be confused with <a>, which is represented by HTMLAnchorElement). This object inherits all of the properties and methods of the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement)
  */
@@ -12217,7 +12580,7 @@ declare var HTMLMapElement: {
 };
 
 /**
- * Provides methods to manipulate <marquee> elements.
+ * Provides methods to manipulate marquee elements.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMarqueeElement)
@@ -12267,7 +12630,7 @@ interface HTMLMediaElementEventMap extends HTMLElementEventMap {
 }
 
 /**
- * Adds to HTMLElement the properties and methods needed to support basic media-related capabilities that are common to audio and video.
+ * Adds to HTMLElement the properties and methods needed to support basic media-related capabilities that are common to audio and video.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement)
  */
@@ -12493,7 +12856,11 @@ declare var HTMLMediaElement: {
     readonly HAVE_ENOUGH_DATA: 4;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMenuElement) */
+/**
+ * Provides additional properties (beyond those inherited from the HTMLElement interface) for manipulating a menu element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMenuElement)
+ */
 interface HTMLMenuElement extends HTMLElement {
     /** @deprecated */
     compact: boolean;
@@ -12509,7 +12876,7 @@ declare var HTMLMenuElement: {
 };
 
 /**
- * Contains descriptive metadata about a document. It inherits all of the properties and methods described in the HTMLElement interface.
+ * Contains descriptive metadata about a document provided in HTML as <meta> elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement)
  */
@@ -12553,7 +12920,7 @@ declare var HTMLMetaElement: {
 };
 
 /**
- * The HTML <meter> elements expose the HTMLMeterElement interface, which provides special properties and methods (beyond the HTMLElement object interface they also have available to them by inheritance) for manipulating the layout and presentation of <meter> elements.
+ * The HTML meter elements expose the HTMLMeterElement interface, which provides special properties and methods (beyond the HTMLElement object interface they also have available to them by inheritance) for manipulating the layout and presentation of meter elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement)
  */
@@ -12584,7 +12951,7 @@ declare var HTMLMeterElement: {
 };
 
 /**
- * Provides special properties (beyond the regular methods and properties available through the HTMLElement interface they also have available to them by inheritance) for manipulating modification elements, that is <del> and <ins>.
+ * Provides special properties (beyond the regular methods and properties available through the HTMLElement interface they also have available to them by inheritance) for manipulating modification elements, that is del and ins.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLModElement)
  */
@@ -12642,7 +13009,7 @@ declare var HTMLOListElement: {
 };
 
 /**
- * Provides special properties and methods (beyond those on the HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <object> element, representing external resources.
+ * Provides special properties and methods (beyond those on the HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of object element, representing external resources.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement)
  */
@@ -12780,7 +13147,7 @@ declare var HTMLObjectElement: {
 };
 
 /**
- * Provides special properties and methods (beyond the regular HTMLElement object interface they also have available to them by inheritance) for manipulating the layout and presentation of <optgroup> elements.
+ * Provides special properties and methods (beyond the regular HTMLElement object interface they also have available to them by inheritance) for manipulating the layout and presentation of optgroup elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptGroupElement)
  */
@@ -12805,7 +13172,7 @@ declare var HTMLOptGroupElement: {
 };
 
 /**
- * <option> elements and inherits all classes and methods of the HTMLElement interface.
+ * Option elements and inherits all properties and methods of the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement)
  */
@@ -12866,7 +13233,7 @@ declare var HTMLOptionElement: {
 };
 
 /**
- * HTMLOptionsCollection is an interface representing a collection of HTML option elements (in document order) and offers methods and properties for traversing the list as well as optionally altering its items. This type is returned solely by the "options" property of select.
+ * A collection of <option> HTML elements (in document order) and offers methods and properties for selecting from the list as well as optionally altering its items. This object is returned only by the options property of select.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection)
  */
@@ -12930,7 +13297,7 @@ interface HTMLOrSVGElement {
 }
 
 /**
- * Provides properties and methods (beyond those inherited from HTMLElement) for manipulating the layout and presentation of <output> elements.
+ * Provides properties and methods (beyond those inherited from HTMLElement) for manipulating the layout and presentation of output elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement)
  */
@@ -12984,7 +13351,7 @@ declare var HTMLOutputElement: {
 };
 
 /**
- * Provides special properties (beyond those of the regular HTMLElement object interface it inherits) for manipulating <p> elements.
+ * Provides special properties (beyond those of the regular HTMLElement object interface it inherits) for manipulating p elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLParagraphElement)
  */
@@ -13006,7 +13373,7 @@ declare var HTMLParagraphElement: {
 };
 
 /**
- * Provides special properties (beyond those of the regular HTMLElement object interface it inherits) for manipulating <param> elements, representing a pair of a key and a value that acts as a parameter for an <object> element.
+ * Provides special properties (beyond those of the regular HTMLElement object interface it inherits) for manipulating param elements, representing a pair of a key and a value that acts as a parameter for an object element.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLParamElement)
@@ -13045,7 +13412,7 @@ declare var HTMLParamElement: {
 };
 
 /**
- * A <picture> HTML element. It doesn't implement specific properties or methods.
+ * A picture HTML element. It doesn't implement specific properties or methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLPictureElement)
  */
@@ -13062,7 +13429,7 @@ declare var HTMLPictureElement: {
 };
 
 /**
- * Exposes specific properties and methods (beyond those of the HTMLElement interface it also has available to it by inheritance) for manipulating a block of preformatted text (<pre>).
+ * Exposes specific properties and methods (beyond those of the HTMLElement interface it also has available to it by inheritance) for manipulating a block of preformatted text (pre).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLPreElement)
  */
@@ -13084,7 +13451,7 @@ declare var HTMLPreElement: {
 };
 
 /**
- * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of <progress> elements.
+ * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of progress elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLProgressElement)
  */
@@ -13121,7 +13488,7 @@ declare var HTMLProgressElement: {
 };
 
 /**
- * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating quoting elements, like <blockquote> and <q>, but not the <cite> element.
+ * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating quoting elements, like blockquote and q, but not the cite element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLQuoteElement)
  */
@@ -13144,7 +13511,7 @@ declare var HTMLQuoteElement: {
 };
 
 /**
- * HTML <script> elements expose the HTMLScriptElement interface, which provides special properties and methods for manipulating the behavior and execution of <script> elements (beyond the inherited HTMLElement interface).
+ * HTML script elements expose the HTMLScriptElement interface, which provides special properties and methods for manipulating the behavior and execution of <script> elements (beyond the inherited HTMLElement interface).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement)
  */
@@ -13217,7 +13584,7 @@ declare var HTMLScriptElement: {
 };
 
 /**
- * A <select> HTML Element. These elements also share all of the properties and methods of other HTML elements via the HTMLElement interface.
+ * A select HTML Element. These elements also share all of the properties and methods of other HTML elements via the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement)
  */
@@ -13368,7 +13735,11 @@ declare var HTMLSelectElement: {
     new(): HTMLSelectElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement) */
+/**
+ * This Shadow DOM API interface enables access to the name and assigned nodes of an HTML slot element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement)
+ */
 interface HTMLSlotElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/name) */
     name: string;
@@ -13390,7 +13761,7 @@ declare var HTMLSlotElement: {
 };
 
 /**
- * Provides special properties (beyond the regular HTMLElement object interface it also has available to it by inheritance) for manipulating <source> elements.
+ * Provides special properties (beyond the regular HTMLElement object interface it also has available to it by inheritance) for manipulating source elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement)
  */
@@ -13433,7 +13804,7 @@ declare var HTMLSourceElement: {
 };
 
 /**
- * A <span> element and derives from the HTMLElement interface, but without implementing any additional properties or methods.
+ * A span element and derives from the HTMLElement interface, but without implementing any additional properties or methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSpanElement)
  */
@@ -13450,7 +13821,7 @@ declare var HTMLSpanElement: {
 };
 
 /**
- * A <style> element. It inherits properties and methods from its parent, HTMLElement, and from LinkStyle.
+ * A style element. It inherits properties and methods from its parent, HTMLElement.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement)
  */
@@ -13489,7 +13860,7 @@ declare var HTMLStyleElement: {
 };
 
 /**
- * Special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating table caption elements.
+ * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating table caption elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCaptionElement)
  */
@@ -13513,7 +13884,7 @@ declare var HTMLTableCaptionElement: {
 };
 
 /**
- * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of table cells, either header or data cells, in an HTML document.
+ * Provides special properties and methods (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of table cells, either header cells (th) or data cells (td), in an HTML document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement)
  */
@@ -13619,7 +13990,7 @@ declare var HTMLTableCellElement: {
 };
 
 /**
- * Provides special properties (beyond the HTMLElement interface it also has available to it inheritance) for manipulating single or grouped table column elements.
+ * Provides properties for manipulating single or grouped table column elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableColElement)
  */
@@ -13933,7 +14304,7 @@ declare var HTMLTableRowElement: {
 };
 
 /**
- * Provides special properties and methods (beyond the HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of sections, that is headers, footers and bodies, in an HTML table.
+ * Provides special properties and methods (beyond the HTMLElement interface it also has available to it by inheritance) for manipulating the layout and presentation of sections, that is headers, footers and bodies (thead, tfoot, and tbody, respectively) in an HTML table.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableSectionElement)
  */
@@ -13995,7 +14366,7 @@ declare var HTMLTableSectionElement: {
 };
 
 /**
- * Enables access to the contents of an HTML <template> element.
+ * Enables access to the contents of an HTML template element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement)
  */
@@ -14026,7 +14397,7 @@ declare var HTMLTemplateElement: {
 };
 
 /**
- * Provides special properties and methods for manipulating the layout and presentation of <textarea> elements.
+ * Provides properties and methods for manipulating the layout and presentation of textarea elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement)
  */
@@ -14191,7 +14562,7 @@ declare var HTMLTextAreaElement: {
 };
 
 /**
- * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating <time> elements.
+ * Provides special properties (beyond the regular HTMLElement interface it also has available to it by inheritance) for manipulating time elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTimeElement)
  */
@@ -14210,7 +14581,7 @@ declare var HTMLTimeElement: {
 };
 
 /**
- * Contains the title for a document. This element inherits all of the properties and methods of the HTMLElement interface.
+ * Implemented by a document's {{ HTMLElement( "title" )}}. This element inherits all of the properties and methods of the HTMLElement interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTitleElement)
  */
@@ -14233,7 +14604,7 @@ declare var HTMLTitleElement: {
 };
 
 /**
- * The HTMLTrackElement
+ * An HTML track element within the DOM. This element can be used as a child of either audio or video to specify a text track containing information such as closed captions or subtitles.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement)
  */
@@ -14276,7 +14647,7 @@ declare var HTMLTrackElement: {
 };
 
 /**
- * Provides special properties (beyond those defined on the regular HTMLElement interface it also has available to it by inheritance) for manipulating unordered list elements.
+ * Provides special properties (beyond those defined on the regular HTMLElement interface it also has available to it by inheritance) for manipulating unordered list (ul) elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLUListElement)
  */
@@ -14319,7 +14690,7 @@ interface HTMLVideoElementEventMap extends HTMLMediaElementEventMap {
 }
 
 /**
- * Provides special properties and methods for manipulating video objects. It also inherits properties and methods of HTMLMediaElement and HTMLElement.
+ * Implemented by the video element, the HTMLVideoElement interface provides special properties and methods for manipulating video objects. It also inherits properties and methods of HTMLMediaElement and HTMLElement.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement)
  */
@@ -14407,7 +14778,7 @@ declare var HashChangeEvent: {
 };
 
 /**
- * This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence.
+ * This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing headers from the list of the request's headers.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers)
  */
@@ -14432,7 +14803,11 @@ declare var Headers: {
     new(init?: HeadersInit): Headers;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight) */
+/**
+ * This CSS Custom Highlight API interface is used to represent a collection of Range instances to be styled using the API.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight)
+ */
 interface Highlight {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight/priority) */
     priority: number;
@@ -14446,7 +14821,11 @@ declare var Highlight: {
     new(...initialRanges: AbstractRange[]): Highlight;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry) */
+/**
+ * This CSS Custom Highlight API interface is used to register Highlight objects to be styled using the API.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry)
+ */
 interface HighlightRegistry {
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
 }
@@ -14457,7 +14836,7 @@ declare var HighlightRegistry: {
 };
 
 /**
- * Allows manipulation of the browser session history, that is the pages visited in the tab or frame that the current page is loaded in.
+ * Of the {{domxref("History API", "", "", "nocode")}} allows manipulation of the browser _session history_, that is the pages visited in the tab or frame that the current page is loaded in.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/History)
  */
@@ -14656,7 +15035,7 @@ declare var IDBDatabase: {
 };
 
 /**
- * In the following code snippet, we make a request to open a database, and include handlers for the success and error cases. For a full working example, see our To-do Notifications app (view example live.)
+ * This IndexedDB API interface lets applications asynchronously access the indexed databases. The object that implements the interface is window.indexedDB. You open — that is, create and access — and delete a database with this object, and not directly with IDBFactory.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBFactory)
  */
@@ -14778,7 +15157,7 @@ declare var IDBIndex: {
 };
 
 /**
- * A key range can be a single value or a range with upper and lower bounds or endpoints. If the key range has both upper and lower bounds, then it is bounded; if it has no bounds, it is unbounded. A bounded key range can either be open (the endpoints are excluded) or closed (the endpoints are included). To retrieve all keys within a certain range, you can use the following code constructs:
+ * This IndexedDB API interface represents a continuous interval over some data type that is used for keys. Records can be retrieved from IDBObjectStore and IDBIndex objects using keys or a range of keys. You can limit the range using lower and upper bounds. For example, you can iterate over all values of a key in the value range A–Z.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange)
  */
@@ -14845,7 +15224,7 @@ declare var IDBKeyRange: {
 };
 
 /**
- * This example shows a variety of different uses of object stores, from updating the data structure with IDBObjectStore.createIndex inside an onupgradeneeded function, to adding a new item to our object store with IDBObjectStore.add. For a full working example, see our To-do Notifications app (view example live.)
+ * This IndexedDB API interface represents an object store in a database. Records within an object store are sorted according to their keys. This sorting enables fast insertion, look-up, and ordered retrieval.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore)
  */
@@ -15007,7 +15386,7 @@ interface IDBOpenDBRequestEventMap extends IDBRequestEventMap {
 }
 
 /**
- * Also inherits methods from its parents IDBRequest and EventTarget.
+ * This IndexedDB API interface provides access to the results of requests to open or delete databases (performed using IDBFactory.open and IDBFactory.deleteDatabase), using specific event handler attributes.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBOpenDBRequest)
  */
@@ -15033,7 +15412,7 @@ interface IDBRequestEventMap {
 }
 
 /**
- * The request object does not initially contain any information about the result of the operation, but once information becomes available, an event is fired on the request, and the information becomes available through the properties of the IDBRequest instance.
+ * This IndexedDB API interface provides access to results of asynchronous requests to databases and database objects using event handler attributes. Each reading and writing operation on a database is done using a request.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest)
  */
@@ -15089,7 +15468,11 @@ interface IDBTransactionEventMap {
     "error": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction) */
+/**
+ * This IndexedDB API interface provides a static, asynchronous transaction on a database using event handler attributes. All reading and writing of data is done within transactions. You use IDBDatabase to start transactions, IDBTransaction to set the mode of the transaction (e.g. is it readonly or readwrite), and you access an IDBObjectStore to make a request. You can also use an IDBTransaction object to abort transactions.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction)
+ */
 interface IDBTransaction extends EventTarget {
     /**
      * Returns the transaction's connection.
@@ -15149,7 +15532,7 @@ declare var IDBTransaction: {
 };
 
 /**
- * This IndexedDB API interface indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function.
+ * This IndexedDB API interface indicates that the version of the database has changed, as the result of an {{domxref("IDBOpenDBRequest.upgradeneeded_event", "onupgradeneeded")}} event handler function.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBVersionChangeEvent)
  */
@@ -15166,7 +15549,7 @@ declare var IDBVersionChangeEvent: {
 };
 
 /**
- * The IIRFilterNode interface of the Web Audio API is a AudioNode processor which implements a general infinite impulse response (IIR)  filter; this type of filter can be used to implement tone control devices and graphic equalizers as well. It lets the parameters of the filter response be specified, so that it can be tuned as needed.
+ * This Web Audio API interface is a AudioNode processor which implements a general infinite impulse response (IIR) filter; this type of filter can be used to implement tone control devices and graphic equalizers as well. It lets the parameters of the filter response be specified, so that it can be tuned as needed.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IIRFilterNode)
  */
@@ -15180,7 +15563,11 @@ declare var IIRFilterNode: {
     new(context: BaseAudioContext, options: IIRFilterOptions): IIRFilterNode;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IdleDeadline) */
+/**
+ * Used as the data type of the input parameter to idle callbacks established by calling Window.requestIdleCallback(). It offers a method, {{domxref("IdleDeadline.timeRemaining", "timeRemaining()")}}, which lets you determine how much longer the user agent estimates it will remain idle and a property, {{domxref("IdleDeadline.didTimeout", "didTimeout")}}, which lets you determine if your callback is executing because its timeout duration expired.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IdleDeadline)
+ */
 interface IdleDeadline {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IdleDeadline/didTimeout) */
     readonly didTimeout: boolean;
@@ -15193,7 +15580,11 @@ declare var IdleDeadline: {
     new(): IdleDeadline;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap) */
+/**
+ * A bitmap image which can be drawn to a canvas without undue latency. It can be created from a variety of source objects using the Window.createImageBitmap() or WorkerGlobalScope.createImageBitmap() factory method. ImageBitmap provides an asynchronous and resource efficient pathway to prepare textures for rendering in WebGL.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap)
+ */
 interface ImageBitmap {
     /**
      * Returns the intrinsic height of the image, in CSS pixels.
@@ -15220,7 +15611,11 @@ declare var ImageBitmap: {
     new(): ImageBitmap;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext) */
+/**
+ * A canvas rendering context that provides the functionality to replace the canvas's contents with the given ImageBitmap. Its context id (the first argument to HTMLCanvasElement.getContext() or OffscreenCanvas.getContext()) is "bitmaprenderer".
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext)
+ */
 interface ImageBitmapRenderingContext {
     /**
      * Returns the canvas element that the context is bound to.
@@ -15241,7 +15636,11 @@ declare var ImageBitmapRenderingContext: {
     new(): ImageBitmapRenderingContext;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture) */
+/**
+ * This MediaStream Image Capture API interface provides methods to enable the capture of images or photos from a camera or other photographic device. It provides an interface for capturing images from a photographic device referenced through a valid MediaStreamTrack.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture)
+ */
 interface ImageCapture {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/track) */
     readonly track: MediaStreamTrack;
@@ -15259,7 +15658,7 @@ declare var ImageCapture: {
 };
 
 /**
- * The underlying pixel data of an area of a <canvas> element. It is created using the ImageData() constructor or creator methods on the CanvasRenderingContext2D object associated with a canvas: createImageData() and getImageData(). It can also be used to set a part of the canvas by using putImageData().
+ * The underlying pixel data of an area of a canvas element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData)
  */
@@ -15293,6 +15692,7 @@ declare var ImageData: {
 };
 
 /**
+ * Of the {{domxref('WebCodecs API','','','true')}} provides a way to unpack and decode encoded image data.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder)
@@ -15321,7 +15721,11 @@ declare var ImageDecoder: {
     isTypeSupported(type: string): Promise<boolean>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack) */
+/**
+ * Of the {{domxref('WebCodecs API','','','true')}} represents an individual image track.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack)
+ */
 interface ImageTrack {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated) */
     readonly animated: boolean;
@@ -15338,7 +15742,11 @@ declare var ImageTrack: {
     new(): ImageTrack;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList) */
+/**
+ * Of the {{domxref('WebCodecs API','','','true')}} represents a list of image tracks.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList)
+ */
 interface ImageTrackList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
     readonly length: number;
@@ -15362,6 +15770,7 @@ interface ImportMeta {
 }
 
 /**
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} gives access to the capabilities of the input device that it represents.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputDeviceInfo)
@@ -15376,7 +15785,11 @@ declare var InputDeviceInfo: {
     new(): InputDeviceInfo;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent) */
+/**
+ * An event notifying the user of editable content changes.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent)
+ */
 interface InputEvent extends UIEvent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent/data) */
     readonly data: string | null;
@@ -15396,7 +15809,7 @@ declare var InputEvent: {
 };
 
 /**
- * provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
+ * This Intersection Observer API interface provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document's {{Glossary('viewport')}}. The ancestor element or viewport is referred to as the root.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver)
  */
@@ -15455,7 +15868,7 @@ interface KHR_parallel_shader_compile {
 }
 
 /**
- * KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard.
+ * KeyboardEvent objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type ({{domxref("Element/keydown_event", "keydown")}}, {{domxref("Element/keypress_event", "keypress")}}, or {{domxref("Element/keyup_event", "keyup")}}) identifies what kind of keyboard activity occurred.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)
  */
@@ -15513,7 +15926,11 @@ declare var KeyboardEvent: {
     readonly DOM_KEY_LOCATION_NUMPAD: 0x03;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyframeEffect) */
+/**
+ * This Web Animations API interface lets us create sets of animatable properties and values, called keyframes. These can then be played using the {{domxref("Animation.Animation", "Animation()")}} constructor.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyframeEffect)
+ */
 interface KeyframeEffect extends AnimationEffect {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyframeEffect/composite) */
     composite: CompositeOperation;
@@ -15535,7 +15952,11 @@ declare var KeyframeEffect: {
     new(source: KeyframeEffect): KeyframeEffect;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint) */
+/**
+ * Provides timing information about the largest image or text paint before user input on a web page.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint)
+ */
 interface LargestContentfulPaint extends PerformanceEntry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/element) */
     readonly element: Element | null;
@@ -15672,6 +16093,7 @@ declare var Location: {
 };
 
 /**
+ * This Web Locks API interface provides the name and mode of a lock.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Lock)
@@ -15689,6 +16111,7 @@ declare var Lock: {
 };
 
 /**
+ * This Web Locks API interface provides methods for requesting a new {{domxref('Lock')}} object and querying for an existing Lock object. To get an instance of LockManager, call {{domxref('navigator.locks')}}.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager)
@@ -15711,6 +16134,7 @@ interface MIDIAccessEventMap {
 }
 
 /**
+ * This Web MIDI API interface provides methods for listing MIDI input and output devices, and obtaining access to those devices.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIAccess)
@@ -15736,6 +16160,7 @@ declare var MIDIAccess: {
 };
 
 /**
+ * This Web MIDI API interface is the event passed to the {{domxref("MIDIAccess.statechange_event","statechange")}} event of the MIDIAccess interface and the {{domxref("MIDIPort.statechange_event","statechange")}} event of the MIDIPort interface. This occurs any time a new port becomes available, or when a previously available port becomes unavailable. For example, this event is fired whenever a MIDI device is either plugged in to or unplugged from a computer.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIConnectionEvent)
@@ -15755,6 +16180,7 @@ interface MIDIInputEventMap extends MIDIPortEventMap {
 }
 
 /**
+ * This Web MIDI API interface receives messages from a MIDI input port.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIInput)
@@ -15774,6 +16200,7 @@ declare var MIDIInput: {
 };
 
 /**
+ * The MIDIInputMap read-only interface of the Web MIDI API provides the set of MIDI input ports that are currently available.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIInputMap)
@@ -15788,6 +16215,7 @@ declare var MIDIInputMap: {
 };
 
 /**
+ * This Web MIDI API interface represents the event passed to the {{domxref("MIDIInput.midimessage_event","midimessage")}} event of the MIDIInput interface. A midimessage event is fired every time a MIDI message is sent from a device represented by a MIDIInput, for example when a MIDI keyboard key is pressed, a knob is tweaked, or a slider is moved.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIMessageEvent)
@@ -15803,6 +16231,7 @@ declare var MIDIMessageEvent: {
 };
 
 /**
+ * Of the {{domxref('Web MIDI API','','',' ')}} provides methods to add messages to the queue of an output device, and to clear the queue of messages.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIOutput)
@@ -15822,6 +16251,7 @@ declare var MIDIOutput: {
 };
 
 /**
+ * The MIDIOutputMap read-only interface of the Web MIDI API provides the set of MIDI output ports that are currently available.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIOutputMap)
@@ -15840,6 +16270,7 @@ interface MIDIPortEventMap {
 }
 
 /**
+ * Of the {{domxref('Web MIDI API','','',' ')}} represents a MIDI input or output port.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIPort)
@@ -15879,7 +16310,11 @@ declare var MIDIPort: {
 interface MathMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventMap {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MathMLElement) */
+/**
+ * Any MathML element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MathMLElement)
+ */
 interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
     addEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -15892,7 +16327,11 @@ declare var MathMLElement: {
     new(): MathMLElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities) */
+/**
+ * This Media Capabilities API interface provides information about the decoding abilities of the device, system and browser. The API can be used to query the browser about the decoding abilities of the device based on codecs, profile, resolution, and bitrates. The information can be used to serve optimal media streams to the user and determine if playback should be smooth and power efficient.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities)
+ */
 interface MediaCapabilities {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities/decodingInfo) */
     decodingInfo(configuration: MediaDecodingConfiguration): Promise<MediaCapabilitiesDecodingInfo>;
@@ -15906,7 +16345,7 @@ declare var MediaCapabilities: {
 };
 
 /**
- * The MediaDevicesInfo interface contains information that describes a single media input or output device.
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} contains information that describes a single media input or output device.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaDeviceInfo)
@@ -15934,7 +16373,7 @@ interface MediaDevicesEventMap {
 }
 
 /**
- * Provides access to connected media input devices like cameras and microphones, as well as screen sharing. In essence, it lets you obtain access to any hardware source of media data.
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} provides access to connected media input devices like cameras and microphones, as well as screen sharing. In essence, it lets you obtain access to any hardware source of media data.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaDevices)
@@ -15962,7 +16401,7 @@ declare var MediaDevices: {
 };
 
 /**
- * A MediaElementSourceNode has no inputs and exactly one output, and is created using the AudioContext.createMediaElementSource method. The amount of channels in the output equals the number of channels of the audio referenced by the HTMLMediaElement used in the creation of the node, or is 1 if the HTMLMediaElement has no audio.
+ * An audio source consisting of an HTML {{ htmlelement("audio") }} or {{ htmlelement("video") }} element. It is an AudioNode that acts as an audio source.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaElementAudioSourceNode)
  */
@@ -15976,7 +16415,11 @@ declare var MediaElementAudioSourceNode: {
     new(context: AudioContext, options: MediaElementAudioSourceOptions): MediaElementAudioSourceNode;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaEncryptedEvent) */
+/**
+ * This Encrypted Media Extensions API interface contains the information associated with an {{domxref("HTMLMediaElement/encrypted_event", "encrypted")}} event sent to a HTMLMediaElement when some initialization data is encountered in the media.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaEncryptedEvent)
+ */
 interface MediaEncryptedEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaEncryptedEvent/initData) */
     readonly initData: ArrayBuffer | null;
@@ -15990,7 +16433,7 @@ declare var MediaEncryptedEvent: {
 };
 
 /**
- * An error which occurred while handling media in an HTML media element based on HTMLMediaElement, such as <audio> or <video>.
+ * An error which occurred while handling media in an HTML media element based on HTMLMediaElement, such as audio or video.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaError)
  */
@@ -16015,7 +16458,7 @@ declare var MediaError: {
 };
 
 /**
- * This EncryptedMediaExtensions API interface contains the content and related data when the content decryption module generates a message for the session.
+ * This Encrypted Media Extensions API interface contains the content and related data when the content decryption module generates a message for the session.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeyMessageEvent)
@@ -16038,7 +16481,7 @@ interface MediaKeySessionEventMap {
 }
 
 /**
- * This EncryptedMediaExtensions API interface represents a context for message exchange with a content decryption module (CDM).
+ * This Encrypted Media Extensions API interface represents a context for message exchange with a content decryption module (CDM).
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeySession)
@@ -16078,7 +16521,7 @@ declare var MediaKeySession: {
 };
 
 /**
- * This EncryptedMediaExtensions API interface is a read-only map of media key statuses by key IDs.
+ * This Encrypted Media Extensions API interface is a read-only map of media key statuses by key IDs.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeyStatusMap)
@@ -16099,7 +16542,7 @@ declare var MediaKeyStatusMap: {
 };
 
 /**
- * This EncryptedMediaExtensions API interface provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the Navigator.requestMediaKeySystemAccess method.
+ * This Encrypted Media Extensions API interface provides access to a Key System for decryption and/or a content protection provider. You can request an instance of this object using the {{domxref("Navigator.requestMediaKeySystemAccess","Navigator.requestMediaKeySystemAccess()")}} method.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeySystemAccess)
@@ -16119,7 +16562,7 @@ declare var MediaKeySystemAccess: {
 };
 
 /**
- * This EncryptedMediaExtensions API interface the represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback.
+ * This Encrypted Media Extensions API interface represents a set of keys that an associated HTMLMediaElement can use for decryption of media data during playback.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys)
@@ -16138,7 +16581,11 @@ declare var MediaKeys: {
     new(): MediaKeys;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaList) */
+/**
+ * The media queries of a stylesheet, e.g. those set using a link element's media attribute.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaList)
+ */
 interface MediaList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaList/length) */
     readonly length: number;
@@ -16159,7 +16606,11 @@ declare var MediaList: {
     new(): MediaList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata) */
+/**
+ * Of the {{domxref("Media Session API", "", "", "nocode")}} allows a web page to provide rich media metadata for display in a platform UI.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata)
+ */
 interface MediaMetadata {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata/album) */
     album: string;
@@ -16181,7 +16632,7 @@ interface MediaQueryListEventMap {
 }
 
 /**
- * Stores information on a media query applied to a document, and handles sending notifications to listeners when the media query state change (i.e. when the media query test starts or stops evaluating to true).
+ * Stores information on a media query applied to a document, with support for both immediate and event-driven matching against the state of the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryList)
  */
@@ -16215,7 +16666,11 @@ declare var MediaQueryList: {
     new(): MediaQueryList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryListEvent) */
+/**
+ * Stores information on the changes that have happened to a MediaQueryList object — instances are available as the event object on a function referenced by a {{DOMxRef("MediaQueryList.change_event", "change")}} event.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryListEvent)
+ */
 interface MediaQueryListEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryListEvent/matches) */
     readonly matches: boolean;
@@ -16237,7 +16692,11 @@ interface MediaRecorderEventMap {
     "stop": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder) */
+/**
+ * This MediaStream Recording API interface provides functionality to easily record media. It is created using the {{domxref("MediaRecorder.MediaRecorder", "MediaRecorder()")}} constructor.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder)
+ */
 interface MediaRecorder extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/audioBitsPerSecond) */
     readonly audioBitsPerSecond: number;
@@ -16284,7 +16743,11 @@ declare var MediaRecorder: {
     isTypeSupported(type: string): boolean;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession) */
+/**
+ * Of the {{domxref("Media Session API", "", "", "nocode")}} allows a web page to provide custom behaviors for standard media playback interactions, and to report metadata that can be sent by the user agent to the device or operating system for presentation in standardized user interface elements.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession)
+ */
 interface MediaSession {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/metadata) */
     metadata: MediaMetadata | null;
@@ -16312,7 +16775,7 @@ interface MediaSourceEventMap {
 }
 
 /**
- * This Media Source Extensions API interface represents a source of media data for an HTMLMediaElement object. A MediaSource object can be attached to a HTMLMediaElement to be played in the user agent.
+ * Of the {{domxref("Media Source Extensions API", "Media Source Extensions API", "", "nocode")}} represents a source of media data for an HTMLMediaElement object. A MediaSource object can be attached to a HTMLMediaElement to be played in the user agent.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource)
  */
@@ -16353,7 +16816,11 @@ declare var MediaSource: {
     isTypeSupported(type: string): boolean;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle) */
+/**
+ * Of the {{domxref("Media Source Extensions API", "Media Source Extensions API", "", "nocode")}} is a proxy for a MediaSource that can be transferred from a dedicated worker back to the main thread and attached to a media element via its HTMLMediaElement.srcObject property. MediaSource objects are not transferable because they are event targets, hence the need for MediaSourceHandles.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle)
+ */
 interface MediaSourceHandle {
 }
 
@@ -16368,7 +16835,7 @@ interface MediaStreamEventMap {
 }
 
 /**
- * A stream of media content. A stream consists of several tracks such as video or audio tracks. Each track is specified as an instance of MediaStreamTrack.
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} represents a stream of media content. A stream consists of several tracks, such as video or audio tracks. Each track is specified as an instance of MediaStreamTrack.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStream)
  */
@@ -16408,7 +16875,11 @@ declare var MediaStream: {
     new(tracks: MediaStreamTrack[]): MediaStream;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamAudioDestinationNode) */
+/**
+ * An audio destination consisting of a WebRTC MediaStream with a single AudioMediaStreamTrack, which can be used in a similar way to a MediaStream obtained from {{domxref("MediaDevices.getUserMedia", "navigator.mediaDevices.getUserMedia()")}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamAudioDestinationNode)
+ */
 interface MediaStreamAudioDestinationNode extends AudioNode {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamAudioDestinationNode/stream) */
     readonly stream: MediaStream;
@@ -16441,7 +16912,7 @@ interface MediaStreamTrackEventMap {
 }
 
 /**
- * A single media track within a stream; typically, these are audio or video tracks, but other track types may exist as well.
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} represents a single media track within a stream; typically, these are audio or video tracks, but other track types may exist as well.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrack)
  */
@@ -16490,7 +16961,7 @@ declare var MediaStreamTrack: {
 };
 
 /**
- * Events which indicate that a MediaStream has had tracks added to or removed from the stream through calls to Media Stream API methods. These events are sent to the stream when these changes occur.
+ * Of the {{domxref("Media Capture and Streams API", "", "", "nocode")}} represents events which indicate that a MediaStream has had tracks added to or removed from the stream through calls to Media Capture and Streams API methods. These events are sent to the stream when these changes occur.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackEvent)
  */
@@ -16634,7 +17105,7 @@ declare var MessagePort: {
 };
 
 /**
- * Provides contains information about a MIME type associated with a particular plugin. NavigatorPlugins.mimeTypes returns an array of this object.
+ * Provides contains information about a MIME type associated with a particular plugin. Navigator.mimeTypes returns an array of this object.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MimeType)
@@ -16669,7 +17140,7 @@ declare var MimeType: {
 };
 
 /**
- * Returns an array of MimeType instances, each of which contains information about a supported browser plugins. This object is returned by NavigatorPlugins.mimeTypes.
+ * Returns an array of {{domxref('MimeType')}} instances, each of which contains information about a supported browser plugins. This object is returned by the deprecated Navigator.mimeTypes property.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MimeTypeArray)
@@ -16691,7 +17162,7 @@ declare var MimeTypeArray: {
 };
 
 /**
- * Events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.
+ * Events that occur due to the user interacting with a pointing device (such as a mouse).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)
  */
@@ -16754,7 +17225,7 @@ declare var MouseEvent: {
 };
 
 /**
- * Provides the ability to watch for changes being made to the DOM tree. It is designed as a replacement for the older Mutation Events feature which was part of the DOM3 Events specification.
+ * Provides the ability to watch for changes being made to the DOM tree. It is designed as a replacement for the older Mutation Events feature, which was part of the DOM3 Events specification.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MutationObserver)
  */
@@ -16787,7 +17258,7 @@ declare var MutationObserver: {
 };
 
 /**
- * A MutationRecord represents an individual DOM mutation. It is the object that is passed to MutationObserver's callback.
+ * The MutationRecord is a read-only interface that represents an individual DOM mutation observed by a MutationObserver. It is the object inside the array passed to the callback of a MutationObserver.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MutationRecord)
  */
@@ -16883,7 +17354,11 @@ declare var NamedNodeMap: {
     new(): NamedNodeMap;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation) */
+/**
+ * This Navigation API interface represents a recent cross-document navigation. It contains the navigation type and outgoing and inbound document history entries.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation)
+ */
 interface NavigationActivation {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation/entry) */
     readonly entry: NavigationHistoryEntry;
@@ -16902,7 +17377,11 @@ interface NavigationHistoryEntryEventMap {
     "dispose": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry) */
+/**
+ * Of the {{domxref("Navigation API", "Navigation API", "", "nocode")}} represents a single navigation history entry.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry)
+ */
 interface NavigationHistoryEntry extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/id) */
     readonly id: string;
@@ -16930,6 +17409,7 @@ declare var NavigationHistoryEntry: {
 };
 
 /**
+ * This Service Worker API interface provides methods for managing the preloading of resources in parallel with service worker bootup.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPreloadManager)
@@ -17165,7 +17645,7 @@ interface NavigatorStorage {
 }
 
 /**
- * Node is an interface from which a number of DOM API object types inherit. It allows those types to be treated similarly; for example, inheriting the same set of methods, or being tested in the same way.
+ * The DOM Node interface is an abstract base
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node)
  */
@@ -17374,7 +17854,7 @@ declare var Node: {
 };
 
 /**
- * An iterator over the members of a list of the nodes in a subtree of the DOM. The nodes will be returned in document order.
+ * An iterator to traverse nodes of a DOM subtree in document order.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NodeIterator)
  */
@@ -17481,7 +17961,7 @@ interface NotificationEventMap {
 }
 
 /**
- * This Notifications API interface is used to configure and display desktop notifications to the user.
+ * Of the {{domxref("Notifications API", "", "", "nocode")}} is used to configure and display desktop notifications to the user.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification)
  */
@@ -17531,7 +18011,11 @@ declare var Notification: {
     requestPermission(deprecatedCallback?: NotificationPermissionCallback): Promise<NotificationPermission>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed) */
+/**
+ * The OES_draw_buffers_indexed extension is part of the WebGL API and enables the use of different blend options when writing to multiple color buffers simultaneously.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed)
+ */
 interface OES_draw_buffers_indexed {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed/blendEquationSeparateiOES) */
     blendEquationSeparateiOES(buf: GLuint, modeRGB: GLenum, modeAlpha: GLenum): void;
@@ -17549,11 +18033,7 @@ interface OES_draw_buffers_indexed {
     enableiOES(target: GLenum, index: GLuint): void;
 }
 
-/**
- * The OES_element_index_uint extension is part of the WebGL API and adds support for gl.UNSIGNED_INT types to WebGLRenderingContext.drawElements().
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_element_index_uint)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_element_index_uint) */
 interface OES_element_index_uint {
 }
 
@@ -17561,45 +18041,25 @@ interface OES_element_index_uint {
 interface OES_fbo_render_mipmap {
 }
 
-/**
- * The OES_standard_derivatives extension is part of the WebGL API and adds the GLSL derivative functions dFdx, dFdy, and fwidth.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_standard_derivatives)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_standard_derivatives) */
 interface OES_standard_derivatives {
     readonly FRAGMENT_SHADER_DERIVATIVE_HINT_OES: 0x8B8B;
 }
 
-/**
- * The OES_texture_float extension is part of the WebGL API and exposes floating-point pixel types for textures.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float) */
 interface OES_texture_float {
 }
 
-/**
- * The OES_texture_float_linear extension is part of the WebGL API and allows linear filtering with floating-point pixel types for textures.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float_linear)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float_linear) */
 interface OES_texture_float_linear {
 }
 
-/**
- * The OES_texture_half_float extension is part of the WebGL API and adds texture formats with 16- (aka half float) and 32-bit floating-point components.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float) */
 interface OES_texture_half_float {
     readonly HALF_FLOAT_OES: 0x8D61;
 }
 
-/**
- * The OES_texture_half_float_linear extension is part of the WebGL API and allows linear filtering with half floating-point pixel types for textures.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float_linear)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float_linear) */
 interface OES_texture_half_float_linear {
 }
 
@@ -17627,7 +18087,7 @@ interface OVR_multiview2 {
 }
 
 /**
- * The Web Audio API OfflineAudioCompletionEvent interface represents events that occur when the processing of an OfflineAudioContext is terminated. The complete event implements this interface.
+ * The Web Audio API OfflineAudioCompletionEvent interface represents events that occur when the processing of an OfflineAudioContext is terminated. The {{domxref("OfflineAudioContext/complete_event", "complete")}} event uses this interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OfflineAudioCompletionEvent)
  */
@@ -17678,7 +18138,11 @@ interface OffscreenCanvasEventMap {
     "contextrestored": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas) */
+/**
+ * When using the canvas element or the Canvas API, rendering, animation, and user interaction usually happen on the main execution thread of a web application.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas)
+ */
 interface OffscreenCanvas extends EventTarget {
     /**
      * These attributes return the dimensions of the OffscreenCanvas object's bitmap.
@@ -17739,7 +18203,11 @@ declare var OffscreenCanvas: {
     new(width: number, height: number): OffscreenCanvas;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D) */
+/**
+ * A CanvasRenderingContext2D rendering context for drawing to the bitmap of an OffscreenCanvas object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D)
+ */
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas) */
     readonly canvas: OffscreenCanvas;
@@ -17751,7 +18219,7 @@ declare var OffscreenCanvasRenderingContext2D: {
 };
 
 /**
- * The OscillatorNode interface represents a periodic waveform, such as a sine wave. It is an AudioScheduledSourceNode audio-processing module that causes a specified frequency of a given wave to be created—in effect, a constant tone.
+ * A periodic waveform, such as a sine wave. It is an AudioScheduledSourceNode audio-processing module that causes a specified frequency of a given wave to be created—in effect, a constant tone.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OscillatorNode)
  */
@@ -17775,7 +18243,11 @@ declare var OscillatorNode: {
     new(context: BaseAudioContext, options?: OscillatorOptions): OscillatorNode;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OverconstrainedError) */
+/**
+ * This Media Capture and Streams API interface indicates that the set of desired capabilities for the current {{domxref('MediaStreamTrack')}} cannot currently be met. When this event is thrown on a MediaStreamTrack, it is muted until either the current constraints can be established or until satisfiable constraints are applied.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OverconstrainedError)
+ */
 interface OverconstrainedError extends DOMException {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OverconstrainedError/constraint) */
     readonly constraint: string;
@@ -17786,7 +18258,11 @@ declare var OverconstrainedError: {
     new(constraint: string, message?: string): OverconstrainedError;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageRevealEvent) */
+/**
+ * Object is made available inside handler functions for the {{domxref("Window.pagereveal_event", "pagereveal")}} event.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageRevealEvent)
+ */
 interface PageRevealEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageRevealEvent/viewTransition) */
     readonly viewTransition: ViewTransition | null;
@@ -17797,7 +18273,11 @@ declare var PageRevealEvent: {
     new(type: string, eventInitDict?: PageRevealEventInit): PageRevealEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent) */
+/**
+ * Object is made available inside handler functions for the {{domxref("Window.pageswap_event", "pageswap")}} event.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent)
+ */
 interface PageSwapEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent/activation) */
     readonly activation: NavigationActivation | null;
@@ -17811,7 +18291,7 @@ declare var PageSwapEvent: {
 };
 
 /**
- * The PageTransitionEvent is fired when a document is being loaded or unloaded.
+ * Object is available inside handler functions for the pageshow and pagehide events, fired when a document is being loaded or unloaded.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageTransitionEvent)
  */
@@ -17839,7 +18319,7 @@ declare var PageTransitionEvent: {
 };
 
 /**
- * A PannerNode always has exactly one input and one output: the input can be mono or stereo but the output is always stereo (2 channels); you can't have panning effects without at least two audio channels!
+ * An audio-processing object that represents the location, direction, and behavior of an audio source signal in a simulated physical space. This AudioNode uses right-hand Cartesian coordinates to describe the source's _position_ as a vector and its _orientation_ as a 3D directional cone.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PannerNode)
  */
@@ -17979,7 +18459,11 @@ declare var Path2D: {
     new(path?: Path2D | string): Path2D;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress) */
+/**
+ * This Contact Picker API interface represents a physical address. Instances of this interface are retrieved from the address property of the objects returned by ContactsManager.getProperties().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress)
+ */
 interface PaymentAddress {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/addressLine) */
     readonly addressLine: ReadonlyArray<string>;
@@ -18011,6 +18495,7 @@ declare var PaymentAddress: {
 };
 
 /**
+ * This Payment Request API interface describes the {{domxref("PaymentRequest/paymentmethodchange_event", "paymentmethodchange")}} event which is fired by some payment handlers when the user switches payment instruments (e.g., a user selects a "store" card to make a purchase while using Apple Pay).
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentMethodChangeEvent)
@@ -18034,7 +18519,7 @@ interface PaymentRequestEventMap {
 }
 
 /**
- * This Payment Request API interface is the primary access point into the API, and lets web content and apps accept payments from the end user.
+ * The Payment Request API's PaymentRequest interface is the primary access point into the API, and lets web content and apps accept payments from the end user on behalf of the operator of the site or the publisher of the app.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest)
@@ -18092,7 +18577,7 @@ declare var PaymentRequest: {
 };
 
 /**
- * This Payment Request API interface enables a web page to update the details of a PaymentRequest in response to a user action.
+ * Used for events sent to a PaymentRequest instance when changes are made to shipping-related information for a pending PaymentRequest. Those events are:
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequestUpdateEvent)
@@ -18158,7 +18643,7 @@ interface PerformanceEventMap {
 }
 
 /**
- * Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API.
+ * Provides access to performance-related information for the current page.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance)
  */
@@ -18215,7 +18700,7 @@ declare var Performance: {
 };
 
 /**
- * Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image).
+ * Encapsulates a single performance metric that is part of the browser's performance timeline.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry)
  */
@@ -18237,7 +18722,11 @@ declare var PerformanceEntry: {
     new(): PerformanceEntry;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming) */
+/**
+ * This Event Timing API interface provides insights into the latency of certain event types triggered by user interaction.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming)
+ */
 interface PerformanceEventTiming extends PerformanceEntry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/cancelable) */
     readonly cancelable: boolean;
@@ -18257,7 +18746,7 @@ declare var PerformanceEventTiming: {
 };
 
 /**
- * PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline.
+ * PerformanceMark is an interface for PerformanceEntry objects with an {{domxref("PerformanceEntry.entryType","entryType")}} of "mark".
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark)
  */
@@ -18272,7 +18761,7 @@ declare var PerformanceMark: {
 };
 
 /**
- * PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline.
+ * PerformanceMeasure is an _abstract_ interface for PerformanceEntry objects with an {{domxref("PerformanceEntry.entryType","entryType")}} of "measure". Entries of this type are created by calling {{domxref("Performance.measure","performance.measure()")}} to add a _named_ DOMHighResTimeStamp (the _measure_) between two _marks_ to the browser's _performance timeline_.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure)
  */
@@ -18362,7 +18851,11 @@ declare var PerformanceNavigationTiming: {
     new(): PerformanceNavigationTiming;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver) */
+/**
+ * Used to observe performance measurement events and be notified of new {{domxref("PerformanceEntry","performance entries", '', 'true')}} as they are recorded in the browser's _performance timeline_.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver)
+ */
 interface PerformanceObserver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/disconnect) */
     disconnect(): void;
@@ -18379,7 +18872,11 @@ declare var PerformanceObserver: {
     readonly supportedEntryTypes: ReadonlyArray<string>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList) */
+/**
+ * A list of {{domxref("PerformanceEntry","performance events", '', 'true')}} that were explicitly observed via the {{domxref("PerformanceObserver.observe","observe()")}} method.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList)
+ */
 interface PerformanceObserverEntryList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList/getEntries) */
     getEntries(): PerformanceEntryList;
@@ -18394,7 +18891,11 @@ declare var PerformanceObserverEntryList: {
     new(): PerformanceObserverEntryList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming) */
+/**
+ * Provides timing information about "paint" (also called "render") operations during web page construction. "Paint" refers to conversion of the render tree to on-screen pixels.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
+ */
 interface PerformancePaintTiming extends PerformanceEntry {
 }
 
@@ -18404,7 +18905,7 @@ declare var PerformancePaintTiming: {
 };
 
 /**
- * Enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources. An application can use the timing metrics to determine, for example, the length of time it takes to fetch a specific resource, such as an XMLHttpRequest, <SVG>, image, or script.
+ * Enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources. An application can use the timing metrics to determine, for example, the length of time it takes to fetch a specific resource, such as an XMLHttpRequest, {{SVGElement("SVG","SVG element")}}, image, or script.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming)
  */
@@ -18456,7 +18957,11 @@ declare var PerformanceResourceTiming: {
     new(): PerformanceResourceTiming;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming) */
+/**
+ * Surfaces server metrics that are sent with the response in the Server-Timing HTTP header.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming)
+ */
 interface PerformanceServerTiming {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/description) */
     readonly description: string;
@@ -18474,7 +18979,7 @@ declare var PerformanceServerTiming: {
 };
 
 /**
- * A legacy interface kept for backwards compatibility and contains properties that offer performance timing information for various events which occur during the loading and use of the current page. You get a PerformanceTiming object describing your page using the window.performance.timing property.
+ * A legacy interface kept for backwards compatibility and contains properties that offer performance timing information for various events which occur during the loading and use of the current page. You get a PerformanceTiming object describing your page using the {{domxref("Performance.timing", "window.performance.timing")}} property.
  * @deprecated This interface is deprecated in the Navigation Timing Level 2 specification. Please use the PerformanceNavigationTiming interface instead.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming)
@@ -18621,7 +19126,7 @@ declare var PerformanceTiming: {
 };
 
 /**
- * PeriodicWave has no inputs or outputs; it is used to define custom oscillators when calling OscillatorNode.setPeriodicWave(). The PeriodicWave itself is created/returned by AudioContext.createPeriodicWave().
+ * A periodic waveform that can be used to shape the output of an OscillatorNode.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PeriodicWave)
  */
@@ -18637,7 +19142,11 @@ interface PermissionStatusEventMap {
     "change": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus) */
+/**
+ * This Permissions API interface provides the state of an object and an event handler for monitoring changes to said state.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus)
+ */
 interface PermissionStatus extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus/name) */
     readonly name: string;
@@ -18656,7 +19165,11 @@ declare var PermissionStatus: {
     new(): PermissionStatus;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions) */
+/**
+ * This Permissions API interface provides the core Permission API functionality, such as methods for querying and revoking permissions
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions)
+ */
 interface Permissions {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions/query) */
     query(permissionDesc: PermissionDescriptor): Promise<PermissionStatus>;
@@ -18667,7 +19180,11 @@ declare var Permissions: {
     new(): Permissions;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureEvent) */
+/**
+ * Picture-in-picture-related events, including {{domxref("HTMLVideoElement/enterpictureinpicture_event", "enterpictureinpicture")}}, {{domxref("HTMLVideoElement/leavepictureinpicture_event", "leavepictureinpicture")}} and {{domxref("PictureInPictureWindow/resize_event", "resize")}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureEvent)
+ */
 interface PictureInPictureEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureEvent/pictureInPictureWindow) */
     readonly pictureInPictureWindow: PictureInPictureWindow;
@@ -18682,7 +19199,11 @@ interface PictureInPictureWindowEventMap {
     "resize": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureWindow) */
+/**
+ * An object able to programmatically obtain the width and height and resize event of the floating video window.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureWindow)
+ */
 interface PictureInPictureWindow extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureWindow/height) */
     readonly height: number;
@@ -18745,7 +19266,7 @@ declare var Plugin: {
 };
 
 /**
- * Used to store a list of Plugin objects describing the available plugins; it's returned by the window.navigator.plugins property. The PluginArray is not a JavaScript array, but has the length property and supports accessing individual items using bracket notation (plugins[2]), as well as via item(index) and namedItem("name") methods.
+ * Used to store a list of Plugin objects; it's returned by the {{DOMxRef("Navigator.plugins", "navigator.plugins")}} property. The PluginArray is not a JavaScript array, but has the length property and supports accessing individual items using bracket notation (plugins[2]), as well as via item(index) and namedItem("name") methods.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PluginArray)
@@ -18814,7 +19335,7 @@ declare var PointerEvent: {
 };
 
 /**
- * PopStateEvent is an event handler for the popstate event on the window.
+ * PopStateEvent is an interface for the {{domxref("Window/popstate_event", "popstate")}} event.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent)
  */
@@ -18842,7 +19363,7 @@ interface PopoverInvokerElement {
 }
 
 /**
- * A processing instruction embeds application-specific instructions in XML which can be ignored by other applications that don't recognize them.
+ * A processing instruction; that is, a Node which embeds an instruction targeting a specific application but that can be ignored by any other applications which don't recognize the instruction.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProcessingInstruction)
  */
@@ -18858,7 +19379,7 @@ declare var ProcessingInstruction: {
 };
 
 /**
- * Events measuring progress of an underlying process, like an HTTP request (for an XMLHttpRequest, or the loading of the underlying resource of an <img>, <audio>, <video>, <style> or <link>).
+ * Events measuring progress of an underlying process, like an HTTP request (for an XMLHttpRequest, or the loading of the underlying resource of an img, audio, video, style or link).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent)
  */
@@ -18877,7 +19398,11 @@ declare var ProgressEvent: {
     new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent) */
+/**
+ * Events which are sent to the global script context when JavaScript Promises are rejected. These events are particularly useful for telemetry and debugging purposes.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent)
+ */
 interface PromiseRejectionEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise) */
     readonly promise: Promise<any>;
@@ -18891,6 +19416,7 @@ declare var PromiseRejectionEvent: {
 };
 
 /**
+ * Provides information about a public key / private key pair, which is a credential for logging in to a service using an un-phishable and data-breach resistant asymmetric key pair instead of a password. It inherits from Credential, and is part of the Web Authentication API extension to the Credential Management API.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential)
@@ -18946,7 +19472,7 @@ declare var PushManager: {
 };
 
 /**
- * This Push API interface provides a subcription's URL endpoint and allows unsubscription from a push service.
+ * This Push API interface provides a subscription's URL endpoint along with the public key and secrets that should be used for encrypting push messages to this subscription.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription)
@@ -18972,6 +19498,7 @@ declare var PushSubscription: {
 };
 
 /**
+ * Of the {{domxref('Push API','','',' ')}} represents the options associated with a push subscription.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscriptionOptions)
@@ -18988,7 +19515,11 @@ declare var PushSubscriptionOptions: {
     new(): PushSubscriptionOptions;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCCertificate) */
+/**
+ * This WebRTC API interface provides an object representing a certificate that an RTCPeerConnection uses to authenticate.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCCertificate)
+ */
 interface RTCCertificate {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCCertificate/expires) */
     readonly expires: EpochTimeStamp;
@@ -19005,7 +19536,11 @@ interface RTCDTMFSenderEventMap {
     "tonechange": RTCDTMFToneChangeEvent;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDTMFSender) */
+/**
+ * Provides a mechanism for transmitting DTMF codes on a WebRTC RTCPeerConnection. You gain access to the connection's RTCDTMFSender through the RTCRtpSender.dtmf property on the audio track you wish to send DTMF with.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDTMFSender)
+ */
 interface RTCDTMFSender extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDTMFSender/canInsertDTMF) */
     readonly canInsertDTMF: boolean;
@@ -19050,7 +19585,11 @@ interface RTCDataChannelEventMap {
     "open": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel) */
+/**
+ * A network channel which can be used for bidirectional peer-to-peer transfers of arbitrary data. Every data channel is associated with an RTCPeerConnection, and each peer connection can have up to a theoretical maximum of 65,534 data channels (the actual limit may vary from browser to browser).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel)
+ */
 interface RTCDataChannel extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/binaryType) */
     binaryType: BinaryType;
@@ -19104,7 +19643,11 @@ declare var RTCDataChannel: {
     new(): RTCDataChannel;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannelEvent) */
+/**
+ * The RTCDataChannelEvent interface
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannelEvent)
+ */
 interface RTCDataChannelEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannelEvent/channel) */
     readonly channel: RTCDataChannel;
@@ -19120,7 +19663,11 @@ interface RTCDtlsTransportEventMap {
     "statechange": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport) */
+/**
+ * Provides access to information about the Datagram Transport Layer Security (DTLS) transport over which a RTCPeerConnection's RTP and RTCP packets are sent and received by its RTCRtpSender and RTCRtpReceiver objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport)
+ */
 interface RTCDtlsTransport extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/iceTransport) */
     readonly iceTransport: RTCIceTransport;
@@ -19141,7 +19688,11 @@ declare var RTCDtlsTransport: {
     new(): RTCDtlsTransport;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame) */
+/**
+ * The RTCEncodedAudioFrame of the WebRTC API represents an encoded audio frame in the WebRTC receiver or sender pipeline, which may be modified using a WebRTC Encoded Transform.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame)
+ */
 interface RTCEncodedAudioFrame {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/data) */
     data: ArrayBuffer;
@@ -19156,7 +19707,11 @@ declare var RTCEncodedAudioFrame: {
     new(): RTCEncodedAudioFrame;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame) */
+/**
+ * The RTCEncodedVideoFrame of the WebRTC API represents an encoded video frame in the WebRTC receiver or sender pipeline, which may be modified using a WebRTC Encoded Transform.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame)
+ */
 interface RTCEncodedVideoFrame {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/data) */
     data: ArrayBuffer;
@@ -19173,7 +19728,11 @@ declare var RTCEncodedVideoFrame: {
     new(): RTCEncodedVideoFrame;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError) */
+/**
+ * An error which has occurred while handling WebRTC operations. It's based upon the standard DOMException interface that describes general DOM errors.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError)
+ */
 interface RTCError extends DOMException {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/errorDetail) */
     readonly errorDetail: RTCErrorDetailType;
@@ -19192,7 +19751,11 @@ declare var RTCError: {
     new(init: RTCErrorInit, message?: string): RTCError;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent) */
+/**
+ * The WebRTC API's RTCErrorEvent interface represents an error sent to a WebRTC object. It's based on the standard Event interface, but adds RTC-specific information describing the error, as shown below.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent)
+ */
 interface RTCErrorEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent/error) */
     readonly error: RTCError;
@@ -19204,7 +19767,7 @@ declare var RTCErrorEvent: {
 };
 
 /**
- * The RTCIceCandidate interface—part of the WebRTC API—represents a candidate Internet Connectivity Establishment (ICE) configuration which may be used to establish an RTCPeerConnection.
+ * The RTCIceCandidate interface—part of the WebRTC API—represents a candidate Interactive Connectivity Establishment (ICE) configuration which may be used to establish an RTCPeerConnection.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidate)
  */
@@ -19246,6 +19809,7 @@ declare var RTCIceCandidate: {
     new(candidateInitDict?: RTCIceCandidateInit): RTCIceCandidate;
 };
 
+/** The RTCIceCandidatePair dictionary describes a pair of ICE candidates which together comprise a description of a viable connection between two WebRTC endpoints. It is used as the return value from RTCIceTransport.getSelectedCandidatePair() to identify the currently-selected candidate pair identified by the ICE agent. */
 interface RTCIceCandidatePair {
     local: RTCIceCandidate;
     remote: RTCIceCandidate;
@@ -19299,7 +19863,7 @@ interface RTCPeerConnectionEventMap {
 }
 
 /**
- * A WebRTC connection between the local computer and a remote peer. It provides methods to connect to a remote peer, maintain and monitor the connection, and close the connection once it's no longer needed.
+ * A WebRTC connection between the local computer and a remote peer.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection)
  */
@@ -19403,7 +19967,11 @@ declare var RTCPeerConnection: {
     generateCertificate(keygenAlgorithm: AlgorithmIdentifier): Promise<RTCCertificate>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent) */
+/**
+ * The RTCPeerConnectionIceErrorEvent interface—based upon the Event interface—provides details pertaining to an ICE error announced by sending an {{domxref("RTCPeerConnection.icecandidateerror_event", "icecandidateerror")}} event to the RTCPeerConnection object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent)
+ */
 interface RTCPeerConnectionIceErrorEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/address) */
     readonly address: string | null;
@@ -19419,7 +19987,7 @@ declare var RTCPeerConnectionIceErrorEvent: {
 };
 
 /**
- * Events that occurs in relation to ICE candidates with the target, usually an RTCPeerConnection. Only one event is of this type: icecandidate.
+ * Events that occur in relation to ICE candidates with the target, usually an RTCPeerConnection.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceEvent)
  */
@@ -19434,7 +20002,7 @@ declare var RTCPeerConnectionIceEvent: {
 };
 
 /**
- * This WebRTC API interface manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection.
+ * This WebRTC API interface manages the reception and decoding of data for a MediaStreamTrack on an RTCPeerConnection.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver)
  */
@@ -19464,7 +20032,11 @@ declare var RTCRtpReceiver: {
     getCapabilities(kind: string): RTCRtpCapabilities | null;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransform) */
+/**
+ * This WebRTC API interface is used to insert a WebRTC Encoded Transform (a TransformStream running in a worker thread) into the WebRTC sender and receiver pipelines.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransform)
+ */
 interface RTCRtpScriptTransform {
 }
 
@@ -19506,7 +20078,11 @@ declare var RTCRtpSender: {
     getCapabilities(kind: string): RTCRtpCapabilities | null;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver) */
+/**
+ * The WebRTC interface RTCRtpTransceiver describes a permanent pairing of an RTCRtpSender and an RTCRtpReceiver, along with some shared state.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver)
+ */
 interface RTCRtpTransceiver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver/currentDirection) */
     readonly currentDirection: RTCRtpTransceiverDirection | null;
@@ -19533,7 +20109,11 @@ interface RTCSctpTransportEventMap {
     "statechange": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSctpTransport) */
+/**
+ * Provides information which describes a Stream Control Transmission Protocol (SCTP) transport. This provides information about limitations of the transport, but also provides a way to access the underlying Datagram Transport Layer Security (DTLS) transport over which SCTP packets for all of an RTCPeerConnection's data channels are sent and received.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSctpTransport)
+ */
 interface RTCSctpTransport extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSctpTransport/maxChannels) */
     readonly maxChannels: number | null;
@@ -19557,7 +20137,7 @@ declare var RTCSctpTransport: {
 };
 
 /**
- * One end of a connection—or potential connection—and how it's configured. Each RTCSessionDescription consists of a description type indicating which part of the offer/answer negotiation process it describes and of the SDP descriptor of the session.
+ * One end of a connection—or potential connection—and how it's configured. Each RTCSessionDescription consists of a description {{domxref("RTCSessionDescription.type", "type")}} indicating which part of the offer/answer negotiation process it describes and of the SDP descriptor of the session.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSessionDescription)
  */
@@ -19575,7 +20155,11 @@ declare var RTCSessionDescription: {
     new(descriptionInitDict: RTCSessionDescriptionInit): RTCSessionDescription;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCStatsReport) */
+/**
+ * This WebRTC API interface provides a statistics report for a RTCPeerConnection, RTCRtpSender, or RTCRtpReceiver.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCStatsReport)
+ */
 interface RTCStatsReport {
     forEach(callbackfn: (value: any, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
 }
@@ -19585,7 +20169,11 @@ declare var RTCStatsReport: {
     new(): RTCStatsReport;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTrackEvent) */
+/**
+ * The WebRTC API interface RTCTrackEvent represents the {{domxref("RTCPeerConnection.track_event", "track")}} event, which is sent when a new MediaStreamTrack is added to an RTCRtpReceiver which is part of the RTCPeerConnection.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTrackEvent)
+ */
 interface RTCTrackEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTrackEvent/receiver) */
     readonly receiver: RTCRtpReceiver;
@@ -19602,7 +20190,11 @@ declare var RTCTrackEvent: {
     new(type: string, eventInitDict: RTCTrackEventInit): RTCTrackEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RadioNodeList) */
+/**
+ * A collection of elements in a form returned by a call to HTMLFormControlsCollection.namedItem().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RadioNodeList)
+ */
 interface RadioNodeList extends NodeList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RadioNodeList/value) */
     value: string;
@@ -19695,7 +20287,11 @@ declare var Range: {
     readonly END_TO_START: 3;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController) */
+/**
+ * This Streams API interface represents a controller for a readable byte stream.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController)
+ */
 interface ReadableByteStreamController {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
     readonly byobRequest: ReadableStreamBYOBRequest | null;
@@ -19715,7 +20311,7 @@ declare var ReadableByteStreamController: {
 };
 
 /**
- * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object.
+ * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the {{domxref("Response.body", "body")}} property of a Response object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
@@ -19743,7 +20339,11 @@ declare var ReadableStream: {
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
+/**
+ * This Streams API interface defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader)
+ */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
@@ -19756,7 +20356,11 @@ declare var ReadableStreamBYOBReader: {
     new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest) */
+/**
+ * This Streams API interface represents a "pull request" for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest)
+ */
 interface ReadableStreamBYOBRequest {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view) */
     readonly view: ArrayBufferView | null;
@@ -19771,7 +20375,11 @@ declare var ReadableStreamBYOBRequest: {
     new(): ReadableStreamBYOBRequest;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController) */
+/**
+ * This Streams API interface represents a controller allowing control of a ReadableStream's state and internal queue. Default controllers are for streams that are not byte streams.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController)
+ */
 interface ReadableStreamDefaultController<R = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
@@ -19788,7 +20396,11 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader) */
+/**
+ * This Streams API interface represents a default reader that can be used to read stream data supplied from a network (such as a fetch request).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader)
+ */
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/read) */
     read(): Promise<ReadableStreamReadResult<R>>;
@@ -19814,7 +20426,11 @@ interface RemotePlaybackEventMap {
     "disconnect": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RemotePlayback) */
+/**
+ * Of the {{domxref('Remote Playback API','','',' ')}} allows the page to detect availability of remote playback devices, then connect to and control playing on these devices.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RemotePlayback)
+ */
 interface RemotePlayback extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RemotePlayback/connect_event) */
     onconnect: ((this: RemotePlayback, ev: Event) => any) | null;
@@ -19841,7 +20457,11 @@ declare var RemotePlayback: {
     new(): RemotePlayback;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report) */
+/**
+ * This Reporting API interface represents a single report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report)
+ */
 interface Report {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/body) */
     readonly body: ReportBody | null;
@@ -19857,7 +20477,11 @@ declare var Report: {
     new(): Report;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody) */
+/**
+ * Of the {{domxref('Reporting API','','',' ')}} represents the body of a report. Individual report types inherit from this interface, adding specific attributes relevant to the particular report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody)
+ */
 interface ReportBody {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody/toJSON) */
     toJSON(): any;
@@ -19868,7 +20492,11 @@ declare var ReportBody: {
     new(): ReportBody;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver) */
+/**
+ * This Reporting API interface allows you to collect and access reports.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver)
+ */
 interface ReportingObserver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver/disconnect) */
     disconnect(): void;
@@ -19976,7 +20604,11 @@ declare var Request: {
     new(input: RequestInfo | URL, init?: RequestInit): Request;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserver) */
+/**
+ * Reports changes to the dimensions of an {{domxref('Element')}}'s content or border box, or the bounding box of an {{domxref('SVGElement')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserver)
+ */
 interface ResizeObserver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserver/disconnect) */
     disconnect(): void;
@@ -19991,7 +20623,11 @@ declare var ResizeObserver: {
     new(callback: ResizeObserverCallback): ResizeObserver;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry) */
+/**
+ * The object passed to the {{domxref('ResizeObserver.ResizeObserver','ResizeObserver()')}} constructor's callback function, which allows you to access the new dimensions of the Element or SVGElement being observed.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry)
+ */
 interface ResizeObserverEntry {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry/borderBoxSize) */
     readonly borderBoxSize: ReadonlyArray<ResizeObserverSize>;
@@ -20010,7 +20646,11 @@ declare var ResizeObserverEntry: {
     new(): ResizeObserverEntry;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverSize) */
+/**
+ * This Resize Observer API interface is used by the ResizeObserverEntry interface to access the box sizing properties of the element being observed.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverSize)
+ */
 interface ResizeObserverSize {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverSize/blockSize) */
     readonly blockSize: number;
@@ -20059,7 +20699,7 @@ declare var Response: {
 };
 
 /**
- * Provides access to the properties of <a> element, as well as methods to manipulate them.
+ * Provides access to the properties of an a element, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
@@ -20081,7 +20721,7 @@ declare var SVGAElement: {
 };
 
 /**
- * Used to represent a value that can be an <angle> or <number> value. An SVGAngle reflected through the animVal attribute is always read only.
+ * Used to represent a value that can be an &lt;angle&gt; or &lt;number&gt; value.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle)
  */
@@ -20115,7 +20755,11 @@ declare var SVGAngle: {
     readonly SVG_ANGLETYPE_GRAD: 4;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimateElement) */
+/**
+ * Corresponds to the animate element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimateElement)
+ */
 interface SVGAnimateElement extends SVGAnimationElement {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20128,7 +20772,11 @@ declare var SVGAnimateElement: {
     new(): SVGAnimateElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimateMotionElement) */
+/**
+ * Corresponds to the animateMotion element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimateMotionElement)
+ */
 interface SVGAnimateMotionElement extends SVGAnimationElement {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20141,7 +20789,11 @@ declare var SVGAnimateMotionElement: {
     new(): SVGAnimateMotionElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimateTransformElement) */
+/**
+ * Corresponds to the animateTransform element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimateTransformElement)
+ */
 interface SVGAnimateTransformElement extends SVGAnimationElement {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -20155,7 +20807,7 @@ declare var SVGAnimateTransformElement: {
 };
 
 /**
- * Used for attributes of basic type <angle> which can be animated.
+ * Used for attributes of basic type \<angle> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle)
  */
@@ -20189,7 +20841,7 @@ declare var SVGAnimatedBoolean: {
 };
 
 /**
- * Used for attributes whose value must be a constant from a particular enumeration and which can be animated.
+ * Attribute values which are constants from a particular enumeration and which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedEnumeration)
  */
@@ -20206,7 +20858,7 @@ declare var SVGAnimatedEnumeration: {
 };
 
 /**
- * Used for attributes of basic type <integer> which can be animated.
+ * Used for attributes of basic type \<integer> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger)
  */
@@ -20223,7 +20875,7 @@ declare var SVGAnimatedInteger: {
 };
 
 /**
- * Used for attributes of basic type <length> which can be animated.
+ * Attributes of type \<length> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedLength)
  */
@@ -20240,7 +20892,7 @@ declare var SVGAnimatedLength: {
 };
 
 /**
- * Used for attributes of type SVGLengthList which can be animated.
+ * Used for attributes of type {{ domxref("SVGLengthList") }} which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedLengthList)
  */
@@ -20257,7 +20909,7 @@ declare var SVGAnimatedLengthList: {
 };
 
 /**
- * Used for attributes of basic type <Number> which can be animated.
+ * Used for attributes of basic type \<Number> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedNumber)
  */
@@ -20298,7 +20950,7 @@ interface SVGAnimatedPoints {
 }
 
 /**
- * Used for attributes of type SVGPreserveAspectRatio which can be animated.
+ * Used for attributes of type {{ domxref("SVGPreserveAspectRatio") }} which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedPreserveAspectRatio)
  */
@@ -20315,7 +20967,7 @@ declare var SVGAnimatedPreserveAspectRatio: {
 };
 
 /**
- * Used for attributes of basic SVGRect which can be animated.
+ * Used for attributes of basic {{ domxref("SVGRect") }} which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect)
  */
@@ -20332,7 +20984,7 @@ declare var SVGAnimatedRect: {
 };
 
 /**
- * The SVGAnimatedString interface represents string attributes which can be animated from each SVG declaration. You need to create SVG attribute before doing anything else, everything should be declared inside this.
+ * String attributes which can be animated from each SVG declaration. You need to create SVG attribute before doing anything else, everything should be declared inside this.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedString)
  */
@@ -20365,7 +21017,11 @@ declare var SVGAnimatedTransformList: {
     new(): SVGAnimatedTransformList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimationElement) */
+/**
+ * The base interface for all of the animation element interfaces: SVGAnimateElement, SVGSetElement, SVGAnimateColorElement, SVGAnimateMotionElement and SVGAnimateTransformElement.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimationElement)
+ */
 interface SVGAnimationElement extends SVGElement, SVGTests {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimationElement/targetElement) */
     readonly targetElement: SVGElement | null;
@@ -20395,7 +21051,7 @@ declare var SVGAnimationElement: {
 };
 
 /**
- * An interface for the <circle> element. The circle element is defined by the cx and cy attributes that denote the coordinates of the centre of the circle.
+ * An interface for the circle element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGCircleElement)
  */
@@ -20418,7 +21074,7 @@ declare var SVGCircleElement: {
 };
 
 /**
- * Provides access to the properties of <clipPath> elements, as well as methods to manipulate them.
+ * Provides access to the properties of clipPath elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGClipPathElement)
  */
@@ -20482,7 +21138,7 @@ declare var SVGComponentTransferFunctionElement: {
 };
 
 /**
- * Corresponds to the <defs> element.
+ * Corresponds to the defs element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGDefsElement)
  */
@@ -20499,7 +21155,7 @@ declare var SVGDefsElement: {
 };
 
 /**
- * Corresponds to the <desc> element.
+ * Corresponds to the desc element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGDescElement)
  */
@@ -20542,7 +21198,7 @@ declare var SVGElement: {
 };
 
 /**
- * Provides access to the properties of <ellipse> elements.
+ * Provides access to the properties of ellipse elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGEllipseElement)
  */
@@ -20567,7 +21223,7 @@ declare var SVGEllipseElement: {
 };
 
 /**
- * Corresponds to the <feBlend> element.
+ * Corresponds to the feBlend element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEBlendElement)
  */
@@ -20624,7 +21280,7 @@ declare var SVGFEBlendElement: {
 };
 
 /**
- * Corresponds to the <feColorMatrix> element.
+ * Corresponds to the feColorMatrix element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEColorMatrixElement)
  */
@@ -20657,7 +21313,7 @@ declare var SVGFEColorMatrixElement: {
 };
 
 /**
- * Corresponds to the <feComponentTransfer> element.
+ * Corresponds to the feComponentTransfer element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEComponentTransferElement)
  */
@@ -20676,7 +21332,7 @@ declare var SVGFEComponentTransferElement: {
 };
 
 /**
- * Corresponds to the <feComposite> element.
+ * Corresponds to the feComposite element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFECompositeElement)
  */
@@ -20721,7 +21377,7 @@ declare var SVGFECompositeElement: {
 };
 
 /**
- * Corresponds to the <feConvolveMatrix> element.
+ * Corresponds to the feConvolveMatrix element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEConvolveMatrixElement)
  */
@@ -20770,7 +21426,7 @@ declare var SVGFEConvolveMatrixElement: {
 };
 
 /**
- * Corresponds to the <feDiffuseLighting> element.
+ * Corresponds to the feDiffuseLighting element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDiffuseLightingElement)
  */
@@ -20797,7 +21453,7 @@ declare var SVGFEDiffuseLightingElement: {
 };
 
 /**
- * Corresponds to the <feDisplacementMap> element.
+ * Corresponds to the feDisplacementMap element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDisplacementMapElement)
  */
@@ -20834,7 +21490,7 @@ declare var SVGFEDisplacementMapElement: {
 };
 
 /**
- * Corresponds to the <feDistantLight> element.
+ * Corresponds to the feDistantLight element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDistantLightElement)
  */
@@ -20854,7 +21510,11 @@ declare var SVGFEDistantLightElement: {
     new(): SVGFEDistantLightElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDropShadowElement) */
+/**
+ * Corresponds to the feDropShadow element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDropShadowElement)
+ */
 interface SVGFEDropShadowElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEDropShadowElement/dx) */
     readonly dx: SVGAnimatedNumber;
@@ -20880,7 +21540,7 @@ declare var SVGFEDropShadowElement: {
 };
 
 /**
- * Corresponds to the <feFlood> element.
+ * Corresponds to the feFlood element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEFloodElement)
  */
@@ -20897,7 +21557,7 @@ declare var SVGFEFloodElement: {
 };
 
 /**
- * Corresponds to the <feFuncA> element.
+ * Corresponds to the feFuncA element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEFuncAElement)
  */
@@ -20914,7 +21574,7 @@ declare var SVGFEFuncAElement: {
 };
 
 /**
- * Corresponds to the <feFuncB> element.
+ * Corresponds to the feFuncB element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEFuncBElement)
  */
@@ -20931,7 +21591,7 @@ declare var SVGFEFuncBElement: {
 };
 
 /**
- * Corresponds to the <feFuncG> element.
+ * Corresponds to the feFuncG element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEFuncGElement)
  */
@@ -20948,7 +21608,7 @@ declare var SVGFEFuncGElement: {
 };
 
 /**
- * Corresponds to the <feFuncR> element.
+ * Corresponds to the feFuncR element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEFuncRElement)
  */
@@ -20965,7 +21625,7 @@ declare var SVGFEFuncRElement: {
 };
 
 /**
- * Corresponds to the <feGaussianBlur> element.
+ * Corresponds to the feGaussianBlur element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEGaussianBlurElement)
  */
@@ -20990,7 +21650,7 @@ declare var SVGFEGaussianBlurElement: {
 };
 
 /**
- * Corresponds to the <feImage> element.
+ * Corresponds to the feImage element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEImageElement)
  */
@@ -21009,7 +21669,7 @@ declare var SVGFEImageElement: {
 };
 
 /**
- * Corresponds to the <feMerge> element.
+ * Corresponds to the feMerge element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMergeElement)
  */
@@ -21026,7 +21686,7 @@ declare var SVGFEMergeElement: {
 };
 
 /**
- * Corresponds to the <feMergeNode> element.
+ * Corresponds to the feMergeNode element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMergeNodeElement)
  */
@@ -21045,7 +21705,7 @@ declare var SVGFEMergeNodeElement: {
 };
 
 /**
- * Corresponds to the <feMorphology> element.
+ * Corresponds to the feMorphology element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEMorphologyElement)
  */
@@ -21076,7 +21736,7 @@ declare var SVGFEMorphologyElement: {
 };
 
 /**
- * Corresponds to the <feOffset> element.
+ * Corresponds to the feOffset element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEOffsetElement)
  */
@@ -21099,7 +21759,7 @@ declare var SVGFEOffsetElement: {
 };
 
 /**
- * Corresponds to the <fePointLight> element.
+ * Corresponds to the fePointLight element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFEPointLightElement)
  */
@@ -21122,7 +21782,7 @@ declare var SVGFEPointLightElement: {
 };
 
 /**
- * Corresponds to the <feSpecularLighting> element.
+ * Corresponds to the feSpecularLighting element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement)
  */
@@ -21149,7 +21809,7 @@ declare var SVGFESpecularLightingElement: {
 };
 
 /**
- * Corresponds to the <feSpotLight> element.
+ * Corresponds to the feSpotLight element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpotLightElement)
  */
@@ -21182,7 +21842,7 @@ declare var SVGFESpotLightElement: {
 };
 
 /**
- * Corresponds to the <feTile> element.
+ * Corresponds to the feTile element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFETileElement)
  */
@@ -21201,7 +21861,7 @@ declare var SVGFETileElement: {
 };
 
 /**
- * Corresponds to the <feTurbulence> element.
+ * Corresponds to the feTurbulence element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFETurbulenceElement)
  */
@@ -21242,7 +21902,7 @@ declare var SVGFETurbulenceElement: {
 };
 
 /**
- * Provides access to the properties of <filter> elements, as well as methods to manipulate them.
+ * Provides access to the properties of filter elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFilterElement)
  */
@@ -21291,7 +21951,7 @@ interface SVGFitToViewBox {
 }
 
 /**
- * Provides access to the properties of <foreignObject> elements, as well as methods to manipulate them.
+ * Provides access to the properties of foreignObject elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGForeignObjectElement)
  */
@@ -21316,7 +21976,7 @@ declare var SVGForeignObjectElement: {
 };
 
 /**
- * Corresponds to the <g> element.
+ * Corresponds to the g element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGElement)
  */
@@ -21332,7 +21992,11 @@ declare var SVGGElement: {
     new(): SVGGElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGeometryElement) */
+/**
+ * SVG elements whose rendering is defined by geometry with an equivalent path, and which can be filled and stroked. This includes paths and the basic shapes.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGeometryElement)
+ */
 interface SVGGeometryElement extends SVGGraphicsElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGGeometryElement/pathLength) */
     readonly pathLength: SVGAnimatedNumber;
@@ -21412,7 +22076,7 @@ declare var SVGGraphicsElement: {
 };
 
 /**
- * Corresponds to the <image> element.
+ * Corresponds to the image element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGImageElement)
  */
@@ -21440,7 +22104,7 @@ declare var SVGImageElement: {
 };
 
 /**
- * Correspond to the <length> basic data type.
+ * Correspond to the \<length> basic data type.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLength)
  */
@@ -21487,7 +22151,7 @@ declare var SVGLength: {
 };
 
 /**
- * The SVGLengthList defines a list of SVGLength objects.
+ * A list of {{ domxref("SVGLength") }} objects. It is used for the {{domxref("SVGAnimatedLengthList.baseVal", "baseVal")}} and {{domxref("SVGAnimatedLengthList.animVal", "animVal")}} properties of SVGAnimatedLengthList.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList)
  */
@@ -21519,7 +22183,7 @@ declare var SVGLengthList: {
 };
 
 /**
- * Provides access to the properties of <line> elements, as well as methods to manipulate them.
+ * Provides access to the properties of {{ SVGElement("line") }} elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLineElement)
  */
@@ -21544,7 +22208,7 @@ declare var SVGLineElement: {
 };
 
 /**
- * Corresponds to the <linearGradient> element.
+ * Corresponds to the linearGradient element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLinearGradientElement)
  */
@@ -21568,7 +22232,11 @@ declare var SVGLinearGradientElement: {
     new(): SVGLinearGradientElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMPathElement) */
+/**
+ * Corresponds to the mpath element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMPathElement)
+ */
 interface SVGMPathElement extends SVGElement, SVGURIReference {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -21581,7 +22249,11 @@ declare var SVGMPathElement: {
     new(): SVGMPathElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMarkerElement) */
+/**
+ * Provides access to the properties of marker elements, as well as methods to manipulate them. The marker element defines the graphics used for drawing marks on a shape.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMarkerElement)
+ */
 interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMarkerElement/markerHeight) */
     readonly markerHeight: SVGAnimatedLength;
@@ -21625,7 +22297,7 @@ declare var SVGMarkerElement: {
 };
 
 /**
- * Provides access to the properties of <mask> elements, as well as methods to manipulate them.
+ * Provides access to the properties of mask elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement)
  */
@@ -21654,7 +22326,7 @@ declare var SVGMaskElement: {
 };
 
 /**
- * Corresponds to the <metadata> element.
+ * Corresponds to the metadata element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMetadataElement)
  */
@@ -21671,7 +22343,7 @@ declare var SVGMetadataElement: {
 };
 
 /**
- * Corresponds to the <number> basic data type.
+ * Corresponds to the &lt;number&gt; basic data type.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumber)
  */
@@ -21686,7 +22358,7 @@ declare var SVGNumber: {
 };
 
 /**
- * The SVGNumberList defines a list of SVGNumber objects.
+ * A list of numbers.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList)
  */
@@ -21718,7 +22390,7 @@ declare var SVGNumberList: {
 };
 
 /**
- * Corresponds to the <path> element.
+ * Corresponds to the path element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPathElement)
  */
@@ -21735,7 +22407,7 @@ declare var SVGPathElement: {
 };
 
 /**
- * Corresponds to the <pattern> element.
+ * Corresponds to the pattern element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPatternElement)
  */
@@ -21765,7 +22437,11 @@ declare var SVGPatternElement: {
     new(): SVGPatternElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList) */
+/**
+ * A list of SVGPoint objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList)
+ */
 interface SVGPointList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPointList/length) */
     readonly length: number;
@@ -21794,7 +22470,7 @@ declare var SVGPointList: {
 };
 
 /**
- * Provides access to the properties of <polygon> elements, as well as methods to manipulate them.
+ * Provides access to the properties of polygon elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPolygonElement)
  */
@@ -21811,7 +22487,7 @@ declare var SVGPolygonElement: {
 };
 
 /**
- * Provides access to the properties of <polyline> elements, as well as methods to manipulate them.
+ * Provides access to the properties of polyline elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPolylineElement)
  */
@@ -21828,7 +22504,7 @@ declare var SVGPolylineElement: {
 };
 
 /**
- * Corresponds to the preserveAspectRatio attribute, which is available for some of SVG's elements.
+ * Corresponds to the {{ SVGAttr("preserveAspectRatio") }} attribute, which is available for some of SVG's elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPreserveAspectRatio)
  */
@@ -21873,7 +22549,7 @@ declare var SVGPreserveAspectRatio: {
 };
 
 /**
- * Corresponds to the <RadialGradient> element.
+ * Corresponds to the RadialGradient element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement)
  */
@@ -21901,7 +22577,7 @@ declare var SVGRadialGradientElement: {
 };
 
 /**
- * Provides access to the properties of <rect> elements, as well as methods to manipulate them.
+ * Provides access to the properties of rect elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRectElement)
  */
@@ -21933,7 +22609,7 @@ interface SVGSVGElementEventMap extends SVGElementEventMap, WindowEventHandlersE
 }
 
 /**
- * Provides access to the properties of <svg> elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices.
+ * Provides access to the properties of svg elements, as well as methods to manipulate them. This interface contains also various miscellaneous commonly-used utility methods, such as matrix operations and the ability to control the time of redraw on visual rendering devices.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement)
  */
@@ -22006,7 +22682,7 @@ declare var SVGSVGElement: {
 };
 
 /**
- * Corresponds to the SVG <script> element.
+ * Corresponds to the SVG script element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGScriptElement)
  */
@@ -22024,7 +22700,11 @@ declare var SVGScriptElement: {
     new(): SVGScriptElement;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSetElement) */
+/**
+ * Corresponds to the set element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSetElement)
+ */
 interface SVGSetElement extends SVGAnimationElement {
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSetElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -22038,7 +22718,7 @@ declare var SVGSetElement: {
 };
 
 /**
- * Corresponds to the <stop> element.
+ * Corresponds to the stop element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStopElement)
  */
@@ -22057,7 +22737,7 @@ declare var SVGStopElement: {
 };
 
 /**
- * The SVGStringList defines a list of DOMString objects.
+ * A list of strings.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStringList)
  */
@@ -22089,7 +22769,7 @@ declare var SVGStringList: {
 };
 
 /**
- * Corresponds to the SVG <style> element.
+ * Corresponds to the SVG style element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement)
  */
@@ -22117,7 +22797,7 @@ declare var SVGStyleElement: {
 };
 
 /**
- * Corresponds to the <switch> element.
+ * Corresponds to the switch element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSwitchElement)
  */
@@ -22134,7 +22814,7 @@ declare var SVGSwitchElement: {
 };
 
 /**
- * Corresponds to the <symbol> element.
+ * Corresponds to the symbol element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSymbolElement)
  */
@@ -22151,7 +22831,7 @@ declare var SVGSymbolElement: {
 };
 
 /**
- * A <tspan> element.
+ * A tspan element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTSpanElement)
  */
@@ -22175,7 +22855,7 @@ interface SVGTests {
 }
 
 /**
- * Implemented by elements that support rendering child text content. It is inherited by various text-related interfaces, such as SVGTextElement, SVGTSpanElement, SVGTRefElement, SVGAltGlyphElement and SVGTextPathElement.
+ * Implemented by elements that support rendering child text content. It is inherited by various text-related interfaces, such as SVGTextElement, SVGTSpanElement, SVGTRefElement, and SVGTextPathElement.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextContentElement)
  */
@@ -22220,7 +22900,7 @@ declare var SVGTextContentElement: {
 };
 
 /**
- * Corresponds to the <text> elements.
+ * Corresponds to the text elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextElement)
  */
@@ -22237,7 +22917,7 @@ declare var SVGTextElement: {
 };
 
 /**
- * Corresponds to the <textPath> element.
+ * Corresponds to the textPath element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPathElement)
  */
@@ -22272,7 +22952,7 @@ declare var SVGTextPathElement: {
 };
 
 /**
- * Implemented by elements that support attributes that position individual text glyphs. It is inherited by SVGTextElement, SVGTSpanElement, SVGTRefElement and SVGAltGlyphElement.
+ * Implemented by elements that support attributes that position individual text glyphs. It is inherited by SVGTextElement, SVGTSpanElement, and SVGTRefElement.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTextPositioningElement)
  */
@@ -22298,7 +22978,7 @@ declare var SVGTextPositioningElement: {
 };
 
 /**
- * Corresponds to the <title> element.
+ * Corresponds to the title element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTitleElement)
  */
@@ -22315,7 +22995,7 @@ declare var SVGTitleElement: {
 };
 
 /**
- * SVGTransform is the interface for one of the component transformations within an SVGTransformList; thus, an SVGTransform object corresponds to a single component (e.g., scale(…) or matrix(…)) within a transform attribute.
+ * SVGTransform is the interface for one of the component transformations within an {{ domxref("SVGTransformList") }}; thus, an SVGTransform object corresponds to a single component (e.g., scale(…) or matrix(…)) within a {{ SVGAttr("transform") }} attribute.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransform)
  */
@@ -22360,7 +23040,7 @@ declare var SVGTransform: {
 };
 
 /**
- * The SVGTransformList defines a list of SVGTransform objects.
+ * The SVGTransformList defines a list of {{ domxref("SVGTransform") }} objects.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGTransformList)
  */
@@ -22420,7 +23100,7 @@ declare var SVGUnitTypes: {
 };
 
 /**
- * Corresponds to the <use> element.
+ * Corresponds to the use element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGUseElement)
  */
@@ -22445,7 +23125,7 @@ declare var SVGUseElement: {
 };
 
 /**
- * Provides access to the properties of <view> elements, as well as methods to manipulate them.
+ * Provides access to the properties of view elements, as well as methods to manipulate them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGViewElement)
  */
@@ -22492,7 +23172,11 @@ interface ScreenOrientationEventMap {
     "change": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation) */
+/**
+ * This Screen Orientation API interface provides information about the current orientation of the document.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation)
+ */
 interface ScreenOrientation extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/angle) */
     readonly angle: number;
@@ -22549,7 +23233,7 @@ declare var ScriptProcessorNode: {
 };
 
 /**
- * Inherits from Event, and represents the event object of an event sent on a document or worker when its content security policy is violated.
+ * Inherits from Event, and represents the event object of a securitypolicyviolation event sent on an {{domxref("Element/securitypolicyviolation_event", "Element")}}, {{domxref("Document/securitypolicyviolation_event", "Document")}}, or {{domxref("WorkerGlobalScope/securitypolicyviolation_event", "worker","","nocode")}} when its Content Security Policy (CSP) is violated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent)
  */
@@ -22586,7 +23270,7 @@ declare var SecurityPolicyViolationEvent: {
 };
 
 /**
- * A Selection object represents the range of text selected by the user or the current position of the caret. To obtain a Selection object for examination or modification, call Window.getSelection().
+ * The range of text selected by the user or the current position of the caret. Each document is associated with a unique selection object, which can be retrieved by document.getSelection() or window.getSelection() and then be examined and modified.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection)
  */
@@ -22650,7 +23334,7 @@ interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
 }
 
 /**
- * This ServiceWorker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object.
+ * This Service Worker API interface provides a reference to a service worker. Multiple {{glossary("browsing context", "browsing contexts")}} (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker)
@@ -22683,7 +23367,7 @@ interface ServiceWorkerContainerEventMap {
 }
 
 /**
- * The ServiceWorkerContainer interface of the ServiceWorker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations.
+ * This Service Worker API interface provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer)
@@ -22723,7 +23407,7 @@ interface ServiceWorkerRegistrationEventMap {
 }
 
 /**
- * This ServiceWorker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin.
+ * This Service Worker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration)
@@ -22768,7 +23452,11 @@ interface ShadowRootEventMap {
     "slotchange": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot) */
+/**
+ * This Shadow DOM API interface is the root node of a DOM subtree that is rendered separately from a document's main DOM tree.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot)
+ */
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/clonable) */
     readonly clonable: boolean;
@@ -22801,7 +23489,11 @@ declare var ShadowRoot: {
     new(): ShadowRoot;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorker) */
+/**
+ * A specific kind of worker that can be _accessed_ from several browsing contexts, such as several windows, iframes or even workers. They implement an interface different than dedicated workers and have a different global scope, SharedWorkerGlobalScope.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorker)
+ */
 interface SharedWorker extends EventTarget, AbstractWorker {
     /**
      * Returns sharedWorker's MessagePort object which can be used to communicate with the global environment.
@@ -22834,7 +23526,7 @@ interface SourceBufferEventMap {
 }
 
 /**
- * A chunk of media to be passed into an HTMLMediaElement and played, via a MediaSource object. This can be made up of one or several media segments.
+ * A chunk of media to be passed into an HTMLMediaElement and played, via a MediaSource object. This can be made up of one or several media segments.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer)
  */
@@ -22902,7 +23594,11 @@ declare var SourceBufferList: {
     new(): SourceBufferList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative) */
+/**
+ * This Web Speech API interface represents a single word that has been recognized by the speech recognition service.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative)
+ */
 interface SpeechRecognitionAlternative {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative/confidence) */
     readonly confidence: number;
@@ -22915,7 +23611,11 @@ declare var SpeechRecognitionAlternative: {
     new(): SpeechRecognitionAlternative;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResult) */
+/**
+ * This Web Speech API interface represents a single recognition match, which may contain multiple SpeechRecognitionAlternative objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResult)
+ */
 interface SpeechRecognitionResult {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResult/isFinal) */
     readonly isFinal: boolean;
@@ -22931,7 +23631,11 @@ declare var SpeechRecognitionResult: {
     new(): SpeechRecognitionResult;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResultList) */
+/**
+ * This Web Speech API interface represents a list of SpeechRecognitionResult objects, or a single one if results are being captured in {{domxref("SpeechRecognition.continuous","non-continuous")}} mode.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResultList)
+ */
 interface SpeechRecognitionResultList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResultList/length) */
     readonly length: number;
@@ -22984,7 +23688,11 @@ declare var SpeechSynthesis: {
     new(): SpeechSynthesis;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisErrorEvent) */
+/**
+ * This Web Speech API interface contains information about any errors that occur while processing SpeechSynthesisUtterance objects in the speech service.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisErrorEvent)
+ */
 interface SpeechSynthesisErrorEvent extends SpeechSynthesisEvent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisErrorEvent/error) */
     readonly error: SpeechSynthesisErrorCode;
@@ -23029,7 +23737,7 @@ interface SpeechSynthesisUtteranceEventMap {
 }
 
 /**
- * This Web Speech API interface represents a speech request. It contains the content the speech service should read and information about how to read it (e.g. language, pitch and volume.)
+ * This Web Speech API interface represents a speech request.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisUtterance)
  */
@@ -23072,7 +23780,7 @@ declare var SpeechSynthesisUtterance: {
 };
 
 /**
- * This Web Speech API interface represents a voice that the system supports. Every SpeechSynthesisVoice has its own relative speech service including information about language, name and URI.
+ * This Web Speech API interface represents a voice that the system supports.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisVoice)
  */
@@ -23094,7 +23802,11 @@ declare var SpeechSynthesisVoice: {
     new(): SpeechSynthesisVoice;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StaticRange) */
+/**
+ * The DOM StaticRange interface extends AbstractRange to provide a method to specify a range of content in the DOM whose contents don't update to reflect changes which occur within the DOM tree.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StaticRange)
+ */
 interface StaticRange extends AbstractRange {
 }
 
@@ -23104,7 +23816,7 @@ declare var StaticRange: {
 };
 
 /**
- * The pan property takes a unitless value between -1 (full left pan) and 1 (full right pan). This interface was introduced as a much simpler way to apply a simple panning effect than having to use a full PannerNode.
+ * This Web Audio API interface represents a simple stereo panner node that can be used to pan an audio stream left or right. It is an AudioNode audio-processing module that positions an incoming audio stream in a stereo image using a low-cost equal-power panning algorithm.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StereoPannerNode)
  */
@@ -23177,7 +23889,7 @@ declare var Storage: {
 };
 
 /**
- * A StorageEvent is sent to a window when a storage area it has access to is changed within the context of another document.
+ * Implemented by the {{domxref("Window/storage_event", "storage")}} event, which is
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageEvent)
  */
@@ -23226,6 +23938,7 @@ declare var StorageEvent: {
 };
 
 /**
+ * This Storage API interface provides an interface for managing persistence permissions and estimating available storage. You can get a reference to this interface using either navigator.storage or WorkerNavigator.storage.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager)
@@ -23252,7 +23965,11 @@ interface StyleMedia {
     matchMedium(mediaquery: string): boolean;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMap) */
+/**
+ * This CSS Typed Object Model API interface provides a representation of a CSS declaration block that is an alternative to CSSStyleDeclaration.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMap)
+ */
 interface StylePropertyMap extends StylePropertyMapReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMap/append) */
     append(property: string, ...values: (CSSStyleValue | string)[]): void;
@@ -23269,7 +23986,11 @@ declare var StylePropertyMap: {
     new(): StylePropertyMap;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly) */
+/**
+ * This CSS Typed Object Model API interface provides a read-only representation of a CSS declaration block that is an alternative to CSSStyleDeclaration. Retrieve an instance of this interface using {{domxref('Element.computedStyleMap','Element.computedStyleMap()')}}.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly)
+ */
 interface StylePropertyMapReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/size) */
     readonly size: number;
@@ -23316,7 +24037,7 @@ declare var StyleSheet: {
 };
 
 /**
- * A list of StyleSheet.
+ * A list of CSSStyleSheet objects. An instance of this object can be returned by Document.styleSheets.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StyleSheetList)
  */
@@ -23333,7 +24054,11 @@ declare var StyleSheetList: {
     new(): StyleSheetList;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubmitEvent) */
+/**
+ * The object used to represent an HTML form's {{domxref("HTMLFormElement.submit_event", "submit")}} event. This event is fired at the form when the form's submit action is invoked.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubmitEvent)
+ */
 interface SubmitEvent extends Event {
     /**
      * Returns the element representing the submit button that triggered the form submission, or null if the submission was not triggered by a button.
@@ -23349,7 +24074,7 @@ declare var SubmitEvent: {
 };
 
 /**
- * This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto).
+ * This Web Crypto API interface provides a number of low-level cryptographic functions.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto)
@@ -23393,7 +24118,7 @@ declare var SubtleCrypto: {
 };
 
 /**
- * The textual content of Element or Attr. If an element has no markup within its content, it has a single child implementing Text that contains the element's text. However, if the element contains markup, it is parsed into information items and Text nodes that form its children.
+ * A text {{domxref("Node", "node")}} in a DOM tree.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Text)
  */
@@ -23418,7 +24143,7 @@ declare var Text: {
 };
 
 /**
- * A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
+ * A decoder for a specific text encoding, such as UTF-8, ISO-8859-2, KOI8-R, GBK, etc. A decoder takes a stream of bytes as input and emits a stream of code points.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder)
  */
@@ -23467,7 +24192,11 @@ interface TextDecoderCommon {
     readonly ignoreBOM: boolean;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream) */
+/**
+ * Of the {{domxref('Encoding API','','',' ')}} converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
+ */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     readonly writable: WritableStream<BufferSource>;
@@ -23479,7 +24208,7 @@ declare var TextDecoderStream: {
 };
 
 /**
- * TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
+ * Takes a stream of code points as input and emits a stream of UTF-8 bytes.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder)
  */
@@ -23512,7 +24241,11 @@ interface TextEncoderCommon {
     readonly encoding: string;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
+/**
+ * Of the {{domxref('Encoding API','','',' ')}} converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
+ */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
@@ -23524,6 +24257,7 @@ declare var TextEncoderStream: {
 };
 
 /**
+ * A legacy UI event interface for reporting changes to text UI elements.
  * @deprecated
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent)
@@ -23550,7 +24284,7 @@ declare var TextEvent: {
 };
 
 /**
- * The dimensions of a piece of text in the canvas, as created by the CanvasRenderingContext2D.measureText() method.
+ * The dimensions of a piece of text in the canvas; a TextMetrics instance can be retrieved using the CanvasRenderingContext2D.measureText() method.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics)
  */
@@ -23639,7 +24373,7 @@ interface TextTrackEventMap {
 }
 
 /**
- * This interface also inherits properties from EventTarget.
+ * This WebVTT API interface represents a text track associated with a media element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrack)
  */
@@ -23729,7 +24463,7 @@ interface TextTrackCueEventMap {
 }
 
 /**
- * TextTrackCues represent a string of text that will be displayed for some duration of time on a TextTrack. This includes the start and end times that the cue will be displayed. A TextTrackCue cannot be used directly, instead one of the derived types (e.g. VTTCue) must be used.
+ * This WebVTT API interface is the abstract base class for the various derived cue types, such as VTTCue; you will work with these derived types rather than the base class.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackCue)
  */
@@ -23787,7 +24521,11 @@ declare var TextTrackCue: {
     new(): TextTrackCue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackCueList) */
+/**
+ * This WebVTT API interface is an array-like object that represents a dynamically updating list of TextTrackCue objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackCueList)
+ */
 interface TextTrackCueList {
     /**
      * Returns the number of cues in the list.
@@ -23817,7 +24555,11 @@ interface TextTrackListEventMap {
     "removetrack": TrackEvent;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList) */
+/**
+ * Used to represent a list of the text tracks defined for the associated video or audio element, with each track represented by a separate textTrack object in the list.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList)
+ */
 interface TextTrackList extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList/length) */
     readonly length: number;
@@ -23842,7 +24584,7 @@ declare var TextTrackList: {
 };
 
 /**
- * Used to represent a set of time ranges, primarily for the purpose of tracking which portions of media have been buffered when loading it for use by the <audio> and <video> elements.
+ * When loading a media resource for use by an audio or video element, the TimeRanges interface is used for representing the time ranges of the media resource that have been buffered, the time ranges that have been played, and the time ranges that are seekable.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TimeRanges)
  */
@@ -23876,7 +24618,11 @@ declare var TimeRanges: {
     new(): TimeRanges;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent) */
+/**
+ * An event notifying the user an Element's state has changed.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent)
+ */
 interface ToggleEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/newState) */
     readonly newState: string;
@@ -23927,7 +24673,7 @@ declare var Touch: {
 };
 
 /**
- * An event sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth.
+ * An UIEvent which is sent when the state of contacts with a touch-sensitive surface changes. This surface can be a touch screen or trackpad, for example. The event can describe one or more points of contact with the screen and includes support for detecting movement, addition and removal of contact points, and so forth.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent)
  */
@@ -23972,7 +24718,7 @@ declare var TouchList: {
 };
 
 /**
- * The TrackEvent interface, part of the HTML DOM specification, is used for events which represent changes to the set of available tracks on an HTML media element; these events are addtrack and removetrack.
+ * This HTML DOM API interface is used for events which represent changes to a set of available tracks on an HTML media element; these events are addtrack and removetrack.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrackEvent)
  */
@@ -23990,7 +24736,11 @@ declare var TrackEvent: {
     new(type: string, eventInitDict?: TrackEventInit): TrackEvent;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream) */
+/**
+ * This Streams API interface represents a concrete implementation of the pipe chain _transform stream_ concept.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream)
+ */
 interface TransformStream<I = any, O = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/readable) */
     readonly readable: ReadableStream<O>;
@@ -24003,7 +24753,11 @@ declare var TransformStream: {
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
+/**
+ * This Streams API interface provides methods to manipulate the associated ReadableStream and WritableStream.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController)
+ */
 interface TransformStreamDefaultController<O = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
@@ -24075,7 +24829,7 @@ declare var TreeWalker: {
 };
 
 /**
- * Simple user interface events.
+ * Simple user interface events. It is part of the UI Events API, which includes various event types and interfaces related to user interactions.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/UIEvent)
  */
@@ -24104,7 +24858,7 @@ declare var UIEvent: {
 };
 
 /**
- * The URL interface represents an object providing static methods used for creating object URLs.
+ * Used to parse, construct, normalize, and encode {{glossary("URL", "URLs")}}. It works by providing properties which allow you to easily read and modify the components of a URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
@@ -24154,7 +24908,11 @@ declare var URL: {
 type webkitURL = URL;
 declare var webkitURL: typeof URL;
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
+/**
+ * Utility methods to work with the query string of a URL.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams)
+ */
 interface URLSearchParams {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
     readonly size: number;
@@ -24206,7 +24964,11 @@ declare var URLSearchParams: {
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation) */
+/**
+ * Provides information about whether a user is currently interacting with the page, or has completed an interaction since page load.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation)
+ */
 interface UserActivation {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation/hasBeenActive) */
     readonly hasBeenActive: boolean;
@@ -24219,7 +24981,11 @@ declare var UserActivation: {
     new(): UserActivation;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTCue) */
+/**
+ * This WebVTT API interface represents a cue that can be added to the text track associated with a particular video (or other media).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTCue)
+ */
 interface VTTCue extends TextTrackCue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTCue/align) */
     align: AlignSetting;
@@ -24254,7 +25020,11 @@ declare var VTTCue: {
     new(startTime: number, endTime: number, text: string): VTTCue;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion) */
+/**
+ * This WebVTT API interface describes a portion of the video to render a VTTCue onto.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VTTRegion)
+ */
 interface VTTRegion {
     id: string;
     lines: number;
@@ -24272,7 +25042,7 @@ declare var VTTRegion: {
 };
 
 /**
- * The validity states that an element can be in, with respect to constraint validation. Together, they help explain why an element's value fails to validate, if it's not valid.
+ * The _validity states_ that an element can be in, with respect to constraint validation. Together, they help explain why an element's value fails to validate, if it's not valid.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState)
  */
@@ -24306,7 +25076,11 @@ declare var ValidityState: {
     new(): ValidityState;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace) */
+/**
+ * Of the {{domxref('WebCodecs API','','',' ')}} represents the color space of a video.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace)
+ */
 interface VideoColorSpace {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/fullRange) */
     readonly fullRange: boolean | null;
@@ -24330,6 +25104,7 @@ interface VideoDecoderEventMap {
 }
 
 /**
+ * Of the {{domxref('WebCodecs API','','','true')}} decodes chunks of video.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder)
@@ -24369,6 +25144,7 @@ interface VideoEncoderEventMap {
 }
 
 /**
+ * Of the {{domxref('WebCodecs API', '', '', 1)}} encodes VideoFrame objects into EncodedVideoChunks.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder)
@@ -24403,7 +25179,11 @@ declare var VideoEncoder: {
     isConfigSupported(config: VideoEncoderConfig): Promise<VideoEncoderSupport>;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame) */
+/**
+ * This Web Codecs API interface represents a frame of a video.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame)
+ */
 interface VideoFrame {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedHeight) */
     readonly codedHeight: number;
@@ -24466,7 +25246,11 @@ declare var VideoPlaybackQuality: {
     new(): VideoPlaybackQuality;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition) */
+/**
+ * Of the {{domxref("View Transition API", "View Transition API", "", "nocode")}} represents an active view transition, and provides functionality to react to the transition reaching different states (e.g. ready to run the animation, or animation finished) or skip the transition altogether.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition)
+ */
 interface ViewTransition {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/finished) */
     readonly finished: Promise<void>;
@@ -24498,7 +25282,11 @@ interface VisualViewportEventMap {
     "scroll": Event;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport) */
+/**
+ * Of the {{domxref("Visual Viewport API", "", "", "nocode")}} represents the visual viewport for a given window. For a page containing iframes, each iframe, as well as the containing page, will have a unique window object. Each window on a page will have a unique VisualViewport representing the properties associated with that window.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport)
+ */
 interface VisualViewport extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/height) */
     readonly height: number;
@@ -24597,11 +25385,7 @@ interface WEBGL_compressed_texture_pvrtc {
     readonly COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: 0x8C03;
 }
 
-/**
- * The WEBGL_compressed_texture_s3tc extension is part of the WebGL API and exposes four S3TC compressed texture formats.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc) */
 interface WEBGL_compressed_texture_s3tc {
     readonly COMPRESSED_RGB_S3TC_DXT1_EXT: 0x83F0;
     readonly COMPRESSED_RGBA_S3TC_DXT1_EXT: 0x83F1;
@@ -24617,11 +25401,7 @@ interface WEBGL_compressed_texture_s3tc_srgb {
     readonly COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT: 0x8C4F;
 }
 
-/**
- * The WEBGL_debug_renderer_info extension is part of the WebGL API and exposes two constants with information about the graphics driver for debugging purposes.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_renderer_info)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_renderer_info) */
 interface WEBGL_debug_renderer_info {
     readonly UNMASKED_VENDOR_WEBGL: 0x9245;
     readonly UNMASKED_RENDERER_WEBGL: 0x9246;
@@ -24633,11 +25413,7 @@ interface WEBGL_debug_shaders {
     getTranslatedShaderSource(shader: WebGLShader): string;
 }
 
-/**
- * The WEBGL_depth_texture extension is part of the WebGL API and defines 2D depth and depth-stencil textures.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_depth_texture)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_depth_texture) */
 interface WEBGL_depth_texture {
     readonly UNSIGNED_INT_24_8_WEBGL: 0x84FA;
 }
@@ -24703,6 +25479,7 @@ interface WEBGL_multi_draw {
 }
 
 /**
+ * This Screen Wake Lock API interface can be used to request a lock that prevents device screens from dimming or locking when an application needs to keep running.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WakeLock)
@@ -24722,6 +25499,7 @@ interface WakeLockSentinelEventMap {
 }
 
 /**
+ * This Screen Wake Lock API interface can be used to monitor the status of the platform screen wake lock, and manually release the lock when needed.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WakeLockSentinel)
@@ -24747,7 +25525,7 @@ declare var WakeLockSentinel: {
 };
 
 /**
- * A WaveShaperNode always has exactly one input and one output.
+ * A non-linear distorter.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WaveShaperNode)
  */
@@ -24763,7 +25541,11 @@ declare var WaveShaperNode: {
     new(context: BaseAudioContext, options?: WaveShaperOptions): WaveShaperNode;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext) */
+/**
+ * Provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML canvas element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
+ */
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
 }
 
@@ -25866,7 +26648,7 @@ declare var WebGLBuffer: {
 };
 
 /**
- * The WebContextEvent interface is part of the WebGL API and is an interface for an event that is generated in response to a status change to the WebGL rendering context.
+ * Part of the WebGL API and is an interface for an event that is generated in response to a status change to the WebGL rendering context.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLContextEvent)
  */
@@ -25906,7 +26688,11 @@ declare var WebGLProgram: {
     new(): WebGLProgram;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery) */
+/**
+ * Part of the WebGL 2 API and provides ways to asynchronously query for information. By default, occlusion queries and primitive queries are available.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery)
+ */
 interface WebGLQuery {
 }
 
@@ -25916,7 +26702,7 @@ declare var WebGLQuery: {
 };
 
 /**
- * Part of the WebGL API and represents a buffer that can contain an image, or can be source or target of an rendering operation.
+ * Part of the WebGL API and represents a buffer that can contain an image, or that can be a source or target of a rendering operation.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderbuffer)
  */
@@ -25929,7 +26715,7 @@ declare var WebGLRenderbuffer: {
 };
 
 /**
- * Provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML <canvas> element.
+ * Provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML canvas element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
  */
@@ -26860,7 +27646,11 @@ interface WebGLRenderingContextOverloads {
     uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler) */
+/**
+ * Part of the WebGL 2 API and stores sampling parameters for WebGLTexture access inside of a shader.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler)
+ */
 interface WebGLSampler {
 }
 
@@ -26901,7 +27691,11 @@ declare var WebGLShaderPrecisionFormat: {
     new(): WebGLShaderPrecisionFormat;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync) */
+/**
+ * Part of the WebGL 2 API and is used to synchronize activities between the GPU and the application.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync)
+ */
 interface WebGLSync {
 }
 
@@ -26923,7 +27717,11 @@ declare var WebGLTexture: {
     new(): WebGLTexture;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback) */
+/**
+ * Part of the WebGL 2 API and enables transform feedback, which is the process of capturing primitives generated by vertex processing. It allows to preserve the post-transform rendering state of an object and resubmit this data multiple times.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback)
+ */
 interface WebGLTransformFeedback {
 }
 
@@ -26945,7 +27743,11 @@ declare var WebGLUniformLocation: {
     new(): WebGLUniformLocation;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject) */
+/**
+ * Part of the WebGL 2 API, represents vertex array objects (VAOs) pointing to vertex array data, and provides names for different sets of vertex data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject)
+ */
 interface WebGLVertexArrayObject {
 }
 
@@ -27051,6 +27853,7 @@ declare var WebSocket: {
 };
 
 /**
+ * Of the {{domxref("WebTransport API", "WebTransport API", "", "nocode")}} provides functionality to enable a user agent to connect to an HTTP/3 server, initiate reliable and unreliable transport in either or both directions, and close the connection once it is no longer needed.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
@@ -27080,6 +27883,7 @@ declare var WebTransport: {
 };
 
 /**
+ * Of the {{domxref("WebTransport API", "WebTransport API", "", "nocode")}} represents a bidirectional stream created by a server or a client that can be used for reliable transport. Provides access to a WebTransportReceiveStream for reading incoming data, and a WebTransportSendStream for writing outgoing data.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportBidirectionalStream)
@@ -27097,6 +27901,7 @@ declare var WebTransportBidirectionalStream: {
 };
 
 /**
+ * Of the {{domxref("WebTransport API", "WebTransport API", "", "nocode")}} represents a duplex stream that can be used for unreliable transport of datagrams between client and server. Provides access to a ReadableStream for reading incoming datagrams, a WritableStream for writing outgoing datagrams, and various settings and statistics related to the stream.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream)
@@ -27124,6 +27929,7 @@ declare var WebTransportDatagramDuplexStream: {
 };
 
 /**
+ * Of the {{domxref("WebTransport API", "WebTransport API", "", "nocode")}} represents an error related to the API, which can arise from server errors, network connection problems, or client-initiated abort operations (for example, arising from a WritableStream.abort() call).
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportError)
@@ -27584,7 +28390,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEvent
 }
 
 /**
- * This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread.
+ * This Web Workers API interface represents a background task that can be created via script, which can send messages back to its creator.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
@@ -27614,6 +28420,7 @@ declare var Worker: {
 };
 
 /**
+ * A lightweight version of Web Workers and gives developers access to low-level parts of the rendering pipeline.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worklet)
@@ -27637,7 +28444,7 @@ declare var Worklet: {
 };
 
 /**
- * This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing.
+ * This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream)
  */
@@ -27658,7 +28465,7 @@ declare var WritableStream: {
 };
 
 /**
- * This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
+ * This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
  */
@@ -27675,7 +28482,7 @@ declare var WritableStreamDefaultController: {
 };
 
 /**
- * This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink.
+ * This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the writer to the WritableStream ensuring that no other streams can write to the underlying sink.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter)
  */
@@ -27723,7 +28530,7 @@ interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
 }
 
 /**
- * Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+ * XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
  */
@@ -27880,7 +28687,11 @@ interface XMLHttpRequestEventTargetEventMap {
     "timeout": ProgressEvent<XMLHttpRequestEventTarget>;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget) */
+/**
+ * XMLHttpRequestEventTarget is the interface that describes the event handlers shared on XMLHttpRequest and XMLHttpRequestUpload.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget)
+ */
 interface XMLHttpRequestEventTarget extends EventTarget {
     onabort: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
     onerror: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
@@ -27900,7 +28711,11 @@ declare var XMLHttpRequestEventTarget: {
     new(): XMLHttpRequestEventTarget;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload) */
+/**
+ * The upload process for a specific XMLHttpRequest. It is an _opaque_ object that represents the underlying, browser-dependent, upload process. It is an XMLHttpRequestEventTarget and can be obtained by calling XMLHttpRequest.upload.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload)
+ */
 interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
     addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -27914,7 +28729,7 @@ declare var XMLHttpRequestUpload: {
 };
 
 /**
- * Provides the serializeToString() method to construct an XML string representing a DOM tree.
+ * Provides the {{domxref("XMLSerializer.serializeToString", "serializeToString()")}} method to construct an XML string representing a DOM tree.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLSerializer)
  */
@@ -27929,7 +28744,7 @@ declare var XMLSerializer: {
 };
 
 /**
- * The XPathEvaluator interface allows to compile and evaluate XPath expressions.
+ * Allows to compile and evaluate XPath expressions.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathEvaluator)
  */
@@ -27955,7 +28770,7 @@ interface XPathEvaluatorBase {
 }
 
 /**
- * This interface is a compiled XPath expression that can be evaluated on a document or specific node to return information its DOM tree.
+ * This interface is a compiled XPath expression that can be evaluated on a document or specific node to return information from its DOM tree.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathExpression)
  */
@@ -28021,7 +28836,7 @@ declare var XPathResult: {
 };
 
 /**
- * An XSLTProcessor applies an XSLT stylesheet transformation to an XML document to produce a new XML document as output. It has methods to load the XSLT stylesheet, to manipulate <xsl:param> parameter values, and to apply the transformation to documents.
+ * An XSLTProcessor applies an XSLT stylesheet transformation to an XML document to
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor)
  */
@@ -28049,7 +28864,7 @@ declare var XSLTProcessor: {
     new(): XSLTProcessor;
 };
 
-/** Holds useful CSS-related methods. No object with this interface are implemented: it contains only static methods and therefore is a utilitarian interface. */
+/** Holds useful CSS-related methods. No objects with this interface are implemented: it contains only static methods and is therefore a utilitarian interface. */
 declare namespace CSS {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/highlights_static) */
     var highlights: HighlightRegistry;
@@ -28337,7 +29152,12 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console) */
+/** Provides access to the debugging console (e.g., the Web console in Firefox). */
+/**
+ * Provides access to the debugging console (e.g., the Web console in Firefox).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console)
+ */
 interface Console {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static) */
     assert(condition?: boolean, ...data: any[]): void;
