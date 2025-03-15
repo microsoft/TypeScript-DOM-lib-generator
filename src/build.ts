@@ -13,6 +13,7 @@ import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
+import { Octokit } from "@octokit/rest"
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -85,6 +86,101 @@ async function emitFlavor(
     asyncIterators,
   );
 }
+interface FileInfo {
+  path: string;
+  sha: string;
+}
+
+async function generateDescriptions(): Promise<Record<string, string>> {
+  const authToken = process.env.GITHUB_TOKEN || process.env.GITHUB_API_TOKEN;
+  if (!authToken) {
+    throw new Error("GitHub token is required.");
+  }
+
+  const octokit = new Octokit({
+    auth: authToken,
+    request: { headers: { "Accept": "application/vnd.github.v3+json" } },
+  });
+
+  const OWNER = "mdn";
+  const REPO = "content";
+  const BASE_PATH = "files/en-us/web/api";
+
+  async function fetchIndexMdFiles(path: string): Promise<FileInfo[]> {
+    const { data: items } = await octokit.repos.getContent({ owner: OWNER, repo: REPO, path });
+
+    if (!Array.isArray(items)) return []; // If it's a file, return empty
+
+    let results: FileInfo[] = [];
+
+    for (const item of items) {
+      if (item.type === "dir") {
+        results.push(...(await fetchIndexMdFiles(item.path))); // Recursively process subdirectories
+      } else if (item.name === "index.md") {
+        results.push({ path: item.path, sha: item.sha });
+      }
+    }
+    return results;
+  }
+
+  async function fetchFileContents(files: FileInfo[]): Promise<Record<string, string>> {
+    const descriptions: Record<string, string> = {};
+
+    await Promise.all(
+      files.map(async (file) => {
+        const { data } = await octokit.repos.getContent({ owner: OWNER, repo: REPO, path: file.path });
+
+        if (!("content" in data)) throw new Error(`Invalid content for ${file.path}`);
+
+        const content = Buffer.from(data.content, "base64").toString("utf-8");
+        const description = formatDescription(content);
+
+        if (description) {
+          // Extract title from path (e.g., files/en-us/web/api/AbortController -> AbortController)
+          const title = file.path.split("/").slice(-2, -1)[0];
+          descriptions[title] = description;
+        }
+      })
+    );
+
+    return descriptions;
+  }
+
+  function formatDescription(content: string): string {
+    // Remove YAML front matter (metadata block)
+    content = content.replace(/^---[\s\S]+?---/, "").trim();
+
+    // Extract the first relevant sentence
+    const lines = content.split("\n").map(line => line.trim()).filter(line => line !== "");
+    let description = lines.find(line => !line.startsWith("{{")) || "No description available.";
+
+    // Replace {{domxref("XYZ")}} with "XYZ"
+    description = description.replace(/\{\{domxref\("([^"]+)"\)\}\}/g, '"$1"');
+
+    // Ensure it starts correctly
+    description = description.replace(/^The \*\*(.*?)\*\* constructor/, 'The $1 constructor');
+
+    return description;
+  }
+
+  try {
+    console.log("Fetching index.md files...");
+    const indexFiles = await fetchIndexMdFiles(BASE_PATH);
+    console.log(`Found ${indexFiles.length} index.md files. Fetching contents...`);
+
+    const descriptions = await fetchFileContents(indexFiles);
+    console.log("Generated JSON:", JSON.stringify(descriptions, null, 2));
+
+    return descriptions;
+  } catch (error) {
+    console.error("Error:", error);
+    return {};
+  }
+}
+
+// Run the function
+generateDescriptions().then((json) => console.log(JSON.stringify(json, null, 2)));
+
 
 async function emitDom() {
   const inputFolder = new URL("../inputfiles/", import.meta.url);
@@ -116,7 +212,7 @@ async function emitDom() {
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
-  const documentationFromMDN = await readInputJSON("mdn/apiDescriptions.json");
+  const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
   async function readInputJSON(filename: string) {
