@@ -19,15 +19,37 @@ async function getFoldersRecursively(dirPath: string, folders: string[] = []) {
 
         return folders;
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error reading directories:', error);
         return [];
     }
+}
+
+async function getIndexMdContents(folders: string[]) {
+    const results = [];
+
+    for (const folder of folders) {
+        const indexPath = path.join(folder, 'index.md');
+
+        try {
+            const content = await fs.readFile(indexPath, 'utf-8');
+            const titleMatch = content.match(/title: (.*)/);
+            const title = titleMatch ? titleMatch[1] : '';
+            results.push({ [title]: "desc" });
+            
+        } catch (error) {
+            // Ignore missing index.md files
+        }
+    }
+
+    return results;
 }
 
 async function generateDescription() {
     const basePath = path.resolve(__dirname, "../mdn-content/files/en-us/web/api");
     const folders = await getFoldersRecursively(basePath);
-    console.log(folders);
+    const data = await getIndexMdContents(folders);
+    // Write to JSON file
+    await fs.writeFile('output.json', JSON.stringify(data, null, 2), 'utf-8');
 }
 
 await generateDescription();
