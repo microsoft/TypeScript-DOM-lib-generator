@@ -21702,6 +21702,9 @@ declare var SVGNumberList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPathElement)
  */
 interface SVGPathElement extends SVGGeometryElement {
+    readonly pathLength: SVGAnimatedNumber;
+    getPointAtLength(distance: number): DOMPoint;
+    getTotalLength(): number;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
