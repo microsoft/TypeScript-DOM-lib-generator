@@ -109,6 +109,7 @@
     },
     "interfaces": {
         "interface": {
+            "Response": null,
             "Clipboard": {
                 "methods": {
                     "method": {
