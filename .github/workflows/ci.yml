@@ -15,5 +15,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
