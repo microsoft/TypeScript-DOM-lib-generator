@@ -20043,20 +20043,21 @@ interface Response extends Body {
     readonly type: ResponseType;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/url) */
     readonly url: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone) */
-    clone(): Response;
 }
 
-declare var Response: {
+interface ResponseConstructor {
     prototype: Response;
-    new(body?: BodyInit | null, init?: ResponseInit): Response;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone) */
+    clone(): Response;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/error_static) */
     error(): Response;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static) */
     json(data: any, init?: ResponseInit): Response;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/Response) */
+    new(body?: BodyInit | null, init?: ResponseInit): Response;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
     redirect(url: string | URL, status?: number): Response;
-};
+}
 
 /**
  * Provides access to the properties of <a> element, as well as methods to manipulate them.
@@ -27183,6 +27184,8 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window)
  */
 interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/Response) */
+    readonly Response: ResponseConstructor;
     /**
      * @deprecated This is a legacy alias of `navigator`.
      *
@@ -28820,6 +28823,8 @@ declare var Image: {
 declare var Option: {
     new(text?: string, value?: string, defaultSelected?: boolean, selected?: boolean): HTMLOptionElement;
 };
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/Response) */
+declare var Response: ResponseConstructor;
 /**
  * @deprecated This is a legacy alias of `navigator`.
  *
