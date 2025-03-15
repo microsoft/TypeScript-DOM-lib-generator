@@ -41,7 +41,7 @@ async function generateDescription() {
     const folders = await getFolders(basePath);
     const data = await getIndexMdContents(folders);
     // Write to JSON file
-    await fs.writeFile('output.json', JSON.stringify(data, null, 2), 'utf-8');
+    await fs.writeFile(path.resolve(__dirname, "../inputfiles/mdn/") + "apiDescriptions.json", JSON.stringify(data, null, 2), 'utf-8');
 }
 
 await generateDescription();
