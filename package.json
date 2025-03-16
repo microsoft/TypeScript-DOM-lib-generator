@@ -13,7 +13,6 @@
   ],
   "scripts": {
     "build": "tsc && node ./lib/build.js",
-    "generate": "tsc && node ./lib/generateDescriptions.js",
     "baseline-accept": "cpx \"generated\\**\" baselines\\",
     "lint": "eslint --max-warnings 0 src deploy/*.js && tsc -p deploy/jsconfig.json",
     "lint-fix": "eslint --max-warnings 0 src deploy/*.js --fix",

@@ -64,7 +64,8 @@ async function getIndexMdContents(folders: string[]) {
   return results;
 }
 
-async function generateDescription() {
+export async function generateDescription() {
+  console.log("hey")
   const basePath = path.resolve(
     __dirname,
     "../mdn-content/files/en-us/web/api",
@@ -79,4 +80,3 @@ async function generateDescription() {
   );
 }
 
-await generateDescription();

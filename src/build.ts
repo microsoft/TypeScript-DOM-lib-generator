@@ -13,6 +13,7 @@ import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
+import { generateDescription } from "./generateDescriptions.js";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -394,5 +395,5 @@ async function emitDom() {
     }
   }
 }
-
+await generateDescription()
 await emitDom();
