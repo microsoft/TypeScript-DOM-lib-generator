@@ -2431,8 +2431,11 @@ interface WebTransportOptions {
     serverCertificateHashes?: WebTransportHash[];
 }
 
-interface WebTransportSendStreamOptions {
+interface WebTransportSendOptions {
     sendOrder?: number;
+}
+
+interface WebTransportSendStreamOptions extends WebTransportSendOptions {
 }
 
 interface WheelEventInit extends MouseEventInit {
