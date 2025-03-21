@@ -298,7 +298,7 @@ declare var ByteLengthQueuingStrategy: {
 };
 
 /**
- * Of the {{domxref('Compression Streams API','','',' ')}} is an API for compressing a stream of data.
+ * This is an API interface for compressing a stream of data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
  */
@@ -428,7 +428,7 @@ declare var DOMException: {
 };
 
 /**
- * Of the {{domxref('Compression Streams API','','',' ')}} is an API for decompressing a stream of data.
+ * This is an API interface for decompressing a stream of data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
  */
@@ -757,7 +757,7 @@ declare var MessagePort: {
 };
 
 /**
- * Events which are sent to the global script context when JavaScript Promises are rejected. These events are particularly useful for telemetry and debugging purposes.
+ * Events which are sent to the global script context when JavaScript s are rejected. These events are particularly useful for telemetry and debugging purposes.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent)
  */
@@ -797,7 +797,7 @@ declare var ReadableByteStreamController: {
 };
 
 /**
- * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the {{domxref("Response.body", "body")}} property of a Response object.
+ * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
@@ -957,7 +957,7 @@ interface TextDecoderCommon {
 }
 
 /**
- * Of the {{domxref('Encoding API','','',' ')}} converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
+ * Of the converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
@@ -1006,7 +1006,7 @@ interface TextEncoderCommon {
 }
 
 /**
- * Of the {{domxref('Encoding API','','',' ')}} converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
+ * Of the converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
@@ -1021,7 +1021,7 @@ declare var TextEncoderStream: {
 };
 
 /**
- * This Streams API interface represents a concrete implementation of the pipe chain _transform stream_ concept.
+ * This Streams API interface represents a concrete implementation of the pipe chain transform stream_ concept.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream)
  */
@@ -1059,7 +1059,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * Used to parse, construct, normalize, and encode {{glossary("URL", "URLs")}}. It works by providing properties which allow you to easily read and modify the components of a URL.
+ * Used to parse, construct, normalize, and encode . It works by providing properties which allow you to easily read and modify the components of a URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
