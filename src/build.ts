@@ -395,5 +395,5 @@ async function emitDom() {
     }
   }
 }
-await generateDescription()
+await generateDescription();
 await emitDom();

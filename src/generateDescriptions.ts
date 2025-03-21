@@ -19,12 +19,19 @@ function extractSummary(markdown: string) {
       !trimmed.startsWith(">") &&
       !trimmed.startsWith("{{")
     ) {
-      // Remove bold (**text**), inline code (`text`), and links ([text](url))
       return trimmed
-        .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold
-        .replace(/`(.*?)`/g, "$1") // Remove inline code
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // Remove links
-        .replace(/\{\{[^()]+\("([^"]+)"\)\}\}/g, "$1");
+        .replace(/\{\{domxref\(["'][^"']+["'],\s*["']([^"']+)["']\)\}\}/g, "$1") // Extract second argument from domxref
+        .replace(/\{\{domxref\(["']([^"']+)["']\)\}\}/g, "$1") // Extract single-argument domxref
+        .replace(/\{\{[^}]+\}\}/g, "") // Remove other MDN templates like {{CSSRef}}
+        .replace(/<[^>]+>/g, "") // Remove HTML tags
+        .replace(/\*\*(.*?)\*\*/g, "$1") // Remove Markdown bold (**bold**)
+        .replace(/_(.*?)_/g, "$1") // Remove Markdown italic (_italic_)
+        .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Remove Markdown links [text](url)
+        .replace(/`([^`]+)`/g, "$1") // Remove inline code `code`
+        .replace(/&lt;/g, "<") // Decode HTML entities
+        .replace(/&gt;/g, ">")
+        .replace(/&amp;/g, "&")
+        .replace(/\s+/g, " "); // Normalize spaces
     }
   }
 
@@ -65,7 +72,6 @@ async function getIndexMdContents(folders: string[]) {
 }
 
 export async function generateDescription() {
-  console.log("hey")
   const basePath = path.resolve(
     __dirname,
     "../mdn-content/files/en-us/web/api",
@@ -79,4 +85,3 @@ export async function generateDescription() {
     "utf-8",
   );
 }
-
