@@ -1,5 +1,5 @@
 /////////////////////////////
-/// ServiceWorker APIs
+/// SharedWorker APIs
 /////////////////////////////
 
 interface AddEventListenerOptions extends EventListenerOptions {
@@ -73,42 +73,10 @@ interface CacheQueryOptions {
     ignoreVary?: boolean;
 }
 
-interface ClientQueryOptions {
-    includeUncontrolled?: boolean;
-    type?: ClientTypes;
-}
-
 interface CloseEventInit extends EventInit {
     code?: number;
     reason?: string;
     wasClean?: boolean;
-}
-
-interface CookieInit {
-    domain?: string | null;
-    expires?: DOMHighResTimeStamp | null;
-    name: string;
-    partitioned?: boolean;
-    path?: string;
-    sameSite?: CookieSameSite;
-    value: string;
-}
-
-interface CookieListItem {
-    name?: string;
-    value?: string;
-}
-
-interface CookieStoreDeleteOptions {
-    domain?: string | null;
-    name: string;
-    partitioned?: boolean;
-    path?: string;
-}
-
-interface CookieStoreGetOptions {
-    name?: string;
-    url?: string;
 }
 
 interface CryptoKeyPair {
@@ -206,31 +174,6 @@ interface EventListenerOptions {
 
 interface EventSourceInit {
     withCredentials?: boolean;
-}
-
-interface ExtendableCookieChangeEventInit extends ExtendableEventInit {
-    changed?: CookieList;
-    deleted?: CookieList;
-}
-
-interface ExtendableEventInit extends EventInit {
-}
-
-interface ExtendableMessageEventInit extends ExtendableEventInit {
-    data?: any;
-    lastEventId?: string;
-    origin?: string;
-    ports?: MessagePort[];
-    source?: Client | ServiceWorker | MessagePort | null;
-}
-
-interface FetchEventInit extends ExtendableEventInit {
-    clientId?: string;
-    handled?: Promise<void>;
-    preloadResponse?: Promise<any>;
-    replacesClientId?: string;
-    request: Request;
-    resultingClientId?: string;
 }
 
 interface FilePropertyBag extends BlobPropertyBag {
@@ -422,11 +365,6 @@ interface NavigationPreloadState {
     headerValue?: string;
 }
 
-interface NotificationEventInit extends ExtendableEventInit {
-    action?: string;
-    notification: Notification;
-}
-
 interface NotificationOptions {
     badge?: string;
     body?: string;
@@ -476,10 +414,6 @@ interface ProgressEventInit extends EventInit {
 interface PromiseRejectionEventInit extends EventInit {
     promise: Promise<any>;
     reason?: any;
-}
-
-interface PushEventInit extends ExtendableEventInit {
-    data?: PushMessageDataInit;
 }
 
 interface PushSubscriptionJSON {
@@ -780,6 +714,12 @@ interface WebTransportSendOptions {
 interface WebTransportSendStreamOptions extends WebTransportSendOptions {
 }
 
+interface WorkerOptions {
+    credentials?: RequestCredentials;
+    name?: string;
+    type?: WorkerType;
+}
+
 interface WriteParams {
     data?: BufferSource | Blob | string | null;
     position?: number | null;
@@ -892,11 +832,11 @@ interface Blob {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/arrayBuffer) */
     arrayBuffer(): Promise<ArrayBuffer>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/bytes) */
-    bytes(): Promise<Uint8Array<ArrayBuffer>>;
+    bytes(): Promise<Uint8Array>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/slice) */
     slice(start?: number, end?: number, contentType?: string): Blob;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/stream) */
-    stream(): ReadableStream<Uint8Array<ArrayBuffer>>;
+    stream(): ReadableStream<Uint8Array>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/text) */
     text(): Promise<string>;
 }
@@ -908,7 +848,7 @@ declare var Blob: {
 
 interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/body) */
-    readonly body: ReadableStream<Uint8Array<ArrayBuffer>> | null;
+    readonly body: ReadableStream<Uint8Array> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed) */
     readonly bodyUsed: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/arrayBuffer) */
@@ -916,7 +856,7 @@ interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/blob) */
     blob(): Promise<Blob>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bytes) */
-    bytes(): Promise<Uint8Array<ArrayBuffer>>;
+    bytes(): Promise<Uint8Array>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/formData) */
     formData(): Promise<FormData>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/json) */
@@ -1603,51 +1543,6 @@ interface CanvasTransform {
 }
 
 /**
- * The Client interface represents an executable context such as a Worker, or a SharedWorker. Window clients are represented by the more-specific WindowClient. You can get Client/WindowClient objects from methods such as Clients.matchAll() and Clients.get().
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Client)
- */
-interface Client {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Client/frameType) */
-    readonly frameType: FrameType;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Client/id) */
-    readonly id: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Client/type) */
-    readonly type: ClientTypes;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Client/url) */
-    readonly url: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Client/postMessage) */
-    postMessage(message: any, transfer: Transferable[]): void;
-    postMessage(message: any, options?: StructuredSerializeOptions): void;
-}
-
-declare var Client: {
-    prototype: Client;
-    new(): Client;
-};
-
-/**
- * Provides access to Client objects. Access it via self.clients within a service worker.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clients)
- */
-interface Clients {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clients/claim) */
-    claim(): Promise<void>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clients/get) */
-    get(id: string): Promise<Client | undefined>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clients/matchAll) */
-    matchAll<T extends ClientQueryOptions>(options?: T): Promise<ReadonlyArray<T["type"] extends "window" ? WindowClient : Client>>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clients/openWindow) */
-    openWindow(url: string | URL): Promise<WindowClient | null>;
-}
-
-declare var Clients: {
-    prototype: Clients;
-    new(): Clients;
-};
-
-/**
  * A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent)
@@ -1680,38 +1575,13 @@ declare var CloseEvent: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
 }
 
 declare var CompressionStream: {
     prototype: CompressionStream;
     new(format: CompressionFormat): CompressionStream;
-};
-
-/**
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStore)
- */
-interface CookieStore extends EventTarget {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStore/delete) */
-    delete(name: string): Promise<void>;
-    delete(options: CookieStoreDeleteOptions): Promise<void>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStore/get) */
-    get(name: string): Promise<CookieListItem | null>;
-    get(options?: CookieStoreGetOptions): Promise<CookieListItem | null>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStore/getAll) */
-    getAll(name: string): Promise<CookieList>;
-    getAll(options?: CookieStoreGetOptions): Promise<CookieList>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStore/set) */
-    set(name: string, value: string): Promise<void>;
-    set(options: CookieInit): Promise<void>;
-}
-
-declare var CookieStore: {
-    prototype: CookieStore;
-    new(): CookieStore;
 };
 
 /**
@@ -2192,7 +2062,7 @@ declare var DOMStringList: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -2541,82 +2411,6 @@ declare var EventTarget: {
     new(): EventTarget;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent) */
-interface ExtendableCookieChangeEvent extends ExtendableEvent {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent/changed) */
-    readonly changed: ReadonlyArray<CookieListItem>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent/deleted) */
-    readonly deleted: ReadonlyArray<CookieListItem>;
-}
-
-declare var ExtendableCookieChangeEvent: {
-    prototype: ExtendableCookieChangeEvent;
-    new(type: string, eventInitDict?: ExtendableCookieChangeEventInit): ExtendableCookieChangeEvent;
-};
-
-/**
- * Extends the lifetime of the install and activate events dispatched on the global scope as part of the service worker lifecycle. This ensures that any functional events (like FetchEvent) are not dispatched until it upgrades database schemas and deletes the outdated cache entries.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableEvent)
- */
-interface ExtendableEvent extends Event {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableEvent/waitUntil) */
-    waitUntil(f: Promise<any>): void;
-}
-
-declare var ExtendableEvent: {
-    prototype: ExtendableEvent;
-    new(type: string, eventInitDict?: ExtendableEventInit): ExtendableEvent;
-};
-
-/**
- * This ServiceWorker API interface represents the event object of a message event fired on a service worker (when a channel message is received on the ServiceWorkerGlobalScope from another context) — extends the lifetime of such events.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent)
- */
-interface ExtendableMessageEvent extends ExtendableEvent {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent/data) */
-    readonly data: any;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent/lastEventId) */
-    readonly lastEventId: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent/origin) */
-    readonly origin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent/ports) */
-    readonly ports: ReadonlyArray<MessagePort>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent/source) */
-    readonly source: Client | ServiceWorker | MessagePort | null;
-}
-
-declare var ExtendableMessageEvent: {
-    prototype: ExtendableMessageEvent;
-    new(type: string, eventInitDict?: ExtendableMessageEventInit): ExtendableMessageEvent;
-};
-
-/**
- * This is the event type for fetch events dispatched on the service worker global scope. It contains information about the fetch, including the request and how the receiver will treat the response. It provides the event.respondWith() method, which allows us to provide a response to this fetch.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent)
- */
-interface FetchEvent extends ExtendableEvent {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/clientId) */
-    readonly clientId: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/handled) */
-    readonly handled: Promise<void>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/preloadResponse) */
-    readonly preloadResponse: Promise<any>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/request) */
-    readonly request: Request;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/resultingClientId) */
-    readonly resultingClientId: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/respondWith) */
-    respondWith(r: Response | PromiseLike<Response>): void;
-}
-
-declare var FetchEvent: {
-    prototype: FetchEvent;
-    new(type: string, eventInitDict: FetchEventInit): FetchEvent;
-};
-
 /**
  * Provides information about files and allows JavaScript in a web page to access their content.
  *
@@ -2716,6 +2510,31 @@ declare var FileReader: {
     readonly EMPTY: 0;
     readonly LOADING: 1;
     readonly DONE: 2;
+};
+
+/**
+ * Allows to read File or Blob objects in a synchronous way.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync)
+ */
+interface FileReaderSync {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsArrayBuffer) */
+    readAsArrayBuffer(blob: Blob): ArrayBuffer;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsBinaryString)
+     */
+    readAsBinaryString(blob: Blob): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsDataURL) */
+    readAsDataURL(blob: Blob): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsText) */
+    readAsText(blob: Blob, encoding?: string): string;
+}
+
+declare var FileReaderSync: {
+    prototype: FileReaderSync;
+    new(): FileReaderSync;
 };
 
 /**
@@ -4046,23 +3865,6 @@ declare var Notification: {
     readonly permission: NotificationPermission;
 };
 
-/**
- * The parameter passed into the onnotificationclick handler, the NotificationEvent interface represents a notification click event that is dispatched on the ServiceWorkerGlobalScope of a ServiceWorker.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NotificationEvent)
- */
-interface NotificationEvent extends ExtendableEvent {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NotificationEvent/action) */
-    readonly action: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NotificationEvent/notification) */
-    readonly notification: Notification;
-}
-
-declare var NotificationEvent: {
-    prototype: NotificationEvent;
-    new(type: string, eventInitDict: NotificationEventInit): NotificationEvent;
-};
-
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed) */
 interface OES_draw_buffers_indexed {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed/blendEquationSeparateiOES) */
@@ -4524,22 +4326,6 @@ declare var PromiseRejectionEvent: {
 };
 
 /**
- * This Push API interface represents a push message that has been received. This event is sent to the global scope of a ServiceWorker. It contains the information sent from an application server to a PushSubscription.
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushEvent)
- */
-interface PushEvent extends ExtendableEvent {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushEvent/data) */
-    readonly data: PushMessageData | null;
-}
-
-declare var PushEvent: {
-    prototype: PushEvent;
-    new(type: string, eventInitDict?: PushEventInit): PushEvent;
-};
-
-/**
  * This Push API interface provides a way to receive notifications from third-party servers as well as request URLs for push notifications.
  * Available only in secure contexts.
  *
@@ -4559,30 +4345,6 @@ declare var PushManager: {
     new(): PushManager;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushManager/supportedContentEncodings_static) */
     readonly supportedContentEncodings: ReadonlyArray<string>;
-};
-
-/**
- * This Push API interface provides methods which let you retrieve the push data sent by a server in various formats.
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData)
- */
-interface PushMessageData {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData/arrayBuffer) */
-    arrayBuffer(): ArrayBuffer;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData/blob) */
-    blob(): Blob;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData/bytes) */
-    bytes(): Uint8Array;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData/json) */
-    json(): any;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData/text) */
-    text(): string;
-}
-
-declare var PushMessageData: {
-    prototype: PushMessageData;
-    new(): PushMessageData;
 };
 
 /**
@@ -5021,64 +4783,6 @@ declare var ServiceWorkerContainer: {
     new(): ServiceWorkerContainer;
 };
 
-interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
-    "activate": ExtendableEvent;
-    "fetch": FetchEvent;
-    "install": ExtendableEvent;
-    "message": ExtendableMessageEvent;
-    "messageerror": MessageEvent;
-    "notificationclick": NotificationEvent;
-    "notificationclose": NotificationEvent;
-    "push": PushEvent;
-    "pushsubscriptionchange": Event;
-}
-
-/**
- * This ServiceWorker API interface represents the global execution context of a service worker.
- * Available only in secure contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope)
- */
-interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/clients) */
-    readonly clients: Clients;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookieStore) */
-    readonly cookieStore: CookieStore;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
-    onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
-    onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */
-    oninstall: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/message_event) */
-    onmessage: ((this: ServiceWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/messageerror_event) */
-    onmessageerror: ((this: ServiceWorkerGlobalScope, ev: MessageEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclick_event) */
-    onnotificationclick: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclose_event) */
-    onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/push_event) */
-    onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) */
-    onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
-    readonly registration: ServiceWorkerRegistration;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */
-    readonly serviceWorker: ServiceWorker;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting) */
-    skipWaiting(): Promise<void>;
-    addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-}
-
-declare var ServiceWorkerGlobalScope: {
-    prototype: ServiceWorkerGlobalScope;
-    new(): ServiceWorkerGlobalScope;
-};
-
 interface ServiceWorkerRegistrationEventMap {
     "updatefound": Event;
 }
@@ -5123,6 +4827,37 @@ interface ServiceWorkerRegistration extends EventTarget {
 declare var ServiceWorkerRegistration: {
     prototype: ServiceWorkerRegistration;
     new(): ServiceWorkerRegistration;
+};
+
+interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
+    "connect": MessageEvent;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope) */
+interface SharedWorkerGlobalScope extends WorkerGlobalScope {
+    /**
+     * Returns sharedWorkerGlobal's name, i.e. the value given to the SharedWorker constructor. Multiple SharedWorker objects can correspond to the same shared worker (and SharedWorkerGlobalScope), by reusing the same name.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/name)
+     */
+    readonly name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/connect_event) */
+    onconnect: ((this: SharedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    /**
+     * Aborts sharedWorkerGlobal.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/close)
+     */
+    close(): void;
+    addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SharedWorkerGlobalScope: {
+    prototype: SharedWorkerGlobalScope;
+    new(): SharedWorkerGlobalScope;
 };
 
 /**
@@ -5278,7 +5013,7 @@ interface TextEncoder extends TextEncoderCommon {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
-    encode(input?: string): Uint8Array<ArrayBuffer>;
+    encode(input?: string): Uint8Array;
     /**
      * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      *
@@ -5303,7 +5038,7 @@ interface TextEncoderCommon {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
 }
 
@@ -5467,8 +5202,12 @@ declare var URL: {
     new(url: string | URL, base?: string | URL): URL;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
     canParse(url: string | URL, base?: string | URL): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static) */
+    createObjectURL(obj: Blob): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static) */
     parse(url: string | URL, base?: string | URL): URL | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static) */
+    revokeObjectURL(url: string): void;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
@@ -8071,27 +7810,6 @@ declare var WebTransportError: {
     new(message?: string, options?: WebTransportErrorOptions): WebTransportError;
 };
 
-/**
- * This ServiceWorker API interface represents the scope of a service worker client that is a document in a browser context, controlled by an active worker. The service worker client independently selects and uses a service worker for its own loading and sub-resources.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WindowClient)
- */
-interface WindowClient extends Client {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WindowClient/focused) */
-    readonly focused: boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WindowClient/visibilityState) */
-    readonly visibilityState: DocumentVisibilityState;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WindowClient/focus) */
-    focus(): Promise<WindowClient>;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WindowClient/navigate) */
-    navigate(url: string | URL): Promise<WindowClient | null>;
-}
-
-declare var WindowClient: {
-    prototype: WindowClient;
-    new(): WindowClient;
-};
-
 interface WindowOrWorkerGlobalScope {
     /**
      * Available only in secure contexts.
@@ -8135,6 +7853,39 @@ interface WindowOrWorkerGlobalScope {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
+
+interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEventMap {
+}
+
+/**
+ * This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
+ */
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
+    /**
+     * Clones message and transmits it to worker's global environment. transfer can be passed as a list of objects that are to be transferred rather than cloned.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/postMessage)
+     */
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
+    /**
+     * Aborts worker's associated global environment.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/terminate)
+     */
+    terminate(): void;
+    addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var Worker: {
+    prototype: Worker;
+    new(scriptURL: string | URL, options?: WorkerOptions): Worker;
+};
 
 interface WorkerGlobalScopeEventMap {
     "error": ErrorEvent;
@@ -8316,6 +8067,193 @@ interface WritableStreamDefaultWriter<W = any> {
 declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
+};
+
+interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
+    "readystatechange": Event;
+}
+
+/**
+ * Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
+ */
+interface XMLHttpRequest extends XMLHttpRequestEventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readystatechange_event) */
+    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    /**
+     * Returns client's state.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readyState)
+     */
+    readonly readyState: number;
+    /**
+     * Returns the response body.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/response)
+     */
+    readonly response: any;
+    /**
+     * Returns response as text.
+     *
+     * Throws an "InvalidStateError" DOMException if responseType is not the empty string or "text".
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseText)
+     */
+    readonly responseText: string;
+    /**
+     * Returns the response type.
+     *
+     * Can be set to change the response type. Values are: the empty string (default), "arraybuffer", "blob", "document", "json", and "text".
+     *
+     * When set: setting to "document" is ignored if current global object is not a Window object.
+     *
+     * When set: throws an "InvalidStateError" DOMException if state is loading or done.
+     *
+     * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseType)
+     */
+    responseType: XMLHttpRequestResponseType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseURL) */
+    readonly responseURL: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/status) */
+    readonly status: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/statusText) */
+    readonly statusText: string;
+    /**
+     * Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and this's synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
+     *
+     * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/timeout)
+     */
+    timeout: number;
+    /**
+     * Returns the associated XMLHttpRequestUpload object. It can be used to gather transmission information when data is transferred to a server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/upload)
+     */
+    readonly upload: XMLHttpRequestUpload;
+    /**
+     * True when credentials are to be included in a cross-origin request. False when they are to be excluded in a cross-origin request and when cookies are to be ignored in its response. Initially false.
+     *
+     * When set: throws an "InvalidStateError" DOMException if state is not unsent or opened, or if the send() flag is set.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/withCredentials)
+     */
+    withCredentials: boolean;
+    /**
+     * Cancels any network activity.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/abort)
+     */
+    abort(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getAllResponseHeaders) */
+    getAllResponseHeaders(): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getResponseHeader) */
+    getResponseHeader(name: string): string | null;
+    /**
+     * Sets the request method, request URL, and synchronous flag.
+     *
+     * Throws a "SyntaxError" DOMException if either method is not a valid method or url cannot be parsed.
+     *
+     * Throws a "SecurityError" DOMException if method is a case-insensitive match for `CONNECT`, `TRACE`, or `TRACK`.
+     *
+     * Throws an "InvalidAccessError" DOMException if async is false, current global object is a Window object, and the timeout attribute is not zero or the responseType attribute is not the empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open)
+     */
+    open(method: string, url: string | URL): void;
+    open(method: string, url: string | URL, async: boolean, username?: string | null, password?: string | null): void;
+    /**
+     * Acts as if the `Content-Type` header value for a response is mime. (It does not change the header.)
+     *
+     * Throws an "InvalidStateError" DOMException if state is loading or done.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/overrideMimeType)
+     */
+    overrideMimeType(mime: string): void;
+    /**
+     * Initiates the request. The body argument provides the request body, if any, and is ignored if the request method is GET or HEAD.
+     *
+     * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/send)
+     */
+    send(body?: XMLHttpRequestBodyInit | null): void;
+    /**
+     * Combines a header in author request headers.
+     *
+     * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
+     *
+     * Throws a "SyntaxError" DOMException if name is not a header name or if value is not a header value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/setRequestHeader)
+     */
+    setRequestHeader(name: string, value: string): void;
+    readonly UNSENT: 0;
+    readonly OPENED: 1;
+    readonly HEADERS_RECEIVED: 2;
+    readonly LOADING: 3;
+    readonly DONE: 4;
+    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequest: {
+    prototype: XMLHttpRequest;
+    new(): XMLHttpRequest;
+    readonly UNSENT: 0;
+    readonly OPENED: 1;
+    readonly HEADERS_RECEIVED: 2;
+    readonly LOADING: 3;
+    readonly DONE: 4;
+};
+
+interface XMLHttpRequestEventTargetEventMap {
+    "abort": ProgressEvent<XMLHttpRequestEventTarget>;
+    "error": ProgressEvent<XMLHttpRequestEventTarget>;
+    "load": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadend": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadstart": ProgressEvent<XMLHttpRequestEventTarget>;
+    "progress": ProgressEvent<XMLHttpRequestEventTarget>;
+    "timeout": ProgressEvent<XMLHttpRequestEventTarget>;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget) */
+interface XMLHttpRequestEventTarget extends EventTarget {
+    onabort: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onerror: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onload: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onloadend: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onprogress: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequestEventTarget: {
+    prototype: XMLHttpRequestEventTarget;
+    new(): XMLHttpRequestEventTarget;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload) */
+interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequestUpload: {
+    prototype: XMLHttpRequestUpload;
+    new(): XMLHttpRequestUpload;
 };
 
 declare namespace WebAssembly {
@@ -8586,34 +8524,20 @@ interface VoidFunction {
     (): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/clients) */
-declare var clients: Clients;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookieStore) */
-declare var cookieStore: CookieStore;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
-declare var onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
-declare var onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */
-declare var oninstall: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/message_event) */
-declare var onmessage: ((this: ServiceWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/messageerror_event) */
-declare var onmessageerror: ((this: ServiceWorkerGlobalScope, ev: MessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclick_event) */
-declare var onnotificationclick: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclose_event) */
-declare var onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/push_event) */
-declare var onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) */
-declare var onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
-declare var registration: ServiceWorkerRegistration;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */
-declare var serviceWorker: ServiceWorker;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting) */
-declare function skipWaiting(): Promise<void>;
+/**
+ * Returns sharedWorkerGlobal's name, i.e. the value given to the SharedWorker constructor. Multiple SharedWorker objects can correspond to the same shared worker (and SharedWorkerGlobalScope), by reusing the same name.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/name)
+ */
+declare var name: string;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/connect_event) */
+declare var onconnect: ((this: SharedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+/**
+ * Aborts sharedWorkerGlobal.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/close)
+ */
+declare function close(): void;
 /**
  * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
  *
@@ -8633,17 +8557,17 @@ declare var location: WorkerLocation;
  */
 declare var navigator: WorkerNavigator;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/error_event) */
-declare var onerror: ((this: ServiceWorkerGlobalScope, ev: ErrorEvent) => any) | null;
+declare var onerror: ((this: SharedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/languagechange_event) */
-declare var onlanguagechange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onlanguagechange: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/offline_event) */
-declare var onoffline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onoffline: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
-declare var ononline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var ononline: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
-declare var onrejectionhandled: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onrejectionhandled: ((this: SharedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
-declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onunhandledrejection: ((this: SharedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /**
  * Returns workerGlobal.
  *
@@ -8705,9 +8629,9 @@ declare function setInterval(handler: TimerHandler, timeout?: number, ...argumen
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
-declare function addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+declare function addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-declare function removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+declare function removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
@@ -8720,7 +8644,6 @@ type CSSNumberish = number | CSSNumericValue;
 type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
 type CanvasImageSource = ImageBitmap | OffscreenCanvas;
-type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
@@ -8749,7 +8672,6 @@ type NamedCurve = string;
 type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
-type PushMessageDataInit = BufferSource | string;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
@@ -8777,14 +8699,11 @@ type ClientTypes = "all" | "sharedworker" | "window" | "worker";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
-type CookieSameSite = "lax" | "none" | "strict";
-type DocumentVisibilityState = "hidden" | "visible";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
-type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
@@ -8827,3 +8746,4 @@ type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
 type WebTransportErrorSource = "session" | "stream";
 type WorkerType = "classic" | "module";
 type WriteCommandType = "seek" | "truncate" | "write";
+type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

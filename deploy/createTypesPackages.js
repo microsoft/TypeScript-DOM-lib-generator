@@ -19,6 +19,8 @@ export const packages = [
       { from: "../generated/dom.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
       { from: "../generated/ts5.5/dom.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
       { from: "../generated/ts5.5/dom.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
+      { from: "../generated/ts5.6/dom.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
+      { from: "../generated/ts5.6/dom.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
     ],
   },
   {
@@ -30,6 +32,8 @@ export const packages = [
       { from: "../generated/serviceworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
       { from: "../generated/ts5.5/serviceworker.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
       { from: "../generated/ts5.5/serviceworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true , group: "ts5.5" },
+      { from: "../generated/ts5.6/serviceworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
+      { from: "../generated/ts5.6/serviceworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true , group: "ts5.6" },
     ],
   },
   {
@@ -41,6 +45,8 @@ export const packages = [
       { from: "../generated/audioworklet.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
       { from: "../generated/ts5.5/audioworklet.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
       { from: "../generated/ts5.5/audioworklet.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true , group: "ts5.5" },
+      { from: "../generated/ts5.6/audioworklet.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
+      { from: "../generated/ts5.6/audioworklet.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true , group: "ts5.6" },
     ],
   },
   {
@@ -52,6 +58,8 @@ export const packages = [
       { from: "../generated/sharedworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
       { from: "../generated/ts5.5/sharedworker.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
       { from: "../generated/ts5.5/sharedworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
+      { from: "../generated/ts5.6/sharedworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
+      { from: "../generated/ts5.6/sharedworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
     ],
   },
 ];

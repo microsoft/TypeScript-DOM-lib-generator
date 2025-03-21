@@ -259,7 +259,18 @@
                 "properties": {
                     "property": {
                         "body": {
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "bytes": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Promise<Uint8Array<ArrayBuffer>>"
+                                }
+                            }
                         }
                     }
                 }
@@ -2713,10 +2724,17 @@
             "Blob": {
               "methods": {
                 "method": {
+                  "bytes": {
+                    "signature": {
+                      "0": {
+                        "overrideType": "Promise<Uint8Array<ArrayBuffer>>"
+                      }
+                    }
+                  },
                   "stream": {
                     "signature": {
                       "0": {
-                        "overrideType": "ReadableStream<Uint8Array>"
+                        "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
                       }
                     }
                   }
@@ -3173,7 +3191,7 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
                         },
                         "writable": {
                             "name": "writable",
@@ -3189,7 +3207,7 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
                         },
                         "writable": {
                             "name": "writable",
@@ -3215,13 +3233,26 @@
                     }
                 }
             },
+            "TextEncoder": {
+                "methods": {
+                    "method": {
+                        "encode": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "Uint8Array<ArrayBuffer>"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "TextEncoderStream": {
                 "properties": {
                     "property": {
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
                         },
                         "writable": {
                             "name": "writable",
