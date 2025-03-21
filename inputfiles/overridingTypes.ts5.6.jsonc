@@ -1,0 +1,90 @@
+{
+  "mixins": {
+    "mixin": {
+      "Body": {
+        "properties": {
+          "property": {
+            "body": {
+              "overrideType": "ReadableStream<Uint8Array>"
+            }
+          }
+        },
+        "methods": {
+          "method": {
+            "bytes": {
+              "signature": {
+                "0": {
+                  "overrideType": "Promise<Uint8Array>"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "interfaces": {
+    "interface": {
+      "Blob": {
+        "methods": {
+          "method": {
+            "bytes": {
+              "signature": {
+                "0": {
+                  "overrideType": "Promise<Uint8Array>"
+                }
+              }
+            },
+            "stream": {
+              "signature": {
+                "0": {
+                  "overrideType": "ReadableStream<Uint8Array>"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CompressionStream": {
+        "properties": {
+          "property": {
+            "readable": {
+              "overrideType": "ReadableStream<Uint8Array>"
+            }
+          }
+        }
+      },
+      "DecompressionStream": {
+        "properties": {
+          "property": {
+            "readable": {
+              "overrideType": "ReadableStream<Uint8Array>"
+            }
+          }
+        }
+      },
+      "TextEncoder": {
+        "methods": {
+          "method": {
+            "encode": {
+              "signature": {
+                "0": {
+                  "overrideType": "Uint8Array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "TextEncoderStream": {
+        "properties": {
+          "property": {
+            "readable": {
+              "overrideType": "ReadableStream<Uint8Array>"
+            }
+          }
+        }
+      }
+    }
+  }
+}

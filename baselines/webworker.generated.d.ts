@@ -1248,11 +1248,11 @@ interface Blob {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/arrayBuffer) */
     arrayBuffer(): Promise<ArrayBuffer>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/bytes) */
-    bytes(): Promise<Uint8Array>;
+    bytes(): Promise<Uint8Array<ArrayBuffer>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/slice) */
     slice(start?: number, end?: number, contentType?: string): Blob;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/stream) */
-    stream(): ReadableStream<Uint8Array>;
+    stream(): ReadableStream<Uint8Array<ArrayBuffer>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/text) */
     text(): Promise<string>;
 }
@@ -1264,7 +1264,7 @@ declare var Blob: {
 
 interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/body) */
-    readonly body: ReadableStream<Uint8Array> | null;
+    readonly body: ReadableStream<Uint8Array<ArrayBuffer>> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed) */
     readonly bodyUsed: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/arrayBuffer) */
@@ -1272,7 +1272,7 @@ interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/blob) */
     blob(): Promise<Blob>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bytes) */
-    bytes(): Promise<Uint8Array>;
+    bytes(): Promise<Uint8Array<ArrayBuffer>>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/formData) */
     formData(): Promise<FormData>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/json) */
@@ -2036,7 +2036,7 @@ declare var CloseEvent: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array>;
+    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -2548,7 +2548,7 @@ declare var DOMStringList: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array>;
+    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -6008,7 +6008,7 @@ interface TextEncoder extends TextEncoderCommon {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
-    encode(input?: string): Uint8Array;
+    encode(input?: string): Uint8Array<ArrayBuffer>;
     /**
      * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      *
@@ -6033,7 +6033,7 @@ interface TextEncoderCommon {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
-    readonly readable: ReadableStream<Uint8Array>;
+    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<string>;
 }
 

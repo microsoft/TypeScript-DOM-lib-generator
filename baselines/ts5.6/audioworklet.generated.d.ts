@@ -291,7 +291,7 @@ declare var ByteLengthQueuingStrategy: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -413,7 +413,7 @@ declare var DOMException: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -934,7 +934,7 @@ interface TextEncoder extends TextEncoderCommon {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
-    encode(input?: string): Uint8Array<ArrayBuffer>;
+    encode(input?: string): Uint8Array;
     /**
      * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      *
@@ -959,7 +959,7 @@ interface TextEncoderCommon {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
 }
 

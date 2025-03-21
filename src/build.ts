@@ -1,6 +1,6 @@
 import * as Browser from "./build/types.js";
 import { promises as fs } from "fs";
-import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
+import { merge, resolveExposure, arrayToMap, clone } from "./build/helpers.js";
 import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";
 import { convert } from "./build/widlprocess.js";
 import { getExposedTypes } from "./build/expose.js";
@@ -291,52 +291,83 @@ async function emitDom() {
 
   const knownTypes = await readInputJSON("knownTypes.json");
 
-  const emitVariations = [
-    {
-      outputFolder: new URL("./ts5.5/", outputFolder),
-      compilerBehavior: {},
-    },
+  interface Variation {
+    outputFolder: URL;
+    compilerBehavior: CompilerBehavior;
+    overriddenItems?: Browser.WebIdl;
+  }
+
+  const emitVariations: Variation[] = [
+    // ts5.7 (and later)
+    // - introduced generic typed arrays over `ArrayBufferLike`
     {
       outputFolder,
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
-      } as CompilerBehavior,
+      },
+    },
+    // ts5.6
+    // - introduced support for `IteratorObject`/Iterator helpers and unrelated setter types
+    {
+      outputFolder: new URL("./ts5.6/", outputFolder),
+      overriddenItems: await readInputJSON("overridingTypes.ts5.6.jsonc"), // ts5.6 does not support generic typed arrays
+      compilerBehavior: {
+        useIteratorObject: true,
+        allowUnrelatedSetterType: true,
+      },
+    },
+    // ts5.5 (and earlier)
+    {
+      outputFolder: new URL("./ts5.5/", outputFolder),
+      overriddenItems: await readInputJSON("overridingTypes.ts5.6.jsonc"), // ts5.5 does not support generic typed arrays
+      compilerBehavior: {}, // ts5.5 does not support `IteratorObject` or unrelated setter types
     },
   ];
 
-  for (const { outputFolder, compilerBehavior } of emitVariations) {
+  for (const {
+    outputFolder,
+    compilerBehavior,
+    overriddenItems,
+  } of emitVariations) {
     // Create output folder
     await fs.mkdir(outputFolder, {
       // Doesn't need to be recursive, but this helpfully ignores EEXIST
       recursive: true,
     });
 
-    emitFlavor(webidl, new Set(knownTypes.Window), {
+    // apply changes specific to the variation
+    let variationWebidl = webidl;
+    if (overriddenItems) {
+      variationWebidl = clone(webidl);
+      variationWebidl = merge(variationWebidl, overriddenItems);
+    }
+
+    emitFlavor(variationWebidl, new Set(knownTypes.Window), {
       name: "dom",
       global: ["Window"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(webidl, new Set(knownTypes.Worker), {
+    emitFlavor(variationWebidl, new Set(knownTypes.Worker), {
       name: "webworker",
       global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(webidl, new Set(knownTypes.Worker), {
+    emitFlavor(variationWebidl, new Set(knownTypes.Worker), {
       name: "sharedworker",
       global: ["SharedWorker", "Worker"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(webidl, new Set(knownTypes.Worker), {
+    emitFlavor(variationWebidl, new Set(knownTypes.Worker), {
       name: "serviceworker",
       global: ["ServiceWorker", "Worker"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(webidl, new Set(knownTypes.Worklet), {
+    emitFlavor(variationWebidl, new Set(knownTypes.Worklet), {
       name: "audioworklet",
       global: ["AudioWorklet", "Worklet"],
       outputFolder,

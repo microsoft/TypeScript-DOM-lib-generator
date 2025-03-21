@@ -1,5 +1,5 @@
 /////////////////////////////
-/// ServiceWorker APIs
+/// Worker APIs
 /////////////////////////////
 
 interface AddEventListenerOptions extends EventListenerOptions {
@@ -45,6 +45,63 @@ interface AudioConfiguration {
     contentType: string;
     samplerate?: number;
     spatialRendering?: boolean;
+}
+
+interface AudioDataCopyToOptions {
+    format?: AudioSampleFormat;
+    frameCount?: number;
+    frameOffset?: number;
+    planeIndex: number;
+}
+
+interface AudioDataInit {
+    data: BufferSource;
+    format: AudioSampleFormat;
+    numberOfChannels: number;
+    numberOfFrames: number;
+    sampleRate: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+}
+
+interface AudioDecoderConfig {
+    codec: string;
+    description?: BufferSource;
+    numberOfChannels: number;
+    sampleRate: number;
+}
+
+interface AudioDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: AudioDataOutputCallback;
+}
+
+interface AudioDecoderSupport {
+    config?: AudioDecoderConfig;
+    supported?: boolean;
+}
+
+interface AudioEncoderConfig {
+    bitrate?: number;
+    bitrateMode?: BitrateMode;
+    codec: string;
+    numberOfChannels: number;
+    opus?: OpusEncoderConfig;
+    sampleRate: number;
+}
+
+interface AudioEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedAudioChunkOutputCallback;
+}
+
+interface AudioEncoderSupport {
+    config?: AudioEncoderConfig;
+    supported?: boolean;
+}
+
+interface AvcEncoderConfig {
+    format?: AvcBitstreamFormat;
 }
 
 interface BlobPropertyBag {
@@ -186,6 +243,29 @@ interface EcdsaParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
 }
 
+interface EncodedAudioChunkInit {
+    data: AllowSharedBufferSource;
+    duration?: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+    type: EncodedAudioChunkType;
+}
+
+interface EncodedAudioChunkMetadata {
+    decoderConfig?: AudioDecoderConfig;
+}
+
+interface EncodedVideoChunkInit {
+    data: AllowSharedBufferSource;
+    duration?: number;
+    timestamp: number;
+    type: EncodedVideoChunkType;
+}
+
+interface EncodedVideoChunkMetadata {
+    decoderConfig?: VideoDecoderConfig;
+}
+
 interface ErrorEventInit extends EventInit {
     colno?: number;
     error?: any;
@@ -247,6 +327,10 @@ interface FileSystemGetDirectoryOptions {
 
 interface FileSystemGetFileOptions {
     create?: boolean;
+}
+
+interface FileSystemReadWriteOptions {
+    at?: number;
 }
 
 interface FileSystemRemoveOptions {
@@ -330,6 +414,26 @@ interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
 }
 
+interface ImageDecodeOptions {
+    completeFramesOnly?: boolean;
+    frameIndex?: number;
+}
+
+interface ImageDecodeResult {
+    complete: boolean;
+    image: VideoFrame;
+}
+
+interface ImageDecoderInit {
+    colorSpaceConversion?: ColorSpaceConversion;
+    data: ImageBufferSource;
+    desiredHeight?: number;
+    desiredWidth?: number;
+    preferAnimation?: boolean;
+    transfer?: ArrayBuffer[];
+    type: string;
+}
+
 interface ImageEncodeOptions {
     quality?: number;
     type?: string;
@@ -405,6 +509,10 @@ interface MediaEncodingConfiguration extends MediaConfiguration {
     type: MediaEncodingType;
 }
 
+interface MediaStreamTrackProcessorInit {
+    maxBufferSize?: number;
+}
+
 interface MessageEventInit<T = any> extends EventInit {
     data?: T;
     lastEventId?: string;
@@ -439,6 +547,15 @@ interface NotificationOptions {
     tag?: string;
 }
 
+interface OpusEncoderConfig {
+    complexity?: number;
+    format?: OpusBitstreamFormat;
+    frameDuration?: number;
+    packetlossperc?: number;
+    usedtx?: boolean;
+    useinbandfec?: boolean;
+}
+
 interface Pbkdf2Params extends Algorithm {
     hash: HashAlgorithmIdentifier;
     iterations: number;
@@ -465,6 +582,11 @@ interface PerformanceObserverInit {
 
 interface PermissionDescriptor {
     name: PermissionName;
+}
+
+interface PlaneLayout {
+    offset: number;
+    stride: number;
 }
 
 interface ProgressEventInit extends EventInit {
@@ -505,6 +627,26 @@ interface QueuingStrategyInit {
      * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
      */
     highWaterMark: number;
+}
+
+interface RTCEncodedAudioFrameMetadata {
+    contributingSources?: number[];
+    payloadType?: number;
+    sequenceNumber?: number;
+    synchronizationSource?: number;
+}
+
+interface RTCEncodedVideoFrameMetadata {
+    contributingSources?: number[];
+    dependencies?: number[];
+    frameId?: number;
+    height?: number;
+    payloadType?: number;
+    spatialIndex?: number;
+    synchronizationSource?: number;
+    temporalIndex?: number;
+    timestamp?: number;
+    width?: number;
 }
 
 interface ReadableStreamGetReaderOptions {
@@ -722,6 +864,13 @@ interface UnderlyingSource<R = any> {
     type?: ReadableStreamType;
 }
 
+interface VideoColorSpaceInit {
+    fullRange?: boolean | null;
+    matrix?: VideoMatrixCoefficients | null;
+    primaries?: VideoColorPrimaries | null;
+    transfer?: VideoTransferCharacteristics | null;
+}
+
 interface VideoConfiguration {
     bitrate: number;
     colorGamut?: ColorGamut;
@@ -733,6 +882,93 @@ interface VideoConfiguration {
     scalabilityMode?: string;
     transferFunction?: TransferFunction;
     width: number;
+}
+
+interface VideoDecoderConfig {
+    codec: string;
+    codedHeight?: number;
+    codedWidth?: number;
+    colorSpace?: VideoColorSpaceInit;
+    description?: AllowSharedBufferSource;
+    displayAspectHeight?: number;
+    displayAspectWidth?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    optimizeForLatency?: boolean;
+}
+
+interface VideoDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: VideoFrameOutputCallback;
+}
+
+interface VideoDecoderSupport {
+    config?: VideoDecoderConfig;
+    supported?: boolean;
+}
+
+interface VideoEncoderConfig {
+    alpha?: AlphaOption;
+    avc?: AvcEncoderConfig;
+    bitrate?: number;
+    bitrateMode?: VideoEncoderBitrateMode;
+    codec: string;
+    contentHint?: string;
+    displayHeight?: number;
+    displayWidth?: number;
+    framerate?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    height: number;
+    latencyMode?: LatencyMode;
+    scalabilityMode?: string;
+    width: number;
+}
+
+interface VideoEncoderEncodeOptions {
+    avc?: VideoEncoderEncodeOptionsForAvc;
+    keyFrame?: boolean;
+}
+
+interface VideoEncoderEncodeOptionsForAvc {
+    quantizer?: number | null;
+}
+
+interface VideoEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedVideoChunkOutputCallback;
+}
+
+interface VideoEncoderSupport {
+    config?: VideoEncoderConfig;
+    supported?: boolean;
+}
+
+interface VideoFrameBufferInit {
+    codedHeight: number;
+    codedWidth: number;
+    colorSpace?: VideoColorSpaceInit;
+    displayHeight?: number;
+    displayWidth?: number;
+    duration?: number;
+    format: VideoPixelFormat;
+    layout?: PlaneLayout[];
+    timestamp: number;
+    visibleRect?: DOMRectInit;
+}
+
+interface VideoFrameCopyToOptions {
+    colorSpace?: PredefinedColorSpace;
+    format?: VideoPixelFormat;
+    layout?: PlaneLayout[];
+    rect?: DOMRectInit;
+}
+
+interface VideoFrameInit {
+    alpha?: AlphaOption;
+    displayHeight?: number;
+    displayWidth?: number;
+    duration?: number;
+    timestamp?: number;
+    visibleRect?: DOMRectInit;
 }
 
 interface WebGLContextAttributes {
@@ -778,6 +1014,12 @@ interface WebTransportSendOptions {
 }
 
 interface WebTransportSendStreamOptions extends WebTransportSendOptions {
+}
+
+interface WorkerOptions {
+    credentials?: RequestCredentials;
+    name?: string;
+    type?: WorkerType;
 }
 
 interface WriteParams {
@@ -879,6 +1121,120 @@ interface AbstractWorker {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
+interface AnimationFrameProvider {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+    cancelAnimationFrame(handle: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+    requestAnimationFrame(callback: FrameRequestCallback): number;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData) */
+interface AudioData {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/duration) */
+    readonly duration: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/format) */
+    readonly format: AudioSampleFormat | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfChannels) */
+    readonly numberOfChannels: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfFrames) */
+    readonly numberOfFrames: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/sampleRate) */
+    readonly sampleRate: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/allocationSize) */
+    allocationSize(options: AudioDataCopyToOptions): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/clone) */
+    clone(): AudioData;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/copyTo) */
+    copyTo(destination: AllowSharedBufferSource, options: AudioDataCopyToOptions): void;
+}
+
+declare var AudioData: {
+    prototype: AudioData;
+    new(init: AudioDataInit): AudioData;
+};
+
+interface AudioDecoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder)
+ */
+interface AudioDecoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decodeQueueSize) */
+    readonly decodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/dequeue_event) */
+    ondequeue: ((this: AudioDecoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/configure) */
+    configure(config: AudioDecoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decode) */
+    decode(chunk: EncodedAudioChunk): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioDecoder: {
+    prototype: AudioDecoder;
+    new(init: AudioDecoderInit): AudioDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/isConfigSupported_static) */
+    isConfigSupported(config: AudioDecoderConfig): Promise<AudioDecoderSupport>;
+};
+
+interface AudioEncoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder)
+ */
+interface AudioEncoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encodeQueueSize) */
+    readonly encodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/dequeue_event) */
+    ondequeue: ((this: AudioEncoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/configure) */
+    configure(config: AudioEncoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encode) */
+    encode(data: AudioData): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioEncoder: {
+    prototype: AudioEncoder;
+    new(init: AudioEncoderInit): AudioEncoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/isConfigSupported_static) */
+    isConfigSupported(config: AudioEncoderConfig): Promise<AudioEncoderSupport>;
+};
+
 /**
  * A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system.
  *
@@ -892,11 +1248,11 @@ interface Blob {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/arrayBuffer) */
     arrayBuffer(): Promise<ArrayBuffer>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/bytes) */
-    bytes(): Promise<Uint8Array<ArrayBuffer>>;
+    bytes(): Promise<Uint8Array>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/slice) */
     slice(start?: number, end?: number, contentType?: string): Blob;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/stream) */
-    stream(): ReadableStream<Uint8Array<ArrayBuffer>>;
+    stream(): ReadableStream<Uint8Array>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/text) */
     text(): Promise<string>;
 }
@@ -908,7 +1264,7 @@ declare var Blob: {
 
 interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/body) */
-    readonly body: ReadableStream<Uint8Array<ArrayBuffer>> | null;
+    readonly body: ReadableStream<Uint8Array> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bodyUsed) */
     readonly bodyUsed: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/arrayBuffer) */
@@ -916,7 +1272,7 @@ interface Body {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/blob) */
     blob(): Promise<Blob>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/bytes) */
-    bytes(): Promise<Uint8Array<ArrayBuffer>>;
+    bytes(): Promise<Uint8Array>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/formData) */
     formData(): Promise<FormData>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/json) */
@@ -1680,7 +2036,7 @@ declare var CloseEvent: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -2192,13 +2548,57 @@ declare var DOMStringList: {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
 }
 
 declare var DecompressionStream: {
     prototype: DecompressionStream;
     new(format: CompressionFormat): DecompressionStream;
+};
+
+interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap, MessageEventTargetEventMap {
+    "message": MessageEvent;
+    "messageerror": MessageEvent;
+    "rtctransform": RTCTransformEvent;
+}
+
+/**
+ * (the Worker global scope) is accessible through the self keyword. Some additional global functions, namespaces objects, and constructors, not typically associated with the worker global scope, but available on it, are listed in the JavaScript Reference. See also: Functions available to workers.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope)
+ */
+interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider, MessageEventTarget<DedicatedWorkerGlobalScope> {
+    /**
+     * Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/name)
+     */
+    readonly name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
+    onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
+    /**
+     * Aborts dedicatedWorkerGlobal.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/close)
+     */
+    close(): void;
+    /**
+     * Clones message and transmits it to the Worker object associated with dedicatedWorkerGlobal. transfer can be passed as a list of objects that are to be transferred rather than cloned.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
+     */
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
+    addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var DedicatedWorkerGlobalScope: {
+    prototype: DedicatedWorkerGlobalScope;
+    new(): DedicatedWorkerGlobalScope;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_blend_minmax) */
@@ -2280,6 +2680,44 @@ interface EXT_texture_norm16 {
     readonly RGB16_SNORM_EXT: 0x8F9A;
     readonly RGBA16_SNORM_EXT: 0x8F9B;
 }
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk) */
+interface EncodedAudioChunk {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/byteLength) */
+    readonly byteLength: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/duration) */
+    readonly duration: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/type) */
+    readonly type: EncodedAudioChunkType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/copyTo) */
+    copyTo(destination: AllowSharedBufferSource): void;
+}
+
+declare var EncodedAudioChunk: {
+    prototype: EncodedAudioChunk;
+    new(init: EncodedAudioChunkInit): EncodedAudioChunk;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk) */
+interface EncodedVideoChunk {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/byteLength) */
+    readonly byteLength: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/duration) */
+    readonly duration: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/type) */
+    readonly type: EncodedVideoChunkType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/copyTo) */
+    copyTo(destination: AllowSharedBufferSource): void;
+}
+
+declare var EncodedVideoChunk: {
+    prototype: EncodedVideoChunk;
+    new(init: EncodedVideoChunkInit): EncodedVideoChunk;
+};
 
 /**
  * Events providing information related to errors in scripts or in files.
@@ -2719,6 +3157,31 @@ declare var FileReader: {
 };
 
 /**
+ * Allows to read File or Blob objects in a synchronous way.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync)
+ */
+interface FileReaderSync {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsArrayBuffer) */
+    readAsArrayBuffer(blob: Blob): ArrayBuffer;
+    /**
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsBinaryString)
+     */
+    readAsBinaryString(blob: Blob): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsDataURL) */
+    readAsDataURL(blob: Blob): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsText) */
+    readAsText(blob: Blob, encoding?: string): string;
+}
+
+declare var FileReaderSync: {
+    prototype: FileReaderSync;
+    new(): FileReaderSync;
+};
+
+/**
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryHandle)
@@ -2747,6 +3210,8 @@ declare var FileSystemDirectoryHandle: {
  */
 interface FileSystemFileHandle extends FileSystemHandle {
     readonly kind: "file";
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle/createSyncAccessHandle) */
+    createSyncAccessHandle(): Promise<FileSystemSyncAccessHandle>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle/createWritable) */
     createWritable(options?: FileSystemCreateWritableOptions): Promise<FileSystemWritableFileStream>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle/getFile) */
@@ -2775,6 +3240,31 @@ interface FileSystemHandle {
 declare var FileSystemHandle: {
     prototype: FileSystemHandle;
     new(): FileSystemHandle;
+};
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle)
+ */
+interface FileSystemSyncAccessHandle {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/flush) */
+    flush(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/getSize) */
+    getSize(): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/read) */
+    read(buffer: AllowSharedBufferSource, options?: FileSystemReadWriteOptions): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/truncate) */
+    truncate(newSize: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/write) */
+    write(buffer: AllowSharedBufferSource, options?: FileSystemReadWriteOptions): number;
+}
+
+declare var FileSystemSyncAccessHandle: {
+    prototype: FileSystemSyncAccessHandle;
+    new(): FileSystemSyncAccessHandle;
 };
 
 /**
@@ -3710,6 +4200,70 @@ declare var ImageData: {
     new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder)
+ */
+interface ImageDecoder {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete) */
+    readonly complete: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed) */
+    readonly completed: Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks) */
+    readonly tracks: ImageTrackList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type) */
+    readonly type: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/decode) */
+    decode(options?: ImageDecodeOptions): Promise<ImageDecodeResult>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/reset) */
+    reset(): void;
+}
+
+declare var ImageDecoder: {
+    prototype: ImageDecoder;
+    new(init: ImageDecoderInit): ImageDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/isTypeSupported_static) */
+    isTypeSupported(type: string): Promise<boolean>;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack) */
+interface ImageTrack {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated) */
+    readonly animated: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/frameCount) */
+    readonly frameCount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/repetitionCount) */
+    readonly repetitionCount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected) */
+    selected: boolean;
+}
+
+declare var ImageTrack: {
+    prototype: ImageTrack;
+    new(): ImageTrack;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList) */
+interface ImageTrackList {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length) */
+    readonly length: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready) */
+    readonly ready: Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex) */
+    readonly selectedIndex: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack) */
+    readonly selectedTrack: ImageTrack | null;
+    [index: number]: ImageTrack;
+}
+
+declare var ImageTrackList: {
+    prototype: ImageTrackList;
+    new(): ImageTrackList;
+};
+
 interface ImportMeta {
     url: string;
     resolve(specifier: string): string;
@@ -3766,6 +4320,26 @@ interface MediaCapabilities {
 declare var MediaCapabilities: {
     prototype: MediaCapabilities;
     new(): MediaCapabilities;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle) */
+interface MediaSourceHandle {
+}
+
+declare var MediaSourceHandle: {
+    prototype: MediaSourceHandle;
+    new(): MediaSourceHandle;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor) */
+interface MediaStreamTrackProcessor {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor/readable) */
+    readonly readable: ReadableStream;
+}
+
+declare var MediaStreamTrackProcessor: {
+    prototype: MediaStreamTrackProcessor;
+    new(init: MediaStreamTrackProcessorInit): MediaStreamTrackProcessor;
 };
 
 /**
@@ -4628,6 +5202,131 @@ declare var PushSubscriptionOptions: {
     new(): PushSubscriptionOptions;
 };
 
+interface RTCDataChannelEventMap {
+    "bufferedamountlow": Event;
+    "close": Event;
+    "closing": Event;
+    "error": Event;
+    "message": MessageEvent;
+    "open": Event;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel) */
+interface RTCDataChannel extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/binaryType) */
+    binaryType: BinaryType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedAmount) */
+    readonly bufferedAmount: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedAmountLowThreshold) */
+    bufferedAmountLowThreshold: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/id) */
+    readonly id: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/label) */
+    readonly label: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/maxPacketLifeTime) */
+    readonly maxPacketLifeTime: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/maxRetransmits) */
+    readonly maxRetransmits: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/negotiated) */
+    readonly negotiated: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedamountlow_event) */
+    onbufferedamountlow: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/close_event) */
+    onclose: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/closing_event) */
+    onclosing: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/error_event) */
+    onerror: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/message_event) */
+    onmessage: ((this: RTCDataChannel, ev: MessageEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/open_event) */
+    onopen: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/ordered) */
+    readonly ordered: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/protocol) */
+    readonly protocol: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/readyState) */
+    readonly readyState: RTCDataChannelState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/send) */
+    send(data: string): void;
+    send(data: Blob): void;
+    send(data: ArrayBuffer): void;
+    send(data: ArrayBufferView): void;
+    addEventListener<K extends keyof RTCDataChannelEventMap>(type: K, listener: (this: RTCDataChannel, ev: RTCDataChannelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof RTCDataChannelEventMap>(type: K, listener: (this: RTCDataChannel, ev: RTCDataChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var RTCDataChannel: {
+    prototype: RTCDataChannel;
+    new(): RTCDataChannel;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame) */
+interface RTCEncodedAudioFrame {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/data) */
+    data: ArrayBuffer;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/getMetadata) */
+    getMetadata(): RTCEncodedAudioFrameMetadata;
+}
+
+declare var RTCEncodedAudioFrame: {
+    prototype: RTCEncodedAudioFrame;
+    new(): RTCEncodedAudioFrame;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame) */
+interface RTCEncodedVideoFrame {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/data) */
+    data: ArrayBuffer;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/type) */
+    readonly type: RTCEncodedVideoFrameType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/getMetadata) */
+    getMetadata(): RTCEncodedVideoFrameMetadata;
+}
+
+declare var RTCEncodedVideoFrame: {
+    prototype: RTCEncodedVideoFrame;
+    new(): RTCEncodedVideoFrame;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer) */
+interface RTCRtpScriptTransformer extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/options) */
+    readonly options: any;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/readable) */
+    readonly readable: ReadableStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/writable) */
+    readonly writable: WritableStream;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame) */
+    generateKeyFrame(rid?: string): Promise<number>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/sendKeyFrameRequest) */
+    sendKeyFrameRequest(): Promise<void>;
+}
+
+declare var RTCRtpScriptTransformer: {
+    prototype: RTCRtpScriptTransformer;
+    new(): RTCRtpScriptTransformer;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTransformEvent) */
+interface RTCTransformEvent extends Event {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTransformEvent/transformer) */
+    readonly transformer: RTCRtpScriptTransformer;
+}
+
+declare var RTCTransformEvent: {
+    prototype: RTCTransformEvent;
+    new(): RTCTransformEvent;
+};
+
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController) */
 interface ReadableByteStreamController {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
@@ -5125,6 +5824,37 @@ declare var ServiceWorkerRegistration: {
     new(): ServiceWorkerRegistration;
 };
 
+interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
+    "connect": MessageEvent;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope) */
+interface SharedWorkerGlobalScope extends WorkerGlobalScope {
+    /**
+     * Returns sharedWorkerGlobal's name, i.e. the value given to the SharedWorker constructor. Multiple SharedWorker objects can correspond to the same shared worker (and SharedWorkerGlobalScope), by reusing the same name.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/name)
+     */
+    readonly name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/connect_event) */
+    onconnect: ((this: SharedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    /**
+     * Aborts sharedWorkerGlobal.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/close)
+     */
+    close(): void;
+    addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SharedWorkerGlobalScope: {
+    prototype: SharedWorkerGlobalScope;
+    new(): SharedWorkerGlobalScope;
+};
+
 /**
  * Available only in secure contexts.
  *
@@ -5278,7 +6008,7 @@ interface TextEncoder extends TextEncoderCommon {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
-    encode(input?: string): Uint8Array<ArrayBuffer>;
+    encode(input?: string): Uint8Array;
     /**
      * Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.
      *
@@ -5303,7 +6033,7 @@ interface TextEncoderCommon {
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
-    readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
 }
 
@@ -5467,8 +6197,12 @@ declare var URL: {
     new(url: string | URL, base?: string | URL): URL;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
     canParse(url: string | URL, base?: string | URL): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static) */
+    createObjectURL(obj: Blob): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static) */
     parse(url: string | URL, base?: string | URL): URL | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static) */
+    revokeObjectURL(url: string): void;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
@@ -5521,6 +6255,141 @@ interface URLSearchParams {
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace) */
+interface VideoColorSpace {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/fullRange) */
+    readonly fullRange: boolean | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/matrix) */
+    readonly matrix: VideoMatrixCoefficients | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/primaries) */
+    readonly primaries: VideoColorPrimaries | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/transfer) */
+    readonly transfer: VideoTransferCharacteristics | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/toJSON) */
+    toJSON(): VideoColorSpaceInit;
+}
+
+declare var VideoColorSpace: {
+    prototype: VideoColorSpace;
+    new(init?: VideoColorSpaceInit): VideoColorSpace;
+};
+
+interface VideoDecoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder)
+ */
+interface VideoDecoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/decodeQueueSize) */
+    readonly decodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/dequeue_event) */
+    ondequeue: ((this: VideoDecoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/configure) */
+    configure(config: VideoDecoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/decode) */
+    decode(chunk: EncodedVideoChunk): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoDecoder: {
+    prototype: VideoDecoder;
+    new(init: VideoDecoderInit): VideoDecoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/isConfigSupported_static) */
+    isConfigSupported(config: VideoDecoderConfig): Promise<VideoDecoderSupport>;
+};
+
+interface VideoEncoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder)
+ */
+interface VideoEncoder extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/encodeQueueSize) */
+    readonly encodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/dequeue_event) */
+    ondequeue: ((this: VideoEncoder, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/state) */
+    readonly state: CodecState;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/configure) */
+    configure(config: VideoEncoderConfig): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/encode) */
+    encode(frame: VideoFrame, options?: VideoEncoderEncodeOptions): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/flush) */
+    flush(): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/reset) */
+    reset(): void;
+    addEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoEncoder: {
+    prototype: VideoEncoder;
+    new(init: VideoEncoderInit): VideoEncoder;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/isConfigSupported_static) */
+    isConfigSupported(config: VideoEncoderConfig): Promise<VideoEncoderSupport>;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame) */
+interface VideoFrame {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedHeight) */
+    readonly codedHeight: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedRect) */
+    readonly codedRect: DOMRectReadOnly | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedWidth) */
+    readonly codedWidth: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/colorSpace) */
+    readonly colorSpace: VideoColorSpace;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/displayHeight) */
+    readonly displayHeight: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/displayWidth) */
+    readonly displayWidth: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/duration) */
+    readonly duration: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/format) */
+    readonly format: VideoPixelFormat | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/timestamp) */
+    readonly timestamp: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/visibleRect) */
+    readonly visibleRect: DOMRectReadOnly | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/allocationSize) */
+    allocationSize(options?: VideoFrameCopyToOptions): number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/clone) */
+    clone(): VideoFrame;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/close) */
+    close(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/copyTo) */
+    copyTo(destination: AllowSharedBufferSource, options?: VideoFrameCopyToOptions): Promise<PlaneLayout[]>;
+}
+
+declare var VideoFrame: {
+    prototype: VideoFrame;
+    new(image: CanvasImageSource, init?: VideoFrameInit): VideoFrame;
+    new(data: AllowSharedBufferSource, init: VideoFrameBufferInit): VideoFrame;
 };
 
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_color_buffer_float) */
@@ -8136,6 +9005,39 @@ interface WindowOrWorkerGlobalScope {
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
 
+interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEventMap {
+}
+
+/**
+ * This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
+ */
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
+    /**
+     * Clones message and transmits it to worker's global environment. transfer can be passed as a list of objects that are to be transferred rather than cloned.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/postMessage)
+     */
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
+    /**
+     * Aborts worker's associated global environment.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/terminate)
+     */
+    terminate(): void;
+    addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var Worker: {
+    prototype: Worker;
+    new(scriptURL: string | URL, options?: WorkerOptions): Worker;
+};
+
 interface WorkerGlobalScopeEventMap {
     "error": ErrorEvent;
     "languagechange": Event;
@@ -8316,6 +9218,193 @@ interface WritableStreamDefaultWriter<W = any> {
 declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
+};
+
+interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
+    "readystatechange": Event;
+}
+
+/**
+ * Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
+ */
+interface XMLHttpRequest extends XMLHttpRequestEventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readystatechange_event) */
+    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    /**
+     * Returns client's state.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readyState)
+     */
+    readonly readyState: number;
+    /**
+     * Returns the response body.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/response)
+     */
+    readonly response: any;
+    /**
+     * Returns response as text.
+     *
+     * Throws an "InvalidStateError" DOMException if responseType is not the empty string or "text".
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseText)
+     */
+    readonly responseText: string;
+    /**
+     * Returns the response type.
+     *
+     * Can be set to change the response type. Values are: the empty string (default), "arraybuffer", "blob", "document", "json", and "text".
+     *
+     * When set: setting to "document" is ignored if current global object is not a Window object.
+     *
+     * When set: throws an "InvalidStateError" DOMException if state is loading or done.
+     *
+     * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseType)
+     */
+    responseType: XMLHttpRequestResponseType;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseURL) */
+    readonly responseURL: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/status) */
+    readonly status: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/statusText) */
+    readonly statusText: string;
+    /**
+     * Can be set to a time in milliseconds. When set to a non-zero value will cause fetching to terminate after the given time has passed. When the time has passed, the request has not yet completed, and this's synchronous flag is unset, a timeout event will then be dispatched, or a "TimeoutError" DOMException will be thrown otherwise (for the send() method).
+     *
+     * When set: throws an "InvalidAccessError" DOMException if the synchronous flag is set and current global object is a Window object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/timeout)
+     */
+    timeout: number;
+    /**
+     * Returns the associated XMLHttpRequestUpload object. It can be used to gather transmission information when data is transferred to a server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/upload)
+     */
+    readonly upload: XMLHttpRequestUpload;
+    /**
+     * True when credentials are to be included in a cross-origin request. False when they are to be excluded in a cross-origin request and when cookies are to be ignored in its response. Initially false.
+     *
+     * When set: throws an "InvalidStateError" DOMException if state is not unsent or opened, or if the send() flag is set.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/withCredentials)
+     */
+    withCredentials: boolean;
+    /**
+     * Cancels any network activity.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/abort)
+     */
+    abort(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getAllResponseHeaders) */
+    getAllResponseHeaders(): string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getResponseHeader) */
+    getResponseHeader(name: string): string | null;
+    /**
+     * Sets the request method, request URL, and synchronous flag.
+     *
+     * Throws a "SyntaxError" DOMException if either method is not a valid method or url cannot be parsed.
+     *
+     * Throws a "SecurityError" DOMException if method is a case-insensitive match for `CONNECT`, `TRACE`, or `TRACK`.
+     *
+     * Throws an "InvalidAccessError" DOMException if async is false, current global object is a Window object, and the timeout attribute is not zero or the responseType attribute is not the empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open)
+     */
+    open(method: string, url: string | URL): void;
+    open(method: string, url: string | URL, async: boolean, username?: string | null, password?: string | null): void;
+    /**
+     * Acts as if the `Content-Type` header value for a response is mime. (It does not change the header.)
+     *
+     * Throws an "InvalidStateError" DOMException if state is loading or done.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/overrideMimeType)
+     */
+    overrideMimeType(mime: string): void;
+    /**
+     * Initiates the request. The body argument provides the request body, if any, and is ignored if the request method is GET or HEAD.
+     *
+     * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/send)
+     */
+    send(body?: XMLHttpRequestBodyInit | null): void;
+    /**
+     * Combines a header in author request headers.
+     *
+     * Throws an "InvalidStateError" DOMException if either state is not opened or the send() flag is set.
+     *
+     * Throws a "SyntaxError" DOMException if name is not a header name or if value is not a header value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/setRequestHeader)
+     */
+    setRequestHeader(name: string, value: string): void;
+    readonly UNSENT: 0;
+    readonly OPENED: 1;
+    readonly HEADERS_RECEIVED: 2;
+    readonly LOADING: 3;
+    readonly DONE: 4;
+    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequest: {
+    prototype: XMLHttpRequest;
+    new(): XMLHttpRequest;
+    readonly UNSENT: 0;
+    readonly OPENED: 1;
+    readonly HEADERS_RECEIVED: 2;
+    readonly LOADING: 3;
+    readonly DONE: 4;
+};
+
+interface XMLHttpRequestEventTargetEventMap {
+    "abort": ProgressEvent<XMLHttpRequestEventTarget>;
+    "error": ProgressEvent<XMLHttpRequestEventTarget>;
+    "load": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadend": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadstart": ProgressEvent<XMLHttpRequestEventTarget>;
+    "progress": ProgressEvent<XMLHttpRequestEventTarget>;
+    "timeout": ProgressEvent<XMLHttpRequestEventTarget>;
+}
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget) */
+interface XMLHttpRequestEventTarget extends EventTarget {
+    onabort: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onerror: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onload: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onloadend: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onprogress: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequestEventTarget: {
+    prototype: XMLHttpRequestEventTarget;
+    new(): XMLHttpRequestEventTarget;
+};
+
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload) */
+interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequestUpload: {
+    prototype: XMLHttpRequestUpload;
+    new(): XMLHttpRequestUpload;
 };
 
 declare namespace WebAssembly {
@@ -8522,6 +9611,22 @@ interface Console {
 
 declare var console: Console;
 
+interface AudioDataOutputCallback {
+    (output: AudioData): void;
+}
+
+interface EncodedAudioChunkOutputCallback {
+    (output: EncodedAudioChunk, metadata?: EncodedAudioChunkMetadata): void;
+}
+
+interface EncodedVideoChunkOutputCallback {
+    (chunk: EncodedVideoChunk, metadata?: EncodedVideoChunkMetadata): void;
+}
+
+interface FrameRequestCallback {
+    (time: DOMHighResTimeStamp): void;
+}
+
 interface LockGrantedCallback {
     (lock: Lock | null): any;
 }
@@ -8582,38 +9687,39 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
+interface VideoFrameOutputCallback {
+    (output: VideoFrame): void;
+}
+
 interface VoidFunction {
     (): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/clients) */
-declare var clients: Clients;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookieStore) */
-declare var cookieStore: CookieStore;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
-declare var onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
-declare var onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */
-declare var oninstall: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/message_event) */
-declare var onmessage: ((this: ServiceWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/messageerror_event) */
-declare var onmessageerror: ((this: ServiceWorkerGlobalScope, ev: MessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclick_event) */
-declare var onnotificationclick: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclose_event) */
-declare var onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/push_event) */
-declare var onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) */
-declare var onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration) */
-declare var registration: ServiceWorkerRegistration;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker) */
-declare var serviceWorker: ServiceWorker;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting) */
-declare function skipWaiting(): Promise<void>;
+interface WebCodecsErrorCallback {
+    (error: DOMException): void;
+}
+
+/**
+ * Returns dedicatedWorkerGlobal's name, i.e. the value given to the Worker constructor. Primarily useful for debugging.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/name)
+ */
+declare var name: string;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
+declare var onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
+/**
+ * Aborts dedicatedWorkerGlobal.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/close)
+ */
+declare function close(): void;
+/**
+ * Clones message and transmits it to the Worker object associated with dedicatedWorkerGlobal. transfer can be passed as a list of objects that are to be transferred rather than cloned.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
+ */
+declare function postMessage(message: any, transfer: Transferable[]): void;
+declare function postMessage(message: any, options?: StructuredSerializeOptions): void;
 /**
  * Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
  *
@@ -8633,17 +9739,17 @@ declare var location: WorkerLocation;
  */
 declare var navigator: WorkerNavigator;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/error_event) */
-declare var onerror: ((this: ServiceWorkerGlobalScope, ev: ErrorEvent) => any) | null;
+declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/languagechange_event) */
-declare var onlanguagechange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/offline_event) */
-declare var onoffline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onoffline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
-declare var ononline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var ononline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
-declare var onrejectionhandled: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onrejectionhandled: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
-declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onunhandledrejection: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /**
  * Returns workerGlobal.
  *
@@ -8705,9 +9811,17 @@ declare function setInterval(handler: TimerHandler, timeout?: number, ...argumen
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
-declare function addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+declare function cancelAnimationFrame(handle: number): void;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+declare function requestAnimationFrame(callback: FrameRequestCallback): number;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
+declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
+declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-declare function removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBuffer | ArrayBufferView;
@@ -8719,7 +9833,7 @@ type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number | CSSNumericValue;
 type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
-type CanvasImageSource = ImageBitmap | OffscreenCanvas;
+type CanvasImageSource = ImageBitmap | OffscreenCanvas | VideoFrame;
 type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
@@ -8743,6 +9857,7 @@ type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
+type ImageBufferSource = AllowSharedBufferSource | ReadableStream;
 type Int32List = Int32Array | GLint[];
 type MessageEventSource = MessagePort | ServiceWorker;
 type NamedCurve = string;
@@ -8755,12 +9870,16 @@ type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableSt
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type ReportList = Report[];
 type RequestInfo = Request | string;
-type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
+type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
 type Uint32List = Uint32Array | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AlphaOption = "discard" | "keep";
+type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
+type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
+type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
@@ -8774,11 +9893,14 @@ type CanvasTextAlign = "center" | "end" | "left" | "right" | "start";
 type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top";
 type CanvasTextRendering = "auto" | "geometricPrecision" | "optimizeLegibility" | "optimizeSpeed";
 type ClientTypes = "all" | "sharedworker" | "window" | "worker";
+type CodecState = "closed" | "configured" | "unconfigured";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type CookieSameSite = "lax" | "none" | "strict";
 type DocumentVisibilityState = "hidden" | "visible";
+type EncodedAudioChunkType = "delta" | "key";
+type EncodedVideoChunkType = "delta" | "key";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
@@ -8786,6 +9908,7 @@ type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
+type HardwareAcceleration = "no-preference" | "prefer-hardware" | "prefer-software";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
@@ -8796,17 +9919,21 @@ type ImageSmoothingQuality = "high" | "low" | "medium";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
 type KeyType = "private" | "public" | "secret";
 type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
+type LatencyMode = "quality" | "realtime";
 type LockMode = "exclusive" | "shared";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaEncodingType = "record" | "webrtc";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
+type OpusBitstreamFormat = "ogg" | "opus";
 type PermissionName = "camera" | "geolocation" | "microphone" | "midi" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "storage-access";
 type PermissionState = "denied" | "granted" | "prompt";
 type PredefinedColorSpace = "display-p3" | "srgb";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
+type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
+type RTCEncodedVideoFrameType = "delta" | "empty" | "key";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
@@ -8822,8 +9949,14 @@ type SecurityPolicyViolationEventDisposition = "enforce" | "report";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type TransferFunction = "hlg" | "pq" | "srgb";
+type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
+type VideoEncoderBitrateMode = "constant" | "quantizer" | "variable";
+type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";
+type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I422" | "I444" | "NV12" | "RGBA" | "RGBX";
+type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
 type WebTransportErrorSource = "session" | "stream";
 type WorkerType = "classic" | "module";
 type WriteCommandType = "seek" | "truncate" | "write";
+type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
