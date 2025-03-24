@@ -467,6 +467,16 @@
                 "overrideSignatures": [
                     "new (options: any): AudioWorkletProcessorImpl"
                 ]
+            },
+            "LockGrantedCallback": {
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "overrideSignatures": [
+                    "(lock: Lock | null): T"
+                ]
             }
         }
     },
@@ -3640,6 +3650,59 @@
                     "property": {
                         "fetchPriority": {
                             "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
+            },
+            "LockManager": {
+                "methods": {
+                    "method": {
+                        "request": {
+                            "typeParameters": {
+                                "name": "T"
+                            },
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "name",
+                                            "overrideType": "string"
+                                        },
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "LockGrantedCallback<T>"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<T>"
+                                },
+                                "1": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "name",
+                                            "overrideType": "string"
+                                        },
+                                        {
+                                            "name": "options",
+                                            "overrideType": "LockOptions"
+                                        },
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "LockGrantedCallback<T>"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<T>"
+                                }
+                            }
                         }
                     }
                 }
