@@ -474,9 +474,11 @@
                         "name": "T"
                     }
                 ],
-                "overrideSignatures": [
-                    "(lock: Lock | null): T"
-                ]
+                "signature": {
+                    "0": {
+                        "overrideType": "T"
+                    }
+                }
             }
         }
     },
@@ -3670,10 +3672,6 @@
                                     ],
                                     "param": [
                                         {
-                                            "name": "name",
-                                            "overrideType": "string"
-                                        },
-                                        {
                                             "name": "callback",
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
@@ -3687,14 +3685,6 @@
                                         }
                                     ],
                                     "param": [
-                                        {
-                                            "name": "name",
-                                            "overrideType": "string"
-                                        },
-                                        {
-                                            "name": "options",
-                                            "overrideType": "LockOptions"
-                                        },
                                         {
                                             "name": "callback",
                                             "overrideType": "LockGrantedCallback<T>"
