@@ -5,11 +5,22 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-function extractSummary(markdown: string) {
+function cleanText(text: string): string {
+  return text
+    .replace(/\{\{domxref\(["']([^"']+)["'](?:,\s*["'][^"']+["'])?\)\}\}/g, "$1") // Extract domxref
+    .replace(/\{\{(?:event|jsxref|glossary|cssref|specname)\|([^}]+)\}\}/gi, "$1") // Extract glossary, event, jsxref, etc.
+    .replace(/\{\{[^}]+\}\}/g, "") // Remove any other unknown MDN templates
+    .replace(/`([^`]+)`/g, "$1") // Keep inline code readable
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Keep link text but remove URLs
+    .replace(/\s+/g, " ") // Normalize spaces
+    .trim();
+}
+
+function extractSummary(markdown: string): string {
   // Remove frontmatter (--- at the beginning)
   markdown = markdown.replace(/^---[\s\S]+?---\n/, "");
 
-  // Split into lines and find the first meaningful paragraph
+  // Find the first meaningful paragraph
   const lines = markdown.split("\n");
   for (const line of lines) {
     const trimmed = line.trim();
@@ -19,39 +30,26 @@ function extractSummary(markdown: string) {
       !trimmed.startsWith(">") &&
       !trimmed.startsWith("{{")
     ) {
-      return trimmed
-        .replace(/\{\{domxref\(["'][^"']+["'],\s*["']([^"']+)["']\)\}\}/g, "$1") // Extract second argument from domxref
-        .replace(/\{\{domxref\(["']([^"']+)["']\)\}\}/g, "$1") // Extract single-argument domxref
-        .replace(/\{\{[^}]+\}\}/g, "") // Remove other MDN templates like {{CSSRef}}
-        .replace(/<[^>]+>/g, "") // Remove HTML tags
-        .replace(/\*\*(.*?)\*\*/g, "$1") // Remove Markdown bold (**bold**)
-        .replace(/_(.*?)_/g, "$1") // Remove Markdown italic (_italic_)
-        .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Remove Markdown links [text](url)
-        .replace(/`([^`]+)`/g, "$1") // Remove inline code `code`
-        .replace(/&lt;/g, "<") // Decode HTML entities
-        .replace(/&gt;/g, ">")
-        .replace(/&amp;/g, "&")
-        .replace(/\s+/g, " "); // Normalize spaces
+      return cleanText(trimmed);
     }
   }
 
   return "";
 }
 
-async function getFolders(dirPath: string) {
+async function getFolders(dirPath: string): Promise<string[]> {
   try {
     const entries = await fs.readdir(dirPath, { withFileTypes: true });
-    const folders = entries
+    return entries
       .filter((entry) => entry.isDirectory())
       .map((entry) => path.join(dirPath, entry.name));
-    return folders;
   } catch (error) {
     console.error("Error reading directories:", error);
     return [];
   }
 }
 
-async function getIndexMdContents(folders: string[]) {
+async function getIndexMdContents(folders: string[]): Promise<{ [key: string]: string }> {
   const results: { [key: string]: string } = {};
 
   for (const folder of folders) {
@@ -59,12 +57,15 @@ async function getIndexMdContents(folders: string[]) {
 
     try {
       const content = await fs.readFile(indexPath, "utf-8");
-      const titleMatch = content.match(/title: (.*)/);
-      const title = titleMatch ? titleMatch[1] : "";
+
+      // Improved title extraction
+      const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
+      const title = titleMatch ? cleanText(titleMatch[1]) : path.basename(folder);
+
       const summary = extractSummary(content);
       results[title] = summary;
-    } catch {
-      // Ignore missing index.md files
+    } catch (error) {
+      console.warn(`Skipping ${indexPath}: ${error}`);
     }
   }
 
@@ -72,16 +73,17 @@ async function getIndexMdContents(folders: string[]) {
 }
 
 export async function generateDescription() {
-  const basePath = path.resolve(
-    __dirname,
-    "../mdn-content/files/en-us/web/api",
-  );
-  const folders = await getFolders(basePath);
-  const data = await getIndexMdContents(folders);
-  // Write to JSON file
-  await fs.writeFile(
-    path.resolve(__dirname, "../inputfiles/mdn/") + "/apiDescriptions.json",
-    JSON.stringify(data, null, 2),
-    "utf-8",
-  );
+  const basePath = path.resolve(__dirname, "../mdn-content/files/en-us/web/api");
+  const outputDir = path.resolve(__dirname, "../inputfiles/mdn/");
+  const outputFile = path.join(outputDir, "apiDescriptions.json");
+
+  try {
+    await fs.mkdir(outputDir, { recursive: true });
+    const folders = await getFolders(basePath);
+    const data = await getIndexMdContents(folders);
+    await fs.writeFile(outputFile, JSON.stringify(data, null, 2), "utf-8");
+    console.log(`API descriptions saved to ${outputFile}`);
+  } catch (error) {
+    console.error("Error generating API descriptions:", error);
+  }
 }
