@@ -7,8 +7,14 @@ const __dirname = path.dirname(__filename);
 
 function cleanText(text: string): string {
   return text
-    .replace(/\{\{domxref\(["']([^"']+)["'](?:,\s*["'][^"']+["'])?\)\}\}/g, "$1") // Extract domxref
-    .replace(/\{\{(?:event|jsxref|glossary|cssref|specname)\|([^}]+)\}\}/gi, "$1") // Extract glossary, event, jsxref, etc.
+    .replace(
+      /\{\{domxref\(["']([^"']+)["'](?:,\s*["'][^"']+["'])?\)\}\}/g,
+      "$1",
+    ) // Extract domxref
+    .replace(
+      /\{\{(?:event|jsxref|glossary|cssref|specname)\|([^}]+)\}\}/gi,
+      "$1",
+    ) // Extract glossary, event, jsxref, etc.
     .replace(/\{\{[^}]+\}\}/g, "") // Remove any other unknown MDN templates
     .replace(/`([^`]+)`/g, "$1") // Keep inline code readable
     .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Keep link text but remove URLs
@@ -49,7 +55,9 @@ async function getFolders(dirPath: string): Promise<string[]> {
   }
 }
 
-async function getIndexMdContents(folders: string[]): Promise<{ [key: string]: string }> {
+async function getIndexMdContents(
+  folders: string[],
+): Promise<{ [key: string]: string }> {
   const results: { [key: string]: string } = {};
 
   for (const folder of folders) {
@@ -60,7 +68,9 @@ async function getIndexMdContents(folders: string[]): Promise<{ [key: string]: s
 
       // Improved title extraction
       const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const title = titleMatch ? cleanText(titleMatch[1]) : path.basename(folder);
+      const title = titleMatch
+        ? cleanText(titleMatch[1])
+        : path.basename(folder);
 
       const summary = extractSummary(content);
       results[title] = summary;
@@ -73,7 +83,10 @@ async function getIndexMdContents(folders: string[]): Promise<{ [key: string]: s
 }
 
 export async function generateDescription() {
-  const basePath = path.resolve(__dirname, "../mdn-content/files/en-us/web/api");
+  const basePath = path.resolve(
+    __dirname,
+    "../mdn-content/files/en-us/web/api",
+  );
   const outputDir = path.resolve(__dirname, "../inputfiles/mdn/");
   const outputFile = path.join(outputDir, "apiDescriptions.json");
 
