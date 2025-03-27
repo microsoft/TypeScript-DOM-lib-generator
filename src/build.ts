@@ -1,6 +1,6 @@
 import * as Browser from "./build/types.js";
 import { promises as fs } from "fs";
-import { merge, resolveExposure, arrayToMap, clone } from "./build/helpers.js";
+import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
 import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";
 import { convert } from "./build/widlprocess.js";
 import { getExposedTypes } from "./build/expose.js";
@@ -294,7 +294,6 @@ async function emitDom() {
   interface Variation {
     outputFolder: URL;
     compilerBehavior: CompilerBehavior;
-    overriddenItems?: Browser.WebIdl;
   }
 
   const emitVariations: Variation[] = [
@@ -305,13 +304,13 @@ async function emitDom() {
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
+        genericTypedArrays: true,
       },
     },
     // ts5.6
     // - introduced support for `IteratorObject`/Iterator helpers and unrelated setter types
     {
       outputFolder: new URL("./ts5.6/", outputFolder),
-      overriddenItems: await readInputJSON("overridingTypes.ts5.6.jsonc"), // ts5.6 does not support generic typed arrays
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
@@ -320,54 +319,42 @@ async function emitDom() {
     // ts5.5 (and earlier)
     {
       outputFolder: new URL("./ts5.5/", outputFolder),
-      overriddenItems: await readInputJSON("overridingTypes.ts5.6.jsonc"), // ts5.5 does not support generic typed arrays
       compilerBehavior: {}, // ts5.5 does not support `IteratorObject` or unrelated setter types
     },
   ];
 
-  for (const {
-    outputFolder,
-    compilerBehavior,
-    overriddenItems,
-  } of emitVariations) {
+  for (const { outputFolder, compilerBehavior } of emitVariations) {
     // Create output folder
     await fs.mkdir(outputFolder, {
       // Doesn't need to be recursive, but this helpfully ignores EEXIST
       recursive: true,
     });
 
-    // apply changes specific to the variation
-    let variationWebidl = webidl;
-    if (overriddenItems) {
-      variationWebidl = clone(webidl);
-      variationWebidl = merge(variationWebidl, overriddenItems);
-    }
-
-    emitFlavor(variationWebidl, new Set(knownTypes.Window), {
+    emitFlavor(webidl, new Set(knownTypes.Window), {
       name: "dom",
       global: ["Window"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(variationWebidl, new Set(knownTypes.Worker), {
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "webworker",
       global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(variationWebidl, new Set(knownTypes.Worker), {
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "sharedworker",
       global: ["SharedWorker", "Worker"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(variationWebidl, new Set(knownTypes.Worker), {
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "serviceworker",
       global: ["ServiceWorker", "Worker"],
       outputFolder,
       compilerBehavior,
     });
-    emitFlavor(variationWebidl, new Set(knownTypes.Worklet), {
+    emitFlavor(webidl, new Set(knownTypes.Worklet), {
       name: "audioworklet",
       global: ["AudioWorklet", "Worklet"],
       outputFolder,

@@ -259,17 +259,8 @@
                 "properties": {
                     "property": {
                         "body": {
-                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "bytes": {
-                            "signature": {
-                                "0": {
-                                    "overrideType": "Promise<Uint8Array<ArrayBuffer>>"
-                                }
+                            "subtype": {
+                                "type": "Uint8Array"
                             }
                         }
                     }
@@ -2724,17 +2715,12 @@
             "Blob": {
               "methods": {
                 "method": {
-                  "bytes": {
-                    "signature": {
-                      "0": {
-                        "overrideType": "Promise<Uint8Array<ArrayBuffer>>"
-                      }
-                    }
-                  },
                   "stream": {
                     "signature": {
                       "0": {
-                        "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
+                        "subtype": {
+                            "type": "Uint8Array"
+                        }
                       }
                     }
                   }
@@ -2762,7 +2748,7 @@
                                     "overrideType": "{ highWaterMark?: number }"
                                 }
                             ],
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "1": {
                             "typeParameters": [
@@ -2889,7 +2875,7 @@
                             "param": [
                                 {
                                     "name": "stream",
-                                    "overrideType": "ReadableStream<Uint8Array>"
+                                    "subtype": { "type": "Uint8Array" }
                                 }
                             ]
                         }
@@ -3191,12 +3177,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<BufferSource>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -3207,12 +3195,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<BufferSource>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -3223,25 +3213,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<string>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "DOMString" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<BufferSource>"
-                        }
-                    }
-                }
-            },
-            "TextEncoder": {
-                "methods": {
-                    "method": {
-                        "encode": {
-                            "signature": {
-                                "0": {
-                                    "overrideType": "Uint8Array<ArrayBuffer>"
-                                }
-                            }
+                            "type": "WritableStream",
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -3252,12 +3231,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array<ArrayBuffer>>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<string>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "DOMString" }
                         }
                     }
                 }
@@ -4065,11 +4046,6 @@
                     }
                 ],
                 "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
-            },
-            {
-                "name": "AllowSharedBufferSource",
-                // No SharedArrayBuffer in ES5, oh no.
-                "overrideType": "ArrayBuffer | ArrayBufferView"
             }
         ]
     },

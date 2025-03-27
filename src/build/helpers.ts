@@ -4,6 +4,7 @@ import * as Browser from "./types.js";
 export const bufferSourceTypes = new Set([
   "ArrayBuffer",
   "SharedArrayBuffer",
+  "ArrayBufferLike",
   "ArrayBufferView",
   "DataView",
   "Int8Array",
@@ -112,25 +113,6 @@ export function exposesTo(o: { exposed?: string }, target: string[]): boolean {
     return true;
   }
   return o.exposed.split(" ").some((e) => target.includes(e));
-}
-
-export function clone<T>(obj: T): T {
-  if (typeof obj !== "object" || !obj) {
-    return obj;
-  }
-  if (Array.isArray(obj)) {
-    return obj.map(clone) as any as T;
-  }
-  if (obj instanceof Map) {
-    return new Map([...obj.entries()].map(clone)) as any as T;
-  }
-  const result = {} as T;
-  for (const k in obj) {
-    if (Object.getOwnPropertyDescriptor(obj, k)) {
-      result[k] = clone(obj[k]);
-    }
-  }
-  return result;
 }
 
 export function merge<T>(target: T, src: T, shallow?: boolean): T {

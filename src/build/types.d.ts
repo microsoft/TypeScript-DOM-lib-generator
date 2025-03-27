@@ -4,6 +4,7 @@ export interface Typed {
   nullable?: boolean;
   overrideType?: string;
   additionalTypes?: string[];
+  allowShared?: boolean;
 }
 
 export interface Param extends Typed {
