@@ -25,7 +25,7 @@ function cleanText(text: string): string {
     .replace(/&gt;/g, ">") // Decode HTML entities
     .replace(/`([^`]+)`/g, "$1") // Keep inline code readable
     .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Keep link text but remove URLs
-    .replace(/<[^>]+>/g, "") // Remove HTML tags
+    .replace(/<\/?[^>]+(>|$)/g, "") // Remove HTML tags
     .replace(/\s+/g, " ") // Normalize spaces
     .replace(/\n\s*/g, "\n") // Ensure line breaks are preserved
     .replace(/"/g, "'")
