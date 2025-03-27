@@ -4300,8 +4300,8 @@ interface LockManager {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/query) */
     query(): Promise<LockManagerSnapshot>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/request) */
-    request(name: string, callback: LockGrantedCallback): Promise<any>;
-    request(name: string, options: LockOptions, callback: LockGrantedCallback): Promise<any>;
+    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<T>;
+    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<T>;
 }
 
 declare var LockManager: {
@@ -9627,8 +9627,8 @@ interface FrameRequestCallback {
     (time: DOMHighResTimeStamp): void;
 }
 
-interface LockGrantedCallback {
-    (lock: Lock | null): any;
+interface LockGrantedCallback<T> {
+    (lock: Lock | null): T;
 }
 
 interface OnErrorEventHandlerNonNull {
