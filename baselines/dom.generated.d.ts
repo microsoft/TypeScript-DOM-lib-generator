@@ -16123,8 +16123,8 @@ interface LockManager {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/query) */
     query(): Promise<LockManagerSnapshot>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/request) */
-    request(name: string, callback: LockGrantedCallback): Promise<any>;
-    request(name: string, options: LockOptions, callback: LockGrantedCallback): Promise<any>;
+    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<T>;
+    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<T>;
 }
 
 declare var LockManager: {
@@ -22398,6 +22398,9 @@ declare var SVGNumberList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPathElement)
  */
 interface SVGPathElement extends SVGGeometryElement {
+    readonly pathLength: SVGAnimatedNumber;
+    getPointAtLength(distance: number): DOMPoint;
+    getTotalLength(): number;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -29265,8 +29268,8 @@ interface IntersectionObserverCallback {
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void;
 }
 
-interface LockGrantedCallback {
-    (lock: Lock | null): any;
+interface LockGrantedCallback<T> {
+    (lock: Lock | null): T;
 }
 
 interface MediaSessionActionHandler {
