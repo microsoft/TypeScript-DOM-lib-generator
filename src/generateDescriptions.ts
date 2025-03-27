@@ -8,11 +8,11 @@ const __dirname = path.dirname(__filename);
 function cleanText(text: string): string {
   return text
     .replace(
-      /\{\{\s*(Glossary|HTMLElement|SVGAttr|SVGElement|cssxref|jsxref|HTTPHeader)\s*\(\s*["']((?:\\.|[^"'])+)["'].*?\)\s*\}\}/gi,
+      /\{\{\s*(Glossary|HTMLElement|SVGAttr|SVGElement|cssxref|jsxref|HTTPHeader)\s*\(\s*["']((?:\\.|[^"\\])*?)["'].*?\)\s*\}\}/gi,
       "$2",
     ) // Extract first argument from multiple templates, handling escaped quotes & spaces
     .replace(
-      /\{\{\s*domxref\s*\(\s*["']((?:\\.|[^"'])+)["'][^}]*\)\s*\}\}/gi,
+      /\{\{\s*domxref\s*\(\s*["']((?:\\.|[^"\\])*?)["'][^}]*\)\s*\}\}/gi,
       "$1",
     ) // Extract first argument from domxref, handling spaces
     .replace(
