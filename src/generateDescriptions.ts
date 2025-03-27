@@ -8,17 +8,27 @@ const __dirname = path.dirname(__filename);
 function cleanText(text: string): string {
   return text
     .replace(
-      /\{\{domxref\(["']([^"']+)["'](?:,\s*["'][^"']+["'])?\)\}\}/g,
-      "$1",
-    ) // Extract domxref
+      /\{\{\s*(Glossary|HTMLElement|SVGAttr|SVGElement|cssxref|jsxref|HTTPHeader)\s*\(\s*["']((?:\\.|[^"'])+)["'].*?\)\s*\}\}/gi,
+      "$2",
+    ) // Extract first argument from multiple templates, handling escaped quotes & spaces
     .replace(
-      /\{\{(?:event|jsxref|glossary|cssref|specname)\|([^}]+)\}\}/gi,
+      /\{\{\s*domxref\s*\(\s*["']((?:\\.|[^"'])+)["'][^}]*\)\s*\}\}/gi,
       "$1",
-    ) // Extract glossary, event, jsxref, etc.
-    .replace(/\{\{[^}]+\}\}/g, "") // Remove any other unknown MDN templates
+    ) // Extract first argument from domxref, handling spaces
+    .replace(
+      /\{\{\s*(?:event|jsxref|cssref|specname)\s*\|\s*([^}]+)\s*\}\}/gi,
+      "$1",
+    ) // Handle event, jsxref, cssref, etc.
+    .replace(/\{\{\s*([^}]+)\s*\}\}/g, (_, match) => `[MISSING: ${match}]`) // Catch any remaining unhandled templates
+    .replace(/\\(["'])/g, "$1") // Remove backslashes from escaped quotes
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">") // Decode HTML entities
     .replace(/`([^`]+)`/g, "$1") // Keep inline code readable
     .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Keep link text but remove URLs
+    .replace(/<[^>]+>/g, "") // Remove HTML tags
     .replace(/\s+/g, " ") // Normalize spaces
+    .replace(/\n\s*/g, "\n") // Ensure line breaks are preserved
+    .replace(/"/g, "'")
     .trim();
 }
 

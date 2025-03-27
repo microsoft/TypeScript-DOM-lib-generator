@@ -298,7 +298,7 @@ declare var ByteLengthQueuingStrategy: {
 };
 
 /**
- * The **CompressionStream** interface of the is an API for compressing a stream of data.
+ * The **CompressionStream** interface of the Compression Streams API is an API for compressing a stream of data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
  */
@@ -428,7 +428,7 @@ declare var DOMException: {
 };
 
 /**
- * The **DecompressionStream** interface of the is an API for decompressing a stream of data.
+ * The **DecompressionStream** interface of the Compression Streams API is an API for decompressing a stream of data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
  */
@@ -757,7 +757,7 @@ declare var MessagePort: {
 };
 
 /**
- * The **PromiseRejectionEvent** interface represents events which are sent to the global script context when JavaScript s are rejected. These events are particularly useful for telemetry and debugging purposes.
+ * The **PromiseRejectionEvent** interface represents events which are sent to the global script context when JavaScript Promises are rejected. These events are particularly useful for telemetry and debugging purposes.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent)
  */
@@ -843,7 +843,7 @@ declare var ReadableStreamBYOBReader: {
 };
 
 /**
- * The **ReadableStreamBYOBRequest** interface of the Streams API represents a "pull request" for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
+ * The **ReadableStreamBYOBRequest** interface of the Streams API represents a 'pull request' for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest)
  */
@@ -957,7 +957,7 @@ interface TextDecoderCommon {
 }
 
 /**
- * The **TextDecoderStream** interface of the converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
+ * The **TextDecoderStream** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
@@ -1006,7 +1006,7 @@ interface TextEncoderCommon {
 }
 
 /**
- * The **TextEncoderStream** interface of the converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
+ * The **TextEncoderStream** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
@@ -1059,7 +1059,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * The **URL** interface is used to parse, construct, normalize, and encode . It works by providing properties which allow you to easily read and modify the components of a URL.
+ * The **URL** interface is used to parse, construct, normalize, and encode URL. It works by providing properties which allow you to easily read and modify the components of a URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
