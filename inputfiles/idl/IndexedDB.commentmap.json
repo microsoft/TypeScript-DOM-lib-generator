@@ -1,7 +1,7 @@
 {
     "idbrequest-result": "When a request is completed, returns the result, or undefined if the request failed. Throws a \"InvalidStateError\" DOMException if the request is still pending.",
     "idbrequest-error": "When a request is completed, returns the error (a DOMException), or null if the request succeeded. Throws a \"InvalidStateError\" DOMException if the request is still pending.",
-    "idbrequest-source": "Returns the IDBObjectStore, IDBIndex, or IDBCursor the request was made against, or null if is was an open request.",
+    "idbrequest-source": "Returns the IDBObjectStore, IDBIndex, or IDBCursor the request was made against, or null if it was an open request.",
     "idbrequest-transaction": "Returns the IDBTransaction the request was made within. If this as an open request, then it returns an upgrade transaction while it is running, or null otherwise.",
     "idbrequest-readystate": "Returns \"pending\" until a request is complete, then returns \"done\".",
     "idbfactory-open": "Attempts to open a connection to the named database with the current version, or 1 if it does not already exist. If the request is successful request's result will be the connection.",
