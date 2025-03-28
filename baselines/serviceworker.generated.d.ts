@@ -8527,7 +8527,7 @@ interface LockGrantedCallback<T> {
 }
 
 interface OnErrorEventHandlerNonNull {
-    (event: Event, source?: string, lineno?: number, colno?: number, error?: Error): any;
+    (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any;
 }
 
 interface PerformanceObserverCallback {

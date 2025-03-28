@@ -9892,7 +9892,7 @@ interface GlobalEventHandlers {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event)
      */
-    onerror: OnErrorEventHandler;
+    onerror: Event;
     /**
      * Fires when the object receives focus.
      * @param ev The event.
@@ -28466,7 +28466,7 @@ interface OnBeforeUnloadEventHandlerNonNull {
 }
 
 interface OnErrorEventHandlerNonNull {
-    (event: Event, source?: string, lineno?: number, colno?: number, error?: Error): any;
+    (event: Event | string, source?: string, lineno?: number, colno?: number, error?: Error): any;
 }
 
 interface PerformanceObserverCallback {
@@ -29241,7 +29241,7 @@ declare var onended: ((this: Window, ev: Event) => any) | null;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event)
  */
-declare var onerror: OnErrorEventHandler;
+declare var onerror: Event;
 /**
  * Fires when the object receives focus.
  * @param ev The event.
