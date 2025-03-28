@@ -103,9 +103,11 @@ export async function generateDescription() {
   try {
     await fs.mkdir(outputDir, { recursive: true });
     const folders = await getFolders(basePath);
-    const data = await getIndexMdContents(folders);
-    await fs.writeFile(outputFile, JSON.stringify(data, null, 2), "utf-8");
-    console.log(`API descriptions saved to ${outputFile}`);
+    if (folders.length) {
+      const data = await getIndexMdContents(folders);
+      await fs.writeFile(outputFile, JSON.stringify(data, null, 2), "utf-8");
+      console.log(`API descriptions saved to ${outputFile}`);
+    }
   } catch (error) {
     console.error("Error generating API descriptions:", error);
   }
