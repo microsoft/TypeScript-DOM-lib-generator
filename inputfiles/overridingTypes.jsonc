@@ -326,6 +326,10 @@
                             {
                                 "name": "error",
                                 "overrideType": "Error"
+                            }, 
+                            {
+                                "name": "event",
+                                "overrideType": "Event"
                             }
                         ]
                     }
