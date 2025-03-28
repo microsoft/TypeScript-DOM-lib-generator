@@ -162,7 +162,7 @@
                 "properties": {
                     "property": {
                         "onerror": {
-                            "overrideType": "Event"
+                            "overrideType": "(event: Event) => void"
                         },
                         "ontouchcancel": {
                             "optional": true

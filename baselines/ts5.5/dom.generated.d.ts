@@ -9882,7 +9882,7 @@ interface GlobalEventHandlers {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event)
      */
-    onerror: Event;
+    onerror: (event: Event) => void;
     /**
      * Fires when the object receives focus.
      * @param ev The event.
@@ -29219,7 +29219,7 @@ declare var onended: ((this: Window, ev: Event) => any) | null;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event)
  */
-declare var onerror: Event;
+declare var onerror: (event: Event) => void;
 /**
  * Fires when the object receives focus.
  * @param ev The event.
