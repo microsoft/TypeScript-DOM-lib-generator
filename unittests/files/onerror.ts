@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-var */
 // this should not show error
-window.onerror = (message: string, source: string, lineno: number, colno: number, error: any) => {};
+window.onerror = (_message, _source, _lineno, _colno, _error) => {};
 
 // this also should not show error
 declare var img: HTMLImageElement;
-img.onerror = (event: Event) => {};
+img.onerror = (_event: Event) => {};

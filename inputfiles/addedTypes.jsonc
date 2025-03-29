@@ -545,6 +545,10 @@
                         },
                         "loading": {
                             "overrideType": "\"eager\" | \"lazy\""
+                        },
+                        "onerror": {
+                            "name": "onerror",
+                            "overrideType": "(event: Event) => void"
                         }
                     }
                 }
