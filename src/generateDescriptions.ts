@@ -36,7 +36,7 @@ function extractSummary(markdown: string): string {
   // Remove frontmatter (--- at the beginning)
   markdown = markdown.replace(/^---[\s\S]+?---\n/, "");
 
-  // Find the first meaningful paragraph
+  // Find the first meaningful sentence
   const lines = markdown.split("\n");
   for (const line of lines) {
     const trimmed = line.trim();
@@ -46,7 +46,12 @@ function extractSummary(markdown: string): string {
       !trimmed.startsWith(">") &&
       !trimmed.startsWith("{{")
     ) {
-      return cleanText(trimmed);
+      // Extract the first sentence (ending in . ! or ?)
+      const sentenceMatch = trimmed.match(/(.*?[.!?])(?:\s|$)/);
+      if (sentenceMatch) {
+        return cleanText(sentenceMatch[1]); // Return the first full sentence
+      }
+      return cleanText(trimmed); // Fallback if no punctuation is found
     }
   }
 

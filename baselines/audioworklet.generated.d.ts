@@ -262,7 +262,7 @@ declare var AudioWorkletGlobalScope: {
 };
 
 /**
- * The **AudioWorkletProcessor** interface of the Web Audio API represents an audio processing code behind a custom AudioWorkletNode. It lives in the AudioWorkletGlobalScope and runs on the Web Audio rendering thread. In turn, an AudioWorkletNode based on it runs on the main thread.
+ * The **AudioWorkletProcessor** interface of the Web Audio API represents an audio processing code behind a custom AudioWorkletNode.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor)
  */
@@ -355,7 +355,7 @@ declare var CustomEvent: {
 };
 
 /**
- * The **DOMException** interface represents an abnormal event (called an **exception**) that occurs as a result of calling a method or accessing a property of a web API. This is how error conditions are described in web APIs.
+ * The **DOMException** interface represents an abnormal event (called an **exception**) that occurs as a result of calling a method or accessing a property of a web API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException)
  */
@@ -757,7 +757,7 @@ declare var MessagePort: {
 };
 
 /**
- * The **PromiseRejectionEvent** interface represents events which are sent to the global script context when JavaScript Promises are rejected. These events are particularly useful for telemetry and debugging purposes.
+ * The **PromiseRejectionEvent** interface represents events which are sent to the global script context when JavaScript Promises are rejected.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent)
  */
@@ -797,7 +797,7 @@ declare var ReadableByteStreamController: {
 };
 
 /**
- * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the Response.body property of a Response object.
+ * This Streams API interface represents a readable stream of byte data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
@@ -862,7 +862,7 @@ declare var ReadableStreamBYOBRequest: {
 };
 
 /**
- * The **ReadableStreamDefaultController** interface of the Streams API represents a controller allowing control of a ReadableStream's state and internal queue. Default controllers are for streams that are not byte streams.
+ * The **ReadableStreamDefaultController** interface of the Streams API represents a controller allowing control of a ReadableStream's state and internal queue.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController)
  */
@@ -907,7 +907,7 @@ interface ReadableStreamGenericReader {
 }
 
 /**
- * The **TextDecoder** interface represents a decoder for a specific text encoding, such as UTF-8, ISO-8859-2, KOI8-R, GBK, etc. A decoder takes a stream of bytes as input and emits a stream of code points.
+ * The **TextDecoder** interface represents a decoder for a specific text encoding, such as UTF-8, ISO-8859-2, KOI8-R, GBK, etc.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder)
  */
@@ -1006,7 +1006,7 @@ interface TextEncoderCommon {
 }
 
 /**
- * The **TextEncoderStream** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
+ * The **TextEncoderStream** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
@@ -1059,7 +1059,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * The **URL** interface is used to parse, construct, normalize, and encode URL. It works by providing properties which allow you to easily read and modify the components of a URL.
+ * The **URL** interface is used to parse, construct, normalize, and encode URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
@@ -1159,7 +1159,7 @@ declare var URLSearchParams: {
 };
 
 /**
- * The **WorkletGlobalScope** interface is an abstract class that specific worklet scope classes inherit from. Each WorkletGlobalScope defines a new global environment.
+ * The **WorkletGlobalScope** interface is an abstract class that specific worklet scope classes inherit from.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
@@ -1194,7 +1194,7 @@ declare var WritableStream: {
 };
 
 /**
- * The **WritableStreamDefaultController** interface of the Streams API represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
+ * The **WritableStreamDefaultController** interface of the Streams API represents a controller allowing control of a WritableStream's state.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
  */
