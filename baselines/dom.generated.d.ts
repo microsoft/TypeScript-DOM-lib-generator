@@ -11501,8 +11501,12 @@ interface HTMLIFrameElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/height)
      */
     height: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading) */
-    loading: string;
+    /**
+     * Sets or retrieves the policy for loading iframe elements that are outside the viewport.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading)
+     */
+    loading: "eager" | "lazy";
     /**
      * Sets or retrieves a URI to a long description of the object.
      * @deprecated
