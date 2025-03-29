@@ -15,7 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: recursive  # Ensures all submodules are cloned
+          submodules: true  # Ensures submodules are cloned
+
+      - name: Initialize and update submodules
+        run: |
+          git submodule update --init --recursive  # Explicitly initialize submodules
 
       - uses: actions/setup-node@v4
         with:
