@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          submodules: true  # Ensures submodules are cloned
+          submodules: recursive  # Ensures all submodules are cloned
 
       - uses: actions/setup-node@v4
         with:
