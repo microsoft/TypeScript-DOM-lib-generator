@@ -1,0 +1,87 @@
+import { promises as fs } from "fs";
+import * as path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function extractSummary(markdown: string): string {
+  // Remove frontmatter (--- at the beginning)
+  markdown = markdown.replace(/^---[\s\S]+?---\n/, "");
+
+  // Normalize line breaks by collapsing consecutive newlines into a single space
+  const normalizedText = markdown
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(
+      (line) =>
+        line &&
+        !line.startsWith("#") &&
+        !line.startsWith(">") &&
+        !line.startsWith("{{"),
+    )
+    .join(" ");
+
+  // Extract the first sentence (ending in . ! or ?)
+  const sentenceMatch = normalizedText.match(/(.*?[.!?])(?:\s|$)/);
+  if (sentenceMatch) {
+    return sentenceMatch[1]; // Return the first full sentence
+  }
+
+  return normalizedText.split(" ")[0] || ""; // Fallback: first word if no sentence found
+}
+
+async function getFolders(dirPath: string): Promise<string[]> {
+  try {
+    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+    return entries
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => path.join(dirPath, entry.name));
+  } catch (error) {
+    console.error("Error reading directories:", error);
+    return [];
+  }
+}
+
+async function getIndexMdContents(
+  folders: string[],
+): Promise<{ [key: string]: string }> {
+  const results: { [key: string]: string } = {};
+
+  for (const folder of folders) {
+    const indexPath = path.join(folder, "index.md");
+
+    try {
+      const content = await fs.readFile(indexPath, "utf-8");
+
+      // Improved title extraction
+      const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
+      const title = titleMatch ? titleMatch[1] : path.basename(folder);
+
+      const summary = extractSummary(content);
+      results[title] = summary;
+    } catch (error) {
+      console.warn(`Skipping ${indexPath}: ${error}`);
+    }
+  }
+
+  return results;
+}
+
+export async function generateDescription(): Promise<Record<string, string>> {
+  const basePath = path.resolve(
+    __dirname,
+    "../inputfiles/mdn/files/en-us/web/api",
+  );
+
+  try {
+    const folders = await getFolders(basePath);
+    if (folders.length > 0) {
+      return await getIndexMdContents(folders);
+    }
+  } catch (error) {
+    console.error("Error generating API descriptions:", error);
+  }
+
+  return {};
+}
