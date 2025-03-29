@@ -8,6 +8,7 @@ import {
   mapToArray,
   arrayToMap,
 } from "./helpers.js";
+import { isEmptyRecord } from "./utils/record.js";
 
 class LoggedSet extends Set<string> {
   private unvisited: Set<string>;
@@ -28,7 +29,7 @@ class LoggedSet extends Set<string> {
 export function getExposedTypes(
   webidl: Browser.WebIdl,
   target: string[],
-  forceKnownTypes: Set<string>
+  forceKnownTypes: Set<string>,
 ): Browser.WebIdl {
   const forceKnownTypesLogged = new LoggedSet(forceKnownTypes);
 
@@ -37,10 +38,10 @@ export function getExposedTypes(
   if (webidl.interfaces) {
     filtered.interfaces!.interface = deepFilter(
       webidl.interfaces.interface,
-      (o) => exposesTo(o, target)
+      (o) => exposesTo(o, target),
     );
     const unexposedInterfaces = mapToArray(webidl.interfaces.interface).filter(
-      (i) => !exposesTo(i, target)
+      (i) => !exposesTo(i, target),
     );
     for (const i of unexposedInterfaces) {
       unexposedTypes.add(i.name);
@@ -48,8 +49,27 @@ export function getExposedTypes(
   }
   if (webidl.namespaces) {
     filtered.namespaces = deepFilter(webidl.namespaces, (o) =>
-      exposesTo(o, target)
+      exposesTo(o, target),
     );
+  }
+
+  if (webidl.mixins) {
+    const allIncludes = Object.values(filtered.interfaces?.interface || {})
+      .map((i) => i.implements || [])
+      .flat();
+    const mixins = deepFilter(webidl.mixins.mixin, (o) => exposesTo(o, target));
+    filtered.mixins!.mixin = filterProperties(
+      mixins,
+      (m: Browser.Interface) =>
+        allIncludes.includes(m.name) && !isEmptyMixin(m),
+    );
+    for (const value of Object.values(filtered.interfaces!.interface || {})) {
+      if (value.implements) {
+        value.implements = value.implements.filter(
+          (i) => !!filtered.mixins!.mixin[i],
+        );
+      }
+    }
   }
 
   const knownIDLTypes = new Set([
@@ -59,8 +79,8 @@ export function getExposedTypes(
       arrayToMap(
         filtered.namespaces!,
         (i) => i.name,
-        (i) => i
-      )
+        (i) => i,
+      ),
     ),
   ]);
   const isKnownName = (o: { name: string }) =>
@@ -68,7 +88,7 @@ export function getExposedTypes(
 
   if (webidl.typedefs) {
     const referenced = webidl.typedefs.typedef.filter(
-      (t) => knownIDLTypes.has(t.name) || forceKnownTypesLogged.has(t.name)
+      (t) => knownIDLTypes.has(t.name) || forceKnownTypesLogged.has(t.name),
     );
     const { exposed, removed } = filterTypedefs(referenced, unexposedTypes);
     removed.forEach((s) => unexposedTypes.add(s));
@@ -78,24 +98,20 @@ export function getExposedTypes(
   if (webidl.callbackFunctions)
     filtered.callbackFunctions!.callbackFunction = filterProperties(
       webidl.callbackFunctions!.callbackFunction,
-      isKnownName
+      isKnownName,
     );
   if (webidl.callbackInterfaces)
     filtered.callbackInterfaces!.interface = filterProperties(
       webidl.callbackInterfaces!.interface,
-      isKnownName
+      isKnownName,
     );
   if (webidl.dictionaries)
     filtered.dictionaries!.dictionary = filterProperties(
       webidl.dictionaries.dictionary,
-      isKnownName
+      isKnownName,
     );
   if (webidl.enums)
     filtered.enums!.enum = filterProperties(webidl.enums.enum, isKnownName);
-  if (webidl.mixins) {
-    const mixins = deepFilter(webidl.mixins.mixin, (o) => exposesTo(o, target));
-    filtered.mixins!.mixin = filterProperties(mixins, isKnownName);
-  }
 
   for (const unvisited of forceKnownTypesLogged.unvisitedValues()) {
     console.warn(`${unvisited} is redundant in knownTypes.json (${target})`);
@@ -112,7 +128,7 @@ export function getExposedTypes(
  */
 function filterTypedefs(
   typedefs: Browser.TypeDef[],
-  unexposedTypes: Set<string>
+  unexposedTypes: Set<string>,
 ): { exposed: Browser.TypeDef[]; removed: Set<string> } {
   const exposed: Browser.TypeDef[] = [];
   const removed = new Set<string>();
@@ -132,7 +148,7 @@ function filterTypedefs(
     } else if (Array.isArray(typedef.type)) {
       const filteredType = filterUnexposedTypeFromUnion(
         typedef.type,
-        unexposedTypes
+        unexposedTypes,
       );
       if (!filteredType.length) {
         removed.add(typedef.name);
@@ -154,7 +170,7 @@ function filterTypedefs(
  */
 function deepFilterUnexposedTypes(
   webidl: Browser.WebIdl,
-  unexposedTypes: Set<string>
+  unexposedTypes: Set<string>,
 ) {
   return deepClone(webidl, (o) => {
     if (Array.isArray(o.type)) {
@@ -209,12 +225,12 @@ function deepFilterUnexposedTypes(
 
 function filterUnexposedType<T extends Browser.Typed>(
   type: T,
-  unexposedTypes: Set<string>
+  unexposedTypes: Set<string>,
 ) {
   if (Array.isArray(type.type)) {
     const filteredUnion = filterUnexposedTypeFromUnion(
       type.type,
-      unexposedTypes
+      unexposedTypes,
     );
     if (filteredUnion.length) {
       return { ...type, type: flattenType(filteredUnion) };
@@ -226,7 +242,7 @@ function filterUnexposedType<T extends Browser.Typed>(
 
 function filterUnexposedTypeFromUnion(
   union: Browser.Typed[],
-  unexposedTypes: Set<string>
+  unexposedTypes: Set<string>,
 ): Browser.Typed[] {
   const result: Browser.Typed[] = [];
   for (const type of union) {
@@ -263,4 +279,15 @@ function flattenType(type: Browser.Typed[]) {
     return type[0].type;
   }
   throw new Error("Cannot process empty union type");
+}
+
+function isEmptyMixin(i?: Browser.Interface) {
+  return (
+    !!i?.mixin &&
+    isEmptyRecord(i.properties?.property) &&
+    isEmptyRecord(i.methods?.method) &&
+    isEmptyRecord(i.constants?.constant) &&
+    !i.anonymousMethods?.method.length &&
+    !i.events?.event.length
+  );
 }

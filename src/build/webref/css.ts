@@ -10,8 +10,8 @@ export function generateWebIdlFromCssProperties(properties: string[]): string {
     .map(
       (property) =>
         `\n  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString ${hyphenToCamelCase(
-          property
-        )};`
+          property,
+        )};`,
     )
     .join("")}\n};`;
 }

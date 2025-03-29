@@ -6,10 +6,11 @@ declare module "@webref/elements" {
   interface Element {
     name: string;
     interface?: string;
+    obsolete?: true;
   }
   interface Item {
     spec: Spec;
     elements: Element[];
   }
-  function listAll(): Promise<Item[]>;
+  function listAll(): Promise<Record<string, Item>>;
 }

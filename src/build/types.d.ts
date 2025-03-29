@@ -59,6 +59,7 @@ export interface Property extends Typed {
   deprecated?: boolean;
   exposed?: string;
   secureContext?: boolean;
+  mdnUrl?: string;
 }
 
 export interface Event {
@@ -88,6 +89,7 @@ export interface AnonymousMethod {
   deprecated?: boolean;
   signature: Signature[];
   secureContext?: boolean;
+  mdnUrl?: string;
 }
 
 export interface Method extends AnonymousMethod {
@@ -146,6 +148,7 @@ export interface TypeParameter {
 export interface Interface {
   name: string;
   mixin?: boolean;
+  namespace?: boolean;
   extends?: string;
   comment?: string;
   constants?: {
@@ -178,6 +181,7 @@ export interface Interface {
   overrideExposed?: string;
   tags?: string;
   "implicit-this"?: 1;
+  overrideThis?: string;
   noInterfaceObject?: boolean;
   global?: string;
   typeParameters?: TypeParameter[];
@@ -194,15 +198,21 @@ export interface Interface {
   };
   deprecated?: boolean | string;
   secureContext?: boolean;
+  mdnUrl?: string;
+  transferable?: boolean;
 }
 
 export interface Iterator {
   kind: "iterable" | "setlike" | "maplike";
   readonly: boolean;
+  async: boolean;
   type: Typed[];
+  param?: Param[];
   comments?: {
     comment: Record<string, string>;
   };
+  exposed?: string;
+  deprecated?: boolean | string;
 }
 
 export interface Enum {
@@ -254,4 +264,5 @@ export interface WebIdl {
     typedef: TypeDef[];
   };
   namespaces?: Interface[];
+  events?: Map<string, Map<string, string>>;
 }

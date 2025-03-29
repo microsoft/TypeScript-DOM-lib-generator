@@ -2,7 +2,6 @@ import * as webidl2 from "webidl2";
 import * as Browser from "./types.js";
 import { getEmptyWebIDL } from "./helpers.js";
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export function convert(text: string, commentMap: Record<string, string>) {
   const rootTypes = webidl2.parse(text);
   const partialInterfaces: Browser.Interface[] = [];
@@ -43,7 +42,7 @@ export function convert(text: string, commentMap: Record<string, string>) {
       addComments(
         browser.callbackFunctions!.callbackFunction[rootType.name],
         commentMap,
-        rootType.name
+        rootType.name,
       );
     } else if (rootType.type === "dictionary") {
       const converted = convertDictionary(rootType, commentMap);
@@ -80,6 +79,9 @@ function getExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
   if (!attr || !attr.rhs) {
     return [];
   }
+  if (attr.rhs.type === ("*" as any)) {
+    return ["*"];
+  }
   return attr.rhs.type === "identifier-list" ||
     attr.rhs.type === "string-list" ||
     attr.rhs.type === "decimal-list" ||
@@ -92,7 +94,7 @@ function getExtAttr(extAttrs: webidl2.ExtendedAttribute[], name: string) {
 
 function getExtAttrConcatenated(
   extAttrs: webidl2.ExtendedAttribute[],
-  name: string
+  name: string,
 ) {
   const extAttr = getExtAttr(extAttrs, name);
   if (extAttr.length) {
@@ -102,7 +104,7 @@ function getExtAttrConcatenated(
 
 function convertInterface(
   i: webidl2.InterfaceType,
-  commentMap: Record<string, string>
+  commentMap: Record<string, string>,
 ) {
   const result = convertInterfaceCommon(i, commentMap);
   if (i.inheritance) {
@@ -113,7 +115,7 @@ function convertInterface(
 
 function convertInterfaceMixin(
   i: webidl2.InterfaceMixinType,
-  commentMap: Record<string, string>
+  commentMap: Record<string, string>,
 ) {
   const result = convertInterfaceCommon(i, commentMap);
   result.mixin = true;
@@ -125,7 +127,7 @@ function addComments(
   obj: any,
   commentMap: Record<string, string>,
   container: string,
-  member?: string
+  member?: string,
 ) {
   const key =
     container.toLowerCase() + (member ? "-" + member.toLowerCase() : "");
@@ -139,7 +141,7 @@ function convertInterfaceCommon(
     | webidl2.InterfaceType
     | webidl2.InterfaceMixinType
     | webidl2.CallbackInterfaceType,
-  commentMap: Record<string, string>
+  commentMap: Record<string, string>,
 ) {
   const result: Browser.Interface = {
     name: i.name,
@@ -159,6 +161,7 @@ function convertInterfaceCommon(
     legacyWindowAlias: getExtAttr(i.extAttrs, "LegacyWindowAlias"),
     legacyNamespace: getExtAttr(i.extAttrs, "LegacyNamespace")[0],
     secureContext: hasExtAttr(i.extAttrs, "SecureContext"),
+    transferable: hasExtAttr(i.extAttrs, "Transferable"),
   };
   if (!result.exposed && i.type === "interface" && !i.partial) {
     result.exposed = "Window";
@@ -170,7 +173,7 @@ function convertInterfaceCommon(
         result.constants!.constant[member.name],
         commentMap,
         i.name,
-        member.name
+        member.name,
       );
     } else if (member.type === "attribute") {
       const { properties } = result;
@@ -200,13 +203,15 @@ function convertInterfaceCommon(
         addComments(method[member.name], commentMap, i.name, member.name);
       }
     } else if (
-      (member.type === "iterable" && !member.async) ||
+      member.type === "iterable" ||
       member.type === "maplike" ||
       member.type === "setlike"
     ) {
       result.iterator = {
         kind: member.type,
         readonly: member.readonly,
+        async: member.async,
+        param: member.arguments.map(convertArgument),
         type: member.idlType.map(convertIdlType),
       };
     }
@@ -217,7 +222,7 @@ function convertInterfaceCommon(
 
 function getConstructor(
   members: webidl2.IDLInterfaceMemberType[],
-  parent: string
+  parent: string,
 ) {
   const constructor: Browser.Constructor = {
     signature: [],
@@ -237,7 +242,7 @@ function getConstructor(
 
 function getOldStyleConstructor(
   extAttrs: webidl2.ExtendedAttribute[],
-  parent: string
+  parent: string,
 ) {
   const constructor: Browser.Constructor = {
     signature: [],
@@ -257,7 +262,7 @@ function getOldStyleConstructor(
 
 function getLegacyFactoryFunction(
   extAttrs: webidl2.ExtendedAttribute[],
-  parent: string
+  parent: string,
 ): Browser.NamedConstructor | undefined {
   for (const extAttr of extAttrs) {
     if (
@@ -282,14 +287,14 @@ function getLegacyFactoryFunction(
 
 function convertOperation(
   operation: webidl2.OperationMemberType,
-  inheritedExposure: string | undefined
+  inheritedExposure: string | undefined,
 ): Browser.AnonymousMethod | Browser.Method {
   const isStringifier = operation.special === "stringifier";
   const type = operation.idlType
     ? convertIdlType(operation.idlType)
     : isStringifier
-    ? { type: "DOMString" }
-    : undefined;
+      ? { type: "DOMString" }
+      : undefined;
   if (!type) {
     throw new Error("Unexpected anonymous operation");
   }
@@ -312,7 +317,7 @@ function convertOperation(
 }
 
 function convertCallbackFunctions(
-  c: webidl2.CallbackType
+  c: webidl2.CallbackType,
 ): Browser.CallbackFunction {
   return {
     name: c.name,
@@ -340,7 +345,7 @@ function convertArgument(arg: webidl2.Argument): Browser.Param {
 
 function convertAttribute(
   attribute: webidl2.AttributeMemberType,
-  inheritedExposure: string | undefined
+  inheritedExposure: string | undefined,
 ): Browser.Property {
   const isEventHandler =
     typeof attribute.idlType.idlType === "string" &&
@@ -361,7 +366,7 @@ function convertAttribute(
 }
 
 function convertConstantMember(
-  constant: webidl2.ConstantMemberType
+  constant: webidl2.ConstantMemberType,
 ): Browser.Constant {
   return {
     name: constant.name,
@@ -392,10 +397,11 @@ function convertConstantValue(value: webidl2.ValueDescription): string {
 
 function convertNamespace(
   namespace: webidl2.NamespaceType,
-  commentMap: Record<string, string>
+  commentMap: Record<string, string>,
 ) {
   const result: Browser.Interface = {
     name: namespace.name,
+    namespace: true,
     constructor: { signature: [] },
     methods: { method: {} },
     properties: { property: {} },
@@ -405,13 +411,13 @@ function convertNamespace(
     if (member.type === "attribute") {
       result.properties!.property[member.name] = convertAttribute(
         member,
-        result.exposed
+        result.exposed,
       );
       addComments(
         result.properties!.property[member.name],
         commentMap,
         namespace.name,
-        member.name
+        member.name,
       );
     } else if (member.type === "operation" && member.idlType) {
       const operation = convertOperation(member, result.exposed);
@@ -426,7 +432,7 @@ function convertNamespace(
           method[member.name],
           commentMap,
           namespace.name,
-          member.name
+          member.name,
         );
       }
     }
@@ -437,7 +443,7 @@ function convertNamespace(
 
 function convertDictionary(
   dictionary: webidl2.DictionaryType,
-  commentsMap: Record<string, string>
+  commentsMap: Record<string, string>,
 ) {
   const result: Browser.Dictionary = {
     name: dictionary.name,
@@ -452,7 +458,7 @@ function convertDictionary(
       result.members.member[member.name],
       commentsMap,
       dictionary.name,
-      member.name
+      member.name,
     );
   }
   addComments(result, commentsMap, dictionary.name);
@@ -460,7 +466,7 @@ function convertDictionary(
 }
 
 function convertDictionaryMember(
-  member: webidl2.DictionaryMemberType
+  member: webidl2.DictionaryMemberType,
 ): Browser.Member {
   return {
     name: member.name,
@@ -497,8 +503,8 @@ function convertIdlType(i: webidl2.IDLTypeDescription): Browser.Typed {
       subtype: !Array.isArray(i.idlType)
         ? convertIdlType(i.idlType)
         : i.idlType.length === 1
-        ? convertIdlType(i.idlType[0])
-        : i.idlType.map(convertIdlType),
+          ? convertIdlType(i.idlType[0])
+          : i.idlType.map(convertIdlType),
       nullable: i.nullable,
     };
   }

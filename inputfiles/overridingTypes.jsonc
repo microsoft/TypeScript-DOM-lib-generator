@@ -1,6 +1,26 @@
 {
     "mixins": {
         "mixin": {
+            "MessageEventTarget": {
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "overrideThis": "T",
+                "events": {
+                    "event": [
+                        {
+                            "name": "message",
+                            "type": "MessageEvent"
+                        },
+                        {
+                            "name": "messageerror",
+                            "type": "MessageEvent"
+                        }
+                    ]
+                }
+            },
             "ChildNode": {
                 "extends": "Node"
             },
@@ -44,6 +64,26 @@
                         {
                             "name": "animationstart",
                             "type": "AnimationEvent"
+                        },
+                        {
+                            "name": "auxclick",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "cut",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "copy",
+                            "type": "ClipboardEvent"
+                        },
+                        {
+                            "name": "contextmenu",
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "paste",
+                            "type": "ClipboardEvent"
                         },
                         {
                             "name": "gotpointercapture",
@@ -154,15 +194,25 @@
                         "getExtension": {
                             "name": "getExtension",
                             "additionalSignatures": [
+                                "getExtension(extensionName: \"ANGLE_instanced_arrays\"): ANGLE_instanced_arrays | null",
                                 "getExtension(extensionName: \"EXT_blend_minmax\"): EXT_blend_minmax | null",
                                 "getExtension(extensionName: \"EXT_color_buffer_float\"): EXT_color_buffer_float | null",
                                 "getExtension(extensionName: \"EXT_color_buffer_half_float\"): EXT_color_buffer_half_float | null",
                                 "getExtension(extensionName: \"EXT_float_blend\"): EXT_float_blend | null",
-                                "getExtension(extensionName: \"EXT_texture_filter_anisotropic\"): EXT_texture_filter_anisotropic | null",
                                 "getExtension(extensionName: \"EXT_frag_depth\"): EXT_frag_depth | null",
-                                "getExtension(extensionName: \"EXT_shader_texture_lod\"): EXT_shader_texture_lod | null",
                                 "getExtension(extensionName: \"EXT_sRGB\"): EXT_sRGB | null",
+                                "getExtension(extensionName: \"EXT_shader_texture_lod\"): EXT_shader_texture_lod | null",
+                                "getExtension(extensionName: \"EXT_texture_compression_bptc\"): EXT_texture_compression_bptc | null",
+                                "getExtension(extensionName: \"EXT_texture_compression_rgtc\"): EXT_texture_compression_rgtc | null",
+                                "getExtension(extensionName: \"EXT_texture_filter_anisotropic\"): EXT_texture_filter_anisotropic | null",
                                 "getExtension(extensionName: \"KHR_parallel_shader_compile\"): KHR_parallel_shader_compile | null",
+                                "getExtension(extensionName: \"OES_element_index_uint\"): OES_element_index_uint | null",
+                                "getExtension(extensionName: \"OES_fbo_render_mipmap\"): OES_fbo_render_mipmap | null",
+                                "getExtension(extensionName: \"OES_standard_derivatives\"): OES_standard_derivatives | null",
+                                "getExtension(extensionName: \"OES_texture_float\"): OES_texture_float | null",
+                                "getExtension(extensionName: \"OES_texture_float_linear\"): OES_texture_float_linear | null",
+                                "getExtension(extensionName: \"OES_texture_half_float\"): OES_texture_half_float | null",
+                                "getExtension(extensionName: \"OES_texture_half_float_linear\"): OES_texture_half_float_linear | null",
                                 "getExtension(extensionName: \"OES_vertex_array_object\"): OES_vertex_array_object | null",
                                 "getExtension(extensionName: \"OVR_multiview2\"): OVR_multiview2 | null",
                                 "getExtension(extensionName: \"WEBGL_color_buffer_float\"): WEBGL_color_buffer_float | null",
@@ -170,20 +220,14 @@
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_etc\"): WEBGL_compressed_texture_etc | null",
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_etc1\"): WEBGL_compressed_texture_etc1 | null",
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_pvrtc\"): WEBGL_compressed_texture_pvrtc | null",
+                                "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc\"): WEBGL_compressed_texture_s3tc | null",
                                 "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc_srgb\"): WEBGL_compressed_texture_s3tc_srgb | null",
+                                "getExtension(extensionName: \"WEBGL_debug_renderer_info\"): WEBGL_debug_renderer_info | null",
                                 "getExtension(extensionName: \"WEBGL_debug_shaders\"): WEBGL_debug_shaders | null",
+                                "getExtension(extensionName: \"WEBGL_depth_texture\"): WEBGL_depth_texture | null",
                                 "getExtension(extensionName: \"WEBGL_draw_buffers\"): WEBGL_draw_buffers | null",
                                 "getExtension(extensionName: \"WEBGL_lose_context\"): WEBGL_lose_context | null",
-                                "getExtension(extensionName: \"WEBGL_depth_texture\"): WEBGL_depth_texture | null",
-                                "getExtension(extensionName: \"WEBGL_debug_renderer_info\"): WEBGL_debug_renderer_info | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc\"): WEBGL_compressed_texture_s3tc | null",
-                                "getExtension(extensionName: \"OES_texture_half_float_linear\"): OES_texture_half_float_linear | null",
-                                "getExtension(extensionName: \"OES_texture_half_float\"): OES_texture_half_float | null",
-                                "getExtension(extensionName: \"OES_texture_float_linear\"): OES_texture_float_linear | null",
-                                "getExtension(extensionName: \"OES_texture_float\"): OES_texture_float | null",
-                                "getExtension(extensionName: \"OES_standard_derivatives\"): OES_standard_derivatives | null",
-                                "getExtension(extensionName: \"OES_element_index_uint\"): OES_element_index_uint | null",
-                                "getExtension(extensionName: \"ANGLE_instanced_arrays\"): ANGLE_instanced_arrays | null"
+                                "getExtension(extensionName: \"WEBGL_multi_draw\"): WEBGL_multi_draw | null"
                             ]
                         },
                         "pixelStorei": {
@@ -216,6 +260,57 @@
                     "property": {
                         "body": {
                             "overrideType": "ReadableStream<Uint8Array>"
+                        }
+                    }
+                }
+            },
+            "WindowOrWorkerGlobalScope": {
+                "methods": {
+                    "method": {
+                        "clearInterval": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "structuredClone": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "default": "any"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "value",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "T"
+                                }
+                            }
+                        },
+                        "clearTimeout": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "id",
+                                            "optional": false,
+                                            "additionalTypes": ["undefined"]
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
@@ -367,6 +462,23 @@
                 "overrideSignatures": [
                     "new (...params: any[]): HTMLElement"
                 ]
+            },
+            "AudioWorkletProcessorConstructor": {
+                "overrideSignatures": [
+                    "new (options: any): AudioWorkletProcessorImpl"
+                ]
+            },
+            "LockGrantedCallback": {
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "signature": {
+                    "0": {
+                        "overrideType": "T"
+                    }
+                }
             }
         }
     },
@@ -381,8 +493,13 @@
             "TableKind": {
                 "legacyNamespace": "WebAssembly"
             },
-            "ValueType": {
-                "legacyNamespace": "WebAssembly"
+            "ImageOrientation": {
+                "value": [
+                    // The spec removed this but it's still in browsers and WebKit doesn't support the new one.
+                    // Keep it until it's safer to fully migrate.
+                    // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
+                    "none"
+                ]
             }
         }
     },
@@ -398,6 +515,74 @@
                             "type": "sequence",
                             "subtype": {
                                 "type": "KeyUsage"
+                            }
+                        }
+                    }
+                }
+            },
+            "GPUError": {
+                "exposed": "Window Worker",
+                // WebKit doesn't have GPUError interface but only subinterfaces as of 2024-11-20
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "message": {
+                            "exposed": "Window Worker"
+                        }
+                    }
+                }
+            },
+            "GPUPipelineError": {
+                // Web IDL optional argument can be followed by a required argument, but not in TS
+                // TODO: Maybe do this in the emitter?
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "message",
+                                    "optional": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "HTMLElement": {
+                "properties": {
+                    "property": {
+                        "hidden": {
+                            // https://github.com/whatwg/html/pull/7475
+                            // Blink only as of 2024-11
+                            "overrideType": "boolean",
+                            "nullable": false
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "togglePopover": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            // dictionary support is Blink only as of 2024-11
+                                            "name": "options",
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "MediaMetadata": {
+                "properties": {
+                    "property": {
+                        "artwork": {
+                            "subtype": {
+                                "type": "MediaImage"
                             }
                         }
                     }
@@ -499,6 +684,7 @@
                             "deprecated": true
                         },
                         "location": {
+                            // Pre-TS-5.1 hack to make window.location assignable
                             "readonly": false
                         },
                         "onorientationchange": {
@@ -510,7 +696,18 @@
                         "window": {
                             "overrideType": "Window & typeof globalThis"
                         },
+                        "pageXOffset": {
+                            // While this is indeed an alias of scrollX, it's not a vendor prefixed legacy as aliases usually are.
+                            "deprecated": false
+                        },
+                        "pageYOffset": {
+                            // While this is indeed an alias of scrollY, it's not a vendor prefixed legacy as aliases usually are.
+                            "deprecated": false
+                        },
                         "parent": {
+                            // This is technically nullable, but it only happens in some edge cases, and
+                            // making it nullable breaks compatibility as it has historically been non-nullable in TS lib.
+                            // See the example in https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-parent.
                             "nullable": false
                         }
                     }
@@ -537,6 +734,33 @@
                     }
                 },
                 "overrideIndexSignatures": []
+            },
+            "WebTransport": {
+                "methods": {
+                    "method": {
+                        "createUnidirectionalStream": {
+                            "signature": {
+                                "0": {
+                                    "subtype": {
+                                        "type": "WritableStream"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "WebTransportBidirectionalStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "type": "ReadableStream"
+                        },
+                        "writable": {
+                            "type": "WritableStream"
+                        }
+                    }
+                }
             },
             "Document": {
                 "methods": {
@@ -589,7 +813,8 @@
                             "name": "getElementsByTagNameNS",
                             "additionalSignatures": [
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
                             ],
                             "signature": {
                                 "0": {
@@ -658,7 +883,10 @@
                             "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
                         },
                         "location": {
+                            // Pre-TS-5.1 hack to make document.location assignable
                             "readonly": false,
+                            // Technically this can be null for a detached iframe.
+                            // But that's an edge case and flipping this also breaks compatibility.
                             "nullable": false
                         },
                         "body": {
@@ -684,6 +912,56 @@
                             "name": "ownerDocument",
                             "readonly": 1,
                             "type": "Document"
+                        }
+                    }
+                }
+            },
+            "NavigationActivation": {
+                // https://github.com/mdn/browser-compat-data/issues/24963
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "entry": {
+                            "exposed": "Window"
+                        },
+                        "from": {
+                            "exposed": "Window"
+                        },
+                        "navigationType": {
+                            "exposed": "Window"
+                        }
+                    }
+                }
+            },
+            "NavigationHistoryEntry": {
+                // https://github.com/mdn/browser-compat-data/issues/24963
+                "exposed": "Window",
+                "properties": {
+                    "property": {
+                        "url": {
+                            "exposed": "Window"
+                        },
+                        "key": {
+                            "exposed": "Window"
+                        },
+                        "id": {
+                            "exposed": "Window"
+                        },
+                        "index": {
+                            "exposed": "Window"
+                        },
+                        "sameDocument": {
+                            "exposed": "Window"
+                        },
+                        "ondispose": {
+                            "exposed": "Window"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "getState": {
+                            "exposed": "Window"
                         }
                     }
                 }
@@ -952,7 +1230,7 @@
                     "property": {
                         "keyPath": {
                             "name": "keyPath",
-                            "overrideType": "string | string[]"
+                            "overrideType": "string | string[] | null"
                         }
                     }
                 }
@@ -1079,6 +1357,46 @@
                                 "getContext(contextId: \"webgl\", options?: WebGLContextAttributes): WebGLRenderingContext | null",
                                 "getContext(contextId: \"webgl2\", options?: WebGLContextAttributes): WebGL2RenderingContext | null"
                             ]
+                        },
+                        "toBlob": {
+                            "name": "toBlob",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "quality",
+                                            "overrideType": "number"
+                                        }
+                                    ],
+                                }
+                            }
+                        },
+                        "toDataURL": {
+                            "name": "toDataURL",
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "quality",
+                                            "overrideType": "number"
+                                        }
+                                    ],
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "OffscreenCanvas": {
+                "methods": {
+                    "method": {
+                        "getContext": {
+                            "additionalSignatures": [
+                                "getContext(contextId: \"2d\", options?: any): OffscreenCanvasRenderingContext2D | null",
+                                "getContext(contextId: \"bitmaprenderer\", options?: any): ImageBitmapRenderingContext | null",
+                                "getContext(contextId: \"webgl\", options?: any): WebGLRenderingContext | null",
+                                "getContext(contextId: \"webgl2\", options?: any): WebGL2RenderingContext | null"
+                            ]
                         }
                     }
                 }
@@ -1133,15 +1451,15 @@
                         "append": {
                             "name": "append",
                             "flavor": "Web",
-                            "overrideSignatures": [
-                                "append(name: string, value: string | Blob, fileName?: string): void"
+                            "additionalSignatures": [
+                                "append(name: string, value: string | Blob): void"
                             ]
                         },
                         "set": {
                             "name": "set",
                             "flavor": "Web",
-                            "overrideSignatures": [
-                                "set(name: string, value: string | Blob, fileName?: string): void"
+                            "additionalSignatures": [
+                                "set(name: string, value: string | Blob): void"
                             ]
                         }
                     }
@@ -1150,6 +1468,14 @@
             "HTMLSelectElement": {
                 "properties": {
                     "property": {
+                        "type": {
+                            "name": "type",
+                            "overrideType": "\"select-one\" | \"select-multiple\""
+                        },
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFill"
+                        },
                         "selectedOptions": {
                             "name": "selectedOptions",
                             "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
@@ -1195,6 +1521,15 @@
                     }
                 ]
             },
+            "FontFace": {
+              "properties": {
+                "property": {
+                  "display": {
+                    "type": "FontDisplay"
+                  }
+                }
+              }
+            },
             "HTMLFrameSetElement": {
                 "element": [
                     {
@@ -1233,7 +1568,8 @@
                             "name": "getElementsByTagNameNS",
                             "additionalSignatures": [
                                 "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
                             ],
                             "signature": {
                                 "0": {
@@ -1421,25 +1757,27 @@
                         },
                         "exportKey": {
                             "additionalSignatures": [
-                                "exportKey(format: \"jwk\", key: CryptoKey): Promise<JsonWebKey>"
+                                "exportKey(format: \"jwk\", key: CryptoKey): Promise<JsonWebKey>",
+                                "exportKey(format: Exclude<KeyFormat, \"jwk\">, key: CryptoKey): Promise<ArrayBuffer>"
                             ],
                             "signature": {
                                 "0": {
                                     "param": [
                                         {
                                             "name": "format",
-                                            "overrideType": "Exclude<KeyFormat, \"jwk\">"
+                                            "overrideType": "KeyFormat"
                                         }
                                     ],
-                                    "overrideType": "Promise<ArrayBuffer>"
+                                    "overrideType": "Promise<ArrayBuffer | JsonWebKey>"
                                 }
                             }
                         },
                         "generateKey": {
                             "name": "generateKey",
                             "additionalSignatures": [
-                                "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair>",
-                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "generateKey(algorithm: \"Ed25519\" | { name: \"Ed25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"sign\" | \"verify\">): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
                             "signature": {
                                 "0": {
@@ -1450,7 +1788,7 @@
                         "importKey": {
                             "name": "importKey",
                             "additionalSignatures": [
-                                "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>"
+                                "importKey(format: \"jwk\", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
                             "signature": {
                                 "0": {
@@ -1537,6 +1875,10 @@
             "HTMLInputElement": {
                 "properties": {
                     "property": {
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFill"
+                        },
                         "selectionDirection": {
                             "name": "selectionDirection",
                             "overrideType": "\"forward\" | \"backward\" | \"none\""
@@ -1609,6 +1951,9 @@
                         "labels": {
                             "name": "labels",
                             "overrideType": "NodeListOf<HTMLLabelElement>"
+                        },
+                        "type": {
+                            "overrideType": "\"submit\" | \"reset\" | \"button\""
                         }
                     }
                 }
@@ -1656,6 +2001,10 @@
             "HTMLTextAreaElement": {
                 "properties": {
                     "property": {
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFill"
+                        },
                         "labels": {
                             "name": "labels",
                             "overrideType": "NodeListOf<HTMLLabelElement>"
@@ -1734,6 +2083,16 @@
                             "type": "MessageEvent"
                         }
                     ]
+                }
+            },
+            "WebTransportDatagramDuplexStream": {
+                "properties": {
+                    "property": {
+                        // WebTransportDatagramsWritable is not implemented by anyone as of 2025-03
+                        "writable": {
+                            "type": "WritableStream"
+                        }
+                    }
                 }
             },
             "HTMLTableRowElement": {
@@ -1840,6 +2199,22 @@
                             "type": "ProgressEvent"
                         }
                     ]
+                },
+                "properties": {
+                    "property": {
+                        "readyState": {
+                            "name": "readyState",
+                            "overrideType": "typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
+                        }
+                    }
+                }
+            },
+            "FileSystemDirectoryHandle": {
+                "iterator": {
+                    // It's true that Blink is the only supported engine for Symbol.asyncIterator,
+                    // WebKit does support the keys/values/entries method and Gecko will soon follow.
+                    // Let's not go back and forth for this one.
+                    "exposed": "Window Worker"
                 }
             },
             "MutationRecord": {
@@ -1862,6 +2237,34 @@
                                     "additionalTypes": ["URL"]
                                 }
                             ]
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "canParse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "parse": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "base",
+                                            "additionalTypes": ["URL"]
+                                        }
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
@@ -1902,6 +2305,23 @@
                     ]
                 }
             },
+            "RTCIceCandidatePair": {
+                // https://github.com/w3c/webrtc-pc/pull/2961 made this from dictionary to interface,
+                // but nobody did the change as of 2024-06.
+                // For now let's roll this back to the dictionary form.
+                "exposed": "Window",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "local": {
+                            "readonly": false
+                        },
+                        "remote": {
+                            "readonly": false
+                        }
+                    }
+                }
+            },
             "RTCPeerConnection": {
                 "events": {
                     "event": [
@@ -1916,6 +2336,10 @@
                         {
                             "name": "datachannel",
                             "type": "RTCDataChannelEvent"
+                        },
+                        {
+                            "name": "icecandidateerror",
+                            "type": "RTCPeerConnectionIceErrorEvent"
                         }
                     ]
                 },
@@ -1923,7 +2347,21 @@
                     "method": {
                         "addIceCandidate": {
                             "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ]
+                                },
                                 "1": {
+                                    "param": [
+                                        {
+                                            "name": "candidate",
+                                            "nullable": true
+                                        }
+                                    ],
                                     "deprecated": true
                                 }
                             }
@@ -1994,7 +2432,23 @@
                             "name": "push",
                             "type": "PushEvent"
                         }
-                    ]
+                    ],
+                    "methods": {
+                        "method": {
+                            "waitUntil": {
+                                "signature": {
+                                    "0": {
+                                        "param": [
+                                            {
+                                                "name": "f",
+                                                "overrideType": "Promise<any>"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "Cache": {
@@ -2099,18 +2553,6 @@
                             }
                         }
                     }
-                },
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
                 }
             },
             "Crypto": {
@@ -2132,6 +2574,13 @@
                                         }
                                     ],
                                     "overrideType": "T"
+                                }
+                            }
+                        },
+                        "randomUUID": {
+                            "signature": {
+                                "0": {
+                                    "overrideType": "`${string}-${string}-${string}-${string}-${string}`"
                                 }
                             }
                         }
@@ -2158,6 +2607,15 @@
                         "setOrientation": {
                             "name": "setOrientation",
                             "deprecated": true
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEvent": {
+                "properties": {
+                    "property": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
                         }
                     }
                 }
@@ -2254,7 +2712,28 @@
                 "overrideIndexSignatures": [
                     "[index: number]: Element",
                     "[name: string]: any"
-                ]
+                ],
+                "properties": {
+                    "property": {
+                        "autocomplete": {
+                            "name": "autocomplete",
+                            "overrideType": "AutoFillBase"
+                        }
+                    }
+                }
+            },
+            "Blob": {
+              "methods": {
+                "method": {
+                  "stream": {
+                    "signature": {
+                      "0": {
+                        "overrideType": "ReadableStream<Uint8Array>"
+                      }
+                    }
+                  }
+                }
+              }
             },
             "ReadableStream": {
                 "typeParameters": [
@@ -2266,6 +2745,20 @@
                 "constructor": {
                     "signature": {
                         "0": {
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": false,
+                                    "type": "UnderlyingByteSource"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "overrideType": "{ highWaterMark?: number }"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "1": {
                             "typeParameters": [
                                 {
                                     "name": "R",
@@ -2275,10 +2768,33 @@
                             "param": [
                                 {
                                     "name": "underlyingSource",
+                                    "optional": false,
+                                    "overrideType": "UnderlyingDefaultSource<R>"
+                                },
+                                {
+                                    "name": "strategy",
+                                    "optional": true,
+                                    "overrideType": "QueuingStrategy<R>"
+                                }
+                            ],
+                            "overrideType": "ReadableStream<R>"
+                        },
+                        "2": {
+                            "typeParameters": [
+                                {
+                                    "name": "R",
+                                    "default": "any"
+                                }
+                            ],
+                            "param": [
+                                {
+                                    "name": "underlyingSource",
+                                    "optional": true,
                                     "overrideType": "UnderlyingSource<R>"
                                 },
                                 {
                                     "name": "strategy",
+                                    "optional": true,
                                     "overrideType": "QueuingStrategy<R>"
                                 }
                             ],
@@ -2290,6 +2806,12 @@
                             "type": "UnderlyingSource"
                         },
                         {
+                            "type": "UnderlyingByteSource"
+                        },
+                        {
+                            "type": "UnderlyingDefaultSource"
+                        },
+                        {
                             "type": "QueuingStrategy"
                         }
                     ]
@@ -2297,9 +2819,13 @@
                 "methods": {
                     "method": {
                         "getReader": {
+                            "additionalSignatures": [
+                                "getReader(options: { mode: \"byob\" }): ReadableStreamBYOBReader",
+                                "getReader(): ReadableStreamDefaultReader<R>"
+                            ],
                             "signature": {
                                 "0": {
-                                    "overrideType": "ReadableStreamDefaultReader<R>"
+                                    "overrideType": "ReadableStreamReader<R>"
                                 }
                             }
                         },
@@ -2341,6 +2867,50 @@
                             }
                         }
                     }
+                },
+                "iterator": {
+                    "type": {
+                        "0": {
+                            "overrideType": "R"
+                        }
+                    }
+                }
+            },
+            "ReadableStreamBYOBReader": {
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "stream",
+                                    "overrideType": "ReadableStream<Uint8Array>"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "read": {
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T",
+                                            "extends": "ArrayBufferView"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "view",
+                                            "overrideType": "T"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<ReadableStreamReadResult<T>>"
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "ReadableStreamDefaultReader": {
@@ -2374,7 +2944,7 @@
                         "read": {
                             "signature": {
                                 "0": {
-                                    "overrideType": "Promise<ReadableStreamDefaultReadResult<R>>"
+                                    "overrideType": "Promise<ReadableStreamReadResult<R>>"
                                 }
                             }
                         }
@@ -2609,6 +3179,38 @@
                     }
                 }
             },
+            "CompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
+            "DecompressionStream": {
+                "properties": {
+                    "property": {
+                        "readable": {
+                            "name": "readable",
+                            "readonly": true,
+                            "overrideType": "ReadableStream<Uint8Array>"
+                        },
+                        "writable": {
+                            "name": "writable",
+                            "readonly": true,
+                            "overrideType": "WritableStream<BufferSource>"
+                        }
+                    }
+                }
+            },
             "TextDecoderStream": {
                 "properties": {
                     "property": {
@@ -2651,6 +3253,24 @@
                                         {
                                             "name": "permissionDesc",
                                             "type": "PermissionDescriptor"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ExtendableEvent": {
+                "methods": {
+                    "method": {
+                        "waitUntil": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "f",
+                                            "overrideType": "Promise<any>"
                                         }
                                     ]
                                 }
@@ -2705,6 +3325,10 @@
                         }
                     ]
                 }
+            },
+            "InstallEvent": {
+                // https://github.com/mdn/browser-compat-data/issues/22591
+                "exposed": ""
             },
             "Instance": {
                 "constructor": {
@@ -2770,6 +3394,47 @@
                     }
                 }
             },
+            "MIDIAccess": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "transferable": false // Not transferable on Gecko/Blink as of 2024-07
+            },
+            "MIDIConnectionEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIInput": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "events": {
+                    "event": [
+                        {
+                            "name": "midimessage",
+                            "type": "MIDIMessageEvent"
+                        }
+                    ]
+                }
+            },
+            "MIDIInputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIMessageEvent": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutput": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIOutputMap": {
+                "exposed": "Window" // Window only on Gecko/Blink as of 2024-07
+            },
+            "MIDIPort": {
+                "exposed": "Window", // Window only on Gecko/Blink as of 2024-07
+                "events": {
+                    "event": [
+                        {
+                            "name": "statechange",
+                            "type": "MIDIConnectionEvent"
+                        }
+                    ]
+                }
+            },
             "Clients": {
                 "methods": {
                     "method": {
@@ -2802,6 +3467,81 @@
                     }
                 }
             },
+            "CSSFontFaceRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSFontFaceDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSKeyframeRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSPageRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSPageDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSNestedDeclarations": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSPageDescriptors but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "CSSStyleDeclaration": {
+                "properties": {
+                    "property": {
+                        "cssFloat": {
+                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "name": "cssFloat",
+                            "type": "CSSOMString",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
+                        },
+                        "webkitLineClamp": {
+                            // The corresponding standardized property is not supported by anyone as of 2024-10.
+                            "deprecated": false
+                        }
+                    }
+                }
+            },
+            "CSSStyleRule": {
+                "properties": {
+                    "property": {
+                        "style": {
+                            // CSS Fonts Level 4 now says CSSStyleProperties but nobody implements it as of 2024-04
+                            // https://github.com/w3c/csswg-drafts/pull/9686
+                            "type": "CSSStyleDeclaration"
+                        }
+                    }
+                }
+            },
+            "ContactAddress": {
+                "name": "PaymentAddress"
+            },
             "HTMLMediaElement": {
                 "properties": {
                     "property": {
@@ -2811,21 +3551,165 @@
                     }
                 }
             },
+            "Global": {
+                "name": "Global",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "extends": "ValueType",
+                        "default": "ValueType"
+                    }
+                ],
+                "constructor": {
+                    "overrideSignatures": [
+                        "new<T extends ValueType = ValueType>(descriptor: GlobalDescriptor<T>, v?: ValueTypeMap[T]): Global<T>"
+                    ]
+                },
+                "properties": {
+                    "property": {
+                        "value": {
+                            "overrideType": "ValueTypeMap[T]"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "valueOf": {
+                            "overrideSignatures": [
+                                "valueOf(): ValueTypeMap[T]"
+                            ]
+                        }
+                    }
+                }
+            },
 
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
             "MediaSource": {
                 "exposed": "Window"
             },
+
+            // Payment Request added shippingAddress with a different type
+            // https://github.com/w3c/payment-request/pull/996
+            "PaymentRequest": {
+                "properties": {
+                    "property": {
+                        "shippingAddress": {
+                            "type": "PaymentAddress"
+                        }
+                    }
+                }
+            },
+            "PaymentResponse": {
+                "properties": {
+                    "property": {
+                        "shippingAddress": {
+                            "type": "PaymentAddress"
+                        }
+                    }
+                }
+            },
+
             "SourceBuffer": {
                 "exposed": "Window"
             },
             "SourceBufferList": {
                 "exposed": "Window"
+            },
+            "StylePropertyMapReadOnly": {
+                "methods": {
+                    "method": {
+                        "get": {
+                            // https://github.com/w3c/css-houdini-drafts/pull/1087
+                            "signature": {
+                                "0": {
+                                    "overrideType": "undefined | CSSStyleValue"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HTMLImageElement": {
+                "properties": {
+                    "property": {
+                        "fetchPriority": {
+                            "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
+            },
+            "HTMLLinkElement": {
+                "properties": {
+                    "property": {
+                        "fetchPriority": {
+                            "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
+            },
+            "HTMLScriptElement": {
+                "properties": {
+                    "property": {
+                        "fetchPriority": {
+                            "overrideType": "\"high\" | \"low\" | \"auto\""
+                        }
+                    }
+                }
+            },
+            "LockManager": {
+                "methods": {
+                    "method": {
+                        "request": {
+                            "typeParameters": {
+                                "name": "T"
+                            },
+                            "signature": {
+                                "0": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "LockGrantedCallback<T>"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<T>"
+                                },
+                                "1": {
+                                    "typeParameters": [
+                                        {
+                                            "name": "T"
+                                        }
+                                    ],
+                                    "param": [
+                                        {
+                                            "name": "callback",
+                                            "overrideType": "LockGrantedCallback<T>"
+                                        }
+                                    ],
+                                    "overrideType": "Promise<T>"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },
     "dictionaries": {
-        "dictionary": {
+          "dictionary": {
+            "FontFaceDescriptors": {
+              "members": {
+                "member": {
+                  "display":{
+                    "type": "FontDisplay"
+                  }
+                }
+              }
+            },
             // https://github.com/microsoft/TypeScript/issues/46036
             "CryptoKeyPair": {
                 "members": {
@@ -2939,6 +3823,24 @@
                     "[property: string]: string | number | null | undefined"
                 ]
             },
+            "PermissionDescriptor": {
+                "members": {
+                    "member": {
+                        "name": {
+                            "type": "PermissionName"
+                        }
+                    }
+                }
+            },
+            "PromiseRejectionEventInit": {
+                "members": {
+                    "member": {
+                        "promise": {
+                            "overrideType": "Promise<any>"
+                        }
+                    }
+                }
+            },
             "PublicKeyCredentialCreationOptions": {
                 "members": {
                     "member": {
@@ -3026,6 +3928,19 @@
                     }
                 }
             },
+            // TextEncoderEncodeIntoResult is used only for return type, always with all fields defined
+            "TextEncoderEncodeIntoResult": {
+                "members": {
+                    "member": {
+                        "read": {
+                            "required": true
+                        },
+                        "written": {
+                            "required": true
+                        }
+                    }
+                }
+            },
             "UnderlyingSource": {
                 "typeParameters": [
                     {
@@ -3040,9 +3955,6 @@
                         },
                         "pull": {
                             "overrideType": "UnderlyingSourcePullCallback<R>"
-                        },
-                        "type": {
-                            "overrideType": "undefined"
                         }
                     }
                 }
@@ -3127,7 +4039,21 @@
                 "legacyNamespace": "WebAssembly"
             },
             "GlobalDescriptor": {
-                "legacyNamespace": "WebAssembly"
+                "legacyNamespace": "WebAssembly",
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "extends": "ValueType",
+                        "default": "ValueType"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "value": {
+                            "overrideType": "T"
+                        }
+                    }
+                }
             },
             "WebAssemblyInstantiatedSource": {
                 "legacyNamespace": "WebAssembly"
@@ -3137,13 +4063,35 @@
     "typedefs": {
         "typedef": [
             {
-                "overrideType": "ReadableStreamDefaultController<T>",
+                "overrideType": "ReadableStreamDefaultController<T> | ReadableByteStreamController",
                 "name": "ReadableStreamController",
                 "typeParameters": [
                     {
                         "name": "T"
                     }
                 ]
+            },
+            {
+                "name": "ReadableStreamReader",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
+                "type": [
+                    {
+                        "type": "ReadableStreamDefaultReader"
+                    },
+                    {
+                        "type": "ReadableStreamBYOBReader"
+                    }
+                ],
+                "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+            },
+            {
+                "name": "AllowSharedBufferSource",
+                // No SharedArrayBuffer in ES5, oh no.
+                "overrideType": "ArrayBuffer | ArrayBufferView"
             }
         ]
     },
@@ -3196,6 +4144,19 @@
                                 ]
                             }
                         }
+                    }
+                }
+            }
+        },
+        {
+            "name": "CSS",
+            "methods": {
+                "method": {
+                    // `in` is a keyword and needs a special emit, which will be done in a separate PR
+                    // Not in removedTypes as removals in arrays are not well supported
+                    // https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1515
+                    "in": {
+                        "exposed": ""
                     }
                 }
             }

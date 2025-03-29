@@ -1,68 +1,48 @@
 export const forceKeepAlive: Record<string, string[]> = {
   // Things that are incorrectly reported as unsupported.
   // These should be filed to https://github.com/mdn/browser-compat-data/issues
-  CSSStyleDeclaration: [
-    "alignmentBaseline",
-    "baselineShift",
-    "clipRule",
-    "colorInterpolation",
-    "colorInterpolationFilters",
-    "dominantBaseline",
-    "fill",
-    "fillOpacity",
-    "fillRule",
-    "floodColor",
-    "floodOpacity",
-    "fontSizeAdjust",
-    "lightingColor",
-    "marker",
-    "markerEnd",
-    "markerMid",
-    "markerStart",
-    "shapeRendering",
-    "stopColor",
-    "stopOpacity",
-    "stroke",
-    "strokeDasharray",
-    "strokeDashoffset",
-    "strokeLinecap",
-    "strokeLinejoin",
-    "strokeMiterlimit",
-    "strokeOpacity",
-    "strokeWidth",
-    "textAnchor",
+  ContactAddress: [
+    "country",
+    "addressLine",
+    "region",
+    "city",
+    "dependentLocality",
+    "postalCode",
+    "sortingCode",
+    "organization",
+    "recipient",
+    "phone",
+    "toJSON",
   ],
-  Gamepad: ["hapticActuators"],
+  CSSStyleDeclaration: [
+    // https://github.com/mdn/browser-compat-data/commit/ebabd27460a306d6de80107b7e3c62be99ecd13c#r135144607
+    "webkitMaskComposite",
+  ],
   GlobalEventHandlers: [
-    "ontoggle",
     "onwebkitanimationend",
     "onwebkitanimationiteration",
     "onwebkitanimationstart",
-    "onwebkittransitionend",
   ],
-  KeyframeEffect: ["iterationComposite"],
-  MediaCapabilities: ["encodingInfo"],
-  RTCDtlsTransport: ["onstatechange", "state"],
-  RTCPeerConnection: ["canTrickleIceCandidates"],
-  WebGLRenderingContextBase: ["lineWidth"],
-  WebGL2RenderingContextOverloads: [
-    // These are implemented in WebGLRenderingContext and WebGL2RenderingContext separately
-    // but BCD only have them in WebGLRenderingContext
-    "bufferData",
-    "compressedTexImage2D",
-    "compressedTexSubImage2D",
-    "readPixels",
-    "texImage2D",
-    "texSubImage2D",
-    "uniform1fv",
-    "uniform1iv",
-    "uniform2fv",
-    "uniform2iv",
-    "uniform3fv",
-    "uniform3iv",
-    "uniform4fv",
-    "uniform4iv",
+  IDBDatabase: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onabort",
+    "onerror",
   ],
-  WindowEventHandlers: ["onpagehide", "onpageshow"],
-  WorkerGlobalScope: ["onrejectionhandled", "onunhandledrejection"],
+  ShadowRoot: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onslotchange",
+  ],
+  XMLHttpRequestEventTarget: [
+    // BCD unexpectedly is removing valid event data
+    // https://github.com/mdn/browser-compat-data/issues/15345
+    "onabort",
+    "onerror",
+    "onload",
+    "onloadend",
+    "onloadstart",
+    "onprogress",
+    "ontimeout",
+  ],
 };

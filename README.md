@@ -6,7 +6,7 @@ This tool is used to generate the web-based `lib.dom.d.ts` file which is include
 
 A feature needs to be supported by two or more major browser engines to be included here, to make sure there is a good consensus among vendors: __Gecko__ (Firefox), __Blink__ (Chrome/Edge), and __WebKit__ (Safari).
 
-If the condition is met but still is not available here, first check the [contribution guidelines](#contribution-guidelines) below and then please [file an issue](hthttps://github.com/microsoft/TypeScript-DOM-lib-generator/issues/new).
+If the condition is met but still is not available here, first check the [contribution guidelines](#contribution-guidelines) below and then please [file an issue](https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/new).
 
 ## Build Instructions
 
@@ -38,6 +38,17 @@ npm run test
 | `@types/web` [0.0.25](https://www.npmjs.com/package/@types/web/v/0.0.25)  | 4.4         | 4.4            |
 | `@types/web` [0.0.28](https://www.npmjs.com/package/@types/web/v/0.0.28)  | 4.5 beta    | 4.4            |
 | `@types/web` [0.0.37](https://www.npmjs.com/package/@types/web/v/0.0.37)  | 4.5 rc      | 4.4            |
+| `@types/web` [0.0.37](https://www.npmjs.com/package/@types/web/v/0.0.37)  | 4.5         | 4.4            |
+| `@types/web` [0.0.50](https://www.npmjs.com/package/@types/web/v/0.0.50)  | 4.6 beta    | 4.4            |
+| `@types/web` [0.0.51](https://www.npmjs.com/package/@types/web/v/0.0.51)  | 4.6 rc      | 4.4            |
+| `@types/web` [0.0.51](https://www.npmjs.com/package/@types/web/v/0.0.51)  | 4.6         | 4.4            |
+| `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7 beta    | 4.4            |
+| `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7 rc      | 4.4            |
+| `@types/web` [0.0.61](https://www.npmjs.com/package/@types/web/v/0.0.61)  | 4.7         | 4.4            |
+| `@types/web` [0.0.68](https://www.npmjs.com/package/@types/web/v/0.0.68)  | 4.8 beta    | 4.4            |
+| `@types/web` [0.0.69](https://www.npmjs.com/package/@types/web/v/0.0.69)  | 4.8 rc      | 4.4            |
+| `@types/web` [0.0.69](https://www.npmjs.com/package/@types/web/v/0.0.69)  | 4.8         | 4.4            |
+| `@types/web` [0.0.76](https://www.npmjs.com/package/@types/web/v/0.0.76)  | 4.9         | 4.4            |
 
 ## `@types/[lib]` Minimum Target
 

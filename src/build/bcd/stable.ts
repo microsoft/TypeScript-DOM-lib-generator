@@ -2,7 +2,7 @@ import { SimpleSupportStatement } from "@mdn/browser-compat-data/types";
 
 export function hasStableImplementation(
   browser: SimpleSupportStatement | SimpleSupportStatement[] | undefined,
-  prefix?: string
+  prefix?: string,
 ): boolean {
   if (!browser) {
     return false;

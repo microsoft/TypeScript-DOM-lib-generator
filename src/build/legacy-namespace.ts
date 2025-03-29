@@ -2,7 +2,7 @@ import * as Browser from "./types.js";
 import { mapToArray, arrayToMap } from "./helpers.js";
 
 export function collectLegacyNamespaceTypes(
-  webidl: Browser.WebIdl
+  webidl: Browser.WebIdl,
 ): Browser.Interface[] {
   if (!webidl.namespaces) {
     return [];
@@ -11,7 +11,7 @@ export function collectLegacyNamespaceTypes(
   const namespaceMap: Record<string, Browser.Interface> = arrayToMap(
     webidl.namespaces,
     (i) => i.name,
-    (i) => i
+    (i) => i,
   );
   for (const i of mapToArray(webidl.interfaces!.interface)) {
     if (i.legacyNamespace) {

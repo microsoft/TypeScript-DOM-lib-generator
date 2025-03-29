@@ -273,6 +273,26 @@
     },
     "enums": {
         "enum": {
+            "InsertPosition": {
+              "name": "InsertPosition",
+              "value": [
+                "beforebegin",
+                "beforeend",
+                "afterbegin",
+                "afterend"
+              ]
+            },
+            "FontDisplay": {
+              "name": "FontDisplay",
+              // https://w3c.github.io/csswg-drafts/css-fonts-4/#font-display-desc
+              "value": [
+                "auto",
+                "block",
+                "swap",
+                "fallback",
+                "optional"
+              ]
+            },
             "ClientType": {
                 "name": "ClientTypes"
             },
@@ -311,11 +331,179 @@
                     "color",
                     "luminosity"
                 ]
+            },
+            "PermissionName": {
+                "name": "PermissionName",
+                // This is a subset of the permissions defined in the spec:
+                // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
+                // Please add a feature only when it's supported by multiple engines.
+                "value": [
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
+                    "camera",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API#browser_compatibility
+                    "geolocation",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
+                    "microphone",
+                    // Gecko and Blink: https://developer.mozilla.org/en-US/docs/Web/API/Web_MIDI_API#browser_compatibility
+                    "midi",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API#browser_compatibility
+                    "notifications",
+                    // Gecko and Blink: https://developer.mozilla.org/en-US/docs/Web/API/Storage_API#browser_compatibility
+                    "persistent-storage",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Push_API#browser_compatibility
+                    "push",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
+                    "screen-wake-lock",
+                    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Storage_Access_API#browser_compatibility
+                    "storage-access"
+                ]
+            },
+            "AutoFillBase": {
+                "name": "AutoFillBase",
+                "value": [
+                    // Off
+                    "off",
+                    // Automatic
+                    "on",
+                    ""
+                ]
+            },
+            "AutoFillAddressKind": {
+                "name": "AutoFillAddressKind",
+                "value": [
+                    "shipping",
+                    "billing"
+                ]
+            },
+            "AutoFillNormalField": {
+                "name": "AutoFillNormalField",
+                "value": [
+                    "name",
+                    "honorific-prefix",
+                    "given-name",
+                    "additional-name",
+                    "family-name",
+                    "honorific-suffix",
+
+                    "username",
+                    "new-password",
+                    "current-password",
+                    // Supported in iOS Safari too even though WPT tests
+                    // for Safari currently fail as of 2023-06.
+                    "one-time-code",
+
+                    "organization",
+                    "street-address",
+                    "address-line1",
+                    "address-line2",
+                    "address-line3",
+                    "address-level4",
+                    "address-level3",
+                    "address-level2",
+                    "address-level1",
+                    "country",
+                    "country-name",
+                    "postal-code",
+
+                    "cc-name",
+                    "cc-given-name",
+                    "cc-family-name",
+                    "cc-number",
+                    "cc-exp",
+                    "cc-exp-month",
+                    "cc-exp-year",
+                    "cc-csc",
+                    "cc-type",
+                    "transaction-currency",
+                    "transaction-amount",
+
+                    "bday-day",
+                    "bday-month",
+                    "bday-year"
+                ]
+            },
+            "AutoFillContactKind": {
+                "name": "AutoFillContactKind",
+                "value": [
+                    "home",
+                    "work",
+                    "mobile"
+                ]
+            },
+            "AutoFillContactField": {
+                "name": "AutoFillContactField",
+                "value": [
+                    "tel",
+                    "tel-country-code",
+                    "tel-national",
+                    "tel-area-code",
+                    "tel-local",
+                    "tel-local-prefix",
+                    "tel-local-suffix",
+                    "tel-extension",
+                    "email"
+                ]
+            },
+            "AutoFillCredentialField": {
+                "name": "AutoFillCredentialField",
+                "value": [
+                    "webauthn"
+                ]
             }
         }
     },
     "interfaces": {
         "interface": {
+            // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
+            // We cannot define methods as dictionary properties with function types,
+            // as this would cause conflicts with ImportMeta method overrides in places like @types/node.
+            "ImportMeta": {
+                "name": "ImportMeta",
+                "exposed": "Window Worker",
+                "noInterfaceObject": true,
+                "properties": {
+                    "property": {
+                        "url": {
+                            "name": "url",
+                            "type": "DOMString"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "resolve": {
+                            "name": "resolve",
+                            "signature": [
+                                {
+                                    "param": [
+                                        {
+                                            "name": "specifier",
+                                            "type": "DOMString"
+                                        }
+                                    ],
+                                    "type": "DOMString"
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "AudioWorkletProcessorImpl": {
+                "name": "AudioWorkletProcessorImpl",
+                "extends": "AudioWorkletProcessor",
+                "methods": {
+                    "method": {
+                        "process": {
+                            "name": "process",
+                            "overrideSignatures": [
+                                "process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean"
+                            ]
+                        }
+                    }
+                },
+                "exposed": "AudioWorklet",
+                "noInterfaceObject": true
+            },
             "BroadcastChannel": {
                 "events": {
                     "event": [
@@ -375,18 +563,6 @@
                 "deprecated": "prefer HTMLTableCellElement",
                 "exposed": "Window"
             },
-            "HTMLDialogElement": {
-                "name": "HTMLDialogElement",
-                "noInterfaceObject": true,
-                "deprecated": "this is not available in most browsers",
-                "exposed": "Window"
-            },
-            "OffscreenCanvas": {
-                "name": "OffscreenCanvas",
-                "noInterfaceObject": true,
-                "deprecated": "this is not available in most browsers",
-                "exposed": "Worker"
-            },
             "HTMLDocument": {
                 "name": "HTMLDocument",
                 "extends": "Document",
@@ -439,12 +615,20 @@
                             "type": "DeviceOrientationEvent"
                         },
                         {
+                            "name": "deviceorientationabsolute",
+                            "type": "DeviceOrientationEvent"
+                        },
+                        {
                             "name": "gamepadconnected",
                             "type": "GamepadEvent"
                         },
                         {
                             "name": "gamepaddisconnected",
                             "type": "GamepadEvent"
+                        },
+                        {
+                            "name": "DOMContentLoaded",
+                            "type": "Event"
                         }
                     ]
                 }
@@ -551,7 +735,8 @@
                         "closest": {
                             "additionalSignatures": [
                                 "closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null",
-                                "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null"
+                                "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null",
+                                "closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null"
                             ],
                             "signature": {
                                 "0": {
@@ -665,6 +850,8 @@
                                 "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement",
                                 "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]",
                                 "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement",
+                                "createElementNS<K extends keyof MathMLElementTagNameMap>(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: K): MathMLElementTagNameMap[K]",
+                                "createElementNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: string): MathMLElement",
                                 "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
                             ]
                         },
@@ -685,6 +872,14 @@
                             "overrideType": "null"
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "DOMContentLoaded",
+                            "type": "Event"
+                        }
+                    ]
                 }
             },
             // This is used in the React d.ts files, and not including
@@ -758,6 +953,10 @@
                     "event": [
                         {
                             "name": "upgradeneeded",
+                            "type": "IDBVersionChangeEvent"
+                        },
+                        {
+                            "name": "blocked",
                             "type": "IDBVersionChangeEvent"
                         }
                     ]
@@ -872,23 +1071,37 @@
                     }
                 }
             },
-            "HTMLPreElement": {
-                "element": [
-                    {
-                        "name": "listing",
-                        "deprecated": true
-                    },
-                    {
-                        "name": "xmp",
-                        "deprecated": true
-                    }
-                ]
-            },
             "KHR_parallel_shader_compile": {
                 "overrideExposed": "Window Worker"
             },
             "OVR_multiview2": {
                 "overrideExposed": "Window Worker"
+            },
+            // The spec removed `timestamp` but browsers still have it.
+            // https://github.com/w3c/webrtc-encoded-transform/pull/204
+            "RTCEncodedAudioFrame": {
+                "properties": {
+                    "property": {
+                        "timestamp": {
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp",
+                            "name": "timestamp",
+                            "type": "long long",
+                            "readonly": true
+                        }
+                    }
+                }
+            },
+            "RTCEncodedVideoFrame": {
+                "properties": {
+                    "property": {
+                        "timestamp": {
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp",
+                            "name": "timestamp",
+                            "type": "long long",
+                            "readonly": true
+                        }
+                    }
+                }
             },
             "RTCDTMFSender": {
                 "events": {
@@ -938,10 +1151,6 @@
                         {
                             "name": "dataavailable",
                             "type": "BlobEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "MediaRecorderErrorEvent"
                         }
                     ]
                 }
@@ -959,10 +1168,6 @@
                         }
                     ]
                 }
-            },
-            "OverconstrainedError": {
-                "name": "OverconstrainedError",
-                "extends": "Error"
             },
             "ProgressEvent": {
                 "typeParameters": [
@@ -1064,23 +1269,33 @@
                         }
                     ]
                 }
+            },
+            "FileSystemFileHandle": {
+                "properties": {
+                    "property": {
+                        "kind": {
+                            "name": "kind",
+                            "readonly": true,
+                            "overrideType": "\"file\""
+                        }
+                    }
+                }
+            },
+            "FileSystemDirectoryHandle": {
+                "properties": {
+                    "property": {
+                        "kind": {
+                            "name": "kind",
+                            "readonly": true,
+                            "overrideType": "\"directory\""
+                        }
+                    }
+                }
             }
         }
     },
     "dictionaries": {
         "dictionary": {
-            "ImportMeta": {
-                "name": "ImportMeta",
-                "members": {
-                    "member": {
-                        "url": {
-                            "name": "url",
-                            "type": "DOMString",
-                            "required": true
-                        }
-                    }
-                }
-            },
             "KeyboardEventInit": {
                 "members": {
                     "member": {
@@ -1103,8 +1318,13 @@
                     }
                 }
             },
-            "ReadableStreamDefaultReadDoneResult": {
-                "name": "ReadableStreamDefaultReadDoneResult",
+            "ReadableStreamReadDoneResult": {
+                "name": "ReadableStreamReadDoneResult",
+                "typeParameters": [
+                    {
+                        "name": "T"
+                    }
+                ],
                 "members": {
                     "member": {
                         "done": {
@@ -1114,13 +1334,14 @@
                         },
                         "value": {
                             "name": "value",
-                            "overrideType": "undefined"
+                            "overrideType": "T | undefined",
+                            "required": true
                         }
                     }
                 }
             },
-            "ReadableStreamDefaultReadValueResult": {
-                "name": "ReadableStreamDefaultReadValueResult",
+            "ReadableStreamReadValueResult": {
+                "name": "ReadableStreamReadValueResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1140,16 +1361,120 @@
                         }
                     }
                 }
+            },
+            "UnderlyingByteSource": {
+                "name": "UnderlyingByteSource",
+                "members": {
+                    "member": {
+                        "type": {
+                            "name": "type",
+                            "required": true,
+                            "overrideType": "\"bytes\""
+                        },
+                        "autoAllocateChunkSize": {
+                            "name": "autoAllocateChunkSize",
+                            "type": "unsigned long long"
+                        },
+                        "start": {
+                            "name": "start",
+                            "overrideType": "(controller: ReadableByteStreamController) => any"
+                        },
+                        "pull": {
+                            "name": "pull",
+                            "overrideType": "(controller: ReadableByteStreamController) => void | PromiseLike<void>"
+                        },
+                        "cancel": {
+                            "name": "cancel",
+                            "type": "UnderlyingSourceCancelCallback"
+                        }
+                    }
+                }
+            },
+            "UnderlyingDefaultSource": {
+                "name": "UnderlyingDefaultSource",
+                "typeParameters": [
+                    {
+                        "name": "R",
+                        "default": "any"
+                    }
+                ],
+                "members": {
+                    "member": {
+                        "type": {
+                            "name": "type",
+                            "type": "undefined"
+                        },
+                        "start": {
+                            "name": "start",
+                            "overrideType": "(controller: ReadableStreamDefaultController<R>) => any"
+                        },
+                        "pull": {
+                            "name": "pull",
+                            "overrideType": "(controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>"
+                        },
+                        "cancel": {
+                            "name": "cancel",
+                            "type": "UnderlyingSourceCancelCallback"
+                        }
+                    }
+                }
+            },
+            "ValueTypeMap": {
+                "name": "ValueTypeMap",
+                "legacyNamespace": "WebAssembly",
+                "exposed":"Window Worker Worklet",
+                "members": {
+                    "member": {
+                        "anyfunc": {
+                            "name": "anyfunc",
+                            "overrideType": "Function",
+                            "required": 1
+                        },
+                        "externref": {
+                            "name": "externref",
+                            "overrideType": "any",
+                            "required": 1
+                        },
+                        "f32": {
+                            "name": "f32",
+                            "overrideType": "number",
+                            "required": 1
+                        },
+                        "f64": {
+                            "name": "f64",
+                            "overrideType": "number",
+                            "required": 1
+                        },
+                        "i32": {
+                            "name": "i32",
+                            "overrideType": "number",
+                            "required": 1
+                        },
+                        "i64": {
+                            "name": "i64",
+                            "overrideType": "bigint",
+                            "required": 1
+                        },
+                        "v128": {
+                            "name": "v128",
+                            "overrideType": "never",
+                            "required": 1
+                        }
+                    }
+                }
             }
         }
     },
     "typedefs": {
         "typedef": [
             {
-                "overrideType": "\"beforebegin\" | \"afterbegin\" | \"beforeend\" | \"afterend\"",
-                "name": "InsertPosition"
-            },
-            {
+                "type": {
+                    "0": {
+                        "subtype": {
+                            "overrideType": "[string, string]"
+                        }
+                    }
+                },
                 "additionalTypes": ["Headers"],
                 "name": "HeadersInit"
             },
@@ -1170,16 +1495,13 @@
                 "overrideType": "\"attributes\" | \"characterData\" | \"childList\""
             },
             {
-                "name": "Transferable",
-                "type": [
-                    { "type": "ArrayBuffer" },
-                    { "type": "MessagePort" },
-                    { "type": "ImageBitmap" }
-                ]
-            },
-            {
                 "name": "WindowProxy",
                 "type": "Window"
+            },
+            {
+                "name": "ValueType",
+                "legacyNamespace": "WebAssembly",
+                "overrideType": "keyof ValueTypeMap"
             },
             {
                 "name": "ExportValue",
@@ -1231,7 +1553,7 @@
                 ]
             },
             {
-                "name": "ReadableStreamDefaultReadResult",
+                "name": "ReadableStreamReadResult",
                 "typeParameters": [
                     {
                         "name": "T"
@@ -1239,31 +1561,53 @@
                 ],
                 "type": [
                     {
-                        "type": "ReadableStreamDefaultReadValueResult"
+                        "type": "ReadableStreamReadValueResult"
                     },
                     {
-                        "type": "ReadableStreamDefaultReadDoneResult"
+                        "type": "ReadableStreamReadDoneResult"
                     }
                 ],
-                "overrideType": "ReadableStreamDefaultReadValueResult<T> | ReadableStreamDefaultReadDoneResult"
-            },
-            {
-                "name": "ReadableStreamReader",
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "type": [
-                    {
-                        "type": "ReadableStreamDefaultReader"
-                    }
-                ],
-                "overrideType": "ReadableStreamDefaultReader<T>"
+                "overrideType": "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>"
             },
             {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
+            },
+            {
+                "name": "OptionalPrefixToken",
+                "typeParameters": [
+                    {
+                        "name": "T extends string"
+                    }
+                ],
+                "overrideType": "`${T} ` | \"\""
+            },
+            {
+                "name": "OptionalPostfixToken",
+                "typeParameters": [
+                    {
+                        "name": "T extends string"
+                    }
+                ],
+                "overrideType": "` ${T}` | \"\""
+            },
+            {
+                "name": "AutoFillSection",
+                // Note: this will also eagerly match any invalid string
+                // after section- instead of stopping at the first whitespace.
+                // It should be something like /section-\S/ if it were supported.
+                "overrideType": "`section-${string}`"
+            },
+            {
+                "name": "AutoFillField",
+                "overrideType": "AutoFillNormalField | `${OptionalPrefixToken<AutoFillContactKind>}${AutoFillContactField}`"
+            },
+            {
+                // See the full list of possible autofill values for the `autocomplete` attribute:
+                // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+                // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+                "name": "AutoFill",
+                "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
             }
         ]
     }

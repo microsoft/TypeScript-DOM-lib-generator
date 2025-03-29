@@ -1,11 +1,16 @@
 import * as Browser from "./build/types.js";
 import { promises as fs } from "fs";
 import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
-import { emitWebIdl } from "./build/emitter.js";
+import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";
 import { convert } from "./build/widlprocess.js";
 import { getExposedTypes } from "./build/expose.js";
-import { getDeprecationData, getRemovalData } from "./build/bcd.js";
+import {
+  getDeprecationData,
+  getDocsData,
+  getRemovalData,
+} from "./build/bcd.js";
 import { getInterfaceElementMergeData } from "./build/webref/elements.js";
+import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
 
@@ -32,26 +37,52 @@ interface EmitOptions {
   global: string[];
   name: string;
   outputFolder: URL;
+  compilerBehavior: CompilerBehavior;
 }
 
 async function emitFlavor(
   webidl: Browser.WebIdl,
   forceKnownTypes: Set<string>,
-  options: EmitOptions
+  options: EmitOptions,
 ) {
   const exposed = getExposedTypes(webidl, options.global, forceKnownTypes);
   mergeNamesakes(exposed);
+  exposed.events = webidl.events;
 
-  const result = emitWebIdl(exposed, options.global[0], false);
+  const result = emitWebIdl(
+    exposed,
+    options.global[0],
+    "",
+    options.compilerBehavior,
+  );
   await fs.writeFile(
     new URL(`${options.name}.generated.d.ts`, options.outputFolder),
-    result
+    result,
   );
 
-  const iterators = emitWebIdl(exposed, options.global[0], true);
+  const iterators = emitWebIdl(
+    exposed,
+    options.global[0],
+    "sync",
+    options.compilerBehavior,
+  );
   await fs.writeFile(
     new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
-    iterators
+    iterators,
+  );
+
+  const asyncIterators = emitWebIdl(
+    exposed,
+    options.global[0],
+    "async",
+    options.compilerBehavior,
+  );
+  await fs.writeFile(
+    new URL(
+      `${options.name}.asynciterable.generated.d.ts`,
+      options.outputFolder,
+    ),
+    asyncIterators,
   );
 }
 
@@ -80,12 +111,6 @@ async function emitDom() {
       "The $1 ",
     ],
   ];
-
-  // Create output folder
-  await fs.mkdir(outputFolder, {
-    // Doesn't need to be recursive, but this helpfully ignores EEXIST
-    recursive: true,
-  });
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
@@ -125,12 +150,12 @@ async function emitDom() {
 
   function mergeApiDescriptions(
     idl: Browser.WebIdl,
-    descriptions: Record<string, string>
+    descriptions: Record<string, string>,
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
       (i) => i.name,
-      (i) => i
+      (i) => i,
     );
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
@@ -143,12 +168,12 @@ async function emitDom() {
 
   function mergeDeprecatedMessage(
     idl: Browser.WebIdl,
-    descriptions: Record<string, string>
+    descriptions: Record<string, string>,
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
       (i) => i.name,
-      (i) => i
+      (i) => i,
     );
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
@@ -174,7 +199,9 @@ async function emitDom() {
   }
 
   /// Load the input file
-  let webidl: Browser.WebIdl = {};
+  let webidl: Browser.WebIdl = {
+    events: await getInterfaceToEventMap(),
+  };
 
   for (const w of widlStandardTypes) {
     webidl = merge(webidl, w.browser, true);
@@ -230,6 +257,7 @@ async function emitDom() {
 
   webidl = merge(webidl, getDeprecationData(webidl));
   webidl = merge(webidl, getRemovalData(webidl));
+  webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
   webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   webidl = merge(webidl, addedItems);
@@ -243,37 +271,82 @@ async function emitDom() {
     }
   }
 
+  const transferables = Object.values(
+    webidl.interfaces?.interface ?? {},
+  ).filter((i) => i.transferable);
+
+  webidl = merge(webidl, {
+    typedefs: {
+      typedef: [
+        {
+          name: "Transferable",
+          type: [
+            ...transferables.map((v) => ({ type: v.name })),
+            { type: "ArrayBuffer" },
+          ],
+        },
+      ],
+    },
+  });
+
   const knownTypes = await readInputJSON("knownTypes.json");
 
-  emitFlavor(webidl, new Set(knownTypes.Window), {
-    name: "dom",
-    global: ["Window"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worker), {
-    name: "webworker",
-    global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worker), {
-    name: "sharedworker",
-    global: ["SharedWorker", "Worker"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worker), {
-    name: "serviceworker",
-    global: ["ServiceWorker", "Worker"],
-    outputFolder,
-  });
-  emitFlavor(webidl, new Set(knownTypes.Worklet), {
-    name: "audioworklet",
-    global: ["AudioWorklet", "Worklet"],
-    outputFolder,
-  });
+  const emitVariations = [
+    {
+      outputFolder: new URL("./ts5.5/", outputFolder),
+      compilerBehavior: {},
+    },
+    {
+      outputFolder,
+      compilerBehavior: {
+        useIteratorObject: true,
+        allowUnrelatedSetterType: true,
+      } as CompilerBehavior,
+    },
+  ];
+
+  for (const { outputFolder, compilerBehavior } of emitVariations) {
+    // Create output folder
+    await fs.mkdir(outputFolder, {
+      // Doesn't need to be recursive, but this helpfully ignores EEXIST
+      recursive: true,
+    });
+
+    emitFlavor(webidl, new Set(knownTypes.Window), {
+      name: "dom",
+      global: ["Window"],
+      outputFolder,
+      compilerBehavior,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
+      name: "webworker",
+      global: ["Worker", "DedicatedWorker", "SharedWorker", "ServiceWorker"],
+      outputFolder,
+      compilerBehavior,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
+      name: "sharedworker",
+      global: ["SharedWorker", "Worker"],
+      outputFolder,
+      compilerBehavior,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worker), {
+      name: "serviceworker",
+      global: ["ServiceWorker", "Worker"],
+      outputFolder,
+      compilerBehavior,
+    });
+    emitFlavor(webidl, new Set(knownTypes.Worklet), {
+      name: "audioworklet",
+      global: ["AudioWorklet", "Worklet"],
+      outputFolder,
+      compilerBehavior,
+    });
+  }
 
   function prune(
     obj: Browser.WebIdl,
-    template: Partial<Browser.WebIdl>
+    template: Partial<Browser.WebIdl>,
   ): Browser.WebIdl {
     return filterByNull(obj, template);
 
@@ -284,13 +357,13 @@ async function emitDom() {
         if (!obj[k]) {
           console.warn(
             `removedTypes.json has a redundant field ${k} in ${JSON.stringify(
-              template
-            ).slice(0, 100)}`
+              template,
+            ).slice(0, 100)}`,
           );
         } else if (Array.isArray(template[k])) {
           if (!Array.isArray(obj[k])) {
             throw new Error(
-              `Removal template ${k} is an array but the original field is not`
+              `Removal template ${k} is an array but the original field is not`,
             );
           }
           // template should include strings
@@ -298,12 +371,12 @@ async function emitDom() {
             const name = typeof item === "string" ? item : item.name;
             return !template[k].includes(name);
           });
-          if (filtered[k].length === obj[k].length) {
+          if (filtered[k].length !== obj[k].length - template[k].length) {
             const differences = template[k].filter(
-              (t: any) => !obj[k].includes(t)
+              (t: any) => !obj[k].includes(t),
             );
             console.warn(
-              `removedTypes.json has a redundant array items: ${differences}`
+              `removedTypes.json has redundant array items: ${differences}`,
             );
           }
         } else if (template[k] !== null) {
@@ -311,7 +384,7 @@ async function emitDom() {
         } else {
           if (obj[k].exposed === "") {
             console.warn(
-              `removedTypes.json removes ${k} that has already been disabled by BCD.`
+              `removedTypes.json removes ${k} that has already been disabled by BCD.`,
             );
           }
           delete filtered[k];
