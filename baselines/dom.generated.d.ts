@@ -3712,7 +3712,7 @@ declare var ByteLengthQueuingStrategy: {
 };
 
 /**
- * The **`CDATASection`** interface represents a CDATA section
+ * The **`CDATASection`** interface represents a CDATA section that can be used within XML to include extended portions of unescaped text.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CDATASection)
  */
@@ -7175,7 +7175,7 @@ declare var DOMMatrixReadOnly: {
 };
 
 /**
- * The **`DOMParser`** interface provides
+ * The **`DOMParser`** interface provides the ability to parse {{Glossary("XML")}} or {{Glossary("HTML")}} source code from a string into a DOM {{domxref("Document")}}.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMParser)
  */
@@ -17648,7 +17648,7 @@ interface NavigatorStorage {
 }
 
 /**
- * The {{Glossary("DOM")}} **`Node`** interface is an abstract base
+ * The {{Glossary("DOM")}} **`Node`** interface is an abstract base class upon which many other DOM API objects are based, thus letting those object types to be used similarly and often interchangeably.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node)
  */
@@ -19169,7 +19169,7 @@ declare var PermissionStatus: {
 };
 
 /**
- * The **`Permissions`** interface of the [Permissions API](/en-US/docs/Web/API/Permissions_API) provides the core Permission API functionality, such as methods for querying and revoking permissions
+ * The **`Permissions`** interface of the [Permissions API](/en-US/docs/Web/API/Permissions_API) provides the core Permission API functionality, such as methods for querying and revoking permissions - {{domxref("Permissions.query","Permissions.query()")}} - : Returns the user permission status for a given API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions)
  */
@@ -19647,7 +19647,7 @@ declare var RTCDataChannel: {
 };
 
 /**
- * The **`RTCDataChannelEvent`** interface
+ * The **`RTCDataChannelEvent`** interface represents an event related to a specific {{DOMxRef("RTCDataChannel")}}.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannelEvent)
  */
@@ -23895,7 +23895,7 @@ declare var Storage: {
 };
 
 /**
- * The **`StorageEvent`** interface is implemented by the {{domxref("Window/storage_event", "storage")}} event, which is
+ * The **`StorageEvent`** interface is implemented by the {{domxref("Window/storage_event", "storage")}} event, which is sent to a window when a storage area the window has access to is changed within the context of another document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageEvent)
  */
@@ -28842,7 +28842,7 @@ declare var XPathResult: {
 };
 
 /**
- * An **`XSLTProcessor`** applies an [XSLT](/en-US/docs/Web/XML/XSLT) stylesheet transformation to an XML document to
+ * An **`XSLTProcessor`** applies an [XSLT](/en-US/docs/Web/XML/XSLT) stylesheet transformation to an XML document to produce a new XML document as output.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor)
  */

@@ -4665,7 +4665,7 @@ declare var PermissionStatus: {
 };
 
 /**
- * The **`Permissions`** interface of the [Permissions API](/en-US/docs/Web/API/Permissions_API) provides the core Permission API functionality, such as methods for querying and revoking permissions
+ * The **`Permissions`** interface of the [Permissions API](/en-US/docs/Web/API/Permissions_API) provides the core Permission API functionality, such as methods for querying and revoking permissions - {{domxref("Permissions.query","Permissions.query()")}} - : Returns the user permission status for a given API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions)
  */

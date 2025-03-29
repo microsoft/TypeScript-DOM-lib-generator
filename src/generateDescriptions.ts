@@ -9,26 +9,26 @@ function extractSummary(markdown: string): string {
   // Remove frontmatter (--- at the beginning)
   markdown = markdown.replace(/^---[\s\S]+?---\n/, "");
 
-  // Find the first meaningful sentence
-  const lines = markdown.split("\n");
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (
-      trimmed &&
-      !trimmed.startsWith("#") &&
-      !trimmed.startsWith(">") &&
-      !trimmed.startsWith("{{")
-    ) {
-      // Extract the first sentence (ending in . ! or ?)
-      const sentenceMatch = trimmed.match(/(.*?[.!?])(?:\s|$)/);
-      if (sentenceMatch) {
-        return sentenceMatch[1]; // Return the first full sentence
-      }
-      return trimmed; // Fallback if no punctuation is found
-    }
+  // Normalize line breaks by collapsing consecutive newlines into a single space
+  const normalizedText = markdown
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(
+      (line) =>
+        line &&
+        !line.startsWith("#") &&
+        !line.startsWith(">") &&
+        !line.startsWith("{{"),
+    )
+    .join(" ");
+
+  // Extract the first sentence (ending in . ! or ?)
+  const sentenceMatch = normalizedText.match(/(.*?[.!?])(?:\s|$)/);
+  if (sentenceMatch) {
+    return sentenceMatch[1]; // Return the first full sentence
   }
 
-  return "";
+  return normalizedText.split(" ")[0] || ""; // Fallback: first word if no sentence found
 }
 
 async function getFolders(dirPath: string): Promise<string[]> {
