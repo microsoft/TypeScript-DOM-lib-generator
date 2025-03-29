@@ -4,6 +4,7 @@ import * as Browser from "./types.js";
 export const bufferSourceTypes = new Set([
   "ArrayBuffer",
   "SharedArrayBuffer",
+  "ArrayBufferLike",
   "ArrayBufferView",
   "DataView",
   "Int8Array",
