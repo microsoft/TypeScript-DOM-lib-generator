@@ -1292,9 +1292,9 @@
                 "properties": {
                     "property": {
                         "onerror": {
-                    "name": "onerror",
-                    "overrideType": "(event: Event) => void"
-                }
+                            "name": "onerror",
+                            "overrideType": "(event: Event) => void"
+                        }
                     }
                 }
             }
