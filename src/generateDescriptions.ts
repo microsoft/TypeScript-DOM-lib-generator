@@ -100,7 +100,7 @@ async function getIndexMdContents(
 export async function generateDescription(): Promise<Record<string, string>> {
   const basePath = path.resolve(
     __dirname,
-    "../mdn-content/files/en-us/web/api",
+    "../inputfiles/mdn/files/en-us/web/api",
   );
 
   try {
