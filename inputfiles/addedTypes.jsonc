@@ -545,10 +545,6 @@
                         },
                         "loading": {
                             "overrideType": "\"eager\" | \"lazy\""
-                        },
-                        "onerror": {
-                            "name": "onerror",
-                            "overrideType": "(event: Event) => void"
                         }
                     }
                 }
@@ -1289,6 +1285,16 @@
                             "readonly": true,
                             "overrideType": "\"directory\""
                         }
+                    }
+                }
+            },
+            "HTMLElement": {
+                "properties": {
+                    "property": {
+                        "onerror": {
+                    "name": "onerror",
+                    "overrideType": "(event: Event) => void"
+                }
                     }
                 }
             }
