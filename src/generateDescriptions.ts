@@ -97,23 +97,20 @@ async function getIndexMdContents(
   return results;
 }
 
-export async function generateDescription() {
+export async function generateDescription(): Promise<Record<string, string>> {
   const basePath = path.resolve(
     __dirname,
     "../mdn-content/files/en-us/web/api",
   );
-  const outputDir = path.resolve(__dirname, "../inputfiles/mdn/");
-  const outputFile = path.join(outputDir, "apiDescriptions.json");
 
   try {
-    await fs.mkdir(outputDir, { recursive: true });
     const folders = await getFolders(basePath);
-    if (folders.length) {
-      const data = await getIndexMdContents(folders);
-      await fs.writeFile(outputFile, JSON.stringify(data, null, 2), "utf-8");
-      console.log(`API descriptions saved to ${outputFile}`);
+    if (folders.length > 0) {
+      return await getIndexMdContents(folders);
     }
   } catch (error) {
     console.error("Error generating API descriptions:", error);
   }
+
+  return {};
 }

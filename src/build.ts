@@ -117,7 +117,7 @@ async function emitDom() {
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
-  const documentationFromMDN = await readInputJSON("mdn/apiDescriptions.json");
+  const documentationFromMDN = await generateDescription();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
   async function readInputJSON(filename: string) {
@@ -395,5 +395,4 @@ async function emitDom() {
     }
   }
 }
-await generateDescription();
 await emitDom();
