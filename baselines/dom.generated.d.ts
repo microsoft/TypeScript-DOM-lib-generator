@@ -8631,7 +8631,7 @@ interface ElementEventMap {
 }
 
 /**
- * **`Element`** is the most general base class from which all element objects (i.e.
+ * **`Element`** is the most general base class from which all element objects (i.e. objects that represent elements) in a Document inherit.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
