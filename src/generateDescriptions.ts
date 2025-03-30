@@ -25,7 +25,7 @@ function extractSummary(markdown: string): string {
   // Extract the first sentence (ending in . ! or ?)
   const sentenceMatch = normalizedText.match(/(.*?[.!?])(?:\s|$)/);
   if (sentenceMatch) {
-    return sentenceMatch[1]; // Return the first full sentence
+    return sentenceMatch[0]; // Return the first full sentence
   }
 
   return normalizedText.split(" ")[0] || ""; // Fallback: first word if no sentence found
