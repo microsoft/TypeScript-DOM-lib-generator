@@ -33,6 +33,15 @@ body:
       placeholder: "Step 1, Step 2, Step 3..."
     validations:
       required: true
+  - type: checkboxes
+    id: browser_support
+    attributes:
+      label: "Browser Support"
+      description: "Ensure that the API is supported in at least two major browsers."
+      options:
+        - label: "This API is supported in at least two major browsers."
+          validations:
+            required: true
   - type: textarea
     id: additional_context
     attributes:
