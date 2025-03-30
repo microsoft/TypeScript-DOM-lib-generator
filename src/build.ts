@@ -138,7 +138,7 @@ async function emitDom() {
     );
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target && !value.startsWith("REDIRECT")) {
+      if (target) {
         target.comment = transformVerbosity(value);
       }
     }
