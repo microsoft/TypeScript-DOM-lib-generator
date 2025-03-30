@@ -139,7 +139,7 @@ async function emitDom() {
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
       if (target && !value.startsWith("REDIRECT")) {
-        target.comment = transformVerbosity(key, value);
+        target.comment = transformVerbosity(value);
       }
     }
     return idl;
@@ -157,13 +157,13 @@ async function emitDom() {
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
       if (target) {
-        target.deprecated = transformVerbosity(key, value);
+        target.deprecated = transformVerbosity(value);
       }
     }
     return idl;
   }
 
-  function transformVerbosity(_name: string, description: string): string {
+  function transformVerbosity(description: string): string {
     return description
       .replace(
         /\{\{\s*(Glossary|HTMLElement|SVGAttr|SVGElement|cssxref|jsxref|HTTPHeader)\s*\(\s*["']((?:\\.|[^"\\])*?)["'].*?\)\s*\}\}/gi,
