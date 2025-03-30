@@ -34,6 +34,14 @@ body:
         - "MDN"
         - "Other"
       required: true
+  - type: checkboxes
+    id: browser_support
+    attributes:
+      label: "Browser Support"
+      description: "Ensure that the API is supported in at least two major browsers."
+      options:
+        - label: "This API is supported in at least two major browsers."
+          required: true
   - type: textarea
     id: additional_context
     attributes:
