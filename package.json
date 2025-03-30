@@ -69,9 +69,5 @@
   },
   "overrides": {
     "typescript@*": "$typescript"
-  },
-  "dependencies": {
-    "remark": "^15.0.1",
-    "strip-markdown": "^6.0.0"
   }
 }
