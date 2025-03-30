@@ -1,0 +1,38 @@
+name: "Typings Inconsistency"
+title: "[Typings Inconsistency] "
+labels: [inconsistency]
+assignees: []
+description: "Report inconsistencies between TypeScript's DOM typings and browser behavior."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Typings Inconsistency
+        Provide details of the inconsistency.
+  - type: input
+    id: inconsistency_summary
+    attributes:
+      label: "Summary"
+      description: "Brief summary of the inconsistency"
+      placeholder: "e.g., Mismatch in event handling..."
+      required: true
+  - type: textarea
+    id: expected_vs_actual
+    attributes:
+      label: "Expected vs. Actual Behavior"
+      description: "Describe what you expected and what actually happened"
+      placeholder: "Expected: ...\nActual: ..."
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to Reproduce"
+      description: "List steps to reproduce the issue"
+      placeholder: "Step 1, Step 2, Step 3..."
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any extra information, logs, or references"
+      placeholder: "Optional details..."
