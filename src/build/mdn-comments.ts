@@ -1,9 +1,10 @@
 import fs from "fs/promises";
 import * as path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const basePath = new URL(
+  "../../inputfiles/mdn/files/en-us/web/api/",
+  import.meta.url,
+).pathname;
 
 function extractSummary(markdown: string): string {
   // Remove frontmatter (--- at the beginning)
@@ -73,11 +74,6 @@ async function getIndexMdContents(
 }
 
 export async function generateDescription(): Promise<Record<string, string>> {
-  const basePath = path.resolve(
-    __dirname,
-    "../inputfiles/mdn/files/en-us/web/api",
-  );
-
   try {
     const folders = await getFolders(basePath);
     if (folders.length > 0) {
