@@ -40,8 +40,8 @@ body:
       description: "Ensure that the API is supported in at least two major browsers."
       options:
         - label: "This API is supported in at least two major browsers."
-          validations:
-            required: true
+      validations:
+        required: true
   - type: textarea
     id: additional_context
     attributes:
