@@ -1,0 +1,31 @@
+name: "Contribution Proposal"
+title: "[Contribution Proposal] "
+labels: [discussion]
+assignees: []
+description: "Discuss potential contributions before making a pull request."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Contribution Proposal
+        Outline your proposed contribution and implementation plan.
+  - type: input
+    id: contribution_summary
+    attributes:
+      label: "Contribution Summary"
+      description: "Brief description of the proposed contribution"
+      placeholder: "e.g., Adding support for a new API..."
+      required: true
+  - type: textarea
+    id: contribution_details
+    attributes:
+      label: "Contribution Details"
+      description: "Describe the contribution in detail along with your plan"
+      placeholder: "Detailed plan and reasoning..."
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any other relevant details or considerations"
+      placeholder: "Optional additional information..."

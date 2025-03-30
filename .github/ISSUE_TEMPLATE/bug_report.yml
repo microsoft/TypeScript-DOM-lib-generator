@@ -1,0 +1,50 @@
+name: "Bug Report"
+title: "[Bug] "
+labels: [bug]
+assignees: []
+description: "Report incorrect or missing DOM typings."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report
+        Please fill out the form below to help us understand and fix the issue.
+  - type: input
+    id: description
+    attributes:
+      label: "Short Description"
+      description: "Briefly describe the bug"
+      placeholder: "Describe the issue..."
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "Browser/Platform"
+      description: "Select the browser or platform where the issue occurs"
+      options:
+        - "Chrome"
+        - "Firefox"
+        - "Edge"
+        - "Safari"
+        - "Other"
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: "Steps to Reproduce"
+      description: "List the steps needed to reproduce the issue"
+      placeholder: "1. Step one\n2. Step two\n3. Step three..."
+      required: true
+  - type: input
+    id: ts_version
+    attributes:
+      label: "TypeScript Version"
+      description: "Enter your TypeScript version"
+      placeholder: "e.g., 4.7.0"
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any extra details or screenshots"
+      placeholder: "Optional details..."

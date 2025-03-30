@@ -1,0 +1,35 @@
+name: "Tooling Issue"
+title: "[Tooling Issue] "
+labels: [tooling]
+assignees: []
+description: "Report problems with build scripts or automation."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Tooling Issue
+        Provide details about the tooling problem.
+  - type: dropdown
+    id: tooling_area
+    attributes:
+      label: "Affected Tooling Area"
+      description: "Select the affected tooling component"
+      options:
+        - "Build Scripts"
+        - "CI/CD Pipeline"
+        - "Dependencies"
+        - "Other"
+      required: true
+  - type: textarea
+    id: issue_description
+    attributes:
+      label: "Issue Description"
+      description: "Describe the tooling problem"
+      placeholder: "Detailed description..."
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs / Errors"
+      description: "Include any relevant logs or error messages"
+      placeholder: "Paste logs or error details..."

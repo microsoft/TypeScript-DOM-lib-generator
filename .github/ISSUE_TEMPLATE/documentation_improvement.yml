@@ -1,0 +1,31 @@
+name: "Documentation Improvement"
+title: "[Docs] "
+labels: [documentation]
+assignees: []
+description: "Suggest improvements or corrections to the documentation."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Documentation Improvement
+        Please specify what documentation needs improvement.
+  - type: input
+    id: doc_section
+    attributes:
+      label: "Documentation Section"
+      description: "Which part of the documentation needs improvement?"
+      placeholder: "e.g., API Reference, Getting Started..."
+      required: true
+  - type: textarea
+    id: suggested_changes
+    attributes:
+      label: "Suggested Changes"
+      description: "Describe your proposed changes or improvements"
+      placeholder: "Detailed suggestion..."
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any extra context or screenshots"
+      placeholder: "Optional additional details..."

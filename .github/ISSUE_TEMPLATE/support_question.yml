@@ -1,0 +1,40 @@
+name: "Support Question"
+title: "[Support] "
+labels: [question]
+assignees: []
+description: "Ask a general question about the repository."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Support Question
+        Provide details about your question.
+  - type: input
+    id: question_summary
+    attributes:
+      label: "Question Summary"
+      description: "Brief summary of your question"
+      placeholder: "e.g., How do I..."
+      required: true
+  - type: textarea
+    id: question_details
+    attributes:
+      label: "Question Details"
+      description: "Provide additional context or background for your question"
+      placeholder: "Detailed description..."
+      required: true
+  - type: dropdown
+    id: checked_docs
+    attributes:
+      label: "Documentation Checked"
+      description: "Have you checked the documentation?"
+      options:
+        - "Yes"
+        - "No"
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any other details or context"
+      placeholder: "Optional details..."

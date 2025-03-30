@@ -1,0 +1,42 @@
+name: "Feature Request"
+title: "[Feature] "
+labels: [enhancement]
+assignees: []
+description: "Suggest a new DOM API or improvements to the typings."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Please provide details about the feature you’d like to see.
+  - type: input
+    id: feature_summary
+    attributes:
+      label: "Feature Summary"
+      description: "Briefly describe the proposed feature"
+      placeholder: "e.g., Support for XYZ API"
+      required: true
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: "Feature Description"
+      description: "Describe the feature in detail"
+      placeholder: "Detailed explanation..."
+      required: true
+  - type: dropdown
+    id: spec_reference
+    attributes:
+      label: "Specification Reference"
+      description: "Select the related specification source"
+      options:
+        - "WHATWG"
+        - "W3C"
+        - "MDN"
+        - "Other"
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any other context or links to references"
+      placeholder: "Optional additional information..."

@@ -1,0 +1,38 @@
+name: "Regression Report"
+title: "[Regression] "
+labels: [regression]
+assignees: []
+description: "Report an issue where previously correct typings are now incorrect."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Regression Report
+        Provide details about the regression issue.
+  - type: input
+    id: previous_version
+    attributes:
+      label: "Previously Working Version"
+      description: "Version where the issue did not occur"
+      placeholder: "e.g., 4.6.0"
+      required: true
+  - type: input
+    id: current_version
+    attributes:
+      label: "Current Version"
+      description: "Current version where the regression is observed"
+      placeholder: "e.g., 4.7.0"
+      required: true
+  - type: textarea
+    id: issue_description
+    attributes:
+      label: "Issue Description"
+      description: "Describe the regression behavior"
+      placeholder: "Detailed description..."
+      required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any extra information or logs"
+      placeholder: "Optional additional details..."
