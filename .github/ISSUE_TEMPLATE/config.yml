@@ -1,51 +1,6 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 issue_templates:
-  - name: 🐞 Bug Report
-    description: Report incorrect or missing DOM typings.
-    labels: [bug]
-    file: bug_report.yml
-
-  - name: ✨ Feature Request
-    description: Suggest a new DOM API or improvement to typings.
-    labels: [enhancement]
-    file: feature_request.yml
-
-  - name: 📜 Specification Update
-    description: Report an update to web standards affecting typings.
-    labels: [spec update]
-    file: specification_update.yml
-
   - name: 🔍 Typings Inconsistency
     description: Report inconsistencies between TypeScript's DOM typings and browser behavior.
     labels: [inconsistency]
     file: typings_inconsistency.yml
-
-  - name: 📖 Documentation Improvement
-    description: Suggest improvements or corrections to the documentation.
-    labels: [documentation]
-    file: documentation_improvement.yml
-
-  - name: 🤝 Contribution Proposal
-    description: Discuss potential contributions before making a PR.
-    labels: [discussion]
-    file: contribution_proposal.yml
-
-  - name: 🚀 Performance Issue
-    description: Report slow or inefficient type generation processes.
-    labels: [performance]
-    file: performance_issue.yml
-
-  - name: 🛠️ Tooling Issue
-    description: Report problems with build scripts or automation.
-    labels: [tooling]
-    file: tooling_issue.yml
-
-  - name: ⏪ Regression Report
-    description: Report an issue where previously correct typings are now incorrect.
-    labels: [regression]
-    file: regression_report.yml
-
-  - name: ❓ Support Question
-    description: Ask a general question about the repository.
-    labels: [question]
-    file: support_question.yml
