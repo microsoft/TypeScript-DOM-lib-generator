@@ -3924,6 +3924,9 @@
                     "member": {
                         "window": {
                             "overrideType": "null"
+                        },
+                        "body": {
+                            "overrideType": "'GET' | 'HEAD' extends this['method'] ? never : BodyInit | null"
                         }
                     }
                 }
