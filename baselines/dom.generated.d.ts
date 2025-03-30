@@ -2872,7 +2872,7 @@ interface AnimationFrameProvider {
 }
 
 /**
- * Of the [Web Animations API](/en-US/docs/Web/API/Web_Animations_API) represents animation events.
+ * The AnimationPlaybackEvent interface of the Web Animations API represents animation events.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationPlaybackEvent)
  */
@@ -4019,7 +4019,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **CSSMathInvert** interface of the CSS Typed Object Model API represents a CSS calc used as calc(1 / ). It inherits properties and methods from its parent CSSNumericValue.
+ * The **CSSMathInvert** interface of the CSS Typed Object Model API represents a CSS calc used as calc(1 / <value>). It inherits properties and methods from its parent CSSNumericValue.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -9356,7 +9356,7 @@ declare var File: {
 };
 
 /**
- * The **FileList** interface represents an object of this type returned by the files property of the HTML input element; this lets you access the list of files selected with the element.
+ * The **FileList** interface represents an object of this type returned by the files property of the HTML input element; this lets you access the list of files selected with the <input type='file'> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileList)
  */
@@ -9859,7 +9859,7 @@ declare var GamepadButton: {
 };
 
 /**
- * This Gamepad API interface contains references to gamepads connected to the system, which is what the gamepad events {{domxref("Window.gamepadconnected_event", "gamepadconnected")}} and {{domxref("Window.gamepaddisconnected_event", "gamepaddisconnected")}} are fired in response to.
+ * The GamepadEvent interface of the Gamepad API contains references to gamepads connected to the system, which is what the gamepad events Window.gamepadconnected_event and Window.gamepaddisconnected_event are fired in response to.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadEvent)
  */
@@ -11694,7 +11694,7 @@ declare var HTMLHeadElement: {
 };
 
 /**
- * The **HTMLHeadingElement** interface represents the different heading elements, through .
+ * The **HTMLHeadingElement** interface represents the different heading elements, <h1> through <h6>.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLHeadingElement)
  */
@@ -12469,7 +12469,7 @@ declare var HTMLLegendElement: {
 };
 
 /**
- * The **HTMLLinkElement** interface represents reference information for external resources and the relationship of those resources to a document and vice versa (corresponds to element; not to be confused with , which is represented by HTMLAnchorElement).
+ * The **HTMLLinkElement** interface represents reference information for external resources and the relationship of those resources to a document and vice versa (corresponds to <link> element; not to be confused with <a>, which is represented by HTMLAnchorElement).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement)
  */
@@ -12879,7 +12879,7 @@ declare var HTMLMenuElement: {
 };
 
 /**
- * The **HTMLMetaElement** interface contains descriptive metadata about a document provided in HTML as elements.
+ * The **HTMLMetaElement** interface contains descriptive metadata about a document provided in HTML as <meta> elements.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMetaElement)
  */
@@ -13236,7 +13236,7 @@ declare var HTMLOptionElement: {
 };
 
 /**
- * The **HTMLOptionsCollection** interface represents a collection of HTML elements (in document order) and offers methods and properties for selecting from the list as well as optionally altering its items.
+ * The **HTMLOptionsCollection** interface represents a collection of <option> HTML elements (in document order) and offers methods and properties for selecting from the list as well as optionally altering its items.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection)
  */
@@ -13514,7 +13514,7 @@ declare var HTMLQuoteElement: {
 };
 
 /**
- * HTML script elements expose the **HTMLScriptElement** interface, which provides special properties and methods for manipulating the behavior and execution of elements (beyond the inherited HTMLElement interface).
+ * HTML script elements expose the **HTMLScriptElement** interface, which provides special properties and methods for manipulating the behavior and execution of <script> elements (beyond the inherited HTMLElement interface).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement)
  */
@@ -20724,7 +20724,7 @@ declare var SVGAElement: {
 };
 
 /**
- * The SVGAngle interface is used to represent a value that can be an or value.
+ * The SVGAngle interface is used to represent a value that can be an &lt;angle&gt; or &lt;number&gt; value.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAngle)
  */
@@ -20810,7 +20810,7 @@ declare var SVGAnimateTransformElement: {
 };
 
 /**
- * The SVGAnimatedAngle interface is used for attributes of basic type \ which can be animated.
+ * The SVGAnimatedAngle interface is used for attributes of basic type \<angle> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle)
  */
@@ -20861,7 +20861,7 @@ declare var SVGAnimatedEnumeration: {
 };
 
 /**
- * The SVGAnimatedInteger interface is used for attributes of basic type \ which can be animated.
+ * The SVGAnimatedInteger interface is used for attributes of basic type \<integer> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger)
  */
@@ -20878,7 +20878,7 @@ declare var SVGAnimatedInteger: {
 };
 
 /**
- * The **SVGAnimatedLength** interface represents attributes of type \ which can be animated.
+ * The **SVGAnimatedLength** interface represents attributes of type \<length> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedLength)
  */
@@ -20912,7 +20912,7 @@ declare var SVGAnimatedLengthList: {
 };
 
 /**
- * The SVGAnimatedNumber interface is used for attributes of basic type \ which can be animated.
+ * The SVGAnimatedNumber interface is used for attributes of basic type \<Number> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedNumber)
  */
@@ -22107,7 +22107,7 @@ declare var SVGImageElement: {
 };
 
 /**
- * The **SVGLength** interface correspond to the \ basic data type.
+ * The **SVGLength** interface correspond to the \<length> basic data type.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLength)
  */
@@ -22346,7 +22346,7 @@ declare var SVGMetadataElement: {
 };
 
 /**
- * The **SVGNumber** interface corresponds to the basic data type.
+ * The **SVGNumber** interface corresponds to the &lt;number&gt; basic data type.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumber)
  */

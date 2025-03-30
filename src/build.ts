@@ -91,28 +91,6 @@ async function emitDom() {
   const inputFolder = new URL("../inputfiles/", import.meta.url);
   const outputFolder = new URL("../generated/", import.meta.url);
 
-  // ${name} will be substituted with the name of an interface
-  const removeVerboseIntroductions: [RegExp, string][] = [
-    [
-      /^(The|A) ${name} interface of (the\s*)*((?:(?!API)[A-Za-z\d\s])+ API)/,
-      "This $3 interface ",
-    ],
-    [
-      /^(The|A) ${name} (interface|event|object) (is|represents|describes|defines)?/,
-      "",
-    ],
-    [
-      /^An object implementing the ${name} interface (is|represents|describes|defines)/,
-      "",
-    ],
-    [/^The ${name} is an interface representing/, ""],
-    [/^This type (is|represents|describes|defines)?/, ""],
-    [
-      /^The (((?:(?!API)[A-Za-z\s])+ API)) ${name} (represents|is|describes|defines)/,
-      "The $1 ",
-    ],
-  ];
-
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
@@ -185,22 +163,12 @@ async function emitDom() {
     return idl;
   }
 
-  function transformVerbosity(name: string, description: string): string {
-    for (const regTemplate of removeVerboseIntroductions) {
-      const [{ source: template }, replace] = regTemplate;
-
-      const reg = new RegExp(template.replace(/\$\{name\}/g, name) + "\\s*");
-      const product = description.replace(reg, replace);
-      if (product !== description) {
-        return product.charAt(0).toUpperCase() + product.slice(1);
-      }
-    }
-
+  function transformVerbosity(_name: string, description: string): string {
     return description
       .replace(
         /\{\{\s*(Glossary|HTMLElement|SVGAttr|SVGElement|cssxref|jsxref|HTTPHeader)\s*\(\s*["']((?:\\.|[^"\\])*?)["'].*?\)\s*\}\}/gi,
         "$2",
-      )
+      ) // Extract first argument from multiple templates, handling escaped quotes & spaces
       .replace(
         /\{\{\s*domxref\s*\(\s*["']((?:\\.|[^"\\])*?)["'][^}]*\)\s*\}\}/gi,
         "$1",
@@ -211,11 +179,8 @@ async function emitDom() {
       ) // Handle event, jsxref, cssref, etc.
       .replace(/\{\{\s*([^}]+)\s*\}\}/g, (_, match) => `[MISSING: ${match}]`) // Catch any remaining unhandled templates
       .replace(/\\(["'])/g, "$1") // Remove backslashes from escaped quotes
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">") // Decode HTML entities
       .replace(/`([^`]+)`/g, "$1") // Keep inline code readable
       .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Keep link text but remove URLs
-      .replace(/<\/?[^>]+(>|$)/g, "") // Remove HTML tags
       .replace(/\s+/g, " ") // Normalize spaces
       .replace(/\n\s*/g, "\n") // Ensure line breaks are preserved
       .replace(/"/g, "'")

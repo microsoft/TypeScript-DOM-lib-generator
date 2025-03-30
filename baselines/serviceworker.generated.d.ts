@@ -1026,7 +1026,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **CSSMathInvert** interface of the CSS Typed Object Model API represents a CSS calc used as calc(1 / ). It inherits properties and methods from its parent CSSNumericValue.
+ * The **CSSMathInvert** interface of the CSS Typed Object Model API represents a CSS calc used as calc(1 / <value>). It inherits properties and methods from its parent CSSNumericValue.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -2782,7 +2782,7 @@ declare var File: {
 };
 
 /**
- * The **FileList** interface represents an object of this type returned by the files property of the HTML input element; this lets you access the list of files selected with the element.
+ * The **FileList** interface represents an object of this type returned by the files property of the HTML input element; this lets you access the list of files selected with the <input type='file'> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileList)
  */
