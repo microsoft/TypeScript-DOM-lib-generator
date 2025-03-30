@@ -58,7 +58,9 @@ async function getIndexMdContents(
 
       // Improved title extraction
       const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const title = titleMatch ? titleMatch[1] : path.basename(folder);
+      const title = titleMatch
+        ? titleMatch[1].replace(/ extension$/, "")
+        : path.basename(folder);
 
       const summary = extractSummary(content);
       results[title] = summary;

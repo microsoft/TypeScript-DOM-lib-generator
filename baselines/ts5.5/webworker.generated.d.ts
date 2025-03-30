@@ -2752,17 +2752,29 @@ declare var DedicatedWorkerGlobalScope: {
     new(): DedicatedWorkerGlobalScope;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_blend_minmax) */
+/**
+ * The **`EXT_blend_minmax`** extension is part of the WebGL API and extends blending capabilities by adding two new blend equations: the minimum or maximum color components of the source and destination colors.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_blend_minmax)
+ */
 interface EXT_blend_minmax {
     readonly MIN_EXT: 0x8007;
     readonly MAX_EXT: 0x8008;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_float) */
+/**
+ * The **`EXT_color_buffer_float`** extension is part of WebGL and adds the ability to render a variety of floating point formats.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_float)
+ */
 interface EXT_color_buffer_float {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_half_float) */
+/**
+ * The **`EXT_color_buffer_half_float`** extension is part of the WebGL API and adds the ability to render to 16-bit floating-point color buffers.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_half_float)
+ */
 interface EXT_color_buffer_half_float {
     readonly RGBA16F_EXT: 0x881A;
     readonly RGB16F_EXT: 0x881B;
@@ -2770,15 +2782,27 @@ interface EXT_color_buffer_half_float {
     readonly UNSIGNED_NORMALIZED_EXT: 0x8C17;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_float_blend) */
+/**
+ * The WebGL API's `EXT_float_blend` extension allows blending and draw buffers with 32-bit floating-point components.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_float_blend)
+ */
 interface EXT_float_blend {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_frag_depth) */
+/**
+ * The **`EXT_frag_depth`** extension is part of the WebGL API and enables to set a depth value of a fragment from within the fragment shader.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_frag_depth)
+ */
 interface EXT_frag_depth {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_sRGB) */
+/**
+ * The **`EXT_sRGB`** extension is part of the WebGL API and adds sRGB support to textures and framebuffer objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_sRGB)
+ */
 interface EXT_sRGB {
     readonly SRGB_EXT: 0x8C40;
     readonly SRGB_ALPHA_EXT: 0x8C42;
@@ -2786,11 +2810,19 @@ interface EXT_sRGB {
     readonly FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING_EXT: 0x8210;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_shader_texture_lod) */
+/**
+ * The **`EXT_shader_texture_lod`** extension is part of the WebGL API and adds additional texture functions to the OpenGL ES Shading Language which provide the shader writer with explicit control of LOD (Level of detail).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_shader_texture_lod)
+ */
 interface EXT_shader_texture_lod {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_bptc) */
+/**
+ * The `EXT_texture_compression_bptc` extension is part of the WebGL API and exposes 4 BPTC compressed texture formats.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_bptc)
+ */
 interface EXT_texture_compression_bptc {
     readonly COMPRESSED_RGBA_BPTC_UNORM_EXT: 0x8E8C;
     readonly COMPRESSED_SRGB_ALPHA_BPTC_UNORM_EXT: 0x8E8D;
@@ -2798,7 +2830,11 @@ interface EXT_texture_compression_bptc {
     readonly COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_EXT: 0x8E8F;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_rgtc) */
+/**
+ * The `EXT_texture_compression_rgtc` extension is part of the WebGL API and exposes 4 RGTC compressed texture formats.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_rgtc)
+ */
 interface EXT_texture_compression_rgtc {
     readonly COMPRESSED_RED_RGTC1_EXT: 0x8DBB;
     readonly COMPRESSED_SIGNED_RED_RGTC1_EXT: 0x8DBC;
@@ -2806,13 +2842,21 @@ interface EXT_texture_compression_rgtc {
     readonly COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT: 0x8DBE;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_filter_anisotropic) */
+/**
+ * The **`EXT_texture_filter_anisotropic`** extension is part of the WebGL API and exposes two constants for anisotropic filtering (AF).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_filter_anisotropic)
+ */
 interface EXT_texture_filter_anisotropic {
     readonly TEXTURE_MAX_ANISOTROPY_EXT: 0x84FE;
     readonly MAX_TEXTURE_MAX_ANISOTROPY_EXT: 0x84FF;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_norm16) */
+/**
+ * The **`EXT_texture_norm16`** extension is part of the WebGL API and provides a set of new 16-bit signed normalized and unsigned normalized formats (fixed-point texture, renderbuffer and texture buffer).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_norm16)
+ */
 interface EXT_texture_norm16 {
     readonly R16_EXT: 0x822A;
     readonly RG16_EXT: 0x822C;
@@ -4467,7 +4511,11 @@ interface ImportMeta {
     resolve(specifier: string): string;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile) */
+/**
+ * The **`KHR_parallel_shader_compile`** extension is part of the WebGL API and enables a non-blocking poll operation, so that compile/link status availability (`COMPLETION_STATUS_KHR`) can be queried without potentially incurring stalls.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile)
+ */
 interface KHR_parallel_shader_compile {
     readonly COMPLETION_STATUS_KHR: 0x91B1;
 }
@@ -4872,37 +4920,69 @@ interface OES_draw_buffers_indexed {
     enableiOES(target: GLenum, index: GLuint): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_element_index_uint) */
+/**
+ * The **`OES_element_index_uint`** extension is part of the WebGL API and adds support for `gl.UNSIGNED_INT` types to WebGLRenderingContext.drawElements().
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_element_index_uint)
+ */
 interface OES_element_index_uint {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_fbo_render_mipmap) */
+/**
+ * The `OES_fbo_render_mipmap` extension is part of the WebGL API and makes it possible to attach any level of a texture to a framebuffer object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_fbo_render_mipmap)
+ */
 interface OES_fbo_render_mipmap {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_standard_derivatives) */
+/**
+ * The **`OES_standard_derivatives`** extension is part of the WebGL API and adds the GLSL derivative functions `dFdx`, `dFdy`, and `fwidth`.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_standard_derivatives)
+ */
 interface OES_standard_derivatives {
     readonly FRAGMENT_SHADER_DERIVATIVE_HINT_OES: 0x8B8B;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float) */
+/**
+ * The **`OES_texture_float`** extension is part of the WebGL API and exposes floating-point pixel types for textures.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float)
+ */
 interface OES_texture_float {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float_linear) */
+/**
+ * The **`OES_texture_float_linear`** extension is part of the WebGL API and allows linear filtering with floating-point pixel types for textures.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float_linear)
+ */
 interface OES_texture_float_linear {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float) */
+/**
+ * The **`OES_texture_half_float`** extension is part of the WebGL API and adds texture formats with 16- (aka half float) and 32-bit floating-point components.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float)
+ */
 interface OES_texture_half_float {
     readonly HALF_FLOAT_OES: 0x8D61;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float_linear) */
+/**
+ * The **`OES_texture_half_float_linear`** extension is part of the WebGL API and allows linear filtering with half floating-point pixel types for textures.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float_linear)
+ */
 interface OES_texture_half_float_linear {
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object) */
+/**
+ * The **OES_vertex_array_object** extension is part of the WebGL API and provides vertex array objects (VAOs) which encapsulate vertex array states.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object)
+ */
 interface OES_vertex_array_object {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/bindVertexArrayOES) */
     bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
@@ -4915,7 +4995,11 @@ interface OES_vertex_array_object {
     readonly VERTEX_ARRAY_BINDING_OES: 0x85B5;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2) */
+/**
+ * The `OVR_multiview2` extension is part of the WebGL API and adds support for rendering into multiple views simultaneously.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2)
+ */
 interface OVR_multiview2 {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2/framebufferTextureMultiviewOVR) */
     framebufferTextureMultiviewOVR(target: GLenum, attachment: GLenum, texture: WebGLTexture | null, level: GLint, baseViewIndex: GLint, numViews: GLsizei): void;
@@ -6709,14 +6793,22 @@ declare var VideoFrame: {
     new(data: AllowSharedBufferSource, init: VideoFrameBufferInit): VideoFrame;
 };
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_color_buffer_float) */
+/**
+ * The **`WEBGL_color_buffer_float`** extension is part of the WebGL API and adds the ability to render to 32-bit floating-point color buffers.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_color_buffer_float)
+ */
 interface WEBGL_color_buffer_float {
     readonly RGBA32F_EXT: 0x8814;
     readonly FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT: 0x8211;
     readonly UNSIGNED_NORMALIZED_EXT: 0x8C17;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc) */
+/**
+ * The **`WEBGL_compressed_texture_astc`** extension is part of the WebGL API and exposes Adaptive Scalable Texture Compression (ASTC) compressed texture formats to WebGL.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc)
+ */
 interface WEBGL_compressed_texture_astc {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc/getSupportedProfiles) */
     getSupportedProfiles(): string[];
@@ -6750,7 +6842,11 @@ interface WEBGL_compressed_texture_astc {
     readonly COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR: 0x93DD;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc) */
+/**
+ * The **`WEBGL_compressed_texture_etc`** extension is part of the WebGL API and exposes 10 ETC/EAC compressed texture formats.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc)
+ */
 interface WEBGL_compressed_texture_etc {
     readonly COMPRESSED_R11_EAC: 0x9270;
     readonly COMPRESSED_SIGNED_R11_EAC: 0x9271;
@@ -6764,12 +6860,20 @@ interface WEBGL_compressed_texture_etc {
     readonly COMPRESSED_SRGB8_ALPHA8_ETC2_EAC: 0x9279;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc1) */
+/**
+ * The **`WEBGL_compressed_texture_etc1`** extension is part of the WebGL API and exposes the ETC1 compressed texture format.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc1)
+ */
 interface WEBGL_compressed_texture_etc1 {
     readonly COMPRESSED_RGB_ETC1_WEBGL: 0x8D64;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_pvrtc) */
+/**
+ * The **`WEBGL_compressed_texture_pvrtc`** extension is part of the WebGL API and exposes four PVRTC compressed texture formats.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_pvrtc)
+ */
 interface WEBGL_compressed_texture_pvrtc {
     readonly COMPRESSED_RGB_PVRTC_4BPPV1_IMG: 0x8C00;
     readonly COMPRESSED_RGB_PVRTC_2BPPV1_IMG: 0x8C01;
@@ -6777,7 +6881,11 @@ interface WEBGL_compressed_texture_pvrtc {
     readonly COMPRESSED_RGBA_PVRTC_2BPPV1_IMG: 0x8C03;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc) */
+/**
+ * The **`WEBGL_compressed_texture_s3tc`** extension is part of the WebGL API and exposes four S3TC compressed texture formats.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc)
+ */
 interface WEBGL_compressed_texture_s3tc {
     readonly COMPRESSED_RGB_S3TC_DXT1_EXT: 0x83F0;
     readonly COMPRESSED_RGBA_S3TC_DXT1_EXT: 0x83F1;
@@ -6785,7 +6893,11 @@ interface WEBGL_compressed_texture_s3tc {
     readonly COMPRESSED_RGBA_S3TC_DXT5_EXT: 0x83F3;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc_srgb) */
+/**
+ * The **`WEBGL_compressed_texture_s3tc_srgb`** extension is part of the WebGL API and exposes four S3TC compressed texture formats for the sRGB colorspace.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc_srgb)
+ */
 interface WEBGL_compressed_texture_s3tc_srgb {
     readonly COMPRESSED_SRGB_S3TC_DXT1_EXT: 0x8C4C;
     readonly COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT: 0x8C4D;
@@ -6793,24 +6905,40 @@ interface WEBGL_compressed_texture_s3tc_srgb {
     readonly COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT: 0x8C4F;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_renderer_info) */
+/**
+ * The **`WEBGL_debug_renderer_info`** extension is part of the WebGL API and exposes two constants with information about the graphics driver for debugging purposes.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_renderer_info)
+ */
 interface WEBGL_debug_renderer_info {
     readonly UNMASKED_VENDOR_WEBGL: 0x9245;
     readonly UNMASKED_RENDERER_WEBGL: 0x9246;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders) */
+/**
+ * The **`WEBGL_debug_shaders`** extension is part of the WebGL API and exposes a method to debug shaders from privileged contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders)
+ */
 interface WEBGL_debug_shaders {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders/getTranslatedShaderSource) */
     getTranslatedShaderSource(shader: WebGLShader): string;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_depth_texture) */
+/**
+ * The **`WEBGL_depth_texture`** extension is part of the WebGL API and defines 2D depth and depth-stencil textures.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_depth_texture)
+ */
 interface WEBGL_depth_texture {
     readonly UNSIGNED_INT_24_8_WEBGL: 0x84FA;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers) */
+/**
+ * The **`WEBGL_draw_buffers`** extension is part of the WebGL API and enables a fragment shader to write to several textures, which is useful for deferred shading, for example.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers)
+ */
 interface WEBGL_draw_buffers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL) */
     drawBuffersWEBGL(buffers: GLenum[]): void;
@@ -6850,7 +6978,11 @@ interface WEBGL_draw_buffers {
     readonly MAX_DRAW_BUFFERS_WEBGL: 0x8824;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context) */
+/**
+ * The **WEBGL_lose_context** extension is part of the WebGL API and exposes functions to simulate losing and restoring a WebGLRenderingContext.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context)
+ */
 interface WEBGL_lose_context {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context/loseContext) */
     loseContext(): void;
@@ -6858,7 +6990,11 @@ interface WEBGL_lose_context {
     restoreContext(): void;
 }
 
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw) */
+/**
+ * The **`WEBGL_multi_draw`** extension is part of the WebGL API and allows to render more than one primitive with a single function call.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw)
+ */
 interface WEBGL_multi_draw {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysInstancedWEBGL) */
     multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: number, countsList: Int32Array | GLsizei[], countsOffset: number, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
