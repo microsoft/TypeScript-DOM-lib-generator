@@ -42,6 +42,15 @@ body:
         - label: "This API is supported in at least two major browsers."
     validations:
       required: true
+  - type: checkbox
+    id: use_latest_typescript
+    attributes:
+      label: "Use Latest TypeScript Package"
+      description: "Check this if you are using the latest TypeScript package."
+      options:
+        - label: "I am using the latest version of TS"
+    validations:
+      required: true
   - type: textarea
     id: additional_context
     attributes:
