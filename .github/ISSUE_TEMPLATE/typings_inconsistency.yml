@@ -28,9 +28,9 @@ body:
   - type: textarea
     id: steps
     attributes:
-      label: "Steps to Reproduce"
-      description: "List steps to reproduce the issue"
-      placeholder: "Step 1, Step 2, Step 3..."
+      label: "Playground link"
+      description: "Paste the playground link"
+      placeholder: "https://www.typescriptlang.org/play/..."
     validations:
       required: true
   - type: checkboxes
