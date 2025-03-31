@@ -5,7 +5,10 @@ import { fileURLToPath } from "url";
 
 const baselineFolder = new URL("../baselines/", import.meta.url);
 const outputFolder = new URL("../generated/", import.meta.url);
-const tscPath = new URL("../node_modules/typescript/lib/tsc.js", import.meta.url);
+const tscPath = new URL(
+  "../node_modules/typescript/lib/tsc.js",
+  import.meta.url,
+);
 
 const normalizeLineEndings = (text) => text.replace(/\r\n?/g, "\n");
 
@@ -26,7 +29,10 @@ const readFileContent = (filePath) => {
 };
 
 const compareToBaselines = (baselineFolder, outputFolder) => {
-  const files = new Set([...getFiles(baselineFolder), ...getFiles(outputFolder)]);
+  const files = new Set([
+    ...getFiles(baselineFolder),
+    ...getFiles(outputFolder),
+  ]);
 
   for (const file of files) {
     if (file.startsWith(".")) continue;
@@ -34,8 +40,10 @@ const compareToBaselines = (baselineFolder, outputFolder) => {
     const baselinePath = new URL(file, baselineFolder);
     const outputPath = new URL(file, outputFolder);
 
-    const isBaselineFile = fs.existsSync(baselinePath) && fs.statSync(baselinePath).isFile();
-    const isOutputFile = fs.existsSync(outputPath) && fs.statSync(outputPath).isFile();
+    const isBaselineFile =
+      fs.existsSync(baselinePath) && fs.statSync(baselinePath).isFile();
+    const isOutputFile =
+      fs.existsSync(outputPath) && fs.statSync(outputPath).isFile();
 
     const baseline = isBaselineFile ? readFileContent(baselinePath) : null;
     const generated = isOutputFile ? readFileContent(outputPath) : null;
@@ -50,7 +58,12 @@ const compareToBaselines = (baselineFolder, outputFolder) => {
     }
 
     if (fs.existsSync(baselinePath) || fs.existsSync(outputPath)) {
-      if (!compareToBaselines(new URL(`${file}/`, baselineFolder), new URL(`${file}/`, outputFolder))) {
+      if (
+        !compareToBaselines(
+          new URL(`${file}/`, baselineFolder),
+          new URL(`${file}/`, outputFolder),
+        )
+      ) {
         return false;
       }
     }
@@ -60,8 +73,12 @@ const compareToBaselines = (baselineFolder, outputFolder) => {
 
 const compileGeneratedFiles = (lib, ...files) => {
   try {
-    const fileArgs = files.map((file) => fileURLToPath(new URL(file, outputFolder))).join(" ");
-    child_process.execSync(`node ${fileURLToPath(tscPath)} --strict --lib ${lib} --types --noEmit ${fileArgs}`);
+    const fileArgs = files
+      .map((file) => fileURLToPath(new URL(file, outputFolder)))
+      .join(" ");
+    child_process.execSync(
+      `node ${fileURLToPath(tscPath)} --strict --lib ${lib} --types --noEmit ${fileArgs}`,
+    );
   } catch (e) {
     console.error(`Test failed: could not compile '${files.join(", ")}'.`);
     console.error(e.stdout.toString());
@@ -77,19 +94,52 @@ const test = () => {
     ["es2018", ["dom.generated.d.ts", "dom.asynciterable.generated.d.ts"]],
     ["es5", ["webworker.generated.d.ts"]],
     ["es6", ["webworker.generated.d.ts", "webworker.iterable.generated.d.ts"]],
-    ["es2018", ["webworker.generated.d.ts", "webworker.asynciterable.generated.d.ts"]],
+    [
+      "es2018",
+      ["webworker.generated.d.ts", "webworker.asynciterable.generated.d.ts"],
+    ],
     ["es5", ["sharedworker.generated.d.ts"]],
-    ["es6", ["sharedworker.generated.d.ts", "sharedworker.iterable.generated.d.ts"]],
-    ["es2018", ["sharedworker.generated.d.ts", "sharedworker.asynciterable.generated.d.ts"]],
+    [
+      "es6",
+      ["sharedworker.generated.d.ts", "sharedworker.iterable.generated.d.ts"],
+    ],
+    [
+      "es2018",
+      [
+        "sharedworker.generated.d.ts",
+        "sharedworker.asynciterable.generated.d.ts",
+      ],
+    ],
     ["es5", ["serviceworker.generated.d.ts"]],
-    ["es6", ["serviceworker.generated.d.ts", "serviceworker.iterable.generated.d.ts"]],
-    ["es2018", ["serviceworker.generated.d.ts", "serviceworker.asynciterable.generated.d.ts"]],
+    [
+      "es6",
+      ["serviceworker.generated.d.ts", "serviceworker.iterable.generated.d.ts"],
+    ],
+    [
+      "es2018",
+      [
+        "serviceworker.generated.d.ts",
+        "serviceworker.asynciterable.generated.d.ts",
+      ],
+    ],
     ["es5", ["audioworklet.generated.d.ts"]],
-    ["es6", ["audioworklet.generated.d.ts", "audioworklet.iterable.generated.d.ts"]],
-    ["es2018", ["audioworklet.generated.d.ts", "audioworklet.asynciterable.generated.d.ts"]],
+    [
+      "es6",
+      ["audioworklet.generated.d.ts", "audioworklet.iterable.generated.d.ts"],
+    ],
+    [
+      "es2018",
+      [
+        "audioworklet.generated.d.ts",
+        "audioworklet.asynciterable.generated.d.ts",
+      ],
+    ],
   ];
 
-  if (compareToBaselines(baselineFolder, outputFolder) && compileSets.every(([lib, files]) => compileGeneratedFiles(lib, ...files))) {
+  if (
+    compareToBaselines(baselineFolder, outputFolder) &&
+    compileSets.every(([lib, files]) => compileGeneratedFiles(lib, ...files))
+  ) {
     console.log("All tests passed.");
     process.exit(0);
   }
