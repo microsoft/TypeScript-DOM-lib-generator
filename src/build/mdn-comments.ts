@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import { fileURLToPath } from "url";
 
 const basePath = new URL(
   "../../inputfiles/mdn/files/en-us/web/api/",
@@ -33,10 +34,12 @@ function extractSummary(markdown: string): string {
 
 async function getFolders(dirPath: URL): Promise<URL[]> {
   try {
-    const entries = await fs.readdir(dirPath, { withFileTypes: true });
+    const entries = await fs.readdir(fileURLToPath(dirPath), {
+      withFileTypes: true,
+    });
     return entries
       .filter((entry) => entry.isDirectory())
-      .map((entry) => new URL(entry.name, dirPath));
+      .map((entry) => new URL(entry.name + "/", dirPath));
   } catch (error) {
     console.error("Error reading directories:", error);
     return [];
@@ -52,16 +55,14 @@ async function getIndexMdContents(
     const indexPath = new URL("index.md", folder);
 
     try {
-      const content = await fs.readFile(indexPath, "utf-8");
+      const content = await fs.readFile(fileURLToPath(indexPath), "utf-8");
 
       // Improved title extraction
       const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const filename = folder.toString().split("/").pop();
+      const filename = fileURLToPath(folder).split("/").pop();
       const title = titleMatch
         ? titleMatch[1].replace(/ extension$/, "")
-        : filename
-          ? filename
-          : "";
+        : filename || "";
 
       const summary = extractSummary(content);
       results[title] = summary;
