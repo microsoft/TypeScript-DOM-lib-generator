@@ -10,9 +10,9 @@ const tscPath = new URL(
   import.meta.url,
 );
 
-const normalizeLineEndings = (text) => text.replace(/\r\n?/g, "\n");
+const normalizeLineEndings = (text: string) => text.replace(/\r\n?/g, "\n");
 
-const getFiles = (folder) => {
+const getFiles = (folder: URL) => {
   try {
     return fs.readdirSync(folder);
   } catch {
@@ -20,7 +20,7 @@ const getFiles = (folder) => {
   }
 };
 
-const readFileContent = (filePath) => {
+const readFileContent = (filePath: URL) => {
   try {
     return normalizeLineEndings(fs.readFileSync(filePath, "utf-8"));
   } catch {
@@ -28,7 +28,7 @@ const readFileContent = (filePath) => {
   }
 };
 
-const compareToBaselines = (baselineFolder, outputFolder) => {
+const compareToBaselines = (baselineFolder: URL, outputFolder: URL) => {
   const files = new Set([
     ...getFiles(baselineFolder),
     ...getFiles(outputFolder),
@@ -71,7 +71,7 @@ const compareToBaselines = (baselineFolder, outputFolder) => {
   return true;
 };
 
-const compileGeneratedFiles = (lib, ...files) => {
+const compileGeneratedFiles = (lib: string[] | string, ...files: string[]) => {
   try {
     const fileArgs = files
       .map((file) => fileURLToPath(new URL(file, outputFolder)))
