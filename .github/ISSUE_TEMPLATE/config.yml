@@ -1,6 +1,6 @@
 blank_issues_enabled: true
 issue_templates:
   - name: 🔍 Typings Inconsistency
-    description: Report inconsistencies between TypeScript's DOM typings and browser behavior.
+    description: Report inconsistencies between TypeScript's web API typings and browser behavior.
     labels: [inconsistency]
     file: typings_inconsistency.yml

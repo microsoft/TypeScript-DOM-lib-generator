@@ -2,7 +2,7 @@ name: "Typings Inconsistency"
 title: "[Typings Inconsistency] "
 labels: [lib.d.ts bug]
 assignees: []
-description: "Report inconsistencies between TypeScript's DOM typings and browser behavior."
+description: "Report inconsistencies between TypeScript's web API typings and browser behavior."
 body:
   - type: markdown
     attributes:
