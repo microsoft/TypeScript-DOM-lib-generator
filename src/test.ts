@@ -81,7 +81,7 @@ const compileGeneratedFiles = (lib: string[] | string, ...files: string[]) => {
     );
   } catch (e) {
     console.error(`Test failed: could not compile '${files.join(", ")}'.`);
-    console.error(e.stdout.toString());
+    console.error(e?.stdout ? e.stdout.toString() : e);
     return false;
   }
   return true;
