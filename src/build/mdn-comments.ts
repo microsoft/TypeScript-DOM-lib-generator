@@ -41,26 +41,9 @@ function extractSummary(markdown: string): string {
     .replace(/"/g, "'")
     .trim();
 
-  // List of abbreviations that should not split sentences
-  const abbreviations = new Set(["i.e"]);
-
-  const splitter = (paragraph: string) => {
-    return (
-      paragraph
-        .match(/(?:\b(?:[A-Z][a-z]+|I)\b[^.!?]*[.!?](?=\s|$))/g)
-        ?.filter((sentence) => {
-          return !abbreviations.has(
-            sentence
-              .toLowerCase()
-              .trim()
-              .replace(/[^a-z.]/gi, ""),
-          );
-        }) || []
-    );
-  };
-
-  const sentenceMatch = splitter(normalizedText);
-  if (sentenceMatch.length > 0) {
+  // Extract the first sentence (ending in . ! or ?)
+  const sentenceMatch = normalizedText.match(/(.*?[.!?])(?=\s|$)/);
+  if (sentenceMatch) {
     return sentenceMatch[0]; // Return the first full sentence
   }
 
