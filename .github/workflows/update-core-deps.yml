@@ -1,4 +1,4 @@
-name: Update core dependencies
+name: Update core dependencies and submodules
 on:
   workflow_dispatch: null
   schedule:
@@ -12,6 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true  # Ensure submodules are checked out
+
+      - name: Update submodules
+        run: |
+          git submodule update --init
+          cd inputfiles/mdn  # Replace with actual submodule path
+          git checkout main  # Change if using a different branch
+          git pull origin main
+          cd -
+
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
@@ -34,13 +45,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TS_GITHUB_BOT_AUTH }}
       - id: git-diff
-        run: git diff --quiet HEAD baselines
+        run: git diff --quiet HEAD baselines submodules
         continue-on-error: true
       - uses: peter-evans/create-pull-request@v7
         if: ${{ steps.git-diff.outcome == 'failure' }}
         with:
-          commit-message: "🤖 Update core dependencies"
-          title: "Update core dependencies"
+          commit-message: "🤖 Update core dependencies and submodules"
+          title: "Update core dependencies and submodules"
           push-to-fork: typescript-bot/TypeScript-DOM-lib-generator
           branch: update-core-deps
           token: ${{ secrets.TS_GITHUB_BOT_AUTH }}
