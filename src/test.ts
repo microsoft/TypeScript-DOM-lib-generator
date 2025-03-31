@@ -79,7 +79,7 @@ const compileGeneratedFiles = (lib: string[] | string, ...files: string[]) => {
     child_process.execSync(
       `node ${fileURLToPath(tscPath)} --strict --lib ${lib} --types --noEmit ${fileArgs}`,
     );
-  } catch (e) {
+  } catch {
     console.error(`Test failed: could not compile '${files.join(", ")}'.`);
     return false;
   }
