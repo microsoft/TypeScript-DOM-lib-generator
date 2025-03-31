@@ -11497,8 +11497,12 @@ interface HTMLIFrameElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/height)
      */
     height: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading) */
-    loading: string;
+    /**
+     * Sets or retrieves the policy for loading iframe elements that are outside the viewport.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading)
+     */
+    loading: "eager" | "lazy";
     /**
      * Sets or retrieves a URI to a long description of the object.
      * @deprecated
@@ -15686,8 +15690,8 @@ interface LockManager {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/query) */
     query(): Promise<LockManagerSnapshot>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/request) */
-    request(name: string, callback: LockGrantedCallback): Promise<any>;
-    request(name: string, options: LockOptions, callback: LockGrantedCallback): Promise<any>;
+    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<T>;
+    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<T>;
 }
 
 declare var LockManager: {
@@ -28432,8 +28436,8 @@ interface IntersectionObserverCallback {
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver): void;
 }
 
-interface LockGrantedCallback {
-    (lock: Lock | null): any;
+interface LockGrantedCallback<T> {
+    (lock: Lock | null): T;
 }
 
 interface MediaSessionActionHandler {
@@ -29692,7 +29696,7 @@ type AnimationReplaceState = "active" | "persisted" | "removed";
 type AppendMode = "segments" | "sequence";
 type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
-type AudioContextState = "closed" | "running" | "suspended";
+type AudioContextState = "closed" | "interrupted" | "running" | "suspended";
 type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
 type AuthenticatorAttachment = "cross-platform" | "platform";
 type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";
