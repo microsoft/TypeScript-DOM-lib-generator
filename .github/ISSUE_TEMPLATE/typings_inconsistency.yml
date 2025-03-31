@@ -37,9 +37,9 @@ body:
     id: browser_support
     attributes:
       label: "Browser Support"
-      description: "Ensure that the API is supported in at least two major browsers."
+      description: "Ensure that the API is supported in at least two major browser engines (not two chromiums)."
       options:
-        - label: "This API is supported in at least two major browsers."
+        - label: "This API is supported in at least two major browser engines (not two chromiums)."
     validations:
       required: true
   - type: checkbox
