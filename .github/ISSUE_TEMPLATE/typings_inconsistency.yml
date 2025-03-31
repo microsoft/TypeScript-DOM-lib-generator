@@ -1,6 +1,6 @@
 name: "Typings Inconsistency"
 title: "[Typings Inconsistency] "
-labels: [inconsistency]
+labels: [lib.d.ts bug]
 assignees: []
 description: "Report inconsistencies between TypeScript's DOM typings and browser behavior."
 body:
