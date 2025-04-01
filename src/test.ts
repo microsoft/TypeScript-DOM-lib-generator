@@ -10,25 +10,27 @@ const tscPath = new URL(
   import.meta.url,
 );
 
-const normalizeLineEndings = (text: string) => text.replace(/\r\n?/g, "\n");
+function normalizeLineEndings(text: string) {
+  text.replace(/\r\n?/g, "\n");
+}
 
-const getFiles = (folder: URL) => {
+function getFiles(folder: URL) {
   try {
     return fs.readdirSync(folder);
   } catch {
     return [];
   }
-};
+}
 
-const readFileContent = (filePath: URL) => {
+function readFileContent(filePath: URL) {
   try {
     return normalizeLineEndings(fs.readFileSync(filePath, "utf-8"));
   } catch {
     return null;
   }
-};
+}
 
-const compareToBaselines = (baselineFolder: URL, outputFolder: URL) => {
+function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
   const files = new Set([
     ...getFiles(baselineFolder),
     ...getFiles(outputFolder),
@@ -69,9 +71,9 @@ const compareToBaselines = (baselineFolder: URL, outputFolder: URL) => {
     }
   }
   return true;
-};
+}
 
-const compileGeneratedFiles = (lib: string[] | string, ...files: string[]) => {
+function compileGeneratedFiles(lib: string[] | string, ...files: string[]) {
   try {
     const fileArgs = files
       .map((file) => fileURLToPath(new URL(file, outputFolder)))
@@ -84,9 +86,9 @@ const compileGeneratedFiles = (lib: string[] | string, ...files: string[]) => {
     return false;
   }
   return true;
-};
+}
 
-const test = () => {
+function test() {
   const compileSets = [
     ["es5", ["dom.generated.d.ts"]],
     ["es6", ["dom.generated.d.ts", "dom.iterable.generated.d.ts"]],
@@ -143,6 +145,6 @@ const test = () => {
     process.exit(0);
   }
   process.exit(1);
-};
+}
 
 test();
