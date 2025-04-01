@@ -1,6 +1,6 @@
 blank_issues_enabled: true
 issue_templates:
-  - name: 🔍 Typings Inconsistency
+  - name: Web API type definition issue
     description: Report inconsistencies between TypeScript's web API typings and browser behavior.
     labels: [lib.d.ts bug]
-    file: typings_inconsistency.yml
+    file: web_api_type_definition_issue.yml
