@@ -10,8 +10,8 @@ const tscPath = new URL(
   import.meta.url,
 );
 
-function normalizeLineEndings(text: string) {
-  text.replace(/\r\n?/g, "\n");
+function normalizeLineEndings(text: string): string {
+  return text.replace(/\r\n?/g, "\n");
 }
 
 function getFiles(folder: URL) {
@@ -23,11 +23,7 @@ function getFiles(folder: URL) {
 }
 
 function readFileContent(filePath: URL) {
-  try {
-    return normalizeLineEndings(fs.readFileSync(filePath, "utf-8"));
-  } catch {
-    return null;
-  }
+  return normalizeLineEndings(fs.readFileSync(filePath, "utf-8"));
 }
 
 function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
@@ -59,7 +55,7 @@ function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
       continue;
     }
 
-    if (fs.existsSync(baselinePath) || fs.existsSync(outputPath)) {
+    if (fs.existsSync(baselinePath)) {
       if (
         !compareToBaselines(
           new URL(`${file}/`, baselineFolder),
@@ -73,7 +69,7 @@ function compareToBaselines(baselineFolder: URL, outputFolder: URL) {
   return true;
 }
 
-function compileGeneratedFiles(lib: string[] | string, ...files: string[]) {
+function compileGeneratedFiles(lib: string, ...files: string[]) {
   try {
     const fileArgs = files
       .map((file) => fileURLToPath(new URL(file, outputFolder)))
@@ -81,8 +77,10 @@ function compileGeneratedFiles(lib: string[] | string, ...files: string[]) {
     child_process.execSync(
       `node ${fileURLToPath(tscPath)} --strict --lib ${lib} --types --noEmit ${fileArgs}`,
     );
-  } catch {
-    console.error(`Test failed: could not compile '${files.join(", ")}'.`);
+  } catch (e: any) {
+    console.error(`Test failed: could not compile '${files.join(",")}':`);
+    console.error(e.stdout.toString());
+    console.error();
     return false;
   }
   return true;
@@ -139,7 +137,9 @@ function test() {
 
   if (
     compareToBaselines(baselineFolder, outputFolder) &&
-    compileSets.every(([lib, files]) => compileGeneratedFiles(lib, ...files))
+    compileSets.every(([lib, files]) =>
+      compileGeneratedFiles(lib as string, ...files),
+    )
   ) {
     console.log("All tests passed.");
     process.exit(0);
