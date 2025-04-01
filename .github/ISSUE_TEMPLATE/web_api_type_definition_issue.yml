@@ -55,7 +55,7 @@ body:
     id: use_latest_typescript_web
     attributes:
       label: "Use the latest @types/web Package"
-      description: "Check this if you are using the latest @types/web package."
+description: "Check this if you have tried the latest `@types/web` package."
       options:
         - label: "I am using the latest version of  @types/web"
     validations:
