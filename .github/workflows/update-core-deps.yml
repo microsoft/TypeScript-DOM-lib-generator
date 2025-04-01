@@ -1,4 +1,4 @@
-name: Update core dependencies and submodules
+name: Update core dependencies
 on:
   workflow_dispatch: null
   schedule:
