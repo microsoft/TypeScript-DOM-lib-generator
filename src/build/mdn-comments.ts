@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { fileURLToPath } from "url";
+import { basename } from "path";
 
 const basePath = new URL(
   "../../inputfiles/mdn/files/en-us/web/api/",
@@ -52,7 +52,7 @@ function extractSummary(markdown: string): string {
 
 async function getFolders(dirPath: URL): Promise<URL[]> {
   try {
-    const entries = await fs.readdir(fileURLToPath(dirPath), {
+    const entries = await fs.readdir(dirPath, {
       withFileTypes: true,
     });
     return entries
@@ -73,11 +73,11 @@ async function getIndexMdContents(
     const indexPath = new URL("index.md", folder);
 
     try {
-      const content = await fs.readFile(fileURLToPath(indexPath), "utf-8");
+      const content = await fs.readFile(indexPath, "utf-8");
 
       // Improved title extraction
       const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const filename = fileURLToPath(folder).split("/").pop();
+      const filename = basename(folder.toString());
       const title = titleMatch
         ? titleMatch[1].replace(/ extension$/, "")
         : filename || "";
