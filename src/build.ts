@@ -304,7 +304,7 @@ async function emitDom() {
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
-        genericTypedArrays: true,
+        useGenericTypedArrays: true,
       },
     },
     // ts5.6

@@ -9,6 +9,7 @@ import {
   integerTypes,
   baseTypeConversionMap,
   assertUnique,
+  arrayBufferViewTypes,
 } from "./helpers.js";
 import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
 
@@ -135,7 +136,7 @@ function isEventHandler(p: Browser.Property) {
 export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
-  genericTypedArrays?: boolean;
+  useGenericTypedArrays?: boolean;
 }
 
 export function emitWebIdl(
@@ -390,7 +391,9 @@ export function emitWebIdl(
 
         // propagate `any`
         const converted = types.map(convertDomTypeToTsTypeWorker);
-        if (converted.includes("any")) return "any";
+        if (converted.includes("any")) {
+          return "any";
+        }
 
         // convert `ArrayBuffer | SharedArrayBuffer` into `ArrayBufferLike` to be pre-ES2017 friendly.
         const arrayBufferIndex = converted.indexOf("ArrayBuffer");
@@ -412,24 +415,9 @@ export function emitWebIdl(
       .map(convertDomTypeToTsType)
       .join(", ");
 
-    if (!subtypeString && compilerBehavior.genericTypedArrays) {
-      switch (type) {
-        case "ArrayBufferView":
-        case "DataView":
-        case "Int8Array":
-        case "Uint8Array":
-        case "Uint8ClampedArray":
-        case "Int16Array":
-        case "Uint16Array":
-        case "Int32Array":
-        case "Uint32Array":
-        case "Float32Array":
-        case "Float64Array":
-        case "BigInt64Array":
-        case "BigUint64Array":
-        case "Float16Array":
-          subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
-          break;
+    if (!subtypeString && compilerBehavior.useGenericTypedArrays) {
+      if (arrayBufferViewTypes.has(type)) {
+        subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
       }
     }
 

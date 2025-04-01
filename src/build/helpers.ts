@@ -1,10 +1,7 @@
 import * as Browser from "./types.js";
 
 // Extended types used but not defined in the spec
-export const bufferSourceTypes = new Set([
-  "ArrayBuffer",
-  "SharedArrayBuffer",
-  "ArrayBufferLike",
+export const arrayBufferViewTypes = new Set([
   "ArrayBufferView",
   "DataView",
   "Int8Array",
@@ -16,6 +13,11 @@ export const bufferSourceTypes = new Set([
   "Uint32Array",
   "Float32Array",
   "Float64Array",
+]);
+export const bufferSourceTypes = new Set([
+  "ArrayBuffer",
+  "SharedArrayBuffer",
+  ...arrayBufferViewTypes,
 ]);
 export const integerTypes = new Set([
   "byte",
@@ -68,6 +70,7 @@ export const baseTypeConversionMap = new Map<string, string>([
   ["record", "Record"],
   ["FrozenArray", "ReadonlyArray"],
   ["EventHandler", "EventHandler"],
+  ["ArrayBufferLike", "ArrayBufferLike"],
 ]);
 
 export function deepFilter<T>(
