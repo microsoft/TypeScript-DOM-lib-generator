@@ -16,13 +16,10 @@ jobs:
           submodules: true  # Ensure submodules are checked out
 
       - name: Update submodules
+        working-directory: inputfiles/mdn  # Replace with actual submodule path
         run: |
-          git submodule update --init
-          cd inputfiles/mdn  # Replace with actual submodule path
           git checkout main  # Change if using a different branch
           git pull origin main
-          cd -
-
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
