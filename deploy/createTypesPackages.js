@@ -54,6 +54,17 @@ export const packages = [
       { from: "../generated/ts5.5/sharedworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
     ],
   },
+  {
+    name: "@types/webworker",
+    description: "Types for Web Worker",
+    readme: "./readmes/webworker.md",
+    files: [
+      { from: "../generated/webworker.generated.d.ts", to: "index.d.ts", index: true },
+      { from: "../generated/webworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
+      { from: "../generated/ts5.5/webworker.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
+      { from: "../generated/ts5.5/webworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
+    ]
+  }
 ];
 
 // Note: You can add 'version: "1.0.0"' to a package above
