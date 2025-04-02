@@ -33,7 +33,7 @@ body:
       placeholder: "https://www.typescriptlang.org/play/..."
     validations:
       required: true
-  - type: checkboxes
+  - type: checkbox
     id: browser_support
     attributes:
       label: "Browser Support"
