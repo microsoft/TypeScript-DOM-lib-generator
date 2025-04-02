@@ -1,12 +1,39 @@
 /////////////////////////////
-/// ServiceWorker Iterable APIs
+/// Window Iterable APIs
 /////////////////////////////
+
+interface AudioParam {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioParam/setValueCurveAtTime) */
+    setValueCurveAtTime(values: Iterable<number>, startTime: number, duration: number): AudioParam;
+}
+
+interface AudioParamMap extends ReadonlyMap<string, AudioParam> {
+}
+
+interface BaseAudioContext {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BaseAudioContext/createIIRFilter) */
+    createIIRFilter(feedforward: Iterable<number>, feedback: Iterable<number>): IIRFilterNode;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BaseAudioContext/createPeriodicWave) */
+    createPeriodicWave(real: Iterable<number>, imag: Iterable<number>, constraints?: PeriodicWaveConstraints): PeriodicWave;
+}
+
+interface CSSKeyframesRule {
+    [Symbol.iterator](): ArrayIterator<CSSKeyframeRule>;
+}
 
 interface CSSNumericArray {
     [Symbol.iterator](): ArrayIterator<CSSNumericValue>;
     entries(): ArrayIterator<[number, CSSNumericValue]>;
     keys(): ArrayIterator<number>;
     values(): ArrayIterator<CSSNumericValue>;
+}
+
+interface CSSRuleList {
+    [Symbol.iterator](): ArrayIterator<CSSRule>;
+}
+
+interface CSSStyleDeclaration {
+    [Symbol.iterator](): ArrayIterator<string>;
 }
 
 interface CSSTransformValue {
@@ -38,8 +65,29 @@ interface CanvasPathDrawingStyles {
     setLineDash(segments: Iterable<number>): void;
 }
 
+interface CustomStateSet extends Set<string> {
+}
+
+interface DOMRectList {
+    [Symbol.iterator](): ArrayIterator<DOMRect>;
+}
+
 interface DOMStringList {
     [Symbol.iterator](): ArrayIterator<string>;
+}
+
+interface DOMTokenList {
+    [Symbol.iterator](): ArrayIterator<string>;
+    entries(): ArrayIterator<[number, string]>;
+    keys(): ArrayIterator<number>;
+    values(): ArrayIterator<string>;
+}
+
+interface DataTransferItemList {
+    [Symbol.iterator](): ArrayIterator<DataTransferItem>;
+}
+
+interface EventCounts extends ReadonlyMap<string, number> {
 }
 
 interface FileList {
@@ -63,6 +111,26 @@ interface FormData {
     values(): FormDataIterator<FormDataEntryValue>;
 }
 
+interface HTMLAllCollection {
+    [Symbol.iterator](): ArrayIterator<Element>;
+}
+
+interface HTMLCollectionBase {
+    [Symbol.iterator](): ArrayIterator<Element>;
+}
+
+interface HTMLCollectionOf<T extends Element> {
+    [Symbol.iterator](): ArrayIterator<T>;
+}
+
+interface HTMLFormElement {
+    [Symbol.iterator](): ArrayIterator<Element>;
+}
+
+interface HTMLSelectElement {
+    [Symbol.iterator](): ArrayIterator<HTMLOptionElement>;
+}
+
 interface HeadersIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): HeadersIterator<T>;
 }
@@ -75,6 +143,12 @@ interface Headers {
     keys(): HeadersIterator<string>;
     /** Returns an iterator allowing to go through all values of the key/value pairs contained in this object. */
     values(): HeadersIterator<string>;
+}
+
+interface Highlight extends Set<AbstractRange> {
+}
+
+interface HighlightRegistry extends Map<string, Highlight> {
 }
 
 interface IDBDatabase {
@@ -97,9 +171,126 @@ interface IDBObjectStore {
     createIndex(name: string, keyPath: string | Iterable<string>, options?: IDBIndexParameters): IDBIndex;
 }
 
+interface ImageTrackList {
+    [Symbol.iterator](): ArrayIterator<ImageTrack>;
+}
+
+interface MIDIInputMap extends ReadonlyMap<string, MIDIInput> {
+}
+
+interface MIDIOutput {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIOutput/send) */
+    send(data: Iterable<number>, timestamp?: DOMHighResTimeStamp): void;
+}
+
+interface MIDIOutputMap extends ReadonlyMap<string, MIDIOutput> {
+}
+
+interface MediaKeyStatusMapIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
+    [Symbol.iterator](): MediaKeyStatusMapIterator<T>;
+}
+
+interface MediaKeyStatusMap {
+    [Symbol.iterator](): MediaKeyStatusMapIterator<[BufferSource, MediaKeyStatus]>;
+    entries(): MediaKeyStatusMapIterator<[BufferSource, MediaKeyStatus]>;
+    keys(): MediaKeyStatusMapIterator<BufferSource>;
+    values(): MediaKeyStatusMapIterator<MediaKeyStatus>;
+}
+
+interface MediaList {
+    [Symbol.iterator](): ArrayIterator<string>;
+}
+
 interface MessageEvent<T = any> {
     /** @deprecated */
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: Iterable<MessagePort>): void;
+}
+
+interface MimeTypeArray {
+    [Symbol.iterator](): ArrayIterator<MimeType>;
+}
+
+interface NamedNodeMap {
+    [Symbol.iterator](): ArrayIterator<Attr>;
+}
+
+interface Navigator {
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/requestMediaKeySystemAccess)
+     */
+    requestMediaKeySystemAccess(keySystem: string, supportedConfigurations: Iterable<MediaKeySystemConfiguration>): Promise<MediaKeySystemAccess>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/vibrate) */
+    vibrate(pattern: Iterable<number>): boolean;
+}
+
+interface NodeList {
+    [Symbol.iterator](): ArrayIterator<Node>;
+    /** Returns an array of key, value pairs for every entry in the list. */
+    entries(): ArrayIterator<[number, Node]>;
+    /** Returns an list of keys in the list. */
+    keys(): ArrayIterator<number>;
+    /** Returns an list of values in the list. */
+    values(): ArrayIterator<Node>;
+}
+
+interface NodeListOf<TNode extends Node> {
+    [Symbol.iterator](): ArrayIterator<TNode>;
+    /** Returns an array of key, value pairs for every entry in the list. */
+    entries(): ArrayIterator<[number, TNode]>;
+    /** Returns an list of keys in the list. */
+    keys(): ArrayIterator<number>;
+    /** Returns an list of values in the list. */
+    values(): ArrayIterator<TNode>;
+}
+
+interface Plugin {
+    [Symbol.iterator](): ArrayIterator<MimeType>;
+}
+
+interface PluginArray {
+    [Symbol.iterator](): ArrayIterator<Plugin>;
+}
+
+interface RTCRtpTransceiver {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver/setCodecPreferences) */
+    setCodecPreferences(codecs: Iterable<RTCRtpCodec>): void;
+}
+
+interface RTCStatsReport extends ReadonlyMap<string, any> {
+}
+
+interface SVGLengthList {
+    [Symbol.iterator](): ArrayIterator<SVGLength>;
+}
+
+interface SVGNumberList {
+    [Symbol.iterator](): ArrayIterator<SVGNumber>;
+}
+
+interface SVGPointList {
+    [Symbol.iterator](): ArrayIterator<DOMPoint>;
+}
+
+interface SVGStringList {
+    [Symbol.iterator](): ArrayIterator<string>;
+}
+
+interface SVGTransformList {
+    [Symbol.iterator](): ArrayIterator<SVGTransform>;
+}
+
+interface SourceBufferList {
+    [Symbol.iterator](): ArrayIterator<SourceBuffer>;
+}
+
+interface SpeechRecognitionResult {
+    [Symbol.iterator](): ArrayIterator<SpeechRecognitionAlternative>;
+}
+
+interface SpeechRecognitionResultList {
+    [Symbol.iterator](): ArrayIterator<SpeechRecognitionResult>;
 }
 
 interface StylePropertyMapReadOnlyIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
@@ -111,6 +302,10 @@ interface StylePropertyMapReadOnly {
     entries(): StylePropertyMapReadOnlyIterator<[string, Iterable<CSSStyleValue>]>;
     keys(): StylePropertyMapReadOnlyIterator<string>;
     values(): StylePropertyMapReadOnlyIterator<Iterable<CSSStyleValue>>;
+}
+
+interface StyleSheetList {
+    [Symbol.iterator](): ArrayIterator<CSSStyleSheet>;
 }
 
 interface SubtleCrypto {
@@ -128,6 +323,18 @@ interface SubtleCrypto {
     unwrapKey(format: KeyFormat, wrappedKey: BufferSource, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, unwrappedKeyAlgorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: Iterable<KeyUsage>): Promise<CryptoKey>;
 }
 
+interface TextTrackCueList {
+    [Symbol.iterator](): ArrayIterator<TextTrackCue>;
+}
+
+interface TextTrackList {
+    [Symbol.iterator](): ArrayIterator<TextTrack>;
+}
+
+interface TouchList {
+    [Symbol.iterator](): ArrayIterator<Touch>;
+}
+
 interface URLSearchParamsIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): URLSearchParamsIterator<T>;
 }
@@ -142,6 +349,9 @@ interface URLSearchParams {
     values(): URLSearchParamsIterator<string>;
 }
 
+interface ViewTransitionTypeSet extends Set<string> {
+}
+
 interface WEBGL_draw_buffers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL) */
     drawBuffersWEBGL(buffers: Iterable<GLenum>): void;
@@ -149,13 +359,13 @@ interface WEBGL_draw_buffers {
 
 interface WEBGL_multi_draw {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysInstancedWEBGL) */
-    multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | Iterable<GLint>, firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, countsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, instanceCountsOffset: number, drawcount: GLsizei): void;
+    multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array | Iterable<GLint>, firstsOffset: number, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, instanceCountsList: Int32Array | Iterable<GLsizei>, instanceCountsOffset: number, drawcount: GLsizei): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysWEBGL) */
-    multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | Iterable<GLint>, firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, countsOffset: number, drawcount: GLsizei): void;
+    multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array | Iterable<GLint>, firstsOffset: number, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, drawcount: GLsizei): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsInstancedWEBGL) */
-    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, offsetsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, instanceCountsOffset: number, drawcount: GLsizei): void;
+    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array | Iterable<GLsizei>, offsetsOffset: number, instanceCountsList: Int32Array | Iterable<GLsizei>, instanceCountsOffset: number, drawcount: GLsizei): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL) */
-    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, offsetsOffset: number, drawcount: GLsizei): void;
+    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array | Iterable<GLsizei>, offsetsOffset: number, drawcount: GLsizei): void;
 }
 
 interface WebGL2RenderingContextBase {

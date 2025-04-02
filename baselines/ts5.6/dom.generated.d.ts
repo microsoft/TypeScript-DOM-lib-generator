@@ -3746,7 +3746,8 @@ declare var CSSCounterStyleRule: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule) */
 interface CSSFontFaceRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style) */
-    readonly style: CSSStyleDeclaration;
+    get style(): CSSStyleDeclaration;
+    set style(cssText: string);
 }
 
 declare var CSSFontFaceRule: {
@@ -3817,7 +3818,8 @@ interface CSSImportRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/layerName) */
     readonly layerName: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/media) */
-    readonly media: MediaList;
+    get media(): MediaList;
+    set media(mediaText: string);
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/styleSheet) */
     readonly styleSheet: CSSStyleSheet | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/supportsText) */
@@ -3838,7 +3840,8 @@ interface CSSKeyframeRule extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/keyText) */
     keyText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/style) */
-    readonly style: CSSStyleDeclaration;
+    get style(): CSSStyleDeclaration;
+    set style(cssText: string);
 }
 
 declare var CSSKeyframeRule: {
@@ -4011,7 +4014,8 @@ declare var CSSMatrixComponent: {
  */
 interface CSSMediaRule extends CSSConditionRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMediaRule/media) */
-    readonly media: MediaList;
+    get media(): MediaList;
+    set media(mediaText: string);
 }
 
 declare var CSSMediaRule: {
@@ -4039,7 +4043,8 @@ declare var CSSNamespaceRule: {
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations) */
 interface CSSNestedDeclarations extends CSSRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations/style) */
-    readonly style: CSSStyleDeclaration;
+    get style(): CSSStyleDeclaration;
+    set style(cssText: string);
 }
 
 declare var CSSNestedDeclarations: {
@@ -4100,7 +4105,8 @@ interface CSSPageRule extends CSSGroupingRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule/selectorText) */
     selectorText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule/style) */
-    readonly style: CSSStyleDeclaration;
+    get style(): CSSStyleDeclaration;
+    set style(cssText: string);
 }
 
 declare var CSSPageRule: {
@@ -5629,7 +5635,8 @@ interface CSSStyleRule extends CSSGroupingRule {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/selectorText) */
     selectorText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style) */
-    readonly style: CSSStyleDeclaration;
+    get style(): CSSStyleDeclaration;
+    set style(cssText: string);
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/styleMap) */
     readonly styleMap: StylePropertyMap;
 }
@@ -7693,7 +7700,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/location)
      */
     get location(): Location;
-    set location(href: string | Location);
+    set location(href: string);
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/fullscreenchange_event) */
     onfullscreenchange: ((this: Document, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/fullscreenerror_event) */
@@ -8353,7 +8360,8 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/classList)
      */
-    readonly classList: DOMTokenList;
+    get classList(): DOMTokenList;
+    set classList(value: string);
     /**
      * Returns the value of element's class content attribute. Can be set to change it.
      *
@@ -8398,7 +8406,8 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
     outerHTML: string;
     readonly ownerDocument: Document;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/part) */
-    readonly part: DOMTokenList;
+    get part(): DOMTokenList;
+    set part(value: string);
     /**
      * Returns the namespace prefix.
      *
@@ -8614,7 +8623,8 @@ interface ElementCSSInlineStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attributeStyleMap) */
     readonly attributeStyleMap: StylePropertyMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style) */
-    readonly style: CSSStyleDeclaration;
+    get style(): CSSStyleDeclaration;
+    set style(cssText: string);
 }
 
 interface ElementContentEditable {
@@ -10248,7 +10258,8 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
      */
     rel: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/relList) */
-    readonly relList: DOMTokenList;
+    get relList(): DOMTokenList;
+    set relList(value: string);
     /**
      * Sets or retrieves the relationship between the object and the destination of the link.
      * @deprecated
@@ -10316,7 +10327,8 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/rel) */
     rel: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/relList) */
-    readonly relList: DOMTokenList;
+    get relList(): DOMTokenList;
+    set relList(value: string);
     /**
      * Sets or retrieves the shape of the object.
      *
@@ -11123,7 +11135,8 @@ interface HTMLFormElement extends HTMLElement {
      */
     noValidate: boolean;
     rel: string;
-    readonly relList: DOMTokenList;
+    get relList(): DOMTokenList;
+    set relList(value: string);
     /**
      * Sets or retrieves the window or frame at which to target content.
      *
@@ -11488,12 +11501,8 @@ interface HTMLIFrameElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/height)
      */
     height: string;
-    /**
-     * Sets or retrieves the policy for loading iframe elements that are outside the viewport.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading)
-     */
-    loading: "eager" | "lazy";
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading) */
+    loading: string;
     /**
      * Sets or retrieves a URI to a long description of the object.
      * @deprecated
@@ -11518,7 +11527,8 @@ interface HTMLIFrameElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/referrerPolicy) */
     referrerPolicy: ReferrerPolicy;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/sandbox) */
-    readonly sandbox: DOMTokenList;
+    get sandbox(): DOMTokenList;
+    set sandbox(value: string);
     /**
      * Sets or retrieves whether the frame can be scrolled.
      * @deprecated
@@ -12101,7 +12111,8 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/as) */
     as: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/blocking) */
-    readonly blocking: DOMTokenList;
+    get blocking(): DOMTokenList;
+    set blocking(value: string);
     /**
      * Sets or retrieves the character set used to encode the object.
      * @deprecated
@@ -12144,14 +12155,16 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      */
     rel: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/relList) */
-    readonly relList: DOMTokenList;
+    get relList(): DOMTokenList;
+    set relList(value: string);
     /**
      * Sets or retrieves the relationship between the object and the destination of the link.
      * @deprecated
      */
     rev: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/sizes) */
-    readonly sizes: DOMTokenList;
+    get sizes(): DOMTokenList;
+    set sizes(value: string);
     /**
      * Sets or retrieves the window or frame at which to target content.
      * @deprecated
@@ -12927,7 +12940,8 @@ interface HTMLOutputElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/form) */
     readonly form: HTMLFormElement | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/htmlFor) */
-    readonly htmlFor: DOMTokenList;
+    get htmlFor(): DOMTokenList;
+    set htmlFor(value: string);
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/labels) */
     readonly labels: NodeListOf<HTMLLabelElement>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/name) */
@@ -13138,7 +13152,8 @@ interface HTMLScriptElement extends HTMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/async) */
     async: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/blocking) */
-    readonly blocking: DOMTokenList;
+    get blocking(): DOMTokenList;
+    set blocking(value: string);
     /**
      * Sets or retrieves the character set used to encode the object.
      * @deprecated
@@ -13441,7 +13456,8 @@ declare var HTMLSpanElement: {
  */
 interface HTMLStyleElement extends HTMLElement, LinkStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/blocking) */
-    readonly blocking: DOMTokenList;
+    get blocking(): DOMTokenList;
+    set blocking(value: string);
     /**
      * Enables or disables the style sheet.
      *
@@ -20049,7 +20065,8 @@ declare var Response: {
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
     rel: string;
-    readonly relList: DOMTokenList;
+    get relList(): DOMTokenList;
+    set relList(value: string);
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/target) */
     readonly target: SVGAnimatedString;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -23284,7 +23301,8 @@ interface StyleSheet {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StyleSheet/href) */
     readonly href: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StyleSheet/media) */
-    readonly media: MediaList;
+    get media(): MediaList;
+    set media(mediaText: string);
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StyleSheet/ownerNode) */
     readonly ownerNode: Element | ProcessingInstruction | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StyleSheet/parentStyleSheet) */
@@ -27218,7 +27236,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/location) */
     get location(): Location;
-    set location(href: string | Location);
+    set location(href: string);
     /**
      * Returns true if the location bar is visible; otherwise, returns false.
      *
@@ -29687,7 +29705,7 @@ type AnimationReplaceState = "active" | "persisted" | "removed";
 type AppendMode = "segments" | "sequence";
 type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
-type AudioContextState = "closed" | "interrupted" | "running" | "suspended";
+type AudioContextState = "closed" | "running" | "suspended";
 type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
 type AuthenticatorAttachment = "cross-platform" | "platform";
 type AuthenticatorTransport = "ble" | "hybrid" | "internal" | "nfc" | "usb";

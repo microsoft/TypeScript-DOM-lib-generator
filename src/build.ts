@@ -291,17 +291,35 @@ async function emitDom() {
 
   const knownTypes = await readInputJSON("knownTypes.json");
 
-  const emitVariations = [
-    {
-      outputFolder: new URL("./ts5.5/", outputFolder),
-      compilerBehavior: {},
-    },
+  interface Variation {
+    outputFolder: URL;
+    compilerBehavior: CompilerBehavior;
+  }
+
+  const emitVariations: Variation[] = [
+    // ts5.7 (and later)
+    // - introduced generic typed arrays over `ArrayBufferLike`
     {
       outputFolder,
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
-      } as CompilerBehavior,
+        useGenericTypedArrays: true,
+      },
+    },
+    // ts5.6
+    // - introduced support for `IteratorObject`/Iterator helpers and unrelated setter types
+    {
+      outputFolder: new URL("./ts5.6/", outputFolder),
+      compilerBehavior: {
+        useIteratorObject: true,
+        allowUnrelatedSetterType: true,
+      },
+    },
+    // ts5.5 (and earlier)
+    {
+      outputFolder: new URL("./ts5.5/", outputFolder),
+      compilerBehavior: {}, // ts5.5 does not support `IteratorObject` or unrelated setter types
     },
   ];
 
