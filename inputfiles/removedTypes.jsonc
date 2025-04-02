@@ -359,7 +359,7 @@
             "FetchEventInit": {
                 "members": {
                     "member": {
-                        "replacesClientId": null // Not implemented
+                        "replacesClientId": null // Not implemented as of 2025-04
                     }
                 }
             },
@@ -772,7 +772,7 @@
             "RTCPeerConnectionIceEventInit": {
                 "members": {
                     "member": {
-                        "url": null // Safari +12 only
+                        "url": null // Safari +12 only as of 2025-04
                     }
                 }
             },
