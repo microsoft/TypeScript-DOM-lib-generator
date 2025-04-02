@@ -705,6 +705,13 @@
                     }
                 }
             },
+            "RTCPeerConnectionIceEventInit": {
+                "members": {
+                    "member": {
+                        "url": null // Safari +12 only
+                    }
+                }
+            },
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
