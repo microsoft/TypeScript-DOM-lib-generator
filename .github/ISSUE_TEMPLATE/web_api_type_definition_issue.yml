@@ -40,8 +40,7 @@ body:
       description: "Ensure that the API is supported in at least two major browser engines (not two chromiums)."
       options:
         - label: "This API is supported in at least two major browser engines (not two chromiums)."
-    validations:
-      required: true
+        required: true
   - type: checkbox
     id: use_latest_typescript
     attributes:
@@ -49,8 +48,7 @@ body:
       description: "Check this if you are using the latest TypeScript package."
       options:
         - label: "I am using the latest version of TS"
-    validations:
-      required: true
+        required: true
   - type: checkbox
     id: use_latest_typescript_web
     attributes:
@@ -58,8 +56,8 @@ body:
       description: "Check this if you have tried the latest `@types/web` package."
       options:
         - label: "I am using the latest version of  @types/web"
-    validations:
-      required: true
+        required: true
+
   - type: textarea
     id: additional_context
     attributes:
