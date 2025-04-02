@@ -356,6 +356,13 @@
                     }
                 }
             },
+            "FetchEventInit": {
+                "members": {
+                    "member": {
+                        "replacesClientId": null // Not implemented
+                    }
+                }
+            },
             "FocusOptions": {
                 "members": {
                     "member": {
@@ -705,20 +712,6 @@
                     }
                 }
             },
-            "RTCPeerConnectionIceEventInit": {
-                "members": {
-                    "member": {
-                        "url": null // Safari +12 only
-                    }
-                }
-            },
-            "FetchEventInit": {
-                "members": {
-                    "member": {
-                        "replacesClientId": null // Not implemented
-                    }
-                }
-            },
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
@@ -773,6 +766,13 @@
                     "member": {
                         "powerEfficientEncoder": null, // Blink only as of 2024-11
                         "encoderImplementation": null // Blink only as of 2024-11
+                    }
+                }
+            },
+            "RTCPeerConnectionIceEventInit": {
+                "members": {
+                    "member": {
+                        "url": null // Safari +12 only
                     }
                 }
             },
