@@ -45,7 +45,7 @@ body:
   - type: checkbox
     id: use_latest_typescript
     attributes:
-      label: "Use Latest TypeScript Package"
+      label: "Have Latest TypeScript Package"
       description: "Check this if you are using the latest TypeScript package."
       options:
         - label: "I am using the latest version of TS"
