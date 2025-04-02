@@ -228,7 +228,6 @@ interface FetchEventInit extends ExtendableEventInit {
     clientId?: string;
     handled?: Promise<void>;
     preloadResponse?: Promise<any>;
-    replacesClientId?: string;
     request: Request;
     resultingClientId?: string;
 }

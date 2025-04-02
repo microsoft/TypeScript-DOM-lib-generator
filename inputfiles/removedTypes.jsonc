@@ -356,6 +356,13 @@
                     }
                 }
             },
+            "FetchEventInit": {
+                "members": {
+                    "member": {
+                        "replacesClientId": null // Not implemented as of 2025-04
+                    }
+                }
+            },
             "FocusOptions": {
                 "members": {
                     "member": {
@@ -759,6 +766,13 @@
                     "member": {
                         "powerEfficientEncoder": null, // Blink only as of 2024-11
                         "encoderImplementation": null // Blink only as of 2024-11
+                    }
+                }
+            },
+            "RTCPeerConnectionIceEventInit": {
+                "members": {
+                    "member": {
+                        "url": null // Safari +12 only as of 2025-04
                     }
                 }
             },
