@@ -22,7 +22,6 @@ export default typescriptEslint.config(
       "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/no-non-null-assertion": 0,
       "@typescript-eslint/no-var-requires": 0,
-      "prettier/prettier": ["error", { "endOfLine": "auto" }] // match .gitattributes
     },
   },
 );

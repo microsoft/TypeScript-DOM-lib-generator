@@ -415,10 +415,12 @@ export function emitWebIdl(
       .map(convertDomTypeToTsType)
       .join(", ");
 
-    if (!subtypeString && compilerBehavior.useGenericTypedArrays) {
-      if (arrayBufferViewTypes.has(type)) {
-        subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
-      }
+    if (
+      !subtypeString &&
+      compilerBehavior.useGenericTypedArrays &&
+      arrayBufferViewTypes.has(type)
+    ) {
+      subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
     }
 
     return type === "Array" && subtypeString
