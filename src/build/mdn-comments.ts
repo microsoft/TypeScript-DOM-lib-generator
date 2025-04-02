@@ -50,7 +50,7 @@ function extractSummary(markdown: string): string {
   return normalizedText.split(" ")[0] || ""; // Fallback: first word if no sentence found
 }
 
-async function getFolders(dirPath: URL): Promise<URL[]> {
+async function getDirectories(dirPath: URL): Promise<URL[]> {
   try {
     const entries = await fs.readdir(dirPath, {
       withFileTypes: true,
@@ -94,7 +94,7 @@ async function getIndexMdContents(
 
 export async function generateDescription(): Promise<Record<string, string>> {
   try {
-    const folders = await getFolders(basePath);
+    const folders = await getDirectories(basePath);
     if (folders.length > 0) {
       return await getIndexMdContents(folders);
     }
