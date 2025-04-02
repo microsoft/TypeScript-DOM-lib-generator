@@ -712,6 +712,13 @@
                     }
                 }
             },
+            "FetchEventInit": {
+                "members": {
+                    "member": {
+                        "replacesClientId": null // Removed from all browsers
+                    }
+                }
+            },
             "RTCEncodedAudioFrameMetadata": {
                 "members": {
                     "member": {
