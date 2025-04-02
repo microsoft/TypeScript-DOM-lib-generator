@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Web API type definition issue
+        ## Web API Type Definition Issue
         Provide details of the issue.
   - type: input
     id: issue_summary
@@ -25,42 +25,41 @@ body:
       placeholder: "Expected: ...\nActual: ..."
     validations:
       required: true
-  - type: textarea
-    id: steps
+  - type: input
+    id: playground_link
     attributes:
-      label: "Playground link"
-      description: "Paste the playground link"
+      label: "Playground Link"
+      description: "Paste the TypeScript playground link"
       placeholder: "https://www.typescriptlang.org/play/..."
     validations:
       required: true
-  - type: checkbox
+  - type: checkboxes
     id: browser_support
     attributes:
       label: "Browser Support"
-      description: "Ensure that the API is supported in at least two major browser engines (not two chromiums)."
+      description: "Ensure that the API is supported in at least two major browser engines (not two Chromium-based browsers)."
       options:
-        - label: "This API is supported in at least two major browser engines (not two chromiums)."
-        required: true
+        - label: "This API is supported in at least two major browser engines (not two Chromium-based browsers)."
+          required: true
   - type: checkbox
     id: use_latest_typescript
     attributes:
       label: "Have Latest TypeScript Package"
-      description: "Check this if you are using the latest TypeScript package."
+      description: "Ensure you are using the latest TypeScript version."
       options:
-        - label: "I am using the latest version of TS"
-        required: true
+        - label: "I am using the latest version of TypeScript."
+          required: true
   - type: checkbox
     id: use_latest_typescript_web
     attributes:
-      label: "Use the latest @types/web Package"
-      description: "Check this if you have tried the latest `@types/web` package."
+      label: "Use the Latest @types/web Package"
+      description: "Ensure you have tried the latest `@types/web` package."
       options:
-        - label: "I am using the latest version of  @types/web"
-        required: true
-
+        - label: "I am using the latest version of `@types/web`."
+          required: true
   - type: textarea
     id: additional_context
     attributes:
       label: "Additional Context"
-      description: "Any extra information, logs, or references"
+      description: "Any extra information, logs, or references."
       placeholder: "Optional details..."
