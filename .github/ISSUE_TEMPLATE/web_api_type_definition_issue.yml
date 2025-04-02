@@ -41,7 +41,7 @@ body:
       options:
         - label: "This API is supported in at least two major browser engines (not two Chromium-based browsers)."
           required: true
-  - type: checkbox
+  - type: checkboxes
     id: use_latest_typescript
     attributes:
       label: "Have Latest TypeScript Package"
@@ -49,7 +49,7 @@ body:
       options:
         - label: "I am using the latest version of TypeScript."
           required: true
-  - type: checkbox
+  - type: checkboxes
     id: use_latest_typescript_web
     attributes:
       label: "Use the Latest @types/web Package"
