@@ -715,7 +715,7 @@
             "FetchEventInit": {
                 "members": {
                     "member": {
-                        "replacesClientId": null // Removed from all browsers
+                        "replacesClientId": null // Not implemented
                     }
                 }
             },
