@@ -41,13 +41,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TS_GITHUB_BOT_AUTH }}
       - id: git-diff
-        run: git diff --quiet HEAD baselines submodules
+        run: git diff --quiet HEAD baselines
         continue-on-error: true
       - uses: peter-evans/create-pull-request@v7
         if: ${{ steps.git-diff.outcome == 'failure' }}
         with:
-          commit-message: "🤖 Update core dependencies and submodules"
-          title: "Update core dependencies and submodules"
+          commit-message: "🤖 Update core dependencies"
+          title: "Update core dependencies"
           push-to-fork: typescript-bot/TypeScript-DOM-lib-generator
           branch: update-core-deps
           token: ${{ secrets.TS_GITHUB_BOT_AUTH }}
