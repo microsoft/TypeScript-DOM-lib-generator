@@ -8675,7 +8675,7 @@ interface ElementEventMap {
 }
 
 /**
- * **`Element`** is the most general base class from which all element objects (i.e.
+ * **`Element`** is the most general base class from which all element objects (i.e., objects that represent elements) in a Document inherit.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
@@ -16637,7 +16637,7 @@ declare var MediaKeys: {
 };
 
 /**
- * The **`MediaList`** interface represents the media queries of a stylesheet, e.g.
+ * The **`MediaList`** interface represents the media queries of a stylesheet, e.g., those set using a link element's `media` attribute.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaList)
  */
@@ -25341,7 +25341,7 @@ declare var VideoPlaybackQuality: {
 };
 
 /**
- * The **`ViewTransition`** interface of the View Transition API represents an active view transition, and provides functionality to react to the transition reaching different states (e.g.
+ * The **`ViewTransition`** interface of the View Transition API represents an active view transition, and provides functionality to react to the transition reaching different states (e.g., ready to run the animation, or animation finished) or skip the transition altogether.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition)
  */
