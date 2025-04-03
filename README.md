@@ -89,7 +89,6 @@ If you are familiar with Web IDL, you may also want to check whether the upstrea
 - `removedTypes.jsonc`: types that are defined in the spec but should be removed.
 - `comments.json`: comment strings to be embedded in the generated .js files.
 
-
 ## Deployment to TypeScript
 
 To migrate the *.d.ts files into TypeScript:
