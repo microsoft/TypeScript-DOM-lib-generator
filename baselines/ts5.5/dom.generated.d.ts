@@ -16859,7 +16859,7 @@ interface NamedNodeMap {
     setNamedItem(attr: Attr): Attr | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/setNamedItemNS) */
     setNamedItemNS(attr: Attr): Attr | null;
-    [index: number]: Attr;
+    [index: number | string]: Attr;
 }
 
 declare var NamedNodeMap: {

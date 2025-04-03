@@ -2722,6 +2722,11 @@
                     }
                 }
             },
+            "NamedNodeMap": {
+                "overrideIndexSignatures": [
+                    "[index: number | string]: Attr"
+                ]
+            },
             "Blob": {
               "methods": {
                 "method": {
