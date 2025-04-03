@@ -1101,6 +1101,7 @@ interface MediaTrackSettings {
     noiseSuppression?: boolean;
     sampleRate?: number;
     sampleSize?: number;
+    screenPixelRatio?: number;
     width?: number;
 }
 
@@ -1709,6 +1710,11 @@ interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
     trackIdentifier: string;
 }
 
+interface RTCLocalIceCandidateInit extends RTCIceCandidateInit {
+    relayProtocol?: RTCIceServerTransportProtocol | null;
+    url?: string | null;
+}
+
 interface RTCLocalSessionDescriptionInit {
     sdp?: string;
     type?: RTCSdpType;
@@ -1725,6 +1731,7 @@ interface RTCOfferOptions extends RTCOfferAnswerOptions {
 
 interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     active?: boolean;
+    encodingIndex?: number;
     firCount?: number;
     frameHeight?: number;
     frameWidth?: number;
@@ -1771,6 +1778,10 @@ interface RTCReceivedRtpStreamStats extends RTCRtpStreamStats {
     jitter?: number;
     packetsLost?: number;
     packetsReceived?: number;
+    packetsReceivedWithCe?: number;
+    packetsReceivedWithEct1?: number;
+    packetsReportedAsLost?: number;
+    packetsReportedAsLostButRecovered?: number;
 }
 
 interface RTCRtcpParameters {
@@ -1858,6 +1869,7 @@ interface RTCRtpTransceiverInit {
 interface RTCSentRtpStreamStats extends RTCRtpStreamStats {
     bytesSent?: number;
     packetsSent?: number;
+    packetsSentWithEct1?: number;
 }
 
 interface RTCSessionDescriptionInit {
@@ -1884,6 +1896,8 @@ interface RTCTrackEventInit extends EventInit {
 interface RTCTransportStats extends RTCStats {
     bytesReceived?: number;
     bytesSent?: number;
+    ccfbMessagesReceived?: number;
+    ccfbMessagesSent?: number;
     dtlsCipher?: string;
     dtlsRole?: RTCDtlsRole;
     dtlsState: RTCDtlsTransportState;
@@ -19227,7 +19241,7 @@ interface RTCIceCandidate {
 
 declare var RTCIceCandidate: {
     prototype: RTCIceCandidate;
-    new(candidateInitDict?: RTCIceCandidateInit): RTCIceCandidate;
+    new(candidateInitDict?: RTCLocalIceCandidateInit): RTCIceCandidate;
 };
 
 interface RTCIceCandidatePair {
@@ -29814,6 +29828,7 @@ type RTCIceGathererState = "complete" | "gathering" | "new";
 type RTCIceGatheringState = "complete" | "gathering" | "new";
 type RTCIceProtocol = "tcp" | "udp";
 type RTCIceRole = "controlled" | "controlling" | "unknown";
+type RTCIceServerTransportProtocol = "tcp" | "tls" | "udp";
 type RTCIceTcpCandidateType = "active" | "passive" | "so";
 type RTCIceTransportPolicy = "all" | "relay";
 type RTCIceTransportState = "checking" | "closed" | "completed" | "connected" | "disconnected" | "failed" | "new";
