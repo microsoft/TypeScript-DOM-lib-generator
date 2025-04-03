@@ -42,20 +42,14 @@ body:
         - label: "This API is supported in at least two major browser engines (not two Chromium-based browsers)."
           required: true
   - type: checkboxes
-    id: use_latest_typescript
+    id: tried_latest_releases
     attributes:
-      label: "Have Latest TypeScript Package"
-      description: "Ensure you are using the latest TypeScript version."
+      label: "Have Tried The Latest Releases"
+      description: "Make sure your problem is still reproducible on the latest releases."
       options:
-        - label: "I am using the latest version of TypeScript."
+        - label: "This issue applies to the latest release of TypeScript."
           required: true
-  - type: checkboxes
-    id: use_latest_typescript_web
-    attributes:
-      label: "Use the Latest @types/web Package"
-      description: "Ensure you have tried the latest `@types/web` package."
-      options:
-        - label: "I am using the latest version of `@types/web`."
+        - label: "This issue applies to the latest release of `@types/web`."
           required: true
   - type: textarea
     id: additional_context
