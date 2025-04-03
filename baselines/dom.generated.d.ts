@@ -16871,6 +16871,7 @@ interface NamedNodeMap {
     getNamedItemNS(namespace: string | null, localName: string): Attr | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/item) */
     item(index: number): Attr | null;
+    readonly [name: string]: Attr | Attr[] | number | Function | undefined;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/removeNamedItem) */
     removeNamedItem(qualifiedName: string): Attr;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/removeNamedItemNS) */
@@ -16879,7 +16880,7 @@ interface NamedNodeMap {
     setNamedItem(attr: Attr): Attr | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/setNamedItemNS) */
     setNamedItemNS(attr: Attr): Attr | null;
-    [index: number | string]: Attr;
+    [index: number]: Attr;
 }
 
 declare var NamedNodeMap: {

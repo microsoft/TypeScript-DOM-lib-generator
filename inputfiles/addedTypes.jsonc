@@ -648,6 +648,18 @@
                     }
                 }
             },
+            "NamedNodeMap": {
+                "methods": {
+                    "method": {
+                        "readonly": {
+                            "name": "readonly",
+                            "overrideSignatures": [
+                                "readonly [name: string]: Attr | Attr[] | number | Function | undefined"
+                            ]
+                        }
+                    }
+                }
+            },
             "NodeListOf": {
                 "name": "NodeListOf",
                 "typeParameters": [
