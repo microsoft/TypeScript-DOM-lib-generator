@@ -20,7 +20,8 @@
     "changelog": "tsc && node ./lib/changelog.js",
     "ts-changelog": "node ./deploy/versionChangelog.js",
     "migrate": "node ./deploy/migrate.js",
-    "version": "npm i && tsc && node ./lib/version.js"
+    "version": "npm i && tsc && node ./lib/version.js",
+    "generate": "npm run generate"
   },
   "author": {
     "name": "Kagami Sascha Rosylight",

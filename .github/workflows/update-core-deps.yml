@@ -27,7 +27,7 @@ jobs:
       # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
       - run: npm i
       - id: build
-        run: npm run build && npm run baseline-accept
+        run: npm run generate
         continue-on-error: true
       - if: ${{ steps.build.outcome == 'failure' }}
         run: node deploy/onUpdateFailure.js
