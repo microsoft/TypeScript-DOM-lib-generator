@@ -17,25 +17,25 @@ function sortObjectKeys<T>(obj: T): T {
 }
 
 export function sortFiles() {
-  const filePath = new URL(
-    "../../inputfiles/overridingTypes.jsonc",
-    import.meta.url,
-  ); // Replace with your JSONC file path
+  const files = ["overridingTypes", "removedTypes", "addedTypes"];
+  files.forEach((file) => {
+    const filePath = new URL(`../../inputfiles/${file}.jsonc`, import.meta.url); // Replace with your JSONC file path
 
-  // Read the JSONC file content
-  const fileContent = fs.readFileSync(filePath, "utf-8");
+    // Read the JSONC file content
+    const fileContent = fs.readFileSync(filePath, "utf-8");
 
-  // Parse the JSONC file while preserving comments
-  const parsed = commentJson.parse(fileContent, undefined, true);
+    // Parse the JSONC file while preserving comments
+    const parsed = commentJson.parse(fileContent, undefined, true);
 
-  // Sort the object keys alphabetically (recursively)
-  const sortedObject = sortObjectKeys(parsed);
+    // Sort the object keys alphabetically (recursively)
+    const sortedObject = sortObjectKeys(parsed);
 
-  // Stringify the sorted object back to JSONC format (preserving comments)
-  const sortedJsonC = commentJson.stringify(sortedObject, null, 2);
+    // Stringify the sorted object back to JSONC format (preserving comments)
+    const sortedJsonC = commentJson.stringify(sortedObject, null, 2);
 
-  // Write the sorted content back to the file
-  fs.writeFileSync(filePath, sortedJsonC, "utf-8");
+    // Write the sorted content back to the file
+    fs.writeFileSync(filePath, sortedJsonC, "utf-8");
+  });
 
   console.log("JSONC file keys sorted successfully.");
 }
