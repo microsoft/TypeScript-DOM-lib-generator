@@ -66,5 +66,8 @@
   },
   "overrides": {
     "typescript@*": "$typescript"
+  },
+  "dependencies": {
+    "comment-json": "^4.2.5"
   }
 }
