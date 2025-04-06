@@ -1,41 +1,67 @@
-import * as fs from "fs";
-import commentJson from "comment-json";
+import { readFileSync } from "fs";
+import { parse, ParseError, visit } from "jsonc-parser";
+import { URL } from "url";
 
-// A helper function to recursively sort object keys alphabetically.
+// Recursively sort object keys
 function sortObjectKeys<T>(obj: T): T {
   if (obj && typeof obj === "object" && !Array.isArray(obj)) {
-    const sorted = {} as any;
-    Object.keys(obj)
-      .sort()
-      .forEach((key) => {
-        // Recursively sort keys if the value is an object
-        sorted[key] = sortObjectKeys((obj as any)[key]);
-      });
-    return sorted;
+    const sorted: Record<string, unknown> = {};
+    for (const key of Object.keys(obj).sort()) {
+      sorted[key] = sortObjectKeys((obj as any)[key]);
+    }
+    return sorted as T;
   }
   return obj;
 }
 
-export function sortFiles() {
-  const files = ["overridingTypes", "removedTypes", "addedTypes"];
-  files.forEach((file) => {
-    const filePath = new URL(`../../inputfiles/${file}.jsonc`, import.meta.url); // Replace with your JSONC file path
+// Check if the content has trailing commas
+function hasTrailingCommas(content: string): boolean {
+  let foundTrailingComma = false;
 
-    // Read the JSONC file content
-    const fileContent = fs.readFileSync(filePath, "utf-8");
-
-    // Parse the JSONC file while preserving comments
-    const parsed = commentJson.parse(fileContent, undefined, true);
-
-    // Sort the object keys alphabetically (recursively)
-    const sortedObject = sortObjectKeys(parsed);
-
-    // Stringify the sorted object back to JSONC format (preserving comments)
-    const sortedJsonC = commentJson.stringify(sortedObject, null, 2);
-
-    // Write the sorted content back to the file
-    fs.writeFileSync(filePath, sortedJsonC, "utf-8");
+  visit(content, {
+    onObjectEnd: (offset) => {
+      const lastChar = content[offset - 1];
+      if (lastChar === ",") {
+        foundTrailingComma = true;
+      }
+    },
+    onArrayEnd: (offset) => {
+      const lastChar = content[offset - 1];
+      if (lastChar === ",") {
+        foundTrailingComma = true;
+      }
+    },
   });
 
-  console.log("JSONC file keys sorted successfully.");
+  return foundTrailingComma;
+}
+
+export function sortFiles(): void {
+  const filenames = ["overridingTypes", "removedTypes", "addedTypes"];
+
+  for (const name of filenames) {
+    const filePath = new URL(`../../inputfiles/${name}.jsonc`, import.meta.url);
+    const content = readFileSync(filePath, "utf-8");
+
+    const errors: ParseError[] = [];
+    const parsed = parse(content, errors, { allowTrailingComma: true });
+
+    if (errors.length > 0) {
+      throw new Error(`❌ Syntax error(s) found in ${name}.jsonc:`);
+    }
+
+    if (hasTrailingCommas(content)) {
+      throw new Error(`❌ Trailing comma detected in ${name}.jsonc`);
+    }
+
+    const sorted = sortObjectKeys(parsed);
+    const originalStr = JSON.stringify(parsed);
+    const sortedStr = JSON.stringify(sorted);
+
+    if (originalStr !== sortedStr) {
+      throw new Error(`❌ Keys are not sorted in ${name}.jsonc`);
+    }
+
+    console.log(`✅ ${name}.jsonc is valid, sorted, and clean.`);
+  }
 }
