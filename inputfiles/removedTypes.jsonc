@@ -1,834 +1,874 @@
 {
   "callbackFunctions": {
-    "callbackFunction": {
-      "Function": null,
-      "PerformanceObserverCallback": {
-        "signature": {
-          "0": {
-            "param": [
-              "options"
-            ]
+      "callbackFunction": {
+          "Function": null,
+          "PerformanceObserverCallback": {
+              "signature": {
+                  "0": {
+                      "param": ["options"]
+                  }
+              }
           }
-        }
       }
-    }
-  },
-  "dictionaries": {
-    "dictionary": {
-      "AudioContextOptions": {
-        "members": {
-          "member": {
-            "renderSizeHint": null,
-            "sinkId": null
-          }
-        }
-      },
-      "AudioEncoderConfig": {
-        "members": {
-          "member": {
-            "aac": null,
-            "flac": null
-          }
-        }
-      },
-      "AuthenticationExtensionsClientInputs": {
-        "members": {
-          "member": {
-            "appidExclude": null,
-            "credBlob": null,
-            "credentialProtectionPolicy": null,
-            "enforceCredentialProtectionPolicy": null,
-            "getCredBlob": null,
-            "hmacGetSecret": null,
-            "largeBlob": null,
-            "payment": null
-          }
-        }
-      },
-      "AuthenticationExtensionsClientOutputs": {
-        "members": {
-          "member": {
-            "appidExclude": null,
-            "hmacGetSecret": null,
-            "largeBlob": null
-          }
-        }
-      },
-      "CanvasRenderingContext2DSettings": {
-        "members": {
-          "member": {
-            "colorType": null
-          }
-        }
-      },
-      "CookieListItem": {
-        "members": {
-          "member": {
-            "domain": null,
-            "expires": null,
-            "partitioned": null,
-            "path": null,
-            "sameSite": null,
-            "secure": null
-          }
-        }
-      },
-      "CredentialCreationOptions": {
-        "members": {
-          "member": {
-            "federated": null,
-            "mediation": null,
-            "password": null
-          }
-        }
-      },
-      "CredentialRequestOptions": {
-        "members": {
-          "member": {
-            "digital": null,
-            "federated": null,
-            "identity": null,
-            "otp": null,
-            "password": null
-          }
-        }
-      },
-      "DisplayMediaStreamOptions": {
-        "members": {
-          "member": {
-            "monitorTypeSurfaces": null,
-            "selfBrowserSurface": null,
-            "surfaceSwitching": null,
-            "systemAudio": null
-          }
-        }
-      },
-      "EncodedVideoChunkInit": {
-        "members": {
-          "member": {
-            "transfer": null
-          }
-        }
-      },
-      "EncodedVideoChunkMetadata": {
-        "members": {
-          "member": {
-            "alphaSideData": null,
-            "svc": null
-          }
-        }
-      },
-      "FocusOptions": {
-        "members": {
-          "member": {
-            "focusVisible": null
-          }
-        }
-      },
-      "FontFaceDescriptors": {
-        "members": {
-          "member": {
-            "variationSettings": null
-          }
-        }
-      },
-      "GPURequestAdapterOptions": {
-        "members": {
-          "member": {
-            "featureLevel": null
-          }
-        }
-      },
-      "GPUShaderModuleDescriptor": {
-        "members": {
-          "member": {
-            "compilationHints": null
-          }
-        }
-      },
-      "GPUTextureViewDescriptor": {
-        "members": {
-          "member": {
-            "usage": null
-          }
-        }
-      },
-      "GetAnimationsOptions": {
-        "members": {
-          "member": {
-            "pseudoElement": null
-          }
-        }
-      },
-      "IntersectionObserverInit": {
-        "members": {
-          "member": {
-            "delay": null,
-            "scrollMargin": null,
-            "trackVisibility": null
-          }
-        }
-      },
-      "KeyframeAnimationOptions": {
-        "members": {
-          "member": {
-            "rangeEnd": null,
-            "rangeStart": null
-          }
-        }
-      },
-      "MediaCapabilitiesDecodingInfo": {
-        "members": {
-          "member": {
-            "keySystemAccess": null
-          }
-        }
-      },
-      "MediaDecodingConfiguration": {
-        "members": {
-          "member": {
-            "keySystemConfiguration": null
-          }
-        }
-      },
-      "MediaMetadataInit": {
-        "members": {
-          "member": {
-            "chapterInfo": null
-          }
-        }
-      },
-      "MediaRecorderOptions": {
-        "members": {
-          "member": {
-            "audioBitrateMode": null,
-            "videoKeyFrameIntervalCount": null,
-            "videoKeyFrameIntervalDuration": null
-          }
-        }
-      },
-      "MediaSessionActionDetails": {
-        "members": {
-          "member": {
-            "isActivating": null
-          }
-        }
-      },
-      "MediaTrackCapabilities": {
-        "members": {
-          "member": {
-            "brightness": null,
-            "colorTemperature": null,
-            "contrast": null,
-            "cursor": null,
-            "exposureCompensation": null,
-            "exposureMode": null,
-            "exposureTime": null,
-            "focusDistance": null,
-            "focusMode": null,
-            "iso": null,
-            "latency": null,
-            "logicalSurface": null,
-            "pan": null,
-            "resizeMode": null,
-            "saturation": null,
-            "sharpness": null,
-            "tilt": null,
-            "torch": null,
-            "whiteBalanceMode": null,
-            "zoom": null
-          }
-        }
-      },
-      "MediaTrackConstraintSet": {
-        "members": {
-          "member": {
-            "brightness": null,
-            "colorTemperature": null,
-            "contrast": null,
-            "cursor": null,
-            "exposureCompensation": null,
-            "exposureMode": null,
-            "exposureTime": null,
-            "focusDistance": null,
-            "focusMode": null,
-            "iso": null,
-            "latency": null,
-            "logicalSurface": null,
-            "pan": null,
-            "pointsOfInterest": null,
-            "resizeMode": null,
-            "restrictOwnAudio": null,
-            "saturation": null,
-            "sharpness": null,
-            "suppressLocalAudioPlayback": null,
-            "tilt": null,
-            "torch": null,
-            "whiteBalanceMode": null,
-            "zoom": null
-          }
-        }
-      },
-      "MediaTrackSettings": {
-        "members": {
-          "member": {
-            "brightness": null,
-            "colorTemperature": null,
-            "contrast": null,
-            "cursor": null,
-            "exposureCompensation": null,
-            "exposureMode": null,
-            "exposureTime": null,
-            "focusDistance": null,
-            "focusMode": null,
-            "iso": null,
-            "latency": null,
-            "logicalSurface": null,
-            "pan": null,
-            "pointsOfInterest": null,
-            "resizeMode": null,
-            "restrictOwnAudio": null,
-            "saturation": null,
-            "sharpness": null,
-            "suppressLocalAudioPlayback": null,
-            "tilt": null,
-            "torch": null,
-            "whiteBalanceMode": null,
-            "zoom": null
-          }
-        }
-      },
-      "MediaTrackSupportedConstraints": {
-        "members": {
-          "member": {
-            "brightness": null,
-            "colorTemperature": null,
-            "contrast": null,
-            "cursor": null,
-            "exposureCompensation": null,
-            "exposureMode": null,
-            "exposureTime": null,
-            "focusDistance": null,
-            "focusMode": null,
-            "iso": null,
-            "latency": null,
-            "logicalSurface": null,
-            "pan": null,
-            "pointsOfInterest": null,
-            "resizeMode": null,
-            "restrictOwnAudio": null,
-            "saturation": null,
-            "sharpness": null,
-            "suppressLocalAudioPlayback": null,
-            "tilt": null,
-            "torch": null,
-            "whiteBalanceMode": null,
-            "zoom": null
-          }
-        }
-      },
-      "NotificationOptions": {
-        "members": {
-          "member": {
-            "actions": null,
-            "image": null,
-            "renotify": null,
-            "timestamp": null,
-            "vibrate": null
-          }
-        }
-      },
-      "OfflineAudioContextOptions": {
-        "members": {
-          "member": {
-            "renderSizeHint": null
-          }
-        }
-      },
-      "OpusEncoderConfig": {
-        "members": {
-          "member": {
-            "application": null,
-            "signal": null
-          }
-        }
-      },
-      "PaymentDetailsUpdate": {
-        "members": {
-          "member": {
-            "payerErrors": null
-          }
-        }
-      },
-      "PaymentOptions": {
-        "members": {
-          "member": {
-            "requestBillingAddress": null
-          }
-        }
-      },
-      "PaymentValidationErrors": {
-        "members": {
-          "member": {
-            "paymentMethod": null
-          }
-        }
-      },
-      "PerformanceObserverInit": {
-        "members": {
-          "member": {
-            "durationThreshold": null
-          }
-        }
-      },
-      "PointerEventInit": {
-        "members": {
-          "member": {
-            "persistentDeviceId": null
-          }
-        }
-      },
-      "PopStateEventInit": {
-        "members": {
-          "member": {
-            "hasUAVisualTransition": null
-          }
-        }
-      },
-      "PublicKeyCredentialCreationOptions": {
-        "members": {
-          "member": {
-            "attestationFormats": null,
-            "hints": null
-          }
-        }
-      },
-      "PublicKeyCredentialCreationOptionsJSON": {
-        "members": {
-          "member": {
-            "attestationFormats": null
-          }
-        }
-      },
-      "PublicKeyCredentialRequestOptions": {
-        "members": {
-          "member": {
-            "hints": null
-          }
-        }
-      },
-      "RTCConfiguration": {
-        "members": {
-          "member": {
-            "peerIdentity": null
-          }
-        }
-      },
-      "RTCDataChannelInit": {
-        "members": {
-          "member": {
-            "priority": null
-          }
-        }
-      },
-      "RTCEncodedAudioFrameMetadata": {
-        "members": {
-          "member": {
-            "captureTime": null,
-            "mimeType": null,
-            "receiveTime": null,
-            "rtpTimestamp": null,
-            "senderCaptureTimeOffset": null
-          }
-        }
-      },
-      "RTCEncodedVideoFrameMetadata": {
-        "members": {
-          "member": {
-            "captureTime": null,
-            "mimeType": null,
-            "receiveTime": null,
-            "rtpTimestamp": null,
-            "senderCaptureTimeOffset": null
-          }
-        }
-      },
-      "RTCInboundRtpStreamStats": {
-        "members": {
-          "member": {
-            "corruptionMeasurements": null,
-            "powerEfficientDecoder": null,
-            "totalCorruptionProbability": null,
-            "totalSquaredCorruptionProbability": null
-          }
-        }
-      },
-      "RTCOutboundRtpStreamStats": {
-        "members": {
-          "member": {
-            "encoderImplementation": null,
-            "powerEfficientEncoder": null
-          }
-        }
-      },
-      "RTCRtpEncodingParameters": {
-        "members": {
-          "member": {
-            "codec": null,
-            "scalabilityMode": null
-          }
-        }
-      },
-      "ReadableStreamReadResult": null,
-      "RequestInit": {
-        "members": {
-          "member": {
-            "adAuctionHeaders": null,
-            "attributionReporting": null,
-            "duplex": null,
-            "privateToken": null,
-            "sharedStorageWritable": null,
-            "targetAddressSpace": null
-          }
-        }
-      },
-      "ScrollIntoViewOptions": {
-        "members": {
-          "member": {
-            "container": null
-          }
-        }
-      },
-      "Transformer": {
-        "members": {
-          "member": {
-            "cancel": null
-          }
-        }
-      },
-      "UIEventInit": {
-        "members": {
-          "member": {
-            "sourceCapabilities": null
-          }
-        }
-      },
-      "VideoConfiguration": {
-        "members": {
-          "member": {
-            "spatialScalability": null
-          }
-        }
-      },
-      "VideoDecoderConfig": {
-        "members": {
-          "member": {
-            "flip": null,
-            "rotation": null
-          }
-        }
-      },
-      "VideoEncoderConfig": {
-        "members": {
-          "member": {
-            "hevc": null
-          }
-        }
-      },
-      "VideoEncoderEncodeOptions": {
-        "members": {
-          "member": {
-            "av1": null,
-            "hevc": null,
-            "vp9": null
-          }
-        }
-      },
-      "VideoFrameBufferInit": {
-        "members": {
-          "member": {
-            "flip": null,
-            "metadata": null,
-            "rotation": null,
-            "transfer": null
-          }
-        }
-      },
-      "VideoFrameInit": {
-        "members": {
-          "member": {
-            "flip": null,
-            "metadata": null,
-            "rotation": null
-          }
-        }
-      },
-      "WebGLContextAttributes": {
-        "members": {
-          "member": {
-            "xrCompatible": null
-          }
-        }
-      },
-      "WebTransportOptions": {
-        "members": {
-          "member": {
-            "anticipatedConcurrentIncomingBidirectionalStreams": null,
-            "anticipatedConcurrentIncomingUnidirectionalStreams": null,
-            "protocols": null
-          }
-        }
-      },
-      "WebTransportSendStreamOptions": {
-        "members": {
-          "member": {
-            "waitUntilAvailable": null
-          }
-        }
-      }
-    }
   },
   "enums": {
-    "enum": {
-      "AuthenticatorTransport": {
-        "value": [
-          "smart-card"
-        ]
-      },
-      "ConnectionType": {
-        "value": [
-          "wimax"
-        ]
-      },
-      "GPUBlendFactor": {
-        "value": [
-          "one-minus-src1",
-          "one-minus-src1-alpha",
-          "src1",
-          "src1-alpha"
-        ]
-      },
-      "GPUFeatureName": {
-        "value": [
-          "clip-distances",
-          "dual-source-blending",
-          "float32-blendable",
-          "texture-compression-astc-sliced-3d",
-          "texture-compression-bc-sliced-3d"
-        ]
-      },
-      "GPUVertexFormat": {
-        "value": [
-          "float16",
-          "sint16",
-          "sint8",
-          "snorm16",
-          "snorm8",
-          "uint16",
-          "uint8",
-          "unorm16",
-          "unorm8",
-          "unorm8x4-bgra"
-        ]
-      },
-      "MediaSessionAction": {
-        "value": [
-          "enterpictureinpicture",
-          "hangup",
-          "nextslide",
-          "previousslide",
-          "togglecamera",
-          "togglemicrophone",
-          "togglescreenshare",
-          "voiceactivity"
-        ]
-      },
-      "RequestDestination": {
-        "value": [
-          "json"
-        ]
-      },
-      "ValueType": null,
-      "VideoColorPrimaries": {
-        "value": [
-          "bt2020",
-          "smpte432"
-        ]
-      },
-      "VideoMatrixCoefficients": {
-        "value": [
-          "bt2020-ncl"
-        ]
-      },
-      "VideoPixelFormat": {
-        "value": [
-          "I420AP10",
-          "I420AP12",
-          "I420P10",
-          "I420P12",
-          "I422A",
-          "I422AP10",
-          "I422AP12",
-          "I422P10",
-          "I422P12",
-          "I444A",
-          "I444AP10",
-          "I444AP12",
-          "I444P10",
-          "I444P12"
-        ]
-      },
-      "VideoTransferCharacteristics": {
-        "value": [
-          "hlg",
-          "linear",
-          "pq"
-        ]
+      "enum": {
+          "AuthenticatorTransport": {
+              "value": ["smart-card"] // WebKit only as of 2023-05
+          },
+          "ConnectionType": {
+              "value": ["wimax"]
+          },
+          "GPUBlendFactor": {
+              "value": [
+                  "one-minus-src1", // Blink only as of 2024-11
+                  "one-minus-src1-alpha", // Blink only as of 2024-11
+                  "src1", // Blink only as of 2024-11
+                  "src1-alpha" // Blink only as of 2024-11
+              ]
+          },
+          "GPUFeatureName": {
+              "value": [
+                  "clip-distances", // Blink only as of 2024-11
+                  "dual-source-blending", // Blink only as of 2024-11
+                  "float32-blendable", // Blink only as of 2024-11
+                  "texture-compression-astc-sliced-3d", // No implementation as of 2024-11
+                  "texture-compression-bc-sliced-3d" // No implementation as of 2024-11
+              ]
+          },
+          "GPUVertexFormat": {
+              "value": [
+                  "float16", // Blink only as of 2024-11
+                  "sint16", // Blink only as of 2024-11
+                  "sint8", // Blink only as of 2024-11
+                  "snorm16", // Blink only as of 2024-11
+                  "snorm8", // Blink only as of 2024-11
+                  "uint16", // Blink only as of 2024-11
+                  "uint8", // Blink only as of 2024-11
+                  "unorm16", // Blink only as of 2024-11
+                  "unorm8", // Blink only as of 2024-11
+                  "unorm8x4-bgra" // Blink only as of 2024-11
+              ]
+          },
+          "MediaSessionAction": {
+              "value": [
+                  "enterpictureinpicture", // Blink only as of 2024-07
+                  "hangup", // Blink only as of 2024-07
+                  "nextslide", // Blink only as of as of 2024-07
+                  "previousslide", // Blink only as of as of 2024-07
+                  "togglecamera", // Blink only as of 2024-07
+                  "togglemicrophone", // Blink only as of 2024-07
+                  "togglescreenshare", // No implementation as of 2024-07
+                  "voiceactivity" // No implementation as of 2024-07
+              ]
+          },
+          "RequestDestination": {
+              "value": [
+                  "json" // No implementation as of 2023-11
+              ]
+          },
+          "ValueType": null,
+          "VideoColorPrimaries": {
+              "value": [
+                  "bt2020", // Blink only as of 2022-10
+                  "smpte432" // Blink only as of 2022-10
+              ]
+          },
+          "VideoMatrixCoefficients": {
+              "value": [
+                  "bt2020-ncl" // Blink only as of 2022-10
+              ]
+          },
+          "VideoPixelFormat": {
+              "value": [
+                  // All no implementation as of 2024-03
+                  "I420AP10",
+                  "I420AP12",
+                  "I420P10",
+                  "I420P12",
+                  "I422A",
+                  "I422AP10",
+                  "I422AP12",
+                  "I422P10",
+                  "I422P12",
+                  "I444A",
+                  "I444AP10",
+                  "I444AP12",
+                  "I444P10",
+                  "I444P12"
+              ]
+          },
+          "VideoTransferCharacteristics": {
+              "value": [
+                  "hlg", // Blink only as of 2022-10
+                  "linear", // Blink only as of 2022-10
+                  "pq" // Blink only as of 2022-10
+              ]
+          }
       }
-    }
   },
   "interfaces": {
-    "interface": {
-      "CSSRule": {
-        "constants": {
-          "constant": {
-            "MARGIN_RULE": null
-          }
-        }
-      },
-      "Clipboard": {
-        "methods": {
-          "method": {
-            "read": {
-              "signature": {
-                "0": {
-                  "param": [
-                    "formats"
-                  ]
-                }
+      "interface": {
+          "Clipboard": {
+              "methods": {
+                  "method": {
+                      "read": {
+                          "signature": {
+                              "0": {
+                                  "param": ["formats"] // Blink-only as of 2023-11
+                              }
+                          }
+                      }
+                  }
               }
-            }
-          }
-        }
-      },
-      "Document": {
-        "methods": {
-          "method": {
-            "elementFromPoint": null,
-            "elementsFromPoint": null
-          }
-        }
-      },
-      "HTMLElement": {
-        "methods": {
-          "method": {
-            "showPopover": {
-              "signature": {
-                "0": {
-                  "param": [
-                    "options"
-                  ]
-                }
+          },
+          "CSSRule": {
+              "constants": {
+                  "constant": {
+                      "MARGIN_RULE": null // WebKit only as of 2023-10
+                  }
               }
-            }
-          }
-        }
-      },
-      "IntersectionObserverEntry": {
-        "constructor": null
-      },
-      "OffscreenCanvasRenderingContext2D": {
-        "implements": [
-          "CanvasSettings"
-        ]
-      },
-      "PaymentResponse": {
-        "methods": {
-          "method": {
-            "complete": {
-              "signature": {
-                "0": {
-                  "param": [
-                    "details"
-                  ]
-                }
+          },
+          "Document": {
+              "methods": {
+                  "method": {
+                      // Manually moved to DocumentOrShadowRoot
+                      // See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
+                      "elementFromPoint": null,
+                      "elementsFromPoint": null
+                  }
               }
-            }
-          }
-        }
-      },
-      "RTCEncodedAudioFrame": {
-        "constructor": null
-      },
-      "RTCEncodedVideoFrame": {
-        "constructor": null
-      },
-      "ReadableStreamBYOBReader": {
-        "methods": {
-          "method": {
-            "read": {
-              "signature": {
-                "0": {
-                  "param": [
-                    "options"
-                  ]
-                }
+          },
+          "HTMLElement": {
+              "methods": {
+                  "method": {
+                      "showPopover": {
+                          "signature": {
+                              "0": {
+                                  "param": ["options"] // Blink only as of 2024-11
+                              }
+                          }
+                      }
+                  }
               }
-            }
+          },
+          "IntersectionObserverEntry": {
+              "constructor": null // WebKit-only as of 2024-07
+          },
+          "OffscreenCanvasRenderingContext2D": {
+              "implements": ["CanvasSettings"] // Blink only as of 2025-01
+          },
+          "PaymentResponse": {
+              "methods": {
+                  "method": {
+                      "complete": {
+                          "signature": {
+                              "0": {
+                                  "param": ["details"] // WebKit-only as of 2023-11
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "ReadableStreamBYOBReader": {
+              "methods": {
+                  "method": {
+                      "read": {
+                          "signature": {
+                              "0": {
+                                  "param": ["options"] // No implementations as of 2023-11
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "RTCEncodedAudioFrame": {
+              "constructor": null // Blink experimental only as of 2024-05
+          },
+          "RTCEncodedVideoFrame": {
+              "constructor": null // Blink experimental only as of 2024-05
+          },
+          "SVGFEGaussianBlurElement": {
+              "constants": {
+                  "constant": {
+                      "SVG_EDGEMODE_DUPLICATE": null,
+                      "SVG_EDGEMODE_NONE": null,
+                      "SVG_EDGEMODE_UNKNOWN": null,
+                      "SVG_EDGEMODE_WRAP": null
+                  }
+              }
+          },
+          "WebGLBuffer": {
+              "extends": null
+          },
+          "WebGLFramebuffer": {
+              "extends": null
+          },
+          "WebGLProgram": {
+              "extends": null
+          },
+          "WebGLQuery": {
+              "extends": null
+          },
+          "WebGLRenderbuffer": {
+              "extends": null
+          },
+          "WebGLSampler": {
+              "extends": null
+          },
+          "WebGLShader": {
+              "extends": null
+          },
+          "WebGLSync": {
+              "extends": null
+          },
+          "WebGLTexture": {
+              "extends": null
+          },
+          "WebGLTransformFeedback": {
+              "extends": null
+          },
+          "WebGLVertexArrayObject": {
+              "extends": null
+          },
+          "WebGLVertexArrayObjectOES": {
+              "extends": null
           }
-        }
-      },
-      "SVGFEGaussianBlurElement": {
-        "constants": {
-          "constant": {
-            "SVG_EDGEMODE_DUPLICATE": null,
-            "SVG_EDGEMODE_NONE": null,
-            "SVG_EDGEMODE_UNKNOWN": null,
-            "SVG_EDGEMODE_WRAP": null
-          }
-        }
-      },
-      "WebGLBuffer": {
-        "extends": null
-      },
-      "WebGLFramebuffer": {
-        "extends": null
-      },
-      "WebGLProgram": {
-        "extends": null
-      },
-      "WebGLQuery": {
-        "extends": null
-      },
-      "WebGLRenderbuffer": {
-        "extends": null
-      },
-      "WebGLSampler": {
-        "extends": null
-      },
-      "WebGLShader": {
-        "extends": null
-      },
-      "WebGLSync": {
-        "extends": null
-      },
-      "WebGLTexture": {
-        "extends": null
-      },
-      "WebGLTransformFeedback": {
-        "extends": null
-      },
-      "WebGLVertexArrayObject": {
-        "extends": null
-      },
-      "WebGLVertexArrayObjectOES": {
-        "extends": null
       }
-    }
+  },
+  "dictionaries": {
+      "dictionary": {
+          "AudioContextOptions": {
+              "members": {
+                  "member": {
+                      "renderSizeHint": null, // No implementation as of 2023-10
+                      "sinkId": null // Blink only as of 2023-10
+                  }
+              }
+          },
+          "AudioEncoderConfig": {
+              "members": {
+                  "member": {
+                      "aac": null, // Blink only as of 2024-09
+                      "flac": null // Blink only as of 2024-09
+                  }
+              }
+          },
+          "AuthenticationExtensionsClientInputs": {
+              "members": {
+                  "member": {
+                      // only `appid`, `credProps`, and `hmacCreateSecret` are implemented by 2+ engines, everything else is Blink only as of 2022-10.
+                      // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
+                      // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
+                      // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/authentication_extensions_client_inputs.idl
+                      "appidExclude": null,
+                      "credBlob": null,
+                      "credentialProtectionPolicy": null,
+                      "enforceCredentialProtectionPolicy": null,
+                      "getCredBlob": null,
+                      "hmacGetSecret": null, // No implementation as of 2023-11
+                      "largeBlob": null,
+                      "payment": null
+                  }
+              }
+          },
+          "AuthenticationExtensionsClientOutputs": {
+              "members": {
+                  "member": {
+                      // (same as *Inputs)
+                      "appidExclude": null, // No implementation as of 2023-11
+                      "hmacGetSecret": null, // No implementation as of 2023-11
+                      "largeBlob": null
+                  }
+              }
+          },
+          "CanvasRenderingContext2DSettings": {
+              "members": {
+                  "member": {
+                      "colorType": null // No implementation as of 2025-02
+                  }
+              }
+          },
+          "CredentialCreationOptions": {
+              "members": {
+                  "member": {
+                      "federated": null, // Blink only as of 2024-06
+                      "password": null, // Blink only as of 2024-06
+                      "mediation": null // WebKit only as of 2024-06
+                  }
+              }
+          },
+          "CookieListItem": {
+              "members": {
+                  "member": {
+                      "domain": null, // Blink only as of 2025-02
+                      "path": null, // Blink only as of 2025-02
+                      "expires": null, // Blink only as of 2025-02
+                      "secure": null, // Blink only as of 2025-02
+                      "sameSite": null, // Blink only as of 2025-02
+                      "partitioned": null // Blink only as of 2025-02
+                  }
+              }
+          },
+          "CredentialRequestOptions": {
+              "members": {
+                  "member": {
+                      // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
+                      // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
+                      // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
+                      // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
+                      "digital": null, // Behind a flag in WebKit and Blink as of 2024-03
+                      "federated": null,
+                      "identity": null,
+                      "otp": null,
+                      "password": null
+                  }
+              }
+          },
+          "DisplayMediaStreamOptions": {
+              "members": {
+                  "member": {
+                      // Only `audio` and `video` are implemented by 2+ engines, everything else is currently Blink only.
+                      // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
+                      // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
+                      // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
+                      "monitorTypeSurfaces": null,
+                      "selfBrowserSurface": null,
+                      "surfaceSwitching": null,
+                      "systemAudio": null
+                  }
+              }
+          },
+          "EncodedVideoChunkInit": {
+              "members": {
+                  "member": {
+                      "transfer": null, // Blink only as of 2023-11
+                  }
+              }
+          },
+          "EncodedVideoChunkMetadata": {
+              "members": {
+                  "member": {
+                      "alphaSideData": null, // Blink only as of 2023-03
+                      "svc": null // Blink only as of 2023-03
+                  }
+              }
+          },
+          "FocusOptions": {
+              "members": {
+                  "member": {
+                      "focusVisible": null // Gecko only as of 2022-09
+                  }
+              }
+          },
+          "FontFaceDescriptors": {
+              "members": {
+                  "member": {
+                      "variationSettings": null // Gecko-only as of 2022-10
+                  }
+              }
+          },
+          "GetAnimationsOptions": {
+              "members": {
+                  "member": {
+                      "pseudoElement": null // No implementation as of 2024-11
+                  }
+              }
+          },
+          "GPURequestAdapterOptions": {
+              "members": {
+                  "member": {
+                      "featureLevel": null // Blink experimental only as of 2024-11
+                  }
+              }
+          },
+          "GPUShaderModuleDescriptor": {
+              "members": {
+                  "member": {
+                      "compilationHints": null // Blink only as of 2024-11
+                  }
+              }
+          },
+          "GPUTextureViewDescriptor": {
+              "members": {
+                  "member": {
+                      "usage": null // Blink only as of 2024-11
+                  }
+              }
+          },
+          "IntersectionObserverInit": {
+              "members": {
+                  "member": {
+                      "delay": null, // Blink only as of 2024-07
+                      "scrollMargin": null, // Blink only as of 2024-07
+                      "trackVisibility": null // Blink only as of 2024-07
+                  }
+              }
+          },
+          "KeyframeAnimationOptions": {
+              "members": {
+                  "member": {
+                      "rangeEnd": null, // Blink only as of 2023-04
+                      "rangeStart": null // Blink only as of 2023-04
+                  }
+              }
+          },
+          "MediaCapabilitiesDecodingInfo": {
+              "members": {
+                  "member": {
+                      "keySystemAccess": null
+                  }
+              }
+          },
+          "MediaDecodingConfiguration": {
+              "members": {
+                  "member": {
+                      "keySystemConfiguration": null
+                  }
+              }
+          },
+          "MediaMetadataInit": {
+              "members": {
+                  "member": {
+                      "chapterInfo": null // Blink experimental only as of 2024-04
+                  }
+              }
+          },
+          "MediaRecorderOptions": {
+              "members": {
+                  "member": {
+                      "audioBitrateMode": null, // Blink only as of 2023-05
+                      "videoKeyFrameIntervalCount": null, // No implementation as of 2023-05
+                      "videoKeyFrameIntervalDuration": null // No implementation as of 2023-05
+                  }
+              }
+          },
+          "MediaSessionActionDetails": {
+              "members": {
+                  "member": {
+                      "isActivating": null // WebKit only as of 2024-10
+                  }
+              }
+          },
+          "MediaTrackCapabilities": {
+              "members": {
+                  "member": {
+                      // Gecko: Unsupported
+                      // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
+                      // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_capabilities.idl
+                      "latency": null, // Blink only as of 2022-11
+                      "resizeMode": null, // Blink only as of 2022-11
+
+                      // Screen Share extensions
+                      // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                      "cursor": null,
+                      "logicalSurface": null,
+
+                      // Image Capture extensions which is Blink only as of 2022-11
+                      // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+                      "whiteBalanceMode": null,
+                      "exposureMode": null,
+                      "focusMode": null,
+                      "exposureCompensation": null,
+                      "exposureTime": null,
+                      "colorTemperature": null,
+                      "iso": null,
+                      "brightness": null,
+                      "contrast": null,
+                      "saturation": null,
+                      "sharpness": null,
+                      "focusDistance": null,
+                      "pan": null,
+                      "tilt": null,
+                      "zoom": null,
+                      "torch": null
+                  }
+              }
+          },
+          "MediaTrackConstraintSet": {
+              "members": {
+                  "member": {
+                      // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaStreamTrack.webidl
+                      // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackConstraints.idl#28
+                      // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_constraint_set.idl
+                      "latency": null, // Blink only as of 2022-11
+                      "resizeMode": null, // Blink only as of 2022-11
+
+                      // Screen Share extensions
+                      // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                      "cursor": null,
+                      "logicalSurface": null,
+                      "restrictOwnAudio": null,
+                      "suppressLocalAudioPlayback": null,
+
+                      // Image Capture extensions which is Blink only as of 2022-11
+                      // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+                      "whiteBalanceMode": null,
+                      "exposureMode": null,
+                      "focusMode": null,
+                      "pointsOfInterest": null,
+                      "exposureCompensation": null,
+                      "exposureTime": null,
+                      "colorTemperature": null,
+                      "iso": null,
+                      "brightness": null,
+                      "contrast": null,
+                      "saturation": null,
+                      "sharpness": null,
+                      "focusDistance": null,
+                      "pan": null,
+                      "tilt": null,
+                      "zoom": null,
+                      "torch": null
+                  }
+              }
+          },
+          "MediaTrackSettings": {
+              "members": {
+                  "member": {
+                      // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSettings.webidl
+                      // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
+                      // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_settings.idl
+                      "latency": null, // Blink only as of 2022-11
+                      "resizeMode": null, // Blink only as of 2022-11
+
+                      // Screen Share extensions
+                      // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                      "cursor": null, // Blink only as of 2022-11
+                      "logicalSurface": null, // Blink only as of 2022-11
+                      "restrictOwnAudio": null, // Blink only as of 2022-11
+                      "suppressLocalAudioPlayback": null, // Blink only as of 2022-11
+
+                      // Image Capture extensions which are Blink only as of 2022-11
+                      // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+                      "whiteBalanceMode": null,
+                      "exposureMode": null,
+                      "focusMode": null,
+                      "pointsOfInterest": null,
+                      "exposureCompensation": null,
+                      "exposureTime": null,
+                      "colorTemperature": null,
+                      "iso": null,
+                      "brightness": null,
+                      "contrast": null,
+                      "saturation": null,
+                      "sharpness": null,
+                      "focusDistance": null,
+                      "pan": null,
+                      "tilt": null,
+                      "zoom": null,
+                      "torch": null
+                  }
+              }
+          },
+          "MediaTrackSupportedConstraints": {
+              "members": {
+                  "member": {
+                      // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSupportedConstraints.webidl
+                      // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackSupportedConstraints.idl
+                      // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_supported_constraints.idl
+                      "latency": null,
+                      "resizeMode": null,
+
+                      // Screen Share extensions
+                      // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+                      "cursor": null,
+                      "logicalSurface": null,
+                      "restrictOwnAudio": null,
+                      "suppressLocalAudioPlayback": null, // Blink only as of 2022-11
+
+                      // Image Capture extensions which are Blink only as of 2022-11
+                      // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+                      "whiteBalanceMode": null,
+                      "exposureMode": null,
+                      "focusMode": null,
+                      "pointsOfInterest": null,
+                      "exposureCompensation": null,
+                      "exposureTime": null,
+                      "colorTemperature": null,
+                      "iso": null,
+                      "brightness": null,
+                      "contrast": null,
+                      "saturation": null,
+                      "sharpness": null,
+                      "focusDistance": null,
+                      "pan": null,
+                      "tilt": null,
+                      "zoom": null,
+                      "torch": null
+                  }
+              }
+          },
+          "NotificationOptions": {
+              "members": {
+                  "member": {
+                      // All Blink only as of 2023-10
+                      "actions": null,
+                      "image": null,
+                      "renotify": null,
+                      "timestamp": null,
+                      "vibrate": null
+                  }
+              }
+          },
+          "OfflineAudioContextOptions": {
+              "members": {
+                  "member": {
+                      "renderSizeHint": null // No implementation as of 2023-10
+                  }
+              }
+          },
+          "OpusEncoderConfig": {
+              "members": {
+                  "member": {
+                      "application": null, // Blink only as of 2024-09
+                      "signal": null // Blink only as of 2024-09
+                  }
+              }
+          },
+          "PaymentDetailsUpdate": {
+              "members": {
+                  "member": {
+                      "payerErrors": null // WebKit only as of 2024-08
+                  }
+              }
+          },
+          "PaymentOptions": {
+              "members": {
+                  "member": {
+                      "requestBillingAddress": null // WebKit only as of 2024-08
+                  }
+              }
+          },
+          "PaymentValidationErrors": {
+              "members": {
+                  "member": {
+                      "paymentMethod": null // WebKit only as of 2024-08
+                  }
+              }
+          },
+          "PerformanceObserverInit": {
+              "members": {
+                  "member": {
+                      "durationThreshold": null
+                  }
+              }
+          },
+          "PointerEventInit": {
+              "members": {
+                  "member": {
+                      "persistentDeviceId": null // Blink only as of 2024-08
+                  }
+              }
+          },
+          "PopStateEventInit": {
+              "members": {
+                  "member": {
+                      "hasUAVisualTransition": null // Blink only as of 2023-09
+                  }
+              }
+          },
+          "PublicKeyCredentialCreationOptions": {
+              "members": {
+                  "member": {
+                      "attestationFormats": null, // Blink only as of 2024-08
+                      "hints": null // Blink only as of 2024-08
+                  }
+              }
+          },
+          "PublicKeyCredentialCreationOptionsJSON": {
+              "members": {
+                  "member": {
+                      "attestationFormats": null // Gecko only as of 2024-08
+                  }
+              }
+          },
+          "PublicKeyCredentialRequestOptions": {
+              "members": {
+                  "member": {
+                      "hints": null // Blink only as of 2024-08
+                  }
+              }
+          },
+          "ReadableStreamReadResult": null,
+          "RequestInit": {
+              "members": {
+                  "member": {
+                      "adAuctionHeaders": null, // Blink only as of 2023-11
+                      "attributionReporting": null, // Blink only as of 2023-10
+                      "duplex": null, // Blink only as of 2023-09
+                      "privateToken": null, // Blink only as of 2023-09
+                      "sharedStorageWritable": null, // Blink only as of 2023-10
+                      "targetAddressSpace": null // Blink only as of 2023-09
+                  }
+              }
+          },
+          "RTCEncodedAudioFrameMetadata": {
+              "members": {
+                  "member": {
+                      "captureTime": null, // Blink experimental only as of 2025-03
+                      "mimeType": null, // Blink only as of 2025-03
+                      "receiveTime": null, // Blink experimental only as of 2025-03
+                      "rtpTimestamp": null, // Blink only as of 2025-03
+                      "senderCaptureTimeOffset": null // Blink experimental only as of 2025-03
+                  }
+              }
+          },
+          "RTCEncodedVideoFrameMetadata": {
+              "members": {
+                  "member": {
+                      "captureTime": null, // Blink experimental only as of 2025-03
+                      "mimeType": null, // Blink only as of 2025-03
+                      "receiveTime": null, // Blink experimental only as of 2025-03
+                      "rtpTimestamp": null, // Blink only as of 2025-03
+                      "senderCaptureTimeOffset": null // Blink experimental only as of 2025-03
+                  }
+              }
+          },
+          "RTCConfiguration": {
+              "members": {
+                  "member": {
+                      "peerIdentity": null // Gecko only as of 2024-11
+                  }
+              }
+          },
+          "RTCDataChannelInit": {
+              "members": {
+                  "member": {
+                      "priority": null // Blink experimental only as of 2024-11
+                  }
+              }
+          },
+          "RTCInboundRtpStreamStats": {
+              "members": {
+                  "member": {
+                      // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl
+                      // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/RTCStatsReport.idl
+                      // https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/stats/rtcstats_objects.cc
+                      "corruptionMeasurements": null, // Blink only as of 2024-11
+                      "powerEfficientDecoder": null, // Blink only as of 2024-11
+                      "totalCorruptionProbability": null, // Blink only as of 2024-11
+                      "totalSquaredCorruptionProbability": null // Blink only as of 2024-11
+                  }
+              }
+          },
+          "RTCOutboundRtpStreamStats": {
+              "members": {
+                  "member": {
+                      "powerEfficientEncoder": null, // Blink only as of 2024-11
+                      "encoderImplementation": null // Blink only as of 2024-11
+                  }
+              }
+          },
+          "RTCRtpEncodingParameters": {
+              "members": {
+                  "member": {
+                      "codec": null, // Blink only as of 2024-11
+                      "scalabilityMode": null // Blink only as of 2024-11
+                  }
+              }
+          },
+          "ScrollIntoViewOptions": {
+              "members": {
+                  "member": {
+                      "container": null // No implementation as of 2025-02
+                  }
+              }
+          },
+          "Transformer": {
+              "members": {
+                  "member": {
+                      "cancel": null // No implementation as of 2023-10
+                  }
+              }
+          },
+          "UIEventInit": {
+              "members": {
+                  "member": {
+                      "sourceCapabilities": null
+                  }
+              }
+          },
+          "VideoConfiguration": {
+              "members": {
+                  "member": {
+                      "spatialScalability": null
+                  }
+              }
+          },
+          "VideoDecoderConfig": {
+              "members": {
+                  "member": {
+                      "flip": null, // No implementation as of 2025-02
+                      "rotation": null // No implementation as of 2025-02
+                  }
+              }
+          },
+          "VideoEncoderConfig": {
+              "members": {
+                  "member": {
+                      "hevc": null // Blink only as of 2023-03
+                  }
+              }
+          },
+          "VideoEncoderEncodeOptions": {
+              "members": {
+                  "member": {
+                      "av1": null, // Blink only as of 2023-09
+                      "hevc": null, // No implementation as of 2023-09
+                      "vp9": null // Blink only as of 2023-09
+                  }
+              }
+          },
+          "VideoFrameInit": {
+              "members": {
+                  "member": {
+                      "flip": null, // No implementation as of 2024-11
+                      "metadata": null, // No implementation as of 2024-11. Linked to VideoFrame.metadata()
+                      "rotation": null // No implementation as of 2024-11
+                  }
+              }
+          },
+          "VideoFrameBufferInit": {
+              "members": {
+                  "member": {
+                      "flip": null, // No implementation as of 2024-11
+                      "metadata": null, // No implementation as of 2024-04. Linked to VideoFrame.metadata()
+                      "rotation": null, // No implementation as of 2024-11
+                      "transfer": null // Blink only as of 2024-11
+                  }
+              }
+          },
+          "WebGLContextAttributes": {
+              "members": {
+                  "member": {
+                      "xrCompatible": null
+                  }
+              }
+          },
+          "WebTransportOptions": {
+              "members": {
+                  "member": {
+                      "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2024-09
+                      "anticipatedConcurrentIncomingUnidirectionalStreams": null, // No implementation as of 2024-09
+                      "protocols": null // No implementation as of 2024-09
+                  }
+              }
+          },
+          "WebTransportSendStreamOptions": {
+              "members": {
+                  "member": {
+                      "waitUntilAvailable": null // Blink only as of 2024-09
+                  }
+              }
+          }
+      }
   },
   "typedefs": {
-    "typedef": [
-      "ArrayBufferView"
-    ]
+      "typedef": [
+          "ArrayBufferView"
+      ]
   }
 }
