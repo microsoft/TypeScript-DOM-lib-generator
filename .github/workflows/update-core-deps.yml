@@ -16,7 +16,7 @@ jobs:
           submodules: true  # Ensure submodules are checked out
 
       - name: Update submodules
-        working-directory: inputfiles/mdn  # Replace with actual submodule path
+        working-directory: inputfiles/mdn
         run: |
           git pull origin main
       - uses: actions/setup-node@v4
