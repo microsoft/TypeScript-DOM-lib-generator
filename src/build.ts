@@ -13,6 +13,7 @@ import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
+import { generateDescription } from "./build/mdn-comments.js";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -90,33 +91,11 @@ async function emitDom() {
   const inputFolder = new URL("../inputfiles/", import.meta.url);
   const outputFolder = new URL("../generated/", import.meta.url);
 
-  // ${name} will be substituted with the name of an interface
-  const removeVerboseIntroductions: [RegExp, string][] = [
-    [
-      /^(The|A) ${name} interface of (the\s*)*((?:(?!API)[A-Za-z\d\s])+ API)/,
-      "This $3 interface ",
-    ],
-    [
-      /^(The|A) ${name} (interface|event|object) (is|represents|describes|defines)?/,
-      "",
-    ],
-    [
-      /^An object implementing the ${name} interface (is|represents|describes|defines)/,
-      "",
-    ],
-    [/^The ${name} is an interface representing/, ""],
-    [/^This type (is|represents|describes|defines)?/, ""],
-    [
-      /^The (((?:(?!API)[A-Za-z\s])+ API)) ${name} (represents|is|describes|defines)/,
-      "The $1 ",
-    ],
-  ];
-
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
-  const documentationFromMDN = await readInputJSON("mdn/apiDescriptions.json");
+  const documentationFromMDN = await generateDescription();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
   async function readInputJSON(filename: string) {
@@ -159,8 +138,8 @@ async function emitDom() {
     );
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target && !value.startsWith("REDIRECT")) {
-        target.comment = transformVerbosity(key, value);
+      if (target) {
+        target.comment = value;
       }
     }
     return idl;
@@ -178,24 +157,10 @@ async function emitDom() {
     for (const [key, value] of Object.entries(descriptions)) {
       const target = idl.interfaces!.interface[key] || namespaces[key];
       if (target) {
-        target.deprecated = transformVerbosity(key, value);
+        target.deprecated = value;
       }
     }
     return idl;
-  }
-
-  function transformVerbosity(name: string, description: string): string {
-    for (const regTemplate of removeVerboseIntroductions) {
-      const [{ source: template }, replace] = regTemplate;
-
-      const reg = new RegExp(template.replace(/\$\{name\}/g, name) + "\\s*");
-      const product = description.replace(reg, replace);
-      if (product !== description) {
-        return product.charAt(0).toUpperCase() + product.slice(1);
-      }
-    }
-
-    return description;
   }
 
   /// Load the input file
