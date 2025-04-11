@@ -8,7 +8,7 @@ This package contains type definitions which will set up the global environment 
 
 ## Installation 
 
-With TypeScript 4.5+ using [lib replacement](https://github.com/microsoft/TypeScript/pull/45771), you can swap the WebWorker lib with this dependency:
+With TypeScript 4.5+ using [lib replacement](https://www.typescriptlang.org/tsconfig/#libReplacement), you can swap the WebWorker lib with this dependency:
 
 ```sh
 pnpm add @typescript/lib-webworker@npm:@types/webworker --save-dev
