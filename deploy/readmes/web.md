@@ -8,7 +8,7 @@ The APIs inside `@types/web` are [generated from](https://github.com/microsoft/T
 
 ## Installation 
 
-With TypeScript 4.5+ using [lib replacement](https://github.com/microsoft/TypeScript/pull/45771), you can swap the DOM lib with this dependency:
+With TypeScript 4.5+ using [lib replacement](https://www.typescriptlang.org/tsconfig/#libReplacement), you can swap the DOM lib with this dependency:
 
 ```sh
 pnpm add @typescript/lib-dom@npm:@types/web --save-dev
