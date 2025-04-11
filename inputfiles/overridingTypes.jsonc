@@ -1073,6 +1073,17 @@
                     }
                 }
             },
+            "Notification": {
+                "properties": {
+                    "property": {
+                        "maxActions": {
+                            // BCD incorrectly indicates Firefox support
+                            // https://bugzilla.mozilla.org/show_bug.cgi?id=1225110#c31
+                            "exposed": ""
+                        }
+                    }
+                }
+            },
             "IDBObjectStore": {
                 "methods": {
                     "method": {
