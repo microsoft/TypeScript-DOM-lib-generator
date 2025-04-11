@@ -23,4 +23,4 @@ jobs:
         with:
           merge_method: 'squash'
           if_no_maintainers_add_label: 'maintainers'
-          if_no_maintainers_assign: '@orta @sandersn'
+          if_no_maintainers_assign: '@sandersn @jakebailey'
