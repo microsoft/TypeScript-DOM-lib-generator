@@ -9,6 +9,7 @@ import {
   integerTypes,
   baseTypeConversionMap,
   assertUnique,
+  arrayBufferViewTypes,
 } from "./helpers.js";
 import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
 
@@ -135,6 +136,7 @@ function isEventHandler(p: Browser.Property) {
 export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
+  useGenericTypedArrays?: boolean;
 }
 
 export function emitWebIdl(
@@ -387,16 +389,39 @@ export function emitWebIdl(
             : obj.type;
         types.push(...(obj.additionalTypes ?? []).map((t) => ({ type: t })));
 
+        // propagate `any`
         const converted = types.map(convertDomTypeToTsTypeWorker);
-        const isAny = converted.some((t) => t === "any");
-        return isAny ? "any" : converted.join(" | ");
+        if (converted.includes("any")) {
+          return "any";
+        }
+
+        // convert `ArrayBuffer | SharedArrayBuffer` into `ArrayBufferLike` to be pre-ES2017 friendly.
+        const arrayBufferIndex = converted.indexOf("ArrayBuffer");
+        if (arrayBufferIndex >= 0) {
+          const sharedArrayBufferIndex = converted.indexOf("SharedArrayBuffer");
+          if (sharedArrayBufferIndex >= 0) {
+            const maxIndex = Math.max(arrayBufferIndex, sharedArrayBufferIndex);
+            const minIndex = Math.min(arrayBufferIndex, sharedArrayBufferIndex);
+            converted[minIndex] = "ArrayBufferLike"; // replace whichever comes first
+            converted.splice(maxIndex, 1); // drop whichever comes last
+          }
+        }
+        return converted.join(" | ");
       }
     }
 
     const type = convertBaseType();
-    const subtypeString = arrayify(obj.subtype)
+    let subtypeString = arrayify(obj.subtype)
       .map(convertDomTypeToTsType)
       .join(", ");
+
+    if (
+      !subtypeString &&
+      compilerBehavior.useGenericTypedArrays &&
+      arrayBufferViewTypes.has(type)
+    ) {
+      subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
+    }
 
     return type === "Array" && subtypeString
       ? makeArrayType(subtypeString, obj)
