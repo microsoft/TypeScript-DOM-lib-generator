@@ -27472,9 +27472,9 @@ interface WindowEventHandlersEventMap {
     "offline": Event;
     "online": Event;
     "pagehide": PageTransitionEvent;
-    "pagereveal": Event;
+    "pagereveal": PageRevealEvent;
     "pageshow": PageTransitionEvent;
-    "pageswap": Event;
+    "pageswap": PageSwapEvent;
     "popstate": PopStateEvent;
     "rejectionhandled": PromiseRejectionEvent;
     "storage": StorageEvent;
@@ -27508,11 +27508,11 @@ interface WindowEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event) */
     onpagehide: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagereveal_event) */
-    onpagereveal: ((this: WindowEventHandlers, ev: Event) => any) | null;
+    onpagereveal: ((this: WindowEventHandlers, ev: PageRevealEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageshow_event) */
     onpageshow: ((this: WindowEventHandlers, ev: PageTransitionEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageswap_event) */
-    onpageswap: ((this: WindowEventHandlers, ev: Event) => any) | null;
+    onpageswap: ((this: WindowEventHandlers, ev: PageSwapEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/popstate_event) */
     onpopstate: ((this: WindowEventHandlers, ev: PopStateEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/rejectionhandled_event) */
@@ -29558,11 +29558,11 @@ declare var ononline: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagehide_event) */
 declare var onpagehide: ((this: Window, ev: PageTransitionEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pagereveal_event) */
-declare var onpagereveal: ((this: Window, ev: Event) => any) | null;
+declare var onpagereveal: ((this: Window, ev: PageRevealEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageshow_event) */
 declare var onpageshow: ((this: Window, ev: PageTransitionEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/pageswap_event) */
-declare var onpageswap: ((this: Window, ev: Event) => any) | null;
+declare var onpageswap: ((this: Window, ev: PageSwapEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/popstate_event) */
 declare var onpopstate: ((this: Window, ev: PopStateEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/rejectionhandled_event) */
