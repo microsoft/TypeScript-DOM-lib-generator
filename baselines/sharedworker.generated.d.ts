@@ -1920,6 +1920,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
     rotateSelf(rotX?: number, rotY?: number, rotZ?: number): DOMMatrix;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scale3dSelf) */
     scale3dSelf(scale?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scaleSelf) */
     scaleSelf(scaleX?: number, scaleY?: number, scaleZ?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/skewXSelf) */
     skewXSelf(sx?: number): DOMMatrix;
@@ -3721,7 +3722,7 @@ interface ImageData {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/data)
      */
-    readonly data: Uint8ClampedArray;
+    readonly data: ImageDataArray;
     /**
      * Returns the actual dimensions of the data in the ImageData object, in pixels.
      *
@@ -3739,7 +3740,7 @@ interface ImageData {
 declare var ImageData: {
     prototype: ImageData;
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
-    new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
+    new(data: ImageDataArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
 interface ImportMeta {
@@ -9081,6 +9082,7 @@ type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
+type ImageDataArray = Uint8ClampedArray;
 type Int32List = Int32Array | GLint[];
 type MessageEventSource = MessagePort | ServiceWorker;
 type NamedCurve = string;

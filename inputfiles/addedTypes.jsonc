@@ -248,6 +248,14 @@
                             "type": "PageTransitionEvent"
                         },
                         {
+                            "name": "pageswap",
+                            "type": "PageSwapEvent"
+                        },
+                        {
+                            "name": "pagereveal",
+                            "type": "PageRevealEvent"
+                        },
+                        {
                             "name": "popstate",
                             "type": "PopStateEvent"
                         },
