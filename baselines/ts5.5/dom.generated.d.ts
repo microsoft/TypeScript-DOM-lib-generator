@@ -21145,7 +21145,9 @@ declare var SVGFEPointLightElement: {
 interface SVGFESpecularLightingElement extends SVGElement, SVGFilterPrimitiveStandardAttributes {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/in1) */
     readonly in1: SVGAnimatedString;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/kernelUnitLengthX) */
     readonly kernelUnitLengthX: SVGAnimatedNumber;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/kernelUnitLengthY) */
     readonly kernelUnitLengthY: SVGAnimatedNumber;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGFESpecularLightingElement/specularConstant) */
     readonly specularConstant: SVGAnimatedNumber;
@@ -21905,6 +21907,7 @@ interface SVGRadialGradientElement extends SVGGradientElement {
     readonly cx: SVGAnimatedLength;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/cy) */
     readonly cy: SVGAnimatedLength;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/fr) */
     readonly fr: SVGAnimatedLength;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGRadialGradientElement/fx) */
     readonly fx: SVGAnimatedLength;
