@@ -95,7 +95,9 @@ async function getIndexMdContents(
 export async function generateDescription(): Promise<Record<string, string>> {
   const stats = await fs.stat(basePath);
   if (!stats.isDirectory()) {
-    throw new Error("MDN submodule does not exist; try running `git submodule update --init`");
+    throw new Error(
+      "MDN submodule does not exist; try running `git submodule update --init`",
+    );
   }
   try {
     const folders = await getDirectories(basePath);
