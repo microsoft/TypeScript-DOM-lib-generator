@@ -56,7 +56,7 @@ export const packages = [
   },
   {
     name: "@types/webworker",
-    description: "Types for Web Worker",
+    description: "Types for the global scope of Web Workers",
     readme: "./readmes/webworker.md",
     files: [
       { from: "../generated/webworker.generated.d.ts", to: "index.d.ts", index: true },
