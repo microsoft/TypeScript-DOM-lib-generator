@@ -179,7 +179,7 @@ interface UnderlyingSource<R = any> {
 }
 
 /**
- * The **`AbortController`** interface represents a controller object that allows you to abort one or more Web requests as and when desired.
+ * A controller object that allows you to abort one or more DOM requests as and when desired.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController)
  */
@@ -208,7 +208,7 @@ interface AbortSignalEventMap {
 }
 
 /**
- * The **`AbortSignal`** interface represents a signal object that allows you to communicate with an asynchronous operation (such as a fetch request) and abort it if required via an AbortController object.
+ * A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal)
  */
@@ -240,11 +240,7 @@ declare var AbortSignal: {
     any(signals: AbortSignal[]): AbortSignal;
 };
 
-/**
- * The **`AudioWorkletGlobalScope`** interface of the Web Audio API represents a global execution context for user-supplied code, which defines custom AudioWorkletProcessor-derived classes.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope) */
 interface AudioWorkletGlobalScope extends WorkletGlobalScope {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentFrame) */
     readonly currentFrame: number;
@@ -261,11 +257,7 @@ declare var AudioWorkletGlobalScope: {
     new(): AudioWorkletGlobalScope;
 };
 
-/**
- * The **`AudioWorkletProcessor`** interface of the Web Audio API represents an audio processing code behind a custom AudioWorkletNode.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor) */
 interface AudioWorkletProcessor {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor/port) */
     readonly port: MessagePort;
@@ -281,7 +273,7 @@ interface AudioWorkletProcessorImpl extends AudioWorkletProcessor {
 }
 
 /**
- * The **`ByteLengthQueuingStrategy`** interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams.
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy)
  */
@@ -297,11 +289,7 @@ declare var ByteLengthQueuingStrategy: {
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
-/**
- * The **`CompressionStream`** interface of the Compression Streams API is an API for compressing a stream of data.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
@@ -313,7 +301,7 @@ declare var CompressionStream: {
 };
 
 /**
- * The **`CountQueuingStrategy`** interface of the Streams API provides a built-in chunk counting queuing strategy that can be used when constructing streams.
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy)
  */
@@ -329,11 +317,7 @@ declare var CountQueuingStrategy: {
     new(init: QueuingStrategyInit): CountQueuingStrategy;
 };
 
-/**
- * The **`CustomEvent`** interface represents events initialized by an application for any purpose.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent) */
 interface CustomEvent<T = any> extends Event {
     /**
      * Returns any custom data event was created with. Typically used for synthetic events.
@@ -355,7 +339,7 @@ declare var CustomEvent: {
 };
 
 /**
- * The **`DOMException`** interface represents an abnormal event (called an **exception**) that occurs as a result of calling a method or accessing a property of a web API.
+ * An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException)
  */
@@ -427,11 +411,7 @@ declare var DOMException: {
     readonly DATA_CLONE_ERR: 25;
 };
 
-/**
- * The **`DecompressionStream`** interface of the Compression Streams API is an API for decompressing a stream of data.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
@@ -443,7 +423,7 @@ declare var DecompressionStream: {
 };
 
 /**
- * The **`ErrorEvent`** interface represents events providing information related to errors in scripts or in files.
+ * Events providing information related to errors in scripts or in files.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent)
  */
@@ -466,7 +446,7 @@ declare var ErrorEvent: {
 };
 
 /**
- * The **`Event`** interface represents an event which takes place on an `EventTarget`.
+ * An event which takes place in the DOM.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
@@ -603,7 +583,7 @@ interface EventListenerObject {
 }
 
 /**
- * The **`EventTarget`** interface is implemented by objects that can receive events and may have listeners for them.
+ * EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget)
  */
@@ -653,7 +633,7 @@ interface GenericTransformStream {
 }
 
 /**
- * The **`MessageEvent`** interface represents a message received by a target object.
+ * A message received by a target object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent)
  */
@@ -719,7 +699,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
 }
 
 /**
- * The **`MessagePort`** interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other.
+ * This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
@@ -756,11 +736,7 @@ declare var MessagePort: {
     new(): MessagePort;
 };
 
-/**
- * The **`PromiseRejectionEvent`** interface represents events which are sent to the global script context when JavaScript Promises are rejected.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent) */
 interface PromiseRejectionEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise) */
     readonly promise: Promise<any>;
@@ -773,11 +749,7 @@ declare var PromiseRejectionEvent: {
     new(type: string, eventInitDict: PromiseRejectionEventInit): PromiseRejectionEvent;
 };
 
-/**
- * The **`ReadableByteStreamController`** interface of the Streams API represents a controller for a readable byte stream.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController) */
 interface ReadableByteStreamController {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
     readonly byobRequest: ReadableStreamBYOBRequest | null;
@@ -797,7 +769,7 @@ declare var ReadableByteStreamController: {
 };
 
 /**
- * The `ReadableStream` interface of the Streams API represents a readable stream of byte data.
+ * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
@@ -825,11 +797,7 @@ declare var ReadableStream: {
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
 };
 
-/**
- * The `ReadableStreamBYOBReader` interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
@@ -842,11 +810,7 @@ declare var ReadableStreamBYOBReader: {
     new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
 };
 
-/**
- * The **`ReadableStreamBYOBRequest`** interface of the Streams API represents a 'pull request' for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest) */
 interface ReadableStreamBYOBRequest {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view) */
     readonly view: ArrayBufferView | null;
@@ -861,11 +825,7 @@ declare var ReadableStreamBYOBRequest: {
     new(): ReadableStreamBYOBRequest;
 };
 
-/**
- * The **`ReadableStreamDefaultController`** interface of the Streams API represents a controller allowing control of a ReadableStream's state and internal queue.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController) */
 interface ReadableStreamDefaultController<R = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
@@ -882,11 +842,7 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
-/**
- * The **`ReadableStreamDefaultReader`** interface of the Streams API represents a default reader that can be used to read stream data supplied from a network (such as a fetch request).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader) */
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/read) */
     read(): Promise<ReadableStreamReadResult<R>>;
@@ -907,7 +863,7 @@ interface ReadableStreamGenericReader {
 }
 
 /**
- * The **`TextDecoder`** interface represents a decoder for a specific text encoding, such as `UTF-8`, `ISO-8859-2`, `KOI8-R`, `GBK`, etc.
+ * A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder)
  */
@@ -956,11 +912,7 @@ interface TextDecoderCommon {
     readonly ignoreBOM: boolean;
 }
 
-/**
- * The **`TextDecoderStream`** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream) */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     readonly writable: WritableStream<BufferSource>;
@@ -972,7 +924,7 @@ declare var TextDecoderStream: {
 };
 
 /**
- * The **`TextEncoder`** interface takes a stream of code points as input and emits a stream of UTF-8 bytes.
+ * TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder)
  */
@@ -1005,11 +957,7 @@ interface TextEncoderCommon {
     readonly encoding: string;
 }
 
-/**
- * The **`TextEncoderStream`** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
@@ -1020,11 +968,7 @@ declare var TextEncoderStream: {
     new(): TextEncoderStream;
 };
 
-/**
- * The **`TransformStream`** interface of the Streams API represents a concrete implementation of the pipe chain _transform stream_ concept.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream) */
 interface TransformStream<I = any, O = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/readable) */
     readonly readable: ReadableStream<O>;
@@ -1037,11 +981,7 @@ declare var TransformStream: {
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
 };
 
-/**
- * The **`TransformStreamDefaultController`** interface of the Streams API provides methods to manipulate the associated ReadableStream and WritableStream.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
 interface TransformStreamDefaultController<O = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
@@ -1059,7 +999,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * The **`URL`** interface is used to parse, construct, normalize, and encode URL.
+ * The URL interface represents an object providing static methods used for creating object URLs.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
@@ -1102,11 +1042,7 @@ declare var URL: {
     parse(url: string | URL, base?: string | URL): URL | null;
 };
 
-/**
- * The **`URLSearchParams`** interface defines utility methods to work with the query string of a URL.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 interface URLSearchParams {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
     readonly size: number;
@@ -1159,7 +1095,6 @@ declare var URLSearchParams: {
 };
 
 /**
- * The **`WorkletGlobalScope`** interface is an abstract class that specific worklet scope classes inherit from.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
@@ -1173,7 +1108,7 @@ declare var WorkletGlobalScope: {
 };
 
 /**
- * The **`WritableStream`** interface of the Streams API provides a standard abstraction for writing streaming data to a destination, known as a sink.
+ * This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream)
  */
@@ -1194,7 +1129,7 @@ declare var WritableStream: {
 };
 
 /**
- * The **`WritableStreamDefaultController`** interface of the Streams API represents a controller allowing control of a WritableStream's state.
+ * This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
  */
@@ -1211,7 +1146,7 @@ declare var WritableStreamDefaultController: {
 };
 
 /**
- * The **`WritableStreamDefaultWriter`** interface of the Streams API is the object returned by WritableStream.getWriter() and once created locks the writer to the `WritableStream` ensuring that no other streams can write to the underlying sink.
+ * This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter)
  */
@@ -1392,12 +1327,7 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
-/** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
-/**
- * The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console) */
 interface Console {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static) */
     assert(condition?: boolean, ...data: any[]): void;

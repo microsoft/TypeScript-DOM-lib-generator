@@ -728,7 +728,7 @@ interface WriteParams {
 }
 
 /**
- * The **`ANGLE_instanced_arrays`** extension is part of the WebGL API and allows to draw the same object, or groups of similar objects multiple times, if they share the same vertex data, primitive count and type.
+ * The ANGLE_instanced_arrays extension is part of the WebGL API and allows to draw the same object, or groups of similar objects multiple times, if they share the same vertex data, primitive count and type.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ANGLE_instanced_arrays)
  */
@@ -743,7 +743,7 @@ interface ANGLE_instanced_arrays {
 }
 
 /**
- * The **`AbortController`** interface represents a controller object that allows you to abort one or more Web requests as and when desired.
+ * A controller object that allows you to abort one or more DOM requests as and when desired.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController)
  */
@@ -772,7 +772,7 @@ interface AbortSignalEventMap {
 }
 
 /**
- * The **`AbortSignal`** interface represents a signal object that allows you to communicate with an asynchronous operation (such as a fetch request) and abort it if required via an AbortController object.
+ * A signal object that allows you to communicate with a DOM request (such as a Fetch) and abort it if required via an AbortController object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal)
  */
@@ -820,7 +820,7 @@ interface AbstractWorker {
 }
 
 /**
- * The **`Blob`** interface represents a blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
+ * A file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. The File interface is based on Blob, inheriting blob functionality and expanding it to support files on the user's system.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob)
  */
@@ -870,11 +870,7 @@ interface BroadcastChannelEventMap {
     "messageerror": MessageEvent;
 }
 
-/**
- * The **`BroadcastChannel`** interface represents a named channel that any browsing context of a given origin can subscribe to.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BroadcastChannel)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/BroadcastChannel) */
 interface BroadcastChannel extends EventTarget {
     /**
      * Returns the channel name (as passed to the constructor).
@@ -910,7 +906,7 @@ declare var BroadcastChannel: {
 };
 
 /**
- * The **`ByteLengthQueuingStrategy`** interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams.
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy)
  */
@@ -926,11 +922,7 @@ declare var ByteLengthQueuingStrategy: {
     new(init: QueuingStrategyInit): ByteLengthQueuingStrategy;
 };
 
-/**
- * The **`CSSImageValue`** interface of the CSS Typed Object Model API represents values for properties that take an image, for example background-image, list-style-image, or border-image-source.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImageValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImageValue) */
 interface CSSImageValue extends CSSStyleValue {
 }
 
@@ -939,11 +931,7 @@ declare var CSSImageValue: {
     new(): CSSImageValue;
 };
 
-/**
- * The **`CSSKeywordValue`** interface of the CSS Typed Object Model API creates an object to represent CSS keywords and other identifiers.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue) */
 interface CSSKeywordValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue/value) */
     value: string;
@@ -965,11 +953,7 @@ declare var CSSMathClamp: {
     new(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish): CSSMathClamp;
 };
 
-/**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert) */
 interface CSSMathInvert extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert/value) */
     readonly value: CSSNumericValue;
@@ -980,11 +964,7 @@ declare var CSSMathInvert: {
     new(arg: CSSNumberish): CSSMathInvert;
 };
 
-/**
- * The **`CSSMathMax`** interface of the CSS Typed Object Model API represents the CSS max function.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax) */
 interface CSSMathMax extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax/values) */
     readonly values: CSSNumericArray;
@@ -995,11 +975,7 @@ declare var CSSMathMax: {
     new(...args: CSSNumberish[]): CSSMathMax;
 };
 
-/**
- * The **`CSSMathMin`** interface of the CSS Typed Object Model API represents the CSS min function.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin) */
 interface CSSMathMin extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin/values) */
     readonly values: CSSNumericArray;
@@ -1010,11 +986,7 @@ declare var CSSMathMin: {
     new(...args: CSSNumberish[]): CSSMathMin;
 };
 
-/**
- * The **`CSSMathNegate`** interface of the CSS Typed Object Model API negates the value passed into it.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate) */
 interface CSSMathNegate extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate/value) */
     readonly value: CSSNumericValue;
@@ -1025,11 +997,7 @@ declare var CSSMathNegate: {
     new(arg: CSSNumberish): CSSMathNegate;
 };
 
-/**
- * The **`CSSMathProduct`** interface of the CSS Typed Object Model API represents the result obtained by calling CSSNumericValue.add, CSSNumericValue.sub, or CSSNumericValue.toSum on CSSNumericValue.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct) */
 interface CSSMathProduct extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct/values) */
     readonly values: CSSNumericArray;
@@ -1040,11 +1008,7 @@ declare var CSSMathProduct: {
     new(...args: CSSNumberish[]): CSSMathProduct;
 };
 
-/**
- * The **`CSSMathSum`** interface of the CSS Typed Object Model API represents the result obtained by calling CSSNumericValue.add, CSSNumericValue.sub, or CSSNumericValue.toSum on CSSNumericValue.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum) */
 interface CSSMathSum extends CSSMathValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum/values) */
     readonly values: CSSNumericArray;
@@ -1055,11 +1019,7 @@ declare var CSSMathSum: {
     new(...args: CSSNumberish[]): CSSMathSum;
 };
 
-/**
- * The **`CSSMathValue`** interface of the CSS Typed Object Model API a base class for classes representing complex numeric values.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue) */
 interface CSSMathValue extends CSSNumericValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue/operator) */
     readonly operator: CSSMathOperator;
@@ -1070,11 +1030,7 @@ declare var CSSMathValue: {
     new(): CSSMathValue;
 };
 
-/**
- * The **`CSSMatrixComponent`** interface of the CSS Typed Object Model API represents the matrix() and matrix3d() values of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent) */
 interface CSSMatrixComponent extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent/matrix) */
     matrix: DOMMatrix;
@@ -1085,11 +1041,7 @@ declare var CSSMatrixComponent: {
     new(matrix: DOMMatrixReadOnly, options?: CSSMatrixComponentOptions): CSSMatrixComponent;
 };
 
-/**
- * The **`CSSNumericArray`** interface of the CSS Typed Object Model API contains a list of CSSNumericValue objects.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray) */
 interface CSSNumericArray {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericArray/length) */
     readonly length: number;
@@ -1102,11 +1054,7 @@ declare var CSSNumericArray: {
     new(): CSSNumericArray;
 };
 
-/**
- * The **`CSSNumericValue`** interface of the CSS Typed Object Model API represents operations that all numeric values can perform.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue) */
 interface CSSNumericValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/add) */
     add(...values: CSSNumberish[]): CSSNumericValue;
@@ -1135,11 +1083,7 @@ declare var CSSNumericValue: {
     new(): CSSNumericValue;
 };
 
-/**
- * The **`CSSPerspective`** interface of the CSS Typed Object Model API represents the perspective() value of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective) */
 interface CSSPerspective extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective/length) */
     length: CSSPerspectiveValue;
@@ -1150,11 +1094,7 @@ declare var CSSPerspective: {
     new(length: CSSPerspectiveValue): CSSPerspective;
 };
 
-/**
- * The **`CSSRotate`** interface of the CSS Typed Object Model API represents the rotate value of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate) */
 interface CSSRotate extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate/angle) */
     angle: CSSNumericValue;
@@ -1172,11 +1112,7 @@ declare var CSSRotate: {
     new(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue): CSSRotate;
 };
 
-/**
- * The **`CSSScale`** interface of the CSS Typed Object Model API represents the scale() and scale3d() values of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale) */
 interface CSSScale extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale/x) */
     x: CSSNumberish;
@@ -1191,11 +1127,7 @@ declare var CSSScale: {
     new(x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
 };
 
-/**
- * The **`CSSSkew`** interface of the CSS Typed Object Model API is part of the CSSTransformValue interface.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew) */
 interface CSSSkew extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew/ax) */
     ax: CSSNumericValue;
@@ -1208,11 +1140,7 @@ declare var CSSSkew: {
     new(ax: CSSNumericValue, ay: CSSNumericValue): CSSSkew;
 };
 
-/**
- * The **`CSSSkewX`** interface of the CSS Typed Object Model API represents the `skewX()` value of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX) */
 interface CSSSkewX extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX/ax) */
     ax: CSSNumericValue;
@@ -1223,11 +1151,7 @@ declare var CSSSkewX: {
     new(ax: CSSNumericValue): CSSSkewX;
 };
 
-/**
- * The **`CSSSkewY`** interface of the CSS Typed Object Model API represents the `skewY()` value of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY) */
 interface CSSSkewY extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY/ay) */
     ay: CSSNumericValue;
@@ -1238,11 +1162,7 @@ declare var CSSSkewY: {
     new(ay: CSSNumericValue): CSSSkewY;
 };
 
-/**
- * The **`CSSStyleValue`** interface of the CSS Typed Object Model API is the base class of all CSS values accessible through the Typed OM API.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleValue) */
 interface CSSStyleValue {
     toString(): string;
 }
@@ -1252,11 +1172,7 @@ declare var CSSStyleValue: {
     new(): CSSStyleValue;
 };
 
-/**
- * The **`CSSTransformComponent`** interface of the CSS Typed Object Model API is part of the CSSTransformValue interface.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformComponent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformComponent) */
 interface CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformComponent/is2D) */
     is2D: boolean;
@@ -1270,11 +1186,7 @@ declare var CSSTransformComponent: {
     new(): CSSTransformComponent;
 };
 
-/**
- * The **`CSSTransformValue`** interface of the CSS Typed Object Model API represents `transform-list` values as used by the CSS transform property.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformValue) */
 interface CSSTransformValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTransformValue/is2D) */
     readonly is2D: boolean;
@@ -1291,11 +1203,7 @@ declare var CSSTransformValue: {
     new(transforms: CSSTransformComponent[]): CSSTransformValue;
 };
 
-/**
- * The **`CSSTranslate`** interface of the CSS Typed Object Model API represents the translate() value of the individual transform property in CSS.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate) */
 interface CSSTranslate extends CSSTransformComponent {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate/x) */
     x: CSSNumericValue;
@@ -1310,11 +1218,7 @@ declare var CSSTranslate: {
     new(x: CSSNumericValue, y: CSSNumericValue, z?: CSSNumericValue): CSSTranslate;
 };
 
-/**
- * The **`CSSUnitValue`** interface of the CSS Typed Object Model API represents values that contain a single unit type.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue) */
 interface CSSUnitValue extends CSSNumericValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue/unit) */
     readonly unit: string;
@@ -1327,11 +1231,7 @@ declare var CSSUnitValue: {
     new(value: number, unit: string): CSSUnitValue;
 };
 
-/**
- * The **`CSSUnparsedValue`** interface of the CSS Typed Object Model API represents property values that reference custom properties.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue) */
 interface CSSUnparsedValue extends CSSStyleValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnparsedValue/length) */
     readonly length: number;
@@ -1344,11 +1244,7 @@ declare var CSSUnparsedValue: {
     new(members: CSSUnparsedSegment[]): CSSUnparsedValue;
 };
 
-/**
- * The **`CSSVariableReferenceValue`** interface of the CSS Typed Object Model API allows you to create a custom name for a built-in CSS value.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue) */
 interface CSSVariableReferenceValue {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue/fallback) */
     readonly fallback: CSSUnparsedValue | null;
@@ -1362,7 +1258,7 @@ declare var CSSVariableReferenceValue: {
 };
 
 /**
- * The **`Cache`** interface provides a persistent storage mechanism for Request / Response object pairs that are cached in long lived memory.
+ * Provides a storage mechanism for Request / Response object pairs that are cached, for example as part of the ServiceWorker life cycle. Note that the Cache interface is exposed to windowed scopes as well as workers. You don't have to use it in conjunction with service workers, even though it is defined in the service worker spec.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache)
@@ -1390,7 +1286,7 @@ declare var Cache: {
 };
 
 /**
- * The **`CacheStorage`** interface represents the storage for Cache objects.
+ * The storage for Cache objects.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage)
@@ -1468,7 +1364,7 @@ interface CanvasFilters {
 }
 
 /**
- * The **`CanvasGradient`** interface represents an opaque object describing a gradient.
+ * An opaque object describing a gradient. It is returned by the methods CanvasRenderingContext2D.createLinearGradient() or CanvasRenderingContext2D.createRadialGradient().
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasGradient)
  */
@@ -1547,7 +1443,7 @@ interface CanvasPathDrawingStyles {
 }
 
 /**
- * The **`CanvasPattern`** interface represents an opaque object describing a pattern, based on an image, a canvas, or a video, created by the CanvasRenderingContext2D.createPattern() method.
+ * An opaque object describing a pattern, based on an image, a canvas, or a video, created by the CanvasRenderingContext2D.createPattern() method.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasPattern)
  */
@@ -1647,7 +1543,7 @@ interface CanvasTransform {
 }
 
 /**
- * A `CloseEvent` is sent to clients using WebSockets when the connection is closed.
+ * A CloseEvent is sent to clients using WebSockets when the connection is closed. This is delivered to the listener indicated by the WebSocket object's onclose attribute.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent)
  */
@@ -1677,11 +1573,7 @@ declare var CloseEvent: {
     new(type: string, eventInitDict?: CloseEventInit): CloseEvent;
 };
 
-/**
- * The **`CompressionStream`** interface of the Compression Streams API is an API for compressing a stream of data.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream) */
 interface CompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
@@ -1693,7 +1585,7 @@ declare var CompressionStream: {
 };
 
 /**
- * The **`CountQueuingStrategy`** interface of the Streams API provides a built-in chunk counting queuing strategy that can be used when constructing streams.
+ * This Streams API interface provides a built-in byte length queuing strategy that can be used when constructing streams.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy)
  */
@@ -1710,7 +1602,7 @@ declare var CountQueuingStrategy: {
 };
 
 /**
- * The **`Crypto`** interface represents basic cryptography features available in the current context.
+ * Basic cryptography features available in the current context. It allows access to a cryptographically strong random number generator and to cryptographic primitives.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto)
  */
@@ -1737,7 +1629,7 @@ declare var Crypto: {
 };
 
 /**
- * The **`CryptoKey`** interface of the Web Crypto API represents a cryptographic key obtained from one of the SubtleCrypto methods SubtleCrypto.generateKey, SubtleCrypto.deriveKey, SubtleCrypto.importKey, or SubtleCrypto.unwrapKey.
+ * The CryptoKey dictionary of the Web Crypto API represents a cryptographic key.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey)
@@ -1758,11 +1650,7 @@ declare var CryptoKey: {
     new(): CryptoKey;
 };
 
-/**
- * The **`CustomEvent`** interface represents events initialized by an application for any purpose.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent) */
 interface CustomEvent<T = any> extends Event {
     /**
      * Returns any custom data event was created with. Typically used for synthetic events.
@@ -1784,7 +1672,7 @@ declare var CustomEvent: {
 };
 
 /**
- * The **`DOMException`** interface represents an abnormal event (called an **exception**) that occurs as a result of calling a method or accessing a property of a web API.
+ * An abnormal event (called an exception) which occurs as a result of calling a method or accessing a property of a web API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException)
  */
@@ -1856,11 +1744,7 @@ declare var DOMException: {
     readonly DATA_CLONE_ERR: 25;
 };
 
-/**
- * The **`DOMMatrix`** interface represents 4×4 matrices, suitable for 2D and 3D operations including rotation and translation.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix) */
 interface DOMMatrix extends DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix#instance_properties) */
     a: number;
@@ -1920,7 +1804,6 @@ interface DOMMatrix extends DOMMatrixReadOnly {
     rotateSelf(rotX?: number, rotY?: number, rotZ?: number): DOMMatrix;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scale3dSelf) */
     scale3dSelf(scale?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scaleSelf) */
     scaleSelf(scaleX?: number, scaleY?: number, scaleZ?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/skewXSelf) */
     skewXSelf(sx?: number): DOMMatrix;
@@ -1938,11 +1821,7 @@ declare var DOMMatrix: {
     fromMatrix(other?: DOMMatrixInit): DOMMatrix;
 };
 
-/**
- * The **`DOMMatrixReadOnly`** interface represents a read-only 4×4 matrix, suitable for 2D and 3D operations.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly) */
 interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly a: number;
@@ -2036,11 +1915,7 @@ declare var DOMMatrixReadOnly: {
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
 };
 
-/**
- * A **`DOMPoint`** object represents a 2D or 3D point in a coordinate system; it includes values for the coordinates in up to three dimensions, as well as an optional perspective value.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint) */
 interface DOMPoint extends DOMPointReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint/w) */
     w: number;
@@ -2059,11 +1934,7 @@ declare var DOMPoint: {
     fromPoint(other?: DOMPointInit): DOMPoint;
 };
 
-/**
- * The **`DOMPointReadOnly`** interface specifies the coordinate and perspective fields used by DOMPoint to define a 2D or 3D point in a coordinate system.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly) */
 interface DOMPointReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/w) */
     readonly w: number;
@@ -2086,11 +1957,7 @@ declare var DOMPointReadOnly: {
     fromPoint(other?: DOMPointInit): DOMPointReadOnly;
 };
 
-/**
- * A `DOMQuad` is a collection of four `DOMPoint`s defining the corners of an arbitrary quadrilateral.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad) */
 interface DOMQuad {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/p1) */
     readonly p1: DOMPoint;
@@ -2113,11 +1980,7 @@ declare var DOMQuad: {
     fromRect(other?: DOMRectInit): DOMQuad;
 };
 
-/**
- * A **`DOMRect`** describes the size and position of a rectangle.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect) */
 interface DOMRect extends DOMRectReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/height) */
     height: number;
@@ -2136,11 +1999,7 @@ declare var DOMRect: {
     fromRect(other?: DOMRectInit): DOMRect;
 };
 
-/**
- * The **`DOMRectReadOnly`** interface specifies the standard properties (also used by DOMRect) to define a rectangle whose properties are immutable.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly) */
 interface DOMRectReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/bottom) */
     readonly bottom: number;
@@ -2170,7 +2029,7 @@ declare var DOMRectReadOnly: {
 };
 
 /**
- * The **`DOMStringList`** interface is a legacy type returned by some APIs and represents a non-modifiable list of strings (`DOMString`).
+ * A type returned by some APIs which contains a list of DOMString (strings).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMStringList)
  */
@@ -2201,11 +2060,7 @@ declare var DOMStringList: {
     new(): DOMStringList;
 };
 
-/**
- * The **`DecompressionStream`** interface of the Compression Streams API is an API for decompressing a stream of data.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream) */
 interface DecompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<BufferSource>;
@@ -2216,29 +2071,17 @@ declare var DecompressionStream: {
     new(format: CompressionFormat): DecompressionStream;
 };
 
-/**
- * The **`EXT_blend_minmax`** extension is part of the WebGL API and extends blending capabilities by adding two new blend equations: the minimum or maximum color components of the source and destination colors.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_blend_minmax)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_blend_minmax) */
 interface EXT_blend_minmax {
     readonly MIN_EXT: 0x8007;
     readonly MAX_EXT: 0x8008;
 }
 
-/**
- * The **`EXT_color_buffer_float`** extension is part of WebGL and adds the ability to render a variety of floating point formats.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_float)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_float) */
 interface EXT_color_buffer_float {
 }
 
-/**
- * The **`EXT_color_buffer_half_float`** extension is part of the WebGL API and adds the ability to render to 16-bit floating-point color buffers.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_half_float)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_color_buffer_half_float) */
 interface EXT_color_buffer_half_float {
     readonly RGBA16F_EXT: 0x881A;
     readonly RGB16F_EXT: 0x881B;
@@ -2246,27 +2089,19 @@ interface EXT_color_buffer_half_float {
     readonly UNSIGNED_NORMALIZED_EXT: 0x8C17;
 }
 
-/**
- * The WebGL API's `EXT_float_blend` extension allows blending and draw buffers with 32-bit floating-point components.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_float_blend)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_float_blend) */
 interface EXT_float_blend {
 }
 
 /**
- * The **`EXT_frag_depth`** extension is part of the WebGL API and enables to set a depth value of a fragment from within the fragment shader.
+ * The EXT_frag_depth extension is part of the WebGL API and enables to set a depth value of a fragment from within the fragment shader.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_frag_depth)
  */
 interface EXT_frag_depth {
 }
 
-/**
- * The **`EXT_sRGB`** extension is part of the WebGL API and adds sRGB support to textures and framebuffer objects.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_sRGB)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_sRGB) */
 interface EXT_sRGB {
     readonly SRGB_EXT: 0x8C40;
     readonly SRGB_ALPHA_EXT: 0x8C42;
@@ -2274,19 +2109,11 @@ interface EXT_sRGB {
     readonly FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING_EXT: 0x8210;
 }
 
-/**
- * The **`EXT_shader_texture_lod`** extension is part of the WebGL API and adds additional texture functions to the OpenGL ES Shading Language which provide the shader writer with explicit control of LOD (Level of detail).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_shader_texture_lod)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_shader_texture_lod) */
 interface EXT_shader_texture_lod {
 }
 
-/**
- * The `EXT_texture_compression_bptc` extension is part of the WebGL API and exposes 4 BPTC compressed texture formats.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_bptc)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_bptc) */
 interface EXT_texture_compression_bptc {
     readonly COMPRESSED_RGBA_BPTC_UNORM_EXT: 0x8E8C;
     readonly COMPRESSED_SRGB_ALPHA_BPTC_UNORM_EXT: 0x8E8D;
@@ -2294,11 +2121,7 @@ interface EXT_texture_compression_bptc {
     readonly COMPRESSED_RGB_BPTC_UNSIGNED_FLOAT_EXT: 0x8E8F;
 }
 
-/**
- * The `EXT_texture_compression_rgtc` extension is part of the WebGL API and exposes 4 RGTC compressed texture formats.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_rgtc)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_compression_rgtc) */
 interface EXT_texture_compression_rgtc {
     readonly COMPRESSED_RED_RGTC1_EXT: 0x8DBB;
     readonly COMPRESSED_SIGNED_RED_RGTC1_EXT: 0x8DBC;
@@ -2307,7 +2130,7 @@ interface EXT_texture_compression_rgtc {
 }
 
 /**
- * The **`EXT_texture_filter_anisotropic`** extension is part of the WebGL API and exposes two constants for anisotropic filtering (AF).
+ * The EXT_texture_filter_anisotropic extension is part of the WebGL API and exposes two constants for anisotropic filtering (AF).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_filter_anisotropic)
  */
@@ -2316,11 +2139,7 @@ interface EXT_texture_filter_anisotropic {
     readonly MAX_TEXTURE_MAX_ANISOTROPY_EXT: 0x84FF;
 }
 
-/**
- * The **`EXT_texture_norm16`** extension is part of the WebGL API and provides a set of new 16-bit signed normalized and unsigned normalized formats (fixed-point texture, renderbuffer and texture buffer).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_norm16)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EXT_texture_norm16) */
 interface EXT_texture_norm16 {
     readonly R16_EXT: 0x822A;
     readonly RG16_EXT: 0x822C;
@@ -2333,7 +2152,7 @@ interface EXT_texture_norm16 {
 }
 
 /**
- * The **`ErrorEvent`** interface represents events providing information related to errors in scripts or in files.
+ * Events providing information related to errors in scripts or in files.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent)
  */
@@ -2356,7 +2175,7 @@ declare var ErrorEvent: {
 };
 
 /**
- * The **`Event`** interface represents an event which takes place on an `EventTarget`.
+ * An event which takes place in the DOM.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
@@ -2498,11 +2317,7 @@ interface EventSourceEventMap {
     "open": Event;
 }
 
-/**
- * The **`EventSource`** interface is web content's interface to server-sent events.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource) */
 interface EventSource extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventSource/error_event) */
     onerror: ((this: EventSource, ev: Event) => any) | null;
@@ -2554,7 +2369,7 @@ declare var EventSource: {
 };
 
 /**
- * The **`EventTarget`** interface is implemented by objects that can receive events and may have listeners for them.
+ * EventTarget is a DOM interface implemented by objects that can receive events and may have listeners for them.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget)
  */
@@ -2597,7 +2412,7 @@ declare var EventTarget: {
 };
 
 /**
- * The **`File`** interface provides information about files and allows JavaScript in a web page to access their content.
+ * Provides information about files and allows JavaScript in a web page to access their content.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/File)
  */
@@ -2616,7 +2431,7 @@ declare var File: {
 };
 
 /**
- * The **`FileList`** interface represents an object of this type returned by the `files` property of the HTML input element; this lets you access the list of files selected with the `<input type='file'>` element.
+ * An object of this type is returned by the files property of the HTML <input> element; this lets you access the list of files selected with the <input type="file"> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileList)
  */
@@ -2643,7 +2458,7 @@ interface FileReaderEventMap {
 }
 
 /**
- * The **`FileReader`** interface lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read.
+ * Lets web applications asynchronously read the contents of files (or raw data buffers) stored on the user's computer, using File or Blob objects to specify the file or data to read.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReader)
  */
@@ -2698,7 +2513,7 @@ declare var FileReader: {
 };
 
 /**
- * The **`FileReaderSync`** interface allows to read File or Blob objects synchronously.
+ * Allows to read File or Blob objects in a synchronous way.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync)
  */
@@ -2723,7 +2538,6 @@ declare var FileReaderSync: {
 };
 
 /**
- * The **`FileSystemDirectoryHandle`** interface of the File System API provides a handle to a file system directory.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryHandle)
@@ -2746,7 +2560,6 @@ declare var FileSystemDirectoryHandle: {
 };
 
 /**
- * The **`FileSystemFileHandle`** interface of the File System API represents a handle to a file system entry.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle)
@@ -2765,7 +2578,6 @@ declare var FileSystemFileHandle: {
 };
 
 /**
- * The **`FileSystemHandle`** interface of the File System API is an object which represents a file or directory entry.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemHandle)
@@ -2785,7 +2597,6 @@ declare var FileSystemHandle: {
 };
 
 /**
- * The **`FileSystemWritableFileStream`** interface of the File System API is a WritableStream object with additional convenience methods, which operates on a single file on disk.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemWritableFileStream)
@@ -2804,11 +2615,7 @@ declare var FileSystemWritableFileStream: {
     new(): FileSystemWritableFileStream;
 };
 
-/**
- * The **`FontFace`** interface of the CSS Font Loading API represents a single usable font face.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace) */
 interface FontFace {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/ascentOverride) */
     ascentOverride: string;
@@ -2849,11 +2656,7 @@ interface FontFaceSetEventMap {
     "loadingerror": FontFaceSetLoadEvent;
 }
 
-/**
- * The **`FontFaceSet`** interface of the CSS Font Loading API manages the loading of font-faces and querying of their download status.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet) */
 interface FontFaceSet extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/loading_event) */
     onloading: ((this: FontFaceSet, ev: FontFaceSetLoadEvent) => any) | null;
@@ -2881,11 +2684,7 @@ declare var FontFaceSet: {
     new(): FontFaceSet;
 };
 
-/**
- * The **`FontFaceSetLoadEvent`** interface of the CSS Font Loading API represents events fired at a FontFaceSet after it starts loading font faces.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent) */
 interface FontFaceSetLoadEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent/fontfaces) */
     readonly fontfaces: ReadonlyArray<FontFace>;
@@ -2902,7 +2701,7 @@ interface FontFaceSource {
 }
 
 /**
- * The **`FormData`** interface provides a way to construct a set of key/value pairs representing form fields and their values, which can be sent using the Window/fetch, XMLHttpRequest.send() or navigator.sendBeacon() methods.
+ * Provides a way to easily construct a set of key/value pairs representing form fields and their values, which can then be easily sent using the XMLHttpRequest.send() method. It uses the same format a form would use if the encoding type were set to "multipart/form-data".
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData)
  */
@@ -2932,7 +2731,6 @@ declare var FormData: {
 };
 
 /**
- * The **`GPUError`** interface of the WebGPU API is the base interface for errors surfaced by GPUDevice.popErrorScope and the GPUDevice.uncapturederror_event event.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUError)
@@ -2950,7 +2748,7 @@ interface GenericTransformStream {
 }
 
 /**
- * The **`Headers`** interface of the Fetch API allows you to perform various actions on HTTP request and response headers.
+ * This Fetch API interface allows you to perform various actions on HTTP request and response headers. These actions include retrieving, setting, adding to, and removing. A Headers object has an associated header list, which is initially empty and consists of zero or more name and value pairs.  You can add to this using methods like append() (see Examples.) In all methods of this interface, header names are matched by case-insensitive byte sequence.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers)
  */
@@ -2976,7 +2774,7 @@ declare var Headers: {
 };
 
 /**
- * The **`IDBCursor`** interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database.
+ * This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursor)
  */
@@ -3051,7 +2849,7 @@ declare var IDBCursor: {
 };
 
 /**
- * The **`IDBCursorWithValue`** interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database.
+ * This IndexedDB API interface represents a cursor for traversing or iterating over multiple records in a database. It is the same as the IDBCursor, except that it includes the value property.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursorWithValue)
  */
@@ -3077,7 +2875,7 @@ interface IDBDatabaseEventMap {
 }
 
 /**
- * The **`IDBDatabase`** interface of the IndexedDB API provides a connection to a database; you can use an `IDBDatabase` object to open a transaction on your database then create, manipulate, and delete objects (data) in that database.
+ * This IndexedDB API interface provides a connection to a database; you can use an IDBDatabase object to open a transaction on your database then create, manipulate, and delete objects (data) in that database. The interface provides the only way to get and manage versions of the database.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase)
  */
@@ -3146,7 +2944,7 @@ declare var IDBDatabase: {
 };
 
 /**
- * The **`IDBFactory`** interface of the IndexedDB API lets applications asynchronously access the indexed databases.
+ * In the following code snippet, we make a request to open a database, and include handlers for the success and error cases. For a full working example, see our To-do Notifications app (view example live.)
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBFactory)
  */
@@ -3181,7 +2979,7 @@ declare var IDBFactory: {
 };
 
 /**
- * `IDBIndex` interface of the IndexedDB API provides asynchronous access to an index in a database.
+ * IDBIndex interface of the IndexedDB API provides asynchronous access to an index in a database. An index is a kind of object store for looking up records in another object store, called the referenced object store. You use this interface to retrieve data.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex)
  */
@@ -3268,7 +3066,7 @@ declare var IDBIndex: {
 };
 
 /**
- * The **`IDBKeyRange`** interface of the IndexedDB API represents a continuous interval over some data type that is used for keys.
+ * A key range can be a single value or a range with upper and lower bounds or endpoints. If the key range has both upper and lower bounds, then it is bounded; if it has no bounds, it is unbounded. A bounded key range can either be open (the endpoints are excluded) or closed (the endpoints are included). To retrieve all keys within a certain range, you can use the following code constructs:
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange)
  */
@@ -3335,7 +3133,7 @@ declare var IDBKeyRange: {
 };
 
 /**
- * The **`IDBObjectStore`** interface of the IndexedDB API represents an object store in a database.
+ * This example shows a variety of different uses of object stores, from updating the data structure with IDBObjectStore.createIndex inside an onupgradeneeded function, to adding a new item to our object store with IDBObjectStore.add. For a full working example, see our To-do Notifications app (view example live.)
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore)
  */
@@ -3497,7 +3295,7 @@ interface IDBOpenDBRequestEventMap extends IDBRequestEventMap {
 }
 
 /**
- * The **`IDBOpenDBRequest`** interface of the IndexedDB API provides access to the results of requests to open or delete databases (performed using IDBFactory.open and IDBFactory.deleteDatabase), using specific event handler attributes.
+ * Also inherits methods from its parents IDBRequest and EventTarget.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBOpenDBRequest)
  */
@@ -3523,7 +3321,7 @@ interface IDBRequestEventMap {
 }
 
 /**
- * The **`IDBRequest`** interface of the IndexedDB API provides access to results of asynchronous requests to databases and database objects using event handler attributes.
+ * The request object does not initially contain any information about the result of the operation, but once information becomes available, an event is fired on the request, and the information becomes available through the properties of the IDBRequest instance.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest)
  */
@@ -3579,11 +3377,7 @@ interface IDBTransactionEventMap {
     "error": Event;
 }
 
-/**
- * The **`IDBTransaction`** interface of the IndexedDB API provides a static, asynchronous transaction on a database using event handler attributes.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction) */
 interface IDBTransaction extends EventTarget {
     /**
      * Returns the transaction's connection.
@@ -3643,7 +3437,7 @@ declare var IDBTransaction: {
 };
 
 /**
- * The **`IDBVersionChangeEvent`** interface of the IndexedDB API indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.upgradeneeded_event event handler function.
+ * This IndexedDB API interface indicates that the version of the database has changed, as the result of an IDBOpenDBRequest.onupgradeneeded event handler function.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBVersionChangeEvent)
  */
@@ -3659,11 +3453,7 @@ declare var IDBVersionChangeEvent: {
     new(type: string, eventInitDict?: IDBVersionChangeEventInit): IDBVersionChangeEvent;
 };
 
-/**
- * The **`ImageBitmap`** interface represents a bitmap image which can be drawn to a canvas without undue latency.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap) */
 interface ImageBitmap {
     /**
      * Returns the intrinsic height of the image, in CSS pixels.
@@ -3690,11 +3480,7 @@ declare var ImageBitmap: {
     new(): ImageBitmap;
 };
 
-/**
- * The **`ImageBitmapRenderingContext`** interface is a canvas rendering context that provides the functionality to replace the canvas's contents with the given ImageBitmap.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext) */
 interface ImageBitmapRenderingContext {
     /**
      * Transfers the underlying bitmap data from imageBitmap to context, and the bitmap becomes the contents of the canvas element to which context is bound.
@@ -3710,7 +3496,7 @@ declare var ImageBitmapRenderingContext: {
 };
 
 /**
- * The **`ImageData`** interface represents the underlying pixel data of an area of a canvas element.
+ * The underlying pixel data of an area of a <canvas> element. It is created using the ImageData() constructor or creator methods on the CanvasRenderingContext2D object associated with a canvas: createImageData() and getImageData(). It can also be used to set a part of the canvas by using putImageData().
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData)
  */
@@ -3722,7 +3508,7 @@ interface ImageData {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/data)
      */
-    readonly data: ImageDataArray;
+    readonly data: Uint8ClampedArray;
     /**
      * Returns the actual dimensions of the data in the ImageData object, in pixels.
      *
@@ -3740,7 +3526,7 @@ interface ImageData {
 declare var ImageData: {
     prototype: ImageData;
     new(sw: number, sh: number, settings?: ImageDataSettings): ImageData;
-    new(data: ImageDataArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
+    new(data: Uint8ClampedArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
 interface ImportMeta {
@@ -3748,17 +3534,12 @@ interface ImportMeta {
     resolve(specifier: string): string;
 }
 
-/**
- * The **`KHR_parallel_shader_compile`** extension is part of the WebGL API and enables a non-blocking poll operation, so that compile/link status availability (`COMPLETION_STATUS_KHR`) can be queried without potentially incurring stalls.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile) */
 interface KHR_parallel_shader_compile {
     readonly COMPLETION_STATUS_KHR: 0x91B1;
 }
 
 /**
- * The **`Lock`** interface of the Web Locks API provides the name and mode of a lock.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Lock)
@@ -3776,7 +3557,6 @@ declare var Lock: {
 };
 
 /**
- * The **`LockManager`** interface of the Web Locks API provides methods for requesting a new Lock object and querying for an existing `Lock` object.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager)
@@ -3794,11 +3574,7 @@ declare var LockManager: {
     new(): LockManager;
 };
 
-/**
- * The **`MediaCapabilities`** interface of the Media Capabilities API provides information about the decoding abilities of the device, system and browser.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities) */
 interface MediaCapabilities {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities/decodingInfo) */
     decodingInfo(configuration: MediaDecodingConfiguration): Promise<MediaCapabilitiesDecodingInfo>;
@@ -3812,7 +3588,7 @@ declare var MediaCapabilities: {
 };
 
 /**
- * The **`MessageChannel`** interface of the Channel Messaging API allows us to create a new message channel and send data through it via its two MessagePort properties.
+ * This Channel Messaging API interface allows us to create a new message channel and send data through it via its two MessagePort properties.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageChannel)
  */
@@ -3837,7 +3613,7 @@ declare var MessageChannel: {
 };
 
 /**
- * The **`MessageEvent`** interface represents a message received by a target object.
+ * A message received by a target object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent)
  */
@@ -3903,7 +3679,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
 }
 
 /**
- * The **`MessagePort`** interface of the Channel Messaging API represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other.
+ * This Channel Messaging API interface represents one of the two ports of a MessageChannel, allowing messages to be sent from one port and listening out for them arriving at the other.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
@@ -3941,7 +3717,6 @@ declare var MessagePort: {
 };
 
 /**
- * The **`NavigationPreloadManager`** interface of the Service Worker API provides methods for managing the preloading of resources in parallel with service worker bootup.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPreloadManager)
@@ -4042,7 +3817,7 @@ interface NotificationEventMap {
 }
 
 /**
- * The **`Notification`** interface of the Notifications API is used to configure and display desktop notifications to the user.
+ * This Notifications API interface is used to configure and display desktop notifications to the user.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification)
  */
@@ -4090,11 +3865,7 @@ declare var Notification: {
     readonly permission: NotificationPermission;
 };
 
-/**
- * The **`OES_draw_buffers_indexed`** extension is part of the WebGL API and enables the use of different blend options when writing to multiple color buffers simultaneously.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed) */
 interface OES_draw_buffers_indexed {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_draw_buffers_indexed/blendEquationSeparateiOES) */
     blendEquationSeparateiOES(buf: GLuint, modeRGB: GLenum, modeAlpha: GLenum): void;
@@ -4113,23 +3884,19 @@ interface OES_draw_buffers_indexed {
 }
 
 /**
- * The **`OES_element_index_uint`** extension is part of the WebGL API and adds support for `gl.UNSIGNED_INT` types to WebGLRenderingContext.drawElements().
+ * The OES_element_index_uint extension is part of the WebGL API and adds support for gl.UNSIGNED_INT types to WebGLRenderingContext.drawElements().
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_element_index_uint)
  */
 interface OES_element_index_uint {
 }
 
-/**
- * The `OES_fbo_render_mipmap` extension is part of the WebGL API and makes it possible to attach any level of a texture to a framebuffer object.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_fbo_render_mipmap)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_fbo_render_mipmap) */
 interface OES_fbo_render_mipmap {
 }
 
 /**
- * The **`OES_standard_derivatives`** extension is part of the WebGL API and adds the GLSL derivative functions `dFdx`, `dFdy`, and `fwidth`.
+ * The OES_standard_derivatives extension is part of the WebGL API and adds the GLSL derivative functions dFdx, dFdy, and fwidth.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_standard_derivatives)
  */
@@ -4138,7 +3905,7 @@ interface OES_standard_derivatives {
 }
 
 /**
- * The **`OES_texture_float`** extension is part of the WebGL API and exposes floating-point pixel types for textures.
+ * The OES_texture_float extension is part of the WebGL API and exposes floating-point pixel types for textures.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float)
  */
@@ -4146,7 +3913,7 @@ interface OES_texture_float {
 }
 
 /**
- * The **`OES_texture_float_linear`** extension is part of the WebGL API and allows linear filtering with floating-point pixel types for textures.
+ * The OES_texture_float_linear extension is part of the WebGL API and allows linear filtering with floating-point pixel types for textures.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_float_linear)
  */
@@ -4154,7 +3921,7 @@ interface OES_texture_float_linear {
 }
 
 /**
- * The **`OES_texture_half_float`** extension is part of the WebGL API and adds texture formats with 16- (aka half float) and 32-bit floating-point components.
+ * The OES_texture_half_float extension is part of the WebGL API and adds texture formats with 16- (aka half float) and 32-bit floating-point components.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float)
  */
@@ -4163,18 +3930,14 @@ interface OES_texture_half_float {
 }
 
 /**
- * The **`OES_texture_half_float_linear`** extension is part of the WebGL API and allows linear filtering with half floating-point pixel types for textures.
+ * The OES_texture_half_float_linear extension is part of the WebGL API and allows linear filtering with half floating-point pixel types for textures.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_texture_half_float_linear)
  */
 interface OES_texture_half_float_linear {
 }
 
-/**
- * The **OES_vertex_array_object** extension is part of the WebGL API and provides vertex array objects (VAOs) which encapsulate vertex array states.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object) */
 interface OES_vertex_array_object {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/bindVertexArrayOES) */
     bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
@@ -4187,11 +3950,7 @@ interface OES_vertex_array_object {
     readonly VERTEX_ARRAY_BINDING_OES: 0x85B5;
 }
 
-/**
- * The `OVR_multiview2` extension is part of the WebGL API and adds support for rendering into multiple views simultaneously.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2) */
 interface OVR_multiview2 {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2/framebufferTextureMultiviewOVR) */
     framebufferTextureMultiviewOVR(target: GLenum, attachment: GLenum, texture: WebGLTexture | null, level: GLint, baseViewIndex: GLint, numViews: GLsizei): void;
@@ -4206,11 +3965,7 @@ interface OffscreenCanvasEventMap {
     "contextrestored": Event;
 }
 
-/**
- * When using the canvas element or the Canvas API, rendering, animation, and user interaction usually happen on the main execution thread of a web application.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas) */
 interface OffscreenCanvas extends EventTarget {
     /**
      * These attributes return the dimensions of the OffscreenCanvas object's bitmap.
@@ -4271,11 +4026,7 @@ declare var OffscreenCanvas: {
     new(width: number, height: number): OffscreenCanvas;
 };
 
-/**
- * The **`OffscreenCanvasRenderingContext2D`** interface is a CanvasRenderingContext2D rendering context for drawing to the bitmap of an `OffscreenCanvas` object.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvasRenderingContext2D) */
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas) */
     readonly canvas: OffscreenCanvas;
@@ -4287,7 +4038,7 @@ declare var OffscreenCanvasRenderingContext2D: {
 };
 
 /**
- * The **`Path2D`** interface of the Canvas 2D API is used to declare a path that can then be used on a CanvasRenderingContext2D object.
+ * This Canvas 2D API interface is used to declare a path that can then be used on a CanvasRenderingContext2D object. The path methods of the CanvasRenderingContext2D interface are also present on this interface, which gives you the convenience of being able to retain and replay your path whenever desired.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Path2D)
  */
@@ -4310,7 +4061,7 @@ interface PerformanceEventMap {
 }
 
 /**
- * The **`Performance`** interface provides access to performance-related information for the current page.
+ * Provides access to performance-related information for the current page. It's part of the High Resolution Time API, but is enhanced by the Performance Timeline API, the Navigation Timing API, the User Timing API, and the Resource Timing API.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance)
  */
@@ -4353,7 +4104,7 @@ declare var Performance: {
 };
 
 /**
- * The **`PerformanceEntry`** object encapsulates a single performance metric that is part of the browser's performance timeline.
+ * Encapsulates a single performance metric that is part of the performance timeline. A performance entry can be directly created by making a performance mark or measure (for example by calling the mark() method) at an explicit point in an application. Performance entries are also created in indirect ways such as loading a resource (such as an image).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry)
  */
@@ -4376,7 +4127,7 @@ declare var PerformanceEntry: {
 };
 
 /**
- * **`PerformanceMark`** is an interface for PerformanceEntry objects with an PerformanceEntry.entryType of `'mark'`.
+ * PerformanceMark is an abstract interface for PerformanceEntry objects with an entryType of "mark". Entries of this type are created by calling performance.mark() to add a named DOMHighResTimeStamp (the mark) to the browser's performance timeline.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark)
  */
@@ -4391,7 +4142,7 @@ declare var PerformanceMark: {
 };
 
 /**
- * **`PerformanceMeasure`** is an _abstract_ interface for PerformanceEntry objects with an PerformanceEntry.entryType of `'measure'`.
+ * PerformanceMeasure is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure)
  */
@@ -4405,11 +4156,7 @@ declare var PerformanceMeasure: {
     new(): PerformanceMeasure;
 };
 
-/**
- * The **`PerformanceObserver`** interface is used to observe performance measurement events and be notified of new PerformanceEntry as they are recorded in the browser's _performance timeline_.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver) */
 interface PerformanceObserver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/disconnect) */
     disconnect(): void;
@@ -4426,11 +4173,7 @@ declare var PerformanceObserver: {
     readonly supportedEntryTypes: ReadonlyArray<string>;
 };
 
-/**
- * The **`PerformanceObserverEntryList`** interface is a list of PerformanceEntry that were explicitly observed via the PerformanceObserver.observe method.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList) */
 interface PerformanceObserverEntryList {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList/getEntries) */
     getEntries(): PerformanceEntryList;
@@ -4446,7 +4189,7 @@ declare var PerformanceObserverEntryList: {
 };
 
 /**
- * The **`PerformanceResourceTiming`** interface enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources.
+ * Enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources. An application can use the timing metrics to determine, for example, the length of time it takes to fetch a specific resource, such as an XMLHttpRequest, <SVG>, image, or script.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming)
  */
@@ -4498,11 +4241,7 @@ declare var PerformanceResourceTiming: {
     new(): PerformanceResourceTiming;
 };
 
-/**
- * The **`PerformanceServerTiming`** interface surfaces server metrics that are sent with the response in the Server-Timing HTTP header.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming) */
 interface PerformanceServerTiming {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/description) */
     readonly description: string;
@@ -4523,11 +4262,7 @@ interface PermissionStatusEventMap {
     "change": Event;
 }
 
-/**
- * The **`PermissionStatus`** interface of the Permissions API provides the state of an object and an event handler for monitoring changes to said state.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus) */
 interface PermissionStatus extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PermissionStatus/name) */
     readonly name: string;
@@ -4546,11 +4281,7 @@ declare var PermissionStatus: {
     new(): PermissionStatus;
 };
 
-/**
- * The **`Permissions`** interface of the Permissions API provides the core Permission API functionality, such as methods for querying and revoking permissions - Permissions.query - : Returns the user permission status for a given API.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions) */
 interface Permissions {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions/query) */
     query(permissionDesc: PermissionDescriptor): Promise<PermissionStatus>;
@@ -4562,7 +4293,7 @@ declare var Permissions: {
 };
 
 /**
- * The **`ProgressEvent`** interface represents events measuring progress of an underlying process, like an HTTP request (for an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
+ * Events measuring progress of an underlying process, like an HTTP request (for an XMLHttpRequest, or the loading of the underlying resource of an <img>, <audio>, <video>, <style> or <link>).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent)
  */
@@ -4581,11 +4312,7 @@ declare var ProgressEvent: {
     new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
 };
 
-/**
- * The **`PromiseRejectionEvent`** interface represents events which are sent to the global script context when JavaScript Promises are rejected.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent) */
 interface PromiseRejectionEvent extends Event {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise) */
     readonly promise: Promise<any>;
@@ -4599,7 +4326,7 @@ declare var PromiseRejectionEvent: {
 };
 
 /**
- * The **`PushManager`** interface of the Push API provides a way to receive notifications from third-party servers as well as request URLs for push notifications.
+ * This Push API interface provides a way to receive notifications from third-party servers as well as request URLs for push notifications.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushManager)
@@ -4621,7 +4348,7 @@ declare var PushManager: {
 };
 
 /**
- * The `PushSubscription` interface of the Push API provides a subscription's URL endpoint along with the public key and secrets that should be used for encrypting push messages to this subscription.
+ * This Push API interface provides a subcription's URL endpoint and allows unsubscription from a push service.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription)
@@ -4647,7 +4374,6 @@ declare var PushSubscription: {
 };
 
 /**
- * The **`PushSubscriptionOptions`** interface of the Push API represents the options associated with a push subscription.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscriptionOptions)
@@ -4664,11 +4390,7 @@ declare var PushSubscriptionOptions: {
     new(): PushSubscriptionOptions;
 };
 
-/**
- * The **`ReadableByteStreamController`** interface of the Streams API represents a controller for a readable byte stream.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController) */
 interface ReadableByteStreamController {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest) */
     readonly byobRequest: ReadableStreamBYOBRequest | null;
@@ -4688,7 +4410,7 @@ declare var ReadableByteStreamController: {
 };
 
 /**
- * The `ReadableStream` interface of the Streams API represents a readable stream of byte data.
+ * This Streams API interface represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
@@ -4716,11 +4438,7 @@ declare var ReadableStream: {
     new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStream<R>;
 };
 
-/**
- * The `ReadableStreamBYOBReader` interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader) */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read) */
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
@@ -4733,11 +4451,7 @@ declare var ReadableStreamBYOBReader: {
     new(stream: ReadableStream<Uint8Array>): ReadableStreamBYOBReader;
 };
 
-/**
- * The **`ReadableStreamBYOBRequest`** interface of the Streams API represents a 'pull request' for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest) */
 interface ReadableStreamBYOBRequest {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view) */
     readonly view: ArrayBufferView | null;
@@ -4752,11 +4466,7 @@ declare var ReadableStreamBYOBRequest: {
     new(): ReadableStreamBYOBRequest;
 };
 
-/**
- * The **`ReadableStreamDefaultController`** interface of the Streams API represents a controller allowing control of a ReadableStream's state and internal queue.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController) */
 interface ReadableStreamDefaultController<R = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
@@ -4773,11 +4483,7 @@ declare var ReadableStreamDefaultController: {
     new(): ReadableStreamDefaultController;
 };
 
-/**
- * The **`ReadableStreamDefaultReader`** interface of the Streams API represents a default reader that can be used to read stream data supplied from a network (such as a fetch request).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader) */
 interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericReader {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/read) */
     read(): Promise<ReadableStreamReadResult<R>>;
@@ -4797,11 +4503,7 @@ interface ReadableStreamGenericReader {
     cancel(reason?: any): Promise<void>;
 }
 
-/**
- * The `Report` interface of the Reporting API represents a single report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report) */
 interface Report {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/body) */
     readonly body: ReportBody | null;
@@ -4817,11 +4519,7 @@ declare var Report: {
     new(): Report;
 };
 
-/**
- * The **`ReportBody`** interface of the Reporting API represents the body of a report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody) */
 interface ReportBody {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody/toJSON) */
     toJSON(): any;
@@ -4832,11 +4530,7 @@ declare var ReportBody: {
     new(): ReportBody;
 };
 
-/**
- * The `ReportingObserver` interface of the Reporting API allows you to collect and access reports.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver) */
 interface ReportingObserver {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver/disconnect) */
     disconnect(): void;
@@ -4852,7 +4546,7 @@ declare var ReportingObserver: {
 };
 
 /**
- * The **`Request`** interface of the Fetch API represents a resource request.
+ * This Fetch API interface represents a resource request.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request)
  */
@@ -4945,7 +4639,7 @@ declare var Request: {
 };
 
 /**
- * The **`Response`** interface of the Fetch API represents the response to a request.
+ * This Fetch API interface represents the response to a request.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response)
  */
@@ -4980,7 +4674,7 @@ declare var Response: {
 };
 
 /**
- * The **`SecurityPolicyViolationEvent`** interface inherits from Event, and represents the event object of a `securitypolicyviolation` event sent on an Element/securitypolicyviolation_event, Document/securitypolicyviolation_event, or WorkerGlobalScope/securitypolicyviolation_event when its Content Security Policy (CSP) is violated.
+ * Inherits from Event, and represents the event object of an event sent on a document or worker when its content security policy is violated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent)
  */
@@ -5021,7 +4715,7 @@ interface ServiceWorkerEventMap extends AbstractWorkerEventMap {
 }
 
 /**
- * The **`ServiceWorker`** interface of the Service Worker API provides a reference to a service worker.
+ * This ServiceWorker API interface provides a reference to a service worker. Multiple browsing contexts (e.g. pages, workers, etc.) can be associated with the same service worker, each through a unique ServiceWorker object.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorker)
@@ -5054,7 +4748,7 @@ interface ServiceWorkerContainerEventMap {
 }
 
 /**
- * The **`ServiceWorkerContainer`** interface of the Service Worker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations.
+ * The ServiceWorkerContainer interface of the ServiceWorker API provides an object representing the service worker as an overall unit in the network ecosystem, including facilities to register, unregister and update service workers, and access the state of service workers and their registrations.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer)
@@ -5094,7 +4788,7 @@ interface ServiceWorkerRegistrationEventMap {
 }
 
 /**
- * The **`ServiceWorkerRegistration`** interface of the Service Worker API represents the service worker registration.
+ * This ServiceWorker API interface represents the service worker registration. You register a service worker to control one or more pages that share the same origin.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration)
@@ -5139,11 +4833,7 @@ interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "connect": MessageEvent;
 }
 
-/**
- * The **`SharedWorkerGlobalScope`** object (the SharedWorker global scope) is accessible through the window.self keyword.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope) */
 interface SharedWorkerGlobalScope extends WorkerGlobalScope {
     /**
      * Returns sharedWorkerGlobal's name, i.e. the value given to the SharedWorker constructor. Multiple SharedWorker objects can correspond to the same shared worker (and SharedWorkerGlobalScope), by reusing the same name.
@@ -5171,7 +4861,6 @@ declare var SharedWorkerGlobalScope: {
 };
 
 /**
- * The **`StorageManager`** interface of the Storage API provides an interface for managing persistence permissions and estimating available storage.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager)
@@ -5190,11 +4879,7 @@ declare var StorageManager: {
     new(): StorageManager;
 };
 
-/**
- * The **`StylePropertyMapReadOnly`** interface of the CSS Typed Object Model API provides a read-only representation of a CSS declaration block that is an alternative to CSSStyleDeclaration.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly) */
 interface StylePropertyMapReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMapReadOnly/size) */
     readonly size: number;
@@ -5213,7 +4898,7 @@ declare var StylePropertyMapReadOnly: {
 };
 
 /**
- * The **`SubtleCrypto`** interface of the Web Crypto API provides a number of low-level cryptographic functions.
+ * This Web Crypto API interface provides a number of low-level cryptographic functions. It is accessed via the Crypto.subtle properties available in a window context (via Window.crypto).
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto)
@@ -5257,7 +4942,7 @@ declare var SubtleCrypto: {
 };
 
 /**
- * The **`TextDecoder`** interface represents a decoder for a specific text encoding, such as `UTF-8`, `ISO-8859-2`, `KOI8-R`, `GBK`, etc.
+ * A decoder for a specific method, that is a specific character encoding, like utf-8, iso-8859-2, koi8, cp1261, gbk, etc. A decoder takes a stream of bytes as input and emits a stream of code points. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder)
  */
@@ -5306,11 +4991,7 @@ interface TextDecoderCommon {
     readonly ignoreBOM: boolean;
 }
 
-/**
- * The **`TextDecoderStream`** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream) */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     readonly writable: WritableStream<BufferSource>;
@@ -5322,7 +5003,7 @@ declare var TextDecoderStream: {
 };
 
 /**
- * The **`TextEncoder`** interface takes a stream of code points as input and emits a stream of UTF-8 bytes.
+ * TextEncoder takes a stream of code points as input and emits a stream of bytes. For a more scalable, non-native library, see StringView – a C-like representation of strings based on typed arrays.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder)
  */
@@ -5355,11 +5036,7 @@ interface TextEncoderCommon {
     readonly encoding: string;
 }
 
-/**
- * The **`TextEncoderStream`** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream) */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array>;
     readonly writable: WritableStream<string>;
@@ -5371,7 +5048,7 @@ declare var TextEncoderStream: {
 };
 
 /**
- * The **`TextMetrics`** interface represents the dimensions of a piece of text in the canvas; a `TextMetrics` instance can be retrieved using the CanvasRenderingContext2D.measureText() method.
+ * The dimensions of a piece of text in the canvas, as created by the CanvasRenderingContext2D.measureText() method.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics)
  */
@@ -5455,11 +5132,7 @@ declare var TextMetrics: {
     new(): TextMetrics;
 };
 
-/**
- * The **`TransformStream`** interface of the Streams API represents a concrete implementation of the pipe chain _transform stream_ concept.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream) */
 interface TransformStream<I = any, O = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/readable) */
     readonly readable: ReadableStream<O>;
@@ -5472,11 +5145,7 @@ declare var TransformStream: {
     new<I = any, O = any>(transformer?: Transformer<I, O>, writableStrategy?: QueuingStrategy<I>, readableStrategy?: QueuingStrategy<O>): TransformStream<I, O>;
 };
 
-/**
- * The **`TransformStreamDefaultController`** interface of the Streams API provides methods to manipulate the associated ReadableStream and WritableStream.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController) */
 interface TransformStreamDefaultController<O = any> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/desiredSize) */
     readonly desiredSize: number | null;
@@ -5494,7 +5163,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * The **`URL`** interface is used to parse, construct, normalize, and encode URL.
+ * The URL interface represents an object providing static methods used for creating object URLs.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
@@ -5541,11 +5210,7 @@ declare var URL: {
     revokeObjectURL(url: string): void;
 };
 
-/**
- * The **`URLSearchParams`** interface defines utility methods to work with the query string of a URL.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams) */
 interface URLSearchParams {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/size) */
     readonly size: number;
@@ -5597,22 +5262,14 @@ declare var URLSearchParams: {
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
 };
 
-/**
- * The **`WEBGL_color_buffer_float`** extension is part of the WebGL API and adds the ability to render to 32-bit floating-point color buffers.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_color_buffer_float)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_color_buffer_float) */
 interface WEBGL_color_buffer_float {
     readonly RGBA32F_EXT: 0x8814;
     readonly FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE_EXT: 0x8211;
     readonly UNSIGNED_NORMALIZED_EXT: 0x8C17;
 }
 
-/**
- * The **`WEBGL_compressed_texture_astc`** extension is part of the WebGL API and exposes Adaptive Scalable Texture Compression (ASTC) compressed texture formats to WebGL.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc) */
 interface WEBGL_compressed_texture_astc {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc/getSupportedProfiles) */
     getSupportedProfiles(): string[];
@@ -5646,11 +5303,7 @@ interface WEBGL_compressed_texture_astc {
     readonly COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR: 0x93DD;
 }
 
-/**
- * The **`WEBGL_compressed_texture_etc`** extension is part of the WebGL API and exposes 10 ETC/EAC compressed texture formats.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc) */
 interface WEBGL_compressed_texture_etc {
     readonly COMPRESSED_R11_EAC: 0x9270;
     readonly COMPRESSED_SIGNED_R11_EAC: 0x9271;
@@ -5664,20 +5317,12 @@ interface WEBGL_compressed_texture_etc {
     readonly COMPRESSED_SRGB8_ALPHA8_ETC2_EAC: 0x9279;
 }
 
-/**
- * The **`WEBGL_compressed_texture_etc1`** extension is part of the WebGL API and exposes the ETC1 compressed texture format.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc1)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_etc1) */
 interface WEBGL_compressed_texture_etc1 {
     readonly COMPRESSED_RGB_ETC1_WEBGL: 0x8D64;
 }
 
-/**
- * The **`WEBGL_compressed_texture_pvrtc`** extension is part of the WebGL API and exposes four PVRTC compressed texture formats.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_pvrtc)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_pvrtc) */
 interface WEBGL_compressed_texture_pvrtc {
     readonly COMPRESSED_RGB_PVRTC_4BPPV1_IMG: 0x8C00;
     readonly COMPRESSED_RGB_PVRTC_2BPPV1_IMG: 0x8C01;
@@ -5686,7 +5331,7 @@ interface WEBGL_compressed_texture_pvrtc {
 }
 
 /**
- * The **`WEBGL_compressed_texture_s3tc`** extension is part of the WebGL API and exposes four S3TC compressed texture formats.
+ * The WEBGL_compressed_texture_s3tc extension is part of the WebGL API and exposes four S3TC compressed texture formats.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc)
  */
@@ -5697,11 +5342,7 @@ interface WEBGL_compressed_texture_s3tc {
     readonly COMPRESSED_RGBA_S3TC_DXT5_EXT: 0x83F3;
 }
 
-/**
- * The **`WEBGL_compressed_texture_s3tc_srgb`** extension is part of the WebGL API and exposes four S3TC compressed texture formats for the sRGB colorspace.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc_srgb)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_s3tc_srgb) */
 interface WEBGL_compressed_texture_s3tc_srgb {
     readonly COMPRESSED_SRGB_S3TC_DXT1_EXT: 0x8C4C;
     readonly COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT: 0x8C4D;
@@ -5710,7 +5351,7 @@ interface WEBGL_compressed_texture_s3tc_srgb {
 }
 
 /**
- * The **`WEBGL_debug_renderer_info`** extension is part of the WebGL API and exposes two constants with information about the graphics driver for debugging purposes.
+ * The WEBGL_debug_renderer_info extension is part of the WebGL API and exposes two constants with information about the graphics driver for debugging purposes.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_renderer_info)
  */
@@ -5719,18 +5360,14 @@ interface WEBGL_debug_renderer_info {
     readonly UNMASKED_RENDERER_WEBGL: 0x9246;
 }
 
-/**
- * The **`WEBGL_debug_shaders`** extension is part of the WebGL API and exposes a method to debug shaders from privileged contexts.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders) */
 interface WEBGL_debug_shaders {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders/getTranslatedShaderSource) */
     getTranslatedShaderSource(shader: WebGLShader): string;
 }
 
 /**
- * The **`WEBGL_depth_texture`** extension is part of the WebGL API and defines 2D depth and depth-stencil textures.
+ * The WEBGL_depth_texture extension is part of the WebGL API and defines 2D depth and depth-stencil textures.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_depth_texture)
  */
@@ -5738,11 +5375,7 @@ interface WEBGL_depth_texture {
     readonly UNSIGNED_INT_24_8_WEBGL: 0x84FA;
 }
 
-/**
- * The **`WEBGL_draw_buffers`** extension is part of the WebGL API and enables a fragment shader to write to several textures, which is useful for deferred shading, for example.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers) */
 interface WEBGL_draw_buffers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL) */
     drawBuffersWEBGL(buffers: GLenum[]): void;
@@ -5782,11 +5415,7 @@ interface WEBGL_draw_buffers {
     readonly MAX_DRAW_BUFFERS_WEBGL: 0x8824;
 }
 
-/**
- * The **WEBGL_lose_context** extension is part of the WebGL API and exposes functions to simulate losing and restoring a WebGLRenderingContext.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context) */
 interface WEBGL_lose_context {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context/loseContext) */
     loseContext(): void;
@@ -5794,11 +5423,7 @@ interface WEBGL_lose_context {
     restoreContext(): void;
 }
 
-/**
- * The **`WEBGL_multi_draw`** extension is part of the WebGL API and allows to render more than one primitive with a single function call.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw) */
 interface WEBGL_multi_draw {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysInstancedWEBGL) */
     multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array | GLint[], firstsOffset: number, countsList: Int32Array | GLsizei[], countsOffset: number, instanceCountsList: Int32Array | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
@@ -5810,11 +5435,7 @@ interface WEBGL_multi_draw {
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: number, drawcount: GLsizei): void;
 }
 
-/**
- * The **WebGL2RenderingContext** interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML canvas element.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext) */
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
 }
 
@@ -6885,7 +6506,7 @@ interface WebGL2RenderingContextOverloads {
 }
 
 /**
- * The **WebGLActiveInfo** interface is part of the WebGL API and represents the information returned by calling the WebGLRenderingContext.getActiveAttrib() and WebGLRenderingContext.getActiveUniform() methods.
+ * Part of the WebGL API and represents the information returned by calling the WebGLRenderingContext.getActiveAttrib() and WebGLRenderingContext.getActiveUniform() methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLActiveInfo)
  */
@@ -6904,7 +6525,7 @@ declare var WebGLActiveInfo: {
 };
 
 /**
- * The **WebGLBuffer** interface is part of the WebGL API and represents an opaque buffer object storing data such as vertices or colors.
+ * Part of the WebGL API and represents an opaque buffer object storing data such as vertices or colors.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLBuffer)
  */
@@ -6917,7 +6538,7 @@ declare var WebGLBuffer: {
 };
 
 /**
- * The **WebGLContextEvent** interface is part of the WebGL API and is an interface for an event that is generated in response to a status change to the WebGL rendering context.
+ * The WebContextEvent interface is part of the WebGL API and is an interface for an event that is generated in response to a status change to the WebGL rendering context.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLContextEvent)
  */
@@ -6932,7 +6553,7 @@ declare var WebGLContextEvent: {
 };
 
 /**
- * The **WebGLFramebuffer** interface is part of the WebGL API and represents a collection of buffers that serve as a rendering destination.
+ * Part of the WebGL API and represents a collection of buffers that serve as a rendering destination.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLFramebuffer)
  */
@@ -6945,7 +6566,7 @@ declare var WebGLFramebuffer: {
 };
 
 /**
- * The **`WebGLProgram`** is part of the WebGL API and is a combination of two compiled WebGLShaders consisting of a vertex shader and a fragment shader (both written in GLSL).
+ * The WebGLProgram is part of the WebGL API and is a combination of two compiled WebGLShaders consisting of a vertex shader and a fragment shader (both written in GLSL).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLProgram)
  */
@@ -6957,11 +6578,7 @@ declare var WebGLProgram: {
     new(): WebGLProgram;
 };
 
-/**
- * The **`WebGLQuery`** interface is part of the WebGL 2 API and provides ways to asynchronously query for information.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery) */
 interface WebGLQuery {
 }
 
@@ -6971,7 +6588,7 @@ declare var WebGLQuery: {
 };
 
 /**
- * The **WebGLRenderbuffer** interface is part of the WebGL API and represents a buffer that can contain an image, or that can be a source or target of a rendering operation.
+ * Part of the WebGL API and represents a buffer that can contain an image, or can be source or target of an rendering operation.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderbuffer)
  */
@@ -6984,7 +6601,7 @@ declare var WebGLRenderbuffer: {
 };
 
 /**
- * The **`WebGLRenderingContext`** interface provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML canvas element.
+ * Provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML <canvas> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
  */
@@ -7913,11 +7530,7 @@ interface WebGLRenderingContextOverloads {
     uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: Float32List): void;
 }
 
-/**
- * The **`WebGLSampler`** interface is part of the WebGL 2 API and stores sampling parameters for WebGLTexture access inside of a shader.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler) */
 interface WebGLSampler {
 }
 
@@ -7927,7 +7540,7 @@ declare var WebGLSampler: {
 };
 
 /**
- * The **WebGLShader** is part of the WebGL API and can either be a vertex or a fragment shader.
+ * The WebGLShader is part of the WebGL API and can either be a vertex or a fragment shader. A WebGLProgram requires both types of shaders.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShader)
  */
@@ -7940,7 +7553,7 @@ declare var WebGLShader: {
 };
 
 /**
- * The **WebGLShaderPrecisionFormat** interface is part of the WebGL API and represents the information returned by calling the WebGLRenderingContext.getShaderPrecisionFormat() method.
+ * Part of the WebGL API and represents the information returned by calling the WebGLRenderingContext.getShaderPrecisionFormat() method.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShaderPrecisionFormat)
  */
@@ -7958,11 +7571,7 @@ declare var WebGLShaderPrecisionFormat: {
     new(): WebGLShaderPrecisionFormat;
 };
 
-/**
- * The **`WebGLSync`** interface is part of the WebGL 2 API and is used to synchronize activities between the GPU and the application.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync) */
 interface WebGLSync {
 }
 
@@ -7972,7 +7581,7 @@ declare var WebGLSync: {
 };
 
 /**
- * The **WebGLTexture** interface is part of the WebGL API and represents an opaque texture object providing storage and state for texturing operations.
+ * Part of the WebGL API and represents an opaque texture object providing storage and state for texturing operations.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTexture)
  */
@@ -7984,11 +7593,7 @@ declare var WebGLTexture: {
     new(): WebGLTexture;
 };
 
-/**
- * The **`WebGLTransformFeedback`** interface is part of the WebGL 2 API and enables transform feedback, which is the process of capturing primitives generated by vertex processing.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback) */
 interface WebGLTransformFeedback {
 }
 
@@ -7998,7 +7603,7 @@ declare var WebGLTransformFeedback: {
 };
 
 /**
- * The **WebGLUniformLocation** interface is part of the WebGL API and represents the location of a uniform variable in a shader program.
+ * Part of the WebGL API and represents the location of a uniform variable in a shader program.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLUniformLocation)
  */
@@ -8010,11 +7615,7 @@ declare var WebGLUniformLocation: {
     new(): WebGLUniformLocation;
 };
 
-/**
- * The **`WebGLVertexArrayObject`** interface is part of the WebGL 2 API, represents vertex array objects (VAOs) pointing to vertex array data, and provides names for different sets of vertex data.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject) */
 interface WebGLVertexArrayObject {
 }
 
@@ -8035,7 +7636,7 @@ interface WebSocketEventMap {
 }
 
 /**
- * The `WebSocket` object provides the API for creating and managing a WebSocket connection to a server, as well as for sending and receiving data on the connection.
+ * Provides the API for creating and managing a WebSocket connection to a server, as well as for sending and receiving data on the connection.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket)
  */
@@ -8120,7 +7721,6 @@ declare var WebSocket: {
 };
 
 /**
- * The **`WebTransport`** interface of the WebTransport API provides functionality to enable a user agent to connect to an HTTP/3 server, initiate reliable and unreliable transport in either or both directions, and close the connection once it is no longer needed.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport)
@@ -8150,7 +7750,6 @@ declare var WebTransport: {
 };
 
 /**
- * The **`WebTransportBidirectionalStream`** interface of the WebTransport API represents a bidirectional stream created by a server or a client that can be used for reliable transport.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportBidirectionalStream)
@@ -8168,7 +7767,6 @@ declare var WebTransportBidirectionalStream: {
 };
 
 /**
- * The **`WebTransportDatagramDuplexStream`** interface of the WebTransport API represents a duplex stream that can be used for unreliable transport of datagrams between client and server.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream)
@@ -8196,7 +7794,6 @@ declare var WebTransportDatagramDuplexStream: {
 };
 
 /**
- * The **`WebTransportError`** interface of the WebTransport API represents an error related to the API, which can arise from server errors, network connection problems, or client-initiated abort operations (for example, arising from a WritableStream.abort() call).
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportError)
@@ -8261,7 +7858,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEvent
 }
 
 /**
- * The **`Worker`** interface of the Web Workers API represents a background task that can be created via script, which can send messages back to its creator.
+ * This Web Workers API interface represents a background task that can be easily created and can send messages back to its creator. Creating a worker is as simple as calling the Worker() constructor and specifying a script to be run in the worker thread.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
@@ -8300,7 +7897,7 @@ interface WorkerGlobalScopeEventMap {
 }
 
 /**
- * The **`WorkerGlobalScope`** interface of the Web Workers API is an interface representing the scope of any worker.
+ * This Web Workers API interface is an interface representing the scope of any worker. Workers have no browsing context; this scope contains the information usually conveyed by Window objects — in this case event handlers, the console or the associated WorkerNavigator object. Each WorkerGlobalScope has its own event loop.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope)
  */
@@ -8353,7 +7950,7 @@ declare var WorkerGlobalScope: {
 };
 
 /**
- * The **`WorkerLocation`** interface defines the absolute location of the script executed by the Worker.
+ * The absolute location of the script executed by the Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.location property obtained by calling self.location.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerLocation)
  */
@@ -8385,7 +7982,7 @@ declare var WorkerLocation: {
 };
 
 /**
- * The **`WorkerNavigator`** interface represents a subset of the Navigator interface allowed to be accessed from a Worker.
+ * A subset of the Navigator interface allowed to be accessed from a Worker. Such an object is initialized for each worker and is available via the WorkerGlobalScope.navigator property obtained by calling window.self.navigator.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator)
  */
@@ -8408,7 +8005,7 @@ declare var WorkerNavigator: {
 };
 
 /**
- * The **`WritableStream`** interface of the Streams API provides a standard abstraction for writing streaming data to a destination, known as a sink.
+ * This Streams API interface provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream)
  */
@@ -8429,7 +8026,7 @@ declare var WritableStream: {
 };
 
 /**
- * The **`WritableStreamDefaultController`** interface of the Streams API represents a controller allowing control of a WritableStream's state.
+ * This Streams API interface represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
  */
@@ -8446,7 +8043,7 @@ declare var WritableStreamDefaultController: {
 };
 
 /**
- * The **`WritableStreamDefaultWriter`** interface of the Streams API is the object returned by WritableStream.getWriter() and once created locks the writer to the `WritableStream` ensuring that no other streams can write to the underlying sink.
+ * This Streams API interface is the object returned by WritableStream.getWriter() and once created locks the < writer to the WritableStream ensuring that no other streams can write to the underlying sink.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter)
  */
@@ -8477,7 +8074,7 @@ interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
 }
 
 /**
- * `XMLHttpRequest` (XHR) objects are used to interact with servers.
+ * Use XMLHttpRequest (XHR) objects to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
  */
@@ -8626,11 +8223,7 @@ interface XMLHttpRequestEventTargetEventMap {
     "timeout": ProgressEvent<XMLHttpRequestEventTarget>;
 }
 
-/**
- * `XMLHttpRequestEventTarget` is the interface that describes the event handlers shared on XMLHttpRequest and XMLHttpRequestUpload.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget) */
 interface XMLHttpRequestEventTarget extends EventTarget {
     onabort: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
     onerror: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
@@ -8650,11 +8243,7 @@ declare var XMLHttpRequestEventTarget: {
     new(): XMLHttpRequestEventTarget;
 };
 
-/**
- * The **`XMLHttpRequestUpload`** interface represents the upload process for a specific XMLHttpRequest.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload) */
 interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
     addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -8826,12 +8415,7 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
-/** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
-/**
- * The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox).
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console)
- */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console) */
 interface Console {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static) */
     assert(condition?: boolean, ...data: any[]): void;
@@ -9082,7 +8666,6 @@ type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
-type ImageDataArray = Uint8ClampedArray;
 type Int32List = Int32Array | GLint[];
 type MessageEventSource = MessagePort | ServiceWorker;
 type NamedCurve = string;
