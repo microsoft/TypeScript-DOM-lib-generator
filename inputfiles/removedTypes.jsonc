@@ -772,7 +772,7 @@
             "RTCPeerConnectionIceEventInit": {
                 "members": {
                     "member": {
-                        "url": null // Safari +12 only as of 2025-04
+                        "url": null // WebKit only as of 2025-04
                     }
                 }
             },
