@@ -31,8 +31,6 @@ body:
       label: "Playground Link"
       description: "Paste the TypeScript playground link"
       placeholder: "https://www.typescriptlang.org/play/..."
-    validations:
-      required: true
   - type: checkboxes
     id: browser_support
     attributes:
