@@ -248,6 +248,14 @@
                             "type": "PageTransitionEvent"
                         },
                         {
+                            "name": "pageswap",
+                            "type": "PageSwapEvent"
+                        },
+                        {
+                            "name": "pagereveal",
+                            "type": "PageRevealEvent"
+                        },
+                        {
                             "name": "popstate",
                             "type": "PopStateEvent"
                         },
@@ -927,6 +935,10 @@
                     "property": {
                         "referrerPolicy": {
                             "type": "ReferrerPolicy"
+                        },
+                        "loading": {
+                            "name": "loading",
+                            "overrideType": "\"eager\" | \"lazy\""
                         }
                     }
                 }
