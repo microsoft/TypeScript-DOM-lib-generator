@@ -2,15 +2,15 @@ name: Deploy to npm
 
 on:
   schedule:
-    # Daily run
-    - cron: "0 4 * * *"
-  workflow_dispatch: null
+    - cron: "0 4 * * *" # Daily
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
   deploy:
+    if: github.repository == 'microsoft/TypeScript-DOM-lib-generator'
     runs-on: ubuntu-latest
 
     steps:
