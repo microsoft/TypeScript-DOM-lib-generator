@@ -2,8 +2,9 @@ name: Deploy to npm
 
 on:
   schedule:
-    - cron: "0 4 * * *" # Daily
-  workflow_dispatch:
+    # Daily run
+    - cron: "0 4 * * *"
+  workflow_dispatch: null
 
 permissions:
   contents: write
