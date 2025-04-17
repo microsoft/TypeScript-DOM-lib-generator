@@ -71,6 +71,8 @@ export const packages = [
       { from: "../generated/webworker.iterable.generated.d.ts", to: "iterable.d.ts", autoImport: true },
       { from: "../generated/ts5.5/webworker.generated.d.ts", to: "ts5.5/index.d.ts", index: true, group: "ts5.5" },
       { from: "../generated/ts5.5/webworker.iterable.generated.d.ts", to: "ts5.5/iterable.d.ts", autoImport: true, group: "ts5.5" },
+      { from: "../generated/ts5.6/webworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
+      { from: "../generated/ts5.6/webworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
     ]
   }
 ];
