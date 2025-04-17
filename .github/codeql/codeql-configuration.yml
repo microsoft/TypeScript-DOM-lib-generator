@@ -1,4 +1,10 @@
-name : CodeQL Configuration
+name: CodeQL Configuration
 
 paths:
-  - './src' 
+  - ./src
+
+languages:
+  - javascript  # This includes both JavaScript and TypeScript
+
+queries:
+  - uses: security-and-quality
