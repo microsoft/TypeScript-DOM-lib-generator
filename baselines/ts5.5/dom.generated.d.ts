@@ -565,7 +565,6 @@ interface EffectTiming {
 }
 
 interface ElementCreationOptions {
-    customElementRegistry?: CustomElementRegistry;
     is?: string;
 }
 
@@ -825,11 +824,6 @@ interface ImageDecoderInit {
 interface ImageEncodeOptions {
     quality?: number;
     type?: string;
-}
-
-interface ImportNodeOptions {
-    customElementRegistry?: CustomElementRegistry;
-    selfOnly?: boolean;
 }
 
 interface InputEventInit extends UIEventInit {
@@ -2076,7 +2070,6 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 
 interface ShadowRootInit {
     clonable?: boolean;
-    customElementRegistry?: CustomElementRegistry;
     delegatesFocus?: boolean;
     mode: ShadowRootMode;
     serializable?: boolean;
@@ -8346,7 +8339,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/importNode)
      */
-    importNode<T extends Node>(node: T, options?: boolean | ImportNodeOptions): T;
+    importNode<T extends Node>(node: T, subtree?: boolean): T;
     /**
      * Opens a new window and loads a document specified by a given URL. Also, opens a new window that uses the url parameter and the name parameter to collect the output of the write method and the writeln method.
      * @param url Specifies a MIME type for the document.
@@ -12552,7 +12545,6 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/hreflang)
      */
     hreflang: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/imageSizes) */
     imageSizes: string;
     imageSrcset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/integrity) */
