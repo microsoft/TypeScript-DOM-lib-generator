@@ -906,6 +906,9 @@ interface ReadableStreamGenericReader {
     cancel(reason?: any): Promise<void>;
 }
 
+interface ResponseConstructor {
+}
+
 /**
  * The **`TextDecoder`** interface represents a decoder for a specific text encoding, such as `UTF-8`, `ISO-8859-2`, `KOI8-R`, `GBK`, etc.
  *
