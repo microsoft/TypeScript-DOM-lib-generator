@@ -4588,7 +4588,7 @@ declare var MediaSourceHandle: {
 };
 
 /**
- * The **`MediaStreamTrackProcessor`** interface of the Insertable Streams for MediaStreamTrack API consumes a MediaStreamTrack object's source and generates a stream of media frames.
+ * The **`MediaStreamTrackProcessor`** interface of the Insertable Streams for MediaStreamTrack API consumes a video MediaStreamTrack object's source and generates a stream of VideoFrames.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor)
  */
