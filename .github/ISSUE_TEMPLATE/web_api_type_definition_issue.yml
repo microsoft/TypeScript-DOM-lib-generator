@@ -1,0 +1,57 @@
+name: "Web API type definition issue"
+title: "[Web API type definition issue] "
+labels: [lib.d.ts bug]
+assignees: []
+description: "Report inconsistencies between TypeScript's web API typings and browser behavior."
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Web API Type Definition Issue
+        Provide details of the issue.
+  - type: input
+    id: issue_summary
+    attributes:
+      label: "Summary"
+      description: "Brief summary of the issue"
+      placeholder: "e.g., Mismatch in event handling..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected_vs_actual
+    attributes:
+      label: "Expected vs. Actual Behavior"
+      description: "Describe what you expected and what actually happened"
+      placeholder: "Expected: ...\nActual: ..."
+    validations:
+      required: true
+  - type: input
+    id: playground_link
+    attributes:
+      label: "Playground Link"
+      description: "Paste the TypeScript playground link"
+      placeholder: "https://www.typescriptlang.org/play/..."
+  - type: checkboxes
+    id: browser_support
+    attributes:
+      label: "Browser Support"
+      description: "Ensure that the API is supported in at least two major browser engines (not two Chromium-based browsers)."
+      options:
+        - label: "This API is supported in at least two major browser engines (not two Chromium-based browsers)."
+          required: true
+  - type: checkboxes
+    id: tried_latest_releases
+    attributes:
+      label: "Have Tried The Latest Releases"
+      description: "Make sure your problem is still reproducible on the latest releases."
+      options:
+        - label: "This issue applies to the latest release of TypeScript."
+          required: true
+        - label: "This issue applies to the latest release of `@types/web`."
+          required: true
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "Additional Context"
+      description: "Any extra information, logs, or references."
+      placeholder: "Optional details..."
