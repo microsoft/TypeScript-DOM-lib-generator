@@ -902,7 +902,7 @@ interface Blob {
 
 declare var Blob: {
     prototype: Blob;
-    new(blobParts?: BlobPart[], options?: BlobPropertyBag): Blob;
+    new(blobParts?: Iterable<BlobPart>, options?: BlobPropertyBag): Blob;
 };
 
 interface Body {
@@ -2822,7 +2822,7 @@ interface File extends Blob {
 
 declare var File: {
     prototype: File;
-    new(fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): File;
+    new(fileBits: Iterable<BlobPart>, fileName: string, options?: FilePropertyBag): File;
 };
 
 /**
