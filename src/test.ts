@@ -124,7 +124,7 @@ function test() {
       targets.every((target) =>
         compileGeneratedFiles(
           target,
-          ...suffixes[target].map((s) => `${mod}.${s}`),
+          ...suffixes[target].map((suffix) => `${mod}.${suffix}`),
         ),
       ),
     );
