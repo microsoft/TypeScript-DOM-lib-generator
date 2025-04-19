@@ -199,6 +199,14 @@
                         {
                             "name": "contextmenu",
                             "type": "MouseEvent"
+                        },
+                        {
+                            "name": "toggle",
+                            "type": "ToggleEvent"
+                        },
+                        {
+                            "name": "beforetoggle",
+                            "type": "ToggleEvent"
                         }
                     ]
                 }

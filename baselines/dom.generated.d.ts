@@ -10092,7 +10092,7 @@ interface GlobalEventHandlersEventMap {
     "animationstart": AnimationEvent;
     "auxclick": PointerEvent;
     "beforeinput": InputEvent;
-    "beforetoggle": Event;
+    "beforetoggle": ToggleEvent;
     "blur": FocusEvent;
     "cancel": Event;
     "canplay": Event;
@@ -10172,7 +10172,7 @@ interface GlobalEventHandlersEventMap {
     "submit": SubmitEvent;
     "suspend": Event;
     "timeupdate": Event;
-    "toggle": Event;
+    "toggle": ToggleEvent;
     "touchcancel": TouchEvent;
     "touchend": TouchEvent;
     "touchmove": TouchEvent;
@@ -10211,7 +10211,7 @@ interface GlobalEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
     onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
-    onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    onbeforetoggle: ((this: GlobalEventHandlers, ev: ToggleEvent) => any) | null;
     /**
      * Fires when the object loses the input focus.
      * @param ev The focus event.
@@ -10572,7 +10572,7 @@ interface GlobalEventHandlers {
      */
     ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/toggle_event) */
-    ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    ontoggle: ((this: GlobalEventHandlers, ev: ToggleEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchcancel_event) */
     ontouchcancel?: ((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchend_event) */
@@ -30165,7 +30165,7 @@ declare var onauxclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
 declare var onbeforeinput: ((this: Window, ev: InputEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
-declare var onbeforetoggle: ((this: Window, ev: Event) => any) | null;
+declare var onbeforetoggle: ((this: Window, ev: ToggleEvent) => any) | null;
 /**
  * Fires when the object loses the input focus.
  * @param ev The focus event.
@@ -30526,7 +30526,7 @@ declare var onsuspend: ((this: Window, ev: Event) => any) | null;
  */
 declare var ontimeupdate: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/toggle_event) */
-declare var ontoggle: ((this: Window, ev: Event) => any) | null;
+declare var ontoggle: ((this: Window, ev: ToggleEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchcancel_event) */
 declare var ontouchcancel: ((this: Window, ev: TouchEvent) => any) | null | undefined;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchend_event) */
