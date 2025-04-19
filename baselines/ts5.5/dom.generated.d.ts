@@ -3738,6 +3738,43 @@ declare var CDATASection: {
 };
 
 /**
+ * The `CSPViolationReportBody` interface is an extension of the Reporting API that represents the body of a Content Security Policy (CSP) violation report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody)
+ */
+interface CSPViolationReportBody extends ReportBody {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/blockedURL) */
+    readonly blockedURL: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/columnNumber) */
+    readonly columnNumber: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/disposition) */
+    readonly disposition: SecurityPolicyViolationEventDisposition;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/documentURL) */
+    readonly documentURL: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/effectiveDirective) */
+    readonly effectiveDirective: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/lineNumber) */
+    readonly lineNumber: number | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/originalPolicy) */
+    readonly originalPolicy: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/referrer) */
+    readonly referrer: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/sample) */
+    readonly sample: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/sourceFile) */
+    readonly sourceFile: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/statusCode) */
+    readonly statusCode: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/toJSON) */
+    toJSON(): any;
+}
+
+declare var CSPViolationReportBody: {
+    prototype: CSPViolationReportBody;
+    new(): CSPViolationReportBody;
+};
+
+/**
  * The **`CSSAnimation`** interface of the Web Animations API represents an Animation object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSAnimation)
@@ -12554,6 +12591,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     hreflang: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/imageSizes) */
     imageSizes: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/imageSrcset) */
     imageSrcset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/integrity) */
     integrity: string;
