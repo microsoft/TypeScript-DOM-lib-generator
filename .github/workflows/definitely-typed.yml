@@ -27,8 +27,8 @@ jobs:
 
       - name: Replace lib.dom.d.ts and lib.dom.iterable.d.ts
         run: |
-          cp ./generated/lib.dom.d.ts ./DefinitelyTyped/node_modules/typescript/lib/
-          cp ./generated/lib.dom.iterable.d.ts ./DefinitelyTyped/node_modules/typescript/lib/
+          cp ./baselines/lib.dom.d.ts ./DefinitelyTyped/node_modules/typescript/lib/
+          cp ./baselines/lib.dom.iterable.d.ts ./DefinitelyTyped/node_modules/typescript/lib/
 
       - name: Run tests in DefinitelyTyped
         working-directory: ./DefinitelyTyped
