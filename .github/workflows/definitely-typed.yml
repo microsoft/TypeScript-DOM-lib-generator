@@ -32,4 +32,4 @@ jobs:
 
       - name: Run tests in DefinitelyTyped
         working-directory: ./DefinitelyTyped
-        run: npm test
+        run: npm run test-all
