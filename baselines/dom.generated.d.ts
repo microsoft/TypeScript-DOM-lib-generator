@@ -2555,6 +2555,7 @@ interface ARIAMixin {
     ariaHasPopup: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHidden) */
     ariaHidden: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaInvalid) */
     ariaInvalid: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaKeyShortcuts) */
     ariaKeyShortcuts: string | null;
