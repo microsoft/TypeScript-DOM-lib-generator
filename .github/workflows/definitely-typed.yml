@@ -1,0 +1,35 @@
+name: Test DefinitelyTyped
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  update-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Clone DefinitelyTyped
+        run: |
+          git clone https://github.com/DefinitelyTyped/DefinitelyTyped.git
+
+      - name: Install dependencies in DefinitelyTyped
+        working-directory: ./DefinitelyTyped
+        run: npm install
+
+      - name: Replace lib.dom.d.ts and lib.dom.iterable.d.ts
+        run: |
+          cp ./generated/lib.dom.d.ts ./DefinitelyTyped/node_modules/typescript/lib/
+          cp ./generated/lib.dom.iterable.d.ts ./DefinitelyTyped/node_modules/typescript/lib/
+
+      - name: Run tests in DefinitelyTyped
+        working-directory: ./DefinitelyTyped
+        run: npm test
