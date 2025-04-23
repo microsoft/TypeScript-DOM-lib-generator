@@ -17,13 +17,17 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+
       - name: Clone DefinitelyTyped
         run: |
           git clone https://github.com/DefinitelyTyped/DefinitelyTyped.git
 
-      - name: Install dependencies in DefinitelyTyped
+      - name: Install dependencies in DefinitelyTyped using pnpm
         working-directory: ./DefinitelyTyped
-        run: npm install
+        run: pnpm install
 
       - name: Replace dom.d.ts and dom.iterable.d.ts
         run: |
@@ -32,4 +36,4 @@ jobs:
 
       - name: Run tests in DefinitelyTyped
         working-directory: ./DefinitelyTyped
-        run: npm run test-all
+        run: pnpm run test-all
