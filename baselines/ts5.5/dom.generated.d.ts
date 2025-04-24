@@ -14916,6 +14916,8 @@ declare var Highlight: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry)
  */
 interface HighlightRegistry {
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/size) */
+    readonly size: number;
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
 }
 

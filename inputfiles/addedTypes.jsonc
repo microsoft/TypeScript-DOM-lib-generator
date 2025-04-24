@@ -551,6 +551,19 @@
             "DeviceMotionEventRotationRate": {
                 "noInterfaceObject": true
             },
+            "HighlightRegistry":{
+                "name": "HighlightRegistry",
+                "properties": {
+                    "property": {
+                        "size": {
+                            "name": "size",
+                            "overrideType": "number",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/size",
+                            "readonly": true
+                        }
+                    }
+                }
+            },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
                 "properties": {
