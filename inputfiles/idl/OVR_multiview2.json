@@ -1,0 +1,7 @@
+{
+  "ovr_multiview2-framebuffer_attachment_texture_num_views_ovr": "Type: GLenum",
+  "ovr_multiview2-framebuffer_attachment_texture_base_view_index_ovr": "Type: GLenum",
+  "ovr_multiview2-max_views_ovr": "Type: GLenum",
+  "ovr_multiview2-framebuffer_incomplete_view_targets_ovr": "Type: GLenum",
+  "ovr_multiview2-framebuffertexturemultiviewovr": "Type: undefined"
+}

@@ -1,0 +1,8 @@
+{
+  "cssrule-supports_rule": "Type: unsigned short",
+  "cssconditionrule-conditiontext": "Type: CSSOMString",
+  "cssmediarule-media": "Type: MediaList",
+  "cssmediarule-matches": "Type: boolean",
+  "csssupportsrule-matches": "Type: boolean",
+  "css-supports": "Type: boolean"
+}

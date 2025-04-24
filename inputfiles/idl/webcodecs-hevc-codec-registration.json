@@ -1,0 +1,7 @@
+{
+  "videoencoderconfig-hevc": "Type: HevcEncoderConfig",
+  "hevcencoderconfig-format": "Type: HevcBitstreamFormat",
+  "hevcbitstreamformat": "No description available.",
+  "videoencoderencodeoptions-hevc": "Type: VideoEncoderEncodeOptionsForHevc",
+  "videoencoderencodeoptionsforhevc-quantizer": "Type: unsigned short"
+}

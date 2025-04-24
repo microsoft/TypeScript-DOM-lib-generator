@@ -1,0 +1,5 @@
+{
+  "isinputpendingoptions-includecontinuous": "Type: boolean",
+  "scheduling-isinputpending": "Type: boolean",
+  "navigator-scheduling": "Type: Scheduling"
+}

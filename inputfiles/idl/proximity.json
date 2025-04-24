@@ -1,0 +1,6 @@
+{
+  "proximitysensor-constructor": "No description available.",
+  "proximitysensor-distance": "Type: double",
+  "proximitysensor-max": "Type: double",
+  "proximitysensor-near": "Type: boolean"
+}

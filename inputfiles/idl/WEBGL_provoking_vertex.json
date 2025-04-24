@@ -1,0 +1,6 @@
+{
+  "webgl_provoking_vertex-first_vertex_convention_webgl": "Type: GLenum",
+  "webgl_provoking_vertex-last_vertex_convention_webgl": "Type: GLenum",
+  "webgl_provoking_vertex-provoking_vertex_webgl": "Type: GLenum",
+  "webgl_provoking_vertex-provokingvertexwebgl": "Type: undefined"
+}

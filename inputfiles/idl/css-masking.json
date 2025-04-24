@@ -1,0 +1,10 @@
+{
+  "svgclippathelement-clippathunits": "Type: SVGAnimatedEnumeration",
+  "svgclippathelement-transform": "Type: SVGAnimatedTransformList",
+  "svgmaskelement-maskunits": "Type: SVGAnimatedEnumeration",
+  "svgmaskelement-maskcontentunits": "Type: SVGAnimatedEnumeration",
+  "svgmaskelement-x": "Type: SVGAnimatedLength",
+  "svgmaskelement-y": "Type: SVGAnimatedLength",
+  "svgmaskelement-width": "Type: SVGAnimatedLength",
+  "svgmaskelement-height": "Type: SVGAnimatedLength"
+}

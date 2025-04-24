@@ -1,0 +1,11 @@
+{
+  "css-animationworklet": "Type: Worklet",
+  "animationworkletglobalscope-registeranimator": "Type: undefined",
+  "animatorinstanceconstructor": "No description available.",
+  "workletanimationeffect-gettiming": "Type: EffectTiming",
+  "workletanimationeffect-getcomputedtiming": "Type: ComputedEffectTiming",
+  "workletanimationeffect-localtime": "Type: double",
+  "workletanimation-constructor": "No description available.",
+  "workletanimation-animatorname": "Type: DOMString",
+  "workletgroupeffect-getchildren": "Type: [object Object]"
+}

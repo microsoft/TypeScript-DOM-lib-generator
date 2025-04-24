@@ -1,0 +1,11 @@
+{
+  "serviceworkerglobalscope-onperiodicsync": "Type: EventHandler",
+  "serviceworkerregistration-periodicsync": "Type: PeriodicSyncManager",
+  "periodicsyncmanager-register": "Type: [object Object]",
+  "periodicsyncmanager-gettags": "Type: [object Object]",
+  "periodicsyncmanager-unregister": "Type: [object Object]",
+  "backgroundsyncoptions-mininterval": "Type: unsigned long long",
+  "periodicsynceventinit-tag": "Type: DOMString",
+  "periodicsyncevent-constructor": "No description available.",
+  "periodicsyncevent-tag": "Type: DOMString"
+}

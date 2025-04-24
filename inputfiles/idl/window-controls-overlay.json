@@ -1,0 +1,11 @@
+{
+  "navigator-windowcontrolsoverlay": "Type: WindowControlsOverlay",
+  "windowcontrolsoverlay-visible": "Type: boolean",
+  "windowcontrolsoverlay-gettitlebararearect": "Type: DOMRect",
+  "windowcontrolsoverlay-ongeometrychange": "Type: EventHandler",
+  "windowcontrolsoverlaygeometrychangeevent-constructor": "No description available.",
+  "windowcontrolsoverlaygeometrychangeevent-titlebararearect": "Type: DOMRect",
+  "windowcontrolsoverlaygeometrychangeevent-visible": "Type: boolean",
+  "windowcontrolsoverlaygeometrychangeeventinit-titlebararearect": "Type: DOMRect",
+  "windowcontrolsoverlaygeometrychangeeventinit-visible": "Type: boolean"
+}

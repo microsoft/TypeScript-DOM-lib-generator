@@ -1,0 +1,10 @@
+{
+  "cssfunctionrule-name": "Type: CSSOMString",
+  "cssfunctionrule-getparameters": "Type: [object Object]",
+  "cssfunctionrule-returntype": "Type: CSSOMString",
+  "functionparameter-name": "Type: CSSOMString",
+  "functionparameter-type": "Type: CSSOMString",
+  "functionparameter-defaultvalue": "Type: CSSOMString",
+  "cssfunctiondescriptors-result": "Type: CSSOMString",
+  "cssfunctiondeclarations-style": "Type: CSSFunctionDescriptors"
+}

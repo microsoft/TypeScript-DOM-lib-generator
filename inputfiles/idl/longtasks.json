@@ -1,0 +1,17 @@
+{
+  "performancelongtasktiming-starttime": "Type: DOMHighResTimeStamp",
+  "performancelongtasktiming-duration": "Type: DOMHighResTimeStamp",
+  "performancelongtasktiming-name": "Type: DOMString",
+  "performancelongtasktiming-entrytype": "Type: DOMString",
+  "performancelongtasktiming-attribution": "Type: [object Object]",
+  "performancelongtasktiming-tojson": "Type: object",
+  "taskattributiontiming-starttime": "Type: DOMHighResTimeStamp",
+  "taskattributiontiming-duration": "Type: DOMHighResTimeStamp",
+  "taskattributiontiming-name": "Type: DOMString",
+  "taskattributiontiming-entrytype": "Type: DOMString",
+  "taskattributiontiming-containertype": "Type: DOMString",
+  "taskattributiontiming-containersrc": "Type: DOMString",
+  "taskattributiontiming-containerid": "Type: DOMString",
+  "taskattributiontiming-containername": "Type: DOMString",
+  "taskattributiontiming-tojson": "Type: object"
+}

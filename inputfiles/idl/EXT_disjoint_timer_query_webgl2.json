@@ -1,0 +1,7 @@
+{
+  "ext_disjoint_timer_query_webgl2-query_counter_bits_ext": "Type: GLenum",
+  "ext_disjoint_timer_query_webgl2-time_elapsed_ext": "Type: GLenum",
+  "ext_disjoint_timer_query_webgl2-timestamp_ext": "Type: GLenum",
+  "ext_disjoint_timer_query_webgl2-gpu_disjoint_ext": "Type: GLenum",
+  "ext_disjoint_timer_query_webgl2-querycounterext": "Type: undefined"
+}

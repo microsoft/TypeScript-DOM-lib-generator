@@ -1,0 +1,10 @@
+{
+  "screen-orientation": "Type: ScreenOrientation",
+  "screenorientation-lock": "Type: [object Object]",
+  "screenorientation-unlock": "Type: undefined",
+  "screenorientation-type": "Type: OrientationType",
+  "screenorientation-angle": "Type: unsigned short",
+  "screenorientation-onchange": "Type: EventHandler",
+  "orientationlocktype": "No description available.",
+  "orientationtype": "No description available."
+}

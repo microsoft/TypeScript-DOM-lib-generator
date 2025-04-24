@@ -1,0 +1,6 @@
+{
+  "csscolorprofilerule-name": "Type: CSSOMString",
+  "csscolorprofilerule-src": "Type: CSSOMString",
+  "csscolorprofilerule-renderingintent": "Type: CSSOMString",
+  "csscolorprofilerule-components": "Type: CSSOMString"
+}

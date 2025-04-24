@@ -1,0 +1,15 @@
+{
+  "magnetometer-constructor": "No description available.",
+  "magnetometer-x": "Type: double",
+  "magnetometer-y": "Type: double",
+  "magnetometer-z": "Type: double",
+  "magnetometerlocalcoordinatesystem": "No description available.",
+  "magnetometersensoroptions-referenceframe": "Type: MagnetometerLocalCoordinateSystem",
+  "uncalibratedmagnetometer-constructor": "No description available.",
+  "uncalibratedmagnetometer-x": "Type: double",
+  "uncalibratedmagnetometer-y": "Type: double",
+  "uncalibratedmagnetometer-z": "Type: double",
+  "uncalibratedmagnetometer-xbias": "Type: double",
+  "uncalibratedmagnetometer-ybias": "Type: double",
+  "uncalibratedmagnetometer-zbias": "Type: double"
+}

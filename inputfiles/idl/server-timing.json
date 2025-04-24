@@ -1,0 +1,7 @@
+{
+  "performanceservertiming-name": "Type: DOMString",
+  "performanceservertiming-duration": "Type: DOMHighResTimeStamp",
+  "performanceservertiming-description": "Type: DOMString",
+  "performanceservertiming-tojson": "Type: object",
+  "performanceresourcetiming-servertiming": "Type: [object Object]"
+}

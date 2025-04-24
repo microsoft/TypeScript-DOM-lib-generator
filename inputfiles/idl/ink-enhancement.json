@@ -1,0 +1,9 @@
+{
+  "ink-requestpresenter": "Type: [object Object]",
+  "inkpresenterparam-presentationarea": "Type: Element",
+  "delegatedinktrailpresenter-presentationarea": "Type: Element",
+  "delegatedinktrailpresenter-updateinktrailstartpoint": "Type: undefined",
+  "inktrailstyle-color": "Type: DOMString",
+  "inktrailstyle-diameter": "Type: unrestricted double",
+  "navigator-ink": "Type: Ink"
+}

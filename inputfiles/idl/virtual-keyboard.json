@@ -1,0 +1,9 @@
+{
+  "navigator-virtualkeyboard": "Type: VirtualKeyboard",
+  "virtualkeyboard-show": "Type: undefined",
+  "virtualkeyboard-hide": "Type: undefined",
+  "virtualkeyboard-boundingrect": "Type: DOMRect",
+  "virtualkeyboard-overlayscontent": "Type: boolean",
+  "virtualkeyboard-ongeometrychange": "Type: EventHandler",
+  "elementcontenteditable-virtualkeyboardpolicy": "Type: DOMString"
+}

@@ -1,0 +1,8 @@
+{
+  "interventionreportbody-tojson": "Type: object",
+  "interventionreportbody-id": "Type: DOMString",
+  "interventionreportbody-message": "Type: DOMString",
+  "interventionreportbody-sourcefile": "Type: DOMString",
+  "interventionreportbody-linenumber": "Type: unsigned long",
+  "interventionreportbody-columnnumber": "Type: unsigned long"
+}

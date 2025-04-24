@@ -1,0 +1,7 @@
+{
+  "textdetector-constructor": "No description available.",
+  "textdetector-detect": "Type: [object Object]",
+  "detectedtext-boundingbox": "Type: DOMRectReadOnly",
+  "detectedtext-rawvalue": "Type: DOMString",
+  "detectedtext-cornerpoints": "Type: [object Object]"
+}

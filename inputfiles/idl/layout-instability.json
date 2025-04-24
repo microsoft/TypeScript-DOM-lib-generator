@@ -1,0 +1,10 @@
+{
+  "layoutshift-value": "Type: double",
+  "layoutshift-hadrecentinput": "Type: boolean",
+  "layoutshift-lastinputtime": "Type: DOMHighResTimeStamp",
+  "layoutshift-sources": "Type: [object Object]",
+  "layoutshift-tojson": "Type: object",
+  "layoutshiftattribution-node": "Type: Node",
+  "layoutshiftattribution-previousrect": "Type: DOMRectReadOnly",
+  "layoutshiftattribution-currentrect": "Type: DOMRectReadOnly"
+}

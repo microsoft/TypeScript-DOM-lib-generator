@@ -1,0 +1,17 @@
+{
+  "webgl_blend_equation_advanced_coherent-multiply": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-screen": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-overlay": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-darken": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-lighten": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-colordodge": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-colorburn": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-hardlight": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-softlight": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-difference": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-exclusion": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-hsl_hue": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-hsl_saturation": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-hsl_color": "Type: GLenum",
+  "webgl_blend_equation_advanced_coherent-hsl_luminosity": "Type: GLenum"
+}

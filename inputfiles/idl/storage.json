@@ -1,0 +1,8 @@
+{
+  "navigatorstorage-storage": "Type: StorageManager",
+  "storagemanager-persisted": "Type: [object Object]",
+  "storagemanager-persist": "Type: [object Object]",
+  "storagemanager-estimate": "Type: [object Object]",
+  "storageestimate-usage": "Type: unsigned long long",
+  "storageestimate-quota": "Type: unsigned long long"
+}

@@ -1,0 +1,5 @@
+{
+  "window-orientation": "Type: short",
+  "window-onorientationchange": "Type: EventHandler",
+  "htmlbodyelement-onorientationchange": "Type: EventHandler"
+}

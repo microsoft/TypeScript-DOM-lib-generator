@@ -1,0 +1,7 @@
+{
+  "rtcprioritytype": "No description available.",
+  "rtcrtpencodingparameters-priority": "Type: RTCPriorityType",
+  "rtcrtpencodingparameters-networkpriority": "Type: RTCPriorityType",
+  "rtcdatachannel-priority": "Type: RTCPriorityType",
+  "rtcdatachannelinit-priority": "Type: RTCPriorityType"
+}

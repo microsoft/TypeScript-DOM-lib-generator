@@ -1,0 +1,12 @@
+{
+  "navigator-permissions": "Type: Permissions",
+  "workernavigator-permissions": "Type: Permissions",
+  "permissions-query": "Type: [object Object]",
+  "permissiondescriptor-name": "Type: DOMString",
+  "permissionstatus-state": "Type: PermissionState",
+  "permissionstatus-name": "Type: DOMString",
+  "permissionstatus-onchange": "Type: EventHandler",
+  "permissionstate": "No description available.",
+  "permissionsetparameters-descriptor": "Type: object",
+  "permissionsetparameters-state": "Type: PermissionState"
+}

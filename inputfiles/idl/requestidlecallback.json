@@ -1,0 +1,8 @@
+{
+  "window-requestidlecallback": "Type: unsigned long",
+  "window-cancelidlecallback": "Type: undefined",
+  "idlerequestoptions-timeout": "Type: unsigned long",
+  "idledeadline-timeremaining": "Type: DOMHighResTimeStamp",
+  "idledeadline-didtimeout": "Type: boolean",
+  "idlerequestcallback": "No description available."
+}

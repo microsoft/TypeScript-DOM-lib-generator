@@ -1,0 +1,13 @@
+{
+  "xrlightprobe-probespace": "Type: XRSpace",
+  "xrlightprobe-onreflectionchange": "Type: EventHandler",
+  "xrreflectionformat": "No description available.",
+  "xrlightestimate-sphericalharmonicscoefficients": "Type: Float32Array",
+  "xrlightestimate-primarylightdirection": "Type: DOMPointReadOnly",
+  "xrlightestimate-primarylightintensity": "Type: DOMPointReadOnly",
+  "xrlightprobeinit-reflectionformat": "Type: XRReflectionFormat",
+  "xrsession-requestlightprobe": "Type: [object Object]",
+  "xrsession-preferredreflectionformat": "Type: XRReflectionFormat",
+  "xrframe-getlightestimate": "Type: XRLightEstimate",
+  "xrwebglbinding-getreflectioncubemap": "Type: WebGLTexture"
+}

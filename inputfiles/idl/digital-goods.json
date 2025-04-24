@@ -1,0 +1,21 @@
+{
+  "window-getdigitalgoodsservice": "Type: [object Object]",
+  "digitalgoodsservice-getdetails": "Type: [object Object]",
+  "digitalgoodsservice-listpurchases": "Type: [object Object]",
+  "digitalgoodsservice-listpurchasehistory": "Type: [object Object]",
+  "digitalgoodsservice-consume": "Type: [object Object]",
+  "itemdetails-itemid": "Type: DOMString",
+  "itemdetails-title": "Type: DOMString",
+  "itemdetails-price": "Type: PaymentCurrencyAmount",
+  "itemdetails-type": "Type: ItemType",
+  "itemdetails-description": "Type: DOMString",
+  "itemdetails-iconurls": "Type: [object Object]",
+  "itemdetails-subscriptionperiod": "Type: DOMString",
+  "itemdetails-freetrialperiod": "Type: DOMString",
+  "itemdetails-introductoryprice": "Type: PaymentCurrencyAmount",
+  "itemdetails-introductorypriceperiod": "Type: DOMString",
+  "itemdetails-introductorypricecycles": "Type: unsigned long long",
+  "itemtype": "No description available.",
+  "purchasedetails-itemid": "Type: DOMString",
+  "purchasedetails-purchasetoken": "Type: DOMString"
+}

@@ -1,0 +1,6 @@
+{
+  "inputevent-datatransfer": "Type: DataTransfer",
+  "inputevent-gettargetranges": "Type: [object Object]",
+  "inputeventinit-datatransfer": "Type: DataTransfer",
+  "inputeventinit-targetranges": "Type: [object Object]"
+}

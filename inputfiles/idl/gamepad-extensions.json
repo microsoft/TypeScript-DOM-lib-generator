@@ -1,0 +1,15 @@
+{
+  "gamepadhand": "No description available.",
+  "gamepadpose-hasorientation": "Type: boolean",
+  "gamepadpose-hasposition": "Type: boolean",
+  "gamepadpose-position": "Type: Float32Array",
+  "gamepadpose-linearvelocity": "Type: Float32Array",
+  "gamepadpose-linearacceleration": "Type: Float32Array",
+  "gamepadpose-orientation": "Type: Float32Array",
+  "gamepadpose-angularvelocity": "Type: Float32Array",
+  "gamepadpose-angularacceleration": "Type: Float32Array",
+  "gamepad-hand": "Type: GamepadHand",
+  "gamepad-hapticactuators": "Type: [object Object]",
+  "gamepad-pose": "Type: GamepadPose",
+  "gamepadhapticactuator-pulse": "Type: [object Object]"
+}

@@ -1,0 +1,16 @@
+{
+  "spatialnavigationdirection": "No description available.",
+  "window-navigate": "Type: undefined",
+  "focusableareasearchmode": "No description available.",
+  "focusableareasoption-mode": "Type: FocusableAreaSearchMode",
+  "spatialnavigationsearchoptions-candidates": "Type: [object Object]",
+  "spatialnavigationsearchoptions-container": "Type: Node",
+  "element-getspatialnavigationcontainer": "Type: Node",
+  "element-focusableareas": "Type: [object Object]",
+  "element-spatialnavigationsearch": "Type: Node",
+  "navigationevent-constructor": "No description available.",
+  "navigationevent-dir": "Type: SpatialNavigationDirection",
+  "navigationevent-relatedtarget": "Type: EventTarget",
+  "navigationeventinit-dir": "Type: SpatialNavigationDirection",
+  "navigationeventinit-relatedtarget": "Type: EventTarget"
+}

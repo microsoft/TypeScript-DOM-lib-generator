@@ -1,0 +1,9 @@
+{
+  "privateaggregation-contributetohistogram": "Type: undefined",
+  "privateaggregation-contributetohistogramonevent": "Type: undefined",
+  "privateaggregation-enabledebugmode": "Type: undefined",
+  "pahistogramcontribution-bucket": "Type: bigint",
+  "pahistogramcontribution-value": "Type: long",
+  "pahistogramcontribution-filteringid": "Type: bigint",
+  "padebugmodeoptions-debugkey": "Type: bigint"
+}

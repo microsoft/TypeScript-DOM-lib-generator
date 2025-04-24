@@ -1,0 +1,5 @@
+{
+  "document-prerendering": "Type: boolean",
+  "document-onprerenderingchange": "Type: EventHandler",
+  "performancenavigationtiming-activationstart": "Type: DOMHighResTimeStamp"
+}

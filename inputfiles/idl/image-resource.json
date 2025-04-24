@@ -1,0 +1,6 @@
+{
+  "imageresource-src": "Type: USVString",
+  "imageresource-sizes": "Type: DOMString",
+  "imageresource-type": "Type: DOMString",
+  "imageresource-label": "Type: DOMString"
+}

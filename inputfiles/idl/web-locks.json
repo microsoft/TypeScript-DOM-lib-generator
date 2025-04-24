@@ -1,0 +1,18 @@
+{
+  "navigatorlocks-locks": "Type: LockManager",
+  "lockmanager-request": "Type: [object Object]",
+  "lockmanager-query": "Type: [object Object]",
+  "lockgrantedcallback": "No description available.",
+  "lockmode": "No description available.",
+  "lockoptions-mode": "Type: LockMode",
+  "lockoptions-ifavailable": "Type: boolean",
+  "lockoptions-steal": "Type: boolean",
+  "lockoptions-signal": "Type: AbortSignal",
+  "lockmanagersnapshot-held": "Type: [object Object]",
+  "lockmanagersnapshot-pending": "Type: [object Object]",
+  "lockinfo-name": "Type: DOMString",
+  "lockinfo-mode": "Type: LockMode",
+  "lockinfo-clientid": "Type: DOMString",
+  "lock-name": "Type: DOMString",
+  "lock-mode": "Type: LockMode"
+}

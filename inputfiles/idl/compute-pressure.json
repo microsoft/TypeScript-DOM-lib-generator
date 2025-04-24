@@ -1,0 +1,16 @@
+{
+  "pressuresource": "No description available.",
+  "pressurestate": "No description available.",
+  "pressureupdatecallback": "No description available.",
+  "pressureobserver-constructor": "No description available.",
+  "pressureobserver-observe": "Type: [object Object]",
+  "pressureobserver-unobserve": "Type: undefined",
+  "pressureobserver-disconnect": "Type: undefined",
+  "pressureobserver-takerecords": "Type: [object Object]",
+  "pressureobserver-knownsources": "Type: [object Object]",
+  "pressurerecord-source": "Type: PressureSource",
+  "pressurerecord-state": "Type: PressureState",
+  "pressurerecord-time": "Type: DOMHighResTimeStamp",
+  "pressurerecord-tojson": "Type: object",
+  "pressureobserveroptions-sampleinterval": "Type: unsigned long"
+}

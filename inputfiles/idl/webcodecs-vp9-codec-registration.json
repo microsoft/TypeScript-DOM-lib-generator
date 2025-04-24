@@ -1,0 +1,4 @@
+{
+  "videoencoderencodeoptions-vp9": "Type: VideoEncoderEncodeOptionsForVp9",
+  "videoencoderencodeoptionsforvp9-quantizer": "Type: unsigned short"
+}

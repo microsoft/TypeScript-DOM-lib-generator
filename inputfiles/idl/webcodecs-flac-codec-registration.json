@@ -1,0 +1,5 @@
+{
+  "audioencoderconfig-flac": "Type: FlacEncoderConfig",
+  "flacencoderconfig-blocksize": "Type: unsigned long",
+  "flacencoderconfig-compresslevel": "Type: unsigned long"
+}

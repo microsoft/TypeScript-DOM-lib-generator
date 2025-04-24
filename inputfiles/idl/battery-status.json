@@ -1,0 +1,11 @@
+{
+  "navigator-getbattery": "Type: [object Object]",
+  "batterymanager-charging": "Type: boolean",
+  "batterymanager-chargingtime": "Type: unrestricted double",
+  "batterymanager-dischargingtime": "Type: unrestricted double",
+  "batterymanager-level": "Type: double",
+  "batterymanager-onchargingchange": "Type: EventHandler",
+  "batterymanager-onchargingtimechange": "Type: EventHandler",
+  "batterymanager-ondischargingtimechange": "Type: EventHandler",
+  "batterymanager-onlevelchange": "Type: EventHandler"
+}

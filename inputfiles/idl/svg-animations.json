@@ -1,0 +1,21 @@
+{
+  "timeevent-view": "Type: WindowProxy",
+  "timeevent-detail": "Type: long",
+  "timeevent-inittimeevent": "Type: undefined",
+  "svganimationelement-targetelement": "Type: SVGElement",
+  "svganimationelement-onbegin": "Type: EventHandler",
+  "svganimationelement-onend": "Type: EventHandler",
+  "svganimationelement-onrepeat": "Type: EventHandler",
+  "svganimationelement-getstarttime": "Type: float",
+  "svganimationelement-getcurrenttime": "Type: float",
+  "svganimationelement-getsimpleduration": "Type: float",
+  "svganimationelement-beginelement": "Type: undefined",
+  "svganimationelement-beginelementat": "Type: undefined",
+  "svganimationelement-endelement": "Type: undefined",
+  "svganimationelement-endelementat": "Type: undefined",
+  "svgsvgelement-pauseanimations": "Type: undefined",
+  "svgsvgelement-unpauseanimations": "Type: undefined",
+  "svgsvgelement-animationspaused": "Type: boolean",
+  "svgsvgelement-getcurrenttime": "Type: float",
+  "svgsvgelement-setcurrenttime": "Type: undefined"
+}

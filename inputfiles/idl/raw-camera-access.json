@@ -1,0 +1,6 @@
+{
+  "xrview-camera": "Type: XRCamera",
+  "xrcamera-width": "Type: unsigned long",
+  "xrcamera-height": "Type: unsigned long",
+  "xrwebglbinding-getcameraimage": "Type: WebGLTexture"
+}

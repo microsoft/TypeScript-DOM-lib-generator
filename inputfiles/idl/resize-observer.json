@@ -1,0 +1,16 @@
+{
+  "resizeobserverboxoptions": "No description available.",
+  "resizeobserveroptions-box": "Type: ResizeObserverBoxOptions",
+  "resizeobserver-constructor": "No description available.",
+  "resizeobserver-observe": "Type: undefined",
+  "resizeobserver-unobserve": "Type: undefined",
+  "resizeobserver-disconnect": "Type: undefined",
+  "resizeobservercallback": "No description available.",
+  "resizeobserverentry-target": "Type: Element",
+  "resizeobserverentry-contentrect": "Type: DOMRectReadOnly",
+  "resizeobserverentry-borderboxsize": "Type: [object Object]",
+  "resizeobserverentry-contentboxsize": "Type: [object Object]",
+  "resizeobserverentry-devicepixelcontentboxsize": "Type: [object Object]",
+  "resizeobserversize-inlinesize": "Type: unrestricted double",
+  "resizeobserversize-blocksize": "Type: unrestricted double"
+}

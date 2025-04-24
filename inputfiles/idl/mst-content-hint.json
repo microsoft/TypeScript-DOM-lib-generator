@@ -1,0 +1,5 @@
+{
+  "mediastreamtrack-contenthint": "Type: DOMString",
+  "rtcdegradationpreference": "No description available.",
+  "rtcrtpsendparameters-degradationpreference": "Type: RTCDegradationPreference"
+}

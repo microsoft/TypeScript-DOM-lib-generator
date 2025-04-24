@@ -1,0 +1,7 @@
+{
+  "xrenvironmentblendmode": "No description available.",
+  "xrsession-environmentblendmode": "Type: XREnvironmentBlendMode",
+  "xrinteractionmode": "No description available.",
+  "xrsession-interactionmode": "Type: XRInteractionMode",
+  "xrview-isfirstpersonobserver": "Type: boolean"
+}

@@ -1,0 +1,15 @@
+{
+  "scrollaxis": "No description available.",
+  "scrolltimelineoptions-source": "Type: Element",
+  "scrolltimelineoptions-axis": "Type: ScrollAxis",
+  "scrolltimeline-constructor": "No description available.",
+  "scrolltimeline-source": "Type: Element",
+  "scrolltimeline-axis": "Type: ScrollAxis",
+  "viewtimelineoptions-subject": "Type: Element",
+  "viewtimelineoptions-axis": "Type: ScrollAxis",
+  "viewtimelineoptions-inset": "Type: [object Object],[object Object]",
+  "viewtimeline-constructor": "No description available.",
+  "viewtimeline-subject": "Type: Element",
+  "viewtimeline-startoffset": "Type: CSSNumericValue",
+  "viewtimeline-endoffset": "Type: CSSNumericValue"
+}

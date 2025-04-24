@@ -1,0 +1,10 @@
+{
+  "accelerometer-constructor": "No description available.",
+  "accelerometer-x": "Type: double",
+  "accelerometer-y": "Type: double",
+  "accelerometer-z": "Type: double",
+  "accelerometerlocalcoordinatesystem": "No description available.",
+  "accelerometersensoroptions-referenceframe": "Type: AccelerometerLocalCoordinateSystem",
+  "linearaccelerationsensor-constructor": "No description available.",
+  "gravitysensor-constructor": "No description available."
+}

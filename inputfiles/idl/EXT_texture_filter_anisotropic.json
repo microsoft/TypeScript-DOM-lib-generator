@@ -1,0 +1,4 @@
+{
+  "ext_texture_filter_anisotropic-texture_max_anisotropy_ext": "Type: GLenum",
+  "ext_texture_filter_anisotropic-max_texture_max_anisotropy_ext": "Type: GLenum"
+}

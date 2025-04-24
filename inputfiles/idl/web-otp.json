@@ -1,0 +1,6 @@
+{
+  "otpcredential-code": "Type: DOMString",
+  "credentialrequestoptions-otp": "Type: OTPCredentialRequestOptions",
+  "otpcredentialrequestoptions-transport": "Type: [object Object]",
+  "otpcredentialtransporttype": "No description available."
+}

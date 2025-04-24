@@ -1,0 +1,11 @@
+{
+  "mockcapturepromptresult": "No description available.",
+  "mockcapturepromptresultconfiguration-getusermedia": "Type: MockCapturePromptResult",
+  "mockcapturepromptresultconfiguration-getdisplaymedia": "Type: MockCapturePromptResult",
+  "mockcapturedeviceconfiguration-label": "Type: DOMString",
+  "mockcapturedeviceconfiguration-deviceid": "Type: DOMString",
+  "mockcapturedeviceconfiguration-groupid": "Type: DOMString",
+  "mockcameraconfiguration-defaultframerate": "Type: double",
+  "mockcameraconfiguration-facingmode": "Type: DOMString",
+  "mockmicrophoneconfiguration-defaultsamplerate": "Type: unsigned long"
+}

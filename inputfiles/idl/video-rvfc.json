@@ -1,0 +1,15 @@
+{
+  "videoframecallbackmetadata-presentationtime": "Type: DOMHighResTimeStamp",
+  "videoframecallbackmetadata-expecteddisplaytime": "Type: DOMHighResTimeStamp",
+  "videoframecallbackmetadata-width": "Type: unsigned long",
+  "videoframecallbackmetadata-height": "Type: unsigned long",
+  "videoframecallbackmetadata-mediatime": "Type: double",
+  "videoframecallbackmetadata-presentedframes": "Type: unsigned long",
+  "videoframecallbackmetadata-processingduration": "Type: double",
+  "videoframecallbackmetadata-capturetime": "Type: DOMHighResTimeStamp",
+  "videoframecallbackmetadata-receivetime": "Type: DOMHighResTimeStamp",
+  "videoframecallbackmetadata-rtptimestamp": "Type: unsigned long",
+  "videoframerequestcallback": "No description available.",
+  "htmlvideoelement-requestvideoframecallback": "Type: unsigned long",
+  "htmlvideoelement-cancelvideoframecallback": "Type: undefined"
+}

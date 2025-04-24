@@ -1,0 +1,12 @@
+{
+  "xrinputsource-hand": "Type: XRHand",
+  "xrhandjoint": "No description available.",
+  "xrhand-iterable": "Type: undefined",
+  "xrhand-size": "Type: unsigned long",
+  "xrhand-get": "Type: XRJointSpace",
+  "xrjointspace-jointname": "Type: XRHandJoint",
+  "xrframe-getjointpose": "Type: XRJointPose",
+  "xrframe-filljointradii": "Type: boolean",
+  "xrframe-fillposes": "Type: boolean",
+  "xrjointpose-radius": "Type: float"
+}

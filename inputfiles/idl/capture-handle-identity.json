@@ -1,0 +1,10 @@
+{
+  "capturehandleconfig-exposeorigin": "Type: boolean",
+  "capturehandleconfig-handle": "Type: DOMString",
+  "capturehandleconfig-permittedorigins": "Type: [object Object]",
+  "mediadevices-setcapturehandleconfig": "Type: undefined",
+  "capturehandle-origin": "Type: DOMString",
+  "capturehandle-handle": "Type: DOMString",
+  "mediastreamtrack-getcapturehandle": "Type: CaptureHandle",
+  "mediastreamtrack-oncapturehandlechange": "Type: EventHandler"
+}

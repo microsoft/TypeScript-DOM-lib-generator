@@ -1,0 +1,7 @@
+{
+  "document-onfreeze": "Type: EventHandler",
+  "document-onresume": "Type: EventHandler",
+  "document-wasdiscarded": "Type: boolean",
+  "client-lifecyclestate": "Type: ClientLifecycleState",
+  "clientlifecyclestate": "No description available."
+}

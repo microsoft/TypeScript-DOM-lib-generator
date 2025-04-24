@@ -1,0 +1,16 @@
+{
+  "permissionspolicy-allowsfeature": "Type: boolean",
+  "permissionspolicy-features": "Type: [object Object]",
+  "permissionspolicy-allowedfeatures": "Type: [object Object]",
+  "permissionspolicy-getallowlistforfeature": "Type: [object Object]",
+  "document-permissionspolicy": "Type: PermissionsPolicy",
+  "htmliframeelement-permissionspolicy": "Type: PermissionsPolicy",
+  "permissionspolicyviolationreportbody-tojson": "Type: object",
+  "permissionspolicyviolationreportbody-featureid": "Type: DOMString",
+  "permissionspolicyviolationreportbody-sourcefile": "Type: DOMString",
+  "permissionspolicyviolationreportbody-linenumber": "Type: long",
+  "permissionspolicyviolationreportbody-columnnumber": "Type: long",
+  "permissionspolicyviolationreportbody-disposition": "Type: DOMString",
+  "permissionspolicyviolationreportbody-allowattribute": "Type: DOMString",
+  "permissionspolicyviolationreportbody-srcattribute": "Type: DOMString"
+}

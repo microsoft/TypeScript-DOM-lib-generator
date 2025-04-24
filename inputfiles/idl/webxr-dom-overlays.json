@@ -1,0 +1,8 @@
+{
+  "globaleventhandlers-onbeforexrselect": "Type: EventHandler",
+  "xrsessioninit-domoverlay": "Type: XRDOMOverlayInit",
+  "xrsession-domoverlaystate": "Type: XRDOMOverlayState",
+  "xrdomoverlayinit-root": "Type: Element",
+  "xrdomoverlaytype": "No description available.",
+  "xrdomoverlaystate-type": "Type: XRDOMOverlayType"
+}

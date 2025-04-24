@@ -1,0 +1,12 @@
+{
+  "document-namedflows": "Type: NamedFlowMap",
+  "namedflowmap-maplike": "Type: undefined",
+  "namedflow-name": "Type: CSSOMString",
+  "namedflow-overset": "Type: boolean",
+  "namedflow-getregions": "Type: [object Object]",
+  "namedflow-firstemptyregionindex": "Type: short",
+  "namedflow-getcontent": "Type: [object Object]",
+  "namedflow-getregionsbycontent": "Type: [object Object]",
+  "region-regionoverset": "Type: CSSOMString",
+  "region-getregionflowranges": "Type: [object Object]"
+}

@@ -1,0 +1,12 @@
+{
+  "xranchor-anchorspace": "Type: XRSpace",
+  "xranchor-requestpersistenthandle": "Type: [object Object]",
+  "xranchor-delete": "Type: undefined",
+  "xrframe-createanchor": "Type: [object Object]",
+  "xrsession-persistentanchors": "Type: [object Object]",
+  "xrsession-restorepersistentanchor": "Type: [object Object]",
+  "xrsession-deletepersistentanchor": "Type: [object Object]",
+  "xrhittestresult-createanchor": "Type: [object Object]",
+  "xranchorset-setlike": "Type: undefined",
+  "xrframe-trackedanchors": "Type: XRAnchorSet"
+}

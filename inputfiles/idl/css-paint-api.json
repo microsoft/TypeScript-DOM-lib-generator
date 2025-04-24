@@ -1,0 +1,8 @@
+{
+  "css-paintworklet": "Type: Worklet",
+  "paintworkletglobalscope-registerpaint": "Type: undefined",
+  "paintworkletglobalscope-devicepixelratio": "Type: unrestricted double",
+  "paintrenderingcontext2dsettings-alpha": "Type: boolean",
+  "paintsize-width": "Type: double",
+  "paintsize-height": "Type: double"
+}

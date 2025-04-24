@@ -1,0 +1,18 @@
+{
+  "screen-isextended": "Type: boolean",
+  "screen-onchange": "Type: EventHandler",
+  "window-getscreendetails": "Type: [object Object]",
+  "screendetails-screens": "Type: [object Object]",
+  "screendetails-currentscreen": "Type: ScreenDetailed",
+  "screendetails-onscreenschange": "Type: EventHandler",
+  "screendetails-oncurrentscreenchange": "Type: EventHandler",
+  "screendetailed-availleft": "Type: long",
+  "screendetailed-availtop": "Type: long",
+  "screendetailed-left": "Type: long",
+  "screendetailed-top": "Type: long",
+  "screendetailed-isprimary": "Type: boolean",
+  "screendetailed-isinternal": "Type: boolean",
+  "screendetailed-devicepixelratio": "Type: float",
+  "screendetailed-label": "Type: DOMString",
+  "fullscreenoptions-screen": "Type: ScreenDetailed"
+}

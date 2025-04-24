@@ -1,0 +1,10 @@
+{
+  "ext_texture_norm16-r16_ext": "Type: GLenum",
+  "ext_texture_norm16-rg16_ext": "Type: GLenum",
+  "ext_texture_norm16-rgb16_ext": "Type: GLenum",
+  "ext_texture_norm16-rgba16_ext": "Type: GLenum",
+  "ext_texture_norm16-r16_snorm_ext": "Type: GLenum",
+  "ext_texture_norm16-rg16_snorm_ext": "Type: GLenum",
+  "ext_texture_norm16-rgb16_snorm_ext": "Type: GLenum",
+  "ext_texture_norm16-rgba16_snorm_ext": "Type: GLenum"
+}

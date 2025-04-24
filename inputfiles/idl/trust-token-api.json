@@ -1,0 +1,14 @@
+{
+  "refreshpolicy": "No description available.",
+  "tokenversion": "No description available.",
+  "operationtype": "No description available.",
+  "privatetoken-version": "Type: TokenVersion",
+  "privatetoken-operation": "Type: OperationType",
+  "privatetoken-refreshpolicy": "Type: RefreshPolicy",
+  "privatetoken-issuers": "Type: [object Object]",
+  "requestinit-privatetoken": "Type: PrivateToken",
+  "htmliframeelement-privatetoken": "Type: DOMString",
+  "xmlhttprequest-setprivatetoken": "Type: undefined",
+  "document-hasprivatetoken": "Type: [object Object]",
+  "document-hasredemptionrecord": "Type: [object Object]"
+}

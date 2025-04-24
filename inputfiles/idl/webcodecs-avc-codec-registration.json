@@ -1,0 +1,7 @@
+{
+  "videoencoderconfig-avc": "Type: AvcEncoderConfig",
+  "avcencoderconfig-format": "Type: AvcBitstreamFormat",
+  "avcbitstreamformat": "No description available.",
+  "videoencoderencodeoptions-avc": "Type: VideoEncoderEncodeOptionsForAvc",
+  "videoencoderencodeoptionsforavc-quantizer": "Type: unsigned short"
+}

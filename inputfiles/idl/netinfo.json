@@ -1,0 +1,13 @@
+{
+  "connectiontype": "No description available.",
+  "effectiveconnectiontype": "No description available.",
+  "navigatornetworkinformation-connection": "Type: NetworkInformation",
+  "networkinformation-type": "Type: ConnectionType",
+  "networkinformation-effectivetype": "Type: EffectiveConnectionType",
+  "networkinformation-downlinkmax": "Type: Megabit",
+  "networkinformation-downlink": "Type: Megabit",
+  "networkinformation-rtt": "Type: Millisecond",
+  "networkinformation-onchange": "Type: EventHandler",
+  "megabit": "No description available.",
+  "millisecond": "No description available."
+}

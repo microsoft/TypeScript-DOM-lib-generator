@@ -1,0 +1,9 @@
+{
+  "xrmesh-meshspace": "Type: XRSpace",
+  "xrmesh-vertices": "Type: [object Object]",
+  "xrmesh-indices": "Type: Uint32Array",
+  "xrmesh-lastchangedtime": "Type: DOMHighResTimeStamp",
+  "xrmesh-semanticlabel": "Type: DOMString",
+  "xrmeshset-setlike": "Type: undefined",
+  "xrframe-detectedmeshes": "Type: XRMeshSet"
+}

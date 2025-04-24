@@ -1,0 +1,19 @@
+{
+  "htmlportalelement-constructor": "No description available.",
+  "htmlportalelement-src": "Type: USVString",
+  "htmlportalelement-referrerpolicy": "Type: DOMString",
+  "htmlportalelement-activate": "Type: [object Object]",
+  "htmlportalelement-postmessage": "Type: undefined",
+  "htmlportalelement-onmessage": "Type: EventHandler",
+  "htmlportalelement-onmessageerror": "Type: EventHandler",
+  "portalactivateoptions-data": "Type: any",
+  "window-portalhost": "Type: PortalHost",
+  "portalhost-postmessage": "Type: undefined",
+  "portalhost-onmessage": "Type: EventHandler",
+  "portalhost-onmessageerror": "Type: EventHandler",
+  "portalactivateevent-constructor": "No description available.",
+  "portalactivateevent-data": "Type: any",
+  "portalactivateevent-adoptpredecessor": "Type: HTMLPortalElement",
+  "portalactivateeventinit-data": "Type: any",
+  "windoweventhandlers-onportalactivate": "Type: EventHandler"
+}

@@ -1,0 +1,12 @@
+{
+  "useridlestate": "No description available.",
+  "screenidlestate": "No description available.",
+  "idleoptions-threshold": "Type: unsigned long long",
+  "idleoptions-signal": "Type: AbortSignal",
+  "idledetector-constructor": "No description available.",
+  "idledetector-userstate": "Type: UserIdleState",
+  "idledetector-screenstate": "Type: ScreenIdleState",
+  "idledetector-onchange": "Type: EventHandler",
+  "idledetector-requestpermission": "Type: [object Object]",
+  "idledetector-start": "Type: [object Object]"
+}

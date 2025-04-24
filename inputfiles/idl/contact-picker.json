@@ -1,0 +1,23 @@
+{
+  "navigator-contacts": "Type: ContactsManager",
+  "contactproperty": "No description available.",
+  "contactaddress-tojson": "Type: object",
+  "contactaddress-city": "Type: DOMString",
+  "contactaddress-country": "Type: DOMString",
+  "contactaddress-dependentlocality": "Type: DOMString",
+  "contactaddress-organization": "Type: DOMString",
+  "contactaddress-phone": "Type: DOMString",
+  "contactaddress-postalcode": "Type: DOMString",
+  "contactaddress-recipient": "Type: DOMString",
+  "contactaddress-region": "Type: DOMString",
+  "contactaddress-sortingcode": "Type: DOMString",
+  "contactaddress-addressline": "Type: [object Object]",
+  "contactinfo-address": "Type: [object Object]",
+  "contactinfo-email": "Type: [object Object]",
+  "contactinfo-icon": "Type: [object Object]",
+  "contactinfo-name": "Type: [object Object]",
+  "contactinfo-tel": "Type: [object Object]",
+  "contactsselectoptions-multiple": "Type: boolean",
+  "contactsmanager-getproperties": "Type: [object Object]",
+  "contactsmanager-select": "Type: [object Object]"
+}

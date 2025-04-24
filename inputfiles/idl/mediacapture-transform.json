@@ -1,0 +1,10 @@
+{
+  "mediastreamtrackprocessor-constructor": "No description available.",
+  "mediastreamtrackprocessor-readable": "Type: ReadableStream",
+  "mediastreamtrackprocessorinit-track": "Type: MediaStreamTrack",
+  "mediastreamtrackprocessorinit-maxbuffersize": "Type: unsigned short",
+  "videotrackgenerator-constructor": "No description available.",
+  "videotrackgenerator-writable": "Type: WritableStream",
+  "videotrackgenerator-muted": "Type: boolean",
+  "videotrackgenerator-track": "Type: MediaStreamTrack"
+}

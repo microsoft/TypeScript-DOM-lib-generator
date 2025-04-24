@@ -1,0 +1,8 @@
+{
+  "capturedmouseevent-constructor": "No description available.",
+  "capturedmouseevent-surfacex": "Type: long",
+  "capturedmouseevent-surfacey": "Type: long",
+  "capturedmouseeventinit-surfacex": "Type: long",
+  "capturedmouseeventinit-surfacey": "Type: long",
+  "capturecontroller-oncapturedmousechange": "Type: EventHandler"
+}

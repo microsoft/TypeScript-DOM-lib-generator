@@ -1,0 +1,14 @@
+{
+  "audioencoderconfig-opus": "Type: OpusEncoderConfig",
+  "opusencoderconfig-format": "Type: OpusBitstreamFormat",
+  "opusencoderconfig-signal": "Type: OpusSignal",
+  "opusencoderconfig-application": "Type: OpusApplication",
+  "opusencoderconfig-frameduration": "Type: unsigned long long",
+  "opusencoderconfig-complexity": "Type: unsigned long",
+  "opusencoderconfig-packetlossperc": "Type: unsigned long",
+  "opusencoderconfig-useinbandfec": "Type: boolean",
+  "opusencoderconfig-usedtx": "Type: boolean",
+  "opusbitstreamformat": "No description available.",
+  "opussignal": "No description available.",
+  "opusapplication": "No description available."
+}

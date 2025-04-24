@@ -1,0 +1,7 @@
+{
+  "csspseudoelement-type": "Type: CSSOMString",
+  "csspseudoelement-element": "Type: Element",
+  "csspseudoelement-parent": "Type: [object Object],[object Object]",
+  "csspseudoelement-pseudo": "Type: CSSPseudoElement",
+  "element-pseudo": "Type: CSSPseudoElement"
+}

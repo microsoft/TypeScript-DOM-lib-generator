@@ -1,0 +1,20 @@
+{
+  "geolocationsensor-constructor": "No description available.",
+  "geolocationsensor-read": "Type: [object Object]",
+  "geolocationsensor-latitude": "Type: unrestricted double",
+  "geolocationsensor-longitude": "Type: unrestricted double",
+  "geolocationsensor-altitude": "Type: unrestricted double",
+  "geolocationsensor-accuracy": "Type: unrestricted double",
+  "geolocationsensor-altitudeaccuracy": "Type: unrestricted double",
+  "geolocationsensor-heading": "Type: unrestricted double",
+  "geolocationsensor-speed": "Type: unrestricted double",
+  "readoptions-signal": "Type: AbortSignal",
+  "geolocationsensorreading-timestamp": "Type: DOMHighResTimeStamp",
+  "geolocationsensorreading-latitude": "Type: double",
+  "geolocationsensorreading-longitude": "Type: double",
+  "geolocationsensorreading-altitude": "Type: double",
+  "geolocationsensorreading-accuracy": "Type: double",
+  "geolocationsensorreading-altitudeaccuracy": "Type: double",
+  "geolocationsensorreading-heading": "Type: double",
+  "geolocationsensorreading-speed": "Type: double"
+}

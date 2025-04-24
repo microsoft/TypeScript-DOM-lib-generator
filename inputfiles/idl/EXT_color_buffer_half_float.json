@@ -1,0 +1,6 @@
+{
+  "ext_color_buffer_half_float-rgba16f_ext": "Type: GLenum",
+  "ext_color_buffer_half_float-rgb16f_ext": "Type: GLenum",
+  "ext_color_buffer_half_float-framebuffer_attachment_component_type_ext": "Type: GLenum",
+  "ext_color_buffer_half_float-unsigned_normalized_ext": "Type: GLenum"
+}

@@ -1,0 +1,11 @@
+{
+  "serviceworkerregistration-sync": "Type: SyncManager",
+  "syncmanager-register": "Type: [object Object]",
+  "syncmanager-gettags": "Type: [object Object]",
+  "serviceworkerglobalscope-onsync": "Type: EventHandler",
+  "syncevent-constructor": "No description available.",
+  "syncevent-tag": "Type: DOMString",
+  "syncevent-lastchance": "Type: boolean",
+  "synceventinit-tag": "Type: DOMString",
+  "synceventinit-lastchance": "Type: boolean"
+}

@@ -1,0 +1,10 @@
+{
+  "capturecontroller-getsupportedzoomlevels": "Type: [object Object]",
+  "capturecontroller-zoomlevel": "Type: long",
+  "capturecontroller-increasezoomlevel": "Type: [object Object]",
+  "capturecontroller-decreasezoomlevel": "Type: [object Object]",
+  "capturecontroller-resetzoomlevel": "Type: [object Object]",
+  "capturecontroller-onzoomlevelchange": "Type: EventHandler",
+  "capturecontroller-constructor": "No description available.",
+  "capturecontroller-forwardwheel": "Type: [object Object]"
+}

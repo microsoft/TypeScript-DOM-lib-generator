@@ -1,0 +1,5 @@
+{
+  "webgl_color_buffer_float-rgba32f_ext": "Type: GLenum",
+  "webgl_color_buffer_float-framebuffer_attachment_component_type_ext": "Type: GLenum",
+  "webgl_color_buffer_float-unsigned_normalized_ext": "Type: GLenum"
+}

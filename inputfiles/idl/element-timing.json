@@ -1,0 +1,13 @@
+{
+  "performanceelementtiming-rendertime": "Type: DOMHighResTimeStamp",
+  "performanceelementtiming-loadtime": "Type: DOMHighResTimeStamp",
+  "performanceelementtiming-intersectionrect": "Type: DOMRectReadOnly",
+  "performanceelementtiming-identifier": "Type: DOMString",
+  "performanceelementtiming-naturalwidth": "Type: unsigned long",
+  "performanceelementtiming-naturalheight": "Type: unsigned long",
+  "performanceelementtiming-id": "Type: DOMString",
+  "performanceelementtiming-element": "Type: Element",
+  "performanceelementtiming-url": "Type: DOMString",
+  "performanceelementtiming-tojson": "Type: object",
+  "element-elementtiming": "Type: DOMString"
+}

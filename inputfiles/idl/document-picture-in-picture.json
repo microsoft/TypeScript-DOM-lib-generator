@@ -1,0 +1,13 @@
+{
+  "window-documentpictureinpicture": "Type: DocumentPictureInPicture",
+  "documentpictureinpicture-requestwindow": "Type: [object Object]",
+  "documentpictureinpicture-window": "Type: Window",
+  "documentpictureinpicture-onenter": "Type: EventHandler",
+  "documentpictureinpictureoptions-width": "Type: unsigned long long",
+  "documentpictureinpictureoptions-height": "Type: unsigned long long",
+  "documentpictureinpictureoptions-disallowreturntoopener": "Type: boolean",
+  "documentpictureinpictureoptions-preferinitialwindowplacement": "Type: boolean",
+  "documentpictureinpictureevent-constructor": "No description available.",
+  "documentpictureinpictureevent-window": "Type: Window",
+  "documentpictureinpictureeventinit-window": "Type: Window"
+}

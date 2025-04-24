@@ -1,0 +1,6 @@
+{
+  "webgl_compressed_texture_pvrtc-compressed_rgb_pvrtc_4bppv1_img": "Type: GLenum",
+  "webgl_compressed_texture_pvrtc-compressed_rgb_pvrtc_2bppv1_img": "Type: GLenum",
+  "webgl_compressed_texture_pvrtc-compressed_rgba_pvrtc_4bppv1_img": "Type: GLenum",
+  "webgl_compressed_texture_pvrtc-compressed_rgba_pvrtc_2bppv1_img": "Type: GLenum"
+}

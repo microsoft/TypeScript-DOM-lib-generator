@@ -1,0 +1,12 @@
+{
+  "pointerlockoptions-unadjustedmovement": "Type: boolean",
+  "element-requestpointerlock": "Type: [object Object]",
+  "document-onpointerlockchange": "Type: EventHandler",
+  "document-onpointerlockerror": "Type: EventHandler",
+  "document-exitpointerlock": "Type: undefined",
+  "documentorshadowroot-pointerlockelement": "Type: Element",
+  "mouseevent-movementx": "Type: double",
+  "mouseevent-movementy": "Type: double",
+  "mouseeventinit-movementx": "Type: double",
+  "mouseeventinit-movementy": "Type: double"
+}

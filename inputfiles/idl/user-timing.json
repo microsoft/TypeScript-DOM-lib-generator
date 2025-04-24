@@ -1,0 +1,15 @@
+{
+  "performancemarkoptions-detail": "Type: any",
+  "performancemarkoptions-starttime": "Type: DOMHighResTimeStamp",
+  "performancemeasureoptions-detail": "Type: any",
+  "performancemeasureoptions-start": "Type: [object Object],[object Object]",
+  "performancemeasureoptions-duration": "Type: DOMHighResTimeStamp",
+  "performancemeasureoptions-end": "Type: [object Object],[object Object]",
+  "performance-mark": "Type: PerformanceMark",
+  "performance-clearmarks": "Type: undefined",
+  "performance-measure": "Type: PerformanceMeasure",
+  "performance-clearmeasures": "Type: undefined",
+  "performancemark-constructor": "No description available.",
+  "performancemark-detail": "Type: any",
+  "performancemeasure-detail": "Type: any"
+}

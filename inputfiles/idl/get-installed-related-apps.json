@@ -1,0 +1,7 @@
+{
+  "relatedapplication-platform": "Type: USVString",
+  "relatedapplication-url": "Type: USVString",
+  "relatedapplication-id": "Type: DOMString",
+  "relatedapplication-version": "Type: USVString",
+  "navigator-getinstalledrelatedapps": "Type: [object Object]"
+}

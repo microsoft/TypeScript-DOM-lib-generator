@@ -1,0 +1,18 @@
+{
+  "textdecodercommon-encoding": "Type: DOMString",
+  "textdecodercommon-fatal": "Type: boolean",
+  "textdecodercommon-ignorebom": "Type: boolean",
+  "textdecoderoptions-fatal": "Type: boolean",
+  "textdecoderoptions-ignorebom": "Type: boolean",
+  "textdecodeoptions-stream": "Type: boolean",
+  "textdecoder-constructor": "No description available.",
+  "textdecoder-decode": "Type: USVString",
+  "textencodercommon-encoding": "Type: DOMString",
+  "textencoderencodeintoresult-read": "Type: unsigned long long",
+  "textencoderencodeintoresult-written": "Type: unsigned long long",
+  "textencoder-constructor": "No description available.",
+  "textencoder-encode": "Type: Uint8Array",
+  "textencoder-encodeinto": "Type: TextEncoderEncodeIntoResult",
+  "textdecoderstream-constructor": "No description available.",
+  "textencoderstream-constructor": "No description available."
+}

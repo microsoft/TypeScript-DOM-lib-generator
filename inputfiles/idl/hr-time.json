@@ -1,0 +1,8 @@
+{
+  "domhighrestimestamp": "No description available.",
+  "epochtimestamp": "No description available.",
+  "performance-now": "Type: DOMHighResTimeStamp",
+  "performance-timeorigin": "Type: DOMHighResTimeStamp",
+  "performance-tojson": "Type: object",
+  "windoworworkerglobalscope-performance": "Type: Performance"
+}

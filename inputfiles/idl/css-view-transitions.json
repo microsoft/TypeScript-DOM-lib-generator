@@ -1,0 +1,7 @@
+{
+  "viewtransitionupdatecallback": "No description available.",
+  "viewtransition-updatecallbackdone": "Type: [object Object]",
+  "viewtransition-ready": "Type: [object Object]",
+  "viewtransition-finished": "Type: [object Object]",
+  "viewtransition-skiptransition": "Type: undefined"
+}

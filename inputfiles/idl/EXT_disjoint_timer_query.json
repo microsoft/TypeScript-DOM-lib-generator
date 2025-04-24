@@ -1,0 +1,18 @@
+{
+  "gluint64ext": "No description available.",
+  "ext_disjoint_timer_query-query_counter_bits_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-current_query_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-query_result_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-query_result_available_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-time_elapsed_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-timestamp_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-gpu_disjoint_ext": "Type: GLenum",
+  "ext_disjoint_timer_query-createqueryext": "Type: WebGLTimerQueryEXT",
+  "ext_disjoint_timer_query-deletequeryext": "Type: undefined",
+  "ext_disjoint_timer_query-isqueryext": "Type: boolean",
+  "ext_disjoint_timer_query-beginqueryext": "Type: undefined",
+  "ext_disjoint_timer_query-endqueryext": "Type: undefined",
+  "ext_disjoint_timer_query-querycounterext": "Type: undefined",
+  "ext_disjoint_timer_query-getqueryext": "Type: any",
+  "ext_disjoint_timer_query-getqueryobjectext": "Type: any"
+}

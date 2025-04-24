@@ -1,0 +1,5 @@
+{
+  "crashreportbody-tojson": "Type: object",
+  "crashreportbody-reason": "Type: DOMString",
+  "crashreportbody-stack": "Type: DOMString"
+}

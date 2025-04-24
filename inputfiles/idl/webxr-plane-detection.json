@@ -1,0 +1,11 @@
+{
+  "xrplaneorientation": "No description available.",
+  "xrplane-planespace": "Type: XRSpace",
+  "xrplane-polygon": "Type: [object Object]",
+  "xrplane-orientation": "Type: XRPlaneOrientation",
+  "xrplane-lastchangedtime": "Type: DOMHighResTimeStamp",
+  "xrplane-semanticlabel": "Type: DOMString",
+  "xrplaneset-setlike": "Type: undefined",
+  "xrframe-detectedplanes": "Type: XRPlaneSet",
+  "xrsession-initiateroomcapture": "Type: [object Object]"
+}

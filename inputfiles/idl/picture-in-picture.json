@@ -1,0 +1,15 @@
+{
+  "htmlvideoelement-requestpictureinpicture": "Type: [object Object]",
+  "htmlvideoelement-onenterpictureinpicture": "Type: EventHandler",
+  "htmlvideoelement-onleavepictureinpicture": "Type: EventHandler",
+  "htmlvideoelement-disablepictureinpicture": "Type: boolean",
+  "document-pictureinpictureenabled": "Type: boolean",
+  "document-exitpictureinpicture": "Type: [object Object]",
+  "documentorshadowroot-pictureinpictureelement": "Type: Element",
+  "pictureinpicturewindow-width": "Type: long",
+  "pictureinpicturewindow-height": "Type: long",
+  "pictureinpicturewindow-onresize": "Type: EventHandler",
+  "pictureinpictureevent-constructor": "No description available.",
+  "pictureinpictureevent-pictureinpicturewindow": "Type: PictureInPictureWindow",
+  "pictureinpictureeventinit-pictureinpicturewindow": "Type: PictureInPictureWindow"
+}

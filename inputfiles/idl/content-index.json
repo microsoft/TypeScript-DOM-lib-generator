@@ -1,0 +1,17 @@
+{
+  "serviceworkerglobalscope-oncontentdelete": "Type: EventHandler",
+  "serviceworkerregistration-index": "Type: ContentIndex",
+  "contentcategory": "No description available.",
+  "contentdescription-id": "Type: DOMString",
+  "contentdescription-title": "Type: DOMString",
+  "contentdescription-description": "Type: DOMString",
+  "contentdescription-category": "Type: ContentCategory",
+  "contentdescription-icons": "Type: [object Object]",
+  "contentdescription-url": "Type: USVString",
+  "contentindex-add": "Type: [object Object]",
+  "contentindex-delete": "Type: [object Object]",
+  "contentindex-getall": "Type: [object Object]",
+  "contentindexeventinit-id": "Type: DOMString",
+  "contentindexevent-constructor": "No description available.",
+  "contentindexevent-id": "Type: DOMString"
+}

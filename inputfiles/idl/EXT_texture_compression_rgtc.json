@@ -1,0 +1,6 @@
+{
+  "ext_texture_compression_rgtc-compressed_red_rgtc1_ext": "Type: GLenum",
+  "ext_texture_compression_rgtc-compressed_signed_red_rgtc1_ext": "Type: GLenum",
+  "ext_texture_compression_rgtc-compressed_red_green_rgtc2_ext": "Type: GLenum",
+  "ext_texture_compression_rgtc-compressed_signed_red_green_rgtc2_ext": "Type: GLenum"
+}

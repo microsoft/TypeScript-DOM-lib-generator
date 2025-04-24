@@ -1,0 +1,14 @@
+{
+  "navigator-preferences": "Type: PreferenceManager",
+  "preferencemanager-colorscheme": "Type: PreferenceObject",
+  "preferencemanager-contrast": "Type: PreferenceObject",
+  "preferencemanager-reducedmotion": "Type: PreferenceObject",
+  "preferencemanager-reducedtransparency": "Type: PreferenceObject",
+  "preferencemanager-reduceddata": "Type: PreferenceObject",
+  "preferenceobject-override": "Type: DOMString",
+  "preferenceobject-value": "Type: DOMString",
+  "preferenceobject-validvalues": "Type: [object Object]",
+  "preferenceobject-clearoverride": "Type: undefined",
+  "preferenceobject-requestoverride": "Type: [object Object]",
+  "preferenceobject-onchange": "Type: EventHandler"
+}

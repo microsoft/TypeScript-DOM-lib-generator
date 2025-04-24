@@ -1,0 +1,12 @@
+{
+  "webgl_compressed_texture_etc-compressed_r11_eac": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_signed_r11_eac": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_rg11_eac": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_signed_rg11_eac": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_rgb8_etc2": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_srgb8_etc2": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_rgb8_punchthrough_alpha1_etc2": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_srgb8_punchthrough_alpha1_etc2": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_rgba8_etc2_eac": "Type: GLenum",
+  "webgl_compressed_texture_etc-compressed_srgb8_alpha8_etc2_eac": "Type: GLenum"
+}

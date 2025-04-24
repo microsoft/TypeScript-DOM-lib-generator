@@ -1,0 +1,20 @@
+{
+  "facedetector-constructor": "No description available.",
+  "facedetector-detect": "Type: [object Object]",
+  "facedetectoroptions-maxdetectedfaces": "Type: unsigned short",
+  "facedetectoroptions-fastmode": "Type: boolean",
+  "detectedface-boundingbox": "Type: DOMRectReadOnly",
+  "detectedface-landmarks": "Type: [object Object]",
+  "landmark-locations": "Type: [object Object]",
+  "landmark-type": "Type: LandmarkType",
+  "landmarktype": "No description available.",
+  "barcodedetector-constructor": "No description available.",
+  "barcodedetector-getsupportedformats": "Type: [object Object]",
+  "barcodedetector-detect": "Type: [object Object]",
+  "barcodedetectoroptions-formats": "Type: [object Object]",
+  "detectedbarcode-boundingbox": "Type: DOMRectReadOnly",
+  "detectedbarcode-rawvalue": "Type: DOMString",
+  "detectedbarcode-format": "Type: BarcodeFormat",
+  "detectedbarcode-cornerpoints": "Type: [object Object]",
+  "barcodeformat": "No description available."
+}

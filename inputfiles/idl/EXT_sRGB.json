@@ -1,0 +1,6 @@
+{
+  "ext_srgb-srgb_ext": "Type: GLenum",
+  "ext_srgb-srgb_alpha_ext": "Type: GLenum",
+  "ext_srgb-srgb8_alpha8_ext": "Type: GLenum",
+  "ext_srgb-framebuffer_attachment_color_encoding_ext": "Type: GLenum"
+}

@@ -1,0 +1,6 @@
+{
+  "ext_texture_compression_bptc-compressed_rgba_bptc_unorm_ext": "Type: GLenum",
+  "ext_texture_compression_bptc-compressed_srgb_alpha_bptc_unorm_ext": "Type: GLenum",
+  "ext_texture_compression_bptc-compressed_rgb_bptc_signed_float_ext": "Type: GLenum",
+  "ext_texture_compression_bptc-compressed_rgb_bptc_unsigned_float_ext": "Type: GLenum"
+}

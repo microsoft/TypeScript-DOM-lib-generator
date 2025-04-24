@@ -1,0 +1,11 @@
+{
+  "highlighttype": "No description available.",
+  "highlight-constructor": "No description available.",
+  "highlight-setlike": "Type: undefined",
+  "highlight-priority": "Type: long",
+  "highlight-type": "Type: HighlightType",
+  "css-highlights": "Type: HighlightRegistry",
+  "highlightregistry-maplike": "Type: undefined",
+  "highlightregistry-highlightsfrompoint": "Type: [object Object]",
+  "highlightsfrompointoptions-shadowroots": "Type: [object Object]"
+}

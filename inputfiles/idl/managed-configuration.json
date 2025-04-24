@@ -1,0 +1,5 @@
+{
+  "navigator-managed": "Type: NavigatorManagedData",
+  "navigatormanageddata-getmanagedconfiguration": "Type: [object Object]",
+  "navigatormanageddata-onmanagedconfigurationchange": "Type: EventHandler"
+}

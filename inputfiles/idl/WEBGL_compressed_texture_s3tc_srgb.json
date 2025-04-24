@@ -1,0 +1,6 @@
+{
+  "webgl_compressed_texture_s3tc_srgb-compressed_srgb_s3tc_dxt1_ext": "Type: GLenum",
+  "webgl_compressed_texture_s3tc_srgb-compressed_srgb_alpha_s3tc_dxt1_ext": "Type: GLenum",
+  "webgl_compressed_texture_s3tc_srgb-compressed_srgb_alpha_s3tc_dxt3_ext": "Type: GLenum",
+  "webgl_compressed_texture_s3tc_srgb-compressed_srgb_alpha_s3tc_dxt5_ext": "Type: GLenum"
+}

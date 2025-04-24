@@ -1,0 +1,10 @@
+{
+  "mediadevices-setsupportedcaptureactions": "Type: undefined",
+  "mediadevices-oncaptureaction": "Type: EventHandler",
+  "captureaction": "No description available.",
+  "captureactionevent-constructor": "No description available.",
+  "captureactionevent-action": "Type: CaptureAction",
+  "captureactioneventinit-action": "Type: DOMString",
+  "mediastreamtrack-getsupportedcaptureactions": "Type: [object Object]",
+  "mediastreamtrack-sendcaptureaction": "Type: [object Object]"
+}

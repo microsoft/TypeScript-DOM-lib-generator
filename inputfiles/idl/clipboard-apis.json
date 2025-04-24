@@ -1,0 +1,21 @@
+{
+  "clipboardeventinit-clipboarddata": "Type: DataTransfer",
+  "clipboardevent-constructor": "No description available.",
+  "clipboardevent-clipboarddata": "Type: DataTransfer",
+  "navigator-clipboard": "Type: Clipboard",
+  "clipboarditemdata": "No description available.",
+  "clipboarditem-constructor": "No description available.",
+  "clipboarditem-presentationstyle": "Type: PresentationStyle",
+  "clipboarditem-types": "Type: [object Object]",
+  "clipboarditem-gettype": "Type: [object Object]",
+  "clipboarditem-supports": "Type: boolean",
+  "presentationstyle": "No description available.",
+  "clipboarditemoptions-presentationstyle": "Type: PresentationStyle",
+  "clipboarditems": "No description available.",
+  "clipboard-read": "Type: [object Object]",
+  "clipboard-readtext": "Type: [object Object]",
+  "clipboard-write": "Type: [object Object]",
+  "clipboard-writetext": "Type: [object Object]",
+  "clipboardunsanitizedformats-unsanitized": "Type: [object Object]",
+  "clipboardpermissiondescriptor-allowwithoutgesture": "Type: boolean"
+}

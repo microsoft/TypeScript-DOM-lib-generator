@@ -1,0 +1,22 @@
+{
+  "document-measureelement": "Type: FontMetrics",
+  "document-measuretext": "Type: FontMetrics",
+  "fontmetrics-width": "Type: double",
+  "fontmetrics-advances": "Type: [object Object]",
+  "fontmetrics-boundingboxleft": "Type: double",
+  "fontmetrics-boundingboxright": "Type: double",
+  "fontmetrics-height": "Type: double",
+  "fontmetrics-emheightascent": "Type: double",
+  "fontmetrics-emheightdescent": "Type: double",
+  "fontmetrics-boundingboxascent": "Type: double",
+  "fontmetrics-boundingboxdescent": "Type: double",
+  "fontmetrics-fontboundingboxascent": "Type: double",
+  "fontmetrics-fontboundingboxdescent": "Type: double",
+  "fontmetrics-dominantbaseline": "Type: Baseline",
+  "fontmetrics-baselines": "Type: [object Object]",
+  "fontmetrics-fonts": "Type: [object Object]",
+  "baseline-name": "Type: DOMString",
+  "baseline-value": "Type: double",
+  "font-name": "Type: DOMString",
+  "font-glyphsrendered": "Type: unsigned long"
+}

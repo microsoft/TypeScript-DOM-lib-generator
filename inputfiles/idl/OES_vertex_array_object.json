@@ -1,0 +1,7 @@
+{
+  "oes_vertex_array_object-vertex_array_binding_oes": "Type: GLenum",
+  "oes_vertex_array_object-createvertexarrayoes": "Type: WebGLVertexArrayObjectOES",
+  "oes_vertex_array_object-deletevertexarrayoes": "Type: undefined",
+  "oes_vertex_array_object-isvertexarrayoes": "Type: GLboolean",
+  "oes_vertex_array_object-bindvertexarrayoes": "Type: undefined"
+}

@@ -1,0 +1,11 @@
+{
+  "propertydefinition-name": "Type: DOMString",
+  "propertydefinition-syntax": "Type: DOMString",
+  "propertydefinition-inherits": "Type: boolean",
+  "propertydefinition-initialvalue": "Type: DOMString",
+  "css-registerproperty": "Type: undefined",
+  "csspropertyrule-name": "Type: CSSOMString",
+  "csspropertyrule-syntax": "Type: CSSOMString",
+  "csspropertyrule-inherits": "Type: boolean",
+  "csspropertyrule-initialvalue": "Type: CSSOMString"
+}

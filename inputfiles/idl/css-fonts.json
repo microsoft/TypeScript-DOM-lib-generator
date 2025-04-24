@@ -1,0 +1,17 @@
+{
+  "cssrule-font_feature_values_rule": "Type: unsigned short",
+  "cssfontfeaturevaluesrule-fontfamily": "Type: CSSOMString",
+  "cssfontfeaturevaluesrule-annotation": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesrule-ornaments": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesrule-stylistic": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesrule-swash": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesrule-charactervariant": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesrule-styleset": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesrule-historicalforms": "Type: CSSFontFeatureValuesMap",
+  "cssfontfeaturevaluesmap-maplike": "Type: undefined",
+  "cssfontfeaturevaluesmap-set": "Type: undefined",
+  "cssfontpalettevaluesrule-name": "Type: CSSOMString",
+  "cssfontpalettevaluesrule-fontfamily": "Type: CSSOMString",
+  "cssfontpalettevaluesrule-basepalette": "Type: CSSOMString",
+  "cssfontpalettevaluesrule-overridecolors": "Type: CSSOMString"
+}

@@ -1,0 +1,13 @@
+{
+  "webgl_clip_cull_distance-max_clip_distances_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-max_cull_distances_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-max_combined_clip_and_cull_distances_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance0_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance1_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance2_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance3_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance4_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance5_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance6_webgl": "Type: GLenum",
+  "webgl_clip_cull_distance-clip_distance7_webgl": "Type: GLenum"
+}

@@ -1,0 +1,4 @@
+{
+  "videoencoderencodeoptions-av1": "Type: VideoEncoderEncodeOptionsForAv1",
+  "videoencoderencodeoptionsforav1-quantizer": "Type: unsigned short"
+}

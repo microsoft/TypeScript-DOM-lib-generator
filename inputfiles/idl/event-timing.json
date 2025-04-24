@@ -1,0 +1,12 @@
+{
+  "performanceeventtiming-processingstart": "Type: DOMHighResTimeStamp",
+  "performanceeventtiming-processingend": "Type: DOMHighResTimeStamp",
+  "performanceeventtiming-cancelable": "Type: boolean",
+  "performanceeventtiming-target": "Type: Node",
+  "performanceeventtiming-interactionid": "Type: unsigned long long",
+  "performanceeventtiming-tojson": "Type: object",
+  "eventcounts-maplike": "Type: undefined",
+  "performance-eventcounts": "Type: EventCounts",
+  "performance-interactioncount": "Type: unsigned long long",
+  "performanceobserverinit-durationthreshold": "Type: DOMHighResTimeStamp"
+}

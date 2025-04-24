@@ -1,0 +1,9 @@
+{
+  "snapeventinit-snaptargetblock": "Type: Node",
+  "snapeventinit-snaptargetinline": "Type: Node",
+  "snapevent-constructor": "No description available.",
+  "snapevent-snaptargetblock": "Type: Node",
+  "snapevent-snaptargetinline": "Type: Node",
+  "globaleventhandlers-onsnapchanged": "Type: EventHandler",
+  "globaleventhandlers-onsnapchanging": "Type: EventHandler"
+}

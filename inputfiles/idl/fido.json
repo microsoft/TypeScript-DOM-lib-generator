@@ -1,0 +1,15 @@
+{
+  "authenticationextensionsclientinputs-credentialprotectionpolicy": "Type: USVString",
+  "authenticationextensionsclientinputs-enforcecredentialprotectionpolicy": "Type: boolean",
+  "authenticationextensionsclientinputs-credblob": "Type: ArrayBuffer",
+  "authenticationextensionsclientinputs-getcredblob": "Type: boolean",
+  "authenticationextensionsclientinputs-minpinlength": "Type: boolean",
+  "authenticationextensionsclientinputs-hmaccreatesecret": "Type: boolean",
+  "hmacgetsecretinput-salt1": "Type: ArrayBuffer",
+  "hmacgetsecretinput-salt2": "Type: ArrayBuffer",
+  "authenticationextensionsclientinputs-hmacgetsecret": "Type: HMACGetSecretInput",
+  "authenticationextensionsclientoutputs-hmaccreatesecret": "Type: boolean",
+  "hmacgetsecretoutput-output1": "Type: ArrayBuffer",
+  "hmacgetsecretoutput-output2": "Type: ArrayBuffer",
+  "authenticationextensionsclientoutputs-hmacgetsecret": "Type: HMACGetSecretOutput"
+}

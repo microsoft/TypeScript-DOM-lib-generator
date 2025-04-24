@@ -1,0 +1,7 @@
+{
+  "htmlvideoelement-getvideoplaybackquality": "Type: VideoPlaybackQuality",
+  "videoplaybackquality-creationtime": "Type: DOMHighResTimeStamp",
+  "videoplaybackquality-droppedvideoframes": "Type: unsigned long",
+  "videoplaybackquality-totalvideoframes": "Type: unsigned long",
+  "videoplaybackquality-corruptedvideoframes": "Type: unsigned long"
+}

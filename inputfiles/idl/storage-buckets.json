@@ -1,0 +1,18 @@
+{
+  "navigatorstoragebuckets-storagebuckets": "Type: StorageBucketManager",
+  "storagebucketmanager-open": "Type: [object Object]",
+  "storagebucketmanager-keys": "Type: [object Object]",
+  "storagebucketmanager-delete": "Type: [object Object]",
+  "storagebucketoptions-persisted": "Type: boolean",
+  "storagebucketoptions-quota": "Type: unsigned long long",
+  "storagebucketoptions-expires": "Type: DOMHighResTimeStamp",
+  "storagebucket-name": "Type: DOMString",
+  "storagebucket-persist": "Type: [object Object]",
+  "storagebucket-persisted": "Type: [object Object]",
+  "storagebucket-estimate": "Type: [object Object]",
+  "storagebucket-setexpires": "Type: [object Object]",
+  "storagebucket-expires": "Type: [object Object]",
+  "storagebucket-indexeddb": "Type: IDBFactory",
+  "storagebucket-caches": "Type: CacheStorage",
+  "storagebucket-getdirectory": "Type: [object Object]"
+}

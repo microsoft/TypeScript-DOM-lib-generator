@@ -1,0 +1,6 @@
+{
+  "htmlmediaelement-capturestream": "Type: MediaStream",
+  "htmlcanvaselement-capturestream": "Type: MediaStream",
+  "canvascapturemediastreamtrack-canvas": "Type: HTMLCanvasElement",
+  "canvascapturemediastreamtrack-requestframe": "Type: undefined"
+}

@@ -1,0 +1,9 @@
+{
+  "cssviewtransitionrule-navigation": "Type: CSSOMString",
+  "cssviewtransitionrule-types": "Type: [object Object]",
+  "viewtransitiontypeset-setlike": "Type: undefined",
+  "viewtransition-types": "Type: ViewTransitionTypeSet",
+  "startviewtransitionoptions-update": "Type: ViewTransitionUpdateCallback",
+  "startviewtransitionoptions-types": "Type: [object Object]",
+  "document-startviewtransition": "Type: ViewTransition"
+}

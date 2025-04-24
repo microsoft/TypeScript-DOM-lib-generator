@@ -1,0 +1,9 @@
+{
+  "navigator-wakelock": "Type: WakeLock",
+  "wakelock-request": "Type: [object Object]",
+  "wakelocksentinel-released": "Type: boolean",
+  "wakelocksentinel-type": "Type: WakeLockType",
+  "wakelocksentinel-release": "Type: [object Object]",
+  "wakelocksentinel-onrelease": "Type: EventHandler",
+  "wakelocktype": "No description available."
+}

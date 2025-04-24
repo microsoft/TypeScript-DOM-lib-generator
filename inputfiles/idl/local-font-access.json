@@ -1,0 +1,9 @@
+{
+  "window-querylocalfonts": "Type: [object Object]",
+  "queryoptions-postscriptnames": "Type: [object Object]",
+  "fontdata-blob": "Type: [object Object]",
+  "fontdata-postscriptname": "Type: USVString",
+  "fontdata-fullname": "Type: USVString",
+  "fontdata-family": "Type: USVString",
+  "fontdata-style": "Type: USVString"
+}

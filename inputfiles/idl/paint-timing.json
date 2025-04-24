@@ -1,0 +1,4 @@
+{
+  "painttimingmixin-painttime": "Type: DOMHighResTimeStamp",
+  "painttimingmixin-presentationtime": "Type: DOMHighResTimeStamp"
+}

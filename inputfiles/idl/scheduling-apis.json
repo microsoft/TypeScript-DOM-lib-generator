@@ -1,0 +1,20 @@
+{
+  "taskpriority": "No description available.",
+  "schedulerposttaskoptions-signal": "Type: AbortSignal",
+  "schedulerposttaskoptions-priority": "Type: TaskPriority",
+  "schedulerposttaskoptions-delay": "Type: unsigned long long",
+  "schedulerposttaskcallback": "No description available.",
+  "scheduler-posttask": "Type: [object Object]",
+  "scheduler-yield": "Type: [object Object]",
+  "taskprioritychangeevent-constructor": "No description available.",
+  "taskprioritychangeevent-previouspriority": "Type: TaskPriority",
+  "taskprioritychangeeventinit-previouspriority": "Type: TaskPriority",
+  "taskcontrollerinit-priority": "Type: TaskPriority",
+  "taskcontroller-constructor": "No description available.",
+  "taskcontroller-setpriority": "Type: undefined",
+  "tasksignalanyinit-priority": "Type: [object Object],[object Object]",
+  "tasksignal-any": "Type: TaskSignal",
+  "tasksignal-priority": "Type: TaskPriority",
+  "tasksignal-onprioritychange": "Type: EventHandler",
+  "windoworworkerglobalscope-scheduler": "Type: Scheduler"
+}

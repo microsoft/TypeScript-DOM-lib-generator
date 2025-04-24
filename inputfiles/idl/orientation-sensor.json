@@ -1,0 +1,9 @@
+{
+  "rotationmatrixtype": "No description available.",
+  "orientationsensor-quaternion": "Type: [object Object]",
+  "orientationsensor-populatematrix": "Type: undefined",
+  "orientationsensorlocalcoordinatesystem": "No description available.",
+  "orientationsensoroptions-referenceframe": "Type: OrientationSensorLocalCoordinateSystem",
+  "absoluteorientationsensor-constructor": "No description available.",
+  "relativeorientationsensor-constructor": "No description available."
+}

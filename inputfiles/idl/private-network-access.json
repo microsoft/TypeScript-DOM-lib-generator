@@ -1,0 +1,6 @@
+{
+  "ipaddressspace": "No description available.",
+  "privatenetworkaccesspermissiondescriptor-id": "Type: DOMString",
+  "requestinit-targetaddressspace": "Type: IPAddressSpace",
+  "request-targetaddressspace": "Type: IPAddressSpace"
+}

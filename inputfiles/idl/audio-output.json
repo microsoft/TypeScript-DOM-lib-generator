@@ -1,0 +1,6 @@
+{
+  "htmlmediaelement-sinkid": "Type: DOMString",
+  "htmlmediaelement-setsinkid": "Type: [object Object]",
+  "mediadevices-selectaudiooutput": "Type: [object Object]",
+  "audiooutputoptions-deviceid": "Type: DOMString"
+}

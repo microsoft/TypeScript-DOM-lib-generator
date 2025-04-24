@@ -1,0 +1,11 @@
+{
+  "svgpathsegment-type": "Type: DOMString",
+  "svgpathsegment-values": "Type: [object Object]",
+  "svgpathdatasettings-normalize": "Type: boolean",
+  "svgpathdata-getpathdata": "Type: [object Object]",
+  "svgpathdata-setpathdata": "Type: undefined",
+  "svgpathelement-pathlength": "Type: SVGAnimatedNumber",
+  "svgpathelement-gettotallength": "Type: float",
+  "svgpathelement-getpointatlength": "Type: DOMPoint",
+  "svgpathelement-getpathsegmentatlength": "Type: SVGPathSegment"
+}

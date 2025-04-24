@@ -1,0 +1,9 @@
+{
+  "largestcontentfulpaint-rendertime": "Type: DOMHighResTimeStamp",
+  "largestcontentfulpaint-loadtime": "Type: DOMHighResTimeStamp",
+  "largestcontentfulpaint-size": "Type: unsigned long",
+  "largestcontentfulpaint-id": "Type: DOMString",
+  "largestcontentfulpaint-url": "Type: DOMString",
+  "largestcontentfulpaint-element": "Type: Element",
+  "largestcontentfulpaint-tojson": "Type: object"
+}

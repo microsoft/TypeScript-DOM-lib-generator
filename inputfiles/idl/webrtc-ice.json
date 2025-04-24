@@ -1,0 +1,12 @@
+{
+  "rtciceparameters-icelite": "Type: boolean",
+  "rtcicegatheroptions-gatherpolicy": "Type: RTCIceTransportPolicy",
+  "rtcicegatheroptions-iceservers": "Type: [object Object]",
+  "rtcicetransport-constructor": "No description available.",
+  "rtcicetransport-gather": "Type: undefined",
+  "rtcicetransport-start": "Type: undefined",
+  "rtcicetransport-stop": "Type: undefined",
+  "rtcicetransport-addremotecandidate": "Type: undefined",
+  "rtcicetransport-onerror": "Type: EventHandler",
+  "rtcicetransport-onicecandidate": "Type: EventHandler"
+}

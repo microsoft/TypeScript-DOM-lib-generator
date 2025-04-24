@@ -1,0 +1,21 @@
+{
+  "profiler-sampleinterval": "Type: DOMHighResTimeStamp",
+  "profiler-stopped": "Type: boolean",
+  "profiler-constructor": "No description available.",
+  "profiler-stop": "Type: [object Object]",
+  "profilerresource": "No description available.",
+  "profilertrace-resources": "Type: [object Object]",
+  "profilertrace-frames": "Type: [object Object]",
+  "profilertrace-stacks": "Type: [object Object]",
+  "profilertrace-samples": "Type: [object Object]",
+  "profilersample-timestamp": "Type: DOMHighResTimeStamp",
+  "profilersample-stackid": "Type: unsigned long long",
+  "profilerstack-parentid": "Type: unsigned long long",
+  "profilerstack-frameid": "Type: unsigned long long",
+  "profilerframe-name": "Type: DOMString",
+  "profilerframe-resourceid": "Type: unsigned long long",
+  "profilerframe-line": "Type: unsigned long long",
+  "profilerframe-column": "Type: unsigned long long",
+  "profilerinitoptions-sampleinterval": "Type: DOMHighResTimeStamp",
+  "profilerinitoptions-maxbuffersize": "Type: unsigned long"
+}

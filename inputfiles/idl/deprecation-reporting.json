@@ -1,0 +1,9 @@
+{
+  "deprecationreportbody-tojson": "Type: object",
+  "deprecationreportbody-id": "Type: DOMString",
+  "deprecationreportbody-anticipatedremoval": "Type: object",
+  "deprecationreportbody-message": "Type: DOMString",
+  "deprecationreportbody-sourcefile": "Type: DOMString",
+  "deprecationreportbody-linenumber": "Type: unsigned long",
+  "deprecationreportbody-columnnumber": "Type: unsigned long"
+}

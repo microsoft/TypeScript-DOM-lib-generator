@@ -1,0 +1,17 @@
+{
+  "reportbody-tojson": "Type: object",
+  "report-tojson": "Type: object",
+  "report-type": "Type: DOMString",
+  "report-url": "Type: DOMString",
+  "report-body": "Type: ReportBody",
+  "reportingobserver-constructor": "No description available.",
+  "reportingobserver-observe": "Type: undefined",
+  "reportingobserver-disconnect": "Type: undefined",
+  "reportingobserver-takerecords": "Type: ReportList",
+  "reportingobservercallback": "No description available.",
+  "reportingobserveroptions-types": "Type: [object Object]",
+  "reportingobserveroptions-buffered": "Type: boolean",
+  "reportlist": "No description available.",
+  "generatetestreportparameters-message": "Type: DOMString",
+  "generatetestreportparameters-group": "Type: DOMString"
+}

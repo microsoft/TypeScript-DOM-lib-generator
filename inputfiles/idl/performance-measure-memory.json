@@ -1,0 +1,13 @@
+{
+  "memorymeasurement-bytes": "Type: unsigned long long",
+  "memorymeasurement-breakdown": "Type: [object Object]",
+  "memorybreakdownentry-bytes": "Type: unsigned long long",
+  "memorybreakdownentry-attribution": "Type: [object Object]",
+  "memorybreakdownentry-types": "Type: [object Object]",
+  "memoryattribution-url": "Type: USVString",
+  "memoryattribution-container": "Type: MemoryAttributionContainer",
+  "memoryattribution-scope": "Type: DOMString",
+  "memoryattributioncontainer-id": "Type: DOMString",
+  "memoryattributioncontainer-src": "Type: USVString",
+  "performance-measureuseragentspecificmemory": "Type: [object Object]"
+}

@@ -1,0 +1,9 @@
+{
+  "scriptingpolicyviolationtype": "No description available.",
+  "scriptingpolicyreportbody-tojson": "Type: object",
+  "scriptingpolicyreportbody-violationtype": "Type: DOMString",
+  "scriptingpolicyreportbody-violationurl": "Type: USVString",
+  "scriptingpolicyreportbody-violationsample": "Type: USVString",
+  "scriptingpolicyreportbody-lineno": "Type: unsigned long",
+  "scriptingpolicyreportbody-colno": "Type: unsigned long"
+}

@@ -1,0 +1,8 @@
+{
+  "gyroscope-constructor": "No description available.",
+  "gyroscope-x": "Type: double",
+  "gyroscope-y": "Type: double",
+  "gyroscope-z": "Type: double",
+  "gyroscopelocalcoordinatesystem": "No description available.",
+  "gyroscopesensoroptions-referenceframe": "Type: GyroscopeLocalCoordinateSystem"
+}

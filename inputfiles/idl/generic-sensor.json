@@ -1,0 +1,14 @@
+{
+  "sensor-activated": "Type: boolean",
+  "sensor-hasreading": "Type: boolean",
+  "sensor-timestamp": "Type: DOMHighResTimeStamp",
+  "sensor-start": "Type: undefined",
+  "sensor-stop": "Type: undefined",
+  "sensor-onreading": "Type: EventHandler",
+  "sensor-onactivate": "Type: EventHandler",
+  "sensor-onerror": "Type: EventHandler",
+  "sensoroptions-frequency": "Type: double",
+  "sensorerrorevent-constructor": "No description available.",
+  "sensorerrorevent-error": "Type: DOMException",
+  "sensorerroreventinit-error": "Type: DOMException"
+}

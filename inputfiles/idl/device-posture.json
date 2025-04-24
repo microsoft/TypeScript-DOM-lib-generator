@@ -1,0 +1,6 @@
+{
+  "navigator-deviceposture": "Type: DevicePosture",
+  "deviceposture-type": "Type: DevicePostureType",
+  "deviceposture-onchange": "Type: EventHandler",
+  "deviceposturetype": "No description available."
+}

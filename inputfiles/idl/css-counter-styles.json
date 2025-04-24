@@ -1,0 +1,14 @@
+{
+  "cssrule-counter_style_rule": "Type: unsigned short",
+  "csscounterstylerule-name": "Type: CSSOMString",
+  "csscounterstylerule-system": "Type: CSSOMString",
+  "csscounterstylerule-symbols": "Type: CSSOMString",
+  "csscounterstylerule-additivesymbols": "Type: CSSOMString",
+  "csscounterstylerule-negative": "Type: CSSOMString",
+  "csscounterstylerule-prefix": "Type: CSSOMString",
+  "csscounterstylerule-suffix": "Type: CSSOMString",
+  "csscounterstylerule-range": "Type: CSSOMString",
+  "csscounterstylerule-pad": "Type: CSSOMString",
+  "csscounterstylerule-speakas": "Type: CSSOMString",
+  "csscounterstylerule-fallback": "Type: CSSOMString"
+}

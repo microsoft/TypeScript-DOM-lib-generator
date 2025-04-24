@@ -1,0 +1,8 @@
+{
+  "audiosession-type": "Type: AudioSessionType",
+  "audiosession-state": "Type: AudioSessionState",
+  "audiosession-onstatechange": "Type: EventHandler",
+  "audiosessiontype": "No description available.",
+  "audiosessionstate": "No description available.",
+  "navigator-audiosession": "Type: AudioSession"
+}

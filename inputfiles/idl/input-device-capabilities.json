@@ -1,0 +1,9 @@
+{
+  "inputdevicecapabilities-constructor": "No description available.",
+  "inputdevicecapabilities-firestouchevents": "Type: boolean",
+  "inputdevicecapabilities-pointermovementscrolls": "Type: boolean",
+  "inputdevicecapabilitiesinit-firestouchevents": "Type: boolean",
+  "inputdevicecapabilitiesinit-pointermovementscrolls": "Type: boolean",
+  "uievent-sourcecapabilities": "Type: InputDeviceCapabilities",
+  "uieventinit-sourcecapabilities": "Type: InputDeviceCapabilities"
+}

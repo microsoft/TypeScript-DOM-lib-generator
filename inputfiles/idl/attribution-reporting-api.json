@@ -1,0 +1,7 @@
+{
+  "htmlattributionsrcelementutils-attributionsrc": "Type: USVString",
+  "attributionreportingrequestoptions-eventsourceeligible": "Type: boolean",
+  "attributionreportingrequestoptions-triggereligible": "Type: boolean",
+  "requestinit-attributionreporting": "Type: AttributionReportingRequestOptions",
+  "xmlhttprequest-setattributionreporting": "Type: undefined"
+}

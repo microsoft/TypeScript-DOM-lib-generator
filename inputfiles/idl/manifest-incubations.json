@@ -1,0 +1,8 @@
+{
+  "beforeinstallpromptevent-constructor": "No description available.",
+  "beforeinstallpromptevent-prompt": "Type: [object Object]",
+  "promptresponseobject-userchoice": "Type: AppBannerPromptOutcome",
+  "appbannerpromptoutcome": "No description available.",
+  "window-onappinstalled": "Type: EventHandler",
+  "window-onbeforeinstallprompt": "Type: EventHandler"
+}

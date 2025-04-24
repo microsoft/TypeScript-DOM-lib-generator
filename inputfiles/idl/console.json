@@ -1,0 +1,21 @@
+{
+  "console-assert": "Type: undefined",
+  "console-clear": "Type: undefined",
+  "console-debug": "Type: undefined",
+  "console-error": "Type: undefined",
+  "console-info": "Type: undefined",
+  "console-log": "Type: undefined",
+  "console-table": "Type: undefined",
+  "console-trace": "Type: undefined",
+  "console-warn": "Type: undefined",
+  "console-dir": "Type: undefined",
+  "console-dirxml": "Type: undefined",
+  "console-count": "Type: undefined",
+  "console-countreset": "Type: undefined",
+  "console-group": "Type: undefined",
+  "console-groupcollapsed": "Type: undefined",
+  "console-groupend": "Type: undefined",
+  "console-time": "Type: undefined",
+  "console-timelog": "Type: undefined",
+  "console-timeend": "Type: undefined"
+}

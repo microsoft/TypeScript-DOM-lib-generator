@@ -1,0 +1,13 @@
+{
+  "remoteplayback-watchavailability": "Type: [object Object]",
+  "remoteplayback-cancelwatchavailability": "Type: [object Object]",
+  "remoteplayback-state": "Type: RemotePlaybackState",
+  "remoteplayback-onconnecting": "Type: EventHandler",
+  "remoteplayback-onconnect": "Type: EventHandler",
+  "remoteplayback-ondisconnect": "Type: EventHandler",
+  "remoteplayback-prompt": "Type: [object Object]",
+  "remoteplaybackstate": "No description available.",
+  "remoteplaybackavailabilitycallback": "No description available.",
+  "htmlmediaelement-remote": "Type: RemotePlayback",
+  "htmlmediaelement-disableremoteplayback": "Type: boolean"
+}

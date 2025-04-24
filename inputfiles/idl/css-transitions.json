@@ -1,0 +1,13 @@
+{
+  "transitionevent-constructor": "No description available.",
+  "transitionevent-propertyname": "Type: CSSOMString",
+  "transitionevent-elapsedtime": "Type: double",
+  "transitionevent-pseudoelement": "Type: CSSOMString",
+  "transitioneventinit-propertyname": "Type: CSSOMString",
+  "transitioneventinit-elapsedtime": "Type: double",
+  "transitioneventinit-pseudoelement": "Type: CSSOMString",
+  "globaleventhandlers-ontransitionrun": "Type: EventHandler",
+  "globaleventhandlers-ontransitionstart": "Type: EventHandler",
+  "globaleventhandlers-ontransitionend": "Type: EventHandler",
+  "globaleventhandlers-ontransitioncancel": "Type: EventHandler"
+}
