@@ -49,7 +49,7 @@
     "@webref/css": "^6.12.7",
     "@webref/elements": "^2.3.0",
     "@webref/events": "^1.11.3",
-    "@webref/idl": "^3.46.1",
+    "@webref/idl": "^3.61.5",
     "bcd-idl-mapper": "^2.3.0",
     "cpx2": "^8.0.0",
     "danger": "^12.2.0",
