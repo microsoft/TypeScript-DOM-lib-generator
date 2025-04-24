@@ -31,6 +31,8 @@ jobs:
       # This prevents annoying change when contributors run `npm i` on their local machine.
       # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
       - run: npm i
+      - name: Generate IDL
+        run: npm run generate-idl
       - id: build
         run: npm run generate
         continue-on-error: true
