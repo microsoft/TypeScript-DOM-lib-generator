@@ -560,9 +560,50 @@
                             "overrideType": "number",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/size",
                             "readonly": true
+                        },
+                        "clear": {
+                            "name": "clear",
+                            "overrideType": "() => void",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/clear"
+                        },
+                        "delete": {
+                            "name": "delete",
+                            "overrideType": "(id: string) => Promise<boolean>",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/delete"
+                        },
+                        "entries": {
+                            "name": "entries",
+                            "overrideType": "() => { id: string; highlight: string }[]",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/entries"
+                        },
+                        "get": {
+                            "name": "get",
+                            "overrideType": "(key: string) => string | undefined",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/get"
+                        },
+                        "has": {
+                            "name": "has",
+                            "overrideType": "(key: string) => boolean",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/has"
+                        },
+                        "keys": {
+                            "name": "keys",
+                            "overrideType": "() => string[]",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/keys"
+                        },
+                        "values": {
+                            "name": "values",
+                            "overrideType": "() => string[]",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/values"
+                        },
+                        "set": {
+                            "name": "set",
+                            "overrideType": "(key: string, value: string) => void",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/set"
                         }
+                      }
                     }
-                }
+                                
             },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
