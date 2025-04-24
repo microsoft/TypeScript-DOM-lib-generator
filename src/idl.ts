@@ -45,7 +45,7 @@ fs.readdirSync(idlDir).forEach((file) => {
   }
 
   fs.writeFileSync(
-    new URL(`${shortname}.json`, outputDir),
+    new URL(`${shortname}.commentmap.json`, outputDir),
     JSON.stringify(entries, null, 2),
   );
 });
