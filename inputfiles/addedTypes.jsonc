@@ -568,17 +568,17 @@
                         },
                         "delete": {
                             "name": "delete",
-                            "overrideType": "(id: string) => Promise<boolean>",
+                            "overrideType": "(id: string) => boolean",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/delete"
                         },
                         "entries": {
                             "name": "entries",
-                            "overrideType": "() => { id: string; highlight: string }[]",
+                            "overrideType": "() => MapIterator<[string, Highlight]>",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/entries"
                         },
                         "get": {
                             "name": "get",
-                            "overrideType": "(key: string) => string | undefined",
+                            "overrideType": "(key: string) => Highlight | undefined",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/get"
                         },
                         "has": {
@@ -588,17 +588,17 @@
                         },
                         "keys": {
                             "name": "keys",
-                            "overrideType": "() => string[]",
+                            "overrideType": "() => MapIterator<string>",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/keys"
                         },
                         "values": {
                             "name": "values",
-                            "overrideType": "() => string[]",
+                            "overrideType": "() => MapIterator<Highlight>",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/values"
                         },
                         "set": {
                             "name": "set",
-                            "overrideType": "(key: string, value: string) => void",
+                            "overrideType": "(key: string, value: Highlight) => void",
                             "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/set"
                         }
                       }

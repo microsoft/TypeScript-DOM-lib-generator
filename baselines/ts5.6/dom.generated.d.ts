@@ -14939,21 +14939,21 @@ interface HighlightRegistry {
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/clear) */
     clear: () => void;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/delete) */
-    delete: (id: string) => Promise<boolean>;
+    delete: (id: string) => boolean;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/entries) */
-    entries: () => { id: string; highlight: string }[];
+    entries: () => MapIterator<[string, Highlight]>;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/get) */
-    get: (key: string) => string | undefined;
+    get: (key: string) => Highlight | undefined;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/has) */
     has: (key: string) => boolean;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/keys) */
-    keys: () => string[];
+    keys: () => MapIterator<string>;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/set) */
-    set: (key: string, value: string) => void;
+    set: (key: string, value: Highlight) => void;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/size) */
     readonly size: number;
     /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/values) */
-    values: () => string[];
+    values: () => MapIterator<Highlight>;
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
 }
 
