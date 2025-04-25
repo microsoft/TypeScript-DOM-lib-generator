@@ -1458,6 +1458,9 @@
             "SVGSymbolElement": {
                 "extends": "SVGElement"
             },
+            "RadioNodeList": {
+                "extends": "NodeListOf<HTMLInputElement>"
+            },
             "FormData": {
                 "methods": {
                     "method": {

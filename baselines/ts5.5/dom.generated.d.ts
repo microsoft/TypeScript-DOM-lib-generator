@@ -20346,7 +20346,7 @@ declare var RTCTrackEvent: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RadioNodeList)
  */
-interface RadioNodeList extends NodeList {
+interface RadioNodeList extends NodeListOf<HTMLInputElement> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RadioNodeList/value) */
     value: string;
 }
