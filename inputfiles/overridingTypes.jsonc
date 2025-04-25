@@ -2325,6 +2325,22 @@
                             "type": "MessageEvent"
                         }
                     ]
+                },
+                "methods": {
+                    "method": {
+                        "send": {
+                            "signature": {
+                                "0": {
+                                    "param": [
+                                        {
+                                            "name": "data",
+                                            "overrideType": "string | Blob | ArrayBuffer | ArrayBufferView"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
                 }
             },
             "RTCIceCandidatePair": {

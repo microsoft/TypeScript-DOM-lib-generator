@@ -5564,7 +5564,7 @@ interface RTCDataChannel extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/close) */
     close(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/send) */
-    send(data: string): void;
+    send(data: string | Blob | ArrayBuffer | ArrayBufferView): void;
     send(data: Blob): void;
     send(data: ArrayBuffer): void;
     send(data: ArrayBufferView): void;
