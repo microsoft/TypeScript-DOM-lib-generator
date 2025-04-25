@@ -1742,6 +1742,10 @@
                                         {
                                             "name": "derivedKeyType",
                                             "additionalTypes": ["AesDerivedKeyParams", "HmacImportParams", "HkdfParams", "Pbkdf2Params"]
+                                        },
+                                        {
+                                            "name": "keyUsages",
+                                            "overrideType": "ReadonlyArray<KeyUsage>"
                                         }
                                     ],
                                     "overrideType": "Promise<CryptoKey>"
@@ -1794,7 +1798,13 @@
                             ],
                             "signature": {
                                 "0": {
-                                    "overrideType": "Promise<CryptoKeyPair | CryptoKey>"
+                                    "overrideType": "Promise<CryptoKeyPair | CryptoKey>",
+                                    "param": [
+                                        {
+                                            "name": "keyUsages",
+                                            "overrideType": "ReadonlyArray<KeyUsage>"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -1817,6 +1827,10 @@
                                         {
                                             "name": "algorithm",
                                             "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
+                                        },
+                                        {
+                                            "name": "keyUsages",
+                                            "overrideType": "ReadonlyArray<KeyUsage>"
                                         }
                                     ]
                                 }
@@ -1851,6 +1865,10 @@
                                         {
                                             "name": "unwrappedKeyAlgorithm",
                                             "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
+                                        },
+                                        {
+                                            "name": "keyUsages",
+                                            "overrideType": "ReadonlyArray<KeyUsage>"
                                         }
                                     ]
                                 }
