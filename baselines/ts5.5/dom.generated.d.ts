@@ -28373,7 +28373,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/window) */
     readonly window: Window & typeof globalThis;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/alert) */
-    alert(message?: any): void;
+    alert(message?: string): void;
     /**
      * @deprecated
      *
@@ -30026,7 +30026,7 @@ declare var visualViewport: VisualViewport | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/window) */
 declare var window: Window & typeof globalThis;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/alert) */
-declare function alert(message?: any): void;
+declare function alert(message?: string): void;
 /**
  * @deprecated
  *

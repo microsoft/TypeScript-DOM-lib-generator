@@ -718,7 +718,7 @@
                     "method": {
                         "alert": {
                             "overrideSignatures": [
-                                "alert(message?: any): void"
+                                "alert(message?: string): void"
                             ]
                         },
                         "postMessage": {
