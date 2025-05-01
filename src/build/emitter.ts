@@ -354,21 +354,28 @@ export function emitWebIdl(
   }
 
   /// Get typescript type using object dom type, object name, and it's associated interface name
-  function convertDomTypeToTsType(obj: Browser.Typed): string {
+  function convertDomTypeToTsTypeBase(
+    obj: Browser.Typed,
+    forReturn: boolean,
+  ): string {
     if (obj.overrideType) {
       return obj.nullable ? makeNullable(obj.overrideType) : obj.overrideType;
     }
     if (!obj.type)
       throw new Error("Missing 'type' field in " + JSON.stringify(obj));
-    let type = convertDomTypeToTsTypeWorker(obj);
+    let type = convertDomTypeToTsTypeWorker(obj, forReturn);
     if (type === "Promise<undefined>") {
       type = "Promise<void>";
     }
     return obj.nullable ? makeNullable(type) : type;
   }
 
+  function convertDomTypeToTsType(obj: Browser.Typed) {
+    return convertDomTypeToTsTypeBase(obj, false);
+  }
+
   function convertDomTypeToTsReturnType(obj: Browser.Typed): string {
-    const type = convertDomTypeToTsType(obj);
+    const type = convertDomTypeToTsTypeBase(obj, true);
     if (type === "undefined") {
       return "void";
     }
@@ -378,8 +385,15 @@ export function emitWebIdl(
     return type;
   }
 
-  function convertDomTypeToTsTypeWorker(obj: Browser.Typed): string {
+  function convertDomTypeToTsTypeWorker(
+    obj: Browser.Typed,
+    forReturn: boolean,
+  ): string {
     function convertBaseType() {
+      if (obj.type === "sequence" && !forReturn && iterator !== "") {
+        return "Iterable";
+      }
+
       if (!obj.additionalTypes && typeof obj.type === "string") {
         return convertDomTypeToTsTypeSimple(obj.type);
       } else {
@@ -390,7 +404,9 @@ export function emitWebIdl(
         types.push(...(obj.additionalTypes ?? []).map((t) => ({ type: t })));
 
         // propagate `any`
-        const converted = types.map(convertDomTypeToTsTypeWorker);
+        const converted = types.map((t) =>
+          convertDomTypeToTsTypeWorker(t, forReturn),
+        );
         if (converted.includes("any")) {
           return "any";
         }
@@ -412,7 +428,7 @@ export function emitWebIdl(
 
     const type = convertBaseType();
     let subtypeString = arrayify(obj.subtype)
-      .map(convertDomTypeToTsType)
+      .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
 
     if (
@@ -453,9 +469,6 @@ export function emitWebIdl(
   }
 
   function convertDomTypeToTsTypeSimple(objDomType: string): string {
-    if (objDomType === "sequence" && iterator !== "") {
-      return "Iterable";
-    }
     if (baseTypeConversionMap.has(objDomType)) {
       return baseTypeConversionMap.get(objDomType)!;
     }
