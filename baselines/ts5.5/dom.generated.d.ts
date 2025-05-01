@@ -121,7 +121,7 @@ interface AudioDataInit {
 
 interface AudioDecoderConfig {
     codec: string;
-    description?: BufferSource;
+    description?: AllowSharedBufferSource;
     numberOfChannels: number;
     sampleRate: number;
 }
@@ -232,7 +232,7 @@ interface BiquadFilterOptions extends AudioNodeOptions {
     type?: BiquadFilterType;
 }
 
-interface BlobEventInit {
+interface BlobEventInit extends EventInit {
     data: Blob;
     timecode?: DOMHighResTimeStamp;
 }
@@ -15725,6 +15725,7 @@ declare var ImageBitmapRenderingContext: {
 
 /**
  * The **`ImageCapture`** interface of the MediaStream Image Capture API provides methods to enable the capture of images or photos from a camera or other photographic device.
+ * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture)
  */
@@ -21115,7 +21116,7 @@ declare var SVGAnimatedPreserveAspectRatio: {
 };
 
 /**
- * The `SVGAnimatedRect` interface is used for attributes of basic SVGRect which can be animated.
+ * The **`SVGAnimatedRect`** interface represents an SVGRect attribute that can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect)
  */
