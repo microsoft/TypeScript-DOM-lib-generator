@@ -52,7 +52,7 @@
     "@webref/idl": "^3.46.1",
     "bcd-idl-mapper": "^2.3.0",
     "cpx2": "^8.0.0",
-    "danger": "^12.2.0",
+    "danger": "^13.0.4",
     "eslint": "^9.9.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.1.3",
