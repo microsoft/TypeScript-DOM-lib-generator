@@ -20977,7 +20977,7 @@ declare var SVGAnimateTransformElement: {
 };
 
 /**
- * The `SVGAnimatedAngle` interface is used for attributes of basic type \<angle> which can be animated.
+ * The **`SVGAnimatedAngle`** interface is used for attributes of basic type \<angle> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle)
  */
@@ -20994,7 +20994,7 @@ declare var SVGAnimatedAngle: {
 };
 
 /**
- * The `SVGAnimatedBoolean` interface is used for attributes of type boolean which can be animated.
+ * The **`SVGAnimatedBoolean`** interface is used for attributes of type boolean which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedBoolean)
  */
@@ -21028,7 +21028,7 @@ declare var SVGAnimatedEnumeration: {
 };
 
 /**
- * The `SVGAnimatedInteger` interface is used for attributes of basic type \<integer> which can be animated.
+ * The **`SVGAnimatedInteger`** interface is used for attributes of basic type \<integer> which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger)
  */
@@ -21062,7 +21062,7 @@ declare var SVGAnimatedLength: {
 };
 
 /**
- * The `SVGAnimatedLengthList` interface is used for attributes of type SVGLengthList which can be animated.
+ * The **`SVGAnimatedLengthList`** interface is used for attributes of type SVGLengthList which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedLengthList)
  */
@@ -21171,7 +21171,7 @@ declare var SVGAnimatedString: {
 };
 
 /**
- * The `SVGAnimatedTransformList` interface is used for attributes which take a list of numbers and which can be animated.
+ * The **`SVGAnimatedTransformList`** interface represents attributes which take a list of numbers and which can be animated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedTransformList)
  */
@@ -21265,7 +21265,7 @@ declare var SVGClipPathElement: {
 };
 
 /**
- * The **`SVGComponentTransferFunctionElement`** interface defines a base interface used by the component transfer function interfaces.
+ * The **`SVGComponentTransferFunctionElement`** interface represents a base interface used by the component transfer function interfaces.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGComponentTransferFunctionElement)
  */
@@ -22683,7 +22683,7 @@ declare var SVGPolylineElement: {
 };
 
 /**
- * The `SVGPreserveAspectRatio` interface corresponds to the preserveAspectRatio attribute, which is available for some of SVG's elements.
+ * The **`SVGPreserveAspectRatio`** interface corresponds to the preserveAspectRatio attribute.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGPreserveAspectRatio)
  */
