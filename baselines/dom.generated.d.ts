@@ -10099,7 +10099,7 @@ interface GlobalEventHandlersEventMap {
     "canplay": Event;
     "canplaythrough": Event;
     "change": Event;
-    "click": MouseEvent;
+    "click": PointerEvent;
     "close": Event;
     "compositionend": CompositionEvent;
     "compositionstart": CompositionEvent;
@@ -10244,7 +10244,7 @@ interface GlobalEventHandlers {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/click_event)
      */
-    onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+    onclick: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
     onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
@@ -30196,7 +30196,7 @@ declare var onchange: ((this: Window, ev: Event) => any) | null;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/click_event)
  */
-declare var onclick: ((this: Window, ev: MouseEvent) => any) | null;
+declare var onclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
 declare var onclose: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */

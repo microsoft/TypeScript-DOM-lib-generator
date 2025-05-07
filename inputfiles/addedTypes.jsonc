@@ -70,7 +70,7 @@
                         },
                         {
                             "name": "click",
-                            "type": "MouseEvent"
+                            "type": "PointerEvent"
                         },
                         {
                             "name": "compositionstart",
@@ -194,10 +194,6 @@
                         },
                         {
                             "name": "dblclick",
-                            "type": "MouseEvent"
-                        },
-                        {
-                            "name": "contextmenu",
                             "type": "MouseEvent"
                         },
                         {
