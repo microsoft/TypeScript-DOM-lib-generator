@@ -713,6 +713,10 @@ interface GetAnimationsOptions {
     subtree?: boolean;
 }
 
+interface GetComposedRangesOptions {
+    shadowRoots?: ShadowRoot[];
+}
+
 interface GetHTMLOptions {
     serializableShadowRoots?: boolean;
     shadowRoots?: ShadowRoot[];
@@ -2517,6 +2521,7 @@ interface ANGLE_instanced_arrays {
 }
 
 interface ARIAMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaActiveDescendantElement) */
     ariaActiveDescendantElement: Element | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAtomic) */
     ariaAtomic: string | null;
@@ -2538,18 +2543,23 @@ interface ARIAMixin {
     ariaColIndexText: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan) */
     ariaColSpan: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaControlsElements) */
     ariaControlsElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent) */
     ariaCurrent: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescribedByElements) */
     ariaDescribedByElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescription) */
     ariaDescription: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDetailsElements) */
     ariaDetailsElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDisabled) */
     ariaDisabled: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaErrorMessageElements) */
     ariaErrorMessageElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaExpanded) */
     ariaExpanded: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaFlowToElements) */
     ariaFlowToElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHasPopup) */
     ariaHasPopup: string | null;
@@ -2561,6 +2571,7 @@ interface ARIAMixin {
     ariaKeyShortcuts: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabel) */
     ariaLabel: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabelledByElements) */
     ariaLabelledByElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLevel) */
     ariaLevel: string | null;
@@ -2574,6 +2585,7 @@ interface ARIAMixin {
     ariaMultiSelectable: string | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOrientation) */
     ariaOrientation: string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOwnsElements) */
     ariaOwnsElements: ReadonlyArray<Element> | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPlaceholder) */
     ariaPlaceholder: string | null;
@@ -10093,6 +10105,7 @@ interface GlobalEventHandlersEventMap {
     "animationstart": AnimationEvent;
     "auxclick": PointerEvent;
     "beforeinput": InputEvent;
+    "beforematch": Event;
     "beforetoggle": ToggleEvent;
     "blur": FocusEvent;
     "cancel": Event;
@@ -10211,6 +10224,8 @@ interface GlobalEventHandlers {
     onauxclick: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
     onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforematch_event) */
+    onbeforematch: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
     onbeforetoggle: ((this: GlobalEventHandlers, ev: ToggleEvent) => any) | null;
     /**
@@ -23488,6 +23503,8 @@ interface Selection {
     empty(): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/extend) */
     extend(node: Node, offset?: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/getComposedRanges) */
+    getComposedRanges(options?: GetComposedRangesOptions): StaticRange[];
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/getRangeAt) */
     getRangeAt(index: number): Range;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/modify) */
@@ -30164,6 +30181,8 @@ declare var onanimationstart: ((this: Window, ev: AnimationEvent) => any) | null
 declare var onauxclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event) */
 declare var onbeforeinput: ((this: Window, ev: InputEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforematch_event) */
+declare var onbeforematch: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event) */
 declare var onbeforetoggle: ((this: Window, ev: ToggleEvent) => any) | null;
 /**
