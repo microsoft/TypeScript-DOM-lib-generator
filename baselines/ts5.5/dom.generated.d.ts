@@ -11321,6 +11321,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
     readonly offsetTop: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetWidth) */
     readonly offsetWidth: number;
+    onerror: (event: Event) => void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/outerText) */
     outerText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/popover) */
