@@ -58,7 +58,7 @@
                         },
                         {
                             "name": "auxclick",
-                            "type": "MouseEvent"
+                            "type": "PointerEvent"
                         },
                         {
                             "name": "beforeinput",
@@ -195,6 +195,10 @@
                         {
                             "name": "dblclick",
                             "type": "MouseEvent"
+                        },
+                        {
+                            "name": "contextmenu",
+                            "type": "PointerEvent"
                         },
                         {
                             "name": "toggle",
