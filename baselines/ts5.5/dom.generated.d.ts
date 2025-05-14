@@ -189,6 +189,11 @@ interface AuthenticationExtensionsClientInputs {
 }
 
 interface AuthenticationExtensionsClientInputsJSON {
+    appid?: string;
+    appidExclude?: string;
+    credProps?: boolean;
+    largeBlob?: AuthenticationExtensionsLargeBlobInputsJSON;
+    prf?: AuthenticationExtensionsPRFInputsJSON;
 }
 
 interface AuthenticationExtensionsClientOutputs {
@@ -198,9 +203,20 @@ interface AuthenticationExtensionsClientOutputs {
     prf?: AuthenticationExtensionsPRFOutputs;
 }
 
+interface AuthenticationExtensionsLargeBlobInputsJSON {
+    read?: boolean;
+    support?: string;
+    write?: Base64URLString;
+}
+
 interface AuthenticationExtensionsPRFInputs {
     eval?: AuthenticationExtensionsPRFValues;
     evalByCredential?: Record<string, AuthenticationExtensionsPRFValues>;
+}
+
+interface AuthenticationExtensionsPRFInputsJSON {
+    eval?: AuthenticationExtensionsPRFValuesJSON;
+    evalByCredential?: Record<string, AuthenticationExtensionsPRFValuesJSON>;
 }
 
 interface AuthenticationExtensionsPRFOutputs {
@@ -211,6 +227,11 @@ interface AuthenticationExtensionsPRFOutputs {
 interface AuthenticationExtensionsPRFValues {
     first: BufferSource;
     second?: BufferSource;
+}
+
+interface AuthenticationExtensionsPRFValuesJSON {
+    first: Base64URLString;
+    second?: Base64URLString;
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -16071,8 +16092,6 @@ interface LargestContentfulPaint extends PerformanceEntry {
     readonly id: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/loadTime) */
     readonly loadTime: DOMHighResTimeStamp;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/renderTime) */
-    readonly renderTime: DOMHighResTimeStamp;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/size) */
     readonly size: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/url) */
@@ -23613,7 +23632,7 @@ interface ServiceWorkerRegistration extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/unregister) */
     unregister(): Promise<boolean>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/update) */
-    update(): Promise<void>;
+    update(): Promise<ServiceWorkerRegistration>;
     addEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
