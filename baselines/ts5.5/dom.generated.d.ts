@@ -183,24 +183,55 @@ interface AudioWorkletNodeOptions extends AudioNodeOptions {
 interface AuthenticationExtensionsClientInputs {
     appid?: string;
     credProps?: boolean;
+    credentialProtectionPolicy?: string;
+    enforceCredentialProtectionPolicy?: boolean;
     hmacCreateSecret?: boolean;
+    largeBlob?: AuthenticationExtensionsLargeBlobInputs;
     minPinLength?: boolean;
     prf?: AuthenticationExtensionsPRFInputs;
 }
 
 interface AuthenticationExtensionsClientInputsJSON {
+    appid?: string;
+    credProps?: boolean;
+    largeBlob?: AuthenticationExtensionsLargeBlobInputsJSON;
+    prf?: AuthenticationExtensionsPRFInputsJSON;
 }
 
 interface AuthenticationExtensionsClientOutputs {
     appid?: boolean;
     credProps?: CredentialPropertiesOutput;
     hmacCreateSecret?: boolean;
+    largeBlob?: AuthenticationExtensionsLargeBlobOutputs;
     prf?: AuthenticationExtensionsPRFOutputs;
+}
+
+interface AuthenticationExtensionsLargeBlobInputs {
+    read?: boolean;
+    support?: string;
+    write?: BufferSource;
+}
+
+interface AuthenticationExtensionsLargeBlobInputsJSON {
+    read?: boolean;
+    support?: string;
+    write?: Base64URLString;
+}
+
+interface AuthenticationExtensionsLargeBlobOutputs {
+    blob?: ArrayBuffer;
+    supported?: boolean;
+    written?: boolean;
 }
 
 interface AuthenticationExtensionsPRFInputs {
     eval?: AuthenticationExtensionsPRFValues;
     evalByCredential?: Record<string, AuthenticationExtensionsPRFValues>;
+}
+
+interface AuthenticationExtensionsPRFInputsJSON {
+    eval?: AuthenticationExtensionsPRFValuesJSON;
+    evalByCredential?: Record<string, AuthenticationExtensionsPRFValuesJSON>;
 }
 
 interface AuthenticationExtensionsPRFOutputs {
@@ -211,6 +242,11 @@ interface AuthenticationExtensionsPRFOutputs {
 interface AuthenticationExtensionsPRFValues {
     first: BufferSource;
     second?: BufferSource;
+}
+
+interface AuthenticationExtensionsPRFValuesJSON {
+    first: Base64URLString;
+    second?: Base64URLString;
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -23613,7 +23649,7 @@ interface ServiceWorkerRegistration extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/unregister) */
     unregister(): Promise<boolean>;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/update) */
-    update(): Promise<void>;
+    update(): Promise<ServiceWorkerRegistration>;
     addEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
