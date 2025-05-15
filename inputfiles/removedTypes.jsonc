@@ -296,9 +296,10 @@
             "CredentialCreationOptions": {
                 "members": {
                     "member": {
-                        "federated": null, // Blink only as of 2024-06
-                        "password": null, // Blink only as of 2024-06
-                        "mediation": null // WebKit only as of 2024-06
+                        "ditigal": null, // Blink test-only as of 2025-05
+                        "federated": null, // Blink only as of 2025-05
+                        "password": null, // Blink only as of 2025-05
+                        "mediation": null // WebKit only as of 2025-05
                     }
                 }
             },
