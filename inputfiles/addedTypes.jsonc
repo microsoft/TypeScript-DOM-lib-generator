@@ -11,6 +11,19 @@
                     ]
                 }
             },
+            "Comment": {
+                "methods": {
+                    "method": {
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): string",
+                                "set textContent(value: string | null)"
+                            ]
+                        }
+                    }
+                }
+            },
             "DocumentAndElementEventHandlers": {
                 "events": {
                     "event": [
@@ -801,6 +814,13 @@
                                     ]
                                 }
                             }
+                        },
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): string",
+                                "set textContent(value: string | null)"
+                            ]
                         }
                     }
                 },
@@ -1228,6 +1248,17 @@
             },
             "Attr": {
                 "name": "Attr",
+                "methods": {
+                    "method": {
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): string",
+                                "set textContent(value: string | null)"
+                            ]
+                        }
+                    }
+                },
                 "properties": {
                     "property": {
                         "ownerDocument": {
@@ -1240,6 +1271,17 @@
             },
             "CharacterData": {
                 "name": "CharacterData",
+                "methods": {
+                    "method": {
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): string",
+                                "set textContent(value: string | null)"
+                            ]
+                        }
+                    }
+                },
                 "properties": {
                     "property": {
                         "ownerDocument": {
