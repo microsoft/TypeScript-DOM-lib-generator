@@ -4964,20 +4964,21 @@ interface Response extends Body {
     readonly type: ResponseType;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/url) */
     readonly url: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone) */
-    clone(): Response;
 }
 
-declare var Response: {
+interface ResponseConstructor {
     prototype: Response;
-    new(body?: BodyInit | null, init?: ResponseInit): Response;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone) */
+    clone(): Response;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/error_static) */
     error(): Response;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static) */
     json(data: any, init?: ResponseInit): Response;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/Response) */
+    new(body?: BodyInit | null, init?: ResponseInit): Response;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/redirect_static) */
     redirect(url: string | URL, status?: number): Response;
-};
+}
 
 /**
  * The **`SecurityPolicyViolationEvent`** interface inherits from Event, and represents the event object of a `securitypolicyviolation` event sent on an Element/securitypolicyviolation_event, Document/securitypolicyviolation_event, or WorkerGlobalScope/securitypolicyviolation_event when its Content Security Policy (CSP) is violated.
