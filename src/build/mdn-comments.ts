@@ -1,5 +1,4 @@
 import fs from "fs/promises";
-import { basename } from "path";
 
 const basePath = new URL(
   "../../inputfiles/mdn/files/en-us/web/api/",
@@ -47,66 +46,76 @@ function extractSummary(markdown: string): string {
     return sentenceMatch[0]; // Return the first full sentence
   }
 
-  return normalizedText.split(" ")[0] || ""; // Fallback: first word if no sentence found
+  const firstWord = normalizedText.split(" ")[0];
+  return firstWord || "";
 }
 
-async function getDirectories(dirPath: URL): Promise<URL[]> {
-  try {
-    const entries = await fs.readdir(dirPath, {
-      withFileTypes: true,
-    });
-    return entries
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => new URL(entry.name + "/", dirPath));
-  } catch (error) {
-    console.error("Error reading directories:", error);
-    return [];
-  }
-}
+async function walkDirectory(dir: URL): Promise<URL[]> {
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  let results: URL[] = [];
 
-async function getIndexMdContents(
-  folders: URL[],
-): Promise<{ [key: string]: string }> {
-  const results: { [key: string]: string } = {};
+  for (const entry of entries) {
+    const fullPath = new URL(`${entry.name}/`, dir);
+    const fullFile = new URL(entry.name, dir);
 
-  for (const folder of folders) {
-    const indexPath = new URL("index.md", folder);
-
-    try {
-      const content = await fs.readFile(indexPath, "utf-8");
-
-      // Improved title extraction
-      const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const filename = basename(folder.toString());
-      const title = titleMatch
-        ? titleMatch[1].replace(/ extension$/, "")
-        : filename || "";
-
-      const summary = extractSummary(content);
-      results[title] = summary;
-    } catch (error) {
-      console.warn(`Skipping ${indexPath}: ${error}`);
+    if (entry.isDirectory()) {
+      results = results.concat(await walkDirectory(fullPath));
+    } else if (entry.isFile() && entry.name === "index.md") {
+      results.push(fullFile);
     }
   }
 
   return results;
 }
 
-export async function generateDescription(): Promise<Record<string, string>> {
+function generateSlug(content: string): string[] {
+  const match = content.match(/slug:\s*["']?([^"'\n]+)["']?/)!;
+  const url = match[1].split(":").pop()!;
+  const parts = url.split("/").slice(2); // remove first 2 segments
+  return parts;
+}
+
+function ensureLeaf(
+  obj: Record<string, any>,
+  keys: string[],
+): Record<string, any> {
+  let leaf = obj;
+  for (const key of keys) {
+    leaf[key] ??= {};
+    leaf = leaf[key];
+  }
+  return leaf;
+}
+
+export async function generateDescriptions(): Promise<Record<string, any>> {
   const stats = await fs.stat(basePath);
   if (!stats.isDirectory()) {
     throw new Error(
       "MDN submodule does not exist; try running `git submodule update --init`",
     );
   }
+
+  const results: Record<string, any> = {};
   try {
-    const folders = await getDirectories(basePath);
-    if (folders.length > 0) {
-      return await getIndexMdContents(folders);
-    }
+    const indexPaths = await walkDirectory(basePath);
+
+    const promises = indexPaths.map(async (fileURL) => {
+      try {
+        const content = await fs.readFile(fileURL, "utf-8");
+        const slug = generateSlug(content);
+        const summary = extractSummary(content);
+        const leaf = ensureLeaf(results, slug);
+        leaf.__comment = summary;
+      } catch (error) {
+        console.warn(`Skipping ${fileURL.href}: ${error}`);
+      }
+    });
+
+    // Wait for all file processing to finish
+    await Promise.all(promises);
   } catch (error) {
     console.error("Error generating API descriptions:", error);
   }
 
-  return {};
+  return results;
 }

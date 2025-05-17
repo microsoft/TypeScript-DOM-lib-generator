@@ -13,7 +13,7 @@ import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
-import { generateDescription } from "./build/mdn-comments.js";
+import { generateDescriptions } from "./build/mdn-comments.js";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -95,7 +95,7 @@ async function emitDom() {
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
-  const documentationFromMDN = await generateDescription();
+  const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
   async function readInputJSON(filename: string) {
@@ -129,19 +129,48 @@ async function emitDom() {
 
   function mergeApiDescriptions(
     idl: Browser.WebIdl,
-    descriptions: Record<string, string>,
+    descriptions: Record<string, any>,
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
       (i) => i.name,
       (i) => i,
     );
-    for (const [key, value] of Object.entries(descriptions)) {
-      const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target) {
-        target.comment = value;
+
+    for (const [key, descObject] of Object.entries(descriptions)) {
+      const target = idl.interfaces?.interface?.[key] || namespaces[key];
+
+      if (!target) continue;
+
+      // Set interface/class-level comment
+      if (descObject.__comment) {
+        target.comment = descObject.__comment;
+      }
+
+      const { properties, methods } = idl.interfaces?.interface?.[key] || {};
+
+      const propertyItems = properties?.property
+        ? Object.values(properties.property)
+        : [];
+      const methodItems = methods?.method ? Object.values(methods.method) : [];
+
+      // Add comments to properties
+      for (const prop of propertyItems) {
+        const propDesc = descObject[prop.name];
+        if (propDesc?.__comment) {
+          prop.comment = propDesc.__comment;
+        }
+      }
+
+      // Add comments to methods
+      for (const method of methodItems) {
+        const methodDesc = descObject[method.name];
+        if (methodDesc?.__comment) {
+          method.comment = methodDesc.__comment;
+        }
       }
     }
+
     return idl;
   }
 
