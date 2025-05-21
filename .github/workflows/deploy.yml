@@ -11,10 +11,14 @@ permissions:
 
 jobs:
   deploy:
+    if: github.repository == 'microsoft/TypeScript-DOM-lib-generator'
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true  # Ensures submodules are cloned
+
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"

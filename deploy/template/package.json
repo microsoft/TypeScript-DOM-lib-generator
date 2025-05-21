@@ -11,7 +11,8 @@
         "url": "https://github.com/microsoft/TypeScript-DOM-Lib-Generator.git"
     },
     "typesVersions": {
-        "<=5.5": { "*": ["ts5.5/*"] }
+        "<=5.5": { "*": ["ts5.5/*"] },
+        "<=5.6": { "*": ["ts5.6/*"] }
     },
     "scripts": {},
     "dependencies": {}

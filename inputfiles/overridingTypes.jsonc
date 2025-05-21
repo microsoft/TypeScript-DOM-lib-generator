@@ -66,20 +66,12 @@
                             "type": "AnimationEvent"
                         },
                         {
-                            "name": "auxclick",
-                            "type": "PointerEvent"
-                        },
-                        {
                             "name": "cut",
                             "type": "ClipboardEvent"
                         },
                         {
                             "name": "copy",
                             "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "contextmenu",
-                            "type": "PointerEvent"
                         },
                         {
                             "name": "paste",
@@ -259,7 +251,9 @@
                 "properties": {
                     "property": {
                         "body": {
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "subtype": {
+                                "type": "Uint8Array"
+                            }
                         }
                     }
                 }
@@ -1073,6 +1067,17 @@
                     }
                 }
             },
+            "Notification": {
+                "properties": {
+                    "property": {
+                        "maxActions": {
+                            // BCD incorrectly indicates Firefox support
+                            // https://bugzilla.mozilla.org/show_bug.cgi?id=1225110#c31
+                            "exposed": ""
+                        }
+                    }
+                }
+            },
             "IDBObjectStore": {
                 "methods": {
                     "method": {
@@ -1444,6 +1449,9 @@
             },
             "SVGSymbolElement": {
                 "extends": "SVGElement"
+            },
+            "RadioNodeList": {
+                "extends": "NodeListOf<HTMLInputElement>"
             },
             "FormData": {
                 "methods": {
@@ -1945,6 +1953,12 @@
                     }
                 }
             },
+            // XXX: Float16Array is esnext-only as of 2025-04
+            // Not sure what to do here, for now disable it.
+            "Float16Array": {
+                "exposed": "",
+                "name": "Float16Array"
+            },
             "HTMLButtonElement": {
                 "properties": {
                     "property": {
@@ -2088,9 +2102,12 @@
             "WebTransportDatagramDuplexStream": {
                 "properties": {
                     "property": {
-                        // WebTransportDatagramsWritable is not implemented by anyone as of 2025-03
+                        // https://github.com/w3c/webtransport/pull/638 removed this but browsers still has this
                         "writable": {
-                            "type": "WritableStream"
+                            "name": "writable",
+                            "type": "WritableStream",
+                            "readonly": true,
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
                         }
                     }
                 }
@@ -2728,7 +2745,9 @@
                   "stream": {
                     "signature": {
                       "0": {
-                        "overrideType": "ReadableStream<Uint8Array>"
+                        "subtype": {
+                            "type": "Uint8Array"
+                        }
                       }
                     }
                   }
@@ -2756,7 +2775,7 @@
                                     "overrideType": "{ highWaterMark?: number }"
                                 }
                             ],
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "1": {
                             "typeParameters": [
@@ -2883,7 +2902,7 @@
                             "param": [
                                 {
                                     "name": "stream",
-                                    "overrideType": "ReadableStream<Uint8Array>"
+                                    "subtype": { "type": "Uint8Array" }
                                 }
                             ]
                         }
@@ -3185,12 +3204,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<BufferSource>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -3201,12 +3222,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<BufferSource>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -3217,12 +3240,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<string>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "DOMString" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<BufferSource>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -3233,12 +3258,14 @@
                         "readable": {
                             "name": "readable",
                             "readonly": true,
-                            "overrideType": "ReadableStream<Uint8Array>"
+                            "type": "ReadableStream",
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
-                            "overrideType": "WritableStream<string>"
+                            "type": "WritableStream",
+                            "subtype": { "type": "DOMString" }
                         }
                     }
                 }
@@ -3700,7 +3727,7 @@
         }
     },
     "dictionaries": {
-          "dictionary": {
+        "dictionary": {
             "FontFaceDescriptors": {
               "members": {
                 "member": {
@@ -4087,11 +4114,6 @@
                     }
                 ],
                 "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
-            },
-            {
-                "name": "AllowSharedBufferSource",
-                // No SharedArrayBuffer in ES5, oh no.
-                "overrideType": "ArrayBuffer | ArrayBufferView"
             }
         ]
     },

@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true  # Ensure submodules are checked out
+
+      - name: Update submodules
+        run: git submodule update --init --remote
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
@@ -27,7 +32,7 @@ jobs:
       # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
       - run: npm i
       - id: build
-        run: npm run build && npm run baseline-accept
+        run: npm run generate
         continue-on-error: true
       - if: ${{ steps.build.outcome == 'failure' }}
         run: node deploy/onUpdateFailure.js

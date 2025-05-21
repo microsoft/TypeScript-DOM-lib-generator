@@ -58,7 +58,7 @@
                         },
                         {
                             "name": "auxclick",
-                            "type": "MouseEvent"
+                            "type": "PointerEvent"
                         },
                         {
                             "name": "beforeinput",
@@ -70,7 +70,7 @@
                         },
                         {
                             "name": "click",
-                            "type": "MouseEvent"
+                            "type": "PointerEvent"
                         },
                         {
                             "name": "compositionstart",
@@ -198,7 +198,15 @@
                         },
                         {
                             "name": "contextmenu",
-                            "type": "MouseEvent"
+                            "type": "PointerEvent"
+                        },
+                        {
+                            "name": "toggle",
+                            "type": "ToggleEvent"
+                        },
+                        {
+                            "name": "beforetoggle",
+                            "type": "ToggleEvent"
                         }
                     ]
                 }
@@ -246,6 +254,14 @@
                         {
                             "name": "pageshow",
                             "type": "PageTransitionEvent"
+                        },
+                        {
+                            "name": "pageswap",
+                            "type": "PageSwapEvent"
+                        },
+                        {
+                            "name": "pagereveal",
+                            "type": "PageRevealEvent"
                         },
                         {
                             "name": "popstate",
@@ -566,7 +582,6 @@
             "HTMLDocument": {
                 "name": "HTMLDocument",
                 "extends": "Document",
-                "deprecated": "use Document",
                 "exposed": "Window"
             },
             "HTMLMediaElement": {
@@ -1137,6 +1152,19 @@
                         "disabled": {
                             "name": "disabled",
                             "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "LargestContentfulPaint": {
+                "properties": {
+                    "property": {
+                        // Removed by https://github.com/w3c/largest-contentful-paint/pull/126, but browsers still have it
+                        "renderTime": {
+                            "name": "renderTime",
+                            "type": "DOMHighResTimeStamp",
+                            "readonly": true,
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/renderTime"
                         }
                     }
                 }

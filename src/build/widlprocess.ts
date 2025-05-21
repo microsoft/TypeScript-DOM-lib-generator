@@ -340,6 +340,7 @@ function convertArgument(arg: webidl2.Argument): Browser.Param {
     ...idlType,
     optional: arg.optional,
     variadic: arg.variadic,
+    allowShared: hasExtAttr(arg.extAttrs, "AllowShared"),
   };
 }
 
@@ -362,6 +363,7 @@ function convertAttribute(
       inheritedExposure,
     putForwards: getExtAttr(attribute.extAttrs, "PutForwards")[0],
     secureContext: hasExtAttr(attribute.extAttrs, "SecureContext"),
+    allowShared: hasExtAttr(attribute.extAttrs, "AllowShared"),
   };
 }
 
@@ -495,6 +497,7 @@ function convertIdlType(i: webidl2.IDLTypeDescription): Browser.Typed {
     return {
       type: i.idlType,
       nullable: i.nullable,
+      allowShared: hasExtAttr(i.extAttrs, "AllowShared"),
     };
   }
   if (i.generic) {

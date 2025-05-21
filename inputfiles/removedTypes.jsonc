@@ -259,18 +259,21 @@
             "AuthenticationExtensionsClientInputs": {
                 "members": {
                     "member": {
-                        // only `appid`, `credProps`, and `hmacCreateSecret` are implemented by 2+ engines, everything else is Blink only as of 2022-10.
                         // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
                         // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
                         // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/authentication_extensions_client_inputs.idl
                         "appidExclude": null,
                         "credBlob": null,
-                        "credentialProtectionPolicy": null,
-                        "enforceCredentialProtectionPolicy": null,
                         "getCredBlob": null,
-                        "hmacGetSecret": null, // No implementation as of 2023-11
-                        "largeBlob": null,
+                        "hmacGetSecret": null, // No implementation as of 2025-05
                         "payment": null
+                    }
+                }
+            },
+            "AuthenticationExtensionsClientInputsJSON": {
+                "members": {
+                    "member": {
+                        "appidExclude": null
                     }
                 }
             },
@@ -278,9 +281,8 @@
                 "members": {
                     "member": {
                         // (same as *Inputs)
-                        "appidExclude": null, // No implementation as of 2023-11
-                        "hmacGetSecret": null, // No implementation as of 2023-11
-                        "largeBlob": null
+                        "appidExclude": null, // No implementation as of 2025-05
+                        "hmacGetSecret": null // No implementation as of 2025-05
                     }
                 }
             },
@@ -294,9 +296,10 @@
             "CredentialCreationOptions": {
                 "members": {
                     "member": {
-                        "federated": null, // Blink only as of 2024-06
-                        "password": null, // Blink only as of 2024-06
-                        "mediation": null // WebKit only as of 2024-06
+                        "digital": null, // Blink test-only as of 2025-05
+                        "federated": null, // Blink only as of 2025-05
+                        "password": null, // Blink only as of 2025-05
+                        "mediation": null // WebKit only as of 2025-05
                     }
                 }
             },
@@ -356,6 +359,13 @@
                     }
                 }
             },
+            "FetchEventInit": {
+                "members": {
+                    "member": {
+                        "replacesClientId": null // Not implemented as of 2025-04
+                    }
+                }
+            },
             "FocusOptions": {
                 "members": {
                     "member": {
@@ -395,6 +405,13 @@
                 "members": {
                     "member": {
                         "usage": null // Blink only as of 2024-11
+                    }
+                }
+            },
+            "ImageDataSettings": {
+                "members": {
+                    "member": {
+                        "pixelFormat": null // Blink experimental only as of 2025-04
                     }
                 }
             },
@@ -531,19 +548,19 @@
                         // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSettings.webidl
                         // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
                         // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_settings.idl
-                        "latency": null, // Blink only as of 2022-11
-                        "resizeMode": null, // Blink only as of 2022-11
+                        "latency": null, // Blink only as of 2025-04
+                        "resizeMode": null, // Blink only as of 2025-04
 
                         // Screen Share extensions
                         // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
-                        "cursor": null, // Blink only as of 2022-11
-                        "logicalSurface": null, // Blink only as of 2022-11
-                        "restrictOwnAudio": null, // Blink only as of 2022-11
-                        "suppressLocalAudioPlayback": null, // Blink only as of 2022-11
+                        "cursor": null, // Blink only as of 2025-04
+                        "logicalSurface": null, // Blink only as of 2025-04
+                        "restrictOwnAudio": null, // Blink only as of 2025-04
+                        "suppressLocalAudioPlayback": null, // Blink only as of 2025-04s
+                        "screenPixelRatio": null, // Blink only as of 2025-04
 
-                        // Image Capture extensions which are Blink only as of 2022-11
+                        // Image Capture extensions which are Blink only as of 2025-04
                         // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
-                        "whiteBalanceMode": null,
                         "exposureMode": null,
                         "focusMode": null,
                         "pointsOfInterest": null,
@@ -557,9 +574,7 @@
                         "sharpness": null,
                         "focusDistance": null,
                         "pan": null,
-                        "tilt": null,
-                        "zoom": null,
-                        "torch": null
+                        "tilt": null
                     }
                 }
             },
@@ -754,11 +769,37 @@
                     }
                 }
             },
+            "RTCLocalIceCandidateInit": {
+                "members": {
+                    "member": {
+                        "relayProtocol": null, // Blink only as of 2025-04
+                        "url": null // Blink only as of 2025-04
+                    }
+                }
+            },
             "RTCOutboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "powerEfficientEncoder": null, // Blink only as of 2024-11
-                        "encoderImplementation": null // Blink only as of 2024-11
+                        "powerEfficientEncoder": null, // Blink only as of 2025-04
+                        "encoderImplementation": null, // Blink only as of 2025-04
+                        "encodingIndex": null // Blink only as of 2025-04
+                    }
+                }
+            },
+            "RTCReceivedRtpStreamStats": {
+                "members": {
+                    "member": {
+                        "packetsReceivedWithCe": null, // No implementation as of 2025-04
+                        "packetsReceivedWithEct1": null, // No implementation as of 2025-04
+                        "packetsReportedAsLost": null, // No implementation as of 2025-04
+                        "packetsReportedAsLostButRecovered": null // No implementation as of 2025-04
+                    }
+                }
+            },
+            "RTCPeerConnectionIceEventInit": {
+                "members": {
+                    "member": {
+                        "url": null // WebKit only as of 2025-04
                     }
                 }
             },
@@ -767,6 +808,21 @@
                     "member": {
                         "codec": null, // Blink only as of 2024-11
                         "scalabilityMode": null // Blink only as of 2024-11
+                    }
+                }
+            },
+            "RTCSentRtpStreamStats": {
+                "members": {
+                    "member": {
+                        "packetsSentWithEct1": null // No implementation as of 2025-04
+                    }
+                }
+            },
+            "RTCTransportStats": {
+                "members": {
+                    "member": {
+                        "ccfbMessagesReceived": null, // No implementation as of 2025-04
+                        "ccfbMessagesSent": null // No implementation as of 2025-04
                     }
                 }
             },

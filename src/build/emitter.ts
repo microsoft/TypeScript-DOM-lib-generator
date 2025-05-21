@@ -9,6 +9,7 @@ import {
   integerTypes,
   baseTypeConversionMap,
   assertUnique,
+  arrayBufferViewTypes,
 } from "./helpers.js";
 import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
 
@@ -135,6 +136,7 @@ function isEventHandler(p: Browser.Property) {
 export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
+  useGenericTypedArrays?: boolean;
 }
 
 export function emitWebIdl(
@@ -352,21 +354,28 @@ export function emitWebIdl(
   }
 
   /// Get typescript type using object dom type, object name, and it's associated interface name
-  function convertDomTypeToTsType(obj: Browser.Typed): string {
+  function convertDomTypeToTsTypeBase(
+    obj: Browser.Typed,
+    forReturn: boolean,
+  ): string {
     if (obj.overrideType) {
       return obj.nullable ? makeNullable(obj.overrideType) : obj.overrideType;
     }
     if (!obj.type)
       throw new Error("Missing 'type' field in " + JSON.stringify(obj));
-    let type = convertDomTypeToTsTypeWorker(obj);
+    let type = convertDomTypeToTsTypeWorker(obj, forReturn);
     if (type === "Promise<undefined>") {
       type = "Promise<void>";
     }
     return obj.nullable ? makeNullable(type) : type;
   }
 
+  function convertDomTypeToTsType(obj: Browser.Typed) {
+    return convertDomTypeToTsTypeBase(obj, false);
+  }
+
   function convertDomTypeToTsReturnType(obj: Browser.Typed): string {
-    const type = convertDomTypeToTsType(obj);
+    const type = convertDomTypeToTsTypeBase(obj, true);
     if (type === "undefined") {
       return "void";
     }
@@ -376,8 +385,15 @@ export function emitWebIdl(
     return type;
   }
 
-  function convertDomTypeToTsTypeWorker(obj: Browser.Typed): string {
+  function convertDomTypeToTsTypeWorker(
+    obj: Browser.Typed,
+    forReturn: boolean,
+  ): string {
     function convertBaseType() {
+      if (obj.type === "sequence" && !forReturn && iterator !== "") {
+        return "Iterable";
+      }
+
       if (!obj.additionalTypes && typeof obj.type === "string") {
         return convertDomTypeToTsTypeSimple(obj.type);
       } else {
@@ -387,16 +403,41 @@ export function emitWebIdl(
             : obj.type;
         types.push(...(obj.additionalTypes ?? []).map((t) => ({ type: t })));
 
-        const converted = types.map(convertDomTypeToTsTypeWorker);
-        const isAny = converted.some((t) => t === "any");
-        return isAny ? "any" : converted.join(" | ");
+        // propagate `any`
+        const converted = types.map((t) =>
+          convertDomTypeToTsTypeWorker(t, forReturn),
+        );
+        if (converted.includes("any")) {
+          return "any";
+        }
+
+        // convert `ArrayBuffer | SharedArrayBuffer` into `ArrayBufferLike` to be pre-ES2017 friendly.
+        const arrayBufferIndex = converted.indexOf("ArrayBuffer");
+        if (arrayBufferIndex >= 0) {
+          const sharedArrayBufferIndex = converted.indexOf("SharedArrayBuffer");
+          if (sharedArrayBufferIndex >= 0) {
+            const maxIndex = Math.max(arrayBufferIndex, sharedArrayBufferIndex);
+            const minIndex = Math.min(arrayBufferIndex, sharedArrayBufferIndex);
+            converted[minIndex] = "ArrayBufferLike"; // replace whichever comes first
+            converted.splice(maxIndex, 1); // drop whichever comes last
+          }
+        }
+        return converted.join(" | ");
       }
     }
 
     const type = convertBaseType();
-    const subtypeString = arrayify(obj.subtype)
-      .map(convertDomTypeToTsType)
+    let subtypeString = arrayify(obj.subtype)
+      .map((t) => convertDomTypeToTsTypeBase(t, forReturn))
       .join(", ");
+
+    if (
+      !subtypeString &&
+      compilerBehavior.useGenericTypedArrays &&
+      arrayBufferViewTypes.has(type)
+    ) {
+      subtypeString = obj.allowShared ? "ArrayBufferLike" : "ArrayBuffer";
+    }
 
     return type === "Array" && subtypeString
       ? makeArrayType(subtypeString, obj)
@@ -428,9 +469,6 @@ export function emitWebIdl(
   }
 
   function convertDomTypeToTsTypeSimple(objDomType: string): string {
-    if (objDomType === "sequence" && iterator !== "") {
-      return "Iterable";
-    }
     if (baseTypeConversionMap.has(objDomType)) {
       return baseTypeConversionMap.get(objDomType)!;
     }
