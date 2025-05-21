@@ -2990,6 +2990,9 @@ interface Attr extends Node {
     readonly specified: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr/value) */
     value: string;
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    get textContent(): string;
+    set textContent(value: string | null);
 }
 
 declare var Attr: {
@@ -6531,6 +6534,9 @@ interface CharacterData extends Node, ChildNode, NonDocumentTypeChildNode {
     replaceData(offset: number, count: number, data: string): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/substringData) */
     substringData(offset: number, count: number): string;
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    get textContent(): string;
+    set textContent(value: string | null);
 }
 
 declare var CharacterData: {
@@ -9035,6 +9041,9 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)
      */
     webkitMatchesSelector(selectors: string): boolean;
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    get textContent(): string;
+    set textContent(value: string | null);
     addEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
