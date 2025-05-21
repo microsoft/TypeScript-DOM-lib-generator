@@ -356,6 +356,10 @@ interface GetNotificationOptions {
     tag?: string;
 }
 
+interface HevcEncoderConfig {
+    format?: HevcBitstreamFormat;
+}
+
 interface HkdfParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
     info: BufferSource;
@@ -922,6 +926,7 @@ interface VideoEncoderConfig {
     framerate?: number;
     hardwareAcceleration?: HardwareAcceleration;
     height: number;
+    hevc?: HevcEncoderConfig;
     latencyMode?: LatencyMode;
     scalabilityMode?: string;
     width: number;
@@ -10409,6 +10414,7 @@ type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HardwareAcceleration = "no-preference" | "prefer-hardware" | "prefer-software";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
+type HevcBitstreamFormat = "annexb" | "hevc";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
 type IDBTransactionDurability = "default" | "relaxed" | "strict";
