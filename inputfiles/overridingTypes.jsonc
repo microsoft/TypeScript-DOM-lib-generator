@@ -2581,7 +2581,7 @@
                                     "typeParameters": [
                                         {
                                             "name": "T",
-                                            "extends": "ArrayBufferView | null"
+                                            "extends": "Int8Array | Int16Array | Int32Array | Uint8Array | Uint16Array | Uint32Array | Uint8ClampedArray | BigInt64Array | BigUint64Array"
                                         }
                                     ],
                                     "param": [
