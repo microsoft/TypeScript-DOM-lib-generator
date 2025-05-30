@@ -11,7 +11,7 @@ type StrictEqual<X, Y> =
     ? true
     : false;
 
-// string | null:
+// string:
 declare const element: Element;
 assertType<string>()(element.textContent)();
 element.textContent = null;
