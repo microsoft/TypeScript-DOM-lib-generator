@@ -8599,7 +8599,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/self)
      */
-    readonly self: WorkerGlobalScope & typeof globalThis;
+    readonly self: WorkerGlobalScope;
     /**
      * Fetches each URL in urls, executes them one-by-one in the order they are passed, and then returns (or throws if something went amiss).
      *
@@ -9073,7 +9073,7 @@ declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseR
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/self)
  */
-declare var self: WorkerGlobalScope & typeof globalThis;
+declare var self: WorkerGlobalScope;
 /**
  * Fetches each URL in urls, executes them one-by-one in the order they are passed, and then returns (or throws if something went amiss).
  *
