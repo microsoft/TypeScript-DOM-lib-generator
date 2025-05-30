@@ -3337,6 +3337,7 @@
                 }
             },
             "WorkerGlobalScope": {
+                "properties": {
                     "property": {
                         "self": {
                             "overrideType": "ServiceWorkerGlobalScope & typeof globalThis"
