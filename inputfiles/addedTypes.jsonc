@@ -1289,6 +1289,16 @@
                             "type": "Document"
                         }
                     }
+                },
+                "methods": {
+                    "method": {
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): null"
+                            ]
+                        }
+                    }
                 }
             },
             "ProcessingInstruction": {

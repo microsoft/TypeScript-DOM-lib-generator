@@ -8507,6 +8507,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/writeln)
      */
     writeln(...text: string[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    get textContent(): null;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -8528,6 +8530,9 @@ declare var Document: {
 interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
     readonly ownerDocument: Document;
     getElementById(elementId: string): HTMLElement | null;
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    get textContent(): string;
+    set textContent(value: string | null);
 }
 
 declare var DocumentFragment: {
@@ -8601,6 +8606,8 @@ interface DocumentType extends Node, ChildNode {
     readonly publicId: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DocumentType/systemId) */
     readonly systemId: string;
+    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    get textContent(): null;
 }
 
 declare var DocumentType: {

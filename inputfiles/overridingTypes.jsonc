@@ -831,6 +831,12 @@
                                     "overrideType": "NodeListOf<HTMLElement>"
                                 }
                             }
+                        },
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): null"
+                            ]
                         }
                     }
                 },
@@ -896,6 +902,13 @@
                             "name": "getElementById",
                             "overrideSignatures": [
                                 "getElementById(elementId: string): HTMLElement | null"
+                            ]
+                        },
+                        "textContent": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "overrideSignatures": [
+                                "get textContent(): string",
+                                "set textContent(value: string | null)"
                             ]
                         }
                     }

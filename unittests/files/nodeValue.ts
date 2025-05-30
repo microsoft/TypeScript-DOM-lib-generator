@@ -11,16 +11,38 @@ type StrictEqual<X, Y> =
     ? true
     : false;
 
-const div = document.createElement("div");
-assertType<string>()(div.textContent)();
-div.textContent = null;
+// string | null:
+declare const element: Element;
+assertType<string>()(element.textContent)();
+element.textContent = null;
 
-const text = document.createTextNode("hello");
+declare const characterData: CharacterData;
+assertType<string>()(characterData.textContent)();
+characterData.textContent = null;
+
+declare const text: Text;
 assertType<string>()(text.textContent)();
+text.textContent = null;
 
-assertType<string | null>()(document.textContent)();
+declare const comment: Comment;
+assertType<string>()(comment.textContent)();
+comment.textContent = null;
 
-const type = document.doctype!;
-assertType<string | null>()(type.textContent)();
+declare const processingInstruction: ProcessingInstruction;
+assertType<string>()(processingInstruction.textContent)();
+processingInstruction.textContent = null;
+
+declare const documentFragment: DocumentFragment;
+assertType<string>()(documentFragment.textContent)();
+
+declare const attr: Attr;
+assertType<string>()(attr.textContent)();
+attr.textContent = null;
+
+// null:
+assertType<null>()(document.textContent)();
+
+declare const documentType: DocumentType;
+assertType<null>()(documentType.textContent)();
 
 export {};
