@@ -1047,7 +1047,7 @@
                             "overrideType": "ParentNode"
                         },
                         "parentElement": {
-                            "overrideType": "HTMLElement"
+                            "overrideType": "HTMLElement | SVGElement"
                         },
                         "childNodes": {
                             "overrideType": "NodeListOf<ChildNode>"
