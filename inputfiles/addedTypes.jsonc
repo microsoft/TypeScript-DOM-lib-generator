@@ -1319,6 +1319,16 @@
                         }
                     }
                 }
+            },
+            "HTMLElement": {
+                "properties": {
+                    "property": {
+                        "onerror": {
+                            "name": "onerror",
+                            "overrideType": "(event: Event) => void"
+                        }
+                    }
+                }
             }
         }
     },
