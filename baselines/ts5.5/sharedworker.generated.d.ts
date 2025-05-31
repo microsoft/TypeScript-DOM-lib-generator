@@ -303,6 +303,10 @@ interface KeyAlgorithm {
     name: string;
 }
 
+interface KeySystemTrackConfiguration {
+    robustness?: string;
+}
+
 interface LockInfo {
     clientId?: string;
     mode?: LockMode;
@@ -322,11 +326,9 @@ interface LockOptions {
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaDecodingConfiguration;
 }
 
 interface MediaCapabilitiesEncodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaEncodingConfiguration;
 }
 
 interface MediaCapabilitiesInfo {
@@ -335,12 +337,23 @@ interface MediaCapabilitiesInfo {
     supported: boolean;
 }
 
+interface MediaCapabilitiesKeySystemConfiguration {
+    audio?: KeySystemTrackConfiguration;
+    distinctiveIdentifier?: MediaKeysRequirement;
+    initDataType?: string;
+    keySystem: string;
+    persistentState?: MediaKeysRequirement;
+    sessionTypes?: string[];
+    video?: KeySystemTrackConfiguration;
+}
+
 interface MediaConfiguration {
     audio?: AudioConfiguration;
     video?: VideoConfiguration;
 }
 
 interface MediaDecodingConfiguration extends MediaConfiguration {
+    keySystemConfiguration?: MediaCapabilitiesKeySystemConfiguration;
     type: MediaDecodingType;
 }
 
@@ -9135,6 +9148,7 @@ type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "u
 type LockMode = "exclusive" | "shared";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaEncodingType = "record" | "webrtc";
+type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";

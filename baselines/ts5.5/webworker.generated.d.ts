@@ -463,6 +463,10 @@ interface KeyAlgorithm {
     name: string;
 }
 
+interface KeySystemTrackConfiguration {
+    robustness?: string;
+}
+
 interface LockInfo {
     clientId?: string;
     mode?: LockMode;
@@ -482,11 +486,9 @@ interface LockOptions {
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaDecodingConfiguration;
 }
 
 interface MediaCapabilitiesEncodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaEncodingConfiguration;
 }
 
 interface MediaCapabilitiesInfo {
@@ -495,12 +497,23 @@ interface MediaCapabilitiesInfo {
     supported: boolean;
 }
 
+interface MediaCapabilitiesKeySystemConfiguration {
+    audio?: KeySystemTrackConfiguration;
+    distinctiveIdentifier?: MediaKeysRequirement;
+    initDataType?: string;
+    keySystem: string;
+    persistentState?: MediaKeysRequirement;
+    sessionTypes?: string[];
+    video?: KeySystemTrackConfiguration;
+}
+
 interface MediaConfiguration {
     audio?: AudioConfiguration;
     video?: VideoConfiguration;
 }
 
 interface MediaDecodingConfiguration extends MediaConfiguration {
+    keySystemConfiguration?: MediaCapabilitiesKeySystemConfiguration;
     type: MediaDecodingType;
 }
 
@@ -633,21 +646,23 @@ interface QueuingStrategyInit {
     highWaterMark: number;
 }
 
-interface RTCEncodedAudioFrameMetadata {
-    contributingSources?: number[];
-    payloadType?: number;
+interface RTCEncodedAudioFrameMetadata extends RTCEncodedFrameMetadata {
     sequenceNumber?: number;
+}
+
+interface RTCEncodedFrameMetadata {
+    contributingSources?: number[];
+    mimeType?: string;
+    payloadType?: number;
+    rtpTimestamp?: number;
     synchronizationSource?: number;
 }
 
-interface RTCEncodedVideoFrameMetadata {
-    contributingSources?: number[];
+interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
     dependencies?: number[];
     frameId?: number;
     height?: number;
-    payloadType?: number;
     spatialIndex?: number;
-    synchronizationSource?: number;
     temporalIndex?: number;
     timestamp?: number;
     width?: number;
@@ -10422,6 +10437,7 @@ type LatencyMode = "quality" | "realtime";
 type LockMode = "exclusive" | "shared";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaEncodingType = "record" | "webrtc";
+type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";

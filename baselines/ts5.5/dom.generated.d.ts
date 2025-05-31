@@ -911,6 +911,10 @@ interface KeyAlgorithm {
     name: string;
 }
 
+interface KeySystemTrackConfiguration {
+    robustness?: string;
+}
+
 interface KeyboardEventInit extends EventModifierInit {
     /** @deprecated */
     charCode?: number;
@@ -973,11 +977,10 @@ interface MIDIOptions {
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaDecodingConfiguration;
+    keySystemAccess: MediaKeySystemAccess | null;
 }
 
 interface MediaCapabilitiesEncodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaEncodingConfiguration;
 }
 
 interface MediaCapabilitiesInfo {
@@ -986,12 +989,23 @@ interface MediaCapabilitiesInfo {
     supported: boolean;
 }
 
+interface MediaCapabilitiesKeySystemConfiguration {
+    audio?: KeySystemTrackConfiguration;
+    distinctiveIdentifier?: MediaKeysRequirement;
+    initDataType?: string;
+    keySystem: string;
+    persistentState?: MediaKeysRequirement;
+    sessionTypes?: string[];
+    video?: KeySystemTrackConfiguration;
+}
+
 interface MediaConfiguration {
     audio?: AudioConfiguration;
     video?: VideoConfiguration;
 }
 
 interface MediaDecodingConfiguration extends MediaConfiguration {
+    keySystemConfiguration?: MediaCapabilitiesKeySystemConfiguration;
     type: MediaDecodingType;
 }
 
@@ -1632,21 +1646,23 @@ interface RTCDtlsFingerprint {
     value?: string;
 }
 
-interface RTCEncodedAudioFrameMetadata {
-    contributingSources?: number[];
-    payloadType?: number;
+interface RTCEncodedAudioFrameMetadata extends RTCEncodedFrameMetadata {
     sequenceNumber?: number;
+}
+
+interface RTCEncodedFrameMetadata {
+    contributingSources?: number[];
+    mimeType?: string;
+    payloadType?: number;
+    rtpTimestamp?: number;
     synchronizationSource?: number;
 }
 
-interface RTCEncodedVideoFrameMetadata {
-    contributingSources?: number[];
+interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
     dependencies?: number[];
     frameId?: number;
     height?: number;
-    payloadType?: number;
     spatialIndex?: number;
-    synchronizationSource?: number;
     temporalIndex?: number;
     timestamp?: number;
     width?: number;
