@@ -13,7 +13,7 @@ import { getInterfaceElementMergeData } from "./build/webref/elements.js";
 import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
-import { generateDescription } from "./build/mdn-comments.js";
+import { generateDescriptions } from "./build/mdn-comments.js";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -95,7 +95,8 @@ async function emitDom() {
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
-  const documentationFromMDN = await generateDescription();
+  const removedComments = await readInputJSON("removedComments.json");
+  const documentationFromMDN = await generateDescriptions(removedComments);
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
   async function readInputJSON(filename: string) {
@@ -129,19 +130,28 @@ async function emitDom() {
 
   function mergeApiDescriptions(
     idl: Browser.WebIdl,
-    descriptions: Record<string, string>,
+    descriptions: { interfaces: { interface: Record<string, any> } },
   ) {
     const namespaces = arrayToMap(
       idl.namespaces!,
       (i) => i.name,
       (i) => i,
     );
-    for (const [key, value] of Object.entries(descriptions)) {
-      const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target) {
-        target.comment = value;
+
+    for (const [key, descObject] of Object.entries(
+      descriptions.interfaces.interface,
+    )) {
+      const target = idl.interfaces?.interface?.[key] || namespaces[key];
+
+      if (!target) continue;
+
+      // Set interface/class-level comment
+      if (descObject.__comment) {
+        target.comment = descObject.__comment;
       }
     }
+    idl = merge(idl, descriptions, { optional: true });
+
     return idl;
   }
 
@@ -169,7 +179,7 @@ async function emitDom() {
   };
 
   for (const w of widlStandardTypes) {
-    webidl = merge(webidl, w.browser, true);
+    webidl = merge(webidl, w.browser, { shallow: true });
   }
   for (const w of widlStandardTypes) {
     for (const partial of w.partialInterfaces) {
@@ -179,32 +189,32 @@ async function emitDom() {
         webidl.mixins!.mixin[partial.name];
       if (base) {
         if (base.exposed) resolveExposure(partial, base.exposed);
-        merge(base.constants, partial.constants, true);
-        merge(base.methods, partial.methods, true);
-        merge(base.properties, partial.properties, true);
+        merge(base.constants, partial.constants, { shallow: true });
+        merge(base.methods, partial.methods, { shallow: true });
+        merge(base.properties, partial.properties, { shallow: true });
       }
     }
     for (const partial of w.partialMixins) {
       const base = webidl.mixins!.mixin[partial.name];
       if (base) {
         if (base.exposed) resolveExposure(partial, base.exposed);
-        merge(base.constants, partial.constants, true);
-        merge(base.methods, partial.methods, true);
-        merge(base.properties, partial.properties, true);
+        merge(base.constants, partial.constants, { shallow: true });
+        merge(base.methods, partial.methods, { shallow: true });
+        merge(base.properties, partial.properties, { shallow: true });
       }
     }
     for (const partial of w.partialDictionaries) {
       const base = webidl.dictionaries!.dictionary[partial.name];
       if (base) {
-        merge(base.members, partial.members, true);
+        merge(base.members, partial.members, { shallow: true });
       }
     }
     for (const partial of w.partialNamespaces) {
       const base = webidl.namespaces?.find((n) => n.name === partial.name);
       if (base) {
         if (base.exposed) resolveExposure(partial, base.exposed);
-        merge(base.methods, partial.methods, true);
-        merge(base.properties, partial.properties, true);
+        merge(base.methods, partial.methods, { shallow: true });
+        merge(base.properties, partial.properties, { shallow: true });
       }
     }
     for (const include of w.includes) {

@@ -118,7 +118,14 @@ export function exposesTo(o: { exposed?: string }, target: string[]): boolean {
   return o.exposed.split(" ").some((e) => target.includes(e));
 }
 
-export function merge<T>(target: T, src: T, shallow?: boolean): T {
+export function merge<T>(
+  target: T,
+  src: T,
+  {
+    shallow = false,
+    optional = false,
+  }: { shallow?: boolean; optional?: boolean } = {},
+): T {
   if (typeof target !== "object" || typeof src !== "object") {
     return src;
   }
@@ -145,10 +152,10 @@ export function merge<T>(target: T, src: T, shallow?: boolean): T {
                 `Redundant merge value ${targetProp} in ${JSON.stringify(src)}`,
               );
             }
-            target[k] = merge(targetProp, srcProp, shallow);
+            target[k] = merge(targetProp, srcProp, { shallow, optional });
           }
         }
-      } else {
+      } else if (!optional || typeof src[k] !== "object") {
         target[k] = src[k];
       }
     }

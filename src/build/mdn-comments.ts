@@ -1,6 +1,4 @@
 import fs from "fs/promises";
-import { basename } from "path";
-
 const basePath = new URL(
   "../../inputfiles/mdn/files/en-us/web/api/",
   import.meta.url,
@@ -47,66 +45,124 @@ function extractSummary(markdown: string): string {
     return sentenceMatch[0]; // Return the first full sentence
   }
 
-  return normalizedText.split(" ")[0] || ""; // Fallback: first word if no sentence found
+  const firstWord = normalizedText.split(" ")[0];
+  return firstWord || "";
 }
 
-async function getDirectories(dirPath: URL): Promise<URL[]> {
-  try {
-    const entries = await fs.readdir(dirPath, {
-      withFileTypes: true,
-    });
-    return entries
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => new URL(entry.name + "/", dirPath));
-  } catch (error) {
-    console.error("Error reading directories:", error);
-    return [];
-  }
-}
+async function walkDirectory(dir: URL): Promise<URL[]> {
+  const entries = await fs.readdir(dir, { withFileTypes: true });
+  const parentDirName = dir.pathname.split("/").filter(Boolean).slice(-1)[0];
+  let results: URL[] = [];
 
-async function getIndexMdContents(
-  folders: URL[],
-): Promise<{ [key: string]: string }> {
-  const results: { [key: string]: string } = {};
-
-  for (const folder of folders) {
-    const indexPath = new URL("index.md", folder);
-
-    try {
-      const content = await fs.readFile(indexPath, "utf-8");
-
-      // Improved title extraction
-      const titleMatch = content.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const filename = basename(folder.toString());
-      const title = titleMatch
-        ? titleMatch[1].replace(/ extension$/, "")
-        : filename || "";
-
-      const summary = extractSummary(content);
-      results[title] = summary;
-    } catch (error) {
-      console.warn(`Skipping ${indexPath}: ${error}`);
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      if (entry.name === parentDirName) continue;
+      const subDir = new URL(`${entry.name}/`, dir);
+      results = results.concat(await walkDirectory(subDir));
+    } else if (entry.isFile() && entry.name === "index.md") {
+      results.push(new URL(entry.name, dir));
     }
   }
 
   return results;
 }
 
-export async function generateDescription(): Promise<Record<string, string>> {
+const types: Record<string, string> = {
+  property: "properties",
+  method: "methods",
+  "landing-page": "ignore",
+  interface: "interfaces",
+  overview: "ignore",
+  event: "events",
+};
+
+function generateTypes(content: string): string[] | undefined {
+  const pageType = content.match(/page-type:\s*["']?([^"'\n]+)["']?/)!;
+  const type = pageType[1].split("-").pop()!;
+  const plural = types[type];
+  if (!plural) return;
+
+  return [plural, type];
+}
+
+function generateSlug(content: string): string[] {
+  const match = content.match(/slug:\s*["']?([^"'\n]+)["']?/)!;
+  const url = match[1].split(":").pop()!;
+  const parts = url.split("/").slice(2); // skip `/en-US/web/api/...`
+  return parts; // Keep only top-level and method
+}
+
+function ensureLeaf(obj: Record<string, any>, keys: string[]) {
+  let leaf = obj;
+  for (const key of keys) {
+    leaf[key] ??= {};
+    leaf = leaf[key];
+  }
+  return leaf;
+}
+
+function insertComment(
+  root: Record<string, any>,
+  slug: string[],
+  summary: string,
+  types?: string[],
+) {
+  if (slug.length === 1 || !types) {
+    const iface = ensureLeaf(root, slug);
+    iface.__comment = summary;
+  } else {
+    const [ifaceName, memberName] = slug;
+    const iface = ensureLeaf(root, [ifaceName, ...types]);
+
+    const mainComment = root[ifaceName]?.__comment;
+    if (mainComment !== summary) {
+      iface[memberName] = { comment: summary };
+    }
+  }
+}
+
+export async function generateDescriptions(removedComments: string[]): Promise<{
+  interfaces: { interface: Record<string, any> };
+}> {
   const stats = await fs.stat(basePath);
   if (!stats.isDirectory()) {
     throw new Error(
       "MDN submodule does not exist; try running `git submodule update --init`",
     );
   }
-  try {
-    const folders = await getDirectories(basePath);
-    if (folders.length > 0) {
-      return await getIndexMdContents(folders);
-    }
-  } catch (error) {
-    console.error("Error generating API descriptions:", error);
-  }
 
-  return {};
+  const results: Record<string, any> = {};
+  try {
+    const indexPaths = await walkDirectory(basePath);
+
+    await Promise.all(
+      indexPaths.map(async (fileURL) => {
+        try {
+          const content = await fs.readFile(fileURL, "utf-8");
+          const slug = generateSlug(content);
+          const types = generateTypes(content);
+          if (
+            !slug ||
+            slug.length === 0 ||
+            removedComments.includes(slug[0]) ||
+            (types && types[0] === "ignore")
+          )
+            return;
+
+          const summary = extractSummary(content);
+          if (
+            summary ===
+            "When writing code for the Web, there are a large number of Web APIs available."
+          )
+            console.log(types, slug, summary);
+          insertComment(results, slug, summary, types);
+        } catch (error) {
+          console.error("Error generating API descriptions:", error);
+        }
+      }),
+    );
+  } catch (err) {
+    console.error("Error generating API descriptions:", err);
+  }
+  return { interfaces: { interface: results } };
 }
