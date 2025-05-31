@@ -3340,7 +3340,7 @@
                 "properties": {
                     "property": {
                         "self": {
-                            "overrideType": "WorkerGlobalScope & typeof globalThis"
+                            "overrideType": "ServiceWorkerGlobalScope & typeof globalThis"
                         }
                     }
                 },
