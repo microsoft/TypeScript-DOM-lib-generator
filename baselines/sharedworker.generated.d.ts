@@ -322,11 +322,11 @@ interface LockOptions {
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaDecodingConfiguration;
+    configuration: MediaDecodingConfiguration;
 }
 
 interface MediaCapabilitiesEncodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaEncodingConfiguration;
+    configuration: MediaEncodingConfiguration;
 }
 
 interface MediaCapabilitiesInfo {
@@ -966,7 +966,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
+ * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>)`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */

@@ -65,6 +65,13 @@ interface CanvasPathDrawingStyles {
     setLineDash(segments: Iterable<number>): void;
 }
 
+interface CookieStoreManager {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe) */
+    subscribe(subscriptions: Iterable<CookieStoreGetOptions>): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe) */
+    unsubscribe(subscriptions: Iterable<CookieStoreGetOptions>): Promise<void>;
+}
+
 interface CustomStateSet extends Set<string> {
 }
 
