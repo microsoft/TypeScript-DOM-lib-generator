@@ -378,11 +378,11 @@ interface LockOptions {
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaDecodingConfiguration;
+    configuration: MediaDecodingConfiguration;
 }
 
 interface MediaCapabilitiesEncodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaEncodingConfiguration;
+    configuration: MediaEncodingConfiguration;
 }
 
 interface MediaCapabilitiesInfo {
@@ -1030,7 +1030,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
+ * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>)`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -1825,6 +1825,26 @@ interface CookieStore extends EventTarget {
 declare var CookieStore: {
     prototype: CookieStore;
     new(): CookieStore;
+};
+
+/**
+ * The **`CookieStoreManager`** interface of the Cookie Store API allows service workers to subscribe to cookie change events.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager)
+ */
+interface CookieStoreManager {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/getSubscriptions) */
+    getSubscriptions(): Promise<CookieStoreGetOptions[]>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe) */
+    subscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe) */
+    unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+}
+
+declare var CookieStoreManager: {
+    prototype: CookieStoreManager;
+    new(): CookieStoreManager;
 };
 
 /**
@@ -5349,6 +5369,7 @@ declare var ServiceWorkerContainer: {
 
 interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "activate": ExtendableEvent;
+    "cookiechange": ExtendableCookieChangeEvent;
     "fetch": FetchEvent;
     "install": ExtendableEvent;
     "message": ExtendableMessageEvent;
@@ -5372,6 +5393,8 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     readonly cookieStore: CookieStore;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
     onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookiechange_event) */
+    oncookiechange: ((this: ServiceWorkerGlobalScope, ev: ExtendableCookieChangeEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
     onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */
@@ -5418,6 +5441,8 @@ interface ServiceWorkerRegistrationEventMap {
 interface ServiceWorkerRegistration extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/active) */
     readonly active: ServiceWorker | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/cookies) */
+    readonly cookies: CookieStoreManager;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/installing) */
     readonly installing: ServiceWorker | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/navigationPreload) */
@@ -9016,6 +9041,8 @@ declare var clients: Clients;
 declare var cookieStore: CookieStore;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
 declare var onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookiechange_event) */
+declare var oncookiechange: ((this: ServiceWorkerGlobalScope, ev: ExtendableCookieChangeEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
 declare var onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */

@@ -545,6 +545,7 @@ interface DeviceOrientationEventInit extends EventInit {
 interface DisplayMediaStreamOptions {
     audio?: boolean | MediaTrackConstraints;
     video?: boolean | MediaTrackConstraints;
+    windowAudio?: WindowAudioPreferenceEnum;
 }
 
 interface DocumentTimelineOptions {
@@ -973,11 +974,11 @@ interface MIDIOptions {
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaDecodingConfiguration;
+    configuration: MediaDecodingConfiguration;
 }
 
 interface MediaCapabilitiesEncodingInfo extends MediaCapabilitiesInfo {
-    configuration?: MediaEncodingConfiguration;
+    configuration: MediaEncodingConfiguration;
 }
 
 interface MediaCapabilitiesInfo {
@@ -1632,21 +1633,27 @@ interface RTCDtlsFingerprint {
     value?: string;
 }
 
-interface RTCEncodedAudioFrameMetadata {
-    contributingSources?: number[];
-    payloadType?: number;
+interface RTCEncodedAudioFrameMetadata extends RTCEncodedFrameMetadata {
+    audioLevel?: number;
     sequenceNumber?: number;
+}
+
+interface RTCEncodedFrameMetadata {
+    captureTime?: DOMHighResTimeStamp;
+    contributingSources?: number[];
+    mimeType?: string;
+    payloadType?: number;
+    receiveTime?: DOMHighResTimeStamp;
+    rtpTimestamp?: number;
+    senderCaptureTimeOffset?: DOMHighResTimeStamp;
     synchronizationSource?: number;
 }
 
-interface RTCEncodedVideoFrameMetadata {
-    contributingSources?: number[];
+interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
     dependencies?: number[];
     frameId?: number;
     height?: number;
-    payloadType?: number;
     spatialIndex?: number;
-    synchronizationSource?: number;
     temporalIndex?: number;
     timestamp?: number;
     width?: number;
@@ -4115,7 +4122,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
+ * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>)`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -5445,6 +5452,7 @@ interface CSSStyleDeclaration {
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-class) */
     viewTransitionClass: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
     viewTransitionName: string;
@@ -6810,6 +6818,26 @@ interface CookieStore extends EventTarget {
 declare var CookieStore: {
     prototype: CookieStore;
     new(): CookieStore;
+};
+
+/**
+ * The **`CookieStoreManager`** interface of the Cookie Store API allows service workers to subscribe to cookie change events.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager)
+ */
+interface CookieStoreManager {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/getSubscriptions) */
+    getSubscriptions(): Promise<CookieStoreGetOptions[]>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe) */
+    subscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe) */
+    unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+}
+
+declare var CookieStoreManager: {
+    prototype: CookieStoreManager;
+    new(): CookieStoreManager;
 };
 
 /**
@@ -10194,6 +10222,7 @@ interface GlobalEventHandlersEventMap {
     "pointermove": PointerEvent;
     "pointerout": PointerEvent;
     "pointerover": PointerEvent;
+    "pointerrawupdate": Event;
     "pointerup": PointerEvent;
     "progress": ProgressEvent;
     "ratechange": Event;
@@ -10527,6 +10556,12 @@ interface GlobalEventHandlers {
     onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event) */
     onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerrawupdate_event)
+     */
+    onpointerrawupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event) */
     onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /**
@@ -23628,6 +23663,8 @@ interface ServiceWorkerRegistrationEventMap {
 interface ServiceWorkerRegistration extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/active) */
     readonly active: ServiceWorker | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/cookies) */
+    readonly cookies: CookieStoreManager;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/installing) */
     readonly installing: ServiceWorker | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/navigationPreload) */
@@ -30475,6 +30512,12 @@ declare var onpointermove: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerout: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event) */
 declare var onpointerover: ((this: Window, ev: PointerEvent) => any) | null;
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerrawupdate_event)
+ */
+declare var onpointerrawupdate: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event) */
 declare var onpointerup: ((this: Window, ev: PointerEvent) => any) | null;
 /**
@@ -30980,6 +31023,7 @@ type WakeLockType = "screen";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
 type WebTransportErrorSource = "session" | "stream";
+type WindowAudioPreferenceEnum = "exclude" | "system" | "window";
 type WorkerType = "classic" | "module";
 type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
