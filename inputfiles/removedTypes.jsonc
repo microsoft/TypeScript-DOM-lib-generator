@@ -340,7 +340,8 @@
                         "monitorTypeSurfaces": null,
                         "selfBrowserSurface": null,
                         "surfaceSwitching": null,
-                        "systemAudio": null
+                        "systemAudio": null,
+                        "windowAudio": null
                     }
                 }
             },
