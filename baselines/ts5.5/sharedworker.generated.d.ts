@@ -1047,7 +1047,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
+ * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>)`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -5715,7 +5715,7 @@ declare var Permissions: {
 };
 
 /**
- * The **`ProgressEvent`** interface represents events measuring progress of an underlying process, like an HTTP request (for an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
+ * The **`ProgressEvent`** interface represents events that measure the progress of an underlying process, like an HTTP request (e.g., an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent)
  */
@@ -5727,14 +5727,14 @@ interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
      */
     readonly lengthComputable: boolean;
     /**
-     * The **`ProgressEvent.loaded`** read-only property is a 64-bit unsigned integer indicating the size, in bytes, of the data already transmitted or processed.
+     * The **`ProgressEvent.loaded`** read-only property is a number indicating the size of the data already transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/loaded)
      */
     readonly loaded: number;
     readonly target: T | null;
     /**
-     * The **`ProgressEvent.total`** read-only property is a 64-bit unsigned integer indicating the total size, in bytes, of the data being transmitted or processed.
+     * The **`ProgressEvent.total`** read-only property is a number indicating the total size of the data being transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/total)
      */

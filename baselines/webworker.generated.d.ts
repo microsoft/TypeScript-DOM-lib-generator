@@ -1579,7 +1579,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
+ * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>)`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -2648,6 +2648,38 @@ interface CookieStore extends EventTarget {
 declare var CookieStore: {
     prototype: CookieStore;
     new(): CookieStore;
+};
+
+/**
+ * The **`CookieStoreManager`** interface of the Cookie Store API allows service workers to subscribe to cookie change events.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager)
+ */
+interface CookieStoreManager {
+    /**
+     * The **`getSubscriptions()`** method of the CookieStoreManager interface returns a list of all the cookie change subscriptions for this ServiceWorkerRegistration.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/getSubscriptions)
+     */
+    getSubscriptions(): Promise<CookieStoreGetOptions[]>;
+    /**
+     * The **`subscribe()`** method of the CookieStoreManager interface subscribes a ServiceWorkerRegistration to cookie change events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe)
+     */
+    subscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+    /**
+     * The **`unsubscribe()`** method of the CookieStoreManager interface stops the ServiceWorkerRegistration from receiving previously subscribed events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe)
+     */
+    unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+}
+
+declare var CookieStoreManager: {
+    prototype: CookieStoreManager;
+    new(): CookieStoreManager;
 };
 
 /**
@@ -6886,7 +6918,7 @@ declare var Permissions: {
 };
 
 /**
- * The **`ProgressEvent`** interface represents events measuring progress of an underlying process, like an HTTP request (for an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
+ * The **`ProgressEvent`** interface represents events that measure the progress of an underlying process, like an HTTP request (e.g., an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent)
  */
@@ -6898,14 +6930,14 @@ interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
      */
     readonly lengthComputable: boolean;
     /**
-     * The **`ProgressEvent.loaded`** read-only property is a 64-bit unsigned integer indicating the size, in bytes, of the data already transmitted or processed.
+     * The **`ProgressEvent.loaded`** read-only property is a number indicating the size of the data already transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/loaded)
      */
     readonly loaded: number;
     readonly target: T | null;
     /**
-     * The **`ProgressEvent.total`** read-only property is a 64-bit unsigned integer indicating the total size, in bytes, of the data being transmitted or processed.
+     * The **`ProgressEvent.total`** read-only property is a number indicating the total size of the data being transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/total)
      */
@@ -8047,6 +8079,7 @@ declare var ServiceWorkerContainer: {
 
 interface ServiceWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
     "activate": ExtendableEvent;
+    "cookiechange": ExtendableCookieChangeEvent;
     "fetch": FetchEvent;
     "install": ExtendableEvent;
     "message": ExtendableMessageEvent;
@@ -8078,6 +8111,8 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     readonly cookieStore: CookieStore;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
     onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookiechange_event) */
+    oncookiechange: ((this: ServiceWorkerGlobalScope, ev: ExtendableCookieChangeEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
     onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */
@@ -8140,6 +8175,12 @@ interface ServiceWorkerRegistration extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/active)
      */
     readonly active: ServiceWorker | null;
+    /**
+     * The **`cookies`** read-only property of the ServiceWorkerRegistration interface returns a reference to the CookieStoreManager interface, which enables a web app to subscribe to and unsubscribe from cookie change events in a service worker.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/cookies)
+     */
+    readonly cookies: CookieStoreManager;
     /**
      * The **`installing`** read-only property of the initially set to `null`.
      *

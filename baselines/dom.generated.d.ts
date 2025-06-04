@@ -545,6 +545,7 @@ interface DeviceOrientationEventInit extends EventInit {
 interface DisplayMediaStreamOptions {
     audio?: boolean | MediaTrackConstraints;
     video?: boolean | MediaTrackConstraints;
+    windowAudio?: WindowAudioPreferenceEnum;
 }
 
 interface DocumentTimelineOptions {
@@ -5079,7 +5080,7 @@ declare var CSSMathClamp: {
 };
 
 /**
- * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>).` It inherits properties and methods from its parent CSSNumericValue.
+ * The **`CSSMathInvert`** interface of the CSS Typed Object Model API represents a CSS calc used as `calc(1 / <value>)`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert)
  */
@@ -6621,6 +6622,7 @@ interface CSSStyleDeclaration {
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-class) */
     viewTransitionClass: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
     viewTransitionName: string;
@@ -8277,6 +8279,38 @@ interface CookieStore extends EventTarget {
 declare var CookieStore: {
     prototype: CookieStore;
     new(): CookieStore;
+};
+
+/**
+ * The **`CookieStoreManager`** interface of the Cookie Store API allows service workers to subscribe to cookie change events.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager)
+ */
+interface CookieStoreManager {
+    /**
+     * The **`getSubscriptions()`** method of the CookieStoreManager interface returns a list of all the cookie change subscriptions for this ServiceWorkerRegistration.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/getSubscriptions)
+     */
+    getSubscriptions(): Promise<CookieStoreGetOptions[]>;
+    /**
+     * The **`subscribe()`** method of the CookieStoreManager interface subscribes a ServiceWorkerRegistration to cookie change events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe)
+     */
+    subscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+    /**
+     * The **`unsubscribe()`** method of the CookieStoreManager interface stops the ServiceWorkerRegistration from receiving previously subscribed events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe)
+     */
+    unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+}
+
+declare var CookieStoreManager: {
+    prototype: CookieStoreManager;
+    new(): CookieStoreManager;
 };
 
 /**
@@ -10691,7 +10725,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     id: string;
     /**
-     * The Element property **`innerHTML`** gets or sets the HTML or XML markup contained within the element.
+     * The **`innerHTML`** property of the Element interface gets or sets the HTML or XML markup contained within the element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/innerHTML)
      */
@@ -12634,6 +12668,7 @@ interface GlobalEventHandlersEventMap {
     "pointermove": PointerEvent;
     "pointerout": PointerEvent;
     "pointerover": PointerEvent;
+    "pointerrawupdate": Event;
     "pointerup": PointerEvent;
     "progress": ProgressEvent;
     "ratechange": Event;
@@ -12805,6 +12840,12 @@ interface GlobalEventHandlers {
     onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event) */
     onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerrawupdate_event)
+     */
+    onpointerrawupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event) */
     onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/progress_event) */
@@ -17393,14 +17434,14 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     setCustomValidity(error: string): void;
     /**
-     * The **`setRangeText()`** method of the HTMLTextAreaElement interface replaces a range of text in an textarea element with new text passed as the argument.
+     * The **`setRangeText()`** method of the HTMLTextAreaElement interface replaces a range of text in a textarea element with new text passed as the argument.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/setRangeText)
      */
     setRangeText(replacement: string): void;
     setRangeText(replacement: string, start: number, end: number, selectionMode?: SelectionMode): void;
     /**
-     * The **`setSelectionRange()`** method of the HTMLTextAreaElement interface sets the start and end positions of the current text selection, and optionally the direction, in an textarea element.
+     * The **`setSelectionRange()`** method of the HTMLTextAreaElement interface sets the start and end positions of the current text selection, and optionally the direction, in a textarea element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
      */
@@ -24096,7 +24137,7 @@ declare var ProcessingInstruction: {
 };
 
 /**
- * The **`ProgressEvent`** interface represents events measuring progress of an underlying process, like an HTTP request (for an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
+ * The **`ProgressEvent`** interface represents events that measure the progress of an underlying process, like an HTTP request (e.g., an `XMLHttpRequest`, or the loading of the underlying resource of an img, audio, video, style or link).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent)
  */
@@ -24108,14 +24149,14 @@ interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
      */
     readonly lengthComputable: boolean;
     /**
-     * The **`ProgressEvent.loaded`** read-only property is a 64-bit unsigned integer indicating the size, in bytes, of the data already transmitted or processed.
+     * The **`ProgressEvent.loaded`** read-only property is a number indicating the size of the data already transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/loaded)
      */
     readonly loaded: number;
     readonly target: T | null;
     /**
-     * The **`ProgressEvent.total`** read-only property is a 64-bit unsigned integer indicating the total size, in bytes, of the data being transmitted or processed.
+     * The **`ProgressEvent.total`** read-only property is a number indicating the total size of the data being transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/total)
      */
@@ -30570,6 +30611,12 @@ interface ServiceWorkerRegistration extends EventTarget {
      */
     readonly active: ServiceWorker | null;
     /**
+     * The **`cookies`** read-only property of the ServiceWorkerRegistration interface returns a reference to the CookieStoreManager interface, which enables a web app to subscribe to and unsubscribe from cookie change events in a service worker.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/cookies)
+     */
+    readonly cookies: CookieStoreManager;
+    /**
      * The **`installing`** read-only property of the initially set to `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/installing)
@@ -30671,7 +30718,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     readonly host: Element;
     /**
-     * The **`innerHTML`** property of the ShadowRoot interface sets or returns a reference to the DOM tree inside the `ShadowRoot`.
+     * The **`innerHTML`** property of the ShadowRoot interface sets gets or sets the HTML markup to the DOM tree inside the `ShadowRoot`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/innerHTML)
      */
@@ -38893,6 +38940,12 @@ declare var onpointermove: ((this: Window, ev: PointerEvent) => any) | null;
 declare var onpointerout: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event) */
 declare var onpointerover: ((this: Window, ev: PointerEvent) => any) | null;
+/**
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerrawupdate_event)
+ */
+declare var onpointerrawupdate: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event) */
 declare var onpointerup: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/progress_event) */
@@ -39338,6 +39391,7 @@ type WakeLockType = "screen";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
 type WebTransportErrorSource = "session" | "stream";
+type WindowAudioPreferenceEnum = "exclude" | "system" | "window";
 type WorkerType = "classic" | "module";
 type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";
