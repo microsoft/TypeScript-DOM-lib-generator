@@ -10368,7 +10368,7 @@ declare var Document: {
     prototype: Document;
     new(): Document;
     /**
-     * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse a string of HTML, which may contain declarative shadow roots, in order to create a new Document instance.
+     * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse an HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
      */
@@ -11035,7 +11035,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setAttributeNodeNS(attr: Attr): Attr | null;
     /**
-     * The **`setHTMLUnsafe()`** method of the Element interface is used to parse a string of HTML into a DocumentFragment, which then replaces the element's subtree in the DOM.
+     * The **`setHTMLUnsafe()`** method of the Element interface is used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)
      */
@@ -30727,7 +30727,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     getHTML(options?: GetHTMLOptions): string;
     /**
-     * The **`setHTMLUnsafe()`** method of the ShadowRoot interface is used to parse a string of HTML into a DocumentFragment, which then replaces the element's subtree in the DOM.
+     * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTMLUnsafe)
      */
