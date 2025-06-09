@@ -10144,7 +10144,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/self)
      */
-    readonly self: WorkerGlobalScope & typeof globalThis;
+    readonly self: ServiceWorkerGlobalScope & typeof globalThis;
     /**
      * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope.
      *
@@ -10964,7 +10964,7 @@ declare var onunhandledrejection: ((this: SharedWorkerGlobalScope, ev: PromiseRe
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/self)
  */
-declare var self: WorkerGlobalScope & typeof globalThis;
+declare var self: ServiceWorkerGlobalScope & typeof globalThis;
 /**
  * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope.
  *
