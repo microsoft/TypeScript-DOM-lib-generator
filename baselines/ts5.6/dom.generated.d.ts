@@ -203,6 +203,7 @@ interface AuthenticationExtensionsClientOutputs {
     credProps?: CredentialPropertiesOutput;
     hmacCreateSecret?: boolean;
     largeBlob?: AuthenticationExtensionsLargeBlobOutputs;
+    payment?: AuthenticationExtensionsPaymentOutputs;
     prf?: AuthenticationExtensionsPRFOutputs;
 }
 
@@ -249,6 +250,10 @@ interface AuthenticationExtensionsPRFValuesJSON {
     second?: Base64URLString;
 }
 
+interface AuthenticationExtensionsPaymentOutputs {
+    browserBoundSignature?: BrowserBoundSignature;
+}
+
 interface AuthenticatorSelectionCriteria {
     authenticatorAttachment?: AuthenticatorAttachment;
     requireResidentKey?: boolean;
@@ -276,6 +281,10 @@ interface BlobEventInit extends EventInit {
 interface BlobPropertyBag {
     endings?: EndingType;
     type?: string;
+}
+
+interface BrowserBoundSignature {
+    signature: ArrayBuffer;
 }
 
 interface CSSMatrixComponentOptions {
@@ -8656,7 +8665,7 @@ interface DOMImplementation {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/createDocumentType)
      */
-    createDocumentType(qualifiedName: string, publicId: string, systemId: string): DocumentType;
+    createDocumentType(name: string, publicId: string, systemId: string): DocumentType;
     /**
      * The **`DOMImplementation.createHTMLDocument()`** method creates a new HTML Document.
      *
