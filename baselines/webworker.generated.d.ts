@@ -1173,9 +1173,9 @@ interface AbstractWorker {
 }
 
 interface AnimationFrameProvider {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelAnimationFrame) */
     cancelAnimationFrame(handle: number): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/requestAnimationFrame) */
     requestAnimationFrame(callback: FrameRequestCallback): number;
 }
 
@@ -12979,9 +12979,9 @@ declare function setInterval(handler: TimerHandler, timeout?: number, ...argumen
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelAnimationFrame) */
 declare function cancelAnimationFrame(handle: number): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/requestAnimationFrame) */
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
 declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
