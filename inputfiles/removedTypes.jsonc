@@ -282,7 +282,8 @@
                     "member": {
                         // (same as *Inputs)
                         "appidExclude": null, // No implementation as of 2025-05
-                        "hmacGetSecret": null // No implementation as of 2025-05
+                        "hmacGetSecret": null, // No implementation as of 2025-05
+                        "payment": null // Blink only as of 2025-06
                     }
                 }
             },
