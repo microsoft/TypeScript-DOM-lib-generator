@@ -8656,7 +8656,7 @@ interface DOMImplementation {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/createDocumentType)
      */
-    createDocumentType(qualifiedName: string, publicId: string, systemId: string): DocumentType;
+    createDocumentType(name: string, publicId: string, systemId: string): DocumentType;
     /**
      * The **`DOMImplementation.createHTMLDocument()`** method creates a new HTML Document.
      *
