@@ -10359,14 +10359,14 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     startViewTransition(callbackOptions?: ViewTransitionUpdateCallback | StartViewTransitionOptions): ViewTransition;
     /**
-     * The **`document.write()`** method writes a string of text to a document stream opened by document.open().
+     * The **`write()`** method of the Document interface writes text in one or more TrustedHTML or string parameters to a document stream opened by document.open().
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/write)
      */
     write(...text: string[]): void;
     /**
-     * Writes a string of text followed by a newline character to a document.
+     * The **`writeln()`** method of the Document interface writes text in one or more TrustedHTML or string parameters to a document stream opened by document.open(), followed by a newline character.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/writeln)
      */
