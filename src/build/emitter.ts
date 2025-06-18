@@ -827,6 +827,21 @@ export function emitWebIdl(
     );
   }
 
+  function getPropertyFromInterface(
+    i: Browser.Interface,
+    propertyName: string,
+  ) {
+    let property;
+    let currentInterface: Browser.Interface | undefined = i;
+    while (!property && currentInterface) {
+      property = currentInterface.properties?.property[propertyName];
+      currentInterface = currentInterface.extends
+        ? allInterfacesMap[currentInterface.extends]
+        : undefined;
+    }
+    return property;
+  }
+
   function emitProperty(
     prefix: string,
     i: Browser.Interface,
@@ -871,8 +886,10 @@ export function emitWebIdl(
       if (!prefix && canPutForward && p.putForwards) {
         printer.printLine(`get ${p.name}${optionalModifier}(): ${pType};`);
 
-        const forwardingProperty =
-          allInterfacesMap[pType].properties?.property[p.putForwards];
+        const forwardingProperty = getPropertyFromInterface(
+          allInterfacesMap[pType],
+          p.putForwards,
+        );
         if (!forwardingProperty) {
           throw new Error("Couldn't find [PutForwards]");
         }
