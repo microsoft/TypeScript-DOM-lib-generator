@@ -82,6 +82,71 @@ interface FormData {
     values(): FormDataIterator<FormDataEntryValue>;
 }
 
+interface GPUBindingCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: Iterable<GPUBufferDynamicOffset>): void;
+}
+
+interface GPUCommandEncoder {
+    /**
+     * The **`copyBufferToTexture()`** method of the ```js-nolint copyBufferToTexture(source, destination, copySize) ``` - `source` - : An object that defines the buffer to copy from, plus the layout of the data in the buffer to be copied to the texture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToTexture)
+     */
+    copyBufferToTexture(source: GPUTexelCopyBufferInfo, destination: GPUTexelCopyTextureInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+    /**
+     * The **`copyTextureToBuffer()`** method of the ```js-nolint copyTextureToBuffer(source, destination, copySize) ``` - `source` - : An object defining the texture to copy the data from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer)
+     */
+    copyTextureToBuffer(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyBufferInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+    /**
+     * The **`copyTextureToTexture()`** method of the ```js-nolint copyTextureToTexture(source, destination, copySize) ``` - `source` - : An object (see Copy texture object structure) defining the texture to copy the data from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToTexture)
+     */
+    copyTextureToTexture(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyTextureInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+}
+
+interface GPUQueue {
+    /**
+     * The **`copyExternalImageToTexture()`** method of the Using this function allows the user agent to determine the most efficient way to copy the data over for each source type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/copyExternalImageToTexture)
+     */
+    copyExternalImageToTexture(source: GPUCopyExternalImageSourceInfo, destination: GPUCopyExternalImageDestInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+    /**
+     * The **`submit()`** method of the ```js-nolint submit(commandBuffers) ``` - `commandBuffers` - : An array of GPUCommandBuffer objects containing the commands to be enqueued for processing by the GPU.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/submit)
+     */
+    submit(commandBuffers: Iterable<GPUCommandBuffer>): void;
+    /**
+     * The **`writeTexture()`** method of the This is a convenience function, which provides an alternative to setting texture data via buffer mapping and buffer-to-texture copies.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/writeTexture)
+     */
+    writeTexture(destination: GPUTexelCopyTextureInfo, data: AllowSharedBufferSource, dataLayout: GPUTexelCopyBufferLayout, size: Iterable<GPUIntegerCoordinate>): void;
+}
+
+interface GPURenderPassEncoder {
+    /**
+     * The **`executeBundles()`** method of the ```js-nolint executeBundles(bundles) ``` - `bundles` - : An array of GPURenderBundle objects, containing the pre-recorded commands to execute.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/executeBundles)
+     */
+    executeBundles(bundles: Iterable<GPURenderBundle>): void;
+    /**
+     * The **`setBlendConstant()`** method of the ```js-nolint setBlendConstant(color) ``` - `color` - : An object or array representing the color to use when blending — the `r`, `g`, `b`, and `a` components are represented as floating point numbers between 0.0 and 1.0.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setBlendConstant)
+     */
+    setBlendConstant(color: Iterable<number>): void;
+}
+
+interface GPUSupportedFeatures extends ReadonlySet<string> {
+}
+
 interface HeadersIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): HeadersIterator<T>;
 }
@@ -213,6 +278,9 @@ interface WEBGL_multi_draw {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL)
      */
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, offsetsOffset: number, drawcount: GLsizei): void;
+}
+
+interface WGSLLanguageFeatures extends ReadonlySet<string> {
 }
 
 interface WebGL2RenderingContextBase {

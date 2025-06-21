@@ -268,6 +268,368 @@ interface FontFaceSetLoadEventInit extends EventInit {
     fontfaces?: FontFace[];
 }
 
+interface GPUBindGroupDescriptor extends GPUObjectDescriptorBase {
+    entries: GPUBindGroupEntry[];
+    layout: GPUBindGroupLayout;
+}
+
+interface GPUBindGroupEntry {
+    binding: GPUIndex32;
+    resource: GPUBindingResource;
+}
+
+interface GPUBindGroupLayoutDescriptor extends GPUObjectDescriptorBase {
+    entries: GPUBindGroupLayoutEntry[];
+}
+
+interface GPUBindGroupLayoutEntry {
+    binding: GPUIndex32;
+    buffer?: GPUBufferBindingLayout;
+    externalTexture?: GPUExternalTextureBindingLayout;
+    sampler?: GPUSamplerBindingLayout;
+    storageTexture?: GPUStorageTextureBindingLayout;
+    texture?: GPUTextureBindingLayout;
+    visibility: GPUShaderStageFlags;
+}
+
+interface GPUBlendComponent {
+    dstFactor?: GPUBlendFactor;
+    operation?: GPUBlendOperation;
+    srcFactor?: GPUBlendFactor;
+}
+
+interface GPUBlendState {
+    alpha: GPUBlendComponent;
+    color: GPUBlendComponent;
+}
+
+interface GPUBufferBinding {
+    buffer: GPUBuffer;
+    offset?: GPUSize64;
+    size?: GPUSize64;
+}
+
+interface GPUBufferBindingLayout {
+    hasDynamicOffset?: boolean;
+    minBindingSize?: GPUSize64;
+    type?: GPUBufferBindingType;
+}
+
+interface GPUBufferDescriptor extends GPUObjectDescriptorBase {
+    mappedAtCreation?: boolean;
+    size: GPUSize64;
+    usage: GPUBufferUsageFlags;
+}
+
+interface GPUCanvasConfiguration {
+    alphaMode?: GPUCanvasAlphaMode;
+    colorSpace?: PredefinedColorSpace;
+    device: GPUDevice;
+    format: GPUTextureFormat;
+    toneMapping?: GPUCanvasToneMapping;
+    usage?: GPUTextureUsageFlags;
+    viewFormats?: GPUTextureFormat[];
+}
+
+interface GPUCanvasToneMapping {
+    mode?: GPUCanvasToneMappingMode;
+}
+
+interface GPUColorDict {
+    a: number;
+    b: number;
+    g: number;
+    r: number;
+}
+
+interface GPUColorTargetState {
+    blend?: GPUBlendState;
+    format: GPUTextureFormat;
+    writeMask?: GPUColorWriteFlags;
+}
+
+interface GPUCommandBufferDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPUCommandEncoderDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPUComputePassDescriptor extends GPUObjectDescriptorBase {
+    timestampWrites?: GPUComputePassTimestampWrites;
+}
+
+interface GPUComputePassTimestampWrites {
+    beginningOfPassWriteIndex?: GPUSize32;
+    endOfPassWriteIndex?: GPUSize32;
+    querySet: GPUQuerySet;
+}
+
+interface GPUComputePipelineDescriptor extends GPUPipelineDescriptorBase {
+    compute: GPUProgrammableStage;
+}
+
+interface GPUCopyExternalImageDestInfo extends GPUTexelCopyTextureInfo {
+    colorSpace?: PredefinedColorSpace;
+    premultipliedAlpha?: boolean;
+}
+
+interface GPUCopyExternalImageSourceInfo {
+    flipY?: boolean;
+    origin?: GPUOrigin2D;
+    source: GPUCopyExternalImageSource;
+}
+
+interface GPUDepthStencilState {
+    depthBias?: GPUDepthBias;
+    depthBiasClamp?: number;
+    depthBiasSlopeScale?: number;
+    depthCompare?: GPUCompareFunction;
+    depthWriteEnabled?: boolean;
+    format: GPUTextureFormat;
+    stencilBack?: GPUStencilFaceState;
+    stencilFront?: GPUStencilFaceState;
+    stencilReadMask?: GPUStencilValue;
+    stencilWriteMask?: GPUStencilValue;
+}
+
+interface GPUDeviceDescriptor extends GPUObjectDescriptorBase {
+    defaultQueue?: GPUQueueDescriptor;
+    requiredFeatures?: GPUFeatureName[];
+    requiredLimits?: Record<string, GPUSize64 | undefined>;
+}
+
+interface GPUExtent3DDict {
+    depthOrArrayLayers?: GPUIntegerCoordinate;
+    height?: GPUIntegerCoordinate;
+    width: GPUIntegerCoordinate;
+}
+
+interface GPUExternalTextureBindingLayout {
+}
+
+interface GPUExternalTextureDescriptor extends GPUObjectDescriptorBase {
+    colorSpace?: PredefinedColorSpace;
+}
+
+interface GPUFragmentState extends GPUProgrammableStage {
+    targets: (GPUColorTargetState | null)[];
+}
+
+interface GPUMultisampleState {
+    alphaToCoverageEnabled?: boolean;
+    count?: GPUSize32;
+    mask?: GPUSampleMask;
+}
+
+interface GPUObjectDescriptorBase {
+    label?: string;
+}
+
+interface GPUOrigin2DDict {
+    x?: GPUIntegerCoordinate;
+    y?: GPUIntegerCoordinate;
+}
+
+interface GPUOrigin3DDict {
+    x?: GPUIntegerCoordinate;
+    y?: GPUIntegerCoordinate;
+    z?: GPUIntegerCoordinate;
+}
+
+interface GPUPipelineDescriptorBase extends GPUObjectDescriptorBase {
+    layout: GPUPipelineLayout | GPUAutoLayoutMode;
+}
+
+interface GPUPipelineErrorInit {
+    reason: GPUPipelineErrorReason;
+}
+
+interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
+    bindGroupLayouts: (GPUBindGroupLayout | null)[];
+}
+
+interface GPUPrimitiveState {
+    cullMode?: GPUCullMode;
+    frontFace?: GPUFrontFace;
+    stripIndexFormat?: GPUIndexFormat;
+    topology?: GPUPrimitiveTopology;
+    unclippedDepth?: boolean;
+}
+
+interface GPUProgrammableStage {
+    constants?: Record<string, GPUPipelineConstantValue>;
+    entryPoint?: string;
+    module: GPUShaderModule;
+}
+
+interface GPUQuerySetDescriptor extends GPUObjectDescriptorBase {
+    count: GPUSize32;
+    type: GPUQueryType;
+}
+
+interface GPUQueueDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPURenderBundleEncoderDescriptor extends GPURenderPassLayout {
+    depthReadOnly?: boolean;
+    stencilReadOnly?: boolean;
+}
+
+interface GPURenderPassColorAttachment {
+    clearValue?: GPUColor;
+    depthSlice?: GPUIntegerCoordinate;
+    loadOp: GPULoadOp;
+    resolveTarget?: GPUTextureView;
+    storeOp: GPUStoreOp;
+    view: GPUTextureView;
+}
+
+interface GPURenderPassDepthStencilAttachment {
+    depthClearValue?: number;
+    depthLoadOp?: GPULoadOp;
+    depthReadOnly?: boolean;
+    depthStoreOp?: GPUStoreOp;
+    stencilClearValue?: GPUStencilValue;
+    stencilLoadOp?: GPULoadOp;
+    stencilReadOnly?: boolean;
+    stencilStoreOp?: GPUStoreOp;
+    view: GPUTextureView;
+}
+
+interface GPURenderPassDescriptor extends GPUObjectDescriptorBase {
+    colorAttachments: (GPURenderPassColorAttachment | null)[];
+    depthStencilAttachment?: GPURenderPassDepthStencilAttachment;
+    maxDrawCount?: GPUSize64;
+    occlusionQuerySet?: GPUQuerySet;
+    timestampWrites?: GPURenderPassTimestampWrites;
+}
+
+interface GPURenderPassLayout extends GPUObjectDescriptorBase {
+    colorFormats: (GPUTextureFormat | null)[];
+    depthStencilFormat?: GPUTextureFormat;
+    sampleCount?: GPUSize32;
+}
+
+interface GPURenderPassTimestampWrites {
+    beginningOfPassWriteIndex?: GPUSize32;
+    endOfPassWriteIndex?: GPUSize32;
+    querySet: GPUQuerySet;
+}
+
+interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
+    depthStencil?: GPUDepthStencilState;
+    fragment?: GPUFragmentState;
+    multisample?: GPUMultisampleState;
+    primitive?: GPUPrimitiveState;
+    vertex: GPUVertexState;
+}
+
+interface GPURequestAdapterOptions {
+    forceFallbackAdapter?: boolean;
+    powerPreference?: GPUPowerPreference;
+    xrCompatible?: boolean;
+}
+
+interface GPUSamplerBindingLayout {
+    type?: GPUSamplerBindingType;
+}
+
+interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
+    addressModeU?: GPUAddressMode;
+    addressModeV?: GPUAddressMode;
+    addressModeW?: GPUAddressMode;
+    compare?: GPUCompareFunction;
+    lodMaxClamp?: number;
+    lodMinClamp?: number;
+    magFilter?: GPUFilterMode;
+    maxAnisotropy?: number;
+    minFilter?: GPUFilterMode;
+    mipmapFilter?: GPUMipmapFilterMode;
+}
+
+interface GPUShaderModuleDescriptor extends GPUObjectDescriptorBase {
+    code: string;
+}
+
+interface GPUStencilFaceState {
+    compare?: GPUCompareFunction;
+    depthFailOp?: GPUStencilOperation;
+    failOp?: GPUStencilOperation;
+    passOp?: GPUStencilOperation;
+}
+
+interface GPUStorageTextureBindingLayout {
+    access?: GPUStorageTextureAccess;
+    format: GPUTextureFormat;
+    viewDimension?: GPUTextureViewDimension;
+}
+
+interface GPUTexelCopyBufferInfo extends GPUTexelCopyBufferLayout {
+    buffer: GPUBuffer;
+}
+
+interface GPUTexelCopyBufferLayout {
+    bytesPerRow?: GPUSize32;
+    offset?: GPUSize64;
+    rowsPerImage?: GPUSize32;
+}
+
+interface GPUTexelCopyTextureInfo {
+    aspect?: GPUTextureAspect;
+    mipLevel?: GPUIntegerCoordinate;
+    origin?: GPUOrigin3D;
+    texture: GPUTexture;
+}
+
+interface GPUTextureBindingLayout {
+    multisampled?: boolean;
+    sampleType?: GPUTextureSampleType;
+    viewDimension?: GPUTextureViewDimension;
+}
+
+interface GPUTextureDescriptor extends GPUObjectDescriptorBase {
+    dimension?: GPUTextureDimension;
+    format: GPUTextureFormat;
+    mipLevelCount?: GPUIntegerCoordinate;
+    sampleCount?: GPUSize32;
+    size: GPUExtent3D;
+    usage: GPUTextureUsageFlags;
+    viewFormats?: GPUTextureFormat[];
+}
+
+interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
+    arrayLayerCount?: GPUIntegerCoordinate;
+    aspect?: GPUTextureAspect;
+    baseArrayLayer?: GPUIntegerCoordinate;
+    baseMipLevel?: GPUIntegerCoordinate;
+    dimension?: GPUTextureViewDimension;
+    format?: GPUTextureFormat;
+    mipLevelCount?: GPUIntegerCoordinate;
+}
+
+interface GPUUncapturedErrorEventInit extends EventInit {
+    error: GPUError;
+}
+
+interface GPUVertexAttribute {
+    format: GPUVertexFormat;
+    offset: GPUSize64;
+    shaderLocation: GPUIndex32;
+}
+
+interface GPUVertexBufferLayout {
+    arrayStride: GPUSize64;
+    attributes: GPUVertexAttribute[];
+    stepMode?: GPUVertexStepMode;
+}
+
+interface GPUVertexState extends GPUProgrammableStage {
+    buffers?: (GPUVertexBufferLayout | null)[];
+}
+
 interface GetNotificationOptions {
     tag?: string;
 }
@@ -570,6 +932,15 @@ interface RegistrationOptions {
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
+interface Report {
+    body?: ReportBody | null;
+    type?: string;
+    url?: string;
+}
+
+interface ReportBody {
+}
+
 interface ReportingObserverOptions {
     buffered?: boolean;
     types?: string[];
@@ -706,6 +1077,45 @@ interface Transformer<I = any, O = any> {
     start?: TransformerStartCallback<O>;
     transform?: TransformerTransformCallback<I, O>;
     writableType?: undefined;
+}
+
+interface TrustedTypePolicyOptions {
+    createHTML?: CreateHTMLCallback;
+    createScript?: CreateScriptCallback;
+    createScriptURL?: CreateScriptURLCallback;
+}
+
+interface URLPatternComponentResult {
+    groups?: Record<string, string | undefined>;
+    input?: string;
+}
+
+interface URLPatternInit {
+    baseURL?: string;
+    hash?: string;
+    hostname?: string;
+    password?: string;
+    pathname?: string;
+    port?: string;
+    protocol?: string;
+    search?: string;
+    username?: string;
+}
+
+interface URLPatternOptions {
+    ignoreCase?: boolean;
+}
+
+interface URLPatternResult {
+    hash?: URLPatternComponentResult;
+    hostname?: URLPatternComponentResult;
+    inputs?: URLPatternInput[];
+    password?: URLPatternComponentResult;
+    pathname?: URLPatternComponentResult;
+    port?: URLPatternComponentResult;
+    protocol?: URLPatternComponentResult;
+    search?: URLPatternComponentResult;
+    username?: URLPatternComponentResult;
 }
 
 interface UnderlyingByteSource {
@@ -2307,7 +2717,7 @@ declare var CryptoKey: {
 };
 
 /**
- * The **`CustomEvent`** interface represents events initialized by an application for any purpose.
+ * The **`CustomEvent`** interface can be used to attach custom data to an event generated by an application.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
  */
@@ -4054,6 +4464,634 @@ declare var FormData: {
 };
 
 /**
+ * The **`GPU`** interface of the WebGPU API is the starting point for using WebGPU.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU)
+ */
+interface GPU {
+    /**
+     * The **`wgslLanguageFeatures`** read-only property of the A WGSLLanguageFeatures object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU/wgslLanguageFeatures)
+     */
+    readonly wgslLanguageFeatures: WGSLLanguageFeatures;
+    /**
+     * The **`getPreferredCanvasFormat()`** method of the This is commonly used to provide a GPUCanvasContext.configure() call with the optimal `format` value for the current system.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU/getPreferredCanvasFormat)
+     */
+    getPreferredCanvasFormat(): GPUTextureFormat;
+    /**
+     * The **`requestAdapter()`** method of the Note that the user agent chooses whether to return an adapter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU/requestAdapter)
+     */
+    requestAdapter(options?: GPURequestAdapterOptions): Promise<GPUAdapter | null>;
+}
+
+declare var GPU: {
+    prototype: GPU;
+    new(): GPU;
+};
+
+/**
+ * The **`GPUAdapter`** interface of the WebGPU API represents a GPU adapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter)
+ */
+interface GPUAdapter {
+    /**
+     * The **`features`** read-only property of the You should note that not all features will be available to WebGPU in all browsers that support it, even if the features are supported by the underlying hardware.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/features)
+     */
+    readonly features: GPUSupportedFeatures;
+    /**
+     * The **`info`** read-only property of the A GPUAdapterInfo object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/info)
+     */
+    readonly info: GPUAdapterInfo;
+    /**
+     * The **`limits`** read-only property of the You should note that, rather than reporting the exact limits of each GPU, browsers will likely report different tier values of different limits to reduce the unique information available to drive-by fingerprinting.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/limits)
+     */
+    readonly limits: GPUSupportedLimits;
+    /**
+     * The **`requestDevice()`** method of the ```js-nolint requestDevice() requestDevice(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object containing the following properties: - `defaultQueue` [MISSING: optional_inline] - : An object that provides information for the device's default GPUQueue (as returned by GPUDevice.queue).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/requestDevice)
+     */
+    requestDevice(descriptor?: GPUDeviceDescriptor): Promise<GPUDevice>;
+}
+
+declare var GPUAdapter: {
+    prototype: GPUAdapter;
+    new(): GPUAdapter;
+};
+
+/**
+ * The **`GPUAdapterInfo`** interface of the WebGPU API contains identifying information about a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo)
+ */
+interface GPUAdapterInfo {
+    /**
+     * The **`architecture`** read-only property of the A string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/architecture)
+     */
+    readonly architecture: string;
+    /**
+     * The **`description`** read-only property of the A string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/description)
+     */
+    readonly description: string;
+    /**
+     * The **`device`** read-only property of the A string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/device)
+     */
+    readonly device: string;
+    /**
+     * The **`vendor`** read-only property of the A string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/vendor)
+     */
+    readonly vendor: string;
+}
+
+declare var GPUAdapterInfo: {
+    prototype: GPUAdapterInfo;
+    new(): GPUAdapterInfo;
+};
+
+/**
+ * The **`GPUBindGroup`** interface of the WebGPU API is based on a GPUBindGroupLayout and defines a set of resources to be bound together in a group and how those resources are used in shader stages.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroup)
+ */
+interface GPUBindGroup extends GPUObjectBase {
+}
+
+declare var GPUBindGroup: {
+    prototype: GPUBindGroup;
+    new(): GPUBindGroup;
+};
+
+/**
+ * The **`GPUBindGroupLayout`** interface of the WebGPU API defines the structure and purpose of related GPU resources such as buffers that will be used in a pipeline, and is used as a template when creating GPUBindGroups.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroupLayout)
+ */
+interface GPUBindGroupLayout extends GPUObjectBase {
+}
+
+declare var GPUBindGroupLayout: {
+    prototype: GPUBindGroupLayout;
+    new(): GPUBindGroupLayout;
+};
+
+interface GPUBindingCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: GPUBufferDynamicOffset[]): void;
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsetsData: Uint32Array, dynamicOffsetsDataStart: GPUSize64, dynamicOffsetsDataLength: GPUSize32): void;
+}
+
+/**
+ * The **`GPUBuffer`** interface of the WebGPU API represents a block of memory that can be used to store raw data to use in GPU operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer)
+ */
+interface GPUBuffer extends GPUObjectBase {
+    /**
+     * The **`mapState`** read-only property of the An enumerated value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/mapState)
+     */
+    readonly mapState: GPUBufferMapState;
+    /**
+     * The **`size`** read-only property of the `size` is set via the `size` property in the descriptor object passed into the originating GPUDevice.createBuffer() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/size)
+     */
+    readonly size: GPUSize64Out;
+    /**
+     * The **`usage`** read-only property of the `usage` is set via the `usage` property in the descriptor object passed into the originating GPUDevice.createBuffer() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/usage)
+     */
+    readonly usage: GPUFlagsConstant;
+    /**
+     * The **`destroy()`** method of the ```js-nolint destroy() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/destroy)
+     */
+    destroy(): void;
+    /**
+     * The **`getMappedRange()`** method of the This can only happen once the `GPUBuffer` has been successfully mapped with GPUBuffer.mapAsync() (this can be checked via GPUBuffer.mapState).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/getMappedRange)
+     */
+    getMappedRange(offset?: GPUSize64, size?: GPUSize64): ArrayBuffer;
+    /**
+     * The **`mapAsync()`** method of the Once the buffer is successfully mapped (which can be checked via GPUBuffer.mapState), calls to GPUBuffer.getMappedRange() will return an ArrayBuffer containing the `GPUBuffer`'s current values, to be read and updated by JavaScript as required.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/mapAsync)
+     */
+    mapAsync(mode: GPUMapModeFlags, offset?: GPUSize64, size?: GPUSize64): Promise<void>;
+    /**
+     * The **`unmap()`** method of the When `unmap()` is called, any ArrayBuffers created via GPUBuffer.getMappedRange() are detached.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/unmap)
+     */
+    unmap(): void;
+}
+
+declare var GPUBuffer: {
+    prototype: GPUBuffer;
+    new(): GPUBuffer;
+};
+
+/**
+ * The **`GPUCanvasContext`** interface of the WebGPU API represents the WebGPU rendering context of a canvas element, returned via an HTMLCanvasElement.getContext() call with a `contextType` of `'webgpu'`.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCanvasContext)
+ */
+interface GPUCanvasContext {
+    /**
+     * The **`canvas`** read-only property of the An HTMLCanvasElement or OffscreenCanvas object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCanvasContext/canvas)
+     */
+    readonly canvas: OffscreenCanvas;
+    /**
+     * The **`configure()`** method of the ```js-nolint configure(configuration) ``` - `configuration` - : An object containing the following properties: - `alphaMode` MISSING: optional_inline] - : An enumerated value that specifies the effect that alpha values will have on the content of textures returned by GPUCanvasContext.getCurrentTexture() when read, displayed, or used as an image source.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCanvasContext/configure)
+     */
+    configure(configuration: GPUCanvasConfiguration): void;
+    /**
+     * The **`getConfiguration()`** method of the ```js-nolint getConfiguration() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCanvasContext/getConfiguration)
+     */
+    getConfiguration(): GPUCanvasConfiguration | null;
+    /**
+     * The **`getCurrentTexture()`** method of the ```js-nolint getCurrentTexture() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCanvasContext/getCurrentTexture)
+     */
+    getCurrentTexture(): GPUTexture;
+    /**
+     * The **`unconfigure()`** method of the ```js-nolint unconfigure() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCanvasContext/unconfigure)
+     */
+    unconfigure(): void;
+}
+
+declare var GPUCanvasContext: {
+    prototype: GPUCanvasContext;
+    new(): GPUCanvasContext;
+};
+
+/**
+ * The **`GPUCommandBuffer`** interface of the WebGPU API represents a pre-recorded list of GPU commands that can be submitted to a GPUQueue for execution.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandBuffer)
+ */
+interface GPUCommandBuffer extends GPUObjectBase {
+}
+
+declare var GPUCommandBuffer: {
+    prototype: GPUCommandBuffer;
+    new(): GPUCommandBuffer;
+};
+
+/**
+ * The **`GPUCommandEncoder`** interface of the WebGPU API represents a command encoder, used to encode commands to be issued to the GPU.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder)
+ */
+interface GPUCommandEncoder extends GPUDebugCommandsMixin, GPUObjectBase {
+    /**
+     * The **`beginComputePass()`** method of the ```js-nolint beginComputePass() beginComputePass(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object containing the following properties: - `label` [MISSING: optional_inline] - : A string providing a label that can be used to identify the object, for example in GPUError messages or console warnings.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/beginComputePass)
+     */
+    beginComputePass(descriptor?: GPUComputePassDescriptor): GPUComputePassEncoder;
+    /**
+     * The **`beginRenderPass()`** method of the ```js-nolint beginRenderPass(descriptor) ``` - `descriptor` - : An object containing the following properties: - `colorAttachments` - : An array of objects (see Color attachment object structure) defining the color attachments that will be output to when executing this render pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/beginRenderPass)
+     */
+    beginRenderPass(descriptor: GPURenderPassDescriptor): GPURenderPassEncoder;
+    /**
+     * The **`clearBuffer()`** method of the ```js-nolint clearBuffer(buffer) clearBuffer(buffer, offset) clearBuffer(buffer, offset, size) ``` - `buffer` - : A GPUBuffer object representing the buffer to clear.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/clearBuffer)
+     */
+    clearBuffer(buffer: GPUBuffer, offset?: GPUSize64, size?: GPUSize64): void;
+    /**
+     * The **`copyBufferToBuffer()`** method of the ```js-nolint copyBufferToBuffer(source, destination) copyBufferToBuffer(source, destination, size) copyBufferToBuffer(source, sourceOffset, destination, destinationOffset, size) ``` - `source` - : The GPUBuffer to copy from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
+     */
+    copyBufferToBuffer(source: GPUBuffer, destination: GPUBuffer, size?: GPUSize64): void;
+    copyBufferToBuffer(source: GPUBuffer, sourceOffset: GPUSize64, destination: GPUBuffer, destinationOffset: GPUSize64, size?: GPUSize64): void;
+    /**
+     * The **`copyBufferToTexture()`** method of the ```js-nolint copyBufferToTexture(source, destination, copySize) ``` - `source` - : An object that defines the buffer to copy from, plus the layout of the data in the buffer to be copied to the texture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToTexture)
+     */
+    copyBufferToTexture(source: GPUTexelCopyBufferInfo, destination: GPUTexelCopyTextureInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`copyTextureToBuffer()`** method of the ```js-nolint copyTextureToBuffer(source, destination, copySize) ``` - `source` - : An object defining the texture to copy the data from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer)
+     */
+    copyTextureToBuffer(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyBufferInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`copyTextureToTexture()`** method of the ```js-nolint copyTextureToTexture(source, destination, copySize) ``` - `source` - : An object (see Copy texture object structure) defining the texture to copy the data from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToTexture)
+     */
+    copyTextureToTexture(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyTextureInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`finish()`** method of the ```js-nolint finish() finish(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object that can contain the following properties: - `label` [MISSING: optional_inline] - : A string providing a label for the returned GPUCommandBuffer that can be used to identify it, for example in GPUError messages or console warnings.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/finish)
+     */
+    finish(descriptor?: GPUCommandBufferDescriptor): GPUCommandBuffer;
+    /**
+     * The **`resolveQuerySet()`** method of the ```js-nolint resolveQuerySet(querySet, firstQuery, queryCount, destination, destinationOffset) ``` - `querySet` - : A GPUQuerySet object representing the query set to be resolved.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/resolveQuerySet)
+     */
+    resolveQuerySet(querySet: GPUQuerySet, firstQuery: GPUSize32, queryCount: GPUSize32, destination: GPUBuffer, destinationOffset: GPUSize64): void;
+}
+
+declare var GPUCommandEncoder: {
+    prototype: GPUCommandEncoder;
+    new(): GPUCommandEncoder;
+};
+
+/**
+ * The **`GPUCompilationInfo`** interface of the WebGPU API represents an array of GPUCompilationMessage objects generated by the GPU shader module compiler to help diagnose problems with shader code.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationInfo)
+ */
+interface GPUCompilationInfo {
+    /**
+     * The **`messages`** read-only property of the An array of GPUCompilationMessage objects.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationInfo/messages)
+     */
+    readonly messages: ReadonlyArray<GPUCompilationMessage>;
+}
+
+declare var GPUCompilationInfo: {
+    prototype: GPUCompilationInfo;
+    new(): GPUCompilationInfo;
+};
+
+/**
+ * The **`GPUCompilationMessage`** interface of the WebGPU API represents a single informational, warning, or error message generated by the GPU shader module compiler.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage)
+ */
+interface GPUCompilationMessage {
+    /**
+     * The **`length`** read-only property of the A number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage/length)
+     */
+    readonly length: number;
+    /**
+     * The **`lineNum`** read-only property of the A number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage/lineNum)
+     */
+    readonly lineNum: number;
+    /**
+     * The **`linePos`** read-only property of the A number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage/linePos)
+     */
+    readonly linePos: number;
+    /**
+     * The **`message`** read-only property of the A string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage/message)
+     */
+    readonly message: string;
+    /**
+     * The **`offset`** read-only property of the A number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage/offset)
+     */
+    readonly offset: number;
+    /**
+     * The **`type`** read-only property of the A enumerated value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCompilationMessage/type)
+     */
+    readonly type: GPUCompilationMessageType;
+}
+
+declare var GPUCompilationMessage: {
+    prototype: GPUCompilationMessage;
+    new(): GPUCompilationMessage;
+};
+
+/**
+ * The **`GPUComputePassEncoder`** interface of the WebGPU API encodes commands related to controlling the compute shader stage, as issued by a GPUComputePipeline.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder)
+ */
+interface GPUComputePassEncoder extends GPUBindingCommandsMixin, GPUDebugCommandsMixin, GPUObjectBase {
+    /**
+     * The **`dispatchWorkgroups()`** method of the ```js-nolint dispatchWorkgroups(workgroupCountX) dispatchWorkgroups(workgroupCountX, workgroupCountY) dispatchWorkgroups(workgroupCountX, workgroupCountY, workgroupCountZ) ``` - `workgroupCountX` - : The X dimension of the grid of workgroups to dispatch.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
+     */
+    dispatchWorkgroups(workgroupCountX: GPUSize32, workgroupCountY?: GPUSize32, workgroupCountZ?: GPUSize32): void;
+    /**
+     * The **`dispatchWorkgroupsIndirect()`** method of the ```js-nolint dispatchWorkgroupsIndirect(indirectBuffer, indirectOffset) ``` - `indirectBuffer` - : A GPUBuffer containing the X, Y, and Z dimensions of the grid of workgroups to dispatch.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroupsIndirect)
+     */
+    dispatchWorkgroupsIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64): void;
+    /**
+     * The **`end()`** method of the ```js-nolint end() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/end)
+     */
+    end(): void;
+    /**
+     * The **`setPipeline()`** method of the ```js-nolint setPipeline(pipeline) ``` - `pipeline` - : The GPUComputePipeline to use for this compute pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setPipeline)
+     */
+    setPipeline(pipeline: GPUComputePipeline): void;
+}
+
+declare var GPUComputePassEncoder: {
+    prototype: GPUComputePassEncoder;
+    new(): GPUComputePassEncoder;
+};
+
+/**
+ * The **`GPUComputePipeline`** interface of the WebGPU API represents a pipeline that controls the compute shader stage and can be used in a GPUComputePassEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePipeline)
+ */
+interface GPUComputePipeline extends GPUObjectBase, GPUPipelineBase {
+}
+
+declare var GPUComputePipeline: {
+    prototype: GPUComputePipeline;
+    new(): GPUComputePipeline;
+};
+
+interface GPUDebugCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/insertDebugMarker) */
+    insertDebugMarker(markerLabel: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/popDebugGroup) */
+    popDebugGroup(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/pushDebugGroup) */
+    pushDebugGroup(groupLabel: string): void;
+}
+
+/**
+ * The **`GPUDevice`** interface of the WebGPU API represents a logical GPU device.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice)
+ */
+interface GPUDevice extends EventTarget, GPUObjectBase {
+    /**
+     * The **`features`** read-only property of the A GPUSupportedFeatures object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/features)
+     */
+    readonly features: GPUSupportedFeatures;
+    /**
+     * The **`limits`** read-only property of the A GPUSupportedLimits object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/limits)
+     */
+    readonly limits: GPUSupportedLimits;
+    /**
+     * The **`lost`** read-only property of the Many causes for lost devices are transient, so you should try getting a new device once a previous one has been lost unless the loss was caused by the application intentionally destroying the device (i.e., with GPUDevice.destroy()).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/lost)
+     */
+    readonly lost: Promise<GPUDeviceLostInfo>;
+    /**
+     * The **`queue`** read-only property of the A GPUQueue object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/queue)
+     */
+    readonly queue: GPUQueue;
+    /**
+     * The **`createBindGroup()`** method of the ```js-nolint createBindGroup(descriptor) ``` - `descriptor` - : An object containing the following properties: - `entries` - : An array of entry objects describing the resources to expose to the shader.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBindGroup)
+     */
+    createBindGroup(descriptor: GPUBindGroupDescriptor): GPUBindGroup;
+    /**
+     * The **`createBindGroupLayout()`** method of the ```js-nolint createBindGroupLayout(descriptor) ``` - `descriptor` - : An object containing the following properties: - `entries` - : An array of entry objects, each one of which describes a single shader resource binding to be included in the GPUBindGroupLayout.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBindGroupLayout)
+     */
+    createBindGroupLayout(descriptor: GPUBindGroupLayoutDescriptor): GPUBindGroupLayout;
+    /**
+     * The **`createBuffer()`** method of the ```js-nolint createBuffer(descriptor) ``` - `descriptor` - : An object containing the following properties: - `label` MISSING: optional_inline] - : A string providing a label that can be used to identify the object, for example in GPUError messages or console warnings.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBuffer)
+     */
+    createBuffer(descriptor: GPUBufferDescriptor): GPUBuffer;
+    /**
+     * The **`createCommandEncoder()`** method of the ```js-nolint createCommandEncoder() createCommandEncoder(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object containing the following properties: - `label` [MISSING: optional_inline] - : A string providing a label that can be used to identify the object, for example in GPUError messages or console warnings.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createCommandEncoder)
+     */
+    createCommandEncoder(descriptor?: GPUCommandEncoderDescriptor): GPUCommandEncoder;
+    /**
+     * The **`createComputePipeline()`** method of the ```js-nolint createComputePipeline(descriptor) ``` - `descriptor` - : An object containing the following properties: - `compute` - : An object describing the compute shader entry point of the pipeline.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createComputePipeline)
+     */
+    createComputePipeline(descriptor: GPUComputePipelineDescriptor): GPUComputePipeline;
+    /**
+     * The **`createComputePipelineAsync()`** method of the ```js-nolint createComputePipelineAsync(descriptor) ``` - `descriptor` - : See the descriptor definition for the `GPUDevice.createComputePipeline()` method.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createComputePipelineAsync)
+     */
+    createComputePipelineAsync(descriptor: GPUComputePipelineDescriptor): Promise<GPUComputePipeline>;
+    /**
+     * The **`createPipelineLayout()`** method of the ```js-nolint createPipelineLayout(descriptor) ``` - `descriptor` - : An object containing the following properties: - `bindGroupLayouts` - : An array of GPUBindGroupLayout objects (which are in turn created via calls to GPUDevice.createBindGroupLayout()).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createPipelineLayout)
+     */
+    createPipelineLayout(descriptor: GPUPipelineLayoutDescriptor): GPUPipelineLayout;
+    /**
+     * The **`createQuerySet()`** method of the ```js-nolint createQuerySet(descriptor) ``` - `descriptor` - : An object containing the following properties: - `count` - : A number specifying the number of queries to be managed by the resulting GPUQuerySet.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createQuerySet)
+     */
+    createQuerySet(descriptor: GPUQuerySetDescriptor): GPUQuerySet;
+    /**
+     * The **`createRenderBundleEncoder()`** method of the ```js-nolint createRenderBundleEncoder(descriptor) ``` - `descriptor` - : An object containing the following properties: - `colorFormats` - : An array of enumerated values specifying the expected color formats for render targets.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderBundleEncoder)
+     */
+    createRenderBundleEncoder(descriptor: GPURenderBundleEncoderDescriptor): GPURenderBundleEncoder;
+    /**
+     * The **`createRenderPipeline()`** method of the ```js-nolint createRenderPipeline(descriptor) ``` - `descriptor` - : An object containing the following properties: - `depthStencil` MISSING: optional_inline] - : An object (see [`depthStencil` object structure) describing depth-stencil properties including testing, operations, and bias.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderPipeline)
+     */
+    createRenderPipeline(descriptor: GPURenderPipelineDescriptor): GPURenderPipeline;
+    /**
+     * The **`createRenderPipelineAsync()`** method of the ```js-nolint createRenderPipelineAsync(descriptor) ``` - `descriptor` - : See the descriptor definition for the `GPUDevice.createRenderPipeline()` method.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderPipelineAsync)
+     */
+    createRenderPipelineAsync(descriptor: GPURenderPipelineDescriptor): Promise<GPURenderPipeline>;
+    /**
+     * The **`createSampler()`** method of the ```js-nolint createSampler() createSampler(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object containing the following properties: - `addressModeU` [MISSING: optional_inline] - : An enumerated value specifying the behavior of the sampler when the sample footprint width extends beyond the width of the texture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createSampler)
+     */
+    createSampler(descriptor?: GPUSamplerDescriptor): GPUSampler;
+    /**
+     * The **`createShaderModule()`** method of the ```js-nolint createShaderModule(descriptor) ``` - `descriptor` - : An object containing the following properties: - `code` - : A string representing the WGSL source code for the shader module.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createShaderModule)
+     */
+    createShaderModule(descriptor: GPUShaderModuleDescriptor): GPUShaderModule;
+    /**
+     * The **`createTexture()`** method of the ```js-nolint createTexture(descriptor) ``` - `descriptor` - : An object containing the following properties: - `dimension` MISSING: optional_inline] - : An enumerated value indicating the dimension level of the texture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createTexture)
+     */
+    createTexture(descriptor: GPUTextureDescriptor): GPUTexture;
+    /**
+     * The **`destroy()`** method of the Note that: - Any commands currently enqueued on the device's GPUQueue will be executed before the device is destroyed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/destroy)
+     */
+    destroy(): void;
+    /**
+     * The **`importExternalTexture()`** method of the ```js-nolint importExternalTexture(descriptor) ``` - `descriptor` - : An object containing the following properties: - `colorSpace` MISSING: optional_inline] - : An enumerated value specifying the color space to use for the video frame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/importExternalTexture)
+     */
+    importExternalTexture(descriptor: GPUExternalTextureDescriptor): GPUExternalTexture;
+    /**
+     * The **`popErrorScope()`** method of the ```js-nolint popErrorScope() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/popErrorScope)
+     */
+    popErrorScope(): Promise<GPUError | null>;
+    /**
+     * The **`pushErrorScope()`** method of the Once you are done capturing errors, you can end capture by invoking GPUDevice.popErrorScope().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/pushErrorScope)
+     */
+    pushErrorScope(filter: GPUErrorFilter): void;
+}
+
+declare var GPUDevice: {
+    prototype: GPUDevice;
+    new(): GPUDevice;
+};
+
+/**
+ * The **`GPUDeviceLostInfo`** interface of the WebGPU API represents the object returned when the GPUDevice.lost Promise resolves.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo)
+ */
+interface GPUDeviceLostInfo {
+    /**
+     * The **`message`** read-only property of the A string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo/message)
+     */
+    readonly message: string;
+    /**
+     * The **`reason`** read-only property of the An enumerated value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo/reason)
+     */
+    readonly reason: GPUDeviceLostReason;
+}
+
+declare var GPUDeviceLostInfo: {
+    prototype: GPUDeviceLostInfo;
+    new(): GPUDeviceLostInfo;
+};
+
+/**
  * The **`GPUError`** interface of the WebGPU API is the base interface for errors surfaced by GPUDevice.popErrorScope and the GPUDevice.uncapturederror_event event.
  * Available only in secure contexts.
  *
@@ -4067,6 +5105,542 @@ interface GPUError {
      */
     readonly message: string;
 }
+
+/**
+ * The **`GPUExternalTexture`** interface of the WebGPU API represents a wrapper object containing an HTMLVideoElement snapshot that can be used as a texture in GPU rendering operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUExternalTexture)
+ */
+interface GPUExternalTexture extends GPUObjectBase {
+}
+
+declare var GPUExternalTexture: {
+    prototype: GPUExternalTexture;
+    new(): GPUExternalTexture;
+};
+
+/**
+ * The **`GPUInternalError`** interface of the WebGPU API describes an application error indicating that an operation failed for a system or implementation-specific reason, even when all validation requirements were satisfied.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUInternalError)
+ */
+interface GPUInternalError extends GPUError {
+}
+
+declare var GPUInternalError: {
+    prototype: GPUInternalError;
+    new(message: string): GPUInternalError;
+};
+
+interface GPUObjectBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroup/label) */
+    label: string;
+}
+
+/**
+ * The **`GPUOutOfMemoryError`** interface of the WebGPU API describes an out-of-memory (oom) error indicating that there was not enough free memory to complete the requested operation.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUOutOfMemoryError)
+ */
+interface GPUOutOfMemoryError extends GPUError {
+}
+
+declare var GPUOutOfMemoryError: {
+    prototype: GPUOutOfMemoryError;
+    new(message: string): GPUOutOfMemoryError;
+};
+
+interface GPUPipelineBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePipeline/getBindGroupLayout) */
+    getBindGroupLayout(index: number): GPUBindGroupLayout;
+}
+
+/**
+ * The **`GPUPipelineError`** interface of the WebGPU API describes a pipeline failure.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError)
+ */
+interface GPUPipelineError extends DOMException {
+    /**
+     * The **`reason`** read-only property of the An enumerated value that can be one of: - `'internal'` - : Pipeline creation failed because of an internal error (see GPUInternalError for more information about these kinds of error.) - `'validation'` - : Pipeline creation failed because of a validation error (see GPUValidationError for more information about these kinds of error.) See the main `GPUPipelineError` page for an example involving a `GPUPipelineError` object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError/reason)
+     */
+    readonly reason: GPUPipelineErrorReason;
+}
+
+declare var GPUPipelineError: {
+    prototype: GPUPipelineError;
+    new(message: string, options: GPUPipelineErrorInit): GPUPipelineError;
+};
+
+/**
+ * The **`GPUPipelineLayout`** interface of the WebGPU API defines the GPUBindGroupLayouts used by a pipeline.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineLayout)
+ */
+interface GPUPipelineLayout extends GPUObjectBase {
+}
+
+declare var GPUPipelineLayout: {
+    prototype: GPUPipelineLayout;
+    new(): GPUPipelineLayout;
+};
+
+/**
+ * The **`GPUQuerySet`** interface of the WebGPU API is used to record the results of queries on passes, such as occlusion or timestamp queries.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet)
+ */
+interface GPUQuerySet extends GPUObjectBase {
+    /**
+     * The **`count`** read-only property of the A number.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet/count)
+     */
+    readonly count: GPUSize32Out;
+    /**
+     * The **`type`** read-only property of the An enumerated value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet/type)
+     */
+    readonly type: GPUQueryType;
+    /**
+     * The **`destroy()`** method of the ```js-nolint destroy() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet/destroy)
+     */
+    destroy(): void;
+}
+
+declare var GPUQuerySet: {
+    prototype: GPUQuerySet;
+    new(): GPUQuerySet;
+};
+
+/**
+ * The **`GPUQueue`** interface of the WebGPU API controls execution of encoded commands on the GPU.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue)
+ */
+interface GPUQueue extends GPUObjectBase {
+    /**
+     * The **`copyExternalImageToTexture()`** method of the Using this function allows the user agent to determine the most efficient way to copy the data over for each source type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/copyExternalImageToTexture)
+     */
+    copyExternalImageToTexture(source: GPUCopyExternalImageSourceInfo, destination: GPUCopyExternalImageDestInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`onSubmittedWorkDone()`** method of the This includes the completion of any GPUBuffer.mapAsync calls made on `GPUBuffer`s used in commands submitted to the queue, before `onSubmittedWorkDone()` is called.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/onSubmittedWorkDone)
+     */
+    onSubmittedWorkDone(): Promise<void>;
+    /**
+     * The **`submit()`** method of the ```js-nolint submit(commandBuffers) ``` - `commandBuffers` - : An array of GPUCommandBuffer objects containing the commands to be enqueued for processing by the GPU.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/submit)
+     */
+    submit(commandBuffers: GPUCommandBuffer[]): void;
+    /**
+     * The **`writeBuffer()`** method of the This is a convenience function, which provides an alternative to setting buffer data via buffer mapping and buffer-to-buffer copies.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/writeBuffer)
+     */
+    writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: AllowSharedBufferSource, dataOffset?: GPUSize64, size?: GPUSize64): void;
+    /**
+     * The **`writeTexture()`** method of the This is a convenience function, which provides an alternative to setting texture data via buffer mapping and buffer-to-texture copies.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/writeTexture)
+     */
+    writeTexture(destination: GPUTexelCopyTextureInfo, data: AllowSharedBufferSource, dataLayout: GPUTexelCopyBufferLayout, size: GPUExtent3D): void;
+}
+
+declare var GPUQueue: {
+    prototype: GPUQueue;
+    new(): GPUQueue;
+};
+
+/**
+ * The **`GPURenderBundle`** interface of the WebGPU API represents a container for pre-recorded bundles of commands.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundle)
+ */
+interface GPURenderBundle extends GPUObjectBase {
+}
+
+declare var GPURenderBundle: {
+    prototype: GPURenderBundle;
+    new(): GPURenderBundle;
+};
+
+/**
+ * The **`GPURenderBundleEncoder`** interface of the WebGPU API is used to pre-record bundles of commands.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder)
+ */
+interface GPURenderBundleEncoder extends GPUBindingCommandsMixin, GPUDebugCommandsMixin, GPUObjectBase, GPURenderCommandsMixin {
+    /**
+     * The **`finish()`** method of the ```js-nolint finish(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object containing the following properties: - `label` [MISSING: optional_inline] - : A string providing a label that can be used to identify the object, for example in GPUError messages or console warnings.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/finish)
+     */
+    finish(descriptor?: GPURenderBundleDescriptor): GPURenderBundle;
+}
+
+declare var GPURenderBundleEncoder: {
+    prototype: GPURenderBundleEncoder;
+    new(): GPURenderBundleEncoder;
+};
+
+interface GPURenderCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/draw) */
+    draw(vertexCount: GPUSize32, instanceCount?: GPUSize32, firstVertex?: GPUSize32, firstInstance?: GPUSize32): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/drawIndexed) */
+    drawIndexed(indexCount: GPUSize32, instanceCount?: GPUSize32, firstIndex?: GPUSize32, baseVertex?: GPUSignedOffset32, firstInstance?: GPUSize32): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/drawIndexedIndirect) */
+    drawIndexedIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/drawIndirect) */
+    drawIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer) */
+    setIndexBuffer(buffer: GPUBuffer, indexFormat: GPUIndexFormat, offset?: GPUSize64, size?: GPUSize64): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setPipeline) */
+    setPipeline(pipeline: GPURenderPipeline): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer) */
+    setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer | null, offset?: GPUSize64, size?: GPUSize64): void;
+}
+
+/**
+ * The **`GPURenderPassEncoder`** interface of the WebGPU API encodes commands related to controlling the vertex and fragment shader stages, as issued by a GPURenderPipeline.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder)
+ */
+interface GPURenderPassEncoder extends GPUBindingCommandsMixin, GPUDebugCommandsMixin, GPUObjectBase, GPURenderCommandsMixin {
+    /**
+     * The **`beginOcclusionQuery()`** method of the ```js-nolint beginOcclusionQuery(queryIndex) ``` - `queryIndex` - : The index in the GPUQuerySet to begin the occlusion query at.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/beginOcclusionQuery)
+     */
+    beginOcclusionQuery(queryIndex: GPUSize32): void;
+    /**
+     * The **`end()`** method of the ```js-nolint end() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/end)
+     */
+    end(): void;
+    /**
+     * The **`endOcclusionQuery()`** method of the ```js-nolint endOcclusionQuery() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/endOcclusionQuery)
+     */
+    endOcclusionQuery(): void;
+    /**
+     * The **`executeBundles()`** method of the ```js-nolint executeBundles(bundles) ``` - `bundles` - : An array of GPURenderBundle objects, containing the pre-recorded commands to execute.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/executeBundles)
+     */
+    executeBundles(bundles: GPURenderBundle[]): void;
+    /**
+     * The **`setBlendConstant()`** method of the ```js-nolint setBlendConstant(color) ``` - `color` - : An object or array representing the color to use when blending — the `r`, `g`, `b`, and `a` components are represented as floating point numbers between 0.0 and 1.0.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setBlendConstant)
+     */
+    setBlendConstant(color: GPUColor): void;
+    /**
+     * The **`setScissorRect()`** method of the ```js-nolint setScissorRect(x, y, width, height) ``` - `x` - : A number representing the minimum X value of the scissor rectangle, in pixels.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setScissorRect)
+     */
+    setScissorRect(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate, width: GPUIntegerCoordinate, height: GPUIntegerCoordinate): void;
+    /**
+     * The **`setStencilReference()`** method of the ```js-nolint setStencilReference(reference) ``` - `reference` - : A number representing the new stencil reference value to set for the render pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setStencilReference)
+     */
+    setStencilReference(reference: GPUStencilValue): void;
+    /**
+     * The **`setViewport()`** method of the ```js-nolint setViewport(x, y, width, height, minDepth, maxDepth) ``` - `x` - : A number representing the minimum X value of the viewport, in pixels.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setViewport)
+     */
+    setViewport(x: number, y: number, width: number, height: number, minDepth: number, maxDepth: number): void;
+}
+
+declare var GPURenderPassEncoder: {
+    prototype: GPURenderPassEncoder;
+    new(): GPURenderPassEncoder;
+};
+
+/**
+ * The **`GPURenderPipeline`** interface of the WebGPU API represents a pipeline that controls the vertex and fragment shader stages and can be used in a GPURenderPassEncoder or GPURenderBundleEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPipeline)
+ */
+interface GPURenderPipeline extends GPUObjectBase, GPUPipelineBase {
+}
+
+declare var GPURenderPipeline: {
+    prototype: GPURenderPipeline;
+    new(): GPURenderPipeline;
+};
+
+/**
+ * The **`GPUSampler`** interface of the WebGPU API represents an object that can control how shaders transform and filter texture resource data.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSampler)
+ */
+interface GPUSampler extends GPUObjectBase {
+}
+
+declare var GPUSampler: {
+    prototype: GPUSampler;
+    new(): GPUSampler;
+};
+
+/**
+ * The **`GPUShaderModule`** interface of the WebGPU API represents an internal shader module object, a container for WGSL shader code that can be submitted to the GPU for execution by a pipeline.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUShaderModule)
+ */
+interface GPUShaderModule extends GPUObjectBase {
+    /**
+     * The **`getCompilationInfo()`** method of the ```js-nolint getCompilationInfo() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUShaderModule/getCompilationInfo)
+     */
+    getCompilationInfo(): Promise<GPUCompilationInfo>;
+}
+
+declare var GPUShaderModule: {
+    prototype: GPUShaderModule;
+    new(): GPUShaderModule;
+};
+
+/**
+ * The **`GPUSupportedFeatures`** interface of the WebGPU API is a `Set`-like object that describes additional functionality supported by a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedFeatures)
+ */
+interface GPUSupportedFeatures {
+    forEach(callbackfn: (value: string, key: string, parent: GPUSupportedFeatures) => void, thisArg?: any): void;
+}
+
+declare var GPUSupportedFeatures: {
+    prototype: GPUSupportedFeatures;
+    new(): GPUSupportedFeatures;
+};
+
+/**
+ * The **`GPUSupportedLimits`** interface of the WebGPU API describes the limits supported by a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits)
+ */
+interface GPUSupportedLimits {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindGroups: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindGroupsPlusVertexBuffers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindingsPerBindGroup: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBufferSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxColorAttachmentBytesPerSample: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxColorAttachments: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeInvocationsPerWorkgroup: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeX: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeY: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeZ: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupStorageSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupsPerDimension: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxDynamicStorageBuffersPerPipelineLayout: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxDynamicUniformBuffersPerPipelineLayout: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxInterStageShaderVariables: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxSampledTexturesPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxSamplersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageBufferBindingSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageBuffersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageTexturesPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureArrayLayers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension1D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension2D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension3D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxUniformBufferBindingSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxUniformBuffersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexAttributes: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexBufferArrayStride: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexBuffers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly minStorageBufferOffsetAlignment: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly minUniformBufferOffsetAlignment: number;
+}
+
+declare var GPUSupportedLimits: {
+    prototype: GPUSupportedLimits;
+    new(): GPUSupportedLimits;
+};
+
+/**
+ * The **`GPUTexture`** interface of the WebGPU API represents a container used to store 1D, 2D, or 3D arrays of data, such as images, to use in GPU rendering operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture)
+ */
+interface GPUTexture extends GPUObjectBase {
+    /**
+     * The **`depthOrArrayLayers`** read-only property of the This is set based on the `size` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/depthOrArrayLayers)
+     */
+    readonly depthOrArrayLayers: GPUIntegerCoordinateOut;
+    /**
+     * The **`dimension`** read-only property of the This is set via the `dimension` property in the descriptor object passed into the originating GPUDevice.createTexture() call, which defaults to `'2d'` if omitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/dimension)
+     */
+    readonly dimension: GPUTextureDimension;
+    /**
+     * The **`format`** read-only property of the This is set via the `format` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/format)
+     */
+    readonly format: GPUTextureFormat;
+    /**
+     * The **`height`** read-only property of the This is set based on the value of the `size` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/height)
+     */
+    readonly height: GPUIntegerCoordinateOut;
+    /**
+     * The **`mipLevelCount`** read-only property of the This is set via the `mipLevelCount` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/mipLevelCount)
+     */
+    readonly mipLevelCount: GPUIntegerCoordinateOut;
+    /**
+     * The **`sampleCount`** read-only property of the This is set via the `sampleCount` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/sampleCount)
+     */
+    readonly sampleCount: GPUSize32Out;
+    /**
+     * The **`usage`** read-only property of the This is set via the `usage` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/usage)
+     */
+    readonly usage: GPUFlagsConstant;
+    /**
+     * The **`width`** read-only property of the This is set based on the value of the `size` property in the descriptor object passed into the originating GPUDevice.createTexture() call.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/width)
+     */
+    readonly width: GPUIntegerCoordinateOut;
+    /**
+     * The **`createView()`** method of the ```js-nolint createView() createView(descriptor) ``` - `descriptor` MISSING: optional_inline] - : An object containing the following properties: - `arrayLayerCount` [MISSING: optional_inline] - : A number defining how many array layers are accessible to the view, starting with the `baseArrayLayer` value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/createView)
+     */
+    createView(descriptor?: GPUTextureViewDescriptor): GPUTextureView;
+    /**
+     * The **`destroy()`** method of the ```js-nolint destroy() ``` None.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/destroy)
+     */
+    destroy(): void;
+}
+
+declare var GPUTexture: {
+    prototype: GPUTexture;
+    new(): GPUTexture;
+};
+
+/**
+ * The **`GPUTextureView`** interface of the WebGPU API represents a view into a subset of the texture resources defined by a particular GPUTexture.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTextureView)
+ */
+interface GPUTextureView extends GPUObjectBase {
+}
+
+declare var GPUTextureView: {
+    prototype: GPUTextureView;
+    new(): GPUTextureView;
+};
+
+/**
+ * The **`GPUUncapturedErrorEvent`** interface of the WebGPU API is the event object type for the GPUDevice GPUDevice.uncapturederror_event event, used for telemetry and to report unexpected errors.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUUncapturedErrorEvent)
+ */
+interface GPUUncapturedErrorEvent extends Event {
+    /**
+     * The **`error`** read-only property of the A GPUError object instance.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUUncapturedErrorEvent/error)
+     */
+    readonly error: GPUError;
+}
+
+declare var GPUUncapturedErrorEvent: {
+    prototype: GPUUncapturedErrorEvent;
+    new(type: string, gpuUncapturedErrorEventInitDict: GPUUncapturedErrorEventInit): GPUUncapturedErrorEvent;
+};
+
+/**
+ * The **`GPUValidationError`** interface of the WebGPU API describes an application error indicating that an operation did not pass the WebGPU API's validation constraints.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUValidationError)
+ */
+interface GPUValidationError extends GPUError {
+}
+
+declare var GPUValidationError: {
+    prototype: GPUValidationError;
+    new(message: string): GPUValidationError;
+};
 
 interface GenericTransformStream {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream/readable) */
@@ -5147,6 +6721,15 @@ interface NavigatorConcurrentHardware {
     readonly hardwareConcurrency: number;
 }
 
+interface NavigatorGPU {
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/gpu)
+     */
+    readonly gpu: GPU;
+}
+
 interface NavigatorID {
     /**
      * @deprecated
@@ -5219,12 +6802,6 @@ interface NotificationEventMap {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification)
  */
 interface Notification extends EventTarget {
-    /**
-     * The **`badge`** read-only property of the Notification interface returns a string containing the URL of an image to represent the notification when there is not enough space to display the notification itself such as for example, the Android Notification Bar.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/badge)
-     */
-    readonly badge: string;
     /**
      * The **`body`** read-only property of the specified in the `body` option of the A string.
      *
@@ -6524,57 +8101,6 @@ interface ReadableStreamGenericReader {
 }
 
 /**
- * The `Report` interface of the Reporting API represents a single report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report)
- */
-interface Report {
-    /**
-     * The **`body`** read-only property of the Report interface returns the body of the report, which is a `ReportBody` object containing the detailed report information.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/body)
-     */
-    readonly body: ReportBody | null;
-    /**
-     * The **`type`** read-only property of the Report interface returns the type of report generated, e.g., `deprecation` or `intervention`.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/type)
-     */
-    readonly type: string;
-    /**
-     * The **`url`** read-only property of the Report interface returns the URL of the document that generated the report.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/url)
-     */
-    readonly url: string;
-    toJSON(): any;
-}
-
-declare var Report: {
-    prototype: Report;
-    new(): Report;
-};
-
-/**
- * The **`ReportBody`** interface of the Reporting API represents the body of a report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody)
- */
-interface ReportBody {
-    /**
-     * The **`toJSON()`** method of the ReportBody interface is a _serializer_, and returns a JSON representation of the `ReportBody` object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody/toJSON)
-     */
-    toJSON(): any;
-}
-
-declare var ReportBody: {
-    prototype: ReportBody;
-    new(): ReportBody;
-};
-
-/**
  * The `ReportingObserver` interface of the Reporting API allows you to collect and access reports.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver)
@@ -6957,7 +8483,7 @@ interface ServiceWorkerContainer extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/register)
      */
-    register(scriptURL: string | URL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
+    register(scriptURL: TrustedScriptURL | string, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
     /**
      * The **`startMessages()`** method of the ServiceWorkerContainer interface explicitly starts the flow of messages being dispatched from a service worker to pages under its control (e.g., sent via Client.postMessage()).
      *
@@ -7566,6 +9092,170 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
+ * The **`TrustedHTML`** interface of the Trusted Types API represents a string that a developer can insert into an injection sink that will render it as HTML.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedHTML)
+ */
+interface TrustedHTML {
+    /**
+     * The **`toJSON()`** method of the TrustedHTML interface returns a JSON representation of the stored data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedHTML/toJSON)
+     */
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedHTML: {
+    prototype: TrustedHTML;
+    new(): TrustedHTML;
+};
+
+/**
+ * The **`TrustedScript`** interface of the Trusted Types API represents a string with an uncompiled script body that a developer can insert into an injection sink that might execute the script.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScript)
+ */
+interface TrustedScript {
+    /**
+     * The **`toJSON()`** method of the TrustedScript interface returns a JSON representation of the stored data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScript/toJSON)
+     */
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScript: {
+    prototype: TrustedScript;
+    new(): TrustedScript;
+};
+
+/**
+ * The **`TrustedScriptURL`** interface of the Trusted Types API represents a string that a developer can insert into an injection sink that will parse it as a URL of an external script.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScriptURL)
+ */
+interface TrustedScriptURL {
+    /**
+     * The **`toJSON()`** method of the TrustedScriptURL interface returns a JSON representation of the stored data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScriptURL/toJSON)
+     */
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScriptURL: {
+    prototype: TrustedScriptURL;
+    new(): TrustedScriptURL;
+};
+
+/**
+ * The **`TrustedTypePolicy`** interface of the Trusted Types API defines a group of functions which create `TrustedType` objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy)
+ */
+interface TrustedTypePolicy {
+    /**
+     * The **`name`** read-only property of the TrustedTypePolicy interface returns the name of the policy.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/name)
+     */
+    readonly name: string;
+    /**
+     * The **`createHTML()`** method of the TrustedTypePolicy interface creates a TrustedHTML object using a policy created by TrustedTypePolicyFactory.createPolicy().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/createHTML)
+     */
+    createHTML(input: string, ...arguments: any[]): TrustedHTML;
+    /**
+     * The **`createScript()`** method of the TrustedTypePolicy interface creates a TrustedScript object using a policy created by TrustedTypePolicyFactory.createPolicy().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/createScript)
+     */
+    createScript(input: string, ...arguments: any[]): TrustedScript;
+    /**
+     * The **`createScriptURL()`** method of the TrustedTypePolicy interface creates a TrustedScriptURL object using a policy created by TrustedTypePolicyFactory.createPolicy().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/createScriptURL)
+     */
+    createScriptURL(input: string, ...arguments: any[]): TrustedScriptURL;
+}
+
+declare var TrustedTypePolicy: {
+    prototype: TrustedTypePolicy;
+    new(): TrustedTypePolicy;
+};
+
+/**
+ * The **`TrustedTypePolicyFactory`** interface of the Trusted Types API creates policies and allows the verification of Trusted Type objects against created policies.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory)
+ */
+interface TrustedTypePolicyFactory {
+    /**
+     * The **`defaultPolicy`** read-only property of the TrustedTypePolicyFactory interface returns the default TrustedTypePolicy or null if this is empty.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/defaultPolicy)
+     */
+    readonly defaultPolicy: TrustedTypePolicy | null;
+    /**
+     * The **`emptyHTML`** read-only property of the TrustedTypePolicyFactory interface returns a TrustedHTML object containing an empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/emptyHTML)
+     */
+    readonly emptyHTML: TrustedHTML;
+    /**
+     * The **`emptyScript`** read-only property of the TrustedTypePolicyFactory interface returns a TrustedScript object containing an empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/emptyScript)
+     */
+    readonly emptyScript: TrustedScript;
+    /**
+     * The **`createPolicy()`** method of the TrustedTypePolicyFactory interface creates a TrustedTypePolicy object that implements the rules passed as `policyOptions`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
+     */
+    createPolicy(policyName: string, policyOptions?: TrustedTypePolicyOptions): TrustedTypePolicy;
+    /**
+     * The **`getAttributeType()`** method of the TrustedTypePolicyFactory interface allows web developers to check if a Trusted Type is required for an element, and if so which Trusted Type is used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
+     */
+    getAttributeType(tagName: string, attribute: string, elementNs?: string | null, attrNs?: string | null): string | null;
+    /**
+     * The **`getPropertyType()`** method of the TrustedTypePolicyFactory interface allows web developers to check if a Trusted Type is required for an element's property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/getPropertyType)
+     */
+    getPropertyType(tagName: string, property: string, elementNs?: string | null): string | null;
+    /**
+     * The **`isHTML()`** method of the TrustedTypePolicyFactory interface returns true if it is passed a valid TrustedHTML object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/isHTML)
+     */
+    isHTML(value: any): boolean;
+    /**
+     * The **`isScript()`** method of the TrustedTypePolicyFactory interface returns true if it is passed a valid TrustedScript object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/isScript)
+     */
+    isScript(value: any): boolean;
+    /**
+     * The **`isScriptURL()`** method of the TrustedTypePolicyFactory interface returns true if it is passed a valid TrustedScriptURL object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/isScriptURL)
+     */
+    isScriptURL(value: any): boolean;
+}
+
+declare var TrustedTypePolicyFactory: {
+    prototype: TrustedTypePolicyFactory;
+    new(): TrustedTypePolicyFactory;
+};
+
+/**
  * The **`URL`** interface is used to parse, construct, normalize, and encode URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
@@ -7667,6 +9357,81 @@ declare var URL: {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
     parse(url: string | URL, base?: string | URL): URL | null;
+};
+
+/**
+ * The **`URLPattern`** interface of the URL Pattern API matches URLs or parts of URLs against a pattern.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern)
+ */
+interface URLPattern {
+    readonly hasRegExpGroups: boolean;
+    /**
+     * The **`hash`** read-only property of the URLPattern interface is a string containing the pattern used to match the fragment part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/hash)
+     */
+    readonly hash: string;
+    /**
+     * The **`hostname`** read-only property of the URLPattern interface is a string containing the pattern used to match the hostname part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/hostname)
+     */
+    readonly hostname: string;
+    /**
+     * The **`password`** read-only property of the URLPattern interface is a string containing the pattern used to match the password part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/password)
+     */
+    readonly password: string;
+    /**
+     * The **`pathname`** read-only property of the URLPattern interface is a string containing the pattern used to match the pathname part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/pathname)
+     */
+    readonly pathname: string;
+    /**
+     * The **`port`** read-only property of the URLPattern interface is a string containing the pattern used to match the port part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/port)
+     */
+    readonly port: string;
+    /**
+     * The **`protocol`** read-only property of the URLPattern interface is a string containing the pattern used to match the protocol part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/protocol)
+     */
+    readonly protocol: string;
+    /**
+     * The **`search`** read-only property of the URLPattern interface is a string containing the pattern used to match the search part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/search)
+     */
+    readonly search: string;
+    /**
+     * The **`username`** read-only property of the URLPattern interface is a string containing the pattern used to match the username part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/username)
+     */
+    readonly username: string;
+    /**
+     * The **`exec()`** method of the URLPattern interface takes a URL or object of URL parts, and returns either an object containing the results of matching the URL to the pattern, or `null` if the URL does not match the pattern.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/exec)
+     */
+    exec(input?: URLPatternInput, baseURL?: string | URL): URLPatternResult | null;
+    /**
+     * The **`test()`** method of the URLPattern interface takes a URL or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
+     */
+    test(input?: URLPatternInput, baseURL?: string | URL): boolean;
+}
+
+declare var URLPattern: {
+    prototype: URLPattern;
+    new(input: URLPatternInput, baseURL: string | URL, options?: URLPatternOptions): URLPattern;
+    new(input?: URLPatternInput, options?: URLPatternOptions): URLPattern;
 };
 
 /**
@@ -7980,6 +9745,21 @@ interface WEBGL_multi_draw {
      */
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array | GLsizei[], offsetsOffset: number, drawcount: GLsizei): void;
 }
+
+/**
+ * The **`WGSLLanguageFeatures`** interface of the WebGPU API is a setlike object that reports the WGSL language extensions supported by the WebGPU implementation.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WGSLLanguageFeatures)
+ */
+interface WGSLLanguageFeatures {
+    forEach(callbackfn: (value: string, key: string, parent: WGSLLanguageFeatures) => void, thisArg?: any): void;
+}
+
+declare var WGSLLanguageFeatures: {
+    prototype: WGSLLanguageFeatures;
+    new(): WGSLLanguageFeatures;
+};
 
 /**
  * The **WebGL2RenderingContext** interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML canvas element.
@@ -10536,6 +12316,8 @@ interface WindowOrWorkerGlobalScope {
     readonly origin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
     readonly performance: Performance;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/trustedTypes) */
+    readonly trustedTypes: TrustedTypePolicyFactory;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
     atob(data: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -10611,7 +12393,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
      */
-    importScripts(...urls: (string | URL)[]): void;
+    importScripts(...urls: (TrustedScriptURL | string)[]): void;
     addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -10696,7 +12478,7 @@ declare var WorkerLocation: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator)
  */
-interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
+interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     /**
      * The read-only **`mediaCapabilities`** property of the WorkerNavigator interface references a MediaCapabilities object that can expose information about the decoding and encoding capabilities for a given format and output capabilities (as defined by the Media Capabilities API).
      *
@@ -11125,6 +12907,18 @@ interface Console {
 
 declare var console: Console;
 
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string | null;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string | null;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string | null;
+}
+
 interface LockGrantedCallback<T> {
     (lock: Lock | null): T;
 }
@@ -11280,7 +13074,7 @@ declare var self: WorkerGlobalScope & typeof globalThis;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
  */
-declare function importScripts(...urls: (string | URL)[]): void;
+declare function importScripts(...urls: (TrustedScriptURL | string)[]): void;
 /**
  * The **`dispatchEvent()`** method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order.
  *
@@ -11307,6 +13101,8 @@ declare var isSecureContext: boolean;
 declare var origin: string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
 declare var performance: Performance;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/trustedTypes) */
+declare var trustedTypes: TrustedTypePolicyFactory;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
 declare function atob(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -11364,6 +13160,31 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+type GPUBindingResource = GPUSampler | GPUTextureView | GPUBuffer | GPUBufferBinding | GPUExternalTexture;
+type GPUBufferDynamicOffset = number;
+type GPUBufferUsageFlags = number;
+type GPUColor = number[] | GPUColorDict;
+type GPUColorWriteFlags = number;
+type GPUCopyExternalImageSource = ImageBitmap | ImageData | OffscreenCanvas;
+type GPUDepthBias = number;
+type GPUExtent3D = GPUIntegerCoordinate[] | GPUExtent3DDict;
+type GPUFlagsConstant = number;
+type GPUIndex32 = number;
+type GPUIntegerCoordinate = number;
+type GPUIntegerCoordinateOut = number;
+type GPUMapModeFlags = number;
+type GPUOrigin2D = GPUIntegerCoordinate[] | GPUOrigin2DDict;
+type GPUOrigin3D = GPUIntegerCoordinate[] | GPUOrigin3DDict;
+type GPUPipelineConstantValue = number;
+type GPUSampleMask = number;
+type GPUShaderStageFlags = number;
+type GPUSignedOffset32 = number;
+type GPUSize32 = number;
+type GPUSize32Out = number;
+type GPUSize64 = number;
+type GPUSize64Out = number;
+type GPUStencilValue = number;
+type GPUTextureUsageFlags = number;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
@@ -11372,7 +13193,7 @@ type ImageDataArray = Uint8ClampedArray;
 type Int32List = Int32Array | GLint[];
 type MessageEventSource = MessagePort | ServiceWorker;
 type NamedCurve = string;
-type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
+type OffscreenRenderingContext = OffscreenCanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext | GPUCanvasContext;
 type OnErrorEventHandler = OnErrorEventHandlerNonNull | null;
 type PerformanceEntryList = PerformanceEntry[];
 type PushMessageDataInit = BufferSource | string;
@@ -11382,8 +13203,9 @@ type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBY
 type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
-type TimerHandler = string | Function;
+type TimerHandler = string | Function | TrustedScript;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
@@ -11411,6 +13233,40 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
+type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
+type GPUAutoLayoutMode = "auto";
+type GPUBlendFactor = "constant" | "dst" | "dst-alpha" | "one" | "one-minus-constant" | "one-minus-dst" | "one-minus-dst-alpha" | "one-minus-src" | "one-minus-src-alpha" | "src" | "src-alpha" | "src-alpha-saturated" | "zero";
+type GPUBlendOperation = "add" | "max" | "min" | "reverse-subtract" | "subtract";
+type GPUBufferBindingType = "read-only-storage" | "storage" | "uniform";
+type GPUBufferMapState = "mapped" | "pending" | "unmapped";
+type GPUCanvasAlphaMode = "opaque" | "premultiplied";
+type GPUCanvasToneMappingMode = "extended" | "standard";
+type GPUCompareFunction = "always" | "equal" | "greater" | "greater-equal" | "less" | "less-equal" | "never" | "not-equal";
+type GPUCompilationMessageType = "error" | "info" | "warning";
+type GPUCullMode = "back" | "front" | "none";
+type GPUDeviceLostReason = "destroyed" | "unknown";
+type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
+type GPUFeatureName = "bgra8unorm-storage" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "float32-filterable" | "indirect-first-instance" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroups" | "texture-compression-astc" | "texture-compression-bc" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
+type GPUFilterMode = "linear" | "nearest";
+type GPUFrontFace = "ccw" | "cw";
+type GPUIndexFormat = "uint16" | "uint32";
+type GPULoadOp = "clear" | "load";
+type GPUMipmapFilterMode = "linear" | "nearest";
+type GPUPipelineErrorReason = "internal" | "validation";
+type GPUPowerPreference = "high-performance" | "low-power";
+type GPUPrimitiveTopology = "line-list" | "line-strip" | "point-list" | "triangle-list" | "triangle-strip";
+type GPUQueryType = "occlusion" | "timestamp";
+type GPUSamplerBindingType = "comparison" | "filtering" | "non-filtering";
+type GPUStencilOperation = "decrement-clamp" | "decrement-wrap" | "increment-clamp" | "increment-wrap" | "invert" | "keep" | "replace" | "zero";
+type GPUStorageTextureAccess = "read-only" | "read-write" | "write-only";
+type GPUStoreOp = "discard" | "store";
+type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
+type GPUTextureDimension = "1d" | "2d" | "3d";
+type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
+type GPUTextureSampleType = "depth" | "float" | "sint" | "uint" | "unfilterable-float";
+type GPUTextureViewDimension = "1d" | "2d" | "2d-array" | "3d" | "cube" | "cube-array";
+type GPUVertexFormat = "float16x2" | "float16x4" | "float32" | "float32x2" | "float32x3" | "float32x4" | "sint16x2" | "sint16x4" | "sint32" | "sint32x2" | "sint32x3" | "sint32x4" | "sint8x2" | "sint8x4" | "snorm16x2" | "snorm16x4" | "snorm8x2" | "snorm8x4" | "uint16x2" | "uint16x4" | "uint32" | "uint32x2" | "uint32x3" | "uint32x4" | "uint8x2" | "uint8x4" | "unorm10-10-10-2" | "unorm16x2" | "unorm16x4" | "unorm8x2" | "unorm8x4";
+type GPUVertexStepMode = "instance" | "vertex";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
