@@ -862,6 +862,7 @@ export function emitWebIdl(
       printer.printLine("/** @deprecated */");
       printer.printLine("declare const name: void;");
     } else {
+      const propertyName = p.name.includes("-") ? `"${p.name}"` : p.name;
       let pType: string;
       if (!p.overrideType && isEventHandler(p)) {
         // Sometimes event handlers with the same name may actually handle different
@@ -884,7 +885,9 @@ export function emitWebIdl(
       const canPutForward =
         compilerBehavior.allowUnrelatedSetterType || !p.readonly;
       if (!prefix && canPutForward && p.putForwards) {
-        printer.printLine(`get ${p.name}${optionalModifier}(): ${pType};`);
+        printer.printLine(
+          `get ${propertyName}${optionalModifier}(): ${pType};`,
+        );
 
         const forwardingProperty = getPropertyFromInterface(
           allInterfacesMap[pType],
@@ -898,12 +901,12 @@ export function emitWebIdl(
           setterType += ` | ${pType}`;
         }
         printer.printLine(
-          `set ${p.name}${optionalModifier}(${p.putForwards}: ${setterType});`,
+          `set ${propertyName}${optionalModifier}(${p.putForwards}: ${setterType});`,
         );
       } else {
         const readOnlyModifier = p.readonly && prefix === "" ? "readonly " : "";
         printer.printLine(
-          `${prefix}${readOnlyModifier}${p.name}${optionalModifier}: ${pType};`,
+          `${prefix}${readOnlyModifier}${propertyName}${optionalModifier}: ${pType};`,
         );
       }
     }
