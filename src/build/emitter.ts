@@ -862,7 +862,6 @@ export function emitWebIdl(
       printer.printLine("/** @deprecated */");
       printer.printLine("declare const name: void;");
     } else {
-      const propertyName = p.name.includes("-") ? `"${p.name}"` : p.name;
       let pType: string;
       if (!p.overrideType && isEventHandler(p)) {
         // Sometimes event handlers with the same name may actually handle different
@@ -881,6 +880,7 @@ export function emitWebIdl(
       if (p.optional) {
         pType += " | undefined";
       }
+      const propertyName = p.name.includes("-") ? `"${p.name}"` : p.name;
       const optionalModifier = !p.optional || prefix ? "" : "?";
       const canPutForward =
         compilerBehavior.allowUnrelatedSetterType || !p.readonly;
