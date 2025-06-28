@@ -3154,6 +3154,7 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
+    readonly duration: CSSNumberish | null;
 }
 
 declare var AnimationTimeline: {
@@ -5750,6 +5751,9 @@ interface CSSStyleDeclaration {
     alignmentBaseline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/all) */
     all: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/anchor-name) */
+    anchorName: string;
+    anchorScope: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation) */
     animation: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-composition) */
@@ -5768,6 +5772,14 @@ interface CSSStyleDeclaration {
     animationName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-play-state) */
     animationPlayState: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range) */
+    animationRange: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range-end) */
+    animationRangeEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range-start) */
+    animationRangeStart: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timeline) */
+    animationTimeline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timing-function) */
     animationTimingFunction: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/appearance) */
@@ -6036,6 +6048,7 @@ interface CSSStyleDeclaration {
     display: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dominant-baseline) */
     dominantBaseline: string;
+    dynamicRangeLimit: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
     emptyCells: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill) */
@@ -6414,6 +6427,16 @@ interface CSSStyleDeclaration {
     pointerEvents: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position) */
     position: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-anchor) */
+    positionAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-area) */
+    positionArea: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try) */
+    positionTry: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try-fallbacks) */
+    positionTryFallbacks: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try-order) */
+    positionTryOrder: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/print-color-adjust) */
     printColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
@@ -6490,6 +6513,12 @@ interface CSSStyleDeclaration {
     scrollSnapStop: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-snap-type) */
     scrollSnapType: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline) */
+    scrollTimeline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline-axis) */
+    scrollTimelineAxis: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline-name) */
+    scrollTimelineName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-color) */
     scrollbarColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-gutter) */
@@ -6584,6 +6613,8 @@ interface CSSStyleDeclaration {
     textWrapMode: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap-style) */
     textWrapStyle: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/timeline-scope) */
+    timelineScope: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/top) */
     top: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/touch-action) */
@@ -6618,6 +6649,14 @@ interface CSSStyleDeclaration {
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline) */
+    viewTimeline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-axis) */
+    viewTimelineAxis: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-inset) */
+    viewTimelineInset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-name) */
+    viewTimelineName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-class) */
     viewTransitionClass: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
@@ -10360,6 +10399,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     write(...text: string[]): void;
     /**
      * The **`writeln()`** method of the Document interface writes text in one or more TrustedHTML or string parameters to a document stream opened by document.open(), followed by a newline character.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/writeln)
      */
@@ -18656,6 +18696,12 @@ interface ImageCapture {
      */
     getPhotoSettings(): Promise<PhotoSettings>;
     /**
+     * The **`grabFrame()`** method of the a ImageBitmap containing the snapshot.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/grabFrame)
+     */
+    grabFrame(): Promise<ImageBitmap>;
+    /**
      * The **`takePhoto()`** method of the device sourcing a MediaStreamTrack and returns a Promise that resolves with a Blob containing the data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/takePhoto)
@@ -18929,6 +18975,7 @@ interface IntersectionObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/rootMargin)
      */
     readonly rootMargin: string;
+    readonly scrollMargin: string;
     /**
      * The IntersectionObserver interface's read-only **`thresholds`** property returns the list of intersection thresholds that was specified when the observer was instantiated with only one threshold ratio was provided when instantiating the object, this will be an array containing that single value.
      *
@@ -21993,12 +22040,6 @@ interface NotificationEventMap {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification)
  */
 interface Notification extends EventTarget {
-    /**
-     * The **`badge`** read-only property of the Notification interface returns a string containing the URL of an image to represent the notification when there is not enough space to display the notification itself such as for example, the Android Notification Bar.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/badge)
-     */
-    readonly badge: string;
     /**
      * The **`body`** read-only property of the specified in the `body` option of the A string.
      *
