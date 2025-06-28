@@ -4785,7 +4785,7 @@ interface CSSFontFaceRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSFontFaceRule: {
@@ -4953,7 +4953,7 @@ interface CSSKeyframeRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSKeyframeRule: {
@@ -5286,7 +5286,7 @@ interface CSSNestedDeclarations extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSNestedDeclarations: {
@@ -5411,7 +5411,7 @@ interface CSSPageRule extends CSSGroupingRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSPageRule: {
@@ -5739,6 +5739,63 @@ declare var CSSStartingStyleRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration)
  */
 interface CSSStyleDeclaration {
+    /**
+     * The **`cssText`** property of the CSSStyleDeclaration interface returns or sets the text of the element's **inline** style declaration only.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssText)
+     */
+    cssText: string;
+    /**
+     * The read-only property returns an integer that represents the number of style declarations in this CSS declaration block.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/length)
+     */
+    readonly length: number;
+    /**
+     * The **CSSStyleDeclaration.parentRule** read-only property returns a CSSRule that is the parent of this style block, e.g., a CSSStyleRule representing the style for a CSS selector.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/parentRule)
+     */
+    readonly parentRule: CSSRule | null;
+    /**
+     * The **CSSStyleDeclaration.getPropertyPriority()** method interface returns a string that provides all explicitly set priorities on the CSS property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyPriority)
+     */
+    getPropertyPriority(property: string): string;
+    /**
+     * The **CSSStyleDeclaration.getPropertyValue()** method interface returns a string containing the value of a specified CSS property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyValue)
+     */
+    getPropertyValue(property: string): string;
+    /**
+     * The `CSSStyleDeclaration.item()` method interface returns a CSS property name from a CSSStyleDeclaration by index.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/item)
+     */
+    item(index: number): string;
+    /**
+     * The **`CSSStyleDeclaration.removeProperty()`** method interface removes a property from a CSS style declaration object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/removeProperty)
+     */
+    removeProperty(property: string): string;
+    /**
+     * The **`CSSStyleDeclaration.setProperty()`** method interface sets a new value for a property on a CSS style declaration object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/setProperty)
+     */
+    setProperty(property: string, value: string | null, priority?: string): void;
+    [index: number]: string;
+}
+
+declare var CSSStyleDeclaration: {
+    prototype: CSSStyleDeclaration;
+    new(): CSSStyleDeclaration;
+};
+
+interface CSSStyleProperties extends CSSStyleDeclaration {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
     accentColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content) */
@@ -6028,12 +6085,6 @@ interface CSSStyleDeclaration {
     counterSet: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat) */
     cssFloat: string;
-    /**
-     * The **`cssText`** property of the CSSStyleDeclaration interface returns or sets the text of the element's **inline** style declaration only.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssText)
-     */
-    cssText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cx) */
@@ -6211,12 +6262,6 @@ interface CSSStyleDeclaration {
     justifySelf: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/left) */
     left: string;
-    /**
-     * The read-only property returns an integer that represents the number of style declarations in this CSS declaration block.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/length)
-     */
-    readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/letter-spacing) */
     letterSpacing: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/lighting-color) */
@@ -6407,12 +6452,6 @@ interface CSSStyleDeclaration {
     pageBreakInside: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/paint-order) */
     paintOrder: string;
-    /**
-     * The **CSSStyleDeclaration.parentRule** read-only property returns a CSSRule that is the parent of this style block, e.g., a CSSStyleRule representing the style for a CSS selector.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/parentRule)
-     */
-    readonly parentRule: CSSRule | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective) */
     perspective: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective-origin) */
@@ -7093,42 +7132,11 @@ interface CSSStyleDeclaration {
     zIndex: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/zoom) */
     zoom: string;
-    /**
-     * The **CSSStyleDeclaration.getPropertyPriority()** method interface returns a string that provides all explicitly set priorities on the CSS property.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyPriority)
-     */
-    getPropertyPriority(property: string): string;
-    /**
-     * The **CSSStyleDeclaration.getPropertyValue()** method interface returns a string containing the value of a specified CSS property.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyValue)
-     */
-    getPropertyValue(property: string): string;
-    /**
-     * The `CSSStyleDeclaration.item()` method interface returns a CSS property name from a CSSStyleDeclaration by index.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/item)
-     */
-    item(index: number): string;
-    /**
-     * The **`CSSStyleDeclaration.removeProperty()`** method interface removes a property from a CSS style declaration object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/removeProperty)
-     */
-    removeProperty(property: string): string;
-    /**
-     * The **`CSSStyleDeclaration.setProperty()`** method interface sets a new value for a property on a CSS style declaration object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/setProperty)
-     */
-    setProperty(property: string, value: string | null, priority?: string): void;
-    [index: number]: string;
 }
 
-declare var CSSStyleDeclaration: {
-    prototype: CSSStyleDeclaration;
-    new(): CSSStyleDeclaration;
+declare var CSSStyleProperties: {
+    prototype: CSSStyleProperties;
+    new(): CSSStyleProperties;
 };
 
 /**
@@ -7148,7 +7156,7 @@ interface CSSStyleRule extends CSSGroupingRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
     /**
      * The **`styleMap`** read-only property of the which provides access to the rule's property-value pairs.
      *
