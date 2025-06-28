@@ -25,6 +25,7 @@
                 "properties": {
                     "property": {
                         "gpu": {
+                            // TODO: only for bcd@6.0.24 progressive acceptance, should be removed
                             "exposed": ""
                         }
                     }
