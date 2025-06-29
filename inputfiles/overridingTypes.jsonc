@@ -3525,17 +3525,6 @@
                     }
                 }
             },
-            "CSSPageRule": {
-                "properties": {
-                    "property": {
-                        "style": {
-                            // CSS Fonts Level 4 now says CSSPageDescriptors but nobody implements it as of 2024-04
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "type": "CSSStyleProperties"
-                        }
-                    }
-                }
-            },
             "CSSStyleProperties": {
                 // The split of CSSStyleDeclaration of CSSStyleProperties is only supported by Safari 26
                 // as of 2025-06.
@@ -3719,15 +3708,6 @@
 
             // TODO: The following only exists to accept bcd@6.0.24 progressively,
             // and should be removed.
-            "CSSPageDescriptors": {
-                "exposed": ""
-            },
-            "CSSPositionTryDescriptors": {
-                "exposed": ""
-            },
-            "CSSPositionTryRule": {
-                "exposed": ""
-            },
             "GPU": {
                 "exposed": ""
             },
