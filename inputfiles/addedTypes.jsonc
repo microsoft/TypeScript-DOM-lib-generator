@@ -594,8 +594,7 @@
                     ]
                 }
             },
-            "CSSStyleDeclaration": {
-                "name": "CSSStyleDeclaration",
+            "CSSStyleProperties": {
                 "properties": {
                     "property": {
                         "imageOrientation": {

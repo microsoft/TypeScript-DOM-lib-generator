@@ -14,7 +14,7 @@ export const forceKeepAlive: Record<string, string[]> = {
     "phone",
     "toJSON",
   ],
-  CSSStyleDeclaration: [
+  CSSStyleProperties: [
     // https://github.com/mdn/browser-compat-data/commit/ebabd27460a306d6de80107b7e3c62be99ecd13c#r135144607
     "webkitMaskComposite",
   ],

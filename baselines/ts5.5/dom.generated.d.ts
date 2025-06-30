@@ -3154,6 +3154,7 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
+    readonly duration: CSSNumberish | null;
 }
 
 declare var AnimationTimeline: {
@@ -4784,7 +4785,7 @@ interface CSSFontFaceRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSFontFaceRule: {
@@ -4952,7 +4953,7 @@ interface CSSKeyframeRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSKeyframeRule: {
@@ -5285,7 +5286,7 @@ interface CSSNestedDeclarations extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 declare var CSSNestedDeclarations: {
@@ -5394,6 +5395,39 @@ declare var CSSNumericValue: {
 };
 
 /**
+ * The **`CSSPageDescriptors`** interface represents a CSS declaration block for an @page at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors)
+ */
+interface CSSPageDescriptors extends CSSStyleDeclaration {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin) */
+    margin: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin-bottom) */
+    "margin-bottom": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin-left) */
+    "margin-left": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin-right) */
+    "margin-right": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin-top) */
+    "margin-top": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#marginbottom) */
+    marginBottom: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#marginleft) */
+    marginLeft: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#marginright) */
+    marginRight: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margintop) */
+    marginTop: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#size) */
+    size: string;
+}
+
+declare var CSSPageDescriptors: {
+    prototype: CSSPageDescriptors;
+    new(): CSSPageDescriptors;
+};
+
+/**
  * **`CSSPageRule`** represents a single CSS @page rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule)
@@ -5410,7 +5444,7 @@ interface CSSPageRule extends CSSGroupingRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSPageDescriptors;
 }
 
 declare var CSSPageRule: {
@@ -5435,6 +5469,184 @@ interface CSSPerspective extends CSSTransformComponent {
 declare var CSSPerspective: {
     prototype: CSSPerspective;
     new(length: CSSPerspectiveValue): CSSPerspective;
+};
+
+/**
+ * The **`CSSPositionTryDescriptors`** interface defines properties that represent the list of CSS descriptors that can be set in the body of a @position-try at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors)
+ */
+interface CSSPositionTryDescriptors extends CSSStyleDeclaration {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "align-self": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    alignSelf: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "block-size": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    blockSize: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    bottom: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    height: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inline-size": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    inlineSize: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    inset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inset-block": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inset-block-end": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inset-block-start": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inset-inline": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inset-inline-end": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "inset-inline-start": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    insetBlock: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    insetBlockEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    insetBlockStart: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    insetInline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    insetInlineEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    insetInlineStart: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "justify-self": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    justifySelf: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    left: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    margin: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-block": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-block-end": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-block-start": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-bottom": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-inline": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-inline-end": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-inline-start": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-left": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-right": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "margin-top": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginBlock: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginBlockEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginBlockStart: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginBottom: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginInline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginInlineEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginInlineStart: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginLeft: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginRight: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    marginTop: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "max-block-size": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "max-height": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "max-inline-size": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "max-width": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    maxBlockSize: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    maxHeight: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    maxInlineSize: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    maxWidth: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "min-block-size": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "min-height": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "min-inline-size": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "min-width": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    minBlockSize: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    minHeight: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    minInlineSize: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    minWidth: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "place-self": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    placeSelf: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "position-anchor": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    "position-area": string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    positionAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    positionArea: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    right: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    top: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
+    width: string;
+}
+
+declare var CSSPositionTryDescriptors: {
+    prototype: CSSPositionTryDescriptors;
+    new(): CSSPositionTryDescriptors;
+};
+
+/**
+ * The **`CSSPositionTryRule`** interface describes an object representing a @position-try at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryRule)
+ */
+interface CSSPositionTryRule extends CSSRule {
+    /**
+     * The **`name`** read-only property of the CSSPositionTryRule interface represents the name of the position try fallback option specified by the `@position-try` at-rule's dashed-ident.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryRule/name)
+     */
+    readonly name: string;
+    /**
+     * The **`style`** read-only property of the CSSPositionTryRule interface returns a CSSPositionTryDescriptors object representing the declarations set in the body of the `@position-try` at-rule.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryRule/style)
+     */
+    readonly style: CSSPositionTryDescriptors;
+}
+
+declare var CSSPositionTryRule: {
+    prototype: CSSPositionTryRule;
+    new(): CSSPositionTryRule;
 };
 
 /**
@@ -5738,6 +5950,63 @@ declare var CSSStartingStyleRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration)
  */
 interface CSSStyleDeclaration {
+    /**
+     * The **`cssText`** property of the CSSStyleDeclaration interface returns or sets the text of the element's **inline** style declaration only.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssText)
+     */
+    cssText: string;
+    /**
+     * The read-only property returns an integer that represents the number of style declarations in this CSS declaration block.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/length)
+     */
+    readonly length: number;
+    /**
+     * The **CSSStyleDeclaration.parentRule** read-only property returns a CSSRule that is the parent of this style block, e.g., a CSSStyleRule representing the style for a CSS selector.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/parentRule)
+     */
+    readonly parentRule: CSSRule | null;
+    /**
+     * The **CSSStyleDeclaration.getPropertyPriority()** method interface returns a string that provides all explicitly set priorities on the CSS property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyPriority)
+     */
+    getPropertyPriority(property: string): string;
+    /**
+     * The **CSSStyleDeclaration.getPropertyValue()** method interface returns a string containing the value of a specified CSS property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyValue)
+     */
+    getPropertyValue(property: string): string;
+    /**
+     * The `CSSStyleDeclaration.item()` method interface returns a CSS property name from a CSSStyleDeclaration by index.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/item)
+     */
+    item(index: number): string;
+    /**
+     * The **`CSSStyleDeclaration.removeProperty()`** method interface removes a property from a CSS style declaration object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/removeProperty)
+     */
+    removeProperty(property: string): string;
+    /**
+     * The **`CSSStyleDeclaration.setProperty()`** method interface sets a new value for a property on a CSS style declaration object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/setProperty)
+     */
+    setProperty(property: string, value: string | null, priority?: string): void;
+    [index: number]: string;
+}
+
+declare var CSSStyleDeclaration: {
+    prototype: CSSStyleDeclaration;
+    new(): CSSStyleDeclaration;
+};
+
+interface CSSStyleProperties extends CSSStyleDeclaration {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
     accentColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content) */
@@ -5750,6 +6019,9 @@ interface CSSStyleDeclaration {
     alignmentBaseline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/all) */
     all: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/anchor-name) */
+    anchorName: string;
+    anchorScope: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation) */
     animation: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-composition) */
@@ -5768,6 +6040,14 @@ interface CSSStyleDeclaration {
     animationName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-play-state) */
     animationPlayState: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range) */
+    animationRange: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range-end) */
+    animationRangeEnd: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range-start) */
+    animationRangeStart: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timeline) */
+    animationTimeline: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timing-function) */
     animationTimingFunction: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/appearance) */
@@ -6016,12 +6296,6 @@ interface CSSStyleDeclaration {
     counterSet: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat) */
     cssFloat: string;
-    /**
-     * The **`cssText`** property of the CSSStyleDeclaration interface returns or sets the text of the element's **inline** style declaration only.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssText)
-     */
-    cssText: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cx) */
@@ -6036,6 +6310,7 @@ interface CSSStyleDeclaration {
     display: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dominant-baseline) */
     dominantBaseline: string;
+    dynamicRangeLimit: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
     emptyCells: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill) */
@@ -6198,12 +6473,6 @@ interface CSSStyleDeclaration {
     justifySelf: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/left) */
     left: string;
-    /**
-     * The read-only property returns an integer that represents the number of style declarations in this CSS declaration block.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/length)
-     */
-    readonly length: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/letter-spacing) */
     letterSpacing: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/lighting-color) */
@@ -6394,12 +6663,6 @@ interface CSSStyleDeclaration {
     pageBreakInside: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/paint-order) */
     paintOrder: string;
-    /**
-     * The **CSSStyleDeclaration.parentRule** read-only property returns a CSSRule that is the parent of this style block, e.g., a CSSStyleRule representing the style for a CSS selector.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/parentRule)
-     */
-    readonly parentRule: CSSRule | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective) */
     perspective: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective-origin) */
@@ -6414,6 +6677,16 @@ interface CSSStyleDeclaration {
     pointerEvents: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position) */
     position: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-anchor) */
+    positionAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-area) */
+    positionArea: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try) */
+    positionTry: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try-fallbacks) */
+    positionTryFallbacks: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try-order) */
+    positionTryOrder: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/print-color-adjust) */
     printColorAdjust: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
@@ -6490,6 +6763,12 @@ interface CSSStyleDeclaration {
     scrollSnapStop: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-snap-type) */
     scrollSnapType: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline) */
+    scrollTimeline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline-axis) */
+    scrollTimelineAxis: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline-name) */
+    scrollTimelineName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-color) */
     scrollbarColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-gutter) */
@@ -6584,6 +6863,8 @@ interface CSSStyleDeclaration {
     textWrapMode: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap-style) */
     textWrapStyle: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/timeline-scope) */
+    timelineScope: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/top) */
     top: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/touch-action) */
@@ -6618,6 +6899,14 @@ interface CSSStyleDeclaration {
     vectorEffect: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
     verticalAlign: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline) */
+    viewTimeline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-axis) */
+    viewTimelineAxis: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-inset) */
+    viewTimelineInset: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-name) */
+    viewTimelineName: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-class) */
     viewTransitionClass: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
@@ -7054,42 +7343,11 @@ interface CSSStyleDeclaration {
     zIndex: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/zoom) */
     zoom: string;
-    /**
-     * The **CSSStyleDeclaration.getPropertyPriority()** method interface returns a string that provides all explicitly set priorities on the CSS property.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyPriority)
-     */
-    getPropertyPriority(property: string): string;
-    /**
-     * The **CSSStyleDeclaration.getPropertyValue()** method interface returns a string containing the value of a specified CSS property.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/getPropertyValue)
-     */
-    getPropertyValue(property: string): string;
-    /**
-     * The `CSSStyleDeclaration.item()` method interface returns a CSS property name from a CSSStyleDeclaration by index.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/item)
-     */
-    item(index: number): string;
-    /**
-     * The **`CSSStyleDeclaration.removeProperty()`** method interface removes a property from a CSS style declaration object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/removeProperty)
-     */
-    removeProperty(property: string): string;
-    /**
-     * The **`CSSStyleDeclaration.setProperty()`** method interface sets a new value for a property on a CSS style declaration object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/setProperty)
-     */
-    setProperty(property: string, value: string | null, priority?: string): void;
-    [index: number]: string;
 }
 
-declare var CSSStyleDeclaration: {
-    prototype: CSSStyleDeclaration;
-    new(): CSSStyleDeclaration;
+declare var CSSStyleProperties: {
+    prototype: CSSStyleProperties;
+    new(): CSSStyleProperties;
 };
 
 /**
@@ -7109,7 +7367,7 @@ interface CSSStyleRule extends CSSGroupingRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style)
      */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
     /**
      * The **`styleMap`** read-only property of the which provides access to the rule's property-value pairs.
      *
@@ -10360,6 +10618,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     write(...text: string[]): void;
     /**
      * The **`writeln()`** method of the Document interface writes text in one or more TrustedHTML or string parameters to a document stream opened by document.open(), followed by a newline character.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/writeln)
      */
@@ -18656,6 +18915,12 @@ interface ImageCapture {
      */
     getPhotoSettings(): Promise<PhotoSettings>;
     /**
+     * The **`grabFrame()`** method of the a ImageBitmap containing the snapshot.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/grabFrame)
+     */
+    grabFrame(): Promise<ImageBitmap>;
+    /**
      * The **`takePhoto()`** method of the device sourcing a MediaStreamTrack and returns a Promise that resolves with a Blob containing the data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/takePhoto)
@@ -18929,6 +19194,7 @@ interface IntersectionObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/rootMargin)
      */
     readonly rootMargin: string;
+    readonly scrollMargin: string;
     /**
      * The IntersectionObserver interface's read-only **`thresholds`** property returns the list of intersection thresholds that was specified when the observer was instantiated with only one threshold ratio was provided when instantiating the object, this will be an array containing that single value.
      *
@@ -21993,12 +22259,6 @@ interface NotificationEventMap {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification)
  */
 interface Notification extends EventTarget {
-    /**
-     * The **`badge`** read-only property of the Notification interface returns a string containing the URL of an image to represent the notification when there is not enough space to display the notification itself such as for example, the Android Notification Bar.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/badge)
-     */
-    readonly badge: string;
     /**
      * The **`body`** read-only property of the specified in the `body` option of the A string.
      *

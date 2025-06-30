@@ -6,7 +6,7 @@ function hyphenToCamelCase(name: string) {
 }
 
 export function generateWebIdlFromCssProperties(properties: string[]): string {
-  return `partial interface CSSStyleDeclaration {${properties
+  return `partial interface CSSStyleProperties {${properties
     .map(
       (property) =>
         `\n  [CEReactions] attribute [LegacyNullToEmptyString] CSSOMString ${hyphenToCamelCase(
