@@ -486,7 +486,7 @@ enums
         webauthn
 interfaces
   interface
-    // ImportMeta is not a "true" DOM interface, but we are forced to declare it as one in order to emit method definitions.
+    // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
     // We cannot define methods as dictionary properties with function types,
     // as this would cause conflicts with ImportMeta method overrides in places like @types/node.
     ImportMeta

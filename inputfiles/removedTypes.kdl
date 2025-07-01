@@ -1,9 +1,9 @@
 callbackFunctions
   callbackFunction
-    Function null
+    Function "null"
     PerformanceObserverCallback
       signature
-        0
+        "0"
           param
             options
 enums
@@ -52,7 +52,7 @@ enums
     RequestDestination
       value
         json
-    ValueType null
+    ValueType "null"
     VideoColorPrimaries
       value
         bt2020
@@ -88,30 +88,30 @@ interfaces
         method
           read
             signature
-              0
+              "0"
                 param
                   formats
     CSSRule
       constants
         constant
-          MARGIN_RULE null
+          MARGIN_RULE "null"
     Document
       methods
         method
           // Manually moved to DocumentOrShadowRoot
           // See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
-          elementFromPoint null
-          elementsFromPoint null
+          elementFromPoint "null"
+          elementsFromPoint "null"
     HTMLElement
       methods
         method
           showPopover
             signature
-              0
+              "0"
                 param
                   options
     IntersectionObserverEntry
-      constructor null
+      constructor "null"
     OffscreenCanvasRenderingContext2D
       implements
         CanvasSettings
@@ -120,7 +120,7 @@ interfaces
         method
           complete
             signature
-              0
+              "0"
                 param
                   details
     ReadableStreamBYOBReader
@@ -128,112 +128,112 @@ interfaces
         method
           read
             signature
-              0
+              "0"
                 param
                   options
     RTCEncodedAudioFrame
-      constructor null
+      constructor "null"
     RTCEncodedVideoFrame
-      constructor null
+      constructor "null"
     SVGFEGaussianBlurElement
       constants
         constant
-          SVG_EDGEMODE_DUPLICATE null
-          SVG_EDGEMODE_NONE null
-          SVG_EDGEMODE_UNKNOWN null
-          SVG_EDGEMODE_WRAP null
+          SVG_EDGEMODE_DUPLICATE "null"
+          SVG_EDGEMODE_NONE "null"
+          SVG_EDGEMODE_UNKNOWN "null"
+          SVG_EDGEMODE_WRAP "null"
     WebGLBuffer
-      extends null
+      extends "null"
     WebGLFramebuffer
-      extends null
+      extends "null"
     WebGLProgram
-      extends null
+      extends "null"
     WebGLQuery
-      extends null
+      extends "null"
     WebGLRenderbuffer
-      extends null
+      extends "null"
     WebGLSampler
-      extends null
+      extends "null"
     WebGLShader
-      extends null
+      extends "null"
     WebGLSync
-      extends null
+      extends "null"
     WebGLTexture
-      extends null
+      extends "null"
     WebGLTransformFeedback
-      extends null
+      extends "null"
     WebGLVertexArrayObject
-      extends null
+      extends "null"
     WebGLVertexArrayObjectOES
-      extends null
+      extends "null"
 dictionaries
   dictionary
     AudioContextOptions
       members
         member
-          renderSizeHint null
-          sinkId null
+          renderSizeHint "null"
+          sinkId "null"
     AudioEncoderConfig
       members
         member
-          aac null
-          flac null
+          aac "null"
+          flac "null"
     AuthenticationExtensionsClientInputs
       members
         member
-          appidExclude null
-          credBlob null
-          getCredBlob null
-          hmacGetSecret null
-          payment null
+          appidExclude "null"
+          credBlob "null"
+          getCredBlob "null"
+          hmacGetSecret "null"
+          payment "null"
     AuthenticationExtensionsClientInputsJSON
       members
         member
-          appidExclude null
+          appidExclude "null"
     AuthenticationExtensionsClientOutputs
       members
         member
-          appidExclude null
-          hmacGetSecret null
-          payment null
+          appidExclude "null"
+          hmacGetSecret "null"
+          payment "null"
     CanvasRenderingContext2DSettings
       members
         member
-          colorType null
+          colorType "null"
     CredentialCreationOptions
       members
         member
-          digital null
+          digital "null"
           // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
           // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
           // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
           // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
-          // Behind a flag in WebKit and Blink as of 2024-03
-          federated null
-          password null
-          mediation null
+          // Behind a flag in WebKit and Blink as of 2024-"0"3
+          federated "null"
+          password "null"
+          mediation "null"
     CookieListItem
       members
         member
-          domain null
-          path null
-          expires null
-          secure null
-          sameSite null
-          partitioned null
+          domain "null"
+          path "null"
+          expires "null"
+          secure "null"
+          sameSite "null"
+          partitioned "null"
     CredentialRequestOptions
       members
         member
-          digital null
+          digital "null"
           // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
           // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
           // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
           // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
           // Behind a flag in WebKit and Blink as of 2024-03
-          federated null
-          identity null
-          otp null
-          password null
+          federated "null"
+          identity "null"
+          otp "null"
+          password "null"
     DisplayMediaStreamOptions
       members
         member
@@ -241,401 +241,401 @@ dictionaries
           // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
           // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
           // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
-          monitorTypeSurfaces null
-          selfBrowserSurface null
-          surfaceSwitching null
-          systemAudio null
-          windowAudio null
+          monitorTypeSurfaces "null"
+          selfBrowserSurface "null"
+          surfaceSwitching "null"
+          systemAudio "null"
+          windowAudio "null"
     EncodedVideoChunkInit
       members
         member
-          transfer null
+          transfer "null"
     EncodedVideoChunkMetadata
       members
         member
-          alphaSideData null
-          svc null
+          alphaSideData "null"
+          svc "null"
     FetchEventInit
       members
         member
-          replacesClientId null
+          replacesClientId "null"
     FocusOptions
       members
         member
-          focusVisible null
+          focusVisible "null"
     FontFaceDescriptors
       members
         member
-          variationSettings null
+          variationSettings "null"
     GetAnimationsOptions
       members
         member
-          pseudoElement null
+          pseudoElement "null"
     GPURequestAdapterOptions
       members
         member
-          featureLevel null
+          featureLevel "null"
     GPUShaderModuleDescriptor
       members
         member
-          compilationHints null
+          compilationHints "null"
     GPUTextureViewDescriptor
       members
         member
-          usage null
+          usage "null"
     ImageDataSettings
       members
         member
-          pixelFormat null
+          pixelFormat "null"
     IntersectionObserverInit
       members
         member
-          delay null
-          scrollMargin null
-          trackVisibility null
+          delay "null"
+          scrollMargin "null"
+          trackVisibility "null"
     KeyframeAnimationOptions
       members
         member
-          rangeEnd null
-          rangeStart null
+          rangeEnd "null"
+          rangeStart "null"
     KeySystemTrackConfiguration
       members
         member
-          encryptionScheme null
+          encryptionScheme "null"
     MediaCapabilitiesDecodingInfo
       members
         member
-          configuration null
+          configuration "null"
     MediaCapabilitiesEncodingInfo
       members
         member
-          configuration null
+          configuration "null"
     MediaMetadataInit
       members
         member
-          chapterInfo null
+          chapterInfo "null"
     MediaRecorderOptions
       members
         member
-          audioBitrateMode null
-          videoKeyFrameIntervalCount null
-          videoKeyFrameIntervalDuration null
+          audioBitrateMode "null"
+          videoKeyFrameIntervalCount "null"
+          videoKeyFrameIntervalDuration "null"
     MediaSessionActionDetails
       members
         member
-          isActivating null
+          isActivating "null"
     MediaTrackCapabilities
       members
         member
           // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSupportedConstraints.webidl
           // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackSupportedConstraints.idl
           // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_supported_constraints.idl
-          latency null
-          resizeMode null
+          latency "null"
+          resizeMode "null"
           // Screen Share extensions
           // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
-          cursor null
-          logicalSurface null
+          cursor "null"
+          logicalSurface "null"
           // Blink only as of 2022-11
           // Image Capture extensions which are Blink only as of 2022-11
           // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
-          whiteBalanceMode null
-          exposureMode null
-          focusMode null
-          exposureCompensation null
-          exposureTime null
-          colorTemperature null
-          iso null
-          brightness null
-          contrast null
-          saturation null
-          sharpness null
-          focusDistance null
-          pan null
-          tilt null
-          zoom null
-          torch null
+          whiteBalanceMode "null"
+          exposureMode "null"
+          focusMode "null"
+          exposureCompensation "null"
+          exposureTime "null"
+          colorTemperature "null"
+          iso "null"
+          brightness "null"
+          contrast "null"
+          saturation "null"
+          sharpness "null"
+          focusDistance "null"
+          pan "null"
+          tilt "null"
+          zoom "null"
+          torch "null"
     MediaTrackConstraintSet
       members
         member
           // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSupportedConstraints.webidl
           // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackSupportedConstraints.idl
           // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_supported_constraints.idl
-          latency null
-          resizeMode null
+          latency "null"
+          resizeMode "null"
           // Screen Share extensions
           // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
-          cursor null
-          logicalSurface null
-          restrictOwnAudio null
-          suppressLocalAudioPlayback null
+          cursor "null"
+          logicalSurface "null"
+          restrictOwnAudio "null"
+          suppressLocalAudioPlayback "null"
           // Blink only as of 2022-11
           // Image Capture extensions which are Blink only as of 2022-11
           // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
-          whiteBalanceMode null
-          exposureMode null
-          focusMode null
-          pointsOfInterest null
-          exposureCompensation null
-          exposureTime null
-          colorTemperature null
-          iso null
-          brightness null
-          contrast null
-          saturation null
-          sharpness null
-          focusDistance null
-          pan null
-          tilt null
-          zoom null
-          torch null
+          whiteBalanceMode "null"
+          exposureMode "null"
+          focusMode "null"
+          pointsOfInterest "null"
+          exposureCompensation "null"
+          exposureTime "null"
+          colorTemperature "null"
+          iso "null"
+          brightness "null"
+          contrast "null"
+          saturation "null"
+          sharpness "null"
+          focusDistance "null"
+          pan "null"
+          tilt "null"
+          zoom "null"
+          torch "null"
     MediaTrackSettings
       members
         member
           // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSupportedConstraints.webidl
           // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackSupportedConstraints.idl
           // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_supported_constraints.idl
-          latency null
-          resizeMode null
+          latency "null"
+          resizeMode "null"
           // Screen Share extensions
           // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
-          cursor null
-          logicalSurface null
-          restrictOwnAudio null
-          suppressLocalAudioPlayback null
-          screenPixelRatio null
-          exposureMode null
-          focusMode null
-          pointsOfInterest null
-          exposureCompensation null
-          exposureTime null
-          colorTemperature null
-          iso null
-          brightness null
-          contrast null
-          saturation null
-          sharpness null
-          focusDistance null
-          pan null
-          tilt null
+          cursor "null"
+          logicalSurface "null"
+          restrictOwnAudio "null"
+          suppressLocalAudioPlayback "null"
+          screenPixelRatio "null"
+          exposureMode "null"
+          focusMode "null"
+          pointsOfInterest "null"
+          exposureCompensation "null"
+          exposureTime "null"
+          colorTemperature "null"
+          iso "null"
+          brightness "null"
+          contrast "null"
+          saturation "null"
+          sharpness "null"
+          focusDistance "null"
+          pan "null"
+          tilt "null"
     MediaTrackSupportedConstraints
       members
         member
           // Gecko: https://searchfox.org/mozilla-central/source/dom/webidl/MediaTrackSupportedConstraints.webidl
           // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaTrackSupportedConstraints.idl
           // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_supported_constraints.idl
-          latency null
-          resizeMode null
+          latency "null"
+          resizeMode "null"
           // Screen Share extensions
           // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
-          cursor null
-          logicalSurface null
-          restrictOwnAudio null
-          suppressLocalAudioPlayback null
+          cursor "null"
+          logicalSurface "null"
+          restrictOwnAudio "null"
+          suppressLocalAudioPlayback "null"
           // Blink only as of 2022-11
           // Image Capture extensions which are Blink only as of 2022-11
           // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
-          whiteBalanceMode null
-          exposureMode null
-          focusMode null
-          pointsOfInterest null
-          exposureCompensation null
-          exposureTime null
-          colorTemperature null
-          iso null
-          brightness null
-          contrast null
-          saturation null
-          sharpness null
-          focusDistance null
-          pan null
-          tilt null
-          zoom null
-          torch null
+          whiteBalanceMode "null"
+          exposureMode "null"
+          focusMode "null"
+          pointsOfInterest "null"
+          exposureCompensation "null"
+          exposureTime "null"
+          colorTemperature "null"
+          iso "null"
+          brightness "null"
+          contrast "null"
+          saturation "null"
+          sharpness "null"
+          focusDistance "null"
+          pan "null"
+          tilt "null"
+          zoom "null"
+          torch "null"
     NotificationOptions
       members
         member
           // All Blink only as of 2023-10
-          actions null
-          image null
-          renotify null
-          timestamp null
-          vibrate null
+          actions "null"
+          image "null"
+          renotify "null"
+          timestamp "null"
+          vibrate "null"
     OfflineAudioContextOptions
       members
         member
-          renderSizeHint null
+          renderSizeHint "null"
     OpusEncoderConfig
       members
         member
-          application null
-          signal null
+          application "null"
+          signal "null"
     PaymentDetailsUpdate
       members
         member
-          payerErrors null
+          payerErrors "null"
     PaymentOptions
       members
         member
-          requestBillingAddress null
+          requestBillingAddress "null"
     PaymentValidationErrors
       members
         member
-          paymentMethod null
+          paymentMethod "null"
     PerformanceObserverInit
       members
         member
-          durationThreshold null
+          durationThreshold "null"
     PointerEventInit
       members
         member
-          persistentDeviceId null
+          persistentDeviceId "null"
     PopStateEventInit
       members
         member
-          hasUAVisualTransition null
+          hasUAVisualTransition "null"
     PublicKeyCredentialCreationOptions
       members
         member
-          attestationFormats null
-          hints null
+          attestationFormats "null"
+          hints "null"
     PublicKeyCredentialCreationOptionsJSON
       members
         member
-          attestationFormats null
+          attestationFormats "null"
     PublicKeyCredentialRequestOptions
       members
         member
-          hints null
-    ReadableStreamReadResult null
+          hints "null"
+    ReadableStreamReadResult "null"
     RequestInit
       members
         member
-          adAuctionHeaders null
-          attributionReporting null
-          duplex null
-          privateToken null
-          sharedStorageWritable null
-          targetAddressSpace null
+          adAuctionHeaders "null"
+          attributionReporting "null"
+          duplex "null"
+          privateToken "null"
+          sharedStorageWritable "null"
+          targetAddressSpace "null"
     RTCEncodedAudioFrameMetadata
       members
         member
-          audioLevel null
+          audioLevel "null"
     RTCEncodedFrameMetadata
       members
         member
-          captureTime null
-          receiveTime null
-          senderCaptureTimeOffset null
+          captureTime "null"
+          receiveTime "null"
+          senderCaptureTimeOffset "null"
     RTCConfiguration
       members
         member
-          peerIdentity null
+          peerIdentity "null"
     RTCDataChannelInit
       members
         member
-          priority null
+          priority "null"
     RTCInboundRtpStreamStats
       members
         member
-          corruptionMeasurements null
-          powerEfficientDecoder null
-          totalCorruptionProbability null
-          totalSquaredCorruptionProbability null
+          corruptionMeasurements "null"
+          powerEfficientDecoder "null"
+          totalCorruptionProbability "null"
+          totalSquaredCorruptionProbability "null"
     RTCLocalIceCandidateInit
       members
         member
-          relayProtocol null
-          url null
+          relayProtocol "null"
+          url "null"
     RTCOutboundRtpStreamStats
       members
         member
-          powerEfficientEncoder null
-          encoderImplementation null
-          encodingIndex null
+          powerEfficientEncoder "null"
+          encoderImplementation "null"
+          encodingIndex "null"
     RTCReceivedRtpStreamStats
       members
         member
-          packetsReceivedWithCe null
-          packetsReceivedWithEct1 null
-          packetsReportedAsLost null
-          packetsReportedAsLostButRecovered null
+          packetsReceivedWithCe "null"
+          packetsReceivedWithEct1 "null"
+          packetsReportedAsLost "null"
+          packetsReportedAsLostButRecovered "null"
     RTCPeerConnectionIceEventInit
       members
         member
-          url null
+          url "null"
     RTCRtpEncodingParameters
       members
         member
-          codec null
-          scalabilityMode null
+          codec "null"
+          scalabilityMode "null"
     RTCSentRtpStreamStats
       members
         member
-          packetsSentWithEct1 null
+          packetsSentWithEct1 "null"
     RTCTransportStats
       members
         member
-          ccfbMessagesReceived null
-          ccfbMessagesSent null
+          ccfbMessagesReceived "null"
+          ccfbMessagesSent "null"
     ScrollIntoViewOptions
       members
         member
-          container null
+          container "null"
     Transformer
       members
         member
-          cancel null
+          cancel "null"
     UIEventInit
       members
         member
-          sourceCapabilities null
+          sourceCapabilities "null"
     VideoConfiguration
       members
         member
-          spatialScalability null
+          spatialScalability "null"
     VideoDecoderConfig
       members
         member
-          flip null
-          rotation null
+          flip "null"
+          rotation "null"
     VideoEncoderConfig
       members
         member
-          hevc null
+          hevc "null"
     VideoEncoderEncodeOptions
       members
         member
-          av1 null
-          hevc null
-          vp9 null
+          av1 "null"
+          hevc "null"
+          vp9 "null"
     VideoFrameInit
       members
         member
-          flip null
-          metadata null
-          rotation null
+          flip "null"
+          metadata "null"
+          rotation "null"
     VideoFrameBufferInit
       members
         member
-          flip null
-          metadata null
-          rotation null
-          transfer null
+          flip "null"
+          metadata "null"
+          rotation "null"
+          transfer "null"
     WebGLContextAttributes
       members
         member
-          xrCompatible null
+          xrCompatible "null"
     WebTransportOptions
       members
         member
-          anticipatedConcurrentIncomingBidirectionalStreams null
-          anticipatedConcurrentIncomingUnidirectionalStreams null
-          protocols null
+          anticipatedConcurrentIncomingBidirectionalStreams "null"
+          anticipatedConcurrentIncomingUnidirectionalStreams "null"
+          protocols "null"
     WebTransportSendStreamOptions
       members
         member
-          waitUntilAvailable null
+          waitUntilAvailable "null"
 typedefs
   typedef
     ArrayBufferView
