@@ -35,14 +35,14 @@ mixins
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "elementFromPoint"
             overrideSignatures
-              elementFromPoint(x: number, y: number): Element | null
+              "elementFromPoint(x: number, y: number): Element | null"
           elementsFromPoint
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "elementsFromPoint"
             overrideSignatures
-              elementsFromPoint(x: number, y: number): Element[]
+              "elementsFromPoint(x: number, y: number): Element[]"
     GlobalEventHandlers
       events
         event
@@ -338,12 +338,7 @@ enums
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "FontDisplay"
-      value
-        auto
-        block
-        swap
-        fallback
-        optional
+      value "auto" "block" "swap" "fallback" "optional"
     ClientType
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -491,7 +486,7 @@ enums
         webauthn
 interfaces
   interface
-    // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
+    // ImportMeta is not a "true" DOM interface, but we are forced to declare it as one in order to emit method definitions.
     // We cannot define methods as dictionary properties with function types,
     // as this would cause conflicts with ImportMeta method overrides in places like @types/node.
     ImportMeta
@@ -500,7 +495,7 @@ interfaces
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ImportMeta"
       exposed "Window Worker"
-      noInterfaceObject true
+      noInterfaceObject "true"
       properties
         property
           url
@@ -538,9 +533,9 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "process"
             overrideSignatures
-              process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean
+              "process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean"
       exposed "AudioWorklet"
-      noInterfaceObject true
+      noInterfaceObject "true"
     BroadcastChannel
       events
         event
@@ -563,12 +558,12 @@ interfaces
       legacyNamespace "WebAssembly"
       constructor
         overrideSignatures
-          new(message?: string): CompileError
-          (message?: string): CompileError
+          "new(message?: string): CompileError"
+          "(message?: string): CompileError"
     DeviceMotionEventAcceleration
-      noInterfaceObject true
+      noInterfaceObject "true"
     DeviceMotionEventRotationRate
-      noInterfaceObject true
+      noInterfaceObject "true"
     HTMLImageElement
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -590,7 +585,7 @@ interfaces
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "HTMLTableDataCellElement"
       extends "HTMLTableCellElement"
-      noInterfaceObject true
+      noInterfaceObject "true"
       deprecated "prefer HTMLTableCellElement"
       exposed "Window"
     HTMLTableHeaderCellElement
@@ -599,7 +594,7 @@ interfaces
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "HTMLTableHeaderCellElement"
       extends "HTMLTableCellElement"
-      noInterfaceObject true
+      noInterfaceObject "true"
       deprecated "prefer HTMLTableCellElement"
       exposed "Window"
     HTMLDocument
@@ -621,9 +616,9 @@ interfaces
       properties
         property
           imageOrientation
-            deprecated true
+            deprecated "true"
           wordWrap
-            deprecated true
+            deprecated "true"
     Window
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -632,9 +627,9 @@ interfaces
       methods
         method
           captureEvents
-            deprecated true
+            deprecated "true"
       overrideIndexSignatures
-        [index: number]: Window
+        "[index: number]: Window"
       events
         event
           // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -674,7 +669,7 @@ interfaces
       name "URLSearchParams"
       constructor
         signature
-          0
+          "0"
             param
               // See the full list of possible autofill values for the `autocomplete` attribute:
               // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -703,10 +698,10 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "item"
             overrideSignatures
-              item(index: number): TNode
-      noInterfaceObject true
+              "item(index: number): TNode"
+      noInterfaceObject "true"
       overrideIndexSignatures
-        [index: number]: TNode
+        "[index: number]: TNode"
       iterator
         kind "iterable"
         type
@@ -727,9 +722,9 @@ interfaces
       methods
         method
           item
-            getter true
+            getter "true"
             signature
-              nullable true
+              nullable "true"
               overrideType "T"
               param
                 // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -748,8 +743,8 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "namedItem"
             overrideSignatures
-              namedItem(name: string): T | null
-      noInterfaceObject true
+              "namedItem(name: string): T | null"
+      noInterfaceObject "true"
     Element
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -763,15 +758,15 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "getElementsByClassName"
             signature
-              0
+              "0"
                 overrideType "HTMLCollectionOf<Element>"
           closest
             additionalSignatures
-              closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null
-              closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null
-              closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null
+              "closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null"
+              "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null"
+              "closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null"
             signature
-              0
+              "0"
                 typeParameters
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -782,7 +777,7 @@ interfaces
                 overrideType "E"
           insertAdjacentElement
             signature
-              0
+              "0"
                 param
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -791,7 +786,7 @@ interfaces
                   type "InsertPosition"
           insertAdjacentHTML
             signature
-              0
+              "0"
                 param
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -800,7 +795,7 @@ interfaces
                   type "InsertPosition"
           insertAdjacentText
             signature
-              0
+              "0"
                 param
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -810,8 +805,8 @@ interfaces
           textContent
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
             overrideSignatures
-              get textContent(): string
-              set textContent(value: string | null)
+              "get textContent(): string"
+              "set textContent(value: string | null)"
       properties
         property
           ownerDocument
@@ -819,7 +814,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
-            readonly true
+            readonly "true"
             type "Document"
     // This is used in many DT libraries, via ckeditor
     ClientRect
@@ -828,15 +823,15 @@ interfaces
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ClientRect"
       exposed "Window"
-      deprecated true
+      deprecated "true"
       extends "DOMRect"
-      noInterfaceObject true
+      noInterfaceObject "true"
     EventListener
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "EventListener"
-      noInterfaceObject true
+      noInterfaceObject "true"
       methods
         method
           // This is a hack to add a call signature, but I think it's reasonable
@@ -844,18 +839,18 @@ interfaces
           // emitter for this one case.
           callable
             overrideSignatures
-              (evt: Event): void
+              "(evt: Event): void"
     EventListenerObject
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "EventListenerObject"
-      noInterfaceObject true
+      noInterfaceObject "true"
       methods
         method
           handleEvent
             overrideSignatures
-              handleEvent(object: Event): void
+              "handleEvent(object: Event): void"
     Document
       methods
         method
@@ -865,20 +860,20 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "createElementNS"
             additionalSignatures
-              createElementNS(namespaceURI: "http://www.w3.org/1999/xhtml", qualifiedName: string): HTMLElement
-              createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: K): SVGElementTagNameMap[K]
-              createElementNS(namespaceURI: "http://www.w3.org/2000/svg", qualifiedName: string): SVGElement
-              createElementNS<K extends keyof MathMLElementTagNameMap>(namespaceURI: "http://www.w3.org/1998/Math/MathML", qualifiedName: K): MathMLElementTagNameMap[K]
-              createElementNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", qualifiedName: string): MathMLElement
-              createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element
+              "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement"
+              "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]"
+              "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement"
+              "createElementNS<K extends keyof MathMLElementTagNameMap>(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: K): MathMLElementTagNameMap[K]"
+              "createElementNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: string): MathMLElement"
+              "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
           caretRangeFromPoint
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "caretRangeFromPoint"
-            deprecated true
+            deprecated "true"
             overrideSignatures
-              caretRangeFromPoint(x: number, y: number): Range | null
+              "caretRangeFromPoint(x: number, y: number): Range | null"
       properties
         property
           ownerDocument
@@ -886,7 +881,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
-            readonly true
+            readonly "true"
             overrideType "null"
       events
         event
@@ -903,8 +898,8 @@ interfaces
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "StyleMedia"
       exposed "Window"
-      noInterfaceObject true
-      deprecated true
+      noInterfaceObject "true"
+      deprecated "true"
       properties
         property
           type
@@ -921,7 +916,7 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "matchMedium"
             overrideSignatures
-              matchMedium(mediaquery: string): boolean
+              "matchMedium(mediaquery: string): boolean"
     Navigator
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -934,8 +929,8 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "doNotTrack"
-            readonly true
-            nullable true
+            readonly "true"
+            nullable "true"
             type "DOMString"
     HTMLIFrameElement
       // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -986,7 +981,7 @@ interfaces
       properties
         property
           which
-            deprecated true
+            deprecated "true"
     SpeechSynthesisUtterance
       events
         event
@@ -1042,7 +1037,7 @@ interfaces
       methods
         method
           scaleNonUniform
-            deprecated true
+            deprecated "true"
     EventSource
       events
         event
@@ -1055,7 +1050,7 @@ interfaces
       properties
         property
           onorientationchange
-            deprecated true
+            deprecated "true"
     HTMLInputElement
       properties
         property
@@ -1065,11 +1060,11 @@ interfaces
       properties
         property
           charset
-            deprecated true
+            deprecated "true"
           rev
-            deprecated true
+            deprecated "true"
           target
-            deprecated true
+            deprecated "true"
     KHR_parallel_shader_compile
       overrideExposed "Window Worker"
     OVR_multiview2
@@ -1086,7 +1081,7 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "timestamp"
             type "long long"
-            readonly true
+            readonly "true"
     RTCEncodedVideoFrame
       properties
         property
@@ -1097,7 +1092,7 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "timestamp"
             type "long long"
-            readonly true
+            readonly "true"
     RTCDTMFSender
       events
         event
@@ -1115,8 +1110,8 @@ interfaces
       legacyNamespace "WebAssembly"
       constructor
         overrideSignatures
-          new(message?: string): RuntimeError
-          (message?: string): RuntimeError
+          "new(message?: string): RuntimeError"
+          "(message?: string): RuntimeError"
     SVGStyleElement
       properties
         property
@@ -1136,7 +1131,7 @@ interfaces
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "renderTime"
             type "DOMHighResTimeStamp"
-            readonly true
+            readonly "true"
             mdnUrl "https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/renderTime"
     LinkError
       // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -1147,8 +1142,8 @@ interfaces
       legacyNamespace "WebAssembly"
       constructor
         overrideSignatures
-          new(message?: string): LinkError
-          (message?: string): LinkError
+          "new(message?: string): LinkError"
+          "(message?: string): LinkError"
     MediaRecorder
       events
         event
@@ -1185,8 +1180,8 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "target"
-            readonly true
-            nullable true
+            readonly "true"
+            nullable "true"
             overrideType "T"
     SharedWorkerGlobalScope
       events
@@ -1206,8 +1201,8 @@ interfaces
           textContent
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
             overrideSignatures
-              get textContent(): string
-              set textContent(value: string | null)
+              "get textContent(): string"
+              "set textContent(value: string | null)"
       properties
         property
           ownerDocument
@@ -1215,7 +1210,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
-            readonly true
+            readonly "true"
             type "Document"
     CharacterData
       // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -1227,8 +1222,8 @@ interfaces
           textContent
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
             overrideSignatures
-              get textContent(): string
-              set textContent(value: string | null)
+              "get textContent(): string"
+              "set textContent(value: string | null)"
       properties
         property
           ownerDocument
@@ -1236,7 +1231,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
-            readonly true
+            readonly "true"
             type "Document"
     DocumentType
       // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -1250,14 +1245,14 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
-            readonly true
+            readonly "true"
             type "Document"
       methods
         method
           textContent
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
             overrideSignatures
-              get textContent(): null
+              "get textContent(): null"
     ProcessingInstruction
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -1270,7 +1265,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
-            readonly true
+            readonly "true"
             type "Document"
     WebSocket
       events
@@ -1301,7 +1296,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "kind"
-            readonly true
+            readonly "true"
             overrideType "\"file\""
     FileSystemDirectoryHandle
       properties
@@ -1311,7 +1306,7 @@ interfaces
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "kind"
-            readonly true
+            readonly "true"
             overrideType "\"directory\""
 dictionaries
   dictionary
@@ -1319,9 +1314,9 @@ dictionaries
       members
         member
           charCode
-            deprecated true
+            deprecated "true"
           keyCode
-            deprecated true
+            deprecated "true"
     MemoryDescriptor
       members
         member
@@ -1349,14 +1344,14 @@ dictionaries
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "done"
             overrideType "true"
-            required true
+            required "true"
           value
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "value"
             overrideType "T | undefined"
-            required true
+            required "true"
     ReadableStreamReadValueResult
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -1375,14 +1370,14 @@ dictionaries
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "done"
             overrideType "false"
-            required true
+            required "true"
           value
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "value"
             overrideType "T"
-            required true
+            required "true"
     UnderlyingByteSource
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -1395,7 +1390,7 @@ dictionaries
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "type"
-            required true
+            required "true"
             overrideType "\"bytes\""
           autoAllocateChunkSize
             // See the full list of possible autofill values for the `autocomplete` attribute:
@@ -1519,7 +1514,7 @@ dictionaries
 typedefs
   typedef
     type
-      0
+      "0"
         subtype
           overrideType "[string, string]"
     additionalTypes
@@ -1534,7 +1529,7 @@ typedefs
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "IDBValidKey"
     type
-      0
+      "0"
         type "Algorithm"
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
