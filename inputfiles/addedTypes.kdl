@@ -1,585 +1,777 @@
-mixins
-  mixin
-    AbstractWorker
-      events
-        event
+mixins {
+  mixin {
+    AbstractWorker {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "error"
           type "ErrorEvent"
-    DocumentAndElementEventHandlers
-      events
-        event
+        }
+      }
+    }
+    DocumentAndElementEventHandlers {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "copy"
           type "ClipboardEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "cut"
           type "ClipboardEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "paste"
           type "ClipboardEvent"
-    DocumentOrShadowRoot
-      methods
-        method
-          elementFromPoint
+        }
+      }
+    }
+    DocumentOrShadowRoot {
+      methods {
+        method {
+          elementFromPoint {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "elementFromPoint"
-            overrideSignatures
-              "elementFromPoint(x: number, y: number): Element | null"
-          elementsFromPoint
+            overrideSignatures {
+              overrideSignature "elementFromPoint(x: number, y: number): Element | null"
+            }
+          }
+          elementsFromPoint {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "elementsFromPoint"
-            overrideSignatures
-              "elementsFromPoint(x: number, y: number): Element[]"
-    GlobalEventHandlers
-      events
-        event
+            overrideSignatures {
+              overrideSignature "elementsFromPoint(x: number, y: number): Element[]"
+            }
+          }
+        }
+      }
+    }
+    GlobalEventHandlers {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "abort"
           type "UIEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "auxclick"
           type "PointerEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "beforeinput"
           type "InputEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "blur"
           type "FocusEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "click"
           type "PointerEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "compositionstart"
           type "CompositionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "compositionupdate"
           type "CompositionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "compositionend"
           type "CompositionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "drag"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dragend"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dragenter"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dragleave"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dragover"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dragstart"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "drop"
           type "DragEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "error"
           type "ErrorEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "focus"
           type "FocusEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "focusin"
           type "FocusEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "focusout"
           type "FocusEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "formdata"
           type "FormDataEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "keydown"
           type "KeyboardEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "keypress"
           type "KeyboardEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "keyup"
           type "KeyboardEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mousedown"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mouseenter"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mouseleave"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mousemove"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mouseout"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mouseover"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mouseup"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "progress"
           type "ProgressEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "resize"
           type "UIEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "wheel"
           type "WheelEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "securitypolicyviolation"
           type "SecurityPolicyViolationEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "submit"
           type "SubmitEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dblclick"
           type "MouseEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "contextmenu"
           type "PointerEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "toggle"
           type "ToggleEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "beforetoggle"
           type "ToggleEvent"
-    WebGLRenderingContextBase
-      properties
-        property
-          canvas
+        }
+      }
+    }
+    WebGLRenderingContextBase {
+      properties {
+        property {
+          canvas {
             exposed "Window"
-    WindowEventHandlers
-      events
-        event
+          }
+        }
+      }
+    }
+    WindowEventHandlers {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "beforeunload"
           type "BeforeUnloadEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "gamepadconnected"
           type "GamepadEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "gamepaddisconnected"
           type "GamepadEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "hashchange"
           type "HashChangeEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "message"
           type "MessageEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "messageerror"
           type "MessageEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "pagehide"
           type "PageTransitionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "pageshow"
           type "PageTransitionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "pageswap"
           type "PageSwapEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "pagereveal"
           type "PageRevealEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "popstate"
           type "PopStateEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "storage"
           type "StorageEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "unhandledrejection"
           type "PromiseRejectionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "rejectionhandled"
           type "PromiseRejectionEvent"
-callbackInterfaces
-  interface
-enums
-  enum
-    InsertPosition
+        }
+      }
+    }
+  }
+}
+callbackInterfaces {
+  interface {
+  }
+}
+enums {
+  enum {
+    InsertPosition {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "InsertPosition"
-      value
-        beforebegin
-        beforeend
-        afterbegin
-        afterend
-    FontDisplay
+      value {
+        item "beforebegin"
+        item "beforeend"
+        item "afterbegin"
+        item "afterend"
+      }
+    }
+    FontDisplay {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "FontDisplay"
-      value "auto" "block" "swap" "fallback" "optional"
-    ClientType
+      value {
+        item "auto"
+        item "block"
+        item "swap"
+        item "fallback"
+        item "optional"
+      }
+    }
+    ClientType {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ClientTypes"
-    RTCStatsIceCandidatePairState
-      value
-        inprogress
-    GlobalCompositeOperation
+    }
+    RTCStatsIceCandidatePairState {
+      value "inprogress"
+    }
+    GlobalCompositeOperation {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "GlobalCompositeOperation"
-      value
-        source-over
-        source-in
-        source-out
-        source-atop
-        destination-over
-        destination-in
-        destination-out
-        destination-atop
-        lighter
-        copy
-        xor
-        multiply
-        screen
-        overlay
-        darken
-        lighten
-        color-dodge
-        color-burn
-        hard-light
-        soft-light
-        difference
-        exclusion
-        hue
-        saturation
-        color
-        luminosity
-    PermissionName
+      value {
+        item "source-over"
+        item "source-in"
+        item "source-out"
+        item "source-atop"
+        item "destination-over"
+        item "destination-in"
+        item "destination-out"
+        item "destination-atop"
+        item "lighter"
+        item "copy"
+        item "xor"
+        item "multiply"
+        item "screen"
+        item "overlay"
+        item "darken"
+        item "lighten"
+        item "color-dodge"
+        item "color-burn"
+        item "hard-light"
+        item "soft-light"
+        item "difference"
+        item "exclusion"
+        item "hue"
+        item "saturation"
+        item "color"
+        item "luminosity"
+      }
+    }
+    PermissionName {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "PermissionName"
-      value
-        camera
-        geolocation
-        microphone
-        midi
-        notifications
-        persistent-storage
-        push
-        screen-wake-lock
-        storage-access
-    AutoFillBase
+      value {
+        item "camera"
+        item "geolocation"
+        item "microphone"
+        item "midi"
+        item "notifications"
+        item "persistent-storage"
+        item "push"
+        item "screen-wake-lock"
+        item "storage-access"
+      }
+    }
+    AutoFillBase {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AutoFillBase"
-      value
-        off
-        on
-        
-    AutoFillAddressKind
+      value {
+        item "off"
+        item "on"
+        item ""
+      }
+    }
+    AutoFillAddressKind {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AutoFillAddressKind"
-      value
-        shipping
-        billing
-    AutoFillNormalField
+      value {
+        item "shipping"
+        item "billing"
+      }
+    }
+    AutoFillNormalField {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AutoFillNormalField"
-      value
-        name
-        honorific-prefix
-        given-name
-        additional-name
-        family-name
-        honorific-suffix
-        username
-        new-password
-        current-password
-        one-time-code
-        organization
-        street-address
-        address-line1
-        address-line2
-        address-line3
-        address-level4
-        address-level3
-        address-level2
-        address-level1
-        country
-        country-name
-        postal-code
-        cc-name
-        cc-given-name
-        cc-family-name
-        cc-number
-        cc-exp
-        cc-exp-month
-        cc-exp-year
-        cc-csc
-        cc-type
-        transaction-currency
-        transaction-amount
-        bday-day
-        bday-month
-        bday-year
-    AutoFillContactKind
+      value {
+        item "name"
+        item "honorific-prefix"
+        item "given-name"
+        item "additional-name"
+        item "family-name"
+        item "honorific-suffix"
+        item "username"
+        item "new-password"
+        item "current-password"
+        item "one-time-code"
+        item "organization"
+        item "street-address"
+        item "address-line1"
+        item "address-line2"
+        item "address-line3"
+        item "address-level4"
+        item "address-level3"
+        item "address-level2"
+        item "address-level1"
+        item "country"
+        item "country-name"
+        item "postal-code"
+        item "cc-name"
+        item "cc-given-name"
+        item "cc-family-name"
+        item "cc-number"
+        item "cc-exp"
+        item "cc-exp-month"
+        item "cc-exp-year"
+        item "cc-csc"
+        item "cc-type"
+        item "transaction-currency"
+        item "transaction-amount"
+        item "bday-day"
+        item "bday-month"
+        item "bday-year"
+      }
+    }
+    AutoFillContactKind {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AutoFillContactKind"
-      value
-        home
-        work
-        mobile
-    AutoFillContactField
+      value {
+        item "home"
+        item "work"
+        item "mobile"
+      }
+    }
+    AutoFillContactField {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AutoFillContactField"
-      value
-        tel
-        tel-country-code
-        tel-national
-        tel-area-code
-        tel-local
-        tel-local-prefix
-        tel-local-suffix
-        tel-extension
-        email
-    AutoFillCredentialField
+      value {
+        item "tel"
+        item "tel-country-code"
+        item "tel-national"
+        item "tel-area-code"
+        item "tel-local"
+        item "tel-local-prefix"
+        item "tel-local-suffix"
+        item "tel-extension"
+        item "email"
+      }
+    }
+    AutoFillCredentialField {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AutoFillCredentialField"
-      value
-        webauthn
-interfaces
-  interface
+      value {
+        item "webauthn"
+      }
+    }
+  }
+}
+interfaces {
+  interface {
     // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
     // We cannot define methods as dictionary properties with function types,
     // as this would cause conflicts with ImportMeta method overrides in places like @types/node.
-    ImportMeta
+    ImportMeta {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ImportMeta"
       exposed "Window Worker"
       noInterfaceObject "true"
-      properties
-        property
-          url
+      properties {
+        property {
+          url {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "url"
             type "DOMString"
-      methods
-        method
-          resolve
+          }
+        }
+      }
+      methods {
+        method {
+          resolve {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "resolve"
-            signature
-              param
-                // See the full list of possible autofill values for the `autocomplete` attribute:
-                // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-                // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-                name "specifier"
+            signature {
+              item {
+                param {
+                  item {
+                    // See the full list of possible autofill values for the `autocomplete` attribute:
+                    // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+                    // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+                    name "specifier"
+                    type "DOMString"
+                  }
+                }
                 type "DOMString"
-              type "DOMString"
-    AudioWorkletProcessorImpl
+              }
+            }
+          }
+        }
+      }
+    }
+    AudioWorkletProcessorImpl {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "AudioWorkletProcessorImpl"
       extends "AudioWorkletProcessor"
-      methods
-        method
-          process
+      methods {
+        method {
+          process {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "process"
-            overrideSignatures
-              "process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean"
+            overrideSignatures {
+              overrideSignature "process(inputs: Float32Array[][], outputs: Float32Array[][], parameters: Record<string, Float32Array>): boolean"
+            }
+          }
+        }
+      }
       exposed "AudioWorklet"
       noInterfaceObject "true"
-    BroadcastChannel
-      events
-        event
+    }
+    BroadcastChannel {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "message"
           type "MessageEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "messageerror"
           type "MessageEvent"
-    CompileError
+        }
+      }
+    }
+    CompileError {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "CompileError"
       extends "Error"
       legacyNamespace "WebAssembly"
-      constructor
-        overrideSignatures
-          "new(message?: string): CompileError"
-          "(message?: string): CompileError"
-    DeviceMotionEventAcceleration
+      constructor {
+        overrideSignatures "new(message?: string): CompileError"
+        overrideSignatures "(message?: string): CompileError"
+      }
+    }
+    DeviceMotionEventAcceleration {
       noInterfaceObject "true"
-    DeviceMotionEventRotationRate
+    }
+    DeviceMotionEventRotationRate {
       noInterfaceObject "true"
-    HTMLImageElement
+    }
+    HTMLImageElement {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "HTMLImageElement"
-      properties
-        property
-          decoding
+      properties {
+        property {
+          decoding {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "decoding"
             overrideType "\"async\" | \"sync\" | \"auto\""
-          loading
+          }
+          loading {
             overrideType "\"eager\" | \"lazy\""
-    HTMLTableDataCellElement
+          }
+        }
+      }
+    }
+    HTMLTableDataCellElement {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -588,7 +780,8 @@ interfaces
       noInterfaceObject "true"
       deprecated "prefer HTMLTableCellElement"
       exposed "Window"
-    HTMLTableHeaderCellElement
+    }
+    HTMLTableHeaderCellElement {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -597,227 +790,318 @@ interfaces
       noInterfaceObject "true"
       deprecated "prefer HTMLTableCellElement"
       exposed "Window"
-    HTMLDocument
+    }
+    HTMLDocument {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "HTMLDocument"
       extends "Document"
       exposed "Window"
-    HTMLMediaElement
-      events
-        event
+    }
+    HTMLMediaElement {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "encrypted"
           type "MediaEncryptedEvent"
-    CSSStyleProperties
-      properties
-        property
-          imageOrientation
+        }
+      }
+    }
+    CSSStyleProperties {
+      properties {
+        property {
+          imageOrientation {
             deprecated "true"
-          wordWrap
+          }
+          wordWrap {
             deprecated "true"
-    Window
+          }
+        }
+      }
+    }
+    Window {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "Window"
-      methods
-        method
-          captureEvents
+      methods {
+        method {
+          captureEvents {
             deprecated "true"
-      overrideIndexSignatures
-        "[index: number]: Window"
-      events
-        event
+          }
+        }
+      }
+      overrideIndexSignatures {
+        overrideIndexSignature "[index: number]: Window"
+      }
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "devicemotion"
           type "DeviceMotionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "deviceorientation"
           type "DeviceOrientationEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "deviceorientationabsolute"
           type "DeviceOrientationEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "gamepadconnected"
           type "GamepadEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "gamepaddisconnected"
           type "GamepadEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "DOMContentLoaded"
           type "Event"
-    URLSearchParams
+        }
+      }
+    }
+    URLSearchParams {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "URLSearchParams"
-      constructor
-        signature
-          "0"
-            param
+      constructor {
+        signature {
+          "0" {
+            param {
               // See the full list of possible autofill values for the `autocomplete` attribute:
               // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
               // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
               name "init"
-              additionalTypes
-                URLSearchParams
-    NodeListOf
+              additionalTypes {
+                additionalType "URLSearchParams"
+              }
+            }
+          }
+        }
+      }
+    }
+    NodeListOf {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "NodeListOf"
-      typeParameters
-        // See the full list of possible autofill values for the `autocomplete` attribute:
-        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-        name "TNode"
-        extends "Node"
+      typeParameters {
+        typeParameter {
+          // See the full list of possible autofill values for the `autocomplete` attribute:
+          // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+          // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+          name "TNode"
+          extends "Node"
+        }
+      }
       exposed "Window"
       extends "NodeList"
-      methods
-        method
-          item
+      methods {
+        method {
+          item {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "item"
-            overrideSignatures
-              "item(index: number): TNode"
+            overrideSignatures {
+              overrideSignature "item(index: number): TNode"
+            }
+          }
+        }
+      }
       noInterfaceObject "true"
-      overrideIndexSignatures
-        "[index: number]: TNode"
-      iterator
+      overrideIndexSignatures {
+        overrideIndexSignature "[index: number]: TNode"
+      }
+      iterator {
         kind "iterable"
-        type
-          overrideType "TNode"
-    HTMLCollectionOf
+        type {
+          item {
+            overrideType "TNode"
+          }
+        }
+      }
+    }
+    HTMLCollectionOf {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "HTMLCollectionOf"
-      typeParameters
-        // See the full list of possible autofill values for the `autocomplete` attribute:
-        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-        name "T"
-        extends "Element"
+      typeParameters {
+        typeParameter {
+          // See the full list of possible autofill values for the `autocomplete` attribute:
+          // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+          // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+          name "T"
+          extends "Element"
+        }
+      }
       exposed "Window"
       extends "HTMLCollection"
-      methods
-        method
-          item
+      methods {
+        method {
+          item {
             getter "true"
-            signature
-              nullable "true"
-              overrideType "T"
-              param
-                // See the full list of possible autofill values for the `autocomplete` attribute:
-                // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-                // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-                name "index"
-                type "unsigned long"
+            signature {
+              item {
+                nullable "true"
+                overrideType "T"
+                param {
+                  item {
+                    // See the full list of possible autofill values for the `autocomplete` attribute:
+                    // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+                    // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+                    name "index"
+                    type "unsigned long"
+                  }
+                }
+              }
+            }
             specs "html5"
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "item"
-          namedItem
+          }
+          namedItem {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "namedItem"
-            overrideSignatures
-              "namedItem(name: string): T | null"
+            overrideSignatures {
+              overrideSignature "namedItem(name: string): T | null"
+            }
+          }
+        }
+      }
       noInterfaceObject "true"
-    Element
+    }
+    Element {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "Element"
-      methods
-        method
-          getElementsByClassName
+      methods {
+        method {
+          getElementsByClassName {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "getElementsByClassName"
-            signature
-              "0"
+            signature {
+              "0" {
                 overrideType "HTMLCollectionOf<Element>"
-          closest
-            additionalSignatures
-              "closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null"
-              "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null"
-              "closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null"
-            signature
-              "0"
-                typeParameters
-                  // See the full list of possible autofill values for the `autocomplete` attribute:
-                  // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-                  // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-                  name "E"
-                  extends "Element"
-                  default "Element"
+              }
+            }
+          }
+          closest {
+            additionalSignatures {
+              additionalSignature "closest<K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K] | null"
+              additionalSignature "closest<K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K] | null"
+              additionalSignature "closest<K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K] | null"
+            }
+            signature {
+              "0" {
+                typeParameters {
+                  typeParameter {
+                    // See the full list of possible autofill values for the `autocomplete` attribute:
+                    // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+                    // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+                    name "E"
+                    extends "Element"
+                    default "Element"
+                  }
+                }
                 overrideType "E"
-          insertAdjacentElement
-            signature
-              "0"
-                param
+              }
+            }
+          }
+          insertAdjacentElement {
+            signature {
+              "0" {
+                param {
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
                   // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                   name "where"
                   type "InsertPosition"
-          insertAdjacentHTML
-            signature
-              "0"
-                param
+                }
+              }
+            }
+          }
+          insertAdjacentHTML {
+            signature {
+              "0" {
+                param {
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
                   // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                   name "position"
                   type "InsertPosition"
-          insertAdjacentText
-            signature
-              "0"
-                param
+                }
+              }
+            }
+          }
+          insertAdjacentText {
+            signature {
+              "0" {
+                param {
                   // See the full list of possible autofill values for the `autocomplete` attribute:
                   // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
                   // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                   name "where"
                   type "InsertPosition"
-          textContent
+                }
+              }
+            }
+          }
+          textContent {
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
-            overrideSignatures
-              "get textContent(): string"
-              "set textContent(value: string | null)"
-      properties
-        property
-          ownerDocument
+            overrideSignatures {
+              overrideSignature "get textContent(): string"
+              overrideSignature "set textContent(value: string | null)"
+            }
+          }
+        }
+      }
+      properties {
+        property {
+          ownerDocument {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
             readonly "true"
             type "Document"
+          }
+        }
+      }
+    }
     // This is used in many DT libraries, via ckeditor
-    ClientRect
+    ClientRect {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -826,73 +1110,92 @@ interfaces
       deprecated "true"
       extends "DOMRect"
       noInterfaceObject "true"
-    EventListener
+    }
+    EventListener {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "EventListener"
       noInterfaceObject "true"
-      methods
-        method
+      methods {
+        method {
           // This is a hack to add a call signature, but I think it's reasonable
           // as it means we don't have to add a call signatures section to the
           // emitter for this one case.
-          callable
-            overrideSignatures
-              "(evt: Event): void"
-    EventListenerObject
+          callable {
+            overrideSignatures "(evt: Event): void"
+          }
+        }
+      }
+    }
+    EventListenerObject {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "EventListenerObject"
       noInterfaceObject "true"
-      methods
-        method
-          handleEvent
-            overrideSignatures
-              "handleEvent(object: Event): void"
-    Document
-      methods
-        method
-          createElementNS
+      methods {
+        method {
+          handleEvent {
+            overrideSignatures "handleEvent(object: Event): void"
+          }
+        }
+      }
+    }
+    Document {
+      methods {
+        method {
+          createElementNS {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "createElementNS"
-            additionalSignatures
-              "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement"
-              "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]"
-              "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement"
-              "createElementNS<K extends keyof MathMLElementTagNameMap>(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: K): MathMLElementTagNameMap[K]"
-              "createElementNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: string): MathMLElement"
-              "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
-          caretRangeFromPoint
+            additionalSignatures {
+              additionalSignature "createElementNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", qualifiedName: string): HTMLElement"
+              additionalSignature "createElementNS<K extends keyof SVGElementTagNameMap>(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: K): SVGElementTagNameMap[K]"
+              additionalSignature "createElementNS(namespaceURI: \"http://www.w3.org/2000/svg\", qualifiedName: string): SVGElement"
+              additionalSignature "createElementNS<K extends keyof MathMLElementTagNameMap>(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: K): MathMLElementTagNameMap[K]"
+              additionalSignature "createElementNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", qualifiedName: string): MathMLElement"
+              additionalSignature "createElementNS(namespaceURI: string | null, qualifiedName: string, options?: ElementCreationOptions): Element"
+            }
+          }
+          caretRangeFromPoint {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "caretRangeFromPoint"
             deprecated "true"
-            overrideSignatures
-              "caretRangeFromPoint(x: number, y: number): Range | null"
-      properties
-        property
-          ownerDocument
+            overrideSignatures {
+              overrideSignature "caretRangeFromPoint(x: number, y: number): Range | null"
+            }
+          }
+        }
+      }
+      properties {
+        property {
+          ownerDocument {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
             readonly "true"
             overrideType "null"
-      events
-        event
+          }
+        }
+      }
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "DOMContentLoaded"
           type "Event"
+        }
+      }
+    }
     // This is used in the React d.ts files, and not including
     // it would force an update for anyone using React.
-    StyleMedia
+    StyleMedia {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -900,31 +1203,39 @@ interfaces
       exposed "Window"
       noInterfaceObject "true"
       deprecated "true"
-      properties
-        property
-          type
+      properties {
+        property {
+          type {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "type"
             type "DOMString"
-      methods
-        method
-          matchMedium
+          }
+        }
+      }
+      methods {
+        method {
+          matchMedium {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "matchMedium"
-            overrideSignatures
-              "matchMedium(mediaquery: string): boolean"
-    Navigator
+            overrideSignatures {
+              overrideSignature "matchMedium(mediaquery: string): boolean"
+            }
+          }
+        }
+      }
+    }
+    Navigator {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "Navigator"
-      properties
-        property
-          doNotTrack
+      properties {
+        property {
+          doNotTrack {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -932,149 +1243,213 @@ interfaces
             readonly "true"
             nullable "true"
             type "DOMString"
-    HTMLIFrameElement
+          }
+        }
+      }
+    }
+    HTMLIFrameElement {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "HTMLIFrameElement"
-      properties
-        property
-          referrerPolicy
+      properties {
+        property {
+          referrerPolicy {
             type "ReferrerPolicy"
-          loading
+          }
+          loading {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "loading"
             overrideType "\"eager\" | \"lazy\""
-    IDBDatabase
+          }
+        }
+      }
+    }
+    IDBDatabase {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "IDBDatabase"
-      events
-        event
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "versionchange"
           type "IDBVersionChangeEvent"
-    IDBOpenDBRequest
+        }
+      }
+    }
+    IDBOpenDBRequest {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "IDBOpenDBRequest"
       extends "IDBRequest<IDBDatabase>"
-      events
-        event
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "upgradeneeded"
           type "IDBVersionChangeEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "blocked"
           type "IDBVersionChangeEvent"
-    UIEvent
-      properties
-        property
-          which
+        }
+      }
+    }
+    UIEvent {
+      properties {
+        property {
+          which {
             deprecated "true"
-    SpeechSynthesisUtterance
-      events
-        event
+          }
+        }
+      }
+    }
+    SpeechSynthesisUtterance {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "start"
           type "SpeechSynthesisEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "end"
           type "SpeechSynthesisEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "error"
           type "SpeechSynthesisErrorEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "pause"
           type "SpeechSynthesisEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "resume"
           type "SpeechSynthesisEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "mark"
           type "SpeechSynthesisEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "boundary"
           type "SpeechSynthesisEvent"
-    TextTrackList
-      events
-        event
+        }
+      }
+    }
+    TextTrackList {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "addtrack"
           type "TrackEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "removetrack"
           type "TrackEvent"
-    DOMMatrixReadOnly
-      methods
-        method
-          scaleNonUniform
+        }
+      }
+    }
+    DOMMatrixReadOnly {
+      methods {
+        method {
+          scaleNonUniform {
             deprecated "true"
-    EventSource
-      events
-        event
+          }
+        }
+      }
+    }
+    EventSource {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "message"
           type "MessageEvent"
-    HTMLBodyElement
-      properties
-        property
-          onorientationchange
+        }
+      }
+    }
+    HTMLBodyElement {
+      properties {
+        property {
+          onorientationchange {
             deprecated "true"
-    HTMLInputElement
-      properties
-        property
-          labels
+          }
+        }
+      }
+    }
+    HTMLInputElement {
+      properties {
+        property {
+          labels {
             overrideType "NodeListOf<HTMLLabelElement>"
-    HTMLLinkElement
-      properties
-        property
-          charset
+          }
+        }
+      }
+    }
+    HTMLLinkElement {
+      properties {
+        property {
+          charset {
             deprecated "true"
-          rev
+          }
+          rev {
             deprecated "true"
-          target
+          }
+          target {
             deprecated "true"
-    KHR_parallel_shader_compile
+          }
+        }
+      }
+    }
+    KHR_parallel_shader_compile {
       overrideExposed "Window Worker"
-    OVR_multiview2
+    }
+    OVR_multiview2 {
       overrideExposed "Window Worker"
+    }
     // The spec removed `timestamp` but browsers still have it.
     // https://github.com/w3c/webrtc-encoded-transform/pull/204
-    RTCEncodedAudioFrame
-      properties
-        property
-          timestamp
+    RTCEncodedAudioFrame {
+      properties {
+        property {
+          timestamp {
             mdnUrl "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp"
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -1082,10 +1457,14 @@ interfaces
             name "timestamp"
             type "long long"
             readonly "true"
-    RTCEncodedVideoFrame
-      properties
-        property
-          timestamp
+          }
+        }
+      }
+    }
+    RTCEncodedVideoFrame {
+      properties {
+        property {
+          timestamp {
             mdnUrl "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp"
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
@@ -1093,39 +1472,51 @@ interfaces
             name "timestamp"
             type "long long"
             readonly "true"
-    RTCDTMFSender
-      events
-        event
+          }
+        }
+      }
+    }
+    RTCDTMFSender {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "tonechange"
           type "RTCDTMFToneChangeEvent"
-    RuntimeError
+        }
+      }
+    }
+    RuntimeError {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "RuntimeError"
       extends "Error"
       legacyNamespace "WebAssembly"
-      constructor
-        overrideSignatures
-          "new(message?: string): RuntimeError"
-          "(message?: string): RuntimeError"
-    SVGStyleElement
-      properties
-        property
-          disabled
+      constructor {
+        overrideSignatures "new(message?: string): RuntimeError"
+        overrideSignatures "(message?: string): RuntimeError"
+      }
+    }
+    SVGStyleElement {
+      properties {
+        property {
+          disabled {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "disabled"
             type "boolean"
-    LargestContentfulPaint
-      properties
-        property
+          }
+        }
+      }
+    }
+    LargestContentfulPaint {
+      properties {
+        property {
           // Removed by https://github.com/w3c/largest-contentful-paint/pull/126, but browsers still have it
-          renderTime
+          renderTime {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -1133,49 +1524,65 @@ interfaces
             type "DOMHighResTimeStamp"
             readonly "true"
             mdnUrl "https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/renderTime"
-    LinkError
+          }
+        }
+      }
+    }
+    LinkError {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "LinkError"
       extends "Error"
       legacyNamespace "WebAssembly"
-      constructor
-        overrideSignatures
-          "new(message?: string): LinkError"
-          "(message?: string): LinkError"
-    MediaRecorder
-      events
-        event
+      constructor {
+        overrideSignatures "new(message?: string): LinkError"
+        overrideSignatures "(message?: string): LinkError"
+      }
+    }
+    MediaRecorder {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "dataavailable"
           type "BlobEvent"
-    MediaStream
-      events
-        event
+        }
+      }
+    }
+    MediaStream {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "addtrack"
           type "MediaStreamTrackEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "removetrack"
           type "MediaStreamTrackEvent"
-    ProgressEvent
-      typeParameters
-        // See the full list of possible autofill values for the `autocomplete` attribute:
-        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-        name "T"
-        extends "EventTarget"
-        default "EventTarget"
-      properties
-        property
-          target
+        }
+      }
+    }
+    ProgressEvent {
+      typeParameters {
+        typeParameter {
+          // See the full list of possible autofill values for the `autocomplete` attribute:
+          // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+          // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+          name "T"
+          extends "EventTarget"
+          default "EventTarget"
+        }
+      }
+      properties {
+        property {
+          target {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
@@ -1183,463 +1590,642 @@ interfaces
             readonly "true"
             nullable "true"
             overrideType "T"
-    SharedWorkerGlobalScope
-      events
-        event
+          }
+        }
+      }
+    }
+    SharedWorkerGlobalScope {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "connect"
           type "MessageEvent"
-    Attr
+        }
+      }
+    }
+    Attr {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "Attr"
-      methods
-        method
-          textContent
+      methods {
+        method {
+          textContent {
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
-            overrideSignatures
-              "get textContent(): string"
-              "set textContent(value: string | null)"
-      properties
-        property
-          ownerDocument
+            overrideSignatures {
+              overrideSignature "get textContent(): string"
+              overrideSignature "set textContent(value: string | null)"
+            }
+          }
+        }
+      }
+      properties {
+        property {
+          ownerDocument {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
             readonly "true"
             type "Document"
-    CharacterData
+          }
+        }
+      }
+    }
+    CharacterData {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "CharacterData"
-      methods
-        method
-          textContent
+      methods {
+        method {
+          textContent {
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
-            overrideSignatures
-              "get textContent(): string"
-              "set textContent(value: string | null)"
-      properties
-        property
-          ownerDocument
+            overrideSignatures {
+              overrideSignature "get textContent(): string"
+              overrideSignature "set textContent(value: string | null)"
+            }
+          }
+        }
+      }
+      properties {
+        property {
+          ownerDocument {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
             readonly "true"
             type "Document"
-    DocumentType
+          }
+        }
+      }
+    }
+    DocumentType {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "DocumentType"
-      properties
-        property
-          ownerDocument
+      properties {
+        property {
+          ownerDocument {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
             readonly "true"
             type "Document"
-      methods
-        method
-          textContent
+          }
+        }
+      }
+      methods {
+        method {
+          textContent {
             mdnUrl "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent"
-            overrideSignatures
-              "get textContent(): null"
-    ProcessingInstruction
+            overrideSignatures {
+              overrideSignature "get textContent(): null"
+            }
+          }
+        }
+      }
+    }
+    ProcessingInstruction {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ProcessingInstruction"
-      properties
-        property
-          ownerDocument
+      properties {
+        property {
+          ownerDocument {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "ownerDocument"
             readonly "true"
             type "Document"
-    WebSocket
-      events
-        event
+          }
+        }
+      }
+    }
+    WebSocket {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "close"
           type "CloseEvent"
-    WorkerGlobalScope
-      events
-        event
+        }
+      }
+    }
+    WorkerGlobalScope {
+      events {
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "rejectionhandled"
           type "PromiseRejectionEvent"
+        }
+        event {
           // See the full list of possible autofill values for the `autocomplete` attribute:
           // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
           // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
           name "unhandledrejection"
           type "PromiseRejectionEvent"
-    FileSystemFileHandle
-      properties
-        property
-          kind
+        }
+      }
+    }
+    FileSystemFileHandle {
+      properties {
+        property {
+          kind {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "kind"
             readonly "true"
             overrideType "\"file\""
-    FileSystemDirectoryHandle
-      properties
-        property
-          kind
+          }
+        }
+      }
+    }
+    FileSystemDirectoryHandle {
+      properties {
+        property {
+          kind {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "kind"
             readonly "true"
             overrideType "\"directory\""
-dictionaries
-  dictionary
-    KeyboardEventInit
-      members
-        member
-          charCode
+          }
+        }
+      }
+    }
+  }
+}
+dictionaries {
+  dictionary {
+    KeyboardEventInit {
+      members {
+        member {
+          charCode {
             deprecated "true"
-          keyCode
+          }
+          keyCode {
             deprecated "true"
-    MemoryDescriptor
-      members
-        member
-          shared
+          }
+        }
+      }
+    }
+    MemoryDescriptor {
+      members {
+        member {
+          shared {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "shared"
             type "boolean"
-    ReadableStreamReadDoneResult
+          }
+        }
+      }
+    }
+    ReadableStreamReadDoneResult {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ReadableStreamReadDoneResult"
-      typeParameters
-        // See the full list of possible autofill values for the `autocomplete` attribute:
-        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-        name "T"
-      members
-        member
-          done
+      typeParameters {
+        typeParameter {
+          // See the full list of possible autofill values for the `autocomplete` attribute:
+          // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+          // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+          name "T"
+        }
+      }
+      members {
+        member {
+          done {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "done"
-            overrideType "true"
+            overrideType "\"true\""
             required "true"
-          value
+          }
+          value {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "value"
             overrideType "T | undefined"
             required "true"
-    ReadableStreamReadValueResult
+          }
+        }
+      }
+    }
+    ReadableStreamReadValueResult {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ReadableStreamReadValueResult"
-      typeParameters
-        // See the full list of possible autofill values for the `autocomplete` attribute:
-        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-        name "T"
-      members
-        member
-          done
+      typeParameters {
+        typeParameter {
+          // See the full list of possible autofill values for the `autocomplete` attribute:
+          // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+          // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+          name "T"
+        }
+      }
+      members {
+        member {
+          done {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "done"
             overrideType "false"
             required "true"
-          value
+          }
+          value {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "value"
             overrideType "T"
             required "true"
-    UnderlyingByteSource
+          }
+        }
+      }
+    }
+    UnderlyingByteSource {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "UnderlyingByteSource"
-      members
-        member
-          type
+      members {
+        member {
+          type {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "type"
             required "true"
             overrideType "\"bytes\""
-          autoAllocateChunkSize
+          }
+          autoAllocateChunkSize {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "autoAllocateChunkSize"
             type "unsigned long long"
-          start
+          }
+          start {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "start"
             overrideType "(controller: ReadableByteStreamController) => any"
-          pull
+          }
+          pull {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "pull"
             overrideType "(controller: ReadableByteStreamController) => void | PromiseLike<void>"
-          cancel
+          }
+          cancel {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "cancel"
             type "UnderlyingSourceCancelCallback"
-    UnderlyingDefaultSource
+          }
+        }
+      }
+    }
+    UnderlyingDefaultSource {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "UnderlyingDefaultSource"
-      typeParameters
-        // See the full list of possible autofill values for the `autocomplete` attribute:
-        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-        name "R"
-        default "any"
-      members
-        member
-          type
+      typeParameters {
+        typeParameter {
+          // See the full list of possible autofill values for the `autocomplete` attribute:
+          // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+          // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+          name "R"
+          default "any"
+        }
+      }
+      members {
+        member {
+          type {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "type"
             type "undefined"
-          start
+          }
+          start {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "start"
             overrideType "(controller: ReadableStreamDefaultController<R>) => any"
-          pull
+          }
+          pull {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "pull"
             overrideType "(controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>"
-          cancel
+          }
+          cancel {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "cancel"
             type "UnderlyingSourceCancelCallback"
-    ValueTypeMap
+          }
+        }
+      }
+    }
+    ValueTypeMap {
       // See the full list of possible autofill values for the `autocomplete` attribute:
       // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
       // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
       name "ValueTypeMap"
       legacyNamespace "WebAssembly"
       exposed "Window Worker Worklet"
-      members
-        member
-          anyfunc
+      members {
+        member {
+          anyfunc {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "anyfunc"
             overrideType "Function"
             required 1
-          externref
+          }
+          externref {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "externref"
             overrideType "any"
             required 1
-          f32
+          }
+          f32 {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "f32"
             overrideType "number"
             required 1
-          f64
+          }
+          f64 {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "f64"
             overrideType "number"
             required 1
-          i32
+          }
+          i32 {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "i32"
             overrideType "number"
             required 1
-          i64
+          }
+          i64 {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "i64"
             overrideType "bigint"
             required 1
-          v128
+          }
+          v128 {
             // See the full list of possible autofill values for the `autocomplete` attribute:
             // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
             // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
             name "v128"
             overrideType "never"
             required 1
-typedefs
-  typedef
-    type
-      "0"
-        subtype
+          }
+        }
+      }
+    }
+  }
+}
+typedefs {
+  typedef {
+    type {
+      "0" {
+        subtype {
           overrideType "[string, string]"
-    additionalTypes
-      Headers
+        }
+      }
+    }
+    additionalTypes {
+      additionalType "Headers"
+    }
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "HeadersInit"
+  }
+  typedef {
     overrideType "number | string | Date | BufferSource | IDBValidKey[]"
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "IDBValidKey"
-    type
-      "0"
+  }
+  typedef {
+    type {
+      "0" {
         type "Algorithm"
+      }
+    }
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "AlgorithmIdentifier"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "MutationRecordType"
     overrideType "\"attributes\" | \"characterData\" | \"childList\""
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "WindowProxy"
     type "Window"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "ValueType"
     legacyNamespace "WebAssembly"
     overrideType "keyof ValueTypeMap"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "ExportValue"
     legacyNamespace "WebAssembly"
     overrideType "Function | Global | Memory | Table"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "Exports"
     legacyNamespace "WebAssembly"
     type "record"
-    subtype
-      type "DOMString"
-      type "ExportValue"
+    subtype {
+      item {
+        type "DOMString"
+      }
+      item {
+        type "ExportValue"
+      }
+    }
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "ImportValue"
     legacyNamespace "WebAssembly"
     overrideType "ExportValue | number"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "ModuleImports"
     legacyNamespace "WebAssembly"
     type "record"
-    subtype
-      type "DOMString"
-      type "ImportValue"
+    subtype {
+      item {
+        type "DOMString"
+      }
+      item {
+        type "ImportValue"
+      }
+    }
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "Imports"
     legacyNamespace "WebAssembly"
     type "record"
-    subtype
-      type "DOMString"
-      type "ModuleImports"
+    subtype {
+      item {
+        type "DOMString"
+      }
+      item {
+        type "ModuleImports"
+      }
+    }
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "ReadableStreamReadResult"
-    typeParameters
-      // See the full list of possible autofill values for the `autocomplete` attribute:
-      // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-      // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-      name "T"
-    type
-      type "ReadableStreamReadValueResult"
-      type "ReadableStreamReadDoneResult"
+    typeParameters {
+      typeParameter {
+        // See the full list of possible autofill values for the `autocomplete` attribute:
+        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+        name "T"
+      }
+    }
+    type {
+      item {
+        type "ReadableStreamReadValueResult"
+      }
+      item {
+        type "ReadableStreamReadDoneResult"
+      }
+    }
     overrideType "ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "EventListenerOrEventListenerObject"
     overrideType "EventListener | EventListenerObject"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "OptionalPrefixToken"
-    typeParameters
-      // See the full list of possible autofill values for the `autocomplete` attribute:
-      // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-      // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-      name "T extends string"
+    typeParameters {
+      typeParameter {
+        // See the full list of possible autofill values for the `autocomplete` attribute:
+        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+        name "T extends string"
+      }
+    }
     overrideType "`${T} ` | \"\""
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "OptionalPostfixToken"
-    typeParameters
-      // See the full list of possible autofill values for the `autocomplete` attribute:
-      // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
-      // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
-      name "T extends string"
+    typeParameters {
+      typeParameter {
+        // See the full list of possible autofill values for the `autocomplete` attribute:
+        // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
+        // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
+        name "T extends string"
+      }
+    }
     overrideType "` ${T}` | \"\""
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "AutoFillSection"
     overrideType "`section-${string}`"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "AutoFillField"
     overrideType "AutoFillNormalField | `${OptionalPrefixToken<AutoFillContactKind>}${AutoFillContactField}`"
+  }
+  typedef {
     // See the full list of possible autofill values for the `autocomplete` attribute:
     // https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#determine-a-field's-category
     // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
     name "AutoFill"
     overrideType "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
+  }
+}
