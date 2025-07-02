@@ -14,6 +14,7 @@ import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
 import { generateDescriptions } from "./build/mdn-comments.js";
+import { parse } from "kdljs";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -92,11 +93,42 @@ async function emitDom() {
   const outputFolder = new URL("../generated/", import.meta.url);
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
-  const addedItems = await readInputJSON("addedTypes.jsonc");
+  const addedItems = await readInputKDL("addedTypes.kdl");
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
-  const removedItems = await readInputJSON("removedTypes.jsonc");
+  const removedItems = await readInputKDL("removedTypes.kdl");
+  console.dir(removedItems, { depth: null });
+  console.dir(addedItems, { depth: null });
+
+  async function readInputKDL(path: string): Promise<any> {
+    const text = await fs.readFile(new URL(path, inputFolder), "utf8");
+    const ast = parse(text);
+    function toJson(nodes: any[]): any {
+      const out: any = {};
+
+      for (const n of nodes) {
+        // Handle key
+        const key = n.name === "0" ? 0 : n.name;
+
+        let value: any;
+
+        if (n.children?.length) {
+          value = toJson(n.children);
+        } else if (n.values?.length) {
+          value = n.values[0] === "null" ? null : n.values[0];
+        } else {
+          value = true;
+        }
+
+        out[key] = value;
+      }
+
+      return out;
+    }
+
+    return toJson(ast.output ?? []);
+  }
 
   async function readInputJSON(filename: string) {
     const content = await fs.readFile(new URL(filename, inputFolder), "utf8");
