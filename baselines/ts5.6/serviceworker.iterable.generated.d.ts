@@ -142,10 +142,13 @@ interface SubtleCrypto {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/generateKey)
      */
-    generateKey(algorithm: "Ed25519" | { name: "Ed25519" }, extractable: boolean, keyUsages: ReadonlyArray<"sign" | "verify">): Promise<CryptoKeyPair>;
-    generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>;
-    generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
-    generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: Iterable<KeyUsage>): Promise<CryptoKeyPair | CryptoKey>;
+    generateKey(algorithm: RsaHashedKeyGenParams & { name: "RSA-OAEP" }, extractable: boolean, keyUsages: readonly ("encrypt" | "decrypt" | "wrapKey" | "unwrapKey")[]): Promise<CryptoKeyPair>;
+    generateKey(algorithm: (RsaHashedKeyGenParams & { name: "RSA-PSS" | "RSASSA-PKCS1-v1_5" }) | EcKeyGenParams | "Ed25519" | { name: "Ed25519" } | "Ed448" | { name: "Ed448" }, extractable: boolean, keyUsages: readonly ("sign" | "verify")[]): Promise<CryptoKeyPair>;
+    generateKey(algorithm: "X25519" | { name: "X25519" } | "X448" | { name: "X448" }, extractable: boolean, keyUsages: readonly ("deriveKey" | "deriveBits")[]): Promise<CryptoKeyPair>;
+    generateKey(algorithm: AesKeyGenParams & { name: "AES-CBC" | "AES-CTR" | "AES-GCM" }, extractable: boolean, keyUsages: readonly ("encrypt" | "decrypt" | "wrapKey" | "unwrapKey")[]): Promise<CryptoKey>;
+    generateKey(algorithm: AesKeyGenParams & { name: "AES-KW" }, extractable: boolean, keyUsages: readonly ("wrapKey" | "unwrapKey")[]): Promise<CryptoKey>;
+    generateKey(algorithm: HmacKeyGenParams, extractable: boolean, keyUsages: readonly ("sign" | "verify")[]): Promise<CryptoKey>;
+    generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: Iterable<KeyUsage>): Promise<CryptoKey | CryptoKeyPair>;
     /**
      * The **`importKey()`** method of the SubtleCrypto interface imports a key: that is, it takes as input a key in an external, portable format and gives you a CryptoKey object that you can use in the Web Crypto API.
      *

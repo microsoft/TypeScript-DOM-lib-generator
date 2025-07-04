@@ -35,7 +35,7 @@ const usageConst = crypto.subtle.generateKey(
   ["encrypt", "decrypt"] as const
 );
 
-const keyUsage: ReadonlyArray<KeyUsage> = ["encrypt", "decrypt"];
+const keyUsage: ReadonlyArray<"encrypt" | "decrypt"> = ["encrypt", "decrypt"];
 const usageAsReadonly = crypto.subtle.generateKey(
   {
     name: "AES-GCM",
