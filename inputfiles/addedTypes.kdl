@@ -71,13 +71,13 @@ interface-mixin WindowEventHandlers {
   event unhandledrejection type="PromiseRejectionEvent"
   event rejectionhandled type="PromiseRejectionEvent"
 }
-interface-enum InsertPosition {
+enum InsertPosition {
   value "beforebegin"
   value "beforeend"
   value "afterbegin"
   value "afterend"
 }
-interface-enum FontDisplay {
+enum FontDisplay {
   // https://w3c.github.io/csswg-drafts/css-fonts-4/#font-display-desc
   value "auto"
   value "block"
@@ -85,7 +85,7 @@ interface-enum FontDisplay {
   value "fallback"
   value "optional"
 }
-interface-enum GlobalCompositeOperation {
+enum GlobalCompositeOperation {
   value "source-over"
   value "source-in"
   value "source-out"
@@ -113,7 +113,7 @@ interface-enum GlobalCompositeOperation {
   value "color"
   value "luminosity"
 }
-interface-enum PermissionName {
+enum PermissionName {
   // This is a subset of the permissions defined in the spec:
   // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
   // Please add a feature only when it's supported by multiple engines.
@@ -128,18 +128,18 @@ interface-enum PermissionName {
   value "screen-wake-lock"
   value "storage-access"
 }
-interface-enum AutoFillBase {
+enum AutoFillBase {
   // Off
   value "off"
   // Automatic
   value "on"
   value ""
 }
-interface-enum AutoFillAddressKind {
+enum AutoFillAddressKind {
   value "shipping"
   value "billing"
 }
-interface-enum AutoFillNormalField {
+enum AutoFillNormalField {
   value "name"
   value "honorific-prefix"
   value "given-name"
@@ -179,12 +179,12 @@ interface-enum AutoFillNormalField {
   value "bday-month"
   value "bday-year"
 }
-interface-enum AutoFillContactKind {
+enum AutoFillContactKind {
   value "home"
   value "work"
   value "mobile"
 }
-interface-enum AutoFillContactField {
+enum AutoFillContactField {
   value "tel"
   value "tel-country-code"
   value "tel-national"
@@ -195,6 +195,6 @@ interface-enum AutoFillContactField {
   value "tel-extension"
   value "email"
 }
-interface-enum AutoFillCredentialField {
+enum AutoFillCredentialField {
   value "webauthn"
 }
