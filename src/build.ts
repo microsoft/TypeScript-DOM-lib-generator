@@ -97,7 +97,7 @@ async function emitDom() {
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
-  const removedItems = await readInputKDL("removedTypes.kdl");
+  const removedItems = await readInputJSON("removedTypes.jsonc");
   console.dir(removedItems, { depth: null });
   console.dir(addedItems, { depth: null });
 
