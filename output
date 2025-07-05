@@ -1,3 +1,11 @@
+
+> @typescript/dom-lib-generator@0.0.1 generate
+> npm run build && npm run baseline-accept
+
+
+> @typescript/dom-lib-generator@0.0.1 build
+> tsc && node ./lib/build.js
+
 interface-mixin AbstractWorker {
   event error type="ErrorEvent"
 }
@@ -7,8 +15,6 @@ interface-mixin DocumentAndElementEventHandlers {
   event paste type="ClipboardEvent"
 }
 interface-mixin DocumentOrShadowRoot {
-  // Manually moved from Document
-  // See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
   method elementFromPoint overrideSignatures="elementFromPoint(x: number, y: number): Element | null"
   method elementsFromPoint overrideSignatures="elementsFromPoint(x: number, y: number): Element[]"
 }
@@ -78,7 +84,6 @@ interface-enum InsertPosition {
   value "afterend"
 }
 interface-enum FontDisplay {
-  // https://w3c.github.io/csswg-drafts/css-fonts-4/#font-display-desc
   value "auto"
   value "block"
   value "swap"
@@ -114,10 +119,6 @@ interface-enum GlobalCompositeOperation {
   value "luminosity"
 }
 interface-enum PermissionName {
-  // This is a subset of the permissions defined in the spec:
-  // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
-  // Please add a feature only when it's supported by multiple engines.
-  // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
   value "camera"
   value "geolocation"
   value "microphone"
@@ -129,9 +130,7 @@ interface-enum PermissionName {
   value "storage-access"
 }
 interface-enum AutoFillBase {
-  // Off
   value "off"
-  // Automatic
   value "on"
   value ""
 }
@@ -149,8 +148,6 @@ interface-enum AutoFillNormalField {
   value "username"
   value "new-password"
   value "current-password"
-  // Supported in iOS Safari too even though WPT tests
-  // for Safari currently fail as of 2023-06.
   value "one-time-code"
   value "organization"
   value "street-address"
@@ -198,3 +195,7 @@ interface-enum AutoFillContactField {
 interface-enum AutoFillCredentialField {
   value "webauthn"
 }
+
+> @typescript/dom-lib-generator@0.0.1 baseline-accept
+> cpx "generated\**" baselines\
+

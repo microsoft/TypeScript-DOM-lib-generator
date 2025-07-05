@@ -309,14 +309,7 @@
                 "optional"
               ]
             },
-            "ClientType": {
-                "name": "ClientTypes"
-            },
-            "RTCStatsIceCandidatePairState": {
-                "value": [
-                    "inprogress"
-                ]
-            },
+,
             "GlobalCompositeOperation": {
                 "name": "GlobalCompositeOperation",
                 "value": [
