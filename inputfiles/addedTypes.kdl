@@ -54,6 +54,7 @@ interface-mixin GlobalEventHandlers {
   event beforetoggle type="ToggleEvent"
 }
 interface-mixin WebGLRenderingContextBase {
+  property canvas exposed="Window"
 }
 interface-mixin WindowEventHandlers {
   event beforeunload type="BeforeUnloadEvent"
