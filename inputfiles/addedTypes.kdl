@@ -78,6 +78,12 @@ enum InsertPosition {
   value "afterbegin"
   value "afterend"
 }
+enum ClientType {
+  name "ClientTypes"
+}
+enum RTCStatsIceCandidatePairState {
+  value "inprogress"
+}
 enum FontDisplay {
   // https://w3c.github.io/csswg-drafts/css-fonts-4/#font-display-desc
   value "auto"

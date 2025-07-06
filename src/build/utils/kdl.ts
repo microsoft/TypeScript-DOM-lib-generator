@@ -40,6 +40,7 @@ export function parseKDL(kdlText: string) {
     if (node.name === "enum") {
       // Handle enum
       const enumName = node.values?.[0]?.toString() ?? "";
+      let name = enumName;
       const values: string[] = [];
 
       for (const child of node.children ?? []) {
@@ -49,10 +50,12 @@ export function parseKDL(kdlText: string) {
           child.values[0] !== undefined
         ) {
           values.push(child.values[0]!.toString());
+        } else if (child.name === "name") {
+          name = child.values?.[0]?.toString() ?? enumName;
         }
       }
 
-      enums[enumName] = { name: enumName, value: values };
+      enums[enumName] = { name, value: values };
     } else {
       // Handle interface-mixin
       const name = node.values?.[0]?.toString() ?? "";
