@@ -376,11 +376,6 @@ interface ConstantSourceOptions {
     offset?: number;
 }
 
-interface ConstrainBooleanOrDOMStringParameters {
-    exact?: boolean | string;
-    ideal?: boolean | string;
-}
-
 interface ConstrainBooleanParameters {
     exact?: boolean;
     ideal?: boolean;
@@ -1118,7 +1113,7 @@ interface MediaTrackCapabilities {
     channelCount?: ULongRange;
     deviceId?: string;
     displaySurface?: string;
-    echoCancellation?: (boolean | string)[];
+    echoCancellation?: boolean[];
     facingMode?: string[];
     frameRate?: DoubleRange;
     groupId?: string;
@@ -1136,7 +1131,7 @@ interface MediaTrackConstraintSet {
     channelCount?: ConstrainULong;
     deviceId?: ConstrainDOMString;
     displaySurface?: ConstrainDOMString;
-    echoCancellation?: ConstrainBooleanOrDOMString;
+    echoCancellation?: ConstrainBoolean;
     facingMode?: ConstrainDOMString;
     frameRate?: ConstrainDouble;
     groupId?: ConstrainDOMString;
@@ -1158,7 +1153,7 @@ interface MediaTrackSettings {
     channelCount?: number;
     deviceId?: string;
     displaySurface?: string;
-    echoCancellation?: boolean | string;
+    echoCancellation?: boolean;
     facingMode?: string;
     frameRate?: number;
     groupId?: string;
@@ -2016,15 +2011,6 @@ interface RegistrationOptions {
     scope?: string;
     type?: WorkerType;
     updateViaCache?: ServiceWorkerUpdateViaCache;
-}
-
-interface Report {
-    body?: ReportBody | null;
-    type?: string;
-    url?: string;
-}
-
-interface ReportBody {
 }
 
 interface ReportingObserverOptions {
@@ -4555,6 +4541,91 @@ interface CDATASection extends Text {
 declare var CDATASection: {
     prototype: CDATASection;
     new(): CDATASection;
+};
+
+/**
+ * The `CSPViolationReportBody` interface is an extension of the Reporting API that represents the body of a Content Security Policy (CSP) violation report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody)
+ */
+interface CSPViolationReportBody extends ReportBody {
+    /**
+     * The **`blockedURL`** read-only property of the CSPViolationReportBody interface is a string value that represents the resource that was blocked because it violates a Content Security Policy (CSP).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/blockedURL)
+     */
+    readonly blockedURL: string | null;
+    /**
+     * The **`columnNumber`** read-only property of the CSPViolationReportBody interface indicates the column number in the source file that triggered the Content Security Policy (CSP) violation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/columnNumber)
+     */
+    readonly columnNumber: number | null;
+    /**
+     * The **`disposition`** read-only property of the CSPViolationReportBody interface indicates whether the user agent is configured to enforce Content Security Policy (CSP) violations or only report them.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/disposition)
+     */
+    readonly disposition: SecurityPolicyViolationEventDisposition;
+    /**
+     * The **`documentURL`** read-only property of the CSPViolationReportBody interface is a string that represents the URL of the document or worker that violated the Content Security Policy (CSP).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/documentURL)
+     */
+    readonly documentURL: string;
+    /**
+     * The **`effectiveDirective`** read-only property of the CSPViolationReportBody interface is a string that represents the effective Content Security Policy (CSP) directive that was violated.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/effectiveDirective)
+     */
+    readonly effectiveDirective: string;
+    /**
+     * The **`lineNumber`** read-only property of the CSPViolationReportBody interface indicates the line number in the source file that triggered the Content Security Policy (CSP) violation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/lineNumber)
+     */
+    readonly lineNumber: number | null;
+    /**
+     * The **`originalPolicy`** read-only property of the CSPViolationReportBody interface is a string that represents the Content Security Policy (CSP) whose enforcement uncovered the violation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/originalPolicy)
+     */
+    readonly originalPolicy: string;
+    /**
+     * The **`referrer`** read-only property of the CSPViolationReportBody interface is a string that represents the URL of the referring page of the resource who's Content Security Policy (CSP) was violated.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/referrer)
+     */
+    readonly referrer: string | null;
+    /**
+     * The **`sample`** read-only property of the CSPViolationReportBody interface is a string that contains a part of the resource that violated the Content Security Policy (CSP).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/sample)
+     */
+    readonly sample: string | null;
+    /**
+     * The **`sourceFile`** read-only property of the CSPViolationReportBody interface indicates the URL of the source file that violated the Content Security Policy (CSP).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/sourceFile)
+     */
+    readonly sourceFile: string | null;
+    /**
+     * The **`statusCode`** read-only property of the CSPViolationReportBody interface is a number representing the HTTP status code of the response to the request that triggered a Content Security Policy (CSP) violation (when loading a window or worker).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/statusCode)
+     */
+    readonly statusCode: number;
+    /**
+     * The **`toJSON()`** method of the CSPViolationReportBody interface is a _serializer_, which returns a JSON representation of the `CSPViolationReportBody` object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/toJSON)
+     */
+    toJSON(): any;
+}
+
+declare var CSPViolationReportBody: {
+    prototype: CSPViolationReportBody;
+    new(): CSPViolationReportBody;
 };
 
 /**
@@ -26182,6 +26253,57 @@ declare var RemotePlayback: {
 };
 
 /**
+ * The `Report` interface of the Reporting API represents a single report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report)
+ */
+interface Report {
+    /**
+     * The **`body`** read-only property of the Report interface returns the body of the report, which is a `ReportBody` object containing the detailed report information.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/body)
+     */
+    readonly body: ReportBody | null;
+    /**
+     * The **`type`** read-only property of the Report interface returns the type of report generated, e.g., `deprecation` or `intervention`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/type)
+     */
+    readonly type: string;
+    /**
+     * The **`url`** read-only property of the Report interface returns the URL of the document that generated the report.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/url)
+     */
+    readonly url: string;
+    toJSON(): any;
+}
+
+declare var Report: {
+    prototype: Report;
+    new(): Report;
+};
+
+/**
+ * The **`ReportBody`** interface of the Reporting API represents the body of a report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody)
+ */
+interface ReportBody {
+    /**
+     * The **`toJSON()`** method of the ReportBody interface is a _serializer_, and returns a JSON representation of the `ReportBody` object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody/toJSON)
+     */
+    toJSON(): any;
+}
+
+declare var ReportBody: {
+    prototype: ReportBody;
+    new(): ReportBody;
+};
+
+/**
  * The `ReportingObserver` interface of the Reporting API allows you to collect and access reports.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver)
@@ -39273,7 +39395,6 @@ type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasEl
 type ClipboardItemData = Promise<string | Blob>;
 type ClipboardItems = ClipboardItem[];
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
-type ConstrainBooleanOrDOMString = boolean | string | ConstrainBooleanOrDOMStringParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
@@ -39370,7 +39491,6 @@ type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | 
 type CanvasTextRendering = "auto" | "geometricPrecision" | "optimizeLegibility" | "optimizeSpeed";
 type ChannelCountMode = "clamped-max" | "explicit" | "max";
 type ChannelInterpretation = "discrete" | "speakers";
-type ClientTypes = "all" | "sharedworker" | "window" | "worker";
 type CodecState = "closed" | "configured" | "unconfigured";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
@@ -39478,7 +39598,7 @@ type RTCRtpTransceiverDirection = "inactive" | "recvonly" | "sendonly" | "sendre
 type RTCSctpTransportState = "closed" | "connected" | "connecting";
 type RTCSdpType = "answer" | "offer" | "pranswer" | "rollback";
 type RTCSignalingState = "closed" | "have-local-offer" | "have-local-pranswer" | "have-remote-offer" | "have-remote-pranswer" | "stable";
-type RTCStatsIceCandidatePairState = "failed" | "frozen" | "in-progress" | "inprogress" | "succeeded" | "waiting";
+type RTCStatsIceCandidatePairState = "failed" | "frozen" | "in-progress" | "succeeded" | "waiting";
 type RTCStatsType = "candidate-pair" | "certificate" | "codec" | "data-channel" | "inbound-rtp" | "local-candidate" | "media-playout" | "media-source" | "outbound-rtp" | "peer-connection" | "remote-candidate" | "remote-inbound-rtp" | "remote-outbound-rtp" | "transport";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";

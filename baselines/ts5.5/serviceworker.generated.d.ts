@@ -570,15 +570,6 @@ interface RegistrationOptions {
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
-interface Report {
-    body?: ReportBody | null;
-    type?: string;
-    url?: string;
-}
-
-interface ReportBody {
-}
-
 interface ReportingObserverOptions {
     buffered?: boolean;
     types?: string[];
@@ -6527,6 +6518,57 @@ interface ReadableStreamGenericReader {
 }
 
 /**
+ * The `Report` interface of the Reporting API represents a single report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report)
+ */
+interface Report {
+    /**
+     * The **`body`** read-only property of the Report interface returns the body of the report, which is a `ReportBody` object containing the detailed report information.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/body)
+     */
+    readonly body: ReportBody | null;
+    /**
+     * The **`type`** read-only property of the Report interface returns the type of report generated, e.g., `deprecation` or `intervention`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/type)
+     */
+    readonly type: string;
+    /**
+     * The **`url`** read-only property of the Report interface returns the URL of the document that generated the report.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/url)
+     */
+    readonly url: string;
+    toJSON(): any;
+}
+
+declare var Report: {
+    prototype: Report;
+    new(): Report;
+};
+
+/**
+ * The **`ReportBody`** interface of the Reporting API represents the body of a report.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody)
+ */
+interface ReportBody {
+    /**
+     * The **`toJSON()`** method of the ReportBody interface is a _serializer_, and returns a JSON representation of the `ReportBody` object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody/toJSON)
+     */
+    toJSON(): any;
+}
+
+declare var ReportBody: {
+    prototype: ReportBody;
+    new(): ReportBody;
+};
+
+/**
  * The `ReportingObserver` interface of the Reporting API allows you to collect and access reports.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver)
@@ -11351,7 +11393,7 @@ type CanvasLineJoin = "bevel" | "miter" | "round";
 type CanvasTextAlign = "center" | "end" | "left" | "right" | "start";
 type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top";
 type CanvasTextRendering = "auto" | "geometricPrecision" | "optimizeLegibility" | "optimizeSpeed";
-type ClientTypes = "all" | "sharedworker" | "window" | "worker";
+type ClientType = "all" | "sharedworker" | "window" | "worker";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
