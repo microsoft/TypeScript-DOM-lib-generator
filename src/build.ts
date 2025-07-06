@@ -100,11 +100,10 @@ async function emitDom() {
   const removedItems = await readInputJSON("removedTypes.jsonc");
   // KDL files
   const addedItemsKDL = await readInputKDL("addedTypes.kdl");
-  console.dir(addedItemsKDL, { depth: null });
 
   async function readInputKDL(path: string): Promise<any> {
     const text = await fs.readFile(new URL(path, inputFolder), "utf8");
-    return parseKDL(text)
+    return parseKDL(text);
   }
 
   async function readInputJSON(filename: string) {
