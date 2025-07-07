@@ -2291,7 +2291,7 @@ interface ULongRange {
     max?: number;
     min?: number;
 }
- 
+
 interface URLPatternComponentResult {
     groups?: Record<string, string | undefined>;
     input?: string;
