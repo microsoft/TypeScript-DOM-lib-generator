@@ -3828,9 +3828,6 @@
             "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
-            "URLPattern": {
-                "exposed": ""
-            },
             "ViewTimeline": {
                 "exposed": ""
             },

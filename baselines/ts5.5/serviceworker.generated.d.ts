@@ -708,6 +708,39 @@ interface Transformer<I = any, O = any> {
     writableType?: undefined;
 }
 
+interface URLPatternComponentResult {
+    groups?: Record<string, string | undefined>;
+    input?: string;
+}
+
+interface URLPatternInit {
+    baseURL?: string;
+    hash?: string;
+    hostname?: string;
+    password?: string;
+    pathname?: string;
+    port?: string;
+    protocol?: string;
+    search?: string;
+    username?: string;
+}
+
+interface URLPatternOptions {
+    ignoreCase?: boolean;
+}
+
+interface URLPatternResult {
+    hash?: URLPatternComponentResult;
+    hostname?: URLPatternComponentResult;
+    inputs?: URLPatternInput[];
+    password?: URLPatternComponentResult;
+    pathname?: URLPatternComponentResult;
+    port?: URLPatternComponentResult;
+    protocol?: URLPatternComponentResult;
+    search?: URLPatternComponentResult;
+    username?: URLPatternComponentResult;
+}
+
 interface UnderlyingByteSource {
     autoAllocateChunkSize?: number;
     cancel?: UnderlyingSourceCancelCallback;
@@ -7664,6 +7697,81 @@ declare var URL: {
 };
 
 /**
+ * The **`URLPattern`** interface of the URL Pattern API matches URLs or parts of URLs against a pattern.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern)
+ */
+interface URLPattern {
+    readonly hasRegExpGroups: boolean;
+    /**
+     * The **`hash`** read-only property of the URLPattern interface is a string containing the pattern used to match the fragment part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/hash)
+     */
+    readonly hash: string;
+    /**
+     * The **`hostname`** read-only property of the URLPattern interface is a string containing the pattern used to match the hostname part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/hostname)
+     */
+    readonly hostname: string;
+    /**
+     * The **`password`** read-only property of the URLPattern interface is a string containing the pattern used to match the password part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/password)
+     */
+    readonly password: string;
+    /**
+     * The **`pathname`** read-only property of the URLPattern interface is a string containing the pattern used to match the pathname part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/pathname)
+     */
+    readonly pathname: string;
+    /**
+     * The **`port`** read-only property of the URLPattern interface is a string containing the pattern used to match the port part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/port)
+     */
+    readonly port: string;
+    /**
+     * The **`protocol`** read-only property of the URLPattern interface is a string containing the pattern used to match the protocol part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/protocol)
+     */
+    readonly protocol: string;
+    /**
+     * The **`search`** read-only property of the URLPattern interface is a string containing the pattern used to match the search part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/search)
+     */
+    readonly search: string;
+    /**
+     * The **`username`** read-only property of the URLPattern interface is a string containing the pattern used to match the username part of a URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/username)
+     */
+    readonly username: string;
+    /**
+     * The **`exec()`** method of the URLPattern interface takes a URL or object of URL parts, and returns either an object containing the results of matching the URL to the pattern, or `null` if the URL does not match the pattern.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/exec)
+     */
+    exec(input?: URLPatternInput, baseURL?: string | URL): URLPatternResult | null;
+    /**
+     * The **`test()`** method of the URLPattern interface takes a URL or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
+     */
+    test(input?: URLPatternInput, baseURL?: string | URL): boolean;
+}
+
+declare var URLPattern: {
+    prototype: URLPattern;
+    new(input: URLPatternInput, baseURL: string | URL, options?: URLPatternOptions): URLPattern;
+    new(input?: URLPatternInput, options?: URLPatternOptions): URLPattern;
+};
+
+/**
  * The **`URLSearchParams`** interface defines utility methods to work with the query string of a URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams)
@@ -11378,6 +11486,7 @@ type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
 type TimerHandler = string | Function;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type BinaryType = "arraybuffer" | "blob";
