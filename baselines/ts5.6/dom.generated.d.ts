@@ -376,6 +376,11 @@ interface ConstantSourceOptions {
     offset?: number;
 }
 
+interface ConstrainBooleanOrDOMStringParameters {
+    exact?: boolean | string;
+    ideal?: boolean | string;
+}
+
 interface ConstrainBooleanParameters {
     exact?: boolean;
     ideal?: boolean;
@@ -1113,7 +1118,7 @@ interface MediaTrackCapabilities {
     channelCount?: ULongRange;
     deviceId?: string;
     displaySurface?: string;
-    echoCancellation?: boolean[];
+    echoCancellation?: (boolean | string)[];
     facingMode?: string[];
     frameRate?: DoubleRange;
     groupId?: string;
@@ -1131,7 +1136,7 @@ interface MediaTrackConstraintSet {
     channelCount?: ConstrainULong;
     deviceId?: ConstrainDOMString;
     displaySurface?: ConstrainDOMString;
-    echoCancellation?: ConstrainBoolean;
+    echoCancellation?: ConstrainBooleanOrDOMString;
     facingMode?: ConstrainDOMString;
     frameRate?: ConstrainDouble;
     groupId?: ConstrainDOMString;
@@ -1153,7 +1158,7 @@ interface MediaTrackSettings {
     channelCount?: number;
     deviceId?: string;
     displaySurface?: string;
-    echoCancellation?: boolean;
+    echoCancellation?: boolean | string;
     facingMode?: string;
     frameRate?: number;
     groupId?: string;
@@ -2013,6 +2018,15 @@ interface RegistrationOptions {
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
+interface Report {
+    body?: ReportBody | null;
+    type?: string;
+    url?: string;
+}
+
+interface ReportBody {
+}
+
 interface ReportingObserverOptions {
     buffered?: boolean;
     types?: string[];
@@ -2132,7 +2146,7 @@ interface SecurityPolicyViolationEventInit extends EventInit {
 
 interface ShadowRootInit {
     clonable?: boolean;
-    customElementRegistry?: CustomElementRegistry;
+    customElementRegistry?: CustomElementRegistry | null;
     delegatesFocus?: boolean;
     mode: ShadowRootMode;
     serializable?: boolean;
@@ -2144,6 +2158,16 @@ interface ShareData {
     text?: string;
     title?: string;
     url?: string;
+}
+
+interface SpeechRecognitionErrorEventInit extends EventInit {
+    error: SpeechRecognitionErrorCode;
+    message?: string;
+}
+
+interface SpeechRecognitionEventInit extends EventInit {
+    resultIndex?: number;
+    results: SpeechRecognitionResultList;
 }
 
 interface SpeechSynthesisErrorEventInit extends SpeechSynthesisEventInit {
@@ -4577,91 +4601,6 @@ declare var CDATASection: {
 };
 
 /**
- * The `CSPViolationReportBody` interface is an extension of the Reporting API that represents the body of a Content Security Policy (CSP) violation report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody)
- */
-interface CSPViolationReportBody extends ReportBody {
-    /**
-     * The **`blockedURL`** read-only property of the CSPViolationReportBody interface is a string value that represents the resource that was blocked because it violates a Content Security Policy (CSP).
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/blockedURL)
-     */
-    readonly blockedURL: string | null;
-    /**
-     * The **`columnNumber`** read-only property of the CSPViolationReportBody interface indicates the column number in the source file that triggered the Content Security Policy (CSP) violation.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/columnNumber)
-     */
-    readonly columnNumber: number | null;
-    /**
-     * The **`disposition`** read-only property of the CSPViolationReportBody interface indicates whether the user agent is configured to enforce Content Security Policy (CSP) violations or only report them.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/disposition)
-     */
-    readonly disposition: SecurityPolicyViolationEventDisposition;
-    /**
-     * The **`documentURL`** read-only property of the CSPViolationReportBody interface is a string that represents the URL of the document or worker that violated the Content Security Policy (CSP).
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/documentURL)
-     */
-    readonly documentURL: string;
-    /**
-     * The **`effectiveDirective`** read-only property of the CSPViolationReportBody interface is a string that represents the effective Content Security Policy (CSP) directive that was violated.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/effectiveDirective)
-     */
-    readonly effectiveDirective: string;
-    /**
-     * The **`lineNumber`** read-only property of the CSPViolationReportBody interface indicates the line number in the source file that triggered the Content Security Policy (CSP) violation.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/lineNumber)
-     */
-    readonly lineNumber: number | null;
-    /**
-     * The **`originalPolicy`** read-only property of the CSPViolationReportBody interface is a string that represents the Content Security Policy (CSP) whose enforcement uncovered the violation.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/originalPolicy)
-     */
-    readonly originalPolicy: string;
-    /**
-     * The **`referrer`** read-only property of the CSPViolationReportBody interface is a string that represents the URL of the referring page of the resource who's Content Security Policy (CSP) was violated.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/referrer)
-     */
-    readonly referrer: string | null;
-    /**
-     * The **`sample`** read-only property of the CSPViolationReportBody interface is a string that contains a part of the resource that violated the Content Security Policy (CSP).
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/sample)
-     */
-    readonly sample: string | null;
-    /**
-     * The **`sourceFile`** read-only property of the CSPViolationReportBody interface indicates the URL of the source file that violated the Content Security Policy (CSP).
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/sourceFile)
-     */
-    readonly sourceFile: string | null;
-    /**
-     * The **`statusCode`** read-only property of the CSPViolationReportBody interface is a number representing the HTTP status code of the response to the request that triggered a Content Security Policy (CSP) violation (when loading a window or worker).
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/statusCode)
-     */
-    readonly statusCode: number;
-    /**
-     * The **`toJSON()`** method of the CSPViolationReportBody interface is a _serializer_, which returns a JSON representation of the `CSPViolationReportBody` object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSPViolationReportBody/toJSON)
-     */
-    toJSON(): any;
-}
-
-declare var CSPViolationReportBody: {
-    prototype: CSPViolationReportBody;
-    new(): CSPViolationReportBody;
-};
-
-/**
  * The **`CSSAnimation`** interface of the Web Animations API represents an Animation object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSAnimation)
@@ -4902,7 +4841,7 @@ interface CSSGroupingRule extends CSSRule {
      */
     deleteRule(index: number): void;
     /**
-     * The **`insertRule()`** method of the ```js-nolint insertRule(rule) insertRule(rule, index) ``` - `rule` - : A string - `index` [MISSING: optional_inline] - : An optional index at which to insert the rule; defaults to 0.
+     * The **`insertRule()`** method of the ```js-nolint insertRule(rule) insertRule(rule, index) ``` - `rule` - : A string - `index` MISSING: optional_inline] - : An optional index at which to insert the rule; defaults to 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSGroupingRule/insertRule)
      */
@@ -6421,6 +6360,8 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     fontVariantCaps: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-east-asian) */
     fontVariantEastAsian: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-emoji) */
+    fontVariantEmoji: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-ligatures) */
     fontVariantLigatures: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-numeric) */
@@ -8810,7 +8751,7 @@ declare var CustomElementRegistry: {
 };
 
 /**
- * The **`CustomEvent`** interface represents events initialized by an application for any purpose.
+ * The **`CustomEvent`** interface can be used to attach custom data to an event generated by an application.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent)
  */
@@ -8944,7 +8885,7 @@ interface DOMImplementation {
      */
     createDocument(namespace: string | null, qualifiedName: string | null, doctype?: DocumentType | null): XMLDocument;
     /**
-     * The **`DOMImplementation.createDocumentType()`** method returns a DocumentType object which can either be used with into the document via methods like Node.insertBefore() or ```js-nolint createDocumentType(qualifiedNameStr, publicId, systemId) ``` - `qualifiedNameStr` - : A string containing the qualified name, like `svg:svg`.
+     * The **`DOMImplementation.createDocumentType()`** method returns a DocumentType object which can either be used with into the document via methods like Node.insertBefore() or ```js-nolint createDocumentType(name, publicId, systemId) ``` - `name` - : A string containing the name of the doctype, like `html`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/createDocumentType)
      */
@@ -10478,6 +10419,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "RTCPeerConnectionIceEvent"): RTCPeerConnectionIceEvent;
     createEvent(eventInterface: "RTCTrackEvent"): RTCTrackEvent;
     createEvent(eventInterface: "SecurityPolicyViolationEvent"): SecurityPolicyViolationEvent;
+    createEvent(eventInterface: "SpeechRecognitionErrorEvent"): SpeechRecognitionErrorEvent;
+    createEvent(eventInterface: "SpeechRecognitionEvent"): SpeechRecognitionEvent;
     createEvent(eventInterface: "SpeechSynthesisErrorEvent"): SpeechSynthesisErrorEvent;
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
@@ -13758,7 +13701,12 @@ interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDListElement)
  */
 interface HTMLDListElement extends HTMLElement {
-    /** @deprecated */
+    /**
+     * The **`compact`** property of the HTMLDListElement interface indicates that spacing between list items should be reduced.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDListElement/compact)
+     */
     compact: boolean;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -13852,6 +13800,12 @@ declare var HTMLDetailsElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement)
  */
 interface HTMLDialogElement extends HTMLElement {
+    /**
+     * The **`closedBy`** property of the A string; possible values are: - `any` - : The dialog can be dismissed with a light dismiss user action, a platform-specific user action, or a developer-specified mechanism.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/closedBy)
+     */
+    closedBy: string;
     /**
      * The **`open`** property of the `open` HTML attribute, indicating whether the dialog is available for interaction.
      *
@@ -15104,7 +15058,7 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      */
     max: string;
     /**
-     * The **`maxLength`** property of the HTMLInputElement interface indicates the maximum number of characters (in UTF-16 code units) allowed to be entered for the value of the input element, and the maximum number of characters allowed for the value to be valid.
+     * The **`maxLength`** property of the HTMLInputElement interface indicates the maximum number of characters (in UTF-16) allowed to be entered for the value of the input element, and the maximum number of characters allowed for the value to be valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/maxLength)
      */
@@ -15116,7 +15070,7 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      */
     min: string;
     /**
-     * The **`minLength`** property of the HTMLInputElement interface indicates the minimum number of characters (in UTF-16 code units) required for the value of the input element to be valid.
+     * The **`minLength`** property of the HTMLInputElement interface indicates the minimum number of characters (in UTF-16) required for the value of the input element to be valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/minLength)
      */
@@ -15238,7 +15192,7 @@ interface HTMLInputElement extends HTMLElement, PopoverInvokerElement {
      */
     readonly webkitEntries: ReadonlyArray<FileSystemEntry>;
     /**
-     * The **`HTMLInputElement.webkitdirectory`** is a property that reflects the `webkitdirectory` HTML attribute and indicates that the input element should let the user select directories instead of files.
+     * The **`webkitdirectory`** property of the HTMLInputElement interface reflects the `webkitdirectory` HTML attribute, which indicates that `<input type='file'>` elements should let the user select directories instead of files.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitdirectory)
      */
@@ -15884,7 +15838,12 @@ declare var HTMLMediaElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMenuElement)
  */
 interface HTMLMenuElement extends HTMLElement {
-    /** @deprecated */
+    /**
+     * The **`compact`** property of the HTMLMenuElement interface indicates that spacing between list items should be reduced.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMenuElement/compact)
+     */
     compact: boolean;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMenuElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -16039,7 +15998,12 @@ declare var HTMLModElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOListElement)
  */
 interface HTMLOListElement extends HTMLElement {
-    /** @deprecated */
+    /**
+     * The **`compact`** property of the HTMLOListElement interface indicates that spacing between list items should be reduced.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOListElement/compact)
+     */
     compact: boolean;
     /**
      * The **`reversed`** property of the HTMLOListElement interface indicates order of a list.
@@ -17616,13 +17580,13 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     readonly labels: NodeListOf<HTMLLabelElement>;
     /**
-     * The **`maxLength`** property of the HTMLTextAreaElement interface indicates the maximum number of characters (in UTF-16 code units) allowed to be entered for the value of the textarea element, and the maximum number of characters allowed for the value to be valid.
+     * The **`maxLength`** property of the HTMLTextAreaElement interface indicates the maximum number of characters (in UTF-16) allowed to be entered for the value of the textarea element, and the maximum number of characters allowed for the value to be valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/maxLength)
      */
     maxLength: number;
     /**
-     * The **`minLength`** property of the HTMLTextAreaElement interface indicates the minimum number of characters (in UTF-16 code units) required for the value of the textarea element to be valid.
+     * The **`minLength`** property of the HTMLTextAreaElement interface indicates the minimum number of characters (in UTF-16) required for the value of the textarea element to be valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/minLength)
      */
@@ -17676,7 +17640,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     selectionStart: number;
     /**
-     * The **`textLength`** read-only property of the HTMLTextAreaElement interface is a non-negative integer representing the number of characters, in UTF-16 code units, of the textarea element's value.
+     * The **`textLength`** read-only property of the HTMLTextAreaElement interface is a non-negative integer representing the number of characters, in UTF-16, of the textarea element's value.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/textLength)
      */
@@ -17884,7 +17848,12 @@ declare var HTMLTrackElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLUListElement)
  */
 interface HTMLUListElement extends HTMLElement {
-    /** @deprecated */
+    /**
+     * The **`compact`** property of the HTMLUListElement interface indicates that spacing between list items should be reduced.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLUListElement/compact)
+     */
     compact: boolean;
     /** @deprecated */
     type: string;
@@ -19237,44 +19206,49 @@ declare var InputEvent: {
  */
 interface IntersectionObserver {
     /**
-     * The IntersectionObserver interface's read-only **`root`** property identifies the Element or of the viewport for the element which is the observer's target.
+     * The **`root`** read-only property of the IntersectionObserver interface identifies the Element or Document whose bounds are treated as the bounding box of the viewport for the element which is the observer's target.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/root)
      */
     readonly root: Element | Document | null;
     /**
-     * The IntersectionObserver interface's read-only **`rootMargin`** property is a string with syntax similar to that of the CSS margin property.
+     * The **`rootMargin`** read-only property of the IntersectionObserver interface is a string with syntax similar to that of the CSS margin property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/rootMargin)
      */
     readonly rootMargin: string;
+    /**
+     * The **`scrollMargin`** read-only property of the IntersectionObserver interface adds a margin to all nested scroll container within the root element, including the root element if it is a scroll container.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/scrollMargin)
+     */
     readonly scrollMargin: string;
     /**
-     * The IntersectionObserver interface's read-only **`thresholds`** property returns the list of intersection thresholds that was specified when the observer was instantiated with only one threshold ratio was provided when instantiating the object, this will be an array containing that single value.
+     * The **`thresholds`** read-only property of the IntersectionObserver interface returns the list of intersection thresholds that was specified when the observer was instantiated with IntersectionObserver.IntersectionObserver.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/thresholds)
      */
     readonly thresholds: ReadonlyArray<number>;
     /**
-     * The IntersectionObserver method **`disconnect()`** stops watching all of its target elements for visibility changes.
+     * The **`disconnect()`** method of the IntersectionObserver interface stops the observer watching all of its target elements for visibility changes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/disconnect)
      */
     disconnect(): void;
     /**
-     * The IntersectionObserver method **`observe()`** adds an element to the set of target elements being watched by the `IntersectionObserver`.
+     * The **`observe()`** method of the IntersectionObserver interface adds an element to the set of target elements being watched by the `IntersectionObserver`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/observe)
      */
     observe(target: Element): void;
     /**
-     * The IntersectionObserver method **`takeRecords()`** returns an array of has experienced an intersection change since the last time the intersections were checked, either explicitly through a call to this method or implicitly by an automatic call to the observer's callback.
+     * The **`takeRecords()`** method of the IntersectionObserver interface returns an array of IntersectionObserverEntry objects, one for each targeted element which has experienced an intersection change since the last time the intersections were checked, either explicitly through a call to this method or implicitly by an automatic call to the observer's callback.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/takeRecords)
      */
     takeRecords(): IntersectionObserverEntry[];
     /**
-     * The IntersectionObserver method **`unobserve()`** instructs the `IntersectionObserver` to stop observing the specified target element.
+     * The **`unobserve()`** method of the IntersectionObserver interface instructs the `IntersectionObserver` to stop observing the specified target element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/unobserve)
      */
@@ -19293,43 +19267,43 @@ declare var IntersectionObserver: {
  */
 interface IntersectionObserverEntry {
     /**
-     * The IntersectionObserverEntry interface's read-only **`boundingClientRect`** property returns a smallest rectangle that contains the entire target element.
+     * The **`boundingClientRect`** read-only property of the IntersectionObserverEntry interface returns a DOMRectReadOnly which in essence describes a rectangle describing the smallest rectangle that contains the entire target element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/boundingClientRect)
      */
     readonly boundingClientRect: DOMRectReadOnly;
     /**
-     * The IntersectionObserverEntry interface's read-only **`intersectionRatio`** property tells you how much of the target element is currently visible within the root's intersection ratio, as a value between 0.0 and 1.0.
+     * The **`intersectionRatio`** read-only property of the IntersectionObserverEntry interface tells you how much of the target element is currently visible within the root's intersection ratio, as a value between 0.0 and 1.0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/intersectionRatio)
      */
     readonly intersectionRatio: number;
     /**
-     * The IntersectionObserverEntry interface's read-only **`intersectionRect`** property is a contains the entire portion of the target element which is currently visible within the intersection root.
+     * The **`intersectionRect`** read-only property of the IntersectionObserverEntry interface is a DOMRectReadOnly object which describes the smallest rectangle that contains the entire portion of the target element which is currently visible within the intersection root.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/intersectionRect)
      */
     readonly intersectionRect: DOMRectReadOnly;
     /**
-     * The IntersectionObserverEntry interface's read-only **`isIntersecting`** property is a Boolean value which is `true` if the target element intersects with the intersection observer's root.
+     * The **`isIntersecting`** read-only property of the IntersectionObserverEntry interface is a Boolean value which is `true` if the target element intersects with the intersection observer's root.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/isIntersecting)
      */
     readonly isIntersecting: boolean;
     /**
-     * The IntersectionObserverEntry interface's read-only **`rootBounds`** property is a rectangle, offset by the IntersectionObserver.rootMargin if one is specified.
+     * The **`rootBounds`** read-only property of the IntersectionObserverEntry interface is a DOMRectReadOnly corresponding to the IntersectionObserverEntry.target's root intersection rectangle, offset by the IntersectionObserver.rootMargin if one is specified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/rootBounds)
      */
     readonly rootBounds: DOMRectReadOnly | null;
     /**
-     * The IntersectionObserverEntry interface's read-only **`target`** property indicates which targeted root.
+     * The **`target`** read-only property of the IntersectionObserverEntry interface indicates which targeted Element has changed its amount of intersection with the intersection root.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/target)
      */
     readonly target: Element;
     /**
-     * The IntersectionObserverEntry interface's read-only **`time`** property is a change occurred relative to the time at which the document was created.
+     * The **`time`** read-only property of the IntersectionObserverEntry interface is a DOMHighResTimeStamp that indicates the time at which the intersection change occurred relative to the time at which the document was created.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/time)
      */
@@ -23663,13 +23637,13 @@ interface PerformanceNavigationTiming extends PerformanceResourceTiming {
      */
     readonly type: NavigationTimingType;
     /**
-     * The **`unloadEventEnd`** read-only property returns a DOMHighResTimeStamp representing the time immediately after the current document's `unload` event handler completes.
+     * The **`unloadEventEnd`** read-only property returns a DOMHighResTimeStamp representing the time immediately after the previous document's `unload` event handler completes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/unloadEventEnd)
      */
     readonly unloadEventEnd: DOMHighResTimeStamp;
     /**
-     * The **`unloadEventStart`** read-only property returns a DOMHighResTimeStamp representing the time immediately before the current document's `unload` event handler starts.
+     * The **`unloadEventStart`** read-only property returns a DOMHighResTimeStamp representing the time immediately before the previous document's `unload` event handler starts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/unloadEventStart)
      */
@@ -24325,6 +24299,12 @@ interface PointerEvent extends MouseEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/isPrimary)
      */
     readonly isPrimary: boolean;
+    /**
+     * The **`persistentDeviceId`** read-only property of the PointerEvent interface is a unique identifier for the pointing device generating the `PointerEvent`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/persistentDeviceId)
+     */
+    readonly persistentDeviceId: number;
     /**
      * The **`pointerId`** read-only property of the event.
      *
@@ -26304,57 +26284,6 @@ interface RemotePlayback extends EventTarget {
 declare var RemotePlayback: {
     prototype: RemotePlayback;
     new(): RemotePlayback;
-};
-
-/**
- * The `Report` interface of the Reporting API represents a single report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report)
- */
-interface Report {
-    /**
-     * The **`body`** read-only property of the Report interface returns the body of the report, which is a `ReportBody` object containing the detailed report information.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/body)
-     */
-    readonly body: ReportBody | null;
-    /**
-     * The **`type`** read-only property of the Report interface returns the type of report generated, e.g., `deprecation` or `intervention`.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/type)
-     */
-    readonly type: string;
-    /**
-     * The **`url`** read-only property of the Report interface returns the URL of the document that generated the report.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Report/url)
-     */
-    readonly url: string;
-    toJSON(): any;
-}
-
-declare var Report: {
-    prototype: Report;
-    new(): Report;
-};
-
-/**
- * The **`ReportBody`** interface of the Reporting API represents the body of a report.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody)
- */
-interface ReportBody {
-    /**
-     * The **`toJSON()`** method of the ReportBody interface is a _serializer_, and returns a JSON representation of the `ReportBody` object.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportBody/toJSON)
-     */
-    toJSON(): any;
-}
-
-declare var ReportBody: {
-    prototype: ReportBody;
-    new(): ReportBody;
 };
 
 /**
@@ -30850,7 +30779,7 @@ interface ServiceWorkerContainerEventMap {
  */
 interface ServiceWorkerContainer extends EventTarget {
     /**
-     * The **`controller`** read-only property of the ServiceWorkerContainer interface returns a `activated` (the same object returned by `null` if the request is a force refresh (_Shift_ + refresh) or if there is no active worker.
+     * The **`controller`** read-only property of the ServiceWorkerContainer interface represents the active ServiceWorker controlling the current page (associated with this `ServiceWorkerContainer`), or `null` if the page has no active or activating service worker.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/controller)
      */
@@ -31027,7 +30956,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     readonly host: Element;
     /**
-     * The **`innerHTML`** property of the ShadowRoot interface sets gets or sets the HTML markup to the DOM tree inside the `ShadowRoot`.
+     * The **`innerHTML`** property of the ShadowRoot interface gets or sets the HTML markup to the DOM tree inside the `ShadowRoot`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/innerHTML)
      */
@@ -31247,6 +31176,58 @@ interface SpeechRecognitionAlternative {
 declare var SpeechRecognitionAlternative: {
     prototype: SpeechRecognitionAlternative;
     new(): SpeechRecognitionAlternative;
+};
+
+/**
+ * The **`SpeechRecognitionErrorEvent`** interface of the Web Speech API represents error messages from the recognition service.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionErrorEvent)
+ */
+interface SpeechRecognitionErrorEvent extends Event {
+    /**
+     * The **`error`** read-only property of the A string naming the type of error.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionErrorEvent/error)
+     */
+    readonly error: SpeechRecognitionErrorCode;
+    /**
+     * The **`message`** read-only property of the error in more detail.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionErrorEvent/message)
+     */
+    readonly message: string;
+}
+
+declare var SpeechRecognitionErrorEvent: {
+    prototype: SpeechRecognitionErrorEvent;
+    new(type: string, eventInitDict: SpeechRecognitionErrorEventInit): SpeechRecognitionErrorEvent;
+};
+
+/**
+ * The **`SpeechRecognitionEvent`** interface of the Web Speech API represents the event object for the SpeechRecognition.result_event and SpeechRecognition.nomatch_event events, and contains all the data associated with an interim or final speech recognition result.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionEvent)
+ */
+interface SpeechRecognitionEvent extends Event {
+    /**
+     * The **`resultIndex`** read-only property of the the SpeechRecognitionResultList 'array' that has actually changed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionEvent/resultIndex)
+     */
+    readonly resultIndex: number;
+    /**
+     * The **`results`** read-only property of the recognition results for the current session.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionEvent/results)
+     */
+    readonly results: SpeechRecognitionResultList;
+}
+
+declare var SpeechRecognitionEvent: {
+    prototype: SpeechRecognitionEvent;
+    new(type: string, eventInitDict: SpeechRecognitionEventInit): SpeechRecognitionEvent;
 };
 
 /**
@@ -32032,7 +32013,7 @@ declare var Text: {
 };
 
 /**
- * The **`TextDecoder`** interface represents a decoder for a specific text encoding, such as `UTF-8`, `ISO-8859-2`, `KOI8-R`, `GBK`, etc.
+ * The **`TextDecoder`** interface represents a decoder for a specific text encoding, such as `UTF-8`, `ISO-8859-2`, or `GBK`.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder)
  */
@@ -32087,19 +32068,19 @@ declare var TextDecoderStream: {
 };
 
 /**
- * The **`TextEncoder`** interface takes a stream of code points as input and emits a stream of UTF-8 bytes.
+ * The **`TextEncoder`** interface enables you to character encoding a JavaScript string using UTF-8.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder)
  */
 interface TextEncoder extends TextEncoderCommon {
     /**
-     * The **`TextEncoder.encode()`** method takes a string as input, and returns a Global_Objects/Uint8Array containing the text given in parameters encoded with the specific method for that TextEncoder object.
+     * The **`TextEncoder.encode()`** method takes a string as input, and returns a Global_Objects/Uint8Array containing the string character encoding using UTF-8.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
     encode(input?: string): Uint8Array;
     /**
-     * The **`TextEncoder.encodeInto()`** method takes a string to encode and a destination Uint8Array to put resulting UTF-8 encoded text into, and returns a dictionary object indicating the progress of the encoding.
+     * The **`TextEncoder.encodeInto()`** method takes a string to encode and a destination Uint8Array to put resulting UTF-8 encoded text into, and returns an object indicating the progress of the encoding.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
      */
@@ -33033,6 +33014,11 @@ declare var webkitURL: typeof URL;
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern)
  */
 interface URLPattern {
+    /**
+     * The **`hasRegExpGroups`** read-only property of the URLPattern interface is a boolean indicating whether or not any of the `URLPattern` components contain regular expression capturing groups.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/hasRegExpGroups)
+     */
     readonly hasRegExpGroups: boolean;
     /**
      * The **`hash`** read-only property of the URLPattern interface is a string containing the pattern used to match the fragment part of a URL.
@@ -39526,6 +39512,7 @@ type CanvasImageSource = HTMLOrSVGImageElement | HTMLVideoElement | HTMLCanvasEl
 type ClipboardItemData = Promise<string | Blob>;
 type ClipboardItems = ClipboardItem[];
 type ConstrainBoolean = boolean | ConstrainBooleanParameters;
+type ConstrainBooleanOrDOMString = boolean | string | ConstrainBooleanOrDOMStringParameters;
 type ConstrainDOMString = string | string[] | ConstrainDOMStringParameters;
 type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
@@ -39760,6 +39747,7 @@ type ServiceWorkerState = "activated" | "activating" | "installed" | "installing
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type ShadowRootMode = "closed" | "open";
 type SlotAssignmentMode = "manual" | "named";
+type SpeechRecognitionErrorCode = "aborted" | "audio-capture" | "language-not-supported" | "network" | "no-speech" | "not-allowed" | "phrases-not-supported" | "service-not-allowed";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
