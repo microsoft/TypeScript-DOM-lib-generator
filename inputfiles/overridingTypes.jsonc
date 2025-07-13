@@ -3810,9 +3810,6 @@
             "GPUValidationError": {
                 "exposed": ""
             },
-            "ScrollTimeline": {
-                "exposed": ""
-            },
             "TrustedHTML": {
                 "exposed": ""
             },

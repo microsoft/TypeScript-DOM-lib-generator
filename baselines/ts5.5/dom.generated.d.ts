@@ -2110,6 +2110,11 @@ interface ScrollOptions {
     behavior?: ScrollBehavior;
 }
 
+interface ScrollTimelineOptions {
+    axis?: ScrollAxis;
+    source?: Element | null;
+}
+
 interface ScrollToOptions extends ScrollOptions {
     left?: number;
     top?: number;
@@ -30532,6 +30537,31 @@ interface ScriptProcessorNode extends AudioNode {
 declare var ScriptProcessorNode: {
     prototype: ScriptProcessorNode;
     new(): ScriptProcessorNode;
+};
+
+/**
+ * The **`ScrollTimeline`** interface of the Web Animations API represents a scroll progress timeline (see CSS scroll-driven animations for more details).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScrollTimeline)
+ */
+interface ScrollTimeline extends AnimationTimeline {
+    /**
+     * The **`axis`** read-only property of the An enumerated value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScrollTimeline/axis)
+     */
+    readonly axis: ScrollAxis;
+    /**
+     * The **`source`** read-only property of the An Element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScrollTimeline/source)
+     */
+    readonly source: Element | null;
+}
+
+declare var ScrollTimeline: {
+    prototype: ScrollTimeline;
+    new(options?: ScrollTimelineOptions): ScrollTimeline;
 };
 
 /**
