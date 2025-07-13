@@ -2489,6 +2489,12 @@ interface VideoFrameInit {
     visibleRect?: DOMRectInit;
 }
 
+interface ViewTimelineOptions {
+    axis?: ScrollAxis;
+    inset?: string | (CSSNumericValue | CSSKeywordValue)[];
+    subject?: Element;
+}
+
 interface WaveShaperOptions extends AudioNodeOptions {
     curve?: number[] | Float32Array;
     oversample?: OverSampleType;
@@ -33674,6 +33680,37 @@ declare var VideoPlaybackQuality: {
 };
 
 /**
+ * The **`ViewTimeline`** interface of the Web Animations API represents a view progress timeline (see CSS scroll-driven animations for more details).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTimeline)
+ */
+interface ViewTimeline extends ScrollTimeline {
+    /**
+     * The **`endOffset`** read-only property of the ViewTimeline interface returns a CSSNumericValue representing the ending (100% progress) scroll position of the timeline as an offset from the start of the overflowing section of content in the scroller.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTimeline/endOffset)
+     */
+    readonly endOffset: CSSNumericValue;
+    /**
+     * The **`startOffset`** read-only property of the ViewTimeline interface returns a CSSNumericValue representing the starting (0% progress) scroll position of the timeline as an offset from the start of the overflowing section of content in the scroller.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTimeline/startOffset)
+     */
+    readonly startOffset: CSSNumericValue;
+    /**
+     * The **`subject`** read-only property of the ViewTimeline interface returns a reference to the subject element whose visibility within its nearest ancestor scrollable element (scroller) is driving the progress of the timeline.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTimeline/subject)
+     */
+    readonly subject: Element;
+}
+
+declare var ViewTimeline: {
+    prototype: ViewTimeline;
+    new(options?: ViewTimelineOptions): ViewTimeline;
+};
+
+/**
  * The **`ViewTransition`** interface of the View Transition API represents an active view transition, and provides functionality to react to the transition reaching different states (e.g., ready to run the animation, or animation finished) or skip the transition altogether.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition)
@@ -39727,6 +39764,7 @@ type ResidentKeyRequirement = "discouraged" | "preferred" | "required";
 type ResizeObserverBoxOptions = "border-box" | "content-box" | "device-pixel-content-box";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
+type ScrollAxis = "block" | "inline" | "x" | "y";
 type ScrollBehavior = "auto" | "instant" | "smooth";
 type ScrollLogicalPosition = "center" | "end" | "nearest" | "start";
 type ScrollRestoration = "auto" | "manual";

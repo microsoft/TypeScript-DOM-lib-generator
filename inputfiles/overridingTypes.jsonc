@@ -3828,9 +3828,6 @@
             "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
-            "ViewTimeline": {
-                "exposed": ""
-            },
             "WGSLLanguageFeatures": {
                 "exposed": ""
             },
