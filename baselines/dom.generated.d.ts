@@ -29003,7 +29003,7 @@ declare var SVGMarkerElement: {
  */
 interface SVGMaskElement extends SVGElement {
     /**
-     * The read-only **`height`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the height attribute of the marker.
+     * The read-only **`height`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the height attribute of the mask.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/height)
      */
@@ -29021,7 +29021,7 @@ interface SVGMaskElement extends SVGElement {
      */
     readonly maskUnits: SVGAnimatedEnumeration;
     /**
-     * The read-only **`width`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the width attribute of the marker.
+     * The read-only **`width`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the width attribute of the mask.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/width)
      */
@@ -29033,7 +29033,7 @@ interface SVGMaskElement extends SVGElement {
      */
     readonly x: SVGAnimatedLength;
     /**
-     * The read-only **`y`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the y attribute of the marker.
+     * The read-only **`y`** property of the SVGMaskElement interface returns an SVGAnimatedLength object containing the value of the y attribute of the mask.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGMaskElement/y)
      */
