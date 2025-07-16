@@ -8943,7 +8943,7 @@ interface URLSearchParams {
 
 declare var URLSearchParams: {
     prototype: URLSearchParams;
-    new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+    new(init?: string | Iterable<[string, string]> | Record<string, string>): URLSearchParams;
 };
 
 /**
