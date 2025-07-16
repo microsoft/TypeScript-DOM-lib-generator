@@ -1066,6 +1066,7 @@ interface WebTransportHash {
 interface WebTransportOptions {
     allowPooling?: boolean;
     congestionControl?: WebTransportCongestionControl;
+    datagramsReadableMode?: DatagramsReadableMode;
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
 }
@@ -13133,6 +13134,7 @@ type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type CookieSameSite = "lax" | "none" | "strict";
+type DatagramsReadableMode = "bytes";
 type DocumentVisibilityState = "hidden" | "visible";
 type EncodedAudioChunkType = "delta" | "key";
 type EncodedVideoChunkType = "delta" | "key";

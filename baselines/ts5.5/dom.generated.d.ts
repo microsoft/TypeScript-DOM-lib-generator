@@ -1811,6 +1811,8 @@ interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
     mid?: string;
     nackCount?: number;
     pliCount?: number;
+    psnrMeasurements?: number;
+    psnrSum?: Record<string, number>;
     qpSum?: number;
     qualityLimitationDurations?: Record<string, number>;
     qualityLimitationReason?: RTCQualityLimitationReason;
@@ -2563,6 +2565,7 @@ interface WebTransportHash {
 interface WebTransportOptions {
     allowPooling?: boolean;
     congestionControl?: WebTransportCongestionControl;
+    datagramsReadableMode?: DatagramsReadableMode;
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
 }
@@ -11335,7 +11338,7 @@ interface ElementCSSInlineStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attributeStyleMap) */
     readonly attributeStyleMap: StylePropertyMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style) */
-    readonly style: CSSStyleDeclaration;
+    readonly style: CSSStyleProperties;
 }
 
 interface ElementContentEditable {
@@ -20656,8 +20659,11 @@ interface MediaSource extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/duration)
      */
     duration: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/sourceclose_event) */
     onsourceclose: ((this: MediaSource, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/sourceended_event) */
     onsourceended: ((this: MediaSource, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/sourceopen_event) */
     onsourceopen: ((this: MediaSource, ev: Event) => any) | null;
     /**
      * The **`readyState`** read-only property of the current `MediaSource`.
@@ -37071,7 +37077,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
      */
-    getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleDeclaration;
+    getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleProperties;
     /**
      * The **`getSelection()`** method of the Window interface returns the Selection object associated with the window's document, representing the range of text selected by the user or the current position of the caret.
      *
@@ -39107,7 +39113,7 @@ declare function focus(): void;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
  */
-declare function getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleDeclaration;
+declare function getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleProperties;
 /**
  * The **`getSelection()`** method of the Window interface returns the Selection object associated with the window's document, representing the range of text selected by the user or the current position of the caret.
  *
@@ -39664,6 +39670,7 @@ type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type CookieSameSite = "lax" | "none" | "strict";
 type CredentialMediationRequirement = "conditional" | "optional" | "required" | "silent";
 type DOMParserSupportedType = "application/xhtml+xml" | "application/xml" | "image/svg+xml" | "text/html" | "text/xml";
+type DatagramsReadableMode = "bytes";
 type DirectionSetting = "" | "lr" | "rl";
 type DisplayCaptureSurfaceType = "browser" | "monitor" | "window";
 type DistanceModelType = "exponential" | "inverse" | "linear";
