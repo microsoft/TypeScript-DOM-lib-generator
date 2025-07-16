@@ -783,9 +783,11 @@
             "RTCOutboundRtpStreamStats": {
                 "members": {
                     "member": {
-                        "powerEfficientEncoder": null, // Blink only as of 2025-04
-                        "encoderImplementation": null, // Blink only as of 2025-04
-                        "encodingIndex": null // Blink only as of 2025-04
+                        "powerEfficientEncoder": null, // Blink only as of 2025-07
+                        "encoderImplementation": null, // Blink only as of 2025-07
+                        "encodingIndex": null, // Blink only as of 2025-07
+                        "psnrMeasurements": null, // No implementation as of 2025-07
+                        "psnrSum": null // No implementation as of 2025-07
                     }
                 }
             },
@@ -910,9 +912,10 @@
             "WebTransportOptions": {
                 "members": {
                     "member": {
-                        "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2024-09
-                        "anticipatedConcurrentIncomingUnidirectionalStreams": null, // No implementation as of 2024-09
-                        "protocols": null // No implementation as of 2024-09
+                        "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2025-07
+                        "anticipatedConcurrentIncomingUnidirectionalStreams": null, // No implementation as of 2025-07
+                        "datagramsReadableMode": null, // No implementation as of 2025-07
+                        "protocols": null // No implementation as of 2025-07
                     }
                 }
             },

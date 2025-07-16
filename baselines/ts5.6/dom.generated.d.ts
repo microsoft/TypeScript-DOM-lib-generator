@@ -11345,7 +11345,7 @@ interface ElementCSSInlineStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attributeStyleMap) */
     readonly attributeStyleMap: StylePropertyMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style) */
-    get style(): CSSStyleDeclaration;
+    get style(): CSSStyleProperties;
     set style(cssText: string);
 }
 
@@ -20677,8 +20677,11 @@ interface MediaSource extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/duration)
      */
     duration: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/sourceclose_event) */
     onsourceclose: ((this: MediaSource, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/sourceended_event) */
     onsourceended: ((this: MediaSource, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/sourceopen_event) */
     onsourceopen: ((this: MediaSource, ev: Event) => any) | null;
     /**
      * The **`readyState`** read-only property of the current `MediaSource`.
@@ -37094,7 +37097,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
      */
-    getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleDeclaration;
+    getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleProperties;
     /**
      * The **`getSelection()`** method of the Window interface returns the Selection object associated with the window's document, representing the range of text selected by the user or the current position of the caret.
      *
@@ -39130,7 +39133,7 @@ declare function focus(): void;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
  */
-declare function getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleDeclaration;
+declare function getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleProperties;
 /**
  * The **`getSelection()`** method of the Window interface returns the Selection object associated with the window's document, representing the range of text selected by the user or the current position of the caret.
  *
