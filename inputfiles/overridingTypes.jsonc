@@ -3851,7 +3851,7 @@
 							"param": [
 								{
 									"name": "init",
-									"overrideType": "string | Iterable<[string, string]> | Record<string, string> | URLSearchParams"
+									"overrideType": "string | Iterable<[string, string]> | Record<string, string>"
 								}
 							]
 						}
