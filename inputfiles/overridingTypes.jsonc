@@ -3842,7 +3842,22 @@
                         }
                     }
                 }
-            }
+            },
+			"URLSearchParams": {
+				"name": "URLSearchParams",
+				"constructor": {
+					"signature": {
+						"0": {
+							"param": [
+								{
+									"name": "init",
+									"overrideType": "string | Iterable<[string, string]> | Record<string, string>"
+								}
+							]
+						}
+					}
+				}
+			}
         }
     },
     "dictionaries": {
