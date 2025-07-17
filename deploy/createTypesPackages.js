@@ -134,7 +134,6 @@ const go = async () => {
     });
 
     prependAutoImports(pkg, packagePath);
-    postProcessDTSFiles(pkg, packagePath);
 
     // Setup the files in the repo
     const newPkgJSON = await updatePackageJSON(pkg, packagePath);
@@ -264,30 +263,6 @@ function relativeUrl(from, to) {
     relative.startsWith("./")
     ? relative
     : `./${relative}`;
-}
-
-/**
- * Handles any post-processing we do for deployment.
- * @param {Package} pkg
- * @param {URL} packagePath
- */
-export function postProcessDTSFiles(pkg, packagePath) {
-  iterateThroughFiles((content) => {
-    return content.replace(
-      "abort(reason?: any): AbortSignal;",
-      "// abort(reason?: any): AbortSignal; - To be re-added in the future",
-    );
-  });
-
-  /** @param {(str:string) => string} contentReplacer */
-  function iterateThroughFiles(contentReplacer) {
-    pkg.files.forEach((fileRef) => {
-      const dtsFileURL = new URL(fileRef.to, packagePath);
-      let dtsContent = fs.readFileSync(dtsFileURL, "utf-8");
-      dtsContent = contentReplacer(dtsContent);
-      fs.writeFileSync(dtsFileURL, dtsContent);
-    });
-  }
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
