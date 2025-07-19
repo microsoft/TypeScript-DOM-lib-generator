@@ -14,6 +14,7 @@ import { getInterfaceToEventMap } from "./build/webref/events.js";
 import { getWebidls } from "./build/webref/idl.js";
 import jsonc from "jsonc-parser";
 import { generateDescriptions } from "./build/mdn-comments.js";
+import readPatches from "./build/patches.js";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -93,6 +94,7 @@ async function emitDom() {
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
+  const patches = await readPatches();
   const comments = await readInputJSON("comments.json");
   const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
@@ -230,6 +232,7 @@ async function emitDom() {
   webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   webidl = merge(webidl, addedItems);
   webidl = merge(webidl, overriddenItems);
+  webidl = merge(webidl, patches);
   webidl = merge(webidl, comments);
   webidl = mergeDeprecatedMessage(webidl, deprecatedInfo);
   for (const name in webidl.interfaces!.interface) {
