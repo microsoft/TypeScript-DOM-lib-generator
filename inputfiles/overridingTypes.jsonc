@@ -3827,21 +3827,6 @@
             },
             "WGSLLanguageFeatures": {
                 "exposed": ""
-            },
-            "PublicKeyCredential": {
-                "methods": {
-                    "method": {
-                        "signalAllAcceptedCredentials": {
-                            "exposed": ""
-                        },
-                        "signalCurrentUserDetails": {
-                            "exposed": ""
-                        },
-                        "signalUnknownCredential": {
-                            "exposed": ""
-                        }
-                    }
-                }
             }
         }
     },

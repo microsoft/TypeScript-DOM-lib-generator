@@ -52,6 +52,12 @@ interface Algorithm {
     name: string;
 }
 
+interface AllAcceptedCredentialsOptions {
+    allAcceptedCredentialIds: Base64URLString[];
+    rpId: string;
+    userId: Base64URLString;
+}
+
 interface AnalyserOptions extends AudioNodeOptions {
     fftSize?: number;
     maxDecibels?: number;
@@ -460,6 +466,13 @@ interface CredentialRequestOptions {
 interface CryptoKeyPair {
     privateKey: CryptoKey;
     publicKey: CryptoKey;
+}
+
+interface CurrentUserDetailsOptions {
+    displayName: string;
+    name: string;
+    rpId: string;
+    userId: Base64URLString;
 }
 
 interface CustomEventInit<T = any> extends EventInit {
@@ -2383,6 +2396,11 @@ interface UnderlyingSource<R = any> {
     pull?: UnderlyingSourcePullCallback<R>;
     start?: UnderlyingSourceStartCallback<R>;
     type?: ReadableStreamType;
+}
+
+interface UnknownCredentialOptions {
+    credentialId: Base64URLString;
+    rpId: string;
 }
 
 interface ValidityStateFlags {
@@ -24568,6 +24586,24 @@ declare var PublicKeyCredential: {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/parseRequestOptionsFromJSON_static)
      */
     parseRequestOptionsFromJSON(options: PublicKeyCredentialRequestOptionsJSON): PublicKeyCredentialRequestOptions;
+    /**
+     * The **`signalAllAcceptedCredentials()`** static method of the PublicKeyCredential interface signals to the authenticator all of the valid credential IDs that the relying party (RP) server still holds for a particular user.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/signalAllAcceptedCredentials_static)
+     */
+    signalAllAcceptedCredentials(options: AllAcceptedCredentialsOptions): Promise<void>;
+    /**
+     * The **`signalCurrentUserDetails()`** static method of the PublicKeyCredential interface signals to the authenticator that a particular user has updated their user name and/or display name on the relying party (RP) server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/signalCurrentUserDetails_static)
+     */
+    signalCurrentUserDetails(options: CurrentUserDetailsOptions): Promise<void>;
+    /**
+     * The **`signalUnknownCredential()`** static method of the PublicKeyCredential interface signals to the authenticator that a credential ID was not recognized by the relying party (RP) server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/signalUnknownCredential_static)
+     */
+    signalUnknownCredential(options: UnknownCredentialOptions): Promise<void>;
 };
 
 /**
