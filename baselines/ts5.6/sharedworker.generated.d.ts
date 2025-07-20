@@ -212,6 +212,10 @@ interface FontFaceSetLoadEventInit extends EventInit {
     fontfaces?: FontFace[];
 }
 
+interface GPUPipelineErrorInit {
+    reason: GPUPipelineErrorReason;
+}
+
 interface GetNotificationOptions {
     tag?: string;
 }
@@ -3792,6 +3796,31 @@ interface GPUError {
      */
     readonly message: string;
 }
+
+declare var GPUError: {
+    prototype: GPUError;
+    new(): GPUError;
+};
+
+/**
+ * The **`GPUPipelineError`** interface of the WebGPU API describes a pipeline failure.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError)
+ */
+interface GPUPipelineError extends DOMException {
+    /**
+     * The **`reason`** read-only property of the GPUPipelineError interface defines the reason the pipeline creation failed in a machine-readable way.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError/reason)
+     */
+    readonly reason: GPUPipelineErrorReason;
+}
+
+declare var GPUPipelineError: {
+    prototype: GPUPipelineError;
+    new(message: string, options: GPUPipelineErrorInit): GPUPipelineError;
+};
 
 interface GenericTransformStream {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream/readable) */
@@ -11222,6 +11251,7 @@ type FileSystemHandleKind = "directory" | "file";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
+type GPUPipelineErrorReason = "internal" | "validation";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";

@@ -532,18 +532,6 @@
                     }
                 }
             },
-            "GPUError": {
-                "exposed": "Window Worker",
-                // WebKit doesn't have GPUError interface but only subinterfaces as of 2024-11-20
-                "noInterfaceObject": true,
-                "properties": {
-                    "property": {
-                        "message": {
-                            "exposed": "Window Worker"
-                        }
-                    }
-                }
-            },
             "GPUPipelineError": {
                 // Web IDL optional argument can be followed by a required argument, but not in TS
                 // TODO: Maybe do this in the emitter?
@@ -3760,9 +3748,6 @@
                 "exposed": ""
             },
             "GPUOutOfMemoryError": {
-                "exposed": ""
-            },
-            "GPUPipelineError": {
                 "exposed": ""
             },
             "GPUPipelineLayout": {

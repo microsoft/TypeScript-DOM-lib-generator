@@ -746,6 +746,10 @@ interface FullscreenOptions {
     navigationUI?: FullscreenNavigationUI;
 }
 
+interface GPUPipelineErrorInit {
+    reason: GPUPipelineErrorReason;
+}
+
 interface GainOptions extends AudioNodeOptions {
     gain?: number;
 }
@@ -12558,6 +12562,31 @@ interface GPUError {
      */
     readonly message: string;
 }
+
+declare var GPUError: {
+    prototype: GPUError;
+    new(): GPUError;
+};
+
+/**
+ * The **`GPUPipelineError`** interface of the WebGPU API describes a pipeline failure.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError)
+ */
+interface GPUPipelineError extends DOMException {
+    /**
+     * The **`reason`** read-only property of the GPUPipelineError interface defines the reason the pipeline creation failed in a machine-readable way.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError/reason)
+     */
+    readonly reason: GPUPipelineErrorReason;
+}
+
+declare var GPUPipelineError: {
+    prototype: GPUPipelineError;
+    new(message: string, options: GPUPipelineErrorInit): GPUPipelineError;
+};
 
 /**
  * The `GainNode` interface represents a change in volume.
@@ -39802,6 +39831,7 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
+type GPUPipelineErrorReason = "internal" | "validation";
 type GamepadHapticEffectType = "dual-rumble" | "trigger-rumble";
 type GamepadHapticsResult = "complete" | "preempted";
 type GamepadMappingType = "" | "standard" | "xr-standard";
