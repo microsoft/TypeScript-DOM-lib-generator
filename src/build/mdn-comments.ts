@@ -29,7 +29,7 @@ function extractSummary(markdown: string): string {
     // Keep link text but remove URLs
     .replace(/\[(.*?)\]\(.*?\)/g, "$1")
     .replace(/"/g, "'")
-    .trim()
+    .trim();
 
   // Extract the first sentence (ending in . ! or ?)
   const sentenceMatch = normalizedText.match(/(.*?[.!?])(?=\s|$)/);
