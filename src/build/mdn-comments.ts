@@ -9,36 +9,27 @@ function extractSummary(markdown: string): string {
   // Remove frontmatter (--- at the beginning)
   markdown = markdown.replace(/^---[\s\S]+?---\n/, "");
 
+  const firstParagraphStart = markdown.search(/\n[^{<>\n]/);
+  if (firstParagraphStart === -1) {
+    throw new Error("Couldn't find the first paragraph somehow", {
+      cause: markdown.slice(0, 100),
+    });
+  }
+  const firstParagraphEnd = markdown.indexOf("\n\n", firstParagraphStart);
+  const firstParagraph = markdown
+    .slice(firstParagraphStart + 1, firstParagraphEnd)
+    .replaceAll("\n", " ");
+
   // Normalize line breaks by collapsing consecutive newlines into a single space
-  const normalizedText = markdown
-    .split("\n")
-    .map((line) => line.trim())
-    .filter(
-      (line) =>
-        line &&
-        !line.startsWith("#") &&
-        !line.startsWith(">") &&
-        !line.startsWith("{{"),
-    )
-    .join(" ")
-    .replace(
-      /\{\{\s*(Glossary|HTMLElement|SVGAttr|SVGElement|cssxref|jsxref|HTTPHeader)\s*\(\s*["']((?:\\.|[^"\\])*?)["'].*?\)\s*\}\}/gi,
-      "$2",
-    ) // Extract first argument from multiple templates, handling escaped quotes & spaces
-    .replace(
-      /\{\{\s*domxref\s*\(\s*["']((?:\\.|[^"\\])*?)["'][^}]*\)\s*\}\}/gi,
-      "$1",
-    ) // Extract first argument from domxref, handling spaces
-    .replace(
-      /\{\{\s*(?:event|jsxref|cssref|specname)\s*\|\s*([^}]+)\s*\}\}/gi,
-      "$1",
-    ) // Handle event, jsxref, cssref, etc.
-    .replace(/\{\{\s*([^}]+)\s*\}\}/g, (_, match) => `[MISSING: ${match}]`) // Catch any remaining unhandled templates
-    .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Keep link text but remove URLs
-    .replace(/\s+/g, " ") // Normalize spaces
-    .replace(/\n\s*/g, "\n") // Ensure line breaks are preserved
+  const normalizedText = firstParagraph
+    // Extract first argument from multiple templates, handling escaped quotes & spaces
+    .replace(/\{\{ *(?:\w+)\( *["']((?:\\.|[^"\\])*?)["'].*?\) *\}\}/g, "$1")
+    // Catch any remaining unhandled templates
+    .replace(/\{\{\s*([^}]+)\s*\}\}/g, (_, match) => `[MISSING: ${match}]`)
+    // Keep link text but remove URLs
+    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
     .replace(/"/g, "'")
-    .trim();
+    .trim()
 
   // Extract the first sentence (ending in . ! or ?)
   const sentenceMatch = normalizedText.match(/(.*?[.!?])(?=\s|$)/);
@@ -46,8 +37,7 @@ function extractSummary(markdown: string): string {
     return sentenceMatch[0]; // Return the first full sentence
   }
 
-  const firstWord = normalizedText.split(" ")[0];
-  return firstWord || "";
+  return normalizedText;
 }
 
 async function walkDirectory(dir: URL): Promise<URL[]> {
