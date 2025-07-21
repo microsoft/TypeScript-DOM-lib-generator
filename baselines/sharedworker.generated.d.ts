@@ -651,6 +651,12 @@ interface Transformer<I = any, O = any> {
     writableType?: undefined;
 }
 
+interface TrustedTypePolicyOptions {
+    createHTML?: CreateHTMLCallback;
+    createScript?: CreateScriptCallback;
+    createScriptURL?: CreateScriptURLCallback;
+}
+
 interface URLPatternComponentResult {
     groups?: Record<string, string | undefined>;
     input?: string;
@@ -6554,7 +6560,7 @@ interface ServiceWorkerContainer extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/register)
      */
-    register(scriptURL: string | URL, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
+    register(scriptURL: TrustedScriptURL | string, options?: RegistrationOptions): Promise<ServiceWorkerRegistration>;
     /**
      * The **`startMessages()`** method of the ServiceWorkerContainer interface explicitly starts the flow of messages being dispatched from a service worker to pages under its control (e.g., sent via Client.postMessage()).
      *
@@ -7108,6 +7114,170 @@ interface TransformStreamDefaultController<O = any> {
 declare var TransformStreamDefaultController: {
     prototype: TransformStreamDefaultController;
     new(): TransformStreamDefaultController;
+};
+
+/**
+ * The **`TrustedHTML`** interface of the Trusted Types API represents a string that a developer can insert into an injection sink that will render it as HTML.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedHTML)
+ */
+interface TrustedHTML {
+    /**
+     * The **`toJSON()`** method of the TrustedHTML interface returns a JSON representation of the stored data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedHTML/toJSON)
+     */
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedHTML: {
+    prototype: TrustedHTML;
+    new(): TrustedHTML;
+};
+
+/**
+ * The **`TrustedScript`** interface of the Trusted Types API represents a string with an uncompiled script body that a developer can insert into an injection sink that might execute the script.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScript)
+ */
+interface TrustedScript {
+    /**
+     * The **`toJSON()`** method of the TrustedScript interface returns a JSON representation of the stored data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScript/toJSON)
+     */
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScript: {
+    prototype: TrustedScript;
+    new(): TrustedScript;
+};
+
+/**
+ * The **`TrustedScriptURL`** interface of the Trusted Types API represents a string that a developer can insert into an injection sink that will parse it as a URL of an external script.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScriptURL)
+ */
+interface TrustedScriptURL {
+    /**
+     * The **`toJSON()`** method of the TrustedScriptURL interface returns a JSON representation of the stored data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedScriptURL/toJSON)
+     */
+    toJSON(): string;
+    toString(): string;
+}
+
+declare var TrustedScriptURL: {
+    prototype: TrustedScriptURL;
+    new(): TrustedScriptURL;
+};
+
+/**
+ * The **`TrustedTypePolicy`** interface of the Trusted Types API defines a group of functions which create `TrustedType` objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy)
+ */
+interface TrustedTypePolicy {
+    /**
+     * The **`name`** read-only property of the TrustedTypePolicy interface returns the name of the policy.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/name)
+     */
+    readonly name: string;
+    /**
+     * The **`createHTML()`** method of the TrustedTypePolicy interface creates a TrustedHTML object using a policy created by TrustedTypePolicyFactory.createPolicy().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/createHTML)
+     */
+    createHTML(input: string, ...arguments: any[]): TrustedHTML;
+    /**
+     * The **`createScript()`** method of the TrustedTypePolicy interface creates a TrustedScript object using a policy created by TrustedTypePolicyFactory.createPolicy().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/createScript)
+     */
+    createScript(input: string, ...arguments: any[]): TrustedScript;
+    /**
+     * The **`createScriptURL()`** method of the TrustedTypePolicy interface creates a TrustedScriptURL object using a policy created by TrustedTypePolicyFactory.createPolicy().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicy/createScriptURL)
+     */
+    createScriptURL(input: string, ...arguments: any[]): TrustedScriptURL;
+}
+
+declare var TrustedTypePolicy: {
+    prototype: TrustedTypePolicy;
+    new(): TrustedTypePolicy;
+};
+
+/**
+ * The **`TrustedTypePolicyFactory`** interface of the Trusted Types API creates policies and allows the verification of Trusted Type objects against created policies.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory)
+ */
+interface TrustedTypePolicyFactory {
+    /**
+     * The **`defaultPolicy`** read-only property of the TrustedTypePolicyFactory interface returns the default TrustedTypePolicy or null if this is empty.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/defaultPolicy)
+     */
+    readonly defaultPolicy: TrustedTypePolicy | null;
+    /**
+     * The **`emptyHTML`** read-only property of the TrustedTypePolicyFactory interface returns a TrustedHTML object containing an empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/emptyHTML)
+     */
+    readonly emptyHTML: TrustedHTML;
+    /**
+     * The **`emptyScript`** read-only property of the TrustedTypePolicyFactory interface returns a TrustedScript object containing an empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/emptyScript)
+     */
+    readonly emptyScript: TrustedScript;
+    /**
+     * The **`createPolicy()`** method of the TrustedTypePolicyFactory interface creates a TrustedTypePolicy object that implements the rules passed as `policyOptions`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
+     */
+    createPolicy(policyName: string, policyOptions?: TrustedTypePolicyOptions): TrustedTypePolicy;
+    /**
+     * The **`getAttributeType()`** method of the TrustedTypePolicyFactory interface allows web developers to check if a Trusted Type is required for an element, and if so which Trusted Type is used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
+     */
+    getAttributeType(tagName: string, attribute: string, elementNs?: string | null, attrNs?: string | null): string | null;
+    /**
+     * The **`getPropertyType()`** method of the TrustedTypePolicyFactory interface allows web developers to check if a Trusted Type is required for an element's property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/getPropertyType)
+     */
+    getPropertyType(tagName: string, property: string, elementNs?: string | null): string | null;
+    /**
+     * The **`isHTML()`** method of the TrustedTypePolicyFactory interface returns true if it is passed a valid TrustedHTML object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/isHTML)
+     */
+    isHTML(value: any): boolean;
+    /**
+     * The **`isScript()`** method of the TrustedTypePolicyFactory interface returns true if it is passed a valid TrustedScript object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/isScript)
+     */
+    isScript(value: any): boolean;
+    /**
+     * The **`isScriptURL()`** method of the TrustedTypePolicyFactory interface returns true if it is passed a valid TrustedScriptURL object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrustedTypePolicyFactory/isScriptURL)
+     */
+    isScriptURL(value: any): boolean;
+}
+
+declare var TrustedTypePolicyFactory: {
+    prototype: TrustedTypePolicyFactory;
+    new(): TrustedTypePolicyFactory;
 };
 
 /**
@@ -10136,6 +10306,8 @@ interface WindowOrWorkerGlobalScope {
     readonly origin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
     readonly performance: Performance;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/trustedTypes) */
+    readonly trustedTypes: TrustedTypePolicyFactory;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
     atob(data: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -10191,7 +10363,7 @@ interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker>
 
 declare var Worker: {
     prototype: Worker;
-    new(scriptURL: string | URL, options?: WorkerOptions): Worker;
+    new(scriptURL: TrustedScriptURL | string, options?: WorkerOptions): Worker;
 };
 
 interface WorkerGlobalScopeEventMap {
@@ -10244,7 +10416,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
      */
-    importScripts(...urls: (string | URL)[]): void;
+    importScripts(...urls: (TrustedScriptURL | string)[]): void;
     addEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -11005,6 +11177,18 @@ interface Console {
 
 declare var console: Console;
 
+interface CreateHTMLCallback {
+    (input: string, ...arguments: any[]): string | null;
+}
+
+interface CreateScriptCallback {
+    (input: string, ...arguments: any[]): string | null;
+}
+
+interface CreateScriptURLCallback {
+    (input: string, ...arguments: any[]): string | null;
+}
+
 interface LockGrantedCallback<T> {
     (lock: Lock | null): T;
 }
@@ -11124,7 +11308,7 @@ declare var self: WorkerGlobalScope & typeof globalThis;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
  */
-declare function importScripts(...urls: (string | URL)[]): void;
+declare function importScripts(...urls: (TrustedScriptURL | string)[]): void;
 /**
  * The **`dispatchEvent()`** method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order.
  *
@@ -11151,6 +11335,8 @@ declare var isSecureContext: boolean;
 declare var origin: string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
 declare var performance: Performance;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/trustedTypes) */
+declare var trustedTypes: TrustedTypePolicyFactory;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
 declare function atob(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -11224,7 +11410,7 @@ type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBY
 type ReportList = Report[];
 type RequestInfo = Request | string;
 type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
-type TimerHandler = string | Function;
+type TimerHandler = string | Function | TrustedScript;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];

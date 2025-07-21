@@ -317,14 +317,6 @@
                             }
                         }
                     }
-                },
-                "properties": {
-                    "property": {
-                        // TODO: only for bcd@6.0.24 progressive acceptance, should be removed
-                        "trustedTypes": {
-                            "exposed": ""
-                        }
-                    }
                 }
             }
         }
@@ -3793,21 +3785,6 @@
                 "exposed": ""
             },
             "GPUValidationError": {
-                "exposed": ""
-            },
-            "TrustedHTML": {
-                "exposed": ""
-            },
-            "TrustedScript": {
-                "exposed": ""
-            },
-            "TrustedScriptURL": {
-                "exposed": ""
-            },
-            "TrustedTypePolicy": {
-                "exposed": ""
-            },
-            "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
             "WGSLLanguageFeatures": {
