@@ -228,7 +228,7 @@ interface AbortSignal extends EventTarget {
      */
     readonly reason: any;
     /**
-     * The **`throwIfAborted()`** method throws the signal's abort AbortSignal.reason if the signal has been aborted; otherwise it does nothing.
+     * The **`throwIfAborted()`** method throws the signal's abort reason if the signal has been aborted; otherwise it does nothing.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/throwIfAborted)
      */
@@ -243,7 +243,7 @@ declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
     /**
-     * The **`AbortSignal.abort()`** static method returns an AbortSignal that is already set as aborted (and which does not trigger an AbortSignal/abort_event event).
+     * The **`AbortSignal.abort()`** static method returns an AbortSignal that is already set as aborted (and which does not trigger an abort event).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static)
      */
@@ -1122,13 +1122,13 @@ declare var TextDecoderStream: {
 };
 
 /**
- * The **`TextEncoder`** interface enables you to character encoding a JavaScript string using UTF-8.
+ * The **`TextEncoder`** interface enables you to encode a JavaScript string using UTF-8.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder)
  */
 interface TextEncoder extends TextEncoderCommon {
     /**
-     * The **`TextEncoder.encode()`** method takes a string as input, and returns a Global_Objects/Uint8Array containing the string character encoding using UTF-8.
+     * The **`TextEncoder.encode()`** method takes a string as input, and returns a Uint8Array containing the string encoded using UTF-8.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
@@ -1233,7 +1233,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * The **`URL`** interface is used to parse, construct, normalize, and encode URL.
+ * The **`URL`** interface is used to parse, construct, normalize, and encode URLs.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
@@ -1245,7 +1245,7 @@ interface URL {
      */
     hash: string;
     /**
-     * The **`host`** property of the URL interface is a string containing the host, which is the URL.hostname, and then, if the port of the URL is nonempty, a `':'`, followed by the URL.port of the URL.
+     * The **`host`** property of the URL interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a `':'`, followed by the port of the URL.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/host)
      */
@@ -1771,7 +1771,7 @@ interface Console {
      */
     count(label?: string): void;
     /**
-     * The **`console.countReset()`** static method resets counter used with console/count_static.
+     * The **`console.countReset()`** static method resets counter used with console.count().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static)
      */
@@ -1801,7 +1801,7 @@ interface Console {
      */
     error(...data: any[]): void;
     /**
-     * The **`console.group()`** static method creates a new inline group in the Web console log, causing any subsequent console messages to be indented by an additional level, until console/groupEnd_static is called.
+     * The **`console.group()`** static method creates a new inline group in the Web console log, causing any subsequent console messages to be indented by an additional level, until console.groupEnd() is called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static)
      */
@@ -1843,13 +1843,13 @@ interface Console {
      */
     time(label?: string): void;
     /**
-     * The **`console.timeEnd()`** static method stops a timer that was previously started by calling console/time_static.
+     * The **`console.timeEnd()`** static method stops a timer that was previously started by calling console.time().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static)
      */
     timeEnd(label?: string): void;
     /**
-     * The **`console.timeLog()`** static method logs the current value of a timer that was previously started by calling console/time_static.
+     * The **`console.timeLog()`** static method logs the current value of a timer that was previously started by calling console.time().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static)
      */

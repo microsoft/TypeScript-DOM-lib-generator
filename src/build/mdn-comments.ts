@@ -5,6 +5,18 @@ const subdirectories = [
   "webassembly/reference/javascript_interface/",
 ];
 
+function trimEnds(str: string) {
+  str = str.trim();
+  if (
+    (str.startsWith("'") && str.endsWith("'")) ||
+    (str.startsWith('"') && str.endsWith('"')) ||
+    (str.startsWith("(") && str.endsWith(")"))
+  ) {
+    return str.slice(1, -1).trim();
+  }
+  throw new Error(`No end to trim in ${str}`);
+}
+
 function extractSummary(markdown: string): string {
   // Remove frontmatter (--- at the beginning)
   markdown = markdown.replace(/^---[\s\S]+?---\n/, "");
@@ -23,13 +35,29 @@ function extractSummary(markdown: string): string {
   // Normalize line breaks by collapsing consecutive newlines into a single space
   const normalizedText = firstParagraph
     // Extract first argument from multiple templates, handling escaped quotes & spaces
-    .replace(/\{\{ *(?:\w+)\( *["']((?:\\.|[^"\\])*?)["'].*?\) *\}\}/g, "$1")
-    // Catch any remaining unhandled templates
-    .replace(/\{\{\s*([^}]+)\s*\}\}/g, (_, match) => `[MISSING: ${match}]`)
+    .replace(/\{\{ *(?:\w+)?([^}]*)\}\}/g, (_, arg) => {
+      arg = arg.trim();
+      if (!arg) {
+        return "";
+      }
+      const args = trimEnds(arg).split(",");
+      if (args.length > 2) {
+        // For whatever reason domxref gives the first argument when there are more than 3 parameters
+        return trimEnds(args[0]);
+      }
+      // For all other cases, the last argument is the plaintext
+      return trimEnds(args.at(-1)!);
+    })
     // Keep link text but remove URLs
     .replace(/\[(.*?)\]\(.*?\)/g, "$1")
     .replace(/"/g, "'")
     .trim();
+
+  if (normalizedText.includes("{{")) {
+    throw new Error("Couldn't parse the paragraph", {
+      cause: normalizedText,
+    });
+  }
 
   // Extract the first sentence (ending in . ! or ?)
   const sentenceMatch = normalizedText.match(/(.*?[.!?])(?=\s|$)/);
