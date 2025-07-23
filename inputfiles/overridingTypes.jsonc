@@ -824,13 +824,13 @@
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "additionalSignatures": [
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollection<HTMLElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollection<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollection<MathMLElement>"
                             ],
                             "signature": {
                                 "0": {
-                                    "overrideType": "HTMLCollectionOf<Element>"
+                                    "overrideType": "HTMLCollection"
                                 }
                             }
                         },
@@ -838,7 +838,7 @@
                             "name": "getElementsByClassName",
                             "signature": {
                                 "0": {
-                                    "overrideType": "HTMLCollectionOf<Element>"
+                                    "overrideType": "HTMLCollection"
                                 }
                             }
                         },
@@ -874,31 +874,31 @@
                         },
                         "anchors": {
                             "name": "anchors",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement>"
+                            "overrideType": "HTMLCollection<HTMLAnchorElement>"
                         },
                         "embeds": {
                             "name": "embeds",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
+                            "overrideType": "HTMLCollection<HTMLEmbedElement>"
                         },
                         "forms": {
                             "name": "forms",
-                            "overrideType": "HTMLCollectionOf<HTMLFormElement>"
+                            "overrideType": "HTMLCollection<HTMLFormElement>"
                         },
                         "images": {
                             "name": "images",
-                            "overrideType": "HTMLCollectionOf<HTMLImageElement>"
+                            "overrideType": "HTMLCollection<HTMLImageElement>"
                         },
                         "links": {
                             "name": "links",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
+                            "overrideType": "HTMLCollection<HTMLAnchorElement | HTMLAreaElement>"
                         },
                         "plugins": {
                             "name": "plugins",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
+                            "overrideType": "HTMLCollection<HTMLEmbedElement>"
                         },
                         "scripts": {
                             "name": "scripts",
-                            "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
+                            "overrideType": "HTMLCollection<HTMLScriptElement>"
                         },
                         "location": {
                             // Pre-TS-5.1 hack to make document.location assignable
@@ -1506,7 +1506,7 @@
                         },
                         "selectedOptions": {
                             "name": "selectedOptions",
-                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
+                            "overrideType": "HTMLCollection<HTMLOptionElement>"
                         },
                         "labels": {
                             "name": "labels",
@@ -1523,7 +1523,7 @@
                     "property": {
                         "options": {
                             "name": "options",
-                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
+                            "overrideType": "HTMLCollection<HTMLOptionElement>"
                         }
                     }
                 }
@@ -1570,11 +1570,11 @@
                     "property": {
                         "rows": {
                             "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
+                            "overrideType": "HTMLCollection<HTMLTableRowElement>"
                         },
                         "tBodies": {
                             "name": "tBodies",
-                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
+                            "overrideType": "HTMLCollection<HTMLTableSectionElement>"
                         }
                     }
                 }
@@ -1584,7 +1584,7 @@
                     "property": {
                         "rows": {
                             "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
+                            "overrideType": "HTMLCollection<HTMLTableRowElement>"
                         }
                     }
                 }
@@ -1595,13 +1595,13 @@
                         "getElementsByTagNameNS": {
                             "name": "getElementsByTagNameNS",
                             "additionalSignatures": [
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>",
-                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>"
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollection<HTMLElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollection<SVGElement>",
+                                "getElementsByTagNameNS(namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollection<MathMLElement>"
                             ],
                             "signature": {
                                 "0": {
-                                    "overrideType": "HTMLCollectionOf<Element>"
+                                    "overrideType": "HTMLCollection"
                                 }
                             }
                         }
@@ -1717,7 +1717,7 @@
                 ]
             },
             "HTMLOptionsCollection": {
-                "extends": "HTMLCollectionOf<HTMLOptionElement>"
+                "extends": "HTMLCollection<HTMLOptionElement>"
             },
             "SubtleCrypto": {
                 "methods": {
@@ -2137,7 +2137,7 @@
                     "property": {
                         "cells": {
                             "name": "cells",
-                            "overrideType": "HTMLCollectionOf<HTMLTableCellElement>"
+                            "overrideType": "HTMLCollection<HTMLTableCellElement>"
                         }
                     }
                 }
@@ -2563,6 +2563,16 @@
                                     ]
                                 }
                             }
+                        }
+                    }
+                }
+            },
+            "HTMLMapElement": {
+                "properties": {
+                    "property": {
+                        "areas": {
+                            "name": "areas",
+                            "overrideType": "HTMLCollection<HTMLAreaElement>"
                         }
                     }
                 }
@@ -3549,6 +3559,39 @@
             },
             "ContactAddress": {
                 "name": "PaymentAddress"
+            },
+            "HTMLCollection": {
+                "typeParameters": [
+                    {
+                        "name": "E",
+                        "extends": "Element",
+                        "default": "Element"
+                    },
+                    {
+                        "name": "N",
+                        "default": "never"
+                    }
+                ],
+                "methods": {
+                    "method": {
+                        "item": {
+                            "overrideSignatures": [
+                                "item(index: number): E | null"
+                            ]
+                        },
+                        "namedItem": {
+                            "overrideSignatures": [
+                                "namedItem(name: string): E | N | null"
+                            ]
+                        }
+                    }
+                },
+                "overrideIndexSignatures": [
+                    "[index: number]: E"
+                ]
+            },
+            "HTMLFormControlsCollection": {
+                "extends": "HTMLCollection<Element, RadioNodeList>"
             },
             "HTMLMediaElement": {
                 "properties": {

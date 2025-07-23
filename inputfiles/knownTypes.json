@@ -83,6 +83,7 @@
         "HkdfParams",
         "HmacImportParams",
         "HmacKeyGenParams",
+        "HTMLCollectionOf",
         "ImageBitmapRenderingContextSettings",
         "NamedCurve",
         "Pbkdf2Params",

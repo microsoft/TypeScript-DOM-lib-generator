@@ -4790,7 +4790,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active.
      *
@@ -10140,7 +10140,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEvent
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
-interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget {
     /**
      * The **`postMessage()`** method of the Worker interface sends a message to the worker.
      *
@@ -10997,7 +10997,7 @@ interface ReportingObserverCallback {
 }
 
 interface TransformerFlushCallback<O> {
-    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+    (controller: TransformStreamDefaultController<O>): Promise<void>;
 }
 
 interface TransformerStartCallback<O> {
@@ -11005,15 +11005,15 @@ interface TransformerStartCallback<O> {
 }
 
 interface TransformerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+    (chunk: I, controller: TransformStreamDefaultController<O>): Promise<void>;
 }
 
 interface UnderlyingSinkAbortCallback {
-    (reason?: any): void | PromiseLike<void>;
+    (reason?: any): Promise<void>;
 }
 
 interface UnderlyingSinkCloseCallback {
-    (): void | PromiseLike<void>;
+    (): Promise<void>;
 }
 
 interface UnderlyingSinkStartCallback {
@@ -11021,15 +11021,15 @@ interface UnderlyingSinkStartCallback {
 }
 
 interface UnderlyingSinkWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
+    (chunk: W, controller: WritableStreamDefaultController): Promise<void>;
 }
 
 interface UnderlyingSourceCancelCallback {
-    (reason?: any): void | PromiseLike<void>;
+    (reason?: any): Promise<void>;
 }
 
 interface UnderlyingSourcePullCallback<R> {
-    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
+    (controller: ReadableStreamController<R>): Promise<void>;
 }
 
 interface UnderlyingSourceStartCallback<R> {
@@ -11178,6 +11178,8 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+/** @deprecated */
+type HTMLCollectionOf<T extends Element> = HTMLCollection<T>;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];

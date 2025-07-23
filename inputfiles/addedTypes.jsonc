@@ -695,45 +695,6 @@
                     ]
                 }
             },
-            "HTMLCollectionOf": {
-                "name": "HTMLCollectionOf",
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "extends": "Element"
-                    }
-                ],
-                "exposed": "Window",
-                "extends": "HTMLCollection",
-                "methods": {
-                    "method": {
-                        "item": {
-                            "getter": true,
-                            "signature": [
-                                {
-                                    "nullable": true,
-                                    "overrideType": "T",
-                                    "param": [
-                                        {
-                                            "name": "index",
-                                            "type": "unsigned long"
-                                        }
-                                    ]
-                                }
-                            ],
-                            "specs": "html5",
-                            "name": "item"
-                        },
-                        "namedItem": {
-                            "name": "namedItem",
-                            "overrideSignatures": [
-                                "namedItem(name: string): T | null"
-                            ]
-                        }
-                    }
-                },
-                "noInterfaceObject": true
-            },
             "Element": {
                 "name": "Element",
                 "methods": {
@@ -742,7 +703,7 @@
                             "name": "getElementsByClassName",
                             "signature": {
                                 "0": {
-                                    "overrideType": "HTMLCollectionOf<Element>"
+                                    "overrideType": "HTMLCollection"
                                 }
                             }
                         },
@@ -1617,6 +1578,17 @@
                         "type": "ModuleImports"
                     }
                 ]
+            },
+            {
+                "name": "HTMLCollectionOf",
+                "deprecated": true,
+                "typeParameters": [
+                    {
+                        "name": "T",
+                        "extends": "Element"
+                    }
+                ],
+                "overrideType": "HTMLCollection<T>"
             },
             {
                 "name": "ReadableStreamReadResult",

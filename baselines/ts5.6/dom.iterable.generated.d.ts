@@ -146,12 +146,8 @@ interface HTMLAllCollection {
     [Symbol.iterator](): ArrayIterator<Element>;
 }
 
-interface HTMLCollectionBase {
+interface HTMLCollection<E extends Element = Element, N = never> {
     [Symbol.iterator](): ArrayIterator<Element>;
-}
-
-interface HTMLCollectionOf<T extends Element> {
-    [Symbol.iterator](): ArrayIterator<T>;
 }
 
 interface HTMLFormElement {
