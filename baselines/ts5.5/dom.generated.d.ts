@@ -26656,7 +26656,9 @@ declare var Response: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
+    /** The **`rel`** property of the SVGAElement returns a string reflecting the value of the `rel` attribute of the SVG a element. */
     rel: string;
+    /** The **`relList`** read-only property of the SVGAElement returns a live DOMTokenList reflecting the space-separated string `<list-of-Link-Types>` values of the `rel` attribute of the SVG a element. */
     readonly relList: DOMTokenList;
     /**
      * The **`SVGAElement.target`** read-only property of SVGAElement returns an SVGAnimatedString object that specifies the portion of a target window, frame, pane into which a document is to be opened when a link is activated.
@@ -33067,7 +33069,7 @@ declare var URL: {
      */
     canParse(url: string | URL, base?: string | URL): boolean;
     /**
-     * The **`createObjectURL()`** static method of the URL interface creates a string containing a URL representing the object given in the parameter.
+     * The **`createObjectURL()`** static method of the URL interface creates a string containing a blob URL pointing to the object given in the parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static)
      */

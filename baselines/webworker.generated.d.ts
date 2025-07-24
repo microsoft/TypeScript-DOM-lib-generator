@@ -8813,7 +8813,7 @@ declare var URL: {
      */
     canParse(url: string | URL, base?: string | URL): boolean;
     /**
-     * The **`createObjectURL()`** static method of the URL interface creates a string containing a URL representing the object given in the parameter.
+     * The **`createObjectURL()`** static method of the URL interface creates a string containing a blob URL pointing to the object given in the parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static)
      */
