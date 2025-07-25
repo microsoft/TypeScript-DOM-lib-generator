@@ -1,0 +1,3 @@
+mixin AbstractWorker event {
+    error ErrorEvent
+}

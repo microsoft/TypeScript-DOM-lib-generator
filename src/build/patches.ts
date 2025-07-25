@@ -1,5 +1,5 @@
 import { parse } from "kdljs";
-import type { Enum } from "./types";
+import type { Enum, Event } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
 
@@ -15,14 +15,22 @@ function parseKDL(kdlText: string) {
 
   const nodes = output!;
   const enums: Record<string, Enum> = {};
+  const mixins: Record<string, any> = {};
 
   for (const node of nodes) {
-    if (node.name === "enum") {
-      handleEnum(node, enums);
+    switch (node.name) {
+      case "enum":
+        handleEnum(node, enums);
+        break;
+      case "mixin":
+        handelMixin(node, mixins);
+        break;
+      default:
+        throw new Error(`Unknown node name: ${node.name}`);
     }
   }
 
-  return { enums: { enum: enums } };
+  return { enums: { enum: enums }, mixins: { mixin: mixins } };
 }
 
 /**
@@ -43,6 +51,23 @@ function handleEnum(node: any, enums: Record<string, Enum>) {
   }
 
   enums[name] = { name, value: values };
+}
+
+export function handelMixin(node: any, mixins: Record<string, any>) {
+  const name = node.values[0];
+  if (typeof name !== "string") {
+    throw new Error("Missing mixin name");
+  }
+  const event: Event[] = [];
+  if (node.values[1] == "event") {
+    node.children?.forEach((child: any) => {
+      event.push({
+        name: child.name,
+        type: child.values[0],
+      });
+    });
+  }
+  mixins[name] = { name, events: { event } };
 }
 
 /**

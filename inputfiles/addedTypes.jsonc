@@ -1,16 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "AbstractWorker": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "error",
-                            "type": "ErrorEvent"
-                        }
-                    ]
-                }
-            },
             "DocumentAndElementEventHandlers": {
                 "events": {
                     "event": [
