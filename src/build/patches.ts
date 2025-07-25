@@ -53,6 +53,14 @@ function handleEnum(node: any, enums: Record<string, Enum>) {
   enums[name] = { name, value: values };
 }
 
+/**
+ * Handles a mixin node by extracting its name and associated events.
+ * Throws an error if the mixin name is missing.
+ * If the mixin node specifies "event" as its second value, it collects all child nodes as events,
+ * each with a name and type, and adds them to the mixins record under the mixin's name.
+ * @param node The mixin node to handle.
+ * @param mixins The record of mixins to update.
+ */
 export function handelMixin(node: any, mixins: Record<string, any>) {
   const name = node.values[0];
   if (typeof name !== "string") {
