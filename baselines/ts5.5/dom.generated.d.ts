@@ -8087,8 +8087,11 @@ interface CanvasUserInterface {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CaretPosition)
  */
 interface CaretPosition {
+    /** The **`offset`** property of the CaretPosition interface returns an integer representing the offset of the selection in the caret position node. */
     readonly offset: number;
+    /** The **`offsetNode`** property of the CaretPosition interface returns a Node containing the found node at the caret's position. */
     readonly offsetNode: Node;
+    /** The `getClientRect()` method of the CaretPosition interface returns the client rectangle for the caret range. */
     getClientRect(): DOMRect | null;
 }
 
