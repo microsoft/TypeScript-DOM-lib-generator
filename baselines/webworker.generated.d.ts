@@ -2045,6 +2045,7 @@ declare var CSSSkewY: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleValue)
  */
 interface CSSStyleValue {
+    __brand: "CSSStyleValue";
     toString(): string;
 }
 
@@ -5893,6 +5894,7 @@ declare var MediaCapabilities: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle)
  */
 interface MediaSourceHandle {
+    __brand: "MediaSourceHandle";
 }
 
 declare var MediaSourceHandle: {
@@ -10736,6 +10738,7 @@ declare var WebGLActiveInfo: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLBuffer)
  */
 interface WebGLBuffer {
+    __brand: "WebGLBuffer";
 }
 
 declare var WebGLBuffer: {
@@ -10768,6 +10771,7 @@ declare var WebGLContextEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLFramebuffer)
  */
 interface WebGLFramebuffer {
+    __brand: "WebGLFramebuffer";
 }
 
 declare var WebGLFramebuffer: {
@@ -10781,6 +10785,7 @@ declare var WebGLFramebuffer: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLProgram)
  */
 interface WebGLProgram {
+    __brand: "WebGLProgram";
 }
 
 declare var WebGLProgram: {
@@ -10794,6 +10799,7 @@ declare var WebGLProgram: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery)
  */
 interface WebGLQuery {
+    __brand: "WebGLQuery";
 }
 
 declare var WebGLQuery: {
@@ -10807,6 +10813,7 @@ declare var WebGLQuery: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderbuffer)
  */
 interface WebGLRenderbuffer {
+    __brand: "WebGLRenderbuffer";
 }
 
 declare var WebGLRenderbuffer: {
@@ -11750,6 +11757,7 @@ interface WebGLRenderingContextOverloads {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler)
  */
 interface WebGLSampler {
+    __brand: "WebGLSampler";
 }
 
 declare var WebGLSampler: {
@@ -11763,6 +11771,7 @@ declare var WebGLSampler: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShader)
  */
 interface WebGLShader {
+    __brand: "WebGLShader";
 }
 
 declare var WebGLShader: {
@@ -11807,6 +11816,7 @@ declare var WebGLShaderPrecisionFormat: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync)
  */
 interface WebGLSync {
+    __brand: "WebGLSync";
 }
 
 declare var WebGLSync: {
@@ -11820,6 +11830,7 @@ declare var WebGLSync: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTexture)
  */
 interface WebGLTexture {
+    __brand: "WebGLTexture";
 }
 
 declare var WebGLTexture: {
@@ -11833,6 +11844,7 @@ declare var WebGLTexture: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback)
  */
 interface WebGLTransformFeedback {
+    __brand: "WebGLTransformFeedback";
 }
 
 declare var WebGLTransformFeedback: {
@@ -11846,6 +11858,7 @@ declare var WebGLTransformFeedback: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLUniformLocation)
  */
 interface WebGLUniformLocation {
+    __brand: "WebGLUniformLocation";
 }
 
 declare var WebGLUniformLocation: {
@@ -11859,6 +11872,7 @@ declare var WebGLUniformLocation: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject)
  */
 interface WebGLVertexArrayObject {
+    __brand: "WebGLVertexArrayObject";
 }
 
 declare var WebGLVertexArrayObject: {
@@ -12790,6 +12804,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module)
      */
     interface Module {
+        __brand: "Module";
     }
 
     var Module: {
