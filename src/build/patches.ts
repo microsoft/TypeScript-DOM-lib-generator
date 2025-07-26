@@ -1,5 +1,5 @@
 import { parse } from "kdljs";
-import type { Enum } from "./types";
+import type { Enum, Event } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
 
@@ -15,14 +15,22 @@ function parseKDL(kdlText: string) {
 
   const nodes = output!;
   const enums: Record<string, Enum> = {};
+  const mixins: Record<string, any> = {};
 
   for (const node of nodes) {
-    if (node.name === "enum") {
-      handleEnum(node, enums);
+    switch (node.name) {
+      case "enum":
+        handleEnum(node, enums);
+        break;
+      case "interface-mixin":
+        handleMixin(node, mixins);
+        break;
+      default:
+        throw new Error(`Unknown node name: ${node.name}`);
     }
   }
 
-  return { enums: { enum: enums } };
+  return { enums: { enum: enums }, mixins: { mixin: mixins } };
 }
 
 /**
@@ -43,6 +51,29 @@ function handleEnum(node: any, enums: Record<string, Enum>) {
   }
 
   enums[name] = { name, value: values };
+}
+
+/**
+ * Handles a mixin node by extracting its name and associated events.
+ * Throws an error if the mixin name is missing.
+ * If the mixin node specifies "event" as its second value, it collects all child nodes as events,
+ * each with a name and type, and adds them to the mixins record under the mixin's name.
+ * @param node The mixin node to handle.
+ * @param mixins The record of mixins to update.
+ */
+export function handleMixin(node: any, mixins: Record<string, any>) {
+  const name = node.values[0];
+  if (typeof name !== "string") {
+    throw new Error("Missing mixin name");
+  }
+  const rawEvents = node.children.filter(
+    (child: any) => child.name === "event",
+  );
+  const event: Event[] = rawEvents.map((child: any) => ({
+    name: child.values[0],
+    type: child.properties.type,
+  }));
+  mixins[name] = { name, events: { event } };
 }
 
 /**

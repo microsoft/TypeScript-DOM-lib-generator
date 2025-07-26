@@ -1,0 +1,3 @@
+interface-mixin AbstractWorker {
+    event error type=ErrorEvent
+}
