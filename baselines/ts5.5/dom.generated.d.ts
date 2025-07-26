@@ -2132,6 +2132,12 @@ interface SVGBoundingBoxOptions {
     stroke?: boolean;
 }
 
+interface SchedulerPostTaskOptions {
+    delay?: number;
+    priority?: TaskPriority;
+    signal?: AbortSignal;
+}
+
 interface ScrollIntoViewOptions extends ScrollOptions {
     block?: ScrollLogicalPosition;
     inline?: ScrollLogicalPosition;
@@ -2263,6 +2269,18 @@ interface StructuredSerializeOptions {
 
 interface SubmitEventInit extends EventInit {
     submitter?: HTMLElement | null;
+}
+
+interface TaskControllerInit {
+    priority?: TaskPriority;
+}
+
+interface TaskPriorityChangeEventInit extends EventInit {
+    previousPriority: TaskPriority;
+}
+
+interface TaskSignalAnyInit {
+    priority?: TaskPriority | TaskSignal;
 }
 
 interface TextDecodeOptions {
@@ -3037,6 +3055,12 @@ interface Animation extends EventTarget {
     onfinish: ((this: Animation, ev: AnimationPlaybackEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/remove_event) */
     onremove: ((this: Animation, ev: AnimationPlaybackEvent) => any) | null;
+    /**
+     * The **`overallProgress`** read-only property of the Animation interface returns a number between `0` and `1` indicating the animation's overall progress towards its finished state.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/overallProgress)
+     */
+    readonly overallProgress: number | null;
     /**
      * The read-only **`Animation.pending`** property of the Web Animations API indicates whether the animation is currently waiting for an asynchronous operation such as initiating playback or pausing a running animation.
      *
@@ -10453,6 +10477,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "SpeechSynthesisEvent"): SpeechSynthesisEvent;
     createEvent(eventInterface: "StorageEvent"): StorageEvent;
     createEvent(eventInterface: "SubmitEvent"): SubmitEvent;
+    createEvent(eventInterface: "TaskPriorityChangeEvent"): TaskPriorityChangeEvent;
     createEvent(eventInterface: "TextEvent"): TextEvent;
     createEvent(eventInterface: "ToggleEvent"): ToggleEvent;
     createEvent(eventInterface: "TouchEvent"): TouchEvent;
@@ -26659,9 +26684,17 @@ declare var Response: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
-    /** The **`rel`** property of the SVGAElement returns a string reflecting the value of the `rel` attribute of the SVG a element. */
+    /**
+     * The **`rel`** property of the SVGAElement returns a string reflecting the value of the `rel` attribute of the SVG a element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/rel)
+     */
     rel: string;
-    /** The **`relList`** read-only property of the SVGAElement returns a live DOMTokenList reflecting the space-separated string `<list-of-Link-Types>` values of the `rel` attribute of the SVG a element. */
+    /**
+     * The **`relList`** read-only property of the SVGAElement returns a live DOMTokenList reflecting the space-separated string `<list-of-Link-Types>` values of the `rel` attribute of the SVG a element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/relList)
+     */
     readonly relList: DOMTokenList;
     /**
      * The **`SVGAElement.target`** read-only property of SVGAElement returns an SVGAnimatedString object that specifies the portion of a target window, frame, pane into which a document is to be opened when a link is activated.
@@ -30410,6 +30443,31 @@ declare var SVGViewElement: {
 };
 
 /**
+ * The **`Scheduler`** interface of the Prioritized Task Scheduling API provides methods for scheduling prioritized tasks.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler)
+ */
+interface Scheduler {
+    /**
+     * The **`postTask()`** method of the Scheduler interface is used for adding tasks to be scheduled according to their priority.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/postTask)
+     */
+    postTask(callback: SchedulerPostTaskCallback, options?: SchedulerPostTaskOptions): Promise<any>;
+    /**
+     * The **`yield()`** method of the Scheduler interface is used for yielding to the main thread during a task and continuing execution later, with the continuation scheduled as a prioritized task (see the Prioritized Task Scheduling API for more information).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/yield)
+     */
+    yield(): Promise<void>;
+}
+
+declare var Scheduler: {
+    prototype: Scheduler;
+    new(): Scheduler;
+};
+
+/**
  * The `Screen` interface represents a screen, usually the one on which the current window is being rendered, and is obtained using window.screen.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Screen)
@@ -32071,6 +32129,79 @@ interface SubtleCrypto {
 declare var SubtleCrypto: {
     prototype: SubtleCrypto;
     new(): SubtleCrypto;
+};
+
+/**
+ * The **`TaskController`** interface of the Prioritized Task Scheduling API represents a controller object that can be used to both abort and change the priority of one or more prioritized tasks.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskController)
+ */
+interface TaskController extends AbortController {
+    /**
+     * The **`setPriority()`** method of the TaskController interface can be called to set a new priority for this controller's `signal`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskController/setPriority)
+     */
+    setPriority(priority: TaskPriority): void;
+}
+
+declare var TaskController: {
+    prototype: TaskController;
+    new(init?: TaskControllerInit): TaskController;
+};
+
+/**
+ * The **`TaskPriorityChangeEvent`** is the interface for the `prioritychange` event.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskPriorityChangeEvent)
+ */
+interface TaskPriorityChangeEvent extends Event {
+    /**
+     * The **`previousPriority`** read-only property of the TaskPriorityChangeEvent interface returns the priority of the corresponding TaskSignal before it was changed and this `prioritychange` event was emitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskPriorityChangeEvent/previousPriority)
+     */
+    readonly previousPriority: TaskPriority;
+}
+
+declare var TaskPriorityChangeEvent: {
+    prototype: TaskPriorityChangeEvent;
+    new(type: string, priorityChangeEventInitDict: TaskPriorityChangeEventInit): TaskPriorityChangeEvent;
+};
+
+interface TaskSignalEventMap extends AbortSignalEventMap {
+    "prioritychange": TaskPriorityChangeEvent;
+}
+
+/**
+ * The **`TaskSignal`** interface of the Prioritized Task Scheduling API represents a signal object that allows you to communicate with a prioritized task, and abort it or change the priority (if required) via a TaskController object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal)
+ */
+interface TaskSignal extends AbortSignal {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/prioritychange_event) */
+    onprioritychange: ((this: TaskSignal, ev: TaskPriorityChangeEvent) => any) | null;
+    /**
+     * The read-only **`priority`** property of the TaskSignal interface indicates the signal priority.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/priority)
+     */
+    readonly priority: TaskPriority;
+    addEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var TaskSignal: {
+    prototype: TaskSignal;
+    new(): TaskSignal;
+    /**
+     * The **`TaskSignal.any()`** static method takes an iterable of AbortSignal objects and returns a TaskSignal.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/any_static)
+     */
+    any(signals: AbortSignal[], init?: TaskSignalAnyInit): TaskSignal;
 };
 
 /**
@@ -37356,6 +37487,8 @@ interface WindowOrWorkerGlobalScope {
     readonly origin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
     readonly performance: Performance;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scheduler) */
+    readonly scheduler: Scheduler;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
     atob(data: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -38588,6 +38721,10 @@ interface ResizeObserverCallback {
     (entries: ResizeObserverEntry[], observer: ResizeObserver): void;
 }
 
+interface SchedulerPostTaskCallback {
+    (): any;
+}
+
 interface TransformerFlushCallback<O> {
     (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
@@ -39641,6 +39778,8 @@ declare var isSecureContext: boolean;
 declare var origin: string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
 declare var performance: Performance;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scheduler) */
+declare var scheduler: Scheduler;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
 declare function atob(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -39928,6 +40067,7 @@ type ShadowRootMode = "closed" | "open";
 type SlotAssignmentMode = "manual" | "named";
 type SpeechRecognitionErrorCode = "aborted" | "audio-capture" | "language-not-supported" | "network" | "no-speech" | "not-allowed" | "phrases-not-supported" | "service-not-allowed";
 type SpeechSynthesisErrorCode = "audio-busy" | "audio-hardware" | "canceled" | "interrupted" | "invalid-argument" | "language-unavailable" | "network" | "not-allowed" | "synthesis-failed" | "synthesis-unavailable" | "text-too-long" | "voice-unavailable";
+type TaskPriority = "background" | "user-blocking" | "user-visible";
 type TextTrackKind = "captions" | "chapters" | "descriptions" | "metadata" | "subtitles";
 type TextTrackMode = "disabled" | "hidden" | "showing";
 type TouchType = "direct" | "stylus";

@@ -651,6 +651,12 @@ interface RsaPssParams extends Algorithm {
     saltLength: number;
 }
 
+interface SchedulerPostTaskOptions {
+    delay?: number;
+    priority?: TaskPriority;
+    signal?: AbortSignal;
+}
+
 interface SecurityPolicyViolationEventInit extends EventInit {
     blockedURI?: string;
     columnNumber?: number;
@@ -697,6 +703,18 @@ interface StreamPipeOptions {
 
 interface StructuredSerializeOptions {
     transfer?: Transferable[];
+}
+
+interface TaskControllerInit {
+    priority?: TaskPriority;
+}
+
+interface TaskPriorityChangeEventInit extends EventInit {
+    previousPriority: TaskPriority;
+}
+
+interface TaskSignalAnyInit {
+    priority?: TaskPriority | TaskSignal;
 }
 
 interface TextDecodeOptions {
@@ -6796,6 +6814,31 @@ declare var Response: {
 };
 
 /**
+ * The **`Scheduler`** interface of the Prioritized Task Scheduling API provides methods for scheduling prioritized tasks.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler)
+ */
+interface Scheduler {
+    /**
+     * The **`postTask()`** method of the Scheduler interface is used for adding tasks to be scheduled according to their priority.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/postTask)
+     */
+    postTask(callback: SchedulerPostTaskCallback, options?: SchedulerPostTaskOptions): Promise<any>;
+    /**
+     * The **`yield()`** method of the Scheduler interface is used for yielding to the main thread during a task and continuing execution later, with the continuation scheduled as a prioritized task (see the Prioritized Task Scheduling API for more information).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/yield)
+     */
+    yield(): Promise<void>;
+}
+
+declare var Scheduler: {
+    prototype: Scheduler;
+    new(): Scheduler;
+};
+
+/**
  * The **`SecurityPolicyViolationEvent`** interface inherits from Event, and represents the event object of a `securitypolicyviolation` event sent on an Element/securitypolicyviolation_event, Document/securitypolicyviolation_event, or WorkerGlobalScope/securitypolicyviolation_event when its Content Security Policy (CSP) is violated.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent)
@@ -7326,6 +7369,79 @@ interface SubtleCrypto {
 declare var SubtleCrypto: {
     prototype: SubtleCrypto;
     new(): SubtleCrypto;
+};
+
+/**
+ * The **`TaskController`** interface of the Prioritized Task Scheduling API represents a controller object that can be used to both abort and change the priority of one or more prioritized tasks.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskController)
+ */
+interface TaskController extends AbortController {
+    /**
+     * The **`setPriority()`** method of the TaskController interface can be called to set a new priority for this controller's `signal`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskController/setPriority)
+     */
+    setPriority(priority: TaskPriority): void;
+}
+
+declare var TaskController: {
+    prototype: TaskController;
+    new(init?: TaskControllerInit): TaskController;
+};
+
+/**
+ * The **`TaskPriorityChangeEvent`** is the interface for the `prioritychange` event.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskPriorityChangeEvent)
+ */
+interface TaskPriorityChangeEvent extends Event {
+    /**
+     * The **`previousPriority`** read-only property of the TaskPriorityChangeEvent interface returns the priority of the corresponding TaskSignal before it was changed and this `prioritychange` event was emitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskPriorityChangeEvent/previousPriority)
+     */
+    readonly previousPriority: TaskPriority;
+}
+
+declare var TaskPriorityChangeEvent: {
+    prototype: TaskPriorityChangeEvent;
+    new(type: string, priorityChangeEventInitDict: TaskPriorityChangeEventInit): TaskPriorityChangeEvent;
+};
+
+interface TaskSignalEventMap extends AbortSignalEventMap {
+    "prioritychange": TaskPriorityChangeEvent;
+}
+
+/**
+ * The **`TaskSignal`** interface of the Prioritized Task Scheduling API represents a signal object that allows you to communicate with a prioritized task, and abort it or change the priority (if required) via a TaskController object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal)
+ */
+interface TaskSignal extends AbortSignal {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/prioritychange_event) */
+    onprioritychange: ((this: TaskSignal, ev: TaskPriorityChangeEvent) => any) | null;
+    /**
+     * The read-only **`priority`** property of the TaskSignal interface indicates the signal priority.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/priority)
+     */
+    readonly priority: TaskPriority;
+    addEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var TaskSignal: {
+    prototype: TaskSignal;
+    new(): TaskSignal;
+    /**
+     * The **`TaskSignal.any()`** static method takes an iterable of AbortSignal objects and returns a TaskSignal.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/any_static)
+     */
+    any(signals: AbortSignal[], init?: TaskSignalAnyInit): TaskSignal;
 };
 
 /**
@@ -10630,6 +10746,8 @@ interface WindowOrWorkerGlobalScope {
     readonly origin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
     readonly performance: Performance;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scheduler) */
+    readonly scheduler: Scheduler;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
     atob(data: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -11299,6 +11417,10 @@ interface ReportingObserverCallback {
     (reports: Report[], observer: ReportingObserver): void;
 }
 
+interface SchedulerPostTaskCallback {
+    (): any;
+}
+
 interface TransformerFlushCallback<O> {
     (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
@@ -11461,6 +11583,8 @@ declare var isSecureContext: boolean;
 declare var origin: string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/performance) */
 declare var performance: Performance;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scheduler) */
+declare var scheduler: Scheduler;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/atob) */
 declare function atob(data: string): string;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/btoa) */
@@ -11604,6 +11728,7 @@ type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaquer
 type SecurityPolicyViolationEventDisposition = "enforce" | "report";
 type ServiceWorkerState = "activated" | "activating" | "installed" | "installing" | "parsed" | "redundant";
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
+type TaskPriority = "background" | "user-blocking" | "user-visible";
 type TransferFunction = "hlg" | "pq" | "srgb";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
