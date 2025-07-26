@@ -66,16 +66,13 @@ export function handleMixin(node: any, mixins: Record<string, any>) {
   if (typeof name !== "string") {
     throw new Error("Missing mixin name");
   }
-  const event: Event[] = [];
   const rawEvents = node.children.filter(
     (child: any) => child.name === "event",
   );
-  rawEvents.forEach((child: any) => {
-    event.push({
-      name: child.values[0],
-      type: child.properties.type,
-    });
-  });
+  const event: Event[] = rawEvents.map((child: any) => ({
+    name: child.values[0],
+    type: child.properties.type,
+  }));
   mixins[name] = { name, events: { event } };
 }
 
