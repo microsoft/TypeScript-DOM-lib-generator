@@ -23,7 +23,7 @@ function parseKDL(kdlText: string) {
         handleEnum(node, enums);
         break;
       case "interface-mixin":
-        handelMixin(node, mixins);
+        handleMixin(node, mixins);
         break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
@@ -61,7 +61,7 @@ function handleEnum(node: any, enums: Record<string, Enum>) {
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
  */
-export function handelMixin(node: any, mixins: Record<string, any>) {
+export function handleMixin(node: any, mixins: Record<string, any>) {
   const name = node.values[0];
   if (typeof name !== "string") {
     throw new Error("Missing mixin name");
