@@ -22,7 +22,7 @@ function parseKDL(kdlText: string) {
       case "enum":
         handleEnum(node, enums);
         break;
-      case "mixin":
+      case "interface-mixin":
         handelMixin(node, mixins);
         break;
       default:
@@ -67,14 +67,15 @@ export function handelMixin(node: any, mixins: Record<string, any>) {
     throw new Error("Missing mixin name");
   }
   const event: Event[] = [];
-  if (node.values[1] == "event") {
-    node.children?.forEach((child: any) => {
-      event.push({
-        name: child.name,
-        type: child.values[0],
-      });
+  const rawEvents = node.children.filter(
+    (child: any) => child.name === "event",
+  );
+  rawEvents.forEach((child: any) => {
+    event.push({
+      name: child.values[0],
+      type: child.properties.type,
     });
-  }
+  });
   mixins[name] = { name, events: { event } };
 }
 
