@@ -10034,7 +10034,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/anchors)
      */
-    readonly anchors: HTMLCollectionOf<HTMLAnchorElement>;
+    readonly anchors: HTMLCollection<HTMLAnchorElement>;
     /**
      * The **`applets`** property of the Document returns an empty HTMLCollection.
      * @deprecated
@@ -10139,7 +10139,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/embeds)
      */
-    readonly embeds: HTMLCollectionOf<HTMLEmbedElement>;
+    readonly embeds: HTMLCollection<HTMLEmbedElement>;
     /**
      * **`fgColor`** gets/sets the foreground color, or text color, of the current document.
      * @deprecated
@@ -10152,7 +10152,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/forms)
      */
-    readonly forms: HTMLCollectionOf<HTMLFormElement>;
+    readonly forms: HTMLCollection<HTMLFormElement>;
     /**
      * The **`fragmentDirective`** read-only property of the Document interface returns the FragmentDirective for the current document.
      *
@@ -10189,7 +10189,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/images)
      */
-    readonly images: HTMLCollectionOf<HTMLImageElement>;
+    readonly images: HTMLCollection<HTMLImageElement>;
     /**
      * The **`Document.implementation`** property returns a DOMImplementation object associated with the current document.
      *
@@ -10220,7 +10220,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/links)
      */
-    readonly links: HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>;
+    readonly links: HTMLCollection<HTMLAnchorElement | HTMLAreaElement>;
     /**
      * The **`Document.location`** read-only property returns a Location object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL.
      *
@@ -10252,7 +10252,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/plugins)
      */
-    readonly plugins: HTMLCollectionOf<HTMLEmbedElement>;
+    readonly plugins: HTMLCollection<HTMLEmbedElement>;
     /**
      * The **`Document.readyState`** property describes the loading state of the document.
      *
@@ -10277,7 +10277,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scripts)
      */
-    readonly scripts: HTMLCollectionOf<HTMLScriptElement>;
+    readonly scripts: HTMLCollection<HTMLScriptElement>;
     /**
      * The **`scrollingElement`** read-only property of the Document interface returns a reference to the Element that scrolls the document.
      *
@@ -10524,7 +10524,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/getElementsByClassName)
      */
-    getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+    getElementsByClassName(classNames: string): HTMLCollection;
     /**
      * The **`getElementsByName()`** method of the Document object returns a NodeList Collection of elements with a given `name` attribute in the document.
      *
@@ -10536,21 +10536,21 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/getElementsByTagName)
      */
-    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
-    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;
-    getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollection<HTMLElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollection<SVGElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollection<MathMLElementTagNameMap[K]>;
     /** @deprecated */
-    getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
-    getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+    getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollection<HTMLElementDeprecatedTagNameMap[K]>;
+    getElementsByTagName(qualifiedName: string): HTMLCollection;
     /**
      * Returns a list of elements with the given tag name belonging to the given namespace.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/getElementsByTagNameNS)
      */
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollectionOf<MathMLElement>;
-    getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollectionOf<Element>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollection<HTMLElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollection<SVGElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollection<MathMLElement>;
+    getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollection;
     /**
      * The **`getSelection()`** method of the Document interface returns the Selection object associated with this document, representing the range of text selected by the user, or the current position of the caret.
      *
@@ -11156,27 +11156,27 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByClassName)
      */
-    getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+    getElementsByClassName(classNames: string): HTMLCollection;
     /**
      * The **`Element.getElementsByTagName()`** method returns a live HTMLCollection of elements with the given tag name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName)
      */
-    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
-    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>;
-    getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollection<HTMLElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollection<SVGElementTagNameMap[K]>;
+    getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollection<MathMLElementTagNameMap[K]>;
     /** @deprecated */
-    getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
-    getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+    getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollection<HTMLElementDeprecatedTagNameMap[K]>;
+    getElementsByTagName(qualifiedName: string): HTMLCollection;
     /**
      * The **`Element.getElementsByTagNameNS()`** method returns a live HTMLCollection of elements with the given tag name belonging to the given namespace.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagNameNS)
      */
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollectionOf<HTMLElement>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollectionOf<SVGElement>;
-    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollectionOf<MathMLElement>;
-    getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollectionOf<Element>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string): HTMLCollection<HTMLElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string): HTMLCollection<SVGElement>;
+    getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string): HTMLCollection<MathMLElement>;
+    getElementsByTagNameNS(namespace: string | null, localName: string): HTMLCollection;
     /**
      * The **`getHTML()`** method of the Element interface is used to serialize an element's DOM to an HTML string.
      *
@@ -13707,7 +13707,7 @@ declare var HTMLCanvasElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection)
  */
-interface HTMLCollectionBase {
+interface HTMLCollection<E extends Element = Element, N = never> {
     /**
      * The **`HTMLCollection.length`** property returns the number of items in a HTMLCollection.
      *
@@ -13719,29 +13719,20 @@ interface HTMLCollectionBase {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection/item)
      */
-    item(index: number): Element | null;
-    [index: number]: Element;
-}
-
-interface HTMLCollection extends HTMLCollectionBase {
+    item(index: number): E | null;
     /**
      * The **`namedItem()`** method of the HTMLCollection interface returns the first Element in the collection whose `id` or `name` attribute match the specified name, or `null` if no element matches.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection/namedItem)
      */
-    namedItem(name: string): Element | null;
+    namedItem(name: string): E | N | null;
+    [index: number]: E;
 }
 
 declare var HTMLCollection: {
     prototype: HTMLCollection;
     new(): HTMLCollection;
 };
-
-interface HTMLCollectionOf<T extends Element> extends HTMLCollectionBase {
-    item(index: number): T | null;
-    namedItem(name: string): T | null;
-    [index: number]: T;
-}
 
 /**
  * The **`HTMLDListElement`** interface provides special properties (beyond those of the regular HTMLElement interface it also has available to it by inheritance) for manipulating definition list (dl) elements.
@@ -13801,7 +13792,7 @@ interface HTMLDataListElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataListElement/options)
      */
-    readonly options: HTMLCollectionOf<HTMLOptionElement>;
+    readonly options: HTMLCollection<HTMLOptionElement>;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -14303,7 +14294,7 @@ declare var HTMLFontElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormControlsCollection)
  */
-interface HTMLFormControlsCollection extends HTMLCollectionBase {
+interface HTMLFormControlsCollection extends HTMLCollection<Element, RadioNodeList> {
     /**
      * The **`HTMLFormControlsCollection.namedItem()`** method returns the RadioNodeList or the Element in the collection whose `name` or `id` match the specified name, or `null` if no node matches.
      *
@@ -15536,7 +15527,7 @@ interface HTMLMapElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMapElement/areas)
      */
-    readonly areas: HTMLCollection;
+    readonly areas: HTMLCollection<HTMLAreaElement>;
     /**
      * The **`name`** property of the HTMLMapElement represents the unique name `<map>` element.
      *
@@ -16310,7 +16301,7 @@ declare var HTMLOptionElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection)
  */
-interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
+interface HTMLOptionsCollection extends HTMLCollection<HTMLOptionElement> {
     /**
      * The **`length`** property of the HTMLOptionsCollection interface returns the number of option elements in the collection.
      *
@@ -16764,7 +16755,7 @@ interface HTMLSelectElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/selectedOptions)
      */
-    readonly selectedOptions: HTMLCollectionOf<HTMLOptionElement>;
+    readonly selectedOptions: HTMLCollection<HTMLOptionElement>;
     /**
      * The **`size`** property of the HTMLSelectElement interface specifies the number of options, or rows, that should be visible at one time.
      *
@@ -17266,7 +17257,7 @@ interface HTMLTableElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/rows)
      */
-    readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
+    readonly rows: HTMLCollection<HTMLTableRowElement>;
     /**
      * The **`HTMLTableElement.rules`** property indicates which cell borders to render in the table.
      * @deprecated
@@ -17286,7 +17277,7 @@ interface HTMLTableElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/tBodies)
      */
-    readonly tBodies: HTMLCollectionOf<HTMLTableSectionElement>;
+    readonly tBodies: HTMLCollection<HTMLTableSectionElement>;
     /**
      * The **`HTMLTableElement.tFoot`** property represents the tfoot element of a table.
      *
@@ -17404,7 +17395,7 @@ interface HTMLTableRowElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/cells)
      */
-    readonly cells: HTMLCollectionOf<HTMLTableCellElement>;
+    readonly cells: HTMLCollection<HTMLTableCellElement>;
     /**
      * The **`ch`** property of the HTMLTableRowElement interface does nothing.
      * @deprecated
@@ -17493,7 +17484,7 @@ interface HTMLTableSectionElement extends HTMLElement {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableSectionElement/rows)
      */
-    readonly rows: HTMLCollectionOf<HTMLTableRowElement>;
+    readonly rows: HTMLCollection<HTMLTableRowElement>;
     /**
      * The **`vAlign`** property of the HTMLTableSectionElement interface is a string indicating how to vertically align text in a thead, tbody or tfoot table section.
      * @deprecated
@@ -21132,7 +21123,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active.
      *
@@ -37394,7 +37385,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEvent
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
-interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget {
     /**
      * The **`postMessage()`** method of the Worker interface sends a message to the worker.
      *
@@ -38589,7 +38580,7 @@ interface ResizeObserverCallback {
 }
 
 interface TransformerFlushCallback<O> {
-    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+    (controller: TransformStreamDefaultController<O>): Promise<void>;
 }
 
 interface TransformerStartCallback<O> {
@@ -38597,15 +38588,15 @@ interface TransformerStartCallback<O> {
 }
 
 interface TransformerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
+    (chunk: I, controller: TransformStreamDefaultController<O>): Promise<void>;
 }
 
 interface UnderlyingSinkAbortCallback {
-    (reason?: any): void | PromiseLike<void>;
+    (reason?: any): Promise<void>;
 }
 
 interface UnderlyingSinkCloseCallback {
-    (): void | PromiseLike<void>;
+    (): Promise<void>;
 }
 
 interface UnderlyingSinkStartCallback {
@@ -38613,15 +38604,15 @@ interface UnderlyingSinkStartCallback {
 }
 
 interface UnderlyingSinkWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
+    (chunk: W, controller: WritableStreamDefaultController): Promise<void>;
 }
 
 interface UnderlyingSourceCancelCallback {
-    (reason?: any): void | PromiseLike<void>;
+    (reason?: any): Promise<void>;
 }
 
 interface UnderlyingSourcePullCallback<R> {
-    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
+    (controller: ReadableStreamController<R>): Promise<void>;
 }
 
 interface UnderlyingSourceStartCallback<R> {
@@ -38637,7 +38628,7 @@ interface VideoFrameRequestCallback {
 }
 
 interface ViewTransitionUpdateCallback {
-    (): any;
+    (): Promise<any>;
 }
 
 interface VoidFunction {
