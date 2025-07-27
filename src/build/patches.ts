@@ -1,4 +1,4 @@
-import { parse } from "kdljs";
+import { parse, type Node } from "kdljs";
 import type { Enum, Event } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -39,14 +39,14 @@ function parseKDL(kdlText: string) {
  * @param node The enum node to handle.
  * @param enums The record of enums to update.
  */
-function handleEnum(node: any, enums: Record<string, Enum>) {
+function handleEnum(node: Node, enums: Record<string, Enum>) {
   const name = node.values[0];
   if (typeof name !== "string") {
     throw new Error("Missing enum name");
   }
   const values: string[] = [];
 
-  for (const child of node.children ?? []) {
+  for (const child of node.children) {
     values.push(child.name);
   }
 
@@ -61,7 +61,7 @@ function handleEnum(node: any, enums: Record<string, Enum>) {
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
  */
-export function handleMixin(node: any, mixins: Record<string, any>) {
+function handleMixin(node: Node, mixins: Record<string, any>) {
   const name = node.values[0];
   if (typeof name !== "string") {
     throw new Error("Missing mixin name");
