@@ -13688,7 +13688,7 @@ declare var HTMLCanvasElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection)
  */
-interface HTMLCollection<E extends Element = Element, N = never> {
+interface HTMLCollectionBase<E extends Element = Element, N = never> {
     /**
      * The **`HTMLCollection.length`** property returns the number of items in a HTMLCollection.
      *
@@ -13701,13 +13701,16 @@ interface HTMLCollection<E extends Element = Element, N = never> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection/item)
      */
     item(index: number): E | null;
+    [index: number]: E;
+}
+
+interface HTMLCollection<E extends Element = Element, N = never> extends HTMLCollectionBase {
     /**
      * The **`namedItem()`** method of the HTMLCollection interface returns the first Element in the collection whose `id` or `name` attribute match the specified name, or `null` if no element matches.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection/namedItem)
      */
     namedItem(name: string): E | N | null;
-    [index: number]: E;
 }
 
 declare var HTMLCollection: {
@@ -21112,7 +21115,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget {
+interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active.
      *
@@ -37374,7 +37377,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEvent
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
-interface Worker extends EventTarget, AbstractWorker, MessageEventTarget {
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
     /**
      * The **`postMessage()`** method of the Worker interface sends a message to the worker.
      *
@@ -38569,7 +38572,7 @@ interface ResizeObserverCallback {
 }
 
 interface TransformerFlushCallback<O> {
-    (controller: TransformStreamDefaultController<O>): Promise<void>;
+    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
 interface TransformerStartCallback<O> {
@@ -38577,15 +38580,15 @@ interface TransformerStartCallback<O> {
 }
 
 interface TransformerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): Promise<void>;
+    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
 interface UnderlyingSinkAbortCallback {
-    (reason?: any): Promise<void>;
+    (reason?: any): void | PromiseLike<void>;
 }
 
 interface UnderlyingSinkCloseCallback {
-    (): Promise<void>;
+    (): void | PromiseLike<void>;
 }
 
 interface UnderlyingSinkStartCallback {
@@ -38593,15 +38596,15 @@ interface UnderlyingSinkStartCallback {
 }
 
 interface UnderlyingSinkWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): Promise<void>;
+    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
 }
 
 interface UnderlyingSourceCancelCallback {
-    (reason?: any): Promise<void>;
+    (reason?: any): void | PromiseLike<void>;
 }
 
 interface UnderlyingSourcePullCallback<R> {
-    (controller: ReadableStreamController<R>): Promise<void>;
+    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
 }
 
 interface UnderlyingSourceStartCallback<R> {
@@ -38617,7 +38620,7 @@ interface VideoFrameRequestCallback {
 }
 
 interface ViewTransitionUpdateCallback {
-    (): Promise<any>;
+    (): any;
 }
 
 interface VoidFunction {

@@ -789,7 +789,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget {
+interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active.
      *
@@ -1880,7 +1880,7 @@ interface QueuingStrategySize<T = any> {
 }
 
 interface TransformerFlushCallback<O> {
-    (controller: TransformStreamDefaultController<O>): Promise<void>;
+    (controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
 interface TransformerStartCallback<O> {
@@ -1888,15 +1888,15 @@ interface TransformerStartCallback<O> {
 }
 
 interface TransformerTransformCallback<I, O> {
-    (chunk: I, controller: TransformStreamDefaultController<O>): Promise<void>;
+    (chunk: I, controller: TransformStreamDefaultController<O>): void | PromiseLike<void>;
 }
 
 interface UnderlyingSinkAbortCallback {
-    (reason?: any): Promise<void>;
+    (reason?: any): void | PromiseLike<void>;
 }
 
 interface UnderlyingSinkCloseCallback {
-    (): Promise<void>;
+    (): void | PromiseLike<void>;
 }
 
 interface UnderlyingSinkStartCallback {
@@ -1904,15 +1904,15 @@ interface UnderlyingSinkStartCallback {
 }
 
 interface UnderlyingSinkWriteCallback<W> {
-    (chunk: W, controller: WritableStreamDefaultController): Promise<void>;
+    (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
 }
 
 interface UnderlyingSourceCancelCallback {
-    (reason?: any): Promise<void>;
+    (reason?: any): void | PromiseLike<void>;
 }
 
 interface UnderlyingSourcePullCallback<R> {
-    (controller: ReadableStreamController<R>): Promise<void>;
+    (controller: ReadableStreamController<R>): void | PromiseLike<void>;
 }
 
 interface UnderlyingSourceStartCallback<R> {

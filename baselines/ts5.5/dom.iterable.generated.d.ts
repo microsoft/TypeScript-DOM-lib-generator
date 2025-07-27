@@ -142,7 +142,7 @@ interface HTMLAllCollection {
     [Symbol.iterator](): IterableIterator<Element>;
 }
 
-interface HTMLCollection<E extends Element = Element, N = never> {
+interface HTMLCollectionBase<E extends Element = Element, N = never> {
     [Symbol.iterator](): IterableIterator<Element>;
 }
 
