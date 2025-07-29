@@ -91,7 +91,8 @@ function mapInterfaceLike(
   );
 
   if (i.iterator) {
-    const iteratorKey = i.iterator.async ? "@@asyncIterator" : "@@iterator";
+    const iteratorKey =
+      i.iterator.kind === "async_iterable" ? "@@asyncIterator" : "@@iterator";
     // BCD often doesn't have an @@iterator entry, but it does usually have an entry
     // for iterable methods such as values(). Use that as a fallback.
     // See also: https://github.com/mdn/browser-compat-data/issues/6367

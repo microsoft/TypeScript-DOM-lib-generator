@@ -203,16 +203,26 @@ function convertInterfaceCommon(
         addComments(method[member.name], commentMap, i.name, member.name);
       }
     } else if (
+      (member.type as string) === "async_iterable" ||
       member.type === "iterable" ||
       member.type === "maplike" ||
       member.type === "setlike"
     ) {
+      // TODO(saschanaz): @types/webidl2 doesn't support async_iterable
+      const iterableLike = member as
+        | webidl2.IterableDeclarationMemberType
+        | webidl2.MaplikeDeclarationMemberType
+        | webidl2.SetlikeDeclarationMemberType;
+      // Compatibility between `async_iterable` and `async iterable`
+      const kind =
+        iterableLike.type === "iterable" && iterableLike.async
+          ? "async_iterable"
+          : iterableLike.type;
       result.iterator = {
-        kind: member.type,
-        readonly: member.readonly,
-        async: member.async,
-        param: member.arguments.map(convertArgument),
-        type: member.idlType.map(convertIdlType),
+        kind,
+        readonly: iterableLike.readonly,
+        param: iterableLike.arguments.map(convertArgument),
+        type: iterableLike.idlType.map(convertIdlType),
       };
     }
   }
