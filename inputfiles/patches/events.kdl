@@ -1,3 +1,68 @@
 interface-mixin AbstractWorker {
     event error type=ErrorEvent
 }
+
+interface-mixin DocumentAndElementEventHandlers {
+    event copy type=ClipboardEvent
+    event cut type=ClipboardEvent
+    event paste type=ClipboardEvent
+}
+
+interface-mixin GlobalEventHandlers {
+    event abort type=UIEvent
+    event auxclick type=PointerEvent
+    event beforeinput type=InputEvent
+    event beforetoggle type=ToggleEvent
+    event blur type=FocusEvent
+    event click type=PointerEvent
+    event compositionend type=CompositionEvent
+    event compositionstart type=CompositionEvent
+    event compositionupdate type=CompositionEvent
+    event contextmenu type=PointerEvent
+    event dblclick type=MouseEvent
+    event drag type=DragEvent
+    event dragend type=DragEvent
+    event dragenter type=DragEvent
+    event dragleave type=DragEvent
+    event dragover type=DragEvent
+    event dragstart type=DragEvent
+    event drop type=DragEvent
+    event error type=ErrorEvent
+    event focus type=FocusEvent
+    event focusin type=FocusEvent
+    event focusout type=FocusEvent
+    event formdata type=FormDataEvent
+    event keydown type=KeyboardEvent
+    event keypress type=KeyboardEvent
+    event keyup type=KeyboardEvent
+    event mousedown type=MouseEvent
+    event mouseenter type=MouseEvent
+    event mouseleave type=MouseEvent
+    event mousemove type=MouseEvent
+    event mouseout type=MouseEvent
+    event mouseover type=MouseEvent
+    event mouseup type=MouseEvent
+    event progress type=ProgressEvent
+    event resize type=UIEvent
+    event securitypolicyviolation type=SecurityPolicyViolationEvent
+    event submit type=SubmitEvent
+    event toggle type=ToggleEvent
+    event wheel type=WheelEvent
+}
+
+interface-mixin WindowEventHandlers {
+    event beforeunload type=BeforeUnloadEvent
+    event gamepadconnected type=GamepadEvent
+    event gamepaddisconnected type=GamepadEvent
+    event hashchange type=HashChangeEvent
+    event message type=MessageEvent
+    event messageerror type=MessageEvent
+    event pagehide type=PageTransitionEvent
+    event pagereveal type=PageRevealEvent
+    event pageshow type=PageTransitionEvent
+    event pageswap type=PageSwapEvent
+    event popstate type=PopStateEvent
+    event rejectionhandled type=PromiseRejectionEvent
+    event storage type=StorageEvent
+    event unhandledrejection type=PromiseRejectionEvent
+}
