@@ -7,19 +7,7 @@
                         "name": "T"
                     }
                 ],
-                "overrideThis": "T",
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
+                "overrideThis": "T"
             },
             "NavigatorGPU": {
                 "properties": {
