@@ -48,6 +48,33 @@ interface-mixin GlobalEventHandlers {
     event submit type=SubmitEvent
     event toggle type=ToggleEvent
     event wheel type=WheelEvent
+    
+    //Overrides
+    event animationcancel type=AnimationEvent
+    event animationend type=AnimationEvent
+    event animationiteration type=AnimationEvent
+    event animationstart type=AnimationEvent
+    event cut type=ClipboardEvent
+    event copy type=ClipboardEvent
+    event paste type=ClipboardEvent
+    event gotpointercapture type=PointerEvent
+    event lostpointercapture type=PointerEvent
+    event pointercancel type=PointerEvent
+    event pointerdown type=PointerEvent
+    event pointerenter type=PointerEvent
+    event pointerleave type=PointerEvent
+    event pointermove type=PointerEvent
+    event pointerout type=PointerEvent
+    event pointerover type=PointerEvent
+    event pointerup type=PointerEvent
+    event touchcancel type=TouchEvent
+    event touchend type=TouchEvent
+    event touchmove type=TouchEvent
+    event touchstart type=TouchEvent
+    event transitionrun type=TransitionEvent
+    event transitionstart type=TransitionEvent
+    event transitionend type=TransitionEvent
+    event transitioncancel type=TransitionEvent
 }
 
 interface-mixin WindowEventHandlers {
