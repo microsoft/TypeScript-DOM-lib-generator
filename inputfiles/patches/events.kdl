@@ -48,8 +48,6 @@ interface-mixin GlobalEventHandlers {
     event submit type=SubmitEvent
     event toggle type=ToggleEvent
     event wheel type=WheelEvent
-
-    //Overrides
     event animationcancel type=AnimationEvent
     event animationend type=AnimationEvent
     event animationiteration type=AnimationEvent
@@ -81,7 +79,6 @@ interface-mixin MessageEventTarget {
     event message type=MessageEvent
     event messageerror type=MessageEvent
 }
-
 
 interface-mixin WindowEventHandlers {
     event beforeunload type=BeforeUnloadEvent
