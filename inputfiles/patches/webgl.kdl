@@ -1,0 +1,3 @@
+interface-mixin WebGLRenderingContextBase {
+    property canvas exposed=Window
+}

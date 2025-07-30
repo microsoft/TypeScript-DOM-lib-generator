@@ -20,15 +20,6 @@
                         }
                     }
                 }
-            },
-            "WebGLRenderingContextBase": {
-                "properties": {
-                    "property": {
-                        "canvas": {
-                            "exposed": "Window"
-                        }
-                    }
-                }
             }
         }
     },
