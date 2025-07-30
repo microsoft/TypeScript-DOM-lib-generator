@@ -75,16 +75,10 @@ function handleMixin(node: Node, mixins: Record<string, any>) {
     const name = child.values[0] as string;
     switch (child.name) {
       case "event":
-        event.push({
-          name,
-          type: child.properties.type as string,
-        });
+        handleEventChild(child, event, name);
         break;
       case "property":
-        property[name] = {
-          name,
-          exposed: child.properties?.exposed as string,
-        };
+        handlePropertyChild(child, property, name);
         break;
       default:
         throw new Error(`Unknown node name: ${child.name}`);
@@ -92,6 +86,30 @@ function handleMixin(node: Node, mixins: Record<string, any>) {
   }
 
   mixins[name] = { name, events: { event }, properties: { property } };
+}
+
+/**
+ * Handles a child node of type "event" and adds it to the event array.
+ * @param child The child node to handle.
+ * @param event The event array to update.
+ */
+function handleEventChild(child: Node, event: Event[], name: string) {
+  event.push({
+    name,
+    type: child.properties.type as string,
+  });
+}
+
+/**
+ * Handles a child node of type "property" and adds it to the property object.
+ * @param child The child node to handle.
+ * @param property The property object to update.
+ */
+function handlePropertyChild(child: Node, property: Properties, name: string) {
+  property[name] = {
+    name,
+    exposed: child.properties?.exposed as string,
+  };
 }
 
 /**
