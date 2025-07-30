@@ -55,42 +55,6 @@ function handleEnum(node: Node, enums: Record<string, Enum>) {
 }
 
 /**
- * Extracts all event child nodes from a mixin node and returns them as an array of Event objects.
- * Each event object contains the event's name and type.
- * @param node The mixin node to extract events from.
- * @returns An array of Event objects.
- */
-function extractMixinEvents(node: Node): Event[] {
-  const rawEvents = node.children.filter(
-    (child: any) => child.name === "event",
-  );
-  return rawEvents.map((child: any) => ({
-    name: child.values[0],
-    type: child.properties.type,
-  }));
-}
-
-/**
- * Extracts all property child nodes from a mixin node and returns them as a Properties object.
- * Each property is keyed by its name and contains its name and exposed value.
- * @param node The mixin node to extract properties from.
- * @returns A Properties object mapping property names to property details.
- */
-function extractMixinProperties(node: Node): Properties {
-  const rawProperties = node.children.filter(
-    (child: any) => child.name === "property",
-  );
-  return rawProperties.reduce((acc: Properties, child: any) => {
-    const name = child.values[0];
-    acc[name] = {
-      name,
-      exposed: child.properties?.exposed,
-    };
-    return acc;
-  }, {});
-}
-
-/**
  * Handles a mixin node by extracting its name and associated events and properties.
  * Throws an error if the mixin name is missing.
  * Uses helper functions to collect events and properties.
@@ -104,8 +68,28 @@ function handleMixin(node: Node, mixins: Record<string, any>) {
     throw new Error("Missing mixin name");
   }
 
-  const event: Event[] = extractMixinEvents(node);
-  const property: Properties = extractMixinProperties(node);
+  const event: Event[] = [];
+  const property: Properties = {};
+
+  for (const child of node.children) {
+    const name = child.values[0] as string;
+    switch (child.name) {
+      case "event":
+        event.push({
+          name,
+          type: child.properties.type as string,
+        });
+        break;
+      case "property":
+        property[name] = {
+          name,
+          exposed: child.properties?.exposed as string,
+        };
+        break;
+      default:
+        throw new Error(`Unknown node name: ${child.name}`);
+    }
+  }
 
   mixins[name] = { name, events: { event }, properties: { property } };
 }
