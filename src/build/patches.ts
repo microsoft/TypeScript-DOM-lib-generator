@@ -1,7 +1,8 @@
 import { parse, type Node } from "kdljs";
-import type { Enum, Event } from "./types";
+import type { Enum, Event, Property } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
+type Properties = Record<string, Omit<Property, "type">>;
 
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
@@ -54,10 +55,46 @@ function handleEnum(node: Node, enums: Record<string, Enum>) {
 }
 
 /**
- * Handles a mixin node by extracting its name and associated events.
+ * Extracts all event child nodes from a mixin node and returns them as an array of Event objects.
+ * Each event object contains the event's name and type.
+ * @param node The mixin node to extract events from.
+ * @returns An array of Event objects.
+ */
+function extractMixinEvents(node: Node): Event[] {
+  const rawEvents = node.children.filter(
+    (child: any) => child.name === "event",
+  );
+  return rawEvents.map((child: any) => ({
+    name: child.values[0],
+    type: child.properties.type,
+  }));
+}
+
+/**
+ * Extracts all property child nodes from a mixin node and returns them as a Properties object.
+ * Each property is keyed by its name and contains its name and exposed value.
+ * @param node The mixin node to extract properties from.
+ * @returns A Properties object mapping property names to property details.
+ */
+function extractMixinProperties(node: Node): Properties {
+  const rawProperties = node.children.filter(
+    (child: any) => child.name === "property",
+  );
+  return rawProperties.reduce((acc: Properties, child: any) => {
+    const name = child.values[0];
+    acc[name] = {
+      name,
+      exposed: child.properties?.exposed,
+    };
+    return acc;
+  }, {});
+}
+
+/**
+ * Handles a mixin node by extracting its name and associated events and properties.
  * Throws an error if the mixin name is missing.
- * If the mixin node specifies "event" as its second value, it collects all child nodes as events,
- * each with a name and type, and adds them to the mixins record under the mixin's name.
+ * Uses helper functions to collect events and properties.
+ * Adds them to the mixins record under the mixin's name.
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
  */
@@ -66,14 +103,11 @@ function handleMixin(node: Node, mixins: Record<string, any>) {
   if (typeof name !== "string") {
     throw new Error("Missing mixin name");
   }
-  const rawEvents = node.children.filter(
-    (child: any) => child.name === "event",
-  );
-  const event: Event[] = rawEvents.map((child: any) => ({
-    name: child.values[0],
-    type: child.properties.type,
-  }));
-  mixins[name] = { name, events: { event } };
+
+  const event: Event[] = extractMixinEvents(node);
+  const property: Properties = extractMixinProperties(node);
+
+  mixins[name] = { name, events: { event }, properties: { property } };
 }
 
 /**
