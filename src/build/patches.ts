@@ -1,13 +1,16 @@
 import { parse, type Node } from "kdljs";
-import type { Enum, Event, Property } from "./types";
+import type { Enum, Event, Property, Interface, WebIdl } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
-type Properties = Record<string, Partial<Property>>;
+
+type DeepPartial<T> = T extends object
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : T;
 
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
  */
-function parseKDL(kdlText: string) {
+function parseKDL(kdlText: string): DeepPartial<WebIdl> {
   const { output, errors } = parse(kdlText);
 
   if (errors.length) {
@@ -16,22 +19,26 @@ function parseKDL(kdlText: string) {
 
   const nodes = output!;
   const enums: Record<string, Enum> = {};
-  const mixins: Record<string, any> = {};
+  const mixin: Record<string, DeepPartial<Interface>> = {};
 
   for (const node of nodes) {
+    const name = node.values[0];
+    if (typeof name !== "string") {
+      throw new Error(`Missing name for ${node.name}`);
+    }
     switch (node.name) {
       case "enum":
-        handleEnum(node, enums);
+        enums[name] = handleEnum(node);
         break;
       case "interface-mixin":
-        handleMixin(node, mixins);
+        mixin[name] = handleMixin(node);
         break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
     }
   }
 
-  return { enums: { enum: enums }, mixins: { mixin: mixins } };
+  return { enums: { enum: enums }, mixins: { mixin } };
 }
 
 /**
@@ -40,7 +47,7 @@ function parseKDL(kdlText: string) {
  * @param node The enum node to handle.
  * @param enums The record of enums to update.
  */
-function handleEnum(node: Node, enums: Record<string, Enum>) {
+function handleEnum(node: Node): Enum {
   const name = node.values[0];
   if (typeof name !== "string") {
     throw new Error("Missing enum name");
@@ -51,7 +58,7 @@ function handleEnum(node: Node, enums: Record<string, Enum>) {
     values.push(child.name);
   }
 
-  enums[name] = { name, value: values };
+  return { name, value: values };
 }
 
 /**
@@ -61,14 +68,14 @@ function handleEnum(node: Node, enums: Record<string, Enum>) {
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
  */
-function handleMixin(node: Node, mixins: Record<string, any>) {
+function handleMixin(node: Node): DeepPartial<Interface> {
   const name = node.values[0];
   if (typeof name !== "string") {
     throw new Error("Missing mixin name");
   }
 
   const event: Event[] = [];
-  const property: Properties = {};
+  const property: Record<string, Partial<Property>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -85,14 +92,18 @@ function handleMixin(node: Node, mixins: Record<string, any>) {
     }
   }
 
-  mixins[name] = { name, events: { event }, properties: { property } };
+  return {
+    name,
+    events: { event },
+    properties: { property },
+  } as DeepPartial<Interface>;
 }
 
 /**
  * Handles a child node of type "event" and adds it to the event array.
  * @param child The child node to handle.
  */
-function handleEvent(child: Node) {
+function handleEvent(child: Node): Event {
   return {
     name: child.values[0] as string,
     type: child.properties.type as string,
@@ -103,7 +114,7 @@ function handleEvent(child: Node) {
  * Handles a child node of type "property" and adds it to the property object.
  * @param child The child node to handle.
  */
-function handleProperty(child: Node) {
+function handleProperty(child: Node): Partial<Property> {
   return {
     name: child.values[0] as string,
     exposed: child.properties?.exposed as string,
