@@ -2,7 +2,7 @@ import { parse, type Node } from "kdljs";
 import type { Enum, Event, Property } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
-type Properties = Record<string, Omit<Property, "type">>;
+type Properties = Record<string, Partial<Property>>;
 
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
