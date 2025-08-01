@@ -57,7 +57,6 @@ function handleEnum(node: Node, enums: Record<string, Enum>) {
 /**
  * Handles a mixin node by extracting its name and associated members.
  * Throws an error if the mixin name is missing.
- * Uses helper functions to collect events and properties.
  * Adds them to the mixins record under the mixin's name.
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
