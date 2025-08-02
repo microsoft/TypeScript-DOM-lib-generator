@@ -1,1 +1,3 @@
-interface-mixin ChildNode extends="Node"
+// ChildNode and ParentNode are actually defined as mixins, but because of their names they have historically been used as a sub-interface of Node.
+interface-mixin ChildNode extends=Node
+interface-mixin ParentNode extends=Node
