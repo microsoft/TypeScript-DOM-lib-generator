@@ -119,10 +119,19 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): Partial<Property> {
-  return {
+  const result: Partial<Property> = {
     name: child.values[0] as string,
-    exposed: child.properties?.exposed as string,
   };
+
+  const props: (keyof Property)[] = ["exposed", "optional", "overrideType"];
+
+  props.forEach((prop) => {
+    const value = child.properties[prop];
+    if (value !== undefined) {
+      result[prop] = value as any;
+    }
+  });
+  return result;
 }
 
 /**
