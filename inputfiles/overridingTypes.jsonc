@@ -19,9 +19,6 @@
                     }
                 }
             },
-            "ChildNode": {
-                "extends": "Node"
-            },
             "ParentNode": {
                 "extends": "Node"
             },

@@ -92,11 +92,15 @@ function handleMixin(node: Node): DeepPartial<Interface> {
     }
   }
 
-  return {
+  const result: any = {
     name,
     events: { event },
     properties: { property },
-  } as DeepPartial<Interface>;
+  };
+  if (node.properties.extends) {
+    result.extends = node.properties.extends;
+  }
+  return result as DeepPartial<Interface>;
 }
 
 /**
