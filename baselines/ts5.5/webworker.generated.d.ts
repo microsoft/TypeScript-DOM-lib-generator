@@ -558,6 +558,7 @@ interface NotificationOptions {
     dir?: NotificationDirection;
     icon?: string;
     lang?: string;
+    navigate?: string;
     requireInteraction?: boolean;
     silent?: boolean | null;
     tag?: string;
@@ -5160,13 +5161,13 @@ interface IDBIndex {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getAll)
      */
-    getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>;
+    getAll(queryOrOptions?: any, count?: number, query: IDBValidKey | IDBKeyRange | null): IDBRequest<any[]>;
     /**
      * The **`getAllKeys()`** method of the IDBIndex interface asynchronously retrieves the primary keys of all objects inside the index, setting them as the `result` of the request object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/getAllKeys)
      */
-    getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
+    getAllKeys(queryOrOptions?: any, count?: number, query: IDBValidKey | IDBKeyRange | null): IDBRequest<IDBValidKey[]>;
     /**
      * The **`getKey()`** method of the IDBIndex interface returns an IDBRequest object, and, in a separate thread, finds either the primary key that corresponds to the given key in this index or the first corresponding primary key, if `key` is set to an IDBKeyRange.
      *
@@ -5342,13 +5343,13 @@ interface IDBObjectStore {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getAll)
      */
-    getAll(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<any[]>;
+    getAll(queryOrOptions?: any, count?: number, query: IDBValidKey | IDBKeyRange | null): IDBRequest<any[]>;
     /**
      * The `getAllKeys()` method of the IDBObjectStore interface returns an IDBRequest object retrieves record keys for all objects in the object store matching the specified parameter or all objects in the store if no parameters are given.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/getAllKeys)
      */
-    getAllKeys(query?: IDBValidKey | IDBKeyRange | null, count?: number): IDBRequest<IDBValidKey[]>;
+    getAllKeys(queryOrOptions?: any, count?: number, query: IDBValidKey | IDBKeyRange | null): IDBRequest<IDBValidKey[]>;
     /**
      * The **`getKey()`** method of the IDBObjectStore interface returns an IDBRequest object, and, in a separate thread, returns the key selected by the specified query.
      *
