@@ -48,7 +48,7 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
  * @param enums The record of enums to update.
  */
 function handleEnum(node: Node): Enum {
-  const name = node.values[0];
+  const name = node.properties?.name || node.values[0];
   if (typeof name !== "string") {
     throw new Error("Missing enum name");
   }

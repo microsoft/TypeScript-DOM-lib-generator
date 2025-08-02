@@ -48,9 +48,6 @@
                 "optional"
               ]
             },
-            "ClientType": {
-                "name": "ClientTypes"
-            },
             "RTCStatsIceCandidatePairState": {
                 "value": [
                     "inprogress"
