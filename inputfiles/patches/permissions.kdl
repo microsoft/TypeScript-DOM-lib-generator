@@ -1,0 +1,15 @@
+enum PermissionName {
+    // This is a subset of the permissions defined in the spec:
+    // https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
+    // Please add a feature only when it's supported by multiple engines.
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
+    camera
+    geolocation
+    microphone
+    midi
+    notifications
+    persistent-storage
+    push
+    screen-wake-lock
+    storage-access
+}
