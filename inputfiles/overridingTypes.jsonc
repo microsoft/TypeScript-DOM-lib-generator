@@ -38,27 +38,6 @@
                     }
                 }
             },
-            "GlobalEventHandlers": {
-                "properties": {
-                    "property": {
-                        "onerror": {
-                            "overrideType": "OnErrorEventHandler"
-                        },
-                        "ontouchcancel": {
-                            "optional": true
-                        },
-                        "ontouchend": {
-                            "optional": true
-                        },
-                        "ontouchmove": {
-                            "optional": true
-                        },
-                        "ontouchstart": {
-                            "optional": true
-                        }
-                    }
-                }
-            },
             "HTMLOrSVGElement": {
               "properties": {
                 "property": {
