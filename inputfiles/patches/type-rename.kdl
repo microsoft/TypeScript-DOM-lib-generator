@@ -1,1 +1,1 @@
-enum ClientType name="ClientTypes"
+enum ClientType name=ClientTypes
