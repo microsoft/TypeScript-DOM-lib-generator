@@ -5,5 +5,4 @@ interface-mixin GlobalEventHandlers {
     property ontouchend optional=#true
     property ontouchmove optional=#true
     property ontouchstart optional=#true
-    property onerror overrideType=OnErrorEventHandler
 }
