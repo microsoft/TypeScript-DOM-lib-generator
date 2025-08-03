@@ -1,4 +1,4 @@
-import { parse, type Node } from "kdljs";
+import { parse, type Value, type Node } from "kdljs";
 import type { Enum, Event, Property, Interface, WebIdl } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -6,6 +6,24 @@ import { merge } from "./helpers.js";
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
+
+function optionalMember<const T>(prop: string, type: T, value?: Value) {
+  if (value === undefined) {
+    return {};
+  }
+  if (typeof value !== type) {
+    throw new Error(`Expected type ${value} for ${prop}`);
+  }
+  return {
+    [prop]: value as T extends "string"
+      ? string
+      : T extends "number"
+        ? number
+        : T extends "boolean"
+          ? boolean
+          : never,
+  };
+}
 
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
@@ -92,15 +110,12 @@ function handleMixin(node: Node): DeepPartial<Interface> {
     }
   }
 
-  const result = {
+  return {
     name,
     events: { event },
     properties: { property },
+    ...optionalMember("extends", "string", node.properties?.extends),
   } as DeepPartial<Interface>;
-  if (node.properties.extends) {
-    result.extends = node.properties.extends as string;
-  }
-  return result;
 }
 
 /**
@@ -121,7 +136,9 @@ function handleEvent(child: Node): Event {
 function handleProperty(child: Node): Partial<Property> {
   return {
     name: child.values[0] as string,
-    exposed: child.properties?.exposed as string,
+    ...optionalMember("exposed", "string", child.properties?.exposed),
+    ...optionalMember("optional", "boolean", child.properties?.optional),
+    ...optionalMember("overrideType", "string", child.properties?.overrideType),
   };
 }
 
