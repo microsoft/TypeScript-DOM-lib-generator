@@ -1,8 +1,8 @@
 interface-mixin GlobalEventHandlers {
-    // Touch event handlers are intentionally hidden in non-mobile web browsers.
-    // See w3c.github.io/touch-events#dfn-expose-legacy-touch-event-apis.
-    property ontouchcancel optional=#true
-    property ontouchend optional=#true
-    property ontouchmove optional=#true
-    property ontouchstart optional=#true
+  // Touch event handlers are intentionally hidden in non-mobile web browsers.
+  // See w3c.github.io/touch-events#dfn-expose-legacy-touch-event-apis.
+  property ontouchcancel optional=#true
+  property ontouchend optional=#true
+  property ontouchmove optional=#true
+  property ontouchstart optional=#true
 }
