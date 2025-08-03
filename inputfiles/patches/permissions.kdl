@@ -4,12 +4,20 @@ enum PermissionName {
     // Please add a feature only when it's supported by multiple engines.
     // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     camera
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     geolocation
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     microphone
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     midi
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     notifications
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     persistent-storage
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     push
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     screen-wake-lock
+    // Full support: https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility
     storage-access
 }
