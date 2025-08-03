@@ -138,14 +138,21 @@ function handleProperty(child: Node): Partial<Property> {
  */
 function handleMethod(child: Node): Partial<Method> {
   const name = child.values[0] as string;
-  // Build the overrideSignatures array with the method signature string
-  const signature = [
+  const isArray = child.values[1] as boolean | undefined;
+  const returnType = child.properties.returns as string;
+  const nullable = child.properties.nullable as boolean;
+
+  const params = child.children.map((c) => ({
+    name: c.values[0] as string,
+    type: c.properties.type as string,
+  }));
+
+  const signature: Method["signature"] = [
     {
-      type: child.properties.returns as string,
-      parameters: child.children.map((c) => ({
-        name: c.values[0] as string,
-        type: c.properties.type as string,
-      })),
+      type: isArray ? "sequence" : returnType,
+      param: params,
+      nullable,
+      ...(isArray ? { subtype: { type: returnType } } : {}),
     },
   ];
   return { name, signature };
