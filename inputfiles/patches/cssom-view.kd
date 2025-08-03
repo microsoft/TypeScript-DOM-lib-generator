@@ -5,7 +5,7 @@ interface-mixin DocumentOrShadowRoot {
         param x type=number
         param y type=number
     }
-    method elementsFromPoint returns="Element[]" {
+    method elementsFromPoint returns="sequence<Element>" {
         param x type=number
         param y type=number
     }
