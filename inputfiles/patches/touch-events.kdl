@@ -1,13 +1,3 @@
-interface-mixin AbstractWorker {
-    event error type=ErrorEvent
-}
-
-interface-mixin DocumentAndElementEventHandlers {
-    event copy type=ClipboardEvent
-    event cut type=ClipboardEvent
-    event paste type=ClipboardEvent
-}
-
 interface-mixin GlobalEventHandlers {
     event abort type=UIEvent
     event auxclick type=PointerEvent
@@ -73,26 +63,11 @@ interface-mixin GlobalEventHandlers {
     event transitionstart type=TransitionEvent
     event transitionend type=TransitionEvent
     event transitioncancel type=TransitionEvent
-}
-
-interface-mixin MessageEventTarget {
-    event message type=MessageEvent
-    event messageerror type=MessageEvent
-}
-
-interface-mixin WindowEventHandlers {
-    event beforeunload type=BeforeUnloadEvent
-    event gamepadconnected type=GamepadEvent
-    event gamepaddisconnected type=GamepadEvent
-    event hashchange type=HashChangeEvent
-    event message type=MessageEvent
-    event messageerror type=MessageEvent
-    event pagehide type=PageTransitionEvent
-    event pagereveal type=PageRevealEvent
-    event pageshow type=PageTransitionEvent
-    event pageswap type=PageSwapEvent
-    event popstate type=PopStateEvent
-    event rejectionhandled type=PromiseRejectionEvent
-    event storage type=StorageEvent
-    event unhandledrejection type=PromiseRejectionEvent
+    // Touch event handlers are intentionally hidden in non-mobile web browsers.
+    // See w3c.github.io/touch-events#dfn-expose-legacy-touch-event-apis.
+    property ontouchcancel optional=#true
+    property ontouchend optional=#true
+    property ontouchmove optional=#true
+    property ontouchstart optional=#true
+    property onerror overrideType=OnErrorEventHandler
 }
