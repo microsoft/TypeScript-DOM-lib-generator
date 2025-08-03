@@ -139,10 +139,10 @@ function handleProperty(child: Node): Partial<Property> {
 function handleMethod(child: Node): Partial<Method> {
   const name = child.values[0] as string;
   // Build the overrideSignatures array with the method signature string
-  const overrideSignatures = [
+  const signature = [
     `${name}(${child.children.map((c) => `${c.values[0]}: ${c.properties.type}`).join(", ")}): ${child.properties.returns || "void"}`,
   ];
-  return { name, overrideSignatures };
+  return { name, signature };
 }
 
 /**
