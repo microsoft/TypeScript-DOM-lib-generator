@@ -73,6 +73,13 @@ interface-mixin GlobalEventHandlers {
     event transitionstart type=TransitionEvent
     event transitionend type=TransitionEvent
     event transitioncancel type=TransitionEvent
+    // Touch event handlers are intentionally hidden in non-mobile web browsers.
+    // See w3c.github.io/touch-events#dfn-expose-legacy-touch-event-apis.
+    property ontouchcancel optional=#true
+    property ontouchend optional=#true
+    property ontouchmove optional=#true
+    property ontouchstart optional=#true
+    property onerror overrideType=OnErrorEventHandler
 }
 
 interface-mixin MessageEventTarget {
