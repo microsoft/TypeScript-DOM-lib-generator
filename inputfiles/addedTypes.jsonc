@@ -1,28 +1,4 @@
 {
-    "mixins": {
-        "mixin": {
-            "DocumentOrShadowRoot": {
-                // Manually moved from Document
-                // See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
-                "methods": {
-                    "method": {
-                        "elementFromPoint": {
-                            "name": "elementFromPoint",
-                            "overrideSignatures": [
-                                "elementFromPoint(x: number, y: number): Element | null"
-                            ]
-                        },
-                        "elementsFromPoint": {
-                            "name": "elementsFromPoint",
-                            "overrideSignatures": [
-                                "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        }
-                    }
-                }
-            }
-        }
-    },
     "callbackInterfaces": {
         "interface": {}
     },

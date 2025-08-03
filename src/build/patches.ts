@@ -1,5 +1,5 @@
 import { parse, type Node } from "kdljs";
-import type { Enum, Event, Property, Interface, WebIdl } from "./types";
+import type { Enum, Event, Property, Interface, WebIdl, Method } from "./types";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
 
@@ -76,6 +76,7 @@ function handleMixin(node: Node): DeepPartial<Interface> {
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
+  const method: Record<string, Partial<Method>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -87,6 +88,11 @@ function handleMixin(node: Node): DeepPartial<Interface> {
         property[propName] = handleProperty(child);
         break;
       }
+      case "method": {
+        const methodName = child.values[0] as string;
+        method[methodName] = handleMethod(child);
+        break;
+      }
       default:
         throw new Error(`Unknown node name: ${child.name}`);
     }
@@ -96,6 +102,7 @@ function handleMixin(node: Node): DeepPartial<Interface> {
     name,
     events: { event },
     properties: { property },
+    methods: { method },
   } as DeepPartial<Interface>;
   if (node.properties.extends) {
     result.extends = node.properties.extends as string;
@@ -123,6 +130,19 @@ function handleProperty(child: Node): Partial<Property> {
     name: child.values[0] as string,
     exposed: child.properties?.exposed as string,
   };
+}
+
+/**
+ * Handles a child node of type "method" and adds it to the method object.
+ * @param child The child node to handle.
+ */
+function handleMethod(child: Node): Partial<Method> {
+  const name = child.values[0] as string;
+  // Build the overrideSignatures array with the method signature string
+  const overrideSignatures = [
+    `${name}(${child.children.map((c) => `${c.values[0]}: ${c.properties.type}`).join(", ")}): ${child.properties.returns || "void"}`,
+  ];
+  return { name, overrideSignatures };
 }
 
 /**
