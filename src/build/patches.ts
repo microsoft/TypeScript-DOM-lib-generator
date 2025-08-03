@@ -14,7 +14,15 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
   if (typeof value !== type) {
     throw new Error(`Expected type ${value} for ${prop}`);
   }
-  return { [prop]: value as T extends "string" ? string : T extends "number" ? number : T extends "boolean" ? boolean : never };
+  return {
+    [prop]: value as T extends "string"
+      ? string
+      : T extends "number"
+        ? number
+        : T extends "boolean"
+          ? boolean
+          : never,
+  };
 }
 
 /**
