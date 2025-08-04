@@ -201,6 +201,11 @@ export interface Interface {
   secureContext?: boolean;
   mdnUrl?: string;
   transferable?: boolean;
+
+  // Prevents `__brand` member even if the interface is empty.
+  // Use this when the interface is only used as a return value
+  // and never as a parameter.
+  preventNominal?: boolean;
 }
 
 export interface Iterator {

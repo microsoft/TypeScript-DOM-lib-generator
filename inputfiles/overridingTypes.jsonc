@@ -1818,6 +1818,10 @@
                     }
                 }
             },
+            "FragmentDirective": {
+                // https://github.com/WICG/scroll-to-text-fragment/issues/264
+                "preventNominal": true
+            },
             // XXX: Float16Array is esnext-only as of 2025-04
             // Not sure what to do here, for now disable it.
             "Float16Array": {
@@ -3217,6 +3221,10 @@
                         }
                     ]
                 }
+            },
+            "WorkletGlobalScope": {
+                // Global scope, never passed via parameter
+                "preventNominal": true
             },
             "InstallEvent": {
                 // https://github.com/mdn/browser-compat-data/issues/22591

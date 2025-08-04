@@ -1427,12 +1427,38 @@ export function emitWebIdl(
     }
   }
 
+  function isEmptyInterface(i: Browser.Interface) {
+    if (
+      i.preventNominal ||
+      i.extends ||
+      i.implements ||
+      i.iterator ||
+      i.overrideIndexSignatures ||
+      i.noInterfaceObject
+    ) {
+      return false;
+    }
+    if (mapToArray(i.properties?.property).length) {
+      return false;
+    }
+    if (mapToArray(i.constants?.constant).length) {
+      return false;
+    }
+    const methods = { ...i.methods?.method };
+    delete methods.toJSON;
+    return !mapToArray(methods).filter((m) => !m.static).length;
+  }
+
   function emitInterface(i: Browser.Interface) {
     printer.clearStack();
     emitInterfaceEventMap(i);
 
     emitInterfaceDeclaration(i);
     printer.increaseIndent();
+
+    if (isEmptyInterface(i)) {
+      printer.printLine(`__brand: "${i.name}";`);
+    }
 
     emitMembers(/*prefix*/ "", EmitScope.InstanceOnly, i);
     emitConstants(i);
