@@ -5,7 +5,10 @@ interface-mixin DocumentOrShadowRoot {
     param x type=long
     param y type=long
   }
-  method elementsFromPoint returns="Element" array {
+  method elementsFromPoint {
+    type sequence {
+      type Element
+    }
     param x type=long
     param y type=long
   }

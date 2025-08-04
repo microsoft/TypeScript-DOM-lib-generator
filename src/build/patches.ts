@@ -155,21 +155,26 @@ function handleProperty(child: Node): Partial<Property> {
  */
 function handleMethod(child: Node): Partial<Method> {
   const name = child.values[0] as string;
-  const isArray = child.values[1] as boolean | undefined;
+  const type = child.children[0];
   const returnType = child.properties.returns as string;
   const nullable = child.properties.nullable as boolean;
 
-  const params = child.children.map((c) => ({
-    name: c.values[0] as string,
-    type: c.properties.type as string,
-  }));
+  const params = child.children
+    .filter((c) => c.values[0] != "sequence")
+    .map((c) => ({
+      name: c.values[0] as string,
+      type: c.properties.type as string,
+    }));
 
   const signature: Method["signature"] = [
     {
-      type: isArray ? "sequence" : returnType,
+      type: type.name == "type" ? (type.values[0] as string) : returnType,
       param: params,
       nullable,
-      ...(isArray ? { subtype: { type: returnType } } : {}),
+      subtype:
+        type.name == "type"
+          ? { type: type.children[0].values[0] as string }
+          : undefined,
     },
   ];
   return { name, signature };
