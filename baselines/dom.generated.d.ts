@@ -3326,7 +3326,7 @@ interface Attr extends Node {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr/value)
      */
     value: string;
-    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): string;
     set textContent(value: string | null);
 }
@@ -8219,7 +8219,7 @@ interface CharacterData extends Node, ChildNode, NonDocumentTypeChildNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/substringData)
      */
     substringData(offset: number, count: number): string;
-    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): string;
     set textContent(value: string | null);
 }
@@ -10680,7 +10680,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/writeln)
      */
     writeln(...text: string[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): null;
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -10707,7 +10707,7 @@ declare var Document: {
 interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
     readonly ownerDocument: Document;
     getElementById(elementId: string): HTMLElement | null;
-    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): string;
     set textContent(value: string | null);
 }
@@ -10786,7 +10786,7 @@ interface DocumentType extends Node, ChildNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DocumentType/systemId)
      */
     readonly systemId: string;
-    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): null;
 }
 
@@ -11389,7 +11389,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)
      */
     webkitMatchesSelector(selectors: string): boolean;
-    /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): string;
     set textContent(value: string | null);
     addEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
