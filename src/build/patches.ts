@@ -1,5 +1,5 @@
 import { parse, type Value, type Node } from "kdljs";
-import type { Enum, Event, Property, Interface, WebIdl } from "./types";
+import type { Enum, Event, Property, Interface, WebIdl } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
 
