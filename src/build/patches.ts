@@ -1,5 +1,12 @@
 import { parse, type Value, type Node } from "kdljs";
-import type { Enum, Event, Property, Interface, WebIdl, Method } from "./types.js";
+import type {
+  Enum,
+  Event,
+  Property,
+  Interface,
+  WebIdl,
+  Method,
+} from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
 
@@ -22,6 +29,18 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
         : T extends "boolean"
           ? boolean
           : never,
+  };
+}
+
+function handleTyped(type: Node, returnType: string) {
+  const isTyped = type.name == "type";
+  const name = isTyped ? (type.values[0] as string) : returnType;
+  const subType = isTyped
+    ? { type: type.children[0].values[0] as string }
+    : undefined;
+  return {
+    type: name,
+    subtype: subType,
   };
 }
 
@@ -168,13 +187,9 @@ function handleMethod(child: Node): Partial<Method> {
 
   const signature: Method["signature"] = [
     {
-      type: type.name == "type" ? (type.values[0] as string) : returnType,
       param: params,
       nullable,
-      subtype:
-        type.name == "type"
-          ? { type: type.children[0].values[0] as string }
-          : undefined,
+      ...handleTyped(type, returnType),
     },
   ];
   return { name, signature };
