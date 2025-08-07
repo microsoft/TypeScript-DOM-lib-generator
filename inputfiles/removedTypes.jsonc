@@ -628,9 +628,10 @@
             "NotificationOptions": {
                 "members": {
                     "member": {
-                        // All Blink only as of 2023-10
+                        // All Blink only as of 2025-08
                         "actions": null,
                         "image": null,
+                        "navigate": null, // WebKit only as of 2025-08
                         "renotify": null,
                         "timestamp": null,
                         "vibrate": null
@@ -786,6 +787,7 @@
                         "powerEfficientEncoder": null, // Blink only as of 2025-07
                         "encoderImplementation": null, // Blink only as of 2025-07
                         "encodingIndex": null, // Blink only as of 2025-07
+                        "packetsSentWithEct1": null, // No implementation as of 2025-08
                         "psnrMeasurements": null, // No implementation as of 2025-07
                         "psnrSum": null // No implementation as of 2025-07
                     }
@@ -813,13 +815,6 @@
                     "member": {
                         "codec": null, // Blink only as of 2024-11
                         "scalabilityMode": null // Blink only as of 2024-11
-                    }
-                }
-            },
-            "RTCSentRtpStreamStats": {
-                "members": {
-                    "member": {
-                        "packetsSentWithEct1": null // No implementation as of 2025-04
                     }
                 }
             },

@@ -204,9 +204,8 @@ export interface Interface {
 }
 
 export interface Iterator {
-  kind: "iterable" | "setlike" | "maplike";
+  kind: "async_iterable" | "iterable" | "setlike" | "maplike";
   readonly: boolean;
-  async: boolean;
   type: Typed[];
   param?: Param[];
   comments?: {

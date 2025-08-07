@@ -1082,7 +1082,7 @@ export function emitWebIdl(
 
   // Emit forEach for iterators
   function emitIteratorForEach(i: Browser.Interface) {
-    if (!i.iterator || i.iterator.async) {
+    if (!i.iterator || i.iterator.kind === "async_iterable") {
       return;
     }
     const subtype = i.iterator.type.map(convertDomTypeToTsType);
@@ -1619,7 +1619,7 @@ export function emitWebIdl(
 
   function emitSelfIterator(i: Browser.Interface) {
     if (!compilerBehavior.useIteratorObject) return;
-    const async = i.iterator?.async;
+    const async = i.iterator?.kind === "async_iterable";
     const name = getName(i);
     const iteratorBaseType = `${async ? "Async" : ""}IteratorObject`;
     const iteratorType = `${name}${async ? "Async" : ""}Iterator`;
@@ -1644,7 +1644,7 @@ export function emitWebIdl(
       case "setlike":
         return;
     }
-    const async = i.iterator?.async;
+    const async = i.iterator?.kind === "async_iterable";
     const iteratorType = async
       ? !compilerBehavior.useIteratorObject
         ? "AsyncIterableIterator"
@@ -1659,7 +1659,10 @@ export function emitWebIdl(
       name: `[Symbol.${async ? "asyncIterator" : "iterator"}]`,
       type: stringifySingleOrTupleTypes(subtypes),
     });
-    if (i.iterator?.kind === "iterable") {
+    if (
+      i.iterator?.kind === "iterable" ||
+      i.iterator?.kind === "async_iterable"
+    ) {
       if (subtypes.length === 2) {
         const [keyType, valueType] = subtypes;
         methods.push(
@@ -1718,7 +1721,7 @@ export function emitWebIdl(
     }
 
     function getIteratorSubtypes() {
-      if (i.iterator && !i.iterator.async) {
+      if (i.iterator && i.iterator.kind !== "async_iterable") {
         if (i.iterator.type.length === 1) {
           return [convertDomTypeToTsType(i.iterator.type[0])];
         }
@@ -1848,7 +1851,7 @@ export function emitWebIdl(
 
   function emitAsyncIterator(i: Browser.Interface) {
     function getAsyncIteratorSubtypes() {
-      if (i.iterator && i.iterator.kind === "iterable" && i.iterator.async) {
+      if (i.iterator && i.iterator.kind === "async_iterable") {
         if (i.iterator.type.length === 1) {
           return [convertDomTypeToTsType(i.iterator.type[0])];
         }

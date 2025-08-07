@@ -7,19 +7,7 @@
                         "name": "T"
                     }
                 ],
-                "overrideThis": "T",
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
+                "overrideThis": "T"
             },
             "NavigatorGPU": {
                 "properties": {
@@ -30,12 +18,6 @@
                         }
                     }
                 }
-            },
-            "ChildNode": {
-                "extends": "Node"
-            },
-            "ParentNode": {
-                "extends": "Node"
             },
             "Animatable": {
                 "methods": {
@@ -52,131 +34,6 @@
                                     ]
                                 }
                             }
-                        }
-                    }
-                }
-            },
-            "GlobalEventHandlers": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "animationcancel",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "animationend",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "animationiteration",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "animationstart",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "cut",
-                            "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "copy",
-                            "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "paste",
-                            "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "gotpointercapture",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "lostpointercapture",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointercancel",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerdown",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerenter",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerleave",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointermove",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerout",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerover",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerup",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "touchcancel",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "touchend",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "touchmove",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "touchstart",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "transitionrun",
-                            "type": "TransitionEvent"
-                        },
-                        {
-                            "name": "transitionstart",
-                            "type": "TransitionEvent"
-                        },
-                        {
-                            "name": "transitionend",
-                            "type": "TransitionEvent"
-                        },
-                        {
-                            "name": "transitioncancel",
-                            "type": "TransitionEvent"
-                        }
-                    ]
-                },
-                "properties": {
-                    "property": {
-                        "onerror": {
-                            "overrideType": "OnErrorEventHandler"
-                        },
-                        "ontouchcancel": {
-                            "optional": true
-                        },
-                        "ontouchend": {
-                            "optional": true
-                        },
-                        "ontouchmove": {
-                            "optional": true
-                        },
-                        "ontouchstart": {
-                            "optional": true
                         }
                     }
                 }
@@ -532,18 +389,6 @@
                     }
                 }
             },
-            "GPUError": {
-                "exposed": "Window Worker",
-                // WebKit doesn't have GPUError interface but only subinterfaces as of 2024-11-20
-                "noInterfaceObject": true,
-                "properties": {
-                    "property": {
-                        "message": {
-                            "exposed": "Window Worker"
-                        }
-                    }
-                }
-            },
             "GPUPipelineError": {
                 // Web IDL optional argument can be followed by a required argument, but not in TS
                 // TODO: Maybe do this in the emitter?
@@ -851,7 +696,7 @@
                             }
                         },
                         "textContent": {
-                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Node/textContent",
                             "overrideSignatures": [
                                 "get textContent(): null"
                             ]
@@ -923,7 +768,7 @@
                             ]
                         },
                         "textContent": {
-                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Node/textContent",
                             "overrideSignatures": [
                                 "get textContent(): string",
                                 "set textContent(value: string | null)"
@@ -1213,7 +1058,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1227,7 +1072,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1333,7 +1178,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1347,7 +1192,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -3803,9 +3648,6 @@
                 "exposed": ""
             },
             "GPUOutOfMemoryError": {
-                "exposed": ""
-            },
-            "GPUPipelineError": {
                 "exposed": ""
             },
             "GPUPipelineLayout": {

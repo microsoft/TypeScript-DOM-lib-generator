@@ -2,7 +2,7 @@
 
 > The SharedWorker interface represents a specific kind of worker that can be accessed from several browsing contexts, such as several windows, iframes or even workers. They implement an interface different than dedicated workers and have a different global scope, `SharedWorkerGlobalScope`.
 
-From [MDN Web Docs: SharedWorker API](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker)
+From [MDN Web Docs: SharedWorker API](https://developer.mozilla.org/docs/Web/API/SharedWorker)
 
 This package contains type definitions which will set up the global environment for your TypeScript project to match the runtime environment of a Web Worker. The APIs inside `@types/sharedworker` are [generated from](https://github.com/microsoft/TypeScript-DOM-lib-generator/) the specifications for JavaScript.
 

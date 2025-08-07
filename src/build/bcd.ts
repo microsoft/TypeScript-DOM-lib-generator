@@ -1,4 +1,4 @@
-import * as Browser from "./types";
+import * as Browser from "./types.js";
 import {
   CompatStatement,
   SimpleSupportStatement,

@@ -2,7 +2,7 @@
 
 > The Worker interface of the Web Workers API represents a background task that can be created via script, which can send messages back to its creator. Creating a worker is done by calling the `Worker("path/to/worker/script")` constructor.
 
-From [MDN Web Docs: Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Worker)
+From [MDN Web Docs: Worker API](https://developer.mozilla.org/docs/Web/API/Worker)
 
 This package contains type definitions which will set up the global environment for your TypeScript project to match the runtime environment of a Web Worker. The APIs inside `@types/webworker` are [generated from](https://github.com/microsoft/TypeScript-DOM-lib-generator/) the specifications for JavaScript.
 
