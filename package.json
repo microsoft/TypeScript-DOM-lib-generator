@@ -12,15 +12,15 @@
     "worklet"
   ],
   "scripts": {
-    "build": "tsc && node ./lib/build.js",
+    "build": "tsgo && node ./lib/build.js",
     "baseline-accept": "cpx \"generated\\**\" baselines\\",
-    "lint": "eslint --max-warnings 0 src deploy/*.js && tsc -p deploy/jsconfig.json",
+    "lint": "eslint --max-warnings 0 src deploy/*.js && tsgo -p deploy/jsconfig.json",
     "lint-fix": "eslint --max-warnings 0 src deploy/*.js --fix",
     "test": "npm run build && npm run lint && node ./lib/test.js && node ./unittests/index.js",
-    "changelog": "tsc && node ./lib/changelog.js",
+    "changelog": "tsgo && node ./lib/changelog.js",
     "ts-changelog": "node ./deploy/versionChangelog.js",
     "migrate": "node ./deploy/migrate.js",
-    "version": "npm i && tsc && node ./lib/version.js",
+    "version": "npm i && tsgo && node ./lib/version.js",
     "generate": "npm run build && npm run baseline-accept"
   },
   "author": {
@@ -39,13 +39,14 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^9",
-    "@mdn/browser-compat-data": "^6.0.4",
+    "@mdn/browser-compat-data": "^6.1.0",
     "@octokit/rest": "^22.0.0",
     "@types/node": "^24.0.9",
     "@types/prettier": "^3.0.0",
     "@types/webidl2": "^24.4.3",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
+    "@typescript/native-preview": "^7.0.0-dev.20250804.1",
     "@webref/css": "^6.23.6",
     "@webref/elements": "^2.5.0",
     "@webref/events": "^1.18.6",
