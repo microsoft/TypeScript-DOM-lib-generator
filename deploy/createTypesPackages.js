@@ -151,7 +151,7 @@ const go = async () => {
 async function updatePackageJSON(pkg, packagePath) {
   const pkgJSONPath = new URL("package.json", packagePath);
   const packageText = fs.readFileSync(pkgJSONPath, "utf8");
-  /** @type {import("./template/package.json")} */
+  /** @type {typeof import("./template/package.json")} */
   const packageJSON = JSON.parse(packageText);
   packageJSON.name = pkg.name;
   packageJSON.description = pkg.description;

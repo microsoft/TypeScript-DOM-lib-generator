@@ -696,7 +696,7 @@
                             }
                         },
                         "textContent": {
-                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Node/textContent",
                             "overrideSignatures": [
                                 "get textContent(): null"
                             ]
@@ -768,7 +768,7 @@
                             ]
                         },
                         "textContent": {
-                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Node/textContent",
                             "overrideSignatures": [
                                 "get textContent(): string",
                                 "set textContent(value: string | null)"

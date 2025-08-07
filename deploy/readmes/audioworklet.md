@@ -2,7 +2,7 @@
 
 > The AudioWorklet interface of the Web Audio API is used to supply custom audio processing scripts that execute in a separate thread to provide very low latency audio processing. The worklet's code is run in the AudioWorkletGlobalScope global execution context, using a separate Web Audio thread which is shared by the worklet and other audio nodes.
 
-From [MDN Web Docs: AudioWorklet](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet)
+From [MDN Web Docs: AudioWorklet](https://developer.mozilla.org/docs/Web/API/AudioWorklet)
 
 This package contains type definitions which will set up the global environment for your TypeScript project to match the runtime environment of an Audio Worklet. The APIs inside `@types/audioworklet` are [generated from](https://github.com/microsoft/TypeScript-DOM-lib-generator/) the specifications for [Web Audio](https://webaudio.github.io/web-audio-api/).
 
