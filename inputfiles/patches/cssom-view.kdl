@@ -1,0 +1,16 @@
+// Manually moved from Document
+// See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
+interface-mixin DocumentOrShadowRoot {
+  method elementFromPoint {
+    type Element nullable=#true
+    param x type=long
+    param y type=long
+  }
+  method elementsFromPoint {
+    type sequence {
+      type Element
+    }
+    param x type=long
+    param y type=long
+  }
+}

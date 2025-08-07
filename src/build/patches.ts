@@ -1,5 +1,12 @@
 import { parse, type Value, type Node } from "kdljs";
-import type { Enum, Event, Property, Interface, WebIdl } from "./types.js";
+import type {
+  Enum,
+  Event,
+  Property,
+  Interface,
+  WebIdl,
+  Method,
+} from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
 
@@ -22,6 +29,20 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
         : T extends "boolean"
           ? boolean
           : never,
+  };
+}
+
+function handleTyped(type: Node, returnType: string) {
+  const isTyped = type.name == "type";
+  const name = isTyped ? (type.values[0] as string) : returnType;
+  const subType =
+    type.children.length > 0
+      ? { type: type.children[0].values[0] as string }
+      : undefined;
+  return {
+    type: name,
+    subtype: subType,
+    ...optionalMember("nullable", "boolean", type.properties?.nullable),
   };
 }
 
@@ -94,6 +115,7 @@ function handleMixin(node: Node): DeepPartial<Interface> {
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
+  const method: Record<string, Partial<Method>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -105,6 +127,11 @@ function handleMixin(node: Node): DeepPartial<Interface> {
         property[propName] = handleProperty(child);
         break;
       }
+      case "method": {
+        const methodName = child.values[0] as string;
+        method[methodName] = handleMethod(child);
+        break;
+      }
       default:
         throw new Error(`Unknown node name: ${child.name}`);
     }
@@ -114,6 +141,7 @@ function handleMixin(node: Node): DeepPartial<Interface> {
     name,
     events: { event },
     properties: { property },
+    methods: { method },
     ...optionalMember("extends", "string", node.properties?.extends),
   } as DeepPartial<Interface>;
 }
@@ -140,6 +168,31 @@ function handleProperty(child: Node): Partial<Property> {
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
   };
+}
+
+/**
+ * Handles a child node of type "method" and adds it to the method object.
+ * @param child The child node to handle.
+ */
+function handleMethod(child: Node): Partial<Method> {
+  const name = child.values[0] as string;
+  const type = child.children[0];
+  const returnType = child.properties.returns as string;
+
+  const params = child.children
+    .filter((c) => c.properties.type)
+    .map((c) => ({
+      name: c.values[0] as string,
+      type: c.properties.type as string,
+    }));
+
+  const signature: Method["signature"] = [
+    {
+      param: params,
+      ...handleTyped(type, returnType),
+    },
+  ];
+  return { name, signature };
 }
 
 /**
