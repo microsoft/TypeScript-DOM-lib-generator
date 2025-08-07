@@ -35,12 +35,14 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
 function handleTyped(type: Node, returnType: string) {
   const isTyped = type.name == "type";
   const name = isTyped ? (type.values[0] as string) : returnType;
-  const subType = isTyped
-    ? { type: type.children[0].values[0] as string }
-    : undefined;
+  const subType =
+    type.children.length > 0
+      ? { type: type.children[0].values[0] as string }
+      : undefined;
   return {
     type: name,
     subtype: subType,
+    ...optionalMember("nullable", "boolean", type.properties?.nullable),
   };
 }
 
@@ -176,7 +178,6 @@ function handleMethod(child: Node): Partial<Method> {
   const name = child.values[0] as string;
   const type = child.children[0];
   const returnType = child.properties.returns as string;
-  const nullable = child.properties.nullable as boolean;
 
   const params = child.children
     .filter((c) => c.properties.type)
@@ -188,7 +189,6 @@ function handleMethod(child: Node): Partial<Method> {
   const signature: Method["signature"] = [
     {
       param: params,
-      nullable,
       ...handleTyped(type, returnType),
     },
   ];
