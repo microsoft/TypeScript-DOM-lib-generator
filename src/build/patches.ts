@@ -179,7 +179,7 @@ function handleMethod(child: Node): Partial<Method> {
   const nullable = child.properties.nullable as boolean;
 
   const params = child.children
-    .filter((c) => c.values[0] != "sequence")
+    .filter((c) => c.properties.type)
     .map((c) => ({
       name: c.values[0] as string,
       type: c.properties.type as string,
