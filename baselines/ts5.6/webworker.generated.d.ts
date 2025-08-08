@@ -5853,8 +5853,8 @@ interface LockManager {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/request)
      */
-    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<T>;
-    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<T>;
+    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
+    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
 }
 
 declare var LockManager: {
