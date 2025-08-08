@@ -38,15 +38,6 @@
                     }
                 }
             },
-            "HTMLOrSVGElement": {
-              "properties": {
-                "property": {
-                  "nonce": {
-                    "name": "nonce?"
-                  }
-                }
-              }
-            },
             "WebGLRenderingContextBase": {
                 "methods": {
                     "method": {
