@@ -16403,7 +16403,7 @@ interface HTMLOrSVGElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset) */
     readonly dataset: DOMStringMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/nonce) */
-    nonce?: string | undefined;
+    nonce: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/tabIndex) */
     tabIndex: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/blur) */

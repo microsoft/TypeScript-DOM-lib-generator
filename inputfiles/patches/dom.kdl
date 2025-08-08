@@ -4,7 +4,3 @@ enum InsertPosition {
     afterbegin
     afterend
 }
-
-interface-mixin HTMLOrSVGElement {
-    property nonce optional=#true
-}
