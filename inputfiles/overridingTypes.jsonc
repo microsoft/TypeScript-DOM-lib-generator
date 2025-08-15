@@ -3520,7 +3520,7 @@
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
                                     ],
-                                    "overrideType": "Promise<T>"
+                                    "overrideType": "Promise<Awaited<T>>"
                                 },
                                 "1": {
                                     "typeParameters": [
@@ -3534,7 +3534,7 @@
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
                                     ],
-                                    "overrideType": "Promise<T>"
+                                    "overrideType": "Promise<Awaited<T>>"
                                 }
                             }
                         }
