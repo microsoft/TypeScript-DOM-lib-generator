@@ -3650,6 +3650,12 @@ interface FontFace {
      */
     unicodeRange: string;
     /**
+     * The **`variationSettings`** property of the FontFace interface retrieves or sets low-level OpenType or TrueType font variations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variationSettings)
+     */
+    variationSettings: string;
+    /**
      * The **`weight`** property of the FontFace interface retrieves or sets the weight of the font.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/weight)
