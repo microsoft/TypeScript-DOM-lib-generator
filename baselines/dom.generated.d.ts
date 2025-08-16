@@ -6851,6 +6851,7 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     textAlignLast: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
+    textAutospace: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box) */
     textBox: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box-edge) */
@@ -12405,6 +12406,12 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/unicodeRange)
      */
     unicodeRange: string;
+    /**
+     * The **`variationSettings`** property of the FontFace interface retrieves or sets low-level OpenType or TrueType font variations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variationSettings)
+     */
+    variationSettings: string;
     /**
      * The **`weight`** property of the FontFace interface retrieves or sets the weight of the font.
      *
@@ -25616,7 +25623,7 @@ declare var RTCPeerConnectionIceEvent: {
  */
 interface RTCRtpReceiver {
     /**
-     * The **`jitterBufferTarget`** property of the RTCRtpReceiver interface is a DOMHighResTimeStamp that indicates the application's preferred duration, in milliseconds, for which the jitter buffer should hold media before playing it out.
+     * The **`jitterBufferTarget`** property of the RTCRtpReceiver interface is a DOMHighResTimeStamp that indicates the application's preferred duration, in milliseconds, for which the jitter should hold media before playing it out.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
      */
