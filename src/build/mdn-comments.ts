@@ -26,9 +26,10 @@ function extractSummary(markdown: string): string {
     .replace(/\{\{ *(?:\w+)\( *["']((?:\\.|[^"\\])*?)["'].*?\) *\}\}/g, "$1")
     // Catch any remaining unhandled templates
     .replace(/\{\{\s*([^}]+)\s*\}\}/g, (_, match) => `[MISSING: ${match}]`)
-    // Keep link text but remove URLs
-    .replace(/\[(.*?)\]\(.*?\)/g, "$1")
     .replace(/"/g, "'")
+    // Fix: Replace all relative MDN links that start with "(/" with absolute links to MDN.
+    // This ensures that any Markdown links like [text](/path) become [text](https://developer.mozilla.org/path)
+    .replace(/\(\/(?!\/)/g, "(https://developer.mozilla.org/")
     .trim();
 
   // Extract the first sentence (ending in . ! or ?)
