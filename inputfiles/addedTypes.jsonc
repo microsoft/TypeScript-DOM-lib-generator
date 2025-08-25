@@ -710,19 +710,6 @@
                     }
                 }
             },
-            "LargestContentfulPaint": {
-                "properties": {
-                    "property": {
-                        // Removed by https://github.com/w3c/largest-contentful-paint/pull/126, but browsers still have it
-                        "renderTime": {
-                            "name": "renderTime",
-                            "type": "DOMHighResTimeStamp",
-                            "readonly": true,
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/renderTime"
-                        }
-                    }
-                }
-            },
             "LinkError": {
                 "name": "LinkError",
                 "extends": "Error",
