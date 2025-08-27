@@ -32,12 +32,19 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
   };
 }
 
-function handleTyped(type: Node, returnType: string) {
+function string(arg: unknown): string {
+  if (typeof arg !== "string") {
+    throw new Error(`Expected a string but found ${typeof arg}`);
+  }
+  return arg;
+}
+
+function handleTyped(type: Node, returnType?: Value) {
   const isTyped = type.name == "type";
-  const name = isTyped ? (type.values[0] as string) : returnType;
+  const name = string(isTyped ? type.values[0] : returnType);
   const subType =
     type.children.length > 0
-      ? { type: type.children[0].values[0] as string }
+      ? { type: string(type.children[0].values[0]) }
       : undefined;
   return {
     type: name,
@@ -61,10 +68,7 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
   const mixin: Record<string, DeepPartial<Interface>> = {};
 
   for (const node of nodes) {
-    const name = node.values[0];
-    if (typeof name !== "string") {
-      throw new Error(`Missing name for ${node.name}`);
-    }
+    const name = string(node.values[0]);
     switch (node.name) {
       case "enum":
         enums[name] = handleEnum(node);
@@ -87,10 +91,7 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
  * @param enums The record of enums to update.
  */
 function handleEnum(node: Node): Enum {
-  const name = node.properties?.name || node.values[0];
-  if (typeof name !== "string") {
-    throw new Error("Missing enum name");
-  }
+  const name = string(node.properties?.name || node.values[0]);
   const values: string[] = [];
 
   for (const child of node.children) {
@@ -109,9 +110,6 @@ function handleEnum(node: Node): Enum {
  */
 function handleMixin(node: Node): DeepPartial<Interface> {
   const name = node.values[0];
-  if (typeof name !== "string") {
-    throw new Error("Missing mixin name");
-  }
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
@@ -123,12 +121,12 @@ function handleMixin(node: Node): DeepPartial<Interface> {
         event.push(handleEvent(child));
         break;
       case "property": {
-        const propName = child.values[0] as string;
+        const propName = string(child.values[0]);
         property[propName] = handleProperty(child);
         break;
       }
       case "method": {
-        const methodName = child.values[0] as string;
+        const methodName = string(child.values[0]);
         method[methodName] = handleMethod(child);
         break;
       }
@@ -152,8 +150,8 @@ function handleMixin(node: Node): DeepPartial<Interface> {
  */
 function handleEvent(child: Node): Event {
   return {
-    name: child.values[0] as string,
-    type: child.properties.type as string,
+    name: string(child.values[0]),
+    type: string(child.properties.type),
   };
 }
 
@@ -163,7 +161,7 @@ function handleEvent(child: Node): Event {
  */
 function handleProperty(child: Node): Partial<Property> {
   return {
-    name: child.values[0] as string,
+    name: string(child.values[0]),
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
@@ -175,15 +173,15 @@ function handleProperty(child: Node): Partial<Property> {
  * @param child The child node to handle.
  */
 function handleMethod(child: Node): Partial<Method> {
-  const name = child.values[0] as string;
+  const name = string(child.values[0]);
   const type = child.children[0];
-  const returnType = child.properties.returns as string;
+  const returnType = child.properties.returns;
 
   const params = child.children
     .filter((c) => c.properties.type)
     .map((c) => ({
-      name: c.values[0] as string,
-      type: c.properties.type as string,
+      name: string(c.values[0]),
+      type: string(c.properties.type),
     }));
 
   const signature: Method["signature"] = [
