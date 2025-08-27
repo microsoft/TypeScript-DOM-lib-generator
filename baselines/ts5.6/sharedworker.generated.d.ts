@@ -3650,6 +3650,12 @@ interface FontFace {
      */
     unicodeRange: string;
     /**
+     * The **`variationSettings`** property of the FontFace interface retrieves or sets low-level OpenType or TrueType font variations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/variationSettings)
+     */
+    variationSettings: string;
+    /**
      * The **`weight`** property of the FontFace interface retrieves or sets the weight of the font.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/weight)
@@ -4707,8 +4713,8 @@ interface LockManager {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LockManager/request)
      */
-    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<T>;
-    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<T>;
+    request<T>(name: string, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
+    request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
 }
 
 declare var LockManager: {
@@ -4920,35 +4926,15 @@ interface NavigatorConcurrentHardware {
 }
 
 interface NavigatorID {
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appCodeName)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appCodeName) */
     readonly appCodeName: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appName)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appName) */
     readonly appName: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appVersion)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appVersion) */
     readonly appVersion: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/platform)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/platform) */
     readonly platform: string;
-    /**
-     * @deprecated
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/product)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/product) */
     readonly product: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/userAgent) */
     readonly userAgent: string;

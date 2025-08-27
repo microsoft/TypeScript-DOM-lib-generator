@@ -32,6 +32,7 @@ interface-mixin GlobalEventHandlers {
   event focusin type=FocusEvent
   event focusout type=FocusEvent
   event formdata type=FormDataEvent
+  event input type=InputEvent
   event keydown type=KeyboardEvent
   event keypress type=KeyboardEvent
   event keyup type=KeyboardEvent

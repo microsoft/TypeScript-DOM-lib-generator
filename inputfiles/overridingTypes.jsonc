@@ -38,15 +38,6 @@
                     }
                 }
             },
-            "HTMLOrSVGElement": {
-              "properties": {
-                "property": {
-                  "nonce": {
-                    "name": "nonce?"
-                  }
-                }
-              }
-            },
             "WebGLRenderingContextBase": {
                 "methods": {
                     "method": {
@@ -3529,7 +3520,7 @@
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
                                     ],
-                                    "overrideType": "Promise<T>"
+                                    "overrideType": "Promise<Awaited<T>>"
                                 },
                                 "1": {
                                     "typeParameters": [
@@ -3543,7 +3534,7 @@
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
                                     ],
-                                    "overrideType": "Promise<T>"
+                                    "overrideType": "Promise<Awaited<T>>"
                                 }
                             }
                         }
