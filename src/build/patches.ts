@@ -173,20 +173,40 @@ function handleProperty(child: Node): Partial<Property> {
  */
 function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
-  const type = child.children[0];
   const returnType = child.properties.returns;
 
-  const params = child.children
-    .filter((c) => c.properties.type)
-    .map((c) => ({
-      name: string(c.values[0]),
-      type: string(c.properties.type),
-    }));
+  let typeNode: Node | undefined;
+  const params: { name: string; type: string }[] = [];
+
+  for (const c of child.children) {
+    switch (c.name) {
+      case "type":
+        if (typeNode) {
+          throw new Error(`Method "${name}" has multiple type nodes (invalid)`);
+        }
+        typeNode = c;
+        break;
+
+      case "param":
+        params.push({
+          name: string(c.values[0]),
+          type: string(c.properties.type),
+        });
+        break;
+
+      default:
+        throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
+    }
+  }
+
+  if (!typeNode) {
+    throw new Error(`Method "${name}" is missing a return type`);
+  }
 
   const signature: Method["signature"] = [
     {
       param: params,
-      ...handleTyped(type, returnType),
+      ...handleTyped(typeNode, returnType),
     },
   ];
   return { name, signature };
