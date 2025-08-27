@@ -6,6 +6,7 @@ import type {
   Interface,
   WebIdl,
   Method,
+  Typed,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -39,13 +40,11 @@ function string(arg: unknown): string {
   return arg;
 }
 
-function handleTyped(type: Node, returnType?: Value) {
+function handleTyped(type: Node, returnType?: Value): Typed {
   const isTyped = type.name == "type";
   const name = string(isTyped ? type.values[0] : returnType);
   const subType =
-    type.children.length > 0
-      ? { type: string(type.children[0].values[0]) }
-      : undefined;
+    type.children.length > 0 ? handleTyped(type.children[0], name) : undefined;
   return {
     type: name,
     subtype: subType,
