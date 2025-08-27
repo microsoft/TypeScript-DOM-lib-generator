@@ -10685,7 +10685,7 @@ declare var Document: {
     prototype: Document;
     new(): Document;
     /**
-     * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse an HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
+     * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
      */
@@ -11357,7 +11357,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setAttributeNodeNS(attr: Attr): Attr | null;
     /**
-     * The **`setHTMLUnsafe()`** method of the Element interface is used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
+     * The **`setHTMLUnsafe()`** method of the Element interface is used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)
      */
@@ -15282,7 +15282,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     readonly webkitEntries: ReadonlyArray<FileSystemEntry>;
     /**
-     * The **`webkitdirectory`** property of the HTMLInputElement interface reflects the `webkitdirectory` HTML attribute, which indicates that `<input type='file'>` elements should let the user select directories instead of files.
+     * The **`webkitdirectory`** property of the HTMLInputElement interface reflects the `webkitdirectory` HTML attribute, which indicates that `<input type='file'>` elements can only select directories instead of files.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitdirectory)
      */
@@ -18138,7 +18138,7 @@ declare var Headers: {
  */
 interface Highlight {
     /**
-     * It is possible to create Range objects that overlap in a document.
+     * The `priority` property of the Highlight interface is a number used to determine which highlight's styles should be used to resolve style conflicts in overlapping parts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight/priority)
      */
@@ -25562,7 +25562,7 @@ declare var RTCPeerConnectionIceEvent: {
  */
 interface RTCRtpReceiver {
     /**
-     * The **`jitterBufferTarget`** property of the RTCRtpReceiver interface is a DOMHighResTimeStamp that indicates the application's preferred duration, in milliseconds, for which the jitter buffer should hold media before playing it out.
+     * The **`jitterBufferTarget`** property of the RTCRtpReceiver interface is a DOMHighResTimeStamp that indicates the application's preferred duration, in milliseconds, for which the jitter should hold media before playing it out.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
      */
@@ -26102,7 +26102,7 @@ interface ReadableByteStreamController {
      */
     close(): void;
     /**
-     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is copied into the stream's internal queues).
+     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is transferred into the stream's internal queues).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/enqueue)
      */
@@ -31111,7 +31111,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     getHTML(options?: GetHTMLOptions): string;
     /**
-     * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
+     * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTMLUnsafe)
      */
@@ -33271,7 +33271,7 @@ interface URLPattern {
      */
     exec(input?: URLPatternInput, baseURL?: string | URL): URLPatternResult | null;
     /**
-     * The **`test()`** method of the URLPattern interface takes a URL or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
+     * The **`test()`** method of the URLPattern interface takes a URL string or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
      */

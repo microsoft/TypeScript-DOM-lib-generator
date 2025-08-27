@@ -7498,7 +7498,7 @@ interface ReadableByteStreamController {
      */
     close(): void;
     /**
-     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is copied into the stream's internal queues).
+     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is transferred into the stream's internal queues).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/enqueue)
      */
@@ -9001,7 +9001,7 @@ interface URLPattern {
      */
     exec(input?: URLPatternInput, baseURL?: string | URL): URLPatternResult | null;
     /**
-     * The **`test()`** method of the URLPattern interface takes a URL or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
+     * The **`test()`** method of the URLPattern interface takes a URL string or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
      */
