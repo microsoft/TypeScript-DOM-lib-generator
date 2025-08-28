@@ -196,7 +196,7 @@ async function updatePackageJSON(pkg, packagePath) {
 /**
  * Copies the README and adds some rudimentary templating to the file.
  * @param {Package} pkg
- * @param {import("./template/package.json")} pkgJSON
+ * @param {typeof import("./template/package.json")} pkgJSON
  * @param {URL} writePath
  */
 function copyREADME(pkg, pkgJSON, writePath) {
