@@ -600,15 +600,15 @@ export function emitWebIdl(
       const paramName = m.signature[0].param![0].name;
       for (const mapName of tagNameMapNames) {
         printer.printLine(
-          `getElementsByTagName<K extends keyof ${mapName}>(${paramName}: K): HTMLCollectionOf<${mapName}[K]>;`,
+          `getElementsByTagName<K extends keyof ${mapName}>(${paramName}: K): HTMLCollection<${mapName}[K]>;`,
         );
       }
       printer.printLine("/** @deprecated */");
       printer.printLine(
-        `getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;`,
+        `getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(${paramName}: K): HTMLCollection<HTMLElementDeprecatedTagNameMap[K]>;`,
       );
       printer.printLine(
-        `getElementsByTagName(${paramName}: string): HTMLCollectionOf<Element>;`,
+        `getElementsByTagName(${paramName}: string): HTMLCollection;`,
       );
     }
   }
