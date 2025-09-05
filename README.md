@@ -89,19 +89,6 @@ If you are familiar with Web IDL, you may also want to check whether the upstrea
 - `comments.json`: comment strings to be embedded in the generated .d.ts files.
 - `deprecatedMessage.json`: the reason why one type is deprecated.
 
-## Deployment to TypeScript
-
-To migrate the *.d.ts files into TypeScript:
-
-1. [Trigger the workflow here](https://github.com/microsoft/TypeScript-DOM-lib-generator/actions/workflows/pr-to-typescript.yml) - this will send a PR to TypeScript under your alias.
-
-
-1. Update the README table with the mappings for versions in the `@types/[lib]`. E.g. TS 4.5 -> `@types/web` `0.0.23`. Find that number here: https://www.npmjs.com/package/@types/web
-
-1. Generate a CHANGELOG for the releases:
-
-    ```sh
-    #                       lib        from  to
     npm run ts-changelog -- @types/web 0.0.2 0.0.23
     ```
 
