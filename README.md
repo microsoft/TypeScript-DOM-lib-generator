@@ -86,5 +86,6 @@ If you are familiar with Web IDL, you may also want to check whether the upstrea
 - `addedTypes.jsonc`: types that should exist but are missing from the spec data.
 - `overridingTypes.jsonc`: types that are defined in the spec but have TypeScript-friendly modifications in the json files.
 - `removedTypes.jsonc`: types that are defined in the spec but should be removed.
+- `patches/*.kdl`: KDL types
 - `comments.json`: comment strings to be embedded in the generated .d.ts files.
 - `deprecatedMessage.json`: the reason why one type is deprecated.
