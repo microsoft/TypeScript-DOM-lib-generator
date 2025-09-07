@@ -10037,6 +10037,19 @@ declare var DeviceOrientationEvent: {
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
 };
 
+/** Available only in secure contexts. */
+interface DigitalCredential extends Credential {
+    readonly data: any;
+    readonly protocol: string;
+    toJSON(): any;
+}
+
+declare var DigitalCredential: {
+    prototype: DigitalCredential;
+    new(): DigitalCredential;
+    userAgentAllowsProtocol(protocol: string): boolean;
+};
+
 interface DocumentEventMap extends GlobalEventHandlersEventMap {
     "DOMContentLoaded": Event;
     "fullscreenchange": Event;
@@ -17159,7 +17172,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     chOff: string;
     /**
-     * The **`colSpan`** read-only property of the HTMLTableCellElement interface represents the number of columns this cell must span; this lets the cell occupy space across multiple columns of the table.
+     * The **`colSpan`** property of the HTMLTableCellElement interface represents the number of columns this cell must span; this lets the cell occupy space across multiple columns of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/colSpan)
      */
@@ -17180,7 +17193,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     noWrap: boolean;
     /**
-     * The **`rowSpan`** read-only property of the HTMLTableCellElement interface represents the number of rows this cell must span; this lets the cell occupy space across multiple rows of the table.
+     * The **`rowSpan`** property of the HTMLTableCellElement interface represents the number of rows this cell must span; this lets the cell occupy space across multiple rows of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/rowSpan)
      */
@@ -17239,7 +17252,7 @@ interface HTMLTableColElement extends HTMLElement {
      */
     chOff: string;
     /**
-     * The **`span`** read-only property of the HTMLTableColElement interface represents the number of columns this col or colgroup must span; this lets the column occupy space across multiple columns of the table.
+     * The **`span`** property of the HTMLTableColElement interface represents the number of columns this col or colgroup must span; this lets the column occupy space across multiple columns of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableColElement/span)
      */
@@ -24576,7 +24589,7 @@ interface PublicKeyCredential extends Credential {
      */
     readonly response: AuthenticatorResponse;
     /**
-     * The **`getClientExtensionResults()`** method of the PublicKeyCredential interface returns a map between the identifiers of extensions requested during credential creation or authentication, and their results after processing by the user agent.
+     * The **`getClientExtensionResults()`** method of the PublicKeyCredential interface returns an object mapping the identifiers of extensions requested during credential creation or authentication, and their results after processing by the user agent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/getClientExtensionResults)
      */
