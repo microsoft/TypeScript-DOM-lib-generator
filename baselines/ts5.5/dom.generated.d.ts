@@ -10029,6 +10029,19 @@ declare var DeviceOrientationEvent: {
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
 };
 
+/** Available only in secure contexts. */
+interface DigitalCredential extends Credential {
+    readonly data: any;
+    readonly protocol: string;
+    toJSON(): any;
+}
+
+declare var DigitalCredential: {
+    prototype: DigitalCredential;
+    new(): DigitalCredential;
+    userAgentAllowsProtocol(protocol: string): boolean;
+};
+
 interface DocumentEventMap extends GlobalEventHandlersEventMap {
     "DOMContentLoaded": Event;
     "fullscreenchange": Event;
@@ -10685,7 +10698,7 @@ declare var Document: {
     prototype: Document;
     new(): Document;
     /**
-     * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse an HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
+     * The **`parseHTMLUnsafe()`** static method of the Document object is used to parse HTML input, optionally filtering unwanted HTML elements and attributes, in order to create a new Document instance.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/parseHTMLUnsafe_static)
      */
@@ -11357,7 +11370,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setAttributeNodeNS(attr: Attr): Attr | null;
     /**
-     * The **`setHTMLUnsafe()`** method of the Element interface is used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
+     * The **`setHTMLUnsafe()`** method of the Element interface is used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)
      */
@@ -15282,7 +15295,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     readonly webkitEntries: ReadonlyArray<FileSystemEntry>;
     /**
-     * The **`webkitdirectory`** property of the HTMLInputElement interface reflects the `webkitdirectory` HTML attribute, which indicates that `<input type='file'>` elements should let the user select directories instead of files.
+     * The **`webkitdirectory`** property of the HTMLInputElement interface reflects the `webkitdirectory` HTML attribute, which indicates that `<input type='file'>` elements can only select directories instead of files.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitdirectory)
      */
@@ -17138,7 +17151,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     chOff: string;
     /**
-     * The **`colSpan`** read-only property of the HTMLTableCellElement interface represents the number of columns this cell must span; this lets the cell occupy space across multiple columns of the table.
+     * The **`colSpan`** property of the HTMLTableCellElement interface represents the number of columns this cell must span; this lets the cell occupy space across multiple columns of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/colSpan)
      */
@@ -17159,7 +17172,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     noWrap: boolean;
     /**
-     * The **`rowSpan`** read-only property of the HTMLTableCellElement interface represents the number of rows this cell must span; this lets the cell occupy space across multiple rows of the table.
+     * The **`rowSpan`** property of the HTMLTableCellElement interface represents the number of rows this cell must span; this lets the cell occupy space across multiple rows of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/rowSpan)
      */
@@ -17218,7 +17231,7 @@ interface HTMLTableColElement extends HTMLElement {
      */
     chOff: string;
     /**
-     * The **`span`** read-only property of the HTMLTableColElement interface represents the number of columns this col or colgroup must span; this lets the column occupy space across multiple columns of the table.
+     * The **`span`** property of the HTMLTableColElement interface represents the number of columns this col or colgroup must span; this lets the column occupy space across multiple columns of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableColElement/span)
      */
@@ -18138,7 +18151,7 @@ declare var Headers: {
  */
 interface Highlight {
     /**
-     * It is possible to create Range objects that overlap in a document.
+     * The `priority` property of the Highlight interface is a number used to determine which highlight's styles should be used to resolve style conflicts in overlapping parts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Highlight/priority)
      */
@@ -24555,7 +24568,7 @@ interface PublicKeyCredential extends Credential {
      */
     readonly response: AuthenticatorResponse;
     /**
-     * The **`getClientExtensionResults()`** method of the PublicKeyCredential interface returns a map between the identifiers of extensions requested during credential creation or authentication, and their results after processing by the user agent.
+     * The **`getClientExtensionResults()`** method of the PublicKeyCredential interface returns an object mapping the identifiers of extensions requested during credential creation or authentication, and their results after processing by the user agent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/getClientExtensionResults)
      */
@@ -25562,7 +25575,7 @@ declare var RTCPeerConnectionIceEvent: {
  */
 interface RTCRtpReceiver {
     /**
-     * The **`jitterBufferTarget`** property of the RTCRtpReceiver interface is a DOMHighResTimeStamp that indicates the application's preferred duration, in milliseconds, for which the jitter buffer should hold media before playing it out.
+     * The **`jitterBufferTarget`** property of the RTCRtpReceiver interface is a DOMHighResTimeStamp that indicates the application's preferred duration, in milliseconds, for which the jitter should hold media before playing it out.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver/jitterBufferTarget)
      */
@@ -26102,7 +26115,7 @@ interface ReadableByteStreamController {
      */
     close(): void;
     /**
-     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is copied into the stream's internal queues).
+     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is transferred into the stream's internal queues).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/enqueue)
      */
@@ -31111,7 +31124,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     getHTML(options?: GetHTMLOptions): string;
     /**
-     * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
+     * The **`setHTMLUnsafe()`** method of the ShadowRoot interface can be used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and then use it to replace the existing tree in the Shadow DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/setHTMLUnsafe)
      */
@@ -33271,7 +33284,7 @@ interface URLPattern {
      */
     exec(input?: URLPatternInput, baseURL?: string | URL): URLPatternResult | null;
     /**
-     * The **`test()`** method of the URLPattern interface takes a URL or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
+     * The **`test()`** method of the URLPattern interface takes a URL string or object of URL parts, and returns a boolean indicating if the given input matches the current pattern.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
      */
@@ -36657,7 +36670,7 @@ interface WebSocket extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/readyState)
      */
-    readonly readyState: number;
+    readonly readyState: 0 | 1 | 2 | 3;
     /**
      * The **`WebSocket.url`** read-only property returns the absolute URL of the WebSocket as resolved by the constructor.
      *

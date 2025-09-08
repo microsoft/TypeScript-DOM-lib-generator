@@ -1953,6 +1953,14 @@
                             "type": "MessageEvent"
                         }
                     ]
+                },
+                "properties": {
+                    "property": {
+                        "readyState": {
+                            "name": "readyState",
+                            "overrideType": "0 | 1 | 2 | 3"
+                        }
+                    }
                 }
             },
             "WebTransportDatagramDuplexStream": {
