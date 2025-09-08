@@ -50,6 +50,22 @@
                     "unorm8x4-bgra" // Blink only as of 2024-11
                 ]
             },
+            "KeyFormat": {
+                "value": [
+                    "raw-private", // No implementation as of 2025-09
+                    "raw-public", // No implementation as of 2025-09
+                    "raw-secret", // No implementation as of 2025-09
+                    "raw-seed" // No implementation as of 2025-09
+                ]
+            },
+            "KeyUsage": {
+                "value": [
+                    "decapsulateBits", // No implementation as of 2025-09
+                    "decapsulateKey", // No implementation as of 2025-09
+                    "encapsulateBits", // No implementation as of 2025-09
+                    "encapsulateKey" // No implementation as of 2025-09
+                ]
+            },
             "MediaSessionAction": {
                 "value": [
                     "enterpictureinpicture", // Blink only as of 2024-07
@@ -411,6 +427,14 @@
                         "delay": null, // Blink only as of 2024-07
                         "scrollMargin": null, // Blink only as of 2024-07
                         "trackVisibility": null // Blink only as of 2024-07
+                    }
+                }
+            },
+            "JsonWebKey": {
+                "members": {
+                    "member": {
+                        "priv": null, // No implementation as of 2025-09
+                        "pub": null // No implementation as of 2025-09
                     }
                 }
             },
