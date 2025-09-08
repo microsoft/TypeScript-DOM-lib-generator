@@ -42,6 +42,9 @@ function string(arg: unknown): string {
 
 function handleTyped(type: Node, returnType?: Value): Typed {
   const isTyped = type.name == "type";
+  if (!isTyped && !returnType) {
+    throw new Error("Expected a type node or returnType");
+  }
   const name = string(isTyped ? type.values[0] : returnType);
   const subType =
     type.children.length > 0 ? handleTyped(type.children[0], name) : undefined;
@@ -173,7 +176,6 @@ function handleProperty(child: Node): Partial<Property> {
  */
 function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
-  const returnType = child.properties.returns;
 
   let typeNode: Node | undefined;
   const params: { name: string; type: string }[] = [];
@@ -206,7 +208,7 @@ function handleMethod(child: Node): Partial<Method> {
   const signature: Method["signature"] = [
     {
       param: params,
-      ...handleTyped(typeNode, returnType),
+      ...handleTyped(typeNode),
     },
   ];
   return { name, signature };
