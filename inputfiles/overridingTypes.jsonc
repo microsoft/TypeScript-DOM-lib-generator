@@ -654,7 +654,7 @@
                         "getElementById": {
                             "name": "getElementById",
                             "overrideSignatures": [
-                                "getElementById<T = HTMLElement>(elementId: string): T | null"
+                                "getElementById<T extends HTMLElement = HTMLElement>(elementId: string): T | null"
                             ]
                         },
                         "getElementsByTagNameNS": {
