@@ -11281,6 +11281,9 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)
      */
+    matches<K extends keyof HTMLElementTagNameMap>(selectors: K): this is HTMLElementTagNameMap[K];
+    matches<K extends keyof SVGElementTagNameMap>(selectors: K): this is SVGElementTagNameMap[K];
+    matches<K extends keyof MathMLElementTagNameMap>(selectors: K): this is MathMLElementTagNameMap[K];
     matches(selectors: string): boolean;
     /**
      * The **`releasePointerCapture()`** method of the Element interface releases (stops) _pointer capture_ that was previously set for a specific (PointerEvent) _pointer_.
