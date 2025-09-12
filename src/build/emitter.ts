@@ -613,6 +613,19 @@ export function emitWebIdl(
     }
   }
 
+  /// Emit overloads for the matches method
+  function emitMatchesOverloads(m: Browser.Method) {
+    if (matchParamMethodSignature(m, "matches", "boolean", "string")) {
+      const paramName = m.signature[0].param![0].name;
+      for (const mapName of tagNameMapNames) {
+        printer.printLine(
+          `matches<K extends keyof ${mapName}>(${paramName}: K): this is ${mapName}[K];`,
+        );
+      }
+      printer.printLine(`matches(${paramName}: string): boolean;`);
+    }
+  }
+
   /// Emit overloads for the querySelector method
   function emitQuerySelectorOverloads(m: Browser.Method) {
     if (
@@ -988,6 +1001,8 @@ export function emitWebIdl(
         return emitCreateEventOverloads(m);
       case "getElementsByTagName":
         return emitGetElementsByTagNameOverloads(m);
+      case "matches":
+        return emitMatchesOverloads(m);
       case "querySelector":
         return emitQuerySelectorOverloads(m);
       case "querySelectorAll":
