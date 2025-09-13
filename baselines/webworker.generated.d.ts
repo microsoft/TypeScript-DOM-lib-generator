@@ -7440,7 +7440,7 @@ interface RTCRtpScriptTransformer extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
      */
-    generateKeyFrame(rid?: string): Promise<number>;
+    generateKeyFrame(rid?: string): Promise<void>;
     /**
      * The **`sendKeyFrameRequest()`** method of the RTCRtpScriptTransformer interface may be called by a WebRTC Encoded Transform that is processing incoming encoded video frames, in order to request a key frame from the sender.
      *
