@@ -6844,6 +6844,7 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     textAlignLast: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-autospace) */
     textAutospace: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box) */
     textBox: string;
@@ -14399,7 +14400,7 @@ interface HTMLFormElement extends HTMLElement {
      */
     autocomplete: AutoFillBase;
     /**
-     * The HTMLFormElement property **`elements`** returns an HTMLFormControlsCollection listing all the form controls contained in the form element.
+     * The **`elements`** property of the HTMLFormElement interface returns an HTMLFormControlsCollection listing all the listed form controls associated with the form element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/elements)
      */
@@ -23795,6 +23796,7 @@ declare var PerformanceObserverEntryList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
  */
 interface PerformancePaintTiming extends PerformanceEntry {
+    toJSON(): any;
 }
 
 declare var PerformancePaintTiming: {
@@ -24366,7 +24368,7 @@ interface PointerEvent extends MouseEvent {
      */
     readonly persistentDeviceId: number;
     /**
-     * The **`pointerId`** read-only property of the PointerEvent interface is an identifier assigned to a given pointer event.
+     * The **`pointerId`** read-only property of the PointerEvent interface is an identifier assigned to the pointer that triggered the event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/pointerId)
      */
