@@ -3197,6 +3197,11 @@
             "WorkerGlobalScope": {
                 "properties": {
                     "property": {
+                        "onsecuritypolicyviolation": {
+                            "name": "onsecuritypolicyviolation",
+                            "overrideType": "((this: WorkerGlobalScope, ev: SecurityPolicyViolationEvent) => any) | null",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/securitypolicyviolation_event"
+                        },
                         "self": {
                             "overrideType": "WorkerGlobalScope & typeof globalThis"
                         }
@@ -3207,6 +3212,10 @@
                         {
                             "name": "error",
                             "type": "ErrorEvent"
+                        },
+                        {
+                            "name": "securitypolicyviolation",
+                            "type": "SecurityPolicyViolationEvent"
                         }
                     ]
                 }

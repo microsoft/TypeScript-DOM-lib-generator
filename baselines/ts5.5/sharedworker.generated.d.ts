@@ -10304,6 +10304,7 @@ interface WorkerGlobalScopeEventMap {
     "offline": Event;
     "online": Event;
     "rejectionhandled": PromiseRejectionEvent;
+    "securitypolicyviolation": SecurityPolicyViolationEvent;
     "unhandledrejection": PromiseRejectionEvent;
 }
 
@@ -10335,6 +10336,8 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
     ononline: ((this: WorkerGlobalScope, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
     onrejectionhandled: ((this: WorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/securitypolicyviolation_event) */
+    onsecuritypolicyviolation: ((this: WorkerGlobalScope, ev: SecurityPolicyViolationEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
     onunhandledrejection: ((this: WorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
     /**
@@ -11219,6 +11222,8 @@ declare var onoffline: ((this: SharedWorkerGlobalScope, ev: Event) => any) | nul
 declare var ononline: ((this: SharedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
 declare var onrejectionhandled: ((this: SharedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/securitypolicyviolation_event) */
+declare var onsecuritypolicyviolation: ((this: WorkerGlobalScope, ev: SecurityPolicyViolationEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
 declare var onunhandledrejection: ((this: SharedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /**
