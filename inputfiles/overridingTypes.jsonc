@@ -398,6 +398,13 @@
                             // Blink only as of 2024-11
                             "overrideType": "boolean",
                             "nullable": false
+                        },
+                        "onerror": {
+                            "name": "onerror",
+                            "nullable": true,
+                            "overrideType": "((event: Event) => any) | ((event: UIEvent) => any)",
+                            "comment": "The error event is fired on an element when a resource failed to load, or can't be used. \n [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event)",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event"
                         }
                     }
                 },
@@ -415,6 +422,13 @@
                                     ]
                                 }
                             }
+                        },
+                        "addEventListener": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener",
+                            "comment": "The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.",
+                            "overrideSignatures": [
+                                "addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void"
+                            ]
                         }
                     }
                 }
@@ -1222,7 +1236,7 @@
                                             "name": "quality",
                                             "overrideType": "number"
                                         }
-                                    ],
+                                    ]
                                 }
                             }
                         },
@@ -1235,7 +1249,7 @@
                                             "name": "quality",
                                             "overrideType": "number"
                                         }
-                                    ],
+                                    ]
                                 }
                             }
                         }
@@ -1273,6 +1287,24 @@
                             "deprecated": true,
                             "name": "className",
                             "type": "any"
+                        },
+                        "onerror": {
+                            "name": "onerror",
+                            "nullable": true,
+                            "overrideType": "((event: Event) => any) | ((event: UIEvent) => any)",
+                            "comment": "The error event is fired on an element when a resource failed to load, or can't be used. \n [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event)",
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event"
+                        }
+                    }
+                },
+                "methods": {
+                    "method": {
+                        "addEventListener": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener",
+                            "comment": "The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.",
+                            "overrideSignatures": [
+                                "addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void"
+                            ]
                         }
                     }
                 }
@@ -1293,6 +1325,13 @@
                                     "overrideType": "NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                                 }
                             }
+                        },
+                        "addEventListener": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener",
+                            "comment": "The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.",
+                            "overrideSignatures": [
+                                "addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void"
+                            ]
                         }
                     }
                 }

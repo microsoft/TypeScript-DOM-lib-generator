@@ -31,6 +31,28 @@ const extendConflictsBaseTypes: Record<
   },
 };
 
+/**
+ * There are situations where extended types properties or methods need
+ * overridden by the implementing interface. Use this to register those interfaces
+ * the key is the implementing interface, the override map key is the interface you want to override
+ * the value overrides a type
+ */
+const extendConflictsInterfaces: Record<
+  string,
+  { overrideMap: Record<string, string> }
+> = {
+  HTMLElement: {
+    overrideMap: {
+      GlobalEventHandlers: 'Omit<GlobalEventHandlers, "onerror">',
+    },
+  },
+  SVGElement: {
+    overrideMap: {
+      GlobalEventHandlers: 'Omit<GlobalEventHandlers, "onerror">',
+    },
+  },
+};
+
 // Namespaces that have been in form of interfaces for years
 // and can't be converted to namespaces without breaking type packages
 const namespacesAsInterfaces = ["console"];
@@ -1285,7 +1307,7 @@ export function emitWebIdl(
     }
 
     function processMixinName(mixinName: string) {
-      if (allInterfacesMap[mixinName].typeParameters?.length === 1) {
+      if (allInterfacesMap[mixinName]?.typeParameters?.length === 1) {
         return `${mixinName}<${i.name}>`;
       }
       return mixinName;
@@ -1308,10 +1330,27 @@ export function emitWebIdl(
       `interface ${getNameWithTypeParameters(i.typeParameters, processedIName)}`,
     );
 
-    const finalExtends = [i.extends || "Object"]
+    // build the extends list for a given interface
+    let finalExtends = [i.extends || "Object"]
       .concat(getImplementList(i.name).map(processMixinName))
       .filter((i) => i !== "Object")
       .map(processIName);
+
+    // overrides the interface's extends with any conflicts
+    // this is a separate filter to make sure we only override conflicts when
+    // they exist
+    if (finalExtends.length && extendConflictsInterfaces[i.name]?.overrideMap) {
+      finalExtends = finalExtends.reduce((agg, item) => {
+        // check for the conflict
+        if (extendConflictsInterfaces[i.name]?.overrideMap[item]) {
+          // overwrite the conflict
+          agg.push(extendConflictsInterfaces[i.name]?.overrideMap[item]);
+          return agg;
+        }
+        agg.push(item);
+        return agg;
+      }, [] as string[]);
+    }
 
     if (finalExtends.length) {
       printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);

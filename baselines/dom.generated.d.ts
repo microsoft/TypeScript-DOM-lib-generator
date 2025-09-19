@@ -14030,7 +14030,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
  */
-interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
+interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, Omit<GlobalEventHandlers, "onerror">, HTMLOrSVGElement {
     /**
      * The **`HTMLElement.accessKey`** property sets the keystroke which a user can press to jump to a given element.
      *
@@ -14122,6 +14122,13 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
      */
     readonly offsetWidth: number;
     /**
+     * The error event is fired on an element when a resource failed to load, or can't be used.
+     *  [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event)
+     *
+     * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event)
+     */
+    onerror: (((event: Event) => any) | ((event: UIEvent) => any)) | null;
+    /**
      * The **`outerText`** property of the HTMLElement interface returns the same value as HTMLElement.innerText.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/outerText)
@@ -14187,6 +14194,12 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/togglePopover)
      */
     togglePopover(options?: boolean): boolean;
+    /**
+     * The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.
+     *
+     * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+     */
+    addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void;
     addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -27391,9 +27404,16 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement)
  */
-interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface SVGElement extends Element, ElementCSSInlineStyle, Omit<GlobalEventHandlers, "onerror">, HTMLOrSVGElement {
     /** @deprecated */
     readonly className: any;
+    /**
+     * The error event is fired on an element when a resource failed to load, or can't be used.
+     *  [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event)
+     *
+     * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event)
+     */
+    onerror: (((event: Event) => any) | ((event: UIEvent) => any)) | null;
     /**
      * The **`ownerSVGElement`** property of the SVGElement interface reflects the nearest ancestor svg element.
      *
@@ -27406,6 +27426,12 @@ interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/viewportElement)
      */
     readonly viewportElement: SVGElement | null;
+    /**
+     * The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.
+     *
+     * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+     */
+    addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -29768,6 +29794,12 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
     unsuspendRedraw(suspendHandleID: number): void;
     /** @deprecated */
     unsuspendRedrawAll(): void;
+    /**
+     * The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.
+     *
+     * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+     */
+    addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void;
     addEventListener<K extends keyof SVGSVGElementEventMap>(type: K, listener: (this: SVGSVGElement, ev: SVGSVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGSVGElementEventMap>(type: K, listener: (this: SVGSVGElement, ev: SVGSVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
