@@ -5,7 +5,7 @@ import {
   SimpleSupportStatement,
 } from "bcd-idl-mapper";
 import api from "bcd-idl-mapper";
-import * as Browser from "../types.js";
+import type * as Browser from "../types.d.ts";
 import { filterMapRecord, isEmptyRecord } from "../utils/record.js";
 import { mapDefined } from "../helpers.js";
 import { hasStableImplementation } from "./stable.js";

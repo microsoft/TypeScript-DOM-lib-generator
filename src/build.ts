@@ -1,4 +1,4 @@
-import * as Browser from "./build/types.js";
+import type * as Browser from "./build/types.d.ts";
 import { promises as fs } from "fs";
 import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
 import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";

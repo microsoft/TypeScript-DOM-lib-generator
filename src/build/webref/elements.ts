@@ -1,5 +1,5 @@
 import { listAll, Element as WebrefElement } from "@webref/elements";
-import { Interface, WebIdl } from "../types.js";
+import type { Interface, WebIdl } from "../types.d.ts";
 import { addToArrayMap } from "../utils/map.js";
 
 async function getInterfaceToElementMap(): Promise<

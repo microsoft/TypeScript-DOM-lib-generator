@@ -1,5 +1,5 @@
 import * as webidl2 from "webidl2";
-import * as Browser from "./types.js";
+import type * as Browser from "./types.d.ts";
 import { getEmptyWebIDL } from "./helpers.js";
 
 export function convert(text: string, commentMap: Record<string, string>) {
