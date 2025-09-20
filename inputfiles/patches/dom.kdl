@@ -4,3 +4,10 @@ enum InsertPosition {
     afterbegin
     afterend
 }
+
+enum ImageOrientation {
+    // The spec removed this but it's still in browsers and WebKit doesn't support the new one.
+    // Keep it until it's safer to fully migrate.
+    // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
+    none
+}
