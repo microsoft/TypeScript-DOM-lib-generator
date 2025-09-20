@@ -100,7 +100,15 @@ function handleEnum(node: Node): Enum {
     values.push(child.name);
   }
 
-  return { name, value: values };
+  return {
+    name,
+    value: values,
+    ...optionalMember(
+      "legacyNamespace",
+      "string",
+      node.properties.legacyNamespace,
+    ),
+  };
 }
 
 /**

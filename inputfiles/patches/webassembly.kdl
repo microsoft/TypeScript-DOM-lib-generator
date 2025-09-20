@@ -1,0 +1,2 @@
+enum ImportExportKind legacyNamespace=WebAssembly
+enum TableKind legacyNamespace=WebAssembly
