@@ -42,8 +42,8 @@ function string(arg: unknown): string {
 
 function handleTyped(type: Node): Typed {
   const isTyped = type.name == "type";
-  if (!isTyped && !returnType) {
-    throw new Error("Expected a type node or returnType");
+  if (!isTyped) {
+    throw new Error("Expected a type node");
   }
   const name = string(type.values[0]);
   const subType =
