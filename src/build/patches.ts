@@ -40,14 +40,14 @@ function string(arg: unknown): string {
   return arg;
 }
 
-function handleTyped(type: Node, returnType?: Value): Typed {
+function handleTyped(type: Node): Typed {
   const isTyped = type.name == "type";
   if (!isTyped && !returnType) {
     throw new Error("Expected a type node or returnType");
   }
-  const name = string(isTyped ? type.values[0] : returnType);
+  const name = string(type.values[0]);
   const subType =
-    type.children.length > 0 ? handleTyped(type.children[0], name) : undefined;
+   type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
   return {
     type: name,
     subtype: subType,
