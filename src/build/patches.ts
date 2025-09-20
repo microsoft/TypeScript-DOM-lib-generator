@@ -47,7 +47,7 @@ function handleTyped(type: Node): Typed {
   }
   const name = string(type.values[0]);
   const subType =
-   type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
+    type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
   return {
     type: name,
     subtype: subType,
