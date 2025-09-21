@@ -175,6 +175,7 @@ function handleProperty(child: Node): Partial<Property> {
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
+    ...optionalMember("type", "string", child.properties?.type),
   };
 }
 

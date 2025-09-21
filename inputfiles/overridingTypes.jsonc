@@ -96,15 +96,6 @@
                     }
                 }
             },
-            "CanvasCompositing": {
-              "properties": {
-                "property": {
-                  "globalCompositeOperation": {
-                    "type": "GlobalCompositeOperation"
-                  }
-                }
-              }
-            },
             "Body": {
                 "properties": {
                     "property": {
