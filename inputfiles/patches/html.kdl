@@ -4,3 +4,7 @@ enum ImageOrientation {
     // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
     none
 }
+
+interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject
+interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject
+interface HTMLDocument extends=Document exposed=Window

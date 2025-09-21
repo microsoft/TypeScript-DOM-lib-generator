@@ -68,6 +68,7 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
   const nodes = output!;
   const enums: Record<string, Enum> = {};
   const mixin: Record<string, DeepPartial<Interface>> = {};
+  const interfaces: Record<string, DeepPartial<Interface>> = {};
 
   for (const node of nodes) {
     const name = string(node.values[0]);
@@ -76,14 +77,21 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
         enums[name] = handleEnum(node);
         break;
       case "interface-mixin":
-        mixin[name] = handleMixin(node);
+        mixin[name] = handleMixinandInterfaces(node, "mixin");
+        break;
+      case "interface":
+        interfaces[name] = handleMixinandInterfaces(node, "interface");
         break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
     }
   }
 
-  return { enums: { enum: enums }, mixins: { mixin } };
+  return {
+    enums: { enum: enums },
+    mixins: { mixin },
+    interfaces: { interface: interfaces },
+  };
 }
 
 /**
@@ -118,7 +126,10 @@ function handleEnum(node: Node): Enum {
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
  */
-function handleMixin(node: Node): DeepPartial<Interface> {
+function handleMixinandInterfaces(
+  node: Node,
+  type: "mixin" | "interface",
+): DeepPartial<Interface> {
   const name = node.values[0];
 
   const event: Event[] = [];
@@ -145,12 +156,22 @@ function handleMixin(node: Node): DeepPartial<Interface> {
     }
   }
 
+  const interfaceObject = type === "interface" && {
+    ...optionalMember("exposed", "string", node.properties?.exposed),
+    ...optionalMember("deprecated", "string", node.properties?.deprecated),
+    ...optionalMember(
+      "noInterfaceObject",
+      "boolean",
+      node.properties?.noInterfaceObject,
+    ),
+  };
   return {
     name,
     events: { event },
     properties: { property },
     methods: { method },
     ...optionalMember("extends", "string", node.properties?.extends),
+    ...interfaceObject,
   } as DeepPartial<Interface>;
 }
 

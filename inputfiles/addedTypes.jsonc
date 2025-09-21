@@ -96,25 +96,6 @@
                     }
                 }
             },
-            "HTMLTableDataCellElement": {
-                "name": "HTMLTableDataCellElement",
-                "extends": "HTMLTableCellElement",
-                "noInterfaceObject": true,
-                "deprecated": "prefer HTMLTableCellElement",
-                "exposed": "Window"
-            },
-            "HTMLTableHeaderCellElement": {
-                "name": "HTMLTableHeaderCellElement",
-                "extends": "HTMLTableCellElement",
-                "noInterfaceObject": true,
-                "deprecated": "prefer HTMLTableCellElement",
-                "exposed": "Window"
-            },
-            "HTMLDocument": {
-                "name": "HTMLDocument",
-                "extends": "Document",
-                "exposed": "Window"
-            },
             "HTMLMediaElement": {
                 "events": {
                     "event": [
