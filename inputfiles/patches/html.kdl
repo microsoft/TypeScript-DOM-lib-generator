@@ -5,6 +5,6 @@ enum ImageOrientation {
     none
 }
 
-interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject
-interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject
+interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
+interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
 interface HTMLDocument extends=Document exposed=Window
