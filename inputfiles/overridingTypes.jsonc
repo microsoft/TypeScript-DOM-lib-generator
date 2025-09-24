@@ -1,14 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "MessageEventTarget": {
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "overrideThis": "T"
-            },
             "NavigatorGPU": {
                 "properties": {
                     "property": {
@@ -1294,26 +1286,15 @@
                     "[name: number]: HTMLOptionElement | HTMLOptGroupElement"
                 ]
             },
-            "HTMLDirectoryElement": {
-                "element": [
-                    {
-                        "name": "dir"
+            "HTMLDataListElement": {
+                "properties": {
+                    "property": {
+                        "options": {
+                            "name": "options",
+                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
+                        }
                     }
-                ]
-            },
-            "HTMLFontElement": {
-                "element": [
-                    {
-                        "name": "font"
-                    }
-                ]
-            },
-            "HTMLFrameElement": {
-                "element": [
-                    {
-                        "name": "frame"
-                    }
-                ]
+                }
             },
             "FontFace": {
               "properties": {
@@ -1324,12 +1305,29 @@
                 }
               }
             },
-            "HTMLFrameSetElement": {
-                "element": [
-                    {
-                        "name": "frameset"
+            "HTMLTableElement": {
+                "properties": {
+                    "property": {
+                        "rows": {
+                            "name": "rows",
+                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
+                        },
+                        "tBodies": {
+                            "name": "tBodies",
+                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
+                        }
                     }
-                ]
+                }
+            },
+            "HTMLTableSectionElement": {
+                "properties": {
+                    "property": {
+                        "rows": {
+                            "name": "rows",
+                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
+                        }
+                    }
+                }
             },
             "Element": {
                 "methods": {
@@ -2218,13 +2216,6 @@
                         }
                     }
                 }
-            },
-            "HTMLMarqueeElement": {
-                "element": [
-                    {
-                        "name": "marquee"
-                    }
-                ]
             },
             "Worker": {
                 "methods": {

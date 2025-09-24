@@ -55,6 +55,17 @@ function handleTyped(type: Node): Typed {
   };
 }
 
+function handleTypeParameters(value: Value) {
+  if (!value) return {};
+  return {
+    typeParameters: [
+      {
+        name: string(value),
+      },
+    ],
+  };
+}
+
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
  */
@@ -171,6 +182,8 @@ function handleMixinandInterfaces(
     properties: { property },
     methods: { method },
     ...optionalMember("extends", "string", node.properties?.extends),
+    ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
+    ...handleTypeParameters(node.properties?.typeParameters),
     ...interfaceObject,
   } as DeepPartial<Interface>;
 }
