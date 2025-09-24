@@ -98,3 +98,7 @@ interface-mixin WindowEventHandlers {
   event storage type=StorageEvent
   event unhandledrejection type=PromiseRejectionEvent
 }
+
+interface MouseEvent {
+  method initMouseEvent overrideSignatures="initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget | null): void"
+}

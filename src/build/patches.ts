@@ -15,7 +15,7 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
-function optionalMember<const T>(prop: string, type: T, value?: Value) {
+function optionalMember<const T>(prop: string, type: T, value?: unknown) {
   if (value === undefined) {
     return {};
   }
@@ -63,6 +63,13 @@ function handleTypeParameters(value: Value) {
         name: string(value),
       },
     ],
+  };
+}
+
+function handleOverrideSignatures(value: Value) {
+  if (!value) return {};
+  return {
+    overrideSignatures: [string(value)],
   };
 }
 
@@ -244,17 +251,20 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  if (!typeNode) {
-    throw new Error(`Method "${name}" is missing a return type`);
+  let signature: Method["signature"] | undefined = undefined;
+  if (typeNode) {
+    signature = [
+      {
+        param: params,
+        ...handleTyped(typeNode),
+      },
+    ];
   }
-
-  const signature: Method["signature"] = [
-    {
-      param: params,
-      ...handleTyped(typeNode),
-    },
-  ];
-  return { name, signature };
+  return {
+    name,
+    ...handleOverrideSignatures(child.properties.overrideSignatures),
+    ...optionalMember("signature", "array", signature),
+  };
 }
 
 /**
