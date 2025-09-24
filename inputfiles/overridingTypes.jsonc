@@ -1334,27 +1334,6 @@
                     }
                 }
             },
-            "HTMLDirectoryElement": {
-                "element": [
-                    {
-                        "name": "dir"
-                    }
-                ]
-            },
-            "HTMLFontElement": {
-                "element": [
-                    {
-                        "name": "font"
-                    }
-                ]
-            },
-            "HTMLFrameElement": {
-                "element": [
-                    {
-                        "name": "frame"
-                    }
-                ]
-            },
             "FontFace": {
               "properties": {
                 "property": {
@@ -1363,13 +1342,6 @@
                   }
                 }
               }
-            },
-            "HTMLFrameSetElement": {
-                "element": [
-                    {
-                        "name": "frameset"
-                    }
-                ]
             },
             "HTMLTableElement": {
                 "properties": {
@@ -2380,13 +2352,6 @@
                         }
                     }
                 }
-            },
-            "HTMLMarqueeElement": {
-                "element": [
-                    {
-                        "name": "marquee"
-                    }
-                ]
             },
             "Worker": {
                 "methods": {
