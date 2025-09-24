@@ -905,6 +905,7 @@ interface InputEventInit extends UIEventInit {
 interface IntersectionObserverInit {
     root?: Element | Document | null;
     rootMargin?: string;
+    scrollMargin?: string;
     threshold?: number | number[];
 }
 
