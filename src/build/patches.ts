@@ -55,6 +55,17 @@ function handleTyped(type: Node): Typed {
   };
 }
 
+function handleTypeParameters(value:Value){
+  if(!value) return {};
+  return {
+    typeParameters: [
+      {
+        name: string(value),
+      }
+    ]
+  }
+}
+
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
  */
@@ -164,6 +175,8 @@ function handleMixinandInterfaces(
       "boolean",
       node.properties?.noInterfaceObject,
     ),
+    ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
+    ...handleTypeParameters(node.properties?.typeParameters),
   };
   return {
     name,

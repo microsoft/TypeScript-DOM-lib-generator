@@ -1,0 +1,1 @@
+interface MessageEventTarget overrideThis=T typeParameters=T

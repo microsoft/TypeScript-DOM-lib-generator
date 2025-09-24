@@ -1,14 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "MessageEventTarget": {
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "overrideThis": "T"
-            },
             "NavigatorGPU": {
                 "properties": {
                     "property": {
