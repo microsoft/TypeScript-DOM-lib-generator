@@ -175,8 +175,6 @@ function handleMixinandInterfaces(
       "boolean",
       node.properties?.noInterfaceObject,
     ),
-    ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
-    ...handleTypeParameters(node.properties?.typeParameters),
   };
   return {
     name,
@@ -184,6 +182,8 @@ function handleMixinandInterfaces(
     properties: { property },
     methods: { method },
     ...optionalMember("extends", "string", node.properties?.extends),
+    ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
+    ...handleTypeParameters(node.properties?.typeParameters),
     ...interfaceObject,
   } as DeepPartial<Interface>;
 }
