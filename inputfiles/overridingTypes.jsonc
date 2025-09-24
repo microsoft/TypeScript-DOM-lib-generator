@@ -367,16 +367,6 @@
                 }
             },
             "HTMLElement": {
-                "properties": {
-                    "property": {
-                        "hidden": {
-                            // https://github.com/whatwg/html/pull/7475
-                            // Blink only as of 2024-11
-                            "overrideType": "boolean",
-                            "nullable": false
-                        }
-                    }
-                },
                 "methods": {
                     "method": {
                         "togglePopover": {
@@ -1300,39 +1290,9 @@
                 }
             },
             "HTMLSelectElement": {
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "overrideType": "\"select-one\" | \"select-multiple\""
-                        },
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "selectedOptions": {
-                            "name": "selectedOptions",
-                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
-                        },
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                },
                 "overrideIndexSignatures": [
                     "[name: number]: HTMLOptionElement | HTMLOptGroupElement"
                 ]
-            },
-            "HTMLDataListElement": {
-                "properties": {
-                    "property": {
-                        "options": {
-                            "name": "options",
-                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
-                        }
-                    }
-                }
             },
             "HTMLDirectoryElement": {
                 "element": [
@@ -1370,30 +1330,6 @@
                         "name": "frameset"
                     }
                 ]
-            },
-            "HTMLTableElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        },
-                        "tBodies": {
-                            "name": "tBodies",
-                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLTableSectionElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        }
-                    }
-                }
             },
             "Element": {
                 "methods": {
@@ -1521,9 +1457,6 @@
                 "overrideIndexSignatures": [
                     "[name: string]: any"
                 ]
-            },
-            "HTMLOptionsCollection": {
-                "extends": "HTMLCollectionOf<HTMLOptionElement>"
             },
             "SubtleCrypto": {
                 "methods": {
@@ -1707,22 +1640,6 @@
                 }
             },
             "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        },
-                        "valueAsDate": {
-                            "name": "valueAsDate",
-                            "overrideType": "Date"
-                        }
-                    }
-                },
                 "methods": {
                     "method": {
                         "setSelectionRange": {
@@ -1785,76 +1702,7 @@
                 "exposed": "",
                 "name": "Float16Array"
             },
-            "HTMLButtonElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        },
-                        "type": {
-                            "overrideType": "\"submit\" | \"reset\" | \"button\""
-                        }
-                    }
-                }
-            },
-            "HTMLLabelElement": {
-                "properties": {
-                    "property": {
-                        "form": {
-                            "name": "form",
-                            "overrideType": "HTMLFormElement"
-                        }
-                    }
-                }
-            },
-            "HTMLMeterElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLOutputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLProgressElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
             "HTMLTextAreaElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        }
-                    }
-                },
                 "methods": {
                     "method": {
                         "setSelectionRange": {
@@ -1942,16 +1790,6 @@
                             "type": "WritableStream",
                             "readonly": true,
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
-                        }
-                    }
-                }
-            },
-            "HTMLTableRowElement": {
-                "properties": {
-                    "property": {
-                        "cells": {
-                            "name": "cells",
-                            "overrideType": "HTMLCollectionOf<HTMLTableCellElement>"
                         }
                     }
                 }
@@ -2563,15 +2401,7 @@
                 "overrideIndexSignatures": [
                     "[index: number]: Element",
                     "[name: string]: any"
-                ],
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFillBase"
-                        }
-                    }
-                }
+                ]
             },
             "Blob": {
               "methods": {
@@ -3364,15 +3194,6 @@
             "ContactAddress": {
                 "name": "PaymentAddress"
             },
-            "HTMLMediaElement": {
-                "properties": {
-                    "property": {
-                        "preload": {
-                            "overrideType": "\"none\" | \"metadata\" | \"auto\" | \"\""
-                        }
-                    }
-                }
-            },
             "Global": {
                 "name": "Global",
                 "typeParameters": [
@@ -3447,33 +3268,6 @@
                                     "overrideType": "undefined | CSSStyleValue"
                                 }
                             }
-                        }
-                    }
-                }
-            },
-            "HTMLImageElement": {
-                "properties": {
-                    "property": {
-                        "fetchPriority": {
-                            "overrideType": "\"high\" | \"low\" | \"auto\""
-                        }
-                    }
-                }
-            },
-            "HTMLLinkElement": {
-                "properties": {
-                    "property": {
-                        "fetchPriority": {
-                            "overrideType": "\"high\" | \"low\" | \"auto\""
-                        }
-                    }
-                }
-            },
-            "HTMLScriptElement": {
-                "properties": {
-                    "property": {
-                        "fetchPriority": {
-                            "overrideType": "\"high\" | \"low\" | \"auto\""
                         }
                     }
                 }

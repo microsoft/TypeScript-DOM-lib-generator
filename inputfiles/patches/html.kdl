@@ -5,6 +5,57 @@ enum ImageOrientation {
     none
 }
 
-interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
-interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
+interface HTMLBodyElement {
+    property onorientationchange deprecated=#true
+}
+
+interface HTMLCollectionOf exposed=Window extends=HTMLCollection noInterfaceObject=#true
+
+interface HTMLDataListElement {
+    property options overrideType=HTMLCollectionOf<HTMLOptionElement>
+}
+
 interface HTMLDocument extends=Document exposed=Window
+ 
+interface HTMLIFrameElement {
+    property referrerPolicy type=ReferrerPolicy
+    property loading overrideType="\"eager\" | \"lazy\""
+}
+
+interface HTMLImageElement {
+    property decoding overrideType="\"async\" | \"sync\" | \"auto\""
+    property loading overrideType="\"eager\" | \"lazy\""
+    property fetchPriority overrideType="\"high\" | \"low\" | \"auto\""
+}
+
+interface HTMLLinkElement {
+    property charset deprecated=#true
+    property rev deprecated=#true
+    property target deprecated=#true
+    property fetchPriority overrideType="\"high\" | \"low\" | \"auto\""
+}
+
+interface HTMLMediaElement {
+    event encrypted type=MediaEncryptedEvent
+    property preload overrideType="\"none\" | \"metadata\" | \"auto\" | \"\""
+}
+
+interface HTMLMeterElement {
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+}
+
+interface HTMLOptionsCollection extends=HTMLCollectionOf<HTMLOptionElement>
+
+interface HTMLProgressElement {
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+}
+
+interface HTMLScriptElement {
+    property fetchPriority overrideType="\"high\" | \"low\" | \"auto\""
+}
+
+interface HTMLElement {
+    // https://github.com/whatwg/html/pull/7475
+    // Blink only as of 2024-11
+    property hidden overrideType=boolean nullable=#false
+}

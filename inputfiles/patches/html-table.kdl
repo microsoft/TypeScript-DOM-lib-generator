@@ -1,0 +1,16 @@
+interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
+
+interface HTMLTableElement {
+    property rows overrideType=HTMLCollectionOf<HTMLTableRowElement>
+    property tBodies overrideType=HTMLCollectionOf<HTMLTableSectionElement>
+}
+
+interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
+
+interface HTMLTableRowElement {
+    property cells overrideType=HTMLCollectionOf<HTMLTableCellElement>
+}
+
+interface HTMLTableSectionElement {
+    property rows overrideType=HTMLCollectionOf<HTMLTableRowElement>
+}

@@ -1,0 +1,36 @@
+interface HTMLButtonElement {
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+    property type overrideType="\"submit\" | \"reset\" | \"button\""
+}
+
+interface HTMLFormElement {
+    property autocomplete overrideType=AutoFillBase
+}
+
+interface HTMLInputElement {
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+    property autocomplete overrideType=AutoFill
+    property selectionDirection overrideType="\"forward\" | \"backward\" | \"none\""
+    property valueAsDate overrideType=Date
+}
+
+interface HTMLLabelElement {
+    property form overrideType=HTMLFormElement
+}
+
+interface HTMLOutputElement {
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+}
+
+interface HTMLSelectElement {
+    property type overrideType="\"select-one\" | \"select-multiple\""
+    property autocomplete overrideType=AutoFill
+    property selectedOptions overrideType=HTMLCollectionOf<HTMLOptionElement>
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+}
+
+interface HTMLTextAreaElement {
+    property autocomplete overrideType=AutoFill
+    property labels overrideType=NodeListOf<HTMLLabelElement>
+    property selectionDirection overrideType="\"forward\" | \"backward\" | \"none\""
+}
