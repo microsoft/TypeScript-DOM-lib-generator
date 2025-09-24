@@ -15,7 +15,7 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
-function optionalMember<const T>(prop: string, type: T, value?: unknown) {
+function optionalMember<const T>(prop: string, type: T, value?: Value) {
   if (value === undefined) {
     return {};
   }
@@ -263,7 +263,7 @@ function handleMethod(child: Node): Partial<Method> {
   return {
     name,
     ...handleOverrideSignatures(child.properties.overrideSignatures),
-    ...optionalMember("signature", "array", signature),
+    ...(signature !== undefined ? { signature } : {}),
   };
 }
 
