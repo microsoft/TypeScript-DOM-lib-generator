@@ -1286,16 +1286,6 @@
                     "[name: number]: HTMLOptionElement | HTMLOptGroupElement"
                 ]
             },
-            "HTMLDataListElement": {
-                "properties": {
-                    "property": {
-                        "options": {
-                            "name": "options",
-                            "overrideType": "HTMLCollectionOf<HTMLOptionElement>"
-                        }
-                    }
-                }
-            },
             "FontFace": {
               "properties": {
                 "property": {
@@ -1304,30 +1294,6 @@
                   }
                 }
               }
-            },
-            "HTMLTableElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        },
-                        "tBodies": {
-                            "name": "tBodies",
-                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLTableSectionElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        }
-                    }
-                }
             },
             "Element": {
                 "methods": {
