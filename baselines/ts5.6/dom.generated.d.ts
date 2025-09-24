@@ -15068,7 +15068,7 @@ interface GlobalEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended_event) */
     onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event) */
-    onerror: OnErrorEventHandler;
+    onerror: DocumentOrGlobalOnErrorHandler;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/focus_event) */
     onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event) */
@@ -41632,7 +41632,7 @@ declare var onemptied: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended_event) */
 declare var onended: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event) */
-declare var onerror: OnErrorEventHandler;
+declare var onerror: DocumentOrGlobalOnErrorHandler;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/focus_event) */
 declare var onfocus: ((this: Window, ev: FocusEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event) */
@@ -41909,6 +41909,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
+type DocumentOrGlobalOnErrorHandler = (((event: Event) => any) | ((event: UIEvent) => any) | OnErrorEventHandlerNonNull) | null;
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
