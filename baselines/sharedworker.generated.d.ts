@@ -176,6 +176,10 @@ interface EventSourceInit {
     withCredentials?: boolean;
 }
 
+interface ExceptionOptions {
+    traceStack?: boolean;
+}
+
 interface FilePropertyBag extends BlobPropertyBag {
     lastModified?: number;
 }
@@ -635,6 +639,10 @@ interface StructuredSerializeOptions {
     transfer?: Transferable[];
 }
 
+interface TagType {
+    parameters: ValueType[];
+}
+
 interface TaskControllerInit {
     priority?: TaskPriority;
 }
@@ -744,6 +752,11 @@ interface VideoConfiguration {
     scalabilityMode?: string;
     transferFunction?: TransferFunction;
     width: number;
+}
+
+interface WebAssemblyCompileOptions {
+    builtins?: string[];
+    importedStringConstants?: string | null;
 }
 
 interface WebGLContextAttributes {
@@ -4020,6 +4033,7 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
     onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
@@ -5878,6 +5892,12 @@ declare var PushManager: {
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
 
+/** Available only in secure contexts. */
+interface PushManagerAttribute {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager) */
+    readonly pushManager: PushManager;
+}
+
 /**
  * The `PushSubscription` interface of the Push API provides a subscription's URL endpoint along with the public key and secrets that should be used for encrypting push messages to this subscription.
  * Available only in secure contexts.
@@ -6611,7 +6631,7 @@ interface ServiceWorkerRegistrationEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration)
  */
-interface ServiceWorkerRegistration extends EventTarget {
+interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
     /**
      * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is `activating` or `activated`.
      *
@@ -6632,12 +6652,6 @@ interface ServiceWorkerRegistration extends EventTarget {
     readonly navigationPreload: NavigationPreloadManager;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/updatefound_event) */
     onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
-    /**
-     * The **`pushManager`** read-only property of the ServiceWorkerRegistration interface returns a reference to the PushManager interface for managing push subscriptions; this includes support for subscribing, getting an active subscription, and accessing push permission status.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager)
-     */
-    readonly pushManager: PushManager;
     /**
      * The **`scope`** read-only property of the ServiceWorkerRegistration interface returns a string representing a URL that defines a service worker's registration scope; that is, the range of URLs a service worker can control.
      *
@@ -10775,6 +10789,37 @@ declare namespace WebAssembly {
     };
 
     /**
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
+     */
+    interface Exception {
+        /**
+         * The read-only **`stack`** property of an object instance of type `WebAssembly.Exception` _may_ contain a stack trace.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
+         */
+        readonly stack: string | undefined;
+        /**
+         * The **`getArg()`** prototype method of the `Exception` object can be used to get the value of a specified item in the exception's data arguments.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
+         */
+        getArg(index: number): any;
+        /**
+         * The **`is()`** prototype method of the `Exception` object can be used to test if the `Exception` matches a given tag.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
+         */
+        is(exceptionTag: Tag): boolean;
+    }
+
+    var Exception: {
+        prototype: Exception;
+        new(exceptionTag: Tag, payload: any[], options?: ExceptionOptions): Exception;
+    };
+
+    /**
      * A **`WebAssembly.Global`** object represents a global variable instance, accessible from both JavaScript and importable/exportable across one or more `WebAssembly.Module` instances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global)
@@ -10834,7 +10879,7 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
-        grow(delta: number): number;
+        grow(delta: AddressValue): AddressValue;
     }
 
     var Memory: {
@@ -10852,7 +10897,7 @@ declare namespace WebAssembly {
 
     var Module: {
         prototype: Module;
-        new(bytes: BufferSource): Module;
+        new(bytes: BufferSource, options?: WebAssemblyCompileOptions): Module;
         /**
          * The **`WebAssembly.Module.customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
          *
@@ -10893,30 +10938,43 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/length)
          */
-        readonly length: number;
+        readonly length: AddressValue;
         /**
          * The **`get()`** prototype method of the `WebAssembly.Table()` object retrieves the element stored at a given index.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/get)
          */
-        get(index: number): any;
+        get(index: AddressValue): any;
         /**
          * The **`grow()`** prototype method of the `WebAssembly.Table` object increases the size of the `Table` instance by a specified number of elements, filled with the provided value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/grow)
          */
-        grow(delta: number, value?: any): number;
+        grow(delta: AddressValue, value?: any): AddressValue;
         /**
          * The **`set()`** prototype method of the `WebAssembly.Table` object mutates a reference stored at a given index to a different value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
-        set(index: number, value?: any): void;
+        set(index: AddressValue, value?: any): void;
     }
 
     var Table: {
         prototype: Table;
         new(descriptor: TableDescriptor, value?: any): Table;
+    };
+
+    /**
+     * The **`WebAssembly.Tag`** object defines a _type_ of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
+     */
+    interface Tag {
+    }
+
+    var Tag: {
+        prototype: Tag;
+        new(type: TagType): Tag;
     };
 
     interface GlobalDescriptor<T extends ValueType = ValueType> {
@@ -10925,8 +10983,9 @@ declare namespace WebAssembly {
     }
 
     interface MemoryDescriptor {
-        initial: number;
-        maximum?: number;
+        address?: AddressType;
+        initial: AddressValue;
+        maximum?: AddressValue;
         shared?: boolean;
     }
 
@@ -10942,9 +11001,10 @@ declare namespace WebAssembly {
     }
 
     interface TableDescriptor {
+        address?: AddressType;
         element: TableKind;
-        initial: number;
-        maximum?: number;
+        initial: AddressValue;
+        maximum?: AddressValue;
     }
 
     interface ValueTypeMap {
@@ -10962,7 +11022,7 @@ declare namespace WebAssembly {
         module: Module;
     }
 
-    type ImportExportKind = "function" | "global" | "memory" | "table";
+    type ImportExportKind = "function" | "global" | "memory" | "table" | "tag";
     type TableKind = "anyfunc" | "externref";
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
@@ -10971,16 +11031,16 @@ declare namespace WebAssembly {
     type ModuleImports = Record<string, ImportValue>;
     type ValueType = keyof ValueTypeMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
-    function compile(bytes: BufferSource): Promise<Module>;
+    function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compileStreaming_static) */
-    function compileStreaming(source: Response | PromiseLike<Response>): Promise<Module>;
+    function compileStreaming(source: Response | PromiseLike<Response>, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiate_static) */
-    function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(bytes: BufferSource, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiateStreaming_static) */
-    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/validate_static) */
-    function validate(bytes: BufferSource): boolean;
+    function validate(bytes: BufferSource, options?: WebAssemblyCompileOptions): boolean;
 }
 
 /** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
@@ -11288,6 +11348,7 @@ declare function addEventListener<K extends keyof SharedWorkerGlobalScopeEventMa
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+type AddressValue = any;
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBufferLike | ArrayBufferView<ArrayBufferLike>;
 type BigInteger = Uint8Array<ArrayBuffer>;
@@ -11339,6 +11400,7 @@ type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AddressType = "i32" | "i64";
 type BinaryType = "arraybuffer" | "blob";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";

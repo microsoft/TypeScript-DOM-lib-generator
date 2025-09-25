@@ -357,6 +357,11 @@ interface CloseEventInit extends EventInit {
     wasClean?: boolean;
 }
 
+interface CommandEventInit extends EventInit {
+    command?: string;
+    source?: Element | null;
+}
+
 interface CompositionEventInit extends UIEventInit {
     data?: string;
 }
@@ -687,6 +692,10 @@ interface EventModifierInit extends UIEventInit {
 
 interface EventSourceInit {
     withCredentials?: boolean;
+}
+
+interface ExceptionOptions {
+    traceStack?: boolean;
 }
 
 interface FilePropertyBag extends BlobPropertyBag {
@@ -1103,6 +1112,7 @@ interface MediaRecorderOptions {
 
 interface MediaSessionActionDetails {
     action: MediaSessionAction;
+    enterPictureInPictureReason?: MediaSessionEnterPictureInPictureReason;
     fastSeek?: boolean;
     seekOffset?: number;
     seekTime?: number;
@@ -2272,6 +2282,10 @@ interface SubmitEventInit extends EventInit {
     submitter?: HTMLElement | null;
 }
 
+interface TagType {
+    parameters: ValueType[];
+}
+
 interface TaskControllerInit {
     priority?: TaskPriority;
 }
@@ -2568,6 +2582,11 @@ interface ViewTimelineOptions {
 interface WaveShaperOptions extends AudioNodeOptions {
     curve?: number[] | Float32Array;
     oversample?: OverSampleType;
+}
+
+interface WebAssemblyCompileOptions {
+    builtins?: string[];
+    importedStringConstants?: string | null;
 }
 
 interface WebGLContextAttributes {
@@ -3269,6 +3288,7 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
+    /** The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or `null`. */
     readonly duration: CSSNumberish | null;
 }
 
@@ -8388,6 +8408,31 @@ declare var CloseEvent: {
 };
 
 /**
+ * The **`CommandEvent`** interface represents an event notifying the user when a HTMLButtonElement element with valid HTMLButtonElement.commandForElement and HTMLButtonElement.command attributes is about to invoke an interactive element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent)
+ */
+interface CommandEvent extends Event {
+    /**
+     * The **`command`** read-only property of the CommandEvent interface returns a string containing the value of the HTMLButtonElement.command property at the time the event was dispatched.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/command)
+     */
+    readonly command: string;
+    /**
+     * The **`source`** read-only property of the CommandEvent interface returns an EventTarget representing the control that invoked the given command.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/source)
+     */
+    readonly source: Element | null;
+}
+
+declare var CommandEvent: {
+    prototype: CommandEvent;
+    new(type: string, eventInitDict?: CommandEventInit): CommandEvent;
+};
+
+/**
  * The **`Comment`** interface represents textual notations within markup; although it is generally not visually shown, such comments are available to be read in the source view.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Comment)
@@ -10454,6 +10499,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "BlobEvent"): BlobEvent;
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
+    createEvent(eventInterface: "CommandEvent"): CommandEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
     createEvent(eventInterface: "ContentVisibilityAutoStateChangeEvent"): ContentVisibilityAutoStateChangeEvent;
     createEvent(eventInterface: "CookieChangeEvent"): CookieChangeEvent;
@@ -13589,6 +13635,18 @@ declare var HTMLBodyElement: {
  */
 interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
     /**
+     * The **`command`** property of the HTMLButtonElement interface gets and sets the action to be performed on an element being controlled by this button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/command)
+     */
+    command: string;
+    /**
+     * The **`commandForElement`** property of the HTMLButtonElement interface gets and sets the element to control via a button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/commandForElement)
+     */
+    commandForElement: Element | null;
+    /**
      * The **`HTMLButtonElement.disabled`** property indicates whether the control is disabled, meaning that it does not accept any clicks.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/disabled)
@@ -14074,7 +14132,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
      */
     innerText: string;
     /**
-     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a MISSING: RFC(5646, 'BCP 47 language identifier tag')].
+     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a BCP 47 language tag.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lang)
      */
@@ -16727,7 +16785,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     src: string;
     /**
-     * The **`text`** property of the HTMLScriptElement interface is a string that reflects the text content inside the script element.
+     * The **`text`** property of the HTMLScriptElement interface represents the inline text content of the script element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/text)
      */
@@ -18367,6 +18425,7 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
     onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
@@ -23007,6 +23066,8 @@ interface ParentNode extends Node {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append)
      */
     append(...nodes: (Node | string)[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/moveBefore) */
+    moveBefore(node: Node, child: Node | null): void;
     /**
      * Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
      *
@@ -23534,6 +23595,12 @@ interface PerformanceEventTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/cancelable)
      */
     readonly cancelable: boolean;
+    /**
+     * The read-only **`interactionId`** property returns an ID that uniquely identifies a user interaction which triggered a series of associated events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/interactionId)
+     */
+    readonly interactionId: number;
     /**
      * The read-only **`processingEnd`** property returns the time the last event handler finished executing.
      *
@@ -24677,6 +24744,12 @@ declare var PushManager: {
      */
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
+
+/** Available only in secure contexts. */
+interface PushManagerAttribute {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager) */
+    readonly pushManager: PushManager;
+}
 
 /**
  * The `PushSubscription` interface of the Push API provides a subscription's URL endpoint along with the public key and secrets that should be used for encrypting push messages to this subscription.
@@ -29061,6 +29134,7 @@ interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     readonly SVG_MARKER_ORIENT_UNKNOWN: 0;
     readonly SVG_MARKER_ORIENT_AUTO: 1;
     readonly SVG_MARKER_ORIENT_ANGLE: 2;
+    readonly SVG_MARKER_ORIENT_AUTO_START_REVERSE: 3;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -29076,6 +29150,7 @@ declare var SVGMarkerElement: {
     readonly SVG_MARKER_ORIENT_UNKNOWN: 0;
     readonly SVG_MARKER_ORIENT_AUTO: 1;
     readonly SVG_MARKER_ORIENT_ANGLE: 2;
+    readonly SVG_MARKER_ORIENT_AUTO_START_REVERSE: 3;
 };
 
 /**
@@ -29720,7 +29795,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/getElementById)
      */
-    getElementById(elementId: string): Element;
+    getElementById(elementId: string): Element | null;
     getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     /**
@@ -29895,6 +29970,11 @@ declare var SVGStringList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement)
  */
 interface SVGStyleElement extends SVGElement, LinkStyle {
+    /**
+     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement/disabled)
+     */
     disabled: boolean;
     /**
      * The **`SVGStyleElement.media`** property is a media query string corresponding to the `media` attribute of the given SVG style element.
@@ -30545,7 +30625,13 @@ interface ScreenOrientation extends EventTarget {
      */
     readonly type: OrientationType;
     /**
-     * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document from its default orientation.
+     * The **`lock()`** method of the ScreenOrientation interface locks the orientation of the containing document to the specified orientation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/lock)
+     */
+    lock(orientation: OrientationLockType): Promise<void>;
+    /**
+     * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document, effectively locking it to the default screen orientation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/unlock)
      */
@@ -30984,7 +31070,7 @@ interface ServiceWorkerRegistrationEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration)
  */
-interface ServiceWorkerRegistration extends EventTarget {
+interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
     /**
      * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is `activating` or `activated`.
      *
@@ -31011,12 +31097,6 @@ interface ServiceWorkerRegistration extends EventTarget {
     readonly navigationPreload: NavigationPreloadManager;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/updatefound_event) */
     onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
-    /**
-     * The **`pushManager`** read-only property of the ServiceWorkerRegistration interface returns a reference to the PushManager interface for managing push subscriptions; this includes support for subscribing, getting an active subscription, and accessing push permission status.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager)
-     */
-    readonly pushManager: PushManager;
     /**
      * The **`scope`** read-only property of the ServiceWorkerRegistration interface returns a string representing a URL that defines a service worker's registration scope; that is, the range of URLs a service worker can control.
      *
@@ -36938,7 +37018,7 @@ interface WindowEventMap extends GlobalEventHandlersEventMap, WindowEventHandler
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window)
  */
-interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
+interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandlers, PushManagerAttribute, WindowEventHandlers, WindowLocalStorage, WindowOrWorkerGlobalScope, WindowSessionStorage {
     /**
      * @deprecated This is a legacy alias of `navigator`.
      *
@@ -38265,6 +38345,37 @@ declare namespace WebAssembly {
     };
 
     /**
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
+     */
+    interface Exception {
+        /**
+         * The read-only **`stack`** property of an object instance of type `WebAssembly.Exception` _may_ contain a stack trace.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
+         */
+        readonly stack: string | undefined;
+        /**
+         * The **`getArg()`** prototype method of the `Exception` object can be used to get the value of a specified item in the exception's data arguments.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
+         */
+        getArg(index: number): any;
+        /**
+         * The **`is()`** prototype method of the `Exception` object can be used to test if the `Exception` matches a given tag.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
+         */
+        is(exceptionTag: Tag): boolean;
+    }
+
+    var Exception: {
+        prototype: Exception;
+        new(exceptionTag: Tag, payload: any[], options?: ExceptionOptions): Exception;
+    };
+
+    /**
      * A **`WebAssembly.Global`** object represents a global variable instance, accessible from both JavaScript and importable/exportable across one or more `WebAssembly.Module` instances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global)
@@ -38324,7 +38435,7 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
-        grow(delta: number): number;
+        grow(delta: AddressValue): AddressValue;
     }
 
     var Memory: {
@@ -38342,7 +38453,7 @@ declare namespace WebAssembly {
 
     var Module: {
         prototype: Module;
-        new(bytes: BufferSource): Module;
+        new(bytes: BufferSource, options?: WebAssemblyCompileOptions): Module;
         /**
          * The **`WebAssembly.Module.customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
          *
@@ -38383,30 +38494,43 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/length)
          */
-        readonly length: number;
+        readonly length: AddressValue;
         /**
          * The **`get()`** prototype method of the `WebAssembly.Table()` object retrieves the element stored at a given index.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/get)
          */
-        get(index: number): any;
+        get(index: AddressValue): any;
         /**
          * The **`grow()`** prototype method of the `WebAssembly.Table` object increases the size of the `Table` instance by a specified number of elements, filled with the provided value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/grow)
          */
-        grow(delta: number, value?: any): number;
+        grow(delta: AddressValue, value?: any): AddressValue;
         /**
          * The **`set()`** prototype method of the `WebAssembly.Table` object mutates a reference stored at a given index to a different value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
-        set(index: number, value?: any): void;
+        set(index: AddressValue, value?: any): void;
     }
 
     var Table: {
         prototype: Table;
         new(descriptor: TableDescriptor, value?: any): Table;
+    };
+
+    /**
+     * The **`WebAssembly.Tag`** object defines a _type_ of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
+     */
+    interface Tag {
+    }
+
+    var Tag: {
+        prototype: Tag;
+        new(type: TagType): Tag;
     };
 
     interface GlobalDescriptor<T extends ValueType = ValueType> {
@@ -38415,8 +38539,9 @@ declare namespace WebAssembly {
     }
 
     interface MemoryDescriptor {
-        initial: number;
-        maximum?: number;
+        address?: AddressType;
+        initial: AddressValue;
+        maximum?: AddressValue;
         shared?: boolean;
     }
 
@@ -38432,9 +38557,10 @@ declare namespace WebAssembly {
     }
 
     interface TableDescriptor {
+        address?: AddressType;
         element: TableKind;
-        initial: number;
-        maximum?: number;
+        initial: AddressValue;
+        maximum?: AddressValue;
     }
 
     interface ValueTypeMap {
@@ -38452,7 +38578,7 @@ declare namespace WebAssembly {
         module: Module;
     }
 
-    type ImportExportKind = "function" | "global" | "memory" | "table";
+    type ImportExportKind = "function" | "global" | "memory" | "table" | "tag";
     type TableKind = "anyfunc" | "externref";
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
@@ -38461,16 +38587,16 @@ declare namespace WebAssembly {
     type ModuleImports = Record<string, ImportValue>;
     type ValueType = keyof ValueTypeMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
-    function compile(bytes: BufferSource): Promise<Module>;
+    function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compileStreaming_static) */
-    function compileStreaming(source: Response | PromiseLike<Response>): Promise<Module>;
+    function compileStreaming(source: Response | PromiseLike<Response>, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiate_static) */
-    function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(bytes: BufferSource, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiateStreaming_static) */
-    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/validate_static) */
-    function validate(bytes: BufferSource): boolean;
+    function validate(bytes: BufferSource, options?: WebAssemblyCompileOptions): boolean;
 }
 
 /** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
@@ -39712,6 +39838,8 @@ declare var onwebkitanimationstart: ((this: Window, ev: Event) => any) | null;
 declare var onwebkittransitionend: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/wheel_event) */
 declare var onwheel: ((this: Window, ev: WheelEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager) */
+declare var pushManager: PushManager;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/afterprint_event) */
 declare var onafterprint: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/beforeprint_event) */
@@ -39807,6 +39935,7 @@ declare function addEventListener<K extends keyof WindowEventMap>(type: K, liste
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
 declare function removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+type AddressValue = any;
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBufferLike | ArrayBufferView;
 type AutoFill = AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`;
@@ -39886,6 +40015,7 @@ type Uint32List = Uint32Array | GLuint[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AddressType = "i32" | "i64";
 type AlignSetting = "center" | "end" | "left" | "right" | "start";
 type AlphaOption = "discard" | "keep";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
@@ -39985,6 +40115,7 @@ type MediaKeySessionType = "persistent-license" | "temporary";
 type MediaKeyStatus = "expired" | "internal-error" | "output-downscaled" | "output-restricted" | "released" | "status-pending" | "usable" | "usable-in-future";
 type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
+type MediaSessionEnterPictureInPictureReason = "contentoccluded" | "other" | "useraction";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
 type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
@@ -39993,6 +40124,7 @@ type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
 type OpusBitstreamFormat = "ogg" | "opus";
+type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";
@@ -40010,7 +40142,7 @@ type PublicKeyCredentialType = "public-key";
 type PushEncryptionKeyName = "auth" | "p256dh";
 type RTCBundlePolicy = "balanced" | "max-bundle" | "max-compat";
 type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
-type RTCDegradationPreference = "balanced" | "maintain-framerate" | "maintain-resolution";
+type RTCDegradationPreference = "balanced" | "maintain-framerate" | "maintain-framerate-and-resolution" | "maintain-resolution";
 type RTCDtlsRole = "client" | "server" | "unknown";
 type RTCDtlsTransportState = "closed" | "connected" | "connecting" | "failed" | "new";
 type RTCEncodedVideoFrameType = "delta" | "empty" | "key";
