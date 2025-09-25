@@ -9,7 +9,6 @@ window.onerror = (message, src, lineno, colno, error) => {
 
 const div: HTMLElement = document.createElement("div");
 
-
 /**
  * HTMLElement.onerror works with a single event arg, UIEvent
  */
