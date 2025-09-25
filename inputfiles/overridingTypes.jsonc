@@ -3305,12 +3305,7 @@
                 // The split was pushed by Mozilla and thus still has multiple supports for the direction.
                 "properties": {
                     "property": {
-                        "cssFloat": {
-                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but only Safari supports it as of 2025-06
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "exposed": "Window",
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
-                        },
+                        
                         "webkitLineClamp": {
                             // The corresponding standardized property is not supported by anyone as of 2024-10.
                             "deprecated": false

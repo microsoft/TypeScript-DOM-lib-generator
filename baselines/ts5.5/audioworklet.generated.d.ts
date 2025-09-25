@@ -186,6 +186,16 @@ interface UnderlyingSource<R = any> {
     type?: ReadableStreamType;
 }
 
+interface ValueTypeMap {
+    anyfunc: Function;
+    externref: any;
+    f32: number;
+    f64: number;
+    i32: number;
+    i64: bigint;
+    v128: never;
+}
+
 interface WebAssemblyCompileOptions {
     builtins?: string[];
     importedStringConstants?: string | null;
@@ -1772,16 +1782,6 @@ declare namespace WebAssembly {
         maximum?: AddressValue;
     }
 
-    interface ValueTypeMap {
-        anyfunc: Function;
-        externref: any;
-        f32: number;
-        f64: number;
-        i32: number;
-        i64: bigint;
-        v128: never;
-    }
-
     interface WebAssemblyInstantiatedSource {
         instance: Instance;
         module: Module;
@@ -1794,7 +1794,6 @@ declare namespace WebAssembly {
     type ImportValue = ExportValue | number;
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
-    type ValueType = keyof ValueTypeMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
     function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiate_static) */
@@ -2012,6 +2011,7 @@ type ReadableStreamController<T> = ReadableStreamDefaultController<T> | Readable
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type Transferable = MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type ValueType = keyof ValueTypeMap;
 type AddressType = "i32" | "i64";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type ReadableStreamReaderMode = "byob";
