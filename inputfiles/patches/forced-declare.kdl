@@ -1,0 +1,48 @@
+// This is used in many DT libraries, via ckeditor
+interface ClientRect exposed=Window deprecated=#true extends=DOMRect noInterfaceObject=#true
+
+// Keeping EventListener and EventListenerObject isn't the most elegant way to handle the event listeners, but we need to keep the EventListener as an extendable interface for libraries like angular.
+interface EventListener noInterfaceObject=#true {
+    method callable {
+        type void
+        param evt type=Event
+    }
+}
+
+interface EventListenerObject noInterfaceObject=#true {
+    method handleEvent {
+        type void
+        param object type=Event
+    }
+}
+
+// ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
+// We cannot define methods as dictionary properties with function types, as this would cause conflicts with ImportMeta method overrides in places like @types/node.
+interface ImportMeta exposed="Window Worker" noInterfaceObject=#true {
+    property url type=DOMString
+    method resolve {
+        type DOMString
+        param specifier type=DOMString
+    }
+}
+
+// The spec removed `timestamp` but browsers still have it.
+// https://github.com/w3c/webrtc-encoded-transform/pull/204
+interface RTCEncodedAudioFrame {
+    property timestamp type="long long" readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp"
+}
+
+interface RTCEncodedVideoFrame {
+    property timestamp type="long long" readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp"
+}
+
+
+// This is used in the React.d.ts files, and not includin
+// it would force an update for anyone using React.
+interface StyleMedia exposed=Window noInterfaceObject=#true deprecated=#true {
+    property type type=DOMString
+    method matchMedium {
+        type boolean
+        param mediaquery type=DOMString
+    }
+}

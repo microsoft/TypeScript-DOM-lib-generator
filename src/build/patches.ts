@@ -15,13 +15,25 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
-function optionalMember<const T>(prop: string, type: T, value?: Value) {
+function optionalMember<T extends Value | Value[]>(
+  prop: string,
+  type: T,
+  value?: unknown,
+) {
   if (value === undefined) {
     return {};
   }
-  if (typeof value !== type) {
-    throw new Error(`Expected type ${value} for ${prop}`);
+
+  // Normalize to array
+  const types = Array.isArray(type) ? type : [type];
+
+  // Check if value matches one of the types
+  if (!types.some((t) => typeof value === t)) {
+    throw new Error(
+      `Expected ${types.join(" or ")} for ${prop}, got ${typeof value}`,
+    );
   }
+
   return {
     [prop]: value as T extends "string"
       ? string
@@ -29,7 +41,15 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
         ? number
         : T extends "boolean"
           ? boolean
-          : never,
+          : T extends (infer U)[]
+            ? U extends "string"
+              ? string
+              : U extends "number"
+                ? number
+                : U extends "boolean"
+                  ? boolean
+                  : never
+            : never,
   };
 }
 
@@ -169,7 +189,11 @@ function handleMixinandInterfaces(
 
   const interfaceObject = type === "interface" && {
     ...optionalMember("exposed", "string", node.properties?.exposed),
-    ...optionalMember("deprecated", "string", node.properties?.deprecated),
+    ...optionalMember(
+      "deprecated",
+      ["string", "boolean"],
+      node.properties?.deprecated,
+    ),
     ...optionalMember(
       "noInterfaceObject",
       "boolean",
@@ -210,6 +234,8 @@ function handleProperty(child: Node): Partial<Property> {
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
     ...optionalMember("type", "string", child.properties?.type),
+    ...optionalMember("readonly", "boolean", child.properties?.readonly),
+    ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
   };
 }
 
@@ -254,7 +280,7 @@ function handleMethod(child: Node): Partial<Method> {
       ...handleTyped(typeNode),
     },
   ];
-  return { name, signature };
+  return { name: name === "callable" ? undefined : name, signature };
 }
 
 /**

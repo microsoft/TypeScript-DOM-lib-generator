@@ -1,40 +1,6 @@
 {
     "interfaces": {
         "interface": {
-            // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
-            // We cannot define methods as dictionary properties with function types,
-            // as this would cause conflicts with ImportMeta method overrides in places like @types/node.
-            "ImportMeta": {
-                "name": "ImportMeta",
-                "exposed": "Window Worker",
-                "noInterfaceObject": true,
-                "properties": {
-                    "property": {
-                        "url": {
-                            "name": "url",
-                            "type": "DOMString"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "resolve": {
-                            "name": "resolve",
-                            "signature": [
-                                {
-                                    "param": [
-                                        {
-                                            "name": "specifier",
-                                            "type": "DOMString"
-                                        }
-                                    ],
-                                    "type": "DOMString"
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
             "AudioWorkletProcessorImpl": {
                 "name": "AudioWorkletProcessorImpl",
                 "extends": "AudioWorkletProcessor",
@@ -332,48 +298,6 @@
                     }
                 }
             },
-            // This is used in many DT libraries, via ckeditor
-            "ClientRect": {
-                "name": "ClientRect",
-                "exposed": "Window",
-                "deprecated": true,
-                "extends": "DOMRect",
-                "noInterfaceObject": true
-            },
-            /*
-              Keeping EventListener and EventListenerObject isn't the most elegant way to handle
-              the event listeners, but we need to keep the EventListener as an extendable interface
-              for libraries like angular.
-            */
-            "EventListener": {
-                "name": "EventListener",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        // This is a hack to add a call signature, but I think it's reasonable
-                        // as it means we don't have to add a call signatures section to the
-                        // emitter for this one case.
-                        "callable": {
-                            "overrideSignatures": [
-                                "(evt: Event): void"
-                            ]
-                        }
-                    }
-                }
-            },
-            "EventListenerObject": {
-                "name": "EventListenerObject",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        "handleEvent": {
-                            "overrideSignatures": [
-                                "handleEvent(object: Event): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -413,32 +337,6 @@
                             "type": "Event"
                         }
                     ]
-                }
-            },
-            // This is used in the React d.ts files, and not including
-            // it would force an update for anyone using React.
-            "StyleMedia": {
-                "name": "StyleMedia",
-                "exposed": "Window",
-                "noInterfaceObject": true,
-                "deprecated": true,
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "type": "DOMString"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "matchMedium": {
-                            "name": "matchMedium",
-                            "overrideSignatures": [
-                                "matchMedium(mediaquery: string): boolean"
-                            ]
-                        }
-                    }
                 }
             },
             "Navigator": {
@@ -609,32 +507,6 @@
             },
             "OVR_multiview2": {
                 "overrideExposed": "Window Worker"
-            },
-            // The spec removed `timestamp` but browsers still have it.
-            // https://github.com/w3c/webrtc-encoded-transform/pull/204
-            "RTCEncodedAudioFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCEncodedVideoFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
             },
             "RTCDTMFSender": {
                 "events": {
