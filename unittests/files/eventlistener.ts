@@ -3,7 +3,7 @@ document.addEventListener("arbitrary_invalid_event", (ev) => {
 });
 
 document.addEventListener("arbitrary_invalid_event", {
-  handleEvent(ev){
+  handleEvent(ev)  {
     return ev.returnValue;
   },
 });
