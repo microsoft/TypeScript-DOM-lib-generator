@@ -1595,6 +1595,13 @@ export function emitWebIdl(
 
   function emit() {
     printer.reset();
+
+    if (compilerBehavior.includeIterable) {
+      printer.printLine(`/// <reference lib="es2015" />`);
+      printer.printLine(`/// <reference lib="es2018.asynciterable" />`)
+      printer.printLine("");
+    }
+
     printer.printLine("/////////////////////////////");
     printer.printLine(`/// ${global} APIs`);
     printer.printLine("/////////////////////////////");
