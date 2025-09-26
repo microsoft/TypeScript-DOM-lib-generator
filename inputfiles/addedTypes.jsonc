@@ -976,6 +976,7 @@
             },
             "ValueTypeMap": {
                 "name": "ValueTypeMap",
+                "legacyNamespace": "WebAssembly",
                 "exposed":"Window Worker Worklet",
                 "members": {
                     "member": {
@@ -1054,6 +1055,7 @@
             },
             {
                 "name": "ValueType",
+                "legacyNamespace": "WebAssembly",
                 "overrideType": "keyof ValueTypeMap"
             },
             {

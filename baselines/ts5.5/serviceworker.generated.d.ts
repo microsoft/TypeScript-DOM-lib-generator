@@ -709,10 +709,6 @@ interface StructuredSerializeOptions {
     transfer?: Transferable[];
 }
 
-interface TagType {
-    parameters: ValueType[];
-}
-
 interface TaskControllerInit {
     priority?: TaskPriority;
 }
@@ -809,16 +805,6 @@ interface UnderlyingSource<R = any> {
     pull?: UnderlyingSourcePullCallback<R>;
     start?: UnderlyingSourceStartCallback<R>;
     type?: ReadableStreamType;
-}
-
-interface ValueTypeMap {
-    anyfunc: Function;
-    externref: any;
-    f32: number;
-    f64: number;
-    i32: number;
-    i64: bigint;
-    v128: never;
 }
 
 interface VideoConfiguration {
@@ -11261,6 +11247,14 @@ declare namespace WebAssembly {
         new(type: TagType): Tag;
     };
 
+    interface TagType {
+    }
+
+    var TagType: {
+        prototype: TagType;
+        new(): TagType;
+    };
+
     interface GlobalDescriptor<T extends ValueType = ValueType> {
         mutable?: boolean;
         value: T;
@@ -11291,6 +11285,16 @@ declare namespace WebAssembly {
         maximum?: AddressValue;
     }
 
+    interface ValueTypeMap {
+        anyfunc: Function;
+        externref: any;
+        f32: number;
+        f64: number;
+        i32: number;
+        i64: bigint;
+        v128: never;
+    }
+
     interface WebAssemblyInstantiatedSource {
         instance: Instance;
         module: Module;
@@ -11303,6 +11307,7 @@ declare namespace WebAssembly {
     type ImportValue = ExportValue | number;
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
+    type ValueType = keyof ValueTypeMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
     function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compileStreaming_static) */
@@ -11710,7 +11715,6 @@ type TimerHandler = string | Function;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array | GLuint[];
-type ValueType = keyof ValueTypeMap;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
 type AddressType = "i32" | "i64";
 type BinaryType = "arraybuffer" | "blob";
