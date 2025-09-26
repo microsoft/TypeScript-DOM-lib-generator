@@ -1,6 +1,3 @@
-/// <reference lib="es2015" />
-/// <reference lib="es2018.asynciterable" />
-
 /////////////////////////////
 /// AudioWorklet APIs
 /////////////////////////////
@@ -1958,41 +1955,3 @@ type Transferable = MessagePort | ReadableStream | WritableStream | TransformStr
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
-
-
-/////////////////////////////
-/// AudioWorklet Iterable APIs
-/////////////////////////////
-
-interface MessageEvent<T = any> {
-    /** @deprecated */
-    initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
-}
-
-interface URLSearchParamsIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.iterator](): URLSearchParamsIterator<T>;
-}
-
-interface URLSearchParams {
-    [Symbol.iterator](): URLSearchParamsIterator<[string, string]>;
-    /** Returns an array of key, value pairs for every entry in the search params. */
-    entries(): URLSearchParamsIterator<[string, string]>;
-    /** Returns a list of keys in the search params. */
-    keys(): URLSearchParamsIterator<string>;
-    /** Returns a list of values in the search params. */
-    values(): URLSearchParamsIterator<string>;
-}
-
-
-/////////////////////////////
-/// AudioWorklet Async Iterable APIs
-/////////////////////////////
-
-interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.asyncIterator](): ReadableStreamAsyncIterator<T>;
-}
-
-interface ReadableStream<R = any> {
-    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
-    values(options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
-}
