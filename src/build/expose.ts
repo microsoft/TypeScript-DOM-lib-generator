@@ -88,7 +88,9 @@ export function getExposedTypes(
 
   if (webidl.typedefs) {
     const referenced = webidl.typedefs.typedef.filter(
-      (t) => knownIDLTypes.has(t.name) || forceKnownTypesLogged.has(t.name),
+      (t) =>
+        (knownIDLTypes.has(t.name) || forceKnownTypesLogged.has(t.name)) &&
+        exposesTo(t, target),
     );
     const { exposed, removed } = filterTypedefs(referenced, unexposedTypes);
     removed.forEach((s) => unexposedTypes.add(s));

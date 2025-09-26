@@ -227,6 +227,7 @@ export interface TypeDef extends Typed {
   deprecated?: boolean;
   legacyNamespace?: string;
   typeParameters?: TypeParameter[];
+  exposed?: string;
 }
 
 export interface Dictionary {
