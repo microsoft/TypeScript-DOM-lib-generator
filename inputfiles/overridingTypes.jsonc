@@ -3305,7 +3305,6 @@
                 // The split was pushed by Mozilla and thus still has multiple supports for the direction.
                 "properties": {
                     "property": {
-                        
                         "webkitLineClamp": {
                             // The corresponding standardized property is not supported by anyone as of 2024-10.
                             "deprecated": false
