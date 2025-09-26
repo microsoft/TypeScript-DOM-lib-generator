@@ -280,7 +280,7 @@ function handleMethod(child: Node): Partial<Method> {
       ...handleTyped(typeNode),
     },
   ];
-  // I have added special handling for "callable" methods to omit the name for EventListener
+  // Added special handling for "callable" methods to omit the name for EventListener
   return { name: name === "callable" ? undefined : name, signature };
 }
 
