@@ -3274,6 +3274,7 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration) */
     readonly duration: CSSNumberish | null;
 }
 
@@ -30597,6 +30598,12 @@ interface ScreenOrientation extends EventTarget {
      */
     readonly type: OrientationType;
     /**
+     * The **`lock()`** method of the ScreenOrientation interface locks the orientation of the containing document to the specified orientation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/lock)
+     */
+    lock(orientation: OrientationLockType): Promise<void>;
+    /**
      * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document from its default orientation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/unlock)
@@ -40045,6 +40052,7 @@ type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
 type OpusBitstreamFormat = "ogg" | "opus";
+type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";
