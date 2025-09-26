@@ -316,7 +316,7 @@ async function emitDom() {
       name: "dom",
       global: ["Window"],
       outputFolder,
-      compilerBehavior, 
+      compilerBehavior,
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "webworker",
