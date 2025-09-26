@@ -175,6 +175,11 @@ function handleMixinandInterfaces(
       "boolean",
       node.properties?.noInterfaceObject,
     ),
+    ...optionalMember(
+      "legacyNamespace",
+      "string",
+      node.properties?.legacyNamespace,
+    ),
   };
   return {
     name,
