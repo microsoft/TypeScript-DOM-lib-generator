@@ -150,8 +150,8 @@ export function emitWebIdl(
     return [
       "// This file's contents are now included in the main types file.",
       "// The file has been left for backward compatibility.",
-      ""
-    ].join("\n")
+      "",
+    ].join("\n");
   }
 
   // Global print target
@@ -1598,7 +1598,7 @@ export function emitWebIdl(
 
     if (compilerBehavior.includeIterable) {
       printer.printLine(`/// <reference lib="es2015" />`);
-      printer.printLine(`/// <reference lib="es2018.asynciterable" />`)
+      printer.printLine(`/// <reference lib="es2018.asynciterable" />`);
       printer.printLine("");
     }
 
