@@ -268,10 +268,21 @@ async function emitDom() {
   }
 
   const emitVariations: Variation[] = [
+    // ts6.0 (and later)
+    // - iterable and asynciterable brought into the main output
+    {
+      outputFolder,
+      compilerBehavior: {
+        useIteratorObject: true,
+        allowUnrelatedSetterType: true,
+        useGenericTypedArrays: true,
+        includeIterable: true,
+      },
+    },
     // ts5.7 (and later)
     // - introduced generic typed arrays over `ArrayBufferLike`
     {
-      outputFolder,
+      outputFolder: new URL("./ts5.9/", outputFolder),
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
@@ -305,7 +316,7 @@ async function emitDom() {
       name: "dom",
       global: ["Window"],
       outputFolder,
-      compilerBehavior,
+      compilerBehavior, 
     });
     emitFlavor(webidl, new Set(knownTypes.Worker), {
       name: "webworker",

@@ -23,7 +23,10 @@ export const packages = [
       { from: "../generated/ts5.5/dom.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true, group: "ts5.5" },
       { from: "../generated/ts5.6/dom.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/dom.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
-      { from: "../generated/ts5.6/dom.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" }
+      { from: "../generated/ts5.6/dom.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" },
+      { from: "../generated/ts5.9/dom.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/dom.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/dom.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true, group: "ts5.9" }
     ],
   },
   {
@@ -39,7 +42,10 @@ export const packages = [
       { from: "../generated/ts5.5/serviceworker.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true , group: "ts5.5" },
       { from: "../generated/ts5.6/serviceworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/serviceworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true , group: "ts5.6" },
-      { from: "../generated/ts5.6/serviceworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" }
+      { from: "../generated/ts5.6/serviceworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" },
+      { from: "../generated/ts5.9/serviceworker.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/serviceworker.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true , group: "ts5.9" },
+      { from: "../generated/ts5.9/serviceworker.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true , group: "ts5.9" }
     ],
   },
   {
@@ -55,7 +61,10 @@ export const packages = [
       { from: "../generated/ts5.5/audioworklet.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true , group: "ts5.5" },
       { from: "../generated/ts5.6/audioworklet.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/audioworklet.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true , group: "ts5.6" },
-      { from: "../generated/ts5.6/audioworklet.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" }
+      { from: "../generated/ts5.6/audioworklet.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" },
+      { from: "../generated/ts5.9/audioworklet.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/audioworklet.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true , group: "ts5.9" },
+      { from: "../generated/ts5.9/audioworklet.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true , group: "ts5.9" }
     ],
   },
   {
@@ -71,7 +80,10 @@ export const packages = [
       { from: "../generated/ts5.5/sharedworker.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true, group: "ts5.5" },
       { from: "../generated/ts5.6/sharedworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/sharedworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
-      { from: "../generated/ts5.6/sharedworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" }
+      { from: "../generated/ts5.6/sharedworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" },
+      { from: "../generated/ts5.9/sharedworker.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/sharedworker.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/sharedworker.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true, group: "ts5.9" }
     ],
   },
   {
@@ -87,7 +99,10 @@ export const packages = [
       { from: "../generated/ts5.5/webworker.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true, group: "ts5.5" },
       { from: "../generated/ts5.6/webworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/webworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
-      { from: "../generated/ts5.6/webworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" }
+      { from: "../generated/ts5.6/webworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" },
+      { from: "../generated/ts5.9/webworker.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/webworker.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/webworker.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true, group: "ts5.9" }
     ]
   }
 ];
@@ -196,7 +211,7 @@ async function updatePackageJSON(pkg, packagePath) {
 /**
  * Copies the README and adds some rudimentary templating to the file.
  * @param {Package} pkg
- * @param {import("./template/package.json")} pkgJSON
+ * @param {typeof import("./template/package.json")} pkgJSON
  * @param {URL} writePath
  */
 function copyREADME(pkg, pkgJSON, writePath) {
