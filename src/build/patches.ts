@@ -244,14 +244,12 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  if (!typeNode) {
-    throw new Error(`Method "${name}" is missing a return type`);
-  }
-
   const signature: Method["signature"] = [
     {
       param: params,
-      ...handleTyped(typeNode),
+      ...(typeNode
+        ? handleTyped(typeNode)
+        : { type: string(child.properties?.returns) }),
     },
   ];
   return { name, signature };
