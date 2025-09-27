@@ -254,7 +254,10 @@ function handleMethod(child: Node): Partial<Method> {
       ...handleTyped(typeNode),
     },
   ];
-  return { name, signature };
+  return {
+    ...(name === "callable" ? {} : { name }),
+    signature,
+  };
 }
 
 /**
