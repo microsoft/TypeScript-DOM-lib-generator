@@ -1,3 +1,10 @@
+// Keeping EventListener and EventListenerObject isn't the most elegant way to handle the event listeners, but we need to keep the EventListener as an extendable interface for libraries like angular.
+interface EventListener noInterfaceObject=#true {
+    method "" returns=void {
+        param evt type=Event
+    }
+}
+
 enum InsertPosition {
     beforebegin
     beforeend
