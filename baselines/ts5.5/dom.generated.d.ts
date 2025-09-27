@@ -357,6 +357,11 @@ interface CloseEventInit extends EventInit {
     wasClean?: boolean;
 }
 
+interface CommandEventInit extends EventInit {
+    command?: string;
+    source?: Element | null;
+}
+
 interface CompositionEventInit extends UIEventInit {
     data?: string;
 }
@@ -3269,6 +3274,7 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration) */
     readonly duration: CSSNumberish | null;
 }
 
@@ -8388,6 +8394,31 @@ declare var CloseEvent: {
 };
 
 /**
+ * The **`CommandEvent`** interface represents an event notifying the user when a HTMLButtonElement element with valid HTMLButtonElement.commandForElement and HTMLButtonElement.command attributes is about to invoke an interactive element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent)
+ */
+interface CommandEvent extends Event {
+    /**
+     * The **`command`** read-only property of the CommandEvent interface returns a string containing the value of the HTMLButtonElement.command property at the time the event was dispatched.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/command)
+     */
+    readonly command: string;
+    /**
+     * The **`source`** read-only property of the CommandEvent interface returns an EventTarget representing the control that invoked the given command.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/source)
+     */
+    readonly source: Element | null;
+}
+
+declare var CommandEvent: {
+    prototype: CommandEvent;
+    new(type: string, eventInitDict?: CommandEventInit): CommandEvent;
+};
+
+/**
  * The **`Comment`** interface represents textual notations within markup; although it is generally not visually shown, such comments are available to be read in the source view.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Comment)
@@ -10454,6 +10485,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "BlobEvent"): BlobEvent;
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
+    createEvent(eventInterface: "CommandEvent"): CommandEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
     createEvent(eventInterface: "ContentVisibilityAutoStateChangeEvent"): ContentVisibilityAutoStateChangeEvent;
     createEvent(eventInterface: "CookieChangeEvent"): CookieChangeEvent;
@@ -13588,6 +13620,18 @@ declare var HTMLBodyElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement)
  */
 interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
+    /**
+     * The **`command`** property of the HTMLButtonElement interface gets and sets the action to be performed on an element being controlled by this button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/command)
+     */
+    command: string;
+    /**
+     * The **`commandForElement`** property of the HTMLButtonElement interface gets and sets the element to control via a button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/commandForElement)
+     */
+    commandForElement: Element | null;
     /**
      * The **`HTMLButtonElement.disabled`** property indicates whether the control is disabled, meaning that it does not accept any clicks.
      *
@@ -18367,6 +18411,7 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
     onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
@@ -23007,6 +23052,8 @@ interface ParentNode extends Node {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append)
      */
     append(...nodes: (Node | string)[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/moveBefore) */
+    moveBefore(node: Node, child: Node | null): void;
     /**
      * Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
      *
@@ -23534,6 +23581,12 @@ interface PerformanceEventTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/cancelable)
      */
     readonly cancelable: boolean;
+    /**
+     * The read-only **`interactionId`** property returns an ID that uniquely identifies a user interaction which triggered a series of associated events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/interactionId)
+     */
+    readonly interactionId: number;
     /**
      * The read-only **`processingEnd`** property returns the time the last event handler finished executing.
      *
@@ -30544,6 +30597,12 @@ interface ScreenOrientation extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/type)
      */
     readonly type: OrientationType;
+    /**
+     * The **`lock()`** method of the ScreenOrientation interface locks the orientation of the containing document to the specified orientation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/lock)
+     */
+    lock(orientation: OrientationLockType): Promise<void>;
     /**
      * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document from its default orientation.
      *
@@ -39993,6 +40052,7 @@ type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
 type OpusBitstreamFormat = "ogg" | "opus";
+type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";

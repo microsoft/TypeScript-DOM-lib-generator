@@ -5029,6 +5029,7 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
     onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
