@@ -45,7 +45,7 @@ function handleTyped(type: Node): Typed {
   if (!isTyped) {
     throw new Error("Expected a type node");
   }
-  const name = string(type.values[0]);
+  const name = type.values[0] ? string(type.values[0]) : "";
   const subType =
     type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
   return {
@@ -53,6 +53,19 @@ function handleTyped(type: Node): Typed {
     subtype: subType,
     ...optionalMember("nullable", "boolean", type.properties?.nullable),
   };
+}
+
+function findTypeNode(children: Node[], context: string): Node | undefined {
+  let typeNode: Node | undefined;
+  for (const c of children) {
+    if (c.name === "type") {
+      if (typeNode) {
+        throw new Error(`${context} has multiple type nodes (invalid)`);
+      }
+      typeNode = c;
+    }
+  }
+  return typeNode;
 }
 
 function handleTypeParameters(value: Value) {
@@ -204,13 +217,16 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): Partial<Property> {
+  const name = string(child.values[0]);
+  const typeNode = findTypeNode(child.children, `Property "${name}"`);
+  const typed = typeNode ? handleTyped(typeNode) : undefined;
   return {
-    name: string(child.values[0]),
+    name,
+    ...typed,
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
     ...optionalMember("type", "string", child.properties?.type),
-    ...optionalMember("nullable", "boolean", child.properties?.nullable),
   };
 }
 
@@ -221,18 +237,15 @@ function handleProperty(child: Node): Partial<Property> {
 function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
 
-  let typeNode: Node | undefined;
+  const typeNode = findTypeNode(child.children, `Property "${name}"`);
+  if (!typeNode) throw new Error(`Method "${name}" is missing a return type`);
   const params: { name: string; type: string }[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
       case "type":
-        if (typeNode) {
-          throw new Error(`Method "${name}" has multiple type nodes (invalid)`);
-        }
-        typeNode = c;
+        // already handled above
         break;
-
       case "param":
         params.push({
           name: string(c.values[0]),
@@ -243,10 +256,6 @@ function handleMethod(child: Node): Partial<Method> {
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
     }
-  }
-
-  if (!typeNode) {
-    throw new Error(`Method "${name}" is missing a return type`);
   }
 
   const signature: Method["signature"] = [

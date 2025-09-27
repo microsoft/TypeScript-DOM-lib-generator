@@ -57,5 +57,7 @@ interface HTMLScriptElement {
 interface HTMLElement {
     // https://github.com/whatwg/html/pull/7475
     // Blink only as of 2024-11
-    property hidden overrideType=boolean nullable=#false
+    property hidden overrideType=boolean {
+        type nullable=#false
+    }
 }
