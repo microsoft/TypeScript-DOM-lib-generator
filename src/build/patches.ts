@@ -7,6 +7,7 @@ import type {
   WebIdl,
   Method,
   Typed,
+  AnonymousMethod,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -146,6 +147,7 @@ function handleMixinandInterfaces(
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
   const method: Record<string, Partial<Method>> = {};
+  const anonymousMethods: Partial<AnonymousMethod>[] = [];
 
   for (const child of node.children) {
     switch (child.name) {
@@ -162,6 +164,9 @@ function handleMixinandInterfaces(
         method[methodName] = handleMethod(child);
         break;
       }
+      case "anonymous-method":
+        anonymousMethods.push(handleMethod(child, true));
+        break;
       default:
         throw new Error(`Unknown node name: ${child.name}`);
     }
@@ -181,6 +186,7 @@ function handleMixinandInterfaces(
     events: { event },
     properties: { property },
     methods: { method },
+    anonymousMethods: { method: anonymousMethods },
     ...optionalMember("extends", "string", node.properties?.extends),
     ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
     ...handleTypeParameters(node.properties?.typeParameters),
@@ -217,8 +223,16 @@ function handleProperty(child: Node): Partial<Property> {
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
  */
-function handleMethod(child: Node): Partial<Method> {
-  const name = string(child.values[0]);
+function handleMethod(
+  child: Node,
+  isAnonymous?: boolean,
+): Partial<Method | AnonymousMethod> {
+  const name = isAnonymous ? undefined : string(child.values[0]);
+  if (!isAnonymous && !name) {
+    throw new Error("Method node missing name");
+  } else if (isAnonymous && name) {
+    throw new Error("Anonymous method should not have a name");
+  }
 
   let typeNode: Node | undefined;
   const params: { name: string; type: string }[] = [];
@@ -244,18 +258,16 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  if (!typeNode) {
-    throw new Error(`Method "${name}" is missing a return type`);
-  }
-
   const signature: Method["signature"] = [
     {
       param: params,
-      ...handleTyped(typeNode),
+      ...(typeNode
+        ? handleTyped(typeNode)
+        : { type: string(child.properties?.returns) }),
     },
   ];
   return {
-    ...(name === "callable" ? {} : { name }),
+    ...optionalMember("name", "string", name),
     signature,
   };
 }
