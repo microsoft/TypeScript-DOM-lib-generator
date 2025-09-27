@@ -8,3 +8,5 @@ enum ImageOrientation {
 interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
 interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
 interface HTMLDocument extends=Document exposed=Window
+
+interface-mixin MessageEventTarget overrideThis=T typeParameters=T

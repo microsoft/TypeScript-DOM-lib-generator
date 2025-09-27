@@ -1,0 +1,2 @@
+// Prevent conflict with DefinitelyTyped libraries
+enum ClientType name=ClientTypes
