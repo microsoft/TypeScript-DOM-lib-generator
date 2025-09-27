@@ -252,10 +252,7 @@ function handleMethod(child: Node): Partial<Method> {
         : { type: string(child.properties?.returns) }),
     },
   ];
-  return {
-    ...optionalMember("name", "string", name),
-    signature,
-  };
+  return { name, signature };
 }
 
 /**
