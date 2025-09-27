@@ -82,30 +82,6 @@
             "DeviceMotionEventRotationRate": {
                 "noInterfaceObject": true
             },
-            "HTMLImageElement": {
-                "name": "HTMLImageElement",
-                "properties": {
-                    "property": {
-                        "decoding": {
-                            "name": "decoding",
-                            "overrideType": "\"async\" | \"sync\" | \"auto\""
-                        },
-                        "loading": {
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
-            "HTMLMediaElement": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "encrypted",
-                            "type": "MediaEncryptedEvent"
-                        }
-                    ]
-                }
-            },
             "CSSStyleProperties": {
                 "properties": {
                     "property": {
@@ -208,15 +184,12 @@
                 }
             },
             "HTMLCollectionOf": {
-                "name": "HTMLCollectionOf",
                 "typeParameters": [
                     {
                         "name": "T",
                         "extends": "Element"
                     }
                 ],
-                "exposed": "Window",
-                "extends": "HTMLCollection",
                 "methods": {
                     "method": {
                         "item": {
@@ -243,8 +216,7 @@
                             ]
                         }
                     }
-                },
-                "noInterfaceObject": true
+                }
             },
             "Element": {
                 "name": "Element",
@@ -454,20 +426,6 @@
                     }
                 }
             },
-            "HTMLIFrameElement": {
-                "name": "HTMLIFrameElement",
-                "properties": {
-                    "property": {
-                        "referrerPolicy": {
-                            "type": "ReferrerPolicy"
-                        },
-                        "loading": {
-                            "name": "loading",
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
             "IDBDatabase": {
                 "name": "IDBDatabase",
                 "events": {
@@ -571,39 +529,7 @@
                     ]
                 }
             },
-            "HTMLBodyElement": {
-                "properties": {
-                    "property": {
-                        "onorientationchange": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLLinkElement": {
-                "properties": {
-                    "property": {
-                        "charset": {
-                            "deprecated": true
-                        },
-                        "rev": {
-                            "deprecated": true
-                        },
-                        "target": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
+            
             "KHR_parallel_shader_compile": {
                 "overrideExposed": "Window Worker"
             },
