@@ -238,7 +238,6 @@ function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
 
   const typeNode = findTypeNode(child.children, `Property "${name}"`);
-  if (!typeNode) throw new Error(`Method "${name}" is missing a return type`);
   const params: { name: string; type: string }[] = [];
 
   for (const c of child.children) {
