@@ -261,7 +261,9 @@ function handleMethod(child: Node): Partial<Method> {
   const signature: Method["signature"] = [
     {
       param: params,
-      ...handleTyped(typeNode),
+      ...(typeNode
+        ? handleTyped(typeNode)
+        : { type: string(child.properties?.returns) }),
     },
   ];
   return { name, signature };

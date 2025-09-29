@@ -312,27 +312,6 @@
                 "extends": "DOMRect",
                 "noInterfaceObject": true
             },
-            /*
-              Keeping EventListener and EventListenerObject isn't the most elegant way to handle
-              the event listeners, but we need to keep the EventListener as an extendable interface
-              for libraries like angular.
-            */
-            "EventListener": {
-                "name": "EventListener",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        // This is a hack to add a call signature, but I think it's reasonable
-                        // as it means we don't have to add a call signatures section to the
-                        // emitter for this one case.
-                        "callable": {
-                            "overrideSignatures": [
-                                "(evt: Event): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "EventListenerObject": {
                 "name": "EventListenerObject",
                 "noInterfaceObject": true,

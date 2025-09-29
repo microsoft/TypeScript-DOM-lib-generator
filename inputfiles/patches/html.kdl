@@ -61,3 +61,5 @@ interface HTMLElement {
         type nullable=#false
     }
 }
+
+interface-mixin MessageEventTarget overrideThis=T typeParameters=T
