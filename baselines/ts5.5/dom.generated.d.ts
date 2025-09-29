@@ -6588,8 +6588,6 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     counterReset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-set) */
     counterSet: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat) */
-    cssFloat: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cx) */
@@ -19592,7 +19590,6 @@ declare var IDBCursorWithValue: {
 };
 
 interface IDBDatabaseEventMap {
-    "abort": Event;
     "close": Event;
     "error": Event;
     "versionchange": IDBVersionChangeEvent;
@@ -19620,7 +19617,6 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
-    onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
     onerror: ((this: IDBDatabase, ev: Event) => any) | null;

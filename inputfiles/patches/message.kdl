@@ -1,1 +1,0 @@
-interface-mixin MessageEventTarget overrideThis=T typeParameters=T

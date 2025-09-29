@@ -3297,18 +3297,9 @@
                 }
             },
             "CSSStyleProperties": {
-                // The split of CSSStyleDeclaration of CSSStyleProperties is only supported by Safari 26
-                // as of 2025-06.
-                // But still Chrome is shipping CSS*Descriptors based on it, which is only possible because
-                // Chrome's CSSStyleDeclaration was based on nonstandard indexer.
-                // To support the situation we need CSSStyleProperties even though it's not well supported yet.
-                // The split was pushed by Mozilla and thus still has multiple supports for the direction.
                 "properties": {
                     "property": {
                         "cssFloat": {
-                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but only Safari supports it as of 2025-06
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "exposed": "Window",
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
                         },
                         "webkitLineClamp": {
