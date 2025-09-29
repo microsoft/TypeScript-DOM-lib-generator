@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-const inputFolder = new URL("../../inputfiles/", import.meta.url);
+const inputFile = new URL("../../inputfiles/mdn/mdnData.json", import.meta.url);
 
 interface MetaDataEntry {
   mdn_url: string;
@@ -66,7 +66,7 @@ export async function generateDescriptions(): Promise<{
   interfaces: { interface: Record<string, any> };
 }> {
   const results: Record<string, any> = {};
-  const content = await readFile(new URL("mdn/mdnData.json", inputFolder), "utf8");
+  const content = await readFile(new URL(inputFile), "utf8");
   const metadata: MetaData = JSON.parse(content);
   // metadata is an array of objects, each with at least: slug, page-type, summary
   for (const entry of metadata.data) {
