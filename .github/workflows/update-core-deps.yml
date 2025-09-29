@@ -12,11 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true  # Ensure submodules are checked out
+      - name: Update MDN Data
+        working-directory: ./inputfiles/mdn
+        run: |
+          curl -fL 'https://developer.mozilla.org/en-US/metadata.json' \
+            | jq '{ data: [ .[]
+              | select(
+                (.mdn_url | ascii_downcase
+                | (startswith("/en-us/docs/web/api/") or startswith("/en-us/docs/webassembly/reference/javascript_interface/")))
+              )
+              | { mdn_url, pageType, summary } ] }' \
+            > mdnData.json
 
-      - name: Update submodules
-        run: git submodule update --init --remote
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
