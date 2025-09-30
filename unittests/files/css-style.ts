@@ -5,3 +5,5 @@ const foo = { width: "10px" } as CSSStyleDeclaration;
 foo.height = "20px";
 
 document.body.style.width = "10px";
+
+const bar: CSSStyleDeclaration = document.body.style;
