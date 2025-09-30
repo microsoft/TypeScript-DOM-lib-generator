@@ -151,11 +151,15 @@ export interface Interface {
   mixin?: boolean;
   namespace?: boolean;
   extends?: string;
+  // forward the interface members to another, while keeping the current name.
+  forward?: string;
+  // "extends" for the original interface, in case `forward: true`.
+  forwardExtends?: string;
   comment?: string;
   constants?: {
     constant: Record<string, Constant>;
   };
-  methods: {
+  methods?: {
     method: Record<string, Method>;
   };
   events?: {

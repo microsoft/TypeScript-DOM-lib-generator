@@ -5435,7 +5435,7 @@ declare var CSSNumericValue: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors)
  */
-interface CSSPageDescriptors extends CSSStyleDeclaration {
+interface CSSPageDescriptors extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin) */
     margin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin-bottom) */
@@ -5512,7 +5512,7 @@ declare var CSSPerspective: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors)
  */
-interface CSSPositionTryDescriptors extends CSSStyleDeclaration {
+interface CSSPositionTryDescriptors extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
     "align-self": string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
@@ -5985,7 +5985,7 @@ declare var CSSStartingStyleRule: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration)
  */
-interface CSSStyleDeclaration {
+interface CSSStyleDeclarationBase {
     /**
      * The **`cssText`** property of the CSSStyleDeclaration interface returns or sets the text of the element's **inline** style declaration only.
      *
@@ -6037,12 +6037,15 @@ interface CSSStyleDeclaration {
     [index: number]: string;
 }
 
+interface CSSStyleDeclaration extends CSSStyleProperties {
+}
+
 declare var CSSStyleDeclaration: {
     prototype: CSSStyleDeclaration;
     new(): CSSStyleDeclaration;
 };
 
-interface CSSStyleProperties extends CSSStyleDeclaration {
+interface CSSStyleProperties extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
     accentColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content) */

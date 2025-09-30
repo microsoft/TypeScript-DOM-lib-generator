@@ -1,0 +1,7 @@
+// CSSStyleDeclaration spec change broke a bunch of DT packages.
+// This tries to make existing usages work while still keeping the new
+// CSSStyleProperties.
+
+interface CSSStyleDeclaration \
+  forward=CSSStyleDeclarationBase \
+  forwardExtends=CSSStyleProperties

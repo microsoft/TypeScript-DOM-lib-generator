@@ -183,6 +183,12 @@ function handleMixinandInterfaces(
     methods: { method },
     ...optionalMember("extends", "string", node.properties?.extends),
     ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
+    ...optionalMember("forward", "string", node.properties?.forward),
+    ...optionalMember(
+      "forwardExtends",
+      "string",
+      node.properties?.forwardExtends,
+    ),
     ...handleTypeParameters(node.properties?.typeParameters),
     ...interfaceObject,
   } as DeepPartial<Interface>;

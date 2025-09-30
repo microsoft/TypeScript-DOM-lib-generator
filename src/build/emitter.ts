@@ -765,7 +765,7 @@ export function emitWebIdl(
   }
 
   function emitCallBackInterface(i: Browser.Interface) {
-    const methods = mapToArray(i.methods.method);
+    const methods = mapToArray(i.methods?.method);
     const m = methods[0];
     const overload = m.signature[0];
     const paramsString = overload.param ? paramsToString(overload.param) : "";
@@ -1284,6 +1284,13 @@ export function emitWebIdl(
       return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
     }
 
+    function processExtends(iName: string) {
+      if (allInterfacesMap[iName]?.forward) {
+        return allInterfacesMap[iName].forward;
+      }
+      return processIName(iName);
+    }
+
     function processMixinName(mixinName: string) {
       if (allInterfacesMap[mixinName].typeParameters?.length === 1) {
         return `${mixinName}<${i.name}>`;
@@ -1291,7 +1298,7 @@ export function emitWebIdl(
       return mixinName;
     }
 
-    const processedIName = processIName(i.name);
+    const processedIName = i.forward ?? processIName(i.name);
 
     if (processedIName !== i.name) {
       printer.printLineToStack(
@@ -1311,7 +1318,7 @@ export function emitWebIdl(
     const finalExtends = [i.extends || "Object"]
       .concat(getImplementList(i.name).map(processMixinName))
       .filter((i) => i !== "Object")
-      .map(processIName);
+      .map(processExtends);
 
     if (finalExtends.length) {
       printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);
@@ -1457,6 +1464,14 @@ export function emitWebIdl(
     printer.decreaseIndent();
     printer.printLine("}");
     printer.printLine("");
+
+    if (i.forward) {
+      emitInterface({
+        name: i.name,
+        extends: i.forwardExtends,
+        constructor: undefined,
+      });
+    }
 
     if (!printer.stackIsEmpty()) {
       printer.printStackContent();
