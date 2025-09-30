@@ -62,8 +62,9 @@ export async function generateDescriptions(): Promise<{
     const mdnUrl = entry.mdn_url.split("/en-US/docs/")[1];
     const slugArr = extractSlug(mdnUrl);
     const path = paths[entry.pageType];
+    const comment = entry.summary.replace(/\n/g, " ").trim();
     if (!slugArr.length || !path) continue;
-    insertComment(results, slugArr, entry.summary, path);
+    insertComment(results, slugArr, comment, path);
   }
   return { interfaces: { interface: results } };
 }
