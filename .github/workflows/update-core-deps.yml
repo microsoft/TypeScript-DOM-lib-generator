@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Update MDN Data
-        working-directory: ./inputfiles/mdn
+        working-directory: ./inputfiles
         run: |
           curl -fL 'https://developer.mozilla.org/en-US/metadata.json' \
             | jq '{ data: [ .[]
@@ -22,7 +22,7 @@ jobs:
                 | (startswith("/en-us/docs/web/api/") or startswith("/en-us/docs/webassembly/reference/javascript_interface/")))
               )
               | { mdn_url, pageType, summary } ] }' \
-            > mdnData.json
+            > mdn.json
 
       - uses: actions/setup-node@v4
         with:
