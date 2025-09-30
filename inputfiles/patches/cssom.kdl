@@ -5,3 +5,5 @@
 interface CSSStyleDeclaration \
   forward=CSSStyleDeclarationBase \
   forwardExtends=CSSStyleProperties
+
+interface CSSStyleProperties replaceReference=CSSStyleDeclaration

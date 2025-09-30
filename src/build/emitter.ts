@@ -472,15 +472,18 @@ export function emitWebIdl(
     if (baseTypeConversionMap.has(objDomType)) {
       return baseTypeConversionMap.get(objDomType)!;
     }
-    // Name of an interface / enum / dict. Just return itself
+    if (allInterfacesMap[objDomType]) {
+      return allInterfacesMap[objDomType].replaceReference ?? objDomType;
+    }
+    // Name of an alias / callback / enum / dict. Just return itself
     if (
-      allInterfacesMap[objDomType] ||
       allLegacyWindowAliases.includes(objDomType) ||
       allCallbackFunctionsMap[objDomType] ||
       allDictionariesMap[objDomType] ||
       allEnumsMap[objDomType]
-    )
+    ) {
       return objDomType;
+    }
     // Name of a type alias. Just return itself
     if (allTypedefsMap[objDomType]) return objDomType;
 

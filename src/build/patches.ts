@@ -189,6 +189,11 @@ function handleMixinandInterfaces(
       "string",
       node.properties?.forwardExtends,
     ),
+    ...optionalMember(
+      "replaceReference",
+      "string",
+      node.properties?.replaceReference,
+    ),
     ...handleTypeParameters(node.properties?.typeParameters),
     ...interfaceObject,
   } as DeepPartial<Interface>;

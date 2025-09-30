@@ -155,6 +155,8 @@ export interface Interface {
   forward?: string;
   // "extends" for the original interface, in case `forward: true`.
   forwardExtends?: string;
+  // replaces references from methods and properties
+  replaceReference?: string;
   comment?: string;
   constants?: {
     constant: Record<string, Constant>;
