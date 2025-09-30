@@ -191,8 +191,7 @@ interface AbortController {
      */
     readonly signal: AbortSignal;
     /**
-     * The abort() method of the AbortController interface aborts an asynchronous operation before it has completed.
-     * This is able to abort fetch requests, the consumption of any response bodies, or streams.
+     * The abort() method of the AbortController interface aborts an asynchronous operation before it has completed. This is able to abort fetch requests, the consumption of any response bodies, or streams.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController/abort)
      */
@@ -274,9 +273,7 @@ interface AudioWorkletGlobalScope extends WorkletGlobalScope {
      */
     readonly sampleRate: number;
     /**
-     * The registerProcessor method of the
-     * AudioWorkletGlobalScope interface registers a class constructor derived
-     * from AudioWorkletProcessor interface under a specified name.
+     * The registerProcessor method of the AudioWorkletGlobalScope interface registers a class constructor derived from AudioWorkletProcessor interface under a specified name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/registerProcessor)
      */
@@ -295,10 +292,7 @@ declare var AudioWorkletGlobalScope: {
  */
 interface AudioWorkletProcessor {
     /**
-     * The read-only port property of the
-     * AudioWorkletProcessor interface returns the associated
-     * MessagePort. It can be used to communicate between the processor and the
-     * AudioWorkletNode to which it belongs.
+     * The read-only port property of the AudioWorkletProcessor interface returns the associated MessagePort. It can be used to communicate between the processor and the AudioWorkletNode to which it belongs.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor/port)
      */
@@ -384,8 +378,7 @@ interface CustomEvent<T = any> extends Event {
      */
     readonly detail: T;
     /**
-     * The CustomEvent.initCustomEvent() method initializes a CustomEvent object.
-     * If the event has already been dispatched, this method does nothing.
+     * The CustomEvent.initCustomEvent() method initializes a CustomEvent object. If the event has already been dispatched, this method does nothing.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/initCustomEvent)
@@ -412,17 +405,13 @@ interface DOMException extends Error {
      */
     readonly code: number;
     /**
-     * The message read-only property of the
-     * DOMException interface returns a string representing
-     * a message or description associated with the given error name.
+     * The message read-only property of the DOMException interface returns a string representing a message or description associated with the given error name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/message)
      */
     readonly message: string;
     /**
-     * The name read-only property of the
-     * DOMException interface returns a string that contains
-     * one of the strings associated with an error name.
+     * The name read-only property of the DOMException interface returns a string that contains one of the strings associated with an error name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/name)
      */
@@ -555,27 +544,20 @@ interface Event {
      */
     readonly bubbles: boolean;
     /**
-     * The cancelBubble property of the Event
-     * interface is deprecated. Use Event.stopPropagation() instead.
-     * Setting its value to true before returning from an event handler prevents propagation
-     * of the event. In later implementations, setting this to false does nothing.
-     * See Browser compatibility for details.
+     * The cancelBubble property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to true before returning from an event handler prevents propagation of the event. In later implementations, setting this to false does nothing. See Browser compatibility for details.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)
      */
     cancelBubble: boolean;
     /**
-     * The cancelable read-only property of the Event interface indicates whether the event
-     * can be canceled, and therefore prevented as if the event never happened.
+     * The cancelable read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)
      */
     readonly cancelable: boolean;
     /**
-     * The read-only composed property of the
-     * Event interface returns a boolean value which indicates whether
-     * or not the event will propagate across the shadow DOM boundary into the standard DOM.
+     * The read-only composed property of the Event interface returns a boolean value which indicates whether or not the event will propagate across the shadow DOM boundary into the standard DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)
      */
@@ -593,29 +575,19 @@ interface Event {
      */
     readonly defaultPrevented: boolean;
     /**
-     * The eventPhase read-only property of the
-     * Event interface indicates which phase of the event flow is currently
-     * being evaluated.
+     * The eventPhase read-only property of the Event interface indicates which phase of the event flow is currently being evaluated.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)
      */
     readonly eventPhase: number;
     /**
-     * The isTrusted read-only property of the
-     * Event interface is a boolean value that is true
-     * when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()),
-     * and false when the event was dispatched via
-     * EventTarget.dispatchEvent().
-     * The only exception is the click event, which initializes the isTrusted
-     * property to false in user agents.
+     * The isTrusted read-only property of the Event interface is a boolean value that is true when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and false when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to false in user agents.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
      */
     readonly isTrusted: boolean;
     /**
-     * The Event property
-     * returnValue indicates whether the default action for
-     * this event has been prevented or not.
+     * The Event property returnValue indicates whether the default action for this event has been prevented or not.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)
@@ -629,10 +601,7 @@ interface Event {
      */
     readonly srcElement: EventTarget | null;
     /**
-     * The read-only target property of the
-     * Event interface is a reference to the object onto which the event was
-     * dispatched. It is different from Event.currentTarget when the event
-     * handler is called during the bubbling or capturing phase of the event.
+     * The read-only target property of the Event interface is a reference to the object onto which the event was dispatched. It is different from Event.currentTarget when the event handler is called during the bubbling or capturing phase of the event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)
      */
@@ -644,26 +613,19 @@ interface Event {
      */
     readonly timeStamp: DOMHighResTimeStamp;
     /**
-     * The type read-only property of the Event
-     * interface returns a string containing the event's type. It is set when the event is
-     * constructed and is the name commonly used to refer to the specific event, such as
-     * click, load, or error.
+     * The type read-only property of the Event interface returns a string containing the event's type. It is set when the event is constructed and is the name commonly used to refer to the specific event, such as click, load, or error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)
      */
     readonly type: string;
     /**
-     * The composedPath() method of the Event
-     * interface returns the event's path which is an array of the objects on which listeners
-     * will be invoked. This does not include nodes in shadow trees if the shadow root was
-     * created with its ShadowRoot.mode closed.
+     * The composedPath() method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked. This does not include nodes in shadow trees if the shadow root was created with its ShadowRoot.mode closed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)
      */
     composedPath(): EventTarget[];
     /**
-     * The Event.initEvent() method is used to initialize the
-     * value of an event created using Document.createEvent().
+     * The Event.initEvent() method is used to initialize the value of an event created using Document.createEvent().
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)
@@ -676,20 +638,13 @@ interface Event {
      */
     preventDefault(): void;
     /**
-     * The stopImmediatePropagation() method of the
-     * Event interface prevents other listeners of the same event from being called.
+     * The stopImmediatePropagation() method of the Event interface prevents other listeners of the same event from being called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)
      */
     stopImmediatePropagation(): void;
     /**
-     * The stopPropagation() method of the Event
-     * interface prevents further propagation of the current event in the capturing and
-     * bubbling phases. It does not, however, prevent any default behaviors from occurring; for
-     * instance, clicks on links are still processed. If you want to stop those behaviors, see
-     * the preventDefault() method. It also does not
-     * prevent propagation to other event-handlers of the current element. If you want to stop those,
-     * see stopImmediatePropagation().
+     * The stopPropagation() method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases. It does not, however, prevent any default behaviors from occurring; for instance, clicks on links are still processed. If you want to stop those behaviors, see the preventDefault() method. It also does not prevent propagation to other event-handlers of the current element. If you want to stop those, see stopImmediatePropagation().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)
      */
@@ -718,34 +673,25 @@ interface EventListenerObject {
 }
 
 /**
- * The EventTarget interface is implemented by objects that can receive events and may have listeners for them.
- * In other words, any target of events implements the three methods associated with this interface.
+ * The EventTarget interface is implemented by objects that can receive events and may have listeners for them. In other words, any target of events implements the three methods associated with this interface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget)
  */
 interface EventTarget {
     /**
-     * The addEventListener() method of the EventTarget interface
-     * sets up a function that will be called whenever the specified event is delivered to the target.
+     * The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
      */
     addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
     /**
-     * The dispatchEvent() method of the EventTarget sends an Event to the object, (synchronously) invoking the affected
-     * event listeners in the appropriate order. The normal event processing
-     * rules (including the capturing and optional bubbling phase) also apply to events
-     * dispatched manually with dispatchEvent().
+     * The dispatchEvent() method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order. The normal event processing rules (including the capturing and optional bubbling phase) also apply to events dispatched manually with dispatchEvent().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
      */
     dispatchEvent(event: Event): boolean;
     /**
-     * The removeEventListener() method of the EventTarget interface
-     * removes an event listener previously registered with EventTarget.addEventListener() from the target.
-     * The event listener to be removed is identified using a combination of the event type,
-     * the event listener function itself, and various optional options that may affect the matching process;
-     * see Matching event listeners for removal.
+     * The removeEventListener() method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target. The event listener to be removed is identified using a combination of the event type, the event listener function itself, and various optional options that may affect the matching process; see Matching event listeners for removal.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
@@ -771,41 +717,31 @@ interface GenericTransformStream {
  */
 interface MessageEvent<T = any> extends Event {
     /**
-     * The data read-only property of the
-     * MessageEvent interface represents the data sent by the message emitter.
+     * The data read-only property of the MessageEvent interface represents the data sent by the message emitter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/data)
      */
     readonly data: T;
     /**
-     * The lastEventId read-only property of the
-     * MessageEvent interface is a string representing a
-     * unique ID for the event.
+     * The lastEventId read-only property of the MessageEvent interface is a string representing a unique ID for the event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/lastEventId)
      */
     readonly lastEventId: string;
     /**
-     * The origin read-only property of the
-     * MessageEvent interface is a string representing the
-     * origin of the message emitter.
+     * The origin read-only property of the MessageEvent interface is a string representing the origin of the message emitter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/origin)
      */
     readonly origin: string;
     /**
-     * The ports read-only property of the
-     * MessageEvent interface is an array of MessagePort objects
-     * containing all MessagePort objects sent with the message, in order.
+     * The ports read-only property of the MessageEvent interface is an array of MessagePort objects containing all MessagePort objects sent with the message, in order.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/ports)
      */
     readonly ports: ReadonlyArray<MessagePort>;
     /**
-     * The source read-only property of the
-     * MessageEvent interface is a MessageEventSource (which can be
-     * a WindowProxy, MessagePort, or
-     * ServiceWorker object) representing the message emitter.
+     * The source read-only property of the MessageEvent interface is a MessageEventSource (which can be a WindowProxy, MessagePort, or ServiceWorker object) representing the message emitter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/source)
      */
@@ -847,27 +783,20 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  */
 interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     /**
-     * The close() method of the MessagePort
-     * interface disconnects the port, so it is no longer active. This stops the flow of
-     * messages to that port.
+     * The close() method of the MessagePort interface disconnects the port, so it is no longer active. This stops the flow of messages to that port.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/close)
      */
     close(): void;
     /**
-     * The postMessage() method of the
-     * MessagePort interface sends a message from the port, and optionally,
-     * transfers ownership of objects to other browsing contexts.
+     * The postMessage() method of the MessagePort interface sends a message from the port, and optionally, transfers ownership of objects to other browsing contexts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/postMessage)
      */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
     /**
-     * The start() method of the MessagePort
-     * interface starts the sending of messages queued on the port. This method is only needed
-     * when using EventTarget.addEventListener; it is implied when using
-     * onmessage.
+     * The start() method of the MessagePort interface starts the sending of messages queued on the port. This method is only needed when using EventTarget.addEventListener; it is implied when using onmessage.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/start)
      */
@@ -890,20 +819,13 @@ declare var MessagePort: {
  */
 interface PromiseRejectionEvent extends Event {
     /**
-     * The PromiseRejectionEvent interface's
-     * promise read-only property indicates the JavaScript
-     * Promise which was rejected. You can examine the event's
-     * PromiseRejectionEvent.reason property to learn why the promise was
-     * rejected.
+     * The PromiseRejectionEvent interface's promise read-only property indicates the JavaScript Promise which was rejected. You can examine the event's PromiseRejectionEvent.reason property to learn why the promise was rejected.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise)
      */
     readonly promise: Promise<any>;
     /**
-     * The PromiseRejectionEvent reason read-only
-     * property is any JavaScript value or Object which provides the reason
-     * passed into Promise.reject(). This in theory provides information about
-     * why the promise was rejected.
+     * The PromiseRejectionEvent reason read-only property is any JavaScript value or Object which provides the reason passed into Promise.reject(). This in theory provides information about why the promise was rejected.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason)
      */
@@ -916,8 +838,7 @@ declare var PromiseRejectionEvent: {
 };
 
 /**
- * The ReadableByteStreamController interface of the Streams API represents a controller for a readable byte stream.
- * It allows control of the state and internal queue of a ReadableStream with an underlying byte source, and enables efficient zero-copy transfer of data from the underlying source to a consumer when the stream's internal queue is empty.
+ * The ReadableByteStreamController interface of the Streams API represents a controller for a readable byte stream. It allows control of the state and internal queue of a ReadableStream with an underlying byte source, and enables efficient zero-copy transfer of data from the underlying source to a consumer when the stream's internal queue is empty.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController)
  */
@@ -978,8 +899,7 @@ interface ReadableStream<R = any> {
      */
     cancel(reason?: any): Promise<void>;
     /**
-     * The getReader() method of the ReadableStream interface creates a reader and locks the stream to it.
-     * While the stream is locked, no other reader can be acquired until this one is released.
+     * The getReader() method of the ReadableStream interface creates a reader and locks the stream to it. While the stream is locked, no other reader can be acquired until this one is released.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/getReader)
      */
@@ -999,10 +919,7 @@ interface ReadableStream<R = any> {
      */
     pipeTo(destination: WritableStream<R>, options?: StreamPipeOptions): Promise<void>;
     /**
-     * The tee() method of the
-     * ReadableStream interface tees the current readable stream, returning a
-     * two-element array containing the two resulting branches as
-     * new ReadableStream instances.
+     * The tee() method of the ReadableStream interface tees the current readable stream, returning a two-element array containing the two resulting branches as new ReadableStream instances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee)
      */
@@ -1017,23 +934,19 @@ declare var ReadableStream: {
 };
 
 /**
- * The ReadableStreamBYOBReader interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source.
- * It is used for efficient copying from underlying sources where the data is delivered as an "anonymous" sequence of bytes, such as files.
+ * The ReadableStreamBYOBReader interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source. It is used for efficient copying from underlying sources where the data is delivered as an "anonymous" sequence of bytes, such as files.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader)
  */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /**
-     * The read() method of the ReadableStreamBYOBReader interface is used to read data into a view on a user-supplied buffer from an associated readable byte stream.
-     * A request for data will be satisfied from the stream's internal queues if there is any data present.
-     * If the stream queues are empty, the request may be supplied as a zero-copy transfer from the underlying byte source.
+     * The read() method of the ReadableStreamBYOBReader interface is used to read data into a view on a user-supplied buffer from an associated readable byte stream. A request for data will be satisfied from the stream's internal queues if there is any data present. If the stream queues are empty, the request may be supplied as a zero-copy transfer from the underlying byte source.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read)
      */
     read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
     /**
-     * The releaseLock() method of the ReadableStreamBYOBReader interface releases the reader's lock on the stream.
-     * After the lock is released, the reader is no longer active.
+     * The releaseLock() method of the ReadableStreamBYOBReader interface releases the reader's lock on the stream. After the lock is released, the reader is no longer active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock)
      */
@@ -1083,9 +996,7 @@ declare var ReadableStreamBYOBRequest: {
  */
 interface ReadableStreamDefaultController<R = any> {
     /**
-     * The desiredSize read-only property of the
-     * ReadableStreamDefaultController interface returns the desired size
-     * required to fill the stream's internal queue.
+     * The desiredSize read-only property of the ReadableStreamDefaultController interface returns the desired size required to fill the stream's internal queue.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/desiredSize)
      */
@@ -1097,16 +1008,13 @@ interface ReadableStreamDefaultController<R = any> {
      */
     close(): void;
     /**
-     * The enqueue() method of the
-     * ReadableStreamDefaultController interface enqueues a given chunk in the associated stream.
+     * The enqueue() method of the ReadableStreamDefaultController interface enqueues a given chunk in the associated stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/enqueue)
      */
     enqueue(chunk?: R): void;
     /**
-     * The error() method of the
-     * ReadableStreamDefaultController interface causes any future interactions
-     * with the associated stream to error.
+     * The error() method of the ReadableStreamDefaultController interface causes any future interactions with the associated stream to error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/error)
      */
@@ -1191,8 +1099,7 @@ interface TextDecoderCommon {
 }
 
 /**
- * The TextDecoderStream interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings.
- * It is the streaming equivalent of TextDecoder.
+ * The TextDecoderStream interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings. It is the streaming equivalent of TextDecoder.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
@@ -1219,8 +1126,7 @@ interface TextEncoder extends TextEncoderCommon {
      */
     encode(input?: string): Uint8Array;
     /**
-     * The TextEncoder.encodeInto() method takes a string to encode and a destination Uint8Array to put resulting UTF-8 encoded text into, and returns an object indicating the progress of the encoding.
-     * This is potentially more performant than the encode() method — especially when the target buffer is a view into a Wasm heap.
+     * The TextEncoder.encodeInto() method takes a string to encode and a destination Uint8Array to put resulting UTF-8 encoded text into, and returns an object indicating the progress of the encoding. This is potentially more performant than the encode() method — especially when the target buffer is a view into a Wasm heap.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
      */
@@ -1343,8 +1249,7 @@ interface URL {
      */
     hostname: string;
     /**
-     * The href property of the URL interface is
-     * a string containing the whole URL.
+     * The href property of the URL interface is a string containing the whole URL.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/href)
      */
@@ -1387,9 +1292,7 @@ interface URL {
      */
     search: string;
     /**
-     * The searchParams read-only property of the
-     * URL interface returns a URLSearchParams object allowing
-     * access to the GET decoded query arguments contained in the URL.
+     * The searchParams read-only property of the URL interface returns a URLSearchParams object allowing access to the GET decoded query arguments contained in the URL.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/searchParams)
      */
@@ -1401,10 +1304,7 @@ interface URL {
      */
     username: string;
     /**
-     * The toJSON() method of the URL interface
-     * returns a string containing a serialized version of the URL,
-     * although in practice it seems to have the same effect as
-     * URL.toString().
+     * The toJSON() method of the URL interface returns a string containing a serialized version of the URL, although in practice it seems to have the same effect as URL.toString().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/toJSON)
      */
@@ -1433,8 +1333,7 @@ interface URLSearchParams {
      */
     readonly size: number;
     /**
-     * The append() method of the URLSearchParams
-     * interface appends a specified key/value pair as a new search parameter.
+     * The append() method of the URLSearchParams interface appends a specified key/value pair as a new search parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/append)
      */
@@ -1446,15 +1345,13 @@ interface URLSearchParams {
      */
     delete(name: string, value?: string): void;
     /**
-     * The get() method of the URLSearchParams
-     * interface returns the first value associated to the given search parameter.
+     * The get() method of the URLSearchParams interface returns the first value associated to the given search parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/get)
      */
     get(name: string): string | null;
     /**
-     * The getAll() method of the URLSearchParams
-     * interface returns all the values associated with a given search parameter as an array.
+     * The getAll() method of the URLSearchParams interface returns all the values associated with a given search parameter as an array.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll)
      */
@@ -1466,19 +1363,13 @@ interface URLSearchParams {
      */
     has(name: string, value?: string): boolean;
     /**
-     * The set() method of the URLSearchParams
-     * interface sets the value associated with a given search parameter to the given value.
-     * If there were several matching values, this method deletes the others. If the search
-     * parameter doesn't exist, this method creates it.
+     * The set() method of the URLSearchParams interface sets the value associated with a given search parameter to the given value. If there were several matching values, this method deletes the others. If the search parameter doesn't exist, this method creates it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/set)
      */
     set(name: string, value: string): void;
     /**
-     * The URLSearchParams.sort() method sorts all key/value
-     * pairs contained in this object in place and returns undefined. Key/value pairs are sorted by the values of the UTF-16 code units of the keys. This method uses a stable sorting
-     * algorithm (i.e., the relative order between key/value pairs with equal keys will be
-     * preserved).
+     * The URLSearchParams.sort() method sorts all key/value pairs contained in this object in place and returns undefined. Key/value pairs are sorted by the values of the UTF-16 code units of the keys. This method uses a stable sorting algorithm (i.e., the relative order between key/value pairs with equal keys will be preserved).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/sort)
      */
@@ -1507,8 +1398,7 @@ declare var WorkletGlobalScope: {
 };
 
 /**
- * The WritableStream interface of the Streams API provides a standard abstraction for writing streaming data to a destination, known as a sink.
- * This object comes with built-in backpressure and queuing.
+ * The WritableStream interface of the Streams API provides a standard abstraction for writing streaming data to a destination, known as a sink. This object comes with built-in backpressure and queuing.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream)
  */
@@ -1532,8 +1422,7 @@ interface WritableStream<W = any> {
      */
     close(): Promise<void>;
     /**
-     * The getWriter() method of the WritableStream interface returns a new instance of WritableStreamDefaultWriter and locks the stream to that instance.
-     * While the stream is locked, no other writer can be acquired until this one is released.
+     * The getWriter() method of the WritableStream interface returns a new instance of WritableStreamDefaultWriter and locks the stream to that instance. While the stream is locked, no other writer can be acquired until this one is released.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/getWriter)
      */
@@ -1558,9 +1447,7 @@ interface WritableStreamDefaultController {
      */
     readonly signal: AbortSignal;
     /**
-     * The error() method of the
-     * WritableStreamDefaultController interface causes any future interactions
-     * with the associated stream to error.
+     * The error() method of the WritableStreamDefaultController interface causes any future interactions with the associated stream to error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error)
      */
@@ -1579,64 +1466,43 @@ declare var WritableStreamDefaultController: {
  */
 interface WritableStreamDefaultWriter<W = any> {
     /**
-     * The closed read-only property of the
-     * WritableStreamDefaultWriter interface returns a
-     * Promise that fulfills if the stream becomes closed, or rejects if
-     * the stream errors or the writer's lock is released.
+     * The closed read-only property of the WritableStreamDefaultWriter interface returns a Promise that fulfills if the stream becomes closed, or rejects if the stream errors or the writer's lock is released.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/closed)
      */
     readonly closed: Promise<void>;
     /**
-     * The desiredSize read-only property of the
-     * WritableStreamDefaultWriter interface returns the desired size required
-     * to fill the stream's internal queue.
+     * The desiredSize read-only property of the WritableStreamDefaultWriter interface returns the desired size required to fill the stream's internal queue.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/desiredSize)
      */
     readonly desiredSize: number | null;
     /**
-     * The ready read-only property of the
-     * WritableStreamDefaultWriter interface returns a Promise
-     * that resolves when the desired size of the stream's internal queue transitions from
-     * non-positive to positive, signaling that it is no longer applying backpressure.
+     * The ready read-only property of the WritableStreamDefaultWriter interface returns a Promise that resolves when the desired size of the stream's internal queue transitions from non-positive to positive, signaling that it is no longer applying backpressure.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/ready)
      */
     readonly ready: Promise<void>;
     /**
-     * The abort() method of the
-     * WritableStreamDefaultWriter interface aborts the stream, signaling that
-     * the producer can no longer successfully write to the stream and it is to be immediately
-     * moved to an error state, with any queued writes discarded.
+     * The abort() method of the WritableStreamDefaultWriter interface aborts the stream, signaling that the producer can no longer successfully write to the stream and it is to be immediately moved to an error state, with any queued writes discarded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/abort)
      */
     abort(reason?: any): Promise<void>;
     /**
-     * The close() method of the
-     * WritableStreamDefaultWriter interface closes the associated writable
-     * stream.
+     * The close() method of the WritableStreamDefaultWriter interface closes the associated writable stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/close)
      */
     close(): Promise<void>;
     /**
-     * The releaseLock() method of the
-     * WritableStreamDefaultWriter interface releases the writer's lock on the
-     * corresponding stream. After the lock is released, the writer is no longer active. If the
-     * associated stream is errored when the lock is released, the writer will appear errored
-     * in the same way from now on; otherwise, the writer will appear closed.
+     * The releaseLock() method of the WritableStreamDefaultWriter interface releases the writer's lock on the corresponding stream. After the lock is released, the writer is no longer active. If the associated stream is errored when the lock is released, the writer will appear errored in the same way from now on; otherwise, the writer will appear closed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/releaseLock)
      */
     releaseLock(): void;
     /**
-     * The write() method of the
-     * WritableStreamDefaultWriter interface writes a passed chunk of data to a
-     * WritableStream and its underlying sink, then returns a
-     * Promise that resolves to indicate the success or failure of the write
-     * operation.
+     * The write() method of the WritableStreamDefaultWriter interface writes a passed chunk of data to a WritableStream and its underlying sink, then returns a Promise that resolves to indicate the success or failure of the write operation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/write)
      */
@@ -1680,10 +1546,7 @@ declare namespace WebAssembly {
      */
     interface Instance {
         /**
-         * The exports read-only property of the
-         * WebAssembly.Instance object prototype returns an object containing as its
-         * members all the functions exported from the WebAssembly module instance, to allow them
-         * to be accessed and used by JavaScript.
+         * The exports read-only property of the WebAssembly.Instance object prototype returns an object containing as its members all the functions exported from the WebAssembly module instance, to allow them to be accessed and used by JavaScript.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Instance/exports)
          */
@@ -1971,9 +1834,7 @@ declare var currentTime: number;
  */
 declare var sampleRate: number;
 /**
- * The registerProcessor method of the
- * AudioWorkletGlobalScope interface registers a class constructor derived
- * from AudioWorkletProcessor interface under a specified name.
+ * The registerProcessor method of the AudioWorkletGlobalScope interface registers a class constructor derived from AudioWorkletProcessor interface under a specified name.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/registerProcessor)
  */

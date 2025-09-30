@@ -1,5 +1,5 @@
-import mdn from "../../inputfiles/mdn.json" with { type: "json" };
-
+import { readFile } from "fs/promises";
+const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 // These are the subdirectory prefixes we care about for slugs
 const subdirectories = [
   "web/api/",
@@ -56,6 +56,8 @@ function extractSlug(slug: string): string[] {
 export async function generateDescriptions(): Promise<{
   interfaces: { interface: Record<string, any> };
 }> {
+  const content = await readFile(new URL(inputFile), "utf8");
+  const mdn = JSON.parse(content);
   const results: Record<string, any> = {};
   // metadata is an array of objects, each with at least: slug, page-type, summary
   for (const entry of mdn.data) {
