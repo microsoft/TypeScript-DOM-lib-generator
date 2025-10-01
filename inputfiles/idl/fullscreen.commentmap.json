@@ -1,6 +1,3 @@
 {
-    "element-requestfullscreen": "Displays element fullscreen and resolves promise when done.\n\nWhen supplied, options's navigationUI member indicates whether showing navigation UI while in fullscreen is preferred or not. If set to \"show\", navigation simplicity is preferred over screen space, and if set to \"hide\", more screen space is preferred. User agents are always free to honor user preference over the application's. The default value \"auto\" indicates no application preference.",
-    "document-fullscreenenabled": "Returns true if document has the ability to display elements fullscreen and fullscreen is supported, or false otherwise.",
-    "document-exitfullscreen": "Stops document's fullscreen element from being displayed fullscreen and resolves promise when done.",
     "documentorshadowroot-fullscreenelement": "Returns document's fullscreen element."
 }
