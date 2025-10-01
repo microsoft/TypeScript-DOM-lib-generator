@@ -242,9 +242,17 @@ interface AbortSignal extends EventTarget {
 declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static) */
+    /**
+     * The AbortSignal.abort() static method returns an AbortSignal that is already set as aborted (and which does not trigger an abort event).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static)
+     */
     abort(reason?: any): AbortSignal;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static) */
+    /**
+     * The AbortSignal.any() static method takes an iterable of abort signals and returns an AbortSignal. The returned abort signal is aborted when any of the input iterable abort signals are aborted. The abort reason will be set to the reason of the first signal that is aborted. If any of the given abort signals are already aborted then so will be the returned AbortSignal.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static)
+     */
     any(signals: AbortSignal[]): AbortSignal;
 };
 
@@ -1314,9 +1322,17 @@ interface URL {
 declare var URL: {
     prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static) */
+    /**
+     * The URL.canParse() static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static)
+     */
     canParse(url: string | URL, base?: string | URL): boolean;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static) */
+    /**
+     * The URL.parse() static method of the URL interface returns a newly created URL object representing the URL defined by the parameters.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
+     */
     parse(url: string | URL, base?: string | URL): URL | null;
 };
 
@@ -1603,11 +1619,23 @@ declare namespace WebAssembly {
     var Module: {
         prototype: Module;
         new(bytes: BufferSource): Module;
-        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/customSections_static) */
+        /**
+         * The WebAssembly.Module.customSections() static method returns a copy of the contents of all custom sections in the given module with the given string name.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/customSections_static)
+         */
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
-        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/exports_static) */
+        /**
+         * The WebAssembly.Module.exports() static method returns an array containing descriptions of all the declared exports of the given Module.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/exports_static)
+         */
         exports(moduleObject: Module): ModuleExportDescriptor[];
-        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/imports_static) */
+        /**
+         * The WebAssembly.Module.imports() static method returns an array containing descriptions of all the declared imports of the given Module.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/imports_static)
+         */
         imports(moduleObject: Module): ModuleImportDescriptor[];
     };
 
@@ -1724,44 +1752,120 @@ declare namespace WebAssembly {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console)
  */
 interface Console {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static) */
+    /**
+     * The console.assert() static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static)
+     */
     assert(condition?: boolean, ...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear_static) */
+    /**
+     * The console.clear() static method clears the console if possible.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear_static)
+     */
     clear(): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static) */
+    /**
+     * The console.count() static method logs the number of times that this particular call to count() has been called.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static)
+     */
     count(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static) */
+    /**
+     * The console.countReset() static method resets counter used with console.count().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static)
+     */
     countReset(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static) */
+    /**
+     * The console.debug() static method outputs a message to the console at the "debug" log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static)
+     */
     debug(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static) */
+    /**
+     * The console.dir() static method displays a list of the properties of the specified JavaScript object. In browser consoles, the output is presented as a hierarchical listing with disclosure triangles that let you see the contents of child objects.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static)
+     */
     dir(item?: any, options?: any): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dirxml_static) */
+    /**
+     * The console.dirxml() static method displays an interactive tree of the descendant elements of the specified XML/HTML element. If it is not possible to display as an element the JavaScript Object view is shown instead. The output is presented as a hierarchical listing of expandable nodes that let you see the contents of child nodes.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dirxml_static)
+     */
     dirxml(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static) */
+    /**
+     * The console.error() static method outputs a message to the console at the "error" log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static)
+     */
     error(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static) */
+    /**
+     * The console.group() static method creates a new inline group in the Web console log, causing any subsequent console messages to be indented by an additional level, until console.groupEnd() is called.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static)
+     */
     group(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static) */
+    /**
+     * The console.groupCollapsed() static method creates a new inline group in the console. Unlike console.group(), however, the new group is created collapsed. The user will need to use the disclosure button next to it to expand it, revealing the entries created in the group.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static)
+     */
     groupCollapsed(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd_static) */
+    /**
+     * The console.groupEnd() static method exits the current inline group in the console. See Using groups in the console in the console documentation for details and examples.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd_static)
+     */
     groupEnd(): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static) */
+    /**
+     * The console.info() static method outputs a message to the console at the "info" log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static)
+     */
     info(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/log_static) */
+    /**
+     * The console.log() static method outputs a message to the console.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/log_static)
+     */
     log(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table_static) */
+    /**
+     * The console.table() static method displays tabular data as a table.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table_static)
+     */
     table(tabularData?: any, properties?: string[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static) */
+    /**
+     * The console.time() static method starts a timer you can use to track how long an operation takes. You give each timer a unique name, and may have up to 10,000 timers running on a given page. When you call console.timeEnd() with the same name, the browser will output the time, in milliseconds, that elapsed since the timer was started.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static)
+     */
     time(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static) */
+    /**
+     * The console.timeEnd() static method stops a timer that was previously started by calling console.time().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static)
+     */
     timeEnd(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static) */
+    /**
+     * The console.timeLog() static method logs the current value of a timer that was previously started by calling console.time().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static)
+     */
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static) */
+    /**
+     * The console.trace() static method outputs a stack trace to the console.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static)
+     */
     trace(...data: any[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static) */
+    /**
+     * The console.warn() static method outputs a warning message to the console at the "warning" log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static)
+     */
     warn(...data: any[]): void;
 }
 

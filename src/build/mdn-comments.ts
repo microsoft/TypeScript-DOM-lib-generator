@@ -48,7 +48,10 @@ function insertComment(
 function extractSlug(slug: string): string[] {
   for (const subdirectory of subdirectories) {
     if (!slug.toLowerCase().startsWith(subdirectory)) continue;
-    return slug.slice(subdirectory.length).split("/");
+    return slug
+      .slice(subdirectory.length)
+      .replace(/_static/g, "")
+      .split("/");
   }
   return [];
 }
