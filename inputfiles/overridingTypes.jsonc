@@ -3947,6 +3947,39 @@
             },
             "WebAssemblyInstantiatedSource": {
                 "legacyNamespace": "WebAssembly"
+            },
+            "URLPatternResult": {
+                "members": {
+                    "member": {
+                        "inputs": {
+                            "required": true
+                        },
+                        "protocol": {
+                            "required": true
+                        },
+                        "username": {
+                            "required": true
+                        },
+                        "password": {
+                            "required": true
+                        },
+                        "hostname": {
+                            "required": true
+                        },
+                        "port": {
+                            "required": true
+                        },
+                        "pathname": {
+                            "required": true
+                        },
+                        "search": {
+                            "required": true
+                        },
+                        "hash": {
+                            "required": true
+                        }
+                    }
+                }
             }
         }
     },
