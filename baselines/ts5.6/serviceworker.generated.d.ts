@@ -740,8 +740,8 @@ interface Transformer<I = any, O = any> {
 }
 
 interface URLPatternComponentResult {
-    groups?: Record<string, string | undefined>;
-    input?: string;
+    groups: Record<string, string | undefined>;
+    input: string;
 }
 
 interface URLPatternInit {

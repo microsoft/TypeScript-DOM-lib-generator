@@ -3948,6 +3948,18 @@
             "WebAssemblyInstantiatedSource": {
                 "legacyNamespace": "WebAssembly"
             },
+            "URLPatternComponentResult": {
+                "members": {
+                    "member": {
+                        "input": {
+                            "required": true
+                        },
+                        "groups": {
+                            "required": true
+                        }
+                    }
+                }
+            },
             "URLPatternResult": {
                 "members": {
                     "member": {
