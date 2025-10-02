@@ -13,10 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "lts/*"
           cache: npm
+          
       # Use ncu to detect major version changes
       - run: npm i -g npm-check-updates
       - run: ncu -u @mdn* @webref*
