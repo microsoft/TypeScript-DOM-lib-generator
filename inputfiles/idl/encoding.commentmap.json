@@ -1,15 +1,6 @@
 {
-    "textdecoder": "Returns a new TextDecoder object.\n\nIf label is either not a label or is a label for replacement, throws a RangeError.",
     "textdecodercommon-encoding": "Returns encoding's name, lowercased.",
     "textdecodercommon-fatal": "Returns true if error mode is \"fatal\", otherwise false.",
-    "textdecodercommon-ignorebom": "Returns the value of ignore BOM.",
-    "textdecoder-decode": "Returns the result of running encoding's decoder. The method can be invoked zero or more times with options's stream set to true, and then once without options's stream (or set to false), to process a fragmented input. If the invocation without options's stream (or set to false) has no input, it's clearest to omit both arguments.\n\n```\nvar string = \"\", decoder = new TextDecoder(encoding), buffer;\nwhile(buffer = next_chunk()) {\n  string += decoder.decode(buffer, {stream:true});\n}\nstring += decoder.decode(); // end-of-queue\n```\n\nIf the error mode is \"fatal\" and encoding's decoder returns error, throws a TypeError.",
-    "textencoder": "Returns a new TextEncoder object.",
     "textencodercommon-encoding": "Returns \"utf-8\".",
-    "textencoder-encode": "Returns the result of running UTF-8's encoder.",
-    "textencoder-encodeinto": "Runs the UTF-8 encoder on source, stores the result of that operation into destination, and returns the progress made as an object wherein read is the number of converted code units of source and written is the number of bytes modified in destination.",
-    "textdecoderstream": "Returns a new TextDecoderStream object.\n\nIf label is either not a label or is a label for replacement, throws a RangeError.",
-    "generictransformstream-readable": "Returns a readable stream whose chunks are strings resulting from running encoding's decoder on the chunks written to writable.",
-    "generictransformstream-writable": "Returns a writable stream which accepts [AllowShared] BufferSource chunks and runs them through encoding's decoder before making them available to readable.\n\nTypically this will be used via the pipeThrough() method on a ReadableStream source.\n\n```\nvar decoder = new TextDecoderStream(encoding);\nbyteReadable\n  .pipeThrough(decoder)\n  .pipeTo(textWritable);\n```\n\nIf the error mode is \"fatal\" and encoding's decoder returns error, both readable and writable will be errored with a TypeError.",
-    "textencoderstream": "Returns a new TextEncoderStream object."
+    "textdecodercommon-ignorebom": "Returns the value of ignore BOM."
 }

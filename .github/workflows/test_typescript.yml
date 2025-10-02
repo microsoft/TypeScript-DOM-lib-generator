@@ -18,7 +18,7 @@ jobs:
           submodules: true  # Ensures submodules are cloned
 
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "lts/*"
           cache: npm
