@@ -12,21 +12,26 @@ async function fetchAndFilterMDN() {
 
     // Filter and map the data
     const filtered = Object.values(data)
-      .filter(entry => {
+      .filter((entry) => {
         const path = entry.mdn_url.toLowerCase();
         return (
           path.startsWith("/en-us/docs/web/api/") ||
-          path.startsWith("/en-us/docs/webassembly/reference/javascript_interface/")
+          path.startsWith(
+            "/en-us/docs/webassembly/reference/javascript_interface/",
+          )
         );
       })
       .map(({ mdn_url, pageType, summary }) => ({
         mdn_url,
         pageType,
-        summary
+        summary,
       }));
 
     // Save to file
-    fs.writeFileSync("./inputfiles/mdn.json", JSON.stringify({ data: filtered }, null, 2));
+    fs.writeFileSync(
+      "./inputfiles/mdn.json",
+      JSON.stringify({ data: filtered }, null, 2),
+    );
     console.log("mdn.json created!");
   } catch (err) {
     console.error("Error:", err);
