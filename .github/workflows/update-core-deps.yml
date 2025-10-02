@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: "lts/*"
           cache: npm
-          
+
       # Use ncu to detect major version changes
       - run: npm i -g npm-check-updates
       - run: ncu -u @mdn* @webref*
