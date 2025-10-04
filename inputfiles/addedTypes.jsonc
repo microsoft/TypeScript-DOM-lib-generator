@@ -76,12 +76,6 @@
                     ]
                 }
             },
-            "DeviceMotionEventAcceleration": {
-                "noInterfaceObject": true
-            },
-            "DeviceMotionEventRotationRate": {
-                "noInterfaceObject": true
-            },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
                 "properties": {
@@ -132,18 +126,6 @@
                 ],
                 "events": {
                     "event": [
-                        {
-                            "name": "devicemotion",
-                            "type": "DeviceMotionEvent"
-                        },
-                        {
-                            "name": "deviceorientation",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "deviceorientationabsolute",
-                            "type": "DeviceOrientationEvent"
-                        },
                         {
                             "name": "gamepadconnected",
                             "type": "GamepadEvent"
