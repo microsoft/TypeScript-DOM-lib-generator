@@ -7,3 +7,5 @@ interface CSSStyleDeclaration \
   forwardExtends=CSSStyleProperties
 
 interface CSSStyleProperties replaceReference=CSSStyleDeclaration
+
+interface StyleMedia deprecated=#true

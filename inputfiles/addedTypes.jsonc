@@ -400,7 +400,6 @@
                 "name": "StyleMedia",
                 "exposed": "Window",
                 "noInterfaceObject": true,
-                "deprecated": true,
                 "properties": {
                     "property": {
                         "type": {
