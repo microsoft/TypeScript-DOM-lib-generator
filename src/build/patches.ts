@@ -15,12 +15,14 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
-function optionalMember<const T>(prop: string, type: T, value?: Value) {
+function optionalMember<const T>(prop: string, type: T | T[], value?: Value) {
   if (value === undefined) {
     return {};
   }
-  if (typeof value !== type) {
-    throw new Error(`Expected type ${value} for ${prop}`);
+  const types = Array.isArray(type) ? type : [type];
+  const valueType = typeof value;
+  if (!types.includes(valueType as T)) {
+    throw new Error(`Expected type ${types.join(" or ")} for ${prop}, but got ${valueType}`);
   }
   return {
     [prop]: value as T extends "string"
@@ -169,7 +171,7 @@ function handleMixinandInterfaces(
 
   const interfaceObject = type === "interface" && {
     ...optionalMember("exposed", "string", node.properties?.exposed),
-    ...optionalMember("deprecated", "string", node.properties?.deprecated),
+    ...optionalMember("deprecated", ["string", "boolean"], node.properties?.deprecated),
     ...optionalMember(
       "noInterfaceObject",
       "boolean",
