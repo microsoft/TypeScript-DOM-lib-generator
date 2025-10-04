@@ -22,7 +22,9 @@ function optionalMember<const T>(prop: string, type: T | T[], value?: Value) {
   const types = Array.isArray(type) ? type : [type];
   const valueType = typeof value;
   if (!types.includes(valueType as T)) {
-    throw new Error(`Expected type ${types.join(" or ")} for ${prop}, but got ${valueType}`);
+    throw new Error(
+      `Expected type ${types.join(" or ")} for ${prop}, but got ${valueType}`,
+    );
   }
   return {
     [prop]: value as T extends "string"
@@ -171,7 +173,11 @@ function handleMixinandInterfaces(
 
   const interfaceObject = type === "interface" && {
     ...optionalMember("exposed", "string", node.properties?.exposed),
-    ...optionalMember("deprecated", ["string", "boolean"], node.properties?.deprecated),
+    ...optionalMember(
+      "deprecated",
+      ["string", "boolean"],
+      node.properties?.deprecated,
+    ),
     ...optionalMember(
       "noInterfaceObject",
       "boolean",
