@@ -6,3 +6,8 @@ enum FontDisplay {
     fallback
     optional
 }
+
+interface CSSFontFaceRule {
+    property style type=CSSStyleProperties
+}
+

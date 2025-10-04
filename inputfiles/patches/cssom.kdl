@@ -6,4 +6,21 @@ interface CSSStyleDeclaration \
   forward=CSSStyleDeclarationBase \
   forwardExtends=CSSStyleProperties
 
-interface CSSStyleProperties replaceReference=CSSStyleDeclaration
+interface CSSStyleProperties replaceReference=CSSStyleDeclaration {
+  property imageOrientation deprecated=#true
+  property wordWrap deprecated=#true
+  property cssFloat mdnUrl="https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
+
+  // The corresponding standardized property is not supported by anyone as of 2024-10.
+  property webkitLineClamp deprecated=#false
+}
+
+// This is used in the React d.ts files, and not including
+// it would force an update for anyone using React.
+interface StyleMedia exposed=Window noInterfaceObject=#true deprecated="Do not use" {
+  property type type=DOMString
+
+  method matchMedium returns=boolean {
+    param mediaquery type=DOMString
+  }
+}

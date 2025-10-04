@@ -31940,7 +31940,7 @@ declare var StorageManager: {
     new(): StorageManager;
 };
 
-/** @deprecated */
+/** @deprecated Do not use */
 interface StyleMedia {
     type: string;
     matchMedium(mediaquery: string): boolean;

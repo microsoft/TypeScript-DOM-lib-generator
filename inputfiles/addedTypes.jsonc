@@ -100,18 +100,7 @@
                     ]
                 }
             },
-            "CSSStyleProperties": {
-                "properties": {
-                    "property": {
-                        "imageOrientation": {
-                            "deprecated": true
-                        },
-                        "wordWrap": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
+
             "Window": {
                 "name": "Window",
                 "methods": {
@@ -374,32 +363,6 @@
                             "type": "Event"
                         }
                     ]
-                }
-            },
-            // This is used in the React d.ts files, and not including
-            // it would force an update for anyone using React.
-            "StyleMedia": {
-                "name": "StyleMedia",
-                "exposed": "Window",
-                "noInterfaceObject": true,
-                "deprecated": true,
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "type": "DOMString"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "matchMedium": {
-                            "name": "matchMedium",
-                            "overrideSignatures": [
-                                "matchMedium(mediaquery: string): boolean"
-                            ]
-                        }
-                    }
                 }
             },
             "Navigator": {
