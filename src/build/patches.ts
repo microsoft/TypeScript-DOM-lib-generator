@@ -223,6 +223,7 @@ function handleProperty(child: Node): Partial<Property> {
     ...optionalMember("type", "string", child.properties?.type),
     ...optionalMember("deprecated", "boolean", child.properties?.deprecated),
     ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
+    ...optionalMember("nullable", "boolean", child.properties?.nullable),
   };
 }
 

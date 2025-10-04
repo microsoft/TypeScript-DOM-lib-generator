@@ -1393,18 +1393,6 @@
                 }
             },
             "IDBCursor": {
-                "properties": {
-                    "property": {
-                        "key": {
-                            "name": "key",
-                            "type": "IDBValidKey"
-                        },
-                        "primaryKey": {
-                            "name": "primaryKey",
-                            "type": "IDBValidKey"
-                        }
-                    }
-                },
                 "methods": {
                     "method": {
                         "continue": {
@@ -1453,18 +1441,6 @@
                 }
             },
             "IDBRequest": {
-                "properties": {
-                    "property": {
-                        "source": {
-                            "name": "source",
-                            "nullable": false
-                        },
-                        "result": {
-                            "name": "result",
-                            "overrideType": "T"
-                        }
-                    }
-                },
                 "typeParameters": [
                     {
                         "name": "T",

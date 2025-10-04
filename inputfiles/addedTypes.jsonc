@@ -392,33 +392,6 @@
                     }
                 }
             },
-            "IDBDatabase": {
-                "name": "IDBDatabase",
-                "events": {
-                    "event": [
-                        {
-                            "name": "versionchange",
-                            "type": "IDBVersionChangeEvent"
-                        }
-                    ]
-                }
-            },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>",
-                "events": {
-                    "event": [
-                        {
-                            "name": "upgradeneeded",
-                            "type": "IDBVersionChangeEvent"
-                        },
-                        {
-                            "name": "blocked",
-                            "type": "IDBVersionChangeEvent"
-                        }
-                    ]
-                }
-            },
             "UIEvent": {
                 "properties": {
                     "property": {
