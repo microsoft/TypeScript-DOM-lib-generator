@@ -191,7 +191,7 @@ interface AbortController {
      */
     readonly signal: AbortSignal;
     /**
-     * The **`abort()`** method of the AbortController interface **`abort`**s an asynchronous operation before it has completed. This is able to **`abort`** fetch requests, the consumption of any response bodies, or streams.
+     * The **`abort()`** method of the AbortController interface aborts an asynchronous operation before it has completed. This is able to abort fetch requests, the consumption of any response bodies, or streams.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController/abort)
      */
@@ -214,7 +214,7 @@ interface AbortSignalEventMap {
  */
 interface AbortSignal extends EventTarget {
     /**
-     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are **`aborted`** (true) or not (false).
+     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (true) or not (false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/aborted)
      */
@@ -222,7 +222,7 @@ interface AbortSignal extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_event) */
     onabort: ((this: AbortSignal, ev: Event) => any) | null;
     /**
-     * The **`reason`** read-only property returns a JavaScript value that indicates the abort **`reason`**.
+     * The **`reason`** read-only property returns a JavaScript value that indicates the abort reason.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/reason)
      */
@@ -243,13 +243,13 @@ declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
     /**
-     * The AbortSignal.**`abort()`** static method returns an AbortSignal that is already set as **`abort`**ed (and which does not trigger an **`abort`** event).
+     * The AbortSignal.**`abort()`** static method returns an AbortSignal that is already set as aborted (and which does not trigger an abort event).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static)
      */
     abort(reason?: any): AbortSignal;
     /**
-     * The AbortSignal.**`any()`** static method takes an iterable of abort signals and returns an AbortSignal. The returned abort signal is aborted when **`any`** of the input iterable abort signals are aborted. The abort reason will be set to the reason of the first signal that is aborted. If **`any`** of the given abort signals are already aborted then so will be the returned AbortSignal.
+     * The AbortSignal.**`any()`** static method takes an iterable of abort signals and returns an AbortSignal. The returned abort signal is aborted when any of the input iterable abort signals are aborted. The abort reason will be set to the reason of the first signal that is aborted. If any of the given abort signals are already aborted then so will be the returned AbortSignal.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static)
      */
@@ -269,7 +269,7 @@ interface AudioWorkletGlobalScope extends WorkletGlobalScope {
      */
     readonly currentFrame: number;
     /**
-     * The read-only **`currentTime`** property of the AudioWorkletGlobalScope interface returns a double that represents the ever-increasing context time of the audio block being processed. It is equal to the **`currentTime`** property of the BaseAudioContext the worklet belongs to.
+     * The read-only **`currentTime`** property of the AudioWorkletGlobalScope interface returns a double that represents the ever-increasing context time of the audio block being processed. It is equal to the currentTime property of the BaseAudioContext the worklet belongs to.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentTime)
      */
@@ -406,20 +406,20 @@ declare var CustomEvent: {
  */
 interface DOMException extends Error {
     /**
-     * The **`code`** read-only property of the DOMException interface returns one of the legacy error **`code`** constants, or 0 if none match.
+     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or 0 if none match.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
      */
     readonly code: number;
     /**
-     * The **`message`** read-only property of the DOMException interface returns a string representing a **`message`** or description associated with the given error name.
+     * The **`message`** read-only property of the DOMException interface returns a string representing a message or description associated with the given error name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/message)
      */
     readonly message: string;
     /**
-     * The **`name`** read-only property of the DOMException interface returns a string that contains one of the strings associated with an error **`name`**.
+     * The **`name`** read-only property of the DOMException interface returns a string that contains one of the strings associated with an error name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/name)
      */
@@ -509,7 +509,7 @@ interface ErrorEvent extends Event {
      */
     readonly colno: number;
     /**
-     * The **`error`** read-only property of the ErrorEvent interface returns a JavaScript value, such as an Error or DOMException, representing the **`error`** associated with this event.
+     * The **`error`** read-only property of the ErrorEvent interface returns a JavaScript value, such as an Error or DOMException, representing the error associated with this event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/error)
      */
@@ -527,7 +527,7 @@ interface ErrorEvent extends Event {
      */
     readonly lineno: number;
     /**
-     * The **`message`** read-only property of the ErrorEvent interface returns a string containing a human-readable error **`message`** describing the problem.
+     * The **`message`** read-only property of the ErrorEvent interface returns a string containing a human-readable error message describing the problem.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message)
      */
@@ -540,13 +540,13 @@ declare var ErrorEvent: {
 };
 
 /**
- * The **`Event`** interface represents an event which takes place on an **`Event`**Target.
+ * The **`Event`** interface represents an event which takes place on an EventTarget.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)
  */
 interface Event {
     /**
-     * The **`bubbles`** read-only property of the Event interface indicates whether the event **`bubbles`** up through the DOM tree or not.
+     * The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)
      */
@@ -589,7 +589,7 @@ interface Event {
      */
     readonly eventPhase: number;
     /**
-     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is true when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and false when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the **`isTrusted`** property to false in user agents.
+     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is true when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and false when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to false in user agents.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
      */
@@ -621,7 +621,7 @@ interface Event {
      */
     readonly timeStamp: DOMHighResTimeStamp;
     /**
-     * The **`type`** read-only property of the Event interface returns a string containing the event's **`type`**. It is set when the event is constructed and is the name commonly used to refer to the specific event, such as click, load, or error.
+     * The **`type`** read-only property of the Event interface returns a string containing the event's type. It is set when the event is constructed and is the name commonly used to refer to the specific event, such as click, load, or error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)
      */
@@ -693,7 +693,7 @@ interface EventTarget {
      */
     addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean): void;
     /**
-     * The **`dispatchEvent()`** method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order. The normal event processing rules (including the capturing and optional bubbling phase) also apply to events dispatched manually with **`dispatchEvent()`**.
+     * The **`dispatchEvent()`** method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order. The normal event processing rules (including the capturing and optional bubbling phase) also apply to events dispatched manually with dispatchEvent().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
      */
@@ -725,7 +725,7 @@ interface GenericTransformStream {
  */
 interface MessageEvent<T = any> extends Event {
     /**
-     * The **`data`** read-only property of the MessageEvent interface represents the **`data`** sent by the message emitter.
+     * The **`data`** read-only property of the MessageEvent interface represents the data sent by the message emitter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/data)
      */
@@ -737,7 +737,7 @@ interface MessageEvent<T = any> extends Event {
      */
     readonly lastEventId: string;
     /**
-     * The **`origin`** read-only property of the MessageEvent interface is a string representing the **`origin`** of the message emitter.
+     * The **`origin`** read-only property of the MessageEvent interface is a string representing the origin of the message emitter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageEvent/origin)
      */
@@ -804,7 +804,7 @@ interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
     /**
-     * The **`start()`** method of the MessagePort interface **`start`**s the sending of messages queued on the port. This method is only needed when using EventTarget.addEventListener; it is implied when using onmessage.
+     * The **`start()`** method of the MessagePort interface starts the sending of messages queued on the port. This method is only needed when using EventTarget.addEventListener; it is implied when using onmessage.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort/start)
      */
@@ -827,13 +827,13 @@ declare var MessagePort: {
  */
 interface PromiseRejectionEvent extends Event {
     /**
-     * The PromiseRejectionEvent interface's **`promise`** read-only property indicates the JavaScript Promise which was rejected. You can examine the event's PromiseRejectionEvent.reason property to learn why the **`promise`** was rejected.
+     * The PromiseRejectionEvent interface's **`promise`** read-only property indicates the JavaScript Promise which was rejected. You can examine the event's PromiseRejectionEvent.reason property to learn why the promise was rejected.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/promise)
      */
     readonly promise: Promise<any>;
     /**
-     * The PromiseRejectionEvent **`reason`** read-only property is any JavaScript value or Object which provides the **`reason`** passed into Promise.reject(). This in theory provides information about why the promise was rejected.
+     * The PromiseRejectionEvent **`reason`** read-only property is any JavaScript value or Object which provides the reason passed into Promise.reject(). This in theory provides information about why the promise was rejected.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason)
      */
@@ -864,19 +864,19 @@ interface ReadableByteStreamController {
      */
     readonly desiredSize: number | null;
     /**
-     * The **`close()`** method of the ReadableByteStreamController interface **`close`**s the associated stream.
+     * The **`close()`** method of the ReadableByteStreamController interface closes the associated stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/close)
      */
     close(): void;
     /**
-     * The **`enqueue()`** method of the ReadableByteStreamController interface **`enqueue`**s a given chunk on the associated readable byte stream (the chunk is transferred into the stream's internal queues).
+     * The **`enqueue()`** method of the ReadableByteStreamController interface enqueues a given chunk on the associated readable byte stream (the chunk is transferred into the stream's internal queues).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/enqueue)
      */
     enqueue(chunk: ArrayBufferView<ArrayBuffer>): void;
     /**
-     * The **`error()`** method of the ReadableByteStreamController interface causes any future interactions with the associated stream to **`error`** with the specified reason.
+     * The **`error()`** method of the ReadableByteStreamController interface causes any future interactions with the associated stream to error with the specified reason.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/error)
      */
@@ -889,19 +889,19 @@ declare var ReadableByteStreamController: {
 };
 
 /**
- * The **`ReadableStream`** interface of the Streams API represents a readable stream of byte data. The Fetch API offers a concrete instance of a **`ReadableStream`** through the body property of a Response object.
+ * The **`ReadableStream`** interface of the Streams API represents a readable stream of byte data. The Fetch API offers a concrete instance of a ReadableStream through the body property of a Response object.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream)
  */
 interface ReadableStream<R = any> {
     /**
-     * The **`locked`** read-only property of the ReadableStream interface returns whether or not the readable stream is **`locked`** to a reader.
+     * The **`locked`** read-only property of the ReadableStream interface returns whether or not the readable stream is locked to a reader.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/locked)
      */
     readonly locked: boolean;
     /**
-     * The **`cancel()`** method of the ReadableStream interface returns a Promise that resolves when the stream is **`cancel`**ed.
+     * The **`cancel()`** method of the ReadableStream interface returns a Promise that resolves when the stream is canceled.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/cancel)
      */
@@ -927,7 +927,7 @@ interface ReadableStream<R = any> {
      */
     pipeTo(destination: WritableStream<R>, options?: StreamPipeOptions): Promise<void>;
     /**
-     * The **`tee()`** method of the ReadableStream interface **`tee`**s the current readable stream, returning a two-element array containing the two resulting branches as new ReadableStream instances.
+     * The **`tee()`** method of the ReadableStream interface tees the current readable stream, returning a two-element array containing the two resulting branches as new ReadableStream instances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee)
      */
@@ -948,7 +948,7 @@ declare var ReadableStream: {
  */
 interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
     /**
-     * The **`read()`** method of the ReadableStreamBYOBReader interface is used to **`read`** data into a view on a user-supplied buffer from an associated **`read`**able byte stream. A request for data will be satisfied from the stream's internal queues if there is any data present. If the stream queues are empty, the request may be supplied as a zero-copy transfer from the underlying byte source.
+     * The **`read()`** method of the ReadableStreamBYOBReader interface is used to read data into a view on a user-supplied buffer from an associated readable byte stream. A request for data will be satisfied from the stream's internal queues if there is any data present. If the stream queues are empty, the request may be supplied as a zero-copy transfer from the underlying byte source.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read)
      */
@@ -973,7 +973,7 @@ declare var ReadableStreamBYOBReader: {
  */
 interface ReadableStreamBYOBRequest {
     /**
-     * The **`view`** getter property of the ReadableStreamBYOBRequest interface returns the current **`view`**.
+     * The **`view`** getter property of the ReadableStreamBYOBRequest interface returns the current view.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/view)
      */
@@ -1010,19 +1010,19 @@ interface ReadableStreamDefaultController<R = any> {
      */
     readonly desiredSize: number | null;
     /**
-     * The **`close()`** method of the ReadableStreamDefaultController interface **`close`**s the associated stream.
+     * The **`close()`** method of the ReadableStreamDefaultController interface closes the associated stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/close)
      */
     close(): void;
     /**
-     * The **`enqueue()`** method of the ReadableStreamDefaultController interface **`enqueue`**s a given chunk in the associated stream.
+     * The **`enqueue()`** method of the ReadableStreamDefaultController interface enqueues a given chunk in the associated stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/enqueue)
      */
     enqueue(chunk?: R): void;
     /**
-     * The **`error()`** method of the ReadableStreamDefaultController interface causes any future interactions with the associated stream to **`error`**.
+     * The **`error()`** method of the ReadableStreamDefaultController interface causes any future interactions with the associated stream to error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/error)
      */
@@ -1073,7 +1073,7 @@ interface ReadableStreamGenericReader {
  */
 interface TextDecoder extends TextDecoderCommon {
     /**
-     * The TextDecoder.**`decode()`** method returns a string containing text **`decode`**d from the buffer passed as a parameter.
+     * The TextDecoder.**`decode()`** method returns a string containing text decoded from the buffer passed as a parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
@@ -1128,7 +1128,7 @@ declare var TextDecoderStream: {
  */
 interface TextEncoder extends TextEncoderCommon {
     /**
-     * The TextEncoder.**`encode()`** method takes a string as input, and returns a Uint8Array containing the string **`encode`**d using UTF-8.
+     * The TextEncoder.**`encode()`** method takes a string as input, and returns a Uint8Array containing the string encoded using UTF-8.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
@@ -1208,13 +1208,13 @@ interface TransformStreamDefaultController<O = any> {
      */
     readonly desiredSize: number | null;
     /**
-     * The **`enqueue()`** method of the TransformStreamDefaultController interface **`enqueue`**s the given chunk in the readable side of the stream.
+     * The **`enqueue()`** method of the TransformStreamDefaultController interface enqueues the given chunk in the readable side of the stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/enqueue)
      */
     enqueue(chunk?: O): void;
     /**
-     * The **`error()`** method of the TransformStreamDefaultController interface **`error`**s both sides of the stream. Any further interactions with it will fail with the given **`error`** message, and any chunks in the queue will be discarded.
+     * The **`error()`** method of the TransformStreamDefaultController interface errors both sides of the stream. Any further interactions with it will fail with the given error message, and any chunks in the queue will be discarded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/error)
      */
@@ -1233,7 +1233,7 @@ declare var TransformStreamDefaultController: {
 };
 
 /**
- * The **`URL`** interface is used to parse, construct, normalize, and encode **`URL`**s. It works by providing properties which allow you to easily read and modify the components of a **`URL`**.
+ * The **`URL`** interface is used to parse, construct, normalize, and encode URLs. It works by providing properties which allow you to easily read and modify the components of a URL.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL)
  */
@@ -1245,13 +1245,13 @@ interface URL {
      */
     hash: string;
     /**
-     * The **`host`** property of the URL interface is a string containing the **`host`**, which is the **`host`**name, and then, if the port of the URL is nonempty, a ":", followed by the port of the URL. If the URL does not have a **`host`**name, this property contains an empty string, "".
+     * The **`host`** property of the URL interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a ":", followed by the port of the URL. If the URL does not have a hostname, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/host)
      */
     host: string;
     /**
-     * The **`hostname`** property of the URL interface is a string containing either the domain name or IP address of the URL. If the URL does not have a **`hostname`**, this property contains an empty string, "". IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
+     * The **`hostname`** property of the URL interface is a string containing either the domain name or IP address of the URL. If the URL does not have a hostname, this property contains an empty string, "". IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hostname)
      */
@@ -1264,13 +1264,13 @@ interface URL {
     href: string;
     toString(): string;
     /**
-     * The **`origin`** read-only property of the URL interface returns a string containing the Unicode serialization of the **`origin`** of the represented URL.
+     * The **`origin`** read-only property of the URL interface returns a string containing the Unicode serialization of the origin of the represented URL.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/origin)
      */
     readonly origin: string;
     /**
-     * The **`password`** property of the URL interface is a string containing the **`password`** component of the URL. If the URL does not have a **`password`**, this property contains an empty string, "".
+     * The **`password`** property of the URL interface is a string containing the password component of the URL. If the URL does not have a password, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/password)
      */
@@ -1282,19 +1282,19 @@ interface URL {
      */
     pathname: string;
     /**
-     * The **`port`** property of the URL interface is a string containing the **`port`** number of the URL. If the **`port`** is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, "".
+     * The **`port`** property of the URL interface is a string containing the port number of the URL. If the port is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/port)
      */
     port: string;
     /**
-     * The **`protocol`** property of the URL interface is a string containing the **`protocol`** or scheme of the URL, including the final ":".
+     * The **`protocol`** property of the URL interface is a string containing the protocol or scheme of the URL, including the final ":".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/protocol)
      */
     protocol: string;
     /**
-     * The **`search`** property of the URL interface is a **`search`** string, also called a query string, that is a string containing a "?" followed by the parameters of the URL. If the URL does not have a **`search`** query, this property contains an empty string, "".
+     * The **`search`** property of the URL interface is a search string, also called a query string, that is a string containing a "?" followed by the parameters of the URL. If the URL does not have a search query, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/search)
      */
@@ -1306,7 +1306,7 @@ interface URL {
      */
     readonly searchParams: URLSearchParams;
     /**
-     * The **`username`** property of the URL interface is a string containing the **`username`** component of the URL. If the URL does not have a **`username`**, this property contains an empty string, "".
+     * The **`username`** property of the URL interface is a string containing the username component of the URL. If the URL does not have a username, this property contains an empty string, "".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/username)
      */
@@ -1349,13 +1349,13 @@ interface URLSearchParams {
      */
     readonly size: number;
     /**
-     * The **`append()`** method of the URLSearchParams interface **`append`**s a specified key/value pair as a new search parameter.
+     * The **`append()`** method of the URLSearchParams interface appends a specified key/value pair as a new search parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/append)
      */
     append(name: string, value: string): void;
     /**
-     * The **`delete()`** method of the URLSearchParams interface **`delete`**s specified parameters and their associated value(s) from the list of all search parameters.
+     * The **`delete()`** method of the URLSearchParams interface deletes specified parameters and their associated value(s) from the list of all search parameters.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/delete)
      */
@@ -1379,13 +1379,13 @@ interface URLSearchParams {
      */
     has(name: string, value?: string): boolean;
     /**
-     * The **`set()`** method of the URLSearchParams interface **`set`**s the value associated with a given search parameter to the given value. If there were several matching values, this method deletes the others. If the search parameter doesn't exist, this method creates it.
+     * The **`set()`** method of the URLSearchParams interface sets the value associated with a given search parameter to the given value. If there were several matching values, this method deletes the others. If the search parameter doesn't exist, this method creates it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/set)
      */
     set(name: string, value: string): void;
     /**
-     * The URLSearchParams.**`sort()`** method **`sort`**s all key/value pairs contained in this object in place and returns undefined. Key/value pairs are **`sort`**ed by the values of the UTF-16 code units of the keys. This method uses a stable **`sort`**ing algorithm (i.e., the relative order between key/value pairs with equal keys will be preserved).
+     * The URLSearchParams.**`sort()`** method sorts all key/value pairs contained in this object in place and returns undefined. Key/value pairs are sorted by the values of the UTF-16 code units of the keys. This method uses a stable sorting algorithm (i.e., the relative order between key/value pairs with equal keys will be preserved).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/sort)
      */
@@ -1400,7 +1400,7 @@ declare var URLSearchParams: {
 };
 
 /**
- * The **`WorkletGlobalScope`** interface is an abstract class that specific worklet scope classes inherit from. Each **`WorkletGlobalScope`** defines a new global environment.
+ * The **`WorkletGlobalScope`** interface is an abstract class that specific worklet scope classes inherit from. Each WorkletGlobalScope defines a new global environment.
  * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
@@ -1420,19 +1420,19 @@ declare var WorkletGlobalScope: {
  */
 interface WritableStream<W = any> {
     /**
-     * The **`locked`** read-only property of the WritableStream interface returns a boolean indicating whether the WritableStream is **`locked`** to a writer.
+     * The **`locked`** read-only property of the WritableStream interface returns a boolean indicating whether the WritableStream is locked to a writer.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/locked)
      */
     readonly locked: boolean;
     /**
-     * The **`abort()`** method of the WritableStream interface **`abort`**s the stream, signaling that the producer can no longer successfully write to the stream and it is to be immediately moved to an error state, with any queued writes discarded.
+     * The **`abort()`** method of the WritableStream interface aborts the stream, signaling that the producer can no longer successfully write to the stream and it is to be immediately moved to an error state, with any queued writes discarded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/abort)
      */
     abort(reason?: any): Promise<void>;
     /**
-     * The **`close()`** method of the WritableStream interface **`close`**s the associated stream. All chunks written before this method is called are sent before the returned promise is fulfilled.
+     * The **`close()`** method of the WritableStream interface closes the associated stream. All chunks written before this method is called are sent before the returned promise is fulfilled.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/close)
      */
@@ -1451,7 +1451,7 @@ declare var WritableStream: {
 };
 
 /**
- * The **`WritableStreamDefaultController`** interface of the Streams API represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding **`WritableStreamDefaultController`** instance to manipulate.
+ * The **`WritableStreamDefaultController`** interface of the Streams API represents a controller allowing control of a WritableStream's state. When constructing a WritableStream, the underlying sink is given a corresponding WritableStreamDefaultController instance to manipulate.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController)
  */
@@ -1463,7 +1463,7 @@ interface WritableStreamDefaultController {
      */
     readonly signal: AbortSignal;
     /**
-     * The **`error()`** method of the WritableStreamDefaultController interface causes any future interactions with the associated stream to **`error`**.
+     * The **`error()`** method of the WritableStreamDefaultController interface causes any future interactions with the associated stream to error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error)
      */
@@ -1482,7 +1482,7 @@ declare var WritableStreamDefaultController: {
  */
 interface WritableStreamDefaultWriter<W = any> {
     /**
-     * The **`closed`** read-only property of the WritableStreamDefaultWriter interface returns a Promise that fulfills if the stream becomes **`closed`**, or rejects if the stream errors or the writer's lock is released.
+     * The **`closed`** read-only property of the WritableStreamDefaultWriter interface returns a Promise that fulfills if the stream becomes closed, or rejects if the stream errors or the writer's lock is released.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/closed)
      */
@@ -1500,13 +1500,13 @@ interface WritableStreamDefaultWriter<W = any> {
      */
     readonly ready: Promise<void>;
     /**
-     * The **`abort()`** method of the WritableStreamDefaultWriter interface **`abort`**s the stream, signaling that the producer can no longer successfully write to the stream and it is to be immediately moved to an error state, with any queued writes discarded.
+     * The **`abort()`** method of the WritableStreamDefaultWriter interface aborts the stream, signaling that the producer can no longer successfully write to the stream and it is to be immediately moved to an error state, with any queued writes discarded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/abort)
      */
     abort(reason?: any): Promise<void>;
     /**
-     * The **`close()`** method of the WritableStreamDefaultWriter interface **`close`**s the associated writable stream.
+     * The **`close()`** method of the WritableStreamDefaultWriter interface closes the associated writable stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/close)
      */
@@ -1518,7 +1518,7 @@ interface WritableStreamDefaultWriter<W = any> {
      */
     releaseLock(): void;
     /**
-     * The **`write()`** method of the WritableStreamDefaultWriter interface **`write`**s a passed chunk of data to a WritableStream and its underlying sink, then returns a Promise that resolves to indicate the success or failure of the **`write`** operation.
+     * The **`write()`** method of the WritableStreamDefaultWriter interface writes a passed chunk of data to a WritableStream and its underlying sink, then returns a Promise that resolves to indicate the success or failure of the write operation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/write)
      */
@@ -1556,7 +1556,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * A WebAssembly.**`Instance`** object is a stateful, executable instance of a WebAssembly.Module. **`Instance`** objects contain all the Exported WebAssembly functions that allow calling into WebAssembly code from JavaScript.
+     * A WebAssembly.**`Instance`** object is a stateful, executable instance of a WebAssembly.Module. Instance objects contain all the Exported WebAssembly functions that allow calling into WebAssembly code from JavaScript.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Instance)
      */
@@ -1590,7 +1590,7 @@ declare namespace WebAssembly {
      */
     interface Memory {
         /**
-         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the **`buffer`** contained in the memory. Depending on whether or not the memory was constructed with shared: true, the **`buffer`** is either an ArrayBuffer or a SharedArrayBuffer.
+         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: true, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/buffer)
          */
@@ -1626,13 +1626,13 @@ declare namespace WebAssembly {
          */
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
         /**
-         * The WebAssembly.Module.**`exports()`** static method returns an array containing descriptions of all the declared **`exports`** of the given Module.
+         * The WebAssembly.Module.**`exports()`** static method returns an array containing descriptions of all the declared exports of the given Module.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/exports_static)
          */
         exports(moduleObject: Module): ModuleExportDescriptor[];
         /**
-         * The WebAssembly.Module.**`imports()`** static method returns an array containing descriptions of all the declared **`imports`** of the given Module.
+         * The WebAssembly.Module.**`imports()`** static method returns an array containing descriptions of all the declared imports of the given Module.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/imports_static)
          */
@@ -1655,7 +1655,7 @@ declare namespace WebAssembly {
      */
     interface Table {
         /**
-         * The read-only **`length`** prototype property of the WebAssembly.Table object returns the **`length`** of the table, i.e., the number of elements in the table.
+         * The read-only **`length`** prototype property of the WebAssembly.Table object returns the length of the table, i.e., the number of elements in the table.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/length)
          */
@@ -1745,27 +1745,27 @@ declare namespace WebAssembly {
     function validate(bytes: BufferSource): boolean;
 }
 
-/** The **`console`** object provides access to the debugging **`console`** (e.g., the Web **`console`** in Firefox). */
+/** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
 /**
- * The **`console`** object provides access to the debugging **`console`** (e.g., the Web **`console`** in Firefox).
+ * The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console)
  */
 interface Console {
     /**
-     * The console.**`assert()`** static method writes an error message to the console if the **`assert`**ion is false. If the **`assert`**ion is true, nothing happens.
+     * The console.**`assert()`** static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static)
      */
     assert(condition?: boolean, ...data: any[]): void;
     /**
-     * The console.**`clear()`** static method **`clear`**s the console if possible.
+     * The console.**`clear()`** static method clears the console if possible.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear_static)
      */
     clear(): void;
     /**
-     * The console.**`count()`** static method logs the number of times that this particular call to **`count()`** has been called.
+     * The console.**`count()`** static method logs the number of times that this particular call to count() has been called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static)
      */
@@ -1777,7 +1777,7 @@ interface Console {
      */
     countReset(label?: string): void;
     /**
-     * The console.**`debug()`** static method outputs a message to the console at the "**`debug`**" log level. The message is only displayed to the user if the console is configured to display **`debug`** output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
+     * The console.**`debug()`** static method outputs a message to the console at the "debug" log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static)
      */
@@ -1795,13 +1795,13 @@ interface Console {
      */
     dirxml(...data: any[]): void;
     /**
-     * The console.**`error()`** static method outputs a message to the console at the "**`error`**" log level. The message is only displayed to the user if the console is configured to display **`error`** output. In most cases, the log level is configured within the console UI. The message may be formatted as an **`error`**, with red colors and call stack information.
+     * The console.**`error()`** static method outputs a message to the console at the "error" log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static)
      */
     error(...data: any[]): void;
     /**
-     * The console.**`group()`** static method creates a new inline **`group`** in the Web console log, causing any subsequent console messages to be indented by an additional level, until console.**`group`**End() is called.
+     * The console.**`group()`** static method creates a new inline group in the Web console log, causing any subsequent console messages to be indented by an additional level, until console.groupEnd() is called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static)
      */
@@ -1819,7 +1819,7 @@ interface Console {
      */
     groupEnd(): void;
     /**
-     * The console.**`info()`** static method outputs a message to the console at the "**`info`**" log level. The message is only displayed to the user if the console is configured to display **`info`** output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
+     * The console.**`info()`** static method outputs a message to the console at the "info" log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static)
      */
@@ -1831,13 +1831,13 @@ interface Console {
      */
     log(...data: any[]): void;
     /**
-     * The console.**`table()`** static method displays tabular data as a **`table`**.
+     * The console.**`table()`** static method displays tabular data as a table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table_static)
      */
     table(tabularData?: any, properties?: string[]): void;
     /**
-     * The console.**`time()`** static method starts a **`time`**r you can use to track how long an operation takes. You give each **`time`**r a unique name, and may have up to 10,000 **`time`**rs running on a given page. When you call console.**`time`**End() with the same name, the browser will output the **`time`**, in milliseconds, that elapsed since the **`time`**r was started.
+     * The console.**`time()`** static method starts a timer you can use to track how long an operation takes. You give each timer a unique name, and may have up to 10,000 timers running on a given page. When you call console.timeEnd() with the same name, the browser will output the time, in milliseconds, that elapsed since the timer was started.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static)
      */
@@ -1856,13 +1856,13 @@ interface Console {
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
     /**
-     * The console.**`trace()`** static method outputs a stack **`trace`** to the console.
+     * The console.**`trace()`** static method outputs a stack trace to the console.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static)
      */
     trace(...data: any[]): void;
     /**
-     * The console.**`warn()`** static method outputs a **`warn`**ing message to the console at the "**`warn`**ing" log level. The message is only displayed to the user if the console is configured to display **`warn`**ing output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a **`warn`**ing icon.
+     * The console.**`warn()`** static method outputs a warning message to the console at the "warning" log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static)
      */
@@ -1926,7 +1926,7 @@ interface UnderlyingSourceStartCallback<R> {
  */
 declare var currentFrame: number;
 /**
- * The read-only **`currentTime`** property of the AudioWorkletGlobalScope interface returns a double that represents the ever-increasing context time of the audio block being processed. It is equal to the **`currentTime`** property of the BaseAudioContext the worklet belongs to.
+ * The read-only **`currentTime`** property of the AudioWorkletGlobalScope interface returns a double that represents the ever-increasing context time of the audio block being processed. It is equal to the currentTime property of the BaseAudioContext the worklet belongs to.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/currentTime)
  */

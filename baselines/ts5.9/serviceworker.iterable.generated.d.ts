@@ -44,7 +44,7 @@ interface CanvasPathDrawingStyles {
 
 interface CookieStoreManager {
     /**
-     * The **`subscribe()`** method of the CookieStoreManager interface **`subscribe`**s a ServiceWorkerRegistration to cookie change events.
+     * The **`subscribe()`** method of the CookieStoreManager interface subscribes a ServiceWorkerRegistration to cookie change events.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe)
      */
@@ -98,7 +98,7 @@ interface Headers {
 
 interface IDBDatabase {
     /**
-     * The **`transaction`** method of the IDBDatabase interface immediately returns a **`transaction`** object (IDBTransaction) containing the IDBTransaction.objectStore method, which you can use to access your object store.
+     * The **`transaction`** method of the IDBDatabase interface immediately returns a transaction object (IDBTransaction) containing the IDBTransaction.objectStore method, which you can use to access your object store.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/transaction)
      */
