@@ -67,6 +67,7 @@ function generateComment(summary: string, name: string): string {
       new RegExp(`(?:\\b\\w+\\.)?${escapedName}(\\(\\))?`),
       (match) => `**\`${match}\`**`,
     )
+    .replace(/"/g, "'")
     .trim();
 }
 

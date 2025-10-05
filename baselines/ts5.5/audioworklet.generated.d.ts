@@ -858,7 +858,7 @@ interface ReadableByteStreamController {
      */
     readonly byobRequest: ReadableStreamBYOBRequest | null;
     /**
-     * The **`desiredSize`** read-only property of the ReadableByteStreamController interface returns the number of bytes required to fill the stream's internal queue to its "desired size".
+     * The **`desiredSize`** read-only property of the ReadableByteStreamController interface returns the number of bytes required to fill the stream's internal queue to its 'desired size'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/desiredSize)
      */
@@ -942,7 +942,7 @@ declare var ReadableStream: {
 };
 
 /**
- * The **`ReadableStreamBYOBReader`** interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source. It is used for efficient copying from underlying sources where the data is delivered as an "anonymous" sequence of bytes, such as files.
+ * The **`ReadableStreamBYOBReader`** interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source. It is used for efficient copying from underlying sources where the data is delivered as an 'anonymous' sequence of bytes, such as files.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader)
  */
@@ -967,7 +967,7 @@ declare var ReadableStreamBYOBReader: {
 };
 
 /**
- * The **`ReadableStreamBYOBRequest`** interface of the Streams API represents a "pull request" for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
+ * The **`ReadableStreamBYOBRequest`** interface of the Streams API represents a 'pull request' for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest)
  */
@@ -1239,19 +1239,19 @@ declare var TransformStreamDefaultController: {
  */
 interface URL {
     /**
-     * The **`hash`** property of the URL interface is a string containing a "#" followed by the fragment identifier of the URL. If the URL does not have a fragment identifier, this property contains an empty string, "".
+     * The **`hash`** property of the URL interface is a string containing a '#' followed by the fragment identifier of the URL. If the URL does not have a fragment identifier, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hash)
      */
     hash: string;
     /**
-     * The **`host`** property of the URL interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a ":", followed by the port of the URL. If the URL does not have a hostname, this property contains an empty string, "".
+     * The **`host`** property of the URL interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a ':', followed by the port of the URL. If the URL does not have a hostname, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/host)
      */
     host: string;
     /**
-     * The **`hostname`** property of the URL interface is a string containing either the domain name or IP address of the URL. If the URL does not have a hostname, this property contains an empty string, "". IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
+     * The **`hostname`** property of the URL interface is a string containing either the domain name or IP address of the URL. If the URL does not have a hostname, this property contains an empty string, ''. IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hostname)
      */
@@ -1270,7 +1270,7 @@ interface URL {
      */
     readonly origin: string;
     /**
-     * The **`password`** property of the URL interface is a string containing the password component of the URL. If the URL does not have a password, this property contains an empty string, "".
+     * The **`password`** property of the URL interface is a string containing the password component of the URL. If the URL does not have a password, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/password)
      */
@@ -1282,19 +1282,19 @@ interface URL {
      */
     pathname: string;
     /**
-     * The **`port`** property of the URL interface is a string containing the port number of the URL. If the port is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, "".
+     * The **`port`** property of the URL interface is a string containing the port number of the URL. If the port is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/port)
      */
     port: string;
     /**
-     * The **`protocol`** property of the URL interface is a string containing the protocol or scheme of the URL, including the final ":".
+     * The **`protocol`** property of the URL interface is a string containing the protocol or scheme of the URL, including the final ':'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/protocol)
      */
     protocol: string;
     /**
-     * The **`search`** property of the URL interface is a search string, also called a query string, that is a string containing a "?" followed by the parameters of the URL. If the URL does not have a search query, this property contains an empty string, "".
+     * The **`search`** property of the URL interface is a search string, also called a query string, that is a string containing a '?' followed by the parameters of the URL. If the URL does not have a search query, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/search)
      */
@@ -1306,7 +1306,7 @@ interface URL {
      */
     readonly searchParams: URLSearchParams;
     /**
-     * The **`username`** property of the URL interface is a string containing the username component of the URL. If the URL does not have a username, this property contains an empty string, "".
+     * The **`username`** property of the URL interface is a string containing the username component of the URL. If the URL does not have a username, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/username)
      */
@@ -1777,7 +1777,7 @@ interface Console {
      */
     countReset(label?: string): void;
     /**
-     * The **`console.debug()`** static method outputs a message to the console at the "debug" log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
+     * The **`console.debug()`** static method outputs a message to the console at the 'debug' log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static)
      */
@@ -1795,7 +1795,7 @@ interface Console {
      */
     dirxml(...data: any[]): void;
     /**
-     * The **`console.error()`** static method outputs a message to the console at the "error" log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
+     * The **`console.error()`** static method outputs a message to the console at the 'error' log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static)
      */
@@ -1819,7 +1819,7 @@ interface Console {
      */
     groupEnd(): void;
     /**
-     * The **`console.info()`** static method outputs a message to the console at the "info" log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
+     * The **`console.info()`** static method outputs a message to the console at the 'info' log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small 'i' icon next to it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static)
      */
@@ -1862,7 +1862,7 @@ interface Console {
      */
     trace(...data: any[]): void;
     /**
-     * The **`console.warn()`** static method outputs a warning message to the console at the "warning" log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
+     * The **`console.warn()`** static method outputs a warning message to the console at the 'warning' log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static)
      */

@@ -1234,7 +1234,7 @@ declare var CSSMathSum: {
  */
 interface CSSMathValue extends CSSNumericValue {
     /**
-     * The **`CSSMathValue.operator`** read-only property of the CSSMathValue interface indicates the operator that the current subtype represents. For example, if the current CSSMathValue subtype is CSSMathSum, this property will return the string "sum".
+     * The **`CSSMathValue.operator`** read-only property of the CSSMathValue interface indicates the operator that the current subtype represents. For example, if the current CSSMathValue subtype is CSSMathSum, this property will return the string 'sum'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue/operator)
      */
@@ -1615,7 +1615,7 @@ declare var CSSTranslate: {
 };
 
 /**
- * The **`CSSUnitValue`** interface of the CSS Typed Object Model API represents values that contain a single unit type. For example, "42px" would be represented by a CSSNumericValue.
+ * The **`CSSUnitValue`** interface of the CSS Typed Object Model API represents values that contain a single unit type. For example, '42px' would be represented by a CSSNumericValue.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue)
  */
@@ -1661,7 +1661,7 @@ declare var CSSUnparsedValue: {
 };
 
 /**
- * The **`CSSVariableReferenceValue`** interface of the CSS Typed Object Model API allows you to create a custom name for a built-in CSS value. This object functionality is sometimes called a "CSS variable" and serves the same purpose as the var() function. The custom name must begin with two dashes.
+ * The **`CSSVariableReferenceValue`** interface of the CSS Typed Object Model API allows you to create a custom name for a built-in CSS value. This object functionality is sometimes called a 'CSS variable' and serves the same purpose as the var() function. The custom name must begin with two dashes.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue)
  */
@@ -2519,13 +2519,13 @@ interface DOMMatrixReadOnly {
      */
     skewY(sy?: number): DOMMatrix;
     /**
-     * The **`toFloat32Array()`** method of the DOMMatrixReadOnly interface returns a new Float32Array containing all 16 elements (m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44) which comprise the matrix. The elements are stored into the array as single-precision floating-point numbers in column-major (colexographical access, or "colex") order. (In other words, down the first column from top to bottom, then the second column, and so forth.)
+     * The **`toFloat32Array()`** method of the DOMMatrixReadOnly interface returns a new Float32Array containing all 16 elements (m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44) which comprise the matrix. The elements are stored into the array as single-precision floating-point numbers in column-major (colexographical access, or 'colex') order. (In other words, down the first column from top to bottom, then the second column, and so forth.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toFloat32Array)
      */
     toFloat32Array(): Float32Array<ArrayBuffer>;
     /**
-     * The **`toFloat64Array()`** method of the DOMMatrixReadOnly interface returns a new Float64Array containing all 16 elements (m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44) which comprise the matrix. The elements are stored into the array as double-precision floating-point numbers in column-major (colexographical access, or "colex") order. (In other words, down the first column from top to bottom, then the second column, and so forth.)
+     * The **`toFloat64Array()`** method of the DOMMatrixReadOnly interface returns a new Float64Array containing all 16 elements (m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44) which comprise the matrix. The elements are stored into the array as double-precision floating-point numbers in column-major (colexographical access, or 'colex') order. (In other words, down the first column from top to bottom, then the second column, and so forth.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/toFloat64Array)
      */
@@ -3294,7 +3294,7 @@ declare var File: {
 };
 
 /**
- * The **`FileList`** interface represents an object of this type returned by the files property of the HTML <input> element; this lets you access the list of files selected with the <input type="file"> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage.
+ * The **`FileList`** interface represents an object of this type returned by the files property of the HTML <input> element; this lets you access the list of files selected with the <input type='file'> element. It's also used for a list of files dropped into web content when using the drag and drop API; see the DataTransfer object for details on this usage.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileList)
  */
@@ -3629,7 +3629,7 @@ interface FontFace {
      */
     readonly loaded: Promise<FontFace>;
     /**
-     * The **`status`** read-only property of the FontFace interface returns an enumerated value indicating the status of the font, one of "unloaded", "loading", "loaded", or "error".
+     * The **`status`** read-only property of the FontFace interface returns an enumerated value indicating the status of the font, one of 'unloaded', 'loading', 'loaded', or 'error'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/status)
      */
@@ -3756,7 +3756,7 @@ interface FontFaceSource {
 }
 
 /**
- * The **`FormData`** interface provides a way to construct a set of key/value pairs representing form fields and their values, which can be sent using the fetch(), XMLHttpRequest.send() or navigator.sendBeacon() methods. It uses the same format a form would use if the encoding type were set to "multipart/form-data".
+ * The **`FormData`** interface provides a way to construct a set of key/value pairs representing form fields and their values, which can be sent using the fetch(), XMLHttpRequest.send() or navigator.sendBeacon() methods. It uses the same format a form would use if the encoding type were set to 'multipart/form-data'.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormData)
  */
@@ -4603,7 +4603,7 @@ declare var ImageBitmap: {
 };
 
 /**
- * The **`ImageBitmapRenderingContext`** interface is a canvas rendering context that provides the functionality to replace the canvas's contents with the given ImageBitmap. Its context id (the first argument to HTMLCanvasElement.getContext() or OffscreenCanvas.getContext()) is "bitmaprenderer".
+ * The **`ImageBitmapRenderingContext`** interface is a canvas rendering context that provides the functionality to replace the canvas's contents with the given ImageBitmap. Its context id (the first argument to HTMLCanvasElement.getContext() or OffscreenCanvas.getContext()) is 'bitmaprenderer'.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext)
  */
@@ -4681,7 +4681,7 @@ interface KHR_parallel_shader_compile {
  */
 interface Lock {
     /**
-     * The **`mode`** read-only property of the Lock interface returns the access mode passed to LockManager.request() when the lock was requested. The mode is either "exclusive" (the default) or "shared".
+     * The **`mode`** read-only property of the Lock interface returns the access mode passed to LockManager.request() when the lock was requested. The mode is either 'exclusive' (the default) or 'shared'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Lock/mode)
      */
@@ -5350,7 +5350,7 @@ interface Performance extends EventTarget {
      */
     clearMeasures(measureName?: string): void;
     /**
-     * The **`clearResourceTimings()`** method removes all performance entries with an entryType of "resource" from the browser's performance timeline and sets the size of the performance resource data buffer to zero.
+     * The **`clearResourceTimings()`** method removes all performance entries with an entryType of 'resource' from the browser's performance timeline and sets the size of the performance resource data buffer to zero.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/clearResourceTimings)
      */
@@ -5392,7 +5392,7 @@ interface Performance extends EventTarget {
      */
     now(): DOMHighResTimeStamp;
     /**
-     * The **`setResourceTimingBufferSize()`** method sets the desired size of the browser's resource timing buffer which stores the "resource" performance entries.
+     * The **`setResourceTimingBufferSize()`** method sets the desired size of the browser's resource timing buffer which stores the 'resource' performance entries.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/setResourceTimingBufferSize)
      */
@@ -5458,7 +5458,7 @@ declare var PerformanceEntry: {
 };
 
 /**
- * **`PerformanceMark`** is an interface for PerformanceEntry objects with an entryType of "mark".
+ * **`PerformanceMark`** is an interface for PerformanceEntry objects with an entryType of 'mark'.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark)
  */
@@ -5477,7 +5477,7 @@ declare var PerformanceMark: {
 };
 
 /**
- * **`PerformanceMeasure`** is an abstract interface for PerformanceEntry objects with an entryType of "measure". Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline.
+ * **`PerformanceMeasure`** is an abstract interface for PerformanceEntry objects with an entryType of 'measure'. Entries of this type are created by calling performance.measure() to add a named DOMHighResTimeStamp (the measure) between two marks to the browser's performance timeline.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure)
  */
@@ -5971,7 +5971,7 @@ interface ReadableByteStreamController {
      */
     readonly byobRequest: ReadableStreamBYOBRequest | null;
     /**
-     * The **`desiredSize`** read-only property of the ReadableByteStreamController interface returns the number of bytes required to fill the stream's internal queue to its "desired size".
+     * The **`desiredSize`** read-only property of the ReadableByteStreamController interface returns the number of bytes required to fill the stream's internal queue to its 'desired size'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/desiredSize)
      */
@@ -6055,7 +6055,7 @@ declare var ReadableStream: {
 };
 
 /**
- * The **`ReadableStreamBYOBReader`** interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source. It is used for efficient copying from underlying sources where the data is delivered as an "anonymous" sequence of bytes, such as files.
+ * The **`ReadableStreamBYOBReader`** interface of the Streams API defines a reader for a ReadableStream that supports zero-copy reading from an underlying byte source. It is used for efficient copying from underlying sources where the data is delivered as an 'anonymous' sequence of bytes, such as files.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader)
  */
@@ -6080,7 +6080,7 @@ declare var ReadableStreamBYOBReader: {
 };
 
 /**
- * The **`ReadableStreamBYOBRequest`** interface of the Streams API represents a "pull request" for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
+ * The **`ReadableStreamBYOBRequest`** interface of the Streams API represents a 'pull request' for data from an underlying source that will made as a zero-copy transfer to a consumer (bypassing the stream's internal queues).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest)
  */
@@ -6808,7 +6808,7 @@ declare var StylePropertyMapReadOnly: {
  */
 interface SubtleCrypto {
     /**
-     * The **`decrypt()`** method of the SubtleCrypto interface decrypts some encrypted data. It takes as arguments a key to decrypt with, some optional extra parameters, and the data to decrypt (also known as "ciphertext"). It returns a Promise which will be fulfilled with the decrypted data (also known as "plaintext").
+     * The **`decrypt()`** method of the SubtleCrypto interface decrypts some encrypted data. It takes as arguments a key to decrypt with, some optional extra parameters, and the data to decrypt (also known as 'ciphertext'). It returns a Promise which will be fulfilled with the decrypted data (also known as 'plaintext').
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/decrypt)
      */
@@ -6868,7 +6868,7 @@ interface SubtleCrypto {
      */
     sign(algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams, key: CryptoKey, data: BufferSource): Promise<ArrayBuffer>;
     /**
-     * The **`unwrapKey()`** method of the SubtleCrypto interface "unwraps" a key. This means that it takes as its input a key that has been exported and then encrypted (also called "wrapped"). It decrypts the key and then imports it, returning a CryptoKey object that can be used in the Web Crypto API.
+     * The **`unwrapKey()`** method of the SubtleCrypto interface 'unwraps' a key. This means that it takes as its input a key that has been exported and then encrypted (also called 'wrapped'). It decrypts the key and then imports it, returning a CryptoKey object that can be used in the Web Crypto API.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/unwrapKey)
      */
@@ -6880,7 +6880,7 @@ interface SubtleCrypto {
      */
     verify(algorithm: AlgorithmIdentifier | RsaPssParams | EcdsaParams, key: CryptoKey, signature: BufferSource, data: BufferSource): Promise<boolean>;
     /**
-     * The **`wrapKey()`** method of the SubtleCrypto interface "wraps" a key. This means that it exports the key in an external, portable format, then encrypts the exported key. Wrapping a key helps protect it in untrusted environments, such as inside an otherwise unprotected data store or in transmission over an unprotected network.
+     * The **`wrapKey()`** method of the SubtleCrypto interface 'wraps' a key. This means that it exports the key in an external, portable format, then encrypts the exported key. Wrapping a key helps protect it in untrusted environments, such as inside an otherwise unprotected data store or in transmission over an unprotected network.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/wrapKey)
      */
@@ -7223,19 +7223,19 @@ declare var TransformStreamDefaultController: {
  */
 interface URL {
     /**
-     * The **`hash`** property of the URL interface is a string containing a "#" followed by the fragment identifier of the URL. If the URL does not have a fragment identifier, this property contains an empty string, "".
+     * The **`hash`** property of the URL interface is a string containing a '#' followed by the fragment identifier of the URL. If the URL does not have a fragment identifier, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hash)
      */
     hash: string;
     /**
-     * The **`host`** property of the URL interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a ":", followed by the port of the URL. If the URL does not have a hostname, this property contains an empty string, "".
+     * The **`host`** property of the URL interface is a string containing the host, which is the hostname, and then, if the port of the URL is nonempty, a ':', followed by the port of the URL. If the URL does not have a hostname, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/host)
      */
     host: string;
     /**
-     * The **`hostname`** property of the URL interface is a string containing either the domain name or IP address of the URL. If the URL does not have a hostname, this property contains an empty string, "". IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
+     * The **`hostname`** property of the URL interface is a string containing either the domain name or IP address of the URL. If the URL does not have a hostname, this property contains an empty string, ''. IPv4 and IPv6 addresses are normalized, such as stripping leading zeros, and domain names are converted to IDN.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/hostname)
      */
@@ -7254,7 +7254,7 @@ interface URL {
      */
     readonly origin: string;
     /**
-     * The **`password`** property of the URL interface is a string containing the password component of the URL. If the URL does not have a password, this property contains an empty string, "".
+     * The **`password`** property of the URL interface is a string containing the password component of the URL. If the URL does not have a password, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/password)
      */
@@ -7266,19 +7266,19 @@ interface URL {
      */
     pathname: string;
     /**
-     * The **`port`** property of the URL interface is a string containing the port number of the URL. If the port is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, "".
+     * The **`port`** property of the URL interface is a string containing the port number of the URL. If the port is the default for the protocol (80 for ws: and http:, 443 for wss: and https:, and 21 for ftp:), this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/port)
      */
     port: string;
     /**
-     * The **`protocol`** property of the URL interface is a string containing the protocol or scheme of the URL, including the final ":".
+     * The **`protocol`** property of the URL interface is a string containing the protocol or scheme of the URL, including the final ':'.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/protocol)
      */
     protocol: string;
     /**
-     * The **`search`** property of the URL interface is a search string, also called a query string, that is a string containing a "?" followed by the parameters of the URL. If the URL does not have a search query, this property contains an empty string, "".
+     * The **`search`** property of the URL interface is a search string, also called a query string, that is a string containing a '?' followed by the parameters of the URL. If the URL does not have a search query, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/search)
      */
@@ -7290,7 +7290,7 @@ interface URL {
      */
     readonly searchParams: URLSearchParams;
     /**
-     * The **`username`** property of the URL interface is a string containing the username component of the URL. If the URL does not have a username, this property contains an empty string, "".
+     * The **`username`** property of the URL interface is a string containing the username component of the URL. If the URL does not have a username, this property contains an empty string, ''.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/username)
      */
@@ -10630,7 +10630,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     readonly status: number;
     /**
-     * The read-only **`XMLHttpRequest.statusText`** property returns a string containing the response's status message as returned by the HTTP server. Unlike XMLHttpRequest.status which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found". If the request's readyState is in UNSENT or OPENED state, the value of statusText will be an empty string.
+     * The read-only **`XMLHttpRequest.statusText`** property returns a string containing the response's status message as returned by the HTTP server. Unlike XMLHttpRequest.status which indicates a numerical status code, this property contains the text of the response status, such as 'OK' or 'Not Found'. If the request's readyState is in UNSENT or OPENED state, the value of statusText will be an empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/statusText)
      */
@@ -11019,7 +11019,7 @@ interface Console {
      */
     countReset(label?: string): void;
     /**
-     * The **`console.debug()`** static method outputs a message to the console at the "debug" log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
+     * The **`console.debug()`** static method outputs a message to the console at the 'debug' log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static)
      */
@@ -11037,7 +11037,7 @@ interface Console {
      */
     dirxml(...data: any[]): void;
     /**
-     * The **`console.error()`** static method outputs a message to the console at the "error" log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
+     * The **`console.error()`** static method outputs a message to the console at the 'error' log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static)
      */
@@ -11061,7 +11061,7 @@ interface Console {
      */
     groupEnd(): void;
     /**
-     * The **`console.info()`** static method outputs a message to the console at the "info" log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
+     * The **`console.info()`** static method outputs a message to the console at the 'info' log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small 'i' icon next to it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static)
      */
@@ -11104,7 +11104,7 @@ interface Console {
      */
     trace(...data: any[]): void;
     /**
-     * The **`console.warn()`** static method outputs a warning message to the console at the "warning" log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
+     * The **`console.warn()`** static method outputs a warning message to the console at the 'warning' log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static)
      */
@@ -11554,7 +11554,7 @@ interface SubtleCrypto {
     importKey(format: "jwk", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
     importKey(format: Exclude<KeyFormat, "jwk">, keyData: BufferSource, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
     /**
-     * The **`unwrapKey()`** method of the SubtleCrypto interface "unwraps" a key. This means that it takes as its input a key that has been exported and then encrypted (also called "wrapped"). It decrypts the key and then imports it, returning a CryptoKey object that can be used in the Web Crypto API.
+     * The **`unwrapKey()`** method of the SubtleCrypto interface 'unwraps' a key. This means that it takes as its input a key that has been exported and then encrypted (also called 'wrapped'). It decrypts the key and then imports it, returning a CryptoKey object that can be used in the Web Crypto API.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/unwrapKey)
      */
