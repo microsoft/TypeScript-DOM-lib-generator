@@ -56,6 +56,19 @@ function extractSlug(slug: string): string[] {
   return [];
 }
 
+function generateComment(summary: string, name: string): string {
+  // Escape special regex characters in the name
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  return summary
+    .replace(/\n/g, " ") // remove newlines
+    .replace(
+      new RegExp(`${escapedName}(\\(\\))?`, "g"),
+      (match) => `\`**${match}**\``,
+    )
+    .trim();
+}
+
 export async function generateDescriptions(): Promise<{
   interfaces: { interface: Record<string, any> };
 }> {
@@ -67,7 +80,7 @@ export async function generateDescriptions(): Promise<{
     const mdnUrl = entry.mdn_url.split("/en-US/docs/")[1];
     const slugArr = extractSlug(mdnUrl);
     const path = paths[entry.pageType];
-    const comment = entry.summary.replace(/\n/g, " ").trim();
+    const comment = generateComment(entry.summary, slugArr[slugArr.length - 1]);
     if (!slugArr.length || !path) continue;
     insertComment(results, slugArr, comment, path);
   }
