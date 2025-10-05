@@ -1,8 +1,5 @@
-/// <reference lib="es2015" />
-/// <reference lib="es2018.asynciterable" />
-
 /////////////////////////////
-/// ServiceWorker APIs
+/// Worker APIs
 /////////////////////////////
 
 interface AddEventListenerOptions extends EventListenerOptions {
@@ -48,6 +45,63 @@ interface AudioConfiguration {
     contentType: string;
     samplerate?: number;
     spatialRendering?: boolean;
+}
+
+interface AudioDataCopyToOptions {
+    format?: AudioSampleFormat;
+    frameCount?: number;
+    frameOffset?: number;
+    planeIndex: number;
+}
+
+interface AudioDataInit {
+    data: BufferSource;
+    format: AudioSampleFormat;
+    numberOfChannels: number;
+    numberOfFrames: number;
+    sampleRate: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+}
+
+interface AudioDecoderConfig {
+    codec: string;
+    description?: AllowSharedBufferSource;
+    numberOfChannels: number;
+    sampleRate: number;
+}
+
+interface AudioDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: AudioDataOutputCallback;
+}
+
+interface AudioDecoderSupport {
+    config?: AudioDecoderConfig;
+    supported?: boolean;
+}
+
+interface AudioEncoderConfig {
+    bitrate?: number;
+    bitrateMode?: BitrateMode;
+    codec: string;
+    numberOfChannels: number;
+    opus?: OpusEncoderConfig;
+    sampleRate: number;
+}
+
+interface AudioEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedAudioChunkOutputCallback;
+}
+
+interface AudioEncoderSupport {
+    config?: AudioEncoderConfig;
+    supported?: boolean;
+}
+
+interface AvcEncoderConfig {
+    format?: AvcBitstreamFormat;
 }
 
 interface BlobPropertyBag {
@@ -189,6 +243,29 @@ interface EcdsaParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
 }
 
+interface EncodedAudioChunkInit {
+    data: AllowSharedBufferSource;
+    duration?: number;
+    timestamp: number;
+    transfer?: ArrayBuffer[];
+    type: EncodedAudioChunkType;
+}
+
+interface EncodedAudioChunkMetadata {
+    decoderConfig?: AudioDecoderConfig;
+}
+
+interface EncodedVideoChunkInit {
+    data: AllowSharedBufferSource;
+    duration?: number;
+    timestamp: number;
+    type: EncodedVideoChunkType;
+}
+
+interface EncodedVideoChunkMetadata {
+    decoderConfig?: VideoDecoderConfig;
+}
+
 interface ErrorEventInit extends EventInit {
     colno?: number;
     error?: any;
@@ -249,6 +326,10 @@ interface FileSystemGetDirectoryOptions {
 
 interface FileSystemGetFileOptions {
     create?: boolean;
+}
+
+interface FileSystemReadWriteOptions {
+    at?: number;
 }
 
 interface FileSystemRemoveOptions {
@@ -334,6 +415,26 @@ interface ImageBitmapRenderingContextSettings {
 
 interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
+}
+
+interface ImageDecodeOptions {
+    completeFramesOnly?: boolean;
+    frameIndex?: number;
+}
+
+interface ImageDecodeResult {
+    complete: boolean;
+    image: VideoFrame;
+}
+
+interface ImageDecoderInit {
+    colorSpaceConversion?: ColorSpaceConversion;
+    data: ImageBufferSource;
+    desiredHeight?: number;
+    desiredWidth?: number;
+    preferAnimation?: boolean;
+    transfer?: ArrayBuffer[];
+    type: string;
 }
 
 interface ImageEncodeOptions {
@@ -424,6 +525,10 @@ interface MediaEncodingConfiguration extends MediaConfiguration {
     type: MediaEncodingType;
 }
 
+interface MediaStreamTrackProcessorInit {
+    maxBufferSize?: number;
+}
+
 interface MessageEventInit<T = any> extends EventInit {
     data?: T;
     lastEventId?: string;
@@ -458,6 +563,15 @@ interface NotificationOptions {
     tag?: string;
 }
 
+interface OpusEncoderConfig {
+    complexity?: number;
+    format?: OpusBitstreamFormat;
+    frameDuration?: number;
+    packetlossperc?: number;
+    usedtx?: boolean;
+    useinbandfec?: boolean;
+}
+
 interface Pbkdf2Params extends Algorithm {
     hash: HashAlgorithmIdentifier;
     iterations: number;
@@ -484,6 +598,11 @@ interface PerformanceObserverInit {
 
 interface PermissionDescriptor {
     name: PermissionName;
+}
+
+interface PlaneLayout {
+    offset: number;
+    stride: number;
 }
 
 interface ProgressEventInit extends EventInit {
@@ -529,6 +648,28 @@ interface QueuingStrategyInit {
      * Note that the provided high water mark will not be validated ahead of time. Instead, if it is negative, NaN, or not a number, the resulting ByteLengthQueuingStrategy will cause the corresponding stream constructor to throw.
      */
     highWaterMark: number;
+}
+
+interface RTCEncodedAudioFrameMetadata extends RTCEncodedFrameMetadata {
+    sequenceNumber?: number;
+}
+
+interface RTCEncodedFrameMetadata {
+    contributingSources?: number[];
+    mimeType?: string;
+    payloadType?: number;
+    rtpTimestamp?: number;
+    synchronizationSource?: number;
+}
+
+interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
+    dependencies?: number[];
+    frameId?: number;
+    height?: number;
+    spatialIndex?: number;
+    temporalIndex?: number;
+    timestamp?: number;
+    width?: number;
 }
 
 interface ReadableStreamGetReaderOptions {
@@ -806,6 +947,13 @@ interface UnderlyingSource<R = any> {
     type?: ReadableStreamType;
 }
 
+interface VideoColorSpaceInit {
+    fullRange?: boolean | null;
+    matrix?: VideoMatrixCoefficients | null;
+    primaries?: VideoColorPrimaries | null;
+    transfer?: VideoTransferCharacteristics | null;
+}
+
 interface VideoConfiguration {
     bitrate: number;
     colorGamut?: ColorGamut;
@@ -817,6 +965,93 @@ interface VideoConfiguration {
     scalabilityMode?: string;
     transferFunction?: TransferFunction;
     width: number;
+}
+
+interface VideoDecoderConfig {
+    codec: string;
+    codedHeight?: number;
+    codedWidth?: number;
+    colorSpace?: VideoColorSpaceInit;
+    description?: AllowSharedBufferSource;
+    displayAspectHeight?: number;
+    displayAspectWidth?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    optimizeForLatency?: boolean;
+}
+
+interface VideoDecoderInit {
+    error: WebCodecsErrorCallback;
+    output: VideoFrameOutputCallback;
+}
+
+interface VideoDecoderSupport {
+    config?: VideoDecoderConfig;
+    supported?: boolean;
+}
+
+interface VideoEncoderConfig {
+    alpha?: AlphaOption;
+    avc?: AvcEncoderConfig;
+    bitrate?: number;
+    bitrateMode?: VideoEncoderBitrateMode;
+    codec: string;
+    contentHint?: string;
+    displayHeight?: number;
+    displayWidth?: number;
+    framerate?: number;
+    hardwareAcceleration?: HardwareAcceleration;
+    height: number;
+    latencyMode?: LatencyMode;
+    scalabilityMode?: string;
+    width: number;
+}
+
+interface VideoEncoderEncodeOptions {
+    avc?: VideoEncoderEncodeOptionsForAvc;
+    keyFrame?: boolean;
+}
+
+interface VideoEncoderEncodeOptionsForAvc {
+    quantizer?: number | null;
+}
+
+interface VideoEncoderInit {
+    error: WebCodecsErrorCallback;
+    output: EncodedVideoChunkOutputCallback;
+}
+
+interface VideoEncoderSupport {
+    config?: VideoEncoderConfig;
+    supported?: boolean;
+}
+
+interface VideoFrameBufferInit {
+    codedHeight: number;
+    codedWidth: number;
+    colorSpace?: VideoColorSpaceInit;
+    displayHeight?: number;
+    displayWidth?: number;
+    duration?: number;
+    format: VideoPixelFormat;
+    layout?: PlaneLayout[];
+    timestamp: number;
+    visibleRect?: DOMRectInit;
+}
+
+interface VideoFrameCopyToOptions {
+    colorSpace?: PredefinedColorSpace;
+    format?: VideoPixelFormat;
+    layout?: PlaneLayout[];
+    rect?: DOMRectInit;
+}
+
+interface VideoFrameInit {
+    alpha?: AlphaOption;
+    displayHeight?: number;
+    displayWidth?: number;
+    duration?: number;
+    timestamp?: number;
+    visibleRect?: DOMRectInit;
 }
 
 interface WebGLContextAttributes {
@@ -862,6 +1097,12 @@ interface WebTransportSendOptions {
 }
 
 interface WebTransportSendStreamOptions extends WebTransportSendOptions {
+}
+
+interface WorkerOptions {
+    credentials?: RequestCredentials;
+    name?: string;
+    type?: WorkerType;
 }
 
 interface WriteParams {
@@ -994,6 +1235,230 @@ interface AbstractWorker {
     removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: AbstractWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
+
+interface AnimationFrameProvider {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+    cancelAnimationFrame(handle: number): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+    requestAnimationFrame(callback: FrameRequestCallback): number;
+}
+
+/**
+ * The AudioData interface of the WebCodecs API represents an audio sample.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData)
+ */
+interface AudioData {
+    /**
+     * The duration read-only property of the AudioData interface returns the duration in microseconds of this AudioData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/duration)
+     */
+    readonly duration: number;
+    /**
+     * The format read-only property of the AudioData interface returns the sample format of the AudioData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/format)
+     */
+    readonly format: AudioSampleFormat | null;
+    /**
+     * The numberOfChannels read-only property of the AudioData interface returns the number of channels in the AudioData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfChannels)
+     */
+    readonly numberOfChannels: number;
+    /**
+     * The numberOfFrames read-only property of the AudioData interface returns the number of frames in the AudioData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/numberOfFrames)
+     */
+    readonly numberOfFrames: number;
+    /**
+     * The sampleRate read-only property of the AudioData interface returns the sample rate in Hz.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/sampleRate)
+     */
+    readonly sampleRate: number;
+    /**
+     * The timestamp read-only property of the AudioData interface returns the timestamp of this AudioData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/timestamp)
+     */
+    readonly timestamp: number;
+    /**
+     * The allocationSize() method of the AudioData interface returns the size in bytes required to hold the current sample as filtered by options passed into the method.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/allocationSize)
+     */
+    allocationSize(options: AudioDataCopyToOptions): number;
+    /**
+     * The clone() method of the AudioData interface creates a new AudioData object with reference to the same media resource as the original.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/clone)
+     */
+    clone(): AudioData;
+    /**
+     * The close() method of the AudioData interface clears all states and releases the reference to the media resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/close)
+     */
+    close(): void;
+    /**
+     * The copyTo() method of the AudioData interface copies a plane of an AudioData object to a destination buffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/copyTo)
+     */
+    copyTo(destination: AllowSharedBufferSource, options: AudioDataCopyToOptions): void;
+}
+
+declare var AudioData: {
+    prototype: AudioData;
+    new(init: AudioDataInit): AudioData;
+};
+
+interface AudioDecoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * The AudioDecoder interface of the WebCodecs API decodes chunks of audio.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder)
+ */
+interface AudioDecoder extends EventTarget {
+    /**
+     * The decodeQueueSize read-only property of the AudioDecoder interface returns the number of pending decode requests in the queue.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decodeQueueSize)
+     */
+    readonly decodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/dequeue_event) */
+    ondequeue: ((this: AudioDecoder, ev: Event) => any) | null;
+    /**
+     * The state read-only property of the AudioDecoder interface returns the current state of the underlying codec.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/state)
+     */
+    readonly state: CodecState;
+    /**
+     * The close() method of the AudioDecoder interface ends all pending work and releases system resources.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/close)
+     */
+    close(): void;
+    /**
+     * The configure() method of the AudioDecoder interface enqueues a control message to configure the audio decoder for decoding chunks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/configure)
+     */
+    configure(config: AudioDecoderConfig): void;
+    /**
+     * The decode() method of the AudioDecoder interface enqueues a control message to decode a given chunk of audio.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/decode)
+     */
+    decode(chunk: EncodedAudioChunk): void;
+    /**
+     * The flush() method of the AudioDecoder interface returns a Promise that resolves once all pending messages in the queue have been completed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/flush)
+     */
+    flush(): Promise<void>;
+    /**
+     * The reset() method of the AudioDecoder interface resets all states including configuration, control messages in the control message queue, and all pending callbacks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/reset)
+     */
+    reset(): void;
+    addEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioDecoder: {
+    prototype: AudioDecoder;
+    new(init: AudioDecoderInit): AudioDecoder;
+    /**
+     * The isConfigSupported() static method of the AudioDecoder interface checks if the given config is supported (that is, if AudioDecoder objects can be successfully configured with the given config).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDecoder/isConfigSupported_static)
+     */
+    isConfigSupported(config: AudioDecoderConfig): Promise<AudioDecoderSupport>;
+};
+
+interface AudioEncoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * The AudioEncoder interface of the WebCodecs API encodes AudioData objects.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder)
+ */
+interface AudioEncoder extends EventTarget {
+    /**
+     * The encodeQueueSize read-only property of the AudioEncoder interface returns the number of pending encode requests in the queue.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encodeQueueSize)
+     */
+    readonly encodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/dequeue_event) */
+    ondequeue: ((this: AudioEncoder, ev: Event) => any) | null;
+    /**
+     * The state read-only property of the AudioEncoder interface returns the current state of the underlying codec.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/state)
+     */
+    readonly state: CodecState;
+    /**
+     * The close() method of the AudioEncoder interface ends all pending work and releases system resources.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/close)
+     */
+    close(): void;
+    /**
+     * The configure() method of the AudioEncoder interface enqueues a control message to configure the audio encoder for encoding chunks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/configure)
+     */
+    configure(config: AudioEncoderConfig): void;
+    /**
+     * The encode() method of the AudioEncoder interface enqueues a control message to encode a given AudioData object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/encode)
+     */
+    encode(data: AudioData): void;
+    /**
+     * The flush() method of the AudioEncoder interface returns a Promise that resolves once all pending messages in the queue have been completed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/flush)
+     */
+    flush(): Promise<void>;
+    /**
+     * The reset() method of the AudioEncoder interface resets all states including configuration, control messages in the control message queue, and all pending callbacks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/reset)
+     */
+    reset(): void;
+    addEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var AudioEncoder: {
+    prototype: AudioEncoder;
+    new(init: AudioEncoderInit): AudioEncoder;
+    /**
+     * The isConfigSupported() static method of the AudioEncoder interface checks if the given config is supported (that is, if AudioEncoder objects can be successfully configured with the given config).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioEncoder/isConfigSupported_static)
+     */
+    isConfigSupported(config: AudioEncoderConfig): Promise<AudioEncoderSupport>;
+};
 
 /**
  * The Blob interface represents a blob, which is a file-like object of immutable, raw data; they can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data.
@@ -3089,6 +3554,50 @@ declare var DecompressionStream: {
     new(format: CompressionFormat): DecompressionStream;
 };
 
+interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap, MessageEventTargetEventMap {
+    "message": MessageEvent;
+    "messageerror": MessageEvent;
+    "rtctransform": RTCTransformEvent;
+}
+
+/**
+ * The DedicatedWorkerGlobalScope object (the Worker global scope) is accessible through the self keyword. Some additional global functions, namespaces objects, and constructors, not typically associated with the worker global scope, but available on it, are listed in the JavaScript Reference. See also: Functions available to workers.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope)
+ */
+interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider, MessageEventTarget<DedicatedWorkerGlobalScope> {
+    /**
+     * The name read-only property of the DedicatedWorkerGlobalScope interface returns the name that the Worker was (optionally) given when it was created. This is the name that the Worker() constructor can pass to get a reference to the DedicatedWorkerGlobalScope.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/name)
+     */
+    readonly name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
+    onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
+    /**
+     * The close() method of the DedicatedWorkerGlobalScope interface discards any tasks queued in the DedicatedWorkerGlobalScope's event loop, effectively closing this particular scope.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/close)
+     */
+    close(): void;
+    /**
+     * The postMessage() method of the DedicatedWorkerGlobalScope interface sends a message to the main thread that spawned it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
+     */
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
+    addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var DedicatedWorkerGlobalScope: {
+    prototype: DedicatedWorkerGlobalScope;
+    new(): DedicatedWorkerGlobalScope;
+};
+
 /**
  * The EXT_blend_minmax extension is part of the WebGL API and extends blending capabilities by adding two new blend equations: the minimum or maximum color components of the source and destination colors.
  *
@@ -3204,6 +3713,92 @@ interface EXT_texture_norm16 {
     readonly RGB16_SNORM_EXT: 0x8F9A;
     readonly RGBA16_SNORM_EXT: 0x8F9B;
 }
+
+/**
+ * The EncodedAudioChunk interface of the WebCodecs API represents a chunk of encoded audio data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk)
+ */
+interface EncodedAudioChunk {
+    /**
+     * The byteLength read-only property of the EncodedAudioChunk interface returns the length in bytes of the encoded audio data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/byteLength)
+     */
+    readonly byteLength: number;
+    /**
+     * The duration read-only property of the EncodedAudioChunk interface returns an integer indicating the duration of the audio in microseconds.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/duration)
+     */
+    readonly duration: number | null;
+    /**
+     * The timestamp read-only property of the EncodedAudioChunk interface returns an integer indicating the timestamp of the audio in microseconds.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/timestamp)
+     */
+    readonly timestamp: number;
+    /**
+     * The type read-only property of the EncodedAudioChunk interface returns a value indicating whether the audio chunk is a key chunk, which does not relying on other frames for decoding.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/type)
+     */
+    readonly type: EncodedAudioChunkType;
+    /**
+     * The copyTo() method of the EncodedAudioChunk interface copies the encoded chunk of audio data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/copyTo)
+     */
+    copyTo(destination: AllowSharedBufferSource): void;
+}
+
+declare var EncodedAudioChunk: {
+    prototype: EncodedAudioChunk;
+    new(init: EncodedAudioChunkInit): EncodedAudioChunk;
+};
+
+/**
+ * The EncodedVideoChunk interface of the WebCodecs API represents a chunk of encoded video data.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk)
+ */
+interface EncodedVideoChunk {
+    /**
+     * The byteLength read-only property of the EncodedVideoChunk interface returns the length in bytes of the encoded video data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/byteLength)
+     */
+    readonly byteLength: number;
+    /**
+     * The duration read-only property of the EncodedVideoChunk interface returns an integer indicating the duration of the video in microseconds.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/duration)
+     */
+    readonly duration: number | null;
+    /**
+     * The timestamp read-only property of the EncodedVideoChunk interface returns an integer indicating the timestamp of the video in microseconds.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/timestamp)
+     */
+    readonly timestamp: number;
+    /**
+     * The type read-only property of the EncodedVideoChunk interface returns a value indicating whether the video chunk is a key chunk, which does not rely on other frames for decoding.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/type)
+     */
+    readonly type: EncodedVideoChunkType;
+    /**
+     * The copyTo() method of the EncodedVideoChunk interface copies the encoded chunk of video data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/copyTo)
+     */
+    copyTo(destination: AllowSharedBufferSource): void;
+}
+
+declare var EncodedVideoChunk: {
+    prototype: EncodedVideoChunk;
+    new(init: EncodedVideoChunkInit): EncodedVideoChunk;
+};
 
 /**
  * The ErrorEvent interface represents events providing information related to errors in scripts or in files.
@@ -3768,6 +4363,44 @@ declare var FileReader: {
 };
 
 /**
+ * The FileReaderSync interface allows to read File or Blob objects synchronously. This interface is only available in workers as it enables synchronous I/O that could potentially block.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync)
+ */
+interface FileReaderSync {
+    /**
+     * The readAsArrayBuffer() method of the FileReaderSync interface allows to read File or Blob objects in a synchronous way into an ArrayBuffer. This interface is only available in workers as it enables synchronous I/O that could potentially block.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsArrayBuffer)
+     */
+    readAsArrayBuffer(blob: Blob): ArrayBuffer;
+    /**
+     * The readAsBinaryString() method of the FileReaderSync interface allows to read File or Blob objects in a synchronous way into a string. This interface is only available in workers as it enables synchronous I/O that could potentially block.
+     * @deprecated
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsBinaryString)
+     */
+    readAsBinaryString(blob: Blob): string;
+    /**
+     * The readAsDataURL() method of the FileReaderSync interface allows to read File or Blob objects in a synchronous way into a string representing a data URL. This interface is only available in workers as it enables synchronous I/O that could potentially block.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsDataURL)
+     */
+    readAsDataURL(blob: Blob): string;
+    /**
+     * The readAsText() method of the FileReaderSync interface allows to read File or Blob objects in a synchronous way into a string. This interface is only available in workers as it enables synchronous I/O that could potentially block.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReaderSync/readAsText)
+     */
+    readAsText(blob: Blob, encoding?: string): string;
+}
+
+declare var FileReaderSync: {
+    prototype: FileReaderSync;
+    new(): FileReaderSync;
+};
+
+/**
  * The FileSystemDirectoryHandle interface of the File System API provides a handle to a file system directory.
  * Available only in secure contexts.
  *
@@ -3814,6 +4447,12 @@ declare var FileSystemDirectoryHandle: {
  */
 interface FileSystemFileHandle extends FileSystemHandle {
     readonly kind: "file";
+    /**
+     * The createSyncAccessHandle() method of the FileSystemFileHandle interface returns a Promise which resolves to a FileSystemSyncAccessHandle object that can be used to synchronously read from and write to a file. The synchronous nature of this method brings performance advantages, but it is only usable inside dedicated Web Workers for files within the origin private file system.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle/createSyncAccessHandle)
+     */
+    createSyncAccessHandle(): Promise<FileSystemSyncAccessHandle>;
     /**
      * The createWritable() method of the FileSystemFileHandle interface creates a FileSystemWritableFileStream that can be used to write to a file. The method returns a Promise which resolves to this created stream.
      *
@@ -3863,6 +4502,56 @@ interface FileSystemHandle {
 declare var FileSystemHandle: {
     prototype: FileSystemHandle;
     new(): FileSystemHandle;
+};
+
+/**
+ * The FileSystemSyncAccessHandle interface of the File System API represents a synchronous handle to a file system entry.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle)
+ */
+interface FileSystemSyncAccessHandle {
+    /**
+     * The close() method of the FileSystemSyncAccessHandle interface closes an open synchronous file handle, disabling any further operations on it and releasing the exclusive lock previously put on the file associated with the file handle.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/close)
+     */
+    close(): void;
+    /**
+     * The flush() method of the FileSystemSyncAccessHandle interface persists any changes made to the file associated with the handle via the write() method to disk.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/flush)
+     */
+    flush(): void;
+    /**
+     * The getSize() method of the FileSystemSyncAccessHandle interface returns the size of the file associated with the handle in bytes.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/getSize)
+     */
+    getSize(): number;
+    /**
+     * The read() method of the FileSystemSyncAccessHandle interface reads the content of the file associated with the handle into a specified buffer, optionally at a given offset.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/read)
+     */
+    read(buffer: AllowSharedBufferSource, options?: FileSystemReadWriteOptions): number;
+    /**
+     * The truncate() method of the FileSystemSyncAccessHandle interface resizes the file associated with the handle to a specified number of bytes.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/truncate)
+     */
+    truncate(newSize: number): void;
+    /**
+     * The write() method of the FileSystemSyncAccessHandle interface writes the content of a specified buffer to the file associated with the handle, optionally at a given offset.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemSyncAccessHandle/write)
+     */
+    write(buffer: AllowSharedBufferSource, options?: FileSystemReadWriteOptions): number;
+}
+
+declare var FileSystemSyncAccessHandle: {
+    prototype: FileSystemSyncAccessHandle;
+    new(): FileSystemSyncAccessHandle;
 };
 
 /**
@@ -4976,6 +5665,143 @@ declare var ImageData: {
     new(data: ImageDataArray, sw: number, sh?: number, settings?: ImageDataSettings): ImageData;
 };
 
+/**
+ * The ImageDecoder interface of the WebCodecs API provides a way to unpack and decode encoded image data.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder)
+ */
+interface ImageDecoder {
+    /**
+     * The complete read-only property of the ImageDecoder interface returns true if encoded data has completed buffering.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete)
+     */
+    readonly complete: boolean;
+    /**
+     * The completed read-only property of the ImageDecoder interface returns a promise that resolves once encoded data has finished buffering.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/completed)
+     */
+    readonly completed: Promise<void>;
+    /**
+     * The tracks read-only property of the ImageDecoder interface returns a list of the tracks in the encoded image data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/tracks)
+     */
+    readonly tracks: ImageTrackList;
+    /**
+     * The type read-only property of the ImageDecoder interface reflects the MIME type configured during construction.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/type)
+     */
+    readonly type: string;
+    /**
+     * The close() method of the ImageDecoder interface ends all pending work and releases system resources.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/close)
+     */
+    close(): void;
+    /**
+     * The decode() method of the ImageDecoder interface enqueues a control message to decode the frame of an image.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/decode)
+     */
+    decode(options?: ImageDecodeOptions): Promise<ImageDecodeResult>;
+    /**
+     * The reset() method of the ImageDecoder interface aborts all pending decode() operations; rejecting all pending promises. All other state will be unchanged. Class methods can continue to be invoked after reset(). E.g., calling decode() after reset() is permitted.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/reset)
+     */
+    reset(): void;
+}
+
+declare var ImageDecoder: {
+    prototype: ImageDecoder;
+    new(init: ImageDecoderInit): ImageDecoder;
+    /**
+     * The ImageDecoder.isTypeSupported() static method checks if a given MIME type can be decoded by the user agent.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/isTypeSupported_static)
+     */
+    isTypeSupported(type: string): Promise<boolean>;
+};
+
+/**
+ * The ImageTrack interface of the WebCodecs API represents an individual image track.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack)
+ */
+interface ImageTrack {
+    /**
+     * The animated property of the ImageTrack interface returns true if the track is animated and therefore has multiple frames.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated)
+     */
+    readonly animated: boolean;
+    /**
+     * The frameCount property of the ImageTrack interface returns the number of frames in the track.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/frameCount)
+     */
+    readonly frameCount: number;
+    /**
+     * The repetitionCount property of the ImageTrack interface returns the number of repetitions of this track.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/repetitionCount)
+     */
+    readonly repetitionCount: number;
+    /**
+     * The selected property of the ImageTrack interface returns true if the track is selected for decoding.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected)
+     */
+    selected: boolean;
+}
+
+declare var ImageTrack: {
+    prototype: ImageTrack;
+    new(): ImageTrack;
+};
+
+/**
+ * The ImageTrackList interface of the WebCodecs API represents a list of image tracks.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList)
+ */
+interface ImageTrackList {
+    /**
+     * The length property of the ImageTrackList interface returns the length of the ImageTrackList.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/length)
+     */
+    readonly length: number;
+    /**
+     * The ready property of the ImageTrackList interface returns a Promise that resolves when the ImageTrackList is populated with tracks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/ready)
+     */
+    readonly ready: Promise<void>;
+    /**
+     * The selectedIndex property of the ImageTrackList interface returns the index of the selected track.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedIndex)
+     */
+    readonly selectedIndex: number;
+    /**
+     * The selectedTrack property of the ImageTrackList interface returns an ImageTrack object representing the currently selected track.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList/selectedTrack)
+     */
+    readonly selectedTrack: ImageTrack | null;
+    [index: number]: ImageTrack;
+}
+
+declare var ImageTrackList: {
+    prototype: ImageTrackList;
+    new(): ImageTrackList;
+};
+
 interface ImportMeta {
     url: string;
     resolve(specifier: string): string;
@@ -5066,6 +5892,38 @@ interface MediaCapabilities {
 declare var MediaCapabilities: {
     prototype: MediaCapabilities;
     new(): MediaCapabilities;
+};
+
+/**
+ * The MediaSourceHandle interface of the Media Source Extensions API is a proxy for a MediaSource that can be transferred from a dedicated worker back to the main thread and attached to a media element via its HTMLMediaElement.srcObject property. MediaSource objects are not transferable because they are event targets, hence the need for MediaSourceHandles.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle)
+ */
+interface MediaSourceHandle {
+}
+
+declare var MediaSourceHandle: {
+    prototype: MediaSourceHandle;
+    new(): MediaSourceHandle;
+};
+
+/**
+ * The MediaStreamTrackProcessor interface of the Insertable Streams for MediaStreamTrack API consumes a video MediaStreamTrack object's source and generates a stream of VideoFrame objects.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor)
+ */
+interface MediaStreamTrackProcessor {
+    /**
+     * The readable property of the MediaStreamTrackProcessor interface returns a ReadableStream of VideoFrames.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackProcessor/readable)
+     */
+    readonly readable: ReadableStream;
+}
+
+declare var MediaStreamTrackProcessor: {
+    prototype: MediaStreamTrackProcessor;
+    new(init: MediaStreamTrackProcessorInit): MediaStreamTrackProcessor;
 };
 
 /**
@@ -6375,6 +7233,247 @@ declare var PushSubscriptionOptions: {
     new(): PushSubscriptionOptions;
 };
 
+interface RTCDataChannelEventMap {
+    "bufferedamountlow": Event;
+    "close": Event;
+    "closing": Event;
+    "error": Event;
+    "message": MessageEvent;
+    "open": Event;
+}
+
+/**
+ * The RTCDataChannel interface represents a network channel which can be used for bidirectional peer-to-peer transfers of arbitrary data. Every data channel is associated with an RTCPeerConnection, and each peer connection can have up to a theoretical maximum of 65,534 data channels (the actual limit may vary from browser to browser).
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel)
+ */
+interface RTCDataChannel extends EventTarget {
+    /**
+     * The property binaryType on the RTCDataChannel interface is a string which specifies the type of object which should be used to represent binary data received on the RTCDataChannel. Values allowed by the WebSocket.binaryType property are also permitted here: blob if Blob objects are being used or arraybuffer if ArrayBuffer objects are being used. The default is arraybuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/binaryType)
+     */
+    binaryType: BinaryType;
+    /**
+     * The read-only RTCDataChannel property bufferedAmount returns the number of bytes of data currently queued to be sent over the data channel. The queue may build up as a result of calls to the send() method. This only includes data buffered by the user agent itself; it doesn't include any framing overhead or buffering done by the operating system or network hardware.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedAmount)
+     */
+    readonly bufferedAmount: number;
+    /**
+     * The RTCDataChannel property bufferedAmountLowThreshold is used to specify the number of bytes of buffered outgoing data that is considered "low." The default value is 0. When the number of buffered outgoing bytes, as indicated by the bufferedAmount property, falls to or below this value, a bufferedamountlow event is fired. This event may be used, for example, to implement code which queues more messages to be sent whenever there's room to buffer them. Listeners may be added with onbufferedamountlow or addEventListener().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedAmountLowThreshold)
+     */
+    bufferedAmountLowThreshold: number;
+    /**
+     * The read-only RTCDataChannel property id returns an ID number (between 0 and 65,534) which uniquely identifies the RTCDataChannel. This ID is set at the time the data channel is created, either by the user agent (if RTCDataChannel.negotiated is false) or by the site or app script (if negotiated is true).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/id)
+     */
+    readonly id: number | null;
+    /**
+     * The read-only RTCDataChannel property label returns a string containing a name describing the data channel. These labels are not required to be unique.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/label)
+     */
+    readonly label: string;
+    /**
+     * The read-only RTCDataChannel property maxPacketLifeTime returns the amount of time, in milliseconds, the browser is allowed to take to attempt to transmit a message, as set when the data channel was created, or null. This limits how long the browser can continue to attempt to transmit and retransmit the message before giving up.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/maxPacketLifeTime)
+     */
+    readonly maxPacketLifeTime: number | null;
+    /**
+     * The read-only RTCDataChannel property maxRetransmits returns the maximum number of times the browser should try to retransmit a message before giving up, as set when the data channel was created, or null, which indicates that there is no maximum. This can only be set when the RTCDataChannel is created by calling RTCPeerConnection.createDataChannel(), using the maxRetransmits field in the specified options.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/maxRetransmits)
+     */
+    readonly maxRetransmits: number | null;
+    /**
+     * The read-only RTCDataChannel property negotiated indicates whether the RTCDataChannel's connection was negotiated by the Web app (true) or by the WebRTC layer (false). The default is false.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/negotiated)
+     */
+    readonly negotiated: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedamountlow_event) */
+    onbufferedamountlow: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/close_event) */
+    onclose: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/closing_event) */
+    onclosing: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/error_event) */
+    onerror: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/message_event) */
+    onmessage: ((this: RTCDataChannel, ev: MessageEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/open_event) */
+    onopen: ((this: RTCDataChannel, ev: Event) => any) | null;
+    /**
+     * The read-only RTCDataChannel property ordered indicates whether or not the data channel guarantees in-order delivery of messages; the default is true, which indicates that the data channel is indeed ordered. This is set when the RTCDataChannel is created, by setting the ordered property on the object passed as RTCPeerConnection.createDataChannel()'s options parameter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/ordered)
+     */
+    readonly ordered: boolean;
+    /**
+     * The read-only RTCDataChannel property protocol returns a string containing the name of the subprotocol in use. If no protocol was specified when the data channel was created, then this property's value is the empty string ("").
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/protocol)
+     */
+    readonly protocol: string;
+    /**
+     * The read-only RTCDataChannel property readyState returns a string which indicates the state of the data channel's underlying data connection.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/readyState)
+     */
+    readonly readyState: RTCDataChannelState;
+    /**
+     * The RTCDataChannel.close() method closes the RTCDataChannel. Either peer is permitted to call this method to initiate closure of the channel.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/close)
+     */
+    close(): void;
+    /**
+     * The send() method of the RTCDataChannel interface sends data across the data channel to the remote peer. This can be done any time except during the initial process of creating the underlying transport channel. Data sent before connecting is buffered if possible (or an error occurs if it's not possible), and is also buffered if sent while the connection is closing or closed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/send)
+     */
+    send(data: string): void;
+    send(data: Blob): void;
+    send(data: ArrayBuffer): void;
+    send(data: ArrayBufferView<ArrayBuffer>): void;
+    addEventListener<K extends keyof RTCDataChannelEventMap>(type: K, listener: (this: RTCDataChannel, ev: RTCDataChannelEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof RTCDataChannelEventMap>(type: K, listener: (this: RTCDataChannel, ev: RTCDataChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var RTCDataChannel: {
+    prototype: RTCDataChannel;
+    new(): RTCDataChannel;
+};
+
+/**
+ * The RTCEncodedAudioFrame of the WebRTC API represents an encoded audio frame in the WebRTC receiver or sender pipeline, which may be modified using a WebRTC Encoded Transform.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame)
+ */
+interface RTCEncodedAudioFrame {
+    /**
+     * The data property of the RTCEncodedAudioFrame interface returns a buffer containing the data for an encoded frame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/data)
+     */
+    data: ArrayBuffer;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp) */
+    readonly timestamp: number;
+    /**
+     * The getMetadata() method of the RTCEncodedAudioFrame interface returns an object containing the metadata associated with the frame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/getMetadata)
+     */
+    getMetadata(): RTCEncodedAudioFrameMetadata;
+}
+
+declare var RTCEncodedAudioFrame: {
+    prototype: RTCEncodedAudioFrame;
+    new(): RTCEncodedAudioFrame;
+};
+
+/**
+ * The RTCEncodedVideoFrame of the WebRTC API represents an encoded video frame in the WebRTC receiver or sender pipeline, which may be modified using a WebRTC Encoded Transform.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame)
+ */
+interface RTCEncodedVideoFrame {
+    /**
+     * The data property of the RTCEncodedVideoFrame interface returns a buffer containing the frame data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/data)
+     */
+    data: ArrayBuffer;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp) */
+    readonly timestamp: number;
+    /**
+     * The type read-only property of the RTCEncodedVideoFrame interface indicates whether this frame is a key frame, delta frame, or empty frame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/type)
+     */
+    readonly type: RTCEncodedVideoFrameType;
+    /**
+     * The getMetadata() method of the RTCEncodedVideoFrame interface returns an object containing the metadata associated with the frame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/getMetadata)
+     */
+    getMetadata(): RTCEncodedVideoFrameMetadata;
+}
+
+declare var RTCEncodedVideoFrame: {
+    prototype: RTCEncodedVideoFrame;
+    new(): RTCEncodedVideoFrame;
+};
+
+/**
+ * The RTCRtpScriptTransformer interface of the WebRTC API provides a worker-side Stream API interface that a WebRTC Encoded Transform can use to modify encoded media frames in the incoming and outgoing WebRTC pipelines.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer)
+ */
+interface RTCRtpScriptTransformer extends EventTarget {
+    /**
+     * The options read-only property of the RTCRtpScriptTransformer interface returns the object that was (optionally) passed as the second argument during construction of the corresponding RTCRtpScriptTransform.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/options)
+     */
+    readonly options: any;
+    /**
+     * The readable read-only property of the RTCRtpScriptTransformer interface returns a ReadableStream instance is a source for encoded media frames.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/readable)
+     */
+    readonly readable: ReadableStream;
+    /**
+     * The writable read-only property of the RTCRtpScriptTransformer interface returns a WritableStream instance that can be used as a sink for encoded media frames enqueued on the corresponding RTCRtpScriptTransformer.readable.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/writable)
+     */
+    readonly writable: WritableStream;
+    /**
+     * The generateKeyFrame() method of the RTCRtpScriptTransformer interface causes a video encoder to generate a key frame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
+     */
+    generateKeyFrame(rid?: string): Promise<void>;
+    /**
+     * The sendKeyFrameRequest() method of the RTCRtpScriptTransformer interface may be called by a WebRTC Encoded Transform that is processing incoming encoded video frames, in order to request a key frame from the sender.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransformer/sendKeyFrameRequest)
+     */
+    sendKeyFrameRequest(): Promise<void>;
+}
+
+declare var RTCRtpScriptTransformer: {
+    prototype: RTCRtpScriptTransformer;
+    new(): RTCRtpScriptTransformer;
+};
+
+/**
+ * The RTCTransformEvent of the WebRTC API represent an event that is fired in a dedicated worker when an encoded frame has been queued for processing by a WebRTC Encoded Transform.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTransformEvent)
+ */
+interface RTCTransformEvent extends Event {
+    /**
+     * The read-only transformer property of the RTCTransformEvent interface returns the RTCRtpScriptTransformer associated with the event.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTransformEvent/transformer)
+     */
+    readonly transformer: RTCRtpScriptTransformer;
+}
+
+declare var RTCTransformEvent: {
+    prototype: RTCTransformEvent;
+    new(): RTCTransformEvent;
+};
+
 /**
  * The ReadableByteStreamController interface of the Streams API represents a controller for a readable byte stream. It allows control of the state and internal queue of a ReadableStream with an underlying byte source, and enables efficient zero-copy transfer of data from the underlying source to a consumer when the stream's internal queue is empty.
  *
@@ -7199,6 +8298,41 @@ declare var ServiceWorkerRegistration: {
     new(): ServiceWorkerRegistration;
 };
 
+interface SharedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap {
+    "connect": MessageEvent;
+}
+
+/**
+ * The SharedWorkerGlobalScope object (the SharedWorker global scope) is accessible through the self keyword. Some additional global functions, namespaces objects, and constructors, not typically associated with the worker global scope, but available on it, are listed in the JavaScript Reference. See the complete list of functions available to workers.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope)
+ */
+interface SharedWorkerGlobalScope extends WorkerGlobalScope {
+    /**
+     * The name read-only property of the SharedWorkerGlobalScope interface returns the name that the SharedWorker was (optionally) given when it was created. This is the name that the SharedWorker() constructor can pass to get a reference to the SharedWorkerGlobalScope.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/name)
+     */
+    readonly name: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/connect_event) */
+    onconnect: ((this: SharedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+    /**
+     * The close() method of the SharedWorkerGlobalScope interface discards any tasks queued in the SharedWorkerGlobalScope's event loop, effectively closing this particular scope.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorkerGlobalScope/close)
+     */
+    close(): void;
+    addEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof SharedWorkerGlobalScopeEventMap>(type: K, listener: (this: SharedWorkerGlobalScope, ev: SharedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var SharedWorkerGlobalScope: {
+    prototype: SharedWorkerGlobalScope;
+    new(): SharedWorkerGlobalScope;
+};
+
 /**
  * The StorageManager interface of the Storage API provides an interface for managing persistence permissions and estimating available storage. You can get a reference to this interface using either navigator.storage or WorkerNavigator.storage.
  * Available only in secure contexts.
@@ -7782,11 +8916,23 @@ declare var URL: {
      */
     canParse(url: string | URL, base?: string | URL): boolean;
     /**
+     * The createObjectURL() static method of the URL interface creates a string containing a blob URL pointing to the object given in the parameter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/createObjectURL_static)
+     */
+    createObjectURL(obj: Blob): string;
+    /**
      * The URL.parse() static method of the URL interface returns a newly created URL object representing the URL defined by the parameters.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
     parse(url: string | URL, base?: string | URL): URL | null;
+    /**
+     * The revokeObjectURL() static method of the URL interface releases an existing object URL which was previously created by calling URL.createObjectURL().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/revokeObjectURL_static)
+     */
+    revokeObjectURL(url: string): void;
 };
 
 /**
@@ -7930,6 +9076,291 @@ interface URLSearchParams {
 declare var URLSearchParams: {
     prototype: URLSearchParams;
     new(init?: string[][] | Record<string, string> | string | URLSearchParams): URLSearchParams;
+};
+
+/**
+ * The VideoColorSpace interface of the WebCodecs API represents the color space of a video.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace)
+ */
+interface VideoColorSpace {
+    /**
+     * The fullRange read-only property of the VideoColorSpace interface returns true if full-range color values are used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/fullRange)
+     */
+    readonly fullRange: boolean | null;
+    /**
+     * The matrix read-only property of the VideoColorSpace interface returns the matrix coefficient of the video. Matrix coefficients describe the relationship between sample component values and color coordinates.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/matrix)
+     */
+    readonly matrix: VideoMatrixCoefficients | null;
+    /**
+     * The primaries read-only property of the VideoColorSpace interface returns the color gamut of the video.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/primaries)
+     */
+    readonly primaries: VideoColorPrimaries | null;
+    /**
+     * The transfer read-only property of the VideoColorSpace interface returns the opto-electronic transfer characteristics of the video.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/transfer)
+     */
+    readonly transfer: VideoTransferCharacteristics | null;
+    /**
+     * The toJSON() method of the VideoColorSpace interface is a serializer that returns a JSON representation of the VideoColorSpace object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/toJSON)
+     */
+    toJSON(): VideoColorSpaceInit;
+}
+
+declare var VideoColorSpace: {
+    prototype: VideoColorSpace;
+    new(init?: VideoColorSpaceInit): VideoColorSpace;
+};
+
+interface VideoDecoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * The VideoDecoder interface of the WebCodecs API decodes chunks of video.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder)
+ */
+interface VideoDecoder extends EventTarget {
+    /**
+     * The decodeQueueSize read-only property of the VideoDecoder interface returns the number of pending decode requests in the queue.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/decodeQueueSize)
+     */
+    readonly decodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/dequeue_event) */
+    ondequeue: ((this: VideoDecoder, ev: Event) => any) | null;
+    /**
+     * The state property of the VideoDecoder interface returns the current state of the underlying codec.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/state)
+     */
+    readonly state: CodecState;
+    /**
+     * The close() method of the VideoDecoder interface ends all pending work and releases system resources.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/close)
+     */
+    close(): void;
+    /**
+     * The configure() method of the VideoDecoder interface enqueues a control message to configure the video decoder for decoding chunks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/configure)
+     */
+    configure(config: VideoDecoderConfig): void;
+    /**
+     * The decode() method of the VideoDecoder interface enqueues a control message to decode a given chunk of video.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/decode)
+     */
+    decode(chunk: EncodedVideoChunk): void;
+    /**
+     * The flush() method of the VideoDecoder interface returns a Promise that resolves once all pending messages in the queue have been completed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/flush)
+     */
+    flush(): Promise<void>;
+    /**
+     * The reset() method of the VideoDecoder interface resets all states including configuration, control messages in the control message queue, and all pending callbacks.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/reset)
+     */
+    reset(): void;
+    addEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoDecoder: {
+    prototype: VideoDecoder;
+    new(init: VideoDecoderInit): VideoDecoder;
+    /**
+     * The isConfigSupported() static method of the VideoDecoder interface checks if the given config is supported (that is, if VideoDecoder objects can be successfully configured with the given config).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoDecoder/isConfigSupported_static)
+     */
+    isConfigSupported(config: VideoDecoderConfig): Promise<VideoDecoderSupport>;
+};
+
+interface VideoEncoderEventMap {
+    "dequeue": Event;
+}
+
+/**
+ * The VideoEncoder interface of the WebCodecs API encodes VideoFrame objects into EncodedVideoChunks.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder)
+ */
+interface VideoEncoder extends EventTarget {
+    /**
+     * The encodeQueueSize read-only property of the VideoEncoder interface returns the number of pending encode requests in the queue.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/encodeQueueSize)
+     */
+    readonly encodeQueueSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/dequeue_event) */
+    ondequeue: ((this: VideoEncoder, ev: Event) => any) | null;
+    /**
+     * The state read-only property of the VideoEncoder interface returns the current state of the underlying codec.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/state)
+     */
+    readonly state: CodecState;
+    /**
+     * The close() method of the VideoEncoder interface ends all pending work and releases system resources.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/close)
+     */
+    close(): void;
+    /**
+     * The configure() method of the VideoEncoder interface changes the state of the encoder to "configured" and asynchronously prepares the encoder to accept VideoEncoders for encoding with the specified parameters. If the encoder doesn't support the specified parameters or can't be initialized for other reasons an error will be reported via the error callback provided to the VideoEncoder constructor.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/configure)
+     */
+    configure(config: VideoEncoderConfig): void;
+    /**
+     * The encode() method of the VideoEncoder interface asynchronously encodes a VideoFrame. Encoded data (EncodedVideoChunk) or an error will eventually be returned via the callbacks provided to the VideoEncoder constructor.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/encode)
+     */
+    encode(frame: VideoFrame, options?: VideoEncoderEncodeOptions): void;
+    /**
+     * The flush() method of the VideoEncoder interface forces all pending encodes to complete.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/flush)
+     */
+    flush(): Promise<void>;
+    /**
+     * The reset() method of the VideoEncoder interface synchronously cancels all pending encodes and callbacks, frees all underlying resources and sets the state to "unconfigured". After calling reset(), configure() must be called before resuming encode() calls.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/reset)
+     */
+    reset(): void;
+    addEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var VideoEncoder: {
+    prototype: VideoEncoder;
+    new(init: VideoEncoderInit): VideoEncoder;
+    /**
+     * The isConfigSupported() static method of the VideoEncoder interface checks if VideoEncoder can be successfully configured with the given config.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoEncoder/isConfigSupported_static)
+     */
+    isConfigSupported(config: VideoEncoderConfig): Promise<VideoEncoderSupport>;
+};
+
+/**
+ * The VideoFrame interface of the Web Codecs API represents a frame of a video.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame)
+ */
+interface VideoFrame {
+    /**
+     * The codedHeight property of the VideoFrame interface returns the height of the VideoFrame in pixels, potentially including non-visible padding, and prior to considering potential ratio adjustments.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedHeight)
+     */
+    readonly codedHeight: number;
+    /**
+     * The codedRect property of the VideoFrame interface returns a DOMRectReadOnly with the width and height matching VideoFrame.codedWidth and VideoFrame.codedHeight.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedRect)
+     */
+    readonly codedRect: DOMRectReadOnly | null;
+    /**
+     * The codedWidth property of the VideoFrame interface returns the width of the VideoFrame in pixels, potentially including non-visible padding, and prior to considering potential ratio adjustments.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/codedWidth)
+     */
+    readonly codedWidth: number;
+    /**
+     * The colorSpace property of the VideoFrame interface returns a VideoColorSpace object representing the color space of the video.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/colorSpace)
+     */
+    readonly colorSpace: VideoColorSpace;
+    /**
+     * The displayHeight property of the VideoFrame interface returns the height of the VideoFrame after applying aspect ratio adjustments.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/displayHeight)
+     */
+    readonly displayHeight: number;
+    /**
+     * The displayWidth property of the VideoFrame interface returns the width of the VideoFrame after applying aspect ratio adjustments.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/displayWidth)
+     */
+    readonly displayWidth: number;
+    /**
+     * The duration property of the VideoFrame interface returns an integer indicating the duration of the video in microseconds.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/duration)
+     */
+    readonly duration: number | null;
+    /**
+     * The format property of the VideoFrame interface returns the pixel format of the VideoFrame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/format)
+     */
+    readonly format: VideoPixelFormat | null;
+    /**
+     * The timestamp property of the VideoFrame interface returns an integer indicating the timestamp of the video in microseconds.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/timestamp)
+     */
+    readonly timestamp: number;
+    /**
+     * The visibleRect property of the VideoFrame interface returns a DOMRectReadOnly describing the visible rectangle of pixels for this VideoFrame.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/visibleRect)
+     */
+    readonly visibleRect: DOMRectReadOnly | null;
+    /**
+     * The allocationSize() method of the VideoFrame interface returns the number of bytes required to hold the video as filtered by options passed into the method.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/allocationSize)
+     */
+    allocationSize(options?: VideoFrameCopyToOptions): number;
+    /**
+     * The clone() method of the VideoFrame interface creates a new VideoFrame object referencing the same media resource as the original.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/clone)
+     */
+    clone(): VideoFrame;
+    /**
+     * The close() method of the VideoFrame interface clears all states and releases the reference to the media resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/close)
+     */
+    close(): void;
+    /**
+     * The copyTo() method of the VideoFrame interface copies the contents of the VideoFrame to an ArrayBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/copyTo)
+     */
+    copyTo(destination: AllowSharedBufferSource, options?: VideoFrameCopyToOptions): Promise<PlaneLayout[]>;
+}
+
+declare var VideoFrame: {
+    prototype: VideoFrame;
+    new(image: CanvasImageSource, init?: VideoFrameInit): VideoFrame;
+    new(data: AllowSharedBufferSource, init: VideoFrameBufferInit): VideoFrame;
 };
 
 /**
@@ -10763,6 +12194,39 @@ interface WindowOrWorkerGlobalScope {
     structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
 }
 
+interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEventMap {
+}
+
+/**
+ * The Worker interface of the Web Workers API represents a background task that can be created via script, which can send messages back to its creator.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
+ */
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
+    /**
+     * The postMessage() method of the Worker interface sends a message to the worker. The first parameter is the data to send to the worker. The data may be any JavaScript object that can be handled by the structured clone algorithm.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/postMessage)
+     */
+    postMessage(message: any, transfer: Transferable[]): void;
+    postMessage(message: any, options?: StructuredSerializeOptions): void;
+    /**
+     * The terminate() method of the Worker interface immediately terminates the Worker. This does not offer the worker an opportunity to finish its operations; it is stopped at once.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker/terminate)
+     */
+    terminate(): void;
+    addEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var Worker: {
+    prototype: Worker;
+    new(scriptURL: string | URL, options?: WorkerOptions): Worker;
+};
+
 interface WorkerGlobalScopeEventMap {
     "error": ErrorEvent;
     "languagechange": Event;
@@ -11040,6 +12504,193 @@ interface WritableStreamDefaultWriter<W = any> {
 declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
+};
+
+interface XMLHttpRequestEventMap extends XMLHttpRequestEventTargetEventMap {
+    "readystatechange": Event;
+}
+
+/**
+ * XMLHttpRequest (XHR) objects are used to interact with servers. You can retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just part of a page without disrupting what the user is doing.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)
+ */
+interface XMLHttpRequest extends XMLHttpRequestEventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readystatechange_event) */
+    onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
+    /**
+     * The XMLHttpRequest.readyState property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readyState)
+     */
+    readonly readyState: number;
+    /**
+     * The XMLHttpRequest response property returns the response's body content as an ArrayBuffer, a Blob, a Document, a JavaScript Object, or a string, depending on the value of the request's responseType property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/response)
+     */
+    readonly response: any;
+    /**
+     * The read-only XMLHttpRequest property responseText returns the text received from a server following a request being sent.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseText)
+     */
+    readonly responseText: string;
+    /**
+     * The XMLHttpRequest property responseType is an enumerated string value specifying the type of data contained in the response.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseType)
+     */
+    responseType: XMLHttpRequestResponseType;
+    /**
+     * The read-only XMLHttpRequest.responseURL property returns the serialized URL of the response or the empty string if the URL is null. If the URL is returned, any URL fragment present in the URL will be stripped away. The value of responseURL will be the final URL obtained after any redirects.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseURL)
+     */
+    readonly responseURL: string;
+    /**
+     * The read-only XMLHttpRequest.status property returns the numerical HTTP status code of the XMLHttpRequest's response.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/status)
+     */
+    readonly status: number;
+    /**
+     * The read-only XMLHttpRequest.statusText property returns a string containing the response's status message as returned by the HTTP server. Unlike XMLHttpRequest.status which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found". If the request's readyState is in UNSENT or OPENED state, the value of statusText will be an empty string.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/statusText)
+     */
+    readonly statusText: string;
+    /**
+     * The XMLHttpRequest.timeout property is an unsigned long representing the number of milliseconds a request can take before automatically being terminated. The default value is 0, which means there is no timeout. Timeout shouldn't be used for synchronous XMLHttpRequests requests used in a document environment or it will throw an InvalidAccessError exception. When a timeout happens, a timeout event is fired.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/timeout)
+     */
+    timeout: number;
+    /**
+     * The XMLHttpRequest upload property returns an XMLHttpRequestUpload object that can be observed to monitor an upload's progress.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/upload)
+     */
+    readonly upload: XMLHttpRequestUpload;
+    /**
+     * The XMLHttpRequest.withCredentials property is a boolean value that indicates whether or not cross-site Access-Control requests should be made using credentials such as cookies, authentication headers or TLS client certificates. Setting withCredentials has no effect on same-origin requests.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/withCredentials)
+     */
+    withCredentials: boolean;
+    /**
+     * The XMLHttpRequest.abort() method aborts the request if it has already been sent. When a request is aborted, its readyState is changed to XMLHttpRequest.UNSENT (0) and the request's status code is set to 0.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/abort)
+     */
+    abort(): void;
+    /**
+     * The XMLHttpRequest method getAllResponseHeaders() returns all the response headers, separated by CRLF, as a string, or returns null if no response has been received.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getAllResponseHeaders)
+     */
+    getAllResponseHeaders(): string;
+    /**
+     * The XMLHttpRequest method getResponseHeader() returns the string containing the text of a particular header's value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getResponseHeader)
+     */
+    getResponseHeader(name: string): string | null;
+    /**
+     * The XMLHttpRequest method open() initializes a newly-created request, or re-initializes an existing one.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/open)
+     */
+    open(method: string, url: string | URL): void;
+    open(method: string, url: string | URL, async: boolean, username?: string | null, password?: string | null): void;
+    /**
+     * The XMLHttpRequest method overrideMimeType() specifies a MIME type other than the one provided by the server to be used instead when interpreting the data being transferred in a request.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/overrideMimeType)
+     */
+    overrideMimeType(mime: string): void;
+    /**
+     * The XMLHttpRequest method send() sends the request to the server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/send)
+     */
+    send(body?: XMLHttpRequestBodyInit | null): void;
+    /**
+     * The XMLHttpRequest method setRequestHeader() sets the value of an HTTP request header. When using setRequestHeader(), you must call it after calling open(), but before calling send(). If this method is called several times with the same header, the values are merged into one single request header.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/setRequestHeader)
+     */
+    setRequestHeader(name: string, value: string): void;
+    readonly UNSENT: 0;
+    readonly OPENED: 1;
+    readonly HEADERS_RECEIVED: 2;
+    readonly LOADING: 3;
+    readonly DONE: 4;
+    addEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequest: {
+    prototype: XMLHttpRequest;
+    new(): XMLHttpRequest;
+    readonly UNSENT: 0;
+    readonly OPENED: 1;
+    readonly HEADERS_RECEIVED: 2;
+    readonly LOADING: 3;
+    readonly DONE: 4;
+};
+
+interface XMLHttpRequestEventTargetEventMap {
+    "abort": ProgressEvent<XMLHttpRequestEventTarget>;
+    "error": ProgressEvent<XMLHttpRequestEventTarget>;
+    "load": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadend": ProgressEvent<XMLHttpRequestEventTarget>;
+    "loadstart": ProgressEvent<XMLHttpRequestEventTarget>;
+    "progress": ProgressEvent<XMLHttpRequestEventTarget>;
+    "timeout": ProgressEvent<XMLHttpRequestEventTarget>;
+}
+
+/**
+ * XMLHttpRequestEventTarget is the interface that describes the event handlers shared on XMLHttpRequest and XMLHttpRequestUpload.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestEventTarget)
+ */
+interface XMLHttpRequestEventTarget extends EventTarget {
+    onabort: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onerror: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onload: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onloadend: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onloadstart: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    onprogress: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    ontimeout: ((this: XMLHttpRequest, ev: ProgressEvent) => any) | null;
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestEventTarget, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequestEventTarget: {
+    prototype: XMLHttpRequestEventTarget;
+    new(): XMLHttpRequestEventTarget;
+};
+
+/**
+ * The XMLHttpRequestUpload interface represents the upload process for a specific XMLHttpRequest. It is an opaque object that represents the underlying, browser-dependent, upload process. It is an XMLHttpRequestEventTarget and can be obtained by calling XMLHttpRequest.upload.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequestUpload)
+ */
+interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
+    addEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var XMLHttpRequestUpload: {
+    prototype: XMLHttpRequestUpload;
+    new(): XMLHttpRequestUpload;
 };
 
 declare namespace WebAssembly {
@@ -11387,6 +13038,22 @@ interface Console {
 
 declare var console: Console;
 
+interface AudioDataOutputCallback {
+    (output: AudioData): void;
+}
+
+interface EncodedAudioChunkOutputCallback {
+    (output: EncodedAudioChunk, metadata?: EncodedAudioChunkMetadata): void;
+}
+
+interface EncodedVideoChunkOutputCallback {
+    (chunk: EncodedVideoChunk, metadata?: EncodedVideoChunkMetadata): void;
+}
+
+interface FrameRequestCallback {
+    (time: DOMHighResTimeStamp): void;
+}
+
 interface LockGrantedCallback<T> {
     (lock: Lock | null): T;
 }
@@ -11451,60 +13118,39 @@ interface UnderlyingSourceStartCallback<R> {
     (controller: ReadableStreamController<R>): any;
 }
 
+interface VideoFrameOutputCallback {
+    (output: VideoFrame): void;
+}
+
 interface VoidFunction {
     (): void;
 }
 
+interface WebCodecsErrorCallback {
+    (error: DOMException): void;
+}
+
 /**
- * The clients read-only property of the ServiceWorkerGlobalScope interface returns the Clients object associated with the service worker.
+ * The name read-only property of the DedicatedWorkerGlobalScope interface returns the name that the Worker was (optionally) given when it was created. This is the name that the Worker() constructor can pass to get a reference to the DedicatedWorkerGlobalScope.
  *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/clients)
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/name)
  */
-declare var clients: Clients;
+declare var name: string;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event) */
+declare var onrtctransform: ((this: DedicatedWorkerGlobalScope, ev: RTCTransformEvent) => any) | null;
 /**
- * The cookieStore read-only property of the ServiceWorkerGlobalScope interface returns a reference to the CookieStore object associated with this service worker.
+ * The close() method of the DedicatedWorkerGlobalScope interface discards any tasks queued in the DedicatedWorkerGlobalScope's event loop, effectively closing this particular scope.
  *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookieStore)
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/close)
  */
-declare var cookieStore: CookieStore;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/activate_event) */
-declare var onactivate: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/cookiechange_event) */
-declare var oncookiechange: ((this: ServiceWorkerGlobalScope, ev: ExtendableCookieChangeEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/fetch_event) */
-declare var onfetch: ((this: ServiceWorkerGlobalScope, ev: FetchEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/install_event) */
-declare var oninstall: ((this: ServiceWorkerGlobalScope, ev: ExtendableEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/message_event) */
-declare var onmessage: ((this: ServiceWorkerGlobalScope, ev: ExtendableMessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/messageerror_event) */
-declare var onmessageerror: ((this: ServiceWorkerGlobalScope, ev: MessageEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclick_event) */
-declare var onnotificationclick: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/notificationclose_event) */
-declare var onnotificationclose: ((this: ServiceWorkerGlobalScope, ev: NotificationEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/push_event) */
-declare var onpush: ((this: ServiceWorkerGlobalScope, ev: PushEvent) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/pushsubscriptionchange_event) */
-declare var onpushsubscriptionchange: ((this: ServiceWorkerGlobalScope, ev: PushSubscriptionChangeEvent) => any) | null;
+declare function close(): void;
 /**
- * The registration read-only property of the ServiceWorkerGlobalScope interface returns a reference to the ServiceWorkerRegistration object, which represents the service worker's registration.
+ * The postMessage() method of the DedicatedWorkerGlobalScope interface sends a message to the main thread that spawned it.
  *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/registration)
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/postMessage)
  */
-declare var registration: ServiceWorkerRegistration;
-/**
- * The serviceWorker read-only property of the ServiceWorkerGlobalScope interface returns a reference to the ServiceWorker object, which represents the service worker.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/serviceWorker)
- */
-declare var serviceWorker: ServiceWorker;
-/**
- * The skipWaiting() method of the ServiceWorkerGlobalScope interface forces the waiting service worker to become the active service worker.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting)
- */
-declare function skipWaiting(): Promise<void>;
+declare function postMessage(message: any, transfer: Transferable[]): void;
+declare function postMessage(message: any, options?: StructuredSerializeOptions): void;
 /**
  * The dispatchEvent() method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order. The normal event processing rules (including the capturing and optional bubbling phase) also apply to events dispatched manually with dispatchEvent().
  *
@@ -11524,17 +13170,17 @@ declare var location: WorkerLocation;
  */
 declare var navigator: WorkerNavigator;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/error_event) */
-declare var onerror: ((this: ServiceWorkerGlobalScope, ev: ErrorEvent) => any) | null;
+declare var onerror: ((this: DedicatedWorkerGlobalScope, ev: ErrorEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/languagechange_event) */
-declare var onlanguagechange: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onlanguagechange: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/offline_event) */
-declare var onoffline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var onoffline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/online_event) */
-declare var ononline: ((this: ServiceWorkerGlobalScope, ev: Event) => any) | null;
+declare var ononline: ((this: DedicatedWorkerGlobalScope, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/rejectionhandled_event) */
-declare var onrejectionhandled: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onrejectionhandled: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/unhandledrejection_event) */
-declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
+declare var onunhandledrejection: ((this: DedicatedWorkerGlobalScope, ev: PromiseRejectionEvent) => any) | null;
 /**
  * The self read-only property of the WorkerGlobalScope interface returns a reference to the WorkerGlobalScope itself. Most of the time it is a specific scope like DedicatedWorkerGlobalScope, SharedWorkerGlobalScope, or ServiceWorkerGlobalScope.
  *
@@ -11598,9 +13244,17 @@ declare function setInterval(handler: TimerHandler, timeout?: number, ...argumen
 declare function setTimeout(handler: TimerHandler, timeout?: number, ...arguments: any[]): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/structuredClone) */
 declare function structuredClone<T = any>(value: T, options?: StructuredSerializeOptions): T;
-declare function addEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+declare function cancelAnimationFrame(handle: number): void;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+declare function requestAnimationFrame(callback: FrameRequestCallback): number;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
+declare var onmessage: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
+declare var onmessageerror: ((this: DedicatedWorkerGlobalScope, ev: MessageEvent) => any) | null;
+declare function addEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 declare function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-declare function removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+declare function removeEventListener<K extends keyof DedicatedWorkerGlobalScopeEventMap>(type: K, listener: (this: DedicatedWorkerGlobalScope, ev: DedicatedWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 declare function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 type AlgorithmIdentifier = Algorithm | string;
 type AllowSharedBufferSource = ArrayBufferLike | ArrayBufferView<ArrayBufferLike>;
@@ -11612,7 +13266,7 @@ type CSSKeywordish = string | CSSKeywordValue;
 type CSSNumberish = number | CSSNumericValue;
 type CSSPerspectiveValue = CSSNumericValue | CSSKeywordish;
 type CSSUnparsedSegment = string | CSSVariableReferenceValue;
-type CanvasImageSource = ImageBitmap | OffscreenCanvas;
+type CanvasImageSource = ImageBitmap | OffscreenCanvas | VideoFrame;
 type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
 type EpochTimeStamp = number;
@@ -11636,6 +13290,7 @@ type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
 type ImageBitmapSource = CanvasImageSource | Blob | ImageData;
+type ImageBufferSource = AllowSharedBufferSource | ReadableStream;
 type ImageDataArray = Uint8ClampedArray<ArrayBuffer>;
 type Int32List = Int32Array<ArrayBufferLike> | GLint[];
 type MessageEventSource = MessagePort | ServiceWorker;
@@ -11649,13 +13304,17 @@ type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableSt
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type ReportList = Report[];
 type RequestInfo = Request | string;
-type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas;
+type TexImageSource = ImageBitmap | ImageData | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
-type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
+type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AlphaOption = "discard" | "keep";
+type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
+type AvcBitstreamFormat = "annexb" | "avc";
 type BinaryType = "arraybuffer" | "blob";
+type BitrateMode = "constant" | "variable";
 type CSSMathOperator = "clamp" | "invert" | "max" | "min" | "negate" | "product" | "sum";
 type CSSNumericBaseType = "angle" | "flex" | "frequency" | "length" | "percent" | "resolution" | "time";
 type CanvasDirection = "inherit" | "ltr" | "rtl";
@@ -11669,11 +13328,14 @@ type CanvasTextAlign = "center" | "end" | "left" | "right" | "start";
 type CanvasTextBaseline = "alphabetic" | "bottom" | "hanging" | "ideographic" | "middle" | "top";
 type CanvasTextRendering = "auto" | "geometricPrecision" | "optimizeLegibility" | "optimizeSpeed";
 type ClientTypes = "all" | "sharedworker" | "window" | "worker";
+type CodecState = "closed" | "configured" | "unconfigured";
 type ColorGamut = "p3" | "rec2020" | "srgb";
 type ColorSpaceConversion = "default" | "none";
 type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
 type CookieSameSite = "lax" | "none" | "strict";
 type DocumentVisibilityState = "hidden" | "visible";
+type EncodedAudioChunkType = "delta" | "key";
+type EncodedVideoChunkType = "delta" | "key";
 type EndingType = "native" | "transparent";
 type FileSystemHandleKind = "directory" | "file";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
@@ -11682,6 +13344,7 @@ type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type GPUPipelineErrorReason = "internal" | "validation";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
+type HardwareAcceleration = "no-preference" | "prefer-hardware" | "prefer-software";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
@@ -11692,6 +13355,7 @@ type ImageSmoothingQuality = "high" | "low" | "medium";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";
 type KeyType = "private" | "public" | "secret";
 type KeyUsage = "decrypt" | "deriveBits" | "deriveKey" | "encrypt" | "sign" | "unwrapKey" | "verify" | "wrapKey";
+type LatencyMode = "quality" | "realtime";
 type LockMode = "exclusive" | "shared";
 type MediaDecodingType = "file" | "media-source" | "webrtc";
 type MediaEncodingType = "record" | "webrtc";
@@ -11699,11 +13363,14 @@ type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
+type OpusBitstreamFormat = "ogg" | "opus";
 type PermissionName = "camera" | "geolocation" | "microphone" | "midi" | "notifications" | "persistent-storage" | "push" | "screen-wake-lock" | "storage-access";
 type PermissionState = "denied" | "granted" | "prompt";
 type PredefinedColorSpace = "display-p3" | "srgb";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
+type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
+type RTCEncodedVideoFrameType = "delta" | "empty" | "key";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
@@ -11720,353 +13387,14 @@ type ServiceWorkerState = "activated" | "activating" | "installed" | "installing
 type ServiceWorkerUpdateViaCache = "all" | "imports" | "none";
 type TaskPriority = "background" | "user-blocking" | "user-visible";
 type TransferFunction = "hlg" | "pq" | "srgb";
+type VideoColorPrimaries = "bt470bg" | "bt709" | "smpte170m";
+type VideoEncoderBitrateMode = "constant" | "quantizer" | "variable";
+type VideoMatrixCoefficients = "bt470bg" | "bt709" | "rgb" | "smpte170m";
+type VideoPixelFormat = "BGRA" | "BGRX" | "I420" | "I420A" | "I422" | "I444" | "NV12" | "RGBA" | "RGBX";
+type VideoTransferCharacteristics = "bt709" | "iec61966-2-1" | "smpte170m";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
 type WebTransportErrorSource = "session" | "stream";
 type WorkerType = "classic" | "module";
 type WriteCommandType = "seek" | "truncate" | "write";
-
-
-/////////////////////////////
-/// ServiceWorker Iterable APIs
-/////////////////////////////
-
-interface CSSNumericArray {
-    [Symbol.iterator](): ArrayIterator<CSSNumericValue>;
-    entries(): ArrayIterator<[number, CSSNumericValue]>;
-    keys(): ArrayIterator<number>;
-    values(): ArrayIterator<CSSNumericValue>;
-}
-
-interface CSSTransformValue {
-    [Symbol.iterator](): ArrayIterator<CSSTransformComponent>;
-    entries(): ArrayIterator<[number, CSSTransformComponent]>;
-    keys(): ArrayIterator<number>;
-    values(): ArrayIterator<CSSTransformComponent>;
-}
-
-interface CSSUnparsedValue {
-    [Symbol.iterator](): ArrayIterator<CSSUnparsedSegment>;
-    entries(): ArrayIterator<[number, CSSUnparsedSegment]>;
-    keys(): ArrayIterator<number>;
-    values(): ArrayIterator<CSSUnparsedSegment>;
-}
-
-interface Cache {
-    /**
-     * The addAll() method of the Cache interface takes an array of URLs, retrieves them, and adds the resulting response objects to the given cache. The request objects created during retrieval become keys to the stored response operations.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache/addAll)
-     */
-    addAll(requests: RequestInfo[]): Promise<void>;
-}
-
-interface CanvasPath {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/roundRect) */
-    roundRect(x: number, y: number, w: number, h: number, radii?: number | DOMPointInit | (number | DOMPointInit)[]): void;
-}
-
-interface CanvasPathDrawingStyles {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/setLineDash) */
-    setLineDash(segments: number[]): void;
-}
-
-interface CookieStoreManager {
-    /**
-     * The subscribe() method of the CookieStoreManager interface subscribes a ServiceWorkerRegistration to cookie change events.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/subscribe)
-     */
-    subscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
-    /**
-     * The unsubscribe() method of the CookieStoreManager interface stops the ServiceWorkerRegistration from receiving previously subscribed events.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe)
-     */
-    unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
-}
-
-interface DOMStringList {
-    [Symbol.iterator](): ArrayIterator<string>;
-}
-
-interface FileList {
-    [Symbol.iterator](): ArrayIterator<File>;
-}
-
-interface FontFaceSet extends Set<FontFace> {
-}
-
-interface FormDataIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.iterator](): FormDataIterator<T>;
-}
-
-interface FormData {
-    [Symbol.iterator](): FormDataIterator<[string, FormDataEntryValue]>;
-    /** Returns an array of key, value pairs for every entry in the list. */
-    entries(): FormDataIterator<[string, FormDataEntryValue]>;
-    /** Returns a list of keys in the list. */
-    keys(): FormDataIterator<string>;
-    /** Returns a list of values in the list. */
-    values(): FormDataIterator<FormDataEntryValue>;
-}
-
-interface HeadersIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.iterator](): HeadersIterator<T>;
-}
-
-interface Headers {
-    [Symbol.iterator](): HeadersIterator<[string, string]>;
-    /** Returns an iterator allowing to go through all key/value pairs contained in this object. */
-    entries(): HeadersIterator<[string, string]>;
-    /** Returns an iterator allowing to go through all keys of the key/value pairs contained in this object. */
-    keys(): HeadersIterator<string>;
-    /** Returns an iterator allowing to go through all values of the key/value pairs contained in this object. */
-    values(): HeadersIterator<string>;
-}
-
-interface IDBDatabase {
-    /**
-     * The transaction method of the IDBDatabase interface immediately returns a transaction object (IDBTransaction) containing the IDBTransaction.objectStore method, which you can use to access your object store.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/transaction)
-     */
-    transaction(storeNames: string | string[], mode?: IDBTransactionMode, options?: IDBTransactionOptions): IDBTransaction;
-}
-
-interface IDBObjectStore {
-    /**
-     * The createIndex() method of the IDBObjectStore interface creates and returns a new IDBIndex object in the connected database. It creates a new field/column defining a new data point for each database record to contain.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/createIndex)
-     */
-    createIndex(name: string, keyPath: string | string[], options?: IDBIndexParameters): IDBIndex;
-}
-
-interface MessageEvent<T = any> {
-    /** @deprecated */
-    initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
-}
-
-interface StylePropertyMapReadOnlyIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.iterator](): StylePropertyMapReadOnlyIterator<T>;
-}
-
-interface StylePropertyMapReadOnly {
-    [Symbol.iterator](): StylePropertyMapReadOnlyIterator<[string, CSSStyleValue[]]>;
-    entries(): StylePropertyMapReadOnlyIterator<[string, CSSStyleValue[]]>;
-    keys(): StylePropertyMapReadOnlyIterator<string>;
-    values(): StylePropertyMapReadOnlyIterator<CSSStyleValue[]>;
-}
-
-interface SubtleCrypto {
-    /**
-     * The deriveKey() method of the SubtleCrypto interface can be used to derive a secret key from a master key.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/deriveKey)
-     */
-    deriveKey(algorithm: AlgorithmIdentifier | EcdhKeyDeriveParams | HkdfParams | Pbkdf2Params, baseKey: CryptoKey, derivedKeyType: AlgorithmIdentifier | AesDerivedKeyParams | HmacImportParams | HkdfParams | Pbkdf2Params, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
-    /**
-     * The generateKey() method of the SubtleCrypto interface is used to generate a new key (for symmetric algorithms) or key pair (for public-key algorithms).
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/generateKey)
-     */
-    generateKey(algorithm: "Ed25519" | { name: "Ed25519" }, extractable: boolean, keyUsages: ReadonlyArray<"sign" | "verify">): Promise<CryptoKeyPair>;
-    generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>;
-    generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
-    generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair | CryptoKey>;
-    /**
-     * The importKey() method of the SubtleCrypto interface imports a key: that is, it takes as input a key in an external, portable format and gives you a CryptoKey object that you can use in the Web Crypto API.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/importKey)
-     */
-    importKey(format: "jwk", keyData: JsonWebKey, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
-    importKey(format: Exclude<KeyFormat, "jwk">, keyData: BufferSource, algorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
-    /**
-     * The unwrapKey() method of the SubtleCrypto interface "unwraps" a key. This means that it takes as its input a key that has been exported and then encrypted (also called "wrapped"). It decrypts the key and then imports it, returning a CryptoKey object that can be used in the Web Crypto API.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/unwrapKey)
-     */
-    unwrapKey(format: KeyFormat, wrappedKey: BufferSource, unwrappingKey: CryptoKey, unwrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams, unwrappedKeyAlgorithm: AlgorithmIdentifier | RsaHashedImportParams | EcKeyImportParams | HmacImportParams | AesKeyAlgorithm, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKey>;
-}
-
-interface URLSearchParamsIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.iterator](): URLSearchParamsIterator<T>;
-}
-
-interface URLSearchParams {
-    [Symbol.iterator](): URLSearchParamsIterator<[string, string]>;
-    /** Returns an array of key, value pairs for every entry in the search params. */
-    entries(): URLSearchParamsIterator<[string, string]>;
-    /** Returns a list of keys in the search params. */
-    keys(): URLSearchParamsIterator<string>;
-    /** Returns a list of values in the search params. */
-    values(): URLSearchParamsIterator<string>;
-}
-
-interface WEBGL_draw_buffers {
-    /**
-     * The WEBGL_draw_buffers.drawBuffersWEBGL() method is part of the WebGL API and allows you to define the draw buffers to which all fragment colors are written.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL)
-     */
-    drawBuffersWEBGL(buffers: GLenum[]): void;
-}
-
-interface WEBGL_multi_draw {
-    /**
-     * The WEBGL_multi_draw.multiDrawArraysInstancedWEBGL() method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArraysInstanced() method.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysInstancedWEBGL)
-     */
-    multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | GLint[], firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
-    /**
-     * The WEBGL_multi_draw.multiDrawArraysWEBGL() method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArrays() method.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysWEBGL)
-     */
-    multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | GLint[], firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, drawcount: GLsizei): void;
-    /**
-     * The WEBGL_multi_draw.multiDrawElementsInstancedWEBGL() method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElementsInstanced() method.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsInstancedWEBGL)
-     */
-    multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | GLsizei[], offsetsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
-    /**
-     * The WEBGL_multi_draw.multiDrawElementsWEBGL() method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElements() method.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL)
-     */
-    multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | GLsizei[], offsetsOffset: number, drawcount: GLsizei): void;
-}
-
-interface WebGL2RenderingContextBase {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/clearBuffer) */
-    clearBufferfv(buffer: GLenum, drawbuffer: GLint, values: GLfloat[], srcOffset?: number): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/clearBuffer) */
-    clearBufferiv(buffer: GLenum, drawbuffer: GLint, values: GLint[], srcOffset?: number): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/clearBuffer) */
-    clearBufferuiv(buffer: GLenum, drawbuffer: GLint, values: GLuint[], srcOffset?: number): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/drawBuffers) */
-    drawBuffers(buffers: GLenum[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/getActiveUniforms) */
-    getActiveUniforms(program: WebGLProgram, uniformIndices: GLuint[], pname: GLenum): any;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/getUniformIndices) */
-    getUniformIndices(program: WebGLProgram, uniformNames: string[]): GLuint[] | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/invalidateFramebuffer) */
-    invalidateFramebuffer(target: GLenum, attachments: GLenum[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/invalidateSubFramebuffer) */
-    invalidateSubFramebuffer(target: GLenum, attachments: GLenum[], x: GLint, y: GLint, width: GLsizei, height: GLsizei): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/transformFeedbackVaryings) */
-    transformFeedbackVaryings(program: WebGLProgram, varyings: string[], bufferMode: GLenum): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniform) */
-    uniform1uiv(location: WebGLUniformLocation | null, data: GLuint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniform) */
-    uniform2uiv(location: WebGLUniformLocation | null, data: GLuint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniform) */
-    uniform3uiv(location: WebGLUniformLocation | null, data: GLuint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniform) */
-    uniform4uiv(location: WebGLUniformLocation | null, data: GLuint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix2x3fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix2x4fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix3x2fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix3x4fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix4x2fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix4x3fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/vertexAttribI) */
-    vertexAttribI4iv(index: GLuint, values: GLint[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/vertexAttribI) */
-    vertexAttribI4uiv(index: GLuint, values: GLuint[]): void;
-}
-
-interface WebGL2RenderingContextOverloads {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform1fv(location: WebGLUniformLocation | null, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform1iv(location: WebGLUniformLocation | null, data: GLint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform2fv(location: WebGLUniformLocation | null, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform2iv(location: WebGLUniformLocation | null, data: GLint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform3fv(location: WebGLUniformLocation | null, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform3iv(location: WebGLUniformLocation | null, data: GLint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform4fv(location: WebGLUniformLocation | null, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform4iv(location: WebGLUniformLocation | null, data: GLint[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext/uniformMatrix) */
-    uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
-    uniformMatrix3fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
-    uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, data: GLfloat[], srcOffset?: number, srcLength?: GLuint): void;
-}
-
-interface WebGLRenderingContextBase {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/vertexAttrib) */
-    vertexAttrib1fv(index: GLuint, values: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/vertexAttrib) */
-    vertexAttrib2fv(index: GLuint, values: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/vertexAttrib) */
-    vertexAttrib3fv(index: GLuint, values: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/vertexAttrib) */
-    vertexAttrib4fv(index: GLuint, values: GLfloat[]): void;
-}
-
-interface WebGLRenderingContextOverloads {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform1fv(location: WebGLUniformLocation | null, v: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform1iv(location: WebGLUniformLocation | null, v: GLint[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform2fv(location: WebGLUniformLocation | null, v: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform2iv(location: WebGLUniformLocation | null, v: GLint[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform3fv(location: WebGLUniformLocation | null, v: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform3iv(location: WebGLUniformLocation | null, v: GLint[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform4fv(location: WebGLUniformLocation | null, v: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniform) */
-    uniform4iv(location: WebGLUniformLocation | null, v: GLint[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
-    uniformMatrix2fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
-    uniformMatrix3fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: GLfloat[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/uniformMatrix) */
-    uniformMatrix4fv(location: WebGLUniformLocation | null, transpose: GLboolean, value: GLfloat[]): void;
-}
-
-
-/////////////////////////////
-/// ServiceWorker Async Iterable APIs
-/////////////////////////////
-
-interface FileSystemDirectoryHandleAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.asyncIterator](): FileSystemDirectoryHandleAsyncIterator<T>;
-}
-
-interface FileSystemDirectoryHandle {
-    [Symbol.asyncIterator](): FileSystemDirectoryHandleAsyncIterator<[string, FileSystemDirectoryHandle | FileSystemFileHandle]>;
-    entries(): FileSystemDirectoryHandleAsyncIterator<[string, FileSystemDirectoryHandle | FileSystemFileHandle]>;
-    keys(): FileSystemDirectoryHandleAsyncIterator<string>;
-    values(): FileSystemDirectoryHandleAsyncIterator<FileSystemDirectoryHandle | FileSystemFileHandle>;
-}
-
-interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.asyncIterator](): ReadableStreamAsyncIterator<T>;
-}
-
-interface ReadableStream<R = any> {
-    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
-    values(options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
-}
+type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

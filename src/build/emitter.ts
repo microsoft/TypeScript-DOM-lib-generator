@@ -137,6 +137,7 @@ export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
   useGenericTypedArrays?: boolean;
+  includeIterable?: boolean;
 }
 
 export function emitWebIdl(
@@ -145,6 +146,14 @@ export function emitWebIdl(
   iterator: "" | "sync" | "async",
   compilerBehavior: CompilerBehavior,
 ): string {
+  if (compilerBehavior.includeIterable && iterator !== "") {
+    return [
+      "// This file's contents are now included in the main types file.",
+      "// The file has been left for backward compatibility.",
+      "",
+    ].join("\n");
+  }
+
   // Global print target
   const printer = createTextWriter("\n");
 
@@ -244,6 +253,13 @@ export function emitWebIdl(
     case "async":
       return emitES2018DomAsyncIterators();
     default:
+      if (compilerBehavior.includeIterable) {
+        return [
+          emit(),
+          emitES6DomIterators(),
+          emitES2018DomAsyncIterators(),
+        ].join("\n\n");
+      }
       return emit();
   }
 
@@ -1597,6 +1613,13 @@ export function emitWebIdl(
 
   function emit() {
     printer.reset();
+
+    if (compilerBehavior.includeIterable) {
+      printer.printLine(`/// <reference lib="es2015" />`);
+      printer.printLine(`/// <reference lib="es2018.asynciterable" />`);
+      printer.printLine("");
+    }
+
     printer.printLine("/////////////////////////////");
     printer.printLine(`/// ${global} APIs`);
     printer.printLine("/////////////////////////////");
