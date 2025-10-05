@@ -1122,19 +1122,19 @@ interface WriteParams {
  */
 interface ANGLE_instanced_arrays {
     /**
-     * The ANGLE_instanced_arrays.**`drawArraysInstancedANGLE()`** method of the WebGL API renders primitives from array data like the gl.drawArrays() method. In addition, it can execute multiple instances of the range of elements.
+     * The **`ANGLE_instanced_arrays.drawArraysInstancedANGLE()`** method of the WebGL API renders primitives from array data like the gl.drawArrays() method. In addition, it can execute multiple instances of the range of elements.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ANGLE_instanced_arrays/drawArraysInstancedANGLE)
      */
     drawArraysInstancedANGLE(mode: GLenum, first: GLint, count: GLsizei, primcount: GLsizei): void;
     /**
-     * The ANGLE_instanced_arrays.**`drawElementsInstancedANGLE()`** method of the WebGL API renders primitives from array data like the gl.drawElements() method. In addition, it can execute multiple instances of a set of elements.
+     * The **`ANGLE_instanced_arrays.drawElementsInstancedANGLE()`** method of the WebGL API renders primitives from array data like the gl.drawElements() method. In addition, it can execute multiple instances of a set of elements.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ANGLE_instanced_arrays/drawElementsInstancedANGLE)
      */
     drawElementsInstancedANGLE(mode: GLenum, count: GLsizei, type: GLenum, offset: GLintptr, primcount: GLsizei): void;
     /**
-     * The ANGLE_instanced_arrays.**`vertexAttribDivisorANGLE()`** method of the WebGL API modifies the rate at which generic vertex attributes advance when rendering multiple instances of primitives with ext.drawArraysInstancedANGLE() and ext.drawElementsInstancedANGLE().
+     * The **`ANGLE_instanced_arrays.vertexAttribDivisorANGLE()`** method of the WebGL API modifies the rate at which generic vertex attributes advance when rendering multiple instances of primitives with ext.drawArraysInstancedANGLE() and ext.drawElementsInstancedANGLE().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ANGLE_instanced_arrays/vertexAttribDivisorANGLE)
      */
@@ -1207,19 +1207,19 @@ declare var AbortSignal: {
     prototype: AbortSignal;
     new(): AbortSignal;
     /**
-     * The AbortSignal.**`abort()`** static method returns an AbortSignal that is already set as aborted (and which does not trigger an abort event).
+     * The **`AbortSignal.abort()`** static method returns an AbortSignal that is already set as aborted (and which does not trigger an abort event).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/abort_static)
      */
     abort(reason?: any): AbortSignal;
     /**
-     * The AbortSignal.**`any()`** static method takes an iterable of abort signals and returns an AbortSignal. The returned abort signal is aborted when any of the input iterable abort signals are aborted. The abort reason will be set to the reason of the first signal that is aborted. If any of the given abort signals are already aborted then so will be the returned AbortSignal.
+     * The **`AbortSignal.any()`** static method takes an iterable of abort signals and returns an AbortSignal. The returned abort signal is aborted when any of the input iterable abort signals are aborted. The abort reason will be set to the reason of the first signal that is aborted. If any of the given abort signals are already aborted then so will be the returned AbortSignal.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/any_static)
      */
     any(signals: AbortSignal[]): AbortSignal;
     /**
-     * The AbortSignal.**`timeout()`** static method returns an AbortSignal that will automatically abort after a specified time.
+     * The **`AbortSignal.timeout()`** static method returns an AbortSignal that will automatically abort after a specified time.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/timeout_static)
      */
@@ -1588,7 +1588,7 @@ declare var BroadcastChannel: {
  */
 interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     /**
-     * The read-only ByteLengthQueuingStrategy.**`highWaterMark`** property returns the total number of bytes that can be contained in the internal queue before backpressure is applied.
+     * The read-only **`ByteLengthQueuingStrategy.highWaterMark`** property returns the total number of bytes that can be contained in the internal queue before backpressure is applied.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/highWaterMark)
      */
@@ -1652,7 +1652,7 @@ declare var CSSMathClamp: {
  */
 interface CSSMathInvert extends CSSMathValue {
     /**
-     * The CSSMathInvert.**`value`** read-only property of the CSSMathInvert interface returns a CSSNumericValue object.
+     * The **`CSSMathInvert.value`** read-only property of the CSSMathInvert interface returns a CSSNumericValue object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert/value)
      */
@@ -1671,7 +1671,7 @@ declare var CSSMathInvert: {
  */
 interface CSSMathMax extends CSSMathValue {
     /**
-     * The CSSMathMax.**`values`** read-only property of the CSSMathMax interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
+     * The **`CSSMathMax.values`** read-only property of the CSSMathMax interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax/values)
      */
@@ -1690,7 +1690,7 @@ declare var CSSMathMax: {
  */
 interface CSSMathMin extends CSSMathValue {
     /**
-     * The CSSMathMin.**`values`** read-only property of the CSSMathMin interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
+     * The **`CSSMathMin.values`** read-only property of the CSSMathMin interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin/values)
      */
@@ -1709,7 +1709,7 @@ declare var CSSMathMin: {
  */
 interface CSSMathNegate extends CSSMathValue {
     /**
-     * The CSSMathNegate.**`value`** read-only property of the CSSMathNegate interface returns a CSSNumericValue object.
+     * The **`CSSMathNegate.value`** read-only property of the CSSMathNegate interface returns a CSSNumericValue object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate/value)
      */
@@ -1728,7 +1728,7 @@ declare var CSSMathNegate: {
  */
 interface CSSMathProduct extends CSSMathValue {
     /**
-     * The CSSMathProduct.**`values`** read-only property of the CSSMathProduct interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
+     * The **`CSSMathProduct.values`** read-only property of the CSSMathProduct interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct/values)
      */
@@ -1747,7 +1747,7 @@ declare var CSSMathProduct: {
  */
 interface CSSMathSum extends CSSMathValue {
     /**
-     * The CSSMathSum.**`values`** read-only property of the CSSMathSum interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
+     * The **`CSSMathSum.values`** read-only property of the CSSMathSum interface returns a CSSNumericArray object which contains one or more CSSNumericValue objects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum/values)
      */
@@ -1766,7 +1766,7 @@ declare var CSSMathSum: {
  */
 interface CSSMathValue extends CSSNumericValue {
     /**
-     * The CSSMathValue.**`operator`** read-only property of the CSSMathValue interface indicates the operator that the current subtype represents. For example, if the current CSSMathValue subtype is CSSMathSum, this property will return the string "sum".
+     * The **`CSSMathValue.operator`** read-only property of the CSSMathValue interface indicates the operator that the current subtype represents. For example, if the current CSSMathValue subtype is CSSMathSum, this property will return the string "sum".
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue/operator)
      */
@@ -2153,13 +2153,13 @@ declare var CSSTranslate: {
  */
 interface CSSUnitValue extends CSSNumericValue {
     /**
-     * The CSSUnitValue.**`unit`** read-only property of the CSSUnitValue interface returns a string indicating the type of unit.
+     * The **`CSSUnitValue.unit`** read-only property of the CSSUnitValue interface returns a string indicating the type of unit.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue/unit)
      */
     readonly unit: string;
     /**
-     * The CSSUnitValue.**`value`** property of the CSSUnitValue interface returns a double indicating the number of units.
+     * The **`CSSUnitValue.value`** property of the CSSUnitValue interface returns a double indicating the number of units.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue/value)
      */
@@ -2378,7 +2378,7 @@ interface CanvasFilters {
  */
 interface CanvasGradient {
     /**
-     * The CanvasGradient.**`addColorStop()`** method adds a new color stop, defined by an offset and a color, to a given canvas gradient.
+     * The **`CanvasGradient.addColorStop()`** method adds a new color stop, defined by an offset and a color, to a given canvas gradient.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasGradient/addColorStop)
      */
@@ -2455,7 +2455,7 @@ interface CanvasPathDrawingStyles {
  */
 interface CanvasPattern {
     /**
-     * The CanvasPattern.**`setTransform()`** method uses a DOMMatrix object as the pattern's transformation matrix and invokes it on the pattern.
+     * The **`CanvasPattern.setTransform()`** method uses a DOMMatrix object as the pattern's transformation matrix and invokes it on the pattern.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasPattern/setTransform)
      */
@@ -2756,7 +2756,7 @@ declare var CookieStoreManager: {
  */
 interface CountQueuingStrategy extends QueuingStrategy {
     /**
-     * The read-only CountQueuingStrategy.**`highWaterMark`** property returns the total number of chunks that can be contained in the internal queue before backpressure is applied.
+     * The read-only **`CountQueuingStrategy.highWaterMark`** property returns the total number of chunks that can be contained in the internal queue before backpressure is applied.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/highWaterMark)
      */
@@ -2777,14 +2777,14 @@ declare var CountQueuingStrategy: {
  */
 interface Crypto {
     /**
-     * The Crypto.**`subtle`** read-only property returns a SubtleCrypto which can then be used to perform low-level cryptographic operations.
+     * The **`Crypto.subtle`** read-only property returns a SubtleCrypto which can then be used to perform low-level cryptographic operations.
      * Available only in secure contexts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto/subtle)
      */
     readonly subtle: SubtleCrypto;
     /**
-     * The Crypto.**`getRandomValues()`** method lets you get cryptographically strong random values. The array given as the parameter is filled with random numbers (random in its cryptographic meaning).
+     * The **`Crypto.getRandomValues()`** method lets you get cryptographically strong random values. The array given as the parameter is filled with random numbers (random in its cryptographic meaning).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto/getRandomValues)
      */
@@ -2854,7 +2854,7 @@ interface CustomEvent<T = any> extends Event {
      */
     readonly detail: T;
     /**
-     * The CustomEvent.**`initCustomEvent()`** method initializes a CustomEvent object. If the event has already been dispatched, this method does nothing.
+     * The **`CustomEvent.initCustomEvent()`** method initializes a CustomEvent object. If the event has already been dispatched, this method does nothing.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/initCustomEvent)
@@ -3909,7 +3909,7 @@ interface Event {
      */
     returnValue: boolean;
     /**
-     * The deprecated Event.**`srcElement`** is an alias for the Event.target property. Use Event.target instead.
+     * The deprecated **`Event.srcElement`** is an alias for the Event.target property. Use Event.target instead.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)
@@ -3940,7 +3940,7 @@ interface Event {
      */
     composedPath(): EventTarget[];
     /**
-     * The Event.**`initEvent()`** method is used to initialize the value of an event created using Document.createEvent().
+     * The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)
@@ -4111,7 +4111,7 @@ declare var ExtendableCookieChangeEvent: {
  */
 interface ExtendableEvent extends Event {
     /**
-     * The ExtendableEvent.**`waitUntil()`** method tells the event dispatcher that work is ongoing. It can also be used to detect whether that work was successful. In service workers, waitUntil() tells the browser that work is ongoing until the promise settles, and it shouldn't terminate the service worker if it wants that work to complete.
+     * The **`ExtendableEvent.waitUntil()`** method tells the event dispatcher that work is ongoing. It can also be used to detect whether that work was successful. In service workers, waitUntil() tells the browser that work is ongoing until the promise settles, and it shouldn't terminate the service worker if it wants that work to complete.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableEvent/waitUntil)
      */
@@ -4614,7 +4614,7 @@ interface FontFace {
      */
     display: FontDisplay;
     /**
-     * The FontFace.**`family`** property allows the author to get or set the font family of a FontFace object.
+     * The **`FontFace.family`** property allows the author to get or set the font family of a FontFace object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/family)
      */
@@ -5503,7 +5503,7 @@ interface IDBTransaction extends EventTarget {
      */
     readonly durability: IDBTransactionDurability;
     /**
-     * The IDBTransaction.**`error`** property of the IDBTransaction interface returns the type of error when there is an unsuccessful transaction.
+     * The **`IDBTransaction.error`** property of the IDBTransaction interface returns the type of error when there is an unsuccessful transaction.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/error)
      */
@@ -5587,19 +5587,19 @@ declare var IDBVersionChangeEvent: {
  */
 interface ImageBitmap {
     /**
-     * The ImageBitmap.**`height`** read-only property returns the ImageBitmap object's height in CSS pixels.
+     * The **`ImageBitmap.height`** read-only property returns the ImageBitmap object's height in CSS pixels.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap/height)
      */
     readonly height: number;
     /**
-     * The ImageBitmap.**`width`** read-only property returns the ImageBitmap object's width in CSS pixels.
+     * The **`ImageBitmap.width`** read-only property returns the ImageBitmap object's width in CSS pixels.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap/width)
      */
     readonly width: number;
     /**
-     * The ImageBitmap.**`close()`** method disposes of all graphical resources associated with an ImageBitmap.
+     * The **`ImageBitmap.close()`** method disposes of all graphical resources associated with an ImageBitmap.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap/close)
      */
@@ -5618,7 +5618,7 @@ declare var ImageBitmap: {
  */
 interface ImageBitmapRenderingContext {
     /**
-     * The ImageBitmapRenderingContext.**`transferFromImageBitmap()`** method displays the given ImageBitmap in the canvas associated with this rendering context. The ownership of the ImageBitmap is transferred to the canvas as well.
+     * The **`ImageBitmapRenderingContext.transferFromImageBitmap()`** method displays the given ImageBitmap in the canvas associated with this rendering context. The ownership of the ImageBitmap is transferred to the canvas as well.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext/transferFromImageBitmap)
      */
@@ -5637,25 +5637,25 @@ declare var ImageBitmapRenderingContext: {
  */
 interface ImageData {
     /**
-     * The read-only ImageData.**`colorSpace`** property is a string indicating the color space of the image data.
+     * The read-only **`ImageData.colorSpace`** property is a string indicating the color space of the image data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/colorSpace)
      */
     readonly colorSpace: PredefinedColorSpace;
     /**
-     * The readonly ImageData.**`data`** property returns a Uint8ClampedArray or Float16Array that contains the ImageData object's pixel data. Data is stored as a one-dimensional array in the RGBA order.
+     * The readonly **`ImageData.data`** property returns a Uint8ClampedArray or Float16Array that contains the ImageData object's pixel data. Data is stored as a one-dimensional array in the RGBA order.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/data)
      */
     readonly data: ImageDataArray;
     /**
-     * The readonly ImageData.**`height`** property returns the number of rows in the ImageData object.
+     * The readonly **`ImageData.height`** property returns the number of rows in the ImageData object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/height)
      */
     readonly height: number;
     /**
-     * The readonly ImageData.**`width`** property returns the number of pixels per row in the ImageData object.
+     * The readonly **`ImageData.width`** property returns the number of pixels per row in the ImageData object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/width)
      */
@@ -5723,7 +5723,7 @@ declare var ImageDecoder: {
     prototype: ImageDecoder;
     new(init: ImageDecoderInit): ImageDecoder;
     /**
-     * The ImageDecoder.**`isTypeSupported()`** static method checks if a given MIME type can be decoded by the user agent.
+     * The **`ImageDecoder.isTypeSupported()`** static method checks if a given MIME type can be decoded by the user agent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/isTypeSupported_static)
      */
@@ -6384,25 +6384,25 @@ interface OES_texture_half_float_linear {
  */
 interface OES_vertex_array_object {
     /**
-     * The OES_vertex_array_object.**`bindVertexArrayOES()`** method of the WebGL API binds a passed WebGLVertexArrayObject object to the buffer.
+     * The **`OES_vertex_array_object.bindVertexArrayOES()`** method of the WebGL API binds a passed WebGLVertexArrayObject object to the buffer.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/bindVertexArrayOES)
      */
     bindVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /**
-     * The OES_vertex_array_object.**`createVertexArrayOES()`** method of the WebGL API creates and initializes a WebGLVertexArrayObject object that represents a vertex array object (VAO) pointing to vertex array data and which provides names for different sets of vertex data.
+     * The **`OES_vertex_array_object.createVertexArrayOES()`** method of the WebGL API creates and initializes a WebGLVertexArrayObject object that represents a vertex array object (VAO) pointing to vertex array data and which provides names for different sets of vertex data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/createVertexArrayOES)
      */
     createVertexArrayOES(): WebGLVertexArrayObjectOES;
     /**
-     * The OES_vertex_array_object.**`deleteVertexArrayOES()`** method of the WebGL API deletes a given WebGLVertexArrayObject object.
+     * The **`OES_vertex_array_object.deleteVertexArrayOES()`** method of the WebGL API deletes a given WebGLVertexArrayObject object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/deleteVertexArrayOES)
      */
     deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /**
-     * The OES_vertex_array_object.**`isVertexArrayOES()`** method of the WebGL API returns true if the passed object is a WebGLVertexArrayObject object.
+     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns true if the passed object is a WebGLVertexArrayObject object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/isVertexArrayOES)
      */
@@ -6417,7 +6417,7 @@ interface OES_vertex_array_object {
  */
 interface OVR_multiview2 {
     /**
-     * The OVR_multiview2.**`framebufferTextureMultiviewOVR()`** method of the WebGL API attaches a multiview texture to a WebGLFramebuffer.
+     * The **`OVR_multiview2.framebufferTextureMultiviewOVR()`** method of the WebGL API attaches a multiview texture to a WebGLFramebuffer.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OVR_multiview2/framebufferTextureMultiviewOVR)
      */
@@ -6456,13 +6456,13 @@ interface OffscreenCanvas extends EventTarget {
      */
     width: number;
     /**
-     * The OffscreenCanvas.**`convertToBlob()`** method creates a Blob object representing the image contained in the canvas.
+     * The **`OffscreenCanvas.convertToBlob()`** method creates a Blob object representing the image contained in the canvas.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas/convertToBlob)
      */
     convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
     /**
-     * The OffscreenCanvas.**`getContext()`** method returns a drawing context for an offscreen canvas, or null if the context identifier is not supported, or the offscreen canvas has already been set to a different context mode.
+     * The **`OffscreenCanvas.getContext()`** method returns a drawing context for an offscreen canvas, or null if the context identifier is not supported, or the offscreen canvas has already been set to a different context mode.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas/getContext)
      */
@@ -6472,7 +6472,7 @@ interface OffscreenCanvas extends EventTarget {
     getContext(contextId: "webgl2", options?: any): WebGL2RenderingContext | null;
     getContext(contextId: OffscreenRenderingContextId, options?: any): OffscreenRenderingContext | null;
     /**
-     * The OffscreenCanvas.**`transferToImageBitmap()`** method creates an ImageBitmap object from the most recently rendered image of the OffscreenCanvas. The OffscreenCanvas allocates a new image for its subsequent rendering.
+     * The **`OffscreenCanvas.transferToImageBitmap()`** method creates an ImageBitmap object from the most recently rendered image of the OffscreenCanvas. The OffscreenCanvas allocates a new image for its subsequent rendering.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas/transferToImageBitmap)
      */
@@ -6510,7 +6510,7 @@ declare var OffscreenCanvasRenderingContext2D: {
  */
 interface Path2D extends CanvasPath {
     /**
-     * The Path2D.**`addPath()`** method of the Canvas 2D API adds one Path2D object to another Path2D object.
+     * The **`Path2D.addPath()`** method of the Canvas 2D API adds one Path2D object to another Path2D object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Path2D/addPath)
      */
@@ -6589,7 +6589,7 @@ interface Performance extends EventTarget {
      */
     measure(measureName: string, startOrMeasureOptions?: string | PerformanceMeasureOptions, endMark?: string): PerformanceMeasure;
     /**
-     * The performance.**`now()`** method returns a high resolution timestamp in milliseconds. It represents the time elapsed since Performance.timeOrigin (the time when navigation has started in window contexts, or the time when the worker is run in Worker and ServiceWorker contexts).
+     * The **`performance.now()`** method returns a high resolution timestamp in milliseconds. It represents the time elapsed since Performance.timeOrigin (the time when navigation has started in window contexts, or the time when the worker is run in Worker and ServiceWorker contexts).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/now)
      */
@@ -6997,20 +6997,20 @@ declare var Permissions: {
  */
 interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
     /**
-     * The ProgressEvent.**`lengthComputable`** read-only property is a boolean flag indicating if the resource concerned by the ProgressEvent has a length that can be calculated. If not, the ProgressEvent.total property has no significant value.
+     * The **`ProgressEvent.lengthComputable`** read-only property is a boolean flag indicating if the resource concerned by the ProgressEvent has a length that can be calculated. If not, the ProgressEvent.total property has no significant value.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/lengthComputable)
      */
     readonly lengthComputable: boolean;
     /**
-     * The ProgressEvent.**`loaded`** read-only property is a number indicating the size of the data already transmitted or processed. The progress ratio can be calculated by dividing the value of this property by ProgressEvent.total.
+     * The **`ProgressEvent.loaded`** read-only property is a number indicating the size of the data already transmitted or processed. The progress ratio can be calculated by dividing the value of this property by ProgressEvent.total.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/loaded)
      */
     readonly loaded: number;
     readonly target: T | null;
     /**
-     * The ProgressEvent.**`total`** read-only property is a number indicating the total size of the data being transmitted or processed.
+     * The **`ProgressEvent.total`** read-only property is a number indicating the total size of the data being transmitted or processed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/total)
      */
@@ -7075,7 +7075,7 @@ declare var PushEvent: {
  */
 interface PushManager {
     /**
-     * The PushManager.**`getSubscription()`** method of the PushManager interface retrieves an existing push subscription.
+     * The **`PushManager.getSubscription()`** method of the PushManager interface retrieves an existing push subscription.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushManager/getSubscription)
      */
@@ -7330,7 +7330,7 @@ interface RTCDataChannel extends EventTarget {
      */
     readonly readyState: RTCDataChannelState;
     /**
-     * The RTCDataChannel.**`close()`** method closes the RTCDataChannel. Either peer is permitted to call this method to initiate closure of the channel.
+     * The **`RTCDataChannel.close()`** method closes the RTCDataChannel. Either peer is permitted to call this method to initiate closure of the channel.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/close)
      */
@@ -8564,7 +8564,7 @@ declare var TaskSignal: {
     prototype: TaskSignal;
     new(): TaskSignal;
     /**
-     * The TaskSignal.**`any()`** static method takes an iterable of AbortSignal objects and returns a TaskSignal. The returned task signal is aborted when any of the abort signals is aborted.
+     * The **`TaskSignal.any()`** static method takes an iterable of AbortSignal objects and returns a TaskSignal. The returned task signal is aborted when any of the abort signals is aborted.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskSignal/any_static)
      */
@@ -8578,7 +8578,7 @@ declare var TaskSignal: {
  */
 interface TextDecoder extends TextDecoderCommon {
     /**
-     * The TextDecoder.**`decode()`** method returns a string containing text decoded from the buffer passed as a parameter.
+     * The **`TextDecoder.decode()`** method returns a string containing text decoded from the buffer passed as a parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
@@ -8633,13 +8633,13 @@ declare var TextDecoderStream: {
  */
 interface TextEncoder extends TextEncoderCommon {
     /**
-     * The TextEncoder.**`encode()`** method takes a string as input, and returns a Uint8Array containing the string encoded using UTF-8.
+     * The **`TextEncoder.encode()`** method takes a string as input, and returns a Uint8Array containing the string encoded using UTF-8.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encode)
      */
     encode(input?: string): Uint8Array<ArrayBuffer>;
     /**
-     * The TextEncoder.**`encodeInto()`** method takes a string to encode and a destination Uint8Array to put resulting UTF-8 encoded text into, and returns an object indicating the progress of the encoding. This is potentially more performant than the encode() method — especially when the target buffer is a view into a Wasm heap.
+     * The **`TextEncoder.encodeInto()`** method takes a string to encode and a destination Uint8Array to put resulting UTF-8 encoded text into, and returns an object indicating the progress of the encoding. This is potentially more performant than the encode() method — especially when the target buffer is a view into a Wasm heap.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
      */
@@ -8913,7 +8913,7 @@ declare var URL: {
     prototype: URL;
     new(url: string | URL, base?: string | URL): URL;
     /**
-     * The URL.**`canParse()`** static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
+     * The **`URL.canParse()`** static method of the URL interface returns a boolean indicating whether or not an absolute URL, or a relative URL combined with a base URL, are parsable and valid.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/canParse_static)
      */
@@ -8925,7 +8925,7 @@ declare var URL: {
      */
     createObjectURL(obj: Blob): string;
     /**
-     * The URL.**`parse()`** static method of the URL interface returns a newly created URL object representing the URL defined by the parameters.
+     * The **`URL.parse()`** static method of the URL interface returns a newly created URL object representing the URL defined by the parameters.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/parse_static)
      */
@@ -9067,7 +9067,7 @@ interface URLSearchParams {
      */
     set(name: string, value: string): void;
     /**
-     * The URLSearchParams.**`sort()`** method sorts all key/value pairs contained in this object in place and returns undefined. Key/value pairs are sorted by the values of the UTF-16 code units of the keys. This method uses a stable sorting algorithm (i.e., the relative order between key/value pairs with equal keys will be preserved).
+     * The **`URLSearchParams.sort()`** method sorts all key/value pairs contained in this object in place and returns undefined. Key/value pairs are sorted by the values of the UTF-16 code units of the keys. This method uses a stable sorting algorithm (i.e., the relative order between key/value pairs with equal keys will be preserved).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLSearchParams/sort)
      */
@@ -9384,7 +9384,7 @@ interface WEBGL_color_buffer_float {
  */
 interface WEBGL_compressed_texture_astc {
     /**
-     * The WEBGL_compressed_texture_astc.**`getSupportedProfiles()`** method returns an array of strings containing the names of the ASTC profiles supported by the implementation.
+     * The **`WEBGL_compressed_texture_astc.getSupportedProfiles()`** method returns an array of strings containing the names of the ASTC profiles supported by the implementation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_compressed_texture_astc/getSupportedProfiles)
      */
@@ -9499,7 +9499,7 @@ interface WEBGL_debug_renderer_info {
  */
 interface WEBGL_debug_shaders {
     /**
-     * The WEBGL_debug_shaders.**`getTranslatedShaderSource()`** method is part of the WebGL API and allows you to debug a translated shader.
+     * The **`WEBGL_debug_shaders.getTranslatedShaderSource()`** method is part of the WebGL API and allows you to debug a translated shader.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_debug_shaders/getTranslatedShaderSource)
      */
@@ -9522,7 +9522,7 @@ interface WEBGL_depth_texture {
  */
 interface WEBGL_draw_buffers {
     /**
-     * The WEBGL_draw_buffers.**`drawBuffersWEBGL()`** method is part of the WebGL API and allows you to define the draw buffers to which all fragment colors are written.
+     * The **`WEBGL_draw_buffers.drawBuffersWEBGL()`** method is part of the WebGL API and allows you to define the draw buffers to which all fragment colors are written.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL)
      */
@@ -9570,13 +9570,13 @@ interface WEBGL_draw_buffers {
  */
 interface WEBGL_lose_context {
     /**
-     * The WEBGL_lose_context.**`loseContext()`** method is part of the WebGL API and allows you to simulate losing the context of a WebGLRenderingContext context.
+     * The **`WEBGL_lose_context.loseContext()`** method is part of the WebGL API and allows you to simulate losing the context of a WebGLRenderingContext context.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context/loseContext)
      */
     loseContext(): void;
     /**
-     * The WEBGL_lose_context.**`restoreContext()`** method is part of the WebGL API and allows you to simulate restoring the context of a WebGLRenderingContext object.
+     * The **`WEBGL_lose_context.restoreContext()`** method is part of the WebGL API and allows you to simulate restoring the context of a WebGLRenderingContext object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_lose_context/restoreContext)
      */
@@ -9590,25 +9590,25 @@ interface WEBGL_lose_context {
  */
 interface WEBGL_multi_draw {
     /**
-     * The WEBGL_multi_draw.**`multiDrawArraysInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArraysInstanced() method.
+     * The **`WEBGL_multi_draw.multiDrawArraysInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArraysInstanced() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysInstancedWEBGL)
      */
     multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | GLint[], firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
     /**
-     * The WEBGL_multi_draw.**`multiDrawArraysWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArrays() method.
+     * The **`WEBGL_multi_draw.multiDrawArraysWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArrays() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysWEBGL)
      */
     multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | GLint[], firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, drawcount: GLsizei): void;
     /**
-     * The WEBGL_multi_draw.**`multiDrawElementsInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElementsInstanced() method.
+     * The **`WEBGL_multi_draw.multiDrawElementsInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElementsInstanced() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsInstancedWEBGL)
      */
     multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | GLsizei[], offsetsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
     /**
-     * The WEBGL_multi_draw.**`multiDrawElementsWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElements() method.
+     * The **`WEBGL_multi_draw.multiDrawElementsWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElements() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL)
      */
@@ -10696,19 +10696,19 @@ interface WebGL2RenderingContextOverloads {
  */
 interface WebGLActiveInfo {
     /**
-     * The read-only WebGLActiveInfo.**`name`** property represents the name of the requested data returned by calling the getActiveAttrib() or getActiveUniform() methods.
+     * The read-only **`WebGLActiveInfo.name`** property represents the name of the requested data returned by calling the getActiveAttrib() or getActiveUniform() methods.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLActiveInfo/name)
      */
     readonly name: string;
     /**
-     * The read-only WebGLActiveInfo.**`size`** property is a Number representing the size of the requested data returned by calling the getActiveAttrib() or getActiveUniform() methods.
+     * The read-only **`WebGLActiveInfo.size`** property is a Number representing the size of the requested data returned by calling the getActiveAttrib() or getActiveUniform() methods.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLActiveInfo/size)
      */
     readonly size: GLint;
     /**
-     * The read-only WebGLActiveInfo.**`type`** property represents the type of the requested data returned by calling the getActiveAttrib() or getActiveUniform() methods.
+     * The read-only **`WebGLActiveInfo.type`** property represents the type of the requested data returned by calling the getActiveAttrib() or getActiveUniform() methods.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLActiveInfo/type)
      */
@@ -10740,7 +10740,7 @@ declare var WebGLBuffer: {
  */
 interface WebGLContextEvent extends Event {
     /**
-     * The read-only WebGLContextEvent.**`statusMessage`** property contains additional event status information, or is an empty string if no additional information is available.
+     * The read-only **`WebGLContextEvent.statusMessage`** property contains additional event status information, or is an empty string if no additional information is available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLContextEvent/statusMessage)
      */
@@ -11767,19 +11767,19 @@ declare var WebGLShader: {
  */
 interface WebGLShaderPrecisionFormat {
     /**
-     * The read-only WebGLShaderPrecisionFormat.**`precision`** property returns the number of bits of precision that can be represented.
+     * The read-only **`WebGLShaderPrecisionFormat.precision`** property returns the number of bits of precision that can be represented.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShaderPrecisionFormat/precision)
      */
     readonly precision: GLint;
     /**
-     * The read-only WebGLShaderPrecisionFormat.**`rangeMax`** property returns the base 2 log of the absolute value of the maximum value that can be represented.
+     * The read-only **`WebGLShaderPrecisionFormat.rangeMax`** property returns the base 2 log of the absolute value of the maximum value that can be represented.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShaderPrecisionFormat/rangeMax)
      */
     readonly rangeMax: GLint;
     /**
-     * The read-only WebGLShaderPrecisionFormat.**`rangeMin`** property returns the base 2 log of the absolute value of the minimum value that can be represented.
+     * The read-only **`WebGLShaderPrecisionFormat.rangeMin`** property returns the base 2 log of the absolute value of the minimum value that can be represented.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShaderPrecisionFormat/rangeMin)
      */
@@ -11874,19 +11874,19 @@ interface WebSocketEventMap {
  */
 interface WebSocket extends EventTarget {
     /**
-     * The WebSocket.**`binaryType`** property controls the type of binary data being received over the WebSocket connection.
+     * The **`WebSocket.binaryType`** property controls the type of binary data being received over the WebSocket connection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/binaryType)
      */
     binaryType: BinaryType;
     /**
-     * The WebSocket.**`bufferedAmount`** read-only property returns the number of bytes of data that have been queued using calls to send() but not yet transmitted to the network. This value resets to zero once all queued data has been sent. This value does not reset to zero when the connection is closed; if you keep calling send(), this will continue to climb.
+     * The **`WebSocket.bufferedAmount`** read-only property returns the number of bytes of data that have been queued using calls to send() but not yet transmitted to the network. This value resets to zero once all queued data has been sent. This value does not reset to zero when the connection is closed; if you keep calling send(), this will continue to climb.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/bufferedAmount)
      */
     readonly bufferedAmount: number;
     /**
-     * The WebSocket.**`extensions`** read-only property returns the extensions selected by the server. This is currently only the empty string or a list of extensions as negotiated by the connection.
+     * The **`WebSocket.extensions`** read-only property returns the extensions selected by the server. This is currently only the empty string or a list of extensions as negotiated by the connection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/extensions)
      */
@@ -11900,31 +11900,31 @@ interface WebSocket extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/open_event) */
     onopen: ((this: WebSocket, ev: Event) => any) | null;
     /**
-     * The WebSocket.**`protocol`** read-only property returns the name of the sub-protocol the server selected; this will be one of the strings specified in the protocols parameter when creating the WebSocket object, or the empty string if no connection is established.
+     * The **`WebSocket.protocol`** read-only property returns the name of the sub-protocol the server selected; this will be one of the strings specified in the protocols parameter when creating the WebSocket object, or the empty string if no connection is established.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/protocol)
      */
     readonly protocol: string;
     /**
-     * The WebSocket.**`readyState`** read-only property returns the current state of the WebSocket connection.
+     * The **`WebSocket.readyState`** read-only property returns the current state of the WebSocket connection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/readyState)
      */
     readonly readyState: 0 | 1 | 2 | 3;
     /**
-     * The WebSocket.**`url`** read-only property returns the absolute URL of the WebSocket as resolved by the constructor.
+     * The **`WebSocket.url`** read-only property returns the absolute URL of the WebSocket as resolved by the constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/url)
      */
     readonly url: string;
     /**
-     * The WebSocket.**`close()`** method closes the WebSocket connection or connection attempt, if any. If the connection is already CLOSED, this method does nothing.
+     * The **`WebSocket.close()`** method closes the WebSocket connection or connection attempt, if any. If the connection is already CLOSED, this method does nothing.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/close)
      */
     close(code?: number, reason?: string): void;
     /**
-     * The WebSocket.**`send()`** method enqueues the specified data to be transmitted to the server over the WebSocket connection, increasing the value of bufferedAmount by the number of bytes needed to contain the data. If the data can't be sent (for example, because it needs to be buffered but the buffer is full), the socket is closed automatically. The browser will throw an exception if you call send() when the connection is in the CONNECTING state. If you call send() when the connection is in the CLOSING or CLOSED states, the browser will silently discard the data.
+     * The **`WebSocket.send()`** method enqueues the specified data to be transmitted to the server over the WebSocket connection, increasing the value of bufferedAmount by the number of bytes needed to contain the data. If the data can't be sent (for example, because it needs to be buffered but the buffer is full), the socket is closed automatically. The browser will throw an exception if you call send() when the connection is in the CONNECTING state. If you call send() when the connection is in the CLOSING or CLOSED states, the browser will silently discard the data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebSocket/send)
      */
@@ -12522,7 +12522,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readystatechange_event) */
     onreadystatechange: ((this: XMLHttpRequest, ev: Event) => any) | null;
     /**
-     * The XMLHttpRequest.**`readyState`** property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
+     * The **`XMLHttpRequest.readyState`** property returns the state an XMLHttpRequest client is in. An XHR client exists in one of the following states:
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/readyState)
      */
@@ -12546,25 +12546,25 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     responseType: XMLHttpRequestResponseType;
     /**
-     * The read-only XMLHttpRequest.**`responseURL`** property returns the serialized URL of the response or the empty string if the URL is null. If the URL is returned, any URL fragment present in the URL will be stripped away. The value of responseURL will be the final URL obtained after any redirects.
+     * The read-only **`XMLHttpRequest.responseURL`** property returns the serialized URL of the response or the empty string if the URL is null. If the URL is returned, any URL fragment present in the URL will be stripped away. The value of responseURL will be the final URL obtained after any redirects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseURL)
      */
     readonly responseURL: string;
     /**
-     * The read-only XMLHttpRequest.**`status`** property returns the numerical HTTP status code of the XMLHttpRequest's response.
+     * The read-only **`XMLHttpRequest.status`** property returns the numerical HTTP status code of the XMLHttpRequest's response.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/status)
      */
     readonly status: number;
     /**
-     * The read-only XMLHttpRequest.**`statusText`** property returns a string containing the response's status message as returned by the HTTP server. Unlike XMLHttpRequest.status which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found". If the request's readyState is in UNSENT or OPENED state, the value of statusText will be an empty string.
+     * The read-only **`XMLHttpRequest.statusText`** property returns a string containing the response's status message as returned by the HTTP server. Unlike XMLHttpRequest.status which indicates a numerical status code, this property contains the text of the response status, such as "OK" or "Not Found". If the request's readyState is in UNSENT or OPENED state, the value of statusText will be an empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/statusText)
      */
     readonly statusText: string;
     /**
-     * The XMLHttpRequest.**`timeout`** property is an unsigned long representing the number of milliseconds a request can take before automatically being terminated. The default value is 0, which means there is no timeout. Timeout shouldn't be used for synchronous XMLHttpRequests requests used in a document environment or it will throw an InvalidAccessError exception. When a timeout happens, a timeout event is fired.
+     * The **`XMLHttpRequest.timeout`** property is an unsigned long representing the number of milliseconds a request can take before automatically being terminated. The default value is 0, which means there is no timeout. Timeout shouldn't be used for synchronous XMLHttpRequests requests used in a document environment or it will throw an InvalidAccessError exception. When a timeout happens, a timeout event is fired.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/timeout)
      */
@@ -12576,13 +12576,13 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     readonly upload: XMLHttpRequestUpload;
     /**
-     * The XMLHttpRequest.**`withCredentials`** property is a boolean value that indicates whether or not cross-site Access-Control requests should be made using credentials such as cookies, authentication headers or TLS client certificates. Setting withCredentials has no effect on same-origin requests.
+     * The **`XMLHttpRequest.withCredentials`** property is a boolean value that indicates whether or not cross-site Access-Control requests should be made using credentials such as cookies, authentication headers or TLS client certificates. Setting withCredentials has no effect on same-origin requests.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/withCredentials)
      */
     withCredentials: boolean;
     /**
-     * The XMLHttpRequest.**`abort()`** method aborts the request if it has already been sent. When a request is aborted, its readyState is changed to XMLHttpRequest.UNSENT (0) and the request's status code is set to 0.
+     * The **`XMLHttpRequest.abort()`** method aborts the request if it has already been sent. When a request is aborted, its readyState is changed to XMLHttpRequest.UNSENT (0) and the request's status code is set to 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/abort)
      */
@@ -12707,7 +12707,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * A WebAssembly.**`Global`** object represents a global variable instance, accessible from both JavaScript and importable/exportable across one or more WebAssembly.Module instances. This allows dynamic linking of multiple modules.
+     * A **`WebAssembly.Global`** object represents a global variable instance, accessible from both JavaScript and importable/exportable across one or more WebAssembly.Module instances. This allows dynamic linking of multiple modules.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global)
      */
@@ -12722,7 +12722,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * A WebAssembly.**`Instance`** object is a stateful, executable instance of a WebAssembly.Module. Instance objects contain all the Exported WebAssembly functions that allow calling into WebAssembly code from JavaScript.
+     * A **`WebAssembly.Instance`** object is a stateful, executable instance of a WebAssembly.Module. Instance objects contain all the Exported WebAssembly functions that allow calling into WebAssembly code from JavaScript.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Instance)
      */
@@ -12750,7 +12750,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The WebAssembly.**`Memory`** object is a resizable ArrayBuffer or SharedArrayBuffer that holds raw bytes of memory accessed by a WebAssembly.Instance.
+     * The **`WebAssembly.Memory`** object is a resizable ArrayBuffer or SharedArrayBuffer that holds raw bytes of memory accessed by a WebAssembly.Instance.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory)
      */
@@ -12775,7 +12775,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * A WebAssembly.**`Module`** object contains stateless WebAssembly code that has already been compiled by the browser — this can be efficiently shared with Workers, and instantiated multiple times.
+     * A **`WebAssembly.Module`** object contains stateless WebAssembly code that has already been compiled by the browser — this can be efficiently shared with Workers, and instantiated multiple times.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module)
      */
@@ -12786,19 +12786,19 @@ declare namespace WebAssembly {
         prototype: Module;
         new(bytes: BufferSource): Module;
         /**
-         * The WebAssembly.Module.**`customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
+         * The WebAssembly.**`Module.customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/customSections_static)
          */
         customSections(moduleObject: Module, sectionName: string): ArrayBuffer[];
         /**
-         * The WebAssembly.Module.**`exports()`** static method returns an array containing descriptions of all the declared exports of the given Module.
+         * The WebAssembly.**`Module.exports()`** static method returns an array containing descriptions of all the declared exports of the given Module.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/exports_static)
          */
         exports(moduleObject: Module): ModuleExportDescriptor[];
         /**
-         * The WebAssembly.Module.**`imports()`** static method returns an array containing descriptions of all the declared imports of the given Module.
+         * The WebAssembly.**`Module.imports()`** static method returns an array containing descriptions of all the declared imports of the given Module.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module/imports_static)
          */
@@ -12815,7 +12815,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The WebAssembly.**`Table`** object is a JavaScript wrapper object — an array-like structure representing a WebAssembly table, which stores homogeneous references. A table created by JavaScript or in WebAssembly code will be accessible and mutable from both JavaScript and WebAssembly.
+     * The **`WebAssembly.Table`** object is a JavaScript wrapper object — an array-like structure representing a WebAssembly table, which stores homogeneous references. A table created by JavaScript or in WebAssembly code will be accessible and mutable from both JavaScript and WebAssembly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table)
      */
@@ -12923,116 +12923,116 @@ declare namespace WebAssembly {
  */
 interface Console {
     /**
-     * The console.**`assert()`** static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
+     * The **`console.assert()`** static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static)
      */
     assert(condition?: boolean, ...data: any[]): void;
     /**
-     * The console.**`clear()`** static method clears the console if possible.
+     * The **`console.clear()`** static method clears the console if possible.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/clear_static)
      */
     clear(): void;
     /**
-     * The console.**`count()`** static method logs the number of times that this particular call to count() has been called.
+     * The **`console.count()`** static method logs the number of times that this particular call to count() has been called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/count_static)
      */
     count(label?: string): void;
     /**
-     * The console.**`countReset()`** static method resets counter used with console.count().
+     * The **`console.countReset()`** static method resets counter used with console.count().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/countReset_static)
      */
     countReset(label?: string): void;
     /**
-     * The console.**`debug()`** static method outputs a message to the console at the "debug" log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
+     * The **`console.debug()`** static method outputs a message to the console at the "debug" log level. The message is only displayed to the user if the console is configured to display debug output. In most cases, the log level is configured within the console UI. This log level might correspond to the Debug or Verbose log level.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/debug_static)
      */
     debug(...data: any[]): void;
     /**
-     * The console.**`dir()`** static method displays a list of the properties of the specified JavaScript object. In browser consoles, the output is presented as a hierarchical listing with disclosure triangles that let you see the contents of child objects.
+     * The **`console.dir()`** static method displays a list of the properties of the specified JavaScript object. In browser consoles, the output is presented as a hierarchical listing with disclosure triangles that let you see the contents of child objects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dir_static)
      */
     dir(item?: any, options?: any): void;
     /**
-     * The console.**`dirxml()`** static method displays an interactive tree of the descendant elements of the specified XML/HTML element. If it is not possible to display as an element the JavaScript Object view is shown instead. The output is presented as a hierarchical listing of expandable nodes that let you see the contents of child nodes.
+     * The **`console.dirxml()`** static method displays an interactive tree of the descendant elements of the specified XML/HTML element. If it is not possible to display as an element the JavaScript Object view is shown instead. The output is presented as a hierarchical listing of expandable nodes that let you see the contents of child nodes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/dirxml_static)
      */
     dirxml(...data: any[]): void;
     /**
-     * The console.**`error()`** static method outputs a message to the console at the "error" log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
+     * The **`console.error()`** static method outputs a message to the console at the "error" log level. The message is only displayed to the user if the console is configured to display error output. In most cases, the log level is configured within the console UI. The message may be formatted as an error, with red colors and call stack information.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/error_static)
      */
     error(...data: any[]): void;
     /**
-     * The console.**`group()`** static method creates a new inline group in the Web console log, causing any subsequent console messages to be indented by an additional level, until console.groupEnd() is called.
+     * The **`console.group()`** static method creates a new inline group in the Web console log, causing any subsequent console messages to be indented by an additional level, until console.groupEnd() is called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/group_static)
      */
     group(...data: any[]): void;
     /**
-     * The console.**`groupCollapsed()`** static method creates a new inline group in the console. Unlike console.group(), however, the new group is created collapsed. The user will need to use the disclosure button next to it to expand it, revealing the entries created in the group.
+     * The **`console.groupCollapsed()`** static method creates a new inline group in the console. Unlike console.group(), however, the new group is created collapsed. The user will need to use the disclosure button next to it to expand it, revealing the entries created in the group.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupCollapsed_static)
      */
     groupCollapsed(...data: any[]): void;
     /**
-     * The console.**`groupEnd()`** static method exits the current inline group in the console. See Using groups in the console in the console documentation for details and examples.
+     * The **`console.groupEnd()`** static method exits the current inline group in the console. See Using groups in the console in the console documentation for details and examples.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/groupEnd_static)
      */
     groupEnd(): void;
     /**
-     * The console.**`info()`** static method outputs a message to the console at the "info" log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
+     * The **`console.info()`** static method outputs a message to the console at the "info" log level. The message is only displayed to the user if the console is configured to display info output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as a small "i" icon next to it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/info_static)
      */
     info(...data: any[]): void;
     /**
-     * The console.**`log()`** static method outputs a message to the console.
+     * The **`console.log()`** static method outputs a message to the console.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/log_static)
      */
     log(...data: any[]): void;
     /**
-     * The console.**`table()`** static method displays tabular data as a table.
+     * The **`console.table()`** static method displays tabular data as a table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/table_static)
      */
     table(tabularData?: any, properties?: string[]): void;
     /**
-     * The console.**`time()`** static method starts a timer you can use to track how long an operation takes. You give each timer a unique name, and may have up to 10,000 timers running on a given page. When you call console.timeEnd() with the same name, the browser will output the time, in milliseconds, that elapsed since the timer was started.
+     * The **`console.time()`** static method starts a timer you can use to track how long an operation takes. You give each timer a unique name, and may have up to 10,000 timers running on a given page. When you call console.timeEnd() with the same name, the browser will output the time, in milliseconds, that elapsed since the timer was started.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/time_static)
      */
     time(label?: string): void;
     /**
-     * The console.**`timeEnd()`** static method stops a timer that was previously started by calling console.time().
+     * The **`console.timeEnd()`** static method stops a timer that was previously started by calling console.time().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeEnd_static)
      */
     timeEnd(label?: string): void;
     /**
-     * The console.**`timeLog()`** static method logs the current value of a timer that was previously started by calling console.time().
+     * The **`console.timeLog()`** static method logs the current value of a timer that was previously started by calling console.time().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static)
      */
     timeLog(label?: string, ...data: any[]): void;
     timeStamp(label?: string): void;
     /**
-     * The console.**`trace()`** static method outputs a stack trace to the console.
+     * The **`console.trace()`** static method outputs a stack trace to the console.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/trace_static)
      */
     trace(...data: any[]): void;
     /**
-     * The console.**`warn()`** static method outputs a warning message to the console at the "warning" log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
+     * The **`console.warn()`** static method outputs a warning message to the console at the "warning" log level. The message is only displayed to the user if the console is configured to display warning output. In most cases, the log level is configured within the console UI. The message may receive special formatting, such as yellow colors and a warning icon.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/warn_static)
      */
@@ -13586,7 +13586,7 @@ interface URLSearchParams {
 
 interface WEBGL_draw_buffers {
     /**
-     * The WEBGL_draw_buffers.**`drawBuffersWEBGL()`** method is part of the WebGL API and allows you to define the draw buffers to which all fragment colors are written.
+     * The **`WEBGL_draw_buffers.drawBuffersWEBGL()`** method is part of the WebGL API and allows you to define the draw buffers to which all fragment colors are written.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL)
      */
@@ -13595,25 +13595,25 @@ interface WEBGL_draw_buffers {
 
 interface WEBGL_multi_draw {
     /**
-     * The WEBGL_multi_draw.**`multiDrawArraysInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArraysInstanced() method.
+     * The **`WEBGL_multi_draw.multiDrawArraysInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArraysInstanced() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysInstancedWEBGL)
      */
     multiDrawArraysInstancedWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | GLint[], firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
     /**
-     * The WEBGL_multi_draw.**`multiDrawArraysWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArrays() method.
+     * The **`WEBGL_multi_draw.multiDrawArraysWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawArrays() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawArraysWEBGL)
      */
     multiDrawArraysWEBGL(mode: GLenum, firstsList: Int32Array<ArrayBufferLike> | GLint[], firstsOffset: number, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, drawcount: GLsizei): void;
     /**
-     * The WEBGL_multi_draw.**`multiDrawElementsInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElementsInstanced() method.
+     * The **`WEBGL_multi_draw.multiDrawElementsInstancedWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElementsInstanced() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsInstancedWEBGL)
      */
     multiDrawElementsInstancedWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | GLsizei[], offsetsOffset: number, instanceCountsList: Int32Array<ArrayBufferLike> | GLsizei[], instanceCountsOffset: number, drawcount: GLsizei): void;
     /**
-     * The WEBGL_multi_draw.**`multiDrawElementsWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElements() method.
+     * The **`WEBGL_multi_draw.multiDrawElementsWEBGL()`** method of the WebGL API renders multiple primitives from array data. It is identical to multiple calls to the gl.drawElements() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL)
      */

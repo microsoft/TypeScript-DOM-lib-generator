@@ -63,7 +63,8 @@ function generateComment(summary: string, name: string): string {
   return summary
     .replace(/\n/g, " ") // remove newlines
     .replace(
-      new RegExp(`${escapedName}(\\(\\))?`),
+      // Match optional preceding identifier + dot OR just the name itself
+      new RegExp(`(?:\\b\\w+\\.)?${escapedName}(\\(\\))?`),
       (match) => `**\`${match}\`**`,
     )
     .trim();
