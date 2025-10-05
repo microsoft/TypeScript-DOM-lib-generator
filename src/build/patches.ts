@@ -56,7 +56,9 @@ function handleTyped(type: Node): Typed {
 }
 
 function handleTypeParameters(value: Value) {
-  if (!value) return {};
+  if (!value) {
+    return {};
+  }
   return {
     typeParameters: [
       {

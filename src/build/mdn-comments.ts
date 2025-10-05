@@ -47,7 +47,9 @@ async function walkDirectory(dir: URL): Promise<URL[]> {
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
-      if (entry.name === parentDirName) continue;
+      if (entry.name === parentDirName) {
+        continue;
+      }
       const subDir = new URL(`${entry.name}/`, dir);
       results = results.concat(await walkDirectory(subDir));
     } else if (entry.isFile() && entry.name === "index.md") {
@@ -139,7 +141,9 @@ export async function generateDescriptions(): Promise<{
       const content = await fs.readFile(fileURL, "utf-8");
       const slug = extractSlug(content);
       const generatedPath = generatePath(content);
-      if (!slug.length || !generatedPath) return;
+      if (!slug.length || !generatedPath) {
+        return;
+      }
 
       const summary = extractSummary(content);
       insertComment(results, slug, summary, generatedPath);

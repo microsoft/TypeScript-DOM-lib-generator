@@ -10,10 +10,11 @@ import { join } from "path";
 const maybeTSWorkingDir = [process.argv[2], "../TypeScript", "TypeScript"];
 const tscWD = maybeTSWorkingDir.find((wd) => existsSync(wd));
 
-if (!tscWD)
+if (!tscWD) {
   throw new Error(
     "Could not find a TypeScript clone to put the generated files in.",
   );
+}
 
 const generatedFiles = readdirSync("generated");
 const filesToSend = generatedFiles.filter(

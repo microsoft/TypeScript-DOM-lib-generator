@@ -141,7 +141,9 @@ async function emitDom() {
 
     for (const [key, target] of Object.entries(namespaces)) {
       const descObject = descriptions.interfaces.interface[key];
-      if (!descObject) continue;
+      if (!descObject) {
+        continue;
+      }
 
       merge(target, descObject, { optional: true });
     }
@@ -183,7 +185,9 @@ async function emitDom() {
         webidl.interfaces!.interface[partial.name] ||
         webidl.mixins!.mixin[partial.name];
       if (base) {
-        if (base.exposed) resolveExposure(partial, base.exposed);
+        if (base.exposed) {
+          resolveExposure(partial, base.exposed);
+        }
         merge(base.constants, partial.constants, { shallow: true });
         merge(base.methods, partial.methods, { shallow: true });
         merge(base.properties, partial.properties, { shallow: true });
@@ -192,7 +196,9 @@ async function emitDom() {
     for (const partial of w.partialMixins) {
       const base = webidl.mixins!.mixin[partial.name];
       if (base) {
-        if (base.exposed) resolveExposure(partial, base.exposed);
+        if (base.exposed) {
+          resolveExposure(partial, base.exposed);
+        }
         merge(base.constants, partial.constants, { shallow: true });
         merge(base.methods, partial.methods, { shallow: true });
         merge(base.properties, partial.properties, { shallow: true });
@@ -207,7 +213,9 @@ async function emitDom() {
     for (const partial of w.partialNamespaces) {
       const base = webidl.namespaces?.find((n) => n.name === partial.name);
       if (base) {
-        if (base.exposed) resolveExposure(partial, base.exposed);
+        if (base.exposed) {
+          resolveExposure(partial, base.exposed);
+        }
         merge(base.methods, partial.methods, { shallow: true });
         merge(base.properties, partial.properties, { shallow: true });
       }
@@ -351,7 +359,9 @@ async function emitDom() {
     return filterByNull(obj, template);
 
     function filterByNull(obj: any, template: any) {
-      if (!template) return obj;
+      if (!template) {
+        return obj;
+      }
       const filtered = Array.isArray(obj) ? obj.slice(0) : { ...obj };
       for (const k in template) {
         if (!obj[k]) {
