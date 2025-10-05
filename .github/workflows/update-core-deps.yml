@@ -28,7 +28,7 @@ jobs:
       # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
       - run: npm i
       - name: Update MDN Data
-        run: node scripts/generateMDN
+        run: node scripts/fetch-mdn.js
       - id: build
         run: npm run generate
         continue-on-error: true
