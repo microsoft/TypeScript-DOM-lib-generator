@@ -26762,6 +26762,7 @@ declare var Response: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
+    download: string;
     /**
      * The **`rel`** property of the SVGAElement returns a string reflecting the value of the `rel` attribute of the SVG a element.
      *
@@ -29142,6 +29143,7 @@ interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     readonly SVG_MARKER_ORIENT_UNKNOWN: 0;
     readonly SVG_MARKER_ORIENT_AUTO: 1;
     readonly SVG_MARKER_ORIENT_ANGLE: 2;
+    readonly SVG_MARKER_ORIENT_AUTO_START_REVERSE: 3;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -29157,6 +29159,7 @@ declare var SVGMarkerElement: {
     readonly SVG_MARKER_ORIENT_UNKNOWN: 0;
     readonly SVG_MARKER_ORIENT_AUTO: 1;
     readonly SVG_MARKER_ORIENT_ANGLE: 2;
+    readonly SVG_MARKER_ORIENT_AUTO_START_REVERSE: 3;
 };
 
 /**
@@ -29801,7 +29804,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/getElementById)
      */
-    getElementById(elementId: string): Element;
+    getElementById(elementId: string): Element | null;
     getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     /**
@@ -29976,6 +29979,11 @@ declare var SVGStringList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement)
  */
 interface SVGStyleElement extends SVGElement, LinkStyle {
+    /**
+     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement/disabled)
+     */
     disabled: boolean;
     /**
      * The **`SVGStyleElement.media`** property is a media query string corresponding to the `media` attribute of the given SVG style element.
@@ -31099,12 +31107,6 @@ interface ServiceWorkerRegistration extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/updatefound_event) */
     onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
     /**
-     * The **`pushManager`** read-only property of the ServiceWorkerRegistration interface returns a reference to the PushManager interface for managing push subscriptions; this includes support for subscribing, getting an active subscription, and accessing push permission status.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager)
-     */
-    readonly pushManager: PushManager;
-    /**
      * The **`scope`** read-only property of the ServiceWorkerRegistration interface returns a string representing a URL that defines a service worker's registration scope; that is, the range of URLs a service worker can control.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/scope)
@@ -31299,10 +31301,15 @@ interface SourceBuffer extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/mode)
      */
     mode: AppendMode;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/abort_event) */
     onabort: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/error_event) */
     onerror: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/update_event) */
     onupdate: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updateend_event) */
     onupdateend: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updatestart_event) */
     onupdatestart: ((this: SourceBuffer, ev: Event) => any) | null;
     /**
      * The **`timestampOffset`** property of the SourceBuffer interface controls the offset applied to timestamps inside media segments that are appended to the `SourceBuffer`.
@@ -38353,6 +38360,37 @@ declare namespace WebAssembly {
     };
 
     /**
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
+     */
+    interface Exception {
+        /**
+         * The read-only **`stack`** property of an object instance of type `WebAssembly.Exception` _may_ contain a stack trace.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
+         */
+        readonly stack: string | undefined;
+        /**
+         * The **`getArg()`** prototype method of the `Exception` object can be used to get the value of a specified item in the exception's data arguments.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
+         */
+        getArg(index: number): any;
+        /**
+         * The **`is()`** prototype method of the `Exception` object can be used to test if the `Exception` matches a given tag.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
+         */
+        is(exceptionTag: Tag): boolean;
+    }
+
+    var Exception: {
+        prototype: Exception;
+        new(exceptionTag: Tag, payload: any[], options?: ExceptionOptions): Exception;
+    };
+
+    /**
      * A **`WebAssembly.Global`** object represents a global variable instance, accessible from both JavaScript and importable/exportable across one or more `WebAssembly.Module` instances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global)
@@ -38412,7 +38450,7 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
-        grow(delta: number): number;
+        grow(delta: AddressValue): AddressValue;
     }
 
     var Memory: {
@@ -38430,7 +38468,7 @@ declare namespace WebAssembly {
 
     var Module: {
         prototype: Module;
-        new(bytes: BufferSource): Module;
+        new(bytes: BufferSource, options?: WebAssemblyCompileOptions): Module;
         /**
          * The **`WebAssembly.Module.customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
          *
@@ -38471,25 +38509,25 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/length)
          */
-        readonly length: number;
+        readonly length: AddressValue;
         /**
          * The **`get()`** prototype method of the `WebAssembly.Table()` object retrieves the element stored at a given index.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/get)
          */
-        get(index: number): any;
+        get(index: AddressValue): any;
         /**
          * The **`grow()`** prototype method of the `WebAssembly.Table` object increases the size of the `Table` instance by a specified number of elements, filled with the provided value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/grow)
          */
-        grow(delta: number, value?: any): number;
+        grow(delta: AddressValue, value?: any): AddressValue;
         /**
          * The **`set()`** prototype method of the `WebAssembly.Table` object mutates a reference stored at a given index to a different value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
-        set(index: number, value?: any): void;
+        set(index: AddressValue, value?: any): void;
     }
 
     var Table: {
@@ -38497,14 +38535,32 @@ declare namespace WebAssembly {
         new(descriptor: TableDescriptor, value?: any): Table;
     };
 
+    /**
+     * The **`WebAssembly.Tag`** object defines a _type_ of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
+     */
+    interface Tag {
+    }
+
+    var Tag: {
+        prototype: Tag;
+        new(type: TagType): Tag;
+    };
+
+    interface ExceptionOptions {
+        traceStack?: boolean;
+    }
+
     interface GlobalDescriptor<T extends ValueType = ValueType> {
         mutable?: boolean;
         value: T;
     }
 
     interface MemoryDescriptor {
-        initial: number;
-        maximum?: number;
+        address?: AddressType;
+        initial: AddressValue;
+        maximum?: AddressValue;
         shared?: boolean;
     }
 
@@ -38520,9 +38576,14 @@ declare namespace WebAssembly {
     }
 
     interface TableDescriptor {
+        address?: AddressType;
         element: TableKind;
-        initial: number;
-        maximum?: number;
+        initial: AddressValue;
+        maximum?: AddressValue;
+    }
+
+    interface TagType {
+        parameters: ValueType[];
     }
 
     interface ValueTypeMap {
@@ -38535,30 +38596,38 @@ declare namespace WebAssembly {
         v128: never;
     }
 
+    interface WebAssemblyCompileOptions {
+        builtins?: string[];
+        importedStringConstants?: string | null;
+    }
+
     interface WebAssemblyInstantiatedSource {
         instance: Instance;
         module: Module;
     }
 
-    type ImportExportKind = "function" | "global" | "memory" | "table";
+    type AddressType = "i32" | "i64";
+    type ImportExportKind = "function" | "global" | "memory" | "table" | "tag";
     type TableKind = "anyfunc" | "externref";
+    type AddressValue = number;
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
     type ImportValue = ExportValue | number;
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
     type ValueType = keyof ValueTypeMap;
+    var JSTag: Tag;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
-    function compile(bytes: BufferSource): Promise<Module>;
+    function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compileStreaming_static) */
-    function compileStreaming(source: Response | PromiseLike<Response>): Promise<Module>;
+    function compileStreaming(source: Response | PromiseLike<Response>, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiate_static) */
-    function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(bytes: BufferSource, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiateStreaming_static) */
-    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/validate_static) */
-    function validate(bytes: BufferSource): boolean;
+    function validate(bytes: BufferSource, options?: WebAssemblyCompileOptions): boolean;
 }
 
 /** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */

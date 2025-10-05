@@ -83,6 +83,11 @@
                     "json" // No implementation as of 2023-11
                 ]
             },
+            "RTCDegradationPreference": {
+                "value": [
+                    "maintain-framerate-and-resolution" // No implementation as of 2025-10j
+                ]
+            },
             "ValueType": null,
             "VideoColorPrimaries": {
                 "value": [
@@ -485,7 +490,8 @@
             "MediaSessionActionDetails": {
                 "members": {
                     "member": {
-                        "isActivating": null // WebKit only as of 2024-10
+                        "enterPictureInPictureReason": null, // No implementation as of 2025-10
+                        "isActivating": null // WebKit only as of 2025-10
                     }
                 }
             },
