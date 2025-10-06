@@ -134,7 +134,9 @@ const go = async () => {
 
     // Migrate in the template files
     for (const templateFile of fs.readdirSync(templateDir)) {
-      if (templateFile.startsWith(".")) continue;
+      if (templateFile.startsWith(".")) {
+        continue;
+      }
 
       const templatedFile = new URL(templateFile, templateDir);
       fs.copyFileSync(templatedFile, new URL(templateFile, packagePath));
@@ -242,15 +244,21 @@ function prependAutoImports(pkg, packagePath) {
   const groups = new Map();
   for (const file of pkg.files) {
     let files = groups.get(file.group);
-    if (!files) groups.set(file.group, (files = []));
+    if (!files) {
+      groups.set(file.group, (files = []));
+    }
     files.push(file);
   }
   for (const files of groups.values()) {
     const indexFile = files.find((file) => file.index);
-    if (!indexFile) continue;
+    if (!indexFile) {
+      continue;
+    }
 
     const index = new URL(indexFile.to, packagePath);
-    if (!fs.existsSync(index)) continue;
+    if (!fs.existsSync(index)) {
+      continue;
+    }
 
     const toPrepend = files
       .filter((f) => !!f.autoImport)
@@ -270,8 +278,12 @@ function prependAutoImports(pkg, packagePath) {
  * @param {URL} to
  */
 function relativeUrl(from, to) {
-  if (from.origin !== to.origin) return to.toString();
-  if (!from.pathname.endsWith("/")) from = new URL("./", from);
+  if (from.origin !== to.origin) {
+    return to.toString();
+  }
+  if (!from.pathname.endsWith("/")) {
+    from = new URL("./", from);
+  }
   const relative = path.posix.relative(from.pathname, to.pathname);
   return path.isAbsolute(relative) ||
     relative.startsWith("../") ||

@@ -3725,6 +3725,9 @@
                     "[property: string]: string | number | null | undefined"
                 ]
             },
+            "ExceptionOptions": {
+                "legacyNamespace": "WebAssembly"
+            },
             "PermissionDescriptor": {
                 "members": {
                     "member": {
@@ -3829,6 +3832,9 @@
                         }
                     }
                 }
+            },
+            "TagType": {
+                "legacyNamespace": "WebAssembly"
             },
             // TextEncoderEncodeIntoResult is used only for return type, always with all fields defined
             "TextEncoderEncodeIntoResult": {
@@ -3957,6 +3963,9 @@
                     }
                 }
             },
+            "WebAssemblyCompileOptions": {
+                "legacyNamespace": "WebAssembly"
+            },
             "WebAssemblyInstantiatedSource": {
                 "legacyNamespace": "WebAssembly"
             },
@@ -4034,6 +4043,12 @@
                     }
                 ],
                 "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+            },
+            {
+                "name": "AddressValue",
+                "legacyNamespace": "WebAssembly",
+                // This should be "number | bigint" but we can't break es2015 compat
+                "type": "long"
             }
         ]
     },

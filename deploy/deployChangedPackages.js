@@ -64,8 +64,9 @@ for (const dirName of fs.readdirSync(generatedDir)) {
         `${pkgJSON.name}@${olderVersion}/${filemap.to}`,
       );
       console.log(` - ${file}`);
-      if (oldFile !== generatedDTSContent)
+      if (oldFile !== generatedDTSContent) {
         printUnifiedDiff(oldFile, generatedDTSContent);
+      }
 
       const title = `## \`${file}\``;
       const notes = generateChangelogFrom(oldFile, generatedDTSContent);
