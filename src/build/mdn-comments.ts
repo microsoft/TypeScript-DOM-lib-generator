@@ -47,7 +47,9 @@ function insertComment(
 
 function extractSlug(slug: string): string[] {
   for (const subdirectory of subdirectories) {
-    if (!slug.toLowerCase().startsWith(subdirectory)) continue;
+    if (!slug.toLowerCase().startsWith(subdirectory)) {
+      continue;
+    }
     return slug
       .slice(subdirectory.length)
       .replace(/_static/g, "")
@@ -83,7 +85,9 @@ export async function generateDescriptions(): Promise<{
     const slugArr = extractSlug(mdnUrl);
     const path = paths[entry.pageType];
     const comment = generateComment(entry.summary, slugArr[slugArr.length - 1]);
-    if (!slugArr.length || !path) continue;
+    if (!slugArr.length || !path) {
+      continue;
+    }
     insertComment(results, slugArr, comment, path);
   }
   return { interfaces: { interface: results } };

@@ -6,7 +6,9 @@ const url = "https://developer.mozilla.org/en-US/metadata.json";
 async function fetchAndFilterMDN() {
   try {
     const res = await fetch(url);
-    if (!res.ok) throw new Error(`Fetch failed: ${res.statusText}`);
+    if (!res.ok) {
+      throw new Error(`Fetch failed: ${res.statusText}`);
+    }
 
     const data = await res.json();
 
