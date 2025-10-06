@@ -12,11 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true  # Ensure submodules are checked out
 
-      - name: Update submodules
-        run: git submodule update --init --remote
       - uses: actions/setup-node@v5
         with:
           node-version: "lts/*"
@@ -31,6 +27,8 @@ jobs:
       # This prevents annoying change when contributors run `npm i` on their local machine.
       # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
       - run: npm i
+      - name: Update MDN Data
+        run: node scripts/fetch-mdn.js
       - id: build
         run: npm run generate
         continue-on-error: true
