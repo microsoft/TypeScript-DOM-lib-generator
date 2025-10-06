@@ -2306,6 +2306,7 @@ interface TextEncoderEncodeIntoResult {
 interface ToggleEventInit extends EventInit {
     newState?: string;
     oldState?: string;
+    source?: Element | null;
 }
 
 interface TouchEventInit extends EventModifierInit {
@@ -3274,7 +3275,11 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration) */
+    /**
+     * The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or `null`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration)
+     */
     readonly duration: CSSNumberish | null;
 }
 
@@ -14121,7 +14126,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
      */
     innerText: string;
     /**
-     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a MISSING: RFC(5646, 'BCP 47 language identifier tag')].
+     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a BCP 47 language tag.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lang)
      */
@@ -15468,7 +15473,7 @@ interface HTMLLabelElement extends HTMLElement {
      */
     readonly control: HTMLElement | null;
     /**
-     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the HTMLLabelElement.control associated with this label, or `null` if this label is not associated with a control owned by a form.
+     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the HTMLLabelElement.control associated with this label, or `null` if this label is not associated with a labelable form-associated element (button, input, output, select, textarea, or form-associated custom elements) that is owned by a form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/form)
      */
@@ -16774,7 +16779,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     src: string;
     /**
-     * The **`text`** property of the HTMLScriptElement interface is a string that reflects the text content inside the script element.
+     * The **`text`** property of the HTMLScriptElement interface represents the inline text content of the script element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/text)
      */
@@ -30615,7 +30620,7 @@ interface ScreenOrientation extends EventTarget {
      */
     lock(orientation: OrientationLockType): Promise<void>;
     /**
-     * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document from its default orientation.
+     * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document, effectively locking it to the default screen orientation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/unlock)
      */
@@ -40118,7 +40123,7 @@ type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
-type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
+type NavigationTimingType = "back_forward" | "navigate" | "reload";
 type NavigationType = "push" | "reload" | "replace" | "traverse";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
