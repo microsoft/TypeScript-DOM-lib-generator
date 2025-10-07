@@ -285,6 +285,7 @@ async function emitDom() {
         allowUnrelatedSetterType: true,
         useGenericTypedArrays: true,
         includeIterable: true,
+        emitToStringTags: true,
       },
     },
     // ts5.7 (and later)

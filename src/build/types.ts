@@ -190,6 +190,7 @@ export interface Interface {
   "implicit-this"?: 1;
   overrideThis?: string;
   noInterfaceObject?: boolean;
+  noToStringTag?: boolean;
   global?: string;
   typeParameters?: TypeParameter[];
   overrideIndexSignatures?: string[];
