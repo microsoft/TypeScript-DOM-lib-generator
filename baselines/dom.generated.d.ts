@@ -3009,6 +3009,7 @@ interface AnalyserNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnalyserNode/getFloatTimeDomainData)
      */
     getFloatTimeDomainData(array: Float32Array<ArrayBuffer>): void;
+    readonly [Symbol.toStringTag]: "AnalyserNode";
 }
 
 declare var AnalyserNode: {
@@ -3227,6 +3228,7 @@ interface AnimationEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEvent/pseudoElement)
      */
     readonly pseudoElement: string;
+    readonly [Symbol.toStringTag]: "AnimationEvent";
 }
 
 declare var AnimationEvent: {
@@ -3259,6 +3261,7 @@ interface AnimationPlaybackEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationPlaybackEvent/timelineTime)
      */
     readonly timelineTime: CSSNumberish | null;
+    readonly [Symbol.toStringTag]: "AnimationPlaybackEvent";
 }
 
 declare var AnimationPlaybackEvent: {
@@ -3344,6 +3347,7 @@ interface Attr extends Node {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): string;
     set textContent(value: string | null);
+    readonly [Symbol.toStringTag]: "Attr";
 }
 
 declare var Attr: {
@@ -3399,6 +3403,7 @@ interface AudioBuffer {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioBuffer/getChannelData)
      */
     getChannelData(channel: number): Float32Array<ArrayBuffer>;
+    readonly [Symbol.toStringTag]: "AudioBuffer";
 }
 
 declare var AudioBuffer: {
@@ -3458,6 +3463,7 @@ interface AudioBufferSourceNode extends AudioScheduledSourceNode {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioScheduledSourceNodeEventMap>(type: K, listener: (this: AudioBufferSourceNode, ev: AudioScheduledSourceNodeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "AudioBufferSourceNode";
 }
 
 declare var AudioBufferSourceNode: {
@@ -3529,6 +3535,7 @@ interface AudioContext extends BaseAudioContext {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof BaseAudioContextEventMap>(type: K, listener: (this: AudioContext, ev: BaseAudioContextEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "AudioContext";
 }
 
 declare var AudioContext: {
@@ -3602,6 +3609,7 @@ interface AudioData {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioData/copyTo)
      */
     copyTo(destination: AllowSharedBufferSource, options: AudioDataCopyToOptions): void;
+    readonly [Symbol.toStringTag]: "AudioData";
 }
 
 declare var AudioData: {
@@ -3668,6 +3676,7 @@ interface AudioDecoder extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioDecoderEventMap>(type: K, listener: (this: AudioDecoder, ev: AudioDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "AudioDecoder";
 }
 
 declare var AudioDecoder: {
@@ -3693,6 +3702,7 @@ interface AudioDestinationNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioDestinationNode/maxChannelCount)
      */
     readonly maxChannelCount: number;
+    readonly [Symbol.toStringTag]: "AudioDestinationNode";
 }
 
 declare var AudioDestinationNode: {
@@ -3759,6 +3769,7 @@ interface AudioEncoder extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioEncoderEventMap>(type: K, listener: (this: AudioEncoder, ev: AudioEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "AudioEncoder";
 }
 
 declare var AudioEncoder: {
@@ -3846,6 +3857,7 @@ interface AudioListener {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioListener/setPosition)
      */
     setPosition(x: number, y: number, z: number): void;
+    readonly [Symbol.toStringTag]: "AudioListener";
 }
 
 declare var AudioListener: {
@@ -3994,6 +4006,7 @@ interface AudioParam {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioParam/setValueCurveAtTime)
      */
     setValueCurveAtTime(values: number[] | Float32Array, startTime: number, duration: number): AudioParam;
+    readonly [Symbol.toStringTag]: "AudioParam";
 }
 
 declare var AudioParam: {
@@ -4008,6 +4021,7 @@ declare var AudioParam: {
  */
 interface AudioParamMap {
     forEach(callbackfn: (value: AudioParam, key: string, parent: AudioParamMap) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "AudioParamMap";
 }
 
 declare var AudioParamMap: {
@@ -4043,6 +4057,7 @@ interface AudioProcessingEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioProcessingEvent/playbackTime)
      */
     readonly playbackTime: number;
+    readonly [Symbol.toStringTag]: "AudioProcessingEvent";
 }
 
 /** @deprecated */
@@ -4093,6 +4108,7 @@ declare var AudioScheduledSourceNode: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorklet)
  */
 interface AudioWorklet extends Worklet {
+    readonly [Symbol.toStringTag]: "AudioWorklet";
 }
 
 declare var AudioWorklet: {
@@ -4129,6 +4145,7 @@ interface AudioWorkletNode extends AudioNode {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioWorkletNodeEventMap>(type: K, listener: (this: AudioWorkletNode, ev: AudioWorkletNodeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "AudioWorkletNode";
 }
 
 declare var AudioWorkletNode: {
@@ -4161,6 +4178,7 @@ interface AuthenticatorAssertionResponse extends AuthenticatorResponse {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AuthenticatorAssertionResponse/userHandle)
      */
     readonly userHandle: ArrayBuffer | null;
+    readonly [Symbol.toStringTag]: "AuthenticatorAssertionResponse";
 }
 
 declare var AuthenticatorAssertionResponse: {
@@ -4205,6 +4223,7 @@ interface AuthenticatorAttestationResponse extends AuthenticatorResponse {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AuthenticatorAttestationResponse/getTransports)
      */
     getTransports(): string[];
+    readonly [Symbol.toStringTag]: "AuthenticatorAttestationResponse";
 }
 
 declare var AuthenticatorAttestationResponse: {
@@ -4244,6 +4263,7 @@ interface BarProp {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BarProp/visible)
      */
     readonly visible: boolean;
+    readonly [Symbol.toStringTag]: "BarProp";
 }
 
 declare var BarProp: {
@@ -4439,6 +4459,7 @@ interface BeforeUnloadEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BeforeUnloadEvent/returnValue)
      */
     returnValue: any;
+    readonly [Symbol.toStringTag]: "BeforeUnloadEvent";
 }
 
 declare var BeforeUnloadEvent: {
@@ -4488,6 +4509,7 @@ interface BiquadFilterNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BiquadFilterNode/getFrequencyResponse)
      */
     getFrequencyResponse(frequencyHz: Float32Array<ArrayBuffer>, magResponse: Float32Array<ArrayBuffer>, phaseResponse: Float32Array<ArrayBuffer>): void;
+    readonly [Symbol.toStringTag]: "BiquadFilterNode";
 }
 
 declare var BiquadFilterNode: {
@@ -4568,6 +4590,7 @@ interface BlobEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BlobEvent/timecode)
      */
     readonly timecode: DOMHighResTimeStamp;
+    readonly [Symbol.toStringTag]: "BlobEvent";
 }
 
 declare var BlobEvent: {
@@ -4631,6 +4654,7 @@ interface BroadcastChannel extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "BroadcastChannel";
 }
 
 declare var BroadcastChannel: {
@@ -4652,6 +4676,7 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/size) */
     readonly size: QueuingStrategySize<ArrayBufferView>;
+    readonly [Symbol.toStringTag]: "ByteLengthQueuingStrategy";
 }
 
 declare var ByteLengthQueuingStrategy: {
@@ -4665,6 +4690,7 @@ declare var ByteLengthQueuingStrategy: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CDATASection)
  */
 interface CDATASection extends Text {
+    readonly [Symbol.toStringTag]: "CDATASection";
 }
 
 declare var CDATASection: {
@@ -4688,6 +4714,7 @@ interface CSSAnimation extends Animation {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSAnimation, ev: AnimationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "CSSAnimation";
 }
 
 declare var CSSAnimation: {
@@ -4732,6 +4759,7 @@ interface CSSContainerRule extends CSSConditionRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerQuery)
      */
     readonly containerQuery: string;
+    readonly [Symbol.toStringTag]: "CSSContainerRule";
 }
 
 declare var CSSContainerRule: {
@@ -4811,6 +4839,7 @@ interface CSSCounterStyleRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSCounterStyleRule/system)
      */
     system: string;
+    readonly [Symbol.toStringTag]: "CSSCounterStyleRule";
 }
 
 declare var CSSCounterStyleRule: {
@@ -4831,6 +4860,7 @@ interface CSSFontFaceRule extends CSSRule {
      */
     get style(): CSSStyleDeclaration;
     set style(cssText: string);
+    readonly [Symbol.toStringTag]: "CSSFontFaceRule";
 }
 
 declare var CSSFontFaceRule: {
@@ -4850,6 +4880,7 @@ interface CSSFontFeatureValuesRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule/fontFamily)
      */
     fontFamily: string;
+    readonly [Symbol.toStringTag]: "CSSFontFeatureValuesRule";
 }
 
 declare var CSSFontFeatureValuesRule: {
@@ -4887,6 +4918,7 @@ interface CSSFontPaletteValuesRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontPaletteValuesRule/overrideColors)
      */
     readonly overrideColors: string;
+    readonly [Symbol.toStringTag]: "CSSFontPaletteValuesRule";
 }
 
 declare var CSSFontPaletteValuesRule: {
@@ -4931,6 +4963,7 @@ declare var CSSGroupingRule: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImageValue)
  */
 interface CSSImageValue extends CSSStyleValue {
+    readonly [Symbol.toStringTag]: "CSSImageValue";
 }
 
 declare var CSSImageValue: {
@@ -4975,6 +5008,7 @@ interface CSSImportRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/supportsText)
      */
     readonly supportsText: string | null;
+    readonly [Symbol.toStringTag]: "CSSImportRule";
 }
 
 declare var CSSImportRule: {
@@ -5001,6 +5035,7 @@ interface CSSKeyframeRule extends CSSRule {
      */
     get style(): CSSStyleDeclaration;
     set style(cssText: string);
+    readonly [Symbol.toStringTag]: "CSSKeyframeRule";
 }
 
 declare var CSSKeyframeRule: {
@@ -5051,6 +5086,7 @@ interface CSSKeyframesRule extends CSSRule {
      */
     findRule(select: string): CSSKeyframeRule | null;
     [index: number]: CSSKeyframeRule;
+    readonly [Symbol.toStringTag]: "CSSKeyframesRule";
 }
 
 declare var CSSKeyframesRule: {
@@ -5070,6 +5106,7 @@ interface CSSKeywordValue extends CSSStyleValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue/value)
      */
     value: string;
+    readonly [Symbol.toStringTag]: "CSSKeywordValue";
 }
 
 declare var CSSKeywordValue: {
@@ -5089,6 +5126,7 @@ interface CSSLayerBlockRule extends CSSGroupingRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerBlockRule/name)
      */
     readonly name: string;
+    readonly [Symbol.toStringTag]: "CSSLayerBlockRule";
 }
 
 declare var CSSLayerBlockRule: {
@@ -5108,6 +5146,7 @@ interface CSSLayerStatementRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSLayerStatementRule/nameList)
      */
     readonly nameList: ReadonlyArray<string>;
+    readonly [Symbol.toStringTag]: "CSSLayerStatementRule";
 }
 
 declare var CSSLayerStatementRule: {
@@ -5119,6 +5158,7 @@ interface CSSMathClamp extends CSSMathValue {
     readonly lower: CSSNumericValue;
     readonly upper: CSSNumericValue;
     readonly value: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSMathClamp";
 }
 
 declare var CSSMathClamp: {
@@ -5138,6 +5178,7 @@ interface CSSMathInvert extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert/value)
      */
     readonly value: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSMathInvert";
 }
 
 declare var CSSMathInvert: {
@@ -5157,6 +5198,7 @@ interface CSSMathMax extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathMax";
 }
 
 declare var CSSMathMax: {
@@ -5176,6 +5218,7 @@ interface CSSMathMin extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathMin";
 }
 
 declare var CSSMathMin: {
@@ -5195,6 +5238,7 @@ interface CSSMathNegate extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate/value)
      */
     readonly value: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSMathNegate";
 }
 
 declare var CSSMathNegate: {
@@ -5214,6 +5258,7 @@ interface CSSMathProduct extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathProduct";
 }
 
 declare var CSSMathProduct: {
@@ -5233,6 +5278,7 @@ interface CSSMathSum extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathSum";
 }
 
 declare var CSSMathSum: {
@@ -5271,6 +5317,7 @@ interface CSSMatrixComponent extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent/matrix)
      */
     matrix: DOMMatrix;
+    readonly [Symbol.toStringTag]: "CSSMatrixComponent";
 }
 
 declare var CSSMatrixComponent: {
@@ -5291,6 +5338,7 @@ interface CSSMediaRule extends CSSConditionRule {
      */
     get media(): MediaList;
     set media(mediaText: string);
+    readonly [Symbol.toStringTag]: "CSSMediaRule";
 }
 
 declare var CSSMediaRule: {
@@ -5316,6 +5364,7 @@ interface CSSNamespaceRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNamespaceRule/prefix)
      */
     readonly prefix: string;
+    readonly [Symbol.toStringTag]: "CSSNamespaceRule";
 }
 
 declare var CSSNamespaceRule: {
@@ -5336,6 +5385,7 @@ interface CSSNestedDeclarations extends CSSRule {
      */
     get style(): CSSStyleDeclaration;
     set style(cssText: string);
+    readonly [Symbol.toStringTag]: "CSSNestedDeclarations";
 }
 
 declare var CSSNestedDeclarations: {
@@ -5357,6 +5407,7 @@ interface CSSNumericArray {
     readonly length: number;
     forEach(callbackfn: (value: CSSNumericValue, key: number, parent: CSSNumericArray) => void, thisArg?: any): void;
     [index: number]: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSNumericArray";
 }
 
 declare var CSSNumericArray: {
@@ -5469,6 +5520,7 @@ interface CSSPageDescriptors extends CSSStyleDeclarationBase {
     marginTop: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#size) */
     size: string;
+    readonly [Symbol.toStringTag]: "CSSPageDescriptors";
 }
 
 declare var CSSPageDescriptors: {
@@ -5495,6 +5547,7 @@ interface CSSPageRule extends CSSGroupingRule {
      */
     get style(): CSSPageDescriptors;
     set style(cssText: string);
+    readonly [Symbol.toStringTag]: "CSSPageRule";
 }
 
 declare var CSSPageRule: {
@@ -5514,6 +5567,7 @@ interface CSSPerspective extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective/length)
      */
     length: CSSPerspectiveValue;
+    readonly [Symbol.toStringTag]: "CSSPerspective";
 }
 
 declare var CSSPerspective: {
@@ -5667,6 +5721,7 @@ interface CSSPositionTryDescriptors extends CSSStyleDeclarationBase {
     top: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
     width: string;
+    readonly [Symbol.toStringTag]: "CSSPositionTryDescriptors";
 }
 
 declare var CSSPositionTryDescriptors: {
@@ -5693,6 +5748,7 @@ interface CSSPositionTryRule extends CSSRule {
      */
     get style(): CSSPositionTryDescriptors;
     set style(cssText: string);
+    readonly [Symbol.toStringTag]: "CSSPositionTryRule";
 }
 
 declare var CSSPositionTryRule: {
@@ -5730,6 +5786,7 @@ interface CSSPropertyRule extends CSSRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPropertyRule/syntax)
      */
     readonly syntax: string;
+    readonly [Symbol.toStringTag]: "CSSPropertyRule";
 }
 
 declare var CSSPropertyRule: {
@@ -5767,6 +5824,7 @@ interface CSSRotate extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate/z)
      */
     z: CSSNumberish;
+    readonly [Symbol.toStringTag]: "CSSRotate";
 }
 
 declare var CSSRotate: {
@@ -5856,6 +5914,7 @@ interface CSSRuleList {
      */
     item(index: number): CSSRule | null;
     [index: number]: CSSRule;
+    readonly [Symbol.toStringTag]: "CSSRuleList";
 }
 
 declare var CSSRuleList: {
@@ -5887,6 +5946,7 @@ interface CSSScale extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale/z)
      */
     z: CSSNumberish;
+    readonly [Symbol.toStringTag]: "CSSScale";
 }
 
 declare var CSSScale: {
@@ -5912,6 +5972,7 @@ interface CSSScopeRule extends CSSGroupingRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScopeRule/start)
      */
     readonly start: string | null;
+    readonly [Symbol.toStringTag]: "CSSScopeRule";
 }
 
 declare var CSSScopeRule: {
@@ -5937,6 +5998,7 @@ interface CSSSkew extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew/ay)
      */
     ay: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSSkew";
 }
 
 declare var CSSSkew: {
@@ -5956,6 +6018,7 @@ interface CSSSkewX extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX/ax)
      */
     ax: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSSkewX";
 }
 
 declare var CSSSkewX: {
@@ -5975,6 +6038,7 @@ interface CSSSkewY extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY/ay)
      */
     ay: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSSkewY";
 }
 
 declare var CSSSkewY: {
@@ -5988,6 +6052,7 @@ declare var CSSSkewY: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStartingStyleRule)
  */
 interface CSSStartingStyleRule extends CSSGroupingRule {
+    readonly [Symbol.toStringTag]: "CSSStartingStyleRule";
 }
 
 declare var CSSStartingStyleRule: {
@@ -7433,6 +7498,7 @@ interface CSSStyleRule extends CSSGroupingRule {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/styleMap)
      */
     readonly styleMap: StylePropertyMap;
+    readonly [Symbol.toStringTag]: "CSSStyleRule";
 }
 
 declare var CSSStyleRule: {
@@ -7503,6 +7569,7 @@ interface CSSStyleSheet extends StyleSheet {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleSheet/replaceSync)
      */
     replaceSync(text: string): void;
+    readonly [Symbol.toStringTag]: "CSSStyleSheet";
 }
 
 declare var CSSStyleSheet: {
@@ -7542,6 +7609,7 @@ declare var CSSStyleValue: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSupportsRule)
  */
 interface CSSSupportsRule extends CSSConditionRule {
+    readonly [Symbol.toStringTag]: "CSSSupportsRule";
 }
 
 declare var CSSSupportsRule: {
@@ -7601,6 +7669,7 @@ interface CSSTransformValue extends CSSStyleValue {
     toMatrix(): DOMMatrix;
     forEach(callbackfn: (value: CSSTransformComponent, key: number, parent: CSSTransformValue) => void, thisArg?: any): void;
     [index: number]: CSSTransformComponent;
+    readonly [Symbol.toStringTag]: "CSSTransformValue";
 }
 
 declare var CSSTransformValue: {
@@ -7624,6 +7693,7 @@ interface CSSTransition extends Animation {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AnimationEventMap>(type: K, listener: (this: CSSTransition, ev: AnimationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "CSSTransition";
 }
 
 declare var CSSTransition: {
@@ -7655,6 +7725,7 @@ interface CSSTranslate extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate/z)
      */
     z: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSTranslate";
 }
 
 declare var CSSTranslate: {
@@ -7680,6 +7751,7 @@ interface CSSUnitValue extends CSSNumericValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue/value)
      */
     value: number;
+    readonly [Symbol.toStringTag]: "CSSUnitValue";
 }
 
 declare var CSSUnitValue: {
@@ -7701,6 +7773,7 @@ interface CSSUnparsedValue extends CSSStyleValue {
     readonly length: number;
     forEach(callbackfn: (value: CSSUnparsedSegment, key: number, parent: CSSUnparsedValue) => void, thisArg?: any): void;
     [index: number]: CSSUnparsedSegment;
+    readonly [Symbol.toStringTag]: "CSSUnparsedValue";
 }
 
 declare var CSSUnparsedValue: {
@@ -7726,6 +7799,7 @@ interface CSSVariableReferenceValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue/variable)
      */
     variable: string;
+    readonly [Symbol.toStringTag]: "CSSVariableReferenceValue";
 }
 
 declare var CSSVariableReferenceValue: {
@@ -7736,6 +7810,7 @@ declare var CSSVariableReferenceValue: {
 interface CSSViewTransitionRule extends CSSRule {
     readonly navigation: string;
     readonly types: ReadonlyArray<string>;
+    readonly [Symbol.toStringTag]: "CSSViewTransitionRule";
 }
 
 declare var CSSViewTransitionRule: {
@@ -7792,6 +7867,7 @@ interface Cache {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache/put)
      */
     put(request: RequestInfo | URL, response: Response): Promise<void>;
+    readonly [Symbol.toStringTag]: "Cache";
 }
 
 declare var Cache: {
@@ -7836,6 +7912,7 @@ interface CacheStorage {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/open)
      */
     open(cacheName: string): Promise<Cache>;
+    readonly [Symbol.toStringTag]: "CacheStorage";
 }
 
 declare var CacheStorage: {
@@ -7865,6 +7942,7 @@ interface CanvasCaptureMediaStreamTrack extends MediaStreamTrack {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaStreamTrackEventMap>(type: K, listener: (this: CanvasCaptureMediaStreamTrack, ev: MediaStreamTrackEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "CanvasCaptureMediaStreamTrack";
 }
 
 declare var CanvasCaptureMediaStreamTrack: {
@@ -7938,6 +8016,7 @@ interface CanvasGradient {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasGradient/addColorStop)
      */
     addColorStop(offset: number, color: string): void;
+    readonly [Symbol.toStringTag]: "CanvasGradient";
 }
 
 declare var CanvasGradient: {
@@ -8015,6 +8094,7 @@ interface CanvasPattern {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasPattern/setTransform)
      */
     setTransform(transform?: DOMMatrix2DInit): void;
+    readonly [Symbol.toStringTag]: "CanvasPattern";
 }
 
 declare var CanvasPattern: {
@@ -8043,6 +8123,7 @@ interface CanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, C
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas)
      */
     readonly canvas: HTMLCanvasElement;
+    readonly [Symbol.toStringTag]: "CanvasRenderingContext2D";
 }
 
 declare var CanvasRenderingContext2D: {
@@ -8157,6 +8238,7 @@ interface CaretPosition {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CaretPosition/getClientRect)
      */
     getClientRect(): DOMRect | null;
+    readonly [Symbol.toStringTag]: "CaretPosition";
 }
 
 declare var CaretPosition: {
@@ -8170,6 +8252,7 @@ declare var CaretPosition: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ChannelMergerNode)
  */
 interface ChannelMergerNode extends AudioNode {
+    readonly [Symbol.toStringTag]: "ChannelMergerNode";
 }
 
 declare var ChannelMergerNode: {
@@ -8183,6 +8266,7 @@ declare var ChannelMergerNode: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ChannelSplitterNode)
  */
 interface ChannelSplitterNode extends AudioNode {
+    readonly [Symbol.toStringTag]: "ChannelSplitterNode";
 }
 
 declare var ChannelSplitterNode: {
@@ -8317,6 +8401,7 @@ interface Clipboard extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clipboard/writeText)
      */
     writeText(data: string): Promise<void>;
+    readonly [Symbol.toStringTag]: "Clipboard";
 }
 
 declare var Clipboard: {
@@ -8336,6 +8421,7 @@ interface ClipboardEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardEvent/clipboardData)
      */
     readonly clipboardData: DataTransfer | null;
+    readonly [Symbol.toStringTag]: "ClipboardEvent";
 }
 
 declare var ClipboardEvent: {
@@ -8368,6 +8454,7 @@ interface ClipboardItem {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/getType)
      */
     getType(type: string): Promise<Blob>;
+    readonly [Symbol.toStringTag]: "ClipboardItem";
 }
 
 declare var ClipboardItem: {
@@ -8405,6 +8492,7 @@ interface CloseEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent/wasClean)
      */
     readonly wasClean: boolean;
+    readonly [Symbol.toStringTag]: "CloseEvent";
 }
 
 declare var CloseEvent: {
@@ -8430,6 +8518,7 @@ interface CommandEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/source)
      */
     readonly source: Element | null;
+    readonly [Symbol.toStringTag]: "CommandEvent";
 }
 
 declare var CommandEvent: {
@@ -8443,6 +8532,7 @@ declare var CommandEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Comment)
  */
 interface Comment extends CharacterData {
+    readonly [Symbol.toStringTag]: "Comment";
 }
 
 declare var Comment: {
@@ -8469,6 +8559,7 @@ interface CompositionEvent extends UIEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompositionEvent/initCompositionEvent)
      */
     initCompositionEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: WindowProxy | null, dataArg?: string): void;
+    readonly [Symbol.toStringTag]: "CompositionEvent";
 }
 
 declare var CompositionEvent: {
@@ -8484,6 +8575,7 @@ declare var CompositionEvent: {
 interface CompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "CompressionStream";
 }
 
 declare var CompressionStream: {
@@ -8507,6 +8599,7 @@ interface ConstantSourceNode extends AudioScheduledSourceNode {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioScheduledSourceNodeEventMap>(type: K, listener: (this: ConstantSourceNode, ev: AudioScheduledSourceNodeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ConstantSourceNode";
 }
 
 declare var ConstantSourceNode: {
@@ -8526,6 +8619,7 @@ interface ContentVisibilityAutoStateChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped)
      */
     readonly skipped: boolean;
+    readonly [Symbol.toStringTag]: "ContentVisibilityAutoStateChangeEvent";
 }
 
 declare var ContentVisibilityAutoStateChangeEvent: {
@@ -8551,6 +8645,7 @@ interface ConvolverNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ConvolverNode/normalize)
      */
     normalize: boolean;
+    readonly [Symbol.toStringTag]: "ConvolverNode";
 }
 
 declare var ConvolverNode: {
@@ -8577,6 +8672,7 @@ interface CookieChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieChangeEvent/deleted)
      */
     readonly deleted: ReadonlyArray<CookieListItem>;
+    readonly [Symbol.toStringTag]: "CookieChangeEvent";
 }
 
 declare var CookieChangeEvent: {
@@ -8629,6 +8725,7 @@ interface CookieStore extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof CookieStoreEventMap>(type: K, listener: (this: CookieStore, ev: CookieStoreEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "CookieStore";
 }
 
 declare var CookieStore: {
@@ -8661,6 +8758,7 @@ interface CookieStoreManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe)
      */
     unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+    readonly [Symbol.toStringTag]: "CookieStoreManager";
 }
 
 declare var CookieStoreManager: {
@@ -8682,6 +8780,7 @@ interface CountQueuingStrategy extends QueuingStrategy {
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
     readonly size: QueuingStrategySize;
+    readonly [Symbol.toStringTag]: "CountQueuingStrategy";
 }
 
 declare var CountQueuingStrategy: {
@@ -8746,6 +8845,7 @@ interface CredentialsContainer {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CredentialsContainer/store)
      */
     store(credential: Credential): Promise<void>;
+    readonly [Symbol.toStringTag]: "CredentialsContainer";
 }
 
 declare var CredentialsContainer: {
@@ -8779,6 +8879,7 @@ interface Crypto {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
      */
     randomUUID(): `${string}-${string}-${string}-${string}-${string}`;
+    readonly [Symbol.toStringTag]: "Crypto";
 }
 
 declare var Crypto: {
@@ -8817,6 +8918,7 @@ interface CryptoKey {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/usages)
      */
     readonly usages: KeyUsage[];
+    readonly [Symbol.toStringTag]: "CryptoKey";
 }
 
 declare var CryptoKey: {
@@ -8860,6 +8962,7 @@ interface CustomElementRegistry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry/whenDefined)
      */
     whenDefined(name: string): Promise<CustomElementConstructor>;
+    readonly [Symbol.toStringTag]: "CustomElementRegistry";
 }
 
 declare var CustomElementRegistry: {
@@ -8886,6 +8989,7 @@ interface CustomEvent<T = any> extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/initCustomEvent)
      */
     initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
+    readonly [Symbol.toStringTag]: "CustomEvent";
 }
 
 declare var CustomEvent: {
@@ -8900,6 +9004,7 @@ declare var CustomEvent: {
  */
 interface CustomStateSet {
     forEach(callbackfn: (value: string, key: string, parent: CustomStateSet) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "CustomStateSet";
 }
 
 declare var CustomStateSet: {
@@ -9020,6 +9125,7 @@ interface DOMImplementation {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/hasFeature)
      */
     hasFeature(...args: any[]): true;
+    readonly [Symbol.toStringTag]: "DOMImplementation";
 }
 
 declare var DOMImplementation: {
@@ -9149,6 +9255,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/translateSelf)
      */
     translateSelf(tx?: number, ty?: number, tz?: number): DOMMatrix;
+    readonly [Symbol.toStringTag]: "DOMMatrix";
 }
 
 declare var DOMMatrix: {
@@ -9348,6 +9455,7 @@ interface DOMParser {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMParser/parseFromString)
      */
     parseFromString(string: string, type: DOMParserSupportedType): Document;
+    readonly [Symbol.toStringTag]: "DOMParser";
 }
 
 declare var DOMParser: {
@@ -9385,6 +9493,7 @@ interface DOMPoint extends DOMPointReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint/z)
      */
     z: number;
+    readonly [Symbol.toStringTag]: "DOMPoint";
 }
 
 declare var DOMPoint: {
@@ -9498,6 +9607,7 @@ interface DOMQuad {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "DOMQuad";
 }
 
 declare var DOMQuad: {
@@ -9572,6 +9682,7 @@ interface DOMRectList {
      */
     item(index: number): DOMRect | null;
     [index: number]: DOMRect;
+    readonly [Symbol.toStringTag]: "DOMRectList";
 }
 
 declare var DOMRectList: {
@@ -9677,6 +9788,7 @@ interface DOMStringList {
      */
     item(index: number): string | null;
     [index: number]: string;
+    readonly [Symbol.toStringTag]: "DOMStringList";
 }
 
 declare var DOMStringList: {
@@ -9691,6 +9803,7 @@ declare var DOMStringList: {
  */
 interface DOMStringMap {
     [name: string]: string | undefined;
+    readonly [Symbol.toStringTag]: "DOMStringMap";
 }
 
 declare var DOMStringMap: {
@@ -9761,6 +9874,7 @@ interface DOMTokenList {
     toggle(token: string, force?: boolean): boolean;
     forEach(callbackfn: (value: string, key: number, parent: DOMTokenList) => void, thisArg?: any): void;
     [index: number]: string;
+    readonly [Symbol.toStringTag]: "DOMTokenList";
 }
 
 declare var DOMTokenList: {
@@ -9828,6 +9942,7 @@ interface DataTransfer {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransfer/setDragImage)
      */
     setDragImage(image: Element, x: number, y: number): void;
+    readonly [Symbol.toStringTag]: "DataTransfer";
 }
 
 declare var DataTransfer: {
@@ -9871,6 +9986,7 @@ interface DataTransferItem {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransferItem/webkitGetAsEntry)
      */
     webkitGetAsEntry(): FileSystemEntry | null;
+    readonly [Symbol.toStringTag]: "DataTransferItem";
 }
 
 declare var DataTransferItem: {
@@ -9910,6 +10026,7 @@ interface DataTransferItemList {
      */
     remove(index: number): void;
     [index: number]: DataTransferItem;
+    readonly [Symbol.toStringTag]: "DataTransferItemList";
 }
 
 declare var DataTransferItemList: {
@@ -9925,6 +10042,7 @@ declare var DataTransferItemList: {
 interface DecompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "DecompressionStream";
 }
 
 declare var DecompressionStream: {
@@ -9944,6 +10062,7 @@ interface DelayNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DelayNode/delayTime)
      */
     readonly delayTime: AudioParam;
+    readonly [Symbol.toStringTag]: "DelayNode";
 }
 
 declare var DelayNode: {
@@ -9982,6 +10101,7 @@ interface DeviceMotionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceMotionEvent/rotationRate)
      */
     readonly rotationRate: DeviceMotionEventRotationRate | null;
+    readonly [Symbol.toStringTag]: "DeviceMotionEvent";
 }
 
 declare var DeviceMotionEvent: {
@@ -10074,6 +10194,7 @@ interface DeviceOrientationEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DeviceOrientationEvent/gamma)
      */
     readonly gamma: number | null;
+    readonly [Symbol.toStringTag]: "DeviceOrientationEvent";
 }
 
 declare var DeviceOrientationEvent: {
@@ -10086,6 +10207,7 @@ interface DigitalCredential extends Credential {
     readonly data: any;
     readonly protocol: string;
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "DigitalCredential";
 }
 
 declare var DigitalCredential: {
@@ -10813,6 +10935,7 @@ interface DocumentOrShadowRoot {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DocumentTimeline)
  */
 interface DocumentTimeline extends AnimationTimeline {
+    readonly [Symbol.toStringTag]: "DocumentTimeline";
 }
 
 declare var DocumentTimeline: {
@@ -10847,6 +10970,7 @@ interface DocumentType extends Node, ChildNode {
     readonly systemId: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): null;
+    readonly [Symbol.toStringTag]: "DocumentType";
 }
 
 declare var DocumentType: {
@@ -10866,6 +10990,7 @@ interface DragEvent extends MouseEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DragEvent/dataTransfer)
      */
     readonly dataTransfer: DataTransfer | null;
+    readonly [Symbol.toStringTag]: "DragEvent";
 }
 
 declare var DragEvent: {
@@ -10915,6 +11040,7 @@ interface DynamicsCompressorNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DynamicsCompressorNode/threshold)
      */
     readonly threshold: AudioParam;
+    readonly [Symbol.toStringTag]: "DynamicsCompressorNode";
 }
 
 declare var DynamicsCompressorNode: {
@@ -11556,6 +11682,7 @@ interface ElementInternals extends ARIAMixin {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/setValidity)
      */
     setValidity(flags?: ValidityStateFlags, message?: string, anchor?: HTMLElement): void;
+    readonly [Symbol.toStringTag]: "ElementInternals";
 }
 
 declare var ElementInternals: {
@@ -11599,6 +11726,7 @@ interface EncodedAudioChunk {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedAudioChunk/copyTo)
      */
     copyTo(destination: AllowSharedBufferSource): void;
+    readonly [Symbol.toStringTag]: "EncodedAudioChunk";
 }
 
 declare var EncodedAudioChunk: {
@@ -11642,6 +11770,7 @@ interface EncodedVideoChunk {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EncodedVideoChunk/copyTo)
      */
     copyTo(destination: AllowSharedBufferSource): void;
+    readonly [Symbol.toStringTag]: "EncodedVideoChunk";
 }
 
 declare var EncodedVideoChunk: {
@@ -11685,6 +11814,7 @@ interface ErrorEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message)
      */
     readonly message: string;
+    readonly [Symbol.toStringTag]: "ErrorEvent";
 }
 
 declare var ErrorEvent: {
@@ -11832,6 +11962,7 @@ declare var Event: {
  */
 interface EventCounts {
     forEach(callbackfn: (value: number, key: string, parent: EventCounts) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "EventCounts";
 }
 
 declare var EventCounts: {
@@ -11898,6 +12029,7 @@ interface EventSource extends EventTarget {
     removeEventListener<K extends keyof EventSourceEventMap>(type: K, listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "EventSource";
 }
 
 declare var EventSource: {
@@ -11945,6 +12077,7 @@ interface External {
     AddSearchProvider(): void;
     /** @deprecated */
     IsSearchProviderInstalled(): void;
+    readonly [Symbol.toStringTag]: "External";
 }
 
 /** @deprecated */
@@ -11977,6 +12110,7 @@ interface File extends Blob {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/File/webkitRelativePath)
      */
     readonly webkitRelativePath: string;
+    readonly [Symbol.toStringTag]: "File";
 }
 
 declare var File: {
@@ -12003,6 +12137,7 @@ interface FileList {
      */
     item(index: number): File | null;
     [index: number]: File;
+    readonly [Symbol.toStringTag]: "FileList";
 }
 
 declare var FileList: {
@@ -12093,6 +12228,7 @@ interface FileReader extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "FileReader";
 }
 
 declare var FileReader: {
@@ -12121,6 +12257,7 @@ interface FileSystem {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystem/root)
      */
     readonly root: FileSystemDirectoryEntry;
+    readonly [Symbol.toStringTag]: "FileSystem";
 }
 
 declare var FileSystem: {
@@ -12152,6 +12289,7 @@ interface FileSystemDirectoryEntry extends FileSystemEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryEntry/getFile)
      */
     getFile(path?: string | null, options?: FileSystemFlags, successCallback?: FileSystemEntryCallback, errorCallback?: ErrorCallback): void;
+    readonly [Symbol.toStringTag]: "FileSystemDirectoryEntry";
 }
 
 declare var FileSystemDirectoryEntry: {
@@ -12191,6 +12329,7 @@ interface FileSystemDirectoryHandle extends FileSystemHandle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryHandle/resolve)
      */
     resolve(possibleDescendant: FileSystemHandle): Promise<string[] | null>;
+    readonly [Symbol.toStringTag]: "FileSystemDirectoryHandle";
 }
 
 declare var FileSystemDirectoryHandle: {
@@ -12210,6 +12349,7 @@ interface FileSystemDirectoryReader {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryReader/readEntries)
      */
     readEntries(successCallback: FileSystemEntriesCallback, errorCallback?: ErrorCallback): void;
+    readonly [Symbol.toStringTag]: "FileSystemDirectoryReader";
 }
 
 declare var FileSystemDirectoryReader: {
@@ -12278,6 +12418,7 @@ interface FileSystemFileEntry extends FileSystemEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileEntry/file)
      */
     file(successCallback: FileCallback, errorCallback?: ErrorCallback): void;
+    readonly [Symbol.toStringTag]: "FileSystemFileEntry";
 }
 
 declare var FileSystemFileEntry: {
@@ -12305,6 +12446,7 @@ interface FileSystemFileHandle extends FileSystemHandle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle/getFile)
      */
     getFile(): Promise<File>;
+    readonly [Symbol.toStringTag]: "FileSystemFileHandle";
 }
 
 declare var FileSystemFileHandle: {
@@ -12369,6 +12511,7 @@ interface FileSystemWritableFileStream extends WritableStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemWritableFileStream/write)
      */
     write(data: FileSystemWriteChunkType): Promise<void>;
+    readonly [Symbol.toStringTag]: "FileSystemWritableFileStream";
 }
 
 declare var FileSystemWritableFileStream: {
@@ -12388,6 +12531,7 @@ interface FocusEvent extends UIEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent/relatedTarget)
      */
     readonly relatedTarget: EventTarget | null;
+    readonly [Symbol.toStringTag]: "FocusEvent";
 }
 
 declare var FocusEvent: {
@@ -12485,6 +12629,7 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/load)
      */
     load(): Promise<FontFace>;
+    readonly [Symbol.toStringTag]: "FontFace";
 }
 
 declare var FontFace: {
@@ -12539,6 +12684,7 @@ interface FontFaceSet extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof FontFaceSetEventMap>(type: K, listener: (this: FontFaceSet, ev: FontFaceSetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "FontFaceSet";
 }
 
 declare var FontFaceSet: {
@@ -12558,6 +12704,7 @@ interface FontFaceSetLoadEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent/fontfaces)
      */
     readonly fontfaces: ReadonlyArray<FontFace>;
+    readonly [Symbol.toStringTag]: "FontFaceSetLoadEvent";
 }
 
 declare var FontFaceSetLoadEvent: {
@@ -12617,6 +12764,7 @@ interface FormData {
     set(name: string, value: string): void;
     set(name: string, blobValue: Blob, filename?: string): void;
     forEach(callbackfn: (value: FormDataEntryValue, key: string, parent: FormData) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "FormData";
 }
 
 declare var FormData: {
@@ -12636,6 +12784,7 @@ interface FormDataEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FormDataEvent/formData)
      */
     readonly formData: FormData;
+    readonly [Symbol.toStringTag]: "FormDataEvent";
 }
 
 declare var FormDataEvent: {
@@ -12649,6 +12798,7 @@ declare var FormDataEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FragmentDirective)
  */
 interface FragmentDirective {
+    readonly [Symbol.toStringTag]: "FragmentDirective";
 }
 
 declare var FragmentDirective: {
@@ -12669,6 +12819,7 @@ interface GPUError {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUError/message)
      */
     readonly message: string;
+    readonly [Symbol.toStringTag]: "GPUError";
 }
 
 declare var GPUError: {
@@ -12689,6 +12840,7 @@ interface GPUPipelineError extends DOMException {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError/reason)
      */
     readonly reason: GPUPipelineErrorReason;
+    readonly [Symbol.toStringTag]: "GPUPipelineError";
 }
 
 declare var GPUPipelineError: {
@@ -12708,6 +12860,7 @@ interface GainNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GainNode/gain)
      */
     readonly gain: AudioParam;
+    readonly [Symbol.toStringTag]: "GainNode";
 }
 
 declare var GainNode: {
@@ -12769,6 +12922,7 @@ interface Gamepad {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Gamepad/vibrationActuator)
      */
     readonly vibrationActuator: GamepadHapticActuator;
+    readonly [Symbol.toStringTag]: "Gamepad";
 }
 
 declare var Gamepad: {
@@ -12800,6 +12954,7 @@ interface GamepadButton {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadButton/value)
      */
     readonly value: number;
+    readonly [Symbol.toStringTag]: "GamepadButton";
 }
 
 declare var GamepadButton: {
@@ -12819,6 +12974,7 @@ interface GamepadEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadEvent/gamepad)
      */
     readonly gamepad: Gamepad;
+    readonly [Symbol.toStringTag]: "GamepadEvent";
 }
 
 declare var GamepadEvent: {
@@ -12844,6 +13000,7 @@ interface GamepadHapticActuator {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadHapticActuator/reset)
      */
     reset(): Promise<GamepadHapticsResult>;
+    readonly [Symbol.toStringTag]: "GamepadHapticActuator";
 }
 
 declare var GamepadHapticActuator: {
@@ -12882,6 +13039,7 @@ interface Geolocation {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Geolocation/watchPosition)
      */
     watchPosition(successCallback: PositionCallback, errorCallback?: PositionErrorCallback | null, options?: PositionOptions): number;
+    readonly [Symbol.toStringTag]: "Geolocation";
 }
 
 declare var Geolocation: {
@@ -12944,6 +13102,7 @@ interface GeolocationCoordinates {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "GeolocationCoordinates";
 }
 
 declare var GeolocationCoordinates: {
@@ -12976,6 +13135,7 @@ interface GeolocationPosition {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationPosition/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "GeolocationPosition";
 }
 
 declare var GeolocationPosition: {
@@ -13004,6 +13164,7 @@ interface GeolocationPositionError {
     readonly PERMISSION_DENIED: 1;
     readonly POSITION_UNAVAILABLE: 2;
     readonly TIMEOUT: 3;
+    readonly [Symbol.toStringTag]: "GeolocationPositionError";
 }
 
 declare var GeolocationPositionError: {
@@ -13378,6 +13539,7 @@ interface HTMLAllCollection {
      */
     namedItem(name: string): HTMLCollection | Element | null;
     [index: number]: Element;
+    readonly [Symbol.toStringTag]: "HTMLAllCollection";
 }
 
 declare var HTMLAllCollection: {
@@ -13460,6 +13622,7 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLAnchorElement";
 }
 
 declare var HTMLAnchorElement: {
@@ -13534,6 +13697,7 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLAreaElement";
 }
 
 declare var HTMLAreaElement: {
@@ -13551,6 +13715,7 @@ interface HTMLAudioElement extends HTMLMediaElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLAudioElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLAudioElement";
 }
 
 declare var HTMLAudioElement: {
@@ -13570,6 +13735,7 @@ interface HTMLBRElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLBRElement";
 }
 
 declare var HTMLBRElement: {
@@ -13599,6 +13765,7 @@ interface HTMLBaseElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLBaseElement";
 }
 
 declare var HTMLBaseElement: {
@@ -13631,6 +13798,7 @@ interface HTMLBodyElement extends HTMLElement, WindowEventHandlers {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLBodyElementEventMap>(type: K, listener: (this: HTMLBodyElement, ev: HTMLBodyElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLBodyElement";
 }
 
 declare var HTMLBodyElement: {
@@ -13762,6 +13930,7 @@ interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLButtonElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLButtonElement";
 }
 
 declare var HTMLButtonElement: {
@@ -13825,6 +13994,7 @@ interface HTMLCanvasElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLCanvasElement";
 }
 
 declare var HTMLCanvasElement: {
@@ -13890,6 +14060,7 @@ interface HTMLDListElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDListElement";
 }
 
 declare var HTMLDListElement: {
@@ -13913,6 +14084,7 @@ interface HTMLDataElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDataElement";
 }
 
 declare var HTMLDataElement: {
@@ -13936,6 +14108,7 @@ interface HTMLDataListElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDataListElement";
 }
 
 declare var HTMLDataListElement: {
@@ -13965,6 +14138,7 @@ interface HTMLDetailsElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDetailsElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDetailsElement";
 }
 
 declare var HTMLDetailsElement: {
@@ -14024,6 +14198,7 @@ interface HTMLDialogElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDialogElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDialogElement";
 }
 
 declare var HTMLDialogElement: {
@@ -14039,6 +14214,7 @@ interface HTMLDirectoryElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDirectoryElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDirectoryElement";
 }
 
 /** @deprecated */
@@ -14059,6 +14235,7 @@ interface HTMLDivElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDivElement";
 }
 
 declare var HTMLDivElement: {
@@ -14071,6 +14248,7 @@ interface HTMLDocument extends Document {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: HTMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLDocument";
 }
 
 declare var HTMLDocument: {
@@ -14298,6 +14476,7 @@ interface HTMLEmbedElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLEmbedElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLEmbedElement";
 }
 
 declare var HTMLEmbedElement: {
@@ -14381,6 +14560,7 @@ interface HTMLFieldSetElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFieldSetElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLFieldSetElement";
 }
 
 declare var HTMLFieldSetElement: {
@@ -14420,6 +14600,7 @@ interface HTMLFontElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLFontElement";
 }
 
 /** @deprecated */
@@ -14440,6 +14621,7 @@ interface HTMLFormControlsCollection extends HTMLCollectionBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormControlsCollection/namedItem)
      */
     namedItem(name: string): RadioNodeList | Element | null;
+    readonly [Symbol.toStringTag]: "HTMLFormControlsCollection";
 }
 
 declare var HTMLFormControlsCollection: {
@@ -14568,6 +14750,7 @@ interface HTMLFormElement extends HTMLElement {
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     [index: number]: Element;
     [name: string]: any;
+    readonly [Symbol.toStringTag]: "HTMLFormElement";
 }
 
 declare var HTMLFormElement: {
@@ -14601,6 +14784,7 @@ interface HTMLFrameElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLFrameElement";
 }
 
 /** @deprecated */
@@ -14627,6 +14811,7 @@ interface HTMLFrameSetElement extends HTMLElement, WindowEventHandlers {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLFrameSetElementEventMap>(type: K, listener: (this: HTMLFrameSetElement, ev: HTMLFrameSetElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLFrameSetElement";
 }
 
 /** @deprecated */
@@ -14655,6 +14840,7 @@ interface HTMLHRElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLHRElement";
 }
 
 declare var HTMLHRElement: {
@@ -14672,6 +14858,7 @@ interface HTMLHeadElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLHeadElement";
 }
 
 declare var HTMLHeadElement: {
@@ -14691,6 +14878,7 @@ interface HTMLHeadingElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadingElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLHeadingElement";
 }
 
 declare var HTMLHeadingElement: {
@@ -14715,6 +14903,7 @@ interface HTMLHtmlElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHtmlElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLHtmlElement";
 }
 
 declare var HTMLHtmlElement: {
@@ -14913,6 +15102,7 @@ interface HTMLIFrameElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLIFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLIFrameElement";
 }
 
 declare var HTMLIFrameElement: {
@@ -15094,6 +15284,7 @@ interface HTMLImageElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLImageElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLImageElement";
 }
 
 declare var HTMLImageElement: {
@@ -15446,6 +15637,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLInputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLInputElement";
 }
 
 declare var HTMLInputElement: {
@@ -15471,6 +15663,7 @@ interface HTMLLIElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLIElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLLIElement";
 }
 
 declare var HTMLLIElement: {
@@ -15506,6 +15699,7 @@ interface HTMLLabelElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLabelElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLLabelElement";
 }
 
 declare var HTMLLabelElement: {
@@ -15531,6 +15725,7 @@ interface HTMLLegendElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLLegendElement";
 }
 
 declare var HTMLLegendElement: {
@@ -15653,6 +15848,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLinkElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLLinkElement";
 }
 
 declare var HTMLLinkElement: {
@@ -15682,6 +15878,7 @@ interface HTMLMapElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMapElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLMapElement";
 }
 
 declare var HTMLMapElement: {
@@ -15726,6 +15923,7 @@ interface HTMLMarqueeElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMarqueeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLMarqueeElement";
 }
 
 /** @deprecated */
@@ -16027,6 +16225,7 @@ interface HTMLMenuElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMenuElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLMenuElement";
 }
 
 declare var HTMLMenuElement: {
@@ -16075,6 +16274,7 @@ interface HTMLMetaElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLMetaElement";
 }
 
 declare var HTMLMetaElement: {
@@ -16134,6 +16334,7 @@ interface HTMLMeterElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMeterElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLMeterElement";
 }
 
 declare var HTMLMeterElement: {
@@ -16163,6 +16364,7 @@ interface HTMLModElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLModElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLModElement";
 }
 
 declare var HTMLModElement: {
@@ -16205,6 +16407,7 @@ interface HTMLOListElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLOListElement";
 }
 
 declare var HTMLOListElement: {
@@ -16339,6 +16542,7 @@ interface HTMLObjectElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLObjectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLObjectElement";
 }
 
 declare var HTMLObjectElement: {
@@ -16368,6 +16572,7 @@ interface HTMLOptGroupElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptGroupElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLOptGroupElement";
 }
 
 declare var HTMLOptGroupElement: {
@@ -16433,6 +16638,7 @@ interface HTMLOptionElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLOptionElement";
 }
 
 declare var HTMLOptionElement: {
@@ -16470,6 +16676,7 @@ interface HTMLOptionsCollection extends HTMLCollectionOf<HTMLOptionElement> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionsCollection/remove)
      */
     remove(index: number): void;
+    readonly [Symbol.toStringTag]: "HTMLOptionsCollection";
 }
 
 declare var HTMLOptionsCollection: {
@@ -16581,6 +16788,7 @@ interface HTMLOutputElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOutputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLOutputElement";
 }
 
 declare var HTMLOutputElement: {
@@ -16600,6 +16808,7 @@ interface HTMLParagraphElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParagraphElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLParagraphElement";
 }
 
 declare var HTMLParagraphElement: {
@@ -16626,6 +16835,7 @@ interface HTMLParamElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParamElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLParamElement";
 }
 
 /** @deprecated */
@@ -16644,6 +16854,7 @@ interface HTMLPictureElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPictureElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLPictureElement";
 }
 
 declare var HTMLPictureElement: {
@@ -16663,6 +16874,7 @@ interface HTMLPreElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPreElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLPreElement";
 }
 
 declare var HTMLPreElement: {
@@ -16704,6 +16916,7 @@ interface HTMLProgressElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLProgressElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLProgressElement";
 }
 
 declare var HTMLProgressElement: {
@@ -16727,6 +16940,7 @@ interface HTMLQuoteElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLQuoteElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLQuoteElement";
 }
 
 declare var HTMLQuoteElement: {
@@ -16817,6 +17031,7 @@ interface HTMLScriptElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLScriptElement";
 }
 
 declare var HTMLScriptElement: {
@@ -16992,6 +17207,7 @@ interface HTMLSelectElement extends HTMLElement {
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     [name: number]: HTMLOptionElement | HTMLOptGroupElement;
+    readonly [Symbol.toStringTag]: "HTMLSelectElement";
 }
 
 declare var HTMLSelectElement: {
@@ -17033,6 +17249,7 @@ interface HTMLSlotElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSlotElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLSlotElement";
 }
 
 declare var HTMLSlotElement: {
@@ -17092,6 +17309,7 @@ interface HTMLSourceElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLSourceElement";
 }
 
 declare var HTMLSourceElement: {
@@ -17109,6 +17327,7 @@ interface HTMLSpanElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSpanElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLSpanElement";
 }
 
 declare var HTMLSpanElement: {
@@ -17152,6 +17371,7 @@ interface HTMLStyleElement extends HTMLElement, LinkStyle {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLStyleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLStyleElement";
 }
 
 declare var HTMLStyleElement: {
@@ -17176,6 +17396,7 @@ interface HTMLTableCaptionElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTableCaptionElement";
 }
 
 declare var HTMLTableCaptionElement: {
@@ -17330,6 +17551,7 @@ interface HTMLTableColElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableColElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTableColElement";
 }
 
 declare var HTMLTableColElement: {
@@ -17502,6 +17724,7 @@ interface HTMLTableElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTableElement";
 }
 
 declare var HTMLTableElement: {
@@ -17592,6 +17815,7 @@ interface HTMLTableRowElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableRowElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTableRowElement";
 }
 
 declare var HTMLTableRowElement: {
@@ -17655,6 +17879,7 @@ interface HTMLTableSectionElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableSectionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTableSectionElement";
 }
 
 declare var HTMLTableSectionElement: {
@@ -17702,6 +17927,7 @@ interface HTMLTemplateElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTemplateElement";
 }
 
 declare var HTMLTemplateElement: {
@@ -17900,6 +18126,7 @@ interface HTMLTextAreaElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTextAreaElement";
 }
 
 declare var HTMLTextAreaElement: {
@@ -17923,6 +18150,7 @@ interface HTMLTimeElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTimeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTimeElement";
 }
 
 declare var HTMLTimeElement: {
@@ -17946,6 +18174,7 @@ interface HTMLTitleElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTitleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTitleElement";
 }
 
 declare var HTMLTitleElement: {
@@ -18009,6 +18238,7 @@ interface HTMLTrackElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTrackElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLTrackElement";
 }
 
 declare var HTMLTrackElement: {
@@ -18039,6 +18269,7 @@ interface HTMLUListElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLUListElement";
 }
 
 declare var HTMLUListElement: {
@@ -18056,6 +18287,7 @@ interface HTMLUnknownElement extends HTMLElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUnknownElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLUnknownElement";
 }
 
 declare var HTMLUnknownElement: {
@@ -18143,6 +18375,7 @@ interface HTMLVideoElement extends HTMLMediaElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof HTMLVideoElementEventMap>(type: K, listener: (this: HTMLVideoElement, ev: HTMLVideoElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "HTMLVideoElement";
 }
 
 declare var HTMLVideoElement: {
@@ -18168,6 +18401,7 @@ interface HashChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HashChangeEvent/oldURL)
      */
     readonly oldURL: string;
+    readonly [Symbol.toStringTag]: "HashChangeEvent";
 }
 
 declare var HashChangeEvent: {
@@ -18218,6 +18452,7 @@ interface Headers {
      */
     set(name: string, value: string): void;
     forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "Headers";
 }
 
 declare var Headers: {
@@ -18244,6 +18479,7 @@ interface Highlight {
      */
     type: HighlightType;
     forEach(callbackfn: (value: AbstractRange, key: AbstractRange, parent: Highlight) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "Highlight";
 }
 
 declare var Highlight: {
@@ -18258,6 +18494,7 @@ declare var Highlight: {
  */
 interface HighlightRegistry {
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "HighlightRegistry";
 }
 
 declare var HighlightRegistry: {
@@ -18319,6 +18556,7 @@ interface History {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/History/replaceState)
      */
     replaceState(data: any, unused: string, url?: string | URL | null): void;
+    readonly [Symbol.toStringTag]: "History";
 }
 
 declare var History: {
@@ -18411,6 +18649,7 @@ interface IDBCursorWithValue extends IDBCursor {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursorWithValue/value)
      */
     readonly value: any;
+    readonly [Symbol.toStringTag]: "IDBCursorWithValue";
 }
 
 declare var IDBCursorWithValue: {
@@ -18484,6 +18723,7 @@ interface IDBDatabase extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "IDBDatabase";
 }
 
 declare var IDBDatabase: {
@@ -18521,6 +18761,7 @@ interface IDBFactory {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBFactory/open)
      */
     open(name: string, version?: number): IDBOpenDBRequest;
+    readonly [Symbol.toStringTag]: "IDBFactory";
 }
 
 declare var IDBFactory: {
@@ -18606,6 +18847,7 @@ interface IDBIndex {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/openKeyCursor)
      */
     openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>;
+    readonly [Symbol.toStringTag]: "IDBIndex";
 }
 
 declare var IDBIndex: {
@@ -18649,6 +18891,7 @@ interface IDBKeyRange {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/includes)
      */
     includes(key: any): boolean;
+    readonly [Symbol.toStringTag]: "IDBKeyRange";
 }
 
 declare var IDBKeyRange: {
@@ -18800,6 +19043,7 @@ interface IDBObjectStore {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/put)
      */
     put(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>;
+    readonly [Symbol.toStringTag]: "IDBObjectStore";
 }
 
 declare var IDBObjectStore: {
@@ -18826,6 +19070,7 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "IDBOpenDBRequest";
 }
 
 declare var IDBOpenDBRequest: {
@@ -18959,6 +19204,7 @@ interface IDBTransaction extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "IDBTransaction";
 }
 
 declare var IDBTransaction: {
@@ -18984,6 +19230,7 @@ interface IDBVersionChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBVersionChangeEvent/oldVersion)
      */
     readonly oldVersion: number;
+    readonly [Symbol.toStringTag]: "IDBVersionChangeEvent";
 }
 
 declare var IDBVersionChangeEvent: {
@@ -19003,6 +19250,7 @@ interface IIRFilterNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IIRFilterNode/getFrequencyResponse)
      */
     getFrequencyResponse(frequencyHz: Float32Array<ArrayBuffer>, magResponse: Float32Array<ArrayBuffer>, phaseResponse: Float32Array<ArrayBuffer>): void;
+    readonly [Symbol.toStringTag]: "IIRFilterNode";
 }
 
 declare var IIRFilterNode: {
@@ -19028,6 +19276,7 @@ interface IdleDeadline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IdleDeadline/timeRemaining)
      */
     timeRemaining(): DOMHighResTimeStamp;
+    readonly [Symbol.toStringTag]: "IdleDeadline";
 }
 
 declare var IdleDeadline: {
@@ -19059,6 +19308,7 @@ interface ImageBitmap {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap/close)
      */
     close(): void;
+    readonly [Symbol.toStringTag]: "ImageBitmap";
 }
 
 declare var ImageBitmap: {
@@ -19084,6 +19334,7 @@ interface ImageBitmapRenderingContext {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext/transferFromImageBitmap)
      */
     transferFromImageBitmap(bitmap: ImageBitmap | null): void;
+    readonly [Symbol.toStringTag]: "ImageBitmapRenderingContext";
 }
 
 declare var ImageBitmapRenderingContext: {
@@ -19128,6 +19379,7 @@ interface ImageCapture {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/takePhoto)
      */
     takePhoto(photoSettings?: PhotoSettings): Promise<Blob>;
+    readonly [Symbol.toStringTag]: "ImageCapture";
 }
 
 declare var ImageCapture: {
@@ -19165,6 +19417,7 @@ interface ImageData {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/width)
      */
     readonly width: number;
+    readonly [Symbol.toStringTag]: "ImageData";
 }
 
 declare var ImageData: {
@@ -19222,6 +19475,7 @@ interface ImageDecoder {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/reset)
      */
     reset(): void;
+    readonly [Symbol.toStringTag]: "ImageDecoder";
 }
 
 declare var ImageDecoder: {
@@ -19265,6 +19519,7 @@ interface ImageTrack {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected)
      */
     selected: boolean;
+    readonly [Symbol.toStringTag]: "ImageTrack";
 }
 
 declare var ImageTrack: {
@@ -19303,6 +19558,7 @@ interface ImageTrackList {
      */
     readonly selectedTrack: ImageTrack | null;
     [index: number]: ImageTrack;
+    readonly [Symbol.toStringTag]: "ImageTrackList";
 }
 
 declare var ImageTrackList: {
@@ -19328,6 +19584,7 @@ interface InputDeviceInfo extends MediaDeviceInfo {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputDeviceInfo/getCapabilities)
      */
     getCapabilities(): MediaTrackCapabilities;
+    readonly [Symbol.toStringTag]: "InputDeviceInfo";
 }
 
 declare var InputDeviceInfo: {
@@ -19371,6 +19628,7 @@ interface InputEvent extends UIEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InputEvent/getTargetRanges)
      */
     getTargetRanges(): StaticRange[];
+    readonly [Symbol.toStringTag]: "InputEvent";
 }
 
 declare var InputEvent: {
@@ -19432,6 +19690,7 @@ interface IntersectionObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserver/unobserve)
      */
     unobserve(target: Element): void;
+    readonly [Symbol.toStringTag]: "IntersectionObserver";
 }
 
 declare var IntersectionObserver: {
@@ -19487,6 +19746,7 @@ interface IntersectionObserverEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/time)
      */
     readonly time: DOMHighResTimeStamp;
+    readonly [Symbol.toStringTag]: "IntersectionObserverEntry";
 }
 
 declare var IntersectionObserverEntry: {
@@ -19594,6 +19854,7 @@ interface KeyboardEvent extends UIEvent {
     readonly DOM_KEY_LOCATION_LEFT: 0x01;
     readonly DOM_KEY_LOCATION_RIGHT: 0x02;
     readonly DOM_KEY_LOCATION_NUMPAD: 0x03;
+    readonly [Symbol.toStringTag]: "KeyboardEvent";
 }
 
 declare var KeyboardEvent: {
@@ -19647,6 +19908,7 @@ interface KeyframeEffect extends AnimationEffect {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyframeEffect/setKeyframes)
      */
     setKeyframes(keyframes: Keyframe[] | PropertyIndexedKeyframes | null): void;
+    readonly [Symbol.toStringTag]: "KeyframeEffect";
 }
 
 declare var KeyframeEffect: {
@@ -19703,6 +19965,7 @@ interface LargestContentfulPaint extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "LargestContentfulPaint";
 }
 
 declare var LargestContentfulPaint: {
@@ -19800,6 +20063,7 @@ interface Location {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Location/replace)
      */
     replace(url: string | URL): void;
+    readonly [Symbol.toStringTag]: "Location";
 }
 
 declare var Location: {
@@ -19826,6 +20090,7 @@ interface Lock {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Lock/name)
      */
     readonly name: string;
+    readonly [Symbol.toStringTag]: "Lock";
 }
 
 declare var Lock: {
@@ -19853,6 +20118,7 @@ interface LockManager {
      */
     request<T>(name: string, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
     request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
+    readonly [Symbol.toStringTag]: "LockManager";
 }
 
 declare var LockManager: {
@@ -19895,6 +20161,7 @@ interface MIDIAccess extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MIDIAccessEventMap>(type: K, listener: (this: MIDIAccess, ev: MIDIAccessEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MIDIAccess";
 }
 
 declare var MIDIAccess: {
@@ -19915,6 +20182,7 @@ interface MIDIConnectionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIConnectionEvent/port)
      */
     readonly port: MIDIPort | null;
+    readonly [Symbol.toStringTag]: "MIDIConnectionEvent";
 }
 
 declare var MIDIConnectionEvent: {
@@ -19939,6 +20207,7 @@ interface MIDIInput extends MIDIPort {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MIDIInputEventMap>(type: K, listener: (this: MIDIInput, ev: MIDIInputEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MIDIInput";
 }
 
 declare var MIDIInput: {
@@ -19954,6 +20223,7 @@ declare var MIDIInput: {
  */
 interface MIDIInputMap {
     forEach(callbackfn: (value: MIDIInput, key: string, parent: MIDIInputMap) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "MIDIInputMap";
 }
 
 declare var MIDIInputMap: {
@@ -19974,6 +20244,7 @@ interface MIDIMessageEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MIDIMessageEvent/data)
      */
     readonly data: Uint8Array<ArrayBuffer> | null;
+    readonly [Symbol.toStringTag]: "MIDIMessageEvent";
 }
 
 declare var MIDIMessageEvent: {
@@ -19998,6 +20269,7 @@ interface MIDIOutput extends MIDIPort {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MIDIPortEventMap>(type: K, listener: (this: MIDIOutput, ev: MIDIPortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MIDIOutput";
 }
 
 declare var MIDIOutput: {
@@ -20013,6 +20285,7 @@ declare var MIDIOutput: {
  */
 interface MIDIOutputMap {
     forEach(callbackfn: (value: MIDIOutput, key: string, parent: MIDIOutputMap) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "MIDIOutputMap";
 }
 
 declare var MIDIOutputMap: {
@@ -20111,6 +20384,7 @@ interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandl
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MathMLElement";
 }
 
 declare var MathMLElement: {
@@ -20136,6 +20410,7 @@ interface MediaCapabilities {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities/encodingInfo)
      */
     encodingInfo(configuration: MediaEncodingConfiguration): Promise<MediaCapabilitiesEncodingInfo>;
+    readonly [Symbol.toStringTag]: "MediaCapabilities";
 }
 
 declare var MediaCapabilities: {
@@ -20228,6 +20503,7 @@ interface MediaDevices extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaDevicesEventMap>(type: K, listener: (this: MediaDevices, ev: MediaDevicesEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MediaDevices";
 }
 
 declare var MediaDevices: {
@@ -20247,6 +20523,7 @@ interface MediaElementAudioSourceNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaElementAudioSourceNode/mediaElement)
      */
     readonly mediaElement: HTMLMediaElement;
+    readonly [Symbol.toStringTag]: "MediaElementAudioSourceNode";
 }
 
 declare var MediaElementAudioSourceNode: {
@@ -20272,6 +20549,7 @@ interface MediaEncryptedEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaEncryptedEvent/initDataType)
      */
     readonly initDataType: string;
+    readonly [Symbol.toStringTag]: "MediaEncryptedEvent";
 }
 
 declare var MediaEncryptedEvent: {
@@ -20301,6 +20579,7 @@ interface MediaError {
     readonly MEDIA_ERR_NETWORK: 2;
     readonly MEDIA_ERR_DECODE: 3;
     readonly MEDIA_ERR_SRC_NOT_SUPPORTED: 4;
+    readonly [Symbol.toStringTag]: "MediaError";
 }
 
 declare var MediaError: {
@@ -20331,6 +20610,7 @@ interface MediaKeyMessageEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeyMessageEvent/messageType)
      */
     readonly messageType: MediaKeyMessageType;
+    readonly [Symbol.toStringTag]: "MediaKeyMessageEvent";
 }
 
 declare var MediaKeyMessageEvent: {
@@ -20412,6 +20692,7 @@ interface MediaKeySession extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaKeySessionEventMap>(type: K, listener: (this: MediaKeySession, ev: MediaKeySessionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MediaKeySession";
 }
 
 declare var MediaKeySession: {
@@ -20445,6 +20726,7 @@ interface MediaKeyStatusMap {
      */
     has(keyId: BufferSource): boolean;
     forEach(callbackfn: (value: MediaKeyStatus, key: BufferSource, parent: MediaKeyStatusMap) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "MediaKeyStatusMap";
 }
 
 declare var MediaKeyStatusMap: {
@@ -20477,6 +20759,7 @@ interface MediaKeySystemAccess {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeySystemAccess/getConfiguration)
      */
     getConfiguration(): MediaKeySystemConfiguration;
+    readonly [Symbol.toStringTag]: "MediaKeySystemAccess";
 }
 
 declare var MediaKeySystemAccess: {
@@ -20509,6 +20792,7 @@ interface MediaKeys {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaKeys/setServerCertificate)
      */
     setServerCertificate(serverCertificate: BufferSource): Promise<boolean>;
+    readonly [Symbol.toStringTag]: "MediaKeys";
 }
 
 declare var MediaKeys: {
@@ -20554,6 +20838,7 @@ interface MediaList {
      */
     item(index: number): string | null;
     [index: number]: string;
+    readonly [Symbol.toStringTag]: "MediaList";
 }
 
 declare var MediaList: {
@@ -20591,6 +20876,7 @@ interface MediaMetadata {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaMetadata/title)
      */
     title: string;
+    readonly [Symbol.toStringTag]: "MediaMetadata";
 }
 
 declare var MediaMetadata: {
@@ -20640,6 +20926,7 @@ interface MediaQueryList extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaQueryListEventMap>(type: K, listener: (this: MediaQueryList, ev: MediaQueryListEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MediaQueryList";
 }
 
 declare var MediaQueryList: {
@@ -20665,6 +20952,7 @@ interface MediaQueryListEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryListEvent/media)
      */
     readonly media: string;
+    readonly [Symbol.toStringTag]: "MediaQueryListEvent";
 }
 
 declare var MediaQueryListEvent: {
@@ -20763,6 +21051,7 @@ interface MediaRecorder extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaRecorderEventMap>(type: K, listener: (this: MediaRecorder, ev: MediaRecorderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MediaRecorder";
 }
 
 declare var MediaRecorder: {
@@ -20818,6 +21107,7 @@ interface MediaSession {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/setPositionState)
      */
     setPositionState(state?: MediaPositionState): void;
+    readonly [Symbol.toStringTag]: "MediaSession";
 }
 
 declare var MediaSession: {
@@ -20901,6 +21191,7 @@ interface MediaSource extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaSourceEventMap>(type: K, listener: (this: MediaSource, ev: MediaSourceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MediaSource";
 }
 
 declare var MediaSource: {
@@ -20926,6 +21217,7 @@ declare var MediaSource: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSourceHandle)
  */
 interface MediaSourceHandle {
+    readonly [Symbol.toStringTag]: "MediaSourceHandle";
 }
 
 declare var MediaSourceHandle: {
@@ -21006,6 +21298,7 @@ interface MediaStream extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaStreamEventMap>(type: K, listener: (this: MediaStream, ev: MediaStreamEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MediaStream";
 }
 
 declare var MediaStream: {
@@ -21027,6 +21320,7 @@ interface MediaStreamAudioDestinationNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamAudioDestinationNode/stream)
      */
     readonly stream: MediaStream;
+    readonly [Symbol.toStringTag]: "MediaStreamAudioDestinationNode";
 }
 
 declare var MediaStreamAudioDestinationNode: {
@@ -21046,6 +21340,7 @@ interface MediaStreamAudioSourceNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamAudioSourceNode/mediaStream)
      */
     readonly mediaStream: MediaStream;
+    readonly [Symbol.toStringTag]: "MediaStreamAudioSourceNode";
 }
 
 declare var MediaStreamAudioSourceNode: {
@@ -21172,6 +21467,7 @@ interface MediaStreamTrackEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrackEvent/track)
      */
     readonly track: MediaStreamTrack;
+    readonly [Symbol.toStringTag]: "MediaStreamTrackEvent";
 }
 
 declare var MediaStreamTrackEvent: {
@@ -21197,6 +21493,7 @@ interface MessageChannel {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageChannel/port2)
      */
     readonly port2: MessagePort;
+    readonly [Symbol.toStringTag]: "MessageChannel";
 }
 
 declare var MessageChannel: {
@@ -21242,6 +21539,7 @@ interface MessageEvent<T = any> extends Event {
     readonly source: MessageEventSource | null;
     /** @deprecated */
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
+    readonly [Symbol.toStringTag]: "MessageEvent";
 }
 
 declare var MessageEvent: {
@@ -21299,6 +21597,7 @@ interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MessagePort";
 }
 
 declare var MessagePort: {
@@ -21333,6 +21632,7 @@ interface MimeType {
      * @deprecated
      */
     readonly type: string;
+    readonly [Symbol.toStringTag]: "MimeType";
 }
 
 /** @deprecated */
@@ -21355,6 +21655,7 @@ interface MimeTypeArray {
     /** @deprecated */
     namedItem(name: string): MimeType | null;
     [index: number]: MimeType;
+    readonly [Symbol.toStringTag]: "MimeTypeArray";
 }
 
 /** @deprecated */
@@ -21539,6 +21840,7 @@ interface MutationObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MutationObserver/takeRecords)
      */
     takeRecords(): MutationRecord[];
+    readonly [Symbol.toStringTag]: "MutationObserver";
 }
 
 declare var MutationObserver: {
@@ -21606,6 +21908,7 @@ interface MutationRecord {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MutationRecord/type)
      */
     readonly type: MutationRecordType;
+    readonly [Symbol.toStringTag]: "MutationRecord";
 }
 
 declare var MutationRecord: {
@@ -21668,6 +21971,7 @@ interface NamedNodeMap {
      */
     setNamedItemNS(attr: Attr): Attr | null;
     [index: number]: Attr;
+    readonly [Symbol.toStringTag]: "NamedNodeMap";
 }
 
 declare var NamedNodeMap: {
@@ -21699,6 +22003,7 @@ interface NavigationActivation {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation/navigationType)
      */
     readonly navigationType: NavigationType;
+    readonly [Symbol.toStringTag]: "NavigationActivation";
 }
 
 declare var NavigationActivation: {
@@ -21758,6 +22063,7 @@ interface NavigationHistoryEntry extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof NavigationHistoryEntryEventMap>(type: K, listener: (this: NavigationHistoryEntry, ev: NavigationHistoryEntryEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "NavigationHistoryEntry";
 }
 
 declare var NavigationHistoryEntry: {
@@ -21796,6 +22102,7 @@ interface NavigationPreloadManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPreloadManager/setHeaderValue)
      */
     setHeaderValue(value: string): Promise<void>;
+    readonly [Symbol.toStringTag]: "NavigationPreloadManager";
 }
 
 declare var NavigationPreloadManager: {
@@ -21933,6 +22240,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/vibrate)
      */
     vibrate(pattern: VibratePattern): boolean;
+    readonly [Symbol.toStringTag]: "Navigator";
 }
 
 declare var Navigator: {
@@ -22019,6 +22327,7 @@ interface NavigatorLogin {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigatorLogin/setStatus)
      */
     setStatus(status: LoginStatus): Promise<void>;
+    readonly [Symbol.toStringTag]: "NavigatorLogin";
 }
 
 declare var NavigatorLogin: {
@@ -22352,6 +22661,7 @@ interface NodeIterator {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NodeIterator/previousNode)
      */
     previousNode(): Node | null;
+    readonly [Symbol.toStringTag]: "NodeIterator";
 }
 
 declare var NodeIterator: {
@@ -22501,6 +22811,7 @@ interface Notification extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "Notification";
 }
 
 declare var Notification: {
@@ -22691,6 +23002,7 @@ interface OfflineAudioCompletionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OfflineAudioCompletionEvent/renderedBuffer)
      */
     readonly renderedBuffer: AudioBuffer;
+    readonly [Symbol.toStringTag]: "OfflineAudioCompletionEvent";
 }
 
 declare var OfflineAudioCompletionEvent: {
@@ -22738,6 +23050,7 @@ interface OfflineAudioContext extends BaseAudioContext {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof OfflineAudioContextEventMap>(type: K, listener: (this: OfflineAudioContext, ev: OfflineAudioContextEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "OfflineAudioContext";
 }
 
 declare var OfflineAudioContext: {
@@ -22799,6 +23112,7 @@ interface OffscreenCanvas extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "OffscreenCanvas";
 }
 
 declare var OffscreenCanvas: {
@@ -22814,6 +23128,7 @@ declare var OffscreenCanvas: {
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas) */
     readonly canvas: OffscreenCanvas;
+    readonly [Symbol.toStringTag]: "OffscreenCanvasRenderingContext2D";
 }
 
 declare var OffscreenCanvasRenderingContext2D: {
@@ -22855,6 +23170,7 @@ interface OscillatorNode extends AudioScheduledSourceNode {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AudioScheduledSourceNodeEventMap>(type: K, listener: (this: OscillatorNode, ev: AudioScheduledSourceNodeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "OscillatorNode";
 }
 
 declare var OscillatorNode: {
@@ -22874,6 +23190,7 @@ interface OverconstrainedError extends DOMException {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OverconstrainedError/constraint)
      */
     readonly constraint: string;
+    readonly [Symbol.toStringTag]: "OverconstrainedError";
 }
 
 declare var OverconstrainedError: {
@@ -22893,6 +23210,7 @@ interface PageRevealEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageRevealEvent/viewTransition)
      */
     readonly viewTransition: ViewTransition | null;
+    readonly [Symbol.toStringTag]: "PageRevealEvent";
 }
 
 declare var PageRevealEvent: {
@@ -22918,6 +23236,7 @@ interface PageSwapEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageSwapEvent/viewTransition)
      */
     readonly viewTransition: ViewTransition | null;
+    readonly [Symbol.toStringTag]: "PageSwapEvent";
 }
 
 declare var PageSwapEvent: {
@@ -22937,6 +23256,7 @@ interface PageTransitionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PageTransitionEvent/persisted)
      */
     readonly persisted: boolean;
+    readonly [Symbol.toStringTag]: "PageTransitionEvent";
 }
 
 declare var PageTransitionEvent: {
@@ -23048,6 +23368,7 @@ interface PannerNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PannerNode/setPosition)
      */
     setPosition(x: number, y: number, z: number): void;
+    readonly [Symbol.toStringTag]: "PannerNode";
 }
 
 declare var PannerNode: {
@@ -23138,6 +23459,7 @@ interface Path2D extends CanvasPath {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Path2D/addPath)
      */
     addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
+    readonly [Symbol.toStringTag]: "Path2D";
 }
 
 declare var Path2D: {
@@ -23217,6 +23539,7 @@ interface PaymentAddress {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContactAddress/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PaymentAddress";
 }
 
 declare var PaymentAddress: {
@@ -23243,6 +23566,7 @@ interface PaymentMethodChangeEvent extends PaymentRequestUpdateEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentMethodChangeEvent/methodName)
      */
     readonly methodName: string;
+    readonly [Symbol.toStringTag]: "PaymentMethodChangeEvent";
 }
 
 declare var PaymentMethodChangeEvent: {
@@ -23326,6 +23650,7 @@ interface PaymentRequest extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PaymentRequestEventMap>(type: K, listener: (this: PaymentRequest, ev: PaymentRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "PaymentRequest";
 }
 
 declare var PaymentRequest: {
@@ -23436,6 +23761,7 @@ interface PaymentResponse extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PaymentResponseEventMap>(type: K, listener: (this: PaymentResponse, ev: PaymentResponseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "PaymentResponse";
 }
 
 declare var PaymentResponse: {
@@ -23551,6 +23877,7 @@ interface Performance extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "Performance";
 }
 
 declare var Performance: {
@@ -23643,6 +23970,7 @@ interface PerformanceEventTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformanceEventTiming";
 }
 
 declare var PerformanceEventTiming: {
@@ -23662,6 +23990,7 @@ interface PerformanceMark extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark/detail)
      */
     readonly detail: any;
+    readonly [Symbol.toStringTag]: "PerformanceMark";
 }
 
 declare var PerformanceMark: {
@@ -23681,6 +24010,7 @@ interface PerformanceMeasure extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure/detail)
      */
     readonly detail: any;
+    readonly [Symbol.toStringTag]: "PerformanceMeasure";
 }
 
 declare var PerformanceMeasure: {
@@ -23720,6 +24050,7 @@ interface PerformanceNavigation {
     readonly TYPE_RELOAD: 1;
     readonly TYPE_BACK_FORWARD: 2;
     readonly TYPE_RESERVED: 255;
+    readonly [Symbol.toStringTag]: "PerformanceNavigation";
 }
 
 /** @deprecated */
@@ -23804,6 +24135,7 @@ interface PerformanceNavigationTiming extends PerformanceResourceTiming {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceNavigationTiming/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformanceNavigationTiming";
 }
 
 declare var PerformanceNavigationTiming: {
@@ -23835,6 +24167,7 @@ interface PerformanceObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/takeRecords)
      */
     takeRecords(): PerformanceEntryList;
+    readonly [Symbol.toStringTag]: "PerformanceObserver";
 }
 
 declare var PerformanceObserver: {
@@ -23872,6 +24205,7 @@ interface PerformanceObserverEntryList {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList/getEntriesByType)
      */
     getEntriesByType(type: string): PerformanceEntryList;
+    readonly [Symbol.toStringTag]: "PerformanceObserverEntryList";
 }
 
 declare var PerformanceObserverEntryList: {
@@ -23886,6 +24220,7 @@ declare var PerformanceObserverEntryList: {
  */
 interface PerformancePaintTiming extends PerformanceEntry {
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformancePaintTiming";
 }
 
 declare var PerformancePaintTiming: {
@@ -24056,6 +24391,7 @@ interface PerformanceServerTiming {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformanceServerTiming";
 }
 
 declare var PerformanceServerTiming: {
@@ -24224,6 +24560,7 @@ interface PerformanceTiming {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformanceTiming";
 }
 
 /** @deprecated */
@@ -24238,6 +24575,7 @@ declare var PerformanceTiming: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PeriodicWave)
  */
 interface PeriodicWave {
+    readonly [Symbol.toStringTag]: "PeriodicWave";
 }
 
 declare var PeriodicWave: {
@@ -24273,6 +24611,7 @@ interface PermissionStatus extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PermissionStatusEventMap>(type: K, listener: (this: PermissionStatus, ev: PermissionStatusEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "PermissionStatus";
 }
 
 declare var PermissionStatus: {
@@ -24292,6 +24631,7 @@ interface Permissions {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions/query)
      */
     query(permissionDesc: PermissionDescriptor): Promise<PermissionStatus>;
+    readonly [Symbol.toStringTag]: "Permissions";
 }
 
 declare var Permissions: {
@@ -24311,6 +24651,7 @@ interface PictureInPictureEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PictureInPictureEvent/pictureInPictureWindow)
      */
     readonly pictureInPictureWindow: PictureInPictureWindow;
+    readonly [Symbol.toStringTag]: "PictureInPictureEvent";
 }
 
 declare var PictureInPictureEvent: {
@@ -24346,6 +24687,7 @@ interface PictureInPictureWindow extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PictureInPictureWindowEventMap>(type: K, listener: (this: PictureInPictureWindow, ev: PictureInPictureWindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "PictureInPictureWindow";
 }
 
 declare var PictureInPictureWindow: {
@@ -24388,6 +24730,7 @@ interface Plugin {
     /** @deprecated */
     namedItem(name: string): MimeType | null;
     [index: number]: MimeType;
+    readonly [Symbol.toStringTag]: "Plugin";
 }
 
 /** @deprecated */
@@ -24412,6 +24755,7 @@ interface PluginArray {
     /** @deprecated */
     refresh(): void;
     [index: number]: Plugin;
+    readonly [Symbol.toStringTag]: "PluginArray";
 }
 
 /** @deprecated */
@@ -24517,6 +24861,7 @@ interface PointerEvent extends MouseEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/getPredictedEvents)
      */
     getPredictedEvents(): PointerEvent[];
+    readonly [Symbol.toStringTag]: "PointerEvent";
 }
 
 declare var PointerEvent: {
@@ -24542,6 +24887,7 @@ interface PopStateEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent/state)
      */
     readonly state: any;
+    readonly [Symbol.toStringTag]: "PopStateEvent";
 }
 
 declare var PopStateEvent: {
@@ -24569,6 +24915,7 @@ interface ProcessingInstruction extends CharacterData, LinkStyle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProcessingInstruction/target)
      */
     readonly target: string;
+    readonly [Symbol.toStringTag]: "ProcessingInstruction";
 }
 
 declare var ProcessingInstruction: {
@@ -24601,6 +24948,7 @@ interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/total)
      */
     readonly total: number;
+    readonly [Symbol.toStringTag]: "ProgressEvent";
 }
 
 declare var ProgressEvent: {
@@ -24626,6 +24974,7 @@ interface PromiseRejectionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason)
      */
     readonly reason: any;
+    readonly [Symbol.toStringTag]: "PromiseRejectionEvent";
 }
 
 declare var PromiseRejectionEvent: {
@@ -24670,6 +25019,7 @@ interface PublicKeyCredential extends Credential {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/toJSON)
      */
     toJSON(): PublicKeyCredentialJSON;
+    readonly [Symbol.toStringTag]: "PublicKeyCredential";
 }
 
 declare var PublicKeyCredential: {
@@ -24750,6 +25100,7 @@ interface PushManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushManager/subscribe)
      */
     subscribe(options?: PushSubscriptionOptionsInit): Promise<PushSubscription>;
+    readonly [Symbol.toStringTag]: "PushManager";
 }
 
 declare var PushManager: {
@@ -24806,6 +25157,7 @@ interface PushSubscription {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription/unsubscribe)
      */
     unsubscribe(): Promise<boolean>;
+    readonly [Symbol.toStringTag]: "PushSubscription";
 }
 
 declare var PushSubscription: {
@@ -24832,6 +25184,7 @@ interface PushSubscriptionOptions {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscriptionOptions/userVisibleOnly)
      */
     readonly userVisibleOnly: boolean;
+    readonly [Symbol.toStringTag]: "PushSubscriptionOptions";
 }
 
 declare var PushSubscriptionOptions: {
@@ -24857,6 +25210,7 @@ interface RTCCertificate {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCCertificate/getFingerprints)
      */
     getFingerprints(): RTCDtlsFingerprint[];
+    readonly [Symbol.toStringTag]: "RTCCertificate";
 }
 
 declare var RTCCertificate: {
@@ -24898,6 +25252,7 @@ interface RTCDTMFSender extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCDTMFSenderEventMap>(type: K, listener: (this: RTCDTMFSender, ev: RTCDTMFSenderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RTCDTMFSender";
 }
 
 declare var RTCDTMFSender: {
@@ -24917,6 +25272,7 @@ interface RTCDTMFToneChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDTMFToneChangeEvent/tone)
      */
     readonly tone: string;
+    readonly [Symbol.toStringTag]: "RTCDTMFToneChangeEvent";
 }
 
 declare var RTCDTMFToneChangeEvent: {
@@ -25036,6 +25392,7 @@ interface RTCDataChannel extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCDataChannelEventMap>(type: K, listener: (this: RTCDataChannel, ev: RTCDataChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RTCDataChannel";
 }
 
 declare var RTCDataChannel: {
@@ -25055,6 +25412,7 @@ interface RTCDataChannelEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannelEvent/channel)
      */
     readonly channel: RTCDataChannel;
+    readonly [Symbol.toStringTag]: "RTCDataChannelEvent";
 }
 
 declare var RTCDataChannelEvent: {
@@ -25093,6 +25451,7 @@ interface RTCDtlsTransport extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCDtlsTransportEventMap>(type: K, listener: (this: RTCDtlsTransport, ev: RTCDtlsTransportEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RTCDtlsTransport";
 }
 
 declare var RTCDtlsTransport: {
@@ -25120,6 +25479,7 @@ interface RTCEncodedAudioFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/getMetadata)
      */
     getMetadata(): RTCEncodedAudioFrameMetadata;
+    readonly [Symbol.toStringTag]: "RTCEncodedAudioFrame";
 }
 
 declare var RTCEncodedAudioFrame: {
@@ -25153,6 +25513,7 @@ interface RTCEncodedVideoFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/getMetadata)
      */
     getMetadata(): RTCEncodedVideoFrameMetadata;
+    readonly [Symbol.toStringTag]: "RTCEncodedVideoFrame";
 }
 
 declare var RTCEncodedVideoFrame: {
@@ -25196,6 +25557,7 @@ interface RTCError extends DOMException {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sentAlert)
      */
     readonly sentAlert: number | null;
+    readonly [Symbol.toStringTag]: "RTCError";
 }
 
 declare var RTCError: {
@@ -25215,6 +25577,7 @@ interface RTCErrorEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent/error)
      */
     readonly error: RTCError;
+    readonly [Symbol.toStringTag]: "RTCErrorEvent";
 }
 
 declare var RTCErrorEvent: {
@@ -25318,6 +25681,7 @@ interface RTCIceCandidate {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidate/toJSON)
      */
     toJSON(): RTCIceCandidateInit;
+    readonly [Symbol.toStringTag]: "RTCIceCandidate";
 }
 
 declare var RTCIceCandidate: {
@@ -25373,6 +25737,7 @@ interface RTCIceTransport extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCIceTransportEventMap>(type: K, listener: (this: RTCIceTransport, ev: RTCIceTransportEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RTCIceTransport";
 }
 
 declare var RTCIceTransport: {
@@ -25604,6 +25969,7 @@ interface RTCPeerConnection extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCPeerConnectionEventMap>(type: K, listener: (this: RTCPeerConnection, ev: RTCPeerConnectionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RTCPeerConnection";
 }
 
 declare var RTCPeerConnection: {
@@ -25633,6 +25999,7 @@ interface RTCPeerConnectionIceErrorEvent extends Event {
     readonly errorText: string;
     readonly port: number | null;
     readonly url: string;
+    readonly [Symbol.toStringTag]: "RTCPeerConnectionIceErrorEvent";
 }
 
 declare var RTCPeerConnectionIceErrorEvent: {
@@ -25652,6 +26019,7 @@ interface RTCPeerConnectionIceEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceEvent/candidate)
      */
     readonly candidate: RTCIceCandidate | null;
+    readonly [Symbol.toStringTag]: "RTCPeerConnectionIceEvent";
 }
 
 declare var RTCPeerConnectionIceEvent: {
@@ -25713,6 +26081,7 @@ interface RTCRtpReceiver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver/getSynchronizationSources)
      */
     getSynchronizationSources(): RTCRtpSynchronizationSource[];
+    readonly [Symbol.toStringTag]: "RTCRtpReceiver";
 }
 
 declare var RTCRtpReceiver: {
@@ -25732,6 +26101,7 @@ declare var RTCRtpReceiver: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpScriptTransform)
  */
 interface RTCRtpScriptTransform {
+    readonly [Symbol.toStringTag]: "RTCRtpScriptTransform";
 }
 
 declare var RTCRtpScriptTransform: {
@@ -25799,6 +26169,7 @@ interface RTCRtpSender {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpSender/setStreams)
      */
     setStreams(...streams: MediaStream[]): void;
+    readonly [Symbol.toStringTag]: "RTCRtpSender";
 }
 
 declare var RTCRtpSender: {
@@ -25860,6 +26231,7 @@ interface RTCRtpTransceiver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpTransceiver/stop)
      */
     stop(): void;
+    readonly [Symbol.toStringTag]: "RTCRtpTransceiver";
 }
 
 declare var RTCRtpTransceiver: {
@@ -25907,6 +26279,7 @@ interface RTCSctpTransport extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RTCSctpTransportEventMap>(type: K, listener: (this: RTCSctpTransport, ev: RTCSctpTransportEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RTCSctpTransport";
 }
 
 declare var RTCSctpTransport: {
@@ -25938,6 +26311,7 @@ interface RTCSessionDescription {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSessionDescription/toJSON)
      */
     toJSON(): RTCSessionDescriptionInit;
+    readonly [Symbol.toStringTag]: "RTCSessionDescription";
 }
 
 declare var RTCSessionDescription: {
@@ -25952,6 +26326,7 @@ declare var RTCSessionDescription: {
  */
 interface RTCStatsReport {
     forEach(callbackfn: (value: any, key: string, parent: RTCStatsReport) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "RTCStatsReport";
 }
 
 declare var RTCStatsReport: {
@@ -25989,6 +26364,7 @@ interface RTCTrackEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCTrackEvent/transceiver)
      */
     readonly transceiver: RTCRtpTransceiver;
+    readonly [Symbol.toStringTag]: "RTCTrackEvent";
 }
 
 declare var RTCTrackEvent: {
@@ -26008,6 +26384,7 @@ interface RadioNodeList extends NodeListOf<HTMLInputElement> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RadioNodeList/value)
      */
     value: string;
+    readonly [Symbol.toStringTag]: "RadioNodeList";
 }
 
 declare var RadioNodeList: {
@@ -26170,6 +26547,7 @@ interface Range extends AbstractRange {
     readonly START_TO_END: 1;
     readonly END_TO_END: 2;
     readonly END_TO_START: 3;
+    readonly [Symbol.toStringTag]: "Range";
 }
 
 declare var Range: {
@@ -26217,6 +26595,7 @@ interface ReadableByteStreamController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "ReadableByteStreamController";
 }
 
 declare var ReadableByteStreamController: {
@@ -26268,6 +26647,7 @@ interface ReadableStream<R = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee)
      */
     tee(): [ReadableStream<R>, ReadableStream<R>];
+    readonly [Symbol.toStringTag]: "ReadableStream";
 }
 
 declare var ReadableStream: {
@@ -26295,6 +26675,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock)
      */
     releaseLock(): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamBYOBReader";
 }
 
 declare var ReadableStreamBYOBReader: {
@@ -26326,6 +26707,7 @@ interface ReadableStreamBYOBRequest {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respondWithNewView)
      */
     respondWithNewView(view: ArrayBufferView<ArrayBuffer>): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamBYOBRequest";
 }
 
 declare var ReadableStreamBYOBRequest: {
@@ -26363,6 +26745,7 @@ interface ReadableStreamDefaultController<R = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamDefaultController";
 }
 
 declare var ReadableStreamDefaultController: {
@@ -26388,6 +26771,7 @@ interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericRead
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/releaseLock)
      */
     releaseLock(): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamDefaultReader";
 }
 
 declare var ReadableStreamDefaultReader: {
@@ -26448,6 +26832,7 @@ interface RemotePlayback extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof RemotePlaybackEventMap>(type: K, listener: (this: RemotePlayback, ev: RemotePlaybackEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "RemotePlayback";
 }
 
 declare var RemotePlayback: {
@@ -26479,6 +26864,7 @@ interface ReportingObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver/takeRecords)
      */
     takeRecords(): ReportList;
+    readonly [Symbol.toStringTag]: "ReportingObserver";
 }
 
 declare var ReportingObserver: {
@@ -26576,6 +26962,7 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/clone)
      */
     clone(): Request;
+    readonly [Symbol.toStringTag]: "Request";
 }
 
 declare var Request: {
@@ -26607,6 +26994,7 @@ interface ResizeObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserver/unobserve)
      */
     unobserve(target: Element): void;
+    readonly [Symbol.toStringTag]: "ResizeObserver";
 }
 
 declare var ResizeObserver: {
@@ -26650,6 +27038,7 @@ interface ResizeObserverEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverEntry/target)
      */
     readonly target: Element;
+    readonly [Symbol.toStringTag]: "ResizeObserverEntry";
 }
 
 declare var ResizeObserverEntry: {
@@ -26675,6 +27064,7 @@ interface ResizeObserverSize {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ResizeObserverSize/inlineSize)
      */
     readonly inlineSize: number;
+    readonly [Symbol.toStringTag]: "ResizeObserverSize";
 }
 
 declare var ResizeObserverSize: {
@@ -26736,6 +27126,7 @@ interface Response extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone)
      */
     clone(): Response;
+    readonly [Symbol.toStringTag]: "Response";
 }
 
 declare var Response: {
@@ -26791,6 +27182,7 @@ interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGAElement";
 }
 
 declare var SVGAElement: {
@@ -26845,6 +27237,7 @@ interface SVGAngle {
     readonly SVG_ANGLETYPE_DEG: 2;
     readonly SVG_ANGLETYPE_RAD: 3;
     readonly SVG_ANGLETYPE_GRAD: 4;
+    readonly [Symbol.toStringTag]: "SVGAngle";
 }
 
 declare var SVGAngle: {
@@ -26867,6 +27260,7 @@ interface SVGAnimateElement extends SVGAnimationElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGAnimateElement";
 }
 
 declare var SVGAnimateElement: {
@@ -26884,6 +27278,7 @@ interface SVGAnimateMotionElement extends SVGAnimationElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateMotionElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGAnimateMotionElement";
 }
 
 declare var SVGAnimateMotionElement: {
@@ -26901,6 +27296,7 @@ interface SVGAnimateTransformElement extends SVGAnimationElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAnimateTransformElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGAnimateTransformElement";
 }
 
 declare var SVGAnimateTransformElement: {
@@ -26926,6 +27322,7 @@ interface SVGAnimatedAngle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedAngle/baseVal)
      */
     readonly baseVal: SVGAngle;
+    readonly [Symbol.toStringTag]: "SVGAnimatedAngle";
 }
 
 declare var SVGAnimatedAngle: {
@@ -26951,6 +27348,7 @@ interface SVGAnimatedBoolean {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedBoolean/baseVal)
      */
     baseVal: boolean;
+    readonly [Symbol.toStringTag]: "SVGAnimatedBoolean";
 }
 
 declare var SVGAnimatedBoolean: {
@@ -26976,6 +27374,7 @@ interface SVGAnimatedEnumeration {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedEnumeration/baseVal)
      */
     baseVal: number;
+    readonly [Symbol.toStringTag]: "SVGAnimatedEnumeration";
 }
 
 declare var SVGAnimatedEnumeration: {
@@ -27001,6 +27400,7 @@ interface SVGAnimatedInteger {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedInteger/baseVal)
      */
     baseVal: number;
+    readonly [Symbol.toStringTag]: "SVGAnimatedInteger";
 }
 
 declare var SVGAnimatedInteger: {
@@ -27026,6 +27426,7 @@ interface SVGAnimatedLength {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedLength/baseVal)
      */
     readonly baseVal: SVGLength;
+    readonly [Symbol.toStringTag]: "SVGAnimatedLength";
 }
 
 declare var SVGAnimatedLength: {
@@ -27051,6 +27452,7 @@ interface SVGAnimatedLengthList {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedLengthList/baseVal)
      */
     readonly baseVal: SVGLengthList;
+    readonly [Symbol.toStringTag]: "SVGAnimatedLengthList";
 }
 
 declare var SVGAnimatedLengthList: {
@@ -27076,6 +27478,7 @@ interface SVGAnimatedNumber {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedNumber/baseVal)
      */
     baseVal: number;
+    readonly [Symbol.toStringTag]: "SVGAnimatedNumber";
 }
 
 declare var SVGAnimatedNumber: {
@@ -27101,6 +27504,7 @@ interface SVGAnimatedNumberList {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedNumberList/baseVal)
      */
     readonly baseVal: SVGNumberList;
+    readonly [Symbol.toStringTag]: "SVGAnimatedNumberList";
 }
 
 declare var SVGAnimatedNumberList: {
@@ -27133,6 +27537,7 @@ interface SVGAnimatedPreserveAspectRatio {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedPreserveAspectRatio/baseVal)
      */
     readonly baseVal: SVGPreserveAspectRatio;
+    readonly [Symbol.toStringTag]: "SVGAnimatedPreserveAspectRatio";
 }
 
 declare var SVGAnimatedPreserveAspectRatio: {
@@ -27158,6 +27563,7 @@ interface SVGAnimatedRect {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedRect/baseVal)
      */
     readonly baseVal: DOMRect;
+    readonly [Symbol.toStringTag]: "SVGAnimatedRect";
 }
 
 declare var SVGAnimatedRect: {
@@ -27183,6 +27589,7 @@ interface SVGAnimatedString {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedString/baseVal)
      */
     baseVal: string;
+    readonly [Symbol.toStringTag]: "SVGAnimatedString";
 }
 
 declare var SVGAnimatedString: {
@@ -27208,6 +27615,7 @@ interface SVGAnimatedTransformList {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedTransformList/baseVal)
      */
     readonly baseVal: SVGTransformList;
+    readonly [Symbol.toStringTag]: "SVGAnimatedTransformList";
 }
 
 declare var SVGAnimatedTransformList: {
@@ -27308,6 +27716,7 @@ interface SVGCircleElement extends SVGGeometryElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGCircleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGCircleElement";
 }
 
 declare var SVGCircleElement: {
@@ -27337,6 +27746,7 @@ interface SVGClipPathElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGClipPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGClipPathElement";
 }
 
 declare var SVGClipPathElement: {
@@ -27425,6 +27835,7 @@ interface SVGDefsElement extends SVGGraphicsElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGDefsElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGDefsElement";
 }
 
 declare var SVGDefsElement: {
@@ -27442,6 +27853,7 @@ interface SVGDescElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGDescElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGDescElement";
 }
 
 declare var SVGDescElement: {
@@ -27517,6 +27929,7 @@ interface SVGEllipseElement extends SVGGeometryElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGEllipseElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGEllipseElement";
 }
 
 declare var SVGEllipseElement: {
@@ -27569,6 +27982,7 @@ interface SVGFEBlendElement extends SVGElement, SVGFilterPrimitiveStandardAttrib
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEBlendElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEBlendElement";
 }
 
 declare var SVGFEBlendElement: {
@@ -27626,6 +28040,7 @@ interface SVGFEColorMatrixElement extends SVGElement, SVGFilterPrimitiveStandard
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEColorMatrixElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEColorMatrixElement";
 }
 
 declare var SVGFEColorMatrixElement: {
@@ -27654,6 +28069,7 @@ interface SVGFEComponentTransferElement extends SVGElement, SVGFilterPrimitiveSt
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEComponentTransferElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEComponentTransferElement";
 }
 
 declare var SVGFEComponentTransferElement: {
@@ -27720,6 +28136,7 @@ interface SVGFECompositeElement extends SVGElement, SVGFilterPrimitiveStandardAt
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFECompositeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFECompositeElement";
 }
 
 declare var SVGFECompositeElement: {
@@ -27820,6 +28237,7 @@ interface SVGFEConvolveMatrixElement extends SVGElement, SVGFilterPrimitiveStand
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEConvolveMatrixElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEConvolveMatrixElement";
 }
 
 declare var SVGFEConvolveMatrixElement: {
@@ -27871,6 +28289,7 @@ interface SVGFEDiffuseLightingElement extends SVGElement, SVGFilterPrimitiveStan
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDiffuseLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEDiffuseLightingElement";
 }
 
 declare var SVGFEDiffuseLightingElement: {
@@ -27923,6 +28342,7 @@ interface SVGFEDisplacementMapElement extends SVGElement, SVGFilterPrimitiveStan
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDisplacementMapElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEDisplacementMapElement";
 }
 
 declare var SVGFEDisplacementMapElement: {
@@ -27957,6 +28377,7 @@ interface SVGFEDistantLightElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDistantLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEDistantLightElement";
 }
 
 declare var SVGFEDistantLightElement: {
@@ -28010,6 +28431,7 @@ interface SVGFEDropShadowElement extends SVGElement, SVGFilterPrimitiveStandardA
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEDropShadowElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEDropShadowElement";
 }
 
 declare var SVGFEDropShadowElement: {
@@ -28027,6 +28449,7 @@ interface SVGFEFloodElement extends SVGElement, SVGFilterPrimitiveStandardAttrib
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFloodElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEFloodElement";
 }
 
 declare var SVGFEFloodElement: {
@@ -28044,6 +28467,7 @@ interface SVGFEFuncAElement extends SVGComponentTransferFunctionElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEFuncAElement";
 }
 
 declare var SVGFEFuncAElement: {
@@ -28061,6 +28485,7 @@ interface SVGFEFuncBElement extends SVGComponentTransferFunctionElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncBElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEFuncBElement";
 }
 
 declare var SVGFEFuncBElement: {
@@ -28078,6 +28503,7 @@ interface SVGFEFuncGElement extends SVGComponentTransferFunctionElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEFuncGElement";
 }
 
 declare var SVGFEFuncGElement: {
@@ -28095,6 +28521,7 @@ interface SVGFEFuncRElement extends SVGComponentTransferFunctionElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEFuncRElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEFuncRElement";
 }
 
 declare var SVGFEFuncRElement: {
@@ -28136,6 +28563,7 @@ interface SVGFEGaussianBlurElement extends SVGElement, SVGFilterPrimitiveStandar
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEGaussianBlurElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEGaussianBlurElement";
 }
 
 declare var SVGFEGaussianBlurElement: {
@@ -28159,6 +28587,7 @@ interface SVGFEImageElement extends SVGElement, SVGFilterPrimitiveStandardAttrib
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEImageElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEImageElement";
 }
 
 declare var SVGFEImageElement: {
@@ -28176,6 +28605,7 @@ interface SVGFEMergeElement extends SVGElement, SVGFilterPrimitiveStandardAttrib
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEMergeElement";
 }
 
 declare var SVGFEMergeElement: {
@@ -28199,6 +28629,7 @@ interface SVGFEMergeNodeElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMergeNodeElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEMergeNodeElement";
 }
 
 declare var SVGFEMergeNodeElement: {
@@ -28243,6 +28674,7 @@ interface SVGFEMorphologyElement extends SVGElement, SVGFilterPrimitiveStandardA
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEMorphologyElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEMorphologyElement";
 }
 
 declare var SVGFEMorphologyElement: {
@@ -28281,6 +28713,7 @@ interface SVGFEOffsetElement extends SVGElement, SVGFilterPrimitiveStandardAttri
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEOffsetElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEOffsetElement";
 }
 
 declare var SVGFEOffsetElement: {
@@ -28316,6 +28749,7 @@ interface SVGFEPointLightElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFEPointLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFEPointLightElement";
 }
 
 declare var SVGFEPointLightElement: {
@@ -28369,6 +28803,7 @@ interface SVGFESpecularLightingElement extends SVGElement, SVGFilterPrimitiveSta
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpecularLightingElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFESpecularLightingElement";
 }
 
 declare var SVGFESpecularLightingElement: {
@@ -28434,6 +28869,7 @@ interface SVGFESpotLightElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFESpotLightElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFESpotLightElement";
 }
 
 declare var SVGFESpotLightElement: {
@@ -28457,6 +28893,7 @@ interface SVGFETileElement extends SVGElement, SVGFilterPrimitiveStandardAttribu
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFETileElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFETileElement";
 }
 
 declare var SVGFETileElement: {
@@ -28516,6 +28953,7 @@ interface SVGFETurbulenceElement extends SVGElement, SVGFilterPrimitiveStandardA
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFETurbulenceElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFETurbulenceElement";
 }
 
 declare var SVGFETurbulenceElement: {
@@ -28575,6 +29013,7 @@ interface SVGFilterElement extends SVGElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGFilterElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGFilterElement";
 }
 
 declare var SVGFilterElement: {
@@ -28636,6 +29075,7 @@ interface SVGForeignObjectElement extends SVGGraphicsElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGForeignObjectElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGForeignObjectElement";
 }
 
 declare var SVGForeignObjectElement: {
@@ -28653,6 +29093,7 @@ interface SVGGElement extends SVGGraphicsElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGGElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGGElement";
 }
 
 declare var SVGGElement: {
@@ -28837,6 +29278,7 @@ interface SVGImageElement extends SVGGraphicsElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGImageElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGImageElement";
 }
 
 declare var SVGImageElement: {
@@ -28897,6 +29339,7 @@ interface SVGLength {
     readonly SVG_LENGTHTYPE_IN: 8;
     readonly SVG_LENGTHTYPE_PT: 9;
     readonly SVG_LENGTHTYPE_PC: 10;
+    readonly [Symbol.toStringTag]: "SVGLength";
 }
 
 declare var SVGLength: {
@@ -28976,6 +29419,7 @@ interface SVGLengthList {
      */
     replaceItem(newItem: SVGLength, index: number): SVGLength;
     [index: number]: SVGLength;
+    readonly [Symbol.toStringTag]: "SVGLengthList";
 }
 
 declare var SVGLengthList: {
@@ -29017,6 +29461,7 @@ interface SVGLineElement extends SVGGeometryElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGLineElement";
 }
 
 declare var SVGLineElement: {
@@ -29058,6 +29503,7 @@ interface SVGLinearGradientElement extends SVGGradientElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGLinearGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGLinearGradientElement";
 }
 
 declare var SVGLinearGradientElement: {
@@ -29075,6 +29521,7 @@ interface SVGMPathElement extends SVGElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGMPathElement";
 }
 
 declare var SVGMPathElement: {
@@ -29153,6 +29600,7 @@ interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGMarkerElement";
 }
 
 declare var SVGMarkerElement: {
@@ -29213,6 +29661,7 @@ interface SVGMaskElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMaskElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGMaskElement";
 }
 
 declare var SVGMaskElement: {
@@ -29230,6 +29679,7 @@ interface SVGMetadataElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMetadataElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGMetadataElement";
 }
 
 declare var SVGMetadataElement: {
@@ -29249,6 +29699,7 @@ interface SVGNumber {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumber/value)
      */
     value: number;
+    readonly [Symbol.toStringTag]: "SVGNumber";
 }
 
 declare var SVGNumber: {
@@ -29317,6 +29768,7 @@ interface SVGNumberList {
      */
     replaceItem(newItem: SVGNumber, index: number): SVGNumber;
     [index: number]: SVGNumber;
+    readonly [Symbol.toStringTag]: "SVGNumberList";
 }
 
 declare var SVGNumberList: {
@@ -29352,6 +29804,7 @@ interface SVGPathElement extends SVGGeometryElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGPathElement";
 }
 
 declare var SVGPathElement: {
@@ -29411,6 +29864,7 @@ interface SVGPatternElement extends SVGElement, SVGFitToViewBox, SVGURIReference
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPatternElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGPatternElement";
 }
 
 declare var SVGPatternElement: {
@@ -29479,6 +29933,7 @@ interface SVGPointList {
      */
     replaceItem(newItem: DOMPoint, index: number): DOMPoint;
     [index: number]: DOMPoint;
+    readonly [Symbol.toStringTag]: "SVGPointList";
 }
 
 declare var SVGPointList: {
@@ -29496,6 +29951,7 @@ interface SVGPolygonElement extends SVGGeometryElement, SVGAnimatedPoints {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolygonElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGPolygonElement";
 }
 
 declare var SVGPolygonElement: {
@@ -29513,6 +29969,7 @@ interface SVGPolylineElement extends SVGGeometryElement, SVGAnimatedPoints {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGPolylineElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGPolylineElement";
 }
 
 declare var SVGPolylineElement: {
@@ -29552,6 +30009,7 @@ interface SVGPreserveAspectRatio {
     readonly SVG_MEETORSLICE_UNKNOWN: 0;
     readonly SVG_MEETORSLICE_MEET: 1;
     readonly SVG_MEETORSLICE_SLICE: 2;
+    readonly [Symbol.toStringTag]: "SVGPreserveAspectRatio";
 }
 
 declare var SVGPreserveAspectRatio: {
@@ -29619,6 +30077,7 @@ interface SVGRadialGradientElement extends SVGGradientElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRadialGradientElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGRadialGradientElement";
 }
 
 declare var SVGRadialGradientElement: {
@@ -29672,6 +30131,7 @@ interface SVGRectElement extends SVGGeometryElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGRectElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGRectElement";
 }
 
 declare var SVGRectElement: {
@@ -29840,6 +30300,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGSVGElementEventMap>(type: K, listener: (this: SVGSVGElement, ev: SVGSVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGSVGElement";
 }
 
 declare var SVGSVGElement: {
@@ -29863,6 +30324,7 @@ interface SVGScriptElement extends SVGElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGScriptElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGScriptElement";
 }
 
 declare var SVGScriptElement: {
@@ -29880,6 +30342,7 @@ interface SVGSetElement extends SVGAnimationElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSetElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGSetElement";
 }
 
 declare var SVGSetElement: {
@@ -29903,6 +30366,7 @@ interface SVGStopElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStopElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGStopElement";
 }
 
 declare var SVGStopElement: {
@@ -29971,6 +30435,7 @@ interface SVGStringList {
      */
     replaceItem(newItem: string, index: number): string;
     [index: number]: string;
+    readonly [Symbol.toStringTag]: "SVGStringList";
 }
 
 declare var SVGStringList: {
@@ -30013,6 +30478,7 @@ interface SVGStyleElement extends SVGElement, LinkStyle {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGStyleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGStyleElement";
 }
 
 declare var SVGStyleElement: {
@@ -30030,6 +30496,7 @@ interface SVGSwitchElement extends SVGGraphicsElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSwitchElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGSwitchElement";
 }
 
 declare var SVGSwitchElement: {
@@ -30047,6 +30514,7 @@ interface SVGSymbolElement extends SVGElement, SVGFitToViewBox {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGSymbolElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGSymbolElement";
 }
 
 declare var SVGSymbolElement: {
@@ -30064,6 +30532,7 @@ interface SVGTSpanElement extends SVGTextPositioningElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTSpanElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGTSpanElement";
 }
 
 declare var SVGTSpanElement: {
@@ -30173,6 +30642,7 @@ interface SVGTextElement extends SVGTextPositioningElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGTextElement";
 }
 
 declare var SVGTextElement: {
@@ -30214,6 +30684,7 @@ interface SVGTextPathElement extends SVGTextContentElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTextPathElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGTextPathElement";
 }
 
 declare var SVGTextPathElement: {
@@ -30284,6 +30755,7 @@ interface SVGTitleElement extends SVGElement {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGTitleElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGTitleElement";
 }
 
 declare var SVGTitleElement: {
@@ -30358,6 +30830,7 @@ interface SVGTransform {
     readonly SVG_TRANSFORM_ROTATE: 4;
     readonly SVG_TRANSFORM_SKEWX: 5;
     readonly SVG_TRANSFORM_SKEWY: 6;
+    readonly [Symbol.toStringTag]: "SVGTransform";
 }
 
 declare var SVGTransform: {
@@ -30445,6 +30918,7 @@ interface SVGTransformList {
      */
     replaceItem(newItem: SVGTransform, index: number): SVGTransform;
     [index: number]: SVGTransform;
+    readonly [Symbol.toStringTag]: "SVGTransformList";
 }
 
 declare var SVGTransformList: {
@@ -30466,6 +30940,7 @@ interface SVGUnitTypes {
     readonly SVG_UNIT_TYPE_UNKNOWN: 0;
     readonly SVG_UNIT_TYPE_USERSPACEONUSE: 1;
     readonly SVG_UNIT_TYPE_OBJECTBOUNDINGBOX: 2;
+    readonly [Symbol.toStringTag]: "SVGUnitTypes";
 }
 
 declare var SVGUnitTypes: {
@@ -30510,6 +30985,7 @@ interface SVGUseElement extends SVGGraphicsElement, SVGURIReference {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGUseElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGUseElement";
 }
 
 declare var SVGUseElement: {
@@ -30527,6 +31003,7 @@ interface SVGViewElement extends SVGElement, SVGFitToViewBox {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGViewElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SVGViewElement";
 }
 
 declare var SVGViewElement: {
@@ -30552,6 +31029,7 @@ interface Scheduler {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/yield)
      */
     yield(): Promise<void>;
+    readonly [Symbol.toStringTag]: "Scheduler";
 }
 
 declare var Scheduler: {
@@ -30607,6 +31085,7 @@ interface Screen {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Screen/width)
      */
     readonly width: number;
+    readonly [Symbol.toStringTag]: "Screen";
 }
 
 declare var Screen: {
@@ -30654,6 +31133,7 @@ interface ScreenOrientation extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ScreenOrientationEventMap>(type: K, listener: (this: ScreenOrientation, ev: ScreenOrientationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ScreenOrientation";
 }
 
 declare var ScreenOrientation: {
@@ -30689,6 +31169,7 @@ interface ScriptProcessorNode extends AudioNode {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ScriptProcessorNodeEventMap>(type: K, listener: (this: ScriptProcessorNode, ev: ScriptProcessorNodeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ScriptProcessorNode";
 }
 
 /** @deprecated */
@@ -30800,6 +31281,7 @@ interface SecurityPolicyViolationEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent/violatedDirective)
      */
     readonly violatedDirective: string;
+    readonly [Symbol.toStringTag]: "SecurityPolicyViolationEvent";
 }
 
 declare var SecurityPolicyViolationEvent: {
@@ -30958,6 +31440,7 @@ interface Selection {
      */
     setPosition(node: Node | null, offset?: number): void;
     toString(): string;
+    readonly [Symbol.toStringTag]: "Selection";
 }
 
 declare var Selection: {
@@ -31001,6 +31484,7 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorker";
 }
 
 declare var ServiceWorker: {
@@ -31067,6 +31551,7 @@ interface ServiceWorkerContainer extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorkerContainer";
 }
 
 declare var ServiceWorkerContainer: {
@@ -31157,6 +31642,7 @@ interface ServiceWorkerRegistration extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorkerRegistration";
 }
 
 declare var ServiceWorkerRegistration: {
@@ -31233,6 +31719,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ShadowRootEventMap>(type: K, listener: (this: ShadowRoot, ev: ShadowRootEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ShadowRoot";
 }
 
 declare var ShadowRoot: {
@@ -31256,6 +31743,7 @@ interface SharedWorker extends EventTarget, AbstractWorker {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbstractWorkerEventMap>(type: K, listener: (this: SharedWorker, ev: AbstractWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SharedWorker";
 }
 
 declare var SharedWorker: {
@@ -31356,6 +31844,7 @@ interface SourceBuffer extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SourceBufferEventMap>(type: K, listener: (this: SourceBuffer, ev: SourceBufferEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SourceBuffer";
 }
 
 declare var SourceBuffer: {
@@ -31387,6 +31876,7 @@ interface SourceBufferList extends EventTarget {
     removeEventListener<K extends keyof SourceBufferListEventMap>(type: K, listener: (this: SourceBufferList, ev: SourceBufferListEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     [index: number]: SourceBuffer;
+    readonly [Symbol.toStringTag]: "SourceBufferList";
 }
 
 declare var SourceBufferList: {
@@ -31413,6 +31903,7 @@ interface SpeechRecognitionAlternative {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionAlternative/transcript)
      */
     readonly transcript: string;
+    readonly [Symbol.toStringTag]: "SpeechRecognitionAlternative";
 }
 
 declare var SpeechRecognitionAlternative: {
@@ -31439,6 +31930,7 @@ interface SpeechRecognitionErrorEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionErrorEvent/message)
      */
     readonly message: string;
+    readonly [Symbol.toStringTag]: "SpeechRecognitionErrorEvent";
 }
 
 declare var SpeechRecognitionErrorEvent: {
@@ -31465,6 +31957,7 @@ interface SpeechRecognitionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionEvent/results)
      */
     readonly results: SpeechRecognitionResultList;
+    readonly [Symbol.toStringTag]: "SpeechRecognitionEvent";
 }
 
 declare var SpeechRecognitionEvent: {
@@ -31498,6 +31991,7 @@ interface SpeechRecognitionResult {
      */
     item(index: number): SpeechRecognitionAlternative;
     [index: number]: SpeechRecognitionAlternative;
+    readonly [Symbol.toStringTag]: "SpeechRecognitionResult";
 }
 
 declare var SpeechRecognitionResult: {
@@ -31525,6 +32019,7 @@ interface SpeechRecognitionResultList {
      */
     item(index: number): SpeechRecognitionResult;
     [index: number]: SpeechRecognitionResult;
+    readonly [Symbol.toStringTag]: "SpeechRecognitionResultList";
 }
 
 declare var SpeechRecognitionResultList: {
@@ -31596,6 +32091,7 @@ interface SpeechSynthesis extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SpeechSynthesisEventMap>(type: K, listener: (this: SpeechSynthesis, ev: SpeechSynthesisEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SpeechSynthesis";
 }
 
 declare var SpeechSynthesis: {
@@ -31615,6 +32111,7 @@ interface SpeechSynthesisErrorEvent extends SpeechSynthesisEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisErrorEvent/error)
      */
     readonly error: SpeechSynthesisErrorCode;
+    readonly [Symbol.toStringTag]: "SpeechSynthesisErrorEvent";
 }
 
 declare var SpeechSynthesisErrorEvent: {
@@ -31735,6 +32232,7 @@ interface SpeechSynthesisUtterance extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SpeechSynthesisUtteranceEventMap>(type: K, listener: (this: SpeechSynthesisUtterance, ev: SpeechSynthesisUtteranceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "SpeechSynthesisUtterance";
 }
 
 declare var SpeechSynthesisUtterance: {
@@ -31778,6 +32276,7 @@ interface SpeechSynthesisVoice {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisVoice/voiceURI)
      */
     readonly voiceURI: string;
+    readonly [Symbol.toStringTag]: "SpeechSynthesisVoice";
 }
 
 declare var SpeechSynthesisVoice: {
@@ -31791,6 +32290,7 @@ declare var SpeechSynthesisVoice: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StaticRange)
  */
 interface StaticRange extends AbstractRange {
+    readonly [Symbol.toStringTag]: "StaticRange";
 }
 
 declare var StaticRange: {
@@ -31810,6 +32310,7 @@ interface StereoPannerNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StereoPannerNode/pan)
      */
     readonly pan: AudioParam;
+    readonly [Symbol.toStringTag]: "StereoPannerNode";
 }
 
 declare var StereoPannerNode: {
@@ -31860,6 +32361,7 @@ interface Storage {
      */
     setItem(key: string, value: string): void;
     [name: string]: any;
+    readonly [Symbol.toStringTag]: "Storage";
 }
 
 declare var Storage: {
@@ -31910,6 +32412,7 @@ interface StorageEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageEvent/initStorageEvent)
      */
     initStorageEvent(type: string, bubbles?: boolean, cancelable?: boolean, key?: string | null, oldValue?: string | null, newValue?: string | null, url?: string | URL, storageArea?: Storage | null): void;
+    readonly [Symbol.toStringTag]: "StorageEvent";
 }
 
 declare var StorageEvent: {
@@ -31948,6 +32451,7 @@ interface StorageManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persisted)
      */
     persisted(): Promise<boolean>;
+    readonly [Symbol.toStringTag]: "StorageManager";
 }
 
 declare var StorageManager: {
@@ -31991,6 +32495,7 @@ interface StylePropertyMap extends StylePropertyMapReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StylePropertyMap/set)
      */
     set(property: string, ...values: (CSSStyleValue | string)[]): void;
+    readonly [Symbol.toStringTag]: "StylePropertyMap";
 }
 
 declare var StylePropertyMap: {
@@ -32111,6 +32616,7 @@ interface StyleSheetList {
      */
     item(index: number): CSSStyleSheet | null;
     [index: number]: CSSStyleSheet;
+    readonly [Symbol.toStringTag]: "StyleSheetList";
 }
 
 declare var StyleSheetList: {
@@ -32130,6 +32636,7 @@ interface SubmitEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubmitEvent/submitter)
      */
     readonly submitter: HTMLElement | null;
+    readonly [Symbol.toStringTag]: "SubmitEvent";
 }
 
 declare var SubmitEvent: {
@@ -32222,6 +32729,7 @@ interface SubtleCrypto {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/wrapKey)
      */
     wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams): Promise<ArrayBuffer>;
+    readonly [Symbol.toStringTag]: "SubtleCrypto";
 }
 
 declare var SubtleCrypto: {
@@ -32241,6 +32749,7 @@ interface TaskController extends AbortController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskController/setPriority)
      */
     setPriority(priority: TaskPriority): void;
+    readonly [Symbol.toStringTag]: "TaskController";
 }
 
 declare var TaskController: {
@@ -32260,6 +32769,7 @@ interface TaskPriorityChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskPriorityChangeEvent/previousPriority)
      */
     readonly previousPriority: TaskPriority;
+    readonly [Symbol.toStringTag]: "TaskPriorityChangeEvent";
 }
 
 declare var TaskPriorityChangeEvent: {
@@ -32289,6 +32799,7 @@ interface TaskSignal extends AbortSignal {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "TaskSignal";
 }
 
 declare var TaskSignal: {
@@ -32339,6 +32850,7 @@ interface TextDecoder extends TextDecoderCommon {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
     decode(input?: AllowSharedBufferSource, options?: TextDecodeOptions): string;
+    readonly [Symbol.toStringTag]: "TextDecoder";
 }
 
 declare var TextDecoder: {
@@ -32375,6 +32887,7 @@ interface TextDecoderCommon {
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "TextDecoderStream";
 }
 
 declare var TextDecoderStream: {
@@ -32400,6 +32913,7 @@ interface TextEncoder extends TextEncoderCommon {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
      */
     encodeInto(source: string, destination: Uint8Array<ArrayBufferLike>): TextEncoderEncodeIntoResult;
+    readonly [Symbol.toStringTag]: "TextEncoder";
 }
 
 declare var TextEncoder: {
@@ -32424,6 +32938,7 @@ interface TextEncoderCommon {
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<string>;
+    readonly [Symbol.toStringTag]: "TextEncoderStream";
 }
 
 declare var TextEncoderStream: {
@@ -32452,6 +32967,7 @@ interface TextEvent extends UIEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEvent/initTextEvent)
      */
     initTextEvent(type: string, bubbles?: boolean, cancelable?: boolean, view?: Window | null, data?: string): void;
+    readonly [Symbol.toStringTag]: "TextEvent";
 }
 
 /** @deprecated */
@@ -32538,6 +33054,7 @@ interface TextMetrics {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/width)
      */
     readonly width: number;
+    readonly [Symbol.toStringTag]: "TextMetrics";
 }
 
 declare var TextMetrics: {
@@ -32621,6 +33138,7 @@ interface TextTrack extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof TextTrackEventMap>(type: K, listener: (this: TextTrack, ev: TextTrackEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "TextTrack";
 }
 
 declare var TextTrack: {
@@ -32703,6 +33221,7 @@ interface TextTrackCueList {
      */
     getCueById(id: string): TextTrackCue | null;
     [index: number]: TextTrackCue;
+    readonly [Symbol.toStringTag]: "TextTrackCueList";
 }
 
 declare var TextTrackCueList: {
@@ -32745,6 +33264,7 @@ interface TextTrackList extends EventTarget {
     removeEventListener<K extends keyof TextTrackListEventMap>(type: K, listener: (this: TextTrackList, ev: TextTrackListEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     [index: number]: TextTrack;
+    readonly [Symbol.toStringTag]: "TextTrackList";
 }
 
 declare var TextTrackList: {
@@ -32776,6 +33296,7 @@ interface TimeRanges {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TimeRanges/start)
      */
     start(index: number): number;
+    readonly [Symbol.toStringTag]: "TimeRanges";
 }
 
 declare var TimeRanges: {
@@ -32801,6 +33322,7 @@ interface ToggleEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/oldState)
      */
     readonly oldState: string;
+    readonly [Symbol.toStringTag]: "ToggleEvent";
 }
 
 declare var ToggleEvent: {
@@ -32886,6 +33408,7 @@ interface Touch {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Touch/target)
      */
     readonly target: EventTarget;
+    readonly [Symbol.toStringTag]: "Touch";
 }
 
 declare var Touch: {
@@ -32941,6 +33464,7 @@ interface TouchEvent extends UIEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/touches)
      */
     readonly touches: TouchList;
+    readonly [Symbol.toStringTag]: "TouchEvent";
 }
 
 declare var TouchEvent: {
@@ -32967,6 +33491,7 @@ interface TouchList {
      */
     item(index: number): Touch | null;
     [index: number]: Touch;
+    readonly [Symbol.toStringTag]: "TouchList";
 }
 
 declare var TouchList: {
@@ -32986,6 +33511,7 @@ interface TrackEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TrackEvent/track)
      */
     readonly track: TextTrack | null;
+    readonly [Symbol.toStringTag]: "TrackEvent";
 }
 
 declare var TrackEvent: {
@@ -33011,6 +33537,7 @@ interface TransformStream<I = any, O = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/writable)
      */
     readonly writable: WritableStream<I>;
+    readonly [Symbol.toStringTag]: "TransformStream";
 }
 
 declare var TransformStream: {
@@ -33048,6 +33575,7 @@ interface TransformStreamDefaultController<O = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/terminate)
      */
     terminate(): void;
+    readonly [Symbol.toStringTag]: "TransformStreamDefaultController";
 }
 
 declare var TransformStreamDefaultController: {
@@ -33079,6 +33607,7 @@ interface TransitionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransitionEvent/pseudoElement)
      */
     readonly pseudoElement: string;
+    readonly [Symbol.toStringTag]: "TransitionEvent";
 }
 
 declare var TransitionEvent: {
@@ -33158,6 +33687,7 @@ interface TreeWalker {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/previousSibling)
      */
     previousSibling(): Node | null;
+    readonly [Symbol.toStringTag]: "TreeWalker";
 }
 
 declare var TreeWalker: {
@@ -33289,6 +33819,7 @@ interface URL {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/toJSON)
      */
     toJSON(): string;
+    readonly [Symbol.toStringTag]: "URL";
 }
 
 declare var URL: {
@@ -33395,6 +33926,7 @@ interface URLPattern {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
      */
     test(input?: URLPatternInput, baseURL?: string | URL): boolean;
+    readonly [Symbol.toStringTag]: "URLPattern";
 }
 
 declare var URLPattern: {
@@ -33459,6 +33991,7 @@ interface URLSearchParams {
     sort(): void;
     toString(): string;
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "URLSearchParams";
 }
 
 declare var URLSearchParams: {
@@ -33484,6 +34017,7 @@ interface UserActivation {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/UserActivation/isActive)
      */
     readonly isActive: boolean;
+    readonly [Symbol.toStringTag]: "UserActivation";
 }
 
 declare var UserActivation: {
@@ -33567,6 +34101,7 @@ interface VTTCue extends TextTrackCue {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof TextTrackCueEventMap>(type: K, listener: (this: VTTCue, ev: TextTrackCueEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "VTTCue";
 }
 
 declare var VTTCue: {
@@ -33588,6 +34123,7 @@ interface VTTRegion {
     viewportAnchorX: number;
     viewportAnchorY: number;
     width: number;
+    readonly [Symbol.toStringTag]: "VTTRegion";
 }
 
 declare var VTTRegion: {
@@ -33667,6 +34203,7 @@ interface ValidityState {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/valueMissing)
      */
     readonly valueMissing: boolean;
+    readonly [Symbol.toStringTag]: "ValidityState";
 }
 
 declare var ValidityState: {
@@ -33710,6 +34247,7 @@ interface VideoColorSpace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/toJSON)
      */
     toJSON(): VideoColorSpaceInit;
+    readonly [Symbol.toStringTag]: "VideoColorSpace";
 }
 
 declare var VideoColorSpace: {
@@ -33776,6 +34314,7 @@ interface VideoDecoder extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof VideoDecoderEventMap>(type: K, listener: (this: VideoDecoder, ev: VideoDecoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "VideoDecoder";
 }
 
 declare var VideoDecoder: {
@@ -33848,6 +34387,7 @@ interface VideoEncoder extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof VideoEncoderEventMap>(type: K, listener: (this: VideoEncoder, ev: VideoEncoderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "VideoEncoder";
 }
 
 declare var VideoEncoder: {
@@ -33951,6 +34491,7 @@ interface VideoFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoFrame/copyTo)
      */
     copyTo(destination: AllowSharedBufferSource, options?: VideoFrameCopyToOptions): Promise<PlaneLayout[]>;
+    readonly [Symbol.toStringTag]: "VideoFrame";
 }
 
 declare var VideoFrame: {
@@ -33990,6 +34531,7 @@ interface VideoPlaybackQuality {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoPlaybackQuality/totalVideoFrames)
      */
     readonly totalVideoFrames: number;
+    readonly [Symbol.toStringTag]: "VideoPlaybackQuality";
 }
 
 declare var VideoPlaybackQuality: {
@@ -34021,6 +34563,7 @@ interface ViewTimeline extends ScrollTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTimeline/subject)
      */
     readonly subject: Element;
+    readonly [Symbol.toStringTag]: "ViewTimeline";
 }
 
 declare var ViewTimeline: {
@@ -34059,6 +34602,7 @@ interface ViewTransition {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/skipTransition)
      */
     skipTransition(): void;
+    readonly [Symbol.toStringTag]: "ViewTransition";
 }
 
 declare var ViewTransition: {
@@ -34068,6 +34612,7 @@ declare var ViewTransition: {
 
 interface ViewTransitionTypeSet {
     forEach(callbackfn: (value: string, key: string, parent: ViewTransitionTypeSet) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "ViewTransitionTypeSet";
 }
 
 declare var ViewTransitionTypeSet: {
@@ -34136,6 +34681,7 @@ interface VisualViewport extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof VisualViewportEventMap>(type: K, listener: (this: VisualViewport, ev: VisualViewportEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "VisualViewport";
 }
 
 declare var VisualViewport: {
@@ -34405,6 +34951,7 @@ interface WakeLock {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WakeLock/request)
      */
     request(type?: WakeLockType): Promise<WakeLockSentinel>;
+    readonly [Symbol.toStringTag]: "WakeLock";
 }
 
 declare var WakeLock: {
@@ -34447,6 +34994,7 @@ interface WakeLockSentinel extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WakeLockSentinelEventMap>(type: K, listener: (this: WakeLockSentinel, ev: WakeLockSentinelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "WakeLockSentinel";
 }
 
 declare var WakeLockSentinel: {
@@ -34472,6 +35020,7 @@ interface WaveShaperNode extends AudioNode {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WaveShaperNode/oversample)
      */
     oversample: OverSampleType;
+    readonly [Symbol.toStringTag]: "WaveShaperNode";
 }
 
 declare var WaveShaperNode: {
@@ -34485,6 +35034,7 @@ declare var WaveShaperNode: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
  */
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
+    readonly [Symbol.toStringTag]: "WebGL2RenderingContext";
 }
 
 declare var WebGL2RenderingContext: {
@@ -35577,6 +36127,7 @@ interface WebGLActiveInfo {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLActiveInfo/type)
      */
     readonly type: GLenum;
+    readonly [Symbol.toStringTag]: "WebGLActiveInfo";
 }
 
 declare var WebGLActiveInfo: {
@@ -35590,6 +36141,7 @@ declare var WebGLActiveInfo: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLBuffer)
  */
 interface WebGLBuffer {
+    readonly [Symbol.toStringTag]: "WebGLBuffer";
 }
 
 declare var WebGLBuffer: {
@@ -35609,6 +36161,7 @@ interface WebGLContextEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLContextEvent/statusMessage)
      */
     readonly statusMessage: string;
+    readonly [Symbol.toStringTag]: "WebGLContextEvent";
 }
 
 declare var WebGLContextEvent: {
@@ -35622,6 +36175,7 @@ declare var WebGLContextEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLFramebuffer)
  */
 interface WebGLFramebuffer {
+    readonly [Symbol.toStringTag]: "WebGLFramebuffer";
 }
 
 declare var WebGLFramebuffer: {
@@ -35635,6 +36189,7 @@ declare var WebGLFramebuffer: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLProgram)
  */
 interface WebGLProgram {
+    readonly [Symbol.toStringTag]: "WebGLProgram";
 }
 
 declare var WebGLProgram: {
@@ -35648,6 +36203,7 @@ declare var WebGLProgram: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery)
  */
 interface WebGLQuery {
+    readonly [Symbol.toStringTag]: "WebGLQuery";
 }
 
 declare var WebGLQuery: {
@@ -35661,6 +36217,7 @@ declare var WebGLQuery: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderbuffer)
  */
 interface WebGLRenderbuffer {
+    readonly [Symbol.toStringTag]: "WebGLRenderbuffer";
 }
 
 declare var WebGLRenderbuffer: {
@@ -35674,6 +36231,7 @@ declare var WebGLRenderbuffer: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
  */
 interface WebGLRenderingContext extends WebGLRenderingContextBase, WebGLRenderingContextOverloads {
+    readonly [Symbol.toStringTag]: "WebGLRenderingContext";
 }
 
 declare var WebGLRenderingContext: {
@@ -36606,6 +37164,7 @@ interface WebGLRenderingContextOverloads {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler)
  */
 interface WebGLSampler {
+    readonly [Symbol.toStringTag]: "WebGLSampler";
 }
 
 declare var WebGLSampler: {
@@ -36619,6 +37178,7 @@ declare var WebGLSampler: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShader)
  */
 interface WebGLShader {
+    readonly [Symbol.toStringTag]: "WebGLShader";
 }
 
 declare var WebGLShader: {
@@ -36650,6 +37210,7 @@ interface WebGLShaderPrecisionFormat {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShaderPrecisionFormat/rangeMin)
      */
     readonly rangeMin: GLint;
+    readonly [Symbol.toStringTag]: "WebGLShaderPrecisionFormat";
 }
 
 declare var WebGLShaderPrecisionFormat: {
@@ -36663,6 +37224,7 @@ declare var WebGLShaderPrecisionFormat: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync)
  */
 interface WebGLSync {
+    readonly [Symbol.toStringTag]: "WebGLSync";
 }
 
 declare var WebGLSync: {
@@ -36676,6 +37238,7 @@ declare var WebGLSync: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTexture)
  */
 interface WebGLTexture {
+    readonly [Symbol.toStringTag]: "WebGLTexture";
 }
 
 declare var WebGLTexture: {
@@ -36689,6 +37252,7 @@ declare var WebGLTexture: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback)
  */
 interface WebGLTransformFeedback {
+    readonly [Symbol.toStringTag]: "WebGLTransformFeedback";
 }
 
 declare var WebGLTransformFeedback: {
@@ -36702,6 +37266,7 @@ declare var WebGLTransformFeedback: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLUniformLocation)
  */
 interface WebGLUniformLocation {
+    readonly [Symbol.toStringTag]: "WebGLUniformLocation";
 }
 
 declare var WebGLUniformLocation: {
@@ -36715,6 +37280,7 @@ declare var WebGLUniformLocation: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject)
  */
 interface WebGLVertexArrayObject {
+    readonly [Symbol.toStringTag]: "WebGLVertexArrayObject";
 }
 
 declare var WebGLVertexArrayObject: {
@@ -36803,6 +37369,7 @@ interface WebSocket extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "WebSocket";
 }
 
 declare var WebSocket: {
@@ -36869,6 +37436,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
     createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    readonly [Symbol.toStringTag]: "WebTransport";
 }
 
 declare var WebTransport: {
@@ -36895,6 +37463,7 @@ interface WebTransportBidirectionalStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportBidirectionalStream/writable)
      */
     readonly writable: WritableStream;
+    readonly [Symbol.toStringTag]: "WebTransportBidirectionalStream";
 }
 
 declare var WebTransportBidirectionalStream: {
@@ -36947,6 +37516,7 @@ interface WebTransportDatagramDuplexStream {
     readonly readable: ReadableStream;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable) */
     readonly writable: WritableStream;
+    readonly [Symbol.toStringTag]: "WebTransportDatagramDuplexStream";
 }
 
 declare var WebTransportDatagramDuplexStream: {
@@ -36973,6 +37543,7 @@ interface WebTransportError extends DOMException {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportError/streamErrorCode)
      */
     readonly streamErrorCode: number | null;
+    readonly [Symbol.toStringTag]: "WebTransportError";
 }
 
 declare var WebTransportError: {
@@ -37013,6 +37584,7 @@ interface WheelEvent extends MouseEvent {
     readonly DOM_DELTA_PIXEL: 0x00;
     readonly DOM_DELTA_LINE: 0x01;
     readonly DOM_DELTA_PAGE: 0x02;
+    readonly [Symbol.toStringTag]: "WheelEvent";
 }
 
 declare var WheelEvent: {
@@ -37480,6 +38052,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
     removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     [index: number]: Window;
+    readonly [Symbol.toStringTag]: "Window";
 }
 
 declare var Window: {
@@ -37643,6 +38216,7 @@ interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker>
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerEventMap>(type: K, listener: (this: Worker, ev: WorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "Worker";
 }
 
 declare var Worker: {
@@ -37725,6 +38299,7 @@ interface WritableStreamDefaultController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "WritableStreamDefaultController";
 }
 
 declare var WritableStreamDefaultController: {
@@ -37780,6 +38355,7 @@ interface WritableStreamDefaultWriter<W = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/write)
      */
     write(chunk?: W): Promise<void>;
+    readonly [Symbol.toStringTag]: "WritableStreamDefaultWriter";
 }
 
 declare var WritableStreamDefaultWriter: {
@@ -37797,6 +38373,7 @@ interface XMLDocument extends Document {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: XMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "XMLDocument";
 }
 
 declare var XMLDocument: {
@@ -37934,6 +38511,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof XMLHttpRequestEventMap>(type: K, listener: (this: XMLHttpRequest, ev: XMLHttpRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "XMLHttpRequest";
 }
 
 declare var XMLHttpRequest: {
@@ -37990,6 +38568,7 @@ interface XMLHttpRequestUpload extends XMLHttpRequestEventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof XMLHttpRequestEventTargetEventMap>(type: K, listener: (this: XMLHttpRequestUpload, ev: XMLHttpRequestEventTargetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "XMLHttpRequestUpload";
 }
 
 declare var XMLHttpRequestUpload: {
@@ -38009,6 +38588,7 @@ interface XMLSerializer {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLSerializer/serializeToString)
      */
     serializeToString(root: Node): string;
+    readonly [Symbol.toStringTag]: "XMLSerializer";
 }
 
 declare var XMLSerializer: {
@@ -38022,6 +38602,7 @@ declare var XMLSerializer: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathEvaluator)
  */
 interface XPathEvaluator extends XPathEvaluatorBase {
+    readonly [Symbol.toStringTag]: "XPathEvaluator";
 }
 
 declare var XPathEvaluator: {
@@ -38054,6 +38635,7 @@ interface XPathExpression {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathExpression/evaluate)
      */
     evaluate(contextNode: Node, type?: number, result?: XPathResult | null): XPathResult;
+    readonly [Symbol.toStringTag]: "XPathExpression";
 }
 
 declare var XPathExpression: {
@@ -38131,6 +38713,7 @@ interface XPathResult {
     readonly ORDERED_NODE_SNAPSHOT_TYPE: 7;
     readonly ANY_UNORDERED_NODE_TYPE: 8;
     readonly FIRST_ORDERED_NODE_TYPE: 9;
+    readonly [Symbol.toStringTag]: "XPathResult";
 }
 
 declare var XPathResult: {
@@ -38202,6 +38785,7 @@ interface XSLTProcessor {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XSLTProcessor/transformToFragment)
      */
     transformToFragment(source: Node, output: Document): DocumentFragment;
+    readonly [Symbol.toStringTag]: "XSLTProcessor";
 }
 
 declare var XSLTProcessor: {
@@ -38356,6 +38940,7 @@ declare namespace CSS {
 
 declare namespace WebAssembly {
     interface CompileError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.CompileError";
     }
 
     var CompileError: {
@@ -38388,6 +38973,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
          */
         is(exceptionTag: Tag): boolean;
+        readonly [Symbol.toStringTag]: "WebAssembly.Exception";
     }
 
     var Exception: {
@@ -38403,6 +38989,7 @@ declare namespace WebAssembly {
     interface Global<T extends ValueType = ValueType> {
         value: ValueTypeMap[T];
         valueOf(): ValueTypeMap[T];
+        readonly [Symbol.toStringTag]: "WebAssembly.Global";
     }
 
     var Global: {
@@ -38422,6 +39009,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Instance/exports)
          */
         readonly exports: Exports;
+        readonly [Symbol.toStringTag]: "WebAssembly.Instance";
     }
 
     var Instance: {
@@ -38430,6 +39018,7 @@ declare namespace WebAssembly {
     };
 
     interface LinkError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.LinkError";
     }
 
     var LinkError: {
@@ -38456,6 +39045,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
         grow(delta: AddressValue): AddressValue;
+        readonly [Symbol.toStringTag]: "WebAssembly.Memory";
     }
 
     var Memory: {
@@ -38469,6 +39059,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module)
      */
     interface Module {
+        readonly [Symbol.toStringTag]: "WebAssembly.Module";
     }
 
     var Module: {
@@ -38495,6 +39086,7 @@ declare namespace WebAssembly {
     };
 
     interface RuntimeError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.RuntimeError";
     }
 
     var RuntimeError: {
@@ -38533,6 +39125,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
         set(index: AddressValue, value?: any): void;
+        readonly [Symbol.toStringTag]: "WebAssembly.Table";
     }
 
     var Table: {
@@ -38546,6 +39139,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
      */
     interface Tag {
+        readonly [Symbol.toStringTag]: "WebAssembly.Tag";
     }
 
     var Tag: {
@@ -40381,6 +40975,7 @@ interface FontFaceSet extends Set<FontFace> {
 
 interface FormDataIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): FormDataIterator<T>;
+    readonly [Symbol.toStringTag]: "FormData Iterator";
 }
 
 interface FormData {
@@ -40415,6 +41010,7 @@ interface HTMLSelectElement {
 
 interface HeadersIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): HeadersIterator<T>;
+    readonly [Symbol.toStringTag]: "Headers Iterator";
 }
 
 interface Headers {
@@ -40472,6 +41068,7 @@ interface MIDIOutputMap extends ReadonlyMap<string, MIDIOutput> {
 
 interface MediaKeyStatusMapIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): MediaKeyStatusMapIterator<T>;
+    readonly [Symbol.toStringTag]: "MediaKeyStatusMap Iterator";
 }
 
 interface MediaKeyStatusMap {
@@ -40588,6 +41185,7 @@ interface SpeechRecognitionResultList {
 
 interface StylePropertyMapReadOnlyIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): StylePropertyMapReadOnlyIterator<T>;
+    readonly [Symbol.toStringTag]: "StylePropertyMapReadOnly Iterator";
 }
 
 interface StylePropertyMapReadOnly {
@@ -40646,6 +41244,7 @@ interface TouchList {
 
 interface URLSearchParamsIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): URLSearchParamsIterator<T>;
+    readonly [Symbol.toStringTag]: "URLSearchParams Iterator";
 }
 
 interface URLSearchParams {
@@ -40810,6 +41409,7 @@ interface WebGLRenderingContextOverloads {
 
 interface FileSystemDirectoryHandleAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.asyncIterator](): FileSystemDirectoryHandleAsyncIterator<T>;
+    readonly [Symbol.toStringTag]: "FileSystemDirectoryHandle AsyncIterator";
 }
 
 interface FileSystemDirectoryHandle {
@@ -40821,6 +41421,7 @@ interface FileSystemDirectoryHandle {
 
 interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.asyncIterator](): ReadableStreamAsyncIterator<T>;
+    readonly [Symbol.toStringTag]: "ReadableStream AsyncIterator";
 }
 
 interface ReadableStream<R = any> {

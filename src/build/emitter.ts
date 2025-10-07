@@ -138,6 +138,7 @@ export interface CompilerBehavior {
   allowUnrelatedSetterType?: boolean;
   useGenericTypedArrays?: boolean;
   includeIterable?: boolean;
+  emitToStringTags?: boolean;
 }
 
 export function emitWebIdl(
@@ -194,6 +195,22 @@ export function emitWebIdl(
     allNonCallbackInterfaces,
     (i) => i.name,
     (i) => getExtendList(i.name).concat(getImplementList(i.name)),
+  );
+
+  /// Interface name mapped to whether that interface is an inheritance target
+  const iNameIsInheritanceTarget = allNonCallbackInterfaces.reduce(
+    (result, i): Record<string, boolean> => {
+      result[i.name] ??= false;
+      if (i.forwardExtends) {
+        result[i.forwardExtends] = true;
+      }
+      iNameToIDependList[i.name].forEach((name) => {
+        name = name.replace(/<.*>$/, "");
+        result[name] = true;
+      });
+      return result;
+    },
+    {},
   );
 
   /// Distinct event type list, used in the "createEvent" function
@@ -1498,6 +1515,10 @@ export function emitWebIdl(
     emitEventHandlers(/*prefix*/ "", i);
     emitIndexers(EmitScope.InstanceOnly, i);
 
+    if (compilerBehavior.emitToStringTags) {
+      emitInterfaceToStringTag(i);
+    }
+
     printer.decreaseIndent();
     printer.printLine("}");
     printer.printLine("");
@@ -1507,6 +1528,7 @@ export function emitWebIdl(
         name: i.name,
         extends: i.forwardExtends,
         constructor: undefined,
+        noToStringTag: true,
       });
     }
 
@@ -1537,7 +1559,7 @@ export function emitWebIdl(
 
     if (namespacesAsInterfaces.includes(namespace.name)) {
       const name = namespace.name[0].toUpperCase() + namespace.name.slice(1);
-      emitInterface({ ...namespace, name });
+      emitInterface({ ...namespace, name, noToStringTag: true });
       printer.printLine(`declare var ${namespace.name}: ${name};`);
       printer.printLine("");
       return;
@@ -1625,6 +1647,23 @@ export function emitWebIdl(
     }
   }
 
+  function getQualifiedInterfaceName(i: Browser.Interface) {
+    return (i.legacyNamespace ? `${i.legacyNamespace}.` : "") + i.name;
+  }
+
+  function emitInterfaceToStringTag(i: Browser.Interface) {
+    if (i.noInterfaceObject || i.noToStringTag) {
+      return;
+    }
+    // Do not emit toString tag if interface is an inheritance target of other interfaces
+    if (iNameIsInheritanceTarget[i.name]) {
+      return;
+    }
+    printer.printLine(
+      `readonly [Symbol.toStringTag]: "${getQualifiedInterfaceName(i)}";`,
+    );
+  }
+
   function compareName(c1: { name: string }, c2: { name: string }) {
     return c1.name < c2.name ? -1 : c1.name > c2.name ? 1 : 0;
   }
@@ -1706,6 +1745,9 @@ export function emitWebIdl(
     );
     printer.increaseIndent();
     printer.printLine(`[${iteratorSymbol}](): ${iteratorType}<T>;`);
+    if (compilerBehavior.emitToStringTags) {
+      emitIteratorToStringTag(i, async);
+    }
     printer.decreaseIndent();
     printer.printLine("}");
   }
@@ -1775,6 +1817,15 @@ export function emitWebIdl(
         );
       });
     }
+  }
+
+  function emitIteratorToStringTag(i: Browser.Interface, async: boolean) {
+    if (i.noToStringTag) {
+      return;
+    }
+    printer.printLine(
+      `readonly [Symbol.toStringTag]: "${i.name} ${async ? "Async" : ""}Iterator";`,
+    );
   }
 
   function emitIterator(i: Browser.Interface) {

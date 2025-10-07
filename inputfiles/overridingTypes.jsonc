@@ -1725,7 +1725,8 @@
                 }
             },
             "DOMException": {
-                "extends": "Error"
+                "extends": "Error",
+                "noToStringTag": true
             },
             "DOMStringMap": {
                 "overrideIndexSignatures": [
