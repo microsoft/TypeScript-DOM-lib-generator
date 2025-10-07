@@ -636,16 +636,6 @@
                     ]
                 }
             },
-            "SVGStyleElement": {
-                "properties": {
-                    "property": {
-                        "disabled": {
-                            "name": "disabled",
-                            "type": "boolean"
-                        }
-                    }
-                }
-            },
             "LinkError": {
                 "name": "LinkError",
                 "extends": "Error",
