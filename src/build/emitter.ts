@@ -1655,13 +1655,11 @@ export function emitWebIdl(
     if (i.noInterfaceObject || i.noToStringTag) {
       return;
     }
-    // Do not emit toString tag if interface is an inheritance target of other interfaces
-    if (iNameIsInheritanceTarget[i.name]) {
-      return;
-    }
-    printer.printLine(
-      `readonly [Symbol.toStringTag]: "${getQualifiedInterfaceName(i)}";`,
-    );
+    // Only emit as string literal if interface is not an inheritance target of other interfaces
+    const type = iNameIsInheritanceTarget[i.name]
+      ? "string"
+      : `"${getQualifiedInterfaceName(i)}"`;
+    printer.printLine(`readonly [Symbol.toStringTag]: ${type};`);
   }
 
   function compareName(c1: { name: string }, c2: { name: string }) {

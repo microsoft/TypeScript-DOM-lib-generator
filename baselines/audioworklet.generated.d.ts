@@ -315,6 +315,7 @@ interface AudioWorkletProcessor {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor/port)
      */
     readonly port: MessagePort;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var AudioWorkletProcessor: {
@@ -678,6 +679,7 @@ interface Event {
     readonly CAPTURING_PHASE: 1;
     readonly AT_TARGET: 2;
     readonly BUBBLING_PHASE: 3;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var Event: {
@@ -721,6 +723,7 @@ interface EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var EventTarget: {
@@ -1440,6 +1443,7 @@ declare var URLSearchParams: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
  */
 interface WorkletGlobalScope {
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var WorkletGlobalScope: {
