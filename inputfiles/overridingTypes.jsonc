@@ -1393,18 +1393,6 @@
                 }
             },
             "IDBCursor": {
-                "properties": {
-                    "property": {
-                        "key": {
-                            "name": "key",
-                            "type": "IDBValidKey"
-                        },
-                        "primaryKey": {
-                            "name": "primaryKey",
-                            "type": "IDBValidKey"
-                        }
-                    }
-                },
                 "methods": {
                     "method": {
                         "continue": {
@@ -1453,18 +1441,6 @@
                 }
             },
             "IDBRequest": {
-                "properties": {
-                    "property": {
-                        "source": {
-                            "name": "source",
-                            "nullable": false
-                        },
-                        "result": {
-                            "name": "result",
-                            "overrideType": "T"
-                        }
-                    }
-                },
                 "typeParameters": [
                     {
                         "name": "T",
@@ -3297,30 +3273,6 @@
                     }
                 }
             },
-            "CSSFontFaceRule": {
-                "properties": {
-                    "property": {
-                        "style": {
-                            // CSS Fonts Level 4 now says CSSFontFaceDescriptors but nobody implements it as of 2024-04
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "type": "CSSStyleProperties"
-                        }
-                    }
-                }
-            },
-            "CSSStyleProperties": {
-                "properties": {
-                    "property": {
-                        "cssFloat": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
-                        },
-                        "webkitLineClamp": {
-                            // The corresponding standardized property is not supported by anyone as of 2024-10.
-                            "deprecated": false
-                        }
-                    }
-                }
-            },
             "ContactAddress": {
                 "name": "PaymentAddress"
             },
@@ -3369,47 +3321,11 @@
             "MediaSource": {
                 "exposed": "Window"
             },
-
-            // Payment Request added shippingAddress with a different type
-            // https://github.com/w3c/payment-request/pull/996
-            "PaymentRequest": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
-            },
-            "PaymentResponse": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
-            },
-
             "SourceBuffer": {
                 "exposed": "Window"
             },
             "SourceBufferList": {
                 "exposed": "Window"
-            },
-            "StylePropertyMapReadOnly": {
-                "methods": {
-                    "method": {
-                        "get": {
-                            // https://github.com/w3c/css-houdini-drafts/pull/1087
-                            "signature": {
-                                "0": {
-                                    "overrideType": "undefined | CSSStyleValue"
-                                }
-                            }
-                        }
-                    }
-                }
             },
             "HTMLImageElement": {
                 "properties": {
