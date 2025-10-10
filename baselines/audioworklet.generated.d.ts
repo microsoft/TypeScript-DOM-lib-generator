@@ -199,6 +199,7 @@ interface AbortController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController/abort)
      */
     abort(reason?: any): void;
+    readonly [Symbol.toStringTag]: "AbortController";
 }
 
 declare var AbortController: {
@@ -240,6 +241,7 @@ interface AbortSignal extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "AbortSignal";
 }
 
 declare var AbortSignal: {
@@ -289,6 +291,7 @@ interface AudioWorkletGlobalScope extends WorkletGlobalScope {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletGlobalScope/registerProcessor)
      */
     registerProcessor(name: string, processorCtor: AudioWorkletProcessorConstructor): void;
+    readonly [Symbol.toStringTag]: "AudioWorkletGlobalScope";
 }
 
 declare var AudioWorkletGlobalScope: {
@@ -308,6 +311,7 @@ interface AudioWorkletProcessor {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioWorkletProcessor/port)
      */
     readonly port: MessagePort;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var AudioWorkletProcessor: {
@@ -333,6 +337,7 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/size) */
     readonly size: QueuingStrategySize<ArrayBufferView>;
+    readonly [Symbol.toStringTag]: "ByteLengthQueuingStrategy";
 }
 
 declare var ByteLengthQueuingStrategy: {
@@ -348,6 +353,7 @@ declare var ByteLengthQueuingStrategy: {
 interface CompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "CompressionStream";
 }
 
 declare var CompressionStream: {
@@ -369,6 +375,7 @@ interface CountQueuingStrategy extends QueuingStrategy {
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
     readonly size: QueuingStrategySize;
+    readonly [Symbol.toStringTag]: "CountQueuingStrategy";
 }
 
 declare var CountQueuingStrategy: {
@@ -395,6 +402,7 @@ interface CustomEvent<T = any> extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/initCustomEvent)
      */
     initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
+    readonly [Symbol.toStringTag]: "CustomEvent";
 }
 
 declare var CustomEvent: {
@@ -492,6 +500,7 @@ declare var DOMException: {
 interface DecompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "DecompressionStream";
 }
 
 declare var DecompressionStream: {
@@ -535,6 +544,7 @@ interface ErrorEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message)
      */
     readonly message: string;
+    readonly [Symbol.toStringTag]: "ErrorEvent";
 }
 
 declare var ErrorEvent: {
@@ -664,6 +674,7 @@ interface Event {
     readonly CAPTURING_PHASE: 1;
     readonly AT_TARGET: 2;
     readonly BUBBLING_PHASE: 3;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var Event: {
@@ -707,6 +718,7 @@ interface EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var EventTarget: {
@@ -759,6 +771,7 @@ interface MessageEvent<T = any> extends Event {
     readonly source: MessageEventSource | null;
     /** @deprecated */
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
+    readonly [Symbol.toStringTag]: "MessageEvent";
 }
 
 declare var MessageEvent: {
@@ -816,6 +829,7 @@ interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MessagePort";
 }
 
 declare var MessagePort: {
@@ -841,6 +855,7 @@ interface PromiseRejectionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason)
      */
     readonly reason: any;
+    readonly [Symbol.toStringTag]: "PromiseRejectionEvent";
 }
 
 declare var PromiseRejectionEvent: {
@@ -884,6 +899,7 @@ interface ReadableByteStreamController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "ReadableByteStreamController";
 }
 
 declare var ReadableByteStreamController: {
@@ -935,6 +951,7 @@ interface ReadableStream<R = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee)
      */
     tee(): [ReadableStream<R>, ReadableStream<R>];
+    readonly [Symbol.toStringTag]: "ReadableStream";
 }
 
 declare var ReadableStream: {
@@ -962,6 +979,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock)
      */
     releaseLock(): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamBYOBReader";
 }
 
 declare var ReadableStreamBYOBReader: {
@@ -993,6 +1011,7 @@ interface ReadableStreamBYOBRequest {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respondWithNewView)
      */
     respondWithNewView(view: ArrayBufferView<ArrayBuffer>): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamBYOBRequest";
 }
 
 declare var ReadableStreamBYOBRequest: {
@@ -1030,6 +1049,7 @@ interface ReadableStreamDefaultController<R = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamDefaultController";
 }
 
 declare var ReadableStreamDefaultController: {
@@ -1055,6 +1075,7 @@ interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericRead
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/releaseLock)
      */
     releaseLock(): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamDefaultReader";
 }
 
 declare var ReadableStreamDefaultReader: {
@@ -1081,6 +1102,7 @@ interface TextDecoder extends TextDecoderCommon {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
     decode(input?: AllowSharedBufferSource, options?: TextDecodeOptions): string;
+    readonly [Symbol.toStringTag]: "TextDecoder";
 }
 
 declare var TextDecoder: {
@@ -1117,6 +1139,7 @@ interface TextDecoderCommon {
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "TextDecoderStream";
 }
 
 declare var TextDecoderStream: {
@@ -1142,6 +1165,7 @@ interface TextEncoder extends TextEncoderCommon {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
      */
     encodeInto(source: string, destination: Uint8Array<ArrayBufferLike>): TextEncoderEncodeIntoResult;
+    readonly [Symbol.toStringTag]: "TextEncoder";
 }
 
 declare var TextEncoder: {
@@ -1166,6 +1190,7 @@ interface TextEncoderCommon {
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     readonly writable: WritableStream<string>;
+    readonly [Symbol.toStringTag]: "TextEncoderStream";
 }
 
 declare var TextEncoderStream: {
@@ -1191,6 +1216,7 @@ interface TransformStream<I = any, O = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/writable)
      */
     readonly writable: WritableStream<I>;
+    readonly [Symbol.toStringTag]: "TransformStream";
 }
 
 declare var TransformStream: {
@@ -1228,6 +1254,7 @@ interface TransformStreamDefaultController<O = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/terminate)
      */
     terminate(): void;
+    readonly [Symbol.toStringTag]: "TransformStreamDefaultController";
 }
 
 declare var TransformStreamDefaultController: {
@@ -1320,6 +1347,7 @@ interface URL {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/toJSON)
      */
     toJSON(): string;
+    readonly [Symbol.toStringTag]: "URL";
 }
 
 declare var URL: {
@@ -1395,6 +1423,7 @@ interface URLSearchParams {
     sort(): void;
     toString(): string;
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "URLSearchParams";
 }
 
 declare var URLSearchParams: {
@@ -1409,6 +1438,7 @@ declare var URLSearchParams: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkletGlobalScope)
  */
 interface WorkletGlobalScope {
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var WorkletGlobalScope: {
@@ -1446,6 +1476,7 @@ interface WritableStream<W = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/getWriter)
      */
     getWriter(): WritableStreamDefaultWriter<W>;
+    readonly [Symbol.toStringTag]: "WritableStream";
 }
 
 declare var WritableStream: {
@@ -1471,6 +1502,7 @@ interface WritableStreamDefaultController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "WritableStreamDefaultController";
 }
 
 declare var WritableStreamDefaultController: {
@@ -1526,6 +1558,7 @@ interface WritableStreamDefaultWriter<W = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/write)
      */
     write(chunk?: W): Promise<void>;
+    readonly [Symbol.toStringTag]: "WritableStreamDefaultWriter";
 }
 
 declare var WritableStreamDefaultWriter: {
@@ -1535,6 +1568,7 @@ declare var WritableStreamDefaultWriter: {
 
 declare namespace WebAssembly {
     interface CompileError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.CompileError";
     }
 
     var CompileError: {
@@ -1567,6 +1601,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
          */
         is(exceptionTag: Tag): boolean;
+        readonly [Symbol.toStringTag]: "WebAssembly.Exception";
     }
 
     var Exception: {
@@ -1582,6 +1617,7 @@ declare namespace WebAssembly {
     interface Global<T extends ValueType = ValueType> {
         value: ValueTypeMap[T];
         valueOf(): ValueTypeMap[T];
+        readonly [Symbol.toStringTag]: "WebAssembly.Global";
     }
 
     var Global: {
@@ -1601,6 +1637,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Instance/exports)
          */
         readonly exports: Exports;
+        readonly [Symbol.toStringTag]: "WebAssembly.Instance";
     }
 
     var Instance: {
@@ -1609,6 +1646,7 @@ declare namespace WebAssembly {
     };
 
     interface LinkError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.LinkError";
     }
 
     var LinkError: {
@@ -1635,6 +1673,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
         grow(delta: AddressValue): AddressValue;
+        readonly [Symbol.toStringTag]: "WebAssembly.Memory";
     }
 
     var Memory: {
@@ -1648,6 +1687,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module)
      */
     interface Module {
+        readonly [Symbol.toStringTag]: "WebAssembly.Module";
     }
 
     var Module: {
@@ -1674,6 +1714,7 @@ declare namespace WebAssembly {
     };
 
     interface RuntimeError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.RuntimeError";
     }
 
     var RuntimeError: {
@@ -1712,6 +1753,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
         set(index: AddressValue, value?: any): void;
+        readonly [Symbol.toStringTag]: "WebAssembly.Table";
     }
 
     var Table: {
@@ -1725,6 +1767,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
      */
     interface Tag {
+        readonly [Symbol.toStringTag]: "WebAssembly.Tag";
     }
 
     var Tag: {
@@ -2033,6 +2076,7 @@ interface MessageEvent<T = any> {
 
 interface URLSearchParamsIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): URLSearchParamsIterator<T>;
+    readonly [Symbol.toStringTag]: "URLSearchParams Iterator";
 }
 
 interface URLSearchParams {
@@ -2052,6 +2096,7 @@ interface URLSearchParams {
 
 interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.asyncIterator](): ReadableStreamAsyncIterator<T>;
+    readonly [Symbol.toStringTag]: "ReadableStream AsyncIterator";
 }
 
 interface ReadableStream<R = any> {
