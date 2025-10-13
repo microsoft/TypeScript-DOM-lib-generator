@@ -6,6 +6,7 @@
 // ones which have changed.
 
 import * as fs from "fs";
+import * as path from "path";
 import { spawnSync } from "child_process";
 import { Octokit } from "@octokit/rest";
 import { printUnifiedDiff } from "print-diff";
@@ -41,8 +42,7 @@ for (const dirName of fs.readdirSync(generatedDir)) {
     throw new Error(`Couldn't find ${pkgJSON.name}`);
   }
 
-  const dtsFiles = fs
-    .readdirSync(packageDir)
+  const dtsFiles = readdirRecursive(fileURLToPath(packageDir))
     .filter((f) => f.endsWith(".d.ts"));
 
   const releaseNotes = [];
@@ -166,4 +166,23 @@ function verify() {
 /** @param {string} filepath */
 function getFileFromUnpkg(filepath) {
   return fetch(`https://unpkg.com/${filepath}`).then((r) => r.text());
+}
+
+/** @param {string} dir */
+function readdirRecursive(dir) {
+  /** @type {string[]} */
+  let results = [];
+  /** @param {string} currentDir */
+  function readDir(currentDir) {
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+      results.push(path.relative(dir, fullPath));
+      if (entry.isDirectory()) {
+        readDir(fullPath);
+      }
+    }
+  }
+  readDir(dir);
+  return results;
 }
