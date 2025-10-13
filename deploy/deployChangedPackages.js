@@ -14,6 +14,8 @@ import { generateChangelogFrom } from "../lib/changelog.js";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
 import fetch from "node-fetch";
+import pRetry from 'p-retry';
+
 
 verify();
 
@@ -164,8 +166,18 @@ function verify() {
 }
 
 /** @param {string} filepath */
-function getFileFromUnpkg(filepath) {
-  return fetch(`https://unpkg.com/${filepath}`).then((r) => r.text());
+async function getFileFromUnpkg(filepath) {
+  return pRetry(async () => {
+    const resp = await fetch(`https://unpkg.com/${filepath}`);
+    if (resp.ok) {
+      return resp.text();
+    }
+    if (resp.status === 404) {
+      return "";
+    }
+    console.error(`Unexpected response status: ${resp.status}`);
+    throw new Error(resp.statusText);
+  });
 }
 
 /** @param {string} dir */
