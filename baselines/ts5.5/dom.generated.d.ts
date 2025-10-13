@@ -14875,7 +14875,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     src: string;
     /**
-     * The **`srcdoc`** property of the HTMLIFrameElement specifies the content of the page.
+     * The **`srcdoc`** property of the HTMLIFrameElement interface gets or sets the inline HTML markup of the frame's document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/srcdoc)
      */
