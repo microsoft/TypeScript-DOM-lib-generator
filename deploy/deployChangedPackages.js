@@ -14,8 +14,7 @@ import { generateChangelogFrom } from "../lib/changelog.js";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
 import fetch from "node-fetch";
-import pRetry from 'p-retry';
-
+import pRetry from "p-retry";
 
 verify();
 
@@ -44,8 +43,9 @@ for (const dirName of fs.readdirSync(generatedDir)) {
     throw new Error(`Couldn't find ${pkgJSON.name}`);
   }
 
-  const dtsFiles = readdirRecursive(fileURLToPath(packageDir))
-    .filter((f) => f.endsWith(".d.ts"));
+  const dtsFiles = readdirRecursive(fileURLToPath(packageDir)).filter((f) =>
+    f.endsWith(".d.ts"),
+  );
 
   const releaseNotes = [];
 
