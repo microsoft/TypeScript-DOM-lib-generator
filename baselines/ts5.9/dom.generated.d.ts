@@ -5993,7 +5993,7 @@ declare var CSSStartingStyleRule: {
 };
 
 /**
- * The **`CSSStyleDeclaration`** interface represents an object that is a CSS declaration block, and exposes style information and various style-related methods and properties.
+ * The **`CSSStyleDeclaration`** interface is the base class for objects that represent CSS declaration blocks with different supported sets of CSS style information:
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration)
  */
@@ -6057,6 +6057,11 @@ declare var CSSStyleDeclaration: {
     new(): CSSStyleDeclaration;
 };
 
+/**
+ * The **`CSSStyleProperties`** interface of the CSS Object Model (CSSOM) represents inline or computed styles available on an element, or the styles associated with a CSS style rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleProperties)
+ */
 interface CSSStyleProperties extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
     accentColor: string;
@@ -6345,7 +6350,11 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     counterReset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-set) */
     counterSet: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat) */
+    /**
+     * The **`cssFloat`** property of the CSSStyleProperties interface returns the CSS float property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat)
+     */
     cssFloat: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
@@ -7419,7 +7428,7 @@ interface CSSStyleRule extends CSSGroupingRule {
      */
     selectorText: string;
     /**
-     * The read-only **`style`** property is the CSSStyleDeclaration interface for the declaration block of the CSSStyleRule.
+     * The read-only **`style`** property is a CSSStyleProperties object that represents the inline styles of a style rule (CSSStyleRule).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style)
      */
@@ -9341,7 +9350,7 @@ declare var DOMMatrixReadOnly: {
  */
 interface DOMParser {
     /**
-     * The **`parseFromString()`** method of the DOMParser interface parses a string containing either HTML or XML, returning an HTMLDocument or an XMLDocument.
+     * The **`parseFromString()`** method of the DOMParser interface parses an input containing either HTML or XML, returning a Document with the type given in the Document/contentType property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMParser/parseFromString)
      */
@@ -11379,28 +11388,28 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll)
      */
-    scroll(options?: ScrollToOptions): void;
-    scroll(x: number, y: number): void;
+    scroll(options?: ScrollToOptions): Promise<void>;
+    scroll(x: number, y: number): Promise<void>;
     /**
      * The **`scrollBy()`** method of the Element interface scrolls an element by the given amount.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollBy)
      */
-    scrollBy(options?: ScrollToOptions): void;
-    scrollBy(x: number, y: number): void;
+    scrollBy(options?: ScrollToOptions): Promise<void>;
+    scrollBy(x: number, y: number): Promise<void>;
     /**
      * The Element interface's **`scrollIntoView()`** method scrolls the element's ancestor containers such that the element on which `scrollIntoView()` is called is visible to the user.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollIntoView)
      */
-    scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+    scrollIntoView(arg?: boolean | ScrollIntoViewOptions): Promise<void>;
     /**
      * The **`scrollTo()`** method of the Element interface scrolls to a particular set of coordinates inside a given element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTo)
      */
-    scrollTo(options?: ScrollToOptions): void;
-    scrollTo(x: number, y: number): void;
+    scrollTo(options?: ScrollToOptions): Promise<void>;
+    scrollTo(x: number, y: number): Promise<void>;
     /**
      * The **`setAttribute()`** method of the Element interface sets the value of an attribute on the specified element.
      *
@@ -13029,6 +13038,7 @@ interface GlobalEventHandlersEventMap {
     "change": Event;
     "click": PointerEvent;
     "close": Event;
+    "command": Event;
     "compositionend": CompositionEvent;
     "compositionstart": CompositionEvent;
     "compositionupdate": CompositionEvent;
@@ -13153,6 +13163,8 @@ interface GlobalEventHandlers {
     onclick: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
     onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
+    oncommand: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
     oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -37367,7 +37379,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     focus(): void;
     /**
-     * The **`Window.getComputedStyle()`** method returns an object containing the values of all CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+     * The **`Window.getComputedStyle()`** method returns a live read-only CSSStyleProperties object containing the resolved values of all CSS properties of an element, after applying active stylesheets and resolving any computation those values may contain.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
      */
@@ -37451,22 +37463,22 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
      */
-    scroll(options?: ScrollToOptions): void;
-    scroll(x: number, y: number): void;
+    scroll(options?: ScrollToOptions): Promise<void>;
+    scroll(x: number, y: number): Promise<void>;
     /**
      * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
      */
-    scrollBy(options?: ScrollToOptions): void;
-    scrollBy(x: number, y: number): void;
+    scrollBy(options?: ScrollToOptions): Promise<void>;
+    scrollBy(x: number, y: number): Promise<void>;
     /**
      * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
      */
-    scrollTo(options?: ScrollToOptions): void;
-    scrollTo(x: number, y: number): void;
+    scrollTo(options?: ScrollToOptions): Promise<void>;
+    scrollTo(x: number, y: number): Promise<void>;
     /**
      * The **`window.stop()`** stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
      *
@@ -39531,7 +39543,7 @@ declare function confirm(message?: string): boolean;
  */
 declare function focus(): void;
 /**
- * The **`Window.getComputedStyle()`** method returns an object containing the values of all CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+ * The **`Window.getComputedStyle()`** method returns a live read-only CSSStyleProperties object containing the resolved values of all CSS properties of an element, after applying active stylesheets and resolving any computation those values may contain.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
  */
@@ -39615,22 +39627,22 @@ declare function resizeTo(width: number, height: number): void;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
  */
-declare function scroll(options?: ScrollToOptions): void;
-declare function scroll(x: number, y: number): void;
+declare function scroll(options?: ScrollToOptions): Promise<void>;
+declare function scroll(x: number, y: number): Promise<void>;
 /**
  * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
  */
-declare function scrollBy(options?: ScrollToOptions): void;
-declare function scrollBy(x: number, y: number): void;
+declare function scrollBy(options?: ScrollToOptions): Promise<void>;
+declare function scrollBy(x: number, y: number): Promise<void>;
 /**
  * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
  */
-declare function scrollTo(options?: ScrollToOptions): void;
-declare function scrollTo(x: number, y: number): void;
+declare function scrollTo(options?: ScrollToOptions): Promise<void>;
+declare function scrollTo(x: number, y: number): Promise<void>;
 /**
  * The **`window.stop()`** stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
  *
@@ -39680,6 +39692,8 @@ declare var onchange: ((this: Window, ev: Event) => any) | null;
 declare var onclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
 declare var onclose: ((this: Window, ev: Event) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
+declare var oncommand: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
 declare var oncontextlost: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
