@@ -31965,12 +31965,6 @@ declare var StorageManager: {
     new(): StorageManager;
 };
 
-/** @deprecated */
-interface StyleMedia {
-    type: string;
-    matchMedium(mediaquery: string): boolean;
-}
-
 /**
  * The **`StylePropertyMap`** interface of the CSS Typed Object Model API provides a representation of a CSS declaration block that is an alternative to CSSStyleDeclaration.
  *
