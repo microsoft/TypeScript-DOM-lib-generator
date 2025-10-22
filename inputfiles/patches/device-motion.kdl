@@ -1,0 +1,8 @@
+interface DeviceMotionEventAcceleration noInterfaceObject=#true
+interface DeviceMotionEventRotationRate noInterfaceObject=#true
+
+interface Window {
+    event devicemotion type=DeviceMotionEvent
+    event deviceorientation type=DeviceOrientationEvent
+    event deviceorientationabsolute type=DeviceOrientationEvent
+}

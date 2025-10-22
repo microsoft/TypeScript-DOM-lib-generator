@@ -1,0 +1,18 @@
+interface IDBDatabase {
+    event versionchange type=IDBVersionChangeEvent
+}
+
+interface IDBOpenDBRequest extends=IDBRequest<IDBDatabase> {
+    event upgradeneeded type=IDBVersionChangeEvent
+    event blocked type=IDBVersionChangeEvent
+}
+
+interface IDBRequest {
+    property source nullable=#false
+    property result overrideType=T
+}
+
+interface IDBCursor {
+    property key type=IDBValidKey
+    property primaryKey type=IDBValidKey
+}
