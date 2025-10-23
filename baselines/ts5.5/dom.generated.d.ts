@@ -1995,6 +1995,10 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
+interface ReadableStreamBYOBReaderReadOptions {
+    min?: number;
+}
+
 interface ReadableStreamGetReaderOptions {
     /**
      * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
@@ -26277,7 +26281,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read)
      */
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    read<T extends ArrayBufferView>(view: T, options?: ReadableStreamBYOBReaderReadOptions): Promise<ReadableStreamReadResult<T>>;
     /**
      * The **`releaseLock()`** method of the ReadableStreamBYOBReader interface releases the reader's lock on the stream.
      *

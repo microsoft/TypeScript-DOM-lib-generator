@@ -192,19 +192,6 @@
                     }
                 }
             },
-            "ReadableStreamBYOBReader": {
-                "methods": {
-                    "method": {
-                        "read": {
-                            "signature": {
-                                "0": {
-                                    "param": ["options"] // No implementations as of 2023-11
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "RTCEncodedAudioFrame": {
                 "constructor": null // Blink experimental only as of 2024-05
             },
