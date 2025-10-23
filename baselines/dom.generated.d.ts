@@ -26780,7 +26780,11 @@ declare var Response: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
-    /** The **`download`** property of the SVGAElement interface returns a string indicating that the browser should treat the linked URL as a download. */
+    /**
+     * The **`download`** property of the SVGAElement interface returns a string indicating that the browser should treat the linked URL as a download.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/download)
+     */
     download: string;
     /**
      * The **`rel`** property of the SVGAElement returns a string reflecting the value of the `rel` attribute of the SVG a element.
