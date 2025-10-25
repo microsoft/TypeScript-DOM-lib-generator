@@ -10770,6 +10770,7 @@ interface WorkerGlobalScopeEventMap {
     "offline": Event;
     "online": Event;
     "rejectionhandled": PromiseRejectionEvent;
+    "securitypolicyviolation": SecurityPolicyViolationEvent;
     "unhandledrejection": PromiseRejectionEvent;
 }
 

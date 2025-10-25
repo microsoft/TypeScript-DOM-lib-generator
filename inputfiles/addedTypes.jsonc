@@ -798,6 +798,10 @@
                             "type": "PromiseRejectionEvent"
                         },
                         {
+                            "name": "securitypolicyviolation",
+                            "type": "SecurityPolicyViolationEvent"
+                        },
+                        {
                             "name": "unhandledrejection",
                             "type": "PromiseRejectionEvent"
                         }
