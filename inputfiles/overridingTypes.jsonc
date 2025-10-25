@@ -2245,7 +2245,7 @@
                         },
                         {
                             "name": "messageerror",
-                            "type": "MessageEvent"
+                            "type": "ExtendableMessageEvent"
                         },
                         {
                             "name": "notificationclick",
