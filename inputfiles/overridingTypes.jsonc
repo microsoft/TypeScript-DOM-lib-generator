@@ -1870,16 +1870,6 @@
                 }
             },
             "WebSocket": {
-                "methods": {
-                    "method": {
-                        "send": {
-                            "name": "send",
-                            "overrideSignatures": [
-                                "send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void"
-                            ]
-                        }
-                    }
-                },
                 "events": {
                     "event": [
                         {
@@ -2384,7 +2374,9 @@
                                     "typeParameters": [
                                         {
                                             "name": "T",
-                                            "extends": "ArrayBufferView"
+                                            // Should be "ArrayBufferView<ArrayBuffer>"
+                                            // (resolved indirectly for compatibility with TS <=5.6)
+                                            "extends": "Exclude<BufferSource, ArrayBuffer>"
                                         }
                                     ],
                                     "param": [
@@ -2719,7 +2711,9 @@
                                     "typeParameters": [
                                         {
                                             "name": "T",
-                                            "extends": "ArrayBufferView"
+                                            // Should be "ArrayBufferView<ArrayBuffer>"
+                                            // (resolved indirectly for compatibility with TS <=5.6)
+                                            "extends": "Exclude<BufferSource, ArrayBuffer>"
                                         }
                                     ],
                                     "param": [
