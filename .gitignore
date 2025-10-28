@@ -286,4 +286,3 @@ inputfiles/browser.webidl.json
 yarn.lock
 TypeScript
 deploy/generated
-.early.coverage
