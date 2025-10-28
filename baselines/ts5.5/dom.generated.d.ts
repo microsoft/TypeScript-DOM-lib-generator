@@ -357,6 +357,11 @@ interface CloseEventInit extends EventInit {
     wasClean?: boolean;
 }
 
+interface CommandEventInit extends EventInit {
+    command?: string;
+    source?: Element | null;
+}
+
 interface CompositionEventInit extends UIEventInit {
     data?: string;
 }
@@ -905,6 +910,7 @@ interface InputEventInit extends UIEventInit {
 interface IntersectionObserverInit {
     root?: Element | Document | null;
     rootMargin?: string;
+    scrollMargin?: string;
     threshold?: number | number[];
 }
 
@@ -1989,6 +1995,10 @@ interface RTCTransportStats extends RTCStats {
     tlsVersion?: string;
 }
 
+interface ReadableStreamBYOBReaderReadOptions {
+    min?: number;
+}
+
 interface ReadableStreamGetReaderOptions {
     /**
      * Creates a ReadableStreamBYOBReader and locks the stream to the new reader.
@@ -2300,6 +2310,7 @@ interface TextEncoderEncodeIntoResult {
 interface ToggleEventInit extends EventInit {
     newState?: string;
     oldState?: string;
+    source?: Element | null;
 }
 
 interface TouchEventInit extends EventModifierInit {
@@ -2357,8 +2368,8 @@ interface ULongRange {
 }
 
 interface URLPatternComponentResult {
-    groups?: Record<string, string | undefined>;
-    input?: string;
+    groups: Record<string, string | undefined>;
+    input: string;
 }
 
 interface URLPatternInit {
@@ -2378,15 +2389,15 @@ interface URLPatternOptions {
 }
 
 interface URLPatternResult {
-    hash?: URLPatternComponentResult;
-    hostname?: URLPatternComponentResult;
-    inputs?: URLPatternInput[];
-    password?: URLPatternComponentResult;
-    pathname?: URLPatternComponentResult;
-    port?: URLPatternComponentResult;
-    protocol?: URLPatternComponentResult;
-    search?: URLPatternComponentResult;
-    username?: URLPatternComponentResult;
+    hash: URLPatternComponentResult;
+    hostname: URLPatternComponentResult;
+    inputs: URLPatternInput[];
+    password: URLPatternComponentResult;
+    pathname: URLPatternComponentResult;
+    port: URLPatternComponentResult;
+    protocol: URLPatternComponentResult;
+    search: URLPatternComponentResult;
+    username: URLPatternComponentResult;
 }
 
 interface UnderlyingByteSource {
@@ -3268,6 +3279,11 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
+    /**
+     * The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or `null`.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration)
+     */
     readonly duration: CSSNumberish | null;
 }
 
@@ -4814,7 +4830,7 @@ interface CSSFontFaceRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style)
      */
-    readonly style: CSSStyleProperties;
+    readonly style: CSSStyleDeclaration;
 }
 
 declare var CSSFontFaceRule: {
@@ -4982,7 +4998,7 @@ interface CSSKeyframeRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/style)
      */
-    readonly style: CSSStyleProperties;
+    readonly style: CSSStyleDeclaration;
 }
 
 declare var CSSKeyframeRule: {
@@ -5315,7 +5331,7 @@ interface CSSNestedDeclarations extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNestedDeclarations/style)
      */
-    readonly style: CSSStyleProperties;
+    readonly style: CSSStyleDeclaration;
 }
 
 declare var CSSNestedDeclarations: {
@@ -5428,7 +5444,7 @@ declare var CSSNumericValue: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors)
  */
-interface CSSPageDescriptors extends CSSStyleDeclaration {
+interface CSSPageDescriptors extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin) */
     margin: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageDescriptors#margin-bottom) */
@@ -5505,7 +5521,7 @@ declare var CSSPerspective: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors)
  */
-interface CSSPositionTryDescriptors extends CSSStyleDeclaration {
+interface CSSPositionTryDescriptors extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
     "align-self": string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryDescriptors#instance_properties) */
@@ -5974,11 +5990,11 @@ declare var CSSStartingStyleRule: {
 };
 
 /**
- * The **`CSSStyleDeclaration`** interface represents an object that is a CSS declaration block, and exposes style information and various style-related methods and properties.
+ * The **`CSSStyleDeclaration`** interface is the base class for objects that represent CSS declaration blocks with different supported sets of CSS style information:
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration)
  */
-interface CSSStyleDeclaration {
+interface CSSStyleDeclarationBase {
     /**
      * The **`cssText`** property of the CSSStyleDeclaration interface returns or sets the text of the element's **inline** style declaration only.
      *
@@ -6030,12 +6046,20 @@ interface CSSStyleDeclaration {
     [index: number]: string;
 }
 
+interface CSSStyleDeclaration extends CSSStyleProperties {
+}
+
 declare var CSSStyleDeclaration: {
     prototype: CSSStyleDeclaration;
     new(): CSSStyleDeclaration;
 };
 
-interface CSSStyleProperties extends CSSStyleDeclaration {
+/**
+ * The **`CSSStyleProperties`** interface of the CSS Object Model (CSSOM) represents inline or computed styles available on an element, or the styles associated with a CSS style rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleProperties)
+ */
+interface CSSStyleProperties extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
     accentColor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content) */
@@ -6323,7 +6347,11 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     counterReset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-set) */
     counterSet: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat) */
+    /**
+     * The **`cssFloat`** property of the CSSStyleProperties interface returns the CSS float property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat)
+     */
     cssFloat: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
@@ -6339,6 +6367,7 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     display: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dominant-baseline) */
     dominantBaseline: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dynamic-range-limit) */
     dynamicRangeLimit: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
     emptyCells: string;
@@ -6844,6 +6873,7 @@ interface CSSStyleProperties extends CSSStyleDeclaration {
     textAlignLast: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-autospace) */
     textAutospace: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box) */
     textBox: string;
@@ -7395,11 +7425,11 @@ interface CSSStyleRule extends CSSGroupingRule {
      */
     selectorText: string;
     /**
-     * The read-only **`style`** property is the CSSStyleDeclaration interface for the declaration block of the CSSStyleRule.
+     * The read-only **`style`** property is a CSSStyleProperties object that represents the inline styles of a style rule (CSSStyleRule).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style)
      */
-    readonly style: CSSStyleProperties;
+    readonly style: CSSStyleDeclaration;
     /**
      * The **`styleMap`** read-only property of the CSSStyleRule interface returns a StylePropertyMap object which provides access to the rule's property-value pairs.
      *
@@ -8386,6 +8416,31 @@ declare var CloseEvent: {
 };
 
 /**
+ * The **`CommandEvent`** interface represents an event notifying the user when a HTMLButtonElement element with valid HTMLButtonElement.commandForElement and HTMLButtonElement.command attributes is about to invoke an interactive element.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent)
+ */
+interface CommandEvent extends Event {
+    /**
+     * The **`command`** read-only property of the CommandEvent interface returns a string containing the value of the HTMLButtonElement.command property at the time the event was dispatched.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/command)
+     */
+    readonly command: string;
+    /**
+     * The **`source`** read-only property of the CommandEvent interface returns an EventTarget representing the control that invoked the given command.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/source)
+     */
+    readonly source: Element | null;
+}
+
+declare var CommandEvent: {
+    prototype: CommandEvent;
+    new(type: string, eventInitDict?: CommandEventInit): CommandEvent;
+};
+
+/**
  * The **`Comment`** interface represents textual notations within markup; although it is generally not visually shown, such comments are available to be read in the source view.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Comment)
@@ -9291,7 +9346,7 @@ declare var DOMMatrixReadOnly: {
  */
 interface DOMParser {
     /**
-     * The **`parseFromString()`** method of the DOMParser interface parses a string containing either HTML or XML, returning an HTMLDocument or an XMLDocument.
+     * The **`parseFromString()`** method of the DOMParser interface parses an input containing either HTML or XML, returning a Document with the type given in the Document/contentType property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMParser/parseFromString)
      */
@@ -10029,6 +10084,19 @@ declare var DeviceOrientationEvent: {
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
 };
 
+/** Available only in secure contexts. */
+interface DigitalCredential extends Credential {
+    readonly data: any;
+    readonly protocol: string;
+    toJSON(): any;
+}
+
+declare var DigitalCredential: {
+    prototype: DigitalCredential;
+    new(): DigitalCredential;
+    userAgentAllowsProtocol(protocol: string): boolean;
+};
+
 interface DocumentEventMap extends GlobalEventHandlersEventMap {
     "DOMContentLoaded": Event;
     "fullscreenchange": Event;
@@ -10439,6 +10507,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "BlobEvent"): BlobEvent;
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
+    createEvent(eventInterface: "CommandEvent"): CommandEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
     createEvent(eventInterface: "ContentVisibilityAutoStateChangeEvent"): ContentVisibilityAutoStateChangeEvent;
     createEvent(eventInterface: "CookieChangeEvent"): CookieChangeEvent;
@@ -10514,7 +10583,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     createProcessingInstruction(target: string, data: string): ProcessingInstruction;
     /**
-     * The **`Document.createRange()`** method returns a new Range object.
+     * The **`Document.createRange()`** method returns a new Range object whose start and end are offset 0 of the Document object on which it was called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createRange)
      */
@@ -11268,6 +11337,9 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)
      */
+    matches<K extends keyof HTMLElementTagNameMap>(selectors: K): this is HTMLElementTagNameMap[K];
+    matches<K extends keyof SVGElementTagNameMap>(selectors: K): this is SVGElementTagNameMap[K];
+    matches<K extends keyof MathMLElementTagNameMap>(selectors: K): this is MathMLElementTagNameMap[K];
     matches(selectors: string): boolean;
     /**
      * The **`releasePointerCapture()`** method of the Element interface releases (stops) _pointer capture_ that was previously set for a specific (PointerEvent) _pointer_.
@@ -11310,28 +11382,28 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll)
      */
-    scroll(options?: ScrollToOptions): void;
-    scroll(x: number, y: number): void;
+    scroll(options?: ScrollToOptions): Promise<void>;
+    scroll(x: number, y: number): Promise<void>;
     /**
      * The **`scrollBy()`** method of the Element interface scrolls an element by the given amount.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollBy)
      */
-    scrollBy(options?: ScrollToOptions): void;
-    scrollBy(x: number, y: number): void;
+    scrollBy(options?: ScrollToOptions): Promise<void>;
+    scrollBy(x: number, y: number): Promise<void>;
     /**
      * The Element interface's **`scrollIntoView()`** method scrolls the element's ancestor containers such that the element on which `scrollIntoView()` is called is visible to the user.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollIntoView)
      */
-    scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+    scrollIntoView(arg?: boolean | ScrollIntoViewOptions): Promise<void>;
     /**
      * The **`scrollTo()`** method of the Element interface scrolls to a particular set of coordinates inside a given element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTo)
      */
-    scrollTo(options?: ScrollToOptions): void;
-    scrollTo(x: number, y: number): void;
+    scrollTo(options?: ScrollToOptions): Promise<void>;
+    scrollTo(x: number, y: number): Promise<void>;
     /**
      * The **`setAttribute()`** method of the Element interface sets the value of an attribute on the specified element.
      *
@@ -11398,7 +11470,7 @@ interface ElementCSSInlineStyle {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attributeStyleMap) */
     readonly attributeStyleMap: StylePropertyMap;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style) */
-    readonly style: CSSStyleProperties;
+    readonly style: CSSStyleDeclaration;
 }
 
 interface ElementContentEditable {
@@ -12959,6 +13031,7 @@ interface GlobalEventHandlersEventMap {
     "change": Event;
     "click": PointerEvent;
     "close": Event;
+    "command": Event;
     "compositionend": CompositionEvent;
     "compositionstart": CompositionEvent;
     "compositionupdate": CompositionEvent;
@@ -13083,6 +13156,8 @@ interface GlobalEventHandlers {
     onclick: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
     onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
+    oncommand: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
     oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -13571,6 +13646,18 @@ declare var HTMLBodyElement: {
  */
 interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
     /**
+     * The **`command`** property of the HTMLButtonElement interface gets and sets the action to be performed on an element being controlled by this button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/command)
+     */
+    command: string;
+    /**
+     * The **`commandForElement`** property of the HTMLButtonElement interface gets and sets the element to control via a button.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/commandForElement)
+     */
+    commandForElement: Element | null;
+    /**
      * The **`HTMLButtonElement.disabled`** property indicates whether the control is disabled, meaning that it does not accept any clicks.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/disabled)
@@ -14056,7 +14143,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
      */
     innerText: string;
     /**
-     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a MISSING: RFC(5646, 'BCP 47 language identifier tag')].
+     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a BCP 47 language tag.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lang)
      */
@@ -14386,7 +14473,7 @@ interface HTMLFormElement extends HTMLElement {
      */
     autocomplete: AutoFillBase;
     /**
-     * The HTMLFormElement property **`elements`** returns an HTMLFormControlsCollection listing all the form controls contained in the form element.
+     * The **`elements`** property of the HTMLFormElement interface returns an HTMLFormControlsCollection listing all the listed form controls associated with the form element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/elements)
      */
@@ -14804,7 +14891,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     src: string;
     /**
-     * The **`srcdoc`** property of the HTMLIFrameElement specifies the content of the page.
+     * The **`srcdoc`** property of the HTMLIFrameElement interface gets or sets the inline HTML markup of the frame's document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/srcdoc)
      */
@@ -15403,7 +15490,7 @@ interface HTMLLabelElement extends HTMLElement {
      */
     readonly control: HTMLElement | null;
     /**
-     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the HTMLLabelElement.control associated with this label, or `null` if this label is not associated with a control owned by a form.
+     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the HTMLLabelElement.control associated with this label, or `null` if this label is not associated with a labelable form-associated element (button, input, output, select, textarea, or form-associated custom elements) that is owned by a form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/form)
      */
@@ -16709,7 +16796,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     src: string;
     /**
-     * The **`text`** property of the HTMLScriptElement interface is a string that reflects the text content inside the script element.
+     * The **`text`** property of the HTMLScriptElement interface represents the inline text content of the script element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/text)
      */
@@ -17138,7 +17225,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     chOff: string;
     /**
-     * The **`colSpan`** read-only property of the HTMLTableCellElement interface represents the number of columns this cell must span; this lets the cell occupy space across multiple columns of the table.
+     * The **`colSpan`** property of the HTMLTableCellElement interface represents the number of columns this cell must span; this lets the cell occupy space across multiple columns of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/colSpan)
      */
@@ -17159,7 +17246,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     noWrap: boolean;
     /**
-     * The **`rowSpan`** read-only property of the HTMLTableCellElement interface represents the number of rows this cell must span; this lets the cell occupy space across multiple rows of the table.
+     * The **`rowSpan`** property of the HTMLTableCellElement interface represents the number of rows this cell must span; this lets the cell occupy space across multiple rows of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/rowSpan)
      */
@@ -17218,7 +17305,7 @@ interface HTMLTableColElement extends HTMLElement {
      */
     chOff: string;
     /**
-     * The **`span`** read-only property of the HTMLTableColElement interface represents the number of columns this col or colgroup must span; this lets the column occupy space across multiple columns of the table.
+     * The **`span`** property of the HTMLTableColElement interface represents the number of columns this col or colgroup must span; this lets the column occupy space across multiple columns of the table.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableColElement/span)
      */
@@ -18349,6 +18436,7 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
     onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
@@ -22989,6 +23077,8 @@ interface ParentNode extends Node {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append)
      */
     append(...nodes: (Node | string)[]): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/moveBefore) */
+    moveBefore(node: Node, child: Node | null): void;
     /**
      * Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
      *
@@ -23517,6 +23607,12 @@ interface PerformanceEventTiming extends PerformanceEntry {
      */
     readonly cancelable: boolean;
     /**
+     * The read-only **`interactionId`** property of the PerformanceEventTiming interface returns an ID that uniquely identifies a user interaction which triggered a series of associated events.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/interactionId)
+     */
+    readonly interactionId: number;
+    /**
      * The read-only **`processingEnd`** property returns the time the last event handler finished executing.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/processingEnd)
@@ -23782,6 +23878,7 @@ declare var PerformanceObserverEntryList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
  */
 interface PerformancePaintTiming extends PerformanceEntry {
+    toJSON(): any;
 }
 
 declare var PerformancePaintTiming: {
@@ -24353,7 +24450,7 @@ interface PointerEvent extends MouseEvent {
      */
     readonly persistentDeviceId: number;
     /**
-     * The **`pointerId`** read-only property of the PointerEvent interface is an identifier assigned to a given pointer event.
+     * The **`pointerId`** read-only property of the PointerEvent interface is an identifier assigned to the pointer that triggered the event.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/pointerId)
      */
@@ -24555,7 +24652,7 @@ interface PublicKeyCredential extends Credential {
      */
     readonly response: AuthenticatorResponse;
     /**
-     * The **`getClientExtensionResults()`** method of the PublicKeyCredential interface returns a map between the identifiers of extensions requested during credential creation or authentication, and their results after processing by the user agent.
+     * The **`getClientExtensionResults()`** method of the PublicKeyCredential interface returns an object mapping the identifiers of extensions requested during credential creation or authentication, and their results after processing by the user agent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/getClientExtensionResults)
      */
@@ -26184,7 +26281,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/read)
      */
-    read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+    read<T extends ArrayBufferView>(view: T, options?: ReadableStreamBYOBReaderReadOptions): Promise<ReadableStreamReadResult<T>>;
     /**
      * The **`releaseLock()`** method of the ReadableStreamBYOBReader interface releases the reader's lock on the stream.
      *
@@ -26663,6 +26760,12 @@ declare var Response: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
+    /**
+     * The **`download`** property of the SVGAElement interface returns a string indicating that the browser should treat the linked URL as a download.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/download)
+     */
+    download: string;
     /**
      * The **`rel`** property of the SVGAElement returns a string reflecting the value of the `rel` attribute of the SVG a element.
      *
@@ -29042,6 +29145,7 @@ interface SVGMarkerElement extends SVGElement, SVGFitToViewBox {
     readonly SVG_MARKER_ORIENT_UNKNOWN: 0;
     readonly SVG_MARKER_ORIENT_AUTO: 1;
     readonly SVG_MARKER_ORIENT_ANGLE: 2;
+    readonly SVG_MARKER_ORIENT_AUTO_START_REVERSE: 3;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGMarkerElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -29057,6 +29161,7 @@ declare var SVGMarkerElement: {
     readonly SVG_MARKER_ORIENT_UNKNOWN: 0;
     readonly SVG_MARKER_ORIENT_AUTO: 1;
     readonly SVG_MARKER_ORIENT_ANGLE: 2;
+    readonly SVG_MARKER_ORIENT_AUTO_START_REVERSE: 3;
 };
 
 /**
@@ -29701,7 +29806,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/getElementById)
      */
-    getElementById(elementId: string): Element;
+    getElementById(elementId: string): Element | null;
     getEnclosureList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     getIntersectionList(rect: DOMRectReadOnly, referenceElement: SVGElement | null): NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>;
     /**
@@ -29876,6 +29981,11 @@ declare var SVGStringList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement)
  */
 interface SVGStyleElement extends SVGElement, LinkStyle {
+    /**
+     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement/disabled)
+     */
     disabled: boolean;
     /**
      * The **`SVGStyleElement.media`** property is a media query string corresponding to the `media` attribute of the given SVG style element.
@@ -30526,7 +30636,13 @@ interface ScreenOrientation extends EventTarget {
      */
     readonly type: OrientationType;
     /**
-     * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document from its default orientation.
+     * The **`lock()`** method of the ScreenOrientation interface locks the orientation of the containing document to the specified orientation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/lock)
+     */
+    lock(orientation: OrientationLockType): Promise<void>;
+    /**
+     * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document, effectively locking it to the default screen orientation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/unlock)
      */
@@ -30993,12 +31109,6 @@ interface ServiceWorkerRegistration extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/updatefound_event) */
     onupdatefound: ((this: ServiceWorkerRegistration, ev: Event) => any) | null;
     /**
-     * The **`pushManager`** read-only property of the ServiceWorkerRegistration interface returns a reference to the PushManager interface for managing push subscriptions; this includes support for subscribing, getting an active subscription, and accessing push permission status.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager)
-     */
-    readonly pushManager: PushManager;
-    /**
      * The **`scope`** read-only property of the ServiceWorkerRegistration interface returns a string representing a URL that defines a service worker's registration scope; that is, the range of URLs a service worker can control.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/scope)
@@ -31193,10 +31303,15 @@ interface SourceBuffer extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/mode)
      */
     mode: AppendMode;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/abort_event) */
     onabort: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/error_event) */
     onerror: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/update_event) */
     onupdate: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updateend_event) */
     onupdateend: ((this: SourceBuffer, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updatestart_event) */
     onupdatestart: ((this: SourceBuffer, ev: Event) => any) | null;
     /**
      * The **`timestampOffset`** property of the SourceBuffer interface controls the offset applied to timestamps inside media segments that are appended to the `SourceBuffer`.
@@ -32598,7 +32713,7 @@ interface TextTrackListEventMap {
 }
 
 /**
- * The **`TextTrackList`** interface is used to represent a list of the text tracks defined for the associated video or audio element, with each track represented by a separate textTrack object in the list.
+ * The **`TextTrackList`** interface is used to represent a list of the text tracks defined for the associated video or audio element, with each track represented by a separate TextTrack object in the list.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextTrackList)
  */
@@ -32682,6 +32797,12 @@ interface ToggleEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/oldState)
      */
     readonly oldState: string;
+    /**
+     * The **`source`** read-only property of the ToggleEvent interface is an Element object instance representing the HTML popover control element that initiated the toggle.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/source)
+     */
+    readonly source: Element | null;
 }
 
 declare var ToggleEvent: {
@@ -37250,11 +37371,11 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     focus(): void;
     /**
-     * The **`Window.getComputedStyle()`** method returns an object containing the values of all CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+     * The **`Window.getComputedStyle()`** method returns a live read-only CSSStyleProperties object containing the resolved values of all CSS properties of an element, after applying active stylesheets and resolving any computation those values may contain.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
      */
-    getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleProperties;
+    getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleDeclaration;
     /**
      * The **`getSelection()`** method of the Window interface returns the Selection object associated with the window's document, representing the range of text selected by the user or the current position of the caret.
      *
@@ -37334,22 +37455,22 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
      */
-    scroll(options?: ScrollToOptions): void;
-    scroll(x: number, y: number): void;
+    scroll(options?: ScrollToOptions): Promise<void>;
+    scroll(x: number, y: number): Promise<void>;
     /**
      * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
      */
-    scrollBy(options?: ScrollToOptions): void;
-    scrollBy(x: number, y: number): void;
+    scrollBy(options?: ScrollToOptions): Promise<void>;
+    scrollBy(x: number, y: number): Promise<void>;
     /**
      * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
      */
-    scrollTo(options?: ScrollToOptions): void;
-    scrollTo(x: number, y: number): void;
+    scrollTo(options?: ScrollToOptions): Promise<void>;
+    scrollTo(x: number, y: number): Promise<void>;
     /**
      * The **`window.stop()`** stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
      *
@@ -38246,6 +38367,37 @@ declare namespace WebAssembly {
     };
 
     /**
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
+     */
+    interface Exception {
+        /**
+         * The read-only **`stack`** property of an object instance of type `WebAssembly.Exception` _may_ contain a stack trace.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
+         */
+        readonly stack: string | undefined;
+        /**
+         * The **`getArg()`** prototype method of the `Exception` object can be used to get the value of a specified item in the exception's data arguments.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
+         */
+        getArg(index: number): any;
+        /**
+         * The **`is()`** prototype method of the `Exception` object can be used to test if the `Exception` matches a given tag.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
+         */
+        is(exceptionTag: Tag): boolean;
+    }
+
+    var Exception: {
+        prototype: Exception;
+        new(exceptionTag: Tag, payload: any[], options?: ExceptionOptions): Exception;
+    };
+
+    /**
      * A **`WebAssembly.Global`** object represents a global variable instance, accessible from both JavaScript and importable/exportable across one or more `WebAssembly.Module` instances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global)
@@ -38305,7 +38457,7 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
-        grow(delta: number): number;
+        grow(delta: AddressValue): AddressValue;
     }
 
     var Memory: {
@@ -38323,7 +38475,7 @@ declare namespace WebAssembly {
 
     var Module: {
         prototype: Module;
-        new(bytes: BufferSource): Module;
+        new(bytes: BufferSource, options?: WebAssemblyCompileOptions): Module;
         /**
          * The **`WebAssembly.Module.customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
          *
@@ -38364,25 +38516,25 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/length)
          */
-        readonly length: number;
+        readonly length: AddressValue;
         /**
          * The **`get()`** prototype method of the `WebAssembly.Table()` object retrieves the element stored at a given index.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/get)
          */
-        get(index: number): any;
+        get(index: AddressValue): any;
         /**
          * The **`grow()`** prototype method of the `WebAssembly.Table` object increases the size of the `Table` instance by a specified number of elements, filled with the provided value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/grow)
          */
-        grow(delta: number, value?: any): number;
+        grow(delta: AddressValue, value?: any): AddressValue;
         /**
          * The **`set()`** prototype method of the `WebAssembly.Table` object mutates a reference stored at a given index to a different value.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
-        set(index: number, value?: any): void;
+        set(index: AddressValue, value?: any): void;
     }
 
     var Table: {
@@ -38390,14 +38542,32 @@ declare namespace WebAssembly {
         new(descriptor: TableDescriptor, value?: any): Table;
     };
 
+    /**
+     * The **`WebAssembly.Tag`** object defines a _type_ of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
+     */
+    interface Tag {
+    }
+
+    var Tag: {
+        prototype: Tag;
+        new(type: TagType): Tag;
+    };
+
+    interface ExceptionOptions {
+        traceStack?: boolean;
+    }
+
     interface GlobalDescriptor<T extends ValueType = ValueType> {
         mutable?: boolean;
         value: T;
     }
 
     interface MemoryDescriptor {
-        initial: number;
-        maximum?: number;
+        address?: AddressType;
+        initial: AddressValue;
+        maximum?: AddressValue;
         shared?: boolean;
     }
 
@@ -38413,9 +38583,14 @@ declare namespace WebAssembly {
     }
 
     interface TableDescriptor {
+        address?: AddressType;
         element: TableKind;
-        initial: number;
-        maximum?: number;
+        initial: AddressValue;
+        maximum?: AddressValue;
+    }
+
+    interface TagType {
+        parameters: ValueType[];
     }
 
     interface ValueTypeMap {
@@ -38428,30 +38603,38 @@ declare namespace WebAssembly {
         v128: never;
     }
 
+    interface WebAssemblyCompileOptions {
+        builtins?: string[];
+        importedStringConstants?: string | null;
+    }
+
     interface WebAssemblyInstantiatedSource {
         instance: Instance;
         module: Module;
     }
 
-    type ImportExportKind = "function" | "global" | "memory" | "table";
+    type AddressType = "i32" | "i64";
+    type ImportExportKind = "function" | "global" | "memory" | "table" | "tag";
     type TableKind = "anyfunc" | "externref";
+    type AddressValue = number;
     type ExportValue = Function | Global | Memory | Table;
     type Exports = Record<string, ExportValue>;
     type ImportValue = ExportValue | number;
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
     type ValueType = keyof ValueTypeMap;
+    var JSTag: Tag;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
-    function compile(bytes: BufferSource): Promise<Module>;
+    function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compileStreaming_static) */
-    function compileStreaming(source: Response | PromiseLike<Response>): Promise<Module>;
+    function compileStreaming(source: Response | PromiseLike<Response>, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiate_static) */
-    function instantiate(bytes: BufferSource, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(bytes: BufferSource, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiateStreaming_static) */
-    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports): Promise<WebAssemblyInstantiatedSource>;
+    function instantiateStreaming(source: Response | PromiseLike<Response>, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/validate_static) */
-    function validate(bytes: BufferSource): boolean;
+    function validate(bytes: BufferSource, options?: WebAssemblyCompileOptions): boolean;
 }
 
 /** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
@@ -39352,11 +39535,11 @@ declare function confirm(message?: string): boolean;
  */
 declare function focus(): void;
 /**
- * The **`Window.getComputedStyle()`** method returns an object containing the values of all CSS properties of an element, after applying active stylesheets and resolving any basic computation those values may contain.
+ * The **`Window.getComputedStyle()`** method returns a live read-only CSSStyleProperties object containing the resolved values of all CSS properties of an element, after applying active stylesheets and resolving any computation those values may contain.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/getComputedStyle)
  */
-declare function getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleProperties;
+declare function getComputedStyle(elt: Element, pseudoElt?: string | null): CSSStyleDeclaration;
 /**
  * The **`getSelection()`** method of the Window interface returns the Selection object associated with the window's document, representing the range of text selected by the user or the current position of the caret.
  *
@@ -39436,22 +39619,22 @@ declare function resizeTo(width: number, height: number): void;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
  */
-declare function scroll(options?: ScrollToOptions): void;
-declare function scroll(x: number, y: number): void;
+declare function scroll(options?: ScrollToOptions): Promise<void>;
+declare function scroll(x: number, y: number): Promise<void>;
 /**
  * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
  */
-declare function scrollBy(options?: ScrollToOptions): void;
-declare function scrollBy(x: number, y: number): void;
+declare function scrollBy(options?: ScrollToOptions): Promise<void>;
+declare function scrollBy(x: number, y: number): Promise<void>;
 /**
  * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
  */
-declare function scrollTo(options?: ScrollToOptions): void;
-declare function scrollTo(x: number, y: number): void;
+declare function scrollTo(options?: ScrollToOptions): Promise<void>;
+declare function scrollTo(x: number, y: number): Promise<void>;
 /**
  * The **`window.stop()`** stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
  *
@@ -39501,6 +39684,8 @@ declare var onchange: ((this: Window, ev: Event) => any) | null;
 declare var onclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
 declare var onclose: ((this: Window, ev: Event) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
+declare var oncommand: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
 declare var oncontextlost: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -39968,12 +40153,13 @@ type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
-type NavigationTimingType = "back_forward" | "navigate" | "prerender" | "reload";
+type NavigationTimingType = "back_forward" | "navigate" | "reload";
 type NavigationType = "push" | "reload" | "replace" | "traverse";
 type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
 type OpusBitstreamFormat = "ogg" | "opus";
+type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";

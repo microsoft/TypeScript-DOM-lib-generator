@@ -23,7 +23,10 @@ export const packages = [
       { from: "../generated/ts5.5/dom.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true, group: "ts5.5" },
       { from: "../generated/ts5.6/dom.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/dom.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
-      { from: "../generated/ts5.6/dom.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" }
+      { from: "../generated/ts5.6/dom.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" },
+      { from: "../generated/ts5.9/dom.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/dom.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/dom.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true, group: "ts5.9" }
     ],
   },
   {
@@ -39,7 +42,10 @@ export const packages = [
       { from: "../generated/ts5.5/serviceworker.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true , group: "ts5.5" },
       { from: "../generated/ts5.6/serviceworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/serviceworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true , group: "ts5.6" },
-      { from: "../generated/ts5.6/serviceworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" }
+      { from: "../generated/ts5.6/serviceworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" },
+      { from: "../generated/ts5.9/serviceworker.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/serviceworker.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true , group: "ts5.9" },
+      { from: "../generated/ts5.9/serviceworker.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true , group: "ts5.9" }
     ],
   },
   {
@@ -55,7 +61,10 @@ export const packages = [
       { from: "../generated/ts5.5/audioworklet.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true , group: "ts5.5" },
       { from: "../generated/ts5.6/audioworklet.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/audioworklet.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true , group: "ts5.6" },
-      { from: "../generated/ts5.6/audioworklet.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" }
+      { from: "../generated/ts5.6/audioworklet.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true , group: "ts5.6" },
+      { from: "../generated/ts5.9/audioworklet.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/audioworklet.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true , group: "ts5.9" },
+      { from: "../generated/ts5.9/audioworklet.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true , group: "ts5.9" }
     ],
   },
   {
@@ -71,7 +80,10 @@ export const packages = [
       { from: "../generated/ts5.5/sharedworker.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true, group: "ts5.5" },
       { from: "../generated/ts5.6/sharedworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/sharedworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
-      { from: "../generated/ts5.6/sharedworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" }
+      { from: "../generated/ts5.6/sharedworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" },
+      { from: "../generated/ts5.9/sharedworker.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/sharedworker.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/sharedworker.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true, group: "ts5.9" }
     ],
   },
   {
@@ -87,7 +99,10 @@ export const packages = [
       { from: "../generated/ts5.5/webworker.asynciterable.generated.d.ts", to: "ts5.5/asynciterable.d.ts", autoImport: true, group: "ts5.5" },
       { from: "../generated/ts5.6/webworker.generated.d.ts", to: "ts5.6/index.d.ts", index: true, group: "ts5.6" },
       { from: "../generated/ts5.6/webworker.iterable.generated.d.ts", to: "ts5.6/iterable.d.ts", autoImport: true, group: "ts5.6" },
-      { from: "../generated/ts5.6/webworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" }
+      { from: "../generated/ts5.6/webworker.asynciterable.generated.d.ts", to: "ts5.6/asynciterable.d.ts", autoImport: true, group: "ts5.6" },
+      { from: "../generated/ts5.9/webworker.generated.d.ts", to: "ts5.9/index.d.ts", index: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/webworker.iterable.generated.d.ts", to: "ts5.9/iterable.d.ts", autoImport: true, group: "ts5.9" },
+      { from: "../generated/ts5.9/webworker.asynciterable.generated.d.ts", to: "ts5.9/asynciterable.d.ts", autoImport: true, group: "ts5.9" }
     ]
   }
 ];
@@ -119,7 +134,9 @@ const go = async () => {
 
     // Migrate in the template files
     for (const templateFile of fs.readdirSync(templateDir)) {
-      if (templateFile.startsWith(".")) continue;
+      if (templateFile.startsWith(".")) {
+        continue;
+      }
 
       const templatedFile = new URL(templateFile, templateDir);
       fs.copyFileSync(templatedFile, new URL(templateFile, packagePath));
@@ -227,15 +244,21 @@ function prependAutoImports(pkg, packagePath) {
   const groups = new Map();
   for (const file of pkg.files) {
     let files = groups.get(file.group);
-    if (!files) groups.set(file.group, (files = []));
+    if (!files) {
+      groups.set(file.group, (files = []));
+    }
     files.push(file);
   }
   for (const files of groups.values()) {
     const indexFile = files.find((file) => file.index);
-    if (!indexFile) continue;
+    if (!indexFile) {
+      continue;
+    }
 
     const index = new URL(indexFile.to, packagePath);
-    if (!fs.existsSync(index)) continue;
+    if (!fs.existsSync(index)) {
+      continue;
+    }
 
     const toPrepend = files
       .filter((f) => !!f.autoImport)
@@ -255,8 +278,12 @@ function prependAutoImports(pkg, packagePath) {
  * @param {URL} to
  */
 function relativeUrl(from, to) {
-  if (from.origin !== to.origin) return to.toString();
-  if (!from.pathname.endsWith("/")) from = new URL("./", from);
+  if (from.origin !== to.origin) {
+    return to.toString();
+  }
+  if (!from.pathname.endsWith("/")) {
+    from = new URL("./", from);
+  }
   const relative = path.posix.relative(from.pathname, to.pathname);
   return path.isAbsolute(relative) ||
     relative.startsWith("../") ||

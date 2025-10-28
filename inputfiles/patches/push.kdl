@@ -1,0 +1,4 @@
+interface-mixin PushManagerAttribute {
+  // Windows support only on WebKit as of 2025-10
+  property pushManager exposed=ServiceWorker
+}

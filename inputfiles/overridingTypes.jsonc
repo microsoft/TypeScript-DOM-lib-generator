@@ -1,14 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "MessageEventTarget": {
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "overrideThis": "T"
-            },
             "NavigatorGPU": {
                 "properties": {
                     "property": {
@@ -95,15 +87,6 @@
                         }
                     }
                 }
-            },
-            "CanvasCompositing": {
-              "properties": {
-                "property": {
-                  "globalCompositeOperation": {
-                    "type": "GlobalCompositeOperation"
-                  }
-                }
-              }
             },
             "Body": {
                 "properties": {
@@ -339,27 +322,6 @@
                         "overrideType": "T"
                     }
                 }
-            }
-        }
-    },
-    "callbackInterfaces": {
-        "interface": {}
-    },
-    "enums": {
-        "enum": {
-            "ImportExportKind": {
-                "legacyNamespace": "WebAssembly"
-            },
-            "TableKind": {
-                "legacyNamespace": "WebAssembly"
-            },
-            "ImageOrientation": {
-                "value": [
-                    // The spec removed this but it's still in browsers and WebKit doesn't support the new one.
-                    // Keep it until it's safer to fully migrate.
-                    // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
-                    "none"
-                ]
             }
         }
     },
@@ -1364,27 +1326,6 @@
                     }
                 }
             },
-            "HTMLDirectoryElement": {
-                "element": [
-                    {
-                        "name": "dir"
-                    }
-                ]
-            },
-            "HTMLFontElement": {
-                "element": [
-                    {
-                        "name": "font"
-                    }
-                ]
-            },
-            "HTMLFrameElement": {
-                "element": [
-                    {
-                        "name": "frame"
-                    }
-                ]
-            },
             "FontFace": {
               "properties": {
                 "property": {
@@ -1393,13 +1334,6 @@
                   }
                 }
               }
-            },
-            "HTMLFrameSetElement": {
-                "element": [
-                    {
-                        "name": "frameset"
-                    }
-                ]
             },
             "HTMLTableElement": {
                 "properties": {
@@ -2095,7 +2029,19 @@
                     // It's true that Blink is the only supported engine for Symbol.asyncIterator,
                     // WebKit does support the keys/values/entries method and Gecko will soon follow.
                     // Let's not go back and forth for this one.
-                    "exposed": "Window Worker"
+                    "exposed": "Window Worker",
+                    "type": {
+                        "1": {
+                            "type": [
+                                {
+                                    "type": "FileSystemDirectoryHandle"
+                                },
+                                {
+                                    "type": "FileSystemFileHandle"
+                                }
+                            ]
+                        }
+                    }
                 }
             },
             "MutationRecord": {
@@ -2299,7 +2245,7 @@
                         },
                         {
                             "name": "messageerror",
-                            "type": "MessageEvent"
+                            "type": "ExtendableMessageEvent"
                         },
                         {
                             "name": "notificationclick",
@@ -2410,13 +2356,6 @@
                         }
                     }
                 }
-            },
-            "HTMLMarqueeElement": {
-                "element": [
-                    {
-                        "name": "marquee"
-                    }
-                ]
             },
             "Worker": {
                 "methods": {
@@ -3370,18 +3309,9 @@
                 }
             },
             "CSSStyleProperties": {
-                // The split of CSSStyleDeclaration of CSSStyleProperties is only supported by Safari 26
-                // as of 2025-06.
-                // But still Chrome is shipping CSS*Descriptors based on it, which is only possible because
-                // Chrome's CSSStyleDeclaration was based on nonstandard indexer.
-                // To support the situation we need CSSStyleProperties even though it's not well supported yet.
-                // The split was pushed by Mozilla and thus still has multiple supports for the direction.
                 "properties": {
                     "property": {
                         "cssFloat": {
-                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but only Safari supports it as of 2025-06
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "exposed": "Window",
                             "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
                         },
                         "webkitLineClamp": {
@@ -3795,6 +3725,9 @@
                     "[property: string]: string | number | null | undefined"
                 ]
             },
+            "ExceptionOptions": {
+                "legacyNamespace": "WebAssembly"
+            },
             "PermissionDescriptor": {
                 "members": {
                     "member": {
@@ -3899,6 +3832,9 @@
                         }
                     }
                 }
+            },
+            "TagType": {
+                "legacyNamespace": "WebAssembly"
             },
             // TextEncoderEncodeIntoResult is used only for return type, always with all fields defined
             "TextEncoderEncodeIntoResult": {
@@ -4027,8 +3963,56 @@
                     }
                 }
             },
+            "WebAssemblyCompileOptions": {
+                "legacyNamespace": "WebAssembly"
+            },
             "WebAssemblyInstantiatedSource": {
                 "legacyNamespace": "WebAssembly"
+            },
+            "URLPatternComponentResult": {
+                "members": {
+                    "member": {
+                        "input": {
+                            "required": true
+                        },
+                        "groups": {
+                            "required": true
+                        }
+                    }
+                }
+            },
+            "URLPatternResult": {
+                "members": {
+                    "member": {
+                        "inputs": {
+                            "required": true
+                        },
+                        "protocol": {
+                            "required": true
+                        },
+                        "username": {
+                            "required": true
+                        },
+                        "password": {
+                            "required": true
+                        },
+                        "hostname": {
+                            "required": true
+                        },
+                        "port": {
+                            "required": true
+                        },
+                        "pathname": {
+                            "required": true
+                        },
+                        "search": {
+                            "required": true
+                        },
+                        "hash": {
+                            "required": true
+                        }
+                    }
+                }
             }
         }
     },
@@ -4059,6 +4043,12 @@
                     }
                 ],
                 "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+            },
+            {
+                "name": "AddressValue",
+                "legacyNamespace": "WebAssembly",
+                // This should be "number | bigint" but we can't break es2015 compat
+                "type": "long"
             }
         ]
     },

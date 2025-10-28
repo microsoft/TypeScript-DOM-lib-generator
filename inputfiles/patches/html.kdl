@@ -1,0 +1,12 @@
+enum ImageOrientation {
+    // The spec removed this but it's still in browsers and WebKit doesn't support the new one.
+    // Keep it until it's safer to fully migrate.
+    // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
+    none
+}
+
+interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
+interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
+interface HTMLDocument extends=Document exposed=Window
+
+interface-mixin MessageEventTarget overrideThis=T typeParameters=T

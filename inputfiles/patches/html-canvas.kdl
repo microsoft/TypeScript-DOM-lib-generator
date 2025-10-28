@@ -26,3 +26,7 @@ enum GlobalCompositeOperation {
     color
     luminosity
 }
+
+interface-mixin CanvasCompositing {
+    property globalCompositeOperation type=GlobalCompositeOperation
+}

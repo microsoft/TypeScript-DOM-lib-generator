@@ -6,6 +6,7 @@
 // ones which have changed.
 
 import * as fs from "fs";
+import * as path from "path";
 import { spawnSync } from "child_process";
 import { Octokit } from "@octokit/rest";
 import { printUnifiedDiff } from "print-diff";
@@ -13,6 +14,7 @@ import { generateChangelogFrom } from "../lib/changelog.js";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
 import fetch from "node-fetch";
+import pRetry from "p-retry";
 
 verify();
 
@@ -41,9 +43,9 @@ for (const dirName of fs.readdirSync(generatedDir)) {
     throw new Error(`Couldn't find ${pkgJSON.name}`);
   }
 
-  const dtsFiles = fs
-    .readdirSync(packageDir)
-    .filter((f) => f.endsWith(".d.ts"));
+  const dtsFiles = readdirRecursive(fileURLToPath(packageDir)).filter((f) =>
+    f.endsWith(".d.ts"),
+  );
 
   const releaseNotes = [];
 
@@ -64,8 +66,9 @@ for (const dirName of fs.readdirSync(generatedDir)) {
         `${pkgJSON.name}@${olderVersion}/${filemap.to}`,
       );
       console.log(` - ${file}`);
-      if (oldFile !== generatedDTSContent)
+      if (oldFile !== generatedDTSContent) {
         printUnifiedDiff(oldFile, generatedDTSContent);
+      }
 
       const title = `## \`${file}\``;
       const notes = generateChangelogFrom(oldFile, generatedDTSContent);
@@ -163,6 +166,35 @@ function verify() {
 }
 
 /** @param {string} filepath */
-function getFileFromUnpkg(filepath) {
-  return fetch(`https://unpkg.com/${filepath}`).then((r) => r.text());
+async function getFileFromUnpkg(filepath) {
+  return pRetry(async () => {
+    const resp = await fetch(`https://unpkg.com/${filepath}`);
+    if (resp.ok) {
+      return resp.text();
+    }
+    if (resp.status === 404) {
+      return "";
+    }
+    console.error(`Unexpected response status: ${resp.status}`);
+    throw new Error(resp.statusText);
+  });
+}
+
+/** @param {string} dir */
+function readdirRecursive(dir) {
+  /** @type {string[]} */
+  let results = [];
+  /** @param {string} currentDir */
+  function readDir(currentDir) {
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(currentDir, entry.name);
+      results.push(path.relative(dir, fullPath));
+      if (entry.isDirectory()) {
+        readDir(fullPath);
+      }
+    }
+  }
+  readDir(dir);
+  return results;
 }

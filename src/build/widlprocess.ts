@@ -191,7 +191,7 @@ function convertInterfaceCommon(
       }
     } else if (member.type === "operation") {
       const operation = convertOperation(member, result.exposed);
-      const { method } = result.methods;
+      const { method } = result.methods!;
       if (!member.name) {
         result.anonymousMethods!.method.push(operation);
       } else if (method.hasOwnProperty(member.name)) {
@@ -433,7 +433,7 @@ function convertNamespace(
       );
     } else if (member.type === "operation" && member.idlType) {
       const operation = convertOperation(member, result.exposed);
-      const { method } = result.methods;
+      const { method } = result.methods!;
       if (method[member.name!]) {
         method[member.name!].signature.push(...operation.signature);
       } else {

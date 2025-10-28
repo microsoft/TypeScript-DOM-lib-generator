@@ -1,28 +1,4 @@
 {
-    "mixins": {
-        "mixin": {
-            "DocumentOrShadowRoot": {
-                // Manually moved from Document
-                // See https://github.com/w3c/csswg-drafts/issues/5886 and https://github.com/w3c/csswg-drafts/issues/556
-                "methods": {
-                    "method": {
-                        "elementFromPoint": {
-                            "name": "elementFromPoint",
-                            "overrideSignatures": [
-                                "elementFromPoint(x: number, y: number): Element | null"
-                            ]
-                        },
-                        "elementsFromPoint": {
-                            "name": "elementsFromPoint",
-                            "overrideSignatures": [
-                                "elementsFromPoint(x: number, y: number): Element[]"
-                            ]
-                        }
-                    }
-                }
-            }
-        }
-    },
     "interfaces": {
         "interface": {
             // ImportMeta is not a true DOM interface, but we are forced to declare it as one in order to emit method definitions.
@@ -119,25 +95,6 @@
                         }
                     }
                 }
-            },
-            "HTMLTableDataCellElement": {
-                "name": "HTMLTableDataCellElement",
-                "extends": "HTMLTableCellElement",
-                "noInterfaceObject": true,
-                "deprecated": "prefer HTMLTableCellElement",
-                "exposed": "Window"
-            },
-            "HTMLTableHeaderCellElement": {
-                "name": "HTMLTableHeaderCellElement",
-                "extends": "HTMLTableCellElement",
-                "noInterfaceObject": true,
-                "deprecated": "prefer HTMLTableCellElement",
-                "exposed": "Window"
-            },
-            "HTMLDocument": {
-                "name": "HTMLDocument",
-                "extends": "Document",
-                "exposed": "Window"
             },
             "HTMLMediaElement": {
                 "events": {
@@ -382,27 +339,6 @@
                 "deprecated": true,
                 "extends": "DOMRect",
                 "noInterfaceObject": true
-            },
-            /*
-              Keeping EventListener and EventListenerObject isn't the most elegant way to handle
-              the event listeners, but we need to keep the EventListener as an extendable interface
-              for libraries like angular.
-            */
-            "EventListener": {
-                "name": "EventListener",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        // This is a hack to add a call signature, but I think it's reasonable
-                        // as it means we don't have to add a call signatures section to the
-                        // emitter for this one case.
-                        "callable": {
-                            "overrideSignatures": [
-                                "(evt: Event): void"
-                            ]
-                        }
-                    }
-                }
             },
             "EventListenerObject": {
                 "name": "EventListenerObject",
@@ -698,16 +634,6 @@
                         "new(message?: string): RuntimeError",
                         "(message?: string): RuntimeError"
                     ]
-                }
-            },
-            "SVGStyleElement": {
-                "properties": {
-                    "property": {
-                        "disabled": {
-                            "name": "disabled",
-                            "type": "boolean"
-                        }
-                    }
                 }
             },
             "LinkError": {

@@ -137,6 +137,7 @@ export interface CompilerBehavior {
   useIteratorObject?: boolean;
   allowUnrelatedSetterType?: boolean;
   useGenericTypedArrays?: boolean;
+  includeIterable?: boolean;
 }
 
 export function emitWebIdl(
@@ -145,6 +146,14 @@ export function emitWebIdl(
   iterator: "" | "sync" | "async",
   compilerBehavior: CompilerBehavior,
 ): string {
+  if (compilerBehavior.includeIterable && iterator !== "") {
+    return [
+      "// This file's contents are now included in the main types file.",
+      "// The file has been left for backward compatibility.",
+      "",
+    ].join("\n");
+  }
+
   // Global print target
   const printer = createTextWriter("\n");
 
@@ -244,6 +253,13 @@ export function emitWebIdl(
     case "async":
       return emitES2018DomAsyncIterators();
     default:
+      if (compilerBehavior.includeIterable) {
+        return [
+          emit(),
+          emitES6DomIterators(),
+          emitES2018DomAsyncIterators(),
+        ].join("\n\n");
+      }
       return emit();
   }
 
@@ -272,8 +288,11 @@ export function emitWebIdl(
 
   function getExtendList(iName: string): string[] {
     const i = allInterfacesMap[iName];
-    if (!i || !i.extends || i.extends === "Object") return [];
-    else return getExtendList(i.extends).concat(i.extends);
+    if (!i || !i.extends || i.extends === "Object") {
+      return [];
+    } else {
+      return getExtendList(i.extends).concat(i.extends);
+    }
   }
 
   function getImplementList(iName: string) {
@@ -361,8 +380,9 @@ export function emitWebIdl(
     if (obj.overrideType) {
       return obj.nullable ? makeNullable(obj.overrideType) : obj.overrideType;
     }
-    if (!obj.type)
+    if (!obj.type) {
       throw new Error("Missing 'type' field in " + JSON.stringify(obj));
+    }
     let type = convertDomTypeToTsTypeWorker(obj, forReturn);
     if (type === "Promise<undefined>") {
       type = "Promise<void>";
@@ -472,17 +492,22 @@ export function emitWebIdl(
     if (baseTypeConversionMap.has(objDomType)) {
       return baseTypeConversionMap.get(objDomType)!;
     }
-    // Name of an interface / enum / dict. Just return itself
+    if (allInterfacesMap[objDomType]) {
+      return allInterfacesMap[objDomType].replaceReference ?? objDomType;
+    }
+    // Name of an alias / callback / enum / dict. Just return itself
     if (
-      allInterfacesMap[objDomType] ||
       allLegacyWindowAliases.includes(objDomType) ||
       allCallbackFunctionsMap[objDomType] ||
       allDictionariesMap[objDomType] ||
       allEnumsMap[objDomType]
-    )
+    ) {
       return objDomType;
+    }
     // Name of a type alias. Just return itself
-    if (allTypedefsMap[objDomType]) return objDomType;
+    if (allTypedefsMap[objDomType]) {
+      return objDomType;
+    }
 
     throw new Error("Unknown DOM type: " + objDomType);
   }
@@ -503,9 +528,15 @@ export function emitWebIdl(
   function nameWithForwardedTypes(i: Browser.Interface) {
     const typeParameters = i.typeParameters;
 
-    if (i.overrideThis) return i.overrideThis;
-    if (!typeParameters) return i.name;
-    if (!typeParameters.length) return i.name;
+    if (i.overrideThis) {
+      return i.overrideThis;
+    }
+    if (!typeParameters) {
+      return i.name;
+    }
+    if (!typeParameters.length) {
+      return i.name;
+    }
 
     return `${i.name}<${typeParameters.map((t) => t.name)}>`;
   }
@@ -610,6 +641,19 @@ export function emitWebIdl(
       printer.printLine(
         `getElementsByTagName(${paramName}: string): HTMLCollectionOf<Element>;`,
       );
+    }
+  }
+
+  /// Emit overloads for the matches method
+  function emitMatchesOverloads(m: Browser.Method) {
+    if (matchParamMethodSignature(m, "matches", "boolean", "string")) {
+      const paramName = m.signature[0].param![0].name;
+      for (const mapName of tagNameMapNames) {
+        printer.printLine(
+          `matches<K extends keyof ${mapName}>(${paramName}: K): this is ${mapName}[K];`,
+        );
+      }
+      printer.printLine(`matches(${paramName}: string): boolean;`);
     }
   }
 
@@ -752,7 +796,7 @@ export function emitWebIdl(
   }
 
   function emitCallBackInterface(i: Browser.Interface) {
-    const methods = mapToArray(i.methods.method);
+    const methods = mapToArray(i.methods?.method);
     const m = methods[0];
     const overload = m.signature[0];
     const paramsString = overload.param ? paramsToString(overload.param) : "";
@@ -939,7 +983,9 @@ export function emitWebIdl(
       comments.push("Available only in secure contexts.");
     }
     if (entity.mdnUrl) {
-      if (comments.length > 0) comments.push("");
+      if (comments.length > 0) {
+        comments.push("");
+      }
       comments.push(`[MDN Reference](${entity.mdnUrl})`);
     }
 
@@ -988,6 +1034,8 @@ export function emitWebIdl(
         return emitCreateEventOverloads(m);
       case "getElementsByTagName":
         return emitGetElementsByTagNameOverloads(m);
+      case "matches":
+        return emitMatchesOverloads(m);
       case "querySelector":
         return emitQuerySelectorOverloads(m);
       case "querySelectorAll":
@@ -1269,6 +1317,13 @@ export function emitWebIdl(
       return extendConflictsBaseTypes[iName] ? `${iName}Base` : iName;
     }
 
+    function processExtends(iName: string) {
+      if (allInterfacesMap[iName]?.forward) {
+        return allInterfacesMap[iName].forward;
+      }
+      return processIName(iName);
+    }
+
     function processMixinName(mixinName: string) {
       if (allInterfacesMap[mixinName].typeParameters?.length === 1) {
         return `${mixinName}<${i.name}>`;
@@ -1276,7 +1331,7 @@ export function emitWebIdl(
       return mixinName;
     }
 
-    const processedIName = processIName(i.name);
+    const processedIName = i.forward ?? processIName(i.name);
 
     if (processedIName !== i.name) {
       printer.printLineToStack(
@@ -1296,7 +1351,7 @@ export function emitWebIdl(
     const finalExtends = [i.extends || "Object"]
       .concat(getImplementList(i.name).map(processMixinName))
       .filter((i) => i !== "Object")
-      .map(processIName);
+      .map(processExtends);
 
     if (finalExtends.length) {
       printer.print(` extends ${assertUnique(finalExtends).join(", ")}`);
@@ -1343,30 +1398,34 @@ export function emitWebIdl(
             mTypes.length === 0 &&
             amTypes.length === 1 &&
             pTypes.length === 0
-          )
+          ) {
             return amTypes[0] === sig.type;
+          }
           if (
             mTypes.length === 1 &&
             amTypes.length === 1 &&
             pTypes.length === 0
-          )
+          ) {
             return mTypes[0] === amTypes[0] && amTypes[0] === sig.type;
+          }
           if (
             mTypes.length === 0 &&
             amTypes.length === 1 &&
             pTypes.length === 1
-          )
+          ) {
             return amTypes[0] === pTypes[0] && amTypes[0] === sig.type;
+          }
           if (
             mTypes.length === 1 &&
             amTypes.length === 1 &&
             pTypes.length === 1
-          )
+          ) {
             return (
               mTypes[0] === amTypes[0] &&
               amTypes[0] === pTypes[0] &&
               amTypes[0] === sig.type
             );
+          }
         }
       }
     }
@@ -1442,6 +1501,14 @@ export function emitWebIdl(
     printer.decreaseIndent();
     printer.printLine("}");
     printer.printLine("");
+
+    if (i.forward) {
+      emitInterface({
+        name: i.name,
+        extends: i.forwardExtends,
+        constructor: undefined,
+      });
+    }
 
     if (!printer.stackIsEmpty()) {
       printer.printStackContent();
@@ -1564,6 +1631,13 @@ export function emitWebIdl(
 
   function emit() {
     printer.reset();
+
+    if (compilerBehavior.includeIterable) {
+      printer.printLine(`/// <reference lib="es2015" />`);
+      printer.printLine(`/// <reference lib="es2018.asynciterable" />`);
+      printer.printLine("");
+    }
+
     printer.printLine("/////////////////////////////");
     printer.printLine(`/// ${global} APIs`);
     printer.printLine("/////////////////////////////");
@@ -1618,7 +1692,9 @@ export function emitWebIdl(
   }
 
   function emitSelfIterator(i: Browser.Interface) {
-    if (!compilerBehavior.useIteratorObject) return;
+    if (!compilerBehavior.useIteratorObject) {
+      return;
+    }
     const async = i.iterator?.kind === "async_iterable";
     const name = getName(i);
     const iteratorBaseType = `${async ? "Async" : ""}IteratorObject`;
@@ -1714,10 +1790,13 @@ export function emitWebIdl(
         isIndexedPropertyGetter,
       );
 
-      if (anonymousGetter) return anonymousGetter;
-      else if (i.methods)
+      if (anonymousGetter) {
+        return anonymousGetter;
+      } else if (i.methods) {
         return mapToArray(i.methods.method).find(isIndexedPropertyGetter);
-      else return undefined;
+      } else {
+        return undefined;
+      }
     }
 
     function getIteratorSubtypes() {
