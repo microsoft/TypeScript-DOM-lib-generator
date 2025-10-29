@@ -413,7 +413,7 @@ declare var CustomEvent: {
  */
 interface DOMException extends Error {
     /**
-     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or 0 if none match.
+     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or `0` if none match.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
@@ -859,7 +859,7 @@ declare var PromiseRejectionEvent: {
  */
 interface ReadableByteStreamController {
     /**
-     * The **`byobRequest`** read-only property of the ReadableByteStreamController interface returns the current BYOB request, or null if there are no pending requests.
+     * The **`byobRequest`** read-only property of the ReadableByteStreamController interface returns the current BYOB request, or `null` if there are no pending requests.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest)
      */

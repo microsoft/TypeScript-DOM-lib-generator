@@ -20,6 +20,14 @@ const paths: Record<string, string[]> = {
   "webassembly-static-method": ["methods", "method"],
 };
 
+const syntax = {
+  true: "`true`",
+  false: "`false`",
+  "0": "`0`",
+  null: "`null`",
+  "as UTF-8, ISO-8859-2, or `GBK": "as `UTF-8`, `ISO-8859-2`, or `GBK`.",
+};
+
 function extractSlug(slug: string): string[] {
   for (const subdirectory of subdirectories) {
     if (!slug.toLowerCase().startsWith(subdirectory)) {
@@ -62,17 +70,21 @@ function generateComment(summary: string, name: string): string {
   // Escape special regex characters in the name
   const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-  return summary
-    .replace(/\n/g, " ") // remove newlines
+  let result = summary.replace(/\n/g, " "); // remove newlines
+
+  for (const [word, formatted] of Object.entries(syntax)) {
+    result = result.replace(new RegExp(`\\b${word}\\b`, "g"), formatted);
+  }
+
+  result = result
     .replace(
       // Match optional preceding identifier + dot OR just the name itself
       new RegExp(`(?:\\b\\w+\\.)?${escapedName}(\\(\\))?`),
       (match) => `**\`${match}\`**`,
     )
     .replace(/"/g, "'")
-    .replace(/\btrue\b/g, "`true`")
-    .replace(/\bfalse\b/g, "`false`")
     .trim();
+  return result;
 }
 
 export async function generateDescriptions(): Promise<{

@@ -1431,7 +1431,7 @@ declare var CSSNumericValue: {
  */
 interface CSSPerspective extends CSSTransformComponent {
     /**
-     * The **`length`** property of the CSSPerspective interface sets the distance from z=0.
+     * The **`length`** property of the CSSPerspective interface sets the distance from z=`0`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective/length)
      */
@@ -2407,7 +2407,7 @@ declare var CustomEvent: {
  */
 interface DOMException extends Error {
     /**
-     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or 0 if none match.
+     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or `0` if none match.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
@@ -2539,13 +2539,13 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     invertSelf(): DOMMatrix;
     /**
-     * The **`multiplySelf()`** method of the DOMMatrix interface multiplies a matrix by the otherMatrix parameter, computing the dot product of the original matrix and the specified matrix: A⋅B. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is 0 except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
+     * The **`multiplySelf()`** method of the DOMMatrix interface multiplies a matrix by the otherMatrix parameter, computing the dot product of the original matrix and the specified matrix: A⋅B. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is `0` except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/multiplySelf)
      */
     multiplySelf(other?: DOMMatrixInit): DOMMatrix;
     /**
-     * The **`preMultiplySelf()`** method of the DOMMatrix interface modifies the matrix by pre-multiplying it with the specified DOMMatrix. This is equivalent to the dot product B⋅A, where matrix A is the source matrix and B is the matrix given as an input to the method. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is 0 except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
+     * The **`preMultiplySelf()`** method of the DOMMatrix interface modifies the matrix by pre-multiplying it with the specified DOMMatrix. This is equivalent to the dot product B⋅A, where matrix A is the source matrix and B is the matrix given as an input to the method. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is `0` except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/preMultiplySelf)
      */
@@ -2557,7 +2557,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     rotateAxisAngleSelf(x?: number, y?: number, z?: number, angle?: number): DOMMatrix;
     /**
-     * The **`rotateFromVectorSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by rotating the matrix by the angle between the specified vector and (1, 0). The rotation angle is determined by the angle between the vector (1,0)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both 0, the angle is specified as 0, and the matrix is not altered.
+     * The **`rotateFromVectorSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by rotating the matrix by the angle between the specified vector and (1, `0`). The rotation angle is determined by the angle between the vector (1,`0`)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both `0`, the angle is specified as `0`, and the matrix is not altered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/rotateFromVectorSelf)
      */
@@ -2569,13 +2569,13 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     rotateSelf(rotX?: number, rotY?: number, rotZ?: number): DOMMatrix;
     /**
-     * The **`scale3dSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor to all three axes, centered on the given origin, with a default origin of (0, 0, 0), returning the 3D-scaled matrix.
+     * The **`scale3dSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor to all three axes, centered on the given origin, with a default origin of (`0`, `0`, `0`), returning the 3D-scaled matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scale3dSelf)
      */
     scale3dSelf(scale?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     /**
-     * The **`scaleSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor, centered on the given origin, with a default origin of (0, 0), returning the scaled matrix.
+     * The **`scaleSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor, centered on the given origin, with a default origin of (`0`, `0`), returning the scaled matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scaleSelf)
      */
@@ -2593,7 +2593,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     skewYSelf(sy?: number): DOMMatrix;
     /**
-     * The **`translateSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix. It applies the specified vectors and returns the updated matrix. The default vector is [0, 0, 0].
+     * The **`translateSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix. It applies the specified vectors and returns the updated matrix. The default vector is [`0`, `0`, `0`].
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/translateSelf)
      */
@@ -2674,13 +2674,13 @@ interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly m44: number;
     /**
-     * The **`flipX()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the x-axis. This is equivalent to multiplying the matrix by DOMMatrix(-1, 0, 0, 1, 0, 0). The original matrix is not modified.
+     * The **`flipX()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the x-axis. This is equivalent to multiplying the matrix by DOMMatrix(-1, `0`, `0`, 1, `0`, `0`). The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/flipX)
      */
     flipX(): DOMMatrix;
     /**
-     * The **`flipY()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the y-axis. This is equivalent to multiplying the matrix by DOMMatrix(1, 0, 0, -1, 0, 0). The original matrix is not modified.
+     * The **`flipY()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the y-axis. This is equivalent to multiplying the matrix by DOMMatrix(1, `0`, `0`, -1, `0`, `0`). The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/flipY)
      */
@@ -2692,7 +2692,7 @@ interface DOMMatrixReadOnly {
      */
     inverse(): DOMMatrix;
     /**
-     * The **`multiply()`** method of the DOMMatrixReadOnly interface creates and returns a new matrix which is the dot product of the matrix and the otherMatrix parameter. If otherMatrix is omitted, the matrix is multiplied by a matrix in which every element is 0 except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1. The original matrix is not modified.
+     * The **`multiply()`** method of the DOMMatrixReadOnly interface creates and returns a new matrix which is the dot product of the matrix and the otherMatrix parameter. If otherMatrix is omitted, the matrix is multiplied by a matrix in which every element is `0` except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1. The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/multiply)
      */
@@ -2710,7 +2710,7 @@ interface DOMMatrixReadOnly {
      */
     rotateAxisAngle(x?: number, y?: number, z?: number, angle?: number): DOMMatrix;
     /**
-     * The **`rotateFromVector()`** method of the DOMMatrixReadOnly interface is returns a new DOMMatrix created by rotating the source matrix by the angle between the specified vector and (1, 0). The rotation angle is determined by the angle between the vector (1,0)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both 0, the angle is specified as 0. The original matrix is not altered.
+     * The **`rotateFromVector()`** method of the DOMMatrixReadOnly interface is returns a new DOMMatrix created by rotating the source matrix by the angle between the specified vector and (1, `0`). The rotation angle is determined by the angle between the vector (1,`0`)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both `0`, the angle is specified as `0`. The original matrix is not altered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/rotateFromVector)
      */
@@ -2722,7 +2722,7 @@ interface DOMMatrixReadOnly {
      */
     scale(scaleX?: number, scaleY?: number, scaleZ?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     /**
-     * The **`scale3d()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the result of a 3D scale transform being applied to the matrix. It returns a new DOMMatrix created by scaling the source 3d matrix by the given scale factor centered on the origin point specified by the origin parameters, with a default origin of (0, 0, 0). The original matrix is not modified.
+     * The **`scale3d()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the result of a 3D scale transform being applied to the matrix. It returns a new DOMMatrix created by scaling the source 3d matrix by the given scale factor centered on the origin point specified by the origin parameters, with a default origin of (`0`, `0`, `0`). The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/scale3d)
      */
@@ -4201,7 +4201,7 @@ interface Headers {
      */
     delete(name: string): void;
     /**
-     * The **`get()`** method of the Headers interface returns a byte string of all the values of a header within a Headers object with a given name. If the requested header doesn't exist in the Headers object, it returns null.
+     * The **`get()`** method of the Headers interface returns a byte string of all the values of a header within a Headers object with a given name. If the requested header doesn't exist in the Headers object, it returns `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/get)
      */
@@ -4263,7 +4263,7 @@ interface IDBCursor {
      */
     readonly request: IDBRequest;
     /**
-     * The **`source`** read-only property of the IDBCursor interface returns the IDBObjectStore or IDBIndex that the cursor is iterating over. This function never returns null or throws an exception, even if the cursor is currently being iterated, has iterated past its end, or its transaction is not active.
+     * The **`source`** read-only property of the IDBCursor interface returns the IDBObjectStore or IDBIndex that the cursor is iterating over. This function never returns `null` or throws an exception, even if the cursor is currently being iterated, has iterated past its end, or its transaction is not active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursor/source)
      */
@@ -4287,7 +4287,7 @@ interface IDBCursor {
      */
     continuePrimaryKey(key: IDBValidKey, primaryKey: IDBValidKey): void;
     /**
-     * The **`delete()`** method of the IDBCursor interface returns an IDBRequest object, and, in a separate thread, deletes the record at the cursor's position, without changing the cursor's position. Once the record is deleted, the cursor's value is set to null.
+     * The **`delete()`** method of the IDBCursor interface returns an IDBRequest object, and, in a separate thread, deletes the record at the cursor's position, without changing the cursor's position. Once the record is deleted, the cursor's value is set to `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursor/delete)
      */
@@ -4441,7 +4441,7 @@ declare var IDBFactory: {
  */
 interface IDBIndex {
     /**
-     * The **`keyPath`** property of the IDBIndex interface returns the key path of the current index. If null, this index is not auto-populated.
+     * The **`keyPath`** property of the IDBIndex interface returns the key path of the current index. If `null`, this index is not auto-populated.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/keyPath)
      */
@@ -4773,7 +4773,7 @@ interface IDBRequest<T = any> extends EventTarget {
      */
     readonly result: T;
     /**
-     * The **`source`** read-only property of the IDBRequest interface returns the source of the request, such as an Index or an object store. If no source exists (such as when calling IDBFactory.open), it returns null.
+     * The **`source`** read-only property of the IDBRequest interface returns the source of the request, such as an Index or an object store. If no source exists (such as when calling IDBFactory.open), it returns `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/source)
      */
@@ -5610,7 +5610,7 @@ interface OffscreenCanvas extends EventTarget {
      */
     convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
     /**
-     * The **`OffscreenCanvas.getContext()`** method returns a drawing context for an offscreen canvas, or null if the context identifier is not supported, or the offscreen canvas has already been set to a different context mode.
+     * The **`OffscreenCanvas.getContext()`** method returns a drawing context for an offscreen canvas, or `null` if the context identifier is not supported, or the offscreen canvas has already been set to a different context mode.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas/getContext)
      */
@@ -6029,7 +6029,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      */
     readonly transferSize: number;
     /**
-     * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return 0.
+     * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return `0`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/workerStart)
      */
@@ -6060,7 +6060,7 @@ interface PerformanceServerTiming {
      */
     readonly description: string;
     /**
-     * The **`duration`** read-only property returns a double that contains the server-specified metric duration, or the value 0.0.
+     * The **`duration`** read-only property returns a double that contains the server-specified metric duration, or the value `0`.`0`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/duration)
      */
@@ -6317,7 +6317,7 @@ interface PushSubscription {
      */
     readonly endpoint: string;
     /**
-     * The **`expirationTime`** read-only property of the PushSubscription interface returns a DOMHighResTimeStamp of the subscription expiration time associated with the push subscription, if there is one, or null otherwise.
+     * The **`expirationTime`** read-only property of the PushSubscription interface returns a DOMHighResTimeStamp of the subscription expiration time associated with the push subscription, if there is one, or `null` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription/expirationTime)
      */
@@ -6397,7 +6397,7 @@ declare var PushSubscriptionOptions: {
  */
 interface ReadableByteStreamController {
     /**
-     * The **`byobRequest`** read-only property of the ReadableByteStreamController interface returns the current BYOB request, or null if there are no pending requests.
+     * The **`byobRequest`** read-only property of the ReadableByteStreamController interface returns the current BYOB request, or `null` if there are no pending requests.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest)
      */
@@ -6892,7 +6892,7 @@ interface SecurityPolicyViolationEvent extends Event {
      */
     readonly originalPolicy: string;
     /**
-     * The **`referrer`** read-only property of the SecurityPolicyViolationEvent interface is a string representing the referrer for the resources whose Content Security Policy (CSP) was violated. This will be a URL or null.
+     * The **`referrer`** read-only property of the SecurityPolicyViolationEvent interface is a string representing the referrer for the resources whose Content Security Policy (CSP) was violated. This will be a URL or `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent/referrer)
      */
@@ -6985,7 +6985,7 @@ interface ServiceWorkerContainerEventMap {
  */
 interface ServiceWorkerContainer extends EventTarget {
     /**
-     * The **`controller`** read-only property of the ServiceWorkerContainer interface represents the active service worker controlling the current page (associated with this ServiceWorkerContainer), or null if the page has no active or activating service worker.
+     * The **`controller`** read-only property of the ServiceWorkerContainer interface represents the active service worker controlling the current page (associated with this ServiceWorkerContainer), or `null` if the page has no active or activating service worker.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/controller)
      */
@@ -7130,7 +7130,7 @@ interface ServiceWorkerRegistrationEventMap {
  */
 interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
     /**
-     * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is activating or activated. This property is initially set to null.
+     * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is activating or activated. This property is initially set to `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/active)
      */
@@ -7142,7 +7142,7 @@ interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
      */
     readonly cookies: CookieStoreManager;
     /**
-     * The **`installing`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installing. This property is initially set to null.
+     * The **`installing`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installing. This property is initially set to `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/installing)
      */
@@ -7168,7 +7168,7 @@ interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
      */
     readonly updateViaCache: ServiceWorkerUpdateViaCache;
     /**
-     * The **`waiting`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installed. This property is initially set to null.
+     * The **`waiting`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installed. This property is initially set to `null`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/waiting)
      */
@@ -7859,7 +7859,7 @@ interface URLPattern {
      */
     readonly username: string;
     /**
-     * The **`exec()`** method of the URLPattern interface takes a URL or object of URL parts, and returns either an object containing the results of matching the URL to the pattern, or null if the URL does not match the pattern.
+     * The **`exec()`** method of the URLPattern interface takes a URL or object of URL parts, and returns either an object containing the results of matching the URL to the pattern, or `null` if the URL does not match the pattern.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/exec)
      */
@@ -8191,7 +8191,7 @@ interface WEBGL_multi_draw {
 }
 
 /**
- * The **`WebGL2RenderingContext`** interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML <canvas> element.
+ * The **`WebGL2RenderingContext`** interface provides the OpenGL ES 3.`0` rendering context for the drawing surface of an HTML <canvas> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
  */
@@ -9380,7 +9380,7 @@ declare var WebGLRenderbuffer: {
 };
 
 /**
- * The **`WebGLRenderingContext`** interface provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML <canvas> element.
+ * The **`WebGLRenderingContext`** interface provides an interface to the OpenGL ES 2.`0` graphics rendering context for the drawing surface of an HTML <canvas> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
  */
@@ -10677,7 +10677,7 @@ interface WebTransportError extends DOMException {
      */
     readonly source: WebTransportErrorSource;
     /**
-     * The **`streamErrorCode`** read-only property of the WebTransportError interface returns a number in the range 0-255 indicating the application protocol error code for this error, or null if one is not available.
+     * The **`streamErrorCode`** read-only property of the WebTransportError interface returns a number in the range `0`-255 indicating the application protocol error code for this error, or `null` if one is not available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportError/streamErrorCode)
      */
