@@ -2841,7 +2841,7 @@ interface AbortSignalEventMap {
  */
 interface AbortSignal extends EventTarget {
     /**
-     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (true) or not (false).
+     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (`true`) or not (`false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/aborted)
      */
@@ -2896,7 +2896,7 @@ declare var AbortSignal: {
  */
 interface AbstractRange {
     /**
-     * The read-only **`collapsed`** property of the AbstractRange interface returns true if the range's start position and end position are the same.
+     * The read-only **`collapsed`** property of the AbstractRange interface returns `true` if the range's start position and end position are the same.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/collapsed)
      */
@@ -3321,7 +3321,7 @@ interface Attr extends Node {
      */
     readonly prefix: string | null;
     /**
-     * The read-only **`specified`** property of the Attr interface always returns true.
+     * The read-only **`specified`** property of the Attr interface always returns `true`.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr/specified)
@@ -3423,7 +3423,7 @@ interface AudioBufferSourceNode extends AudioScheduledSourceNode {
      */
     loop: boolean;
     /**
-     * The **`loopEnd`** property of the AudioBufferSourceNode interface specifies is a floating point number specifying, in seconds, at what offset into playing the AudioBuffer playback should loop back to the time indicated by the loopStart property. This is only used if the loop property is true.
+     * The **`loopEnd`** property of the AudioBufferSourceNode interface specifies is a floating point number specifying, in seconds, at what offset into playing the AudioBuffer playback should loop back to the time indicated by the loopStart property. This is only used if the loop property is `true`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/loopEnd)
      */
@@ -4231,7 +4231,7 @@ declare var AuthenticatorResponse: {
  */
 interface BarProp {
     /**
-     * The **`visible`** read-only property of the BarProp interface returns true if the user interface element it represents is visible.
+     * The **`visible`** read-only property of the BarProp interface returns `true` if the user interface element it represents is visible.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BarProp/visible)
      */
@@ -5375,7 +5375,7 @@ interface CSSNumericValue extends CSSStyleValue {
      */
     div(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`equals()`** method of the CSSNumericValue interface returns a boolean indicating whether the passed value are strictly equal. To return a value of true, all passed values must be of the same type and value and must be in the same order. This allows structural equality to be tested quickly.
+     * The **`equals()`** method of the CSSNumericValue interface returns a boolean indicating whether the passed value are strictly equal. To return a value of `true`, all passed values must be of the same type and value and must be in the same order. This allows structural equality to be tested quickly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/equals)
      */
@@ -7753,7 +7753,7 @@ interface Cache {
      */
     addAll(requests: RequestInfo[]): Promise<void>;
     /**
-     * The **`delete()`** method of the Cache interface finds the Cache entry whose key is the request, and if found, deletes the Cache entry and returns a Promise that resolves to true. If no Cache entry is found, it resolves to false.
+     * The **`delete()`** method of the Cache interface finds the Cache entry whose key is the request, and if found, deletes the Cache entry and returns a Promise that resolves to `true`. If no Cache entry is found, it resolves to `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache/delete)
      */
@@ -7797,13 +7797,13 @@ declare var Cache: {
  */
 interface CacheStorage {
     /**
-     * The **`delete()`** method of the CacheStorage interface finds the Cache object matching the cacheName, and if found, deletes the Cache object and returns a Promise that resolves to true. If no Cache object is found, it resolves to false.
+     * The **`delete()`** method of the CacheStorage interface finds the Cache object matching the cacheName, and if found, deletes the Cache object and returns a Promise that resolves to `true`. If no Cache object is found, it resolves to `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/delete)
      */
     delete(cacheName: string): Promise<boolean>;
     /**
-     * The **`has()`** method of the CacheStorage interface returns a Promise that resolves to true if a Cache object matches the cacheName.
+     * The **`has()`** method of the CacheStorage interface returns a Promise that resolves to `true` if a Cache object matches the cacheName.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/has)
      */
@@ -8364,7 +8364,7 @@ declare var ClipboardItem: {
     prototype: ClipboardItem;
     new(items: Record<string, string | Blob | PromiseLike<string | Blob>>, options?: ClipboardItemOptions): ClipboardItem;
     /**
-     * The **`supports()`** static method of the ClipboardItem interface returns true if the given MIME type is supported by the clipboard, and false otherwise.
+     * The **`supports()`** static method of the ClipboardItem interface returns `true` if the given MIME type is supported by the clipboard, and `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/supports_static)
      */
@@ -8390,7 +8390,7 @@ interface CloseEvent extends Event {
      */
     readonly reason: string;
     /**
-     * The **`wasClean`** read-only property of the CloseEvent interface returns true if the connection closed cleanly.
+     * The **`wasClean`** read-only property of the CloseEvent interface returns `true` if the connection closed cleanly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent/wasClean)
      */
@@ -8486,7 +8486,7 @@ declare var ConstantSourceNode: {
  */
 interface ContentVisibilityAutoStateChangeEvent extends Event {
     /**
-     * The **`skipped`** read-only property of the ContentVisibilityAutoStateChangeEvent interface returns true if the user agent skips the element's contents, or false otherwise.
+     * The **`skipped`** read-only property of the ContentVisibilityAutoStateChangeEvent interface returns `true` if the user agent skips the element's contents, or `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped)
      */
@@ -8979,7 +8979,7 @@ interface DOMImplementation {
      */
     createHTMLDocument(title?: string): Document;
     /**
-     * The **`DOMImplementation.hasFeature()`** method returns a boolean flag indicating if a given feature is supported. It is deprecated and modern browsers return true in all cases.
+     * The **`DOMImplementation.hasFeature()`** method returns a boolean flag indicating if a given feature is supported. It is deprecated and modern browsers return `true` in all cases.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/hasFeature)
@@ -9043,7 +9043,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix#instance_properties) */
     m44: number;
     /**
-     * The **`invertSelf()`** method of the DOMMatrix interface inverts the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to false.
+     * The **`invertSelf()`** method of the DOMMatrix interface inverts the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/invertSelf)
      */
@@ -9152,13 +9152,13 @@ interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly f: number;
     /**
-     * The readonly **`is2D`** property of the DOMMatrixReadOnly interface is a Boolean flag that is true when the matrix is 2D. The value is true if the matrix was initialized as a 2D matrix and only 2D transformation operations were applied. Otherwise, the matrix is defined in 3D, and is2D is false.
+     * The readonly **`is2D`** property of the DOMMatrixReadOnly interface is a Boolean flag that is `true` when the matrix is 2D. The value is `true` if the matrix was initialized as a 2D matrix and only 2D transformation operations were applied. Otherwise, the matrix is defined in 3D, and is2D is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/is2D)
      */
     readonly is2D: boolean;
     /**
-     * The readonly **`isIdentity`** property of the DOMMatrixReadOnly interface is a Boolean whose value is true if the matrix is the identity matrix.
+     * The readonly **`isIdentity`** property of the DOMMatrixReadOnly interface is a Boolean whose value is `true` if the matrix is the identity matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/isIdentity)
      */
@@ -9208,7 +9208,7 @@ interface DOMMatrixReadOnly {
      */
     flipY(): DOMMatrix;
     /**
-     * The **`inverse()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the inverse of the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to false. The original matrix is not changed.
+     * The **`inverse()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the inverse of the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to `false`. The original matrix is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/inverse)
      */
@@ -9697,7 +9697,7 @@ interface DOMTokenList {
      */
     add(...tokens: string[]): void;
     /**
-     * The **`contains()`** method of the DOMTokenList interface returns a boolean value — true if the underlying list contains the given token, otherwise false.
+     * The **`contains()`** method of the DOMTokenList interface returns a boolean value — `true` if the underlying list contains the given token, otherwise `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/contains)
      */
@@ -9715,19 +9715,19 @@ interface DOMTokenList {
      */
     remove(...tokens: string[]): void;
     /**
-     * The **`replace()`** method of the DOMTokenList interface replaces an existing token with a new token. If the first token doesn't exist, replace() returns false immediately, without adding the new token to the token list.
+     * The **`replace()`** method of the DOMTokenList interface replaces an existing token with a new token. If the first token doesn't exist, replace() returns `false` immediately, without adding the new token to the token list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/replace)
      */
     replace(token: string, newToken: string): boolean;
     /**
-     * The **`supports()`** method of the DOMTokenList interface returns true if a given token is in the associated attribute's supported tokens. This method is intended to support feature detection.
+     * The **`supports()`** method of the DOMTokenList interface returns `true` if a given token is in the associated attribute's supported tokens. This method is intended to support feature detection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/supports)
      */
     supports(token: string): boolean;
     /**
-     * The **`toggle()`** method of the DOMTokenList interface removes an existing token from the list and returns false. If the token doesn't exist it's added and the function returns true.
+     * The **`toggle()`** method of the DOMTokenList interface removes an existing token from the list and returns `false`. If the token doesn't exist it's added and the function returns `true`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/toggle)
      */
@@ -11486,7 +11486,7 @@ interface ElementInternals extends ARIAMixin {
      */
     readonly validity: ValidityState;
     /**
-     * The **`willValidate`** read-only property of the ElementInternals interface returns true if the element is a submittable element that is a candidate for constraint validation.
+     * The **`willValidate`** read-only property of the ElementInternals interface returns `true` if the element is a submittable element that is a candidate for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/willValidate)
      */
@@ -11664,7 +11664,7 @@ interface Event {
      */
     readonly bubbles: boolean;
     /**
-     * The **`cancelBubble`** property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to true before returning from an event handler prevents propagation of the event. In later implementations, setting this to false does nothing. See Browser compatibility for details.
+     * The **`cancelBubble`** property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to `true` before returning from an event handler prevents propagation of the event. In later implementations, setting this to `false` does nothing. See Browser compatibility for details.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)
@@ -11701,7 +11701,7 @@ interface Event {
      */
     readonly eventPhase: number;
     /**
-     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is true when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and false when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to false in user agents.
+     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is `true` when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to `false` in user agents.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
      */
@@ -12195,13 +12195,13 @@ interface FileSystemEntry {
      */
     readonly fullPath: string;
     /**
-     * The read-only **`isDirectory`** property of the FileSystemEntry interface is true if the entry represents a directory (meaning it's a FileSystemDirectoryEntry) and false if it's not.
+     * The read-only **`isDirectory`** property of the FileSystemEntry interface is `true` if the entry represents a directory (meaning it's a FileSystemDirectoryEntry) and `false` if it's not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry/isDirectory)
      */
     readonly isDirectory: boolean;
     /**
-     * The read-only **`isFile`** property of the FileSystemEntry interface is true if the entry represents a file (meaning it's a FileSystemFileEntry) and false if it's not.
+     * The read-only **`isFile`** property of the FileSystemEntry interface is `true` if the entry represents a file (meaning it's a FileSystemFileEntry) and `false` if it's not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry/isFile)
      */
@@ -12482,7 +12482,7 @@ interface FontFaceSet extends EventTarget {
      */
     readonly status: FontFaceSetLoadStatus;
     /**
-     * The **`check()`** method of the FontFaceSet returns true if you can render some text using the given font specification without attempting to use any fonts in this FontFaceSet that are not yet fully loaded. This means you can use the font specification without causing a font swap.
+     * The **`check()`** method of the FontFaceSet returns `true` if you can render some text using the given font specification without attempting to use any fonts in this FontFaceSet that are not yet fully loaded. This means you can use the font specification without causing a font swap.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/check)
      */
@@ -12742,13 +12742,13 @@ declare var Gamepad: {
  */
 interface GamepadButton {
     /**
-     * The **`GamepadButton.pressed`** property of the GamepadButton interface returns a boolean indicating whether the button is currently pressed (true) or unpressed (false).
+     * The **`GamepadButton.pressed`** property of the GamepadButton interface returns a boolean indicating whether the button is currently pressed (`true`) or unpressed (`false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadButton/pressed)
      */
     readonly pressed: boolean;
     /**
-     * The **`touched`** property of the GamepadButton interface returns a boolean indicating whether a button capable of detecting touch is currently touched (true) or not touched (false).
+     * The **`touched`** property of the GamepadButton interface returns a boolean indicating whether a button capable of detecting touch is currently touched (`true`) or not touched (`false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadButton/touched)
      */
@@ -12874,7 +12874,7 @@ interface GeolocationCoordinates {
      */
     readonly altitudeAccuracy: number | null;
     /**
-     * The **`heading`** read-only property of the GeolocationCoordinates interface is a double representing the direction in which the device is traveling. This value, specified in degrees, indicates how far off from heading due north the device is. 0 degrees represents true north, and the direction is determined clockwise (which means that east is 90 degrees and west is 270 degrees). If GeolocationCoordinates.speed is 0 or the device is not able to provide heading information, heading is null.
+     * The **`heading`** read-only property of the GeolocationCoordinates interface is a double representing the direction in which the device is traveling. This value, specified in degrees, indicates how far off from heading due north the device is. 0 degrees represents `true` north, and the direction is determined clockwise (which means that east is 90 degrees and west is 270 degrees). If GeolocationCoordinates.speed is 0 or the device is not able to provide heading information, heading is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/heading)
      */
@@ -13682,13 +13682,13 @@ interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLButtonElement interface indicates whether the <button> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, including:
+     * The **`willValidate`** read-only property of the HTMLButtonElement interface indicates whether the <button> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, including:
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLButtonElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect. It always returns true if the <button> element's type is 'button' or 'reset', because such buttons are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLButtonElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect. It always returns `true` if the <button> element's type is 'button' or 'reset', because such buttons are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/checkValidity)
      */
@@ -14289,7 +14289,7 @@ interface HTMLFieldSetElement extends HTMLElement {
      */
     readonly type: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLFieldSetElement interface returns a string representing a localized message that describes the validation constraints that the <fieldset> control does not satisfy (if any). This is the empty string as <fieldset> elements are not candidates for constraint validation (HTMLFieldSetElement.willValidate is false).
+     * The **`validationMessage`** read-only property of the HTMLFieldSetElement interface returns a string representing a localized message that describes the validation constraints that the <fieldset> control does not satisfy (if any). This is the empty string as <fieldset> elements are not candidates for constraint validation (HTMLFieldSetElement.willValidate is `false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/validationMessage)
      */
@@ -14301,19 +14301,19 @@ interface HTMLFieldSetElement extends HTMLElement {
      */
     readonly validity: ValidityState;
     /**
-     * The **`willValidate`** read-only property of the HTMLFieldSetElement interface returns false, because <fieldset> elements are not candidates for constraint validation.
+     * The **`willValidate`** read-only property of the HTMLFieldSetElement interface returns `false`, because <fieldset> elements are not candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLFieldSetElement interface checks if the element is valid, but always returns true because <fieldset> elements are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLFieldSetElement interface checks if the element is valid, but always returns `true` because <fieldset> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/checkValidity)
      */
     checkValidity(): boolean;
     /**
-     * The **`reportValidity()`** method of the HTMLFieldSetElement interface performs the same validity checking steps as the checkValidity() method. It always returns true because <fieldset> elements are never candidates for constraint validation.
+     * The **`reportValidity()`** method of the HTMLFieldSetElement interface performs the same validity checking steps as the checkValidity() method. It always returns `true` because <fieldset> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/reportValidity)
      */
@@ -14455,7 +14455,7 @@ interface HTMLFormElement extends HTMLElement {
      */
     name: string;
     /**
-     * The **`noValidate`** property of the HTMLFormElement interface is a boolean value indicating if the <form> will bypass constraint validation when submitted. It reflects the <form> element's novalidate attribute; if the attribute present, the value is true.
+     * The **`noValidate`** property of the HTMLFormElement interface is a boolean value indicating if the <form> will bypass constraint validation when submitted. It reflects the <form> element's novalidate attribute; if the attribute present, the value is `true`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/noValidate)
      */
@@ -15225,7 +15225,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     placeholder: string;
     /**
-     * The **`readOnly`** property of the HTMLInputElement interface indicates that the user cannot modify the value of the <input>. It reflects the <input> element's readonly boolean attribute; returning true if the attribute is present and false when omitted.
+     * The **`readOnly`** property of the HTMLInputElement interface indicates that the user cannot modify the value of the <input>. It reflects the <input> element's readonly boolean attribute; returning `true` if the attribute is present and `false` when omitted.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/readOnly)
      */
@@ -15329,13 +15329,13 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     width: number;
     /**
-     * The **`willValidate`** read-only property of the HTMLInputElement interface indicates whether the <input> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, including:
+     * The **`willValidate`** read-only property of the HTMLInputElement interface indicates whether the <input> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, including:
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLInputElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
+     * The **`checkValidity()`** method of the HTMLInputElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/checkValidity)
      */
@@ -16233,7 +16233,7 @@ interface HTMLObjectElement extends HTMLElement {
      */
     useMap: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLObjectElement interface returns a string representing a localized message that describes the validation constraints that the control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (willValidate is false), or it satisfies its constraints.
+     * The **`validationMessage`** read-only property of the HTMLObjectElement interface returns a string representing a localized message that describes the validation constraints that the control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (willValidate is `false`), or it satisfies its constraints.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/validationMessage)
      */
@@ -16253,13 +16253,13 @@ interface HTMLObjectElement extends HTMLElement {
      */
     width: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLObjectElement interface returns false, because <object> elements are not candidates for constraint validation.
+     * The **`willValidate`** read-only property of the HTMLObjectElement interface returns `false`, because <object> elements are not candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLObjectElement interface checks if the element is valid, but always returns true because <object> elements are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLObjectElement interface checks if the element is valid, but always returns `true` because <object> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/checkValidity)
      */
@@ -16271,7 +16271,7 @@ interface HTMLObjectElement extends HTMLElement {
      */
     getSVGDocument(): Document | null;
     /**
-     * The **`reportValidity()`** method of the HTMLObjectElement interface performs the same validity checking steps as the checkValidity() method. It always returns true because <object> elements are never candidates for constraint validation.
+     * The **`reportValidity()`** method of the HTMLObjectElement interface performs the same validity checking steps as the checkValidity() method. It always returns `true` because <object> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/reportValidity)
      */
@@ -16329,7 +16329,7 @@ declare var HTMLOptGroupElement: {
  */
 interface HTMLOptionElement extends HTMLElement {
     /**
-     * The **`defaultSelected`** property of the HTMLOptionElement interface specifies the default selected state of the element. This property reflects the <option> element's selected attribute. The presence of the selected attribute sets the defaultSelected property to true.
+     * The **`defaultSelected`** property of the HTMLOptionElement interface specifies the default selected state of the element. This property reflects the <option> element's selected attribute. The presence of the selected attribute sets the defaultSelected property to `true`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/defaultSelected)
      */
@@ -16483,7 +16483,7 @@ interface HTMLOutputElement extends HTMLElement {
      */
     readonly type: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLOutputElement interface returns a string representing a localized message that describes the validation constraints that the <output> control does not satisfy (if any). This is the empty string as <output> elements are not candidates for constraint validation (HTMLOutputElement.willValidate is false).
+     * The **`validationMessage`** read-only property of the HTMLOutputElement interface returns a string representing a localized message that describes the validation constraints that the <output> control does not satisfy (if any). This is the empty string as <output> elements are not candidates for constraint validation (HTMLOutputElement.willValidate is `false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validationMessage)
      */
@@ -16501,19 +16501,19 @@ interface HTMLOutputElement extends HTMLElement {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLOutputElement interface returns false, because <output> elements are not candidates for constraint validation.
+     * The **`willValidate`** read-only property of the HTMLOutputElement interface returns `false`, because <output> elements are not candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLOutputElement interface checks if the element is valid, but always returns true because <output> elements are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLOutputElement interface checks if the element is valid, but always returns `true` because <output> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/checkValidity)
      */
     checkValidity(): boolean;
     /**
-     * The **`reportValidity()`** method of the HTMLOutputElement interface performs the same validity checking steps as the checkValidity() method. It always returns true because <output> elements are never candidates for constraint validation.
+     * The **`reportValidity()`** method of the HTMLOutputElement interface performs the same validity checking steps as the checkValidity() method. It always returns `true` because <output> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/reportValidity)
      */
@@ -16688,7 +16688,7 @@ declare var HTMLQuoteElement: {
  */
 interface HTMLScriptElement extends HTMLElement {
     /**
-     * The **`async`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the async property is set to true, the external script will be fetched in parallel to parsing and evaluated as soon as it is available. For module scripts, if the async property is set to true, the script and all their dependencies will be fetched in parallel to parsing and evaluated as soon as they are available.
+     * The **`async`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the async property is set to `true`, the external script will be fetched in parallel to parsing and evaluated as soon as it is available. For module scripts, if the async property is set to `true`, the script and all their dependencies will be fetched in parallel to parsing and evaluated as soon as they are available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/async)
      */
@@ -16709,7 +16709,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     crossOrigin: string | null;
     /**
-     * The **`defer`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the defer property is set to true, the external script will be executed after the document has been parsed, but before firing DOMContentLoaded event. For module scripts, the defer property has no effect.
+     * The **`defer`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the defer property is set to `true`, the external script will be executed after the document has been parsed, but before firing DOMContentLoaded event. For module scripts, the defer property has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/defer)
      */
@@ -16862,7 +16862,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     readonly type: "select-one" | "select-multiple";
     /**
-     * The **`validationMessage`** read-only property of the HTMLSelectElement interface returns a string representing a localized message that describes the validation constraints that the <select> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLSelectElement.willValidate is false), or it satisfies its constraints.
+     * The **`validationMessage`** read-only property of the HTMLSelectElement interface returns a string representing a localized message that describes the validation constraints that the <select> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLSelectElement.willValidate is `false`), or it satisfies its constraints.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/validationMessage)
      */
@@ -16880,7 +16880,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLSelectElement interface indicates whether the <select> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, such as when its disabled property is true.
+     * The **`willValidate`** read-only property of the HTMLSelectElement interface indicates whether the <select> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, such as when its disabled property is `true`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/willValidate)
      */
@@ -16892,7 +16892,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     add(element: HTMLOptionElement | HTMLOptGroupElement, before?: HTMLElement | number | null): void;
     /**
-     * The **`checkValidity()`** method of the HTMLSelectElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
+     * The **`checkValidity()`** method of the HTMLSelectElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/checkValidity)
      */
@@ -17077,7 +17077,7 @@ interface HTMLStyleElement extends HTMLElement, LinkStyle {
     get blocking(): DOMTokenList;
     set blocking(value: string);
     /**
-     * The **`HTMLStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (true) or not (false).
+     * The **`HTMLStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/disabled)
      */
@@ -17687,7 +17687,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     dirName: string;
     /**
-     * The **`disabled`** property of the HTMLTextAreaElement interface indicates whether this multi-line text control is disabled and cannot be interacted with. It reflects the <textarea> element's disabled attribute. When false, this textarea may still be disabled if its containing element, such as a <fieldset>, is disabled.
+     * The **`disabled`** property of the HTMLTextAreaElement interface indicates whether this multi-line text control is disabled and cannot be interacted with. It reflects the <textarea> element's disabled attribute. When `false`, this textarea may still be disabled if its containing element, such as a <fieldset>, is disabled.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/disabled)
      */
@@ -17777,7 +17777,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     readonly type: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLTextAreaElement interface returns a string representing a localized message that describes the validation constraints that the <textarea> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLTextAreaElement.willValidate is false), or it satisfies its constraints.
+     * The **`validationMessage`** read-only property of the HTMLTextAreaElement interface returns a string representing a localized message that describes the validation constraints that the <textarea> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLTextAreaElement.willValidate is `false`), or it satisfies its constraints.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/validationMessage)
      */
@@ -17795,7 +17795,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLTextAreaElement interface indicates whether the <textarea> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, such as when its disabled or readOnly property is true.
+     * The **`willValidate`** read-only property of the HTMLTextAreaElement interface indicates whether the <textarea> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, such as when its disabled or readOnly property is `true`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/willValidate)
      */
@@ -17807,7 +17807,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     wrap: string;
     /**
-     * The **`checkValidity()`** method of the HTMLTextAreaElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
+     * The **`checkValidity()`** method of the HTMLTextAreaElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/checkValidity)
      */
@@ -17907,7 +17907,7 @@ declare var HTMLTitleElement: {
  */
 interface HTMLTrackElement extends HTMLElement {
     /**
-     * The **`default`** property of the HTMLTrackElement interface represents whether the track will be enabled if the user's preferences do not indicate that another track would be more appropriate. It reflects the <track> element's boolean default attribute, returning true if present and false otherwise.
+     * The **`default`** property of the HTMLTrackElement interface represents whether the track will be enabled if the user's preferences do not indicate that another track would be more appropriate. It reflects the <track> element's boolean default attribute, returning `true` if present and `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/default)
      */
@@ -19125,7 +19125,7 @@ declare var ImageData: {
  */
 interface ImageDecoder {
     /**
-     * The **`complete`** read-only property of the ImageDecoder interface returns true if encoded data has completed buffering.
+     * The **`complete`** read-only property of the ImageDecoder interface returns `true` if encoded data has completed buffering.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete)
      */
@@ -19186,7 +19186,7 @@ declare var ImageDecoder: {
  */
 interface ImageTrack {
     /**
-     * The **`animated`** property of the ImageTrack interface returns true if the track is animated and therefore has multiple frames.
+     * The **`animated`** property of the ImageTrack interface returns `true` if the track is animated and therefore has multiple frames.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated)
      */
@@ -19204,7 +19204,7 @@ interface ImageTrack {
      */
     readonly repetitionCount: number;
     /**
-     * The **`selected`** property of the ImageTrack interface returns true if the track is selected for decoding.
+     * The **`selected`** property of the ImageTrack interface returns `true` if the track is selected for decoding.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected)
      */
@@ -19408,7 +19408,7 @@ interface IntersectionObserverEntry {
      */
     readonly intersectionRect: DOMRectReadOnly;
     /**
-     * The **`isIntersecting`** read-only property of the IntersectionObserverEntry interface is a Boolean value which is true if the target element intersects with the intersection observer's root.
+     * The **`isIntersecting`** read-only property of the IntersectionObserverEntry interface is a Boolean value which is `true` if the target element intersects with the intersection observer's root.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/isIntersecting)
      */
@@ -19454,7 +19454,7 @@ interface KHR_parallel_shader_compile {
  */
 interface KeyboardEvent extends UIEvent {
     /**
-     * The **`KeyboardEvent.altKey`** read-only property is a boolean value that indicates if the alt key (Option or ⌥ on macOS) was pressed (true) or not (false) when the event occurred.
+     * The **`KeyboardEvent.altKey`** read-only property is a boolean value that indicates if the alt key (Option or ⌥ on macOS) was pressed (`true`) or not (`false`) when the event occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey)
      */
@@ -19473,7 +19473,7 @@ interface KeyboardEvent extends UIEvent {
      */
     readonly code: string;
     /**
-     * The **`KeyboardEvent.ctrlKey`** read-only property returns a boolean value that indicates if the control key was pressed (true) or not (false) when the event occurred.
+     * The **`KeyboardEvent.ctrlKey`** read-only property returns a boolean value that indicates if the control key was pressed (`true`) or not (`false`) when the event occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey)
      */
@@ -19504,25 +19504,25 @@ interface KeyboardEvent extends UIEvent {
      */
     readonly location: number;
     /**
-     * The **`KeyboardEvent.metaKey`** read-only property returning a boolean value that indicates if the Meta key was pressed (true) or not (false) when the event occurred. Some operating systems may intercept the key so it is never detected.
+     * The **`KeyboardEvent.metaKey`** read-only property returning a boolean value that indicates if the Meta key was pressed (`true`) or not (`false`) when the event occurred. Some operating systems may intercept the key so it is never detected.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey)
      */
     readonly metaKey: boolean;
     /**
-     * The **`repeat`** read-only property of the KeyboardEvent interface returns a boolean value that is true if the given key is being held down such that it is automatically repeating.
+     * The **`repeat`** read-only property of the KeyboardEvent interface returns a boolean value that is `true` if the given key is being held down such that it is automatically repeating.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat)
      */
     readonly repeat: boolean;
     /**
-     * The **`KeyboardEvent.shiftKey`** read-only property is a boolean value that indicates if the shift key was pressed (true) or not (false) when the event occurred.
+     * The **`KeyboardEvent.shiftKey`** read-only property is a boolean value that indicates if the shift key was pressed (`true`) or not (`false`) when the event occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey)
      */
     readonly shiftKey: boolean;
     /**
-     * The **`KeyboardEvent.getModifierState()`** method returns the current state of the specified modifier key: true if the modifier is active (that is the modifier key is pressed or locked), otherwise, false.
+     * The **`KeyboardEvent.getModifierState()`** method returns the current state of the specified modifier key: `true` if the modifier is active (that is the modifier key is pressed or locked), otherwise, `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState)
      */
@@ -20553,7 +20553,7 @@ interface MediaQueryListEventMap {
  */
 interface MediaQueryList extends EventTarget {
     /**
-     * The **`matches`** read-only property of the MediaQueryList interface is a boolean value that returns true if the document currently matches the media query list, or false if not.
+     * The **`matches`** read-only property of the MediaQueryList interface is a boolean value that returns `true` if the document currently matches the media query list, or `false` if not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryList/matches)
      */
@@ -20598,7 +20598,7 @@ declare var MediaQueryList: {
  */
 interface MediaQueryListEvent extends Event {
     /**
-     * The **`matches`** read-only property of the MediaQueryListEvent interface is a boolean value that is true if the document currently matches the media query list, or false if not.
+     * The **`matches`** read-only property of the MediaQueryListEvent interface is a boolean value that is `true` if the document currently matches the media query list, or `false` if not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryListEvent/matches)
      */
@@ -20713,7 +20713,7 @@ declare var MediaRecorder: {
     prototype: MediaRecorder;
     new(stream: MediaStream, options?: MediaRecorderOptions): MediaRecorder;
     /**
-     * The **`isTypeSupported()`** static method of the MediaRecorder interface returns a Boolean which is true if the MIME media type specified is one the user agent should be able to successfully record.
+     * The **`isTypeSupported()`** static method of the MediaRecorder interface returns a Boolean which is `true` if the MIME media type specified is one the user agent should be able to successfully record.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/isTypeSupported_static)
      */
@@ -20851,13 +20851,13 @@ declare var MediaSource: {
     prototype: MediaSource;
     new(): MediaSource;
     /**
-     * The **`canConstructInDedicatedWorker`** static property of the MediaSource interface returns true if MediaSource worker support is implemented, providing a low-latency feature detection mechanism.
+     * The **`canConstructInDedicatedWorker`** static property of the MediaSource interface returns `true` if MediaSource worker support is implemented, providing a low-latency feature detection mechanism.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/canConstructInDedicatedWorker_static)
      */
     readonly canConstructInDedicatedWorker: boolean;
     /**
-     * The **`MediaSource.isTypeSupported()`** static method returns a boolean value which is true if the given MIME type and (optional) codec are likely to be supported by the current user agent.
+     * The **`MediaSource.isTypeSupported()`** static method returns a boolean value which is `true` if the given MIME type and (optional) codec are likely to be supported by the current user agent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/isTypeSupported_static)
      */
@@ -20889,7 +20889,7 @@ interface MediaStreamEventMap {
  */
 interface MediaStream extends EventTarget {
     /**
-     * The **`active`** read-only property of the MediaStream interface returns a Boolean value which is true if the stream is currently active; otherwise, it returns false. A stream is considered active if at least one of its MediaStreamTracks does not have its property MediaStreamTrack.readyState set to ended. Once every track has ended, the stream's active property becomes false.
+     * The **`active`** read-only property of the MediaStream interface returns a Boolean value which is `true` if the stream is currently active; otherwise, it returns `false`. A stream is considered active if at least one of its MediaStreamTracks does not have its property MediaStreamTrack.readyState set to ended. Once every track has ended, the stream's active property becomes `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStream/active)
      */
@@ -21016,7 +21016,7 @@ interface MediaStreamTrack extends EventTarget {
      */
     contentHint: string;
     /**
-     * The **`enabled`** property of the MediaStreamTrack interface is a Boolean value which is true if the track is allowed to render the source stream or false if it is not. This can be used to intentionally mute a track.
+     * The **`enabled`** property of the MediaStreamTrack interface is a Boolean value which is `true` if the track is allowed to render the source stream or `false` if it is not. This can be used to intentionally mute a track.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrack/enabled)
      */
@@ -21440,7 +21440,7 @@ interface MouseEvent extends UIEvent {
      */
     readonly y: number;
     /**
-     * The **`MouseEvent.getModifierState()`** method returns the current state of the specified modifier key: true if the modifier is active (i.e., the modifier key is pressed or locked), otherwise, false.
+     * The **`MouseEvent.getModifierState()`** method returns the current state of the specified modifier key: `true` if the modifier is active (i.e., the modifier key is pressed or locked), otherwise, `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState)
      */
@@ -21681,13 +21681,13 @@ interface NavigationHistoryEntry extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/dispose_event) */
     ondispose: ((this: NavigationHistoryEntry, ev: Event) => any) | null;
     /**
-     * The **`sameDocument`** read-only property of the NavigationHistoryEntry interface returns true if this history entry is for the same document as the current Document value and current document is fully active, or false otherwise.
+     * The **`sameDocument`** read-only property of the NavigationHistoryEntry interface returns `true` if this history entry is for the same document as the current Document value and current document is fully active, or `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/sameDocument)
      */
     readonly sameDocument: boolean;
     /**
-     * The **`url`** read-only property of the NavigationHistoryEntry interface returns the absolute URL of this history entry. If the entry corresponds to a different Document than the current one (like sameDocument property is false), and that Document was fetched with a Referrer-Policy header set to no-referrer or origin, the property returns null. If current document is not fully active, it returns an empty string.
+     * The **`url`** read-only property of the NavigationHistoryEntry interface returns the absolute URL of this history entry. If the entry corresponds to a different Document than the current one (like sameDocument property is `false`), and that Document was fetched with a Referrer-Policy header set to no-referrer or origin, the property returns null. If current document is not fully active, it returns an empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/url)
      */
@@ -21832,7 +21832,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      */
     readonly wakeLock: WakeLock;
     /**
-     * The **`canShare()`** method of the Navigator interface returns true if the equivalent call to navigator.share() would succeed.
+     * The **`canShare()`** method of the Navigator interface returns `true` if the equivalent call to navigator.share() would succeed.
      * Available only in secure contexts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/canShare)
@@ -22125,7 +22125,7 @@ interface Node extends EventTarget {
      */
     insertBefore<T extends Node>(node: T, child: Node | null): T;
     /**
-     * The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument. It returns a boolean value that is true if the namespace is the default namespace on the given node and false if not. The default namespace can be retrieved with Node.lookupNamespaceURI() by passing null as the argument.
+     * The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument. It returns a boolean value that is `true` if the namespace is the default namespace on the given node and `false` if not. The default namespace can be retrieved with Node.lookupNamespaceURI() by passing null as the argument.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isDefaultNamespace)
      */
@@ -22254,7 +22254,7 @@ interface NodeIterator {
      */
     readonly filter: NodeFilter | null;
     /**
-     * The **`NodeIterator.pointerBeforeReferenceNode`** read-only property returns a boolean flag that indicates whether the NodeFilter is anchored before (if this value is true) or after (if this value is false) the anchor node indicated by the NodeIterator.referenceNode property.
+     * The **`NodeIterator.pointerBeforeReferenceNode`** read-only property returns a boolean flag that indicates whether the NodeFilter is anchored before (if this value is `true`) or after (if this value is `false`) the anchor node indicated by the NodeIterator.referenceNode property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NodeIterator/pointerBeforeReferenceNode)
      */
@@ -22597,7 +22597,7 @@ interface OES_vertex_array_object {
      */
     deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /**
-     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns true if the passed object is a WebGLVertexArrayObject object.
+     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns `true` if the passed object is a WebGLVertexArrayObject object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/isVertexArrayOES)
      */
@@ -23321,19 +23321,19 @@ interface PaymentResponse extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerdetailchange_event) */
     onpayerdetailchange: ((this: PaymentResponse, ev: PaymentRequestUpdateEvent) => any) | null;
     /**
-     * The **`payerEmail`** read-only property of the PaymentResponse interface returns the email address supplied by the user. This option is only present when the requestPayerEmail option is set to true in the options object passed to the PaymentRequest constructor.
+     * The **`payerEmail`** read-only property of the PaymentResponse interface returns the email address supplied by the user. This option is only present when the requestPayerEmail option is set to `true` in the options object passed to the PaymentRequest constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerEmail)
      */
     readonly payerEmail: string | null;
     /**
-     * The **`payerName`** read-only property of the PaymentResponse interface returns the name supplied by the user. This option is only present when the requestPayerName option is set to true in the options parameter of the PaymentRequest() constructor.
+     * The **`payerName`** read-only property of the PaymentResponse interface returns the name supplied by the user. This option is only present when the requestPayerName option is set to `true` in the options parameter of the PaymentRequest() constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerName)
      */
     readonly payerName: string | null;
     /**
-     * The **`payerPhone`** read-only property of the PaymentResponse interface returns the phone number supplied by the user. This option is only present when the requestPayerPhone option is set to true in the options object passed to the PaymentRequest constructor.
+     * The **`payerPhone`** read-only property of the PaymentResponse interface returns the phone number supplied by the user. This option is only present when the requestPayerPhone option is set to `true` in the options object passed to the PaymentRequest constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerPhone)
      */
@@ -23351,7 +23351,7 @@ interface PaymentResponse extends EventTarget {
      */
     readonly shippingAddress: PaymentAddress | null;
     /**
-     * The **`shippingOption`** read-only property of the PaymentRequest interface returns the ID attribute of the shipping option selected by the user. This option is only present when the requestShipping option is set to true in the options object passed to the PaymentRequest constructor.
+     * The **`shippingOption`** read-only property of the PaymentRequest interface returns the ID attribute of the shipping option selected by the user. This option is only present when the requestShipping option is set to `true` in the options object passed to the PaymentRequest constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingOption)
      */
@@ -24380,7 +24380,7 @@ interface PointerEvent extends MouseEvent {
      */
     readonly height: number;
     /**
-     * The **`isPrimary`** read-only property of the PointerEvent interface indicates whether or not the pointer device that created the event is the primary pointer. It returns true if the pointer that caused the event to be fired is the primary one and returns false otherwise.
+     * The **`isPrimary`** read-only property of the PointerEvent interface indicates whether or not the pointer device that created the event is the primary pointer. It returns `true` if the pointer that caused the event to be fired is the primary one and returns `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/isPrimary)
      */
@@ -24466,7 +24466,7 @@ declare var PointerEvent: {
  */
 interface PopStateEvent extends Event {
     /**
-     * The **`hasUAVisualTransition`** read-only property of the PopStateEvent interface returns true if the user agent performed a visual transition for this navigation before dispatching this event, or false otherwise.
+     * The **`hasUAVisualTransition`** read-only property of the PopStateEvent interface returns `true` if the user agent performed a visual transition for this navigation before dispatching this event, or `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent/hasUAVisualTransition)
      */
@@ -24617,13 +24617,13 @@ declare var PublicKeyCredential: {
      */
     getClientCapabilities(): Promise<PublicKeyCredentialClientCapabilities>;
     /**
-     * The **`isConditionalMediationAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to true if conditional mediation is available.
+     * The **`isConditionalMediationAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to `true` if conditional mediation is available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable_static)
      */
     isConditionalMediationAvailable(): Promise<boolean>;
     /**
-     * The **`isUserVerifyingPlatformAuthenticatorAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to true if a user-verifying platform authenticator is present.
+     * The **`isUserVerifyingPlatformAuthenticatorAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to `true` if a user-verifying platform authenticator is present.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable_static)
      */
@@ -24893,7 +24893,7 @@ interface RTCDataChannel extends EventTarget {
      */
     bufferedAmountLowThreshold: number;
     /**
-     * The read-only RTCDataChannel property **`id`** returns an ID number (between 0 and 65,534) which uniquely identifies the RTCDataChannel. This ID is set at the time the data channel is created, either by the user agent (if RTCDataChannel.negotiated is false) or by the site or app script (if negotiated is true).
+     * The read-only RTCDataChannel property **`id`** returns an ID number (between 0 and 65,534) which uniquely identifies the RTCDataChannel. This ID is set at the time the data channel is created, either by the user agent (if RTCDataChannel.negotiated is `false`) or by the site or app script (if negotiated is `true`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/id)
      */
@@ -24917,7 +24917,7 @@ interface RTCDataChannel extends EventTarget {
      */
     readonly maxRetransmits: number | null;
     /**
-     * The read-only RTCDataChannel property **`negotiated`** indicates whether the RTCDataChannel's connection was negotiated by the Web app (true) or by the WebRTC layer (false). The default is false.
+     * The read-only RTCDataChannel property **`negotiated`** indicates whether the RTCDataChannel's connection was negotiated by the Web app (`true`) or by the WebRTC layer (`false`). The default is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/negotiated)
      */
@@ -24935,7 +24935,7 @@ interface RTCDataChannel extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/open_event) */
     onopen: ((this: RTCDataChannel, ev: Event) => any) | null;
     /**
-     * The read-only RTCDataChannel property **`ordered`** indicates whether or not the data channel guarantees in-order delivery of messages; the default is true, which indicates that the data channel is indeed ordered. This is set when the RTCDataChannel is created, by setting the ordered property on the object passed as RTCPeerConnection.createDataChannel()'s options parameter.
+     * The read-only RTCDataChannel property **`ordered`** indicates whether or not the data channel guarantees in-order delivery of messages; the default is `true`, which indicates that the data channel is indeed ordered. This is set when the RTCDataChannel is created, by setting the ordered property on the object passed as RTCPeerConnection.createDataChannel()'s options parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/ordered)
      */
@@ -26458,7 +26458,7 @@ interface Request extends Body {
      */
     readonly integrity: string;
     /**
-     * The **`keepalive`** read-only property of the Request interface contains the request's keepalive setting (true or false), which indicates whether the browser will keep the associated request alive if the page that initiated it is unloaded before the request is complete.
+     * The **`keepalive`** read-only property of the Request interface contains the request's keepalive setting (`true` or `false`), which indicates whether the browser will keep the associated request alive if the page that initiated it is unloaded before the request is complete.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
      */
@@ -29919,7 +29919,7 @@ declare var SVGStringList: {
  */
 interface SVGStyleElement extends SVGElement, LinkStyle {
     /**
-     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (true) or not (false).
+     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement/disabled)
      */
@@ -31070,7 +31070,7 @@ interface ServiceWorkerRegistration extends EventTarget {
      */
     showNotification(title: string, options?: NotificationOptions): Promise<void>;
     /**
-     * The **`unregister()`** method of the ServiceWorkerRegistration interface unregisters the service worker registration and returns a Promise. The promise will resolve to false if no registration was found, otherwise it resolves to true irrespective of whether unregistration happened or not (it may not unregister if someone else just called ServiceWorkerContainer.register() with the same scope.) The service worker will finish any ongoing operations before it is unregistered.
+     * The **`unregister()`** method of the ServiceWorkerRegistration interface unregisters the service worker registration and returns a Promise. The promise will resolve to `false` if no registration was found, otherwise it resolves to `true` irrespective of whether unregistration happened or not (it may not unregister if someone else just called ServiceWorkerContainer.register() with the same scope.) The service worker will finish any ongoing operations before it is unregistered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/unregister)
      */
@@ -31103,13 +31103,13 @@ interface ShadowRootEventMap {
  */
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     /**
-     * The **`clonable`** read-only property of the ShadowRoot interface returns true if the shadow root is clonable, and false otherwise.
+     * The **`clonable`** read-only property of the ShadowRoot interface returns `true` if the shadow root is clonable, and `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/clonable)
      */
     readonly clonable: boolean;
     /**
-     * The **`delegatesFocus`** read-only property of the ShadowRoot interface returns true if the shadow root delegates focus, and false otherwise.
+     * The **`delegatesFocus`** read-only property of the ShadowRoot interface returns `true` if the shadow root delegates focus, and `false` otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/delegatesFocus)
      */
@@ -31134,7 +31134,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     readonly mode: ShadowRootMode;
     onslotchange: ((this: ShadowRoot, ev: Event) => any) | null;
     /**
-     * The **`serializable`** read-only property of the ShadowRoot interface returns true if the shadow root is serializable.
+     * The **`serializable`** read-only property of the ShadowRoot interface returns `true` if the shadow root is serializable.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/serializable)
      */
@@ -31270,7 +31270,7 @@ interface SourceBuffer extends EventTarget {
      */
     changeType(type: string): void;
     /**
-     * The **`remove()`** method of the SourceBuffer interface removes media segments within a specific time range from the SourceBuffer. This method can only be called when SourceBuffer.updating equals false. If SourceBuffer.updating is not equal to false, call SourceBuffer.abort().
+     * The **`remove()`** method of the SourceBuffer interface removes media segments within a specific time range from the SourceBuffer. This method can only be called when SourceBuffer.updating equals `false`. If SourceBuffer.updating is not equal to `false`, call SourceBuffer.abort().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/remove)
      */
@@ -31403,7 +31403,7 @@ declare var SpeechRecognitionEvent: {
  */
 interface SpeechRecognitionResult {
     /**
-     * The **`isFinal`** read-only property of the SpeechRecognitionResult interface is a boolean value that states whether this result is final (true) or not (false) — if so, then this is the final time this result will be returned; if not, then this result is an interim result, and may be updated later on.
+     * The **`isFinal`** read-only property of the SpeechRecognitionResult interface is a boolean value that states whether this result is final (`true`) or not (`false`) — if so, then this is the final time this result will be returned; if not, then this result is an interim result, and may be updated later on.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResult/isFinal)
      */
@@ -31468,19 +31468,19 @@ interface SpeechSynthesis extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/voiceschanged_event) */
     onvoiceschanged: ((this: SpeechSynthesis, ev: Event) => any) | null;
     /**
-     * The **`paused`** read-only property of the SpeechSynthesis interface is a boolean value that returns true if the SpeechSynthesis object is in a paused state, or false if not.
+     * The **`paused`** read-only property of the SpeechSynthesis interface is a boolean value that returns `true` if the SpeechSynthesis object is in a paused state, or `false` if not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/paused)
      */
     readonly paused: boolean;
     /**
-     * The **`pending`** read-only property of the SpeechSynthesis interface is a boolean value that returns true if the utterance queue contains as-yet-unspoken utterances.
+     * The **`pending`** read-only property of the SpeechSynthesis interface is a boolean value that returns `true` if the utterance queue contains as-yet-unspoken utterances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/pending)
      */
     readonly pending: boolean;
     /**
-     * The **`speaking`** read-only property of the SpeechSynthesis interface is a boolean value that returns true if an utterance is currently in the process of being spoken — even if SpeechSynthesis is in a paused state.
+     * The **`speaking`** read-only property of the SpeechSynthesis interface is a boolean value that returns `true` if an utterance is currently in the process of being spoken — even if SpeechSynthesis is in a paused state.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/speaking)
      */
@@ -31672,7 +31672,7 @@ declare var SpeechSynthesisUtterance: {
  */
 interface SpeechSynthesisVoice {
     /**
-     * The **`default`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is the default voice for the current app (true), or not (false.)
+     * The **`default`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is the default voice for the current app (`true`), or not (`false`.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisVoice/default)
      */
@@ -31684,7 +31684,7 @@ interface SpeechSynthesisVoice {
      */
     readonly lang: string;
     /**
-     * The **`localService`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is supplied by a local speech synthesizer service (true), or a remote speech synthesizer service (false.)
+     * The **`localService`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is supplied by a local speech synthesizer service (`true`), or a remote speech synthesizer service (`false`.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisVoice/localService)
      */
@@ -31860,13 +31860,13 @@ interface StorageManager {
      */
     getDirectory(): Promise<FileSystemDirectoryHandle>;
     /**
-     * The **`persist()`** method of the StorageManager interface requests permission to use persistent storage, and returns a Promise that resolves to true if permission is granted and bucket mode is persistent, and false otherwise. The browser may or may not honor the request, depending on browser-specific rules. (For more details, see the guide to Storage quotas and eviction criteria.)
+     * The **`persist()`** method of the StorageManager interface requests permission to use persistent storage, and returns a Promise that resolves to `true` if permission is granted and bucket mode is persistent, and `false` otherwise. The browser may or may not honor the request, depending on browser-specific rules. (For more details, see the guide to Storage quotas and eviction criteria.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persist)
      */
     persist(): Promise<boolean>;
     /**
-     * The **`persisted()`** method of the StorageManager interface returns a Promise that resolves to true if your site's storage bucket is persistent.
+     * The **`persisted()`** method of the StorageManager interface returns a Promise that resolves to `true` if your site's storage bucket is persistent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persisted)
      */
@@ -32823,7 +32823,7 @@ declare var Touch: {
  */
 interface TouchEvent extends UIEvent {
     /**
-     * The read-only **`altKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the alt (Alternate) key is enabled when the touch event is created. If the alt key is enabled, the attribute's value is true. Otherwise, it is false.
+     * The read-only **`altKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the alt (Alternate) key is enabled when the touch event is created. If the alt key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/altKey)
      */
@@ -32835,19 +32835,19 @@ interface TouchEvent extends UIEvent {
      */
     readonly changedTouches: TouchList;
     /**
-     * The read-only **`ctrlKey`** property of the TouchEvent interface returns a boolean value indicating whether the control (Control) key is enabled when the touch event is created. If this key is enabled, the attribute's value is true. Otherwise, it is false.
+     * The read-only **`ctrlKey`** property of the TouchEvent interface returns a boolean value indicating whether the control (Control) key is enabled when the touch event is created. If this key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/ctrlKey)
      */
     readonly ctrlKey: boolean;
     /**
-     * The read-only **`metaKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the Meta key is enabled when the touch event is created. If this key is enabled, the attribute's value is true. Otherwise, it is false.
+     * The read-only **`metaKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the Meta key is enabled when the touch event is created. If this key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/metaKey)
      */
     readonly metaKey: boolean;
     /**
-     * The read-only **`shiftKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the shift key is enabled when the touch event is created. If this key is enabled, the attribute's value is true. Otherwise, it is false.
+     * The read-only **`shiftKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the shift key is enabled when the touch event is created. If this key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/shiftKey)
      */
@@ -33531,7 +33531,7 @@ interface ValidityState {
      */
     readonly badInput: boolean;
     /**
-     * The read-only **`customError`** property of the ValidityState interface returns true if an element doesn't meet the validation required in the custom validity set by the element's setCustomValidity() method.
+     * The read-only **`customError`** property of the ValidityState interface returns `true` if an element doesn't meet the validation required in the custom validity set by the element's setCustomValidity() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/customError)
      */
@@ -33604,7 +33604,7 @@ declare var ValidityState: {
  */
 interface VideoColorSpace {
     /**
-     * The **`fullRange`** read-only property of the VideoColorSpace interface returns true if full-range color values are used.
+     * The **`fullRange`** read-only property of the VideoColorSpace interface returns `true` if full-range color values are used.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/fullRange)
      */
@@ -37117,7 +37117,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly orientation: number;
     /**
-     * The **`originAgentCluster`** read-only property of the Window interface returns true if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
+     * The **`originAgentCluster`** read-only property of the Window interface returns `true` if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/originAgentCluster)
      */
@@ -37997,7 +37997,7 @@ interface XPathResult {
      */
     readonly booleanValue: boolean;
     /**
-     * The read-only **`invalidIteratorState`** property of the XPathResult interface signifies that the iterator has become invalid. It is true if XPathResult.resultType is UNORDERED_NODE_ITERATOR_TYPE or ORDERED_NODE_ITERATOR_TYPE and the document has been modified since this result was returned.
+     * The read-only **`invalidIteratorState`** property of the XPathResult interface signifies that the iterator has become invalid. It is `true` if XPathResult.resultType is UNORDERED_NODE_ITERATOR_TYPE or ORDERED_NODE_ITERATOR_TYPE and the document has been modified since this result was returned.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathResult/invalidIteratorState)
      */
@@ -38368,7 +38368,7 @@ declare namespace WebAssembly {
      */
     interface Memory {
         /**
-         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: true, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
+         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: `true`, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/buffer)
          */
@@ -38565,7 +38565,7 @@ declare namespace WebAssembly {
  */
 interface Console {
     /**
-     * The **`console.assert()`** static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
+     * The **`console.assert()`** static method writes an error message to the console if the assertion is `false`. If the assertion is `true`, nothing happens.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static)
      */
@@ -39280,7 +39280,7 @@ declare var opener: any;
  */
 declare var orientation: number;
 /**
- * The **`originAgentCluster`** read-only property of the Window interface returns true if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
+ * The **`originAgentCluster`** read-only property of the Window interface returns `true` if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/originAgentCluster)
  */

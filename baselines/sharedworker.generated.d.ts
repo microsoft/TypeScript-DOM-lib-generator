@@ -874,7 +874,7 @@ interface AbortSignalEventMap {
  */
 interface AbortSignal extends EventTarget {
     /**
-     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (true) or not (false).
+     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (`true`) or not (`false`).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/aborted)
      */
@@ -1309,7 +1309,7 @@ interface CSSNumericValue extends CSSStyleValue {
      */
     div(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`equals()`** method of the CSSNumericValue interface returns a boolean indicating whether the passed value are strictly equal. To return a value of true, all passed values must be of the same type and value and must be in the same order. This allows structural equality to be tested quickly.
+     * The **`equals()`** method of the CSSNumericValue interface returns a boolean indicating whether the passed value are strictly equal. To return a value of `true`, all passed values must be of the same type and value and must be in the same order. This allows structural equality to be tested quickly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/equals)
      */
@@ -1709,7 +1709,7 @@ interface Cache {
      */
     addAll(requests: RequestInfo[]): Promise<void>;
     /**
-     * The **`delete()`** method of the Cache interface finds the Cache entry whose key is the request, and if found, deletes the Cache entry and returns a Promise that resolves to true. If no Cache entry is found, it resolves to false.
+     * The **`delete()`** method of the Cache interface finds the Cache entry whose key is the request, and if found, deletes the Cache entry and returns a Promise that resolves to `true`. If no Cache entry is found, it resolves to `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache/delete)
      */
@@ -1753,13 +1753,13 @@ declare var Cache: {
  */
 interface CacheStorage {
     /**
-     * The **`delete()`** method of the CacheStorage interface finds the Cache object matching the cacheName, and if found, deletes the Cache object and returns a Promise that resolves to true. If no Cache object is found, it resolves to false.
+     * The **`delete()`** method of the CacheStorage interface finds the Cache object matching the cacheName, and if found, deletes the Cache object and returns a Promise that resolves to `true`. If no Cache object is found, it resolves to `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/delete)
      */
     delete(cacheName: string): Promise<boolean>;
     /**
-     * The **`has()`** method of the CacheStorage interface returns a Promise that resolves to true if a Cache object matches the cacheName.
+     * The **`has()`** method of the CacheStorage interface returns a Promise that resolves to `true` if a Cache object matches the cacheName.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/has)
      */
@@ -2039,7 +2039,7 @@ interface CloseEvent extends Event {
      */
     readonly reason: string;
     /**
-     * The **`wasClean`** read-only property of the CloseEvent interface returns true if the connection closed cleanly.
+     * The **`wasClean`** read-only property of the CloseEvent interface returns `true` if the connection closed cleanly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent/wasClean)
      */
@@ -2317,7 +2317,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix#instance_properties) */
     m44: number;
     /**
-     * The **`invertSelf()`** method of the DOMMatrix interface inverts the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to false.
+     * The **`invertSelf()`** method of the DOMMatrix interface inverts the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/invertSelf)
      */
@@ -2414,13 +2414,13 @@ interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly f: number;
     /**
-     * The readonly **`is2D`** property of the DOMMatrixReadOnly interface is a Boolean flag that is true when the matrix is 2D. The value is true if the matrix was initialized as a 2D matrix and only 2D transformation operations were applied. Otherwise, the matrix is defined in 3D, and is2D is false.
+     * The readonly **`is2D`** property of the DOMMatrixReadOnly interface is a Boolean flag that is `true` when the matrix is 2D. The value is `true` if the matrix was initialized as a 2D matrix and only 2D transformation operations were applied. Otherwise, the matrix is defined in 3D, and is2D is `false`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/is2D)
      */
     readonly is2D: boolean;
     /**
-     * The readonly **`isIdentity`** property of the DOMMatrixReadOnly interface is a Boolean whose value is true if the matrix is the identity matrix.
+     * The readonly **`isIdentity`** property of the DOMMatrixReadOnly interface is a Boolean whose value is `true` if the matrix is the identity matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/isIdentity)
      */
@@ -2470,7 +2470,7 @@ interface DOMMatrixReadOnly {
      */
     flipY(): DOMMatrix;
     /**
-     * The **`inverse()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the inverse of the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to false. The original matrix is not changed.
+     * The **`inverse()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the inverse of the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to `false`. The original matrix is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/inverse)
      */
@@ -3054,7 +3054,7 @@ interface Event {
      */
     readonly bubbles: boolean;
     /**
-     * The **`cancelBubble`** property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to true before returning from an event handler prevents propagation of the event. In later implementations, setting this to false does nothing. See Browser compatibility for details.
+     * The **`cancelBubble`** property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to `true` before returning from an event handler prevents propagation of the event. In later implementations, setting this to `false` does nothing. See Browser compatibility for details.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)
@@ -3091,7 +3091,7 @@ interface Event {
      */
     readonly eventPhase: number;
     /**
-     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is true when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and false when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to false in user agents.
+     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is `true` when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to `false` in user agents.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
      */
@@ -3720,7 +3720,7 @@ interface FontFaceSet extends EventTarget {
      */
     readonly status: FontFaceSetLoadStatus;
     /**
-     * The **`check()`** method of the FontFaceSet returns true if you can render some text using the given font specification without attempting to use any fonts in this FontFaceSet that are not yet fully loaded. This means you can use the font specification without causing a font swap.
+     * The **`check()`** method of the FontFaceSet returns `true` if you can render some text using the given font specification without attempting to use any fonts in this FontFaceSet that are not yet fully loaded. This means you can use the font specification without causing a font swap.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/check)
      */
@@ -5208,7 +5208,7 @@ interface OES_vertex_array_object {
      */
     deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /**
-     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns true if the passed object is a WebGLVertexArrayObject object.
+     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns `true` if the passed object is a WebGLVertexArrayObject object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/isVertexArrayOES)
      */
@@ -6256,7 +6256,7 @@ interface Request extends Body {
      */
     readonly integrity: string;
     /**
-     * The **`keepalive`** read-only property of the Request interface contains the request's keepalive setting (true or false), which indicates whether the browser will keep the associated request alive if the page that initiated it is unloaded before the request is complete.
+     * The **`keepalive`** read-only property of the Request interface contains the request's keepalive setting (`true` or `false`), which indicates whether the browser will keep the associated request alive if the page that initiated it is unloaded before the request is complete.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
      */
@@ -6676,7 +6676,7 @@ interface ServiceWorkerRegistration extends EventTarget {
      */
     showNotification(title: string, options?: NotificationOptions): Promise<void>;
     /**
-     * The **`unregister()`** method of the ServiceWorkerRegistration interface unregisters the service worker registration and returns a Promise. The promise will resolve to false if no registration was found, otherwise it resolves to true irrespective of whether unregistration happened or not (it may not unregister if someone else just called ServiceWorkerContainer.register() with the same scope.) The service worker will finish any ongoing operations before it is unregistered.
+     * The **`unregister()`** method of the ServiceWorkerRegistration interface unregisters the service worker registration and returns a Promise. The promise will resolve to `false` if no registration was found, otherwise it resolves to `true` irrespective of whether unregistration happened or not (it may not unregister if someone else just called ServiceWorkerContainer.register() with the same scope.) The service worker will finish any ongoing operations before it is unregistered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/unregister)
      */
@@ -6753,7 +6753,7 @@ interface StorageManager {
      */
     getDirectory(): Promise<FileSystemDirectoryHandle>;
     /**
-     * The **`persisted()`** method of the StorageManager interface returns a Promise that resolves to true if your site's storage bucket is persistent.
+     * The **`persisted()`** method of the StorageManager interface returns a Promise that resolves to `true` if your site's storage bucket is persistent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persisted)
      */
@@ -10862,7 +10862,7 @@ declare namespace WebAssembly {
      */
     interface Memory {
         /**
-         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: true, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
+         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: `true`, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/buffer)
          */
@@ -11059,7 +11059,7 @@ declare namespace WebAssembly {
  */
 interface Console {
     /**
-     * The **`console.assert()`** static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
+     * The **`console.assert()`** static method writes an error message to the console if the assertion is `false`. If the assertion is `true`, nothing happens.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static)
      */

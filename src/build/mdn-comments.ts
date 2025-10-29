@@ -70,6 +70,8 @@ function generateComment(summary: string, name: string): string {
       (match) => `**\`${match}\`**`,
     )
     .replace(/"/g, "'")
+    .replace(/\btrue\b/g, "`true`")
+    .replace(/\bfalse\b/g, "`false`")
     .trim();
 }
 
