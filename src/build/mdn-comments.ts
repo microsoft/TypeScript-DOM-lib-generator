@@ -29,6 +29,19 @@ function ensureLeaf(obj: Record<string, any>, keys: string[]) {
   return leaf;
 }
 
+function extractSlug(slug: string): string[] {
+  for (const subdirectory of subdirectories) {
+    if (!slug.toLowerCase().startsWith(subdirectory)) {
+      continue;
+    }
+    return slug
+      .slice(subdirectory.length)
+      .replace(/_static/g, "")
+      .split("/");
+  }
+  return [];
+}
+
 function insertComment(
   root: Record<string, any>,
   slug: string[],
@@ -43,19 +56,6 @@ function insertComment(
     const target = ensureLeaf(root, [ifaceName, ...path, memberName]);
     target.comment = summary;
   }
-}
-
-function extractSlug(slug: string): string[] {
-  for (const subdirectory of subdirectories) {
-    if (!slug.toLowerCase().startsWith(subdirectory)) {
-      continue;
-    }
-    return slug
-      .slice(subdirectory.length)
-      .replace(/_static/g, "")
-      .split("/");
-  }
-  return [];
 }
 
 function generateComment(summary: string, name: string): string {
