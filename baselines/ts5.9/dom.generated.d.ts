@@ -357,11 +357,6 @@ interface CloseEventInit extends EventInit {
     wasClean?: boolean;
 }
 
-interface CommandEventInit extends EventInit {
-    command?: string;
-    source?: Element | null;
-}
-
 interface CompositionEventInit extends UIEventInit {
     data?: string;
 }
@@ -3279,15 +3274,7 @@ interface AnimationTimeline {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
-    /**
-<<<<<<< HEAD
-     * The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or null.
-=======
-     * The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or `null`.
->>>>>>> 60b79a3f157681dd7c84a53161198ef6c03c034e
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration)
-     */
+    /** The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or null. */
     readonly duration: CSSNumberish | null;
 }
 
@@ -6065,11 +6052,7 @@ declare var CSSStyleDeclaration: {
     new(): CSSStyleDeclaration;
 };
 
-/**
- * The **`CSSStyleProperties`** interface of the CSS Object Model (CSSOM) represents inline or computed styles available on an element, or the styles associated with a CSS style rule.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleProperties)
- */
+/** The **`CSSStyleProperties`** interface of the CSS Object Model (CSSOM) represents inline or computed styles available on an element, or the styles associated with a CSS style rule. */
 interface CSSStyleProperties extends CSSStyleDeclarationBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
     accentColor: string;
@@ -6358,12 +6341,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     counterReset: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-set) */
     counterSet: string;
-    /**
-     * The **`cssFloat`** property of the CSSStyleProperties interface returns the CSS float property.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat)
-     */
-    cssFloat: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
     cursor: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cx) */
@@ -6378,7 +6355,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     display: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dominant-baseline) */
     dominantBaseline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dynamic-range-limit) */
     dynamicRangeLimit: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
     emptyCells: string;
@@ -6884,7 +6860,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     textAlignLast: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
     textAnchor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-autospace) */
     textAutospace: string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box) */
     textBox: string;
@@ -8428,31 +8403,6 @@ declare var CloseEvent: {
 };
 
 /**
- * The **`CommandEvent`** interface represents an event notifying the user when a button element with valid commandForElement and command attributes is about to invoke an interactive element.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent)
- */
-interface CommandEvent extends Event {
-    /**
-     * The **`command`** read-only property of the CommandEvent interface returns a string containing the value of the command property at the time the event was dispatched.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/command)
-     */
-    readonly command: string;
-    /**
-     * The **`source`** read-only property of the CommandEvent interface returns an EventTarget representing the control that invoked the given command.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CommandEvent/source)
-     */
-    readonly source: Element | null;
-}
-
-declare var CommandEvent: {
-    prototype: CommandEvent;
-    new(type: string, eventInitDict?: CommandEventInit): CommandEvent;
-};
-
-/**
  * The **`Comment`** interface represents textual notations within markup; although it is generally not visually shown, such comments are available to be read in the source view.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Comment)
@@ -9169,8 +9119,11 @@ interface DOMMatrix extends DOMMatrixReadOnly {
 declare var DOMMatrix: {
     prototype: DOMMatrix;
     new(init?: string | number[]): DOMMatrix;
+    /** The **`fromFloat32Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of single-precision (32-bit) floating-point values. */
     fromFloat32Array(array32: Float32Array<ArrayBuffer>): DOMMatrix;
+    /** The **`fromFloat64Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of double-precision (64-bit) floating-point values. */
     fromFloat64Array(array64: Float64Array<ArrayBuffer>): DOMMatrix;
+    /** The **`fromMatrix()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an existing matrix or an object which provides the values for its properties. */
     fromMatrix(other?: DOMMatrixInit): DOMMatrix;
 };
 
@@ -9346,8 +9299,11 @@ interface DOMMatrixReadOnly {
 declare var DOMMatrixReadOnly: {
     prototype: DOMMatrixReadOnly;
     new(init?: string | number[]): DOMMatrixReadOnly;
+    /** The **`fromFloat32Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of single-precision (32-bit) floating-point values. */
     fromFloat32Array(array32: Float32Array<ArrayBuffer>): DOMMatrixReadOnly;
+    /** The **`fromFloat64Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of double-precision (64-bit) floating-point values. */
     fromFloat64Array(array64: Float64Array<ArrayBuffer>): DOMMatrixReadOnly;
+    /** The **`fromMatrix()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an existing matrix or an object which provides the values for its properties. */
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
 };
 
@@ -9358,7 +9314,7 @@ declare var DOMMatrixReadOnly: {
  */
 interface DOMParser {
     /**
-     * The **`parseFromString()`** method of the DOMParser interface parses an input containing either HTML or XML, returning a Document with the type given in the Document/contentType property.
+     * The **`parseFromString()`** method of the DOMParser interface parses an input containing either HTML or XML, returning a Document with the type given in the contentType property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMParser/parseFromString)
      */
@@ -9518,7 +9474,9 @@ interface DOMQuad {
 declare var DOMQuad: {
     prototype: DOMQuad;
     new(p1?: DOMPointInit, p2?: DOMPointInit, p3?: DOMPointInit, p4?: DOMPointInit): DOMQuad;
+    /** The **`fromQuad()`** static method of the DOMQuad interface returns a new DOMQuad object based on the provided set of coordinates in the shape of another DOMQuad object. */
     fromQuad(other?: DOMQuadInit): DOMQuad;
+    /** The **`fromRect()`** static method of the DOMQuad interface returns a new DOMQuad object based on the provided set of coordinates in the shape of a DOMRect object. */
     fromRect(other?: DOMRectInit): DOMQuad;
 };
 
@@ -10096,19 +10054,6 @@ declare var DeviceOrientationEvent: {
     new(type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
 };
 
-/** Available only in secure contexts. */
-interface DigitalCredential extends Credential {
-    readonly data: any;
-    readonly protocol: string;
-    toJSON(): any;
-}
-
-declare var DigitalCredential: {
-    prototype: DigitalCredential;
-    new(): DigitalCredential;
-    userAgentAllowsProtocol(protocol: string): boolean;
-};
-
 interface DocumentEventMap extends GlobalEventHandlersEventMap {
     "DOMContentLoaded": Event;
     "fullscreenchange": Event;
@@ -10519,7 +10464,6 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "BlobEvent"): BlobEvent;
     createEvent(eventInterface: "ClipboardEvent"): ClipboardEvent;
     createEvent(eventInterface: "CloseEvent"): CloseEvent;
-    createEvent(eventInterface: "CommandEvent"): CommandEvent;
     createEvent(eventInterface: "CompositionEvent"): CompositionEvent;
     createEvent(eventInterface: "ContentVisibilityAutoStateChangeEvent"): ContentVisibilityAutoStateChangeEvent;
     createEvent(eventInterface: "CookieChangeEvent"): CookieChangeEvent;
@@ -13046,7 +12990,6 @@ interface GlobalEventHandlersEventMap {
     "change": Event;
     "click": PointerEvent;
     "close": Event;
-    "command": Event;
     "compositionend": CompositionEvent;
     "compositionstart": CompositionEvent;
     "compositionupdate": CompositionEvent;
@@ -13171,8 +13114,6 @@ interface GlobalEventHandlers {
     onclick: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
     onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
-    oncommand: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
     oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -13663,18 +13604,6 @@ declare var HTMLBodyElement: {
  */
 interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
     /**
-     * The **`command`** property of the HTMLButtonElement interface gets and sets the action to be performed on an element being controlled by this button. For this to have an effect, commandfor must be set.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/command)
-     */
-    command: string;
-    /**
-     * The **`commandForElement`** property of the HTMLButtonElement interface gets and sets the element to control via a button.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/commandForElement)
-     */
-    commandForElement: Element | null;
-    /**
      * The **`HTMLButtonElement.disabled`** property indicates whether the control is disabled, meaning that it does not accept any clicks.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/disabled)
@@ -14160,11 +14089,7 @@ interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEdit
      */
     innerText: string;
     /**
-<<<<<<< HEAD
      * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a BCP 47 language tag. It reflects the element's lang attribute; the xml:lang attribute does not affect this property.
-=======
-     * The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a BCP 47 language tag.
->>>>>>> 60b79a3f157681dd7c84a53161198ef6c03c034e
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lang)
      */
@@ -15513,11 +15438,7 @@ interface HTMLLabelElement extends HTMLElement {
      */
     readonly control: HTMLElement | null;
     /**
-<<<<<<< HEAD
-     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the control associated with this <label>, or null if this label is not associated with a control owned by a form.
-=======
-     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the HTMLLabelElement.control associated with this label, or `null` if this label is not associated with a labelable form-associated element (button, input, output, select, textarea, or form-associated custom elements) that is owned by a form.
->>>>>>> 60b79a3f157681dd7c84a53161198ef6c03c034e
+     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the control associated with this <label>, or null if this label is not associated with a labelable form-associated element (<button>, <input>, <output>, <select>, <textarea>, or form-associated custom elements) that is owned by a form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/form)
      */
@@ -16828,11 +16749,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     src: string;
     /**
-<<<<<<< HEAD
-     * The **`text`** property of the HTMLScriptElement interface represents the inline text content of the script element. It acts the same way as the textContent property.
-=======
-     * The **`text`** property of the HTMLScriptElement interface represents the inline text content of the script element.
->>>>>>> 60b79a3f157681dd7c84a53161198ef6c03c034e
+     * The **`text`** property of the HTMLScriptElement interface represents the inline text content of the <script> element. It behaves in the same way as the textContent and innerText property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/text)
      */
@@ -18449,7 +18366,6 @@ declare var IDBCursorWithValue: {
 };
 
 interface IDBDatabaseEventMap {
-    "abort": Event;
     "close": Event;
     "error": Event;
     "versionchange": IDBVersionChangeEvent;
@@ -18473,8 +18389,6 @@ interface IDBDatabase extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/objectStoreNames)
      */
     readonly objectStoreNames: DOMStringList;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBTransaction/abort_event) */
-    onabort: ((this: IDBDatabase, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBDatabase/close_event) */
     onclose: ((this: IDBDatabase, ev: Event) => any) | null;
     onerror: ((this: IDBDatabase, ev: Event) => any) | null;
@@ -22127,7 +22041,7 @@ interface Node extends EventTarget {
      */
     readonly nodeName: string;
     /**
-     * The read-only **`nodeType`** property of a Node interface is an integer that identifies what the node is. It distinguishes different kind of nodes from each other, such as elements, text and comments.
+     * The read-only **`nodeType`** property of a Node interface is an integer that identifies what the node is. It distinguishes different kinds of nodes from each other, such as elements, text, and comments.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeType)
      */
@@ -22211,7 +22125,7 @@ interface Node extends EventTarget {
      */
     insertBefore<T extends Node>(node: T, child: Node | null): T;
     /**
-     * The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument. It returns a boolean value that is true if the namespace is the default namespace on the given node and false if not.
+     * The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument. It returns a boolean value that is true if the namespace is the default namespace on the given node and false if not. The default namespace can be retrieved with Node.lookupNamespaceURI() by passing null as the argument.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isDefaultNamespace)
      */
@@ -23114,8 +23028,6 @@ interface ParentNode extends Node {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append)
      */
     append(...nodes: (Node | string)[]): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/moveBefore) */
-    moveBefore(node: Node, child: Node | null): void;
     /**
      * Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
      *
@@ -23644,12 +23556,6 @@ interface PerformanceEventTiming extends PerformanceEntry {
      */
     readonly cancelable: boolean;
     /**
-     * The read-only **`interactionId`** property of the PerformanceEventTiming interface returns an ID that uniquely identifies a user interaction which triggered a series of associated events.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/interactionId)
-     */
-    readonly interactionId: number;
-    /**
      * The read-only **`processingEnd`** property returns the time the last event handler finished executing.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEventTiming/processingEnd)
@@ -23915,7 +23821,6 @@ declare var PerformanceObserverEntryList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
  */
 interface PerformancePaintTiming extends PerformanceEntry {
-    toJSON(): any;
 }
 
 declare var PerformancePaintTiming: {
@@ -26797,12 +26702,6 @@ declare var Response: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement)
  */
 interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
-    /**
-     * The **`download`** property of the SVGAElement interface returns a string indicating that the browser should treat the linked URL as a download.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/download)
-     */
-    download: string;
     /**
      * The **`rel`** property of the SVGAElement returns a string reflecting the value of the rel attribute of the SVG <a> element.
      *
@@ -30674,12 +30573,6 @@ interface ScreenOrientation extends EventTarget {
      */
     readonly type: OrientationType;
     /**
-     * The **`lock()`** method of the ScreenOrientation interface locks the orientation of the containing document to the specified orientation.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/lock)
-     */
-    lock(orientation: OrientationLockType): Promise<void>;
-    /**
      * The **`unlock()`** method of the ScreenOrientation interface unlocks the orientation of the containing document, effectively locking it to the default screen orientation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ScreenOrientation/unlock)
@@ -31341,15 +31234,10 @@ interface SourceBuffer extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/mode)
      */
     mode: AppendMode;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/abort_event) */
     onabort: ((this: SourceBuffer, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/error_event) */
     onerror: ((this: SourceBuffer, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/update_event) */
     onupdate: ((this: SourceBuffer, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updateend_event) */
     onupdateend: ((this: SourceBuffer, ev: Event) => any) | null;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updatestart_event) */
     onupdatestart: ((this: SourceBuffer, ev: Event) => any) | null;
     /**
      * The **`timestampOffset`** property of the SourceBuffer interface controls the offset applied to timestamps inside media segments that are appended to the SourceBuffer.
@@ -32819,7 +32707,7 @@ declare var TimeRanges: {
 };
 
 /**
- * The **`ToggleEvent`** interface represents an event notifying the user an Element's state has changed.
+ * The **`ToggleEvent`** interface represents an event that fires when a popover element is toggled between being shown and hidden.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent)
  */
@@ -32836,12 +32724,6 @@ interface ToggleEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/oldState)
      */
     readonly oldState: string;
-    /**
-     * The **`source`** read-only property of the ToggleEvent interface is an Element object instance representing the HTML popover control element that initiated the toggle.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent/source)
-     */
-    readonly source: Element | null;
 }
 
 declare var ToggleEvent: {
@@ -33152,7 +33034,7 @@ interface TreeWalker {
      */
     readonly root: Node;
     /**
-     * The **`TreeWalker.whatToShow`** read-only property returns a bitmask that indicates the types of nodes to show. Non-matching nodes are skipped, but their children may be included, if relevant. The possible values are:
+     * The **`TreeWalker.whatToShow`** read-only property returns a bitmask that indicates the types of nodes to show. Non-matching nodes are skipped, but their children may be included, if relevant.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/whatToShow)
      */
@@ -38662,7 +38544,6 @@ declare namespace WebAssembly {
     type Imports = Record<string, ModuleImports>;
     type ModuleImports = Record<string, ImportValue>;
     type ValueType = keyof ValueTypeMap;
-    var JSTag: Tag;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
     function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compileStreaming_static) */
@@ -39723,8 +39604,6 @@ declare var onchange: ((this: Window, ev: Event) => any) | null;
 declare var onclick: ((this: Window, ev: PointerEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) */
 declare var onclose: ((this: Window, ev: Event) => any) | null;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/command_event) */
-declare var oncommand: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event) */
 declare var oncontextlost: ((this: Window, ev: Event) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event) */
@@ -40198,7 +40077,6 @@ type NotificationDirection = "auto" | "ltr" | "rtl";
 type NotificationPermission = "default" | "denied" | "granted";
 type OffscreenRenderingContextId = "2d" | "bitmaprenderer" | "webgl" | "webgl2" | "webgpu";
 type OpusBitstreamFormat = "ogg" | "opus";
-type OrientationLockType = "any" | "landscape" | "landscape-primary" | "landscape-secondary" | "natural" | "portrait" | "portrait-primary" | "portrait-secondary";
 type OrientationType = "landscape-primary" | "landscape-secondary" | "portrait-primary" | "portrait-secondary";
 type OscillatorType = "custom" | "sawtooth" | "sine" | "square" | "triangle";
 type OverSampleType = "2x" | "4x" | "none";
