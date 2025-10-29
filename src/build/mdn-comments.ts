@@ -20,15 +20,6 @@ const paths: Record<string, string[]> = {
   "webassembly-static-method": ["methods", "method"],
 };
 
-function ensureLeaf(obj: Record<string, any>, keys: string[]) {
-  let leaf = obj;
-  for (const key of keys) {
-    leaf[key] ??= {};
-    leaf = leaf[key];
-  }
-  return leaf;
-}
-
 function extractSlug(slug: string): string[] {
   for (const subdirectory of subdirectories) {
     if (!slug.toLowerCase().startsWith(subdirectory)) {
@@ -41,6 +32,17 @@ function extractSlug(slug: string): string[] {
   }
   return [];
 }
+
+function ensureLeaf(obj: Record<string, any>, keys: string[]) {
+  let leaf = obj;
+  for (const key of keys) {
+    leaf[key] ??= {};
+    leaf = leaf[key];
+  }
+  return leaf;
+}
+
+
 
 function insertComment(
   root: Record<string, any>,
