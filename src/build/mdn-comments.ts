@@ -42,8 +42,6 @@ function ensureLeaf(obj: Record<string, any>, keys: string[]) {
   return leaf;
 }
 
-
-
 function insertComment(
   root: Record<string, any>,
   slug: string[],
