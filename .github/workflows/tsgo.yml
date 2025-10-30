@@ -1,0 +1,20 @@
+name: Test on ts-go
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true  # Ensures submodules are cloned
+
+      
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "lts/*"
+          cache: npm
+
+      - run: npm ci
+      - run: tsgo && node ./lib/build.js

@@ -12,15 +12,15 @@
     "worklet"
   ],
   "scripts": {
-    "build": "tsgo && node ./lib/build.js",
+    "build": "tsc && node ./lib/build.js",
     "baseline-accept": "cpx \"generated\\**\" baselines\\",
-    "lint": "eslint --max-warnings 0 src deploy/*.js && tsgo -p deploy/jsconfig.json",
+    "lint": "eslint --max-warnings 0 src deploy/*.js && tsc -p deploy/jsconfig.json",
     "lint-fix": "eslint --max-warnings 0 src deploy/*.js --fix",
     "test": "npm run build && npm run lint && node ./lib/test.js && node ./unittests/index.js",
-    "changelog": "tsgo && node ./lib/changelog.js",
+    "changelog": "tsc && node ./lib/changelog.js",
     "ts-changelog": "node ./deploy/versionChangelog.js",
     "migrate": "node ./deploy/migrate.js",
-    "version": "npm i && tsgo && node ./lib/version.js",
+    "version": "npm i && tsc && node ./lib/version.js",
     "generate": "npm run build && npm run baseline-accept"
   },
   "author": {
