@@ -9165,8 +9165,11 @@ interface DOMMatrix extends DOMMatrixReadOnly {
 declare var DOMMatrix: {
     prototype: DOMMatrix;
     new(init?: string | number[]): DOMMatrix;
+    /** The **`fromFloat32Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of single-precision (32-bit) floating-point values. */
     fromFloat32Array(array32: Float32Array<ArrayBuffer>): DOMMatrix;
+    /** The **`fromFloat64Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of double-precision (64-bit) floating-point values. */
     fromFloat64Array(array64: Float64Array<ArrayBuffer>): DOMMatrix;
+    /** The **`fromMatrix()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an existing matrix or an object which provides the values for its properties. */
     fromMatrix(other?: DOMMatrixInit): DOMMatrix;
 };
 
@@ -9342,8 +9345,11 @@ interface DOMMatrixReadOnly {
 declare var DOMMatrixReadOnly: {
     prototype: DOMMatrixReadOnly;
     new(init?: string | number[]): DOMMatrixReadOnly;
+    /** The **`fromFloat32Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of single-precision (32-bit) floating-point values. */
     fromFloat32Array(array32: Float32Array<ArrayBuffer>): DOMMatrixReadOnly;
+    /** The **`fromFloat64Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of double-precision (64-bit) floating-point values. */
     fromFloat64Array(array64: Float64Array<ArrayBuffer>): DOMMatrixReadOnly;
+    /** The **`fromMatrix()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an existing matrix or an object which provides the values for its properties. */
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
 };
 
@@ -9514,7 +9520,9 @@ interface DOMQuad {
 declare var DOMQuad: {
     prototype: DOMQuad;
     new(p1?: DOMPointInit, p2?: DOMPointInit, p3?: DOMPointInit, p4?: DOMPointInit): DOMQuad;
+    /** The **`fromQuad()`** static method of the DOMQuad interface returns a new `DOMQuad` object based on the provided set of coordinates in the shape of another `DOMQuad` object. */
     fromQuad(other?: DOMQuadInit): DOMQuad;
+    /** The **`fromRect()`** static method of the DOMQuad interface returns a new `DOMQuad` object based on the provided set of coordinates in the shape of a DOMRect object. */
     fromRect(other?: DOMRectInit): DOMQuad;
 };
 
@@ -32803,7 +32811,7 @@ declare var TimeRanges: {
 };
 
 /**
- * The **`ToggleEvent`** interface represents an event notifying the user an Element's state has changed.
+ * The **`ToggleEvent`** interface represents an event that fires when a popover element is toggled between being shown and hidden.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ToggleEvent)
  */
