@@ -2603,11 +2603,23 @@ interface DOMMatrix extends DOMMatrixReadOnly {
 declare var DOMMatrix: {
     prototype: DOMMatrix;
     new(init?: string | number[]): DOMMatrix;
-    /** The **`fromFloat32Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of single-precision (32-bit) floating-point values. */
+    /**
+     * The **`fromFloat32Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of single-precision (32-bit) floating-point values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/fromFloat32Array_static)
+     */
     fromFloat32Array(array32: Float32Array<ArrayBuffer>): DOMMatrix;
-    /** The **`fromFloat64Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of double-precision (64-bit) floating-point values. */
+    /**
+     * The **`fromFloat64Array()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an array of double-precision (64-bit) floating-point values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/fromFloat64Array_static)
+     */
     fromFloat64Array(array64: Float64Array<ArrayBuffer>): DOMMatrix;
-    /** The **`fromMatrix()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an existing matrix or an object which provides the values for its properties. */
+    /**
+     * The **`fromMatrix()`** static method of the DOMMatrix interface creates a new DOMMatrix object given an existing matrix or an object which provides the values for its properties.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/fromMatrix_static)
+     */
     fromMatrix(other?: DOMMatrixInit): DOMMatrix;
 };
 
@@ -2776,11 +2788,23 @@ interface DOMMatrixReadOnly {
 declare var DOMMatrixReadOnly: {
     prototype: DOMMatrixReadOnly;
     new(init?: string | number[]): DOMMatrixReadOnly;
-    /** The **`fromFloat32Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of single-precision (32-bit) floating-point values. */
+    /**
+     * The **`fromFloat32Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of single-precision (32-bit) floating-point values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/fromFloat32Array_static)
+     */
     fromFloat32Array(array32: Float32Array<ArrayBuffer>): DOMMatrixReadOnly;
-    /** The **`fromFloat64Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of double-precision (64-bit) floating-point values. */
+    /**
+     * The **`fromFloat64Array()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an array of double-precision (64-bit) floating-point values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/fromFloat64Array_static)
+     */
     fromFloat64Array(array64: Float64Array<ArrayBuffer>): DOMMatrixReadOnly;
-    /** The **`fromMatrix()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an existing matrix or an object which provides the values for its properties. */
+    /**
+     * The **`fromMatrix()`** static method of the DOMMatrixReadOnly interface creates a new DOMMatrixReadOnly object given an existing matrix or an object which provides the values for its properties.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/fromMatrix_static)
+     */
     fromMatrix(other?: DOMMatrixInit): DOMMatrixReadOnly;
 };
 
@@ -2929,9 +2953,17 @@ interface DOMQuad {
 declare var DOMQuad: {
     prototype: DOMQuad;
     new(p1?: DOMPointInit, p2?: DOMPointInit, p3?: DOMPointInit, p4?: DOMPointInit): DOMQuad;
-    /** The **`fromQuad()`** static method of the DOMQuad interface returns a new `DOMQuad` object based on the provided set of coordinates in the shape of another `DOMQuad` object. */
+    /**
+     * The **`fromQuad()`** static method of the DOMQuad interface returns a new `DOMQuad` object based on the provided set of coordinates in the shape of another `DOMQuad` object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/fromQuad_static)
+     */
     fromQuad(other?: DOMQuadInit): DOMQuad;
-    /** The **`fromRect()`** static method of the DOMQuad interface returns a new `DOMQuad` object based on the provided set of coordinates in the shape of a DOMRect object. */
+    /**
+     * The **`fromRect()`** static method of the DOMQuad interface returns a new `DOMQuad` object based on the provided set of coordinates in the shape of a DOMRect object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/fromRect_static)
+     */
     fromRect(other?: DOMRectInit): DOMQuad;
 };
 
