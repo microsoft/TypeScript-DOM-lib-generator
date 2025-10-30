@@ -1,5 +1,7 @@
 name: Test on ts-go
 on: [push, pull_request]
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -17,4 +19,4 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: tsgo && node ./lib/build.js
+      - run: npx tsgo && node ./lib/build.js
