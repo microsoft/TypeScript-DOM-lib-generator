@@ -46,7 +46,7 @@
     "@types/webidl2": "^24.4.3",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
-    "@typescript/native-preview": "^7.0.0-dev.20251027.1",
+    "@typescript/native-preview": "^7.0.0-dev.20251029.1",
     "@webref/css": "^6.23.7",
     "@webref/elements": "^2.5.0",
     "@webref/events": "^1.18.6",
