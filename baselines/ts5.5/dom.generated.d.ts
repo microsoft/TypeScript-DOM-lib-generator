@@ -8501,7 +8501,7 @@ declare var CompressionStream: {
  */
 interface ConstantSourceNode extends AudioScheduledSourceNode {
     /**
-     * The read-only `offset` property of the ConstantSourceNode interface returns a AudioParam object indicating the numeric a-rate value which is always returned by the source when asked for the next sample.
+     * The read-only `offset` property of the ConstantSourceNode interface returns an AudioParam object indicating the numeric a-rate value which is always returned by the source when asked for the next sample.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ConstantSourceNode/offset)
      */
@@ -19025,7 +19025,7 @@ declare var IDBVersionChangeEvent: {
 };
 
 /**
- * The **`IIRFilterNode`** interface of the Web Audio API is a AudioNode processor which implements a general **infinite impulse response** (IIR) filter; this type of filter can be used to implement tone control devices and graphic equalizers as well.
+ * The **`IIRFilterNode`** interface of the Web Audio API is an AudioNode processor which implements a general **infinite impulse response** (IIR) filter; this type of filter can be used to implement tone control devices and graphic equalizers as well.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IIRFilterNode)
  */
@@ -19150,7 +19150,7 @@ interface ImageCapture {
      */
     getPhotoSettings(): Promise<PhotoSettings>;
     /**
-     * The **`grabFrame()`** method of the ImageCapture interface takes a snapshot of the live video in a MediaStreamTrack and returns a Promise that resolves with a ImageBitmap containing the snapshot.
+     * The **`grabFrame()`** method of the ImageCapture interface takes a snapshot of the live video in a MediaStreamTrack and returns a Promise that resolves with an ImageBitmap containing the snapshot.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageCapture/grabFrame)
      */
@@ -29810,7 +29810,7 @@ interface SVGSVGElement extends SVGGraphicsElement, SVGFitToViewBox, WindowEvent
      */
     createSVGPoint(): DOMPoint;
     /**
-     * The `createSVGRect()` method of the SVGSVGElement interface creates an DOMRect object outside of any document trees.
+     * The `createSVGRect()` method of the SVGSVGElement interface creates a DOMRect object outside of any document trees.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGSVGElement/createSVGRect)
      */
@@ -31360,7 +31360,7 @@ interface SourceBuffer extends EventTarget {
      */
     timestampOffset: number;
     /**
-     * The **`updating`** read-only property of the SourceBuffer interface indicates whether the `SourceBuffer` is currently being updated — i.e., whether an SourceBuffer.appendBuffer() or SourceBuffer.remove() operation is currently in progress.
+     * The **`updating`** read-only property of the SourceBuffer interface indicates whether the `SourceBuffer` is currently being updated — i.e., whether an SourceBuffer.appendBuffer or SourceBuffer.remove operation is currently in progress.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/updating)
      */
