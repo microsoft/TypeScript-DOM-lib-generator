@@ -2849,7 +2849,7 @@ interface AbortSignalEventMap {
  */
 interface AbortSignal extends EventTarget {
     /**
-     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (`true`) or not (`false`).
+     * The **`aborted`** read-only property returns a value that indicates whether the asynchronous operations the signal is communicating with are aborted (true) or not (false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortSignal/aborted)
      */
@@ -2904,7 +2904,7 @@ declare var AbortSignal: {
  */
 interface AbstractRange {
     /**
-     * The read-only **`collapsed`** property of the AbstractRange interface returns `true` if the range's start position and end position are the same.
+     * The read-only **`collapsed`** property of the AbstractRange interface returns true if the range's start position and end position are the same.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/collapsed)
      */
@@ -2966,7 +2966,7 @@ interface AnalyserNode extends AudioNode {
      */
     fftSize: number;
     /**
-     * The **`frequencyBinCount`** read-only property of the AnalyserNode interface contains the total number of data points available to AudioContext sampleRate. This is half of the value of the AnalyserNode.fftSize. The two methods' indices have a linear relationship with the frequencies they represent, between `0` and the Nyquist frequency.
+     * The **`frequencyBinCount`** read-only property of the AnalyserNode interface contains the total number of data points available to AudioContext sampleRate. This is half of the value of the AnalyserNode.fftSize. The two methods' indices have a linear relationship with the frequencies they represent, between 0 and the Nyquist frequency.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnalyserNode/frequencyBinCount)
      */
@@ -3046,7 +3046,7 @@ interface Animation extends EventTarget {
      */
     currentTime: CSSNumberish | null;
     /**
-     * The **`Animation.effect`** property of the Web Animations API gets and sets the target effect of an animation. The target effect may be either an effect object of a type based on AnimationEffect, such as KeyframeEffect, or `null`.
+     * The **`Animation.effect`** property of the Web Animations API gets and sets the target effect of an animation. The target effect may be either an effect object of a type based on AnimationEffect, such as KeyframeEffect, or null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/effect)
      */
@@ -3070,7 +3070,7 @@ interface Animation extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/remove_event) */
     onremove: ((this: Animation, ev: AnimationPlaybackEvent) => any) | null;
     /**
-     * The **`overallProgress`** read-only property of the Animation interface returns a number between `0` and 1 indicating the animation's overall progress towards its finished state. This is the overall progress across all of the animation's iterations, not each individual iteration.
+     * The **`overallProgress`** read-only property of the Animation interface returns a number between 0 and 1 indicating the animation's overall progress towards its finished state. This is the overall progress across all of the animation's iterations, not each individual iteration.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Animation/overallProgress)
      */
@@ -3220,7 +3220,7 @@ interface AnimationEvent extends Event {
      */
     readonly animationName: string;
     /**
-     * The **`AnimationEvent.elapsedTime`** read-only property is a float giving the amount of time the animation has been running, in seconds, when this event fired, excluding any time the animation was paused. For an animationstart event, elapsedTime is `0`.`0` unless there was a negative value for animation-delay, in which case the event will be fired with elapsedTime containing (-1 * delay).
+     * The **`AnimationEvent.elapsedTime`** read-only property is a float giving the amount of time the animation has been running, in seconds, when this event fired, excluding any time the animation was paused. For an animationstart event, elapsedTime is 0.0 unless there was a negative value for animation-delay, in which case the event will be fired with elapsedTime containing (-1 * delay).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationEvent/elapsedTime)
      */
@@ -3277,13 +3277,13 @@ declare var AnimationPlaybackEvent: {
  */
 interface AnimationTimeline {
     /**
-     * The **`currentTime`** read-only property of the Web Animations API's AnimationTimeline interface returns the timeline's current time in milliseconds, or `null` if the timeline is inactive.
+     * The **`currentTime`** read-only property of the Web Animations API's AnimationTimeline interface returns the timeline's current time in milliseconds, or null if the timeline is inactive.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/currentTime)
      */
     readonly currentTime: CSSNumberish | null;
     /**
-     * The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or `null`.
+     * The **`duration`** read-only property of the Web Animations API's AnimationTimeline interface returns the maximum value for this timeline or null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AnimationTimeline/duration)
      */
@@ -3314,7 +3314,7 @@ interface Attr extends Node {
      */
     readonly name: string;
     /**
-     * The read-only **`namespaceURI`** property of the Attr interface returns the namespace URI of the attribute, or `null` if the element is not in a namespace.
+     * The read-only **`namespaceURI`** property of the Attr interface returns the namespace URI of the attribute, or null if the element is not in a namespace.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr/namespaceURI)
      */
@@ -3327,13 +3327,13 @@ interface Attr extends Node {
      */
     readonly ownerElement: Element | null;
     /**
-     * The read-only **`prefix`** property of the Attr returns the namespace prefix of the attribute, or `null` if no prefix is specified.
+     * The read-only **`prefix`** property of the Attr returns the namespace prefix of the attribute, or null if no prefix is specified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr/prefix)
      */
     readonly prefix: string | null;
     /**
-     * The read-only **`specified`** property of the Attr interface always returns `true`.
+     * The read-only **`specified`** property of the Attr interface always returns true.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Attr/specified)
@@ -3398,7 +3398,7 @@ interface AudioBuffer {
      */
     copyToChannel(source: Float32Array<ArrayBuffer>, channelNumber: number, bufferOffset?: number): void;
     /**
-     * The **`getChannelData()`** method of the AudioBuffer Interface returns a Float32Array containing the PCM data associated with the channel, defined by the channel parameter (with `0` representing the first channel).
+     * The **`getChannelData()`** method of the AudioBuffer Interface returns a Float32Array containing the PCM data associated with the channel, defined by the channel parameter (with 0 representing the first channel).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioBuffer/getChannelData)
      */
@@ -3435,7 +3435,7 @@ interface AudioBufferSourceNode extends AudioScheduledSourceNode {
      */
     loop: boolean;
     /**
-     * The **`loopEnd`** property of the AudioBufferSourceNode interface specifies is a floating point number specifying, in seconds, at what offset into playing the AudioBuffer playback should loop back to the time indicated by the loopStart property. This is only used if the loop property is `true`.
+     * The **`loopEnd`** property of the AudioBufferSourceNode interface specifies is a floating point number specifying, in seconds, at what offset into playing the AudioBuffer playback should loop back to the time indicated by the loopStart property. This is only used if the loop property is true.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioBufferSourceNode/loopEnd)
      */
@@ -3888,13 +3888,13 @@ interface AudioNode extends EventTarget {
      */
     readonly context: BaseAudioContext;
     /**
-     * The **`numberOfInputs`** property of the AudioNode interface returns the number of inputs feeding the node. Source nodes are defined as nodes having a numberOfInputs property with a value of `0`.
+     * The **`numberOfInputs`** property of the AudioNode interface returns the number of inputs feeding the node. Source nodes are defined as nodes having a numberOfInputs property with a value of 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioNode/numberOfInputs)
      */
     readonly numberOfInputs: number;
     /**
-     * The **`numberOfOutputs`** property of the AudioNode interface returns the number of outputs coming out of the node. Destination nodes — like AudioDestinationNode — have a value of `0` for this attribute.
+     * The **`numberOfOutputs`** property of the AudioNode interface returns the number of outputs coming out of the node. Destination nodes — like AudioDestinationNode — have a value of 0 for this attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AudioNode/numberOfOutputs)
      */
@@ -4192,7 +4192,7 @@ interface AuthenticatorAttestationResponse extends AuthenticatorResponse {
      */
     getAuthenticatorData(): ArrayBuffer;
     /**
-     * The **`getPublicKey()`** method of the AuthenticatorAttestationResponse interface returns an ArrayBuffer containing the DER SubjectPublicKeyInfo of the new credential (see Subject Public Key Info), or `null` if this is not available.
+     * The **`getPublicKey()`** method of the AuthenticatorAttestationResponse interface returns an ArrayBuffer containing the DER SubjectPublicKeyInfo of the new credential (see Subject Public Key Info), or null if this is not available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AuthenticatorAttestationResponse/getPublicKey)
      */
@@ -4243,7 +4243,7 @@ declare var AuthenticatorResponse: {
  */
 interface BarProp {
     /**
-     * The **`visible`** read-only property of the BarProp interface returns `true` if the user interface element it represents is visible.
+     * The **`visible`** read-only property of the BarProp interface returns true if the user interface element it represents is visible.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BarProp/visible)
      */
@@ -4273,7 +4273,7 @@ interface BaseAudioContext extends EventTarget {
      */
     readonly audioWorklet: AudioWorklet;
     /**
-     * The **`currentTime`** read-only property of the BaseAudioContext interface returns a double representing an ever-increasing hardware timestamp in seconds that can be used for scheduling audio playback, visualizing timelines, etc. It starts at `0`.
+     * The **`currentTime`** read-only property of the BaseAudioContext interface returns a double representing an ever-increasing hardware timestamp in seconds that can be used for scheduling audio playback, visualizing timelines, etc. It starts at 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/BaseAudioContext/currentTime)
      */
@@ -4993,7 +4993,7 @@ declare var CSSImportRule: {
  */
 interface CSSKeyframeRule extends CSSRule {
     /**
-     * The **`keyText`** property of the CSSKeyframeRule interface represents the keyframe selector as a comma-separated list of percentage values. The from and to keywords map to `0`% and 100%, respectively.
+     * The **`keyText`** property of the CSSKeyframeRule interface represents the keyframe selector as a comma-separated list of percentage values. The from and to keywords map to 0% and 100%, respectively.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/keyText)
      */
@@ -5387,7 +5387,7 @@ interface CSSNumericValue extends CSSStyleValue {
      */
     div(...values: CSSNumberish[]): CSSNumericValue;
     /**
-     * The **`equals()`** method of the CSSNumericValue interface returns a boolean indicating whether the passed value are strictly equal. To return a value of `true`, all passed values must be of the same type and value and must be in the same order. This allows structural equality to be tested quickly.
+     * The **`equals()`** method of the CSSNumericValue interface returns a boolean indicating whether the passed value are strictly equal. To return a value of true, all passed values must be of the same type and value and must be in the same order. This allows structural equality to be tested quickly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/equals)
      */
@@ -5513,7 +5513,7 @@ declare var CSSPageRule: {
  */
 interface CSSPerspective extends CSSTransformComponent {
     /**
-     * The **`length`** property of the CSSPerspective interface sets the distance from z=`0`.
+     * The **`length`** property of the CSSPerspective interface sets the distance from z=0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective/length)
      */
@@ -5792,7 +5792,7 @@ interface CSSRule {
      */
     cssText: string;
     /**
-     * The **`parentRule`** property of the CSSRule interface returns the containing rule of the current rule if this exists, or otherwise returns `null`.
+     * The **`parentRule`** property of the CSSRule interface returns the containing rule of the current rule if this exists, or otherwise returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRule/parentRule)
      */
@@ -5854,7 +5854,7 @@ interface CSSRuleList {
      */
     readonly length: number;
     /**
-     * The **`item()`** method of the CSSRuleList interface returns the CSSRule object at the specified index or `null` if the specified index doesn't exist.
+     * The **`item()`** method of the CSSRuleList interface returns the CSSRule object at the specified index or null if the specified index doesn't exist.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRuleList/item)
      */
@@ -7467,7 +7467,7 @@ interface CSSStyleSheet extends StyleSheet {
      */
     readonly cssRules: CSSRuleList;
     /**
-     * The read-only CSSStyleSheet property **`ownerRule`** returns the CSSImportRule corresponding to the @import at-rule which imported the stylesheet into the document. If the stylesheet wasn't imported into the document using @import, the returned value is `null`.
+     * The read-only CSSStyleSheet property **`ownerRule`** returns the CSSImportRule corresponding to the @import at-rule which imported the stylesheet into the document. If the stylesheet wasn't imported into the document using @import, the returned value is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleSheet/ownerRule)
      */
@@ -7777,7 +7777,7 @@ interface Cache {
      */
     addAll(requests: RequestInfo[]): Promise<void>;
     /**
-     * The **`delete()`** method of the Cache interface finds the Cache entry whose key is the request, and if found, deletes the Cache entry and returns a Promise that resolves to `true`. If no Cache entry is found, it resolves to `false`.
+     * The **`delete()`** method of the Cache interface finds the Cache entry whose key is the request, and if found, deletes the Cache entry and returns a Promise that resolves to true. If no Cache entry is found, it resolves to false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache/delete)
      */
@@ -7821,13 +7821,13 @@ declare var Cache: {
  */
 interface CacheStorage {
     /**
-     * The **`delete()`** method of the CacheStorage interface finds the Cache object matching the cacheName, and if found, deletes the Cache object and returns a Promise that resolves to `true`. If no Cache object is found, it resolves to `false`.
+     * The **`delete()`** method of the CacheStorage interface finds the Cache object matching the cacheName, and if found, deletes the Cache object and returns a Promise that resolves to true. If no Cache object is found, it resolves to false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/delete)
      */
     delete(cacheName: string): Promise<boolean>;
     /**
-     * The **`has()`** method of the CacheStorage interface returns a Promise that resolves to `true` if a Cache object matches the cacheName.
+     * The **`has()`** method of the CacheStorage interface returns a Promise that resolves to true if a Cache object matches the cacheName.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/has)
      */
@@ -8052,7 +8052,7 @@ interface CanvasRect {
  */
 interface CanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasSettings, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform, CanvasUserInterface {
     /**
-     * The **`CanvasRenderingContext2D.canvas`** property, part of the Canvas API, is a read-only reference to the HTMLCanvasElement object that is associated with a given context. It might be `null` if there is no associated <canvas> element.
+     * The **`CanvasRenderingContext2D.canvas`** property, part of the Canvas API, is a read-only reference to the HTMLCanvasElement object that is associated with a given context. It might be null if there is no associated <canvas> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas)
      */
@@ -8388,7 +8388,7 @@ declare var ClipboardItem: {
     prototype: ClipboardItem;
     new(items: Record<string, string | Blob | PromiseLike<string | Blob>>, options?: ClipboardItemOptions): ClipboardItem;
     /**
-     * The **`supports()`** static method of the ClipboardItem interface returns `true` if the given MIME type is supported by the clipboard, and `false` otherwise.
+     * The **`supports()`** static method of the ClipboardItem interface returns true if the given MIME type is supported by the clipboard, and false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardItem/supports_static)
      */
@@ -8414,7 +8414,7 @@ interface CloseEvent extends Event {
      */
     readonly reason: string;
     /**
-     * The **`wasClean`** read-only property of the CloseEvent interface returns `true` if the connection closed cleanly.
+     * The **`wasClean`** read-only property of the CloseEvent interface returns true if the connection closed cleanly.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent/wasClean)
      */
@@ -8535,7 +8535,7 @@ declare var ConstantSourceNode: {
  */
 interface ContentVisibilityAutoStateChangeEvent extends Event {
     /**
-     * The **`skipped`** read-only property of the ContentVisibilityAutoStateChangeEvent interface returns `true` if the user agent skips the element's contents, or `false` otherwise.
+     * The **`skipped`** read-only property of the ContentVisibilityAutoStateChangeEvent interface returns true if the user agent skips the element's contents, or false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ContentVisibilityAutoStateChangeEvent/skipped)
      */
@@ -8928,7 +8928,7 @@ declare var CustomStateSet: {
  */
 interface DOMException extends Error {
     /**
-     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or `0` if none match.
+     * The **`code`** read-only property of the DOMException interface returns one of the legacy error code constants, or 0 if none match.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMException/code)
@@ -9028,7 +9028,7 @@ interface DOMImplementation {
      */
     createHTMLDocument(title?: string): Document;
     /**
-     * The **`DOMImplementation.hasFeature()`** method returns a boolean flag indicating if a given feature is supported. It is deprecated and modern browsers return `true` in all cases.
+     * The **`DOMImplementation.hasFeature()`** method returns a boolean flag indicating if a given feature is supported. It is deprecated and modern browsers return true in all cases.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/hasFeature)
@@ -9092,19 +9092,19 @@ interface DOMMatrix extends DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix#instance_properties) */
     m44: number;
     /**
-     * The **`invertSelf()`** method of the DOMMatrix interface inverts the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to `false`.
+     * The **`invertSelf()`** method of the DOMMatrix interface inverts the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/invertSelf)
      */
     invertSelf(): DOMMatrix;
     /**
-     * The **`multiplySelf()`** method of the DOMMatrix interface multiplies a matrix by the otherMatrix parameter, computing the dot product of the original matrix and the specified matrix: A⋅B. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is `0` except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
+     * The **`multiplySelf()`** method of the DOMMatrix interface multiplies a matrix by the otherMatrix parameter, computing the dot product of the original matrix and the specified matrix: A⋅B. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is 0 except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/multiplySelf)
      */
     multiplySelf(other?: DOMMatrixInit): DOMMatrix;
     /**
-     * The **`preMultiplySelf()`** method of the DOMMatrix interface modifies the matrix by pre-multiplying it with the specified DOMMatrix. This is equivalent to the dot product B⋅A, where matrix A is the source matrix and B is the matrix given as an input to the method. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is `0` except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
+     * The **`preMultiplySelf()`** method of the DOMMatrix interface modifies the matrix by pre-multiplying it with the specified DOMMatrix. This is equivalent to the dot product B⋅A, where matrix A is the source matrix and B is the matrix given as an input to the method. If no matrix is specified as the multiplier, the matrix is multiplied by a matrix in which every element is 0 except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/preMultiplySelf)
      */
@@ -9116,7 +9116,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     rotateAxisAngleSelf(x?: number, y?: number, z?: number, angle?: number): DOMMatrix;
     /**
-     * The **`rotateFromVectorSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by rotating the matrix by the angle between the specified vector and (1, `0`). The rotation angle is determined by the angle between the vector (1,`0`)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both `0`, the angle is specified as `0`, and the matrix is not altered.
+     * The **`rotateFromVectorSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by rotating the matrix by the angle between the specified vector and (1, 0). The rotation angle is determined by the angle between the vector (1,0)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both 0, the angle is specified as 0, and the matrix is not altered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/rotateFromVectorSelf)
      */
@@ -9128,13 +9128,13 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     rotateSelf(rotX?: number, rotY?: number, rotZ?: number): DOMMatrix;
     /**
-     * The **`scale3dSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor to all three axes, centered on the given origin, with a default origin of (`0`, `0`, `0`), returning the 3D-scaled matrix.
+     * The **`scale3dSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor to all three axes, centered on the given origin, with a default origin of (0, 0, 0), returning the 3D-scaled matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scale3dSelf)
      */
     scale3dSelf(scale?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     /**
-     * The **`scaleSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor, centered on the given origin, with a default origin of (`0`, `0`), returning the scaled matrix.
+     * The **`scaleSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix by applying a specified scaling factor, centered on the given origin, with a default origin of (0, 0), returning the scaled matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/scaleSelf)
      */
@@ -9158,7 +9158,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      */
     skewYSelf(sy?: number): DOMMatrix;
     /**
-     * The **`translateSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix. It applies the specified vectors and returns the updated matrix. The default vector is [`0`, `0`, `0`].
+     * The **`translateSelf()`** method of the DOMMatrix interface is a mutable transformation method that modifies a matrix. It applies the specified vectors and returns the updated matrix. The default vector is [0, 0, 0].
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/translateSelf)
      */
@@ -9201,13 +9201,13 @@ interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly f: number;
     /**
-     * The readonly **`is2D`** property of the DOMMatrixReadOnly interface is a Boolean flag that is `true` when the matrix is 2D. The value is `true` if the matrix was initialized as a 2D matrix and only 2D transformation operations were applied. Otherwise, the matrix is defined in 3D, and is2D is `false`.
+     * The readonly **`is2D`** property of the DOMMatrixReadOnly interface is a Boolean flag that is true when the matrix is 2D. The value is true if the matrix was initialized as a 2D matrix and only 2D transformation operations were applied. Otherwise, the matrix is defined in 3D, and is2D is false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/is2D)
      */
     readonly is2D: boolean;
     /**
-     * The readonly **`isIdentity`** property of the DOMMatrixReadOnly interface is a Boolean whose value is `true` if the matrix is the identity matrix.
+     * The readonly **`isIdentity`** property of the DOMMatrixReadOnly interface is a Boolean whose value is true if the matrix is the identity matrix.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/isIdentity)
      */
@@ -9245,25 +9245,25 @@ interface DOMMatrixReadOnly {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly#instance_properties) */
     readonly m44: number;
     /**
-     * The **`flipX()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the x-axis. This is equivalent to multiplying the matrix by DOMMatrix(-1, `0`, `0`, 1, `0`, `0`). The original matrix is not modified.
+     * The **`flipX()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the x-axis. This is equivalent to multiplying the matrix by DOMMatrix(-1, 0, 0, 1, 0, 0). The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/flipX)
      */
     flipX(): DOMMatrix;
     /**
-     * The **`flipY()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the y-axis. This is equivalent to multiplying the matrix by DOMMatrix(1, `0`, `0`, -1, `0`, `0`). The original matrix is not modified.
+     * The **`flipY()`** method of the DOMMatrixReadOnly interface creates a new matrix being the result of the original matrix flipped about the y-axis. This is equivalent to multiplying the matrix by DOMMatrix(1, 0, 0, -1, 0, 0). The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/flipY)
      */
     flipY(): DOMMatrix;
     /**
-     * The **`inverse()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the inverse of the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to `false`. The original matrix is not changed.
+     * The **`inverse()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the inverse of the original matrix. If the matrix cannot be inverted, the new matrix's components are all set to NaN and its is2D property is set to false. The original matrix is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/inverse)
      */
     inverse(): DOMMatrix;
     /**
-     * The **`multiply()`** method of the DOMMatrixReadOnly interface creates and returns a new matrix which is the dot product of the matrix and the otherMatrix parameter. If otherMatrix is omitted, the matrix is multiplied by a matrix in which every element is `0` except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1. The original matrix is not modified.
+     * The **`multiply()`** method of the DOMMatrixReadOnly interface creates and returns a new matrix which is the dot product of the matrix and the otherMatrix parameter. If otherMatrix is omitted, the matrix is multiplied by a matrix in which every element is 0 except the bottom-right corner and the element immediately above and to its left: m33 and m34. These have the default value of 1. The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/multiply)
      */
@@ -9281,7 +9281,7 @@ interface DOMMatrixReadOnly {
      */
     rotateAxisAngle(x?: number, y?: number, z?: number, angle?: number): DOMMatrix;
     /**
-     * The **`rotateFromVector()`** method of the DOMMatrixReadOnly interface is returns a new DOMMatrix created by rotating the source matrix by the angle between the specified vector and (1, `0`). The rotation angle is determined by the angle between the vector (1,`0`)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both `0`, the angle is specified as `0`. The original matrix is not altered.
+     * The **`rotateFromVector()`** method of the DOMMatrixReadOnly interface is returns a new DOMMatrix created by rotating the source matrix by the angle between the specified vector and (1, 0). The rotation angle is determined by the angle between the vector (1,0)T and (x,y)T in the clockwise direction, or (+/-)arctan(y/x). If x and y are both 0, the angle is specified as 0. The original matrix is not altered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/rotateFromVector)
      */
@@ -9293,7 +9293,7 @@ interface DOMMatrixReadOnly {
      */
     scale(scaleX?: number, scaleY?: number, scaleZ?: number, originX?: number, originY?: number, originZ?: number): DOMMatrix;
     /**
-     * The **`scale3d()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the result of a 3D scale transform being applied to the matrix. It returns a new DOMMatrix created by scaling the source 3d matrix by the given scale factor centered on the origin point specified by the origin parameters, with a default origin of (`0`, `0`, `0`). The original matrix is not modified.
+     * The **`scale3d()`** method of the DOMMatrixReadOnly interface creates a new matrix which is the result of a 3D scale transform being applied to the matrix. It returns a new DOMMatrix created by scaling the source 3d matrix by the given scale factor centered on the origin point specified by the origin parameters, with a default origin of (0, 0, 0). The original matrix is not modified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/scale3d)
      */
@@ -9588,7 +9588,7 @@ interface DOMRectList {
      */
     readonly length: number;
     /**
-     * The DOMRectList method **`item()`** returns the DOMRect at the specified index within the list, or `null` if the index is out of range.
+     * The DOMRectList method **`item()`** returns the DOMRect at the specified index within the list, or null if the index is out of range.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectList/item)
      */
@@ -9746,7 +9746,7 @@ interface DOMTokenList {
      */
     add(...tokens: string[]): void;
     /**
-     * The **`contains()`** method of the DOMTokenList interface returns a boolean value — `true` if the underlying list contains the given token, otherwise `false`.
+     * The **`contains()`** method of the DOMTokenList interface returns a boolean value — true if the underlying list contains the given token, otherwise false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/contains)
      */
@@ -9764,19 +9764,19 @@ interface DOMTokenList {
      */
     remove(...tokens: string[]): void;
     /**
-     * The **`replace()`** method of the DOMTokenList interface replaces an existing token with a new token. If the first token doesn't exist, replace() returns `false` immediately, without adding the new token to the token list.
+     * The **`replace()`** method of the DOMTokenList interface replaces an existing token with a new token. If the first token doesn't exist, replace() returns false immediately, without adding the new token to the token list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/replace)
      */
     replace(token: string, newToken: string): boolean;
     /**
-     * The **`supports()`** method of the DOMTokenList interface returns `true` if a given token is in the associated attribute's supported tokens. This method is intended to support feature detection.
+     * The **`supports()`** method of the DOMTokenList interface returns true if a given token is in the associated attribute's supported tokens. This method is intended to support feature detection.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/supports)
      */
     supports(token: string): boolean;
     /**
-     * The **`toggle()`** method of the DOMTokenList interface removes an existing token from the list and returns `false`. If the token doesn't exist it's added and the function returns `true`.
+     * The **`toggle()`** method of the DOMTokenList interface removes an existing token from the list and returns false. If the token doesn't exist it's added and the function returns true.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMTokenList/toggle)
      */
@@ -9876,7 +9876,7 @@ interface DataTransferItem {
      */
     readonly type: string;
     /**
-     * If the item is a file, the **`DataTransferItem.getAsFile()`** method returns the drag data item's File object. If the item is not a file, this method returns `null`.
+     * If the item is a file, the **`DataTransferItem.getAsFile()`** method returns the drag data item's File object. If the item is not a file, this method returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransferItem/getAsFile)
      */
@@ -9888,7 +9888,7 @@ interface DataTransferItem {
      */
     getAsString(callback: FunctionStringCallback | null): void;
     /**
-     * If the item described by the DataTransferItem is a file, **`webkitGetAsEntry()`** returns a FileSystemFileEntry or FileSystemDirectoryEntry representing it. If the item isn't a file, `null` is returned.
+     * If the item described by the DataTransferItem is a file, **`webkitGetAsEntry()`** returns a FileSystemFileEntry or FileSystemDirectoryEntry representing it. If the item isn't a file, null is returned.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DataTransferItem/webkitGetAsEntry)
      */
@@ -10174,7 +10174,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     bgColor: string;
     /**
-     * The **`Document.body`** property represents the <body> or <frameset> node of the current document, or `null` if no such element exists.
+     * The **`Document.body`** property represents the <body> or <frameset> node of the current document, or null if no such element exists.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/body)
      */
@@ -10216,7 +10216,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     readonly currentScript: HTMLOrSVGScriptElement | null;
     /**
-     * In browsers, **`document.defaultView`** returns the window object associated with a document, or `null` if none is available.
+     * In browsers, **`document.defaultView`** returns the window object associated with a document, or null if none is available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/defaultView)
      */
@@ -10390,7 +10390,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     readonly referrer: string;
     /**
-     * **`Document.rootElement`** returns the Element that is the root element of the document if it is an <svg> element, otherwise `null`. It is deprecated in favor of Document.documentElement, which returns the root element for all documents.
+     * **`Document.rootElement`** returns the Element that is the root element of the document if it is an <svg> element, otherwise null. It is deprecated in favor of Document.documentElement, which returns the root element for all documents.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/rootElement)
@@ -10602,7 +10602,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     createProcessingInstruction(target: string, data: string): ProcessingInstruction;
     /**
-     * The **`Document.createRange()`** method returns a new Range object whose start and end are offset `0` of the Document object on which it was called.
+     * The **`Document.createRange()`** method returns a new Range object whose start and end are offset 0 of the Document object on which it was called.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createRange)
      */
@@ -11139,7 +11139,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     readonly localName: string;
     /**
-     * The **`Element.namespaceURI`** read-only property returns the namespace URI of the element, or `null` if the element is not in a namespace.
+     * The **`Element.namespaceURI`** read-only property returns the namespace URI of the element, or null if the element is not in a namespace.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/namespaceURI)
      */
@@ -11163,7 +11163,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
     get part(): DOMTokenList;
     set part(value: string);
     /**
-     * The **`Element.prefix`** read-only property returns the namespace prefix of the specified element, or `null` if no prefix is specified.
+     * The **`Element.prefix`** read-only property returns the namespace prefix of the specified element, or null if no prefix is specified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/prefix)
      */
@@ -11244,7 +11244,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     getAttribute(qualifiedName: string): string | null;
     /**
-     * The **`getAttributeNS()`** method of the Element interface returns the string value of the attribute with the specified namespace and name. If the named attribute does not exist, the value returned will either be `null` or '' (the empty string); see Notes for details.
+     * The **`getAttributeNS()`** method of the Element interface returns the string value of the attribute with the specified namespace and name. If the named attribute does not exist, the value returned will either be null or '' (the empty string); see Notes for details.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNS)
      */
@@ -11549,7 +11549,7 @@ interface ElementInternals extends ARIAMixin {
      */
     readonly validity: ValidityState;
     /**
-     * The **`willValidate`** read-only property of the ElementInternals interface returns `true` if the element is a submittable element that is a candidate for constraint validation.
+     * The **`willValidate`** read-only property of the ElementInternals interface returns true if the element is a submittable element that is a candidate for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ElementInternals/willValidate)
      */
@@ -11727,7 +11727,7 @@ interface Event {
      */
     readonly bubbles: boolean;
     /**
-     * The **`cancelBubble`** property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to `true` before returning from an event handler prevents propagation of the event. In later implementations, setting this to `false` does nothing. See Browser compatibility for details.
+     * The **`cancelBubble`** property of the Event interface is deprecated. Use Event.stopPropagation() instead. Setting its value to true before returning from an event handler prevents propagation of the event. In later implementations, setting this to false does nothing. See Browser compatibility for details.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)
@@ -11764,7 +11764,7 @@ interface Event {
      */
     readonly eventPhase: number;
     /**
-     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is `true` when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to `false` in user agents.
+     * The **`isTrusted`** read-only property of the Event interface is a boolean value that is true when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and false when the event was dispatched via EventTarget.dispatchEvent(). The only exception is the click event, which initializes the isTrusted property to false in user agents.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
      */
@@ -12258,13 +12258,13 @@ interface FileSystemEntry {
      */
     readonly fullPath: string;
     /**
-     * The read-only **`isDirectory`** property of the FileSystemEntry interface is `true` if the entry represents a directory (meaning it's a FileSystemDirectoryEntry) and `false` if it's not.
+     * The read-only **`isDirectory`** property of the FileSystemEntry interface is true if the entry represents a directory (meaning it's a FileSystemDirectoryEntry) and false if it's not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry/isDirectory)
      */
     readonly isDirectory: boolean;
     /**
-     * The read-only **`isFile`** property of the FileSystemEntry interface is `true` if the entry represents a file (meaning it's a FileSystemFileEntry) and `false` if it's not.
+     * The read-only **`isFile`** property of the FileSystemEntry interface is true if the entry represents a file (meaning it's a FileSystemFileEntry) and false if it's not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemEntry/isFile)
      */
@@ -12545,7 +12545,7 @@ interface FontFaceSet extends EventTarget {
      */
     readonly status: FontFaceSetLoadStatus;
     /**
-     * The **`check()`** method of the FontFaceSet returns `true` if you can render some text using the given font specification without attempting to use any fonts in this FontFaceSet that are not yet fully loaded. This means you can use the font specification without causing a font swap.
+     * The **`check()`** method of the FontFaceSet returns true if you can render some text using the given font specification without attempting to use any fonts in this FontFaceSet that are not yet fully loaded. This means you can use the font specification without causing a font swap.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSet/check)
      */
@@ -12805,13 +12805,13 @@ declare var Gamepad: {
  */
 interface GamepadButton {
     /**
-     * The **`GamepadButton.pressed`** property of the GamepadButton interface returns a boolean indicating whether the button is currently pressed (`true`) or unpressed (`false`).
+     * The **`GamepadButton.pressed`** property of the GamepadButton interface returns a boolean indicating whether the button is currently pressed (true) or unpressed (false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadButton/pressed)
      */
     readonly pressed: boolean;
     /**
-     * The **`touched`** property of the GamepadButton interface returns a boolean indicating whether a button capable of detecting touch is currently touched (`true`) or not touched (`false`).
+     * The **`touched`** property of the GamepadButton interface returns a boolean indicating whether a button capable of detecting touch is currently touched (true) or not touched (false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GamepadButton/touched)
      */
@@ -12925,19 +12925,19 @@ interface GeolocationCoordinates {
      */
     readonly accuracy: number;
     /**
-     * The **`altitude`** read-only property of the GeolocationCoordinates interface is a double representing the altitude of the position in meters above the WGS84 ellipsoid (which defines the nominal sea level surface). This value is `null` if the implementation cannot provide this data.
+     * The **`altitude`** read-only property of the GeolocationCoordinates interface is a double representing the altitude of the position in meters above the WGS84 ellipsoid (which defines the nominal sea level surface). This value is null if the implementation cannot provide this data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/altitude)
      */
     readonly altitude: number | null;
     /**
-     * The **`altitudeAccuracy`** read-only property of the GeolocationCoordinates interface is a strictly positive double representing the accuracy, with a 95% confidence level, of the altitude expressed in meters. This value is `null` if the implementation doesn't support measuring altitude.
+     * The **`altitudeAccuracy`** read-only property of the GeolocationCoordinates interface is a strictly positive double representing the accuracy, with a 95% confidence level, of the altitude expressed in meters. This value is null if the implementation doesn't support measuring altitude.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/altitudeAccuracy)
      */
     readonly altitudeAccuracy: number | null;
     /**
-     * The **`heading`** read-only property of the GeolocationCoordinates interface is a double representing the direction in which the device is traveling. This value, specified in degrees, indicates how far off from heading due north the device is. `0` degrees represents `true` north, and the direction is determined clockwise (which means that east is 90 degrees and west is 270 degrees). If GeolocationCoordinates.speed is `0` or the device is not able to provide heading information, heading is `null`.
+     * The **`heading`** read-only property of the GeolocationCoordinates interface is a double representing the direction in which the device is traveling. This value, specified in degrees, indicates how far off from heading due north the device is. 0 degrees represents true north, and the direction is determined clockwise (which means that east is 90 degrees and west is 270 degrees). If GeolocationCoordinates.speed is 0 or the device is not able to provide heading information, heading is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/heading)
      */
@@ -12955,7 +12955,7 @@ interface GeolocationCoordinates {
      */
     readonly longitude: number;
     /**
-     * The **`speed`** read-only property of the GeolocationCoordinates interface is a double representing the velocity of the device in meters per second. This value is `null` if the implementation is not able to measure it.
+     * The **`speed`** read-only property of the GeolocationCoordinates interface is a double representing the velocity of the device in meters per second. This value is null if the implementation is not able to measure it.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GeolocationCoordinates/speed)
      */
@@ -13397,7 +13397,7 @@ interface HTMLAllCollection {
      */
     item(nameOrIndex?: string): HTMLCollection | Element | null;
     /**
-     * The **`namedItem()`** method of the HTMLAllCollection interface returns the first Element in the collection whose id or name attribute matches the specified name, or `null` if no element matches.
+     * The **`namedItem()`** method of the HTMLAllCollection interface returns the first Element in the collection whose id or name attribute matches the specified name, or null if no element matches.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAllCollection/namedItem)
      */
@@ -13688,7 +13688,7 @@ interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
      */
     disabled: boolean;
     /**
-     * The **`form`** read-only property of the HTMLButtonElement interface returns an HTMLFormElement object that owns this <button>, or `null` if this button is not owned by any form.
+     * The **`form`** read-only property of the HTMLButtonElement interface returns an HTMLFormElement object that owns this <button>, or null if this button is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/form)
      */
@@ -13760,13 +13760,13 @@ interface HTMLButtonElement extends HTMLElement, PopoverTargetAttributes {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLButtonElement interface indicates whether the <button> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, including:
+     * The **`willValidate`** read-only property of the HTMLButtonElement interface indicates whether the <button> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, including:
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLButtonElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect. It always returns `true` if the <button> element's type is 'button' or 'reset', because such buttons are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLButtonElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect. It always returns true if the <button> element's type is 'button' or 'reset', because such buttons are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/checkValidity)
      */
@@ -13819,7 +13819,7 @@ interface HTMLCanvasElement extends HTMLElement {
      */
     captureStream(frameRequestRate?: number): MediaStream;
     /**
-     * The **`HTMLCanvasElement.getContext()`** method returns a drawing context on the canvas, or `null` if the context identifier is not supported, or the canvas has already been set to a different context mode.
+     * The **`HTMLCanvasElement.getContext()`** method returns a drawing context on the canvas, or null if the context identifier is not supported, or the canvas has already been set to a different context mode.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/getContext)
      */
@@ -13880,7 +13880,7 @@ interface HTMLCollectionBase {
 
 interface HTMLCollection extends HTMLCollectionBase {
     /**
-     * The **`namedItem()`** method of the HTMLCollection interface returns the first Element in the collection whose id or name attribute match the specified name, or `null` if no element matches.
+     * The **`namedItem()`** method of the HTMLCollection interface returns the first Element in the collection whose id or name attribute match the specified name, or null if no element matches.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCollection/namedItem)
      */
@@ -14349,7 +14349,7 @@ interface HTMLFieldSetElement extends HTMLElement {
      */
     readonly elements: HTMLCollection;
     /**
-     * The **`form`** read-only property of the HTMLFieldSetElement interface returns an HTMLFormElement object that owns this <fieldset>, or `null` if this fieldset is not owned by any form.
+     * The **`form`** read-only property of the HTMLFieldSetElement interface returns an HTMLFormElement object that owns this <fieldset>, or null if this fieldset is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/form)
      */
@@ -14367,7 +14367,7 @@ interface HTMLFieldSetElement extends HTMLElement {
      */
     readonly type: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLFieldSetElement interface returns a string representing a localized message that describes the validation constraints that the <fieldset> control does not satisfy (if any). This is the empty string as <fieldset> elements are not candidates for constraint validation (HTMLFieldSetElement.willValidate is `false`).
+     * The **`validationMessage`** read-only property of the HTMLFieldSetElement interface returns a string representing a localized message that describes the validation constraints that the <fieldset> control does not satisfy (if any). This is the empty string as <fieldset> elements are not candidates for constraint validation (HTMLFieldSetElement.willValidate is false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/validationMessage)
      */
@@ -14379,19 +14379,19 @@ interface HTMLFieldSetElement extends HTMLElement {
      */
     readonly validity: ValidityState;
     /**
-     * The **`willValidate`** read-only property of the HTMLFieldSetElement interface returns `false`, because <fieldset> elements are not candidates for constraint validation.
+     * The **`willValidate`** read-only property of the HTMLFieldSetElement interface returns false, because <fieldset> elements are not candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLFieldSetElement interface checks if the element is valid, but always returns `true` because <fieldset> elements are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLFieldSetElement interface checks if the element is valid, but always returns true because <fieldset> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/checkValidity)
      */
     checkValidity(): boolean;
     /**
-     * The **`reportValidity()`** method of the HTMLFieldSetElement interface performs the same validity checking steps as the checkValidity() method. It always returns `true` because <fieldset> elements are never candidates for constraint validation.
+     * The **`reportValidity()`** method of the HTMLFieldSetElement interface performs the same validity checking steps as the checkValidity() method. It always returns true because <fieldset> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/reportValidity)
      */
@@ -14460,7 +14460,7 @@ declare var HTMLFontElement: {
  */
 interface HTMLFormControlsCollection extends HTMLCollectionBase {
     /**
-     * The **`HTMLFormControlsCollection.namedItem()`** method returns the RadioNodeList or the Element in the collection whose name or id match the specified name, or `null` if no node matches.
+     * The **`HTMLFormControlsCollection.namedItem()`** method returns the RadioNodeList or the Element in the collection whose name or id match the specified name, or null if no node matches.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormControlsCollection/namedItem)
      */
@@ -14533,7 +14533,7 @@ interface HTMLFormElement extends HTMLElement {
      */
     name: string;
     /**
-     * The **`noValidate`** property of the HTMLFormElement interface is a boolean value indicating if the <form> will bypass constraint validation when submitted. It reflects the <form> element's novalidate attribute; if the attribute present, the value is `true`.
+     * The **`noValidate`** property of the HTMLFormElement interface is a boolean value indicating if the <form> will bypass constraint validation when submitted. It reflects the <form> element's novalidate attribute; if the attribute present, the value is true.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/noValidate)
      */
@@ -14858,7 +14858,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     allowFullscreen: boolean;
     /**
-     * If the iframe and the iframe's parent document are Same Origin, returns a Document (that is, the active document in the inline frame's nested browsing context), else returns `null`.
+     * If the iframe and the iframe's parent document are Same Origin, returns a Document (that is, the active document in the inline frame's nested browsing context), else returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/contentDocument)
      */
@@ -14965,7 +14965,7 @@ interface HTMLImageElement extends HTMLElement {
      */
     alt: string;
     /**
-     * The obsolete HTMLImageElement property **`border`** specifies the number of pixels thick the border surrounding the image should be. A value of `0`, the default, indicates that no border should be drawn.
+     * The obsolete HTMLImageElement property **`border`** specifies the number of pixels thick the border surrounding the image should be. A value of 0, the default, indicates that no border should be drawn.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/border)
@@ -15195,7 +15195,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     files: FileList | null;
     /**
-     * The **`form`** read-only property of the HTMLInputElement interface returns an HTMLFormElement object that owns this <input>, or `null` if this input is not owned by any form.
+     * The **`form`** read-only property of the HTMLInputElement interface returns an HTMLFormElement object that owns this <input>, or null if this input is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/form)
      */
@@ -15243,13 +15243,13 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     indeterminate: boolean;
     /**
-     * The **`HTMLInputElement.labels`** read-only property returns a NodeList of the <label> elements associated with the <input> element, if the element is not hidden. If the element has the type hidden, the property returns `null`.
+     * The **`HTMLInputElement.labels`** read-only property returns a NodeList of the <label> elements associated with the <input> element, if the element is not hidden. If the element has the type hidden, the property returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/labels)
      */
     readonly labels: NodeListOf<HTMLLabelElement> | null;
     /**
-     * The **`list`** read-only property of the HTMLInputElement interface returns the HTMLDataListElement pointed to by the list attribute of the element, or `null` if the list attribute is not defined or the list attribute's value is not associated with any <datalist> in the same tree.
+     * The **`list`** read-only property of the HTMLInputElement interface returns the HTMLDataListElement pointed to by the list attribute of the element, or null if the list attribute is not defined or the list attribute's value is not associated with any <datalist> in the same tree.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/list)
      */
@@ -15291,7 +15291,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     name: string;
     /**
-     * The **`pattern`** property of the HTMLInputElement interface represents a regular expression a non-`null` <input> value should match. It reflects the <input> element's pattern attribute.
+     * The **`pattern`** property of the HTMLInputElement interface represents a regular expression a non-null <input> value should match. It reflects the <input> element's pattern attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/pattern)
      */
@@ -15303,7 +15303,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     placeholder: string;
     /**
-     * The **`readOnly`** property of the HTMLInputElement interface indicates that the user cannot modify the value of the <input>. It reflects the <input> element's readonly boolean attribute; returning `true` if the attribute is present and `false` when omitted.
+     * The **`readOnly`** property of the HTMLInputElement interface indicates that the user cannot modify the value of the <input>. It reflects the <input> element's readonly boolean attribute; returning true if the attribute is present and false when omitted.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/readOnly)
      */
@@ -15377,7 +15377,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     value: string;
     /**
-     * The **`valueAsDate`** property of the HTMLInputElement interface represents the current value of the <input> element as a Date, or `null` if conversion is not possible.
+     * The **`valueAsDate`** property of the HTMLInputElement interface represents the current value of the <input> element as a Date, or null if conversion is not possible.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/valueAsDate)
      */
@@ -15407,13 +15407,13 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     width: number;
     /**
-     * The **`willValidate`** read-only property of the HTMLInputElement interface indicates whether the <input> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, including:
+     * The **`willValidate`** read-only property of the HTMLInputElement interface indicates whether the <input> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, including:
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLInputElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
+     * The **`checkValidity()`** method of the HTMLInputElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/checkValidity)
      */
@@ -15487,7 +15487,7 @@ interface HTMLLIElement extends HTMLElement {
     /** @deprecated */
     type: string;
     /**
-     * The **`value`** property of the HTMLLIElement interface indicates the ordinal position of the list element inside a given <ol>. It can be smaller than `0`. If the <li> element is not a child of an <ol> element, the property has no meaning.
+     * The **`value`** property of the HTMLLIElement interface indicates the ordinal position of the list element inside a given <ol>. It can be smaller than 0. If the <li> element is not a child of an <ol> element, the property has no meaning.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLIElement/value)
      */
@@ -15510,13 +15510,13 @@ declare var HTMLLIElement: {
  */
 interface HTMLLabelElement extends HTMLElement {
     /**
-     * The read-only **`HTMLLabelElement.control`** property returns a reference to the control (in the form of an object of type HTMLElement or one of its derivatives) with which the <label> element is associated, or `null` if the label isn't associated with a control.
+     * The read-only **`HTMLLabelElement.control`** property returns a reference to the control (in the form of an object of type HTMLElement or one of its derivatives) with which the <label> element is associated, or null if the label isn't associated with a control.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/control)
      */
     readonly control: HTMLElement | null;
     /**
-     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the control associated with this <label>, or `null` if this label is not associated with a labelable form-associated element (<button>, <input>, <output>, <select>, <textarea>, or form-associated custom elements) that is owned by a form.
+     * The **`form`** read-only property of the HTMLLabelElement interface returns an HTMLFormElement object that owns the control associated with this <label>, or null if this label is not associated with a labelable form-associated element (<button>, <input>, <output>, <select>, <textarea>, or form-associated custom elements) that is owned by a form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/form)
      */
@@ -15547,7 +15547,7 @@ interface HTMLLegendElement extends HTMLElement {
     /** @deprecated */
     align: string;
     /**
-     * The **`form`** read-only property of the HTMLLegendElement interface returns an HTMLFormElement object that owns the HTMLFieldSetElement associated with this <legend>, or `null` if this legend is not associated with a <fieldset> owned by a form.
+     * The **`form`** read-only property of the HTMLLegendElement interface returns an HTMLFormElement object that owns the HTMLFieldSetElement associated with this <legend>, or null if this legend is not associated with a <fieldset> owned by a form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLegendElement/form)
      */
@@ -15837,7 +15837,7 @@ interface HTMLMediaElement extends HTMLElement {
      */
     readonly ended: boolean;
     /**
-     * The **`HTMLMediaElement.error`** property is the MediaError object for the most recent error, or `null` if there has not been an error. When an error event is received by the element, you can determine details about what happened by examining this object.
+     * The **`HTMLMediaElement.error`** property is the MediaError object for the most recent error, or null if there has not been an error. When an error event is received by the element, you can determine details about what happened by examining this object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/error)
      */
@@ -15878,7 +15878,7 @@ interface HTMLMediaElement extends HTMLElement {
      */
     readonly paused: boolean;
     /**
-     * The **`HTMLMediaElement.playbackRate`** property sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth. The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.`0` indicates normal speed.
+     * The **`HTMLMediaElement.playbackRate`** property sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth. The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.0 indicates normal speed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/playbackRate)
      */
@@ -15939,7 +15939,7 @@ interface HTMLMediaElement extends HTMLElement {
      */
     src: string;
     /**
-     * The **`srcObject`** property of the HTMLMediaElement interface sets or returns the object which serves as the source of the media associated with the HTMLMediaElement, or `null` if not assigned.
+     * The **`srcObject`** property of the HTMLMediaElement interface sets or returns the object which serves as the source of the media associated with the HTMLMediaElement, or null if not assigned.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/srcObject)
      */
@@ -16138,7 +16138,7 @@ interface HTMLMeterElement extends HTMLElement {
      */
     max: number;
     /**
-     * The **`min`** property of the HTMLMeterElement interface represents the minimum value of the <meter> element as a floating-point number. It reflects the element's min attribute, or `0` if no min is defined.
+     * The **`min`** property of the HTMLMeterElement interface represents the minimum value of the <meter> element as a floating-point number. It reflects the element's min attribute, or 0 if no min is defined.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/min)
      */
@@ -16150,7 +16150,7 @@ interface HTMLMeterElement extends HTMLElement {
      */
     optimum: number;
     /**
-     * The **`value`** property of the HTMLMeterElement interface represents the current value of the <meter> element as a floating-point number. It reflects the element's value attribute. If no value is set, it is the HTMLMeterElement.min value or `0`, whichever is greater.
+     * The **`value`** property of the HTMLMeterElement interface represents the current value of the <meter> element as a floating-point number. It reflects the element's value attribute. If no value is set, it is the HTMLMeterElement.min value or 0, whichever is greater.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/value)
      */
@@ -16256,13 +16256,13 @@ interface HTMLObjectElement extends HTMLElement {
     /** @deprecated */
     codeType: string;
     /**
-     * The **`contentDocument`** read-only property of the HTMLObjectElement interface Returns a Document representing the active document of the object element's nested browsing context, if any; otherwise `null`.
+     * The **`contentDocument`** read-only property of the HTMLObjectElement interface Returns a Document representing the active document of the object element's nested browsing context, if any; otherwise null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/contentDocument)
      */
     readonly contentDocument: Document | null;
     /**
-     * The **`contentWindow`** read-only property of the HTMLObjectElement interface returns a WindowProxy representing the window proxy of the object element's nested browsing context, if any; otherwise `null`.
+     * The **`contentWindow`** read-only property of the HTMLObjectElement interface returns a WindowProxy representing the window proxy of the object element's nested browsing context, if any; otherwise null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/contentWindow)
      */
@@ -16276,7 +16276,7 @@ interface HTMLObjectElement extends HTMLElement {
     /** @deprecated */
     declare: boolean;
     /**
-     * The **`form`** read-only property of the HTMLObjectElement interface returns an HTMLFormElement object that owns this <object>, or `null` if this object element is not owned by any form.
+     * The **`form`** read-only property of the HTMLObjectElement interface returns an HTMLFormElement object that owns this <object>, or null if this object element is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/form)
      */
@@ -16311,7 +16311,7 @@ interface HTMLObjectElement extends HTMLElement {
      */
     useMap: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLObjectElement interface returns a string representing a localized message that describes the validation constraints that the control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (willValidate is `false`), or it satisfies its constraints.
+     * The **`validationMessage`** read-only property of the HTMLObjectElement interface returns a string representing a localized message that describes the validation constraints that the control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (willValidate is false), or it satisfies its constraints.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/validationMessage)
      */
@@ -16331,13 +16331,13 @@ interface HTMLObjectElement extends HTMLElement {
      */
     width: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLObjectElement interface returns `false`, because <object> elements are not candidates for constraint validation.
+     * The **`willValidate`** read-only property of the HTMLObjectElement interface returns false, because <object> elements are not candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLObjectElement interface checks if the element is valid, but always returns `true` because <object> elements are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLObjectElement interface checks if the element is valid, but always returns true because <object> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/checkValidity)
      */
@@ -16349,7 +16349,7 @@ interface HTMLObjectElement extends HTMLElement {
      */
     getSVGDocument(): Document | null;
     /**
-     * The **`reportValidity()`** method of the HTMLObjectElement interface performs the same validity checking steps as the checkValidity() method. It always returns `true` because <object> elements are never candidates for constraint validation.
+     * The **`reportValidity()`** method of the HTMLObjectElement interface performs the same validity checking steps as the checkValidity() method. It always returns true because <object> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/reportValidity)
      */
@@ -16407,7 +16407,7 @@ declare var HTMLOptGroupElement: {
  */
 interface HTMLOptionElement extends HTMLElement {
     /**
-     * The **`defaultSelected`** property of the HTMLOptionElement interface specifies the default selected state of the element. This property reflects the <option> element's selected attribute. The presence of the selected attribute sets the defaultSelected property to `true`.
+     * The **`defaultSelected`** property of the HTMLOptionElement interface specifies the default selected state of the element. This property reflects the <option> element's selected attribute. The presence of the selected attribute sets the defaultSelected property to true.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/defaultSelected)
      */
@@ -16419,13 +16419,13 @@ interface HTMLOptionElement extends HTMLElement {
      */
     disabled: boolean;
     /**
-     * The **`form`** read-only property of the HTMLOptionElement interface returns an HTMLFormElement object that owns the HTMLSelectElement associated with this <option>, or `null` if this option is not associated with a <select> owned by a form.
+     * The **`form`** read-only property of the HTMLOptionElement interface returns an HTMLFormElement object that owns the HTMLSelectElement associated with this <option>, or null if this option is not associated with a <select> owned by a form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/form)
      */
     readonly form: HTMLFormElement | null;
     /**
-     * The read-only **`index`** property of the HTMLOptionElement interface specifies the `0`-based index of the element; that is, the position of the <option> within the list of options it belongs to, in tree-order, as an integer. If the <option> is not part of an option-list, the value is `0`.
+     * The read-only **`index`** property of the HTMLOptionElement interface specifies the 0-based index of the element; that is, the position of the <option> within the list of options it belongs to, in tree-order, as an integer. If the <option> is not part of an option-list, the value is 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/index)
      */
@@ -16530,7 +16530,7 @@ interface HTMLOutputElement extends HTMLElement {
      */
     defaultValue: string;
     /**
-     * The **`form`** read-only property of the HTMLOutputElement interface returns an HTMLFormElement object that owns this <output>, or `null` if this output is not owned by any form.
+     * The **`form`** read-only property of the HTMLOutputElement interface returns an HTMLFormElement object that owns this <output>, or null if this output is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/form)
      */
@@ -16561,7 +16561,7 @@ interface HTMLOutputElement extends HTMLElement {
      */
     readonly type: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLOutputElement interface returns a string representing a localized message that describes the validation constraints that the <output> control does not satisfy (if any). This is the empty string as <output> elements are not candidates for constraint validation (HTMLOutputElement.willValidate is `false`).
+     * The **`validationMessage`** read-only property of the HTMLOutputElement interface returns a string representing a localized message that describes the validation constraints that the <output> control does not satisfy (if any). This is the empty string as <output> elements are not candidates for constraint validation (HTMLOutputElement.willValidate is false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validationMessage)
      */
@@ -16579,19 +16579,19 @@ interface HTMLOutputElement extends HTMLElement {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLOutputElement interface returns `false`, because <output> elements are not candidates for constraint validation.
+     * The **`willValidate`** read-only property of the HTMLOutputElement interface returns false, because <output> elements are not candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/willValidate)
      */
     readonly willValidate: boolean;
     /**
-     * The **`checkValidity()`** method of the HTMLOutputElement interface checks if the element is valid, but always returns `true` because <output> elements are never candidates for constraint validation.
+     * The **`checkValidity()`** method of the HTMLOutputElement interface checks if the element is valid, but always returns true because <output> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/checkValidity)
      */
     checkValidity(): boolean;
     /**
-     * The **`reportValidity()`** method of the HTMLOutputElement interface performs the same validity checking steps as the checkValidity() method. It always returns `true` because <output> elements are never candidates for constraint validation.
+     * The **`reportValidity()`** method of the HTMLOutputElement interface performs the same validity checking steps as the checkValidity() method. It always returns true because <output> elements are never candidates for constraint validation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/reportValidity)
      */
@@ -16766,7 +16766,7 @@ declare var HTMLQuoteElement: {
  */
 interface HTMLScriptElement extends HTMLElement {
     /**
-     * The **`async`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the async property is set to `true`, the external script will be fetched in parallel to parsing and evaluated as soon as it is available. For module scripts, if the async property is set to `true`, the script and all their dependencies will be fetched in parallel to parsing and evaluated as soon as they are available.
+     * The **`async`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the async property is set to true, the external script will be fetched in parallel to parsing and evaluated as soon as it is available. For module scripts, if the async property is set to true, the script and all their dependencies will be fetched in parallel to parsing and evaluated as soon as they are available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/async)
      */
@@ -16787,7 +16787,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     crossOrigin: string | null;
     /**
-     * The **`defer`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the defer property is set to `true`, the external script will be executed after the document has been parsed, but before firing DOMContentLoaded event. For module scripts, the defer property has no effect.
+     * The **`defer`** property of the HTMLScriptElement interface is a boolean value that controls how the script should be executed. For classic scripts, if the defer property is set to true, the external script will be executed after the document has been parsed, but before firing DOMContentLoaded event. For module scripts, the defer property has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/defer)
      */
@@ -16874,7 +16874,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     disabled: boolean;
     /**
-     * The **`form`** read-only property of the HTMLSelectElement interface returns an HTMLFormElement object that owns this <select>, or `null` if this select is not owned by any form.
+     * The **`form`** read-only property of the HTMLSelectElement interface returns an HTMLFormElement object that owns this <select>, or null if this select is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/form)
      */
@@ -16928,7 +16928,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     readonly selectedOptions: HTMLCollectionOf<HTMLOptionElement>;
     /**
-     * The **`size`** property of the HTMLSelectElement interface specifies the number of options, or rows, that should be visible at one time. It reflects the <select> element's size attribute. If omitted, the value is `0`.
+     * The **`size`** property of the HTMLSelectElement interface specifies the number of options, or rows, that should be visible at one time. It reflects the <select> element's size attribute. If omitted, the value is 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/size)
      */
@@ -16940,7 +16940,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     readonly type: "select-one" | "select-multiple";
     /**
-     * The **`validationMessage`** read-only property of the HTMLSelectElement interface returns a string representing a localized message that describes the validation constraints that the <select> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLSelectElement.willValidate is `false`), or it satisfies its constraints.
+     * The **`validationMessage`** read-only property of the HTMLSelectElement interface returns a string representing a localized message that describes the validation constraints that the <select> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLSelectElement.willValidate is false), or it satisfies its constraints.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/validationMessage)
      */
@@ -16958,7 +16958,7 @@ interface HTMLSelectElement extends HTMLElement {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLSelectElement interface indicates whether the <select> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, such as when its disabled property is `true`.
+     * The **`willValidate`** read-only property of the HTMLSelectElement interface indicates whether the <select> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, such as when its disabled property is true.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/willValidate)
      */
@@ -16970,19 +16970,19 @@ interface HTMLSelectElement extends HTMLElement {
      */
     add(element: HTMLOptionElement | HTMLOptGroupElement, before?: HTMLElement | number | null): void;
     /**
-     * The **`checkValidity()`** method of the HTMLSelectElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
+     * The **`checkValidity()`** method of the HTMLSelectElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/checkValidity)
      */
     checkValidity(): boolean;
     /**
-     * The **`HTMLSelectElement.item()`** method returns the Element corresponding to the HTMLOptionElement whose position in the options list corresponds to the index given in the parameter, or `null` if there are none.
+     * The **`HTMLSelectElement.item()`** method returns the Element corresponding to the HTMLOptionElement whose position in the options list corresponds to the index given in the parameter, or null if there are none.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/item)
      */
     item(index: number): HTMLOptionElement | null;
     /**
-     * The **`HTMLSelectElement.namedItem()`** method returns the HTMLOptionElement corresponding to the HTMLOptionElement whose name or id match the specified name, or `null` if no option matches.
+     * The **`HTMLSelectElement.namedItem()`** method returns the HTMLOptionElement corresponding to the HTMLOptionElement whose name or id match the specified name, or null if no option matches.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/namedItem)
      */
@@ -17155,7 +17155,7 @@ interface HTMLStyleElement extends HTMLElement, LinkStyle {
     get blocking(): DOMTokenList;
     set blocking(value: string);
     /**
-     * The **`HTMLStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
+     * The **`HTMLStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (true) or not (false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/disabled)
      */
@@ -17237,7 +17237,7 @@ interface HTMLTableCellElement extends HTMLElement {
      */
     bgColor: string;
     /**
-     * The **`cellIndex`** read-only property of the HTMLTableCellElement interface represents the position of a cell within its row (<tr>). The first cell has an index of `0`.
+     * The **`cellIndex`** read-only property of the HTMLTableCellElement interface represents the position of a cell within its row (<tr>). The first cell has an index of 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/cellIndex)
      */
@@ -17398,7 +17398,7 @@ interface HTMLTableElement extends HTMLElement {
      */
     border: string;
     /**
-     * The **`HTMLTableElement.caption`** property represents the table caption. If no caption element is associated with the table, this property is `null`.
+     * The **`HTMLTableElement.caption`** property represents the table caption. If no caption element is associated with the table, this property is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/caption)
      */
@@ -17451,13 +17451,13 @@ interface HTMLTableElement extends HTMLElement {
      */
     readonly tBodies: HTMLCollectionOf<HTMLTableSectionElement>;
     /**
-     * The **`HTMLTableElement.tFoot`** property represents the <tfoot> element of a <table>. Its value will be `null` if there is no such element.
+     * The **`HTMLTableElement.tFoot`** property represents the <tfoot> element of a <table>. Its value will be null if there is no such element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/tFoot)
      */
     tFoot: HTMLTableSectionElement | null;
     /**
-     * The **`HTMLTableElement.tHead`** represents the <thead> element of a <table>. Its value will be `null` if there is no such element.
+     * The **`HTMLTableElement.tHead`** represents the <thead> element of a <table>. Its value will be null if there is no such element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/tHead)
      */
@@ -17765,13 +17765,13 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     dirName: string;
     /**
-     * The **`disabled`** property of the HTMLTextAreaElement interface indicates whether this multi-line text control is disabled and cannot be interacted with. It reflects the <textarea> element's disabled attribute. When `false`, this textarea may still be disabled if its containing element, such as a <fieldset>, is disabled.
+     * The **`disabled`** property of the HTMLTextAreaElement interface indicates whether this multi-line text control is disabled and cannot be interacted with. It reflects the <textarea> element's disabled attribute. When false, this textarea may still be disabled if its containing element, such as a <fieldset>, is disabled.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/disabled)
      */
     disabled: boolean;
     /**
-     * The **`form`** read-only property of the HTMLTextAreaElement interface returns an HTMLFormElement object that owns this <textarea>, or `null` if this textarea is not owned by any form.
+     * The **`form`** read-only property of the HTMLTextAreaElement interface returns an HTMLFormElement object that owns this <textarea>, or null if this textarea is not owned by any form.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/form)
      */
@@ -17855,7 +17855,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     readonly type: string;
     /**
-     * The **`validationMessage`** read-only property of the HTMLTextAreaElement interface returns a string representing a localized message that describes the validation constraints that the <textarea> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLTextAreaElement.willValidate is `false`), or it satisfies its constraints.
+     * The **`validationMessage`** read-only property of the HTMLTextAreaElement interface returns a string representing a localized message that describes the validation constraints that the <textarea> control does not satisfy (if any). This is the empty string if the control is not a candidate for constraint validation (HTMLTextAreaElement.willValidate is false), or it satisfies its constraints.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/validationMessage)
      */
@@ -17873,7 +17873,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     value: string;
     /**
-     * The **`willValidate`** read-only property of the HTMLTextAreaElement interface indicates whether the <textarea> element is a candidate for constraint validation. It is `false` if any conditions bar it from constraint validation, such as when its disabled or readOnly property is `true`.
+     * The **`willValidate`** read-only property of the HTMLTextAreaElement interface indicates whether the <textarea> element is a candidate for constraint validation. It is false if any conditions bar it from constraint validation, such as when its disabled or readOnly property is true.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/willValidate)
      */
@@ -17885,7 +17885,7 @@ interface HTMLTextAreaElement extends HTMLElement {
      */
     wrap: string;
     /**
-     * The **`checkValidity()`** method of the HTMLTextAreaElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If `false`, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
+     * The **`checkValidity()`** method of the HTMLTextAreaElement interface returns a boolean value which indicates if the element meets any constraint validation rules applied to it. If false, the method also fires an invalid event on the element. Because there's no default browser behavior for checkValidity(), canceling this invalid event has no effect.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/checkValidity)
      */
@@ -17985,7 +17985,7 @@ declare var HTMLTitleElement: {
  */
 interface HTMLTrackElement extends HTMLElement {
     /**
-     * The **`default`** property of the HTMLTrackElement interface represents whether the track will be enabled if the user's preferences do not indicate that another track would be more appropriate. It reflects the <track> element's boolean default attribute, returning `true` if present and `false` otherwise.
+     * The **`default`** property of the HTMLTrackElement interface represents whether the track will be enabled if the user's preferences do not indicate that another track would be more appropriate. It reflects the <track> element's boolean default attribute, returning true if present and false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/default)
      */
@@ -18219,7 +18219,7 @@ interface Headers {
      */
     delete(name: string): void;
     /**
-     * The **`get()`** method of the Headers interface returns a byte string of all the values of a header within a Headers object with a given name. If the requested header doesn't exist in the Headers object, it returns `null`.
+     * The **`get()`** method of the Headers interface returns a byte string of all the values of a header within a Headers object with a given name. If the requested header doesn't exist in the Headers object, it returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Headers/get)
      */
@@ -18382,7 +18382,7 @@ interface IDBCursor {
      */
     readonly request: IDBRequest;
     /**
-     * The **`source`** read-only property of the IDBCursor interface returns the IDBObjectStore or IDBIndex that the cursor is iterating over. This function never returns `null` or throws an exception, even if the cursor is currently being iterated, has iterated past its end, or its transaction is not active.
+     * The **`source`** read-only property of the IDBCursor interface returns the IDBObjectStore or IDBIndex that the cursor is iterating over. This function never returns null or throws an exception, even if the cursor is currently being iterated, has iterated past its end, or its transaction is not active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursor/source)
      */
@@ -18406,7 +18406,7 @@ interface IDBCursor {
      */
     continuePrimaryKey(key: IDBValidKey, primaryKey: IDBValidKey): void;
     /**
-     * The **`delete()`** method of the IDBCursor interface returns an IDBRequest object, and, in a separate thread, deletes the record at the cursor's position, without changing the cursor's position. Once the record is deleted, the cursor's value is set to `null`.
+     * The **`delete()`** method of the IDBCursor interface returns an IDBRequest object, and, in a separate thread, deletes the record at the cursor's position, without changing the cursor's position. Once the record is deleted, the cursor's value is set to null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursor/delete)
      */
@@ -18560,7 +18560,7 @@ declare var IDBFactory: {
  */
 interface IDBIndex {
     /**
-     * The **`keyPath`** property of the IDBIndex interface returns the key path of the current index. If `null`, this index is not auto-populated.
+     * The **`keyPath`** property of the IDBIndex interface returns the key path of the current index. If null, this index is not auto-populated.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/keyPath)
      */
@@ -18892,7 +18892,7 @@ interface IDBRequest<T = any> extends EventTarget {
      */
     readonly result: T;
     /**
-     * The **`source`** read-only property of the IDBRequest interface returns the source of the request, such as an Index or an object store. If no source exists (such as when calling IDBFactory.open), it returns `null`.
+     * The **`source`** read-only property of the IDBRequest interface returns the source of the request, such as an Index or an object store. If no source exists (such as when calling IDBFactory.open), it returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/source)
      */
@@ -19206,7 +19206,7 @@ declare var ImageData: {
  */
 interface ImageDecoder {
     /**
-     * The **`complete`** read-only property of the ImageDecoder interface returns `true` if encoded data has completed buffering.
+     * The **`complete`** read-only property of the ImageDecoder interface returns true if encoded data has completed buffering.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageDecoder/complete)
      */
@@ -19267,7 +19267,7 @@ declare var ImageDecoder: {
  */
 interface ImageTrack {
     /**
-     * The **`animated`** property of the ImageTrack interface returns `true` if the track is animated and therefore has multiple frames.
+     * The **`animated`** property of the ImageTrack interface returns true if the track is animated and therefore has multiple frames.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/animated)
      */
@@ -19285,7 +19285,7 @@ interface ImageTrack {
      */
     readonly repetitionCount: number;
     /**
-     * The **`selected`** property of the ImageTrack interface returns `true` if the track is selected for decoding.
+     * The **`selected`** property of the ImageTrack interface returns true if the track is selected for decoding.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack/selected)
      */
@@ -19477,7 +19477,7 @@ interface IntersectionObserverEntry {
      */
     readonly boundingClientRect: DOMRectReadOnly;
     /**
-     * The **`intersectionRatio`** read-only property of the IntersectionObserverEntry interface tells you how much of the target element is currently visible within the root's intersection ratio, as a value between `0`.`0` and 1.`0`.
+     * The **`intersectionRatio`** read-only property of the IntersectionObserverEntry interface tells you how much of the target element is currently visible within the root's intersection ratio, as a value between 0.0 and 1.0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/intersectionRatio)
      */
@@ -19489,7 +19489,7 @@ interface IntersectionObserverEntry {
      */
     readonly intersectionRect: DOMRectReadOnly;
     /**
-     * The **`isIntersecting`** read-only property of the IntersectionObserverEntry interface is a Boolean value which is `true` if the target element intersects with the intersection observer's root.
+     * The **`isIntersecting`** read-only property of the IntersectionObserverEntry interface is a Boolean value which is true if the target element intersects with the intersection observer's root.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IntersectionObserverEntry/isIntersecting)
      */
@@ -19535,7 +19535,7 @@ interface KHR_parallel_shader_compile {
  */
 interface KeyboardEvent extends UIEvent {
     /**
-     * The **`KeyboardEvent.altKey`** read-only property is a boolean value that indicates if the alt key (Option or ⌥ on macOS) was pressed (`true`) or not (`false`) when the event occurred.
+     * The **`KeyboardEvent.altKey`** read-only property is a boolean value that indicates if the alt key (Option or ⌥ on macOS) was pressed (true) or not (false) when the event occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/altKey)
      */
@@ -19554,7 +19554,7 @@ interface KeyboardEvent extends UIEvent {
      */
     readonly code: string;
     /**
-     * The **`KeyboardEvent.ctrlKey`** read-only property returns a boolean value that indicates if the control key was pressed (`true`) or not (`false`) when the event occurred.
+     * The **`KeyboardEvent.ctrlKey`** read-only property returns a boolean value that indicates if the control key was pressed (true) or not (false) when the event occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/ctrlKey)
      */
@@ -19585,25 +19585,25 @@ interface KeyboardEvent extends UIEvent {
      */
     readonly location: number;
     /**
-     * The **`KeyboardEvent.metaKey`** read-only property returning a boolean value that indicates if the Meta key was pressed (`true`) or not (`false`) when the event occurred. Some operating systems may intercept the key so it is never detected.
+     * The **`KeyboardEvent.metaKey`** read-only property returning a boolean value that indicates if the Meta key was pressed (true) or not (false) when the event occurred. Some operating systems may intercept the key so it is never detected.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/metaKey)
      */
     readonly metaKey: boolean;
     /**
-     * The **`repeat`** read-only property of the KeyboardEvent interface returns a boolean value that is `true` if the given key is being held down such that it is automatically repeating.
+     * The **`repeat`** read-only property of the KeyboardEvent interface returns a boolean value that is true if the given key is being held down such that it is automatically repeating.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/repeat)
      */
     readonly repeat: boolean;
     /**
-     * The **`KeyboardEvent.shiftKey`** read-only property is a boolean value that indicates if the shift key was pressed (`true`) or not (`false`) when the event occurred.
+     * The **`KeyboardEvent.shiftKey`** read-only property is a boolean value that indicates if the shift key was pressed (true) or not (false) when the event occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/shiftKey)
      */
     readonly shiftKey: boolean;
     /**
-     * The **`KeyboardEvent.getModifierState()`** method returns the current state of the specified modifier key: `true` if the modifier is active (that is the modifier key is pressed or locked), otherwise, `false`.
+     * The **`KeyboardEvent.getModifierState()`** method returns the current state of the specified modifier key: true if the modifier is active (that is the modifier key is pressed or locked), otherwise, false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent/getModifierState)
      */
@@ -19649,13 +19649,13 @@ interface KeyframeEffect extends AnimationEffect {
      */
     iterationComposite: IterationCompositeOperation;
     /**
-     * The **`pseudoElement`** property of a KeyframeEffect interface is a string representing the pseudo-element being animated. It may be `null` for animations that do not target a pseudo-element. It performs as both a getter and a setter, except with animations and transitions generated by CSS.
+     * The **`pseudoElement`** property of a KeyframeEffect interface is a string representing the pseudo-element being animated. It may be null for animations that do not target a pseudo-element. It performs as both a getter and a setter, except with animations and transitions generated by CSS.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyframeEffect/pseudoElement)
      */
     pseudoElement: string | null;
     /**
-     * The **`target`** property of a KeyframeEffect interface represents the element or pseudo-element being animated. It may be `null` for animations that do not target a specific element. It performs as both a getter and a setter, except with animations and transitions generated by CSS.
+     * The **`target`** property of a KeyframeEffect interface represents the element or pseudo-element being animated. It may be null for animations that do not target a specific element. It performs as both a getter and a setter, except with animations and transitions generated by CSS.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyframeEffect/target)
      */
@@ -20573,7 +20573,7 @@ interface MediaList {
      */
     deleteMedium(medium: string): void;
     /**
-     * The **`item()`** method of the MediaList interface returns the media query at the specified index, or `null` if the specified index doesn't exist.
+     * The **`item()`** method of the MediaList interface returns the media query at the specified index, or null if the specified index doesn't exist.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaList/item)
      */
@@ -20634,7 +20634,7 @@ interface MediaQueryListEventMap {
  */
 interface MediaQueryList extends EventTarget {
     /**
-     * The **`matches`** read-only property of the MediaQueryList interface is a boolean value that returns `true` if the document currently matches the media query list, or `false` if not.
+     * The **`matches`** read-only property of the MediaQueryList interface is a boolean value that returns true if the document currently matches the media query list, or false if not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryList/matches)
      */
@@ -20679,7 +20679,7 @@ declare var MediaQueryList: {
  */
 interface MediaQueryListEvent extends Event {
     /**
-     * The **`matches`** read-only property of the MediaQueryListEvent interface is a boolean value that is `true` if the document currently matches the media query list, or `false` if not.
+     * The **`matches`** read-only property of the MediaQueryListEvent interface is a boolean value that is true if the document currently matches the media query list, or false if not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaQueryListEvent/matches)
      */
@@ -20794,7 +20794,7 @@ declare var MediaRecorder: {
     prototype: MediaRecorder;
     new(stream: MediaStream, options?: MediaRecorderOptions): MediaRecorder;
     /**
-     * The **`isTypeSupported()`** static method of the MediaRecorder interface returns a Boolean which is `true` if the MIME media type specified is one the user agent should be able to successfully record.
+     * The **`isTypeSupported()`** static method of the MediaRecorder interface returns a Boolean which is true if the MIME media type specified is one the user agent should be able to successfully record.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaRecorder/isTypeSupported_static)
      */
@@ -20808,7 +20808,7 @@ declare var MediaRecorder: {
  */
 interface MediaSession {
     /**
-     * The **`metadata`** property of the MediaSession interface contains a MediaMetadata object providing descriptive information about the currently playing media, or `null` if the metadata has not been set. This metadata is provided by the browser to the device for presentation in any standard media control user interface the device might offer.
+     * The **`metadata`** property of the MediaSession interface contains a MediaMetadata object providing descriptive information about the currently playing media, or null if the metadata has not been set. This metadata is provided by the browser to the device for presentation in any standard media control user interface the device might offer.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSession/metadata)
      */
@@ -20932,13 +20932,13 @@ declare var MediaSource: {
     prototype: MediaSource;
     new(): MediaSource;
     /**
-     * The **`canConstructInDedicatedWorker`** static property of the MediaSource interface returns `true` if MediaSource worker support is implemented, providing a low-latency feature detection mechanism.
+     * The **`canConstructInDedicatedWorker`** static property of the MediaSource interface returns true if MediaSource worker support is implemented, providing a low-latency feature detection mechanism.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/canConstructInDedicatedWorker_static)
      */
     readonly canConstructInDedicatedWorker: boolean;
     /**
-     * The **`MediaSource.isTypeSupported()`** static method returns a boolean value which is `true` if the given MIME type and (optional) codec are likely to be supported by the current user agent.
+     * The **`MediaSource.isTypeSupported()`** static method returns a boolean value which is true if the given MIME type and (optional) codec are likely to be supported by the current user agent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaSource/isTypeSupported_static)
      */
@@ -20970,7 +20970,7 @@ interface MediaStreamEventMap {
  */
 interface MediaStream extends EventTarget {
     /**
-     * The **`active`** read-only property of the MediaStream interface returns a Boolean value which is `true` if the stream is currently active; otherwise, it returns `false`. A stream is considered active if at least one of its MediaStreamTracks does not have its property MediaStreamTrack.readyState set to ended. Once every track has ended, the stream's active property becomes `false`.
+     * The **`active`** read-only property of the MediaStream interface returns a Boolean value which is true if the stream is currently active; otherwise, it returns false. A stream is considered active if at least one of its MediaStreamTracks does not have its property MediaStreamTrack.readyState set to ended. Once every track has ended, the stream's active property becomes false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStream/active)
      */
@@ -21004,7 +21004,7 @@ interface MediaStream extends EventTarget {
      */
     getAudioTracks(): MediaStreamTrack[];
     /**
-     * The **`getTrackById()`** method of the MediaStream interface returns a MediaStreamTrack object representing the track with the specified ID string. If there is no track with the specified ID, this method returns `null`.
+     * The **`getTrackById()`** method of the MediaStream interface returns a MediaStreamTrack object representing the track with the specified ID string. If there is no track with the specified ID, this method returns null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStream/getTrackById)
      */
@@ -21097,7 +21097,7 @@ interface MediaStreamTrack extends EventTarget {
      */
     contentHint: string;
     /**
-     * The **`enabled`** property of the MediaStreamTrack interface is a Boolean value which is `true` if the track is allowed to render the source stream or `false` if it is not. This can be used to intentionally mute a track.
+     * The **`enabled`** property of the MediaStreamTrack interface is a Boolean value which is true if the track is allowed to render the source stream or false if it is not. This can be used to intentionally mute a track.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaStreamTrack/enabled)
      */
@@ -21521,7 +21521,7 @@ interface MouseEvent extends UIEvent {
      */
     readonly y: number;
     /**
-     * The **`MouseEvent.getModifierState()`** method returns the current state of the specified modifier key: `true` if the modifier is active (i.e., the modifier key is pressed or locked), otherwise, `false`.
+     * The **`MouseEvent.getModifierState()`** method returns the current state of the specified modifier key: true if the modifier is active (i.e., the modifier key is pressed or locked), otherwise, false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent/getModifierState)
      */
@@ -21651,13 +21651,13 @@ interface NamedNodeMap {
      */
     readonly length: number;
     /**
-     * The **`getNamedItem()`** method of the NamedNodeMap interface returns the Attr corresponding to the given name, or `null` if there is no corresponding attribute.
+     * The **`getNamedItem()`** method of the NamedNodeMap interface returns the Attr corresponding to the given name, or null if there is no corresponding attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/getNamedItem)
      */
     getNamedItem(qualifiedName: string): Attr | null;
     /**
-     * The **`getNamedItemNS()`** method of the NamedNodeMap interface returns the Attr corresponding to the given local name in the given namespace, or `null` if there is no corresponding attribute.
+     * The **`getNamedItemNS()`** method of the NamedNodeMap interface returns the Attr corresponding to the given local name in the given namespace, or null if there is no corresponding attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NamedNodeMap/getNamedItemNS)
      */
@@ -21762,13 +21762,13 @@ interface NavigationHistoryEntry extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/dispose_event) */
     ondispose: ((this: NavigationHistoryEntry, ev: Event) => any) | null;
     /**
-     * The **`sameDocument`** read-only property of the NavigationHistoryEntry interface returns `true` if this history entry is for the same document as the current Document value and current document is fully active, or `false` otherwise.
+     * The **`sameDocument`** read-only property of the NavigationHistoryEntry interface returns true if this history entry is for the same document as the current Document value and current document is fully active, or false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/sameDocument)
      */
     readonly sameDocument: boolean;
     /**
-     * The **`url`** read-only property of the NavigationHistoryEntry interface returns the absolute URL of this history entry. If the entry corresponds to a different Document than the current one (like sameDocument property is `false`), and that Document was fetched with a Referrer-Policy header set to no-referrer or origin, the property returns `null`. If current document is not fully active, it returns an empty string.
+     * The **`url`** read-only property of the NavigationHistoryEntry interface returns the absolute URL of this history entry. If the entry corresponds to a different Document than the current one (like sameDocument property is false), and that Document was fetched with a Referrer-Policy header set to no-referrer or origin, the property returns null. If current document is not fully active, it returns an empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationHistoryEntry/url)
      */
@@ -21913,7 +21913,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      */
     readonly wakeLock: WakeLock;
     /**
-     * The **`canShare()`** method of the Navigator interface returns `true` if the equivalent call to navigator.share() would succeed.
+     * The **`canShare()`** method of the Navigator interface returns true if the equivalent call to navigator.share() would succeed.
      * Available only in secure contexts.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/canShare)
@@ -22086,13 +22086,13 @@ interface Node extends EventTarget {
      */
     readonly baseURI: string;
     /**
-     * The read-only **`childNodes`** property of the Node interface returns a live NodeList of child nodes of the given element where the first child node is assigned index `0`. Child nodes include elements, text and comments.
+     * The read-only **`childNodes`** property of the Node interface returns a live NodeList of child nodes of the given element where the first child node is assigned index 0. Child nodes include elements, text and comments.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/childNodes)
      */
     readonly childNodes: NodeListOf<ChildNode>;
     /**
-     * The read-only **`firstChild`** property of the Node interface returns the node's first child in the tree, or `null` if the node has no children.
+     * The read-only **`firstChild`** property of the Node interface returns the node's first child in the tree, or null if the node has no children.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/firstChild)
      */
@@ -22104,13 +22104,13 @@ interface Node extends EventTarget {
      */
     readonly isConnected: boolean;
     /**
-     * The read-only **`lastChild`** property of the Node interface returns the last child of the node, or `null` if there are no child nodes.
+     * The read-only **`lastChild`** property of the Node interface returns the last child of the node, or null if there are no child nodes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lastChild)
      */
     readonly lastChild: ChildNode | null;
     /**
-     * The read-only **`nextSibling`** property of the Node interface returns the node immediately following the specified one in their parent's childNodes, or returns `null` if the specified node is the last child in the parent element.
+     * The read-only **`nextSibling`** property of the Node interface returns the node immediately following the specified one in their parent's childNodes, or returns null if the specified node is the last child in the parent element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)
      */
@@ -22140,7 +22140,7 @@ interface Node extends EventTarget {
      */
     readonly ownerDocument: Document | null;
     /**
-     * The read-only **`parentElement`** property of Node interface returns the DOM node's parent Element, or `null` if the node either has no parent, or its parent isn't a DOM Element. Node.parentNode on the other hand returns any kind of parent, regardless of its type.
+     * The read-only **`parentElement`** property of Node interface returns the DOM node's parent Element, or null if the node either has no parent, or its parent isn't a DOM Element. Node.parentNode on the other hand returns any kind of parent, regardless of its type.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentElement)
      */
@@ -22152,7 +22152,7 @@ interface Node extends EventTarget {
      */
     readonly parentNode: ParentNode | null;
     /**
-     * The read-only **`previousSibling`** property of the Node interface returns the node immediately preceding the specified one in its parent's childNodes list, or `null` if the specified node is the first in that list.
+     * The read-only **`previousSibling`** property of the Node interface returns the node immediately preceding the specified one in its parent's childNodes list, or null if the specified node is the first in that list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/previousSibling)
      */
@@ -22206,7 +22206,7 @@ interface Node extends EventTarget {
      */
     insertBefore<T extends Node>(node: T, child: Node | null): T;
     /**
-     * The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument. It returns a boolean value that is `true` if the namespace is the default namespace on the given node and `false` if not. The default namespace can be retrieved with Node.lookupNamespaceURI() by passing `null` as the argument.
+     * The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument. It returns a boolean value that is true if the namespace is the default namespace on the given node and false if not. The default namespace can be retrieved with Node.lookupNamespaceURI() by passing null as the argument.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isDefaultNamespace)
      */
@@ -22224,13 +22224,13 @@ interface Node extends EventTarget {
      */
     isSameNode(otherNode: Node | null): boolean;
     /**
-     * The **`lookupNamespaceURI()`** method of the Node interface takes a prefix as parameter and returns the namespace URI associated with it on the given node if found (and `null` if not). This method's existence allows Node objects to be passed as a namespace resolver to XPathEvaluator.createExpression() and XPathEvaluator.evaluate().
+     * The **`lookupNamespaceURI()`** method of the Node interface takes a prefix as parameter and returns the namespace URI associated with it on the given node if found (and null if not). This method's existence allows Node objects to be passed as a namespace resolver to XPathEvaluator.createExpression() and XPathEvaluator.evaluate().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lookupNamespaceURI)
      */
     lookupNamespaceURI(prefix: string | null): string | null;
     /**
-     * The **`lookupPrefix()`** method of the Node interface returns a string containing the prefix for a given namespace URI, if present, and `null` if not. When multiple prefixes are possible, the first prefix is returned.
+     * The **`lookupPrefix()`** method of the Node interface returns a string containing the prefix for a given namespace URI, if present, and null if not. When multiple prefixes are possible, the first prefix is returned.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lookupPrefix)
      */
@@ -22335,7 +22335,7 @@ interface NodeIterator {
      */
     readonly filter: NodeFilter | null;
     /**
-     * The **`NodeIterator.pointerBeforeReferenceNode`** read-only property returns a boolean flag that indicates whether the NodeFilter is anchored before (if this value is `true`) or after (if this value is `false`) the anchor node indicated by the NodeIterator.referenceNode property.
+     * The **`NodeIterator.pointerBeforeReferenceNode`** read-only property returns a boolean flag that indicates whether the NodeFilter is anchored before (if this value is true) or after (if this value is false) the anchor node indicated by the NodeIterator.referenceNode property.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NodeIterator/pointerBeforeReferenceNode)
      */
@@ -22397,7 +22397,7 @@ interface NodeList {
      */
     readonly length: number;
     /**
-     * Returns a node from a NodeList by index. This method doesn't throw exceptions as long as you provide arguments. A value of `null` is returned if the index is out of range, and a TypeError is thrown if no argument is provided.
+     * Returns a node from a NodeList by index. This method doesn't throw exceptions as long as you provide arguments. A value of null is returned if the index is out of range, and a TypeError is thrown if no argument is provided.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NodeList/item)
      */
@@ -22678,7 +22678,7 @@ interface OES_vertex_array_object {
      */
     deleteVertexArrayOES(arrayObject: WebGLVertexArrayObjectOES | null): void;
     /**
-     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns `true` if the passed object is a WebGLVertexArrayObject object.
+     * The **`OES_vertex_array_object.isVertexArrayOES()`** method of the WebGL API returns true if the passed object is a WebGLVertexArrayObject object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OES_vertex_array_object/isVertexArrayOES)
      */
@@ -22805,7 +22805,7 @@ interface OffscreenCanvas extends EventTarget {
      */
     convertToBlob(options?: ImageEncodeOptions): Promise<Blob>;
     /**
-     * The **`OffscreenCanvas.getContext()`** method returns a drawing context for an offscreen canvas, or `null` if the context identifier is not supported, or the offscreen canvas has already been set to a different context mode.
+     * The **`OffscreenCanvas.getContext()`** method returns a drawing context for an offscreen canvas, or null if the context identifier is not supported, or the offscreen canvas has already been set to a different context mode.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/OffscreenCanvas/getContext)
      */
@@ -23257,7 +23257,7 @@ declare var PaymentAddress: {
  */
 interface PaymentMethodChangeEvent extends PaymentRequestUpdateEvent {
     /**
-     * The read-only **`methodDetails`** property of the PaymentMethodChangeEvent interface is an object containing any data the payment handler may provide to describe the change the user has made to their payment method. The value is `null` if no details are available.
+     * The read-only **`methodDetails`** property of the PaymentMethodChangeEvent interface is an object containing any data the payment handler may provide to describe the change the user has made to their payment method. The value is null if no details are available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentMethodChangeEvent/methodDetails)
      */
@@ -23309,21 +23309,21 @@ interface PaymentRequest extends EventTarget {
      */
     onshippingoptionchange: ((this: PaymentRequest, ev: PaymentRequestUpdateEvent) => any) | null;
     /**
-     * The **`shippingAddress`** read-only property of the PaymentRequest interface returns the shipping address provided by the user. It is `null` by default.
+     * The **`shippingAddress`** read-only property of the PaymentRequest interface returns the shipping address provided by the user. It is null by default.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingAddress)
      */
     readonly shippingAddress: PaymentAddress | null;
     /**
-     * The **`shippingOption`** read-only attribute of the PaymentRequest interface returns either the id of a selected shipping option, `null` (if no shipping option was set to be selected) or a shipping option selected by the user. It is initially `null` by when no 'selected' shipping options are provided.
+     * The **`shippingOption`** read-only attribute of the PaymentRequest interface returns either the id of a selected shipping option, null (if no shipping option was set to be selected) or a shipping option selected by the user. It is initially null by when no 'selected' shipping options are provided.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingOption)
      */
     readonly shippingOption: string | null;
     /**
-     * The **`shippingType`** read-only property of the PaymentRequest interface returns one of 'shipping', 'delivery', 'pickup', or `null` if one was not provided by the constructor.
+     * The **`shippingType`** read-only property of the PaymentRequest interface returns one of 'shipping', 'delivery', 'pickup', or null if one was not provided by the constructor.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentRequest/shippingType)
@@ -23404,19 +23404,19 @@ interface PaymentResponse extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerdetailchange_event) */
     onpayerdetailchange: ((this: PaymentResponse, ev: PaymentRequestUpdateEvent) => any) | null;
     /**
-     * The **`payerEmail`** read-only property of the PaymentResponse interface returns the email address supplied by the user. This option is only present when the requestPayerEmail option is set to `true` in the options object passed to the PaymentRequest constructor.
+     * The **`payerEmail`** read-only property of the PaymentResponse interface returns the email address supplied by the user. This option is only present when the requestPayerEmail option is set to true in the options object passed to the PaymentRequest constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerEmail)
      */
     readonly payerEmail: string | null;
     /**
-     * The **`payerName`** read-only property of the PaymentResponse interface returns the name supplied by the user. This option is only present when the requestPayerName option is set to `true` in the options parameter of the PaymentRequest() constructor.
+     * The **`payerName`** read-only property of the PaymentResponse interface returns the name supplied by the user. This option is only present when the requestPayerName option is set to true in the options parameter of the PaymentRequest() constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerName)
      */
     readonly payerName: string | null;
     /**
-     * The **`payerPhone`** read-only property of the PaymentResponse interface returns the phone number supplied by the user. This option is only present when the requestPayerPhone option is set to `true` in the options object passed to the PaymentRequest constructor.
+     * The **`payerPhone`** read-only property of the PaymentResponse interface returns the phone number supplied by the user. This option is only present when the requestPayerPhone option is set to true in the options object passed to the PaymentRequest constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/payerPhone)
      */
@@ -23434,7 +23434,7 @@ interface PaymentResponse extends EventTarget {
      */
     readonly shippingAddress: PaymentAddress | null;
     /**
-     * The **`shippingOption`** read-only property of the PaymentRequest interface returns the ID attribute of the shipping option selected by the user. This option is only present when the requestShipping option is set to `true` in the options object passed to the PaymentRequest constructor.
+     * The **`shippingOption`** read-only property of the PaymentRequest interface returns the ID attribute of the shipping option selected by the user. This option is only present when the requestShipping option is set to true in the options object passed to the PaymentRequest constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PaymentResponse/shippingOption)
      */
@@ -24033,7 +24033,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      */
     readonly transferSize: number;
     /**
-     * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return `0`.
+     * The **`workerStart`** read-only property of the PerformanceResourceTiming interface returns a DOMHighResTimeStamp immediately before dispatching the FetchEvent if a Service Worker thread is already running, or immediately before starting the Service Worker thread if it is not already running. If the resource is not intercepted by a Service Worker the property will always return 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/workerStart)
      */
@@ -24064,7 +24064,7 @@ interface PerformanceServerTiming {
      */
     readonly description: string;
     /**
-     * The **`duration`** read-only property returns a double that contains the server-specified metric duration, or the value `0`.`0`.
+     * The **`duration`** read-only property returns a double that contains the server-specified metric duration, or the value 0.0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/duration)
      */
@@ -24166,14 +24166,14 @@ interface PerformanceTiming {
      */
     readonly fetchStart: number;
     /**
-     * The legacy **`PerformanceTiming.loadEventEnd`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, when the load event handler terminated, that is when the load event is completed. If this event has not yet been sent, or is not yet completed, it returns `0`.
+     * The legacy **`PerformanceTiming.loadEventEnd`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, when the load event handler terminated, that is when the load event is completed. If this event has not yet been sent, or is not yet completed, it returns 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/loadEventEnd)
      */
     readonly loadEventEnd: number;
     /**
-     * The legacy **`PerformanceTiming.loadEventStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, when the load event was sent for the current document. If this event has not yet been sent, it returns `0`.
+     * The legacy **`PerformanceTiming.loadEventStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, when the load event was sent for the current document. If this event has not yet been sent, it returns 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/loadEventStart)
@@ -24187,14 +24187,14 @@ interface PerformanceTiming {
      */
     readonly navigationStart: number;
     /**
-     * The legacy **`PerformanceTiming.redirectEnd`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the last HTTP redirect is completed, that is when the last byte of the HTTP response has been received. If there is no redirect, or if one of the redirect is not of the same origin, the value returned is `0`.
+     * The legacy **`PerformanceTiming.redirectEnd`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the last HTTP redirect is completed, that is when the last byte of the HTTP response has been received. If there is no redirect, or if one of the redirect is not of the same origin, the value returned is 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/redirectEnd)
      */
     readonly redirectEnd: number;
     /**
-     * The legacy **`PerformanceTiming.redirectStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the first HTTP redirect starts. If there is no redirect, or if one of the redirect is not of the same origin, the value returned is `0`.
+     * The legacy **`PerformanceTiming.redirectStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the first HTTP redirect starts. If there is no redirect, or if one of the redirect is not of the same origin, the value returned is 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/redirectStart)
@@ -24222,21 +24222,21 @@ interface PerformanceTiming {
      */
     readonly responseStart: number;
     /**
-     * The legacy **`PerformanceTiming.secureConnectionStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, where the secure connection handshake starts. If no such connection is requested, it returns `0`.
+     * The legacy **`PerformanceTiming.secureConnectionStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, where the secure connection handshake starts. If no such connection is requested, it returns 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/secureConnectionStart)
      */
     readonly secureConnectionStart: number;
     /**
-     * The legacy **`PerformanceTiming.unloadEventEnd`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the unload event handler finishes. If there is no previous document, or if the previous document, or one of the needed redirects, is not of the same origin, the value returned is `0`.
+     * The legacy **`PerformanceTiming.unloadEventEnd`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the unload event handler finishes. If there is no previous document, or if the previous document, or one of the needed redirects, is not of the same origin, the value returned is 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/unloadEventEnd)
      */
     readonly unloadEventEnd: number;
     /**
-     * The legacy **`PerformanceTiming.unloadEventStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the unload event has been thrown. If there is no previous document, or if the previous document, or one of the needed redirects, is not of the same origin, the value returned is `0`.
+     * The legacy **`PerformanceTiming.unloadEventStart`** read-only property returns an unsigned long long representing the moment, in milliseconds since the UNIX epoch, the unload event has been thrown. If there is no previous document, or if the previous document, or one of the needed redirects, is not of the same origin, the value returned is 0.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceTiming/unloadEventStart)
@@ -24470,7 +24470,7 @@ interface PointerEvent extends MouseEvent {
      */
     readonly height: number;
     /**
-     * The **`isPrimary`** read-only property of the PointerEvent interface indicates whether or not the pointer device that created the event is the primary pointer. It returns `true` if the pointer that caused the event to be fired is the primary one and returns `false` otherwise.
+     * The **`isPrimary`** read-only property of the PointerEvent interface indicates whether or not the pointer device that created the event is the primary pointer. It returns true if the pointer that caused the event to be fired is the primary one and returns false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PointerEvent/isPrimary)
      */
@@ -24556,7 +24556,7 @@ declare var PointerEvent: {
  */
 interface PopStateEvent extends Event {
     /**
-     * The **`hasUAVisualTransition`** read-only property of the PopStateEvent interface returns `true` if the user agent performed a visual transition for this navigation before dispatching this event, or `false` otherwise.
+     * The **`hasUAVisualTransition`** read-only property of the PopStateEvent interface returns true if the user agent performed a visual transition for this navigation before dispatching this event, or false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PopStateEvent/hasUAVisualTransition)
      */
@@ -24707,13 +24707,13 @@ declare var PublicKeyCredential: {
      */
     getClientCapabilities(): Promise<PublicKeyCredentialClientCapabilities>;
     /**
-     * The **`isConditionalMediationAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to `true` if conditional mediation is available.
+     * The **`isConditionalMediationAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to true if conditional mediation is available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable_static)
      */
     isConditionalMediationAvailable(): Promise<boolean>;
     /**
-     * The **`isUserVerifyingPlatformAuthenticatorAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to `true` if a user-verifying platform authenticator is present.
+     * The **`isUserVerifyingPlatformAuthenticatorAvailable()`** static method of the PublicKeyCredential interface returns a Promise which resolves to true if a user-verifying platform authenticator is present.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable_static)
      */
@@ -24802,7 +24802,7 @@ interface PushSubscription {
      */
     readonly endpoint: string;
     /**
-     * The **`expirationTime`** read-only property of the PushSubscription interface returns a DOMHighResTimeStamp of the subscription expiration time associated with the push subscription, if there is one, or `null` otherwise.
+     * The **`expirationTime`** read-only property of the PushSubscription interface returns a DOMHighResTimeStamp of the subscription expiration time associated with the push subscription, if there is one, or null otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription/expirationTime)
      */
@@ -24977,13 +24977,13 @@ interface RTCDataChannel extends EventTarget {
      */
     readonly bufferedAmount: number;
     /**
-     * The RTCDataChannel property **`bufferedAmountLowThreshold`** is used to specify the number of bytes of buffered outgoing data that is considered 'low.' The default value is `0`. When the number of buffered outgoing bytes, as indicated by the bufferedAmount property, falls to or below this value, a bufferedamountlow event is fired. This event may be used, for example, to implement code which queues more messages to be sent whenever there's room to buffer them. Listeners may be added with onbufferedamountlow or addEventListener().
+     * The RTCDataChannel property **`bufferedAmountLowThreshold`** is used to specify the number of bytes of buffered outgoing data that is considered 'low.' The default value is 0. When the number of buffered outgoing bytes, as indicated by the bufferedAmount property, falls to or below this value, a bufferedamountlow event is fired. This event may be used, for example, to implement code which queues more messages to be sent whenever there's room to buffer them. Listeners may be added with onbufferedamountlow or addEventListener().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/bufferedAmountLowThreshold)
      */
     bufferedAmountLowThreshold: number;
     /**
-     * The read-only RTCDataChannel property **`id`** returns an ID number (between `0` and 65,534) which uniquely identifies the RTCDataChannel. This ID is set at the time the data channel is created, either by the user agent (if RTCDataChannel.negotiated is `false`) or by the site or app script (if negotiated is `true`).
+     * The read-only RTCDataChannel property **`id`** returns an ID number (between 0 and 65,534) which uniquely identifies the RTCDataChannel. This ID is set at the time the data channel is created, either by the user agent (if RTCDataChannel.negotiated is false) or by the site or app script (if negotiated is true).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/id)
      */
@@ -24995,19 +24995,19 @@ interface RTCDataChannel extends EventTarget {
      */
     readonly label: string;
     /**
-     * The read-only RTCDataChannel property **`maxPacketLifeTime`** returns the amount of time, in milliseconds, the browser is allowed to take to attempt to transmit a message, as set when the data channel was created, or `null`. This limits how long the browser can continue to attempt to transmit and retransmit the message before giving up.
+     * The read-only RTCDataChannel property **`maxPacketLifeTime`** returns the amount of time, in milliseconds, the browser is allowed to take to attempt to transmit a message, as set when the data channel was created, or null. This limits how long the browser can continue to attempt to transmit and retransmit the message before giving up.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/maxPacketLifeTime)
      */
     readonly maxPacketLifeTime: number | null;
     /**
-     * The read-only RTCDataChannel property **`maxRetransmits`** returns the maximum number of times the browser should try to retransmit a message before giving up, as set when the data channel was created, or `null`, which indicates that there is no maximum. This can only be set when the RTCDataChannel is created by calling RTCPeerConnection.createDataChannel(), using the maxRetransmits field in the specified options.
+     * The read-only RTCDataChannel property **`maxRetransmits`** returns the maximum number of times the browser should try to retransmit a message before giving up, as set when the data channel was created, or null, which indicates that there is no maximum. This can only be set when the RTCDataChannel is created by calling RTCPeerConnection.createDataChannel(), using the maxRetransmits field in the specified options.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/maxRetransmits)
      */
     readonly maxRetransmits: number | null;
     /**
-     * The read-only RTCDataChannel property **`negotiated`** indicates whether the RTCDataChannel's connection was negotiated by the Web app (`true`) or by the WebRTC layer (`false`). The default is `false`.
+     * The read-only RTCDataChannel property **`negotiated`** indicates whether the RTCDataChannel's connection was negotiated by the Web app (true) or by the WebRTC layer (false). The default is false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/negotiated)
      */
@@ -25025,7 +25025,7 @@ interface RTCDataChannel extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/open_event) */
     onopen: ((this: RTCDataChannel, ev: Event) => any) | null;
     /**
-     * The read-only RTCDataChannel property **`ordered`** indicates whether or not the data channel guarantees in-order delivery of messages; the default is `true`, which indicates that the data channel is indeed ordered. This is set when the RTCDataChannel is created, by setting the ordered property on the object passed as RTCPeerConnection.createDataChannel()'s options parameter.
+     * The read-only RTCDataChannel property **`ordered`** indicates whether or not the data channel guarantees in-order delivery of messages; the default is true, which indicates that the data channel is indeed ordered. This is set when the RTCDataChannel is created, by setting the ordered property on the object passed as RTCPeerConnection.createDataChannel()'s options parameter.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDataChannel/ordered)
      */
@@ -25254,7 +25254,7 @@ declare var RTCErrorEvent: {
  */
 interface RTCIceCandidate {
     /**
-     * The RTCIceCandidate interface's read-only **`address`** property is a string providing the IP address of the device which is the source of the candidate. The address is `null` by default if not otherwise specified.
+     * The RTCIceCandidate interface's read-only **`address`** property is a string providing the IP address of the device which is the source of the candidate. The address is null by default if not otherwise specified.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceCandidate/address)
      */
@@ -25460,7 +25460,7 @@ interface RTCPeerConnection extends EventTarget {
      */
     readonly iceGatheringState: RTCIceGatheringState;
     /**
-     * The **`localDescription`** read-only property of the RTCPeerConnection interface returns an RTCSessionDescription describing the session for the local end of the connection. If it has not yet been set, this is `null`.
+     * The **`localDescription`** read-only property of the RTCPeerConnection interface returns an RTCSessionDescription describing the session for the local end of the connection. If it has not yet been set, this is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/localDescription)
      */
@@ -25496,13 +25496,13 @@ interface RTCPeerConnection extends EventTarget {
      */
     readonly pendingRemoteDescription: RTCSessionDescription | null;
     /**
-     * The **`remoteDescription`** read-only property of the RTCPeerConnection interface returns a RTCSessionDescription describing the session (which includes configuration and media information) for the remote end of the connection. If this hasn't been set yet, this is `null`.
+     * The **`remoteDescription`** read-only property of the RTCPeerConnection interface returns a RTCSessionDescription describing the session (which includes configuration and media information) for the remote end of the connection. If this hasn't been set yet, this is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/remoteDescription)
      */
     readonly remoteDescription: RTCSessionDescription | null;
     /**
-     * The **`sctp`** read-only property of the RTCPeerConnection interface returns an RTCSctpTransport describing the SCTP transport over which SCTP data is being sent and received. If SCTP hasn't been negotiated, this value is `null`.
+     * The **`sctp`** read-only property of the RTCPeerConnection interface returns an RTCSctpTransport describing the SCTP transport over which SCTP data is being sent and received. If SCTP hasn't been negotiated, this value is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnection/sctp)
      */
@@ -26131,7 +26131,7 @@ interface Range extends AbstractRange {
      */
     intersectsNode(node: Node): boolean;
     /**
-     * The **`isPointInRange()`** method of the Range interface determines whether a specified point is within the Range. The point is specified by a reference node and an offset within that node. It is equivalent to calling Range.comparePoint() and checking if the result is `0`.
+     * The **`isPointInRange()`** method of the Range interface determines whether a specified point is within the Range. The point is specified by a reference node and an offset within that node. It is equivalent to calling Range.comparePoint() and checking if the result is 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/isPointInRange)
      */
@@ -26213,7 +26213,7 @@ declare var Range: {
  */
 interface ReadableByteStreamController {
     /**
-     * The **`byobRequest`** read-only property of the ReadableByteStreamController interface returns the current BYOB request, or `null` if there are no pending requests.
+     * The **`byobRequest`** read-only property of the ReadableByteStreamController interface returns the current BYOB request, or null if there are no pending requests.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/byobRequest)
      */
@@ -26548,7 +26548,7 @@ interface Request extends Body {
      */
     readonly integrity: string;
     /**
-     * The **`keepalive`** read-only property of the Request interface contains the request's keepalive setting (`true` or `false`), which indicates whether the browser will keep the associated request alive if the page that initiated it is unloaded before the request is complete.
+     * The **`keepalive`** read-only property of the Request interface contains the request's keepalive setting (true or false), which indicates whether the browser will keep the associated request alive if the page that initiated it is unloaded before the request is complete.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/keepalive)
      */
@@ -27252,13 +27252,13 @@ declare var SVGAnimatedTransformList: {
  */
 interface SVGAnimationElement extends SVGElement, SVGTests {
     /**
-     * The **`targetElement`** read-only property of the SVGAnimationElement interface refers to the element which is being animated. If no target element is being animated (for example, because the href attribute specifies an unknown element), the value returned is `null`.
+     * The **`targetElement`** read-only property of the SVGAnimationElement interface refers to the element which is being animated. If no target element is being animated (for example, because the href attribute specifies an unknown element), the value returned is null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimationElement/targetElement)
      */
     readonly targetElement: SVGElement | null;
     /**
-     * The SVGAnimationElement method **`beginElement()`** creates a begin instance time for the current time. The new instance time is added to the begin instance times list. The behavior of this method is equivalent to beginElementAt(`0`).
+     * The SVGAnimationElement method **`beginElement()`** creates a begin instance time for the current time. The new instance time is added to the begin instance times list. The behavior of this method is equivalent to beginElementAt(0).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimationElement/beginElement)
      */
@@ -27270,7 +27270,7 @@ interface SVGAnimationElement extends SVGElement, SVGTests {
      */
     beginElementAt(offset: number): void;
     /**
-     * The SVGAnimationElement method **`endElement()`** creates an end instance time for the current time. The new instance time is added to the end instance times list. The behavior of this method is equivalent to endElementAt(`0`).
+     * The SVGAnimationElement method **`endElement()`** creates an end instance time for the current time. The new instance time is added to the end instance times list. The behavior of this method is equivalent to endElementAt(0).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimationElement/endElement)
      */
@@ -27491,13 +27491,13 @@ interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers
     /** @deprecated */
     readonly className: any;
     /**
-     * The **`ownerSVGElement`** property of the SVGElement interface reflects the nearest ancestor <svg> element. `null` if the given element is the outermost <svg> element.
+     * The **`ownerSVGElement`** property of the SVGElement interface reflects the nearest ancestor <svg> element. null if the given element is the outermost <svg> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/ownerSVGElement)
      */
     readonly ownerSVGElement: SVGSVGElement | null;
     /**
-     * The **`viewportElement`** property of the SVGElement interface represents the SVGElement which established the current viewport. Often the nearest ancestor <svg> element. `null` if the given element is the outermost <svg> element.
+     * The **`viewportElement`** property of the SVGElement interface represents the SVGElement which established the current viewport. Often the nearest ancestor <svg> element. null if the given element is the outermost <svg> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement/viewportElement)
      */
@@ -28976,7 +28976,7 @@ interface SVGLengthList {
      */
     clear(): void;
     /**
-     * The **`getItem()`** method of the SVGLengthList interface returns the specified item from the list. The returned item is the item itself and not a copy. Any changes made to the item are immediately reflected in the list. The first item is indexed `0`.
+     * The **`getItem()`** method of the SVGLengthList interface returns the specified item from the list. The returned item is the item itself and not a copy. Any changes made to the item are immediately reflected in the list. The first item is indexed 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/getItem)
      */
@@ -28988,7 +28988,7 @@ interface SVGLengthList {
      */
     initialize(newItem: SVGLength): SVGLength;
     /**
-     * The **`insertItemBefore()`** method of the SVGLengthList interface inserts a new item into the list at the specified position. The first item is indexed `0`. The inserted item is the item itself and not a copy.
+     * The **`insertItemBefore()`** method of the SVGLengthList interface inserts a new item into the list at the specified position. The first item is indexed 0. The inserted item is the item itself and not a copy.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGLengthList/insertItemBefore)
      */
@@ -29317,7 +29317,7 @@ interface SVGNumberList {
      */
     clear(): void;
     /**
-     * The **`getItem()`** method of the SVGNumberList interface returns the specified item from the list. The returned item is the item itself and not a copy. Any changes made to the item are immediately reflected in the list. The first item is indexed `0`.
+     * The **`getItem()`** method of the SVGNumberList interface returns the specified item from the list. The returned item is the item itself and not a copy. Any changes made to the item are immediately reflected in the list. The first item is indexed 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/getItem)
      */
@@ -29329,7 +29329,7 @@ interface SVGNumberList {
      */
     initialize(newItem: SVGNumber): SVGNumber;
     /**
-     * The **`insertItemBefore()`** method of the SVGNumberList interface inserts a new item into the list at the specified position. The first item is indexed `0`. The inserted item is the item itself and not a copy.
+     * The **`insertItemBefore()`** method of the SVGNumberList interface inserts a new item into the list at the specified position. The first item is indexed 0. The inserted item is the item itself and not a copy.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGNumberList/insertItemBefore)
      */
@@ -29971,7 +29971,7 @@ interface SVGStringList {
      */
     clear(): void;
     /**
-     * The **`getItem()`** method of the SVGStringList interface returns the specified item from the list. The returned item is the item itself and not a copy. Any changes made to the item are immediately reflected in the list. The first item is indexed `0`.
+     * The **`getItem()`** method of the SVGStringList interface returns the specified item from the list. The returned item is the item itself and not a copy. Any changes made to the item are immediately reflected in the list. The first item is indexed 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStringList/getItem)
      */
@@ -29983,7 +29983,7 @@ interface SVGStringList {
      */
     initialize(newItem: string): string;
     /**
-     * The **`insertItemBefore()`** method of the SVGStringList interface inserts a new item into the list at the specified position. The first item is indexed `0`. The inserted item is the item itself and not a copy.
+     * The **`insertItemBefore()`** method of the SVGStringList interface inserts a new item into the list at the specified position. The first item is indexed 0. The inserted item is the item itself and not a copy.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStringList/insertItemBefore)
      */
@@ -30015,7 +30015,7 @@ declare var SVGStringList: {
  */
 interface SVGStyleElement extends SVGElement, LinkStyle {
     /**
-     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (`true`) or not (`false`).
+     * The **`SVGStyleElement.disabled`** property can be used to get and set whether the stylesheet is disabled (true) or not (false).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGStyleElement/disabled)
      */
@@ -30801,7 +30801,7 @@ interface SecurityPolicyViolationEvent extends Event {
      */
     readonly originalPolicy: string;
     /**
-     * The **`referrer`** read-only property of the SecurityPolicyViolationEvent interface is a string representing the referrer for the resources whose Content Security Policy (CSP) was violated. This will be a URL or `null`.
+     * The **`referrer`** read-only property of the SecurityPolicyViolationEvent interface is a string representing the referrer for the resources whose Content Security Policy (CSP) was violated. This will be a URL or null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent/referrer)
      */
@@ -30844,7 +30844,7 @@ declare var SecurityPolicyViolationEvent: {
  */
 interface Selection {
     /**
-     * The **`Selection.anchorNode`** read-only property returns the Node in which the selection begins. It can return `null` if selection never existed in the document (e.g., an iframe that was never clicked on, or the node belongs to another document tree).
+     * The **`Selection.anchorNode`** read-only property returns the Node in which the selection begins. It can return null if selection never existed in the document (e.g., an iframe that was never clicked on, or the node belongs to another document tree).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/anchorNode)
      */
@@ -30862,7 +30862,7 @@ interface Selection {
      */
     readonly direction: string;
     /**
-     * The **`Selection.focusNode`** read-only property returns the Node in which the selection ends. It can return `null` if selection never existed in the document (e.g., an iframe that was never clicked on, or the node belongs to another document tree).
+     * The **`Selection.focusNode`** read-only property returns the Node in which the selection ends. It can return null if selection never existed in the document (e.g., an iframe that was never clicked on, or the node belongs to another document tree).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/focusNode)
      */
@@ -30928,7 +30928,7 @@ interface Selection {
      */
     deleteFromDocument(): void;
     /**
-     * The **`Selection.empty()`** method removes all ranges from the selection, leaving the anchorNode and focusNode properties equal to `null` and nothing selected. When this method is called, a selectionchange event is fired at the document.
+     * The **`Selection.empty()`** method removes all ranges from the selection, leaving the anchorNode and focusNode properties equal to null and nothing selected. When this method is called, a selectionchange event is fired at the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/empty)
      */
@@ -30958,7 +30958,7 @@ interface Selection {
      */
     modify(alter?: string, direction?: string, granularity?: string): void;
     /**
-     * The **`Selection.removeAllRanges()`** method removes all ranges from the selection, leaving the anchorNode and focusNode properties equal to `null` and nothing selected. When this method is called, a selectionchange event is fired at the document.
+     * The **`Selection.removeAllRanges()`** method removes all ranges from the selection, leaving the anchorNode and focusNode properties equal to null and nothing selected. When this method is called, a selectionchange event is fired at the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Selection/removeAllRanges)
      */
@@ -31052,7 +31052,7 @@ interface ServiceWorkerContainerEventMap {
  */
 interface ServiceWorkerContainer extends EventTarget {
     /**
-     * The **`controller`** read-only property of the ServiceWorkerContainer interface represents the active service worker controlling the current page (associated with this ServiceWorkerContainer), or `null` if the page has no active or activating service worker.
+     * The **`controller`** read-only property of the ServiceWorkerContainer interface represents the active service worker controlling the current page (associated with this ServiceWorkerContainer), or null if the page has no active or activating service worker.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/controller)
      */
@@ -31116,7 +31116,7 @@ interface ServiceWorkerRegistrationEventMap {
  */
 interface ServiceWorkerRegistration extends EventTarget {
     /**
-     * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is activating or activated. This property is initially set to `null`.
+     * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is activating or activated. This property is initially set to null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/active)
      */
@@ -31128,7 +31128,7 @@ interface ServiceWorkerRegistration extends EventTarget {
      */
     readonly cookies: CookieStoreManager;
     /**
-     * The **`installing`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installing. This property is initially set to `null`.
+     * The **`installing`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installing. This property is initially set to null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/installing)
      */
@@ -31154,7 +31154,7 @@ interface ServiceWorkerRegistration extends EventTarget {
      */
     readonly updateViaCache: ServiceWorkerUpdateViaCache;
     /**
-     * The **`waiting`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installed. This property is initially set to `null`.
+     * The **`waiting`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is installed. This property is initially set to null.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/waiting)
      */
@@ -31172,7 +31172,7 @@ interface ServiceWorkerRegistration extends EventTarget {
      */
     showNotification(title: string, options?: NotificationOptions): Promise<void>;
     /**
-     * The **`unregister()`** method of the ServiceWorkerRegistration interface unregisters the service worker registration and returns a Promise. The promise will resolve to `false` if no registration was found, otherwise it resolves to `true` irrespective of whether unregistration happened or not (it may not unregister if someone else just called ServiceWorkerContainer.register() with the same scope.) The service worker will finish any ongoing operations before it is unregistered.
+     * The **`unregister()`** method of the ServiceWorkerRegistration interface unregisters the service worker registration and returns a Promise. The promise will resolve to false if no registration was found, otherwise it resolves to true irrespective of whether unregistration happened or not (it may not unregister if someone else just called ServiceWorkerContainer.register() with the same scope.) The service worker will finish any ongoing operations before it is unregistered.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/unregister)
      */
@@ -31205,13 +31205,13 @@ interface ShadowRootEventMap {
  */
 interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     /**
-     * The **`clonable`** read-only property of the ShadowRoot interface returns `true` if the shadow root is clonable, and `false` otherwise.
+     * The **`clonable`** read-only property of the ShadowRoot interface returns true if the shadow root is clonable, and false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/clonable)
      */
     readonly clonable: boolean;
     /**
-     * The **`delegatesFocus`** read-only property of the ShadowRoot interface returns `true` if the shadow root delegates focus, and `false` otherwise.
+     * The **`delegatesFocus`** read-only property of the ShadowRoot interface returns true if the shadow root delegates focus, and false otherwise.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/delegatesFocus)
      */
@@ -31236,7 +31236,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
     readonly mode: ShadowRootMode;
     onslotchange: ((this: ShadowRoot, ev: Event) => any) | null;
     /**
-     * The **`serializable`** read-only property of the ShadowRoot interface returns `true` if the shadow root is serializable.
+     * The **`serializable`** read-only property of the ShadowRoot interface returns true if the shadow root is serializable.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/serializable)
      */
@@ -31377,7 +31377,7 @@ interface SourceBuffer extends EventTarget {
      */
     changeType(type: string): void;
     /**
-     * The **`remove()`** method of the SourceBuffer interface removes media segments within a specific time range from the SourceBuffer. This method can only be called when SourceBuffer.updating equals `false`. If SourceBuffer.updating is not equal to `false`, call SourceBuffer.abort().
+     * The **`remove()`** method of the SourceBuffer interface removes media segments within a specific time range from the SourceBuffer. This method can only be called when SourceBuffer.updating equals false. If SourceBuffer.updating is not equal to false, call SourceBuffer.abort().
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SourceBuffer/remove)
      */
@@ -31510,7 +31510,7 @@ declare var SpeechRecognitionEvent: {
  */
 interface SpeechRecognitionResult {
     /**
-     * The **`isFinal`** read-only property of the SpeechRecognitionResult interface is a boolean value that states whether this result is final (`true`) or not (`false`) — if so, then this is the final time this result will be returned; if not, then this result is an interim result, and may be updated later on.
+     * The **`isFinal`** read-only property of the SpeechRecognitionResult interface is a boolean value that states whether this result is final (true) or not (false) — if so, then this is the final time this result will be returned; if not, then this result is an interim result, and may be updated later on.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechRecognitionResult/isFinal)
      */
@@ -31575,19 +31575,19 @@ interface SpeechSynthesis extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/voiceschanged_event) */
     onvoiceschanged: ((this: SpeechSynthesis, ev: Event) => any) | null;
     /**
-     * The **`paused`** read-only property of the SpeechSynthesis interface is a boolean value that returns `true` if the SpeechSynthesis object is in a paused state, or `false` if not.
+     * The **`paused`** read-only property of the SpeechSynthesis interface is a boolean value that returns true if the SpeechSynthesis object is in a paused state, or false if not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/paused)
      */
     readonly paused: boolean;
     /**
-     * The **`pending`** read-only property of the SpeechSynthesis interface is a boolean value that returns `true` if the utterance queue contains as-yet-unspoken utterances.
+     * The **`pending`** read-only property of the SpeechSynthesis interface is a boolean value that returns true if the utterance queue contains as-yet-unspoken utterances.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/pending)
      */
     readonly pending: boolean;
     /**
-     * The **`speaking`** read-only property of the SpeechSynthesis interface is a boolean value that returns `true` if an utterance is currently in the process of being spoken — even if SpeechSynthesis is in a paused state.
+     * The **`speaking`** read-only property of the SpeechSynthesis interface is a boolean value that returns true if an utterance is currently in the process of being spoken — even if SpeechSynthesis is in a paused state.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesis/speaking)
      */
@@ -31779,7 +31779,7 @@ declare var SpeechSynthesisUtterance: {
  */
 interface SpeechSynthesisVoice {
     /**
-     * The **`default`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is the default voice for the current app (`true`), or not (`false`.)
+     * The **`default`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is the default voice for the current app (true), or not (false.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisVoice/default)
      */
@@ -31791,7 +31791,7 @@ interface SpeechSynthesisVoice {
      */
     readonly lang: string;
     /**
-     * The **`localService`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is supplied by a local speech synthesizer service (`true`), or a remote speech synthesizer service (`false`.)
+     * The **`localService`** read-only property of the SpeechSynthesisVoice interface returns a boolean value indicating whether the voice is supplied by a local speech synthesizer service (true), or a remote speech synthesizer service (false.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SpeechSynthesisVoice/localService)
      */
@@ -31866,7 +31866,7 @@ interface Storage {
      */
     clear(): void;
     /**
-     * The **`getItem()`** method of the Storage interface, when passed a key name, will return that key's value, or `null` if the key does not exist, in the given Storage object.
+     * The **`getItem()`** method of the Storage interface, when passed a key name, will return that key's value, or null if the key does not exist, in the given Storage object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Storage/getItem)
      */
@@ -31967,13 +31967,13 @@ interface StorageManager {
      */
     getDirectory(): Promise<FileSystemDirectoryHandle>;
     /**
-     * The **`persist()`** method of the StorageManager interface requests permission to use persistent storage, and returns a Promise that resolves to `true` if permission is granted and bucket mode is persistent, and `false` otherwise. The browser may or may not honor the request, depending on browser-specific rules. (For more details, see the guide to Storage quotas and eviction criteria.)
+     * The **`persist()`** method of the StorageManager interface requests permission to use persistent storage, and returns a Promise that resolves to true if permission is granted and bucket mode is persistent, and false otherwise. The browser may or may not honor the request, depending on browser-specific rules. (For more details, see the guide to Storage quotas and eviction criteria.)
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persist)
      */
     persist(): Promise<boolean>;
     /**
-     * The **`persisted()`** method of the StorageManager interface returns a Promise that resolves to `true` if your site's storage bucket is persistent.
+     * The **`persisted()`** method of the StorageManager interface returns a Promise that resolves to true if your site's storage bucket is persistent.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persisted)
      */
@@ -32899,7 +32899,7 @@ interface Touch {
      */
     readonly radiusY: number;
     /**
-     * The **`rotationAngle`** read-only property of the Touch interface returns the rotation angle, in degrees, of the contact area ellipse defined by Touch.radiusX and Touch.radiusY. The value may be between `0` and 90. Together, these three values describe an ellipse that approximates the size and shape of the area of contact between the user and the screen. This may be a relatively large ellipse representing the contact between a fingertip and the screen or a small area representing the tip of a stylus, for example.
+     * The **`rotationAngle`** read-only property of the Touch interface returns the rotation angle, in degrees, of the contact area ellipse defined by Touch.radiusX and Touch.radiusY. The value may be between 0 and 90. Together, these three values describe an ellipse that approximates the size and shape of the area of contact between the user and the screen. This may be a relatively large ellipse representing the contact between a fingertip and the screen or a small area representing the tip of a stylus, for example.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Touch/rotationAngle)
      */
@@ -32936,7 +32936,7 @@ declare var Touch: {
  */
 interface TouchEvent extends UIEvent {
     /**
-     * The read-only **`altKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the alt (Alternate) key is enabled when the touch event is created. If the alt key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
+     * The read-only **`altKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the alt (Alternate) key is enabled when the touch event is created. If the alt key is enabled, the attribute's value is true. Otherwise, it is false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/altKey)
      */
@@ -32948,19 +32948,19 @@ interface TouchEvent extends UIEvent {
      */
     readonly changedTouches: TouchList;
     /**
-     * The read-only **`ctrlKey`** property of the TouchEvent interface returns a boolean value indicating whether the control (Control) key is enabled when the touch event is created. If this key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
+     * The read-only **`ctrlKey`** property of the TouchEvent interface returns a boolean value indicating whether the control (Control) key is enabled when the touch event is created. If this key is enabled, the attribute's value is true. Otherwise, it is false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/ctrlKey)
      */
     readonly ctrlKey: boolean;
     /**
-     * The read-only **`metaKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the Meta key is enabled when the touch event is created. If this key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
+     * The read-only **`metaKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the Meta key is enabled when the touch event is created. If this key is enabled, the attribute's value is true. Otherwise, it is false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/metaKey)
      */
     readonly metaKey: boolean;
     /**
-     * The read-only **`shiftKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the shift key is enabled when the touch event is created. If this key is enabled, the attribute's value is `true`. Otherwise, it is `false`.
+     * The read-only **`shiftKey`** property of the TouchEvent interface returns a boolean value indicating whether or not the shift key is enabled when the touch event is created. If this key is enabled, the attribute's value is true. Otherwise, it is false.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TouchEvent/shiftKey)
      */
@@ -33153,43 +33153,43 @@ interface TreeWalker {
      */
     readonly whatToShow: number;
     /**
-     * The **`TreeWalker.firstChild()`** method moves the current Node to the first visible child of the current node, and returns the found child. If no such child exists, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.firstChild()`** method moves the current Node to the first visible child of the current node, and returns the found child. If no such child exists, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/firstChild)
      */
     firstChild(): Node | null;
     /**
-     * The **`TreeWalker.lastChild()`** method moves the current Node to the last visible child of the current node, and returns the found child. If no such child exists, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.lastChild()`** method moves the current Node to the last visible child of the current node, and returns the found child. If no such child exists, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/lastChild)
      */
     lastChild(): Node | null;
     /**
-     * The **`TreeWalker.nextNode()`** method moves the current Node to the next visible node in the document order, and returns the found node. If no such node exists, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.nextNode()`** method moves the current Node to the next visible node in the document order, and returns the found node. If no such node exists, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/nextNode)
      */
     nextNode(): Node | null;
     /**
-     * The **`TreeWalker.nextSibling()`** method moves the current Node to its next sibling, if any, and returns the found sibling. If there is no such node, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.nextSibling()`** method moves the current Node to its next sibling, if any, and returns the found sibling. If there is no such node, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/nextSibling)
      */
     nextSibling(): Node | null;
     /**
-     * The **`TreeWalker.parentNode()`** method moves the current Node to the first visible ancestor node in the document order, and returns the found node. If no such node exists, or if it is above the TreeWalker's root node, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.parentNode()`** method moves the current Node to the first visible ancestor node in the document order, and returns the found node. If no such node exists, or if it is above the TreeWalker's root node, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/parentNode)
      */
     parentNode(): Node | null;
     /**
-     * The **`TreeWalker.previousNode()`** method moves the current Node to the previous visible node in the document order, and returns the found node. If no such node exists, or if it is before that the root node defined at the object construction, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.previousNode()`** method moves the current Node to the previous visible node in the document order, and returns the found node. If no such node exists, or if it is before that the root node defined at the object construction, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/previousNode)
      */
     previousNode(): Node | null;
     /**
-     * The **`TreeWalker.previousSibling()`** method moves the current Node to its previous sibling, if any, and returns the found sibling. If there is no such node, it returns `null` and the current node is not changed.
+     * The **`TreeWalker.previousSibling()`** method moves the current Node to its previous sibling, if any, and returns the found sibling. If there is no such node, it returns null and the current node is not changed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TreeWalker/previousSibling)
      */
@@ -33420,7 +33420,7 @@ interface URLPattern {
      */
     readonly username: string;
     /**
-     * The **`exec()`** method of the URLPattern interface takes a URL or object of URL parts, and returns either an object containing the results of matching the URL to the pattern, or `null` if the URL does not match the pattern.
+     * The **`exec()`** method of the URLPattern interface takes a URL or object of URL parts, and returns either an object containing the results of matching the URL to the pattern, or null if the URL does not match the pattern.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/exec)
      */
@@ -33644,7 +33644,7 @@ interface ValidityState {
      */
     readonly badInput: boolean;
     /**
-     * The read-only **`customError`** property of the ValidityState interface returns `true` if an element doesn't meet the validation required in the custom validity set by the element's setCustomValidity() method.
+     * The read-only **`customError`** property of the ValidityState interface returns true if an element doesn't meet the validation required in the custom validity set by the element's setCustomValidity() method.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ValidityState/customError)
      */
@@ -33717,7 +33717,7 @@ declare var ValidityState: {
  */
 interface VideoColorSpace {
     /**
-     * The **`fullRange`** read-only property of the VideoColorSpace interface returns `true` if full-range color values are used.
+     * The **`fullRange`** read-only property of the VideoColorSpace interface returns true if full-range color values are used.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VideoColorSpace/fullRange)
      */
@@ -34046,7 +34046,7 @@ interface ViewTimeline extends ScrollTimeline {
      */
     readonly endOffset: CSSNumericValue;
     /**
-     * The **`startOffset`** read-only property of the ViewTimeline interface returns a CSSNumericValue representing the starting (`0`% progress) scroll position of the timeline as an offset from the start of the overflowing section of content in the scroller.
+     * The **`startOffset`** read-only property of the ViewTimeline interface returns a CSSNumericValue representing the starting (0% progress) scroll position of the timeline as an offset from the start of the overflowing section of content in the scroller.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTimeline/startOffset)
      */
@@ -34123,19 +34123,19 @@ interface VisualViewportEventMap {
  */
 interface VisualViewport extends EventTarget {
     /**
-     * The **`height`** read-only property of the VisualViewport interface returns the height of the visual viewport, in CSS pixels, or `0` if current document is not fully active.
+     * The **`height`** read-only property of the VisualViewport interface returns the height of the visual viewport, in CSS pixels, or 0 if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/height)
      */
     readonly height: number;
     /**
-     * The **`offsetLeft`** read-only property of the VisualViewport interface returns the offset of the left edge of the visual viewport from the left edge of the layout viewport in CSS pixels, or `0` if current document is not fully active.
+     * The **`offsetLeft`** read-only property of the VisualViewport interface returns the offset of the left edge of the visual viewport from the left edge of the layout viewport in CSS pixels, or 0 if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/offsetLeft)
      */
     readonly offsetLeft: number;
     /**
-     * The **`offsetTop`** read-only property of the VisualViewport interface returns the offset of the top edge of the visual viewport from the top edge of the layout viewport in CSS pixels, or `0` if current document is not fully active.
+     * The **`offsetTop`** read-only property of the VisualViewport interface returns the offset of the top edge of the visual viewport from the top edge of the layout viewport in CSS pixels, or 0 if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/offsetTop)
      */
@@ -34145,25 +34145,25 @@ interface VisualViewport extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/scroll_event) */
     onscroll: ((this: VisualViewport, ev: Event) => any) | null;
     /**
-     * The **`pageLeft`** read-only property of the VisualViewport interface returns the x coordinate of the left edge of the visual viewport relative to the initial containing block origin, in CSS pixels, or `0` if current document is not fully active.
+     * The **`pageLeft`** read-only property of the VisualViewport interface returns the x coordinate of the left edge of the visual viewport relative to the initial containing block origin, in CSS pixels, or 0 if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/pageLeft)
      */
     readonly pageLeft: number;
     /**
-     * The **`pageTop`** read-only property of the VisualViewport interface returns the y coordinate of the top edge of the visual viewport relative to the initial containing block origin, in CSS pixels, or `0` if current document is not fully active.
+     * The **`pageTop`** read-only property of the VisualViewport interface returns the y coordinate of the top edge of the visual viewport relative to the initial containing block origin, in CSS pixels, or 0 if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/pageTop)
      */
     readonly pageTop: number;
     /**
-     * The **`scale`** read-only property of the VisualViewport interface returns the pinch-zoom scaling factor applied to the visual viewport, or `0` if current document is not fully active, or 1 if there is no output device.
+     * The **`scale`** read-only property of the VisualViewport interface returns the pinch-zoom scaling factor applied to the visual viewport, or 0 if current document is not fully active, or 1 if there is no output device.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/scale)
      */
     readonly scale: number;
     /**
-     * The **`width`** read-only property of the VisualViewport interface returns the width of the visual viewport, in CSS pixels, or `0` if current document is not fully active.
+     * The **`width`** read-only property of the VisualViewport interface returns the width of the visual viewport, in CSS pixels, or 0 if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/width)
      */
@@ -34516,7 +34516,7 @@ declare var WaveShaperNode: {
 };
 
 /**
- * The **`WebGL2RenderingContext`** interface provides the OpenGL ES 3.`0` rendering context for the drawing surface of an HTML <canvas> element.
+ * The **`WebGL2RenderingContext`** interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML <canvas> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
  */
@@ -35705,7 +35705,7 @@ declare var WebGLRenderbuffer: {
 };
 
 /**
- * The **`WebGLRenderingContext`** interface provides an interface to the OpenGL ES 2.`0` graphics rendering context for the drawing surface of an HTML <canvas> element.
+ * The **`WebGLRenderingContext`** interface provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of an HTML <canvas> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
  */
@@ -37004,7 +37004,7 @@ interface WebTransportError extends DOMException {
      */
     readonly source: WebTransportErrorSource;
     /**
-     * The **`streamErrorCode`** read-only property of the WebTransportError interface returns a number in the range `0`-255 indicating the application protocol error code for this error, or `null` if one is not available.
+     * The **`streamErrorCode`** read-only property of the WebTransportError interface returns a number in the range 0-255 indicating the application protocol error code for this error, or null if one is not available.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportError/streamErrorCode)
      */
@@ -37230,7 +37230,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly orientation: number;
     /**
-     * The **`originAgentCluster`** read-only property of the Window interface returns `true` if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
+     * The **`originAgentCluster`** read-only property of the Window interface returns true if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/originAgentCluster)
      */
@@ -37349,7 +37349,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly top: WindowProxy | null;
     /**
-     * The **`visualViewport`** read-only property of the Window interface returns a VisualViewport object representing the visual viewport for a given window, or `null` if current document is not fully active.
+     * The **`visualViewport`** read-only property of the Window interface returns a VisualViewport object representing the visual viewport for a given window, or null if current document is not fully active.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/visualViewport)
      */
@@ -37877,13 +37877,13 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     responseType: XMLHttpRequestResponseType;
     /**
-     * The read-only **`XMLHttpRequest.responseURL`** property returns the serialized URL of the response or the empty string if the URL is `null`. If the URL is returned, any URL fragment present in the URL will be stripped away. The value of responseURL will be the final URL obtained after any redirects.
+     * The read-only **`XMLHttpRequest.responseURL`** property returns the serialized URL of the response or the empty string if the URL is null. If the URL is returned, any URL fragment present in the URL will be stripped away. The value of responseURL will be the final URL obtained after any redirects.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseURL)
      */
     readonly responseURL: string;
     /**
-     * The **`XMLHttpRequest.responseXML`** read-only property returns a Document containing the HTML or XML retrieved by the request; or `null` if the request was unsuccessful, has not yet been sent, or if the data can't be parsed as XML or HTML.
+     * The **`XMLHttpRequest.responseXML`** read-only property returns a Document containing the HTML or XML retrieved by the request; or null if the request was unsuccessful, has not yet been sent, or if the data can't be parsed as XML or HTML.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/responseXML)
      */
@@ -37901,7 +37901,7 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     readonly statusText: string;
     /**
-     * The **`XMLHttpRequest.timeout`** property is an unsigned long representing the number of milliseconds a request can take before automatically being terminated. The default value is `0`, which means there is no timeout. Timeout shouldn't be used for synchronous XMLHttpRequests requests used in a document environment or it will throw an InvalidAccessError exception. When a timeout happens, a timeout event is fired.
+     * The **`XMLHttpRequest.timeout`** property is an unsigned long representing the number of milliseconds a request can take before automatically being terminated. The default value is 0, which means there is no timeout. Timeout shouldn't be used for synchronous XMLHttpRequests requests used in a document environment or it will throw an InvalidAccessError exception. When a timeout happens, a timeout event is fired.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/timeout)
      */
@@ -37919,13 +37919,13 @@ interface XMLHttpRequest extends XMLHttpRequestEventTarget {
      */
     withCredentials: boolean;
     /**
-     * The **`XMLHttpRequest.abort()`** method aborts the request if it has already been sent. When a request is aborted, its readyState is changed to XMLHttpRequest.UNSENT (`0`) and the request's status code is set to `0`.
+     * The **`XMLHttpRequest.abort()`** method aborts the request if it has already been sent. When a request is aborted, its readyState is changed to XMLHttpRequest.UNSENT (0) and the request's status code is set to 0.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/abort)
      */
     abort(): void;
     /**
-     * The XMLHttpRequest method **`getAllResponseHeaders()`** returns all the response headers, separated by CRLF, as a string, or returns `null` if no response has been received.
+     * The XMLHttpRequest method **`getAllResponseHeaders()`** returns all the response headers, separated by CRLF, as a string, or returns null if no response has been received.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/getAllResponseHeaders)
      */
@@ -38110,7 +38110,7 @@ interface XPathResult {
      */
     readonly booleanValue: boolean;
     /**
-     * The read-only **`invalidIteratorState`** property of the XPathResult interface signifies that the iterator has become invalid. It is `true` if XPathResult.resultType is UNORDERED_NODE_ITERATOR_TYPE or ORDERED_NODE_ITERATOR_TYPE and the document has been modified since this result was returned.
+     * The read-only **`invalidIteratorState`** property of the XPathResult interface signifies that the iterator has become invalid. It is true if XPathResult.resultType is UNORDERED_NODE_ITERATOR_TYPE or ORDERED_NODE_ITERATOR_TYPE and the document has been modified since this result was returned.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathResult/invalidIteratorState)
      */
@@ -38128,7 +38128,7 @@ interface XPathResult {
      */
     readonly resultType: number;
     /**
-     * The read-only **`singleNodeValue`** property of the XPathResult interface returns a Node value or `null` in case no node was matched of a result with XPathResult.resultType being ANY_UNORDERED_NODE_TYPE or FIRST_ORDERED_NODE_TYPE.
+     * The read-only **`singleNodeValue`** property of the XPathResult interface returns a Node value or null in case no node was matched of a result with XPathResult.resultType being ANY_UNORDERED_NODE_TYPE or FIRST_ORDERED_NODE_TYPE.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathResult/singleNodeValue)
      */
@@ -38146,13 +38146,13 @@ interface XPathResult {
      */
     readonly stringValue: string;
     /**
-     * The **`iterateNext()`** method of the XPathResult interface iterates over a node set result and returns the next node from it or `null` if there are no more nodes.
+     * The **`iterateNext()`** method of the XPathResult interface iterates over a node set result and returns the next node from it or null if there are no more nodes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathResult/iterateNext)
      */
     iterateNext(): Node | null;
     /**
-     * The **`snapshotItem()`** method of the XPathResult interface returns an item of the snapshot collection or `null` in case the index is not within the range of nodes. Unlike the iterator result, the snapshot does not become invalid, but may not correspond to the current document if it is mutated.
+     * The **`snapshotItem()`** method of the XPathResult interface returns an item of the snapshot collection or null in case the index is not within the range of nodes. Unlike the iterator result, the snapshot does not become invalid, but may not correspond to the current document if it is mutated.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/XPathResult/snapshotItem)
      */
@@ -38481,7 +38481,7 @@ declare namespace WebAssembly {
      */
     interface Memory {
         /**
-         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: `true`, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
+         * The read-only **`buffer`** prototype property of the WebAssembly.Memory object returns the buffer contained in the memory. Depending on whether or not the memory was constructed with shared: true, the buffer is either an ArrayBuffer or a SharedArrayBuffer.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/buffer)
          */
@@ -38679,7 +38679,7 @@ declare namespace WebAssembly {
  */
 interface Console {
     /**
-     * The **`console.assert()`** static method writes an error message to the console if the assertion is `false`. If the assertion is `true`, nothing happens.
+     * The **`console.assert()`** static method writes an error message to the console if the assertion is false. If the assertion is true, nothing happens.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/assert_static)
      */
@@ -39394,7 +39394,7 @@ declare var opener: any;
  */
 declare var orientation: number;
 /**
- * The **`originAgentCluster`** read-only property of the Window interface returns `true` if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
+ * The **`originAgentCluster`** read-only property of the Window interface returns true if this window belongs to an origin-keyed agent cluster: this means that the operating system has provided dedicated resources (for example an operating system process) to this window's origin that are not shared with windows from other origins.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/originAgentCluster)
  */
@@ -39513,7 +39513,7 @@ declare var toolbar: BarProp;
  */
 declare var top: WindowProxy | null;
 /**
- * The **`visualViewport`** read-only property of the Window interface returns a VisualViewport object representing the visual viewport for a given window, or `null` if current document is not fully active.
+ * The **`visualViewport`** read-only property of the Window interface returns a VisualViewport object representing the visual viewport for a given window, or null if current document is not fully active.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/visualViewport)
  */
