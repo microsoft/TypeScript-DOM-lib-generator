@@ -14,8 +14,8 @@
   "scripts": {
     "build": "tsc && node ./lib/build.js",
     "baseline-accept": "cpx \"generated\\**\" baselines\\",
-    "lint": "eslint --max-warnings 0 src deploy/*.js && tsc -p deploy/jsconfig.json",
-    "lint-fix": "eslint --max-warnings 0 src deploy/*.js --fix",
+    "lint": "eslint --max-warnings 0 src deploy/*.js scripts && tsc -p deploy/jsconfig.json",
+    "lint-fix": "eslint --max-warnings 0 src deploy/*.js scripts --fix",
     "test": "npm run build && npm run lint && node ./lib/test.js && node ./unittests/index.js",
     "changelog": "tsc && node ./lib/changelog.js",
     "ts-changelog": "node ./deploy/versionChangelog.js",
