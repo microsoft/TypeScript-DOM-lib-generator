@@ -71,7 +71,6 @@ function generateComment(summary: string, name: string): string | undefined{
       new RegExp(`(?:\\b\\w+\\.)?${name}(\\(\\))?`),
       (match) => `**\`${match}\`**`,
     )
-    .replace(/"/g, "'")
     .trim();
 }
 
