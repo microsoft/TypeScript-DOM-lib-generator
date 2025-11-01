@@ -17,7 +17,9 @@ const filtered = Object.values(data)
     const path = entry.mdn_url.toLowerCase();
     return (
       path.startsWith("/en-us/docs/web/api/") ||
-      path.startsWith("/en-us/docs/webassembly/reference/javascript_interface/") ||
+      path.startsWith(
+        "/en-us/docs/webassembly/reference/javascript_interface/",
+      ) ||
       path.startsWith("/en-us/docs/web/css/")
     );
   })

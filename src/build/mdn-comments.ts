@@ -7,7 +7,7 @@ const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 const subdirectories = [
   "web/api/",
   "webassembly/reference/javascript_interface/",
-  "web/"
+  "web/",
 ];
 
 const paths: Record<string, string[]> = {
@@ -36,7 +36,11 @@ function extractSlug(mdnUrl: string): string[] {
       .slice(subdirectory.length)
       .replace(/_static/g, "")
       .split("/")
-      .map(part => hyphenToCamelCase(part.toLowerCase() === "css" ? "CSSStyleProperties" : part));
+      .map((part) =>
+        hyphenToCamelCase(
+          part.toLowerCase() === "css" ? "CSSStyleProperties" : part,
+        ),
+      );
     if (slugArr[0] === "CSSStyleProperties") {
       // Drop the second and third items
       slugArr = [slugArr[0], ...slugArr.slice(3)];
