@@ -116,17 +116,8 @@ async function emitDom() {
     } catch {
       commentsMap = {};
     }
-    commentCleanup(commentsMap);
     const result = convert(idl, commentsMap);
     return result;
-  }
-
-  function commentCleanup(commentsMap: Record<string, string>) {
-    for (const key in commentsMap) {
-      // Filters out phrases for nested comments as we retargets them:
-      // "This operation receives a dictionary, which has these members:"
-      commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
-    }
   }
 
   function mergeApiDescriptions(
