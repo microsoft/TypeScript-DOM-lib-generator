@@ -22,12 +22,12 @@ const paths: Record<string, string[]> = {
   "webassembly-static-method": ["methods", "method"],
 };
 
-function extractSlug(slug: string): string[] {
+function extractSlug(mdnUrl: string): string[] {
   for (const subdirectory of subdirectories) {
-    if (!slug.toLowerCase().startsWith(subdirectory)) {
+    if (!mdnUrl.toLowerCase().startsWith(subdirectory)) {
       continue;
     }
-    return slug
+    return mdnUrl
       .slice(subdirectory.length)
       .replace(/_static/g, "")
       .split("/");
