@@ -81,7 +81,7 @@ export async function generateDescriptions(): Promise<{
   const mdn = JSON.parse(content);
   const results: Record<string, any> = {};
   // metadata is an array of objects, each with at least: slug, page-type, summary
-  for (const entry of mdn.data) {
+  for (const entry of mdn) {
     const mdnUrl = entry.mdn_url.split("/en-US/docs/")[1];
     const slugArr = extractSlug(mdnUrl);
     const path = paths[entry.pageType];
