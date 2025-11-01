@@ -29,7 +29,7 @@ const filtered = Object.values(data)
 // Save to file
 await fs.writeFile(
   new URL("../inputfiles/mdn.json", import.meta.url),
-  JSON.stringify({ data: filtered }, null, 2),
+  JSON.stringify(filtered, null, 2),
 );
 
 console.log("mdn.json updated!");
