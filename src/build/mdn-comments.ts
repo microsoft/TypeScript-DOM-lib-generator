@@ -58,9 +58,9 @@ function insertComment(
   }
 }
 
-function generateComment(summary: string, name: string): string | undefined{
+function generateComment(summary: string, name: string): string | undefined {
   // Escape special regex characters in the name
-  if (['.'].some(c => name.includes(c))) {
+  if (["."].some((c) => name.includes(c))) {
     return;
   }
 
