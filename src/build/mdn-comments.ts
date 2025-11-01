@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+
 const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 // These are the subdirectory prefixes we care about for slugs
 const subdirectories = [
