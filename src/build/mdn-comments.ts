@@ -27,6 +27,61 @@ const paths: Record<string, string[]> = {
   "webassembly-static-method": ["methods", "method"],
 };
 
+const webkitList = [
+  "alignContent",
+  "alignItems",
+  "alignSelf",
+  "animation",
+  "animationDelay",
+  "animationDirection",
+  "animationDuration",
+  "animationFillMode",
+  "animationIterationCount",
+  "animationName",
+  "animationPlayState",
+  "animationTimingFunction",
+  "appearance",
+  "backfaceVisibility",
+  "backgroundClip",
+  "backgroundOrigin",
+  "backgroundSize",
+  "borderBottomLeftRadius",
+  "borderBottomRightRadius",
+  "borderTopLeftRadius",
+  "borderTopRightRadius",
+  "borderRadius",
+  "boxAlign",
+  "boxFlex",
+  "boxOrdinalGroup",
+  "boxOrient",
+  "boxPack",
+  "boxSizing",
+  "boxShadow",
+  "filter",
+  "flex",
+  "flexBasis",
+  "flexDirection",
+  "flexFlow",
+  "flexGrow",
+  "flexShrink",
+  "flexWrap",
+  "justifyContent",
+  "lineClamp",
+  "mask",
+  "maskBoxImage",
+  "maskBoxImageOutset",
+  "maskBoxImageRepeat",
+  "maskBoxImageSlice",
+  "maskBoxImageSource",
+  "maskBoxImageWidth",
+  "maskClip",
+  "maskComposite",
+  "maskImage",
+  "maskOrigin",
+  "maskPosition",
+  "maskRepeat",
+];
+
 function extractSlug(mdnUrl: string): string[] {
   for (const subdirectory of subdirectories) {
     if (!mdnUrl.toLowerCase().startsWith(subdirectory)) {
@@ -111,6 +166,24 @@ export async function generateDescriptions(): Promise<{
       continue;
     }
     insertComment(results, slugArr, comment, path);
+    // Check if this is a CSS property and its slug is in the webkit list
+    if (
+      entry.pageType === "css-property" ||
+      entry.pageType === "css-shorthand-property"
+    ) {
+      const propertyName = slugArr.at(-1)!;
+      if (webkitList.includes(propertyName)) {
+        insertComment(
+          results,
+          [
+            ...slugArr.slice(0, -1),
+            "webkit" + propertyName[0].toUpperCase() + propertyName.slice(1),
+          ],
+          comment,
+          path,
+        );
+      }
+    }
   }
   return { interfaces: { interface: results } };
 }
