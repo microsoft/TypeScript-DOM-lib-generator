@@ -58,15 +58,17 @@ function insertComment(
   }
 }
 
-function generateComment(summary: string, name: string): string {
+function generateComment(summary: string, name: string): string | undefined{
   // Escape special regex characters in the name
-  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  if (['.'].some(c => name.includes(c))) {
+    return;
+  }
 
   return summary
     .replace(/\n/g, " ") // remove newlines
     .replace(
       // Match optional preceding identifier + dot OR just the name itself
-      new RegExp(`(?:\\b\\w+\\.)?${escapedName}(\\(\\))?`),
+      new RegExp(`(?:\\b\\w+\\.)?${name}(\\(\\))?`),
       (match) => `**\`${match}\`**`,
     )
     .replace(/"/g, "'")
@@ -88,6 +90,9 @@ export async function generateDescriptions(): Promise<{
       continue;
     }
     const comment = generateComment(entry.summary, slugArr.at(-1)!);
+    if (!comment) {
+      continue;
+    }
     insertComment(results, slugArr, comment, path);
   }
   return { interfaces: { interface: results } };
