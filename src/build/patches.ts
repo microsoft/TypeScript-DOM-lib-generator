@@ -257,15 +257,24 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  const signature: Method["signature"] = [
-    {
-      param: params,
-      ...(typeNode
-        ? handleTyped(typeNode)
-        : { type: string(child.properties?.returns) }),
-    },
-  ];
-  return { name, signature };
+  const signature: { signature: Method["signature"] } | undefined =
+    params.length || typeNode || child.properties?.returns
+      ? {
+          signature: [
+            {
+              param: params,
+              ...(typeNode
+                ? handleTyped(typeNode)
+                : { type: string(child.properties?.returns) }),
+            },
+          ],
+        }
+      : undefined;
+  return {
+    name,
+    ...signature,
+    ...optionalMember("deprecated", "boolean", child.properties?.deprecated),
+  };
 }
 
 /**

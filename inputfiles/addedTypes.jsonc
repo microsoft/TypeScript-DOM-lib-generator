@@ -531,15 +531,6 @@
                     ]
                 }
             },
-            "DOMMatrixReadOnly": {
-                "methods": {
-                    "method": {
-                        "scaleNonUniform": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
             "EventSource": {
                 "events": {
                     "event": [
