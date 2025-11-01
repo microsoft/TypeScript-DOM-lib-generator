@@ -9070,24 +9070,28 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     webkitMaskRepeat: string;
     /**
+     * The mask-size CSS property specifies the sizes of specified mask images. Mask image sizes can be fully or partially constrained to preserve their intrinsic aspect ratios.
      * @deprecated This is a legacy alias of `maskSize`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-size)
      */
     webkitMaskSize: string;
     /**
+     * The **`order`** CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order. Items not given an explicit order value are assigned the default value of 0.
      * @deprecated This is a legacy alias of `order`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/order)
      */
     webkitOrder: string;
     /**
+     * The **`perspective`** CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.
      * @deprecated This is a legacy alias of `perspective`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective)
      */
     webkitPerspective: string;
     /**
+     * The perspective-origin CSS property determines the position at which the viewer is looking. It is used as the vanishing point by the perspective property.
      * @deprecated This is a legacy alias of `perspectiveOrigin`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective-origin)
@@ -9100,6 +9104,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     webkitTextFillColor: string;
     /**
+     * The text-size-adjust CSS property controls the text inflation algorithm used on some smartphones and tablets. Other browsers will ignore this property.
      * @deprecated This is a legacy alias of `textSizeAdjust`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-size-adjust)
@@ -9124,54 +9129,63 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     webkitTextStrokeWidth: string;
     /**
+     * The **`transform`** CSS property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.
      * @deprecated This is a legacy alias of `transform`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform)
      */
     webkitTransform: string;
     /**
+     * The transform-origin CSS property sets the origin for an element's transformations.
      * @deprecated This is a legacy alias of `transformOrigin`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-origin)
      */
     webkitTransformOrigin: string;
     /**
+     * The transform-style CSS property sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element.
      * @deprecated This is a legacy alias of `transformStyle`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-style)
      */
     webkitTransformStyle: string;
     /**
+     * The **`transition`** CSS property is a shorthand property for transition-property, transition-duration, transition-timing-function, transition-delay, and transition-behavior.
      * @deprecated This is a legacy alias of `transition`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition)
      */
     webkitTransition: string;
     /**
+     * The transition-delay CSS property specifies the duration to wait before starting a property's transition effect when its value changes.
      * @deprecated This is a legacy alias of `transitionDelay`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-delay)
      */
     webkitTransitionDelay: string;
     /**
+     * The transition-duration CSS property sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur.
      * @deprecated This is a legacy alias of `transitionDuration`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-duration)
      */
     webkitTransitionDuration: string;
     /**
+     * The transition-property CSS property sets the CSS properties to which a transition effect should be applied.
      * @deprecated This is a legacy alias of `transitionProperty`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-property)
      */
     webkitTransitionProperty: string;
     /**
+     * The transition-timing-function CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect.
      * @deprecated This is a legacy alias of `transitionTimingFunction`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-timing-function)
      */
     webkitTransitionTimingFunction: string;
     /**
+     * The user-select CSS property controls whether the user can select text. This doesn't have any effect on content loaded as part of a browser's user interface (its chrome), except in textboxes.
      * @deprecated This is a legacy alias of `userSelect`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/user-select)
