@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { hyphenToCamelCase } from "./utils/css.js";
 
 const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 
@@ -6,9 +7,13 @@ const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 const subdirectories = [
   "web/api/",
   "webassembly/reference/javascript_interface/",
+  "web/",
 ];
 
 const paths: Record<string, string[]> = {
+  "css-property": ["properties", "property"],
+  "css-type": ["properties", "property"],
+  "css-shorthand-property": ["properties", "property"],
   "web-api-instance-property": ["properties", "property"],
   "web-api-static-property": ["properties", "property"],
   "web-api-instance-method": ["methods", "method"],
@@ -27,10 +32,20 @@ function extractSlug(mdnUrl: string): string[] {
     if (!mdnUrl.toLowerCase().startsWith(subdirectory)) {
       continue;
     }
-    return mdnUrl
+    let slugArr = mdnUrl
       .slice(subdirectory.length)
       .replace(/_static/g, "")
-      .split("/");
+      .split("/")
+      .map((part) =>
+        hyphenToCamelCase(
+          part.toLowerCase() === "css" ? "CSSStyleProperties" : part,
+        ),
+      );
+    if (slugArr[0] === "CSSStyleProperties") {
+      // Drop the second and third items
+      slugArr = [slugArr[0], ...slugArr.slice(3)];
+    }
+    return slugArr;
   }
   return [];
 }
@@ -96,6 +111,22 @@ export async function generateDescriptions(): Promise<{
       continue;
     }
     insertComment(results, slugArr, comment, path);
+    // Check if this is a CSS property and its slug is in the webkit list
+    if (
+      entry.pageType === "css-property" ||
+      entry.pageType === "css-shorthand-property"
+    ) {
+      const propertyName = slugArr.at(-1)!;
+      insertComment(
+        results,
+        [
+          ...slugArr.slice(0, -1),
+          "webkit" + propertyName[0].toUpperCase() + propertyName.slice(1),
+        ],
+        comment,
+        path,
+      );
+    }
   }
   return { interfaces: { interface: results } };
 }
