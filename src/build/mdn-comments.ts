@@ -61,8 +61,9 @@ function insertComment(
 }
 
 function generateComment(summary: string, name: string): string | undefined {
-  // Escape special regex characters in the name
-  if (["."].some((c) => name.includes(c))) {
+  // Ban any non-alphanumeric characters in the name for safe regex
+  // For now the only known exception is `RTCStatsReport/Symbol.iterator`.
+  if (name.match(/\W/)) {
     return;
   }
 
