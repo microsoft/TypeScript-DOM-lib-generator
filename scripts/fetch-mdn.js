@@ -14,13 +14,13 @@ const data = await res.json();
 // Filter and map the data
 const filtered = Object.values(data)
   .filter((entry) => {
-    const path = entry.mdn_url.toLowerCase();
+    const path = entry.mdn_url;
     return (
-      path.startsWith("/en-us/docs/web/api/") ||
+      path.startsWith("/en-US/docs/Web/API/") ||
       path.startsWith(
-        "/en-us/docs/webassembly/reference/javascript_interface/",
+        "/en-US/docs/WebAssembly/Reference/JavaScript_interface/",
       ) ||
-      path.startsWith("/en-us/docs/web/css/reference/properties/")
+      path.startsWith("Web/CSS/Reference/Properties/")
     );
   })
   .map(({ mdn_url, pageType, summary }) => ({

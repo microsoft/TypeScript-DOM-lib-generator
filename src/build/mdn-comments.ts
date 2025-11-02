@@ -5,9 +5,9 @@ const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 
 // Valid subdirectories for our use case
 const subdirectories = [
-  "web/api/",
-  "webassembly/reference/javascript_interface/",
-  "web/css/reference/properties/",
+  "Web/API/",
+  "WebAssembly/Reference/JavaScript_interface/",
+  "Web/CSS/Reference/Properties/",
 ];
 
 const paths: Record<string, string[]> = {
@@ -28,7 +28,7 @@ const paths: Record<string, string[]> = {
 
 function extractSlug(mdnUrl: string): string[] {
   for (const subdirectory of subdirectories) {
-    if (!mdnUrl.toLowerCase().startsWith(subdirectory)) {
+    if (!mdnUrl.startsWith(subdirectory)) {
       continue;
     }
     return mdnUrl
