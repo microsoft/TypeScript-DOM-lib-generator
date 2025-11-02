@@ -32,14 +32,12 @@ function extractSlug(mdnUrl: string): string[] {
     if (!mdnUrl.toLowerCase().startsWith(subdirectory)) {
       continue;
     }
-    let slugArr = mdnUrl
+    const slugArr = mdnUrl
       .slice(subdirectory.length)
       .replace(/_static/g, "")
       .split("/")
       .map((part) =>
-        hyphenToCamelCase(
-          part=== "Reference" ? "CSSStyleProperties" : part,
-        ),
+        hyphenToCamelCase(part === "Reference" ? "CSSStyleProperties" : part),
       );
     if (slugArr[0] === "CSSStyleProperties") {
       // Drop the second itmem
