@@ -9385,6 +9385,7 @@ interface WebGLRenderingContextBase {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getError) */
     getError(): GLenum;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getExtension) */
+    getExtension(name: string): any;
     getExtension(extensionName: "ANGLE_instanced_arrays"): ANGLE_instanced_arrays | null;
     getExtension(extensionName: "EXT_blend_minmax"): EXT_blend_minmax | null;
     getExtension(extensionName: "EXT_color_buffer_float"): EXT_color_buffer_float | null;
@@ -9419,7 +9420,6 @@ interface WebGLRenderingContextBase {
     getExtension(extensionName: "WEBGL_draw_buffers"): WEBGL_draw_buffers | null;
     getExtension(extensionName: "WEBGL_lose_context"): WEBGL_lose_context | null;
     getExtension(extensionName: "WEBGL_multi_draw"): WEBGL_multi_draw | null;
-    getExtension(name: string): any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getFramebufferAttachmentParameter) */
     getFramebufferAttachmentParameter(target: GLenum, attachment: GLenum, pname: GLenum): any;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getParameter) */

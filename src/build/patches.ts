@@ -229,12 +229,14 @@ function handleProperty(child: Node): Partial<Property> {
 /**
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
+ * @param name Optional name for the method.
  */
-function handleMethod(child: Node): Partial<Method> {
-  const name = string(child.values[0]);
+function handleMethod(child: Node, name?:string): Partial<Method> {
+  if (!name) name = string(child.values[0]);
 
   let typeNode: Node | undefined;
   const params: { name: string; type: string }[] = [];
+  const signatures = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -251,21 +253,32 @@ function handleMethod(child: Node): Partial<Method> {
           type: string(c.properties.type),
         });
         break;
+      
+      case "signatures": 
+        for (const sc of c.children) {
+          signatures.push(handleMethod(sc, name).signature![0] || [])
+        }
+        break;
+      
 
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
     }
   }
 
-  const signature: Method["signature"] = [
-    {
+  let signature;
+  if (typeNode || child.properties?.returns !== undefined) {
+    signature = {
       param: params,
       ...(typeNode
         ? handleTyped(typeNode)
         : { type: string(child.properties?.returns) }),
-    },
-  ];
-  return { name, signature };
+    };
+  }
+  return { name, signature: [
+    ...(signature ? [signature] : []),
+    ...signatures as any
+  ] };
 }
 
 /**
