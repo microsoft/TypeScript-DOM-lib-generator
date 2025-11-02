@@ -7,12 +7,12 @@ const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 const subdirectories = [
   "web/api/",
   "webassembly/reference/javascript_interface/",
-  "web/css/",
+  "web/css/reference/properties/",
 ];
 
 const paths: Record<string, string[]> = {
-  "css-property": ["properties", "property"],
-  "css-shorthand-property": ["properties", "property"],
+  "css-property": ["CSSStyleProperties", "properties", "property"],
+  "css-shorthand-property": ["CSSStyleProperties", "properties", "property"],
   "web-api-instance-property": ["properties", "property"],
   "web-api-static-property": ["properties", "property"],
   "web-api-instance-method": ["methods", "method"],
