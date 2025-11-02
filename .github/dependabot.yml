@@ -10,8 +10,8 @@ updates:
     # Check the npm registry for updates every month
     schedule:
       interval: "monthly"
-    # Usually only bump versions in package-lock.json, but update package.json for major version updates
-    versioning-strategy: "increase-if-necessary"
+    # Update the package.json also
+    versioning-strategy: "increase"
     # Update all dependencies in a single PR
     groups:
       # ESLint usually requires updating together for major updates
