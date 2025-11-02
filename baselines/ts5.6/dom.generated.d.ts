@@ -6911,7 +6911,11 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-set)
      */
     counterSet: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat) */
+    /**
+     * The **`cssFloat`** property of the CSSStyleProperties interface returns the CSS float property.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat)
+     */
     cssFloat: string;
     /**
      * The **`cursor`** CSS property sets the mouse cursor, if any, to show when the mouse pointer is over an element.
