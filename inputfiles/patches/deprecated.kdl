@@ -1,0 +1,4 @@
+interface PerformanceTiming deprecated="This interface is deprecated in the Navigation Timing Level 2 specification. Please use the PerformanceNavigationTiming interface instead."
+interface PerformanceNavigation deprecated="This interface is deprecated in the Navigation Timing Level 2 specification. Please use the PerformanceNavigationTiming interface instead."
+interface AudioProcessingEvent deprecated="As of the August 29 2014 Web Audio API spec publication, this feature has been marked as deprecated, and is soon to be replaced by AudioWorklet."
+interface ScriptProcessorNode deprecated="As of the August 29 2014 Web Audio API spec publication, this feature has been marked as deprecated, and was replaced by AudioWorklet (see AudioWorkletNode)."

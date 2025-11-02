@@ -96,7 +96,6 @@ async function emitDom() {
   const addedItems = await readInputJSON("addedTypes.jsonc");
   const patches = await readPatches();
   const comments = await readInputJSON("comments.json");
-  const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
@@ -116,17 +115,8 @@ async function emitDom() {
     } catch {
       commentsMap = {};
     }
-    commentCleanup(commentsMap);
     const result = convert(idl, commentsMap);
     return result;
-  }
-
-  function commentCleanup(commentsMap: Record<string, string>) {
-    for (const key in commentsMap) {
-      // Filters out phrases for nested comments as we retargets them:
-      // "This operation receives a dictionary, which has these members:"
-      commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
-    }
   }
 
   function mergeApiDescriptions(
@@ -149,24 +139,6 @@ async function emitDom() {
     }
     idl = merge(idl, descriptions, { optional: true });
 
-    return idl;
-  }
-
-  function mergeDeprecatedMessage(
-    idl: Browser.WebIdl,
-    descriptions: Record<string, string>,
-  ) {
-    const namespaces = arrayToMap(
-      idl.namespaces!,
-      (i) => i.name,
-      (i) => i,
-    );
-    for (const [key, value] of Object.entries(descriptions)) {
-      const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target) {
-        target.deprecated = value;
-      }
-    }
     return idl;
   }
 
@@ -242,7 +214,6 @@ async function emitDom() {
   webidl = merge(webidl, overriddenItems);
   webidl = merge(webidl, patches);
   webidl = merge(webidl, comments);
-  webidl = mergeDeprecatedMessage(webidl, deprecatedInfo);
   for (const name in webidl.interfaces!.interface) {
     const i = webidl.interfaces!.interface[name];
     if (i.overrideExposed) {
