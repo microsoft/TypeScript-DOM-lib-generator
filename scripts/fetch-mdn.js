@@ -20,7 +20,7 @@ const filtered = Object.values(data)
       path.startsWith(
         "/en-US/docs/WebAssembly/Reference/JavaScript_interface/",
       ) ||
-      path.startsWith("Web/CSS/Reference/Properties/")
+      path.startsWith("/en-US/docs/Web/CSS/Reference/Properties/")
     );
   })
   .map(({ mdn_url, pageType, summary }) => ({
