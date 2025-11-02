@@ -12,7 +12,6 @@ const subdirectories = [
 
 const paths: Record<string, string[]> = {
   "css-property": ["properties", "property"],
-  "css-type": ["properties", "property"],
   "css-shorthand-property": ["properties", "property"],
   "web-api-instance-property": ["properties", "property"],
   "web-api-static-property": ["properties", "property"],
