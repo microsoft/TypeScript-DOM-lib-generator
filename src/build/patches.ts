@@ -161,7 +161,12 @@ function handleMixinandInterfaces(
       }
       case "method": {
         const methodName = string(child.values[0]);
-        method[methodName] = handleMethod(child);
+        const m = handleMethod(child);
+        if (method[methodName]) {
+          method[methodName]!.signature!.push(m.signature![0]);
+          break;
+        }
+        method[methodName] = m;
         break;
       }
       default:
@@ -231,14 +236,11 @@ function handleProperty(child: Node): Partial<Property> {
  * @param child The child node to handle.
  * @param name Optional name for the method.
  */
-function handleMethod(child: Node, name?: string): Partial<Method> {
-  if (!name) {
-    name = string(child.values[0]);
-  }
+function handleMethod(child: Node): Partial<Method> {
+  const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
   const params: { name: string; type: string }[] = [];
-  const signatures = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -256,29 +258,22 @@ function handleMethod(child: Node, name?: string): Partial<Method> {
         });
         break;
 
-      case "signatures":
-        for (const sc of c.children) {
-          signatures.push(handleMethod(sc, name).signature![0] || []);
-        }
-        break;
-
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
     }
   }
 
-  let signature;
-  if (typeNode || child.properties?.returns !== undefined) {
-    signature = {
+  const signature: Method["signature"] = [
+    {
       param: params,
       ...(typeNode
         ? handleTyped(typeNode)
         : { type: string(child.properties?.returns) }),
-    };
-  }
+    },
+  ];
   return {
     name,
-    signature: [...(signature ? [signature] : []), ...(signatures as any)],
+    signature,
   };
 }
 
