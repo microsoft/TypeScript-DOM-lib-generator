@@ -234,7 +234,6 @@ function handleProperty(child: Node): Partial<Property> {
 /**
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
- * @param name Optional name for the method.
  */
 function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
@@ -271,10 +270,7 @@ function handleMethod(child: Node): Partial<Method> {
         : { type: string(child.properties?.returns) }),
     },
   ];
-  return {
-    name,
-    signature,
-  };
+  return { name, signature };
 }
 
 /**
