@@ -163,7 +163,7 @@ function handleMixinandInterfaces(
         const methodName = string(child.values[0]);
         const m = handleMethod(child);
         if (method[methodName]) {
-          method[methodName]!.signature!.push(m.signature![0]);
+          method[methodName].signature!.push(m.signature![0]);
           break;
         }
         method[methodName] = m;
