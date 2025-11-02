@@ -8702,279 +8702,236 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     visibility: string;
     /**
-     * The CSS align-content property sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
      * @deprecated This is a legacy alias of `alignContent`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content)
      */
     webkitAlignContent: string;
     /**
-     * The CSS align-items property sets the align-self value on all direct children as a group. In flexbox, it controls the alignment of items on the cross axis. In grid layout, it controls the alignment of items on the block axis within their grid areas.
      * @deprecated This is a legacy alias of `alignItems`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-items)
      */
     webkitAlignItems: string;
     /**
-     * The align-self CSS property overrides a grid or flex item's align-items value. In grid, it aligns the item inside the grid area. In flexbox, it aligns the item on the cross axis.
      * @deprecated This is a legacy alias of `alignSelf`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-self)
      */
     webkitAlignSelf: string;
     /**
-     * The **`animation`** shorthand CSS property applies an animation between styles. It is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, animation-play-state, and animation-timeline.
      * @deprecated This is a legacy alias of `animation`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation)
      */
     webkitAnimation: string;
     /**
-     * The animation-delay CSS property specifies the amount of time to wait from applying the animation to an element before beginning to perform the animation. The animation can start later, immediately from its beginning, or immediately and partway through the animation.
      * @deprecated This is a legacy alias of `animationDelay`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-delay)
      */
     webkitAnimationDelay: string;
     /**
-     * The animation-direction CSS property sets whether an animation should play forward, backward, or alternate back and forth between playing the sequence forward and backward.
      * @deprecated This is a legacy alias of `animationDirection`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-direction)
      */
     webkitAnimationDirection: string;
     /**
-     * The animation-duration CSS property sets the length of time that an animation takes to complete one cycle.
      * @deprecated This is a legacy alias of `animationDuration`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-duration)
      */
     webkitAnimationDuration: string;
     /**
-     * The animation-fill-mode CSS property sets how a CSS animation applies styles to its target before and after its execution.
      * @deprecated This is a legacy alias of `animationFillMode`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-fill-mode)
      */
     webkitAnimationFillMode: string;
     /**
-     * The animation-iteration-count CSS property sets the number of times an animation sequence should be played before stopping.
      * @deprecated This is a legacy alias of `animationIterationCount`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-iteration-count)
      */
     webkitAnimationIterationCount: string;
     /**
-     * The animation-name CSS property specifies the names of one or more @keyframes at-rules that describe the animation to apply to an element. Multiple @keyframes at-rules are specified as a comma-separated list of names. If the specified name does not match any @keyframes at-rule, no properties are animated.
      * @deprecated This is a legacy alias of `animationName`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-name)
      */
     webkitAnimationName: string;
     /**
-     * The animation-play-state CSS property sets whether an animation is running or paused.
      * @deprecated This is a legacy alias of `animationPlayState`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-play-state)
      */
     webkitAnimationPlayState: string;
     /**
-     * The animation-timing-function CSS property sets how an animation progresses through the duration of each cycle.
      * @deprecated This is a legacy alias of `animationTimingFunction`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timing-function)
      */
     webkitAnimationTimingFunction: string;
     /**
-     * The **`appearance`** CSS property specifies the rendered appearance of replaced UI widget elements such as form controls. Most commonly, such elements are given native, platform-specific styling based on the operating system's theme, or a primitive appearance with styles that can be overridden using CSS.
      * @deprecated This is a legacy alias of `appearance`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/appearance)
      */
     webkitAppearance: string;
     /**
-     * The backface-visibility CSS property sets whether the back face of an element is visible when turned towards the user.
      * @deprecated This is a legacy alias of `backfaceVisibility`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/backface-visibility)
      */
     webkitBackfaceVisibility: string;
     /**
-     * The background-clip CSS property sets whether an element's background extends underneath its border box, padding box, or content box.
      * @deprecated This is a legacy alias of `backgroundClip`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-clip)
      */
     webkitBackgroundClip: string;
     /**
-     * The background-origin CSS property sets the background's origin: from the border start, inside the border, or inside the padding.
      * @deprecated This is a legacy alias of `backgroundOrigin`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-origin)
      */
     webkitBackgroundOrigin: string;
     /**
-     * The background-size CSS property sets the size of the element's background image. The image can be left to its natural size, stretched, or constrained to fit the available space.
      * @deprecated This is a legacy alias of `backgroundSize`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-size)
      */
     webkitBackgroundSize: string;
     /**
-     * The border-bottom-left-radius CSS property rounds the bottom-left corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
      * @deprecated This is a legacy alias of `borderBottomLeftRadius`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-left-radius)
      */
     webkitBorderBottomLeftRadius: string;
     /**
-     * The border-bottom-right-radius CSS property rounds the bottom-right corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
      * @deprecated This is a legacy alias of `borderBottomRightRadius`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-right-radius)
      */
     webkitBorderBottomRightRadius: string;
     /**
-     * The border-radius CSS property rounds the corners of an element's outer border edge. You can set a single radius to make circular corners, or two radii to make elliptical corners.
      * @deprecated This is a legacy alias of `borderRadius`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-radius)
      */
     webkitBorderRadius: string;
     /**
-     * The border-top-left-radius CSS property rounds the top-left corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
      * @deprecated This is a legacy alias of `borderTopLeftRadius`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-left-radius)
      */
     webkitBorderTopLeftRadius: string;
     /**
-     * The border-top-right-radius CSS property rounds the top-right corner of an element by specifying the radius (or the radius of the semi-major and semi-minor axes) of the ellipse defining the curvature of the corner.
      * @deprecated This is a legacy alias of `borderTopRightRadius`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-right-radius)
      */
     webkitBorderTopRightRadius: string;
     /**
-     * The box-align CSS property specifies how an element aligns its contents across its layout in a perpendicular direction. The effect of the property is only visible if there is extra space in the box.
      * @deprecated This is a legacy alias of `boxAlign`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-align)
      */
     webkitBoxAlign: string;
     /**
-     * The -moz-box-flex and -webkit-box-flex CSS properties specify how a -moz-box or -webkit-box grows to fill the box that contains it, in the direction of the containing box's layout.
      * @deprecated This is a legacy alias of `boxFlex`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-flex)
      */
     webkitBoxFlex: string;
     /**
-     * The box-ordinal-group CSS property assigns the flexbox's child elements to an ordinal group.
      * @deprecated This is a legacy alias of `boxOrdinalGroup`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-ordinal-group)
      */
     webkitBoxOrdinalGroup: string;
     /**
-     * The box-orient CSS property sets whether an element lays out its contents horizontally or vertically.
      * @deprecated This is a legacy alias of `boxOrient`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-orient)
      */
     webkitBoxOrient: string;
     /**
-     * The -moz-box-pack and -webkit-box-pack CSS properties specify how a -moz-box or -webkit-box packs its contents in the direction of its layout. The effect of this is only visible if there is extra space in the box.
      * @deprecated This is a legacy alias of `boxPack`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-pack)
      */
     webkitBoxPack: string;
     /**
-     * The box-shadow CSS property adds shadow effects around an element's frame. You can set multiple effects separated by commas. A box shadow is described by X and Y offsets relative to the element, blur and spread radius, and color.
      * @deprecated This is a legacy alias of `boxShadow`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-shadow)
      */
     webkitBoxShadow: string;
     /**
-     * The box-sizing CSS property sets how the total width and height of an element is calculated.
      * @deprecated This is a legacy alias of `boxSizing`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-sizing)
      */
     webkitBoxSizing: string;
     /**
-     * The **`filter`** CSS property applies graphical effects like blur or color shift to an element. Filters are commonly used to adjust the rendering of images, backgrounds, and borders.
      * @deprecated This is a legacy alias of `filter`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/filter)
      */
     webkitFilter: string;
     /**
-     * The **`flex`** CSS shorthand property sets how a flex item will grow or shrink to fit the space available in its flex container.
      * @deprecated This is a legacy alias of `flex`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex)
      */
     webkitFlex: string;
     /**
-     * The flex-basis CSS property sets the initial main size of a flex item. It sets the size of the content box unless otherwise set with box-sizing.
      * @deprecated This is a legacy alias of `flexBasis`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-basis)
      */
     webkitFlexBasis: string;
     /**
-     * The flex-direction CSS property sets how flex items are placed in the flex container defining the main axis and the direction (normal or reversed).
      * @deprecated This is a legacy alias of `flexDirection`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-direction)
      */
     webkitFlexDirection: string;
     /**
-     * The flex-flow CSS shorthand property specifies the direction of a flex container, as well as its wrapping behavior.
      * @deprecated This is a legacy alias of `flexFlow`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-flow)
      */
     webkitFlexFlow: string;
     /**
-     * The flex-grow CSS property sets the flex grow factor, which specifies how much of the flex container's positive free space, if any, should be assigned to the flex item's main size.
      * @deprecated This is a legacy alias of `flexGrow`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-grow)
      */
     webkitFlexGrow: string;
     /**
-     * The flex-shrink CSS property sets the flex shrink factor of a flex item. If the size of all flex items is larger than the flex container, the flex items can shrink to fit according to their flex-shrink value. Each flex line's negative free space is distributed between the line's flex items that have a flex-shrink value greater than 0.
      * @deprecated This is a legacy alias of `flexShrink`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-shrink)
      */
     webkitFlexShrink: string;
     /**
-     * The flex-wrap CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
      * @deprecated This is a legacy alias of `flexWrap`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-wrap)
      */
     webkitFlexWrap: string;
     /**
-     * The CSS justify-content property defines how the browser distributes space between and around content items along the main axis of a flex container and the inline axis of grid and multicol containers.
      * @deprecated This is a legacy alias of `justifyContent`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/justify-content)
      */
     webkitJustifyContent: string;
-    /**
-     * The line-clamp CSS property allows limiting of the contents of a block to the specified number of lines.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/line-clamp)
-     */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/line-clamp) */
     webkitLineClamp: string;
     /**
-     * The **`mask`** CSS shorthand property hides an element (partially or fully) by masking or clipping a specified area of the image. It is a shorthand for all the mask-* properties. The property accepts one or more comma-separated values, where each value corresponds to a <mask-layer>.
      * @deprecated This is a legacy alias of `mask`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask)
@@ -9018,70 +8975,61 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     webkitMaskBoxImageWidth: string;
     /**
-     * The mask-clip CSS property determines the area which is affected by a mask. The painted content of an element must be restricted to this area.
      * @deprecated This is a legacy alias of `maskClip`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-clip)
      */
     webkitMaskClip: string;
     /**
-     * The mask-composite CSS property represents a compositing operation used on the current mask layer with the mask layers below it.
+     * The -webkit-mask-composite property specifies the manner in which multiple mask images applied to the same element are composited with one another. Mask images are composited in the opposite order that they are declared with the -webkit-mask-image property.
      * @deprecated This is a legacy alias of `maskComposite`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-composite)
      */
     webkitMaskComposite: string;
     /**
-     * The mask-image CSS property sets the image that is used as the mask layer for an element, hiding sections of the element on which the masking image is set based on the alpha channel of the mask image and, depending on the mask-mode property value, the luminance of the mask image's colors.
      * @deprecated This is a legacy alias of `maskImage`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-image)
      */
     webkitMaskImage: string;
     /**
-     * The mask-origin CSS property sets the origin of a mask. This property determines the mask positioning area: the area within which a mask image is positioned. HTML elements can have masks contained within their content border box, padding box, or content box, whereas SVG elements (which don't have the associated CSS layout boxes) can have masks contained inside their fill, stroke, or view box. For elements rendered as multiple boxes, such as a <span> of text that spans more than one line, the mask-origin property specifies which boxes the box-decoration-break property operates on to determine the mask positioning area.
      * @deprecated This is a legacy alias of `maskOrigin`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-origin)
      */
     webkitMaskOrigin: string;
     /**
-     * The mask-position CSS property sets the initial position, relative to the mask position layer set by mask-origin, for each defined mask image.
      * @deprecated This is a legacy alias of `maskPosition`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-position)
      */
     webkitMaskPosition: string;
     /**
-     * The mask-repeat CSS property sets how mask images are repeated. A mask image can be repeated along the horizontal axis, the vertical axis, both axes, or not repeated at all.
      * @deprecated This is a legacy alias of `maskRepeat`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-repeat)
      */
     webkitMaskRepeat: string;
     /**
-     * The mask-size CSS property specifies the sizes of specified mask images. Mask image sizes can be fully or partially constrained to preserve their intrinsic aspect ratios.
      * @deprecated This is a legacy alias of `maskSize`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-size)
      */
     webkitMaskSize: string;
     /**
-     * The **`order`** CSS property sets the order to lay out an item in a flex or grid container. Items in a container are sorted by ascending order value and then by their source code order. Items not given an explicit order value are assigned the default value of 0.
      * @deprecated This is a legacy alias of `order`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/order)
      */
     webkitOrder: string;
     /**
-     * The **`perspective`** CSS property determines the distance between the z=0 plane and the user in order to give a 3D-positioned element some perspective.
      * @deprecated This is a legacy alias of `perspective`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective)
      */
     webkitPerspective: string;
     /**
-     * The perspective-origin CSS property determines the position at which the viewer is looking. It is used as the vanishing point by the perspective property.
      * @deprecated This is a legacy alias of `perspectiveOrigin`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective-origin)
@@ -9094,7 +9042,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     webkitTextFillColor: string;
     /**
-     * The text-size-adjust CSS property controls the text inflation algorithm used on some smartphones and tablets. Other browsers will ignore this property.
      * @deprecated This is a legacy alias of `textSizeAdjust`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-size-adjust)
@@ -9119,63 +9066,54 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     webkitTextStrokeWidth: string;
     /**
-     * The **`transform`** CSS property lets you rotate, scale, skew, or translate an element. It modifies the coordinate space of the CSS visual formatting model.
      * @deprecated This is a legacy alias of `transform`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform)
      */
     webkitTransform: string;
     /**
-     * The transform-origin CSS property sets the origin for an element's transformations.
      * @deprecated This is a legacy alias of `transformOrigin`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-origin)
      */
     webkitTransformOrigin: string;
     /**
-     * The transform-style CSS property sets whether children of an element are positioned in the 3D space or are flattened in the plane of the element.
      * @deprecated This is a legacy alias of `transformStyle`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-style)
      */
     webkitTransformStyle: string;
     /**
-     * The **`transition`** CSS property is a shorthand property for transition-property, transition-duration, transition-timing-function, transition-delay, and transition-behavior.
      * @deprecated This is a legacy alias of `transition`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition)
      */
     webkitTransition: string;
     /**
-     * The transition-delay CSS property specifies the duration to wait before starting a property's transition effect when its value changes.
      * @deprecated This is a legacy alias of `transitionDelay`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-delay)
      */
     webkitTransitionDelay: string;
     /**
-     * The transition-duration CSS property sets the length of time a transition animation should take to complete. By default, the value is 0s, meaning that no animation will occur.
      * @deprecated This is a legacy alias of `transitionDuration`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-duration)
      */
     webkitTransitionDuration: string;
     /**
-     * The transition-property CSS property sets the CSS properties to which a transition effect should be applied.
      * @deprecated This is a legacy alias of `transitionProperty`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-property)
      */
     webkitTransitionProperty: string;
     /**
-     * The transition-timing-function CSS property sets how intermediate values are calculated for CSS properties being affected by a transition effect.
      * @deprecated This is a legacy alias of `transitionTimingFunction`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-timing-function)
      */
     webkitTransitionTimingFunction: string;
     /**
-     * The user-select CSS property controls whether the user can select text. This doesn't have any effect on content loaded as part of a browser's user interface (its chrome), except in textboxes.
      * @deprecated This is a legacy alias of `userSelect`.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/user-select)

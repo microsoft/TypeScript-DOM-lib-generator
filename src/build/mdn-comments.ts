@@ -108,22 +108,6 @@ export async function generateDescriptions(): Promise<{
       continue;
     }
     insertComment(results, slugArr, comment, path);
-    // Check if this is a CSS property and its slug is in the webkit list
-    if (
-      entry.pageType === "css-property" ||
-      entry.pageType === "css-shorthand-property"
-    ) {
-      const propertyName = slugArr.at(-1)!;
-      insertComment(
-        results,
-        [
-          ...slugArr.slice(0, -1),
-          "webkit" + propertyName[0].toUpperCase() + propertyName.slice(1),
-        ],
-        comment,
-        path,
-      );
-    }
   }
   return { interfaces: { interface: results } };
 }
