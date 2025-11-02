@@ -1,0 +1,12 @@
+
+> @typescript/dom-lib-generator@0.0.1 generate
+> npm run build && npm run baseline-accept
+
+
+> @typescript/dom-lib-generator@0.0.1 build
+> tsc && node ./lib/build.js
+
+
+> @typescript/dom-lib-generator@0.0.1 baseline-accept
+> cpx "generated\**" baselines\
+

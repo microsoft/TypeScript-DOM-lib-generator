@@ -6055,7 +6055,7 @@ declare var CSSStyleDeclaration: {
 };
 
 /**
- * The CSS interface holds useful CSS-related methods. No objects with this interface are implemented: it contains only static methods and is therefore a utilitarian interface.
+ * The **`CSSStyleProperties`** interface of the CSS Object Model (CSSOM) represents inline or computed styles available on an element, or the styles associated with a CSS style rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleProperties)
  */
@@ -40105,8 +40105,13 @@ declare var XSLTProcessor: {
     new(): XSLTProcessor;
 };
 
+/** The **`CSS`** interface holds useful CSS-related methods. No objects with this interface are implemented: it contains only static methods and is therefore a utilitarian interface. */
 declare namespace CSS {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/highlights_static) */
+    /**
+     * The static, read-only **`highlights`** property of the CSS interface provides access to the HighlightRegistry used to style arbitrary text ranges using the CSS Custom Highlight API.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/highlights_static)
+     */
     var highlights: HighlightRegistry;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function Hz(value: number): CSSUnitValue;
@@ -40151,7 +40156,11 @@ declare namespace CSS {
     function dvw(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function em(value: number): CSSUnitValue;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/escape_static) */
+    /**
+     * The **`CSS.escape()`** static method returns a string containing the escaped string passed as parameter, mostly for use as part of a CSS selector.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/escape_static)
+     */
     function escape(ident: string): string;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function ex(value: number): CSSUnitValue;
@@ -40193,7 +40202,11 @@ declare namespace CSS {
     function rad(value: number): CSSUnitValue;
     function rcap(value: number): CSSUnitValue;
     function rch(value: number): CSSUnitValue;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/registerProperty_static) */
+    /**
+     * The **`CSS.registerProperty()`** static method registers custom properties, allowing for property type checking, default values, and properties that do or do not inherit their value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/registerProperty_static)
+     */
     function registerProperty(definition: PropertyDefinition): void;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function rem(value: number): CSSUnitValue;
@@ -40202,7 +40215,11 @@ declare namespace CSS {
     function rlh(value: number): CSSUnitValue;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
     function s(value: number): CSSUnitValue;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/supports_static) */
+    /**
+     * The **`CSS.supports()`** static method returns a boolean value indicating if the browser supports a given CSS feature, or not.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/supports_static)
+     */
     function supports(property: string, value: string): boolean;
     function supports(conditionText: string): boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSS/factory_functions_static) */
