@@ -31,18 +31,10 @@ function extractSlug(mdnUrl: string): string[] {
     if (!mdnUrl.toLowerCase().startsWith(subdirectory)) {
       continue;
     }
-    const slugArr = mdnUrl
+    return mdnUrl
       .slice(subdirectory.length)
       .replace(/_static/g, "")
-      .split("/")
-      .map((part) =>
-        hyphenToCamelCase(part === "Reference" ? "CSSStyleProperties" : part),
-      );
-    if (slugArr[0] === "CSSStyleProperties") {
-      // Drop the second itmem
-      slugArr.splice(1, 1);
-    }
-    return slugArr;
+      .split("/");
   }
   return [];
 }
@@ -61,15 +53,10 @@ function insertComment(
   slug: string[],
   summary: string,
   path: string[],
+  name: string,
 ) {
-  if (!path.length) {
-    const iface = ensureLeaf(root, slug);
-    iface.comment = summary;
-  } else {
-    const [ifaceName, memberName] = slug;
-    const target = ensureLeaf(root, [ifaceName, ...path, memberName]);
-    target.comment = summary;
-  }
+  const target = ensureLeaf(root, [...slug.slice(0, -1), ...path, name]);
+  target.comment = summary;
 }
 
 function generateComment(summary: string, name: string): string | undefined {
@@ -103,11 +90,17 @@ export async function generateDescriptions(): Promise<{
     if (!slugArr.length || !path) {
       continue;
     }
-    const comment = generateComment(entry.summary, slugArr.at(-1)!);
+    const leaf = slugArr.at(-1)!;
+    const name = ["css-property", "css-shorthand-property"].includes(
+      entry.pageType,
+    )
+      ? hyphenToCamelCase(leaf)
+      : leaf;
+    const comment = generateComment(entry.summary, name);
     if (!comment) {
       continue;
     }
-    insertComment(results, slugArr, comment, path);
+    insertComment(results, slugArr, comment, path, name);
   }
   return { interfaces: { interface: results } };
 }
