@@ -231,8 +231,10 @@ function handleProperty(child: Node): Partial<Property> {
  * @param child The child node to handle.
  * @param name Optional name for the method.
  */
-function handleMethod(child: Node, name?:string): Partial<Method> {
-  if (!name) name = string(child.values[0]);
+function handleMethod(child: Node, name?: string): Partial<Method> {
+  if (!name) {
+    name = string(child.values[0]);
+  }
 
   let typeNode: Node | undefined;
   const params: { name: string; type: string }[] = [];
@@ -253,13 +255,12 @@ function handleMethod(child: Node, name?:string): Partial<Method> {
           type: string(c.properties.type),
         });
         break;
-      
-      case "signatures": 
+
+      case "signatures":
         for (const sc of c.children) {
-          signatures.push(handleMethod(sc, name).signature![0] || [])
+          signatures.push(handleMethod(sc, name).signature![0] || []);
         }
         break;
-      
 
       default:
         throw new Error(`Unexpected child "${c.name}" in method "${name}"`);
@@ -275,10 +276,10 @@ function handleMethod(child: Node, name?:string): Partial<Method> {
         : { type: string(child.properties?.returns) }),
     };
   }
-  return { name, signature: [
-    ...(signature ? [signature] : []),
-    ...signatures as any
-  ] };
+  return {
+    name,
+    signature: [...(signature ? [signature] : []), ...(signatures as any)],
+  };
 }
 
 /**

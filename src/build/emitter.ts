@@ -510,7 +510,7 @@ export function emitWebIdl(
     }
 
     // If it's a quoted string literal (has " " inside), just return it
-    if (typeof objDomType === "string" && objDomType.includes("\"")) {
+    if (typeof objDomType === "string" && objDomType.includes('"')) {
       return objDomType;
     }
 
