@@ -8,7 +8,5 @@ enum FontDisplay {
 }
 
 dictionary FontFaceDescriptors {
-    member display {
-        type FontDisplay
-    }
+    member display type=FontDisplay
 }

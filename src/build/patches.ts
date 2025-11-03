@@ -307,10 +307,9 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
  */
 function handleMember(c: Node): Partial<Member> {
   const name = string(c.values[0]);
-  const type: Node | undefined = c.children.find((n) => n.name === "type");
   return {
     name,
-    ...(type ? handleTyped(type) : {}),
+    ...optionalMember("type", "string", c.properties?.type),
     ...optionalMember("required", "boolean", c.properties?.required),
   };
 }
