@@ -6067,292 +6067,292 @@ declare var CSSStyleDeclaration: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleProperties)
  */
 interface CSSStyleProperties extends CSSStyleDeclarationBase {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/accent-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/accent-color) */
     accentColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/align-content) */
     alignContent: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-items) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/align-items) */
     alignItems: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-self) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/align-self) */
     alignSelf: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/alignment-baseline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/alignment-baseline) */
     alignmentBaseline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/all) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/all) */
     all: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/anchor-name) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/anchor-name) */
     anchorName: string;
     anchorScope: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation) */
     animation: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-composition) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-composition) */
     animationComposition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-delay) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-delay) */
     animationDelay: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-direction) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-direction) */
     animationDirection: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-duration) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-duration) */
     animationDuration: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-fill-mode) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-fill-mode) */
     animationFillMode: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-iteration-count) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-iteration-count) */
     animationIterationCount: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-name) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-name) */
     animationName: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-play-state) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-play-state) */
     animationPlayState: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-range) */
     animationRange: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-range-end) */
     animationRangeEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-range-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-range-start) */
     animationRangeStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timeline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-timeline) */
     animationTimeline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timing-function) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-timing-function) */
     animationTimingFunction: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/appearance) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/appearance) */
     appearance: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/aspect-ratio) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/aspect-ratio) */
     aspectRatio: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/backdrop-filter) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/backdrop-filter) */
     backdropFilter: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/backface-visibility) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/backface-visibility) */
     backfaceVisibility: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background) */
     background: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-attachment) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-attachment) */
     backgroundAttachment: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-blend-mode) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-blend-mode) */
     backgroundBlendMode: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-clip) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-clip) */
     backgroundClip: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-color) */
     backgroundColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-image) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-image) */
     backgroundImage: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-origin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-origin) */
     backgroundOrigin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-position) */
     backgroundPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-position-x) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-position-x) */
     backgroundPositionX: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-position-y) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-position-y) */
     backgroundPositionY: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-repeat) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-repeat) */
     backgroundRepeat: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-size) */
     backgroundSize: string;
     baselineShift: string;
     baselineSource: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/block-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/block-size) */
     blockSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border) */
     border: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block) */
     borderBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-color) */
     borderBlockColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-end) */
     borderBlockEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-end-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-end-color) */
     borderBlockEndColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-end-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-end-style) */
     borderBlockEndStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-end-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-end-width) */
     borderBlockEndWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-start) */
     borderBlockStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-start-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-start-color) */
     borderBlockStartColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-start-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-start-style) */
     borderBlockStartStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-start-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-start-width) */
     borderBlockStartWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-style) */
     borderBlockStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-block-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-block-width) */
     borderBlockWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom) */
     borderBottom: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-color) */
     borderBottomColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-left-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-left-radius) */
     borderBottomLeftRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-right-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-right-radius) */
     borderBottomRightRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-style) */
     borderBottomStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-width) */
     borderBottomWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-collapse) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-collapse) */
     borderCollapse: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-color) */
     borderColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-end-end-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-end-end-radius) */
     borderEndEndRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-end-start-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-end-start-radius) */
     borderEndStartRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-image) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-image) */
     borderImage: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-image-outset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-image-outset) */
     borderImageOutset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-image-repeat) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-image-repeat) */
     borderImageRepeat: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-image-slice) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-image-slice) */
     borderImageSlice: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-image-source) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-image-source) */
     borderImageSource: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-image-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-image-width) */
     borderImageWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline) */
     borderInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-color) */
     borderInlineColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-end) */
     borderInlineEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-end-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-end-color) */
     borderInlineEndColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-end-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-end-style) */
     borderInlineEndStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-end-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-end-width) */
     borderInlineEndWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-start) */
     borderInlineStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-start-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-start-color) */
     borderInlineStartColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-start-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-start-style) */
     borderInlineStartStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-start-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-start-width) */
     borderInlineStartWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-style) */
     borderInlineStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-inline-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-inline-width) */
     borderInlineWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-left) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-left) */
     borderLeft: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-left-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-left-color) */
     borderLeftColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-left-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-left-style) */
     borderLeftStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-left-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-left-width) */
     borderLeftWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-radius) */
     borderRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-right) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-right) */
     borderRight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-right-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-right-color) */
     borderRightColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-right-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-right-style) */
     borderRightStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-right-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-right-width) */
     borderRightWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-spacing) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-spacing) */
     borderSpacing: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-start-end-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-start-end-radius) */
     borderStartEndRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-start-start-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-start-start-radius) */
     borderStartStartRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-style) */
     borderStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top) */
     borderTop: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-color) */
     borderTopColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-left-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-left-radius) */
     borderTopLeftRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-right-radius) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-right-radius) */
     borderTopRightRadius: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-style) */
     borderTopStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-width) */
     borderTopWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-width) */
     borderWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/bottom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/bottom) */
     bottom: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-decoration-break) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-decoration-break) */
     boxDecorationBreak: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-shadow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-shadow) */
     boxShadow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-sizing) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-sizing) */
     boxSizing: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/break-after) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/break-after) */
     breakAfter: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/break-before) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/break-before) */
     breakBefore: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/break-inside) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/break-inside) */
     breakInside: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/caption-side) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/caption-side) */
     captionSide: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/caret-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/caret-color) */
     caretColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/clear) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/clear) */
     clear: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/clip)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/clip)
      */
     clip: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/clip-path) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/clip-path) */
     clipPath: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/clip-rule) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/clip-rule) */
     clipRule: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/color) */
     color: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-interpolation) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/color-interpolation) */
     colorInterpolation: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-interpolation-filters) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/color-interpolation-filters) */
     colorInterpolationFilters: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/color-scheme) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/color-scheme) */
     colorScheme: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-count) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-count) */
     columnCount: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-fill) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-fill) */
     columnFill: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-gap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-gap) */
     columnGap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-rule) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-rule) */
     columnRule: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-rule-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-rule-color) */
     columnRuleColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-rule-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-rule-style) */
     columnRuleStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-rule-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-rule-width) */
     columnRuleWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-span) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-span) */
     columnSpan: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/column-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/column-width) */
     columnWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/columns) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/columns) */
     columns: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/contain) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/contain) */
     contain: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/contain-intrinsic-block-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/contain-intrinsic-block-size) */
     containIntrinsicBlockSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/contain-intrinsic-height) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/contain-intrinsic-height) */
     containIntrinsicHeight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/contain-intrinsic-inline-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/contain-intrinsic-inline-size) */
     containIntrinsicInlineSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/contain-intrinsic-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/contain-intrinsic-size) */
     containIntrinsicSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/contain-intrinsic-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/contain-intrinsic-width) */
     containIntrinsicWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/container) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/container) */
     container: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/container-name) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/container-name) */
     containerName: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/container-type) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/container-type) */
     containerType: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/content) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/content) */
     content: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/content-visibility) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/content-visibility) */
     contentVisibility: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-increment) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/counter-increment) */
     counterIncrement: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-reset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/counter-reset) */
     counterReset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/counter-set) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/counter-set) */
     counterSet: string;
     /**
      * The **`cssFloat`** property of the CSSStyleProperties interface returns the CSS float property.
@@ -6360,1057 +6360,1059 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat)
      */
     cssFloat: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cursor) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/cursor) */
     cursor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cx) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/cx) */
     cx: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/cy) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/cy) */
     cy: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/d) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/d) */
     d: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/direction) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/direction) */
     direction: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/display) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/display) */
     display: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dominant-baseline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/dominant-baseline) */
     dominantBaseline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/dynamic-range-limit) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/dynamic-range-limit) */
     dynamicRangeLimit: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/empty-cells) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/empty-cells) */
     emptyCells: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/fill) */
     fill: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill-opacity) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/fill-opacity) */
     fillOpacity: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/fill-rule) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/fill-rule) */
     fillRule: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/filter) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/filter) */
     filter: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex) */
     flex: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-basis) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-basis) */
     flexBasis: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-direction) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-direction) */
     flexDirection: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-flow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-flow) */
     flexFlow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-grow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-grow) */
     flexGrow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-shrink) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-shrink) */
     flexShrink: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-wrap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-wrap) */
     flexWrap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/float) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/float) */
     float: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flood-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flood-color) */
     floodColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flood-opacity) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flood-opacity) */
     floodOpacity: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font) */
     font: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-family) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-family) */
     fontFamily: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-feature-settings) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-feature-settings) */
     fontFeatureSettings: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-kerning) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-kerning) */
     fontKerning: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-optical-sizing) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-language-override) */
+    fontLanguageOverride: string;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-optical-sizing) */
     fontOpticalSizing: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-palette) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-palette) */
     fontPalette: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-size) */
     fontSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-size-adjust) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-size-adjust) */
     fontSizeAdjust: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-stretch)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-stretch)
      */
     fontStretch: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-style) */
     fontStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-synthesis) */
     fontSynthesis: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis-small-caps) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-synthesis-small-caps) */
     fontSynthesisSmallCaps: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-synthesis-style) */
     fontSynthesisStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-synthesis-weight) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-synthesis-weight) */
     fontSynthesisWeight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant) */
     fontVariant: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-alternates) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-alternates) */
     fontVariantAlternates: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-caps) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-caps) */
     fontVariantCaps: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-east-asian) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-east-asian) */
     fontVariantEastAsian: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-emoji) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-emoji) */
     fontVariantEmoji: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-ligatures) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-ligatures) */
     fontVariantLigatures: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-numeric) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-numeric) */
     fontVariantNumeric: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variant-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variant-position) */
     fontVariantPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-variation-settings) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-variation-settings) */
     fontVariationSettings: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/font-weight) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-weight) */
     fontWeight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/forced-color-adjust) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/forced-color-adjust) */
     forcedColorAdjust: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/gap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/gap) */
     gap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid) */
     grid: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-area) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-area) */
     gridArea: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-auto-columns) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-auto-columns) */
     gridAutoColumns: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-auto-flow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-auto-flow) */
     gridAutoFlow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-auto-rows) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-auto-rows) */
     gridAutoRows: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-column) */
     gridColumn: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-column-end) */
     gridColumnEnd: string;
     /** @deprecated This is a legacy alias of `columnGap`. */
     gridColumnGap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-column-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-column-start) */
     gridColumnStart: string;
     /** @deprecated This is a legacy alias of `gap`. */
     gridGap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-row) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-row) */
     gridRow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-row-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-row-end) */
     gridRowEnd: string;
     /** @deprecated This is a legacy alias of `rowGap`. */
     gridRowGap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-row-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-row-start) */
     gridRowStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-template) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-template) */
     gridTemplate: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-template-areas) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-template-areas) */
     gridTemplateAreas: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-template-columns) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-template-columns) */
     gridTemplateColumns: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/grid-template-rows) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/grid-template-rows) */
     gridTemplateRows: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/height) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/height) */
     height: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/hyphenate-character) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/hyphenate-character) */
     hyphenateCharacter: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/hyphenate-limit-chars) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/hyphenate-limit-chars) */
     hyphenateLimitChars: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/hyphens) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/hyphens) */
     hyphens: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/image-orientation)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/image-orientation)
      */
     imageOrientation: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/image-rendering) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/image-rendering) */
     imageRendering: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inline-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inline-size) */
     inlineSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset) */
     inset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset-block) */
     insetBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset-block-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset-block-end) */
     insetBlockEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset-block-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset-block-start) */
     insetBlockStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset-inline) */
     insetInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset-inline-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset-inline-end) */
     insetInlineEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/inset-inline-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/inset-inline-start) */
     insetInlineStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/isolation) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/isolation) */
     isolation: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/justify-content) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/justify-content) */
     justifyContent: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/justify-items) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/justify-items) */
     justifyItems: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/justify-self) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/justify-self) */
     justifySelf: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/left) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/left) */
     left: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/letter-spacing) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/letter-spacing) */
     letterSpacing: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/lighting-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/lighting-color) */
     lightingColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/line-break) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/line-break) */
     lineBreak: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/line-height) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/line-height) */
     lineHeight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/list-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/list-style) */
     listStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/list-style-image) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/list-style-image) */
     listStyleImage: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/list-style-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/list-style-position) */
     listStylePosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/list-style-type) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/list-style-type) */
     listStyleType: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin) */
     margin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-block) */
     marginBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-block-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-block-end) */
     marginBlockEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-block-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-block-start) */
     marginBlockStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-bottom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-bottom) */
     marginBottom: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-inline) */
     marginInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-inline-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-inline-end) */
     marginInlineEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-inline-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-inline-start) */
     marginInlineStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-left) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-left) */
     marginLeft: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-right) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-right) */
     marginRight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/margin-top) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-top) */
     marginTop: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/marker) */
     marker: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/marker-end) */
     markerEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker-mid) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/marker-mid) */
     markerMid: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/marker-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/marker-start) */
     markerStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask) */
     mask: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-clip) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-clip) */
     maskClip: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-composite) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-composite) */
     maskComposite: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-image) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-image) */
     maskImage: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-mode) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-mode) */
     maskMode: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-origin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-origin) */
     maskOrigin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-position) */
     maskPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-repeat) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-repeat) */
     maskRepeat: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-size) */
     maskSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-type) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-type) */
     maskType: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/math-depth) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/math-depth) */
     mathDepth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/math-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/math-style) */
     mathStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/max-block-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/max-block-size) */
     maxBlockSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/max-height) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/max-height) */
     maxHeight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/max-inline-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/max-inline-size) */
     maxInlineSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/max-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/max-width) */
     maxWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/min-block-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/min-block-size) */
     minBlockSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/min-height) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/min-height) */
     minHeight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/min-inline-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/min-inline-size) */
     minInlineSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/min-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/min-width) */
     minWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mix-blend-mode) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mix-blend-mode) */
     mixBlendMode: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/object-fit) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/object-fit) */
     objectFit: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/object-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/object-position) */
     objectPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/offset) */
     offset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-anchor) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/offset-anchor) */
     offsetAnchor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-distance) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/offset-distance) */
     offsetDistance: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-path) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/offset-path) */
     offsetPath: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/offset-position) */
     offsetPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/offset-rotate) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/offset-rotate) */
     offsetRotate: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/opacity) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/opacity) */
     opacity: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/order) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/order) */
     order: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/orphans) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/orphans) */
     orphans: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/outline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/outline) */
     outline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/outline-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/outline-color) */
     outlineColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/outline-offset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/outline-offset) */
     outlineOffset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/outline-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/outline-style) */
     outlineStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/outline-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/outline-width) */
     outlineWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow) */
     overflow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-anchor) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-anchor) */
     overflowAnchor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-block) */
     overflowBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-clip-margin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-clip-margin) */
     overflowClipMargin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-inline) */
     overflowInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-wrap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-wrap) */
     overflowWrap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-x) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-x) */
     overflowX: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-y) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-y) */
     overflowY: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overscroll-behavior) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overscroll-behavior) */
     overscrollBehavior: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overscroll-behavior-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overscroll-behavior-block) */
     overscrollBehaviorBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overscroll-behavior-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overscroll-behavior-inline) */
     overscrollBehaviorInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overscroll-behavior-x) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overscroll-behavior-x) */
     overscrollBehaviorX: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overscroll-behavior-y) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overscroll-behavior-y) */
     overscrollBehaviorY: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding) */
     padding: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-block) */
     paddingBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-block-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-block-end) */
     paddingBlockEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-block-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-block-start) */
     paddingBlockStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-bottom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-bottom) */
     paddingBottom: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-inline) */
     paddingInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-inline-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-inline-end) */
     paddingInlineEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-inline-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-inline-start) */
     paddingInlineStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-left) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-left) */
     paddingLeft: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-right) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-right) */
     paddingRight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/padding-top) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/padding-top) */
     paddingTop: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/page) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/page) */
     page: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/page-break-after)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/page-break-after)
      */
     pageBreakAfter: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/page-break-before)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/page-break-before)
      */
     pageBreakBefore: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/page-break-inside)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/page-break-inside)
      */
     pageBreakInside: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/paint-order) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/paint-order) */
     paintOrder: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/perspective) */
     perspective: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective-origin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/perspective-origin) */
     perspectiveOrigin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/place-content) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/place-content) */
     placeContent: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/place-items) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/place-items) */
     placeItems: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/place-self) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/place-self) */
     placeSelf: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/pointer-events) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/pointer-events) */
     pointerEvents: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position) */
     position: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-anchor) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-anchor) */
     positionAnchor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-area) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-area) */
     positionArea: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-try) */
     positionTry: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try-fallbacks) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-try-fallbacks) */
     positionTryFallbacks: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/position-try-order) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-try-order) */
     positionTryOrder: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/print-color-adjust) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/print-color-adjust) */
     printColorAdjust: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/quotes) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/quotes) */
     quotes: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/r) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/r) */
     r: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/resize) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/resize) */
     resize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/right) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/right) */
     right: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/rotate) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/rotate) */
     rotate: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/row-gap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/row-gap) */
     rowGap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ruby-align) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ruby-align) */
     rubyAlign: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ruby-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ruby-position) */
     rubyPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/rx) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/rx) */
     rx: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/ry) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/ry) */
     ry: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scale) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scale) */
     scale: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-behavior) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-behavior) */
     scrollBehavior: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin) */
     scrollMargin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-block) */
     scrollMarginBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-block-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-block-end) */
     scrollMarginBlockEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-block-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-block-start) */
     scrollMarginBlockStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-bottom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-bottom) */
     scrollMarginBottom: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-inline) */
     scrollMarginInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-inline-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-inline-end) */
     scrollMarginInlineEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-inline-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-inline-start) */
     scrollMarginInlineStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-left) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-left) */
     scrollMarginLeft: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-right) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-right) */
     scrollMarginRight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-margin-top) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-margin-top) */
     scrollMarginTop: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding) */
     scrollPadding: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-block) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-block) */
     scrollPaddingBlock: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-block-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-block-end) */
     scrollPaddingBlockEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-block-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-block-start) */
     scrollPaddingBlockStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-bottom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-bottom) */
     scrollPaddingBottom: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-inline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-inline) */
     scrollPaddingInline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-inline-end) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-inline-end) */
     scrollPaddingInlineEnd: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-inline-start) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-inline-start) */
     scrollPaddingInlineStart: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-left) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-left) */
     scrollPaddingLeft: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-right) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-right) */
     scrollPaddingRight: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-padding-top) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding-top) */
     scrollPaddingTop: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-snap-align) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-snap-align) */
     scrollSnapAlign: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-snap-stop) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-snap-stop) */
     scrollSnapStop: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-snap-type) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-snap-type) */
     scrollSnapType: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-timeline) */
     scrollTimeline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline-axis) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-timeline-axis) */
     scrollTimelineAxis: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scroll-timeline-name) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-timeline-name) */
     scrollTimelineName: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scrollbar-color) */
     scrollbarColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-gutter) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scrollbar-gutter) */
     scrollbarGutter: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/scrollbar-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scrollbar-width) */
     scrollbarWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-image-threshold) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/shape-image-threshold) */
     shapeImageThreshold: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-margin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/shape-margin) */
     shapeMargin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-outside) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/shape-outside) */
     shapeOutside: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/shape-rendering) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/shape-rendering) */
     shapeRendering: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stop-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stop-color) */
     stopColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stop-opacity) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stop-opacity) */
     stopOpacity: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke) */
     stroke: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-dasharray) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-dasharray) */
     strokeDasharray: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-dashoffset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-dashoffset) */
     strokeDashoffset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-linecap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-linecap) */
     strokeLinecap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-linejoin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-linejoin) */
     strokeLinejoin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-miterlimit) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-miterlimit) */
     strokeMiterlimit: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-opacity) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-opacity) */
     strokeOpacity: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/stroke-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/stroke-width) */
     strokeWidth: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/tab-size) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/tab-size) */
     tabSize: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/table-layout) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/table-layout) */
     tableLayout: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-align) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-align) */
     textAlign: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-align-last) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-align-last) */
     textAlignLast: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-anchor) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-anchor) */
     textAnchor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-autospace) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-autospace) */
     textAutospace: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-box) */
     textBox: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box-edge) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-box-edge) */
     textBoxEdge: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-box-trim) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-box-trim) */
     textBoxTrim: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-combine-upright) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-combine-upright) */
     textCombineUpright: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration) */
     textDecoration: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-color) */
     textDecorationColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration-line) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-line) */
     textDecorationLine: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration-skip-ink) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-skip-ink) */
     textDecorationSkipInk: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-style) */
     textDecorationStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-decoration-thickness) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-decoration-thickness) */
     textDecorationThickness: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-emphasis) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-emphasis) */
     textEmphasis: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-emphasis-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-emphasis-color) */
     textEmphasisColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-emphasis-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-emphasis-position) */
     textEmphasisPosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-emphasis-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-emphasis-style) */
     textEmphasisStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-indent) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-indent) */
     textIndent: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-orientation) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-orientation) */
     textOrientation: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-overflow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-overflow) */
     textOverflow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-rendering) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-rendering) */
     textRendering: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-shadow) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-shadow) */
     textShadow: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-transform) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-transform) */
     textTransform: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-underline-offset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-underline-offset) */
     textUnderlineOffset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-underline-position) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-underline-position) */
     textUnderlinePosition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-wrap) */
     textWrap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap-mode) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-wrap-mode) */
     textWrapMode: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-wrap-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-wrap-style) */
     textWrapStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/timeline-scope) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/timeline-scope) */
     timelineScope: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/top) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/top) */
     top: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/touch-action) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/touch-action) */
     touchAction: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform) */
     transform: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-box) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform-box) */
     transformBox: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-origin) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform-origin) */
     transformOrigin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-style) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform-style) */
     transformStyle: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition) */
     transition: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-behavior) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-behavior) */
     transitionBehavior: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-delay) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-delay) */
     transitionDelay: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-duration) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-duration) */
     transitionDuration: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-property) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-property) */
     transitionProperty: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-timing-function) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-timing-function) */
     transitionTimingFunction: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/translate) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/translate) */
     translate: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/unicode-bidi) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/unicode-bidi) */
     unicodeBidi: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/user-select) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/user-select) */
     userSelect: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vector-effect) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/vector-effect) */
     vectorEffect: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/vertical-align) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/vertical-align) */
     verticalAlign: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline) */
     viewTimeline: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-axis) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline-axis) */
     viewTimelineAxis: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-inset) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline-inset) */
     viewTimelineInset: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-timeline-name) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline-name) */
     viewTimelineName: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-class) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-transition-class) */
     viewTransitionClass: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/view-transition-name) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-transition-name) */
     viewTransitionName: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/visibility) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/visibility) */
     visibility: string;
     /**
      * @deprecated This is a legacy alias of `alignContent`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-content)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/align-content)
      */
     webkitAlignContent: string;
     /**
      * @deprecated This is a legacy alias of `alignItems`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-items)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/align-items)
      */
     webkitAlignItems: string;
     /**
      * @deprecated This is a legacy alias of `alignSelf`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/align-self)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/align-self)
      */
     webkitAlignSelf: string;
     /**
      * @deprecated This is a legacy alias of `animation`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation)
      */
     webkitAnimation: string;
     /**
      * @deprecated This is a legacy alias of `animationDelay`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-delay)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-delay)
      */
     webkitAnimationDelay: string;
     /**
      * @deprecated This is a legacy alias of `animationDirection`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-direction)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-direction)
      */
     webkitAnimationDirection: string;
     /**
      * @deprecated This is a legacy alias of `animationDuration`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-duration)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-duration)
      */
     webkitAnimationDuration: string;
     /**
      * @deprecated This is a legacy alias of `animationFillMode`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-fill-mode)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-fill-mode)
      */
     webkitAnimationFillMode: string;
     /**
      * @deprecated This is a legacy alias of `animationIterationCount`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-iteration-count)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-iteration-count)
      */
     webkitAnimationIterationCount: string;
     /**
      * @deprecated This is a legacy alias of `animationName`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-name)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-name)
      */
     webkitAnimationName: string;
     /**
      * @deprecated This is a legacy alias of `animationPlayState`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-play-state)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-play-state)
      */
     webkitAnimationPlayState: string;
     /**
      * @deprecated This is a legacy alias of `animationTimingFunction`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/animation-timing-function)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-timing-function)
      */
     webkitAnimationTimingFunction: string;
     /**
      * @deprecated This is a legacy alias of `appearance`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/appearance)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/appearance)
      */
     webkitAppearance: string;
     /**
      * @deprecated This is a legacy alias of `backfaceVisibility`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/backface-visibility)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/backface-visibility)
      */
     webkitBackfaceVisibility: string;
     /**
      * @deprecated This is a legacy alias of `backgroundClip`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-clip)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-clip)
      */
     webkitBackgroundClip: string;
     /**
      * @deprecated This is a legacy alias of `backgroundOrigin`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-origin)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-origin)
      */
     webkitBackgroundOrigin: string;
     /**
      * @deprecated This is a legacy alias of `backgroundSize`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/background-size)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-size)
      */
     webkitBackgroundSize: string;
     /**
      * @deprecated This is a legacy alias of `borderBottomLeftRadius`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-left-radius)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-left-radius)
      */
     webkitBorderBottomLeftRadius: string;
     /**
      * @deprecated This is a legacy alias of `borderBottomRightRadius`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-bottom-right-radius)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-bottom-right-radius)
      */
     webkitBorderBottomRightRadius: string;
     /**
      * @deprecated This is a legacy alias of `borderRadius`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-radius)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-radius)
      */
     webkitBorderRadius: string;
     /**
      * @deprecated This is a legacy alias of `borderTopLeftRadius`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-left-radius)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-left-radius)
      */
     webkitBorderTopLeftRadius: string;
     /**
      * @deprecated This is a legacy alias of `borderTopRightRadius`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/border-top-right-radius)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/border-top-right-radius)
      */
     webkitBorderTopRightRadius: string;
     /**
      * @deprecated This is a legacy alias of `boxAlign`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-align)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-align)
      */
     webkitBoxAlign: string;
     /**
      * @deprecated This is a legacy alias of `boxFlex`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-flex)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-flex)
      */
     webkitBoxFlex: string;
     /**
      * @deprecated This is a legacy alias of `boxOrdinalGroup`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-ordinal-group)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-ordinal-group)
      */
     webkitBoxOrdinalGroup: string;
     /**
      * @deprecated This is a legacy alias of `boxOrient`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-orient)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-orient)
      */
     webkitBoxOrient: string;
     /**
      * @deprecated This is a legacy alias of `boxPack`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-pack)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-pack)
      */
     webkitBoxPack: string;
     /**
      * @deprecated This is a legacy alias of `boxShadow`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-shadow)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-shadow)
      */
     webkitBoxShadow: string;
     /**
      * @deprecated This is a legacy alias of `boxSizing`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/box-sizing)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/box-sizing)
      */
     webkitBoxSizing: string;
     /**
      * @deprecated This is a legacy alias of `filter`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/filter)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/filter)
      */
     webkitFilter: string;
     /**
      * @deprecated This is a legacy alias of `flex`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex)
      */
     webkitFlex: string;
     /**
      * @deprecated This is a legacy alias of `flexBasis`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-basis)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-basis)
      */
     webkitFlexBasis: string;
     /**
      * @deprecated This is a legacy alias of `flexDirection`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-direction)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-direction)
      */
     webkitFlexDirection: string;
     /**
      * @deprecated This is a legacy alias of `flexFlow`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-flow)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-flow)
      */
     webkitFlexFlow: string;
     /**
      * @deprecated This is a legacy alias of `flexGrow`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-grow)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-grow)
      */
     webkitFlexGrow: string;
     /**
      * @deprecated This is a legacy alias of `flexShrink`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-shrink)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-shrink)
      */
     webkitFlexShrink: string;
     /**
      * @deprecated This is a legacy alias of `flexWrap`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/flex-wrap)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/flex-wrap)
      */
     webkitFlexWrap: string;
     /**
      * @deprecated This is a legacy alias of `justifyContent`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/justify-content)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/justify-content)
      */
     webkitJustifyContent: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/line-clamp) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/line-clamp) */
     webkitLineClamp: string;
     /**
      * @deprecated This is a legacy alias of `mask`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask)
      */
     webkitMask: string;
     /**
      * @deprecated This is a legacy alias of `maskBorder`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-border)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-border)
      */
     webkitMaskBoxImage: string;
     /**
      * @deprecated This is a legacy alias of `maskBorderOutset`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-border-outset)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-border-outset)
      */
     webkitMaskBoxImageOutset: string;
     /**
      * @deprecated This is a legacy alias of `maskBorderRepeat`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-border-repeat)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-border-repeat)
      */
     webkitMaskBoxImageRepeat: string;
     /**
      * @deprecated This is a legacy alias of `maskBorderSlice`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-border-slice)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-border-slice)
      */
     webkitMaskBoxImageSlice: string;
     /**
      * @deprecated This is a legacy alias of `maskBorderSource`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-border-source)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-border-source)
      */
     webkitMaskBoxImageSource: string;
     /**
      * @deprecated This is a legacy alias of `maskBorderWidth`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-border-width)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-border-width)
      */
     webkitMaskBoxImageWidth: string;
     /**
      * @deprecated This is a legacy alias of `maskClip`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-clip)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-clip)
      */
     webkitMaskClip: string;
     /**
      * @deprecated This is a legacy alias of `maskComposite`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-composite)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-composite)
      */
     webkitMaskComposite: string;
     /**
      * @deprecated This is a legacy alias of `maskImage`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-image)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-image)
      */
     webkitMaskImage: string;
     /**
      * @deprecated This is a legacy alias of `maskOrigin`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-origin)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-origin)
      */
     webkitMaskOrigin: string;
     /**
      * @deprecated This is a legacy alias of `maskPosition`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-position)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-position)
      */
     webkitMaskPosition: string;
     /**
      * @deprecated This is a legacy alias of `maskRepeat`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-repeat)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-repeat)
      */
     webkitMaskRepeat: string;
     /**
      * @deprecated This is a legacy alias of `maskSize`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/mask-size)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/mask-size)
      */
     webkitMaskSize: string;
     /**
      * @deprecated This is a legacy alias of `order`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/order)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/order)
      */
     webkitOrder: string;
     /**
      * @deprecated This is a legacy alias of `perspective`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/perspective)
      */
     webkitPerspective: string;
     /**
      * @deprecated This is a legacy alias of `perspectiveOrigin`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/perspective-origin)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/perspective-origin)
      */
     webkitPerspectiveOrigin: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/-webkit-text-fill-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/-webkit-text-fill-color) */
     webkitTextFillColor: string;
     /**
      * @deprecated This is a legacy alias of `textSizeAdjust`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/text-size-adjust)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-size-adjust)
      */
     webkitTextSizeAdjust: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/-webkit-text-stroke) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/-webkit-text-stroke) */
     webkitTextStroke: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/-webkit-text-stroke-color) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/-webkit-text-stroke-color) */
     webkitTextStrokeColor: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/-webkit-text-stroke-width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/-webkit-text-stroke-width) */
     webkitTextStrokeWidth: string;
     /**
      * @deprecated This is a legacy alias of `transform`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform)
      */
     webkitTransform: string;
     /**
      * @deprecated This is a legacy alias of `transformOrigin`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-origin)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform-origin)
      */
     webkitTransformOrigin: string;
     /**
      * @deprecated This is a legacy alias of `transformStyle`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transform-style)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transform-style)
      */
     webkitTransformStyle: string;
     /**
      * @deprecated This is a legacy alias of `transition`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition)
      */
     webkitTransition: string;
     /**
      * @deprecated This is a legacy alias of `transitionDelay`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-delay)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-delay)
      */
     webkitTransitionDelay: string;
     /**
      * @deprecated This is a legacy alias of `transitionDuration`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-duration)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-duration)
      */
     webkitTransitionDuration: string;
     /**
      * @deprecated This is a legacy alias of `transitionProperty`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-property)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-property)
      */
     webkitTransitionProperty: string;
     /**
      * @deprecated This is a legacy alias of `transitionTimingFunction`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/transition-timing-function)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/transition-timing-function)
      */
     webkitTransitionTimingFunction: string;
     /**
      * @deprecated This is a legacy alias of `userSelect`.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/user-select)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/user-select)
      */
     webkitUserSelect: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/white-space) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/white-space) */
     whiteSpace: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/white-space-collapse) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/white-space-collapse) */
     whiteSpaceCollapse: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/widows) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/widows) */
     widows: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/width) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/width) */
     width: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/will-change) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/will-change) */
     willChange: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/word-break) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/word-break) */
     wordBreak: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/word-spacing) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/word-spacing) */
     wordSpacing: string;
     /**
      * @deprecated
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/overflow-wrap)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-wrap)
      */
     wordWrap: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/writing-mode) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/writing-mode) */
     writingMode: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/x) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/x) */
     x: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/y) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/y) */
     y: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/z-index) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/z-index) */
     zIndex: string;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/zoom) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/zoom) */
     zoom: string;
 }
 
