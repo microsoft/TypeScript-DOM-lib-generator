@@ -170,9 +170,4 @@ interface-mixin WebGLRenderingContextBase {
     param extensionName overrideType="\"WEBGL_multi_draw\""
     type WEBGL_multi_draw nullable=#true
   }
-  
-  method getExtension {
-    param name type=DOMString
-    type any
-  }
 }
