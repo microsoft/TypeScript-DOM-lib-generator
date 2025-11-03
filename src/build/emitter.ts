@@ -509,11 +509,6 @@ export function emitWebIdl(
       return objDomType;
     }
 
-    // If it's a quoted string literal (has " " inside), just return it
-    if (typeof objDomType === "string" && objDomType.includes('"')) {
-      return objDomType;
-    }
-
     throw new Error("Unknown DOM type: " + objDomType);
   }
 

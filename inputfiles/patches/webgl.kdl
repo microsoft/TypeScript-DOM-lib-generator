@@ -2,172 +2,172 @@ interface-mixin WebGLRenderingContextBase {
   property canvas exposed=Window
 
   method getExtension {
-    param extensionName type="\"ANGLE_instanced_arrays\""
+    param extensionName overrideType="\"ANGLE_instanced_arrays\""
     type ANGLE_instanced_arrays nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_blend_minmax\""
+    param extensionName overrideType="\"EXT_blend_minmax\""
     type EXT_blend_minmax nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_color_buffer_float\""
+    param extensionName overrideType="\"EXT_color_buffer_float\""
     type EXT_color_buffer_float nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_color_buffer_half_float\""
+    param extensionName overrideType="\"EXT_color_buffer_half_float\""
     type EXT_color_buffer_half_float nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_float_blend\""
+    param extensionName overrideType="\"EXT_float_blend\""
     type EXT_float_blend nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_frag_depth\""
+    param extensionName overrideType="\"EXT_frag_depth\""
     type EXT_frag_depth nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_sRGB\""
+    param extensionName overrideType="\"EXT_sRGB\""
     type EXT_sRGB nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_shader_texture_lod\""
+    param extensionName overrideType="\"EXT_shader_texture_lod\""
     type EXT_shader_texture_lod nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_texture_compression_bptc\""
+    param extensionName overrideType="\"EXT_texture_compression_bptc\""
     type EXT_texture_compression_bptc nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_texture_compression_rgtc\""
+    param extensionName overrideType="\"EXT_texture_compression_rgtc\""
     type EXT_texture_compression_rgtc nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"EXT_texture_filter_anisotropic\""
+    param extensionName overrideType="\"EXT_texture_filter_anisotropic\""
     type EXT_texture_filter_anisotropic nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"KHR_parallel_shader_compile\""
+    param extensionName overrideType="\"KHR_parallel_shader_compile\""
     type KHR_parallel_shader_compile nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_element_index_uint\""
+    param extensionName overrideType="\"OES_element_index_uint\""
     type OES_element_index_uint nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_fbo_render_mipmap\""
+    param extensionName overrideType="\"OES_fbo_render_mipmap\""
     type OES_fbo_render_mipmap nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_standard_derivatives\""
+    param extensionName overrideType="\"OES_standard_derivatives\""
     type OES_standard_derivatives nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_texture_float\""
+    param extensionName overrideType="\"OES_texture_float\""
     type OES_texture_float nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_texture_float_linear\""
+    param extensionName overrideType="\"OES_texture_float_linear\""
     type OES_texture_float_linear nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_texture_half_float\""
+    param extensionName overrideType="\"OES_texture_half_float\""
     type OES_texture_half_float nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_texture_half_float_linear\""
+    param extensionName overrideType="\"OES_texture_half_float_linear\""
     type OES_texture_half_float_linear nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OES_vertex_array_object\""
+    param extensionName overrideType="\"OES_vertex_array_object\""
     type OES_vertex_array_object nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"OVR_multiview2\""
+    param extensionName overrideType="\"OVR_multiview2\""
     type OVR_multiview2 nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_color_buffer_float\""
+    param extensionName overrideType="\"WEBGL_color_buffer_float\""
     type WEBGL_color_buffer_float nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_compressed_texture_astc\""
+    param extensionName overrideType="\"WEBGL_compressed_texture_astc\""
     type WEBGL_compressed_texture_astc nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_compressed_texture_etc\""
+    param extensionName overrideType="\"WEBGL_compressed_texture_etc\""
     type WEBGL_compressed_texture_etc nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_compressed_texture_etc1\""
+    param extensionName overrideType="\"WEBGL_compressed_texture_etc1\""
     type WEBGL_compressed_texture_etc1 nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_compressed_texture_pvrtc\""
+    param extensionName overrideType="\"WEBGL_compressed_texture_pvrtc\""
     type WEBGL_compressed_texture_pvrtc nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_compressed_texture_s3tc\""
+    param extensionName overrideType="\"WEBGL_compressed_texture_s3tc\""
     type WEBGL_compressed_texture_s3tc nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_compressed_texture_s3tc_srgb\""
+    param extensionName overrideType="\"WEBGL_compressed_texture_s3tc_srgb\""
     type WEBGL_compressed_texture_s3tc_srgb nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_debug_renderer_info\""
+    param extensionName overrideType="\"WEBGL_debug_renderer_info\""
     type WEBGL_debug_renderer_info nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_debug_shaders\""
+    param extensionName overrideType="\"WEBGL_debug_shaders\""
     type WEBGL_debug_shaders nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_depth_texture\""
+    param extensionName overrideType="\"WEBGL_depth_texture\""
     type WEBGL_depth_texture nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_draw_buffers\""
+    param extensionName overrideType="\"WEBGL_draw_buffers\""
     type WEBGL_draw_buffers nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_lose_context\""
+    param extensionName overrideType="\"WEBGL_lose_context\""
     type WEBGL_lose_context nullable=#true
   }
 
   method getExtension {
-    param extensionName type="\"WEBGL_multi_draw\""
+    param extensionName overrideType="\"WEBGL_multi_draw\""
     type WEBGL_multi_draw nullable=#true
   }
 }
