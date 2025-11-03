@@ -3315,9 +3315,6 @@
                     }
                 }
             },
-            "ContactAddress": {
-                "name": "PaymentAddress"
-            },
             "HTMLMediaElement": {
                 "properties": {
                     "property": {

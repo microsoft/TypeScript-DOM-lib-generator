@@ -143,7 +143,7 @@ function handleMixinandInterfaces(
   node: Node,
   type: "mixin" | "interface",
 ): DeepPartial<Interface> {
-  const name = node.values[0];
+  const name = string(node.properties?.name || node.values[0]);
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
