@@ -7,6 +7,8 @@ import type {
   WebIdl,
   Method,
   Typed,
+  Signature,
+  Param,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -147,7 +149,7 @@ function handleMixinandInterfaces(
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
-  const method: Record<string, Partial<Method>> = {};
+  const method: Record<string, DeepPartial<Method>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -235,11 +237,11 @@ function handleProperty(child: Node): Partial<Property> {
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
  */
-function handleMethod(child: Node): Partial<Method> {
+function handleMethod(child: Node): DeepPartial<Method> {
   const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
-  const params: { name: string; type?: string; overrideType?: string }[] = [];
+  const params: Partial<Param>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -267,14 +269,14 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  const signature: Method["signature"] = [
+  const signature: DeepPartial<Signature>[] = [
     {
       param: params,
       ...(typeNode
         ? handleTyped(typeNode)
         : { type: string(child.properties?.returns) }),
     },
-  ] as Method["signature"];
+  ];
   return { name, signature };
 }
 
