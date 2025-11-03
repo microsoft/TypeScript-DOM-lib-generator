@@ -239,7 +239,7 @@ function handleMethod(child: Node): Partial<Method> {
   const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
-  const params: { name: string; type?: string, overrideType?:string }[] = [];
+  const params: { name: string; type?: string; overrideType?: string }[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -254,7 +254,11 @@ function handleMethod(child: Node): Partial<Method> {
         params.push({
           name: string(c.values[0]),
           ...optionalMember("type", "string", c.properties?.type),
-          ...optionalMember("overrideType", "string", c.properties?.overrideType),
+          ...optionalMember(
+            "overrideType",
+            "string",
+            c.properties?.overrideType,
+          ),
         });
         break;
 
