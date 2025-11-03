@@ -172,7 +172,7 @@ interface-mixin WebGLRenderingContextBase {
   }
   
   method getExtension {
-    param extensionName type=DOMString
+    param name type=DOMString
     type any
   }
 }
