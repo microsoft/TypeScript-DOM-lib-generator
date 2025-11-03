@@ -246,18 +246,6 @@
             }
         }
     },
-    "mixins": {
-        "mixin": {
-            // To fix the ordering issue, we will add it again in webgl.kdl
-            "WebGLRenderingContextBase": {
-                "methods": {
-                    "method": {
-                        "getExtension": null
-                    }
-                }
-            }
-        }
-    },
     "dictionaries": {
         "dictionary": {
             "AudioContextOptions": {

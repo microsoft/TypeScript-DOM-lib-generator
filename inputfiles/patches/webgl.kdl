@@ -1,7 +1,7 @@
 interface-mixin WebGLRenderingContextBase {
   property canvas exposed=Window
 
-  method getExtension mdnUrl="https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext/getExtension" {
+  method getExtension {
     param extensionName overrideType="\"ANGLE_instanced_arrays\""
     type ANGLE_instanced_arrays nullable=#true
   }

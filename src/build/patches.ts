@@ -275,11 +275,7 @@ function handleMethod(child: Node): Partial<Method> {
         : { type: string(child.properties?.returns) }),
     },
   ] as Method["signature"];
-  return {
-    name,
-    signature,
-    ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
-  };
+  return { name, signature };
 }
 
 /**
