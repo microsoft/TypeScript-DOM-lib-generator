@@ -3364,27 +3364,6 @@
                 "exposed": "Window"
             },
 
-            // Payment Request added shippingAddress with a different type
-            // https://github.com/w3c/payment-request/pull/996
-            "PaymentRequest": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
-            },
-            "PaymentResponse": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
-            },
-
             "SourceBuffer": {
                 "exposed": "Window"
             },
