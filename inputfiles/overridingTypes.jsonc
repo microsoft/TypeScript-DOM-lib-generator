@@ -3597,28 +3597,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "FontFaceDescriptors": {
-              "members": {
-                "member": {
-                  "display":{
-                    "type": "FontDisplay"
-                  }
-                }
-              }
-            },
-            // https://github.com/microsoft/TypeScript/issues/46036
-            "CryptoKeyPair": {
-                "members": {
-                    "member": {
-                        "privateKey": {
-                            "required": true
-                        },
-                        "publicKey": {
-                            "required": true
-                        }
-                    }
-                }
-            },
             "StructuredSerializeOptions": {
                 "members": {
                     "member": {

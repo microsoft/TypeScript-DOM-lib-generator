@@ -7,6 +7,8 @@ import type {
   WebIdl,
   Method,
   Typed,
+  Dictionary,
+  Member,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -82,6 +84,7 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
   const enums: Record<string, Enum> = {};
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
+  const dictionary: Record<string, DeepPartial<Dictionary>> = {};
 
   for (const node of nodes) {
     const name = string(node.values[0]);
@@ -95,6 +98,9 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
       case "interface":
         interfaces[name] = handleMixinandInterfaces(node, "interface");
         break;
+      case "dictionary":
+        dictionary[name] = handleDictionary(node);
+        break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
     }
@@ -104,6 +110,7 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
     enums: { enum: enums },
     mixins: { mixin },
     interfaces: { interface: interfaces },
+    dictionaries: { dictionary },
   };
 }
 
@@ -266,6 +273,46 @@ function handleMethod(child: Node): Partial<Method> {
     },
   ];
   return { name, signature };
+}
+
+/**
+ * Handles dictionary nodes
+ * @param child The dictionary node to handle.
+ */
+function handleDictionary(child: Node): DeepPartial<Dictionary> {
+  const name = string(child.values[0]);
+  const member: Record<string, Partial<Member>> = {};
+
+  for (const c of child.children) {
+    switch (c.name) {
+      case "member": {
+        const memberName = string(c.values[0]);
+        member[memberName] = handleMember(c);
+        break;
+      }
+      default:
+        throw new Error(`Unknown node name: ${c.name}`);
+    }
+  }
+
+  return {
+    name,
+    members: { member },
+  };
+}
+
+/**
+ * Handles dictionary member nodes
+ * @param c The member node to handle.
+ */
+function handleMember(c: Node): Partial<Member> {
+  const name = string(c.values[0]);
+  const type: Node | undefined = c.children.find((n) => n.name === "type");
+  return {
+    name,
+    ...(type ? handleTyped(type) : {}),
+    ...optionalMember("required", "boolean", c.properties?.required),
+  };
 }
 
 /**
