@@ -4354,7 +4354,7 @@ interface FileReader extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileReader/readyState)
      */
-    readonly readyState: typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE;
+    readonly readyState: 0 | 1 | 2;
     /**
      * The **`result`** read-only property of the FileReader interface returns the file's contents. This property is only valid after the read operation is complete, and the format of the data depends on which of the methods was used to initiate the read operation.
      *
