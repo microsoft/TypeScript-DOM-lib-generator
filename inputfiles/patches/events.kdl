@@ -98,8 +98,3 @@ interface-mixin WindowEventHandlers {
   event storage type=StorageEvent
   event unhandledrejection type=PromiseRejectionEvent
 }
-
-dictionary KeyboardEventInit {
-  member charCode deprecated=#true
-  member keyCode deprecated=#true
-}
