@@ -842,16 +842,6 @@
                     }
                 }
             },
-            "MemoryDescriptor": {
-                "members": {
-                    "member": {
-                        "shared": {
-                            "name": "shared",
-                            "type": "boolean"
-                        }
-                    }
-                }
-            },
             "ReadableStreamReadDoneResult": {
                 "name": "ReadableStreamReadDoneResult",
                 "typeParameters": [

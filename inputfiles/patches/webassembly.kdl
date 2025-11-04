@@ -11,3 +11,7 @@ dictionary ValueTypeMap legacyNamespace=WebAssembly exposed="Window Worker Workl
   member i64 required=#true type=bigint
   member v128 required=#true overrideType=never
 }
+
+dictionary MemoryDescriptor {
+  member shared type=boolean
+}
