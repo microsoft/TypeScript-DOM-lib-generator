@@ -12475,7 +12475,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/exitPointerLock)
      */
     exitPointerLock(): void;
-    getElementById(elementId: string): HTMLElement | null;
+    getElementById<T extends HTMLElement = HTMLElement>(elementId: string): T | null;
     /**
      * The **`getElementsByClassName`** method of Document interface returns an array-like object of all child elements which have all of the given class name(s).
      *
