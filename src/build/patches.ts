@@ -298,7 +298,6 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
   return {
     name,
     members: { member },
-    ...optionalMember("extends", "string", child.properties?.extends),
     ...optionalMember(
       "legacyNamespace",
       "string",

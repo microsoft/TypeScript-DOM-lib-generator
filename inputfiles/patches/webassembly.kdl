@@ -2,7 +2,7 @@ enum ImportExportKind legacyNamespace=WebAssembly
 enum TableKind legacyNamespace=WebAssembly
 enum AddressType legacyNamespace=WebAssembly
 
-dictionary ValueTypeMap legacyNamespace=WebAssembly exposed="Window Worker Worklet" {
+dictionary ValueTypeMap legacyNamespace=WebAssembly {
   member anyfunc required=#true type=Function
   member externref required=#true type=any
   member f32 required=#true type=long
