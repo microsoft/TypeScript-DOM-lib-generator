@@ -830,18 +830,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "KeyboardEventInit": {
-                "members": {
-                    "member": {
-                        "charCode": {
-                            "deprecated": true
-                        },
-                        "keyCode": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
             "MemoryDescriptor": {
                 "members": {
                     "member": {

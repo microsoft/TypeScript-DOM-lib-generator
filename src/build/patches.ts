@@ -311,6 +311,7 @@ function handleMember(c: Node): Partial<Member> {
     name,
     ...optionalMember("type", "string", c.properties?.type),
     ...optionalMember("required", "boolean", c.properties?.required),
+    ...optionalMember("deprecated", "boolean", c.properties?.deprecated),
   };
 }
 
