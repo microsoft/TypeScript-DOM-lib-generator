@@ -1976,44 +1976,6 @@
                     ]
                 }
             },
-            "FileReader": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "loadstart",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "progress",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "load",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "abort",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "loadend",
-                            "type": "ProgressEvent"
-                        }
-                    ]
-                },
-                "properties": {
-                    "property": {
-                        "readyState": {
-                            "name": "readyState",
-                            "overrideType": "typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
-                        }
-                    }
-                }
-            },
             "FileSystemDirectoryHandle": {
                 "iterator": {
                     // It's true that Blink is the only supported engine for Symbol.asyncIterator,

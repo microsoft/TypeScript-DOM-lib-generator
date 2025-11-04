@@ -1,0 +1,19 @@
+interface FileSystemFileHandle {
+  property kind readonly=#true overrideType="\"file\""
+}
+
+interface FileSystemDirectoryHandle {
+  property kind readonly=#true overrideType="\"directory\""
+}
+
+interface FileReader {
+  event loadstart type=ProgressEvent
+  event progress type=ProgressEvent
+  event load type=ProgressEvent
+  event abort type=ProgressEvent
+  event error type=ProgressEvent
+  event loadend type=ProgressEvent
+
+  property readyState overrideType="typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
+}
+

@@ -803,28 +803,6 @@
                         }
                     ]
                 }
-            },
-            "FileSystemFileHandle": {
-                "properties": {
-                    "property": {
-                        "kind": {
-                            "name": "kind",
-                            "readonly": true,
-                            "overrideType": "\"file\""
-                        }
-                    }
-                }
-            },
-            "FileSystemDirectoryHandle": {
-                "properties": {
-                    "property": {
-                        "kind": {
-                            "name": "kind",
-                            "readonly": true,
-                            "overrideType": "\"directory\""
-                        }
-                    }
-                }
             }
         }
     },
