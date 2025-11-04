@@ -76,12 +76,6 @@
                     ]
                 }
             },
-            "DeviceMotionEventAcceleration": {
-                "noInterfaceObject": true
-            },
-            "DeviceMotionEventRotationRate": {
-                "noInterfaceObject": true
-            },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
                 "properties": {
