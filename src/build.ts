@@ -51,7 +51,7 @@ async function emitFlavor(
   mergeNamesakes(exposed);
   exposed.events = webidl.events;
 
-  // Helper to emit and write multiple iterators
+  // Iterator types in separate files as the default target doesn't understand iterators (for TS 6.0-)
   const outputs = [
     {
       suffix: ".generated.d.ts",
