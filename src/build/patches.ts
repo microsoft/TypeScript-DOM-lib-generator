@@ -288,7 +288,7 @@ function handleMethod(child: Node): DeepPartial<Method> {
         }),
   };
 
-  let signature: Method['signature'];
+  let signature: Method["signature"];
   const signatureIndex = child.properties?.signatureIndex;
   if (typeof signatureIndex == "number") {
     signature = { [signatureIndex]: signatureObj };
