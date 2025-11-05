@@ -79,7 +79,7 @@ async function emitFlavor(
         new URL(`${options.name}${suffix}`, options.outputFolder),
         content,
       );
-    })
+    }),
   );
 }
 
