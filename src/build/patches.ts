@@ -19,7 +19,7 @@ type DeepPartial<T> = T extends object
   : T;
 
 interface Method extends Omit<originalMethod, "signature"> {
-  signature: Signature[] | Record<string, Signature>;
+  signature: DeepPartial<Signature>[] | Record<string, DeepPartial<Signature>>;
 }
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
@@ -288,9 +288,7 @@ function handleMethod(child: Node): DeepPartial<Method> {
         }),
   };
 
-  let signature:
-    | Record<string, DeepPartial<Signature>>
-    | DeepPartial<Signature>[];
+  let signature: Method['signature'];
   const signatureIndex = child.properties?.signatureIndex;
   if (typeof signatureIndex == "number") {
     signature = { [signatureIndex]: signatureObj };
