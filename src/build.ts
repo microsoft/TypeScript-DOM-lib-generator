@@ -51,28 +51,28 @@ async function emitFlavor(
   mergeNamesakes(exposed);
   exposed.events = webidl.events;
 
-  // Helper to emit and write multiple signatures
+  // Helper to emit and write multiple iterators
   const outputs = [
     {
       suffix: ".generated.d.ts",
-      signature: "",
+      iterator: "",
     },
     {
       suffix: ".iterable.generated.d.ts",
-      signature: "sync",
+      iterator: "sync",
     },
     {
       suffix: ".asynciterable.generated.d.ts",
-      signature: "async",
+      iterator: "async",
     },
   ] as const;
 
   await Promise.all(
-    outputs.map(async ({ suffix, signature }) => {
+    outputs.map(async ({ suffix, iterator }) => {
       const content = emitWebIdl(
         exposed,
         options.global[0],
-        signature,
+        iterator,
         options.compilerBehavior,
       );
       await fs.writeFile(
