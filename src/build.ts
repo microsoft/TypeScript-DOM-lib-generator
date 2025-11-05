@@ -51,40 +51,35 @@ async function emitFlavor(
   mergeNamesakes(exposed);
   exposed.events = webidl.events;
 
-  const result = emitWebIdl(
-    exposed,
-    options.global[0],
-    "",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(`${options.name}.generated.d.ts`, options.outputFolder),
-    result,
-  );
+  // Helper to emit and write multiple signatures
+  const outputs = [
+    {
+      suffix: ".generated.d.ts",
+      signature: "",
+    },
+    {
+      suffix: ".iterable.generated.d.ts",
+      signature: "sync",
+    },
+    {
+      suffix: ".asynciterable.generated.d.ts",
+      signature: "async",
+    },
+  ] as const;
 
-  const iterators = emitWebIdl(
-    exposed,
-    options.global[0],
-    "sync",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
-    iterators,
-  );
-
-  const asyncIterators = emitWebIdl(
-    exposed,
-    options.global[0],
-    "async",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(
-      `${options.name}.asynciterable.generated.d.ts`,
-      options.outputFolder,
-    ),
-    asyncIterators,
+  await Promise.all(
+    outputs.map(async ({ suffix, signature }) => {
+      const content = emitWebIdl(
+        exposed,
+        options.global[0],
+        signature,
+        options.compilerBehavior,
+      );
+      await fs.writeFile(
+        new URL(`${options.name}${suffix}`, options.outputFolder),
+        content,
+      );
+    })
   );
 }
 
