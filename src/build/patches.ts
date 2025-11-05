@@ -173,7 +173,9 @@ function handleMixinandInterfaces(
         if (method[methodName]) {
           // ts: The goal here is to merge multiple method signatures together for methods with the same name.
           const existingSig = method[methodName].signature;
-          const newSigEntry = Array.isArray(m.signature) ? m.signature[0] : m.signature && (m.signature as any)[0];
+          const newSigEntry = Array.isArray(m.signature)
+            ? m.signature[0]
+            : m.signature && (m.signature as any)[0];
           if (Array.isArray(existingSig)) {
             // Both are arrays, push new entry (if newSigEntry is available)
             if (newSigEntry !== undefined) {
@@ -187,11 +189,14 @@ function handleMixinandInterfaces(
             // Existing is an object, add next numeric key
             let nextKey = 0;
             // Only own, string keys that are numbers
-            while (Object.prototype.hasOwnProperty.call(existingSig, String(nextKey))) {
+            while (
+              Object.prototype.hasOwnProperty.call(existingSig, String(nextKey))
+            ) {
               nextKey++;
             }
             if (newSigEntry !== undefined) {
-              (existingSig as Record<string, any>)[String(nextKey)] = newSigEntry;
+              (existingSig as Record<string, any>)[String(nextKey)] =
+                newSigEntry;
             }
           }
           break;
@@ -293,14 +298,23 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  const signature: DeepPartial<Signature>[] | Record<string, DeepPartial<Signature>> = child.properties?.overrideType ? {"0": {overrideType: string(child.properties?.overrideType), param: params}} : [
-    {
-      param: params,
-      ...(typeNode
-        ? handleTyped(typeNode)
-        : { type: string(child.properties?.returns) }),
-    },
-  ];
+  const signature:
+    | DeepPartial<Signature>[]
+    | Record<string, DeepPartial<Signature>> = child.properties?.overrideType
+    ? {
+        "0": {
+          overrideType: string(child.properties?.overrideType),
+          param: params,
+        },
+      }
+    : [
+        {
+          param: params,
+          ...(typeNode
+            ? handleTyped(typeNode)
+            : { type: string(child.properties?.returns) }),
+        },
+      ];
   return { name, signature } as Partial<Method>;
 }
 
