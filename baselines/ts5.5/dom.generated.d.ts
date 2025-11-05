@@ -21072,6 +21072,7 @@ declare var ImageDecoder: {
 
 /**
  * The **`ImageTrack`** interface of the WebCodecs API represents an individual image track.
+ * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrack)
  */
@@ -21109,6 +21110,7 @@ declare var ImageTrack: {
 
 /**
  * The **`ImageTrackList`** interface of the WebCodecs API represents a list of image tracks.
+ * Available only in secure contexts.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageTrackList)
  */
