@@ -9,6 +9,7 @@ import type {
   Typed,
   Dictionary,
   Member,
+  Signature,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -168,7 +169,34 @@ function handleMixinandInterfaces(
       }
       case "method": {
         const methodName = string(child.values[0]);
-        method[methodName] = handleMethod(child);
+        const m = handleMethod(child);
+        if (method[methodName]) {
+          // ts: The goal here is to merge multiple method signatures together for methods with the same name.
+          const existingSig = method[methodName].signature;
+          const newSigEntry = Array.isArray(m.signature) ? m.signature[0] : m.signature && (m.signature as any)[0];
+          if (Array.isArray(existingSig)) {
+            // Both are arrays, push new entry (if newSigEntry is available)
+            if (newSigEntry !== undefined) {
+              existingSig.push(newSigEntry);
+            }
+          } else if (
+            existingSig &&
+            typeof existingSig === "object" &&
+            !Array.isArray(existingSig)
+          ) {
+            // Existing is an object, add next numeric key
+            let nextKey = 0;
+            // Only own, string keys that are numbers
+            while (Object.prototype.hasOwnProperty.call(existingSig, String(nextKey))) {
+              nextKey++;
+            }
+            if (newSigEntry !== undefined) {
+              (existingSig as Record<string, any>)[String(nextKey)] = newSigEntry;
+            }
+          }
+          break;
+        }
+        method[methodName] = m;
         break;
       }
       default:
@@ -265,7 +293,7 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  const signature: Method["signature"] = [
+  const signature: DeepPartial<Signature>[] | Record<string, DeepPartial<Signature>> = child.properties?.overrideType ? {"0": {overrideType: string(child.properties?.overrideType), param: params}} : [
     {
       param: params,
       ...(typeNode
@@ -273,7 +301,7 @@ function handleMethod(child: Node): Partial<Method> {
         : { type: string(child.properties?.returns) }),
     },
   ];
-  return { name, signature };
+  return { name, signature } as Partial<Method>;
 }
 
 /**

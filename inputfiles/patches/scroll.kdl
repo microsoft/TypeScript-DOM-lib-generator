@@ -1,0 +1,9 @@
+interface Element {
+    method scroll overrideType=void
+    method scroll overrideType=void
+    method scrollBy overrideType=void
+    method scrollBy overrideType=void
+    method scrollTo overrideType=void
+    method scrollTo overrideType=void
+    method scrollIntoView overrideType=void
+}
