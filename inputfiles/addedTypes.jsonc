@@ -100,18 +100,6 @@
                     ]
                 }
             },
-            "CSSStyleProperties": {
-                "properties": {
-                    "property": {
-                        "imageOrientation": {
-                            "deprecated": true
-                        },
-                        "wordWrap": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
             "Window": {
                 "name": "Window",
                 "methods": {

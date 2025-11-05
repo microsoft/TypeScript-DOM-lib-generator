@@ -231,6 +231,8 @@ function handleProperty(child: Node): Partial<Property> {
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
     ...optionalMember("type", "string", child.properties?.type),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
+    ...optionalMember("deprecated", "boolean", child.properties?.deprecated),
+    ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
   };
 }
 
