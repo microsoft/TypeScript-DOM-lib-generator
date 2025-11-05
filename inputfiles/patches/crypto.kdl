@@ -1,0 +1,5 @@
+// https://github.com/microsoft/TypeScript/issues/46036
+dictionary CryptoKeyPair {
+    member privateKey required=#true
+    member publicKey required=#true
+}

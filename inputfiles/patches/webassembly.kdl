@@ -1,3 +1,17 @@
 enum ImportExportKind legacyNamespace=WebAssembly
 enum TableKind legacyNamespace=WebAssembly
 enum AddressType legacyNamespace=WebAssembly
+
+dictionary ValueTypeMap legacyNamespace=WebAssembly {
+  member anyfunc required=#true type=Function
+  member externref required=#true type=any
+  member f32 required=#true type=long
+  member f64 required=#true type=long
+  member i32 required=#true type=long
+  member i64 required=#true type=bigint
+  member v128 required=#true overrideType=never
+}
+
+dictionary MemoryDescriptor {
+  member shared type=boolean
+}

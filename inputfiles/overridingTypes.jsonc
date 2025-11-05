@@ -1937,44 +1937,6 @@
                     ]
                 }
             },
-            "FileReader": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "loadstart",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "progress",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "load",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "abort",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "loadend",
-                            "type": "ProgressEvent"
-                        }
-                    ]
-                },
-                "properties": {
-                    "property": {
-                        "readyState": {
-                            "name": "readyState",
-                            "overrideType": "typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
-                        }
-                    }
-                }
-            },
             "FileSystemDirectoryHandle": {
                 "iterator": {
                     // It's true that Blink is the only supported engine for Symbol.asyncIterator,
@@ -3276,9 +3238,6 @@
                     }
                 }
             },
-            "ContactAddress": {
-                "name": "PaymentAddress"
-            },
             "HTMLMediaElement": {
                 "properties": {
                     "property": {
@@ -3323,27 +3282,6 @@
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
             "MediaSource": {
                 "exposed": "Window"
-            },
-
-            // Payment Request added shippingAddress with a different type
-            // https://github.com/w3c/payment-request/pull/996
-            "PaymentRequest": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
-            },
-            "PaymentResponse": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
             },
 
             "SourceBuffer": {
@@ -3558,28 +3496,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "FontFaceDescriptors": {
-              "members": {
-                "member": {
-                  "display":{
-                    "type": "FontDisplay"
-                  }
-                }
-              }
-            },
-            // https://github.com/microsoft/TypeScript/issues/46036
-            "CryptoKeyPair": {
-                "members": {
-                    "member": {
-                        "privateKey": {
-                            "required": true
-                        },
-                        "publicKey": {
-                            "required": true
-                        }
-                    }
-                }
-            },
             "StructuredSerializeOptions": {
                 "members": {
                     "member": {

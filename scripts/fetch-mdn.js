@@ -17,7 +17,10 @@ const filtered = Object.values(data)
     const path = entry.mdn_url;
     return (
       path.startsWith("/en-US/docs/Web/API/") ||
-      path.startsWith("/en-US/docs/WebAssembly/Reference/JavaScript_interface/")
+      path.startsWith(
+        "/en-US/docs/WebAssembly/Reference/JavaScript_interface/",
+      ) ||
+      path.startsWith("/en-US/docs/Web/CSS/Reference/Properties/")
     );
   })
   .map(({ mdn_url, pageType, summary }) => ({

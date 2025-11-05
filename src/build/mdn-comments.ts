@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { hyphenToCamelCase } from "./utils/css.js";
 
 const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 
@@ -6,9 +7,12 @@ const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 const subdirectories = [
   "Web/API/",
   "WebAssembly/Reference/JavaScript_interface/",
+  "Web/CSS/Reference/Properties/",
 ];
 
 const paths: Record<string, string[]> = {
+  "css-property": ["CSSStyleProperties", "properties", "property"],
+  "css-shorthand-property": ["CSSStyleProperties", "properties", "property"],
   "web-api-instance-property": ["properties", "property"],
   "web-api-static-property": ["properties", "property"],
   "web-api-instance-method": ["methods", "method"],
@@ -49,15 +53,10 @@ function insertComment(
   slug: string[],
   summary: string,
   path: string[],
+  name: string,
 ) {
-  if (!path.length) {
-    const iface = ensureLeaf(root, slug);
-    iface.comment = summary;
-  } else {
-    const [ifaceName, memberName] = slug;
-    const target = ensureLeaf(root, [ifaceName, ...path, memberName]);
-    target.comment = summary;
-  }
+  const target = ensureLeaf(root, [...slug.slice(0, -1), ...path, name]);
+  target.comment = summary;
 }
 
 function generateComment(summary: string, name: string): string | undefined {
@@ -91,11 +90,17 @@ export async function generateDescriptions(): Promise<{
     if (!slugArr.length || !path) {
       continue;
     }
-    const comment = generateComment(entry.summary, slugArr.at(-1)!);
+    const leaf = slugArr.at(-1)!;
+    const name = ["css-property", "css-shorthand-property"].includes(
+      entry.pageType,
+    )
+      ? hyphenToCamelCase(leaf)
+      : leaf;
+    const comment = generateComment(entry.summary, name);
     if (!comment) {
       continue;
     }
-    insertComment(results, slugArr, comment, path);
+    insertComment(results, slugArr, comment, path, name);
   }
   return { interfaces: { interface: results } };
 }

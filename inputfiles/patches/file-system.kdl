@@ -1,0 +1,7 @@
+interface FileSystemFileHandle {
+  property kind readonly=#true overrideType="\"file\""
+}
+
+interface FileSystemDirectoryHandle {
+  property kind readonly=#true overrideType="\"directory\""
+}

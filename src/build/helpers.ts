@@ -56,6 +56,7 @@ const sameTypes = new Set([
   "PromiseLike",
   "undefined",
   "void",
+  "bigint",
 ]);
 export const baseTypeConversionMap = new Map<string, string>([
   ...[...bufferSourceTypes].map((type) => [type, type] as const),

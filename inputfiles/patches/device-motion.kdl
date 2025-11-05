@@ -1,0 +1,2 @@
+interface DeviceMotionEventAcceleration noInterfaceObject=#true
+interface DeviceMotionEventRotationRate noInterfaceObject=#true

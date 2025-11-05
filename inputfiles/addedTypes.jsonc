@@ -76,12 +76,6 @@
                     ]
                 }
             },
-            "DeviceMotionEventAcceleration": {
-                "noInterfaceObject": true
-            },
-            "DeviceMotionEventRotationRate": {
-                "noInterfaceObject": true
-            },
             "HTMLImageElement": {
                 "name": "HTMLImageElement",
                 "properties": {
@@ -803,55 +797,11 @@
                         }
                     ]
                 }
-            },
-            "FileSystemFileHandle": {
-                "properties": {
-                    "property": {
-                        "kind": {
-                            "name": "kind",
-                            "readonly": true,
-                            "overrideType": "\"file\""
-                        }
-                    }
-                }
-            },
-            "FileSystemDirectoryHandle": {
-                "properties": {
-                    "property": {
-                        "kind": {
-                            "name": "kind",
-                            "readonly": true,
-                            "overrideType": "\"directory\""
-                        }
-                    }
-                }
             }
         }
     },
     "dictionaries": {
         "dictionary": {
-            "KeyboardEventInit": {
-                "members": {
-                    "member": {
-                        "charCode": {
-                            "deprecated": true
-                        },
-                        "keyCode": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "MemoryDescriptor": {
-                "members": {
-                    "member": {
-                        "shared": {
-                            "name": "shared",
-                            "type": "boolean"
-                        }
-                    }
-                }
-            },
             "ReadableStreamReadDoneResult": {
                 "name": "ReadableStreamReadDoneResult",
                 "typeParameters": [
@@ -949,50 +899,6 @@
                         "cancel": {
                             "name": "cancel",
                             "type": "UnderlyingSourceCancelCallback"
-                        }
-                    }
-                }
-            },
-            "ValueTypeMap": {
-                "name": "ValueTypeMap",
-                "legacyNamespace": "WebAssembly",
-                "exposed":"Window Worker Worklet",
-                "members": {
-                    "member": {
-                        "anyfunc": {
-                            "name": "anyfunc",
-                            "overrideType": "Function",
-                            "required": 1
-                        },
-                        "externref": {
-                            "name": "externref",
-                            "overrideType": "any",
-                            "required": 1
-                        },
-                        "f32": {
-                            "name": "f32",
-                            "overrideType": "number",
-                            "required": 1
-                        },
-                        "f64": {
-                            "name": "f64",
-                            "overrideType": "number",
-                            "required": 1
-                        },
-                        "i32": {
-                            "name": "i32",
-                            "overrideType": "number",
-                            "required": 1
-                        },
-                        "i64": {
-                            "name": "i64",
-                            "overrideType": "bigint",
-                            "required": 1
-                        },
-                        "v128": {
-                            "name": "v128",
-                            "overrideType": "never",
-                            "required": 1
                         }
                     }
                 }
