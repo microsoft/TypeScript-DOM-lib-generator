@@ -39322,22 +39322,22 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
      */
-    scroll(options?: ScrollToOptions): Promise<void>;
-    scroll(x: number, y: number): Promise<void>;
+    scroll(options?: ScrollToOptions): void;
+    scroll(x: number, y: number): void;
     /**
      * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
      */
-    scrollBy(options?: ScrollToOptions): Promise<void>;
-    scrollBy(x: number, y: number): Promise<void>;
+    scrollBy(options?: ScrollToOptions): void;
+    scrollBy(x: number, y: number): void;
     /**
      * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
      */
-    scrollTo(options?: ScrollToOptions): Promise<void>;
-    scrollTo(x: number, y: number): Promise<void>;
+    scrollTo(options?: ScrollToOptions): void;
+    scrollTo(x: number, y: number): void;
     /**
      * The **`window.stop()`** stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
      *
@@ -41486,22 +41486,22 @@ declare function resizeTo(width: number, height: number): void;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scroll)
  */
-declare function scroll(options?: ScrollToOptions): Promise<void>;
-declare function scroll(x: number, y: number): Promise<void>;
+declare function scroll(options?: ScrollToOptions): void;
+declare function scroll(x: number, y: number): void;
 /**
  * The **`Window.scrollBy()`** method scrolls the document in the window by the given amount.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollBy)
  */
-declare function scrollBy(options?: ScrollToOptions): Promise<void>;
-declare function scrollBy(x: number, y: number): Promise<void>;
+declare function scrollBy(options?: ScrollToOptions): void;
+declare function scrollBy(x: number, y: number): void;
 /**
  * **`Window.scrollTo()`** scrolls to a particular set of coordinates in the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/scrollTo)
  */
-declare function scrollTo(options?: ScrollToOptions): Promise<void>;
-declare function scrollTo(x: number, y: number): Promise<void>;
+declare function scrollTo(options?: ScrollToOptions): void;
+declare function scrollTo(x: number, y: number): void;
 /**
  * The **`window.stop()`** stops further resource loading in the current browsing context, equivalent to the stop button in the browser.
  *
