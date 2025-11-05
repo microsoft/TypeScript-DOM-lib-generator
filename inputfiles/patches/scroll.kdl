@@ -16,4 +16,3 @@ interface Window {
     method scrollTo returns=void signatureIndex=0
     method scrollTo returns=void signatureIndex=1
 }
-
