@@ -15,7 +15,7 @@ interface-mixin DocumentOrShadowRoot {
   }
 }
 
-// No implementation of Promise return values as of 2025-11"
+// No implementation of Promise return values as of 2025-11
 interface Element {
   method scroll returns=void signatureIndex=0
   method scroll returns=void signatureIndex=1
