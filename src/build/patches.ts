@@ -19,7 +19,7 @@ type DeepPartial<T> = T extends object
   : T;
 
 interface Method extends Omit<originalMethod, "signature"> {
-  signature: Signature[] | Record<string, Signature>
+  signature: Signature[] | Record<string, Signature>;
 }
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
@@ -175,7 +175,7 @@ function handleMixinandInterfaces(
         const methodName = string(child.values[0]);
         const m = handleMethod(child);
         method = merge(method, {
-          [methodName]: m
+          [methodName]: m,
         });
         break;
       }
@@ -183,7 +183,7 @@ function handleMixinandInterfaces(
         throw new Error(`Unknown node name: ${child.name}`);
     }
   }
-  console.log(method)
+  console.log(method);
 
   const interfaceObject = type === "interface" && {
     ...optionalMember("exposed", "string", node.properties?.exposed),
@@ -279,10 +279,19 @@ function handleMethod(child: Node): DeepPartial<Method> {
     param: params,
     ...(typeNode
       ? handleTyped(typeNode)
-      : { ...optionalMember("type", "string", child.properties?.returns), ...optionalMember("overrideType", "string", child.properties?.overrideType) }),
+      : {
+          ...optionalMember("type", "string", child.properties?.returns),
+          ...optionalMember(
+            "overrideType",
+            "string",
+            child.properties?.overrideType,
+          ),
+        }),
   };
 
-  let signature: Record<string, DeepPartial<Signature>> | DeepPartial<Signature>[];
+  let signature:
+    | Record<string, DeepPartial<Signature>>
+    | DeepPartial<Signature>[];
   const signatureIndex = child.properties?.signatureIndex;
   if (typeof signatureIndex == "number") {
     signature = { [signatureIndex]: signatureObj };
@@ -290,7 +299,6 @@ function handleMethod(child: Node): DeepPartial<Method> {
     signature = [signatureObj];
   }
   return { name, signature };
-
 }
 
 /**
