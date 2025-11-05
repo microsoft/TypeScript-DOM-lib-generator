@@ -5,7 +5,7 @@ import type {
   Property,
   Interface,
   WebIdl,
-  Method,
+  Method as originalMethod,
   Typed,
   Dictionary,
   Member,
@@ -17,6 +17,10 @@ import { merge } from "./helpers.js";
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
+
+interface Method extends Omit<originalMethod, "signature"> {
+  signature: Signature[] | Record<string, Signature>
+}
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
   if (value === undefined) {
@@ -155,7 +159,7 @@ function handleMixinandInterfaces(
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
-  const method: Record<string, Partial<Method>> = {};
+  let method: Record<string, DeepPartial<Method>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -170,44 +174,16 @@ function handleMixinandInterfaces(
       case "method": {
         const methodName = string(child.values[0]);
         const m = handleMethod(child);
-        if (method[methodName]) {
-          // ts: The goal here is to merge multiple method signatures together for methods with the same name.
-          const existingSig = method[methodName].signature;
-          const newSigEntry = Array.isArray(m.signature)
-            ? m.signature[0]
-            : m.signature && (m.signature as any)[0];
-          if (Array.isArray(existingSig)) {
-            // Both are arrays, push new entry (if newSigEntry is available)
-            if (newSigEntry !== undefined) {
-              existingSig.push(newSigEntry);
-            }
-          } else if (
-            existingSig &&
-            typeof existingSig === "object" &&
-            !Array.isArray(existingSig)
-          ) {
-            // Existing is an object, add next numeric key
-            let nextKey = 0;
-            // Only own, string keys that are numbers
-            while (
-              Object.prototype.hasOwnProperty.call(existingSig, String(nextKey))
-            ) {
-              nextKey++;
-            }
-            if (newSigEntry !== undefined) {
-              (existingSig as Record<string, any>)[String(nextKey)] =
-                newSigEntry;
-            }
-          }
-          break;
-        }
-        method[methodName] = m;
+        method = merge(method, {
+          [methodName]: m
+        });
         break;
       }
       default:
         throw new Error(`Unknown node name: ${child.name}`);
     }
   }
+  console.log(method)
 
   const interfaceObject = type === "interface" && {
     ...optionalMember("exposed", "string", node.properties?.exposed),
@@ -271,7 +247,7 @@ function handleProperty(child: Node): Partial<Property> {
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
  */
-function handleMethod(child: Node): Partial<Method> {
+function handleMethod(child: Node): DeepPartial<Method> {
   const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
@@ -298,24 +274,23 @@ function handleMethod(child: Node): Partial<Method> {
     }
   }
 
-  const signature:
-    | DeepPartial<Signature>[]
-    | Record<string, DeepPartial<Signature>> = child.properties?.overrideType
-    ? {
-        "0": {
-          overrideType: string(child.properties?.overrideType),
-          param: params,
-        },
-      }
-    : [
-        {
-          param: params,
-          ...(typeNode
-            ? handleTyped(typeNode)
-            : { type: string(child.properties?.returns) }),
-        },
-      ];
-  return { name, signature } as Partial<Method>;
+  // Determine the actual signature object
+  const signatureObj: DeepPartial<Signature> = {
+    param: params,
+    ...(typeNode
+      ? handleTyped(typeNode)
+      : { ...optionalMember("type", "string", child.properties?.returns), ...optionalMember("overrideType", "string", child.properties?.overrideType) }),
+  };
+
+  let signature: Record<string, DeepPartial<Signature>> | DeepPartial<Signature>[];
+  const signatureIndex = child.properties?.signatureIndex;
+  if (typeof signatureIndex == "number") {
+    signature = { [signatureIndex]: signatureObj };
+  } else {
+    signature = [signatureObj];
+  }
+  return { name, signature };
+
 }
 
 /**
