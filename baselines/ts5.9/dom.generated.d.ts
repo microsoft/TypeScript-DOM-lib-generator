@@ -6914,7 +6914,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     /**
      * The **`cssFloat`** property of the CSSStyleProperties interface returns the CSS float property.
      *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat)
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleProperties/cssFloat)
      */
     cssFloat: string;
     /**
@@ -7336,7 +7336,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     hyphens: string;
     /**
      * The image-orientation CSS property specifies a layout-independent correction to the orientation of an image.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/image-orientation)
      */

@@ -7,12 +7,10 @@ interface CSSStyleDeclaration \
   forwardExtends=CSSStyleProperties
 
 interface CSSStyleProperties replaceReference=CSSStyleDeclaration {
-  property imageOrientation deprecated=#true
   property wordWrap deprecated=#true
   
   // The corresponding standardized property is not supported by
   // anyone as of 2024-10.
   property webkitLineClamp deprecated=#false
 
-  property cssFloat mdnUrl="https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
 }
