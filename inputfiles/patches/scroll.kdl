@@ -1,9 +1,9 @@
 interface Element {
-    method scroll overrideType=void signatureIndex=0
-    method scroll overrideType=void signatureIndex=1
-    method scrollBy overrideType=void signatureIndex=0
-    method scrollBy overrideType=void signatureIndex=1
-    method scrollTo overrideType=void signatureIndex=0
-    method scrollTo overrideType=void signatureIndex=1
-    method scrollIntoView overrideType=void signatureIndex=0
+    method scroll returns=void signatureIndex=0
+    method scroll returns=void signatureIndex=1
+    method scrollBy returns=void signatureIndex=0
+    method scrollBy returns=void signatureIndex=1
+    method scrollTo returns=void signatureIndex=0
+    method scrollTo returns=void signatureIndex=1
+    method scrollIntoView returns=void signatureIndex=0
 }

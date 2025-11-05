@@ -279,12 +279,8 @@ function handleMethod(child: Node): DeepPartial<Method> {
     ...(typeNode
       ? handleTyped(typeNode)
       : {
-          ...optionalMember("type", "string", child.properties?.returns),
-          ...optionalMember(
-            "overrideType",
-            "string",
-            child.properties?.overrideType,
-          ),
+          type: string(child.properties?.returns),
+          subtype: undefined,
         }),
   };
 
