@@ -5,7 +5,7 @@ import type {
   Property,
   Interface,
   WebIdl,
-  Method as originalMethod,
+  Method,
   Typed,
   Dictionary,
   Member,
@@ -18,8 +18,8 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
-interface Method extends Omit<originalMethod, "signature"> {
-  signature: DeepPartial<Signature>[] | Record<string, DeepPartial<Signature>>;
+interface OverridableMethod extends Omit<Method, "signature"> {
+  signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
@@ -159,7 +159,7 @@ function handleMixinandInterfaces(
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
-  let method: Record<string, DeepPartial<Method>> = {};
+  let method: Record<string, DeepPartial<OverridableMethod>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -246,7 +246,7 @@ function handleProperty(child: Node): Partial<Property> {
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
  */
-function handleMethod(child: Node): DeepPartial<Method> {
+function handleMethod(child: Node): DeepPartial<OverridableMethod> {
   const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
@@ -284,7 +284,7 @@ function handleMethod(child: Node): DeepPartial<Method> {
         }),
   };
 
-  let signature: Method["signature"];
+  let signature: OverridableMethod["signature"];
   const signatureIndex = child.properties?.signatureIndex;
   if (typeof signatureIndex == "number") {
     signature = { [signatureIndex]: signatureObj };
