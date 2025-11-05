@@ -183,7 +183,6 @@ function handleMixinandInterfaces(
         throw new Error(`Unknown node name: ${child.name}`);
     }
   }
-  console.log(method);
 
   const interfaceObject = type === "interface" && {
     ...optionalMember("exposed", "string", node.properties?.exposed),
