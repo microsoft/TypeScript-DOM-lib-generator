@@ -17154,7 +17154,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     selectionDirection: "forward" | "backward" | "none" | null;
     /**
-     * The **`selectionEnd`** property of the HTMLInputElement interface is a number that represents the end index of the selected text. When there is no selection, this returns the offset of the character immediately following the current text input cursor position.
+     * The **`selectionEnd`** property of the HTMLInputElement interface is a number that represents the end index of the selected text. That is, it represents the index of the character immediately following the selection. Likewise, when there is no selection, this returns the offset of the character immediately following the current text input cursor position.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionEnd)
      */
@@ -28608,7 +28608,7 @@ declare var Response: {
      */
     error(): Response;
     /**
-     * The **`json()`** method of the Response interface takes a Response stream and reads it to completion. It returns a promise which resolves with the result of parsing the body text as JSON.
+     * The **`json()`** static method of the Response interface returns a Response that contains the provided JSON data as body, and a Content-Type header which is set to application/json. The response status, status message, and additional headers can also be set.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static)
      */
