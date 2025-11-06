@@ -204,11 +204,11 @@ async function emitDom() {
   webidl = merge(webidl, getRemovalData(webidl));
   webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
-  webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   webidl = merge(webidl, addedItems);
   webidl = merge(webidl, overriddenItems);
   webidl = merge(webidl, patches);
   webidl = merge(webidl, comments);
+  webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   for (const name in webidl.interfaces!.interface) {
     const i = webidl.interfaces!.interface[name];
     if (i.overrideExposed) {
