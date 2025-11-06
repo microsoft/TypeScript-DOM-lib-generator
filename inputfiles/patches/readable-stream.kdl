@@ -1,5 +1,5 @@
 dictionary ReadableStreamReadDoneResult typeParameters=T {
-    member done type=boolean required=#true overrideType="true"
+    member done required=#true overrideType="true"
     member value required=#true overrideType="T | undefined"
 }
 
