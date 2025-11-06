@@ -324,7 +324,7 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
       "string",
       child.properties?.legacyNamespace,
     ),
-    ...optionalMember("overrideType", "string", child.properties?.overrideType)
+    ...optionalMember("overrideType", "string", child.properties?.overrideType),
   };
 }
 
