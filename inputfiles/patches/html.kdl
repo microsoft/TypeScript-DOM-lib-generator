@@ -10,3 +10,17 @@ interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window
 interface HTMLDocument extends=Document exposed=Window
 
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
+
+interface HTMLInputElement {
+    property labels overrideType="NodeListOf<HTMLLabelElement>"
+}
+
+interface HTMLIFrameElement {
+    property referrerPolicy type=ReferrerPolicy
+    property loading overrideType="\"eager\" | \"lazy\""
+}
+
+interface HTMLImageElement {
+    property decoding overrideType="\"async\" | \"sync\" | \"auto\""
+    property loading overrideType="\"eager\" | \"lazy\""
+}
