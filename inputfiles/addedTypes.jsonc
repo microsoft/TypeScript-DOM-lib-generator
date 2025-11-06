@@ -762,16 +762,6 @@
                     }
                 }
             },
-            "WebSocket": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "close",
-                            "type": "CloseEvent"
-                        }
-                    ]
-                }
-            },
             "WorkerGlobalScope": {
                 "events": {
                     "event": [
