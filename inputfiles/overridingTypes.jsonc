@@ -327,21 +327,6 @@
     },
     "interfaces": {
         "interface": {
-            "CryptoKey": {
-                "properties": {
-                    "property": {
-                        "algorithm": {
-                            "type": "KeyAlgorithm"
-                        },
-                        "usages": {
-                            "type": "sequence",
-                            "subtype": {
-                                "type": "KeyUsage"
-                            }
-                        }
-                    }
-                }
-            },
             "GPUPipelineError": {
                 // Web IDL optional argument can be followed by a required argument, but not in TS
                 // TODO: Maybe do this in the emitter?

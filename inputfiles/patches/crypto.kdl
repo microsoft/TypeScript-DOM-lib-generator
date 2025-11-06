@@ -3,3 +3,12 @@ dictionary CryptoKeyPair {
     member privateKey required=#true
     member publicKey required=#true
 }
+
+interface CryptoKey {
+    property algorithm type=KeyAlgorithm
+    property usages {
+        type sequence {
+            type KeyUsage
+        }
+    }
+}

@@ -232,12 +232,22 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): Partial<Property> {
+  let typeNode: Node | undefined;
+  for (const c of child.children) {
+    if (c.name === "type") {
+      typeNode = c;
+      break;
+    }
+  }
+
   return {
     name: string(child.values[0]),
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
-    ...optionalMember("type", "string", child.properties?.type),
+    ...(typeNode
+      ? handleTyped(typeNode)
+      : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "boolean", child.properties?.deprecated),
   };
