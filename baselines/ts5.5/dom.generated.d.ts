@@ -10286,7 +10286,9 @@ declare var CompositionEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
  */
 interface CompressionStream extends GenericTransformStream {
+    /** The **`readable`** read-only property of the CompressionStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<Uint8Array>;
+    /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -11767,7 +11769,9 @@ declare var DataTransferItemList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
  */
 interface DecompressionStream extends GenericTransformStream {
+    /** The **`readable`** read-only property of the DecompressionStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<Uint8Array>;
+    /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -12269,7 +12273,10 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/caretPositionFromPoint)
      */
     caretPositionFromPoint(x: number, y: number, options?: CaretPositionFromPointOptions): CaretPosition | null;
-    /** @deprecated */
+    /**
+     * The **`caretRangeFromPoint()`** method of the Document interface returns a Range object for the document fragment under the specified coordinates.
+     * @deprecated
+     */
     caretRangeFromPoint(x: number, y: number): Range | null;
     /**
      * The **`Document.clear()`** method does nothing, but doesn't raise any error.
@@ -12466,6 +12473,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/exitPointerLock)
      */
     exitPointerLock(): void;
+    /** The **`getElementById()`** method of the Document interface returns an Element object representing the element whose id property matches the specified string. Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly. */
     getElementById(elementId: string): HTMLElement | null;
     /**
      * The **`getElementsByClassName`** method of Document interface returns an array-like object of all child elements which have all of the given class name(s).
@@ -12609,6 +12617,7 @@ declare var Document: {
  */
 interface DocumentFragment extends Node, NonElementParentNode, ParentNode {
     readonly ownerDocument: Document;
+    /** The **`getElementById()`** method of the DocumentFragment returns an Element object representing the element whose id property matches the specified string. Since element IDs are required to be unique if specified, they're a useful way to get access to a specific element quickly. */
     getElementById(elementId: string): HTMLElement | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) */
     get textContent(): string;
@@ -15908,6 +15917,7 @@ declare var HTMLDivElement: {
     new(): HTMLDivElement;
 };
 
+/** For historical reasons, Window objects have a **`window.HTMLDocument`** property whose value is the Document interface. So you can think of HTMLDocument as an alias for Document, and you can find documentation for HTMLDocument members under the documentation for the Document interface. */
 interface HTMLDocument extends Document {
     addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: HTMLDocument, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
@@ -23659,6 +23669,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/credentials)
      */
     readonly credentials: CredentialsContainer;
+    /** The **`Navigator.doNotTrack`** property returns the user's Do Not Track setting, which indicates whether the user is requesting websites and advertisers to not track them. */
     readonly doNotTrack: string | null;
     /**
      * The **`Navigator.geolocation`** read-only property returns a Geolocation object that gives Web content access to the location of the device. This allows a website or app to offer customized results based on the user's location.
@@ -26948,7 +26959,11 @@ interface RTCEncodedAudioFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/data)
      */
     data: ArrayBuffer;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp) */
+    /**
+     * The **`timestamp`** read-only property of the RTCEncodedAudioFrame interface indicates the time at which frame sampling started.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp)
+     */
     readonly timestamp: number;
     /**
      * The **`getMetadata()`** method of the RTCEncodedAudioFrame interface returns an object containing the metadata associated with the frame.
@@ -26975,7 +26990,11 @@ interface RTCEncodedVideoFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/data)
      */
     data: ArrayBuffer;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp) */
+    /**
+     * The **`timestamp`** read-only property of the RTCEncodedVideoFrame interface indicates the time at which frame sampling started.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp)
+     */
     readonly timestamp: number;
     /**
      * The **`type`** read-only property of the RTCEncodedVideoFrame interface indicates whether this frame is a key frame, delta frame, or empty frame.
@@ -34212,7 +34231,9 @@ interface TextDecoderCommon {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
+    /** The **`readable`** read-only property of the TextDecoderStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<string>;
+    /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -34261,7 +34282,9 @@ interface TextEncoderCommon {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
+    /** The **`readable`** read-only property of the TextEncoderStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<Uint8Array>;
+    /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream. */
     readonly writable: WritableStream<string>;
 }
 
@@ -38790,7 +38813,11 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/readable)
      */
     readonly readable: ReadableStream;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable) */
+    /**
+     * The **`writable`** read-only property of the WebTransportDatagramDuplexStream interface returns a WritableStream instance that can be used to unreliably write outgoing datagrams to the stream.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable)
+     */
     readonly writable: WritableStream;
 }
 
@@ -40200,6 +40227,7 @@ declare namespace CSS {
 }
 
 declare namespace WebAssembly {
+    /** The **`WebAssembly.CompileError`** object indicates an error during WebAssembly decoding or validation. */
     interface CompileError extends Error {
     }
 
@@ -40274,6 +40302,7 @@ declare namespace WebAssembly {
         new(module: Module, importObject?: Imports): Instance;
     };
 
+    /** The **`WebAssembly.LinkError`** object indicates an error during module instantiation (besides traps from the start function). */
     interface LinkError extends Error {
     }
 
@@ -40339,6 +40368,7 @@ declare namespace WebAssembly {
         imports(moduleObject: Module): ModuleImportDescriptor[];
     };
 
+    /** The **`WebAssembly.RuntimeError`** object is the error type that is thrown whenever WebAssembly specifies a trap. */
     interface RuntimeError extends Error {
     }
 
@@ -40589,6 +40619,7 @@ interface Console {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static)
      */
     timeLog(label?: string, ...data: any[]): void;
+    /** The **`console.timeStamp()`** static method adds a single marker to the browser's Performance tool (Firefox bug 1387528, Chrome). This lets you correlate a point in your code with the other events recorded in the timeline, such as layout and paint events. */
     timeStamp(label?: string): void;
     /**
      * The **`console.trace()`** static method outputs a stack trace to the console.
