@@ -318,11 +318,13 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
   return {
     name,
     members: { member },
+    ...handleTypeParameters(child.properties?.typeParameters),
     ...optionalMember(
       "legacyNamespace",
       "string",
       child.properties?.legacyNamespace,
     ),
+    ...optionalMember("overrideType", "string", child.properties?.overrideType)
   };
 }
 
