@@ -27,7 +27,8 @@ const filtered = Object.values(data)
     mdn_url,
     pageType,
     summary,
-  }));
+  }))
+  .sort((a, b) => a.mdn_url.localeCompare(b.mdn_url));
 
 // Save to file
 await fs.writeFile(
