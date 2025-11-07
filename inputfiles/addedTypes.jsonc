@@ -51,20 +51,6 @@
                 "exposed": "AudioWorklet",
                 "noInterfaceObject": true
             },
-            "BroadcastChannel": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
-            },
             "CompileError": {
                 "name": "CompileError",
                 "extends": "Error",
@@ -102,13 +88,6 @@
             },
             "Window": {
                 "name": "Window",
-                "methods": {
-                    "method": {
-                        "captureEvents": {
-                            "deprecated": true
-                        }
-                    }
-                },
                 "overrideIndexSignatures": [
                     "[index: number]: Window"
                 ],
@@ -429,108 +408,9 @@
                     }
                 }
             },
-            "IDBDatabase": {
-                "name": "IDBDatabase",
-                "events": {
-                    "event": [
-                        {
-                            "name": "versionchange",
-                            "type": "IDBVersionChangeEvent"
-                        }
-                    ]
-                }
-            },
             "IDBOpenDBRequest": {
                 "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>",
-                "events": {
-                    "event": [
-                        {
-                            "name": "upgradeneeded",
-                            "type": "IDBVersionChangeEvent"
-                        },
-                        {
-                            "name": "blocked",
-                            "type": "IDBVersionChangeEvent"
-                        }
-                    ]
-                }
-            },
-            "UIEvent": {
-                "properties": {
-                    "property": {
-                        "which": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "SpeechSynthesisUtterance": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "start",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "end",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "SpeechSynthesisErrorEvent"
-                        },
-                        {
-                            "name": "pause",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "resume",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "mark",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "boundary",
-                            "type": "SpeechSynthesisEvent"
-                        }
-                    ]
-                }
-            },
-            "TextTrackList": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "TrackEvent"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "TrackEvent"
-                        }
-                    ]
-                }
-            },
-            "DOMMatrixReadOnly": {
-                "methods": {
-                    "method": {
-                        "scaleNonUniform": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "EventSource": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
+                "extends": "IDBRequest<IDBDatabase>"
             },
             "HTMLBodyElement": {
                 "properties": {
@@ -564,12 +444,6 @@
                         }
                     }
                 }
-            },
-            "KHR_parallel_shader_compile": {
-                "overrideExposed": "Window Worker"
-            },
-            "OVR_multiview2": {
-                "overrideExposed": "Window Worker"
             },
             // The spec removed `timestamp` but browsers still have it.
             // https://github.com/w3c/webrtc-encoded-transform/pull/204
@@ -670,16 +544,6 @@
                             "overrideType": "T"
                         }
                     }
-                }
-            },
-            "SharedWorkerGlobalScope": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "connect",
-                            "type": "MessageEvent"
-                        }
-                    ]
                 }
             },
             "Attr": {
