@@ -2670,7 +2670,9 @@ declare var CloseEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
  */
 interface CompressionStream extends GenericTransformStream {
+    /** The **`readable`** read-only property of the CompressionStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -3592,7 +3594,9 @@ declare var DOMStringList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
  */
 interface DecompressionStream extends GenericTransformStream {
+    /** The **`readable`** read-only property of the DecompressionStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -7419,7 +7423,11 @@ interface RTCEncodedAudioFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/data)
      */
     data: ArrayBuffer;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp) */
+    /**
+     * The **`timestamp`** read-only property of the RTCEncodedAudioFrame interface indicates the time at which frame sampling started.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp)
+     */
     readonly timestamp: number;
     /**
      * The **`getMetadata()`** method of the RTCEncodedAudioFrame interface returns an object containing the metadata associated with the frame.
@@ -7446,7 +7454,11 @@ interface RTCEncodedVideoFrame {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/data)
      */
     data: ArrayBuffer;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp) */
+    /**
+     * The **`timestamp`** read-only property of the RTCEncodedVideoFrame interface indicates the time at which frame sampling started.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp)
+     */
     readonly timestamp: number;
     /**
      * The **`type`** read-only property of the RTCEncodedVideoFrame interface indicates whether this frame is a key frame, delta frame, or empty frame.
@@ -7944,7 +7956,7 @@ declare var Response: {
      */
     error(): Response;
     /**
-     * The **`json()`** method of the Response interface takes a Response stream and reads it to completion. It returns a promise which resolves with the result of parsing the body text as JSON.
+     * The **`json()`** static method of the Response interface returns a Response that contains the provided JSON data as body, and a Content-Type header which is set to application/json. The response status, status message, and additional headers can also be set.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/json_static)
      */
@@ -8663,7 +8675,9 @@ interface TextDecoderCommon {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
+    /** The **`readable`** read-only property of the TextDecoderStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<string>;
+    /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -8712,7 +8726,9 @@ interface TextEncoderCommon {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
+    /** The **`readable`** read-only property of the TextEncoderStream interface returns a ReadableStream. */
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
+    /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream. */
     readonly writable: WritableStream<string>;
 }
 
@@ -12125,7 +12141,11 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/readable)
      */
     readonly readable: ReadableStream;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable) */
+    /**
+     * The **`writable`** read-only property of the WebTransportDatagramDuplexStream interface returns a WritableStream instance that can be used to unreliably write outgoing datagrams to the stream.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable)
+     */
     readonly writable: WritableStream;
 }
 
@@ -12743,6 +12763,7 @@ declare var XMLHttpRequestUpload: {
 };
 
 declare namespace WebAssembly {
+    /** The **`WebAssembly.CompileError`** object indicates an error during WebAssembly decoding or validation. */
     interface CompileError extends Error {
     }
 
@@ -12817,6 +12838,7 @@ declare namespace WebAssembly {
         new(module: Module, importObject?: Imports): Instance;
     };
 
+    /** The **`WebAssembly.LinkError`** object indicates an error during module instantiation (besides traps from the start function). */
     interface LinkError extends Error {
     }
 
@@ -12882,6 +12904,7 @@ declare namespace WebAssembly {
         imports(moduleObject: Module): ModuleImportDescriptor[];
     };
 
+    /** The **`WebAssembly.RuntimeError`** object is the error type that is thrown whenever WebAssembly specifies a trap. */
     interface RuntimeError extends Error {
     }
 
@@ -13132,6 +13155,7 @@ interface Console {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/console/timeLog_static)
      */
     timeLog(label?: string, ...data: any[]): void;
+    /** The **`console.timeStamp()`** static method adds a single marker to the browser's Performance tool (Firefox bug 1387528, Chrome). This lets you correlate a point in your code with the other events recorded in the timeline, such as layout and paint events. */
     timeStamp(label?: string): void;
     /**
      * The **`console.trace()`** static method outputs a stack trace to the console.

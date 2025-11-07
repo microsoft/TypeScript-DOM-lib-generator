@@ -11,6 +11,7 @@ import type {
   Param,
   Dictionary,
   Member,
+  Signature,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -18,6 +19,10 @@ import { merge } from "./helpers.js";
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
+
+interface OverridableMethod extends Omit<Method, "signature"> {
+  signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
+}
 
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
   if (value === undefined) {
@@ -156,7 +161,7 @@ function handleMixinandInterfaces(
 
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
-  const method: Record<string, DeepPartial<Method>> = {};
+  let method: Record<string, DeepPartial<OverridableMethod>> = {};
 
   for (const child of node.children) {
     switch (child.name) {
@@ -171,11 +176,9 @@ function handleMixinandInterfaces(
       case "method": {
         const methodName = string(child.values[0]);
         const m = handleMethod(child);
-        if (method[methodName]) {
-          method[methodName].signature!.push(m.signature![0]);
-          break;
-        }
-        method[methodName] = m;
+        method = merge(method, {
+          [methodName]: m,
+        });
         break;
       }
       default:
@@ -231,13 +234,24 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): Partial<Property> {
+  let typeNode: Node | undefined;
+  for (const c of child.children) {
+    if (c.name === "type") {
+      typeNode = c;
+      break;
+    }
+  }
+
   return {
     name: string(child.values[0]),
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
-    ...optionalMember("type", "string", child.properties?.type),
+    ...(typeNode
+      ? handleTyped(typeNode)
+      : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
+    ...optionalMember("deprecated", "boolean", child.properties?.deprecated),
   };
 }
 
@@ -245,7 +259,7 @@ function handleProperty(child: Node): Partial<Property> {
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
  */
-function handleMethod(child: Node): DeepPartial<Method> {
+function handleMethod(child: Node): DeepPartial<OverridableMethod> {
   const name = string(child.values[0]);
 
   let typeNode: Node | undefined;
@@ -277,14 +291,24 @@ function handleMethod(child: Node): DeepPartial<Method> {
     }
   }
 
-  const signature: DeepPartial<Signature>[] = [
-    {
-      param: params,
-      ...(typeNode
-        ? handleTyped(typeNode)
-        : { type: string(child.properties?.returns) }),
-    },
-  ];
+  // Determine the actual signature object
+  const signatureObj: DeepPartial<Signature> = {
+    param: params,
+    ...(typeNode
+      ? handleTyped(typeNode)
+      : {
+          type: string(child.properties?.returns),
+          subtype: undefined,
+        }),
+  };
+
+  let signature: OverridableMethod["signature"];
+  const signatureIndex = child.properties?.signatureIndex;
+  if (typeof signatureIndex == "number") {
+    signature = { [signatureIndex]: signatureObj };
+  } else {
+    signature = [signatureObj];
+  }
   return { name, signature };
 }
 
@@ -311,11 +335,13 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
   return {
     name,
     members: { member },
+    ...handleTypeParameters(child.properties?.typeParameters),
     ...optionalMember(
       "legacyNamespace",
       "string",
       child.properties?.legacyNamespace,
     ),
+    ...optionalMember("overrideType", "string", child.properties?.overrideType),
   };
 }
 

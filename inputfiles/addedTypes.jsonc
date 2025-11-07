@@ -100,18 +100,6 @@
                     ]
                 }
             },
-            "CSSStyleProperties": {
-                "properties": {
-                    "property": {
-                        "imageOrientation": {
-                            "deprecated": true
-                        },
-                        "wordWrap": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
             "Window": {
                 "name": "Window",
                 "methods": {
@@ -774,16 +762,6 @@
                     }
                 }
             },
-            "WebSocket": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "close",
-                            "type": "CloseEvent"
-                        }
-                    ]
-                }
-            },
             "WorkerGlobalScope": {
                 "events": {
                     "event": [
@@ -802,50 +780,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "ReadableStreamReadDoneResult": {
-                "name": "ReadableStreamReadDoneResult",
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "done": {
-                            "name": "done",
-                            "overrideType": "true",
-                            "required": true
-                        },
-                        "value": {
-                            "name": "value",
-                            "overrideType": "T | undefined",
-                            "required": true
-                        }
-                    }
-                }
-            },
-            "ReadableStreamReadValueResult": {
-                "name": "ReadableStreamReadValueResult",
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "done": {
-                            "name": "done",
-                            "overrideType": "false",
-                            "required": true
-                        },
-                        "value": {
-                            "name": "value",
-                            "overrideType": "T",
-                            "required": true
-                        }
-                    }
-                }
-            },
             "UnderlyingByteSource": {
                 "name": "UnderlyingByteSource",
                 "members": {
