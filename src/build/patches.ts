@@ -7,7 +7,6 @@ import type {
   WebIdl,
   Method,
   Typed,
-  Signature,
   Param,
   Dictionary,
   Member,
