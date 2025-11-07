@@ -1,5 +1,0 @@
-dictionary UnderlyingSource {
-    typeParameters R default = "any"
-    member start overrideType = "UnderlyingSourceStartCallback<R>"
-    member pull overrideType = "UnderlyingSourcePullCallback<R>"
-}
