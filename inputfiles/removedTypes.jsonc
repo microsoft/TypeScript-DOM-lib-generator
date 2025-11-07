@@ -13,9 +13,6 @@
     },
     "enums": {
         "enum": {
-            "AuthenticatorTransport": {
-                "value": ["smart-card"] // WebKit only as of 2023-05
-            },
             "ConnectionType": {
                 "value": ["wimax"]
             },
