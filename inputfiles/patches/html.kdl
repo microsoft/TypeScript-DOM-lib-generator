@@ -17,10 +17,10 @@ interface HTMLInputElement {
 
 interface HTMLIFrameElement {
     property referrerPolicy type=ReferrerPolicy
-    property loading overrideType="\"eager\" | \"lazy\""
+    property loading overrideType=#""eager" | "lazy""#
 }
 
 interface HTMLImageElement {
-    property decoding overrideType="\"async\" | \"sync\" | \"auto\""
-    property loading overrideType="\"eager\" | \"lazy\""
+    property decoding overrideType=#""async" | "sync" | "auto""#
+    property loading overrideType=#""eager" | "lazy""#
 }
