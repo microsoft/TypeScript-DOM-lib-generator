@@ -5715,6 +5715,11 @@
     "summary": "The activeElement read-only property of the Document interface returns the Element within the DOM that is receiving keyboard events such as keydown and keyup. This is usually analogous to the focused element."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Document/activeViewTransition",
+    "pageType": "web-api-instance-property",
+    "summary": "The activeViewTransition read-only property of the Document interface returns a ViewTransition instance representing the view transition currently active on the document."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Document/adoptedStyleSheets",
     "pageType": "web-api-instance-property",
     "summary": "The adoptedStyleSheets property of the Document interface is used for setting an array of constructed stylesheets to be used by the document."
@@ -12107,7 +12112,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLAnchorElement/href",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLAnchorElement.href property is a\nstringifier that returns a string containing the whole URL, and allows\nthe href to be updated."
+    "summary": "The href property of the HTMLAnchorElement interface is a stringifier that returns the absolute URL corresponding to the element's href attribute (or an empty string if href is unset). Setting this property updates the element's href attribute to the provided value."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLAnchorElement/hreflang",
@@ -13302,62 +13307,62 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/align",
     "pageType": "web-api-instance-property",
-    "summary": "The obsolete align\nproperty of the HTMLImageElement interface is a string which indicates\nhow to position the image relative to its container."
+    "summary": "The deprecated align property of the HTMLImageElement interface is a string which indicates how to position the image relative to its container. It reflects the <img> element's align content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/alt",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement property alt provides fallback (alternate) text to display when the image specified by the <img> element is not loaded."
+    "summary": "The alt property of the HTMLImageElement interface provides fallback (alternate) text to display when the image specified by the <img> element is not displayed, whether because of an error, because the user has disabled the loading of images, or because the image hasn't finished loading yet. It reflects the <img> element's alt content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/attributionSrc",
     "pageType": "web-api-instance-property",
-    "summary": "The\nattributionSrc property of the HTMLImageElement interface gets and sets the attributionsrc attribute on an <img> element programmatically, reflecting the value of that attribute. attributionsrc specifies that you want the browser to send an Attribution-Reporting-Eligible header along with the image request."
+    "summary": "The attributionSrc property of the HTMLImageElement interface that you want the browser to send an Attribution-Reporting-Eligible header along with the image request. It reflects the <img> element's attributionsrc content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/border",
     "pageType": "web-api-instance-property",
-    "summary": "The obsolete HTMLImageElement\nproperty border specifies the number of pixels thick the\nborder surrounding the image should be. A value of 0, the default, indicates that no\nborder should be drawn."
+    "summary": "The deprecated border property of the HTMLImageElement interface specifies the number of pixels thick the border surrounding the image should be. A value of 0, the default, indicates that no border should be drawn. It reflects the <img> element's border content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/complete",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only HTMLImageElement interface's\ncomplete attribute is a Boolean value which indicates\nwhether or not the image has completely loaded."
+    "summary": "The complete read-only property of the HTMLImageElement interface is a Boolean value indicating whether or not the image has completely loaded."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/crossOrigin",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement\ninterface's crossOrigin attribute is a string which\nspecifies the Cross-Origin Resource Sharing (CORS) setting to use when\nretrieving the image."
+    "summary": "The crossOrigin property of the HTMLImageElement interface is a string which specifies the Cross-Origin Resource Sharing (CORS) setting to use when retrieving the image. It reflects the <img> element's crossorigin content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/currentSrc",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only HTMLImageElement property\ncurrentSrc indicates the URL of the image which is\ncurrently presented in the <img> element it represents."
+    "summary": "The currentSrc read-only property of the HTMLImageElement interface indicates the URL of the image selected by the browser to load."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/decode",
     "pageType": "web-api-instance-method",
-    "summary": "The decode()\nmethod of the HTMLImageElement interface returns a\nPromise that resolves once the image is decoded and it is safe to append\nit to the DOM."
+    "summary": "The decode() method of the HTMLImageElement interface returns a Promise that resolves once the image is decoded and is safe to be appended to the DOM."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/decoding",
     "pageType": "web-api-instance-property",
-    "summary": "The decoding property of the HTMLImageElement interface provides a hint to the browser as to how it should decode the image. More specifically, whether it should wait for the image to be decoded before presenting other content updates or not."
+    "summary": "The decoding property of the HTMLImageElement interface provides a hint to the browser as to how it should decode the image. More specifically, whether it should wait for the image to be decoded before presenting other content updates or not. It reflects the <img> element's decoding content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/fetchPriority",
     "pageType": "web-api-instance-property",
-    "summary": "The fetchPriority property of the HTMLImageElement interface represents a hint to the browser indicating how it should prioritize fetching a particular image relative to other images.\nIt reflects the fetchpriority attribute of the corresponding <img> element."
+    "summary": "The fetchPriority property of the HTMLImageElement interface represents a hint to the browser indicating how it should prioritize fetching a particular image relative to other images. It reflects the <img> element's fetchpriority content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/height",
     "pageType": "web-api-instance-property",
-    "summary": "The height property of the\nHTMLImageElement interface indicates the height at which the image is\ndrawn, in CSS pixels if the image is being drawn or rendered to any\nvisual medium such as the screen or a printer; otherwise, it's the natural, pixel\ndensity corrected height of the image."
+    "summary": "The height property of the HTMLImageElement interface indicates the height at which the image is drawn, in CSS pixels, if the image is being drawn or rendered to any visual medium such as a screen or printer. Otherwise, it's the natural, pixel density-corrected height of the image."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/hspace",
     "pageType": "web-api-instance-property",
-    "summary": "The\nobsolete hspace property of the\nHTMLImageElement interface specifies the number of pixels of empty\nspace to leave empty on the left and right sides of the <img> element\nwhen laying out the page."
+    "summary": "The deprecated hspace property of the HTMLImageElement interface specifies the number of pixels of empty space to leave empty on the left and right sides of the <img> element when laying out the page. It reflects the <img> element's hspace content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/Image",
@@ -13367,77 +13372,77 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/isMap",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement property isMap is a\nBoolean value which indicates that the image is to be used by a server-side image map.\nThis may only be used on images located within an <a> element."
+    "summary": "The isMap property of the HTMLImageElement interface indicates thatthe image is part of a server-side map. If so, the coordinates where the user clicked on the image are sent to the server. It reflects the <img> element's ismap content attribute. This attribute is allowed only if the <img> element is a descendant of an <a> element with a valid href attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/loading",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement property loading is a string whose value provides a hint to the user agent on how to handle the loading of the image which is currently outside the window's visual viewport."
+    "summary": "The loading property of the HTMLImageElement interface provides a hint to the user agent on how to handle the loading of the image which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the image until it's expected to be needed, rather than immediately during the initial page load. It reflects the <img> element's loading content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/longDesc",
     "pageType": "web-api-instance-property",
-    "summary": "The deprecated property longDesc on\nthe HTMLImageElement interface specifies the URL of a text or HTML file\nwhich contains a long-form description of the image. This can be used to\nprovide optional added details beyond the short description provided in the\ntitle attribute."
+    "summary": "The deprecated longDesc property of the HTMLImageElement interface specifies the URL of a text or HTML file which contains a long-form description of the image. This can be used to provide optional added details beyond the short description provided in the title attribute. It reflects the <img> element's longdesc content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/name",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement\ninterface's deprecated name property specifies\na name for the element. This has been replaced by the id\nproperty available on all elements."
+    "summary": "The deprecated name property of the HTMLImageElement interface specifies a name for the element. It reflects the <img> element's name content attribute. It has been replaced by the id property available on all elements, and is kept only for compatibility reasons."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/naturalHeight",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement interface's\nnaturalHeight property is a read-only value which\nreturns the intrinsic (natural), density-corrected height of the image in\nCSS pixels."
+    "summary": "The read-only naturalHeight property of the HTMLImageElement interface returns the intrinsic (natural), density-corrected height of the image in CSS pixels."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/naturalWidth",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement interface's read-only\nnaturalWidth property returns the intrinsic (natural),\ndensity-corrected width of the image in CSS pixels."
+    "summary": "The read-only naturalWidth property of the HTMLImageElement interface returns the intrinsic (natural), density-corrected width of the image in CSS pixels."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/referrerPolicy",
     "pageType": "web-api-instance-property",
-    "summary": "The\nHTMLImageElement.referrerPolicy\nproperty reflects the HTML referrerpolicy attribute of the\n<img> element defining which referrer is sent when fetching the\nresource."
+    "summary": "The referrerPolicy property of the HTMLImageElement interface defining which referrer is sent when fetching the resource. It reflects the <img> element's referrerpolicy content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/sizes",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement property\nsizes allows you to specify the layout width of the\nimage for each of a list of media conditions. This provides the ability to\nautomatically select among different images—even images of different orientations or\naspect ratios—as the document state changes to match different media\nconditions."
+    "summary": "The sizes property of the HTMLImageElement interface allows you to specify the layout width of the image for each of a list of media queries. This provides the ability to automatically select among different images—even images of different orientations or aspect ratios—as the document state changes to match different media conditions. It reflects the <img> element's sizes content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/src",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement property\nsrc, which reflects the HTML src attribute, specifies the image to display in the <img>\nelement."
+    "summary": "The src property of the HTMLImageElement interface specifies the image to display in the <img> element. It reflects the <img> element's src content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/srcset",
     "pageType": "web-api-instance-property",
-    "summary": "The HTMLImageElement property\nsrcset is a string which identifies one or more\nimage candidate strings, separated using commas (,) each\nspecifying image resources to use under given circumstances."
+    "summary": "The srcset property of the HTMLImageElement interface identifies one or more image candidate strings, separated using commas (,), each specifying image resources to use under given circumstances. Each image candidate string contains an image URL and an optional width or pixel density descriptor that indicates the conditions under which that candidate should be used instead of the image specified by the src property. It reflects the <img> element's srcset content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/useMap",
     "pageType": "web-api-instance-property",
-    "summary": "The useMap property on the\nHTMLImageElement interface reflects the value of the\nHTML usemap attribute, which is a string\nproviding the name of the client-side image map to apply to the image."
+    "summary": "The useMap property of the HTMLImageElement interface providing the name of the client-side image map to apply to the image. It reflects the <img> element's usemap content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/vspace",
     "pageType": "web-api-instance-property",
-    "summary": "The obsolete vspace property of the\nHTMLImageElement interface specifies the number of pixels of empty space\nto leave empty on the top and bottom of the <img> element when laying\nout the page."
+    "summary": "The deprecated vspace property of the HTMLImageElement interface specifies the number of pixels of empty space to leave empty on the top and bottom sides of the <img> element when laying out the page. It reflects the <img> element's vspace content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/width",
     "pageType": "web-api-instance-property",
-    "summary": "The width property of the\nHTMLImageElement interface indicates the width at which an image is\ndrawn in CSS pixels if it's being drawn or rendered to\nany visual medium such as a screen or printer. Otherwise, it's the natural, pixel\ndensity-corrected width of the image."
+    "summary": "The width property of the HTMLImageElement interface indicates the width at which the image is drawn, in CSS pixels, if the image is being drawn or rendered to any visual medium such as a screen or printer. Otherwise, it's the natural, pixel density-corrected width of the image."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/x",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only HTMLImageElement property\nx indicates the x-coordinate of the\n<img> element's left border edge relative to the root element's\norigin."
+    "summary": "The read-only x property of the HTMLImageElement interface indicates the x-coordinate of the <img> element's left border edge relative to the root element's origin."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/y",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only HTMLImageElement property\ny indicates the y-coordinate of the\n<img> element's top border edge relative to the root element's\norigin."
+    "summary": "The read-only y property of the HTMLImageElement interface indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLInputElement",
@@ -13832,7 +13837,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLLinkElement/fetchPriority",
     "pageType": "web-api-instance-property",
-    "summary": "The fetchPriority property of the HTMLLinkElement interface represents a hint to the browser indicating how it should prioritize fetching a particular resource relative to other resources of the same type.\nIt reflects the fetchpriority attribute of the corresponding <link> element."
+    "summary": "The fetchPriority property of the HTMLLinkElement interface represents a hint to the browser indicating how it should prioritize fetching a particular resource relative to other resources of the same type.\nIt reflects the <link> element's fetchpriority content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLLinkElement/href",
@@ -14717,7 +14722,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLScriptElement/fetchPriority",
     "pageType": "web-api-instance-property",
-    "summary": "The fetchPriority property of the HTMLScriptElement interface represents a hint to the browser indicating how it should prioritize fetching an external script relative to other external scripts.\nIt reflects the fetchpriority attribute of the <script> element."
+    "summary": "The fetchPriority property of the HTMLScriptElement interface represents a hint to the browser indicating how it should prioritize fetching an external script relative to other external scripts.\nIt reflects the <script> element's fetchpriority content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLScriptElement/innerText",
@@ -22942,7 +22947,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PushMessageData/bytes",
     "pageType": "web-api-instance-method",
-    "summary": "The bytes() method of the PushMessageData interface extracts push message data as an Uint8Array object."
+    "summary": "The bytes() method of the PushMessageData interface extracts push message data as a Uint8Array object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PushMessageData/json",
@@ -23527,7 +23532,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Request/bytes",
     "pageType": "web-api-instance-method",
-    "summary": "The bytes() method of the Request interface reads the request body and returns it as a promise that resolves with an Uint8Array."
+    "summary": "The bytes() method of the Request interface reads the request body and returns it as a promise that resolves with a Uint8Array."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Request/cache",
