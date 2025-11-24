@@ -63,14 +63,25 @@ function handleTyped(type: Node): Typed {
   };
 }
 
-function handleTypeParameters(value: Value) {
+function handleTypeParameters(value: Value | Node) {
   if (!value) {
     return {};
   }
+  if (typeof value === "string") {
+    return {
+      typeParameters: [
+        {
+          name: string(value),
+        },
+      ],
+    };
+  }
+  const node = value as Node;
   return {
     typeParameters: [
       {
-        name: string(value),
+        name: string(node.values[0]),
+        ...optionalMember("default", "string", node.properties?.default),
       },
     ],
   };
@@ -318,12 +329,17 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
 function handleDictionary(child: Node): DeepPartial<Dictionary> {
   const name = string(child.values[0]);
   const member: Record<string, Partial<Member>> = {};
+  let typeParameters = {};
 
   for (const c of child.children) {
     switch (c.name) {
       case "member": {
         const memberName = string(c.values[0]);
         member[memberName] = handleMember(c);
+        break;
+      }
+      case "typeParameters": {
+        typeParameters = handleTypeParameters(c);
         break;
       }
       default:
@@ -334,6 +350,7 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
   return {
     name,
     members: { member },
+    ...typeParameters,
     ...handleTypeParameters(child.properties?.typeParameters),
     ...optionalMember(
       "legacyNamespace",

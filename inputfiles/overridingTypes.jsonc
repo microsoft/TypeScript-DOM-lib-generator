@@ -3663,24 +3663,6 @@
                     }
                 }
             },
-            "UnderlyingSource": {
-                "typeParameters": [
-                    {
-                        "name": "R",
-                        "default": "any"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "start": {
-                            "overrideType": "UnderlyingSourceStartCallback<R>"
-                        },
-                        "pull": {
-                            "overrideType": "UnderlyingSourcePullCallback<R>"
-                        }
-                    }
-                }
-            },
             "UIEventInit": {
                 "members": {
                     "member": {
