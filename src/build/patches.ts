@@ -375,14 +375,37 @@ export async function readPatch(fileUrl: URL): Promise<any> {
   return parseKDL(text);
 }
 
+function removeNamesDeep(obj: unknown): unknown {
+  if (Array.isArray(obj)) {
+    return obj.map(removeNamesDeep);
+  } else if (obj && typeof obj === "object") {
+    const newObj: { [key: string]: unknown } = {};
+    for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
+      if (key !== "name") {
+        newObj[key] = removeNamesDeep(value);
+      }
+    }
+    return newObj;
+  }
+  return obj;
+}
+
 /**
  * Read, parse, and merge all KDL files under the input folder.
  */
-export default async function readPatches(): Promise<any> {
-  const patchDirectory = new URL("../../inputfiles/patches/", import.meta.url);
+export default async function readPatches(
+  folder: "patches" | "removals",
+): Promise<any> {
+  const patchDirectory = new URL(
+    `../../inputfiles/${folder}/`,
+    import.meta.url,
+  );
   const fileUrls = await getAllFileURLs(patchDirectory);
 
   const parsedContents = await Promise.all(fileUrls.map(readPatch));
-
-  return parsedContents.reduce((acc, current) => merge(acc, current), {});
+  const res = parsedContents.reduce((acc, current) => merge(acc, current), {});
+  if (folder == "removals") {
+    return removeNamesDeep(res);
+  }
+  return res;
 }
