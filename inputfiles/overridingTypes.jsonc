@@ -308,9 +308,7 @@
                 "properties": {
                     "property": {
                         "hidden": {
-                            // https://github.com/whatwg/html/pull/7475
-                            // Blink only as of 2024-11
-                            "overrideType": "boolean",
+                            "overrideType": "boolean | \"until-found\"",
                             "nullable": false
                         }
                     }
