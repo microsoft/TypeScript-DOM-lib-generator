@@ -846,6 +846,12 @@
                 // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                 "name": "AutoFill",
                 "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
+            },
+            {
+                "name": "DocumentOrGlobalOnErrorHandler",
+                "nullable": true,
+                "overrideType": "((event: Event) => any) | ((event: UIEvent) => any) | OnErrorEventHandlerNonNull",
+                "exposed": "Window"
             }
         ]
     }
