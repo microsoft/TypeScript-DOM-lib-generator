@@ -135,7 +135,6 @@ function parseKDL(kdlText: string | Document): ParsedType {
       case "dictionary":
         dictionary[name] = handleDictionary(node);
         break;
-
       default:
         throw new Error(`Unknown node name: ${node.name}`);
     }
