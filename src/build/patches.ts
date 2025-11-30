@@ -428,7 +428,7 @@ function removeNamesDeep(obj: unknown): unknown {
  * Read, parse, and merge all KDL files under the input folder.
  */
 export default async function readPatches(
-  folder: "patches" | "removals",
+  isRemovals?: boolean,
 ): Promise<any> {
   const patchDirectory = new URL("../../inputfiles/patches/", import.meta.url);
   const fileUrls = await getAllFileURLs(patchDirectory);
@@ -436,7 +436,7 @@ export default async function readPatches(
   const parsedContents = await Promise.all(fileUrls.map(readPatch));
   const res = parsedContents.reduce((acc, current) => merge(acc, current), {});
   const { removals, ...withoutRemovals } = res;
-  if (folder == "removals") {
+  if (isRemovals) {
     return removeNamesDeep(removals);
   }
   return withoutRemovals;

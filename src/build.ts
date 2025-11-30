@@ -89,8 +89,8 @@ async function emitDom() {
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
-  const patches = await readPatches("patches");
-  const removals = await readPatches("removals");
+  const patches = await readPatches();
+  const removals = await readPatches(true);
   const comments = await readInputJSON("comments.json");
   const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
