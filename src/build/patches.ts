@@ -1,4 +1,4 @@
-import { parse, type Value, type Node } from "kdljs";
+import { parse, type Value, type Node, type Document } from "kdljs";
 import type {
   Enum,
   Event,
@@ -19,26 +19,46 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
+type ParsedType = DeepPartial<WebIdl> & { removals?: DeepPartial<WebIdl> };
+
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
 
-function optionalMember<const T>(prop: string, type: T, value?: Value) {
+function optionalMember<const T>(
+  prop: string,
+  type: T,
+  value?: Value | DeepPartial<WebIdl>,
+) {
   if (value === undefined) {
     return {};
   }
+  // Support deep property assignment, e.g. prop = "a.b.c"
+  const propPath = prop.split(".");
   if (typeof value !== type) {
-    throw new Error(`Expected type ${value} for ${prop}`);
+    throw new Error(
+      `Expected type ${type} for ${prop} but got ${typeof value}`,
+    );
   }
-  return {
-    [prop]: value as T extends "string"
-      ? string
-      : T extends "number"
-        ? number
-        : T extends "boolean"
-          ? boolean
-          : never,
-  };
+  // If value is an object, ensure it is not empty (has at least one key)
+  if (type === "object" && typeof value === "object" && value !== null) {
+    if (Object.keys(value as object).length === 0) {
+      return {};
+    }
+  }
+
+  // Build the nested object dynamically
+  let nested: any = value as T extends "string"
+    ? string
+    : T extends "number"
+      ? number
+      : T extends "boolean"
+        ? boolean
+        : never;
+  for (let i = propPath.length - 1; i >= 0; i--) {
+    nested = { [propPath[i]]: nested };
+  }
+  return nested;
 }
 
 function string(arg: unknown): string {
@@ -79,8 +99,11 @@ function handleTypeParameters(value: Value) {
 /**
  * Converts patch files in KDL to match the [types](types.d.ts).
  */
-function parseKDL(kdlText: string): DeepPartial<WebIdl> {
-  const { output, errors } = parse(kdlText);
+function parseKDL(kdlText: string | Document): ParsedType {
+  const { output, errors } =
+    typeof kdlText === "string"
+      ? parse(kdlText)
+      : { output: kdlText, errors: [] };
 
   if (errors.length) {
     throw new Error("KDL parse errors", { cause: errors });
@@ -91,8 +114,13 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
   const dictionary: Record<string, DeepPartial<Dictionary>> = {};
+  let removals: DeepPartial<WebIdl> = {};
 
   for (const node of nodes) {
+    if (node.name === "removals") {
+      removals = parseKDL(node.children);
+      continue;
+    }
     const name = string(node.values[0]);
     switch (node.name) {
       case "enum":
@@ -107,16 +135,18 @@ function parseKDL(kdlText: string): DeepPartial<WebIdl> {
       case "dictionary":
         dictionary[name] = handleDictionary(node);
         break;
+
       default:
         throw new Error(`Unknown node name: ${node.name}`);
     }
   }
 
   return {
-    enums: { enum: enums },
-    mixins: { mixin },
-    interfaces: { interface: interfaces },
-    dictionaries: { dictionary },
+    ...optionalMember("enums.enum", "object", enums),
+    ...optionalMember("mixins.mixin", "object", mixin),
+    ...optionalMember("interfaces.interface", "object", interfaces),
+    ...optionalMember("dictionaries.dictionary", "object", dictionary),
+    ...optionalMember("removals", "object", removals),
   };
 }
 
@@ -401,16 +431,13 @@ function removeNamesDeep(obj: unknown): unknown {
 export default async function readPatches(
   folder: "patches" | "removals",
 ): Promise<any> {
-  const patchDirectory = new URL(
-    `../../inputfiles/${folder}/`,
-    import.meta.url,
-  );
+  const patchDirectory = new URL("../../inputfiles/patches/", import.meta.url);
   const fileUrls = await getAllFileURLs(patchDirectory);
 
   const parsedContents = await Promise.all(fileUrls.map(readPatch));
   const res = parsedContents.reduce((acc, current) => merge(acc, current), {});
   if (folder == "removals") {
-    return removeNamesDeep(res);
+    return removeNamesDeep(res.removals);
   }
   return res;
 }
