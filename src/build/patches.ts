@@ -436,8 +436,9 @@ export default async function readPatches(
 
   const parsedContents = await Promise.all(fileUrls.map(readPatch));
   const res = parsedContents.reduce((acc, current) => merge(acc, current), {});
+  const { removals, ...withoutRemovals } = res;
   if (folder == "removals") {
-    return removeNamesDeep(res.removals);
+    return removeNamesDeep(removals);
   }
-  return res;
+  return withoutRemovals;
 }
