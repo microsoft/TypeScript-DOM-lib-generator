@@ -378,7 +378,8 @@ export async function readPatch(fileUrl: URL): Promise<any> {
 function removeNamesDeep(obj: unknown): unknown {
   if (Array.isArray(obj)) {
     return obj.map(removeNamesDeep);
-  } else if (obj && typeof obj === "object") {
+  }
+  if (obj && typeof obj === "object") {
     const newObj: { [key: string]: unknown } = {};
     for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
       if (key !== "name") {
