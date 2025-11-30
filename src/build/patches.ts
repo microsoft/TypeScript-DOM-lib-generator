@@ -375,6 +375,10 @@ export async function readPatch(fileUrl: URL): Promise<any> {
   return parseKDL(text);
 }
 
+/**
+ * Remove all name fields from the object and its children as we don't want
+ * the names to be part of the removal.
+ */
 function removeNamesDeep(obj: unknown): unknown {
   if (Array.isArray(obj)) {
     return obj.map(removeNamesDeep);
