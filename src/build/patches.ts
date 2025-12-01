@@ -408,7 +408,7 @@ function sanitizeRemovals(obj: unknown): unknown {
   }
   if (obj && typeof obj === "object") {
     const newObj: { [key: string]: unknown } = {};
-    for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
+    for (const [key, value] of Object.entries(obj)) {
       if (key !== "name") {
         const cleaned = sanitizeRemovals(value);
         if (cleaned !== undefined) {
