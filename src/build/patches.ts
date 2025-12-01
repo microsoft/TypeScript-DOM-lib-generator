@@ -96,17 +96,12 @@ function handleTypeParameters(value: Value) {
  * Converts parsed KDL Document nodes to match the [types](types.d.ts).
  */
 function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
-  // Accept either Document or array of nodes
-  const actualNodes: Node[] = Array.isArray(nodes)
-    ? nodes
-    : nodes;
-
   const enums: Record<string, Enum> = {};
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
   const dictionary: Record<string, DeepPartial<Dictionary>> = {};
 
-  for (const node of actualNodes) {
+  for (const node of nodes) {
     // Note: no "removals" handling here; caller is responsible for splitting
     const name = string(node.values[0]);
     switch (node.name) {
@@ -132,8 +127,8 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
     ...optionalMember("mixins.mixin", "object", mixin),
     ...optionalMember("interfaces.interface", "object", interfaces),
     dictionaries: {
-      dictionary
-    }
+      dictionary,
+    },
   };
 }
 
@@ -407,7 +402,7 @@ function sanitizeRemovals(obj: unknown): unknown {
     return result.length === 0 ? null : result;
   }
   if (obj && typeof obj === "object") {
-    const newObj: { [key: string]: unknown } = {};
+    const newObj: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(obj)) {
       if (key !== "name") {
         const cleaned = sanitizeRemovals(value);
