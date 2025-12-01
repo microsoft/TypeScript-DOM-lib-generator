@@ -34,9 +34,7 @@ function optionalMember<const T>(
   // Support deep property assignment, e.g. prop = "a.b.c"
   const propPath = prop.split(".");
   if (typeof value !== type) {
-    throw new Error(
-      `Expected type ${type} for ${prop} but got ${typeof value}`,
-    );
+    throw new Error(`Expected type ${type} for ${prop}`);
   }
   // If value is an object, ensure it is not empty (has at least one key)
   if (type === "object" && typeof value === "object" && value !== null) {
