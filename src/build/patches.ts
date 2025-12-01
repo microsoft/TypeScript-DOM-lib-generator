@@ -19,8 +19,6 @@ type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }
   : T;
 
-type ParsedType = DeepPartial<WebIdl> & { removals?: DeepPartial<WebIdl> };
-
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
@@ -97,30 +95,21 @@ function handleTypeParameters(value: Value) {
 }
 
 /**
- * Converts patch files in KDL to match the [types](types.d.ts).
+ * Converts parsed KDL Document nodes to match the [types](types.d.ts).
  */
-function parseKDL(kdlText: string | Document): ParsedType {
-  const { output, errors } =
-    typeof kdlText === "string"
-      ? parse(kdlText)
-      : { output: kdlText, errors: [] };
+function convertKDLNodes(nodes: Node[] | Document): DeepPartial<WebIdl> {
+  // Accept either Document or array of nodes
+  const actualNodes: Node[] = Array.isArray(nodes)
+    ? nodes
+    : (nodes as Document);
 
-  if (errors.length) {
-    throw new Error("KDL parse errors", { cause: errors });
-  }
-
-  const nodes = output!;
   const enums: Record<string, Enum> = {};
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
   const dictionary: Record<string, DeepPartial<Dictionary>> = {};
-  let removals: DeepPartial<WebIdl> = {};
 
-  for (const node of nodes) {
-    if (node.name === "removals") {
-      removals = parseKDL(node.children);
-      continue;
-    }
+  for (const node of actualNodes) {
+    // Note: no "removals" handling here; caller is responsible for splitting
     const name = string(node.values[0]);
     switch (node.name) {
       case "enum":
@@ -145,7 +134,6 @@ function parseKDL(kdlText: string | Document): ParsedType {
     ...optionalMember("mixins.mixin", "object", mixin),
     ...optionalMember("interfaces.interface", "object", interfaces),
     ...optionalMember("dictionaries.dictionary", "object", dictionary),
-    ...optionalMember("removals", "object", removals),
   };
 }
 
@@ -397,13 +385,18 @@ async function getAllFileURLs(folder: URL): Promise<URL[]> {
 }
 
 /**
- * Read and parse a single KDL file.
+ * Read and parse a single KDL file into its KDL Document structure.
  */
-export async function readPatch(fileUrl: URL): Promise<any> {
+async function readPatchDocument(fileUrl: URL): Promise<Document> {
   const text = await readFile(fileUrl, "utf8");
-  return parseKDL(text);
+  const { output, errors } = parse(text);
+  if (errors.length) {
+    throw new Error(`KDL parse errors in ${fileUrl.toString()}`, {
+      cause: errors,
+    });
+  }
+  return output!;
 }
-
 /**
  * Remove all name fields from the object and its children as we don't want
  * the names to be part of the removal.
@@ -426,18 +419,53 @@ function removeNamesDeep(obj: unknown): unknown {
 
 /**
  * Read, parse, and merge all KDL files under the input folder.
+ * Splits the main patch content and the removals from each file for combined processing.
+ *
+ * Returns:
+ *   {
+ *     patches: merged patch contents (excluding removals),
+ *     removalPatches: merged removals, with names stripped
+ *   }
  */
-export default async function readPatches(
-  isRemovals?: boolean,
-): Promise<any> {
+export default async function readPatches(): Promise<{
+  patches: any;
+  removalPatches: any;
+}> {
   const patchDirectory = new URL("../../inputfiles/patches/", import.meta.url);
   const fileUrls = await getAllFileURLs(patchDirectory);
 
-  const parsedContents = await Promise.all(fileUrls.map(readPatch));
-  const res = parsedContents.reduce((acc, current) => merge(acc, current), {});
-  const { removals, ...withoutRemovals } = res;
-  if (isRemovals) {
-    return removeNamesDeep(removals);
+  // Stage 1: Parse all file KDLs into Documents
+  const documents = await Promise.all(fileUrls.map(readPatchDocument));
+
+  // Stage 2: For each document, split main nodes and removals nodes
+  const patchNodeGroups: Node[][] = [];
+  const removalsNodeGroups: Node[][] = [];
+
+  for (const doc of documents) {
+    const mainNodes: Node[] = [];
+    let localRemovalsNodes: Node[] = [];
+    for (const node of doc) {
+      if (node.name === "removals") {
+        // Each removals node may itself contain multiple root nodes
+        localRemovalsNodes = localRemovalsNodes.concat(node.children);
+      } else {
+        mainNodes.push(node);
+      }
+    }
+    patchNodeGroups.push(mainNodes);
+    if (localRemovalsNodes.length > 0) {
+      removalsNodeGroups.push(localRemovalsNodes);
+    }
   }
-  return withoutRemovals;
+
+  // Stage 3: Merge all main patches and removals separately using convertKDLNodes
+  const patchObjs = patchNodeGroups.map((nodes) => convertKDLNodes(nodes));
+  const removalObjs = removalsNodeGroups.map((nodes) => convertKDLNodes(nodes));
+
+  const patches = patchObjs.reduce((acc, cur) => merge(acc, cur), {});
+  const removalPatches = removeNamesDeep(
+    removalObjs.reduce((acc, cur) => merge(acc, cur), {}),
+  );
+
+  return { patches, removalPatches };
 }

@@ -89,8 +89,7 @@ async function emitDom() {
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
-  const patches = await readPatches();
-  const removals = await readPatches(true);
+  const { patches, removalPatches } = await readPatches();
   const comments = await readInputJSON("comments.json");
   const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
@@ -205,7 +204,7 @@ async function emitDom() {
   webidl = merge(webidl, getRemovalData(webidl));
   webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
-  webidl = prune(webidl, removals);
+  webidl = prune(webidl, removalPatches);
   webidl = merge(webidl, addedItems);
   webidl = merge(webidl, overriddenItems);
   webidl = merge(webidl, patches);
