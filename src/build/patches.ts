@@ -1,4 +1,4 @@
-import { parse, type Value, type Node, type Document } from "kdljs";
+import { parse, type Value, type Node } from "kdljs";
 import type {
   Enum,
   Event,
@@ -95,11 +95,11 @@ function handleTypeParameters(value: Value) {
 /**
  * Converts parsed KDL Document nodes to match the [types](types.d.ts).
  */
-function convertKDLNodes(nodes: Node[] | Document): DeepPartial<WebIdl> {
+function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   // Accept either Document or array of nodes
   const actualNodes: Node[] = Array.isArray(nodes)
     ? nodes
-    : (nodes as Document);
+    : nodes;
 
   const enums: Record<string, Enum> = {};
   const mixin: Record<string, DeepPartial<Interface>> = {};
@@ -385,7 +385,7 @@ async function getAllFileURLs(folder: URL): Promise<URL[]> {
 /**
  * Read and parse a single KDL file into its KDL Document structure.
  */
-async function readPatchDocument(fileUrl: URL): Promise<Document> {
+async function readPatchDocument(fileUrl: URL): Promise<Node[]> {
   const text = await readFile(fileUrl, "utf8");
   const { output, errors } = parse(text);
   if (errors.length) {
