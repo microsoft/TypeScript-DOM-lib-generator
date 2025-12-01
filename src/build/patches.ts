@@ -131,7 +131,9 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
     ...optionalMember("enums.enum", "object", enums),
     ...optionalMember("mixins.mixin", "object", mixin),
     ...optionalMember("interfaces.interface", "object", interfaces),
-    ...optionalMember("dictionaries.dictionary", "object", dictionary),
+    dictionaries: {
+      dictionary
+    }
   };
 }
 
@@ -396,21 +398,26 @@ async function readPatchDocument(fileUrl: URL): Promise<Node[]> {
   return output!;
 }
 /**
- * Remove all name fields from the object and its children as we don't want
- * the names to be part of the removal.
+ * Recursively remove all 'name' fields from the object and its children, and
+ * replace any empty objects ({} or []) with null.
  */
-function removeNamesDeep(obj: unknown): unknown {
+function sanitizeRemovals(obj: unknown): unknown {
   if (Array.isArray(obj)) {
-    return obj.map(removeNamesDeep);
+    const result = obj.map(sanitizeRemovals).filter((v) => v !== undefined);
+    return result.length === 0 ? null : result;
   }
   if (obj && typeof obj === "object") {
     const newObj: { [key: string]: unknown } = {};
     for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
       if (key !== "name") {
-        newObj[key] = removeNamesDeep(value);
+        const cleaned = sanitizeRemovals(value);
+        if (cleaned !== undefined) {
+          newObj[key] = cleaned;
+        }
       }
     }
-    return newObj;
+    // Replace empty objects with null
+    return Object.keys(newObj).length === 0 ? null : newObj;
   }
   return obj;
 }
@@ -461,7 +468,7 @@ export default async function readPatches(): Promise<{
   const removalObjs = removalsNodeGroups.map((nodes) => convertKDLNodes(nodes));
 
   const patches = patchObjs.reduce((acc, cur) => merge(acc, cur), {});
-  const removalPatches = removeNamesDeep(
+  const removalPatches = sanitizeRemovals(
     removalObjs.reduce((acc, cur) => merge(acc, cur), {}),
   );
 

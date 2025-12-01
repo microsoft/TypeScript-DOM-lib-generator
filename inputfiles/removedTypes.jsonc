@@ -261,37 +261,6 @@
                     }
                 }
             },
-            "AuthenticationExtensionsClientInputs": {
-                "members": {
-                    "member": {
-                        // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
-                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
-                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/authentication_extensions_client_inputs.idl
-                        "appidExclude": null,
-                        "credBlob": null,
-                        "getCredBlob": null,
-                        "hmacGetSecret": null, // No implementation as of 2025-05
-                        "payment": null
-                    }
-                }
-            },
-            "AuthenticationExtensionsClientInputsJSON": {
-                "members": {
-                    "member": {
-                        "appidExclude": null
-                    }
-                }
-            },
-            "AuthenticationExtensionsClientOutputs": {
-                "members": {
-                    "member": {
-                        // (same as *Inputs)
-                        "appidExclude": null, // No implementation as of 2025-05
-                        "hmacGetSecret": null, // No implementation as of 2025-05
-                        "payment": null // Blink only as of 2025-06
-                    }
-                }
-            },
             "CanvasRenderingContext2DSettings": {
                 "members": {
                     "member": {
