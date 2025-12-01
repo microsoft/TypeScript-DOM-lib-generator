@@ -123,12 +123,14 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   }
 
   return {
-    ...optionalMember("enums.enum", "object", enums),
-    ...optionalMember("mixins.mixin", "object", mixin),
-    ...optionalMember("interfaces.interface", "object", interfaces),
+    enums: {
+      enum: enums,
+    },
     dictionaries: {
       dictionary,
     },
+    ...optionalMember("mixins.mixin", "object", mixin),
+    ...optionalMember("interfaces.interface", "object", interfaces),
   };
 }
 
