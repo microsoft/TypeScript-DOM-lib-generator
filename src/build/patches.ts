@@ -22,39 +22,22 @@ type DeepPartial<T> = T extends object
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
-
-function optionalMember<const T>(
-  prop: string,
-  type: T,
-  value?: Value | DeepPartial<WebIdl>,
-) {
+function optionalMember<const T>(prop: string, type: T, value?: Value) {
   if (value === undefined) {
     return {};
   }
-  // Support deep property assignment, e.g. prop = "a.b.c"
-  const propPath = prop.split(".");
   if (typeof value !== type) {
     throw new Error(`Expected type ${value} for ${prop}`);
   }
-  // If value is an object, ensure it is not empty (has at least one key)
-  if (type === "object" && typeof value === "object" && value !== null) {
-    if (Object.keys(value as object).length === 0) {
-      return {};
-    }
-  }
-
-  // Build the nested object dynamically
-  let nested: any = value as T extends "string"
-    ? string
-    : T extends "number"
-      ? number
-      : T extends "boolean"
-        ? boolean
-        : never;
-  for (let i = propPath.length - 1; i >= 0; i--) {
-    nested = { [propPath[i]]: nested };
-  }
-  return nested;
+  return {
+    [prop]: value as T extends "string"
+      ? string
+      : T extends "number"
+        ? number
+        : T extends "boolean"
+          ? boolean
+          : never,
+  };
 }
 
 function string(arg: unknown): string {
@@ -123,14 +106,10 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   }
 
   return {
-    enums: {
-      enum: enums,
-    },
-    dictionaries: {
-      dictionary,
-    },
-    ...optionalMember("mixins.mixin", "object", mixin),
-    ...optionalMember("interfaces.interface", "object", interfaces),
+    enums: { enum: enums },
+    mixins: { mixin },
+    interfaces: { interface: interfaces },
+    dictionaries: { dictionary },
   };
 }
 
@@ -467,7 +446,11 @@ export default async function readPatches(): Promise<{
   const patches = patchObjs.reduce((acc, cur) => merge(acc, cur), {});
   const removalPatches = sanitizeRemovals(
     removalObjs.reduce((acc, cur) => merge(acc, cur), {}),
-  );
+  ) as DeepPartial<WebIdl>;
+
+  // Only because we don't use them
+  removalPatches.mixins = undefined;
+  removalPatches.interfaces = undefined;
 
   return { patches, removalPatches };
 }
