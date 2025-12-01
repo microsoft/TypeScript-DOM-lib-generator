@@ -624,7 +624,7 @@ interface EffectTiming {
 }
 
 interface ElementCreationOptions {
-    customElementRegistry?: CustomElementRegistry;
+    customElementRegistry?: CustomElementRegistry | null;
     is?: string;
 }
 
@@ -27022,7 +27022,7 @@ interface RTCEncodedVideoFrame {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/type)
      */
-    readonly type: RTCEncodedVideoFrameType;
+    readonly type: EncodedVideoChunkType;
     /**
      * The **`getMetadata()`** method of the RTCEncodedVideoFrame interface returns an object containing the metadata associated with the frame.
      *
@@ -42077,7 +42077,6 @@ type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
 type RTCDegradationPreference = "balanced" | "maintain-framerate" | "maintain-resolution";
 type RTCDtlsRole = "client" | "server" | "unknown";
 type RTCDtlsTransportState = "closed" | "connected" | "connecting" | "failed" | "new";
-type RTCEncodedVideoFrameType = "delta" | "empty" | "key";
 type RTCErrorDetailType = "data-channel-failure" | "dtls-failure" | "fingerprint-failure" | "hardware-encoder-error" | "hardware-encoder-not-available" | "sctp-failure" | "sdp-syntax-error";
 type RTCIceCandidateType = "host" | "prflx" | "relay" | "srflx";
 type RTCIceComponent = "rtcp" | "rtp";

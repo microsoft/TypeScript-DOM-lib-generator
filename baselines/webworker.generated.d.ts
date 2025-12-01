@@ -7465,7 +7465,7 @@ interface RTCEncodedVideoFrame {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/type)
      */
-    readonly type: RTCEncodedVideoFrameType;
+    readonly type: EncodedVideoChunkType;
     /**
      * The **`getMetadata()`** method of the RTCEncodedVideoFrame interface returns an object containing the metadata associated with the frame.
      *
@@ -13505,7 +13505,6 @@ type PredefinedColorSpace = "display-p3" | "srgb";
 type PremultiplyAlpha = "default" | "none" | "premultiply";
 type PushEncryptionKeyName = "auth" | "p256dh";
 type RTCDataChannelState = "closed" | "closing" | "connecting" | "open";
-type RTCEncodedVideoFrameType = "delta" | "empty" | "key";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
 type ReferrerPolicy = "" | "no-referrer" | "no-referrer-when-downgrade" | "origin" | "origin-when-cross-origin" | "same-origin" | "strict-origin" | "strict-origin-when-cross-origin" | "unsafe-url";
