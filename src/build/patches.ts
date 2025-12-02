@@ -363,7 +363,7 @@ async function getAllFileURLs(folder: URL): Promise<URL[]> {
 /**
  * Read and parse a single KDL file into its KDL Document structure.
  */
-async function readPatchDocument(fileUrl: URL): Promise<Node[]> {
+async function readPatchDocument(fileUrl: URL): Promise<Document> {
   const text = await readFile(fileUrl, "utf8");
   const { output, errors } = parse(text);
   if (errors.length) {
