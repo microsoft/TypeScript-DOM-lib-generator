@@ -22,6 +22,7 @@ type DeepPartial<T> = T extends object
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
+
 function optionalMember<const T>(prop: string, type: T, value?: Value) {
   if (value === undefined) {
     return {};
