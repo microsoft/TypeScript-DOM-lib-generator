@@ -93,10 +93,13 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
         enums[name] = handleEnum(node);
         break;
       case "interface-mixin":
-        mixin[name] = handleMixinandInterfaces(node, "mixin");
+        mixin[name] = merge(
+          mixin[name],
+          handleMixinAndInterfaces(node, "mixin"),
+        );
         break;
       case "interface":
-        interfaces[name] = handleMixinandInterfaces(node, "interface");
+        interfaces[name] = handleMixinAndInterfaces(node, "interface");
         break;
       case "dictionary":
         dictionary[name] = handleDictionary(node);
@@ -146,7 +149,7 @@ function handleEnum(node: Node): Enum {
  * @param node The mixin node to handle.
  * @param mixins The record of mixins to update.
  */
-function handleMixinandInterfaces(
+function handleMixinAndInterfaces(
   node: Node,
   type: "mixin" | "interface",
 ): DeepPartial<Interface> {
