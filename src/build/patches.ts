@@ -418,35 +418,14 @@ export default async function readPatches(): Promise<{
   // Stage 1: Parse all file KDLs into Documents
   const documents = await Promise.all(fileUrls.map(readPatchDocument));
 
-  // Stage 2: For each document, split main nodes and removals nodes
-  const patchNodeGroups: Node[][] = [];
-  const removalsNodeGroups: Node[][] = [];
+  // Stage 2: Group by patches or removals
+  const merged = documents.flat();
+  const patchNodes = merged.filter((node) => node.name !== "removals");
+  const removalNodes = merged.filter((node) => node.name === "removals").map((node) => node.children)).flat();
 
-  for (const doc of documents) {
-    const mainNodes: Node[] = [];
-    let localRemovalsNodes: Node[] = [];
-    for (const node of doc) {
-      if (node.name === "removals") {
-        // Each removals node may itself contain multiple root nodes
-        localRemovalsNodes = localRemovalsNodes.concat(node.children);
-      } else {
-        mainNodes.push(node);
-      }
-    }
-    patchNodeGroups.push(mainNodes);
-    if (localRemovalsNodes.length > 0) {
-      removalsNodeGroups.push(localRemovalsNodes);
-    }
-  }
-
-  // Stage 3: Merge all main patches and removals separately using convertKDLNodes
-  const patchObjs = patchNodeGroups.map((nodes) => convertKDLNodes(nodes));
-  const removalObjs = removalsNodeGroups.map((nodes) => convertKDLNodes(nodes));
-
-  const patches = patchObjs.reduce((acc, cur) => merge(acc, cur), {});
-  const removalPatches = sanitizeRemovals(
-    removalObjs.reduce((acc, cur) => merge(acc, cur), {}),
-  ) as DeepPartial<WebIdl>;
+  // Stage 3: Convert the nodes for patches and removals respectively
+  const patches = convertKDLNodes(patchNodes);
+  const removalPatches = sanitizeRemovals(convertKDLNodes(removalNodes));
 
   // Only because we don't use them
   removalPatches.mixins = undefined;
