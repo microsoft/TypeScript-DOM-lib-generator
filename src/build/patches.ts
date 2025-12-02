@@ -22,6 +22,7 @@ type DeepPartial<T> = T extends object
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
 }
+
 interface OverridableDictionary extends Omit<Partial<Dictionary>, "members"> {
   members: {
     member: Record<string, Partial<Member> | null>;
