@@ -1,4 +1,4 @@
-import { parse, type Value, type Node } from "kdljs";
+import { parse, type Value, type Node, Document } from "kdljs";
 import type {
   Enum,
   Event,
@@ -377,16 +377,16 @@ async function readPatchDocument(fileUrl: URL): Promise<Document> {
  * Recursively remove all 'name' fields from the object and its children, and
  * replace any empty objects ({} or []) with null.
  */
-function sanitizeRemovals(obj: unknown): unknown {
+function convertForRemovals(obj: unknown): unknown {
   if (Array.isArray(obj)) {
-    const result = obj.map(sanitizeRemovals).filter((v) => v !== undefined);
+    const result = obj.map(convertForRemovals).filter((v) => v !== undefined);
     return result.length === 0 ? null : result;
   }
   if (obj && typeof obj === "object") {
     const newObj: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(obj)) {
       if (key !== "name") {
-        const cleaned = sanitizeRemovals(value);
+        const cleaned = convertForRemovals(value);
         if (cleaned !== undefined) {
           newObj[key] = cleaned;
         }
@@ -421,11 +421,16 @@ export default async function readPatches(): Promise<{
   // Stage 2: Group by patches or removals
   const merged = documents.flat();
   const patchNodes = merged.filter((node) => node.name !== "removals");
-  const removalNodes = merged.filter((node) => node.name === "removals").map((node) => node.children)).flat();
+  const removalNodes = merged
+    .filter((node) => node.name === "removals")
+    .map((node) => node.children)
+    .flat();
 
   // Stage 3: Convert the nodes for patches and removals respectively
   const patches = convertKDLNodes(patchNodes);
-  const removalPatches = sanitizeRemovals(convertKDLNodes(removalNodes));
+  const removalPatches = convertForRemovals(
+    convertKDLNodes(removalNodes),
+  ) as DeepPartial<WebIdl>;
 
   // Only because we don't use them
   removalPatches.mixins = undefined;
