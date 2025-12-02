@@ -76,6 +76,10 @@ function handleTypeParameters(value: Value) {
   };
 }
 
+function undefinedIfEmpty(object: object, output: object) {
+  return Object.entries(object).length ? output : undefined;
+}
+
 /**
  * Converts parsed KDL Document nodes to match the [types](types.d.ts).
  */
@@ -110,10 +114,10 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   }
 
   return {
-    enums: { enum: enums },
-    mixins: { mixin },
-    interfaces: { interface: interfaces },
-    dictionaries: { dictionary },
+    enums: undefinedIfEmpty(enums, { enum: enums }),
+    mixins: undefinedIfEmpty(mixin, { mixin }),
+    interfaces: undefinedIfEmpty(interfaces, { interface: interfaces }),
+    dictionaries: undefinedIfEmpty(dictionary, { dictionary }),
   };
 }
 
@@ -435,10 +439,6 @@ export default async function readPatches(): Promise<{
   const removalPatches = convertForRemovals(
     convertKDLNodes(removalNodes),
   ) as DeepPartial<WebIdl>;
-
-  // Only because we don't use them
-  removalPatches.mixins = undefined;
-  removalPatches.interfaces = undefined;
 
   return { patches, removalPatches };
 }
