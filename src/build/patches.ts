@@ -68,13 +68,7 @@ function handleTypeParameters(value: Value | Node) {
     return {};
   }
   if (typeof value === "string") {
-    return {
-      typeParameters: [
-        {
-          name: string(value),
-        },
-      ],
-    };
+    return { typeParameters: [{ name: value }] };
   }
   const node = value as Node;
   return {
