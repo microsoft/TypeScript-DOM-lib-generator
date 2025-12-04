@@ -2618,8 +2618,8 @@ interface WebTransportErrorOptions {
 }
 
 interface WebTransportHash {
-    algorithm?: string;
-    value?: BufferSource;
+    algorithm: string;
+    value: BufferSource;
 }
 
 interface WebTransportOptions {
@@ -7639,6 +7639,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/math-depth)
      */
     mathDepth: string;
+    /**
+     * The math-shift property indicates whether superscripts inside MathML formulas should be raised by a normal or compact shift.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/math-shift)
+     */
+    mathShift: string;
     /**
      * The math-style property indicates whether MathML equations should render with normal or compact height.
      *

@@ -10,3 +10,9 @@ interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window
 interface HTMLDocument extends=Document exposed=Window
 
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
+
+interface-mixin WindowEventHandlers {
+  // TODO: pass a string instead for deprecated
+  // The unload event is not reliable, consider visibilitychange or pagehide events
+  property onunload deprecated=#true
+}

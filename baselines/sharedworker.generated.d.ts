@@ -780,8 +780,8 @@ interface WebTransportErrorOptions {
 }
 
 interface WebTransportHash {
-    algorithm?: string;
-    value?: BufferSource;
+    algorithm: string;
+    value: BufferSource;
 }
 
 interface WebTransportOptions {
