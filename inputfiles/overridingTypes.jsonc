@@ -312,23 +312,6 @@
                             "nullable": false
                         }
                     }
-                },
-                "methods": {
-                    "method": {
-                        "togglePopover": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            // dictionary support is Blink only as of 2024-11
-                                            "name": "options",
-                                            "type": "boolean"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
                 }
             },
             "MediaMetadata": {
