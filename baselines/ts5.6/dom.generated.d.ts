@@ -4834,7 +4834,7 @@ declare var CSSCounterStyleRule: {
  */
 interface CSSFontFaceRule extends CSSRule {
     /**
-     * The read-only **`style`** property of the CSSFontFaceRule interface returns the style information from the @font-face at-rule. This will be in the form of a CSSStyleDeclaration object.
+     * The read-only **`style`** property of the CSSFontFaceRule interface contains a CSSStyleDeclaration object representing the descriptors available in the @font-face rule's body.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style)
      */
@@ -4966,7 +4966,7 @@ interface CSSImportRule extends CSSRule {
      */
     readonly layerName: string | null;
     /**
-     * The read-only **`media`** property of the CSSImportRule interface returns a MediaList object, containing the value of the media attribute of the associated stylesheet.
+     * The read-only **`media`** property of the CSSImportRule interface returns a MediaList object representing the media query list of the @import rule.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImportRule/media)
      */
@@ -5004,7 +5004,7 @@ interface CSSKeyframeRule extends CSSRule {
      */
     keyText: string;
     /**
-     * The read-only **`CSSKeyframeRule.style`** property is the CSSStyleDeclaration interface for the declaration block of the CSSKeyframeRule.
+     * The read-only **`style`** property of the CSSKeyframeRule interface contains a CSSStyleDeclaration object representing the descriptors available in the @keyframes rule's body.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframeRule/style)
      */
@@ -5294,7 +5294,7 @@ declare var CSSMatrixComponent: {
  */
 interface CSSMediaRule extends CSSConditionRule {
     /**
-     * The read-only **`media`** property of the CSSMediaRule interface returns a MediaList representing the intended destination medium for style information.
+     * The read-only **`media`** property of the CSSMediaRule interface contains a MediaList object representing the media query list of the @media rule.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMediaRule/media)
      */
@@ -5498,7 +5498,7 @@ interface CSSPageRule extends CSSGroupingRule {
      */
     selectorText: string;
     /**
-     * The **`style`** read-only property of the CSSPageRule interface returns a CSSPageDescriptors object. This represents a CSS declaration block for a CSS @page at-rule, and exposes style information and various style-related methods and properties for the page.
+     * The read-only **`style`** property of the CSSPageRule interface contains a CSSPageDescriptors object representing the descriptors available in the @page rule's body.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPageRule/style)
      */
@@ -5696,7 +5696,7 @@ interface CSSPositionTryRule extends CSSRule {
      */
     readonly name: string;
     /**
-     * The **`style`** read-only property of the CSSPositionTryRule interface returns a CSSPositionTryDescriptors object representing the declarations set in the body of the @position-try at-rule.
+     * The read-only **`style`** property of the CSSPositionTryRule interface contains a CSSPositionTryDescriptors object representing the descriptors available in the @position-try rule's body.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPositionTryRule/style)
      */
@@ -6191,7 +6191,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     animationRangeStart: string;
     /**
-     * The animation-timeline CSS property specifies the timeline that is used to control the progress of a CSS animation.
+     * The animation-timeline CSS property specifies the timeline used to control the progress of a CSS animation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-timeline)
      */
@@ -8270,13 +8270,13 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     scrollSnapType: string;
     /**
-     * The scroll-timeline CSS shorthand property is used to define a named scroll progress timeline, which is progressed through by scrolling a scrollable element (scroller) between top and bottom (or left and right). scroll-timeline is set on the scroller that will provide the timeline. The starting scroll position represents 0% progress and the ending scroll position represents 100% progress. If the 0% position and 100% position coincide (i.e., the scroll container has no overflow to scroll), the timeline is inactive.
+     * The scroll-timeline CSS shorthand property is used to define a named scroll progress timeline, which is progressed through by scrolling a scrollable element (scroller) between top and bottom (or left and right).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-timeline)
      */
     scrollTimeline: string;
     /**
-     * The scroll-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a named scroll progress timeline animation, which is progressed through by scrolling a scrollable element (scroller) between top and bottom (or left and right). scroll-timeline is set on the scroller that will provide the timeline. See CSS scroll-driven animations for more details.
+     * The scroll-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a scroll driven animation animation, which is progressed through by scrolling a scrollable element (scroller).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-timeline-axis)
      */
@@ -8684,7 +8684,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     verticalAlign: string;
     /**
-     * The view-timeline CSS shorthand property is used to define a named view progress timeline, which is progressed through based on the change in visibility of an element (known as the subject) inside a scrollable element (scroller). view-timeline is set on the subject.
+     * The view-timeline CSS shorthand property defines a named view progress timeline's name, direction, and inset values.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline)
      */
@@ -9241,7 +9241,7 @@ interface CSSStyleRule extends CSSGroupingRule {
      */
     selectorText: string;
     /**
-     * The read-only **`style`** property is a CSSStyleProperties object that represents the inline styles of a style rule (CSSStyleRule).
+     * The read-only **`style`** property of the CSSStyleRule interface contains a CSSStyleProperties object representing the properties list in this style rule's body.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSStyleRule/style)
      */
@@ -10297,14 +10297,14 @@ declare var CompositionEvent: {
 };
 
 /**
- * The **`CompressionStream`** interface of the Compression Streams API is an API for compressing a stream of data.
+ * The **`CompressionStream`** interface of the Compression Streams API compresses a stream of data. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
  */
 interface CompressionStream extends GenericTransformStream {
-    /** The **`readable`** read-only property of the CompressionStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the CompressionStream interface returns a ReadableStream that emits compressed data as Uint8Array chunks. */
     readonly readable: ReadableStream<Uint8Array>;
-    /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream that accepts uncompressed data to be compressed, in the form of ArrayBuffer, TypedArray, or DataView chunks. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -11780,14 +11780,14 @@ declare var DataTransferItemList: {
 };
 
 /**
- * The **`DecompressionStream`** interface of the Compression Streams API is an API for decompressing a stream of data.
+ * The **`DecompressionStream`** interface of the Compression Streams API decompresses a stream of data. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
  */
 interface DecompressionStream extends GenericTransformStream {
-    /** The **`readable`** read-only property of the DecompressionStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the DecompressionStream interface returns a ReadableStream that emits decompressed data as Uint8Array chunks. */
     readonly readable: ReadableStream<Uint8Array>;
-    /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream that accepts compressed data to be decompressed, in the form of ArrayBuffer, TypedArray, or DataView chunks. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -12188,7 +12188,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     readonly links: HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>;
     /**
-     * The **`Document.location`** read-only property returns a Location object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL.
+     * The read-only **`location`** property of the Document interface returns a Location object, which contains information about the URL of the document and provides methods for changing that URL and loading another URL.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/location)
      */
@@ -12542,7 +12542,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     hasStorageAccess(): Promise<boolean>;
     /**
-     * The Document object's **`importNode()`** method creates a copy of a Node or DocumentFragment from another document, to be inserted into the current document later.
+     * The **`importNode()`** method of the Document interface creates a copy of a Node or DocumentFragment from another document, to be inserted into the current document later.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/importNode)
      */
@@ -12925,7 +12925,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     readonly attributes: NamedNodeMap;
     /**
-     * The **`Element.classList`** is a read-only property that returns a live DOMTokenList collection of the class attributes of the element. This can then be used to manipulate the class list.
+     * The read-only **`classList`** property of the Element interface contains a live DOMTokenList collection representing the class attribute of the element. This can then be used to manipulate the class list.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/classList)
      */
@@ -13003,7 +13003,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
     outerHTML: string;
     readonly ownerDocument: Document;
     /**
-     * The **`part`** property of the Element interface represents the part identifier(s) of the element (i.e., set using the part attribute), returned as a DOMTokenList. These can be used to style parts of a shadow DOM, via the ::part pseudo-element.
+     * The read-only **`part`** property of the Element interface contains a DOMTokenList object representing the part identifier(s) of the element. It reflects the element's part content attribute. These can be used to style parts of a shadow DOM, via the ::part pseudo-element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/part)
      */
@@ -15300,7 +15300,7 @@ interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
      */
     rel: string;
     /**
-     * The **`HTMLAnchorElement.relList`** read-only property reflects the rel attribute. It is a live DOMTokenList containing the set of link types indicating the relationship between the resource represented by the <a> element and the current document.
+     * The read-only **`relList`** property of the HTMLAnchorElement returns a live DOMTokenList object containing the set of link types indicating the relationship between the resource represented by the <a> element and the current document. It reflects the <a> element's rel content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/relList)
      */
@@ -15384,7 +15384,7 @@ interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
      */
     rel: string;
     /**
-     * The **`HTMLAreaElement.relList`** read-only property reflects the rel attribute. It is a live DOMTokenList containing the set of link types indicating the relationship between the resource represented by the <area> element and the current document.
+     * The read-only **`relList`** property of the HTMLAreaElement returns a live DOMTokenList object containing the set of link types indicating the relationship between the resource represented by the <area> element and the current document. It reflects the <area> element's rel content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/relList)
      */
@@ -16393,7 +16393,7 @@ interface HTMLFormElement extends HTMLElement {
      */
     rel: string;
     /**
-     * The **`relList`** read-only property of the HTMLFormElement interface reflects the rel attribute. It is a live DOMTokenList containing the set of link types indicating the relationship between the resource represented by the <form> element and the current document.
+     * The read-only **`relList`** property of the HTMLFormElement returns a live DOMTokenList object containing the set of link types indicating the relationship between the resource represented by the <form> element and the current document. It reflects the <form> element's rel content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/relList)
      */
@@ -16750,7 +16750,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     referrerPolicy: ReferrerPolicy;
     /**
-     * The **`sandbox`** read-only property of the HTMLIFrameElement interface returns a DOMTokenList indicating extra restrictions on the behavior of the nested content.
+     * The read-only **`sandbox`** property of the HTMLIFrameElement returns a live DOMTokenList object indicating extra restrictions on the behavior of the nested content. It reflects the <iframe> element's sandbox content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/sandbox)
      */
@@ -16800,82 +16800,82 @@ declare var HTMLIFrameElement: {
  */
 interface HTMLImageElement extends HTMLElement {
     /**
-     * The obsolete **`align`** property of the HTMLImageElement interface is a string which indicates how to position the image relative to its container.
+     * The deprecated **`align`** property of the HTMLImageElement interface is a string which indicates how to position the image relative to its container. It reflects the <img> element's align content attribute.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/align)
      */
     align: string;
     /**
-     * The HTMLImageElement property **`alt`** provides fallback (alternate) text to display when the image specified by the <img> element is not loaded.
+     * The **`alt`** property of the HTMLImageElement interface provides fallback (alternate) text to display when the image specified by the <img> element is not displayed, whether because of an error, because the user has disabled the loading of images, or because the image hasn't finished loading yet. It reflects the <img> element's alt content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/alt)
      */
     alt: string;
     /**
-     * The obsolete HTMLImageElement property **`border`** specifies the number of pixels thick the border surrounding the image should be. A value of 0, the default, indicates that no border should be drawn.
+     * The deprecated **`border`** property of the HTMLImageElement interface specifies the number of pixels thick the border surrounding the image should be. A value of 0, the default, indicates that no border should be drawn. It reflects the <img> element's border content attribute.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/border)
      */
     border: string;
     /**
-     * The read-only HTMLImageElement interface's **`complete`** attribute is a Boolean value which indicates whether or not the image has completely loaded.
+     * The **`complete`** read-only property of the HTMLImageElement interface is a Boolean value indicating whether or not the image has completely loaded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/complete)
      */
     readonly complete: boolean;
     /**
-     * The HTMLImageElement interface's **`crossOrigin`** attribute is a string which specifies the Cross-Origin Resource Sharing (CORS) setting to use when retrieving the image.
+     * The **`crossOrigin`** property of the HTMLImageElement interface is a string which specifies the Cross-Origin Resource Sharing (CORS) setting to use when retrieving the image. It reflects the <img> element's crossorigin content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/crossOrigin)
      */
     crossOrigin: string | null;
     /**
-     * The read-only HTMLImageElement property **`currentSrc`** indicates the URL of the image which is currently presented in the <img> element it represents.
+     * The **`currentSrc`** read-only property of the HTMLImageElement interface indicates the URL of the image selected by the browser to load.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/currentSrc)
      */
     readonly currentSrc: string;
     /**
-     * The **`decoding`** property of the HTMLImageElement interface provides a hint to the browser as to how it should decode the image. More specifically, whether it should wait for the image to be decoded before presenting other content updates or not.
+     * The **`decoding`** property of the HTMLImageElement interface provides a hint to the browser as to how it should decode the image. More specifically, whether it should wait for the image to be decoded before presenting other content updates or not. It reflects the <img> element's decoding content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/decoding)
      */
     decoding: "async" | "sync" | "auto";
     /**
-     * The **`fetchPriority`** property of the HTMLImageElement interface represents a hint to the browser indicating how it should prioritize fetching a particular image relative to other images. It reflects the fetchpriority attribute of the corresponding <img> element.
+     * The **`fetchPriority`** property of the HTMLImageElement interface represents a hint to the browser indicating how it should prioritize fetching a particular image relative to other images. It reflects the <img> element's fetchpriority content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority)
      */
     fetchPriority: "high" | "low" | "auto";
     /**
-     * The **`height`** property of the HTMLImageElement interface indicates the height at which the image is drawn, in CSS pixels if the image is being drawn or rendered to any visual medium such as the screen or a printer; otherwise, it's the natural, pixel density corrected height of the image.
+     * The **`height`** property of the HTMLImageElement interface indicates the height at which the image is drawn, in CSS pixels, if the image is being drawn or rendered to any visual medium such as a screen or printer. Otherwise, it's the natural, pixel density-corrected height of the image.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/height)
      */
     height: number;
     /**
-     * The obsolete **`hspace`** property of the HTMLImageElement interface specifies the number of pixels of empty space to leave empty on the left and right sides of the <img> element when laying out the page.
+     * The deprecated **`hspace`** property of the HTMLImageElement interface specifies the number of pixels of empty space to leave empty on the left and right sides of the <img> element when laying out the page. It reflects the <img> element's hspace content attribute.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/hspace)
      */
     hspace: number;
     /**
-     * The HTMLImageElement property **`isMap`** is a Boolean value which indicates that the image is to be used by a server-side image map. This may only be used on images located within an <a> element.
+     * The **`isMap`** property of the HTMLImageElement interface indicates that the image is part of a server-side map. If so, the coordinates where the user clicked on the image are sent to the server. It reflects the <img> element's ismap content attribute. This attribute is allowed only if the <img> element is a descendant of an <a> element with a valid href attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/isMap)
      */
     isMap: boolean;
     /**
-     * The HTMLImageElement property **`loading`** is a string whose value provides a hint to the user agent on how to handle the loading of the image which is currently outside the window's visual viewport.
+     * The **`loading`** property of the HTMLImageElement interface provides a hint to the user agent on how to handle the loading of the image which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the image until it's expected to be needed, rather than immediately during the initial page load. It reflects the <img> element's loading content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/loading)
      */
     loading: "eager" | "lazy";
     /**
-     * The deprecated property **`longDesc`** on the HTMLImageElement interface specifies the URL of a text or HTML file which contains a long-form description of the image. This can be used to provide optional added details beyond the short description provided in the title attribute.
+     * The deprecated **`longDesc`** property of the HTMLImageElement interface specifies the URL of a text or HTML file which contains a long-form description of the image. This can be used to provide optional added details beyond the short description provided in the title attribute. It reflects the <img> element's longdesc content attribute.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/longDesc)
@@ -16884,81 +16884,81 @@ interface HTMLImageElement extends HTMLElement {
     /** @deprecated */
     lowsrc: string;
     /**
-     * The HTMLImageElement interface's deprecated **`name`** property specifies a name for the element. This has been replaced by the id property available on all elements.
+     * The deprecated **`name`** property of the HTMLImageElement interface specifies a name for the element. It reflects the <img> element's name content attribute. It has been replaced by the id property available on all elements, and is kept only for compatibility reasons.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/name)
      */
     name: string;
     /**
-     * The HTMLImageElement interface's **`naturalHeight`** property is a read-only value which returns the intrinsic (natural), density-corrected height of the image in CSS pixels.
+     * The read-only **`naturalHeight`** property of the HTMLImageElement interface returns the intrinsic (natural), density-corrected height of the image in CSS pixels.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/naturalHeight)
      */
     readonly naturalHeight: number;
     /**
-     * The HTMLImageElement interface's read-only **`naturalWidth`** property returns the intrinsic (natural), density-corrected width of the image in CSS pixels.
+     * The read-only **`naturalWidth`** property of the HTMLImageElement interface returns the intrinsic (natural), density-corrected width of the image in CSS pixels.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/naturalWidth)
      */
     readonly naturalWidth: number;
     /**
-     * The **`HTMLImageElement.referrerPolicy`** property reflects the HTML referrerpolicy attribute of the <img> element defining which referrer is sent when fetching the resource.
+     * The **`referrerPolicy`** property of the HTMLImageElement interface defining which referrer is sent when fetching the resource. It reflects the <img> element's referrerpolicy content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/referrerPolicy)
      */
     referrerPolicy: string;
     /**
-     * The HTMLImageElement property **`sizes`** allows you to specify the layout width of the image for each of a list of media conditions. This provides the ability to automatically select among different images—even images of different orientations or aspect ratios—as the document state changes to match different media conditions.
+     * The **`sizes`** property of the HTMLImageElement interface allows you to specify the layout width of the image for each of a list of media queries. This provides the ability to automatically select among different images—even images of different orientations or aspect ratios—as the document state changes to match different media conditions. It reflects the <img> element's sizes content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/sizes)
      */
     sizes: string;
     /**
-     * The HTMLImageElement property **`src`**, which reflects the HTML src attribute, specifies the image to display in the <img> element.
+     * The **`src`** property of the HTMLImageElement interface specifies the image to display in the <img> element. It reflects the <img> element's src content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/src)
      */
     src: string;
     /**
-     * The HTMLImageElement property **`srcset`** is a string which identifies one or more image candidate strings, separated using commas (,) each specifying image resources to use under given circumstances.
+     * The **`srcset`** property of the HTMLImageElement interface identifies one or more image candidate strings, separated using commas (,), each specifying image resources to use under given circumstances. Each image candidate string contains an image URL and an optional width or pixel density descriptor that indicates the conditions under which that candidate should be used instead of the image specified by the src property. It reflects the <img> element's srcset content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/srcset)
      */
     srcset: string;
     /**
-     * The **`useMap`** property on the HTMLImageElement interface reflects the value of the HTML usemap attribute, which is a string providing the name of the client-side image map to apply to the image.
+     * The **`useMap`** property of the HTMLImageElement interface providing the name of the client-side image map to apply to the image. It reflects the <img> element's usemap content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/useMap)
      */
     useMap: string;
     /**
-     * The obsolete **`vspace`** property of the HTMLImageElement interface specifies the number of pixels of empty space to leave empty on the top and bottom of the <img> element when laying out the page.
+     * The deprecated **`vspace`** property of the HTMLImageElement interface specifies the number of pixels of empty space to leave empty on the top and bottom sides of the <img> element when laying out the page. It reflects the <img> element's vspace content attribute.
      * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/vspace)
      */
     vspace: number;
     /**
-     * The **`width`** property of the HTMLImageElement interface indicates the width at which an image is drawn in CSS pixels if it's being drawn or rendered to any visual medium such as a screen or printer. Otherwise, it's the natural, pixel density-corrected width of the image.
+     * The **`width`** property of the HTMLImageElement interface indicates the width at which the image is drawn, in CSS pixels, if the image is being drawn or rendered to any visual medium such as a screen or printer. Otherwise, it's the natural, pixel density-corrected width of the image.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/width)
      */
     width: number;
     /**
-     * The read-only HTMLImageElement property **`x`** indicates the x-coordinate of the <img> element's left border edge relative to the root element's origin.
+     * The read-only **`x`** property of the HTMLImageElement interface indicates the x-coordinate of the <img> element's left border edge relative to the root element's origin.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/x)
      */
     readonly x: number;
     /**
-     * The read-onl**`y`** HTMLImageElement property y indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin.
+     * The read-onl**`y`** y property of the HTMLImageElement interface indicates the y-coordinate of the <img> element's top border edge relative to the root element's origin.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/y)
      */
     readonly y: number;
     /**
-     * The **`decode()`** method of the HTMLImageElement interface returns a Promise that resolves once the image is decoded and it is safe to append it to the DOM.
+     * The **`decode()`** method of the HTMLImageElement interface returns a Promise that resolves once the image is decoded and is safe to be appended to the DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/decode)
      */
@@ -17424,7 +17424,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      */
     as: string;
     /**
-     * The **`blocking`** property of the HTMLLinkElement interface is a string indicating that certain operations should be blocked on the fetching of an external resource.
+     * The read-only **`blocking`** property of the HTMLLinkElement returns a live DOMTokenList object containing the operations that should be blocked on the fetching of an external resource. It reflects the <link> element's blocking content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/blocking)
      */
@@ -17445,7 +17445,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      */
     disabled: boolean;
     /**
-     * The **`fetchPriority`** property of the HTMLLinkElement interface represents a hint to the browser indicating how it should prioritize fetching a particular resource relative to other resources of the same type. It reflects the fetchpriority attribute of the corresponding <link> element.
+     * The **`fetchPriority`** property of the HTMLLinkElement interface represents a hint to the browser indicating how it should prioritize fetching a particular resource relative to other resources of the same type. It reflects the <link> element's fetchpriority content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/fetchPriority)
      */
@@ -17499,7 +17499,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
      */
     rel: string;
     /**
-     * The **`relList`** read-only property of the HTMLLinkElement interface reflects the rel attribute. It is a live DOMTokenList containing the set of link types indicating the relationship between the resource represented by the <link> element and the current document.
+     * The read-only **`relList`** property of the HTMLLinkElement returns a live DOMTokenList object containing the set of link types indicating the relationship between the resource represented by the <link> element and the current document. It reflects the <link> element's rel content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/relList)
      */
@@ -17508,7 +17508,7 @@ interface HTMLLinkElement extends HTMLElement, LinkStyle {
     /** @deprecated */
     rev: string;
     /**
-     * The **`sizes`** read-only property of the HTMLLinkElement interfaces defines the sizes of the icons for visual media contained in the resource. It reflects the <link> element's sizes attribute, which takes a list of space-separated sizes, each in the format <width in pixels>x<height in pixels>, or the keyword any.
+     * The read-only **`sizes`** property of the HTMLLinkElement interface defines the sizes of the icons for visual media contained in the resource. It reflects the <link> element's sizes attribute, which takes a list of space-separated sizes, each in the format <width in pixels>x<height in pixels>, or the keyword any.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/sizes)
      */
@@ -18384,7 +18384,7 @@ interface HTMLOutputElement extends HTMLElement {
      */
     readonly form: HTMLFormElement | null;
     /**
-     * The **`htmlFor`** property of the HTMLOutputElement interface is a string containing a space-separated list of other elements' ids, indicating that those elements contributed input values to (or otherwise affected) the calculation. It reflects the for attribute of the <output> element.
+     * The read-only **`htmlFor`** property of the HTMLOutputElement returns a live DOMTokenList object containing a list of ids of those elements contributing input values to (or otherwise affected) the calculation. It reflects the <output> element's for content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/htmlFor)
      */
@@ -18620,7 +18620,7 @@ interface HTMLScriptElement extends HTMLElement {
      */
     async: boolean;
     /**
-     * The **`blocking`** property of the HTMLScriptElement interface is a string indicating that certain operations should be blocked on the fetching of the script.
+     * The read-only **`blocking`** property of the HTMLScriptElement returns a live DOMTokenList object containing the operations that should be blocked on the fetching of an external resource. It reflects the <script> element's blocking content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/blocking)
      */
@@ -18643,7 +18643,7 @@ interface HTMLScriptElement extends HTMLElement {
     /** @deprecated */
     event: string;
     /**
-     * The **`fetchPriority`** property of the HTMLScriptElement interface represents a hint to the browser indicating how it should prioritize fetching an external script relative to other external scripts. It reflects the fetchpriority attribute of the <script> element.
+     * The **`fetchPriority`** property of the HTMLScriptElement interface represents a hint to the browser indicating how it should prioritize fetching an external script relative to other external scripts. It reflects the <script> element's fetchpriority content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/fetchPriority)
      */
@@ -18996,7 +18996,7 @@ declare var HTMLSpanElement: {
  */
 interface HTMLStyleElement extends HTMLElement, LinkStyle {
     /**
-     * The **`blocking`** property of the HTMLStyleElement interface is a string indicating that certain operations should be blocked on the fetching of critical subresources.
+     * The read-only **`blocking`** property of the HTMLStyleElement returns a live DOMTokenList object containing the operations that should be blocked on the fetching of an external resource. It reflects the <style> element's blocking content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/blocking)
      */
@@ -19542,7 +19542,7 @@ declare var HTMLTableSectionElement: {
  */
 interface HTMLTemplateElement extends HTMLElement {
     /**
-     * The **`HTMLTemplateElement.content`** property returns a <template> element's template contents (a DocumentFragment).
+     * The **`content`** property of the HTMLTemplateElement interface returns the <template> element's template contents as a DocumentFragment. This content's ownerDocument is a separate Document from the one that contains the <template> element itself — unless the containing document is itself constructed for the purpose of holding template content.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/content)
      */
@@ -24021,7 +24021,7 @@ interface Node extends EventTarget {
      */
     appendChild<T extends Node>(node: T): T;
     /**
-     * The **`cloneNode()`** method of the Node interface returns a duplicate of the node on which this method was called. Its parameter controls if the subtree contained in a node is also cloned or not.
+     * The **`cloneNode()`** method of the Node interface returns a duplicate of the node on which this method was called. Its parameter controls if the subtree contained in the node is also cloned or not.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/cloneNode)
      */
@@ -28664,7 +28664,7 @@ interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
      */
     rel: string;
     /**
-     * The **`relList`** read-only property of the SVGAElement returns a live DOMTokenList reflecting the space-separated string <list-of-Link-Types> values of the rel attribute of the SVG <a> element.
+     * The read-only **`relList`** property of the SVGAElement returns a live DOMTokenList reflecting the space-separated string <list-of-Link-Types> values of the rel attribute of the SVG <a> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/relList)
      */
@@ -33944,7 +33944,7 @@ interface StyleSheet {
      */
     readonly href: string | null;
     /**
-     * The **`media`** property of the StyleSheet interface specifies the intended destination media for style information. It is a read-only, array-like MediaList object and can be removed with deleteMedium() and added with appendMedium().
+     * The read-only **`media`** property of the StyleSheet interface contains a MediaList object representing the intended destination media for style information.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StyleSheet/media)
      */
@@ -34257,14 +34257,14 @@ interface TextDecoderCommon {
 }
 
 /**
- * The **`TextDecoderStream`** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings. It is the streaming equivalent of TextDecoder.
+ * The **`TextDecoderStream`** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings. It is the streaming equivalent of TextDecoder. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
-    /** The **`readable`** read-only property of the TextDecoderStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the TextDecoderStream interface returns a ReadableStream that emits decoded strings. */
     readonly readable: ReadableStream<string>;
-    /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream that accepts binary data, in the form of ArrayBuffer, TypedArray, or DataView chunks (SharedArrayBuffer and its views are also allowed), to be decoded into strings. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -34308,14 +34308,14 @@ interface TextEncoderCommon {
 }
 
 /**
- * The **`TextEncoderStream`** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
+ * The **`TextEncoderStream`** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
-    /** The **`readable`** read-only property of the TextEncoderStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the TextEncoderStream interface returns a ReadableStream that emits encoded binary data as Uint8Array chunks. */
     readonly readable: ReadableStream<Uint8Array>;
-    /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream that accepts strings to be encoded into binary data. */
     readonly writable: WritableStream<string>;
 }
 
@@ -34899,13 +34899,13 @@ declare var TrackEvent: {
  */
 interface TransformStream<I = any, O = any> {
     /**
-     * The **`readable`** read-only property of the TransformStream interface returns the ReadableStream instance controlled by this TransformStream.
+     * The **`readable`** read-only property of the TransformStream interface returns the ReadableStream instance controlled by this TransformStream. This stream emits the transformed output data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/readable)
      */
     readonly readable: ReadableStream<O>;
     /**
-     * The **`writable`** read-only property of the TransformStream interface returns the WritableStream instance controlled by this TransformStream.
+     * The **`writable`** read-only property of the TransformStream interface returns the WritableStream instance controlled by this TransformStream. This stream accepts input data that will be transformed and emitted to the readable stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/writable)
      */
@@ -35980,7 +35980,7 @@ interface VisualViewportEventMap {
 }
 
 /**
- * The **`VisualViewport`** interface of the Visual Viewport API represents the visual viewport for a given window. For a page containing iframes, each iframe, as well as the containing page, will have a unique window object. Each window on a page will have a unique VisualViewport representing the properties associated with that window.
+ * The **`VisualViewport`** interface of the CSSOM view API represents the visual viewport for a given window. For a page containing iframes, each iframe, as well as the containing page, will have a unique window object. Each window on a page will have a unique VisualViewport representing the properties associated with that window.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport)
  */
@@ -39029,7 +39029,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     readonly length: number;
     /**
-     * The **`Window.location`** read-only property returns a Location object with information about the current location of the document.
+     * The read-only **`location`** property of the Window interface returns a Location object with information about the current location of the document.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/location)
      */
@@ -41197,7 +41197,7 @@ declare var innerWidth: number;
  */
 declare var length: number;
 /**
- * The **`Window.location`** read-only property returns a Location object with information about the current location of the document.
+ * The read-only **`location`** property of the Window interface returns a Location object with information about the current location of the document.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/location)
  */

@@ -2049,14 +2049,14 @@ declare var CloseEvent: {
 };
 
 /**
- * The **`CompressionStream`** interface of the Compression Streams API is an API for compressing a stream of data.
+ * The **`CompressionStream`** interface of the Compression Streams API compresses a stream of data. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CompressionStream)
  */
 interface CompressionStream extends GenericTransformStream {
-    /** The **`readable`** read-only property of the CompressionStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the CompressionStream interface returns a ReadableStream that emits compressed data as Uint8Array chunks. */
     readonly readable: ReadableStream<Uint8Array>;
-    /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream that accepts uncompressed data to be compressed, in the form of ArrayBuffer, TypedArray, or DataView chunks. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -2899,14 +2899,14 @@ declare var DOMStringList: {
 };
 
 /**
- * The **`DecompressionStream`** interface of the Compression Streams API is an API for decompressing a stream of data.
+ * The **`DecompressionStream`** interface of the Compression Streams API decompresses a stream of data. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DecompressionStream)
  */
 interface DecompressionStream extends GenericTransformStream {
-    /** The **`readable`** read-only property of the DecompressionStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the DecompressionStream interface returns a ReadableStream that emits decompressed data as Uint8Array chunks. */
     readonly readable: ReadableStream<Uint8Array>;
-    /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream that accepts compressed data to be decompressed, in the form of ArrayBuffer, TypedArray, or DataView chunks. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -7045,14 +7045,14 @@ interface TextDecoderCommon {
 }
 
 /**
- * The **`TextDecoderStream`** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings. It is the streaming equivalent of TextDecoder.
+ * The **`TextDecoderStream`** interface of the Encoding API converts a stream of text in a binary encoding, such as UTF-8 etc., to a stream of strings. It is the streaming equivalent of TextDecoder. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoderStream)
  */
 interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
-    /** The **`readable`** read-only property of the TextDecoderStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the TextDecoderStream interface returns a ReadableStream that emits decoded strings. */
     readonly readable: ReadableStream<string>;
-    /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream that accepts binary data, in the form of ArrayBuffer, TypedArray, or DataView chunks (SharedArrayBuffer and its views are also allowed), to be decoded into strings. */
     readonly writable: WritableStream<BufferSource>;
 }
 
@@ -7096,14 +7096,14 @@ interface TextEncoderCommon {
 }
 
 /**
- * The **`TextEncoderStream`** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder.
+ * The **`TextEncoderStream`** interface of the Encoding API converts a stream of strings into bytes in the UTF-8 encoding. It is the streaming equivalent of TextEncoder. It implements the same shape as a TransformStream, allowing it to be used in ReadableStream.pipeThrough() and similar methods.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoderStream)
  */
 interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
-    /** The **`readable`** read-only property of the TextEncoderStream interface returns a ReadableStream. */
+    /** The **`readable`** read-only property of the TextEncoderStream interface returns a ReadableStream that emits encoded binary data as Uint8Array chunks. */
     readonly readable: ReadableStream<Uint8Array>;
-    /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream. */
+    /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream that accepts strings to be encoded into binary data. */
     readonly writable: WritableStream<string>;
 }
 
@@ -7204,13 +7204,13 @@ declare var TextMetrics: {
  */
 interface TransformStream<I = any, O = any> {
     /**
-     * The **`readable`** read-only property of the TransformStream interface returns the ReadableStream instance controlled by this TransformStream.
+     * The **`readable`** read-only property of the TransformStream interface returns the ReadableStream instance controlled by this TransformStream. This stream emits the transformed output data.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/readable)
      */
     readonly readable: ReadableStream<O>;
     /**
-     * The **`writable`** read-only property of the TransformStream interface returns the WritableStream instance controlled by this TransformStream.
+     * The **`writable`** read-only property of the TransformStream interface returns the WritableStream instance controlled by this TransformStream. This stream accepts input data that will be transformed and emitted to the readable stream.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/writable)
      */
@@ -10365,7 +10365,7 @@ interface WorkerGlobalScopeEventMap {
  */
 interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerGlobalScope {
     /**
-     * The **`location`** read-only property of the WorkerGlobalScope interface returns the WorkerLocation associated with the worker. It is a specific location object, mostly a subset of the Location for browsing scopes, but adapted to workers.
+     * The read-only **`location`** property of the WorkerGlobalScope interface returns the WorkerLocation associated with the worker. It is a specific location object, mostly a subset of the Location for browsing scopes, but adapted to workers.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/location)
      */
@@ -11315,7 +11315,7 @@ declare function close(): void;
  */
 declare function dispatchEvent(event: Event): boolean;
 /**
- * The **`location`** read-only property of the WorkerGlobalScope interface returns the WorkerLocation associated with the worker. It is a specific location object, mostly a subset of the Location for browsing scopes, but adapted to workers.
+ * The read-only **`location`** property of the WorkerGlobalScope interface returns the WorkerLocation associated with the worker. It is a specific location object, mostly a subset of the Location for browsing scopes, but adapted to workers.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/location)
  */
