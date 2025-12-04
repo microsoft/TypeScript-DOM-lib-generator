@@ -1,0 +1,124 @@
+removals {
+  dictionary MediaTrackCapabilities {
+    member latency // Blink only as of 2022-11
+    member resizeMode // Blink only as of 2022-11
+
+    // Screen Share extensions
+    // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+    member cursor
+    member logicalSurface
+
+    // Image Capture extensions (Blink only as of 2022-11)
+    // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+    member whiteBalanceMode
+    member exposureMode
+    member focusMode
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+    member zoom
+    member torch
+  }
+
+  dictionary MediaTrackConstraintSet {
+    member latency // Blink only as of 2022-11
+    member resizeMode // Blink only as of 2022-11
+
+    // Screen Share extensions
+    // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+    member cursor
+    member logicalSurface
+    member restrictOwnAudio
+    member suppressLocalAudioPlayback
+
+    // Image Capture extensions (Blink only as of 2022-11)
+    // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+    member whiteBalanceMode
+    member exposureMode
+    member focusMode
+    member pointsOfInterest
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+    member zoom
+    member torch
+  }
+
+  dictionary MediaTrackSettings {
+    member latency // Blink only as of 2025-04
+    member resizeMode // Blink only as of 2025-04
+
+    // Screen Share extensions
+    // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+    member cursor // Blink only as of 2025-04
+    member logicalSurface // Blink only as of 2025-04
+    member restrictOwnAudio // Blink only as of 2025-04
+    member suppressLocalAudioPlayback // Blink only as of 2025-04
+    member screenPixelRatio // Blink only as of 2025-04
+
+    // Image Capture extensions (Blink only as of 2025-04)
+    // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+    member exposureMode
+    member focusMode
+    member pointsOfInterest
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+  }
+
+  dictionary MediaTrackSupportedConstraints {
+    member latency
+    member resizeMode
+
+    // Screen Share extensions
+    // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+    member cursor
+    member logicalSurface
+    member restrictOwnAudio
+    member suppressLocalAudioPlayback // Blink only as of 2022-11
+
+    // Image Capture extensions (Blink only as of 2022-11)
+    // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+    member whiteBalanceMode
+    member exposureMode
+    member focusMode
+    member pointsOfInterest
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+    member zoom
+    member torch
+  }
+}
