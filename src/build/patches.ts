@@ -256,7 +256,8 @@ function handleProperty(child: Node): Partial<Property> {
       ? handleTyped(typeNode)
       : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
-    ...optionalMember("deprecated", "boolean", child.properties?.deprecated),
+    ...optionalMember("deprecated", "string", child.properties?.deprecated),
+    ...optionalMember("deprecated", "boolean", child.properties?.supported)
   };
 }
 
@@ -366,7 +367,7 @@ function handleMember(c: Node): Partial<Member> {
     name,
     ...optionalMember("type", "string", c.properties?.type),
     ...optionalMember("required", "boolean", c.properties?.required),
-    ...optionalMember("deprecated", "boolean", c.properties?.deprecated),
+    ...optionalMember("deprecated", "string", c.properties?.deprecated),
     ...optionalMember("overrideType", "string", c.properties?.overrideType),
   };
 }

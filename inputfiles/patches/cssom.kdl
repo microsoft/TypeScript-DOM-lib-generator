@@ -7,9 +7,9 @@ interface CSSStyleDeclaration \
   forwardExtends=CSSStyleProperties
 
 interface CSSStyleProperties replaceReference=CSSStyleDeclaration {
-  property wordWrap deprecated=#true
+  property wordWrap deprecated="The 'wordWrap' property is non-standard and has been replaced by 'overflow-wrap' in modern CSS."
   
   // The corresponding standardized property is not supported by
   // anyone as of 2024-10.
-  property webkitLineClamp deprecated=#false
+  property webkitLineClamp supported=#false
 }
