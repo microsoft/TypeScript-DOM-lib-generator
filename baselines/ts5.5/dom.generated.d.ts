@@ -944,12 +944,12 @@ interface KeySystemTrackConfiguration {
 }
 
 interface KeyboardEventInit extends EventModifierInit {
-    /** @deprecated */
+    /** @deprecated CharCode is inconsistent across environments, consider using .key instead */
     charCode?: number;
     code?: string;
     isComposing?: boolean;
     key?: string;
-    /** @deprecated */
+    /** @deprecated KeyCode is inconsistent across environments, consider using .key instead */
     keyCode?: number;
     location?: number;
     repeat?: boolean;
@@ -9185,7 +9185,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     wordSpacing: string;
     /**
-     * @deprecated
+     * @deprecated The 'wordWrap' property is non-standard and has been replaced by 'overflow-wrap' in modern CSS.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/overflow-wrap)
      */
@@ -39436,7 +39436,7 @@ interface WindowEventHandlers {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/unhandledrejection_event) */
     onunhandledrejection: ((this: WindowEventHandlers, ev: PromiseRejectionEvent) => any) | null;
     /**
-     * @deprecated
+     * @deprecated The unload event is not reliable, consider visibilitychange or pagehide events
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/unload_event)
      */
@@ -41805,7 +41805,7 @@ declare var onstorage: ((this: Window, ev: StorageEvent) => any) | null;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/unhandledrejection_event) */
 declare var onunhandledrejection: ((this: Window, ev: PromiseRejectionEvent) => any) | null;
 /**
- * @deprecated
+ * @deprecated The unload event is not reliable, consider visibilitychange or pagehide events
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/unload_event)
  */

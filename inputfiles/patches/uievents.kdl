@@ -1,7 +1,4 @@
 dictionary KeyboardEventInit {
-  // TODO: pass a string instead for deprecated
-  // charCode is inconsistent across environments, consider using .key instead
-  member charCode deprecated=#true
-  // keyCode is inconsistent across environments, consider using .key instead
-  member keyCode deprecated=#true
+  member charCode deprecated="CharCode is inconsistent across environments, consider using .key instead"
+  member keyCode deprecated="KeyCode is inconsistent across environments, consider using .key instead"
 }
