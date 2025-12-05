@@ -1,0 +1,27 @@
+removals {
+  // Screen Share extensions
+  // https://w3c.github.io/mediacapture-screen-share/#mediadevices-additions
+  dictionary MediaTrackCapabilities {
+    member cursor
+    member logicalSurface
+  }
+  dictionary MediaTrackConstraintSet {
+    member cursor
+    member logicalSurface
+    member restrictOwnAudio
+    member suppressLocalAudioPlayback
+  }
+  dictionary MediaTrackSettings {
+    member cursor // Blink only as of 2025-04
+    member logicalSurface // Blink only as of 2025-04
+    member restrictOwnAudio // Blink only as of 2025-04
+    member suppressLocalAudioPlayback // Blink only as of 2025-04
+    member screenPixelRatio // Blink only as of 2025-04
+  }
+  dictionary MediaTrackSupportedConstraints {
+    member cursor
+    member logicalSurface
+    member restrictOwnAudio
+    member suppressLocalAudioPlayback // Blink only as of 2022-11
+  }
+}
