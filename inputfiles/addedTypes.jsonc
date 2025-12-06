@@ -1218,7 +1218,7 @@
                 "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
             },
             {
-                "name": "DocumentOrGlobalOnErrorHandler",
+                "name": "DocumentOrGlobalOnErrorEventHandler",
                 "nullable": true,
                 "overrideType": "((event: Event) => any) | ((event: UIEvent) => any) | OnErrorEventHandlerNonNull",
                 "exposed": "Window"
