@@ -1170,6 +1170,18 @@
                             "type": "any"
                         }
                     }
+                },
+                "methods": {
+                    "method": {
+                        "addEventListener": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener",
+                            "comment": "The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.",
+                            "overrideSignatures": [
+                                "addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void"
+                            ]
+
+                        }
+                    }
                 }
             },
             "SVGSVGElement": {
@@ -1188,6 +1200,14 @@
                                     "overrideType": "NodeListOf<SVGCircleElement | SVGEllipseElement | SVGImageElement | SVGLineElement | SVGPathElement | SVGPolygonElement | SVGPolylineElement | SVGRectElement | SVGTextElement | SVGUseElement>"
                                 }
                             }
+                        },
+                        "addEventListener": {
+                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener",
+                            "comment": "The addEventListener() method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.",
+                            "overrideSignatures": [
+                                "addEventListener(type: string, listener: ((event: Event) => void) | ((event: UIEvent) => void)): void"
+                            ]
+
                         }
                     }
                 }
