@@ -406,16 +406,16 @@ function convertForRemovals(obj: unknown): unknown {
     for (const [key, value] of Object.entries(obj)) {
       if (key !== "name") {
         const cleaned = convertForRemovals(value);
-        if (cleaned !== undefined) {
+        // (intentionally covers null too)
+        if (typeof cleaned === "object") {
           newObj[key] = cleaned;
+        } else if (cleaned !== undefined) {
+          newObj[key] = null;
         }
       }
     }
     // Replace empty objects with null
     return Object.keys(newObj).length === 0 ? null : newObj;
-  }
-  if (obj === "") {
-    return null;
   }
   return obj;
 }
