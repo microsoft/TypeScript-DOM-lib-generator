@@ -288,22 +288,6 @@
     },
     "interfaces": {
         "interface": {
-            "GPUPipelineError": {
-                // Web IDL optional argument can be followed by a required argument, but not in TS
-                // TODO: Maybe do this in the emitter?
-                "constructor": {
-                    "signature": {
-                        "0": {
-                            "param": [
-                                {
-                                    "name": "message",
-                                    "optional": false
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
             "HTMLElement": {
                 "properties": {
                     "property": {

@@ -340,15 +340,29 @@ function convertCallbackFunctions(
   };
 }
 
-function convertArgument(arg: webidl2.Argument): Browser.Param {
+function hasRequiredArgumentAfter(arr: webidl2.Argument[], i: number): boolean {
+  for (let j = i + 1; j < arr.length; j++) {
+    if (!arr[j].optional && !arr[j].variadic) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function convertArgument(
+  arg: webidl2.Argument,
+  i: number,
+  arr: webidl2.Argument[],
+): Browser.Param {
   const idlType = convertIdlType(arg.idlType);
+  const required = hasRequiredArgumentAfter(arr, i);
   if (hasExtAttr(arg.extAttrs, "LegacyNullToEmptyString")) {
     idlType.nullable = true;
   }
   return {
     name: arg.name,
     ...idlType,
-    optional: arg.optional,
+    optional: !required && arg.optional,
     variadic: arg.variadic,
     allowShared: hasExtAttr(arg.extAttrs, "AllowShared"),
   };
