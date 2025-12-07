@@ -16,37 +16,6 @@
             "ConnectionType": {
                 "value": ["wimax"]
             },
-            "GPUBlendFactor": {
-                "value": [
-                    "one-minus-src1", // Blink only as of 2024-11
-                    "one-minus-src1-alpha", // Blink only as of 2024-11
-                    "src1", // Blink only as of 2024-11
-                    "src1-alpha" // Blink only as of 2024-11
-                ]
-            },
-            "GPUFeatureName": {
-                "value": [
-                    "clip-distances", // Blink only as of 2024-11
-                    "dual-source-blending", // Blink only as of 2024-11
-                    "float32-blendable", // Blink only as of 2024-11
-                    "texture-compression-astc-sliced-3d", // No implementation as of 2024-11
-                    "texture-compression-bc-sliced-3d" // No implementation as of 2024-11
-                ]
-            },
-            "GPUVertexFormat": {
-                "value": [
-                    "float16", // Blink only as of 2024-11
-                    "sint16", // Blink only as of 2024-11
-                    "sint8", // Blink only as of 2024-11
-                    "snorm16", // Blink only as of 2024-11
-                    "snorm8", // Blink only as of 2024-11
-                    "uint16", // Blink only as of 2024-11
-                    "uint8", // Blink only as of 2024-11
-                    "unorm16", // Blink only as of 2024-11
-                    "unorm8", // Blink only as of 2024-11
-                    "unorm8x4-bgra" // Blink only as of 2024-11
-                ]
-            },
             "KeyFormat": {
                 "value": [
                     "raw-private", // No implementation as of 2025-09
@@ -335,27 +304,6 @@
                 "members": {
                     "member": {
                         "pseudoElement": null // No implementation as of 2024-11
-                    }
-                }
-            },
-            "GPURequestAdapterOptions": {
-                "members": {
-                    "member": {
-                        "featureLevel": null // Blink experimental only as of 2024-11
-                    }
-                }
-            },
-            "GPUShaderModuleDescriptor": {
-                "members": {
-                    "member": {
-                        "compilationHints": null // Blink only as of 2024-11
-                    }
-                }
-            },
-            "GPUTextureViewDescriptor": {
-                "members": {
-                    "member": {
-                        "usage": null // Blink only as of 2024-11
                     }
                 }
             },
