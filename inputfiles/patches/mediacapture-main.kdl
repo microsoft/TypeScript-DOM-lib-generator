@@ -1,0 +1,24 @@
+removals {
+  // Gecko: https://searchfox.org/firefox-main/source/dom/webidl/MediaTrackCapabilities.webidl
+  // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
+  // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_capabilities.idl
+  dictionary MediaTrackCapabilities {
+    member latency // Blink only as of 2022-11
+    member resizeMode // Blink only as of 2022-11
+  }
+
+  dictionary MediaTrackConstraintSet {
+    member latency // Blink only as of 2022-11
+    member resizeMode // Blink only as of 2022-11
+  }
+
+  dictionary MediaTrackSettings {
+    member latency // Blink only as of 2025-04
+    member resizeMode // Blink only as of 2025-04
+  }
+
+  dictionary MediaTrackSupportedConstraints {
+    member latency
+    member resizeMode
+  }
+}

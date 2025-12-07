@@ -111,7 +111,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
         interfaces[name] = handleMixinAndInterfaces(node, "interface");
         break;
       case "dictionary":
-        dictionary[name] = handleDictionary(node);
+        dictionary[name] = merge(dictionary[name], handleDictionary(node));
         break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
