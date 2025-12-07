@@ -6,14 +6,17 @@ removals {
     member latency // Blink only as of 2022-11
     member resizeMode // Blink only as of 2022-11
   }
+
   dictionary MediaTrackConstraintSet {
     member latency // Blink only as of 2022-11
     member resizeMode // Blink only as of 2022-11
   }
+
   dictionary MediaTrackSettings {
     member latency // Blink only as of 2025-04
     member resizeMode // Blink only as of 2025-04
   }
+
   dictionary MediaTrackSupportedConstraints {
     member latency
     member resizeMode
