@@ -19,6 +19,7 @@ removals {
     member zoom
     member torch
   }
+
   dictionary MediaTrackConstraintSet {
     member whiteBalanceMode
     member exposureMode
@@ -38,6 +39,7 @@ removals {
     member zoom
     member torch
   }
+
   dictionary MediaTrackSettings {
     member exposureMode
     member focusMode
@@ -54,6 +56,7 @@ removals {
     member pan
     member tilt
   }
+
   dictionary MediaTrackSupportedConstraints {
     member whiteBalanceMode
     member exposureMode
