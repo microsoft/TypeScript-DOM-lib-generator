@@ -1,5 +1,5 @@
 removals {
-  // Image Capture extensions
+  // Image Capture extensions which are Blink only as of 2025-04
   // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
   dictionary MediaTrackCapabilities {
     member whiteBalanceMode
