@@ -81,8 +81,8 @@ function handleTypeParameters(value: Value | Node) {
   };
 }
 
-function undefinedIfEmpty(object: object, output: object) {
-  return Object.entries(object).length ? output : undefined;
+function optionalNestedMember<T>(prop: string, object: object, output: T) {
+  return Object.entries(object).length ? { [prop]: output } : {};
 }
 
 /**
@@ -119,10 +119,12 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   }
 
   return {
-    enums: undefinedIfEmpty(enums, { enum: enums }),
-    mixins: undefinedIfEmpty(mixin, { mixin }),
-    interfaces: undefinedIfEmpty(interfaces, { interface: interfaces }),
-    dictionaries: undefinedIfEmpty(dictionary, { dictionary }),
+    ...optionalNestedMember("enums", enums, { enum: enums }),
+    ...optionalNestedMember("mixins", mixin, { mixin }),
+    ...optionalNestedMember("interfaces", interfaces, {
+      interface: interfaces,
+    }),
+    ...optionalNestedMember("dictionaries", dictionary, { dictionary }),
   };
 }
 
@@ -202,7 +204,7 @@ function handleMixinAndInterfaces(
   };
   return {
     name,
-    events: { event },
+    ...optionalNestedMember("events", event, { event }),
     properties: { property },
     methods: { method },
     ...optionalMember("extends", "string", node.properties?.extends),
@@ -398,8 +400,7 @@ async function readPatchDocument(fileUrl: URL): Promise<Document> {
  */
 function convertForRemovals(obj: unknown): unknown {
   if (Array.isArray(obj)) {
-    const result = obj.map(convertForRemovals).filter((v) => v !== undefined);
-    return result.length === 0 ? null : result;
+    return obj.map(convertForRemovals).filter((v) => v !== undefined);
   }
   if (obj && typeof obj === "object") {
     const newObj: Record<string, unknown> = {};
