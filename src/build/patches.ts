@@ -415,6 +415,9 @@ function convertForRemovals(obj: unknown): unknown {
     // Replace empty objects with null
     return Object.keys(newObj).length === 0 ? null : newObj;
   }
+  if (obj === "") {
+    return null;
+  }
   return obj;
 }
 
