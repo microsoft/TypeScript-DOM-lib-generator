@@ -1,5 +1,5 @@
 removals {
-  // Gecko: Unsupported
+  // Gecko: https://searchfox.org/firefox-main/source/dom/webidl/MediaTrackCapabilities.webidl
   // WebKit: https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaStreamTrack.idl
   // Blink: https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_track_capabilities.idl
   dictionary MediaTrackCapabilities {
