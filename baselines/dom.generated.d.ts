@@ -1257,9 +1257,57 @@ interface MutationObserverInit {
     subtree?: boolean;
 }
 
+interface NavigateEventInit extends EventInit {
+    canIntercept?: boolean;
+    destination: NavigationDestination;
+    downloadRequest?: string | null;
+    formData?: FormData | null;
+    hasUAVisualTransition?: boolean;
+    hashChange?: boolean;
+    info?: any;
+    navigationType?: NavigationType;
+    signal: AbortSignal;
+    sourceElement?: Element | null;
+    userInitiated?: boolean;
+}
+
+interface NavigationCurrentEntryChangeEventInit extends EventInit {
+    from: NavigationHistoryEntry;
+    navigationType?: NavigationType | null;
+}
+
+interface NavigationInterceptOptions {
+    focusReset?: NavigationFocusReset;
+    handler?: NavigationInterceptHandler;
+    precommitHandler?: NavigationPrecommitHandler;
+    scroll?: NavigationScrollBehavior;
+}
+
+interface NavigationNavigateOptions extends NavigationOptions {
+    history?: NavigationHistoryBehavior;
+    state?: any;
+}
+
+interface NavigationOptions {
+    info?: any;
+}
+
 interface NavigationPreloadState {
     enabled?: boolean;
     headerValue?: string;
+}
+
+interface NavigationReloadOptions extends NavigationOptions {
+    state?: any;
+}
+
+interface NavigationResult {
+    committed?: Promise<NavigationHistoryEntry>;
+    finished?: Promise<NavigationHistoryEntry>;
+}
+
+interface NavigationUpdateCurrentEntryOptions {
+    state: any;
 }
 
 interface NotificationOptions {
@@ -6983,6 +7031,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     emptyCells: string;
     /**
+     * The field-sizing CSS property enables you to control the sizing behavior of elements that are given a default preferred size, such as form control elements. This property enables you to override the default sizing behavior, allowing form controls to adjust in size to fit their contents.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/field-sizing)
+     */
+    fieldSizing: string;
+    /**
      * The **`fill`** CSS property defines how SVG text content and the interior canvas of SVG shapes are filled or painted. If present, it overrides the element's fill attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/fill)
@@ -8050,6 +8104,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-try-order)
      */
     positionTryOrder: string;
+    /**
+     * The position-visibility CSS property enables conditionally hiding an anchor-positioned element depending on, for example, whether it is overflowing its containing element or the viewport.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-visibility)
+     */
+    positionVisibility: string;
     /**
      * The print-color-adjust CSS property sets what, if anything, the user agent may do to optimize the appearance of the element on the output device. By default, the browser is allowed to make any adjustments to the element's appearance it determines to be necessary and prudent given the type and capabilities of the output device.
      *
@@ -11990,6 +12050,12 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     readonly URL: string;
     /**
+     * The **`activeViewTransition`** read-only property of the Document interface returns a ViewTransition instance representing the view transition currently active on the document.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/activeViewTransition)
+     */
+    readonly activeViewTransition: ViewTransition | null;
+    /**
      * Returns or sets the color of an active link in the document body. A link is active during the time between mousedown and mouseup events.
      * @deprecated
      *
@@ -12408,6 +12474,8 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createEvent(eventInterface: "MessageEvent"): MessageEvent;
     createEvent(eventInterface: "MouseEvent"): MouseEvent;
     createEvent(eventInterface: "MouseEvents"): MouseEvent;
+    createEvent(eventInterface: "NavigateEvent"): NavigateEvent;
+    createEvent(eventInterface: "NavigationCurrentEntryChangeEvent"): NavigationCurrentEntryChangeEvent;
     createEvent(eventInterface: "OfflineAudioCompletionEvent"): OfflineAudioCompletionEvent;
     createEvent(eventInterface: "PageRevealEvent"): PageRevealEvent;
     createEvent(eventInterface: "PageSwapEvent"): PageSwapEvent;
@@ -21544,7 +21612,7 @@ declare var KeyframeEffect: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/LargestContentfulPaint)
  */
-interface LargestContentfulPaint extends PerformanceEntry {
+interface LargestContentfulPaint extends PerformanceEntry, PaintTimingMixin {
     /**
      * The **`element`** read-only property of the LargestContentfulPaint interface returns an object representing the Element that is the largest contentful paint.
      *
@@ -23560,6 +23628,182 @@ declare var NamedNodeMap: {
 };
 
 /**
+ * The **`NavigateEvent`** interface of the Navigation API is the event object for the navigate event, which fires when any type of navigation is initiated (this includes usage of History API features like History.go()). NavigateEvent provides access to information about that navigation, and allows developers to intercept and control the navigation handling.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent)
+ */
+interface NavigateEvent extends Event {
+    /**
+     * The **`canIntercept`** read-only property of the NavigateEvent interface returns true if the navigation can be intercepted and have its URL rewritten, or false otherwise
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/canIntercept)
+     */
+    readonly canIntercept: boolean;
+    /**
+     * The **`destination`** read-only property of the NavigateEvent interface returns a NavigationDestination object representing the destination being navigated to.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/destination)
+     */
+    readonly destination: NavigationDestination;
+    /**
+     * The **`downloadRequest`** read-only property of the NavigateEvent interface returns the filename of the file requested for download, in the case of a download navigation (e.g., an <a> or <area> element with a download attribute), or null otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/downloadRequest)
+     */
+    readonly downloadRequest: string | null;
+    /**
+     * The **`formData`** read-only property of the NavigateEvent interface returns the FormData object representing the submitted data in the case of a POST form submission, or null otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/formData)
+     */
+    readonly formData: FormData | null;
+    /**
+     * The **`hasUAVisualTransition`** read-only property of the NavigateEvent interface returns true if the user agent performed a visual transition for this navigation before dispatching this event, or false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/hasUAVisualTransition)
+     */
+    readonly hasUAVisualTransition: boolean;
+    /**
+     * The **`hashChange`** read-only property of the NavigateEvent interface returns true if the navigation is a fragment navigation (i.e., to a fragment identifier in the same document), or false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/hashChange)
+     */
+    readonly hashChange: boolean;
+    /**
+     * The **`info`** read-only property of the NavigateEvent interface returns the info data value passed by the initiating navigation operation (e.g., Navigation.back(), or Navigation.navigate()), or undefined if no info data was passed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/info)
+     */
+    readonly info: any;
+    /**
+     * The **`navigationType`** read-only property of the NavigateEvent interface returns the type of the navigation — push, reload, replace, or traverse.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/navigationType)
+     */
+    readonly navigationType: NavigationType;
+    /**
+     * The **`signal`** read-only property of the NavigateEvent interface returns an AbortSignal, which will become aborted if the navigation is cancelled (e.g., by the user pressing the browser's "Stop" button, or another navigation starting and thus cancelling the ongoing one).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/signal)
+     */
+    readonly signal: AbortSignal;
+    /**
+     * The **`sourceElement`** read-only property of the NavigateEvent interface returns an Element object representing the initiating element, in cases where the navigation was initiated by an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/sourceElement)
+     */
+    readonly sourceElement: Element | null;
+    /**
+     * The **`userInitiated`** read-only property of the NavigateEvent interface returns true if the navigation was initiated by the user (e.g., by clicking a link, submitting a form, or pressing the browser's "Back"/"Forward" buttons), or false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/userInitiated)
+     */
+    readonly userInitiated: boolean;
+    /**
+     * The **`intercept()`** method of the NavigateEvent interface intercepts this navigation, turning it into a same-document navigation to the destination URL.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/intercept)
+     */
+    intercept(options?: NavigationInterceptOptions): void;
+    /**
+     * The **`scroll()`** method of the NavigateEvent interface can be called to manually trigger the browser-driven scrolling behavior that occurs in response to the navigation, if you want it to happen before the navigation handling has completed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigateEvent/scroll)
+     */
+    scroll(): void;
+}
+
+declare var NavigateEvent: {
+    prototype: NavigateEvent;
+    new(type: string, eventInitDict: NavigateEventInit): NavigateEvent;
+};
+
+/**
+ * The **`Navigation`** interface of the Navigation API allows control over all navigation actions for the current window in one central place, including initiating navigations programmatically, examining navigation history entries, and managing navigations as they happen.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation)
+ */
+interface Navigation extends EventTarget {
+    /**
+     * The **`activation`** read-only property of the Navigation interface returns a NavigationActivation object containing information about the most recent cross-document navigation, which "activated" this Document. The property will stay constant during same-document navigations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/activation)
+     */
+    readonly activation: NavigationActivation | null;
+    /**
+     * The **`canGoBack`** read-only property of the Navigation interface returns true if it is possible to navigate backwards in the navigation history (i.e., the currentEntry is not the first one in the history entry list), and false if it is not.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/canGoBack)
+     */
+    readonly canGoBack: boolean;
+    /**
+     * The **`canGoForward`** read-only property of the Navigation interface returns true if it is possible to navigate forwards in the navigation history (i.e., the currentEntry is not the last one in the history entry list), and false if it is not.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/canGoForward)
+     */
+    readonly canGoForward: boolean;
+    /**
+     * The **`currentEntry`** read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/currentEntry)
+     */
+    readonly currentEntry: NavigationHistoryEntry | null;
+    /**
+     * The **`transition`** read-only property of the Navigation interface returns a NavigationTransition object representing the status of an in-progress navigation, which can be used to track it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/transition)
+     */
+    readonly transition: NavigationTransition | null;
+    /**
+     * The **`back()`** method of the Navigation interface navigates backwards by one entry in the navigation history.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/back)
+     */
+    back(options?: NavigationOptions): NavigationResult;
+    /**
+     * The **`entries()`** method of the Navigation interface returns an array of NavigationHistoryEntry objects representing all existing history entries.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/entries)
+     */
+    entries(): NavigationHistoryEntry[];
+    /**
+     * The **`forward()`** method of the Navigation interface navigates forwards by one entry in the navigation history.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/forward)
+     */
+    forward(options?: NavigationOptions): NavigationResult;
+    /**
+     * The **`navigate()`** method of the Navigation interface navigates to a specific URL, updating any provided state in the history entries list.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/navigate)
+     */
+    navigate(url: string | URL, options?: NavigationNavigateOptions): NavigationResult;
+    /**
+     * The **`reload()`** method of the Navigation interface reloads the current URL, updating any provided state in the history entries list.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/reload)
+     */
+    reload(options?: NavigationReloadOptions): NavigationResult;
+    /**
+     * The **`traverseTo()`** method of the Navigation interface navigates to the NavigationHistoryEntry identified by the given key.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/traverseTo)
+     */
+    traverseTo(key: string, options?: NavigationOptions): NavigationResult;
+    /**
+     * The **`updateCurrentEntry()`** method of the Navigation interface updates the state of the currentEntry; used in cases where the state change will be independent of a navigation or reload.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/updateCurrentEntry)
+     */
+    updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions): void;
+}
+
+declare var Navigation: {
+    prototype: Navigation;
+    new(): Navigation;
+};
+
+/**
  * The **`NavigationActivation`** interface of the Navigation API represents a recent cross-document navigation. It contains the navigation type and outgoing and inbound document history entries.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationActivation)
@@ -23588,6 +23832,80 @@ interface NavigationActivation {
 declare var NavigationActivation: {
     prototype: NavigationActivation;
     new(): NavigationActivation;
+};
+
+/**
+ * The **`NavigationCurrentEntryChangeEvent`** interface of the Navigation API is the event object for the currententrychange event, which fires when the Navigation.currentEntry has changed.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationCurrentEntryChangeEvent)
+ */
+interface NavigationCurrentEntryChangeEvent extends Event {
+    /**
+     * The **`from`** read-only property of the NavigationCurrentEntryChangeEvent interface returns the NavigationHistoryEntry that was navigated from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationCurrentEntryChangeEvent/from)
+     */
+    readonly from: NavigationHistoryEntry;
+    /**
+     * The **`navigationType`** read-only property of the NavigationCurrentEntryChangeEvent interface returns the type of the navigation that resulted in the change. The property may be null if the change occurs due to Navigation.updateCurrentEntry().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationCurrentEntryChangeEvent/navigationType)
+     */
+    readonly navigationType: NavigationType | null;
+}
+
+declare var NavigationCurrentEntryChangeEvent: {
+    prototype: NavigationCurrentEntryChangeEvent;
+    new(type: string, eventInitDict: NavigationCurrentEntryChangeEventInit): NavigationCurrentEntryChangeEvent;
+};
+
+/**
+ * The **`NavigationDestination`** interface of the Navigation API represents the destination being navigated to in the current navigation.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination)
+ */
+interface NavigationDestination {
+    /**
+     * The **`id`** read-only property of the NavigationDestination interface returns the id value of the destination NavigationHistoryEntry if the NavigateEvent.navigationType is traverse, or an empty string otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination/id)
+     */
+    readonly id: string;
+    /**
+     * The **`index`** read-only property of the NavigationDestination interface returns the index value of the destination NavigationHistoryEntry if the NavigateEvent.navigationType is traverse, or -1 otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination/index)
+     */
+    readonly index: number;
+    /**
+     * The **`key`** read-only property of the NavigationDestination interface returns the key value of the destination NavigationHistoryEntry if the NavigateEvent.navigationType is traverse, or an empty string otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination/key)
+     */
+    readonly key: string;
+    /**
+     * The **`sameDocument`** read-only property of the NavigationDestination interface returns true if the navigation is to the same document as the current Document value, or false otherwise.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination/sameDocument)
+     */
+    readonly sameDocument: boolean;
+    /**
+     * The **`url`** read-only property of the NavigationDestination interface returns the URL being navigated to.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination/url)
+     */
+    readonly url: string;
+    /**
+     * The **`getState()`** method of the NavigationDestination interface returns a clone of the developer-supplied state associated with the destination NavigationHistoryEntry, or navigation operation (e.g., navigate()) as appropriate.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationDestination/getState)
+     */
+    getState(): any;
+}
+
+declare var NavigationDestination: {
+    prototype: NavigationDestination;
+    new(): NavigationDestination;
 };
 
 interface NavigationHistoryEntryEventMap {
@@ -23650,6 +23968,25 @@ declare var NavigationHistoryEntry: {
 };
 
 /**
+ * The **`NavigationPrecommitController`** interface of the Navigation API defines redirect behavior for a navigation precommit handler.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPrecommitController)
+ */
+interface NavigationPrecommitController {
+    /**
+     * The **`redirect()`** method of the NavigationPrecommitController interface redirects the browser to a specified URL and specifies history behavior and any desired state information.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPrecommitController/redirect)
+     */
+    redirect(url: string | URL, options?: NavigationNavigateOptions): void;
+}
+
+declare var NavigationPrecommitController: {
+    prototype: NavigationPrecommitController;
+    new(): NavigationPrecommitController;
+};
+
+/**
  * The **`NavigationPreloadManager`** interface of the Service Worker API provides methods for managing the preloading of resources in parallel with service worker bootup.
  * Available only in secure contexts.
  *
@@ -23685,6 +24022,38 @@ interface NavigationPreloadManager {
 declare var NavigationPreloadManager: {
     prototype: NavigationPreloadManager;
     new(): NavigationPreloadManager;
+};
+
+/**
+ * The **`NavigationTransition`** interface of the Navigation API represents an ongoing navigation, that is, a navigation that hasn't yet reached the navigatesuccess or navigateerror stage.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition)
+ */
+interface NavigationTransition {
+    readonly committed: Promise<void>;
+    /**
+     * The **`finished`** read-only property of the NavigationTransition interface returns a Promise that fulfills at the same time the navigatesuccess event fires, or rejects at the same time the navigateerror event fires.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/finished)
+     */
+    readonly finished: Promise<void>;
+    /**
+     * The **`from`** read-only property of the NavigationTransition interface returns the NavigationHistoryEntry that the transition is coming from.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/from)
+     */
+    readonly from: NavigationHistoryEntry;
+    /**
+     * The **`navigationType`** read-only property of the NavigationTransition interface returns the type of the ongoing navigation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/navigationType)
+     */
+    readonly navigationType: NavigationType;
+}
+
+declare var NavigationTransition: {
+    prototype: NavigationTransition;
+    new(): NavigationTransition;
 };
 
 /**
@@ -24829,6 +25198,11 @@ declare var PageTransitionEvent: {
     new(type: string, eventInitDict?: PageTransitionEventInit): PageTransitionEvent;
 };
 
+interface PaintTimingMixin {
+    readonly paintTime: DOMHighResTimeStamp;
+    readonly presentationTime: DOMHighResTimeStamp | null;
+}
+
 /**
  * The **`PannerNode`** interface defines an audio-processing object that represents the location, direction, and behavior of an audio source signal in a simulated physical space. This AudioNode uses right-hand Cartesian coordinates to describe the source's position as a vector and its orientation as a 3D directional cone.
  *
@@ -25344,6 +25718,7 @@ interface Performance extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/eventCounts)
      */
     readonly eventCounts: EventCounts;
+    readonly interactionCount: number;
     /**
      * The legacy **`Performance.navigation`** read-only property returns a PerformanceNavigation object representing the type of navigation that occurs in the given browsing context, such as the number of redirections needed to fetch the resource.
      * @deprecated
@@ -25769,7 +26144,7 @@ declare var PerformanceObserverEntryList: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
  */
-interface PerformancePaintTiming extends PerformanceEntry {
+interface PerformancePaintTiming extends PerformanceEntry, PaintTimingMixin {
     toJSON(): any;
 }
 
@@ -28667,6 +29042,19 @@ interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
      */
     download: string;
     /**
+     * The **`hreflang`** property of the SVGAElement interface returns a string indicating the language of the linked resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/hreflang)
+     */
+    hreflang: string;
+    /**
+     * The **`ping`** property of the SVGAElement interface returns a string that reflects the ping attribute, containing a space-separated list of URLs to which, when the hyperlink is followed, POST requests with the body PING will be sent by the browser (in the background). Typically used for tracking.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/ping)
+     */
+    ping: string;
+    referrerPolicy: string;
+    /**
      * The **`rel`** property of the SVGAElement returns a string reflecting the value of the rel attribute of the SVG <a> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/rel)
@@ -28685,6 +29073,12 @@ interface SVGAElement extends SVGGraphicsElement, SVGURIReference {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/target)
      */
     readonly target: SVGAnimatedString;
+    /**
+     * The **`type`** property of the SVGAElement interface returns a string indicating the MIME type of the linked resource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAElement/type)
+     */
+    type: string;
     addEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof SVGElementEventMap>(type: K, listener: (this: SVGAElement, ev: SVGElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -39063,6 +39457,12 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      */
     name: string;
     /**
+     * The **`navigation`** read-only property of the Window interface returns the current window's associated Navigation object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/navigation)
+     */
+    readonly navigation: Navigation;
+    /**
      * The **`Window.navigator`** read-only property returns a reference to the Navigator object, which has methods and properties about the application running the script.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/navigator)
@@ -40749,6 +41149,14 @@ interface MutationCallback {
     (mutations: MutationRecord[], observer: MutationObserver): void;
 }
 
+interface NavigationInterceptHandler {
+    (): void | PromiseLike<void>;
+}
+
+interface NavigationPrecommitHandler {
+    (controller: NavigationPrecommitController): void | PromiseLike<void>;
+}
+
 interface NotificationPermissionCallback {
     (permission: NotificationPermission): void;
 }
@@ -41230,6 +41638,12 @@ declare var menubar: BarProp;
  */
 /** @deprecated */
 declare const name: void;
+/**
+ * The **`navigation`** read-only property of the Window interface returns the current window's associated Navigation object.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/navigation)
+ */
+declare var navigation: Navigation;
 /**
  * The **`Window.navigator`** read-only property returns a reference to the Navigator object, which has methods and properties about the application running the script.
  *
@@ -42067,6 +42481,9 @@ type MediaKeysRequirement = "not-allowed" | "optional" | "required";
 type MediaSessionAction = "nexttrack" | "pause" | "play" | "previoustrack" | "seekbackward" | "seekforward" | "seekto" | "skipad" | "stop";
 type MediaSessionPlaybackState = "none" | "paused" | "playing";
 type MediaStreamTrackState = "ended" | "live";
+type NavigationFocusReset = "after-transition" | "manual";
+type NavigationHistoryBehavior = "auto" | "push" | "replace";
+type NavigationScrollBehavior = "after-transition" | "manual";
 type NavigationTimingType = "back_forward" | "navigate" | "reload";
 type NavigationType = "push" | "reload" | "replace" | "traverse";
 type NotificationDirection = "auto" | "ltr" | "rtl";

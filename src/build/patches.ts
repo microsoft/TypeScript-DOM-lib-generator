@@ -296,25 +296,38 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
     }
   }
 
-  // Determine the actual signature object
-  const signatureObj: DeepPartial<Signature> = {
-    param: params,
-    ...(typeNode
-      ? handleTyped(typeNode)
-      : {
+  const type = typeNode
+    ? handleTyped(typeNode)
+    : child.properties?.returns
+      ? {
           type: string(child.properties?.returns),
           subtype: undefined,
-        }),
-  };
+        }
+      : null;
 
-  let signature: OverridableMethod["signature"];
   const signatureIndex = child.properties?.signatureIndex;
-  if (typeof signatureIndex == "number") {
-    signature = { [signatureIndex]: signatureObj };
-  } else {
-    signature = [signatureObj];
+  if ((params.length || signatureIndex) && !type) {
+    throw new Error("A method signature requires a type");
   }
-  return { name, signature };
+
+  let signature: OverridableMethod["signature"] = [];
+  if (type) {
+    // Determine the actual signature object
+    const signatureObj: DeepPartial<Signature> = {
+      param: params,
+      ...type,
+    };
+    if (typeof signatureIndex == "number") {
+      signature = { [signatureIndex]: signatureObj };
+    } else {
+      signature = [signatureObj];
+    }
+  }
+  return {
+    name,
+    signature,
+    ...optionalMember("exposed", "string", child.properties.exposed),
+  };
 }
 
 /**
