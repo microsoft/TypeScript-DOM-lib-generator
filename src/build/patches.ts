@@ -257,7 +257,6 @@ function handleProperty(child: Node): Partial<Property> {
       : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
-    ...(child.properties?.supported && { deprecated: false }),
   };
 }
 
