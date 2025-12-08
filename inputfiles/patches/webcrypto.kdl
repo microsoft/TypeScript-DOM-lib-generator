@@ -1,36 +1,36 @@
 // https://github.com/microsoft/TypeScript/issues/46036
 dictionary CryptoKeyPair {
-    member privateKey required=#true
-    member publicKey required=#true
+  member privateKey required=#true
+  member publicKey required=#true
 }
 
 interface CryptoKey {
-    property algorithm type=KeyAlgorithm
-    property usages {
-        type sequence {
-            type KeyUsage
-        }
+  property algorithm type=KeyAlgorithm
+  property usages {
+    type sequence {
+        type KeyUsage
     }
+  }
 }
 
 removals {
-    enum KeyFormat {
-        raw-private // No implementation as of 2025-09
-        raw-public // No implementation as of 2025-09
-        raw-secret // No implementation as of 2025-09
-        raw-seed // No implementation as of 2025-09
-    }
+  enum KeyFormat {
+    raw-private // No implementation as of 2025-09
+    raw-public // No implementation as of 2025-09
+    raw-secret // No implementation as of 2025-09
+    raw-seed // No implementation as of 2025-09
+  }
 
-    enum KeyUsage {
-        decapsulateBits // No implementation as of 2025-09
-        decapsulateKey // No implementation as of 2025-09
-        encapsulateBits // No implementation as of 2025-09
-        encapsulateKey // No implementation as of 2025-09
-    }
+  enum KeyUsage {
+    decapsulateBits // No implementation as of 2025-09
+    decapsulateKey // No implementation as of 2025-09
+    encapsulateBits // No implementation as of 2025-09
+    encapsulateKey // No implementation as of 2025-09
+  }
 
 
-    dictionary JsonWebKey {
-        member priv // No implementation as of 2025-09
-        member pub // No implementation as of 2025-09
-    }
+  dictionary JsonWebKey {
+    member priv // No implementation as of 2025-09
+    member pub // No implementation as of 2025-09
+  }
 }
