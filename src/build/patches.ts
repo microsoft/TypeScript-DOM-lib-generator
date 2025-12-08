@@ -63,19 +63,18 @@ function handleTyped(type: Node): Typed {
   };
 }
 
-function handleAdditionalTypes(node:Node){
-  const additionalTypes = []
-    for (const child of node.children) {
-      if (child.name === "additionalType") {
-        additionalTypes.push(string(child.values[0]));
-      }
-    
+function handleAdditionalTypes(node: Node) {
+  const additionalTypes = [];
+  for (const child of node.children) {
+    if (child.name === "additionalType") {
+      additionalTypes.push(string(child.values[0]));
+    }
   }
-// Check if additionalTypes has elements and return array if so, otherwise undefined/empty.
-if (additionalTypes.length > 0) {
-  return {additionalTypes};
-}
-return undefined;
+  // Check if additionalTypes has elements and return array if so, otherwise undefined/empty.
+  if (additionalTypes.length > 0) {
+    return { additionalTypes };
+  }
+  return undefined;
 }
 
 function handleTypeParameters(value: Value | Node) {
@@ -305,7 +304,7 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
             "string",
             c.properties?.overrideType,
           ),
-          ...handleAdditionalTypes(c)
+          ...handleAdditionalTypes(c),
         });
         break;
 
