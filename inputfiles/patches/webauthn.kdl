@@ -21,4 +21,27 @@ removals {
         member hmacGetSecret // No implementation as of 2025-05
         member payment // Blink only as of 2025-06
     }
+    dictionary PublicKeyCredentialCreationOptions {
+        member attestationFormats // Blink only as of 2024-08
+        member hints // Blink only as of 2024-08
+    }
+
+    dictionary PublicKeyCredentialCreationOptionsJSON {
+        member attestationFormats // Gecko only as of 2024-08
+    }
+
+    dictionary PublicKeyCredentialRequestOptions {
+        member hints // Blink only as of 2024-08
+    }
+    dictionary CredentialRequestOptions {
+        // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
+        // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
+        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
+        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
+        member digital // Behind a flag in WebKit and Blink as of 2024-03
+        member federated
+        member identity
+        member otp
+        member password
+    }
 }

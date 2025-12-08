@@ -28,21 +28,6 @@ removals {
         encapsulateKey // No implementation as of 2025-09
     }
 
-    dictionary KeySystemTrackConfiguration {
-        member encryptionScheme // Gecko only as of 2025-05
-    }
-
-    dictionary CredentialRequestOptions {
-        // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
-        // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
-        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
-        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
-        member digital // Behind a flag in WebKit and Blink as of 2024-03
-        member federated
-        member identity
-        member otp
-        member password
-    }
 
     dictionary JsonWebKey {
         member priv // No implementation as of 2025-09
