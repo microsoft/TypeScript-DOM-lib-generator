@@ -28,7 +28,6 @@ removals {
     encapsulateKey // No implementation as of 2025-09
   }
 
-
   dictionary JsonWebKey {
     member priv // No implementation as of 2025-09
     member pub // No implementation as of 2025-09
