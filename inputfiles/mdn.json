@@ -12125,6 +12125,11 @@
     "summary": "The hreflang property of the HTMLAnchorElement interface is a string that is the language of the linked resource."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/HTMLAnchorElement/interestForElement",
+    "pageType": "web-api-instance-property",
+    "summary": "The interestForElement property of the HTMLAnchorElement interface gets or sets the target element of an interest invoker, in cases where the associated <a> element is specified as an interest invoker."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/HTMLAnchorElement/origin",
     "pageType": "web-api-instance-property",
     "summary": "The origin read-only property of the HTMLAnchorElement interface returns a string containing the Unicode serialization of the origin of the <a> element's href."
@@ -12238,6 +12243,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLAreaElement/href",
     "pageType": "web-api-instance-property",
     "summary": "The HTMLAreaElement.href property is a\nstringifier that returns a string containing the whole URL, and allows\nthe href to be updated."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLAreaElement/interestForElement",
+    "pageType": "web-api-instance-property",
+    "summary": "The interestForElement property of the HTMLAreaElement interface gets or sets the target element of an interest invoker, in cases where the associated <area> element is specified as an interest invoker."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLAreaElement/origin",
@@ -12398,6 +12408,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLButtonElement/formTarget",
     "pageType": "web-api-instance-property",
     "summary": "The formTarget property of the HTMLButtonElement interface is the tab, window, or iframe where the response of the submitted <form> is to be displayed. It reflects the value of the <button> element's formtarget attribute."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLButtonElement/interestForElement",
+    "pageType": "web-api-instance-property",
+    "summary": "The interestForElement property of the HTMLButtonElement interface gets or sets the target element of an interest invoker, in cases where the associated <button> element is specified as an interest invoker."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLButtonElement/labels",
@@ -12820,6 +12835,11 @@
     "summary": "The HTMLElement property inputMode reflects the value of the element's inputmode attribute."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/HTMLElement/interest_event",
+    "pageType": "web-api-event",
+    "summary": "The interest event of the HTMLElement interface is fired on an interest invoker's target element when interest is shown, allowing code to be run in response."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/HTMLElement/isContentEditable",
     "pageType": "web-api-instance-property",
     "summary": "The HTMLElement.isContentEditable read-only property\nreturns a boolean value that is true if the contents of the element\nare editable; otherwise it returns false."
@@ -12833,6 +12853,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLElement/load_event",
     "pageType": "web-api-event",
     "summary": "The load event fires for elements containing a resource when the resource has successfully loaded. Currently, the list of supported HTML elements are: <body>, <embed>, <iframe>, <img>, <link>, <object>, <script>, <style>, and <track>."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLElement/loseinterest_event",
+    "pageType": "web-api-event",
+    "summary": "The loseinterest event of the HTMLElement interface is fired on the target element of an interest invoker when interest is lost, allowing code to be run in response."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLElement/nonce",
@@ -16653,6 +16678,21 @@
     "mdn_url": "/en-US/docs/Web/API/IntegrityViolationReportBody",
     "pageType": "web-api-interface",
     "summary": "The IntegrityViolationReportBody dictionary is an extension of the Reporting API that represents the body of an Integrity Policy violation report."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/InterestEvent",
+    "pageType": "web-api-interface",
+    "summary": "The InterestEvent interface represents an event that fires when interest is shown or lost on an interest invoker."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/InterestEvent/InterestEvent",
+    "pageType": "web-api-constructor",
+    "summary": "The InterestEvent() constructor creates a new InterestEvent object."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/InterestEvent/source",
+    "pageType": "web-api-instance-property",
+    "summary": "The source read-only property of the InterestEvent interface is an Element object instance that represents the interest invoker element on which interest was shown or lost to fire the event."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Intersection_Observer_API",
@@ -22480,6 +22520,11 @@
     "summary": "The Popover API provides developers with a standard, consistent, flexible mechanism for displaying popover content on top of other page content. Popover content can be controlled either declaratively using HTML attributes, or via JavaScript. This article provides a detailed guide to using all of its features."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Popover_API/Using_interest_invokers",
+    "pageType": "guide",
+    "summary": "Interest invokers provide a mechanism for updating an interface or running custom code when a user \"shows interest\" or \"loses interest\" in an element (for example, by hovering or unhovering it). They are most commonly used to show and hide popovers. This guide explains the concepts behind interest invokers, what their use cases are, and how to use them."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/PopStateEvent",
     "pageType": "web-api-interface",
     "summary": "PopStateEvent is an interface for the popstate event."
@@ -23162,7 +23207,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Range/Range",
     "pageType": "web-api-constructor",
-    "summary": "The Range() constructor returns a newly created\nRange object whose start and end are offset 0 of the the global document\nobject."
+    "summary": "The Range() constructor returns a newly created\nRange object whose start and end are offset 0 of the global document\nobject."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Range/selectNode",
@@ -28533,6 +28578,11 @@
     "mdn_url": "/en-US/docs/Web/API/SVGAElement/hreflang",
     "pageType": "web-api-instance-property",
     "summary": "The hreflang property of the SVGAElement interface returns a string indicating the language of the linked resource."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/SVGAElement/interestForElement",
+    "pageType": "web-api-instance-property",
+    "summary": "The interestForElement property of the SVGAElement interface gets or sets the target element of an interest invoker, in cases where the associated <a> element is specified as an interest invoker."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAElement/origin",
@@ -39525,6 +39575,11 @@
     "summary": "The background-size CSS property sets the size of the element's background image.\nThe image can be left to its natural size, stretched, or constrained to fit the available space."
   },
   {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/baseline-source",
+    "pageType": "css-property",
+    "summary": "The baseline-source CSS property defines which baseline to use when inline-level boxes have multiple possible baselines, such as multi-line inline blocks or inline flex containers.\nThe values allow for choosing between aligning to the box's first baseline, last baseline, or letting the browser decide automatically based on the box type."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/block-size",
     "pageType": "css-property",
     "summary": "The block-size CSS property defines the size of an element's block along the block axis. If the writing-mode is horizontal, it corresponds to the height; if the writing mode is vertical, it corresponds to the width. A related property is inline-size, which defines the other dimension of the element."
@@ -40615,6 +40670,21 @@
     "summary": "The interactivity CSS property specifies whether an element and its descendant nodes are set to be inert."
   },
   {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/interest-delay",
+    "pageType": "css-shorthand-property",
+    "summary": "The interest-delay CSS property specifies the delay between the user showing interest in an interest invoker element and the interest event firing, and the delay between the user losing interest and the loseinterest event firing."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/interest-delay-end",
+    "pageType": "css-shorthand-property",
+    "summary": "The interest-delay-end CSS property specifies the delay between the user losing interest in an interest invoker element and the loseinterest event firing."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/interest-delay-start",
+    "pageType": "css-shorthand-property",
+    "summary": "The interest-delay-start CSS property specifies the delay between the user showing interest in an interest invoker element and the interest event firing."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/interpolate-size",
     "pageType": "css-property",
     "summary": "The interpolate-size CSS property allows you to enable animations and transitions between a <length-percentage> value and an intrinsic size value such as auto, fit-content, or max-content."
@@ -41677,7 +41747,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/text-shadow",
     "pageType": "css-property",
-    "summary": "The text-shadow CSS property adds shadows to text. It accepts a comma-separated list of shadows to be applied to the text and any of its decorations. Each shadow is described by some combination of X and Y offsets from the element, blur radius, and color."
+    "summary": "The text-shadow CSS property adds shadows to text. It accepts a comma-separated list of shadows to be applied to the text and any of its text-decoration. Each shadow is described by some combination of X and Y offsets from the element, blur radius, and color."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/text-size-adjust",
