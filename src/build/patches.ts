@@ -63,6 +63,21 @@ function handleTyped(type: Node): Typed {
   };
 }
 
+function handleAdditionalTypes(node:Node){
+  const additionalTypes = []
+    for (const child of node.children) {
+      if (child.name === "additionalType") {
+        additionalTypes.push(string(child.values[0]));
+      }
+    
+  }
+// Check if additionalTypes has elements and return array if so, otherwise undefined/empty.
+if (additionalTypes.length > 0) {
+  return {additionalTypes};
+}
+return undefined;
+}
+
 function handleTypeParameters(value: Value | Node) {
   if (!value) {
     return {};
@@ -290,6 +305,7 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
             "string",
             c.properties?.overrideType,
           ),
+          ...handleAdditionalTypes(c)
         });
         break;
 
@@ -308,12 +324,9 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
       : null;
 
   const signatureIndex = child.properties?.signatureIndex;
-  if ((params.length || signatureIndex) && !type) {
-    throw new Error("A method signature requires a type");
-  }
 
   let signature: OverridableMethod["signature"] = [];
-  if (type) {
+  if (type || params.length > 0) {
     // Determine the actual signature object
     const signatureObj: DeepPartial<Signature> = {
       param: params,

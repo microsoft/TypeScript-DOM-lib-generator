@@ -170,4 +170,10 @@ interface-mixin WebGLRenderingContextBase {
     param extensionName overrideType="\"WEBGL_multi_draw\""
     type WEBGL_multi_draw nullable=#true
   }
+
+  method pixelStorei signatureIndex=0 {
+    param param {
+      additionalType GLboolean
+    }
+  }
 }

@@ -30,25 +30,6 @@
                     }
                 }
             },
-            "WebGLRenderingContextBase": {
-                "methods": {
-                    "method": {
-                        "pixelStorei": {
-                            "name": "pixelStorei",
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "param",
-                                            "additionalTypes": ["GLboolean"]
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "Body": {
                 "properties": {
                     "property": {
