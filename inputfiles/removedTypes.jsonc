@@ -16,22 +16,6 @@
             "ConnectionType": {
                 "value": ["wimax"]
             },
-            "KeyFormat": {
-                "value": [
-                    "raw-private", // No implementation as of 2025-09
-                    "raw-public", // No implementation as of 2025-09
-                    "raw-secret", // No implementation as of 2025-09
-                    "raw-seed" // No implementation as of 2025-09
-                ]
-            },
-            "KeyUsage": {
-                "value": [
-                    "decapsulateBits", // No implementation as of 2025-09
-                    "decapsulateKey", // No implementation as of 2025-09
-                    "encapsulateBits", // No implementation as of 2025-09
-                    "encapsulateKey" // No implementation as of 2025-09
-                ]
-            },
             "MediaSessionAction": {
                 "value": [
                     "enterpictureinpicture", // Blink only as of 2024-07
@@ -234,21 +218,6 @@
                     }
                 }
             },
-            "CredentialRequestOptions": {
-                "members": {
-                    "member": {
-                        // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
-                        // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
-                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
-                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
-                        "digital": null, // Behind a flag in WebKit and Blink as of 2024-03
-                        "federated": null,
-                        "identity": null,
-                        "otp": null,
-                        "password": null
-                    }
-                }
-            },
             "DisplayMediaStreamOptions": {
                 "members": {
                     "member": {
@@ -322,26 +291,11 @@
                     }
                 }
             },
-            "JsonWebKey": {
-                "members": {
-                    "member": {
-                        "priv": null, // No implementation as of 2025-09
-                        "pub": null // No implementation as of 2025-09
-                    }
-                }
-            },
             "KeyframeAnimationOptions": {
                 "members": {
                     "member": {
                         "rangeEnd": null, // Blink only as of 2023-04
                         "rangeStart": null // Blink only as of 2023-04
-                    }
-                }
-            },
-            "KeySystemTrackConfiguration": {
-                "members": {
-                    "member": {
-                        "encryptionScheme": null // Gecko only as of 2025-05
                     }
                 }
             },
@@ -450,28 +404,6 @@
                 "members": {
                     "member": {
                         "hasUAVisualTransition": null // Blink only as of 2023-09
-                    }
-                }
-            },
-            "PublicKeyCredentialCreationOptions": {
-                "members": {
-                    "member": {
-                        "attestationFormats": null, // Blink only as of 2024-08
-                        "hints": null // Blink only as of 2024-08
-                    }
-                }
-            },
-            "PublicKeyCredentialCreationOptionsJSON": {
-                "members": {
-                    "member": {
-                        "attestationFormats": null // Gecko only as of 2024-08
-                    }
-                }
-            },
-            "PublicKeyCredentialRequestOptions": {
-                "members": {
-                    "member": {
-                        "hints": null // Blink only as of 2024-08
                     }
                 }
             },

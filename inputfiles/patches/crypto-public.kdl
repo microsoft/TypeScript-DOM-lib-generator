@@ -1,0 +1,14 @@
+removals {
+    dictionary PublicKeyCredentialCreationOptions {
+        member attestationFormats // Blink only as of 2024-08
+        member hints // Blink only as of 2024-08
+    }
+
+    dictionary PublicKeyCredentialCreationOptionsJSON {
+        member attestationFormats // Gecko only as of 2024-08
+    }
+
+    dictionary PublicKeyCredentialRequestOptions {
+        member hints // Blink only as of 2024-08
+    }
+}
