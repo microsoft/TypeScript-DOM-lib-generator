@@ -2,6 +2,7 @@ removals {
   enum AuthenticatorTransport {
     smart-card // WebKit only as of 2023-05
   }
+
   dictionary AuthenticationExtensionsClientInputs {
     // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
     // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
@@ -12,15 +13,18 @@ removals {
     member hmacGetSecret // No implementation as of 2025-05
     member payment
   }
+
   dictionary AuthenticationExtensionsClientInputsJSON {
     member appidExclude
   }
+
   dictionary AuthenticationExtensionsClientOutputs {
     // (same as *Inputs)
     member appidExclude // No implementation as of 2025-05
     member hmacGetSecret // No implementation as of 2025-05
     member payment // Blink only as of 2025-06
   }
+
   dictionary PublicKeyCredentialCreationOptions {
     member attestationFormats // Blink only as of 2024-08
     member hints // Blink only as of 2024-08
@@ -33,6 +37,7 @@ removals {
   dictionary PublicKeyCredentialRequestOptions {
     member hints // Blink only as of 2024-08
   }
+
   dictionary CredentialRequestOptions {
     // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
     // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
