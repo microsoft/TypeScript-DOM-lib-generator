@@ -666,51 +666,10 @@
                     }
                 }
             },
-            "NavigationActivation": {
-                // https://github.com/mdn/browser-compat-data/issues/24963
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "entry": {
-                            "exposed": "Window"
-                        },
-                        "from": {
-                            "exposed": "Window"
-                        },
-                        "navigationType": {
-                            "exposed": "Window"
-                        }
-                    }
-                }
-            },
             "NavigationHistoryEntry": {
-                // https://github.com/mdn/browser-compat-data/issues/24963
-                "exposed": "Window",
                 "properties": {
                     "property": {
-                        "url": {
-                            "exposed": "Window"
-                        },
-                        "key": {
-                            "exposed": "Window"
-                        },
-                        "id": {
-                            "exposed": "Window"
-                        },
-                        "index": {
-                            "exposed": "Window"
-                        },
-                        "sameDocument": {
-                            "exposed": "Window"
-                        },
                         "ondispose": {
-                            "exposed": "Window"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "getState": {
                             "exposed": "Window"
                         }
                     }
