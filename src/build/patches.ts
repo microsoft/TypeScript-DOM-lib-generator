@@ -89,7 +89,7 @@ function optionalNestedMember<T>(prop: string, object: object, output: T) {
  * Converts parsed KDL Document nodes to match the [types](types.d.ts).
  */
 function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
-  const enums: Record<string, Enum> = {};
+  const enums: Record<string, Partial<Enum>> = {};
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
   const dictionary: Record<string, DeepPartial<Dictionary>> = {};
@@ -134,7 +134,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
  * @param node The enum node to handle.
  * @param enums The record of enums to update.
  */
-function handleEnum(node: Node): Enum {
+function handleEnum(node: Node): Partial<Enum> {
   const name = string(node.properties?.name || node.values[0]);
   const values: string[] = [];
 
@@ -144,7 +144,7 @@ function handleEnum(node: Node): Enum {
 
   return {
     name,
-    value: values,
+    ...(values.length > 0 ? { value: values } : {}),
     ...optionalMember(
       "legacyNamespace",
       "string",
