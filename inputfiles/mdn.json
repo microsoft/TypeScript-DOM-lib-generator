@@ -8322,7 +8322,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/setAttribute",
     "pageType": "web-api-instance-method",
-    "summary": "The setAttribute() method of the Element interface sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value."
+    "summary": "The setAttribute() method of the Element interface sets the value of an attribute on the specified element.\nIf the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/setAttributeNode",
@@ -8337,7 +8337,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/setAttributeNS",
     "pageType": "web-api-instance-method",
-    "summary": "setAttributeNS adds a new attribute or changes the value of an attribute\nwith the given namespace and name."
+    "summary": "If you are working with HTML documents and you don't need to specify the requested attribute as being part of a specific namespace, use the setAttribute() method instead."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/setCapture",
@@ -39467,12 +39467,12 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation-range-end",
     "pageType": "css-property",
-    "summary": "The animation-range-end CSS property is used to set the end of an animation's attachment range along its timeline, i.e., where along the timeline an animation will end."
+    "summary": "The animation-range-end CSS property sets the point on the timeline where an animation should end."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation-range-start",
     "pageType": "css-property",
-    "summary": "The animation-range-start CSS property is used to set the start of an animation's attachment range along its timeline, i.e., where along the timeline an animation will start."
+    "summary": "The animation-range-start CSS property sets the point on the timeline where an animation should start."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation-timeline",
@@ -41512,7 +41512,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-timeline-axis",
     "pageType": "css-property",
-    "summary": "The scroll-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a scroll driven animation animation, which is progressed through by scrolling a scrollable element (scroller)."
+    "summary": "The scroll-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a scroll driven animation, which is progressed through by scrolling a scrollable element (scroller)."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-timeline-name",

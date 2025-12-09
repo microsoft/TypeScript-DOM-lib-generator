@@ -6227,13 +6227,13 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     animationRange: string;
     /**
-     * The animation-range-end CSS property is used to set the end of an animation's attachment range along its timeline, i.e., where along the timeline an animation will end.
+     * The animation-range-end CSS property sets the point on the timeline where an animation should end.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-range-end)
      */
     animationRangeEnd: string;
     /**
-     * The animation-range-start CSS property is used to set the start of an animation's attachment range along its timeline, i.e., where along the timeline an animation will start.
+     * The animation-range-start CSS property sets the point on the timeline where an animation should start.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/animation-range-start)
      */
@@ -8343,7 +8343,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     scrollTimeline: string;
     /**
-     * The scroll-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a scroll driven animation animation, which is progressed through by scrolling a scrollable element (scroller).
+     * The scroll-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a scroll driven animation, which is progressed through by scrolling a scrollable element (scroller).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-timeline-axis)
      */
@@ -13354,7 +13354,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setAttribute(qualifiedName: string, value: string): void;
     /**
-     * **`setAttributeNS`** adds a new attribute or changes the value of an attribute with the given namespace and name.
+     * If you are working with HTML documents and you don't need to specify the requested attribute as being part of a specific namespace, use the setAttribute() method instead.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNS)
      */
