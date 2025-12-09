@@ -201,6 +201,11 @@ function handleMixinAndInterfaces(
       "boolean",
       node.properties?.noInterfaceObject,
     ),
+    ...optionalMember(
+      "noToStringTag",
+      "boolean",
+      node.properties?.noToStringTag,
+    ),
   };
   return {
     name,

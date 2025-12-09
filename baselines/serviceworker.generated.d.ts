@@ -920,6 +920,7 @@ interface AbortController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbortController/abort)
      */
     abort(reason?: any): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var AbortController: {
@@ -961,6 +962,7 @@ interface AbortSignal extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var AbortSignal: {
@@ -1047,6 +1049,7 @@ interface Blob {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Blob/text)
      */
     text(): Promise<string>;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var Blob: {
@@ -1110,6 +1113,7 @@ interface BroadcastChannel extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof BroadcastChannelEventMap>(type: K, listener: (this: BroadcastChannel, ev: BroadcastChannelEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "BroadcastChannel";
 }
 
 declare var BroadcastChannel: {
@@ -1131,6 +1135,7 @@ interface ByteLengthQueuingStrategy extends QueuingStrategy<ArrayBufferView> {
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ByteLengthQueuingStrategy/size) */
     readonly size: QueuingStrategySize<ArrayBufferView>;
+    readonly [Symbol.toStringTag]: "ByteLengthQueuingStrategy";
 }
 
 declare var ByteLengthQueuingStrategy: {
@@ -1144,6 +1149,7 @@ declare var ByteLengthQueuingStrategy: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSImageValue)
  */
 interface CSSImageValue extends CSSStyleValue {
+    readonly [Symbol.toStringTag]: "CSSImageValue";
 }
 
 declare var CSSImageValue: {
@@ -1163,6 +1169,7 @@ interface CSSKeywordValue extends CSSStyleValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeywordValue/value)
      */
     value: string;
+    readonly [Symbol.toStringTag]: "CSSKeywordValue";
 }
 
 declare var CSSKeywordValue: {
@@ -1174,6 +1181,7 @@ interface CSSMathClamp extends CSSMathValue {
     readonly lower: CSSNumericValue;
     readonly upper: CSSNumericValue;
     readonly value: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSMathClamp";
 }
 
 declare var CSSMathClamp: {
@@ -1193,6 +1201,7 @@ interface CSSMathInvert extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathInvert/value)
      */
     readonly value: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSMathInvert";
 }
 
 declare var CSSMathInvert: {
@@ -1212,6 +1221,7 @@ interface CSSMathMax extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMax/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathMax";
 }
 
 declare var CSSMathMax: {
@@ -1231,6 +1241,7 @@ interface CSSMathMin extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathMin/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathMin";
 }
 
 declare var CSSMathMin: {
@@ -1250,6 +1261,7 @@ interface CSSMathNegate extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathNegate/value)
      */
     readonly value: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSMathNegate";
 }
 
 declare var CSSMathNegate: {
@@ -1269,6 +1281,7 @@ interface CSSMathProduct extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathProduct/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathProduct";
 }
 
 declare var CSSMathProduct: {
@@ -1288,6 +1301,7 @@ interface CSSMathSum extends CSSMathValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathSum/values)
      */
     readonly values: CSSNumericArray;
+    readonly [Symbol.toStringTag]: "CSSMathSum";
 }
 
 declare var CSSMathSum: {
@@ -1307,6 +1321,7 @@ interface CSSMathValue extends CSSNumericValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMathValue/operator)
      */
     readonly operator: CSSMathOperator;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var CSSMathValue: {
@@ -1326,6 +1341,7 @@ interface CSSMatrixComponent extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSMatrixComponent/matrix)
      */
     matrix: DOMMatrix;
+    readonly [Symbol.toStringTag]: "CSSMatrixComponent";
 }
 
 declare var CSSMatrixComponent: {
@@ -1347,6 +1363,7 @@ interface CSSNumericArray {
     readonly length: number;
     forEach(callbackfn: (value: CSSNumericValue, key: number, parent: CSSNumericArray) => void, thisArg?: any): void;
     [index: number]: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSNumericArray";
 }
 
 declare var CSSNumericArray: {
@@ -1420,6 +1437,7 @@ interface CSSNumericValue extends CSSStyleValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSNumericValue/type)
      */
     type(): CSSNumericType;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var CSSNumericValue: {
@@ -1439,6 +1457,7 @@ interface CSSPerspective extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSPerspective/length)
      */
     length: CSSPerspectiveValue;
+    readonly [Symbol.toStringTag]: "CSSPerspective";
 }
 
 declare var CSSPerspective: {
@@ -1476,6 +1495,7 @@ interface CSSRotate extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSRotate/z)
      */
     z: CSSNumberish;
+    readonly [Symbol.toStringTag]: "CSSRotate";
 }
 
 declare var CSSRotate: {
@@ -1508,6 +1528,7 @@ interface CSSScale extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSScale/z)
      */
     z: CSSNumberish;
+    readonly [Symbol.toStringTag]: "CSSScale";
 }
 
 declare var CSSScale: {
@@ -1533,6 +1554,7 @@ interface CSSSkew extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkew/ay)
      */
     ay: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSSkew";
 }
 
 declare var CSSSkew: {
@@ -1552,6 +1574,7 @@ interface CSSSkewX extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewX/ax)
      */
     ax: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSSkewX";
 }
 
 declare var CSSSkewX: {
@@ -1571,6 +1594,7 @@ interface CSSSkewY extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSSkewY/ay)
      */
     ay: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSSkewY";
 }
 
 declare var CSSSkewY: {
@@ -1585,6 +1609,7 @@ declare var CSSSkewY: {
  */
 interface CSSStyleValue {
     toString(): string;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var CSSStyleValue: {
@@ -1611,6 +1636,7 @@ interface CSSTransformComponent {
      */
     toMatrix(): DOMMatrix;
     toString(): string;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var CSSTransformComponent: {
@@ -1644,6 +1670,7 @@ interface CSSTransformValue extends CSSStyleValue {
     toMatrix(): DOMMatrix;
     forEach(callbackfn: (value: CSSTransformComponent, key: number, parent: CSSTransformValue) => void, thisArg?: any): void;
     [index: number]: CSSTransformComponent;
+    readonly [Symbol.toStringTag]: "CSSTransformValue";
 }
 
 declare var CSSTransformValue: {
@@ -1675,6 +1702,7 @@ interface CSSTranslate extends CSSTransformComponent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSTranslate/z)
      */
     z: CSSNumericValue;
+    readonly [Symbol.toStringTag]: "CSSTranslate";
 }
 
 declare var CSSTranslate: {
@@ -1700,6 +1728,7 @@ interface CSSUnitValue extends CSSNumericValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSUnitValue/value)
      */
     value: number;
+    readonly [Symbol.toStringTag]: "CSSUnitValue";
 }
 
 declare var CSSUnitValue: {
@@ -1721,6 +1750,7 @@ interface CSSUnparsedValue extends CSSStyleValue {
     readonly length: number;
     forEach(callbackfn: (value: CSSUnparsedSegment, key: number, parent: CSSUnparsedValue) => void, thisArg?: any): void;
     [index: number]: CSSUnparsedSegment;
+    readonly [Symbol.toStringTag]: "CSSUnparsedValue";
 }
 
 declare var CSSUnparsedValue: {
@@ -1746,6 +1776,7 @@ interface CSSVariableReferenceValue {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSVariableReferenceValue/variable)
      */
     variable: string;
+    readonly [Symbol.toStringTag]: "CSSVariableReferenceValue";
 }
 
 declare var CSSVariableReferenceValue: {
@@ -1802,6 +1833,7 @@ interface Cache {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Cache/put)
      */
     put(request: RequestInfo | URL, response: Response): Promise<void>;
+    readonly [Symbol.toStringTag]: "Cache";
 }
 
 declare var Cache: {
@@ -1846,6 +1878,7 @@ interface CacheStorage {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CacheStorage/open)
      */
     open(cacheName: string): Promise<Cache>;
+    readonly [Symbol.toStringTag]: "CacheStorage";
 }
 
 declare var CacheStorage: {
@@ -1919,6 +1952,7 @@ interface CanvasGradient {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasGradient/addColorStop)
      */
     addColorStop(offset: number, color: string): void;
+    readonly [Symbol.toStringTag]: "CanvasGradient";
 }
 
 declare var CanvasGradient: {
@@ -1996,6 +2030,7 @@ interface CanvasPattern {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasPattern/setTransform)
      */
     setTransform(transform?: DOMMatrix2DInit): void;
+    readonly [Symbol.toStringTag]: "CanvasPattern";
 }
 
 declare var CanvasPattern: {
@@ -2121,6 +2156,7 @@ interface Client {
      */
     postMessage(message: any, transfer: Transferable[]): void;
     postMessage(message: any, options?: StructuredSerializeOptions): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var Client: {
@@ -2158,6 +2194,7 @@ interface Clients {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Clients/openWindow)
      */
     openWindow(url: string | URL): Promise<WindowClient | null>;
+    readonly [Symbol.toStringTag]: "Clients";
 }
 
 declare var Clients: {
@@ -2189,6 +2226,7 @@ interface CloseEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseEvent/wasClean)
      */
     readonly wasClean: boolean;
+    readonly [Symbol.toStringTag]: "CloseEvent";
 }
 
 declare var CloseEvent: {
@@ -2206,6 +2244,7 @@ interface CompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     /** The **`writable`** read-only property of the CompressionStream interface returns a WritableStream that accepts uncompressed data to be compressed, in the form of ArrayBuffer, TypedArray, or DataView chunks. */
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "CompressionStream";
 }
 
 declare var CompressionStream: {
@@ -2248,6 +2287,7 @@ interface CookieStore extends EventTarget {
      */
     set(name: string, value: string): Promise<void>;
     set(options: CookieInit): Promise<void>;
+    readonly [Symbol.toStringTag]: "CookieStore";
 }
 
 declare var CookieStore: {
@@ -2280,6 +2320,7 @@ interface CookieStoreManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CookieStoreManager/unsubscribe)
      */
     unsubscribe(subscriptions: CookieStoreGetOptions[]): Promise<void>;
+    readonly [Symbol.toStringTag]: "CookieStoreManager";
 }
 
 declare var CookieStoreManager: {
@@ -2301,6 +2342,7 @@ interface CountQueuingStrategy extends QueuingStrategy {
     readonly highWaterMark: number;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CountQueuingStrategy/size) */
     readonly size: QueuingStrategySize;
+    readonly [Symbol.toStringTag]: "CountQueuingStrategy";
 }
 
 declare var CountQueuingStrategy: {
@@ -2334,6 +2376,7 @@ interface Crypto {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID)
      */
     randomUUID(): `${string}-${string}-${string}-${string}-${string}`;
+    readonly [Symbol.toStringTag]: "Crypto";
 }
 
 declare var Crypto: {
@@ -2372,6 +2415,7 @@ interface CryptoKey {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CryptoKey/usages)
      */
     readonly usages: KeyUsage[];
+    readonly [Symbol.toStringTag]: "CryptoKey";
 }
 
 declare var CryptoKey: {
@@ -2398,6 +2442,7 @@ interface CustomEvent<T = any> extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/initCustomEvent)
      */
     initCustomEvent(type: string, bubbles?: boolean, cancelable?: boolean, detail?: T): void;
+    readonly [Symbol.toStringTag]: "CustomEvent";
 }
 
 declare var CustomEvent: {
@@ -2455,6 +2500,7 @@ interface DOMException extends Error {
     readonly TIMEOUT_ERR: 23;
     readonly INVALID_NODE_TYPE_ERR: 24;
     readonly DATA_CLONE_ERR: 25;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var DOMException: {
@@ -2603,6 +2649,7 @@ interface DOMMatrix extends DOMMatrixReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrix/translateSelf)
      */
     translateSelf(tx?: number, ty?: number, tz?: number): DOMMatrix;
+    readonly [Symbol.toStringTag]: "DOMMatrix";
 }
 
 declare var DOMMatrix: {
@@ -2788,6 +2835,7 @@ interface DOMMatrixReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMMatrixReadOnly/translate)
      */
     translate(tx?: number, ty?: number, tz?: number): DOMMatrix;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var DOMMatrixReadOnly: {
@@ -2843,6 +2891,7 @@ interface DOMPoint extends DOMPointReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPoint/z)
      */
     z: number;
+    readonly [Symbol.toStringTag]: "DOMPoint";
 }
 
 declare var DOMPoint: {
@@ -2898,6 +2947,7 @@ interface DOMPointReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMPointReadOnly/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var DOMPointReadOnly: {
@@ -2953,6 +3003,7 @@ interface DOMQuad {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMQuad/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "DOMQuad";
 }
 
 declare var DOMQuad: {
@@ -3002,6 +3053,7 @@ interface DOMRect extends DOMRectReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRect/y)
      */
     y: number;
+    readonly [Symbol.toStringTag]: "DOMRect";
 }
 
 declare var DOMRect: {
@@ -3075,6 +3127,7 @@ interface DOMRectReadOnly {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMRectReadOnly/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var DOMRectReadOnly: {
@@ -3113,6 +3166,7 @@ interface DOMStringList {
      */
     item(index: number): string | null;
     [index: number]: string;
+    readonly [Symbol.toStringTag]: "DOMStringList";
 }
 
 declare var DOMStringList: {
@@ -3130,6 +3184,7 @@ interface DecompressionStream extends GenericTransformStream {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     /** The **`writable`** read-only property of the DecompressionStream interface returns a WritableStream that accepts compressed data to be decompressed, in the form of ArrayBuffer, TypedArray, or DataView chunks. */
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "DecompressionStream";
 }
 
 declare var DecompressionStream: {
@@ -3289,6 +3344,7 @@ interface ErrorEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ErrorEvent/message)
      */
     readonly message: string;
+    readonly [Symbol.toStringTag]: "ErrorEvent";
 }
 
 declare var ErrorEvent: {
@@ -3418,6 +3474,7 @@ interface Event {
     readonly CAPTURING_PHASE: 1;
     readonly AT_TARGET: 2;
     readonly BUBBLING_PHASE: 3;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var Event: {
@@ -3488,6 +3545,7 @@ interface EventSource extends EventTarget {
     removeEventListener<K extends keyof EventSourceEventMap>(type: K, listener: (this: EventSource, ev: EventSourceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: (this: EventSource, event: MessageEvent) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "EventSource";
 }
 
 declare var EventSource: {
@@ -3522,6 +3580,7 @@ interface EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
      */
     removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var EventTarget: {
@@ -3547,6 +3606,7 @@ interface ExtendableCookieChangeEvent extends ExtendableEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableCookieChangeEvent/deleted)
      */
     readonly deleted: ReadonlyArray<CookieListItem>;
+    readonly [Symbol.toStringTag]: "ExtendableCookieChangeEvent";
 }
 
 declare var ExtendableCookieChangeEvent: {
@@ -3566,6 +3626,7 @@ interface ExtendableEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableEvent/waitUntil)
      */
     waitUntil(f: Promise<any>): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var ExtendableEvent: {
@@ -3609,6 +3670,7 @@ interface ExtendableMessageEvent extends ExtendableEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ExtendableMessageEvent/source)
      */
     readonly source: Client | ServiceWorker | MessagePort | null;
+    readonly [Symbol.toStringTag]: "ExtendableMessageEvent";
 }
 
 declare var ExtendableMessageEvent: {
@@ -3658,6 +3720,7 @@ interface FetchEvent extends ExtendableEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FetchEvent/respondWith)
      */
     respondWith(r: Response | PromiseLike<Response>): void;
+    readonly [Symbol.toStringTag]: "FetchEvent";
 }
 
 declare var FetchEvent: {
@@ -3689,6 +3752,7 @@ interface File extends Blob {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/File/webkitRelativePath)
      */
     readonly webkitRelativePath: string;
+    readonly [Symbol.toStringTag]: "File";
 }
 
 declare var File: {
@@ -3715,6 +3779,7 @@ interface FileList {
      */
     item(index: number): File | null;
     [index: number]: File;
+    readonly [Symbol.toStringTag]: "FileList";
 }
 
 declare var FileList: {
@@ -3805,6 +3870,7 @@ interface FileReader extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof FileReaderEventMap>(type: K, listener: (this: FileReader, ev: FileReaderEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "FileReader";
 }
 
 declare var FileReader: {
@@ -3847,6 +3913,7 @@ interface FileSystemDirectoryHandle extends FileSystemHandle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemDirectoryHandle/resolve)
      */
     resolve(possibleDescendant: FileSystemHandle): Promise<string[] | null>;
+    readonly [Symbol.toStringTag]: "FileSystemDirectoryHandle";
 }
 
 declare var FileSystemDirectoryHandle: {
@@ -3874,6 +3941,7 @@ interface FileSystemFileHandle extends FileSystemHandle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemFileHandle/getFile)
      */
     getFile(): Promise<File>;
+    readonly [Symbol.toStringTag]: "FileSystemFileHandle";
 }
 
 declare var FileSystemFileHandle: {
@@ -3906,6 +3974,7 @@ interface FileSystemHandle {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemHandle/isSameEntry)
      */
     isSameEntry(other: FileSystemHandle): Promise<boolean>;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var FileSystemHandle: {
@@ -3938,6 +4007,7 @@ interface FileSystemWritableFileStream extends WritableStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FileSystemWritableFileStream/write)
      */
     write(data: FileSystemWriteChunkType): Promise<void>;
+    readonly [Symbol.toStringTag]: "FileSystemWritableFileStream";
 }
 
 declare var FileSystemWritableFileStream: {
@@ -4035,6 +4105,7 @@ interface FontFace {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFace/load)
      */
     load(): Promise<FontFace>;
+    readonly [Symbol.toStringTag]: "FontFace";
 }
 
 declare var FontFace: {
@@ -4089,6 +4160,7 @@ interface FontFaceSet extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof FontFaceSetEventMap>(type: K, listener: (this: FontFaceSet, ev: FontFaceSetEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "FontFaceSet";
 }
 
 declare var FontFaceSet: {
@@ -4108,6 +4180,7 @@ interface FontFaceSetLoadEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/FontFaceSetLoadEvent/fontfaces)
      */
     readonly fontfaces: ReadonlyArray<FontFace>;
+    readonly [Symbol.toStringTag]: "FontFaceSetLoadEvent";
 }
 
 declare var FontFaceSetLoadEvent: {
@@ -4167,6 +4240,7 @@ interface FormData {
     set(name: string, value: string): void;
     set(name: string, blobValue: Blob, filename?: string): void;
     forEach(callbackfn: (value: FormDataEntryValue, key: string, parent: FormData) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "FormData";
 }
 
 declare var FormData: {
@@ -4187,6 +4261,7 @@ interface GPUError {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUError/message)
      */
     readonly message: string;
+    readonly [Symbol.toStringTag]: "GPUError";
 }
 
 declare var GPUError: {
@@ -4207,6 +4282,7 @@ interface GPUPipelineError extends DOMException {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineError/reason)
      */
     readonly reason: GPUPipelineErrorReason;
+    readonly [Symbol.toStringTag]: "GPUPipelineError";
 }
 
 declare var GPUPipelineError: {
@@ -4264,6 +4340,7 @@ interface Headers {
      */
     set(name: string, value: string): void;
     forEach(callbackfn: (value: string, key: string, parent: Headers) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "Headers";
 }
 
 declare var Headers: {
@@ -4337,6 +4414,7 @@ interface IDBCursor {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursor/update)
      */
     update(value: any): IDBRequest<IDBValidKey>;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var IDBCursor: {
@@ -4356,6 +4434,7 @@ interface IDBCursorWithValue extends IDBCursor {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBCursorWithValue/value)
      */
     readonly value: any;
+    readonly [Symbol.toStringTag]: "IDBCursorWithValue";
 }
 
 declare var IDBCursorWithValue: {
@@ -4429,6 +4508,7 @@ interface IDBDatabase extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBDatabaseEventMap>(type: K, listener: (this: IDBDatabase, ev: IDBDatabaseEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "IDBDatabase";
 }
 
 declare var IDBDatabase: {
@@ -4466,6 +4546,7 @@ interface IDBFactory {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBFactory/open)
      */
     open(name: string, version?: number): IDBOpenDBRequest;
+    readonly [Symbol.toStringTag]: "IDBFactory";
 }
 
 declare var IDBFactory: {
@@ -4551,6 +4632,7 @@ interface IDBIndex {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBIndex/openKeyCursor)
      */
     openKeyCursor(query?: IDBValidKey | IDBKeyRange | null, direction?: IDBCursorDirection): IDBRequest<IDBCursor | null>;
+    readonly [Symbol.toStringTag]: "IDBIndex";
 }
 
 declare var IDBIndex: {
@@ -4594,6 +4676,7 @@ interface IDBKeyRange {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBKeyRange/includes)
      */
     includes(key: any): boolean;
+    readonly [Symbol.toStringTag]: "IDBKeyRange";
 }
 
 declare var IDBKeyRange: {
@@ -4745,6 +4828,7 @@ interface IDBObjectStore {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBObjectStore/put)
      */
     put(value: any, key?: IDBValidKey): IDBRequest<IDBValidKey>;
+    readonly [Symbol.toStringTag]: "IDBObjectStore";
 }
 
 declare var IDBObjectStore: {
@@ -4771,6 +4855,7 @@ interface IDBOpenDBRequest extends IDBRequest<IDBDatabase> {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBOpenDBRequestEventMap>(type: K, listener: (this: IDBOpenDBRequest, ev: IDBOpenDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "IDBOpenDBRequest";
 }
 
 declare var IDBOpenDBRequest: {
@@ -4827,6 +4912,7 @@ interface IDBRequest<T = any> extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var IDBRequest: {
@@ -4904,6 +4990,7 @@ interface IDBTransaction extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof IDBTransactionEventMap>(type: K, listener: (this: IDBTransaction, ev: IDBTransactionEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "IDBTransaction";
 }
 
 declare var IDBTransaction: {
@@ -4929,6 +5016,7 @@ interface IDBVersionChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBVersionChangeEvent/oldVersion)
      */
     readonly oldVersion: number;
+    readonly [Symbol.toStringTag]: "IDBVersionChangeEvent";
 }
 
 declare var IDBVersionChangeEvent: {
@@ -4960,6 +5048,7 @@ interface ImageBitmap {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmap/close)
      */
     close(): void;
+    readonly [Symbol.toStringTag]: "ImageBitmap";
 }
 
 declare var ImageBitmap: {
@@ -4979,6 +5068,7 @@ interface ImageBitmapRenderingContext {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageBitmapRenderingContext/transferFromImageBitmap)
      */
     transferFromImageBitmap(bitmap: ImageBitmap | null): void;
+    readonly [Symbol.toStringTag]: "ImageBitmapRenderingContext";
 }
 
 declare var ImageBitmapRenderingContext: {
@@ -5016,6 +5106,7 @@ interface ImageData {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ImageData/width)
      */
     readonly width: number;
+    readonly [Symbol.toStringTag]: "ImageData";
 }
 
 declare var ImageData: {
@@ -5057,6 +5148,7 @@ interface Lock {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Lock/name)
      */
     readonly name: string;
+    readonly [Symbol.toStringTag]: "Lock";
 }
 
 declare var Lock: {
@@ -5084,6 +5176,7 @@ interface LockManager {
      */
     request<T>(name: string, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
     request<T>(name: string, options: LockOptions, callback: LockGrantedCallback<T>): Promise<Awaited<T>>;
+    readonly [Symbol.toStringTag]: "LockManager";
 }
 
 declare var LockManager: {
@@ -5109,6 +5202,7 @@ interface MediaCapabilities {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MediaCapabilities/encodingInfo)
      */
     encodingInfo(configuration: MediaEncodingConfiguration): Promise<MediaCapabilitiesEncodingInfo>;
+    readonly [Symbol.toStringTag]: "MediaCapabilities";
 }
 
 declare var MediaCapabilities: {
@@ -5134,6 +5228,7 @@ interface MessageChannel {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessageChannel/port2)
      */
     readonly port2: MessagePort;
+    readonly [Symbol.toStringTag]: "MessageChannel";
 }
 
 declare var MessageChannel: {
@@ -5179,6 +5274,7 @@ interface MessageEvent<T = any> extends Event {
     readonly source: MessageEventSource | null;
     /** @deprecated */
     initMessageEvent(type: string, bubbles?: boolean, cancelable?: boolean, data?: any, origin?: string, lastEventId?: string, source?: MessageEventSource | null, ports?: MessagePort[]): void;
+    readonly [Symbol.toStringTag]: "MessageEvent";
 }
 
 declare var MessageEvent: {
@@ -5236,6 +5332,7 @@ interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MessagePortEventMap>(type: K, listener: (this: MessagePort, ev: MessagePortEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "MessagePort";
 }
 
 declare var MessagePort: {
@@ -5274,6 +5371,7 @@ interface NavigationPreloadManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPreloadManager/setHeaderValue)
      */
     setHeaderValue(value: string): Promise<void>;
+    readonly [Symbol.toStringTag]: "NavigationPreloadManager";
 }
 
 declare var NavigationPreloadManager: {
@@ -5418,6 +5516,7 @@ interface Notification extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof NotificationEventMap>(type: K, listener: (this: Notification, ev: NotificationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "Notification";
 }
 
 declare var Notification: {
@@ -5449,6 +5548,7 @@ interface NotificationEvent extends ExtendableEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NotificationEvent/notification)
      */
     readonly notification: Notification;
+    readonly [Symbol.toStringTag]: "NotificationEvent";
 }
 
 declare var NotificationEvent: {
@@ -5668,6 +5768,7 @@ interface OffscreenCanvas extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof OffscreenCanvasEventMap>(type: K, listener: (this: OffscreenCanvas, ev: OffscreenCanvasEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "OffscreenCanvas";
 }
 
 declare var OffscreenCanvas: {
@@ -5683,6 +5784,7 @@ declare var OffscreenCanvas: {
 interface OffscreenCanvasRenderingContext2D extends CanvasCompositing, CanvasDrawImage, CanvasDrawPath, CanvasFillStrokeStyles, CanvasFilters, CanvasImageData, CanvasImageSmoothing, CanvasPath, CanvasPathDrawingStyles, CanvasRect, CanvasShadowStyles, CanvasState, CanvasText, CanvasTextDrawingStyles, CanvasTransform {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CanvasRenderingContext2D/canvas) */
     readonly canvas: OffscreenCanvas;
+    readonly [Symbol.toStringTag]: "OffscreenCanvasRenderingContext2D";
 }
 
 declare var OffscreenCanvasRenderingContext2D: {
@@ -5702,6 +5804,7 @@ interface Path2D extends CanvasPath {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Path2D/addPath)
      */
     addPath(path: Path2D, transform?: DOMMatrix2DInit): void;
+    readonly [Symbol.toStringTag]: "Path2D";
 }
 
 declare var Path2D: {
@@ -5797,6 +5900,7 @@ interface Performance extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PerformanceEventMap>(type: K, listener: (this: Performance, ev: PerformanceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "Performance";
 }
 
 declare var Performance: {
@@ -5840,6 +5944,7 @@ interface PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceEntry/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var PerformanceEntry: {
@@ -5859,6 +5964,7 @@ interface PerformanceMark extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMark/detail)
      */
     readonly detail: any;
+    readonly [Symbol.toStringTag]: "PerformanceMark";
 }
 
 declare var PerformanceMark: {
@@ -5878,6 +5984,7 @@ interface PerformanceMeasure extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceMeasure/detail)
      */
     readonly detail: any;
+    readonly [Symbol.toStringTag]: "PerformanceMeasure";
 }
 
 declare var PerformanceMeasure: {
@@ -5909,6 +6016,7 @@ interface PerformanceObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserver/takeRecords)
      */
     takeRecords(): PerformanceEntryList;
+    readonly [Symbol.toStringTag]: "PerformanceObserver";
 }
 
 declare var PerformanceObserver: {
@@ -5946,6 +6054,7 @@ interface PerformanceObserverEntryList {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceObserverEntryList/getEntriesByType)
      */
     getEntriesByType(type: string): PerformanceEntryList;
+    readonly [Symbol.toStringTag]: "PerformanceObserverEntryList";
 }
 
 declare var PerformanceObserverEntryList: {
@@ -6079,6 +6188,7 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformanceResourceTiming";
 }
 
 declare var PerformanceResourceTiming: {
@@ -6116,6 +6226,7 @@ interface PerformanceServerTiming {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceServerTiming/toJSON)
      */
     toJSON(): any;
+    readonly [Symbol.toStringTag]: "PerformanceServerTiming";
 }
 
 declare var PerformanceServerTiming: {
@@ -6151,6 +6262,7 @@ interface PermissionStatus extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof PermissionStatusEventMap>(type: K, listener: (this: PermissionStatus, ev: PermissionStatusEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "PermissionStatus";
 }
 
 declare var PermissionStatus: {
@@ -6170,6 +6282,7 @@ interface Permissions {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Permissions/query)
      */
     query(permissionDesc: PermissionDescriptor): Promise<PermissionStatus>;
+    readonly [Symbol.toStringTag]: "Permissions";
 }
 
 declare var Permissions: {
@@ -6202,6 +6315,7 @@ interface ProgressEvent<T extends EventTarget = EventTarget> extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProgressEvent/total)
      */
     readonly total: number;
+    readonly [Symbol.toStringTag]: "ProgressEvent";
 }
 
 declare var ProgressEvent: {
@@ -6227,6 +6341,7 @@ interface PromiseRejectionEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PromiseRejectionEvent/reason)
      */
     readonly reason: any;
+    readonly [Symbol.toStringTag]: "PromiseRejectionEvent";
 }
 
 declare var PromiseRejectionEvent: {
@@ -6247,6 +6362,7 @@ interface PushEvent extends ExtendableEvent {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushEvent/data)
      */
     readonly data: PushMessageData | null;
+    readonly [Symbol.toStringTag]: "PushEvent";
 }
 
 declare var PushEvent: {
@@ -6279,6 +6395,7 @@ interface PushManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushManager/subscribe)
      */
     subscribe(options?: PushSubscriptionOptionsInit): Promise<PushSubscription>;
+    readonly [Symbol.toStringTag]: "PushManager";
 }
 
 declare var PushManager: {
@@ -6335,6 +6452,7 @@ interface PushMessageData {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushMessageData/text)
      */
     text(): string;
+    readonly [Symbol.toStringTag]: "PushMessageData";
 }
 
 declare var PushMessageData: {
@@ -6385,6 +6503,7 @@ interface PushSubscription {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscription/unsubscribe)
      */
     unsubscribe(): Promise<boolean>;
+    readonly [Symbol.toStringTag]: "PushSubscription";
 }
 
 declare var PushSubscription: {
@@ -6396,6 +6515,7 @@ declare var PushSubscription: {
 interface PushSubscriptionChangeEvent extends ExtendableEvent {
     readonly newSubscription: PushSubscription | null;
     readonly oldSubscription: PushSubscription | null;
+    readonly [Symbol.toStringTag]: "PushSubscriptionChangeEvent";
 }
 
 declare var PushSubscriptionChangeEvent: {
@@ -6422,6 +6542,7 @@ interface PushSubscriptionOptions {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PushSubscriptionOptions/userVisibleOnly)
      */
     readonly userVisibleOnly: boolean;
+    readonly [Symbol.toStringTag]: "PushSubscriptionOptions";
 }
 
 declare var PushSubscriptionOptions: {
@@ -6465,6 +6586,7 @@ interface ReadableByteStreamController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableByteStreamController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "ReadableByteStreamController";
 }
 
 declare var ReadableByteStreamController: {
@@ -6516,6 +6638,7 @@ interface ReadableStream<R = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStream/tee)
      */
     tee(): [ReadableStream<R>, ReadableStream<R>];
+    readonly [Symbol.toStringTag]: "ReadableStream";
 }
 
 declare var ReadableStream: {
@@ -6543,6 +6666,7 @@ interface ReadableStreamBYOBReader extends ReadableStreamGenericReader {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBReader/releaseLock)
      */
     releaseLock(): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamBYOBReader";
 }
 
 declare var ReadableStreamBYOBReader: {
@@ -6574,6 +6698,7 @@ interface ReadableStreamBYOBRequest {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamBYOBRequest/respondWithNewView)
      */
     respondWithNewView(view: ArrayBufferView<ArrayBuffer>): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamBYOBRequest";
 }
 
 declare var ReadableStreamBYOBRequest: {
@@ -6611,6 +6736,7 @@ interface ReadableStreamDefaultController<R = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamDefaultController";
 }
 
 declare var ReadableStreamDefaultController: {
@@ -6636,6 +6762,7 @@ interface ReadableStreamDefaultReader<R = any> extends ReadableStreamGenericRead
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReadableStreamDefaultReader/releaseLock)
      */
     releaseLock(): void;
+    readonly [Symbol.toStringTag]: "ReadableStreamDefaultReader";
 }
 
 declare var ReadableStreamDefaultReader: {
@@ -6674,6 +6801,7 @@ interface ReportingObserver {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ReportingObserver/takeRecords)
      */
     takeRecords(): ReportList;
+    readonly [Symbol.toStringTag]: "ReportingObserver";
 }
 
 declare var ReportingObserver: {
@@ -6771,6 +6899,7 @@ interface Request extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Request/clone)
      */
     clone(): Request;
+    readonly [Symbol.toStringTag]: "Request";
 }
 
 declare var Request: {
@@ -6832,6 +6961,7 @@ interface Response extends Body {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Response/clone)
      */
     clone(): Response;
+    readonly [Symbol.toStringTag]: "Response";
 }
 
 declare var Response: {
@@ -6875,6 +7005,7 @@ interface Scheduler {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Scheduler/yield)
      */
     yield(): Promise<void>;
+    readonly [Symbol.toStringTag]: "Scheduler";
 }
 
 declare var Scheduler: {
@@ -6960,6 +7091,7 @@ interface SecurityPolicyViolationEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent/violatedDirective)
      */
     readonly violatedDirective: string;
+    readonly [Symbol.toStringTag]: "SecurityPolicyViolationEvent";
 }
 
 declare var SecurityPolicyViolationEvent: {
@@ -7003,6 +7135,7 @@ interface ServiceWorker extends EventTarget, AbstractWorker {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerEventMap>(type: K, listener: (this: ServiceWorker, ev: ServiceWorkerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorker";
 }
 
 declare var ServiceWorker: {
@@ -7069,6 +7202,7 @@ interface ServiceWorkerContainer extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerContainerEventMap>(type: K, listener: (this: ServiceWorkerContainer, ev: ServiceWorkerContainerEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorkerContainer";
 }
 
 declare var ServiceWorkerContainer: {
@@ -7150,6 +7284,7 @@ interface ServiceWorkerGlobalScope extends WorkerGlobalScope {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerGlobalScopeEventMap>(type: K, listener: (this: ServiceWorkerGlobalScope, ev: ServiceWorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorkerGlobalScope";
 }
 
 declare var ServiceWorkerGlobalScope: {
@@ -7240,6 +7375,7 @@ interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof ServiceWorkerRegistrationEventMap>(type: K, listener: (this: ServiceWorkerRegistration, ev: ServiceWorkerRegistrationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "ServiceWorkerRegistration";
 }
 
 declare var ServiceWorkerRegistration: {
@@ -7272,6 +7408,7 @@ interface StorageManager {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/StorageManager/persisted)
      */
     persisted(): Promise<boolean>;
+    readonly [Symbol.toStringTag]: "StorageManager";
 }
 
 declare var StorageManager: {
@@ -7310,6 +7447,7 @@ interface StylePropertyMapReadOnly {
      */
     has(property: string): boolean;
     forEach(callbackfn: (value: CSSStyleValue[], key: string, parent: StylePropertyMapReadOnly) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "StylePropertyMapReadOnly";
 }
 
 declare var StylePropertyMapReadOnly: {
@@ -7402,6 +7540,7 @@ interface SubtleCrypto {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/wrapKey)
      */
     wrapKey(format: KeyFormat, key: CryptoKey, wrappingKey: CryptoKey, wrapAlgorithm: AlgorithmIdentifier | RsaOaepParams | AesCtrParams | AesCbcParams | AesGcmParams): Promise<ArrayBuffer>;
+    readonly [Symbol.toStringTag]: "SubtleCrypto";
 }
 
 declare var SubtleCrypto: {
@@ -7421,6 +7560,7 @@ interface TaskController extends AbortController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskController/setPriority)
      */
     setPriority(priority: TaskPriority): void;
+    readonly [Symbol.toStringTag]: "TaskController";
 }
 
 declare var TaskController: {
@@ -7440,6 +7580,7 @@ interface TaskPriorityChangeEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TaskPriorityChangeEvent/previousPriority)
      */
     readonly previousPriority: TaskPriority;
+    readonly [Symbol.toStringTag]: "TaskPriorityChangeEvent";
 }
 
 declare var TaskPriorityChangeEvent: {
@@ -7469,6 +7610,7 @@ interface TaskSignal extends AbortSignal {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof TaskSignalEventMap>(type: K, listener: (this: TaskSignal, ev: TaskSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "TaskSignal";
 }
 
 declare var TaskSignal: {
@@ -7494,6 +7636,7 @@ interface TextDecoder extends TextDecoderCommon {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextDecoder/decode)
      */
     decode(input?: AllowSharedBufferSource, options?: TextDecodeOptions): string;
+    readonly [Symbol.toStringTag]: "TextDecoder";
 }
 
 declare var TextDecoder: {
@@ -7532,6 +7675,7 @@ interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
     readonly readable: ReadableStream<string>;
     /** The **`writable`** read-only property of the TextDecoderStream interface returns a WritableStream that accepts binary data, in the form of ArrayBuffer, TypedArray, or DataView chunks (SharedArrayBuffer and its views are also allowed), to be decoded into strings. */
     readonly writable: WritableStream<BufferSource>;
+    readonly [Symbol.toStringTag]: "TextDecoderStream";
 }
 
 declare var TextDecoderStream: {
@@ -7557,6 +7701,7 @@ interface TextEncoder extends TextEncoderCommon {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextEncoder/encodeInto)
      */
     encodeInto(source: string, destination: Uint8Array<ArrayBufferLike>): TextEncoderEncodeIntoResult;
+    readonly [Symbol.toStringTag]: "TextEncoder";
 }
 
 declare var TextEncoder: {
@@ -7583,6 +7728,7 @@ interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
     readonly readable: ReadableStream<Uint8Array<ArrayBuffer>>;
     /** The **`writable`** read-only property of the TextEncoderStream interface returns a WritableStream that accepts strings to be encoded into binary data. */
     readonly writable: WritableStream<string>;
+    readonly [Symbol.toStringTag]: "TextEncoderStream";
 }
 
 declare var TextEncoderStream: {
@@ -7668,6 +7814,7 @@ interface TextMetrics {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TextMetrics/width)
      */
     readonly width: number;
+    readonly [Symbol.toStringTag]: "TextMetrics";
 }
 
 declare var TextMetrics: {
@@ -7693,6 +7840,7 @@ interface TransformStream<I = any, O = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStream/writable)
      */
     readonly writable: WritableStream<I>;
+    readonly [Symbol.toStringTag]: "TransformStream";
 }
 
 declare var TransformStream: {
@@ -7730,6 +7878,7 @@ interface TransformStreamDefaultController<O = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/terminate)
      */
     terminate(): void;
+    readonly [Symbol.toStringTag]: "TransformStreamDefaultController";
 }
 
 declare var TransformStreamDefaultController: {
@@ -7822,6 +7971,7 @@ interface URL {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URL/toJSON)
      */
     toJSON(): string;
+    readonly [Symbol.toStringTag]: "URL";
 }
 
 declare var URL: {
@@ -7913,6 +8063,7 @@ interface URLPattern {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/URLPattern/test)
      */
     test(input?: URLPatternInput, baseURL?: string | URL): boolean;
+    readonly [Symbol.toStringTag]: "URLPattern";
 }
 
 declare var URLPattern: {
@@ -7977,6 +8128,7 @@ interface URLSearchParams {
     sort(): void;
     toString(): string;
     forEach(callbackfn: (value: string, key: string, parent: URLSearchParams) => void, thisArg?: any): void;
+    readonly [Symbol.toStringTag]: "URLSearchParams";
 }
 
 declare var URLSearchParams: {
@@ -8239,6 +8391,7 @@ interface WEBGL_multi_draw {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
  */
 interface WebGL2RenderingContext extends WebGL2RenderingContextBase, WebGL2RenderingContextOverloads, WebGLRenderingContextBase {
+    readonly [Symbol.toStringTag]: "WebGL2RenderingContext";
 }
 
 declare var WebGL2RenderingContext: {
@@ -9331,6 +9484,7 @@ interface WebGLActiveInfo {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLActiveInfo/type)
      */
     readonly type: GLenum;
+    readonly [Symbol.toStringTag]: "WebGLActiveInfo";
 }
 
 declare var WebGLActiveInfo: {
@@ -9344,6 +9498,7 @@ declare var WebGLActiveInfo: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLBuffer)
  */
 interface WebGLBuffer {
+    readonly [Symbol.toStringTag]: "WebGLBuffer";
 }
 
 declare var WebGLBuffer: {
@@ -9363,6 +9518,7 @@ interface WebGLContextEvent extends Event {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLContextEvent/statusMessage)
      */
     readonly statusMessage: string;
+    readonly [Symbol.toStringTag]: "WebGLContextEvent";
 }
 
 declare var WebGLContextEvent: {
@@ -9376,6 +9532,7 @@ declare var WebGLContextEvent: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLFramebuffer)
  */
 interface WebGLFramebuffer {
+    readonly [Symbol.toStringTag]: "WebGLFramebuffer";
 }
 
 declare var WebGLFramebuffer: {
@@ -9389,6 +9546,7 @@ declare var WebGLFramebuffer: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLProgram)
  */
 interface WebGLProgram {
+    readonly [Symbol.toStringTag]: "WebGLProgram";
 }
 
 declare var WebGLProgram: {
@@ -9402,6 +9560,7 @@ declare var WebGLProgram: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLQuery)
  */
 interface WebGLQuery {
+    readonly [Symbol.toStringTag]: "WebGLQuery";
 }
 
 declare var WebGLQuery: {
@@ -9415,6 +9574,7 @@ declare var WebGLQuery: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderbuffer)
  */
 interface WebGLRenderbuffer {
+    readonly [Symbol.toStringTag]: "WebGLRenderbuffer";
 }
 
 declare var WebGLRenderbuffer: {
@@ -9428,6 +9588,7 @@ declare var WebGLRenderbuffer: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLRenderingContext)
  */
 interface WebGLRenderingContext extends WebGLRenderingContextBase, WebGLRenderingContextOverloads {
+    readonly [Symbol.toStringTag]: "WebGLRenderingContext";
 }
 
 declare var WebGLRenderingContext: {
@@ -10358,6 +10519,7 @@ interface WebGLRenderingContextOverloads {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSampler)
  */
 interface WebGLSampler {
+    readonly [Symbol.toStringTag]: "WebGLSampler";
 }
 
 declare var WebGLSampler: {
@@ -10371,6 +10533,7 @@ declare var WebGLSampler: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShader)
  */
 interface WebGLShader {
+    readonly [Symbol.toStringTag]: "WebGLShader";
 }
 
 declare var WebGLShader: {
@@ -10402,6 +10565,7 @@ interface WebGLShaderPrecisionFormat {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLShaderPrecisionFormat/rangeMin)
      */
     readonly rangeMin: GLint;
+    readonly [Symbol.toStringTag]: "WebGLShaderPrecisionFormat";
 }
 
 declare var WebGLShaderPrecisionFormat: {
@@ -10415,6 +10579,7 @@ declare var WebGLShaderPrecisionFormat: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLSync)
  */
 interface WebGLSync {
+    readonly [Symbol.toStringTag]: "WebGLSync";
 }
 
 declare var WebGLSync: {
@@ -10428,6 +10593,7 @@ declare var WebGLSync: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTexture)
  */
 interface WebGLTexture {
+    readonly [Symbol.toStringTag]: "WebGLTexture";
 }
 
 declare var WebGLTexture: {
@@ -10441,6 +10607,7 @@ declare var WebGLTexture: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLTransformFeedback)
  */
 interface WebGLTransformFeedback {
+    readonly [Symbol.toStringTag]: "WebGLTransformFeedback";
 }
 
 declare var WebGLTransformFeedback: {
@@ -10454,6 +10621,7 @@ declare var WebGLTransformFeedback: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLUniformLocation)
  */
 interface WebGLUniformLocation {
+    readonly [Symbol.toStringTag]: "WebGLUniformLocation";
 }
 
 declare var WebGLUniformLocation: {
@@ -10467,6 +10635,7 @@ declare var WebGLUniformLocation: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGLVertexArrayObject)
  */
 interface WebGLVertexArrayObject {
+    readonly [Symbol.toStringTag]: "WebGLVertexArrayObject";
 }
 
 declare var WebGLVertexArrayObject: {
@@ -10555,6 +10724,7 @@ interface WebSocket extends EventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: "WebSocket";
 }
 
 declare var WebSocket: {
@@ -10621,6 +10791,7 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
     createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    readonly [Symbol.toStringTag]: "WebTransport";
 }
 
 declare var WebTransport: {
@@ -10647,6 +10818,7 @@ interface WebTransportBidirectionalStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportBidirectionalStream/writable)
      */
     readonly writable: WritableStream;
+    readonly [Symbol.toStringTag]: "WebTransportBidirectionalStream";
 }
 
 declare var WebTransportBidirectionalStream: {
@@ -10703,6 +10875,7 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable)
      */
     readonly writable: WritableStream;
+    readonly [Symbol.toStringTag]: "WebTransportDatagramDuplexStream";
 }
 
 declare var WebTransportDatagramDuplexStream: {
@@ -10729,6 +10902,7 @@ interface WebTransportError extends DOMException {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportError/streamErrorCode)
      */
     readonly streamErrorCode: number | null;
+    readonly [Symbol.toStringTag]: "WebTransportError";
 }
 
 declare var WebTransportError: {
@@ -10766,6 +10940,7 @@ interface WindowClient extends Client {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WindowClient/navigate)
      */
     navigate(url: string | URL): Promise<WindowClient | null>;
+    readonly [Symbol.toStringTag]: "WindowClient";
 }
 
 declare var WindowClient: {
@@ -10874,6 +11049,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof WorkerGlobalScopeEventMap>(type: K, listener: (this: WorkerGlobalScope, ev: WorkerGlobalScopeEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var WorkerGlobalScope: {
@@ -10942,6 +11118,7 @@ interface WorkerLocation {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerLocation/search)
      */
     readonly search: string;
+    readonly [Symbol.toStringTag]: "WorkerLocation";
 }
 
 declare var WorkerLocation: {
@@ -10974,6 +11151,7 @@ interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, N
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator/serviceWorker)
      */
     readonly serviceWorker: ServiceWorkerContainer;
+    readonly [Symbol.toStringTag]: "WorkerNavigator";
 }
 
 declare var WorkerNavigator: {
@@ -11011,6 +11189,7 @@ interface WritableStream<W = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStream/getWriter)
      */
     getWriter(): WritableStreamDefaultWriter<W>;
+    readonly [Symbol.toStringTag]: string;
 }
 
 declare var WritableStream: {
@@ -11036,6 +11215,7 @@ interface WritableStreamDefaultController {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultController/error)
      */
     error(e?: any): void;
+    readonly [Symbol.toStringTag]: "WritableStreamDefaultController";
 }
 
 declare var WritableStreamDefaultController: {
@@ -11091,6 +11271,7 @@ interface WritableStreamDefaultWriter<W = any> {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WritableStreamDefaultWriter/write)
      */
     write(chunk?: W): Promise<void>;
+    readonly [Symbol.toStringTag]: "WritableStreamDefaultWriter";
 }
 
 declare var WritableStreamDefaultWriter: {
@@ -11101,6 +11282,7 @@ declare var WritableStreamDefaultWriter: {
 declare namespace WebAssembly {
     /** The **`WebAssembly.CompileError`** object indicates an error during WebAssembly decoding or validation. */
     interface CompileError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.CompileError";
     }
 
     var CompileError: {
@@ -11133,6 +11315,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
          */
         is(exceptionTag: Tag): boolean;
+        readonly [Symbol.toStringTag]: "WebAssembly.Exception";
     }
 
     var Exception: {
@@ -11148,6 +11331,7 @@ declare namespace WebAssembly {
     interface Global<T extends ValueType = ValueType> {
         value: ValueTypeMap[T];
         valueOf(): ValueTypeMap[T];
+        readonly [Symbol.toStringTag]: "WebAssembly.Global";
     }
 
     var Global: {
@@ -11167,6 +11351,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Instance/exports)
          */
         readonly exports: Exports;
+        readonly [Symbol.toStringTag]: "WebAssembly.Instance";
     }
 
     var Instance: {
@@ -11176,6 +11361,7 @@ declare namespace WebAssembly {
 
     /** The **`WebAssembly.LinkError`** object indicates an error during module instantiation (besides traps from the start function). */
     interface LinkError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.LinkError";
     }
 
     var LinkError: {
@@ -11202,6 +11388,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
         grow(delta: AddressValue): AddressValue;
+        readonly [Symbol.toStringTag]: "WebAssembly.Memory";
     }
 
     var Memory: {
@@ -11215,6 +11402,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Module)
      */
     interface Module {
+        readonly [Symbol.toStringTag]: "WebAssembly.Module";
     }
 
     var Module: {
@@ -11242,6 +11430,7 @@ declare namespace WebAssembly {
 
     /** The **`WebAssembly.RuntimeError`** object is the error type that is thrown whenever WebAssembly specifies a trap. */
     interface RuntimeError extends Error {
+        readonly [Symbol.toStringTag]: "WebAssembly.RuntimeError";
     }
 
     var RuntimeError: {
@@ -11280,6 +11469,7 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Table/set)
          */
         set(index: AddressValue, value?: any): void;
+        readonly [Symbol.toStringTag]: "WebAssembly.Table";
     }
 
     var Table: {
@@ -11293,6 +11483,7 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
      */
     interface Tag {
+        readonly [Symbol.toStringTag]: "WebAssembly.Tag";
     }
 
     var Tag: {
@@ -11921,6 +12112,7 @@ interface FontFaceSet extends Set<FontFace> {
 
 interface FormDataIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): FormDataIterator<T>;
+    readonly [Symbol.toStringTag]: "FormData Iterator";
 }
 
 interface FormData {
@@ -11935,6 +12127,7 @@ interface FormData {
 
 interface HeadersIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): HeadersIterator<T>;
+    readonly [Symbol.toStringTag]: "Headers Iterator";
 }
 
 interface Headers {
@@ -11972,6 +12165,7 @@ interface MessageEvent<T = any> {
 
 interface StylePropertyMapReadOnlyIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): StylePropertyMapReadOnlyIterator<T>;
+    readonly [Symbol.toStringTag]: "StylePropertyMapReadOnly Iterator";
 }
 
 interface StylePropertyMapReadOnly {
@@ -12014,6 +12208,7 @@ interface SubtleCrypto {
 
 interface URLSearchParamsIterator<T> extends IteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.iterator](): URLSearchParamsIterator<T>;
+    readonly [Symbol.toStringTag]: "URLSearchParams Iterator";
 }
 
 interface URLSearchParams {
@@ -12175,6 +12370,7 @@ interface WebGLRenderingContextOverloads {
 
 interface FileSystemDirectoryHandleAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.asyncIterator](): FileSystemDirectoryHandleAsyncIterator<T>;
+    readonly [Symbol.toStringTag]: "FileSystemDirectoryHandle AsyncIterator";
 }
 
 interface FileSystemDirectoryHandle {
@@ -12186,6 +12382,7 @@ interface FileSystemDirectoryHandle {
 
 interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
     [Symbol.asyncIterator](): ReadableStreamAsyncIterator<T>;
+    readonly [Symbol.toStringTag]: "ReadableStream AsyncIterator";
 }
 
 interface ReadableStream<R = any> {
