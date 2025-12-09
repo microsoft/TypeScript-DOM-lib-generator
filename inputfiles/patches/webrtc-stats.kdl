@@ -1,0 +1,32 @@
+removals {
+  dictionary RTCInboundRtpStreamStats {
+    // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl
+    // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/RTCStatsReport.idl
+    // https://source.chromium.org/chromium/chromium/src/+/main:third_party/webrtc/stats/rtcstats_objects.cc
+    member corruptionMeasurements // Blink only as of 2024-11
+    member powerEfficientDecoder // Blink only as of 2024-11
+    member totalCorruptionProbability // Blink only as of 2024-11
+    member totalSquaredCorruptionProbability // Blink only as of 2024-11
+  }
+
+  dictionary RTCOutboundRtpStreamStats {
+    member powerEfficientEncoder // Blink only as of 2025-07
+    member encoderImplementation // Blink only as of 2025-07
+    member encodingIndex // Blink only as of 2025-07
+    member packetsSentWithEct1 // No implementation as of 2025-08
+    member psnrMeasurements // No implementation as of 2025-07
+    member psnrSum // No implementation as of 2025-07
+  }
+
+  dictionary RTCReceivedRtpStreamStats {
+    member packetsReceivedWithCe // No implementation as of 2025-04
+    member packetsReceivedWithEct1 // No implementation as of 2025-04
+    member packetsReportedAsLost // No implementation as of 2025-04
+    member packetsReportedAsLostButRecovered // No implementation as of 2025-04
+  }
+
+  dictionary RTCTransportStats {
+    member ccfbMessagesReceived // No implementation as of 2025-04
+    member ccfbMessagesSent // No implementation as of 2025-04
+  }
+}
