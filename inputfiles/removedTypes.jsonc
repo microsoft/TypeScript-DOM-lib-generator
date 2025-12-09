@@ -13,69 +13,7 @@
     },
     "enums": {
         "enum": {
-            "ConnectionType": {
-                "value": ["wimax"]
-            },
-            "MediaSessionAction": {
-                "value": [
-                    "enterpictureinpicture", // Blink only as of 2024-07
-                    "hangup", // Blink only as of 2024-07
-                    "nextslide", // Blink only as of as of 2024-07
-                    "previousslide", // Blink only as of as of 2024-07
-                    "togglecamera", // Blink only as of 2024-07
-                    "togglemicrophone", // Blink only as of 2024-07
-                    "togglescreenshare", // No implementation as of 2024-07
-                    "voiceactivity" // No implementation as of 2024-07
-                ]
-            },
-            "RequestDestination": {
-                "value": [
-                    "json" // No implementation as of 2023-11
-                ]
-            },
-            "RTCDegradationPreference": {
-                "value": [
-                    "maintain-framerate-and-resolution" // No implementation as of 2025-10j
-                ]
-            },
-            "ValueType": null,
-            "VideoColorPrimaries": {
-                "value": [
-                    "bt2020", // Blink only as of 2022-10
-                    "smpte432" // Blink only as of 2022-10
-                ]
-            },
-            "VideoMatrixCoefficients": {
-                "value": [
-                    "bt2020-ncl" // Blink only as of 2022-10
-                ]
-            },
-            "VideoPixelFormat": {
-                "value": [
-                    // All no implementation as of 2024-03
-                    "I420AP10",
-                    "I420AP12",
-                    "I420P10",
-                    "I420P12",
-                    "I422A",
-                    "I422AP10",
-                    "I422AP12",
-                    "I422P10",
-                    "I422P12",
-                    "I444A",
-                    "I444AP10",
-                    "I444AP12",
-                    "I444P10",
-                    "I444P12"
-                ]
-            },
-            "VideoTransferCharacteristics": {
-                "value": [
-                    "hlg", // Blink only as of 2022-10
-                    "linear", // Blink only as of 2022-10
-                    "pq" // Blink only as of 2022-10
-                ]
-            }
+            "ValueType": null
         }
     },
     "interfaces": {

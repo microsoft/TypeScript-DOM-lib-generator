@@ -1,0 +1,34 @@
+removals {
+  enum VideoColorPrimaries {
+    bt2020      // Blink only as of 2022-10
+    smpte432    // Blink only as of 2022-10
+  }
+
+  enum VideoMatrixCoefficients {
+    bt2020-ncl  // Blink only as of 2022-10
+  }
+
+  enum VideoPixelFormat {
+    // All no implementation as of 2024-03
+    I420AP10
+    I420AP12
+    I420P10
+    I420P12
+    I422A
+    I422AP10
+    I422AP12
+    I422P10
+    I422P12
+    I444A
+    I444AP10
+    I444AP12
+    I444P10
+    I444P12
+  }
+
+  enum VideoTransferCharacteristics {
+    hlg         // Blink only as of 2022-10
+    linear      // Blink only as of 2022-10
+    pq          // Blink only as of 2022-10
+  }
+}

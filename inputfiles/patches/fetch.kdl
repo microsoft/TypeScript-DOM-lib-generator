@@ -1,0 +1,5 @@
+removals {
+  enum RequestDestination {
+    json // No implementation as of 2023-11
+  }
+}
