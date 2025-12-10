@@ -1400,18 +1400,6 @@
             "SubtleCrypto": {
                 "methods": {
                     "method": {
-                        "decrypt": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "algorithm",
-                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
-                                        }
-                                    ]
-                                }
-                            }
-                        },
                         "deriveBits": {
                             "signature": {
                                 "0": {

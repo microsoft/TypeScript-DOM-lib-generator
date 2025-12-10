@@ -173,7 +173,7 @@ interface-mixin WebGLRenderingContextBase {
 
   method pixelStorei signatureIndex=0 {
     param param {
-      additionalType GLboolean
+      additionalTypes GLboolean
     }
   }
 }

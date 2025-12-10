@@ -13,6 +13,14 @@ interface CryptoKey {
   }
 }
 
+interface SubtleCrypto {
+  method decrypt signatureIndex=0 {
+    param algorithm {
+     additionalTypes RsaOaepParams AesCtrParams AesCbcParams AesGcmParams
+    }
+  }
+}
+
 removals {
   enum KeyFormat {
     raw-private // No implementation as of 2025-09
