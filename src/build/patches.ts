@@ -144,7 +144,7 @@ function handleEnum(node: Node): Partial<Enum> {
 
   return {
     name,
-    ...(values.length > 0 ? { value: values } : {}),
+    ...optionalNestedMember("value", values, values),
     ...optionalMember(
       "legacyNamespace",
       "string",
