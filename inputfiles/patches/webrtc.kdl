@@ -1,12 +1,6 @@
+// https://w3c.github.io/webrtc-pc/
+
 removals {
-  dictionary RTCConfiguration {
-    member peerIdentity // Gecko only as of 2024-11
-  }
-
-  dictionary RTCDataChannelInit {
-    member priority // Blink experimental only as of 2024-11
-  }
-
   dictionary RTCLocalIceCandidateInit {
     member relayProtocol // Blink only as of 2025-04
     member url // Blink only as of 2025-04
@@ -15,9 +9,8 @@ removals {
   dictionary RTCPeerConnectionIceEventInit {
     member url // WebKit only as of 2025-04
   }
-  
+
   dictionary RTCRtpEncodingParameters {
     member codec // Blink only as of 2024-11
-    member scalabilityMode // Blink only as of 2024-11
   }
 }

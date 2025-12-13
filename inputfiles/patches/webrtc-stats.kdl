@@ -1,3 +1,5 @@
+// https://w3c.github.io/webrtc-stats/
+
 removals {
   dictionary RTCInboundRtpStreamStats {
     // https://searchfox.org/mozilla-central/source/dom/webidl/RTCStatsReport.webidl

@@ -1,3 +1,5 @@
+// https://w3c.github.io/webrtc-encoded-transform/
+
 removals {
   dictionary RTCEncodedAudioFrameMetadata {
     member audioLevel // No implementation as of 2025-05
