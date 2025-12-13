@@ -268,7 +268,7 @@ function handleParam(node: Node) {
   
   for (const child of node.children) {
     switch (child.name) {
-      case: "additionalTypes") {
+      case "additionalTypes": {
         if (additionalTypes) {
           throw new Error("Unexpected multiple additionalTypes node");
         }
@@ -289,7 +289,7 @@ function handleParam(node: Node) {
       c.properties?.overrideType,
     ),
     additionalTypes,
-  }
+  };
 }
 
 /**
