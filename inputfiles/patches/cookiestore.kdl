@@ -1,0 +1,5 @@
+removals {
+  dictionary CookieInit {
+    member maxAge // Blink experimental only as of 2025-12
+  }
+}

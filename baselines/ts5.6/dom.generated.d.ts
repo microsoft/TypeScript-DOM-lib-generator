@@ -429,7 +429,6 @@ interface CookieChangeEventInit extends EventInit {
 interface CookieInit {
     domain?: string | null;
     expires?: DOMHighResTimeStamp | null;
-    maxAge?: number | null;
     name: string;
     partitioned?: boolean;
     path?: string;

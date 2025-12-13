@@ -14,12 +14,3 @@ interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 interface-mixin WindowEventHandlers {
   property onunload deprecated="The unload event is not reliable, consider visibilitychange or pagehide events."
 }
-
-// Blink and Gecko support precommit but BCD is not updated yet
-// https://bugzilla.mozilla.org/show_bug.cgi?id=1970123
-interface NavigationPrecommitController exposed=Window {
-  method redirect exposed=Window
-}
-interface NavigationTransition {
-  property committed exposed=Window
-}

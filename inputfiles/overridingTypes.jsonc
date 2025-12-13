@@ -666,15 +666,6 @@
                     }
                 }
             },
-            "NavigationHistoryEntry": {
-                "properties": {
-                    "property": {
-                        "ondispose": {
-                            "exposed": "Window"
-                        }
-                    }
-                }
-            },
             "Node": {
                 "methods": {
                     "method": {
