@@ -17,6 +17,6 @@ dictionary MemoryDescriptor {
 }
 
 removals {
-  // Overridden by `keyof ValueTypeMap`
+  // Overridden with `keyof ValueTypeMap`
   enum ValueType
 }
