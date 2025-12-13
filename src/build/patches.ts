@@ -63,15 +63,6 @@ function handleTyped(type: Node): Typed {
   };
 }
 
-function handleAdditionalTypes(node: Node) {
-  for (const child of node.children) {
-    if (child.name === "additionalTypes") {
-      const additionalTypes = child.values.map(string);
-      return { additionalTypes };
-    }
-  }
-}
-
 function handleTypeParameters(value: Value | Node) {
   if (!value) {
     return {};
@@ -271,6 +262,36 @@ function handleProperty(child: Node): Partial<Property> {
   };
 }
 
+function handleParam(node: Node) {
+  const name = string(child.values[0]);
+  let additionalTypes: string[] | undefined;
+  
+  for (const child of node.children) {
+    switch (child.name) {
+      case: "additionalTypes") {
+        if (additionalTypes) {
+          throw new Error("Unexpected multiple additionalTypes node");
+        }
+        additionalTypes = child.values.map(string);
+        break;
+      }
+      default:
+        throw new Error(`Unexpected child "${c.name}" in param "${name}"`);
+    }
+  }
+  
+  return {
+    name,
+    ...optionalMember("type", "string", c.properties?.type),
+    ...optionalMember(
+      "overrideType",
+      "string",
+      c.properties?.overrideType,
+    ),
+    additionalTypes,
+  }
+}
+
 /**
  * Handles a child node of type "method" and adds it to the method object.
  * @param child The child node to handle.
@@ -291,16 +312,7 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
         break;
 
       case "param":
-        params.push({
-          name: string(c.values[0]),
-          ...optionalMember("type", "string", c.properties?.type),
-          ...optionalMember(
-            "overrideType",
-            "string",
-            c.properties?.overrideType,
-          ),
-          ...handleAdditionalTypes(c),
-        });
+        params.push(handleParam(c));
         break;
 
       default:
