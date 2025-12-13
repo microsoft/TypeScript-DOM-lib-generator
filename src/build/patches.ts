@@ -263,9 +263,9 @@ function handleProperty(child: Node): Partial<Property> {
 }
 
 function handleParam(node: Node) {
-  const name = string(child.values[0]);
+  const name = string(node.values[0]);
   let additionalTypes: string[] | undefined;
-  
+
   for (const child of node.children) {
     switch (child.name) {
       case "additionalTypes": {
@@ -276,18 +276,14 @@ function handleParam(node: Node) {
         break;
       }
       default:
-        throw new Error(`Unexpected child "${c.name}" in param "${name}"`);
+        throw new Error(`Unexpected child "${child.name}" in param "${name}"`);
     }
   }
-  
+
   return {
     name,
-    ...optionalMember("type", "string", c.properties?.type),
-    ...optionalMember(
-      "overrideType",
-      "string",
-      c.properties?.overrideType,
-    ),
+    ...optionalMember("type", "string", node.properties?.type),
+    ...optionalMember("overrideType", "string", node.properties?.overrideType),
     additionalTypes,
   };
 }
