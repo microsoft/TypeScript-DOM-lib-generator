@@ -16,7 +16,7 @@ interface CryptoKey {
 interface SubtleCrypto {
   method decrypt signatureIndex=0 {
     param algorithm {
-     additionalTypes RsaOaepParams AesCtrParams AesCbcParams AesGcmParams
+      additionalTypes RsaOaepParams AesCtrParams AesCbcParams AesGcmParams
     }
   }
 }
