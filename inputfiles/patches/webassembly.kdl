@@ -15,3 +15,8 @@ dictionary ValueTypeMap legacyNamespace=WebAssembly {
 dictionary MemoryDescriptor {
   member shared type=boolean
 }
+
+removals {
+  // Overridden by `keyof ValueTypeMap`
+  enum ValueType
+}

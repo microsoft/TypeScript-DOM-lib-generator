@@ -23,7 +23,3 @@ interface NavigationPrecommitController exposed=Window {
 interface NavigationTransition {
   property committed exposed=Window
 }
-
-removals {
-  enum ValueType
-}
