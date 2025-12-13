@@ -66,7 +66,7 @@ function handleTyped(type: Node): Typed {
 function handleAdditionalTypes(node: Node) {
   for (const child of node.children) {
     if (child.name === "additionalTypes") {
-      const additionalTypes = child.values.map((v) => string(v));
+      const additionalTypes = child.values.map(string);
       return { additionalTypes };
     }
   }
