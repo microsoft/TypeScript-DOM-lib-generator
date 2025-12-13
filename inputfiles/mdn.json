@@ -5150,6 +5150,21 @@
     "summary": "The variable property of the\nCSSVariableReferenceValue interface returns the custom property name of the\nCSSVariableReferenceValue."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/CSSViewTransitionRule",
+    "pageType": "web-api-interface",
+    "summary": "The CSSViewTransitionRule interface represents a CSS @view-transition at-rule."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSViewTransitionRule/navigation",
+    "pageType": "web-api-instance-property",
+    "summary": "The navigation read-only property of the CSSViewTransitionRule interface returns the associated @view-transition at-rule's navigation descriptor value."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSViewTransitionRule/types",
+    "pageType": "web-api-instance-property",
+    "summary": "The types read-only property of the CSSViewTransitionRule interface returns an array containing the associated @view-transition at-rule's types descriptor values."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry",
     "pageType": "web-api-interface",
     "summary": "The CustomElementRegistry interface provides methods for registering custom elements and querying registered elements. To get an instance of it, use the window.customElements property."
@@ -33590,6 +33605,11 @@
     "summary": "This article explains the theory behind how the View Transition API works, how to create view transitions and customize the transition animations, and how to manipulate active view transitions. This covers view transitions for both DOM state updates in a single-page app (SPA), and navigating between documents in a multi-page app (MPA)."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/View_Transition_API/Using_types",
+    "pageType": "guide",
+    "summary": "View transition types provide a mechanism by which different types can be specified for active view transitions. CSS can then be used to apply different animations to DOM elements when their content updates, depending on the transition type specified. For example, you might want to apply different animations to an <img> element in an image gallery app as the displayed image changes depending on whether you are moving forward or backward in the sequence, deleting an image, or adding an image into the sequence."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Viewport",
     "pageType": "web-api-interface",
     "summary": "The Viewport interface of the Viewport Segments API represents the device's viewport."
@@ -33655,9 +33675,19 @@
     "summary": "The skipTransition() method of the\nViewTransition interface skips the animation part of the view transition, but doesn't skip running the associated view update."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/ViewTransition/types",
+    "pageType": "web-api-instance-property",
+    "summary": "The types read-only property of the\nViewTransition interface is a ViewTransitionTypeSet that allows the types set on the view transition to be accessed and modified."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/ViewTransition/updateCallbackDone",
     "pageType": "web-api-instance-property",
     "summary": "The updateCallbackDone read-only property of the\nViewTransition interface is a Promise that fulfills when the promise returned by the document.startViewTransition() method's callback fulfills, or rejects when it rejects."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ViewTransitionTypeSet",
+    "pageType": "web-api-interface",
+    "summary": "The ViewTransitionTypeSet interface of the View Transition API is a set-like object representing the types of an active view transition. This enables the types to be queried or modified on-the-fly during a transition."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/VirtualKeyboard",
@@ -39482,12 +39512,12 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation-timeline/scroll",
     "pageType": "css-function",
-    "summary": "The scroll() CSS function can be used to define the scroller and axis of an anonymous scroll progress timeline."
+    "summary": "The scroll() CSS function can be used with the animation-timeline property to create an anonymous scroll progress timeline, defining the scroller and axis of the timeline."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation-timeline/view",
     "pageType": "css-function",
-    "summary": "The view() CSS function can be used with animation-timeline to indicate a subject element that will provide an anonymous view progress timeline to animate. The view progress timeline is progressed through by a change in visibility of the subject element inside the nearest ancestor scroller. The visibility of the subject inside the scroller is tracked — by default, the timeline is at 0% when the subject is first visible at one edge of the scroller, and 100% when it reaches the opposite edge."
+    "summary": "The view() CSS function is used with the animation-timeline property to create an anonymous view progress timeline based on when an element comes into view inside its nearest scroll container. You can adjust the tracking axis and the optional insets to control when the element is considered \"in view\"."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation-timing-function",
@@ -41902,7 +41932,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-timeline-name",
     "pageType": "css-property",
-    "summary": "The view-timeline-name CSS property is used to define the name of a named view progress timeline, which is progressed through based on the change in visibility of an element (known as the subject) inside a scrollable element (scroller). view-timeline is set on the subject."
+    "summary": "The view-timeline-name CSS property specifies the names of one or more named view progress timelines associated with the element."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-transition-class",

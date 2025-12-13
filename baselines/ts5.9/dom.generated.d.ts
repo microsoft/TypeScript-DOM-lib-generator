@@ -429,6 +429,7 @@ interface CookieChangeEventInit extends EventInit {
 interface CookieInit {
     domain?: string | null;
     expires?: DOMHighResTimeStamp | null;
+    maxAge?: number | null;
     name: string;
     partitioned?: boolean;
     path?: string;
@@ -6347,7 +6348,11 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     backgroundSize: string;
     baselineShift: string;
-    /** The baseline-source CSS property defines which baseline to use when inline-level boxes have multiple possible baselines, such as multi-line inline blocks or inline flex containers. The values allow for choosing between aligning to the box's first baseline, last baseline, or letting the browser decide automatically based on the box type. */
+    /**
+     * The baseline-source CSS property defines which baseline to use when inline-level boxes have multiple possible baselines, such as multi-line inline blocks or inline flex containers. The values allow for choosing between aligning to the box's first baseline, last baseline, or letting the browser decide automatically based on the box type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/baseline-source)
+     */
     baselineSource: string;
     /**
      * The block-size CSS property defines the size of an element's block along the block axis. If the writing-mode is horizontal, it corresponds to the height; if the writing mode is vertical, it corresponds to the width. A related property is inline-size, which defines the other dimension of the element.
@@ -8769,7 +8774,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     viewTimelineInset: string;
     /**
-     * The view-timeline-name CSS property is used to define the name of a named view progress timeline, which is progressed through based on the change in visibility of an element (known as the subject) inside a scrollable element (scroller). view-timeline is set on the subject.
+     * The view-timeline-name CSS property specifies the names of one or more named view progress timelines associated with the element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline-name)
      */
@@ -9620,8 +9625,23 @@ declare var CSSVariableReferenceValue: {
     new(variable: string, fallback?: CSSUnparsedValue | null): CSSVariableReferenceValue;
 };
 
+/**
+ * The **`CSSViewTransitionRule`** interface represents a CSS @view-transition at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSViewTransitionRule)
+ */
 interface CSSViewTransitionRule extends CSSRule {
+    /**
+     * The **`navigation`** read-only property of the CSSViewTransitionRule interface returns the associated @view-transition at-rule's navigation descriptor value.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSViewTransitionRule/navigation)
+     */
     readonly navigation: string;
+    /**
+     * The **`types`** read-only property of the CSSViewTransitionRule interface returns an array containing the associated @view-transition at-rule's types descriptor values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSViewTransitionRule/types)
+     */
     readonly types: ReadonlyArray<string>;
 }
 
@@ -36346,6 +36366,11 @@ interface ViewTransition {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/ready)
      */
     readonly ready: Promise<void>;
+    /**
+     * The **`types`** read-only property of the ViewTransition interface is a ViewTransitionTypeSet that allows the types set on the view transition to be accessed and modified.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/types)
+     */
     types: ViewTransitionTypeSet;
     /**
      * The **`updateCallbackDone`** read-only property of the ViewTransition interface is a Promise that fulfills when the promise returned by the document.startViewTransition() method's callback fulfills, or rejects when it rejects.
@@ -36366,6 +36391,11 @@ declare var ViewTransition: {
     new(): ViewTransition;
 };
 
+/**
+ * The **`ViewTransitionTypeSet`** interface of the View Transition API is a set-like object representing the types of an active view transition. This enables the types to be queried or modified on-the-fly during a transition.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransitionTypeSet)
+ */
 interface ViewTransitionTypeSet {
     forEach(callbackfn: (value: string, key: string, parent: ViewTransitionTypeSet) => void, thisArg?: any): void;
 }
