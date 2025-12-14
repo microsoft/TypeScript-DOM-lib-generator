@@ -1310,26 +1310,6 @@
                     }
                 }
             },
-            "IDBRequest": {
-                "properties": {
-                    "property": {
-                        "source": {
-                            "name": "source",
-                            "nullable": false
-                        },
-                        "result": {
-                            "name": "result",
-                            "overrideType": "T"
-                        }
-                    }
-                },
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "any"
-                    }
-                ]
-            },
             "ImageBitmapRenderingContext": {
                 "properties": {
                     "property": {

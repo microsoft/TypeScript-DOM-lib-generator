@@ -1,0 +1,5 @@
+interface IDBRequest {
+   property source nullable=#false
+   property result overrideType=T
+   typeParameters T default=any
+}

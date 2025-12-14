@@ -169,6 +169,7 @@ function handleMixinAndInterfaces(
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
+  let typeParameters = {}
 
   for (const child of node.children) {
     switch (child.name) {
@@ -188,12 +189,17 @@ function handleMixinAndInterfaces(
         });
         break;
       }
+      case "typeParameters": {
+        typeParameters = handleTypeParameters(child);
+        break;
+      }
       default:
         throw new Error(`Unknown node name: ${child.name}`);
     }
   }
 
   const interfaceObject = type === "interface" && {
+    ...typeParameters,
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
     ...optionalMember(
@@ -259,6 +265,7 @@ function handleProperty(child: Node): Partial<Property> {
       : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
+    ...optionalMember("nullable", "boolean", child.properties?.nullable),
   };
 }
 
