@@ -169,7 +169,7 @@ function handleMixinAndInterfaces(
   const event: Event[] = [];
   const property: Record<string, Partial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
-  let typeParameters = {}
+  let typeParameters = {};
 
   for (const child of node.children) {
     switch (child.name) {
