@@ -644,63 +644,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "UnderlyingByteSource": {
-                "name": "UnderlyingByteSource",
-                "members": {
-                    "member": {
-                        "type": {
-                            "name": "type",
-                            "required": true,
-                            "overrideType": "\"bytes\""
-                        },
-                        "autoAllocateChunkSize": {
-                            "name": "autoAllocateChunkSize",
-                            "type": "unsigned long long"
-                        },
-                        "start": {
-                            "name": "start",
-                            "overrideType": "(controller: ReadableByteStreamController) => any"
-                        },
-                        "pull": {
-                            "name": "pull",
-                            "overrideType": "(controller: ReadableByteStreamController) => void | PromiseLike<void>"
-                        },
-                        "cancel": {
-                            "name": "cancel",
-                            "type": "UnderlyingSourceCancelCallback"
-                        }
-                    }
-                }
-            },
-            "UnderlyingDefaultSource": {
-                "name": "UnderlyingDefaultSource",
-                "typeParameters": [
-                    {
-                        "name": "R",
-                        "default": "any"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "type": {
-                            "name": "type",
-                            "type": "undefined"
-                        },
-                        "start": {
-                            "name": "start",
-                            "overrideType": "(controller: ReadableStreamDefaultController<R>) => any"
-                        },
-                        "pull": {
-                            "name": "pull",
-                            "overrideType": "(controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>"
-                        },
-                        "cancel": {
-                            "name": "cancel",
-                            "type": "UnderlyingSourceCancelCallback"
-                        }
-                    }
-                }
-            }
         }
     },
     "typedefs": {

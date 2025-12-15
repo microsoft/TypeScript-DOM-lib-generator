@@ -1,0 +1,17 @@
+// https://streams.spec.whatwg.org/#callbackdef-underlyingsourcestartcallback
+
+dictionary UnderlyingDefaultSource {
+  typeParameters R default=any
+  member type type=undefined
+  member start overrideType="(controller: ReadableStreamDefaultController<R>) => any"
+  member pull overrideType="(controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>"
+  member cancel type=UnderlyingSourceCancelCallback
+}
+
+dictionary UnderlyingByteSource {
+  member type required=#true overrideType="\"bytes\""
+  member autoAllocateChunkSize type="unsigned long long"
+  member start overrideType="(controller: ReadableByteStreamController) => any"
+  member pull overrideType="(controller: ReadableByteStreamController) => void | PromiseLike<void>"
+  member cancel type=UnderlyingSourceCancelCallback
+}
