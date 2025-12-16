@@ -1,4 +1,4 @@
-// https://streams.spec.whatwg.org/#callbackdef-underlyingsourcestartcallback
+// https://streams.spec.whatwg.org/#dictdef-underlyingsource
 
 dictionary UnderlyingDefaultSource {
   typeParameters R default=any
