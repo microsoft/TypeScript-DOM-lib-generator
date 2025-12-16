@@ -16,6 +16,6 @@ interface-mixin WindowEventHandlers {
 }
 
 interface HTMLImageElement {
-  property decoding overrideType="\"async\" | \"sync\" | \"auto\""
-  property loading overrideType="\"eager\" | \"lazy\""
+  property decoding overrideType=#""async" | "sync" | "auto""#
+  property loading overrideType=#""eager" | "lazy""#
 }
