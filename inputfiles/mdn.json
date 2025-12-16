@@ -19422,7 +19422,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigation/reload",
     "pageType": "web-api-instance-method",
-    "summary": "The reload() method of the\nNavigation interface reloads the current URL, updating any provided state in the history entries list."
+    "summary": "The reload() method of the Navigation interface reloads the current URL, updating any provided state in the history entries list."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigation/transition",
@@ -41922,7 +41922,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-timeline-axis",
     "pageType": "css-property",
-    "summary": "The view-timeline-axis CSS property is used to specify the scrollbar direction that will be used to provide the timeline for a named view progress timeline animation, which is progressed through based on the change in visibility of an element (known as the subject) inside a scrollable element (scroller). view-timeline-axis is set on the subject. See CSS scroll-driven animations for more details."
+    "summary": "The view-timeline-axis CSS property specifies the scroll direction to be  used for a named view progress timeline."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-timeline-inset",
