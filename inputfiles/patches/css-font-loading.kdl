@@ -1,0 +1,5 @@
+removals {
+  dictionary FontFaceDescriptors {
+    member variationSettings // Gecko-only as of 2022-10
+  }
+}

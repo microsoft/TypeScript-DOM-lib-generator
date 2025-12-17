@@ -14,3 +14,13 @@ interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 interface-mixin WindowEventHandlers {
   property onunload deprecated="The unload event is not reliable, consider visibilitychange or pagehide events."
 }
+
+removals {
+  dictionary CanvasRenderingContext2DSettings {
+    member colorType // No implementation as of 2025-02
+  }
+
+  dictionary FocusOptions {
+    member focusVisible // Gecko only as of 2022-09
+  }
+}

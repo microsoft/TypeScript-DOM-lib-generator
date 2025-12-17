@@ -31,4 +31,18 @@ removals {
     linear      // Blink only as of 2022-10
     pq          // Blink only as of 2022-10
   }
+
+  dictionary EncodedVideoChunkInit {
+    member transfer // Blink only as of 2023-11
+  }
+
+  dictionary EncodedVideoChunkMetadata {
+    member alphaSideData // Blink only as of 2023-03
+    member svc           // Blink only as of 2023-03
+  }
+
+  dictionary AudioEncoderConfig {
+    member aac   // Blink only as of 2024-09
+    member flac  // Blink only as of 2024-09
+  }
 }
