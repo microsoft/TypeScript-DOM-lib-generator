@@ -62,30 +62,6 @@
                     ]
                 }
             },
-            "HTMLImageElement": {
-                "name": "HTMLImageElement",
-                "properties": {
-                    "property": {
-                        "decoding": {
-                            "name": "decoding",
-                            "overrideType": "\"async\" | \"sync\" | \"auto\""
-                        },
-                        "loading": {
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
-            "HTMLMediaElement": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "encrypted",
-                            "type": "MediaEncryptedEvent"
-                        }
-                    ]
-                }
-            },
             "Window": {
                 "name": "Window",
                 "overrideIndexSignatures": [

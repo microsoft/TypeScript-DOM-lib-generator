@@ -15,6 +15,11 @@ interface-mixin WindowEventHandlers {
   property onunload deprecated="The unload event is not reliable, consider visibilitychange or pagehide events."
 }
 
+interface HTMLImageElement {
+  property decoding overrideType=#""async" | "sync" | "auto""#
+  property loading overrideType=#""eager" | "lazy""#
+}
+
 removals {
   dictionary CanvasRenderingContext2DSettings {
     member colorType // No implementation as of 2025-02
