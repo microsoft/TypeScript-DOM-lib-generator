@@ -195,13 +195,6 @@
                     }
                 }
             },
-            "FontFaceDescriptors": {
-                "members": {
-                    "member": {
-                        "variationSettings": null // Gecko-only as of 2022-10
-                    }
-                }
-            },
             "GetAnimationsOptions": {
                 "members": {
                     "member": {
