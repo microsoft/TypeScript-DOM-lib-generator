@@ -118,13 +118,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "GetAnimationsOptions": {
-                "members": {
-                    "member": {
-                        "pseudoElement": null // No implementation as of 2024-11
-                    }
-                }
-            },
             "ImageDataSettings": {
                 "members": {
                     "member": {
