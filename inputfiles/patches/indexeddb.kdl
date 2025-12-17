@@ -5,3 +5,30 @@ interface IDBRequest {
    }
    property result overrideType=T
 }
+
+interface IDBOpenDBRequest extends=IDBRequest<IDBDatabase>
+
+interface IDBCursor {
+  property key type=IDBValidKey
+  property primaryKey type=IDBValidKey
+  method continue signatureIndex=0 {
+   param key type=IDBValidKey
+  }
+  method continuePrimaryKey signatureIndex=0 {
+   param key type=IDBValidKey
+   param primaryKey type=IDBValidKey
+  }
+
+  method update signatureIndex=0 {
+   type {
+      type IDBValidKey
+   }
+  }
+
+  method delete signatureIndex=0 {
+   type {
+      type undefined
+   }
+  }
+}
+

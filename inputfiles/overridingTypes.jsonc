@@ -1250,66 +1250,6 @@
                     }
                 }
             },
-            "IDBCursor": {
-                "properties": {
-                    "property": {
-                        "key": {
-                            "name": "key",
-                            "type": "IDBValidKey"
-                        },
-                        "primaryKey": {
-                            "name": "primaryKey",
-                            "type": "IDBValidKey"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "continue": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "key",
-                                            "overrideType": "IDBValidKey"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "continuePrimaryKey": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "key",
-                                            "overrideType": "IDBValidKey"
-                                        },
-                                        {
-                                            "name": "primaryKey",
-                                            "overrideType": "IDBValidKey"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "delete": {
-                            "signature": {
-                                "0": {
-                                    "overrideType": "IDBRequest<undefined>"
-                                }
-                            }
-                        },
-                        "update": {
-                            "signature": {
-                                "0": {
-                                    "overrideType": "IDBRequest<IDBValidKey>"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "ImageBitmapRenderingContext": {
                 "properties": {
                     "property": {

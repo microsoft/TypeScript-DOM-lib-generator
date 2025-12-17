@@ -408,10 +408,6 @@
                     }
                 }
             },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>"
-            },
             "HTMLBodyElement": {
                 "properties": {
                     "property": {
