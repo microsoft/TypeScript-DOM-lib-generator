@@ -264,6 +264,7 @@ interface FontFaceDescriptors {
     stretch?: string;
     style?: string;
     unicodeRange?: string;
+    variationSettings?: string;
     weight?: string;
 }
 
