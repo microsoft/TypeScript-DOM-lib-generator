@@ -1093,6 +1093,7 @@ interface WebTransportHash {
 interface WebTransportOptions {
     allowPooling?: boolean;
     congestionControl?: WebTransportCongestionControl;
+    datagramsReadableType?: ReadableStreamType;
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
 }
