@@ -1,0 +1,9 @@
+removals {
+  dictionary WebTransportOptions {
+    member anticipatedConcurrentIncomingBidirectionalStreams // WebKit only as of 2025-12
+    member anticipatedConcurrentIncomingUnidirectionalStreams // WebKit only as of 2025-12
+    // No implementation as of 2025-12.
+    // WebKit has it in a different name datagramsReadableMode.
+    member datagramsReadableType
+  }
+}
