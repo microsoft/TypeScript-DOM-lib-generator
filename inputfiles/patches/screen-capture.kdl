@@ -3,7 +3,7 @@ removals {
     // Only `audio` and `video` are implemented by 2+ engines, everything else is currently Blink only.
     // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
     // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
-    // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
+    // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_stream_constraints.idl
     member monitorTypeSurfaces
     member selfBrowserSurface
     member surfaceSwitching
