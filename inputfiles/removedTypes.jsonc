@@ -188,13 +188,6 @@
                     }
                 }
             },
-            "FocusOptions": {
-                "members": {
-                    "member": {
-                        "focusVisible": null // Gecko only as of 2022-09
-                    }
-                }
-            },
             "FontFaceDescriptors": {
                 "members": {
                     "member": {

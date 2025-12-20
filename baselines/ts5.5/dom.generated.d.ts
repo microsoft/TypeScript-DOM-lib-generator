@@ -724,6 +724,7 @@ interface FocusEventInit extends UIEventInit {
 }
 
 interface FocusOptions {
+    focusVisible?: boolean;
     preventScroll?: boolean;
 }
 
