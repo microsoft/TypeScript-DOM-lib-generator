@@ -37,8 +37,7 @@ removals {
   }
 
   dictionary EncodedVideoChunkMetadata {
-    member alphaSideData // Blink only as of 2023-03
-    member svc           // Blink only as of 2023-03
+    member alphaSideData // Blink only as of 2025-12
   }
 
   dictionary AudioEncoderConfig {
