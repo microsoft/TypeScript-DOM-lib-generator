@@ -6130,6 +6130,16 @@
     "summary": "The hasFocus() method of the Document interface returns a boolean value indicating whether the document or any element inside the document has focus.\nThis method can be used to determine whether the active element in a document has focus."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Document/hasPrivateToken",
+    "pageType": "web-api-instance-method",
+    "summary": "The hasPrivateToken() method of the Document interface returns a promise that fulfills with a boolean indicating whether the browser has a private state token stored from a particular issuer server."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Document/hasRedemptionRecord",
+    "pageType": "web-api-instance-method",
+    "summary": "The hasRedemptionRecord() method of the Document interface returns a promise that fulfills with a boolean indicating whether the browser has a redemption record originating from a particular issuer."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Document/hasStorageAccess",
     "pageType": "web-api-instance-method",
     "summary": "The hasStorageAccess() method of the Document interface returns a Promise that resolves with a boolean value indicating whether the document has access to third-party, unpartitioned cookies."
@@ -13318,6 +13328,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/name",
     "pageType": "web-api-instance-property",
     "summary": "The name property of the HTMLIFrameElement interface is a string value that reflects the name attribute of the <iframe> element, indicating the specific name of the <iframe> element."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/privateToken",
+    "pageType": "web-api-instance-property",
+    "summary": "The privateToken property of the HTMLIFrameElement interface returns a string representation of an options object representing a private state token operation; this object has the same structure as the RequestInit dictionary's privateToken property."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/referrerPolicy",
@@ -22768,6 +22783,16 @@
     "mdn_url": "/en-US/docs/Web/API/Prioritized_Task_Scheduling_API",
     "pageType": "web-api-overview",
     "summary": "The Prioritized Task Scheduling API provides a standardized way to prioritize all tasks belonging to an application, whether they are defined in a website developer's code or in third-party libraries and frameworks."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Private_State_Token_API",
+    "pageType": "web-api-overview",
+    "summary": "The Private State Token API provides a mechanism for conveying trust in a user's authenticity from one browsing context to another, without sharing the user's identity or allowing their activity across websites to be tracked."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Private_State_Token_API/Using",
+    "pageType": "web-api-overview",
+    "summary": "This page explains how to use the Private State Tokens API to conveying trust in a user's authenticity from one browsing context to another."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ProcessingInstruction",
@@ -37930,6 +37955,11 @@
     "summary": "The setAttributionReporting() method of the\nXMLHttpRequest interface indicates that you want the request's response to be able to register a JavaScript-based attribution source or attribution trigger."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/XMLHttpRequest/setPrivateToken",
+    "pageType": "web-api-instance-method",
+    "summary": "The XMLHttpRequest method setPrivateToken() adds private state token information to an XMLHttpRequest call, to initiate private state token operations."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/XMLHttpRequest/setRequestHeader",
     "pageType": "web-api-instance-method",
     "summary": "The XMLHttpRequest method setRequestHeader() sets the value of an HTTP request header.\nWhen using setRequestHeader(), you must call it after calling open(), but before calling send().\nIf this method is called several times with the same header, the values are merged into one single request header."
@@ -40717,7 +40747,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/interpolate-size",
     "pageType": "css-property",
-    "summary": "The interpolate-size CSS property allows you to enable animations and transitions between a <length-percentage> value and an intrinsic size value such as auto, fit-content, or max-content."
+    "summary": "The interpolate-size CSS property allows you to enable animations and transitions between a <length-percentage> value and an intrinsic size, fit-content, or max-content."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/isolation",
@@ -41922,7 +41952,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-timeline-axis",
     "pageType": "css-property",
-    "summary": "The view-timeline-axis CSS property specifies the scroll direction to be  used for a named view progress timeline."
+    "summary": "The view-timeline-axis CSS property specifies the scroll direction to be used for a named view progress timeline."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-timeline-inset",

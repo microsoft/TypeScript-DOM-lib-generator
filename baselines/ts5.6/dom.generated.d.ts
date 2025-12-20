@@ -736,6 +736,7 @@ interface FontFaceDescriptors {
     stretch?: string;
     style?: string;
     unicodeRange?: string;
+    variationSettings?: string;
     weight?: string;
 }
 
@@ -8761,7 +8762,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     viewTimeline: string;
     /**
-     * The view-timeline-axis CSS property specifies the scroll direction to be  used for a named view progress timeline.
+     * The view-timeline-axis CSS property specifies the scroll direction to be used for a named view progress timeline.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-timeline-axis)
      */
