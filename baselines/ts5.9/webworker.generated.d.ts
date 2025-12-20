@@ -264,6 +264,7 @@ interface EncodedVideoChunkInit {
 
 interface EncodedVideoChunkMetadata {
     decoderConfig?: VideoDecoderConfig;
+    svc?: SvcOutputMetadata;
 }
 
 interface ErrorEventInit extends EventInit {
@@ -852,6 +853,10 @@ interface StreamPipeOptions {
 
 interface StructuredSerializeOptions {
     transfer?: Transferable[];
+}
+
+interface SvcOutputMetadata {
+    temporalLayerId?: number;
 }
 
 interface TaskControllerInit {

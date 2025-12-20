@@ -653,6 +653,7 @@ interface EncodedVideoChunkInit {
 
 interface EncodedVideoChunkMetadata {
     decoderConfig?: VideoDecoderConfig;
+    svc?: SvcOutputMetadata;
 }
 
 interface ErrorEventInit extends EventInit {
@@ -2333,6 +2334,10 @@ interface StructuredSerializeOptions {
 
 interface SubmitEventInit extends EventInit {
     submitter?: HTMLElement | null;
+}
+
+interface SvcOutputMetadata {
+    temporalLayerId?: number;
 }
 
 interface TaskControllerInit {
