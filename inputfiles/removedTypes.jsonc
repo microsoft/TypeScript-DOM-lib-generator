@@ -177,7 +177,6 @@
                 "members": {
                     "member": {
                         "alphaSideData": null, // Blink only as of 2023-03
-                        "svc": null // Blink only as of 2023-03
                     }
                 }
             },
