@@ -13375,7 +13375,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setAttribute(qualifiedName: string, value: string): void;
     /**
-     * If you are working with HTML documents and you don't need to specify the requested attribute as being part of a specific namespace, use the setAttribute() method instead.
+     * The **`setAttributeNS()`** method of the Element interface adds a new attribute or changes the value of an attribute with the given namespace and name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNS)
      */
@@ -26164,6 +26164,7 @@ declare var PerformanceObserverEntryList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
  */
 interface PerformancePaintTiming extends PerformanceEntry, PaintTimingMixin {
+    /** The **`toJSON()`** method of the PerformancePaintTiming interface is a serializer; it returns a JSON representation of the PerformancePaintTiming object. */
     toJSON(): any;
 }
 

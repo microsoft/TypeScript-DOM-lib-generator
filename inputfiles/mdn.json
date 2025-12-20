@@ -8362,7 +8362,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/setAttributeNS",
     "pageType": "web-api-instance-method",
-    "summary": "If you are working with HTML documents and you don't need to specify the requested attribute as being part of a specific namespace, use the setAttribute() method instead."
+    "summary": "The setAttributeNS() method of the Element interface adds a new attribute or changes the value of an attribute with the given namespace and name."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/setCapture",
@@ -21960,6 +21960,11 @@
     "summary": "The PerformancePaintTiming interface provides timing information about \"paint\" (also called \"render\") operations during web page construction. \"Paint\" refers to conversion of the render tree to on-screen pixels."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/PerformancePaintTiming/toJSON",
+    "pageType": "web-api-instance-method",
+    "summary": "The toJSON() method of the PerformancePaintTiming interface is a serializer; it returns a JSON representation of the PerformancePaintTiming object."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/PerformanceResourceTiming",
     "pageType": "web-api-interface",
     "summary": "The PerformanceResourceTiming interface enables retrieval and analysis of detailed network timing data regarding the loading of an application's resources. An application can use the timing metrics to determine, for example, the length of time it takes to fetch a specific resource, such as an XMLHttpRequest, <SVG>, image, or script."
@@ -35262,7 +35267,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebGLRenderingContext/bufferSubData",
     "pageType": "web-api-instance-method",
-    "summary": "The WebGLRenderingContext.bufferSubData() method of the\nWebGL API updates a subset of a buffer\nobject's data store."
+    "summary": "The WebGLRenderingContext.bufferSubData() method of the WebGL API updates a subset of a buffer object's data store."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebGLRenderingContext/canvas",
