@@ -24,8 +24,4 @@ removals {
   dictionary CanvasRenderingContext2DSettings {
     member colorType // No implementation as of 2025-02
   }
-
-  dictionary FocusOptions {
-    member focusVisible // Gecko only as of 2022-09
-  }
 }
