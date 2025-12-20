@@ -208,6 +208,7 @@ interface FontFaceDescriptors {
     stretch?: string;
     style?: string;
     unicodeRange?: string;
+    variationSettings?: string;
     weight?: string;
 }
 
@@ -787,6 +788,7 @@ interface WebTransportHash {
 interface WebTransportOptions {
     allowPooling?: boolean;
     congestionControl?: WebTransportCongestionControl;
+    protocols?: string[];
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
 }

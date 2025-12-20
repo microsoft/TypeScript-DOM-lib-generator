@@ -188,10 +188,10 @@
                     }
                 }
             },
-            "FontFaceDescriptors": {
+            "FocusOptions": {
                 "members": {
                     "member": {
-                        "variationSettings": null // Gecko-only as of 2022-10
+                        "focusVisible": null // Gecko only as of 2022-09
                     }
                 }
             },
@@ -428,16 +428,6 @@
                 "members": {
                     "member": {
                         "xrCompatible": null
-                    }
-                }
-            },
-            "WebTransportOptions": {
-                "members": {
-                    "member": {
-                        "anticipatedConcurrentIncomingBidirectionalStreams": null, // No implementation as of 2025-07
-                        "anticipatedConcurrentIncomingUnidirectionalStreams": null, // No implementation as of 2025-07
-                        "datagramsReadableMode": null, // No implementation as of 2025-07
-                        "protocols": null // No implementation as of 2025-07
                     }
                 }
             },

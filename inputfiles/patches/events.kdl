@@ -98,3 +98,7 @@ interface-mixin WindowEventHandlers {
   event storage type=StorageEvent
   event unhandledrejection type=PromiseRejectionEvent
 }
+
+interface HTMLMediaElement {
+  event encrypted type=MediaEncryptedEvent
+}
