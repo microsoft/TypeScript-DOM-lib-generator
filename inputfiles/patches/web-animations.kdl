@@ -1,5 +1,5 @@
 removals {
   dictionary GetAnimationsOptions {
-    member pseudoElement // No implementation as of 2024-11
+    member pseudoElement // No implementation as of 2025-12
   }
 }
