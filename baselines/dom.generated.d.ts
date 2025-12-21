@@ -5,6 +5,10 @@
 /// Window APIs
 /////////////////////////////
 
+interface AacEncoderConfig {
+    format?: AacBitstreamFormat;
+}
+
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
@@ -146,6 +150,7 @@ interface AudioDecoderSupport {
 }
 
 interface AudioEncoderConfig {
+    aac?: AacEncoderConfig;
     bitrate?: number;
     bitrateMode?: BitrateMode;
     codec: string;
@@ -42419,6 +42424,7 @@ type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type VibratePattern = number | number[];
 type WindowProxy = Window;
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AacBitstreamFormat = "aac" | "adts";
 type AlignSetting = "center" | "end" | "left" | "right" | "start";
 type AlphaOption = "discard" | "keep";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
