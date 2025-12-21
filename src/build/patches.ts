@@ -275,9 +275,7 @@ function handleProperty(child: Node): DeepPartial<Property> {
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
-    ...(typeNodes.length > 0
-      ? handleTyped(typeNodes, child.properties?.type)
-      : optionalMember("type", "string", child.properties?.type)),
+    ...handleTyped(typeNodes, child.properties?.type),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
   };
