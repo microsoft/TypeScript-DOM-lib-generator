@@ -33,7 +33,7 @@ removals {
   }
 
   dictionary EncodedVideoChunkInit {
-    member transfer // Blink only as of 2023-11
+    member transfer // Blink only as of 2025-12
   }
 
   dictionary EncodedVideoChunkMetadata {
