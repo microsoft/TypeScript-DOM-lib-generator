@@ -54,9 +54,7 @@ function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
     throw new Error("Expected a type node");
   }
   const subType =
-    type.children.length > 0
-      ? handleSingleTypeNode(type.children[0])
-      : undefined;
+    type.children.length > 0 ? handleTyped(type.children) : undefined;
   return {
     ...optionalMember("type", "string", type.values[0]),
     subtype: subType,
@@ -270,21 +268,15 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): DeepPartial<Property> {
-  let typeNode: Node | undefined;
-  for (const c of child.children) {
-    if (c.name === "type") {
-      typeNode = c;
-      break;
-    }
-  }
+  const typeNodes = child.children.filter((c) => c.name === "type");
 
   return {
     name: string(child.values[0]),
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
-    ...(typeNode
-      ? handleSingleTypeNode(typeNode)
+    ...(typeNodes.length > 0
+      ? handleTyped(typeNodes, child.properties?.type)
       : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
