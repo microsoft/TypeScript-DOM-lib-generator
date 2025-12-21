@@ -54,7 +54,9 @@ function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
     throw new Error("Expected a type node");
   }
   const subType =
-    type.children.length > 0 ? handleSingleTypeNode(type.children[0]) : undefined;
+    type.children.length > 0
+      ? handleSingleTypeNode(type.children[0])
+      : undefined;
   return {
     ...optionalMember("type", "string", type.values[0]),
     subtype: subType,
