@@ -168,6 +168,7 @@ function handleMixinAndInterfaces(
   const event: Event[] = [];
   const property: Record<string, DeepPartial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
+  let constructor: DeepPartial<OverridableMethod> | undefined;
   let typeParameters = {};
 
   for (const child of node.children) {
@@ -182,10 +183,17 @@ function handleMixinAndInterfaces(
       }
       case "method": {
         const methodName = string(child.values[0]);
-        const m = handleMethod(child);
+        const m = handleMethodAndConstructor(child);
         method = merge(method, {
           [methodName]: m,
         });
+        break;
+      }
+      case "constructor": {
+        if (constructor) {
+          throw new Error(`Multiple constructors found in ${type} "${name}"`);
+        }
+        constructor = handleMethodAndConstructor(child, true);
         break;
       }
       case "typeParameters": {
@@ -199,6 +207,7 @@ function handleMixinAndInterfaces(
 
   const interfaceObject = type === "interface" && {
     ...typeParameters,
+    ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
     ...optionalMember(
@@ -294,11 +303,15 @@ function handleParam(node: Node) {
 }
 
 /**
- * Handles a child node of type "method" and adds it to the method object.
+ * Handles a child node of type "method" or "constructor" and adds it to the method or constructor object.
  * @param child The child node to handle.
+ * @param isConstructor Whether the child node is a constructor.
  */
-function handleMethod(child: Node): DeepPartial<OverridableMethod> {
-  const name = string(child.values[0]);
+function handleMethodAndConstructor(
+  child: Node,
+  isConstructor: boolean = false,
+): DeepPartial<OverridableMethod> {
+  const name = isConstructor ? undefined : string(child.values[0]);
 
   let typeNode: Node | undefined;
   const params: Partial<Param>[] = [];

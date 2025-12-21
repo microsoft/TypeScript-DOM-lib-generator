@@ -96,21 +96,6 @@
                     ]
                 }
             },
-            "URLSearchParams": {
-                "name": "URLSearchParams",
-                "constructor": {
-                    "signature": {
-                        "0": {
-                            "param": [
-                                {
-                                    "name": "init",
-                                    "additionalTypes": ["URLSearchParams"]
-                                }
-                            ]
-                        }
-                    }
-                }
-            },
             "NodeListOf": {
                 "name": "NodeListOf",
                 "typeParameters": [
