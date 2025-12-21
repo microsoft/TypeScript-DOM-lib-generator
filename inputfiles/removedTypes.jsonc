@@ -118,18 +118,18 @@
     },
     "dictionaries": {
         "dictionary": {
-            "AudioEncoderConfig": {
-                "members": {
-                    "member": {
-                        "flac": null // Blink only as of 2024-09
-                    }
-                }
-            },
             "AudioContextOptions": {
                 "members": {
                     "member": {
                         "renderSizeHint": null, // No implementation as of 2023-10
                         "sinkId": null // Blink only as of 2023-10
+                    }
+                }
+            },
+            "AudioEncoderConfig": {
+                "members": {
+                    "member": {
+                        "flac": null // Blink only as of 2024-09
                     }
                 }
             },
