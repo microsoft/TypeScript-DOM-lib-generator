@@ -93,7 +93,6 @@ interface AudioEncoderConfig {
     bitrate?: number;
     bitrateMode?: BitrateMode;
     codec: string;
-    flac?: FlacEncoderConfig;
     numberOfChannels: number;
     opus?: OpusEncoderConfig;
     sampleRate: number;
@@ -343,11 +342,6 @@ interface FileSystemReadWriteOptions {
 
 interface FileSystemRemoveOptions {
     recursive?: boolean;
-}
-
-interface FlacEncoderConfig {
-    blockSize?: number;
-    compressLevel?: number;
 }
 
 interface FontFaceDescriptors {

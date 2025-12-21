@@ -151,7 +151,6 @@ interface AudioEncoderConfig {
     bitrate?: number;
     bitrateMode?: BitrateMode;
     codec: string;
-    flac?: FlacEncoderConfig;
     numberOfChannels: number;
     opus?: OpusEncoderConfig;
     sampleRate: number;
@@ -723,11 +722,6 @@ interface FileSystemGetFileOptions {
 
 interface FileSystemRemoveOptions {
     recursive?: boolean;
-}
-
-interface FlacEncoderConfig {
-    blockSize?: number;
-    compressLevel?: number;
 }
 
 interface FocusEventInit extends UIEventInit {
