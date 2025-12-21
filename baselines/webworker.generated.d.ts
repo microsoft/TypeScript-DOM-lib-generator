@@ -5,6 +5,10 @@
 /// Worker APIs
 /////////////////////////////
 
+interface AacEncoderConfig {
+    format?: AacBitstreamFormat;
+}
+
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
@@ -85,9 +89,11 @@ interface AudioDecoderSupport {
 }
 
 interface AudioEncoderConfig {
+    aac?: AacEncoderConfig;
     bitrate?: number;
     bitrateMode?: BitrateMode;
     codec: string;
+    flac?: FlacEncoderConfig;
     numberOfChannels: number;
     opus?: OpusEncoderConfig;
     sampleRate: number;
@@ -337,6 +343,11 @@ interface FileSystemReadWriteOptions {
 
 interface FileSystemRemoveOptions {
     recursive?: boolean;
+}
+
+interface FlacEncoderConfig {
+    blockSize?: number;
+    compressLevel?: number;
 }
 
 interface FontFaceDescriptors {
@@ -13447,6 +13458,7 @@ type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHan
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array<ArrayBufferLike> | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AacBitstreamFormat = "aac" | "adts";
 type AlphaOption = "discard" | "keep";
 type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
 type AvcBitstreamFormat = "annexb" | "avc";
