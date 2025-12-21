@@ -48,13 +48,13 @@ function string(arg: unknown): string {
   return arg;
 }
 
-function handleTyped(type: Node): DeepPartial<Typed> {
+function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
   const isTyped = type.name == "type";
   if (!isTyped) {
     throw new Error("Expected a type node");
   }
   const subType =
-    type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
+    type.children.length > 0 ? handleSingleTypeNode(type.children[0]) : undefined;
   return {
     ...optionalMember("type", "string", type.values[0]),
     subtype: subType,
@@ -62,16 +62,16 @@ function handleTyped(type: Node): DeepPartial<Typed> {
   };
 }
 
-function handleMultipleTypes(
+function handleTyped(
   typeNodes: Node[],
   returns?: Value,
-): DeepPartial<Typed> | DeepPartial<Typed>[] | undefined {
+): DeepPartial<Typed> | undefined {
   // Support multiple types, merged into array. If only one, keep as object.
-  let type: DeepPartial<Typed> | DeepPartial<Typed>[] | undefined;
+  let type: DeepPartial<Typed> | undefined;
   if (typeNodes.length === 1) {
-    type = handleTyped(typeNodes[0]);
+    type = handleSingleTypeNode(typeNodes[0]);
   } else if (typeNodes.length > 1) {
-    const types = typeNodes.map(handleTyped);
+    const types = typeNodes.map(handleSingleTypeNode);
     type = { type: types };
   } else if (returns) {
     type = {
@@ -282,7 +282,7 @@ function handleProperty(child: Node): DeepPartial<Property> {
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
     ...(typeNode
-      ? handleTyped(typeNode)
+      ? handleSingleTypeNode(typeNode)
       : optionalMember("type", "string", child.properties?.type)),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
@@ -342,7 +342,7 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
   }
 
   const signatureIndex = child.properties?.signatureIndex;
-  const type = handleMultipleTypes(typeNodes, child.properties?.returns);
+  const type = handleTyped(typeNodes, child.properties?.returns);
 
   let signature: OverridableMethod["signature"] = [];
   if (type || params.length > 0) {
