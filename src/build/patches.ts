@@ -62,6 +62,28 @@ function handleTyped(type: Node): DeepPartial<Typed> {
   };
 }
 
+function handleMultipleTypes(
+  typeNodes: Node[],
+  returns?: Value,
+): DeepPartial<Typed> | DeepPartial<Typed>[] | undefined {
+  // Support multiple types, merged into array. If only one, keep as object.
+  let type: DeepPartial<Typed> | DeepPartial<Typed>[] | undefined;
+  if (typeNodes.length === 1) {
+    type = handleTyped(typeNodes[0]);
+  } else if (typeNodes.length > 1) {
+    const types = typeNodes.map(handleTyped);
+    type = { type: types };
+  } else if (returns) {
+    type = {
+      type: string(returns),
+      subtype: undefined,
+    };
+  } else {
+    type = undefined;
+  }
+  return type;
+}
+
 function handleTypeParameters(value: Value | Node) {
   if (!value) {
     return {};
@@ -300,16 +322,14 @@ function handleParam(node: Node) {
 function handleMethod(child: Node): DeepPartial<OverridableMethod> {
   const name = string(child.values[0]);
 
-  let typeNode: Node | undefined;
+  // Collect all type nodes into an array
+  const typeNodes: Node[] = [];
   const params: Partial<Param>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
       case "type":
-        if (typeNode) {
-          throw new Error(`Method "${name}" has multiple type nodes (invalid)`);
-        }
-        typeNode = c;
+        typeNodes.push(c);
         break;
 
       case "param":
@@ -321,16 +341,8 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
     }
   }
 
-  const type = typeNode
-    ? handleTyped(typeNode)
-    : child.properties?.returns
-      ? {
-          type: string(child.properties?.returns),
-          subtype: undefined,
-        }
-      : null;
-
   const signatureIndex = child.properties?.signatureIndex;
+  const type = handleMultipleTypes(typeNodes, child.properties?.returns);
 
   let signature: OverridableMethod["signature"] = [];
   if (type || params.length > 0) {

@@ -1,3 +1,10 @@
+interface PublicKeyCredential {
+  method toJSON signatureIndex=0 {
+    type RegistrationResponseJSON
+    type AuthenticationResponseJSON
+  }
+}
+
 removals {
   enum AuthenticatorTransport {
     smart-card // WebKit only as of 2023-05
