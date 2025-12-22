@@ -64,7 +64,7 @@ function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
 
 function handleTyped(
   typeNodes: Node[],
-  returns?: Value,
+  property?: Value,
 ): DeepPartial<Typed> | undefined {
   // Support multiple types, merged into array. If only one, keep as object.
   let type: DeepPartial<Typed> | undefined;
@@ -73,9 +73,9 @@ function handleTyped(
   } else if (typeNodes.length > 1) {
     const types = typeNodes.map(handleSingleTypeNode);
     type = { type: types };
-  } else if (returns) {
+  } else if (property) {
     type = {
-      type: string(returns),
+      type: string(property),
       subtype: undefined,
     };
   } else {
