@@ -423,13 +423,6 @@
                         "xrCompatible": null
                     }
                 }
-            },
-            "WebTransportSendStreamOptions": {
-                "members": {
-                    "member": {
-                        "waitUntilAvailable": null // Blink only as of 2024-09
-                    }
-                }
             }
         }
     },

@@ -6,4 +6,7 @@ removals {
     // WebKit has it in a different name datagramsReadableMode.
     member datagramsReadableType
   }
+  dictionary WebTransportSendStreamOptions {
+    member waitUntilAvailable // No implementation as of 2025-12.
+  }
 }
