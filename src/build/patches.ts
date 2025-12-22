@@ -190,10 +190,8 @@ function handleMixinAndInterfaces(
         break;
       }
       case "constructor": {
-        if (constructor) {
-          throw new Error(`Multiple constructors found in ${type} "${name}"`);
-        }
-        constructor = handleMethodAndConstructor(child, true);
+        const c = handleMethodAndConstructor(child, true);
+        constructor = merge(constructor, c);
         break;
       }
       case "typeParameters": {
