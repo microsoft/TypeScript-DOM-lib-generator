@@ -210,14 +210,6 @@
                     }
                 }
             },
-            "KeyframeAnimationOptions": {
-                "members": {
-                    "member": {
-                        "rangeEnd": null, // Blink only as of 2023-04
-                        "rangeStart": null // Blink only as of 2023-04
-                    }
-                }
-            },
             "MediaCapabilitiesDecodingInfo": {
                 "members": {
                     "member": {
