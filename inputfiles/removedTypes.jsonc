@@ -382,16 +382,6 @@
                         "rotation": null // No implementation as of 2024-11
                     }
                 }
-            },
-            "VideoFrameBufferInit": {
-                "members": {
-                    "member": {
-                        "flip": null, // No implementation as of 2024-11
-                        "metadata": null, // No implementation as of 2024-04. Linked to VideoFrame.metadata()
-                        "rotation": null, // No implementation as of 2024-11
-                        "transfer": null // Blink only as of 2024-11
-                    }
-                }
             }
         }
     },

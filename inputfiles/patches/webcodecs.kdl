@@ -31,4 +31,11 @@ removals {
     linear      // Blink only as of 2022-10
     pq          // Blink only as of 2022-10
   }
+
+  dictionary VideoFrameBufferInit {
+    member flip         // Blink only as of 2025-12
+    member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
+    member rotation     // Blink only as of 2025-12
+    member transfer     // Blink only as of 2025-12
+  }
 }
