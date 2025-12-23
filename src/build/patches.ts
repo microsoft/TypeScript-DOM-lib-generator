@@ -66,22 +66,23 @@ function handleTyped(
   typeNodes: Node[],
   property?: Value,
 ): DeepPartial<Typed> | undefined {
-  // Support multiple types, merged into array. If only one, keep as object.
-  let type: DeepPartial<Typed> | undefined;
-  if (typeNodes.length === 1) {
-    type = handleSingleTypeNode(typeNodes[0]);
-  } else if (typeNodes.length > 1) {
-    const types = typeNodes.map(handleSingleTypeNode);
-    type = { type: types };
-  } else if (property) {
-    type = {
+  if (property) {
+    if (typeNodes.length) {
+      throw new Error("Type nodes can't coexist with type property");
+    }
+    return {
       type: string(property),
       subtype: undefined,
     };
-  } else {
-    type = undefined;
   }
-  return type;
+  
+  const types = typeNodes.map(handleSingleTypeNode);
+  if (typeNodes.length > 1) {
+    // union types
+    return { type: types };
+  }
+  // either a non-union type or no type
+  return types[0];
 }
 
 function handleTypeParameters(value: Value | Node) {
