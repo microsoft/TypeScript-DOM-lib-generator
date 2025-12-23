@@ -399,13 +399,6 @@
                         "transfer": null // Blink only as of 2024-11
                     }
                 }
-            },
-            "WebGLContextAttributes": {
-                "members": {
-                    "member": {
-                        "xrCompatible": null
-                    }
-                }
             }
         }
     },

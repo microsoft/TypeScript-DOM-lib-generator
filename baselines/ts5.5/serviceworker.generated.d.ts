@@ -831,6 +831,7 @@ interface WebGLContextAttributes {
     premultipliedAlpha?: boolean;
     preserveDrawingBuffer?: boolean;
     stencil?: boolean;
+    xrCompatible?: boolean;
 }
 
 interface WebGLContextEventInit extends EventInit {
