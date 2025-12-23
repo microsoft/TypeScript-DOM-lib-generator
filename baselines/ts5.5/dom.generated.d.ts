@@ -1555,6 +1555,7 @@ interface PointerLockOptions {
 }
 
 interface PopStateEventInit extends EventInit {
+    hasUAVisualTransition?: boolean;
     state?: any;
 }
 

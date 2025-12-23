@@ -302,13 +302,6 @@
                     }
                 }
             },
-            "PopStateEventInit": {
-                "members": {
-                    "member": {
-                        "hasUAVisualTransition": null // Blink only as of 2023-09
-                    }
-                }
-            },
             "PushEventInit": {
                 "members": {
                     "member": {
