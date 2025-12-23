@@ -75,7 +75,7 @@ function handleTyped(
       subtype: undefined,
     };
   }
-  
+
   const types = typeNodes.map(handleSingleTypeNode);
   if (typeNodes.length > 1) {
     // union types
