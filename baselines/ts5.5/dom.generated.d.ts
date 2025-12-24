@@ -217,6 +217,13 @@ interface AuthenticationExtensionsClientOutputs {
     prf?: AuthenticationExtensionsPRFOutputs;
 }
 
+interface AuthenticationExtensionsClientOutputsJSON {
+    appid?: boolean;
+    credProps?: CredentialPropertiesOutput;
+    largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON;
+    prf?: AuthenticationExtensionsPRFOutputsJSON;
+}
+
 interface AuthenticationExtensionsLargeBlobInputs {
     read?: boolean;
     support?: string;
@@ -231,6 +238,12 @@ interface AuthenticationExtensionsLargeBlobInputsJSON {
 
 interface AuthenticationExtensionsLargeBlobOutputs {
     blob?: ArrayBuffer;
+    supported?: boolean;
+    written?: boolean;
+}
+
+interface AuthenticationExtensionsLargeBlobOutputsJSON {
+    blob?: Base64URLString;
     supported?: boolean;
     written?: boolean;
 }
@@ -250,6 +263,11 @@ interface AuthenticationExtensionsPRFOutputs {
     results?: AuthenticationExtensionsPRFValues;
 }
 
+interface AuthenticationExtensionsPRFOutputsJSON {
+    enabled?: boolean;
+    results?: AuthenticationExtensionsPRFValuesJSON;
+}
+
 interface AuthenticationExtensionsPRFValues {
     first: BufferSource;
     second?: BufferSource;
@@ -258,6 +276,31 @@ interface AuthenticationExtensionsPRFValues {
 interface AuthenticationExtensionsPRFValuesJSON {
     first: Base64URLString;
     second?: Base64URLString;
+}
+
+interface AuthenticationResponseJSON {
+    authenticatorAttachment?: string;
+    clientExtensionResults: AuthenticationExtensionsClientOutputsJSON;
+    id: string;
+    rawId: Base64URLString;
+    response: AuthenticatorAssertionResponseJSON;
+    type: string;
+}
+
+interface AuthenticatorAssertionResponseJSON {
+    authenticatorData: Base64URLString;
+    clientDataJSON: Base64URLString;
+    signature: Base64URLString;
+    userHandle?: Base64URLString;
+}
+
+interface AuthenticatorAttestationResponseJSON {
+    attestationObject: Base64URLString;
+    authenticatorData: Base64URLString;
+    clientDataJSON: Base64URLString;
+    publicKey?: Base64URLString;
+    publicKeyAlgorithm: COSEAlgorithmIdentifier;
+    transports: string[];
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -2102,6 +2145,15 @@ interface RegistrationOptions {
     scope?: string;
     type?: WorkerType;
     updateViaCache?: ServiceWorkerUpdateViaCache;
+}
+
+interface RegistrationResponseJSON {
+    authenticatorAttachment?: string;
+    clientExtensionResults: AuthenticationExtensionsClientOutputsJSON;
+    id: string;
+    rawId: Base64URLString;
+    response: AuthenticatorAttestationResponseJSON;
+    type: string;
 }
 
 interface Report {
@@ -26950,7 +27002,7 @@ interface PublicKeyCredential extends Credential {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/toJSON)
      */
-    toJSON(): PublicKeyCredentialJSON;
+    toJSON(): RegistrationResponseJSON | AuthenticationResponseJSON;
 }
 
 declare var PublicKeyCredential: {
@@ -42393,7 +42445,6 @@ type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
 type PublicKeyCredentialClientCapabilities = Record<string, boolean>;
-type PublicKeyCredentialJSON = any;
 type RTCRtpTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
