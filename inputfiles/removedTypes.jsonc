@@ -192,13 +192,6 @@
                     }
                 }
             },
-            "PaymentDetailsUpdate": {
-                "members": {
-                    "member": {
-                        "payerErrors": null // WebKit only as of 2024-08
-                    }
-                }
-            },
             "PaymentOptions": {
                 "members": {
                     "member": {

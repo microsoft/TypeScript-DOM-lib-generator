@@ -1471,6 +1471,7 @@ interface PaymentDetailsModifier {
 
 interface PaymentDetailsUpdate extends PaymentDetailsBase {
     error?: string;
+    payerErrors?: PayerErrors;
     paymentMethodErrors?: any;
     shippingAddressErrors?: AddressErrors;
     total?: PaymentItem;
