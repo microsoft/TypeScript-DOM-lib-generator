@@ -111,13 +111,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "ImageDataSettings": {
-                "members": {
-                    "member": {
-                        "pixelFormat": null // Blink experimental only as of 2025-04
-                    }
-                }
-            },
             "IntersectionObserverInit": {
                 "members": {
                     "member": {
