@@ -373,15 +373,6 @@
                         "vp9": null // Blink only as of 2025-05
                     }
                 }
-            },
-            "VideoFrameInit": {
-                "members": {
-                    "member": {
-                        "flip": null, // No implementation as of 2024-11
-                        "metadata": null, // No implementation as of 2024-11. Linked to VideoFrame.metadata()
-                        "rotation": null // No implementation as of 2024-11
-                    }
-                }
             }
         }
     },
