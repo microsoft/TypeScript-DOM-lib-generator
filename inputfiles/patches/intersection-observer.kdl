@@ -1,0 +1,5 @@
+removals {
+    interface IntersectionObserverEntry {
+        constructor // WebKit-only as of 2025-12
+    }
+}

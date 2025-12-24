@@ -217,8 +217,8 @@ function handleMixinAndInterfaces(
   return {
     name,
     ...optionalNestedMember("events", event, { event }),
-    properties: { property },
-    methods: { method },
+    ...optionalNestedMember("properties", property, { property }),
+    ...optionalNestedMember("methods", method, { method }),
     ...optionalMember("extends", "string", node.properties?.extends),
     ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
     ...optionalMember("forward", "string", node.properties?.forward),
@@ -449,7 +449,7 @@ function convertForRemovals(obj: unknown): unknown {
   if (obj && typeof obj === "object") {
     const newObj: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(obj)) {
-      if (key !== "name") {
+      if (!["name", "signature"].includes(key)) {
         const cleaned = convertForRemovals(value);
         // (intentionally covers null too)
         if (typeof cleaned === "object") {
