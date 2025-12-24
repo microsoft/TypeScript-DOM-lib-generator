@@ -217,7 +217,6 @@ interface AuthenticationExtensionsClientOutputs {
 
 interface AuthenticationExtensionsClientOutputsJSON {
     appid?: boolean;
-    appidExclude?: boolean;
     credProps?: CredentialPropertiesOutput;
     largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON;
     prf?: AuthenticationExtensionsPRFOutputsJSON;

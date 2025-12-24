@@ -56,4 +56,8 @@ removals {
     member otp
     member password
   }
+
+  dictionary AuthenticationExtensionsClientOutputsJSON {
+    member appidExclude // No implementation as of 2025-12
+  }
 }
