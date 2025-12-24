@@ -1,3 +1,8 @@
+//! This file:
+//! - Locates all KDL files in the `patches/` directory.
+//! - Parses and type-checks them.
+//! - Merges their contents and applies structural transformations over the main IDL dataset.
+
 import { parse, type Value, type Node, Document } from "kdljs";
 import type {
   Enum,
