@@ -9,38 +9,33 @@ This specifically includes:
 Feel free to send a pull request with changes to any other files.
 Note It is recommended to add your patch use KDL format, continue reading to find out more.
 
-## Documentation for `patches/` KDL Folder
+## Patches
 
-The `patches/` directory only contains `.kdl` files that specify modifications ("patches") to the default Web IDL or related specifications, using the [KDL format](https://kdl.dev/).
-These modifications are integrated into the build system (see [`src/build/patches.ts`](../src/build/patches.ts) for implementation details).
+The `patches/` directory contains `.kdl` files that specify modifications ("patches") on top of the Web IDL from web specifications, using the [KDL format](https://kdl.dev/).
+These patches are applied by [`patches.ts`](../src/build/patches.ts).
 
-### Purpose
+### When to add a patch
 
-- Fix errors or omissions in upstream IDL data.
-- Add or override or remove interfaces, mixins, and enums.
-- Apply project-specific features or changes.
+- Add extra types to the generated types, e.g. type parameters.
+- Make types more strict, e.g. replacing a string type into a string literal type.
+- Remove features that are not widely supported by web browsers, in case it's not automatically removed.
 
-### Editing Policy
+### When not to add a patch
 
-It is **recommended** to document and comment your patch files and their intent.
-This helps keep the integration clear and maintainable.
+- When the type is incorrect, and that's from an upstream spec. It's recommended to file a bug in the corresponding spec, and when the fix happens, it will be applied here automatically.
 
-### Patch File Naming Policy
+### How to write a patch
 
-When naming a KDL file, use the exact name of the main interface or dictionary as it appears in the official Web IDL specification. For reference and consistency, we recommend verifying names using [https://respec.org/xref/](https://respec.org/xref/).
+- Try to add a new patch file when the newly desired patch is big, e.g. as long as a whole page. If it's just a few lines then it can usually go into one of the existing files.
+- Files are named per their originating web specification. https://respec.org/xref/ helps you search the specifications. If there's no existing patch with that name, you should add one even if the patch will be very small. 
+- Please add code comment about the intent for the patch, e.g. a feature is removed as it's only implemented in one browser.
+- You can largely follow the Web IDL structure but in KDL syntax:
+  - Most top level types e.g. `enum`, `interface`, or `dictionary` have the same names, but multi-word names like `interface mixin` are hyphened as `interface-mixin`.
+  - Attributes and operations are called `property` and `method` respectively to follow TypeScript convention.
+- If in doubt, feel free to file an issue or request help in [Discord dom-lib-generator channel](https://discord.gg/kRYw84uG).
 
+#### Example (`patches/touch-events.kdl`)
 
-### Structure & Parsing
-
-- All `.kdl` files in this folder are read and parsed at build time.
-- Their structure typically mirrors major Web IDL concepts:
-  - `enum`
-  - `interface`
-  - `interface-mixin`
-  - `dictionary`
-  - Members like `event`, `property`, and `method`.
-
-#### Example Patch File (`patches/tuoach-events.kdl`)
 ```kdl
 interface-mixin GlobalEventHandlers {
   // Touch event handlers are intentionally hidden in non-mobile web browsers.
@@ -50,22 +45,4 @@ interface-mixin GlobalEventHandlers {
   property ontouchmove optional=#true
   property ontouchstart optional=#true
 }
-
 ```
-
-### How It Works
-
-The builder (see `src/build/patches.ts`):
-
-- Locates all KDL files in the `patches/` directory.
-- Parses and type-checks them.
-- Merges their contents and applies structural transformations over the main IDL dataset.
-
-See the source or comments in `patches.ts` for precise KDL syntax and advanced features.
-
-### Notes
-
-- You can split patches into multiple `.kdl` files if desired.
-- All the data in the json and jsonc files will be eventually transformed to KDL, so if possible submit patches to KDL.
-- When in doubt, consult `/src/build/patches.ts` for details on supported KDL structure and merging logic.
-- If there is a feature that is missing from the KDL parser, feel free to implement it yourself or ping @bashamega to help implement that feature in [this issue](https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/2053), or just add it to the jsonc files.
