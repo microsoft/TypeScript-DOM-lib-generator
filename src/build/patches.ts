@@ -348,7 +348,7 @@ function handleMethodAndConstructor(
   const signatureIndex = child.properties?.signatureIndex;
   const type = handleTyped(typeNodes, child.properties?.returns);
 
-  let signature: OverridableMethod["signature"] = [];
+  let signature: OverridableMethod["signature"] | undefined = undefined;
   if (type || params.length > 0) {
     // Determine the actual signature object
     const signatureObj: DeepPartial<Signature> = {
@@ -359,6 +359,10 @@ function handleMethodAndConstructor(
       signature = { [signatureIndex]: signatureObj };
     } else {
       signature = [signatureObj];
+    }
+    if (signatureObj.param?.length === 0 && !signatureObj.type) {
+      // If there are no params and no return type, remove the signature
+      signature = undefined;
     }
   }
   return {
@@ -454,7 +458,7 @@ function convertForRemovals(obj: unknown): unknown {
   if (obj && typeof obj === "object") {
     const newObj: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(obj)) {
-      if (!["name", "signature"].includes(key)) {
+      if (key !== "name") {
         const cleaned = convertForRemovals(value);
         // (intentionally covers null too)
         if (typeof cleaned === "object") {
