@@ -42,6 +42,6 @@ removals {
   dictionary VideoFrameInit {
     member flip         // Blink only as of 2025-12
     member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
-    member rotation     // No implementation as of 2025-12
+    member rotation     // Blink only as of 2025-12
   }
 }
