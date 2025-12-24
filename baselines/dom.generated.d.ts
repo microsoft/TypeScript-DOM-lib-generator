@@ -220,6 +220,13 @@ interface AuthenticationExtensionsClientOutputs {
     prf?: AuthenticationExtensionsPRFOutputs;
 }
 
+interface AuthenticationExtensionsClientOutputsJSON {
+    appid?: boolean;
+    credProps?: CredentialPropertiesOutput;
+    largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON;
+    prf?: AuthenticationExtensionsPRFOutputsJSON;
+}
+
 interface AuthenticationExtensionsLargeBlobInputs {
     read?: boolean;
     support?: string;
@@ -234,6 +241,12 @@ interface AuthenticationExtensionsLargeBlobInputsJSON {
 
 interface AuthenticationExtensionsLargeBlobOutputs {
     blob?: ArrayBuffer;
+    supported?: boolean;
+    written?: boolean;
+}
+
+interface AuthenticationExtensionsLargeBlobOutputsJSON {
+    blob?: Base64URLString;
     supported?: boolean;
     written?: boolean;
 }
@@ -253,6 +266,11 @@ interface AuthenticationExtensionsPRFOutputs {
     results?: AuthenticationExtensionsPRFValues;
 }
 
+interface AuthenticationExtensionsPRFOutputsJSON {
+    enabled?: boolean;
+    results?: AuthenticationExtensionsPRFValuesJSON;
+}
+
 interface AuthenticationExtensionsPRFValues {
     first: BufferSource;
     second?: BufferSource;
@@ -261,6 +279,31 @@ interface AuthenticationExtensionsPRFValues {
 interface AuthenticationExtensionsPRFValuesJSON {
     first: Base64URLString;
     second?: Base64URLString;
+}
+
+interface AuthenticationResponseJSON {
+    authenticatorAttachment?: string;
+    clientExtensionResults: AuthenticationExtensionsClientOutputsJSON;
+    id: string;
+    rawId: Base64URLString;
+    response: AuthenticatorAssertionResponseJSON;
+    type: string;
+}
+
+interface AuthenticatorAssertionResponseJSON {
+    authenticatorData: Base64URLString;
+    clientDataJSON: Base64URLString;
+    signature: Base64URLString;
+    userHandle?: Base64URLString;
+}
+
+interface AuthenticatorAttestationResponseJSON {
+    attestationObject: Base64URLString;
+    authenticatorData: Base64URLString;
+    clientDataJSON: Base64URLString;
+    publicKey?: Base64URLString;
+    publicKeyAlgorithm: COSEAlgorithmIdentifier;
+    transports: string[];
 }
 
 interface AuthenticatorSelectionCriteria {
@@ -975,6 +1018,8 @@ interface Keyframe {
 
 interface KeyframeAnimationOptions extends KeyframeEffectOptions {
     id?: string;
+    rangeEnd?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string;
+    rangeStart?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string;
     timeline?: AnimationTimeline | null;
 }
 
@@ -1556,6 +1601,7 @@ interface PointerLockOptions {
 }
 
 interface PopStateEventInit extends EventInit {
+    hasUAVisualTransition?: boolean;
     state?: any;
 }
 
@@ -2104,6 +2150,15 @@ interface RegistrationOptions {
     updateViaCache?: ServiceWorkerUpdateViaCache;
 }
 
+interface RegistrationResponseJSON {
+    authenticatorAttachment?: string;
+    clientExtensionResults: AuthenticationExtensionsClientOutputsJSON;
+    id: string;
+    rawId: Base64URLString;
+    response: AuthenticatorAttestationResponseJSON;
+    type: string;
+}
+
 interface Report {
     body?: ReportBody | null;
     type?: string;
@@ -2372,6 +2427,11 @@ interface TextDecoderOptions {
 interface TextEncoderEncodeIntoResult {
     read: number;
     written: number;
+}
+
+interface TimelineRangeOffset {
+    offset?: CSSNumericValue;
+    rangeName?: string | null;
 }
 
 interface ToggleEventInit extends EventInit {
@@ -2661,6 +2721,7 @@ interface WebGLContextAttributes {
     premultipliedAlpha?: boolean;
     preserveDrawingBuffer?: boolean;
     stencil?: boolean;
+    xrCompatible?: boolean;
 }
 
 interface WebGLContextEventInit extends EventInit {
@@ -5885,6 +5946,7 @@ interface CSSRule {
     readonly MEDIA_RULE: 4;
     readonly FONT_FACE_RULE: 5;
     readonly PAGE_RULE: 6;
+    readonly MARGIN_RULE: 9;
     readonly NAMESPACE_RULE: 10;
     readonly KEYFRAMES_RULE: 7;
     readonly KEYFRAME_RULE: 8;
@@ -5902,6 +5964,7 @@ declare var CSSRule: {
     readonly MEDIA_RULE: 4;
     readonly FONT_FACE_RULE: 5;
     readonly PAGE_RULE: 6;
+    readonly MARGIN_RULE: 9;
     readonly NAMESPACE_RULE: 10;
     readonly KEYFRAMES_RULE: 7;
     readonly KEYFRAME_RULE: 8;
@@ -26963,7 +27026,7 @@ interface PublicKeyCredential extends Credential {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PublicKeyCredential/toJSON)
      */
-    toJSON(): PublicKeyCredentialJSON;
+    toJSON(): RegistrationResponseJSON | AuthenticationResponseJSON;
 }
 
 declare var PublicKeyCredential: {
@@ -28360,7 +28423,7 @@ interface Range extends AbstractRange {
      */
     comparePoint(node: Node, offset: number): number;
     /**
-     * The **`Range.createContextualFragment()`** method returns a DocumentFragment by invoking the HTML fragment parsing algorithm or the XML fragment parsing algorithm with the start of the range (the parent of the selected node) as the context node. The HTML fragment parsing algorithm is used if the range belongs to a Document whose HTMLness bit is set. In the HTML case, if the context node would be html, for historical reasons the fragment parsing algorithm is invoked with body as the context instead.
+     * The **`Range.createContextualFragment()`** method of the Range interface returns a DocumentFragment representing the parsed input HTML or XML.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/createContextualFragment)
      */
@@ -42408,7 +42471,6 @@ type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
 type PublicKeyCredentialClientCapabilities = Record<string, boolean>;
-type PublicKeyCredentialJSON = any;
 type RTCRtpTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;

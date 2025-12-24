@@ -48,18 +48,41 @@ function string(arg: unknown): string {
   return arg;
 }
 
-function handleTyped(type: Node): DeepPartial<Typed> {
+function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
   const isTyped = type.name == "type";
   if (!isTyped) {
     throw new Error("Expected a type node");
   }
   const subType =
-    type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
+    type.children.length > 0 ? handleTyped(type.children) : undefined;
   return {
     ...optionalMember("type", "string", type.values[0]),
     subtype: subType,
     ...optionalMember("nullable", "boolean", type.properties?.nullable),
   };
+}
+
+function handleTyped(
+  typeNodes: Node[],
+  property?: Value,
+): DeepPartial<Typed> | undefined {
+  if (property) {
+    if (typeNodes.length) {
+      throw new Error("Type nodes can't coexist with type property");
+    }
+    return {
+      type: string(property),
+      subtype: undefined,
+    };
+  }
+
+  const types = typeNodes.map(handleSingleTypeNode);
+  if (typeNodes.length > 1) {
+    // union types
+    return { type: types };
+  }
+  // either a non-union type or no type
+  return types[0];
 }
 
 function handleTypeParameters(value: Value | Node) {
@@ -168,6 +191,7 @@ function handleMixinAndInterfaces(
   const event: Event[] = [];
   const property: Record<string, DeepPartial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
+  let constructor: DeepPartial<OverridableMethod> | undefined;
   let typeParameters = {};
 
   for (const child of node.children) {
@@ -182,10 +206,15 @@ function handleMixinAndInterfaces(
       }
       case "method": {
         const methodName = string(child.values[0]);
-        const m = handleMethod(child);
+        const m = handleMethodAndConstructor(child);
         method = merge(method, {
           [methodName]: m,
         });
+        break;
+      }
+      case "constructor": {
+        const c = handleMethodAndConstructor(child, true);
+        constructor = merge(constructor, c);
         break;
       }
       case "typeParameters": {
@@ -199,6 +228,7 @@ function handleMixinAndInterfaces(
 
   const interfaceObject = type === "interface" && {
     ...typeParameters,
+    ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
     ...optionalMember(
@@ -246,22 +276,14 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): DeepPartial<Property> {
-  let typeNode: Node | undefined;
-  for (const c of child.children) {
-    if (c.name === "type") {
-      typeNode = c;
-      break;
-    }
-  }
+  const typeNodes = child.children.filter((c) => c.name === "type");
 
   return {
     name: string(child.values[0]),
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
-    ...(typeNode
-      ? handleTyped(typeNode)
-      : optionalMember("type", "string", child.properties?.type)),
+    ...handleTyped(typeNodes, child.properties?.type),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
   };
@@ -294,22 +316,24 @@ function handleParam(node: Node) {
 }
 
 /**
- * Handles a child node of type "method" and adds it to the method object.
+ * Handles a child node of type "method" or "constructor" and adds it to the method or constructor object.
  * @param child The child node to handle.
+ * @param isConstructor Whether the child node is a constructor.
  */
-function handleMethod(child: Node): DeepPartial<OverridableMethod> {
-  const name = string(child.values[0]);
+function handleMethodAndConstructor(
+  child: Node,
+  isConstructor: boolean = false,
+): DeepPartial<OverridableMethod> {
+  const name = isConstructor ? undefined : string(child.values[0]);
 
-  let typeNode: Node | undefined;
+  // Collect all type nodes into an array
+  const typeNodes: Node[] = [];
   const params: Partial<Param>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
       case "type":
-        if (typeNode) {
-          throw new Error(`Method "${name}" has multiple type nodes (invalid)`);
-        }
-        typeNode = c;
+        typeNodes.push(c);
         break;
 
       case "param":
@@ -321,16 +345,8 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
     }
   }
 
-  const type = typeNode
-    ? handleTyped(typeNode)
-    : child.properties?.returns
-      ? {
-          type: string(child.properties?.returns),
-          subtype: undefined,
-        }
-      : null;
-
   const signatureIndex = child.properties?.signatureIndex;
+  const type = handleTyped(typeNodes, child.properties?.returns);
 
   let signature: OverridableMethod["signature"] = [];
   if (type || params.length > 0) {

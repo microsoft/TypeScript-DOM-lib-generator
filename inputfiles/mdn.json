@@ -8752,7 +8752,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/ElementInternals/role",
     "pageType": "web-api-instance-property",
-    "summary": "The role read-only property of the ElementInternals interface returns the WAI-ARIA role for the element. For example, a checkbox might have role=\"checkbox\". It reflects the role attribute; it does not return the element's implicit ARIA role, if any, unless explicitly set."
+    "summary": "The role property of the ElementInternals interface returns the WAI-ARIA role for the element. For example, a checkbox might have role=\"checkbox\". It reflects the role attribute; it does not return the element's implicit ARIA role, if any, unless explicitly set."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ElementInternals/setFormValue",
@@ -23197,7 +23197,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Range/createContextualFragment",
     "pageType": "web-api-instance-method",
-    "summary": "The Range.createContextualFragment() method returns a\nDocumentFragment by invoking the HTML fragment parsing algorithm or the\nXML fragment parsing algorithm with the start of the range (the parent of the\nselected node) as the context node. The HTML fragment parsing algorithm is used if the\nrange belongs to a Document whose HTMLness bit is set. In the HTML case, if\nthe context node would be html, for historical reasons the fragment parsing\nalgorithm is invoked with body as the context instead."
+    "summary": "The Range.createContextualFragment() method of the Range interface returns a DocumentFragment representing the parsed input HTML or XML."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Range/deleteContents",

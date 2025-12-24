@@ -26,13 +26,6 @@
                     }
                 }
             },
-            "CSSRule": {
-                "constants": {
-                    "constant": {
-                        "MARGIN_RULE": null // WebKit only as of 2023-10
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -130,14 +123,6 @@
                     "member": {
                         "delay": null, // Blink only as of 2024-07
                         "trackVisibility": null // Blink only as of 2024-07
-                    }
-                }
-            },
-            "KeyframeAnimationOptions": {
-                "members": {
-                    "member": {
-                        "rangeEnd": null, // Blink only as of 2023-04
-                        "rangeStart": null // Blink only as of 2023-04
                     }
                 }
             },
@@ -242,13 +227,6 @@
                     }
                 }
             },
-            "PopStateEventInit": {
-                "members": {
-                    "member": {
-                        "hasUAVisualTransition": null // Blink only as of 2023-09
-                    }
-                }
-            },
             "PushEventInit": {
                 "members": {
                     "member": {
@@ -327,30 +305,6 @@
                         "flip": null, // No implementation as of 2024-11
                         "metadata": null, // No implementation as of 2024-11. Linked to VideoFrame.metadata()
                         "rotation": null // No implementation as of 2024-11
-                    }
-                }
-            },
-            "VideoFrameBufferInit": {
-                "members": {
-                    "member": {
-                        "flip": null, // No implementation as of 2024-11
-                        "metadata": null, // No implementation as of 2024-04. Linked to VideoFrame.metadata()
-                        "rotation": null, // No implementation as of 2024-11
-                        "transfer": null // Blink only as of 2024-11
-                    }
-                }
-            },
-            "WebGLContextAttributes": {
-                "members": {
-                    "member": {
-                        "xrCompatible": null
-                    }
-                }
-            },
-            "WebTransportSendStreamOptions": {
-                "members": {
-                    "member": {
-                        "waitUntilAvailable": null // Blink only as of 2024-09
                     }
                 }
             }
