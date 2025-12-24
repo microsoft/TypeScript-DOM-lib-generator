@@ -4,6 +4,7 @@ Some files in this directory are generated. Please do not edit them.
 This specifically includes:
 
 * `idl/*`
+* `mdn.json`
 
 Feel free to send a pull request with changes to any other files.
 Note It is recommended to add your patch use KDL format, continue reading to find out more.
