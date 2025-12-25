@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-import { hyphenToCamelCase } from "./utils/css.js";
+import { hyphenToCamelCase } from "./utils/css.ts";
 
 const inputFile = new URL("../../inputfiles/mdn.json", import.meta.url);
 

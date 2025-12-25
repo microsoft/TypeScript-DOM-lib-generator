@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 const baselineFolder = new URL("../baselines/", import.meta.url);
 const outputFolder = new URL("../generated/", import.meta.url);
 const tscPath = new URL(
-  "../node_modules/typescript/lib/tsc.js",
+  "../node_modules/typescript/lib/tsc.ts",
   import.meta.url,
 );
 

@@ -1,5 +1,5 @@
 import { listAll } from "@webref/events";
-import { addToNestedMap } from "../utils/map.js";
+import { addToNestedMap } from "../utils/map.ts";
 
 export async function getInterfaceToEventMap(): Promise<
   Map<string, Map<string, string>>
