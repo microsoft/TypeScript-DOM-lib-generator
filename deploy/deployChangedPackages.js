@@ -10,7 +10,7 @@ import * as path from "path";
 import { spawnSync } from "child_process";
 import { Octokit } from "@octokit/rest";
 import { printUnifiedDiff } from "print-diff";
-import { generateChangelogFrom } from "../lib/changelog.ts";
+import { generateChangelogFrom } from "../src/changelog.ts";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
 import fetch from "node-fetch";
