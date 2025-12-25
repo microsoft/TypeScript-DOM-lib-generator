@@ -1,6 +1,6 @@
 import * as webidl2 from "webidl2";
-import * as Browser from "./types.js";
-import { getEmptyWebIDL } from "./helpers.js";
+import * as Browser from "./types.ts";
+import { getEmptyWebIDL } from "./helpers.ts";
 
 export function convert(text: string, commentMap: Record<string, string>) {
   const rootTypes = webidl2.parse(text);

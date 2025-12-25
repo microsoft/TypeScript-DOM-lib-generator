@@ -1,5 +1,5 @@
-import * as Browser from "./types.js";
-import { mapToArray, arrayToMap } from "./helpers.js";
+import * as Browser from "./types.ts";
+import { mapToArray, arrayToMap } from "./helpers.ts";
 
 export function collectLegacyNamespaceTypes(
   webidl: Browser.WebIdl,

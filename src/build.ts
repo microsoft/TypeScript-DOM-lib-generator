@@ -1,20 +1,20 @@
-import * as Browser from "./build/types.js";
+import type * as Browser from "./build/types.ts";
 import { promises as fs } from "fs";
-import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
-import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";
-import { convert } from "./build/widlprocess.js";
-import { getExposedTypes } from "./build/expose.js";
+import { merge, resolveExposure, arrayToMap } from "./build/helpers.ts";
+import { type CompilerBehavior, emitWebIdl } from "./build/emitter.ts";
+import { convert } from "./build/widlprocess.ts";
+import { getExposedTypes } from "./build/expose.ts";
 import {
   getDeprecationData,
   getDocsData,
   getRemovalData,
-} from "./build/bcd.js";
-import { getInterfaceElementMergeData } from "./build/webref/elements.js";
-import { getInterfaceToEventMap } from "./build/webref/events.js";
-import { getWebidls } from "./build/webref/idl.js";
+} from "./build/bcd.ts";
+import { getInterfaceElementMergeData } from "./build/webref/elements.ts";
+import { getInterfaceToEventMap } from "./build/webref/events.ts";
+import { getWebidls } from "./build/webref/idl.ts";
 import jsonc from "jsonc-parser";
-import { generateDescriptions } from "./build/mdn-comments.js";
-import readPatches from "./build/patches.js";
+import { generateDescriptions } from "./build/mdn-comments.ts";
+import readPatches from "./build/patches.ts";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [

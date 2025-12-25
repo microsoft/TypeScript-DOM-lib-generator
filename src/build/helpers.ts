@@ -1,4 +1,4 @@
-import * as Browser from "./types.js";
+import * as Browser from "./types.ts";
 
 // Extended types used but not defined in the spec
 export const arrayBufferViewTypes = new Set([

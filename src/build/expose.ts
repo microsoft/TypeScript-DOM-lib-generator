@@ -1,4 +1,4 @@
-import * as Browser from "./types.js";
+import * as Browser from "./types.ts";
 import {
   getEmptyWebIDL,
   deepFilter,
@@ -7,8 +7,8 @@ import {
   filterProperties,
   mapToArray,
   arrayToMap,
-} from "./helpers.js";
-import { isEmptyRecord } from "./utils/record.js";
+} from "./helpers.ts";
+import { isEmptyRecord } from "./utils/record.ts";
 
 class LoggedSet extends Set<string> {
   private unvisited: Set<string>;

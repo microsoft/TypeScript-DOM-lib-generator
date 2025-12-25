@@ -2,6 +2,9 @@
   "name": "@typescript/dom-lib-generator",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">= 22.18.0"
+  },
   "description": "Provides TypeScript types for the latest web APIs.",
   "keywords": [
     "typescript",
@@ -12,15 +15,15 @@
     "worklet"
   ],
   "scripts": {
-    "build": "tsc && node ./lib/build.js",
+    "build": "node ./src/build.ts",
     "baseline-accept": "cpx \"generated\\**\" baselines\\",
     "lint": "eslint --max-warnings 0 src deploy/*.js scripts && tsc -p deploy/jsconfig.json",
     "lint-fix": "eslint --max-warnings 0 src deploy/*.js scripts --fix",
-    "test": "npm run build && npm run lint && node ./lib/test.js && node ./unittests/index.js",
-    "changelog": "tsc && node ./lib/changelog.js",
+    "test": "npm run build && npm run lint && node ./src/test.ts && node ./unittests/index.js",
+    "changelog": "node ./src/changelog.ts",
     "ts-changelog": "node ./deploy/versionChangelog.js",
     "migrate": "node ./deploy/migrate.js",
-    "version": "npm i && tsc && node ./lib/version.js",
+    "version": "npm i && node ./src/version.ts",
     "generate": "npm run build && npm run baseline-accept"
   },
   "author": {

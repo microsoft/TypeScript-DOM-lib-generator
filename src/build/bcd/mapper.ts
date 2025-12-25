@@ -1,14 +1,14 @@
-import {
+import type {
   BrowserName,
   CompatStatement,
   Identifier,
   SimpleSupportStatement,
 } from "bcd-idl-mapper";
 import api from "bcd-idl-mapper";
-import * as Browser from "../types.js";
-import { filterMapRecord, isEmptyRecord } from "../utils/record.js";
-import { mapDefined } from "../helpers.js";
-import { hasStableImplementation } from "./stable.js";
+import type * as Browser from "../types.ts";
+import { filterMapRecord, isEmptyRecord } from "../utils/record.ts";
+import { mapDefined } from "../helpers.ts";
+import { hasStableImplementation } from "./stable.ts";
 
 interface DataToMap {
   key: string;

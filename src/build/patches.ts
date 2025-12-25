@@ -1,4 +1,4 @@
-import { parse, type Value, type Node, Document } from "kdljs";
+import { parse, type Value, type Node, type Document } from "kdljs";
 import type {
   Enum,
   Event,
@@ -11,9 +11,9 @@ import type {
   Dictionary,
   Member,
   Signature,
-} from "./types.js";
+} from "./types.ts";
 import { readdir, readFile } from "fs/promises";
-import { merge } from "./helpers.js";
+import { merge } from "./helpers.ts";
 
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }

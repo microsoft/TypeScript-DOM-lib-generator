@@ -1,4 +1,4 @@
-import { SimpleSupportStatement } from "@mdn/browser-compat-data/types";
+import type { SimpleSupportStatement } from "@mdn/browser-compat-data/types";
 
 export function hasStableImplementation(
   browser: SimpleSupportStatement | SimpleSupportStatement[] | undefined,

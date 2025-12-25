@@ -1,4 +1,4 @@
-import * as Browser from "./types.js";
+import * as Browser from "./types.ts";
 import {
   mapToArray,
   distinct,
@@ -10,15 +10,11 @@ import {
   baseTypeConversionMap,
   assertUnique,
   arrayBufferViewTypes,
-} from "./helpers.js";
-import { collectLegacyNamespaceTypes } from "./legacy-namespace.js";
+} from "./helpers.ts";
+import { collectLegacyNamespaceTypes } from "./legacy-namespace.ts";
 
 /// Decide which members of a function to emit
-enum EmitScope {
-  StaticOnly,
-  InstanceOnly,
-  All,
-}
+type EmitScope = "StaticOnly" | "InstanceOnly" | "All";
 
 const tsKeywords = new Set(["default", "delete", "continue"]);
 const extendConflictsBaseTypes: Record<
@@ -38,9 +34,7 @@ const namespacesAsInterfaces = ["console"];
 // Used to decide if a member should be emitted given its static property and
 // the intended scope level.
 function matchScope(scope: EmitScope, x: { static?: boolean }) {
-  return (
-    scope === EmitScope.All || (scope === EmitScope.StaticOnly) === !!x.static
-  );
+  return scope === "All" || (scope === "StaticOnly") === !!x.static;
 }
 
 /// Parameter cannot be named "default" in JavaScript/Typescript so we need to rename it.
@@ -900,7 +894,7 @@ export function emitWebIdl(
     if (
       p.name === "name" &&
       i.name === "Window" &&
-      emitScope === EmitScope.InstanceOnly &&
+      emitScope === "InstanceOnly" &&
       prefix === "declare var "
     ) {
       printer.printLine("/** @deprecated */");
@@ -1114,7 +1108,7 @@ export function emitWebIdl(
         .sort(compareName)
         .forEach((m) => emitMethod(prefix, m, conflictedMembers));
     }
-    if (i.anonymousMethods && emitScope === EmitScope.InstanceOnly) {
+    if (i.anonymousMethods && emitScope === "InstanceOnly") {
       const stringifier = i.anonymousMethods.method.find((m) => m.stringifier);
       if (stringifier) {
         printer.printLine("toString(): string;");
@@ -1163,7 +1157,7 @@ export function emitWebIdl(
       ? "declare function "
       : "";
     emitMethods(methodPrefix, emitScope, i, conflictedMembers);
-    if (emitScope === EmitScope.InstanceOnly) {
+    if (emitScope === "InstanceOnly") {
       emitIteratorForEach(i);
     }
   }
@@ -1171,7 +1165,7 @@ export function emitWebIdl(
   /// Emit all members of every interfaces at the root level.
   /// Called only once on the global polluter object
   function emitAllMembers(i: Browser.Interface) {
-    emitMembers(/*prefix*/ "declare var ", EmitScope.InstanceOnly, i);
+    emitMembers(/*prefix*/ "declare var ", "InstanceOnly", i);
 
     for (const relatedIName of iNameToIDependList[i.name]) {
       const i = allInterfacesMap[relatedIName];
@@ -1275,7 +1269,7 @@ export function emitWebIdl(
         emitConstants(parent);
       }
     }
-    emitMembers(/*prefix*/ "", EmitScope.StaticOnly, i);
+    emitMembers(/*prefix*/ "", "StaticOnly", i);
 
     printer.decreaseIndent();
     printer.printLine("};");
@@ -1493,10 +1487,10 @@ export function emitWebIdl(
     emitInterfaceDeclaration(i);
     printer.increaseIndent();
 
-    emitMembers(/*prefix*/ "", EmitScope.InstanceOnly, i);
+    emitMembers(/*prefix*/ "", "InstanceOnly", i);
     emitConstants(i);
     emitEventHandlers(/*prefix*/ "", i);
-    emitIndexers(EmitScope.InstanceOnly, i);
+    emitIndexers("InstanceOnly", i);
 
     printer.decreaseIndent();
     printer.printLine("}");
@@ -1556,8 +1550,8 @@ export function emitWebIdl(
       namespace.nested.typedefs.sort(compareName).forEach(emitTypeDef);
     }
 
-    emitProperties("var ", EmitScope.InstanceOnly, namespace);
-    emitMethods("function ", EmitScope.InstanceOnly, namespace, new Set());
+    emitProperties("var ", "InstanceOnly", namespace);
+    emitMethods("function ", "InstanceOnly", namespace, new Set());
 
     printer.decreaseIndent();
     printer.printLine("}");

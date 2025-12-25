@@ -1,4 +1,4 @@
-import { hyphenToCamelCase } from "../utils/css.js";
+import { hyphenToCamelCase } from "../utils/css.ts";
 
 export function generateWebIdlFromCssProperties(properties: string[]): string {
   return `partial interface CSSStyleProperties {${properties
