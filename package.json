@@ -20,10 +20,10 @@
     "lint": "eslint --max-warnings 0 src deploy/*.js scripts && tsc -p deploy/jsconfig.json",
     "lint-fix": "eslint --max-warnings 0 src deploy/*.js scripts --fix",
     "test": "npm run build && npm run lint && node ./src/test.ts && node ./unittests/index.js",
-    "changelog": "tsc && node ./src/changelog.ts",
+    "changelog": "node ./src/changelog.ts",
     "ts-changelog": "node ./deploy/versionChangelog.js",
     "migrate": "node ./deploy/migrate.js",
-    "version": "npm i && tsc && node ./src/version.ts",
+    "version": "npm i && node ./src/version.ts",
     "generate": "npm run build && npm run baseline-accept"
   },
   "author": {
