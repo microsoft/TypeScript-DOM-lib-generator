@@ -279,7 +279,6 @@ __pycache__/
 # !tools/packages.config
 
 generated/
-lib/
 inputfiles/browser.webidl.json
 .vscode/*
 !.vscode/launch.template.json
