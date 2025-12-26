@@ -102,3 +102,9 @@ interface-mixin WindowEventHandlers {
 interface HTMLMediaElement {
   event encrypted type=MediaEncryptedEvent
 }
+
+interface Window {
+  event gamepadconnected type=GamepadEvent
+  event gamepaddisconnected type=GamepadEvent
+  event DOMContentLoaded type=Event
+}

@@ -130,7 +130,10 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
         );
         break;
       case "interface":
-        interfaces[name] = handleMixinAndInterfaces(node, "interface");
+        interfaces[name] = merge(
+          interfaces[name],
+          handleMixinAndInterfaces(node, "interface"),
+        );
         break;
       case "dictionary":
         dictionary[name] = merge(dictionary[name], handleDictionary(node));
