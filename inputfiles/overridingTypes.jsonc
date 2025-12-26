@@ -3319,15 +3319,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "StructuredSerializeOptions": {
-                "members": {
-                    "member": {
-                        "transfer": {
-                            "overrideType": "Transferable[]"
-                        }
-                    }
-                }
-            },
             "MessageEventInit": {
                 "members": {
                     "member": {
