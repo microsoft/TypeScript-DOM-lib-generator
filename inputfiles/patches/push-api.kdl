@@ -1,5 +1,5 @@
 removals {
   dictionary PushEventInit {
-    member notification
+    member notification // WebKit only as of 2025-12
   }
 }
