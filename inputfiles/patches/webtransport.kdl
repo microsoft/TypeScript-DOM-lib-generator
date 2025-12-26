@@ -13,6 +13,7 @@ removals {
 }
 
 interface WebTransport {
+  // Only Gecko implements the return type as SendStream as of 2025-12
   method createUnidirectionalStream signatureIndex=0 {
     type {
       type WritableStream
@@ -21,6 +22,7 @@ interface WebTransport {
 }
 
 interface WebTransportBidirectionalStream {
+  // Only Gecko implements readable/writable as Receive/SendStream as of 2025-12
   property readable type=ReadableStream
   property writable type=WritableStream
 }
