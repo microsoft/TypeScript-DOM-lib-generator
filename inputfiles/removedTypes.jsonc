@@ -108,14 +108,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "IntersectionObserverInit": {
-                "members": {
-                    "member": {
-                        "delay": null, // Blink only as of 2024-07
-                        "trackVisibility": null // Blink only as of 2024-07
-                    }
-                }
-            },
             "MediaCapabilitiesDecodingInfo": {
                 "members": {
                     "member": {
