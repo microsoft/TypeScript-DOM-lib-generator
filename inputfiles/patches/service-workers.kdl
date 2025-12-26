@@ -1,0 +1,5 @@
+removals {
+  dictionary FetchEventInit {
+    member replacesClientId // Not implemented as of 2025-12
+  }
+}

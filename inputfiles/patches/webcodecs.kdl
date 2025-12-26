@@ -32,10 +32,30 @@ removals {
     pq          // Blink only as of 2022-10
   }
 
+  dictionary EncodedVideoChunkInit {
+    member transfer // Blink only as of 2025-12
+  }
+
+  dictionary EncodedVideoChunkMetadata {
+    member alphaSideData // Blink only as of 2025-12
+  }
+
+  dictionary AudioEncoderConfig {
+    // https://w3c.github.io/webcodecs/flac_codec_registration.html
+    // Blink only as of 2025-12
+    member flac
+  }
+  
   dictionary VideoFrameBufferInit {
     member flip         // Blink only as of 2025-12
     member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
     member rotation     // Blink only as of 2025-12
     member transfer     // Blink only as of 2025-12
+  }
+  
+  dictionary VideoFrameInit {
+    member flip         // Blink only as of 2025-12
+    member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
+    member rotation     // Blink only as of 2025-12
   }
 }

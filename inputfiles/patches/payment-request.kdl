@@ -9,3 +9,9 @@ interface PaymentRequest {
 interface PaymentResponse {
   property shippingAddress type=PaymentAddress
 }
+
+removals {
+  dictionary PaymentDetailsUpdate {
+    member payerErrors // Webkit only as of 2025-12
+  }
+}

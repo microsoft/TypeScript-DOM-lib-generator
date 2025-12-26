@@ -335,6 +335,7 @@ interface ImageBitmapRenderingContextSettings {
 
 interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
+    pixelFormat?: ImageDataPixelFormat;
 }
 
 interface ImageEncodeOptions {
@@ -11812,6 +11813,7 @@ type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
 type IDBTransactionDurability = "default" | "relaxed" | "strict";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
+type ImageDataPixelFormat = "rgba-float16" | "rgba-unorm8";
 type ImageOrientation = "flipY" | "from-image" | "none";
 type ImageSmoothingQuality = "high" | "low" | "medium";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";

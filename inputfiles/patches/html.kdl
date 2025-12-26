@@ -19,3 +19,9 @@ interface HTMLImageElement {
   property decoding overrideType=#""async" | "sync" | "auto""#
   property loading overrideType=#""eager" | "lazy""#
 }
+
+removals {
+  dictionary CanvasRenderingContext2DSettings {
+    member colorType // Blink-only as of 2025-12, being tested in WebKit
+  }
+}

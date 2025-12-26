@@ -108,88 +108,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "AudioContextOptions": {
-                "members": {
-                    "member": {
-                        "renderSizeHint": null, // No implementation as of 2023-10
-                        "sinkId": null // Blink only as of 2023-10
-                    }
-                }
-            },
-            "AudioEncoderConfig": {
-                "members": {
-                    "member": {
-                        "flac": null // Blink only as of 2024-09
-                    }
-                }
-            },
-            "CanvasRenderingContext2DSettings": {
-                "members": {
-                    "member": {
-                        "colorType": null // No implementation as of 2025-02
-                    }
-                }
-            },
-            "CredentialCreationOptions": {
-                "members": {
-                    "member": {
-                        "digital": null, // Blink test-only as of 2025-05
-                        "federated": null, // Blink only as of 2025-05
-                        "password": null, // Blink only as of 2025-05
-                        "mediation": null // WebKit only as of 2025-05
-                    }
-                }
-            },
-            "DisplayMediaStreamOptions": {
-                "members": {
-                    "member": {
-                        // Only `audio` and `video` are implemented by 2+ engines, everything else is currently Blink only.
-                        // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
-                        // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
-                        // https://source.chromium.org/chromium/chromium/src/+/main:third_party/devtools-frontend/src/node_modules/@webref/idl/screen-capture.idl
-                        "monitorTypeSurfaces": null,
-                        "selfBrowserSurface": null,
-                        "surfaceSwitching": null,
-                        "systemAudio": null,
-                        "windowAudio": null
-                    }
-                }
-            },
-            "EncodedVideoChunkInit": {
-                "members": {
-                    "member": {
-                        "transfer": null, // Blink only as of 2023-11
-                    }
-                }
-            },
-            "EncodedVideoChunkMetadata": {
-                "members": {
-                    "member": {
-                        "alphaSideData": null, // Blink only as of 2023-03
-                    }
-                }
-            },
-            "FetchEventInit": {
-                "members": {
-                    "member": {
-                        "replacesClientId": null // Not implemented as of 2025-04
-                    }
-                }
-            },
-            "GetAnimationsOptions": {
-                "members": {
-                    "member": {
-                        "pseudoElement": null // No implementation as of 2024-11
-                    }
-                }
-            },
-            "ImageDataSettings": {
-                "members": {
-                    "member": {
-                        "pixelFormat": null // Blink experimental only as of 2025-04
-                    }
-                }
-            },
             "IntersectionObserverInit": {
                 "members": {
                     "member": {
@@ -261,13 +179,6 @@
                     "member": {
                         "application": null, // Blink only as of 2024-09
                         "signal": null // Blink only as of 2024-09
-                    }
-                }
-            },
-            "PaymentDetailsUpdate": {
-                "members": {
-                    "member": {
-                        "payerErrors": null // WebKit only as of 2024-08
                     }
                 }
             },
@@ -370,21 +281,7 @@
                         "vp9": null // Blink only as of 2025-05
                     }
                 }
-            },
-            "VideoFrameInit": {
-                "members": {
-                    "member": {
-                        "flip": null, // No implementation as of 2024-11
-                        "metadata": null, // No implementation as of 2024-11. Linked to VideoFrame.metadata()
-                        "rotation": null // No implementation as of 2024-11
-                    }
-                }
             }
         }
-    },
-    "typedefs": {
-        "typedef": [
-            "ArrayBufferView"
-        ]
     }
 }
