@@ -286,6 +286,7 @@ function handleProperty(child: Node): DeepPartial<Property> {
     ...handleTyped(typeNodes, child.properties?.type),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
+    ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
   };
 }
 

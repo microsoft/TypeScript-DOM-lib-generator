@@ -11,3 +11,21 @@ removals {
     member waitUntilAvailable // No implementation as of 2025-12.
   }
 }
+
+interface WebTransport {
+  method createUnidirectionalStream signatureIndex=0 {
+    type {
+      type WritableStream
+    }
+  }
+}
+
+interface WebTransportBidirectionalStream {
+  property readable type=ReadableStream
+  property writable type=WritableStream
+}
+
+interface WebTransportDatagramDuplexStream {
+  // https://github.com/w3c/webtransport/pull/638 removed this but browsers still have this
+  property writable type=WritableStream readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
+}
