@@ -9,6 +9,11 @@ interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window d
 interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
 interface HTMLDocument extends=Document exposed=Window
 
+interface HTMLIFrameElement {
+  property referrerPolicy type=ReferrerPolicy
+  property loading overrideType=#""eager" | "lazy""#
+}
+
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 
 interface-mixin WindowEventHandlers {

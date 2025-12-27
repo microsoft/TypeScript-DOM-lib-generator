@@ -314,20 +314,6 @@
                     }
                 }
             },
-            "HTMLIFrameElement": {
-                "name": "HTMLIFrameElement",
-                "properties": {
-                    "property": {
-                        "referrerPolicy": {
-                            "type": "ReferrerPolicy"
-                        },
-                        "loading": {
-                            "name": "loading",
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
             "IDBOpenDBRequest": {
                 "name": "IDBOpenDBRequest",
                 "extends": "IDBRequest<IDBDatabase>"
