@@ -58,4 +58,8 @@ removals {
     member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
     member rotation     // Blink only as of 2025-12
   }
+
+  dictionary VideoEncoderConfig {
+    member hevc // Blink only as of 2025-12
+  }
 }

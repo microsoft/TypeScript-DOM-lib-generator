@@ -254,13 +254,6 @@
                     }
                 }
             },
-            "VideoEncoderConfig": {
-                "members": {
-                    "member": {
-                        "hevc": null // Blink only as of 2025-05
-                    }
-                }
-            },
             "VideoEncoderEncodeOptions": {
                 "members": {
                     "member": {
