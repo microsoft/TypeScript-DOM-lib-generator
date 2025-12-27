@@ -314,19 +314,6 @@
                     }
                 }
             },
-            "Navigator": {
-                "name": "Navigator",
-                "properties": {
-                    "property": {
-                        "doNotTrack": {
-                            "name": "doNotTrack",
-                            "readonly": true,
-                            "nullable": true,
-                            "type": "DOMString"
-                        }
-                    }
-                }
-            },
             "HTMLIFrameElement": {
                 "name": "HTMLIFrameElement",
                 "properties": {
