@@ -369,7 +369,7 @@ function handleMethodAndConstructor(
     } else {
       signature = [signatureObj];
     }
-    if (signatureObj.param?.length === 0 && !signatureObj.type) {
+    if (isConstructor && signatureObj.param?.length === 0) {
       // If there are no params and no return type, remove the signature
       signature = undefined;
     }
