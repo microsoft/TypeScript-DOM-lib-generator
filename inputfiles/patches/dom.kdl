@@ -5,6 +5,12 @@ interface EventListener noInterfaceObject=#true {
     }
 }
 
+interface EventListenerObject noInterfaceObject=#true {
+    method handleEvent returns=void {
+        param object type=Event
+    }
+}
+
 enum InsertPosition {
     beforebegin
     beforeend

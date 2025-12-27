@@ -234,19 +234,6 @@
                 "extends": "DOMRect",
                 "noInterfaceObject": true
             },
-            "EventListenerObject": {
-                "name": "EventListenerObject",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        "handleEvent": {
-                            "overrideSignatures": [
-                                "handleEvent(object: Event): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
