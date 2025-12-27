@@ -108,3 +108,8 @@ interface Window {
   event gamepaddisconnected type=GamepadEvent
   event DOMContentLoaded type=Event
 }
+
+interface WorkerGlobalScope {
+  event rejectionhandled type=PromiseRejectionEvent
+  event unhandledrejection type=PromiseRejectionEvent
+}

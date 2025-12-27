@@ -518,20 +518,6 @@
                         }
                     }
                 }
-            },
-            "WorkerGlobalScope": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "rejectionhandled",
-                            "type": "PromiseRejectionEvent"
-                        },
-                        {
-                            "name": "unhandledrejection",
-                            "type": "PromiseRejectionEvent"
-                        }
-                    ]
-                }
             }
         }
     },
