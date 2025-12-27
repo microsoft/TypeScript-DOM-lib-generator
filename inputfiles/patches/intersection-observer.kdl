@@ -1,6 +1,6 @@
 removals {
   interface IntersectionObserverEntry {
-    constructor // WebKit-only as of 2025-12
+    constructor signatureIndex=0 // WebKit-only as of 2025-12
   }
   dictionary IntersectionObserverInit {
     member delay           // Blink only as of 2025-12
