@@ -366,7 +366,7 @@ function handleMethodAndConstructor(
     };
     if (typeof signatureIndex == "number") {
       signature = { [signatureIndex]: signatureObj };
-    } else if (!isConstructor) {
+    } else {
       signature = [signatureObj];
     }
   }
