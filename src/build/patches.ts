@@ -366,12 +366,8 @@ function handleMethodAndConstructor(
     };
     if (typeof signatureIndex == "number") {
       signature = { [signatureIndex]: signatureObj };
-    } else {
+    } else if (!isConstructor) {
       signature = [signatureObj];
-    }
-    if (isConstructor && signatureObj.param?.length === 0) {
-      // If there are no params and no return type, remove the signature
-      signature = undefined;
     }
   }
   return {
