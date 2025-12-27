@@ -66,35 +66,7 @@
                 "name": "Window",
                 "overrideIndexSignatures": [
                     "[index: number]: Window"
-                ],
-                "events": {
-                    "event": [
-                        {
-                            "name": "devicemotion",
-                            "type": "DeviceMotionEvent"
-                        },
-                        {
-                            "name": "deviceorientation",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "deviceorientationabsolute",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "gamepadconnected",
-                            "type": "GamepadEvent"
-                        },
-                        {
-                            "name": "gamepaddisconnected",
-                            "type": "GamepadEvent"
-                        },
-                        {
-                            "name": "DOMContentLoaded",
-                            "type": "Event"
-                        }
-                    ]
-                }
+                ]
             },
             "NodeListOf": {
                 "name": "NodeListOf",
@@ -338,19 +310,6 @@
                             "overrideSignatures": [
                                 "matchMedium(mediaquery: string): boolean"
                             ]
-                        }
-                    }
-                }
-            },
-            "Navigator": {
-                "name": "Navigator",
-                "properties": {
-                    "property": {
-                        "doNotTrack": {
-                            "name": "doNotTrack",
-                            "readonly": true,
-                            "nullable": true,
-                            "type": "DOMString"
                         }
                     }
                 }

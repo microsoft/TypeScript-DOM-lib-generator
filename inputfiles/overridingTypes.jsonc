@@ -453,33 +453,6 @@
                 },
                 "overrideIndexSignatures": []
             },
-            "WebTransport": {
-                "methods": {
-                    "method": {
-                        "createUnidirectionalStream": {
-                            "signature": {
-                                "0": {
-                                    "subtype": {
-                                        "type": "WritableStream"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "WebTransportBidirectionalStream": {
-                "properties": {
-                    "property": {
-                        "readable": {
-                            "type": "ReadableStream"
-                        },
-                        "writable": {
-                            "type": "WritableStream"
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -1693,19 +1666,6 @@
                             "type": "MessageEvent"
                         }
                     ]
-                }
-            },
-            "WebTransportDatagramDuplexStream": {
-                "properties": {
-                    "property": {
-                        // https://github.com/w3c/webtransport/pull/638 removed this but browsers still has this
-                        "writable": {
-                            "name": "writable",
-                            "type": "WritableStream",
-                            "readonly": true,
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
-                        }
-                    }
                 }
             },
             "HTMLTableRowElement": {
@@ -3319,15 +3279,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "StructuredSerializeOptions": {
-                "members": {
-                    "member": {
-                        "transfer": {
-                            "overrideType": "Transferable[]"
-                        }
-                    }
-                }
-            },
             "MessageEventInit": {
                 "members": {
                     "member": {

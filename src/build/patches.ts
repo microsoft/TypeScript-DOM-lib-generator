@@ -135,7 +135,10 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
         );
         break;
       case "interface":
-        interfaces[name] = handleMixinAndInterfaces(node, "interface");
+        interfaces[name] = merge(
+          interfaces[name],
+          handleMixinAndInterfaces(node, "interface"),
+        );
         break;
       case "dictionary":
         dictionary[name] = merge(dictionary[name], handleDictionary(node));
@@ -291,6 +294,7 @@ function handleProperty(child: Node): DeepPartial<Property> {
     ...handleTyped(typeNodes, child.properties?.type),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
+    ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
   };
 }
 
@@ -383,7 +387,7 @@ function handleMethodAndConstructor(
  */
 function handleDictionary(child: Node): DeepPartial<Dictionary> {
   const name = string(child.values[0]);
-  const member: Record<string, Partial<Member>> = {};
+  const member: Record<string, DeepPartial<Member>> = {};
   let typeParameters = {};
 
   for (const c of child.children) {
@@ -420,11 +424,12 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
  * Handles dictionary member nodes
  * @param c The member node to handle.
  */
-function handleMember(c: Node): Partial<Member> {
+function handleMember(c: Node): DeepPartial<Member> {
   const name = string(c.values[0]);
+  const typeNodes = c.children.filter((c) => c.name === "type");
   return {
     name,
-    ...optionalMember("type", "string", c.properties?.type),
+    ...handleTyped(typeNodes, c.properties?.type),
     ...optionalMember("required", "boolean", c.properties?.required),
     ...optionalMember("deprecated", "string", c.properties?.deprecated),
     ...optionalMember("overrideType", "string", c.properties?.overrideType),

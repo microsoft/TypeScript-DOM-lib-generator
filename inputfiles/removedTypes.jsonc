@@ -202,13 +202,6 @@
                     }
                 }
             },
-            "PushEventInit": {
-                "members": {
-                    "member": {
-                        "notification": null // WebKit only as of 2025-08
-                    }
-                }
-            },
             "ReadableStreamReadResult": null,
             "RequestInit": {
                 "members": {
