@@ -14,6 +14,29 @@ interface HTMLIFrameElement {
   property loading overrideType=#""eager" | "lazy""#
 }
 
+interface HTMLTableElement {
+  property rows {
+    type HTMLCollectionOf {
+      type HTMLTableRowElement
+    }
+  }
+
+  property tBodies {
+    type HTMLCollectionOf {
+      type HTMLTableSectionElement
+    }
+  }
+}
+
+interface HTMLTableSectionElement {
+  property rows {
+    type HTMLCollectionOf {
+      type HTMLTableRowElement
+    }
+  }
+}
+
+
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 
 interface-mixin WindowEventHandlers {

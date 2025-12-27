@@ -1166,30 +1166,6 @@
                 }
               }
             },
-            "HTMLTableElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        },
-                        "tBodies": {
-                            "name": "tBodies",
-                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLTableSectionElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        }
-                    }
-                }
-            },
             "Element": {
                 "methods": {
                     "method": {
