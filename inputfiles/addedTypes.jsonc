@@ -305,35 +305,11 @@
                 "name": "IDBOpenDBRequest",
                 "extends": "IDBRequest<IDBDatabase>"
             },
-            "HTMLBodyElement": {
-                "properties": {
-                    "property": {
-                        "onorientationchange": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
             "HTMLInputElement": {
                 "properties": {
                     "property": {
                         "labels": {
                             "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLLinkElement": {
-                "properties": {
-                    "property": {
-                        "charset": {
-                            "deprecated": true
-                        },
-                        "rev": {
-                            "deprecated": true
-                        },
-                        "target": {
-                            "deprecated": true
                         }
                     }
                 }
@@ -364,16 +340,6 @@
                     }
                 }
             },
-            "RTCDTMFSender": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "tonechange",
-                            "type": "RTCDTMFToneChangeEvent"
-                        }
-                    ]
-                }
-            },
             "RuntimeError": {
                 "name": "RuntimeError",
                 "extends": "Error",
@@ -393,30 +359,6 @@
                     "overrideSignatures": [
                         "new(message?: string): LinkError",
                         "(message?: string): LinkError"
-                    ]
-                }
-            },
-            "MediaRecorder": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "dataavailable",
-                            "type": "BlobEvent"
-                        }
-                    ]
-                }
-            },
-            "MediaStream": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "MediaStreamTrackEvent"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "MediaStreamTrackEvent"
-                        }
                     ]
                 }
             },
@@ -517,20 +459,6 @@
                             "type": "Document"
                         }
                     }
-                }
-            },
-            "WorkerGlobalScope": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "rejectionhandled",
-                            "type": "PromiseRejectionEvent"
-                        },
-                        {
-                            "name": "unhandledrejection",
-                            "type": "PromiseRejectionEvent"
-                        }
-                    ]
                 }
             }
         }
