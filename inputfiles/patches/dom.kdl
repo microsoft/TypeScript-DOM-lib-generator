@@ -11,10 +11,6 @@ interface EventListenerObject noInterfaceObject=#true {
   }
 }
 
-interface ProcessingInstruction {
-  property sheet readonly=#true type=DOMString mdnUrl="https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction/sheet"
-}
-
 enum InsertPosition {
   beforebegin
   beforeend
