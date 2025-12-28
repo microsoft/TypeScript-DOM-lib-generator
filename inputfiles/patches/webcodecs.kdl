@@ -62,4 +62,10 @@ removals {
   dictionary VideoEncoderConfig {
     member hevc // Blink only as of 2025-12
   }
+
+  dictionary VideoEncoderEncodeOptions {
+    member av1    // Blink only as of 2025-12
+    member hevc   // Blink only as of 2025-12
+    member vp9    // Blink only as of 2025-12
+  }
 }

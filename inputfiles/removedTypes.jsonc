@@ -253,15 +253,6 @@
                         "rotation": null // No implementation as of 2025-02
                     }
                 }
-            },
-            "VideoEncoderEncodeOptions": {
-                "members": {
-                    "member": {
-                        "av1": null, // Blink only as of 2025-05
-                        "hevc": null, // No implementation as of 2025-05
-                        "vp9": null // Blink only as of 2025-05
-                    }
-                }
             }
         }
     }
