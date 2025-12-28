@@ -447,7 +447,11 @@ function handleTypeDef(node: Node): DeepPartial<TypeDef> {
   return {
     name: string(node.values[0]),
     ...handleTyped(typeNodes),
-    ...optionalMember("legacyNamespace", "string", node.properties?.legacyNamespace),
+    ...optionalMember(
+      "legacyNamespace",
+      "string",
+      node.properties?.legacyNamespace,
+    ),
   };
 }
 
