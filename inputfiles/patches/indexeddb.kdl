@@ -5,3 +5,13 @@ interface IDBRequest {
    }
    property result overrideType=T
 }
+
+type-def IDBValidKey {
+   type long
+   type DOMString
+   type Date
+   type BufferSource
+   type sequence {
+      type IDBValidKey
+   }
+}

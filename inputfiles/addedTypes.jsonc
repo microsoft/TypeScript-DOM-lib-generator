@@ -477,10 +477,6 @@
                 "name": "HeadersInit"
             },
             {
-                "overrideType": "number | string | Date | BufferSource | IDBValidKey[]",
-                "name": "IDBValidKey"
-            },
-            {
                 "type": {
                     "0": {
                         "type": "Algorithm"
@@ -518,11 +514,6 @@
                         "type": "ExportValue"
                     }
                 ]
-            },
-            {
-                "name": "ImportValue",
-                "legacyNamespace": "WebAssembly",
-                "overrideType": "ExportValue | number"
             },
             {
                 "name": "ModuleImports",
