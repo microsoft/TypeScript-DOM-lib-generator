@@ -301,10 +301,6 @@
                     }
                 }
             },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>"
-            },
             "HTMLInputElement": {
                 "properties": {
                     "property": {

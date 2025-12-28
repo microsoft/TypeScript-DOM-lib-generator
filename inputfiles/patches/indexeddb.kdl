@@ -5,3 +5,5 @@ interface IDBRequest {
    }
    property result overrideType=T
 }
+
+interface IDBOpenDBRequest extends=IDBRequest<IDBDatabase>
