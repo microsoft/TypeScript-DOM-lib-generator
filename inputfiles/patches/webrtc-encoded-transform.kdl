@@ -11,3 +11,13 @@ removals {
     member senderCaptureTimeOffset // Blink only as of 2025-05
   }
 }
+
+// The spec removed `timestamp` but browsers still have it.
+// https://github.com/w3c/webrtc-encoded-transform/pull/204
+interface RTCEncodedAudioFrame {
+  property timestamp type=long readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp"
+}
+
+interface RTCEncodedVideoFrame {
+  property timestamp type=long readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp"
+}
