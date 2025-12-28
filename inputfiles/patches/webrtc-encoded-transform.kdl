@@ -14,6 +14,7 @@ removals {
 
 // The spec removed `timestamp` but browsers still have it.
 // https://github.com/w3c/webrtc-encoded-transform/pull/204
+// Still Valid in 2025-12
 interface RTCEncodedAudioFrame {
   property timestamp type=long readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp"
 }
