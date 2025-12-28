@@ -301,41 +301,11 @@
                     }
                 }
             },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>"
-            },
             "HTMLInputElement": {
                 "properties": {
                     "property": {
                         "labels": {
                             "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            // The spec removed `timestamp` but browsers still have it.
-            // https://github.com/w3c/webrtc-encoded-transform/pull/204
-            "RTCEncodedAudioFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCEncodedVideoFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
                         }
                     }
                 }

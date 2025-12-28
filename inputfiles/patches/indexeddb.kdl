@@ -6,6 +6,8 @@ interface IDBRequest {
    property result overrideType=T
 }
 
+interface IDBOpenDBRequest extends=IDBRequest<IDBDatabase>
+
 type-def IDBValidKey {
    type long
    type DOMString
