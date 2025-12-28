@@ -1445,48 +1445,6 @@
                     }
                 }
             },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        },
-                        "valueAsDate": {
-                            "name": "valueAsDate",
-                            "overrideType": "Date"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "setSelectionRange": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "start",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "end",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "direction",
-                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "MouseEvent": {
                 "methods": {
                     "method": {

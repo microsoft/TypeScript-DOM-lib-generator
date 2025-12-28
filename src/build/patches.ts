@@ -320,6 +320,7 @@ function handleParam(node: Node) {
     name,
     ...optionalMember("type", "string", node.properties?.type),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
+    ...optionalMember("nullable", "boolean", node.properties?.nullable),
     additionalTypes,
   };
 }

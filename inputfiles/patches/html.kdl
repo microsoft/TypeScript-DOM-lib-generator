@@ -47,6 +47,22 @@ interface HTMLImageElement {
   property loading overrideType=#""eager" | "lazy""#
 }
 
+interface HTMLInputElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+  property autocomplete type=AutoFill
+  property valueAsDate type=Date
+  property selectionDirection type=Directions
+  method setSelectionRange signatureIndex=0 {
+    param start nullable=#true
+    param end nullable=#true
+    param direction type=Directions
+  }
+}
+
 dictionary StructuredSerializeOptions {
   member transfer {
     type {

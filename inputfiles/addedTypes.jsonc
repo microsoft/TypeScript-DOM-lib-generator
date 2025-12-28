@@ -305,15 +305,6 @@
                 "name": "IDBOpenDBRequest",
                 "extends": "IDBRequest<IDBDatabase>"
             },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
             // The spec removed `timestamp` but browsers still have it.
             // https://github.com/w3c/webrtc-encoded-transform/pull/204
             "RTCEncodedAudioFrame": {
@@ -606,6 +597,10 @@
                 // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                 "name": "AutoFill",
                 "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
+            },
+            {
+                "name": "Directions",
+                "overrideType": "\"forward\" | \"backward\" | \"none\""
             }
         ]
     }

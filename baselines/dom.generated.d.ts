@@ -17341,7 +17341,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionDirection)
      */
-    selectionDirection: "forward" | "backward" | "none" | null;
+    selectionDirection: Directions | null;
     /**
      * The **`selectionEnd`** property of the HTMLInputElement interface is a number that represents the end index of the selected text. That is, it represents the index of the character immediately following the selection. Likewise, when there is no selection, this returns the offset of the character immediately following the current text input cursor position.
      *
@@ -17470,7 +17470,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange)
      */
-    setSelectionRange(start: number | null, end: number | null, direction?: "forward" | "backward" | "none"): void;
+    setSelectionRange(start: number | null, end: number | null, direction?: Directions): void;
     /**
      * The **`HTMLInputElement.showPicker()`** method displays the browser picker for an input element.
      *
@@ -42434,6 +42434,7 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
+type Directions = "forward" | "backward" | "none";
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
