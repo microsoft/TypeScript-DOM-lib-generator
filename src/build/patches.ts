@@ -146,7 +146,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
         dictionary[name] = merge(dictionary[name], handleDictionary(node));
         break;
       case "typedef":
-        typedefs.push(handleTypeDef(node));
+        typedefs.push(handleTypedef(node));
         break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
@@ -442,7 +442,7 @@ function handleMember(c: Node): DeepPartial<Member> {
  * Handles type definition nodes
  * @param node The type definition node to handle.
  */
-function handleTypeDef(node: Node): DeepPartial<TypeDef> {
+function handleTypedef(node: Node): DeepPartial<TypeDef> {
   const typeNodes = node.children.filter((c) => c.name === "type");
   return {
     name: string(node.values[0]),
