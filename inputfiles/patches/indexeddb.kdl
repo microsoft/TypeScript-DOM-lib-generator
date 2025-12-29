@@ -8,7 +8,7 @@ interface IDBRequest {
 
 interface IDBOpenDBRequest extends=IDBRequest<IDBDatabase>
 
-type-def IDBValidKey {
+typedef IDBValidKey {
    type long
    type DOMString
    type Date

@@ -145,7 +145,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
       case "dictionary":
         dictionary[name] = merge(dictionary[name], handleDictionary(node));
         break;
-      case "type-def":
+      case "typedef":
         typedefs.push(handleTypeDef(node));
         break;
       default:

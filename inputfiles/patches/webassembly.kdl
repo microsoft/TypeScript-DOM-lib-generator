@@ -16,7 +16,7 @@ dictionary MemoryDescriptor {
   member shared type=boolean
 }
 
-type-def ImportValue legacyNamespace=WebAssembly {
+typedef ImportValue legacyNamespace=WebAssembly {
   type ExportValue
   type long
 }
