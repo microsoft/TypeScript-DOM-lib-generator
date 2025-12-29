@@ -439,8 +439,8 @@ function handleMember(c: Node): DeepPartial<Member> {
 }
 
 /**
- * Handles type definition nodes
- * @param node The type definition node to handle.
+ * Handles typedef nodes
+ * @param node The typedef node to handle.
  */
 function handleTypedef(node: Node): DeepPartial<TypeDef> {
   const typeNodes = node.children.filter((c) => c.name === "type");
