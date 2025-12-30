@@ -60,12 +60,20 @@ removals {
   }
 
   dictionary VideoEncoderConfig {
-    member hevc // Blink only as of 2025-12
+    // https://w3c.github.io/webcodecs/hevc_codec_registration.html
+    // Blink only as of 2025-12
+    member hevc
   }
 
   dictionary VideoEncoderEncodeOptions {
-    member av1    // Blink only as of 2025-12
-    member hevc   // Blink only as of 2025-12
-    member vp9    // Blink only as of 2025-12
+    // https://w3c.github.io/webcodecs/av1_codec_registration.html
+    // Blink only as of 2025-12
+    member av1
+    // https://w3c.github.io/webcodecs/hevc_codec_registration.html
+    // Blink only as of 2025-12
+    member hevc
+    // https://w3c.github.io/webcodecs/vp9_codec_registration.html
+    // Blink only as of 2025-12
+    member vp9
   }
 }
