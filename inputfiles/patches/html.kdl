@@ -55,7 +55,7 @@ interface HTMLInputElement {
   }
   property autocomplete type=AutoFill
   property valueAsDate type=Date
-  property SelectionDirection type=SelectionDirection
+  property selectionDirection type=SelectionDirection
   method setSelectionRange signatureIndex=0 {
     param start nullable=#true
     param end nullable=#true

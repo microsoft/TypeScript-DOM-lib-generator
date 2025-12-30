@@ -17154,7 +17154,6 @@ declare var HTMLImageElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)
  */
 interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
-    SelectionDirection: SelectionDirection;
     /**
      * The **`accept`** property of the HTMLInputElement interface reflects the <input> element's accept attribute, generally a comma-separated list of unique file type specifiers providing a hint for the expected file type for an <input> of type file. If the attribute is not explicitly set, the accept property is an empty string.
      *
@@ -17342,7 +17341,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionDirection)
      */
-    selectionDirection: string | null;
+    selectionDirection: SelectionDirection | null;
     /**
      * The **`selectionEnd`** property of the HTMLInputElement interface is a number that represents the end index of the selected text. That is, it represents the index of the character immediately following the selection. Likewise, when there is no selection, this returns the offset of the character immediately following the current text input cursor position.
      *
