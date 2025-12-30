@@ -301,36 +301,6 @@
                     }
                 }
             },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>"
-            },
-            // The spec removed `timestamp` but browsers still have it.
-            // https://github.com/w3c/webrtc-encoded-transform/pull/204
-            "RTCEncodedAudioFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCEncodedVideoFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
             "RuntimeError": {
                 "name": "RuntimeError",
                 "extends": "Error",
@@ -439,18 +409,6 @@
                         }
                     }
                 }
-            },
-            "ProcessingInstruction": {
-                "name": "ProcessingInstruction",
-                "properties": {
-                    "property": {
-                        "ownerDocument": {
-                            "name": "ownerDocument",
-                            "readonly": true,
-                            "type": "Document"
-                        }
-                    }
-                }
             }
         }
     },
@@ -466,10 +424,6 @@
                 },
                 "additionalTypes": ["Headers"],
                 "name": "HeadersInit"
-            },
-            {
-                "overrideType": "number | string | Date | BufferSource | IDBValidKey[]",
-                "name": "IDBValidKey"
             },
             {
                 "type": {
@@ -509,11 +463,6 @@
                         "type": "ExportValue"
                     }
                 ]
-            },
-            {
-                "name": "ImportValue",
-                "legacyNamespace": "WebAssembly",
-                "overrideType": "ExportValue | number"
             },
             {
                 "name": "ModuleImports",

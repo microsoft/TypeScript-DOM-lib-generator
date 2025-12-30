@@ -16,6 +16,7 @@ import type {
   Dictionary,
   Member,
   Signature,
+  TypeDef,
 } from "./types.js";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.js";
@@ -120,6 +121,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
   const dictionary: Record<string, DeepPartial<Dictionary>> = {};
+  const typedefs: DeepPartial<TypeDef>[] = [];
 
   for (const node of nodes) {
     // Note: no "removals" handling here; caller is responsible for splitting
@@ -143,6 +145,9 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
       case "dictionary":
         dictionary[name] = merge(dictionary[name], handleDictionary(node));
         break;
+      case "typedef":
+        typedefs.push(handleTypedef(node));
+        break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
     }
@@ -155,6 +160,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
       interface: interfaces,
     }),
     ...optionalNestedMember("dictionaries", dictionary, { dictionary }),
+    ...optionalNestedMember("typedefs", typedefs, { typedef: typedefs }),
   };
 }
 
@@ -430,6 +436,23 @@ function handleMember(c: Node): DeepPartial<Member> {
     ...optionalMember("required", "boolean", c.properties?.required),
     ...optionalMember("deprecated", "string", c.properties?.deprecated),
     ...optionalMember("overrideType", "string", c.properties?.overrideType),
+  };
+}
+
+/**
+ * Handles typedef nodes
+ * @param node The typedef node to handle.
+ */
+function handleTypedef(node: Node): DeepPartial<TypeDef> {
+  const typeNodes = node.children.filter((c) => c.name === "type");
+  return {
+    name: string(node.values[0]),
+    ...handleTyped(typeNodes),
+    ...optionalMember(
+      "legacyNamespace",
+      "string",
+      node.properties?.legacyNamespace,
+    ),
   };
 }
 

@@ -26896,7 +26896,6 @@ interface PopoverTargetAttributes {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ProcessingInstruction)
  */
 interface ProcessingInstruction extends CharacterData, LinkStyle {
-    readonly ownerDocument: Document;
     /**
      * The read-only **`target`** property of the ProcessingInstruction interface represent the application to which the ProcessingInstruction is targeted.
      *
