@@ -546,10 +546,6 @@
                 // Full spec at https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill.
                 "name": "AutoFill",
                 "overrideType": "AutoFillBase | `${OptionalPrefixToken<AutoFillSection>}${OptionalPrefixToken<AutoFillAddressKind>}${AutoFillField}${OptionalPostfixToken<AutoFillCredentialField>}`"
-            },
-            {
-                "name": "Directions",
-                "overrideType": "\"forward\" | \"backward\" | \"none\""
             }
         ]
     }

@@ -63,6 +63,8 @@ interface HTMLInputElement {
   }
 }
 
+typedef Directions overrideType=#""forward" | "backward" | "none""#
+
 dictionary StructuredSerializeOptions {
   member transfer {
     type {

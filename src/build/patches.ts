@@ -453,6 +453,7 @@ function handleTypedef(node: Node): DeepPartial<TypeDef> {
       "string",
       node.properties?.legacyNamespace,
     ),
+    ...optionalMember("overrideType", "string", node.properties?.overrideType),
   };
 }
 
