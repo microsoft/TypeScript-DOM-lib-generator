@@ -57,6 +57,8 @@ interface HTMLInputElement {
   property valueAsDate type=Date
   property selectionDirection type=SelectionDirection
   method setSelectionRange signatureIndex=0 {
+    // nullable types because we want to allow passing selectionStart/End properties, which are nullable.
+    // See also https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/878.
     param start {
       type nullable=#true
     }
