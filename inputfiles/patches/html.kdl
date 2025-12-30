@@ -57,8 +57,12 @@ interface HTMLInputElement {
   property valueAsDate type=Date
   property selectionDirection type=SelectionDirection
   method setSelectionRange signatureIndex=0 {
-    param start nullable=#true
-    param end nullable=#true
+    param start {
+      type nullable=#true
+    }
+    param end {
+      type nullable=#true
+    }
     param direction type=SelectionDirection
   }
 }

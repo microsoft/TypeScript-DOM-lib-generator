@@ -307,6 +307,7 @@ function handleProperty(child: Node): DeepPartial<Property> {
 function handleParam(node: Node) {
   const name = string(node.values[0]);
   let additionalTypes: string[] | undefined;
+  const typeNodes: Node[] = [];
 
   for (const child of node.children) {
     switch (child.name) {
@@ -317,6 +318,10 @@ function handleParam(node: Node) {
         additionalTypes = child.values.map(string);
         break;
       }
+      case "type": {
+        typeNodes.push(child);
+        break;
+      }
       default:
         throw new Error(`Unexpected child "${child.name}" in param "${name}"`);
     }
@@ -324,9 +329,8 @@ function handleParam(node: Node) {
 
   return {
     name,
-    ...optionalMember("type", "string", node.properties?.type),
+    ...handleTyped(typeNodes, node.properties?.type),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
-    ...optionalMember("nullable", "boolean", node.properties?.nullable),
     additionalTypes,
   };
 }
@@ -344,7 +348,7 @@ function handleMethodAndConstructor(
 
   // Collect all type nodes into an array
   const typeNodes: Node[] = [];
-  const params: Partial<Param>[] = [];
+  const params: DeepPartial<Param>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
