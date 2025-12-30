@@ -17136,6 +17136,7 @@ declare var HTMLImageElement: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)
  */
 interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
+    SelectionDirection: SelectionDirection;
     /**
      * The **`accept`** property of the HTMLInputElement interface reflects the <input> element's accept attribute, generally a comma-separated list of unique file type specifiers providing a hint for the expected file type for an <input> of type file. If the attribute is not explicitly set, the accept property is an empty string.
      *
@@ -17323,7 +17324,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionDirection)
      */
-    selectionDirection: Directions | null;
+    selectionDirection: string | null;
     /**
      * The **`selectionEnd`** property of the HTMLInputElement interface is a number that represents the end index of the selected text. That is, it represents the index of the character immediately following the selection. Likewise, when there is no selection, this returns the offset of the character immediately following the current text input cursor position.
      *
@@ -17452,7 +17453,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setSelectionRange)
      */
-    setSelectionRange(start: number | null, end: number | null, direction?: Directions): void;
+    setSelectionRange(start: number | null, end: number | null, direction?: SelectionDirection): void;
     /**
      * The **`HTMLInputElement.showPicker()`** method displays the browser picker for an input element.
      *
@@ -42407,7 +42408,6 @@ type ConstrainDouble = number | ConstrainDoubleRange;
 type ConstrainULong = number | ConstrainULongRange;
 type CookieList = CookieListItem[];
 type DOMHighResTimeStamp = number;
-type Directions = "forward" | "backward" | "none";
 type EpochTimeStamp = number;
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 type FileSystemWriteChunkType = BufferSource | Blob | string | WriteParams;
@@ -42453,6 +42453,7 @@ type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBY
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type ReportList = Report[];
 type RequestInfo = Request | string;
+type SelectionDirection = "forward" | "backward" | "none";
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
 type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHandle | ReadableStream | WritableStream | TransformStream | AudioData | VideoFrame | RTCDataChannel | ArrayBuffer;

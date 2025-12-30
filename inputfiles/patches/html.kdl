@@ -55,15 +55,15 @@ interface HTMLInputElement {
   }
   property autocomplete type=AutoFill
   property valueAsDate type=Date
-  property selectionDirection type=Directions
+  property SelectionDirection type=SelectionDirection
   method setSelectionRange signatureIndex=0 {
     param start nullable=#true
     param end nullable=#true
-    param direction type=Directions
+    param direction type=SelectionDirection
   }
 }
 
-typedef Directions overrideType=#""forward" | "backward" | "none""#
+typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
 
 dictionary StructuredSerializeOptions {
   member transfer {
