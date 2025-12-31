@@ -11,6 +11,71 @@ interface EventListenerObject noInterfaceObject=#true {
   }
 }
 
+interface Document {
+  property anchors nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLAnchorElement
+    }
+  }
+
+  property body {
+    type nullable=#false
+  }
+
+  property documentElement {
+    type HTMLElement nullable=#false
+  }
+
+  property embeds nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLEmbedElement
+    }
+  }
+
+  property forms nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLFormElement
+    }
+  }
+
+  property head {
+    type nullable=#false
+  }
+
+  property images nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLImageElement
+    }
+  }
+
+  property links nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLAnchorElement
+      type HTMLAreaElement
+    }
+  }
+
+  // Pre-TS-5.1 hack to make document.location assignable
+  property location readonly=#false {
+    // Technically this can be null for a detached iframe.
+    // But that's an edge case and flipping this also breaks compatibility.
+    type nullable=#false
+  }
+
+  property plugins nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLEmbedElement
+    }
+  }
+
+  property scripts nullable=#false {
+    type HTMLCollectionOf {
+      type HTMLScriptElement
+    }
+  }
+}
+
+
 enum InsertPosition {
   beforebegin
   beforeend

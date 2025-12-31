@@ -542,53 +542,7 @@
                         "defaultView": {
                             "name": "defaultView",
                             "overrideType": "WindowProxy & typeof globalThis"
-                        },
-                        "documentElement": {
-                            "name": "documentElement",
-                            "overrideType": "HTMLElement",
-                            "nullable": false
-                        },
-                        "head": {
-                            "nullable": false
-                        },
-                        "anchors": {
-                            "name": "anchors",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement>"
-                        },
-                        "embeds": {
-                            "name": "embeds",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
-                        },
-                        "forms": {
-                            "name": "forms",
-                            "overrideType": "HTMLCollectionOf<HTMLFormElement>"
-                        },
-                        "images": {
-                            "name": "images",
-                            "overrideType": "HTMLCollectionOf<HTMLImageElement>"
-                        },
-                        "links": {
-                            "name": "links",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
-                        },
-                        "plugins": {
-                            "name": "plugins",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
-                        },
-                        "scripts": {
-                            "name": "scripts",
-                            "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
-                        },
-                        "location": {
-                            // Pre-TS-5.1 hack to make document.location assignable
-                            "readonly": false,
-                            // Technically this can be null for a detached iframe.
-                            // But that's an edge case and flipping this also breaks compatibility.
-                            "nullable": false
-                        },
-                        "body": {
-                            "nullable": false
-                       }
+                        }
                     }
                 }
             },
