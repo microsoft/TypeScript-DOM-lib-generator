@@ -75,7 +75,6 @@ interface Document {
   }
 }
 
-
 enum InsertPosition {
   beforebegin
   beforeend
