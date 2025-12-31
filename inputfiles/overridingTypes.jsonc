@@ -408,12 +408,6 @@
                         "onorientationchange": {
                             "deprecated": true
                         },
-                        "self": {
-                            "overrideType": "Window & typeof globalThis"
-                        },
-                        "window": {
-                            "overrideType": "Window & typeof globalThis"
-                        },
                         "pageXOffset": {
                             // While this is indeed an alias of scrollX, it's not a vendor prefixed legacy as aliases usually are.
                             "deprecated": false
@@ -539,10 +533,6 @@
                 },
                 "properties": {
                     "property": {
-                        "defaultView": {
-                            "name": "defaultView",
-                            "overrideType": "WindowProxy & typeof globalThis"
-                        },
                         "documentElement": {
                             "name": "documentElement",
                             "overrideType": "HTMLElement",
@@ -2798,13 +2788,6 @@
                 }
             },
             "WorkerGlobalScope": {
-                "properties": {
-                    "property": {
-                        "self": {
-                            "overrideType": "WorkerGlobalScope & typeof globalThis"
-                        }
-                    }
-                },
                 "events": {
                     "event": [
                         {

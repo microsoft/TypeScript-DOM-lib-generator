@@ -69,7 +69,24 @@ interface HTMLInputElement {
   }
 }
 
+interface Window {
+  property self type=Globalized
+  property window type=Globalized
+}
+
+interface WorkerGlobalScope {
+  property self {
+    type Globalized { 
+      type WorkerGlobalScope
+    }
+  }
+}
+
 typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
+
+typedef Globalized overrideType="T & typeof globalThis" {
+  typeParameters T default="Window"
+}
 
 dictionary StructuredSerializeOptions {
   member transfer {

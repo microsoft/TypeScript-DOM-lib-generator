@@ -11,6 +11,14 @@ interface EventListenerObject noInterfaceObject=#true {
   }
 }
 
+interface Document {
+  property defaultView {
+    type Globalized {
+      type WindowProxy
+    }
+  }
+}
+
 enum InsertPosition {
   beforebegin
   beforeend

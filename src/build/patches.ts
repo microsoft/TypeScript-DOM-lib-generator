@@ -448,9 +448,25 @@ function handleMember(c: Node): DeepPartial<Member> {
  * @param node The typedef node to handle.
  */
 function handleTypedef(node: Node): DeepPartial<TypeDef> {
-  const typeNodes = node.children.filter((c) => c.name === "type");
+  // Support type params: collect "type" and "typeParameters" child nodes
+  const typeNodes: Node[] = [];
+  let typeParameters = {};
+
+  for (const c of node.children) {
+    switch (c.name) {
+      case "type":
+        typeNodes.push(c);
+        break;
+      case "typeParameters":
+        typeParameters = handleTypeParameters(c);
+        break;
+      default:
+        throw new Error(`Unexpected child "${c.name}"`);
+    }
+  }
   return {
     name: string(node.values[0]),
+    ...typeParameters,
     ...handleTyped(typeNodes),
     ...optionalMember(
       "legacyNamespace",

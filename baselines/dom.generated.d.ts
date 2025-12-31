@@ -12234,7 +12234,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/defaultView)
      */
-    readonly defaultView: (WindowProxy & typeof globalThis) | null;
+    readonly defaultView: Globalized<WindowProxy> | null;
     /**
      * **`document.designMode`** controls whether the entire document is editable. Valid values are "on" and "off". According to the specification, this property is meant to default to "off". Firefox follows this standard. The earlier versions of Chrome and IE default to "inherit". Starting in Chrome 43, the default is "off" and "inherit" is no longer supported. In IE6-10, the value is capitalized.
      *
@@ -39699,7 +39699,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/self)
      */
-    readonly self: Window & typeof globalThis;
+    readonly self: Globalized;
     /**
      * The **`speechSynthesis`** read-only property of the Window object returns a SpeechSynthesis object, which is the entry point into using Web Speech API speech synthesis functionality.
      *
@@ -39742,7 +39742,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/window)
      */
-    readonly window: Window & typeof globalThis;
+    readonly window: Globalized;
     /**
      * **`window.alert()`** instructs the browser to display a dialog with an optional message, and to wait until the user dismisses the dialog.
      *
@@ -41881,7 +41881,7 @@ declare var scrollbars: BarProp;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/self)
  */
-declare var self: Window & typeof globalThis;
+declare var self: Globalized;
 /**
  * The **`speechSynthesis`** read-only property of the Window object returns a SpeechSynthesis object, which is the entry point into using Web Speech API speech synthesis functionality.
  *
@@ -41924,7 +41924,7 @@ declare var visualViewport: VisualViewport | null;
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/window)
  */
-declare var window: Window & typeof globalThis;
+declare var window: Globalized;
 /**
  * **`window.alert()`** instructs the browser to display a dialog with an optional message, and to wait until the user dismisses the dialog.
  *
@@ -42450,6 +42450,7 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+type Globalized<T = Window> = T & typeof globalThis;
 type HTMLOrSVGImageElement = HTMLImageElement | SVGImageElement;
 type HTMLOrSVGScriptElement = HTMLScriptElement | SVGScriptElement;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
