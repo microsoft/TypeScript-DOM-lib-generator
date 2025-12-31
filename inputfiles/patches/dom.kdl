@@ -12,62 +12,9 @@ interface EventListenerObject noInterfaceObject=#true {
 }
 
 interface Document {
-  // Pre-TS-5.1 hack to make document.location assignable
-  property location readonly=#false {
-    // Technically this can be null for a detached iframe.
-    // But that's an edge case and flipping this also breaks compatibility.
-    type nullable=#false
+  property documentElement {
+    type HTMLElement nullable=#false
   }
-
-  // Similarly body and head are mostly non-null for HTML documents.
-  // body can frequently be null when executing scripts in head, but flipping
-  // it also breaks compatibiliity.
-  property body {
-    type nullable=#false
-  }
-  property head {
-    type nullable=#false
-  }
-
-  // More specific types for HTMLCollection properties
-  property anchors {
-    type HTMLCollectionOf {
-      type HTMLAnchorElement
-    }
-  }
-  property embeds {
-    type HTMLCollectionOf {
-      type HTMLEmbedElement
-    }
-  }
-  property forms {
-    type HTMLCollectionOf {
-      type HTMLFormElement
-    }
-  }
-  property images {
-    type HTMLCollectionOf {
-      type HTMLImageElement
-    }
-  }
-  property links {
-    type HTMLCollectionOf {
-      type HTMLAnchorElement
-      type HTMLAreaElement
-    }
-  }
-  property plugins {
-    type HTMLCollectionOf {
-      type HTMLEmbedElement
-    }
-  }
-  property scripts {
-    type HTMLCollectionOf {
-      type HTMLScriptElement
-    }
-  }
-
-  property defaultView overrideType="WindowProxy & typeof globalThis"
 }
 
 enum InsertPosition {
