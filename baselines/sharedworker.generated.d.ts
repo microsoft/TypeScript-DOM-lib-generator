@@ -10400,7 +10400,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/self)
      */
-    readonly self: Globalized<WorkerGlobalScope>;
+    readonly self: WorkerGlobalScope & typeof globalThis;
     /**
      * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope.
      *
@@ -11350,7 +11350,7 @@ declare var onunhandledrejection: ((this: SharedWorkerGlobalScope, ev: PromiseRe
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/self)
  */
-declare var self: Globalized<WorkerGlobalScope>;
+declare var self: WorkerGlobalScope & typeof globalThis;
 /**
  * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope.
  *
@@ -11441,7 +11441,6 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
-type Globalized<T = Window> = T & typeof globalThis;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];

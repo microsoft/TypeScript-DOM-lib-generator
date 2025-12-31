@@ -75,11 +75,8 @@ interface Window {
 }
 
 interface WorkerGlobalScope {
-  property self {
-    type Globalized { 
-      type WorkerGlobalScope
-    }
-  }
+  // We must declare it in overrideType, because Window doesn't exist in WebWorkers
+  property self overrideType="WorkerGlobalScope & typeof globalThis"
 }
 
 typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
