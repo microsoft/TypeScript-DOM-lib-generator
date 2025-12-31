@@ -73,6 +73,8 @@ interface Document {
       type HTMLScriptElement
     }
   }
+
+  property defaultView overrideType="WindowProxy & typeof globalThis"
 }
 
 enum InsertPosition {

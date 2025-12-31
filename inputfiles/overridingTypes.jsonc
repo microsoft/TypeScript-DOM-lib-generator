@@ -536,14 +536,6 @@
                             ]
                         }
                     }
-                },
-                "properties": {
-                    "property": {
-                        "defaultView": {
-                            "name": "defaultView",
-                            "overrideType": "WindowProxy & typeof globalThis"
-                        }
-                    }
                 }
             },
             "DocumentFragment": {
