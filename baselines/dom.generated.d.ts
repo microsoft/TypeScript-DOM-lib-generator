@@ -5156,7 +5156,7 @@ interface CSSKeyframesRule extends CSSRule {
      */
     readonly cssRules: CSSRuleList;
     /**
-     * The read-only **`length`** property of the CSSKeyframeRule interface returns the number of CSSKeyframeRule objects in its list. You can then access each keyframe rule by its index directly on the CSSKeyframeRule object.
+     * The read-only **`length`** property of the CSSKeyframesRule interface returns the number of CSSKeyframeRule objects in its list. You can then access each keyframe rule by its index directly on the CSSKeyframeRule object.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSKeyframesRule/length)
      */

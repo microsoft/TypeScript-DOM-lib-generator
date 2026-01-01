@@ -4187,7 +4187,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSKeyframesRule/length",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only length property of the CSSKeyframeRule interface returns the number of CSSKeyframeRule objects in its list. You can then access each keyframe rule by its index directly on the CSSKeyframeRule object."
+    "summary": "The read-only length property of the CSSKeyframesRule interface returns the number of CSSKeyframeRule objects in its list. You can then access each keyframe rule by its index directly on the CSSKeyframeRule object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSKeyframesRule/name",
