@@ -39,7 +39,7 @@ jobs:
       - id: git-diff
         run: git diff --quiet HEAD baselines
         continue-on-error: true
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@v8
         if: ${{ steps.git-diff.outcome == 'failure' }}
         with:
           commit-message: "🤖 Update core dependencies"
