@@ -74,9 +74,9 @@ enum AutoFillCredentialField {
 }
 
 typedef OptionalPrefixToken overrideType=#"`${T} ` | """# {
-    typeParameters T extends=string
+  typeParameters T extends=string
 }
 
 typedef OptionalPostfixToken overrideType=#"` ${T}` | """# {
-    typeParameters T extends=string
+  typeParameters T extends=string
 }
