@@ -61,3 +61,9 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+###############################################################################
+# Show manual patches in the language stats 
+###############################################################################
+*.jsonc linguist-detectable
+*.kdl linguist-detectable
