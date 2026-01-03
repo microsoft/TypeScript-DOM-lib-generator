@@ -100,13 +100,9 @@ function handleTypeParameters(value: Value | Node) {
   }
   const node = value as Node;
   return {
-    typeParameters: [
-      {
-        name: string(node.values[0]),
-        ...optionalMember("default", "string", node.properties?.default),
-        ...optionalMember("extends", "string", node.properties?.extends),
-      },
-    ],
+    name: string(node.values[0]),
+    ...optionalMember("default", "string", node.properties?.default),
+    ...optionalMember("extends", "string", node.properties?.extends),
   };
 }
 
@@ -207,7 +203,7 @@ function handleMixinAndInterfaces(
   const property: Record<string, DeepPartial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
   let constructor: DeepPartial<OverridableMethod> | undefined;
-  let typeParameters = {};
+  const typeParameters = [];
 
   for (const child of node.children) {
     switch (child.name) {
@@ -232,8 +228,8 @@ function handleMixinAndInterfaces(
         constructor = merge(constructor, c);
         break;
       }
-      case "typeParameters": {
-        typeParameters = handleTypeParameters(child);
+      case "typeParameter": {
+        typeParameters.push(handleTypeParameters(child));
         break;
       }
       default:
@@ -242,7 +238,7 @@ function handleMixinAndInterfaces(
   }
 
   const interfaceObject = type === "interface" && {
-    ...typeParameters,
+    ...optionalNestedMember("typeParameters", typeParameters, typeParameters),
     ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
@@ -270,7 +266,7 @@ function handleMixinAndInterfaces(
       "string",
       node.properties?.replaceReference,
     ),
-    ...handleTypeParameters(node.properties?.typeParameters),
+    ...handleTypeParameters(node.properties?.typeParameter),
     ...interfaceObject,
   } as DeepPartial<Interface>;
 }
@@ -396,7 +392,7 @@ function handleMethodAndConstructor(
 function handleDictionary(child: Node): DeepPartial<Dictionary> {
   const name = string(child.values[0]);
   const member: Record<string, DeepPartial<Member>> = {};
-  let typeParameters = {};
+  const typeParameters = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -405,8 +401,8 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
         member[memberName] = handleMember(c);
         break;
       }
-      case "typeParameters": {
-        typeParameters = handleTypeParameters(c);
+      case "typeParameter": {
+        typeParameters.push(handleTypeParameters(c));
         break;
       }
       default:
@@ -417,8 +413,8 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
   return {
     name,
     members: { member },
-    ...typeParameters,
-    ...handleTypeParameters(child.properties?.typeParameters),
+    ...optionalNestedMember("typeParameters", typeParameters, typeParameters),
+    ...handleTypeParameters(child.properties?.typeParameter),
     ...optionalMember(
       "legacyNamespace",
       "string",
@@ -450,14 +446,14 @@ function handleMember(c: Node): DeepPartial<Member> {
  */
 function handleTypedef(node: Node): DeepPartial<TypeDef> {
   const typeNodes: Node[] = [];
-  let typeParameters = {};
+  const typeParameters = [];
   for (const child of node.children) {
     switch (child.name) {
       case "type":
         typeNodes.push(child);
         break;
-      case "typeParameters": {
-        typeParameters = handleTypeParameters(child);
+      case "typeParameter": {
+        typeParameters.push(handleTypeParameters(child));
         break;
       }
       default:
@@ -475,7 +471,7 @@ function handleTypedef(node: Node): DeepPartial<TypeDef> {
       node.properties?.legacyNamespace,
     ),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
-    ...typeParameters,
+    ...optionalNestedMember("typeParameters", typeParameters, typeParameters),
   };
 }
 

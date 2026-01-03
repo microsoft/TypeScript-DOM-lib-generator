@@ -36,7 +36,7 @@ interface HTMLTableSectionElement {
   }
 }
 
-interface-mixin MessageEventTarget overrideThis=T typeParameters=T
+interface-mixin MessageEventTarget overrideThis=T typeParameter=T
 
 interface-mixin WindowEventHandlers {
   property onunload deprecated="The unload event is not reliable, consider visibilitychange or pagehide events."
