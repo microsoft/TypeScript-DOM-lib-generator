@@ -36,6 +36,25 @@ interface HTMLTableSectionElement {
   }
 }
 
+interface HTMLTextAreaElement {
+  property autocomplete type=AutoFill
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+  property selectionDirection type=SelectionDirection
+  method setSelectionRange signatureIndex=0 {
+    param start {
+      type nullable=#true
+    }
+    param end {
+      type nullable=#true
+    }
+    param direction type=SelectionDirection
+  }
+}
+
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 
 interface-mixin WindowEventHandlers {
