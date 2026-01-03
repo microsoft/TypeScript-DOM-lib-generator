@@ -62,13 +62,8 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-
 ###############################################################################
-# Show KDL in the language stats 
-###############################################################################
-*.kdl linguist-detectable
-
-###############################################################################
-# Show JSONC in the language stats 
+# Show manual patches in the language stats 
 ###############################################################################
 *.jsonc linguist-detectable
+*.kdl linguist-detectable
