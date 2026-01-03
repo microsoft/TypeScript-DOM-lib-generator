@@ -36,6 +36,30 @@ interface HTMLTableSectionElement {
   }
 }
 
+interface HTMLMeterElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface HTMLOutputElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface HTMLProgressElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 
 interface-mixin WindowEventHandlers {
