@@ -104,6 +104,7 @@ function handleTypeParameters(value: Value | Node) {
       {
         name: string(node.values[0]),
         ...optionalMember("default", "string", node.properties?.default),
+        ...optionalMember("extends", "string", node.properties?.extends),
       },
     ],
   };
@@ -448,7 +449,23 @@ function handleMember(c: Node): DeepPartial<Member> {
  * @param node The typedef node to handle.
  */
 function handleTypedef(node: Node): DeepPartial<TypeDef> {
-  const typeNodes = node.children.filter((c) => c.name === "type");
+  const typeNodes: Node[] = [];
+  let typeParameters = {};
+  for (const child of node.children) {
+    switch (child.name) {
+      case "type":
+        typeNodes.push(child);
+        break;
+      case "typeParameters": {
+        typeParameters = handleTypeParameters(child);
+        break;
+      }
+      default:
+        throw new Error(
+          `Unexpected child "${child.name}" in typedef "${node.values[0]}"`,
+        );
+    }
+  }
   return {
     name: string(node.values[0]),
     ...handleTyped(typeNodes),
@@ -458,6 +475,7 @@ function handleTypedef(node: Node): DeepPartial<TypeDef> {
       node.properties?.legacyNamespace,
     ),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
+    ...typeParameters,
   };
 }
 

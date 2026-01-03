@@ -512,24 +512,6 @@
                 "overrideType": "EventListener | EventListenerObject"
             },
             {
-                "name": "OptionalPrefixToken",
-                "typeParameters": [
-                    {
-                        "name": "T extends string"
-                    }
-                ],
-                "overrideType": "`${T} ` | \"\""
-            },
-            {
-                "name": "OptionalPostfixToken",
-                "typeParameters": [
-                    {
-                        "name": "T extends string"
-                    }
-                ],
-                "overrideType": "` ${T}` | \"\""
-            },
-            {
                 "name": "AutoFillSection",
                 // Note: this will also eagerly match any invalid string
                 // after section- instead of stopping at the first whitespace.
