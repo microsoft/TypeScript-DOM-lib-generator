@@ -20,6 +20,7 @@
         "CompositeOperationOrAuto",
         "ComputedKeyframe",
         "DisplayCaptureSurfaceType",
+        "DocumentOrGlobalOnErrorEventHandler",
         "EcdhKeyDeriveParams",
         "EcdsaParams",
         "EcKeyAlgorithm",
