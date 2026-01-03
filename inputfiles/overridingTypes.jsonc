@@ -1481,48 +1481,6 @@
                     }
                 }
             },
-            "HTMLTextAreaElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "setSelectionRange": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "start",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "end",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "direction",
-                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "ServiceWorkerContainer": {
                 "methods": {
                     "method": {
