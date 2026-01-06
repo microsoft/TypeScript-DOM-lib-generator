@@ -6332,7 +6332,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/requestStorageAccess",
     "pageType": "web-api-instance-method",
-    "summary": "The requestStorageAccess() method of the Document interface allows content loaded in a third-party context (i.e., embedded in an <iframe>) to request access to third-party cookies and unpartitioned state. This is relevant to user agents that, by default, block access to third-party, unpartitioned cookies to improve privacy (e.g., to prevent tracking), and is part of the Storage Access API."
+    "summary": "The requestStorageAccess() method of the Document interface allows content loaded in a third-party context (i.e., embedded in an <iframe>) to request access to third-party cookies and unpartitioned state.\nThis is relevant to user agents that, by default, block access to third-party, unpartitioned cookies to improve privacy (e.g., to prevent tracking), and is part of the Storage Access API."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/requestStorageAccessFor",
@@ -28897,12 +28897,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAnimatedString/animVal",
     "pageType": "web-api-instance-property",
-    "summary": "The animVal read-only property of the SVGAnimatedString interface contains the same value as the SVGAnimatedString.baseVal property. If the given attribute or property is being animated, it contains the current animated value of the attribute or property. If the given attribute or property is not currently being animated, then it contains the same value as baseVal."
+    "summary": "The animVal read-only property of the SVGAnimatedString interface is a string representing the animated value of the reflected attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAnimatedString/baseVal",
     "pageType": "web-api-instance-property",
-    "summary": "BaseVal gets or sets the base value of the given attribute before any animations are applied. The base value of the given attribute before applying any animations. Setter throws DOMException."
+    "summary": "The baseVal property of the SVGAnimatedString interface gets or sets the base value of the given attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAnimatedTransformList",

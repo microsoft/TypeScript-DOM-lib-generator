@@ -28047,7 +28047,7 @@ interface RTCRtpReceiver {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver/transform)
      */
-    transform: RTCRtpTransform | null;
+    transform: RTCRtpReceiverTransform | null;
     /**
      * The read-only **`transport`** property of an RTCRtpReceiver object provides the RTCDtlsTransport object used to interact with the underlying transport over which the receiver is exchanging Real-time Transport Control Protocol (RTCP) packets.
      *
@@ -28127,7 +28127,7 @@ interface RTCRtpSender {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpSender/transform)
      */
-    transform: RTCRtpTransform | null;
+    transform: RTCRtpSenderTransform | null;
     /**
      * The read-only **`transport`** property of an RTCRtpSender object provides the RTCDtlsTransport object used to interact with the underlying transport over which the sender is exchanging Real-time Transport Control Protocol (RTCP) packets.
      *
@@ -29561,13 +29561,13 @@ declare var SVGAnimatedRect: {
  */
 interface SVGAnimatedString {
     /**
-     * The **`animVal`** read-only property of the SVGAnimatedString interface contains the same value as the SVGAnimatedString.baseVal property. If the given attribute or property is being animated, it contains the current animated value of the attribute or property. If the given attribute or property is not currently being animated, then it contains the same value as baseVal.
+     * The **`animVal`** read-only property of the SVGAnimatedString interface is a string representing the animated value of the reflected attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedString/animVal)
      */
     readonly animVal: string;
     /**
-     * BaseVal gets or sets the base value of the given attribute before any animations are applied. The base value of the given attribute before applying any animations. Setter throws DOMException.
+     * The **`baseVal`** property of the SVGAnimatedString interface gets or sets the base value of the given attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedString/baseVal)
      */
@@ -42471,7 +42471,8 @@ type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
 type PublicKeyCredentialClientCapabilities = Record<string, boolean>;
-type RTCRtpTransform = RTCRtpScriptTransform;
+type RTCRtpReceiverTransform = RTCRtpScriptTransform;
+type RTCRtpSenderTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
