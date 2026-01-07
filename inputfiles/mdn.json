@@ -26962,7 +26962,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/ServiceWorkerContainer/register",
     "pageType": "web-api-instance-method",
-    "summary": "The register() method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope.\nIf successful, the registration associates the provided script URL to a scope, which is subsequently used for matching documents to a specific service worker."
+    "summary": "The register() method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ServiceWorkerContainer/startMessages",
