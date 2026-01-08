@@ -36,25 +36,6 @@ interface HTMLTableSectionElement {
   }
 }
 
-interface HTMLTextAreaElement {
-  property autocomplete type=AutoFill
-  property labels {
-    type NodeListOf {
-      type HTMLLabelElement
-    }
-  }
-  property selectionDirection type=SelectionDirection
-  method setSelectionRange signatureIndex=0 {
-    param start {
-      type nullable=#true
-    }
-    param end {
-      type nullable=#true
-    }
-    param direction type=SelectionDirection
-  }
-}
-
 interface HTMLMeterElement {
   property labels {
     type NodeListOf {
@@ -102,6 +83,26 @@ interface HTMLInputElement {
   method setSelectionRange signatureIndex=0 {
     // nullable types because we want to allow passing selectionStart/End properties, which are nullable.
     // See also https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/878.
+    param start {
+      type nullable=#true
+    }
+    param end {
+      type nullable=#true
+    }
+    param direction type=SelectionDirection
+  }
+}
+
+interface HTMLTextAreaElement {
+  property autocomplete type=AutoFill
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+  property selectionDirection type=SelectionDirection
+  method setSelectionRange signatureIndex=0 {
+    // Same as in HTMLInputElement
     param start {
       type nullable=#true
     }
