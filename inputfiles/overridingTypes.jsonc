@@ -1441,46 +1441,6 @@
                     }
                 }
             },
-            "HTMLLabelElement": {
-                "properties": {
-                    "property": {
-                        "form": {
-                            "name": "form",
-                            "overrideType": "HTMLFormElement"
-                        }
-                    }
-                }
-            },
-            "HTMLMeterElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLOutputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLProgressElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
             "ServiceWorkerContainer": {
                 "methods": {
                     "method": {
