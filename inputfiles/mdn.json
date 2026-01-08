@@ -6332,7 +6332,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/requestStorageAccess",
     "pageType": "web-api-instance-method",
-    "summary": "The requestStorageAccess() method of the Document interface allows content loaded in a third-party context (i.e., embedded in an <iframe>) to request access to third-party cookies and unpartitioned state. This is relevant to user agents that, by default, block access to third-party, unpartitioned cookies to improve privacy (e.g., to prevent tracking), and is part of the Storage Access API."
+    "summary": "The requestStorageAccess() method of the Document interface allows content loaded in a third-party context (i.e., embedded in an <iframe>) to request access to third-party cookies and unpartitioned state.\nThis is relevant to user agents that, by default, block access to third-party, unpartitioned cookies to improve privacy (e.g., to prevent tracking), and is part of the Storage Access API."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/requestStorageAccessFor",
@@ -24300,6 +24300,11 @@
     "summary": "The state read-only property of the\nRTCDtlsTransport interface provides information which describes a\nDatagram Transport Layer Security (DTLS) transport state."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/RTCDtlsTransport/statechange_event",
+    "pageType": "web-api-event",
+    "summary": "A statechange event occurs when the RTCDtlsTransport changes state. The state property can be used to determine the current state of the underlying Datagram Transport Layer Security (DTLS) transport."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/RTCDTMFSender",
     "pageType": "web-api-interface",
     "summary": "The RTCDTMFSender interface provides a mechanism for transmitting DTMF codes on a WebRTC RTCPeerConnection. You gain access to the connection's RTCDTMFSender through the RTCRtpSender.dtmf property on the audio track you wish to send DTMF with."
@@ -26962,7 +26967,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/ServiceWorkerContainer/register",
     "pageType": "web-api-instance-method",
-    "summary": "The register() method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope.\nIf successful, the registration associates the provided script URL to a scope, which is subsequently used for matching documents to a specific service worker."
+    "summary": "The register() method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ServiceWorkerContainer/startMessages",
@@ -28897,12 +28902,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAnimatedString/animVal",
     "pageType": "web-api-instance-property",
-    "summary": "The animVal read-only property of the SVGAnimatedString interface contains the same value as the SVGAnimatedString.baseVal property. If the given attribute or property is being animated, it contains the current animated value of the attribute or property. If the given attribute or property is not currently being animated, then it contains the same value as baseVal."
+    "summary": "The animVal read-only property of the SVGAnimatedString interface is a string representing the animated value of the reflected attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAnimatedString/baseVal",
     "pageType": "web-api-instance-property",
-    "summary": "BaseVal gets or sets the base value of the given attribute before any animations are applied. The base value of the given attribute before applying any animations. Setter throws DOMException."
+    "summary": "The baseVal property of the SVGAnimatedString interface gets or sets the base value of the given attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGAnimatedTransformList",
@@ -39478,6 +39483,11 @@
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/anchor-name",
     "pageType": "css-property",
     "summary": "The anchor-name CSS property enables defining an element as an anchor element by giving it one or more identifying anchor names. Each name can then be set as the value of a positioned element's position-anchor property to associate it with the anchor."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/anchor-scope",
+    "pageType": "css-property",
+    "summary": "The anchor-scope CSS property can be used to limit the scope in which a positioned element can be associated with anchor elements to a particular subtree."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation",
