@@ -24300,6 +24300,11 @@
     "summary": "The state read-only property of the\nRTCDtlsTransport interface provides information which describes a\nDatagram Transport Layer Security (DTLS) transport state."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/RTCDtlsTransport/statechange_event",
+    "pageType": "web-api-event",
+    "summary": "A statechange event occurs when the RTCDtlsTransport changes state. The state property can be used to determine the current state of the underlying Datagram Transport Layer Security (DTLS) transport."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/RTCDTMFSender",
     "pageType": "web-api-interface",
     "summary": "The RTCDTMFSender interface provides a mechanism for transmitting DTMF codes on a WebRTC RTCPeerConnection. You gain access to the connection's RTCDTMFSender through the RTCRtpSender.dtmf property on the audio track you wish to send DTMF with."
@@ -39478,6 +39483,11 @@
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/anchor-name",
     "pageType": "css-property",
     "summary": "The anchor-name CSS property enables defining an element as an anchor element by giving it one or more identifying anchor names. Each name can then be set as the value of a positioned element's position-anchor property to associate it with the anchor."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/anchor-scope",
+    "pageType": "css-property",
+    "summary": "The anchor-scope CSS property can be used to limit the scope in which a positioned element can be associated with anchor elements to a particular subtree."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/animation",

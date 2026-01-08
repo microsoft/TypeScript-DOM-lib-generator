@@ -6242,6 +6242,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/anchor-name)
      */
     anchorName: string;
+    /** The anchor-scope CSS property can be used to limit the scope in which a positioned element can be associated with anchor elements to a particular subtree. */
     anchorScope: string;
     /**
      * The **`animation`** shorthand CSS property applies an animation between styles. It is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, animation-play-state, and animation-timeline.
