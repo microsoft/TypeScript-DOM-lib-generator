@@ -1,0 +1,16 @@
+// https://w3c.github.io/webrtc-pc/
+
+removals {
+  dictionary RTCLocalIceCandidateInit {
+    member relayProtocol // Blink only as of 2025-04
+    member url // Blink only as of 2025-04
+  }
+
+  dictionary RTCPeerConnectionIceEventInit {
+    member url // WebKit only as of 2025-04
+  }
+
+  dictionary RTCRtpEncodingParameters {
+    member codec // Blink only as of 2024-11
+  }
+}

@@ -1,0 +1,63 @@
+interface PublicKeyCredential {
+  method toJSON signatureIndex=0 {
+    type RegistrationResponseJSON
+    type AuthenticationResponseJSON
+  }
+}
+
+removals {
+  enum AuthenticatorTransport {
+    smart-card // WebKit only as of 2023-05
+  }
+
+  dictionary AuthenticationExtensionsClientInputs {
+    // https://searchfox.org/mozilla-central/source/dom/webidl/WebAuthentication.webidl
+    // https://searchfox.org/wubkat/source/Source/WebCore/Modules/webauthn/AuthenticationExtensionsClientInputs.idl
+    // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/authentication_extensions_client_inputs.idl
+    member appidExclude
+    member credBlob
+    member getCredBlob
+    member hmacGetSecret // No implementation as of 2025-05
+    member payment
+  }
+
+  dictionary AuthenticationExtensionsClientInputsJSON {
+    member appidExclude
+  }
+
+  dictionary AuthenticationExtensionsClientOutputs {
+    // (same as *Inputs)
+    member appidExclude // No implementation as of 2025-05
+    member hmacGetSecret // No implementation as of 2025-05
+    member payment // Blink only as of 2025-06
+  }
+
+  dictionary PublicKeyCredentialCreationOptions {
+    member attestationFormats // Blink only as of 2024-08
+    member hints // Blink only as of 2024-08
+  }
+  
+  dictionary PublicKeyCredentialCreationOptionsJSON {
+    member attestationFormats // Gecko only as of 2024-08
+  }
+  
+  dictionary PublicKeyCredentialRequestOptions {
+    member hints // Blink only as of 2024-08
+  }
+
+  dictionary CredentialRequestOptions {
+    // Only `mediation`, `publicKey`, `signal` are implemented by 2+ engines, everything else is currently Blink only.
+    // https://searchfox.org/mozilla-central/source/dom/webidl/CredentialManagement.webidl
+    // https://searchfox.org/wubkat/source/Source/WebCore/Modules/credentialmanagement/CredentialRequestOptions.idl
+    // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/credentialmanagement/credential_request_options.idl
+    member digital // Behind a flag in WebKit and Blink as of 2024-03
+    member federated
+    member identity
+    member otp
+    member password
+  }
+
+  dictionary AuthenticationExtensionsClientOutputsJSON {
+    member appidExclude // No implementation as of 2025-12
+  }
+}

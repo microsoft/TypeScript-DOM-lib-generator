@@ -51,40 +51,35 @@ async function emitFlavor(
   mergeNamesakes(exposed);
   exposed.events = webidl.events;
 
-  const result = emitWebIdl(
-    exposed,
-    options.global[0],
-    "",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(`${options.name}.generated.d.ts`, options.outputFolder),
-    result,
-  );
+  // Iterator types in separate files as the default target doesn't understand iterators (for TS 6.0-)
+  const outputs = [
+    {
+      suffix: ".generated.d.ts",
+      iterator: "",
+    },
+    {
+      suffix: ".iterable.generated.d.ts",
+      iterator: "sync",
+    },
+    {
+      suffix: ".asynciterable.generated.d.ts",
+      iterator: "async",
+    },
+  ] as const;
 
-  const iterators = emitWebIdl(
-    exposed,
-    options.global[0],
-    "sync",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
-    iterators,
-  );
-
-  const asyncIterators = emitWebIdl(
-    exposed,
-    options.global[0],
-    "async",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(
-      `${options.name}.asynciterable.generated.d.ts`,
-      options.outputFolder,
-    ),
-    asyncIterators,
+  await Promise.all(
+    outputs.map(async ({ suffix, iterator }) => {
+      const content = emitWebIdl(
+        exposed,
+        options.global[0],
+        iterator,
+        options.compilerBehavior,
+      );
+      await fs.writeFile(
+        new URL(`${options.name}${suffix}`, options.outputFolder),
+        content,
+      );
+    }),
   );
 }
 
@@ -94,9 +89,8 @@ async function emitDom() {
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
-  const patches = await readPatches();
+  const { patches, removalPatches } = await readPatches();
   const comments = await readInputJSON("comments.json");
-  const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
@@ -116,17 +110,8 @@ async function emitDom() {
     } catch {
       commentsMap = {};
     }
-    commentCleanup(commentsMap);
     const result = convert(idl, commentsMap);
     return result;
-  }
-
-  function commentCleanup(commentsMap: Record<string, string>) {
-    for (const key in commentsMap) {
-      // Filters out phrases for nested comments as we retargets them:
-      // "This operation receives a dictionary, which has these members:"
-      commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
-    }
   }
 
   function mergeApiDescriptions(
@@ -149,24 +134,6 @@ async function emitDom() {
     }
     idl = merge(idl, descriptions, { optional: true });
 
-    return idl;
-  }
-
-  function mergeDeprecatedMessage(
-    idl: Browser.WebIdl,
-    descriptions: Record<string, string>,
-  ) {
-    const namespaces = arrayToMap(
-      idl.namespaces!,
-      (i) => i.name,
-      (i) => i,
-    );
-    for (const [key, value] of Object.entries(descriptions)) {
-      const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target) {
-        target.deprecated = value;
-      }
-    }
     return idl;
   }
 
@@ -237,12 +204,12 @@ async function emitDom() {
   webidl = merge(webidl, getRemovalData(webidl));
   webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
-  webidl = mergeApiDescriptions(webidl, documentationFromMDN);
+  webidl = prune(webidl, removalPatches);
   webidl = merge(webidl, addedItems);
   webidl = merge(webidl, overriddenItems);
   webidl = merge(webidl, patches);
   webidl = merge(webidl, comments);
-  webidl = mergeDeprecatedMessage(webidl, deprecatedInfo);
+  webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   for (const name in webidl.interfaces!.interface) {
     const i = webidl.interfaces!.interface[name];
     if (i.overrideExposed) {

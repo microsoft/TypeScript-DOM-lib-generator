@@ -14,3 +14,23 @@ interface-mixin DocumentOrShadowRoot {
     param y type=long
   }
 }
+
+// No implementation of Promise return values as of 2025-11
+interface Element {
+  method scroll returns=void signatureIndex=0
+  method scroll returns=void signatureIndex=1
+  method scrollBy returns=void signatureIndex=0
+  method scrollBy returns=void signatureIndex=1
+  method scrollTo returns=void signatureIndex=0
+  method scrollTo returns=void signatureIndex=1
+  method scrollIntoView returns=void signatureIndex=0
+}
+
+interface Window {
+  method scroll returns=void signatureIndex=0
+  method scroll returns=void signatureIndex=1
+  method scrollBy returns=void signatureIndex=0
+  method scrollBy returns=void signatureIndex=1
+  method scrollTo returns=void signatureIndex=0
+  method scrollTo returns=void signatureIndex=1
+}

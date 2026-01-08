@@ -1,0 +1,19 @@
+interface IDBRequest {
+   typeParameters T default=any
+   property source {
+      type nullable=#false
+   }
+   property result overrideType=T
+}
+
+interface IDBOpenDBRequest extends=IDBRequest<IDBDatabase>
+
+typedef IDBValidKey {
+   type long
+   type DOMString
+   type Date
+   type BufferSource
+   type sequence {
+      type IDBValidKey
+   }
+}

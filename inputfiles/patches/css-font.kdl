@@ -6,3 +6,14 @@ enum FontDisplay {
     fallback
     optional
 }
+
+dictionary FontFaceDescriptors {
+    member display type=FontDisplay
+}
+
+interface CSSFontFaceRule {
+  // CSS Fonts Level 4 now says CSSFontFaceDescriptors
+  // but nobody implements it as of 2024-04
+  // https://github.com/w3c/csswg-drafts/pull/9686
+  property style type=CSSStyleProperties
+}

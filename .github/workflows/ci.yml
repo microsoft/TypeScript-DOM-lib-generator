@@ -6,12 +6,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true  # Ensures submodules are cloned
-
-      
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
           cache: npm
@@ -19,3 +15,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
+      - run: npx tsgo

@@ -1,32 +1,40 @@
 enum GlobalCompositeOperation {
-    source-over
-    source-in
-    source-out
-    source-atop
-    destination-over
-    destination-in
-    destination-out
-    destination-atop
-    lighter
-    copy
-    xor
-    multiply
-    screen
-    overlay
-    darken
-    lighten
-    color-dodge
-    color-burn
-    hard-light
-    soft-light
-    difference
-    exclusion
-    hue
-    saturation
-    color
-    luminosity
+  source-over
+  source-in
+  source-out
+  source-atop
+  destination-over
+  destination-in
+  destination-out
+  destination-atop
+  lighter
+  copy
+  xor
+  multiply
+  screen
+  overlay
+  darken
+  lighten
+  color-dodge
+  color-burn
+  hard-light
+  soft-light
+  difference
+  exclusion
+  hue
+  saturation
+  color
+  luminosity
 }
 
 interface-mixin CanvasCompositing {
-    property globalCompositeOperation type=GlobalCompositeOperation
+  property globalCompositeOperation type=GlobalCompositeOperation
+}
+
+removals {
+  // Blink only as of 2025-12
+  enum PredefinedColorSpace {
+    srgb-linear
+    display-p3-linear
+  }
 }

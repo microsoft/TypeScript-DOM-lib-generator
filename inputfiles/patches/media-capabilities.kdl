@@ -1,0 +1,5 @@
+removals {
+  dictionary KeySystemTrackConfiguration {
+    member encryptionScheme // Gecko only as of 2025-05
+  }
+}

@@ -1,9 +1,4 @@
-function hyphenToCamelCase(name: string) {
-  const camel = name
-    .replace(/^-(\w)/, (_, c) => c)
-    .replace(/-(\w)/g, (_, c) => c.toUpperCase());
-  return camel === "float" ? "_float" : camel;
-}
+import { hyphenToCamelCase } from "../utils/css.js";
 
 export function generateWebIdlFromCssProperties(properties: string[]): string {
   return `partial interface CSSStyleProperties {${properties

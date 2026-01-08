@@ -11,13 +11,9 @@ jobs:
   update-webref:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true  # Ensure submodules are checked out
+      - uses: actions/checkout@v6
 
-      - name: Update submodules
-        run: git submodule update --init --remote
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
           cache: npm
@@ -31,6 +27,8 @@ jobs:
       # This prevents annoying change when contributors run `npm i` on their local machine.
       # Example: https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/1463
       - run: npm i
+      - name: Update MDN Data
+        run: node scripts/fetch-mdn.js
       - id: build
         run: npm run generate
         continue-on-error: true
@@ -41,7 +39,7 @@ jobs:
       - id: git-diff
         run: git diff --quiet HEAD baselines
         continue-on-error: true
-      - uses: peter-evans/create-pull-request@v7
+      - uses: peter-evans/create-pull-request@v8
         if: ${{ steps.git-diff.outcome == 'failure' }}
         with:
           commit-message: "🤖 Update core dependencies"

@@ -51,20 +51,6 @@
                 "exposed": "AudioWorklet",
                 "noInterfaceObject": true
             },
-            "BroadcastChannel": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
-            },
             "CompileError": {
                 "name": "CompileError",
                 "extends": "Error",
@@ -76,103 +62,11 @@
                     ]
                 }
             },
-            "DeviceMotionEventAcceleration": {
-                "noInterfaceObject": true
-            },
-            "DeviceMotionEventRotationRate": {
-                "noInterfaceObject": true
-            },
-            "HTMLImageElement": {
-                "name": "HTMLImageElement",
-                "properties": {
-                    "property": {
-                        "decoding": {
-                            "name": "decoding",
-                            "overrideType": "\"async\" | \"sync\" | \"auto\""
-                        },
-                        "loading": {
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
-            "HTMLMediaElement": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "encrypted",
-                            "type": "MediaEncryptedEvent"
-                        }
-                    ]
-                }
-            },
-            "CSSStyleProperties": {
-                "properties": {
-                    "property": {
-                        "imageOrientation": {
-                            "deprecated": true
-                        },
-                        "wordWrap": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
             "Window": {
                 "name": "Window",
-                "methods": {
-                    "method": {
-                        "captureEvents": {
-                            "deprecated": true
-                        }
-                    }
-                },
                 "overrideIndexSignatures": [
                     "[index: number]: Window"
-                ],
-                "events": {
-                    "event": [
-                        {
-                            "name": "devicemotion",
-                            "type": "DeviceMotionEvent"
-                        },
-                        {
-                            "name": "deviceorientation",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "deviceorientationabsolute",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "gamepadconnected",
-                            "type": "GamepadEvent"
-                        },
-                        {
-                            "name": "gamepaddisconnected",
-                            "type": "GamepadEvent"
-                        },
-                        {
-                            "name": "DOMContentLoaded",
-                            "type": "Event"
-                        }
-                    ]
-                }
-            },
-            "URLSearchParams": {
-                "name": "URLSearchParams",
-                "constructor": {
-                    "signature": {
-                        "0": {
-                            "param": [
-                                {
-                                    "name": "init",
-                                    "additionalTypes": ["URLSearchParams"]
-                                }
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "NodeListOf": {
                 "name": "NodeListOf",
@@ -340,19 +234,6 @@
                 "extends": "DOMRect",
                 "noInterfaceObject": true
             },
-            "EventListenerObject": {
-                "name": "EventListenerObject",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        "handleEvent": {
-                            "overrideSignatures": [
-                                "handleEvent(object: Event): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -394,211 +275,6 @@
                     ]
                 }
             },
-            "Navigator": {
-                "name": "Navigator",
-                "properties": {
-                    "property": {
-                        "doNotTrack": {
-                            "name": "doNotTrack",
-                            "readonly": true,
-                            "nullable": true,
-                            "type": "DOMString"
-                        }
-                    }
-                }
-            },
-            "HTMLIFrameElement": {
-                "name": "HTMLIFrameElement",
-                "properties": {
-                    "property": {
-                        "referrerPolicy": {
-                            "type": "ReferrerPolicy"
-                        },
-                        "loading": {
-                            "name": "loading",
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
-            "IDBDatabase": {
-                "name": "IDBDatabase",
-                "events": {
-                    "event": [
-                        {
-                            "name": "versionchange",
-                            "type": "IDBVersionChangeEvent"
-                        }
-                    ]
-                }
-            },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>",
-                "events": {
-                    "event": [
-                        {
-                            "name": "upgradeneeded",
-                            "type": "IDBVersionChangeEvent"
-                        },
-                        {
-                            "name": "blocked",
-                            "type": "IDBVersionChangeEvent"
-                        }
-                    ]
-                }
-            },
-            "UIEvent": {
-                "properties": {
-                    "property": {
-                        "which": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "SpeechSynthesisUtterance": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "start",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "end",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "SpeechSynthesisErrorEvent"
-                        },
-                        {
-                            "name": "pause",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "resume",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "mark",
-                            "type": "SpeechSynthesisEvent"
-                        },
-                        {
-                            "name": "boundary",
-                            "type": "SpeechSynthesisEvent"
-                        }
-                    ]
-                }
-            },
-            "TextTrackList": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "TrackEvent"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "TrackEvent"
-                        }
-                    ]
-                }
-            },
-            "DOMMatrixReadOnly": {
-                "methods": {
-                    "method": {
-                        "scaleNonUniform": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "EventSource": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
-            },
-            "HTMLBodyElement": {
-                "properties": {
-                    "property": {
-                        "onorientationchange": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLLinkElement": {
-                "properties": {
-                    "property": {
-                        "charset": {
-                            "deprecated": true
-                        },
-                        "rev": {
-                            "deprecated": true
-                        },
-                        "target": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "KHR_parallel_shader_compile": {
-                "overrideExposed": "Window Worker"
-            },
-            "OVR_multiview2": {
-                "overrideExposed": "Window Worker"
-            },
-            // The spec removed `timestamp` but browsers still have it.
-            // https://github.com/w3c/webrtc-encoded-transform/pull/204
-            "RTCEncodedAudioFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCEncodedVideoFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCDTMFSender": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "tonechange",
-                            "type": "RTCDTMFToneChangeEvent"
-                        }
-                    ]
-                }
-            },
             "RuntimeError": {
                 "name": "RuntimeError",
                 "extends": "Error",
@@ -621,30 +297,6 @@
                     ]
                 }
             },
-            "MediaRecorder": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "dataavailable",
-                            "type": "BlobEvent"
-                        }
-                    ]
-                }
-            },
-            "MediaStream": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "MediaStreamTrackEvent"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "MediaStreamTrackEvent"
-                        }
-                    ]
-                }
-            },
             "ProgressEvent": {
                 "typeParameters": [
                     {
@@ -662,16 +314,6 @@
                             "overrideType": "T"
                         }
                     }
-                }
-            },
-            "SharedWorkerGlobalScope": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "connect",
-                            "type": "MessageEvent"
-                        }
-                    ]
                 }
             },
             "Attr": {
@@ -741,235 +383,6 @@
                         }
                     }
                 }
-            },
-            "ProcessingInstruction": {
-                "name": "ProcessingInstruction",
-                "properties": {
-                    "property": {
-                        "ownerDocument": {
-                            "name": "ownerDocument",
-                            "readonly": true,
-                            "type": "Document"
-                        }
-                    }
-                }
-            },
-            "WebSocket": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "close",
-                            "type": "CloseEvent"
-                        }
-                    ]
-                }
-            },
-            "WorkerGlobalScope": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "rejectionhandled",
-                            "type": "PromiseRejectionEvent"
-                        },
-                        {
-                            "name": "unhandledrejection",
-                            "type": "PromiseRejectionEvent"
-                        }
-                    ]
-                }
-            },
-            "FileSystemFileHandle": {
-                "properties": {
-                    "property": {
-                        "kind": {
-                            "name": "kind",
-                            "readonly": true,
-                            "overrideType": "\"file\""
-                        }
-                    }
-                }
-            },
-            "FileSystemDirectoryHandle": {
-                "properties": {
-                    "property": {
-                        "kind": {
-                            "name": "kind",
-                            "readonly": true,
-                            "overrideType": "\"directory\""
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "dictionaries": {
-        "dictionary": {
-            "KeyboardEventInit": {
-                "members": {
-                    "member": {
-                        "charCode": {
-                            "deprecated": true
-                        },
-                        "keyCode": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "MemoryDescriptor": {
-                "members": {
-                    "member": {
-                        "shared": {
-                            "name": "shared",
-                            "type": "boolean"
-                        }
-                    }
-                }
-            },
-            "ReadableStreamReadDoneResult": {
-                "name": "ReadableStreamReadDoneResult",
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "done": {
-                            "name": "done",
-                            "overrideType": "true",
-                            "required": true
-                        },
-                        "value": {
-                            "name": "value",
-                            "overrideType": "T | undefined",
-                            "required": true
-                        }
-                    }
-                }
-            },
-            "ReadableStreamReadValueResult": {
-                "name": "ReadableStreamReadValueResult",
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "done": {
-                            "name": "done",
-                            "overrideType": "false",
-                            "required": true
-                        },
-                        "value": {
-                            "name": "value",
-                            "overrideType": "T",
-                            "required": true
-                        }
-                    }
-                }
-            },
-            "UnderlyingByteSource": {
-                "name": "UnderlyingByteSource",
-                "members": {
-                    "member": {
-                        "type": {
-                            "name": "type",
-                            "required": true,
-                            "overrideType": "\"bytes\""
-                        },
-                        "autoAllocateChunkSize": {
-                            "name": "autoAllocateChunkSize",
-                            "type": "unsigned long long"
-                        },
-                        "start": {
-                            "name": "start",
-                            "overrideType": "(controller: ReadableByteStreamController) => any"
-                        },
-                        "pull": {
-                            "name": "pull",
-                            "overrideType": "(controller: ReadableByteStreamController) => void | PromiseLike<void>"
-                        },
-                        "cancel": {
-                            "name": "cancel",
-                            "type": "UnderlyingSourceCancelCallback"
-                        }
-                    }
-                }
-            },
-            "UnderlyingDefaultSource": {
-                "name": "UnderlyingDefaultSource",
-                "typeParameters": [
-                    {
-                        "name": "R",
-                        "default": "any"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "type": {
-                            "name": "type",
-                            "type": "undefined"
-                        },
-                        "start": {
-                            "name": "start",
-                            "overrideType": "(controller: ReadableStreamDefaultController<R>) => any"
-                        },
-                        "pull": {
-                            "name": "pull",
-                            "overrideType": "(controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>"
-                        },
-                        "cancel": {
-                            "name": "cancel",
-                            "type": "UnderlyingSourceCancelCallback"
-                        }
-                    }
-                }
-            },
-            "ValueTypeMap": {
-                "name": "ValueTypeMap",
-                "legacyNamespace": "WebAssembly",
-                "exposed":"Window Worker Worklet",
-                "members": {
-                    "member": {
-                        "anyfunc": {
-                            "name": "anyfunc",
-                            "overrideType": "Function",
-                            "required": 1
-                        },
-                        "externref": {
-                            "name": "externref",
-                            "overrideType": "any",
-                            "required": 1
-                        },
-                        "f32": {
-                            "name": "f32",
-                            "overrideType": "number",
-                            "required": 1
-                        },
-                        "f64": {
-                            "name": "f64",
-                            "overrideType": "number",
-                            "required": 1
-                        },
-                        "i32": {
-                            "name": "i32",
-                            "overrideType": "number",
-                            "required": 1
-                        },
-                        "i64": {
-                            "name": "i64",
-                            "overrideType": "bigint",
-                            "required": 1
-                        },
-                        "v128": {
-                            "name": "v128",
-                            "overrideType": "never",
-                            "required": 1
-                        }
-                    }
-                }
             }
         }
     },
@@ -985,10 +398,6 @@
                 },
                 "additionalTypes": ["Headers"],
                 "name": "HeadersInit"
-            },
-            {
-                "overrideType": "number | string | Date | BufferSource | IDBValidKey[]",
-                "name": "IDBValidKey"
             },
             {
                 "type": {
@@ -1028,11 +437,6 @@
                         "type": "ExportValue"
                     }
                 ]
-            },
-            {
-                "name": "ImportValue",
-                "legacyNamespace": "WebAssembly",
-                "overrideType": "ExportValue | number"
             },
             {
                 "name": "ModuleImports",
@@ -1080,24 +484,6 @@
             {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
-            },
-            {
-                "name": "OptionalPrefixToken",
-                "typeParameters": [
-                    {
-                        "name": "T extends string"
-                    }
-                ],
-                "overrideType": "`${T} ` | \"\""
-            },
-            {
-                "name": "OptionalPostfixToken",
-                "typeParameters": [
-                    {
-                        "name": "T extends string"
-                    }
-                ],
-                "overrideType": "` ${T}` | \"\""
             },
             {
                 "name": "AutoFillSection",

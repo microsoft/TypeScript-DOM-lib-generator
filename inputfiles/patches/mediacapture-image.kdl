@@ -1,0 +1,79 @@
+removals {
+  // Image Capture extensions which are Blink only as of 2025-04
+  // https://w3c.github.io/mediacapture-image/#mediatrackcapabilities-section
+  dictionary MediaTrackCapabilities {
+    member whiteBalanceMode
+    member exposureMode
+    member focusMode
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+    member zoom
+    member torch
+  }
+
+  dictionary MediaTrackConstraintSet {
+    member whiteBalanceMode
+    member exposureMode
+    member focusMode
+    member pointsOfInterest
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+    member zoom
+    member torch
+  }
+
+  dictionary MediaTrackSettings {
+    member exposureMode
+    member focusMode
+    member pointsOfInterest
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+  }
+
+  dictionary MediaTrackSupportedConstraints {
+    member whiteBalanceMode
+    member exposureMode
+    member focusMode
+    member pointsOfInterest
+    member exposureCompensation
+    member exposureTime
+    member colorTemperature
+    member iso
+    member brightness
+    member contrast
+    member saturation
+    member sharpness
+    member focusDistance
+    member pan
+    member tilt
+    member zoom
+    member torch
+  }
+}

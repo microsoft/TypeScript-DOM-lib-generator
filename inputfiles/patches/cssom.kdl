@@ -6,4 +6,14 @@ interface CSSStyleDeclaration \
   forward=CSSStyleDeclarationBase \
   forwardExtends=CSSStyleProperties
 
-interface CSSStyleProperties replaceReference=CSSStyleDeclaration
+interface CSSStyleProperties replaceReference=CSSStyleDeclaration {
+  property wordWrap deprecated="`word-wrap` is a legacy alias of `overflow-wrap`."
+}
+
+removals {
+  interface CSSStyleProperties {
+    // The corresponding standardized property is not supported by
+    // anyone as of 2024-10.
+    property webkitLineClamp deprecated=""
+  }
+}
