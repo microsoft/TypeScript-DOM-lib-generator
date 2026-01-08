@@ -66,50 +66,7 @@
                 "name": "Window",
                 "overrideIndexSignatures": [
                     "[index: number]: Window"
-                ],
-                "events": {
-                    "event": [
-                        {
-                            "name": "devicemotion",
-                            "type": "DeviceMotionEvent"
-                        },
-                        {
-                            "name": "deviceorientation",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "deviceorientationabsolute",
-                            "type": "DeviceOrientationEvent"
-                        },
-                        {
-                            "name": "gamepadconnected",
-                            "type": "GamepadEvent"
-                        },
-                        {
-                            "name": "gamepaddisconnected",
-                            "type": "GamepadEvent"
-                        },
-                        {
-                            "name": "DOMContentLoaded",
-                            "type": "Event"
-                        }
-                    ]
-                }
-            },
-            "URLSearchParams": {
-                "name": "URLSearchParams",
-                "constructor": {
-                    "signature": {
-                        "0": {
-                            "param": [
-                                {
-                                    "name": "init",
-                                    "additionalTypes": ["URLSearchParams"]
-                                }
-                            ]
-                        }
-                    }
-                }
+                ]
             },
             "NodeListOf": {
                 "name": "NodeListOf",
@@ -277,19 +234,6 @@
                 "extends": "DOMRect",
                 "noInterfaceObject": true
             },
-            "EventListenerObject": {
-                "name": "EventListenerObject",
-                "noInterfaceObject": true,
-                "methods": {
-                    "method": {
-                        "handleEvent": {
-                            "overrideSignatures": [
-                                "handleEvent(object: Event): void"
-                            ]
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -331,132 +275,6 @@
                     ]
                 }
             },
-            // This is used in the React d.ts files, and not including
-            // it would force an update for anyone using React.
-            "StyleMedia": {
-                "name": "StyleMedia",
-                "exposed": "Window",
-                "noInterfaceObject": true,
-                "deprecated": true,
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "type": "DOMString"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "matchMedium": {
-                            "name": "matchMedium",
-                            "overrideSignatures": [
-                                "matchMedium(mediaquery: string): boolean"
-                            ]
-                        }
-                    }
-                }
-            },
-            "Navigator": {
-                "name": "Navigator",
-                "properties": {
-                    "property": {
-                        "doNotTrack": {
-                            "name": "doNotTrack",
-                            "readonly": true,
-                            "nullable": true,
-                            "type": "DOMString"
-                        }
-                    }
-                }
-            },
-            "HTMLIFrameElement": {
-                "name": "HTMLIFrameElement",
-                "properties": {
-                    "property": {
-                        "referrerPolicy": {
-                            "type": "ReferrerPolicy"
-                        },
-                        "loading": {
-                            "name": "loading",
-                            "overrideType": "\"eager\" | \"lazy\""
-                        }
-                    }
-                }
-            },
-            "IDBOpenDBRequest": {
-                "name": "IDBOpenDBRequest",
-                "extends": "IDBRequest<IDBDatabase>"
-            },
-            "HTMLBodyElement": {
-                "properties": {
-                    "property": {
-                        "onorientationchange": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLLinkElement": {
-                "properties": {
-                    "property": {
-                        "charset": {
-                            "deprecated": true
-                        },
-                        "rev": {
-                            "deprecated": true
-                        },
-                        "target": {
-                            "deprecated": true
-                        }
-                    }
-                }
-            },
-            // The spec removed `timestamp` but browsers still have it.
-            // https://github.com/w3c/webrtc-encoded-transform/pull/204
-            "RTCEncodedAudioFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedAudioFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCEncodedVideoFrame": {
-                "properties": {
-                    "property": {
-                        "timestamp": {
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp",
-                            "name": "timestamp",
-                            "type": "long long",
-                            "readonly": true
-                        }
-                    }
-                }
-            },
-            "RTCDTMFSender": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "tonechange",
-                            "type": "RTCDTMFToneChangeEvent"
-                        }
-                    ]
-                }
-            },
             "RuntimeError": {
                 "name": "RuntimeError",
                 "extends": "Error",
@@ -476,30 +294,6 @@
                     "overrideSignatures": [
                         "new(message?: string): LinkError",
                         "(message?: string): LinkError"
-                    ]
-                }
-            },
-            "MediaRecorder": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "dataavailable",
-                            "type": "BlobEvent"
-                        }
-                    ]
-                }
-            },
-            "MediaStream": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "addtrack",
-                            "type": "MediaStreamTrackEvent"
-                        },
-                        {
-                            "name": "removetrack",
-                            "type": "MediaStreamTrackEvent"
-                        }
                     ]
                 }
             },
@@ -589,37 +383,7 @@
                         }
                     }
                 }
-            },
-            "ProcessingInstruction": {
-                "name": "ProcessingInstruction",
-                "properties": {
-                    "property": {
-                        "ownerDocument": {
-                            "name": "ownerDocument",
-                            "readonly": true,
-                            "type": "Document"
-                        }
-                    }
-                }
-            },
-            "WorkerGlobalScope": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "rejectionhandled",
-                            "type": "PromiseRejectionEvent"
-                        },
-                        {
-                            "name": "unhandledrejection",
-                            "type": "PromiseRejectionEvent"
-                        }
-                    ]
-                }
             }
-        }
-    },
-    "dictionaries": {
-        "dictionary": {
         }
     },
     "typedefs": {
@@ -634,10 +398,6 @@
                 },
                 "additionalTypes": ["Headers"],
                 "name": "HeadersInit"
-            },
-            {
-                "overrideType": "number | string | Date | BufferSource | IDBValidKey[]",
-                "name": "IDBValidKey"
             },
             {
                 "type": {
@@ -677,11 +437,6 @@
                         "type": "ExportValue"
                     }
                 ]
-            },
-            {
-                "name": "ImportValue",
-                "legacyNamespace": "WebAssembly",
-                "overrideType": "ExportValue | number"
             },
             {
                 "name": "ModuleImports",
@@ -729,24 +484,6 @@
             {
                 "name": "EventListenerOrEventListenerObject",
                 "overrideType": "EventListener | EventListenerObject"
-            },
-            {
-                "name": "OptionalPrefixToken",
-                "typeParameters": [
-                    {
-                        "name": "T extends string"
-                    }
-                ],
-                "overrideType": "`${T} ` | \"\""
-            },
-            {
-                "name": "OptionalPostfixToken",
-                "typeParameters": [
-                    {
-                        "name": "T extends string"
-                    }
-                ],
-                "overrideType": "` ${T}` | \"\""
             },
             {
                 "name": "AutoFillSection",

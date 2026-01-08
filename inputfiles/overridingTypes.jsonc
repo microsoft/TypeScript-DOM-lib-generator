@@ -453,33 +453,6 @@
                 },
                 "overrideIndexSignatures": []
             },
-            "WebTransport": {
-                "methods": {
-                    "method": {
-                        "createUnidirectionalStream": {
-                            "signature": {
-                                "0": {
-                                    "subtype": {
-                                        "type": "WritableStream"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "WebTransportBidirectionalStream": {
-                "properties": {
-                    "property": {
-                        "readable": {
-                            "type": "ReadableStream"
-                        },
-                        "writable": {
-                            "type": "WritableStream"
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -562,60 +535,6 @@
                                 "get textContent(): null"
                             ]
                         }
-                    }
-                },
-                "properties": {
-                    "property": {
-                        "defaultView": {
-                            "name": "defaultView",
-                            "overrideType": "WindowProxy & typeof globalThis"
-                        },
-                        "documentElement": {
-                            "name": "documentElement",
-                            "overrideType": "HTMLElement",
-                            "nullable": false
-                        },
-                        "head": {
-                            "nullable": false
-                        },
-                        "anchors": {
-                            "name": "anchors",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement>"
-                        },
-                        "embeds": {
-                            "name": "embeds",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
-                        },
-                        "forms": {
-                            "name": "forms",
-                            "overrideType": "HTMLCollectionOf<HTMLFormElement>"
-                        },
-                        "images": {
-                            "name": "images",
-                            "overrideType": "HTMLCollectionOf<HTMLImageElement>"
-                        },
-                        "links": {
-                            "name": "links",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
-                        },
-                        "plugins": {
-                            "name": "plugins",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
-                        },
-                        "scripts": {
-                            "name": "scripts",
-                            "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
-                        },
-                        "location": {
-                            // Pre-TS-5.1 hack to make document.location assignable
-                            "readonly": false,
-                            // Technically this can be null for a detached iframe.
-                            // But that's an edge case and flipping this also breaks compatibility.
-                            "nullable": false
-                        },
-                        "body": {
-                            "nullable": false
-                       }
                     }
                 }
             },
@@ -1193,30 +1112,6 @@
                 }
               }
             },
-            "HTMLTableElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        },
-                        "tBodies": {
-                            "name": "tBodies",
-                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLTableSectionElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        }
-                    }
-                }
-            },
             "Element": {
                 "methods": {
                     "method": {
@@ -1400,6 +1295,7 @@
                             "name": "generateKey",
                             "additionalSignatures": [
                                 "generateKey(algorithm: \"Ed25519\" | { name: \"Ed25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"sign\" | \"verify\">): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: \"X25519\" | { name: \"X25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"deriveBits\" | \"deriveKey\">): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
@@ -1496,48 +1392,6 @@
                     }
                 }
             },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        },
-                        "valueAsDate": {
-                            "name": "valueAsDate",
-                            "overrideType": "Date"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "setSelectionRange": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "start",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "end",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "direction",
-                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "MouseEvent": {
                 "methods": {
                     "method": {
@@ -1584,46 +1438,6 @@
                         },
                         "type": {
                             "overrideType": "\"submit\" | \"reset\" | \"button\""
-                        }
-                    }
-                }
-            },
-            "HTMLLabelElement": {
-                "properties": {
-                    "property": {
-                        "form": {
-                            "name": "form",
-                            "overrideType": "HTMLFormElement"
-                        }
-                    }
-                }
-            },
-            "HTMLMeterElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLOutputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLProgressElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
                         }
                     }
                 }
@@ -1693,19 +1507,6 @@
                             "type": "MessageEvent"
                         }
                     ]
-                }
-            },
-            "WebTransportDatagramDuplexStream": {
-                "properties": {
-                    "property": {
-                        // https://github.com/w3c/webtransport/pull/638 removed this but browsers still has this
-                        "writable": {
-                            "name": "writable",
-                            "type": "WritableStream",
-                            "readonly": true,
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
-                        }
-                    }
                 }
             },
             "HTMLTableRowElement": {
@@ -3319,15 +3120,6 @@
     },
     "dictionaries": {
         "dictionary": {
-            "StructuredSerializeOptions": {
-                "members": {
-                    "member": {
-                        "transfer": {
-                            "overrideType": "Transferable[]"
-                        }
-                    }
-                }
-            },
             "MessageEventInit": {
                 "members": {
                     "member": {

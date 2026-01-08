@@ -13,7 +13,6 @@ import { printUnifiedDiff } from "print-diff";
 import { generateChangelogFrom } from "../src/changelog.ts";
 import { packages } from "./createTypesPackages.js";
 import { fileURLToPath } from "node:url";
-import fetch from "node-fetch";
 import pRetry from "p-retry";
 
 verify();

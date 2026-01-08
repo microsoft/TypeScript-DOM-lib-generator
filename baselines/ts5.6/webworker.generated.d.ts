@@ -2,6 +2,10 @@
 /// Worker APIs
 /////////////////////////////
 
+interface AacEncoderConfig {
+    format?: AacBitstreamFormat;
+}
+
 interface AddEventListenerOptions extends EventListenerOptions {
     once?: boolean;
     passive?: boolean;
@@ -82,6 +86,7 @@ interface AudioDecoderSupport {
 }
 
 interface AudioEncoderConfig {
+    aac?: AacEncoderConfig;
     bitrate?: number;
     bitrateMode?: BitrateMode;
     codec: string;
@@ -264,6 +269,7 @@ interface EncodedVideoChunkInit {
 
 interface EncodedVideoChunkMetadata {
     decoderConfig?: VideoDecoderConfig;
+    svc?: SvcOutputMetadata;
 }
 
 interface ErrorEventInit extends EventInit {
@@ -416,6 +422,7 @@ interface ImageBitmapRenderingContextSettings {
 
 interface ImageDataSettings {
     colorSpace?: PredefinedColorSpace;
+    pixelFormat?: ImageDataPixelFormat;
 }
 
 interface ImageDecodeOptions {
@@ -854,6 +861,10 @@ interface StructuredSerializeOptions {
     transfer?: Transferable[];
 }
 
+interface SvcOutputMetadata {
+    temporalLayerId?: number;
+}
+
 interface TaskControllerInit {
     priority?: TaskPriority;
 }
@@ -1069,6 +1080,7 @@ interface WebGLContextAttributes {
     premultipliedAlpha?: boolean;
     preserveDrawingBuffer?: boolean;
     stencil?: boolean;
+    xrCompatible?: boolean;
 }
 
 interface WebGLContextEventInit extends EventInit {
@@ -1093,6 +1105,7 @@ interface WebTransportHash {
 interface WebTransportOptions {
     allowPooling?: boolean;
     congestionControl?: WebTransportCongestionControl;
+    protocols?: string[];
     requireUnreliable?: boolean;
     serverCertificateHashes?: WebTransportHash[];
 }
@@ -8164,7 +8177,7 @@ interface ServiceWorkerContainer extends EventTarget {
      */
     getRegistrations(): Promise<ReadonlyArray<ServiceWorkerRegistration>>;
     /**
-     * The **`register()`** method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope. If successful, the registration associates the provided script URL to a scope, which is subsequently used for matching documents to a specific service worker.
+     * The **`register()`** method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/register)
      */
@@ -8513,6 +8526,7 @@ interface SubtleCrypto {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/generateKey)
      */
     generateKey(algorithm: "Ed25519" | { name: "Ed25519" }, extractable: boolean, keyUsages: ReadonlyArray<"sign" | "verify">): Promise<CryptoKeyPair>;
+    generateKey(algorithm: "X25519" | { name: "X25519" }, extractable: boolean, keyUsages: ReadonlyArray<"deriveBits" | "deriveKey">): Promise<CryptoKeyPair>;
     generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>;
     generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
     generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair | CryptoKey>;
@@ -13443,6 +13457,7 @@ type Transferable = OffscreenCanvas | ImageBitmap | MessagePort | MediaSourceHan
 type URLPatternInput = string | URLPatternInit;
 type Uint32List = Uint32Array | GLuint[];
 type XMLHttpRequestBodyInit = Blob | BufferSource | FormData | URLSearchParams | string;
+type AacBitstreamFormat = "aac" | "adts";
 type AlphaOption = "discard" | "keep";
 type AudioSampleFormat = "f32" | "f32-planar" | "s16" | "s16-planar" | "s32" | "s32-planar" | "u8" | "u8-planar";
 type AvcBitstreamFormat = "annexb" | "avc";
@@ -13483,6 +13498,7 @@ type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";
 type IDBRequestReadyState = "done" | "pending";
 type IDBTransactionDurability = "default" | "relaxed" | "strict";
 type IDBTransactionMode = "readonly" | "readwrite" | "versionchange";
+type ImageDataPixelFormat = "rgba-float16" | "rgba-unorm8";
 type ImageOrientation = "flipY" | "from-image" | "none";
 type ImageSmoothingQuality = "high" | "low" | "medium";
 type KeyFormat = "jwk" | "pkcs8" | "raw" | "spki";

@@ -1,0 +1,33 @@
+removals {
+  dictionary WebTransportOptions {
+    member anticipatedConcurrentIncomingBidirectionalStreams // WebKit only as of 2025-12
+    member anticipatedConcurrentIncomingUnidirectionalStreams // WebKit only as of 2025-12
+    // No implementation as of 2025-12.
+    // WebKit has it in a different name datagramsReadableMode.
+    member datagramsReadableType
+  }
+
+  dictionary WebTransportSendStreamOptions {
+    member waitUntilAvailable // No implementation as of 2025-12.
+  }
+}
+
+interface WebTransport {
+  // Only Gecko implements the return type as SendStream as of 2025-12
+  method createUnidirectionalStream signatureIndex=0 {
+    type {
+      type WritableStream
+    }
+  }
+}
+
+interface WebTransportBidirectionalStream {
+  // Only Gecko implements readable/writable as Receive/SendStream as of 2025-12
+  property readable type=ReadableStream
+  property writable type=WritableStream
+}
+
+interface WebTransportDatagramDuplexStream {
+  // https://github.com/w3c/webtransport/pull/638 removed this but browsers still have this
+  property writable type=WritableStream readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
+}

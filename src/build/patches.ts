@@ -1,3 +1,8 @@
+//! This file:
+//! - Locates all KDL files in the `patches/` directory.
+//! - Parses and type-checks them.
+//! - Merges their contents and applies structural transformations over the main IDL dataset.
+
 import { parse, type Value, type Node, type Document } from "kdljs";
 import type {
   Enum,
@@ -11,6 +16,7 @@ import type {
   Dictionary,
   Member,
   Signature,
+  TypeDef,
 } from "./types.ts";
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.ts";
@@ -48,18 +54,41 @@ function string(arg: unknown): string {
   return arg;
 }
 
-function handleTyped(type: Node): DeepPartial<Typed> {
+function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
   const isTyped = type.name == "type";
   if (!isTyped) {
     throw new Error("Expected a type node");
   }
   const subType =
-    type.children.length > 0 ? handleTyped(type.children[0]) : undefined;
+    type.children.length > 0 ? handleTyped(type.children) : undefined;
   return {
     ...optionalMember("type", "string", type.values[0]),
     subtype: subType,
     ...optionalMember("nullable", "boolean", type.properties?.nullable),
   };
+}
+
+function handleTyped(
+  typeNodes: Node[],
+  property?: Value,
+): DeepPartial<Typed> | undefined {
+  if (property) {
+    if (typeNodes.length) {
+      throw new Error("Type nodes can't coexist with type property");
+    }
+    return {
+      type: string(property),
+      subtype: undefined,
+    };
+  }
+
+  const types = typeNodes.map(handleSingleTypeNode);
+  if (typeNodes.length > 1) {
+    // union types
+    return { type: types };
+  }
+  // either a non-union type or no type
+  return types[0];
 }
 
 function handleTypeParameters(value: Value | Node) {
@@ -75,6 +104,7 @@ function handleTypeParameters(value: Value | Node) {
       {
         name: string(node.values[0]),
         ...optionalMember("default", "string", node.properties?.default),
+        ...optionalMember("extends", "string", node.properties?.extends),
       },
     ],
   };
@@ -92,6 +122,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
   const mixin: Record<string, DeepPartial<Interface>> = {};
   const interfaces: Record<string, DeepPartial<Interface>> = {};
   const dictionary: Record<string, DeepPartial<Dictionary>> = {};
+  const typedefs: DeepPartial<TypeDef>[] = [];
 
   for (const node of nodes) {
     // Note: no "removals" handling here; caller is responsible for splitting
@@ -107,10 +138,16 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
         );
         break;
       case "interface":
-        interfaces[name] = handleMixinAndInterfaces(node, "interface");
+        interfaces[name] = merge(
+          interfaces[name],
+          handleMixinAndInterfaces(node, "interface"),
+        );
         break;
       case "dictionary":
         dictionary[name] = merge(dictionary[name], handleDictionary(node));
+        break;
+      case "typedef":
+        typedefs.push(handleTypedef(node));
         break;
       default:
         throw new Error(`Unknown node name: ${node.name}`);
@@ -124,6 +161,7 @@ function convertKDLNodes(nodes: Node[]): DeepPartial<WebIdl> {
       interface: interfaces,
     }),
     ...optionalNestedMember("dictionaries", dictionary, { dictionary }),
+    ...optionalNestedMember("typedefs", typedefs, { typedef: typedefs }),
   };
 }
 
@@ -168,6 +206,7 @@ function handleMixinAndInterfaces(
   const event: Event[] = [];
   const property: Record<string, DeepPartial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
+  let constructor: DeepPartial<OverridableMethod> | undefined;
   let typeParameters = {};
 
   for (const child of node.children) {
@@ -182,10 +221,15 @@ function handleMixinAndInterfaces(
       }
       case "method": {
         const methodName = string(child.values[0]);
-        const m = handleMethod(child);
+        const m = handleMethodAndConstructor(child);
         method = merge(method, {
           [methodName]: m,
         });
+        break;
+      }
+      case "constructor": {
+        const c = handleMethodAndConstructor(child, true);
+        constructor = merge(constructor, c);
         break;
       }
       case "typeParameters": {
@@ -199,6 +243,7 @@ function handleMixinAndInterfaces(
 
   const interfaceObject = type === "interface" && {
     ...typeParameters,
+    ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
     ...optionalMember(
@@ -246,30 +291,24 @@ function handleEvent(child: Node): Event {
  * @param child The child node to handle.
  */
 function handleProperty(child: Node): DeepPartial<Property> {
-  let typeNode: Node | undefined;
-  for (const c of child.children) {
-    if (c.name === "type") {
-      typeNode = c;
-      break;
-    }
-  }
+  const typeNodes = child.children.filter((c) => c.name === "type");
 
   return {
     name: string(child.values[0]),
     ...optionalMember("exposed", "string", child.properties?.exposed),
     ...optionalMember("optional", "boolean", child.properties?.optional),
     ...optionalMember("overrideType", "string", child.properties?.overrideType),
-    ...(typeNode
-      ? handleTyped(typeNode)
-      : optionalMember("type", "string", child.properties?.type)),
+    ...handleTyped(typeNodes, child.properties?.type),
     ...optionalMember("readonly", "boolean", child.properties?.readonly),
     ...optionalMember("deprecated", "string", child.properties?.deprecated),
+    ...optionalMember("mdnUrl", "string", child.properties?.mdnUrl),
   };
 }
 
 function handleParam(node: Node) {
   const name = string(node.values[0]);
   let additionalTypes: string[] | undefined;
+  const typeNodes: Node[] = [];
 
   for (const child of node.children) {
     switch (child.name) {
@@ -280,6 +319,10 @@ function handleParam(node: Node) {
         additionalTypes = child.values.map(string);
         break;
       }
+      case "type": {
+        typeNodes.push(child);
+        break;
+      }
       default:
         throw new Error(`Unexpected child "${child.name}" in param "${name}"`);
     }
@@ -287,29 +330,31 @@ function handleParam(node: Node) {
 
   return {
     name,
-    ...optionalMember("type", "string", node.properties?.type),
+    ...handleTyped(typeNodes, node.properties?.type),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
     additionalTypes,
   };
 }
 
 /**
- * Handles a child node of type "method" and adds it to the method object.
+ * Handles a child node of type "method" or "constructor" and adds it to the method or constructor object.
  * @param child The child node to handle.
+ * @param isConstructor Whether the child node is a constructor.
  */
-function handleMethod(child: Node): DeepPartial<OverridableMethod> {
-  const name = string(child.values[0]);
+function handleMethodAndConstructor(
+  child: Node,
+  isConstructor: boolean = false,
+): DeepPartial<OverridableMethod> {
+  const name = isConstructor ? undefined : string(child.values[0]);
 
-  let typeNode: Node | undefined;
-  const params: Partial<Param>[] = [];
+  // Collect all type nodes into an array
+  const typeNodes: Node[] = [];
+  const params: DeepPartial<Param>[] = [];
 
   for (const c of child.children) {
     switch (c.name) {
       case "type":
-        if (typeNode) {
-          throw new Error(`Method "${name}" has multiple type nodes (invalid)`);
-        }
-        typeNode = c;
+        typeNodes.push(c);
         break;
 
       case "param":
@@ -321,16 +366,8 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
     }
   }
 
-  const type = typeNode
-    ? handleTyped(typeNode)
-    : child.properties?.returns
-      ? {
-          type: string(child.properties?.returns),
-          subtype: undefined,
-        }
-      : null;
-
   const signatureIndex = child.properties?.signatureIndex;
+  const type = handleTyped(typeNodes, child.properties?.returns);
 
   let signature: OverridableMethod["signature"] = [];
   if (type || params.length > 0) {
@@ -358,7 +395,7 @@ function handleMethod(child: Node): DeepPartial<OverridableMethod> {
  */
 function handleDictionary(child: Node): DeepPartial<Dictionary> {
   const name = string(child.values[0]);
-  const member: Record<string, Partial<Member>> = {};
+  const member: Record<string, DeepPartial<Member>> = {};
   let typeParameters = {};
 
   for (const c of child.children) {
@@ -395,14 +432,50 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
  * Handles dictionary member nodes
  * @param c The member node to handle.
  */
-function handleMember(c: Node): Partial<Member> {
+function handleMember(c: Node): DeepPartial<Member> {
   const name = string(c.values[0]);
+  const typeNodes = c.children.filter((c) => c.name === "type");
   return {
     name,
-    ...optionalMember("type", "string", c.properties?.type),
+    ...handleTyped(typeNodes, c.properties?.type),
     ...optionalMember("required", "boolean", c.properties?.required),
     ...optionalMember("deprecated", "string", c.properties?.deprecated),
     ...optionalMember("overrideType", "string", c.properties?.overrideType),
+  };
+}
+
+/**
+ * Handles typedef nodes
+ * @param node The typedef node to handle.
+ */
+function handleTypedef(node: Node): DeepPartial<TypeDef> {
+  const typeNodes: Node[] = [];
+  let typeParameters = {};
+  for (const child of node.children) {
+    switch (child.name) {
+      case "type":
+        typeNodes.push(child);
+        break;
+      case "typeParameters": {
+        typeParameters = handleTypeParameters(child);
+        break;
+      }
+      default:
+        throw new Error(
+          `Unexpected child "${child.name}" in typedef "${node.values[0]}"`,
+        );
+    }
+  }
+  return {
+    name: string(node.values[0]),
+    ...handleTyped(typeNodes),
+    ...optionalMember(
+      "legacyNamespace",
+      "string",
+      node.properties?.legacyNamespace,
+    ),
+    ...optionalMember("overrideType", "string", node.properties?.overrideType),
+    ...typeParameters,
   };
 }
 

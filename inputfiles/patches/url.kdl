@@ -1,0 +1,7 @@
+interface URLSearchParams {
+    constructor signatureIndex=0 {
+        param init {
+            additionalTypes URLSearchParams
+        }
+    }
+}

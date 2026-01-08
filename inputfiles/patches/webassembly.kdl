@@ -16,6 +16,11 @@ dictionary MemoryDescriptor {
   member shared type=boolean
 }
 
+typedef ImportValue legacyNamespace=WebAssembly {
+  type ExportValue
+  type long
+}
+
 removals {
   // Overridden with `keyof ValueTypeMap`
   enum ValueType

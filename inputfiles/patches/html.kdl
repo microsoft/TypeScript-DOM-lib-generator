@@ -9,6 +9,57 @@ interface HTMLTableDataCellElement extends=HTMLTableCellElement exposed=Window d
 interface HTMLTableHeaderCellElement extends=HTMLTableCellElement exposed=Window deprecated="prefer HTMLTableCellElement" noInterfaceObject=#true
 interface HTMLDocument extends=Document exposed=Window
 
+interface HTMLIFrameElement {
+  property referrerPolicy type=ReferrerPolicy
+  property loading overrideType=#""eager" | "lazy""#
+}
+
+interface HTMLTableElement {
+  property rows {
+    type HTMLCollectionOf {
+      type HTMLTableRowElement
+    }
+  }
+
+  property tBodies {
+    type HTMLCollectionOf {
+      type HTMLTableSectionElement
+    }
+  }
+}
+
+interface HTMLTableSectionElement {
+  property rows {
+    type HTMLCollectionOf {
+      type HTMLTableRowElement
+    }
+  }
+}
+
+interface HTMLMeterElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface HTMLOutputElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface HTMLProgressElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
 interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 
 interface-mixin WindowEventHandlers {
@@ -18,4 +69,100 @@ interface-mixin WindowEventHandlers {
 interface HTMLImageElement {
   property decoding overrideType=#""async" | "sync" | "auto""#
   property loading overrideType=#""eager" | "lazy""#
+}
+
+interface HTMLInputElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+  property autocomplete type=AutoFill
+  property valueAsDate type=Date
+  property selectionDirection type=SelectionDirection
+  method setSelectionRange signatureIndex=0 {
+    // nullable types because we want to allow passing selectionStart/End properties, which are nullable.
+    // See also https://github.com/microsoft/TypeScript-DOM-lib-generator/pull/878.
+    param start {
+      type nullable=#true
+    }
+    param end {
+      type nullable=#true
+    }
+    param direction type=SelectionDirection
+  }
+}
+
+typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
+
+dictionary StructuredSerializeOptions {
+  member transfer {
+    type {
+      type Transferable
+    }
+  }
+}
+
+// https://html.spec.whatwg.org/multipage/dom.html#the-document-object
+interface Document {
+  // Pre-TS-5.1 hack to make document.location assignable
+  property location readonly=#false {
+    // Technically this can be null for a detached iframe.
+    // But that's an edge case and flipping this also breaks compatibility.
+    type nullable=#false
+  }
+
+  // Similarly body and head are mostly non-null for HTML documents.
+  // body can frequently be null when executing scripts in head, but flipping
+  // it also breaks compatibiliity.
+  property body {
+    type nullable=#false
+  }
+  property head {
+    type nullable=#false
+  }
+
+  // More specific types for HTMLCollection properties
+  property anchors {
+    type HTMLCollectionOf {
+      type HTMLAnchorElement
+    }
+  }
+  property embeds {
+    type HTMLCollectionOf {
+      type HTMLEmbedElement
+    }
+  }
+  property forms {
+    type HTMLCollectionOf {
+      type HTMLFormElement
+    }
+  }
+  property images {
+    type HTMLCollectionOf {
+      type HTMLImageElement
+    }
+  }
+  property links {
+    type HTMLCollectionOf {
+      type HTMLAnchorElement
+      type HTMLAreaElement
+    }
+  }
+  property plugins {
+    type HTMLCollectionOf {
+      type HTMLEmbedElement
+    }
+  }
+  property scripts {
+    type HTMLCollectionOf {
+      type HTMLScriptElement
+    }
+  }
+}
+
+removals {
+  dictionary CanvasRenderingContext2DSettings {
+    member colorType // Blink-only as of 2025-12, being tested in WebKit
+  }
 }
