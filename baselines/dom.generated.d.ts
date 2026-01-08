@@ -6245,6 +6245,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/anchor-name)
      */
     anchorName: string;
+    /** The anchor-scope CSS property can be used to limit the scope in which a positioned element can be associated with anchor elements to a particular subtree. */
     anchorScope: string;
     /**
      * The **`animation`** shorthand CSS property applies an animation between styles. It is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, animation-play-state, and animation-timeline.
@@ -23815,6 +23816,13 @@ declare var NavigateEvent: {
     new(type: string, eventInitDict: NavigateEventInit): NavigateEvent;
 };
 
+interface NavigationEventMap {
+    "currententrychange": NavigationCurrentEntryChangeEvent;
+    "navigate": NavigateEvent;
+    "navigateerror": ErrorEvent;
+    "navigatesuccess": Event;
+}
+
 /**
  * The **`Navigation`** interface of the Navigation API allows control over all navigation actions for the current window in one central place, including initiating navigations programmatically, examining navigation history entries, and managing navigations as they happen.
  *
@@ -23845,6 +23853,14 @@ interface Navigation extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/currentEntry)
      */
     readonly currentEntry: NavigationHistoryEntry | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/currententrychange_event) */
+    oncurrententrychange: ((this: Navigation, ev: NavigationCurrentEntryChangeEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/navigate_event) */
+    onnavigate: ((this: Navigation, ev: NavigateEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/navigateerror_event) */
+    onnavigateerror: ((this: Navigation, ev: ErrorEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/navigatesuccess_event) */
+    onnavigatesuccess: ((this: Navigation, ev: Event) => any) | null;
     /**
      * The **`transition`** read-only property of the Navigation interface returns a NavigationTransition object representing the status of an in-progress navigation, which can be used to track it.
      *
@@ -23893,6 +23909,10 @@ interface Navigation extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigation/updateCurrentEntry)
      */
     updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions): void;
+    addEventListener<K extends keyof NavigationEventMap>(type: K, listener: (this: Navigation, ev: NavigationEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof NavigationEventMap>(type: K, listener: (this: Navigation, ev: NavigationEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
 declare var Navigation: {
@@ -26242,7 +26262,11 @@ declare var PerformanceObserverEntryList: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming)
  */
 interface PerformancePaintTiming extends PerformanceEntry, PaintTimingMixin {
-    /** The **`toJSON()`** method of the PerformancePaintTiming interface is a serializer; it returns a JSON representation of the PerformancePaintTiming object. */
+    /**
+     * The **`toJSON()`** method of the PerformancePaintTiming interface is a serializer; it returns a JSON representation of the PerformancePaintTiming object.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformancePaintTiming/toJSON)
+     */
     toJSON(): any;
 }
 
@@ -28047,7 +28071,7 @@ interface RTCRtpReceiver {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpReceiver/transform)
      */
-    transform: RTCRtpTransform | null;
+    transform: RTCRtpReceiverTransform | null;
     /**
      * The read-only **`transport`** property of an RTCRtpReceiver object provides the RTCDtlsTransport object used to interact with the underlying transport over which the receiver is exchanging Real-time Transport Control Protocol (RTCP) packets.
      *
@@ -28127,7 +28151,7 @@ interface RTCRtpSender {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCRtpSender/transform)
      */
-    transform: RTCRtpTransform | null;
+    transform: RTCRtpSenderTransform | null;
     /**
      * The read-only **`transport`** property of an RTCRtpSender object provides the RTCDtlsTransport object used to interact with the underlying transport over which the sender is exchanging Real-time Transport Control Protocol (RTCP) packets.
      *
@@ -29561,13 +29585,13 @@ declare var SVGAnimatedRect: {
  */
 interface SVGAnimatedString {
     /**
-     * The **`animVal`** read-only property of the SVGAnimatedString interface contains the same value as the SVGAnimatedString.baseVal property. If the given attribute or property is being animated, it contains the current animated value of the attribute or property. If the given attribute or property is not currently being animated, then it contains the same value as baseVal.
+     * The **`animVal`** read-only property of the SVGAnimatedString interface is a string representing the animated value of the reflected attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedString/animVal)
      */
     readonly animVal: string;
     /**
-     * BaseVal gets or sets the base value of the given attribute before any animations are applied. The base value of the given attribute before applying any animations. Setter throws DOMException.
+     * The **`baseVal`** property of the SVGAnimatedString interface gets or sets the base value of the given attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGAnimatedString/baseVal)
      */
@@ -33441,7 +33465,7 @@ interface ServiceWorkerContainer extends EventTarget {
      */
     getRegistrations(): Promise<ReadonlyArray<ServiceWorkerRegistration>>;
     /**
-     * The **`register()`** method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope. If successful, the registration associates the provided script URL to a scope, which is subsequently used for matching documents to a specific service worker.
+     * The **`register()`** method of the ServiceWorkerContainer interface creates or updates a ServiceWorkerRegistration for the given scope.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerContainer/register)
      */
@@ -42471,7 +42495,8 @@ type OptionalPostfixToken<T extends string> = ` ${T}` | "";
 type OptionalPrefixToken<T extends string> = `${T} ` | "";
 type PerformanceEntryList = PerformanceEntry[];
 type PublicKeyCredentialClientCapabilities = Record<string, boolean>;
-type RTCRtpTransform = RTCRtpScriptTransform;
+type RTCRtpReceiverTransform = RTCRtpScriptTransform;
+type RTCRtpSenderTransform = RTCRtpScriptTransform;
 type ReadableStreamController<T> = ReadableStreamDefaultController<T> | ReadableByteStreamController;
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;

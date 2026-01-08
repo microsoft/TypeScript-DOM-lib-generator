@@ -37,6 +37,31 @@ interface HTMLTableSectionElement {
 }
 
 interface-mixin MessageEventTarget overrideThis=T typeParameter=T
+interface HTMLMeterElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface HTMLOutputElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface HTMLProgressElement {
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+}
+
+interface-mixin MessageEventTarget overrideThis=T typeParameters=T
 
 interface-mixin WindowEventHandlers {
   property onunload deprecated="The unload event is not reliable, consider visibilitychange or pagehide events."
