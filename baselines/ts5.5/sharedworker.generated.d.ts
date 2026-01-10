@@ -213,8 +213,23 @@ interface FontFaceSetLoadEventInit extends EventInit {
     fontfaces?: FontFace[];
 }
 
+interface GPUObjectDescriptorBase {
+    label?: string;
+}
+
 interface GPUPipelineErrorInit {
     reason: GPUPipelineErrorReason;
+}
+
+interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
+    arrayLayerCount?: GPUIntegerCoordinate;
+    aspect?: GPUTextureAspect;
+    baseArrayLayer?: GPUIntegerCoordinate;
+    baseMipLevel?: GPUIntegerCoordinate;
+    dimension?: GPUTextureViewDimension;
+    format?: GPUTextureFormat;
+    mipLevelCount?: GPUIntegerCoordinate;
+    usage?: GPUTextureUsageFlags;
 }
 
 interface GPUUncapturedErrorEventInit extends EventInit {
@@ -4181,6 +4196,80 @@ interface GPUSupportedLimits {
 declare var GPUSupportedLimits: {
     prototype: GPUSupportedLimits;
     new(): GPUSupportedLimits;
+};
+
+/**
+ * The **`GPUTexture`** interface of the WebGPU API represents a container used to store 1D, 2D, or 3D arrays of data, such as images, to use in GPU rendering operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture)
+ */
+interface GPUTexture extends GPUObjectBase {
+    /**
+     * The **`depthOrArrayLayers`** read-only property of the GPUTexture interface represents the depth or layer count of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/depthOrArrayLayers)
+     */
+    readonly depthOrArrayLayers: GPUIntegerCoordinateOut;
+    /**
+     * The **`dimension`** read-only property of the GPUTexture interface represents the dimension of the set of texels for each GPUTexture subresource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/dimension)
+     */
+    readonly dimension: GPUTextureDimension;
+    /**
+     * The **`format`** read-only property of the GPUTexture interface represents the format of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/format)
+     */
+    readonly format: GPUTextureFormat;
+    /**
+     * The **`height`** read-only property of the GPUTexture interface represents the height of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/height)
+     */
+    readonly height: GPUIntegerCoordinateOut;
+    /**
+     * The **`mipLevelCount`** read-only property of the GPUTexture interface represents the number of mip levels of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/mipLevelCount)
+     */
+    readonly mipLevelCount: GPUIntegerCoordinateOut;
+    /**
+     * The **`sampleCount`** read-only property of the GPUTexture interface represents the sample count of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/sampleCount)
+     */
+    readonly sampleCount: GPUSize32Out;
+    /**
+     * The **`usage`** read-only property of the GPUTexture interface is the bitwise flags representing the allowed usages of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/usage)
+     */
+    readonly usage: GPUFlagsConstant;
+    /**
+     * The **`width`** read-only property of the GPUTexture interface represents the width of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/width)
+     */
+    readonly width: GPUIntegerCoordinateOut;
+    /**
+     * The **`createView()`** method of the GPUTexture interface creates a GPUTextureView representing a specific view of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/createView)
+     */
+    createView(descriptor?: GPUTextureViewDescriptor): GPUTextureView;
+    /**
+     * The **`destroy()`** method of the GPUTexture interface destroys the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/destroy)
+     */
+    destroy(): void;
+}
+
+declare var GPUTexture: {
+    prototype: GPUTexture;
+    new(): GPUTexture;
 };
 
 /**
@@ -11787,6 +11876,11 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+type GPUFlagsConstant = number;
+type GPUIntegerCoordinate = number;
+type GPUIntegerCoordinateOut = number;
+type GPUSize32Out = number;
+type GPUTextureUsageFlags = number;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
@@ -11833,6 +11927,10 @@ type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUPipelineErrorReason = "internal" | "validation";
+type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
+type GPUTextureDimension = "1d" | "2d" | "3d";
+type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
+type GPUTextureViewDimension = "1d" | "2d" | "2d-array" | "3d" | "cube" | "cube-array";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";

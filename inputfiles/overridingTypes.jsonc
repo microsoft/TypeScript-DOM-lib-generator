@@ -2972,9 +2972,6 @@
             "GPUShaderModule": {
                 "exposed": ""
             },
-            "GPUTexture": {
-                "exposed": ""
-            },
             "TrustedHTML": {
                 "exposed": ""
             },
