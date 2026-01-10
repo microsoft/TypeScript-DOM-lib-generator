@@ -2679,10 +2679,6 @@
                     ]
                 }
             },
-            "InstallEvent": {
-                // https://github.com/mdn/browser-compat-data/issues/22591
-                "exposed": ""
-            },
             "Instance": {
                 "constructor": {
                     "signature": {
