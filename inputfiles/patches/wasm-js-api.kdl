@@ -1,6 +1,6 @@
 typedef Exports legacyNamespace=WebAssembly {
-    type record {
-        type DOMString
-        type ExportValue
-    }
+  type record {
+    type DOMString
+    type ExportValue
+  }
 }
