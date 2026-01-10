@@ -273,6 +273,10 @@ interface GPUPipelineErrorInit {
     reason: GPUPipelineErrorReason;
 }
 
+interface GPUUncapturedErrorEventInit extends EventInit {
+    error: GPUError;
+}
+
 interface GetNotificationOptions {
     tag?: string;
 }
@@ -4176,6 +4180,88 @@ declare var FormData: {
 };
 
 /**
+ * The **`GPUBindGroup`** interface of the WebGPU API is based on a GPUBindGroupLayout and defines a set of resources to be bound together in a group and how those resources are used in shader stages.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroup)
+ */
+interface GPUBindGroup extends GPUObjectBase {
+}
+
+declare var GPUBindGroup: {
+    prototype: GPUBindGroup;
+    new(): GPUBindGroup;
+};
+
+/**
+ * The **`GPUBindGroupLayout`** interface of the WebGPU API defines the structure and purpose of related GPU resources such as buffers that will be used in a pipeline, and is used as a template when creating GPUBindGroups.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroupLayout)
+ */
+interface GPUBindGroupLayout extends GPUObjectBase {
+}
+
+declare var GPUBindGroupLayout: {
+    prototype: GPUBindGroupLayout;
+    new(): GPUBindGroupLayout;
+};
+
+/**
+ * The **`GPUCommandBuffer`** interface of the WebGPU API represents a pre-recorded list of GPU commands that can be submitted to a GPUQueue for execution.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandBuffer)
+ */
+interface GPUCommandBuffer extends GPUObjectBase {
+}
+
+declare var GPUCommandBuffer: {
+    prototype: GPUCommandBuffer;
+    new(): GPUCommandBuffer;
+};
+
+/**
+ * The **`GPUComputePipeline`** interface of the WebGPU API represents a pipeline that controls the compute shader stage and can be used in a GPUComputePassEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePipeline)
+ */
+interface GPUComputePipeline extends GPUObjectBase, GPUPipelineBase {
+}
+
+declare var GPUComputePipeline: {
+    prototype: GPUComputePipeline;
+    new(): GPUComputePipeline;
+};
+
+/**
+ * The **`GPUDeviceLostInfo`** interface of the WebGPU API represents the object returned when the GPUDevice.lost Promise resolves. This provides information as to why a device has been lost.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo)
+ */
+interface GPUDeviceLostInfo {
+    /**
+     * The **`message`** read-only property of the GPUDeviceLostInfo interface provides a human-readable message that explains why the device was lost.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo/message)
+     */
+    readonly message: string;
+    /**
+     * The **`reason`** read-only property of the GPUDeviceLostInfo interface defines the reason the device was lost in a machine-readable way.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo/reason)
+     */
+    readonly reason: GPUDeviceLostReason;
+}
+
+declare var GPUDeviceLostInfo: {
+    prototype: GPUDeviceLostInfo;
+    new(): GPUDeviceLostInfo;
+};
+
+/**
  * The **`GPUError`** interface of the WebGPU API is the base interface for errors surfaced by GPUDevice.popErrorScope and the uncapturederror event.
  * Available only in secure contexts.
  *
@@ -4196,6 +4282,58 @@ declare var GPUError: {
 };
 
 /**
+ * The **`GPUExternalTexture`** interface of the WebGPU API represents a wrapper object containing an HTMLVideoElement snapshot that can be used as a texture in GPU rendering operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUExternalTexture)
+ */
+interface GPUExternalTexture extends GPUObjectBase {
+}
+
+declare var GPUExternalTexture: {
+    prototype: GPUExternalTexture;
+    new(): GPUExternalTexture;
+};
+
+/**
+ * The **`GPUInternalError`** interface of the WebGPU API describes an application error indicating that an operation failed for a system or implementation-specific reason, even when all validation requirements were satisfied.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUInternalError)
+ */
+interface GPUInternalError extends GPUError {
+}
+
+declare var GPUInternalError: {
+    prototype: GPUInternalError;
+    new(message: string): GPUInternalError;
+};
+
+interface GPUObjectBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroup/label) */
+    label: string;
+}
+
+/**
+ * The **`GPUOutOfMemoryError`** interface of the WebGPU API describes an out-of-memory (oom) error indicating that there was not enough free memory to complete the requested operation.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUOutOfMemoryError)
+ */
+interface GPUOutOfMemoryError extends GPUError {
+}
+
+declare var GPUOutOfMemoryError: {
+    prototype: GPUOutOfMemoryError;
+    new(message: string): GPUOutOfMemoryError;
+};
+
+interface GPUPipelineBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePipeline/getBindGroupLayout) */
+    getBindGroupLayout(index: number): GPUBindGroupLayout;
+}
+
+/**
  * The **`GPUPipelineError`** interface of the WebGPU API describes a pipeline failure. This is the value received when a Promise returned by a GPUDevice.createComputePipelineAsync() or GPUDevice.createRenderPipelineAsync() call rejects.
  * Available only in secure contexts.
  *
@@ -4213,6 +4351,125 @@ interface GPUPipelineError extends DOMException {
 declare var GPUPipelineError: {
     prototype: GPUPipelineError;
     new(message: string, options: GPUPipelineErrorInit): GPUPipelineError;
+};
+
+/**
+ * The **`GPUPipelineLayout`** interface of the WebGPU API defines the GPUBindGroupLayouts used by a pipeline. GPUBindGroups used with the pipeline during command encoding must have compatible GPUBindGroupLayouts.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineLayout)
+ */
+interface GPUPipelineLayout extends GPUObjectBase {
+}
+
+declare var GPUPipelineLayout: {
+    prototype: GPUPipelineLayout;
+    new(): GPUPipelineLayout;
+};
+
+/**
+ * The **`GPURenderBundle`** interface of the WebGPU API represents a container for pre-recorded bundles of commands.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundle)
+ */
+interface GPURenderBundle extends GPUObjectBase {
+}
+
+declare var GPURenderBundle: {
+    prototype: GPURenderBundle;
+    new(): GPURenderBundle;
+};
+
+/**
+ * The **`GPURenderPipeline`** interface of the WebGPU API represents a pipeline that controls the vertex and fragment shader stages and can be used in a GPURenderPassEncoder or GPURenderBundleEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPipeline)
+ */
+interface GPURenderPipeline extends GPUObjectBase, GPUPipelineBase {
+}
+
+declare var GPURenderPipeline: {
+    prototype: GPURenderPipeline;
+    new(): GPURenderPipeline;
+};
+
+/**
+ * The **`GPUSampler`** interface of the WebGPU API represents an object that can control how shaders transform and filter texture resource data.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSampler)
+ */
+interface GPUSampler extends GPUObjectBase {
+}
+
+declare var GPUSampler: {
+    prototype: GPUSampler;
+    new(): GPUSampler;
+};
+
+/**
+ * The **`GPUSupportedFeatures`** interface of the WebGPU API is a Set-like object that describes additional functionality supported by a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedFeatures)
+ */
+interface GPUSupportedFeatures {
+    forEach(callbackfn: (value: string, key: string, parent: GPUSupportedFeatures) => void, thisArg?: any): void;
+}
+
+declare var GPUSupportedFeatures: {
+    prototype: GPUSupportedFeatures;
+    new(): GPUSupportedFeatures;
+};
+
+/**
+ * The **`GPUTextureView`** interface of the WebGPU API represents a view into a subset of the texture resources defined by a particular GPUTexture.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTextureView)
+ */
+interface GPUTextureView extends GPUObjectBase {
+}
+
+declare var GPUTextureView: {
+    prototype: GPUTextureView;
+    new(): GPUTextureView;
+};
+
+/**
+ * The **`GPUUncapturedErrorEvent`** interface of the WebGPU API is the event object type for the GPUDevice uncapturederror event, used for telemetry and to report unexpected errors.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUUncapturedErrorEvent)
+ */
+interface GPUUncapturedErrorEvent extends Event {
+    /**
+     * The **`error`** read-only property of the GPUUncapturedErrorEvent interface is a GPUError object instance providing access to the details of the error.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUUncapturedErrorEvent/error)
+     */
+    readonly error: GPUError;
+}
+
+declare var GPUUncapturedErrorEvent: {
+    prototype: GPUUncapturedErrorEvent;
+    new(type: string, gpuUncapturedErrorEventInitDict: GPUUncapturedErrorEventInit): GPUUncapturedErrorEvent;
+};
+
+/**
+ * The **`GPUValidationError`** interface of the WebGPU API describes an application error indicating that an operation did not pass the WebGPU API's validation constraints.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUValidationError)
+ */
+interface GPUValidationError extends GPUError {
+}
+
+declare var GPUValidationError: {
+    prototype: GPUValidationError;
+    new(message: string): GPUValidationError;
 };
 
 interface GenericTransformStream {
@@ -8236,6 +8493,21 @@ interface WEBGL_multi_draw {
 }
 
 /**
+ * The **`WGSLLanguageFeatures`** interface of the WebGPU API is a setlike object that reports the WGSL language extensions supported by the WebGPU implementation.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WGSLLanguageFeatures)
+ */
+interface WGSLLanguageFeatures {
+    forEach(callbackfn: (value: string, key: string, parent: WGSLLanguageFeatures) => void, thisArg?: any): void;
+}
+
+declare var WGSLLanguageFeatures: {
+    prototype: WGSLLanguageFeatures;
+    new(): WGSLLanguageFeatures;
+};
+
+/**
  * The **`WebGL2RenderingContext`** interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML <canvas> element.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebGL2RenderingContext)
@@ -11804,6 +12076,7 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
+type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUPipelineErrorReason = "internal" | "validation";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
