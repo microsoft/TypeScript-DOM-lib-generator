@@ -3002,9 +3002,6 @@
             "GPUShaderModule": {
                 "exposed": ""
             },
-            "GPUSupportedLimits": {
-                "exposed": ""
-            },
             "GPUTexture": {
                 "exposed": ""
             },

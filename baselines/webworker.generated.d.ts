@@ -5130,6 +5130,82 @@ declare var GPUSupportedFeatures: {
 };
 
 /**
+ * The **`GPUSupportedLimits`** interface of the WebGPU API describes the limits supported by a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits)
+ */
+interface GPUSupportedLimits {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindGroups: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindGroupsPlusVertexBuffers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindingsPerBindGroup: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBufferSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxColorAttachmentBytesPerSample: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxColorAttachments: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeInvocationsPerWorkgroup: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeX: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeY: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeZ: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupStorageSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupsPerDimension: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxDynamicStorageBuffersPerPipelineLayout: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxDynamicUniformBuffersPerPipelineLayout: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxInterStageShaderVariables: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxSampledTexturesPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxSamplersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageBufferBindingSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageBuffersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageTexturesPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureArrayLayers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension1D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension2D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension3D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxUniformBufferBindingSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxUniformBuffersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexAttributes: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexBufferArrayStride: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexBuffers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly minStorageBufferOffsetAlignment: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly minUniformBufferOffsetAlignment: number;
+}
+
+declare var GPUSupportedLimits: {
+    prototype: GPUSupportedLimits;
+    new(): GPUSupportedLimits;
+};
+
+/**
  * The **`GPUTextureView`** interface of the WebGPU API represents a view into a subset of the texture resources defined by a particular GPUTexture.
  * Available only in secure contexts.
  *
