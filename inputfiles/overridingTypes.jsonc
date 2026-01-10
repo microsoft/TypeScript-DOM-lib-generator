@@ -2632,36 +2632,6 @@
                     }
                 }
             },
-            "EventTarget": {
-                "methods": {
-                    "method": {
-                        "addEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "removeEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "WorkerGlobalScope": {
                 "properties": {
                     "property": {

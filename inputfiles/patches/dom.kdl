@@ -11,6 +11,15 @@ interface EventListenerObject noInterfaceObject=#true {
   }
 }
 
+interface EventTarget {
+  method addEventListener signatureIndex=0 {
+    param callback type=EventListenerOrEventListenerObject
+  }
+  method removeEventListener signatureIndex=0 {
+    param callback type=EventListenerOrEventListenerObject
+  }
+}
+
 interface Document {
   property documentElement {
     type HTMLElement nullable=#false
