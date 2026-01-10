@@ -5452,7 +5452,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/DeferredRequestInit",
     "pageType": "web-api-interface",
-    "summary": "The DeferredRequestInit dictionary of the fetchLater() API represents the set of options that can be used to configure a deferred fetch request."
+    "summary": "The DeferredRequestInit dictionary of the Fetch API represents the set of options that can be used to configure a deferred fetch request."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DelayNode",
@@ -9395,6 +9395,11 @@
     "summary": "The Fetch API provides an interface for fetching resources (including across the network). It is a more powerful and flexible replacement for XMLHttpRequest."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Fetch_API/Using_Deferred_Fetch",
+    "pageType": "guide",
+    "summary": "The fetchLater() API provides an interface to request a deferred fetch that can be sent after a specified period of time, or when the page is closed or navigated away from."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Fetch_API/Using_Fetch",
     "pageType": "guide",
     "summary": "The Fetch API provides a JavaScript interface for making HTTP requests and processing the responses."
@@ -9450,19 +9455,9 @@
     "summary": "The resultingClientId read-only property of the\nFetchEvent interface is the id of the\nclient that replaces the previous client during a page\nnavigation."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/fetchLater_API",
-    "pageType": "web-api-overview",
-    "summary": "The fetchLater() API provides an interface to request a deferred fetch that can be sent after a specified period of time, or when the page is closed or navigated away from."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/fetchLater_API/fetchLater_quotas",
-    "pageType": "guide",
-    "summary": "Deferred fetchLater() API fetches are batched and sent once the tab is closed. At this point, there is no way for the user to abort them. To avoid situations where documents abuse this bandwidth to send unlimited amounts of data over the network the API sets quotas on how much data can be deferred to be sent later."
-  },
-  {
     "mdn_url": "/en-US/docs/Web/API/FetchLaterResult",
     "pageType": "web-api-interface",
-    "summary": "The FetchLaterResult interface of the fetchLater() API is returned by the Window.fetchLater() method after a deferred fetch has been created."
+    "summary": "The FetchLaterResult interface of the Fetch API is returned by the Window.fetchLater() method after a deferred fetch has been created."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/FetchLaterResult/activated",
@@ -39592,7 +39587,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/background",
     "pageType": "css-shorthand-property",
-    "summary": "The background shorthand CSS property sets all background style properties at once, such as color, image, origin and size, or repeat method. Component properties not set in the background shorthand property value declaration are set to their default values."
+    "summary": "The background shorthand CSS property sets all background style properties at once, such as color, image, origin, size, and repeat method."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/background-attachment",
