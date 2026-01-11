@@ -15021,6 +15021,26 @@ declare var GPUSampler: {
 };
 
 /**
+ * The **`GPUShaderModule`** interface of the WebGPU API represents an internal shader module object, a container for WGSL shader code that can be submitted to the GPU for execution by a pipeline.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUShaderModule)
+ */
+interface GPUShaderModule extends GPUObjectBase {
+    /**
+     * The **`getCompilationInfo()`** method of the GPUShaderModule interface returns a Promise that fulfills with a GPUCompilationInfo object containing messages generated during the GPUShaderModule's compilation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUShaderModule/getCompilationInfo)
+     */
+    getCompilationInfo(): Promise<GPUCompilationInfo>;
+}
+
+declare var GPUShaderModule: {
+    prototype: GPUShaderModule;
+    new(): GPUShaderModule;
+};
+
+/**
  * The **`GPUSupportedFeatures`** interface of the WebGPU API is a Set-like object that describes additional functionality supported by a GPUAdapter.
  * Available only in secure contexts.
  *

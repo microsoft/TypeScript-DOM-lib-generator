@@ -2907,9 +2907,6 @@
             "GPURenderPassEncoder": {
                 "exposed": ""
             },
-            "GPUShaderModule": {
-                "exposed": ""
-            },
             "TrustedHTML": {
                 "exposed": ""
             },
