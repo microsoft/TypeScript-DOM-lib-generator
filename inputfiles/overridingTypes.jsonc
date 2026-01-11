@@ -430,7 +430,7 @@
                         },
                         "onerror": {
                             "name": "onerror",
-                            "overrideType": "OnErrorEventHandler",
+                            "type": "OnErrorEventHandler",
                             "eventHandler": "error"
                         }
                     }
