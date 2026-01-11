@@ -1797,48 +1797,6 @@
                     }
                 }
             },
-            "Cache": {
-                "methods": {
-                    "method": {
-                        "match": {
-                            "name": "match",
-                            "signature": {
-                                "0": {
-                                    "overrideType": "Promise<Response | undefined>"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "CacheStorage": {
-                "methods": {
-                    "method": {
-                        "match": {
-                            "name": "match",
-                            "signature": {
-                                "0": {
-                                    "overrideType": "Promise<Response | undefined>"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "Animation": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "finish",
-                            "type": "AnimationPlaybackEvent"
-                        },
-                        {
-                            "name": "cancel",
-                            "type": "AnimationPlaybackEvent"
-                        }
-                    ]
-                }
-            },
             "KeyframeEffect": {
                 "constructor": {
                     "signature": {
