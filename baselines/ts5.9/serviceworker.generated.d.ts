@@ -4223,6 +4223,62 @@ declare var GPUBindGroupLayout: {
 };
 
 /**
+ * The **`GPUBuffer`** interface of the WebGPU API represents a block of memory that can be used to store raw data to use in GPU operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer)
+ */
+interface GPUBuffer extends GPUObjectBase {
+    /**
+     * The **`mapState`** read-only property of the GPUBuffer interface represents the mapped state of the GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/mapState)
+     */
+    readonly mapState: GPUBufferMapState;
+    /**
+     * The **`size`** read-only property of the GPUBuffer interface represents the length of the GPUBuffer's memory allocation, in bytes.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/size)
+     */
+    readonly size: GPUSize64Out;
+    /**
+     * The **`usage`** read-only property of the GPUBuffer interface contains the bitwise flags representing the allowed usages of the GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/usage)
+     */
+    readonly usage: GPUFlagsConstant;
+    /**
+     * The **`destroy()`** method of the GPUBuffer interface destroys the GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/destroy)
+     */
+    destroy(): void;
+    /**
+     * The **`getMappedRange()`** method of the GPUBuffer interface returns an ArrayBuffer containing the mapped contents of the GPUBuffer in the specified range.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/getMappedRange)
+     */
+    getMappedRange(offset?: GPUSize64, size?: GPUSize64): ArrayBuffer;
+    /**
+     * The **`mapAsync()`** method of the GPUBuffer interface maps the specified range of the GPUBuffer. It returns a Promise that resolves when the GPUBuffer's content is ready to be accessed. While the GPUBuffer is mapped it cannot be used in any GPU commands.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/mapAsync)
+     */
+    mapAsync(mode: GPUMapModeFlags, offset?: GPUSize64, size?: GPUSize64): Promise<void>;
+    /**
+     * The **`unmap()`** method of the GPUBuffer interface unmaps the mapped range of the GPUBuffer, making its contents available for use by the GPU again after it has previously been mapped with GPUBuffer.mapAsync() (the GPU cannot access a mapped GPUBuffer).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBuffer/unmap)
+     */
+    unmap(): void;
+}
+
+declare var GPUBuffer: {
+    prototype: GPUBuffer;
+    new(): GPUBuffer;
+};
+
+/**
  * The **`GPUCommandBuffer`** interface of the WebGPU API represents a pre-recorded list of GPU commands that can be submitted to a GPUQueue for execution.
  * Available only in secure contexts.
  *
@@ -12299,7 +12355,10 @@ type GLuint64 = number;
 type GPUFlagsConstant = number;
 type GPUIntegerCoordinate = number;
 type GPUIntegerCoordinateOut = number;
+type GPUMapModeFlags = number;
 type GPUSize32Out = number;
+type GPUSize64 = number;
+type GPUSize64Out = number;
 type GPUTextureUsageFlags = number;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
@@ -12349,6 +12408,7 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
+type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUPipelineErrorReason = "internal" | "validation";

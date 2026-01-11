@@ -2880,9 +2880,6 @@
             "GPUAdapterInfo": {
                 "exposed": ""
             },
-            "GPUBuffer": {
-                "exposed": ""
-            },
             "GPUCanvasContext": {
                 "exposed": ""
             },
