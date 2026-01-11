@@ -132,15 +132,6 @@
                     }
                 }
             },
-            "MediaRecorderOptions": {
-                "members": {
-                    "member": {
-                        "audioBitrateMode": null, // Blink only as of 2023-05
-                        "videoKeyFrameIntervalCount": null, // No implementation as of 2023-05
-                        "videoKeyFrameIntervalDuration": null // No implementation as of 2023-05
-                    }
-                }
-            },
             "MediaSessionActionDetails": {
                 "members": {
                     "member": {
