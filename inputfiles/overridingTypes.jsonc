@@ -1467,16 +1467,6 @@
                     ]
                 }
             },
-            "HTMLTableRowElement": {
-                "properties": {
-                    "property": {
-                        "cells": {
-                            "name": "cells",
-                            "overrideType": "HTMLCollectionOf<HTMLTableCellElement>"
-                        }
-                    }
-                }
-            },
             "XMLHttpRequestEventTarget": {
                 "properties": {
                     "property": {
@@ -1559,16 +1549,6 @@
                                     "type": "FileSystemFileHandle"
                                 }
                             ]
-                        }
-                    }
-                }
-            },
-            "MutationRecord": {
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "overrideType": "MutationRecordType"
                         }
                     }
                 }
