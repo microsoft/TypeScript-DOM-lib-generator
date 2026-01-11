@@ -3,7 +3,7 @@
 //! - Parses and type-checks them.
 //! - Merges their contents and applies structural transformations over the main IDL dataset.
 
-import { parse, type Value, type Node, Document } from "kdljs";
+import { parse, type Value, type Node, type Document } from "kdljs";
 import type {
   Enum,
   Event,
@@ -17,9 +17,9 @@ import type {
   Member,
   Signature,
   TypeDef,
-} from "./types.js";
+} from "./types.ts";
 import { readdir, readFile } from "fs/promises";
-import { merge } from "./helpers.js";
+import { merge } from "./helpers.ts";
 
 type DeepPartial<T> = T extends object
   ? { [K in keyof T]?: DeepPartial<T[K]> }

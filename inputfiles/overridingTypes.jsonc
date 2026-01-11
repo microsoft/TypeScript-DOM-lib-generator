@@ -1295,6 +1295,7 @@
                             "name": "generateKey",
                             "additionalSignatures": [
                                 "generateKey(algorithm: \"Ed25519\" | { name: \"Ed25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"sign\" | \"verify\">): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: \"X25519\" | { name: \"X25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"deriveBits\" | \"deriveKey\">): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
@@ -1437,48 +1438,6 @@
                         },
                         "type": {
                             "overrideType": "\"submit\" | \"reset\" | \"button\""
-                        }
-                    }
-                }
-            },
-            "HTMLTextAreaElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "setSelectionRange": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "start",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "end",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "direction",
-                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                                        }
-                                    ]
-                                }
-                            }
                         }
                     }
                 }
@@ -2673,36 +2632,6 @@
                     }
                 }
             },
-            "EventTarget": {
-                "methods": {
-                    "method": {
-                        "addEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "removeEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "WorkerGlobalScope": {
                 "properties": {
                     "property": {
@@ -3007,19 +2936,10 @@
             "GPUAdapterInfo": {
                 "exposed": ""
             },
-            "GPUBindGroup": {
-                "exposed": ""
-            },
-            "GPUBindGroupLayout": {
-                "exposed": ""
-            },
             "GPUBuffer": {
                 "exposed": ""
             },
             "GPUCanvasContext": {
-                "exposed": ""
-            },
-            "GPUCommandBuffer": {
                 "exposed": ""
             },
             "GPUCommandEncoder": {
@@ -3034,25 +2954,7 @@
             "GPUComputePassEncoder": {
                 "exposed": ""
             },
-            "GPUComputePipeline": {
-                "exposed": ""
-            },
             "GPUDevice": {
-                "exposed": ""
-            },
-            "GPUDeviceLostInfo": {
-                "exposed": ""
-            },
-            "GPUExternalTexture": {
-                "exposed": ""
-            },
-            "GPUInternalError": {
-                "exposed": ""
-            },
-            "GPUOutOfMemoryError": {
-                "exposed": ""
-            },
-            "GPUPipelineLayout": {
                 "exposed": ""
             },
             "GPUQuerySet": {
@@ -3061,40 +2963,13 @@
             "GPUQueue": {
                 "exposed": ""
             },
-            "GPURenderBundle": {
-                "exposed": ""
-            },
             "GPURenderBundleEncoder": {
                 "exposed": ""
             },
             "GPURenderPassEncoder": {
                 "exposed": ""
             },
-            "GPURenderPipeline": {
-                "exposed": ""
-            },
-            "GPUSampler": {
-                "exposed": ""
-            },
             "GPUShaderModule": {
-                "exposed": ""
-            },
-            "GPUSupportedFeatures": {
-                "exposed": ""
-            },
-            "GPUSupportedLimits": {
-                "exposed": ""
-            },
-            "GPUTexture": {
-                "exposed": ""
-            },
-            "GPUTextureView": {
-                "exposed": ""
-            },
-            "GPUUncapturedErrorEvent": {
-                "exposed": ""
-            },
-            "GPUValidationError": {
                 "exposed": ""
             },
             "TrustedHTML": {
@@ -3112,9 +2987,6 @@
             "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
-            "WGSLLanguageFeatures": {
-                "exposed": ""
-            }
         }
     },
     "dictionaries": {

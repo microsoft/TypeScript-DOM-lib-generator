@@ -1,12 +1,12 @@
-import * as Browser from "./types.js";
-import {
+import * as Browser from "./types.ts";
+import type {
   CompatStatement,
   SimpleSupportStatement,
   SupportBlock,
 } from "@mdn/browser-compat-data/types";
-import { forceKeepAlive } from "./bcd/keep-alive.js";
-import { mapToBcdCompat } from "./bcd/mapper.js";
-import { hasStableImplementation } from "./bcd/stable.js";
+import { forceKeepAlive } from "./bcd/keep-alive.ts";
+import { mapToBcdCompat } from "./bcd/mapper.ts";
+import { hasStableImplementation } from "./bcd/stable.ts";
 
 function hasMultipleImplementations(support: SupportBlock, prefix?: string) {
   const hasStableImpl = (

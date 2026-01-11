@@ -1,6 +1,6 @@
 import { listAll as listAllIdl } from "@webref/idl";
 import { listAll as listAllCss } from "@webref/css";
-import { generateWebIdlFromCssProperties } from "./css.js";
+import { generateWebIdlFromCssProperties } from "./css.ts";
 
 export async function getWebidls(): Promise<Map<string, string>> {
   const idl = await listAllIdl();

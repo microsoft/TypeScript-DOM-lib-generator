@@ -93,6 +93,26 @@ interface HTMLInputElement {
   }
 }
 
+interface HTMLTextAreaElement {
+  property autocomplete type=AutoFill
+  property labels {
+    type NodeListOf {
+      type HTMLLabelElement
+    }
+  }
+  property selectionDirection type=SelectionDirection
+  method setSelectionRange signatureIndex=0 {
+    // Same as in HTMLInputElement
+    param start {
+      type nullable=#true
+    }
+    param end {
+      type nullable=#true
+    }
+    param direction type=SelectionDirection
+  }
+}
+
 typedef SelectionDirection overrideType=#""forward" | "backward" | "none""#
 
 dictionary StructuredSerializeOptions {

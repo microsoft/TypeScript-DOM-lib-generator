@@ -2,7 +2,7 @@
 
 // npm run ts-changelog @types/web 0.0.1 0.0.3
 
-import { gitShowFile, generateChangelogFrom } from "../lib/changelog.js";
+import { gitShowFile, generateChangelogFrom } from "../src/changelog.ts";
 import { packages } from "./createTypesPackages.js";
 import { basename } from "path";
 

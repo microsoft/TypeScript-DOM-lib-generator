@@ -269,8 +269,27 @@ interface FontFaceSetLoadEventInit extends EventInit {
     fontfaces?: FontFace[];
 }
 
+interface GPUObjectDescriptorBase {
+    label?: string;
+}
+
 interface GPUPipelineErrorInit {
     reason: GPUPipelineErrorReason;
+}
+
+interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
+    arrayLayerCount?: GPUIntegerCoordinate;
+    aspect?: GPUTextureAspect;
+    baseArrayLayer?: GPUIntegerCoordinate;
+    baseMipLevel?: GPUIntegerCoordinate;
+    dimension?: GPUTextureViewDimension;
+    format?: GPUTextureFormat;
+    mipLevelCount?: GPUIntegerCoordinate;
+    usage?: GPUTextureUsageFlags;
+}
+
+interface GPUUncapturedErrorEventInit extends EventInit {
+    error: GPUError;
 }
 
 interface GetNotificationOptions {
@@ -4176,6 +4195,88 @@ declare var FormData: {
 };
 
 /**
+ * The **`GPUBindGroup`** interface of the WebGPU API is based on a GPUBindGroupLayout and defines a set of resources to be bound together in a group and how those resources are used in shader stages.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroup)
+ */
+interface GPUBindGroup extends GPUObjectBase {
+}
+
+declare var GPUBindGroup: {
+    prototype: GPUBindGroup;
+    new(): GPUBindGroup;
+};
+
+/**
+ * The **`GPUBindGroupLayout`** interface of the WebGPU API defines the structure and purpose of related GPU resources such as buffers that will be used in a pipeline, and is used as a template when creating GPUBindGroups.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroupLayout)
+ */
+interface GPUBindGroupLayout extends GPUObjectBase {
+}
+
+declare var GPUBindGroupLayout: {
+    prototype: GPUBindGroupLayout;
+    new(): GPUBindGroupLayout;
+};
+
+/**
+ * The **`GPUCommandBuffer`** interface of the WebGPU API represents a pre-recorded list of GPU commands that can be submitted to a GPUQueue for execution.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandBuffer)
+ */
+interface GPUCommandBuffer extends GPUObjectBase {
+}
+
+declare var GPUCommandBuffer: {
+    prototype: GPUCommandBuffer;
+    new(): GPUCommandBuffer;
+};
+
+/**
+ * The **`GPUComputePipeline`** interface of the WebGPU API represents a pipeline that controls the compute shader stage and can be used in a GPUComputePassEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePipeline)
+ */
+interface GPUComputePipeline extends GPUObjectBase, GPUPipelineBase {
+}
+
+declare var GPUComputePipeline: {
+    prototype: GPUComputePipeline;
+    new(): GPUComputePipeline;
+};
+
+/**
+ * The **`GPUDeviceLostInfo`** interface of the WebGPU API represents the object returned when the GPUDevice.lost Promise resolves. This provides information as to why a device has been lost.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo)
+ */
+interface GPUDeviceLostInfo {
+    /**
+     * The **`message`** read-only property of the GPUDeviceLostInfo interface provides a human-readable message that explains why the device was lost.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo/message)
+     */
+    readonly message: string;
+    /**
+     * The **`reason`** read-only property of the GPUDeviceLostInfo interface defines the reason the device was lost in a machine-readable way.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDeviceLostInfo/reason)
+     */
+    readonly reason: GPUDeviceLostReason;
+}
+
+declare var GPUDeviceLostInfo: {
+    prototype: GPUDeviceLostInfo;
+    new(): GPUDeviceLostInfo;
+};
+
+/**
  * The **`GPUError`** interface of the WebGPU API is the base interface for errors surfaced by GPUDevice.popErrorScope and the uncapturederror event.
  * Available only in secure contexts.
  *
@@ -4196,6 +4297,58 @@ declare var GPUError: {
 };
 
 /**
+ * The **`GPUExternalTexture`** interface of the WebGPU API represents a wrapper object containing an HTMLVideoElement snapshot that can be used as a texture in GPU rendering operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUExternalTexture)
+ */
+interface GPUExternalTexture extends GPUObjectBase {
+}
+
+declare var GPUExternalTexture: {
+    prototype: GPUExternalTexture;
+    new(): GPUExternalTexture;
+};
+
+/**
+ * The **`GPUInternalError`** interface of the WebGPU API describes an application error indicating that an operation failed for a system or implementation-specific reason, even when all validation requirements were satisfied.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUInternalError)
+ */
+interface GPUInternalError extends GPUError {
+}
+
+declare var GPUInternalError: {
+    prototype: GPUInternalError;
+    new(message: string): GPUInternalError;
+};
+
+interface GPUObjectBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUBindGroup/label) */
+    label: string;
+}
+
+/**
+ * The **`GPUOutOfMemoryError`** interface of the WebGPU API describes an out-of-memory (oom) error indicating that there was not enough free memory to complete the requested operation.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUOutOfMemoryError)
+ */
+interface GPUOutOfMemoryError extends GPUError {
+}
+
+declare var GPUOutOfMemoryError: {
+    prototype: GPUOutOfMemoryError;
+    new(message: string): GPUOutOfMemoryError;
+};
+
+interface GPUPipelineBase {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePipeline/getBindGroupLayout) */
+    getBindGroupLayout(index: number): GPUBindGroupLayout;
+}
+
+/**
  * The **`GPUPipelineError`** interface of the WebGPU API describes a pipeline failure. This is the value received when a Promise returned by a GPUDevice.createComputePipelineAsync() or GPUDevice.createRenderPipelineAsync() call rejects.
  * Available only in secure contexts.
  *
@@ -4213,6 +4366,275 @@ interface GPUPipelineError extends DOMException {
 declare var GPUPipelineError: {
     prototype: GPUPipelineError;
     new(message: string, options: GPUPipelineErrorInit): GPUPipelineError;
+};
+
+/**
+ * The **`GPUPipelineLayout`** interface of the WebGPU API defines the GPUBindGroupLayouts used by a pipeline. GPUBindGroups used with the pipeline during command encoding must have compatible GPUBindGroupLayouts.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUPipelineLayout)
+ */
+interface GPUPipelineLayout extends GPUObjectBase {
+}
+
+declare var GPUPipelineLayout: {
+    prototype: GPUPipelineLayout;
+    new(): GPUPipelineLayout;
+};
+
+/**
+ * The **`GPURenderBundle`** interface of the WebGPU API represents a container for pre-recorded bundles of commands.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundle)
+ */
+interface GPURenderBundle extends GPUObjectBase {
+}
+
+declare var GPURenderBundle: {
+    prototype: GPURenderBundle;
+    new(): GPURenderBundle;
+};
+
+/**
+ * The **`GPURenderPipeline`** interface of the WebGPU API represents a pipeline that controls the vertex and fragment shader stages and can be used in a GPURenderPassEncoder or GPURenderBundleEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPipeline)
+ */
+interface GPURenderPipeline extends GPUObjectBase, GPUPipelineBase {
+}
+
+declare var GPURenderPipeline: {
+    prototype: GPURenderPipeline;
+    new(): GPURenderPipeline;
+};
+
+/**
+ * The **`GPUSampler`** interface of the WebGPU API represents an object that can control how shaders transform and filter texture resource data.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSampler)
+ */
+interface GPUSampler extends GPUObjectBase {
+}
+
+declare var GPUSampler: {
+    prototype: GPUSampler;
+    new(): GPUSampler;
+};
+
+/**
+ * The **`GPUSupportedFeatures`** interface of the WebGPU API is a Set-like object that describes additional functionality supported by a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedFeatures)
+ */
+interface GPUSupportedFeatures {
+    forEach(callbackfn: (value: string, key: string, parent: GPUSupportedFeatures) => void, thisArg?: any): void;
+}
+
+declare var GPUSupportedFeatures: {
+    prototype: GPUSupportedFeatures;
+    new(): GPUSupportedFeatures;
+};
+
+/**
+ * The **`GPUSupportedLimits`** interface of the WebGPU API describes the limits supported by a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits)
+ */
+interface GPUSupportedLimits {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindGroups: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindGroupsPlusVertexBuffers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBindingsPerBindGroup: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxBufferSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxColorAttachmentBytesPerSample: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxColorAttachments: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeInvocationsPerWorkgroup: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeX: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeY: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupSizeZ: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupStorageSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxComputeWorkgroupsPerDimension: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxDynamicStorageBuffersPerPipelineLayout: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxDynamicUniformBuffersPerPipelineLayout: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxInterStageShaderVariables: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxSampledTexturesPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxSamplersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageBufferBindingSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageBuffersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxStorageTexturesPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureArrayLayers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension1D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension2D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxTextureDimension3D: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxUniformBufferBindingSize: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxUniformBuffersPerShaderStage: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexAttributes: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexBufferArrayStride: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly maxVertexBuffers: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly minStorageBufferOffsetAlignment: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUSupportedLimits#instance_properties) */
+    readonly minUniformBufferOffsetAlignment: number;
+}
+
+declare var GPUSupportedLimits: {
+    prototype: GPUSupportedLimits;
+    new(): GPUSupportedLimits;
+};
+
+/**
+ * The **`GPUTexture`** interface of the WebGPU API represents a container used to store 1D, 2D, or 3D arrays of data, such as images, to use in GPU rendering operations.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture)
+ */
+interface GPUTexture extends GPUObjectBase {
+    /**
+     * The **`depthOrArrayLayers`** read-only property of the GPUTexture interface represents the depth or layer count of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/depthOrArrayLayers)
+     */
+    readonly depthOrArrayLayers: GPUIntegerCoordinateOut;
+    /**
+     * The **`dimension`** read-only property of the GPUTexture interface represents the dimension of the set of texels for each GPUTexture subresource.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/dimension)
+     */
+    readonly dimension: GPUTextureDimension;
+    /**
+     * The **`format`** read-only property of the GPUTexture interface represents the format of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/format)
+     */
+    readonly format: GPUTextureFormat;
+    /**
+     * The **`height`** read-only property of the GPUTexture interface represents the height of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/height)
+     */
+    readonly height: GPUIntegerCoordinateOut;
+    /**
+     * The **`mipLevelCount`** read-only property of the GPUTexture interface represents the number of mip levels of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/mipLevelCount)
+     */
+    readonly mipLevelCount: GPUIntegerCoordinateOut;
+    /**
+     * The **`sampleCount`** read-only property of the GPUTexture interface represents the sample count of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/sampleCount)
+     */
+    readonly sampleCount: GPUSize32Out;
+    /**
+     * The **`usage`** read-only property of the GPUTexture interface is the bitwise flags representing the allowed usages of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/usage)
+     */
+    readonly usage: GPUFlagsConstant;
+    /**
+     * The **`width`** read-only property of the GPUTexture interface represents the width of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/width)
+     */
+    readonly width: GPUIntegerCoordinateOut;
+    /**
+     * The **`createView()`** method of the GPUTexture interface creates a GPUTextureView representing a specific view of the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/createView)
+     */
+    createView(descriptor?: GPUTextureViewDescriptor): GPUTextureView;
+    /**
+     * The **`destroy()`** method of the GPUTexture interface destroys the GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTexture/destroy)
+     */
+    destroy(): void;
+}
+
+declare var GPUTexture: {
+    prototype: GPUTexture;
+    new(): GPUTexture;
+};
+
+/**
+ * The **`GPUTextureView`** interface of the WebGPU API represents a view into a subset of the texture resources defined by a particular GPUTexture.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUTextureView)
+ */
+interface GPUTextureView extends GPUObjectBase {
+}
+
+declare var GPUTextureView: {
+    prototype: GPUTextureView;
+    new(): GPUTextureView;
+};
+
+/**
+ * The **`GPUUncapturedErrorEvent`** interface of the WebGPU API is the event object type for the GPUDevice uncapturederror event, used for telemetry and to report unexpected errors.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUUncapturedErrorEvent)
+ */
+interface GPUUncapturedErrorEvent extends Event {
+    /**
+     * The **`error`** read-only property of the GPUUncapturedErrorEvent interface is a GPUError object instance providing access to the details of the error.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUUncapturedErrorEvent/error)
+     */
+    readonly error: GPUError;
+}
+
+declare var GPUUncapturedErrorEvent: {
+    prototype: GPUUncapturedErrorEvent;
+    new(type: string, gpuUncapturedErrorEventInitDict: GPUUncapturedErrorEventInit): GPUUncapturedErrorEvent;
+};
+
+/**
+ * The **`GPUValidationError`** interface of the WebGPU API describes an application error indicating that an operation did not pass the WebGPU API's validation constraints.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUValidationError)
+ */
+interface GPUValidationError extends GPUError {
+}
+
+declare var GPUValidationError: {
+    prototype: GPUValidationError;
+    new(message: string): GPUValidationError;
 };
 
 interface GenericTransformStream {
@@ -7369,6 +7791,7 @@ interface SubtleCrypto {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SubtleCrypto/generateKey)
      */
     generateKey(algorithm: "Ed25519" | { name: "Ed25519" }, extractable: boolean, keyUsages: ReadonlyArray<"sign" | "verify">): Promise<CryptoKeyPair>;
+    generateKey(algorithm: "X25519" | { name: "X25519" }, extractable: boolean, keyUsages: ReadonlyArray<"deriveBits" | "deriveKey">): Promise<CryptoKeyPair>;
     generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>;
     generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>;
     generateKey(algorithm: AlgorithmIdentifier, extractable: boolean, keyUsages: KeyUsage[]): Promise<CryptoKeyPair | CryptoKey>;
@@ -8233,6 +8656,21 @@ interface WEBGL_multi_draw {
      */
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | GLsizei[], countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | GLsizei[], offsetsOffset: number, drawcount: GLsizei): void;
 }
+
+/**
+ * The **`WGSLLanguageFeatures`** interface of the WebGPU API is a setlike object that reports the WGSL language extensions supported by the WebGPU implementation.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WGSLLanguageFeatures)
+ */
+interface WGSLLanguageFeatures {
+    forEach(callbackfn: (value: string, key: string, parent: WGSLLanguageFeatures) => void, thisArg?: any): void;
+}
+
+declare var WGSLLanguageFeatures: {
+    prototype: WGSLLanguageFeatures;
+    new(): WGSLLanguageFeatures;
+};
 
 /**
  * The **`WebGL2RenderingContext`** interface provides the OpenGL ES 3.0 rendering context for the drawing surface of an HTML <canvas> element.
@@ -11755,6 +12193,11 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+type GPUFlagsConstant = number;
+type GPUIntegerCoordinate = number;
+type GPUIntegerCoordinateOut = number;
+type GPUSize32Out = number;
+type GPUTextureUsageFlags = number;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
 type IDBValidKey = number | string | Date | BufferSource | IDBValidKey[];
@@ -11803,7 +12246,12 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
+type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUPipelineErrorReason = "internal" | "validation";
+type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
+type GPUTextureDimension = "1d" | "2d" | "3d";
+type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
+type GPUTextureViewDimension = "1d" | "2d" | "2d-array" | "3d" | "cube" | "cube-array";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";

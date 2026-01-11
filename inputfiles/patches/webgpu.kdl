@@ -36,6 +36,6 @@ removals {
   }
 
   dictionary GPUTextureViewDescriptor {
-    member usage              // Blink only as of 2024-11
+    member swizzle // Blink only as of 2026-01
   }
 }
