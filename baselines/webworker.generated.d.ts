@@ -726,12 +726,12 @@ interface ReadableStreamIteratorOptions {
     preventCancel?: boolean;
 }
 
-interface ReadableStreamReadDoneResult {
+interface ReadableStreamReadDoneResult<T> {
     done: true;
     value: T | undefined;
 }
 
-interface ReadableStreamReadValueResult {
+interface ReadableStreamReadValueResult<T> {
     done: false;
     value: T;
 }
@@ -962,7 +962,7 @@ interface UnderlyingByteSource {
     type: "bytes";
 }
 
-interface UnderlyingDefaultSource {
+interface UnderlyingDefaultSource<R = any> {
     cancel?: UnderlyingSourceCancelCallback;
     pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>;
     start?: (controller: ReadableStreamDefaultController<R>) => any;
@@ -977,7 +977,7 @@ interface UnderlyingSink<W = any> {
     write?: UnderlyingSinkWriteCallback<W>;
 }
 
-interface UnderlyingSource {
+interface UnderlyingSource<R = any> {
     autoAllocateChunkSize?: number;
     cancel?: UnderlyingSourceCancelCallback;
     pull?: UnderlyingSourcePullCallback<R>;
@@ -3649,7 +3649,7 @@ interface DedicatedWorkerGlobalScopeEventMap extends WorkerGlobalScopeEventMap, 
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope)
  */
-interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider, MessageEventTarget {
+interface DedicatedWorkerGlobalScope extends WorkerGlobalScope, AnimationFrameProvider, MessageEventTarget<DedicatedWorkerGlobalScope> {
     /**
      * The **`name`** read-only property of the DedicatedWorkerGlobalScope interface returns the name that the Worker was (optionally) given when it was created. This is the name that the Worker() constructor can pass to get a reference to the DedicatedWorkerGlobalScope.
      *
@@ -5916,7 +5916,7 @@ interface IDBRequestEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest)
  */
-interface IDBRequest extends EventTarget {
+interface IDBRequest<T = any> extends EventTarget {
     /**
      * The **`error`** read-only property of the IDBRequest interface returns the error in the event of an unsuccessful request.
      *
@@ -5924,9 +5924,9 @@ interface IDBRequest extends EventTarget {
      */
     readonly error: DOMException | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/error_event) */
-    onerror: ((this: IDBRequest, ev: Event) => any) | null;
+    onerror: ((this: IDBRequest<T>, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/success_event) */
-    onsuccess: ((this: IDBRequest, ev: Event) => any) | null;
+    onsuccess: ((this: IDBRequest<T>, ev: Event) => any) | null;
     /**
      * The **`readyState`** read-only property of the IDBRequest interface returns the state of the request.
      *
@@ -5951,9 +5951,9 @@ interface IDBRequest extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/transaction)
      */
     readonly transaction: IDBTransaction | null;
-    addEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -6490,7 +6490,7 @@ interface MessageEventTargetEventMap {
     "messageerror": MessageEvent;
 }
 
-interface MessageEventTarget {
+interface MessageEventTarget<T> {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
     onmessage: ((this: T, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
@@ -6511,7 +6511,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget {
+interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active. This stops the flow of messages to that port.
      *
@@ -12723,7 +12723,7 @@ interface WorkerEventMap extends AbstractWorkerEventMap, MessageEventTargetEvent
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Worker)
  */
-interface Worker extends EventTarget, AbstractWorker, MessageEventTarget {
+interface Worker extends EventTarget, AbstractWorker, MessageEventTarget<Worker> {
     /**
      * The **`postMessage()`** method of the Worker interface sends a message to the worker. The first parameter is the data to send to the worker. The data may be any JavaScript object that can be handled by the structured clone algorithm.
      *

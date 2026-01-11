@@ -100,16 +100,16 @@ function handleSingleTypeParameterNode(node: Node) {
 }
 
 function handleTypeParameter(node: Node[], property?: Value) {
-  let typeParameter: any;
+  let typeParameters: any;
   if (typeof property === "string") {
-    typeParameter = [{ name: property }];
+    typeParameters = [{ name: property }];
   } else {
-    typeParameter = node.map(handleSingleTypeParameterNode);
+    typeParameters = node.map(handleSingleTypeParameterNode);
   }
-  if (!typeParameter || typeParameter.length === 0) {
+  if (!typeParameters || typeParameters.length === 0) {
     return {};
   }
-  return { typeParameter };
+  return { typeParameters };
 }
 
 function optionalNestedMember<T>(prop: string, object: object, output: T) {
