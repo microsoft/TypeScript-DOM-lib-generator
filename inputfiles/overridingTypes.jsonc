@@ -1641,16 +1641,6 @@
                     }
                 }
             },
-            "RTCDataChannel": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
-            },
             "RTCIceCandidatePair": {
                 // https://github.com/w3c/webrtc-pc/pull/2961 made this from dictionary to interface,
                 // but nobody did the change as of 2024-06.
