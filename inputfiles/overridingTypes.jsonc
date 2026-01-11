@@ -427,8 +427,21 @@
                             // making it nullable breaks compatibility as it has historically been non-nullable in TS lib.
                             // See the example in https://html.spec.whatwg.org/multipage/nav-history-apis.html#dom-parent.
                             "nullable": false
+                        },
+                        "onerror": {
+                            "name": "onerror",
+                            "overrideType": "OnErrorEventHandler",
+                            "eventHandler": "error"
                         }
                     }
+                },
+                "events": {
+                    "event": [
+                        {
+                            "name": "error",
+                            "type": "ErrorEvent"
+                        }
+                    ]
                 },
                 "methods": {
                     "method": {

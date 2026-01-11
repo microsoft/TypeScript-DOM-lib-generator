@@ -856,7 +856,12 @@ export function emitWebIdl(
   // A covariant EventHandler is one that is defined in a parent interface as then redefined in current interface with a more specific argument types
   // These patterns are unsafe, and flagged as error under --strictFunctionTypes.
   // Here we know the property is already defined on the interface, we elide its declaration if the parent has the same handler defined
+  // Exception: if the property has an overrideType, we should emit it as an intentional override
   function isCovariantEventHandler(i: Browser.Interface, p: Browser.Property) {
+    // If this property has an explicit overrideType, emit it (it's an intentional override)
+    if (p.overrideType) {
+      return false;
+    }
     return (
       isEventHandler(p) &&
       iNameToEhParents[i.name].some((parent) =>
@@ -996,13 +1001,20 @@ export function emitWebIdl(
     prefix: string,
     emitScope: EmitScope,
     i: Browser.Interface,
+    emittedProperties?: Set<string>,
   ) {
     if (i.properties) {
       mapToArray(i.properties.property)
         .filter((m) => matchScope(emitScope, m))
         .filter((p) => !isCovariantEventHandler(i, p))
+        .filter((p) => !emittedProperties || !emittedProperties.has(p.name))
         .sort(compareName)
-        .forEach((p) => emitProperty(prefix, i, emitScope, p));
+        .forEach((p) => {
+          emitProperty(prefix, i, emitScope, p);
+          if (emittedProperties) {
+            emittedProperties.add(p.name);
+          }
+        });
     }
   }
 
@@ -1148,11 +1160,12 @@ export function emitWebIdl(
     prefix: string,
     emitScope: EmitScope,
     i: Browser.Interface,
+    emittedProperties?: Set<string>,
   ) {
     const conflictedMembers = extendConflictsBaseTypes[i.name]
       ? extendConflictsBaseTypes[i.name].memberNames
       : new Set<string>();
-    emitProperties(prefix, emitScope, i);
+    emitProperties(prefix, emitScope, i, emittedProperties);
     const methodPrefix = prefix.startsWith("declare var")
       ? "declare function "
       : "";
@@ -1164,13 +1177,21 @@ export function emitWebIdl(
 
   /// Emit all members of every interfaces at the root level.
   /// Called only once on the global polluter object
-  function emitAllMembers(i: Browser.Interface) {
-    emitMembers(/*prefix*/ "declare var ", "InstanceOnly", i);
+  function emitAllMembers(
+    i: Browser.Interface,
+    emittedProperties: Set<string> = new Set(),
+  ) {
+    emitMembers(
+      /*prefix*/ "declare var ",
+      "InstanceOnly",
+      i,
+      emittedProperties,
+    );
 
     for (const relatedIName of iNameToIDependList[i.name]) {
       const i = allInterfacesMap[relatedIName];
       if (i) {
-        emitAllMembers(i);
+        emitAllMembers(i, emittedProperties);
       }
     }
   }
