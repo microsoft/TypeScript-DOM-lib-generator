@@ -76,7 +76,7 @@ interface-mixin GlobalEventHandlers {
   event transitionstart type=TransitionEvent
   event transitionend type=TransitionEvent
   event transitioncancel type=TransitionEvent
-  property onerror overrideType=OnErrorEventHandler
+  property onerror overrideType=DocumentOrGlobalOnErrorEventHandler
 }
 
 interface-mixin MessageEventTarget {
