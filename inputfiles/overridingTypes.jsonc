@@ -1563,16 +1563,6 @@
                     }
                 }
             },
-            "MutationRecord": {
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "overrideType": "MutationRecordType"
-                        }
-                    }
-                }
-            },
             "URL": {
                 "constructor": {
                     "signature": {
