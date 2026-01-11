@@ -238,7 +238,7 @@ function handleMixinAndInterfaces(
   }
 
   const interfaceObject = type === "interface" && {
-    ...typeParameters.length : { typeParameters } : {},
+    ...(typeParameters.length ? { typeParameters } : {}),
     ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
