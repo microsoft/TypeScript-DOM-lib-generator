@@ -1467,16 +1467,6 @@
                     ]
                 }
             },
-            "HTMLTableRowElement": {
-                "properties": {
-                    "property": {
-                        "cells": {
-                            "name": "cells",
-                            "overrideType": "HTMLCollectionOf<HTMLTableCellElement>"
-                        }
-                    }
-                }
-            },
             "XMLHttpRequestEventTarget": {
                 "properties": {
                     "property": {

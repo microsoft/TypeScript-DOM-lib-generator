@@ -36,6 +36,14 @@ interface HTMLTableSectionElement {
   }
 }
 
+interface HTMLTableRowElement {
+  property cells {
+    type HTMLCollectionOf {
+      type HTMLTableCellElement
+    }
+  }
+}
+
 interface HTMLMeterElement {
   property labels {
     type NodeListOf {
