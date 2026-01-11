@@ -1,6 +1,6 @@
 removals {
   dictionary MediaRecorderOptions {
-    // All Blink only as of 2026-1.
+    // All Blink only as of 2026-01.
     member audioBitrateMode
     member videoKeyFrameIntervalCount
     member videoKeyFrameIntervalDuration
