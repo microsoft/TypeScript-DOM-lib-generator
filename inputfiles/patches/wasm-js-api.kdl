@@ -1,5 +1,5 @@
 typedef Exports legacyNamespace=WebAssembly {
-  type record {
+  type record union=#true {
     type DOMString
     type ExportValue
   }
