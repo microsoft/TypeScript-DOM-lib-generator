@@ -2632,36 +2632,6 @@
                     }
                 }
             },
-            "EventTarget": {
-                "methods": {
-                    "method": {
-                        "addEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "removeEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "WorkerGlobalScope": {
                 "properties": {
                     "property": {
@@ -2966,19 +2936,10 @@
             "GPUAdapterInfo": {
                 "exposed": ""
             },
-            "GPUBindGroup": {
-                "exposed": ""
-            },
-            "GPUBindGroupLayout": {
-                "exposed": ""
-            },
             "GPUBuffer": {
                 "exposed": ""
             },
             "GPUCanvasContext": {
-                "exposed": ""
-            },
-            "GPUCommandBuffer": {
                 "exposed": ""
             },
             "GPUCommandEncoder": {
@@ -2993,25 +2954,7 @@
             "GPUComputePassEncoder": {
                 "exposed": ""
             },
-            "GPUComputePipeline": {
-                "exposed": ""
-            },
             "GPUDevice": {
-                "exposed": ""
-            },
-            "GPUDeviceLostInfo": {
-                "exposed": ""
-            },
-            "GPUExternalTexture": {
-                "exposed": ""
-            },
-            "GPUInternalError": {
-                "exposed": ""
-            },
-            "GPUOutOfMemoryError": {
-                "exposed": ""
-            },
-            "GPUPipelineLayout": {
                 "exposed": ""
             },
             "GPUQuerySet": {
@@ -3020,40 +2963,13 @@
             "GPUQueue": {
                 "exposed": ""
             },
-            "GPURenderBundle": {
-                "exposed": ""
-            },
             "GPURenderBundleEncoder": {
                 "exposed": ""
             },
             "GPURenderPassEncoder": {
                 "exposed": ""
             },
-            "GPURenderPipeline": {
-                "exposed": ""
-            },
-            "GPUSampler": {
-                "exposed": ""
-            },
             "GPUShaderModule": {
-                "exposed": ""
-            },
-            "GPUSupportedFeatures": {
-                "exposed": ""
-            },
-            "GPUSupportedLimits": {
-                "exposed": ""
-            },
-            "GPUTexture": {
-                "exposed": ""
-            },
-            "GPUTextureView": {
-                "exposed": ""
-            },
-            "GPUUncapturedErrorEvent": {
-                "exposed": ""
-            },
-            "GPUValidationError": {
                 "exposed": ""
             },
             "TrustedHTML": {
@@ -3071,9 +2987,6 @@
             "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
-            "WGSLLanguageFeatures": {
-                "exposed": ""
-            }
         }
     },
     "dictionaries": {

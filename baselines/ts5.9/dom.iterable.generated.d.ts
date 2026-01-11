@@ -142,6 +142,9 @@ interface FormData {
     values(): FormDataIterator<FormDataEntryValue>;
 }
 
+interface GPUSupportedFeatures extends ReadonlySet<string> {
+}
+
 interface HTMLAllCollection {
     [Symbol.iterator](): ArrayIterator<Element>;
 }
@@ -445,6 +448,9 @@ interface WEBGL_multi_draw {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL)
      */
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array<ArrayBufferLike> | Iterable<GLsizei>, offsetsOffset: number, drawcount: GLsizei): void;
+}
+
+interface WGSLLanguageFeatures extends ReadonlySet<string> {
 }
 
 interface WebGL2RenderingContextBase {

@@ -78,6 +78,9 @@ interface FormData {
     values(): IterableIterator<FormDataEntryValue>;
 }
 
+interface GPUSupportedFeatures extends ReadonlySet<string> {
+}
+
 interface Headers {
     [Symbol.iterator](): IterableIterator<[string, string]>;
     /** Returns an iterator allowing to go through all key/value pairs contained in this object. */
@@ -198,6 +201,9 @@ interface WEBGL_multi_draw {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WEBGL_multi_draw/multiDrawElementsWEBGL)
      */
     multiDrawElementsWEBGL(mode: GLenum, countsList: Int32Array | Iterable<GLsizei>, countsOffset: number, type: GLenum, offsetsList: Int32Array | Iterable<GLsizei>, offsetsOffset: number, drawcount: GLsizei): void;
+}
+
+interface WGSLLanguageFeatures extends ReadonlySet<string> {
 }
 
 interface WebGL2RenderingContextBase {
