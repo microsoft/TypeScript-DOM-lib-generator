@@ -81,12 +81,12 @@ interface ReadableStreamIteratorOptions {
     preventCancel?: boolean;
 }
 
-interface ReadableStreamReadDoneResult<T> {
+interface ReadableStreamReadDoneResult {
     done: true;
     value: T | undefined;
 }
 
-interface ReadableStreamReadValueResult<T> {
+interface ReadableStreamReadValueResult {
     done: false;
     value: T;
 }
@@ -159,7 +159,7 @@ interface UnderlyingByteSource {
     type: "bytes";
 }
 
-interface UnderlyingDefaultSource<R = any> {
+interface UnderlyingDefaultSource {
     cancel?: UnderlyingSourceCancelCallback;
     pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>;
     start?: (controller: ReadableStreamDefaultController<R>) => any;
@@ -174,7 +174,7 @@ interface UnderlyingSink<W = any> {
     write?: UnderlyingSinkWriteCallback<W>;
 }
 
-interface UnderlyingSource<R = any> {
+interface UnderlyingSource {
     autoAllocateChunkSize?: number;
     cancel?: UnderlyingSourceCancelCallback;
     pull?: UnderlyingSourcePullCallback<R>;
@@ -776,7 +776,7 @@ interface MessageEventTargetEventMap {
     "messageerror": MessageEvent;
 }
 
-interface MessageEventTarget<T> {
+interface MessageEventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
     onmessage: ((this: T, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
@@ -797,7 +797,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active. This stops the flow of messages to that port.
      *

@@ -573,12 +573,12 @@ interface ReadableStreamIteratorOptions {
     preventCancel?: boolean;
 }
 
-interface ReadableStreamReadDoneResult<T> {
+interface ReadableStreamReadDoneResult {
     done: true;
     value: T | undefined;
 }
 
-interface ReadableStreamReadValueResult<T> {
+interface ReadableStreamReadValueResult {
     done: false;
     value: T;
 }
@@ -805,7 +805,7 @@ interface UnderlyingByteSource {
     type: "bytes";
 }
 
-interface UnderlyingDefaultSource<R = any> {
+interface UnderlyingDefaultSource {
     cancel?: UnderlyingSourceCancelCallback;
     pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>;
     start?: (controller: ReadableStreamDefaultController<R>) => any;
@@ -820,7 +820,7 @@ interface UnderlyingSink<W = any> {
     write?: UnderlyingSinkWriteCallback<W>;
 }
 
-interface UnderlyingSource<R = any> {
+interface UnderlyingSource {
     autoAllocateChunkSize?: number;
     cancel?: UnderlyingSourceCancelCallback;
     pull?: UnderlyingSourcePullCallback<R>;
@@ -5211,7 +5211,7 @@ interface IDBRequestEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest)
  */
-interface IDBRequest<T = any> extends EventTarget {
+interface IDBRequest extends EventTarget {
     /**
      * The **`error`** read-only property of the IDBRequest interface returns the error in the event of an unsuccessful request.
      *
@@ -5219,9 +5219,9 @@ interface IDBRequest<T = any> extends EventTarget {
      */
     readonly error: DOMException | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/error_event) */
-    onerror: ((this: IDBRequest<T>, ev: Event) => any) | null;
+    onerror: ((this: IDBRequest, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/success_event) */
-    onsuccess: ((this: IDBRequest<T>, ev: Event) => any) | null;
+    onsuccess: ((this: IDBRequest, ev: Event) => any) | null;
     /**
      * The **`readyState`** read-only property of the IDBRequest interface returns the state of the request.
      *
@@ -5246,9 +5246,9 @@ interface IDBRequest<T = any> extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/IDBRequest/transaction)
      */
     readonly transaction: IDBTransaction | null;
-    addEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest, ev: IDBRequestEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest<T>, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener<K extends keyof IDBRequestEventMap>(type: K, listener: (this: IDBRequest, ev: IDBRequestEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
 }
 
@@ -5614,7 +5614,7 @@ interface MessageEventTargetEventMap {
     "messageerror": MessageEvent;
 }
 
-interface MessageEventTarget<T> {
+interface MessageEventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/message_event) */
     onmessage: ((this: T, ev: MessageEvent) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/messageerror_event) */
@@ -5635,7 +5635,7 @@ interface MessagePortEventMap extends MessageEventTargetEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MessagePort)
  */
-interface MessagePort extends EventTarget, MessageEventTarget<MessagePort> {
+interface MessagePort extends EventTarget, MessageEventTarget {
     /**
      * The **`close()`** method of the MessagePort interface disconnects the port, so it is no longer active. This stops the flow of messages to that port.
      *

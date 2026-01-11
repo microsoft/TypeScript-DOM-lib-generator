@@ -91,19 +91,25 @@ function handleTyped(
   return types[0];
 }
 
-function handleTypeParameters(value: Value | Node) {
-  if (!value) {
-    return {};
-  }
-  if (typeof value === "string") {
-    return { typeParameters: [{ name: value }] };
-  }
-  const node = value as Node;
+function handleSingleTypeParameterNode(node: Node) {
   return {
     name: string(node.values[0]),
     ...optionalMember("default", "string", node.properties?.default),
     ...optionalMember("extends", "string", node.properties?.extends),
   };
+}
+
+function handleTypeParameter(node: Node[], property?: Value) {
+  let typeParameter: any;
+  if (typeof property === "string") {
+    typeParameter = [{ name: property }];
+  } else {
+    typeParameter = node.map(handleSingleTypeParameterNode);
+  }
+  if (!typeParameter || typeParameter.length === 0) {
+    return {};
+  }
+  return { typeParameter };
 }
 
 function optionalNestedMember<T>(prop: string, object: object, output: T) {
@@ -203,7 +209,7 @@ function handleMixinAndInterfaces(
   const property: Record<string, DeepPartial<Property>> = {};
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
   let constructor: DeepPartial<OverridableMethod> | undefined;
-  const typeParameters = [];
+  const typeParameter = [];
 
   for (const child of node.children) {
     switch (child.name) {
@@ -229,7 +235,7 @@ function handleMixinAndInterfaces(
         break;
       }
       case "typeParameter": {
-        typeParameters.push(handleTypeParameters(child));
+        typeParameter.push(child);
         break;
       }
       default:
@@ -238,7 +244,6 @@ function handleMixinAndInterfaces(
   }
 
   const interfaceObject = type === "interface" && {
-    ...(typeParameters.length ? { typeParameters } : {}),
     ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
@@ -266,7 +271,7 @@ function handleMixinAndInterfaces(
       "string",
       node.properties?.replaceReference,
     ),
-    ...handleTypeParameters(node.properties?.typeParameter),
+    ...handleTypeParameter(typeParameter, node.properties?.typeParameter),
     ...interfaceObject,
   } as DeepPartial<Interface>;
 }
@@ -392,7 +397,7 @@ function handleMethodAndConstructor(
 function handleDictionary(child: Node): DeepPartial<Dictionary> {
   const name = string(child.values[0]);
   const member: Record<string, DeepPartial<Member>> = {};
-  const typeParameters = [];
+  const typeParameter = [];
 
   for (const c of child.children) {
     switch (c.name) {
@@ -402,7 +407,7 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
         break;
       }
       case "typeParameter": {
-        typeParameters.push(handleTypeParameters(c));
+        typeParameter.push(c);
         break;
       }
       default:
@@ -413,8 +418,7 @@ function handleDictionary(child: Node): DeepPartial<Dictionary> {
   return {
     name,
     members: { member },
-    ...optionalNestedMember("typeParameters", typeParameters, typeParameters),
-    ...handleTypeParameters(child.properties?.typeParameter),
+    ...handleTypeParameter(typeParameter, child.properties?.typeParameter),
     ...optionalMember(
       "legacyNamespace",
       "string",
@@ -446,14 +450,14 @@ function handleMember(c: Node): DeepPartial<Member> {
  */
 function handleTypedef(node: Node): DeepPartial<TypeDef> {
   const typeNodes: Node[] = [];
-  const typeParameters = [];
+  const typeParameter = [];
   for (const child of node.children) {
     switch (child.name) {
       case "type":
         typeNodes.push(child);
         break;
       case "typeParameter": {
-        typeParameters.push(handleTypeParameters(child));
+        typeParameter.push(child);
         break;
       }
       default:
@@ -471,7 +475,7 @@ function handleTypedef(node: Node): DeepPartial<TypeDef> {
       node.properties?.legacyNamespace,
     ),
     ...optionalMember("overrideType", "string", node.properties?.overrideType),
-    ...optionalNestedMember("typeParameters", typeParameters, typeParameters),
+    ...handleTypeParameter(typeParameter, node.properties?.typeParameter),
   };
 }
 
