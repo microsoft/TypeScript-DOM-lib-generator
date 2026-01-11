@@ -14,7 +14,6 @@
     "childnode-after": "Inserts nodes just after node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.",
     "childnode-replacewith": "Replaces node with nodes, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.",
     "childnode-remove": "Removes node.",
-    "mutationobserver-mutationobserver": "Constructs a MutationObserver object and sets its callback to callback. The callback is invoked with a list of MutationRecord objects as first argument and the constructed MutationObserver object as second argument. It is invoked after nodes registered with the observe() method, are mutated.",
     "mutationobserverinit-childlist": "Set to true if mutations to target's children are to be observed.",
     "mutationobserverinit-attributes": "Set to true if mutations to target's attributes are to be observed. Can be omitted if attributeOldValue or attributeFilter is specified.",
     "mutationobserverinit-characterdata": "Set to true if mutations to target's data are to be observed. Can be omitted if characterDataOldValue is specified.",
