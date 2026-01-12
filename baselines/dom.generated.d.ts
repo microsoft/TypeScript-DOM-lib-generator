@@ -39613,6 +39613,7 @@ interface Window extends EventTarget, AnimationFrameProvider, GlobalEventHandler
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/deviceorientationabsolute_event)
      */
     ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/error_event) */
     onerror: OnErrorEventHandler;
     /**
      * @deprecated
@@ -41796,6 +41797,7 @@ declare var ondeviceorientation: ((this: Window, ev: DeviceOrientationEvent) => 
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/deviceorientationabsolute_event)
  */
 declare var ondeviceorientationabsolute: ((this: Window, ev: DeviceOrientationEvent) => any) | null;
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/error_event) */
 declare var onerror: OnErrorEventHandler;
 /**
  * @deprecated

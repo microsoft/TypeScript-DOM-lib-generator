@@ -108,6 +108,8 @@ interface Window {
   event gamepadconnected type=GamepadEvent
   event gamepaddisconnected type=GamepadEvent
   event DOMContentLoaded type=Event
+  event error type=ErrorEvent
+  property onerror overrideType="OnErrorEventHandler" mdnUrl="https://developer.mozilla.org/docs/Web/API/Window/error_event"
 }
 
 interface WorkerGlobalScope {
