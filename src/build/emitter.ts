@@ -856,12 +856,7 @@ export function emitWebIdl(
   // A covariant EventHandler is one that is defined in a parent interface as then redefined in current interface with a more specific argument types
   // These patterns are unsafe, and flagged as error under --strictFunctionTypes.
   // Here we know the property is already defined on the interface, we elide its declaration if the parent has the same handler defined
-  // Exception: if the property has an overrideType, we should emit it as an intentional override
   function isCovariantEventHandler(i: Browser.Interface, p: Browser.Property) {
-    // If this property has an explicit overrideType, emit it (it's an intentional override)
-    if (p.overrideType) {
-      return false;
-    }
     return (
       isEventHandler(p) &&
       iNameToEhParents[i.name].some((parent) =>
