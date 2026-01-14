@@ -3,49 +3,49 @@
 /////////////////////////////
 
 interface AddEventListenerOptions extends EventListenerOptions {
-    once?: boolean;
-    passive?: boolean;
-    signal?: AbortSignal;
+    once?: boolean | undefined;
+    passive?: boolean | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface CustomEventInit<T = any> extends EventInit {
-    detail?: T;
+    detail?: T | undefined;
 }
 
 interface ErrorEventInit extends EventInit {
-    colno?: number;
-    error?: any;
-    filename?: string;
-    lineno?: number;
-    message?: string;
+    colno?: number | undefined;
+    error?: any | undefined;
+    filename?: string | undefined;
+    lineno?: number | undefined;
+    message?: string | undefined;
 }
 
 interface EventInit {
-    bubbles?: boolean;
-    cancelable?: boolean;
-    composed?: boolean;
+    bubbles?: boolean | undefined;
+    cancelable?: boolean | undefined;
+    composed?: boolean | undefined;
 }
 
 interface EventListenerOptions {
-    capture?: boolean;
+    capture?: boolean | undefined;
 }
 
 interface MessageEventInit<T = any> extends EventInit {
-    data?: T;
-    lastEventId?: string;
-    origin?: string;
-    ports?: MessagePort[];
-    source?: MessageEventSource | null;
+    data?: T | undefined;
+    lastEventId?: string | undefined;
+    origin?: string | undefined;
+    ports?: MessagePort[] | undefined;
+    source?: MessageEventSource | null | undefined;
 }
 
 interface PromiseRejectionEventInit extends EventInit {
     promise: Promise<any>;
-    reason?: any;
+    reason?: any | undefined;
 }
 
 interface QueuingStrategy<T = any> {
-    highWaterMark?: number;
-    size?: QueuingStrategySize<T>;
+    highWaterMark?: number | undefined;
+    size?: QueuingStrategySize<T> | undefined;
 }
 
 interface QueuingStrategyInit {
@@ -58,7 +58,7 @@ interface QueuingStrategyInit {
 }
 
 interface ReadableStreamBYOBReaderReadOptions {
-    min?: number;
+    min?: number | undefined;
 }
 
 interface ReadableStreamGetReaderOptions {
@@ -67,7 +67,7 @@ interface ReadableStreamGetReaderOptions {
      *
      * This call behaves the same way as the no-argument variant, except that it only works on readable byte streams, i.e. streams which were constructed specifically with the ability to handle "bring your own buffer" reading. The returned BYOB reader provides the ability to directly read individual chunks from the stream via its read() method, into developer-supplied buffers, allowing more precise control over allocation.
      */
-    mode?: ReadableStreamReaderMode;
+    mode?: ReadableStreamReaderMode | undefined;
 }
 
 interface ReadableStreamIteratorOptions {
@@ -78,7 +78,7 @@ interface ReadableStreamIteratorOptions {
      *
      * By default, calling the async iterator's return() method will also cancel the stream. To prevent this, use the stream's values() method, passing true for the preventCancel option.
      */
-    preventCancel?: boolean;
+    preventCancel?: boolean | undefined;
 }
 
 interface ReadableStreamReadDoneResult<T> {
@@ -102,8 +102,8 @@ interface ReadableWritablePair<R = any, W = any> {
 }
 
 interface StreamPipeOptions {
-    preventAbort?: boolean;
-    preventCancel?: boolean;
+    preventAbort?: boolean | undefined;
+    preventCancel?: boolean | undefined;
     /**
      * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
      *
@@ -121,21 +121,21 @@ interface StreamPipeOptions {
      *
      * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
      */
-    preventClose?: boolean;
-    signal?: AbortSignal;
+    preventClose?: boolean | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface StructuredSerializeOptions {
-    transfer?: Transferable[];
+    transfer?: Transferable[] | undefined;
 }
 
 interface TextDecodeOptions {
-    stream?: boolean;
+    stream?: boolean | undefined;
 }
 
 interface TextDecoderOptions {
-    fatal?: boolean;
-    ignoreBOM?: boolean;
+    fatal?: boolean | undefined;
+    ignoreBOM?: boolean | undefined;
 }
 
 interface TextEncoderEncodeIntoResult {
@@ -144,42 +144,42 @@ interface TextEncoderEncodeIntoResult {
 }
 
 interface Transformer<I = any, O = any> {
-    flush?: TransformerFlushCallback<O>;
+    flush?: TransformerFlushCallback<O> | undefined;
     readableType?: undefined;
-    start?: TransformerStartCallback<O>;
-    transform?: TransformerTransformCallback<I, O>;
+    start?: TransformerStartCallback<O> | undefined;
+    transform?: TransformerTransformCallback<I, O> | undefined;
     writableType?: undefined;
 }
 
 interface UnderlyingByteSource {
-    autoAllocateChunkSize?: number;
-    cancel?: UnderlyingSourceCancelCallback;
-    pull?: (controller: ReadableByteStreamController) => void | PromiseLike<void>;
-    start?: (controller: ReadableByteStreamController) => any;
+    autoAllocateChunkSize?: number | undefined;
+    cancel?: UnderlyingSourceCancelCallback | undefined;
+    pull?: (controller: ReadableByteStreamController) => void | PromiseLike<void> | undefined;
+    start?: (controller: ReadableByteStreamController) => any | undefined;
     type: "bytes";
 }
 
 interface UnderlyingDefaultSource<R = any> {
-    cancel?: UnderlyingSourceCancelCallback;
-    pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>;
-    start?: (controller: ReadableStreamDefaultController<R>) => any;
+    cancel?: UnderlyingSourceCancelCallback | undefined;
+    pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void> | undefined;
+    start?: (controller: ReadableStreamDefaultController<R>) => any | undefined;
     type?: undefined;
 }
 
 interface UnderlyingSink<W = any> {
-    abort?: UnderlyingSinkAbortCallback;
-    close?: UnderlyingSinkCloseCallback;
-    start?: UnderlyingSinkStartCallback;
+    abort?: UnderlyingSinkAbortCallback | undefined;
+    close?: UnderlyingSinkCloseCallback | undefined;
+    start?: UnderlyingSinkStartCallback | undefined;
     type?: undefined;
-    write?: UnderlyingSinkWriteCallback<W>;
+    write?: UnderlyingSinkWriteCallback<W> | undefined;
 }
 
 interface UnderlyingSource<R = any> {
-    autoAllocateChunkSize?: number;
-    cancel?: UnderlyingSourceCancelCallback;
-    pull?: UnderlyingSourcePullCallback<R>;
-    start?: UnderlyingSourceStartCallback<R>;
-    type?: ReadableStreamType;
+    autoAllocateChunkSize?: number | undefined;
+    cancel?: UnderlyingSourceCancelCallback | undefined;
+    pull?: UnderlyingSourcePullCallback<R> | undefined;
+    start?: UnderlyingSourceStartCallback<R> | undefined;
+    type?: ReadableStreamType | undefined;
 }
 
 /**
@@ -1745,19 +1745,19 @@ declare namespace WebAssembly {
     };
 
     interface ExceptionOptions {
-        traceStack?: boolean;
+        traceStack?: boolean | undefined;
     }
 
     interface GlobalDescriptor<T extends ValueType = ValueType> {
-        mutable?: boolean;
+        mutable?: boolean | undefined;
         value: T;
     }
 
     interface MemoryDescriptor {
-        address?: AddressType;
+        address?: AddressType | undefined;
         initial: AddressValue;
-        maximum?: AddressValue;
-        shared?: boolean;
+        maximum?: AddressValue | undefined;
+        shared?: boolean | undefined;
     }
 
     interface ModuleExportDescriptor {
@@ -1772,10 +1772,10 @@ declare namespace WebAssembly {
     }
 
     interface TableDescriptor {
-        address?: AddressType;
+        address?: AddressType | undefined;
         element: TableKind;
         initial: AddressValue;
-        maximum?: AddressValue;
+        maximum?: AddressValue | undefined;
     }
 
     interface TagType {
@@ -1793,8 +1793,8 @@ declare namespace WebAssembly {
     }
 
     interface WebAssemblyCompileOptions {
-        builtins?: string[];
-        importedStringConstants?: string | null;
+        builtins?: string[] | undefined;
+        importedStringConstants?: string | null | undefined;
     }
 
     interface WebAssemblyInstantiatedSource {
