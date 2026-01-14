@@ -1580,9 +1580,11 @@ export function emitWebIdl(
         .sort(compareName)
         .forEach((m) => {
           emitComments(m, printer.printLine);
-          printer.printLine(
-            `${m.name}${m.required ? "" : "?"}: ${convertDomTypeToTsType(m)};`,
-          );
+          let type = convertDomTypeToTsType(m);
+          if (!m.required && !type.split(" | ").includes("undefined")) {
+            type += " | undefined";
+          }
+          printer.printLine(`${m.name}${m.required ? "" : "?"}: ${type};`);
         });
     }
     if (dict.overrideIndexSignatures) {
