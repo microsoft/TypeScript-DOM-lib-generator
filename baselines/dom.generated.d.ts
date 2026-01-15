@@ -26399,11 +26399,12 @@ interface PerformanceEventMap {
  */
 interface Performance extends EventTarget {
     /**
-     * The read-only **`performance.eventCounts`** property is an EventCounts map containing the number of events which have been dispatched per event type.
+     * The read-only **`performance.eventCounts`** property is an EventCounts map containing the number of events which have been dispatched per event type since the page was loaded.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/eventCounts)
      */
     readonly eventCounts: EventCounts;
+    /** The read-only **`performance.interactionCount`** property represents the number of real-user interactions that have occurred on the page since it was loaded. */
     readonly interactionCount: number;
     /**
      * The legacy **`Performance.navigation`** read-only property returns a PerformanceNavigation object representing the type of navigation that occurs in the given browsing context, such as the number of redirections needed to fetch the resource.

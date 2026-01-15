@@ -21537,7 +21537,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Performance/eventCounts",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only performance.eventCounts property is an EventCounts map containing the number of events which have been dispatched per event type."
+    "summary": "The read-only performance.eventCounts property is an EventCounts map containing the number of events which have been dispatched per event type since the page was loaded."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Performance/getEntries",
@@ -21553,6 +21553,11 @@
     "mdn_url": "/en-US/docs/Web/API/Performance/getEntriesByType",
     "pageType": "web-api-instance-method",
     "summary": "The getEntriesByType() method returns an array of PerformanceEntry objects currently present in the performance timeline for a given type."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Performance/interactionCount",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only performance.interactionCount property represents the number of real-user interactions that have occurred on the page since it was loaded."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Performance/mark",
