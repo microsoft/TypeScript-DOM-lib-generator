@@ -11800,6 +11800,8 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
         grow(delta: AddressValue): AddressValue;
+        toFixedLengthBuffer(): ArrayBuffer;
+        toResizableBuffer(): ArrayBuffer;
     }
 
     var Memory: {

@@ -2273,6 +2273,31 @@ interface SVGBoundingBoxOptions {
     stroke?: boolean;
 }
 
+interface SanitizerAttributeNamespace {
+    name: string;
+    namespace?: string | null;
+}
+
+interface SanitizerConfig {
+    attributes?: SanitizerAttribute[];
+    comments?: boolean;
+    dataAttributes?: boolean;
+    elements?: SanitizerElementWithAttributes[];
+    removeAttributes?: SanitizerAttribute[];
+    removeElements?: SanitizerElement[];
+    replaceWithChildrenElements?: SanitizerElement[];
+}
+
+interface SanitizerElementNamespace {
+    name: string;
+    namespace?: string | null;
+}
+
+interface SanitizerElementNamespaceWithAttributes extends SanitizerElementNamespace {
+    attributes?: SanitizerAttribute[];
+    removeAttributes?: SanitizerAttribute[];
+}
+
 interface SchedulerPostTaskOptions {
     delay?: number;
     priority?: TaskPriority;
@@ -6254,7 +6279,11 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/anchor-name)
      */
     anchorName: string;
-    /** The anchor-scope CSS property can be used to limit the scope in which a positioned element can be associated with anchor elements to a particular subtree. */
+    /**
+     * The anchor-scope CSS property can be used to limit the scope in which a positioned element can be associated with anchor elements to a particular subtree.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/anchor-scope)
+     */
     anchorScope: string;
     /**
      * The **`animation`** shorthand CSS property applies an animation between styles. It is a shorthand for animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count, animation-direction, animation-fill-mode, animation-play-state, and animation-timeline.
@@ -7264,7 +7293,6 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
     fontSizeAdjust: string;
     /**
      * The font-stretch CSS property selects a normal, condensed, or expanded face from a font.
-     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/font-stretch)
      */
@@ -8676,6 +8704,12 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-indent)
      */
     textIndent: string;
+    /**
+     * The text-justify CSS property sets what type of justification should be applied to text when text-align: justify; is set on an element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/text-justify)
+     */
+    textJustify: string;
     /**
      * The text-orientation CSS property sets the orientation of the text characters in a line. It only affects text in vertical mode (when writing-mode is not horizontal-tb). It is useful for controlling the display of languages that use vertical script, and also for making vertical table headers.
      *
@@ -26380,7 +26414,11 @@ interface Performance extends EventTarget {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/eventCounts)
      */
     readonly eventCounts: EventCounts;
-    /** The read-only **`performance.interactionCount`** property represents the number of real-user interactions that have occurred on the page since it was loaded. */
+    /**
+     * The read-only **`performance.interactionCount`** property represents the number of real-user interactions that have occurred on the page since it was loaded.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Performance/interactionCount)
+     */
     readonly interactionCount: number;
     /**
      * The legacy **`Performance.navigation`** read-only property returns a PerformanceNavigation object representing the type of navigation that occurs in the given browsing context, such as the number of redirections needed to fetch the resource.
@@ -28008,6 +28046,7 @@ interface RTCDtlsTransport extends EventTarget {
     readonly iceTransport: RTCIceTransport;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/error_event) */
     onerror: ((this: RTCDtlsTransport, ev: RTCErrorEvent) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCDtlsTransport/statechange_event) */
     onstatechange: ((this: RTCDtlsTransport, ev: Event) => any) | null;
     /**
      * The **`state`** read-only property of the RTCDtlsTransport interface provides information which describes a Datagram Transport Layer Security (DTLS) transport state.
@@ -33490,6 +33529,69 @@ interface SVGViewElement extends SVGElement, SVGFitToViewBox {
 declare var SVGViewElement: {
     prototype: SVGViewElement;
     new(): SVGViewElement;
+};
+
+/** The **`Sanitizer`** interface of the HTML Sanitizer API defines a configuration object that specifies what elements, attributes and comments are allowed or should be removed when inserting strings of HTML into an Element or ShadowRoot, or when parsing an HTML string into a Document. */
+interface Sanitizer {
+    /**
+     * The **`allowAttribute()`** method of the Sanitizer interface sets an attribute to be allowed on all elements when the sanitizer is used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/allowAttribute)
+     */
+    allowAttribute(attribute: SanitizerAttribute): boolean;
+    /**
+     * The **`allowElement()`** method of the Sanitizer interface sets that the specified element is allowed in the output when the sanitizer is used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/allowElement)
+     */
+    allowElement(element: SanitizerElementWithAttributes): boolean;
+    /**
+     * The **`get()`** method of the Sanitizer interface returns a SanitizerConfig dictionary instance that represents the current Sanitizer configuration.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/get)
+     */
+    get(): SanitizerConfig;
+    /**
+     * The **`removeAttribute()`** method of the Sanitizer interface sets an attribute to be removed from all elements when the sanitizer is used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/removeAttribute)
+     */
+    removeAttribute(attribute: SanitizerAttribute): boolean;
+    /**
+     * The **`removeElement()`** method of the Sanitizer interface sets the specified element be removed from the output when the sanitizer is used.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/removeElement)
+     */
+    removeElement(element: SanitizerElement): boolean;
+    /**
+     * The **`removeUnsafe()`** method of the Sanitizer interface configures the sanitizer configuration so that it will remove all elements, attributes, and event handler content attributes that are considered XSS-unsafe by the browser.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/removeUnsafe)
+     */
+    removeUnsafe(): boolean;
+    /**
+     * The **`replaceElementWithChildren()`** method of the Sanitizer interface sets an element to be replaced by its child HTML elements when the sanitizer is used. This is primarily used for stripping styles from text.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/replaceElementWithChildren)
+     */
+    replaceElementWithChildren(element: SanitizerElement): boolean;
+    /**
+     * The **`setComments()`** method of the Sanitizer interface sets whether comments will be allowed or removed by the sanitizer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/setComments)
+     */
+    setComments(allow: boolean): boolean;
+    /**
+     * The **`setDataAttributes()`** method of the Sanitizer interface sets whether all data-* attributes will be allowed by the sanitizer, or if they must be individually specified.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/setDataAttributes)
+     */
+    setDataAttributes(allow: boolean): boolean;
+}
+
+declare var Sanitizer: {
+    prototype: Sanitizer;
+    new(configuration?: SanitizerConfig | SanitizerPresets): Sanitizer;
 };
 
 /**
@@ -41455,6 +41557,8 @@ declare namespace WebAssembly {
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Memory/grow)
          */
         grow(delta: AddressValue): AddressValue;
+        toFixedLengthBuffer(): ArrayBuffer;
+        toResizableBuffer(): ArrayBuffer;
     }
 
     var Memory: {
@@ -43065,6 +43169,9 @@ type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBY
 type RenderingContext = CanvasRenderingContext2D | ImageBitmapRenderingContext | WebGLRenderingContext | WebGL2RenderingContext;
 type ReportList = Report[];
 type RequestInfo = Request | string;
+type SanitizerAttribute = string | SanitizerAttributeNamespace;
+type SanitizerElement = string | SanitizerElementNamespace;
+type SanitizerElementWithAttributes = string | SanitizerElementNamespaceWithAttributes;
 type SelectionDirection = "forward" | "backward" | "none";
 type TexImageSource = ImageBitmap | ImageData | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | OffscreenCanvas | VideoFrame;
 type TimerHandler = string | Function;
@@ -43252,6 +43359,7 @@ type ResidentKeyRequirement = "discouraged" | "preferred" | "required";
 type ResizeObserverBoxOptions = "border-box" | "content-box" | "device-pixel-content-box";
 type ResizeQuality = "high" | "low" | "medium" | "pixelated";
 type ResponseType = "basic" | "cors" | "default" | "error" | "opaque" | "opaqueredirect";
+type SanitizerPresets = "default";
 type ScrollAxis = "block" | "inline" | "x" | "y";
 type ScrollBehavior = "auto" | "instant" | "smooth";
 type ScrollLogicalPosition = "center" | "end" | "nearest" | "start";
