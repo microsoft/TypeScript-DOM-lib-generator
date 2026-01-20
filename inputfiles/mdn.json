@@ -22167,7 +22167,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PerformanceServerTiming/duration",
     "pageType": "web-api-instance-property",
-    "summary": "The duration read-only property returns a double that contains the server-specified metric duration, or the value 0.0."
+    "summary": "The duration read-only property returns a double that contains the server-specified metric duration (usually in milliseconds), or the value 0.0."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PerformanceServerTiming/name",
