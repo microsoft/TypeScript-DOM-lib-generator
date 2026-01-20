@@ -5211,6 +5211,38 @@ declare var GPUPipelineLayout: {
 };
 
 /**
+ * The **`GPUQuerySet`** interface of the WebGPU API is used to record the results of queries on passes, such as occlusion or timestamp queries.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet)
+ */
+interface GPUQuerySet extends GPUObjectBase {
+    /**
+     * The **`count`** read-only property of the GPUQuerySet interface is a number specifying the number of queries managed by the GPUQuerySet.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet/count)
+     */
+    readonly count: GPUSize32Out;
+    /**
+     * The **`type`** read-only property of the GPUQuerySet interface is an enumerated value specifying the type of queries managed by the GPUQuerySet.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet/type)
+     */
+    readonly type: GPUQueryType;
+    /**
+     * The **`destroy()`** method of the GPUQuerySet interface destroys the GPUQuerySet.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQuerySet/destroy)
+     */
+    destroy(): void;
+}
+
+declare var GPUQuerySet: {
+    prototype: GPUQuerySet;
+    new(): GPUQuerySet;
+};
+
+/**
  * The **`GPURenderBundle`** interface of the WebGPU API represents a container for pre-recorded bundles of commands.
  * Available only in secure contexts.
  *
@@ -14100,6 +14132,7 @@ type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUPipelineErrorReason = "internal" | "validation";
+type GPUQueryType = "occlusion" | "timestamp";
 type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
 type GPUTextureDimension = "1d" | "2d" | "3d";
 type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
