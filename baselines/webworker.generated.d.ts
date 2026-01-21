@@ -4927,6 +4927,12 @@ declare var GPUBindGroupLayout: {
     new(): GPUBindGroupLayout;
 };
 
+interface GPUBindingCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: GPUBufferDynamicOffset[]): void;
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsetsData: Uint32Array<ArrayBufferLike>, dynamicOffsetsDataStart: GPUSize64, dynamicOffsetsDataLength: GPUSize32): void;
+}
+
 /**
  * The **`GPUBuffer`** interface of the WebGPU API represents a block of memory that can be used to store raw data to use in GPU operations.
  * Available only in secure contexts.
@@ -5068,6 +5074,44 @@ declare var GPUCompilationMessage: {
 };
 
 /**
+ * The **`GPUComputePassEncoder`** interface of the WebGPU API encodes commands related to controlling the compute shader stage, as issued by a GPUComputePipeline. It forms part of the overall encoding activity of a GPUCommandEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder)
+ */
+interface GPUComputePassEncoder extends GPUBindingCommandsMixin, GPUDebugCommandsMixin, GPUObjectBase {
+    /**
+     * The **`dispatchWorkgroups()`** method of the GPUComputePassEncoder interface dispatches a specific grid of workgroups to perform the work being done by the current GPUComputePipeline (i.e., set via GPUComputePassEncoder.setPipeline()).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroups)
+     */
+    dispatchWorkgroups(workgroupCountX: GPUSize32, workgroupCountY?: GPUSize32, workgroupCountZ?: GPUSize32): void;
+    /**
+     * The **`dispatchWorkgroupsIndirect()`** method of the GPUComputePassEncoder interface dispatches a grid of workgroups, defined by the parameters of a GPUBuffer, to perform the work being done by the current GPUComputePipeline (i.e., set via GPUComputePassEncoder.setPipeline()).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/dispatchWorkgroupsIndirect)
+     */
+    dispatchWorkgroupsIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64): void;
+    /**
+     * The **`end()`** method of the GPUComputePassEncoder interface completes recording of the current compute pass command sequence.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/end)
+     */
+    end(): void;
+    /**
+     * The **`setPipeline()`** method of the GPUComputePassEncoder interface sets the GPUComputePipeline to use for this compute pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setPipeline)
+     */
+    setPipeline(pipeline: GPUComputePipeline): void;
+}
+
+declare var GPUComputePassEncoder: {
+    prototype: GPUComputePassEncoder;
+    new(): GPUComputePassEncoder;
+};
+
+/**
  * The **`GPUComputePipeline`** interface of the WebGPU API represents a pipeline that controls the compute shader stage and can be used in a GPUComputePassEncoder.
  * Available only in secure contexts.
  *
@@ -5080,6 +5124,15 @@ declare var GPUComputePipeline: {
     prototype: GPUComputePipeline;
     new(): GPUComputePipeline;
 };
+
+interface GPUDebugCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/insertDebugMarker) */
+    insertDebugMarker(markerLabel: string): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/popDebugGroup) */
+    popDebugGroup(): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/pushDebugGroup) */
+    pushDebugGroup(groupLabel: string): void;
+}
 
 /**
  * The **`GPUDeviceLostInfo`** interface of the WebGPU API represents the object returned when the GPUDevice.lost Promise resolves. This provides information as to why a device has been lost.
@@ -14066,10 +14119,13 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+type GPUBufferDynamicOffset = number;
 type GPUFlagsConstant = number;
+type GPUIndex32 = number;
 type GPUIntegerCoordinate = number;
 type GPUIntegerCoordinateOut = number;
 type GPUMapModeFlags = number;
+type GPUSize32 = number;
 type GPUSize32Out = number;
 type GPUSize64 = number;
 type GPUSize64Out = number;
@@ -14279,6 +14335,11 @@ interface FormData {
     keys(): FormDataIterator<string>;
     /** Returns a list of values in the list. */
     values(): FormDataIterator<FormDataEntryValue>;
+}
+
+interface GPUBindingCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: GPUBufferDynamicOffset[]): void;
 }
 
 interface GPUSupportedFeatures extends ReadonlySet<string> {

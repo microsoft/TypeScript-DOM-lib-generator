@@ -2886,9 +2886,6 @@
             "GPUCommandEncoder": {
                 "exposed": ""
             },
-            "GPUComputePassEncoder": {
-                "exposed": ""
-            },
             "GPUDevice": {
                 "exposed": ""
             },

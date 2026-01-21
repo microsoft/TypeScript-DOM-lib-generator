@@ -67,6 +67,11 @@ interface FormData {
     values(): FormDataIterator<FormDataEntryValue>;
 }
 
+interface GPUBindingCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
+    setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: Iterable<GPUBufferDynamicOffset>): void;
+}
+
 interface GPUSupportedFeatures extends ReadonlySet<string> {
 }
 
