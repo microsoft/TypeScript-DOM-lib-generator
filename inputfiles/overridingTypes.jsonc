@@ -2892,9 +2892,6 @@
             "GPUQueue": {
                 "exposed": ""
             },
-            "GPURenderBundleEncoder": {
-                "exposed": ""
-            },
             "GPURenderPassEncoder": {
                 "exposed": ""
             },

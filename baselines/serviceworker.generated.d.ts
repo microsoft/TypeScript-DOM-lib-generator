@@ -280,6 +280,9 @@ interface GPUPipelineErrorInit {
     reason: GPUPipelineErrorReason;
 }
 
+interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
+}
+
 interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
     arrayLayerCount?: GPUIntegerCoordinate;
     aspect?: GPUTextureAspect;
@@ -4609,6 +4612,43 @@ declare var GPURenderBundle: {
     prototype: GPURenderBundle;
     new(): GPURenderBundle;
 };
+
+/**
+ * The **`GPURenderBundleEncoder`** interface of the WebGPU API is used to pre-record bundles of commands.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder)
+ */
+interface GPURenderBundleEncoder extends GPUBindingCommandsMixin, GPUDebugCommandsMixin, GPUObjectBase, GPURenderCommandsMixin {
+    /**
+     * The **`finish()`** method of the GPURenderBundleEncoder interface completes recording of the current render bundle command sequence, returning a GPURenderBundle object that can be passed into a GPURenderPassEncoder.executeBundles() call to execute those commands in a specific render pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/finish)
+     */
+    finish(descriptor?: GPURenderBundleDescriptor): GPURenderBundle;
+}
+
+declare var GPURenderBundleEncoder: {
+    prototype: GPURenderBundleEncoder;
+    new(): GPURenderBundleEncoder;
+};
+
+interface GPURenderCommandsMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/draw) */
+    draw(vertexCount: GPUSize32, instanceCount?: GPUSize32, firstVertex?: GPUSize32, firstInstance?: GPUSize32): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/drawIndexed) */
+    drawIndexed(indexCount: GPUSize32, instanceCount?: GPUSize32, firstIndex?: GPUSize32, baseVertex?: GPUSignedOffset32, firstInstance?: GPUSize32): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/drawIndexedIndirect) */
+    drawIndexedIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/drawIndirect) */
+    drawIndirect(indirectBuffer: GPUBuffer, indirectOffset: GPUSize64): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer) */
+    setIndexBuffer(buffer: GPUBuffer, indexFormat: GPUIndexFormat, offset?: GPUSize64, size?: GPUSize64): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setPipeline) */
+    setPipeline(pipeline: GPURenderPipeline): void;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer) */
+    setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer | null, offset?: GPUSize64, size?: GPUSize64): void;
+}
 
 /**
  * The **`GPURenderPipeline`** interface of the WebGPU API represents a pipeline that controls the vertex and fragment shader stages and can be used in a GPURenderPassEncoder or GPURenderBundleEncoder.
@@ -12448,6 +12488,7 @@ type GPUIndex32 = number;
 type GPUIntegerCoordinate = number;
 type GPUIntegerCoordinateOut = number;
 type GPUMapModeFlags = number;
+type GPUSignedOffset32 = number;
 type GPUSize32 = number;
 type GPUSize32Out = number;
 type GPUSize64 = number;
@@ -12504,6 +12545,7 @@ type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUDeviceLostReason = "destroyed" | "unknown";
+type GPUIndexFormat = "uint16" | "uint32";
 type GPUPipelineErrorReason = "internal" | "validation";
 type GPUQueryType = "occlusion" | "timestamp";
 type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
