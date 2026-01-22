@@ -12727,7 +12727,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLElement/autofocus",
     "pageType": "web-api-instance-property",
-    "summary": "The autofocus property of the HTMLElement interface represents a boolean value reflecting the autofocus HTML global attribute, which indicates whether the control should be focused when the page loads, or when dialog or popover become shown if specified in an element inside <dialog> elements or elements whose popover attribute is set."
+    "summary": "The autofocus property of the HTMLElement interface represents a boolean value reflecting the autofocus HTML global attribute. This indicates whether the element should be focused on page load or, if it is nested inside a <dialog> or popover element, when the <dialog> or popover is shown."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLElement/beforetoggle_event",
@@ -27387,7 +27387,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SharedWorker/SharedWorker",
     "pageType": "web-api-constructor",
-    "summary": "The SharedWorker() constructor creates a\nSharedWorker object that executes the script at the specified URL. This\nscript must obey the same-origin policy."
+    "summary": "The SharedWorker() constructor creates a SharedWorker object that executes the script at the specified URL."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SharedWorkerGlobalScope",
@@ -37357,7 +37357,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Worker/Worker",
     "pageType": "web-api-constructor",
-    "summary": "The Worker() constructor creates a Worker object that executes the script at the specified URL. This script must obey the same-origin policy."
+    "summary": "The Worker() constructor creates a Worker object that executes the classic script or module at the specified URL."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope",
@@ -37427,7 +37427,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope/importScripts",
     "pageType": "web-api-instance-method",
-    "summary": "The importScripts() method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope."
+    "summary": "The importScripts() method of the WorkerGlobalScope interface synchronously imports one or more scripts into the scope of a classic worker (a worker constructed from a classic script)."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerGlobalScope/indexedDB",

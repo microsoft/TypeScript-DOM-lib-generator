@@ -11548,7 +11548,7 @@ interface WorkerGlobalScope extends EventTarget, FontFaceSource, WindowOrWorkerG
      */
     readonly self: WorkerGlobalScope & typeof globalThis;
     /**
-     * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope.
+     * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the scope of a classic worker (a worker constructed from a classic script).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
      */
@@ -12349,7 +12349,7 @@ declare var onunhandledrejection: ((this: ServiceWorkerGlobalScope, ev: PromiseR
  */
 declare var self: WorkerGlobalScope & typeof globalThis;
 /**
- * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the worker's scope.
+ * The **`importScripts()`** method of the WorkerGlobalScope interface synchronously imports one or more scripts into the scope of a classic worker (a worker constructed from a classic script).
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)
  */
