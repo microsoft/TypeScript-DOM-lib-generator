@@ -5410,9 +5410,9 @@
     "summary": "The DedicatedWorkerGlobalScope object (the Worker global scope) is accessible through the self keyword. Some additional global functions, namespaces objects, and constructors, not typically associated with the worker global scope, but available on it, are listed in the JavaScript Reference. See also: Functions available to workers."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame",
+    "mdn_url": "/en-US/docs/Web/API/Window/cancelAnimationFrame",
     "pageType": "web-api-instance-method",
-    "summary": "The cancelAnimationFrame() method of the DedicatedWorkerGlobalScope interface cancels an animation frame request previously scheduled through a call to requestAnimationFrame()."
+    "summary": "The cancelAnimationFrame() method of the Window interface cancels an animation frame request previously scheduled through a call to requestAnimationFrame()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DedicatedWorkerGlobalScope/close",
@@ -5440,9 +5440,9 @@
     "summary": "The postMessage() method of the DedicatedWorkerGlobalScope interface sends a message to the main thread that spawned it."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame",
+    "mdn_url": "/en-US/docs/Web/API/Window/requestAnimationFrame",
     "pageType": "web-api-instance-method",
-    "summary": "The requestAnimationFrame() method of the DedicatedWorkerGlobalScope interface tells the browser you wish to perform an animation frame request and call a user-supplied callback function before the next repaint."
+    "summary": "The requestAnimationFrame() method of the Window interface ..."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DedicatedWorkerGlobalScope/rtctransform_event",
