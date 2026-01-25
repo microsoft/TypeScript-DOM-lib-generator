@@ -3424,9 +3424,9 @@ declare var AnimationEvent: {
 };
 
 interface AnimationFrameProvider {
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelAnimationFrame) */
     cancelAnimationFrame(handle: number): void;
-    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/requestAnimationFrame) */
     requestAnimationFrame(callback: FrameRequestCallback): number;
 }
 
@@ -42988,7 +42988,7 @@ declare function toString(): string;
 declare function dispatchEvent(event: Event): boolean;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
 declare function cancelAnimationFrame(handle: number): void;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/requestAnimationFrame) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/requestAnimationFrame) */
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/abort_event) */
 declare var onabort: ((this: Window, ev: UIEvent) => any) | null;
