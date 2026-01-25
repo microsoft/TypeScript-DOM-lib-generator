@@ -42489,6 +42489,7 @@ interface SVGElementTagNameMap {
 }
 
 interface MathMLElementTagNameMap {
+    "a": MathMLElement;
     "annotation": MathMLElement;
     "annotation-xml": MathMLElement;
     "maction": MathMLElement;
