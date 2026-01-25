@@ -362,6 +362,13 @@ interface FontFaceSetLoadEventInit extends EventInit {
     fontfaces?: FontFace[];
 }
 
+interface GPUColorDict {
+    a: number;
+    b: number;
+    g: number;
+    r: number;
+}
+
 interface GPUObjectDescriptorBase {
     label?: string;
 }
@@ -5351,6 +5358,68 @@ interface GPURenderCommandsMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer) */
     setVertexBuffer(slot: GPUIndex32, buffer: GPUBuffer | null, offset?: GPUSize64, size?: GPUSize64): void;
 }
+
+/**
+ * The **`GPURenderPassEncoder`** interface of the WebGPU API encodes commands related to controlling the vertex and fragment shader stages, as issued by a GPURenderPipeline. It forms part of the overall encoding activity of a GPUCommandEncoder.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder)
+ */
+interface GPURenderPassEncoder extends GPUBindingCommandsMixin, GPUDebugCommandsMixin, GPUObjectBase, GPURenderCommandsMixin {
+    /**
+     * The **`beginOcclusionQuery()`** method of the GPURenderPassEncoder interface begins an occlusion query at the specified index of the relevant GPUQuerySet (provided as the value of the occlusionQuerySet descriptor property when invoking GPUCommandEncoder.beginRenderPass() to run the render pass).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/beginOcclusionQuery)
+     */
+    beginOcclusionQuery(queryIndex: GPUSize32): void;
+    /**
+     * The **`end()`** method of the GPURenderPassEncoder interface completes recording of the current render pass command sequence.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/end)
+     */
+    end(): void;
+    /**
+     * The **`endOcclusionQuery()`** method of the GPURenderPassEncoder interface ends an active occlusion query previously started with beginOcclusionQuery().
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/endOcclusionQuery)
+     */
+    endOcclusionQuery(): void;
+    /**
+     * The **`executeBundles()`** method of the GPURenderPassEncoder interface executes commands previously recorded into the referenced GPURenderBundles, as part of this render pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/executeBundles)
+     */
+    executeBundles(bundles: GPURenderBundle[]): void;
+    /**
+     * The **`setBlendConstant()`** method of the GPURenderPassEncoder interface sets the constant blend color and alpha values used with "constant" and "one-minus-constant" blend factors (as set in the descriptor of the GPUDevice.createRenderPipeline() method, in the blend property).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setBlendConstant)
+     */
+    setBlendConstant(color: GPUColor): void;
+    /**
+     * The **`setScissorRect()`** method of the GPURenderPassEncoder interface sets the scissor rectangle used during the rasterization stage. After transformation into viewport coordinates any fragments that fall outside the scissor rectangle will be discarded.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setScissorRect)
+     */
+    setScissorRect(x: GPUIntegerCoordinate, y: GPUIntegerCoordinate, width: GPUIntegerCoordinate, height: GPUIntegerCoordinate): void;
+    /**
+     * The **`setStencilReference()`** method of the GPURenderPassEncoder interface sets the stencil reference value using during stencil tests with the "replace" stencil operation (as set in the descriptor of the GPUDevice.createRenderPipeline() method, in the properties defining the various stencil operations).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setStencilReference)
+     */
+    setStencilReference(reference: GPUStencilValue): void;
+    /**
+     * The **`setViewport()`** method of the GPURenderPassEncoder interface sets the viewport used during the rasterization stage to linearly map from normalized device coordinates to viewport coordinates.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setViewport)
+     */
+    setViewport(x: number, y: number, width: number, height: number, minDepth: number, maxDepth: number): void;
+}
+
+declare var GPURenderPassEncoder: {
+    prototype: GPURenderPassEncoder;
+    new(): GPURenderPassEncoder;
+};
 
 /**
  * The **`GPURenderPipeline`** interface of the WebGPU API represents a pipeline that controls the vertex and fragment shader stages and can be used in a GPURenderPassEncoder or GPURenderBundleEncoder.
@@ -14160,6 +14229,7 @@ type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
 type GPUBufferDynamicOffset = number;
+type GPUColor = number[] | GPUColorDict;
 type GPUFlagsConstant = number;
 type GPUIndex32 = number;
 type GPUIntegerCoordinate = number;
@@ -14170,6 +14240,7 @@ type GPUSize32 = number;
 type GPUSize32Out = number;
 type GPUSize64 = number;
 type GPUSize64Out = number;
+type GPUStencilValue = number;
 type GPUTextureUsageFlags = number;
 type HashAlgorithmIdentifier = AlgorithmIdentifier;
 type HeadersInit = [string, string][] | Record<string, string> | Headers;
@@ -14382,6 +14453,21 @@ interface FormData {
 interface GPUBindingCommandsMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUComputePassEncoder/setBindGroup) */
     setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: GPUBufferDynamicOffset[]): void;
+}
+
+interface GPURenderPassEncoder {
+    /**
+     * The **`executeBundles()`** method of the GPURenderPassEncoder interface executes commands previously recorded into the referenced GPURenderBundles, as part of this render pass.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/executeBundles)
+     */
+    executeBundles(bundles: GPURenderBundle[]): void;
+    /**
+     * The **`setBlendConstant()`** method of the GPURenderPassEncoder interface sets the constant blend color and alpha values used with "constant" and "one-minus-constant" blend factors (as set in the descriptor of the GPUDevice.createRenderPipeline() method, in the blend property).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPURenderPassEncoder/setBlendConstant)
+     */
+    setBlendConstant(color: number[]): void;
 }
 
 interface GPUSupportedFeatures extends ReadonlySet<string> {
