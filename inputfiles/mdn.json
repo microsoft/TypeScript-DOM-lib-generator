@@ -92,7 +92,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/AbstractRange/startContainer",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only startContainer property of the AbstractRange interface returns the start Node for the range."
+    "summary": "The read-only startContainer property of the AbstractRange interface returns the Node in which the start of the range is located."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AbstractRange/startOffset",
@@ -23170,14 +23170,9 @@
     "summary": "The collapse() method of the Range interface collapses the\nRange to one of its boundary points."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/Range/collapsed",
-    "pageType": "web-api-instance-property",
-    "summary": "The Range.collapsed read-only property returns a\nboolean flag indicating whether the start and end points of the\nRange are at the same position. It returns true if the start\nand end boundary points of the Range are the same point in the DOM,\nfalse if not."
-  },
-  {
     "mdn_url": "/en-US/docs/Web/API/Range/commonAncestorContainer",
     "pageType": "web-api-instance-property",
-    "summary": "The Range.commonAncestorContainer read-only property\nreturns the deepest — or furthest down the document tree — Node that\ncontains both boundary points of the Range. This means that if\nRange.startContainer and Range.endContainer both refer to\nthe same node, this node is the common ancestor container."
+    "summary": "The Range.commonAncestorContainer read-only property\nreturns the deepest — or furthest down the document tree — Node that\ncontains both boundary points of the Range. This means that if\nstartContainer and endContainer both refer to\nthe same node, this node is the common ancestor container."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Range/compareBoundaryPoints",
@@ -23208,16 +23203,6 @@
     "mdn_url": "/en-US/docs/Web/API/Range/detach",
     "pageType": "web-api-instance-method",
     "summary": "The Range.detach() method does nothing. It used to\ndisable the Range object and enable the browser to release associated\nresources. The method has been kept for compatibility."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Range/endContainer",
-    "pageType": "web-api-instance-property",
-    "summary": "The Range.endContainer read-only property returns the\nNode within which the Range ends. To change the end\nposition of a node, use the Range.setEnd() method or a similar one."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Range/endOffset",
-    "pageType": "web-api-instance-property",
-    "summary": "The Range.endOffset read-only property returns a number\nrepresenting where in the Range.endContainer the Range\nends."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Range/extractContents",
@@ -23293,16 +23278,6 @@
     "mdn_url": "/en-US/docs/Web/API/Range/setStartBefore",
     "pageType": "web-api-instance-method",
     "summary": "The Range.setStartBefore() method sets the start position\nof a Range relative to another Node. The parent\nNode of the start of the Range will be the same as that\nfor the referenceNode."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Range/startContainer",
-    "pageType": "web-api-instance-property",
-    "summary": "The Range.startContainer read-only property returns the\nNode within which the Range starts. To change the start\nposition of a node, use one of the Range.setStart() methods."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Range/startOffset",
-    "pageType": "web-api-instance-property",
-    "summary": "The Range.startOffset read-only property returns a number\nrepresenting where in the startContainer the Range starts."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Range/surroundContents",
@@ -28043,31 +28018,6 @@
     "mdn_url": "/en-US/docs/Web/API/StaticRange",
     "pageType": "web-api-interface",
     "summary": "The DOM StaticRange interface extends AbstractRange to provide a method to specify a range of content in the DOM whose contents don't update to reflect changes which occur within the DOM tree."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/StaticRange/collapsed",
-    "pageType": "web-api-instance-property",
-    "summary": "The collapsed read-only property\nof the StaticRange interface returns true if the range's\nstart position and end position are the same."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/StaticRange/endContainer",
-    "pageType": "web-api-instance-property",
-    "summary": "The endContainer property of the StaticRange interface returns the end Node for the range."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/StaticRange/endOffset",
-    "pageType": "web-api-instance-property",
-    "summary": "The endOffset property of the StaticRange\ninterface returns the offset into the end node of the range's end position."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/StaticRange/startContainer",
-    "pageType": "web-api-instance-property",
-    "summary": "The read-only startContainer\nproperty of the StaticRange interface returns the start\nNode for the range."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/StaticRange/startOffset",
-    "pageType": "web-api-instance-property",
-    "summary": "The read-only startOffset\nproperty of the StaticRange interface returns the offset into the start\nnode of the range's start position."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/StaticRange/StaticRange",
@@ -41507,7 +41457,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-padding",
     "pageType": "css-shorthand-property",
-    "summary": "The scroll-padding shorthand property sets scroll padding on all sides of an element at once, much like the padding property does for padding on an element."
+    "summary": "The scroll-padding shorthand property sets scroll padding on all sides of an element at once. It specifies offsets that define the optimal viewing region of a scrollport within a scroll container."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-padding-block",

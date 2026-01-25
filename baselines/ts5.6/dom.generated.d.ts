@@ -3094,7 +3094,7 @@ interface AbstractRange {
      */
     readonly endOffset: number;
     /**
-     * The read-only **`startContainer`** property of the AbstractRange interface returns the start Node for the range.
+     * The read-only **`startContainer`** property of the AbstractRange interface returns the Node in which the start of the range is located.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/AbstractRange/startContainer)
      */
@@ -8382,7 +8382,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     scrollMarginTop: string;
     /**
-     * The scroll-padding shorthand property sets scroll padding on all sides of an element at once, much like the padding property does for padding on an element.
+     * The scroll-padding shorthand property sets scroll padding on all sides of an element at once. It specifies offsets that define the optimal viewing region of a scrollport within a scroll container.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/scroll-padding)
      */
@@ -29102,7 +29102,7 @@ declare var RadioNodeList: {
  */
 interface Range extends AbstractRange {
     /**
-     * The **`Range.commonAncestorContainer`** read-only property returns the deepest — or furthest down the document tree — Node that contains both boundary points of the Range. This means that if Range.startContainer and Range.endContainer both refer to the same node, this node is the common ancestor container.
+     * The **`Range.commonAncestorContainer`** read-only property returns the deepest — or furthest down the document tree — Node that contains both boundary points of the Range. This means that if startContainer and endContainer both refer to the same node, this node is the common ancestor container.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/commonAncestorContainer)
      */
@@ -42380,6 +42380,7 @@ interface SVGElementTagNameMap {
 }
 
 interface MathMLElementTagNameMap {
+    "a": MathMLElement;
     "annotation": MathMLElement;
     "annotation-xml": MathMLElement;
     "maction": MathMLElement;
