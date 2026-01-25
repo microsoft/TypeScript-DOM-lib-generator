@@ -42986,7 +42986,7 @@ declare function toString(): string;
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)
  */
 declare function dispatchEvent(event: Event): boolean;
-/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/DedicatedWorkerGlobalScope/cancelAnimationFrame) */
+/** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/cancelAnimationFrame) */
 declare function cancelAnimationFrame(handle: number): void;
 /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Window/requestAnimationFrame) */
 declare function requestAnimationFrame(callback: FrameRequestCallback): number;
