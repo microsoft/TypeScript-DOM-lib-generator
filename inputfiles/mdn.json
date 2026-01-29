@@ -12622,7 +12622,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLDialogElement/cancel_event",
     "pageType": "web-api-event",
-    "summary": "The cancel event fires on a <dialog> element when the user instructs the browser that they wish to dismiss the current open dialog. The browser fires this event when the user presses the Esc key."
+    "summary": "The cancel event fires on a <dialog> element when the user triggers a close request."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLDialogElement/close",
@@ -12657,12 +12657,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLDialogElement/show",
     "pageType": "web-api-instance-method",
-    "summary": "The show() method of the HTMLDialogElement interface displays the dialog modelessly, i.e., still allowing interaction with content outside of the dialog."
+    "summary": "The show() method of the HTMLDialogElement interface displays the dialog as a non-modal dialog."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLDialogElement/showModal",
     "pageType": "web-api-instance-method",
-    "summary": "The showModal() method of the\nHTMLDialogElement interface displays the dialog as a modal, over the top\nof any other dialogs that might be present. It displays in the top layer, along with a\n::backdrop pseudo-element. Elements inside the same document as the dialog, except the dialog and its descendants, become inert (as if the inert attribute is specified). Only the containing document becomes blocked; if the dialog is rendered inside an iframe, the rest of the page remains interactive."
+    "summary": "The showModal() method of the HTMLDialogElement interface displays the dialog as a modal dialog, over the top of any other dialogs or elements that might be visible."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLDivElement",
@@ -19047,12 +19047,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/MouseEvent/movementX",
     "pageType": "web-api-instance-property",
-    "summary": "The movementX read-only property of the MouseEvent interface provides the difference in the X coordinate of the mouse pointer between the given event and the previous mousemove event.\nIn other words, the value of the property is computed like this: currentEvent.movementX = currentEvent.screenX - previousEvent.screenX."
+    "summary": "The movementX read-only property of the MouseEvent interface provides the difference in the X coordinate of the mouse (or pointer) between the given move event and the previous move event of the same type."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/MouseEvent/movementY",
     "pageType": "web-api-instance-property",
-    "summary": "The movementY read-only property of the MouseEvent interface provides the difference in the Y coordinate of the mouse pointer between the given event and the previous mousemove event.\nIn other words, the value of the property is computed like this: currentEvent.movementY = currentEvent.screenY - previousEvent.screenY."
+    "summary": "The movementY read-only property of the MouseEvent interface provides the difference in the Y coordinate of the mouse (or pointer) between the given move event and the previous move event of the same type."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/MouseEvent/mozInputSource",
@@ -19697,7 +19697,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/deviceMemory",
     "pageType": "web-api-instance-property",
-    "summary": "The deviceMemory read-only\nproperty of the Navigator interface returns the approximate amount of\ndevice memory in gigabytes."
+    "summary": "The deviceMemory read-only property of the Navigator interface returns the approximate amount of device memory in gigabytes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/devicePosture",
@@ -20012,7 +20012,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/NavigatorUAData/getHighEntropyValues",
     "pageType": "web-api-instance-method",
-    "summary": "The getHighEntropyValues() method of the NavigatorUAData interface is a Promise that resolves with a dictionary object containing the high entropy values the user-agent returns."
+    "summary": "The getHighEntropyValues() method of the NavigatorUAData interface returns a Promise that resolves with a dictionary object containing low entropy information and requested high entropy information about the browser."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/NavigatorUAData/mobile",
@@ -21137,7 +21137,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Path2D/Path2D",
     "pageType": "web-api-constructor",
-    "summary": "The Path2D() constructor returns a newly instantiated\nPath2D object, optionally with another path as an argument (creates a\ncopy), or optionally with a string consisting of SVG path data."
+    "summary": "The Path2D() constructor returns a newly instantiated Path2D object, optionally with another path as an argument (creates a copy), or optionally with a string consisting of SVG path data."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Payment_Handler_API",
@@ -37567,7 +37567,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/deviceMemory",
     "pageType": "web-api-instance-property",
-    "summary": "The deviceMemory read-only\nproperty of the WorkerNavigator interface returns the approximate amount of\ndevice memory in gigabytes."
+    "summary": "The deviceMemory read-only property of the WorkerNavigator interface returns the approximate amount of device memory in gigabytes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/globalPrivacyControl",
