@@ -2877,9 +2877,6 @@
             "GPUAdapter": {
                 "exposed": ""
             },
-            "GPUAdapterInfo": {
-                "exposed": ""
-            },
             "GPUCanvasContext": {
                 "exposed": ""
             },

@@ -14765,6 +14765,62 @@ declare var FragmentDirective: {
 };
 
 /**
+ * The **`GPUAdapterInfo`** interface of the WebGPU API contains identifying information about a GPUAdapter.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo)
+ */
+interface GPUAdapterInfo {
+    /**
+     * The **`architecture`** read-only property of the GPUAdapterInfo interface returns the name of the family or class of GPUs the adapter belongs to, or an empty string if it is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/architecture)
+     */
+    readonly architecture: string;
+    /**
+     * The **`description`** read-only property of the GPUAdapterInfo interface returns a human-readable string describing the adapter, or an empty string if it is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/description)
+     */
+    readonly description: string;
+    /**
+     * The **`device`** read-only property of the GPUAdapterInfo interface returns a vendor-specific identifier for the adapter, or an empty string if it is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/device)
+     */
+    readonly device: string;
+    /**
+     * The **`isFallbackAdapter`** read-only property of the GPUAdapterInfo interface returns true if the adapter is a fallback adapter, and false if not.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/isFallbackAdapter)
+     */
+    readonly isFallbackAdapter: boolean;
+    /**
+     * The **`subgroupMaxSize`** read-only property of the GPUAdapterInfo interface returns the maximum supported subgroup size for the GPUAdapter. This can be used along with the subgroups feature.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/subgroupMaxSize)
+     */
+    readonly subgroupMaxSize: number;
+    /**
+     * The **`subgroupMinSize`** read-only property of the GPUAdapterInfo interface returns the minimum supported subgroup size for the GPUAdapter. This can be used along with the subgroups feature.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/subgroupMinSize)
+     */
+    readonly subgroupMinSize: number;
+    /**
+     * The **`vendor`** read-only property of the GPUAdapterInfo interface returns the name of the adapter vendor, or an empty string if it is not available.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapterInfo/vendor)
+     */
+    readonly vendor: string;
+}
+
+declare var GPUAdapterInfo: {
+    prototype: GPUAdapterInfo;
+    new(): GPUAdapterInfo;
+};
+
+/**
  * The **`GPUBindGroup`** interface of the WebGPU API is based on a GPUBindGroupLayout and defines a set of resources to be bound together in a group and how those resources are used in shader stages.
  * Available only in secure contexts.
  *
