@@ -3035,6 +3035,26 @@
     "summary": "The writeText() method of the Clipboard interface writes the specified text to the system clipboard, returning a Promise that is resolved once the system clipboard has been updated."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/ClipboardChangeEvent",
+    "pageType": "web-api-interface",
+    "summary": "The ClipboardChangeEvent interface of the Clipboard API represents events fired whenever the contents of the system clipboard are changed."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ClipboardChangeEvent/changeId",
+    "pageType": "web-api-instance-property",
+    "summary": "The changeId read-only property of the ClipboardChangeEvent interface returns an integer representing a unique identifier for this specific clipboard change operation."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ClipboardChangeEvent/ClipboardChangeEvent",
+    "pageType": "web-api-constructor",
+    "summary": "The ClipboardChangeEvent() constructor creates a new ClipboardChangeEvent object instance when a clipboardchange event occurs. The clipboardchange event fires whenever the system clipboard contents are changed either by a web app or any other system application."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ClipboardChangeEvent/types",
+    "pageType": "web-api-instance-property",
+    "summary": "The types read-only property of the ClipboardChangeEvent interface returns an array of strings representing the mandatory MIME types available on the system clipboard when the ClipboardChangeEvent event was fired. Optional types and custom formats are not included to limit fingerprinting."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/ClipboardEvent",
     "pageType": "web-api-interface",
     "summary": "The ClipboardEvent interface of the Clipboard API represents events providing information related to modification of the clipboard, that is cut, copy, and paste events."
