@@ -29316,6 +29316,7 @@ interface Range extends AbstractRange {
     deleteContents(): void;
     /**
      * The **`Range.detach()`** method does nothing. It used to disable the Range object and enable the browser to release associated resources. The method has been kept for compatibility.
+     * @deprecated
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Range/detach)
      */
