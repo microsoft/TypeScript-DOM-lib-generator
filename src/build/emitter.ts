@@ -248,11 +248,12 @@ export function emitWebIdl(
       return emitES2018DomAsyncIterators();
     default:
       if (compilerBehavior.includeIterable) {
-        return [
-          emit(),
-          emitES6DomIterators(),
-          emitES2018DomAsyncIterators(),
-        ].join("\n\n");
+        const main = emit();
+        iterator = "sync";
+        const iterables = emitES6DomIterators();
+        iterator = "async";
+        const asyncIterables = emitES2018DomAsyncIterators();
+        return [main, iterables, asyncIterables].join("\n\n");
       }
       return emit();
   }
