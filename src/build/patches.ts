@@ -255,8 +255,8 @@ function handleMixinAndInterfaces(
   return {
     name,
     ...optionalNestedMember("events", event, { event }),
-    properties: { property },
-    methods: { method },
+    ...optionalNestedMember("properties", property, { property }),
+    ...optionalNestedMember("methods", method, { method }),
     ...optionalMember("extends", "string", node.properties?.extends),
     ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
     ...optionalMember("forward", "string", node.properties?.forward),
@@ -369,7 +369,7 @@ function handleMethodAndConstructor(
   const signatureIndex = child.properties?.signatureIndex;
   const type = handleTyped(typeNodes, child.properties?.returns);
 
-  let signature: OverridableMethod["signature"] = [];
+  let signature: OverridableMethod["signature"] | undefined = undefined;
   if (type || params.length > 0) {
     // Determine the actual signature object
     const signatureObj: DeepPartial<Signature> = {
