@@ -2886,9 +2886,6 @@
             "GPUDevice": {
                 "exposed": ""
             },
-            "GPUQueue": {
-                "exposed": ""
-            },
             "TrustedHTML": {
                 "exposed": ""
             },

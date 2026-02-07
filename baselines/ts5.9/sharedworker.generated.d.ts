@@ -220,8 +220,36 @@ interface GPUColorDict {
     r: number;
 }
 
+interface GPUCopyExternalImageDestInfo extends GPUTexelCopyTextureInfo {
+    colorSpace?: PredefinedColorSpace;
+    premultipliedAlpha?: boolean;
+}
+
+interface GPUCopyExternalImageSourceInfo {
+    flipY?: boolean;
+    origin?: GPUOrigin2D;
+    source: GPUCopyExternalImageSource;
+}
+
+interface GPUExtent3DDict {
+    depthOrArrayLayers?: GPUIntegerCoordinate;
+    height?: GPUIntegerCoordinate;
+    width: GPUIntegerCoordinate;
+}
+
 interface GPUObjectDescriptorBase {
     label?: string;
+}
+
+interface GPUOrigin2DDict {
+    x?: GPUIntegerCoordinate;
+    y?: GPUIntegerCoordinate;
+}
+
+interface GPUOrigin3DDict {
+    x?: GPUIntegerCoordinate;
+    y?: GPUIntegerCoordinate;
+    z?: GPUIntegerCoordinate;
 }
 
 interface GPUPipelineErrorInit {
@@ -229,6 +257,19 @@ interface GPUPipelineErrorInit {
 }
 
 interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPUTexelCopyBufferLayout {
+    bytesPerRow?: GPUSize32;
+    offset?: GPUSize64;
+    rowsPerImage?: GPUSize32;
+}
+
+interface GPUTexelCopyTextureInfo {
+    aspect?: GPUTextureAspect;
+    mipLevel?: GPUIntegerCoordinate;
+    origin?: GPUOrigin3D;
+    texture: GPUTexture;
 }
 
 interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
@@ -4340,6 +4381,50 @@ interface GPUQuerySet extends GPUObjectBase {
 declare var GPUQuerySet: {
     prototype: GPUQuerySet;
     new(): GPUQuerySet;
+};
+
+/**
+ * The **`GPUQueue`** interface of the WebGPU API controls execution of encoded commands on the GPU.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue)
+ */
+interface GPUQueue extends GPUObjectBase {
+    /**
+     * The **`copyExternalImageToTexture()`** method of the GPUQueue interface copies a snapshot taken from a source image, video, or canvas into a given GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/copyExternalImageToTexture)
+     */
+    copyExternalImageToTexture(source: GPUCopyExternalImageSourceInfo, destination: GPUCopyExternalImageDestInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`onSubmittedWorkDone()`** method of the GPUQueue interface returns a Promise that resolves when all the work submitted to the GPU via this GPUQueue at the point the method is called has been processed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/onSubmittedWorkDone)
+     */
+    onSubmittedWorkDone(): Promise<void>;
+    /**
+     * The **`submit()`** method of the GPUQueue interface schedules the execution of command buffers represented by one or more GPUCommandBuffer objects by the GPU.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/submit)
+     */
+    submit(commandBuffers: GPUCommandBuffer[]): void;
+    /**
+     * The **`writeBuffer()`** method of the GPUQueue interface writes a provided data source into a given GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/writeBuffer)
+     */
+    writeBuffer(buffer: GPUBuffer, bufferOffset: GPUSize64, data: AllowSharedBufferSource, dataOffset?: GPUSize64, size?: GPUSize64): void;
+    /**
+     * The **`writeTexture()`** method of the GPUQueue interface writes a provided data source into a given GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUQueue/writeTexture)
+     */
+    writeTexture(destination: GPUTexelCopyTextureInfo, data: AllowSharedBufferSource, dataLayout: GPUTexelCopyBufferLayout, size: GPUExtent3D): void;
+}
+
+declare var GPUQueue: {
+    prototype: GPUQueue;
+    new(): GPUQueue;
 };
 
 /**
@@ -12276,11 +12361,15 @@ type GLuint = number;
 type GLuint64 = number;
 type GPUBufferDynamicOffset = number;
 type GPUColor = number[] | GPUColorDict;
+type GPUCopyExternalImageSource = ImageBitmap | ImageData | OffscreenCanvas;
+type GPUExtent3D = GPUIntegerCoordinate[] | GPUExtent3DDict;
 type GPUFlagsConstant = number;
 type GPUIndex32 = number;
 type GPUIntegerCoordinate = number;
 type GPUIntegerCoordinateOut = number;
 type GPUMapModeFlags = number;
+type GPUOrigin2D = GPUIntegerCoordinate[] | GPUOrigin2DDict;
+type GPUOrigin3D = GPUIntegerCoordinate[] | GPUOrigin3DDict;
 type GPUSignedOffset32 = number;
 type GPUSize32 = number;
 type GPUSize32Out = number;
