@@ -2878,7 +2878,9 @@
                 "exposed": ""
             },
             "GPUDevice": {
-                "exposed": ""
+                "methods": {
+                    "exposed": ""
+                }
             },
             "TrustedHTML": {
                 "exposed": ""

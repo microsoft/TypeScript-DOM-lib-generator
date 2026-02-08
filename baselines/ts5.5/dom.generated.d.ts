@@ -805,6 +805,7 @@ interface FullscreenOptions {
 interface GPUCanvasConfiguration {
     alphaMode?: GPUCanvasAlphaMode;
     colorSpace?: PredefinedColorSpace;
+    device: GPUDevice;
     format: GPUTextureFormat;
     toneMapping?: GPUCanvasToneMapping;
     usage?: GPUTextureUsageFlags;
@@ -15259,6 +15260,60 @@ interface GPUDebugCommandsMixin {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/pushDebugGroup) */
     pushDebugGroup(groupLabel: string): void;
 }
+
+interface GPUDeviceEventMap {
+    "uncapturederror": GPUUncapturedErrorEvent;
+}
+
+/**
+ * The **`GPUDevice`** interface of the WebGPU API represents a logical GPU device. This is the main interface through which the majority of WebGPU functionality is accessed.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice)
+ */
+interface GPUDevice extends EventTarget, GPUObjectBase {
+    /**
+     * The **`adapterInfo`** read-only property of the GPUDevice interface returns a GPUAdapterInfo object containing identifying information about the device's originating adapter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/adapterInfo)
+     */
+    readonly adapterInfo: GPUAdapterInfo;
+    /**
+     * The **`features`** read-only property of the GPUDevice interface returns a GPUSupportedFeatures object that describes additional functionality supported by the device. Only features requested during the creation of the device (i.e., when GPUAdapter.requestDevice() is called) are included.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/features)
+     */
+    readonly features: GPUSupportedFeatures;
+    /**
+     * The **`limits`** read-only property of the GPUDevice interface returns a GPUSupportedLimits object that describes the limits supported by the device. All limit values will be included, and the limits requested during the creation of the device (i.e., when GPUAdapter.requestDevice() is called) will be reflected in those values.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/limits)
+     */
+    readonly limits: GPUSupportedLimits;
+    /**
+     * The **`lost`** read-only property of the GPUDevice interface contains a Promise that remains pending throughout the device's lifetime and resolves with a GPUDeviceLostInfo object when the device is lost.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/lost)
+     */
+    readonly lost: Promise<GPUDeviceLostInfo>;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/uncapturederror_event) */
+    onuncapturederror: ((this: GPUDevice, ev: GPUUncapturedErrorEvent) => any) | null;
+    /**
+     * The **`queue`** read-only property of the GPUDevice interface returns the primary GPUQueue for the device.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/queue)
+     */
+    readonly queue: GPUQueue;
+    addEventListener<K extends keyof GPUDeviceEventMap>(type: K, listener: (this: GPUDevice, ev: GPUDeviceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof GPUDeviceEventMap>(type: K, listener: (this: GPUDevice, ev: GPUDeviceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var GPUDevice: {
+    prototype: GPUDevice;
+    new(): GPUDevice;
+};
 
 /**
  * The **`GPUDeviceLostInfo`** interface of the WebGPU API represents the object returned when the GPUDevice.lost Promise resolves. This provides information as to why a device has been lost.
