@@ -2880,9 +2880,6 @@
             "GPUCanvasContext": {
                 "exposed": ""
             },
-            "GPUCommandEncoder": {
-                "exposed": ""
-            },
             "GPUDevice": {
                 "exposed": ""
             },

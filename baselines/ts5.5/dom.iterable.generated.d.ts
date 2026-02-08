@@ -143,6 +143,27 @@ interface GPUBindingCommandsMixin {
     setBindGroup(index: GPUIndex32, bindGroup: GPUBindGroup | null, dynamicOffsets?: Iterable<GPUBufferDynamicOffset>): void;
 }
 
+interface GPUCommandEncoder {
+    /**
+     * The **`copyBufferToTexture()`** method of the GPUCommandEncoder interface encodes a command that copies data from a GPUBuffer to a GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToTexture)
+     */
+    copyBufferToTexture(source: GPUTexelCopyBufferInfo, destination: GPUTexelCopyTextureInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+    /**
+     * The **`copyTextureToBuffer()`** method of the GPUCommandEncoder interface encodes a command that copies data from a GPUTexture to a GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer)
+     */
+    copyTextureToBuffer(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyBufferInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+    /**
+     * The **`copyTextureToTexture()`** method of the GPUCommandEncoder interface encodes a command that copies data from one GPUTexture to another.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToTexture)
+     */
+    copyTextureToTexture(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyTextureInfo, copySize: Iterable<GPUIntegerCoordinate>): void;
+}
+
 interface GPUQueue {
     /**
      * The **`copyExternalImageToTexture()`** method of the GPUQueue interface copies a snapshot taken from a source image, video, or canvas into a given GPUTexture.

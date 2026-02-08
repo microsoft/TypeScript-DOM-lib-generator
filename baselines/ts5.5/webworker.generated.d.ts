@@ -366,6 +366,19 @@ interface GPUColorDict {
     r: number;
 }
 
+interface GPUCommandBufferDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPUComputePassDescriptor extends GPUObjectDescriptorBase {
+    timestampWrites?: GPUComputePassTimestampWrites;
+}
+
+interface GPUComputePassTimestampWrites {
+    beginningOfPassWriteIndex?: GPUSize32;
+    endOfPassWriteIndex?: GPUSize32;
+    querySet: GPUQuerySet;
+}
+
 interface GPUCopyExternalImageDestInfo extends GPUTexelCopyTextureInfo {
     colorSpace?: PredefinedColorSpace;
     premultipliedAlpha?: boolean;
@@ -403,6 +416,45 @@ interface GPUPipelineErrorInit {
 }
 
 interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPURenderPassColorAttachment {
+    clearValue?: GPUColor;
+    depthSlice?: GPUIntegerCoordinate;
+    loadOp: GPULoadOp;
+    resolveTarget?: GPUTexture | GPUTextureView;
+    storeOp: GPUStoreOp;
+    view: GPUTexture | GPUTextureView;
+}
+
+interface GPURenderPassDepthStencilAttachment {
+    depthClearValue?: number;
+    depthLoadOp?: GPULoadOp;
+    depthReadOnly?: boolean;
+    depthStoreOp?: GPUStoreOp;
+    stencilClearValue?: GPUStencilValue;
+    stencilLoadOp?: GPULoadOp;
+    stencilReadOnly?: boolean;
+    stencilStoreOp?: GPUStoreOp;
+    view: GPUTexture | GPUTextureView;
+}
+
+interface GPURenderPassDescriptor extends GPUObjectDescriptorBase {
+    colorAttachments: (GPURenderPassColorAttachment | null)[];
+    depthStencilAttachment?: GPURenderPassDepthStencilAttachment;
+    maxDrawCount?: GPUSize64;
+    occlusionQuerySet?: GPUQuerySet;
+    timestampWrites?: GPURenderPassTimestampWrites;
+}
+
+interface GPURenderPassTimestampWrites {
+    beginningOfPassWriteIndex?: GPUSize32;
+    endOfPassWriteIndex?: GPUSize32;
+    querySet: GPUQuerySet;
+}
+
+interface GPUTexelCopyBufferInfo extends GPUTexelCopyBufferLayout {
+    buffer: GPUBuffer;
 }
 
 interface GPUTexelCopyBufferLayout {
@@ -5105,6 +5157,75 @@ interface GPUCommandBuffer extends GPUObjectBase {
 declare var GPUCommandBuffer: {
     prototype: GPUCommandBuffer;
     new(): GPUCommandBuffer;
+};
+
+/**
+ * The **`GPUCommandEncoder`** interface of the WebGPU API represents an encoder that collects a sequence of GPU commands to be issued to the GPU.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder)
+ */
+interface GPUCommandEncoder extends GPUDebugCommandsMixin, GPUObjectBase {
+    /**
+     * The **`beginComputePass()`** method of the GPUCommandEncoder interface starts encoding a compute pass, returning a GPUComputePassEncoder that can be used to control computation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/beginComputePass)
+     */
+    beginComputePass(descriptor?: GPUComputePassDescriptor): GPUComputePassEncoder;
+    /**
+     * The **`beginRenderPass()`** method of the GPUCommandEncoder interface starts encoding a render pass, returning a GPURenderPassEncoder that can be used to control rendering.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/beginRenderPass)
+     */
+    beginRenderPass(descriptor: GPURenderPassDescriptor): GPURenderPassEncoder;
+    /**
+     * The **`clearBuffer()`** method of the GPUCommandEncoder interface encodes a command that fills a region of a GPUBuffer with zeroes.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/clearBuffer)
+     */
+    clearBuffer(buffer: GPUBuffer, offset?: GPUSize64, size?: GPUSize64): void;
+    /**
+     * The **`copyBufferToBuffer()`** method of the GPUCommandEncoder interface encodes a command that copies data from one GPUBuffer to another.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
+     */
+    copyBufferToBuffer(source: GPUBuffer, destination: GPUBuffer, size?: GPUSize64): void;
+    copyBufferToBuffer(source: GPUBuffer, sourceOffset: GPUSize64, destination: GPUBuffer, destinationOffset: GPUSize64, size?: GPUSize64): void;
+    /**
+     * The **`copyBufferToTexture()`** method of the GPUCommandEncoder interface encodes a command that copies data from a GPUBuffer to a GPUTexture.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyBufferToTexture)
+     */
+    copyBufferToTexture(source: GPUTexelCopyBufferInfo, destination: GPUTexelCopyTextureInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`copyTextureToBuffer()`** method of the GPUCommandEncoder interface encodes a command that copies data from a GPUTexture to a GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer)
+     */
+    copyTextureToBuffer(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyBufferInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`copyTextureToTexture()`** method of the GPUCommandEncoder interface encodes a command that copies data from one GPUTexture to another.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/copyTextureToTexture)
+     */
+    copyTextureToTexture(source: GPUTexelCopyTextureInfo, destination: GPUTexelCopyTextureInfo, copySize: GPUExtent3D): void;
+    /**
+     * The **`finish()`** method of the GPUCommandEncoder interface completes recording of the command sequence encoded on this GPUCommandEncoder, returning a corresponding GPUCommandBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/finish)
+     */
+    finish(descriptor?: GPUCommandBufferDescriptor): GPUCommandBuffer;
+    /**
+     * The **`resolveQuerySet()`** method of the GPUCommandEncoder interface encodes a command that resolves a GPUQuerySet, copying the results into a specified GPUBuffer.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUCommandEncoder/resolveQuerySet)
+     */
+    resolveQuerySet(querySet: GPUQuerySet, firstQuery: GPUSize32, queryCount: GPUSize32, destination: GPUBuffer, destinationOffset: GPUSize64): void;
+}
+
+declare var GPUCommandEncoder: {
+    prototype: GPUCommandEncoder;
+    new(): GPUCommandEncoder;
 };
 
 /**
@@ -14445,8 +14566,10 @@ type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUIndexFormat = "uint16" | "uint32";
+type GPULoadOp = "clear" | "load";
 type GPUPipelineErrorReason = "internal" | "validation";
 type GPUQueryType = "occlusion" | "timestamp";
+type GPUStoreOp = "discard" | "store";
 type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
 type GPUTextureDimension = "1d" | "2d" | "3d";
 type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
