@@ -359,6 +359,22 @@ interface FontFaceSetLoadEventInit extends EventInit {
     fontfaces?: FontFace[];
 }
 
+interface GPUBindGroupDescriptor extends GPUObjectDescriptorBase {
+    entries: GPUBindGroupEntry[];
+    layout: GPUBindGroupLayout;
+}
+
+interface GPUBindGroupEntry {
+    binding: GPUIndex32;
+    resource: GPUBindingResource;
+}
+
+interface GPUBufferBinding {
+    buffer: GPUBuffer;
+    offset?: GPUSize64;
+    size?: GPUSize64;
+}
+
 interface GPUCanvasConfiguration {
     alphaMode?: GPUCanvasAlphaMode;
     colorSpace?: PredefinedColorSpace;
@@ -5465,6 +5481,12 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/queue)
      */
     readonly queue: GPUQueue;
+    /**
+     * The **`createBindGroup()`** method of the GPUDevice interface creates a GPUBindGroup based on a GPUBindGroupLayout that defines a set of resources to be bound together in a group and how those resources are used in shader stages.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBindGroup)
+     */
+    createBindGroup(descriptor: GPUBindGroupDescriptor): GPUBindGroup;
     /**
      * The **`destroy()`** method of the GPUDevice interface destroys the device, preventing further operations on it.
      *
@@ -14628,6 +14650,7 @@ type GLsizei = number;
 type GLsizeiptr = number;
 type GLuint = number;
 type GLuint64 = number;
+type GPUBindingResource = GPUSampler | GPUTexture | GPUTextureView | GPUBuffer | GPUBufferBinding | GPUExternalTexture;
 type GPUBufferDynamicOffset = number;
 type GPUColor = number[] | GPUColorDict;
 type GPUCopyExternalImageSource = ImageBitmap | ImageData | VideoFrame | OffscreenCanvas;

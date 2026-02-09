@@ -2880,7 +2880,6 @@
             "GPUDevice": {
                 "methods": {
                     "method": {
-                        "createBindGroup": { "exposed": "" },
                         "createBindGroupLayout": { "exposed": "" },
                         "createBuffer": { "exposed": "" },
                         "createCommandEncoder": { "exposed": "" },
