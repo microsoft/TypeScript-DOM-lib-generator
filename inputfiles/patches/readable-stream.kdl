@@ -1,15 +1,15 @@
-dictionary ReadableStreamReadDoneResult typeParameters=T {
+dictionary ReadableStreamReadDoneResult typeParameter=T {
     member done required=#true overrideType="true"
     member value required=#true overrideType="T | undefined"
 }
 
-dictionary ReadableStreamReadValueResult typeParameters=T {
+dictionary ReadableStreamReadValueResult typeParameter=T {
     member done required=#true overrideType="false"
     member value required=#true overrideType="T"
 }
 
 dictionary UnderlyingSource {
-    typeParameters R default=any
+    typeParameter R default=any
     member start overrideType="UnderlyingSourceStartCallback<R>"
     member pull overrideType="UnderlyingSourcePullCallback<R>"
 }

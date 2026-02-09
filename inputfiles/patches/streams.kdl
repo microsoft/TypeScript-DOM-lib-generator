@@ -1,7 +1,7 @@
 // https://streams.spec.whatwg.org/#dictdef-underlyingsource
 
 dictionary UnderlyingDefaultSource {
-  typeParameters R default=any
+  typeParameter R default=any
   member type type=undefined
   member start overrideType="(controller: ReadableStreamDefaultController<R>) => any"
   member pull overrideType="(controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>"

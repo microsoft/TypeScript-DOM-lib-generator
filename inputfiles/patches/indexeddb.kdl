@@ -1,5 +1,5 @@
 interface IDBRequest {
-   typeParameters T default=any
+   typeParameter T default=any
    property source {
       type nullable=#false
    }
