@@ -28296,6 +28296,12 @@ declare var PushManager: {
     readonly supportedContentEncodings: ReadonlyArray<string>;
 };
 
+/** Available only in secure contexts. */
+interface PushManagerAttribute {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration/pushManager) */
+    readonly pushManager: PushManager;
+}
+
 /**
  * The **`PushSubscription`** interface of the Push API provides a subscription's URL endpoint along with the public key and secrets that should be used for encrypting push messages to this subscription. This information must be passed to the application server, using any desired application-specific method.
  * Available only in secure contexts.
@@ -34713,7 +34719,7 @@ interface ServiceWorkerRegistrationEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ServiceWorkerRegistration)
  */
-interface ServiceWorkerRegistration extends EventTarget {
+interface ServiceWorkerRegistration extends EventTarget, PushManagerAttribute {
     /**
      * The **`active`** read-only property of the ServiceWorkerRegistration interface returns a service worker whose ServiceWorker.state is activating or activated. This property is initially set to null.
      *

@@ -208,6 +208,7 @@ function handleMixinAndInterfaces(
   let method: Record<string, DeepPartial<OverridableMethod>> = {};
   let constructor: DeepPartial<OverridableMethod> | undefined;
   let typeParameters = {};
+  const includes: string[] = [];
 
   for (const child of node.children) {
     switch (child.name) {
@@ -236,6 +237,10 @@ function handleMixinAndInterfaces(
         typeParameters = handleTypeParameters(child);
         break;
       }
+      case "includes": {
+        includes.push(string(child.values[0]));
+        break;
+      }
       default:
         throw new Error(`Unknown node name: ${child.name}`);
     }
@@ -255,8 +260,9 @@ function handleMixinAndInterfaces(
   return {
     name,
     ...optionalNestedMember("events", event, { event }),
-    properties: { property },
-    methods: { method },
+    ...optionalNestedMember("properties", property, { property }),
+    ...optionalNestedMember("methods", method, { method }),
+    ...optionalNestedMember("implements", includes, includes),
     ...optionalMember("extends", "string", node.properties?.extends),
     ...optionalMember("overrideThis", "string", node.properties?.overrideThis),
     ...optionalMember("forward", "string", node.properties?.forward),
