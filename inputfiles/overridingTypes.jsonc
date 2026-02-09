@@ -2879,7 +2879,22 @@
             },
             "GPUDevice": {
                 "methods": {
-                    "exposed": ""
+                    "method": {
+                        "createBindGroup": { "exposed": "" },
+                        "createBindGroupLayout": { "exposed": "" },
+                        "createBuffer": { "exposed": "" },
+                        "createCommandEncoder": { "exposed": "" },
+                        "createComputePipeline": { "exposed": "" },
+                        "createComputePipelineAsync": { "exposed": "" },
+                        "createPipelineLayout": { "exposed": "" },
+                        "createQuerySet": { "exposed": "" },
+                        "createRenderBundleEncoder": { "exposed": "" },
+                        "createRenderPipeline": { "exposed": "" },
+                        "createRenderPipelineAsync": { "exposed": "" },
+                        "createSampler": { "exposed": "" },
+                        "createShaderModule": { "exposed": "" },
+                        "createTexture": { "exposed": "" },
+                    }
                 }
             },
             "TrustedHTML": {

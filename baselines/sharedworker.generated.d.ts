@@ -267,6 +267,10 @@ interface GPUExtent3DDict {
     width: GPUIntegerCoordinate;
 }
 
+interface GPUExternalTextureDescriptor extends GPUObjectDescriptorBase {
+    colorSpace?: PredefinedColorSpace;
+}
+
 interface GPUObjectDescriptorBase {
     label?: string;
 }
@@ -4444,6 +4448,30 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/queue)
      */
     readonly queue: GPUQueue;
+    /**
+     * The **`destroy()`** method of the GPUDevice interface destroys the device, preventing further operations on it.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/destroy)
+     */
+    destroy(): void;
+    /**
+     * The **`importExternalTexture()`** method of the GPUDevice interface takes an HTMLVideoElement or a VideoFrame object as an input and returns a GPUExternalTexture wrapper object containing a snapshot of the video that can be used as a frame in GPU rendering operations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/importExternalTexture)
+     */
+    importExternalTexture(descriptor: GPUExternalTextureDescriptor): GPUExternalTexture;
+    /**
+     * The **`popErrorScope()`** method of the GPUDevice interface pops an existing GPU error scope from the error scope stack (originally pushed using GPUDevice.pushErrorScope()) and returns a Promise that resolves to an object describing the first error captured in the scope, or null if no error occurred.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/popErrorScope)
+     */
+    popErrorScope(): Promise<GPUError | null>;
+    /**
+     * The **`pushErrorScope()`** method of the GPUDevice interface pushes a new GPU error scope onto the device's error scope stack, allowing you to capture errors of a particular type.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/pushErrorScope)
+     */
+    pushErrorScope(filter: GPUErrorFilter): void;
     addEventListener<K extends keyof GPUDeviceEventMap>(type: K, listener: (this: GPUDevice, ev: GPUDeviceEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof GPUDeviceEventMap>(type: K, listener: (this: GPUDevice, ev: GPUDeviceEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -12668,6 +12696,7 @@ type GPUCanvasAlphaMode = "opaque" | "premultiplied";
 type GPUCanvasToneMappingMode = "extended" | "standard";
 type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUDeviceLostReason = "destroyed" | "unknown";
+type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
 type GPUIndexFormat = "uint16" | "uint32";
 type GPULoadOp = "clear" | "load";
 type GPUPipelineErrorReason = "internal" | "validation";
