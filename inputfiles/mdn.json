@@ -5605,6 +5605,11 @@
     "summary": "The interval read-only property of the DeviceMotionEvent interface returns the interval, in milliseconds, at which data is obtained from the underlying\nhardware. You can use this to determine the granularity of motion events."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/DeviceMotionEvent/requestPermission_static",
+    "pageType": "web-api-static-method",
+    "summary": "The requestPermission() static method of the DeviceMotionEvent interface requests the user's permission to access device motion data from the accelerometer and gyroscope sensors. This method requires transient activation, meaning that it must be triggered by a UI event such as a button click."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/DeviceMotionEvent/rotationRate",
     "pageType": "web-api-instance-property",
     "summary": "The rotationRate read-only property of the DeviceMotionEvent interface returns the rate at which the device is rotating around each of its axes in degrees per\nsecond."
@@ -5678,6 +5683,11 @@
     "mdn_url": "/en-US/docs/Web/API/DeviceOrientationEvent/gamma",
     "pageType": "web-api-instance-property",
     "summary": "The gamma read-only property of the DeviceOrientationEvent interface returns the rotation of the device around the Y axis; that is, the number of degrees,\nranged between -90 and 90, by which the device is tilted left\nor right.\nSee Orientation and motion data explained for details."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission_static",
+    "pageType": "web-api-static-method",
+    "summary": "The requestPermission() static method of the DeviceOrientationEvent interface requests the user's permission to access device orientation data from the accelerometer and gyroscope sensors. It can also request permission to access magnetometer data when absolute orientation is needed. This method requires transient activation, meaning that it must be triggered by a UI event such as a button click."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DevicePosture",
@@ -13250,6 +13260,76 @@
     "summary": "The HTMLFrameSetElement interface provides special properties (beyond those of the regular HTMLElement interface they also inherit) for manipulating <frameset> elements."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement",
+    "pageType": "web-api-interface",
+    "summary": "The HTMLGeolocationElement interface of the HTML DOM API represents the <geolocation> element, and provides access to its properties and events."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/autolocate",
+    "pageType": "web-api-instance-property",
+    "summary": "The autolocate property of the HTMLGeolocationElement interface gets and sets a boolean value indicating whether the browser should immediately request location data when the <geolocation> element is rendered, provided permission to use the geolocation feature is already granted."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/error",
+    "pageType": "web-api-instance-property",
+    "summary": "The error read-only property of the HTMLGeolocationElement interface returns a GeolocationPositionError object representing error information, in the event of a failure to retrieve location data."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/HTMLGeolocationElement",
+    "pageType": "web-api-constructor",
+    "summary": "The HTMLGeolocationElement() constructor creates a new HTMLGeolocationElement object instance."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/initialPermissionStatus",
+    "pageType": "web-api-instance-property",
+    "summary": "The initialPermissionStatus read-only property of the HTMLGeolocationElement interface returns an enumerated value representing the permission status for the geolocation feature when the page first loads."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/invalidReason",
+    "pageType": "web-api-instance-property",
+    "summary": "The invalidReason read-only property of the HTMLGeolocationElement interface returns an enumerated value representing the reason why the associated <geolocation> element is invalid (blocked), if that is the case."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/isValid",
+    "pageType": "web-api-instance-property",
+    "summary": "The isValid read-only property of the HTMLGeolocationElement interface returns a boolean value indicating whether the associated <geolocation> element is valid or invalid (blocked)."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/location_event",
+    "pageType": "web-api-event",
+    "summary": "The location event of the HTMLGeolocationElement interface is fired whenever the browser receives location data, or error information when a location data request was unsuccessful."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/permissionStatus",
+    "pageType": "web-api-instance-property",
+    "summary": "The permissionStatus read-only property of the HTMLGeolocationElement interface returns an enumerated value representing the current permission status for the geolocation feature."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/position",
+    "pageType": "web-api-instance-property",
+    "summary": "The position read-only property of the HTMLGeolocationElement interface returns a GeolocationPosition object representing the user's position, in the event of successful location data retrieval."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/promptaction_event",
+    "pageType": "web-api-event",
+    "summary": "The promptaction event of the HTMLGeolocationElement interface is fired whenever the user activates the <geolocation> element and selects an option from the resulting dialog, either to grant or deny geolocation permission."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/promptdismiss_event",
+    "pageType": "web-api-event",
+    "summary": "The promptdismiss event of the HTMLGeolocationElement interface is fired whenever the user activates the <geolocation> element and dismisses the resulting dialog, by pressing the \"close\" button or the Esc key."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/validationstatuschange_event",
+    "pageType": "web-api-event",
+    "summary": "The validationstatuschange event of the HTMLGeolocationElement interface is fired whenever the <geolocation> element's isValid value changes."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLGeolocationElement/watch",
+    "pageType": "web-api-instance-property",
+    "summary": "The watch property of the HTMLGeolocationElement interface gets and sets a boolean value indicating whether the browser should continuously update the user's location data whenever the position of their device changes, or only retrieve it once."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/HTMLHeadElement",
     "pageType": "web-api-interface",
     "summary": "The HTMLHeadElement interface contains the descriptive information, or metadata, for a document. This object inherits all of the properties and methods described in the HTMLElement interface."
@@ -17442,12 +17522,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Media_Capabilities_API",
     "pageType": "web-api-overview",
-    "summary": "The Media Capabilities API allows developers to determine decoding and encoding abilities of the device, exposing information such as whether media is supported and whether playback should be smooth and power efficient, with real time feedback about playback to better enable adaptive streaming, and access to display property information."
+    "summary": "The Media Capabilities API allows developers to determine decoding and encoding abilities of the device, exposing information such as whether media is supported and whether playback should be smooth and power efficient."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Media_Capabilities_API/Using_the_Media_Capabilities_API",
     "pageType": "guide",
-    "summary": "The Media Capabilities API provides several key features to help you better decide how to handle media, but also to determine how well media is being handled, in real time."
+    "summary": "The Media Capabilities API enables you to query the browser to determine its ability to encode or decode media given a specified set of encoding parameters. These parameters may include the codecs, resolutions, bit rates, frame rates, and other such details."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Media_Capture_and_Streams_API",
@@ -19587,7 +19667,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/NavigationPrecommitController",
     "pageType": "web-api-interface",
-    "summary": "The NavigationPrecommitController interface of the Navigation API defines redirect behavior for a navigation precommit handler."
+    "summary": "The NavigationPrecommitController interface of the Navigation API is passed as an argument to a navigation precommit handler callback."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/NavigationPrecommitController/addHandler",
+    "pageType": "web-api-instance-method",
+    "summary": "The addHandler() method of the NavigationPrecommitController interface allows you to dynamically add a handler callback function in precommit code, which will then be run after the navigation has committed."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/NavigationPrecommitController/redirect",
@@ -24180,6 +24265,11 @@
     "summary": "The read-only RTCDataChannel property ordered indicates\nwhether or not the data channel guarantees in-order delivery of messages;\nthe default is true,\nwhich indicates that the data channel is indeed ordered.\nThis is set when the RTCDataChannel is created,\nby setting the ordered property\non the object passed as RTCPeerConnection.createDataChannel()'s options parameter."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/RTCDataChannel/priority",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only priority property of the RTCDataChannel interface returns a string indicating the priority of the data channel. The priority is assigned by the user agent at channel creation time based on the priority option in the dataChannelDict parameter passed to RTCPeerConnection.createDataChannel(), or from the remote peer for incoming data channels."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/RTCDataChannel/protocol",
     "pageType": "web-api-instance-property",
     "summary": "The read-only RTCDataChannel property\nprotocol returns a string containing the\nname of the subprotocol in use. If no protocol was specified when the data channel was\ncreated, then this property's value is the empty string (\"\")."
@@ -25543,6 +25633,11 @@
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceEvent/RTCPeerConnectionIceEvent",
     "pageType": "web-api-constructor",
     "summary": "The RTCPeerConnectionIceEvent() constructor creates a new\nRTCPeerConnectionIceEvent object."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceEvent/url",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only url property of the RTCPeerConnectionIceEvent interface returns the URL of the STUN or TURN server used to gather the ICE candidate that caused the event. If the candidate was not gathered from a STUN or TURN server, the value is null."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionStats",
@@ -32115,6 +32210,16 @@
     "summary": "Today, most Web content is designed for keyboard and mouse input. However, devices with touch screens (especially portable devices) are mainstream and Web applications can either directly process touch-based input by using touch events or the application can use interpreted mouse events for the application input. A disadvantage to using mouse events is that they do not support concurrent user input, whereas touch events support multiple simultaneous inputs (possibly at different locations on the touch surface), thus enhancing user experiences."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Touch/altitudeAngle",
+    "pageType": "web-api-instance-property",
+    "summary": "The altitudeAngle read-only property of the Touch interface returns the angle between a transducer (a pointer or stylus) axis and the X-Y plane of a device screen. The altitude angle describes whether the transducer is perpendicular to the screen, parallel, or at some angle in between."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Touch/azimuthAngle",
+    "pageType": "web-api-instance-property",
+    "summary": "The azimuthAngle read-only property of the Touch interface returns the angle between the Y-Z plane and the plane containing both the transducer (pointer or stylus) axis and the Y axis. This represents the compass direction that the transducer is pointing in relative to the device surface."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Touch/clientX",
     "pageType": "web-api-instance-property",
     "summary": "The Touch.clientX read-only property returns the X coordinate of the touch\npoint relative to the viewport, not including any scroll offset."
@@ -32178,6 +32283,11 @@
     "mdn_url": "/en-US/docs/Web/API/Touch/Touch",
     "pageType": "web-api-constructor",
     "summary": "The Touch() constructor creates a new Touch object."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Touch/touchType",
+    "pageType": "web-api-instance-property",
+    "summary": "The touchType read-only property of the Touch interface returns the type of device that triggered the touch, such as a stylus, or direct touch from a finger."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/TouchEvent",
