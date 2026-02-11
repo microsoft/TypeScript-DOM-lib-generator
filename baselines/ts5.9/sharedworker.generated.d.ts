@@ -12055,7 +12055,7 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
          */
-        getArg(index: number): any;
+        getArg(exceptionTag: Tag, index: number): any;
         /**
          * The **`is()`** prototype method of the Exception object can be used to test if the Exception matches a given tag.
          *

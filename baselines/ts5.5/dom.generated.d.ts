@@ -37741,7 +37741,7 @@ interface ViewTransition {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ViewTransition/types)
      */
-    types: ViewTransitionTypeSet;
+    readonly types: ViewTransitionTypeSet;
     /**
      * The **`updateCallbackDone`** read-only property of the ViewTransition interface is a Promise that fulfills when the promise returned by the document.startViewTransition() method's callback fulfills, or rejects when it rejects.
      *
@@ -42107,7 +42107,7 @@ declare namespace WebAssembly {
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
          */
-        getArg(index: number): any;
+        getArg(exceptionTag: Tag, index: number): any;
         /**
          * The **`is()`** prototype method of the Exception object can be used to test if the Exception matches a given tag.
          *
