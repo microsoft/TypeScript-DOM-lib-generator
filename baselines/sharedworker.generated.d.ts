@@ -232,6 +232,12 @@ interface GPUBufferBinding {
     size?: GPUSize64;
 }
 
+interface GPUBufferDescriptor extends GPUObjectDescriptorBase {
+    mappedAtCreation?: boolean;
+    size: GPUSize64;
+    usage: GPUBufferUsageFlags;
+}
+
 interface GPUCanvasConfiguration {
     alphaMode?: GPUCanvasAlphaMode;
     colorSpace?: PredefinedColorSpace;
@@ -254,6 +260,9 @@ interface GPUColorDict {
 }
 
 interface GPUCommandBufferDescriptor extends GPUObjectDescriptorBase {
+}
+
+interface GPUCommandEncoderDescriptor extends GPUObjectDescriptorBase {
 }
 
 interface GPUComputePassDescriptor extends GPUObjectDescriptorBase {
@@ -309,6 +318,11 @@ interface GPUPipelineErrorInit {
 interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
 }
 
+interface GPURenderBundleEncoderDescriptor extends GPURenderPassLayout {
+    depthReadOnly?: boolean;
+    stencilReadOnly?: boolean;
+}
+
 interface GPURenderPassColorAttachment {
     clearValue?: GPUColor;
     depthSlice?: GPUIntegerCoordinate;
@@ -336,6 +350,12 @@ interface GPURenderPassDescriptor extends GPUObjectDescriptorBase {
     maxDrawCount?: GPUSize64;
     occlusionQuerySet?: GPUQuerySet;
     timestampWrites?: GPURenderPassTimestampWrites;
+}
+
+interface GPURenderPassLayout extends GPUObjectDescriptorBase {
+    colorFormats: (GPUTextureFormat | null)[];
+    depthStencilFormat?: GPUTextureFormat;
+    sampleCount?: GPUSize32;
 }
 
 interface GPURenderPassTimestampWrites {
@@ -4470,6 +4490,24 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBindGroup)
      */
     createBindGroup(descriptor: GPUBindGroupDescriptor): GPUBindGroup;
+    /**
+     * The **`createBuffer()`** method of the GPUDevice interface creates a GPUBuffer in which to store raw data to use in GPU operations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBuffer)
+     */
+    createBuffer(descriptor: GPUBufferDescriptor): GPUBuffer;
+    /**
+     * The **`createCommandEncoder()`** method of the GPUDevice interface creates a GPUCommandEncoder, used to encode commands to be issued to the GPU.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createCommandEncoder)
+     */
+    createCommandEncoder(descriptor?: GPUCommandEncoderDescriptor): GPUCommandEncoder;
+    /**
+     * The **`createRenderBundleEncoder()`** method of the GPUDevice interface creates a GPURenderBundleEncoder that can be used to pre-record bundles of commands. These can be reused in GPURenderPassEncoders via the executeBundles() method, as many times as required.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderBundleEncoder)
+     */
+    createRenderBundleEncoder(descriptor: GPURenderBundleEncoderDescriptor): GPURenderBundleEncoder;
     /**
      * The **`destroy()`** method of the GPUDevice interface destroys the device, preventing further operations on it.
      *
@@ -12653,6 +12691,7 @@ type GLuint = number;
 type GLuint64 = number;
 type GPUBindingResource = GPUSampler | GPUTexture | GPUTextureView | GPUBuffer | GPUBufferBinding | GPUExternalTexture;
 type GPUBufferDynamicOffset = number;
+type GPUBufferUsageFlags = number;
 type GPUColor = number[] | GPUColorDict;
 type GPUCopyExternalImageSource = ImageBitmap | ImageData | OffscreenCanvas;
 type GPUExtent3D = GPUIntegerCoordinate[] | GPUExtent3DDict;

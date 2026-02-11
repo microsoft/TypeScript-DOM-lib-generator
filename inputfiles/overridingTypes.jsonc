@@ -2881,13 +2881,10 @@
                 "methods": {
                     "method": {
                         "createBindGroupLayout": { "exposed": "" },
-                        "createBuffer": { "exposed": "" },
-                        "createCommandEncoder": { "exposed": "" },
                         "createComputePipeline": { "exposed": "" },
                         "createComputePipelineAsync": { "exposed": "" },
                         "createPipelineLayout": { "exposed": "" },
                         "createQuerySet": { "exposed": "" },
-                        "createRenderBundleEncoder": { "exposed": "" },
                         "createRenderPipeline": { "exposed": "" },
                         "createRenderPipelineAsync": { "exposed": "" },
                         "createSampler": { "exposed": "" },
