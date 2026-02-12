@@ -5285,6 +5285,26 @@
     "summary": "The values() method of the CustomStateSet interface returns a new iterator object that yields the values for each element in the CustomStateSet object in insertion order."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/DataCue",
+    "pageType": "web-api-interface",
+    "summary": "The DataCue interface represents a cue that associates arbitrary timed data with an audio or video media resource, or exposes timed data from a media resource to web pages. It extends the TextTrackCue interface with a value property that can hold any data type, and a type property that identifies the kind of data."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/DataCue/DataCue",
+    "pageType": "web-api-constructor",
+    "summary": "The DataCue() constructor creates and returns a new DataCue object that represents a timed metadata cue over a given time range. The resulting cue can be added to a metadata TextTrack using TextTrack.addCue(), allowing arbitrary data to be synchronized with audio or video playback."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/DataCue/type",
+    "pageType": "web-api-instance-property",
+    "summary": "The type read-only property of the DataCue interface returns a string identifying the type or schema of the data stored in the cue's value property. This is typically a reverse-domain notation string (e.g., \"org.id3\", \"com.apple.itunes\") that allows applications to interpret the cue's data payload correctly."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/DataCue/value",
+    "pageType": "web-api-instance-property",
+    "summary": "The value property of the DataCue interface represents the data payload of the cue. Unlike VTTCue, which carries text content, DataCue can hold any data type — such as a JavaScript object, a string, or an ArrayBuffer — making it suitable for timed metadata use cases where structured data needs to be synchronized with media playback."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/DataTransfer",
     "pageType": "web-api-interface",
     "summary": "The DataTransfer object is used to hold any data transferred between contexts, such as a drag and drop operation, or clipboard read/write. It may hold one or more data items, each of one or more data types."
@@ -32012,7 +32032,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/TextTrackCue",
     "pageType": "web-api-interface",
-    "summary": "The TextTrackCue interface of the WebVTT API is the abstract base class for the various derived cue types, such as VTTCue; you will work with these derived types rather than the base class."
+    "summary": "The TextTrackCue interface of the WebVTT API is the abstract base class for the various derived cue types, such as VTTCue and DataCue; you will work with these derived types rather than the base class."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/TextTrackCue/endTime",
