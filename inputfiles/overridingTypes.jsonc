@@ -2881,8 +2881,6 @@
                 "methods": {
                     "method": {
                         "createBindGroupLayout": { "exposed": "" },
-                        "createComputePipeline": { "exposed": "" },
-                        "createComputePipelineAsync": { "exposed": "" },
                         "createPipelineLayout": { "exposed": "" },
                         "createQuerySet": { "exposed": "" },
                         "createRenderPipeline": { "exposed": "" },

@@ -864,6 +864,10 @@ interface GPUComputePassTimestampWrites {
     querySet: GPUQuerySet;
 }
 
+interface GPUComputePipelineDescriptor extends GPUPipelineDescriptorBase {
+    compute: GPUProgrammableStage;
+}
+
 interface GPUCopyExternalImageDestInfo extends GPUTexelCopyTextureInfo {
     colorSpace?: PredefinedColorSpace;
     premultipliedAlpha?: boolean;
@@ -901,8 +905,18 @@ interface GPUOrigin3DDict {
     z?: GPUIntegerCoordinate;
 }
 
+interface GPUPipelineDescriptorBase extends GPUObjectDescriptorBase {
+    layout: GPUPipelineLayout | GPUAutoLayoutMode;
+}
+
 interface GPUPipelineErrorInit {
     reason: GPUPipelineErrorReason;
+}
+
+interface GPUProgrammableStage {
+    constants?: Record<string, GPUPipelineConstantValue>;
+    entryPoint?: string;
+    module: GPUShaderModule;
 }
 
 interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
@@ -15377,6 +15391,18 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createCommandEncoder)
      */
     createCommandEncoder(descriptor?: GPUCommandEncoderDescriptor): GPUCommandEncoder;
+    /**
+     * The **`createComputePipeline()`** method of the GPUDevice interface creates a GPUComputePipeline that can control the compute shader stage and be used in a GPUComputePassEncoder.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createComputePipeline)
+     */
+    createComputePipeline(descriptor: GPUComputePipelineDescriptor): GPUComputePipeline;
+    /**
+     * The **`createComputePipelineAsync()`** method of the GPUDevice interface returns a Promise that fulfills with a GPUComputePipeline, which can control the compute shader stage and be used in a GPUComputePassEncoder, once the pipeline can be used without any stalling.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createComputePipelineAsync)
+     */
+    createComputePipelineAsync(descriptor: GPUComputePipelineDescriptor): Promise<GPUComputePipeline>;
     /**
      * The **`createRenderBundleEncoder()`** method of the GPUDevice interface creates a GPURenderBundleEncoder that can be used to pre-record bundles of commands. These can be reused in GPURenderPassEncoders via the executeBundles() method, as many times as required.
      *
@@ -43836,6 +43862,7 @@ type GPUIntegerCoordinateOut = number;
 type GPUMapModeFlags = number;
 type GPUOrigin2D = GPUIntegerCoordinate[] | GPUOrigin2DDict;
 type GPUOrigin3D = GPUIntegerCoordinate[] | GPUOrigin3DDict;
+type GPUPipelineConstantValue = number;
 type GPUSignedOffset32 = number;
 type GPUSize32 = number;
 type GPUSize32Out = number;
@@ -43949,6 +43976,7 @@ type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
+type GPUAutoLayoutMode = "auto";
 type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCanvasAlphaMode = "opaque" | "premultiplied";
 type GPUCanvasToneMappingMode = "extended" | "standard";
