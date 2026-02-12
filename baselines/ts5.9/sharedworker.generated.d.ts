@@ -384,6 +384,19 @@ interface GPURenderPassTimestampWrites {
     querySet: GPUQuerySet;
 }
 
+interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
+    addressModeU?: GPUAddressMode;
+    addressModeV?: GPUAddressMode;
+    addressModeW?: GPUAddressMode;
+    compare?: GPUCompareFunction;
+    lodMaxClamp?: number;
+    lodMinClamp?: number;
+    magFilter?: GPUFilterMode;
+    maxAnisotropy?: number;
+    minFilter?: GPUFilterMode;
+    mipmapFilter?: GPUMipmapFilterMode;
+}
+
 interface GPUTexelCopyBufferInfo extends GPUTexelCopyBufferLayout {
     buffer: GPUBuffer;
 }
@@ -4552,6 +4565,12 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderBundleEncoder)
      */
     createRenderBundleEncoder(descriptor: GPURenderBundleEncoderDescriptor): GPURenderBundleEncoder;
+    /**
+     * The **`createSampler()`** method of the GPUDevice interface creates a GPUSampler, which controls how shaders transform and filter texture resource data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createSampler)
+     */
+    createSampler(descriptor?: GPUSamplerDescriptor): GPUSampler;
     /**
      * The **`destroy()`** method of the GPUDevice interface destroys the device, preventing further operations on it.
      *
@@ -12798,15 +12817,19 @@ type FileSystemHandleKind = "directory" | "file";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
+type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";
 type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCanvasAlphaMode = "opaque" | "premultiplied";
 type GPUCanvasToneMappingMode = "extended" | "standard";
+type GPUCompareFunction = "always" | "equal" | "greater" | "greater-equal" | "less" | "less-equal" | "never" | "not-equal";
 type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
+type GPUFilterMode = "linear" | "nearest";
 type GPUIndexFormat = "uint16" | "uint32";
 type GPULoadOp = "clear" | "load";
+type GPUMipmapFilterMode = "linear" | "nearest";
 type GPUPipelineErrorReason = "internal" | "validation";
 type GPUQueryType = "occlusion" | "timestamp";
 type GPUStoreOp = "discard" | "store";
