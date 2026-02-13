@@ -2883,8 +2883,6 @@
                         "createBindGroupLayout": { "exposed": "" },
                         "createRenderPipeline": { "exposed": "" },
                         "createRenderPipelineAsync": { "exposed": "" },
-                        "createShaderModule": { "exposed": "" },
-                        "createTexture": { "exposed": "" },
                     }
                 }
             },

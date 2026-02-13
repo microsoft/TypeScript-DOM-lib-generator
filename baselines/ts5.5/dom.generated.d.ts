@@ -987,6 +987,10 @@ interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
     mipmapFilter?: GPUMipmapFilterMode;
 }
 
+interface GPUShaderModuleDescriptor extends GPUObjectDescriptorBase {
+    code: string;
+}
+
 interface GPUTexelCopyBufferInfo extends GPUTexelCopyBufferLayout {
     buffer: GPUBuffer;
 }
@@ -1002,6 +1006,16 @@ interface GPUTexelCopyTextureInfo {
     mipLevel?: GPUIntegerCoordinate;
     origin?: GPUOrigin3D;
     texture: GPUTexture;
+}
+
+interface GPUTextureDescriptor extends GPUObjectDescriptorBase {
+    dimension?: GPUTextureDimension;
+    format: GPUTextureFormat;
+    mipLevelCount?: GPUIntegerCoordinate;
+    sampleCount?: GPUSize32;
+    size: GPUExtent3D;
+    usage: GPUTextureUsageFlags;
+    viewFormats?: GPUTextureFormat[];
 }
 
 interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
@@ -15435,6 +15449,18 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createSampler)
      */
     createSampler(descriptor?: GPUSamplerDescriptor): GPUSampler;
+    /**
+     * The **`createShaderModule()`** method of the GPUDevice interface creates a GPUShaderModule from a string of WGSL source code.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createShaderModule)
+     */
+    createShaderModule(descriptor: GPUShaderModuleDescriptor): GPUShaderModule;
+    /**
+     * The **`createTexture()`** method of the GPUDevice interface creates a GPUTexture in which to store 1D, 2D, or 3D arrays of data, such as images, to use in GPU rendering operations.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createTexture)
+     */
+    createTexture(descriptor: GPUTextureDescriptor): GPUTexture;
     /**
      * The **`destroy()`** method of the GPUDevice interface destroys the device, preventing further operations on it.
      *
