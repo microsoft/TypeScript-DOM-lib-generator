@@ -279,6 +279,17 @@ interface GPUBindGroupEntry {
     resource: GPUBindingResource;
 }
 
+interface GPUBlendComponent {
+    dstFactor?: GPUBlendFactor;
+    operation?: GPUBlendOperation;
+    srcFactor?: GPUBlendFactor;
+}
+
+interface GPUBlendState {
+    alpha: GPUBlendComponent;
+    color: GPUBlendComponent;
+}
+
 interface GPUBufferBinding {
     buffer: GPUBuffer;
     offset?: GPUSize64;
@@ -312,6 +323,12 @@ interface GPUColorDict {
     r: number;
 }
 
+interface GPUColorTargetState {
+    blend?: GPUBlendState;
+    format: GPUTextureFormat;
+    writeMask?: GPUColorWriteFlags;
+}
+
 interface GPUCommandBufferDescriptor extends GPUObjectDescriptorBase {
 }
 
@@ -343,6 +360,19 @@ interface GPUCopyExternalImageSourceInfo {
     source: GPUCopyExternalImageSource;
 }
 
+interface GPUDepthStencilState {
+    depthBias?: GPUDepthBias;
+    depthBiasClamp?: number;
+    depthBiasSlopeScale?: number;
+    depthCompare?: GPUCompareFunction;
+    depthWriteEnabled?: boolean;
+    format: GPUTextureFormat;
+    stencilBack?: GPUStencilFaceState;
+    stencilFront?: GPUStencilFaceState;
+    stencilReadMask?: GPUStencilValue;
+    stencilWriteMask?: GPUStencilValue;
+}
+
 interface GPUExtent3DDict {
     depthOrArrayLayers?: GPUIntegerCoordinate;
     height?: GPUIntegerCoordinate;
@@ -351,6 +381,16 @@ interface GPUExtent3DDict {
 
 interface GPUExternalTextureDescriptor extends GPUObjectDescriptorBase {
     colorSpace?: PredefinedColorSpace;
+}
+
+interface GPUFragmentState extends GPUProgrammableStage {
+    targets: (GPUColorTargetState | null)[];
+}
+
+interface GPUMultisampleState {
+    alphaToCoverageEnabled?: boolean;
+    count?: GPUSize32;
+    mask?: GPUSampleMask;
 }
 
 interface GPUObjectDescriptorBase {
@@ -378,6 +418,14 @@ interface GPUPipelineErrorInit {
 
 interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
     bindGroupLayouts: (GPUBindGroupLayout | null)[];
+}
+
+interface GPUPrimitiveState {
+    cullMode?: GPUCullMode;
+    frontFace?: GPUFrontFace;
+    stripIndexFormat?: GPUIndexFormat;
+    topology?: GPUPrimitiveTopology;
+    unclippedDepth?: boolean;
 }
 
 interface GPUProgrammableStage {
@@ -440,6 +488,14 @@ interface GPURenderPassTimestampWrites {
     querySet: GPUQuerySet;
 }
 
+interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
+    depthStencil?: GPUDepthStencilState;
+    fragment?: GPUFragmentState;
+    multisample?: GPUMultisampleState;
+    primitive?: GPUPrimitiveState;
+    vertex: GPUVertexState;
+}
+
 interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
     addressModeU?: GPUAddressMode;
     addressModeV?: GPUAddressMode;
@@ -455,6 +511,13 @@ interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
 
 interface GPUShaderModuleDescriptor extends GPUObjectDescriptorBase {
     code: string;
+}
+
+interface GPUStencilFaceState {
+    compare?: GPUCompareFunction;
+    depthFailOp?: GPUStencilOperation;
+    failOp?: GPUStencilOperation;
+    passOp?: GPUStencilOperation;
 }
 
 interface GPUTexelCopyBufferInfo extends GPUTexelCopyBufferLayout {
@@ -497,6 +560,22 @@ interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
 
 interface GPUUncapturedErrorEventInit extends EventInit {
     error: GPUError;
+}
+
+interface GPUVertexAttribute {
+    format: GPUVertexFormat;
+    offset: GPUSize64;
+    shaderLocation: GPUIndex32;
+}
+
+interface GPUVertexBufferLayout {
+    arrayStride: GPUSize64;
+    attributes: GPUVertexAttribute[];
+    stepMode?: GPUVertexStepMode;
+}
+
+interface GPUVertexState extends GPUProgrammableStage {
+    buffers?: (GPUVertexBufferLayout | null)[];
 }
 
 interface GetNotificationOptions {
@@ -4896,6 +4975,18 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderBundleEncoder)
      */
     createRenderBundleEncoder(descriptor: GPURenderBundleEncoderDescriptor): GPURenderBundleEncoder;
+    /**
+     * The **`createRenderPipeline()`** method of the GPUDevice interface creates a GPURenderPipeline that can control the vertex and fragment shader stages and be used in a GPURenderPassEncoder or GPURenderBundleEncoder.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderPipeline)
+     */
+    createRenderPipeline(descriptor: GPURenderPipelineDescriptor): GPURenderPipeline;
+    /**
+     * The **`createRenderPipelineAsync()`** method of the GPUDevice interface returns a Promise that fulfills with a GPURenderPipeline, which can control the vertex and fragment shader stages and be used in a GPURenderPassEncoder or GPURenderBundleEncoder, once the pipeline can be used without any stalling.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createRenderPipelineAsync)
+     */
+    createRenderPipelineAsync(descriptor: GPURenderPipelineDescriptor): Promise<GPURenderPipeline>;
     /**
      * The **`createSampler()`** method of the GPUDevice interface creates a GPUSampler, which controls how shaders transform and filter texture resource data.
      *
@@ -13106,7 +13197,9 @@ type GPUBindingResource = GPUSampler | GPUTexture | GPUTextureView | GPUBuffer |
 type GPUBufferDynamicOffset = number;
 type GPUBufferUsageFlags = number;
 type GPUColor = number[] | GPUColorDict;
+type GPUColorWriteFlags = number;
 type GPUCopyExternalImageSource = ImageBitmap | ImageData | OffscreenCanvas;
+type GPUDepthBias = number;
 type GPUExtent3D = GPUIntegerCoordinate[] | GPUExtent3DDict;
 type GPUFlagsConstant = number;
 type GPUIndex32 = number;
@@ -13116,6 +13209,7 @@ type GPUMapModeFlags = number;
 type GPUOrigin2D = GPUIntegerCoordinate[] | GPUOrigin2DDict;
 type GPUOrigin3D = GPUIntegerCoordinate[] | GPUOrigin3DDict;
 type GPUPipelineConstantValue = number;
+type GPUSampleMask = number;
 type GPUSignedOffset32 = number;
 type GPUSize32 = number;
 type GPUSize32Out = number;
@@ -13173,24 +13267,32 @@ type FontFaceSetLoadStatus = "loaded" | "loading";
 type FrameType = "auxiliary" | "nested" | "none" | "top-level";
 type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";
+type GPUBlendFactor = "constant" | "dst" | "dst-alpha" | "one" | "one-minus-constant" | "one-minus-dst" | "one-minus-dst-alpha" | "one-minus-src" | "one-minus-src-alpha" | "src" | "src-alpha" | "src-alpha-saturated" | "zero";
+type GPUBlendOperation = "add" | "max" | "min" | "reverse-subtract" | "subtract";
 type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCanvasAlphaMode = "opaque" | "premultiplied";
 type GPUCanvasToneMappingMode = "extended" | "standard";
 type GPUCompareFunction = "always" | "equal" | "greater" | "greater-equal" | "less" | "less-equal" | "never" | "not-equal";
 type GPUCompilationMessageType = "error" | "info" | "warning";
+type GPUCullMode = "back" | "front" | "none";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
 type GPUFilterMode = "linear" | "nearest";
+type GPUFrontFace = "ccw" | "cw";
 type GPUIndexFormat = "uint16" | "uint32";
 type GPULoadOp = "clear" | "load";
 type GPUMipmapFilterMode = "linear" | "nearest";
 type GPUPipelineErrorReason = "internal" | "validation";
+type GPUPrimitiveTopology = "line-list" | "line-strip" | "point-list" | "triangle-list" | "triangle-strip";
 type GPUQueryType = "occlusion" | "timestamp";
+type GPUStencilOperation = "decrement-clamp" | "decrement-wrap" | "increment-clamp" | "increment-wrap" | "invert" | "keep" | "replace" | "zero";
 type GPUStoreOp = "discard" | "store";
 type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
 type GPUTextureDimension = "1d" | "2d" | "3d";
 type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
 type GPUTextureViewDimension = "1d" | "2d" | "2d-array" | "3d" | "cube" | "cube-array";
+type GPUVertexFormat = "float16" | "float16x2" | "float16x4" | "float32" | "float32x2" | "float32x3" | "float32x4" | "sint16" | "sint16x2" | "sint16x4" | "sint32" | "sint32x2" | "sint32x3" | "sint32x4" | "sint8" | "sint8x2" | "sint8x4" | "snorm16" | "snorm16x2" | "snorm16x4" | "snorm8" | "snorm8x2" | "snorm8x4" | "uint16" | "uint16x2" | "uint16x4" | "uint32" | "uint32x2" | "uint32x3" | "uint32x4" | "uint8" | "uint8x2" | "uint8x4" | "unorm10-10-10-2" | "unorm16" | "unorm16x2" | "unorm16x4" | "unorm8" | "unorm8x2" | "unorm8x4" | "unorm8x4-bgra";
+type GPUVertexStepMode = "instance" | "vertex";
 type GlobalCompositeOperation = "color" | "color-burn" | "color-dodge" | "copy" | "darken" | "destination-atop" | "destination-in" | "destination-out" | "destination-over" | "difference" | "exclusion" | "hard-light" | "hue" | "lighten" | "lighter" | "luminosity" | "multiply" | "overlay" | "saturation" | "screen" | "soft-light" | "source-atop" | "source-in" | "source-out" | "source-over" | "xor";
 type HdrMetadataType = "smpteSt2086" | "smpteSt2094-10" | "smpteSt2094-40";
 type IDBCursorDirection = "next" | "nextunique" | "prev" | "prevunique";

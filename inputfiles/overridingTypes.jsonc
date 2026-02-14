@@ -2881,8 +2881,6 @@
                 "methods": {
                     "method": {
                         "createBindGroupLayout": { "exposed": "" },
-                        "createRenderPipeline": { "exposed": "" },
-                        "createRenderPipelineAsync": { "exposed": "" },
                     }
                 }
             },
