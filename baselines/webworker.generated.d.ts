@@ -7283,19 +7283,6 @@ interface ImportMeta {
 }
 
 /**
- * The parameter passed into an install event handler function, the **`InstallEvent`** interface represents an install action that is dispatched on the ServiceWorkerGlobalScope of a ServiceWorker. As a child of ExtendableEvent, it ensures that functional events such as FetchEvent are not dispatched during installation.
- *
- * [MDN Reference](https://developer.mozilla.org/docs/Web/API/InstallEvent)
- */
-interface InstallEvent extends ExtendableEvent {
-}
-
-declare var InstallEvent: {
-    prototype: InstallEvent;
-    new(type: string, eventInitDict?: ExtendableEventInit): InstallEvent;
-};
-
-/**
  * The **`KHR_parallel_shader_compile`** extension is part of the WebGL API and enables a non-blocking poll operation, so that compile/link status availability (COMPLETION_STATUS_KHR) can be queried without potentially incurring stalls. In other words you can check the status of your shaders compiling without blocking the runtime.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/KHR_parallel_shader_compile)

@@ -11174,6 +11174,7 @@ interface CustomElementRegistry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry/getName)
      */
     getName(constructor: CustomElementConstructor): string | null;
+    initialize(root: Node): void;
     /**
      * The **`upgrade()`** method of the CustomElementRegistry interface upgrades all shadow-containing custom elements in a Node subtree, even before they are connected to the main document.
      *
@@ -13171,6 +13172,7 @@ interface DocumentOrShadowRoot {
     readonly activeElement: Element | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/adoptedStyleSheets) */
     adoptedStyleSheets: CSSStyleSheet[];
+    readonly customElementRegistry: CustomElementRegistry | null;
     /**
      * Returns document's fullscreen element.
      *
@@ -13480,6 +13482,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/currentCSSZoom)
      */
     readonly currentCSSZoom: number;
+    readonly customElementRegistry: CustomElementRegistry | null;
     /**
      * The **`id`** property of the Element interface represents the element's identifier, reflecting the id global attribute.
      *
@@ -21168,6 +21171,7 @@ interface HTMLTemplateElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootClonable)
      */
     shadowRootClonable: boolean;
+    shadowRootCustomElementRegistry: string;
     /**
      * The **`shadowRootDelegatesFocus`** property of the HTMLTemplateElement interface reflects the value of the shadowrootdelegatesfocus attribute of the associated <template> element.
      *
@@ -25530,6 +25534,12 @@ declare var NavigationHistoryEntry: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPrecommitController)
  */
 interface NavigationPrecommitController {
+    /**
+     * The **`addHandler()`** method of the NavigationPrecommitController interface allows you to dynamically add a handler callback function in precommit code, which will then be run after the navigation has committed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationPrecommitController/addHandler)
+     */
+    addHandler(handler: NavigationInterceptHandler): void;
     /**
      * The **`redirect()`** method of the NavigationPrecommitController interface redirects the browser to a specified URL and specifies history behavior and any desired state information.
      *

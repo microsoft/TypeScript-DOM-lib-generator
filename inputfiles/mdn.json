@@ -510,6 +510,11 @@
     "summary": "The Audio Output Devices API allows web applications to prompt users about what output device should be used for audio playback."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Audio_Session_API",
+    "pageType": "web-api-overview",
+    "summary": "The Audio Session API provides a mechanism for web applications to control how their audio interacts with other audio playing on a device."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/AudioBuffer",
     "pageType": "web-api-interface",
     "summary": "The AudioBuffer interface represents a short audio asset residing in memory, created from an audio file using the AudioContext.decodeAudioData() method, or from raw data using AudioContext.createBuffer(). Once put into an AudioBuffer, the audio can then be played by being passed into an AudioBufferSourceNode."
@@ -1073,6 +1078,16 @@
     "mdn_url": "/en-US/docs/Web/API/AudioScheduledSourceNode/stop",
     "pageType": "web-api-instance-method",
     "summary": "The stop() method on AudioScheduledSourceNode schedules a\nsound to cease playback at the specified time. If no time is specified, then the sound\nstops playing immediately."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioSession",
+    "pageType": "web-api-interface",
+    "summary": "The AudioSession interface of the Audio Session API allows developers to specify how audio from a web application interacts with other audio playing on a device."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioSession/type",
+    "pageType": "web-api-instance-property",
+    "summary": "The type property of the AudioSession interface returns or sets the type of the audio session."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AudioSinkInfo",
@@ -3013,6 +3028,11 @@
     "mdn_url": "/en-US/docs/Web/API/Clipboard_API",
     "pageType": "web-api-overview",
     "summary": "The Clipboard API provides the ability to respond to clipboard commands (cut, copy, and paste), as well as to asynchronously read from and write to the system clipboard."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Clipboard/clipboardchange_event",
+    "pageType": "web-api-event",
+    "summary": "The clipboardchange event of the Clipboard interface is fired when the system clipboard contents are changed in any way, for example via a system copy command, or via an API method such as Clipboard.writeText()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Clipboard/read",
@@ -19768,6 +19788,11 @@
     "mdn_url": "/en-US/docs/Web/API/Navigator/appVersion",
     "pageType": "web-api-instance-property",
     "summary": "The Navigator.appVersion read-only property of the Navigator interface returns a string representing version information about the browser."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Navigator/audioSession",
+    "pageType": "web-api-instance-property",
+    "summary": "The audioSession read-only property of the Navigator interface returns the AudioSession object for the current document."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/bluetooth",
