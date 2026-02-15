@@ -7708,6 +7708,15 @@ interface NavigatorConcurrentHardware {
     readonly hardwareConcurrency: number;
 }
 
+interface NavigatorGPU {
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/gpu)
+     */
+    readonly gpu: GPU;
+}
+
 interface NavigatorID {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/appCodeName) */
     readonly appCodeName: string;
@@ -13998,7 +14007,7 @@ declare var WorkerLocation: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WorkerNavigator)
  */
-interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
+interface WorkerNavigator extends NavigatorBadge, NavigatorConcurrentHardware, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorStorage {
     /**
      * The read-only **`mediaCapabilities`** property of the WorkerNavigator interface references a MediaCapabilities object that can expose information about the decoding and encoding capabilities for a given format and output capabilities (as defined by the Media Capabilities API).
      *

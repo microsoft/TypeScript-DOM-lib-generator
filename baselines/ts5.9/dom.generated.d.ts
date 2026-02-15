@@ -25757,7 +25757,7 @@ declare var NavigationTransition: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator)
  */
-interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
+interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, NavigatorConcurrentHardware, NavigatorContentUtils, NavigatorCookies, NavigatorGPU, NavigatorID, NavigatorLanguage, NavigatorLocks, NavigatorOnLine, NavigatorPlugins, NavigatorStorage {
     /**
      * The **`clipboard`** read-only property of the Navigator interface returns a Clipboard object used to read and write the clipboard's contents.
      * Available only in secure contexts.
@@ -25920,6 +25920,15 @@ interface NavigatorContentUtils {
 interface NavigatorCookies {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/cookieEnabled) */
     readonly cookieEnabled: boolean;
+}
+
+interface NavigatorGPU {
+    /**
+     * Available only in secure contexts.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/gpu)
+     */
+    readonly gpu: GPU;
 }
 
 interface NavigatorID {
