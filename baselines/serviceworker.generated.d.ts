@@ -531,6 +531,11 @@ interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
     vertex: GPUVertexState;
 }
 
+interface GPURequestAdapterOptions {
+    forceFallbackAdapter?: boolean;
+    powerPreference?: GPUPowerPreference;
+}
+
 interface GPUSamplerBindingLayout {
     type?: GPUSamplerBindingType;
 }
@@ -4529,6 +4534,38 @@ interface FormData {
 declare var FormData: {
     prototype: FormData;
     new(): FormData;
+};
+
+/**
+ * The **`GPU`** interface of the WebGPU API is the starting point for using WebGPU. It can be used to return a GPUAdapter from which you can request devices, configure features and limits, and more.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU)
+ */
+interface GPU {
+    /**
+     * The **`wgslLanguageFeatures`** read-only property of the GPU interface returns a WGSLLanguageFeatures object that reports the WGSL language extensions supported by the WebGPU implementation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU/wgslLanguageFeatures)
+     */
+    readonly wgslLanguageFeatures: WGSLLanguageFeatures;
+    /**
+     * The **`getPreferredCanvasFormat()`** method of the GPU interface returns the optimal canvas texture format for displaying 8-bit depth, standard dynamic range content on the current system.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU/getPreferredCanvasFormat)
+     */
+    getPreferredCanvasFormat(): GPUTextureFormat;
+    /**
+     * The **`requestAdapter()`** method of the GPU interface returns a Promise that fulfills with a GPUAdapter object instance. From this you can request a GPUDevice, adapter info, features, and limits.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPU/requestAdapter)
+     */
+    requestAdapter(options?: GPURequestAdapterOptions): Promise<GPUAdapter | null>;
+}
+
+declare var GPU: {
+    prototype: GPU;
+    new(): GPU;
 };
 
 /**
@@ -13368,6 +13405,7 @@ type GPUIndexFormat = "uint16" | "uint32";
 type GPULoadOp = "clear" | "load";
 type GPUMipmapFilterMode = "linear" | "nearest";
 type GPUPipelineErrorReason = "internal" | "validation";
+type GPUPowerPreference = "high-performance" | "low-power";
 type GPUPrimitiveTopology = "line-list" | "line-strip" | "point-list" | "triangle-list" | "triangle-strip";
 type GPUQueryType = "occlusion" | "timestamp";
 type GPUSamplerBindingType = "comparison" | "filtering" | "non-filtering";

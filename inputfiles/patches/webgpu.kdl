@@ -12,7 +12,8 @@ removals {
   }
 
   dictionary GPURequestAdapterOptions {
-    member featureLevel       // Blink experimental only as of 2024-11
+    member featureLevel // Gecko only, Blink experimental only as of 2026-02
+    member xrCompatible // WebKit only, Blink experimental only as of 2026-02
   }
 
   dictionary GPUShaderModuleDescriptor {

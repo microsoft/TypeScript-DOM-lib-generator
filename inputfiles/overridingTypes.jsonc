@@ -2871,9 +2871,6 @@
 
             // TODO: The following only exists to accept bcd@6.0.24 progressively,
             // and should be removed.
-            "GPU": {
-                "exposed": ""
-            },
             "TrustedHTML": {
                 "exposed": ""
             },
