@@ -483,6 +483,12 @@ interface GPUDepthStencilState {
     stencilWriteMask?: GPUStencilValue;
 }
 
+interface GPUDeviceDescriptor extends GPUObjectDescriptorBase {
+    defaultQueue?: GPUQueueDescriptor;
+    requiredFeatures?: GPUFeatureName[];
+    requiredLimits?: Record<string, GPUSize64 | undefined>;
+}
+
 interface GPUExtent3DDict {
     depthOrArrayLayers?: GPUIntegerCoordinate;
     height?: GPUIntegerCoordinate;
@@ -551,6 +557,9 @@ interface GPUProgrammableStage {
 interface GPUQuerySetDescriptor extends GPUObjectDescriptorBase {
     count: GPUSize32;
     type: GPUQueryType;
+}
+
+interface GPUQueueDescriptor extends GPUObjectDescriptorBase {
 }
 
 interface GPURenderBundleDescriptor extends GPUObjectDescriptorBase {
@@ -5220,6 +5229,44 @@ interface FormData {
 declare var FormData: {
     prototype: FormData;
     new(): FormData;
+};
+
+/**
+ * The **`GPUAdapter`** interface of the WebGPU API represents a GPU adapter. From this you can request a GPUDevice, adapter info, features, and limits.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter)
+ */
+interface GPUAdapter {
+    /**
+     * The **`features`** read-only property of the GPUAdapter interface returns a GPUSupportedFeatures object that describes additional functionality supported by the adapter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/features)
+     */
+    readonly features: GPUSupportedFeatures;
+    /**
+     * The **`info`** read-only property of the GPUAdapter interface returns a GPUAdapterInfo object containing identifying information about the adapter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/info)
+     */
+    readonly info: GPUAdapterInfo;
+    /**
+     * The **`limits`** read-only property of the GPUAdapter interface returns a GPUSupportedLimits object that describes the limits supported by the adapter.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/limits)
+     */
+    readonly limits: GPUSupportedLimits;
+    /**
+     * The **`requestDevice()`** method of the GPUAdapter interface returns a Promise that fulfills with a GPUDevice object, which is the primary interface for communicating with the GPU.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUAdapter/requestDevice)
+     */
+    requestDevice(descriptor?: GPUDeviceDescriptor): Promise<GPUDevice>;
+}
+
+declare var GPUAdapter: {
+    prototype: GPUAdapter;
+    new(): GPUAdapter;
 };
 
 /**
@@ -14998,6 +15045,7 @@ type GPUCompilationMessageType = "error" | "info" | "warning";
 type GPUCullMode = "back" | "front" | "none";
 type GPUDeviceLostReason = "destroyed" | "unknown";
 type GPUErrorFilter = "internal" | "out-of-memory" | "validation";
+type GPUFeatureName = "bgra8unorm-storage" | "clip-distances" | "core-features-and-limits" | "depth-clip-control" | "depth32float-stencil8" | "dual-source-blending" | "float32-blendable" | "float32-filterable" | "indirect-first-instance" | "primitive-index" | "rg11b10ufloat-renderable" | "shader-f16" | "subgroups" | "texture-compression-astc" | "texture-compression-astc-sliced-3d" | "texture-compression-bc" | "texture-compression-bc-sliced-3d" | "texture-compression-etc2" | "texture-formats-tier1" | "timestamp-query";
 type GPUFilterMode = "linear" | "nearest";
 type GPUFrontFace = "ccw" | "cw";
 type GPUIndexFormat = "uint16" | "uint32";

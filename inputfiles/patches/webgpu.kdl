@@ -7,11 +7,8 @@ removals {
   }
 
   enum GPUFeatureName {
-    clip-distances                         // Blink only as of 2024-11
-    dual-source-blending                   // Blink only as of 2024-11
-    float32-blendable                      // Blink only as of 2024-11
-    texture-compression-astc-sliced-3d     // No implementation as of 2024-11
-    texture-compression-bc-sliced-3d       // No implementation as of 2024-11
+    texture-component-swizzle // Blink only as of 2026-02
+    texture-formats-tier2 // Blink only as of 2026-02
   }
 
   dictionary GPURequestAdapterOptions {
