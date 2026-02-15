@@ -279,6 +279,20 @@ interface GPUBindGroupEntry {
     resource: GPUBindingResource;
 }
 
+interface GPUBindGroupLayoutDescriptor extends GPUObjectDescriptorBase {
+    entries: GPUBindGroupLayoutEntry[];
+}
+
+interface GPUBindGroupLayoutEntry {
+    binding: GPUIndex32;
+    buffer?: GPUBufferBindingLayout;
+    externalTexture?: GPUExternalTextureBindingLayout;
+    sampler?: GPUSamplerBindingLayout;
+    storageTexture?: GPUStorageTextureBindingLayout;
+    texture?: GPUTextureBindingLayout;
+    visibility: GPUShaderStageFlags;
+}
+
 interface GPUBlendComponent {
     dstFactor?: GPUBlendFactor;
     operation?: GPUBlendOperation;
@@ -294,6 +308,12 @@ interface GPUBufferBinding {
     buffer: GPUBuffer;
     offset?: GPUSize64;
     size?: GPUSize64;
+}
+
+interface GPUBufferBindingLayout {
+    hasDynamicOffset?: boolean;
+    minBindingSize?: GPUSize64;
+    type?: GPUBufferBindingType;
 }
 
 interface GPUBufferDescriptor extends GPUObjectDescriptorBase {
@@ -377,6 +397,9 @@ interface GPUExtent3DDict {
     depthOrArrayLayers?: GPUIntegerCoordinate;
     height?: GPUIntegerCoordinate;
     width: GPUIntegerCoordinate;
+}
+
+interface GPUExternalTextureBindingLayout {
 }
 
 interface GPUExternalTextureDescriptor extends GPUObjectDescriptorBase {
@@ -496,6 +519,10 @@ interface GPURenderPipelineDescriptor extends GPUPipelineDescriptorBase {
     vertex: GPUVertexState;
 }
 
+interface GPUSamplerBindingLayout {
+    type?: GPUSamplerBindingType;
+}
+
 interface GPUSamplerDescriptor extends GPUObjectDescriptorBase {
     addressModeU?: GPUAddressMode;
     addressModeV?: GPUAddressMode;
@@ -520,6 +547,12 @@ interface GPUStencilFaceState {
     passOp?: GPUStencilOperation;
 }
 
+interface GPUStorageTextureBindingLayout {
+    access?: GPUStorageTextureAccess;
+    format: GPUTextureFormat;
+    viewDimension?: GPUTextureViewDimension;
+}
+
 interface GPUTexelCopyBufferInfo extends GPUTexelCopyBufferLayout {
     buffer: GPUBuffer;
 }
@@ -535,6 +568,12 @@ interface GPUTexelCopyTextureInfo {
     mipLevel?: GPUIntegerCoordinate;
     origin?: GPUOrigin3D;
     texture: GPUTexture;
+}
+
+interface GPUTextureBindingLayout {
+    multisampled?: boolean;
+    sampleType?: GPUTextureSampleType;
+    viewDimension?: GPUTextureViewDimension;
 }
 
 interface GPUTextureDescriptor extends GPUObjectDescriptorBase {
@@ -4933,6 +4972,12 @@ interface GPUDevice extends EventTarget, GPUObjectBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBindGroup)
      */
     createBindGroup(descriptor: GPUBindGroupDescriptor): GPUBindGroup;
+    /**
+     * The **`createBindGroupLayout()`** method of the GPUDevice interface creates a GPUBindGroupLayout that defines the structure and purpose of related GPU resources such as buffers that will be used in a pipeline, and is used as a template when creating GPUBindGroups.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/GPUDevice/createBindGroupLayout)
+     */
+    createBindGroupLayout(descriptor: GPUBindGroupLayoutDescriptor): GPUBindGroupLayout;
     /**
      * The **`createBuffer()`** method of the GPUDevice interface creates a GPUBuffer in which to store raw data to use in GPU operations.
      *
@@ -13210,6 +13255,7 @@ type GPUOrigin2D = GPUIntegerCoordinate[] | GPUOrigin2DDict;
 type GPUOrigin3D = GPUIntegerCoordinate[] | GPUOrigin3DDict;
 type GPUPipelineConstantValue = number;
 type GPUSampleMask = number;
+type GPUShaderStageFlags = number;
 type GPUSignedOffset32 = number;
 type GPUSize32 = number;
 type GPUSize32Out = number;
@@ -13269,6 +13315,7 @@ type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";
 type GPUBlendFactor = "constant" | "dst" | "dst-alpha" | "one" | "one-minus-constant" | "one-minus-dst" | "one-minus-dst-alpha" | "one-minus-src" | "one-minus-src-alpha" | "src" | "src-alpha" | "src-alpha-saturated" | "zero";
 type GPUBlendOperation = "add" | "max" | "min" | "reverse-subtract" | "subtract";
+type GPUBufferBindingType = "read-only-storage" | "storage" | "uniform";
 type GPUBufferMapState = "mapped" | "pending" | "unmapped";
 type GPUCanvasAlphaMode = "opaque" | "premultiplied";
 type GPUCanvasToneMappingMode = "extended" | "standard";
@@ -13285,11 +13332,14 @@ type GPUMipmapFilterMode = "linear" | "nearest";
 type GPUPipelineErrorReason = "internal" | "validation";
 type GPUPrimitiveTopology = "line-list" | "line-strip" | "point-list" | "triangle-list" | "triangle-strip";
 type GPUQueryType = "occlusion" | "timestamp";
+type GPUSamplerBindingType = "comparison" | "filtering" | "non-filtering";
 type GPUStencilOperation = "decrement-clamp" | "decrement-wrap" | "increment-clamp" | "increment-wrap" | "invert" | "keep" | "replace" | "zero";
+type GPUStorageTextureAccess = "read-only" | "read-write" | "write-only";
 type GPUStoreOp = "discard" | "store";
 type GPUTextureAspect = "all" | "depth-only" | "stencil-only";
 type GPUTextureDimension = "1d" | "2d" | "3d";
 type GPUTextureFormat = "astc-10x10-unorm" | "astc-10x10-unorm-srgb" | "astc-10x5-unorm" | "astc-10x5-unorm-srgb" | "astc-10x6-unorm" | "astc-10x6-unorm-srgb" | "astc-10x8-unorm" | "astc-10x8-unorm-srgb" | "astc-12x10-unorm" | "astc-12x10-unorm-srgb" | "astc-12x12-unorm" | "astc-12x12-unorm-srgb" | "astc-4x4-unorm" | "astc-4x4-unorm-srgb" | "astc-5x4-unorm" | "astc-5x4-unorm-srgb" | "astc-5x5-unorm" | "astc-5x5-unorm-srgb" | "astc-6x5-unorm" | "astc-6x5-unorm-srgb" | "astc-6x6-unorm" | "astc-6x6-unorm-srgb" | "astc-8x5-unorm" | "astc-8x5-unorm-srgb" | "astc-8x6-unorm" | "astc-8x6-unorm-srgb" | "astc-8x8-unorm" | "astc-8x8-unorm-srgb" | "bc1-rgba-unorm" | "bc1-rgba-unorm-srgb" | "bc2-rgba-unorm" | "bc2-rgba-unorm-srgb" | "bc3-rgba-unorm" | "bc3-rgba-unorm-srgb" | "bc4-r-snorm" | "bc4-r-unorm" | "bc5-rg-snorm" | "bc5-rg-unorm" | "bc6h-rgb-float" | "bc6h-rgb-ufloat" | "bc7-rgba-unorm" | "bc7-rgba-unorm-srgb" | "bgra8unorm" | "bgra8unorm-srgb" | "depth16unorm" | "depth24plus" | "depth24plus-stencil8" | "depth32float" | "depth32float-stencil8" | "eac-r11snorm" | "eac-r11unorm" | "eac-rg11snorm" | "eac-rg11unorm" | "etc2-rgb8a1unorm" | "etc2-rgb8a1unorm-srgb" | "etc2-rgb8unorm" | "etc2-rgb8unorm-srgb" | "etc2-rgba8unorm" | "etc2-rgba8unorm-srgb" | "r16float" | "r16sint" | "r16snorm" | "r16uint" | "r16unorm" | "r32float" | "r32sint" | "r32uint" | "r8sint" | "r8snorm" | "r8uint" | "r8unorm" | "rg11b10ufloat" | "rg16float" | "rg16sint" | "rg16snorm" | "rg16uint" | "rg16unorm" | "rg32float" | "rg32sint" | "rg32uint" | "rg8sint" | "rg8snorm" | "rg8uint" | "rg8unorm" | "rgb10a2uint" | "rgb10a2unorm" | "rgb9e5ufloat" | "rgba16float" | "rgba16sint" | "rgba16snorm" | "rgba16uint" | "rgba16unorm" | "rgba32float" | "rgba32sint" | "rgba32uint" | "rgba8sint" | "rgba8snorm" | "rgba8uint" | "rgba8unorm" | "rgba8unorm-srgb" | "stencil8";
+type GPUTextureSampleType = "depth" | "float" | "sint" | "uint" | "unfilterable-float";
 type GPUTextureViewDimension = "1d" | "2d" | "2d-array" | "3d" | "cube" | "cube-array";
 type GPUVertexFormat = "float16" | "float16x2" | "float16x4" | "float32" | "float32x2" | "float32x3" | "float32x4" | "sint16" | "sint16x2" | "sint16x4" | "sint32" | "sint32x2" | "sint32x3" | "sint32x4" | "sint8" | "sint8x2" | "sint8x4" | "snorm16" | "snorm16x2" | "snorm16x4" | "snorm8" | "snorm8x2" | "snorm8x4" | "uint16" | "uint16x2" | "uint16x4" | "uint32" | "uint32x2" | "uint32x3" | "uint32x4" | "uint8" | "uint8x2" | "uint8x4" | "unorm10-10-10-2" | "unorm16" | "unorm16x2" | "unorm16x4" | "unorm8" | "unorm8x2" | "unorm8x4" | "unorm8x4-bgra";
 type GPUVertexStepMode = "instance" | "vertex";
