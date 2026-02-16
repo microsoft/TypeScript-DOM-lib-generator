@@ -2249,6 +2249,7 @@
                                     "param": [
                                         {
                                             "name": "chunk",
+                                            "optional": false,
                                             "overrideType": "R"
                                         }
                                     ]
