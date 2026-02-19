@@ -4055,14 +4055,104 @@
     "summary": "The read-only style property of the CSSFontFaceRule interface contains a CSSStyleDeclaration object representing the descriptors available in the @font-face rule's body."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap",
+    "pageType": "web-api-interface",
+    "summary": "The CSSFontFeatureValuesMap interface of the CSS Object Model (CSSOM) represents an iterable and read-only set of the CSSFontFeatureValuesRule properties, such as swash, annotation, ornaments, etc."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/clear",
+    "pageType": "web-api-instance-method",
+    "summary": "The clear() method of the CSSFontFeatureValuesMap interface removes all declarations in the CSSFontFeatureValuesMap."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/delete",
+    "pageType": "web-api-instance-method",
+    "summary": "The delete() method of the CSSFontFeatureValuesMap interface removes the CSS declaration with the given property in the CSSFontFeatureValuesMap."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/entries",
+    "pageType": "web-api-instance-method",
+    "summary": "The entries() method of CSSFontFeatureValuesMap instances returns a new map iterator object that contains the [key, value] pairs for each declaration in this CSSFontFeatureValuesMap in insertion order."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/forEach",
+    "pageType": "web-api-instance-method",
+    "summary": "The forEach() method of CSSFontFeatureValuesMap instances executes a provided function once per each key/value pair in this map, in insertion order."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/get",
+    "pageType": "web-api-instance-method",
+    "summary": "The get() method of the CSSFontFeatureValuesMap interface returns value corresponding to the key in this CSSFontFeatureValuesMap, or undefined if there is none."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/has",
+    "pageType": "web-api-instance-method",
+    "summary": "The has() method of the CSSFontFeatureValuesMap interface returns a boolean indicating whether an entry with the specified key exists in this CSSFontFeatureValuesMap or not."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/keys",
+    "pageType": "web-api-instance-method",
+    "summary": "The keys() method of CSSFontFeatureValuesMap instances returns a new map iterator object that contains the [key, value] pairs for each declaration in this CSSFontFeatureValuesMap in insertion order."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/set",
+    "pageType": "web-api-instance-method",
+    "summary": "The set() method of CSSFontFeatureValuesMap instances adds a new entry with a specified key and value to this CSSFontFeatureValuesMap, or updates an existing entry if the key already exists."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/size",
+    "pageType": "web-api-instance-property",
+    "summary": "The size read-only property of the CSSFontFeatureValuesMap interface returns a positive integer containing the size of the CSSFontFeatureValuesMap object."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/Symbol.iterator",
+    "pageType": "web-api-instance-method",
+    "summary": "The [Symbol.iterator]() method of CSSFontFeatureValuesMap interface implements the iterable protocol and allows built-in iterators to be consumed by most syntaxes expecting iterables, such as the spread syntax and for...of loops. It returns the value of this, which is the iterator object itself."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap/values",
+    "pageType": "web-api-instance-method",
+    "summary": "The values() method of CSSFontFeatureValuesMap instances returns a new map iterator object that contains the [key, value] pairs for each declaration in this CSSFontFeatureValuesMap in insertion order."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule",
     "pageType": "web-api-interface",
-    "summary": "The CSSFontFeatureValuesRule interface represents an @font-feature-values at-rule, letting developers assign for each font face a common name to specify features indices to be used in font-variant-alternates."
+    "summary": "The CSSFontFeatureValuesRule interface represents an @font-feature-values at-rule. The values of its instance properties can be accessed with the CSSFontFeatureValuesMapinterface."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/annotation",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only annotation property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports annotation()."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/characterVariant",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only characterVariant property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports characterVariant()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/fontFamily",
     "pageType": "web-api-instance-property",
-    "summary": "The fontFamily property of the CSSConditionRule interface represents the name of the font family it applies to."
+    "summary": "The fontFamily property of the CSSFontFeatureValuesRule interface represents the name of the font family it applies to."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/ornaments",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only ornaments property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports ornaments()."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/styleset",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only styleset property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports styleset()."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/stylistic",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only stylistic property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports stylistic()."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/swash",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only swash property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the developer-provided name and feature index for a variable font which supports swash()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontPaletteValuesRule",
@@ -27507,7 +27597,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SharedWorker",
     "pageType": "web-api-interface",
-    "summary": "The SharedWorker interface represents a specific kind of worker that can be accessed from several browsing contexts, such as several windows, iframes or even workers. They implement an interface different than dedicated workers and have a different global scope, SharedWorkerGlobalScope."
+    "summary": "The SharedWorker interface represents a specific kind of worker that can be accessed from several browsing contexts, such as multiple windows or iframes. Shared workers implement a different interface than dedicated workers, have a different global scope (SharedWorkerGlobalScope), and their constructor is not exposed in DedicatedWorkerGlobalScope, so they cannot be instantiated from dedicated workers."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SharedWorker/error_event",
@@ -39773,6 +39863,11 @@
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/background-size",
     "pageType": "css-property",
     "summary": "The background-size CSS property sets the size of the element's background image.\nThe image can be left to its natural size, stretched, or constrained to fit the available space."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/baseline-shift",
+    "pageType": "css-property",
+    "summary": "The baseline-shift CSS property repositions the dominant-baseline of a text element relative to the dominant-baseline of its parent text content element. The shifted element might be a sub- or superscript. If the property is present, the value overrides the element's baseline-shift attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/baseline-source",

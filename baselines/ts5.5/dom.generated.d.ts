@@ -5354,13 +5354,13 @@ declare var CSSFontFaceRule: {
 };
 
 /**
- * The **`CSSFontFeatureValuesRule`** interface represents an @font-feature-values at-rule, letting developers assign for each font face a common name to specify features indices to be used in font-variant-alternates.
+ * The **`CSSFontFeatureValuesRule`** interface represents an @font-feature-values at-rule. The values of its instance properties can be accessed with the CSSFontFeatureValuesMapinterface.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule)
  */
 interface CSSFontFeatureValuesRule extends CSSRule {
     /**
-     * The **`fontFamily`** property of the CSSConditionRule interface represents the name of the font family it applies to.
+     * The **`fontFamily`** property of the CSSFontFeatureValuesRule interface represents the name of the font family it applies to.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFeatureValuesRule/fontFamily)
      */
@@ -6805,6 +6805,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-size)
      */
     backgroundSize: string;
+    /** The baseline-shift CSS property repositions the dominant-baseline of a text element relative to the dominant-baseline of its parent text content element. The shifted element might be a sub- or superscript. If the property is present, the value overrides the element's baseline-shift attribute. */
     baselineShift: string;
     /**
      * The baseline-source CSS property defines which baseline to use when inline-level boxes have multiple possible baselines, such as multi-line inline blocks or inline flex containers. The values allow for choosing between aligning to the box's first baseline, last baseline, or letting the browser decide automatically based on the box type.
@@ -35296,7 +35297,7 @@ declare var ShadowRoot: {
 };
 
 /**
- * The **`SharedWorker`** interface represents a specific kind of worker that can be accessed from several browsing contexts, such as several windows, iframes or even workers. They implement an interface different than dedicated workers and have a different global scope, SharedWorkerGlobalScope.
+ * The **`SharedWorker`** interface represents a specific kind of worker that can be accessed from several browsing contexts, such as multiple windows or iframes. Shared workers implement a different interface than dedicated workers, have a different global scope (SharedWorkerGlobalScope), and their constructor is not exposed in DedicatedWorkerGlobalScope, so they cannot be instantiated from dedicated workers.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SharedWorker)
  */
