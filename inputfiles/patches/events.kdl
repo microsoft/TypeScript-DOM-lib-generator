@@ -29,7 +29,7 @@ interface-mixin GlobalEventHandlers {
   event dragover type=DragEvent
   event dragstart type=DragEvent
   event drop type=DragEvent
-  event error type=ErrorEvent
+  event error type=Event
   event focus type=FocusEvent
   event focusin type=FocusEvent
   event focusout type=FocusEvent
@@ -76,7 +76,6 @@ interface-mixin GlobalEventHandlers {
   event transitionstart type=TransitionEvent
   event transitionend type=TransitionEvent
   event transitioncancel type=TransitionEvent
-  property onerror overrideType=OnErrorEventHandler
 }
 
 interface-mixin MessageEventTarget {
@@ -109,6 +108,8 @@ interface Window {
   event gamepadconnected type=GamepadEvent
   event gamepaddisconnected type=GamepadEvent
   event DOMContentLoaded type=Event
+  event error type=ErrorEvent
+  property onerror overrideType="OnErrorEventHandler" mdnUrl="https://developer.mozilla.org/docs/Web/API/Window/error_event"
 }
 
 interface WorkerGlobalScope {
