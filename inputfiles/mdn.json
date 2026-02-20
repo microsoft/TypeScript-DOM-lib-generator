@@ -4117,7 +4117,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule",
     "pageType": "web-api-interface",
-    "summary": "The CSSFontFeatureValuesRule interface represents an @font-feature-values at-rule. The values of its instance properties can be accessed with the CSSFontFeatureValuesMapinterface."
+    "summary": "The CSSFontFeatureValuesRule interface represents an @font-feature-values at-rule. The values of its instance properties can be accessed with the CSSFontFeatureValuesMap interface."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/annotation",
@@ -4127,7 +4127,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/characterVariant",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only characterVariant property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports characterVariant()."
+    "summary": "The read-only characterVariant property of the CSSFontFeatureValuesRule interface contains a CSSFontFeatureValuesMap object representing the user-defined-ident and feature index for a variable font which supports character-variant()."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesRule/fontFamily",
