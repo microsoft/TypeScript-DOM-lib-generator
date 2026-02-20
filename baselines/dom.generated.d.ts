@@ -517,7 +517,6 @@ interface CredentialRequestOptions {
     mediation?: CredentialMediationRequirement;
     publicKey?: PublicKeyCredentialRequestOptions;
     signal?: AbortSignal;
-    uiMode?: string;
 }
 
 interface CryptoKeyPair {
