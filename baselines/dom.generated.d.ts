@@ -6,26 +6,26 @@
 /////////////////////////////
 
 interface AacEncoderConfig {
-    format?: AacBitstreamFormat;
+    format?: AacBitstreamFormat | undefined;
 }
 
 interface AddEventListenerOptions extends EventListenerOptions {
-    once?: boolean;
-    passive?: boolean;
-    signal?: AbortSignal;
+    once?: boolean | undefined;
+    passive?: boolean | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface AddressErrors {
-    addressLine?: string;
-    city?: string;
-    country?: string;
-    dependentLocality?: string;
-    organization?: string;
-    phone?: string;
-    postalCode?: string;
-    recipient?: string;
-    region?: string;
-    sortingCode?: string;
+    addressLine?: string | undefined;
+    city?: string | undefined;
+    country?: string | undefined;
+    dependentLocality?: string | undefined;
+    organization?: string | undefined;
+    phone?: string | undefined;
+    postalCode?: string | undefined;
+    recipient?: string | undefined;
+    region?: string | undefined;
+    sortingCode?: string | undefined;
 }
 
 interface AesCbcParams extends Algorithm {
@@ -42,9 +42,9 @@ interface AesDerivedKeyParams extends Algorithm {
 }
 
 interface AesGcmParams extends Algorithm {
-    additionalData?: BufferSource;
+    additionalData?: BufferSource | undefined;
     iv: BufferSource;
-    tagLength?: number;
+    tagLength?: number | undefined;
 }
 
 interface AesKeyAlgorithm extends KeyAlgorithm {
@@ -66,59 +66,59 @@ interface AllAcceptedCredentialsOptions {
 }
 
 interface AnalyserOptions extends AudioNodeOptions {
-    fftSize?: number;
-    maxDecibels?: number;
-    minDecibels?: number;
-    smoothingTimeConstant?: number;
+    fftSize?: number | undefined;
+    maxDecibels?: number | undefined;
+    minDecibels?: number | undefined;
+    smoothingTimeConstant?: number | undefined;
 }
 
 interface AnimationEventInit extends EventInit {
-    animationName?: string;
-    elapsedTime?: number;
-    pseudoElement?: string;
+    animationName?: string | undefined;
+    elapsedTime?: number | undefined;
+    pseudoElement?: string | undefined;
 }
 
 interface AnimationPlaybackEventInit extends EventInit {
-    currentTime?: CSSNumberish | null;
-    timelineTime?: CSSNumberish | null;
+    currentTime?: CSSNumberish | null | undefined;
+    timelineTime?: CSSNumberish | null | undefined;
 }
 
 interface AssignedNodesOptions {
-    flatten?: boolean;
+    flatten?: boolean | undefined;
 }
 
 interface AudioBufferOptions {
     length: number;
-    numberOfChannels?: number;
+    numberOfChannels?: number | undefined;
     sampleRate: number;
 }
 
 interface AudioBufferSourceOptions {
-    buffer?: AudioBuffer | null;
-    detune?: number;
-    loop?: boolean;
-    loopEnd?: number;
-    loopStart?: number;
-    playbackRate?: number;
+    buffer?: AudioBuffer | null | undefined;
+    detune?: number | undefined;
+    loop?: boolean | undefined;
+    loopEnd?: number | undefined;
+    loopStart?: number | undefined;
+    playbackRate?: number | undefined;
 }
 
 interface AudioConfiguration {
-    bitrate?: number;
-    channels?: string;
+    bitrate?: number | undefined;
+    channels?: string | undefined;
     contentType: string;
-    samplerate?: number;
-    spatialRendering?: boolean;
+    samplerate?: number | undefined;
+    spatialRendering?: boolean | undefined;
 }
 
 interface AudioContextOptions {
-    latencyHint?: AudioContextLatencyCategory | number;
-    sampleRate?: number;
+    latencyHint?: AudioContextLatencyCategory | number | undefined;
+    sampleRate?: number | undefined;
 }
 
 interface AudioDataCopyToOptions {
-    format?: AudioSampleFormat;
-    frameCount?: number;
-    frameOffset?: number;
+    format?: AudioSampleFormat | undefined;
+    frameCount?: number | undefined;
+    frameOffset?: number | undefined;
     planeIndex: number;
 }
 
@@ -129,12 +129,12 @@ interface AudioDataInit {
     numberOfFrames: number;
     sampleRate: number;
     timestamp: number;
-    transfer?: ArrayBuffer[];
+    transfer?: ArrayBuffer[] | undefined;
 }
 
 interface AudioDecoderConfig {
     codec: string;
-    description?: AllowSharedBufferSource;
+    description?: AllowSharedBufferSource | undefined;
     numberOfChannels: number;
     sampleRate: number;
 }
@@ -145,17 +145,17 @@ interface AudioDecoderInit {
 }
 
 interface AudioDecoderSupport {
-    config?: AudioDecoderConfig;
-    supported?: boolean;
+    config?: AudioDecoderConfig | undefined;
+    supported?: boolean | undefined;
 }
 
 interface AudioEncoderConfig {
-    aac?: AacEncoderConfig;
-    bitrate?: number;
-    bitrateMode?: BitrateMode;
+    aac?: AacEncoderConfig | undefined;
+    bitrate?: number | undefined;
+    bitrateMode?: BitrateMode | undefined;
     codec: string;
     numberOfChannels: number;
-    opus?: OpusEncoderConfig;
+    opus?: OpusEncoderConfig | undefined;
     sampleRate: number;
 }
 
@@ -165,14 +165,14 @@ interface AudioEncoderInit {
 }
 
 interface AudioEncoderSupport {
-    config?: AudioEncoderConfig;
-    supported?: boolean;
+    config?: AudioEncoderConfig | undefined;
+    supported?: boolean | undefined;
 }
 
 interface AudioNodeOptions {
-    channelCount?: number;
-    channelCountMode?: ChannelCountMode;
-    channelInterpretation?: ChannelInterpretation;
+    channelCount?: number | undefined;
+    channelCountMode?: ChannelCountMode | undefined;
+    channelInterpretation?: ChannelInterpretation | undefined;
 }
 
 interface AudioProcessingEventInit extends EventInit {
@@ -182,107 +182,107 @@ interface AudioProcessingEventInit extends EventInit {
 }
 
 interface AudioTimestamp {
-    contextTime?: number;
-    performanceTime?: DOMHighResTimeStamp;
+    contextTime?: number | undefined;
+    performanceTime?: DOMHighResTimeStamp | undefined;
 }
 
 interface AudioWorkletNodeOptions extends AudioNodeOptions {
-    numberOfInputs?: number;
-    numberOfOutputs?: number;
-    outputChannelCount?: number[];
-    parameterData?: Record<string, number>;
-    processorOptions?: any;
+    numberOfInputs?: number | undefined;
+    numberOfOutputs?: number | undefined;
+    outputChannelCount?: number[] | undefined;
+    parameterData?: Record<string, number> | undefined;
+    processorOptions?: any | undefined;
 }
 
 interface AuthenticationExtensionsClientInputs {
-    appid?: string;
-    credProps?: boolean;
-    credentialProtectionPolicy?: string;
-    enforceCredentialProtectionPolicy?: boolean;
-    hmacCreateSecret?: boolean;
-    largeBlob?: AuthenticationExtensionsLargeBlobInputs;
-    minPinLength?: boolean;
-    prf?: AuthenticationExtensionsPRFInputs;
+    appid?: string | undefined;
+    credProps?: boolean | undefined;
+    credentialProtectionPolicy?: string | undefined;
+    enforceCredentialProtectionPolicy?: boolean | undefined;
+    hmacCreateSecret?: boolean | undefined;
+    largeBlob?: AuthenticationExtensionsLargeBlobInputs | undefined;
+    minPinLength?: boolean | undefined;
+    prf?: AuthenticationExtensionsPRFInputs | undefined;
 }
 
 interface AuthenticationExtensionsClientInputsJSON {
-    appid?: string;
-    credProps?: boolean;
-    largeBlob?: AuthenticationExtensionsLargeBlobInputsJSON;
-    prf?: AuthenticationExtensionsPRFInputsJSON;
+    appid?: string | undefined;
+    credProps?: boolean | undefined;
+    largeBlob?: AuthenticationExtensionsLargeBlobInputsJSON | undefined;
+    prf?: AuthenticationExtensionsPRFInputsJSON | undefined;
 }
 
 interface AuthenticationExtensionsClientOutputs {
-    appid?: boolean;
-    credProps?: CredentialPropertiesOutput;
-    hmacCreateSecret?: boolean;
-    largeBlob?: AuthenticationExtensionsLargeBlobOutputs;
-    prf?: AuthenticationExtensionsPRFOutputs;
+    appid?: boolean | undefined;
+    credProps?: CredentialPropertiesOutput | undefined;
+    hmacCreateSecret?: boolean | undefined;
+    largeBlob?: AuthenticationExtensionsLargeBlobOutputs | undefined;
+    prf?: AuthenticationExtensionsPRFOutputs | undefined;
 }
 
 interface AuthenticationExtensionsClientOutputsJSON {
-    appid?: boolean;
-    credProps?: CredentialPropertiesOutput;
-    largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON;
-    prf?: AuthenticationExtensionsPRFOutputsJSON;
+    appid?: boolean | undefined;
+    credProps?: CredentialPropertiesOutput | undefined;
+    largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON | undefined;
+    prf?: AuthenticationExtensionsPRFOutputsJSON | undefined;
 }
 
 interface AuthenticationExtensionsLargeBlobInputs {
-    read?: boolean;
-    support?: string;
-    write?: BufferSource;
+    read?: boolean | undefined;
+    support?: string | undefined;
+    write?: BufferSource | undefined;
 }
 
 interface AuthenticationExtensionsLargeBlobInputsJSON {
-    read?: boolean;
-    support?: string;
-    write?: Base64URLString;
+    read?: boolean | undefined;
+    support?: string | undefined;
+    write?: Base64URLString | undefined;
 }
 
 interface AuthenticationExtensionsLargeBlobOutputs {
-    blob?: ArrayBuffer;
-    supported?: boolean;
-    written?: boolean;
+    blob?: ArrayBuffer | undefined;
+    supported?: boolean | undefined;
+    written?: boolean | undefined;
 }
 
 interface AuthenticationExtensionsLargeBlobOutputsJSON {
-    blob?: Base64URLString;
-    supported?: boolean;
-    written?: boolean;
+    blob?: Base64URLString | undefined;
+    supported?: boolean | undefined;
+    written?: boolean | undefined;
 }
 
 interface AuthenticationExtensionsPRFInputs {
-    eval?: AuthenticationExtensionsPRFValues;
-    evalByCredential?: Record<string, AuthenticationExtensionsPRFValues>;
+    eval?: AuthenticationExtensionsPRFValues | undefined;
+    evalByCredential?: Record<string, AuthenticationExtensionsPRFValues> | undefined;
 }
 
 interface AuthenticationExtensionsPRFInputsJSON {
-    eval?: AuthenticationExtensionsPRFValuesJSON;
-    evalByCredential?: Record<string, AuthenticationExtensionsPRFValuesJSON>;
+    eval?: AuthenticationExtensionsPRFValuesJSON | undefined;
+    evalByCredential?: Record<string, AuthenticationExtensionsPRFValuesJSON> | undefined;
 }
 
 interface AuthenticationExtensionsPRFOutputs {
-    enabled?: boolean;
-    results?: AuthenticationExtensionsPRFValues;
+    enabled?: boolean | undefined;
+    results?: AuthenticationExtensionsPRFValues | undefined;
 }
 
 interface AuthenticationExtensionsPRFOutputsJSON {
-    enabled?: boolean;
-    results?: AuthenticationExtensionsPRFValuesJSON;
+    enabled?: boolean | undefined;
+    results?: AuthenticationExtensionsPRFValuesJSON | undefined;
 }
 
 interface AuthenticationExtensionsPRFValues {
     first: BufferSource;
-    second?: BufferSource;
+    second?: BufferSource | undefined;
 }
 
 interface AuthenticationExtensionsPRFValuesJSON {
     first: Base64URLString;
-    second?: Base64URLString;
+    second?: Base64URLString | undefined;
 }
 
 interface AuthenticationResponseJSON {
-    authenticatorAttachment?: string;
+    authenticatorAttachment?: string | undefined;
     clientExtensionResults: AuthenticationExtensionsClientOutputsJSON;
     id: string;
     rawId: Base64URLString;
@@ -294,136 +294,136 @@ interface AuthenticatorAssertionResponseJSON {
     authenticatorData: Base64URLString;
     clientDataJSON: Base64URLString;
     signature: Base64URLString;
-    userHandle?: Base64URLString;
+    userHandle?: Base64URLString | undefined;
 }
 
 interface AuthenticatorAttestationResponseJSON {
     attestationObject: Base64URLString;
     authenticatorData: Base64URLString;
     clientDataJSON: Base64URLString;
-    publicKey?: Base64URLString;
+    publicKey?: Base64URLString | undefined;
     publicKeyAlgorithm: COSEAlgorithmIdentifier;
     transports: string[];
 }
 
 interface AuthenticatorSelectionCriteria {
-    authenticatorAttachment?: AuthenticatorAttachment;
-    requireResidentKey?: boolean;
-    residentKey?: ResidentKeyRequirement;
-    userVerification?: UserVerificationRequirement;
+    authenticatorAttachment?: AuthenticatorAttachment | undefined;
+    requireResidentKey?: boolean | undefined;
+    residentKey?: ResidentKeyRequirement | undefined;
+    userVerification?: UserVerificationRequirement | undefined;
 }
 
 interface AvcEncoderConfig {
-    format?: AvcBitstreamFormat;
+    format?: AvcBitstreamFormat | undefined;
 }
 
 interface BiquadFilterOptions extends AudioNodeOptions {
-    Q?: number;
-    detune?: number;
-    frequency?: number;
-    gain?: number;
-    type?: BiquadFilterType;
+    Q?: number | undefined;
+    detune?: number | undefined;
+    frequency?: number | undefined;
+    gain?: number | undefined;
+    type?: BiquadFilterType | undefined;
 }
 
 interface BlobEventInit extends EventInit {
     data: Blob;
-    timecode?: DOMHighResTimeStamp;
+    timecode?: DOMHighResTimeStamp | undefined;
 }
 
 interface BlobPropertyBag {
-    endings?: EndingType;
-    type?: string;
+    endings?: EndingType | undefined;
+    type?: string | undefined;
 }
 
 interface CSSMatrixComponentOptions {
-    is2D?: boolean;
+    is2D?: boolean | undefined;
 }
 
 interface CSSNumericType {
-    angle?: number;
-    flex?: number;
-    frequency?: number;
-    length?: number;
-    percent?: number;
-    percentHint?: CSSNumericBaseType;
-    resolution?: number;
-    time?: number;
+    angle?: number | undefined;
+    flex?: number | undefined;
+    frequency?: number | undefined;
+    length?: number | undefined;
+    percent?: number | undefined;
+    percentHint?: CSSNumericBaseType | undefined;
+    resolution?: number | undefined;
+    time?: number | undefined;
 }
 
 interface CSSStyleSheetInit {
-    baseURL?: string;
-    disabled?: boolean;
-    media?: MediaList | string;
+    baseURL?: string | undefined;
+    disabled?: boolean | undefined;
+    media?: MediaList | string | undefined;
 }
 
 interface CacheQueryOptions {
-    ignoreMethod?: boolean;
-    ignoreSearch?: boolean;
-    ignoreVary?: boolean;
+    ignoreMethod?: boolean | undefined;
+    ignoreSearch?: boolean | undefined;
+    ignoreVary?: boolean | undefined;
 }
 
 interface CanvasRenderingContext2DSettings {
-    alpha?: boolean;
-    colorSpace?: PredefinedColorSpace;
-    desynchronized?: boolean;
-    willReadFrequently?: boolean;
+    alpha?: boolean | undefined;
+    colorSpace?: PredefinedColorSpace | undefined;
+    desynchronized?: boolean | undefined;
+    willReadFrequently?: boolean | undefined;
 }
 
 interface CaretPositionFromPointOptions {
-    shadowRoots?: ShadowRoot[];
+    shadowRoots?: ShadowRoot[] | undefined;
 }
 
 interface ChannelMergerOptions extends AudioNodeOptions {
-    numberOfInputs?: number;
+    numberOfInputs?: number | undefined;
 }
 
 interface ChannelSplitterOptions extends AudioNodeOptions {
-    numberOfOutputs?: number;
+    numberOfOutputs?: number | undefined;
 }
 
 interface CheckVisibilityOptions {
-    checkOpacity?: boolean;
-    checkVisibilityCSS?: boolean;
-    contentVisibilityAuto?: boolean;
-    opacityProperty?: boolean;
-    visibilityProperty?: boolean;
+    checkOpacity?: boolean | undefined;
+    checkVisibilityCSS?: boolean | undefined;
+    contentVisibilityAuto?: boolean | undefined;
+    opacityProperty?: boolean | undefined;
+    visibilityProperty?: boolean | undefined;
 }
 
 interface ClientQueryOptions {
-    includeUncontrolled?: boolean;
-    type?: ClientTypes;
+    includeUncontrolled?: boolean | undefined;
+    type?: ClientTypes | undefined;
 }
 
 interface ClipboardEventInit extends EventInit {
-    clipboardData?: DataTransfer | null;
+    clipboardData?: DataTransfer | null | undefined;
 }
 
 interface ClipboardItemOptions {
-    presentationStyle?: PresentationStyle;
+    presentationStyle?: PresentationStyle | undefined;
 }
 
 interface CloseEventInit extends EventInit {
-    code?: number;
-    reason?: string;
-    wasClean?: boolean;
+    code?: number | undefined;
+    reason?: string | undefined;
+    wasClean?: boolean | undefined;
 }
 
 interface CommandEventInit extends EventInit {
-    command?: string;
-    source?: Element | null;
+    command?: string | undefined;
+    source?: Element | null | undefined;
 }
 
 interface CompositionEventInit extends UIEventInit {
-    data?: string;
+    data?: string | undefined;
 }
 
 interface ComputedEffectTiming extends EffectTiming {
-    activeDuration?: CSSNumberish;
-    currentIteration?: number | null;
-    endTime?: CSSNumberish;
-    localTime?: CSSNumberish | null;
-    progress?: number | null;
-    startTime?: CSSNumberish;
+    activeDuration?: CSSNumberish | undefined;
+    currentIteration?: number | null | undefined;
+    endTime?: CSSNumberish | undefined;
+    localTime?: CSSNumberish | null | undefined;
+    progress?: number | null | undefined;
+    startTime?: CSSNumberish | undefined;
 }
 
 interface ComputedKeyframe {
@@ -435,88 +435,88 @@ interface ComputedKeyframe {
 }
 
 interface ConstantSourceOptions {
-    offset?: number;
+    offset?: number | undefined;
 }
 
 interface ConstrainBooleanOrDOMStringParameters {
-    exact?: boolean | string;
-    ideal?: boolean | string;
+    exact?: boolean | string | undefined;
+    ideal?: boolean | string | undefined;
 }
 
 interface ConstrainBooleanParameters {
-    exact?: boolean;
-    ideal?: boolean;
+    exact?: boolean | undefined;
+    ideal?: boolean | undefined;
 }
 
 interface ConstrainDOMStringParameters {
-    exact?: string | string[];
-    ideal?: string | string[];
+    exact?: string | string[] | undefined;
+    ideal?: string | string[] | undefined;
 }
 
 interface ConstrainDoubleRange extends DoubleRange {
-    exact?: number;
-    ideal?: number;
+    exact?: number | undefined;
+    ideal?: number | undefined;
 }
 
 interface ConstrainULongRange extends ULongRange {
-    exact?: number;
-    ideal?: number;
+    exact?: number | undefined;
+    ideal?: number | undefined;
 }
 
 interface ContentVisibilityAutoStateChangeEventInit extends EventInit {
-    skipped?: boolean;
+    skipped?: boolean | undefined;
 }
 
 interface ConvolverOptions extends AudioNodeOptions {
-    buffer?: AudioBuffer | null;
-    disableNormalization?: boolean;
+    buffer?: AudioBuffer | null | undefined;
+    disableNormalization?: boolean | undefined;
 }
 
 interface CookieChangeEventInit extends EventInit {
-    changed?: CookieList;
-    deleted?: CookieList;
+    changed?: CookieList | undefined;
+    deleted?: CookieList | undefined;
 }
 
 interface CookieInit {
-    domain?: string | null;
-    expires?: DOMHighResTimeStamp | null;
+    domain?: string | null | undefined;
+    expires?: DOMHighResTimeStamp | null | undefined;
     name: string;
-    partitioned?: boolean;
-    path?: string;
-    sameSite?: CookieSameSite;
+    partitioned?: boolean | undefined;
+    path?: string | undefined;
+    sameSite?: CookieSameSite | undefined;
     value: string;
 }
 
 interface CookieListItem {
-    name?: string;
-    value?: string;
+    name?: string | undefined;
+    value?: string | undefined;
 }
 
 interface CookieStoreDeleteOptions {
-    domain?: string | null;
+    domain?: string | null | undefined;
     name: string;
-    partitioned?: boolean;
-    path?: string;
+    partitioned?: boolean | undefined;
+    path?: string | undefined;
 }
 
 interface CookieStoreGetOptions {
-    name?: string;
-    url?: string;
+    name?: string | undefined;
+    url?: string | undefined;
 }
 
 interface CredentialCreationOptions {
-    publicKey?: PublicKeyCredentialCreationOptions;
-    signal?: AbortSignal;
+    publicKey?: PublicKeyCredentialCreationOptions | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface CredentialPropertiesOutput {
-    rk?: boolean;
+    rk?: boolean | undefined;
 }
 
 interface CredentialRequestOptions {
-    mediation?: CredentialMediationRequirement;
-    publicKey?: PublicKeyCredentialRequestOptions;
-    signal?: AbortSignal;
+    mediation?: CredentialMediationRequirement | undefined;
+    publicKey?: PublicKeyCredentialRequestOptions | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface CryptoKeyPair {
@@ -532,114 +532,114 @@ interface CurrentUserDetailsOptions {
 }
 
 interface CustomEventInit<T = any> extends EventInit {
-    detail?: T;
+    detail?: T | undefined;
 }
 
 interface DOMMatrix2DInit {
-    a?: number;
-    b?: number;
-    c?: number;
-    d?: number;
-    e?: number;
-    f?: number;
-    m11?: number;
-    m12?: number;
-    m21?: number;
-    m22?: number;
-    m41?: number;
-    m42?: number;
+    a?: number | undefined;
+    b?: number | undefined;
+    c?: number | undefined;
+    d?: number | undefined;
+    e?: number | undefined;
+    f?: number | undefined;
+    m11?: number | undefined;
+    m12?: number | undefined;
+    m21?: number | undefined;
+    m22?: number | undefined;
+    m41?: number | undefined;
+    m42?: number | undefined;
 }
 
 interface DOMMatrixInit extends DOMMatrix2DInit {
-    is2D?: boolean;
-    m13?: number;
-    m14?: number;
-    m23?: number;
-    m24?: number;
-    m31?: number;
-    m32?: number;
-    m33?: number;
-    m34?: number;
-    m43?: number;
-    m44?: number;
+    is2D?: boolean | undefined;
+    m13?: number | undefined;
+    m14?: number | undefined;
+    m23?: number | undefined;
+    m24?: number | undefined;
+    m31?: number | undefined;
+    m32?: number | undefined;
+    m33?: number | undefined;
+    m34?: number | undefined;
+    m43?: number | undefined;
+    m44?: number | undefined;
 }
 
 interface DOMPointInit {
-    w?: number;
-    x?: number;
-    y?: number;
-    z?: number;
+    w?: number | undefined;
+    x?: number | undefined;
+    y?: number | undefined;
+    z?: number | undefined;
 }
 
 interface DOMQuadInit {
-    p1?: DOMPointInit;
-    p2?: DOMPointInit;
-    p3?: DOMPointInit;
-    p4?: DOMPointInit;
+    p1?: DOMPointInit | undefined;
+    p2?: DOMPointInit | undefined;
+    p3?: DOMPointInit | undefined;
+    p4?: DOMPointInit | undefined;
 }
 
 interface DOMRectInit {
-    height?: number;
-    width?: number;
-    x?: number;
-    y?: number;
+    height?: number | undefined;
+    width?: number | undefined;
+    x?: number | undefined;
+    y?: number | undefined;
 }
 
 interface DelayOptions extends AudioNodeOptions {
-    delayTime?: number;
-    maxDelayTime?: number;
+    delayTime?: number | undefined;
+    maxDelayTime?: number | undefined;
 }
 
 interface DeviceMotionEventAccelerationInit {
-    x?: number | null;
-    y?: number | null;
-    z?: number | null;
+    x?: number | null | undefined;
+    y?: number | null | undefined;
+    z?: number | null | undefined;
 }
 
 interface DeviceMotionEventInit extends EventInit {
-    acceleration?: DeviceMotionEventAccelerationInit;
-    accelerationIncludingGravity?: DeviceMotionEventAccelerationInit;
-    interval?: number;
-    rotationRate?: DeviceMotionEventRotationRateInit;
+    acceleration?: DeviceMotionEventAccelerationInit | undefined;
+    accelerationIncludingGravity?: DeviceMotionEventAccelerationInit | undefined;
+    interval?: number | undefined;
+    rotationRate?: DeviceMotionEventRotationRateInit | undefined;
 }
 
 interface DeviceMotionEventRotationRateInit {
-    alpha?: number | null;
-    beta?: number | null;
-    gamma?: number | null;
+    alpha?: number | null | undefined;
+    beta?: number | null | undefined;
+    gamma?: number | null | undefined;
 }
 
 interface DeviceOrientationEventInit extends EventInit {
-    absolute?: boolean;
-    alpha?: number | null;
-    beta?: number | null;
-    gamma?: number | null;
+    absolute?: boolean | undefined;
+    alpha?: number | null | undefined;
+    beta?: number | null | undefined;
+    gamma?: number | null | undefined;
 }
 
 interface DisplayMediaStreamOptions {
-    audio?: boolean | MediaTrackConstraints;
-    video?: boolean | MediaTrackConstraints;
+    audio?: boolean | MediaTrackConstraints | undefined;
+    video?: boolean | MediaTrackConstraints | undefined;
 }
 
 interface DocumentTimelineOptions {
-    originTime?: DOMHighResTimeStamp;
+    originTime?: DOMHighResTimeStamp | undefined;
 }
 
 interface DoubleRange {
-    max?: number;
-    min?: number;
+    max?: number | undefined;
+    min?: number | undefined;
 }
 
 interface DragEventInit extends MouseEventInit {
-    dataTransfer?: DataTransfer | null;
+    dataTransfer?: DataTransfer | null | undefined;
 }
 
 interface DynamicsCompressorOptions extends AudioNodeOptions {
-    attack?: number;
-    knee?: number;
-    ratio?: number;
-    release?: number;
-    threshold?: number;
+    attack?: number | undefined;
+    knee?: number | undefined;
+    ratio?: number | undefined;
+    release?: number | undefined;
+    threshold?: number | undefined;
 }
 
 interface EcKeyAlgorithm extends KeyAlgorithm {
@@ -663,138 +663,138 @@ interface EcdsaParams extends Algorithm {
 }
 
 interface EffectTiming {
-    delay?: number;
-    direction?: PlaybackDirection;
-    duration?: number | CSSNumericValue | string;
-    easing?: string;
-    endDelay?: number;
-    fill?: FillMode;
-    iterationStart?: number;
-    iterations?: number;
-    playbackRate?: number;
+    delay?: number | undefined;
+    direction?: PlaybackDirection | undefined;
+    duration?: number | CSSNumericValue | string | undefined;
+    easing?: string | undefined;
+    endDelay?: number | undefined;
+    fill?: FillMode | undefined;
+    iterationStart?: number | undefined;
+    iterations?: number | undefined;
+    playbackRate?: number | undefined;
 }
 
 interface ElementCreationOptions {
-    customElementRegistry?: CustomElementRegistry | null;
-    is?: string;
+    customElementRegistry?: CustomElementRegistry | null | undefined;
+    is?: string | undefined;
 }
 
 interface ElementDefinitionOptions {
-    extends?: string;
+    extends?: string | undefined;
 }
 
 interface EncodedAudioChunkInit {
     data: AllowSharedBufferSource;
-    duration?: number;
+    duration?: number | undefined;
     timestamp: number;
-    transfer?: ArrayBuffer[];
+    transfer?: ArrayBuffer[] | undefined;
     type: EncodedAudioChunkType;
 }
 
 interface EncodedAudioChunkMetadata {
-    decoderConfig?: AudioDecoderConfig;
+    decoderConfig?: AudioDecoderConfig | undefined;
 }
 
 interface EncodedVideoChunkInit {
     data: AllowSharedBufferSource;
-    duration?: number;
+    duration?: number | undefined;
     timestamp: number;
     type: EncodedVideoChunkType;
 }
 
 interface EncodedVideoChunkMetadata {
-    decoderConfig?: VideoDecoderConfig;
-    svc?: SvcOutputMetadata;
+    decoderConfig?: VideoDecoderConfig | undefined;
+    svc?: SvcOutputMetadata | undefined;
 }
 
 interface ErrorEventInit extends EventInit {
-    colno?: number;
-    error?: any;
-    filename?: string;
-    lineno?: number;
-    message?: string;
+    colno?: number | undefined;
+    error?: any | undefined;
+    filename?: string | undefined;
+    lineno?: number | undefined;
+    message?: string | undefined;
 }
 
 interface EventInit {
-    bubbles?: boolean;
-    cancelable?: boolean;
-    composed?: boolean;
+    bubbles?: boolean | undefined;
+    cancelable?: boolean | undefined;
+    composed?: boolean | undefined;
 }
 
 interface EventListenerOptions {
-    capture?: boolean;
+    capture?: boolean | undefined;
 }
 
 interface EventModifierInit extends UIEventInit {
-    altKey?: boolean;
-    ctrlKey?: boolean;
-    metaKey?: boolean;
-    modifierAltGraph?: boolean;
-    modifierCapsLock?: boolean;
-    modifierFn?: boolean;
-    modifierFnLock?: boolean;
-    modifierHyper?: boolean;
-    modifierNumLock?: boolean;
-    modifierScrollLock?: boolean;
-    modifierSuper?: boolean;
-    modifierSymbol?: boolean;
-    modifierSymbolLock?: boolean;
-    shiftKey?: boolean;
+    altKey?: boolean | undefined;
+    ctrlKey?: boolean | undefined;
+    metaKey?: boolean | undefined;
+    modifierAltGraph?: boolean | undefined;
+    modifierCapsLock?: boolean | undefined;
+    modifierFn?: boolean | undefined;
+    modifierFnLock?: boolean | undefined;
+    modifierHyper?: boolean | undefined;
+    modifierNumLock?: boolean | undefined;
+    modifierScrollLock?: boolean | undefined;
+    modifierSuper?: boolean | undefined;
+    modifierSymbol?: boolean | undefined;
+    modifierSymbolLock?: boolean | undefined;
+    shiftKey?: boolean | undefined;
 }
 
 interface EventSourceInit {
-    withCredentials?: boolean;
+    withCredentials?: boolean | undefined;
 }
 
 interface FilePropertyBag extends BlobPropertyBag {
-    lastModified?: number;
+    lastModified?: number | undefined;
 }
 
 interface FileSystemCreateWritableOptions {
-    keepExistingData?: boolean;
+    keepExistingData?: boolean | undefined;
 }
 
 interface FileSystemFlags {
-    create?: boolean;
-    exclusive?: boolean;
+    create?: boolean | undefined;
+    exclusive?: boolean | undefined;
 }
 
 interface FileSystemGetDirectoryOptions {
-    create?: boolean;
+    create?: boolean | undefined;
 }
 
 interface FileSystemGetFileOptions {
-    create?: boolean;
+    create?: boolean | undefined;
 }
 
 interface FileSystemRemoveOptions {
-    recursive?: boolean;
+    recursive?: boolean | undefined;
 }
 
 interface FocusEventInit extends UIEventInit {
-    relatedTarget?: EventTarget | null;
+    relatedTarget?: EventTarget | null | undefined;
 }
 
 interface FocusOptions {
-    focusVisible?: boolean;
-    preventScroll?: boolean;
+    focusVisible?: boolean | undefined;
+    preventScroll?: boolean | undefined;
 }
 
 interface FontFaceDescriptors {
-    ascentOverride?: string;
-    descentOverride?: string;
-    display?: FontDisplay;
-    featureSettings?: string;
-    lineGapOverride?: string;
-    stretch?: string;
-    style?: string;
-    unicodeRange?: string;
-    variationSettings?: string;
-    weight?: string;
+    ascentOverride?: string | undefined;
+    descentOverride?: string | undefined;
+    display?: FontDisplay | undefined;
+    featureSettings?: string | undefined;
+    lineGapOverride?: string | undefined;
+    stretch?: string | undefined;
+    style?: string | undefined;
+    unicodeRange?: string | undefined;
+    variationSettings?: string | undefined;
+    weight?: string | undefined;
 }
 
 interface FontFaceSetLoadEventInit extends EventInit {
-    fontfaces?: FontFace[];
+    fontfaces?: FontFace[] | undefined;
 }
 
 interface FormDataEventInit extends EventInit {
@@ -802,7 +802,7 @@ interface FormDataEventInit extends EventInit {
 }
 
 interface FullscreenOptions {
-    navigationUI?: FullscreenNavigationUI;
+    navigationUI?: FullscreenNavigationUI | undefined;
 }
 
 interface GPUBindGroupDescriptor extends GPUObjectDescriptorBase {
@@ -960,7 +960,7 @@ interface GPUMultisampleState {
 }
 
 interface GPUObjectDescriptorBase {
-    label?: string;
+    label?: string | undefined;
 }
 
 interface GPUOrigin2DDict {
@@ -1138,14 +1138,14 @@ interface GPUTextureDescriptor extends GPUObjectDescriptorBase {
 }
 
 interface GPUTextureViewDescriptor extends GPUObjectDescriptorBase {
-    arrayLayerCount?: GPUIntegerCoordinate;
-    aspect?: GPUTextureAspect;
-    baseArrayLayer?: GPUIntegerCoordinate;
-    baseMipLevel?: GPUIntegerCoordinate;
-    dimension?: GPUTextureViewDimension;
-    format?: GPUTextureFormat;
-    mipLevelCount?: GPUIntegerCoordinate;
-    usage?: GPUTextureUsageFlags;
+    arrayLayerCount?: GPUIntegerCoordinate | undefined;
+    aspect?: GPUTextureAspect | undefined;
+    baseArrayLayer?: GPUIntegerCoordinate | undefined;
+    baseMipLevel?: GPUIntegerCoordinate | undefined;
+    dimension?: GPUTextureViewDimension | undefined;
+    format?: GPUTextureFormat | undefined;
+    mipLevelCount?: GPUIntegerCoordinate | undefined;
+    usage?: GPUTextureUsageFlags | undefined;
 }
 
 interface GPUUncapturedErrorEventInit extends EventInit {
@@ -1169,16 +1169,16 @@ interface GPUVertexState extends GPUProgrammableStage {
 }
 
 interface GainOptions extends AudioNodeOptions {
-    gain?: number;
+    gain?: number | undefined;
 }
 
 interface GamepadEffectParameters {
-    duration?: number;
-    leftTrigger?: number;
-    rightTrigger?: number;
-    startDelay?: number;
-    strongMagnitude?: number;
-    weakMagnitude?: number;
+    duration?: number | undefined;
+    leftTrigger?: number | undefined;
+    rightTrigger?: number | undefined;
+    startDelay?: number | undefined;
+    strongMagnitude?: number | undefined;
+    weakMagnitude?: number | undefined;
 }
 
 interface GamepadEventInit extends EventInit {
@@ -1186,29 +1186,29 @@ interface GamepadEventInit extends EventInit {
 }
 
 interface GetAnimationsOptions {
-    subtree?: boolean;
+    subtree?: boolean | undefined;
 }
 
 interface GetComposedRangesOptions {
-    shadowRoots?: ShadowRoot[];
+    shadowRoots?: ShadowRoot[] | undefined;
 }
 
 interface GetHTMLOptions {
-    serializableShadowRoots?: boolean;
-    shadowRoots?: ShadowRoot[];
+    serializableShadowRoots?: boolean | undefined;
+    shadowRoots?: ShadowRoot[] | undefined;
 }
 
 interface GetNotificationOptions {
-    tag?: string;
+    tag?: string | undefined;
 }
 
 interface GetRootNodeOptions {
-    composed?: boolean;
+    composed?: boolean | undefined;
 }
 
 interface HashChangeEventInit extends EventInit {
-    newURL?: string;
-    oldURL?: string;
+    newURL?: string | undefined;
+    oldURL?: string | undefined;
 }
 
 interface HkdfParams extends Algorithm {
@@ -1219,7 +1219,7 @@ interface HkdfParams extends Algorithm {
 
 interface HmacImportParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
-    length?: number;
+    length?: number | undefined;
 }
 
 interface HmacKeyAlgorithm extends KeyAlgorithm {
@@ -1229,31 +1229,31 @@ interface HmacKeyAlgorithm extends KeyAlgorithm {
 
 interface HmacKeyGenParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
-    length?: number;
+    length?: number | undefined;
 }
 
 interface IDBDatabaseInfo {
-    name?: string;
-    version?: number;
+    name?: string | undefined;
+    version?: number | undefined;
 }
 
 interface IDBIndexParameters {
-    multiEntry?: boolean;
-    unique?: boolean;
+    multiEntry?: boolean | undefined;
+    unique?: boolean | undefined;
 }
 
 interface IDBObjectStoreParameters {
-    autoIncrement?: boolean;
-    keyPath?: string | string[] | null;
+    autoIncrement?: boolean | undefined;
+    keyPath?: string | string[] | null | undefined;
 }
 
 interface IDBTransactionOptions {
-    durability?: IDBTransactionDurability;
+    durability?: IDBTransactionDurability | undefined;
 }
 
 interface IDBVersionChangeEventInit extends EventInit {
-    newVersion?: number | null;
-    oldVersion?: number;
+    newVersion?: number | null | undefined;
+    oldVersion?: number | undefined;
 }
 
 interface IIRFilterOptions extends AudioNodeOptions {
@@ -1262,30 +1262,30 @@ interface IIRFilterOptions extends AudioNodeOptions {
 }
 
 interface IdleRequestOptions {
-    timeout?: number;
+    timeout?: number | undefined;
 }
 
 interface ImageBitmapOptions {
-    colorSpaceConversion?: ColorSpaceConversion;
-    imageOrientation?: ImageOrientation;
-    premultiplyAlpha?: PremultiplyAlpha;
-    resizeHeight?: number;
-    resizeQuality?: ResizeQuality;
-    resizeWidth?: number;
+    colorSpaceConversion?: ColorSpaceConversion | undefined;
+    imageOrientation?: ImageOrientation | undefined;
+    premultiplyAlpha?: PremultiplyAlpha | undefined;
+    resizeHeight?: number | undefined;
+    resizeQuality?: ResizeQuality | undefined;
+    resizeWidth?: number | undefined;
 }
 
 interface ImageBitmapRenderingContextSettings {
-    alpha?: boolean;
+    alpha?: boolean | undefined;
 }
 
 interface ImageDataSettings {
-    colorSpace?: PredefinedColorSpace;
-    pixelFormat?: ImageDataPixelFormat;
+    colorSpace?: PredefinedColorSpace | undefined;
+    pixelFormat?: ImageDataPixelFormat | undefined;
 }
 
 interface ImageDecodeOptions {
-    completeFramesOnly?: boolean;
-    frameIndex?: number;
+    completeFramesOnly?: boolean | undefined;
+    frameIndex?: number | undefined;
 }
 
 interface ImageDecodeResult {
@@ -1294,59 +1294,59 @@ interface ImageDecodeResult {
 }
 
 interface ImageDecoderInit {
-    colorSpaceConversion?: ColorSpaceConversion;
+    colorSpaceConversion?: ColorSpaceConversion | undefined;
     data: ImageBufferSource;
-    desiredHeight?: number;
-    desiredWidth?: number;
-    preferAnimation?: boolean;
-    transfer?: ArrayBuffer[];
+    desiredHeight?: number | undefined;
+    desiredWidth?: number | undefined;
+    preferAnimation?: boolean | undefined;
+    transfer?: ArrayBuffer[] | undefined;
     type: string;
 }
 
 interface ImageEncodeOptions {
-    quality?: number;
-    type?: string;
+    quality?: number | undefined;
+    type?: string | undefined;
 }
 
 interface ImportNodeOptions {
-    customElementRegistry?: CustomElementRegistry;
-    selfOnly?: boolean;
+    customElementRegistry?: CustomElementRegistry | undefined;
+    selfOnly?: boolean | undefined;
 }
 
 interface InputEventInit extends UIEventInit {
-    data?: string | null;
-    dataTransfer?: DataTransfer | null;
-    inputType?: string;
-    isComposing?: boolean;
-    targetRanges?: StaticRange[];
+    data?: string | null | undefined;
+    dataTransfer?: DataTransfer | null | undefined;
+    inputType?: string | undefined;
+    isComposing?: boolean | undefined;
+    targetRanges?: StaticRange[] | undefined;
 }
 
 interface IntersectionObserverInit {
-    root?: Element | Document | null;
-    rootMargin?: string;
-    scrollMargin?: string;
-    threshold?: number | number[];
+    root?: Element | Document | null | undefined;
+    rootMargin?: string | undefined;
+    scrollMargin?: string | undefined;
+    threshold?: number | number[] | undefined;
 }
 
 interface JsonWebKey {
-    alg?: string;
-    crv?: string;
-    d?: string;
-    dp?: string;
-    dq?: string;
-    e?: string;
-    ext?: boolean;
-    k?: string;
-    key_ops?: string[];
-    kty?: string;
-    n?: string;
-    oth?: RsaOtherPrimesInfo[];
-    p?: string;
-    q?: string;
-    qi?: string;
-    use?: string;
-    x?: string;
-    y?: string;
+    alg?: string | undefined;
+    crv?: string | undefined;
+    d?: string | undefined;
+    dp?: string | undefined;
+    dq?: string | undefined;
+    e?: string | undefined;
+    ext?: boolean | undefined;
+    k?: string | undefined;
+    key_ops?: string[] | undefined;
+    kty?: string | undefined;
+    n?: string | undefined;
+    oth?: RsaOtherPrimesInfo[] | undefined;
+    p?: string | undefined;
+    q?: string | undefined;
+    qi?: string | undefined;
+    use?: string | undefined;
+    x?: string | undefined;
+    y?: string | undefined;
 }
 
 interface KeyAlgorithm {
@@ -1354,70 +1354,70 @@ interface KeyAlgorithm {
 }
 
 interface KeySystemTrackConfiguration {
-    robustness?: string;
+    robustness?: string | undefined;
 }
 
 interface KeyboardEventInit extends EventModifierInit {
     /** @deprecated `charCode` is inconsistent across environments, consider using `key` instead. */
-    charCode?: number;
-    code?: string;
-    isComposing?: boolean;
-    key?: string;
+    charCode?: number | undefined;
+    code?: string | undefined;
+    isComposing?: boolean | undefined;
+    key?: string | undefined;
     /** @deprecated `keyCode` is inconsistent across environments, consider using `key` instead. */
-    keyCode?: number;
-    location?: number;
-    repeat?: boolean;
+    keyCode?: number | undefined;
+    location?: number | undefined;
+    repeat?: boolean | undefined;
 }
 
 interface Keyframe {
-    composite?: CompositeOperationOrAuto;
-    easing?: string;
-    offset?: number | null;
+    composite?: CompositeOperationOrAuto | undefined;
+    easing?: string | undefined;
+    offset?: number | null | undefined;
     [property: string]: string | number | null | undefined;
 }
 
 interface KeyframeAnimationOptions extends KeyframeEffectOptions {
-    id?: string;
-    rangeEnd?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string;
-    rangeStart?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string;
-    timeline?: AnimationTimeline | null;
+    id?: string | undefined;
+    rangeEnd?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string | undefined;
+    rangeStart?: TimelineRangeOffset | CSSNumericValue | CSSKeywordValue | string | undefined;
+    timeline?: AnimationTimeline | null | undefined;
 }
 
 interface KeyframeEffectOptions extends EffectTiming {
-    composite?: CompositeOperation;
-    iterationComposite?: IterationCompositeOperation;
-    pseudoElement?: string | null;
+    composite?: CompositeOperation | undefined;
+    iterationComposite?: IterationCompositeOperation | undefined;
+    pseudoElement?: string | null | undefined;
 }
 
 interface LockInfo {
-    clientId?: string;
-    mode?: LockMode;
-    name?: string;
+    clientId?: string | undefined;
+    mode?: LockMode | undefined;
+    name?: string | undefined;
 }
 
 interface LockManagerSnapshot {
-    held?: LockInfo[];
-    pending?: LockInfo[];
+    held?: LockInfo[] | undefined;
+    pending?: LockInfo[] | undefined;
 }
 
 interface LockOptions {
-    ifAvailable?: boolean;
-    mode?: LockMode;
-    signal?: AbortSignal;
-    steal?: boolean;
+    ifAvailable?: boolean | undefined;
+    mode?: LockMode | undefined;
+    signal?: AbortSignal | undefined;
+    steal?: boolean | undefined;
 }
 
 interface MIDIConnectionEventInit extends EventInit {
-    port?: MIDIPort;
+    port?: MIDIPort | undefined;
 }
 
 interface MIDIMessageEventInit extends EventInit {
-    data?: Uint8Array<ArrayBuffer>;
+    data?: Uint8Array<ArrayBuffer> | undefined;
 }
 
 interface MIDIOptions {
-    software?: boolean;
-    sysex?: boolean;
+    software?: boolean | undefined;
+    sysex?: boolean | undefined;
 }
 
 interface MediaCapabilitiesDecodingInfo extends MediaCapabilitiesInfo {
@@ -1434,22 +1434,22 @@ interface MediaCapabilitiesInfo {
 }
 
 interface MediaCapabilitiesKeySystemConfiguration {
-    audio?: KeySystemTrackConfiguration;
-    distinctiveIdentifier?: MediaKeysRequirement;
-    initDataType?: string;
+    audio?: KeySystemTrackConfiguration | undefined;
+    distinctiveIdentifier?: MediaKeysRequirement | undefined;
+    initDataType?: string | undefined;
     keySystem: string;
-    persistentState?: MediaKeysRequirement;
-    sessionTypes?: string[];
-    video?: KeySystemTrackConfiguration;
+    persistentState?: MediaKeysRequirement | undefined;
+    sessionTypes?: string[] | undefined;
+    video?: KeySystemTrackConfiguration | undefined;
 }
 
 interface MediaConfiguration {
-    audio?: AudioConfiguration;
-    video?: VideoConfiguration;
+    audio?: AudioConfiguration | undefined;
+    video?: VideoConfiguration | undefined;
 }
 
 interface MediaDecodingConfiguration extends MediaConfiguration {
-    keySystemConfiguration?: MediaCapabilitiesKeySystemConfiguration;
+    keySystemConfiguration?: MediaCapabilitiesKeySystemConfiguration | undefined;
     type: MediaDecodingType;
 }
 
@@ -1462,14 +1462,14 @@ interface MediaEncodingConfiguration extends MediaConfiguration {
 }
 
 interface MediaEncryptedEventInit extends EventInit {
-    initData?: ArrayBuffer | null;
-    initDataType?: string;
+    initData?: ArrayBuffer | null | undefined;
+    initDataType?: string | undefined;
 }
 
 interface MediaImage {
-    sizes?: string;
+    sizes?: string | undefined;
     src: string;
-    type?: string;
+    type?: string | undefined;
 }
 
 interface MediaKeyMessageEventInit extends EventInit {
@@ -1478,61 +1478,61 @@ interface MediaKeyMessageEventInit extends EventInit {
 }
 
 interface MediaKeySystemConfiguration {
-    audioCapabilities?: MediaKeySystemMediaCapability[];
-    distinctiveIdentifier?: MediaKeysRequirement;
-    initDataTypes?: string[];
-    label?: string;
-    persistentState?: MediaKeysRequirement;
-    sessionTypes?: string[];
-    videoCapabilities?: MediaKeySystemMediaCapability[];
+    audioCapabilities?: MediaKeySystemMediaCapability[] | undefined;
+    distinctiveIdentifier?: MediaKeysRequirement | undefined;
+    initDataTypes?: string[] | undefined;
+    label?: string | undefined;
+    persistentState?: MediaKeysRequirement | undefined;
+    sessionTypes?: string[] | undefined;
+    videoCapabilities?: MediaKeySystemMediaCapability[] | undefined;
 }
 
 interface MediaKeySystemMediaCapability {
-    contentType?: string;
-    encryptionScheme?: string | null;
-    robustness?: string;
+    contentType?: string | undefined;
+    encryptionScheme?: string | null | undefined;
+    robustness?: string | undefined;
 }
 
 interface MediaKeysPolicy {
-    minHdcpVersion?: string;
+    minHdcpVersion?: string | undefined;
 }
 
 interface MediaMetadataInit {
-    album?: string;
-    artist?: string;
-    artwork?: MediaImage[];
-    title?: string;
+    album?: string | undefined;
+    artist?: string | undefined;
+    artwork?: MediaImage[] | undefined;
+    title?: string | undefined;
 }
 
 interface MediaPositionState {
-    duration?: number;
-    playbackRate?: number;
-    position?: number;
+    duration?: number | undefined;
+    playbackRate?: number | undefined;
+    position?: number | undefined;
 }
 
 interface MediaQueryListEventInit extends EventInit {
-    matches?: boolean;
-    media?: string;
+    matches?: boolean | undefined;
+    media?: string | undefined;
 }
 
 interface MediaRecorderOptions {
-    audioBitsPerSecond?: number;
-    bitsPerSecond?: number;
-    mimeType?: string;
-    videoBitsPerSecond?: number;
+    audioBitsPerSecond?: number | undefined;
+    bitsPerSecond?: number | undefined;
+    mimeType?: string | undefined;
+    videoBitsPerSecond?: number | undefined;
 }
 
 interface MediaSessionActionDetails {
     action: MediaSessionAction;
-    fastSeek?: boolean;
-    seekOffset?: number;
-    seekTime?: number;
+    fastSeek?: boolean | undefined;
+    seekOffset?: number | undefined;
+    seekTime?: number | undefined;
 }
 
 interface MediaSettingsRange {
-    max?: number;
-    min?: number;
-    step?: number;
+    max?: number | undefined;
+    min?: number | undefined;
+    step?: number | undefined;
 }
 
 interface MediaStreamAudioSourceOptions {
@@ -1540,10 +1540,10 @@ interface MediaStreamAudioSourceOptions {
 }
 
 interface MediaStreamConstraints {
-    audio?: boolean | MediaTrackConstraints;
-    peerIdentity?: string;
-    preferCurrentTab?: boolean;
-    video?: boolean | MediaTrackConstraints;
+    audio?: boolean | MediaTrackConstraints | undefined;
+    peerIdentity?: string | undefined;
+    preferCurrentTab?: boolean | undefined;
+    video?: boolean | MediaTrackConstraints | undefined;
 }
 
 interface MediaStreamTrackEventInit extends EventInit {
@@ -1551,172 +1551,172 @@ interface MediaStreamTrackEventInit extends EventInit {
 }
 
 interface MediaTrackCapabilities {
-    aspectRatio?: DoubleRange;
-    autoGainControl?: boolean[];
-    backgroundBlur?: boolean[];
-    channelCount?: ULongRange;
-    deviceId?: string;
-    displaySurface?: string;
-    echoCancellation?: (boolean | string)[];
-    facingMode?: string[];
-    frameRate?: DoubleRange;
-    groupId?: string;
-    height?: ULongRange;
-    noiseSuppression?: boolean[];
-    sampleRate?: ULongRange;
-    sampleSize?: ULongRange;
-    width?: ULongRange;
+    aspectRatio?: DoubleRange | undefined;
+    autoGainControl?: boolean[] | undefined;
+    backgroundBlur?: boolean[] | undefined;
+    channelCount?: ULongRange | undefined;
+    deviceId?: string | undefined;
+    displaySurface?: string | undefined;
+    echoCancellation?: (boolean | string)[] | undefined;
+    facingMode?: string[] | undefined;
+    frameRate?: DoubleRange | undefined;
+    groupId?: string | undefined;
+    height?: ULongRange | undefined;
+    noiseSuppression?: boolean[] | undefined;
+    sampleRate?: ULongRange | undefined;
+    sampleSize?: ULongRange | undefined;
+    width?: ULongRange | undefined;
 }
 
 interface MediaTrackConstraintSet {
-    aspectRatio?: ConstrainDouble;
-    autoGainControl?: ConstrainBoolean;
-    backgroundBlur?: ConstrainBoolean;
-    channelCount?: ConstrainULong;
-    deviceId?: ConstrainDOMString;
-    displaySurface?: ConstrainDOMString;
-    echoCancellation?: ConstrainBooleanOrDOMString;
-    facingMode?: ConstrainDOMString;
-    frameRate?: ConstrainDouble;
-    groupId?: ConstrainDOMString;
-    height?: ConstrainULong;
-    noiseSuppression?: ConstrainBoolean;
-    sampleRate?: ConstrainULong;
-    sampleSize?: ConstrainULong;
-    width?: ConstrainULong;
+    aspectRatio?: ConstrainDouble | undefined;
+    autoGainControl?: ConstrainBoolean | undefined;
+    backgroundBlur?: ConstrainBoolean | undefined;
+    channelCount?: ConstrainULong | undefined;
+    deviceId?: ConstrainDOMString | undefined;
+    displaySurface?: ConstrainDOMString | undefined;
+    echoCancellation?: ConstrainBooleanOrDOMString | undefined;
+    facingMode?: ConstrainDOMString | undefined;
+    frameRate?: ConstrainDouble | undefined;
+    groupId?: ConstrainDOMString | undefined;
+    height?: ConstrainULong | undefined;
+    noiseSuppression?: ConstrainBoolean | undefined;
+    sampleRate?: ConstrainULong | undefined;
+    sampleSize?: ConstrainULong | undefined;
+    width?: ConstrainULong | undefined;
 }
 
 interface MediaTrackConstraints extends MediaTrackConstraintSet {
-    advanced?: MediaTrackConstraintSet[];
+    advanced?: MediaTrackConstraintSet[] | undefined;
 }
 
 interface MediaTrackSettings {
-    aspectRatio?: number;
-    autoGainControl?: boolean;
-    backgroundBlur?: boolean;
-    channelCount?: number;
-    deviceId?: string;
-    displaySurface?: string;
-    echoCancellation?: boolean | string;
-    facingMode?: string;
-    frameRate?: number;
-    groupId?: string;
-    height?: number;
-    noiseSuppression?: boolean;
-    sampleRate?: number;
-    sampleSize?: number;
-    torch?: boolean;
-    whiteBalanceMode?: string;
-    width?: number;
-    zoom?: number;
+    aspectRatio?: number | undefined;
+    autoGainControl?: boolean | undefined;
+    backgroundBlur?: boolean | undefined;
+    channelCount?: number | undefined;
+    deviceId?: string | undefined;
+    displaySurface?: string | undefined;
+    echoCancellation?: boolean | string | undefined;
+    facingMode?: string | undefined;
+    frameRate?: number | undefined;
+    groupId?: string | undefined;
+    height?: number | undefined;
+    noiseSuppression?: boolean | undefined;
+    sampleRate?: number | undefined;
+    sampleSize?: number | undefined;
+    torch?: boolean | undefined;
+    whiteBalanceMode?: string | undefined;
+    width?: number | undefined;
+    zoom?: number | undefined;
 }
 
 interface MediaTrackSupportedConstraints {
-    aspectRatio?: boolean;
-    autoGainControl?: boolean;
-    backgroundBlur?: boolean;
-    channelCount?: boolean;
-    deviceId?: boolean;
-    displaySurface?: boolean;
-    echoCancellation?: boolean;
-    facingMode?: boolean;
-    frameRate?: boolean;
-    groupId?: boolean;
-    height?: boolean;
-    noiseSuppression?: boolean;
-    sampleRate?: boolean;
-    sampleSize?: boolean;
-    width?: boolean;
+    aspectRatio?: boolean | undefined;
+    autoGainControl?: boolean | undefined;
+    backgroundBlur?: boolean | undefined;
+    channelCount?: boolean | undefined;
+    deviceId?: boolean | undefined;
+    displaySurface?: boolean | undefined;
+    echoCancellation?: boolean | undefined;
+    facingMode?: boolean | undefined;
+    frameRate?: boolean | undefined;
+    groupId?: boolean | undefined;
+    height?: boolean | undefined;
+    noiseSuppression?: boolean | undefined;
+    sampleRate?: boolean | undefined;
+    sampleSize?: boolean | undefined;
+    width?: boolean | undefined;
 }
 
 interface MessageEventInit<T = any> extends EventInit {
-    data?: T;
-    lastEventId?: string;
-    origin?: string;
-    ports?: MessagePort[];
-    source?: MessageEventSource | null;
+    data?: T | undefined;
+    lastEventId?: string | undefined;
+    origin?: string | undefined;
+    ports?: MessagePort[] | undefined;
+    source?: MessageEventSource | null | undefined;
 }
 
 interface MouseEventInit extends EventModifierInit {
-    button?: number;
-    buttons?: number;
-    clientX?: number;
-    clientY?: number;
-    movementX?: number;
-    movementY?: number;
-    relatedTarget?: EventTarget | null;
-    screenX?: number;
-    screenY?: number;
+    button?: number | undefined;
+    buttons?: number | undefined;
+    clientX?: number | undefined;
+    clientY?: number | undefined;
+    movementX?: number | undefined;
+    movementY?: number | undefined;
+    relatedTarget?: EventTarget | null | undefined;
+    screenX?: number | undefined;
+    screenY?: number | undefined;
 }
 
 interface MultiCacheQueryOptions extends CacheQueryOptions {
-    cacheName?: string;
+    cacheName?: string | undefined;
 }
 
 interface MutationObserverInit {
     /** Set to a list of attribute local names (without namespace) if not all attribute mutations need to be observed and attributes is true or omitted. */
-    attributeFilter?: string[];
+    attributeFilter?: string[] | undefined;
     /** Set to true if attributes is true or omitted and target's attribute value before the mutation needs to be recorded. */
-    attributeOldValue?: boolean;
+    attributeOldValue?: boolean | undefined;
     /** Set to true if mutations to target's attributes are to be observed. Can be omitted if attributeOldValue or attributeFilter is specified. */
-    attributes?: boolean;
+    attributes?: boolean | undefined;
     /** Set to true if mutations to target's data are to be observed. Can be omitted if characterDataOldValue is specified. */
-    characterData?: boolean;
+    characterData?: boolean | undefined;
     /** Set to true if characterData is set to true or omitted and target's data before the mutation needs to be recorded. */
-    characterDataOldValue?: boolean;
+    characterDataOldValue?: boolean | undefined;
     /** Set to true if mutations to target's children are to be observed. */
-    childList?: boolean;
+    childList?: boolean | undefined;
     /** Set to true if mutations to not just target, but also target's descendants are to be observed. */
-    subtree?: boolean;
+    subtree?: boolean | undefined;
 }
 
 interface NavigateEventInit extends EventInit {
-    canIntercept?: boolean;
+    canIntercept?: boolean | undefined;
     destination: NavigationDestination;
-    downloadRequest?: string | null;
-    formData?: FormData | null;
-    hasUAVisualTransition?: boolean;
-    hashChange?: boolean;
-    info?: any;
-    navigationType?: NavigationType;
+    downloadRequest?: string | null | undefined;
+    formData?: FormData | null | undefined;
+    hasUAVisualTransition?: boolean | undefined;
+    hashChange?: boolean | undefined;
+    info?: any | undefined;
+    navigationType?: NavigationType | undefined;
     signal: AbortSignal;
-    sourceElement?: Element | null;
-    userInitiated?: boolean;
+    sourceElement?: Element | null | undefined;
+    userInitiated?: boolean | undefined;
 }
 
 interface NavigationCurrentEntryChangeEventInit extends EventInit {
     from: NavigationHistoryEntry;
-    navigationType?: NavigationType | null;
+    navigationType?: NavigationType | null | undefined;
 }
 
 interface NavigationInterceptOptions {
-    focusReset?: NavigationFocusReset;
-    handler?: NavigationInterceptHandler;
-    precommitHandler?: NavigationPrecommitHandler;
-    scroll?: NavigationScrollBehavior;
+    focusReset?: NavigationFocusReset | undefined;
+    handler?: NavigationInterceptHandler | undefined;
+    precommitHandler?: NavigationPrecommitHandler | undefined;
+    scroll?: NavigationScrollBehavior | undefined;
 }
 
 interface NavigationNavigateOptions extends NavigationOptions {
-    history?: NavigationHistoryBehavior;
-    state?: any;
+    history?: NavigationHistoryBehavior | undefined;
+    state?: any | undefined;
 }
 
 interface NavigationOptions {
-    info?: any;
+    info?: any | undefined;
 }
 
 interface NavigationPreloadState {
-    enabled?: boolean;
-    headerValue?: string;
+    enabled?: boolean | undefined;
+    headerValue?: string | undefined;
 }
 
 interface NavigationReloadOptions extends NavigationOptions {
-    state?: any;
+    state?: any | undefined;
 }
 
 interface NavigationResult {
-    committed?: Promise<NavigationHistoryEntry>;
-    finished?: Promise<NavigationHistoryEntry>;
+    committed?: Promise<NavigationHistoryEntry> | undefined;
+    finished?: Promise<NavigationHistoryEntry> | undefined;
 }
 
 interface NavigationUpdateCurrentEntryOptions {
@@ -1724,15 +1724,15 @@ interface NavigationUpdateCurrentEntryOptions {
 }
 
 interface NotificationOptions {
-    badge?: string;
-    body?: string;
-    data?: any;
-    dir?: NotificationDirection;
-    icon?: string;
-    lang?: string;
-    requireInteraction?: boolean;
-    silent?: boolean | null;
-    tag?: string;
+    badge?: string | undefined;
+    body?: string | undefined;
+    data?: any | undefined;
+    dir?: NotificationDirection | undefined;
+    icon?: string | undefined;
+    lang?: string | undefined;
+    requireInteraction?: boolean | undefined;
+    silent?: boolean | null | undefined;
+    tag?: string | undefined;
 }
 
 interface OfflineAudioCompletionEventInit extends EventInit {
@@ -1741,72 +1741,72 @@ interface OfflineAudioCompletionEventInit extends EventInit {
 
 interface OfflineAudioContextOptions {
     length: number;
-    numberOfChannels?: number;
+    numberOfChannels?: number | undefined;
     sampleRate: number;
 }
 
 interface OptionalEffectTiming {
-    delay?: number;
-    direction?: PlaybackDirection;
-    duration?: number | string;
-    easing?: string;
-    endDelay?: number;
-    fill?: FillMode;
-    iterationStart?: number;
-    iterations?: number;
-    playbackRate?: number;
+    delay?: number | undefined;
+    direction?: PlaybackDirection | undefined;
+    duration?: number | string | undefined;
+    easing?: string | undefined;
+    endDelay?: number | undefined;
+    fill?: FillMode | undefined;
+    iterationStart?: number | undefined;
+    iterations?: number | undefined;
+    playbackRate?: number | undefined;
 }
 
 interface OpusEncoderConfig {
-    complexity?: number;
-    format?: OpusBitstreamFormat;
-    frameDuration?: number;
-    packetlossperc?: number;
-    usedtx?: boolean;
-    useinbandfec?: boolean;
+    complexity?: number | undefined;
+    format?: OpusBitstreamFormat | undefined;
+    frameDuration?: number | undefined;
+    packetlossperc?: number | undefined;
+    usedtx?: boolean | undefined;
+    useinbandfec?: boolean | undefined;
 }
 
 interface OscillatorOptions extends AudioNodeOptions {
-    detune?: number;
-    frequency?: number;
-    periodicWave?: PeriodicWave;
-    type?: OscillatorType;
+    detune?: number | undefined;
+    frequency?: number | undefined;
+    periodicWave?: PeriodicWave | undefined;
+    type?: OscillatorType | undefined;
 }
 
 interface PageRevealEventInit extends EventInit {
-    viewTransition?: ViewTransition | null;
+    viewTransition?: ViewTransition | null | undefined;
 }
 
 interface PageSwapEventInit extends EventInit {
-    activation?: NavigationActivation | null;
-    viewTransition?: ViewTransition | null;
+    activation?: NavigationActivation | null | undefined;
+    viewTransition?: ViewTransition | null | undefined;
 }
 
 interface PageTransitionEventInit extends EventInit {
-    persisted?: boolean;
+    persisted?: boolean | undefined;
 }
 
 interface PannerOptions extends AudioNodeOptions {
-    coneInnerAngle?: number;
-    coneOuterAngle?: number;
-    coneOuterGain?: number;
-    distanceModel?: DistanceModelType;
-    maxDistance?: number;
-    orientationX?: number;
-    orientationY?: number;
-    orientationZ?: number;
-    panningModel?: PanningModelType;
-    positionX?: number;
-    positionY?: number;
-    positionZ?: number;
-    refDistance?: number;
-    rolloffFactor?: number;
+    coneInnerAngle?: number | undefined;
+    coneOuterAngle?: number | undefined;
+    coneOuterGain?: number | undefined;
+    distanceModel?: DistanceModelType | undefined;
+    maxDistance?: number | undefined;
+    orientationX?: number | undefined;
+    orientationY?: number | undefined;
+    orientationZ?: number | undefined;
+    panningModel?: PanningModelType | undefined;
+    positionX?: number | undefined;
+    positionY?: number | undefined;
+    positionZ?: number | undefined;
+    refDistance?: number | undefined;
+    rolloffFactor?: number | undefined;
 }
 
 interface PayerErrors {
-    email?: string;
-    name?: string;
-    phone?: string;
+    email?: string | undefined;
+    name?: string | undefined;
+    phone?: string | undefined;
 }
 
 interface PaymentCurrencyAmount {
@@ -1815,52 +1815,52 @@ interface PaymentCurrencyAmount {
 }
 
 interface PaymentDetailsBase {
-    displayItems?: PaymentItem[];
-    modifiers?: PaymentDetailsModifier[];
-    shippingOptions?: PaymentShippingOption[];
+    displayItems?: PaymentItem[] | undefined;
+    modifiers?: PaymentDetailsModifier[] | undefined;
+    shippingOptions?: PaymentShippingOption[] | undefined;
 }
 
 interface PaymentDetailsInit extends PaymentDetailsBase {
-    id?: string;
+    id?: string | undefined;
     total: PaymentItem;
 }
 
 interface PaymentDetailsModifier {
-    additionalDisplayItems?: PaymentItem[];
-    data?: any;
+    additionalDisplayItems?: PaymentItem[] | undefined;
+    data?: any | undefined;
     supportedMethods: string;
-    total?: PaymentItem;
+    total?: PaymentItem | undefined;
 }
 
 interface PaymentDetailsUpdate extends PaymentDetailsBase {
-    error?: string;
-    paymentMethodErrors?: any;
-    shippingAddressErrors?: AddressErrors;
-    total?: PaymentItem;
+    error?: string | undefined;
+    paymentMethodErrors?: any | undefined;
+    shippingAddressErrors?: AddressErrors | undefined;
+    total?: PaymentItem | undefined;
 }
 
 interface PaymentItem {
     amount: PaymentCurrencyAmount;
     label: string;
-    pending?: boolean;
+    pending?: boolean | undefined;
 }
 
 interface PaymentMethodChangeEventInit extends PaymentRequestUpdateEventInit {
-    methodDetails?: any;
-    methodName?: string;
+    methodDetails?: any | undefined;
+    methodName?: string | undefined;
 }
 
 interface PaymentMethodData {
-    data?: any;
+    data?: any | undefined;
     supportedMethods: string;
 }
 
 interface PaymentOptions {
-    requestPayerEmail?: boolean;
-    requestPayerName?: boolean;
-    requestPayerPhone?: boolean;
-    requestShipping?: boolean;
-    shippingType?: PaymentShippingType;
+    requestPayerEmail?: boolean | undefined;
+    requestPayerName?: boolean | undefined;
+    requestPayerPhone?: boolean | undefined;
+    requestShipping?: boolean | undefined;
+    shippingType?: PaymentShippingType | undefined;
 }
 
 interface PaymentRequestUpdateEventInit extends EventInit {
@@ -1870,13 +1870,13 @@ interface PaymentShippingOption {
     amount: PaymentCurrencyAmount;
     id: string;
     label: string;
-    selected?: boolean;
+    selected?: boolean | undefined;
 }
 
 interface PaymentValidationErrors {
-    error?: string;
-    payer?: PayerErrors;
-    shippingAddress?: AddressErrors;
+    error?: string | undefined;
+    payer?: PayerErrors | undefined;
+    shippingAddress?: AddressErrors | undefined;
 }
 
 interface Pbkdf2Params extends Algorithm {
@@ -1886,30 +1886,30 @@ interface Pbkdf2Params extends Algorithm {
 }
 
 interface PerformanceMarkOptions {
-    detail?: any;
-    startTime?: DOMHighResTimeStamp;
+    detail?: any | undefined;
+    startTime?: DOMHighResTimeStamp | undefined;
 }
 
 interface PerformanceMeasureOptions {
-    detail?: any;
-    duration?: DOMHighResTimeStamp;
-    end?: string | DOMHighResTimeStamp;
-    start?: string | DOMHighResTimeStamp;
+    detail?: any | undefined;
+    duration?: DOMHighResTimeStamp | undefined;
+    end?: string | DOMHighResTimeStamp | undefined;
+    start?: string | DOMHighResTimeStamp | undefined;
 }
 
 interface PerformanceObserverInit {
-    buffered?: boolean;
-    entryTypes?: string[];
-    type?: string;
+    buffered?: boolean | undefined;
+    entryTypes?: string[] | undefined;
+    type?: string | undefined;
 }
 
 interface PeriodicWaveConstraints {
-    disableNormalization?: boolean;
+    disableNormalization?: boolean | undefined;
 }
 
 interface PeriodicWaveOptions extends PeriodicWaveConstraints {
-    imag?: number[] | Float32Array;
-    real?: number[] | Float32Array;
+    imag?: number[] | Float32Array | undefined;
+    real?: number[] | Float32Array | undefined;
 }
 
 interface PermissionDescriptor {
@@ -1917,17 +1917,17 @@ interface PermissionDescriptor {
 }
 
 interface PhotoCapabilities {
-    fillLightMode?: FillLightMode[];
-    imageHeight?: MediaSettingsRange;
-    imageWidth?: MediaSettingsRange;
-    redEyeReduction?: RedEyeReduction;
+    fillLightMode?: FillLightMode[] | undefined;
+    imageHeight?: MediaSettingsRange | undefined;
+    imageWidth?: MediaSettingsRange | undefined;
+    redEyeReduction?: RedEyeReduction | undefined;
 }
 
 interface PhotoSettings {
-    fillLightMode?: FillLightMode;
-    imageHeight?: number;
-    imageWidth?: number;
-    redEyeReduction?: boolean;
+    fillLightMode?: FillLightMode | undefined;
+    imageHeight?: number | undefined;
+    imageWidth?: number | undefined;
+    redEyeReduction?: boolean | undefined;
 }
 
 interface PictureInPictureEventInit extends EventInit {
@@ -1940,96 +1940,96 @@ interface PlaneLayout {
 }
 
 interface PointerEventInit extends MouseEventInit {
-    altitudeAngle?: number;
-    azimuthAngle?: number;
-    coalescedEvents?: PointerEvent[];
-    height?: number;
-    isPrimary?: boolean;
-    pointerId?: number;
-    pointerType?: string;
-    predictedEvents?: PointerEvent[];
-    pressure?: number;
-    tangentialPressure?: number;
-    tiltX?: number;
-    tiltY?: number;
-    twist?: number;
-    width?: number;
+    altitudeAngle?: number | undefined;
+    azimuthAngle?: number | undefined;
+    coalescedEvents?: PointerEvent[] | undefined;
+    height?: number | undefined;
+    isPrimary?: boolean | undefined;
+    pointerId?: number | undefined;
+    pointerType?: string | undefined;
+    predictedEvents?: PointerEvent[] | undefined;
+    pressure?: number | undefined;
+    tangentialPressure?: number | undefined;
+    tiltX?: number | undefined;
+    tiltY?: number | undefined;
+    twist?: number | undefined;
+    width?: number | undefined;
 }
 
 interface PointerLockOptions {
-    unadjustedMovement?: boolean;
+    unadjustedMovement?: boolean | undefined;
 }
 
 interface PopStateEventInit extends EventInit {
-    hasUAVisualTransition?: boolean;
-    state?: any;
+    hasUAVisualTransition?: boolean | undefined;
+    state?: any | undefined;
 }
 
 interface PositionOptions {
-    enableHighAccuracy?: boolean;
-    maximumAge?: number;
-    timeout?: number;
+    enableHighAccuracy?: boolean | undefined;
+    maximumAge?: number | undefined;
+    timeout?: number | undefined;
 }
 
 interface ProgressEventInit extends EventInit {
-    lengthComputable?: boolean;
-    loaded?: number;
-    total?: number;
+    lengthComputable?: boolean | undefined;
+    loaded?: number | undefined;
+    total?: number | undefined;
 }
 
 interface PromiseRejectionEventInit extends EventInit {
     promise: Promise<any>;
-    reason?: any;
+    reason?: any | undefined;
 }
 
 interface PropertyDefinition {
     inherits: boolean;
-    initialValue?: string;
+    initialValue?: string | undefined;
     name: string;
-    syntax?: string;
+    syntax?: string | undefined;
 }
 
 interface PropertyIndexedKeyframes {
-    composite?: CompositeOperationOrAuto | CompositeOperationOrAuto[];
-    easing?: string | string[];
-    offset?: number | (number | null)[];
+    composite?: CompositeOperationOrAuto | CompositeOperationOrAuto[] | undefined;
+    easing?: string | string[] | undefined;
+    offset?: number | (number | null)[] | undefined;
     [property: string]: string | string[] | number | null | (number | null)[] | undefined;
 }
 
 interface PublicKeyCredentialCreationOptions {
-    attestation?: AttestationConveyancePreference;
-    authenticatorSelection?: AuthenticatorSelectionCriteria;
+    attestation?: AttestationConveyancePreference | undefined;
+    authenticatorSelection?: AuthenticatorSelectionCriteria | undefined;
     challenge: BufferSource;
-    excludeCredentials?: PublicKeyCredentialDescriptor[];
-    extensions?: AuthenticationExtensionsClientInputs;
+    excludeCredentials?: PublicKeyCredentialDescriptor[] | undefined;
+    extensions?: AuthenticationExtensionsClientInputs | undefined;
     pubKeyCredParams: PublicKeyCredentialParameters[];
     rp: PublicKeyCredentialRpEntity;
-    timeout?: number;
+    timeout?: number | undefined;
     user: PublicKeyCredentialUserEntity;
 }
 
 interface PublicKeyCredentialCreationOptionsJSON {
-    attestation?: string;
-    authenticatorSelection?: AuthenticatorSelectionCriteria;
+    attestation?: string | undefined;
+    authenticatorSelection?: AuthenticatorSelectionCriteria | undefined;
     challenge: Base64URLString;
-    excludeCredentials?: PublicKeyCredentialDescriptorJSON[];
-    extensions?: AuthenticationExtensionsClientInputsJSON;
-    hints?: string[];
+    excludeCredentials?: PublicKeyCredentialDescriptorJSON[] | undefined;
+    extensions?: AuthenticationExtensionsClientInputsJSON | undefined;
+    hints?: string[] | undefined;
     pubKeyCredParams: PublicKeyCredentialParameters[];
     rp: PublicKeyCredentialRpEntity;
-    timeout?: number;
+    timeout?: number | undefined;
     user: PublicKeyCredentialUserEntityJSON;
 }
 
 interface PublicKeyCredentialDescriptor {
     id: BufferSource;
-    transports?: AuthenticatorTransport[];
+    transports?: AuthenticatorTransport[] | undefined;
     type: PublicKeyCredentialType;
 }
 
 interface PublicKeyCredentialDescriptorJSON {
     id: Base64URLString;
-    transports?: string[];
+    transports?: string[] | undefined;
     type: string;
 }
 
@@ -2043,26 +2043,26 @@ interface PublicKeyCredentialParameters {
 }
 
 interface PublicKeyCredentialRequestOptions {
-    allowCredentials?: PublicKeyCredentialDescriptor[];
+    allowCredentials?: PublicKeyCredentialDescriptor[] | undefined;
     challenge: BufferSource;
-    extensions?: AuthenticationExtensionsClientInputs;
-    rpId?: string;
-    timeout?: number;
-    userVerification?: UserVerificationRequirement;
+    extensions?: AuthenticationExtensionsClientInputs | undefined;
+    rpId?: string | undefined;
+    timeout?: number | undefined;
+    userVerification?: UserVerificationRequirement | undefined;
 }
 
 interface PublicKeyCredentialRequestOptionsJSON {
-    allowCredentials?: PublicKeyCredentialDescriptorJSON[];
+    allowCredentials?: PublicKeyCredentialDescriptorJSON[] | undefined;
     challenge: Base64URLString;
-    extensions?: AuthenticationExtensionsClientInputsJSON;
-    hints?: string[];
-    rpId?: string;
-    timeout?: number;
-    userVerification?: string;
+    extensions?: AuthenticationExtensionsClientInputsJSON | undefined;
+    hints?: string[] | undefined;
+    rpId?: string | undefined;
+    timeout?: number | undefined;
+    userVerification?: string | undefined;
 }
 
 interface PublicKeyCredentialRpEntity extends PublicKeyCredentialEntity {
-    id?: string;
+    id?: string | undefined;
 }
 
 interface PublicKeyCredentialUserEntity extends PublicKeyCredentialEntity {
@@ -2077,19 +2077,19 @@ interface PublicKeyCredentialUserEntityJSON {
 }
 
 interface PushSubscriptionJSON {
-    endpoint?: string;
-    expirationTime?: EpochTimeStamp | null;
-    keys?: Record<string, string>;
+    endpoint?: string | undefined;
+    expirationTime?: EpochTimeStamp | null | undefined;
+    keys?: Record<string, string> | undefined;
 }
 
 interface PushSubscriptionOptionsInit {
-    applicationServerKey?: BufferSource | string | null;
-    userVisibleOnly?: boolean;
+    applicationServerKey?: BufferSource | string | null | undefined;
+    userVisibleOnly?: boolean | undefined;
 }
 
 interface QueuingStrategy<T = any> {
-    highWaterMark?: number;
-    size?: QueuingStrategySize<T>;
+    highWaterMark?: number | undefined;
+    size?: QueuingStrategySize<T> | undefined;
 }
 
 interface QueuingStrategyInit {
@@ -2105,20 +2105,20 @@ interface RTCAnswerOptions extends RTCOfferAnswerOptions {
 }
 
 interface RTCCertificateExpiration {
-    expires?: number;
+    expires?: number | undefined;
 }
 
 interface RTCConfiguration {
-    bundlePolicy?: RTCBundlePolicy;
-    certificates?: RTCCertificate[];
-    iceCandidatePoolSize?: number;
-    iceServers?: RTCIceServer[];
-    iceTransportPolicy?: RTCIceTransportPolicy;
-    rtcpMuxPolicy?: RTCRtcpMuxPolicy;
+    bundlePolicy?: RTCBundlePolicy | undefined;
+    certificates?: RTCCertificate[] | undefined;
+    iceCandidatePoolSize?: number | undefined;
+    iceServers?: RTCIceServer[] | undefined;
+    iceTransportPolicy?: RTCIceTransportPolicy | undefined;
+    rtcpMuxPolicy?: RTCRtcpMuxPolicy | undefined;
 }
 
 interface RTCDTMFToneChangeEventInit extends EventInit {
-    tone?: string;
+    tone?: string | undefined;
 }
 
 interface RTCDataChannelEventInit extends EventInit {
@@ -2126,39 +2126,39 @@ interface RTCDataChannelEventInit extends EventInit {
 }
 
 interface RTCDataChannelInit {
-    id?: number;
-    maxPacketLifeTime?: number;
-    maxRetransmits?: number;
-    negotiated?: boolean;
-    ordered?: boolean;
-    protocol?: string;
+    id?: number | undefined;
+    maxPacketLifeTime?: number | undefined;
+    maxRetransmits?: number | undefined;
+    negotiated?: boolean | undefined;
+    ordered?: boolean | undefined;
+    protocol?: string | undefined;
 }
 
 interface RTCDtlsFingerprint {
-    algorithm?: string;
-    value?: string;
+    algorithm?: string | undefined;
+    value?: string | undefined;
 }
 
 interface RTCEncodedAudioFrameMetadata extends RTCEncodedFrameMetadata {
-    sequenceNumber?: number;
+    sequenceNumber?: number | undefined;
 }
 
 interface RTCEncodedFrameMetadata {
-    contributingSources?: number[];
-    mimeType?: string;
-    payloadType?: number;
-    rtpTimestamp?: number;
-    synchronizationSource?: number;
+    contributingSources?: number[] | undefined;
+    mimeType?: string | undefined;
+    payloadType?: number | undefined;
+    rtpTimestamp?: number | undefined;
+    synchronizationSource?: number | undefined;
 }
 
 interface RTCEncodedVideoFrameMetadata extends RTCEncodedFrameMetadata {
-    dependencies?: number[];
-    frameId?: number;
-    height?: number;
-    spatialIndex?: number;
-    temporalIndex?: number;
-    timestamp?: number;
-    width?: number;
+    dependencies?: number[] | undefined;
+    frameId?: number | undefined;
+    height?: number | undefined;
+    spatialIndex?: number | undefined;
+    temporalIndex?: number | undefined;
+    timestamp?: number | undefined;
+    width?: number | undefined;
 }
 
 interface RTCErrorEventInit extends EventInit {
@@ -2167,103 +2167,103 @@ interface RTCErrorEventInit extends EventInit {
 
 interface RTCErrorInit {
     errorDetail: RTCErrorDetailType;
-    httpRequestStatusCode?: number;
-    receivedAlert?: number;
-    sctpCauseCode?: number;
-    sdpLineNumber?: number;
-    sentAlert?: number;
+    httpRequestStatusCode?: number | undefined;
+    receivedAlert?: number | undefined;
+    sctpCauseCode?: number | undefined;
+    sdpLineNumber?: number | undefined;
+    sentAlert?: number | undefined;
 }
 
 interface RTCIceCandidateInit {
-    candidate?: string;
-    sdpMLineIndex?: number | null;
-    sdpMid?: string | null;
-    usernameFragment?: string | null;
+    candidate?: string | undefined;
+    sdpMLineIndex?: number | null | undefined;
+    sdpMid?: string | null | undefined;
+    usernameFragment?: string | null | undefined;
 }
 
 interface RTCIceCandidatePairStats extends RTCStats {
-    availableIncomingBitrate?: number;
-    availableOutgoingBitrate?: number;
-    bytesDiscardedOnSend?: number;
-    bytesReceived?: number;
-    bytesSent?: number;
-    consentRequestsSent?: number;
-    currentRoundTripTime?: number;
-    lastPacketReceivedTimestamp?: DOMHighResTimeStamp;
-    lastPacketSentTimestamp?: DOMHighResTimeStamp;
+    availableIncomingBitrate?: number | undefined;
+    availableOutgoingBitrate?: number | undefined;
+    bytesDiscardedOnSend?: number | undefined;
+    bytesReceived?: number | undefined;
+    bytesSent?: number | undefined;
+    consentRequestsSent?: number | undefined;
+    currentRoundTripTime?: number | undefined;
+    lastPacketReceivedTimestamp?: DOMHighResTimeStamp | undefined;
+    lastPacketSentTimestamp?: DOMHighResTimeStamp | undefined;
     localCandidateId: string;
-    nominated?: boolean;
-    packetsDiscardedOnSend?: number;
-    packetsReceived?: number;
-    packetsSent?: number;
+    nominated?: boolean | undefined;
+    packetsDiscardedOnSend?: number | undefined;
+    packetsReceived?: number | undefined;
+    packetsSent?: number | undefined;
     remoteCandidateId: string;
-    requestsReceived?: number;
-    requestsSent?: number;
-    responsesReceived?: number;
-    responsesSent?: number;
+    requestsReceived?: number | undefined;
+    requestsSent?: number | undefined;
+    responsesReceived?: number | undefined;
+    responsesSent?: number | undefined;
     state: RTCStatsIceCandidatePairState;
-    totalRoundTripTime?: number;
+    totalRoundTripTime?: number | undefined;
     transportId: string;
 }
 
 interface RTCIceServer {
-    credential?: string;
+    credential?: string | undefined;
     urls: string | string[];
-    username?: string;
+    username?: string | undefined;
 }
 
 interface RTCInboundRtpStreamStats extends RTCReceivedRtpStreamStats {
-    audioLevel?: number;
-    bytesReceived?: number;
-    concealedSamples?: number;
-    concealmentEvents?: number;
-    decoderImplementation?: string;
-    estimatedPlayoutTimestamp?: DOMHighResTimeStamp;
-    fecBytesReceived?: number;
-    fecPacketsDiscarded?: number;
-    fecPacketsReceived?: number;
-    fecSsrc?: number;
-    firCount?: number;
-    frameHeight?: number;
-    frameWidth?: number;
-    framesAssembledFromMultiplePackets?: number;
-    framesDecoded?: number;
-    framesDropped?: number;
-    framesPerSecond?: number;
-    framesReceived?: number;
-    framesRendered?: number;
-    freezeCount?: number;
-    headerBytesReceived?: number;
-    insertedSamplesForDeceleration?: number;
-    jitterBufferDelay?: number;
-    jitterBufferEmittedCount?: number;
-    jitterBufferMinimumDelay?: number;
-    jitterBufferTargetDelay?: number;
-    keyFramesDecoded?: number;
-    lastPacketReceivedTimestamp?: DOMHighResTimeStamp;
-    mid?: string;
-    nackCount?: number;
-    packetsDiscarded?: number;
-    pauseCount?: number;
-    playoutId?: string;
-    pliCount?: number;
-    qpSum?: number;
-    remoteId?: string;
-    removedSamplesForAcceleration?: number;
-    retransmittedBytesReceived?: number;
-    retransmittedPacketsReceived?: number;
-    rtxSsrc?: number;
-    silentConcealedSamples?: number;
-    totalAssemblyTime?: number;
-    totalAudioEnergy?: number;
-    totalDecodeTime?: number;
-    totalFreezesDuration?: number;
-    totalInterFrameDelay?: number;
-    totalPausesDuration?: number;
-    totalProcessingDelay?: number;
-    totalSamplesDuration?: number;
-    totalSamplesReceived?: number;
-    totalSquaredInterFrameDelay?: number;
+    audioLevel?: number | undefined;
+    bytesReceived?: number | undefined;
+    concealedSamples?: number | undefined;
+    concealmentEvents?: number | undefined;
+    decoderImplementation?: string | undefined;
+    estimatedPlayoutTimestamp?: DOMHighResTimeStamp | undefined;
+    fecBytesReceived?: number | undefined;
+    fecPacketsDiscarded?: number | undefined;
+    fecPacketsReceived?: number | undefined;
+    fecSsrc?: number | undefined;
+    firCount?: number | undefined;
+    frameHeight?: number | undefined;
+    frameWidth?: number | undefined;
+    framesAssembledFromMultiplePackets?: number | undefined;
+    framesDecoded?: number | undefined;
+    framesDropped?: number | undefined;
+    framesPerSecond?: number | undefined;
+    framesReceived?: number | undefined;
+    framesRendered?: number | undefined;
+    freezeCount?: number | undefined;
+    headerBytesReceived?: number | undefined;
+    insertedSamplesForDeceleration?: number | undefined;
+    jitterBufferDelay?: number | undefined;
+    jitterBufferEmittedCount?: number | undefined;
+    jitterBufferMinimumDelay?: number | undefined;
+    jitterBufferTargetDelay?: number | undefined;
+    keyFramesDecoded?: number | undefined;
+    lastPacketReceivedTimestamp?: DOMHighResTimeStamp | undefined;
+    mid?: string | undefined;
+    nackCount?: number | undefined;
+    packetsDiscarded?: number | undefined;
+    pauseCount?: number | undefined;
+    playoutId?: string | undefined;
+    pliCount?: number | undefined;
+    qpSum?: number | undefined;
+    remoteId?: string | undefined;
+    removedSamplesForAcceleration?: number | undefined;
+    retransmittedBytesReceived?: number | undefined;
+    retransmittedPacketsReceived?: number | undefined;
+    rtxSsrc?: number | undefined;
+    silentConcealedSamples?: number | undefined;
+    totalAssemblyTime?: number | undefined;
+    totalAudioEnergy?: number | undefined;
+    totalDecodeTime?: number | undefined;
+    totalFreezesDuration?: number | undefined;
+    totalInterFrameDelay?: number | undefined;
+    totalPausesDuration?: number | undefined;
+    totalProcessingDelay?: number | undefined;
+    totalSamplesDuration?: number | undefined;
+    totalSamplesReceived?: number | undefined;
+    totalSquaredInterFrameDelay?: number | undefined;
     trackIdentifier: string;
 }
 
@@ -2271,71 +2271,71 @@ interface RTCLocalIceCandidateInit extends RTCIceCandidateInit {
 }
 
 interface RTCLocalSessionDescriptionInit {
-    sdp?: string;
-    type?: RTCSdpType;
+    sdp?: string | undefined;
+    type?: RTCSdpType | undefined;
 }
 
 interface RTCOfferAnswerOptions {
 }
 
 interface RTCOfferOptions extends RTCOfferAnswerOptions {
-    iceRestart?: boolean;
-    offerToReceiveAudio?: boolean;
-    offerToReceiveVideo?: boolean;
+    iceRestart?: boolean | undefined;
+    offerToReceiveAudio?: boolean | undefined;
+    offerToReceiveVideo?: boolean | undefined;
 }
 
 interface RTCOutboundRtpStreamStats extends RTCSentRtpStreamStats {
-    active?: boolean;
-    firCount?: number;
-    frameHeight?: number;
-    frameWidth?: number;
-    framesEncoded?: number;
-    framesPerSecond?: number;
-    framesSent?: number;
-    headerBytesSent?: number;
-    hugeFramesSent?: number;
-    keyFramesEncoded?: number;
-    mediaSourceId?: string;
-    mid?: string;
-    nackCount?: number;
-    pliCount?: number;
-    qpSum?: number;
-    qualityLimitationDurations?: Record<string, number>;
-    qualityLimitationReason?: RTCQualityLimitationReason;
-    qualityLimitationResolutionChanges?: number;
-    remoteId?: string;
-    retransmittedBytesSent?: number;
-    retransmittedPacketsSent?: number;
-    rid?: string;
-    rtxSsrc?: number;
-    scalabilityMode?: string;
-    targetBitrate?: number;
-    totalEncodeTime?: number;
-    totalEncodedBytesTarget?: number;
-    totalPacketSendDelay?: number;
+    active?: boolean | undefined;
+    firCount?: number | undefined;
+    frameHeight?: number | undefined;
+    frameWidth?: number | undefined;
+    framesEncoded?: number | undefined;
+    framesPerSecond?: number | undefined;
+    framesSent?: number | undefined;
+    headerBytesSent?: number | undefined;
+    hugeFramesSent?: number | undefined;
+    keyFramesEncoded?: number | undefined;
+    mediaSourceId?: string | undefined;
+    mid?: string | undefined;
+    nackCount?: number | undefined;
+    pliCount?: number | undefined;
+    qpSum?: number | undefined;
+    qualityLimitationDurations?: Record<string, number> | undefined;
+    qualityLimitationReason?: RTCQualityLimitationReason | undefined;
+    qualityLimitationResolutionChanges?: number | undefined;
+    remoteId?: string | undefined;
+    retransmittedBytesSent?: number | undefined;
+    retransmittedPacketsSent?: number | undefined;
+    rid?: string | undefined;
+    rtxSsrc?: number | undefined;
+    scalabilityMode?: string | undefined;
+    targetBitrate?: number | undefined;
+    totalEncodeTime?: number | undefined;
+    totalEncodedBytesTarget?: number | undefined;
+    totalPacketSendDelay?: number | undefined;
 }
 
 interface RTCPeerConnectionIceErrorEventInit extends EventInit {
-    address?: string | null;
+    address?: string | null | undefined;
     errorCode: number;
-    errorText?: string;
-    port?: number | null;
-    url?: string;
+    errorText?: string | undefined;
+    port?: number | null | undefined;
+    url?: string | undefined;
 }
 
 interface RTCPeerConnectionIceEventInit extends EventInit {
-    candidate?: RTCIceCandidate | null;
+    candidate?: RTCIceCandidate | null | undefined;
 }
 
 interface RTCReceivedRtpStreamStats extends RTCRtpStreamStats {
-    jitter?: number;
-    packetsLost?: number;
-    packetsReceived?: number;
+    jitter?: number | undefined;
+    packetsLost?: number | undefined;
+    packetsReceived?: number | undefined;
 }
 
 interface RTCRtcpParameters {
-    cname?: string;
-    reducedSize?: boolean;
+    cname?: string | undefined;
+    reducedSize?: boolean | undefined;
 }
 
 interface RTCRtpCapabilities {
@@ -2344,10 +2344,10 @@ interface RTCRtpCapabilities {
 }
 
 interface RTCRtpCodec {
-    channels?: number;
+    channels?: number | undefined;
     clockRate: number;
     mimeType: string;
-    sdpFmtpLine?: string;
+    sdpFmtpLine?: string | undefined;
 }
 
 interface RTCRtpCodecParameters extends RTCRtpCodec {
@@ -2355,23 +2355,23 @@ interface RTCRtpCodecParameters extends RTCRtpCodec {
 }
 
 interface RTCRtpCodingParameters {
-    rid?: string;
+    rid?: string | undefined;
 }
 
 interface RTCRtpContributingSource {
-    audioLevel?: number;
+    audioLevel?: number | undefined;
     rtpTimestamp: number;
     source: number;
     timestamp: DOMHighResTimeStamp;
 }
 
 interface RTCRtpEncodingParameters extends RTCRtpCodingParameters {
-    active?: boolean;
-    maxBitrate?: number;
-    maxFramerate?: number;
-    networkPriority?: RTCPriorityType;
-    priority?: RTCPriorityType;
-    scaleResolutionDownBy?: number;
+    active?: boolean | undefined;
+    maxBitrate?: number | undefined;
+    maxFramerate?: number | undefined;
+    networkPriority?: RTCPriorityType | undefined;
+    priority?: RTCPriorityType | undefined;
+    scaleResolutionDownBy?: number | undefined;
 }
 
 interface RTCRtpHeaderExtensionCapability {
@@ -2379,7 +2379,7 @@ interface RTCRtpHeaderExtensionCapability {
 }
 
 interface RTCRtpHeaderExtensionParameters {
-    encrypted?: boolean;
+    encrypted?: boolean | undefined;
     id: number;
     uri: string;
 }
@@ -2394,34 +2394,34 @@ interface RTCRtpReceiveParameters extends RTCRtpParameters {
 }
 
 interface RTCRtpSendParameters extends RTCRtpParameters {
-    degradationPreference?: RTCDegradationPreference;
+    degradationPreference?: RTCDegradationPreference | undefined;
     encodings: RTCRtpEncodingParameters[];
     transactionId: string;
 }
 
 interface RTCRtpStreamStats extends RTCStats {
-    codecId?: string;
+    codecId?: string | undefined;
     kind: string;
     ssrc: number;
-    transportId?: string;
+    transportId?: string | undefined;
 }
 
 interface RTCRtpSynchronizationSource extends RTCRtpContributingSource {
 }
 
 interface RTCRtpTransceiverInit {
-    direction?: RTCRtpTransceiverDirection;
-    sendEncodings?: RTCRtpEncodingParameters[];
-    streams?: MediaStream[];
+    direction?: RTCRtpTransceiverDirection | undefined;
+    sendEncodings?: RTCRtpEncodingParameters[] | undefined;
+    streams?: MediaStream[] | undefined;
 }
 
 interface RTCSentRtpStreamStats extends RTCRtpStreamStats {
-    bytesSent?: number;
-    packetsSent?: number;
+    bytesSent?: number | undefined;
+    packetsSent?: number | undefined;
 }
 
 interface RTCSessionDescriptionInit {
-    sdp?: string;
+    sdp?: string | undefined;
     type: RTCSdpType;
 }
 
@@ -2436,32 +2436,32 @@ interface RTCStats {
 
 interface RTCTrackEventInit extends EventInit {
     receiver: RTCRtpReceiver;
-    streams?: MediaStream[];
+    streams?: MediaStream[] | undefined;
     track: MediaStreamTrack;
     transceiver: RTCRtpTransceiver;
 }
 
 interface RTCTransportStats extends RTCStats {
-    bytesReceived?: number;
-    bytesSent?: number;
-    dtlsCipher?: string;
-    dtlsRole?: RTCDtlsRole;
+    bytesReceived?: number | undefined;
+    bytesSent?: number | undefined;
+    dtlsCipher?: string | undefined;
+    dtlsRole?: RTCDtlsRole | undefined;
     dtlsState: RTCDtlsTransportState;
-    iceLocalUsernameFragment?: string;
-    iceRole?: RTCIceRole;
-    iceState?: RTCIceTransportState;
-    localCertificateId?: string;
-    packetsReceived?: number;
-    packetsSent?: number;
-    remoteCertificateId?: string;
-    selectedCandidatePairChanges?: number;
-    selectedCandidatePairId?: string;
-    srtpCipher?: string;
-    tlsVersion?: string;
+    iceLocalUsernameFragment?: string | undefined;
+    iceRole?: RTCIceRole | undefined;
+    iceState?: RTCIceTransportState | undefined;
+    localCertificateId?: string | undefined;
+    packetsReceived?: number | undefined;
+    packetsSent?: number | undefined;
+    remoteCertificateId?: string | undefined;
+    selectedCandidatePairChanges?: number | undefined;
+    selectedCandidatePairId?: string | undefined;
+    srtpCipher?: string | undefined;
+    tlsVersion?: string | undefined;
 }
 
 interface ReadableStreamBYOBReaderReadOptions {
-    min?: number;
+    min?: number | undefined;
 }
 
 interface ReadableStreamGetReaderOptions {
@@ -2470,7 +2470,7 @@ interface ReadableStreamGetReaderOptions {
      *
      * This call behaves the same way as the no-argument variant, except that it only works on readable byte streams, i.e. streams which were constructed specifically with the ability to handle "bring your own buffer" reading. The returned BYOB reader provides the ability to directly read individual chunks from the stream via its read() method, into developer-supplied buffers, allowing more precise control over allocation.
      */
-    mode?: ReadableStreamReaderMode;
+    mode?: ReadableStreamReaderMode | undefined;
 }
 
 interface ReadableStreamIteratorOptions {
@@ -2481,7 +2481,7 @@ interface ReadableStreamIteratorOptions {
      *
      * By default, calling the async iterator's return() method will also cancel the stream. To prevent this, use the stream's values() method, passing true for the preventCancel option.
      */
-    preventCancel?: boolean;
+    preventCancel?: boolean | undefined;
 }
 
 interface ReadableStreamReadDoneResult<T> {
@@ -2505,13 +2505,13 @@ interface ReadableWritablePair<R = any, W = any> {
 }
 
 interface RegistrationOptions {
-    scope?: string;
-    type?: WorkerType;
-    updateViaCache?: ServiceWorkerUpdateViaCache;
+    scope?: string | undefined;
+    type?: WorkerType | undefined;
+    updateViaCache?: ServiceWorkerUpdateViaCache | undefined;
 }
 
 interface RegistrationResponseJSON {
-    authenticatorAttachment?: string;
+    authenticatorAttachment?: string | undefined;
     clientExtensionResults: AuthenticationExtensionsClientOutputsJSON;
     id: string;
     rawId: Base64URLString;
@@ -2520,57 +2520,57 @@ interface RegistrationResponseJSON {
 }
 
 interface Report {
-    body?: ReportBody | null;
-    type?: string;
-    url?: string;
+    body?: ReportBody | null | undefined;
+    type?: string | undefined;
+    url?: string | undefined;
 }
 
 interface ReportBody {
 }
 
 interface ReportingObserverOptions {
-    buffered?: boolean;
-    types?: string[];
+    buffered?: boolean | undefined;
+    types?: string[] | undefined;
 }
 
 interface RequestInit {
     /** A BodyInit object or null to set request's body. */
-    body?: BodyInit | null;
+    body?: BodyInit | null | undefined;
     /** A string indicating how the request will interact with the browser's cache to set request's cache. */
-    cache?: RequestCache;
+    cache?: RequestCache | undefined;
     /** A string indicating whether credentials will be sent with the request always, never, or only when sent to a same-origin URL. Sets request's credentials. */
-    credentials?: RequestCredentials;
+    credentials?: RequestCredentials | undefined;
     /** A Headers object, an object literal, or an array of two-item arrays to set request's headers. */
-    headers?: HeadersInit;
+    headers?: HeadersInit | undefined;
     /** A cryptographic hash of the resource to be fetched by request. Sets request's integrity. */
-    integrity?: string;
+    integrity?: string | undefined;
     /** A boolean to set request's keepalive. */
-    keepalive?: boolean;
+    keepalive?: boolean | undefined;
     /** A string to set request's method. */
-    method?: string;
+    method?: string | undefined;
     /** A string to indicate whether the request will use CORS, or will be restricted to same-origin URLs. Sets request's mode. */
-    mode?: RequestMode;
-    priority?: RequestPriority;
+    mode?: RequestMode | undefined;
+    priority?: RequestPriority | undefined;
     /** A string indicating whether request follows redirects, results in an error upon encountering a redirect, or returns the redirect (in an opaque fashion). Sets request's redirect. */
-    redirect?: RequestRedirect;
+    redirect?: RequestRedirect | undefined;
     /** A string whose value is a same-origin URL, "about:client", or the empty string, to set request's referrer. */
-    referrer?: string;
+    referrer?: string | undefined;
     /** A referrer policy to set request's referrerPolicy. */
-    referrerPolicy?: ReferrerPolicy;
+    referrerPolicy?: ReferrerPolicy | undefined;
     /** An AbortSignal to set request's signal. */
-    signal?: AbortSignal | null;
+    signal?: AbortSignal | null | undefined;
     /** Can only be null. Used to disassociate request from any Window. */
-    window?: null;
+    window?: null | undefined;
 }
 
 interface ResizeObserverOptions {
-    box?: ResizeObserverBoxOptions;
+    box?: ResizeObserverBoxOptions | undefined;
 }
 
 interface ResponseInit {
-    headers?: HeadersInit;
-    status?: number;
-    statusText?: string;
+    headers?: HeadersInit | undefined;
+    status?: number | undefined;
+    statusText?: string | undefined;
 }
 
 interface RsaHashedImportParams extends Algorithm {
@@ -2596,13 +2596,13 @@ interface RsaKeyGenParams extends Algorithm {
 }
 
 interface RsaOaepParams extends Algorithm {
-    label?: BufferSource;
+    label?: BufferSource | undefined;
 }
 
 interface RsaOtherPrimesInfo {
-    d?: string;
-    r?: string;
-    t?: string;
+    d?: string | undefined;
+    r?: string | undefined;
+    t?: string | undefined;
 }
 
 interface RsaPssParams extends Algorithm {
@@ -2610,10 +2610,10 @@ interface RsaPssParams extends Algorithm {
 }
 
 interface SVGBoundingBoxOptions {
-    clipped?: boolean;
-    fill?: boolean;
-    markers?: boolean;
-    stroke?: boolean;
+    clipped?: boolean | undefined;
+    fill?: boolean | undefined;
+    markers?: boolean | undefined;
+    stroke?: boolean | undefined;
 }
 
 interface SanitizerAttributeNamespace {
@@ -2642,72 +2642,72 @@ interface SanitizerElementNamespaceWithAttributes extends SanitizerElementNamesp
 }
 
 interface SchedulerPostTaskOptions {
-    delay?: number;
-    priority?: TaskPriority;
-    signal?: AbortSignal;
+    delay?: number | undefined;
+    priority?: TaskPriority | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface ScrollIntoViewOptions extends ScrollOptions {
-    block?: ScrollLogicalPosition;
-    inline?: ScrollLogicalPosition;
+    block?: ScrollLogicalPosition | undefined;
+    inline?: ScrollLogicalPosition | undefined;
 }
 
 interface ScrollOptions {
-    behavior?: ScrollBehavior;
+    behavior?: ScrollBehavior | undefined;
 }
 
 interface ScrollTimelineOptions {
-    axis?: ScrollAxis;
-    source?: Element | null;
+    axis?: ScrollAxis | undefined;
+    source?: Element | null | undefined;
 }
 
 interface ScrollToOptions extends ScrollOptions {
-    left?: number;
-    top?: number;
+    left?: number | undefined;
+    top?: number | undefined;
 }
 
 interface SecurityPolicyViolationEventInit extends EventInit {
-    blockedURI?: string;
-    columnNumber?: number;
-    disposition?: SecurityPolicyViolationEventDisposition;
-    documentURI?: string;
-    effectiveDirective?: string;
-    lineNumber?: number;
-    originalPolicy?: string;
-    referrer?: string;
-    sample?: string;
-    sourceFile?: string;
-    statusCode?: number;
-    violatedDirective?: string;
+    blockedURI?: string | undefined;
+    columnNumber?: number | undefined;
+    disposition?: SecurityPolicyViolationEventDisposition | undefined;
+    documentURI?: string | undefined;
+    effectiveDirective?: string | undefined;
+    lineNumber?: number | undefined;
+    originalPolicy?: string | undefined;
+    referrer?: string | undefined;
+    sample?: string | undefined;
+    sourceFile?: string | undefined;
+    statusCode?: number | undefined;
+    violatedDirective?: string | undefined;
 }
 
 interface ShadowRootInit {
-    clonable?: boolean;
-    customElementRegistry?: CustomElementRegistry | null;
-    delegatesFocus?: boolean;
+    clonable?: boolean | undefined;
+    customElementRegistry?: CustomElementRegistry | null | undefined;
+    delegatesFocus?: boolean | undefined;
     mode: ShadowRootMode;
-    serializable?: boolean;
-    slotAssignment?: SlotAssignmentMode;
+    serializable?: boolean | undefined;
+    slotAssignment?: SlotAssignmentMode | undefined;
 }
 
 interface ShareData {
-    files?: File[];
-    text?: string;
-    title?: string;
-    url?: string;
+    files?: File[] | undefined;
+    text?: string | undefined;
+    title?: string | undefined;
+    url?: string | undefined;
 }
 
 interface ShowPopoverOptions {
-    source?: HTMLElement;
+    source?: HTMLElement | undefined;
 }
 
 interface SpeechRecognitionErrorEventInit extends EventInit {
     error: SpeechRecognitionErrorCode;
-    message?: string;
+    message?: string | undefined;
 }
 
 interface SpeechRecognitionEventInit extends EventInit {
-    resultIndex?: number;
+    resultIndex?: number | undefined;
     results: SpeechRecognitionResultList;
 }
 
@@ -2716,16 +2716,16 @@ interface SpeechSynthesisErrorEventInit extends SpeechSynthesisEventInit {
 }
 
 interface SpeechSynthesisEventInit extends EventInit {
-    charIndex?: number;
-    charLength?: number;
-    elapsedTime?: number;
-    name?: string;
+    charIndex?: number | undefined;
+    charLength?: number | undefined;
+    elapsedTime?: number | undefined;
+    name?: string | undefined;
     utterance: SpeechSynthesisUtterance;
 }
 
 interface StartViewTransitionOptions {
-    types?: string[] | null;
-    update?: ViewTransitionUpdateCallback | null;
+    types?: string[] | null | undefined;
+    update?: ViewTransitionUpdateCallback | null | undefined;
 }
 
 interface StaticRangeInit {
@@ -2736,25 +2736,25 @@ interface StaticRangeInit {
 }
 
 interface StereoPannerOptions extends AudioNodeOptions {
-    pan?: number;
+    pan?: number | undefined;
 }
 
 interface StorageEstimate {
-    quota?: number;
-    usage?: number;
+    quota?: number | undefined;
+    usage?: number | undefined;
 }
 
 interface StorageEventInit extends EventInit {
-    key?: string | null;
-    newValue?: string | null;
-    oldValue?: string | null;
-    storageArea?: Storage | null;
-    url?: string;
+    key?: string | null | undefined;
+    newValue?: string | null | undefined;
+    oldValue?: string | null | undefined;
+    storageArea?: Storage | null | undefined;
+    url?: string | undefined;
 }
 
 interface StreamPipeOptions {
-    preventAbort?: boolean;
-    preventCancel?: boolean;
+    preventAbort?: boolean | undefined;
+    preventCancel?: boolean | undefined;
     /**
      * Pipes this readable stream to a given writable stream destination. The way in which the piping process behaves under various error conditions can be customized with a number of passed options. It returns a promise that fulfills when the piping process completes successfully, or rejects if any errors were encountered.
      *
@@ -2772,24 +2772,24 @@ interface StreamPipeOptions {
      *
      * The signal option can be set to an AbortSignal to allow aborting an ongoing pipe operation via the corresponding AbortController. In this case, this source readable stream will be canceled, and destination aborted, unless the respective options preventCancel or preventAbort are set.
      */
-    preventClose?: boolean;
-    signal?: AbortSignal;
+    preventClose?: boolean | undefined;
+    signal?: AbortSignal | undefined;
 }
 
 interface StructuredSerializeOptions {
-    transfer?: Transferable[];
+    transfer?: Transferable[] | undefined;
 }
 
 interface SubmitEventInit extends EventInit {
-    submitter?: HTMLElement | null;
+    submitter?: HTMLElement | null | undefined;
 }
 
 interface SvcOutputMetadata {
-    temporalLayerId?: number;
+    temporalLayerId?: number | undefined;
 }
 
 interface TaskControllerInit {
-    priority?: TaskPriority;
+    priority?: TaskPriority | undefined;
 }
 
 interface TaskPriorityChangeEventInit extends EventInit {
@@ -2797,16 +2797,16 @@ interface TaskPriorityChangeEventInit extends EventInit {
 }
 
 interface TaskSignalAnyInit {
-    priority?: TaskPriority | TaskSignal;
+    priority?: TaskPriority | TaskSignal | undefined;
 }
 
 interface TextDecodeOptions {
-    stream?: boolean;
+    stream?: boolean | undefined;
 }
 
 interface TextDecoderOptions {
-    fatal?: boolean;
-    ignoreBOM?: boolean;
+    fatal?: boolean | undefined;
+    ignoreBOM?: boolean | undefined;
 }
 
 interface TextEncoderEncodeIntoResult {
@@ -2815,72 +2815,72 @@ interface TextEncoderEncodeIntoResult {
 }
 
 interface TimelineRangeOffset {
-    offset?: CSSNumericValue;
-    rangeName?: string | null;
+    offset?: CSSNumericValue | undefined;
+    rangeName?: string | null | undefined;
 }
 
 interface ToggleEventInit extends EventInit {
-    newState?: string;
-    oldState?: string;
-    source?: Element | null;
+    newState?: string | undefined;
+    oldState?: string | undefined;
+    source?: Element | null | undefined;
 }
 
 interface TogglePopoverOptions extends ShowPopoverOptions {
-    force?: boolean;
+    force?: boolean | undefined;
 }
 
 interface TouchEventInit extends EventModifierInit {
-    changedTouches?: Touch[];
-    targetTouches?: Touch[];
-    touches?: Touch[];
+    changedTouches?: Touch[] | undefined;
+    targetTouches?: Touch[] | undefined;
+    touches?: Touch[] | undefined;
 }
 
 interface TouchInit {
-    altitudeAngle?: number;
-    azimuthAngle?: number;
-    clientX?: number;
-    clientY?: number;
-    force?: number;
+    altitudeAngle?: number | undefined;
+    azimuthAngle?: number | undefined;
+    clientX?: number | undefined;
+    clientY?: number | undefined;
+    force?: number | undefined;
     identifier: number;
-    pageX?: number;
-    pageY?: number;
-    radiusX?: number;
-    radiusY?: number;
-    rotationAngle?: number;
-    screenX?: number;
-    screenY?: number;
+    pageX?: number | undefined;
+    pageY?: number | undefined;
+    radiusX?: number | undefined;
+    radiusY?: number | undefined;
+    rotationAngle?: number | undefined;
+    screenX?: number | undefined;
+    screenY?: number | undefined;
     target: EventTarget;
-    touchType?: TouchType;
+    touchType?: TouchType | undefined;
 }
 
 interface TrackEventInit extends EventInit {
-    track?: TextTrack | null;
+    track?: TextTrack | null | undefined;
 }
 
 interface Transformer<I = any, O = any> {
-    flush?: TransformerFlushCallback<O>;
+    flush?: TransformerFlushCallback<O> | undefined;
     readableType?: undefined;
-    start?: TransformerStartCallback<O>;
-    transform?: TransformerTransformCallback<I, O>;
+    start?: TransformerStartCallback<O> | undefined;
+    transform?: TransformerTransformCallback<I, O> | undefined;
     writableType?: undefined;
 }
 
 interface TransitionEventInit extends EventInit {
-    elapsedTime?: number;
-    propertyName?: string;
-    pseudoElement?: string;
+    elapsedTime?: number | undefined;
+    propertyName?: string | undefined;
+    pseudoElement?: string | undefined;
 }
 
 interface UIEventInit extends EventInit {
-    detail?: number;
-    view?: Window | null;
+    detail?: number | undefined;
+    view?: Window | null | undefined;
     /** @deprecated */
-    which?: number;
+    which?: number | undefined;
 }
 
 interface ULongRange {
-    max?: number;
-    min?: number;
+    max?: number | undefined;
+    min?: number | undefined;
 }
 
 interface URLPatternComponentResult {
@@ -2889,19 +2889,19 @@ interface URLPatternComponentResult {
 }
 
 interface URLPatternInit {
-    baseURL?: string;
-    hash?: string;
-    hostname?: string;
-    password?: string;
-    pathname?: string;
-    port?: string;
-    protocol?: string;
-    search?: string;
-    username?: string;
+    baseURL?: string | undefined;
+    hash?: string | undefined;
+    hostname?: string | undefined;
+    password?: string | undefined;
+    pathname?: string | undefined;
+    port?: string | undefined;
+    protocol?: string | undefined;
+    search?: string | undefined;
+    username?: string | undefined;
 }
 
 interface URLPatternOptions {
-    ignoreCase?: boolean;
+    ignoreCase?: boolean | undefined;
 }
 
 interface URLPatternResult {
@@ -2917,34 +2917,34 @@ interface URLPatternResult {
 }
 
 interface UnderlyingByteSource {
-    autoAllocateChunkSize?: number;
-    cancel?: UnderlyingSourceCancelCallback;
-    pull?: (controller: ReadableByteStreamController) => void | PromiseLike<void>;
-    start?: (controller: ReadableByteStreamController) => any;
+    autoAllocateChunkSize?: number | undefined;
+    cancel?: UnderlyingSourceCancelCallback | undefined;
+    pull?: (controller: ReadableByteStreamController) => void | PromiseLike<void> | undefined;
+    start?: (controller: ReadableByteStreamController) => any | undefined;
     type: "bytes";
 }
 
 interface UnderlyingDefaultSource<R = any> {
-    cancel?: UnderlyingSourceCancelCallback;
-    pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void>;
-    start?: (controller: ReadableStreamDefaultController<R>) => any;
+    cancel?: UnderlyingSourceCancelCallback | undefined;
+    pull?: (controller: ReadableStreamDefaultController<R>) => void | PromiseLike<void> | undefined;
+    start?: (controller: ReadableStreamDefaultController<R>) => any | undefined;
     type?: undefined;
 }
 
 interface UnderlyingSink<W = any> {
-    abort?: UnderlyingSinkAbortCallback;
-    close?: UnderlyingSinkCloseCallback;
-    start?: UnderlyingSinkStartCallback;
+    abort?: UnderlyingSinkAbortCallback | undefined;
+    close?: UnderlyingSinkCloseCallback | undefined;
+    start?: UnderlyingSinkStartCallback | undefined;
     type?: undefined;
-    write?: UnderlyingSinkWriteCallback<W>;
+    write?: UnderlyingSinkWriteCallback<W> | undefined;
 }
 
 interface UnderlyingSource<R = any> {
-    autoAllocateChunkSize?: number;
-    cancel?: UnderlyingSourceCancelCallback;
-    pull?: UnderlyingSourcePullCallback<R>;
-    start?: UnderlyingSourceStartCallback<R>;
-    type?: ReadableStreamType;
+    autoAllocateChunkSize?: number | undefined;
+    cancel?: UnderlyingSourceCancelCallback | undefined;
+    pull?: UnderlyingSourcePullCallback<R> | undefined;
+    start?: UnderlyingSourceStartCallback<R> | undefined;
+    type?: ReadableStreamType | undefined;
 }
 
 interface UnknownCredentialOptions {
@@ -2953,48 +2953,48 @@ interface UnknownCredentialOptions {
 }
 
 interface ValidityStateFlags {
-    badInput?: boolean;
-    customError?: boolean;
-    patternMismatch?: boolean;
-    rangeOverflow?: boolean;
-    rangeUnderflow?: boolean;
-    stepMismatch?: boolean;
-    tooLong?: boolean;
-    tooShort?: boolean;
-    typeMismatch?: boolean;
-    valueMissing?: boolean;
+    badInput?: boolean | undefined;
+    customError?: boolean | undefined;
+    patternMismatch?: boolean | undefined;
+    rangeOverflow?: boolean | undefined;
+    rangeUnderflow?: boolean | undefined;
+    stepMismatch?: boolean | undefined;
+    tooLong?: boolean | undefined;
+    tooShort?: boolean | undefined;
+    typeMismatch?: boolean | undefined;
+    valueMissing?: boolean | undefined;
 }
 
 interface VideoColorSpaceInit {
-    fullRange?: boolean | null;
-    matrix?: VideoMatrixCoefficients | null;
-    primaries?: VideoColorPrimaries | null;
-    transfer?: VideoTransferCharacteristics | null;
+    fullRange?: boolean | null | undefined;
+    matrix?: VideoMatrixCoefficients | null | undefined;
+    primaries?: VideoColorPrimaries | null | undefined;
+    transfer?: VideoTransferCharacteristics | null | undefined;
 }
 
 interface VideoConfiguration {
     bitrate: number;
-    colorGamut?: ColorGamut;
+    colorGamut?: ColorGamut | undefined;
     contentType: string;
     framerate: number;
-    hasAlphaChannel?: boolean;
-    hdrMetadataType?: HdrMetadataType;
+    hasAlphaChannel?: boolean | undefined;
+    hdrMetadataType?: HdrMetadataType | undefined;
     height: number;
-    scalabilityMode?: string;
-    transferFunction?: TransferFunction;
+    scalabilityMode?: string | undefined;
+    transferFunction?: TransferFunction | undefined;
     width: number;
 }
 
 interface VideoDecoderConfig {
     codec: string;
-    codedHeight?: number;
-    codedWidth?: number;
-    colorSpace?: VideoColorSpaceInit;
-    description?: AllowSharedBufferSource;
-    displayAspectHeight?: number;
-    displayAspectWidth?: number;
-    hardwareAcceleration?: HardwareAcceleration;
-    optimizeForLatency?: boolean;
+    codedHeight?: number | undefined;
+    codedWidth?: number | undefined;
+    colorSpace?: VideoColorSpaceInit | undefined;
+    description?: AllowSharedBufferSource | undefined;
+    displayAspectHeight?: number | undefined;
+    displayAspectWidth?: number | undefined;
+    hardwareAcceleration?: HardwareAcceleration | undefined;
+    optimizeForLatency?: boolean | undefined;
 }
 
 interface VideoDecoderInit {
@@ -3003,34 +3003,34 @@ interface VideoDecoderInit {
 }
 
 interface VideoDecoderSupport {
-    config?: VideoDecoderConfig;
-    supported?: boolean;
+    config?: VideoDecoderConfig | undefined;
+    supported?: boolean | undefined;
 }
 
 interface VideoEncoderConfig {
-    alpha?: AlphaOption;
-    avc?: AvcEncoderConfig;
-    bitrate?: number;
-    bitrateMode?: VideoEncoderBitrateMode;
+    alpha?: AlphaOption | undefined;
+    avc?: AvcEncoderConfig | undefined;
+    bitrate?: number | undefined;
+    bitrateMode?: VideoEncoderBitrateMode | undefined;
     codec: string;
-    contentHint?: string;
-    displayHeight?: number;
-    displayWidth?: number;
-    framerate?: number;
-    hardwareAcceleration?: HardwareAcceleration;
+    contentHint?: string | undefined;
+    displayHeight?: number | undefined;
+    displayWidth?: number | undefined;
+    framerate?: number | undefined;
+    hardwareAcceleration?: HardwareAcceleration | undefined;
     height: number;
-    latencyMode?: LatencyMode;
-    scalabilityMode?: string;
+    latencyMode?: LatencyMode | undefined;
+    scalabilityMode?: string | undefined;
     width: number;
 }
 
 interface VideoEncoderEncodeOptions {
-    avc?: VideoEncoderEncodeOptionsForAvc;
-    keyFrame?: boolean;
+    avc?: VideoEncoderEncodeOptionsForAvc | undefined;
+    keyFrame?: boolean | undefined;
 }
 
 interface VideoEncoderEncodeOptionsForAvc {
-    quantizer?: number | null;
+    quantizer?: number | null | undefined;
 }
 
 interface VideoEncoderInit {
@@ -3039,88 +3039,88 @@ interface VideoEncoderInit {
 }
 
 interface VideoEncoderSupport {
-    config?: VideoEncoderConfig;
-    supported?: boolean;
+    config?: VideoEncoderConfig | undefined;
+    supported?: boolean | undefined;
 }
 
 interface VideoFrameBufferInit {
     codedHeight: number;
     codedWidth: number;
-    colorSpace?: VideoColorSpaceInit;
-    displayHeight?: number;
-    displayWidth?: number;
-    duration?: number;
+    colorSpace?: VideoColorSpaceInit | undefined;
+    displayHeight?: number | undefined;
+    displayWidth?: number | undefined;
+    duration?: number | undefined;
     format: VideoPixelFormat;
-    layout?: PlaneLayout[];
+    layout?: PlaneLayout[] | undefined;
     timestamp: number;
-    visibleRect?: DOMRectInit;
+    visibleRect?: DOMRectInit | undefined;
 }
 
 interface VideoFrameCallbackMetadata {
-    captureTime?: DOMHighResTimeStamp;
+    captureTime?: DOMHighResTimeStamp | undefined;
     expectedDisplayTime: DOMHighResTimeStamp;
     height: number;
     mediaTime: number;
     presentationTime: DOMHighResTimeStamp;
     presentedFrames: number;
-    processingDuration?: number;
-    receiveTime?: DOMHighResTimeStamp;
-    rtpTimestamp?: number;
+    processingDuration?: number | undefined;
+    receiveTime?: DOMHighResTimeStamp | undefined;
+    rtpTimestamp?: number | undefined;
     width: number;
 }
 
 interface VideoFrameCopyToOptions {
-    colorSpace?: PredefinedColorSpace;
-    format?: VideoPixelFormat;
-    layout?: PlaneLayout[];
-    rect?: DOMRectInit;
+    colorSpace?: PredefinedColorSpace | undefined;
+    format?: VideoPixelFormat | undefined;
+    layout?: PlaneLayout[] | undefined;
+    rect?: DOMRectInit | undefined;
 }
 
 interface VideoFrameInit {
-    alpha?: AlphaOption;
-    displayHeight?: number;
-    displayWidth?: number;
-    duration?: number;
-    timestamp?: number;
-    visibleRect?: DOMRectInit;
+    alpha?: AlphaOption | undefined;
+    displayHeight?: number | undefined;
+    displayWidth?: number | undefined;
+    duration?: number | undefined;
+    timestamp?: number | undefined;
+    visibleRect?: DOMRectInit | undefined;
 }
 
 interface ViewTimelineOptions {
-    axis?: ScrollAxis;
-    inset?: string | (CSSNumericValue | CSSKeywordValue)[];
-    subject?: Element;
+    axis?: ScrollAxis | undefined;
+    inset?: string | (CSSNumericValue | CSSKeywordValue)[] | undefined;
+    subject?: Element | undefined;
 }
 
 interface WaveShaperOptions extends AudioNodeOptions {
-    curve?: number[] | Float32Array;
-    oversample?: OverSampleType;
+    curve?: number[] | Float32Array | undefined;
+    oversample?: OverSampleType | undefined;
 }
 
 interface WebGLContextAttributes {
-    alpha?: boolean;
-    antialias?: boolean;
-    depth?: boolean;
-    desynchronized?: boolean;
-    failIfMajorPerformanceCaveat?: boolean;
-    powerPreference?: WebGLPowerPreference;
-    premultipliedAlpha?: boolean;
-    preserveDrawingBuffer?: boolean;
-    stencil?: boolean;
-    xrCompatible?: boolean;
+    alpha?: boolean | undefined;
+    antialias?: boolean | undefined;
+    depth?: boolean | undefined;
+    desynchronized?: boolean | undefined;
+    failIfMajorPerformanceCaveat?: boolean | undefined;
+    powerPreference?: WebGLPowerPreference | undefined;
+    premultipliedAlpha?: boolean | undefined;
+    preserveDrawingBuffer?: boolean | undefined;
+    stencil?: boolean | undefined;
+    xrCompatible?: boolean | undefined;
 }
 
 interface WebGLContextEventInit extends EventInit {
-    statusMessage?: string;
+    statusMessage?: string | undefined;
 }
 
 interface WebTransportCloseInfo {
-    closeCode?: number;
-    reason?: string;
+    closeCode?: number | undefined;
+    reason?: string | undefined;
 }
 
 interface WebTransportErrorOptions {
-    source?: WebTransportErrorSource;
-    streamErrorCode?: number | null;
+    source?: WebTransportErrorSource | undefined;
+    streamErrorCode?: number | null | undefined;
 }
 
 interface WebTransportHash {
@@ -3129,45 +3129,45 @@ interface WebTransportHash {
 }
 
 interface WebTransportOptions {
-    allowPooling?: boolean;
-    congestionControl?: WebTransportCongestionControl;
-    protocols?: string[];
-    requireUnreliable?: boolean;
-    serverCertificateHashes?: WebTransportHash[];
+    allowPooling?: boolean | undefined;
+    congestionControl?: WebTransportCongestionControl | undefined;
+    protocols?: string[] | undefined;
+    requireUnreliable?: boolean | undefined;
+    serverCertificateHashes?: WebTransportHash[] | undefined;
 }
 
 interface WebTransportSendOptions {
-    sendOrder?: number;
+    sendOrder?: number | undefined;
 }
 
 interface WebTransportSendStreamOptions extends WebTransportSendOptions {
 }
 
 interface WheelEventInit extends MouseEventInit {
-    deltaMode?: number;
-    deltaX?: number;
-    deltaY?: number;
-    deltaZ?: number;
+    deltaMode?: number | undefined;
+    deltaX?: number | undefined;
+    deltaY?: number | undefined;
+    deltaZ?: number | undefined;
 }
 
 interface WindowPostMessageOptions extends StructuredSerializeOptions {
-    targetOrigin?: string;
+    targetOrigin?: string | undefined;
 }
 
 interface WorkerOptions {
-    credentials?: RequestCredentials;
-    name?: string;
-    type?: WorkerType;
+    credentials?: RequestCredentials | undefined;
+    name?: string | undefined;
+    type?: WorkerType | undefined;
 }
 
 interface WorkletOptions {
-    credentials?: RequestCredentials;
+    credentials?: RequestCredentials | undefined;
 }
 
 interface WriteParams {
-    data?: BufferSource | Blob | string | null;
-    position?: number | null;
-    size?: number | null;
+    data?: BufferSource | Blob | string | null | undefined;
+    position?: number | null | undefined;
+    size?: number | null | undefined;
     type: WriteCommandType;
 }
 
@@ -42680,19 +42680,19 @@ declare namespace WebAssembly {
     };
 
     interface ExceptionOptions {
-        traceStack?: boolean;
+        traceStack?: boolean | undefined;
     }
 
     interface GlobalDescriptor<T extends ValueType = ValueType> {
-        mutable?: boolean;
+        mutable?: boolean | undefined;
         value: T;
     }
 
     interface MemoryDescriptor {
-        address?: AddressType;
+        address?: AddressType | undefined;
         initial: AddressValue;
-        maximum?: AddressValue;
-        shared?: boolean;
+        maximum?: AddressValue | undefined;
+        shared?: boolean | undefined;
     }
 
     interface ModuleExportDescriptor {
@@ -42707,10 +42707,10 @@ declare namespace WebAssembly {
     }
 
     interface TableDescriptor {
-        address?: AddressType;
+        address?: AddressType | undefined;
         element: TableKind;
         initial: AddressValue;
-        maximum?: AddressValue;
+        maximum?: AddressValue | undefined;
     }
 
     interface TagType {
@@ -42728,8 +42728,8 @@ declare namespace WebAssembly {
     }
 
     interface WebAssemblyCompileOptions {
-        builtins?: string[];
-        importedStringConstants?: string | null;
+        builtins?: string[] | undefined;
+        importedStringConstants?: string | null | undefined;
     }
 
     interface WebAssemblyInstantiatedSource {
