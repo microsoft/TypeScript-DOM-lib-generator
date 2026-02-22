@@ -59,11 +59,14 @@ function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
   if (!isTyped) {
     throw new Error("Expected a type node");
   }
+  const typeValue = type.values[0];
   const subType =
     type.children.length > 0 ? handleTyped(type.children) : undefined;
+  const isUnion = typeof type.properties.union == "boolean";
   return {
-    ...optionalMember("type", "string", type.values[0]),
-    subtype: subType,
+    ...optionalMember("type", "string", typeValue),
+    subtype:
+      isUnion && typeof subType?.type !== "string" ? subType?.type : subType,
     ...optionalMember("nullable", "boolean", type.properties?.nullable),
   };
 }
