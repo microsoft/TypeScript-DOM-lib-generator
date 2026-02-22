@@ -26,6 +26,10 @@ interface Document {
   }
 }
 
+interface MutationRecord {
+  property type type=MutationRecordType
+}
+
 enum InsertPosition {
   beforebegin
   beforeend
