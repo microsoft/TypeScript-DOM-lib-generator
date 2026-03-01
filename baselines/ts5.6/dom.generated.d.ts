@@ -405,6 +405,10 @@ interface CloseEventInit extends EventInit {
     wasClean?: boolean;
 }
 
+interface CloseWatcherOptions {
+    signal?: AbortSignal;
+}
+
 interface CommandEventInit extends EventInit {
     command?: string;
     source?: Element | null;
@@ -3115,6 +3119,23 @@ interface WebTransportCloseInfo {
     reason?: string;
 }
 
+interface WebTransportConnectionStats {
+    bytesReceived?: number;
+    datagrams: WebTransportDatagramStats;
+    minRtt?: DOMHighResTimeStamp;
+    packetsLost?: number;
+    packetsReceived?: number;
+    packetsSent?: number;
+    rttVariation?: DOMHighResTimeStamp;
+    smoothedRtt?: DOMHighResTimeStamp;
+}
+
+interface WebTransportDatagramStats {
+    droppedIncoming?: number;
+    expiredOutgoing?: number;
+    lostOutgoing?: number;
+}
+
 interface WebTransportErrorOptions {
     source?: WebTransportErrorSource;
     streamErrorCode?: number | null;
@@ -3133,11 +3154,22 @@ interface WebTransportOptions {
     serverCertificateHashes?: WebTransportHash[];
 }
 
+interface WebTransportReceiveStreamStats {
+    bytesRead?: number;
+    bytesReceived?: number;
+}
+
 interface WebTransportSendOptions {
     sendOrder?: number;
 }
 
 interface WebTransportSendStreamOptions extends WebTransportSendOptions {
+}
+
+interface WebTransportSendStreamStats {
+    bytesAcknowledged?: number;
+    bytesSent?: number;
+    bytesWritten?: number;
 }
 
 interface WheelEventInit extends MouseEventInit {
@@ -6812,7 +6844,11 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/background-size)
      */
     backgroundSize: string;
-    /** The baseline-shift CSS property repositions the dominant-baseline of a text element relative to the dominant-baseline of its parent text content element. The shifted element might be a sub- or superscript. If the property is present, the value overrides the element's baseline-shift attribute. */
+    /**
+     * The baseline-shift CSS property repositions the dominant-baseline of a text element relative to the dominant-baseline of its parent text content element. The shifted element might be a sub- or superscript. If the property is present, the value overrides the element's baseline-shift attribute.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/baseline-shift)
+     */
     baselineShift: string;
     /**
      * The baseline-source CSS property defines which baseline to use when inline-level boxes have multiple possible baselines, such as multi-line inline blocks or inline flex containers. The values allow for choosing between aligning to the box's first baseline, last baseline, or letting the browser decide automatically based on the box type.
@@ -10790,6 +10826,50 @@ declare var CloseEvent: {
     new(type: string, eventInitDict?: CloseEventInit): CloseEvent;
 };
 
+interface CloseWatcherEventMap {
+    "cancel": Event;
+    "close": Event;
+}
+
+/**
+ * The **`CloseWatcher`** interface allows a custom UI component with open and close semantics to respond to device-specific close actions in the same way as a built-in component.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseWatcher)
+ */
+interface CloseWatcher extends EventTarget {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseWatcher/cancel_event) */
+    oncancel: ((this: CloseWatcher, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseWatcher/close_event) */
+    onclose: ((this: CloseWatcher, ev: Event) => any) | null;
+    /**
+     * The **`close()`** method of the CloseWatcher interface lets you skip any logic in the cancel event handler and immediately fire the close event. It then deactivates the close watcher as if destroy() was called.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseWatcher/close)
+     */
+    close(): void;
+    /**
+     * The **`destroy()`** method of the CloseWatcher interface deactivates the close watcher. This is intended to be called if the relevant UI element is torn down in some other way than being closed.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseWatcher/destroy)
+     */
+    destroy(): void;
+    /**
+     * The **`requestClose()`** method of the CloseWatcher interface fires a cancel event and if that event is not canceled with Event.preventDefault(), proceeds to fire a close event, and then finally deactivates the close watcher as if destroy() was called.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CloseWatcher/requestClose)
+     */
+    requestClose(): void;
+    addEventListener<K extends keyof CloseWatcherEventMap>(type: K, listener: (this: CloseWatcher, ev: CloseWatcherEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof CloseWatcherEventMap>(type: K, listener: (this: CloseWatcher, ev: CloseWatcherEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+}
+
+declare var CloseWatcher: {
+    prototype: CloseWatcher;
+    new(options?: CloseWatcherOptions): CloseWatcher;
+};
+
 /**
  * The **`CommandEvent`** interface represents an event notifying the user when a button element with valid commandForElement and command attributes is about to invoke an interactive element.
  *
@@ -11228,6 +11308,7 @@ interface CustomElementRegistry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry/getName)
      */
     getName(constructor: CustomElementConstructor): string | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomElementRegistry/initialize) */
     initialize(root: Node): void;
     /**
      * The **`upgrade()`** method of the CustomElementRegistry interface upgrades all shadow-containing custom elements in a Node subtree, even before they are connected to the main document.
@@ -13226,6 +13307,7 @@ interface DocumentOrShadowRoot {
     readonly activeElement: Element | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/adoptedStyleSheets) */
     adoptedStyleSheets: CSSStyleSheet[];
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/customElementRegistry) */
     readonly customElementRegistry: CustomElementRegistry | null;
     /**
      * Returns document's fullscreen element.
@@ -13536,6 +13618,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/currentCSSZoom)
      */
     readonly currentCSSZoom: number;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/customElementRegistry) */
     readonly customElementRegistry: CustomElementRegistry | null;
     /**
      * The **`id`** property of the Element interface represents the element's identifier, reflecting the id global attribute.
@@ -18761,6 +18844,12 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     checked: boolean;
     /**
+     * The **`colorSpace`** property of the HTMLInputElement interface reflects the <input> element's colorspace attribute, which indicates whether the color space of the serialized CSS color is sRGB (the default) or display-p3. It is only relevant to color controls.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/colorSpace)
+     */
+    colorSpace: string;
+    /**
      * The **`defaultChecked`** property of the HTMLInputElement interface specifies the default checkedness state of the element. This property reflects the <input> element's checked attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/defaultChecked)
@@ -19564,6 +19653,12 @@ interface HTMLMediaElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canPlayType)
      */
     canPlayType(type: string): CanPlayTypeResult;
+    /**
+     * The **`captureStream()`** method of the HTMLMediaElement interface returns a MediaStream object which is streaming a real-time capture of the content being rendered in the media element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/captureStream)
+     */
+    captureStream(): MediaStream;
     /**
      * The **`HTMLMediaElement.fastSeek()`** method quickly seeks the media to the new time with precision tradeoff.
      *
@@ -21301,6 +21396,7 @@ interface HTMLTemplateElement extends HTMLElement {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootClonable)
      */
     shadowRootClonable: boolean;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/shadowRootCustomElementRegistry) */
     shadowRootCustomElementRegistry: string;
     /**
      * The **`shadowRootDelegatesFocus`** property of the HTMLTemplateElement interface reflects the value of the shadowrootdelegatesfocus attribute of the associated <template> element.
@@ -27894,6 +27990,12 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      */
     readonly decodedBodySize: number;
     /**
+     * The **`deliveryType`** read-only property is a string indicating how the resource was delivered — for example from the cache or from a navigational prefetch.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/deliveryType)
+     */
+    readonly deliveryType: string;
+    /**
      * The **`domainLookupEnd`** read-only property returns the timestamp immediately after the browser finishes the domain-name lookup for the resource.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/domainLookupEnd)
@@ -27917,6 +28019,18 @@ interface PerformanceResourceTiming extends PerformanceEntry {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/fetchStart)
      */
     readonly fetchStart: DOMHighResTimeStamp;
+    /**
+     * The **`finalResponseHeadersStart`** read-only property returns a timestamp immediately after the browser receives the first byte of the final document response (for example, 200 OK) from the server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/finalResponseHeadersStart)
+     */
+    readonly finalResponseHeadersStart: DOMHighResTimeStamp;
+    /**
+     * The **`firstInterimResponseStart`** read-only property returns a timestamp immediately after the browser receives the first byte of the interim 1xx response (for example, 100 Continue or 103 Early Hints) from the server.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/PerformanceResourceTiming/firstInterimResponseStart)
+     */
+    readonly firstInterimResponseStart: DOMHighResTimeStamp;
     /**
      * The **`initiatorType`** read-only property is a string representing web platform feature that initiated the resource load.
      *
@@ -40936,6 +41050,12 @@ interface WebTransport {
      */
     readonly closed: Promise<WebTransportCloseInfo>;
     /**
+     * The **`congestionControl`** read-only property of the WebTransport interface indicates the application's preference for either high throughput or low-latency when sending data.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/congestionControl)
+     */
+    readonly congestionControl: WebTransportCongestionControl;
+    /**
      * The **`datagrams`** read-only property of the WebTransport interface returns a WebTransportDatagramDuplexStream instance that can be used to send and receive datagrams — unreliable data transmission.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/datagrams)
@@ -40953,12 +41073,19 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
      */
     readonly incomingUnidirectionalStreams: ReadableStream;
+    readonly protocol: string;
     /**
      * The **`ready`** read-only property of the WebTransport interface returns a promise that resolves when the transport is ready to use.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/ready)
      */
     readonly ready: Promise<void>;
+    /**
+     * The **`reliability`** read-only property of the WebTransport interface indicates whether the connection supports reliable transports only, or whether it also supports unreliable transports (such as UDP).
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/reliability)
+     */
+    readonly reliability: WebTransportReliabilityMode;
     /**
      * The **`close()`** method of the WebTransport interface closes an ongoing WebTransport session.
      *
@@ -40977,6 +41104,12 @@ interface WebTransport {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/createUnidirectionalStream)
      */
     createUnidirectionalStream(options?: WebTransportSendStreamOptions): Promise<WritableStream>;
+    /**
+     * The **`getStats()`** method of the WebTransport interface asynchronously returns an object containing HTTP/3 connection statistics.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransport/getStats)
+     */
+    getStats(): Promise<WebTransportConnectionStats>;
 }
 
 declare var WebTransport: {
@@ -41090,6 +41223,52 @@ interface WebTransportError extends DOMException {
 declare var WebTransportError: {
     prototype: WebTransportError;
     new(message?: string, options?: WebTransportErrorOptions): WebTransportError;
+};
+
+/**
+ * The **`WebTransportReceiveStream`** interface of the WebTransport API is a ReadableStream that can be used to read from an incoming unidirectional or bidirectional WebTransport stream.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportReceiveStream)
+ */
+interface WebTransportReceiveStream extends ReadableStream {
+    /**
+     * The **`getStats()`** method of the WebTransportReceiveStream interface asynchronously returns an object containing statistics for the current stream.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportReceiveStream/getStats)
+     */
+    getStats(): Promise<WebTransportReceiveStreamStats>;
+}
+
+declare var WebTransportReceiveStream: {
+    prototype: WebTransportReceiveStream;
+    new(): WebTransportReceiveStream;
+};
+
+/**
+ * The **`WebTransportSendStream`** interface of the WebTransport API is a specialized WritableStream that is used to send outbound data in both unidirectional or bidirectional WebTransport streams.
+ * Available only in secure contexts.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream)
+ */
+interface WebTransportSendStream extends WritableStream {
+    /**
+     * The **`sendOrder`** property of the WebTransportSendStream interface indicates the send priority of this stream relative to other streams for which the value has been set.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream/sendOrder)
+     */
+    sendOrder: number;
+    /**
+     * The **`getStats()`** method of the WebTransportSendStream interface asynchronously returns an object containing statistics for the current stream.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportSendStream/getStats)
+     */
+    getStats(): Promise<WebTransportSendStreamStats>;
+}
+
+declare var WebTransportSendStream: {
+    prototype: WebTransportSendStream;
+    new(): WebTransportSendStream;
 };
 
 /**
@@ -44452,6 +44631,7 @@ type WakeLockType = "screen";
 type WebGLPowerPreference = "default" | "high-performance" | "low-power";
 type WebTransportCongestionControl = "default" | "low-latency" | "throughput";
 type WebTransportErrorSource = "session" | "stream";
+type WebTransportReliabilityMode = "pending" | "reliable-only" | "supports-unreliable";
 type WorkerType = "classic" | "module";
 type WriteCommandType = "seek" | "truncate" | "write";
 type XMLHttpRequestResponseType = "" | "arraybuffer" | "blob" | "document" | "json" | "text";

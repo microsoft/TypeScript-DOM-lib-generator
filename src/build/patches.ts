@@ -34,7 +34,9 @@ function optionalMember<const T>(prop: string, type: T, value?: Value) {
     return {};
   }
   if (typeof value !== type) {
-    throw new Error(`Expected type ${value} for ${prop}`);
+    throw new Error(
+      `Unexpected type ${typeof value} for ${prop}, expected ${type} instead`,
+    );
   }
   return {
     [prop]: value as T extends "string"
@@ -251,6 +253,7 @@ function handleMixinAndInterfaces(
     ...(constructor ? { constructor } : {}),
     ...optionalMember("exposed", "string", node.properties?.exposed),
     ...optionalMember("deprecated", "string", node.properties?.deprecated),
+    ...optionalMember("transferable", "boolean", node.properties?.transferable),
     ...optionalMember(
       "noInterfaceObject",
       "boolean",
