@@ -18,6 +18,7 @@ updates:
       eslint:
         patterns:
           - "eslint*"
+          - "@eslint/*"
           - "@typescript-eslint/*"
       # Other updates should be okay all at once
       dev-dependencies:
