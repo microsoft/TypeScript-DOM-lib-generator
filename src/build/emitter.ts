@@ -372,17 +372,39 @@ export function emitWebIdl(
     obj: Browser.Typed,
     forReturn: boolean,
   ): string {
+    let type: string;
     if (obj.overrideType) {
-      return obj.nullable ? makeNullable(obj.overrideType) : obj.overrideType;
+      type = obj.overrideType;
+    } else {
+      if (!obj.type) {
+        throw new Error("Missing 'type' field in " + JSON.stringify(obj));
+      }
+      type = convertDomTypeToTsTypeWorker(obj, forReturn);
+      if (type === "Promise<undefined>") {
+        type = "Promise<void>";
+      }
     }
-    if (!obj.type) {
-      throw new Error("Missing 'type' field in " + JSON.stringify(obj));
+
+    if (obj.additionalTypes) {
+      const additional = obj.additionalTypes
+        .filter((t) => t !== "undefined")
+        .map((t) => convertDomTypeToTsTypeSimple(t));
+      if (additional.length > 0) {
+        type = distinct([type, ...additional]).join(" | ");
+      }
     }
-    let type = convertDomTypeToTsTypeWorker(obj, forReturn);
-    if (type === "Promise<undefined>") {
-      type = "Promise<void>";
+
+    if (obj.nullable) {
+      type = makeNullable(type);
     }
-    return obj.nullable ? makeNullable(type) : type;
+
+    if (obj.additionalTypes?.includes("undefined")) {
+      if (!type.split(" | ").includes("undefined")) {
+        type += " | undefined";
+      }
+    }
+
+    return type;
   }
 
   function convertDomTypeToTsType(obj: Browser.Typed) {
@@ -409,22 +431,19 @@ export function emitWebIdl(
         return "Iterable";
       }
 
-      if (!obj.additionalTypes && typeof obj.type === "string") {
+      if (typeof obj.type === "string") {
         return convertDomTypeToTsTypeSimple(obj.type);
       } else {
-        const types =
-          typeof obj.type === "string"
-            ? [{ ...obj, additionalTypes: undefined }]
-            : obj.type;
-        types.push(...(obj.additionalTypes ?? []).map((t) => ({ type: t })));
+        const types = obj.type;
 
         // propagate `any`
-        const converted = types.map((t) =>
+        let converted = types.map((t) =>
           convertDomTypeToTsTypeWorker(t, forReturn),
         );
         if (converted.includes("any")) {
           return "any";
         }
+        converted = distinct(converted);
 
         // convert `ArrayBuffer | SharedArrayBuffer` into `ArrayBufferLike` to be pre-ES2017 friendly.
         const arrayBufferIndex = converted.indexOf("ArrayBuffer");
@@ -901,7 +920,7 @@ export function emitWebIdl(
       printer.printLine("/** @deprecated */");
       printer.printLine("declare const name: void;");
     } else {
-      let pType: string;
+      let pForType: Browser.Property = p;
       if (!p.overrideType && isEventHandler(p)) {
         // Sometimes event handlers with the same name may actually handle different
         // events in different interfaces. For example, "onerror" handles "ErrorEvent"
@@ -909,16 +928,20 @@ export function emitWebIdl(
         const eType = p.eventHandler
           ? getEventTypeInInterface(p.eventHandler!, i)
           : "Event";
-        pType = `(${emitEventHandlerThis(prefix, i)}ev: ${eType}) => any`;
+        let typeStr = `(${emitEventHandlerThis(prefix, i)}ev: ${eType}) => any`;
         if (typeof p.type === "string" && !p.type.endsWith("NonNull")) {
-          pType = `(${pType}) | null`;
+          typeStr = `(${typeStr}) | null`;
         }
-      } else {
-        pType = convertDomTypeToTsType(p);
+        pForType = { ...p, overrideType: typeStr };
       }
-      if (p.optional) {
-        pType += " | undefined";
+      if (pForType.optional) {
+        pForType = {
+          ...pForType,
+          additionalTypes: [...(pForType.additionalTypes ?? []), "undefined"],
+        };
       }
+      const pType = convertDomTypeToTsType(pForType);
+
       const propertyName = p.name.includes("-") ? `"${p.name}"` : p.name;
       const optionalModifier = !p.optional || prefix ? "" : "?";
       const canPutForward =
@@ -935,10 +958,14 @@ export function emitWebIdl(
         if (!forwardingProperty) {
           throw new Error("Couldn't find [PutForwards]");
         }
-        let setterType = `${convertDomTypeToTsType(forwardingProperty)}`;
-        if (!compilerBehavior.allowUnrelatedSetterType) {
-          setterType += ` | ${pType}`;
-        }
+        const setterType = convertDomTypeToTsType(
+          compilerBehavior.allowUnrelatedSetterType
+            ? forwardingProperty
+            : {
+                ...forwardingProperty,
+                type: [forwardingProperty, pForType],
+              },
+        );
         printer.printLine(
           `set ${propertyName}${optionalModifier}(${p.putForwards}: ${setterType});`,
         );
@@ -1581,9 +1608,15 @@ export function emitWebIdl(
         .sort(compareName)
         .forEach((m) => {
           emitComments(m, printer.printLine);
-          printer.printLine(
-            `${m.name}${m.required ? "" : "?"}: ${convertDomTypeToTsType(m)};`,
+          const type = convertDomTypeToTsType(
+            m.required
+              ? m
+              : {
+                  ...m,
+                  additionalTypes: [...(m.additionalTypes ?? []), "undefined"],
+                },
           );
+          printer.printLine(`${m.name}${m.required ? "" : "?"}: ${type};`);
         });
     }
     if (dict.overrideIndexSignatures) {
