@@ -348,7 +348,7 @@ interface CSSNumericType {
 }
 
 interface CSSStyleSheetInit {
-    baseURL?: string;
+    baseURL?: string | null;
     disabled?: boolean;
     media?: MediaList | string;
 }
@@ -17082,7 +17082,7 @@ declare var HTMLAllCollection: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement)
  */
-interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils {
+interface HTMLAnchorElement extends HTMLElement, HTMLHyperlinkElementUtils, HyperlinkElementUtils {
     /** @deprecated */
     charset: string;
     /** @deprecated */
@@ -17163,7 +17163,7 @@ declare var HTMLAnchorElement: {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement)
  */
-interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils {
+interface HTMLAreaElement extends HTMLElement, HTMLHyperlinkElementUtils, HyperlinkElementUtils {
     /**
      * The **`alt`** property of the HTMLAreaElement interface specifies the text of the hyperlink, defining the textual label for an image map's link. It reflects the <area> element's alt attribute.
      *
@@ -18414,30 +18414,6 @@ declare var HTMLHtmlElement: {
 
 interface HTMLHyperlinkElementUtils {
     /**
-     * Returns the hyperlink's URL's fragment (includes leading "#" if non-empty).
-     *
-     * Can be set, to change the URL's fragment (ignores leading "#").
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hash)
-     */
-    hash: string;
-    /**
-     * Returns the hyperlink's URL's host and port (if different from the default port for the scheme).
-     *
-     * Can be set, to change the URL's host and port.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/host)
-     */
-    host: string;
-    /**
-     * Returns the hyperlink's URL's host.
-     *
-     * Can be set, to change the URL's host.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hostname)
-     */
-    hostname: string;
-    /**
      * Returns the hyperlink's URL.
      *
      * Can be set, to change the URL.
@@ -18446,60 +18422,6 @@ interface HTMLHyperlinkElementUtils {
      */
     href: string;
     toString(): string;
-    /**
-     * Returns the hyperlink's URL's origin.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/origin)
-     */
-    readonly origin: string;
-    /**
-     * Returns the hyperlink's URL's password.
-     *
-     * Can be set, to change the URL's password.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/password)
-     */
-    password: string;
-    /**
-     * Returns the hyperlink's URL's path.
-     *
-     * Can be set, to change the URL's path.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/pathname)
-     */
-    pathname: string;
-    /**
-     * Returns the hyperlink's URL's port.
-     *
-     * Can be set, to change the URL's port.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/port)
-     */
-    port: string;
-    /**
-     * Returns the hyperlink's URL's scheme.
-     *
-     * Can be set, to change the URL's scheme.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/protocol)
-     */
-    protocol: string;
-    /**
-     * Returns the hyperlink's URL's query (includes leading "?" if non-empty).
-     *
-     * Can be set, to change the URL's query (ignores leading "?").
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/search)
-     */
-    search: string;
-    /**
-     * Returns the hyperlink's URL's username.
-     *
-     * Can be set, to change the URL's username.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/username)
-     */
-    username: string;
 }
 
 /**
@@ -22022,6 +21944,87 @@ declare var History: {
     prototype: History;
     new(): History;
 };
+
+interface HyperlinkElementUtils {
+    /**
+     * Returns the hyperlink's URL's fragment (includes leading "#" if non-empty).
+     *
+     * Can be set, to change the URL's fragment (ignores leading "#").
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hash)
+     */
+    hash: string;
+    /**
+     * Returns the hyperlink's URL's host and port (if different from the default port for the scheme).
+     *
+     * Can be set, to change the URL's host and port.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/host)
+     */
+    host: string;
+    /**
+     * Returns the hyperlink's URL's host.
+     *
+     * Can be set, to change the URL's host.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hostname)
+     */
+    hostname: string;
+    /**
+     * Returns the hyperlink's URL's origin.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/origin)
+     */
+    readonly origin: string;
+    /**
+     * Returns the hyperlink's URL's password.
+     *
+     * Can be set, to change the URL's password.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/password)
+     */
+    password: string;
+    /**
+     * Returns the hyperlink's URL's path.
+     *
+     * Can be set, to change the URL's path.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/pathname)
+     */
+    pathname: string;
+    /**
+     * Returns the hyperlink's URL's port.
+     *
+     * Can be set, to change the URL's port.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/port)
+     */
+    port: string;
+    /**
+     * Returns the hyperlink's URL's scheme.
+     *
+     * Can be set, to change the URL's scheme.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/protocol)
+     */
+    protocol: string;
+    /**
+     * Returns the hyperlink's URL's query (includes leading "?" if non-empty).
+     *
+     * Can be set, to change the URL's query (ignores leading "?").
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/search)
+     */
+    search: string;
+    /**
+     * Returns the hyperlink's URL's username.
+     *
+     * Can be set, to change the URL's username.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/username)
+     */
+    username: string;
+}
 
 /**
  * The **`IDBCursor`** interface of the IndexedDB API represents a cursor for traversing or iterating over multiple records in a database.
