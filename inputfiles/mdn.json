@@ -3180,6 +3180,11 @@
     "summary": "The requestClose() method of the CloseWatcher interface fires a cancel event and if that event is not canceled with Event.preventDefault(), proceeds to fire a close event, and then finally deactivates the close watcher as if destroy() was called."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/COEPViolationReport",
+    "pageType": "web-api-interface",
+    "summary": "The COEPViolationReport dictionary of the Reporting API represents a report generated when a document violates its Cross-Origin-Embedder-Policy (COEP)."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/CommandEvent",
     "pageType": "web-api-interface",
     "summary": "The CommandEvent interface represents an event notifying the user when a button element with valid commandForElement and command attributes is about to invoke an interactive element."
@@ -4045,6 +4050,11 @@
     "summary": "The system property of the CSSCounterStyleRule interface gets and sets the value of the system descriptor. If the descriptor does not have a value set, this attribute returns an empty string."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/CSSFontFaceDescriptors",
+    "pageType": "web-api-interface",
+    "summary": "The CSSFontFaceDescriptors interface represents a CSS declaration block for an @font-face at-rule."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFaceRule",
     "pageType": "web-api-interface",
     "summary": "The CSSFontFaceRule interface represents an @font-face at-rule."
@@ -4052,7 +4062,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFaceRule/style",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only style property of the CSSFontFaceRule interface contains a CSSStyleDeclaration object representing the descriptors available in the @font-face rule's body."
+    "summary": "The read-only style property of the CSSFontFaceRule interface returns a CSSFontFaceDescriptors object representing the descriptors available in the @font-face rule's body."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSFontFeatureValuesMap",
@@ -5297,7 +5307,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry",
     "pageType": "web-api-interface",
-    "summary": "The CustomElementRegistry interface provides methods for registering custom elements and querying registered elements. To get an instance of it, use the window.customElements property."
+    "summary": "The CustomElementRegistry interface provides methods for registering custom elements and querying registered elements. To get an instance of it, use the window.customElements property. To create a scoped registry, use the CustomElementRegistry() constructor."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry/CustomElementRegistry",
+    "pageType": "web-api-constructor",
+    "summary": "The CustomElementRegistry() constructor creates a new CustomElementRegistry object for scoped usage."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry/define",
@@ -5313,6 +5328,11 @@
     "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry/getName",
     "pageType": "web-api-instance-method",
     "summary": "The getName() method of the\nCustomElementRegistry interface returns the name for a\npreviously-defined custom element."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry/initialize",
+    "pageType": "web-api-instance-method",
+    "summary": "The initialize() method of the CustomElementRegistry interface associates this registry with a DOM subtree, setting the customElementRegistry of each inclusive descendant that doesn't already have one, and attempting to upgrade any custom elements found."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry/upgrade",
@@ -6105,6 +6125,11 @@
     "summary": "The Document.currentScript property returns the <script> element whose script is currently being processed and isn't a JavaScript module. (For modules use import.meta instead.)"
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Document/customElementRegistry",
+    "pageType": "web-api-instance-property",
+    "summary": "The customElementRegistry read-only property of the Document interface returns the CustomElementRegistry object associated with this document, or null if one has not been set."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Document/defaultView",
     "pageType": "web-api-instance-property",
     "summary": "In browsers, document.defaultView returns the\nwindow object associated with a document, or null if none is available."
@@ -6582,7 +6607,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/visibilitychange_event",
     "pageType": "web-api-event",
-    "summary": "The visibilitychange event is fired at the document when the contents of its tab have become visible or have been hidden."
+    "summary": "The visibilitychange event is fired at the document when its visibility status changes — for example, when the user switches browser tabs, navigates to a new page, minimizes or closes the browser, or on mobile, switches to a different app."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/visibilityState",
@@ -8008,6 +8033,11 @@
     "mdn_url": "/en-US/docs/Web/API/Element/currentCSSZoom",
     "pageType": "web-api-instance-property",
     "summary": "The currentCSSZoom read-only property of the Element interface provides the \"effective\" CSS zoom of an element, taking into account the zoom applied to the element and all its parent elements."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Element/customElementRegistry",
+    "pageType": "web-api-instance-property",
+    "summary": "The customElementRegistry read-only property of the Element interface returns the CustomElementRegistry object associated with this element, or null if one has not been set."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/cut_event",
@@ -14252,7 +14282,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/captureStream",
     "pageType": "web-api-instance-method",
-    "summary": "The captureStream() method of the HTMLMediaElement interface returns a MediaStream object which is streaming a real-time capture of the content being rendered in the media element."
+    "summary": "The captureStream() method of the HTMLMediaElement interface returns a MediaStream object that streams a real-time capture of the content being rendered in the media element."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/controller",
@@ -15628,6 +15658,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLTemplateElement/shadowRootClonable",
     "pageType": "web-api-instance-property",
     "summary": "The shadowRootClonable property reflects the value of the shadowrootclonable attribute of the associated <template> element."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLTemplateElement/shadowRootCustomElementRegistry",
+    "pageType": "web-api-instance-property",
+    "summary": "The shadowRootCustomElementRegistry property of the HTMLTemplateElement interface reflects the value of the shadowrootcustomelementregistry attribute of the associated <template> element."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLTemplateElement/shadowRootDelegatesFocus",
@@ -17028,6 +17063,11 @@
     "mdn_url": "/en-US/docs/Web/API/IntersectionObserverEntry/boundingClientRect",
     "pageType": "web-api-instance-property",
     "summary": "The boundingClientRect read-only property of the IntersectionObserverEntry interface returns a DOMRectReadOnly which in essence describes a rectangle describing the smallest rectangle that contains the entire target element."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/IntersectionObserverEntry/IntersectionObserverEntry",
+    "pageType": "web-api-constructor",
+    "summary": "The IntersectionObserverEntry() constructor creates and returns a new IntersectionObserverEntry object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/IntersectionObserverEntry/intersectionRatio",
@@ -27438,6 +27478,11 @@
     "mdn_url": "/en-US/docs/Web/API/ShadowRoot/clonable",
     "pageType": "web-api-instance-property",
     "summary": "The clonable read-only property of the ShadowRoot interface returns true if the shadow root is clonable, and false otherwise."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ShadowRoot/customElementRegistry",
+    "pageType": "web-api-instance-property",
+    "summary": "The customElementRegistry read-only property of the ShadowRoot interface returns the CustomElementRegistry object associated with this shadow root, or null if one has not been set."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ShadowRoot/delegatesFocus",
@@ -40340,6 +40385,11 @@
     "summary": "The column-gap CSS property sets the size of the gap (gutter) between an element's columns."
   },
   {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/column-height",
+    "pageType": "css-property",
+    "summary": "The column-height CSS property specifies the height of the columns in a CSS multi-column layout."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/column-rule",
     "pageType": "css-shorthand-property",
     "summary": "The column-rule shorthand CSS property sets the width, style, and color of the line drawn between columns in a multi-column layout."
@@ -40370,9 +40420,14 @@
     "summary": "The column-width CSS property sets the ideal column width in a multi-column layout. The container will have as many columns as can fit without any of them having a width less than the column-width value. If the width of the container is narrower than the specified value, the single column's width will be smaller than the declared column width."
   },
   {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/column-wrap",
+    "pageType": "css-property",
+    "summary": "The column-wrap CSS property specifies the wrapping behavior of overflow columns in a CSS multi-column layout."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/columns",
     "pageType": "css-shorthand-property",
-    "summary": "The columns CSS shorthand property sets the number of columns to use when drawing an element's contents, as well as those columns' widths."
+    "summary": "The columns CSS shorthand property sets the maximum number of columns to use when drawing an element's contents, along with the minimum width and maximum height of the element's columns."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/contain",
@@ -40788,6 +40843,11 @@
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/font-weight",
     "pageType": "css-property",
     "summary": "The font-weight CSS property sets the weight (or boldness) of the font. The weights available depend on the font-family that is currently set."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/font-width",
+    "pageType": "css-property",
+    "summary": "The font-width CSS property selects a normal, condensed, or expanded face from a font."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust",
@@ -41663,6 +41723,11 @@
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-behavior",
     "pageType": "css-property",
     "summary": "The scroll-behavior CSS property sets the behavior for a scrolling box when scrolling is triggered by the navigation or CSSOM scrolling APIs."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-initial-target",
+    "pageType": "css-property",
+    "summary": "The scroll-initial-target CSS property enables the definition of elements that are potential snap targets when their ancestor scroll container is first rendered."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/scroll-margin",
