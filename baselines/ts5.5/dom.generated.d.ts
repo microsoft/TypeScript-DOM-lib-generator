@@ -8065,7 +8065,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     marginBottom: string;
     /**
-     * The margin-inline CSS shorthand property is a shorthand property that defines both the logical inline start and end margins of an element, which maps to physical margins depending on the element's writing mode, directionality, and text orientation.
+     * The margin-inline CSS shorthand property defines both the logical inline start and end margins of an element, which maps to physical margins depending on the element's writing mode, directionality, and text orientation.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/margin-inline)
      */

@@ -2257,7 +2257,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CanMakePaymentEvent",
     "pageType": "web-api-interface",
-    "summary": "The CanMakePaymentEvent interface of the Payment Handler API is the event object for the canmakepayment event, fired on a payment app's service worker to check whether it is ready to handle a payment. Specifically, it is fired when the merchant website calls the PaymentRequest() constructor."
+    "summary": "The CanMakePaymentEvent interface of the Web-based Payment Handler API is the event object for the canmakepayment event, fired on a payment app's service worker to check whether it is ready to handle a payment. Specifically, it is fired when the merchant website calls the PaymentRequest() constructor."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CanMakePaymentEvent/CanMakePaymentEvent",
@@ -21420,11 +21420,6 @@
     "summary": "The Path2D() constructor returns a newly instantiated Path2D object, optionally with another path as an argument (creates a copy), or optionally with a string consisting of SVG path data."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/Payment_Handler_API",
-    "pageType": "web-api-overview",
-    "summary": "The Payment Handler API provides a standardized set of functionality for web applications to directly handle payments, rather than having to be redirected to a separate site for payment handling."
-  },
-  {
     "mdn_url": "/en-US/docs/Web/API/Payment_Request_API",
     "pageType": "web-api-overview",
     "summary": "The Payment Request API provides a consistent user experience for merchants and users. It is not a new way of paying for things; instead, it's a way for users to select their preferred way of paying for things and make that information available to a merchant."
@@ -21507,7 +21502,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PaymentManager",
     "pageType": "web-api-interface",
-    "summary": "The PaymentManager interface of the Payment Handler API is used to manage various aspects of payment app functionality."
+    "summary": "The PaymentManager interface of the Web-based Payment Handler API is used to manage various aspects of payment app functionality."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PaymentManager/enableDelegations",
@@ -21517,7 +21512,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PaymentManager/userHint",
     "pageType": "web-api-instance-property",
-    "summary": "The userHint property of the PaymentManager interface provides a hint for the browser to display along with the payment app's name and icon in the Payment Handler UI."
+    "summary": "The userHint property of the PaymentManager interface provides a hint for the browser to display along with the payment app's name and icon in the Web-based Payment Handler UI."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PaymentMethodChangeEvent",
@@ -21612,7 +21607,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PaymentRequestEvent",
     "pageType": "web-api-interface",
-    "summary": "The PaymentRequestEvent interface of the Payment Handler API is the object passed to a payment handler when a PaymentRequest is made."
+    "summary": "The PaymentRequestEvent interface of the Web-based Payment Handler API is the object passed to a payment handler when a PaymentRequest is made."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PaymentRequestEvent/changePaymentMethod",
@@ -34740,6 +34735,11 @@
     "summary": "Web Workers are a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface. In addition, they can make network requests using the fetch() or XMLHttpRequest APIs. Once created, a worker can send messages to the JavaScript code that created it by posting messages to an event handler specified by that code (and vice versa)."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Web-Based_Payment_Handler_API",
+    "pageType": "web-api-overview",
+    "summary": "The Web-based Payment Handler API provides a standardized set of functionality for web applications to directly handle payments, rather than having to be redirected to a separate site for payment handling."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/WebCodecs_API",
     "pageType": "web-api-overview",
     "summary": "The WebCodecs API gives web developers low-level access to the individual frames of a video stream and chunks of audio.\nIt is useful for web applications that require full control over the way media is processed.\nFor example, video or audio editors, and video conferencing."
@@ -41147,7 +41147,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/margin-inline",
     "pageType": "css-shorthand-property",
-    "summary": "The margin-inline CSS shorthand property is a shorthand property that defines both the logical inline start and end margins of an element, which maps to physical margins depending on the element's writing mode, directionality, and text orientation."
+    "summary": "The margin-inline CSS shorthand property defines both the logical inline start and end margins of an element, which maps to physical margins depending on the element's writing mode, directionality, and text orientation."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/margin-inline-end",
