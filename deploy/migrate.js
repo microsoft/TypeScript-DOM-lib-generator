@@ -7,26 +7,18 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
-import { postProcessDTSFiles } from "./createTypesPackages.js";
-
 const maybeTSWorkingDir = [process.argv[2], "../TypeScript", "TypeScript"];
 const tscWD = maybeTSWorkingDir.find((wd) => existsSync(wd));
 
-if (!tscWD)
+if (!tscWD) {
   throw new Error(
     "Could not find a TypeScript clone to put the generated files in.",
   );
+}
 
 const generatedFiles = readdirSync("generated");
 const filesToSend = generatedFiles.filter(
   (file) => file.includes("dom.") || file.includes("webworker."),
-);
-
-const generatedDir = new URL("../generated/", import.meta.url);
-postProcessDTSFiles(
-  /** @type {any} */
-  ({ files: filesToSend.map((f) => ({ to: f })) }),
-  generatedDir,
 );
 
 filesToSend.forEach((file) => {

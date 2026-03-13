@@ -1,0 +1,5 @@
+removals {
+  enum ConnectionType {
+    wimax
+  }
+}

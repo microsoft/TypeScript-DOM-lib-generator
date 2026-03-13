@@ -1,0 +1,5 @@
+interface Navigator {
+  property doNotTrack readonly=#true {
+    type DOMString nullable=#true
+  }
+}

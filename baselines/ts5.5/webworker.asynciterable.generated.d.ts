@@ -3,10 +3,10 @@
 /////////////////////////////
 
 interface FileSystemDirectoryHandle {
-    [Symbol.asyncIterator](): AsyncIterableIterator<[string, FileSystemHandle]>;
-    entries(): AsyncIterableIterator<[string, FileSystemHandle]>;
+    [Symbol.asyncIterator](): AsyncIterableIterator<[string, FileSystemDirectoryHandle | FileSystemFileHandle]>;
+    entries(): AsyncIterableIterator<[string, FileSystemDirectoryHandle | FileSystemFileHandle]>;
     keys(): AsyncIterableIterator<string>;
-    values(): AsyncIterableIterator<FileSystemHandle>;
+    values(): AsyncIterableIterator<FileSystemDirectoryHandle | FileSystemFileHandle>;
 }
 
 interface ReadableStream<R = any> {

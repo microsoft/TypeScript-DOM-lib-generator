@@ -1,0 +1,13 @@
+removals {
+  dictionary DisplayMediaStreamOptions {
+    // Only `audio` and `video` are implemented by 2+ engines, everything else is Blink only as of 2025-12.
+    // https://searchfox.org/mozilla-central/source/dom/webidl/MediaStream.webidl
+    // https://searchfox.org/wubkat/source/Source/WebCore/Modules/mediastream/MediaDevices.idl
+    // https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/modules/mediastream/media_stream_constraints.idl
+    member monitorTypeSurfaces
+    member selfBrowserSurface
+    member surfaceSwitching
+    member systemAudio
+    member windowAudio
+  }
+}

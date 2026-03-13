@@ -1,0 +1,16 @@
+dictionary URLPatternComponentResult {
+  member input required=#true
+  member groups required=#true
+}
+
+dictionary URLPatternResult {
+  member inputs required=#true
+  member protocol required=#true
+  member username required=#true
+  member password required=#true
+  member hostname required=#true
+  member port required=#true
+  member pathname required=#true
+  member search required=#true
+  member hash required=#true
+}

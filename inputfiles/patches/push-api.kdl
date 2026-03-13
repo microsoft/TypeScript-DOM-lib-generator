@@ -1,0 +1,9 @@
+removals {
+  interface Window {
+    // Not supported on Windows as of 2025-10
+    includes PushManagerAttribute
+  }
+  dictionary PushEventInit {
+    member notification // WebKit only as of 2025-12
+  }
+}

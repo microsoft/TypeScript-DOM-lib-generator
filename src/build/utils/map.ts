@@ -8,15 +8,6 @@ export function addToArrayMap<T>(
   map.set(name, array);
 }
 
-export function addToStringMap(
-  map: Map<string, string>,
-  name: string,
-  value: string,
-): void {
-  const old = map.get(name) || "";
-  map.set(name, `${old}\n${value}\n`);
-}
-
 export function addToNestedMap(
   map: Map<string, Map<string, string>>,
   name: string,

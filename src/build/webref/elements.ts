@@ -1,6 +1,6 @@
-import { listAll, Element as WebrefElement } from "@webref/elements";
-import { Interface, WebIdl } from "../types.js";
-import { addToArrayMap } from "../utils/map.js";
+import { listAll, type Element as WebrefElement } from "@webref/elements";
+import type { Interface, WebIdl } from "../types.ts";
+import { addToArrayMap } from "../utils/map.ts";
 
 async function getInterfaceToElementMap(): Promise<
   Map<string, WebrefElement[]>

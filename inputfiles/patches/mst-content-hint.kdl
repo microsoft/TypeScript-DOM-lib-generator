@@ -1,0 +1,5 @@
+removals {
+  enum RTCDegradationPreference {
+    maintain-framerate-and-resolution // No implementation as of 2025-10
+  }
+}

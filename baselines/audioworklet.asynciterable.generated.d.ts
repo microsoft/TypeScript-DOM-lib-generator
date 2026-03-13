@@ -1,12 +1,2 @@
-/////////////////////////////
-/// AudioWorklet Async Iterable APIs
-/////////////////////////////
-
-interface ReadableStreamAsyncIterator<T> extends AsyncIteratorObject<T, BuiltinIteratorReturn, unknown> {
-    [Symbol.asyncIterator](): ReadableStreamAsyncIterator<T>;
-}
-
-interface ReadableStream<R = any> {
-    [Symbol.asyncIterator](options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
-    values(options?: ReadableStreamIteratorOptions): ReadableStreamAsyncIterator<R>;
-}
+// This file's contents are now included in the main types file.
+// The file has been left for backward compatibility.

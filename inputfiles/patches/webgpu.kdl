@@ -1,0 +1,30 @@
+removals {
+  enum GPUBlendFactor {
+    one-minus-src1         // Blink only as of 2024-11
+    one-minus-src1-alpha   // Blink only as of 2024-11
+    src1                   // Blink only as of 2024-11
+    src1-alpha             // Blink only as of 2024-11
+  }
+
+  enum GPUFeatureName {
+    texture-component-swizzle // Blink only as of 2026-02
+    texture-formats-tier2 // Blink only as of 2026-02
+  }
+
+  dictionary GPURequestAdapterOptions {
+    member featureLevel // Gecko only, Blink experimental only as of 2026-02
+    member xrCompatible // WebKit only, Blink experimental only as of 2026-02
+  }
+
+  dictionary GPUShaderModuleDescriptor {
+    member compilationHints   // Blink only as of 2024-11
+  }
+
+  dictionary GPUTextureViewDescriptor {
+    member swizzle // Blink only as of 2026-01
+  }
+
+  dictionary GPUTextureDescriptor {
+    member textureBindingViewDimension // Blink experimental only as of 2026-02
+  }
+}

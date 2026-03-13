@@ -1,0 +1,7 @@
+// https://w3c.github.io/webrtc-identity/
+
+removals {
+  dictionary RTCConfiguration {
+    member peerIdentity // Gecko only as of 2024-11
+  }
+}

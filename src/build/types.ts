@@ -151,11 +151,17 @@ export interface Interface {
   mixin?: boolean;
   namespace?: boolean;
   extends?: string;
+  // forward the interface members to another, while keeping the current name.
+  forward?: string;
+  // "extends" for the original interface, in case `forward: true`.
+  forwardExtends?: string;
+  // replaces references from methods and properties
+  replaceReference?: string;
   comment?: string;
   constants?: {
     constant: Record<string, Constant>;
   };
-  methods: {
+  methods?: {
     method: Record<string, Method>;
   };
   events?: {
@@ -204,9 +210,8 @@ export interface Interface {
 }
 
 export interface Iterator {
-  kind: "iterable" | "setlike" | "maplike";
+  kind: "async_iterable" | "iterable" | "setlike" | "maplike";
   readonly: boolean;
-  async: boolean;
   type: Typed[];
   param?: Param[];
   comments?: {

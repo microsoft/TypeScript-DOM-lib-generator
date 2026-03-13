@@ -1,0 +1,4 @@
+dictionary KeyboardEventInit {
+  member charCode deprecated="`charCode` is inconsistent across environments, consider using `key` instead."
+  member keyCode deprecated="`keyCode` is inconsistent across environments, consider using `key` instead."
+}

@@ -1,19 +1,20 @@
-import * as Browser from "./build/types.js";
+import type * as Browser from "./build/types.ts";
 import { promises as fs } from "fs";
-import { merge, resolveExposure, arrayToMap } from "./build/helpers.js";
-import { type CompilerBehavior, emitWebIdl } from "./build/emitter.js";
-import { convert } from "./build/widlprocess.js";
-import { getExposedTypes } from "./build/expose.js";
+import { merge, resolveExposure, arrayToMap } from "./build/helpers.ts";
+import { type CompilerBehavior, emitWebIdl } from "./build/emitter.ts";
+import { convert } from "./build/widlprocess.ts";
+import { getExposedTypes } from "./build/expose.ts";
 import {
   getDeprecationData,
   getDocsData,
   getRemovalData,
-} from "./build/bcd.js";
-import { getInterfaceElementMergeData } from "./build/webref/elements.js";
-import { getInterfaceToEventMap } from "./build/webref/events.js";
-import { getWebidls } from "./build/webref/idl.js";
+} from "./build/bcd.ts";
+import { getInterfaceElementMergeData } from "./build/webref/elements.ts";
+import { getInterfaceToEventMap } from "./build/webref/events.ts";
+import { getWebidls } from "./build/webref/idl.ts";
 import jsonc from "jsonc-parser";
-import { generateDescriptions } from "./build/mdn-comments.js";
+import { generateDescriptions } from "./build/mdn-comments.ts";
+import readPatches from "./build/patches.ts";
 
 function mergeNamesakes(filtered: Browser.WebIdl) {
   const targets = [
@@ -50,40 +51,35 @@ async function emitFlavor(
   mergeNamesakes(exposed);
   exposed.events = webidl.events;
 
-  const result = emitWebIdl(
-    exposed,
-    options.global[0],
-    "",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(`${options.name}.generated.d.ts`, options.outputFolder),
-    result,
-  );
+  // Iterator types in separate files as the default target doesn't understand iterators (for TS 6.0-)
+  const outputs = [
+    {
+      suffix: ".generated.d.ts",
+      iterator: "",
+    },
+    {
+      suffix: ".iterable.generated.d.ts",
+      iterator: "sync",
+    },
+    {
+      suffix: ".asynciterable.generated.d.ts",
+      iterator: "async",
+    },
+  ] as const;
 
-  const iterators = emitWebIdl(
-    exposed,
-    options.global[0],
-    "sync",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(`${options.name}.iterable.generated.d.ts`, options.outputFolder),
-    iterators,
-  );
-
-  const asyncIterators = emitWebIdl(
-    exposed,
-    options.global[0],
-    "async",
-    options.compilerBehavior,
-  );
-  await fs.writeFile(
-    new URL(
-      `${options.name}.asynciterable.generated.d.ts`,
-      options.outputFolder,
-    ),
-    asyncIterators,
+  await Promise.all(
+    outputs.map(async ({ suffix, iterator }) => {
+      const content = emitWebIdl(
+        exposed,
+        options.global[0],
+        iterator,
+        options.compilerBehavior,
+      );
+      await fs.writeFile(
+        new URL(`${options.name}${suffix}`, options.outputFolder),
+        content,
+      );
+    }),
   );
 }
 
@@ -93,8 +89,8 @@ async function emitDom() {
 
   const overriddenItems = await readInputJSON("overridingTypes.jsonc");
   const addedItems = await readInputJSON("addedTypes.jsonc");
+  const { patches, removalPatches } = await readPatches();
   const comments = await readInputJSON("comments.json");
-  const deprecatedInfo = await readInputJSON("deprecatedMessage.json");
   const documentationFromMDN = await generateDescriptions();
   const removedItems = await readInputJSON("removedTypes.jsonc");
 
@@ -114,17 +110,8 @@ async function emitDom() {
     } catch {
       commentsMap = {};
     }
-    commentCleanup(commentsMap);
     const result = convert(idl, commentsMap);
     return result;
-  }
-
-  function commentCleanup(commentsMap: Record<string, string>) {
-    for (const key in commentsMap) {
-      // Filters out phrases for nested comments as we retargets them:
-      // "This operation receives a dictionary, which has these members:"
-      commentsMap[key] = commentsMap[key].replace(/[,.][^,.]+:$/g, ".");
-    }
   }
 
   function mergeApiDescriptions(
@@ -139,30 +126,14 @@ async function emitDom() {
 
     for (const [key, target] of Object.entries(namespaces)) {
       const descObject = descriptions.interfaces.interface[key];
-      if (!descObject) continue;
+      if (!descObject) {
+        continue;
+      }
 
       merge(target, descObject, { optional: true });
     }
     idl = merge(idl, descriptions, { optional: true });
 
-    return idl;
-  }
-
-  function mergeDeprecatedMessage(
-    idl: Browser.WebIdl,
-    descriptions: Record<string, string>,
-  ) {
-    const namespaces = arrayToMap(
-      idl.namespaces!,
-      (i) => i.name,
-      (i) => i,
-    );
-    for (const [key, value] of Object.entries(descriptions)) {
-      const target = idl.interfaces!.interface[key] || namespaces[key];
-      if (target) {
-        target.deprecated = value;
-      }
-    }
     return idl;
   }
 
@@ -181,7 +152,9 @@ async function emitDom() {
         webidl.interfaces!.interface[partial.name] ||
         webidl.mixins!.mixin[partial.name];
       if (base) {
-        if (base.exposed) resolveExposure(partial, base.exposed);
+        if (base.exposed) {
+          resolveExposure(partial, base.exposed);
+        }
         merge(base.constants, partial.constants, { shallow: true });
         merge(base.methods, partial.methods, { shallow: true });
         merge(base.properties, partial.properties, { shallow: true });
@@ -190,7 +163,9 @@ async function emitDom() {
     for (const partial of w.partialMixins) {
       const base = webidl.mixins!.mixin[partial.name];
       if (base) {
-        if (base.exposed) resolveExposure(partial, base.exposed);
+        if (base.exposed) {
+          resolveExposure(partial, base.exposed);
+        }
         merge(base.constants, partial.constants, { shallow: true });
         merge(base.methods, partial.methods, { shallow: true });
         merge(base.properties, partial.properties, { shallow: true });
@@ -205,7 +180,9 @@ async function emitDom() {
     for (const partial of w.partialNamespaces) {
       const base = webidl.namespaces?.find((n) => n.name === partial.name);
       if (base) {
-        if (base.exposed) resolveExposure(partial, base.exposed);
+        if (base.exposed) {
+          resolveExposure(partial, base.exposed);
+        }
         merge(base.methods, partial.methods, { shallow: true });
         merge(base.properties, partial.properties, { shallow: true });
       }
@@ -227,11 +204,12 @@ async function emitDom() {
   webidl = merge(webidl, getRemovalData(webidl));
   webidl = merge(webidl, getDocsData(webidl));
   webidl = prune(webidl, removedItems);
-  webidl = mergeApiDescriptions(webidl, documentationFromMDN);
+  webidl = prune(webidl, removalPatches);
   webidl = merge(webidl, addedItems);
   webidl = merge(webidl, overriddenItems);
+  webidl = merge(webidl, patches);
   webidl = merge(webidl, comments);
-  webidl = mergeDeprecatedMessage(webidl, deprecatedInfo);
+  webidl = mergeApiDescriptions(webidl, documentationFromMDN);
   for (const name in webidl.interfaces!.interface) {
     const i = webidl.interfaces!.interface[name];
     if (i.overrideExposed) {
@@ -265,10 +243,21 @@ async function emitDom() {
   }
 
   const emitVariations: Variation[] = [
+    // ts6.0 (and later)
+    // - iterable and asynciterable brought into the main output
+    {
+      outputFolder,
+      compilerBehavior: {
+        useIteratorObject: true,
+        allowUnrelatedSetterType: true,
+        useGenericTypedArrays: true,
+        includeIterable: true,
+      },
+    },
     // ts5.7 (and later)
     // - introduced generic typed arrays over `ArrayBufferLike`
     {
-      outputFolder,
+      outputFolder: new URL("./ts5.9/", outputFolder),
       compilerBehavior: {
         useIteratorObject: true,
         allowUnrelatedSetterType: true,
@@ -337,7 +326,9 @@ async function emitDom() {
     return filterByNull(obj, template);
 
     function filterByNull(obj: any, template: any) {
-      if (!template) return obj;
+      if (!template) {
+        return obj;
+      }
       const filtered = Array.isArray(obj) ? obj.slice(0) : { ...obj };
       for (const k in template) {
         if (!obj[k]) {

@@ -1,0 +1,17 @@
+// Payment Request added shippingAddress with a different type
+// https://github.com/w3c/payment-request/pull/996
+
+interface ContactAddress name=PaymentAddress
+
+interface PaymentRequest {
+  property shippingAddress type=PaymentAddress
+}
+interface PaymentResponse {
+  property shippingAddress type=PaymentAddress
+}
+
+removals {
+  dictionary PaymentDetailsUpdate {
+    member payerErrors // Webkit only as of 2025-12
+  }
+}

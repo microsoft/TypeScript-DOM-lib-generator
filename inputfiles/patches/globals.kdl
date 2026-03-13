@@ -1,0 +1,5 @@
+// Emitter should ideally add globalThis automatically.
+
+interface Document {
+  property defaultView overrideType="WindowProxy & typeof globalThis"
+}

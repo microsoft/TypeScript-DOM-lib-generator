@@ -1,4 +1,4 @@
-import * as Browser from "./types.js";
+import * as Browser from "./types.ts";
 import {
   getEmptyWebIDL,
   deepFilter,
@@ -7,8 +7,8 @@ import {
   filterProperties,
   mapToArray,
   arrayToMap,
-} from "./helpers.js";
-import { isEmptyRecord } from "./utils/record.js";
+} from "./helpers.ts";
+import { isEmptyRecord } from "./utils/record.ts";
 
 class LoggedSet extends Set<string> {
   private unvisited: Set<string>;
@@ -95,23 +95,27 @@ export function getExposedTypes(
     filtered.typedefs!.typedef = exposed;
   }
 
-  if (webidl.callbackFunctions)
+  if (webidl.callbackFunctions) {
     filtered.callbackFunctions!.callbackFunction = filterProperties(
       webidl.callbackFunctions!.callbackFunction,
       isKnownName,
     );
-  if (webidl.callbackInterfaces)
+  }
+  if (webidl.callbackInterfaces) {
     filtered.callbackInterfaces!.interface = filterProperties(
       webidl.callbackInterfaces!.interface,
       isKnownName,
     );
-  if (webidl.dictionaries)
+  }
+  if (webidl.dictionaries) {
     filtered.dictionaries!.dictionary = filterProperties(
       webidl.dictionaries.dictionary,
       isKnownName,
     );
-  if (webidl.enums)
+  }
+  if (webidl.enums) {
     filtered.enums!.enum = filterProperties(webidl.enums.enum, isKnownName);
+  }
 
   for (const unvisited of forceKnownTypesLogged.unvisitedValues()) {
     console.warn(`${unvisited} is redundant in knownTypes.json (${target})`);

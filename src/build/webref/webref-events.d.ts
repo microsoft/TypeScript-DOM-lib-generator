@@ -15,5 +15,5 @@ declare module "@webref/events" {
     targets: Target[];
     interface: string;
   }
-  function listAll(): Promise<Record<string, Item>>;
+  function listAll(): Promise<Array<Item>>;
 }

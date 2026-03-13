@@ -1,0 +1,23 @@
+// This is a subset of the permissions defined in the spec:
+// https://w3c.github.io/powerful-features-registry/#registry-table-of-powerful-features
+// Please add a feature only when it's supported by multiple engines.
+enum PermissionName {
+    // Full support: https://developer.mozilla.org/docs/Web/API/Permissions_API#browser_compatibility
+    camera
+    // Full support: https://developer.mozilla.org/docs/Web/API/Geolocation_API#browser_compatibility
+    geolocation
+    // Full support: https://developer.mozilla.org/docs/Web/API/Permissions_API#browser_compatibility
+    microphone
+    // Gecko and Blink: https://developer.mozilla.org/docs/Web/API/Web_MIDI_API#browser_compatibility
+    midi
+    // Full support: https://developer.mozilla.org/docs/Web/API/Notifications_API#browser_compatibility
+    notifications
+    // Gecko and Blink: https://developer.mozilla.org/docs/Web/API/Storage_API#browser_compatibility
+    persistent-storage
+    // Full support: https://developer.mozilla.org/docs/Web/API/Push_API#browser_compatibility
+    push
+    // Full support: https://developer.mozilla.org/docs/Web/API/Screen_Wake_Lock_API#browser_compatibility
+    screen-wake-lock
+    // Full support: https://developer.mozilla.org/docs/Web/API/Storage_Access_API#browser_compatibility
+    storage-access
+}

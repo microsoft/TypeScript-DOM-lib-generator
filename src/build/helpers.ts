@@ -1,4 +1,4 @@
-import * as Browser from "./types.js";
+import * as Browser from "./types.ts";
 
 // Extended types used but not defined in the spec
 export const arrayBufferViewTypes = new Set([
@@ -56,6 +56,7 @@ const sameTypes = new Set([
   "PromiseLike",
   "undefined",
   "void",
+  "bigint",
 ]);
 export const baseTypeConversionMap = new Map<string, string>([
   ...[...bufferSourceTypes].map((type) => [type, type] as const),

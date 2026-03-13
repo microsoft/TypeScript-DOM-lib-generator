@@ -14,7 +14,6 @@
         "AutoFillContactField",
         "AutoFillField",
         "AutoFillCredentialField",
-        "AutoFill",
         "BigInteger",
         "ClientQueryOptions",
         "ClientTypes",
@@ -26,7 +25,6 @@
         "EcKeyAlgorithm",
         "EcKeyGenParams",
         "EcKeyImportParams",
-        "EventListenerOrEventListenerObject",
         "HashAlgorithmIdentifier",
         "HkdfParams",
         "HmacImportParams",
@@ -34,7 +32,6 @@
         "HmacKeyGenParams",
         "ImageBitmapRenderingContextSettings",
         "Keyframe",
-        "MutationRecordType",
         "NamedCurve",
         "OptionalPrefixToken",
         "OptionalPostfixToken",
@@ -61,7 +58,6 @@
         "RTCStatsIceCandidatePairState",
         "RTCStatsType",
         "RTCTransportStats",
-        "Transferable",
         "ValueTypeMap",
         "VideoFacingModeEnum"
     ],
@@ -78,7 +74,6 @@
         "EcdsaParams",
         "EcKeyGenParams",
         "EcKeyImportParams",
-        "EventListenerOrEventListenerObject",
         "HashAlgorithmIdentifier",
         "HkdfParams",
         "HmacImportParams",
@@ -91,12 +86,9 @@
         "RsaKeyGenParams",
         "RsaOaepParams",
         "RsaPssParams",
-        "Transferable",
         "ValueTypeMap"
     ],
     "Worklet": [
-        "EventListenerOrEventListenerObject",
-        "Transferable",
         "ValueTypeMap"
     ]
 }

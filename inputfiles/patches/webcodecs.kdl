@@ -1,0 +1,79 @@
+removals {
+  enum VideoColorPrimaries {
+    bt2020      // Blink only as of 2022-10
+    smpte432    // Blink only as of 2022-10
+  }
+
+  enum VideoMatrixCoefficients {
+    bt2020-ncl  // Blink only as of 2022-10
+  }
+
+  enum VideoPixelFormat {
+    // All no implementation as of 2024-03
+    I420AP10
+    I420AP12
+    I420P10
+    I420P12
+    I422A
+    I422AP10
+    I422AP12
+    I422P10
+    I422P12
+    I444A
+    I444AP10
+    I444AP12
+    I444P10
+    I444P12
+  }
+
+  enum VideoTransferCharacteristics {
+    hlg         // Blink only as of 2022-10
+    linear      // Blink only as of 2022-10
+    pq          // Blink only as of 2022-10
+  }
+
+  dictionary EncodedVideoChunkInit {
+    member transfer // Blink only as of 2025-12
+  }
+
+  dictionary EncodedVideoChunkMetadata {
+    member alphaSideData // Blink only as of 2025-12
+  }
+
+  dictionary AudioEncoderConfig {
+    // https://w3c.github.io/webcodecs/flac_codec_registration.html
+    // Blink only as of 2025-12
+    member flac
+  }
+  
+  dictionary VideoFrameBufferInit {
+    member flip         // Blink only as of 2025-12
+    member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
+    member rotation     // Blink only as of 2025-12
+    member transfer     // Blink only as of 2025-12
+  }
+  
+  dictionary VideoFrameInit {
+    member flip         // Blink only as of 2025-12
+    member metadata     // No implementation as of 2025-12. Linked to VideoFrame.metadata()
+    member rotation     // Blink only as of 2025-12
+  }
+
+  dictionary VideoEncoderConfig {
+    // https://w3c.github.io/webcodecs/hevc_codec_registration.html
+    // Blink only as of 2025-12
+    member hevc
+  }
+
+  dictionary VideoEncoderEncodeOptions {
+    // https://w3c.github.io/webcodecs/av1_codec_registration.html
+    // Blink only as of 2025-12
+    member av1
+    // https://w3c.github.io/webcodecs/hevc_codec_registration.html
+    // Blink only as of 2025-12
+    member hevc
+    // https://w3c.github.io/webcodecs/vp9_codec_registration.html
+    // Blink only as of 2025-12
+    member vp9
+  }
+}

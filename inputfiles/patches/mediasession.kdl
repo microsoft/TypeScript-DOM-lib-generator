@@ -1,0 +1,12 @@
+removals {
+  enum MediaSessionAction {
+    enterpictureinpicture // Blink only as of 2024-07
+    hangup // Blink only as of 2024-07
+    nextslide // Blink only as of 2024-07
+    previousslide // Blink only as of 2024-07
+    togglecamera // Blink only as of 2024-07
+    togglemicrophone // Blink only as of 2024-07
+    togglescreenshare // No implementation as of 2024-07
+    voiceactivity // No implementation as of 2024-07
+  }
+}

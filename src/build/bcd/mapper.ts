@@ -1,14 +1,14 @@
-import {
+import type {
   BrowserName,
   CompatStatement,
   Identifier,
   SimpleSupportStatement,
 } from "bcd-idl-mapper";
 import api from "bcd-idl-mapper";
-import * as Browser from "../types";
-import { filterMapRecord, isEmptyRecord } from "../utils/record.js";
-import { mapDefined } from "../helpers.js";
-import { hasStableImplementation } from "./stable.js";
+import type * as Browser from "../types.ts";
+import { filterMapRecord, isEmptyRecord } from "../utils/record.ts";
+import { mapDefined } from "../helpers.ts";
+import { hasStableImplementation } from "./stable.ts";
 
 interface DataToMap {
   key: string;
@@ -91,7 +91,8 @@ function mapInterfaceLike(
   );
 
   if (i.iterator) {
-    const iteratorKey = i.iterator.async ? "@@asyncIterator" : "@@iterator";
+    const iteratorKey =
+      i.iterator.kind === "async_iterable" ? "@@asyncIterator" : "@@iterator";
     // BCD often doesn't have an @@iterator entry, but it does usually have an entry
     // for iterable methods such as values(). Use that as a fallback.
     // See also: https://github.com/mdn/browser-compat-data/issues/6367

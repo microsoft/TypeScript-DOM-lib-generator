@@ -5,5 +5,5 @@ declare module "@webref/css" {
   interface Data {
     properties: Property[];
   }
-  function listAll(): Promise<Record<string, Data>>;
+  function listAll(): Promise<Data>;
 }

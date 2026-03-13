@@ -1,6 +1,6 @@
 import { execSync } from "child_process";
 import { readFile, writeFile } from "fs/promises";
-import { generateDefaultFromRecentTag } from "./changelog.js";
+import { generateDefaultFromRecentTag } from "./changelog.ts";
 
 const output = generateDefaultFromRecentTag();
 

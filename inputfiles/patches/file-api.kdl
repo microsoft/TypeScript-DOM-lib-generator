@@ -1,0 +1,10 @@
+interface FileReader {
+  event loadstart type=ProgressEvent
+  event progress type=ProgressEvent
+  event load type=ProgressEvent
+  event abort type=ProgressEvent
+  event error type=ProgressEvent
+  event loadend type=ProgressEvent
+
+  property readyState overrideType="0 | 1 | 2"
+}

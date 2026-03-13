@@ -1,42 +1,6 @@
 {
     "mixins": {
         "mixin": {
-            "MessageEventTarget": {
-                "typeParameters": [
-                    {
-                        "name": "T"
-                    }
-                ],
-                "overrideThis": "T",
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        },
-                        {
-                            "name": "messageerror",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
-            },
-            "NavigatorGPU": {
-                "properties": {
-                    "property": {
-                        "gpu": {
-                            // TODO: only for bcd@6.0.24 progressive acceptance, should be removed
-                            "exposed": ""
-                        }
-                    }
-                }
-            },
-            "ChildNode": {
-                "extends": "Node"
-            },
-            "ParentNode": {
-                "extends": "Node"
-            },
             "Animatable": {
                 "methods": {
                     "method": {
@@ -55,207 +19,6 @@
                         }
                     }
                 }
-            },
-            "GlobalEventHandlers": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "animationcancel",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "animationend",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "animationiteration",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "animationstart",
-                            "type": "AnimationEvent"
-                        },
-                        {
-                            "name": "cut",
-                            "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "copy",
-                            "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "paste",
-                            "type": "ClipboardEvent"
-                        },
-                        {
-                            "name": "gotpointercapture",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "lostpointercapture",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointercancel",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerdown",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerenter",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerleave",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointermove",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerout",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerover",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "pointerup",
-                            "type": "PointerEvent"
-                        },
-                        {
-                            "name": "touchcancel",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "touchend",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "touchmove",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "touchstart",
-                            "type": "TouchEvent"
-                        },
-                        {
-                            "name": "transitionrun",
-                            "type": "TransitionEvent"
-                        },
-                        {
-                            "name": "transitionstart",
-                            "type": "TransitionEvent"
-                        },
-                        {
-                            "name": "transitionend",
-                            "type": "TransitionEvent"
-                        },
-                        {
-                            "name": "transitioncancel",
-                            "type": "TransitionEvent"
-                        }
-                    ]
-                },
-                "properties": {
-                    "property": {
-                        "onerror": {
-                            "overrideType": "OnErrorEventHandler"
-                        },
-                        "ontouchcancel": {
-                            "optional": true
-                        },
-                        "ontouchend": {
-                            "optional": true
-                        },
-                        "ontouchmove": {
-                            "optional": true
-                        },
-                        "ontouchstart": {
-                            "optional": true
-                        }
-                    }
-                }
-            },
-            "HTMLOrSVGElement": {
-              "properties": {
-                "property": {
-                  "nonce": {
-                    "name": "nonce?"
-                  }
-                }
-              }
-            },
-            "WebGLRenderingContextBase": {
-                "methods": {
-                    "method": {
-                        "getExtension": {
-                            "name": "getExtension",
-                            "additionalSignatures": [
-                                "getExtension(extensionName: \"ANGLE_instanced_arrays\"): ANGLE_instanced_arrays | null",
-                                "getExtension(extensionName: \"EXT_blend_minmax\"): EXT_blend_minmax | null",
-                                "getExtension(extensionName: \"EXT_color_buffer_float\"): EXT_color_buffer_float | null",
-                                "getExtension(extensionName: \"EXT_color_buffer_half_float\"): EXT_color_buffer_half_float | null",
-                                "getExtension(extensionName: \"EXT_float_blend\"): EXT_float_blend | null",
-                                "getExtension(extensionName: \"EXT_frag_depth\"): EXT_frag_depth | null",
-                                "getExtension(extensionName: \"EXT_sRGB\"): EXT_sRGB | null",
-                                "getExtension(extensionName: \"EXT_shader_texture_lod\"): EXT_shader_texture_lod | null",
-                                "getExtension(extensionName: \"EXT_texture_compression_bptc\"): EXT_texture_compression_bptc | null",
-                                "getExtension(extensionName: \"EXT_texture_compression_rgtc\"): EXT_texture_compression_rgtc | null",
-                                "getExtension(extensionName: \"EXT_texture_filter_anisotropic\"): EXT_texture_filter_anisotropic | null",
-                                "getExtension(extensionName: \"KHR_parallel_shader_compile\"): KHR_parallel_shader_compile | null",
-                                "getExtension(extensionName: \"OES_element_index_uint\"): OES_element_index_uint | null",
-                                "getExtension(extensionName: \"OES_fbo_render_mipmap\"): OES_fbo_render_mipmap | null",
-                                "getExtension(extensionName: \"OES_standard_derivatives\"): OES_standard_derivatives | null",
-                                "getExtension(extensionName: \"OES_texture_float\"): OES_texture_float | null",
-                                "getExtension(extensionName: \"OES_texture_float_linear\"): OES_texture_float_linear | null",
-                                "getExtension(extensionName: \"OES_texture_half_float\"): OES_texture_half_float | null",
-                                "getExtension(extensionName: \"OES_texture_half_float_linear\"): OES_texture_half_float_linear | null",
-                                "getExtension(extensionName: \"OES_vertex_array_object\"): OES_vertex_array_object | null",
-                                "getExtension(extensionName: \"OVR_multiview2\"): OVR_multiview2 | null",
-                                "getExtension(extensionName: \"WEBGL_color_buffer_float\"): WEBGL_color_buffer_float | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_astc\"): WEBGL_compressed_texture_astc | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_etc\"): WEBGL_compressed_texture_etc | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_etc1\"): WEBGL_compressed_texture_etc1 | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_pvrtc\"): WEBGL_compressed_texture_pvrtc | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc\"): WEBGL_compressed_texture_s3tc | null",
-                                "getExtension(extensionName: \"WEBGL_compressed_texture_s3tc_srgb\"): WEBGL_compressed_texture_s3tc_srgb | null",
-                                "getExtension(extensionName: \"WEBGL_debug_renderer_info\"): WEBGL_debug_renderer_info | null",
-                                "getExtension(extensionName: \"WEBGL_debug_shaders\"): WEBGL_debug_shaders | null",
-                                "getExtension(extensionName: \"WEBGL_depth_texture\"): WEBGL_depth_texture | null",
-                                "getExtension(extensionName: \"WEBGL_draw_buffers\"): WEBGL_draw_buffers | null",
-                                "getExtension(extensionName: \"WEBGL_lose_context\"): WEBGL_lose_context | null",
-                                "getExtension(extensionName: \"WEBGL_multi_draw\"): WEBGL_multi_draw | null"
-                            ]
-                        },
-                        "pixelStorei": {
-                            "name": "pixelStorei",
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "param",
-                                            "additionalTypes": ["GLboolean"]
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "CanvasCompositing": {
-              "properties": {
-                "property": {
-                  "globalCompositeOperation": {
-                    "type": "GlobalCompositeOperation"
-                  }
-                }
-              }
             },
             "Body": {
                 "properties": {
@@ -494,56 +257,8 @@
             }
         }
     },
-    "callbackInterfaces": {
-        "interface": {}
-    },
-    "enums": {
-        "enum": {
-            "ImportExportKind": {
-                "legacyNamespace": "WebAssembly"
-            },
-            "TableKind": {
-                "legacyNamespace": "WebAssembly"
-            },
-            "ImageOrientation": {
-                "value": [
-                    // The spec removed this but it's still in browsers and WebKit doesn't support the new one.
-                    // Keep it until it's safer to fully migrate.
-                    // See https://github.com/microsoft/TypeScript-DOM-lib-generator/issues/1507#issuecomment-1454792451
-                    "none"
-                ]
-            }
-        }
-    },
     "interfaces": {
         "interface": {
-            "CryptoKey": {
-                "properties": {
-                    "property": {
-                        "algorithm": {
-                            "type": "KeyAlgorithm"
-                        },
-                        "usages": {
-                            "type": "sequence",
-                            "subtype": {
-                                "type": "KeyUsage"
-                            }
-                        }
-                    }
-                }
-            },
-            "GPUError": {
-                "exposed": "Window Worker",
-                // WebKit doesn't have GPUError interface but only subinterfaces as of 2024-11-20
-                "noInterfaceObject": true,
-                "properties": {
-                    "property": {
-                        "message": {
-                            "exposed": "Window Worker"
-                        }
-                    }
-                }
-            },
             "GPUPipelineError": {
                 // Web IDL optional argument can be followed by a required argument, but not in TS
                 // TODO: Maybe do this in the emitter?
@@ -564,27 +279,8 @@
                 "properties": {
                     "property": {
                         "hidden": {
-                            // https://github.com/whatwg/html/pull/7475
-                            // Blink only as of 2024-11
-                            "overrideType": "boolean",
+                            "overrideType": "boolean | \"until-found\"",
                             "nullable": false
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "togglePopover": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            // dictionary support is Blink only as of 2024-11
-                                            "name": "options",
-                                            "type": "boolean"
-                                        }
-                                    ]
-                                }
-                            }
                         }
                     }
                 }
@@ -747,33 +443,6 @@
                 },
                 "overrideIndexSignatures": []
             },
-            "WebTransport": {
-                "methods": {
-                    "method": {
-                        "createUnidirectionalStream": {
-                            "signature": {
-                                "0": {
-                                    "subtype": {
-                                        "type": "WritableStream"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "WebTransportBidirectionalStream": {
-                "properties": {
-                    "property": {
-                        "readable": {
-                            "type": "ReadableStream"
-                        },
-                        "writable": {
-                            "type": "WritableStream"
-                        }
-                    }
-                }
-            },
             "Document": {
                 "methods": {
                     "method": {
@@ -851,65 +520,11 @@
                             }
                         },
                         "textContent": {
-                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Node/textContent",
                             "overrideSignatures": [
                                 "get textContent(): null"
                             ]
                         }
-                    }
-                },
-                "properties": {
-                    "property": {
-                        "defaultView": {
-                            "name": "defaultView",
-                            "overrideType": "WindowProxy & typeof globalThis"
-                        },
-                        "documentElement": {
-                            "name": "documentElement",
-                            "overrideType": "HTMLElement",
-                            "nullable": false
-                        },
-                        "head": {
-                            "nullable": false
-                        },
-                        "anchors": {
-                            "name": "anchors",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement>"
-                        },
-                        "embeds": {
-                            "name": "embeds",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
-                        },
-                        "forms": {
-                            "name": "forms",
-                            "overrideType": "HTMLCollectionOf<HTMLFormElement>"
-                        },
-                        "images": {
-                            "name": "images",
-                            "overrideType": "HTMLCollectionOf<HTMLImageElement>"
-                        },
-                        "links": {
-                            "name": "links",
-                            "overrideType": "HTMLCollectionOf<HTMLAnchorElement | HTMLAreaElement>"
-                        },
-                        "plugins": {
-                            "name": "plugins",
-                            "overrideType": "HTMLCollectionOf<HTMLEmbedElement>"
-                        },
-                        "scripts": {
-                            "name": "scripts",
-                            "overrideType": "HTMLCollectionOf<HTMLScriptElement>"
-                        },
-                        "location": {
-                            // Pre-TS-5.1 hack to make document.location assignable
-                            "readonly": false,
-                            // Technically this can be null for a detached iframe.
-                            // But that's an edge case and flipping this also breaks compatibility.
-                            "nullable": false
-                        },
-                        "body": {
-                            "nullable": false
-                       }
                     }
                 }
             },
@@ -923,7 +538,7 @@
                             ]
                         },
                         "textContent": {
-                            "mdnUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Node/textContent",
                             "overrideSignatures": [
                                 "get textContent(): string",
                                 "set textContent(value: string | null)"
@@ -937,56 +552,6 @@
                             "name": "ownerDocument",
                             "readonly": 1,
                             "type": "Document"
-                        }
-                    }
-                }
-            },
-            "NavigationActivation": {
-                // https://github.com/mdn/browser-compat-data/issues/24963
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "entry": {
-                            "exposed": "Window"
-                        },
-                        "from": {
-                            "exposed": "Window"
-                        },
-                        "navigationType": {
-                            "exposed": "Window"
-                        }
-                    }
-                }
-            },
-            "NavigationHistoryEntry": {
-                // https://github.com/mdn/browser-compat-data/issues/24963
-                "exposed": "Window",
-                "properties": {
-                    "property": {
-                        "url": {
-                            "exposed": "Window"
-                        },
-                        "key": {
-                            "exposed": "Window"
-                        },
-                        "id": {
-                            "exposed": "Window"
-                        },
-                        "index": {
-                            "exposed": "Window"
-                        },
-                        "sameDocument": {
-                            "exposed": "Window"
-                        },
-                        "ondispose": {
-                            "exposed": "Window"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "getState": {
-                            "exposed": "Window"
                         }
                     }
                 }
@@ -1213,7 +778,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1227,7 +792,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1333,7 +898,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1347,7 +912,7 @@
                                 "0": {
                                     "param": [
                                         {
-                                            "name": "query",
+                                            "name": "queryOrOptions",
                                             "overrideType": "IDBValidKey | IDBKeyRange | null"
                                         }
                                     ],
@@ -1528,27 +1093,6 @@
                     }
                 }
             },
-            "HTMLDirectoryElement": {
-                "element": [
-                    {
-                        "name": "dir"
-                    }
-                ]
-            },
-            "HTMLFontElement": {
-                "element": [
-                    {
-                        "name": "font"
-                    }
-                ]
-            },
-            "HTMLFrameElement": {
-                "element": [
-                    {
-                        "name": "frame"
-                    }
-                ]
-            },
             "FontFace": {
               "properties": {
                 "property": {
@@ -1557,37 +1101,6 @@
                   }
                 }
               }
-            },
-            "HTMLFrameSetElement": {
-                "element": [
-                    {
-                        "name": "frameset"
-                    }
-                ]
-            },
-            "HTMLTableElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        },
-                        "tBodies": {
-                            "name": "tBodies",
-                            "overrideType": "HTMLCollectionOf<HTMLTableSectionElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLTableSectionElement": {
-                "properties": {
-                    "property": {
-                        "rows": {
-                            "name": "rows",
-                            "overrideType": "HTMLCollectionOf<HTMLTableRowElement>"
-                        }
-                    }
-                }
             },
             "Element": {
                 "methods": {
@@ -1682,26 +1195,6 @@
                     }
                 }
             },
-            "IDBRequest": {
-                "properties": {
-                    "property": {
-                        "source": {
-                            "name": "source",
-                            "nullable": false
-                        },
-                        "result": {
-                            "name": "result",
-                            "overrideType": "T"
-                        }
-                    }
-                },
-                "typeParameters": [
-                    {
-                        "name": "T",
-                        "default": "any"
-                    }
-                ]
-            },
             "ImageBitmapRenderingContext": {
                 "properties": {
                     "property": {
@@ -1722,18 +1215,6 @@
             "SubtleCrypto": {
                 "methods": {
                     "method": {
-                        "decrypt": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "algorithm",
-                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
-                                        }
-                                    ]
-                                }
-                            }
-                        },
                         "deriveBits": {
                             "signature": {
                                 "0": {
@@ -1804,6 +1285,7 @@
                             "name": "generateKey",
                             "additionalSignatures": [
                                 "generateKey(algorithm: \"Ed25519\" | { name: \"Ed25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"sign\" | \"verify\">): Promise<CryptoKeyPair>",
+                                "generateKey(algorithm: \"X25519\" | { name: \"X25519\" }, extractable: boolean, keyUsages: ReadonlyArray<\"deriveBits\" | \"deriveKey\">): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: RsaHashedKeyGenParams | EcKeyGenParams, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKeyPair>",
                                 "generateKey(algorithm: AesKeyGenParams | HmacKeyGenParams | Pbkdf2Params, extractable: boolean, keyUsages: ReadonlyArray<KeyUsage>): Promise<CryptoKey>"
                             ],
@@ -1900,48 +1382,6 @@
                     }
                 }
             },
-            "HTMLInputElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        },
-                        "valueAsDate": {
-                            "name": "valueAsDate",
-                            "overrideType": "Date"
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "setSelectionRange": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "start",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "end",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "direction",
-                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "MouseEvent": {
                 "methods": {
                     "method": {
@@ -1992,88 +1432,6 @@
                     }
                 }
             },
-            "HTMLLabelElement": {
-                "properties": {
-                    "property": {
-                        "form": {
-                            "name": "form",
-                            "overrideType": "HTMLFormElement"
-                        }
-                    }
-                }
-            },
-            "HTMLMeterElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLOutputElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLProgressElement": {
-                "properties": {
-                    "property": {
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        }
-                    }
-                }
-            },
-            "HTMLTextAreaElement": {
-                "properties": {
-                    "property": {
-                        "autocomplete": {
-                            "name": "autocomplete",
-                            "overrideType": "AutoFill"
-                        },
-                        "labels": {
-                            "name": "labels",
-                            "overrideType": "NodeListOf<HTMLLabelElement>"
-                        },
-                        "selectionDirection": {
-                            "name": "selectionDirection",
-                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                        }
-                    }
-                },
-                "methods": {
-                    "method": {
-                        "setSelectionRange": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "start",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "end",
-                                            "nullable": true
-                                        },
-                                        {
-                                            "name": "direction",
-                                            "overrideType": "\"forward\" | \"backward\" | \"none\""
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "ServiceWorkerContainer": {
                 "methods": {
                     "method": {
@@ -2097,49 +1455,6 @@
                             "type": "MessageEvent"
                         }
                     ]
-                }
-            },
-            "WebSocket": {
-                "methods": {
-                    "method": {
-                        "send": {
-                            "name": "send",
-                            "overrideSignatures": [
-                                "send(data: string | ArrayBufferLike | Blob | ArrayBufferView): void"
-                            ]
-                        }
-                    }
-                },
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        }
-                    ]
-                }
-            },
-            "WebTransportDatagramDuplexStream": {
-                "properties": {
-                    "property": {
-                        // https://github.com/w3c/webtransport/pull/638 removed this but browsers still has this
-                        "writable": {
-                            "name": "writable",
-                            "type": "WritableStream",
-                            "readonly": true,
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
-                        }
-                    }
-                }
-            },
-            "HTMLTableRowElement": {
-                "properties": {
-                    "property": {
-                        "cells": {
-                            "name": "cells",
-                            "overrideType": "HTMLCollectionOf<HTMLTableCellElement>"
-                        }
-                    }
                 }
             },
             "XMLHttpRequestEventTarget": {
@@ -2208,58 +1523,22 @@
                     ]
                 }
             },
-            "FileReader": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "loadstart",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "progress",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "load",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "abort",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "error",
-                            "type": "ProgressEvent"
-                        },
-                        {
-                            "name": "loadend",
-                            "type": "ProgressEvent"
-                        }
-                    ]
-                },
-                "properties": {
-                    "property": {
-                        "readyState": {
-                            "name": "readyState",
-                            "overrideType": "typeof FileReader.EMPTY | typeof FileReader.LOADING | typeof FileReader.DONE"
-                        }
-                    }
-                }
-            },
             "FileSystemDirectoryHandle": {
                 "iterator": {
                     // It's true that Blink is the only supported engine for Symbol.asyncIterator,
                     // WebKit does support the keys/values/entries method and Gecko will soon follow.
                     // Let's not go back and forth for this one.
-                    "exposed": "Window Worker"
-                }
-            },
-            "MutationRecord": {
-                "properties": {
-                    "property": {
-                        "type": {
-                            "name": "type",
-                            "overrideType": "MutationRecordType"
+                    "exposed": "Window Worker",
+                    "type": {
+                        "1": {
+                            "type": [
+                                {
+                                    "type": "FileSystemDirectoryHandle"
+                                },
+                                {
+                                    "type": "FileSystemFileHandle"
+                                }
+                            ]
                         }
                     }
                 }
@@ -2330,16 +1609,6 @@
                             }
                         }
                     }
-                }
-            },
-            "RTCDataChannel": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "message",
-                            "type": "MessageEvent"
-                        }
-                    ]
                 }
             },
             "RTCIceCandidatePair": {
@@ -2455,7 +1724,7 @@
                         },
                         {
                             "name": "messageerror",
-                            "type": "MessageEvent"
+                            "type": "ExtendableMessageEvent"
                         },
                         {
                             "name": "notificationclick",
@@ -2486,48 +1755,6 @@
                             }
                         }
                     }
-                }
-            },
-            "Cache": {
-                "methods": {
-                    "method": {
-                        "match": {
-                            "name": "match",
-                            "signature": {
-                                "0": {
-                                    "overrideType": "Promise<Response | undefined>"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "CacheStorage": {
-                "methods": {
-                    "method": {
-                        "match": {
-                            "name": "match",
-                            "signature": {
-                                "0": {
-                                    "overrideType": "Promise<Response | undefined>"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "Animation": {
-                "events": {
-                    "event": [
-                        {
-                            "name": "finish",
-                            "type": "AnimationPlaybackEvent"
-                        },
-                        {
-                            "name": "cancel",
-                            "type": "AnimationPlaybackEvent"
-                        }
-                    ]
                 }
             },
             "KeyframeEffect": {
@@ -2567,13 +1794,6 @@
                     }
                 }
             },
-            "HTMLMarqueeElement": {
-                "element": [
-                    {
-                        "name": "marquee"
-                    }
-                ]
-            },
             "Worker": {
                 "methods": {
                     "method": {
@@ -2601,7 +1821,9 @@
                                     "typeParameters": [
                                         {
                                             "name": "T",
-                                            "extends": "ArrayBufferView"
+                                            // Should be "ArrayBufferView<ArrayBuffer>"
+                                            // (resolved indirectly for compatibility with TS <=5.6)
+                                            "extends": "Exclude<BufferSource, ArrayBuffer>"
                                         }
                                     ],
                                     "param": [
@@ -2936,7 +2158,9 @@
                                     "typeParameters": [
                                         {
                                             "name": "T",
-                                            "extends": "ArrayBufferView"
+                                            // Should be "ArrayBufferView<ArrayBuffer>"
+                                            // (resolved indirectly for compatibility with TS <=5.6)
+                                            "extends": "Exclude<BufferSource, ArrayBuffer>"
                                         }
                                     ],
                                     "param": [
@@ -3005,6 +2229,7 @@
                                     "param": [
                                         {
                                             "name": "chunk",
+                                            "optional": false,
                                             "overrideType": "R"
                                         }
                                     ]
@@ -3326,36 +2551,6 @@
                     }
                 }
             },
-            "EventTarget": {
-                "methods": {
-                    "method": {
-                        "addEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "removeEventListener": {
-                            "signature": {
-                                "0": {
-                                    "param": [
-                                        {
-                                            "name": "callback",
-                                            "overrideType": "EventListenerOrEventListenerObject"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "WorkerGlobalScope": {
                 "properties": {
                     "property": {
@@ -3372,10 +2567,6 @@
                         }
                     ]
                 }
-            },
-            "InstallEvent": {
-                // https://github.com/mdn/browser-compat-data/issues/22591
-                "exposed": ""
             },
             "Instance": {
                 "constructor": {
@@ -3514,42 +2705,6 @@
                     }
                 }
             },
-            "CSSFontFaceRule": {
-                "properties": {
-                    "property": {
-                        "style": {
-                            // CSS Fonts Level 4 now says CSSFontFaceDescriptors but nobody implements it as of 2024-04
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "type": "CSSStyleProperties"
-                        }
-                    }
-                }
-            },
-            "CSSStyleProperties": {
-                // The split of CSSStyleDeclaration of CSSStyleProperties is only supported by Safari 26
-                // as of 2025-06.
-                // But still Chrome is shipping CSS*Descriptors based on it, which is only possible because
-                // Chrome's CSSStyleDeclaration was based on nonstandard indexer.
-                // To support the situation we need CSSStyleProperties even though it's not well supported yet.
-                // The split was pushed by Mozilla and thus still has multiple supports for the direction.
-                "properties": {
-                    "property": {
-                        "cssFloat": {
-                            // CSS Fonts Level 4 now puts this in CSSStyleProperties but only Safari supports it as of 2025-06
-                            // https://github.com/w3c/csswg-drafts/pull/9686
-                            "exposed": "Window",
-                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/CSSStyleDeclaration/cssFloat"
-                        },
-                        "webkitLineClamp": {
-                            // The corresponding standardized property is not supported by anyone as of 2024-10.
-                            "deprecated": false
-                        }
-                    }
-                }
-            },
-            "ContactAddress": {
-                "name": "PaymentAddress"
-            },
             "HTMLMediaElement": {
                 "properties": {
                     "property": {
@@ -3594,27 +2749,6 @@
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
             "MediaSource": {
                 "exposed": "Window"
-            },
-
-            // Payment Request added shippingAddress with a different type
-            // https://github.com/w3c/payment-request/pull/996
-            "PaymentRequest": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
-            },
-            "PaymentResponse": {
-                "properties": {
-                    "property": {
-                        "shippingAddress": {
-                            "type": "PaymentAddress"
-                        }
-                    }
-                }
             },
 
             "SourceBuffer": {
@@ -3684,7 +2818,7 @@
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
                                     ],
-                                    "overrideType": "Promise<T>"
+                                    "overrideType": "Promise<Awaited<T>>"
                                 },
                                 "1": {
                                     "typeParameters": [
@@ -3698,7 +2832,7 @@
                                             "overrideType": "LockGrantedCallback<T>"
                                         }
                                     ],
-                                    "overrideType": "Promise<T>"
+                                    "overrideType": "Promise<Awaited<T>>"
                                 }
                             }
                         }
@@ -3708,108 +2842,6 @@
 
             // TODO: The following only exists to accept bcd@6.0.24 progressively,
             // and should be removed.
-            "GPU": {
-                "exposed": ""
-            },
-            "GPUAdapter": {
-                "exposed": ""
-            },
-            "GPUAdapterInfo": {
-                "exposed": ""
-            },
-            "GPUBindGroup": {
-                "exposed": ""
-            },
-            "GPUBindGroupLayout": {
-                "exposed": ""
-            },
-            "GPUBuffer": {
-                "exposed": ""
-            },
-            "GPUCanvasContext": {
-                "exposed": ""
-            },
-            "GPUCommandBuffer": {
-                "exposed": ""
-            },
-            "GPUCommandEncoder": {
-                "exposed": ""
-            },
-            "GPUCompilationInfo": {
-                "exposed": ""
-            },
-            "GPUCompilationMessage": {
-                "exposed": ""
-            },
-            "GPUComputePassEncoder": {
-                "exposed": ""
-            },
-            "GPUComputePipeline": {
-                "exposed": ""
-            },
-            "GPUDevice": {
-                "exposed": ""
-            },
-            "GPUDeviceLostInfo": {
-                "exposed": ""
-            },
-            "GPUExternalTexture": {
-                "exposed": ""
-            },
-            "GPUInternalError": {
-                "exposed": ""
-            },
-            "GPUOutOfMemoryError": {
-                "exposed": ""
-            },
-            "GPUPipelineError": {
-                "exposed": ""
-            },
-            "GPUPipelineLayout": {
-                "exposed": ""
-            },
-            "GPUQuerySet": {
-                "exposed": ""
-            },
-            "GPUQueue": {
-                "exposed": ""
-            },
-            "GPURenderBundle": {
-                "exposed": ""
-            },
-            "GPURenderBundleEncoder": {
-                "exposed": ""
-            },
-            "GPURenderPassEncoder": {
-                "exposed": ""
-            },
-            "GPURenderPipeline": {
-                "exposed": ""
-            },
-            "GPUSampler": {
-                "exposed": ""
-            },
-            "GPUShaderModule": {
-                "exposed": ""
-            },
-            "GPUSupportedFeatures": {
-                "exposed": ""
-            },
-            "GPUSupportedLimits": {
-                "exposed": ""
-            },
-            "GPUTexture": {
-                "exposed": ""
-            },
-            "GPUTextureView": {
-                "exposed": ""
-            },
-            "GPUUncapturedErrorEvent": {
-                "exposed": ""
-            },
-            "GPUValidationError": {
-                "exposed": ""
-            },
             "TrustedHTML": {
                 "exposed": ""
             },
@@ -3825,74 +2857,25 @@
             "TrustedTypePolicyFactory": {
                 "exposed": ""
             },
-            "WGSLLanguageFeatures": {
-                "exposed": ""
-            },
-            "PublicKeyCredential": {
-                "methods": {
-                    "method": {
-                        "signalAllAcceptedCredentials": {
-                            "exposed": ""
-                        },
-                        "signalCurrentUserDetails": {
-                            "exposed": ""
-                        },
-                        "signalUnknownCredential": {
-                            "exposed": ""
+            "URLSearchParams": {
+                "name": "URLSearchParams",
+                "constructor": {
+                    "signature": {
+                        "0": {
+                            "param": [
+                                {
+                                    "name": "init",
+                                    "overrideType": "string | Iterable<[string, string]> | Record<string, string>"
+                                }
+                            ]
                         }
                     }
                 }
-            },
-			"URLSearchParams": {
-				"name": "URLSearchParams",
-				"constructor": {
-					"signature": {
-						"0": {
-							"param": [
-								{
-									"name": "init",
-									"overrideType": "string | Iterable<[string, string]> | Record<string, string>"
-								}
-							]
-						}
-					}
-				}
-			}
+            }
         }
     },
     "dictionaries": {
         "dictionary": {
-            "FontFaceDescriptors": {
-              "members": {
-                "member": {
-                  "display":{
-                    "type": "FontDisplay"
-                  }
-                }
-              }
-            },
-            // https://github.com/microsoft/TypeScript/issues/46036
-            "CryptoKeyPair": {
-                "members": {
-                    "member": {
-                        "privateKey": {
-                            "required": true
-                        },
-                        "publicKey": {
-                            "required": true
-                        }
-                    }
-                }
-            },
-            "StructuredSerializeOptions": {
-                "members": {
-                    "member": {
-                        "transfer": {
-                            "overrideType": "Transferable[]"
-                        }
-                    }
-                }
-            },
             "MessageEventInit": {
                 "members": {
                     "member": {
@@ -3983,6 +2966,9 @@
                 "overrideIndexSignatures": [
                     "[property: string]: string | number | null | undefined"
                 ]
+            },
+            "ExceptionOptions": {
+                "legacyNamespace": "WebAssembly"
             },
             "PermissionDescriptor": {
                 "members": {
@@ -4089,6 +3075,9 @@
                     }
                 }
             },
+            "TagType": {
+                "legacyNamespace": "WebAssembly"
+            },
             // TextEncoderEncodeIntoResult is used only for return type, always with all fields defined
             "TextEncoderEncodeIntoResult": {
                 "members": {
@@ -4098,24 +3087,6 @@
                         },
                         "written": {
                             "required": true
-                        }
-                    }
-                }
-            },
-            "UnderlyingSource": {
-                "typeParameters": [
-                    {
-                        "name": "R",
-                        "default": "any"
-                    }
-                ],
-                "members": {
-                    "member": {
-                        "start": {
-                            "overrideType": "UnderlyingSourceStartCallback<R>"
-                        },
-                        "pull": {
-                            "overrideType": "UnderlyingSourcePullCallback<R>"
                         }
                     }
                 }
@@ -4216,6 +3187,9 @@
                     }
                 }
             },
+            "WebAssemblyCompileOptions": {
+                "legacyNamespace": "WebAssembly"
+            },
             "WebAssemblyInstantiatedSource": {
                 "legacyNamespace": "WebAssembly"
             }
@@ -4248,6 +3222,12 @@
                     }
                 ],
                 "overrideType": "ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader"
+            },
+            {
+                "name": "AddressValue",
+                "legacyNamespace": "WebAssembly",
+                // This should be "number | bigint" but we can't break es2015 compat
+                "type": "long"
             }
         ]
     },

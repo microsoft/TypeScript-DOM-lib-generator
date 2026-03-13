@@ -1,12 +1,12 @@
 import { listAll } from "@webref/events";
-import { addToNestedMap } from "../utils/map.js";
+import { addToNestedMap } from "../utils/map.ts";
 
 export async function getInterfaceToEventMap(): Promise<
   Map<string, Map<string, string>>
 > {
   const all = await listAll();
   const map = new Map<string, Map<string, string>>();
-  for (const item of Object.values(all)) {
+  for (const item of all) {
     const { targets } = item;
     for (const target of targets) {
       addToNestedMap(map, target.target, item.type, item.interface);
