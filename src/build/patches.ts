@@ -22,7 +22,7 @@ import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.ts";
 
 type DeepPartial<T> = T extends any[]
-  ? Record<number, DeepPartial<T>> | DeepPartial<T>[]
+  ? Record<number, DeepPartial<T[number]>> | DeepPartial<T>[]
   : T extends object
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : T;
