@@ -192,7 +192,7 @@ interface Document {
 interface SharedWorker {
   constructor signatureIndex=0 {
     param options {
-        type index=1 WorkerOptions
+      type index=1 WorkerOptions
     }
   }
 }
