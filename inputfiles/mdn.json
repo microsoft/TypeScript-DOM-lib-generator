@@ -2165,6 +2165,26 @@
     "summary": "The restrictTo() method of the BrowserCaptureMediaStreamTrack interface restricts a self-capture stream to a specific DOM element (and its descendants)."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/BufferedChangeEvent",
+    "pageType": "web-api-interface",
+    "summary": "The BufferedChangeEvent interface of the Media Source Extensions API represents the event object for the bufferedchange event fired on a ManagedSourceBuffer. This event is fired whenever the buffered ranges of the ManagedSourceBuffer change, for example as a result of appendBuffer(), remove(), or endOfStream() calls, or when the user agent runs the memory cleanup algorithm."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/BufferedChangeEvent/addedRanges",
+    "pageType": "web-api-instance-property",
+    "summary": "The addedRanges read-only property of the BufferedChangeEvent interface returns a TimeRanges object representing the time ranges that were added to the associated ManagedSourceBuffer. These are the ranges added between the last updatestart and updateend events, during the most recent run of the coded frame processing algorithm."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/BufferedChangeEvent/BufferedChangeEvent",
+    "pageType": "web-api-constructor",
+    "summary": "The BufferedChangeEvent() constructor of the BufferedChangeEvent interface creates a new BufferedChangeEvent object instance."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/BufferedChangeEvent/removedRanges",
+    "pageType": "web-api-instance-property",
+    "summary": "The removedRanges read-only property of the BufferedChangeEvent interface returns a TimeRanges object representing the time ranges that were removed from the associated ManagedSourceBuffer. These are the ranges removed between the last updatestart and updateend events, during the most recent run of the coded frame removal or coded frame eviction algorithm, or as a consequence of the user agent running the memory cleanup algorithm."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/ByteLengthQueuingStrategy",
     "pageType": "web-api-interface",
     "summary": "The ByteLengthQueuingStrategy interface of the Streams API provides a built-in byte length queuing strategy that can be used when constructing streams."
@@ -12270,6 +12290,11 @@
     "summary": "The HTML Sanitizer API allows developers to take strings of HTML and filter out unwanted elements, attributes, and other HTML entities when they are inserted into the DOM or a shadow DOM."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/HTML_Sanitizer_API/Default_sanitizer_configuration",
+    "pageType": "guide",
+    "summary": "The default sanitizer configuration defines the configuration returned by the Sanitizer() constructor if no configuration is passed as an argument.\nThis same configuration is implicitly used if you call the safe sanitization methods, such as Element.setHTML(), ShadowRoot.setHTML(), and Document.parseHTML(), without specifying a custom sanitizer."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/HTML_Sanitizer_API/Using_the_HTML_Sanitizer_API",
     "pageType": "guide",
     "summary": "The HTML Sanitizer API provides methods that allow developers to safely inject untrusted HTML into an Element, a ShadowRoot, or a Document.\nThe API also gives developers the flexibility to further restrict or expand what HTML entities are allowed if needed."
@@ -17650,6 +17675,41 @@
     "summary": "The z read-only property of the\nMagnetometer interface returns a number specifying\nthe magnetic field around the device's z-axis."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/ManagedMediaSource",
+    "pageType": "web-api-interface",
+    "summary": "The ManagedMediaSource interface of the Media Source Extensions API is a MediaSource that actively manages its memory content. Unlike a regular MediaSource, the user agent can evict content from its ManagedSourceBuffer objects at any time, for reasons such as memory or hardware limitations. This makes it suitable for power-efficient streaming scenarios where the user agent needs more control over buffered media data."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ManagedMediaSource/endstreaming_event",
+    "pageType": "web-api-event",
+    "summary": "The endstreaming event of the ManagedMediaSource interface is fired when the streaming property changes from true to false. This indicates that the user agent has enough data buffered to ensure uninterrupted playback, and the application can stop fetching new media segments."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ManagedMediaSource/ManagedMediaSource",
+    "pageType": "web-api-constructor",
+    "summary": "The ManagedMediaSource() constructor of the ManagedMediaSource interface constructs and returns a new ManagedMediaSource object instance with no associated source buffers."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ManagedMediaSource/startstreaming_event",
+    "pageType": "web-api-event",
+    "summary": "The startstreaming event of the ManagedMediaSource interface is fired when the streaming property changes from false to true. This indicates that the user agent needs more data to ensure uninterrupted playback, and the application should begin fetching and appending media segments."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ManagedMediaSource/streaming",
+    "pageType": "web-api-instance-property",
+    "summary": "The streaming read-only property of the ManagedMediaSource interface is a boolean indicating whether the application should actively fetch and append media data."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ManagedSourceBuffer",
+    "pageType": "web-api-interface",
+    "summary": "The ManagedSourceBuffer interface of the Media Source Extensions API is a SourceBuffer that is created by a ManagedMediaSource when addSourceBuffer() is called. It inherits all the properties and methods of SourceBuffer, and additionally fires a bufferedchange event whenever the buffered ranges change — including when the user agent evicts content as part of its memory cleanup algorithm."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ManagedSourceBuffer/bufferedchange_event",
+    "pageType": "web-api-event",
+    "summary": "The bufferedchange event of the ManagedSourceBuffer interface is fired when the ManagedSourceBuffer's buffered range changes. This can occur following a call to appendBuffer(), remove(), endOfStream(), or as a consequence of the user agent running the memory cleanup algorithm."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/MathMLElement",
     "pageType": "web-api-interface",
     "summary": "The MathMLElement interface represents any MathML element."
@@ -20133,6 +20193,11 @@
     "mdn_url": "/en-US/docs/Web/API/Navigator/plugins",
     "pageType": "web-api-instance-property",
     "summary": "Returns a PluginArray object, listing the Plugin objects describing the plugins installed in the application.\nNamed properties of the returned object are not enumerable (except in very old browser versions)."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/Navigator/preferences",
+    "pageType": "web-api-instance-property",
+    "summary": "The preferences read-only property of the Navigator interface returns a PreferenceManager object for the current document. This is the entry point for the User Preferences API functionality."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/presentation",
@@ -22873,6 +22938,71 @@
     "mdn_url": "/en-US/docs/Web/API/PositionSensorVRDevice/resetSensor",
     "pageType": "web-api-instance-method",
     "summary": "The resetSensor() method of the VRDisplay interface can be used to reset the sensor if desired, returning the position and orientation values to zero."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceManager",
+    "pageType": "web-api-interface",
+    "summary": "The PreferenceManager interface of the User Preferences API provides access to PreferenceObject objects used to query and modify user preferences."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceManager/colorScheme",
+    "pageType": "web-api-instance-property",
+    "summary": "The colorScheme read-only property of the PreferenceManager interface returns a PreferenceObject used to override the user's preference for the color scheme of the site."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceManager/contrast",
+    "pageType": "web-api-instance-property",
+    "summary": "The contrast read-only property of the PreferenceManager interface returns a PreferenceObject used to override the user's preference for the contrast of the site."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceManager/reducedData",
+    "pageType": "web-api-instance-property",
+    "summary": "The reducedData read-only property of the PreferenceManager interface returns a PreferenceObject used to override the user's preference for the reduced data of the site."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceManager/reducedMotion",
+    "pageType": "web-api-instance-property",
+    "summary": "The reducedMotion read-only property of the PreferenceManager interface returns the PreferenceObject used to override the user's preference for the reduced motion of the site."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceManager/reducedTransparency",
+    "pageType": "web-api-instance-property",
+    "summary": "The reducedTransparency read-only property of the PreferenceManager interface returns the PreferenceObject used to override the user's preference for the reduced transparency of the site."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject",
+    "pageType": "web-api-interface",
+    "summary": "The PreferenceObject interface of the User Preferences API provides attributes and methods for reading and overriding user preferences."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject/change_event",
+    "pageType": "web-api-event",
+    "summary": "The change event of the PreferenceObject interface is fired when a PreferenceObject override value changes. This can happen due to requestOverride or clearOverride method calls."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject/clearOverride",
+    "pageType": "web-api-instance-method",
+    "summary": "The clearOverride method of the PreferenceObject interface resets the must be provided value."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject/override",
+    "pageType": "web-api-instance-method",
+    "summary": "The override read-only property of the PreferenceObject interface returns the override of a preference if one is set, null otherwise."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject/requestOverride",
+    "pageType": "web-api-instance-method",
+    "summary": "The requestOverride method of the PreferenceObject interface sets an must be provided value for a particular preference."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject/validValues",
+    "pageType": "web-api-instance-property",
+    "summary": "The validValues read-only property of the PreferenceObject interface returns a read-only array of values that are accepted by the override."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PreferenceObject/value",
+    "pageType": "web-api-instance-property",
+    "summary": "The value read-only property of the PreferenceManager interface returns the override value of a preference if one is set, or the UA-defined value if an override value is not set."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Presentation",
@@ -26492,7 +26622,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Sanitizer/removeUnsafe",
     "pageType": "web-api-instance-method",
-    "summary": "The removeUnsafe() method of the Sanitizer interface configures the sanitizer configuration so that it will remove all elements, attributes, and event handler content attributes that are considered XSS-unsafe by the browser."
+    "summary": "The removeUnsafe() method of the Sanitizer interface configures the sanitizer so that it will remove all elements and attributes that are considered XSS-unsafe by the browser."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Sanitizer/replaceElementWithChildren",
@@ -29950,6 +30080,11 @@
     "summary": "The SVGFEGaussianBlurElement interface corresponds to the <feGaussianBlur> element."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/SVGFEGaussianBlurElement/edgeMode",
+    "pageType": "web-api-instance-property",
+    "summary": "The edgeMode read-only property of the SVGFEGaussianBlurElement interface determines what color values to use when the blur needs to sample pixels beyond the edge of the input image. It reflects the edgeMode attribute of the given <feGaussianBlur> element."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/SVGFEGaussianBlurElement/height",
     "pageType": "web-api-instance-property",
     "summary": "The height read-only property of the SVGFEGaussianBlurElement interface describes the vertical size of an SVG filter primitive as a SVGAnimatedLength."
@@ -30753,6 +30888,11 @@
     "mdn_url": "/en-US/docs/Web/API/SVGMarkerElement/markerWidth",
     "pageType": "web-api-instance-property",
     "summary": "The markerWidth read-only property of the SVGMarkerElement interface returns an SVGAnimatedLength object containing the width of the <marker> viewport as defined by the markerWidth attribute."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/SVGMarkerElement/orient",
+    "pageType": "web-api-instance-property",
+    "summary": "The orient property of the SVGMarkerElement interface defines how the marker is rotated when it is placed at its position on the shape. It reflects the orient attribute value of the corresponding <marker> element."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SVGMarkerElement/orientAngle",
@@ -33438,6 +33578,11 @@
     "mdn_url": "/en-US/docs/Web/API/USBOutTransferResult",
     "pageType": "web-api-interface",
     "summary": "The USBOutTransferResult interface of the WebUSB API provides the result from a call to the transferOut() and controlTransferOut() methods of the USBDevice interface. It represents the result from requesting a transfer of data from the USB host to the USB device."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/User_Preferences_API",
+    "pageType": "web-api-overview",
+    "summary": "The User Preferences API allows page authors to programmatically override user preference-related media query settings."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/User-Agent_Client_Hints_API",
@@ -37147,7 +37292,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/pageshow_event",
     "pageType": "web-api-event",
-    "summary": "The pageshow event is sent to a Window when the browser displays the window's document due to navigation."
+    "summary": "The pageshow event is sent to a Window when the browser navigates to a new document."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/pageswap_event",
@@ -39905,6 +40050,16 @@
     "summary": "The background-repeat CSS property sets how background images are repeated. A background image can be repeated along the horizontal and vertical axes, or not repeated at all."
   },
   {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/background-repeat-x",
+    "pageType": "css-property",
+    "summary": "The background-repeat-x CSS property sets how background images are repeated, or not, along the horizontal axis."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/background-repeat-y",
+    "pageType": "css-property",
+    "summary": "The background-repeat-y CSS property sets how background images are repeated, or not, along the vertical axis."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/background-size",
     "pageType": "css-property",
     "summary": "The background-size CSS property sets the size of the element's background image.\nThe image can be left to its natural size, stretched, or constrained to fit the available space."
@@ -41072,7 +41227,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/letter-spacing",
     "pageType": "css-property",
-    "summary": "The letter-spacing CSS property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of letter-spacing causes characters to spread farther apart, while negative values of letter-spacing bring characters closer together."
+    "summary": "The letter-spacing CSS property sets the spacing between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of letter-spacing spread characters further apart, while negative values of letter-spacing bring characters closer together."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/lighting-color",
@@ -42312,7 +42467,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/word-spacing",
     "pageType": "css-property",
-    "summary": "The word-spacing CSS property sets the length of space between words and between tags."
+    "summary": "The word-spacing CSS property sets the spacing between words and between tags."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/writing-mode",
