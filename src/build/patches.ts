@@ -21,9 +21,11 @@ import type {
 import { readdir, readFile } from "fs/promises";
 import { merge } from "./helpers.ts";
 
-type DeepPartial<T> = T extends object
-  ? { [K in keyof T]?: DeepPartial<T[K]> }
-  : T;
+type DeepPartial<T> = T extends any[]
+  ? Record<number, DeepPartial<T>> | DeepPartial<T>[]
+  : T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
 
 interface OverridableMethod extends Omit<Method, "signature"> {
   signature: DeepPartial<Signature>[] | Record<number, DeepPartial<Signature>>;
@@ -56,7 +58,20 @@ function string(arg: unknown): string {
   return arg;
 }
 
-function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
+function partialArray<T extends { index?: number }>(array: T[]) {
+  const result: Record<number, T> = {};
+  for (const value of array) {
+    if (value.index == null) {
+      throw new Error("If a type has an index, every type must have an index");
+    }
+    result[value.index] = value;
+  }
+  return result;
+}
+
+function handleSingleTypeNode(
+  type: Node,
+): DeepPartial<Typed & { index: number }> {
   const isTyped = type.name == "type";
   if (!isTyped) {
     throw new Error("Expected a type node");
@@ -67,6 +82,7 @@ function handleSingleTypeNode(type: Node): DeepPartial<Typed> {
     ...optionalMember("type", "string", type.values[0]),
     subtype: subType,
     ...optionalMember("nullable", "boolean", type.properties?.nullable),
+    ...optionalMember("index", "number", type.properties?.index),
   };
 }
 
@@ -85,6 +101,9 @@ function handleTyped(
   }
 
   const types = typeNodes.map(handleSingleTypeNode);
+  if (types.some((type) => type.index)) {
+    return { type: partialArray(types) };
+  }
   if (typeNodes.length > 1) {
     // union types
     return { type: types };
