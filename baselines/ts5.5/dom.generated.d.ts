@@ -7987,7 +7987,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     left: string;
     /**
-     * The letter-spacing CSS property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of letter-spacing causes characters to spread farther apart, while negative values of letter-spacing bring characters closer together.
+     * The letter-spacing CSS property sets the spacing between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of letter-spacing spread characters further apart, while negative values of letter-spacing bring characters closer together.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/letter-spacing)
      */
@@ -9752,7 +9752,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     wordBreak: string;
     /**
-     * The word-spacing CSS property sets the length of space between words and between tags.
+     * The word-spacing CSS property sets the spacing between words and between tags.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/word-spacing)
      */
@@ -34689,7 +34689,7 @@ interface Sanitizer {
      */
     removeElement(element: SanitizerElement): boolean;
     /**
-     * The **`removeUnsafe()`** method of the Sanitizer interface configures the sanitizer configuration so that it will remove all elements, attributes, and event handler content attributes that are considered XSS-unsafe by the browser.
+     * The **`removeUnsafe()`** method of the Sanitizer interface configures the sanitizer so that it will remove all elements and attributes that are considered XSS-unsafe by the browser.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Sanitizer/removeUnsafe)
      */
