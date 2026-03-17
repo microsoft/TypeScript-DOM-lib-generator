@@ -41,9 +41,7 @@
                                         {
                                             "name": "id",
                                             "optional": false,
-                                            "additionalTypes": [
-                                                "undefined"
-                                            ]
+                                            "additionalTypes": ["undefined"]
                                         }
                                     ]
                                 }
@@ -75,9 +73,7 @@
                                         {
                                             "name": "id",
                                             "optional": false,
-                                            "additionalTypes": [
-                                                "undefined"
-                                            ]
+                                            "additionalTypes": ["undefined"]
                                         }
                                     ]
                                 }
@@ -1098,13 +1094,13 @@
                 }
             },
             "FontFace": {
-                "properties": {
-                    "property": {
-                        "display": {
-                            "type": "FontDisplay"
-                        }
-                    }
+              "properties": {
+                "property": {
+                  "display": {
+                    "type": "FontDisplay"
+                  }
                 }
+              }
             },
             "Element": {
                 "methods": {
@@ -1225,11 +1221,7 @@
                                     "param": [
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": [
-                                                "EcdhKeyDeriveParams",
-                                                "HkdfParams",
-                                                "Pbkdf2Params"
-                                            ]
+                                            "additionalTypes": ["EcdhKeyDeriveParams", "HkdfParams", "Pbkdf2Params"]
                                         }
                                     ]
                                 }
@@ -1241,20 +1233,11 @@
                                     "param": [
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": [
-                                                "EcdhKeyDeriveParams",
-                                                "HkdfParams",
-                                                "Pbkdf2Params"
-                                            ]
+                                            "additionalTypes": ["EcdhKeyDeriveParams", "HkdfParams", "Pbkdf2Params"]
                                         },
                                         {
                                             "name": "derivedKeyType",
-                                            "additionalTypes": [
-                                                "AesDerivedKeyParams",
-                                                "HmacImportParams",
-                                                "HkdfParams",
-                                                "Pbkdf2Params"
-                                            ]
+                                            "additionalTypes": ["AesDerivedKeyParams", "HmacImportParams", "HkdfParams", "Pbkdf2Params"]
                                         }
                                     ],
                                     "overrideType": "Promise<CryptoKey>"
@@ -1275,12 +1258,7 @@
                                     "param": [
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": [
-                                                "RsaOaepParams",
-                                                "AesCtrParams",
-                                                "AesCbcParams",
-                                                "AesGcmParams"
-                                            ]
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         }
                                     ]
                                 }
@@ -1335,12 +1313,7 @@
                                         },
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": [
-                                                "RsaHashedImportParams",
-                                                "EcKeyImportParams",
-                                                "HmacImportParams",
-                                                "AesKeyAlgorithm"
-                                            ]
+                                            "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
                                         }
                                     ]
                                 }
@@ -1357,10 +1330,7 @@
                                     "param": [
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": [
-                                                "RsaPssParams",
-                                                "EcdsaParams"
-                                            ]
+                                            "additionalTypes": ["RsaPssParams", "EcdsaParams"]
                                         }
                                     ],
                                     "overrideType": "Promise<ArrayBuffer>"
@@ -1373,21 +1343,11 @@
                                     "param": [
                                         {
                                             "name": "unwrapAlgorithm",
-                                            "additionalTypes": [
-                                                "RsaOaepParams",
-                                                "AesCtrParams",
-                                                "AesCbcParams",
-                                                "AesGcmParams"
-                                            ]
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         },
                                         {
                                             "name": "unwrappedKeyAlgorithm",
-                                            "additionalTypes": [
-                                                "RsaHashedImportParams",
-                                                "EcKeyImportParams",
-                                                "HmacImportParams",
-                                                "AesKeyAlgorithm"
-                                            ]
+                                            "additionalTypes": ["RsaHashedImportParams", "EcKeyImportParams", "HmacImportParams", "AesKeyAlgorithm"]
                                         }
                                     ]
                                 }
@@ -1399,10 +1359,7 @@
                                     "param": [
                                         {
                                             "name": "algorithm",
-                                            "additionalTypes": [
-                                                "RsaPssParams",
-                                                "EcdsaParams"
-                                            ]
+                                            "additionalTypes": ["RsaPssParams", "EcdsaParams"]
                                         }
                                     ],
                                     "overrideType": "Promise<boolean>"
@@ -1415,12 +1372,7 @@
                                     "param": [
                                         {
                                             "name": "wrapAlgorithm",
-                                            "additionalTypes": [
-                                                "RsaOaepParams",
-                                                "AesCtrParams",
-                                                "AesCbcParams",
-                                                "AesGcmParams"
-                                            ]
+                                            "additionalTypes": ["RsaOaepParams", "AesCtrParams", "AesCbcParams", "AesGcmParams"]
                                         }
                                     ],
                                     "overrideType": "Promise<ArrayBuffer>"
@@ -1598,9 +1550,7 @@
                             "param": [
                                 {
                                     "name": "base",
-                                    "additionalTypes": [
-                                        "URL"
-                                    ]
+                                    "additionalTypes": ["URL"]
                                 }
                             ]
                         }
@@ -1614,9 +1564,7 @@
                                     "param": [
                                         {
                                             "name": "base",
-                                            "additionalTypes": [
-                                                "URL"
-                                            ]
+                                            "additionalTypes": ["URL"]
                                         }
                                     ]
                                 }
@@ -1628,9 +1576,7 @@
                                     "param": [
                                         {
                                             "name": "base",
-                                            "additionalTypes": [
-                                                "URL"
-                                            ]
+                                            "additionalTypes": ["URL"]
                                         }
                                     ]
                                 }
@@ -2036,19 +1982,19 @@
                 }
             },
             "Blob": {
-                "methods": {
-                    "method": {
-                        "stream": {
-                            "signature": {
-                                "0": {
-                                    "subtype": {
-                                        "type": "Uint8Array"
-                                    }
-                                }
-                            }
+              "methods": {
+                "method": {
+                  "stream": {
+                    "signature": {
+                      "0": {
+                        "subtype": {
+                            "type": "Uint8Array"
                         }
+                      }
                     }
+                  }
                 }
+              }
             },
             "ReadableStream": {
                 "typeParameters": [
@@ -2071,9 +2017,7 @@
                                     "overrideType": "{ highWaterMark?: number }"
                                 }
                             ],
-                            "subtype": {
-                                "type": "Uint8Array"
-                            }
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "1": {
                             "typeParameters": [
@@ -2200,9 +2144,7 @@
                             "param": [
                                 {
                                     "name": "stream",
-                                    "subtype": {
-                                        "type": "Uint8Array"
-                                    }
+                                    "subtype": { "type": "Uint8Array" }
                                 }
                             ]
                         }
@@ -2510,17 +2452,13 @@
                             "name": "readable",
                             "readonly": true,
                             "type": "ReadableStream",
-                            "subtype": {
-                                "type": "Uint8Array"
-                            }
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
                             "type": "WritableStream",
-                            "subtype": {
-                                "type": "BufferSource"
-                            }
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -2532,17 +2470,13 @@
                             "name": "readable",
                             "readonly": true,
                             "type": "ReadableStream",
-                            "subtype": {
-                                "type": "Uint8Array"
-                            }
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
                             "type": "WritableStream",
-                            "subtype": {
-                                "type": "BufferSource"
-                            }
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -2554,17 +2488,13 @@
                             "name": "readable",
                             "readonly": true,
                             "type": "ReadableStream",
-                            "subtype": {
-                                "type": "DOMString"
-                            }
+                            "subtype": { "type": "DOMString" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
                             "type": "WritableStream",
-                            "subtype": {
-                                "type": "BufferSource"
-                            }
+                            "subtype": { "type": "BufferSource" }
                         }
                     }
                 }
@@ -2576,17 +2506,13 @@
                             "name": "readable",
                             "readonly": true,
                             "type": "ReadableStream",
-                            "subtype": {
-                                "type": "Uint8Array"
-                            }
+                            "subtype": { "type": "Uint8Array" }
                         },
                         "writable": {
                             "name": "writable",
                             "readonly": true,
                             "type": "WritableStream",
-                            "subtype": {
-                                "type": "DOMString"
-                            }
+                            "subtype": { "type": "DOMString" }
                         }
                     }
                 }
@@ -2821,10 +2747,12 @@
                     }
                 }
             },
+
             // https://github.com/w3c/media-source/pull/282, but not supported anywhere yet
             "MediaSource": {
                 "exposed": "Window"
             },
+
             "SourceBuffer": {
                 "exposed": "Window"
             },
@@ -2913,6 +2841,7 @@
                     }
                 }
             },
+
             // TODO: The following only exists to accept bcd@6.0.24 progressively,
             // and should be removed.
             "TrustedHTML": {
