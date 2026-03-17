@@ -8841,7 +8841,7 @@ interface TransformStreamDefaultController<O = any> {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/TransformStreamDefaultController/enqueue)
      */
-    enqueue(chunk?: O): void;
+    enqueue(chunk: O): void;
     /**
      * The **`error()`** method of the TransformStreamDefaultController interface errors both sides of the stream. Any further interactions with it will fail with the given error message, and any chunks in the queue will be discarded.
      *
