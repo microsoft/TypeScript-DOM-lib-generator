@@ -83,6 +83,10 @@ interface AnimationPlaybackEventInit extends EventInit {
     timelineTime?: CSSNumberish | null;
 }
 
+interface AriaNotificationOptions {
+    priority?: AriaNotifyPriority;
+}
+
 interface AssignedNodesOptions {
     flatten?: boolean;
 }
@@ -1213,6 +1217,15 @@ interface GetRootNodeOptions {
 interface HashChangeEventInit extends EventInit {
     newURL?: string;
     oldURL?: string;
+}
+
+interface HighlightHitResult {
+    highlight?: Highlight;
+    ranges?: AbstractRange[];
+}
+
+interface HighlightsFromPointOptions {
+    shadowRoots?: ShadowRoot[];
 }
 
 interface HkdfParams extends Algorithm {
@@ -3360,6 +3373,11 @@ interface ARIAMixin {
     role: string | null;
 }
 
+interface ARIANotifyMixin {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/ariaNotify) */
+    ariaNotify(announcement: string, options?: AriaNotificationOptions): void;
+}
+
 /**
  * The **`AbortController`** interface represents a controller object that allows you to abort one or more Web requests as and when desired.
  *
@@ -5367,6 +5385,36 @@ interface CSSCounterStyleRule extends CSSRule {
 declare var CSSCounterStyleRule: {
     prototype: CSSCounterStyleRule;
     new(): CSSCounterStyleRule;
+};
+
+/**
+ * The **`CSSFontFaceDescriptors`** interface represents a CSS declaration block for an @font-face at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceDescriptors)
+ */
+interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
+    "font-display": string;
+    "font-family": string;
+    "font-feature-settings": string;
+    "font-stretch": string;
+    "font-style": string;
+    "font-weight": string;
+    fontDisplay: string;
+    fontFamily: string;
+    fontFeatureSettings: string;
+    fontStretch: string;
+    fontStyle: string;
+    fontWeight: string;
+    "size-adjust": string;
+    sizeAdjust: string;
+    src: string;
+    "unicode-range": string;
+    unicodeRange: string;
+}
+
+declare var CSSFontFaceDescriptors: {
+    prototype: CSSFontFaceDescriptors;
+    new(): CSSFontFaceDescriptors;
 };
 
 /**
@@ -9260,7 +9308,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     vectorEffect: string;
     /**
-     * The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box.
+     * The vertical-align CSS shorthand property sets the vertical alignment of an inline, inline-block, or table-cell box.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/vertical-align)
      */
@@ -11465,7 +11513,7 @@ declare var DOMException: {
  */
 interface DOMImplementation {
     /**
-     * The **`DOMImplementation.createDocument()`** method creates and returns an XMLDocument.
+     * The **`createDocument()`** method of the DOMImplementation interface creates and returns an XMLDocument.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DOMImplementation/createDocument)
      */
@@ -12620,7 +12668,7 @@ interface DocumentEventMap extends GlobalEventHandlersEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document)
  */
-interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
+interface Document extends Node, ARIANotifyMixin, DocumentOrShadowRoot, FontFaceSource, GlobalEventHandlers, NonElementParentNode, ParentNode, XPathEvaluatorBase {
     /**
      * The **`URL`** read-only property of the Document interface returns the document location as a string.
      *
@@ -12961,13 +13009,13 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     close(): void;
     /**
-     * The **`Document.createAttribute()`** method creates a new attribute node, and returns it. The object created is a node implementing the Attr interface. The DOM does not enforce what sort of attributes can be added to a particular element in this manner.
+     * The **`createAttribute()`** method of the Document interface creates a new attribute node.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createAttribute)
      */
     createAttribute(localName: string): Attr;
     /**
-     * The **`Document.createAttributeNS()`** method creates a new attribute node with the specified namespace URI and qualified name, and returns it. The object created is a node implementing the Attr interface. The DOM does not enforce what sort of attributes can be added to a particular element in this manner.
+     * The **`createAttributeNS()`** method of the Document interface creates a new attribute node with the specified namespace URI and qualified name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createAttributeNS)
      */
@@ -12991,7 +13039,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
      */
     createDocumentFragment(): DocumentFragment;
     /**
-     * In an HTML document, the **`document.createElement()`** method creates the HTML element specified by localName, or an HTMLUnknownElement if localName isn't recognized.
+     * The **`createElement()`** method of the Document interface creates a new HTMLElement that has the specified localName.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createElement)
      */
@@ -13000,7 +13048,7 @@ interface Document extends Node, DocumentOrShadowRoot, FontFaceSource, GlobalEve
     createElement<K extends keyof HTMLElementDeprecatedTagNameMap>(tagName: K, options?: ElementCreationOptions): HTMLElementDeprecatedTagNameMap[K];
     createElement(tagName: string, options?: ElementCreationOptions): HTMLElement;
     /**
-     * Creates an element with the specified namespace URI and qualified name.
+     * The **`createElementNS()`** method of the Document interface creates a new element with the specified namespace URI and qualified name.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/createElementNS)
      */
@@ -13575,7 +13623,7 @@ interface ElementEventMap {
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)
  */
-interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
+interface Element extends Node, ARIAMixin, ARIANotifyMixin, Animatable, ChildNode, NonDocumentTypeChildNode, ParentNode, Slottable {
     /**
      * The **`Element.attributes`** property returns a live collection of all attribute nodes registered to the specified node. It is a NamedNodeMap, not an Array, so it has no Array methods and the Attr nodes' indexes may differ among browsers. To be more specific, attributes is a key/value pair of strings that represents any information regarding that attribute.
      *
@@ -13973,7 +14021,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setPointerCapture(pointerId: number): void;
     /**
-     * The **`toggleAttribute()`** method of the Element interface toggles a Boolean attribute (removing it if it is present and adding it if it is not present) on the given element.
+     * The **`toggleAttribute()`** method of the Element interface toggles a Boolean attribute on the given element, removing it if present and adding it if not present.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/toggleAttribute)
      */
@@ -18490,7 +18538,7 @@ interface HTMLIFrameElement extends HTMLElement {
      */
     height: string;
     /**
-     * The **`loading`** property of the HTMLIFrameElement interface is a string that provides a hint to the user agent indicating whether the iframe should be loaded immediately on page load, or only when it is needed.
+     * The **`loading`** property of the HTMLIFrameElement interface is a string that provides a hint to the browser indicating whether the iframe should be loaded immediately on page load, or only when it is needed.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/loading)
      */
@@ -18633,7 +18681,7 @@ interface HTMLImageElement extends HTMLElement {
      */
     isMap: boolean;
     /**
-     * The **`loading`** property of the HTMLImageElement interface provides a hint to the user agent on how to handle the loading of the image which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the image until it's expected to be needed, rather than immediately during the initial page load. It reflects the <img> element's loading content attribute.
+     * The **`loading`** property of the HTMLImageElement interface provides a hint to the browser on how to handle the loading of the image which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the image until it's expected to be needed, rather than immediately during the initial page load. It reflects the <img> element's loading content attribute.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/loading)
      */
@@ -21912,6 +21960,12 @@ declare var Highlight: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry)
  */
 interface HighlightRegistry {
+    /**
+     * The **`highlightsFromPoint()`** method of the HighlightRegistry interface returns an array of objects representing the custom highlights applied at a specific point within the viewport.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry/highlightsFromPoint)
+     */
+    highlightsFromPoint(x: number, y: number, options?: HighlightsFromPointOptions): HighlightHitResult[];
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
 }
 
@@ -29480,6 +29534,12 @@ interface RTCIceTransport extends EventTarget {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceTransport/statechange_event) */
     onstatechange: ((this: RTCIceTransport, ev: Event) => any) | null;
     /**
+     * The **`role`** read-only property of the RTCIceTransport interface indicates which ICE role the transport is fulfilling: that of the controlling agent, or the agent that is being controlled.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceTransport/role)
+     */
+    readonly role: RTCIceRole;
+    /**
      * The **`state`** read-only property of the RTCIceTransport interface returns the current state of the ICE transport, so you can determine the state of ICE gathering in which the ICE agent currently is operating.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceTransport/state)
@@ -30010,7 +30070,7 @@ interface RTCSctpTransport extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSctpTransport/maxMessageSize)
      */
-    readonly maxMessageSize: number;
+    readonly maxMessageSize: number | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCSctpTransport/statechange_event) */
     onstatechange: ((this: RTCSctpTransport, ev: Event) => any) | null;
     /**
@@ -34945,7 +35005,7 @@ interface SecurityPolicyViolationEvent extends Event {
      */
     readonly blockedURI: string;
     /**
-     * The **`columnNumber`** read-only property of the SecurityPolicyViolationEvent interface is the column number in the document or worker script at which the Content Security Policy (CSP) violation occurred.
+     * The **`columnNumber`** read-only property of the SecurityPolicyViolationEvent interface is the character position in the source file line of the document or worker script at which the Content Security Policy (CSP) violation occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SecurityPolicyViolationEvent/columnNumber)
      */
@@ -38303,6 +38363,7 @@ declare var ViewTransitionTypeSet: {
 interface VisualViewportEventMap {
     "resize": Event;
     "scroll": Event;
+    "scrollend": Event;
 }
 
 /**
@@ -38333,6 +38394,8 @@ interface VisualViewport extends EventTarget {
     onresize: ((this: VisualViewport, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/scroll_event) */
     onscroll: ((this: VisualViewport, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/scrollend_event) */
+    onscrollend: ((this: VisualViewport, ev: Event) => any) | null;
     /**
      * The **`pageLeft`** read-only property of the VisualViewport interface returns the x coordinate of the left edge of the visual viewport relative to the initial containing block origin, in CSS pixels, or 0 if current document is not fully active.
      *
@@ -41169,12 +41232,6 @@ declare var WebTransportBidirectionalStream: {
  */
 interface WebTransportDatagramDuplexStream {
     /**
-     * The **`incomingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for incoming chunks of data — this is the maximum size, in chunks, that the incoming ReadableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark)
-     */
-    incomingHighWaterMark: number;
-    /**
      * The **`incomingMaxAge`** property of the WebTransportDatagramDuplexStream interface gets or sets the maximum age for incoming datagrams, in milliseconds.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
@@ -41186,12 +41243,6 @@ interface WebTransportDatagramDuplexStream {
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/maxDatagramSize)
      */
     readonly maxDatagramSize: number;
-    /**
-     * The **`outgoingHighWaterMark`** property of the WebTransportDatagramDuplexStream interface gets or sets the high water mark for outgoing chunks of data — this is the maximum size, in chunks, that the outgoing WritableStream's internal queue can reach before it is considered full. See Internal queues and queuing strategies for more information.
-     *
-     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
-     */
-    outgoingHighWaterMark: number;
     /**
      * The **`outgoingMaxAge`** property of the WebTransportDatagramDuplexStream interface gets or sets the maximum age for outgoing datagrams, in milliseconds.
      *
@@ -44421,6 +44472,7 @@ type AlphaOption = "discard" | "keep";
 type AnimationPlayState = "finished" | "idle" | "paused" | "running";
 type AnimationReplaceState = "active" | "persisted" | "removed";
 type AppendMode = "segments" | "sequence";
+type AriaNotifyPriority = "high" | "normal";
 type AttestationConveyancePreference = "direct" | "enterprise" | "indirect" | "none";
 type AudioContextLatencyCategory = "balanced" | "interactive" | "playback";
 type AudioContextState = "closed" | "interrupted" | "running" | "suspended";

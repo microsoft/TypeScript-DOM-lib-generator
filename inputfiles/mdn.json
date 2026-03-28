@@ -3800,69 +3800,64 @@
     "summary": "The CryptoKeyPair dictionary of the Web Crypto API represents a key pair for an asymmetric cryptography algorithm, also known as a public-key algorithm."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport",
     "pageType": "web-api-interface",
-    "summary": "The CSPViolationReportBody interface is an extension of the Reporting API that represents the body of a Content Security Policy (CSP) violation report."
+    "summary": "The CSPViolationReport dictionary of the Reporting API represents a report that is generated when a document violates its Content Security Policy (CSP)."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/blockedURL",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/blockedURL",
     "pageType": "web-api-instance-property",
-    "summary": "The blockedURL read-only property of the CSPViolationReportBody interface is a string value that represents the resource that was blocked because it violates a Content Security Policy (CSP)."
+    "summary": "The blockedURL property of the CSPViolationReport dictionary is a string value that represents the resource that was blocked because it violates a Content Security Policy (CSP)."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/columnNumber",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/columnNumber",
     "pageType": "web-api-instance-property",
-    "summary": "The columnNumber read-only property of the CSPViolationReportBody interface indicates the column number in the source file that triggered the Content Security Policy (CSP) violation."
+    "summary": "The columnNumber property of the CSPViolationReport dictionary indicates the character position in the source file line that triggered the Content Security Policy (CSP) violation."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/disposition",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/disposition",
     "pageType": "web-api-instance-property",
-    "summary": "The disposition read-only property of the CSPViolationReportBody interface indicates whether the user agent is configured to enforce Content Security Policy (CSP) violations or only report them."
+    "summary": "The disposition property of the CSPViolationReport dictionary indicates whether the user agent is configured to enforce Content Security Policy (CSP) violations or only report them."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/documentURL",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/documentURL",
     "pageType": "web-api-instance-property",
-    "summary": "The documentURL read-only property of the CSPViolationReportBody interface is a string that represents the URL of the document or worker that violated the Content Security Policy (CSP)."
+    "summary": "The documentURL property of the CSPViolationReport dictionary is a string that represents the URL of the document or worker that violated the Content Security Policy (CSP)."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/effectiveDirective",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/effectiveDirective",
     "pageType": "web-api-instance-property",
-    "summary": "The effectiveDirective read-only property of the CSPViolationReportBody interface is a string that represents the effective Content Security Policy (CSP) directive that was violated."
+    "summary": "The effectiveDirective property of the CSPViolationReport dictionary is a string that represents the effective Content Security Policy (CSP) directive that was violated."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/lineNumber",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/lineNumber",
     "pageType": "web-api-instance-property",
-    "summary": "The lineNumber read-only property of the CSPViolationReportBody interface indicates the line number in the source file that triggered the Content Security Policy (CSP) violation."
+    "summary": "The lineNumber property of the CSPViolationReport dictionary indicates the line number in the source file where the Content Security Policy (CSP) violation was triggered."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/originalPolicy",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/originalPolicy",
     "pageType": "web-api-instance-property",
-    "summary": "The originalPolicy read-only property of the CSPViolationReportBody interface is a string that represents the Content Security Policy (CSP) whose enforcement uncovered the violation."
+    "summary": "The originalPolicy property of the CSPViolationReport dictionary is a string that represents the Content Security Policy (CSP) whose enforcement uncovered the violation."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/referrer",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/referrer",
     "pageType": "web-api-instance-property",
-    "summary": "The referrer read-only property of the CSPViolationReportBody interface is a string that represents the URL of the referring page of the resource who's Content Security Policy (CSP) was violated."
+    "summary": "The referrer property of the CSPViolationReport dictionary is a string that represents the URL of the referring page of the resource who's Content Security Policy (CSP) was violated."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/sample",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/sample",
     "pageType": "web-api-instance-property",
-    "summary": "The sample read-only property of the CSPViolationReportBody interface is a string that contains a part of the resource that violated the Content Security Policy (CSP)."
+    "summary": "The sample property of the CSPViolationReport dictionary is a string that contains a part of the resource that violated the Content Security Policy (CSP)."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/sourceFile",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/sourceFile",
     "pageType": "web-api-instance-property",
-    "summary": "The sourceFile read-only property of the CSPViolationReportBody interface indicates the URL of the source file that violated the Content Security Policy (CSP)."
+    "summary": "The sourceFile property of the CSPViolationReport dictionary indicates the URL of the source file that violated the Content Security Policy (CSP)."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/statusCode",
+    "mdn_url": "/en-US/docs/Web/API/CSPViolationReport/statusCode",
     "pageType": "web-api-instance-property",
-    "summary": "The statusCode read-only property of the CSPViolationReportBody interface is a number representing the HTTP status code of the response to the request that triggered a Content Security Policy (CSP) violation (when loading a window or worker)."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/CSPViolationReportBody/toJSON",
-    "pageType": "web-api-instance-method",
-    "summary": "The toJSON() method of the CSPViolationReportBody interface is a serializer, which returns a JSON representation of the CSPViolationReportBody object."
+    "summary": "The statusCode property of the CSPViolationReport dictionary is a number representing the HTTP status code of the response to the request that triggered a Content Security Policy (CSP) violation (when loading a window or worker)."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSS",
@@ -4597,7 +4592,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/to",
     "pageType": "web-api-instance-method",
-    "summary": "The to() method of the\nCSSNumericValue interface converts a numeric value from one unit to\nanother."
+    "summary": "The to() method of the CSSNumericValue interface converts a numeric value from one unit to another."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSNumericValue/toSum",
@@ -5362,7 +5357,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/CustomElementRegistry/whenDefined",
     "pageType": "web-api-instance-method",
-    "summary": "The whenDefined() method of the\nCustomElementRegistry interface returns a Promise that\nresolves when the named element is defined."
+    "summary": "The whenDefined() method of the CustomElementRegistry interface returns a Promise that resolves when the named element is defined."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CustomEvent",
@@ -5680,44 +5675,9 @@
     "summary": "The updateInkTrailStartPoint() method of the DelegatedInkTrailPresenter interface indicates which PointerEvent was used as the last rendering point for the current frame, allowing the OS-level compositor to render a delegated ink trail ahead of the next pointer event being dispatched."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody",
+    "mdn_url": "/en-US/docs/Web/API/DeprecationReport",
     "pageType": "web-api-interface",
-    "summary": "The DeprecationReportBody interface of the Reporting API represents the body of a deprecation report."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/anticipatedRemoval",
-    "pageType": "web-api-instance-property",
-    "summary": "The anticipatedRemoval read-only property of the DeprecationReportBody interface returns the date that the browser version which removes the feature will ship. This value can be used to prioritize warnings. If this property returns null because the date is unknown, then the deprecation should be considered low priority."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/columnNumber",
-    "pageType": "web-api-instance-property",
-    "summary": "The columnNumber read-only property of the DeprecationReportBody interface returns the line in the source file in which the deprecated feature was used."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/id",
-    "pageType": "web-api-instance-property",
-    "summary": "The id read-only property of the DeprecationReportBody interface returns a string representing the feature or API that is deprecated. This can be used to group or count related reports."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/lineNumber",
-    "pageType": "web-api-instance-property",
-    "summary": "The lineNumber read-only property of the DeprecationReportBody interface returns the line in the source file in which the deprecated feature was used."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/message",
-    "pageType": "web-api-instance-property",
-    "summary": "The message read-only property of the DeprecationReportBody interface returns a human-readable description of the deprecation. This typically matches the message a browser will display in its DevTools console regarding a deprecated feature."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/sourceFile",
-    "pageType": "web-api-instance-property",
-    "summary": "The sourceFile read-only property of the DeprecationReportBody interface returns the path to the source file where the deprecated feature was used."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/DeprecationReportBody/toJSON",
-    "pageType": "web-api-instance-method",
-    "summary": "The toJSON() method of the DeprecationReportBody interface is a serializer, and returns a JSON representation of the InterventionReportBody object."
+    "summary": "The DeprecationReport dictionary of the Reporting API represents a deprecation report."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Device_Memory_API",
@@ -6057,12 +6017,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/createAttribute",
     "pageType": "web-api-instance-method",
-    "summary": "The Document.createAttribute() method creates a new\nattribute node, and returns it. The object created is a node implementing the\nAttr interface. The DOM does not enforce what sort of attributes can be\nadded to a particular element in this manner."
+    "summary": "The createAttribute() method of the Document interface creates a new attribute node."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/createAttributeNS",
     "pageType": "web-api-instance-method",
-    "summary": "The Document.createAttributeNS() method creates a new attribute node\nwith the specified namespace URI and qualified name, and returns it.\nThe object created is a node implementing the\nAttr interface. The DOM does not enforce what sort of attributes can be\nadded to a particular element in this manner."
+    "summary": "The createAttributeNS() method of the Document interface creates a new attribute node with the specified namespace URI and qualified name."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/createCDATASection",
@@ -6082,12 +6042,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Document/createElement",
     "pageType": "web-api-instance-method",
-    "summary": "In an HTML document, the document.createElement() method creates the HTML element specified by localName, or an HTMLUnknownElement if localName isn't recognized."
+    "summary": "The createElement() method of the Document interface creates a new HTMLElement that has the specified localName."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/createElementNS",
     "pageType": "web-api-instance-method",
-    "summary": "Creates an element with the specified namespace URI and qualified name."
+    "summary": "The createElementNS() method of the Document interface creates a new element with the specified namespace URI and qualified name."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Document/createEvent",
@@ -6852,7 +6812,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/DOMImplementation/createDocument",
     "pageType": "web-api-instance-method",
-    "summary": "The DOMImplementation.createDocument() method creates and\nreturns an XMLDocument."
+    "summary": "The createDocument() method of the DOMImplementation interface creates and returns an XMLDocument."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DOMImplementation/createDocumentType",
@@ -8612,7 +8572,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/toggleAttribute",
     "pageType": "web-api-instance-method",
-    "summary": "The toggleAttribute() method of the\nElement interface toggles a Boolean attribute (removing it if it is\npresent and adding it if it is not present) on the given element."
+    "summary": "The toggleAttribute() method of the Element interface toggles a Boolean attribute on the given element, removing it if present and adding it if not present."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/touchcancel_event",
@@ -12325,6 +12285,11 @@
     "summary": "The HTMLAnchorElement interface represents hyperlink elements and provides special properties and methods (beyond those of the regular HTMLElement object interface that they inherit from) for manipulating the layout and presentation of such elements. This interface corresponds to <a> element; not to be confused with <link>, which is represented by HTMLLinkElement."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/HTMLAnchorElement/attributionSourceId",
+    "pageType": "web-api-instance-property",
+    "summary": "The attributionSourceId property of the HTMLAnchorElement interface gets and sets the attributionsourceid HTML attribute on an <a> element."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/HTMLAnchorElement/attributionSrc",
     "pageType": "web-api-instance-property",
     "summary": "The attributionSrc property of the HTMLAnchorElement interface gets and sets the attributionsrc attribute on an <a> element programmatically, reflecting the value of that attribute. attributionsrc specifies that you want the browser to send an Attribution-Reporting-Eligible header. On the server-side this is used to trigger sending an Attribution-Reporting-Register-Source header in the response, to register of a navigation-based attribution source."
@@ -13602,7 +13567,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/loading",
     "pageType": "web-api-instance-property",
-    "summary": "The loading property of the HTMLIFrameElement interface is a string that provides a hint to the user agent indicating whether the iframe should be loaded immediately on page load, or only when it is needed."
+    "summary": "The loading property of the HTMLIFrameElement interface is a string that provides a hint to the browser indicating whether the iframe should be loaded immediately on page load, or only when it is needed."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLIFrameElement/name",
@@ -13717,7 +13682,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/loading",
     "pageType": "web-api-instance-property",
-    "summary": "The loading property of the HTMLImageElement interface provides a hint to the user agent on how to handle the loading of the image which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the image until it's expected to be needed, rather than immediately during the initial page load. It reflects the <img> element's loading content attribute."
+    "summary": "The loading property of the HTMLImageElement interface provides a hint to the browser on how to handle the loading of the image which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the image until it's expected to be needed, rather than immediately during the initial page load. It reflects the <img> element's loading content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLImageElement/longDesc",
@@ -14400,6 +14365,11 @@
     "summary": "The HTMLMediaElement.fastSeek() method quickly seeks the\nmedia to the new time with precision tradeoff."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/getStartDate",
+    "pageType": "web-api-instance-method",
+    "summary": "The getStartDate() method of the HTMLMediaElement interface returns a new Date object representing the real-world date and time corresponding to the beginning of the media."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/load",
     "pageType": "web-api-instance-method",
     "summary": "The HTMLMediaElement method\nload() resets the media element to its initial state and\nbegins the process of selecting a media source and loading the media in preparation\nfor playback to begin at the beginning."
@@ -14413,6 +14383,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/loadedmetadata_event",
     "pageType": "web-api-event",
     "summary": "The loadedmetadata event is fired when the metadata has been loaded."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/loading",
+    "pageType": "web-api-instance-property",
+    "summary": "The loading property of the HTMLMediaElement interface provides a hint to the browser on how to handle the loading of the media which is currently outside the window's visual viewport. This helps to optimize the loading of the document's contents by postponing loading the media until it's expected to be needed, rather than immediately during the initial page load. It reflects the <audio> element's loading content attribute or the <video> element's loading content attribute."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLMediaElement/loadstart_event",
@@ -14928,6 +14903,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLOutputElement/htmlFor",
     "pageType": "web-api-instance-property",
     "summary": "The read-only htmlFor property of the HTMLOutputElement returns a live DOMTokenList object containing a list of ids of those elements contributing input values to (or otherwise affected) the calculation. It reflects the <output> element's for content attribute."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLOutputElement/HTMLOutputElement",
+    "pageType": "web-api-constructor",
+    "summary": "The HTMLOutputElement() constructor creates a new HTMLOutputElement object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLOutputElement/labels",
@@ -16990,9 +16970,9 @@
     "summary": "The InstallEvent() constructor creates a new InstallEvent object."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/IntegrityViolationReportBody",
+    "mdn_url": "/en-US/docs/Web/API/IntegrityViolationReport",
     "pageType": "web-api-interface",
-    "summary": "The IntegrityViolationReportBody dictionary is an extension of the Reporting API that represents the body of an Integrity Policy violation report."
+    "summary": "The IntegrityViolationReport dictionary of the Reporting API represents a report that is generated when a document violates its Integrity Policy."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/InterestEvent",
@@ -17125,39 +17105,9 @@
     "summary": "The time read-only property of the IntersectionObserverEntry interface is a DOMHighResTimeStamp that indicates the time at which the intersection change occurred relative to the time at which the document was created."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody",
+    "mdn_url": "/en-US/docs/Web/API/InterventionReport",
     "pageType": "web-api-interface",
-    "summary": "The InterventionReportBody interface of the Reporting API represents the body of an intervention report."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody/columnNumber",
-    "pageType": "web-api-instance-property",
-    "summary": "The columnNumber read-only property of the InterventionReportBody interface returns the line in the source file in which the intervention occurred."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody/id",
-    "pageType": "web-api-instance-property",
-    "summary": "The id read-only property of the InterventionReportBody interface returns a string identifying the intervention that generated the report. This can be used to group reports."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody/lineNumber",
-    "pageType": "web-api-instance-property",
-    "summary": "The lineNumber read-only property of the InterventionReportBody interface returns the line in the source file in which the intervention occurred."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody/message",
-    "pageType": "web-api-instance-property",
-    "summary": "The message read-only property of the InterventionReportBody interface returns a human-readable description of the intervention, including information such as how the intervention could be avoided. This typically matches the message a browser will display in its DevTools console when an intervention is imposed, if one is available."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody/sourceFile",
-    "pageType": "web-api-instance-property",
-    "summary": "The sourceFile read-only property of the InterventionReportBody interface returns the path to the source file where the intervention occurred."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/InterventionReportBody/toJSON",
-    "pageType": "web-api-instance-method",
-    "summary": "The toJSON() method of the InterventionReportBody interface is a serializer, and returns a JSON representation of the InterventionReportBody object."
+    "summary": "The InterventionReport dictionary of the Reporting API represents an intervention report."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Invoker_Commands_API",
@@ -17423,6 +17373,16 @@
     "mdn_url": "/en-US/docs/Web/API/LargestContentfulPaint/loadTime",
     "pageType": "web-api-instance-property",
     "summary": "The loadTime read-only property of the LargestContentfulPaint interface returns the time that the element was loaded."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/LargestContentfulPaint/paintTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The paintTime read-only property of the LargestContentfulPaint interface returns the timestamp when the rendering phase ended and the paint phase started."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/LargestContentfulPaint/presentationTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The presentationTime read-only property of the LargestContentfulPaint interface returns the timestamp when the painted pixels were actually drawn on the screen."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/LargestContentfulPaint/renderTime",
@@ -20557,7 +20517,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Node/compareDocumentPosition",
     "pageType": "web-api-instance-method",
-    "summary": "The compareDocumentPosition() method of the Node interface\nreports the position of its argument node relative to the node on which it is called."
+    "summary": "The compareDocumentPosition() method of the Node interface reports the position of its argument node relative to the node on which it is called."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Node/contains",
@@ -20835,6 +20795,11 @@
     "summary": "The maxActions read-only static property of the\nNotification interface returns the maximum number of actions supported by\nthe device and the User Agent. Effectively, this is the maximum number of elements in\nNotification.actions array which will be respected by the User Agent."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/Notification/navigate",
+    "pageType": "web-api-instance-property",
+    "summary": "The navigate read-only property of the Notification interface contains the URL the user agent will navigate to when the user activates the notification."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/Notification/Notification",
     "pageType": "web-api-constructor",
     "summary": "The Notification() constructor creates a new Notification object instance, which represents a user notification."
@@ -20912,12 +20877,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Notifications_API",
     "pageType": "web-api-overview",
-    "summary": "The Notifications API allows web pages to control the display of system notifications to the end user. These are outside the top-level browsing context viewport, so therefore can be displayed even when the user has switched tabs or moved to a different app. The API is designed to be compatible with existing notification systems, across different platforms."
+    "summary": "The Notifications API allows web pages to control the display of system notifications to the end user.\nThese are outside the top-level browsing context viewport, so therefore can be displayed even when the user has switched tabs or moved to a different app.\nThe API is designed to be compatible with existing notification systems, across different platforms."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API",
     "pageType": "guide",
-    "summary": "The Notifications API lets a web page or app send notifications that are displayed outside the page at the system level; this lets web apps send information to a user even if the application is idle or in the background. This article looks at the basics of using this API in your own apps."
+    "summary": "The Notifications API lets a web page or app send notifications that are displayed outside the page at the system level; this lets web apps send information to a user even if the application is idle or in the background.\nThis article looks at the basics of using this API in your own apps."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/NotRestoredReasonDetails",
@@ -21995,6 +21960,16 @@
     "summary": "The naturalWidth read-only property of the PerformanceElementTiming interface returns the intrinsic width of the image element."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceElementTiming/paintTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The paintTime read-only property of the PerformanceElementTiming interface returns the timestamp when the rendering phase ended and the paint phase started."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceElementTiming/presentationTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The presentationTime read-only property of the PerformanceElementTiming interface returns the timestamp when the element was actually drawn on the screen."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/PerformanceElementTiming/renderTime",
     "pageType": "web-api-instance-property",
     "summary": "The renderTime read-only property of the PerformanceElementTiming interface returns the render time of the associated element."
@@ -22088,6 +22063,16 @@
     "mdn_url": "/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/firstUIEventTimestamp",
     "pageType": "web-api-instance-property",
     "summary": "The firstUIEventTimestamp read-only property of the PerformanceLongAnimationFrameTiming interface returns a DOMHighResTimeStamp indicating the time of the first UI event — such as a mouse or keyboard event — to be processed during the current animation frame. Note this timestamp can be before the start of this animation frame if there was a delay between the event happening and it being processed."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/paintTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The paintTime read-only property of the PerformanceLongAnimationFrameTiming interface returns the timestamp when the rendering phase ended and the animation frame started."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/presentationTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The presentationTime read-only property of the PerformanceLongAnimationFrameTiming interface returns the timestamp when the UI update was actually drawn on the screen."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/renderStart",
@@ -22298,6 +22283,16 @@
     "mdn_url": "/en-US/docs/Web/API/PerformancePaintTiming",
     "pageType": "web-api-interface",
     "summary": "The PerformancePaintTiming interface provides timing information about \"paint\" (also called \"render\") operations during web page construction. \"Paint\" refers to conversion of the render tree to on-screen pixels."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformancePaintTiming/paintTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The paintTime read-only property of the PerformancePaintTiming interface returns the timestamp when the rendering phase ended and the paint phase started."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformancePaintTiming/presentationTime",
+    "pageType": "web-api-instance-property",
+    "summary": "The presentationTime read-only property of the PerformancePaintTiming interface returns the timestamp when the painted pixels were actually drawn on the screen."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PerformancePaintTiming/toJSON",
@@ -23930,36 +23925,6 @@
     "summary": "The watchAvailability() method of the RemotePlayback interface watches the list of available remote playback devices and returns a Promise that resolves with the callbackId of a remote playback device."
   },
   {
-    "mdn_url": "/en-US/docs/Web/API/Report",
-    "pageType": "web-api-interface",
-    "summary": "The Report interface of the Reporting API represents a single report."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Report/body",
-    "pageType": "web-api-instance-property",
-    "summary": "The body read-only property of the Report\ninterface returns the body of the report, which is a ReportBody object\ncontaining the detailed report information."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Report/type",
-    "pageType": "web-api-instance-property",
-    "summary": "The type read-only property of the Report\ninterface returns the type of report generated, e.g., deprecation or\nintervention."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/Report/url",
-    "pageType": "web-api-instance-property",
-    "summary": "The url read-only property of the Report\ninterface returns the URL of the document that generated the report."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/ReportBody",
-    "pageType": "web-api-interface",
-    "summary": "The ReportBody interface of the Reporting API represents the body of a report. Individual report types inherit from this interface, adding specific attributes relevant to the particular report."
-  },
-  {
-    "mdn_url": "/en-US/docs/Web/API/ReportBody/toJSON",
-    "pageType": "web-api-instance-method",
-    "summary": "The toJSON() method of the ReportBody interface is a serializer, and returns a JSON representation of the ReportBody object."
-  },
-  {
     "mdn_url": "/en-US/docs/Web/API/Reporting_API",
     "pageType": "web-api-overview",
     "summary": "The Reporting API provides a generic reporting mechanism for web applications to use to make reports available based on various platform features (for example Content Security Policy, Permissions-Policy, or feature deprecation reports) in a consistent manner."
@@ -23972,22 +23937,22 @@
   {
     "mdn_url": "/en-US/docs/Web/API/ReportingObserver/disconnect",
     "pageType": "web-api-instance-method",
-    "summary": "The disconnect() method of the\nReportingObserver interface stops a reporting observer that had\npreviously started observing from collecting reports."
+    "summary": "The disconnect() method of the ReportingObserver interface stops a reporting observer that had previously started observing from collecting reports."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ReportingObserver/observe",
     "pageType": "web-api-instance-method",
-    "summary": "The observe() method of the\nReportingObserver interface instructs a reporting observer to start\ncollecting reports in its report queue."
+    "summary": "The observe() method of the ReportingObserver interface instructs a reporting observer to start collecting reports in its report queue."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ReportingObserver/ReportingObserver",
     "pageType": "web-api-constructor",
-    "summary": "The ReportingObserver() constructor of the Reporting API creates a new\nReportingObserver object instance, which can be used to collect and\naccess reports."
+    "summary": "The ReportingObserver() constructor of the Reporting API creates a new ReportingObserver object instance, which can be used to collect and access reports."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ReportingObserver/takeRecords",
     "pageType": "web-api-instance-method",
-    "summary": "The takeRecords() method of the\nReportingObserver interface returns the current list of reports contained\nin the observer's report queue, and empties the queue."
+    "summary": "The takeRecords() method of the ReportingObserver interface returns the current list of reports contained in the observer's report queue, and empties the queue."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Request",
@@ -26932,7 +26897,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SecurityPolicyViolationEvent/columnNumber",
     "pageType": "web-api-instance-property",
-    "summary": "The columnNumber read-only property of the SecurityPolicyViolationEvent interface is the column number in the document or worker script at which the Content Security Policy (CSP) violation occurred."
+    "summary": "The columnNumber read-only property of the SecurityPolicyViolationEvent interface is the character position in the source file line of the document or worker script at which the Content Security Policy (CSP) violation occurred."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SecurityPolicyViolationEvent/disposition",
@@ -37562,7 +37527,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Window/structuredClone",
     "pageType": "web-api-instance-method",
-    "summary": "The structuredClone() method of the Window interface creates a deep clone of a given value using the structured clone algorithm."
+    "summary": "The structuredClone() method of the Window interface creates a deep clone of a value using the structured clone algorithm."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Window/toolbar",
@@ -42396,8 +42361,8 @@
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/vertical-align",
-    "pageType": "css-property",
-    "summary": "The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box."
+    "pageType": "css-shorthand-property",
+    "summary": "The vertical-align CSS shorthand property sets the vertical alignment of an inline, inline-block, or table-cell box."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-timeline",
