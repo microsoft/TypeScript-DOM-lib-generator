@@ -1,0 +1,11 @@
+// https://w3c.github.io/aria/
+
+removals {
+  // Gecko only as of 2026-03
+  interface Document {
+    includes ARIANotifyMixin
+  }
+  interface Element {
+    includes ARIANotifyMixin
+  }
+}

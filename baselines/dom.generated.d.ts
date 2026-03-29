@@ -1215,6 +1215,15 @@ interface HashChangeEventInit extends EventInit {
     oldURL?: string;
 }
 
+interface HighlightHitResult {
+    highlight?: Highlight;
+    ranges?: AbstractRange[];
+}
+
+interface HighlightsFromPointOptions {
+    shadowRoots?: ShadowRoot[];
+}
+
 interface HkdfParams extends Algorithm {
     hash: HashAlgorithmIdentifier;
     info: BufferSource;
@@ -5370,6 +5379,36 @@ declare var CSSCounterStyleRule: {
 };
 
 /**
+ * The **`CSSFontFaceDescriptors`** interface represents a CSS declaration block for an @font-face at-rule.
+ *
+ * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceDescriptors)
+ */
+interface CSSFontFaceDescriptors extends CSSStyleDeclarationBase {
+    "font-display": string;
+    "font-family": string;
+    "font-feature-settings": string;
+    "font-stretch": string;
+    "font-style": string;
+    "font-weight": string;
+    fontDisplay: string;
+    fontFamily: string;
+    fontFeatureSettings: string;
+    fontStretch: string;
+    fontStyle: string;
+    fontWeight: string;
+    "size-adjust": string;
+    sizeAdjust: string;
+    src: string;
+    "unicode-range": string;
+    unicodeRange: string;
+}
+
+declare var CSSFontFaceDescriptors: {
+    prototype: CSSFontFaceDescriptors;
+    new(): CSSFontFaceDescriptors;
+};
+
+/**
  * The **`CSSFontFaceRule`** interface represents an @font-face at-rule.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule)
@@ -5380,7 +5419,7 @@ interface CSSFontFaceRule extends CSSRule {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSFontFaceRule/style)
      */
-    get style(): CSSStyleDeclaration;
+    get style(): CSSFontFaceDescriptors;
     set style(cssText: string);
 }
 
@@ -21912,6 +21951,12 @@ declare var Highlight: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry)
  */
 interface HighlightRegistry {
+    /**
+     * The **`highlightsFromPoint()`** method of the HighlightRegistry interface returns an array of objects representing the custom highlights applied at a specific point within the viewport.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HighlightRegistry/highlightsFromPoint)
+     */
+    highlightsFromPoint(x: number, y: number, options?: HighlightsFromPointOptions): HighlightHitResult[];
     forEach(callbackfn: (value: Highlight, key: string, parent: HighlightRegistry) => void, thisArg?: any): void;
 }
 
@@ -29479,6 +29524,12 @@ interface RTCIceTransport extends EventTarget {
     onselectedcandidatepairchange: ((this: RTCIceTransport, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceTransport/statechange_event) */
     onstatechange: ((this: RTCIceTransport, ev: Event) => any) | null;
+    /**
+     * The **`role`** read-only property of the RTCIceTransport interface indicates which ICE role the transport is fulfilling: that of the controlling agent, or the agent that is being controlled.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCIceTransport/role)
+     */
+    readonly role: RTCIceRole;
     /**
      * The **`state`** read-only property of the RTCIceTransport interface returns the current state of the ICE transport, so you can determine the state of ICE gathering in which the ICE agent currently is operating.
      *
@@ -38303,6 +38354,7 @@ declare var ViewTransitionTypeSet: {
 interface VisualViewportEventMap {
     "resize": Event;
     "scroll": Event;
+    "scrollend": Event;
 }
 
 /**
@@ -38333,6 +38385,8 @@ interface VisualViewport extends EventTarget {
     onresize: ((this: VisualViewport, ev: Event) => any) | null;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/scroll_event) */
     onscroll: ((this: VisualViewport, ev: Event) => any) | null;
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/VisualViewport/scrollend_event) */
+    onscrollend: ((this: VisualViewport, ev: Event) => any) | null;
     /**
      * The **`pageLeft`** read-only property of the VisualViewport interface returns the x coordinate of the left edge of the visual viewport relative to the initial containing block origin, in CSS pixels, or 0 if current document is not fully active.
      *

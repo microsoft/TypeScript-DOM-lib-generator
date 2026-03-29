@@ -47,7 +47,6 @@
         "RTCCertificateExpiration",
         "RTCDtlsRole",
         "RTCIceCandidatePairStats",
-        "RTCIceRole",
         "RTCInboundRtpStreamStats",
         "RTCOutboundRtpStreamStats",
         "RTCQualityLimitationReason",
