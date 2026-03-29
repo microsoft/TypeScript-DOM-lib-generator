@@ -44,6 +44,10 @@ interface WebTransportBidirectionalStream {
 interface WebTransportDatagramDuplexStream {
   // https://github.com/w3c/webtransport/pull/638 removed this but browsers still have this
   property writable type=WritableStream readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/writable"
+
+  // https://github.com/w3c/webtransport/pull/735 removed these but browsers still have them
+  property incomingHighWaterMark type=long mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark"
+  property outgoingHighWaterMark type=long mdnUrl="https://developer.mozilla.org/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark"
 }
 
 // transferable only on WebKit as of 2026-03

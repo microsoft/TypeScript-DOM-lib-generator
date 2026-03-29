@@ -14,3 +14,9 @@ removals {
     member codec // Blink only as of 2024-11
   }
 }
+
+interface RTCSctpTransport {
+  property maxMessageSize {
+    type nullable=#false
+  }
+}
