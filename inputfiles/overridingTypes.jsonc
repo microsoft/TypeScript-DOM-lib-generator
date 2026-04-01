@@ -2923,7 +2923,7 @@
             "BaseKeyframe": {
                 "name": "Keyframe",
                 "overrideIndexSignatures": [
-                    "[property: string]: string | number | null | undefined"
+                    "[property: string]: string | number | null | undefined | CSSStyleValue"
                 ]
             },
             "BasePropertyIndexedKeyframe": {
