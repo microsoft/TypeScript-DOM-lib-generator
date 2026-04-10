@@ -4780,6 +4780,19 @@ declare var GPUBuffer: {
     new(): GPUBuffer;
 };
 
+interface GPUBufferUsage {
+    readonly COPY_DST: GPUFlagsConstant;
+    readonly COPY_SRC: GPUFlagsConstant;
+    readonly INDEX: GPUFlagsConstant;
+    readonly INDIRECT: GPUFlagsConstant;
+    readonly MAP_READ: GPUFlagsConstant;
+    readonly MAP_WRITE: GPUFlagsConstant;
+    readonly QUERY_RESOLVE: GPUFlagsConstant;
+    readonly STORAGE: GPUFlagsConstant;
+    readonly UNIFORM: GPUFlagsConstant;
+    readonly VERTEX: GPUFlagsConstant;
+}
+
 /**
  * The **`GPUCanvasContext`** interface of the WebGPU API represents the WebGPU rendering context of a <canvas> element, returned via an HTMLCanvasElement.getContext() call with a contextType of "webgpu".
  * Available only in secure contexts.

@@ -28,3 +28,16 @@ removals {
     member textureBindingViewDimension // Blink experimental only as of 2026-02
   }
 }
+
+interface GPUBufferUsage noInterfaceObject=#true {
+  property MAP_READ type=GPUFlagsConstant readonly=#true
+  property MAP_WRITE type=GPUFlagsConstant readonly=#true
+  property COPY_SRC type=GPUFlagsConstant readonly=#true
+  property COPY_DST type=GPUFlagsConstant readonly=#true
+  property INDEX type=GPUFlagsConstant readonly=#true
+  property VERTEX type=GPUFlagsConstant readonly=#true
+  property UNIFORM type=GPUFlagsConstant readonly=#true
+  property STORAGE type=GPUFlagsConstant readonly=#true
+  property INDIRECT type=GPUFlagsConstant readonly=#true
+  property QUERY_RESOLVE type=GPUFlagsConstant readonly=#true
+}
