@@ -1553,6 +1553,7 @@ export function emitWebIdl(
 
     emitProperties("var ", "InstanceOnly", namespace);
     emitMethods("function ", "InstanceOnly", namespace, new Set());
+    emitConstants(namespace);
 
     printer.decreaseIndent();
     printer.printLine("}");

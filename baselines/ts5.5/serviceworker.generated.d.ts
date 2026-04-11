@@ -4777,19 +4777,6 @@ declare var GPUBuffer: {
     new(): GPUBuffer;
 };
 
-interface GPUBufferUsage {
-    readonly COPY_DST: GPUFlagsConstant;
-    readonly COPY_SRC: GPUFlagsConstant;
-    readonly INDEX: GPUFlagsConstant;
-    readonly INDIRECT: GPUFlagsConstant;
-    readonly MAP_READ: GPUFlagsConstant;
-    readonly MAP_WRITE: GPUFlagsConstant;
-    readonly QUERY_RESOLVE: GPUFlagsConstant;
-    readonly STORAGE: GPUFlagsConstant;
-    readonly UNIFORM: GPUFlagsConstant;
-    readonly VERTEX: GPUFlagsConstant;
-}
-
 /**
  * The **`GPUCanvasContext`** interface of the WebGPU API represents the WebGPU rendering context of a <canvas> element, returned via an HTMLCanvasElement.getContext() call with a contextType of "webgpu".
  * Available only in secure contexts.
@@ -12783,6 +12770,47 @@ declare var WritableStreamDefaultWriter: {
     prototype: WritableStreamDefaultWriter;
     new<W = any>(stream: WritableStream<W>): WritableStreamDefaultWriter<W>;
 };
+
+declare namespace GPUBufferUsage {
+    readonly MAP_READ: 0x0001;
+    readonly MAP_WRITE: 0x0002;
+    readonly COPY_SRC: 0x0004;
+    readonly COPY_DST: 0x0008;
+    readonly INDEX: 0x0010;
+    readonly VERTEX: 0x0020;
+    readonly UNIFORM: 0x0040;
+    readonly STORAGE: 0x0080;
+    readonly INDIRECT: 0x0100;
+    readonly QUERY_RESOLVE: 0x0200;
+}
+
+declare namespace GPUColorWrite {
+    readonly RED: 0x1;
+    readonly GREEN: 0x2;
+    readonly BLUE: 0x4;
+    readonly ALPHA: 0x8;
+    readonly ALL: 0xF;
+}
+
+declare namespace GPUMapMode {
+    readonly READ: 0x0001;
+    readonly WRITE: 0x0002;
+}
+
+declare namespace GPUShaderStage {
+    readonly VERTEX: 0x1;
+    readonly FRAGMENT: 0x2;
+    readonly COMPUTE: 0x4;
+}
+
+declare namespace GPUTextureUsage {
+    readonly COPY_SRC: 0x01;
+    readonly COPY_DST: 0x02;
+    readonly TEXTURE_BINDING: 0x04;
+    readonly STORAGE_BINDING: 0x08;
+    readonly RENDER_ATTACHMENT: 0x10;
+    readonly TRANSIENT_ATTACHMENT: 0x20;
+}
 
 declare namespace WebAssembly {
     /** The **`WebAssembly.CompileError`** object indicates an error during WebAssembly decoding or validation. */
