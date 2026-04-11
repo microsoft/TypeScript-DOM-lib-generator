@@ -547,6 +547,17 @@ export function emitWebIdl(
     }
   }
 
+  function emitNamespaceConstant(c: Browser.Constant) {
+    emitComments(c, printer.printLine);
+    printer.printLine(`const ${c.name}: ${c.value};`);
+  }
+
+  function emitNamespaceConstants(i: Browser.Interface) {
+    if (i.constants) {
+      mapToArray(i.constants.constant).forEach(emitNamespaceConstant);
+    }
+  }
+
   function matchParamMethodSignature(
     m: Browser.Method,
     expectedMName: string,
@@ -1553,7 +1564,7 @@ export function emitWebIdl(
 
     emitProperties("var ", "InstanceOnly", namespace);
     emitMethods("function ", "InstanceOnly", namespace, new Set());
-    emitConstants(namespace);
+    emitNamespaceConstants(namespace);
 
     printer.decreaseIndent();
     printer.printLine("}");

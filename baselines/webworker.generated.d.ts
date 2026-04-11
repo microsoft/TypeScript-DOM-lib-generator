@@ -14450,44 +14450,44 @@ declare var XMLHttpRequestUpload: {
 };
 
 declare namespace GPUBufferUsage {
-    readonly MAP_READ: 0x0001;
-    readonly MAP_WRITE: 0x0002;
-    readonly COPY_SRC: 0x0004;
-    readonly COPY_DST: 0x0008;
-    readonly INDEX: 0x0010;
-    readonly VERTEX: 0x0020;
-    readonly UNIFORM: 0x0040;
-    readonly STORAGE: 0x0080;
-    readonly INDIRECT: 0x0100;
-    readonly QUERY_RESOLVE: 0x0200;
+    const MAP_READ: 0x0001;
+    const MAP_WRITE: 0x0002;
+    const COPY_SRC: 0x0004;
+    const COPY_DST: 0x0008;
+    const INDEX: 0x0010;
+    const VERTEX: 0x0020;
+    const UNIFORM: 0x0040;
+    const STORAGE: 0x0080;
+    const INDIRECT: 0x0100;
+    const QUERY_RESOLVE: 0x0200;
 }
 
 declare namespace GPUColorWrite {
-    readonly RED: 0x1;
-    readonly GREEN: 0x2;
-    readonly BLUE: 0x4;
-    readonly ALPHA: 0x8;
-    readonly ALL: 0xF;
+    const RED: 0x1;
+    const GREEN: 0x2;
+    const BLUE: 0x4;
+    const ALPHA: 0x8;
+    const ALL: 0xF;
 }
 
 declare namespace GPUMapMode {
-    readonly READ: 0x0001;
-    readonly WRITE: 0x0002;
+    const READ: 0x0001;
+    const WRITE: 0x0002;
 }
 
 declare namespace GPUShaderStage {
-    readonly VERTEX: 0x1;
-    readonly FRAGMENT: 0x2;
-    readonly COMPUTE: 0x4;
+    const VERTEX: 0x1;
+    const FRAGMENT: 0x2;
+    const COMPUTE: 0x4;
 }
 
 declare namespace GPUTextureUsage {
-    readonly COPY_SRC: 0x01;
-    readonly COPY_DST: 0x02;
-    readonly TEXTURE_BINDING: 0x04;
-    readonly STORAGE_BINDING: 0x08;
-    readonly RENDER_ATTACHMENT: 0x10;
-    readonly TRANSIENT_ATTACHMENT: 0x20;
+    const COPY_SRC: 0x01;
+    const COPY_DST: 0x02;
+    const TEXTURE_BINDING: 0x04;
+    const STORAGE_BINDING: 0x08;
+    const RENDER_ATTACHMENT: 0x10;
+    const TRANSIENT_ATTACHMENT: 0x20;
 }
 
 declare namespace WebAssembly {
