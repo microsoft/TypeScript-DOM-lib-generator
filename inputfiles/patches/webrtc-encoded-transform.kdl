@@ -10,6 +10,15 @@ interface RTCEncodedVideoFrame {
   property timestamp type="long long" readonly=#true mdnUrl="https://developer.mozilla.org/docs/Web/API/RTCEncodedVideoFrame/timestamp"
 }
 
+interface RTCRtpScriptTransform {
+  constructor signatureIndex=0 {
+    // WorkerOrWorkerAndParameters has no implementation as of 2026-04
+    param workerOrWorkerAndParameters name="worker" {
+      type Worker
+    }
+  }
+}
+
 removals {
   dictionary RTCEncodedAudioFrameMetadata {
     member audioLevel // No implementation as of 2025-05

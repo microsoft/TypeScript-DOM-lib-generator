@@ -29909,7 +29909,7 @@ interface RTCRtpScriptTransform {
 
 declare var RTCRtpScriptTransform: {
     prototype: RTCRtpScriptTransform;
-    new(worker: Worker, options?: any, transfer?: any[]): RTCRtpScriptTransform;
+    new(workerOrWorkerAndParameters: Worker, options?: any, transfer?: any[]): RTCRtpScriptTransform;
 };
 
 /**
