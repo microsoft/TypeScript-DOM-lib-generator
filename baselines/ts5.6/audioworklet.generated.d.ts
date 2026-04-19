@@ -1665,7 +1665,7 @@ declare namespace WebAssembly {
 
     var Module: {
         prototype: Module;
-        new(bytes: BufferSource, options?: WebAssemblyCompileOptions): Module;
+        new(bytes: AllowSharedBufferSource, options?: WebAssemblyCompileOptions): Module;
         /**
          * The WebAssembly.**`Module.customSections()`** static method returns a copy of the contents of all custom sections in the given module with the given string name.
          *
@@ -1816,12 +1816,12 @@ declare namespace WebAssembly {
     type ValueType = keyof ValueTypeMap;
     var JSTag: Tag;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/compile_static) */
-    function compile(bytes: BufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
+    function compile(bytes: AllowSharedBufferSource, options?: WebAssemblyCompileOptions): Promise<Module>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/instantiate_static) */
-    function instantiate(bytes: BufferSource, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
+    function instantiate(bytes: AllowSharedBufferSource, importObject?: Imports, options?: WebAssemblyCompileOptions): Promise<WebAssemblyInstantiatedSource>;
     function instantiate(moduleObject: Module, importObject?: Imports): Promise<Instance>;
     /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/validate_static) */
-    function validate(bytes: BufferSource, options?: WebAssemblyCompileOptions): boolean;
+    function validate(bytes: AllowSharedBufferSource, options?: WebAssemblyCompileOptions): boolean;
 }
 
 /** The **`console`** object provides access to the debugging console (e.g., the Web console in Firefox). */
@@ -2032,6 +2032,6 @@ type ReadableStreamController<T> = ReadableStreamDefaultController<T> | Readable
 type ReadableStreamReadResult<T> = ReadableStreamReadValueResult<T> | ReadableStreamReadDoneResult<T>;
 type ReadableStreamReader<T> = ReadableStreamDefaultReader<T> | ReadableStreamBYOBReader;
 type Transferable = MessagePort | ReadableStream | WritableStream | TransformStream | ArrayBuffer;
-type CompressionFormat = "deflate" | "deflate-raw" | "gzip";
+type CompressionFormat = "brotli" | "deflate" | "deflate-raw" | "gzip";
 type ReadableStreamReaderMode = "byob";
 type ReadableStreamType = "bytes";
