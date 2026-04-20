@@ -16,6 +16,8 @@ npm install @typescript/lib-dom@npm:@types/web --save-dev
 yarn add @typescript/lib-dom@npm:@types/web --dev
 ```
 
+If you are using TypeScript 6.0+, set [`libReplacement`](https://www.typescriptlang.org/tsconfig/#libReplacement) to `true` in your `tsconfig.json`.
+
 That's all. 
 
 <details>

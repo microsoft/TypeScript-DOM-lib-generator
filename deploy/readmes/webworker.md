@@ -16,6 +16,8 @@ npm install @typescript/lib-webworker@npm:@types/webworker --save-dev
 yarn add @typescript/lib-webworker@npm:@types/webworker --dev
 ```
 
+If you are using TypeScript 6.0+, set [`libReplacement`](https://www.typescriptlang.org/tsconfig/#libReplacement) to `true` in your `tsconfig.json`.
+
 That's all. 
 
 <details>
