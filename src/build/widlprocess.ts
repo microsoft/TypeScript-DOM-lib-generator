@@ -413,6 +413,7 @@ function convertNamespace(
 ) {
   const result: Browser.Interface = {
     name: namespace.name,
+    constants: { constant: {} },
     namespace: true,
     constructor: { signature: [] },
     methods: { method: {} },
@@ -420,7 +421,15 @@ function convertNamespace(
     exposed: getExtAttrConcatenated(namespace.extAttrs, "Exposed"),
   };
   for (const member of namespace.members) {
-    if (member.type === "attribute") {
+    if (member.type === "const") {
+      result.constants!.constant[member.name] = convertConstantMember(member);
+      addComments(
+        result.constants!.constant[member.name],
+        commentMap,
+        namespace.name,
+        member.name,
+      );
+    } else if (member.type === "attribute") {
       result.properties!.property[member.name] = convertAttribute(
         member,
         result.exposed,
