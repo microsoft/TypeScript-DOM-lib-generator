@@ -213,6 +213,26 @@
                                 "get textContent(): string",
                                 "set textContent(value: string | null)"
                             ]
+                        },
+                        "setHTML": {
+                            "name": "setHTML",
+                            "mdnUrl": "https://developer.mozilla.org/docs/Web/API/Element/setHTML",
+                            "signature": [
+                                {
+                                    "param": [
+                                        {
+                                            "name": "html",
+                                            "type": "DOMString"
+                                        },
+                                        {
+                                            "name": "options",
+                                            "type": "SetHTMLOptions",
+                                            "optional": true
+                                        }
+                                    ],
+                                    "type": "undefined"
+                                }
+                            ]
                         }
                     }
                 },
