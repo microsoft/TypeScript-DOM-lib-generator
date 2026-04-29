@@ -2748,6 +2748,10 @@ interface SerialPortRequestOptions {
     filters?: SerialPortFilter[];
 }
 
+interface SetHTMLOptions {
+    sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
+}
+
 interface ShadowRootInit {
     clonable?: boolean;
     customElementRegistry?: CustomElementRegistry | null;
@@ -14140,6 +14144,12 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     setAttributeNodeNS(attr: Attr): Attr | null;
     /**
+     * The **`setHTML()`** method of the Element interface provides an XSS-safe method to parse and sanitize a string of HTML and insert it into the DOM as a subtree of the element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTML)
+     */
+    setHTML(html: string, options?: SetHTMLOptions): void;
+    /**
      * The **`setHTMLUnsafe()`** method of the Element interface is used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)
@@ -17984,7 +17994,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
  */
-interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
+interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
     /**
      * The **`HTMLElement.accessKey`** property sets the keystroke which a user can press to jump to a given element.
      *
@@ -20309,7 +20319,7 @@ declare var HTMLOptionsCollection: {
     new(): HTMLOptionsCollection;
 };
 
-interface HTMLOrSVGElement {
+interface HTMLOrSVGOrMathMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autofocus) */
     autofocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset) */
@@ -24033,7 +24043,7 @@ interface MathMLElementEventMap extends ElementEventMap, GlobalEventHandlersEven
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MathMLElement)
  */
-interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
     addEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -26030,6 +26040,7 @@ declare var NavigationPreloadManager: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition)
  */
 interface NavigationTransition {
+    /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/committed) */
     readonly committed: Promise<void>;
     /**
      * The **`finished`** read-only property of the NavigationTransition interface returns a Promise that fulfills at the same time the navigatesuccess event fires, or rejects at the same time the navigateerror event fires.
@@ -31825,7 +31836,7 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement)
  */
-interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
     /** @deprecated */
     readonly className: any;
     /**
