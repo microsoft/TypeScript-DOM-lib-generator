@@ -31380,6 +31380,11 @@
     "summary": "The SVGScriptElement interface corresponds to the SVG <script> element."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/SVGScriptElement/async",
+    "pageType": "web-api-instance-property",
+    "summary": "The async property of the SVGScriptElement interface is a boolean value that controls how the script should be executed. It reflects the async attribute of the given <script> element. When set to true, the external script is fetched in parallel to parsing the SVG document, and the script is evaluated as soon as it becomes available."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/SVGScriptElement/href",
     "pageType": "web-api-instance-property",
     "summary": "The href read-only property of the SVGScriptElement interface reflects the href or xlink:href  attribute of the given <script> element."

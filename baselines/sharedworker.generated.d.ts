@@ -12592,8 +12592,13 @@ declare namespace WebAssembly {
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global)
      */
     interface Global<T extends ValueType = ValueType> {
-        /** The **`value`** property of the WebAssembly.Global object prototype returns the value contained inside the global variable. */
+        /**
+         * The **`value`** property of the WebAssembly.Global object prototype returns the value contained inside the global variable.
+         *
+         * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global/value)
+         */
         value: ValueTypeMap[T];
+        /** [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Global/valueOf) */
         valueOf(): ValueTypeMap[T];
     }
 
