@@ -1082,7 +1082,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/AudioSession",
     "pageType": "web-api-interface",
-    "summary": "The AudioSession interface of the Audio Session API allows developers to specify how audio from a web application interacts with other audio playing on a device."
+    "summary": "The AudioSession interface of the Audio Session API lets a web page declare the type of audio it is producing — for example music playback, a video call, or a short notification. The platform uses that declaration to decide how the page's audio and audio from other applications and tabs should coexist — whether to pause, duck (lower the volume), or play in parallel."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AudioSession/type",
@@ -10827,7 +10827,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/GPU/requestAdapter",
     "pageType": "web-api-instance-method",
-    "summary": "The requestAdapter() method of the\nGPU interface returns a Promise that fulfills with a GPUAdapter object instance. From this you can request a GPUDevice, adapter info, features, and limits."
+    "summary": "The requestAdapter() method of the GPU interface returns a Promise that fulfills with a GPUAdapter object instance. From this you can request a GPUDevice, adapter info, features, and limits."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/GPU/wgslLanguageFeatures",
@@ -19948,6 +19948,11 @@
     "mdn_url": "/en-US/docs/Web/API/NavigationTransition",
     "pageType": "web-api-interface",
     "summary": "The NavigationTransition interface of the Navigation API represents an ongoing navigation — a navigation that hasn't yet reached the navigatesuccess or navigateerror stage."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/NavigationTransition/committed",
+    "pageType": "web-api-instance-property",
+    "summary": "The committed read-only property of the\nNavigationTransition interface returns a Promise that fulfills when Navigation.currentEntry is updated and the new URL is displayed in the browser, marking the navigation as committed. This happens after all precommit handlers for the navigation are fulfilled."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/NavigationTransition/finished",
@@ -33943,6 +33948,11 @@
     "mdn_url": "/en-US/docs/Web/API/VideoFrame/format",
     "pageType": "web-api-instance-property",
     "summary": "The format property of the VideoFrame interface returns the pixel format of the VideoFrame."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/VideoFrame/metadata",
+    "pageType": "web-api-instance-method",
+    "summary": "The metadata() method of the VideoFrame interface returns the metadata associated with the frame."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/VideoFrame/rotation",
