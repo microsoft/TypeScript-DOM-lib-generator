@@ -46,7 +46,7 @@
     "@octokit/rest": "^22.0.0",
     "@types/node": "^25.0.3",
     "@types/prettier": "^3.0.0",
-    "@types/webidl2": "^24.4.3",
+    "@types/webidl2": "^24.4.4",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "@typescript/native-preview": "^7.0.0-dev.20251029.1",

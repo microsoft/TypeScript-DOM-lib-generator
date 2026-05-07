@@ -23,6 +23,11 @@ export const forceKeepAlive: Record<string, string[]> = {
     "onwebkitanimationiteration",
     "onwebkitanimationstart",
   ],
+  GPUBufferUsage: [],
+  GPUMapMode: [],
+  GPUTextureUsage: [],
+  GPUShaderStage: [],
+  GPUColorWrite: [],
   IDBDatabase: [
     // BCD unexpectedly is removing valid event data
     // https://github.com/mdn/browser-compat-data/issues/15345
