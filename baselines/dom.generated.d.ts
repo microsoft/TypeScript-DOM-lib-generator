@@ -204,6 +204,7 @@ interface AuthenticationExtensionsClientInputs {
     largeBlob?: AuthenticationExtensionsLargeBlobInputs;
     minPinLength?: boolean;
     prf?: AuthenticationExtensionsPRFInputs;
+    remoteClientDataJSON?: string;
 }
 
 interface AuthenticationExtensionsClientInputsJSON {
@@ -211,6 +212,7 @@ interface AuthenticationExtensionsClientInputsJSON {
     credProps?: boolean;
     largeBlob?: AuthenticationExtensionsLargeBlobInputsJSON;
     prf?: AuthenticationExtensionsPRFInputsJSON;
+    remoteClientDataJSON?: string;
 }
 
 interface AuthenticationExtensionsClientOutputs {
@@ -219,6 +221,7 @@ interface AuthenticationExtensionsClientOutputs {
     hmacCreateSecret?: boolean;
     largeBlob?: AuthenticationExtensionsLargeBlobOutputs;
     prf?: AuthenticationExtensionsPRFOutputs;
+    remoteClientDataJSON?: boolean;
 }
 
 interface AuthenticationExtensionsClientOutputsJSON {
@@ -226,6 +229,7 @@ interface AuthenticationExtensionsClientOutputsJSON {
     credProps?: CredentialPropertiesOutput;
     largeBlob?: AuthenticationExtensionsLargeBlobOutputsJSON;
     prf?: AuthenticationExtensionsPRFOutputsJSON;
+    remoteClientDataJSON?: boolean;
 }
 
 interface AuthenticationExtensionsLargeBlobInputs {
@@ -818,6 +822,7 @@ interface FormDataEventInit extends EventInit {
 }
 
 interface FullscreenOptions {
+    keyboardLock?: FullscreenKeyboardLock;
     navigationUI?: FullscreenNavigationUI;
 }
 
@@ -1000,6 +1005,7 @@ interface GPUPipelineErrorInit {
 
 interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
     bindGroupLayouts: (GPUBindGroupLayout | null)[];
+    immediateSize?: GPUSize32;
 }
 
 interface GPUPrimitiveState {
@@ -2749,6 +2755,10 @@ interface SerialPortInfo {
 interface SerialPortRequestOptions {
     allowedBluetoothServiceClassIds?: BluetoothServiceUUID[];
     filters?: SerialPortFilter[];
+}
+
+interface SetHTMLOptions {
+    sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets;
 }
 
 interface ShadowRootInit {
@@ -5339,13 +5349,13 @@ declare var CSSConditionRule: {
  */
 interface CSSContainerRule extends CSSConditionRule {
     /**
-     * The read-only **`containerName`** property of the CSSContainerRule interface represents the container name of the associated CSS @container at-rule.
+     * The read-only **`containerName`** property of the CSSContainerRule interface represents the name of the container condition for a container rule that only defines one container condition. If there are multiple container conditions, the value is set to the empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerName)
      */
     readonly containerName: string;
     /**
-     * The read-only **`containerQuery`** property of the CSSContainerRule interface returns a string representing the container conditions that are evaluated when the container changes size in order to determine if the styles in the associated @container are applied.
+     * The read-only **`containerQuery`** property of the CSSContainerRule interface represents the query part of the container condition for a container rule that only defines one container condition. If there are multiple container conditions, the value is set to the empty string.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CSSContainerRule/containerQuery)
      */
@@ -8699,7 +8709,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     position: string;
     /**
-     * The position-anchor CSS property specifies the anchor name of the anchor element (i.e., an element that has an anchor name set on it via the anchor-name property) a positioned element is associated with.
+     * The position-anchor CSS property specifies the default anchor element for a positioned element. This default is used by position-area and position-try, and by anchor functions (anchor() and anchor-size()) when no <anchor-name> argument is provided to those functions.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/position-anchor)
      */
@@ -9407,7 +9417,7 @@ interface CSSStyleProperties extends CSSStyleDeclarationBase {
      */
     viewTimelineName: string;
     /**
-     * The view-transition-class CSS property provides the selected elements with an identifying class (a <custom-ident>), providing an additional method of styling the view transitions for those elements.
+     * The view-transition-class CSS property provides the selected elements with one or more identifying classes (<custom-ident>s), providing an additional method of styling the view transitions for those elements.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/CSS/Reference/Properties/view-transition-class)
      */
@@ -13583,7 +13593,7 @@ declare var DragEvent: {
 };
 
 /**
- * The **`DynamicsCompressorNode`** interface provides a compression effect, which lowers the volume of the loudest parts of the signal in order to help prevent clipping and distortion that can occur when multiple sounds are played and multiplexed together at once. This is often used in musical production and game audio. DynamicsCompressorNode is an AudioNode that has exactly one input and one output.
+ * The **`DynamicsCompressorNode`** interface provides a compression effect, which lowers the volume of the loudest parts of a signal. Compression can help prevent clipping and distortion when multiple sounds are combined, and it is also used in music production and game audio for dynamic control, tone shaping, and creative effects. DynamicsCompressorNode is an AudioNode that has exactly one input and one output.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/DynamicsCompressorNode)
  */
@@ -13904,7 +13914,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     readonly tagName: string;
     /**
-     * The **`Element.attachShadow()`** method attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot.
+     * The **`attachShadow()`** method of the Element interface attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attachShadow)
      */
@@ -14080,7 +14090,7 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      */
     removeAttributeNode(attr: Attr): Attr;
     /**
-     * The **`Element.requestFullscreen()`** method issues an asynchronous request to make the element be displayed in fullscreen mode.
+     * The **`requestFullscreen()`** method of the Element interface issues an asynchronous request to display the element in fullscreen mode.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestFullscreen)
      */
@@ -14142,6 +14152,12 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNodeNS)
      */
     setAttributeNodeNS(attr: Attr): Attr | null;
+    /**
+     * The **`setHTML()`** method of the Element interface provides an XSS-safe method to parse and sanitize a string of HTML and insert it into the DOM as a subtree of the element.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTML)
+     */
+    setHTML(html: string, options?: SetHTMLOptions): void;
     /**
      * The **`setHTMLUnsafe()`** method of the Element interface is used to parse HTML input into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.
      *
@@ -17987,7 +18003,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
  */
-interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement {
+interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
     /**
      * The **`HTMLElement.accessKey`** property sets the keystroke which a user can press to jump to a given element.
      *
@@ -19131,7 +19147,7 @@ interface HTMLInputElement extends HTMLElement, PopoverTargetAttributes {
      */
     selectionEnd: number | null;
     /**
-     * The **`selectionStart`** property of the HTMLInputElement interface is a number that represents the beginning index of the selected text. When nothing is selected, then returns the position of the text input cursor (caret) inside of the <input> element.
+     * The **`selectionStart`** property of the HTMLInputElement interface is a number that represents the beginning index of the selected text. When nothing is selected, it returns the position of the text input cursor (caret) inside of the <input> element.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionStart)
      */
@@ -20312,7 +20328,7 @@ declare var HTMLOptionsCollection: {
     new(): HTMLOptionsCollection;
 };
 
-interface HTMLOrSVGElement {
+interface HTMLOrSVGOrMathMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autofocus) */
     autofocus: boolean;
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset) */
@@ -24036,7 +24052,7 @@ interface MathMLElementEventMap extends ElementEventMap, GlobalEventHandlersEven
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/MathMLElement)
  */
-interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface MathMLElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
     addEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MathMLElementEventMap>(type: K, listener: (this: MathMLElement, ev: MathMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
@@ -26033,6 +26049,11 @@ declare var NavigationPreloadManager: {
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition)
  */
 interface NavigationTransition {
+    /**
+     * The **`committed`** read-only property of the NavigationTransition interface returns a Promise that fulfills when Navigation.currentEntry is updated and the new URL is displayed in the browser, marking the navigation as committed. This happens after all precommit handlers for the navigation are fulfilled.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/NavigationTransition/committed)
+     */
     readonly committed: Promise<void>;
     /**
      * The **`finished`** read-only property of the NavigationTransition interface returns a Promise that fulfills at the same time the navigatesuccess event fires, or rejects at the same time the navigateerror event fires.
@@ -26126,7 +26147,7 @@ interface Navigator extends NavigatorAutomationInformation, NavigatorBadge, Navi
      */
     readonly permissions: Permissions;
     /**
-     * The **`serial`** read-only property of the Navigator interface returns a Serial object which represents the entry point into the Web Serial API.
+     * The **`serial`** read-only property of the Navigator interface returns a Serial object, which represents the entry point into the Web Serial API.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Navigator/serial)
      */
@@ -29501,37 +29522,37 @@ declare var RTCEncodedVideoFrame: {
 };
 
 /**
- * The **`RTCError`** interface describes an error which has occurred while handling WebRTC operations. It's based upon the standard DOMException interface that describes general DOM errors.
+ * The **`RTCError`** interface of the WebRTC API describes an error which has occurred while handling RTC operations. It's based upon the standard DOMException interface that describes general DOM errors.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError)
  */
 interface RTCError extends DOMException {
     /**
-     * The RTCError interface's read-only **`errorDetail`** property is a string indicating the WebRTC-specific error code that occurred.
+     * The **`errorDetail`** read-only property of the RTCError interface is a string indicating the WebRTC-specific error code that occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/errorDetail)
      */
     readonly errorDetail: RTCErrorDetailType;
     /**
-     * The RTCError read-only property **`receivedAlert`** specifies the fatal DTLS error which resulted in an alert being received from the remote peer.
+     * The **`receivedAlert`** read-only property of the RTCError interface specifies the fatal DTLS error which resulted in an alert being received from the remote peer.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/receivedAlert)
      */
     readonly receivedAlert: number | null;
     /**
-     * The read-only **`sctpCauseCode`** property in an RTCError object provides the SCTP cause code explaining why the SCTP negotiation failed, if the RTCError represents an SCTP error.
+     * The **`sctpCauseCode`** read-only property of the RTCError interface provides the SCTP cause code explaining why the SCTP negotiation failed, if the RTCError represents an SCTP error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sctpCauseCode)
      */
     readonly sctpCauseCode: number | null;
     /**
-     * The RTCError interface's read-only property **`sdpLineNumber`** specifies the line number within the SDP at which a syntax error occurred while parsing it.
+     * The **`sdpLineNumber`** read-only property of the RTCError interface specifies the SDP message line number where a syntax error occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sdpLineNumber)
      */
     readonly sdpLineNumber: number | null;
     /**
-     * The read-only **`sentAlert`** property in an RTCError object specifies the DTLS alert number occurred while sending data to the remote peer, if the error represents an outbound DTLS error.
+     * The **`sentAlert`** read-only property of the RTCError interface specifies the DTLS alert number sent to the remote peer, if the error represents an outbound DTLS error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCError/sentAlert)
      */
@@ -29544,13 +29565,13 @@ declare var RTCError: {
 };
 
 /**
- * The WebRTC API's **`RTCErrorEvent`** interface represents an error sent to a WebRTC object. It's based on the standard Event interface, but adds RTC-specific information describing the error, as shown below.
+ * The **`RTCErrorEvent`** interface of the WebRTC API represents an error event sent to a WebRTC object. It inherits from the standard Event interface, adding RTC-specific information describing the error.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent)
  */
 interface RTCErrorEvent extends Event {
     /**
-     * The read-only RTCErrorEvent property **`error`** contains an RTCError object describing the details of the error which the event is announcing.
+     * The **`error`** read-only property of the RTCErrorEvent interface contains an RTCError object that describes the WebRTC-specific details of the error.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCErrorEvent/error)
      */
@@ -29964,20 +29985,40 @@ declare var RTCPeerConnection: {
 };
 
 /**
- * The **`RTCPeerConnectionIceErrorEvent`** interface—based upon the Event interface—provides details pertaining to an ICE error announced by sending an icecandidateerror event to the RTCPeerConnection object.
+ * The **`RTCPeerConnectionIceErrorEvent`** interface of the WebRTC API describes an error that occurred while handling ICE negotiation through a STUN or TURN server.
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent)
  */
 interface RTCPeerConnectionIceErrorEvent extends Event {
     /**
-     * The RTCPeerConnectionIceErrorEvent property **`address`** is a string which indicates the local IP address being used to communicate with the STUN or TURN server during negotiations. The error which occurred involved this address.
+     * The **`address`** property of the RTCPeerConnectionIceErrorEvent interface is a string that indicates the local IP address used to communicate with the STUN or TURN server when the error occurred.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/address)
      */
     readonly address: string | null;
+    /**
+     * The **`errorCode`** property of the RTCPeerConnectionIceErrorEvent interface represents the STUN error code returned by the STUN or TURN server if there was an error during ICE negotiation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorCode)
+     */
     readonly errorCode: number;
+    /**
+     * The **`errorText`** property of the RTCPeerConnectionIceErrorEvent interface represents the STUN error reason text returned by the STUN or TURN server if there was an error during ICE negotiation.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorText)
+     */
     readonly errorText: string;
+    /**
+     * The **`port`** property of the RTCPeerConnectionIceErrorEvent interface represents the port number over which communication with the STUN or TURN server is taking place.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/port)
+     */
     readonly port: number | null;
+    /**
+     * The **`url`** property of the RTCPeerConnectionIceErrorEvent interface is a string indicating the URL of the STUN or TURN server with which the error occurred.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/RTCPeerConnectionIceErrorEvent/url)
+     */
     readonly url: string;
 }
 
@@ -31828,7 +31869,7 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement)
  */
-interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement {
+interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
     /** @deprecated */
     readonly className: any;
     /**
@@ -35411,13 +35452,13 @@ declare var Selection: {
  */
 interface Serial extends EventTarget {
     /**
-     * The **`getPorts()`** method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host which the origin has permission to access.
+     * The **`getPorts()`** method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host that the origin has permission to access.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Serial/getPorts)
      */
     getPorts(): Promise<SerialPort[]>;
     /**
-     * The **`Serial.requestPort()`** method of the Serial interface presents the user with a dialog asking them to select a serial device to connect to. It returns a Promise that resolves with an instance of SerialPort representing the device chosen by the user.
+     * The **`requestPort()`** method of the Serial interface presents the user with a dialog asking them to select a serial device to connect to. It returns a Promise that resolves with an instance of SerialPort representing the device chosen by the user.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Serial/requestPort)
      */
@@ -35464,13 +35505,13 @@ interface SerialPort extends EventTarget {
      */
     readonly writable: WritableStream | null;
     /**
-     * The **`SerialPort.close()`** method of the SerialPort interface returns a Promise that resolves when the port closes.
+     * The **`close()`** method of the SerialPort interface returns a Promise that resolves when the port closes.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/close)
      */
     close(): Promise<void>;
     /**
-     * The **`SerialPort.forget()`** method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked.
+     * The **`forget()`** method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/forget)
      */
@@ -35482,7 +35523,7 @@ interface SerialPort extends EventTarget {
      */
     getInfo(): SerialPortInfo;
     /**
-     * The **`SerialPort.getSignals()`** method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals.
+     * The **`getSignals()`** method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SerialPort/getSignals)
      */
@@ -35757,7 +35798,7 @@ interface ShadowRoot extends DocumentFragment, DocumentOrShadowRoot {
      */
     readonly serializable: boolean;
     /**
-     * The read-only **`slotAssignment`** property of the ShadowRoot interface returns the slot assignment mode for the shadow DOM tree. Nodes are either automatically assigned (named) or manually assigned (manual). The value of this property defined using the slotAssignment option when calling Element.attachShadow().
+     * The read-only **`slotAssignment`** property of the ShadowRoot interface returns the slot assignment mode for the shadow DOM tree. Nodes are either automatically assigned based on name matching (named) or manually assigned (manual).
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/ShadowRoot/slotAssignment)
      */
@@ -44848,6 +44889,7 @@ type FlowControlType = "hardware" | "none";
 type FontDisplay = "auto" | "block" | "fallback" | "optional" | "swap";
 type FontFaceLoadStatus = "error" | "loaded" | "loading" | "unloaded";
 type FontFaceSetLoadStatus = "loaded" | "loading";
+type FullscreenKeyboardLock = "browser" | "none";
 type FullscreenNavigationUI = "auto" | "hide" | "show";
 type GPUAddressMode = "clamp-to-edge" | "mirror-repeat" | "repeat";
 type GPUAutoLayoutMode = "auto";

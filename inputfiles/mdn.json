@@ -655,6 +655,11 @@
     "summary": "The outputLatency read-only property of\nthe AudioContext Interface provides an estimation of the output latency\nof the current audio context."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/AudioContext/playbackStats",
+    "pageType": "web-api-instance-property",
+    "summary": "The playbackStats read-only property of the AudioContext interface returns an AudioPlaybackStats object providing access to duration, underrun, and latency statistics for the AudioContext. These statistics allow you to measure audio delay and glitches."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/AudioContext/resume",
     "pageType": "web-api-instance-method",
     "summary": "The resume() method of the AudioContext\ninterface resumes the progression of time in an audio context that has previously been\nsuspended."
@@ -1035,6 +1040,51 @@
     "summary": "The AudioParamMap interface of the Web Audio API represents an iterable and read-only set of multiple audio parameters."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats",
+    "pageType": "web-api-interface",
+    "summary": "The AudioPlaybackStats interface of the Web Audio API provides access to duration, underrun, and latency statistics for the associated AudioContext. These statistics allow you to measure audio delay and glitches."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/averageLatency",
+    "pageType": "web-api-instance-property",
+    "summary": "The averageLatency read-only property of the AudioPlaybackStats interface is a number indicating the average latency since the audio context was initialized or since AudioPlaybackStats.resetLatency() was last called."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/maximumLatency",
+    "pageType": "web-api-instance-property",
+    "summary": "The maximumLatency read-only property of the AudioPlaybackStats interface is a number indicating the maximum latency since the audio context was initialized or since AudioPlaybackStats.resetLatency() was last called."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/minimumLatency",
+    "pageType": "web-api-instance-property",
+    "summary": "The minimumLatency read-only property of the AudioPlaybackStats interface is a number indicating the minimum latency since the audio context was initialized or since AudioPlaybackStats.resetLatency() was last called."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/resetLatency",
+    "pageType": "web-api-instance-method",
+    "summary": "The resetLatency() method of the AudioPlaybackStats interface resets the start of the interval during which latency statistics are measured to the BaseAudioContext.currentTime."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/toJSON",
+    "pageType": "web-api-instance-method",
+    "summary": "The toJSON() method of the AudioPlaybackStats interface is a serializer; it returns a JSON representation of the AudioPlaybackStats object."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/totalDuration",
+    "pageType": "web-api-instance-property",
+    "summary": "The totalDuration read-only property of the AudioPlaybackStats interface is a number indicating the total duration of all audio frames since the audio context was initialized."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/underrunDuration",
+    "pageType": "web-api-instance-property",
+    "summary": "The underrunDuration read-only property of the AudioPlaybackStats interface is a number indicating the total duration of the underrun events that have occurred since the audio context was initialized."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/AudioPlaybackStats/underrunEvents",
+    "pageType": "web-api-instance-property",
+    "summary": "The underrunEvents read-only property of the AudioPlaybackStats interface is a number indicating how many underrun events have occurred since the audio context was initialized."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/AudioProcessingEvent",
     "pageType": "web-api-interface",
     "summary": "The AudioProcessingEvent interface of the Web Audio API represents events that occur when a ScriptProcessorNode input buffer is ready to be processed."
@@ -1082,7 +1132,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/AudioSession",
     "pageType": "web-api-interface",
-    "summary": "The AudioSession interface of the Audio Session API allows developers to specify how audio from a web application interacts with other audio playing on a device."
+    "summary": "The AudioSession interface of the Audio Session API lets a web page declare the type of audio it is producing — for example music playback, a video call, or a short notification. The platform uses that declaration to decide how the page's audio and audio from other applications and tabs should coexist — whether to pause, duck (lower the volume), or play in parallel."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/AudioSession/type",
@@ -4020,14 +4070,19 @@
     "summary": "The CSSContainerRule interface represents a single CSS @container rule."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/CSSContainerRule/conditions",
+    "pageType": "web-api-instance-property",
+    "summary": "The read-only conditions property of the CSSContainerRule interface represents an associated CSS @container at-rule as an array of objects, where each object represents a single container condition."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/CSSContainerRule/containerName",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only containerName property of the CSSContainerRule interface represents the container name of the associated CSS @container at-rule."
+    "summary": "The read-only containerName property of the CSSContainerRule interface represents the name of the container condition for a container rule that only defines one container condition.\nIf there are multiple container conditions, the value is set to the empty string."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSContainerRule/containerQuery",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only containerQuery property of the CSSContainerRule interface returns a string representing the container conditions that are evaluated when the container changes size in order to determine if the styles in the associated @container are applied."
+    "summary": "The read-only containerQuery property of the CSSContainerRule interface represents the query part of the container condition for a container rule that only defines one container condition.\nIf there are multiple container conditions, the value is set to the empty string."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/CSSCounterStyleRule",
@@ -7457,7 +7512,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/DynamicsCompressorNode",
     "pageType": "web-api-interface",
-    "summary": "The DynamicsCompressorNode interface provides a compression effect, which lowers the volume of the loudest parts of the signal in order to help prevent clipping and distortion that can occur when multiple sounds are played and multiplexed together at once. This is often used in musical production and game audio. DynamicsCompressorNode is an AudioNode that has exactly one input and one output."
+    "summary": "The DynamicsCompressorNode interface provides a compression effect, which lowers the volume of the loudest parts of a signal.\nCompression can help prevent clipping and distortion when multiple sounds are combined, and it is also used in music production and game audio for dynamic control, tone shaping, and creative effects.\nDynamicsCompressorNode is an AudioNode that has exactly one input and one output."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DynamicsCompressorNode/attack",
@@ -7467,7 +7522,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/DynamicsCompressorNode/DynamicsCompressorNode",
     "pageType": "web-api-constructor",
-    "summary": "The DynamicsCompressorNode()\nconstructor creates a new DynamicsCompressorNode object which provides\na compression effect, which lowers the volume of the loudest parts of the\nsignal, in order to help prevent clipping and distortion. That can occur when\nmultiple sounds are played and multiplexed together at once."
+    "summary": "The DynamicsCompressorNode() constructor creates a new DynamicsCompressorNode object instance, which can be used to provide a compression effect that lowers the volume of the loudest parts of a signal."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/DynamicsCompressorNode/knee",
@@ -7927,7 +7982,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/attachShadow",
     "pageType": "web-api-instance-method",
-    "summary": "The Element.attachShadow() method attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot."
+    "summary": "The attachShadow() method of the Element interface attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/attributes",
@@ -8472,7 +8527,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Element/requestFullscreen",
     "pageType": "web-api-instance-method",
-    "summary": "The Element.requestFullscreen()\nmethod issues an asynchronous request to make the element be displayed in fullscreen\nmode."
+    "summary": "The requestFullscreen() method of the Element interface issues an asynchronous request to display the element in fullscreen mode."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Element/requestPointerLock",
@@ -10827,7 +10882,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/GPU/requestAdapter",
     "pageType": "web-api-instance-method",
-    "summary": "The requestAdapter() method of the\nGPU interface returns a Promise that fulfills with a GPUAdapter object instance. From this you can request a GPUDevice, adapter info, features, and limits."
+    "summary": "The requestAdapter() method of the GPU interface returns a Promise that fulfills with a GPUAdapter object instance. From this you can request a GPUDevice, adapter info, features, and limits."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/GPU/wgslLanguageFeatures",
@@ -14027,7 +14082,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLInputElement/selectionStart",
     "pageType": "web-api-instance-property",
-    "summary": "The selectionStart property of the HTMLInputElement interface is a number that represents the beginning index of the selected text. When nothing is selected, then returns the position of the text input cursor (caret) inside of the <input> element."
+    "summary": "The selectionStart property of the HTMLInputElement interface is a number that represents the beginning index of the selected text. When nothing is selected, it returns the position of the text input cursor (caret) inside of the <input> element."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLInputElement/setCustomValidity",
@@ -15733,6 +15788,11 @@
     "mdn_url": "/en-US/docs/Web/API/HTMLTemplateElement/shadowRootSerializable",
     "pageType": "web-api-instance-property",
     "summary": "The shadowRootSerializable property reflects the value of the shadowrootserializable attribute of the associated <template> element."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/HTMLTemplateElement/shadowRootSlotAssignment",
+    "pageType": "web-api-instance-property",
+    "summary": "The shadowRootSlotAssignment property of the HTMLTemplateElement interface indicates whether the element has been configured to use named or unnamed slot assignment."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/HTMLTextAreaElement",
@@ -18247,7 +18307,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/MediaRecorder/MediaRecorder",
     "pageType": "web-api-constructor",
-    "summary": "The MediaRecorder() constructor\ncreates a new MediaRecorder object that will record a specified\nMediaStream."
+    "summary": "The MediaRecorder() constructor creates a new MediaRecorder object that will record a specified MediaStream."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/MediaRecorder/mimeType",
@@ -19950,6 +20010,11 @@
     "summary": "The NavigationTransition interface of the Navigation API represents an ongoing navigation — a navigation that hasn't yet reached the navigatesuccess or navigateerror stage."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/NavigationTransition/committed",
+    "pageType": "web-api-instance-property",
+    "summary": "The committed read-only property of the\nNavigationTransition interface returns a Promise that fulfills when Navigation.currentEntry is updated and the new URL is displayed in the browser, marking the navigation as committed. This happens after all precommit handlers for the navigation are fulfilled."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/NavigationTransition/finished",
     "pageType": "web-api-instance-property",
     "summary": "The finished read-only property of the\nNavigationTransition interface returns a Promise that fulfills at the same time the navigatesuccess event fires, or rejects at the same time the navigateerror event fires."
@@ -20257,7 +20322,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/serial",
     "pageType": "web-api-instance-property",
-    "summary": "The serial read-only property of the Navigator interface returns a Serial object which represents the entry point into the Web Serial API."
+    "summary": "The serial read-only property of the Navigator interface returns a Serial object, which represents the entry point into the Web Serial API."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Navigator/serviceWorker",
@@ -22220,6 +22285,11 @@
     "summary": "The activationStart read-only property represents the time between when a document starts prerendering and when it is activated."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceNavigationTiming/confidence",
+    "pageType": "web-api-instance-property",
+    "summary": "The confidence read-only property of the PerformanceNavigationTiming interface returns a PerformanceTimingConfidence object containing information that indicates whether a performance record reflects typical application performance, or is likely affected by external factors."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/PerformanceNavigationTiming/criticalCHRestart",
     "pageType": "web-api-instance-property",
     "summary": "A website can indicate that a particular Client Hint is critical to the page by including it in a Critical-CH HTTP response header (as well as the Accept-CH HTTP request header which is needed for all client hints whether critical or not). Doing so will trigger a connection restart if the hint listed in the Critical-CH HTTP response header could have been, but wasn't, included in the HTTP request initially sent. If the browser does not support that client hint, it is ignored and no connection restart occurs."
@@ -22685,6 +22755,26 @@
     "summary": "The legacy\nPerformanceTiming.unloadEventStart\nread-only property returns an unsigned long long representing the moment,\nin milliseconds since the UNIX epoch, the unload event has been thrown. If\nthere is no previous document, or if the previous document, or one of the needed\nredirects, is not of the same origin, the value returned is 0."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceTimingConfidence",
+    "pageType": "web-api-interface",
+    "summary": "The PerformanceTimingConfidence interface provides access to information that indicates whether a performance record reflects typical application performance, or is likely affected by external factors."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceTimingConfidence/randomizedTriggerRate",
+    "pageType": "web-api-instance-property",
+    "summary": "The randomizedTriggerRate read-only property of the PerformanceTimingConfidence interface indicates how often noise is applied when exposing the PerformanceTimingConfidence.value."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceTimingConfidence/toJSON",
+    "pageType": "web-api-instance-method",
+    "summary": "The toJSON() method of the PerformanceTimingConfidence interface is a serializer that returns a JSON representation of the PerformanceTimingConfidence object."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/PerformanceTimingConfidence/value",
+    "pageType": "web-api-instance-property",
+    "summary": "The value read-only property of the PerformanceTimingConfidence interface is a broad confidence measure of whether a performance record reflects typical application performance, or is likely affected by external factors."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/PeriodicSyncEvent",
     "pageType": "web-api-interface",
     "summary": "The PeriodicSyncEvent interface of the Web Periodic Background Synchronization API provides a way to run tasks in the service worker with network connectivity."
@@ -23037,7 +23127,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PreferenceObject/clearOverride",
     "pageType": "web-api-instance-method",
-    "summary": "The clearOverride method of the PreferenceObject interface resets the must be provided value."
+    "summary": "The clearOverride method of the PreferenceObject interface resets the override value."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PreferenceObject/override",
@@ -23047,7 +23137,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/PreferenceObject/requestOverride",
     "pageType": "web-api-instance-method",
-    "summary": "The requestOverride method of the PreferenceObject interface sets an must be provided value for a particular preference."
+    "summary": "The requestOverride method of the PreferenceObject interface sets an override value for a particular preference."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/PreferenceObject/validValues",
@@ -24812,42 +24902,52 @@
   {
     "mdn_url": "/en-US/docs/Web/API/RTCError",
     "pageType": "web-api-interface",
-    "summary": "The RTCError interface describes an error which has occurred while handling WebRTC operations. It's based upon the standard DOMException interface that describes general DOM errors."
+    "summary": "The RTCError interface of the WebRTC API describes an error which has occurred while handling RTC operations.\nIt's based upon the standard DOMException interface that describes general DOM errors."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCError/errorDetail",
     "pageType": "web-api-instance-property",
-    "summary": "The RTCError interface's read-only\nerrorDetail property is a string indicating the WebRTC-specific error code that occurred."
+    "summary": "The errorDetail read-only property of the RTCError interface is a string indicating the WebRTC-specific error code that occurred."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCError/receivedAlert",
     "pageType": "web-api-instance-property",
-    "summary": "The RTCError read-only property\nreceivedAlert specifies the fatal DTLS\nerror which resulted in an alert being received from the remote peer."
+    "summary": "The receivedAlert read-only property of the RTCError interface specifies the fatal DTLS error which resulted in an alert being received from the remote peer."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCError/RTCError",
+    "pageType": "web-api-constructor",
+    "summary": "The RTCError() constructor creates and returns a new RTCError object instance."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCError/sctpCauseCode",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only sctpCauseCode property in an\nRTCError object provides the SCTP cause code explaining\nwhy the SCTP negotiation failed, if the RTCError represents an SCTP error."
+    "summary": "The sctpCauseCode read-only property of the RTCError interface provides the SCTP cause code explaining why the SCTP negotiation failed, if the RTCError represents an SCTP error."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCError/sdpLineNumber",
     "pageType": "web-api-instance-property",
-    "summary": "The RTCError interface's read-only property\nsdpLineNumber specifies the line number within the\nSDP at which a syntax error occurred while parsing it."
+    "summary": "The sdpLineNumber read-only property of the RTCError interface specifies the SDP message line number where a syntax error occurred."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCError/sentAlert",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only sentAlert property in an\nRTCError object specifies the DTLS alert number occurred\nwhile sending data to the remote peer, if the error represents an outbound DTLS error."
+    "summary": "The sentAlert read-only property of the RTCError interface specifies the DTLS alert number sent to the remote peer, if the error represents an outbound DTLS error."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCErrorEvent",
     "pageType": "web-api-interface",
-    "summary": "The WebRTC API's RTCErrorEvent interface represents an error sent to a WebRTC object. It's based on the standard Event interface, but adds RTC-specific information describing the error, as shown below."
+    "summary": "The RTCErrorEvent interface of the WebRTC API represents an error event sent to a WebRTC object.\nIt inherits from the standard Event interface, adding RTC-specific information describing the error."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCErrorEvent/error",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only RTCErrorEvent property error\ncontains an RTCError object describing the details of the error which the\nevent is announcing."
+    "summary": "The error read-only property of the RTCErrorEvent interface contains an RTCError object that describes the WebRTC-specific details of the error."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCErrorEvent/RTCErrorEvent",
+    "pageType": "web-api-constructor",
+    "summary": "The RTCErrorEvent() constructor creates a new RTCErrorEvent object."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCIceCandidate",
@@ -25827,7 +25927,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnection/icecandidateerror_event",
     "pageType": "web-api-event",
-    "summary": "The WebRTC API event icecandidateerror is sent to an RTCPeerConnection if an error occurs while performing ICE negotiations through a STUN or TURN server. The event object is of type RTCPeerConnectionIceErrorEvent, and contains information describing the error in some amount of detail."
+    "summary": "The icecandidateerror event is sent to an RTCPeerConnection if an error occurs while performing ICE negotiation through a STUN or TURN server."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnection/iceConnectionState",
@@ -25952,12 +26052,37 @@
   {
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent",
     "pageType": "web-api-interface",
-    "summary": "The RTCPeerConnectionIceErrorEvent interface—based upon the Event interface—provides details pertaining to an ICE error announced by sending an icecandidateerror event to the RTCPeerConnection object."
+    "summary": "The RTCPeerConnectionIceErrorEvent interface of the WebRTC API describes an error that occurred while handling ICE negotiation through a STUN or TURN server."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/address",
     "pageType": "web-api-instance-property",
-    "summary": "The RTCPeerConnectionIceErrorEvent property\naddress is a string which indicates the local IP address\nbeing used to communicate with the STUN or TURN server\nduring negotiations. The error which occurred involved this address."
+    "summary": "The address property of the RTCPeerConnectionIceErrorEvent interface is a string that indicates the local IP address used to communicate with the STUN or TURN server when the error occurred."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorCode",
+    "pageType": "web-api-instance-property",
+    "summary": "The errorCode property of the RTCPeerConnectionIceErrorEvent interface represents the STUN error code returned by the STUN or TURN server if there was an error during ICE negotiation."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorText",
+    "pageType": "web-api-instance-property",
+    "summary": "The errorText property of the RTCPeerConnectionIceErrorEvent interface represents the STUN error reason text returned by the STUN or TURN server if there was an error during ICE negotiation."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/port",
+    "pageType": "web-api-instance-property",
+    "summary": "The port property of the RTCPeerConnectionIceErrorEvent interface represents the port number over which communication with the STUN or TURN server is taking place."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/RTCPeerConnectionIceErrorEvent",
+    "pageType": "web-api-constructor",
+    "summary": "The RTCPeerConnectionIceErrorEvent() constructor creates a new RTCPeerConnectionIceErrorEvent object with its type and other properties initialized as specified in the parameters."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/url",
+    "pageType": "web-api-instance-property",
+    "summary": "The url property of the RTCPeerConnectionIceErrorEvent interface is a string indicating the URL of the STUN or TURN server with which the error occurred."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/RTCPeerConnectionIceEvent",
@@ -27237,12 +27362,12 @@
   {
     "mdn_url": "/en-US/docs/Web/API/Serial/getPorts",
     "pageType": "web-api-instance-method",
-    "summary": "The getPorts() method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host which the origin has permission to access."
+    "summary": "The getPorts() method of the Serial interface returns a Promise that resolves with an array of SerialPort objects representing serial ports connected to the host that the origin has permission to access."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Serial/requestPort",
     "pageType": "web-api-instance-method",
-    "summary": "The Serial.requestPort() method of the Serial interface presents the user with a dialog asking them to select a serial device to connect to. It returns a Promise that resolves with an instance of SerialPort representing the device chosen by the user."
+    "summary": "The requestPort() method of the Serial interface presents the user with a dialog asking them to select a serial device to connect to. It returns a Promise that resolves with an instance of SerialPort representing the device chosen by the user."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort",
@@ -27252,7 +27377,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/close",
     "pageType": "web-api-instance-method",
-    "summary": "The SerialPort.close() method of the SerialPort interface returns a Promise that resolves when the port closes."
+    "summary": "The close() method of the SerialPort interface returns a Promise that resolves when the port closes."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/connect_event",
@@ -27272,7 +27397,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/forget",
     "pageType": "web-api-instance-method",
-    "summary": "The SerialPort.forget() method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked."
+    "summary": "The forget() method of the SerialPort interface returns a Promise that resolves when access to the serial port is revoked."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/getInfo",
@@ -27282,7 +27407,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/getSignals",
     "pageType": "web-api-instance-method",
-    "summary": "The SerialPort.getSignals() method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals."
+    "summary": "The getSignals() method of the SerialPort interface returns a Promise that resolves with an object containing the current state of the port's control signals."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/open",
@@ -27302,7 +27427,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SerialPort/writable",
     "pageType": "web-api-instance-property",
-    "summary": "The writable read-only property of the SerialPort interface returns a WritableStream for sending data to the device connected to the port. Chunks written to this stream must be instances of ArrayBuffer, TypedArray, or DataView. This property is non-null as long as the port is open and has not encountered a fatal error."
+    "summary": "The writable read-only property of the SerialPort interface returns a WritableStream for sending data to the device connected to the port.\nChunks written to this stream must be instances of ArrayBuffer, TypedArray, or DataView. This property is non-null as long as the port is open and has not encountered a fatal error."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/Server-sent_events",
@@ -27722,7 +27847,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/ShadowRoot/slotAssignment",
     "pageType": "web-api-instance-property",
-    "summary": "The read-only slotAssignment property of the ShadowRoot interface returns the slot assignment mode for the shadow DOM tree. Nodes are either automatically assigned (named) or manually assigned (manual). The value of this property defined using the slotAssignment option when calling Element.attachShadow()."
+    "summary": "The read-only slotAssignment property of the ShadowRoot interface returns the slot assignment mode for the shadow DOM tree. Nodes are either automatically assigned based on name matching (named) or manually assigned (manual)."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ShadowRoot/styleSheets",
@@ -27807,7 +27932,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/SharedWorker",
     "pageType": "web-api-interface",
-    "summary": "The SharedWorker interface represents a specific kind of worker that can be accessed from several browsing contexts, such as multiple windows or iframes. Shared workers implement a different interface than dedicated workers, have a different global scope (SharedWorkerGlobalScope), and their constructor is not exposed in DedicatedWorkerGlobalScope, so they cannot be instantiated from dedicated workers."
+    "summary": "The SharedWorker interface represents a specific kind of worker that can be accessed from several browsing contexts, such as multiple windows or iframes.\nShared workers implement a different interface than dedicated workers, have a different global scope (SharedWorkerGlobalScope), and their constructor is not exposed in DedicatedWorkerGlobalScope, so they cannot be instantiated from dedicated workers."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/SharedWorker/error_event",
@@ -33945,6 +34070,11 @@
     "summary": "The format property of the VideoFrame interface returns the pixel format of the VideoFrame."
   },
   {
+    "mdn_url": "/en-US/docs/Web/API/VideoFrame/metadata",
+    "pageType": "web-api-instance-method",
+    "summary": "The metadata() method of the VideoFrame interface returns the metadata associated with the frame."
+  },
+  {
     "mdn_url": "/en-US/docs/Web/API/VideoFrame/rotation",
     "pageType": "web-api-instance-property",
     "summary": "The rotation property of the VideoFrame interface returns the rotation of the video frame."
@@ -34178,6 +34308,11 @@
     "mdn_url": "/en-US/docs/Web/API/ViewTransition/updateCallbackDone",
     "pageType": "web-api-instance-property",
     "summary": "The updateCallbackDone read-only property of the\nViewTransition interface is a Promise that fulfills when the promise returned by the document.startViewTransition() method's callback fulfills, or rejects when it rejects."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/ViewTransition/waitUntil",
+    "pageType": "web-api-instance-method",
+    "summary": "The waitUntil() method of the ViewTransition interface delays finishing the view transition and the destruction of the associated pseudo-element tree until a Promise passed into the method has resolved."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/ViewTransitionTypeSet",
@@ -34947,7 +35082,22 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WebCodecs_API",
     "pageType": "web-api-overview",
-    "summary": "The WebCodecs API gives web developers low-level access to the individual frames of a video stream and chunks of audio.\nIt is useful for web applications that require full control over the way media is processed.\nFor example, video or audio editors, and video conferencing."
+    "summary": "The WebCodecs API enables web developers to encode and decode video and audio in the browser efficiently (using hardware acceleration) and with very low-level control (processing on a per-frame basis)."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebCodecs_API/Codec_selection",
+    "pageType": "guide",
+    "summary": "While developers commonly refer to codecs by their code identifier string, such as vp9 or h264, there are many configuration profiles, levels, and other parameters that control exactly how the data is encoded and decoded."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebCodecs_API/Using_the_WebCodecs_API",
+    "pageType": "guide",
+    "summary": "This guide covers the basic usage patterns of the WebCodecs API, including how to encode and decode video and audio, as well as how to use VideoFrame and AudioData."
+  },
+  {
+    "mdn_url": "/en-US/docs/Web/API/WebCodecs_API/Video_processing_concepts",
+    "pageType": "guide",
+    "summary": "Before working with the WebCodecs API, it is helpful to understand some foundational concepts around how video works, how it is compressed, and how video files are structured.\nThis guide covers the key concepts: video frames, codecs, encoding and decoding, containers, and muxing and demuxing."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WebGL_API",
@@ -38157,7 +38307,7 @@
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/serial",
     "pageType": "web-api-instance-property",
-    "summary": "The serial read-only property of the WorkerNavigator interface returns a Serial object which represents the entry point into the Web Serial API."
+    "summary": "The serial read-only property of the WorkerNavigator interface returns a Serial object which represents the worker entry point into the Web Serial API."
   },
   {
     "mdn_url": "/en-US/docs/Web/API/WorkerNavigator/serviceWorker",
@@ -41842,7 +41992,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/position-anchor",
     "pageType": "css-property",
-    "summary": "The position-anchor CSS property specifies the anchor name of the anchor element (i.e., an element that has an anchor name set on it via the anchor-name property) a positioned element is associated with."
+    "summary": "The position-anchor CSS property specifies the default anchor element for a positioned element.\nThis default is used by position-area and position-try, and by anchor functions (anchor() and anchor-size()) when no <anchor-name> argument is provided to those functions."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/position-area",
@@ -42492,7 +42642,7 @@
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-transition-class",
     "pageType": "css-property",
-    "summary": "The view-transition-class CSS property provides the selected elements with an identifying class (a <custom-ident>), providing an additional method of styling the view transitions for those elements."
+    "summary": "The view-transition-class CSS property provides the selected elements with one or more identifying classes (<custom-ident>s), providing an additional method of styling the view transitions for those elements."
   },
   {
     "mdn_url": "/en-US/docs/Web/CSS/Reference/Properties/view-transition-name",
