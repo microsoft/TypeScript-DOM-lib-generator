@@ -645,7 +645,12 @@ export function emitWebIdl(
       const paramName = m.signature[0].param![0].name;
       for (const mapName of tagNameMapNames) {
         printer.printLine(
-          `matches<K extends keyof ${mapName}>(${paramName}: K): this is ${mapName}[K];`,
+          `matches<K extends keyof ElementMatchesMap<${mapName}, this>>(${paramName}: K): this is Extract<${mapName}[K], this>;`,
+        );
+      }
+      for (const mapName of tagNameMapNames) {
+        printer.printLine(
+          `matches<K extends keyof ${mapName}>(${paramName}: K): boolean;`,
         );
       }
       printer.printLine(`matches(${paramName}: string): boolean;`);
@@ -711,6 +716,13 @@ export function emitWebIdl(
     );
     printer.printLine(
       "type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;",
+    );
+    printer.printLine("");
+  }
+
+  function emitElementMatchesMap() {
+    printer.printLine(
+      "type ElementMatchesMap<T, U> = { [K in keyof T as T[K] extends U ? U extends T[K] ? never : K : never]: T[K] };",
     );
     printer.printLine("");
   }
@@ -1664,6 +1676,7 @@ export function emitWebIdl(
         "MathMLElementTagNameMap",
         tagNameToEleName.mathMLResult,
       );
+      emitElementMatchesMap();
       emitDeprecatedHTMLOrSVGElementTagNameMap();
       emitNamedConstructors();
     }

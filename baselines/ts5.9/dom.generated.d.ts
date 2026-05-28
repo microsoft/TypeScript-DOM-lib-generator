@@ -14048,9 +14048,12 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)
      */
-    matches<K extends keyof HTMLElementTagNameMap>(selectors: K): this is HTMLElementTagNameMap[K];
-    matches<K extends keyof SVGElementTagNameMap>(selectors: K): this is SVGElementTagNameMap[K];
-    matches<K extends keyof MathMLElementTagNameMap>(selectors: K): this is MathMLElementTagNameMap[K];
+    matches<K extends keyof ElementMatchesMap<HTMLElementTagNameMap, this>>(selectors: K): this is Extract<HTMLElementTagNameMap[K], this>;
+    matches<K extends keyof ElementMatchesMap<SVGElementTagNameMap, this>>(selectors: K): this is Extract<SVGElementTagNameMap[K], this>;
+    matches<K extends keyof ElementMatchesMap<MathMLElementTagNameMap, this>>(selectors: K): this is Extract<MathMLElementTagNameMap[K], this>;
+    matches<K extends keyof HTMLElementTagNameMap>(selectors: K): boolean;
+    matches<K extends keyof SVGElementTagNameMap>(selectors: K): boolean;
+    matches<K extends keyof MathMLElementTagNameMap>(selectors: K): boolean;
     matches(selectors: string): boolean;
     /**
      * The **`releasePointerCapture()`** method of the Element interface releases (stops) pointer capture that was previously set for a specific (PointerEvent) pointer.
@@ -43876,6 +43879,8 @@ interface MathMLElementTagNameMap {
     "munderover": MathMLElement;
     "semantics": MathMLElement;
 }
+
+type ElementMatchesMap<T, U> = { [K in keyof T as T[K] extends U ? U extends T[K] ? never : K : never]: T[K] };
 
 /** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */
 type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;
