@@ -17981,7 +17981,7 @@ interface HTMLElementEventMap extends ElementEventMap, GlobalEventHandlersEventM
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement)
  */
-interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
+interface HTMLElement extends Element, ElementCSSInlineStyle, ElementContentEditable, GlobalEventHandlers, HTMLOrSVGElement, HTMLOrSVGOrMathMLElement {
     /**
      * The **`HTMLElement.accessKey`** property sets the keystroke which a user can press to jump to a given element.
      *
@@ -20300,6 +20300,9 @@ declare var HTMLOptionsCollection: {
     prototype: HTMLOptionsCollection;
     new(): HTMLOptionsCollection;
 };
+
+interface HTMLOrSVGElement extends HTMLOrSVGOrMathMLElement {
+}
 
 interface HTMLOrSVGOrMathMLElement {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autofocus) */
@@ -31814,7 +31817,7 @@ interface SVGElementEventMap extends ElementEventMap, GlobalEventHandlersEventMa
  *
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/SVGElement)
  */
-interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGOrMathMLElement {
+interface SVGElement extends Element, ElementCSSInlineStyle, GlobalEventHandlers, HTMLOrSVGElement, HTMLOrSVGOrMathMLElement {
     /** @deprecated */
     readonly className: any;
     /**

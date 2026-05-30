@@ -148,7 +148,7 @@ export function merge<T>(
           ) {
             target[k] = srcProp;
           } else {
-            if (targetProp === srcProp && k !== "name") {
+            if (targetProp === srcProp && !["name", "mixin"].includes(k)) {
               console.warn(
                 `Redundant merge value ${targetProp} in ${JSON.stringify(src)}`,
               );

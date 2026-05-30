@@ -1516,7 +1516,7 @@ export function emitWebIdl(
     for (const i of allNonCallbackInterfaces.sort(compareName)) {
       if (i.legacyNamespace) {
         continue;
-      } else if (i.noInterfaceObject) {
+      } else if (i.noInterfaceObject || i.mixin) {
         emitInterface(i);
       } else {
         emitInterface(i);

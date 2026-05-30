@@ -281,6 +281,7 @@ function handleMixinAndInterfaces(
   };
   return {
     name,
+    ...(type === "mixin" ? { mixin: true } : {}),
     ...optionalNestedMember("events", event, { event }),
     ...optionalNestedMember("properties", property, { property }),
     ...optionalNestedMember("methods", method, { method }),
@@ -539,7 +540,7 @@ function convertForRemovals(obj: unknown): unknown {
   if (obj && typeof obj === "object") {
     const newObj: Record<string, unknown> = {};
     for (const [key, value] of Object.entries(obj)) {
-      if (key !== "name") {
+      if (!["name", "mixin"].includes(key)) {
         const cleaned = convertForRemovals(value);
         // (intentionally covers null too)
         if (typeof cleaned === "object") {

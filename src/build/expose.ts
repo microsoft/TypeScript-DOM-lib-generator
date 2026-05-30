@@ -288,6 +288,8 @@ function flattenType(type: Browser.Typed[]) {
 function isEmptyMixin(i?: Browser.Interface) {
   return (
     !!i?.mixin &&
+    // (extends can only happen by patches)
+    !i.extends &&
     isEmptyRecord(i.properties?.property) &&
     isEmptyRecord(i.methods?.method) &&
     isEmptyRecord(i.constants?.constant) &&

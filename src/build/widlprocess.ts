@@ -119,7 +119,6 @@ function convertInterfaceMixin(
 ) {
   const result = convertInterfaceCommon(i, commentMap);
   result.mixin = true;
-  result.noInterfaceObject = true;
   return result;
 }
 
