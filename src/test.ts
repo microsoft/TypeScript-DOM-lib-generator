@@ -90,7 +90,7 @@ function compileGeneratedFiles(lib: string, ...files: string[]) {
     child_process.execSync(
       `node ${fileURLToPath(
         tscPath,
-      )} --strict --lib ${lib} --types --noEmit ${files
+      )} --strict --lib ${lib} --types --noEmit --ignoreConfig ${files
         .map((file) => fileURLToPath(new URL(file, outputFolder)))
         .join(" ")}`,
     );

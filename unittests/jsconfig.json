@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "strict": true,
+    "types": ["node"],
     "esModuleInterop": true,
     "sourceMap": true,
     "noUnusedLocals": true,
