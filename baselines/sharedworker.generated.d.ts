@@ -394,6 +394,7 @@ interface GPUPipelineErrorInit {
 
 interface GPUPipelineLayoutDescriptor extends GPUObjectDescriptorBase {
     bindGroupLayouts: (GPUBindGroupLayout | null)[];
+    immediateSize?: GPUSize32;
 }
 
 interface GPUPrimitiveState {
@@ -743,6 +744,13 @@ interface MultiCacheQueryOptions extends CacheQueryOptions {
 interface NavigationPreloadState {
     enabled?: boolean;
     headerValue?: string;
+}
+
+interface NotificationAction {
+    action: string;
+    icon?: string;
+    navigate?: string;
+    title: string;
 }
 
 interface NotificationOptions {
@@ -6633,6 +6641,12 @@ interface NotificationEventMap {
  */
 interface Notification extends EventTarget {
     /**
+     * The **`actions`** read-only property of the Notification interface provides the actions available for users to select when interacting with the notification.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/actions)
+     */
+    readonly actions: ReadonlyArray<NotificationAction>;
+    /**
      * The **`body`** read-only property of the Notification interface indicates the body string of the notification, as specified in the body option of the Notification() constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/body)
@@ -6709,6 +6723,12 @@ interface Notification extends EventTarget {
 declare var Notification: {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
+    /**
+     * The **`maxActions`** read-only static property of the Notification interface returns the maximum number of actions that can be displayed in a notification.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/maxActions_static)
+     */
+    readonly maxActions: number;
     /**
      * The **`permission`** read-only static property of the Notification interface indicates the current permission granted by the user for the current origin to display web notifications.
      *
@@ -12556,25 +12576,25 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The **`WebAssembly.Exception`** object represents a runtime exception thrown from WebAssembly to JavaScript, or thrown from JavaScript to a WebAssembly exception handler.
+     * The **`WebAssembly.Exception`** object represents a runtime exception thrown in a Wasm module.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception)
      */
     interface Exception {
         /**
-         * The read-only **`stack`** property of an object instance of type WebAssembly.Exception may contain a stack trace.
+         * The **`stack`** read-only property of the WebAssembly.Exception object may contain a stack trace.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/stack)
          */
         readonly stack: string | undefined;
         /**
-         * The **`getArg()`** prototype method of the Exception object can be used to get the value of a specified item in the exception's data arguments.
+         * The **`getArg()`** method of the Exception object can be used to get the value of a specified item in the exception's data arguments.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/getArg)
          */
         getArg(exceptionTag: Tag, index: number): any;
         /**
-         * The **`is()`** prototype method of the Exception object can be used to test if the Exception matches a given tag.
+         * The **`is()`** method of the Exception object can be used to test if the Exception matches a given tag.
          *
          * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Exception/is)
          */
@@ -12742,7 +12762,7 @@ declare namespace WebAssembly {
     };
 
     /**
-     * The **`WebAssembly.Tag`** object defines a type of a WebAssembly exception that can be thrown to/from WebAssembly code.
+     * The **`WebAssembly.Tag`** object represents a WebAssembly exception type that can be thrown in a Wasm module.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/WebAssembly/Reference/JavaScript_interface/Tag)
      */
