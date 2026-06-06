@@ -69,5 +69,7 @@ jobs:
         with:
           commit-message: "🤖 Update core dependencies"
           title: "Update core dependencies"
+          author: "typescript-automation[bot] <290192711+typescript-automation[bot]@users.noreply.github.com>"
+          committer: "typescript-automation[bot] <290192711+typescript-automation[bot]@users.noreply.github.com>"
           branch: update-core-deps
           token: ${{ steps.app-token.outputs.token }}
