@@ -1,0 +1,8 @@
+// https://notifications.spec.whatwg.org/
+
+removals {
+  dictionary NotificationAction {
+    member icon // Blink only as of 2026-06
+    member navigate // WebKit only as of 2026-06
+  }
+}

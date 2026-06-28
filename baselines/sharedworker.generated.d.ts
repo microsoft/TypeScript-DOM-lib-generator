@@ -745,6 +745,11 @@ interface NavigationPreloadState {
     headerValue?: string;
 }
 
+interface NotificationAction {
+    action: string;
+    title: string;
+}
+
 interface NotificationOptions {
     badge?: string;
     body?: string;
@@ -6633,6 +6638,12 @@ interface NotificationEventMap {
  */
 interface Notification extends EventTarget {
     /**
+     * The **`actions`** read-only property of the Notification interface provides the actions available for users to choose from for interacting with the notification.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/actions)
+     */
+    readonly actions: ReadonlyArray<NotificationAction>;
+    /**
      * The **`body`** read-only property of the Notification interface indicates the body string of the notification, as specified in the body option of the Notification() constructor.
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/body)
@@ -6709,6 +6720,12 @@ interface Notification extends EventTarget {
 declare var Notification: {
     prototype: Notification;
     new(title: string, options?: NotificationOptions): Notification;
+    /**
+     * The **`maxActions`** read-only static property of the Notification interface returns the maximum number of actions supported by the device and the User Agent. Effectively, this is the maximum number of elements in Notification.actions array which will be respected by the User Agent.
+     *
+     * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Notification/maxActions_static)
+     */
+    readonly maxActions: number;
     /**
      * The **`permission`** read-only static property of the Notification interface indicates the current permission granted by the user for the current origin to display web notifications.
      *
