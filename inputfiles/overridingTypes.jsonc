@@ -2923,13 +2923,13 @@
             "BaseKeyframe": {
                 "name": "Keyframe",
                 "overrideIndexSignatures": [
-                    "[property: string]: string | number | null | undefined"
+                    "[property: string]: string | number | CSSStyleValue | null | undefined"
                 ]
             },
             "BasePropertyIndexedKeyframe": {
                 "name": "PropertyIndexedKeyframes",
                 "overrideIndexSignatures": [
-                    "[property: string]: string | string[] | number | null | (number | null)[] | undefined"
+                    "[property: string]: string | string[] | number | CSSStyleValue | CSSStyleValue[] | null | (number | null)[] | undefined"
                 ]
             },
             "BaseComputedKeyframe": {
