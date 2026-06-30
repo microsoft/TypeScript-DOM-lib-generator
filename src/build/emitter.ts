@@ -645,7 +645,7 @@ export function emitWebIdl(
       const paramName = m.signature[0].param![0].name;
       for (const mapName of tagNameMapNames) {
         printer.printLine(
-          `matches<K extends keyof ElementMatchesMap<${mapName}, this>>(${paramName}: K): this is Extract<${mapName}[K], this>;`,
+          `matches<K extends keyof ${mapName} & keyof ElementMatchesNarrowingMap<${mapName}, this>>(${paramName}: K): this is Extract<${mapName}[K], this>;`,
         );
       }
       for (const mapName of tagNameMapNames) {
@@ -722,8 +722,62 @@ export function emitWebIdl(
 
   function emitElementMatchesMap() {
     printer.printLine(
-      "type ElementMatchesMap<T, U> = { [K in keyof T as T[K] extends U ? U extends T[K] ? never : K : never]: T[K] };",
+      "type ElementMatchesNarrowingMap<ElementMap, ElementType> =",
     );
+    printer.increaseIndent();
+    printer.printLine("ElementType extends Element");
+    printer.increaseIndent();
+    printer.printLine("? Element extends ElementType");
+    printer.increaseIndent();
+    printer.printLine("? ElementMap");
+    printer.printLine(": [ElementMatchesBase<ElementType>] extends [never]");
+    printer.increaseIndent();
+    printer.printLine("? {}");
+    printer.printLine(
+      ": ElementMatchesStrictMap<ElementMap, ElementMatchesBase<ElementType>>",
+    );
+    printer.decreaseIndent();
+    printer.decreaseIndent();
+    printer.printLine(": {};");
+    printer.decreaseIndent();
+    printer.decreaseIndent();
+    printer.printLine("");
+    printer.printLine("type ElementMatchesBase<ElementType> =");
+    printer.increaseIndent();
+    printer.printLine("HTMLElement extends ElementType");
+    printer.increaseIndent();
+    printer.printLine("? HTMLElement");
+    printer.printLine(": SVGElement extends ElementType");
+    printer.increaseIndent();
+    printer.printLine("? SVGElement");
+    printer.printLine(": MathMLElement extends ElementType");
+    printer.increaseIndent();
+    printer.printLine("? MathMLElement");
+    printer.printLine(": never;");
+    printer.decreaseIndent();
+    printer.decreaseIndent();
+    printer.decreaseIndent();
+    printer.decreaseIndent();
+    printer.printLine("");
+    printer.printLine(
+      "type ElementMatchesStrictMap<ElementMap, BaseElement> = {",
+    );
+    printer.increaseIndent();
+    printer.printLine("[Key in keyof ElementMap as (");
+    printer.increaseIndent();
+    printer.printLine("ElementMap[Key] extends BaseElement");
+    printer.increaseIndent();
+    printer.printLine("? BaseElement extends ElementMap[Key]");
+    printer.increaseIndent();
+    printer.printLine("? never");
+    printer.printLine(": Key");
+    printer.decreaseIndent();
+    printer.printLine(": never");
+    printer.decreaseIndent();
+    printer.decreaseIndent();
+    printer.printLine(")]: ElementMap[Key];");
+    printer.decreaseIndent();
+    printer.printLine("};");
     printer.printLine("");
   }
 

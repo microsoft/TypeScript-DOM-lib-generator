@@ -14038,9 +14038,9 @@ interface Element extends Node, ARIAMixin, Animatable, ChildNode, NonDocumentTyp
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)
      */
-    matches<K extends keyof ElementMatchesMap<HTMLElementTagNameMap, this>>(selectors: K): this is Extract<HTMLElementTagNameMap[K], this>;
-    matches<K extends keyof ElementMatchesMap<SVGElementTagNameMap, this>>(selectors: K): this is Extract<SVGElementTagNameMap[K], this>;
-    matches<K extends keyof ElementMatchesMap<MathMLElementTagNameMap, this>>(selectors: K): this is Extract<MathMLElementTagNameMap[K], this>;
+    matches<K extends keyof HTMLElementTagNameMap & keyof ElementMatchesNarrowingMap<HTMLElementTagNameMap, this>>(selectors: K): this is Extract<HTMLElementTagNameMap[K], this>;
+    matches<K extends keyof SVGElementTagNameMap & keyof ElementMatchesNarrowingMap<SVGElementTagNameMap, this>>(selectors: K): this is Extract<SVGElementTagNameMap[K], this>;
+    matches<K extends keyof MathMLElementTagNameMap & keyof ElementMatchesNarrowingMap<MathMLElementTagNameMap, this>>(selectors: K): this is Extract<MathMLElementTagNameMap[K], this>;
     matches<K extends keyof HTMLElementTagNameMap>(selectors: K): boolean;
     matches<K extends keyof SVGElementTagNameMap>(selectors: K): boolean;
     matches<K extends keyof MathMLElementTagNameMap>(selectors: K): boolean;
@@ -43857,7 +43857,33 @@ interface MathMLElementTagNameMap {
     "semantics": MathMLElement;
 }
 
-type ElementMatchesMap<T, U> = { [K in keyof T as T[K] extends U ? U extends T[K] ? never : K : never]: T[K] };
+type ElementMatchesNarrowingMap<ElementMap, ElementType> =
+    ElementType extends Element
+        ? Element extends ElementType
+            ? ElementMap
+            : [ElementMatchesBase<ElementType>] extends [never]
+                ? {}
+                : ElementMatchesStrictMap<ElementMap, ElementMatchesBase<ElementType>>
+        : {};
+
+type ElementMatchesBase<ElementType> =
+    HTMLElement extends ElementType
+        ? HTMLElement
+        : SVGElement extends ElementType
+            ? SVGElement
+            : MathMLElement extends ElementType
+                ? MathMLElement
+                : never;
+
+type ElementMatchesStrictMap<ElementMap, BaseElement> = {
+    [Key in keyof ElementMap as (
+        ElementMap[Key] extends BaseElement
+            ? BaseElement extends ElementMap[Key]
+                ? never
+                : Key
+            : never
+    )]: ElementMap[Key];
+};
 
 /** @deprecated Directly use HTMLElementTagNameMap or SVGElementTagNameMap as appropriate, instead. */
 type ElementTagNameMap = HTMLElementTagNameMap & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;
