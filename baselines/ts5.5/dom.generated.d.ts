@@ -26416,7 +26416,7 @@ interface Node extends EventTarget {
      *
      * [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/cloneNode)
      */
-    cloneNode(subtree?: boolean): Node;
+    cloneNode(subtree?: boolean): this;
     /**
      * The **`compareDocumentPosition()`** method of the Node interface reports the position of its argument node relative to the node on which it is called.
      *
