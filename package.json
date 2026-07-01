@@ -44,7 +44,7 @@
     "@eslint/js": "^10",
     "@mdn/browser-compat-data": "^7.0.0",
     "@octokit/rest": "^22.0.0",
-    "@types/node": "^25.0.3",
+    "@types/node": "^26.1.0",
     "@types/prettier": "^3.0.0",
     "@types/webidl2": "^24.4.4",
     "@typescript-eslint/eslint-plugin": "^8",
