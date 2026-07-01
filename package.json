@@ -42,7 +42,7 @@
   "type": "module",
   "devDependencies": {
     "@eslint/js": "^10",
-    "@mdn/browser-compat-data": "^7.0.0",
+    "@mdn/browser-compat-data": "^8.0.4",
     "@octokit/rest": "^22.0.0",
     "@types/node": "^25.0.3",
     "@types/prettier": "^3.0.0",
