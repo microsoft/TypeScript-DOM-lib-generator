@@ -377,7 +377,7 @@ interface SVGNumberList {
 }
 
 interface SVGPointList {
-    [Symbol.iterator](): ArrayIterator<DOMPoint>;
+    [Symbol.iterator](): ArrayIterator<SVGPoint>;
 }
 
 interface SVGStringList {
